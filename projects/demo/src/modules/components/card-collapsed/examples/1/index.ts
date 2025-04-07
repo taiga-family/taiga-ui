@@ -10,16 +10,16 @@ import {TuiCard, TuiHeader} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        TuiCard,
-        TuiHeader,
-        TuiLink,
-        TuiTitle,
-        TuiIcon,
         TuiBadge,
         TuiButton,
+        TuiCard,
         TuiChevron,
         TuiExpand,
+        TuiHeader,
+        TuiIcon,
+        TuiLink,
         TuiTable,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -27,5 +27,5 @@ import {TuiCard, TuiHeader} from '@taiga-ui/layout';
     changeDetection,
 })
 export default class Example {
-    readonly collapsed = signal(true);
+    public readonly collapsed = signal(true);
 }
