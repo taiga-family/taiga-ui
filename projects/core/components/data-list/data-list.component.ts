@@ -53,7 +53,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
         {
             provide: TUI_OPTION_CONTENT,
             useFactory: () =>
-                inject(TuiWithOptionContent, {optional: true})?.optionContent ??
+                inject(TuiWithOptionContent, {optional: true})?.content ??
                 inject(TUI_OPTION_CONTENT, {skipSelf: true, optional: true}),
         },
     ],

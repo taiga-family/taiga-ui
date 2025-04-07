@@ -34,7 +34,7 @@ export class TuiWithOptionContent {
         optional: true,
     });
 
-    public get optionContent(): Type<any> | null {
+    public get content(): Type<any> | null {
         return this.globalContent ?? this.localContent;
     }
 }
