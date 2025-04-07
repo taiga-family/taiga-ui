@@ -13,7 +13,7 @@ import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 
 import {TuiTableDirective} from '../../directives/table.directive';
-import {TuiTableTbody} from '../tbody.component';
+import {TuiTableTbodyNew} from '../tbody-new.component';
 import {
     expandTableBodyCloseAnimationData,
     expandTableBodyOpenAnimationData,
@@ -31,8 +31,8 @@ export class ExpandableTableRowFillerComponent<T> {
     private readonly builder = inject(AnimationBuilder);
     private readonly el = inject(ElementRef);
 
-    protected readonly parentBody = inject<TuiTableTbody<T>>(
-        forwardRef(() => TuiTableTbody),
+    protected readonly parentBody = inject<TuiTableTbodyNew<T>>(
+        forwardRef(() => TuiTableTbodyNew),
     );
 
     protected readonly table = inject<TuiTableDirective<T>>(
