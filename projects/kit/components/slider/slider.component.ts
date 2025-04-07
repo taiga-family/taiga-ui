@@ -114,6 +114,10 @@ export class TuiSliderComponent {
                           this.getSegmentWidth(this.segments as number) * (index + 1),
                   );
 
+        if (segments.length === 1) {
+            return 'linear-gradient(to right, transparent 0 100%)';
+        }
+
         let gradient = `linear-gradient(
             to right,
             transparent ${segments[0]}%,
