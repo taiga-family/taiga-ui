@@ -6,4 +6,4 @@ export const TuiDynamicHeader = [
     TuiDynamicHeaderComponent,
     TuiDynamicHeaderAnchorDirective,
     TuiDynamicHeaderContainerDirective,
-];
+] as const;
