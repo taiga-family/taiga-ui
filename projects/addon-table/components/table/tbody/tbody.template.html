@@ -1,51 +1,25 @@
-<ng-container *ngIf="heading; else newTemplate">
-    <tr>
-        <th
-            class="t-heading"
-            [colSpan]="table.columns.length"
+<tr *ngIf="heading">
+    <th
+        class="t-heading"
+        [colSpan]="table.columns.length"
+    >
+        <button
+            type="button"
+            class="t-expand"
+            (click)="onClick()"
         >
-            <button
-                type="button"
-                class="t-expand"
-                (click)="onClick()"
-            >
-                <span class="t-name">
-                    <ng-container *polymorpheusOutlet="heading as text">
-                        {{ text }}
-                    </ng-container>
-                </span>
-                <tui-icon
-                    class="t-chevron"
-                    [tuiChevron]="open"
-                />
-            </button>
-        </th>
-    </tr>
-    <ng-container *ngIf="open">
-        <ng-container *polymorpheusOutlet="content as text">
-            {{ text }}
-        </ng-container>
-    </ng-container>
-</ng-container>
-
-<ng-template #newTemplate>
-    <ng-content select="[tuiTableExpandHeading]" />
-
-    <ng-container *ngIf="showExpandableContent()">
-        <ng-container *polymorpheusOutlet="content as text">
-            {{ text }}
-        </ng-container>
-    </ng-container>
-
-    <ng-content select="[tuiTableExpandContent]" />
-
-    <expandable-table-row-filler
-        *ngIf="showRowsFiller()"
-        (animationDone)="onExpandAnimationDone()"
-        (animationStart)="onExpandAnimationStart()"
-    />
-</ng-template>
-
-<ng-template #content>
+            <span class="t-name">
+                <ng-container *polymorpheusOutlet="heading as text">
+                    {{ text }}
+                </ng-container>
+            </span>
+            <tui-icon
+                class="t-chevron"
+                [tuiChevron]="open"
+            />
+        </button>
+    </th>
+</tr>
+<ng-container *ngIf="open">
     <ng-content />
-</ng-template>
+</ng-container>

@@ -1,0 +1,13 @@
+<ng-content select="[tuiTableExpandHeading]" />
+
+<ng-container *ngIf="showExpandableContent()">
+    <ng-content />
+</ng-container>
+
+<ng-content select="[tuiTableExpandContent]" />
+
+<expandable-table-row-filler
+    *ngIf="showRowsFiller()"
+    (animationDone)="onExpandAnimationDone()"
+    (animationStart)="onExpandAnimationStart()"
+/>

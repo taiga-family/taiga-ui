@@ -12,6 +12,7 @@ import {TuiTableExpandOpen} from './directives/table-expand-open.directive';
 import {TuiTableThead} from './directives/thead.directive';
 import {TuiTableSortPipe} from './pipes/table-sort.pipe';
 import {TuiTableTbody} from './tbody/tbody.component';
+import {TuiTableTbodyNew} from './tbody-new/tbody-new.component';
 import {TuiTableTd} from './td/td.component';
 import {TuiTableTh} from './th/th.component';
 import {TuiTableThGroup} from './th-group/th-group.component';
@@ -36,4 +37,5 @@ export const TuiTable = [
     TuiTableExpandHeading,
     TuiTableExpandOpen,
     TuiTableExpandContent,
+    TuiTableTbodyNew,
 ] as const;
