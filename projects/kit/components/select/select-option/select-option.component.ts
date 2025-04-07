@@ -20,6 +20,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiScrollIntoView],
     host: {
+        '[class._value]': 'option',
         '[class._selected]': 'selected()',
         '(click)': 'onClick()',
     },

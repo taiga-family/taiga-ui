@@ -11,6 +11,7 @@
     >
         <button
             *ngFor="let group of taigaFamilyLibs"
+            iconEnd="@tui.chevron-right"
             new
             tuiDropdownAlign="right"
             tuiDropdownLimitWidth="auto"
@@ -21,8 +22,6 @@
             [tuiDropdown]="options"
         >
             {{ group.name }}
-
-            <tui-icon icon="@tui.chevron-right" />
 
             <ng-template #options>
                 <tui-data-list>
