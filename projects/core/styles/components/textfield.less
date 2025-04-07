@@ -317,6 +317,11 @@ tui-textfield {
         cursor: pointer;
     }
 
+    select option:not(:disabled) {
+        // In Windows OS native options inherit color of host <select>
+        color: var(--tui-text-primary);
+    }
+
     button,
     a {
         pointer-events: auto;
