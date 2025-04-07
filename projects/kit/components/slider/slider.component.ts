@@ -114,19 +114,24 @@ export class TuiSliderComponent {
                           this.getSegmentWidth(this.segments as number) * (index + 1),
                   );
 
-        return segments
-            .map((segment) => {
-                const tickStart = `${segment}%`;
-                const tickEnd = `calc(${segment}% + var(--tui-ticks-thickness))`;
+        let gradient = `linear-gradient(
+            to right,
+            transparent ${segments[0]}%,
+        `;
 
-                return `linear-gradient(
-                    to right,
-                    transparent ${tickStart},
-                    var(--tui-text-tertiary) ${tickStart} ${tickEnd},
-                    transparent ${tickEnd} 100%
-                )`;
-            })
-            .join(', ');
+        segments.forEach((segment, index) => {
+            if (!segments[index + 1]) {
+                return;
+            }
+
+            gradient = `
+                ${gradient}
+                var(--tui-text-tertiary) ${segment}% calc(${segment}% + var(--tui-ticks-thickness)),
+                transparent ${segment}% ${segments[index + 1]}%${index + 1 === segments.length - 1 ? ')' : ','}
+            `;
+        });
+
+        return gradient;
     }
 
     private getSegmentWidth(segments: number): number {
