@@ -9,7 +9,6 @@ export * from './i18n';
 export * from './icon';
 export * from './icon-resolver';
 export * from './icons';
-export * from './items-handlers';
 export * from './media';
 export * from './number-format';
 export * from './reduced-motion';

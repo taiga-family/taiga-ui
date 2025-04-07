@@ -57,7 +57,7 @@ export class TuiSelect<T> extends TuiTextfieldBase<T> {
     }
 
     protected get stringified(): string {
-        return this.textfield.stringify(this.control?.value ?? '');
+        return this.itemsHandlers.stringify()(this.control?.value ?? '');
     }
 
     protected async onCopy(): Promise<void> {

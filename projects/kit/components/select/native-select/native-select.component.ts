@@ -10,13 +10,13 @@ import {
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
-    TuiTextfieldComponent,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/tokens';
+import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 @Component({
@@ -44,16 +44,20 @@ export class TuiNativeSelect<T>
 
     protected readonly isFlat = tuiIsFlat;
     protected readonly placeholder = signal('');
-    protected readonly itemsHandlers = inject(TUI_ITEMS_HANDLERS);
-    protected readonly textfield: TuiTextfieldComponent<T> =
-        inject(TuiTextfieldComponent);
+    protected readonly itemsHandlers = inject(TuiItemsHandlersDirective<T>);
 
     protected readonly stringified = computed((value = this.value()) =>
-        value ? this.textfield.stringify(value) : '',
+        value ? this.itemsHandlers.stringify()(value) : '',
     );
 
     protected readonly showPlaceholder = computed(
         () => this.placeholder() && !this.stringified(),
+    );
+
+    protected readonly isSelected = computed(
+        (value = this.value()) =>
+            (x: T) =>
+                tuiIsPresent(value) && this.itemsHandlers.identityMatcher()(x, value),
     );
 
     @Input()

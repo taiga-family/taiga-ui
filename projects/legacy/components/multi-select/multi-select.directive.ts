@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import type {TuiItemsHandlers} from '@taiga-ui/core/tokens';
+import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 

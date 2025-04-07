@@ -12,6 +12,7 @@ import {
     tuiAppearanceMode,
     tuiAppearanceState,
 } from '@taiga-ui/core/directives/appearance';
+import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
 import {fromEvent, map, merge, switchMap, timer} from 'rxjs';
 
@@ -34,6 +35,7 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     );
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
+    protected readonly itemsHandlers = inject(TuiItemsHandlersDirective<T>);
     protected readonly textfield: TuiTextfieldComponent<T> =
         inject(TuiTextfieldComponent);
 
@@ -93,7 +95,7 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
             this.el.ownerDocument.execCommand(
                 'insertText',
                 false,
-                this.textfield.stringify(value),
+                this.itemsHandlers.stringify()(value),
             );
         }
     }

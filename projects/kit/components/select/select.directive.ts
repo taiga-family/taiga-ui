@@ -7,10 +7,10 @@ import {
     tuiAsAuxiliary,
     tuiAsTextfieldAccessor,
     TuiSelectLike,
-    TuiTextfieldComponent,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownEnabled, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
 
 import {TuiSelectOption} from './select-option/select-option.component';
 
@@ -35,12 +35,12 @@ export class TuiSelectDirective<T>
     implements TuiTextfieldAccessor<T>
 {
     private readonly open = tuiDropdownOpen();
-    private readonly textfield: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
+    private readonly itemsHandlers = inject(TuiItemsHandlersDirective<T>);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly stringified = tuiValueBinding(
         computed((value = this.value()) =>
-            value ? this.textfield.stringify(value) : '',
+            value ? this.itemsHandlers.stringify()(value) : '',
         ),
     );
 

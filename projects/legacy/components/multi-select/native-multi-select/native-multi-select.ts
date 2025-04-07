@@ -1,6 +1,6 @@
 import {Directive} from '@angular/core';
 import type {TuiMapper} from '@taiga-ui/cdk/types';
-import type {TuiItemsHandlers} from '@taiga-ui/core/tokens';
+import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {AbstractTuiNativeSelect} from '@taiga-ui/legacy/classes';
 
 import type {TuiMultiSelectDirective} from '../multi-select.directive';

@@ -26,10 +26,10 @@
 >
     <option
         *ngFor="let option of items"
-        [disabled]="disabledItemHandler?.(option) ?? itemsHandlers.disabledItemHandler(option)"
-        [selected]="option === value()"
-        [value]="textfield.stringify(option)"
+        [disabled]="disabledItemHandler?.(option) ?? itemsHandlers.disabledItemHandler()(option)"
+        [selected]="isSelected()(option)"
+        [value]="itemsHandlers.stringify()(option)"
     >
-        {{ textfield.stringify(option) }}
+        {{ itemsHandlers.stringify()(option) }}
     </option>
 </ng-template>

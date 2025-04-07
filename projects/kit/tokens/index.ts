@@ -7,9 +7,9 @@ export * from './month-formatter';
 export * from './preview-icons';
 export * from './validation-errors';
 // TODO(v5): delete
-export type {TuiItemsHandlers} from '@taiga-ui/core/tokens';
+export type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 export {
     TUI_DEFAULT_ITEMS_HANDLERS,
     TUI_ITEMS_HANDLERS,
     tuiItemsHandlersProvider,
-} from '@taiga-ui/core/tokens';
+} from '@taiga-ui/core/directives/items-handlers';
