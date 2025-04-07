@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.111.0](https://github.com/taiga-family/taiga-ui/compare/v3.110.0...v3.111.0) (2025-04-07)
+
+### Features
+
+- **addon-mobile:** `SheetDialog` pass appearance from context
+  ([#10733](https://github.com/taiga-family/taiga-ui/issues/10733))
+  ([d2f7965](https://github.com/taiga-family/taiga-ui/commit/d2f79659bad797726ac38ca5e20b88a193fdb837))
+- **core:** `Dialog` add event handler to change close button theme
+  ([#10709](https://github.com/taiga-family/taiga-ui/issues/10709))
+  ([ead4671](https://github.com/taiga-family/taiga-ui/commit/ead4671d6fe57de12291655085a99ca492f8fe96))
+
+### Bug Fixes
+
+- **addon-mobile:** `SheetDialog` content inherit border-radius
+  ([#10736](https://github.com/taiga-family/taiga-ui/issues/10736))
+  ([3f2689f](https://github.com/taiga-family/taiga-ui/commit/3f2689f3d26dfacfbde97be1693a0e865e0ddde3))
+- **core:** `tuiIsEditingKey` safe argument for autofill empty key
+  ([#10738](https://github.com/taiga-family/taiga-ui/issues/10738))
+  ([43bb1d5](https://github.com/taiga-family/taiga-ui/commit/43bb1d5ea3a23d22f57748cd13658f190a41beca))
+- **experimental:** `Cell` increase `tuiCellActions` specificity
+  ([#10748](https://github.com/taiga-family/taiga-ui/issues/10748))
+  ([7ca36a8](https://github.com/taiga-family/taiga-ui/commit/7ca36a864dcd3626055e2fec1211cee4acbb2554))
+- **kit:** `InputTime` should hide icon if it equals to empty string
+  ([#10724](https://github.com/taiga-family/taiga-ui/issues/10724))
+  ([cf41b47](https://github.com/taiga-family/taiga-ui/commit/cf41b474ae3eed37e1ac735a434049894bcfc743))
+- **kit:** do not match value until user is writing value in `InputTime`
+  ([#10744](https://github.com/taiga-family/taiga-ui/issues/10744))
+  ([621c0d8](https://github.com/taiga-family/taiga-ui/commit/621c0d8bbf98886dbb443fe7d74577f2fae57d04))
+
 ## [3.110.0](https://github.com/taiga-family/taiga-ui/compare/v3.109.0...v3.110.0) (2025-03-31)
 
 ### Features
