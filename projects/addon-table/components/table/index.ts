@@ -16,6 +16,7 @@ export * from './providers/table.provider';
 export * from './table';
 export * from './table.options';
 export * from './tbody/tbody.component';
+export * from './tbody-new/tbody-new.component';
 export * from './td/td.component';
 export * from './th/th.component';
 export * from './th-group/th-group.component';
