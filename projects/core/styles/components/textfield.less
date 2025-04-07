@@ -15,7 +15,7 @@ tui-textfield {
     color: var(--tui-text-tertiary);
     padding: 0 var(--t-padding);
     border-radius: var(--tui-radius-l);
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-text-ui-m);
     box-sizing: border-box;
     gap: 0.25rem;
 
@@ -32,11 +32,8 @@ tui-textfield {
     textarea {
         font: var(--tui-font-text-ui-m);
         resize: none;
-        padding-block: 1.125rem;
-
-        &[inputmode='none'] {
-            caret-color: transparent;
-        }
+        padding-block-start: 1.125rem;
+        padding-block-end: 1.125rem;
     }
 
     &[data-size='s'] {
@@ -68,8 +65,9 @@ tui-textfield {
         input,
         select,
         textarea {
-            font: var(--tui-font-text-s);
-            padding-block: 0.5rem;
+            font: var(--tui-font-text-ui-s);
+            padding-block-start: 0.5rem;
+            padding-block-end: 0.5rem;
         }
 
         .t-content {
@@ -103,8 +101,9 @@ tui-textfield {
         input,
         select,
         textarea {
-            font: var(--tui-font-text-s);
-            padding-block: 0.875rem;
+            font: var(--tui-font-text-ui-s);
+            padding-block-start: 0.875rem;
+            padding-block-end: 0.875rem;
         }
 
         .t-content {
@@ -153,7 +152,8 @@ tui-textfield {
         input:not([type='range']),
         select:defined,
         textarea:defined {
-            padding-block: calc(var(--t-height) / 3) 0;
+            padding-block-start: calc(var(--t-height) / 3);
+            padding-block-end: 0;
 
             &::placeholder,
             &._empty {
