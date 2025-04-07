@@ -1,13 +1,14 @@
 import {Component, computed} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import type {TuiContext} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -19,7 +20,9 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiDataListWrapper,
         TuiDemo,
         TuiDocControl,
+        TuiDocDropdown,
         TuiDocTextfield,
+        TuiDropdown,
         TuiSelect,
         TuiTextfield,
     ],

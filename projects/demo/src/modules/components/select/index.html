@@ -237,6 +237,13 @@
                 <tui-textfield
                     tuiChevron
                     [content]="control.value && textfieldContent"
+                    [tuiDropdownAlign]="dropdown.align"
+                    [tuiDropdownAppearance]="dropdown.appearance"
+                    [tuiDropdownDirection]="dropdown.direction"
+                    [tuiDropdownLimitWidth]="dropdown.limitWidth"
+                    [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                    [tuiDropdownMinHeight]="dropdown.minHeight"
+                    [tuiDropdownOffset]="dropdown.offset"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -273,6 +280,12 @@
                     A template for custom view of textfield value.
                 </tr>
             </tbody>
+
+            <tbody
+                #dropdown
+                tuiDocDropdown
+                [hiddenOptions]="['open', 'tuiDropdownEnabled']"
+            ></tbody>
 
             <tbody
                 #controlDoc
