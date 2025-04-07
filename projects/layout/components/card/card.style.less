@@ -1,0 +1,24 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiCardMedium],
+[tuiCardLarge] {
+    .button-clear();
+
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    flex-shrink: 0;
+    text-decoration: none;
+    overscroll-behavior: contain;
+    overflow: hidden;
+    background: var(--tui-background-elevation-2);
+
+    [tuiTitle],
+    [tuiSubtitle] {
+        max-inline-size: 100%;
+    }
+
+    > * {
+        .scrollbar-hidden();
+    }
+}

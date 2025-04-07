@@ -1,0 +1,44 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiCardCollapsed] {
+    .transition(~'clip-path, margin');
+
+    border-image: radial-gradient(at center, var(--tui-background-neutral-2) 26.5%, transparent 27%) 50% 49% / 0 2rem
+        2rem / 0 0 2rem;
+
+    > tui-expand {
+        .transition(~'grid-template-rows, padding, margin');
+
+        background: var(--tui-background-neutral-1);
+        border-radius: var(--tui-radius-s);
+        padding: 0 1rem;
+        margin: -0.25rem 0 calc(-1 * var(--t-space)) !important;
+
+        &._expanded {
+            padding: 0.5rem 1rem;
+            margin: 0 !important;
+        }
+
+        [tuiTable] {
+            inline-size: 100%;
+
+            th,
+            td {
+                background: none;
+                padding-left: 0;
+                padding-right: 0;
+                border-left: 0;
+                border-right: 0;
+            }
+
+            thead th {
+                border: none;
+                block-size: 1.75rem;
+            }
+
+            tr:last-child td {
+                border-bottom: 0;
+            }
+        }
+    }
+}

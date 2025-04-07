@@ -1,0 +1,26 @@
+[tuiCardMedium] {
+    inline-size: 8.75rem;
+    block-size: 8.75rem;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border-radius: var(--tui-radius-l);
+    box-sizing: border-box;
+
+    &[tuiTitle] {
+        padding: 0.625rem 0.75rem;
+    }
+
+    [tuiTitle] {
+        margin: -0.125rem 0;
+    }
+
+    [tuiSubtitle] {
+        color: var(--tui-text-primary);
+    }
+
+    &[tuiTitle],
+    [tuiTitle]:not([tuiCell] *):not([tuiLabel] *) {
+        font-weight: bold;
+    }
+}

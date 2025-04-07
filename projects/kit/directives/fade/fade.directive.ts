@@ -16,7 +16,7 @@ import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiOrientation} from '@taiga-ui/core/types';
-import {fromEvent, merge} from 'rxjs';
+import {filter, fromEvent, merge} from 'rxjs';
 
 const BUFFER = 1; // buffer for rounding issues
 
@@ -74,7 +74,11 @@ export class TuiFade {
             inject(MutationObserverService, {self: true}),
             fromEvent(el, 'scroll'),
         )
-            .pipe(tuiZonefree(), takeUntilDestroyed())
+            .pipe(
+                filter(() => !!el.scrollWidth),
+                tuiZonefree(),
+                takeUntilDestroyed(),
+            )
             .subscribe(() => {
                 el.classList.toggle('_start', !!el.scrollLeft || !!el.scrollTop);
                 el.classList.toggle('_end', this.isEnd(el));
@@ -87,7 +91,8 @@ export class TuiFade {
         }
 
         return (
-            Math.round(el.scrollLeft) < el.scrollWidth - el.clientWidth - BUFFER ||
+            (el.clientWidth &&
+                Math.round(el.scrollLeft) < el.scrollWidth - el.clientWidth - BUFFER) ||
             // horizontal multiline fade can kick in early due to hanging elements of fonts so using bigger buffer
             el.scrollHeight > el.clientHeight + 4 * BUFFER
         );
