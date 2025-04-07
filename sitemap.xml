@@ -100,6 +100,9 @@
     <loc>https://taiga-ui.dev/layout/card-large/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/layout/card-collapsed/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/badge-notification/</loc>
   </url>
   <url>
@@ -764,6 +767,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/layout/card-large/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/layout/card-collapsed/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/layout/card-collapsed/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/badge-notification/API/</loc>
