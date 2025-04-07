@@ -50,6 +50,7 @@
     >
         <tr
             tuiTableExpandHeading
+            tuiTableExpandOpen
             tuiTr
             class="expand-heading-row"
         >
@@ -122,7 +123,6 @@
 
     <tbody
         tuiTbody
-        [autoOpen]="false"
         [data]="manualOpenData"
         [open]="manualOpen"
     >
@@ -212,6 +212,7 @@
         >
             <td
                 *tuiCell="'action'"
+                tuiTableExpandOpen
                 tuiTd
             >
                 <tui-icon
@@ -224,7 +225,7 @@
                 tuiTd
                 [colSpan]="2"
             >
-                Non-table content
+                Custom content (click on chevron)
             </td>
             <ng-container *tuiCell="'lastName'" />
             <td
@@ -237,7 +238,7 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+                {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
             </td>
         </tr>
 

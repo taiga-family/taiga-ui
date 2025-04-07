@@ -1,20 +1,7 @@
-import {Directive, forwardRef, inject} from '@angular/core';
-
-import {TuiTableTbody} from '../tbody/tbody.component';
+import {Directive} from '@angular/core';
 
 @Directive({
     standalone: true,
     selector: 'tr[tuiTr][tuiTableExpandHeading]',
-    host: {
-        '(click)': 'onClick($event)',
-    },
 })
-export class TuiTableExpandHeading<T> {
-    protected readonly parentBody = inject<TuiTableTbody<T>>(
-        forwardRef(() => TuiTableTbody),
-    );
-
-    protected onClick(): void {
-        this.parentBody.onClick();
-    }
-}
+export class TuiTableExpandHeading {}
