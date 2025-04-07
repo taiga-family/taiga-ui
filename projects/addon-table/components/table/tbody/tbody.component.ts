@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import type {AfterViewInit, OnChanges, QueryList, SimpleChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -10,13 +10,13 @@ import {
     inject,
     Input,
     Output,
+    signal,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {BehaviorSubject} from 'rxjs';
 
 import {TuiTableDirective} from '../directives/table.directive';
 import {TuiTableExpandContent} from '../directives/table-expand-content.directive';
@@ -30,7 +30,6 @@ import {ExpandableTableRowFillerComponent} from './expandable-table-row-filler/e
     standalone: true,
     selector: 'tbody[tuiTbody]',
     imports: [
-        AsyncPipe,
         ExpandableTableRowFillerComponent,
         NgIf,
         PolymorpheusOutlet,
@@ -51,14 +50,15 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, any>>>
     protected readonly customExpandContent: TuiTableExpandContent | null = null;
 
     @ContentChild(forwardRef(() => TuiTableExpandHeading))
-    protected readonly expandHeading: TuiTableExpandHeading<T> | null = null;
+    protected readonly expandHeading: TuiTableExpandHeading | null = null;
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
     );
 
-    protected readonly showExpandableContent$ = new BehaviorSubject(this.options.open);
-    protected readonly showRowsFiller$ = new BehaviorSubject(false);
+    protected readonly showExpandableContent = signal(this.options.open);
+    protected readonly showRowsFiller = signal(false);
+    protected readonly openSignal = signal(this.options.open);
 
     @ContentChildren(forwardRef(() => TuiTableTr))
     public readonly rows: QueryList<TuiTableTr<T>> = EMPTY_QUERY;
@@ -73,47 +73,38 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, any>>>
     @Input()
     public open = this.options.open;
 
-    @Input()
-    public autoOpen = true;
-
     @Output()
     public readonly openChange = new EventEmitter<boolean>();
 
-    public open$ = new BehaviorSubject(this.open);
-
     public ngOnChanges(changes: SimpleChanges): void {
         if ('open' in changes) {
-            this.open$.next(changes.open.currentValue);
+            this.openSignal.set(changes.open.currentValue);
         }
 
         if ('open' in changes && changes.open.firstChange) {
-            this.showExpandableContent$.next(changes.open.currentValue);
+            this.showExpandableContent.set(changes.open.currentValue);
         }
     }
 
     public ngAfterViewInit(): void {
-        this.showRowsFiller$.next(
-            Boolean(this.expandHeading) && !this.customExpandContent,
-        );
+        this.showRowsFiller.set(Boolean(this.expandHeading) && !this.customExpandContent);
     }
 
     public onClick = (): void => {
-        if (this.autoOpen) {
-            this.open = !this.open;
-            this.open$.next(this.open);
-            this.openChange.emit(this.open);
-        }
+        this.open = !this.open;
+        this.openSignal.set(this.open);
+        this.openChange.emit(this.open);
     };
 
     protected onExpandAnimationDone(): void {
         if (this.open) {
-            this.showExpandableContent$.next(true);
+            this.showExpandableContent.set(true);
         }
     }
 
     protected onExpandAnimationStart(): void {
         if (!this.open) {
-            this.showExpandableContent$.next(false);
+            this.showExpandableContent.set(false);
         }
     }
 }

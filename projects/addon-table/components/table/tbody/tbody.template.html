@@ -31,7 +31,7 @@
 <ng-template #newTemplate>
     <ng-content select="[tuiTableExpandHeading]" />
 
-    <ng-container *ngIf="showExpandableContent$ | async">
+    <ng-container *ngIf="showExpandableContent()">
         <ng-container *polymorpheusOutlet="content as text">
             {{ text }}
         </ng-container>
@@ -40,7 +40,7 @@
     <ng-content select="[tuiTableExpandContent]" />
 
     <expandable-table-row-filler
-        *ngIf="showRowsFiller$ | async"
+        *ngIf="showRowsFiller()"
         (animationDone)="onExpandAnimationDone()"
         (animationStart)="onExpandAnimationStart()"
     />
