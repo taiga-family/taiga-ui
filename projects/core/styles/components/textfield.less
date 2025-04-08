@@ -1,6 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 tui-textfield {
+    .scrollbar-hidden();
     .transition(color);
 
     --t-height: var(--tui-height-l);
@@ -10,7 +11,6 @@ tui-textfield {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    pointer-events: none;
     cursor: pointer;
     min-block-size: var(--t-height);
     color: var(--tui-text-tertiary);
@@ -26,6 +26,33 @@ tui-textfield {
 
     &[style*='--t-icon-end:'] {
         --t-right: 2.25rem;
+    }
+
+    &::-webkit-resizer {
+        border: 0.25rem solid transparent;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+        box-sizing: content-box;
+        color: var(--tui-text-tertiary);
+        background: linear-gradient(
+            -45deg,
+            transparent,
+            transparent 0.125rem,
+            currentColor 0.125rem,
+            currentColor 0.1875rem,
+            transparent 0.1875rem,
+            transparent 0.25rem,
+            currentColor 0.25rem,
+            currentColor 0.3125rem,
+            transparent 0.35rem
+        );
+        background-clip: content-box;
+    }
+
+    label,
+    .t-content,
+    .t-template {
+        pointer-events: none;
     }
 
     input,
@@ -297,6 +324,7 @@ tui-textfield {
 
     .t-content {
         display: flex;
+        block-size: var(--t-height);
         align-items: center;
         gap: inherit;
         margin-inline-start: auto;
