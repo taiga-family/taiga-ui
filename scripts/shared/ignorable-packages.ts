@@ -6,6 +6,7 @@ export const IGNORABLE_TAIGA_PACKAGES = [
     '@taiga-ui/dompurify',
     '@taiga-ui/editor',
     '@taiga-ui/eslint-plugin-experience',
+    '@taiga-ui/eslint-plugin-experience-next',
     '@taiga-ui/event-plugins',
     '@taiga-ui/jest-config',
     '@taiga-ui/polymorpheus',
