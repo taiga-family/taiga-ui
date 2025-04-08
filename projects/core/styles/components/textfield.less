@@ -8,6 +8,7 @@ tui-textfield {
 
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     pointer-events: none;
     cursor: pointer;
@@ -266,7 +267,8 @@ tui-textfield {
         });
     }
 
-    [tuiLabel]:not([data-orientation='vertical']) {
+    // Increasing specificity to override all other styles
+    [tuiLabel][tuiLabel][tuiLabel] {
         .transition(all);
         .text-overflow();
 
