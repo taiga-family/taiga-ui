@@ -20,16 +20,19 @@ export class TuiItemsHandlersDirective<T> {
         this.defaultHandlers.disabledItemHandler,
     );
 
+    // TODO(v5): use signal inputs
     @Input('stringify')
     public set stringifySetter(x: TuiStringHandler<T>) {
         this.stringify.set(x);
     }
 
+    // TODO(v5): use signal inputs
     @Input('identityMatcher')
     public set identityMatcherSetter(x: TuiIdentityMatcher<T>) {
         this.identityMatcher.set(x);
     }
 
+    // TODO(v5): use signal inputs
     @Input('disabledItemHandler')
     public set disabledItemHandlerSetter(x: TuiBooleanHandler<T>) {
         this.identityMatcher.set(x);
