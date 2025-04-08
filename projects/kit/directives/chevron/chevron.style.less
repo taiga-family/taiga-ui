@@ -8,7 +8,20 @@ tui-icon[tuiChevron]::after {
 }
 
 [tuiChevron][tuiIcons]::after {
-    font-size: 1rem;
+    block-size: 1rem;
+    inline-size: 1rem;
+
+    [data-size='s']& {
+        margin-inline-end: -0.125rem;
+    }
+
+    [data-size='m']& {
+        margin-inline-end: 0.125rem;
+    }
+
+    [data-size='l']& {
+        margin-inline-end: 0.25rem;
+    }
 }
 
 [tuiChevron][tuiIcons]._chevron-rotated::after,
