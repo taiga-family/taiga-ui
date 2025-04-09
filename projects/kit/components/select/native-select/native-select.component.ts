@@ -8,7 +8,6 @@ import {
     signal,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
@@ -66,9 +65,6 @@ export class TuiNativeSelect<T>
 
     @Input()
     public labels: readonly string[] = [];
-
-    @Input()
-    public disabledItemHandler!: TuiBooleanHandler<T> | null;
 
     // TODO(v5): use signal inputs
     @Input('placeholder')

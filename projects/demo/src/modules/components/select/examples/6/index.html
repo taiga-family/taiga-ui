@@ -1,12 +1,12 @@
 <tui-textfield
     tuiChevron
+    [disabledItemHandler]="disabledItemHandler"
     [stringify]="stringify"
 >
     <select
         *ngIf="isMobile; else desktopFallback"
         placeholder="Choose your side"
         tuiSelect
-        [disabledItemHandler]="disabledItemHandler"
         [formControl]="control"
         [items]="items"
     ></select>
@@ -21,7 +21,6 @@
         <tui-data-list-wrapper
             *tuiTextfieldDropdown
             new
-            [disabledItemHandler]="disabledItemHandler"
             [items]="items"
         />
     </ng-template>
