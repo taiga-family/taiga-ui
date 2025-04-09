@@ -1,4 +1,4 @@
-import {DOCUMENT, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,7 +8,6 @@ import {
     signal,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
@@ -28,7 +27,6 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
     providers: [tuiAsTextfieldAccessor(TuiNativeSelect), tuiAsControl(TuiNativeSelect)],
     hostDirectives: [TuiWithTextfield],
     host: {
-        '[attr.aria-label]': 'ariaLabel',
         '[attr.aria-invalid]': 'invalid()',
         '[disabled]': '!interactive()',
         '[value]': 'stringified()',
@@ -39,9 +37,6 @@ export class TuiNativeSelect<T>
     extends TuiControl<T | null>
     implements TuiTextfieldAccessor<T>
 {
-    private readonly doc = inject(DOCUMENT);
-    private readonly element = tuiInjectElement<HTMLSelectElement>();
-
     protected readonly isFlat = tuiIsFlat;
     protected readonly placeholder = signal('');
     protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -74,12 +69,6 @@ export class TuiNativeSelect<T>
 
     public setValue(value: T | null): void {
         this.onChange(value);
-    }
-
-    protected get ariaLabel(): string | null {
-        return this.doc.querySelector(`label[for="${this.element.id}"]`)
-            ? null
-            : this.element.getAttribute('aria-label') || this.placeholder();
     }
 
     protected selectOption(index: number): void {

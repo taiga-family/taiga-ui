@@ -5,6 +5,7 @@
 >
     <select
         *ngIf="isMobile; else desktopFallback"
+        aria-label="Choose your side"
         placeholder="Choose your side"
         tuiSelect
         [formControl]="control"
