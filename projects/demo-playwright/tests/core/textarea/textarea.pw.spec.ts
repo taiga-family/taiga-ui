@@ -22,7 +22,7 @@ test.describe('Textarea', () => {
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Font flaky');
 
-        await tuiGoto(page, `${DemoRoute.Textarea}/API`);
+        await tuiGoto(page, `${DemoRoute.TextareaLegacy}/API`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
         const textAreaComponent = apiPageExample.locator('tui-textarea');
         const textarea = apiPageExample.getByRole('textbox').first();

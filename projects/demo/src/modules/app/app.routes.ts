@@ -671,6 +671,11 @@ export const ROUTES: Routes = [
         title: 'Tag',
     }),
     route({
+        path: DemoRoute.TextareaLegacy,
+        loadComponent: async () => import('../components/textarea-legacy'),
+        title: 'Textarea',
+    }),
+    route({
         path: DemoRoute.Textarea,
         loadComponent: async () => import('../components/textarea'),
         title: 'Textarea',

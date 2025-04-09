@@ -1,0 +1,14 @@
+<p>
+    You can use label outside mode with
+    <code>tuiLabel</code>
+</p>
+
+<form [formGroup]="testForm">
+    <label tuiLabel>
+        Type a text
+        <tui-textarea
+            formControlName="testValue1"
+            [tuiTextfieldLabelOutside]="true"
+        />
+    </label>
+</form>

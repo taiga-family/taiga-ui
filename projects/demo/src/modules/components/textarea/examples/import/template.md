@@ -1,5 +1,9 @@
 ```html
-<form [formGroup]="testForm">
-  <tui-textarea formControlName="testValue">Bio</tui-textarea>
-</form>
+<tui-textfield>
+  <label tuiLabel>Label</label>
+  <textarea
+    tuiTextarea
+    [(ngModel)]="value"
+  ></textarea>
+</tui-textfield>
 ```

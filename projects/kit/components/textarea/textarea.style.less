@@ -1,0 +1,98 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+@top-m-label: calc(0.5rem + var(--t-height) / 3);
+@top-l-label: calc(0.625rem + var(--t-height) / 3);
+
+// TODO: Refactor to :has(label) after Safari 15.4
+:host-context(tui-textfield._with-label[data-size='m']) {
+    border-top-width: @top-m-label;
+    padding-block-start: 0;
+}
+
+:host-context(tui-textfield._with-label[data-size='l']) {
+    border-top-width: @top-l-label;
+    padding-block-start: 0;
+}
+
+:host-context(tui-textfield[data-size='s']) {
+    border-width: 0.25rem 0;
+    padding-block-start: 0.25rem;
+}
+
+:host-context(tui-textfield[data-size='m']) {
+    border-width: 0.25rem 0;
+    padding-block-start: 0.625rem;
+}
+
+:host-context(tui-textfield[data-size='l']) {
+    border-width: 0.375rem 0;
+    padding-block-start: 0.75rem;
+}
+
+:host {
+    .scrollbar-hidden();
+
+    word-break: break-word;
+    border: 0 solid transparent;
+    padding-block-end: 0 !important;
+}
+
+.t-scroll {
+    .fullsize(absolute, inset);
+
+    top: 0.25rem;
+    bottom: 0.25rem;
+    min-block-size: 0;
+
+    ::ng-deep tui-textfield._with-label[data-size='m'] & {
+        top: @top-m-label;
+    }
+
+    ::ng-deep tui-textfield._with-label[data-size='l'] & {
+        top: @top-l-label;
+    }
+}
+
+.t-text {
+    z-index: 1;
+    order: 1;
+    inline-size: stretch;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    padding-inline-start: var(--t-left);
+    padding-inline-end: calc(var(--t-right, ~'0rem') + var(--t-side));
+    pointer-events: none;
+    box-sizing: content-box;
+    overflow: hidden;
+    color: transparent;
+
+    &::after {
+        content: ' ';
+    }
+
+    ::ng-deep tui-textfield._with-label[data-size='m'] & {
+        margin-block-start: -1.375rem;
+        padding-block-end: 0.3125rem;
+    }
+
+    ::ng-deep tui-textfield._with-label[data-size='l'] & {
+        margin-block-start: -1.75rem;
+        padding-block-end: 0.5rem;
+    }
+
+    ::ng-deep tui-textfield[data-size='s'] & {
+        margin-block-start: -1.5rem;
+        padding-block-end: 0.5rem;
+    }
+
+    ::ng-deep tui-textfield[data-size='m'] & {
+        margin-block-start: -2rem;
+        padding-block-end: 0.875rem;
+    }
+
+    ::ng-deep tui-textfield[data-size='l'] & {
+        margin-block-start: -2.5rem;
+        padding-block-end: 1rem;
+    }
+}
