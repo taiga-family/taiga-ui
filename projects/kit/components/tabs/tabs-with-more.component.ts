@@ -23,7 +23,7 @@ import {tuiClamp, tuiToInt} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import type {TuiSizeL} from '@taiga-ui/core/types';
-import {TuiChevron} from '@taiga-ui/kit/directives';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
