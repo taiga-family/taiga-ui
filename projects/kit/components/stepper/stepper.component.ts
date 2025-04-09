@@ -1,5 +1,5 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import type {QueryList} from '@angular/core';
+import type {OnChanges, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -48,7 +48,7 @@ import {TuiStep} from './step.component';
         '(keydown.arrowUp)': 'onVertical($event, -1)',
     },
 })
-export class TuiStepperComponent {
+export class TuiStepperComponent implements OnChanges {
     @ContentChildren(forwardRef(() => TuiStep), {read: ElementRef})
     private readonly steps: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
@@ -58,11 +58,12 @@ export class TuiStepperComponent {
     private readonly speed = inject(TUI_ANIMATIONS_SPEED);
     private readonly destroyRef = inject(DestroyRef);
 
-    protected activeItemIndex = 0;
-
     protected readonly $ = inject(ResizeObserverService, {self: true})
         .pipe(takeUntilDestroyed())
         .subscribe(() => this.scrollIntoView(this.activeItemIndex));
+
+    @Input('activeItemIndex')
+    public activeItemIndex = 0;
 
     @Input()
     public orientation: TuiOrientation = 'horizontal';
@@ -70,12 +71,8 @@ export class TuiStepperComponent {
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();
 
-    @Input('activeItemIndex')
-    public set activeIndex(index: number) {
-        if (this.steps.get(index)?.nativeElement) {
-            this.activeItemIndex = index;
-            this.scrollIntoView(index);
-        }
+    public ngOnChanges(): void {
+        this.scrollIntoView(this.activeItemIndex);
     }
 
     public indexOf(step: HTMLElement): number {
