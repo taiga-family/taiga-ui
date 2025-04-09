@@ -1,6 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 
 tui-textfield {
+    .scrollbar-hidden();
     .transition(color);
 
     --t-height: var(--tui-height-l);
@@ -8,16 +9,16 @@ tui-textfield {
 
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    pointer-events: none;
     cursor: pointer;
-    block-size: var(--t-height);
+    min-block-size: var(--t-height);
     color: var(--tui-text-tertiary);
     padding: 0 var(--t-padding);
     border-radius: var(--tui-radius-l);
-    font: var(--tui-font-text-m);
+    font: var(--tui-font-text-ui-m);
     box-sizing: border-box;
-    gap: 0.25rem;
+    gap: 0 0.25rem;
 
     &[style*='--t-icon-start:'] {
         --t-left: 2.25rem;
@@ -27,13 +28,40 @@ tui-textfield {
         --t-right: 2.25rem;
     }
 
-    input,
-    select {
-        font: var(--tui-font-text-m);
+    &::-webkit-resizer {
+        border: 0.25rem solid transparent;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+        box-sizing: content-box;
+        color: var(--tui-text-tertiary);
+        background: linear-gradient(
+            -45deg,
+            transparent,
+            transparent 0.125rem,
+            currentColor 0.125rem,
+            currentColor 0.1875rem,
+            transparent 0.1875rem,
+            transparent 0.25rem,
+            currentColor 0.25rem,
+            currentColor 0.3125rem,
+            transparent 0.35rem
+        );
+        background-clip: content-box;
+    }
 
-        &[inputmode='none'] {
-            caret-color: transparent;
-        }
+    label,
+    .t-content,
+    .t-template {
+        pointer-events: none;
+    }
+
+    input,
+    select,
+    textarea {
+        font: var(--tui-font-text-ui-m);
+        resize: none;
+        padding-block-start: 1.125rem;
+        padding-block-end: 1.125rem;
     }
 
     &[data-size='s'] {
@@ -42,7 +70,7 @@ tui-textfield {
 
         border-radius: var(--tui-radius-m);
         gap: 0;
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-text-ui-s);
 
         &[style*='--t-icon-start:'] {
             --t-left: 1.25rem;
@@ -63,8 +91,11 @@ tui-textfield {
         }
 
         input,
-        select {
-            font: var(--tui-font-text-s);
+        select,
+        textarea {
+            font: var(--tui-font-text-ui-s);
+            padding-block-start: 0.5rem;
+            padding-block-end: 0.5rem;
         }
 
         .t-content {
@@ -77,7 +108,7 @@ tui-textfield {
         --t-padding: var(--tui-padding-m);
 
         border-radius: var(--tui-radius-m);
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-text-ui-s);
 
         &[style*='--t-icon-start:'] {
             --t-left: 1.75rem;
@@ -96,8 +127,11 @@ tui-textfield {
         }
 
         input,
-        select {
-            font: var(--tui-font-text-s);
+        select,
+        textarea {
+            font: var(--tui-font-text-ui-s);
+            padding-block-start: 0.875rem;
+            padding-block-end: 0.875rem;
         }
 
         .t-content {
@@ -108,6 +142,7 @@ tui-textfield {
     /*
     TODO: refactor to the following way after Chrome 105+ & Safari 15.4+
     &:hover:has(input:not(:read-only)),
+    &:hover:has(textarea:not(:read-only)),
     &:hover:has(select:not([data-mode='readonly'])) {
         color: var(--tui-text-secondary);
     }
@@ -116,6 +151,7 @@ tui-textfield {
         color: var(--tui-text-secondary);
 
         &:has(input:read-only),
+        &:has(textarea:read-only),
         &:has(select[data-mode~='readonly']) {
             color: var(--tui-text-tertiary);
         }
@@ -142,8 +178,10 @@ tui-textfield {
     &:has(label:not(:empty)) {
         .t-template,
         input:not([type='range']),
-        select:defined {
-            padding-top: calc(var(--t-height) / 3);
+        select:defined,
+        textarea:defined {
+            padding-block-start: calc(var(--t-height) / 3);
+            padding-block-end: 0;
 
             &::placeholder,
             &._empty {
@@ -156,8 +194,10 @@ tui-textfield {
     &._with-label {
         .t-template,
         input:not([type='range']),
-        select:defined {
+        select:defined,
+        textarea:defined {
             padding-top: calc(var(--t-height) / 3);
+            padding-block-end: 0;
 
             &::placeholder,
             &._empty {
@@ -168,7 +208,8 @@ tui-textfield {
 
     .t-template,
     input:defined,
-    select:defined {
+    select:defined,
+    textarea:defined {
         .fullsize();
 
         appearance: none;
@@ -187,12 +228,14 @@ tui-textfield {
     }
 
     &._with-template input:not([type='range']),
-    &._with-template select {
+    &._with-template select,
+    &._with-template textarea {
         color: transparent !important;
     }
 
     input:not([type='range']),
-    select:defined {
+    select:defined,
+    textarea:defined {
         pointer-events: auto;
         background: transparent;
 
@@ -251,14 +294,17 @@ tui-textfield {
         });
     }
 
-    label:not([data-orientation='vertical']) {
+    // Increasing specificity to override all other styles
+    [tuiLabel][tuiLabel][tuiLabel] {
         .transition(all);
         .text-overflow();
 
         position: relative;
         display: block;
         flex: 1;
+        align-self: flex-start;
         font-size: inherit;
+        line-height: var(--t-height);
     }
 
     label:defined,
@@ -278,6 +324,7 @@ tui-textfield {
 
     .t-content {
         display: flex;
+        block-size: var(--t-height);
         align-items: center;
         gap: inherit;
         margin-inline-start: auto;
