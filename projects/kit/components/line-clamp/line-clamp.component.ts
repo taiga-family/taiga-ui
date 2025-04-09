@@ -124,18 +124,10 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
             return false;
         }
 
-        const {
-            scrollHeight,
-            scrollWidth,
-            clientHeight: outletHeight,
-        } = this.outlet.nativeElement;
+        const {scrollHeight, scrollWidth} = this.outlet.nativeElement;
         const {clientHeight, clientWidth} = this.el;
 
-        return (
-            scrollHeight - clientHeight > BUFFER ||
-            scrollWidth - clientWidth > 0 ||
-            scrollHeight > outletHeight
-        );
+        return scrollHeight - clientHeight > BUFFER || scrollWidth - clientWidth > 0;
     }
 
     protected get computedContent(): PolymorpheusContent {
