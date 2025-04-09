@@ -80,7 +80,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
     public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
         this.newOptionMode
             ? this.itemsHandlers.stringify()($implicit)
-            : this.itemsHandlersLegacy.stringify;
+            : this.itemsHandlersLegacy.stringify($implicit);
 
     public getContext(
         $implicit: T,
