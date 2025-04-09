@@ -5,6 +5,7 @@ import {TUI_IS_ANDROID} from '@taiga-ui/cdk/tokens';
     standalone: true,
     host: {
         inputmode: 'none',
+        autocomplete: 'off',
         '[style.cursor]': '"pointer"',
         '[style.caret-color]': '"transparent"',
         // Click on cleaner icon does not trigger `beforeinput` event --> handle all kind of deletion in input event
