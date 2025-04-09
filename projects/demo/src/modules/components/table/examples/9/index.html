@@ -160,7 +160,7 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+                {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
             </td>
         </tr>
 
@@ -196,6 +196,66 @@
             >
                 {{ item.balance | tuiFormatNumber | async }}
             </td>
+        </tr>
+    </tbody>
+
+    <tbody
+        tuiTbody
+        [data]="customContentData"
+    >
+        <tr
+            tuiTr
+            class="expand-heading-row-custom"
+        >
+            <td
+                *tuiCell="'action'"
+                tuiTd
+                class="expand-heading-row-custom__expand"
+                (click)="customToggle()"
+            >
+                <tui-icon
+                    class="t-chevron"
+                    [tuiChevron]="customOpen"
+                />
+            </td>
+            <td
+                *tuiCell="'firstName'"
+                tuiTd
+                [colSpan]="2"
+            >
+                Custom content (click on chevron)
+            </td>
+            <ng-container *tuiCell="'lastName'" />
+            <td
+                *tuiCell="'role'"
+                tuiTd
+            >
+                all
+            </td>
+            <td
+                *tuiCell="'balance'"
+                tuiTd
+            >
+                {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+            </td>
+        </tr>
+
+        <tr>
+            <th [colSpan]="columns.length">
+                <tui-expand [expanded]="customOpen">
+                    <div class="chips">
+                        <tui-chip
+                            *ngFor="let item of customContentData"
+                            size="s"
+                            [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
+                            [tuiHint]="'Balance: ' + item.balance + '. Role: ' + item.role"
+                        >
+                            {{ item.firstName }}
+                            {{ item.lastName }}
+                        </tui-chip>
+                    </div>
+                </tui-expand>
+            </th>
         </tr>
     </tbody>
 </table>
