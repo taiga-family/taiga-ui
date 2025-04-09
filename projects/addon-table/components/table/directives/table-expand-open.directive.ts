@@ -6,15 +6,9 @@ import {TuiTableTbody} from '../tbody/tbody.component';
     standalone: true,
     selector: '[tuiTableExpandOpen]',
     host: {
-        '(click)': 'onClick($event)',
+        '(click)': 'body.toggle()',
     },
 })
-export class TuiTableExpandOpen<T> {
-    protected readonly parentBody = inject<TuiTableTbody<T>>(
-        forwardRef(() => TuiTableTbody),
-    );
-
-    protected onClick(): void {
-        this.parentBody.onClick();
-    }
+export class TuiTableExpandOpen {
+    protected readonly body = inject(forwardRef(() => TuiTableTbody));
 }
