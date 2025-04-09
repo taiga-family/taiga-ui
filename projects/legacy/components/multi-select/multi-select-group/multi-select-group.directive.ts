@@ -7,6 +7,7 @@ import {
     TUI_DATA_LIST_HOST,
     tuiAsOptionContent,
 } from '@taiga-ui/core/components/data-list';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
 import {TuiMultiSelectOptionComponent} from '@taiga-ui/legacy/components/multi-select-option';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
@@ -28,16 +29,21 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
                 const multiSelect = inject(TuiMultiSelectComponent, {optional: true});
                 const ngControl = inject(NgControl);
                 const host = inject(AbstractTuiControl, {optional: true});
+                const {identityMatcher, stringify} =
+                    inject(TUI_ITEMS_HANDLERS, {optional: true}) ?? {};
 
                 return (
                     multiSelect || {
+                        stringify,
+                        identityMatcher,
                         handleOption: (option) => {
+                            const value = host?.value ?? ngControl.control?.value ?? [];
+                            const result = tuiArrayToggle(value, option, identityMatcher);
+
                             if (host) {
-                                host.value = tuiArrayToggle(host.value, option);
+                                host.value = result;
                             } else {
-                                ngControl.control?.setValue(
-                                    tuiArrayToggle(ngControl.control.value || [], option),
-                                );
+                                ngControl.control?.setValue(result);
                             }
                         },
                     }
