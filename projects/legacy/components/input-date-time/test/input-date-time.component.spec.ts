@@ -368,14 +368,14 @@ describe('InputDateTime', () => {
 
     describe('InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER', () => {
         class ExampleDateTimeTransformer extends TuiValueTransformer<
-            [TuiDay | null, TuiTime | null] | null,
+            [TuiDay, TuiTime | null] | null,
             string
         > {
             private readonly separator = ', ';
 
             public fromControlValue(
                 controlValue: string,
-            ): [TuiDay | null, TuiTime | null] | null {
+            ): [TuiDay, TuiTime | null] | null {
                 const [day, time = ''] = controlValue.split(this.separator);
 
                 if (!day) {
@@ -388,7 +388,11 @@ describe('InputDateTime', () => {
                 ];
             }
 
-            public toControlValue([day, time]: [TuiDay | null, TuiTime | null]): string {
+            public toControlValue(
+                internalValue: [TuiDay, TuiTime | null] | null,
+            ): string {
+                const [day, time] = internalValue ?? [];
+
                 if (!day) {
                     return '';
                 }
