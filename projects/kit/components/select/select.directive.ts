@@ -11,7 +11,8 @@ import {
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownEnabled, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
-import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
+import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 
 import {TuiSelectOption} from './select-option/select-option.component';
 
@@ -36,7 +37,7 @@ export class TuiSelectDirective<T>
     implements TuiTextfieldAccessor<T>
 {
     private readonly open = tuiDropdownOpen();
-    private readonly itemsHandlers = inject(TuiItemsHandlersDirective<T>);
+    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly stringified = tuiValueBinding(

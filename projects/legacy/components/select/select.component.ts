@@ -18,14 +18,14 @@ import {
     TuiDataListDirective,
 } from '@taiga-ui/core/components/data-list';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import type {
     TuiSizeL,
     TuiSizeM,
     TuiSizeS,
     TuiValueContentContext,
 } from '@taiga-ui/core/types';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 import {
     AbstractTuiNativeSelect,
     AbstractTuiNullableControl,

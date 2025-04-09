@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
+import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 

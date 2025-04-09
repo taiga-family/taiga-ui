@@ -3,8 +3,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {tuiItemsHandlersProvider} from '@taiga-ui/core';
-import {TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiDataListWrapper, tuiItemsHandlersProvider} from '@taiga-ui/kit';
 import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface Employee {

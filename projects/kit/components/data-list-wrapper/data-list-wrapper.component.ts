@@ -9,11 +9,11 @@ import {
     Input,
     isSignal,
     Output,
-    signal,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiElement} from '@taiga-ui/cdk/directives/element';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -27,11 +27,10 @@ import {
 } from '@taiga-ui/core/components/data-list';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {
-    TUI_ITEMS_HANDLERS,
-    TuiItemsHandlersDirective,
-} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import type {TuiValueContentContext} from '@taiga-ui/core/types';
+import type {TuiItemsHandlers as TuiItemsHandlersLegacy} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS as TUI_ITEMS_HANDLERS_LEGACY} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -46,15 +45,11 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
 })
 export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccessor<T> {
-    private readonly itemsHandlersFallback: TuiItemsHandlers<T> =
-        inject(TUI_ITEMS_HANDLERS);
-
-    private readonly itemsHandlers = inject(TuiItemsHandlersDirective<T>, {
-        optional: true,
-    }) ?? {
-        stringify: signal(this.itemsHandlersFallback.stringify),
-        disabledItemHandler: signal(this.itemsHandlersFallback.disabledItemHandler),
-    };
+    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+    // TODO(v5): delete
+    private readonly itemsHandlersLegacy: TuiItemsHandlersLegacy<T> = inject(
+        TUI_ITEMS_HANDLERS_LEGACY,
+    );
 
     @ViewChildren(forwardRef(() => TuiOption))
     protected readonly legacyOptionsQuery: QueryList<TuiOption<T>> = EMPTY_QUERY;
@@ -68,8 +63,9 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
     public items: readonly K[] | null = [];
 
     @Input()
-    public disabledItemHandler: TuiItemsHandlers<T>['disabledItemHandler'] =
-        this.itemsHandlers?.disabledItemHandler();
+    public disabledItemHandler: TuiBooleanHandler<T> = this.newOptionMode
+        ? this.itemsHandlers?.disabledItemHandler()
+        : this.itemsHandlersLegacy.disabledItemHandler;
 
     @Input()
     public emptyContent: PolymorpheusContent;
@@ -82,7 +78,9 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
 
     @Input()
     public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
-        this.itemsHandlers.stringify()($implicit);
+        this.newOptionMode
+            ? this.itemsHandlers.stringify()($implicit)
+            : this.itemsHandlersLegacy.stringify;
 
     public getContext(
         $implicit: T,

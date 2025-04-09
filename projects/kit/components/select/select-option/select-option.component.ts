@@ -9,7 +9,8 @@ import {
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
 import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
-import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
+import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 @Component({
@@ -26,7 +27,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 })
 export class TuiSelectOption<T> {
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
-    private readonly itemsHandlers = inject(TuiItemsHandlersDirective<T>);
+    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly control = tuiInjectAuxiliary<TuiControl<T>>(
         (x) => x instanceof TuiControl,
     );

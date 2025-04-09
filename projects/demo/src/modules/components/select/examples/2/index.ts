@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -27,9 +27,9 @@ interface Character {
          * ```
          */
         tuiItemsHandlersProvider({
-            stringify: (x: Character) => x.name,
-            identityMatcher: (a: Character, b: Character) => a.id === b.id,
-            disabledItemHandler: (x: Character) => x.name.includes('Trevor'),
+            stringify: signal((x: Character) => x.name),
+            identityMatcher: signal((a: Character, b: Character) => a.id === b.id),
+            disabledItemHandler: signal((x: Character) => x.name.includes('Trevor')),
         }),
     ],
 })

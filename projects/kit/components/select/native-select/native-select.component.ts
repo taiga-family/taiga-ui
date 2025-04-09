@@ -16,7 +16,8 @@ import {
     tuiAsTextfieldAccessor,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
+import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 @Component({
@@ -44,7 +45,7 @@ export class TuiNativeSelect<T>
 
     protected readonly isFlat = tuiIsFlat;
     protected readonly placeholder = signal('');
-    protected readonly itemsHandlers = inject(TuiItemsHandlersDirective<T>);
+    protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
     protected readonly stringified = computed((value = this.value()) =>
         tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '',
