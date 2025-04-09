@@ -47,7 +47,7 @@ export class TuiNativeSelect<T>
     protected readonly itemsHandlers = inject(TuiItemsHandlersDirective<T>);
 
     protected readonly stringified = computed((value = this.value()) =>
-        value ? this.itemsHandlers.stringify()(value) : '',
+        tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '',
     );
 
     protected readonly showPlaceholder = computed(

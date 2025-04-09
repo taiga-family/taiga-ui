@@ -246,6 +246,7 @@
                     [tuiDropdownOffset]="dropdown.offset"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
+                    [(open)]="dropdown.open"
                 >
                     <input
                         placeholder="Select something"
@@ -284,7 +285,7 @@
             <tbody
                 #dropdown
                 tuiDocDropdown
-                [hiddenOptions]="['open', 'tuiDropdownEnabled']"
+                [hiddenOptions]="['tuiDropdownEnabled']"
             ></tbody>
 
             <tbody

@@ -14,7 +14,6 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 @Component({
     standalone: true,
-    selector: 'tui-select-option',
     template: '',
     styleUrls: ['./select-option.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

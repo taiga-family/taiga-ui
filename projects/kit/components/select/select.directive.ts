@@ -1,6 +1,7 @@
 import {computed, Directive, inject} from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
@@ -40,7 +41,7 @@ export class TuiSelectDirective<T>
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     protected readonly stringified = tuiValueBinding(
         computed((value = this.value()) =>
-            value ? this.itemsHandlers.stringify()(value) : '',
+            tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '',
         ),
     );
 
