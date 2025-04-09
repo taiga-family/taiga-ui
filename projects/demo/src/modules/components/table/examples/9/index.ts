@@ -55,7 +55,7 @@ export default class Example {
         },
     ];
 
-    protected readonly manualOpenData: Item[] = [
+    protected manualOpenData: Item[] = [
         {
             firstName: 'Joe',
             lastName: 'Wilson',
@@ -78,6 +78,7 @@ export default class Example {
     protected readonly columns = ['action', 'firstName', 'lastName', 'role', 'balance'];
 
     protected manualOpen = false;
+    protected customOpen = false;
 
     public getSumBalance(people: Item[]): number {
         return people.reduce((res, item) => {
@@ -89,5 +90,9 @@ export default class Example {
 
     protected manualToggle(): void {
         this.manualOpen = !this.manualOpen;
+    }
+
+    protected customToggle(): void {
+        this.customOpen = !this.customOpen;
     }
 }
