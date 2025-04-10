@@ -258,19 +258,7 @@ export class TuiInputDateRangeComponent
     }
 
     get activePeriod(): TuiDayRangePeriod | null {
-        return (
-            this.selectedActivePeriod ??
-            (this.items.find(item =>
-                tuiNullableSame(
-                    this.value,
-                    item.range,
-                    (a, b) =>
-                        a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
-                        a.to.daySame(b.to.dayLimit(this.min, this.max)),
-                ),
-            ) ||
-                null)
-        );
+        return this.selectedActivePeriod ?? this.findActivePeriodBy(this.value);
     }
 
     get computedValue(): string {
@@ -396,6 +384,7 @@ export class TuiInputDateRangeComponent
     override writeValue(value: TuiDayRange | null): void {
         super.writeValue(value);
         this.nativeValue = value ? this.computedValue : '';
+        this.selectedActivePeriod = this.findActivePeriodBy(this.value);
     }
 
     protected override valueIdenticalComparator(
@@ -440,5 +429,19 @@ export class TuiInputDateRangeComponent
 
     private getDateRangeFiller(dateFiller: string): string {
         return `${dateFiller}${RANGE_SEPARATOR_CHAR}${dateFiller}`;
+    }
+
+    private findActivePeriodBy(value: TuiDayRange | null): TuiDayRangePeriod | null {
+        return (
+            this.items.find(item =>
+                tuiNullableSame(
+                    value,
+                    item.range,
+                    (a, b) =>
+                        a.from.daySame(b.from.dayLimit(this.min, this.max)) &&
+                        a.to.daySame(b.to.dayLimit(this.min, this.max)),
+                ),
+            ) ?? null
+        );
     }
 }
