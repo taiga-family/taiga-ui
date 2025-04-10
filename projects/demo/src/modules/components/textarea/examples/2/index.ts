@@ -7,7 +7,7 @@ import {TuiTextarea, TuiTextareaLimit} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiTextfield, TuiTextarea, TuiTextareaLimit],
+    imports: [ReactiveFormsModule, TuiTextarea, TuiTextareaLimit, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

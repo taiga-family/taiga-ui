@@ -3,21 +3,20 @@ import {
     Component,
     Directive,
     inject,
-    Injector,
     INJECTOR,
+    Injector,
     Input,
     signal,
     ViewContainerRef,
 } from '@angular/core';
+import type {AbstractControl, ValidationErrors, Validator} from '@angular/forms';
+import {NG_VALIDATORS, Validators} from '@angular/forms';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
-    type AbstractControl,
-    NG_VALIDATORS,
-    type ValidationErrors,
-    type Validator,
-    Validators,
-} from '@angular/forms';
-import {type TuiContext, tuiCreateToken, tuiProvide} from '@taiga-ui/cdk';
-import {TUI_TEXTFIELD_OPTIONS, TuiTextfieldComponent} from '@taiga-ui/core';
+    TUI_TEXTFIELD_OPTIONS,
+    TuiTextfieldComponent,
+} from '@taiga-ui/core/components/textfield';
 import {TuiTextarea} from '@taiga-ui/kit/components/textarea';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
