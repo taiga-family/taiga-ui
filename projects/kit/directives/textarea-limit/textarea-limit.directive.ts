@@ -45,6 +45,7 @@ export class TuiTextareaLimitComponent {
     standalone: true,
     template: '{{ textfield.input?.nativeElement?.value?.length }} / {{ limit() }}',
     styleUrls: ['./textarea-limit.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTextareaCounterComponent {
     protected readonly limit = inject(LIMIT);

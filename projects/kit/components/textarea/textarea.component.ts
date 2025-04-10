@@ -32,11 +32,10 @@ import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
     imports: [TuiScrollControls, PolymorpheusOutlet],
 })
 export class TuiTextarea implements AfterViewInit {
-    private readonly options = inject(TUI_TEXTAREA_OPTIONS);
-    private readonly vcr = inject(ViewContainerRef);
-
     @ViewChild(TemplateRef)
     private readonly template?: TemplateRef<any>;
+    private readonly options = inject(TUI_TEXTAREA_OPTIONS);
+    private readonly vcr = inject(ViewContainerRef);
 
     @ViewChild('text')
     protected readonly text?: ElementRef<HTMLElement>;
@@ -44,13 +43,13 @@ export class TuiTextarea implements AfterViewInit {
     protected readonly textfield = inject(TuiTextfieldComponent<string>);
 
     @Input()
-    content: PolymorpheusContent<TuiContext<string>> = ({$implicit}) => $implicit;
-
-    @Input()
     min = this.options.min;
 
     @Input()
     max = this.options.max;
+
+    @Input()
+    content: PolymorpheusContent<TuiContext<string>> = ({$implicit}) => $implicit;
 
     public ngAfterViewInit(): void {
         if (this.template) {
