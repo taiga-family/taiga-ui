@@ -2,7 +2,7 @@ import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiTable, TuiTableExpand} from '@taiga-ui/addon-table';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiExpand, TuiFormatNumberPipe, TuiHint, TuiIcon} from '@taiga-ui/core';
 import {TuiChevron, TuiChip} from '@taiga-ui/kit';
@@ -27,6 +27,7 @@ interface Item {
         TuiIcon,
         TuiMapperPipe,
         TuiTable,
+        TuiTableExpand,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

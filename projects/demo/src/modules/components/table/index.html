@@ -6,7 +6,7 @@
     <ng-template pageTab>
         <p>This module allows you to create various tables, both static and editable.</p>
 
-        <!-- <ng-container *ngFor="let example of examples; let index = index">
+        <ng-container *ngFor="let example of examples; let index = index">
             <tui-doc-example
                 *ngIf="index === 8"
                 [component]="index + 1 | tuiComponent"
@@ -31,8 +31,8 @@
                     .
                 </ng-template>
             </tui-doc-example>
-        </ng-container> -->
-        <tui-doc-example
+        </ng-container>
+        <!-- <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
@@ -57,7 +57,7 @@
                 </a>
                 .
             </ng-template>
-        </tui-doc-example>
+        </tui-doc-example> -->
     </ng-template>
 
     <ng-template pageTab>
