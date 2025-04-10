@@ -41,7 +41,7 @@ function addTuiRoot(filePath: string, context: SchematicContext, tree: Tree): vo
     const recorder = tree.beginUpdate(filePath);
 
     recorder.insertLeft(0, openTag);
-    recorder.insertLeft(htmlContent.length, closeTag);
+    recorder.insertLeft(templateLength(htmlContent), closeTag);
     tree.commitUpdate(recorder);
     context.logger.info(
         `Content of the app was wrapped with tui-root component in ${filePath}`,
@@ -159,4 +159,9 @@ export function wrapWithTuiRoot(options: TuiSchema): Rule {
 
         addTuiRoot(appTemplatePath, context, tree);
     };
+}
+
+function templateLength(template: string): number {
+    // utf8 with BOM adds an extra character to the beginning of the string
+    return template.charCodeAt(0) === 0xfeff ? template.length - 1 : template.length;
 }
