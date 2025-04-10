@@ -1,4 +1,5 @@
-import {Directive, type FactoryProvider, inject} from '@angular/core';
+import type {FactoryProvider} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {TuiButton} from '@taiga-ui/core/components/button';
