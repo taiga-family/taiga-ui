@@ -1,4 +1,4 @@
-<tui-textfield>
+<tui-textfield [style.margin-block-end.rem]="1">
     <label tuiLabel>Limit</label>
     <textarea
         placeholder="Placeholder"
@@ -9,3 +9,10 @@
         [min]="3"
     ></textarea>
 </tui-textfield>
+<button
+    tuiButton
+    type="button"
+    (click)="control.setValue('Short text')"
+>
+    Programmatically update
+</button>

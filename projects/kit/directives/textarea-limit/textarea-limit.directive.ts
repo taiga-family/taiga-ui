@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    type DoCheck,
     inject,
     INJECTOR,
     Injector,
@@ -42,13 +43,19 @@ export class TuiTextareaLimitComponent {
 
 @Component({
     standalone: true,
-    template: '{{ textfield.input?.nativeElement?.value?.length }} / {{ limit() }}',
+    template: '{{ length() }} / {{ limit() }}',
     styleUrls: ['./textarea-limit.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiTextareaCounterComponent {
+export class TuiTextareaCounterComponent implements DoCheck {
+    private readonly textfield = inject(TuiTextfieldComponent);
+
     protected readonly limit = inject(LIMIT);
-    protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly length = signal(0);
+
+    public ngDoCheck(): void {
+        this.length.set(this.textfield.input?.nativeElement.value.length || 0);
+    }
 }
 
 const COMPONENT = new PolymorpheusComponent(TuiTextareaLimitComponent);
