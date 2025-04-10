@@ -70,7 +70,7 @@ const DATE_TIME_SEPARATOR = ', ';
     },
 })
 export class TuiInputDateTimeComponent
-    extends AbstractTuiControl<[TuiDay | null, TuiTime | null] | null>
+    extends AbstractTuiControl<[TuiDay, TuiTime | null] | null>
     implements TuiFocusableElementAccessor
 {
     @ViewChild(TuiPrimitiveTextfieldComponent)
@@ -86,7 +86,7 @@ export class TuiInputDateTimeComponent
     protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
     protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
     protected override readonly valueTransformer: TuiValueTransformer<
-        [TuiDay | null, TuiTime | null]
+        [TuiDay, TuiTime | null]
     > | null = inject(TUI_DATE_TIME_VALUE_TRANSFORMER, {optional: true});
 
     protected readonly type!: TuiContext<TuiActiveZone>;
@@ -164,7 +164,7 @@ export class TuiInputDateTimeComponent
         this.open = false;
     }
 
-    public override writeValue(value: [TuiDay | null, TuiTime | null] | null): void {
+    public override writeValue(value: [TuiDay, TuiTime | null] | null): void {
         if (this.value === null && value === this.value) {
             return;
         }
@@ -331,13 +331,13 @@ export class TuiInputDateTimeComponent
         this.value = !parsedDate || !parsedTime ? null : [parsedDate, parsedTime];
     }
 
-    protected getFallbackValue(): [TuiDay | null, TuiTime | null] | null {
+    protected getFallbackValue(): [TuiDay, TuiTime | null] | null {
         return null;
     }
 
     protected override valueIdenticalComparator(
-        oldValue: [TuiDay | null, TuiTime | null] | null,
-        newValue: [TuiDay | null, TuiTime | null] | null,
+        oldValue: [TuiDay, TuiTime | null] | null,
+        newValue: [TuiDay, TuiTime | null] | null,
     ): boolean {
         return (
             tuiNullableSame(oldValue?.[0] ?? null, newValue?.[0] ?? null, (a, b) =>
