@@ -6,12 +6,12 @@
     display: block;
     inline-size: 100%;
     max-inline-size: 40rem;
-    block-size: calc(100% - var(--tui-offset));
+    block-size: calc(100% - var(--tui-offset) - env(safe-area-inset-top));
     flex-direction: column;
     font: var(--tui-font-text-m);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    margin: var(--tui-offset) auto 0;
+    margin: calc(var(--tui-offset) + env(safe-area-inset-top)) auto 0;
     border-radius: 0.75rem 0.75rem 0 0;
 
     &::before {
@@ -116,7 +116,7 @@
 .t-content {
     position: relative;
     isolation: isolate;
-    padding-block: env(safe-area-inset-top) calc(1.5rem + env(safe-area-inset-bottom));
+    padding-block-end: calc(1.5rem + env(safe-area-inset-bottom));
     border-radius: inherit;
 
     &::after {
