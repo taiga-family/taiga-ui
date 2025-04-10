@@ -48,7 +48,14 @@ import {map} from 'rxjs';
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize],
+    hostDirectives: [
+        {
+            directive: TuiPlatform,
+            inputs: ['tuiPlatform'],
+        },
+        TuiVisualViewport,
+        TuiFontSize,
+    ],
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',

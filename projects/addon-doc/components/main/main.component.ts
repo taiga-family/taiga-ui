@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
+import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiRoot} from '@taiga-ui/core/components/root';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
@@ -27,6 +28,7 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
 })
 export class TuiDocMain {
     private readonly icons = inject(TUI_DOC_ICONS);
+    protected readonly platform = inject(TuiPlatform);
     protected readonly darkMode = inject(TUI_DARK_MODE);
     protected readonly theme = computed(() => (this.darkMode() ? 'dark' : null));
     protected readonly icon = computed(() =>

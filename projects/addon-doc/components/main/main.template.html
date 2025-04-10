@@ -1,4 +1,7 @@
-<tui-root [attr.tuiTheme]="theme()">
+<tui-root
+    [attr.tuiTheme]="theme()"
+    [tuiPlatform]="platform.tuiPlatform"
+>
     <div class="tui-doc-page">
         <tui-doc-navigation class="tui-doc-navigation">
             <ng-content select="tuiDocNavigation" />
