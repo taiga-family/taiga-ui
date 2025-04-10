@@ -1,8 +1,8 @@
+import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    type DoCheck,
     inject,
     INJECTOR,
     Injector,
