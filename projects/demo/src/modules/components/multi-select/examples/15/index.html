@@ -1,0 +1,21 @@
+<form [formGroup]="form">
+    <button
+        appearance="outline-grayscale"
+        tuiButton
+        tuiDropdownDirection="bottom"
+        type="button"
+        [tuiAppearanceMode]="length ? 'checked' : null"
+        [tuiDropdown]="dropdown"
+        [(tuiDropdownOpen)]="open"
+    >
+        Statuses
+    </button>
+
+    <ng-template #dropdown>
+        <tui-data-list-wrapper
+            formControlName="control"
+            tuiMultiSelectGroup
+            [items]="items"
+        />
+    </ng-template>
+</form>

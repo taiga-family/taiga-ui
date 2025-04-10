@@ -261,4 +261,17 @@ test.describe('MultiSelect', () => {
             );
         });
     });
+
+    test('Multi group with separate data list', async ({page}) => {
+        await tuiGoto(page, 'components/multi-select');
+
+        const example = new TuiDocumentationPagePO(page).getExample(
+            '#multi-group-with-separate-data-list',
+        );
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('button').click();
+
+        await expect(page).toHaveScreenshot('11-multi-group-with-separate-data-list.png');
+    });
 });
