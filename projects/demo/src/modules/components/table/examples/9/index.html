@@ -43,16 +43,11 @@
         </tr>
     </thead>
 
-    <tbody
-        #body
-        tuiTbody
-        [data]="basicData"
-    >
+    <tbody tuiTbody>
         <tr
-            tuiTableExpandHeading
-            tuiTableExpandOpen
             tuiTr
             class="expand-heading-row"
+            (click)="expand.expand()"
         >
             <td
                 *tuiCell="'action'"
@@ -60,7 +55,7 @@
             >
                 <tui-icon
                     class="t-chevron"
-                    [tuiChevron]="body.open()"
+                    [tuiChevron]="expand.expanded()"
                 />
             </td>
             <td
@@ -86,48 +81,55 @@
             </td>
         </tr>
 
-        <tr
-            *ngFor="let item of basicData"
-            tuiTr
+        <tui-table-expand
+            #expand
+            [expanded]="true"
         >
-            <td
-                *tuiCell="'action'"
-                tuiTd
-            ></td>
-            <td
-                *tuiCell="'firstName'"
-                tuiTd
+            <tr
+                *ngFor="let item of basicData"
+                tuiTr
             >
-                {{ item.firstName }}
-            </td>
-            <td
-                *tuiCell="'lastName'"
-                tuiTd
-            >
-                {{ item.lastName }}
-            </td>
-            <td
-                *tuiCell="'role'"
-                tuiTd
-            >
-                {{ item.role }}
-            </td>
-            <td
-                *tuiCell="'balance'"
-                tuiTd
-            >
-                {{ item.balance | tuiFormatNumber | async }}
-            </td>
-        </tr>
+                <td
+                    *tuiCell="'action'"
+                    tuiTd
+                ></td>
+                <td
+                    *tuiCell="'firstName'"
+                    tuiTd
+                >
+                    <div>
+                        <tui-chip
+                            size="s"
+                            [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
+                        >
+                            {{ item.firstName }}
+                        </tui-chip>
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'lastName'"
+                    tuiTd
+                >
+                    {{ item.lastName }}
+                </td>
+                <td
+                    *tuiCell="'role'"
+                    tuiTd
+                >
+                    {{ item.role }}
+                </td>
+                <td
+                    *tuiCell="'balance'"
+                    tuiTd
+                >
+                    {{ item.balance | tuiFormatNumber | async }}
+                </td>
+            </tr>
+        </tui-table-expand>
     </tbody>
 
-    <tbody
-        tuiTbody
-        [data]="manualOpenData"
-        [open]="manualOpen"
-    >
+    <tbody tuiTbody>
         <tr
-            tuiTableExpandHeading
             tuiTr
             class="expand-heading-row"
             (click)="manualToggle()"
@@ -164,45 +166,44 @@
             </td>
         </tr>
 
-        <tr
-            *ngFor="let item of manualOpenData"
-            tuiTr
-        >
-            <td
-                *tuiCell="'action'"
-                tuiTd
-            ></td>
-            <td
-                *tuiCell="'firstName'"
-                tuiTd
+        <tui-table-expand [expanded]="manualOpen">
+            <tr
+                *ngFor="let item of manualOpenData"
+                tuiTr
             >
-                {{ item.firstName }}
-            </td>
-            <td
-                *tuiCell="'lastName'"
-                tuiTd
-            >
-                {{ item.lastName }}
-            </td>
-            <td
-                *tuiCell="'role'"
-                tuiTd
-            >
-                {{ item.role }}
-            </td>
-            <td
-                *tuiCell="'balance'"
-                tuiTd
-            >
-                {{ item.balance | tuiFormatNumber | async }}
-            </td>
-        </tr>
+                <td
+                    *tuiCell="'action'"
+                    tuiTd
+                ></td>
+                <td
+                    *tuiCell="'firstName'"
+                    tuiTd
+                >
+                    {{ item.firstName }}
+                </td>
+                <td
+                    *tuiCell="'lastName'"
+                    tuiTd
+                >
+                    {{ item.lastName }}
+                </td>
+                <td
+                    *tuiCell="'role'"
+                    tuiTd
+                >
+                    {{ item.role }}
+                </td>
+                <td
+                    *tuiCell="'balance'"
+                    tuiTd
+                >
+                    {{ item.balance | tuiFormatNumber | async }}
+                </td>
+            </tr>
+        </tui-table-expand>
     </tbody>
 
-    <tbody
-        tuiTbody
-        [data]="customContentData"
-    >
+    <tbody tuiTbody>
         <tr
             tuiTr
             class="expand-heading-row-custom"
