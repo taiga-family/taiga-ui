@@ -1,12 +1,11 @@
 import {NgIf} from '@angular/common';
-import type {AfterContentInit, QueryList, Type} from '@angular/core';
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
     ContentChild,
     ContentChildren,
-    DestroyRef,
     ElementRef,
     forwardRef,
     inject,
@@ -16,19 +15,22 @@ import {
     ViewContainerRef,
     ViewEncapsulation,
 } from '@angular/core';
-import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
+import {tuiControlValue, tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
+import {
+    tuiAsDataListHost,
+    TuiWithOptionContent,
+} from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
 import {
     TuiDropdownDirective,
@@ -37,13 +39,17 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
+import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {fromEvent, map, merge, ReplaySubject, startWith, switchMap} from 'rxjs';
 
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
+import type {TuiTextfieldAccessor} from './textfield-accessor';
+import {TUI_TEXTFIELD_ACCESSOR} from './textfield-accessor';
 import {TUI_AUXILIARY} from './textfield-auxiliary';
 import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
@@ -60,11 +66,13 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
         tuiAsDataListHost(TuiTextfieldComponent),
     ],
     hostDirectives: [
-        TuiDropdownFixed,
         TuiDropdownDirective,
+        TuiDropdownFixed,
         TuiWithDropdownOpen,
-        TuiWithTextfieldDropdown,
         TuiWithIcons,
+        TuiWithItemsHandlers,
+        TuiWithOptionContent,
+        TuiWithTextfieldDropdown,
     ],
     host: {
         '[attr.data-size]': 'options.size()',
@@ -79,7 +87,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     private readonly autoId = tuiInjectId();
     private readonly open = tuiDropdownOpen();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
-    private readonly destroyRef = inject(DestroyRef);
+    private readonly contentReady$ = new ReplaySubject<boolean>(1);
 
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
     protected readonly label?: ElementRef<HTMLElement>;
@@ -88,13 +96,12 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     protected readonly control?: NgControl;
 
     @ContentChildren(TUI_AUXILIARY, {descendants: true})
-    protected readonly auxiliaryQuery: QueryList<Type<unknown>> = EMPTY_QUERY;
+    protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
 
-    protected computedFiller = computed(() => {
-        const value = this.directive?.value() || '';
+    protected computedFiller = computed((value = this.value()) => {
         const filledValue = value + this.filler().slice(value.length);
 
         return filledValue.length > value.length ? filledValue : '';
@@ -104,14 +111,14 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
         () =>
             this.focused() &&
             !!this.computedFiller() &&
-            (!!this.directive?.value() || !this.input?.nativeElement.placeholder),
+            (!!this.value() || !this.input?.nativeElement.placeholder),
     );
 
     @ViewChild('vcr', {read: ViewContainerRef, static: true})
     public readonly vcr?: ViewContainerRef;
 
-    @ContentChild(forwardRef(() => TuiTextfieldDirective), {static: true})
-    public readonly directive?: TuiTextfieldDirective<T>;
+    @ContentChild(TUI_TEXTFIELD_ACCESSOR, {descendants: true})
+    public readonly accessor?: TuiTextfieldAccessor<T>;
 
     @ContentChild(forwardRef(() => TuiTextfieldDirective), {
         read: ElementRef,
@@ -120,15 +127,29 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     public readonly input?: ElementRef<HTMLInputElement>;
 
     @Input()
-    public stringify: TuiStringHandler<T> = String;
-
-    @Input()
     public content: PolymorpheusContent<TuiContext<T>>;
 
     public readonly focused = computed(() => this.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
-    public readonly auxiliaries = signal<ReadonlyArray<Type<unknown>>>([]);
+    public readonly value = toSignal(
+        merge(
+            fromEvent(tuiInjectElement(), 'input'),
+            this.contentReady$.pipe(
+                switchMap(() => tuiControlValue(this.control ?? null)),
+            ),
+        ).pipe(map(() => this.input?.nativeElement.value ?? '')),
+        {initialValue: ''},
+    );
+
+    // TODO: Refactor to signal queries when Angular is updated
+    public readonly auxiliaries = toSignal<readonly object[]>(
+        this.contentReady$.pipe(
+            switchMap(() => tuiQueryListChanges(this.auxiliaryQuery)),
+            startWith([]),
+        ),
+        {requireSync: true},
+    );
 
     @Input('filler')
     public set fillerSetter(filler: string) {
@@ -143,15 +164,12 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
         return this.options.size();
     }
 
-    // TODO: Refactor to signal queries when Angular is updated
     public ngAfterContentInit(): void {
-        tuiQueryListChanges(this.auxiliaryQuery)
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe((auxiliaries) => this.auxiliaries.set(auxiliaries));
+        this.contentReady$.next(true);
     }
 
     public handleOption(option: T): void {
-        this.directive?.setValue(option);
+        this.accessor?.setValue(option);
         this.open.set(false);
     }
 

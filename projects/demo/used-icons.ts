@@ -90,6 +90,8 @@ export const TUI_USED_ICONS = [
     '@tui.cloud-download',
     '@tui.sun',
     '@tui.moon',
+    '@tui.user-round',
+    '@tui.badge-check',
     '@tui.phone-forwarded',
     '@tui.music',
     '@tui.minus',

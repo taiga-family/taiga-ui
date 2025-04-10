@@ -1,4 +1,4 @@
-<ng-content *ngIf="!textfield.directive?.value(); else a" />
+<ng-content *ngIf="!textfield.value(); else a" />
 <ng-template #a>
     <tui-loader
         *ngIf="!results; else b"

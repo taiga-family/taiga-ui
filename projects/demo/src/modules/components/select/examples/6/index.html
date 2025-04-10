@@ -1,0 +1,28 @@
+<tui-textfield
+    tuiChevron
+    [disabledItemHandler]="disabledItemHandler"
+    [stringify]="stringify"
+>
+    <select
+        *ngIf="isMobile; else desktopFallback"
+        aria-label="Choose your side"
+        placeholder="Choose your side"
+        tuiSelect
+        [formControl]="control"
+        [items]="items"
+    ></select>
+
+    <ng-template #desktopFallback>
+        <input
+            placeholder="Choose your side"
+            tuiSelect
+            [formControl]="control"
+        />
+
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            [items]="items"
+        />
+    </ng-template>
+</tui-textfield>

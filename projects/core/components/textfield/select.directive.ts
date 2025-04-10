@@ -2,10 +2,10 @@ import {CommonModule, DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 
-import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
+import {TuiTextfieldBase} from './textfield.directive';
+import {tuiAsTextfieldAccessor} from './textfield-accessor';
 
 @Component({
     standalone: true,
@@ -15,7 +15,7 @@ import {TuiTextfieldBase, TuiTextfieldDirective} from './textfield.directive';
     // We want this template to follow change detection to parent textfield.
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [tuiProvide(TuiTextfieldDirective, TuiSelect)],
+    providers: [tuiAsTextfieldAccessor(TuiSelect)],
     hostDirectives: [TuiNativeValidator, TuiAppearance],
     host: {
         '[id]': 'textfield.id',
@@ -57,7 +57,7 @@ export class TuiSelect<T> extends TuiTextfieldBase<T> {
     }
 
     protected get stringified(): string {
-        return this.textfield.stringify(this.control?.value ?? '');
+        return this.itemsHandlers.stringify()(this.control?.value ?? '');
     }
 
     protected async onCopy(): Promise<void> {
