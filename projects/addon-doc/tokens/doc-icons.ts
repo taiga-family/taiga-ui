@@ -11,6 +11,11 @@ export interface TuiDocIcons {
     readonly check: string;
     readonly link: string;
     readonly languages: string;
+    /**
+     * TODO: drop optional in v5
+     */
+    readonly shrink?: string;
+    readonly expand?: string;
 }
 
 export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
@@ -23,6 +28,8 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     check: '@tui.check',
     link: '@tui.link',
     languages: '@tui.languages',
+    shrink: '@tui.shrink',
+    expand: '@tui.expand',
 };
 
 export const TUI_DOC_ICONS = tuiCreateToken(TUI_DOC_DEFAULT_ICONS);
