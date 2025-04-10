@@ -3,6 +3,7 @@ import {NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
 import {EMPTY_FUNCTION, tuiArrayToggle} from '@taiga-ui/cdk';
 import {TUI_DATA_LIST_HOST, tuiAsOptionContent, TuiDataListHost} from '@taiga-ui/core';
 import {TuiMultiSelectOptionComponent} from '@taiga-ui/kit/components/multi-select-option';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens/items-handlers';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
 
 import {TuiMultiSelectComponent} from '../multi-select.component';
@@ -20,15 +21,19 @@ export const TUI_MULTI_SELECT_OPTION = new PolymorpheusComponent(
             deps: [
                 NgControl,
                 [new Optional(), forwardRef(() => TuiMultiSelectComponent)],
+                [new Optional(), TUI_ITEMS_HANDLERS],
             ],
             useFactory: <T>(
                 control: NgControl,
                 host: TuiDataListHost<T> | null,
+                {stringify, identityMatcher}: TuiItemsHandlers<T> = {},
             ): TuiDataListHost<T> =>
                 host || {
+                    stringify,
+                    identityMatcher,
                     handleOption: option =>
                         control.control?.setValue(
-                            tuiArrayToggle(control.value || [], option),
+                            tuiArrayToggle(control.value || [], option, identityMatcher),
                         ),
                 },
         },
