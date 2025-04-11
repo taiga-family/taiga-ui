@@ -169,7 +169,11 @@ export class TuiInputDateTimeComponent
             return;
         }
 
-        if (value?.[0]) {
+        const transformed = this.valueTransformer
+            ? this.valueTransformer.fromControlValue(value)
+            : value;
+
+        if (transformed?.[0]) {
             super.writeValue(value);
         } else {
             super.writeValue(null);
