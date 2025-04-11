@@ -22,12 +22,9 @@
  */
 [tuiFloating] {
     position: sticky;
-    bottom: max(
-        calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y)),
-        calc(env(safe-area-inset-bottom))
-    );
+    bottom: max(calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y)), 0);
     z-index: 1;
-    padding-bottom: 1rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
     text-align: center;
     font: var(--tui-font-text-ui-s);
     color: var(--tui-text-secondary);
@@ -48,25 +45,8 @@
     // when only button in container margin differs - (24px vs 16px), therefore need some workaround to correctly works when it's animating
     &:has(> *:only-child:not(tui-elastic-container)),
     &:has(*.ng-animating:first-child ~ .ng-animating:last-child) {
-        padding-bottom: 1.5rem;
+        padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
     }
-
-    // when only button in container margin differs - (24px vs 16px), therefore need some workaround to correctly works when it's animating
-    // TODO: use :has after safari support bumped to 15.4+
-    // > [tuiButton] {
-    //     &:only-child {
-    //         margin-block-end: 0.5rem;
-    //     }
-
-    //     &.ng-animating:not(:last-child),
-    //     &.ng-animating:first-child ~ .ng-animating:last-child {
-    //         margin-block-end: 0.5rem;
-    //     }
-
-    //     &.ng-animating:not(:first-child) ~ * {
-    //         margin-block-start: -0.5rem;
-    //     }
-    // }
 
     &::before {
         .fullsize(absolute, inset);
