@@ -103,7 +103,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     hostDirectives: [MaskitoDirective, TuiWithTextfield],
     host: {
         type: 'tel',
-        '[attr.readonly]': 'readOnly() || null',
         '[attr.inputmode]': '!ios && open() ? "none" : null',
         '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',

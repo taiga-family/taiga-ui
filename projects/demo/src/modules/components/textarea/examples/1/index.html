@@ -1,23 +1,45 @@
-<p>
-    It has a fixed size and content scroll by default. But there is also an expandable mode with height increase from
-    content inside
-</p>
+<tui-textfield>
+    <label tuiLabel>Large with label inside</label>
+    <textarea
+        placeholder="Placeholder"
+        tuiTextarea
+    ></textarea>
+</tui-textfield>
 
-<form [formGroup]="testForm">
-    <tui-textarea formControlName="testValue1">Type a text</tui-textarea>
-    <tui-textarea
-        formControlName="testValue2"
-        class="tui-space_top-4"
-        [expandable]="true"
-    >
-        Type a text
-    </tui-textarea>
-    <tui-textarea
-        #textarea
-        formControlName="testValue3"
-        class="tui-space_top-4"
-        [expandable]="textarea.focused"
-    >
-        Type a text (expandable on focus)
-    </tui-textarea>
-</form>
+<tui-textfield tuiTextfieldSize="m">
+    <label tuiLabel>Medium with label inside</label>
+    <textarea
+        placeholder="Placeholder"
+        tuiTextarea
+    ></textarea>
+</tui-textfield>
+
+<label tuiLabel>
+    Large with label outside
+    <tui-textfield>
+        <textarea
+            placeholder="Placeholder"
+            tuiTextarea
+        ></textarea>
+    </tui-textfield>
+</label>
+
+<label tuiLabel>
+    Medium with label outside
+    <tui-textfield tuiTextfieldSize="m">
+        <textarea
+            placeholder="Placeholder"
+            tuiTextarea
+        ></textarea>
+    </tui-textfield>
+</label>
+
+<label tuiLabel>
+    Small with label outside
+    <tui-textfield tuiTextfieldSize="s">
+        <textarea
+            placeholder="Placeholder"
+            tuiTextarea
+        ></textarea>
+    </tui-textfield>
+</label>

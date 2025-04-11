@@ -1,23 +1,15 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextareaModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiTextarea} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiTextareaModule],
+    imports: [TuiTextarea, TuiTextfield],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export default class Example {
-    protected testForm = new FormGroup({
-        testValue1: new FormControl('A field', Validators.required),
-        testValue2: new FormControl('This one can be expanded', Validators.required),
-        testValue3: new FormControl(
-            'This one can be expanded (expandable on focus)',
-            Validators.required,
-        ),
-    });
-}
+export default class Example {}

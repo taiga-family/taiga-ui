@@ -1,0 +1,23 @@
+<p>
+    It has a fixed size and content scroll by default. But there is also an expandable mode with height increase from
+    content inside
+</p>
+
+<form [formGroup]="testForm">
+    <tui-textarea formControlName="testValue1">Type a text</tui-textarea>
+    <tui-textarea
+        formControlName="testValue2"
+        class="tui-space_top-4"
+        [expandable]="true"
+    >
+        Type a text
+    </tui-textarea>
+    <tui-textarea
+        #textarea
+        formControlName="testValue3"
+        class="tui-space_top-4"
+        [expandable]="textarea.focused"
+    >
+        Type a text (expandable on focus)
+    </tui-textarea>
+</form>

@@ -640,6 +640,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'Textarea [deprecated]',
+                keywords: 'поле, инпут, форма, ввод, textarea, area',
+                route: DemoRoute.TextareaLegacy,
+            },
+            {
+                section: 'Components',
                 title: 'InputFiles',
                 keywords: 'input-files, files, file, файлы',
                 route: DemoRoute.InputFiles,

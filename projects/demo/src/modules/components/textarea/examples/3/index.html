@@ -1,14 +1,16 @@
-<p>
-    You can use label outside mode with
-    <code>tuiLabel</code>
-</p>
+<tui-textfield>
+    <label tuiLabel>Custom highlight</label>
+    <textarea
+        placeholder="Type 'width' or 'height'"
+        tuiTextarea
+        [content]="highlight"
+        [(ngModel)]="value"
+    ></textarea>
+</tui-textfield>
 
-<form [formGroup]="testForm">
-    <label tuiLabel>
-        Type a text
-        <tui-textarea
-            formControlName="testValue1"
-            [tuiTextfieldLabelOutside]="true"
-        />
-    </label>
-</form>
+<ng-template
+    #highlight
+    let-text
+>
+    <span [innerHTML]="process(text)"></span>
+</ng-template>
