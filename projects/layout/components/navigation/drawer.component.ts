@@ -54,7 +54,10 @@ class TuiDrawerComponent {
         tuiIsHTMLElement(this.directive.el.offsetParent) &&
         tuiIsHTMLElement(this.directive.el.offsetParent.offsetParent)
             ? this.directive.el.offsetParent.getBoundingClientRect().bottom -
-              this.directive.el.offsetParent.offsetParent.getBoundingClientRect().top
+              Math.max(
+                  this.directive.el.offsetParent.offsetParent.getBoundingClientRect().top,
+                  0,
+              )
             : 0;
 }
 

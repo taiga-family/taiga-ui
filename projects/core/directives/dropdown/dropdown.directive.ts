@@ -42,6 +42,9 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
             outputs: ['tuiDropdownDirectionChange'],
         },
     ],
+    host: {
+        '[class.tui-dropdown-open]': 'ref()',
+    },
 })
 export class TuiDropdownDirective
     implements
@@ -123,5 +126,8 @@ export class TuiDropdownDirective
         }
 
         this.drivers.forEach((driver) => driver?.next(show));
+
+        // TODO: Remove in v5, only needed in Angular 16
+        this.cdr.markForCheck();
     }
 }
