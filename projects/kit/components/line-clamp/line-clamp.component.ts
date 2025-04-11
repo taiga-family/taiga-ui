@@ -11,6 +11,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiIsCurrentTarget} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -18,11 +19,13 @@ import {
     TuiHint,
     TuiHintDirective,
 } from '@taiga-ui/core/directives/hint';
+import {TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
+    combineLatestWith,
     debounceTime,
     distinctUntilChanged,
     filter,
@@ -67,6 +70,8 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     @ViewChild(TuiHintDirective, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 
+    private readonly w = inject(WA_WINDOW);
+    private readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly cd = inject(ChangeDetectorRef);
@@ -100,7 +105,15 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
     public content: PolymorpheusContent;
 
     @Output()
-    public readonly overflownChange: Observable<boolean> = this.isOverflown$.pipe(
+    public readonly overflownChange: Observable<any> = this.isOverflown$.pipe(
+        combineLatestWith(
+            this.reducedMotion
+                ? of(new TransitionEvent('max-height'))
+                : tuiTypedFromEvent(this.el, 'transitionend').pipe(
+                      filter(tuiIsCurrentTarget),
+                  ),
+        ),
+        map(([overflown]) => overflown),
         debounceTime(0),
         distinctUntilChanged(),
     );
@@ -124,18 +137,10 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
             return false;
         }
 
-        const {
-            scrollHeight,
-            scrollWidth,
-            clientHeight: outletHeight,
-        } = this.outlet.nativeElement;
+        const {scrollHeight, scrollWidth} = this.outlet.nativeElement;
         const {clientHeight, clientWidth} = this.el;
 
-        return (
-            scrollHeight - clientHeight > BUFFER ||
-            scrollWidth - clientWidth > 0 ||
-            scrollHeight > outletHeight
-        );
+        return scrollHeight - clientHeight > BUFFER || scrollWidth - clientWidth > 0;
     }
 
     protected get computedContent(): PolymorpheusContent {
@@ -151,6 +156,15 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
             this.height.set(this.outlet.nativeElement.scrollHeight + BUFFER);
         }
 
-        this.maxHeight.set(this.lineHeight * this.linesLimit$.value);
+        this.maxHeight.set(
+            (parseInt(
+                (this.outlet &&
+                    this.w.getComputedStyle(this.outlet.nativeElement).lineHeight) ??
+                    '',
+                10,
+            ) || this.lineHeight) *
+                this.linesLimit$.value +
+                BUFFER,
+        );
     }
 }
