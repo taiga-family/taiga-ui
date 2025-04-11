@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    Input,
+    signal,
+} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -25,7 +32,7 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
          */
         '(input)': '0',
         '[style.--tui-slider-track-color]': 'options.trackColor',
-        '[style.--tui-ticks-gradient]': 'ticksGradient',
+        '[style.--tui-ticks-gradient]': 'ticksGradient()',
         '[style.--tui-slider-fill-ratio]': 'valueRatio',
         '[attr.data-size]': 'size',
     },
@@ -34,12 +41,13 @@ export class TuiSliderComponent {
     private readonly control = inject(NgControl, {self: true, optional: true});
 
     protected readonly options = inject(TUI_SLIDER_OPTIONS);
+    protected readonly segments = signal<number[]>([1]);
+    protected readonly ticksGradient = computed((segments = this.segments()) =>
+        this.getTicksGradient(segments),
+    );
 
     @Input()
     public size: TuiSizeS = this.options.size;
-
-    @Input()
-    public segments: number[] | number = 1;
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
     public readonly keySteps = inject(TuiSliderKeyStepsBase, {
@@ -58,6 +66,29 @@ export class TuiSliderComponent {
              */
             this.control.valueChanges?.pipe(tuiWatch(), take(1)).subscribe();
         }
+    }
+
+    // TODO(v5): use signal inputs
+    @Input({
+        alias: 'segments',
+        transform: (segments: number[] | number) => {
+            if (Array.isArray(segments)) {
+                const arr = segments.map((segment) => segment * 100);
+
+                if (arr[0] !== 0) {
+                    arr.unshift(0);
+                }
+
+                return arr;
+            }
+
+            return new Array(segments)
+                .fill(null)
+                .map((_, index) => (index * 100) / segments);
+        },
+    })
+    public set segmentsSetter(segments: number[]) {
+        this.segments.set(segments);
     }
 
     public get valueRatio(): number {
@@ -104,41 +135,18 @@ export class TuiSliderComponent {
         this.el.value = `${newValue}`;
     }
 
-    protected get ticksGradient(): string {
-        const segments = Array.isArray(this.segments)
-            ? this.segments.map((segment) => (segment / this.max) * 100)
-            : new Array(Math.max(1, this.segments))
-                  .fill(1)
-                  .map(
-                      (_, index) =>
-                          this.getSegmentWidth(this.segments as number) * (index + 1),
-                  );
-
-        if (segments.length === 1) {
+    protected getTicksGradient(segments: number[]): string {
+        if (segments.length <= 1) {
             return 'linear-gradient(to right, transparent 0 100%)';
         }
 
-        let gradient = `linear-gradient(
-            to right,
-            transparent ${segments[0]}%,
-        `;
-
-        segments.forEach((segment, index) => {
-            if (!segments[index + 1]) {
-                return;
-            }
-
-            gradient = `
-                ${gradient}
-                var(--tui-text-tertiary) ${segment}% calc(${segment}% + var(--tui-ticks-thickness)),
-                transparent ${segment}% ${segments[index + 1]}%${index + 1 === segments.length - 1 ? ')' : ','}
-            `;
-        });
-
-        return gradient;
-    }
-
-    private getSegmentWidth(segments: number): number {
-        return 100 / Math.max(1, segments);
+        return segments.slice(1).reduce(
+            (acc, segment, index, array) =>
+                `${acc}
+                var(--tui-text-tertiary) ${segment}% calc(${segment}% + var(--t-tick-thickness)),
+                transparent ${segment}% ${array[index + 1] ?? 100}%${array[index + 1] ? ',' : ')'}
+                `,
+            `linear-gradient(to right, transparent ${segments[0]}% ${segments[1]}%,`,
+        );
     }
 }

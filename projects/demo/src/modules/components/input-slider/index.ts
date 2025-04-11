@@ -45,8 +45,8 @@ export default class PageComponent {
         1,
         5,
         3,
-        [1, 4],
-        [2.5, 3],
+        [0.2, 0.5],
+        [0.1, 0.3],
     ];
 
     protected readonly keyStepsVariants: Signal<readonly TuiKeySteps[]> = computed(() => [

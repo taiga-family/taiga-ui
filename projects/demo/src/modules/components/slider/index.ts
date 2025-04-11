@@ -16,8 +16,8 @@ export default class Page {
         1,
         5,
         3,
-        [1, 4],
-        [2.5, 3],
+        [0.2, 0.5],
+        [0.1, 0.3],
     ];
 
     protected readonly control = new FormControl(1);
