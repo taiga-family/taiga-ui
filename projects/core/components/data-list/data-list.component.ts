@@ -133,7 +133,9 @@ export class TuiDataListComponent<T>
 
     private get elements(): readonly HTMLElement[] {
         return Array.from(
-            this.el.querySelectorAll('a[tuiOption],button[tuiOption],label[tuiOption]'),
+            this.el.querySelectorAll(
+                'a[tuiOption],button[tuiOption],label[tuiOption],span[tuiOption]',
+            ),
         );
     }
 }
