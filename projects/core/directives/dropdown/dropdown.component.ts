@@ -90,7 +90,14 @@ export class TuiDropdownComponent {
     private getStyles(top: number, left: number): Record<string, string> {
         const {right} = this.el.getBoundingClientRect();
         const {maxHeight, minHeight, offset, limitWidth} = this.options;
-        const {innerHeight} = this.win;
+        const innerHeight =
+            parseInt(
+                this.win
+                    .getComputedStyle(this.el)
+                    .getPropertyValue('--tui-viewport-height'),
+                10,
+            ) || this.win.innerHeight;
+
         const clientRect = this.el.offsetParent?.getBoundingClientRect();
         const {position} = this.directive;
         const rect = this.accessor.getClientRect();
