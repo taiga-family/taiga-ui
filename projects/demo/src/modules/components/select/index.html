@@ -97,7 +97,7 @@
                     tuiLink
                     [routerLink]="routes.DataListWrapper"
                 >
-                    DataListWrapper
+                    <strong>DataListWrapper</strong>
                 </a>
                 provides an opportunity to customize appearance of options inside dropdown by
                 <code>[itemContent]</code>
@@ -106,7 +106,7 @@
                     tuiLink
                     [routerLink]="routes.Textfield"
                 >
-                    Textfield
+                    <strong>Textfield</strong>
                 </a>
                 has
                 <code>[content]</code>
@@ -167,10 +167,50 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="native-picker-disabled-option"
-            heading="Native picker with disabled option"
+            id="dropdown-mobile"
+            heading="With DropdownMobile"
             [component]="6 | tuiComponent"
             [content]="6 | tuiExample"
+            [description]="dropdownMobileDescription"
+        >
+            <ng-template #dropdownMobileDescription>
+                <tui-notification
+                    *ngIf="!isMobile"
+                    class="tui-space_bottom-2"
+                >
+                    Use real mobile device or enable mobile emulation in DevTools to explore this example!
+                </tui-notification>
+
+                <p class="tui-space_top-0">
+                    Put
+                    <code>tuiDropdownMobile="..."</code>
+                    on
+                    <code>&lt;tui-textfield /&gt;</code>
+                    to enable sheet dialog (instead of default dropdown) with special appearance of options (similar to
+                    native controls)
+                    <strong>for mobile devices</strong>
+                    .
+                </p>
+
+                <p>
+                    This example demonstrates different appearances of options for different platforms (using
+                    <code>TuiPlatform</code>
+                    directive). By default, it detects
+                    <code>ios</code>
+                    /
+                    <code>android</code>
+                    /
+                    <code>web</code>
+                    platforms automatically (by parsing user agent) – it is not required to specify it explicitly.
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="native-picker-disabled-option"
+            heading="Native picker with disabled option"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
             [description]="nativePickerDescription"
         >
             <ng-template #nativePickerDescription>
@@ -187,15 +227,15 @@
         <tui-doc-example
             id="native-picker-groups"
             heading="Native picker with grouping options"
-            [component]="7 | tuiComponent"
-            [content]="7 | tuiExample"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample"
         />
 
         <tui-doc-example
             id="override-option-component"
             heading="Override option component"
-            [component]="8 | tuiComponent"
-            [content]="8 | tuiExample: 'html,ts,less' : {'option.ts': selectOptionExample}"
+            [component]="9 | tuiComponent"
+            [content]="9 | tuiExample: 'html,ts,less' : {'option.ts': selectOptionExample}"
             [description]="overrideOptionDescription"
         >
             <ng-template #overrideOptionDescription>
@@ -204,7 +244,10 @@
                 <code>tuiAsOptionContent</code>
                 -utility.
 
-                <tui-notification appearance="warning">
+                <tui-notification
+                    appearance="warning"
+                    class="tui-space_top-2"
+                >
                     <strong>Double check if you really need this feature!</strong>
 
                     <div>

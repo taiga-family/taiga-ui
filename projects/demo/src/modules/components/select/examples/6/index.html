@@ -1,28 +1,19 @@
 <tui-textfield
     tuiChevron
+    tuiDropdownMobile="Select platform"
     [disabledItemHandler]="disabledItemHandler"
-    [stringify]="stringify"
 >
-    <select
-        *ngIf="isMobile; else desktopFallback"
-        aria-label="Choose your side"
-        placeholder="Choose your side"
+    <label tuiLabel>Platform</label>
+
+    <input
         tuiSelect
-        [formControl]="control"
-        [items]="items"
-    ></select>
+        [(ngModel)]="value"
+    />
 
-    <ng-template #desktopFallback>
-        <input
-            placeholder="Choose your side"
-            tuiSelect
-            [formControl]="control"
-        />
-
-        <tui-data-list-wrapper
-            *tuiTextfieldDropdown
-            new
-            [items]="items"
-        />
-    </ng-template>
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [items]="platforms"
+        [tuiPlatform]="value ?? 'ios'"
+    />
 </tui-textfield>
