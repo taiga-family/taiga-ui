@@ -1,0 +1,34 @@
+<button
+    #dropdown="tuiDropdown"
+    appearance="outline-grayscale"
+    size="s"
+    tuiButton
+    tuiChevron
+    tuiDropdownOpen
+    type="button"
+    [tuiDropdown]="template"
+>
+    Add social network
+</button>
+
+<ng-template #template>
+    <tui-data-list size="s">
+        <button
+            tuiCell="s"
+            tuiOption
+            (click)="dropdown.toggle(false); onAddSocialSupport('telegram')"
+        >
+            <tui-avatar>AB</tui-avatar>
+            <div tuiTitle>Telegram</div>
+        </button>
+
+        <button
+            tuiCell="s"
+            tuiOption
+            (click)="dropdown.toggle(false); onAddSocialSupport('whatsapp')"
+        >
+            <tui-avatar>AB</tui-avatar>
+            <div tuiTitle>WhatsApp</div>
+        </button>
+    </tui-data-list>
+</ng-template>
