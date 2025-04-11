@@ -62,7 +62,7 @@ export class TuiStepperComponent implements OnChanges {
         .pipe(takeUntilDestroyed())
         .subscribe(() => this.scrollIntoView(this.activeItemIndex));
 
-    @Input('activeItemIndex')
+    @Input()
     public activeItemIndex = 0;
 
     @Input()
