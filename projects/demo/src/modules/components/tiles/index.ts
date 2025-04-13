@@ -8,4 +8,10 @@ import {TuiDemo} from '@demo/utils';
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected debounce = 0;
+    protected order = new Map<number, number>();
+
+    protected width = 1;
+    protected height = 1;
+}

@@ -34,5 +34,58 @@
         />
     </ng-template>
 
+    <ng-template pageTab>
+        <tui-doc-documentation heading="<tui-tiles>">
+            <ng-template
+                documentationPropertyName="debounce"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="debounce"
+            >
+                Debounce for the tile order change output.
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input-output"
+                documentationPropertyName="order"
+                documentationPropertyType="Map<number, number>"
+                [(documentationPropertyValue)]="order"
+            >
+                The order of the tiles.
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="output"
+                documentationPropertyName="orderChange"
+                documentationPropertyType="Map<number, number>"
+                [(documentationPropertyValue)]="order"
+            >
+                Output for tile order change.
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="<tui-tile>">
+            <ng-template
+                documentationPropertyName="width"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="width"
+            >
+                Width of the tile.
+            </ng-template>
+            <ng-template
+                documentationPropertyName="height"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="height"
+            >
+                Height of the tile.
+            </ng-template>
+        </tui-doc-documentation>
+        <tui-doc-documentation heading="Directive">
+            <ng-template
+                documentationPropertyName="[tuiTileHandle]"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="width"
+            >
+                Directive to determine the handle of the tile.
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
     <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>
