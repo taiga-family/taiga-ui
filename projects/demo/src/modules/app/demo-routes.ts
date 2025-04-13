@@ -118,6 +118,7 @@ export const DemoRoute = {
     Pulse: '/components/pulse',
     Range: '/components/range',
     CalendarRange: '/components/calendar-range',
+    Select: '/components/select',
     SelectLegacy: '/legacy/select',
     Scrollbar: '/components/scrollbar',
     Sheet: '/components/sheet',

@@ -107,8 +107,9 @@ aside[tuiNavigationAside] {
         color: var(--tui-text-tertiary);
     }
 
-    &._chevron-rotated,
-    &._active {
+    &.tui-dropdown-open,
+    &._active:not(._chevron-rotated),
+    aside[tuiNavigationAside]:not(._expanded) &._active {
         background: var(--tui-background-neutral-1-hover);
     }
 }

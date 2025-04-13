@@ -1,4 +1,4 @@
-<ng-content *ngIf="!textfield.directive?.value(); else a" />
+<ng-content *ngIf="!textfield.value(); else a" />
 <ng-template #a>
     <tui-loader
         *ngIf="!results; else b"
@@ -8,6 +8,7 @@
         <tui-block-status
             *ngIf="results && isEmpty(results); else c"
             size="m"
+            class="t-status"
         >
             <img
                 alt=""

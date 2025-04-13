@@ -840,6 +840,12 @@ export const pages: DocRoutePages = [
                 section: 'Components',
                 title: 'Select',
                 keywords: 'инпут, форма, ввод, select, селект, выбор',
+                route: DemoRoute.Select,
+            },
+            {
+                section: 'Components',
+                title: 'Select [deprecated]',
+                keywords: 'инпут, форма, ввод, select, селект, выбор',
                 route: DemoRoute.SelectLegacy,
             },
         ],

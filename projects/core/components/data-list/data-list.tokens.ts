@@ -11,7 +11,13 @@ export interface TuiDataListAccessor<T = unknown> {
 export interface TuiDataListHost<T> {
     checkOption?(option: T): void;
     handleOption?(option: T): void;
+    /**
+     * @deprecated Use `inject(TuiItemsHandlersDirective<T>).identityMatcher` instead
+     */
     readonly identityMatcher?: TuiIdentityMatcher<T>;
+    /**
+     * @deprecated Use `inject(TuiItemsHandlersDirective<T>).stringify` instead
+     */
     readonly stringify?: TuiStringHandler<T>;
     readonly size?: TuiSizeL | TuiSizeS;
 }

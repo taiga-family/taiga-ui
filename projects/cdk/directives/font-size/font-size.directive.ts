@@ -4,16 +4,18 @@ import {WA_WINDOW} from '@ng-web-apis/common';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiCreateToken, tuiFontSizeWatcher} from '@taiga-ui/cdk/utils/miscellaneous';
 
-export const TUI_FONT_SIZE_HANDLER =
-    tuiCreateToken<(size: number) => void>(EMPTY_FUNCTION);
+export const TUI_FONT_SIZE_HANDLER = tuiCreateToken<(size: number) => void>();
 
 @Directive({
     standalone: true,
 })
 export class TuiFontSize {
+    private readonly handler = inject(TUI_FONT_SIZE_HANDLER, {optional: true});
     protected readonly nothing = inject(DestroyRef).onDestroy(
-        isPlatformBrowser(inject(PLATFORM_ID)) && typeof ResizeObserver !== 'undefined'
-            ? tuiFontSizeWatcher(inject(TUI_FONT_SIZE_HANDLER), inject(WA_WINDOW))
+        this.handler &&
+            isPlatformBrowser(inject(PLATFORM_ID)) &&
+            typeof ResizeObserver !== 'undefined'
+            ? tuiFontSizeWatcher(this.handler, inject(WA_WINDOW))
             : EMPTY_FUNCTION,
     );
 }

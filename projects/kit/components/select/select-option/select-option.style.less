@@ -1,0 +1,21 @@
+:host._value::after {
+    color: var(--tui-text-action);
+    opacity: 0;
+
+    :host-context(tui-data-list[data-size='s']) & {
+        margin-inline-end: -0.625rem;
+    }
+
+    :host-context(tui-data-list[data-size='m']) &,
+    :host-context(tui-data-list[data-size='l']) & {
+        margin-inline-end: -0.5rem;
+    }
+
+    :host-context(tui-data-list[data-size='l']) & {
+        font-size: 1.5rem;
+    }
+}
+
+:host._value._selected::after {
+    opacity: 1;
+}

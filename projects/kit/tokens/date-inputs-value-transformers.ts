@@ -20,7 +20,7 @@ export const TUI_DATE_RANGE_VALUE_TRANSFORMER =
  * Control value transformer for InputDateTime component
  */
 export const TUI_DATE_TIME_VALUE_TRANSFORMER =
-    tuiCreateToken<TuiValueTransformer<[TuiDay | null, TuiTime | null]>>();
+    tuiCreateToken<TuiValueTransformer<[TuiDay, TuiTime | null]>>();
 
 /**
  * Control value transformer for InputTime component
