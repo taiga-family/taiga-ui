@@ -1,5 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {NgForOf, NgIf} from '@angular/common';
+import {DOCUMENT, NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {RouterLink, RouterLinkActive} from '@angular/router';
@@ -73,6 +73,7 @@ export class TuiDocExample {
         1,
     );
 
+    protected readonly fullscreenEnabled = inject(DOCUMENT).fullscreenEnabled;
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly options = inject(TUI_DOC_EXAMPLE_OPTIONS);
     protected readonly texts = inject(TUI_DOC_EXAMPLE_TEXTS);
