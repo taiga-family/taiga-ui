@@ -186,9 +186,9 @@ describe('InputSlider', () => {
 
                 await inputSlider.textfield.focus();
 
-                await expect(apiPageExample).toHaveScreenshot(
-                    'input-slider-content-not-visible.png',
-                );
+                await expect
+                    .soft(apiPageExample)
+                    .toHaveScreenshot('input-slider-content-not-visible.png');
             });
 
             test('[content] is not overlapped by [prefix]/[postfix] (input is NOT focused)', async ({
@@ -227,9 +227,9 @@ describe('InputSlider', () => {
                 await inputSlider.textfield.fill(value);
 
                 await expect(inputSlider.slider).toHaveValue(value);
-                await expect(example).toHaveScreenshot(
-                    `input-slider-to-slider-typing-${value}.png`,
-                );
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot(`input-slider-to-slider-typing-${value}.png`);
             }
         });
 
@@ -248,9 +248,11 @@ describe('InputSlider', () => {
 
                 await expect(inputSlider.textfield).toHaveValue(String(i));
                 await expect(inputSlider.slider).toHaveValue(String(i));
-                await expect(example).toHaveScreenshot(
-                    `input-slider-to-slider-keyboard-arrow-up-${i}.png`,
-                );
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot(
+                        `input-slider-to-slider-keyboard-arrow-up-${i}.png`,
+                    );
             }
 
             for (let i = 9; i >= 0; i--) {
@@ -260,9 +262,11 @@ describe('InputSlider', () => {
 
                 await expect(inputSlider.textfield).toHaveValue(String(i));
                 await expect(inputSlider.slider).toHaveValue(String(i));
-                await expect(example).toHaveScreenshot(
-                    `input-slider-to-slider-keyboard-arrow-down-${i}.png`,
-                );
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot(
+                        `input-slider-to-slider-keyboard-arrow-down-${i}.png`,
+                    );
             }
         });
     });

@@ -19,7 +19,7 @@ test.describe('Textfield', () => {
             // eslint-disable-next-line playwright/no-force-option
             await textfield.hover({force: true});
 
-            await expect(example).toHaveScreenshot('textfield-disabled-hover.png');
+            await expect.soft(example).toHaveScreenshot('textfield-disabled-hover.png');
         });
 
         test('readonly state', async () => {
@@ -29,7 +29,7 @@ test.describe('Textfield', () => {
 
             await textfield.hover();
 
-            await expect(example).toHaveScreenshot('textfield-readonly-hover.png');
+            await expect.soft(example).toHaveScreenshot('textfield-readonly-hover.png');
         });
 
         test('invalid state', async () => {
@@ -39,7 +39,7 @@ test.describe('Textfield', () => {
 
             await textfield.hover();
 
-            await expect(example).toHaveScreenshot('textfield-invalid-hover.png');
+            await expect.soft(example).toHaveScreenshot('textfield-invalid-hover.png');
         });
     });
 });

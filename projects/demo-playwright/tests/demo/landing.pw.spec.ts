@@ -11,6 +11,6 @@ test.describe('Landing', () => {
             hideHeader: false,
         });
 
-        await expect(page).toHaveScreenshot('landing-360-740.png');
+        await expect.soft(page).toHaveScreenshot('landing-360-740.png');
     });
 });

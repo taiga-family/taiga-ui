@@ -141,7 +141,9 @@ test.describe('InputPhone', () => {
                     test(`Typing "${typedValue}" => "${maskedValue}"`, async () => {
                         await input.fill(typedValue);
 
-                        await expect(example).toHaveScreenshot(`01-input-phone-${i}.png`);
+                        await expect
+                            .soft(example)
+                            .toHaveScreenshot(`01-input-phone-${i}.png`);
                         await expect(input).toHaveValue(maskedValue);
 
                         await expect(input).toHaveJSProperty(
@@ -187,7 +189,9 @@ test.describe('InputPhone', () => {
                             'selectionEnd',
                             maskedValue.length,
                         );
-                        await expect(example).toHaveScreenshot(`02-input-phone-${i}.png`);
+                        await expect
+                            .soft(example)
+                            .toHaveScreenshot(`02-input-phone-${i}.png`);
                         await expect(input).toHaveValue(maskedValue);
                     });
                 });
@@ -196,18 +200,18 @@ test.describe('InputPhone', () => {
                     page,
                 }) => {
                     await expect(input).toHaveValue('+7 (912) 345-67-89');
-                    await expect(example).toHaveScreenshot('03-input-phone-1.png');
+                    await expect.soft(example).toHaveScreenshot('03-input-phone-1.png');
 
                     await page.keyboard.press('Backspace');
                     await page.keyboard.down('5');
 
                     await expect(input).toHaveValue('+7 (912) 345-67-85');
-                    await expect(example).toHaveScreenshot('03-input-phone-2.png');
+                    await expect.soft(example).toHaveScreenshot('03-input-phone-2.png');
 
                     await page.keyboard.press('Backspace');
                     await page.keyboard.press('Backspace');
 
-                    await expect(example).toHaveScreenshot('03-input-phone-3.png');
+                    await expect.soft(example).toHaveScreenshot('03-input-phone-3.png');
 
                     await page.keyboard.down('9');
                     await page.keyboard.down('9');
@@ -221,7 +225,7 @@ test.describe('InputPhone', () => {
                         'selectionEnd',
                         '+7 (912) 345-67-99'.length,
                     );
-                    await expect(example).toHaveScreenshot('03-input-phone-4.png');
+                    await expect.soft(example).toHaveScreenshot('03-input-phone-4.png');
                 });
             });
 
@@ -256,7 +260,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67-0'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('04-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('04-input-phone.png');
                 });
 
                 test('+7 (912) 345-67|-89 => Backspace + 0 => +7 (912) 345-60-|89', async ({
@@ -288,7 +292,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-60-'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('05-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('05-input-phone.png');
                 });
 
                 test('+7 (912) 345-6|7-89 => Backspace + 0 => +7 (912) 345-0|7-89', async ({
@@ -320,7 +324,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-0'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('06-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('06-input-phone.png');
                 });
 
                 test('+7 (912) 345-67-|89 => Delete + 0 => +7 (912) 345-67-0|9', async ({
@@ -352,7 +356,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67-0'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('07-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('07-input-phone.png');
                 });
 
                 test('+7 (912) 345-|67-89 => Delete + 0 => +7 (912) 345-0|7-89', async ({
@@ -384,7 +388,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-0'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('08-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('08-input-phone.png');
                 });
             });
 
@@ -418,7 +422,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('09-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('09-input-phone.png');
                 });
 
                 test('+7 (912) 345-|67-89 => Backspace => +7 (912) 345|-67-89', async ({
@@ -448,7 +452,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('10-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('10-input-phone.png');
                 });
 
                 test('+7 (912) |345-67-89 => Backspace x2 => +7 (912|) 345-67-89', async ({
@@ -480,7 +484,7 @@ test.describe('InputPhone', () => {
                         '+7 (912'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('11-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('11-input-phone.png');
                 });
             });
 
@@ -505,7 +509,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67-'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('12-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('12-input-phone.png');
                 });
 
                 test('+7 (912) 345|-67-89 => Delete => +7 (912) 345-|67-89', async ({
@@ -526,7 +530,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('13-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('13-input-phone.png');
                 });
 
                 test('+7 (912|) 345-67-89 => Backspace x2 => +7 (912) |345-67-89', async ({
@@ -557,7 +561,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) '.length,
                     );
 
-                    await expect(example).toHaveScreenshot('14-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('14-input-phone.png');
                 });
             });
 
@@ -588,7 +592,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-67'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('15-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('15-input-phone.png');
                     });
 
                     test('+7 (912) 345-6|7-89| => Backspace => +7 (912) 345-6|', async ({
@@ -612,7 +616,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-6'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('16-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('16-input-phone.png');
                     });
 
                     test('+7 (912) 345-6|7-8|9 => Backspace => +7 (912) 345-6|9', async ({
@@ -637,7 +641,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-6'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('17-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('17-input-phone.png');
                     });
 
                     test('+7 (912) 345-|67|-89 => Backspace => +7 (912) 345-|89', async ({
@@ -664,7 +668,7 @@ test.describe('InputPhone', () => {
                             'selectionEnd',
                             '+7 (912) 345-'.length,
                         );
-                        await expect(example).toHaveScreenshot('18-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('18-input-phone.png');
                     });
 
                     test('+7 (912) |345|-67-89 => Backspace => +7 (912) |678-9', async ({
@@ -692,7 +696,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) '.length,
                         );
 
-                        await expect(example).toHaveScreenshot('19-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('19-input-phone.png');
                     });
                 });
 
@@ -718,7 +722,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-67'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('20-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('20-input-phone.png');
                     });
 
                     test('+7 (912) 345-6|7-89| => Delete => +7 (912) 345-6|', async ({
@@ -752,7 +756,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-6'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('21-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('21-input-phone.png');
                     });
 
                     test('+7 (912) 345-6|7-8|9 => Delete => +7 (912) 345-6|9', async ({
@@ -777,7 +781,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-6'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('22-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('22-input-phone.png');
                     });
 
                     test('+7 (912) 345-|67|-89 => Delete => +7 (912) 345-|89', async ({
@@ -805,7 +809,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('23-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('23-input-phone.png');
                     });
 
                     test('+7 (912) |345|-67-89 => Delete => +7 (912) |678-9', async ({
@@ -833,7 +837,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) '.length,
                         );
 
-                        await expect(example).toHaveScreenshot('24-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('24-input-phone.png');
                     });
                 });
 
@@ -859,7 +863,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-67-0'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('25-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('25-input-phone.png');
                     });
 
                     test('+7 (912) 345-6|7-89| => Press 0 => +7 (912) 345-60|', async ({
@@ -883,7 +887,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-60'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('26-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('26-input-phone.png');
                     });
 
                     test('+7 (912) 345-6|7-8|9 => Press 0 => +7 (912) 345-60-|9', async ({
@@ -908,7 +912,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-60-'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('27-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('27-input-phone.png');
                     });
 
                     test('+7 (912) 345-|67|-89 => Press 0 => +7 (912) 345-0|8-9', async ({
@@ -937,7 +941,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 345-0'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('28-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('28-input-phone.png');
                     });
 
                     test('+7 (912) |345|-67-89 => Press "0" => +7 (912) 0|67-89', async ({
@@ -966,7 +970,7 @@ test.describe('InputPhone', () => {
                             '+7 (912) 0'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('29-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('29-input-phone.png');
                     });
                 });
 
@@ -992,7 +996,7 @@ test.describe('InputPhone', () => {
                             '+7 (912)'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('30-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('30-input-phone.png');
                     });
 
                     test('and press Delete => no changes => move caret to the right side', async ({
@@ -1020,7 +1024,7 @@ test.describe('InputPhone', () => {
                             '+7 (912'.length,
                         );
 
-                        await expect(example).toHaveScreenshot('31-input-phone.png');
+                        await expect.soft(example).toHaveScreenshot('31-input-phone.png');
                     });
                 });
             });
@@ -1037,14 +1041,14 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67-89'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('32-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('32-input-phone.png');
 
                     await page.keyboard.press('Delete');
 
                     await expect(input).toHaveJSProperty('selectionStart', '+7 '.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 '.length);
 
-                    await expect(example).toHaveScreenshot('33-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('33-input-phone.png');
 
                     await page.keyboard.press(`${CMD}+Z`);
 
@@ -1054,7 +1058,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67-89'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('34-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('34-input-phone.png');
                 });
 
                 test('+7 (912) 345-67|-89 => Backspace (x2) => Ctrl + Z (x2)', async ({
@@ -1076,7 +1080,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('35-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('35-input-phone.png');
 
                     await page.keyboard.press(`${CMD}+Z`);
 
@@ -1089,7 +1093,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-6'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('36-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('36-input-phone.png');
 
                     await page.keyboard.press(`${CMD}+Z`);
 
@@ -1102,7 +1106,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('37-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('37-input-phone.png');
                 });
 
                 test('+7 (912) |345-67|-89 => Delete => Cmd + Z', async ({page}) => {
@@ -1128,7 +1132,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) '.length,
                     );
 
-                    await expect(example).toHaveScreenshot('38-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('38-input-phone.png');
 
                     await page.keyboard.press(`${CMD}+Z`);
 
@@ -1141,7 +1145,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('39-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('39-input-phone.png');
                 });
             });
 
@@ -1157,7 +1161,7 @@ test.describe('InputPhone', () => {
                     await expect(input).toHaveJSProperty('selectionStart', '+7 '.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 '.length);
 
-                    await expect(example).toHaveScreenshot('40-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('40-input-phone.png');
 
                     await page.keyboard.press(`${CMD}+Z`);
 
@@ -1167,14 +1171,14 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67-89'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('41-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('41-input-phone.png');
 
                     await page.keyboard.press(`${CMD}+Shift+Z`);
 
                     await expect(input).toHaveJSProperty('selectionStart', '+7 '.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 '.length);
 
-                    await expect(example).toHaveScreenshot('42-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('42-input-phone.png');
                 });
 
                 test('+7 (912) 345-67|-89 => Backspace (x2) => Ctrl + Z (x2) => Ctrl + Y (x2)', async ({
@@ -1197,7 +1201,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('43-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('43-input-phone.png');
 
                     await page.keyboard.press(`${CMD}+Z`);
 
@@ -1221,7 +1225,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('44-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('44-input-phone.png');
 
                     await page.keyboard.press('Control+Y');
 
@@ -1245,7 +1249,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('45-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('45-input-phone.png');
                 });
 
                 test('+7 (912) |345-67|-89 => Delete => Cmd + Z => Cmd + Shift + Z', async ({
@@ -1273,7 +1277,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) '.length,
                     );
 
-                    await expect(example).toHaveScreenshot('46-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('46-input-phone.png');
 
                     await page.keyboard.press(`${CMD}+Z`);
 
@@ -1286,7 +1290,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('47-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('47-input-phone.png');
 
                     await page.keyboard.press(`${CMD}+Shift+Z`);
 
@@ -1299,7 +1303,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) '.length,
                     );
 
-                    await expect(example).toHaveScreenshot('48-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('48-input-phone.png');
                 });
             });
 
@@ -1322,7 +1326,7 @@ test.describe('InputPhone', () => {
                     await expect(input).toHaveJSProperty('selectionStart', '+7 '.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 '.length);
 
-                    await expect(example).toHaveScreenshot('49-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('49-input-phone.png');
                 });
 
                 test('cannot be removed via selectAll + Delete', async ({page}) => {
@@ -1343,7 +1347,7 @@ test.describe('InputPhone', () => {
                     await expect(input).toHaveJSProperty('selectionStart', '+7 '.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 '.length);
 
-                    await expect(example).toHaveScreenshot('50-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('50-input-phone.png');
                 });
 
                 test('cannot be removed via Backspace', async ({page}) => {
@@ -1369,7 +1373,7 @@ test.describe('InputPhone', () => {
                         '+7 (912) 345-67-8'.length,
                     );
 
-                    await expect(example).toHaveScreenshot('51-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('51-input-phone.png');
                 });
 
                 test('cannot be removed via Delete', async ({page}) => {
@@ -1386,7 +1390,7 @@ test.describe('InputPhone', () => {
                     await expect(input).toHaveJSProperty('selectionStart', '+7 '.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 '.length);
 
-                    await expect(example).toHaveScreenshot('52-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('52-input-phone.png');
                 });
 
                 test('appears on focus if input is empty', async () => {
@@ -1395,14 +1399,14 @@ test.describe('InputPhone', () => {
                     await expect(input).toHaveJSProperty('selectionStart', 0);
                     await expect(input).toHaveJSProperty('selectionEnd', 0);
 
-                    await expect(example).toHaveScreenshot('53-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('53-input-phone.png');
 
                     await input.focus();
 
                     await expect(input).toHaveJSProperty('selectionStart', '+7 '.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 '.length);
 
-                    await expect(example).toHaveScreenshot('54-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('54-input-phone.png');
                 });
             });
 
@@ -1416,7 +1420,7 @@ test.describe('InputPhone', () => {
                     );
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 (7'.length);
 
-                    await expect(example).toHaveScreenshot('55-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('55-input-phone.png');
                 });
 
                 test('+7 (7| => Type 7 => +7 (77', async () => {
@@ -1428,7 +1432,7 @@ test.describe('InputPhone', () => {
                     );
                     await expect(input).toHaveJSProperty('selectionEnd', '+7 (77'.length);
 
-                    await expect(example).toHaveScreenshot('56-input-phone.png');
+                    await expect.soft(example).toHaveScreenshot('56-input-phone.png');
                 });
             });
         });
@@ -1443,7 +1447,7 @@ test.describe('InputPhone', () => {
 
             await example.getByTestId('tui-primitive-textfield__native-input').focus();
 
-            await expect(example).toHaveScreenshot('57-input-phone.png');
+            await expect.soft(example).toHaveScreenshot('57-input-phone.png');
         });
     });
 });

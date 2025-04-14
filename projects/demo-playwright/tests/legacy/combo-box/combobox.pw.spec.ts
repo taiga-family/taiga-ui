@@ -20,20 +20,28 @@ test.describe('ComboBox', () => {
         await example.scrollIntoViewIfNeeded();
         await input.click();
 
-        await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-01.png');
+        await expect
+            .soft(page)
+            .toHaveScreenshot('01-combobox-dont-allow-disabled-01.png');
 
         await input.fill('Graham Chapman');
 
-        await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-02.png');
+        await expect
+            .soft(page)
+            .toHaveScreenshot('01-combobox-dont-allow-disabled-02.png');
 
         await page.click('body');
         await example.scrollIntoViewIfNeeded();
 
-        await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-03.png');
+        await expect
+            .soft(page)
+            .toHaveScreenshot('01-combobox-dont-allow-disabled-03.png');
 
         await input.click();
 
-        await expect(page).toHaveScreenshot('01-combobox-dont-allow-disabled-04.png');
+        await expect
+            .soft(page)
+            .toHaveScreenshot('01-combobox-dont-allow-disabled-04.png');
     });
 
     test.describe('API', () => {
@@ -56,40 +64,48 @@ test.describe('ComboBox', () => {
                     icons: await page.locator('tui-icon >> visible=true').all(),
                 });
 
-                await expect(page).toHaveScreenshot(
-                    `search-should-not-be-reset-strict-${strict}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(`search-should-not-be-reset-strict-${strict}.png`);
 
                 await textfield.click();
                 await page.keyboard.type('Rubles (500)');
 
-                await expect(page).toHaveScreenshot(
-                    `search-should-not-be-reset-strict-waited-mark-${strict}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(
+                        `search-should-not-be-reset-strict-waited-mark-${strict}.png`,
+                    );
 
                 await comboBoxPO.selectOptions([0]);
                 await page.locator('body').click({position: {x: 0, y: 0}});
 
-                await expect(page).toHaveScreenshot(
-                    `search-should-not-be-reset-strict-focused-${strict}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(
+                        `search-should-not-be-reset-strict-focused-${strict}.png`,
+                    );
 
                 await textfield.click();
                 await page.keyboard.press('Backspace');
                 await page.locator('body').click({position: {x: 0, y: 0}});
 
-                await expect(page).toHaveScreenshot(
-                    `search-should-not-be-reset-strict-backspaced-${strict}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(
+                        `search-should-not-be-reset-strict-backspaced-${strict}.png`,
+                    );
 
                 await textfield.click();
                 await page.keyboard.press('Control+A');
                 await page.keyboard.press('Backspace');
                 await page.locator('body').click({position: {x: 0, y: 0}});
 
-                await expect(page).toHaveScreenshot(
-                    `search-should-not-be-reset-strict-remove-all-${strict}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(
+                        `search-should-not-be-reset-strict-remove-all-${strict}.png`,
+                    );
             });
 
             test(`correct word match when strict is ${strict}`, async ({page}) => {
@@ -105,9 +121,9 @@ test.describe('ComboBox', () => {
                 await textfield.click();
                 await page.keyboard.type('dOlLaRs (237)');
 
-                await expect(page).toHaveScreenshot(
-                    `correct-word-match-when-strict-${strict}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(`correct-word-match-when-strict-${strict}.png`);
 
                 await textfield.click();
 
@@ -115,28 +131,36 @@ test.describe('ComboBox', () => {
                     await page.keyboard.press('Backspace');
                 }
 
-                await expect(page).toHaveScreenshot(
-                    `correct-word-match-when-strict-backspaced-${strict}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(
+                        `correct-word-match-when-strict-backspaced-${strict}.png`,
+                    );
 
                 await page.locator('body').click({position: {x: 0, y: 0}});
 
-                await expect(page).toHaveScreenshot(
-                    `correct-word-match-when-strict-focused-${strict}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(
+                        `correct-word-match-when-strict-focused-${strict}.png`,
+                    );
 
                 await textfield.click();
                 await textfield.clear();
 
-                await expect(page).toHaveScreenshot(
-                    `correct-word-match-when-strict-remove-all-${strict}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(
+                        `correct-word-match-when-strict-remove-all-${strict}.png`,
+                    );
 
                 await textfield.click();
 
-                await expect(page).toHaveScreenshot(
-                    `correct-word-match-when-strict-focused-2-${strict}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(
+                        `correct-word-match-when-strict-focused-2-${strict}.png`,
+                    );
             });
         });
     });

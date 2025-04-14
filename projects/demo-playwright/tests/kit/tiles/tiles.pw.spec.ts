@@ -10,7 +10,7 @@ test.describe('Tiles', () => {
         const drag = example.locator('tui-tile').first();
         const drop = example.locator('tui-tile').last();
 
-        await expect(example).toHaveScreenshot('01-tiles-drag-and-drop.png');
+        await expect.soft(example).toHaveScreenshot('01-tiles-drag-and-drop.png');
 
         // Dragging manually (dragTo is flaky method)
         await drag.hover();
@@ -20,6 +20,6 @@ test.describe('Tiles', () => {
 
         await page.mouse.click(100, 100); // clear focus
 
-        await expect(example).toHaveScreenshot('02-tiles-drag-and-drop.png');
+        await expect.soft(example).toHaveScreenshot('02-tiles-drag-and-drop.png');
     });
 });

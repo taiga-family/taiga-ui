@@ -19,9 +19,9 @@ test.describe('Input', () => {
 
         await document.waitTuiIcons();
 
-        await expect(document.apiPageExample).toHaveScreenshot(
-            '01-custom-text-content-cleaner-hint.png',
-        );
+        await expect
+            .soft(document.apiPageExample)
+            .toHaveScreenshot('01-custom-text-content-cleaner-hint.png');
     });
 
     test('correctly aligns single custom content (as large icon)', async ({page}) => {
@@ -34,9 +34,9 @@ test.describe('Input', () => {
 
         await document.waitTuiIcons();
 
-        await expect(document.apiPageExample).toHaveScreenshot(
-            '02-custom-large-icon-content.png',
-        );
+        await expect
+            .soft(document.apiPageExample)
+            .toHaveScreenshot('02-custom-large-icon-content.png');
     });
 
     test("custom content (as large icon) + cleaner + hint don't overlapping each others", async ({
@@ -51,9 +51,9 @@ test.describe('Input', () => {
 
         await document.waitTuiIcons();
 
-        await expect(document.apiPageExample).toHaveScreenshot(
-            '03-custom-large-icon-content-cleaner-hint.png',
-        );
+        await expect
+            .soft(document.apiPageExample)
+            .toHaveScreenshot('03-custom-large-icon-content-cleaner-hint.png');
     });
 
     test("custom content (as normal-size icon) + cleaner + hint don't overlapping each others", async ({
@@ -68,9 +68,9 @@ test.describe('Input', () => {
 
         await document.waitTuiIcons();
 
-        await expect(document.apiPageExample).toHaveScreenshot(
-            '04-custom-normal-icon-content-cleaner-hint.png',
-        );
+        await expect
+            .soft(document.apiPageExample)
+            .toHaveScreenshot('04-custom-normal-icon-content-cleaner-hint.png');
     });
 
     test('input overflow due to placeholder', async ({page}) => {
@@ -88,16 +88,16 @@ test.describe('Input', () => {
 
         await input.focus();
 
-        await expect(document.apiPageExample).toHaveScreenshot(
-            '05-placeholder-will-be-hidden-inside.png',
-        );
+        await expect
+            .soft(document.apiPageExample)
+            .toHaveScreenshot('05-placeholder-will-be-hidden-inside.png');
 
         await input.clear();
         await input.blur();
 
-        await expect(example).toHaveScreenshot(
-            '06-placeholder-will-be-hidden-inside.png',
-        );
+        await expect
+            .soft(example)
+            .toHaveScreenshot('06-placeholder-will-be-hidden-inside.png');
     });
 
     test('character descenders overflow the line', async ({page}) => {
@@ -115,7 +115,7 @@ test.describe('Input', () => {
 
         await input.clear();
 
-        await expect(example).toHaveScreenshot('07-character-descenders.png');
+        await expect.soft(example).toHaveScreenshot('07-character-descenders.png');
 
         await input.focus();
         await page.keyboard.type(
@@ -124,7 +124,7 @@ test.describe('Input', () => {
         await page.keyboard.press('Enter');
         await input.blur();
 
-        await expect(example).toHaveScreenshot('08-character-descenders.png');
+        await expect.soft(example).toHaveScreenshot('08-character-descenders.png');
     });
 
     test('can be horizontally scrolled', async ({page}) => {
@@ -144,11 +144,11 @@ test.describe('Input', () => {
         );
         await input.blur();
 
-        await expect(example).toHaveScreenshot('09-horizontally-scrolled.png');
+        await expect.soft(example).toHaveScreenshot('09-horizontally-scrolled.png');
 
         await input.focus();
 
-        await expect(example).toHaveScreenshot('10-horizontally-scrolled.png');
+        await expect.soft(example).toHaveScreenshot('10-horizontally-scrolled.png');
 
         await page.evaluate(() => {
             const input = window.document.querySelector('input[tuiTextfieldLegacy]');
@@ -158,7 +158,7 @@ test.describe('Input', () => {
             }
         });
 
-        await expect(example).toHaveScreenshot('11-horizontally-scrolled.png');
+        await expect.soft(example).toHaveScreenshot('11-horizontally-scrolled.png');
     });
 
     test('external mask works', async ({page}) => {
@@ -172,7 +172,7 @@ test.describe('Input', () => {
         await inputs.last().fill('111111111111');
         await inputs.last().blur();
 
-        await expect(example).toHaveScreenshot('11-mask.png');
+        await expect.soft(example).toHaveScreenshot('11-mask.png');
     });
 
     test.describe('check tuiTextfieldCleaner', () => {
@@ -187,9 +187,11 @@ test.describe('Input', () => {
 
                 await document.waitTuiIcons();
 
-                await expect(document.apiPageExample).toHaveScreenshot(
-                    `12-input-tuiTextfieldIcon-tuiTextfieldCleaner-tuiTextfieldSize-${size}.png`,
-                );
+                await expect
+                    .soft(document.apiPageExample)
+                    .toHaveScreenshot(
+                        `12-input-tuiTextfieldIcon-tuiTextfieldCleaner-tuiTextfieldSize-${size}.png`,
+                    );
             });
         });
     });

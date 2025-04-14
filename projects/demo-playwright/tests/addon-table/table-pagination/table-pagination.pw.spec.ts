@@ -22,7 +22,7 @@ test.describe('TablePagination', () => {
             await linesPerPageButton.click();
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect(page).toHaveScreenshot('0-[size]-dropdown-base.png');
+            await expect.soft(page).toHaveScreenshot('0-[size]-dropdown-base.png');
         });
 
         test('With very long option name', async ({page}) => {
@@ -41,7 +41,7 @@ test.describe('TablePagination', () => {
             await tablePagination.linesPerPageButton.click();
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect(page).toHaveScreenshot('1-[size]-dropdown-base.png');
+            await expect.soft(page).toHaveScreenshot('1-[size]-dropdown-base.png');
         });
     });
 
@@ -58,9 +58,9 @@ test.describe('TablePagination', () => {
 
         await linesPerPageButton.click();
 
-        await expect(linesPerPageDropdown).toHaveScreenshot(
-            '2-[sizeOptionContent]-dropdown.png',
-        );
+        await expect
+            .soft(linesPerPageDropdown)
+            .toHaveScreenshot('2-[sizeOptionContent]-dropdown.png');
     });
 
     test.describe('LinesPerPageButton', () => {

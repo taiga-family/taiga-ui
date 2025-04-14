@@ -26,7 +26,7 @@ test.describe('InputNumber', () => {
             await input.focus();
             await input.fill('1,2345');
 
-            await expect(example).toHaveScreenshot('01-input-number.png');
+            await expect.soft(example).toHaveScreenshot('01-input-number.png');
         });
 
         test('does not mutate already valid too large number on blur', async ({page}) => {
@@ -51,13 +51,13 @@ test.describe('InputNumber', () => {
                 `${DemoRoute.InputNumberLegacy}/API?tuiTextfieldPrefix=$&tuiTextfieldPostfix=GBP`,
             );
 
-            await expect(example).toHaveScreenshot('02-input-number.png');
+            await expect.soft(example).toHaveScreenshot('02-input-number.png');
 
             await input.focus();
             await input.clear();
 
             await expect(input).toHaveValue('$ GBP');
-            await expect(example).toHaveScreenshot('03-input-number.png');
+            await expect.soft(example).toHaveScreenshot('03-input-number.png');
         });
 
         ['left', 'right'].forEach((align, i) => {
@@ -69,7 +69,7 @@ test.describe('InputNumber', () => {
                     `${DemoRoute.InputNumberLegacy}/API?style.text-align=${align}&tuiTextfieldPrefix=${readableFormatText}&tuiTextfieldPostfix=${readableFormatText}`,
                 );
 
-                await expect(example).toHaveScreenshot(`04-input-number-${i}.png`);
+                await expect.soft(example).toHaveScreenshot(`04-input-number-${i}.png`);
             });
         });
 
@@ -81,7 +81,9 @@ test.describe('InputNumber', () => {
                         `${DemoRoute.InputNumberLegacy}/API?tuiTextfieldPostfix=$&tuiTextfieldPrefix=VeryLongText&sandboxWidth=${sandboxWidth}`,
                     );
 
-                    await expect(example).toHaveScreenshot(`05-input-number-${i}.png`);
+                    await expect
+                        .soft(example)
+                        .toHaveScreenshot(`05-input-number-${i}.png`);
                 });
             });
         });
@@ -106,7 +108,7 @@ test.describe('InputNumber', () => {
                         '105,0'.length,
                     );
                     await expect(input).toHaveJSProperty('selectionEnd', '105,0'.length);
-                    await expect(example).toHaveScreenshot('07-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('07-input-number.png');
                 });
 
                 test('105,0|0 => Backspace => 105,|00', async ({page}) => {
@@ -115,7 +117,7 @@ test.describe('InputNumber', () => {
 
                     await expect(input).toHaveJSProperty('selectionStart', '105,'.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '105,'.length);
-                    await expect(example).toHaveScreenshot('08-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('08-input-number.png');
                 });
 
                 test('105,|00 => Backspace => 105|,00', async ({page}) => {
@@ -125,7 +127,7 @@ test.describe('InputNumber', () => {
 
                     await expect(input).toHaveJSProperty('selectionStart', '105'.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '105'.length);
-                    await expect(example).toHaveScreenshot('09-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('09-input-number.png');
                 });
 
                 test('105,|00 => Delete => 105,0|0', async ({page}) => {
@@ -138,7 +140,7 @@ test.describe('InputNumber', () => {
                         '105,0'.length,
                     );
                     await expect(input).toHaveJSProperty('selectionEnd', '105,0'.length);
-                    await expect(example).toHaveScreenshot('10-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('10-input-number.png');
                 });
             });
 
@@ -167,7 +169,7 @@ test.describe('InputNumber', () => {
 
                     await expect(input).toHaveJSProperty('selectionStart', '1 '.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '1 '.length);
-                    await expect(example).toHaveScreenshot('11-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('11-input-number.png');
                 });
 
                 test('1 |000 => Backspace => 1| 000', async ({page}) => {
@@ -186,7 +188,7 @@ test.describe('InputNumber', () => {
 
                     await expect(input).toHaveJSProperty('selectionStart', '1'.length);
                     await expect(input).toHaveJSProperty('selectionEnd', '1'.length);
-                    await expect(example).toHaveScreenshot('12-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('12-input-number.png');
                 });
             });
         });
@@ -206,7 +208,7 @@ test.describe('InputNumber', () => {
 
                     await expect(input).toHaveJSProperty('selectionStart', 1);
                     await expect(input).toHaveJSProperty('selectionEnd', 1);
-                    await expect(example).toHaveScreenshot('13-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('13-input-number.png');
                 });
 
                 test('validates positive value only on blur', async () => {
@@ -214,11 +216,11 @@ test.describe('InputNumber', () => {
 
                     await expect(input).toHaveJSProperty('selectionStart', 1);
                     await expect(input).toHaveJSProperty('selectionEnd', 1);
-                    await expect(example).toHaveScreenshot('14-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('14-input-number.png');
 
                     await input.blur();
 
-                    await expect(example).toHaveScreenshot('15-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('15-input-number.png');
                 });
             });
 
@@ -237,7 +239,7 @@ test.describe('InputNumber', () => {
                     await expect(input).toHaveValue(`${CHAR_MINUS}5`);
                     await expect(input).toHaveJSProperty('selectionStart', 2);
                     await expect(input).toHaveJSProperty('selectionEnd', 2);
-                    await expect(example).toHaveScreenshot('16-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('16-input-number.png');
                 });
 
                 test("don't touch any positive value", async ({page}) => {
@@ -245,13 +247,13 @@ test.describe('InputNumber', () => {
 
                     await expect(input).toHaveJSProperty('selectionStart', 1);
                     await expect(input).toHaveJSProperty('selectionEnd', 1);
-                    await expect(example).toHaveScreenshot('17-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('17-input-number.png');
 
                     await input.fill('0');
 
                     await expect(input).toHaveJSProperty('selectionStart', 1);
                     await expect(input).toHaveJSProperty('selectionEnd', 1);
-                    await expect(example).toHaveScreenshot('18-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('18-input-number.png');
 
                     await input.blur();
 
@@ -260,7 +262,7 @@ test.describe('InputNumber', () => {
 
                     await page.waitForTimeout(100); // to be sure that value is not changed even in case of some async validation
 
-                    await expect(example).toHaveScreenshot('19-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('19-input-number.png');
                 });
             });
 
@@ -276,15 +278,19 @@ test.describe('InputNumber', () => {
 
                 textfield.fill('33'); // less than min
 
-                await expect(example).toHaveScreenshot(
-                    '20-input-number-positive-min-positive-wrong-value.png',
-                );
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot(
+                        '20-input-number-positive-min-positive-wrong-value.png',
+                    );
 
                 textfield.fill('333'); // more than min
 
-                await expect(example).toHaveScreenshot(
-                    '20-input-number-positive-min-positive-valid-value.png',
-                );
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot(
+                        '20-input-number-positive-min-positive-valid-value.png',
+                    );
             });
         });
 
@@ -306,18 +312,18 @@ test.describe('InputNumber', () => {
                     await expect(input).toHaveValue(`${CHAR_MINUS}1`);
                     await expect(input).toHaveJSProperty('selectionStart', 2);
                     await expect(input).toHaveJSProperty('selectionEnd', 2);
-                    await expect(example).toHaveScreenshot(
-                        '21-input-number-before-blur.png',
-                    );
+                    await expect
+                        .soft(example)
+                        .toHaveScreenshot('21-input-number-before-blur.png');
 
                     await input.blur();
 
                     await expect(input).toHaveValue(`${CHAR_MINUS}5`);
                     await expect(input).toHaveJSProperty('selectionStart', 2);
                     await expect(input).toHaveJSProperty('selectionEnd', 2);
-                    await expect(example).toHaveScreenshot(
-                        '21-input-number-after-blur.png',
-                    );
+                    await expect
+                        .soft(example)
+                        .toHaveScreenshot('21-input-number-after-blur.png');
                 });
             });
 
@@ -334,7 +340,7 @@ test.describe('InputNumber', () => {
                     await expect(input).toHaveValue('12');
                     await expect(input).toHaveJSProperty('selectionStart', 2);
                     await expect(input).toHaveJSProperty('selectionEnd', 2);
-                    await expect(example).toHaveScreenshot('22-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('22-input-number.png');
                 });
 
                 test("don't touch any negative value", async ({page}) => {
@@ -343,7 +349,7 @@ test.describe('InputNumber', () => {
                     await expect(input).toHaveValue(`${CHAR_MINUS}1`);
                     await expect(input).toHaveJSProperty('selectionStart', 2);
                     await expect(input).toHaveJSProperty('selectionEnd', 2);
-                    await expect(example).toHaveScreenshot('23-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('23-input-number.png');
 
                     await page.keyboard.down('9');
 
@@ -352,14 +358,14 @@ test.describe('InputNumber', () => {
                     await expect(input).toHaveValue(`${CHAR_MINUS}19`);
                     await expect(input).toHaveJSProperty('selectionStart', 3);
                     await expect(input).toHaveJSProperty('selectionEnd', 3);
-                    await expect(example).toHaveScreenshot('24-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('24-input-number.png');
 
                     await page.waitForTimeout(100);
 
                     await expect(input).toHaveValue(`${CHAR_MINUS}19`);
                     await expect(input).toHaveJSProperty('selectionStart', 3);
                     await expect(input).toHaveJSProperty('selectionEnd', 3);
-                    await expect(example).toHaveScreenshot('25-input-number.png');
+                    await expect.soft(example).toHaveScreenshot('25-input-number.png');
                 });
             });
         });
@@ -376,7 +382,7 @@ test.describe('InputNumber', () => {
                 await expect(input).toHaveValue('42');
                 await expect(input).toHaveJSProperty('selectionStart', 2);
                 await expect(input).toHaveJSProperty('selectionEnd', 2);
-                await expect(example).toHaveScreenshot('26-input-number.png');
+                await expect.soft(example).toHaveScreenshot('26-input-number.png');
             });
 
             test('Value 42,1 (decimalMode=not-zero) => 42,1', async ({page}) => {
@@ -394,7 +400,7 @@ test.describe('InputNumber', () => {
                 await input.blur();
 
                 await expect(input).toHaveValue('42.1');
-                await expect(example).toHaveScreenshot('27-input-number.png');
+                await expect.soft(example).toHaveScreenshot('27-input-number.png');
             });
 
             test('Value 42,1 (decimalMode=pad) => 42,10', async ({page}) => {
@@ -412,7 +418,7 @@ test.describe('InputNumber', () => {
                 await input.blur();
 
                 await expect(input).toHaveValue('42.10');
-                await expect(example).toHaveScreenshot('28-input-number.png');
+                await expect.soft(example).toHaveScreenshot('28-input-number.png');
             });
 
             test('Value 42,00 (decimalMode=not-zero) => 42', async ({page}) => {
@@ -425,7 +431,7 @@ test.describe('InputNumber', () => {
 
                 await expect(input).toHaveJSProperty('selectionStart', 5);
                 await expect(input).toHaveJSProperty('selectionEnd', 5);
-                await expect(example).toHaveScreenshot('29-input-number.png');
+                await expect.soft(example).toHaveScreenshot('29-input-number.png');
             });
 
             test('Value 42,1 (precision=0) => 42', async ({page}) => {
@@ -434,7 +440,7 @@ test.describe('InputNumber', () => {
                 await input.fill('42.1');
 
                 await expect(input).toHaveValue('42');
-                await expect(example).toHaveScreenshot('30-input-number.png');
+                await expect.soft(example).toHaveScreenshot('30-input-number.png');
             });
 
             test('Value 42 (decimalMode=always) => 42.00', async ({page}) => {
@@ -447,7 +453,7 @@ test.describe('InputNumber', () => {
                 await expect(input).toHaveValue('42.00');
                 await expect(input).toHaveJSProperty('selectionStart', 2);
                 await expect(input).toHaveJSProperty('selectionEnd', 2);
-                await expect(example).toHaveScreenshot('31-input-number.png');
+                await expect.soft(example).toHaveScreenshot('31-input-number.png');
             });
 
             test("text field does not contain any digit (only prefix + postfix) => clear text field's value on blur", async ({
@@ -463,7 +469,7 @@ test.describe('InputNumber', () => {
                 await expect(input).toHaveValue('$ kg');
                 await expect(input).toHaveJSProperty('selectionStart', 1);
                 await expect(input).toHaveJSProperty('selectionEnd', 1);
-                await expect(example).toHaveScreenshot('32-input-number.png');
+                await expect.soft(example).toHaveScreenshot('32-input-number.png');
             });
         });
     });
@@ -474,7 +480,7 @@ test.describe('InputNumber', () => {
 
             const example = new TuiDocumentationPagePO(page).getExample('#currency');
 
-            await expect(example).toHaveScreenshot('06-input-number.png');
+            await expect.soft(example).toHaveScreenshot('06-input-number.png');
 
             const inputs = await example
                 .getByTestId('tui-primitive-textfield__native-input')
@@ -485,7 +491,7 @@ test.describe('InputNumber', () => {
                 await input.clear();
 
                 await expect(input).toHaveValue(/\D/);
-                await expect(example).toHaveScreenshot(`06-input-number-${i}.png`);
+                await expect.soft(example).toHaveScreenshot(`06-input-number-${i}.png`);
             }
         });
     });

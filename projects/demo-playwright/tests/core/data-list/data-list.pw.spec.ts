@@ -13,7 +13,9 @@ test.describe('DataList', () => {
         await example.locator('tui-select').click();
         await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
 
-        await expect(page.locator('tui-dropdown')).toHaveScreenshot('01-data-list.png');
+        await expect
+            .soft(page.locator('tui-dropdown'))
+            .toHaveScreenshot('01-data-list.png');
     });
 
     test('Links', async ({page}) => {
@@ -26,7 +28,9 @@ test.describe('DataList', () => {
         await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
         await page.waitForTimeout(300);
 
-        await expect(page.locator('tui-dropdown')).toHaveScreenshot('02-data-list.png');
+        await expect
+            .soft(page.locator('tui-dropdown'))
+            .toHaveScreenshot('02-data-list.png');
     });
 
     test('Submenu', async ({page, browserName}) => {
@@ -50,48 +54,48 @@ test.describe('DataList', () => {
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
 
-        await expect(page).toHaveScreenshot('03-1-data-list.png');
+        await expect.soft(page).toHaveScreenshot('03-1-data-list.png');
 
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
 
         await expect(page.locator('tui-dropdown tui-data-list')).toHaveCount(2);
-        await expect(page).toHaveScreenshot('03-2-data-list.png');
+        await expect.soft(page).toHaveScreenshot('03-2-data-list.png');
 
         await page.keyboard.down('ArrowRight');
 
-        await expect(page).toHaveScreenshot('03-3-data-list.png');
+        await expect.soft(page).toHaveScreenshot('03-3-data-list.png');
 
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
 
-        await expect(page).toHaveScreenshot('03-4-data-list.png');
+        await expect.soft(page).toHaveScreenshot('03-4-data-list.png');
 
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
 
         await expect(page.locator('tui-dropdown tui-data-list')).toHaveCount(3);
-        await expect(page).toHaveScreenshot('03-5-data-list.png');
+        await expect.soft(page).toHaveScreenshot('03-5-data-list.png');
 
         await page.keyboard.down('ArrowRight');
 
-        await expect(page).toHaveScreenshot('03-6-data-list.png');
+        await expect.soft(page).toHaveScreenshot('03-6-data-list.png');
 
         await page.keyboard.down('ArrowDown');
         await page.keyboard.down('ArrowDown');
 
         await expect(page.locator('tui-dropdown tui-data-list')).toHaveCount(3);
-        await expect(page).toHaveScreenshot('03-7-data-list.png');
+        await expect.soft(page).toHaveScreenshot('03-7-data-list.png');
 
         await page.waitForTimeout(100);
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
 
         await expect(page.locator('tui-dropdown tui-data-list')).toHaveCount(0);
-        await expect(page).toHaveScreenshot('03-8-data-list.png');
+        await expect.soft(page).toHaveScreenshot('03-8-data-list.png');
     });
 
     test('Form control', async ({page, browserName}) => {
@@ -107,7 +111,9 @@ test.describe('DataList', () => {
         await example.locator('button').first().click();
         await documentationPagePO.prepareBeforeScreenshot();
 
-        await expect(page.locator('tui-dropdown')).toHaveScreenshot('04-data-list.png');
+        await expect
+            .soft(page.locator('tui-dropdown'))
+            .toHaveScreenshot('04-data-list.png');
     });
 
     test('Complex', async ({page, browserName}) => {
@@ -124,7 +130,7 @@ test.describe('DataList', () => {
         await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
 
-        await expect(page).toHaveScreenshot('05-data-list.png');
+        await expect.soft(page).toHaveScreenshot('05-data-list.png');
 
         const money = page.locator('tui-dropdown').locator('[name="moneyValue"]').nth(0);
 
@@ -133,7 +139,7 @@ test.describe('DataList', () => {
         await money.fill('2000');
         await money.press('Enter');
 
-        await expect(page).toHaveScreenshot('06-data-list.png');
+        await expect.soft(page).toHaveScreenshot('06-data-list.png');
 
         await page.locator('[automation-id="tui-data-list-email-option"]').click();
 
@@ -147,7 +153,7 @@ test.describe('DataList', () => {
         await email.fill('demo@taiga-ui.io');
         await email.press('Enter');
 
-        await expect(page).toHaveScreenshot('07-data-list.png');
+        await expect.soft(page).toHaveScreenshot('07-data-list.png');
 
         await page.locator('[automation-id="tui-data-list-range-option"]').click();
 
@@ -161,12 +167,12 @@ test.describe('DataList', () => {
         await range.fill('04.02.2022 – 04.02.2023');
         await range.press('Enter');
 
-        await expect(page).toHaveScreenshot('08-data-list.png');
+        await expect.soft(page).toHaveScreenshot('08-data-list.png');
 
         await page.locator('[automation-id="tui-data-list-calendar-option"]').click();
         await page.locator('[automation-id="tui-calendar-sheet__cell"]').nth(4).click();
 
-        await expect(page).toHaveScreenshot('09-data-list.png');
+        await expect.soft(page).toHaveScreenshot('09-data-list.png');
     });
 
     test('Options with long text', async ({page, browserName}) => {
@@ -183,6 +189,6 @@ test.describe('DataList', () => {
         await example.locator('button').click();
         await documentationPagePO.prepareBeforeScreenshot();
 
-        await expect(page).toHaveScreenshot('10-data-list.png');
+        await expect.soft(page).toHaveScreenshot('10-data-list.png');
     });
 });

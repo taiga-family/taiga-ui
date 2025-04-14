@@ -18,9 +18,11 @@ test.describe('Viewport', () => {
             await tuiGoto(page, DemoRoute.Breakpoints, {hideHeader: true});
             const example = new TuiDocumentationPagePO(page).getExample('#usage');
 
-            await expect(example).toHaveScreenshot(
-                `01-0${index + 1}-breakpoints-${width}-${height}-viewport.png`,
-            );
+            await expect
+                .soft(example)
+                .toHaveScreenshot(
+                    `01-0${index + 1}-breakpoints-${width}-${height}-viewport.png`,
+                );
         });
     });
 });

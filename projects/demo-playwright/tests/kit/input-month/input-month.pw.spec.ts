@@ -107,9 +107,9 @@ describe('InputMonth', () => {
             test('displays custom option on dropdown', async () => {
                 await inputMonth.textfield.click();
 
-                await expect(dropdown).toHaveScreenshot(
-                    'input-month-with-dropdown-customization.png',
-                );
+                await expect
+                    .soft(dropdown)
+                    .toHaveScreenshot('input-month-with-dropdown-customization.png');
             });
 
             test('closes dropdown after click on custom option', async () => {

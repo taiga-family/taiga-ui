@@ -39,9 +39,9 @@ test.describe('Deep / Toggle', () => {
                     await page.waitForTimeout(300);
                 }
 
-                await expect(api.apiPageExample).toHaveScreenshot(
-                    `deep-${path}-${name}-row-${rowIndex}-toggled.png`,
-                );
+                await expect
+                    .soft(api.apiPageExample)
+                    .toHaveScreenshot(`deep-${path}-${name}-row-${rowIndex}-toggled.png`);
 
                 await toggle.click();
 

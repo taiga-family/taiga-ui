@@ -35,9 +35,11 @@ test.describe('InputTime', () => {
                     await inputTime.textfield.clear();
 
                     await expect(inputTime.textfield).toBeFocused();
-                    await expect(page).toHaveScreenshot(
-                        `0${exampleIndex + 1}-input-time-${id}-${i + 1}.png`,
-                    );
+                    await expect
+                        .soft(page)
+                        .toHaveScreenshot(
+                            `0${exampleIndex + 1}-input-time-${id}-${i + 1}.png`,
+                        );
                 }
             });
         });
@@ -67,7 +69,9 @@ test.describe('InputTime', () => {
 
                 await inputTime.textfield.click();
 
-                await expect(apiPageExample).toHaveScreenshot(`time-mode-${mode}.png`);
+                await expect
+                    .soft(apiPageExample)
+                    .toHaveScreenshot(`time-mode-${mode}.png`);
             });
         });
 
@@ -89,9 +93,9 @@ test.describe('InputTime', () => {
 
                 await inputTime.textfield.click();
 
-                await expect(inputTime.dropdown).toHaveScreenshot(
-                    'dropdown_is_visible.png',
-                );
+                await expect
+                    .soft(inputTime.dropdown)
+                    .toHaveScreenshot('dropdown_is_visible.png');
             });
 
             test('disabledItemHandler disables the specified items in the dropdown', async ({
@@ -108,9 +112,9 @@ test.describe('InputTime', () => {
                 await inputTime.textfield.click();
                 await inputTime.scrollDropdown(0, 500);
 
-                await expect(inputTime.dropdown).toHaveScreenshot(
-                    '06_00_is_disabled.png',
-                );
+                await expect
+                    .soft(inputTime.dropdown)
+                    .toHaveScreenshot('06_00_is_disabled.png');
             });
 
             ['s', 'm', 'l'].forEach((size) => {
@@ -135,9 +139,9 @@ test.describe('InputTime', () => {
 
                     await inputTime.textfield.click();
 
-                    await expect(inputTime.dropdown).toHaveScreenshot(
-                        `dropdown_size_${size}.png`,
-                    );
+                    await expect
+                        .soft(inputTime.dropdown)
+                        .toHaveScreenshot(`dropdown_size_${size}.png`);
                 });
             });
 
@@ -363,13 +367,13 @@ test.describe('InputTime', () => {
 
         await example.scrollIntoViewIfNeeded();
         await example.locator('input[tuiTextfieldLegacy]').fill('18:30:00');
-        await expect(page).toHaveScreenshot('input-time-option-hh-mm-ss__01.png');
+        await expect.soft(page).toHaveScreenshot('input-time-option-hh-mm-ss__01.png');
 
         await page.keyboard.press('Backspace');
         await page.keyboard.press('Backspace');
-        await expect(page).toHaveScreenshot('input-time-option-hh-mm-ss__02.png');
+        await expect.soft(page).toHaveScreenshot('input-time-option-hh-mm-ss__02.png');
 
         await page.keyboard.type('35');
-        await expect(page).toHaveScreenshot('input-time-option-hh-mm-ss__03.png');
+        await expect.soft(page).toHaveScreenshot('input-time-option-hh-mm-ss__03.png');
     });
 });

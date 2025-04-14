@@ -15,8 +15,10 @@ test.describe('Button', () => {
 
         await button.hover();
 
-        await expect(button).toHaveScreenshot(
-            '01-[darkMode=true]-[appearance=icon]-[data-state=hovered].png',
-        );
+        await expect
+            .soft(button)
+            .toHaveScreenshot(
+                '01-[darkMode=true]-[appearance=icon]-[data-state=hovered].png',
+            );
     });
 });

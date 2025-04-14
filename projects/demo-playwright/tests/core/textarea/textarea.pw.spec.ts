@@ -12,9 +12,9 @@ test.describe('Textarea', () => {
             await tuiGoto(page, `components/textarea/API?tuiTextfieldSize=${size}`);
             const {apiPageExample} = new TuiDocumentationPagePO(page);
 
-            await expect(apiPageExample).toHaveScreenshot(
-                `textarea-tuiTextfieldSize-${size}.png`,
-            );
+            await expect
+                .soft(apiPageExample)
+                .toHaveScreenshot(`textarea-tuiTextfieldSize-${size}.png`);
         });
     });
 
@@ -29,12 +29,12 @@ test.describe('Textarea', () => {
 
         await textarea.fill('1\n2\n3\n4');
 
-        await expect(textAreaComponent).toHaveScreenshot('textarea-line-break.png');
+        await expect.soft(textAreaComponent).toHaveScreenshot('textarea-line-break.png');
 
         await page.locator('.t-row input[tuiSwitch]').first().click();
 
-        await expect(textAreaComponent).toHaveScreenshot(
-            'textarea-line-break-disabled.png',
-        );
+        await expect
+            .soft(textAreaComponent)
+            .toHaveScreenshot('textarea-line-break-disabled.png');
     });
 });

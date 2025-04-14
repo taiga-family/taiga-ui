@@ -20,7 +20,7 @@ test.describe('ActionBar', () => {
         await api.hideContent();
         await api.prepareBeforeScreenshot();
 
-        await expect(actionBarExample).toHaveScreenshot('01-actions-bar-mobile.png');
+        await expect.soft(actionBarExample).toHaveScreenshot('01-actions-bar-mobile.png');
 
         const more = actionBarExample.locator('button:has-text("More")');
 
@@ -29,8 +29,8 @@ test.describe('ActionBar', () => {
         await api.hideContent();
         await api.prepareBeforeScreenshot();
 
-        await expect(actionBarExample).toHaveScreenshot(
-            '01-action-bar-mobile-expanded.png',
-        );
+        await expect
+            .soft(actionBarExample)
+            .toHaveScreenshot('01-action-bar-mobile-expanded.png');
     });
 });

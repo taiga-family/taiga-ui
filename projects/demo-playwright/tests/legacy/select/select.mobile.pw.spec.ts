@@ -13,8 +13,8 @@ test.describe('Select', () => {
 
         await dropdown.selectOption({index: 1});
 
-        await expect(page.locator('#native-select')).toHaveScreenshot(
-            '01-native-select-value.png',
-        );
+        await expect
+            .soft(page.locator('#native-select'))
+            .toHaveScreenshot('01-native-select-value.png');
     });
 });

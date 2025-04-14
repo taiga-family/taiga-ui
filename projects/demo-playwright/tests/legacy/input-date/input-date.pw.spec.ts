@@ -40,21 +40,21 @@ test.describe('InputDate', () => {
                 await input.scrollIntoViewIfNeeded();
                 await input.click();
 
-                await expect(page).toHaveScreenshot(`01-01-input-date-${size}.png`);
+                await expect.soft(page).toHaveScreenshot(`01-01-input-date-${size}.png`);
 
                 await input.clear();
 
-                await expect(page).toHaveScreenshot(`01-02-input-date-${size}.png`);
+                await expect.soft(page).toHaveScreenshot(`01-02-input-date-${size}.png`);
 
                 await input.focus();
                 await page.keyboard.type('01.');
 
-                await expect(page).toHaveScreenshot(`01-03-input-date-${size}.png`);
+                await expect.soft(page).toHaveScreenshot(`01-03-input-date-${size}.png`);
 
                 await input.focus();
                 await page.keyboard.type('06.1994');
 
-                await expect(page).toHaveScreenshot(`01-04-input-date-${size}.png`);
+                await expect.soft(page).toHaveScreenshot(`01-04-input-date-${size}.png`);
             }
         });
 
@@ -73,16 +73,16 @@ test.describe('InputDate', () => {
 
                 await inputDate.textfield.focus();
 
-                await expect(inputDate.host).toHaveScreenshot(
-                    '14-backspace-pressed-0-times.png',
-                );
+                await expect
+                    .soft(inputDate.host)
+                    .toHaveScreenshot('14-backspace-pressed-0-times.png');
 
                 for (let i = 1; i <= 8; i++) {
                     await inputDate.textfield.press('Backspace');
 
-                    await expect(inputDate.host).toHaveScreenshot(
-                        `14-backspace-pressed-${i}-times.png`,
-                    );
+                    await expect
+                        .soft(inputDate.host)
+                        .toHaveScreenshot(`14-backspace-pressed-${i}-times.png`);
                 }
 
                 await expect(inputDate.textfield).toHaveValue('');
@@ -96,12 +96,12 @@ test.describe('InputDate', () => {
 
             await inputDate.textfield.click();
 
-            await expect(inputDate.textfield).toHaveScreenshot(
-                '05-input-actual-min-max.png',
-            );
-            await expect(inputDate.calendar).toHaveScreenshot(
-                '05-calendar-actual-min-max.png',
-            );
+            await expect
+                .soft(inputDate.textfield)
+                .toHaveScreenshot('05-input-actual-min-max.png');
+            await expect
+                .soft(inputDate.calendar)
+                .toHaveScreenshot('05-calendar-actual-min-max.png');
         });
     });
 
@@ -138,15 +138,15 @@ test.describe('InputDate', () => {
                 await inputDate.textfield.click();
                 await documentationPage.prepareBeforeScreenshot();
 
-                await expect(page).toHaveScreenshot(`02-01-input-date-${size}.png`);
+                await expect.soft(page).toHaveScreenshot(`02-01-input-date-${size}.png`);
 
                 await page.keyboard.type('01.');
 
-                await expect(page).toHaveScreenshot(`02-02-input-date-${size}.png`);
+                await expect.soft(page).toHaveScreenshot(`02-02-input-date-${size}.png`);
 
                 await page.keyboard.type('06.1994');
 
-                await expect(page).toHaveScreenshot(`02-03-input-date-${size}.png`);
+                await expect.soft(page).toHaveScreenshot(`02-03-input-date-${size}.png`);
             });
         });
 
@@ -157,7 +157,7 @@ test.describe('InputDate', () => {
             await inputDate.textfield.click();
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect(page).toHaveScreenshot('03-input-date.png');
+            await expect.soft(page).toHaveScreenshot('03-input-date.png');
         });
 
         test('minimum month more than current month', async ({page}) => {
@@ -167,7 +167,7 @@ test.describe('InputDate', () => {
             await inputDate.textfield.click();
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect(page).toHaveScreenshot('04-input-date.png');
+            await expect.soft(page).toHaveScreenshot('04-input-date.png');
         });
 
         test.describe('Invalid date cases', () => {
@@ -179,7 +179,9 @@ test.describe('InputDate', () => {
 
                 await expect(inputDate.textfield).toHaveJSProperty('selectionStart', 1);
                 await expect(inputDate.textfield).toHaveJSProperty('selectionEnd', 1);
-                await expect(inputDate.textfield).toHaveScreenshot('05-input-date.png');
+                await expect
+                    .soft(inputDate.textfield)
+                    .toHaveScreenshot('05-input-date.png');
             });
 
             test('does not accept month > 12', async ({page}) => {
@@ -196,7 +198,9 @@ test.describe('InputDate', () => {
                     'selectionEnd',
                     '17.1'.length,
                 );
-                await expect(inputDate.textfield).toHaveScreenshot('06-input-date.png');
+                await expect
+                    .soft(inputDate.textfield)
+                    .toHaveScreenshot('06-input-date.png');
             });
 
             test('Type 999999 => 09.09.9999', async ({page}) => {
@@ -213,7 +217,9 @@ test.describe('InputDate', () => {
                     'selectionEnd',
                     '09.09.9999'.length,
                 );
-                await expect(inputDate.textfield).toHaveScreenshot('07-input-date.png');
+                await expect
+                    .soft(inputDate.textfield)
+                    .toHaveScreenshot('07-input-date.png');
             });
         });
 
@@ -229,7 +235,7 @@ test.describe('InputDate', () => {
 
             await calendarSheet?.clickOnDay(1);
 
-            await expect(inputDate.textfield).toHaveScreenshot('10-input-date.png');
+            await expect.soft(inputDate.textfield).toHaveScreenshot('10-input-date.png');
         });
 
         test('Click `Until today`, calendar not switched to large date', async ({
@@ -242,7 +248,7 @@ test.describe('InputDate', () => {
 
             await inputDate.textfield.click();
 
-            await expect(inputDate.calendar).toHaveScreenshot('11-input-date.png');
+            await expect.soft(inputDate.calendar).toHaveScreenshot('11-input-date.png');
         });
 
         test('Press backspace to remove `Until today`, textfield is empty', async ({
@@ -257,7 +263,7 @@ test.describe('InputDate', () => {
             await inputDate.textfield.press('Backspace');
 
             await expect(inputDate.textfield).toHaveValue('');
-            await expect(inputDate.textfield).toHaveScreenshot('12-input-date.png');
+            await expect.soft(inputDate.textfield).toHaveScreenshot('12-input-date.png');
         });
 
         test('Enter item date, it converts to item name', async ({page}) => {
@@ -269,7 +275,7 @@ test.describe('InputDate', () => {
             await inputDate.textfield.fill(today);
 
             await expect(inputDate.textfield).toHaveValue('Until today');
-            await expect(inputDate.textfield).toHaveScreenshot('13-input-date.png');
+            await expect.soft(inputDate.textfield).toHaveScreenshot('13-input-date.png');
         });
     });
 
@@ -292,7 +298,7 @@ test.describe('InputDate', () => {
                 await api.prepareBeforeScreenshot();
                 await example.locator('tui-input-date .t-icon tui-icon').click();
 
-                await expect(page).toHaveScreenshot(`08-input-date-${language}.png`);
+                await expect.soft(page).toHaveScreenshot(`08-input-date-${language}.png`);
             });
         });
 
@@ -305,7 +311,7 @@ test.describe('InputDate', () => {
             await example.scrollIntoViewIfNeeded();
             await example.locator('tui-input-date input[type="date"]').fill('2010-03-14');
 
-            await expect(example).toHaveScreenshot('09-input-date.png');
+            await expect.soft(example).toHaveScreenshot('09-input-date.png');
         });
     });
 });

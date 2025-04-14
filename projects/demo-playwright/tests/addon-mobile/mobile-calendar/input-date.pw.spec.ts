@@ -23,23 +23,23 @@ test.describe('InputDate and mobile user agent', () => {
         await page.waitForSelector('tui-mobile-calendar-dropdown', {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
 
-        await expect(page).toHaveScreenshot('01-input-date-range-mobile-1.png');
+        await expect.soft(page).toHaveScreenshot('01-input-date-range-mobile-1.png');
 
         await page.locator(november).nth(0).click();
 
-        await expect(page).toHaveScreenshot('01-input-date-range-mobile-2.png');
+        await expect.soft(page).toHaveScreenshot('01-input-date-range-mobile-2.png');
 
         await page.locator(november).nth(11).click();
 
-        await expect(page).toHaveScreenshot('01-input-date-range-mobile-3.png');
+        await expect.soft(page).toHaveScreenshot('01-input-date-range-mobile-3.png');
 
         await page.locator(november).nth(19).click();
 
-        await expect(page).toHaveScreenshot('01-input-date-range-mobile-4.png');
+        await expect.soft(page).toHaveScreenshot('01-input-date-range-mobile-4.png');
 
         await page.locator(november).nth(25).click();
 
-        await expect(page).toHaveScreenshot('01-input-date-range-mobile-5.png');
+        await expect.soft(page).toHaveScreenshot('01-input-date-range-mobile-5.png');
     });
 
     test('InputDateMulti', async ({page}) => {
@@ -52,30 +52,30 @@ test.describe('InputDate and mobile user agent', () => {
         await page.waitForSelector('tui-mobile-calendar-dropdown', {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
 
-        await expect(page).toHaveScreenshot('02-input-date-range-mobile-1.png');
+        await expect.soft(page).toHaveScreenshot('02-input-date-range-mobile-1.png');
 
         await page.locator(november).nth(0).click();
 
-        await expect(page).toHaveScreenshot('02-input-date-range-mobile-2.png');
+        await expect.soft(page).toHaveScreenshot('02-input-date-range-mobile-2.png');
 
         await page.locator(november).nth(11).click();
 
-        await expect(page).toHaveScreenshot('02-input-date-range-mobile-3.png');
+        await expect.soft(page).toHaveScreenshot('02-input-date-range-mobile-3.png');
 
         await page.locator(november).nth(19).click();
 
-        await expect(page).toHaveScreenshot('02-input-date-range-mobile-4.png');
+        await expect.soft(page).toHaveScreenshot('02-input-date-range-mobile-4.png');
 
         await page.locator(november).nth(25).click();
 
-        await expect(page).toHaveScreenshot('02-input-date-range-mobile-5.png');
+        await expect.soft(page).toHaveScreenshot('02-input-date-range-mobile-5.png');
 
         await page.locator(november).nth(25).click();
         await page.locator(november).nth(19).click();
         await page.locator(november).nth(11).click();
         await page.locator(november).nth(0).click();
 
-        await expect(page).toHaveScreenshot('02-input-date-range-mobile-6.png');
+        await expect.soft(page).toHaveScreenshot('02-input-date-range-mobile-6.png');
     });
 
     test('InputDate', async ({page}) => {
@@ -88,26 +88,26 @@ test.describe('InputDate and mobile user agent', () => {
         await page.waitForSelector('tui-mobile-calendar-dropdown', {state: 'visible'});
         await page.waitForTimeout(300); // safari flaky
 
-        await expect(page).toHaveScreenshot('03-input-date-range-mobile-1.png');
+        await expect.soft(page).toHaveScreenshot('03-input-date-range-mobile-1.png');
 
         await page.locator(november).nth(0).click();
 
-        await expect(page).toHaveScreenshot('03-input-date-range-mobile-2.png');
+        await expect.soft(page).toHaveScreenshot('03-input-date-range-mobile-2.png');
 
         await page.locator(november).nth(11).click();
 
-        await expect(page).toHaveScreenshot('03-input-date-range-mobile-3.png');
+        await expect.soft(page).toHaveScreenshot('03-input-date-range-mobile-3.png');
 
         await page.locator(november).nth(19).click();
 
-        await expect(page).toHaveScreenshot('03-input-date-range-mobile-4.png');
+        await expect.soft(page).toHaveScreenshot('03-input-date-range-mobile-4.png');
 
         await page.locator(november).nth(25).click();
 
-        await expect(page).toHaveScreenshot('03-input-date-range-mobile-5.png');
+        await expect.soft(page).toHaveScreenshot('03-input-date-range-mobile-5.png');
 
         await page.locator(november).nth(25).click();
 
-        await expect(page).toHaveScreenshot('03-input-date-range-mobile-6.png');
+        await expect.soft(page).toHaveScreenshot('03-input-date-range-mobile-6.png');
     });
 });

@@ -21,9 +21,9 @@ test.describe('Navigation', () => {
 
         await sideNavigation.isVisible();
 
-        await expect(sideNavigation).toHaveScreenshot(
-            '01-tui-doc-navigation-light-mode.png',
-        );
+        await expect
+            .soft(sideNavigation)
+            .toHaveScreenshot('01-tui-doc-navigation-light-mode.png');
     });
 
     test('getting started / [dark mode]', async ({page, browserName}) => {
@@ -43,9 +43,9 @@ test.describe('Navigation', () => {
 
         await sideNavigation.isVisible();
 
-        await expect(sideNavigation).toHaveScreenshot(
-            '02-tui-doc-navigation-dark-mode.png',
-        );
+        await expect
+            .soft(sideNavigation)
+            .toHaveScreenshot('02-tui-doc-navigation-dark-mode.png');
     });
 
     test.describe('anchor links navigation works', () => {

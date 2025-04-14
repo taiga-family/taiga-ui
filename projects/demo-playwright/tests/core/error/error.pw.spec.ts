@@ -18,6 +18,8 @@ test.describe('TuiError', () => {
         await expect(error).toBeVisible();
         await expect(error).toHaveText('An error');
 
-        await expect(example).toHaveScreenshot('01-error.png', {animations: 'allow'});
+        await expect
+            .soft(example)
+            .toHaveScreenshot('01-error.png', {animations: 'allow'});
     });
 });

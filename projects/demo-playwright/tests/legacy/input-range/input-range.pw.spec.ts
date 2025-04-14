@@ -29,11 +29,11 @@ test.describe('InputRange', () => {
             await inputRange.leftTextfield.focus();
             await page.keyboard.down('ArrowDown');
 
-            await expect(example).toHaveScreenshot('01-input-range.png');
+            await expect.soft(example).toHaveScreenshot('01-input-range.png');
 
             await page.keyboard.down('ArrowDown');
 
-            await expect(example).toHaveScreenshot('02-input-range.png');
+            await expect.soft(example).toHaveScreenshot('02-input-range.png');
         });
 
         test('pressing Arrow Down decreases RIGHT value when RIGHT text input is focused', async ({
@@ -42,11 +42,11 @@ test.describe('InputRange', () => {
             await inputRange.rightTextfield.focus();
             await page.keyboard.down('ArrowDown');
 
-            await expect(example).toHaveScreenshot('03-input-range.png');
+            await expect.soft(example).toHaveScreenshot('03-input-range.png');
 
             await page.keyboard.down('ArrowDown');
 
-            await expect(example).toHaveScreenshot('04-input-range.png');
+            await expect.soft(example).toHaveScreenshot('04-input-range.png');
         });
 
         test('pressing Arrow Up increases LEFT value when LEFT text input is focused', async ({
@@ -55,11 +55,11 @@ test.describe('InputRange', () => {
             await inputRange.leftTextfield.focus();
             await page.keyboard.down('ArrowUp');
 
-            await expect(example).toHaveScreenshot('05-input-range.png');
+            await expect.soft(example).toHaveScreenshot('05-input-range.png');
 
             await page.keyboard.down('ArrowUp');
 
-            await expect(example).toHaveScreenshot('06-input-range.png');
+            await expect.soft(example).toHaveScreenshot('06-input-range.png');
         });
 
         test('pressing Arrow Up increases RIGHT value when RIGHT text input is focused', async ({
@@ -68,11 +68,11 @@ test.describe('InputRange', () => {
             await inputRange.rightTextfield.focus();
             await page.keyboard.down('ArrowUp');
 
-            await expect(example).toHaveScreenshot('07-input-range.png');
+            await expect.soft(example).toHaveScreenshot('07-input-range.png');
 
             await page.keyboard.down('ArrowUp');
 
-            await expect(example).toHaveScreenshot('08-input-range.png');
+            await expect.soft(example).toHaveScreenshot('08-input-range.png');
         });
 
         test('cannot set right value less than left value via ArrowDown', async ({
@@ -86,7 +86,7 @@ test.describe('InputRange', () => {
             await page.keyboard.down('ArrowDown');
             await page.keyboard.down('ArrowDown');
 
-            await expect(example).toHaveScreenshot('09-input-range.png');
+            await expect.soft(example).toHaveScreenshot('09-input-range.png');
         });
 
         test('cannot set left value more than right value via ArrowUp', async ({
@@ -100,7 +100,7 @@ test.describe('InputRange', () => {
             await page.keyboard.down('ArrowUp');
             await page.keyboard.down('ArrowUp');
 
-            await expect(example).toHaveScreenshot('10-input-range.png');
+            await expect.soft(example).toHaveScreenshot('10-input-range.png');
         });
 
         test('pressing ArrowRight does not change any value (this key is for caret navigation only)', async ({
@@ -113,7 +113,7 @@ test.describe('InputRange', () => {
             await page.keyboard.down('ArrowRight');
             await page.keyboard.down('ArrowRight');
 
-            await expect(example).toHaveScreenshot('11-input-range.png');
+            await expect.soft(example).toHaveScreenshot('11-input-range.png');
         });
 
         test('pressing ArrowLeft does not change any value (this key is for caret navigation only)', async ({
@@ -126,7 +126,7 @@ test.describe('InputRange', () => {
             await page.keyboard.down('ArrowLeft');
             await page.keyboard.down('ArrowLeft');
 
-            await expect(example).toHaveScreenshot('12-input-range.png');
+            await expect.soft(example).toHaveScreenshot('12-input-range.png');
         });
     });
 
@@ -184,7 +184,7 @@ test.describe('InputRange', () => {
 
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('100');
-                await expect(example).toHaveScreenshot('13-input-range.png');
+                await expect.soft(example).toHaveScreenshot('13-input-range.png');
             });
 
             test('clicking on the LEFT side changes only the LEFT value (+ focuses the LEFT text input)', async ({
@@ -199,7 +199,7 @@ test.describe('InputRange', () => {
 
                 await expect(inputRange.leftTextfield).toHaveValue(`${CHAR_MINUS}100`);
                 await expect(inputRange.rightTextfield).toHaveValue('10');
-                await expect(example).toHaveScreenshot('14-input-range.png');
+                await expect.soft(example).toHaveScreenshot('14-input-range.png');
             });
         });
 
@@ -220,7 +220,7 @@ test.describe('InputRange', () => {
                     (box?.height ?? 0) / 2 + (box?.y ?? 0),
                 );
 
-                await expect(example).toHaveScreenshot('15-input-range.png');
+                await expect.soft(example).toHaveScreenshot('15-input-range.png');
             });
 
             test('click on the RIGHT thumb (with NO value changes) => focuses the RIGHT text input', async ({
@@ -233,7 +233,7 @@ test.describe('InputRange', () => {
                     (box?.height ?? 0) / 2 + (box?.y ?? 0),
                 );
 
-                await expect(example).toHaveScreenshot('16-input-range.png');
+                await expect.soft(example).toHaveScreenshot('16-input-range.png');
             });
         });
     });
@@ -243,7 +243,7 @@ test.describe('InputRange', () => {
             await tuiGoto(page, `${DemoRoute.InputRange}/API`);
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
 
-            await expect(example).toHaveScreenshot('17-input-range.png');
+            await expect.soft(example).toHaveScreenshot('17-input-range.png');
         });
 
         test('with `leftValueContent` and `rightValueContent', async ({page}) => {
@@ -253,14 +253,14 @@ test.describe('InputRange', () => {
             );
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
 
-            await expect(example).toHaveScreenshot('18-input-range.png');
+            await expect.soft(example).toHaveScreenshot('18-input-range.png');
         });
 
         test('with `pluralize`', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.InputRange}/API?pluralize$=1`);
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
 
-            await expect(example).toHaveScreenshot('19-input-range.png');
+            await expect.soft(example).toHaveScreenshot('19-input-range.png');
         });
     });
 
@@ -284,7 +284,7 @@ test.describe('InputRange', () => {
 
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('10');
-                await expect(example).toHaveScreenshot('20-input-range.png');
+                await expect.soft(example).toHaveScreenshot('20-input-range.png');
 
                 const box = await inputRange.range.right.boundingBox();
 
@@ -295,7 +295,7 @@ test.describe('InputRange', () => {
 
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('20');
-                await expect(example).toHaveScreenshot('21-input-range.png');
+                await expect.soft(example).toHaveScreenshot('21-input-range.png');
             });
 
             test('keeps focus if the LEFT text input was focused before', async ({
@@ -305,7 +305,7 @@ test.describe('InputRange', () => {
 
                 await expect(inputRange.leftTextfield).toHaveValue('0');
                 await expect(inputRange.rightTextfield).toHaveValue('10');
-                await expect(example).toHaveScreenshot('22-input-range.png');
+                await expect.soft(example).toHaveScreenshot('22-input-range.png');
 
                 const box = await inputRange.range.left.boundingBox();
 
@@ -316,13 +316,13 @@ test.describe('InputRange', () => {
 
                 await expect(inputRange.leftTextfield).toHaveValue(`${CHAR_MINUS}20`);
                 await expect(inputRange.rightTextfield).toHaveValue('10');
-                await expect(example).toHaveScreenshot('23-input-range.png');
+                await expect.soft(example).toHaveScreenshot('23-input-range.png');
             });
 
             test('does not focus anything if no text input was focused before', async ({
                 page,
             }) => {
-                await expect(example).toHaveScreenshot('24-input-range.png');
+                await expect.soft(example).toHaveScreenshot('24-input-range.png');
 
                 const leftBox = await inputRange.range.left.boundingBox();
 
@@ -338,7 +338,7 @@ test.describe('InputRange', () => {
                     (rightBox?.height ?? 0) / 2 + (rightBox?.y ?? 0),
                 );
 
-                await expect(example).toHaveScreenshot('25-input-range.png');
+                await expect.soft(example).toHaveScreenshot('25-input-range.png');
             });
         });
     });

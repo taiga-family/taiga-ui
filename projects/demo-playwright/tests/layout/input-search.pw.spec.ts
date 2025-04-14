@@ -11,7 +11,7 @@ test.describe('InputSearch', () => {
 
         await input.focus();
 
-        await expect(page).toHaveScreenshot('01-input-search.png');
+        await expect.soft(page).toHaveScreenshot('01-input-search.png');
     });
 
     test('closes', async ({page}) => {
@@ -23,6 +23,6 @@ test.describe('InputSearch', () => {
         await input.focus();
         await page.locator('[tuiTheme="dark"].t-container').click();
 
-        await expect(example).toHaveScreenshot('02-input-search.png');
+        await expect.soft(example).toHaveScreenshot('02-input-search.png');
     });
 });

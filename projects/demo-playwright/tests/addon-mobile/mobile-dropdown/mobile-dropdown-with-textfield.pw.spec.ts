@@ -22,6 +22,6 @@ describe('DropdownMobile for textfields', () => {
         await page.locator('tui-dropdown-mobile [tuiOption]').first().hover();
 
         await documentation.hideContent();
-        await expect(page).toHaveScreenshot('dropdown-mobile-with-select.png');
+        await expect.soft(page).toHaveScreenshot('dropdown-mobile-with-select.png');
     });
 });

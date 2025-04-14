@@ -26,9 +26,9 @@ test.describe('MultiSelect', () => {
             await multiSelect.closeDropdown();
             await documentationPage.waitStableState();
 
-            await expect(example).toHaveScreenshot(
-                '01-arrow-icon-not-overflown-by-tags.png',
-            );
+            await expect
+                .soft(example)
+                .toHaveScreenshot('01-arrow-icon-not-overflown-by-tags.png');
         });
 
         test('multi-select with data list with label', async ({page}) => {
@@ -42,9 +42,9 @@ test.describe('MultiSelect', () => {
             await page.mouse.move(0, 0); // clear focus
             await documentationPage.hideContent(); // hide content under dropdown before screenshot
 
-            await expect(multiSelect.dropdown).toHaveScreenshot(
-                '02-with-data-list-with-label.png',
-            );
+            await expect
+                .soft(multiSelect.dropdown)
+                .toHaveScreenshot('02-with-data-list-with-label.png');
         });
 
         test('multi-select with data list without label', async ({page}) => {
@@ -58,9 +58,9 @@ test.describe('MultiSelect', () => {
             await page.mouse.move(0, 0); // clear focus
             await documentationPage.hideContent(); // hide content under dropdown before screenshot
 
-            await expect(multiSelect.dropdown).toHaveScreenshot(
-                '03-with-data-list-without-label.png',
-            );
+            await expect
+                .soft(multiSelect.dropdown)
+                .toHaveScreenshot('03-with-data-list-without-label.png');
         });
 
         // TODO: this tests should be written as component testing (+ delete example from demo)
@@ -85,9 +85,9 @@ test.describe('MultiSelect', () => {
                     await documentationPage.hideContent();
                     await documentationPage.waitStableState();
 
-                    await expect(page).toHaveScreenshot(
-                        `04-dialog-with-text-field-size-${size}.png`,
-                    );
+                    await expect
+                        .soft(page)
+                        .toHaveScreenshot(`04-dialog-with-text-field-size-${size}.png`);
                 });
             });
         });
@@ -121,9 +121,9 @@ test.describe('MultiSelect', () => {
                     await documentationPage.prepareBeforeScreenshot();
                     await documentationPage.waitStableState();
 
-                    await expect(page).toHaveScreenshot(
-                        `05-multi-select-size-${size}.png`,
-                    );
+                    await expect
+                        .soft(page)
+                        .toHaveScreenshot(`05-multi-select-size-${size}.png`);
                 });
             });
         });
@@ -141,46 +141,46 @@ test.describe('MultiSelect', () => {
                     await documentationPage.prepareBeforeScreenshot();
                     await documentationPage.waitStableState();
 
-                    await expect(apiPageExample).toHaveScreenshot(
-                        `06-update-on-${type}-1_initial.png`,
-                    );
+                    await expect
+                        .soft(apiPageExample)
+                        .toHaveScreenshot(`06-update-on-${type}-1_initial.png`);
 
                     await multiSelect.arrow.click();
                     await documentationPage.waitStableState();
                     await multiSelect.selectOptions([0, 1, 2]);
                     await documentationPage.waitStableState();
 
-                    await expect(multiSelect.dropdown).toHaveScreenshot(
-                        `06-update-on-${type}-2_selected-values.png`,
-                    );
+                    await expect
+                        .soft(multiSelect.dropdown)
+                        .toHaveScreenshot(`06-update-on-${type}-2_selected-values.png`);
 
                     await multiSelect.closeDropdown();
                     await documentationPage.waitStableState();
 
-                    await expect(apiPageExample).toHaveScreenshot(
-                        `06-update-on-${type}-3_hide-dropdown.png`,
-                    );
+                    await expect
+                        .soft(apiPageExample)
+                        .toHaveScreenshot(`06-update-on-${type}-3_hide-dropdown.png`);
 
                     await multiSelect.textfield.blur();
                     await documentationPage.waitStableState();
 
-                    await expect(apiPageExample).toHaveScreenshot(
-                        `06-update-on-${type}-4_blur-event.png`,
-                    );
+                    await expect
+                        .soft(apiPageExample)
+                        .toHaveScreenshot(`06-update-on-${type}-4_blur-event.png`);
 
                     await documentationPage.submitFormControlButton.click();
                     await documentationPage.waitStableState();
 
-                    await expect(apiPageExample).toHaveScreenshot(
-                        `06-update-on-${type}-5_submit-event.png`,
-                    );
+                    await expect
+                        .soft(apiPageExample)
+                        .toHaveScreenshot(`06-update-on-${type}-5_submit-event.png`);
 
                     await documentationPage.resetFormControlButton.click();
                     await documentationPage.waitStableState();
 
-                    await expect(apiPageExample).toHaveScreenshot(
-                        `06-update-on-${type}-6_reset.png`,
-                    );
+                    await expect
+                        .soft(apiPageExample)
+                        .toHaveScreenshot(`06-update-on-${type}-6_reset.png`);
                 });
             });
         });
@@ -195,13 +195,13 @@ test.describe('MultiSelect', () => {
             await documentationPage.prepareBeforeScreenshot();
             await documentationPage.waitStableState();
 
-            await expect(page).toHaveScreenshot('07-multi-select-before-clear.png');
+            await expect.soft(page).toHaveScreenshot('07-multi-select-before-clear.png');
 
             await multiSelect.arrow.click();
             await multiSelect.cleaner.click();
             await documentationPage.waitStableState();
 
-            await expect(page).toHaveScreenshot('07-multi-select-after-clear.png');
+            await expect.soft(page).toHaveScreenshot('07-multi-select-after-clear.png');
         });
 
         test('should scroll to end on focus', async ({page}) => {
@@ -212,18 +212,18 @@ test.describe('MultiSelect', () => {
             await documentationPage.prepareBeforeScreenshot();
             await documentationPage.waitStableState();
 
-            await expect(page).toHaveScreenshot(
-                '08-multi-select-1-before-scroll-to-end.png',
-            );
+            await expect
+                .soft(page)
+                .toHaveScreenshot('08-multi-select-1-before-scroll-to-end.png');
 
             await multiSelect.closeDropdown();
             await multiSelect.textfield.blur();
             await multiSelect.arrow.click();
             await documentationPage.waitStableState();
 
-            await expect(page).toHaveScreenshot(
-                '08-multi-select-2-after-scroll-to-end.png',
-            );
+            await expect
+                .soft(page)
+                .toHaveScreenshot('08-multi-select-2-after-scroll-to-end.png');
         });
 
         test('non-editable multiselect with custom value content', async ({page}) => {
@@ -237,7 +237,7 @@ test.describe('MultiSelect', () => {
             await documentationPage.prepareBeforeScreenshot();
             await documentationPage.waitStableState();
 
-            await expect(page).toHaveScreenshot('09-multi-select-non-editable.png');
+            await expect.soft(page).toHaveScreenshot('09-multi-select-non-editable.png');
         });
 
         test('placeholder with value content', async ({page}) => {
@@ -256,9 +256,9 @@ test.describe('MultiSelect', () => {
             await documentationPage.prepareBeforeScreenshot();
             await documentationPage.waitStableState();
 
-            await expect(page).toHaveScreenshot(
-                '10-multi-select-placeholder-with-value-content.png',
-            );
+            await expect
+                .soft(page)
+                .toHaveScreenshot('10-multi-select-placeholder-with-value-content.png');
         });
     });
 
@@ -272,6 +272,8 @@ test.describe('MultiSelect', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('button').click();
 
-        await expect(page).toHaveScreenshot('11-multi-group-with-separate-data-list.png');
+        await expect
+            .soft(page)
+            .toHaveScreenshot('11-multi-group-with-separate-data-list.png');
     });
 });

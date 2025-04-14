@@ -43,10 +43,12 @@ test.describe('Demo', () => {
                 // e2e flaky: wait more time for charts graphics
                 await page.waitForTimeout(path.includes('charts') ? 500 : 150);
 
-                await expect(example).toHaveScreenshot([
-                    path.replace('/', '').replaceAll('/', '-'),
-                    `${i + 1}.png`,
-                ]);
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot([
+                        path.replace('/', '').replaceAll('/', '-'),
+                        `${i + 1}.png`,
+                    ]);
             }
 
             await checkA11y(page, 'tui-doc-example > .t-example', {detailedReport: true});

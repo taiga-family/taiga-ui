@@ -28,7 +28,7 @@ test.describe('Preview', () => {
 
             await page.waitForLoadState('networkidle'); // wait load image in dialog
 
-            await expect(preview).toHaveScreenshot('01-preview-zoom-by-wheel.png');
+            await expect.soft(preview).toHaveScreenshot('01-preview-zoom-by-wheel.png');
         });
 
         test('No preview available', async ({page}) => {
@@ -44,7 +44,7 @@ test.describe('Preview', () => {
 
             await documentationPage.hideContent();
 
-            await expect(preview).toHaveScreenshot('02-preview-unavailable.png');
+            await expect.soft(preview).toHaveScreenshot('02-preview-unavailable.png');
         });
     });
 });

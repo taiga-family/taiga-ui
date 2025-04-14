@@ -10,6 +10,6 @@ test.describe('Table', () => {
 
         await addColumnButton.click();
 
-        await expect(example).toHaveScreenshot('01-table-dynamic.png');
+        await expect.soft(example).toHaveScreenshot('01-table-dynamic.png');
     });
 });
