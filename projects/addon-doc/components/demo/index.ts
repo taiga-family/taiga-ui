@@ -25,6 +25,7 @@ import {tuiClamp, tuiToInteger} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
+import {TuiFullscreen} from '@taiga-ui/core/components/fullscreen';
 import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
@@ -49,6 +50,7 @@ const MIN_WIDTH = 160;
         TuiChevron,
         TuiDataListWrapper,
         TuiExpand,
+        TuiFullscreen,
         TuiGroup,
         TuiResizable,
         TuiResizer,
@@ -105,6 +107,7 @@ export class TuiDocDemo implements AfterViewInit {
 
     protected opaque = tuiCoerceValueIsTrue(this.params.sandboxOpaque ?? true);
     protected expanded = tuiCoerceValueIsTrue(this.params.sandboxExpanded ?? false);
+    protected fullscreen = false;
     protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 

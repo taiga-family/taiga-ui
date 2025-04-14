@@ -5,14 +5,25 @@ import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
  * TODO: think about reorganization in @taiga-ui/i18n way
  */
 
+export type TuiDocApiTopPanelTitles = [
+    DarkMode: string,
+    Background: string,
+    FormValue: string,
+    /**
+     * TODO: drop optional in v5
+     */
+    FillScreen?: string,
+];
+
 /**
  * tui-doc-demo i18n texts
  * Works with a tuple
  */
-export const TUI_DOC_DEMO_TEXTS = tuiCreateToken<[string, string, string]>([
+export const TUI_DOC_DEMO_TEXTS = tuiCreateToken<TuiDocApiTopPanelTitles>([
     'Dark mode',
     'Background',
     'Form value',
+    'Fullscreen',
 ]);
 
 /**

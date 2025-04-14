@@ -1,4 +1,16 @@
 <div class="t-settings">
+    <label
+        *ngIf="texts[3]"
+        class="t-label"
+    >
+        <input
+            size="s"
+            tuiSwitch
+            type="checkbox"
+            [(ngModel)]="fullscreen"
+        />
+        {{ texts[3] }}
+    </label>
     <label class="t-label">
         <input
             size="s"
@@ -27,7 +39,10 @@
     [class.t-wrapper_transparent]="!opaque"
     [style.visibility]="rendered() ? 'visible' : 'hidden'"
 >
-    <div class="t-content">
+    <div
+        class="t-content"
+        [(tuiFullscreen)]="fullscreen"
+    >
         <div
             #content
             id="demo-content"
