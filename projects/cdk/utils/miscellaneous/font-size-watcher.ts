@@ -1,10 +1,15 @@
 const IFRAME = 'position: fixed; visibility: hidden; pointer-events: none';
 const BODY = 'height: fit-content; line-height: 1em;';
+const CLASS = 'tui-font-size-watcher';
 
 export function tuiFontSizeWatcher(
     callback: (fontSize: number) => void,
     win: Window = window,
 ): () => void {
+    if (win.document.querySelector(`.${CLASS}`)) {
+        return () => {};
+    }
+
     const iframe = win.document.createElement('iframe');
     const resize = (): void => {
         const {innerWidth, outerWidth, devicePixelRatio} = win;
@@ -18,6 +23,7 @@ export function tuiFontSizeWatcher(
     const doc = iframe.contentWindow?.document;
     const observer = new ResizeObserver(() => callback(doc?.body.offsetHeight || 0));
 
+    iframe.setAttribute('class', CLASS);
     iframe.setAttribute('style', IFRAME);
     doc?.documentElement.style.setProperty('font', '-apple-system-body');
     doc?.body.setAttribute('style', BODY);
