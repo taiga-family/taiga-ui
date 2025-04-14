@@ -38,9 +38,6 @@ import {TUI_LINE_CLAMP_OPTIONS} from './line-clamp.options';
 import {TuiLineClampBox} from './line-clamp-box.component';
 import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 
-// 4px buffer for IE/Edge incorrectly rounding scrollHeight
-const BUFFER = 4;
-
 @Component({
     standalone: true,
     selector: 'tui-line-clamp',
@@ -124,18 +121,10 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
             return false;
         }
 
-        const {
-            scrollHeight,
-            scrollWidth,
-            clientHeight: outletHeight,
-        } = this.outlet.nativeElement;
-        const {clientHeight, clientWidth} = this.el;
+        const {scrollHeight, scrollWidth} = this.outlet.nativeElement;
+        const {clientWidth} = this.el;
 
-        return (
-            scrollHeight - clientHeight > BUFFER ||
-            scrollWidth - clientWidth > 0 ||
-            scrollHeight > outletHeight
-        );
+        return scrollHeight > this.maxHeight() || scrollWidth > clientWidth;
     }
 
     protected get computedContent(): PolymorpheusContent {
@@ -148,7 +137,7 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
 
     private update(): void {
         if (this.outlet) {
-            this.height.set(this.outlet.nativeElement.scrollHeight + BUFFER);
+            this.height.set(this.outlet.nativeElement.scrollHeight);
         }
 
         this.maxHeight.set(this.lineHeight * this.linesLimit$.value);
