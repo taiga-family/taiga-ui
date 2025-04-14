@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.112.0](https://github.com/taiga-family/taiga-ui/compare/v3.111.0...v3.112.0) (2025-04-14)
+
+### Bug Fixes
+
+- **kit:** `InputDateRange` update input value after control value changed
+  ([#10792](https://github.com/taiga-family/taiga-ui/issues/10792))
+  ([1540180](https://github.com/taiga-family/taiga-ui/commit/154018050144af2f8d9ba512b010e73460b63c6b))
+
 ## [3.111.0](https://github.com/taiga-family/taiga-ui/compare/v3.110.0...v3.111.0) (2025-04-07)
 
 ### Features
