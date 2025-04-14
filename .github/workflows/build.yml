@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.120.0
-      - uses: taiga-family/ci/actions/setup/node@v1.120.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.121.0
+      - uses: taiga-family/ci/actions/setup/node@v1.121.0
       - run: npm run run-many:build:libs
       - run: npx ts-node ./scripts/check-dist.ts
 
@@ -25,8 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.120.0
-      - uses: taiga-family/ci/actions/setup/node@v1.120.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.121.0
+      - uses: taiga-family/ci/actions/setup/node@v1.121.0
       - run: npx nx prerender demo
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
         continue-on-error: true

@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.120.0
-      - uses: taiga-family/ci/actions/setup/node@v1.120.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.121.0
+      - uses: taiga-family/ci/actions/setup/node@v1.121.0
 
       - run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
       - run: tree ${{ env.DIST }} -P '*.html'
@@ -38,8 +38,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.120.0
-      - uses: taiga-family/ci/actions/setup/node@v1.120.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.121.0
+      - uses: taiga-family/ci/actions/setup/node@v1.121.0
         id: nodejs-workspace
 
       - run: npx nx prerender demo
