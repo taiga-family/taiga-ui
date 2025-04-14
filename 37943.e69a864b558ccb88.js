@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[37943],{60324:e=>{e.exports='<tui-textarea\n    tuiTextfieldAppearance="neutral"\n    [(ngModel)]="value"\n>\n    Changing appearance\n    <textarea tuiTextfieldLegacy></textarea>\n</tui-textarea>\n'}}]);
