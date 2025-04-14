@@ -3,13 +3,31 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Textarea', () => {
-    test.beforeEach(async ({page}) => {
-        await page.setViewportSize({width: 400, height: 600});
+    test.use({viewport: {width: 400, height: 500}});
+
+    test('correctly shows character with descenders inside placeholder', async ({
+        page,
+    }) => {
+        const placeholder = 'qwertypgj_';
+
+        await tuiGoto(page, `${DemoRoute.TextareaLegacy}/API?placeholder=${placeholder}`);
+
+        const {apiPageExample} = new TuiDocumentationPagePO(page);
+        const textarea = apiPageExample.getByPlaceholder(placeholder);
+
+        await textarea.click();
+
+        await expect
+            .soft(apiPageExample)
+            .toHaveScreenshot('01-character-with-descenders-inside-placeholder.png');
     });
 
     ['m', 'l'].forEach((size) => {
         test(`size of ${size}`, async ({page}) => {
-            await tuiGoto(page, `components/textarea/API?tuiTextfieldSize=${size}`);
+            await tuiGoto(
+                page,
+                `${DemoRoute.TextareaLegacy}/API?tuiTextfieldSize=${size}`,
+            );
             const {apiPageExample} = new TuiDocumentationPagePO(page);
 
             await expect
@@ -22,7 +40,7 @@ test.describe('Textarea', () => {
         // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Font flaky');
 
-        await tuiGoto(page, `${DemoRoute.Textarea}/API`);
+        await tuiGoto(page, `${DemoRoute.TextareaLegacy}/API`);
         const {apiPageExample} = new TuiDocumentationPagePO(page);
         const textAreaComponent = apiPageExample.locator('tui-textarea');
         const textarea = apiPageExample.getByRole('textbox').first();

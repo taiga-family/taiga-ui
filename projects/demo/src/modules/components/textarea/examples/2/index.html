@@ -1,25 +1,18 @@
-<p>You can set a custom min-height for component</p>
-
-<form [formGroup]="testForm">
-    <tui-textarea
-        formControlName="testValue1"
-        class="tui-space_bottom-4 field-large"
-    >
-        Type a text
-    </tui-textarea>
-    <tui-textarea
-        formControlName="testValue1"
-        class="tui-space_bottom-4 field-small"
-        [expandable]="false"
-    >
-        Type a text
-    </tui-textarea>
-    <tui-textarea
-        formControlName="testValue1"
-        class="field-medium"
-        [expandable]="true"
-        [maxLength]="30"
-    >
-        Type a text
-    </tui-textarea>
-</form>
+<tui-textfield [style.margin-block-end.rem]="1">
+    <label tuiLabel>Limit</label>
+    <textarea
+        placeholder="Placeholder"
+        tuiTextarea
+        [formControl]="control"
+        [limit]="100"
+        [max]="6"
+        [min]="3"
+    ></textarea>
+</tui-textfield>
+<button
+    tuiButton
+    type="button"
+    (click)="control.setValue('Short text')"
+>
+    Programmatically update
+</button>

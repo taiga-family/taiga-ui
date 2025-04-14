@@ -1,0 +1,15 @@
+<ng-template #template>
+    <tui-scroll-controls
+        *ngIf="!isMobile"
+        class="t-scroll"
+    />
+    <span
+        #text
+        aria-hidden="true"
+        class="t-text"
+        [style.max-height.em]="1.25 * max"
+        [style.min-height.em]="1.25 * min"
+    >
+        <ng-container *polymorpheusOutlet="content as text; context: {$implicit: el.value}">{{ text }}</ng-container>
+    </span>
+</ng-template>

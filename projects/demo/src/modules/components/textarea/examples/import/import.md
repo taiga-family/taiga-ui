@@ -1,19 +1,18 @@
 ```ts
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiTextareaModule} from '@taiga-ui/legacy';
+import {FormsModule} from '@angular/forms';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiTextarea} from '@taiga-ui/kit';
 
 @Component({
   standalone: true,
   imports: [
     // ...
     FormsModule,
-    ReactiveFormsModule,
-    TuiTextareaModule,
+    TuiTextfield,
+    TuiTextarea,
   ],
 })
 export class Example {
-  testForm = new FormGroup({
-    testValue: new FormControl('Content'),
-  });
+  value = 'Value';
 }
 ```
