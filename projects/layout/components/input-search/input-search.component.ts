@@ -37,6 +37,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     providers: [tuiCellOptionsProvider({size: 'm'})],
     hostDirectives: [TuiWithTextfield],
     host: {
+        ngSkipHydration: 'true',
         '(focus)': 'open()',
         '(keydown.tab.prevent)': '0',
         '(keydown.arrowDown.prevent)': 'onArrow()',

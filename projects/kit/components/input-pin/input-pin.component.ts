@@ -29,6 +29,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [MaskitoDirective],
     host: {
+        ngSkipHydration: 'true',
         inputmode: 'numeric',
         spellcheck: 'false',
         '(selectionchange)': 'onSelection()',
