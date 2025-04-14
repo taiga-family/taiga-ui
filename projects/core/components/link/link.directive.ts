@@ -40,6 +40,10 @@ class TuiLinkStyles {}
 export class TuiLink {
     protected readonly nothing = tuiWithStyles(TuiLinkStyles);
 
+    /**
+     * @deprecated: use on host
+     * [style.text-decoration-style]="'dashed'"
+     */
     @Input()
     public pseudo = inject(TUI_LINK_OPTIONS).pseudo;
 }

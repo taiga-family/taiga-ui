@@ -77,6 +77,7 @@ export const TUI_USED_ICONS = [
     '@tui.circle-check',
     '@tui.circle-x',
     '@tui.star-filled',
+    '@tui.arrow-right',
     '@tui.align-justify',
     '@tui.alarm-clock',
     '@tui.view',
