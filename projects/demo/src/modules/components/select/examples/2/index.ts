@@ -18,12 +18,14 @@ interface Character {
     changeDetection,
     providers: [
         /**
-         * You can also use input props of `Textfield` & `DataListWrapper`
+         * You can also use input props of `Textfield`
          * (they will have more priority):
          * ```html
-         * <tui-textfield [identityMatcher]="..." [stringify]="...">
-         *     <tui-data-list-wrapper [disabledItemHandler]="..." />
-         * </tui-textfield>
+         * <tui-textfield
+         *     [identityMatcher]="..."
+         *     [stringify]="..."
+         *     [disabledItemHandler]="..."
+         * />
          * ```
          */
         tuiItemsHandlersProvider({

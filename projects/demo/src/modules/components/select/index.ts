@@ -1,4 +1,4 @@
-import {Component, computed} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
@@ -8,6 +8,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import type {TuiContext} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -32,6 +33,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 export default class PageComponent {
     protected readonly routes = DemoRoute;
 
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly control = new FormControl<string | null>(null);
     protected textfieldContent: PolymorpheusContent = '';
 
@@ -44,6 +46,6 @@ export default class PageComponent {
     ]);
 
     protected selectOptionExample: TuiRawLoaderContent = import(
-        './examples/8/option.ts?raw'
+        './examples/9/option.ts?raw'
     );
 }
