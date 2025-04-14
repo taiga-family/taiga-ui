@@ -117,6 +117,12 @@ export class TuiDropdownOpen implements OnChanges {
         )
         .subscribe(() => this.toggle(false));
 
+    public readonly sync = this.driver.pipe(takeUntilDestroyed()).subscribe((open) => {
+        if (open !== this.tuiDropdownOpen) {
+            this.update(open);
+        }
+    });
+
     public ngOnChanges(): void {
         this.drive(!!this.tuiDropdownOpen);
         this.tuiDropdownOpenChange.emit(!!this.tuiDropdownOpen);
