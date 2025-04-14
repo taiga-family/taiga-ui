@@ -13,11 +13,11 @@ test.describe('Stepper', () => {
 
         await steps.nth(1).click();
 
-        await expect(po.apiPageExample).toHaveScreenshot('01-stepper.png');
+        await expect.soft(po.apiPageExample).toHaveScreenshot('01-stepper.png');
 
         await steps.nth(2).click();
 
-        await expect(po.apiPageExample).toHaveScreenshot('02-stepper.png');
+        await expect.soft(po.apiPageExample).toHaveScreenshot('02-stepper.png');
     });
 
     test('vertical orientation', async ({page}) => {
@@ -28,10 +28,10 @@ test.describe('Stepper', () => {
 
         await steps.nth(1).click();
 
-        await expect(po.apiPageExample).toHaveScreenshot('03-stepper.png');
+        await expect.soft(po.apiPageExample).toHaveScreenshot('03-stepper.png');
 
         await steps.nth(2).click();
 
-        await expect(po.apiPageExample).toHaveScreenshot('04-stepper.png');
+        await expect.soft(po.apiPageExample).toHaveScreenshot('04-stepper.png');
     });
 });

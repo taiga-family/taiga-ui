@@ -32,7 +32,7 @@ test.describe('InputFiles', () => {
                 icons: await example.locator('tui-icon >> visible=true').all(),
             });
 
-            await expect(example).toHaveScreenshot(`01-${language}-input-files.png`);
+            await expect.soft(example).toHaveScreenshot(`01-${language}-input-files.png`);
         }),
     );
 
@@ -52,7 +52,7 @@ test.describe('InputFiles', () => {
                 icons: await example.locator('tui-icon >> visible=true').all(),
             });
 
-            await expect(example).toHaveScreenshot(`02-${language}-input-files.png`);
+            await expect.soft(example).toHaveScreenshot(`02-${language}-input-files.png`);
         }),
     );
 
@@ -62,6 +62,6 @@ test.describe('InputFiles', () => {
 
         await example.locator('button').first().click();
 
-        await expect(example).toHaveScreenshot('03-with-button.png');
+        await expect.soft(example).toHaveScreenshot('03-with-button.png');
     });
 });

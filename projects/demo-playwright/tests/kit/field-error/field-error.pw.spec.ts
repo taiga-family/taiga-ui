@@ -15,7 +15,7 @@ test.describe('FieldError', () => {
 
         await page.waitForTimeout(500);
 
-        await expect(example).toHaveScreenshot('01-field-error.png', {
+        await expect.soft(example).toHaveScreenshot('01-field-error.png', {
             animations: 'allow',
         });
     });
@@ -28,7 +28,7 @@ test.describe('FieldError', () => {
 
         await page.waitForTimeout(500);
 
-        await expect(example).toHaveScreenshot('02-field-error.png', {
+        await expect.soft(example).toHaveScreenshot('02-field-error.png', {
             animations: 'allow',
         });
     });

@@ -28,7 +28,7 @@ test.describe('Dialogs', () => {
             await documentationPagePO.apiPageExample.locator('button').click();
             await documentationPagePO.prepareBeforeScreenshot();
 
-            await expect(page).toHaveScreenshot(`01-prompt-${width}x${height}.png`);
+            await expect.soft(page).toHaveScreenshot(`01-prompt-${width}x${height}.png`);
         });
 
         test.describe(`${width}x${height}`, () => {
@@ -52,15 +52,15 @@ test.describe('Dialogs', () => {
                 await example.locator('button').click();
                 await documentationPagePO.prepareBeforeScreenshot();
 
-                await expect(page).toHaveScreenshot(
-                    `02-dialogs-level-1-${width}x${height}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(`02-dialogs-level-1-${width}x${height}.png`);
 
                 await page.locator('tui-dialog button').nth(1).click();
 
-                await expect(page).toHaveScreenshot(
-                    `02-dialogs-level-2-${width}x${height}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(`02-dialogs-level-2-${width}x${height}.png`);
             });
 
             test('Mobile dialog works', async ({page}) => {
@@ -71,9 +71,9 @@ test.describe('Dialogs', () => {
                 await example.locator('button').click();
                 await documentationPagePO.prepareBeforeScreenshot();
 
-                await expect(page).toHaveScreenshot(
-                    `03-mobile-dialog-${width}x${height}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(`03-mobile-dialog-${width}x${height}.png`);
             });
 
             test('Dialog with directive works', async ({page}) => {
@@ -84,9 +84,11 @@ test.describe('Dialogs', () => {
                 await example.locator('button').click();
                 await documentationPagePO.prepareBeforeScreenshot();
 
-                await expect(page).toHaveScreenshot(
-                    `04-dialogs-dialog-directive-${width}x${height}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(
+                        `04-dialogs-dialog-directive-${width}x${height}.png`,
+                    );
             });
 
             test('Show simple', async ({page}) => {
@@ -97,9 +99,9 @@ test.describe('Dialogs', () => {
                 await example.locator('button').nth(0).click();
                 await documentationPagePO.prepareBeforeScreenshot();
 
-                await expect(page).toHaveScreenshot(
-                    `05-default-button-${width}x${height}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(`05-default-button-${width}x${height}.png`);
             });
 
             test('Show simple + custom button', async ({page}) => {
@@ -110,9 +112,9 @@ test.describe('Dialogs', () => {
                 await example.locator('button').nth(1).click();
                 await documentationPagePO.prepareBeforeScreenshot();
 
-                await expect(page).toHaveScreenshot(
-                    `06-custom-button-${width}x${height}.png`,
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot(`06-custom-button-${width}x${height}.png`);
             });
 
             test.describe('Dialog with confirmation works', () => {
@@ -133,9 +135,9 @@ test.describe('Dialogs', () => {
                 });
 
                 test('Prompt', async ({page}) => {
-                    await expect(page).toHaveScreenshot(
-                        `07-prompt-${width}x${height}.png`,
-                    );
+                    await expect
+                        .soft(page)
+                        .toHaveScreenshot(`07-prompt-${width}x${height}.png`);
                 });
 
                 test('Pristine form does not show confirmation', async ({page}) => {
@@ -148,9 +150,9 @@ test.describe('Dialogs', () => {
                     await page.locator('tui-dialog input').fill('Test');
                     await page.locator('tui-dialog .t-close').click();
 
-                    await expect(page).toHaveScreenshot(
-                        `08-prompt-confirm-${width}x${height}.png`,
-                    );
+                    await expect
+                        .soft(page)
+                        .toHaveScreenshot(`08-prompt-confirm-${width}x${height}.png`);
                 });
 
                 test('Form is reset to pristine', async ({page}) => {
@@ -234,7 +236,7 @@ test.describe('Dialogs', () => {
                 icons: await dialog.locator('tui-icon >> visible=true').all(),
             });
 
-            await expect(page).toHaveScreenshot('09-dialog.png');
+            await expect.soft(page).toHaveScreenshot('09-dialog.png');
         });
 
         test('dismissible = true, fullscreen, desktop', async ({page}) => {
@@ -256,7 +258,7 @@ test.describe('Dialogs', () => {
                 icons: await dialog.locator('tui-icon >> visible=true').all(),
             });
 
-            await expect(page).toHaveScreenshot('10-dialog.png');
+            await expect.soft(page).toHaveScreenshot('10-dialog.png');
         });
     });
 });

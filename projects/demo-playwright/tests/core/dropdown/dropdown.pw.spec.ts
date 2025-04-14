@@ -13,7 +13,7 @@ test.describe('Dropdown', () => {
         await example.locator('button').click();
         await page.waitForTimeout(300);
 
-        await expect(page).toHaveScreenshot('01-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('01-dropdown.png');
     });
 
     test('Interesting', async ({page}) => {
@@ -24,7 +24,7 @@ test.describe('Dropdown', () => {
         await example.locator('input').click();
         await page.waitForTimeout(300);
 
-        await expect(page).toHaveScreenshot('02-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('02-dropdown.png');
     });
 
     test('Appearance', async ({page}) => {
@@ -35,7 +35,7 @@ test.describe('Dropdown', () => {
         await example.locator('input').click();
         await page.waitForTimeout(300);
 
-        await expect(page).toHaveScreenshot('03-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('03-dropdown.png');
     });
 
     test('Hosted dropdown', async ({page}) => {
@@ -46,7 +46,7 @@ test.describe('Dropdown', () => {
         await example.locator('button').click();
         await page.waitForTimeout(300);
 
-        await expect(page).toHaveScreenshot('04-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('04-dropdown.png');
     });
 
     test('Hosted dropdown and custom position', async ({page}) => {
@@ -57,7 +57,7 @@ test.describe('Dropdown', () => {
         await example.locator('button').click();
         await page.waitForTimeout(300);
 
-        await expect(page).toHaveScreenshot('05-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('05-dropdown.png');
     });
 
     // TODO: Fix the test
@@ -73,7 +73,7 @@ test.describe('Dropdown', () => {
     //     await example.scrollIntoViewIfNeeded();
     //     await example.locator('button[tuiChevron]').click();
     //
-    //     await expect(page).toHaveScreenshot('06-dropdown.png');
+    //     await expect.soft(page).toHaveScreenshot('06-dropdown.png');
     //
     //     await page
     //         .locator("tui-dropdown [automation-id='tui-select__textfield']")
@@ -83,15 +83,15 @@ test.describe('Dropdown', () => {
     //         .locator("tui-dropdown [automation-id='tui-select__textfield'] input")
     //         .focus();
     //
-    //     await expect(page).toHaveScreenshot('07-dropdown.png');
+    //     await expect.soft(page).toHaveScreenshot('07-dropdown.png');
     //
     //     await page.keyboard.press('Escape');
     //
-    //     await expect(page).toHaveScreenshot('08-dropdown.png');
+    //     await expect.soft(page).toHaveScreenshot('08-dropdown.png');
     //
     //     await page.keyboard.press('Escape');
     //
-    //     await expect(page).toHaveScreenshot('09-dropdown.png');
+    //     await expect.soft(page).toHaveScreenshot('09-dropdown.png');
     // });
 
     test('Scrollbar dropdown in active zone', async ({page}) => {
@@ -101,11 +101,11 @@ test.describe('Dropdown', () => {
 
         await api.locator('button').click();
 
-        await expect(page).toHaveScreenshot('10-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('10-dropdown.png');
 
         await page.locator('tui-dropdown').locator('tui-scrollbar .t-thumb').click();
 
-        await expect(page).toHaveScreenshot('11-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('11-dropdown.png');
     });
 
     test('Dropdown selection', async ({page}) => {
@@ -136,7 +136,7 @@ test.describe('Dropdown', () => {
             el.style.display = 'none';
         });
 
-        await expect(page).toHaveScreenshot('12-dropdown-hidden-host.png');
+        await expect.soft(page).toHaveScreenshot('12-dropdown-hidden-host.png');
     });
 
     test('late init control binding', async ({page}) => {
@@ -146,22 +146,22 @@ test.describe('Dropdown', () => {
         await example.scrollIntoViewIfNeeded();
         await example.locator('button[data-appearance="outline-grayscale"]').click();
 
-        await expect(page).toHaveScreenshot('13-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('13-dropdown.png');
 
         await page.locator('tui-dropdown tui-data-list button').nth(0).click();
         await page.locator('tui-dropdown tui-data-list button').nth(1).click();
 
-        await expect(page).toHaveScreenshot('14-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('14-dropdown.png');
 
         await example.locator('button[tuiChevron]').click();
 
-        await expect(page).toHaveScreenshot('15-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('15-dropdown.png');
 
         await example.locator('button[data-appearance="outline-grayscale"]').click();
 
         await page.locator('tui-dropdown tui-data-list button').nth(2).click();
 
-        await expect(page).toHaveScreenshot('16-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('16-dropdown.png');
     });
 
     test('Hosted dropdown initial width', async ({page}) => {
@@ -175,7 +175,7 @@ test.describe('Dropdown', () => {
         await example.locator('.t2').click({force: true});
         await page.waitForTimeout(300);
 
-        await expect(page).toHaveScreenshot('17-dropdown.png');
+        await expect.soft(page).toHaveScreenshot('17-dropdown.png');
     });
 
     test('let-close', async ({page}) => {

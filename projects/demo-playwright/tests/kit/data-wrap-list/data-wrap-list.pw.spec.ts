@@ -17,8 +17,8 @@ test.describe('DataListWrapper', () => {
         await input.focus();
         await input.pressSequentially('1');
 
-        await expect(page.locator('tui-dropdown tui-data-list-wrapper')).toHaveScreenshot(
-            '01-data-list-wrapper.png',
-        );
+        await expect
+            .soft(page.locator('tui-dropdown tui-data-list-wrapper'))
+            .toHaveScreenshot('01-data-list-wrapper.png');
     });
 });

@@ -16,8 +16,8 @@ test.describe('Textarea', () => {
 
         await textarea.click();
 
-        await expect(apiPageExample).toHaveScreenshot(
-            '01-character-with-descenders-inside-placeholder.png',
-        );
+        await expect
+            .soft(apiPageExample)
+            .toHaveScreenshot('01-character-with-descenders-inside-placeholder.png');
     });
 });

@@ -29,9 +29,9 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
     test('opens mobile dropdown on select click', async ({page}) => {
         await inputPhoneInternational.select.click();
 
-        await expect(page).toHaveScreenshot(
-            'input-phone-international-with-mobile-dropdown.png',
-        );
+        await expect
+            .soft(page)
+            .toHaveScreenshot('input-phone-international-with-mobile-dropdown.png');
     });
 
     test('textfield inside dropdown is focused on dropdown open', async () => {

@@ -51,9 +51,11 @@ test.describe('Deep / Select', () => {
                     // e2e flaky: wait more time for charts graphics
                     await page.waitForTimeout(path.includes('charts') ? 500 : 100);
 
-                    await expect(api.apiPageExample).toHaveScreenshot(
-                        `deep-${path}-${name}-row—${rowIndex}-select-option-${index}.png`,
-                    );
+                    await expect
+                        .soft(api.apiPageExample)
+                        .toHaveScreenshot(
+                            `deep-${path}-${name}-row—${rowIndex}-select-option-${index}.png`,
+                        );
 
                     await select.click();
 

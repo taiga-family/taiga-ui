@@ -16,7 +16,7 @@ test.describe('TuiPrimitiveTextfield', () => {
         await apiPageExample.locator('tui-tooltip').hover();
 
         await expect(page.locator('tui-hint')).toBeAttached();
-        await expect(apiPageExample).toHaveScreenshot('01-hint.png');
+        await expect.soft(apiPageExample).toHaveScreenshot('01-hint.png');
     });
 
     test("tuiTextfieldPrefix + tuiTextfieldPostfix align on the same line with input's value", async ({
@@ -36,7 +36,7 @@ test.describe('TuiPrimitiveTextfield', () => {
 
         await page.waitForTimeout(50);
 
-        await expect(apiPageExample).toHaveScreenshot('02-prefix-postfix.png');
+        await expect.soft(apiPageExample).toHaveScreenshot('02-prefix-postfix.png');
     });
 
     test('label should not be visible in focused state with filler', async ({page}) => {
@@ -49,6 +49,6 @@ test.describe('TuiPrimitiveTextfield', () => {
 
         await apiPageExample.getByRole('textbox').click();
 
-        await expect(apiPageExample).toHaveScreenshot('03-label-filler.png');
+        await expect.soft(apiPageExample).toHaveScreenshot('03-label-filler.png');
     });
 });

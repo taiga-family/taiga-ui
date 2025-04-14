@@ -37,9 +37,9 @@ test.describe('DropdownHover', () => {
 
                 await expect(page.locator('tui-dropdown')).not.toBeAttached();
                 await expect(page.locator('tui-dropdown-mobile')).toBeVisible();
-                await expect(page).toHaveScreenshot(
-                    'mobile-dropdown-1st-time-time-click.png',
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot('mobile-dropdown-1st-time-time-click.png');
             });
 
             test('Closes dropdown on click on overlay', async ({page, browserName}) => {
@@ -76,9 +76,9 @@ test.describe('DropdownHover', () => {
 
                 await expect(page.locator('tui-dropdown-mobile')).toBeVisible();
 
-                await expect(page).toHaveScreenshot(
-                    'mobile-dropdown-2nd-time-time-click.png',
-                );
+                await expect
+                    .soft(page)
+                    .toHaveScreenshot('mobile-dropdown-2nd-time-time-click.png');
             });
         });
     });

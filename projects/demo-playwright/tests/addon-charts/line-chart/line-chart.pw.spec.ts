@@ -10,6 +10,6 @@ test.describe('LineChart', () => {
 
         await chartColumn.hover();
 
-        await expect(example).toHaveScreenshot('01-line-chart.png');
+        await expect.soft(example).toHaveScreenshot('01-line-chart.png');
     });
 });

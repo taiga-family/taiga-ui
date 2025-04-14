@@ -18,7 +18,7 @@ test.describe('Calendars', () => {
 
         await calendar.scrollIntoViewIfNeeded();
 
-        await expect(calendar).toHaveScreenshot('01-calendar.png');
+        await expect.soft(calendar).toHaveScreenshot('01-calendar.png');
     });
 
     test('Open calendar from start value', async ({page}) => {
@@ -31,7 +31,7 @@ test.describe('Calendars', () => {
 
         await calendar.scrollIntoViewIfNeeded();
 
-        await expect(calendar).toHaveScreenshot('01-calendar-is-april-2020.png');
+        await expect.soft(calendar).toHaveScreenshot('01-calendar-is-april-2020.png');
     });
 
     test('Set range between two days', async ({page}) => {
@@ -44,7 +44,7 @@ test.describe('Calendars', () => {
 
         await calendar.scrollIntoViewIfNeeded();
 
-        await expect(calendar).toHaveScreenshot('01-range-calendar.png');
+        await expect.soft(calendar).toHaveScreenshot('01-range-calendar.png');
     });
 
     test('Month', async ({page}) => {
@@ -57,6 +57,6 @@ test.describe('Calendars', () => {
 
         await calendar.scrollIntoViewIfNeeded();
 
-        await expect(calendar).toHaveScreenshot('01-calendar-month.png');
+        await expect.soft(calendar).toHaveScreenshot('01-calendar-month.png');
     });
 });

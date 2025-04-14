@@ -15,6 +15,6 @@ test.describe('Surface', () => {
 
         const example = new TuiDocumentationPagePO(page).getExample('#layers');
 
-        await expect(example).toHaveScreenshot('01-layers.png');
+        await expect.soft(example).toHaveScreenshot('01-layers.png');
     });
 });

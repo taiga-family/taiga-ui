@@ -31,7 +31,9 @@ test.describe('InputMonthRange', () => {
 
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect(page).toHaveScreenshot('input-month-range-maximum-month.png');
+            await expect
+                .soft(page)
+                .toHaveScreenshot('input-month-range-maximum-month.png');
         });
 
         test('Minimum month more than current month', async ({page}) => {
@@ -40,7 +42,9 @@ test.describe('InputMonthRange', () => {
 
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect(page).toHaveScreenshot('input-month-range-minimum-month.png');
+            await expect
+                .soft(page)
+                .toHaveScreenshot('input-month-range-minimum-month.png');
         });
     });
 });

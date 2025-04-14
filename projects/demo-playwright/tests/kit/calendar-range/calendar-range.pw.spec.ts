@@ -36,34 +36,44 @@ describe('CalendarRange', () => {
 
             const resetButton = example.locator('p button[data-appearance="action"]');
 
-            await expect(example).toHaveScreenshot(
-                '05-calendar-range-correct-display-defaults-items-and-values-1.png',
-            );
+            await expect
+                .soft(example)
+                .toHaveScreenshot(
+                    '05-calendar-range-correct-display-defaults-items-and-values-1.png',
+                );
 
             await calendarRange.selectItem(1);
             await calendarRange.itemHasCheckmark(1);
 
-            await expect(example).toHaveScreenshot(
-                '05-calendar-range-correct-display-range-switcher-after-select-week.png',
-            );
+            await expect
+                .soft(example)
+                .toHaveScreenshot(
+                    '05-calendar-range-correct-display-range-switcher-after-select-week.png',
+                );
 
             await resetButton.click();
 
-            await expect(example).toHaveScreenshot(
-                '05-calendar-range-correct-display-items-and-values-after-click-on-month-range-switcher.png',
-            );
+            await expect
+                .soft(example)
+                .toHaveScreenshot(
+                    '05-calendar-range-correct-display-items-and-values-after-click-on-month-range-switcher.png',
+                );
 
             await resetButton.click();
 
-            await expect(example).toHaveScreenshot(
-                '05-calendar-range-correct-display-items-and-values-after-click-on-quarter-range-switcher.png',
-            );
+            await expect
+                .soft(example)
+                .toHaveScreenshot(
+                    '05-calendar-range-correct-display-items-and-values-after-click-on-quarter-range-switcher.png',
+                );
 
             await resetButton.click();
 
-            await expect(example).toHaveScreenshot(
-                '05-calendar-range-correct-display-defaults-items-and-values-2.png',
-            );
+            await expect
+                .soft(example)
+                .toHaveScreenshot(
+                    '05-calendar-range-correct-display-defaults-items-and-values-2.png',
+                );
         });
 
         describe('With value', () => {
@@ -77,9 +87,9 @@ describe('CalendarRange', () => {
 
                 await page.mouse.click(100, 100); // clear focus
 
-                await expect(example).toHaveScreenshot(
-                    '07-calendar-range-with-value-click-chevron.png',
-                );
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot('07-calendar-range-with-value-click-chevron.png');
             });
         });
     });
@@ -99,34 +109,46 @@ describe('CalendarRange', () => {
         test('Maximum month when items not empty', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.CalendarRange}/API?items$=1&max$=4`);
 
-            await expect(example).toHaveScreenshot('06-maximum-month-with-items.png');
+            await expect
+                .soft(example)
+                .toHaveScreenshot('06-maximum-month-with-items.png');
         });
 
         test('Dont allow to select disabled dates in calendar', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.CalendarRange}/API?disabledItemHandler$=1`);
 
-            await expect(example).toHaveScreenshot('08-disabled-dates-1-default.png');
+            await expect
+                .soft(example)
+                .toHaveScreenshot('08-disabled-dates-1-default.png');
 
             const getCells = (): Locator =>
                 page.locator('[automation-id="tui-calendar-sheet__cell"]');
 
             await getCells().nth(1).click();
 
-            await expect(example).toHaveScreenshot('08-disabled-dates-2-select-from.png');
+            await expect
+                .soft(example)
+                .toHaveScreenshot('08-disabled-dates-2-select-from.png');
 
             await getCells().nth(9).hover();
 
-            await expect(example).toHaveScreenshot('08-disabled-dates-3-hover-to.png');
+            await expect
+                .soft(example)
+                .toHaveScreenshot('08-disabled-dates-3-hover-to.png');
 
             await getCells().nth(9).click();
             await page.mouse.click(100, 100); // clear focus
 
-            await expect(example).toHaveScreenshot('08-disabled-dates-4-click-to.png');
+            await expect
+                .soft(example)
+                .toHaveScreenshot('08-disabled-dates-4-click-to.png');
 
             await getCells().nth(0).click();
             await page.mouse.click(100, 100); // clear focus
 
-            await expect(example).toHaveScreenshot('08-disabled-dates-5-click-to.png');
+            await expect
+                .soft(example)
+                .toHaveScreenshot('08-disabled-dates-5-click-to.png');
         });
 
         describe('Selecting range consisting of the same start/end date', () => {
@@ -152,9 +174,9 @@ describe('CalendarRange', () => {
                 await calendarSheet.clickOnDay(15);
 
                 await expect(alert).toContainText('15.09.2020 – 15.09.2020');
-                await expect(example).toHaveScreenshot(
-                    '07-double-click-on-the-same-day.png',
-                );
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot('07-double-click-on-the-same-day.png');
             });
 
             test('allows to select new range start after double click on the same day', async ({
@@ -176,9 +198,11 @@ describe('CalendarRange', () => {
                 await calendarSheet.clickOnDay(25);
 
                 await expect(alert).toContainText('22.09.2020 – 25.09.2020');
-                await expect(example).toHaveScreenshot(
-                    '08-new-range-after-double-click-on-the-same-day.png',
-                );
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot(
+                        '08-new-range-after-double-click-on-the-same-day.png',
+                    );
             });
 
             test('no highlighting hover effect after double click on the same day', async ({
@@ -193,19 +217,19 @@ describe('CalendarRange', () => {
                 await calendarSheet.clickOnDay(15);
                 await calendarSheet.getCalendarDay(20).then(async (x) => x!.hover());
 
-                await expect(example).toHaveScreenshot('09-1-has-hover-effect.png');
+                await expect.soft(example).toHaveScreenshot('09-1-has-hover-effect.png');
 
                 await calendarSheet.clickOnDay(15);
 
                 await calendarSheet.getCalendarDay(22).then(async (x) => x!.hover());
 
-                await expect(example).toHaveScreenshot('09-2-no-hover-effect.png');
+                await expect.soft(example).toHaveScreenshot('09-2-no-hover-effect.png');
 
                 await calendarSheet.clickOnDay(22);
 
                 await calendarSheet.getCalendarDay(25).then(async (x) => x!.hover());
 
-                await expect(example).toHaveScreenshot('09-3-has-hover-effect.png');
+                await expect.soft(example).toHaveScreenshot('09-3-has-hover-effect.png');
             });
         });
     });
