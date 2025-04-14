@@ -114,6 +114,31 @@ describe('InputDateRangeComponent', () => {
             expect(inputPO.value).toBe(second);
         });
 
+        it('when control value updated with item date, input shows named date', async () => {
+            const today = TuiDay.currentLocal();
+            const previousMonth = today.append({month: -1});
+            const first = '1';
+            const second = '2';
+
+            testComponent.items = [
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), first),
+                new TuiDayRangePeriod(new TuiDayRange(previousMonth, today), second),
+            ];
+            fixture.detectChanges();
+
+            clickOnTextfield();
+
+            getCalendarItems()[1]?.nativeElement.click();
+            fixture.detectChanges();
+
+            testComponent.control.setValue(new TuiDayRange(previousMonth, today));
+            fixture.detectChanges();
+
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe(first);
+        });
+
         describe('Click on the input field', () => {
             it('opens the calendar', () => {
                 clickOnTextfield();

@@ -34,4 +34,8 @@ export class TuiInputDateRangeExample5 {
             ({$implicit}) => `Yet another yesterday (${$implicit.from})`,
         ),
     ];
+
+    selectToday(): void {
+        this.control.setValue(new TuiDayRange(today, today));
+    }
 }
