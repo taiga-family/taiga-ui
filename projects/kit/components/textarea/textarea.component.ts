@@ -10,7 +10,7 @@ import {
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -28,7 +28,7 @@ import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
 @Component({
     standalone: true,
     selector: 'textarea[tuiTextarea]',
-    imports: [PolymorpheusOutlet, TuiScrollControls, NgIf],
+    imports: [NgIf, PolymorpheusOutlet, TuiScrollControls],
     templateUrl: './textarea.template.html',
     styleUrls: ['./textarea.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
