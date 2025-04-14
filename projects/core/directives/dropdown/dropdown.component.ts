@@ -15,7 +15,7 @@ import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map, takeWhile} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
@@ -31,7 +31,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
 @Component({
     standalone: true,
     selector: 'tui-dropdown',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiScrollbar],
+    imports: [PolymorpheusOutlet, TuiScrollbar],
     templateUrl: './dropdown.template.html',
     styleUrls: ['./dropdown.style.less'],
     // @bad TODO: OnPush
@@ -90,7 +90,7 @@ export class TuiDropdownComponent {
     private getStyles(top: number, left: number): Record<string, string> {
         const {right} = this.el.getBoundingClientRect();
         const {maxHeight, minHeight, offset, limitWidth} = this.options;
-        const {innerHeight} = this.win;
+        const innerHeight = this.win.visualViewport?.height ?? this.win.innerHeight;
         const clientRect = this.el.offsetParent?.getBoundingClientRect();
         const {position} = this.directive;
         const rect = this.accessor.getClientRect();
