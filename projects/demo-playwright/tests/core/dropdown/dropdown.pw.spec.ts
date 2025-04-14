@@ -177,4 +177,22 @@ test.describe('Dropdown', () => {
 
         await expect(page).toHaveScreenshot('17-dropdown.png');
     });
+
+    test('let-close', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DropdownOpen);
+        const example = new TuiDocumentationPagePO(page).getExample('#menu');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('button').click();
+
+        await expect(page).toHaveScreenshot('18-dropdown-open.png');
+
+        await page.locator('[tuiOption]').last().click();
+
+        await expect(page).toHaveScreenshot('18-dropdown-closed.png');
+
+        await example.locator('button').click();
+
+        await expect(page).toHaveScreenshot('18-dropdown-open-again.png');
+    });
 });
