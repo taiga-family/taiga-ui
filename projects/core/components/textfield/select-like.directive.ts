@@ -1,13 +1,34 @@
-import {Directive, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Directive,
+    inject,
+    ViewEncapsulation,
+} from '@angular/core';
 import {TUI_IS_ANDROID} from '@taiga-ui/cdk/tokens';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+
+@Component({
+    standalone: true,
+    template: '',
+    styles: [
+        '.t-select-like {caret-color: transparent}',
+        '.t-select-like:not(:disabled):not(:read-only) {cursor: pointer}',
+    ],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        class: 'tui-select-like',
+    },
+})
+class TuiSelectLikeStyles {}
 
 @Directive({
     standalone: true,
     host: {
+        class: 't-select-like',
         inputmode: 'none',
         autocomplete: 'off',
-        '[style.cursor]': '"pointer"',
-        '[style.caret-color]': '"transparent"',
         // Click on cleaner icon does not trigger `beforeinput` event --> handle all kind of deletion in input event
         '(beforeinput)': '$event.inputType.includes("delete") || $event.preventDefault()',
         '(input.capture)': '$event.inputType?.includes("delete") && clear($event.target)',
@@ -17,6 +38,7 @@ import {TUI_IS_ANDROID} from '@taiga-ui/cdk/tokens';
 })
 export class TuiSelectLike {
     private readonly isAndroid = inject(TUI_IS_ANDROID);
+    protected readonly nothing = tuiWithStyles(TuiSelectLikeStyles);
 
     protected clear(element: HTMLInputElement): void {
         element.value = '';
