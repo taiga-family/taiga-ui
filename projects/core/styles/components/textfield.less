@@ -216,6 +216,7 @@ tui-textfield {
         box-sizing: border-box;
         border-radius: inherit;
         border-width: 0;
+        overscroll-behavior: none;
         // StackBlitz changes "0rem" to "0" breaking calc
         padding-inline-start: calc(var(--t-left, ~'0rem') + var(--t-padding));
         padding-inline-end: calc(var(--t-right, ~'0rem') + var(--t-side) + var(--t-padding));
@@ -330,6 +331,7 @@ tui-textfield {
     .t-content {
         display: flex;
         block-size: var(--t-height);
+        min-inline-size: 0.5rem;
         align-items: center;
         gap: inherit;
         margin-inline-start: auto;

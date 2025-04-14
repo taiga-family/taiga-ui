@@ -1,7 +1,7 @@
 export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['Tooltip', 'Hint', 'HintManual', 'HintPointer'],
     ['LineChart', 'LineDaysChart'],
-    ['PrimitiveTextfield', 'Input', 'Textarea'],
+    ['Textfield', 'Textarea'],
     [
         'InputDate',
         'InputDateRange',
