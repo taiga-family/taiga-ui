@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import type {AfterViewInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -9,6 +10,7 @@ import {
     ViewChild,
     ViewContainerRef,
 } from '@angular/core';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -26,13 +28,14 @@ import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
 @Component({
     standalone: true,
     selector: 'textarea[tuiTextarea]',
-    imports: [PolymorpheusOutlet, TuiScrollControls],
+    imports: [PolymorpheusOutlet, TuiScrollControls, NgIf],
     templateUrl: './textarea.template.html',
     styleUrls: ['./textarea.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
     hostDirectives: [TuiWithTextfield],
     host: {
+        '[class._mobile]': 'isMobile',
         '(scroll.zoneless)': 'onScroll()',
         // To trigger CD for #text
         '(scroll.once)': 'onScroll()',
@@ -50,6 +53,7 @@ export class TuiTextarea implements AfterViewInit {
 
     protected readonly el = tuiInjectElement<HTMLTextAreaElement>();
     protected readonly textfield = inject(TuiTextfieldComponent<string>);
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
 
     @Input()
     public min = this.options.min;

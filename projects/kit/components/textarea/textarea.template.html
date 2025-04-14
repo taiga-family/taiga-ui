@@ -1,5 +1,8 @@
 <ng-template #template>
-    <tui-scroll-controls class="t-scroll" />
+    <tui-scroll-controls
+        *ngIf="!isMobile"
+        class="t-scroll"
+    />
     <span
         #text
         aria-hidden="true"

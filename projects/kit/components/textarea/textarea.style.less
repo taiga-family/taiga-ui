@@ -30,11 +30,13 @@
 }
 
 :host {
-    .scrollbar-hidden();
-
     word-break: break-word;
     border: 0 solid transparent;
     padding-block-end: 0 !important;
+
+    &:not(._mobile) {
+        .scrollbar-hidden();
+    }
 }
 
 .t-scroll {
