@@ -115,7 +115,13 @@ tui-data-list {
             cursor: default;
         }
 
-        &:hover:not(:disabled),
+        @media @tui-mouse {
+            &:hover:not(:disabled) {
+                background-color: var(--tui-background-neutral-1);
+            }
+        }
+
+        &:active:not(:disabled),
         &:focus-within,
         &._with-dropdown {
             background-color: var(--tui-background-neutral-1);
