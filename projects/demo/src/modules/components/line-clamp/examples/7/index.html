@@ -11,12 +11,15 @@
     [content]="content"
     [lineHeight]="33"
     [linesLimit]="linesLimit"
-    [style.font-size.px]="24"
-    [style.line-height.px]="33"
     (overflownChange)="hasOverflownContent.set($event)"
 />
 
 <ng-template #content>
-    Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the First
-    Men, Queen of Meereen, Khaleesi
+    <div
+        [style.font-size.px]="24"
+        [style.line-height.px]="33"
+    >
+        Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the
+        First Men, Queen of Meereen, Khaleesi
+    </div>
 </ng-template>
