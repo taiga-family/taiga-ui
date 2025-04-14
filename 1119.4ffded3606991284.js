@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[1119],{1119:e=>{e.exports='<tui-textfield tuiChevron>\n    <select\n        aria-label="Select food"\n        placeholder="Select food"\n        tuiSelect\n        [formControl]="control"\n        [items]="groupItems"\n        [labels]="labels"\n    ></select>\n</tui-textfield>\n'}}]);

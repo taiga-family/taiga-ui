@@ -358,6 +358,9 @@
     <loc>https://taiga-ui.dev/components/calendar-range/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/select/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/legacy/select/</loc>
   </url>
   <url>
@@ -398,6 +401,9 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/textarea/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/textarea-legacy/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/primitive-textfield/</loc>
@@ -1279,6 +1285,12 @@
     <loc>https://taiga-ui.dev/components/calendar-range/Setup/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/select/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/select/Setup/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/legacy/select/API/</loc>
   </url>
   <url>
@@ -1361,6 +1373,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/textarea/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/textarea-legacy/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/textarea-legacy/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/primitive-textfield/API/</loc>
