@@ -24,6 +24,7 @@ import {TuiInputMonthDirective} from '../input-month.directive';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        ngSkipHydration: 'true',
         '[type]': '"text"',
     },
 })

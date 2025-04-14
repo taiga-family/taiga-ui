@@ -41,6 +41,7 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
     providers: [tuiFallbackValueProvider('')],
     hostDirectives: [TuiWithTextfield],
     host: {
+        ngSkipHydration: 'true',
         '[type]': 'hidden() ? "password" : "text"',
     },
 })

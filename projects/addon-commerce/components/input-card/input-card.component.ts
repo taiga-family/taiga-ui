@@ -42,6 +42,7 @@ import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
     host: {
         inputmode: 'numeric',
         placeholder: '0000 0000 0000 0000',
+        ngSkipHydration: 'true',
         '[autocomplete]': 'autocomplete ? "cc-number" : "off"',
     },
 })

@@ -33,6 +33,7 @@ import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        ngSkipHydration: 'true',
         '(keydown.arrowDown)': 'onStep(-step())',
         '(keydown.arrowUp)': 'onStep(step())',
         '[class._with-buttons]': 'step()',
