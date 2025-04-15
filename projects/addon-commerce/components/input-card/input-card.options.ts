@@ -5,6 +5,7 @@ import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export interface TuiInputCardOptions {
+    /** @deprecated apparently "off" doesn't disable autocomplete */
     readonly autocomplete: boolean;
     readonly icon: string | null;
     readonly paymentSystemHandler: TuiHandler<

@@ -26,7 +26,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 export default class Page {
     protected card = '';
     protected iconSelected: string | null = null;
-    protected autocomplete = false;
 
     protected readonly cards: Record<string, string> = {
         common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',

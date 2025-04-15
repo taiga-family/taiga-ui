@@ -7,6 +7,26 @@
 @wrapper-offset-full: 6.5625rem;
 @wrapper-offset-small: 4.125rem;
 
+@keyframes outside {
+    0% {
+        transform: translate3d(var(--t-translate), 0, 0);
+    }
+
+    100% {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+@keyframes inside {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(var(--t-translate), 0, 0);
+    }
+}
+
 :host {
     position: relative;
     display: block;
@@ -31,31 +51,34 @@
 }
 
 .t-wrapper {
-    .transition(transform);
-
     position: absolute;
     inline-size: 100%;
     block-size: 100%;
+    transition: opacity 0s var(--tui-duration);
+
+    --t-translate: @wrapper-offset-full;
+
+    :host-context(tui-root._mobile) & {
+        --t-translate: @wrapper-offset-small;
+    }
+
+    &_cvc,
+    &_expire {
+        opacity: 0;
+        pointer-events: none;
+        animation: outside var(--tui-duration) ease-in-out;
+    }
 
     &_cvc {
         margin-left: @offset-full;
-        transform: translate3d(100%, 0, 0);
-
-        :host-context(tui-root._mobile) & {
-            margin-left: @offset-small;
-        }
-    }
-
-    &_expire {
-        transform: translate3d(100%, 0, 0);
+        animation: outside calc(var(--tui-duration) + 1ms) ease-in-out;
     }
 
     &_active {
-        transform: translate3d(@wrapper-offset-full, 0, 0);
-
-        :host-context(tui-root._mobile) & {
-            transform: translate3d(@wrapper-offset-small, 0, 0);
-        }
+        transition: none;
+        pointer-events: auto;
+        opacity: 1;
+        animation: inside calc(var(--tui-duration) + 1ms) ease-in-out forwards;
     }
 }
 

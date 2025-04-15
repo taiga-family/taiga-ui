@@ -14,13 +14,14 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         placeholder: '00/00',
         translate: 'no',
         maxlength: '5',
-        '[attr.name]': 'autocomplete ? "ccexpiryyear" : null',
-        '[autocomplete]': 'autocomplete ? "cc-exp" : "off"',
+        name: 'ccexpiryyear',
+        autocomplete: 'cc-exp',
     },
 })
 export class TuiInputExpire {
     protected readonly mask = tuiMaskito(TUI_MASK_EXPIRE);
 
+    /** @deprecated apparently "off" doesn't disable autocomplete */
     @Input()
     public autocomplete = inject(TUI_INPUT_CARD_OPTIONS).autocomplete;
 }

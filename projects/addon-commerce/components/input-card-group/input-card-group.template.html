@@ -5,6 +5,7 @@
     >
         <input
             #inputCard
+            autocomplete="cc-number"
             automation-id="tui-input-card-group__card"
             inputmode="numeric"
             translate="no"
@@ -12,7 +13,6 @@
             class="t-input t-input_card"
             [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper: cardValidator)"
             [attr.id]="id + '_card'"
-            [autocomplete]="autocomplete ? 'cc-number' : 'off'"
             [class.t-input_filled]="card.length"
             [class.t-input_inert]="cardPrefilled"
             [disabled]="disabled()"
@@ -63,14 +63,14 @@
     <label (click.zoneless.prevent)="(0)">
         <input
             #inputExpire
+            autocomplete="cc-exp"
             automation-id="tui-input-card-group__expire"
             inputmode="numeric"
             maxlength="5"
+            name="ccexpiryyear"
             translate="no"
             class="t-input"
             [attr.id]="id + '_expire'"
-            [attr.name]="autocomplete ? 'ccexpiryyear' : null"
-            [autocomplete]="autocomplete ? 'cc-exp' : 'off'"
             [class.t-input_inert]="!expireFocusable"
             [class.t-input_prefilled]="!inputs.expire"
             [disabled]="disabled()"
@@ -81,7 +81,7 @@
             [readOnly]="readOnly() || !inputs.expire"
             [tabIndex]="expireFocusable ? 0 : -1"
             (focus)="(0)"
-            (ngModelChange)="onExpireChange($event)"
+            (ngModelChange)="onExpireChange()"
         />
         <div
             class="t-label"
@@ -98,13 +98,13 @@
     <label (click.zoneless.prevent)="(0)">
         <input
             #inputCVC
+            autocomplete="cc-csc"
             automation-id="tui-input-card-group__cvc"
             inputmode="numeric"
             translate="no"
             type="text"
             class="t-input"
             [attr.id]="id + '_cvc'"
-            [autocomplete]="autocomplete ? 'cc-csc' : 'off'"
             [class.t-input_cvc_hidden]="cvcHidden"
             [class.t-input_prefilled]="cvcPrefilled"
             [disabled]="disabled()"

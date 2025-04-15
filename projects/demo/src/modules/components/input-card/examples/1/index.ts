@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     tuiCreateLuhnValidator,
     TuiInputCard,
-    tuiInputCardOptionsProvider,
     TuiInputCVC,
     TuiInputExpire,
 } from '@taiga-ui/addon-commerce';
@@ -35,10 +34,7 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [
-        tuiInputCardOptionsProvider({autocomplete: true}),
-        tuiTextfieldOptionsProvider({cleaner: signal(true)}),
-    ],
+    providers: [tuiTextfieldOptionsProvider({cleaner: signal(true)})],
 })
 export default class Example {
     private readonly alerts = inject(TuiAlertService);
