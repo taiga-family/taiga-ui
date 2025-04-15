@@ -232,7 +232,13 @@ export class TuiInputCardGroup
         this.expirePrefilled = !!this.expire && this.cardPrefilled;
 
         // Programmatic setting of expire input value breaks autofill in Chrome
-        if (!this.inputExpire || this.isMobile || this.isWebkit || this.isServer) {
+        if (
+            !this.inputExpire ||
+            this.isMobile ||
+            this.isWebkit ||
+            this.isServer ||
+            this.inputExpire.nativeElement.value === this.expire
+        ) {
             return;
         }
 
