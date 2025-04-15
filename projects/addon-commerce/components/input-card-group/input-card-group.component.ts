@@ -1,5 +1,10 @@
-import {DOCUMENT, NgIf} from '@angular/common';
-import type {AfterViewInit, ElementRef, Signal} from '@angular/core';
+import {DOCUMENT, isPlatformServer, NgIf} from '@angular/common';
+import {
+    type AfterViewInit,
+    type ElementRef,
+    PLATFORM_ID,
+    type Signal,
+} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -124,6 +129,7 @@ export class TuiInputCardGroup
     private readonly doc = inject(DOCUMENT);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly isWebkit = inject(TUI_IS_WEBKIT);
+    private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly focus$ = new Subject<void>();
     private expirePrefilled = false;
     private readonly paymentSystems = inject(TUI_PAYMENT_SYSTEM_ICONS);
@@ -230,7 +236,7 @@ export class TuiInputCardGroup
         this.expirePrefilled = !!this.expire && this.cardPrefilled;
 
         // Programmatic setting of expire input value breaks autofill in Chrome
-        if (!this.inputExpire || this.isMobile || this.isWebkit) {
+        if (!this.inputExpire || this.isMobile || this.isWebkit || this.isServer) {
             return;
         }
 
