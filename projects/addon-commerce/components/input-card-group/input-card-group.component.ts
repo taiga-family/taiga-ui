@@ -251,19 +251,19 @@ export class TuiInputCardGroup
 
     /** Public API for manual focus management */
     public focusCard(): void {
-        this.inputCard?.nativeElement.focus({preventScroll: true});
+        // this.inputCard?.nativeElement.focus({preventScroll: true});
     }
 
     public focusExpire(): void {
         if (this.inputs.expire) {
-            this.inputExpire?.nativeElement.focus({preventScroll: true});
+            // this.inputExpire?.nativeElement.focus({preventScroll: true});
         } else {
-            this.inputCVC?.nativeElement.focus({preventScroll: true});
+            // this.inputCVC?.nativeElement.focus({preventScroll: true});
         }
     }
 
     public focusCVC(): void {
-        this.inputCVC?.nativeElement.focus({preventScroll: true});
+        // this.inputCVC?.nativeElement.focus({preventScroll: true});
     }
 
     public handleOption(option: Partial<TuiCard> | null): void {
@@ -427,11 +427,10 @@ export class TuiInputCardGroup
     }
 
     private focusInput(): void {
-        const element =
-            (this.cardFocusable && this.inputCard?.nativeElement) ||
-            (this.expireFocusable && this.inputExpire?.nativeElement) ||
-            this.inputCVC?.nativeElement;
-
-        element?.focus();
+        // const element =
+        //     (this.cardFocusable && this.inputCard?.nativeElement) ||
+        //     (this.expireFocusable && this.inputExpire?.nativeElement) ||
+        //     this.inputCVC?.nativeElement;
+        // element?.focus();
     }
 }
