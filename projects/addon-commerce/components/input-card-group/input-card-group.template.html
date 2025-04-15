@@ -56,10 +56,7 @@
         </div>
     </label>
 </div>
-<div
-    class="t-wrapper t-wrapper_expire"
-    [class.t-wrapper_active]="cardCollapsed"
->
+<div class="t-wrapper t-wrapper_expire">
     <label (click.zoneless.prevent)="(0)">
         <input
             #inputExpire
@@ -71,8 +68,6 @@
             translate="no"
             class="t-input"
             [attr.id]="id + '_expire'"
-            [class.t-input_inert]="!expireFocusable"
-            [class.t-input_prefilled]="!inputs.expire"
             [disabled]="disabled()"
             [maskito]="maskExpire"
             [ngModel]="expire"
@@ -91,10 +86,7 @@
         </div>
     </label>
 </div>
-<div
-    class="t-wrapper t-wrapper_cvc"
-    [class.t-wrapper_active]="cardCollapsed"
->
+<div class="t-wrapper t-wrapper_cvc">
     <label (click.zoneless.prevent)="(0)">
         <input
             #inputCVC
@@ -105,8 +97,6 @@
             type="text"
             class="t-input"
             [attr.id]="id + '_cvc'"
-            [class.t-input_cvc_hidden]="cvcHidden"
-            [class.t-input_prefilled]="cvcPrefilled"
             [disabled]="disabled()"
             [maskito]="maskCVC"
             [ngModel]="cvc"
