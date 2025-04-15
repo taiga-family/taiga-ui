@@ -13,17 +13,6 @@
             class="t-input t-input_card"
             [attr.aria-invalid]="!cardPrefilled && !(this.card | tuiMapper: cardValidator)"
             [attr.id]="id + '_card'"
-            [class.t-input_filled]="card.length"
-            [class.t-input_inert]="cardPrefilled"
-            [disabled]="disabled()"
-            [maskito]="maskCard"
-            [ngModel]="formattedCard"
-            [ngModelOptions]="{standalone: true}"
-            [placeholder]="cardPrefilled ? '' : placeholder || exampleText"
-            [readOnly]="readOnly()"
-            [tabIndex]="cardFocusable ? 0 : -1"
-            (focus)="(0)"
-            (ngModelChange)="onCardChange($event)"
         />
         <span
             aria-hidden="true"
@@ -39,14 +28,14 @@
                 [textContent]="formattedCard.slice(-tailLength)"
             ></span>
 
-            <span class="t-collapsed-wrapper">
-                <span
-                    class="t-value"
-                    [style.transform]="transform(ghost)"
-                >
-                    {{ formattedCard }}
-                </span>
-            </span>
+            <!--            <span class="t-collapsed-wrapper">-->
+            <!--                <span-->
+            <!--                    class="t-value"-->
+            <!--                    [style.transform]="transform(ghost)"-->
+            <!--                >-->
+            <!--                    {{ formattedCard }}-->
+            <!--                </span>-->
+            <!--            </span>-->
         </span>
         <div
             class="t-label"
@@ -56,10 +45,7 @@
         </div>
     </label>
 </div>
-<div
-    class="t-wrapper t-wrapper_expire"
-    [class.t-wrapper_active]="cardCollapsed"
->
+<div class="t-wrapper t-wrapper_expire">
     <label (click.zoneless.prevent)="(0)">
         <input
             #inputExpire
@@ -71,17 +57,6 @@
             translate="no"
             class="t-input"
             [attr.id]="id + '_expire'"
-            [class.t-input_inert]="!expireFocusable"
-            [class.t-input_prefilled]="!inputs.expire"
-            [disabled]="disabled()"
-            [maskito]="maskExpire"
-            [ngModel]="expire"
-            [ngModelOptions]="{standalone: true}"
-            [placeholder]="inputs.expire ? '00/00' : '••/••'"
-            [readOnly]="readOnly() || !inputs.expire"
-            [tabIndex]="expireFocusable ? 0 : -1"
-            (focus)="(0)"
-            (ngModelChange)="onExpireChange()"
         />
         <div
             class="t-label"
@@ -91,10 +66,7 @@
         </div>
     </label>
 </div>
-<div
-    class="t-wrapper t-wrapper_cvc"
-    [class.t-wrapper_active]="cardCollapsed"
->
+<div class="t-wrapper t-wrapper_cvc">
     <label (click.zoneless.prevent)="(0)">
         <input
             #inputCVC
@@ -105,17 +77,6 @@
             type="text"
             class="t-input"
             [attr.id]="id + '_cvc'"
-            [class.t-input_cvc_hidden]="cvcHidden"
-            [class.t-input_prefilled]="cvcPrefilled"
-            [disabled]="disabled()"
-            [maskito]="maskCVC"
-            [ngModel]="cvc"
-            [ngModelOptions]="{standalone: true}"
-            [placeholder]="cvcPrefilled ? '•••' : exampleTextCVC"
-            [readOnly]="readOnly() || cvcPrefilled"
-            [tabIndex]="cvcFocusable ? 0 : -1"
-            (focus)="(0)"
-            (ngModelChange)="onCVCChange($event)"
         />
         <div
             class="t-label"
