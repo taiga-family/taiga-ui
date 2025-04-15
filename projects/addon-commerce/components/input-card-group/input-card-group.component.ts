@@ -360,7 +360,7 @@ export class TuiInputCardGroup
         return this.cardCollapsed ? `translate3d(${offsetWidth}px, 0, 0)` : '';
     }
 
-    protected onPointerDown(event: MouseEvent): void {
+    protected onPointerDown(event: PointerEvent): void {
         if (tuiIsElement(event.target) && tuiIsInput(event.target)) {
             return;
         }

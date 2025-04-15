@@ -200,7 +200,7 @@ export class TuiTextareaComponent
         this.updateFocused(focused);
     }
 
-    protected onPointerDown(event: MouseEvent): void {
+    protected onPointerDown(event: PointerEvent): void {
         if (event.target === this.nativeFocusableElement) {
             return;
         }
