@@ -24,10 +24,10 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly control = new FormControl<TuiCard | null>(
-        {card: '424242424242424242', expire: '12/12'} as any,
-        [tuiCardNumberValidator, tuiCardExpireValidator],
-    );
+    protected readonly control = new FormControl<TuiCard | null>(null, [
+        tuiCardNumberValidator,
+        tuiCardExpireValidator,
+    ]);
 
     protected get card(): string | null {
         const value = this.control.value?.card || '';

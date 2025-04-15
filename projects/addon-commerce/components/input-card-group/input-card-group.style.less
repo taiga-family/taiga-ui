@@ -35,8 +35,12 @@
     border-radius: var(--tui-radius-l);
     overflow: hidden;
 
+    --t-translate: @wrapper-offset-full;
+
     :host-context(tui-root._mobile) {
         inline-size: @width-mobile;
+
+        --t-translate: @wrapper-offset-small;
     }
 
     // Increasing specificity to override dark mode appearance
@@ -56,12 +60,6 @@
     block-size: 100%;
     transition: opacity 0s var(--tui-duration);
 
-    --t-translate: @wrapper-offset-full;
-
-    :host-context(tui-root._mobile) & {
-        --t-translate: @wrapper-offset-small;
-    }
-
     &_cvc,
     &_expire {
         opacity: 0;
@@ -70,15 +68,19 @@
     }
 
     &_cvc {
-        margin-left: @offset-full;
-        animation: outside calc(var(--tui-duration) + 1ms) ease-in-out;
+        margin-inline-start: @offset-full;
+        animation: outside var(--tui-duration) ease-in-out;
+
+        :host-context(tui-root._mobile) & {
+            margin-inline-start: @offset-small;
+        }
     }
 
     &_active {
         transition: none;
         pointer-events: auto;
         opacity: 1;
-        animation: inside calc(var(--tui-duration) + 1ms) ease-in-out forwards;
+        animation: inside var(--tui-duration) ease-in-out forwards;
     }
 }
 
