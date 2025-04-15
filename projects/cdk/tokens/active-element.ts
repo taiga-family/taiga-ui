@@ -6,10 +6,12 @@ import {
     tuiCreateTokenFromFactory,
     tuiGetActualTarget,
     tuiGetDocumentOrShadowRoot,
+    tuiIsElement,
     tuiIsNativeMouseFocusable,
 } from '@taiga-ui/cdk/utils';
 import type {Observable} from 'rxjs';
 import {
+    delay,
     distinctUntilChanged,
     filter,
     map,
@@ -66,13 +68,18 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
     const focusout$ = tuiTypedFromEvent(win, 'focusout', {capture: true});
     const focusin$ = tuiTypedFromEvent(win, 'focusin', {capture: true});
     const blur$ = tuiTypedFromEvent(win, 'blur');
-    const mousedown$ = tuiTypedFromEvent(win, 'mousedown');
-    const mouseup$ = tuiTypedFromEvent(win, 'mouseup');
+    const pointerdown$ = tuiTypedFromEvent(win, 'pointerdown');
 
     return merge(
         focusout$.pipe(
-            takeUntil(mousedown$),
-            repeat({delay: () => mouseup$}),
+            // Click on the disabled element doesn't trigger `mouse{down,up}`, but it emits `focusout` and `pointer{down,up}` events
+            takeUntil(pointerdown$),
+            repeat({
+                delay: () =>
+                    tuiTypedFromEvent(win, 'pointerup').pipe(
+                        delay(0), // Mouse device type triggers `focusout` BEFORE `pointerup`; touch – `focusout` AFTER `pointerup`
+                    ),
+            }),
             withLatestFrom(removedElement$),
             filter(([event, removedElement]) =>
                 isValidFocusout(tuiGetActualTarget(event), removedElement),
@@ -93,10 +100,10 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
                     : shadowRootActiveElement(root).pipe(startWith(target));
             }),
         ),
-        mousedown$.pipe(
-            switchMap((event) => {
-                const actualTargetInCurrentTime = tuiGetActualTarget(event);
-
+        pointerdown$.pipe(
+            map(tuiGetActualTarget),
+            filter((target) => tuiIsElement(target) && !target.matches(':disabled')),
+            switchMap((actualTargetInCurrentTime) => {
                 return !doc.activeElement || doc.activeElement === doc.body
                     ? of(actualTargetInCurrentTime)
                     : focusout$.pipe(
