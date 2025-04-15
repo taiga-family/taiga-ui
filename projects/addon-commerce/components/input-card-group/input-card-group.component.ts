@@ -245,7 +245,7 @@ export class TuiInputCardGroup
         this.inputExpire.nativeElement.focus({preventScroll: true});
         this.inputExpire.nativeElement.select();
         this.doc.execCommand('insertText', false, this.expire);
-        (this.doc.activeElement as HTMLElement | null)?.blur();
+        this.inputExpire.nativeElement.blur();
         (activeElement as HTMLElement | null)?.focus({preventScroll: true});
     }
 
