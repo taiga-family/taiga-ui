@@ -17,7 +17,7 @@ import {TuiInputDateDirective} from '../input-date.directive';
         '[min]': 'min',
         '(click.stop.zoneless)': '0',
         '(input.stop.zoneless)': '0',
-        '(mousedown.stop.zoneless)': '0',
+        '(pointerdown.stop.zoneless)': '0',
     },
 })
 export class TuiNativeDateDirective {

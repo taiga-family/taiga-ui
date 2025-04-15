@@ -27,7 +27,7 @@ import {TuiInputTimeDirective} from '../input-time.directive';
         '[step]': 'step',
         '(change.stop)': 'onChange($event.target.value)',
         '(click.stop.zoneless)': '0',
-        '(mousedown.stop.zoneless)': '0',
+        '(pointerdown.stop.zoneless)': '0',
     },
 })
 export class TuiNativeTimeComponent {

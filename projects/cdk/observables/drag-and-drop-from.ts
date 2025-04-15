@@ -17,16 +17,16 @@ export function tuiDragAndDropFrom(element: Element): Observable<TuiDragState> {
     const {ownerDocument} = element;
 
     return concat(
-        tuiTypedFromEvent(element, 'mousedown').pipe(
+        tuiTypedFromEvent(element, 'pointerdown').pipe(
             take(1),
             map((event) => new TuiDragState('start', event)),
         ),
         merge(
-            tuiTypedFromEvent(ownerDocument, 'mousemove').pipe(
+            tuiTypedFromEvent(ownerDocument, 'pointermove').pipe(
                 map((event) => new TuiDragState('continues', event)),
             ),
             merge(
-                tuiTypedFromEvent(ownerDocument, 'mouseup'),
+                tuiTypedFromEvent(ownerDocument, 'pointerup'),
                 tuiTypedFromEvent(ownerDocument, 'dragend'),
             ).pipe(
                 take(1),

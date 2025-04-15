@@ -25,7 +25,7 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
         '[tabIndex]': 'host.focusable ? 0 : -1',
         '(change)': 'onValueChange($event.target.selectedOptions)',
         '(click.stop.zoneless)': '0',
-        '(mousedown.stop.zoneless)': '0',
+        '(pointerdown.stop.zoneless)': '0',
     },
 })
 export class TuiNativeMultiSelectComponent<T> extends AbstractTuiNativeMultiSelect<T> {

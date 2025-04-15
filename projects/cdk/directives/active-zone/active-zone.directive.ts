@@ -13,7 +13,7 @@ import {distinctUntilChanged, map, share, skip, startWith, tap} from 'rxjs';
         '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',
     exportAs: 'tuiActiveZone',
     host: {
-        '(document:mousedown.zoneless)': '(0)',
+        '(document:pointerdown.zoneless)': '(0)',
     },
 })
 export class TuiActiveZone implements OnDestroy {

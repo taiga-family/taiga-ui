@@ -6,7 +6,7 @@
             class="t-bar t-bar_vertical"
             [@tuiFadeIn]="options"
             [class.t-bar_has-horizontal]="bars[1]"
-            (mousedown.capture.prevent)="(0)"
+            (pointerdown.capture.prevent)="(0)"
         >
             <div
                 tuiScrollbar="vertical"
@@ -18,7 +18,7 @@
             class="t-bar t-bar_horizontal"
             [@tuiFadeIn]="options"
             [class.t-bar_has-vertical]="bars[0]"
-            (mousedown.capture.prevent)="(0)"
+            (pointerdown.capture.prevent)="(0)"
         >
             <div
                 tuiScrollbar="horizontal"

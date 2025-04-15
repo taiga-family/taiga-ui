@@ -55,8 +55,8 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
         '[class._draggable]': 'draggable',
         '(touchstart)': 'onTransitioned(false)',
         '(touchend)': 'onTransitioned(true)',
-        '(mousedown)': 'onTransitioned(false)',
-        '(document:mouseup.zoneless)': 'onTransitioned(true)',
+        '(pointerdown)': 'onTransitioned(false)',
+        '(document:pointerup.zoneless)': 'onTransitioned(true)',
     },
 })
 export class TuiCarouselComponent {

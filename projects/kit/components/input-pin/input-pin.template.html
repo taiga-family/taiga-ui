@@ -8,7 +8,7 @@
         [tuiAppearance]="appearance()"
         [tuiAppearanceFocus]="isFocused(index)"
         [tuiAppearanceMode]="control.invalid && control.touched ? 'invalid' : null"
-        (mousedown.prevent)="onClick(index)"
+        (pointerdown.prevent)="onClick(index)"
     >
         <span
             class="t-value"

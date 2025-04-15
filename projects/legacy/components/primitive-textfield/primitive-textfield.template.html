@@ -12,7 +12,7 @@
     [readOnly]="readOnly"
     [style.--t-text-indent.px]="decor.pre$ | async"
     (click.prevent.zoneless)="detectRetargetFromLabel($event)"
-    (mousedown)="onMouseDown($event)"
+    (pointerdown)="onPointerDown($event)"
 >
     <ng-content select="input" />
     <ng-content select="select" />

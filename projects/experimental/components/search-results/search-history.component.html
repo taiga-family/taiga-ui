@@ -11,7 +11,7 @@
     (click)="select(item)"
     (keydown.backspace)="remove(item)"
     (keydown.delete)="remove(item)"
-    (mousedown.prevent)="(0)"
+    (pointerdown.prevent)="(0)"
 >
     <tui-avatar [src]="options.history" />
     <span tuiTitle>{{ item }}</span>
@@ -38,7 +38,7 @@
     tuiCell
     type="button"
     (click)="select(item)"
-    (mousedown.prevent)="(0)"
+    (pointerdown.prevent)="(0)"
 >
     <tui-avatar [src]="options.popular" />
     <span tuiTitle>{{ item }}</span>

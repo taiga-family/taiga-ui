@@ -11,7 +11,7 @@ export class TuiKeyboardService implements OnDestroy {
     private readonly doc = inject(DOCUMENT);
     private readonly sub = merge(
         fromEvent(this.doc, 'focusout'),
-        fromEvent(this.doc, 'mousedown').pipe(
+        fromEvent(this.doc, 'pointerdown').pipe(
             filter((e) => Object.is(e.target, this.element)),
         ),
     ).subscribe(() => {

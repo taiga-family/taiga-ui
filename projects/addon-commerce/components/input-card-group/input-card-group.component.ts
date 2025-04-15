@@ -106,7 +106,7 @@ export interface TuiCard {
     ],
     host: {
         'data-size': 'l',
-        '(mousedown)': 'onMouseDown($event)',
+        '(pointerdown)': 'onPointerDown($event)',
         '(scroll.zoneless)': '$event.target.scrollLeft = 0',
     },
 })
@@ -360,7 +360,7 @@ export class TuiInputCardGroup
         return this.cardCollapsed ? `translate3d(${offsetWidth}px, 0, 0)` : '';
     }
 
-    protected onMouseDown(event: MouseEvent): void {
+    protected onPointerDown(event: MouseEvent): void {
         if (tuiIsElement(event.target) && tuiIsInput(event.target)) {
             return;
         }

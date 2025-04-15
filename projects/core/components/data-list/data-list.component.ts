@@ -61,7 +61,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
         role: 'listbox',
         '[attr.data-size]': 'size',
         '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',
-        '(mousedown.prevent)': '(0)',
+        '(pointerdown.prevent)': '(0)',
         '(wheel.zoneless.passive)': 'handleFocusLossIfNecessary()',
         '(mouseleave)': 'handleFocusLossIfNecessary($event.target)',
         '(keydown.tab)': 'handleFocusLossIfNecessary()',

@@ -18,7 +18,7 @@ import {TuiPickerService} from '../services/picker.service';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPickerService],
     host: {
-        '(document:mouseup)': 'onMouseUp()',
+        '(document:pointerup)': 'onPointerUp()',
     },
 })
 export class TuiLinearMultiPickerComponent {
@@ -37,11 +37,11 @@ export class TuiLinearMultiPickerComponent {
 
     public index = NaN;
 
-    public onMouseUp(): void {
+    public onPointerUp(): void {
         this.index = NaN;
     }
 
-    public onMouseDown(index: number): void {
+    public onPointerDown(index: number): void {
         this.updateIndex(index);
     }
 

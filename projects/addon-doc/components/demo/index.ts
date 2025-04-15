@@ -62,7 +62,7 @@ const MIN_WIDTH = 160;
     host: {
         '[class._sticky]': 'sticky',
         '(window:resize)': 'onResize()',
-        '(document:mouseup.zoneless)': 'onMouseUp()',
+        '(document:pointerup.zoneless)': 'onPointerUp()',
     },
 })
 export class TuiDocDemo implements AfterViewInit {
@@ -122,10 +122,10 @@ export class TuiDocDemo implements AfterViewInit {
 
     protected onResize(): void {
         this.updateWidth();
-        this.onMouseUp();
+        this.onPointerUp();
     }
 
-    protected onMouseUp(): void {
+    protected onPointerUp(): void {
         this.updateUrl({sandboxWidth: this.sandboxWidth});
     }
 

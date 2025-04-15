@@ -20,10 +20,7 @@ export class TuiPanService extends Observable<readonly [number, number]> {
         const doc = inject(DOCUMENT);
 
         super((subscriber) =>
-            merge(
-                tuiTypedFromEvent(el, 'touchstart', {passive: true}),
-                tuiTypedFromEvent(el, 'mousedown'),
-            )
+            merge(tuiTypedFromEvent(el, 'pointerdown'))
                 .pipe(
                     switchMap(() =>
                         merge(
@@ -43,12 +40,7 @@ export class TuiPanService extends Observable<readonly [number, number]> {
 
                         return [deltaX, deltaY] as [number, number];
                     }),
-                    takeUntil(
-                        merge(
-                            tuiTypedFromEvent(doc, 'touchend'),
-                            tuiTypedFromEvent(doc, 'mouseup'),
-                        ),
-                    ),
+                    takeUntil(tuiTypedFromEvent(doc, 'pointerup')),
                     repeat(),
                 )
                 .subscribe(subscriber),

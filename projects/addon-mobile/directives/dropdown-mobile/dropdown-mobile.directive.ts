@@ -31,7 +31,7 @@ import {TuiOptionMobile} from './option-mobile/option-mobile.component';
     ],
     host: {
         '[style.visibility]': '"visible"',
-        '(mousedown)': 'onMouseDown($event)',
+        '(pointerdown)': 'onPointerDown($event)',
     },
 })
 export class TuiDropdownMobile {
@@ -40,7 +40,7 @@ export class TuiDropdownMobile {
     @Input()
     public tuiDropdownMobile = '';
 
-    protected onMouseDown(event: MouseEvent): void {
+    protected onPointerDown(event: PointerEvent): void {
         if (
             !this.isMobile ||
             !tuiIsHTMLElement(event.target) ||

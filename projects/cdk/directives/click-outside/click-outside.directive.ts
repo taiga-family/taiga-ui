@@ -24,7 +24,7 @@ export class TuiClickOutside {
     @Output()
     public readonly tuiClickOutside: Observable<unknown> = fromEvent(
         this.doc,
-        'mouseup',
+        'pointerup',
     ).pipe(
         map(tuiGetActualTarget),
         filter((target) => this.isOutside(target)),

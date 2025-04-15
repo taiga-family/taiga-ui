@@ -11,7 +11,7 @@ import {TuiCompass} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
     host: {
-        '(document:mousemove)': 'calculate($event)',
+        '(document:pointermove)': 'calculate($event)',
     },
 })
 export default class Example {
@@ -20,7 +20,7 @@ export default class Example {
 
     protected degrees = 0;
 
-    protected calculate(event: MouseEvent): void {
+    protected calculate(event: PointerEvent): void {
         const rect =
             this.compass?.nativeElement.getBoundingClientRect() ?? EMPTY_CLIENT_RECT;
         const x = Math.ceil(event.clientX - (rect.left + rect.width / 2));
