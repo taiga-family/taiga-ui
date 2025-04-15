@@ -1,10 +1,5 @@
 import {DOCUMENT, isPlatformServer, NgIf} from '@angular/common';
-import {
-    type AfterViewInit,
-    type ElementRef,
-    PLATFORM_ID,
-    type Signal,
-} from '@angular/core';
+import type {AfterViewInit, ElementRef, Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -13,6 +8,7 @@ import {
     inject,
     Input,
     Output,
+    PLATFORM_ID,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
