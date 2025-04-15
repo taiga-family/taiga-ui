@@ -112,7 +112,6 @@
             [ngModelOptions]="{standalone: true}"
             [placeholder]="cvcPrefilled ? '•••' : exampleTextCVC"
             [readOnly]="readOnly() || cvcPrefilled"
-            [tabIndex]="cvcFocusable ? 0 : -1"
             (focus)="(0)"
             (ngModelChange)="onCVCChange($event)"
         />

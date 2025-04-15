@@ -30,7 +30,7 @@
 :host {
     position: relative;
     display: block;
-    //block-size: var(--tui-height-l);
+    block-size: var(--tui-height-l);
     inline-size: @width-full;
     border-radius: var(--tui-radius-l);
     overflow: hidden;
@@ -50,23 +50,23 @@
 }
 
 .t-wrapper {
-    //position: absolute;
+    position: absolute;
     inline-size: 100%;
-    //block-size: 100%;
+    block-size: 100%;
     transition: opacity 0s var(--tui-duration);
 
     &_cvc,
     &_expire {
-        //opacity: 0;
-        //pointer-events: none;
-        //animation: outside var(--tui-duration) ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+        animation: outside var(--tui-duration) ease-in-out;
     }
 
     &_cvc {
-        //margin-inline-start: @offset-full;
+        margin-inline-start: @offset-full;
 
         :host-context(tui-root._mobile) & {
-            //margin-inline-start: @offset-small;
+            margin-inline-start: @offset-small;
         }
     }
 
@@ -123,7 +123,7 @@
 }
 
 .t-input {
-    //.fullsize();
+    .fullsize();
 
     border: 0;
     margin: 0;
