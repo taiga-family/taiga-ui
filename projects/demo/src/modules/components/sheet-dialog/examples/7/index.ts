@@ -4,11 +4,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiFloating} from '@taiga-ui/kit';
+import {TuiFloatingContainer} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiFloating, TuiSheetDialog],
+    imports: [TuiButton, TuiFloatingContainer, TuiSheetDialog],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

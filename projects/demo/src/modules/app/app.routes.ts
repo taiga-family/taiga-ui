@@ -122,7 +122,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.Floating,
         title: 'Floating',
-        loadComponent: async () => import('../components/floating'),
+        loadComponent: async () => import('../components/floating-container'),
     }),
     route({
         path: DemoRoute.BlockStatus,

@@ -7,7 +7,7 @@ import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import type {TuiSwipeDirection} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MATCHER, tuiControlValue, TuiSwipe} from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloating} from '@taiga-ui/kit';
+import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
 import {
     TuiInputComponent,
     TuiInputModule,
@@ -43,7 +43,7 @@ const USERS = [
         TuiAutoColorPipe,
         TuiAvatar,
         TuiButton,
-        TuiFloating,
+        TuiFloatingContainer,
         TuiInitialsPipe,
         TuiInputModule,
         TuiSheetDialog,
