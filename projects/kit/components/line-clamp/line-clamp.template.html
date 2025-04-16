@@ -5,7 +5,5 @@
     [style.word-break]="lineClamp() > 1 ? 'break-word' : 'break-all'"
     [tuiHint]="computedContent"
 >
-    <ng-container *polymorpheusOutlet="content as text">
-        {{ text }}
-    </ng-container>
+    <ng-container *polymorpheusOutlet="content as text">{{ text }}</ng-container>
 </div>
