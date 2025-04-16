@@ -47,7 +47,6 @@ export default class PageComponent {
     protected iconSelected: PolymorpheusContent = null;
 
     protected id = '';
-    protected autocomplete = this.options.autocomplete;
     protected placeholder = this.options.exampleText;
 
     protected readonly codeLengthVariants = [3, 4] as const;

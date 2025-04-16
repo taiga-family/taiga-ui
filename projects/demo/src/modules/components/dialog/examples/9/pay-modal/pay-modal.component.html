@@ -64,7 +64,6 @@
                     <tui-input-card-group
                         #cardGroupedInput
                         formControlName="card"
-                        [autocomplete]="true"
                         [cardValidator]="cardValidator"
                         [class.without-date]="paymentMode === PAYMENT_MODE.BySavedCard"
                         [tuiTextfieldCleaner]="paymentMode === PAYMENT_MODE.ByNewCard"

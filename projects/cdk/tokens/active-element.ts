@@ -86,11 +86,11 @@ export const TUI_ACTIVE_ELEMENT = tuiCreateTokenFromFactory<
         focusin$.pipe(
             switchMap((event) => {
                 const target = tuiGetActualTarget(event);
-                const root = tuiGetDocumentOrShadowRoot(target) as Document;
+                const root = tuiGetDocumentOrShadowRoot(target) || doc;
 
                 return root === doc
                     ? of(target)
-                    : shadowRootActiveElement(root).pipe(startWith(target));
+                    : shadowRootActiveElement(root as Document).pipe(startWith(target));
             }),
         ),
         mousedown$.pipe(

@@ -12,7 +12,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     hostDirectives: [MaskitoDirective, TuiWithTextfield],
     host: {
         inputmode: 'numeric',
-        '[autocomplete]': 'autocomplete ? "cc-csc" : "off"',
+        autocomplete: 'cc-csc',
         '[placeholder]': '"0".repeat(length)',
         '[style.-webkit-text-security]': 'hidden ? "disc" : null',
         '(copy.prevent)': '(0)',
@@ -21,6 +21,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 export class TuiInputCVC implements OnChanges {
     private readonly mask = tuiMaskito(TUI_MASK_CVC(3));
 
+    /** @deprecated apparently "off" doesn't disable autocomplete */
     @Input()
     public autocomplete = inject(TUI_INPUT_CARD_OPTIONS).autocomplete;
 

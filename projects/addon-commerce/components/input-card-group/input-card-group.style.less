@@ -7,6 +7,26 @@
 @wrapper-offset-full: 6.5625rem;
 @wrapper-offset-small: 4.125rem;
 
+@keyframes outside {
+    0% {
+        transform: translate3d(var(--t-translate), 0, 0);
+    }
+
+    100% {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+@keyframes inside {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(var(--t-translate), 0, 0);
+    }
+}
+
 :host {
     position: relative;
     display: block;
@@ -15,8 +35,12 @@
     border-radius: var(--tui-radius-l);
     overflow: hidden;
 
+    --t-translate: @wrapper-offset-full;
+
     :host-context(tui-root._mobile) {
         inline-size: @width-mobile;
+
+        --t-translate: @wrapper-offset-small;
     }
 
     // Increasing specificity to override dark mode appearance
@@ -25,37 +49,32 @@
     }
 }
 
-.t-outline {
-    block-size: 100%;
-    inline-size: 100%;
-}
-
 .t-wrapper {
-    .transition(transform);
-
     position: absolute;
     inline-size: 100%;
     block-size: 100%;
+    transition: opacity 0s var(--tui-duration);
 
-    &_cvc {
-        margin-left: @offset-full;
-        transform: translate3d(100%, 0, 0);
-
-        :host-context(tui-root._mobile) & {
-            margin-left: @offset-small;
-        }
+    &_cvc,
+    &_expire {
+        opacity: 0;
+        pointer-events: none;
+        animation: outside var(--tui-duration) ease-in-out;
     }
 
-    &_expire {
-        transform: translate3d(100%, 0, 0);
+    &_cvc {
+        margin-inline-start: @offset-full;
+
+        :host-context(tui-root._mobile) & {
+            margin-inline-start: @offset-small;
+        }
     }
 
     &_active {
-        transform: translate3d(@wrapper-offset-full, 0, 0);
-
-        :host-context(tui-root._mobile) & {
-            transform: translate3d(@wrapper-offset-small, 0, 0);
-        }
+        transition: none;
+        pointer-events: auto;
+        opacity: 1;
+        animation: inside var(--tui-duration) ease-in-out forwards;
     }
 }
 

@@ -33,7 +33,7 @@
             id="card"
             heading="Card"
             [component]="2 | tuiComponent"
-            [content]="2 | tuiExample: 'html,ts'"
+            [content]="2 | tuiExample"
         >
             <p>
                 Pass empty string to disable
@@ -60,7 +60,6 @@
 
                 <input
                     tuiInputCard
-                    [autocomplete]="autocomplete"
                     [disabled]="control.disabled"
                     [icon]="icon"
                     [invalid]="control.invalid"
@@ -79,14 +78,6 @@
                 [(value)]="card"
             >
                 Card number (also works with a reactive control)
-            </tr>
-            <tr
-                name="[autocomplete]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="autocomplete"
-            >
-                Browser autocomplete of card
             </tr>
             <tr
                 name="[icon]"

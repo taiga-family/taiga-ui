@@ -12,7 +12,7 @@
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample: 'html,ts'"
+            [content]="index + 1 | tuiExample"
             [heading]="example"
             [id]="example | tuiKebab"
         />
@@ -22,7 +22,6 @@
         <tui-doc-demo [control]="formControl">
             <ng-template>
                 <tui-input-card-group
-                    [autocomplete]="autocomplete"
                     [codeLength]="codeLength"
                     [formControl]="formControl"
                     [icon]="icon"
@@ -54,14 +53,6 @@
         </ng-template>
 
         <table tuiDocAPI>
-            <tr
-                name="[autocomplete]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="autocomplete"
-            >
-                Browser autofill
-            </tr>
             <tr
                 name="[cardValidator]"
                 tuiDocAPIItem

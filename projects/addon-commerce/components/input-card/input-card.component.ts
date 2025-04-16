@@ -43,7 +43,7 @@ import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
         inputmode: 'numeric',
         placeholder: '0000 0000 0000 0000',
         ngSkipHydration: 'true',
-        '[autocomplete]': 'autocomplete ? "cc-number" : "off"',
+        autocomplete: 'cc-number',
     },
 })
 export class TuiInputCard implements OnInit {
@@ -72,6 +72,7 @@ export class TuiInputCard implements OnInit {
         return url && this.icon() !== '' ? url : null;
     });
 
+    /** @deprecated apparently "off" doesn't disable autocomplete */
     @Input()
     public autocomplete = this.options.autocomplete;
 
