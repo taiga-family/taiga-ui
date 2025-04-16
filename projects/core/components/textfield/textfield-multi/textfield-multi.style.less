@@ -1,0 +1,68 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+@import '@taiga-ui/core/styles/components/textfield.less';
+
+tui-textfield[multi] {
+    overflow: hidden;
+    align-items: stretch;
+
+    &::before,
+    &::after {
+        block-size: var(--t-height);
+    }
+
+    input:defined,
+    select:defined {
+        appearance: none;
+        box-sizing: border-box;
+        border-radius: inherit;
+        border: none;
+        outline: none;
+    }
+
+    .t-container {
+        .scrollbar-hidden();
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0.5rem 0;
+        overflow: scroll;
+        inline-size: calc(100% - var(--t-side) - var(--t-padding) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
+
+        &:has([tuiChip]) ~ .t-content .t-clear {
+            display: flex;
+        }
+
+        &:has(> *:not(.t-input_wrapper)) input:defined::placeholder {
+            opacity: 0;
+        }
+    }
+
+    .t-input_wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        max-inline-size: 100%;
+
+        .t-ghost {
+            visibility: hidden;
+            white-space: pre;
+            text-overflow: clip;
+            min-inline-size: 0.125rem;
+            min-block-size: 2.25rem;
+        }
+
+        input:defined {
+            position: absolute;
+            left: 0;
+            inline-size: 100%;
+            padding: 0;
+        }
+    }
+
+    .t-filler:defined {
+        position: absolute;
+        left: 0;
+    }
+}
