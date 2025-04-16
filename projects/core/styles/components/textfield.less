@@ -315,13 +315,28 @@ tui-textfield {
         color: var(--tui-text-secondary);
     }
 
-    select:not([data-mode~='readonly']) {
-        cursor: pointer;
-    }
+    select {
+        &:not([data-mode~='readonly']) {
+            cursor: pointer;
+        }
 
-    select option:not(:disabled) {
-        // In Windows OS native options inherit color of host <select>
-        color: var(--tui-text-primary);
+        option[value='']:disabled {
+            // Hide placeholder from native datalist (Windows OS only)
+            background-color: var(--tui-background-elevation-3);
+            color: transparent;
+        }
+
+        optgroup,
+        option {
+            // Windows OS only
+            background-color: var(--tui-background-elevation-3);
+        }
+
+        optgroup,
+        option:not(:disabled) {
+            // In Windows OS native options inherit color of host <select>
+            color: var(--tui-text-primary);
+        }
     }
 
     button,
