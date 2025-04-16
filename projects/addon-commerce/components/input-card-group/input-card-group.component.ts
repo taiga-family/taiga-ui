@@ -369,8 +369,8 @@ export class TuiInputCardGroup
         }
     }
 
-    protected onExpireChange(): void {
-        this.updateProperty(this.inputExpire?.nativeElement.value || '', 'expire');
+    protected onExpireChange(expire: string): void {
+        this.updateProperty(expire, 'expire');
 
         // MM/YY
         if (Number(this.inputExpire?.nativeElement.selectionStart) === 5) {

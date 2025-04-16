@@ -81,7 +81,7 @@
             [readOnly]="readOnly() || !inputs.expire"
             [tabIndex]="expireFocusable || (isMobile && isWebkit) ? 0 : -1"
             (focus)="(0)"
-            (ngModelChange)="onExpireChange()"
+            (ngModelChange)="onExpireChange($event)"
         />
         <div
             class="t-label"

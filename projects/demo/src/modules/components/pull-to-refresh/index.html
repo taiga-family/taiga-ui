@@ -31,7 +31,7 @@
         <tui-doc-example
             id="android"
             heading="Android"
-            [content]="1 | tuiExample: 'html,ts'"
+            [content]="1 | tuiExample"
         >
             <tui-scrollbar class="scrollbar">
                 <ng-container *polymorpheusOutlet="example1 | async as text">{{ text }}</ng-container>
@@ -41,7 +41,7 @@
         <tui-doc-example
             id="ios"
             heading="iOS"
-            [content]="2 | tuiExample: 'html,ts'"
+            [content]="2 | tuiExample"
         >
             <tui-scrollbar class="scrollbar">
                 <ng-container *polymorpheusOutlet="example2 | async as text">{{ text }}</ng-container>
