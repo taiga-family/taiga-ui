@@ -275,7 +275,7 @@ export class TuiPrimitiveTextfieldComponent
         this.updateValue('');
     }
 
-    protected onMouseDown(event: MouseEvent): void {
+    protected onPointerDown(event: PointerEvent): void {
         const {nativeFocusableElement} = this;
 
         if (!nativeFocusableElement || event.target === nativeFocusableElement) {

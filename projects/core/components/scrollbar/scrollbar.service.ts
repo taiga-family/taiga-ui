@@ -9,11 +9,11 @@ export class TuiScrollbarService extends Observable<[number, number]> {
     private readonly el = tuiInjectElement();
     private readonly element = inject(TUI_SCROLL_REF).nativeElement;
     private readonly scroll$ = merge(
-        tuiTypedFromEvent(this.el.parentElement!, 'mousedown').pipe(
+        tuiTypedFromEvent(this.el.parentElement!, 'pointerdown').pipe(
             filter(({target}) => target !== this.el),
             map((event) => this.getScrolled(event, 0.5, 0.5)),
         ),
-        tuiTypedFromEvent(this.el, 'mousedown').pipe(
+        tuiTypedFromEvent(this.el, 'pointerdown').pipe(
             tuiZonefree(),
             switchMap((event) => {
                 const {ownerDocument} = this.el;
@@ -21,9 +21,9 @@ export class TuiScrollbarService extends Observable<[number, number]> {
                 const vertical = getOffsetVertical(event, rect);
                 const horizontal = getOffsetHorizontal(event, rect);
 
-                return tuiTypedFromEvent(ownerDocument, 'mousemove').pipe(
+                return tuiTypedFromEvent(ownerDocument, 'pointermove').pipe(
                     map((event) => this.getScrolled(event, vertical, horizontal)),
-                    takeUntil(tuiTypedFromEvent(ownerDocument, 'mouseup')),
+                    takeUntil(tuiTypedFromEvent(ownerDocument, 'pointerup')),
                 );
             }),
         ),
@@ -34,7 +34,7 @@ export class TuiScrollbarService extends Observable<[number, number]> {
     }
 
     private getScrolled(
-        {clientY, clientX}: MouseEvent,
+        {clientY, clientX}: PointerEvent,
         offsetY: number,
         offsetX: number,
     ): [number, number] {
@@ -52,10 +52,10 @@ export class TuiScrollbarService extends Observable<[number, number]> {
     }
 }
 
-function getOffsetVertical({clientY}: MouseEvent, {top, height}: DOMRect): number {
+function getOffsetVertical({clientY}: PointerEvent, {top, height}: DOMRect): number {
     return (clientY - top) / height;
 }
 
-function getOffsetHorizontal({clientX}: MouseEvent, {left, width}: DOMRect): number {
+function getOffsetHorizontal({clientX}: PointerEvent, {left, width}: DOMRect): number {
     return (clientX - left) / width;
 }

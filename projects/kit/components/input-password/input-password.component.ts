@@ -34,7 +34,7 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
             [style.border]="size() === 's' ? null : 'none'"
             [tuiTooltip]="text()"
             (click)="hidden.set(!hidden())"
-            (mousedown.capture.prevent.stop)="el.focus()"
+            (pointerdown.capture.prevent.stop)="el.focus()"
         />
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,

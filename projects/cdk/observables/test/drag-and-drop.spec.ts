@@ -25,8 +25,8 @@ describe('tuiDragAndDropFrom', () => {
                 result = event.stage;
             });
 
-        element.dispatchEvent(new Event('mousedown'));
-        element.dispatchEvent(new Event('mousemove'));
+        element.dispatchEvent(new Event('pointerdown'));
+        element.dispatchEvent(new Event('pointermove'));
 
         expect(result).toBe('start');
     });
@@ -41,8 +41,8 @@ describe('tuiDragAndDropFrom', () => {
                 result = event.stage;
             });
 
-        element.dispatchEvent(new Event('mousedown'));
-        document.dispatchEvent(new Event('mousemove'));
+        element.dispatchEvent(new Event('pointerdown'));
+        document.dispatchEvent(new Event('pointermove'));
 
         expect(result).toBe('continues');
     });
@@ -57,8 +57,8 @@ describe('tuiDragAndDropFrom', () => {
                 result = event.stage;
             });
 
-        element.dispatchEvent(new Event('mousedown'));
-        document.dispatchEvent(new Event('mousemove'));
+        element.dispatchEvent(new Event('pointerdown'));
+        document.dispatchEvent(new Event('pointermove'));
         document.dispatchEvent(new Event('dragend'));
 
         expect(result).toBe('end');

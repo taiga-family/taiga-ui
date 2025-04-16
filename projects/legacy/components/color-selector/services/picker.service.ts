@@ -10,23 +10,23 @@ import {map, Observable, startWith, switchMap, takeUntil} from 'rxjs';
 export class TuiPickerService extends Observable<TuiPoint> {
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
-    private readonly point$ = tuiTypedFromEvent(this.el, 'mousedown').pipe(
+    private readonly point$ = tuiTypedFromEvent(this.el, 'pointerdown').pipe(
         tuiPreventDefault(),
         switchMap((event) => {
-            const mouseMove$ = tuiTypedFromEvent(this.doc, 'mousemove').pipe(
+            const pointerMove$ = tuiTypedFromEvent(this.doc, 'pointermove').pipe(
                 map(({clientX, clientY}) =>
                     tuiGetElementPoint(clientX, clientY, this.el),
                 ),
-                takeUntil(tuiTypedFromEvent(this.doc, 'mouseup')),
+                takeUntil(tuiTypedFromEvent(this.doc, 'pointerup')),
             );
 
             return event.target === this.el
-                ? mouseMove$.pipe(
+                ? pointerMove$.pipe(
                       startWith(
                           tuiGetElementPoint(event.clientX, event.clientY, this.el),
                       ),
                   )
-                : mouseMove$;
+                : pointerMove$;
         }),
         takeUntilDestroyed(),
     );

@@ -33,7 +33,7 @@ class TuiSelectLikeStyles {}
         '(beforeinput)': '$event.inputType.includes("delete") || $event.preventDefault()',
         '(input.capture)': '$event.inputType?.includes("delete") && clear($event.target)',
         // Hide Android text select handle (bubble marker below transparent caret)
-        '(mousedown)': 'prevent($event, $event.target)',
+        '(pointerdown)': 'prevent($event, $event.target)',
     },
 })
 export class TuiSelectLike {

@@ -13,7 +13,7 @@ import {TuiInputDateTimeDirective} from '../input-date-time.directive';
         '(change.stop)': 'onChange($event.target.value)',
         '(input.stop)': 'onChange($event.target.value)',
         '(click.stop.zoneless)': '0',
-        '(mousedown.stop.zoneless)': '0',
+        '(pointerdown.stop.zoneless)': '0',
     },
 })
 export class TuiNativeDateTimeDirective {

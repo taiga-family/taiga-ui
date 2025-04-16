@@ -30,7 +30,7 @@ import {TUI_OPTION_CONTENT} from './option-content';
         role: 'option',
         '[attr.disabled]': 'disabled || null',
         '[class._with-dropdown]': 'dropdown?.()',
-        '(mousemove.zoneless)': 'onMouseMove()',
+        '(pointermove.zoneless)': 'onPointerMove()',
     },
 })
 export class TuiOptionNew<T = unknown> implements OnDestroy {
@@ -74,7 +74,7 @@ export class TuiOptionNew<T = unknown> implements OnDestroy {
         this.dataList?.handleFocusLossIfNecessary(this.el);
     }
 
-    protected onMouseMove(): void {
+    protected onPointerMove(): void {
         if (
             !this.isMobile &&
             !tuiIsNativeFocused(this.el) &&

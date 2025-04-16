@@ -33,14 +33,14 @@ export class TuiDialogCloseService extends Observable<unknown> {
         }),
     );
 
-    private readonly mousedown$ = tuiTypedFromEvent(this.doc, 'mousedown').pipe(
+    private readonly pointerdown$ = tuiTypedFromEvent(this.doc, 'pointerdown').pipe(
         filter(
             (event) =>
                 tuiGetViewportWidth(this.win) - event.clientX > SCROLLBAR_PLACEHOLDER &&
                 this.isOutside(tuiGetActualTarget(event)),
         ),
         switchMap(() =>
-            tuiTypedFromEvent(this.doc, 'mouseup').pipe(
+            tuiTypedFromEvent(this.doc, 'pointerup').pipe(
                 take(1),
                 map(tuiGetActualTarget),
                 filter((target) => this.isOutside(target)),
@@ -52,7 +52,7 @@ export class TuiDialogCloseService extends Observable<unknown> {
         super((subscriber) =>
             merge(
                 this.esc$,
-                this.mousedown$,
+                this.pointerdown$,
                 tuiCloseWatcher().pipe(tuiZonefull()),
             ).subscribe(subscriber),
         );

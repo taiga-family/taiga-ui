@@ -14,16 +14,16 @@ export class TuiTableResized {
     private readonly el = tuiInjectElement();
 
     @Output()
-    public readonly tuiResized = tuiTypedFromEvent(this.el, 'mousedown').pipe(
+    public readonly tuiResized = tuiTypedFromEvent(this.el, 'pointerdown').pipe(
         tuiPreventDefault(),
         switchMap(() => {
             const {width, right} =
                 this.el.closest('th')?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
 
-            return tuiTypedFromEvent(this.doc, 'mousemove').pipe(
+            return tuiTypedFromEvent(this.doc, 'pointermove').pipe(
                 distinctUntilChanged(),
                 map(({clientX}) => width + clientX - right),
-                takeUntil(tuiTypedFromEvent(this.doc, 'mouseup')),
+                takeUntil(tuiTypedFromEvent(this.doc, 'pointerup')),
             );
         }),
     );

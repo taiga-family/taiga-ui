@@ -27,7 +27,7 @@ import {tuiAsTextfieldAccessor} from './textfield-accessor';
         '(keydown.space.prevent)': '0',
         '(keydown.enter.prevent)': '0',
         '(keydown.backspace)': 'setValue("")',
-        '(mousedown.prevent)': 'focus()',
+        '(pointerdown.prevent)': 'focus()',
         '(keydown.control.c)': 'onCopy()',
         '(keydown.meta.c)': 'onCopy()',
     },

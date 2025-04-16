@@ -46,7 +46,7 @@
         [disabled]="!canIncrement"
         [iconStart]="icons.up"
         (click.prevent)="onArrow(step)"
-        (mousedown.prevent)="nativeFocusableElement?.focus()"
+        (pointerdown.prevent)="nativeFocusableElement?.focus()"
     >
         +
     </button>
@@ -60,7 +60,7 @@
         [disabled]="!canDecrement"
         [iconStart]="icons.down"
         (click.prevent)="onArrow(-step)"
-        (mousedown.prevent)="nativeFocusableElement?.focus()"
+        (pointerdown.prevent)="nativeFocusableElement?.focus()"
     >
         -
     </button>

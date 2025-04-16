@@ -362,7 +362,7 @@ export class TuiInputTagComponent
         }
     }
 
-    protected onMouseDown(event: MouseEvent): void {
+    protected onPointerDown(event: PointerEvent): void {
         const actualTarget = tuiGetActualTarget(event);
 
         if (

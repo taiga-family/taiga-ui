@@ -13,11 +13,11 @@ export const TUI_SELECTION_STREAM = tuiCreateTokenFromFactory<Observable<unknown
 
     return merge(
         tuiTypedFromEvent(doc, 'selectionchange'),
-        tuiTypedFromEvent(doc, 'mouseup'),
-        tuiTypedFromEvent(doc, 'mousedown').pipe(
+        tuiTypedFromEvent(doc, 'pointerup'),
+        tuiTypedFromEvent(doc, 'pointerdown').pipe(
             switchMap(() =>
-                tuiTypedFromEvent(doc, 'mousemove').pipe(
-                    takeUntil(tuiTypedFromEvent(doc, 'mouseup')),
+                tuiTypedFromEvent(doc, 'pointermove').pipe(
+                    takeUntil(tuiTypedFromEvent(doc, 'pointerup')),
                 ),
             ),
         ),

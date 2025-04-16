@@ -58,11 +58,11 @@
             [value]="value"
             (dayClick)="onDayClick($event)"
             (monthChange)="onMonthChange($event)"
-            (mousedown.zoneless.prevent)="(0)"
+            (pointerdown.zoneless.prevent)="(0)"
         />
         <div
             class="t-button"
-            (mousedown.zoneless.prevent)="(0)"
+            (pointerdown.zoneless.prevent)="(0)"
         >
             <button
                 tuiLink

@@ -5,7 +5,8 @@
     "ignorePaths": [
         "**/projects/i18n/languages/**",
         "**/addon-commerce/utils/get-currency-symbol.ts",
-        "**/demo/src/modules/components/select/examples/2/index.ts"
+        "**/demo/src/modules/components/select/examples/2/index.ts",
+        "**/demo-playwright/tests/kit/select/select-with-disabled-item.pw.spec.ts"
     ],
     "ignoreWords": [
         "Wachovia",

@@ -34,8 +34,8 @@
             [ngModel]="nativeValue"
             [ngModelOptions]="{standalone: true}"
             (click.stop.zoneless)="(0)"
-            (mousedown.stop.zoneless)="(0)"
             (ngModelChange)="onNativeChange($event)"
+            (pointerdown.stop.zoneless)="(0)"
         />
     </tui-primitive-textfield>
 
@@ -47,7 +47,7 @@
             [value]="value"
             [year]="computedDefaultActiveYear"
             (monthClick)="onMonthClick($event)"
-            (mousedown.prevent.zoneless)="(0)"
+            (pointerdown.prevent.zoneless)="(0)"
             (yearChange)="activeYear = $event"
         />
     </ng-template>
