@@ -145,6 +145,31 @@
         </tui-doc-example>
 
         <tui-doc-example
+            id="form-control-output"
+            heading="Choose form control output"
+            [component]="99 | tuiComponent"
+            [content]="99 | tuiExample"
+            [description]="todoDescription"
+        >
+            <ng-template #todoDescription>
+                <code>DataList</code>
+                exposes
+                <code>Option</code>
+                -directives – it provides you with an opportunity to decide which data type put inside its
+                <code>[value]</code>
+                .
+
+                <p>
+                    This example demonstrates how every option can be a complex object with any structure but
+                    <strong>form control contains a single id-property</strong>
+                    as
+                    <code>number</code>
+                    -type.
+                </p>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
             id="virtual-scroll"
             heading="Virtual scroll"
             [component]="5 | tuiComponent"
