@@ -642,6 +642,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputChip',
+                keywords: 'поле, инпут, форма, ввод, input, chip, tag, тэг',
+                route: DemoRoute.InputChip,
+            },
+            {
+                section: 'Components',
                 title: 'InputTag',
                 keywords: 'поле, инпут, форма, ввод, input, tag, тэг',
                 route: DemoRoute.InputTag,

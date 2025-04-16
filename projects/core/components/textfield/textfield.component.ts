@@ -56,7 +56,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 @Component({
     standalone: true,
-    selector: 'tui-textfield',
+    selector: 'tui-textfield:not([multi])',
     imports: [NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
     templateUrl: './textfield.template.html',
     styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
