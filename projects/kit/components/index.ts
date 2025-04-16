@@ -59,3 +59,4 @@ export * from '@taiga-ui/kit/components/tabs';
 export * from '@taiga-ui/kit/components/textarea';
 export * from '@taiga-ui/kit/components/tiles';
 export * from '@taiga-ui/kit/components/tree';
+export * from '@taiga-ui/kit/components/input-chip';

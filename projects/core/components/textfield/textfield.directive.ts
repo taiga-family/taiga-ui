@@ -23,14 +23,15 @@ import {tuiAsTextfieldAccessor} from './textfield-accessor';
 @Directive()
 export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     // TODO: refactor to signal inputs after Angular update
-    private readonly focused = signal<boolean | null>(null);
+    protected readonly focused = signal<boolean | null>(null);
 
     protected readonly control = inject(NgControl, {optional: true});
-    protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
-    protected readonly s = tuiAppearanceState(null);
-    protected readonly m = tuiAppearanceMode(this.mode);
+    protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance, {});
+    protected readonly s = tuiAppearanceState(null, {});
+    protected readonly m = tuiAppearanceMode(this.mode, {});
     protected readonly f = tuiAppearanceFocus(
         computed(() => this.focused() ?? this.textfield.focused()),
+        {},
     );
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
