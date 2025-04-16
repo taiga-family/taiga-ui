@@ -71,21 +71,8 @@ export class TuiSliderComponent {
     // TODO(v5): use signal inputs
     @Input({
         alias: 'segments',
-        transform: (segments: number[] | number) => {
-            if (Array.isArray(segments)) {
-                const arr = segments.map((segment) => segment * 100);
-
-                if (arr[0] !== 0) {
-                    arr.unshift(0);
-                }
-
-                return arr;
-            }
-
-            return new Array(segments)
-                .fill(null)
-                .map((_, index) => (index * 100) / segments);
-        },
+        transform: (x: number[] | number) =>
+            Array.isArray(x) ? x : new Array(x).fill(null).map((_, i) => i / x),
     })
     public set segmentsSetter(segments: number[]) {
         this.segments.set(segments);
@@ -140,13 +127,17 @@ export class TuiSliderComponent {
             return 'linear-gradient(to right, transparent 0 100%)';
         }
 
-        return segments.slice(1).reduce(
-            (acc, segment, index, array) =>
+        const percentages = segments
+            .filter((segment) => segment > 0 && segment < 1)
+            .map((segment) => segment * 100);
+
+        return percentages.reduce(
+            (acc, segment, index) =>
                 `${acc}
                 var(--tui-text-tertiary) ${segment}% calc(${segment}% + var(--t-tick-thickness)),
-                transparent ${segment}% ${array[index + 1] ?? 100}%${array[index + 1] ? ',' : ')'}
+                transparent ${segment}% ${percentages[index + 1] ?? 100}%${percentages[index + 1] ? ',' : ')'}
                 `,
-            `linear-gradient(to right, transparent ${segments[0]}% ${segments[1]}%,`,
+            `linear-gradient(to right, transparent 0 ${percentages[0]}%,`,
         );
     }
 }

@@ -31,11 +31,6 @@
     @first-tick-offset: calc((@thumb-width - var(--t-tick-thickness)) / 2);
     @ticks-background-size: calc(100% - @thumb-width);
 
-    @hide-first-tick: linear-gradient(
-        to right,
-        @thumb-color 0px calc(@first-tick-offset + var(--t-tick-thickness)),
-        transparent var(--t-tick-thickness)
-    );
     @filling-progress-gradient: linear-gradient(
         to right,
         @thumb-color calc(100% * var(--tui-slider-fill-ratio)),
@@ -46,14 +41,14 @@
     background-color: @track-color;
 
     & when (@progress-filling = true) {
-        background-image: @hide-first-tick, var(--tui-ticks-gradient), @filling-progress-gradient;
-        background-position-x: 0, @first-tick-offset, 0;
-        background-size: @ticks-background-size, @ticks-background-size, auto;
+        background-image: var(--tui-ticks-gradient), @filling-progress-gradient;
+        background-position-x: @first-tick-offset, 0;
+        background-size: @ticks-background-size, auto;
     }
 
     & when (@progress-filling = false) {
-        background-image: @hide-first-tick, var(--tui-ticks-gradient);
-        background-position-x: 0, @first-tick-offset;
+        background-image: var(--tui-ticks-gradient);
+        background-position-x: @first-tick-offset;
         background-size: @ticks-background-size;
     }
 }
