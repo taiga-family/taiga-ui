@@ -1,5 +1,5 @@
 ```html
-<tui-tiles [(items)]="items">
+<tui-tiles [(order)]="order">
   <tui-tile
     *ngFor="let item of items"
     [width]="item.w"
