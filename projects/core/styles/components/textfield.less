@@ -50,8 +50,8 @@ tui-textfield {
     }
 
     label,
-    .t-content,
-    .t-template {
+    & > .t-content,
+    & > .t-template {
         pointer-events: none;
     }
 
@@ -98,7 +98,7 @@ tui-textfield {
             padding-block-end: 0.5rem;
         }
 
-        .t-content {
+        & > .t-content {
             margin-inline-end: -0.325rem;
         }
     }
@@ -134,7 +134,7 @@ tui-textfield {
             padding-block-end: 0.875rem;
         }
 
-        .t-content {
+        & > .t-content {
             margin-inline-end: -0.125rem;
         }
     }
@@ -164,19 +164,19 @@ tui-textfield {
 
     &:has(:disabled:not(.t-filler, button, option))::before,
     &:has(:disabled:not(.t-filler, button, option))::after,
-    &:has(:disabled:not(.t-filler, button, option)) .t-template {
+    &:has(:disabled:not(.t-filler, button, option)) > .t-template {
         opacity: var(--tui-disabled-opacity);
     }
 
     // TODO: Fallback until Safari 15.4
     &._disabled::before,
     &._disabled::after,
-    &._disabled .t-template {
+    &._disabled > .t-template {
         opacity: var(--tui-disabled-opacity);
     }
 
     &:has(label:not(:empty)) {
-        .t-template,
+        & > .t-template,
         input:not([type='range']),
         select:defined,
         textarea:defined {
@@ -192,7 +192,7 @@ tui-textfield {
 
     // TODO: Fallback until Safari 15.4
     &._with-label {
-        .t-template,
+        & > .t-template,
         input:not([type='range']),
         select:defined,
         textarea:defined {
@@ -206,7 +206,7 @@ tui-textfield {
         }
     }
 
-    .t-template,
+    & > .t-template,
     input:defined,
     select:defined,
     textarea:defined {
@@ -222,7 +222,7 @@ tui-textfield {
         padding-inline-end: calc(var(--t-right, ~'0rem') + var(--t-side) + var(--t-padding));
     }
 
-    .t-template {
+    & > .t-template {
         display: flex;
         align-items: center;
         color: var(--tui-text-primary);
@@ -329,7 +329,7 @@ tui-textfield {
         pointer-events: auto;
     }
 
-    .t-content {
+    & > .t-content {
         display: flex;
         block-size: var(--t-height);
         align-items: center;
@@ -353,7 +353,7 @@ tui-textfield {
         pointer-events: auto;
     }
 
-    .t-filler:defined {
+    & > .t-filler:defined {
         pointer-events: none;
         background: none;
         color: var(--tui-text-tertiary);
