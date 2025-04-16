@@ -165,11 +165,15 @@ export class TuiInputDateTimeComponent
     }
 
     public override writeValue(value: [TuiDay, TuiTime | null] | null): void {
-        if (this.value === null && value === this.value) {
+        const transformed = this.valueTransformer
+            ? this.valueTransformer.fromControlValue(value)
+            : value;
+
+        if (this.value === null && transformed === this.value) {
             return;
         }
 
-        if (value?.[0]) {
+        if (transformed?.[0]) {
             super.writeValue(value);
         } else {
             super.writeValue(null);

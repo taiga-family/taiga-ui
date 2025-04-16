@@ -37,7 +37,7 @@ describe('InputDateTime', () => {
         public dateTimeComponent!: TuiInputDateTimeComponent;
 
         public readonly control = new FormControl<
-            string | [TuiDay | null, TuiDay | null] | null
+            Date | string | [TuiDay | null, TuiDay | null] | null
         >([new TuiDay(2021, 6, 12), null]);
 
         public min: TuiDay | [TuiDay, TuiTime] = TUI_FIRST_DAY;
@@ -366,7 +366,7 @@ describe('InputDateTime', () => {
         });
     });
 
-    describe('InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER', () => {
+    describe('InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER (string)', () => {
         class ExampleDateTimeTransformer extends TuiValueTransformer<
             [TuiDay, TuiTime | null] | null,
             string
@@ -483,6 +483,140 @@ describe('InputDateTime', () => {
 
             expect(inputPO.value).toBe('09.05.1945, 00:43');
             expect(component.control.value).toBe('09.05.1945, 00:43');
+        });
+    });
+
+    describe('InputDateTime + TUI_DATE_TIME_VALUE_TRANSFORMER (Date | null)', () => {
+        class ExampleDateTimeTransformer extends TuiValueTransformer<
+            [TuiDay, TuiTime | null] | null,
+            Date | null
+        > {
+            public fromControlValue(
+                controlValue: Date | null,
+            ): [TuiDay, TuiTime | null] | null {
+                if (controlValue instanceof Date) {
+                    return [
+                        new TuiDay(
+                            controlValue.getFullYear(),
+                            controlValue.getMonth(),
+                            controlValue.getDate(),
+                        ),
+                        new TuiTime(
+                            controlValue.getHours(),
+                            controlValue.getMinutes(),
+                            controlValue.getSeconds(),
+                            controlValue.getMilliseconds(),
+                        ),
+                    ];
+                }
+
+                return null;
+            }
+
+            public toControlValue(
+                internalValue: [TuiDay, TuiTime | null] | null,
+            ): Date | null {
+                const [day, time] = internalValue ?? [];
+
+                if (!day || !time) {
+                    return null;
+                }
+
+                const date = new Date();
+
+                date.setFullYear(day.year);
+                date.setMonth(day.month);
+                date.setDate(day.day);
+
+                date.setHours(time.hours);
+                date.setMinutes(time.minutes);
+                date.setSeconds(time.seconds);
+                date.setMilliseconds(time.ms);
+
+                return date;
+            }
+        }
+
+        @Component({
+            standalone: true,
+            imports: [ReactiveFormsModule, TuiInputDateTimeModule, TuiRoot],
+            template: `
+                <tui-root>
+                    <tui-input-date-time
+                        [formControl]="control"
+                        [max]="max"
+                        [min]="min"
+                    />
+                </tui-root>
+            `,
+            changeDetection: ChangeDetectionStrategy.OnPush,
+        })
+        class TransformerTest extends Test {
+            public override control = new FormControl<
+                Date | [TuiDay | null, TuiDay | null] | null
+            >(new Date(2022, 0, 19, 12, 33));
+
+            public override min = new TuiDay(1900, 0, 1);
+        }
+
+        beforeEach(async () => {
+            TestBed.configureTestingModule({
+                imports: [Test, TransformerTest],
+                providers: [
+                    NG_EVENT_PLUGINS,
+                    {
+                        provide: TUI_DATE_TIME_VALUE_TRANSFORMER,
+                        useClass: ExampleDateTimeTransformer,
+                    },
+                ],
+            });
+            await TestBed.compileComponents();
+            initializeEnvironment(TransformerTest);
+        });
+
+        it('correctly transforms initial value', () => {
+            expect(inputPO.value).toBe('19.01.2022, 12:33');
+            expect(component.control.value).toEqual(new Date(2022, 0, 19, 12, 33));
+        });
+
+        it('transforms typed value', () => {
+            inputPO.sendText('150520220943');
+
+            expect(inputPO.value).toBe('15.05.2022, 09:43');
+            expect(component.control.value).toEqual(new Date(2022, 4, 15, 9, 43));
+        });
+
+        it('transforms min day as output (if typed day is less than min day)', () => {
+            inputPO.sendText('19.02.1861,1833');
+
+            expect(inputPO.value).toBe('01.01.1900, 00:00');
+            expect(component.control.value).toEqual(new Date(1900, 0, 1, 0, 0));
+        });
+
+        it('transforms value which was selected via calendar', () => {
+            inputPO.sendTextAndBlur('020320221211');
+
+            expect(inputPO.value).toBe('02.03.2022, 12:11');
+
+            mouseDownOnTextfield();
+
+            expect(getCalendar()).not.toBeNull();
+
+            const calendarCell = getCalendarCell(17);
+
+            calendarCell?.nativeElement.click();
+            fixture.detectChanges();
+
+            expect(inputPO.value).toBe('17.03.2022, 12:11');
+        });
+
+        it('transforms value which was programmatically patched', async () => {
+            component.control.patchValue(new Date(1945, 4, 9, 0, 43));
+
+            await fixture.whenStable();
+
+            expect(inputPO.value).toBe('09.05.1945, 00:43');
+            expect(component.control.value).toEqual(new Date(1945, 4, 9, 0, 43));
         });
     });
 
