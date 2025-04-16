@@ -1,0 +1,47 @@
+<div
+    #container
+    class="t-container"
+    [style.flex-wrap]="rows > 1 ? 'wrap' : 'nowrap'"
+>
+    <ng-container #vcr />
+
+    <span class="t-input_wrapper">
+        <span class="t-ghost">{{ input?.nativeElement?.value }}</span>
+        <ng-content select="input" />
+        <input
+            *ngIf="showFiller()"
+            aria-hidden="true"
+            disabled
+            class="t-filler"
+            [value]="computedFiller()"
+        />
+    </span>
+</div>
+
+<span
+    class="t-content"
+    (mousedown.prevent)="input?.nativeElement?.focus()"
+    (waResizeObserver)="$event[0] && onResize($event[0])"
+>
+    <ng-content />
+    <button
+        *ngIf="options.cleaner()"
+        appearance="icon"
+        size="xs"
+        tabindex="-1"
+        tuiIconButton
+        type="button"
+        class="t-clear"
+        [iconStart]="icons.close"
+        (click)="accessor?.setValue($any([]))"
+        (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
+    >
+        {{ clear() }}
+    </button>
+    <ng-content select="tui-icon" />
+</span>
+<span class="t-template">
+    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value}">
+        {{ text }}
+    </ng-container>
+</span>
