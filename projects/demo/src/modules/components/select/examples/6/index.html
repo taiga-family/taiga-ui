@@ -1,19 +1,26 @@
-<tui-textfield
-    tuiChevron
-    tuiDropdownMobile="Select platform"
-    [disabledItemHandler]="disabledItemHandler"
->
-    <label tuiLabel>Platform</label>
-
+<tui-textfield tuiChevron>
     <input
+        placeholder="Country"
         tuiSelect
         [(ngModel)]="value"
     />
 
-    <tui-data-list-wrapper
+    <cdk-virtual-scroll-viewport
         *tuiTextfieldDropdown
-        new
-        [items]="platforms"
-        [tuiPlatform]="value ?? 'ios'"
-    />
+        tuiScrollable
+        class="scroll"
+        [itemSize]="44"
+    >
+        <tui-data-list>
+            <button
+                *cdkVirtualFor="let item of countries | async"
+                new
+                tuiOption
+                type="button"
+                [value]="item"
+            >
+                {{ item }}
+            </button>
+        </tui-data-list>
+    </cdk-virtual-scroll-viewport>
 </tui-textfield>

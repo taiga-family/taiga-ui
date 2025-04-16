@@ -1,13 +1,10 @@
 <tui-textfield tuiChevron>
-    <input
-        placeholder="Select something"
+    <select
+        aria-label="Select food"
+        placeholder="Select food"
         tuiSelect
         [formControl]="control"
-    />
-
-    <tui-data-list-wrapper
-        *tuiTextfieldDropdown
-        new
-        [items]="items"
-    />
+        [items]="groupItems"
+        [labels]="labels"
+    ></select>
 </tui-textfield>

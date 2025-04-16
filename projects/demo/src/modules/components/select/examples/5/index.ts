@@ -1,37 +1,46 @@
-import {
-    CdkFixedSizeVirtualScroll,
-    CdkVirtualForOf,
-    CdkVirtualScrollViewport,
-} from '@angular/cdk/scrolling';
-import {AsyncPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {JsonPipe, NgForOf} from '@angular/common';
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataList, TuiScrollable, TuiTextfield} from '@taiga-ui/core';
-import {TUI_COUNTRIES, TuiChevron, TuiSelect} from '@taiga-ui/kit';
-import {map} from 'rxjs';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiSelect} from '@taiga-ui/kit';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+
+interface Python {
+    readonly id: number;
+    readonly name: string;
+}
 
 @Component({
     standalone: true,
     imports: [
-        AsyncPipe,
-        CdkFixedSizeVirtualScroll,
-        CdkVirtualForOf,
-        CdkVirtualScrollViewport,
-        FormsModule,
+        JsonPipe,
+        NgForOf,
+        ReactiveFormsModule,
         TuiChevron,
         TuiDataList,
-        TuiScrollable,
         TuiSelect,
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly countries = inject(TUI_COUNTRIES).pipe(map(Object.values));
-    protected value = null;
+    protected readonly control = new FormControl<number | null>(777);
+
+    protected readonly items: readonly Python[] = [
+        {id: 42, name: 'John Cleese'},
+        {id: 237, name: 'Eric Idle'},
+        {id: 666, name: 'Michael Palin'},
+        {id: 123, name: 'Terry Gilliam'},
+        {id: 777, name: 'Terry Jones'},
+        {id: 999, name: 'Graham Chapman'},
+    ];
+
+    protected readonly content: PolymorpheusContent<TuiContext<number | null>> = ({
+        $implicit: id,
+    }) => this.items.find((item) => item.id === id)?.name ?? '';
 }

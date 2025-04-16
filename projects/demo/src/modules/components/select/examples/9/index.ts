@@ -2,33 +2,22 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAsOptionContent, TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
-
-import {Option} from './option';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        ReactiveFormsModule,
-        TuiChevron,
-        TuiDataListWrapper,
-        TuiSelect,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiChevron, TuiSelect, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiAsOptionContent(Option)],
 })
 export default class Example {
-    protected readonly items = [
-        'Option 1',
-        'Option 2',
-        'Option 3',
-        'Option 4',
-        'Option 5',
-    ] as const;
+    protected groupItems: ReadonlyArray<readonly string[]> = [
+        ['Caesar', 'Greek', 'Apple and Chicken'],
+        ['Broccoli Cheddar', 'Chicken and Rice', 'Chicken Noodle'],
+    ];
 
-    protected readonly control = new FormControl<string | null>(this.items[2]);
+    protected readonly labels = ['Salad', 'Soup'];
+    protected readonly control = new FormControl<string | null>(null);
 }
