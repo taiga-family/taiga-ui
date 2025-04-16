@@ -16,6 +16,7 @@ export default class Page {
     protected readonly control = new FormControl([0, 0]);
 
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+    protected readonly limitVariants: readonly number[] = [Infinity, 100, 50, 10, 5, 1];
 
     protected size: TuiSizeS = this.sizeVariants[1]!;
 
