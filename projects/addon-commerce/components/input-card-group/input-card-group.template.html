@@ -79,7 +79,7 @@
             [ngModelOptions]="{standalone: true}"
             [placeholder]="inputs.expire ? '00/00' : '••/••'"
             [readOnly]="readOnly() || !inputs.expire"
-            [tabIndex]="expireFocusable || isMobile ? 0 : -1"
+            [tabIndex]="expireFocusable || (isMobile && isWebkit) ? 0 : -1"
             (focus)="(0)"
             (ngModelChange)="onExpireChange()"
         />
@@ -113,7 +113,7 @@
             [ngModelOptions]="{standalone: true}"
             [placeholder]="cvcPrefilled ? '•••' : exampleTextCVC"
             [readOnly]="readOnly() || cvcPrefilled"
-            [tabIndex]="cvcFocusable || isMobile ? 0 : -1"
+            [tabIndex]="cvcFocusable || (isMobile && isWebkit) ? 0 : -1"
             (focus)="(0)"
             (ngModelChange)="onCVCChange($event)"
         />

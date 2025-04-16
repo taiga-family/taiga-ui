@@ -123,7 +123,6 @@ export class TuiInputCardGroup
     private readonly inputCVC?: ElementRef<HTMLInputElement>;
 
     private readonly doc = inject(DOCUMENT);
-    private readonly isWebkit = inject(TUI_IS_WEBKIT);
     private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly focus$ = new Subject<void>();
     private expirePrefilled = false;
@@ -143,6 +142,7 @@ export class TuiInputCardGroup
     protected cvcHidden = this.options.cvcHidden;
     protected maskCVC = TUI_MASK_CVC(3);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isWebkit = inject(TUI_IS_WEBKIT);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly maskCard = TUI_MASK_CARD;
     protected readonly maskExpire = TUI_MASK_EXPIRE;
