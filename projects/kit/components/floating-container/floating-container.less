@@ -24,6 +24,7 @@
     position: sticky;
     bottom: max(calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y)), 0);
     z-index: 1;
+    margin-top: 1rem;
     padding-bottom: calc(1rem + env(safe-area-inset-bottom));
     text-align: center;
     font: var(--tui-font-text-ui-s);
@@ -64,4 +65,8 @@
     &._substrate::before {
         opacity: 1;
     }
+}
+
+tui-sheet-dialog [tuiFloatingContainer] {
+    margin-bottom: calc(-1.5rem - env(safe-area-inset-bottom));
 }

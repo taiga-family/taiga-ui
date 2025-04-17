@@ -10,7 +10,6 @@ import {TuiFloatingContainer} from '@taiga-ui/kit';
     standalone: true,
     imports: [TuiButton, TuiFloatingContainer, TuiSheetDialog],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

@@ -423,10 +423,9 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Floating',
-        keywords:
-            'floating, sticky, button, footer, плавающий, липкие, липкий, кнопки, футер',
-        route: DemoRoute.Floating,
+        title: 'FloatingContainer',
+        keywords: 'floating-container, sticky, плавающий, липкий, footer, футер',
+        route: DemoRoute.FloatingContainer,
         meta: {},
     },
     {
