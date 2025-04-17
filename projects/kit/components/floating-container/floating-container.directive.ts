@@ -30,10 +30,6 @@ class TuiFloatingContainerStyles {}
 export class TuiFloatingContainer {
     protected readonly nothing = tuiWithStyles(TuiFloatingContainerStyles);
 
-    protected background = '';
-
-    @Input()
-    public set tuiFloatingContainer(color: string) {
-        this.background = color;
-    }
+    @Input('tuiFloatingContainer')
+    public background = '';
 }
