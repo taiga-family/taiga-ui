@@ -24,6 +24,7 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect, TuiTooltip} from '@taiga-ui/k
 })
 export default class Example {
     protected readonly users = [
+        'Dmitriy Demenskiy',
         'Alex Inkin',
         'Vladimir Potekhin',
         'Nikita Barsukov',

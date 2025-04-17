@@ -46,6 +46,6 @@ export default class PageComponent {
     ]);
 
     protected selectOptionExample: TuiRawLoaderContent = import(
-        './examples/9/option.ts?raw'
+        './examples/10/option.ts?raw'
     );
 }
