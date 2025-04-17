@@ -2,10 +2,12 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 import {take} from 'rxjs';
 
+import {TUI_FLOATING_PRECISION} from './helpers/key-steps';
 import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
 import {TUI_SLIDER_OPTIONS} from './slider.options';
 
@@ -89,12 +91,22 @@ export class TuiSliderComponent {
     }
 
     public get value(): number {
-        if (!this.keySteps && this.control instanceof NgModel) {
-            /**
-             * If developer uses `[(ngModel)]` and programmatically change value,
-             * the `el.nativeElement.value` is equal to the previous value at this moment.
-             */
-            return this.control.viewModel;
+        /**
+         * If developer uses `[(ngModel)]` and programmatically change value,
+         * the `el.nativeElement.value` is equal to the previous value at this moment
+         * (it will be updated only in next microtask).
+         * @see https://github.com/angular/angular/issues/13568
+         */
+        if (this.control instanceof NgModel) {
+            const transformer = this.keySteps?.transformer();
+            const value = transformer
+                ? transformer.fromControlValue(this.control.value)
+                : this.control.viewModel;
+
+            return tuiRound(
+                Math.round(value / this.step) * this.step,
+                TUI_FLOATING_PRECISION,
+            );
         }
 
         return Number(this.el.value) || 0;
