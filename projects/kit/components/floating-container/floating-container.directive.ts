@@ -25,22 +25,15 @@ class TuiFloatingContainerStyles {}
     host: {
         tuiFloatingContainer: '',
         '[style.--t-background]': 'background',
-        '[class._substrate]': 'substrate',
     },
 })
 export class TuiFloatingContainer {
     protected readonly nothing = tuiWithStyles(TuiFloatingContainerStyles);
 
     protected background = '';
-    protected substrate = true;
 
     @Input()
     public set tuiFloatingContainer(color: string) {
-        if (color !== 'transparent') {
-            this.background = color;
-            this.substrate = true;
-        } else {
-            this.substrate = false;
-        }
+        this.background = color;
     }
 }

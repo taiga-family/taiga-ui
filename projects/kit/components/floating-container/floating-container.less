@@ -51,19 +51,15 @@
 
     &::before {
         .fullsize(absolute, inset);
-        .transition(opacity);
+        .transition(background);
 
         content: '';
         position: absolute;
         left: -1rem;
         right: -1rem;
         z-index: -1;
-        background: linear-gradient(180deg, transparent, var(--t-background, var(--tui-background-elevation-1)) 2.5rem);
-        opacity: 0;
-    }
-
-    &._substrate::before {
-        opacity: 1;
+        background: var(--t-background, var(--tui-background-elevation-1));
+        mask-image: linear-gradient(180deg, transparent, black 2.5rem);
     }
 }
 
