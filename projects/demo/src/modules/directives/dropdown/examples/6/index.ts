@@ -1,11 +1,11 @@
-import {AsyncPipe} from '@angular/common';
-import {Component, signal} from '@angular/core';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiDropdownMobile, TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDropdown, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
@@ -20,6 +20,7 @@ import {
     TuiSelectModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 interface User {
     readonly url: string;
@@ -47,12 +48,15 @@ interface User {
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
+        NgTemplateOutlet,
     ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
+    private readonly dialogs = inject(TuiResponsiveDialogService);
+
     protected country = null;
     protected selected: readonly User[] = [];
     protected sum = null;
@@ -318,4 +322,8 @@ export default class Example {
     ];
 
     protected readonly stringify = ({name}: User): string => name;
+
+    protected onDialog(template: PolymorpheusContent): void {
+        this.dialogs.open(template, {label: 'Dropdown mobile'}).subscribe();
+    }
 }

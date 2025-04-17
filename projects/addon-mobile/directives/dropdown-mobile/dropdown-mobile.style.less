@@ -53,6 +53,11 @@ tui-dropdown-mobile._sheet {
     scroll-snap-type: y mandatory;
     overscroll-behavior: none;
 
+    tui-root:has(tui-dialogs > :nth-child(2)) & {
+        background: transparent;
+        box-shadow: none;
+    }
+
     > .t-filler {
         block-size: 100%;
         scroll-snap-stop: always;
@@ -92,7 +97,8 @@ tui-dropdown-mobile._sheet {
         > .t-content {
             .scrollbar-hidden();
 
-            overflow: auto;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
     }
 
@@ -114,7 +120,8 @@ tui-dropdown-mobile._sheet {
     tui-root {
         visibility: visible;
 
-        .t-root-content {
+        .t-root-content,
+        tui-dialogs {
             visibility: hidden;
         }
     }

@@ -1,68 +1,70 @@
-<tui-combo-box
-    tuiDropdownMobile
-    [tuiTextfieldCleaner]="true"
-    [(ngModel)]="country"
->
-    Country
-    <tui-data-list-wrapper
-        *tuiDataList
-        [items]="countries | tuiFilterByInput"
-    />
-</tui-combo-box>
-
-<tui-select
-    class="tui-space_vertical-4"
-    [tuiDropdownMobile]="'Select user'"
-    [tuiTextfieldLabelOutside]="true"
-    [valueContent]="template"
-    [(ngModel)]="user"
->
-    Select user
-    <tui-data-list-wrapper
-        *tuiDataList
-        [itemContent]="template"
-        [items]="users"
-    />
-</tui-select>
-
-<tui-multi-select
-    tuiDropdownMobile
-    class="tui-space_vertical-4"
-    [stringify]="stringify"
-    [tuiDropdownOpen]="open()"
-    [tuiTextfieldCleaner]="true"
-    [tuiTextfieldLabelOutside]="true"
-    [(ngModel)]="selected"
-    (tuiDropdownOpenChange)="open.set($event)"
->
-    Pick more users
-    <ng-container *tuiDataList>
+<ng-template #content>
+    <tui-combo-box
+        tuiDropdownMobile
+        [tuiTextfieldCleaner]="true"
+        [(ngModel)]="country"
+    >
+        Country
         <tui-data-list-wrapper
-            tuiMultiSelectGroup
-            [itemContent]="template"
-            [items]="users | tuiFilterByInput"
+            *tuiDataList
+            [items]="countries | tuiFilterByInput"
         />
-        <button
-            appearance="accent"
-            size="m"
-            tuiButton
-            tuiDropdownButton
-            type="button"
-            (click)="open.set(false)"
-        >
-            Done
-        </button>
-    </ng-container>
-</tui-multi-select>
+    </tui-combo-box>
 
-<tui-textfield>
-    <label tuiLabel>Sum</label>
-    <input
-        prefix="$"
-        tuiInputNumber
-        [(ngModel)]="sum"
-    />
-</tui-textfield>
+    <tui-select
+        class="tui-space_vertical-4"
+        [tuiDropdownMobile]="'Select user'"
+        [tuiTextfieldLabelOutside]="true"
+        [valueContent]="template"
+        [(ngModel)]="user"
+    >
+        Select user
+        <tui-data-list-wrapper
+            *tuiDataList
+            [itemContent]="template"
+            [items]="users"
+        />
+    </tui-select>
+
+    <tui-multi-select
+        tuiDropdownMobile
+        class="tui-space_vertical-4"
+        [stringify]="stringify"
+        [tuiDropdownOpen]="open()"
+        [tuiTextfieldCleaner]="true"
+        [tuiTextfieldLabelOutside]="true"
+        [(ngModel)]="selected"
+        (tuiDropdownOpenChange)="open.set($event)"
+    >
+        Pick more users
+        <ng-container *tuiDataList>
+            <tui-data-list-wrapper
+                tuiMultiSelectGroup
+                [itemContent]="template"
+                [items]="users | tuiFilterByInput"
+            />
+            <button
+                appearance="accent"
+                size="m"
+                tuiButton
+                tuiDropdownButton
+                type="button"
+                (click)="open.set(false)"
+            >
+                Done
+            </button>
+        </ng-container>
+    </tui-multi-select>
+
+    <tui-textfield class="tui-space_vertical-4">
+        <label tuiLabel>Sum</label>
+        <input
+            prefix="$"
+            tuiInputNumber
+            [(ngModel)]="sum"
+        />
+    </tui-textfield>
+</ng-template>
 
 <ng-template
     #template
@@ -78,3 +80,12 @@
         </span>
     </span>
 </ng-template>
+
+<ng-container *ngTemplateOutlet="content" />
+
+<button
+    tuiButton
+    (click)="onDialog(content)"
+>
+    In a dialog
+</button>

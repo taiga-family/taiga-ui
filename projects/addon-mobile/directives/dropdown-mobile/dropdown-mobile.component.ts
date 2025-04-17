@@ -18,7 +18,7 @@ import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDropdownMobile} from './dropdown-mobile.directive';
 
@@ -27,13 +27,7 @@ const GAP = 16;
 @Component({
     standalone: true,
     selector: 'tui-dropdown-mobile',
-    imports: [
-        NgIf,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiSwipe,
-        WaIntersectionObserver,
-    ],
+    imports: [NgIf, PolymorpheusOutlet, TuiSwipe, WaIntersectionObserver],
     templateUrl: './dropdown-mobile.template.html',
     styleUrls: ['./dropdown-mobile.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -44,6 +38,7 @@ const GAP = 16;
         '[@tuiFadeIn]': 'animation',
         '[@tuiSlideInTop]': 'animation',
         '[class._sheet]': 'directive.tuiDropdownMobile',
+        '[class._dialog]': 'dialog',
         '(document:click.zoneless.capture)': 'onClick($event)',
         '(window>scroll.zoneless.capture)':
             'refresh($event.currentTarget.visualViewport)',
@@ -62,6 +57,7 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
 
     protected readonly directive = inject(TuiDropdownMobile);
     protected readonly dropdown = inject(TuiDropdownDirective);
+    protected readonly dialog = this.dropdown.el.closest('tui-dialogs');
     protected readonly animation = {
         value: '',
         params: {
