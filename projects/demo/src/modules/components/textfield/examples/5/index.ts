@@ -17,7 +17,7 @@ const postfix = ' rad';
 const numberOptions = maskitoNumberOptionsGenerator({
     postfix,
     decimalSeparator: ',',
-    precision: 8,
+    maximumFractionDigits: 8,
     min: 0,
 });
 
