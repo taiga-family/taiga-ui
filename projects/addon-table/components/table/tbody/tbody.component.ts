@@ -23,7 +23,7 @@ import {TuiTableTr} from '../tr/tr.component';
 
 @Component({
     standalone: true,
-    selector: 'tbody[tuiTbody][heading]',
+    selector: 'tbody[tuiTbody]',
     imports: [NgIf, PolymorpheusOutlet, TuiChevron, TuiIcon],
     templateUrl: './tbody.template.html',
     styleUrls: ['./tbody.style.less'],
@@ -43,16 +43,19 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, any>>> {
     @Input()
     public data: readonly T[] = [];
 
-    /** @deprecated: drop in v5.0, use TuiTableExpandHeading */
+    /** @deprecated: drop in v5.0, use TuiTableExpand */
     @Input()
     public heading: PolymorpheusContent;
 
+    /** @deprecated: drop in v5.0, use TuiTableExpand */
     @Input()
     public open = this.options.open;
 
+    /** @deprecated: drop in v5.0, use TuiTableExpand */
     @Output()
     public readonly openChange = new EventEmitter<boolean>();
 
+    /** @deprecated: drop in v5.0, use TuiTableExpand */
     public onClick = (): void => {
         this.open = !this.open;
         this.openChange.emit(this.open);

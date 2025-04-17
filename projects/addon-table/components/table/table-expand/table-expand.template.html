@@ -1,0 +1,15 @@
+<div
+    class="t-table-expand__content"
+    [class.t-table-expand__content_open]="expanded() && !transitioning()"
+>
+    <ng-content />
+</div>
+
+<div
+    class="t-filler"
+    [class.t-filler_open]="expanded()"
+    [style.--t-height.px]="contentHeight()"
+    (animationcancel)="transitioning.set(false)"
+    (animationend)="transitioning.set(false)"
+    (animationstart)="transitioning.set(true)"
+></div>
