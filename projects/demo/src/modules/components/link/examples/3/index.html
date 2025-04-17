@@ -1,42 +1,130 @@
-<a
-    href="#"
-    iconStart="@tui.heart"
-    tuiLink
-    [style.--tui-icon-size.rem]="1.5"
->
-    Large icon
-</a>
-<p tuiTheme="dark">
+<tui-notification class="tui-space_bottom-3">
+    Use textContent binding to avoid extra whitespace introduced by browser when closing tag wraps to a new line —
+    otherwise distance to the icons will be bigger than it should be
+</tui-notification>
+
+<section>
     <button
-        appearance="action-grayscale"
-        iconEnd="@tui.circle-help"
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
         tuiLink
         type="button"
-        [pseudo]="true"
-        (click)="onClick($event)"
-    >
-        Pseudo-link
-    </button>
-</p>
-<button
-    appearance="action-grayscale"
-    iconEnd="@tui.circle-help"
-    tuiLink
-    type="button"
-    [pseudo]="true"
-    (click)="onClick($event)"
->
-    Pseudo-link
-</button>
-<p>
-    <a
-        href="#"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
         tuiLink
-        [style.color]="'var(--tui-status-warning)'"
-    >
-        Custom color
-    </a>
-</p>
-(If you need a pseudo-link, use
-<code>button</code>
-element for correct semantics)
+        type="button"
+        [style.text-decoration-style]="'dashed'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>
+
+<section>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.text-decoration-style]="'dashed'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>
+
+<section>
+    <button
+        appearance="action-grayscale"
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        appearance="action-grayscale"
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.text-decoration-style]="'dashed'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>
+
+<section
+    tuiTheme="light"
+    [style.background]="'#fff'"
+>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.text-decoration-style]="'dashed'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>
+
+<section
+    tuiTheme="dark"
+    [style.background]="'#000'"
+>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.text-decoration-style]="'dashed'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>
+
+<section>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.color]="'var(--tui-status-negative)'"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.color]="'var(--tui-status-negative)'"
+        [style.text-decoration-style]="'dashed'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>

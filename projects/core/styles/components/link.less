@@ -22,8 +22,8 @@
     border: none;
     cursor: pointer;
     font: inherit;
-    color: inherit;
-    text-decoration: none dashed currentColor;
+    color: var(--tui-text-primary);
+    text-decoration: underline solid currentColor;
     text-underline-offset: 0.2em;
     text-decoration-thickness: 0.7px;
     text-decoration-color: color-mix(in lch, currentColor, transparent);
@@ -59,13 +59,17 @@
         background: color-mix(in lch, currentColor 12%, transparent);
     });
 
-    @media @tui-mouse {
-        &[data-appearance='']:hover {
-            opacity: 0.7;
-        }
-    }
+    .appearance-hover({
+        text-decoration-color: currentColor;
+        text-decoration-line: underline;
+    });
 
-    &[data-appearance='']:active {
-        opacity: 0.7;
+    .appearance-active({
+        text-decoration-color: currentColor;
+        text-decoration-line: underline;
+    });
+
+    &[data-appearance='action'] {
+        text-decoration-line: none;
     }
 }
