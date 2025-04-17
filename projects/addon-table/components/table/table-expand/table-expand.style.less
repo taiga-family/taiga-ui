@@ -1,34 +1,57 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes open {
+    from {
+        block-size: 0;
+    }
+
+    to {
+        block-size: var(--t-height);
+    }
+}
+
+@keyframes close {
+    from {
+        block-size: var(--t-height);
+    }
+
+    to {
+        block-size: 0;
+    }
+}
+
 .t-table-expand {
     display: contents;
 
-    tr td[tuiTd] {
-        transition-property: border, margin, padding, line-height, min-height, height, block-size, font-size, opacity;
-        transition-duration: calc(var(--tui-duration) + 1ms);
+    &__content {
+        display: none;
 
-        & * {
-            transition-property: block-size;
-            transition-duration: calc(var(--tui-duration) + 1ms);
-        }
-    }
+        &_open {
+            display: contents;
 
-    &_closed {
-        tr td[tuiTd] {
-            min-block-size: 0;
-            line-height: 0px;
-            block-size: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-            margin-top: 0;
-            margin-bottom: 0;
-            border-top-width: 0;
-            border-bottom-width: 0;
-            font-size: 0;
-            opacity: 0;
-
-            & * {
-                display: grid;
-                block-size: 0;
+            td {
+                animation: fade-in calc(var(--tui-duration) + 1ms);
             }
         }
+    }
+}
+
+.t-filler {
+    animation: close calc(var(--tui-duration) + 1ms);
+    animation-iteration-count: inherit;
+
+    &_open {
+        animation: open calc(var(--tui-duration) + 1ms);
+        animation-iteration-count: inherit;
     }
 }
