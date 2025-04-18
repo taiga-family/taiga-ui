@@ -34,16 +34,12 @@ class TuiLinkStyles {}
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         tuiLink: '',
-        '[style.text-decoration-line]': 'pseudo ? "underline" : null',
+        '[class._pseudo]': 'pseudo',
     },
 })
 export class TuiLink {
     protected readonly nothing = tuiWithStyles(TuiLinkStyles);
 
-    /**
-     * @deprecated: use on host
-     * [style.text-decoration-style]="'dashed'"
-     */
     @Input()
     public pseudo = inject(TUI_LINK_OPTIONS).pseudo;
 }
