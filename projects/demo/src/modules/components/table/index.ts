@@ -20,5 +20,6 @@ export default class Page {
         'Dynamic columns',
         'Footer',
         'Resize a large table',
+        'Expandable',
     ];
 }
