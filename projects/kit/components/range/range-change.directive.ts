@@ -5,7 +5,7 @@ import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
-import {filter, map, merge, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
+import {map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 
 import {TuiRange} from './range.component';
 
@@ -17,48 +17,33 @@ export class TuiRangeChange {
     private readonly el = tuiInjectElement();
     private readonly range = inject(TuiRange);
 
-    /**
-     * TODO replace with pointer events (when all supported browsers can handle them).
-     * Don't forget to use setPointerCapture instead of listening all doc events
-     */
-    private readonly pointerDown$ = tuiTypedFromEvent(this.el, 'pointerdown', {
-        passive: true,
-        capture: true,
-    });
-
-    private readonly pointerMove$ = merge(
-        tuiTypedFromEvent(this.doc, 'touchmove').pipe(
-            filter(({touches}) => touches.length === 1),
-            map(({touches}) => touches[0]),
-            filter((event): event is Touch => !!event),
-        ),
-        tuiTypedFromEvent(this.doc, 'mousemove'),
-    );
-
-    private readonly pointerUp$ = merge(
-        tuiTypedFromEvent(this.doc, 'touchend', {passive: true}),
-        tuiTypedFromEvent(this.doc, 'mouseup', {passive: true}),
-    );
-
     @Output()
     public readonly activeThumbChange = new EventEmitter<'left' | 'right'>();
 
     constructor() {
         let activeThumb: 'left' | 'right';
 
-        this.pointerDown$
+        tuiTypedFromEvent(this.el, 'pointerdown', {
+            passive: true,
+            capture: true,
+        })
             .pipe(
-                tap(({clientX, target}) => {
+                tap(({clientX, target, pointerId}) => {
                     activeThumb = this.detectActiveThumb(clientX, target);
+                    this.range.slidersRefs
+                        .get(activeThumb === 'left' ? 0 : 1)
+                        ?.nativeElement.setPointerCapture(pointerId);
                     this.activeThumbChange.emit(activeThumb);
 
                     if (this.range.focusable) {
                         this.el.focus();
                     }
                 }),
-                switchMap((event) => this.pointerMove$.pipe(startWith(event))),
+                switchMap((event) =>
+                    tuiTypedFromEvent(this.doc, 'pointermove').pipe(startWith(event)),
+                ),
                 map(({clientX}) => this.getFractionFromEvents(clientX ?? 0)),
-                takeUntil(this.pointerUp$),
+                takeUntil(tuiTypedFromEvent(this.doc, 'pointerup', {passive: true})),
                 repeat(),
                 takeUntilDestroyed(),
             )

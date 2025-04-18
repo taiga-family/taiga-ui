@@ -3,6 +3,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoInitialCalibrationPlugin} from '@maskito/core';
+import type {MaskitoNumberParams} from '@maskito/kit';
 import {
     maskitoCaretGuard,
     maskitoNumberOptionsGenerator,
@@ -108,16 +109,21 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     });
 
     protected readonly mask = tuiMaskito(
-        computed(({decimalMode, ...numberFormat} = this.numberFormat()) =>
-            this.computeMask({
-                ...numberFormat,
-                precision: this.precision(),
-                min: this.min(),
-                max: this.max(),
-                prefix: this.prefix(),
-                postfix: this.postfix(),
-                decimalZeroPadding: decimalMode === 'always',
-            }),
+        computed(
+            (
+                {decimalMode, ...numberFormat} = this.numberFormat(),
+                maximumFractionDigits = this.precision(),
+            ) =>
+                this.computeMask({
+                    ...numberFormat,
+                    maximumFractionDigits,
+                    min: this.min(),
+                    max: this.max(),
+                    prefix: this.prefix(),
+                    postfix: this.postfix(),
+                    minimumFractionDigits:
+                        decimalMode === 'always' ? maximumFractionDigits : 0,
+                }),
         ),
     );
 
@@ -216,9 +222,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         this.max.set(Math.max(min, max));
     }
 
-    private computeMask(
-        params: NonNullable<Parameters<typeof maskitoNumberOptionsGenerator>[0]>,
-    ): MaskitoOptions {
+    private computeMask(params: MaskitoNumberParams): MaskitoOptions {
         const {prefix = '', postfix = ''} = params;
         const {plugins, ...options} = maskitoNumberOptionsGenerator(params);
         const initialCalibrationPlugin = maskitoInitialCalibrationPlugin(
