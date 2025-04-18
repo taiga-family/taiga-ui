@@ -41,7 +41,7 @@ const GAP = 8;
     template: `
         <ng-content />
         <span
-            *polymorpheusOutlet="content() as text; context: hint.context"
+            *polymorpheusOutlet="content() as text; context: hint.contextSignal()"
             [innerHTML]="text"
         ></span>
     `,
