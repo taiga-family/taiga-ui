@@ -7,7 +7,6 @@
 */
 
 @track-height: 0.125rem;
-@ticks-thickness: 0.25rem;
 
 @track-color: var(--tui-slider-track-color);
 @thumb-color: currentColor;
@@ -29,19 +28,9 @@
     The most left point of the track is the most left point of the thumb (at the zero-position).
     The first tick should start at the center of thumb to set correct position for all other ticks.
     */
-    @first-tick-offset: ((@thumb-width - @ticks-thickness) / 2);
+    @first-tick-offset: calc((@thumb-width - var(--t-tick-thickness)) / 2);
     @ticks-background-size: calc(100% - @thumb-width);
 
-    @hide-first-tick: linear-gradient(
-        to right,
-        @thumb-color 0px (@first-tick-offset + @ticks-thickness),
-        transparent @ticks-thickness
-    );
-    @ticks-gradient: repeating-linear-gradient(
-        to right,
-        var(--tui-text-tertiary) 0 @ticks-thickness,
-        transparent 0 var(--tui-slider-segment-width)
-    );
     @filling-progress-gradient: linear-gradient(
         to right,
         @thumb-color calc(100% * var(--tui-slider-fill-ratio)),
@@ -52,14 +41,14 @@
     background-color: @track-color;
 
     & when (@progress-filling = true) {
-        background-image: @hide-first-tick, @ticks-gradient, @filling-progress-gradient;
-        background-position-x: 0, @first-tick-offset, 0;
-        background-size: @ticks-background-size, @ticks-background-size, auto;
+        background-image: var(--tui-ticks-gradient), @filling-progress-gradient;
+        background-position-x: @first-tick-offset, 0;
+        background-size: @ticks-background-size, auto;
     }
 
     & when (@progress-filling = false) {
-        background-image: @hide-first-tick, @ticks-gradient;
-        background-position-x: 0, @first-tick-offset;
+        background-image: var(--tui-ticks-gradient);
+        background-position-x: @first-tick-offset;
         background-size: @ticks-background-size;
     }
 }
@@ -130,6 +119,8 @@
 }
 
 :host {
+    --t-tick-thickness: 0.25rem;
+
     position: relative;
     display: block;
     inline-size: 100%;
