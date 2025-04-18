@@ -23,10 +23,14 @@
     cursor: pointer;
     font: inherit;
     color: var(--tui-text-primary);
-    text-decoration: none dashed currentColor;
+    text-decoration: underline solid currentColor;
     text-underline-offset: 0.2em;
     text-decoration-thickness: 0.7px;
     text-decoration-color: color-mix(in lch, currentColor, transparent);
+
+    &._pseudo {
+        text-decoration-style: dashed;
+    }
 
     // TODO: Remove in v5
     @media @tui-mouse {
@@ -53,19 +57,25 @@
         box-sizing: border-box;
     }
 
+    &[tuiChevron]::after {
+        display: inline-block;
+    }
+
     .appearance-focus({
         outline: none;
         background: var(--tui-service-selection-background);
         background: color-mix(in lch, currentColor 12%, transparent);
     });
 
-    @media @tui-mouse {
-        &[data-appearance='']:hover {
-            opacity: 0.7;
-        }
-    }
+    .appearance-hover({
+        text-decoration-color: currentColor;
+    });
 
-    &[data-appearance='']:active {
-        opacity: 0.7;
+    .appearance-active({
+        text-decoration-color: currentColor;
+    });
+
+    &[data-appearance='action']:not(._pseudo) {
+        text-decoration-color: transparent;
     }
 }

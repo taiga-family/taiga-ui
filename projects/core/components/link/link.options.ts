@@ -3,10 +3,6 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneo
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 
 export interface TuiLinkOptions extends TuiAppearanceOptions {
-    /**
-     * @deprecated: use on host
-     * [style.text-decoration-style]="'dashed'"
-     */
     readonly pseudo: boolean;
 }
 
