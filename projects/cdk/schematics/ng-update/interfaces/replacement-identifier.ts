@@ -8,6 +8,7 @@ export interface ReplacementIdentifier {
         readonly name: string;
         readonly namedImport?: string;
         readonly spreadInModule?: boolean;
+        readonly callExpression?: boolean;
     };
 }
 

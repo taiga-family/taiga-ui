@@ -2612,4 +2612,15 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         from: {name: 'TuiResizeableDirective', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiResizable', moduleSpecifier: '@taiga-ui/cdk'},
     },
+    {
+        from: [
+            {name: 'NG_EVENT_PLUGINS', moduleSpecifier: '@tinkoff/ng-event-plugins'},
+            {name: 'NG_EVENT_PLUGINS', moduleSpecifier: '@taiga-ui/event-plugins'},
+        ],
+        to: {
+            name: 'provideEventPlugins',
+            moduleSpecifier: '@taiga-ui/event-plugins',
+            callExpression: true,
+        },
+    },
 ];
