@@ -7,6 +7,7 @@
     pointer-events: none;
     overflow: hidden;
     overscroll-behavior: none;
+    transform: translateY(var(--t-root-top));
 
     &:has(section) {
         pointer-events: auto;
@@ -60,6 +61,10 @@
 .t-dialog:last-child {
     pointer-events: auto;
     filter: none;
+
+    :host-context(tui-root:has(tui-dropdown-mobile._sheet)) {
+        filter: brightness(0.5);
+    }
 }
 
 .t-scrollbars {
