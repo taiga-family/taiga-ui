@@ -36,15 +36,7 @@
             Rent {{ 4.99 | tuiAmount: 'USD' | async }}
         </button>
     </p>
-    <button
-        size="m"
-        tuiButton
-        type="button"
-        class="action"
-    >
-        Add to Watch List
-    </button>
-    <h3 class="cast">Cast:</h3>
+    <h3>Cast:</h3>
     <p>John Cleese</p>
     <p>Eric Idle</p>
     <p>Michael Palin</p>
@@ -81,4 +73,16 @@
     <h3>Running time</h3>
     <p>92 minutes</p>
     <footer class="footer">© EMI Films</footer>
+    <div
+        tuiFloatingContainer
+        class="floating"
+    >
+        <button
+            size="m"
+            tuiButton
+            type="button"
+        >
+            Add to Watch List
+        </button>
+    </div>
 </ng-template>

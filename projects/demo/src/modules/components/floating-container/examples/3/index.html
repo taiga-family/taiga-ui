@@ -1,0 +1,50 @@
+<p>
+    <label tuiLabel>
+        <input
+            tuiSwitch
+            type="checkbox"
+            [(ngModel)]="floating"
+        />
+        Floating visibility
+    </label>
+</p>
+
+<div class="content">
+    <div
+        *ngFor="let i of 30 | tuiRepeatTimes"
+        tuiCell
+    >
+        <tui-avatar
+            appearance="primary"
+            src="@tui.star"
+        />
+        <div tuiTitle>
+            Title
+            <div tuiSubtitle>Description</div>
+        </div>
+    </div>
+
+    <footer
+        *ngIf="floating"
+        tuiFloatingContainer
+        @tuiSlideInTop
+    >
+        <button
+            tuiButton
+            type="button"
+        >
+            Далее
+        </button>
+        <span
+            class="clamp"
+            [style.margin-top.rem]="0.5"
+            [style.min-block-size.rem]="2"
+        >
+            <tui-icon
+                icon="@tui.settings"
+                [style.font-size.rem]="1"
+            />
+            Legal text, max 3 lines
+        </span>
+    </footer>
+</div>

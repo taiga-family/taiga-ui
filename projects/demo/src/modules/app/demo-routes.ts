@@ -198,6 +198,7 @@ export const DemoRoute = {
     FilterPipe: '/pipes/filter',
     FilterByInput: '/pipes/filter-by-input',
     Flag: '/pipes/flag',
+    FloatingContainer: '/components/floating-container',
     FormatDate: '/pipes/format-date',
     FormatNumber: '/pipes/format-number',
     IsPresent: '/pipes/is-present',
