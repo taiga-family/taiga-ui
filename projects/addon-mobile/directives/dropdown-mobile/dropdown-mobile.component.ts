@@ -38,7 +38,6 @@ const GAP = 16;
         '[@tuiFadeIn]': 'animation',
         '[@tuiSlideInTop]': 'animation',
         '[class._sheet]': 'directive.tuiDropdownMobile',
-        '[class._dialog]': 'dialog',
         '(document:click.zoneless.capture)': 'onClick($event)',
         '(window>scroll.zoneless.capture)':
             'refresh($event.currentTarget.visualViewport)',
@@ -57,7 +56,6 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
 
     protected readonly directive = inject(TuiDropdownMobile);
     protected readonly dropdown = inject(TuiDropdownDirective);
-    protected readonly dialog = this.dropdown.el.closest('tui-dialogs');
     protected readonly animation = {
         value: '',
         params: {
