@@ -11,7 +11,6 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
@@ -20,9 +19,9 @@ import {
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
+import type {TuiTextareaOptions} from './textarea.options';
 import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
 
 @Component({
@@ -62,7 +61,7 @@ export class TuiTextarea implements AfterViewInit {
     public max = this.options.max;
 
     @Input()
-    public content: PolymorpheusContent<TuiContext<string>> = ({$implicit}) => $implicit;
+    public content: TuiTextareaOptions['content'] = this.options.content;
 
     public ngAfterViewInit(): void {
         if (this.template) {
