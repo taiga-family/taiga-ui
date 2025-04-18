@@ -83,7 +83,11 @@ export class TuiSliderComponent {
     }
 
     public get step(): number {
-        return Number(this.el.step) || 1;
+        if (!this.el.step) {
+            return 1;
+        }
+
+        return this.el.step === 'any' ? 0 : Number(this.el.step);
     }
 
     public set step(x: number) {
@@ -103,10 +107,12 @@ export class TuiSliderComponent {
                 ? transformer.fromControlValue(this.control.value)
                 : this.control.viewModel;
 
-            return tuiRound(
-                Math.round(value / this.step) * this.step,
-                TUI_FLOATING_PRECISION,
-            );
+            return this.step
+                ? tuiRound(
+                      Math.round(value / this.step) * this.step,
+                      TUI_FLOATING_PRECISION,
+                  )
+                : value;
         }
 
         return Number(this.el.value) || 0;
