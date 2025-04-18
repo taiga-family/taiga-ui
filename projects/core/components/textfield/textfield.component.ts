@@ -55,7 +55,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 @Component({
     standalone: true,
-    selector: 'tui-textfield',
+    selector: 'tui-textfield:not([multi])',
     imports: [NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
     templateUrl: './textfield.template.html',
     styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
@@ -85,7 +85,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     // TODO: refactor to signal inputs after Angular update
     private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
-    private readonly open = tuiDropdownOpen();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
 
@@ -100,6 +99,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
+    protected readonly open = tuiDropdownOpen();
 
     protected computedFiller = computed((value = this.value()) => {
         const filledValue = value + this.filler().slice(value.length);
