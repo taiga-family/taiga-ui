@@ -21,7 +21,8 @@ import {
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options';
+import type {TuiTextareaOptions} from './textarea.options';
+import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
 
 @Component({
     standalone: true,

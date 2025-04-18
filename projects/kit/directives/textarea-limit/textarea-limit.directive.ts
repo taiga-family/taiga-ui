@@ -63,7 +63,9 @@ const COMPONENT = new PolymorpheusComponent(TuiTextareaLimitComponent);
 })
 export class TuiTextareaLimit implements Validator, DoCheck {
     private readonly textfield = inject(TuiTextfieldComponent);
-    private ref = inject(ViewContainerRef).createComponent(TuiTextareaCounterComponent);
+    private readonly ref = inject(ViewContainerRef).createComponent(
+        TuiTextareaCounterComponent,
+    );
 
     public readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     public readonly limit = signal(0);

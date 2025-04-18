@@ -1,4 +1,4 @@
-import type {TuiContext} from '@taiga-ui/cdk';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
