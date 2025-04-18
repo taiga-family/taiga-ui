@@ -1,15 +1,11 @@
-import {
-    type ElementRef,
-    type EmbeddedViewRef,
-    EventEmitter,
-    type OnChanges,
-    Output,
-} from '@angular/core';
+import type {ElementRef, EmbeddedViewRef, OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    EventEmitter,
     inject,
     Input,
+    Output,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
@@ -81,7 +77,7 @@ export class TuiInputSearch implements OnChanges {
     @Output()
     public readonly tuiInputSearchOpenChange = new EventEmitter<boolean>();
 
-    ngOnChanges(): void {
+    public ngOnChanges(): void {
         if (this.tuiInputSearchOpen) {
             this.open();
         } else {
