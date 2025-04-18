@@ -41,8 +41,8 @@ const MODULE_AFTER = `import { newProvider } from "@namespace/new";
 import { tuiProvideMobileCalendar } from "@taiga-ui/addon-mobile";
 import { TuiAvatar } from "@taiga-ui/kit";
 import { TBANK_PROVIDERS } from "@taiga-ui/proprietary";
+import { provideEventPlugins } from "@taiga-ui/event-plugins";
 import { TuiRoot } from "@taiga-ui/core";
-import { provideEventPlugins } from '@taiga-ui/event-plugins';
 
 @NgModule({
     imports: [TuiRoot, TuiAvatar],
