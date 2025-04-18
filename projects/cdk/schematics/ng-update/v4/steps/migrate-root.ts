@@ -94,9 +94,9 @@ function addProviders({
         : modulePath || '';
 
     if (providersArray) {
-        providersArray.addElement('NG_EVENT_PLUGINS');
+        providersArray.addElement('provideEventPlugins()');
     } else if (module) {
-        addProviderToNgModule(module, 'NG_EVENT_PLUGINS', {unique: true});
+        addProviderToNgModule(module, 'provideEventPlugins()', {unique: true});
     }
 
     const shouldAddImport =
@@ -104,7 +104,7 @@ function addProviders({
         !getImports(path, {moduleSpecifier: '@tinkoff/ng-event-plugins'}).length;
 
     if (shouldAddImport) {
-        addUniqueImport(path, 'NG_EVENT_PLUGINS', '@taiga-ui/event-plugins');
+        addUniqueImport(path, 'provideEventPlugins', '@taiga-ui/event-plugins');
     }
 
     getActiveProject();

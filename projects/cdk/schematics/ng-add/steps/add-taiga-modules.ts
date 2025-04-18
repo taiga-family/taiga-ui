@@ -47,8 +47,8 @@ function addTuiModules({
         addUniqueImport(mainModulePath, module.name, module.packageName);
     });
 
-    addProviderToNgModule(mainClass, 'NG_EVENT_PLUGINS', {unique: true});
-    addUniqueImport(mainModulePath, 'NG_EVENT_PLUGINS', '@taiga-ui/event-plugins');
+    addProviderToNgModule(mainClass, 'provideEventPlugins()', {unique: true});
+    addUniqueImport(mainModulePath, 'provideEventPlugins', '@taiga-ui/event-plugins');
 
     context.logger.info(
         `${modules.map((module) => module.name)} was added to ${mainModulePath}`,
@@ -102,7 +102,7 @@ function addRootTuiProvidersToBootstrapFn(
                 el.getExpression().getText() === 'provideAnimations',
         );
 
-    pushToObjectArrayProperty(bootstrapOptions, 'providers', 'NG_EVENT_PLUGINS');
+    pushToObjectArrayProperty(bootstrapOptions, 'providers', 'provideEventPlugins()');
     const modules = [];
 
     if (!provideAnimations) {
@@ -116,7 +116,7 @@ function addRootTuiProvidersToBootstrapFn(
         });
     }
 
-    modules.push({name: 'NG_EVENT_PLUGINS', packageName: '@taiga-ui/event-plugins'});
+    modules.push({name: 'provideEventPlugins', packageName: '@taiga-ui/event-plugins'});
 
     modules.forEach(({name, packageName}) => {
         addUniqueImport(

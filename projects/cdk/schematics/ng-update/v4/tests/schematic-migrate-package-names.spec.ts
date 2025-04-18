@@ -40,7 +40,7 @@ import { TuiEditor, TuiEditorSocket } from "@taiga-ui/editor";
 import {Component} from '@angular/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {shouldCall} from '@taiga-ui/event-plugins';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideEventPlugins} from '@taiga-ui/event-plugins';
 import {TUI_VERSION} from '@taiga-ui/cdk';
 const imports = [TuiEditor, TuiEditorSocket];
 `.trim();
