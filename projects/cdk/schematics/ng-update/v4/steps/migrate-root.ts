@@ -1,4 +1,4 @@
-import {type DevkitFileSystem, removeImports} from 'ng-morph';
+import type {DevkitFileSystem} from 'ng-morph';
 import {
     addProviderToNgModule,
     getActiveProject,
@@ -7,6 +7,7 @@ import {
     getPackageJsonDependency,
     infoLog,
     Node,
+    removeImports,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
 } from 'ng-morph';
