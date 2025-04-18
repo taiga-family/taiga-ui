@@ -34,13 +34,13 @@ const imports = [TuiEditorModule];
 `.trim();
 
 const TS_FILE_AFTER = `
+import { provideEventPlugins } from "@taiga-ui/event-plugins";
 import { TuiInputNumberModule } from "@taiga-ui/legacy";
 import { TuiNavigation } from "@taiga-ui/layout";
 import { TuiEditor, TuiEditorSocket } from "@taiga-ui/editor";
 import {Component} from '@angular/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {shouldCall} from '@taiga-ui/event-plugins';
-import {provideEventPlugins} from '@taiga-ui/event-plugins';
 import {TUI_VERSION} from '@taiga-ui/cdk';
 const imports = [TuiEditor, TuiEditorSocket];
 `.trim();
