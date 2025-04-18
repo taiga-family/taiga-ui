@@ -1,9 +1,11 @@
-import type {ElementRef, EmbeddedViewRef} from '@angular/core';
+import type {ElementRef, EmbeddedViewRef, OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    EventEmitter,
     inject,
     Input,
+    Output,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
@@ -43,7 +45,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
         '(keydown.arrowDown.prevent)': 'onArrow()',
     },
 })
-export class TuiInputSearch {
+export class TuiInputSearch implements OnChanges {
     @ViewChild(TemplateRef)
     private readonly template?: TemplateRef<any>;
 
@@ -69,6 +71,20 @@ export class TuiInputSearch {
     @Input()
     public tuiInputSearch: PolymorpheusContent;
 
+    @Input()
+    public tuiInputSearchOpen = false;
+
+    @Output()
+    public readonly tuiInputSearchOpenChange = new EventEmitter<boolean>();
+
+    public ngOnChanges(): void {
+        if (this.tuiInputSearchOpen) {
+            this.open();
+        } else {
+            this.close();
+        }
+    }
+
     public open(): void {
         if (this.ref?.destroyed === false || !this.template) {
             return;
@@ -81,12 +97,16 @@ export class TuiInputSearch {
         this.ref.rootNodes[0]?.insertAdjacentElement('afterbegin', this.textfield.el);
         this.el.focus({preventScroll: true});
         this.el.placeholder = this.i18n()?.placeholder || this.el.placeholder;
+        this.tuiInputSearchOpen = true;
+        this.tuiInputSearchOpenChange.emit(true);
     }
 
     public close(): void {
         this.el.placeholder = this.placeholder;
         this.parent?.insertBefore(this.textfield.el, this.neighbor);
         this.ref?.destroy();
+        this.tuiInputSearchOpen = false;
+        this.tuiInputSearchOpenChange.emit(false);
     }
 
     protected onArrow(): void {
