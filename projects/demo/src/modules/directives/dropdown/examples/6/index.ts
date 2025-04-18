@@ -33,6 +33,7 @@ interface User {
     imports: [
         AsyncPipe,
         FormsModule,
+        NgTemplateOutlet,
         TuiAmountPipe,
         TuiAvatar,
         TuiButton,
@@ -48,7 +49,6 @@ interface User {
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
-        NgTemplateOutlet,
     ],
     templateUrl: './index.html',
     encapsulation,

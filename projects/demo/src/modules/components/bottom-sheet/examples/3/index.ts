@@ -12,14 +12,14 @@ import {TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
 @Component({
     standalone: true,
     imports: [
-        NgIf,
         FormsModule,
+        NgIf,
         TuiAccordion,
+        TuiBlock,
         TuiBottomSheet,
         TuiButton,
-        TuiRepeatTimes,
-        TuiBlock,
         TuiCheckbox,
+        TuiRepeatTimes,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
