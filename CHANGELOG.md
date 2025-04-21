@@ -3,6 +3,8 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.113.0](https://github.com/taiga-family/taiga-ui/compare/v3.112.0...v3.113.0) (2025-04-21)
+
 ## [3.112.0](https://github.com/taiga-family/taiga-ui/compare/v3.111.0...v3.112.0) (2025-04-14)
 
 ### Bug Fixes
