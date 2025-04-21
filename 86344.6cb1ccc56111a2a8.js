@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[86344],{86344:e=>{e.exports=".footer {\n    position: sticky;\n    bottom: calc(1.5rem + env(safe-area-inset-bottom));\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n"}}]);
