@@ -9,6 +9,17 @@
     </label>
 </p>
 
+<p>
+    <label tuiLabel>
+        <input
+            tuiSwitch
+            type="checkbox"
+            [(ngModel)]="additional"
+        />
+        Additional content
+    </label>
+</p>
+
 <div class="content">
     <div
         *ngFor="let i of 30 | tuiRepeatTimes"
@@ -24,7 +35,7 @@
         </div>
     </div>
 
-    <footer
+    <!-- <footer
         *ngIf="floating"
         tuiFloatingContainer
         @tuiSlideInTop
@@ -42,5 +53,40 @@
             />
             Legal text, max 3 lines
         </span>
+    </footer> -->
+
+    <footer
+        *ngIf="floating"
+        tuiFloatingContainer
+        @tuiSlideInTop
+    >
+        <tui-elastic-container>
+            <button
+                tuiButton
+                type="button"
+            >
+                Main action
+            </button>
+            <span
+                *ngIf="!additional"
+                class="clamp"
+                [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation"
+            >
+                <tui-icon
+                    icon="@tui.settings"
+                    [style.font-size.rem]="1"
+                />
+                Legal text, max 3 lines
+            </span>
+            <button
+                *ngIf="additional"
+                appearance="flat"
+                tuiButton
+                type="button"
+                [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation"
+            >
+                Secondary action
+            </button>
+        </tui-elastic-container>
     </footer>
 </div>

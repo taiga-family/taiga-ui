@@ -3,9 +3,21 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
-import {TuiButton, TuiIcon, TuiLabel, tuiSlideInTop, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
+import {TuiAnimationPipe, TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+import {
+    TuiButton,
+    tuiCrossFade,
+    TuiIcon,
+    TuiLabel,
+    tuiSlideInTop,
+    TuiTitle,
+} from '@taiga-ui/core';
+import {
+    TuiAvatar,
+    TuiElasticContainer,
+    TuiFloatingContainer,
+    TuiSwitch,
+} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
@@ -14,9 +26,11 @@ import {TuiCell} from '@taiga-ui/layout';
         FormsModule,
         NgFor,
         NgIf,
+        TuiAnimationPipe,
         TuiAvatar,
         TuiButton,
         TuiCell,
+        TuiElasticContainer,
         TuiFloatingContainer,
         TuiIcon,
         TuiLabel,
@@ -28,8 +42,9 @@ import {TuiCell} from '@taiga-ui/layout';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop],
+    animations: [tuiSlideInTop, tuiCrossFade],
 })
 export default class Example {
     protected floating = true;
+    protected additional = false;
 }

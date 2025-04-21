@@ -43,11 +43,10 @@ export default class Example {
     protected readonly examples = [
         'Two actions',
         'Inside SheetDialog',
-        'Action and label',
+        'Action and label/button',
         'Custom content',
         'Custom background color',
         'Primary button change',
-        'With additional content',
     ];
 
     protected readonly colors = [
