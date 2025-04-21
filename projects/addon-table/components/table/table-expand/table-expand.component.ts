@@ -1,5 +1,5 @@
 import {isPlatformServer} from '@angular/common';
-import {type ElementRef, PLATFORM_ID} from '@angular/core';
+import {type ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,6 +8,7 @@ import {
     inject,
     Input,
     Output,
+    PLATFORM_ID,
     signal,
     ViewChild,
 } from '@angular/core';
