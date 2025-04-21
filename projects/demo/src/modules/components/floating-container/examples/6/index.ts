@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAnimationPipe, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
-    tuiCrossFadeIn,
+    tuiCrossFade,
     tuiHeightCollapse,
     TuiLabel,
     tuiSlideInTop,
@@ -34,7 +34,7 @@ import {TuiCell} from '@taiga-ui/layout';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    animations: [tuiSlideInTop, tuiCrossFadeIn, tuiHeightCollapse],
+    animations: [tuiSlideInTop, tuiCrossFade, tuiHeightCollapse],
 })
 export default class Example {
     protected floating = true;

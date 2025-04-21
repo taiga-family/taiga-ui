@@ -121,7 +121,7 @@ export const tuiWidthCollapseList = trigger('tuiWidthCollapseList', [
     ),
 ]);
 
-export const tuiCrossFadeIn = trigger('tuiCrossFadeIn', [
+export const tuiCrossFade = trigger('tuiCrossFade', [
     transition(
         ':enter',
         [style({opacity: 0}), animate(TRANSITION, style({opacity: 1}))],
