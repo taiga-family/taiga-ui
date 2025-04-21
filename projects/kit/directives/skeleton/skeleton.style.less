@@ -1,22 +1,11 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@keyframes tuiSkeleton {
-    from {
-        opacity: 0.03;
-    }
-
-    to {
-        opacity: 0.06;
-    }
-}
-
 [tuiSkeleton] {
     &._skeleton {
         color: transparent;
         background: var(--tui-background-base) !important;
         box-shadow: none !important;
         filter: contrast(0) brightness(0);
-        animation: tuiSkeleton ease-in-out 1s infinite alternate;
         user-select: none;
         pointer-events: none;
         opacity: 0.06;
