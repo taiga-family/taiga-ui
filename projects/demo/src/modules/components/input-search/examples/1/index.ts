@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
-import {TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiSearchResults} from '@taiga-ui/experimental';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCell, TuiInputSearch, TuiNavigation} from '@taiga-ui/layout';
@@ -62,6 +62,7 @@ const DATA: Record<string, readonly Result[]> = {
         AsyncPipe,
         ReactiveFormsModule,
         TuiAvatar,
+        TuiButton,
         TuiCell,
         TuiInputSearch,
         TuiNavigation,
@@ -88,6 +89,8 @@ export default class ExampleComponent {
             ),
         ),
     );
+
+    protected open = false;
 
     private filter(query: string): Record<string, readonly Result[]> {
         return Object.entries(DATA).reduce(
