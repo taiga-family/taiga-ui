@@ -16,6 +16,12 @@ tui-block-status {
         padding: 2rem;
     }
 
+    .t-block-image:empty,
+    .t-block-text:empty,
+    .t-block-actions:empty {
+        display: none;
+    }
+
     .t-block-image:not(:empty) {
         display: flex;
         margin-bottom: 2rem;
