@@ -17,7 +17,7 @@
     // TODO: Remove in v5
     --tui-text-tertiary: var(--tui-text-secondary);
 
-    .transition(~'color, text-decoration');
+    .transition(~'color, text-decoration, opacity');
 
     padding: 0;
     background: transparent;
@@ -25,12 +25,10 @@
     cursor: pointer;
     font: inherit;
     color: var(--tui-text-primary);
-    text-decoration: underline solid currentColor;
+    text-decoration: none dashed currentColor;
     text-underline-offset: 0.2em;
     text-decoration-thickness: 0.7px;
     text-decoration-color: color-mix(in lch, currentColor, transparent);
-    // TODO: Remove in v5
-    //text-decoration-line: none;
 
     // TODO: Remove in v5
     @media @tui-mouse {
@@ -75,7 +73,13 @@
         text-decoration-color: currentColor;
     });
 
-    &[data-appearance='action']:not(:hover) {
-        text-decoration-line: none;
+    @media @tui-mouse {
+        &[data-appearance='']:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &[data-appearance='']:active {
+        opacity: 0.7;
     }
 }

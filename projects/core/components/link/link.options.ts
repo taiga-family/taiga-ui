@@ -6,7 +6,7 @@ import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 export interface TuiLinkOptions extends TuiAppearanceOptions {
     /**
      * @deprecated: use on host
-     * [style.text-decoration-style]="'dashed'"
+     * [style.text-decoration-line]="'underline'"
      */
     readonly pseudo: boolean;
 }

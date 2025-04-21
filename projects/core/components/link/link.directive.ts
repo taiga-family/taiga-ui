@@ -35,7 +35,6 @@ class TuiLinkStyles {}
     host: {
         tuiLink: '',
         '[style.text-decoration-line]': 'pseudo ? "underline" : null',
-        '[style.text-decoration-style]': 'pseudo ? "dashed" : null',
     },
 })
 export class TuiLink {
@@ -44,7 +43,6 @@ export class TuiLink {
     /**
      * @deprecated: use on host
      * [style.text-decoration-line]="'underline'"
-     * [style.text-decoration-style]="'dashed'"
      */
     @Input()
     public pseudo = inject(TUI_LINK_OPTIONS).pseudo;
