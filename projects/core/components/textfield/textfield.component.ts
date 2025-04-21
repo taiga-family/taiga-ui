@@ -79,6 +79,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content',
         '[class._disabled]': 'input?.nativeElement.disabled',
+        '(mousedown)': 'onClick($event)',
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterContentInit {
@@ -179,5 +180,16 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
     protected onResize({contentRect}: ResizeObserverEntry): void {
         this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
+    }
+
+    protected onClick(event: Event): void {
+        if (
+            this.el === event.target && // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
+            !this.input?.nativeElement.matches(':read-only')
+        ) {
+            event.preventDefault();
+            this.input?.nativeElement.focus({preventScroll: true});
+            this.open.update((x) => !x);
+        }
     }
 }
