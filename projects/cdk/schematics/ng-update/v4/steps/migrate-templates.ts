@@ -145,7 +145,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
 
     fileSystem.commitEdits();
 
-    saveAddedImports();
+    saveAddedImports(options);
 
     !options['skip-logs'] &&
         successLog(`${SMALL_TAB_SYMBOL}${SUCCESS_SYMBOL} templates migrated \n`);
