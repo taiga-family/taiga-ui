@@ -43,6 +43,7 @@ export class TuiSkeleton implements OnChanges {
     private readonly el = tuiInjectElement();
     private readonly fadeAnimationDuration =
         tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)) * 2;
+
     private readonly skeletonAnimationDuration =
         this.fadeAnimationDuration === 0 ? 0 : 1000;
 
