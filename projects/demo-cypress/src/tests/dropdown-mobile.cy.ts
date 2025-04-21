@@ -50,7 +50,6 @@ interface User {
     ],
     template: `
         <tui-root>
-            <button (click)="dialog = true">Hapica</button>
             <ng-template [(tuiResponsiveDialog)]="dialog">
                 <tui-textfield
                     tuiChevron
