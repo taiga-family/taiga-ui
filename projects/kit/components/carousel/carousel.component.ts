@@ -130,7 +130,7 @@ export class TuiCarouselComponent {
     }
 
     protected isDisabled(index: number): boolean {
-        return index < this.index || index > this.index + this.itemsCount;
+        return index < this.index || index >= this.index + this.itemsCount;
     }
 
     protected onIntersection(
