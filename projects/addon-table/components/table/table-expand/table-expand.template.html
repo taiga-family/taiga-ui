@@ -1,6 +1,7 @@
 <div
-    class="t-table-expand__content"
-    [class.t-table-expand__content_open]="expanded() && !transitioning()"
+    #content
+    class="t-content"
+    [class.t-content_open]="expanded() && !transitioning()"
 >
     <ng-content />
 </div>

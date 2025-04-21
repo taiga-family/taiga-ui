@@ -30,28 +30,26 @@
     }
 }
 
-.t-table-expand {
+:host {
     display: contents;
+}
 
-    &__content {
-        display: none;
+.t-content {
+    display: none;
 
-        &_open {
-            display: contents;
+    &_open {
+        display: contents;
 
-            td {
-                animation: fade-in calc(var(--tui-duration) + 1ms);
-            }
+        ::ng-deep tr {
+            animation: fade-in var(--tui-duration);
         }
     }
 }
 
 .t-filler {
-    animation: close calc(var(--tui-duration) + 1ms);
-    animation-iteration-count: inherit;
+    animation: close var(--tui-duration);
 
     &_open {
-        animation: open calc(var(--tui-duration) + 1ms);
-        animation-iteration-count: inherit;
+        animation: open var(--tui-duration);
     }
 }

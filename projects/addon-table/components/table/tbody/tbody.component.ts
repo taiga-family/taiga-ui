@@ -56,7 +56,7 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, any>>> {
     public readonly openChange = new EventEmitter<boolean>();
 
     /** @deprecated: drop in v5.0, use TuiTableExpand */
-    public onClick = (): void => {
+    protected onClick = (): void => {
         this.open = !this.open;
         this.openChange.emit(this.open);
     };

@@ -2,12 +2,13 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    ElementRef,
     EventEmitter,
     inject,
     Input,
     Output,
     signal,
-    ViewEncapsulation,
+    ViewChild,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom/inject-element';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens/animations-speed';
@@ -20,16 +21,13 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     selector: 'tui-table-expand',
     templateUrl: './table-expand.template.html',
     styleUrls: ['./table-expand.style.less'],
-    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        class: 't-table-expand',
-        style: 'animation-iteration-count: 0',
+        style: '--tui-duration: 0ms',
     },
 })
 export class TuiTableExpand {
     private readonly options = inject(TUI_TABLE_OPTIONS);
-    private readonly el = tuiInjectElement();
     private readonly animationSpeed = inject(TUI_ANIMATIONS_SPEED);
 
     protected readonly transitioning = signal(false);
@@ -37,14 +35,19 @@ export class TuiTableExpand {
         this.updateContentHeight(),
     );
 
+    @ViewChild('content', {static: true})
+    private readonly contentElRef?: ElementRef<HTMLElement>;
+
     @Output()
     public readonly expandedChange = new EventEmitter<boolean>();
 
     public readonly expanded = signal(this.options.open);
 
     constructor() {
+        const el = tuiInjectElement();
+
         setTimeout(
-            () => this.el.style.removeProperty('animation-iteration-count'),
+            () => el.style.removeProperty('--tui-duration'),
             tuiGetDuration(this.animationSpeed),
         );
     }
@@ -62,20 +65,17 @@ export class TuiTableExpand {
     }
 
     private updateContentHeight(): number {
-        const contentEl = this.el.querySelector<HTMLDivElement>(
-            '.t-table-expand__content',
-        );
-
-        if (contentEl) {
-            contentEl.style.setProperty('display', 'block');
-
-            const height = contentEl.getBoundingClientRect().height;
-
-            contentEl.style.removeProperty('display');
-
-            return height;
+        if (!this.contentElRef) {
+            return 0;
         }
 
-        return 0;
+        const el = this.contentElRef.nativeElement;
+        el.style.setProperty('display', 'block');
+
+        const height = el.getBoundingClientRect().height;
+
+        el.style.removeProperty('display');
+
+        return height;
     }
 }
