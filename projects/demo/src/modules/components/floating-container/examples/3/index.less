@@ -1,0 +1,23 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+.content {
+    position: relative;
+    display: block;
+    inline-size: 18rem;
+    block-size: 30rem;
+    overflow: auto;
+    box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
+    background: var(--tui-background-elevation-1);
+}
+
+footer {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.clamp {
+    .tui-line-clamp();
+
+    margin-top: 0.5rem;
+    min-block-size: 2rem;
+}

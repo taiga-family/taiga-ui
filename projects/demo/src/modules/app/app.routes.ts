@@ -120,6 +120,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/block'),
     }),
     route({
+        path: DemoRoute.FloatingContainer,
+        title: 'FloatingContainer',
+        loadComponent: async () => import('../components/floating-container'),
+    }),
+    route({
         path: DemoRoute.BlockStatus,
         title: 'BlockStatus',
         loadComponent: async () => import('../components/block-status'),

@@ -121,6 +121,37 @@ export const tuiWidthCollapseList = trigger('tuiWidthCollapseList', [
     ),
 ]);
 
+export const tuiCrossFade = trigger('tuiCrossFade', [
+    transition(
+        ':enter',
+        [style({opacity: 0}), animate(TRANSITION, style({opacity: 1}))],
+        {params: {duration: 300}},
+    ),
+    transition(
+        ':leave',
+        [
+            style({
+                opacity: 1,
+                position: 'absolute',
+                left: '{{left}}',
+                right: '{{right}}',
+                bottom: '{{bottom}}',
+                top: '{{top}}',
+            }),
+            animate(TRANSITION, style({opacity: 0})),
+        ],
+        {
+            params: {
+                duration: 300,
+                left: 'auto',
+                right: 'auto',
+                bottom: 'auto',
+                top: 'auto',
+            },
+        },
+    ),
+]);
+
 export const tuiFadeIn = trigger('tuiFadeIn', [
     transition(
         ':enter',

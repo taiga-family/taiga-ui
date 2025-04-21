@@ -31,12 +31,4 @@
 
 .button {
     .transition(bottom);
-
-    position: sticky;
-    bottom: max(
-        calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y) + 1.5rem),
-        calc(env(safe-area-inset-bottom) + 1.5rem)
-    );
-    inline-size: 100%;
-    margin-block-start: 1rem;
 }
