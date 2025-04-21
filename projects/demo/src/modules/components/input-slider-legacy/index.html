@@ -207,10 +207,15 @@
                 <tr
                     name="[segments]"
                     tuiDocAPIItem
-                    type="number"
+                    type="number[] | number"
+                    [items]="segmentsVariants"
                     [(value)]="segments"
                 >
-                    A number of visual segments (use
+                    <p>
+                        A number of visual segments or an array, in which every number - is ratio of slider's track
+                        length in range (0; 1) where to put tick
+                    </p>
+                    (use
                     <code>1</code>
                     for no ticks)
                 </tr>

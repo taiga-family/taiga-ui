@@ -196,10 +196,14 @@
             <ng-template
                 documentationPropertyMode="input"
                 documentationPropertyName="segments"
-                documentationPropertyType="number"
+                documentationPropertyType="number[] | number"
+                [documentationPropertyValues]="segmentsVariants"
                 [(documentationPropertyValue)]="segments"
             >
-                <p>A number of visual segments</p>
+                <p>
+                    A number of visual segments or an array, in which every number - is ratio of slider's track length
+                    in range (0; 1) where to put tick
+                </p>
                 (use
                 <code>1</code>
                 for no ticks)

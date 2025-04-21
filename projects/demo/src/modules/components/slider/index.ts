@@ -12,13 +12,21 @@ import {TuiSlider} from '@taiga-ui/kit';
 })
 export default class Page {
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
+    protected readonly segmentsVariants: Array<number[] | number> = [
+        1,
+        5,
+        3,
+        [0.2, 0.5],
+        [0.1, 0.3],
+    ];
+
     protected readonly control = new FormControl(1);
 
     protected max = 5;
     protected min = 0;
     protected step = 1;
     protected size: TuiSizeS = this.sizeVariants[1]!;
-    protected segments = this.max;
+    protected segments: number[] | number = this.max;
 
     protected get disabled(): boolean {
         return this.control.disabled;
