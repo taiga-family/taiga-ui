@@ -1,8 +1,9 @@
+import {isPlatformServer} from '@angular/common';
+import {type ElementRef, PLATFORM_ID} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    type ElementRef,
     EventEmitter,
     inject,
     Input,
@@ -27,12 +28,12 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
 export class TuiTableExpand {
     @ViewChild('content', {static: true})
     private readonly content?: ElementRef<HTMLElement>;
+
     private readonly el = tuiInjectElement();
+    private readonly server = isPlatformServer(inject(PLATFORM_ID));
 
     protected readonly transitioning = signal(false);
-    protected readonly contentHeight = computed((_ = this.expanded()) =>
-        this.updateContentHeight(),
-    );
+    protected readonly contentHeight = computed((_ = this.expanded()) => this.update());
 
     @Output()
     public readonly expandedChange = new EventEmitter<boolean>();
@@ -56,8 +57,8 @@ export class TuiTableExpand {
         this.expandedChange.emit(this.expanded());
     }
 
-    private updateContentHeight(): number {
-        if (!this.content) {
+    private update(): number {
+        if (!this.content || this.server) {
             return 0;
         }
 
