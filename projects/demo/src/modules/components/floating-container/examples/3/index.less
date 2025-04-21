@@ -1,3 +1,5 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
 .content {
     position: relative;
     display: block;
@@ -14,12 +16,8 @@ footer {
 }
 
 .clamp {
-    display: -webkit-box;
+    .tui-line-clamp();
+
     margin-top: 0.5rem;
     min-block-size: 2rem;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }

@@ -158,3 +158,12 @@
     min-inline-size: 0;
     max-inline-size: max-content;
 }
+
+.tui-line-clamp(@count: 3) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: @count;
+    line-clamp: @count;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
