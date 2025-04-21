@@ -42,7 +42,7 @@ export class TuiLink {
 
     /**
      * @deprecated: use on host
-     * [style.text-decoration-style]="'dashed'"
+     * [style.text-decoration-line]="'underline'"
      */
     @Input()
     public pseudo = inject(TUI_LINK_OPTIONS).pseudo;

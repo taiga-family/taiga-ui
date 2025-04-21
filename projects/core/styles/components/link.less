@@ -17,6 +17,8 @@
     // TODO: Remove in v5
     --tui-text-tertiary: var(--tui-text-secondary);
 
+    .transition(~'color, text-decoration, opacity');
+
     padding: 0;
     background: transparent;
     border: none;
@@ -53,10 +55,22 @@
         box-sizing: border-box;
     }
 
+    &[tuiChevron]::after {
+        display: inline-block;
+    }
+
     .appearance-focus({
         outline: none;
         background: var(--tui-service-selection-background);
         background: color-mix(in lch, currentColor 12%, transparent);
+    });
+
+    .appearance-hover({
+        text-decoration-color: currentColor;
+    });
+
+    .appearance-active({
+        text-decoration-color: currentColor;
     });
 
     @media @tui-mouse {
