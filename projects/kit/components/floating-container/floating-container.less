@@ -21,8 +21,10 @@
  * Block, SheetDialog
  */
 [tuiFloatingContainer] {
+    .transition(bottom);
+
     position: sticky;
-    bottom: max(calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y)), 0);
+    bottom: calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y));
     z-index: 1;
     margin-top: 1rem;
     padding-bottom: calc(1rem + env(safe-area-inset-bottom));
