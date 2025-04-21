@@ -3,11 +3,11 @@ import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiDropdownMobile, TuiResponsiveDialog} from '@taiga-ui/addon-mobile';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButton,
-    TuiDialog,
     TuiRoot,
     TuiTextfield,
     TuiTitle,
@@ -46,11 +46,12 @@ interface User {
         TuiAvatar,
         TuiTitle,
         TuiAmountPipe,
-        TuiDialog,
+        TuiResponsiveDialog,
     ],
     template: `
         <tui-root>
-            <ng-template [(tuiDialog)]="dialog">
+            <button (click)="dialog = true">Hapica</button>
+            <ng-template [(tuiResponsiveDialog)]="dialog">
                 <tui-textfield
                     tuiChevron
                     tuiDropdownMobile="Select user"
@@ -117,7 +118,6 @@ interface User {
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class TestDropdownMobile {
     protected selected: readonly User[] = [];
@@ -138,17 +138,24 @@ export class TestDropdownMobile {
 describe('DropdownMobile', () => {
     beforeEach(() => {
         cy.viewport(375, 660);
-        cy.mount(TestDropdownMobile);
+        cy.mount(TestDropdownMobile, {
+            providers: [
+                {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
+                {provide: TUI_IS_MOBILE, useValue: true},
+            ],
+        });
     });
 
     describe('Sheet view', () => {
         it('Opens with no double overlay', () => {
+            cy.get('input[tuiSelect]').focus();
             cy.get('input[tuiSelect]').click();
 
             cy.compareSnapshot('sheet-view-opened');
         });
 
         it('Closes and selects value', () => {
+            cy.get('input[tuiSelect]').focus();
             cy.get('input[tuiSelect]').click();
             cy.get('[tuiOption]').first().click();
 
@@ -158,12 +165,14 @@ describe('DropdownMobile', () => {
 
     describe('Type view', () => {
         it('Opens properly inside dialog', () => {
+            cy.get('tui-multi-select input').focus();
             cy.get('tui-multi-select input').click();
 
             cy.compareSnapshot('type-view-opened');
         });
 
         it('Filters items as you type', () => {
+            cy.get('tui-multi-select input').focus();
             cy.get('tui-multi-select input').click();
             cy.get('tui-multi-select input').type('Alex');
 
@@ -171,6 +180,7 @@ describe('DropdownMobile', () => {
         });
 
         it('Closes with selected values', () => {
+            cy.get('tui-multi-select input').focus();
             cy.get('tui-multi-select input').click();
             cy.get('tui-multi-select input').type('Alex');
             cy.get('[tuiOption]').first().click();
