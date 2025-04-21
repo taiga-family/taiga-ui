@@ -45,7 +45,7 @@ export default class Example {
         'Inside SheetDialog',
         'Action and label',
         'Custom content',
-        'Custom substrate color',
+        'Custom background color',
         'Primary button change',
         'With additional content',
     ];

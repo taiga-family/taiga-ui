@@ -47,7 +47,7 @@ export default class Example {
     protected floating = true;
     protected secondAction = false;
 
-    protected substrate = true;
+    protected background = true;
 
     protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
     protected color = 'rgba(255, 221, 45, 0.8)';

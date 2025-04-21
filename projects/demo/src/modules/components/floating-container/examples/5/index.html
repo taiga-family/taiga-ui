@@ -13,9 +13,9 @@
         <input
             tuiSwitch
             type="checkbox"
-            [(ngModel)]="substrate"
+            [(ngModel)]="background"
         />
-        Substrate visibility
+        Background visibility
     </label>
 </p>
 <p>
@@ -35,7 +35,7 @@
         [tuiDropdownMaxHeight]="375"
         [(ngModel)]="color"
     >
-        Substrate color
+        Background color
     </tui-input-color>
 </p>
 
@@ -57,7 +57,7 @@
     <footer
         *ngIf="floating"
         @tuiSlideInTop
-        [tuiFloatingContainer]="substrate ? color : 'transparent'"
+        [tuiFloatingContainer]="background ? color : 'transparent'"
     >
         <button
             tuiButton
