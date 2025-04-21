@@ -84,9 +84,17 @@ function getReplacementText(
     inModule: boolean,
 ): string {
     return toArray(to)
-        .map(({name, spreadInModule}) =>
-            spreadInModule && inModule ? `...${name}` : name,
-        )
+        .map(({name, spreadInModule, callExpression}) => {
+            if (spreadInModule && inModule) {
+                return `...${name}`;
+            }
+
+            if (callExpression) {
+                return `${name}()`;
+            }
+
+            return name;
+        })
         .join(', ');
 }
 
