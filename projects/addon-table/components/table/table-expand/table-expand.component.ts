@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ElementRef,
+    type ElementRef,
     EventEmitter,
     inject,
     Input,
@@ -10,9 +10,7 @@ import {
     signal,
     ViewChild,
 } from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom/inject-element';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens/animations-speed';
-import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous/to-animation-options';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TUI_TABLE_OPTIONS} from '../table.options';
 
@@ -27,29 +25,23 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     },
 })
 export class TuiTableExpand {
-    private readonly options = inject(TUI_TABLE_OPTIONS);
-    private readonly animationSpeed = inject(TUI_ANIMATIONS_SPEED);
+    @ViewChild('content', {static: true})
+    private readonly content?: ElementRef<HTMLElement>;
+    private readonly el = tuiInjectElement();
 
     protected readonly transitioning = signal(false);
     protected readonly contentHeight = computed((_ = this.expanded()) =>
         this.updateContentHeight(),
     );
 
-    @ViewChild('content', {static: true})
-    private readonly contentElRef?: ElementRef<HTMLElement>;
-
     @Output()
     public readonly expandedChange = new EventEmitter<boolean>();
 
-    public readonly expanded = signal(this.options.open);
+    public readonly expanded = signal(inject(TUI_TABLE_OPTIONS).open);
 
     constructor() {
-        const el = tuiInjectElement();
-
-        setTimeout(
-            () => el.style.removeProperty('--tui-duration'),
-            tuiGetDuration(this.animationSpeed),
-        );
+        // Enabling transitions
+        setTimeout(() => this.el.style.removeProperty('--tui-duration'), 500);
     }
 
     @Input('expanded')
@@ -65,11 +57,12 @@ export class TuiTableExpand {
     }
 
     private updateContentHeight(): number {
-        if (!this.contentElRef) {
+        if (!this.content) {
             return 0;
         }
 
-        const el = this.contentElRef.nativeElement;
+        const el = this.content.nativeElement;
+
         el.style.setProperty('display', 'block');
 
         const height = el.getBoundingClientRect().height;

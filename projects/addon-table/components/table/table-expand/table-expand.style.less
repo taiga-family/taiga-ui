@@ -47,9 +47,9 @@
 }
 
 .t-filler {
-    animation: close var(--tui-duration);
+    animation: close calc(var(--tui-duration) + 1ms);
 
     &_open {
-        animation: open var(--tui-duration);
+        animation: open calc(var(--tui-duration) + 1ms);
     }
 }
