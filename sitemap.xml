@@ -598,6 +598,9 @@
     <loc>https://taiga-ui.dev/pipes/flag/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/floating-container/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/pipes/format-date/</loc>
   </url>
   <url>
@@ -1721,6 +1724,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/pipes/flag/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/floating-container/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/floating-container/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/pipes/format-date/API/</loc>
