@@ -13,7 +13,6 @@ import {tuiPure, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 
-const SKELETON = [{opacity: 0.03}, {opacity: 0.06}];
 const FADE = [{opacity: 0.06}, {opacity: 1}];
 
 @Component({
@@ -38,14 +37,9 @@ class TuiSkeletonStyles {}
     },
 })
 export class TuiSkeleton implements OnChanges {
-    private skeletonAnimation?: Animation;
-    private fadeAnimation?: Animation;
+    private animation?: Animation;
     private readonly el = tuiInjectElement();
-    private readonly fadeAnimationDuration =
-        tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)) * 2;
-
-    private readonly skeletonAnimationDuration =
-        this.fadeAnimationDuration === 0 ? 0 : 1000;
+    private readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)) * 2;
 
     protected readonly nothing = tuiWithStyles(TuiSkeletonStyles);
 
@@ -53,20 +47,10 @@ export class TuiSkeleton implements OnChanges {
     public tuiSkeleton: boolean | number | string = false;
 
     public ngOnChanges({tuiSkeleton}: SimpleChanges): void {
-        this.fadeAnimation?.cancel();
-
-        if (tuiSkeleton?.currentValue) {
-            this.skeletonAnimation = this.el.animate(SKELETON, {
-                easing: 'ease-in-out',
-                direction: 'alternate',
-                iterations: Infinity,
-                duration: this.skeletonAnimationDuration,
-            });
-        }
+        this.animation?.cancel();
 
         if (!tuiSkeleton?.currentValue && !tuiSkeleton?.firstChange) {
-            this.skeletonAnimation?.cancel();
-            this.fadeAnimation = this.el.animate(FADE, this.fadeAnimationDuration);
+            this.animation = this.el.animate(FADE, this.duration);
         }
     }
 
