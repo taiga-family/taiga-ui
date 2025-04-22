@@ -30,6 +30,7 @@ class PortalHost extends TuiPortals implements TuiRectAccessor {
     imports: [PortalHost, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['../1/index.less'],
+    providers: [TuiDropdownService],
     encapsulation,
     changeDetection,
 })
