@@ -674,6 +674,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'FileUploader',
+        keywords: 'File, uploader',
+        route: DemoRoute.FileUploader,
+    },
+    {
+        section: 'Components',
         title: 'ItemsWithMore',
         keywords: 'список, list, items, элементы, more, больше, overflow',
         route: DemoRoute.ItemsWithMore,

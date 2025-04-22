@@ -1,0 +1,78 @@
+:host([data-mode='grid']) .t-content {
+    flex-flow: row wrap;
+    padding-top: 0.5rem;
+    gap: 1rem;
+}
+
+:host([data-mode='list'])::ng-deep tui-file:not([tuiDropZone]):not(:last-child) {
+    border-bottom: 1px solid var(--tui-border-normal);
+
+    :host-context([data-platform='ios'], [data-platform='android']) & {
+        border-bottom: none;
+    }
+}
+
+.t-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.t-drop-zone:empty {
+    display: none;
+}
+
+:host._dragged::ng-deep [tuiDropZone] [tuiCell],
+:host::ng-deep [tuiDropZone]:hover [tuiCell] {
+    background: var(--tui-background-neutral-1);
+}
+
+.t-drop-zone:not(:empty) {
+    position: relative;
+    display: flex;
+    margin-bottom: 0.5rem;
+    min-block-size: 3.5rem;
+    padding: 1rem;
+    font-size: 0.9375rem;
+    transition: background-color var(--tui-duration);
+    box-sizing: border-box;
+    border-radius: var(--tui-radius-l);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px dashed var(--tui-border-normal);
+    text-align: center;
+
+    :host._dragged &,
+    &:hover {
+        background: var(--tui-background-neutral-1);
+    }
+
+    &::ng-deep > * {
+        cursor: pointer;
+    }
+
+    :host[data-size='s'] & {
+        min-block-size: 2.75rem;
+        padding: 0.75rem 1rem;
+        border-radius: var(--tui-radius-s);
+        font-size: 0.8125rem;
+    }
+
+    &::ng-deep tui-icon {
+        font-size: 1rem;
+        background: var(--tui-background-neutral-1);
+        border-radius: 100%;
+        color: var(--tui-text-tertiary);
+        margin-left: 0.5rem;
+    }
+}
+
+:host::ng-deep input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
