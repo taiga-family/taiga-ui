@@ -371,6 +371,10 @@ export class TuiInputNumberComponent
             postfix,
             precision: decimalMode === 'never' ? 0 : precision,
             decimalZeroPadding: decimalMode === 'always',
+            // https://github.com/taiga-family/maskito/issues/703
+            decimalPseudoSeparators: ['.', ',', 'б', 'ю'].filter(
+                x => !`${prefix}${postfix}`.includes(x),
+            ),
         });
 
         return {
