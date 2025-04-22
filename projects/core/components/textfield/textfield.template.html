@@ -25,7 +25,10 @@
     <ng-container #vcr />
     <ng-content select="tui-icon" />
 </span>
-<span class="t-template">
+<span
+    *ngIf="control?.value != null"
+    class="t-template"
+>
     <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value}">
         {{ text }}
     </ng-container>
