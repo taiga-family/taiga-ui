@@ -9,7 +9,7 @@ import {TuiDropdownService} from './dropdown.service';
 @Component({
     standalone: true,
     selector: 'tui-dropdowns',
-    host: {style: 'position: absolute; width: 100%;'},
+    host: {style: 'position: absolute; width: 100%; top: 0'},
     template: '<ng-container #viewContainer />',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsPortal(TuiDropdownService)],
