@@ -15,15 +15,11 @@
         <tui-input
             tuiTextfieldIconLeft="@tui.search"
             [formControl]="search"
-            (mousedown.prevent)="onFocus()"
         >
             Find user
         </tui-input>
     </header>
-    <div
-        class="container"
-        (tuiSwipe)="onSwipe($event.direction)"
-    >
+    <div class="container">
         <button
             *ngFor="let user of users$ | async"
             type="button"
@@ -46,11 +42,6 @@
         >
             Invite more users
         </button>
-        <span
-            [style.margin-top.rem]="0.5"
-            [style.min-block-size.rem]="2"
-        >
-            Opens a separate app
-        </span>
+        <span class="legal">Opens a separate app</span>
     </footer>
 </ng-template>

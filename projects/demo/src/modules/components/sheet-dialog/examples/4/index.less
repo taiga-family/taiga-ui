@@ -1,3 +1,5 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
 .header {
     position: sticky;
     top: 1.5rem;
@@ -16,4 +18,11 @@
     block-size: 3rem;
     align-items: center;
     gap: 1rem;
+}
+
+.legal {
+    .tui-line-clamp();
+
+    margin-top: 0.5rem;
+    min-block-size: 2rem;
 }
