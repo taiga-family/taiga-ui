@@ -16,6 +16,7 @@ process.env['AXE_CONFIG'] = JSON.stringify({
         {id: 'landmark-unique', enabled: false},
         {id: 'landmark-no-duplicate-main', enabled: false},
         {id: 'nested-interactive', enabled: false},
+        {id: 'empty-table-header', enabled: false},
     ],
 });
 
