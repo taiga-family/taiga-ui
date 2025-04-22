@@ -3,10 +3,9 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiLabel, TuiNotification, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiDataListWrapper} from '@taiga-ui/kit';
+import {TuiAppearance, TuiNotification, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
-import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -17,11 +16,11 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiAvatar,
         TuiCardLarge,
         TuiCell,
+        TuiChevron,
         TuiDataListWrapper,
-        TuiLabel,
         TuiNotification,
-        TuiSelectModule,
-        TuiTextfieldControllerModule,
+        TuiSelect,
+        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',

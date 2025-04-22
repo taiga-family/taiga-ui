@@ -24,14 +24,21 @@
     </button>
 </div>
 
-<label tuiLabel="Inside a dropdown">
-    <tui-select
-        [tuiTextfieldLabelOutside]="true"
-        [valueContent]="content"
-        [(ngModel)]="value"
+<label>
+    Inside a dropdown
+    <tui-textfield
+        tuiChevron
+        [content]="content"
+        [tuiTextfieldCleaner]="false"
     >
+        <input
+            tuiSelect
+            [(ngModel)]="value"
+        />
+
         <tui-data-list-wrapper
-            *tuiDataList
+            *tuiTextfieldDropdown
+            new
             [itemContent]="content"
             [items]="items"
         />
@@ -50,5 +57,5 @@
                 </span>
             </span>
         </ng-template>
-    </tui-select>
+    </tui-textfield>
 </label>
