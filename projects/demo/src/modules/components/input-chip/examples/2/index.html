@@ -2,17 +2,11 @@
     <input
         placeholder="Enter"
         tuiInputChip
-        [chip]="item"
         [(ngModel)]="value"
     />
+
+    <tui-default-chip
+        *tuiTextfieldMultiItem
+        appearance="accent"
+    />
 </tui-textfield>
-
-<div>model: {{ value }}</div>
-
-<ng-template
-    #item
-    let-index="index"
-    let-item
->
-    <div tuiBadge>{{ item.value()[index] }}</div>
-</ng-template>
