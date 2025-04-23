@@ -7,24 +7,11 @@
         <p>Directive that uses masking to fade out overflown content</p>
 
         <tui-doc-example
-            id="basic"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="multiline"
-            heading="Multiline"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="vertical"
-            heading="Vertical"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
     </ng-template>
 
