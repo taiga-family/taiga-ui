@@ -1,0 +1,14 @@
+<tui-textfield multi>
+    <input
+        placeholder="Enter"
+        tuiInputChip
+        [formControl]="control"
+    />
+
+    <tui-default-chip
+        *tuiTextfieldMultiItem="let context"
+        tuiHint="Hello {{ context.item }}"
+        [appearance]="context.item === 'invalid' ? 'error' : 'neutral'"
+        [iconStart]="context.item === 'invalid' ? '@tui.info' : null"
+    />
+</tui-textfield>
