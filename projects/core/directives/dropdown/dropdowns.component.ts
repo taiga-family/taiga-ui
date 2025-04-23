@@ -12,5 +12,6 @@ import {TuiDropdownService} from './dropdown.service';
     template: '<ng-container #viewContainer />',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsPortal(TuiDropdownService)],
+    host: {style: 'position: absolute; width: 100%; top: 0'},
 })
 export class TuiDropdowns extends TuiPortals {}
