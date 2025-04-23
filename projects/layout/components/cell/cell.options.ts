@@ -1,10 +1,20 @@
-import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import type {TuiCellOptions as TuiCellOptionsCore} from '@taiga-ui/core/components/cell';
+import {
+    TUI_CELL_OPTIONS as TUI_CELL_OPTIONS_CORE,
+    tuiCellOptionsProvider as tuiCellOptionsProviderCore,
+} from '@taiga-ui/core/components/cell';
 
-export interface TuiCellOptions {
-    readonly height: 'compact' | 'normal' | 'spacious';
-    readonly size: TuiSizeL | TuiSizeS;
-}
+/**
+ * @deprecated: use TuiCellOptions from @taiga-ui/core
+ */
+export type TuiCellOptions = TuiCellOptionsCore;
 
-export const [TUI_CELL_OPTIONS, tuiCellOptionsProvider] =
-    tuiCreateOptions<TuiCellOptions>({height: 'normal', size: 'l'});
+/**
+ * @deprecated: use TUI_CELL_OPTIONS from @taiga-ui/core
+ */
+export const TUI_CELL_OPTIONS = TUI_CELL_OPTIONS_CORE;
+
+/**
+ * @deprecated: use tuiCellOptionsProvider from @taiga-ui/core
+ */
+export const tuiCellOptionsProvider = tuiCellOptionsProviderCore;
