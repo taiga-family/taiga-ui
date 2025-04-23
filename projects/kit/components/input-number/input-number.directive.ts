@@ -12,9 +12,12 @@ import {
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {CHAR_HYPHEN, CHAR_MINUS, TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement, tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
-import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
+import {
+    TuiTextfieldDirective,
+    TuiWithTextfield,
+} from '@taiga-ui/core/components/textfield';
 import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -37,35 +40,31 @@ const DEFAULT_MAX_LENGTH = 18;
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]':
             'element.maxLength > 0 ? element.maxLength : defaultMaxLength()',
-        '(input)': 'textfieldValue.set(element.value)',
         '(blur)': 'onBlur()',
         '(focus)': 'onFocus()',
     },
 })
 export class TuiInputNumberDirective extends TuiControl<number | null> {
+    private readonly textfield = inject(TuiTextfieldDirective);
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly numberFormat = toSignal(inject(TUI_NUMBER_FORMAT), {
         initialValue: TUI_DEFAULT_NUMBER_FORMAT,
     });
 
+    private readonly formatted = computed(() =>
+        maskitoParseNumber(this.textfield.value(), this.numberFormat().decimalSeparator),
+    );
+
     private readonly precision = computed(() =>
         Number.isNaN(this.numberFormat().precision) ? 2 : this.numberFormat().precision,
     );
 
-    private readonly isIntermediateState = computed(() => {
-        const value = maskitoParseNumber(
-            this.textfieldValue(),
-            this.numberFormat().decimalSeparator,
-        );
-
-        return value < 0 ? value > this.max() : value < this.min();
-    });
+    private readonly unfinished = computed((value = this.formatted()) =>
+        value < 0 ? value > this.max() : value < this.min(),
+    );
 
     protected readonly onChangeEffect = effect(() => {
-        const value = maskitoParseNumber(
-            this.textfieldValue(),
-            this.numberFormat().decimalSeparator,
-        );
+        const value = this.formatted();
 
         if (Number.isNaN(value)) {
             this.onChange(null);
@@ -74,7 +73,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         }
 
         if (
-            this.isIntermediateState() ||
+            this.unfinished() ||
             value < this.min() ||
             value > this.max() ||
             this.value() === value
@@ -87,7 +86,6 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
 
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly element = tuiInjectElement<HTMLInputElement>();
-    protected readonly textfieldValue = tuiValueBinding();
 
     protected readonly inputMode = computed(() => {
         if (this.isIOS && this.min() < 0) {
@@ -101,7 +99,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     protected readonly defaultMaxLength = computed(() => {
         const {decimalSeparator, thousandSeparator} = this.numberFormat();
         const decimalPart =
-            !!this.precision() && this.textfieldValue().includes(decimalSeparator);
+            !!this.precision() && this.textfield.value().includes(decimalSeparator);
         const precision = decimalPart ? Math.min(this.precision() + 1, 20) : 0;
         const takeThousand = thousandSeparator.repeat(5).length;
 
@@ -155,30 +153,25 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     }
 
     public override writeValue(value: number | null): void {
-        super.writeValue(Number.isNaN(value) ? null : value);
+        super.writeValue(value);
         this.setValue(this.value());
     }
 
     public setValue(value: number | null): void {
-        this.textfieldValue.set(this.formatNumber(value));
+        this.textfield.value.set(this.formatNumber(value));
     }
 
     protected onBlur(): void {
         this.onTouched();
 
-        if (!this.isIntermediateState()) {
+        if (!this.unfinished()) {
             this.setValue(this.value());
         }
     }
 
     protected onFocus(): void {
-        const value = maskitoParseNumber(
-            this.textfieldValue(),
-            this.numberFormat().decimalSeparator,
-        );
-
-        if (Number.isNaN(value) && !this.readOnly()) {
-            this.textfieldValue.set(this.prefix() + this.postfix());
+        if (Number.isNaN(this.formatted()) && !this.readOnly()) {
+            this.textfield.value.set(this.prefix() + this.postfix());
         }
     }
 

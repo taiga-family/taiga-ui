@@ -1,6 +1,6 @@
-import {computed, Directive, inject} from '@angular/core';
+import {Directive, effect, inject} from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
+import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
@@ -8,6 +8,7 @@ import {
     tuiAsAuxiliary,
     tuiAsTextfieldAccessor,
     TuiSelectLike,
+    TuiTextfieldDirective,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownEnabled, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
@@ -36,15 +37,17 @@ export class TuiSelectDirective<T>
     extends TuiControl<T | null>
     implements TuiTextfieldAccessor<T>
 {
+    private readonly textfield = inject(TuiTextfieldDirective);
     private readonly open = tuiDropdownOpen();
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
-    protected readonly stringified = tuiValueBinding(
-        computed((value = this.value()) =>
-            tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '',
-        ),
-    );
+    protected readonly valueEffect = effect(() => {
+        const value = this.value();
+        const string = tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '';
+
+        this.textfield.value.set(string);
+    }, TUI_ALLOW_SIGNAL_WRITES);
 
     public setValue(value: T): void {
         this.onChange(value);

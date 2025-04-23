@@ -19,10 +19,10 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiControlValue, tuiQueryListChanges} from '@taiga-ui/cdk/observables';
+import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -45,7 +45,7 @@ import {TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {fromEvent, map, merge, ReplaySubject, startWith, switchMap} from 'rxjs';
+import {ReplaySubject, startWith, switchMap} from 'rxjs';
 
 import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -92,6 +92,9 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     private readonly open = tuiDropdownOpen();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
+    private readonly inputQuery = signal<ElementRef<HTMLInputElement> | undefined>(
+        undefined,
+    );
 
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
     protected readonly label?: ElementRef<HTMLElement>;
@@ -124,6 +127,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     @ContentChild(TUI_TEXTFIELD_ACCESSOR, {descendants: true})
     public readonly accessor?: TuiTextfieldAccessor<T>;
 
+    // TODO: Replace with signal query when Angular is updated v5
     @ContentChild(forwardRef(() => TuiTextfieldDirective), {
         read: ElementRef,
         static: true,
@@ -136,15 +140,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     public readonly focused = computed(() => this.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     public readonly el = tuiInjectElement();
-    public readonly value = toSignal(
-        merge(
-            fromEvent(tuiInjectElement(), 'input'),
-            this.contentReady$.pipe(
-                switchMap(() => tuiControlValue(this.control ?? null)),
-            ),
-        ).pipe(map(() => this.input?.nativeElement.value ?? '')),
-        {initialValue: ''},
-    );
+    public readonly value = tuiValue(this.inputQuery);
 
     // TODO: Refactor to signal queries when Angular is updated
     public readonly auxiliaries = toSignal<readonly object[]>(
@@ -170,6 +166,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
     public ngAfterContentInit(): void {
         this.contentReady$.next(true);
+        this.inputQuery.set(this.input);
     }
 
     public handleOption(option: T): void {

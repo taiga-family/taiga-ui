@@ -15,4 +15,5 @@ export * from './is-inside-iframe';
 export * from './is-node-in';
 export * from './point-to-client-rect';
 export * from './retarget-boundary-crossing';
+export * from './value';
 export * from './value-binding';

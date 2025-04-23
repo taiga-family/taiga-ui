@@ -4,10 +4,11 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement, tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,
+    TuiTextfieldDirective,
     tuiTextfieldIconBinding,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
@@ -31,19 +32,18 @@ import {TUI_INPUT_DATE_OPTIONS, TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens'
     },
 })
 export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
+    private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER));
     private readonly open = tuiDropdownOpen();
-    private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER), {
-        initialValue: () => '',
-    });
 
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.nativePickerEnabled && this.interactive()),
     );
 
-    protected readonly textfieldValue = tuiValueBinding(
-        computed(() => this.formatter()(this.value())),
-    );
+    protected readonly valueEffect = effect(() => {
+        this.textfield.value.set(this.formatter()?.(this.value()) || '');
+    }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly calendarSync = effect(() => {
         this.calendar()?.value.set(this.value());

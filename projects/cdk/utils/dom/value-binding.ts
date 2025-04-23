@@ -12,6 +12,7 @@ export function tuiValueBinding(value?: Signal<string>): Signal<string>;
  * `TuiTextfieldDirective` has host binding which depends on native input's value.
  * Host bindings of the host directives are re-calculated BEFORE component's ones –
  * native input's value should be updated SYNCHRONOUSLY before next change detection iteration.
+ * @deprecated
  */
 export function tuiValueBinding(
     value: Signal<string> = signal(tuiInjectElement<HTMLInputElement>().value || ''),

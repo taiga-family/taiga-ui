@@ -9,11 +9,11 @@
             tuiIconButton
             type="button"
             class="t-button"
-            [appearance]="textfieldOptions.appearance()"
-            [disabled]="!inputNumber.interactive() || inputNumber.value()! >= inputNumber.max()"
+            [appearance]="appearance()"
+            [disabled]="!input.interactive() || value() >= input.max()"
             [iconStart]="options.icons.increase"
             (click.prevent)="onStep(step())"
-            (mousedown.prevent)="element.focus()"
+            (mousedown.prevent)="el.focus()"
         >
             +
         </button>
@@ -24,11 +24,11 @@
             tuiIconButton
             type="button"
             class="t-button"
-            [appearance]="textfieldOptions.appearance()"
-            [disabled]="!inputNumber.interactive() || inputNumber.value()! <= inputNumber.min()"
+            [appearance]="appearance()"
+            [disabled]="!input.interactive() || value() <= input.min()"
             [iconStart]="options.icons.decrease"
             (click.prevent)="onStep(-step())"
-            (mousedown.prevent)="element.focus()"
+            (mousedown.prevent)="el.focus()"
         >
             -
         </button>
