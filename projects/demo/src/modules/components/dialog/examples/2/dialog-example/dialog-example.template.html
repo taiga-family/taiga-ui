@@ -11,18 +11,23 @@
     Type a name
 </tui-input>
 
-<tui-select
+<tui-textfield
+    tuiChevron
     tuiTextfieldSize="m"
     class="tui-space_top-3 tui-space_bottom-5"
-    [tuiTextfieldLabelOutside]="true"
-    [(ngModel)]="value"
 >
-    Select a sum
+    <input
+        placeholder="Select a sum"
+        tuiSelect
+        [(ngModel)]="value"
+    />
+
     <tui-data-list-wrapper
-        *tuiDataList
+        *tuiTextfieldDropdown
+        new
         [items]="items"
     />
-</tui-select>
+</tui-textfield>
 
 <input
     tuiSlider

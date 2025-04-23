@@ -86,13 +86,23 @@
 
     <fieldset>
         <div class="stack">
-            <tui-select formControlName="personValue">
-                Choose a person
+            <tui-textfield
+                tuiChevron
+                [tuiTextfieldCleaner]="false"
+            >
+                <label tuiLabel>Choose a person</label>
+
+                <input
+                    formControlName="personValue"
+                    tuiSelect
+                />
+
                 <tui-data-list-wrapper
-                    *tuiDataList
+                    *tuiTextfieldDropdown
+                    new
                     [items]="persons"
                 />
-            </tui-select>
+            </tui-textfield>
             <tui-error
                 formControlName="personValue"
                 [error]="[] | tuiFieldError | async"

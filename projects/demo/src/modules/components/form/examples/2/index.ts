@@ -16,11 +16,13 @@ import {
 import {
     TuiBlock,
     TuiCheckbox,
+    TuiChevron,
     TuiDataListWrapper,
     TuiFieldErrorPipe,
     TuiInputNumber,
     TuiPassword,
     TuiRadio,
+    TuiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
@@ -30,7 +32,6 @@ import {
     TuiInputPhoneModule,
     TuiInputSliderModule,
     TuiInputTimeModule,
-    TuiSelectModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
@@ -63,6 +64,7 @@ class Account {
         TuiBlock,
         TuiButton,
         TuiCheckbox,
+        TuiChevron,
         TuiCurrencyPipe,
         TuiDataListWrapper,
         TuiError,
@@ -80,7 +82,7 @@ class Account {
         TuiLabel,
         TuiPassword,
         TuiRadio,
-        TuiSelectModule,
+        TuiSelect,
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,

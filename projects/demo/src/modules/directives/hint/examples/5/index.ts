@@ -2,20 +2,32 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHint, TuiLink} from '@taiga-ui/core';
-import {TuiFilterByInputPipe, TuiStringifyContentPipe} from '@taiga-ui/kit';
-import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiHint, TuiIcon, TuiLink, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiFilterByInputPipe,
+    TuiSelect,
+    TuiStringifyContentPipe,
+    TuiTooltip,
+} from '@taiga-ui/kit';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        TuiChevron,
+        TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiHint,
+        TuiIcon,
         TuiLink,
-        TuiSelectModule,
+        TuiSelect,
         TuiStringifyContentPipe,
+        TuiTextfield,
         TuiTextfieldControllerModule,
+        TuiTooltip,
     ],
     templateUrl: './index.html',
     encapsulation,
