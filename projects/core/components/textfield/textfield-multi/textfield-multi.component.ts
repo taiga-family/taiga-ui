@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import {type AfterContentInit, ViewChild} from '@angular/core';
+import type {AfterContentInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,6 +7,8 @@ import {
     ElementRef,
     forwardRef,
     Input,
+    TemplateRef,
+    ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
@@ -24,8 +26,9 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiTextfieldComponent} from '../textfield.component';
-import {TuiTextfieldMultiDirective} from './textfield-multi.directive';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
+import {TuiTextfieldMultiDirective} from './textfield-multi.directive';
+import {TuiTextfieldMultiItem} from './textfield-multi-item.directive';
 
 @Component({
     standalone: true,
@@ -64,6 +67,9 @@ export class TuiTextfieldMultiComponent<T>
 
     @ViewChild('container', {read: ElementRef, static: true})
     public readonly container?: ElementRef<HTMLElement>;
+
+    @ContentChild(TuiTextfieldMultiItem, {read: TemplateRef})
+    public readonly item?: TemplateRef<unknown>;
 
     @Input()
     public rows = 100;

@@ -12,3 +12,4 @@ export * from './textfield-icon';
 export * from './select.directive';
 export * from './textfield-multi/textfield-multi.component';
 export * from './textfield-multi/textfield-multi.directive';
+export * from './textfield-multi/textfield-multi-item.directive';

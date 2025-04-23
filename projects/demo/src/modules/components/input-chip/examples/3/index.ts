@@ -1,15 +1,17 @@
 import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextfield, TuiTextfieldMultiItem} from '@taiga-ui/core';
+import {TuiHintDirective, TuiTextfield, TuiTextfieldMultiItem} from '@taiga-ui/core';
 import {TuiDefaultChip, TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         FormsModule,
+        ReactiveFormsModule,
         TuiDefaultChip,
+        TuiHintDirective,
         TuiInputChip,
         TuiTextfield,
         TuiTextfieldMultiItem,
@@ -19,5 +21,5 @@ import {TuiDefaultChip, TuiInputChip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected value: string[] = ['say', 'my', 'name'];
+    public readonly control = new FormControl(['invalid', 'value']);
 }
