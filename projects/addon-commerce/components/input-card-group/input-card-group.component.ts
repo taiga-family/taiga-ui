@@ -220,7 +220,7 @@ export class TuiInputCardGroup
 
     public ngAfterViewInit(): void {
         // Enabling transitions
-        setTimeout(() => this.el.style.removeProperty('--tui-duration'));
+        setTimeout(() => this.el.style.removeProperty('--tui-duration'), 500);
     }
 
     public override writeValue(value: TuiCard | null): void {

@@ -1,0 +1,59 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes open {
+    from {
+        block-size: 0;
+    }
+
+    to {
+        block-size: var(--t-height);
+    }
+}
+
+@keyframes close {
+    from {
+        block-size: var(--t-height);
+    }
+
+    to {
+        block-size: 0;
+    }
+}
+
+:host {
+    display: contents;
+
+    &:not(._visible) {
+        --tui-duration: ~'0ms';
+    }
+}
+
+.t-content {
+    display: none;
+
+    &_open {
+        display: contents;
+
+        ::ng-deep tr {
+            animation: fade-in var(--tui-duration);
+        }
+    }
+}
+
+.t-filler {
+    animation: close calc(var(--tui-duration) + 1ms);
+
+    &_open {
+        animation: open calc(var(--tui-duration) + 1ms);
+    }
+}
