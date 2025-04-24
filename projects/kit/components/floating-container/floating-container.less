@@ -1,0 +1,70 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+/**
+ * @name Floating
+ * @selector [tuiFloatingContainer]
+ *
+ * @description
+ * Container for creating sticky footers
+ *
+ * @example
+ * <footer tuiFloatingContainer>
+ *   <button
+        type="button"
+        tuiButton
+    >
+        Close
+    </button>
+ * </footer>
+ *
+ * @see-also
+ * Block, SheetDialog
+ */
+[tuiFloatingContainer] {
+    .transition(bottom);
+
+    position: sticky;
+    bottom: calc(100 * var(--tui-viewport-vh) - var(--tui-viewport-height) - var(--tui-viewport-y));
+    z-index: 1;
+    margin-top: 1rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    text-align: center;
+    font: var(--tui-font-text-ui-s);
+    color: var(--tui-text-secondary);
+
+    &,
+    & > tui-elastic-container > .t-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    // elements with playing :leave animation are absolute positioning, therefore they need to be fullwidth stretched
+    & > *,
+    & > tui-elastic-container > .t-wrapper > * {
+        inline-size: 100%;
+    }
+
+    // when only button in container margin differs - (24px vs 16px), therefore need some workaround to correctly works when it's animating
+    &:has(> *:only-child:not(tui-elastic-container)),
+    &:has(*.ng-animating:first-child ~ .ng-animating:last-child) {
+        padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+    }
+
+    &::before {
+        .fullsize(absolute, inset);
+        .transition(background);
+
+        content: '';
+        position: absolute;
+        left: -1rem;
+        right: -1rem;
+        z-index: -1;
+        background: var(--t-background, var(--tui-background-elevation-1));
+        mask-image: linear-gradient(180deg, transparent, black 2.5rem);
+    }
+}
+
+tui-sheet-dialog [tuiFloatingContainer] {
+    margin-bottom: calc(-1.5rem - env(safe-area-inset-bottom));
+}

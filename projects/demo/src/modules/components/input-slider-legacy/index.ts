@@ -38,6 +38,13 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
 export default class PageComponent extends AbstractExampleTuiControl {
     protected readonly routes = DemoRoute;
     protected readonly minVariants: readonly number[] = [0, 1, 5, 7.77, -10];
+    protected readonly segmentsVariants: Array<number[] | number> = [
+        1,
+        5,
+        3,
+        [0.2, 0.5],
+        [0.1, 0.3],
+    ];
 
     protected min = this.minVariants[0]!;
 
@@ -45,7 +52,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
     protected max = this.maxVariants[0]!;
 
-    protected segments = 1;
+    protected segments: number[] | number = 1;
 
     protected steps = 0;
 

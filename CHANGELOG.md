@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.34.0](https://github.com/taiga-family/taiga-ui/compare/v4.33.0...v4.34.0) (2025-04-21)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCardGroup` fix autofill issues
+  ([#10830](https://github.com/taiga-family/taiga-ui/issues/10830))
+  ([c15e530](https://github.com/taiga-family/taiga-ui/commit/c15e5308255182005a1b0f40158bab7989a59d22))
+- **addon-mobile:** support block status without image ([#10876](https://github.com/taiga-family/taiga-ui/issues/10876))
+  ([d305f15](https://github.com/taiga-family/taiga-ui/commit/d305f153c605e98daad6ddf31921a7ba65d6b25d))
+- **core:** `Link` fix `Chevron` not rotating ([#10873](https://github.com/taiga-family/taiga-ui/issues/10873))
+  ([11c644f](https://github.com/taiga-family/taiga-ui/commit/11c644f98f410a9457729e4619c2bf9e9768fa9d))
+- **core:** `Textfield` fix leaking unencapsulated styles
+  ([#10847](https://github.com/taiga-family/taiga-ui/issues/10847))
+  ([2355cfd](https://github.com/taiga-family/taiga-ui/commit/2355cfdb375e6afaee76573d4274f6ad4e6b8c31))
+- **kit:** `InputSlider` throws `not statically analyzable` error
+  ([#10867](https://github.com/taiga-family/taiga-ui/issues/10867))
+  ([00eee52](https://github.com/taiga-family/taiga-ui/commit/00eee5253256d482aedbeda98dff08b04773bfca))
+- **kit:** `Range` has change detection problems with active state of thumb
+  ([#10859](https://github.com/taiga-family/taiga-ui/issues/10859))
+  ([b6f3eae](https://github.com/taiga-family/taiga-ui/commit/b6f3eae1c61f5f0902ae8e7fd7875fcea09ccea1))
+- **kit:** `Select` supports dark theme for native picker in Windows OS
+  ([#10851](https://github.com/taiga-family/taiga-ui/issues/10851))
+  ([f5cbf76](https://github.com/taiga-family/taiga-ui/commit/f5cbf76651d1cf8aca09f1a3e7867e7b72c54ccd))
+- **kit:** `Textarea` fix change detection issues ([#10869](https://github.com/taiga-family/taiga-ui/issues/10869))
+  ([d78e58e](https://github.com/taiga-family/taiga-ui/commit/d78e58e79a9d173d380feb5c70413713e2284426))
+- **legacy:** return possibility to use any data type in `TUI_DATE_TIME_VALUE_TRANSFORMER`
+  ([#10803](https://github.com/taiga-family/taiga-ui/issues/10803))
+  ([6405d59](https://github.com/taiga-family/taiga-ui/commit/6405d5975a296bc31f49f041b222e54fc7908722))
+
+### 🚀 Features
+
+- **core:** update `tuiLink` appearance by spec ([#10825](https://github.com/taiga-family/taiga-ui/issues/10825))
+  ([8f2850a](https://github.com/taiga-family/taiga-ui/commit/8f2850af42c44aac6f9473bad50f976027e26528))
+- **kit:** `FloatingContainer` add new directive ([#10541](https://github.com/taiga-family/taiga-ui/issues/10541))
+  ([52abe54](https://github.com/taiga-family/taiga-ui/commit/52abe54af915565b9ea93a1c1ccae04ab7f44b01))
+- **kit:** `Slider` supports not equidistant `segments` order
+  ([#10746](https://github.com/taiga-family/taiga-ui/issues/10746))
+  ([a65a5bd](https://github.com/taiga-family/taiga-ui/commit/a65a5bd84db65c5f066e826b18f67766c668cfcd))
+- **layout:** `InputSearch` add manual open control ([#10872](https://github.com/taiga-family/taiga-ui/issues/10872))
+  ([781d6ae](https://github.com/taiga-family/taiga-ui/commit/781d6ae2fa1b45008711cf505e455b48a592b5b6))
+
 ## [4.33.0](https://github.com/taiga-family/taiga-ui/compare/v4.32.0...v4.33.0) (2025-04-14)
 
 ### 🚀 Features

@@ -5,11 +5,10 @@
     type="button"
     class="link"
     [iconStart]="ascending ? '@tui.chevron-up' : '@tui.chevron-down'"
+    [textContent]="primary"
     [tuiDropdown]="dropdown"
     [(tuiDropdownOpen)]="open"
->
-    {{ primary }}
-</button>
+></button>
 
 <ng-template #dropdown>
     <tui-data-list>

@@ -13,7 +13,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/classes';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
@@ -92,7 +91,6 @@ export class TuiDropdownDirective
                 : content;
     }
 
-    @tuiPure
     public get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
     }

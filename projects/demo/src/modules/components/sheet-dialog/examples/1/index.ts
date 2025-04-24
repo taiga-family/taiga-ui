@@ -10,7 +10,6 @@ import {Subject, switchMap} from 'rxjs';
     standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

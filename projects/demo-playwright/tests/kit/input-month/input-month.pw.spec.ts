@@ -83,6 +83,48 @@ describe('InputMonth', () => {
                 await expect(inputMonth.textfield).toHaveValue('');
                 await expect(inputMonth.calendar).toBeAttached();
             });
+
+            test('opens dropdown on click on calendar icon (disabled=false&readOnly=false)', async ({
+                page,
+            }) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputMonth}/API?disabled=false&readOnly=false`,
+                );
+
+                await expect(inputMonth.calendar).not.toBeAttached();
+
+                await inputMonth.clickOnIcon();
+                await expect(inputMonth.calendar).toBeAttached();
+            });
+
+            test('does NOT open dropdown on click on calendar icon for disabled input', async ({
+                page,
+            }) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputMonth}/API?disabled=true&readOnly=false`,
+                );
+
+                await expect(inputMonth.calendar).not.toBeAttached();
+
+                await inputMonth.clickOnIcon();
+                await expect(inputMonth.calendar).not.toBeAttached();
+            });
+
+            test('does NOT open dropdown on click on calendar icon for readonly input', async ({
+                page,
+            }) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputMonth}/API?disabled=false&readOnly=true`,
+                );
+
+                await expect(inputMonth.calendar).not.toBeAttached();
+
+                await inputMonth.clickOnIcon();
+                await expect(inputMonth.calendar).not.toBeAttached();
+            });
         });
     });
 

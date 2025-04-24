@@ -10,20 +10,24 @@
     />
 </tui-combo-box>
 
-<tui-select
+<tui-textfield
+    tuiChevron
+    tuiDropdownMobile="Select user"
     class="tui-space_vertical-4"
-    [tuiDropdownMobile]="'Select user'"
-    [tuiTextfieldLabelOutside]="true"
-    [valueContent]="template"
-    [(ngModel)]="user"
+    [content]="template"
 >
-    Select user
+    <input
+        placeholder="Select user"
+        tuiSelect
+        [(ngModel)]="user"
+    />
     <tui-data-list-wrapper
-        *tuiDataList
+        *tuiTextfieldDropdown
+        new
         [itemContent]="template"
         [items]="users"
     />
-</tui-select>
+</tui-textfield>
 
 <tui-multi-select
     tuiDropdownMobile
@@ -55,7 +59,7 @@
     </ng-container>
 </tui-multi-select>
 
-<tui-textfield>
+<tui-textfield class="tui-space_vertical-4">
     <label tuiLabel>Sum</label>
     <input
         prefix="$"
@@ -71,7 +75,7 @@
     <span tuiCell>
         <tui-avatar [src]="user.url" />
         <span tuiTitle>
-            {{ user.name }}
+            <span tuiFade>{{ user.name }}</span>
             <span tuiSubtitle>
                 {{ user.balance | tuiAmount: '$' : 'left' | async }}
             </span>

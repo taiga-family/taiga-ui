@@ -2,10 +2,11 @@ import type {FactoryProvider} from '@angular/core';
 import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 
+// TODO: remove in v5
 export interface TuiLinkOptions extends TuiAppearanceOptions {
     /**
      * @deprecated: use on host
-     * [style.text-decoration-style]="'dashed'"
+     * [style.text-decoration-line]="'underline'"
      */
     readonly pseudo: boolean;
 }

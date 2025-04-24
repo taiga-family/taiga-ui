@@ -8,7 +8,7 @@
 
 <ng-template
     [tuiSheetDialog]="open"
-    [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset}"
+    [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset, fullscreen: true}"
     (tuiSheetDialogChange)="toggle($event)"
 >
     <header class="header">
@@ -22,7 +22,6 @@
     </header>
     <div
         class="container"
-        [style.height]="height$ | async"
         (tuiSwipe)="onSwipe($event.direction)"
     >
         <button
@@ -39,7 +38,7 @@
             {{ user }}
         </button>
     </div>
-    <footer class="footer">
+    <footer tuiFloatingContainer>
         <button
             tuiButton
             type="button"
@@ -47,6 +46,11 @@
         >
             Invite more users
         </button>
-        Opens a separate app
+        <span
+            [style.margin-top.rem]="0.5"
+            [style.min-block-size.rem]="2"
+        >
+            Opens a separate app
+        </span>
     </footer>
 </ng-template>

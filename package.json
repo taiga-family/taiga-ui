@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "4.33.0",
+    "version": "4.34.0",
     "private": true,
     "description": "Taiga UI is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
@@ -121,7 +121,7 @@
         "@taiga-ui/commitlint-config": "0.272.0",
         "@taiga-ui/cspell-config": "0.272.0",
         "@taiga-ui/design-tokens": "0.207.0",
-        "@taiga-ui/eslint-plugin-experience-next": "0.272.0",
+        "@taiga-ui/eslint-plugin-experience-next": "0.275.0",
         "@taiga-ui/event-plugins": "4.5.1",
         "@taiga-ui/jest-config": "0.272.0",
         "@taiga-ui/prettier-config": "0.272.0",
@@ -143,7 +143,7 @@
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",
         "typescript": "5.0.4",
-        "webpack": "5.99.5"
+        "webpack": "5.99.6"
     },
     "engines": {
         "node": ">= 20",

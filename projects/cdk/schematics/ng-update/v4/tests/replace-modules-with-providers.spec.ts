@@ -41,19 +41,19 @@ const MODULE_AFTER = `import { newProvider } from "@namespace/new";
 import { tuiProvideMobileCalendar } from "@taiga-ui/addon-mobile";
 import { TuiAvatar } from "@taiga-ui/kit";
 import { TBANK_PROVIDERS } from "@taiga-ui/proprietary";
+import { provideEventPlugins } from "@taiga-ui/event-plugins";
 import { TuiRoot } from "@taiga-ui/core";
-import { NG_EVENT_PLUGINS } from '@taiga-ui/event-plugins';
 
 @NgModule({
     imports: [TuiRoot, TuiAvatar],
-    providers: [Provider, NG_EVENT_PLUGINS, TBANK_PROVIDERS, tuiProvideMobileCalendar(), newProvider]
+    providers: [Provider, provideEventPlugins(), TBANK_PROVIDERS, tuiProvideMobileCalendar(), newProvider]
 })
 export class Test1 {
 }
 
 @NgModule({
     imports: [],
-    providers: [Provider, NG_EVENT_PLUGINS]
+    providers: [Provider, provideEventPlugins()]
 })
 export class Test2 {
 }
@@ -98,7 +98,7 @@ export class Test {
 const COMPONENT_AFTER = `import { newProvider } from "@namespace/new";
 import { tuiProvideMobileCalendar } from "@taiga-ui/addon-mobile";
 import { TBANK_PROVIDERS } from "@taiga-ui/proprietary";
-import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
+import { provideEventPlugins } from "@taiga-ui/event-plugins";
 import { TuiRoot, TuiAlert, TuiDialog } from "@taiga-ui/core";
 import { TuiPush, TuiPreview } from "@taiga-ui/kit";
 
@@ -117,7 +117,7 @@ import { TuiPush, TuiPreview } from "@taiga-ui/kit";
         importProvidersFrom(
             SomeModule
         ),
-        NG_EVENT_PLUGINS,
+        provideEventPlugins(),
         TBANK_PROVIDERS,
         tuiProvideMobileCalendar(),
         newProvider

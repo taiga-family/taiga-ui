@@ -11,6 +11,8 @@ import {TuiFade} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
+    protected readonly examples = ['Basic', 'Multiline', 'Vertical', 'Hyphens'];
+
     protected lineHeight = '100%';
     protected size = '1.5em';
     protected offset = '0em';
