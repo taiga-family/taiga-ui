@@ -32,6 +32,10 @@
 
 :host {
     display: contents;
+
+    &:not(._visible) {
+        --tui-duration: ~'0ms';
+    }
 }
 
 .t-content {
