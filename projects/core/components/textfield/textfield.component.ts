@@ -35,6 +35,7 @@ import {TuiLabel} from '@taiga-ui/core/components/label';
 import {
     TuiDropdownDirective,
     TuiDropdownFixed,
+    TuiDropdownOpen,
     tuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
@@ -87,6 +88,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
     private readonly dropdown = inject(TuiDropdownDirective);
+    private readonly dropdownOpen = inject(TuiDropdownOpen);
     private readonly open = tuiDropdownOpen();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
@@ -192,7 +194,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
         event.preventDefault();
         this.input?.nativeElement.focus({preventScroll: true});
 
-        if (this.dropdown.content) {
+        if (this.dropdownOpen.tuiDropdownEnabled && this.dropdown.content) {
             this.open.update((x) => !x);
         }
     }
