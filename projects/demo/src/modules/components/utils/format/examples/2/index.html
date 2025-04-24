@@ -2,15 +2,22 @@
 
 <form [formGroup]="parametersForm">
     <div class="parameters">
-        <tui-select
-            formControlName="currency"
+        <tui-textfield
+            tuiChevron
             class="tui-space_top-2"
         >
-            currency
+            <label tuiLabel>currency</label>
+
+            <input
+                formControlName="currency"
+                tuiSelect
+            />
+
             <tui-data-list-wrapper
-                *tuiDataList
+                *tuiTextfieldDropdown
+                new
                 [items]="items"
             />
-        </tui-select>
+        </tui-textfield>
     </div>
 </form>

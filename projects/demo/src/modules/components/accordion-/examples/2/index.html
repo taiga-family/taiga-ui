@@ -39,16 +39,23 @@
                         tuiTextfieldLegacy
                     />
                 </tui-input>
-                <tui-select
-                    formControlName="accounts"
+                <tui-textfield
+                    tuiChevron
                     class="input"
                 >
-                    Choose an account
+                    <label tuiLabel>Choose an account</label>
+
+                    <input
+                        formControlName="accounts"
+                        tuiSelect
+                    />
+
                     <tui-data-list-wrapper
-                        *tuiDataList
+                        *tuiTextfieldDropdown
+                        new
                         [items]="accounts"
                     />
-                </tui-select>
+                </tui-textfield>
                 <div class="buttons">
                     <button
                         size="l"
@@ -107,16 +114,23 @@
                         tuiTextfieldLegacy
                     />
                 </tui-input>
-                <tui-select
-                    formControlName="accounts"
+                <tui-textfield
+                    tuiChevron
                     class="input"
                 >
-                    Choose an account
+                    <label tuiLabel>Choose an account</label>
+
+                    <input
+                        formControlName="accounts"
+                        tuiSelect
+                    />
+
                     <tui-data-list-wrapper
-                        *tuiDataList
+                        *tuiTextfieldDropdown
+                        new
                         [items]="accounts"
                     />
-                </tui-select>
+                </tui-textfield>
                 <div class="buttons">
                     <button
                         size="l"
@@ -175,16 +189,23 @@
                         tuiTextfieldLegacy
                     />
                 </tui-input>
-                <tui-select
-                    formControlName="accounts"
+                <tui-textfield
+                    tuiChevron
                     class="input"
                 >
-                    Choose an account
+                    <label tuiLabel>Choose an account</label>
+
+                    <input
+                        formControlName="accounts"
+                        tuiSelect
+                    />
+
                     <tui-data-list-wrapper
-                        *tuiDataList
+                        *tuiTextfieldDropdown
+                        new
                         [items]="accounts"
                     />
-                </tui-select>
+                </tui-textfield>
                 <div class="buttons">
                     <button
                         size="l"

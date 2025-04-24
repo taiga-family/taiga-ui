@@ -8,16 +8,24 @@
     Dropdown hover
     <ng-template #dropdown>
         <div [style.padding]="'0 1rem'">
-            <tui-select
+            <tui-textfield
+                tuiChevron
                 class="margin"
-                [formControl]="selected"
+                [tuiTextfieldCleaner]="false"
             >
-                Nested select
+                <label tuiLabel>Nested select</label>
+
+                <input
+                    tuiSelect
+                    [formControl]="selected"
+                />
+
                 <tui-data-list-wrapper
-                    *tuiDataList
+                    *tuiTextfieldDropdown
+                    new
                     [items]="selectItems"
                 />
-            </tui-select>
+            </tui-textfield>
 
             <p>
                 <button

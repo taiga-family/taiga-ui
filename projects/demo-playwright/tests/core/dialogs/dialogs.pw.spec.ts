@@ -56,7 +56,9 @@ test.describe('Dialogs', () => {
                     .soft(page)
                     .toHaveScreenshot(`02-dialogs-level-1-${width}x${height}.png`);
 
-                await page.locator('tui-dialog button').nth(1).click();
+                await page
+                    .locator('tui-dialog button', {hasText: 'Show one more dialog'})
+                    .click();
 
                 await expect
                     .soft(page)
