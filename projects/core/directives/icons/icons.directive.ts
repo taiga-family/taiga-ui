@@ -4,6 +4,7 @@ import {
     Directive,
     inject,
     Input,
+    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
@@ -32,18 +33,36 @@ class TuiIconsStyles {}
     standalone: true,
     host: {
         tuiIcons: '',
-        '[style.--t-icon-start]':
-            'iconStart ? "url(" + resolver(iconStart.toString()) + ")" : null',
-        '[style.--t-icon-end]': 'iconEnd ? "url(" + resolver(iconEnd) + ")" : null',
+        '[style.--t-icon-start]': 'resolve(iconStart())',
+        '[style.--t-icon-end]': 'resolve(iconEnd())',
     },
 })
 export class TuiIcons {
+    private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
+
     protected readonly nothing = tuiWithStyles(TuiIconsStyles);
-    protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
-    @Input()
-    public iconStart: Icon = inject(TUI_ICON_START, {self: true, optional: true}) || '';
+    public readonly iconStart = signal<Icon>(
+        inject(TUI_ICON_START, {self: true, optional: true}) || '',
+    );
 
-    @Input()
-    public iconEnd = inject(TUI_ICON_END, {self: true, optional: true}) || '';
+    public readonly iconEnd = signal<string>(
+        inject(TUI_ICON_END, {self: true, optional: true}) || '',
+    );
+
+    // TODO(v5): use signal inputs
+    @Input('iconStart')
+    public set iconStartSetter(x: Icon) {
+        this.iconStart.set(x);
+    }
+
+    // TODO(v5): use signal inputs
+    @Input('iconEnd')
+    public set iconEndSetter(x: string) {
+        this.iconEnd.set(x);
+    }
+
+    protected resolve(icon: Icon): string | null {
+        return icon ? `url(${this.resolver(icon.toString())})` : null;
+    }
 }

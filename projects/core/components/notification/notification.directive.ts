@@ -74,8 +74,8 @@ export class TuiNotification implements OnChanges, OnInit {
     }
 
     private refresh(): void {
-        this.icons.iconStart = tuiIsString(this.icon)
-            ? this.icon
-            : this.icon(this.appearance);
+        this.icons.iconStart.set(
+            tuiIsString(this.icon) ? this.icon : this.icon(this.appearance),
+        );
     }
 }
