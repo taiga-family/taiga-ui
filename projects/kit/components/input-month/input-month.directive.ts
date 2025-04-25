@@ -69,6 +69,6 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
 
     protected clear(): void {
         this.onChange(null);
-        this.open.set(true);
+        this.open.set(this.dropdownEnabled());
     }
 }

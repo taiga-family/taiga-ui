@@ -8,6 +8,8 @@ import {
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
+import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
+
 const {describe, beforeEach} = test;
 
 describe('InputMonth', () => {
@@ -124,6 +126,39 @@ describe('InputMonth', () => {
 
                 await inputMonth.clickOnIcon();
                 await expect(inputMonth.calendar).not.toBeAttached();
+            });
+
+            describe('with enabled native picker', () => {
+                test.use(TUI_PLAYWRIGHT_MOBILE);
+
+                beforeEach(async ({page}) => {
+                    await tuiGoto(page, DemoRoute.InputMonth);
+                    example = new TuiDocumentationPagePO(page).getExample('#native');
+                    inputMonth = new TuiInputMonthPO(
+                        example.locator('tui-textfield:has([tuiInputMonth])'),
+                    );
+                });
+
+                test('does NOT open desktop dropdown on click', async () => {
+                    await inputMonth.host.click();
+                    await expect(inputMonth.calendar).not.toBeAttached();
+                });
+
+                test('does NOT open desktop dropdown on cleaner click', async () => {
+                    await inputMonth.host.click();
+                    await inputMonth.nativePicker.fill('2025-04');
+                    await expect(inputMonth.textfield).toHaveValue('April 2025');
+                    await expect(inputMonth.calendar).not.toBeAttached();
+
+                    await inputMonth.cleaner.click();
+                    await expect(inputMonth.textfield).toHaveValue('');
+                    await expect(inputMonth.calendar).not.toBeAttached();
+                });
+
+                test('does NOT open desktop dropdown on calendar icon click', async () => {
+                    await inputMonth.clickOnIcon();
+                    await expect(inputMonth.calendar).not.toBeAttached();
+                });
             });
         });
     });

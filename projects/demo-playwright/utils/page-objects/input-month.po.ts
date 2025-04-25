@@ -3,10 +3,11 @@ import {expect} from '@playwright/test';
 
 export class TuiInputMonthPO {
     public readonly cleaner = this.host.locator('.t-clear');
-    public readonly textfield: Locator = this.host.getByRole('textbox');
+    public readonly textfield: Locator = this.host.locator('[tuiInputMonth]');
     public readonly calendar: Locator = this.host.page().locator('tui-calendar-month');
+    public readonly nativePicker = this.host.locator('input[type="month"]');
 
-    constructor(private readonly host: Locator) {}
+    constructor(public readonly host: Locator) {}
 
     public async clickOnIcon(): Promise<void> {
         const box = (await this.host.boundingBox())!;
