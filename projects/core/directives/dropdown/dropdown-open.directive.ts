@@ -42,6 +42,7 @@ function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
     return (
         // @ts-ignore
         typeof CloseWatcher === 'undefined' &&
+        // ?. for auto fill events
         event.key?.toLowerCase() === 'escape' &&
         this.tuiDropdownEnabled &&
         !!this.tuiDropdownOpen &&
