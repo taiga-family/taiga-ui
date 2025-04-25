@@ -16,7 +16,7 @@
             (tuiSwipe)="onSwipe($event.direction)"
         >
             <fieldset
-                *ngFor="let item of items; let i = index"
+                *ngFor="let item of view; let i = index"
                 class="t-item"
                 [disabled]="isDisabled(i)"
                 [style]="getStyle(itemsCount)"

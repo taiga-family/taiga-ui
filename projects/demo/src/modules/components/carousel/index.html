@@ -4,7 +4,9 @@
     type="components"
 >
     <ng-template pageTab>
-        Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
+        Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously **— and, with
+        the new `[loop]` input, the sequence can now rotate _infinitely_** (when enabled the last slide flows back into
+        the first and vice-versa).
 
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
@@ -22,6 +24,7 @@
                 [draggable]="draggable"
                 [duration]="duration"
                 [itemsCount]="itemsCount"
+                [loop]="loop"
                 [style.--tui-carousel-padding]="itemPadding"
                 [(index)]="index"
                 (touchstart.passive.stop)="(0)"
@@ -44,15 +47,34 @@
                 </ng-container>
             </tui-carousel>
         </tui-doc-demo>
+
         <table tuiDocAPI>
+            <tr
+                name="[loop]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="loop"
+            >
+                Enables seamless infinite scrolling.
+                <br />
+                •
+                <code>true</code>
+                — the list wraps around, so “next” after the last slide shows the first one again.
+                <br />
+                •
+                <code>false</code>
+                — stops at both ends (default).
+            </tr>
+
             <tr
                 name="[draggable]"
                 tuiDocAPIItem
                 type="boolean"
                 [(value)]="draggable"
             >
-                Whether or not slider can be dragged by clicking and holding
+                Whether or not the slider can be dragged by clicking and holding.
             </tr>
+
             <tr
                 name="[duration]"
                 tuiDocAPIItem
@@ -60,25 +82,30 @@
                 [items]="durationVariants"
                 [(value)]="duration"
             >
-                Duration in milliseconds for each slide for automatic rotation (use 0 to disable automatic rotation)
+                Duration in milliseconds for automatic rotation (use
+                <code>0</code>
+                to disable).
             </tr>
+
             <tr
                 name="[itemsCount]"
                 tuiDocAPIItem
                 type="number"
                 [(value)]="itemsCount"
             >
-                Number of slides shown at the same time
+                Number of slides shown at the same time.
             </tr>
+
             <tr
                 name="[(index)]"
                 tuiDocAPIItem
                 type="number"
                 [(value)]="index"
             >
-                Current index
+                Current slide index (0-based, refers to the original list even in loop mode).
             </tr>
         </table>
+
         <h3>CSS customization</h3>
         <table tuiDocAPI>
             <tr
@@ -88,7 +115,7 @@
                 [items]="itemPaddingVariants"
                 [(value)]="itemPadding"
             >
-                Custom color
+                Horizontal padding for every slide.
             </tr>
         </table>
     </ng-template>

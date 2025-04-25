@@ -1,5 +1,7 @@
+/* eslint-disable @taiga-ui/experience-next/decorator-key-sort */
+/* eslint-disable @typescript-eslint/member-ordering */
 import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {QueryList} from '@angular/core';
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -29,6 +31,9 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
 @Component({
     standalone: true,
     selector: 'tui-carousel',
+    templateUrl: './carousel.template.html',
+    styleUrls: ['./carousel.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         AsyncPipe,
         NgForOf,
@@ -40,9 +45,6 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
         TuiSwipe,
         WaIntersectionObserver,
     ],
-    templateUrl: './carousel.template.html',
-    styleUrls: ['./carousel.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{provide: TUI_SWIPE_OPTIONS, useValue: {timeout: 200, threshold: 30}}],
     hostDirectives: [
         {
@@ -59,26 +61,39 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
         '(document:mouseup.zoneless)': 'onTransitioned(true)',
     },
 })
-export class TuiCarouselComponent {
-    private readonly el = tuiInjectElement();
-    private readonly cdr = inject(ChangeDetectorRef);
-    private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly directive = inject(TuiCarouselDirective);
+export class TuiCarouselComponent implements AfterContentInit {
+    /* ------------------------------------------------------------------
+     * 1.  Private readonly injections / fields
+     * ------------------------------------------------------------------ */
+    private readonly el: HTMLElement = tuiInjectElement();
+    private readonly cdr: ChangeDetectorRef = inject(ChangeDetectorRef);
+    private readonly isMobile: boolean = inject(TUI_IS_MOBILE);
+    private readonly directive: TuiCarouselDirective = inject(TuiCarouselDirective);
+
+    /** pixel-free translate used while user is dragging */
     private translate = 0;
 
+    /* ------------------------------------------------------------------
+     * 2.  Content projected items
+     * ------------------------------------------------------------------ */
     @ContentChildren(TuiItem, {read: TemplateRef})
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
         EMPTY_QUERY;
 
-    protected transitioned = true;
-
-    protected index = 0;
-
+    /* ------------------------------------------------------------------
+     * 3.  Public API inputs / outputs
+     * ------------------------------------------------------------------ */
+    /** show grab cursor / enable pan on desktop */
     @Input()
     public draggable = false;
 
+    /** elements visible at once */
     @Input()
     public itemsCount = 1;
+
+    /** seamless infinite loop */
+    @Input()
+    public loop = false;
 
     @Output()
     public readonly indexChange = new EventEmitter<number>();
@@ -86,14 +101,74 @@ export class TuiCarouselComponent {
     @Output()
     public readonly shift = new EventEmitter<number>();
 
+    /* ------------------------------------------------------------------
+     * 4.  Two-way bound index
+     * ------------------------------------------------------------------ */
     @Input('index')
-    public set indexSetter(index: number) {
-        this.index = index;
-        this.directive.duration = NaN;
+    public set indexSetter(i: number) {
+        this.real = i;
+        this.index = this.loop ? i + this.offset : i;
+        this.directive.duration = Number.NaN; // pause autoscroll momentarily
     }
 
+    /* ------------------------------------------------------------------
+     * 5.  Protected state used in template
+     * ------------------------------------------------------------------ */
+    /** visual index inside the `view` array (includes clones) */
+    protected index = 0;
+
+    /** when `false`, CSS transition is disabled */
+    protected transitioned = true;
+
+    /* ------------------------------------------------------------------
+     * 6.  Private state
+     * ------------------------------------------------------------------ */
+    /** real index inside the *original* array (what the outside world sees) */
+    private real = 0;
+
+    /* ------------------------------------------------------------------
+     * 7.  Derived data — getters
+     * ------------------------------------------------------------------ */
+    /** original templates as a flat array */
+    private get src(): Array<TemplateRef<Record<string, unknown>>> {
+        return this.items?.toArray() ?? [];
+    }
+
+    /** how many helper items are prepended for smooth wrap */
+    private get offset(): number {
+        return this.loop ? this.itemsCount : 0;
+    }
+
+    /** templates actually rendered (with cloned head+tail in loop mode) */
+    @tuiPure
+    protected get view(): Array<TemplateRef<Record<string, unknown>>> {
+        if (!this.loop || this.src.length === 0) {
+            return this.src;
+        }
+
+        const head = this.src.slice(0, this.itemsCount);
+        const tail = this.src.slice(-this.itemsCount);
+
+        return [...tail, ...this.src, ...head];
+    }
+
+    /* ------------------------------------------------------------------
+     * 8.  Angular lifecycle
+     * ------------------------------------------------------------------ */
+    public ngAfterContentInit(): void {
+        if (this.loop && this.view.length > 0) {
+            // teleport cursor after prepended tail clones
+            this.index = this.offset;
+            this.real = 0;
+            this.cdr.detectChanges(); // ensure initial translate is correct
+        }
+    }
+
+    /* ------------------------------------------------------------------
+     * 9.  Navigation API (public)
+     * ------------------------------------------------------------------ */
     public next(): void {
-        if (this.items && this.index === this.items.length - this.itemsCount) {
+        if (!this.loop && this.index === this.view.length - this.itemsCount) {
             return;
         }
 
@@ -101,44 +176,84 @@ export class TuiCarouselComponent {
     }
 
     public prev(): void {
+        if (!this.loop && this.index === 0) {
+            return;
+        }
+
         this.updateIndex(this.index - 1);
     }
 
+    /* ------------------------------------------------------------------
+     * 10.  Template bindings / helpers
+     * ------------------------------------------------------------------ */
     protected get transform(): string {
-        return `translateX(${100 * this.x}%)`;
+        return `translateX(${100 * this.currentTranslate}%)`;
     }
 
     @tuiPure
-    protected getStyle(itemsCount: number): Partial<CSSStyleDeclaration> {
-        const percent = `${100 / itemsCount}%`;
+    protected getStyle(count: number): Partial<CSSStyleDeclaration> {
+        const width = `${100 / count}%`;
 
         return {
-            flexBasis: percent,
-            minWidth: percent,
-            maxWidth: percent,
+            flexBasis: width,
+            minWidth: width,
+            maxWidth: width,
         };
     }
 
-    protected onTransitioned(transitioned: boolean): void {
-        this.transitioned = transitioned;
+    /* ------------------------------------------------------------------
+     * 11.  Event handlers
+     * ------------------------------------------------------------------ */
+    protected onTransitioned(done: boolean): void {
+        this.transitioned = done;
 
-        if (!transitioned) {
-            this.translate = this.computedTranslate;
+        if (!done) {
+            this.translate = this.computedTranslate; // unchanged
+        }
+
+        if (done && !this.transitioned /* still false inside this block */) {
+            const snapped = Math.round(-this.translate * this.itemsCount);
+
+            this.updateIndex(snapped);
+
+            return;
+        }
+
+        if (this.loop && done) {
+            const crossedLeft = this.index <= this.itemsCount - 1;
+            const crossedRight = this.index >= this.src.length + this.offset;
+
+            if (crossedLeft || crossedRight) {
+                this.transitioned = false;
+                this.index = this.real + this.offset;
+                this.translate = this.computedTranslate;
+
+                this.cdr.detectChanges();
+                requestAnimationFrame(() => {
+                    this.transitioned = true;
+                });
+            }
         }
 
         this.onShift();
     }
 
-    protected isDisabled(index: number): boolean {
-        return index < this.index || index >= this.index + this.itemsCount;
+    protected isDisabled(i: number): boolean {
+        if (this.loop) {
+            return false; // keep all items active so no shrinking occurs
+        }
+
+        return i < this.index || i >= this.index + this.itemsCount;
     }
 
     protected onIntersection(
         {intersectionRatio}: IntersectionObserverEntry,
-        index: number,
+        i: number,
     ): void {
-        if (intersectionRatio && intersectionRatio >= 0.5 && !this.transitioned) {
-            this.updateIndex(this.index < index ? index - this.itemsCount + 1 : index);
+        if (intersectionRatio >= 0.5 && !this.transitioned) {
+            const delta = this.index < i ? i - this.itemsCount + 1 : i;
+
+            this.updateIndex(delta);
         }
     }
 
@@ -157,10 +272,9 @@ export class TuiCarouselComponent {
             return;
         }
 
-        const min = 1 - this.items.length / this.itemsCount;
+        const min = 1 - this.view.length / this.itemsCount;
 
         this.translate = tuiClamp(x / this.el.clientWidth + this.translate, min, 0);
-
         this.onShift();
     }
 
@@ -173,14 +287,21 @@ export class TuiCarouselComponent {
     }
 
     protected onAutoscroll(): void {
-        this.updateIndex(this.index === this.items.length - 1 ? 0 : this.index + 1);
+        if (!this.transitioned) {
+            return;
+        }
+
+        this.updateIndex(this.index + 1);
     }
 
     protected onShift(): void {
-        this.shift.emit(Math.abs((this.x % 1) + 0.5) * 2);
+        this.shift.emit(Math.abs((this.currentTranslate % 1) + 0.5) * 2);
     }
 
-    private get x(): number {
+    /* ------------------------------------------------------------------
+     * 12.  Pure computed helpers
+     * ------------------------------------------------------------------ */
+    private get currentTranslate(): number {
         return this.transitioned ? this.computedTranslate : this.translate;
     }
 
@@ -192,9 +313,29 @@ export class TuiCarouselComponent {
         return this.isMobile || this.draggable;
     }
 
-    private updateIndex(index: number): void {
-        this.index = tuiClamp(index, 0, this.items.length - 1);
-        this.indexChange.emit(this.index);
+    /* ------------------------------------------------------------------
+     * 13.  Central index updater
+     * ------------------------------------------------------------------ */
+    private updateIndex(i: number): void {
+        if (this.loop) {
+            const min = 0;
+            const max = this.view.length - this.itemsCount;
+
+            if (i < min) {
+                this.index = max;
+            } else if (i > max) {
+                this.index = min;
+            } else {
+                this.index = i;
+            }
+
+            this.real = (this.index - this.offset + this.src.length) % this.src.length;
+        } else {
+            this.index = tuiClamp(i, 0, this.view.length - 1);
+            this.real = this.index;
+        }
+
+        this.indexChange.emit(this.real);
         this.cdr.markForCheck();
     }
 }
