@@ -4,6 +4,7 @@
     [class.t-wrapper_hoverable]="!!hintContent"
     [class.t-wrapper_hovered]="drivers.get(index) | async"
     [tuiHint]="hintContent"
+    [tuiHintAppearance]="hintAppearance"
     [tuiHintContext]="{$implicit: index}"
     [tuiHintDescribe]="getHintId(index)"
     [tuiHintHost]="hintHost"
