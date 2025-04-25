@@ -73,6 +73,7 @@ export const DemoRoute = {
     DropdownContext: '/directives/dropdown-context',
     DropdownHover: '/directives/dropdown-hover',
     DropdownSelection: '/directives/dropdown-selection',
+    MiddleEllipsis: '/directives/middle-ellipsis',
     Fade: '/directives/fade',
     Sensitive: '/directives/sensitive',
     Skeleton: '/directives/skeleton',
