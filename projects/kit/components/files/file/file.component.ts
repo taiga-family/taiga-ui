@@ -165,11 +165,17 @@ export class TuiFile {
 
     @tuiPure
     private getName(file: TuiFileLike): string {
-        return file.name.split('.').slice(0, -1).join('.');
+        const dot = file.name.lastIndexOf('.');
+        // a dot at position 0 means a “hidden” file, not an extension
+
+        return dot > 0 ? file.name.slice(0, dot) : file.name;
     }
 
     @tuiPure
     private getType(file: TuiFileLike): string {
-        return `.${file.name.split('.').pop()}` || '';
+        const dot = file.name.lastIndexOf('.');
+        // only return an extension when there is one
+
+        return dot > 0 ? file.name.slice(dot) : '';
     }
 }
