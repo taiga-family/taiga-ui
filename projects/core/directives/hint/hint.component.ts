@@ -94,7 +94,7 @@ export class TuiHintComponent<C = any> {
             )
             .subscribe({
                 next: ([top, left]) => this.update(top, left),
-                complete: () => this.hover.toggle(false),
+                complete: () => this.hover.close(),
             });
 
         inject(TuiHoveredService)
