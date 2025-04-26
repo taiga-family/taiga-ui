@@ -5,12 +5,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import {
-    EMPTY_QUERY,
-    type TuiBooleanHandler,
-    type TuiMapper,
-    TuiMapperPipe,
-} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiDataList,
     TuiDriver,
@@ -40,10 +36,10 @@ export interface User {
         TuiDataList,
         TuiDropdown,
         TuiInitialsPipe,
-        TuiTextfield,
+        TuiMapperPipe,
         TuiTextarea,
         TuiTextareaModule,
-        TuiMapperPipe,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
