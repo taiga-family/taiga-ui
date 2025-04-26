@@ -20,7 +20,15 @@
         class="container"
         [formGroup]="testForm"
     >
-        <tui-textarea formControlName="reportText">Have you found a mistake ? Write about it!</tui-textarea>
+        <tui-textfield>
+            <label tuiLabel>Have you found a mistake?</label>
+            <textarea
+                formControlName="reportText"
+                tuiTextarea
+                [max]="3"
+                [min]="3"
+            ></textarea>
+        </tui-textfield>
 
         <button
             tuiButton

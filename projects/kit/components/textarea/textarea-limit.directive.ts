@@ -16,8 +16,9 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldComponent,
 } from '@taiga-ui/core/components/textfield';
-import {tuiTextareaOptionsProvider} from '@taiga-ui/kit/components/textarea';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+
+import {tuiTextareaOptionsProvider} from './textarea.options';
 
 @Component({
     standalone: true,
@@ -58,7 +59,7 @@ const COMPONENT = new PolymorpheusComponent(TuiTextareaLimitComponent);
         tuiTextareaOptionsProvider({content: COMPONENT}),
     ],
     host: {
-        '[style.border-block-end-width.rem]': 'size() === "l" ? 1.875 : 1.75',
+        '[style.padding-block-end.rem]': 'size() === "l" ? 1.875 : 1.75',
     },
 })
 export class TuiTextareaLimit implements Validator, DoCheck {

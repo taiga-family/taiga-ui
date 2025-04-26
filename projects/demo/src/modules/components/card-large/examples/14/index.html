@@ -22,17 +22,16 @@
     </ng-container>
     <ng-container *ngIf="step() === 2">
         <h1 tuiTitle>Why so?</h1>
-        <tui-textarea
-            tuiTextfieldSize="m"
-            [tuiTextfieldLabelOutside]="true"
-            [(ngModel)]="comment"
-        >
-            Leave a few words
+        <tui-textfield tuiTextfieldSize="m">
             <textarea
+                placeholder="Leave a few words"
                 tuiAutoFocus
-                tuiTextfieldLegacy
+                tuiTextarea
+                [max]="3"
+                [min]="3"
+                [(ngModel)]="comment"
             ></textarea>
-        </tui-textarea>
+        </tui-textfield>
     </ng-container>
     <button
         appearance="icon"

@@ -10,12 +10,12 @@ import {
     tuiFadeIn,
     TuiPopup,
     tuiSlideIn,
+    TuiTextfield,
     TuiTitle,
     tuiToAnimationOptions,
 } from '@taiga-ui/core';
-import {TuiRating} from '@taiga-ui/kit';
+import {TuiRating, TuiTextarea} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
-import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -28,9 +28,9 @@ import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy'
         TuiCardLarge,
         TuiPopup,
         TuiRating,
-        TuiTextareaModule,
-        TuiTextfieldControllerModule,
         TuiTitle,
+        TuiTextfield,
+        TuiTextarea,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
