@@ -1,0 +1,25 @@
+<button
+    size="m"
+    tuiButton
+    type="button"
+    (click)="open = true"
+>
+    Show
+</button>
+
+<ng-template
+    let-observer
+    [tuiCustomDialogOptions]="{size: 's'}"
+    [(tuiCustomDialog)]="open"
+>
+    <p>This abstracts away service and subscription</p>
+    <p>
+        <button
+            tuiButton
+            type="button"
+            (click)="observer.complete()"
+        >
+            Ok
+        </button>
+    </p>
+</ng-template>
