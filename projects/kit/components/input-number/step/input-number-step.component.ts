@@ -11,12 +11,12 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiClamp, tuiInjectElement, tuiZonefree} from '@taiga-ui/cdk';
+import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_TEXTFIELD_OPTIONS, TuiButton, TuiTextfieldContent} from '@taiga-ui/core';
 import {
     BehaviorSubject,
     concat,
     finalize,
-    fromEvent,
     merge,
     switchMap,
     take,
@@ -88,9 +88,11 @@ export class TuiInputNumberStep {
         const button = event.target as HTMLButtonElement;
 
         const stop$ = merge(
-            fromEvent(button, 'mouseup'),
-            fromEvent(button, 'mouseleave'),
-            fromEvent(document, 'mouseup'),
+            tuiTypedFromEvent(button, 'mouseup'),
+            tuiTypedFromEvent(button, 'mouseleave'),
+            tuiTypedFromEvent(button, 'touchend'),
+            tuiTypedFromEvent(button, 'touchcancel'),
+            tuiTypedFromEvent(document, 'mouseup'),
         );
 
         const initialDelay = 300;
@@ -101,12 +103,7 @@ export class TuiInputNumberStep {
 
         acceleration$
             .pipe(
-                switchMap((delay) =>
-                    concat(
-                        timer(delay).pipe(take(1)),
-                        timer(0, delay).pipe(takeUntil(stop$)),
-                    ),
-                ),
+                switchMap((delay) => concat(timer(delay).pipe(take(1)), timer(0, delay))),
                 takeUntil(stop$),
                 tuiZonefree(this.zone),
                 takeUntilDestroyed(this.destroyRef),
