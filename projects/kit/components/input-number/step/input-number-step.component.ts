@@ -10,15 +10,19 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {TuiButton} from '@taiga-ui/core/components/button';
+import {tuiClamp, tuiInjectElement, tuiZonefree} from '@taiga-ui/cdk';
+import {TUI_TEXTFIELD_OPTIONS, TuiButton, TuiTextfieldContent} from '@taiga-ui/core';
 import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiTextfieldContent,
-} from '@taiga-ui/core/components/textfield';
-import {timer} from 'rxjs';
+    BehaviorSubject,
+    concat,
+    finalize,
+    fromEvent,
+    merge,
+    switchMap,
+    take,
+    takeUntil,
+    timer,
+} from 'rxjs';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
 import type {TuiInputNumberOptions} from '../input-number.options';
@@ -75,5 +79,47 @@ export class TuiInputNumberStep {
         }
 
         this.inputNumber.setValue(newValue);
+    }
+
+    protected startStep(event: Event, stepValue: number): void {
+        event.preventDefault();
+        this.element.focus();
+
+        const button = event.target as HTMLButtonElement;
+
+        const stop$ = merge(
+            fromEvent(button, 'mouseup'),
+            fromEvent(button, 'mouseleave'),
+            fromEvent(document, 'mouseup'),
+        );
+
+        const initialDelay = 300;
+        const delayDecrement = 30;
+        const minDelay = 50;
+
+        const acceleration$ = new BehaviorSubject<number>(initialDelay);
+
+        acceleration$
+            .pipe(
+                switchMap((delay) =>
+                    concat(
+                        timer(delay).pipe(take(1)),
+                        timer(0, delay).pipe(takeUntil(stop$)),
+                    ),
+                ),
+                takeUntil(stop$),
+                tuiZonefree(this.zone),
+                takeUntilDestroyed(this.destroyRef),
+                finalize(() => acceleration$.complete()),
+            )
+            .subscribe(() => {
+                this.zone.run(() => {
+                    this.onStep(stepValue);
+
+                    acceleration$.next(
+                        Math.max(acceleration$.value - delayDecrement, minDelay),
+                    );
+                });
+            });
     }
 }
