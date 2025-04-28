@@ -1,12 +1,12 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, NgForOf} from '@angular/common';
 import type {QueryList} from '@angular/core';
 import {Component, ElementRef, ViewChild, ViewChildren} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, tuiPure} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk';
+import {EMPTY_QUERY, TuiMapperPipe} from '@taiga-ui/cdk';
 import {
     TuiDataList,
     TuiDriver,
@@ -14,8 +14,9 @@ import {
     tuiGetWordRange,
     TuiInitialsPipe,
     TuiOptionNew,
+    TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAvatar, TuiTextarea} from '@taiga-ui/kit';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
 import type {Observable} from 'rxjs';
 
@@ -31,21 +32,25 @@ export interface User {
         AsyncPipe,
         FormsModule,
         NgForOf,
-        NgIf,
         TuiAvatar,
         TuiDataList,
         TuiDropdown,
         TuiInitialsPipe,
+        TuiMapperPipe,
+        TuiTextarea,
         TuiTextareaModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
     @ViewChildren(TuiOptionNew, {read: ElementRef})
     private readonly options: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
+    @ViewChild(TuiTextarea, {read: ElementRef})
+    private readonly textarea?: ElementRef<HTMLTextAreaElement>;
 
     @ViewChild(TuiDriver)
     protected readonly driver?: Observable<boolean>;
@@ -65,8 +70,22 @@ export default class Example {
         },
     ];
 
+    protected get search(): string {
+        const el = this.textarea?.nativeElement;
+
+        return el?.value.slice(el.value.indexOf('@'), el.selectionStart) || '';
+    }
+
+    protected readonly filter: TuiMapper<[readonly User[], string], readonly User[]> = (
+        items,
+        search,
+    ) =>
+        items.filter(
+            ({name, login}) => login.startsWith(search) || name.startsWith(search),
+        );
+
     protected predicate: TuiBooleanHandler<Range> = (range) =>
-        tuiGetWordRange(range).toString().startsWith('@');
+        String(tuiGetWordRange(range)).startsWith('@');
 
     protected onArrow(event: Event, which: 'first' | 'last'): void {
         const item = this.options[which];
@@ -79,31 +98,18 @@ export default class Example {
         item.nativeElement.focus();
     }
 
-    protected filterItems(textarea: HTMLTextAreaElement): readonly User[] {
-        const search = this.getCurrentSearch(textarea).replace('@', '');
+    protected onClick(login: string): void {
+        if (!this.textarea) {
+            return;
+        }
 
-        return this.getFilteredItems(this.items, search);
-    }
-
-    protected onClick(login: string, textarea: HTMLTextAreaElement): void {
-        const search = this.getCurrentSearch(textarea);
+        const search = this.search;
         const value = this.value.replace(search, login);
         const caret = value.indexOf(login) + login.length;
 
         this.value = value;
-        textarea.focus();
-        textarea.value = value;
-        textarea.setSelectionRange(caret, caret);
-    }
-
-    @tuiPure
-    private getFilteredItems(items: readonly User[], search: string): readonly User[] {
-        return items.filter(
-            ({name, login}) => login.startsWith(search) || name.startsWith(search),
-        );
-    }
-
-    private getCurrentSearch(textarea: HTMLTextAreaElement): string {
-        return textarea.value.slice(textarea.value.indexOf('@'), textarea.selectionStart);
+        this.textarea.nativeElement.focus();
+        this.textarea.nativeElement.value = value;
+        this.textarea.nativeElement.setSelectionRange(caret, caret);
     }
 }

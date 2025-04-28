@@ -42,16 +42,16 @@
     class="form"
     (ngSubmit)="onSubmit()"
 >
-    <tui-textarea
-        name="message"
-        class="textarea"
-        [expandable]="true"
-        [rows]="6"
-        [(ngModel)]="value"
-        (keydown.control.enter)="onSubmit()"
-    >
-        Type your message
-    </tui-textarea>
+    <tui-textfield class="textarea">
+        <label tuiLabel>Type your message</label>
+        <textarea
+            name="message"
+            tuiTextarea
+            [max]="6"
+            [(ngModel)]="value"
+            (keydown.control.enter)="onSubmit()"
+        ></textarea>
+    </tui-textfield>
     <button
         tuiButton
         type="submit"

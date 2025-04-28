@@ -16,8 +16,9 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldComponent,
 } from '@taiga-ui/core/components/textfield';
-import {tuiTextareaOptionsProvider} from '@taiga-ui/kit/components/textarea';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+
+import {tuiTextareaOptionsProvider} from './textarea.options';
 
 @Component({
     standalone: true,
