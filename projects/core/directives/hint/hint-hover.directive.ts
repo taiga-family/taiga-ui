@@ -88,4 +88,8 @@ export class TuiHintHover extends TuiDriver {
         this.toggle$.next(visible);
         this.parent?.toggle(visible);
     }
+
+    public close(): void {
+        this.toggle$.next(false);
+    }
 }
