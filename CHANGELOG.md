@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.35.0](https://github.com/taiga-family/taiga-ui/compare/v4.34.0...v4.35.0) (2025-04-28)
+
+### 🚀 Features
+
+- **addon-table:** `TableExpand` add new component ([#10694](https://github.com/taiga-family/taiga-ui/issues/10694))
+  ([f8df2a7](https://github.com/taiga-family/taiga-ui/commit/f8df2a7bace92f532a94b596ee0b433fd59ba5fc))
+
+### 🐞 Bug Fixes
+
+- **addon-charts:** hint appearance not passed to bar-chart
+  ([#10899](https://github.com/taiga-family/taiga-ui/issues/10899))
+  ([#10907](https://github.com/taiga-family/taiga-ui/issues/10907))
+  ([dec0854](https://github.com/taiga-family/taiga-ui/commit/dec085475bab25d6538d9873f1f2c61f38ea7b0d))
+- **addon-mobile:** `DropdownMobile` fix when used in a dialog
+  ([#10856](https://github.com/taiga-family/taiga-ui/issues/10856))
+  ([7b7adbb](https://github.com/taiga-family/taiga-ui/commit/7b7adbbcc73ddb03627b906bc89c9081e3e30a3f))
+- **core:** `DropdownOpen` fix error in autofill ([#10918](https://github.com/taiga-family/taiga-ui/issues/10918))
+  ([e34b17c](https://github.com/taiga-family/taiga-ui/commit/e34b17c8ffddd9e4ac68f524c08aa32602cd9476))
+- **core:** `Root` fix dropdowns when scrollable ([#10891](https://github.com/taiga-family/taiga-ui/issues/10891))
+  ([f3c7d23](https://github.com/taiga-family/taiga-ui/commit/f3c7d238d8595c324d0b1c4f3b35aa2729448b04))
+- **core:** `SelectOption` has change detection problems with checked state
+  ([#10888](https://github.com/taiga-family/taiga-ui/issues/10888))
+  ([e961c51](https://github.com/taiga-family/taiga-ui/commit/e961c51b9867f1e7c4c3f5097edc91df1faad147))
+- **core:** `Textfield` icons should focus input & open dropdown on click
+  ([#10879](https://github.com/taiga-family/taiga-ui/issues/10879))
+  ([d7059ef](https://github.com/taiga-family/taiga-ui/commit/d7059ef441b3ff1d080c485571333ae0c37ffa08))
+- **core:** fixed parent closing when nested hint is closed
+  ([#10919](https://github.com/taiga-family/taiga-ui/issues/10919))
+  ([b073a5f](https://github.com/taiga-family/taiga-ui/commit/b073a5f8b57ee5b5fd33bb40d694bbc079367a5b))
+- **kit:** `InputMonth` with enabled native picker should never show desktop dropdown
+  ([#10911](https://github.com/taiga-family/taiga-ui/issues/10911))
+  ([bf02841](https://github.com/taiga-family/taiga-ui/commit/bf028416d4e1c0adac8f53b34cdac0cb0ff98dd8))
+- **kit:** `InputNumber` supports non-erasable minus (as prefix) for `max <= 0`
+  ([#10917](https://github.com/taiga-family/taiga-ui/issues/10917))
+  ([2ed04d3](https://github.com/taiga-family/taiga-ui/commit/2ed04d34ff1ea61bb782159b8b7de878ed54fc38))
+- **kit:** `Textarea` fix table and autofill styles ([#10920](https://github.com/taiga-family/taiga-ui/issues/10920))
+  ([b1c2686](https://github.com/taiga-family/taiga-ui/commit/b1c2686fee0ce5a667a67ab1a0c352f59827a5ae))
+- **kit:** get rid of dot before extension-less files ([#10915](https://github.com/taiga-family/taiga-ui/issues/10915))
+  ([eb15821](https://github.com/taiga-family/taiga-ui/commit/eb158217eabc6453bb720f2b1078e8e81c6103a2))
+- **kit:** skeleton animation does not depend on animation speed
+  ([#10875](https://github.com/taiga-family/taiga-ui/issues/10875))
+  ([0c4cce0](https://github.com/taiga-family/taiga-ui/commit/0c4cce04c609420aa48bf237c3820c1da03d7924))
+
 ## [4.34.0](https://github.com/taiga-family/taiga-ui/compare/v4.33.0...v4.34.0) (2025-04-21)
 
 ### 🐞 Bug Fixes
