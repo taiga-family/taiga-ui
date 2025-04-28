@@ -622,6 +622,51 @@ describe('InputNumber', () => {
                     });
                 });
             });
+
+            describe('non-erasable minus (as [prefix]) for [max] <= 0', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?prefix=${CHAR_MINUS}&max=0`,
+                    );
+                    await expect(inputNumber.textfield).toHaveValue('');
+                });
+
+                test('shows minus sign on focus', async () => {
+                    await inputNumber.textfield.focus();
+                    await expect(inputNumber.textfield).toHaveValue(CHAR_MINUS);
+                });
+
+                test('hides minus sign on blur', async () => {
+                    await inputNumber.textfield.focus();
+                    await expect(inputNumber.textfield).toHaveValue(CHAR_MINUS);
+                    await inputNumber.textfield.blur();
+                    await expect(inputNumber.textfield).toHaveValue('');
+                });
+
+                // TODO: Remove .skip after release of https://github.com/taiga-family/maskito/pull/2087
+                // eslint-disable-next-line playwright/no-skipped-test
+                test.skip('forbids to enter more minuses', async () => {
+                    await inputNumber.textfield.focus();
+                    await inputNumber.textfield.pressSequentially(
+                        CHAR_HYPHEN + CHAR_MINUS + CHAR_EN_DASH + CHAR_EM_DASH,
+                    );
+                    await expect(inputNumber.textfield).toHaveValue(CHAR_MINUS);
+                });
+
+                test('allows to enter 123 => Textfield value is -123', async () => {
+                    await inputNumber.textfield.focus();
+                    await inputNumber.textfield.pressSequentially('123');
+                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}123`);
+                });
+
+                test('Enter 123 and blur', async () => {
+                    await inputNumber.textfield.focus();
+                    await inputNumber.textfield.pressSequentially('123');
+                    await inputNumber.textfield.blur();
+                    await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}123`);
+                });
+            });
         });
 
         describe('[precision] prop', () => {

@@ -188,7 +188,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         }
 
         return (
-            this.prefix() +
+            (this.prefix() !== CHAR_MINUS ? this.prefix() : '') +
             tuiFormatNumber(value, {
                 ...this.numberFormat(),
                 /**
