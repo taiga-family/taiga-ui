@@ -11,6 +11,9 @@ import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
 import {TuiDefaultChip} from './default-chip';
 
+/*
+ * Internal wrapper for polymorpheus-context
+ */
 @Component({
     standalone: true,
     selector: 'tui-chip-wrapper',
