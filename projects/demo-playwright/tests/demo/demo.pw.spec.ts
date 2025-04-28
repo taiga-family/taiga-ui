@@ -41,7 +41,7 @@ test.describe('Demo', () => {
                 await documentation.waitStableState(); // note: load lazy loading images
 
                 // e2e flaky: wait more time for charts graphics
-                await page.waitForTimeout(path.includes('charts') ? 500 : 150);
+                await page.waitForTimeout(path.includes('charts') ? 1000 : 150);
 
                 await expect
                     .soft(example)

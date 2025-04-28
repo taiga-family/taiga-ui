@@ -1,35 +1,34 @@
-<tui-textarea
-    #textarea
+<tui-textfield
+    tuiDropdownLimitWidth="auto"
     tuiDropdownSelectionPosition="word"
-    [pseudoFocus]="(driver | async) || null"
-    [tuiDropdown]="dropdown"
     [tuiDropdownSelection]="predicate"
-    [(ngModel)]="value"
-    (keydown.arrowDown)="onArrow($event, 'first')"
-    (keydown.arrowUp)="onArrow($event, 'last')"
 >
-    Type a message
-</tui-textarea>
-<ng-template #dropdown>
-    <tui-data-list
-        *ngIf="textarea.nativeFocusableElement"
-        class="menu"
-        (keydown.escape)="textarea.nativeFocusableElement.focus()"
-    >
+    <label tuiLabel>Type a message</label>
+    <textarea
+        tuiTextarea
+        [focused]="(driver | async) || null"
+        [max]="4"
+        [min]="4"
+        [(ngModel)]="value"
+        (keydown.arrowDown)="onArrow($event, 'first')"
+        (keydown.arrowUp)="onArrow($event, 'last')"
+    ></textarea>
+
+    <tui-data-list *tuiTextfieldDropdown>
         <button
-            *ngFor="let item of filterItems(textarea.nativeFocusableElement)"
+            *ngFor="let item of items | tuiMapper: filter : search.replace('@', '')"
             new
             tuiOption
             type="button"
-            (click)="onClick(item.login, textarea.nativeFocusableElement)"
+            (click)="onClick(item.login)"
         >
-            {{ item.name }}
             <tui-avatar
                 size="s"
                 [src]="item.avatar"
             >
                 {{ item.name | tuiInitials }}
             </tui-avatar>
+            {{ item.name }}
         </button>
     </tui-data-list>
-</ng-template>
+</tui-textfield>

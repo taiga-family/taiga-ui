@@ -11,7 +11,6 @@ import {
     Output,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -25,7 +24,7 @@ import {TuiTableTr} from '../tr/tr.component';
 @Component({
     standalone: true,
     selector: 'tbody[tuiTbody]',
-    imports: [NgIf, PolymorpheusOutlet, TuiChevron, TuiIcon, TuiMapperPipe],
+    imports: [NgIf, PolymorpheusOutlet, TuiChevron, TuiIcon],
     templateUrl: './tbody.template.html',
     styleUrls: ['./tbody.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -44,17 +43,21 @@ export class TuiTableTbody<T extends Partial<Record<keyof T, any>>> {
     @Input()
     public data: readonly T[] = [];
 
+    /** @deprecated: drop in v5.0, use TuiTableExpand */
     @Input()
     public heading: PolymorpheusContent;
 
+    /** @deprecated: drop in v5.0, use TuiTableExpand */
     @Input()
     public open = this.options.open;
 
+    /** @deprecated: drop in v5.0, use TuiTableExpand */
     @Output()
     public readonly openChange = new EventEmitter<boolean>();
 
-    protected onClick(): void {
+    /** @deprecated: drop in v5.0, use TuiTableExpand */
+    protected onClick = (): void => {
         this.open = !this.open;
         this.openChange.emit(this.open);
-    }
+    };
 }

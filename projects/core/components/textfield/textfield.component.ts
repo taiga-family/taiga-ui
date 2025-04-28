@@ -35,6 +35,7 @@ import {TuiLabel} from '@taiga-ui/core/components/label';
 import {
     TuiDropdownDirective,
     TuiDropdownFixed,
+    TuiDropdownOpen,
     tuiDropdownOpen,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
@@ -79,12 +80,15 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content',
         '[class._disabled]': 'input?.nativeElement.disabled',
+        '(mousedown)': 'onIconClick($event)',
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterContentInit {
     // TODO: refactor to signal inputs after Angular update
     private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
+    private readonly dropdown = inject(TuiDropdownDirective);
+    private readonly dropdownOpen = inject(TuiDropdownOpen);
     private readonly open = tuiDropdownOpen();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
@@ -179,5 +183,19 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
     protected onResize({contentRect}: ResizeObserverEntry): void {
         this.el.style.setProperty('--t-side', tuiPx(contentRect.width));
+    }
+
+    // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
+    protected onIconClick(event: Event): void {
+        if (event.target !== this.el || this.input?.nativeElement.matches(':read-only')) {
+            return;
+        }
+
+        event.preventDefault();
+        this.input?.nativeElement.focus({preventScroll: true});
+
+        if (this.dropdownOpen.tuiDropdownEnabled && this.dropdown.content) {
+            this.open.update((x) => !x);
+        }
     }
 }

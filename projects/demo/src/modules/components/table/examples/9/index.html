@@ -1,0 +1,262 @@
+<table
+    size="l"
+    tuiTable
+    class="table"
+    [columns]="columns"
+>
+    <thead>
+        <tr tuiThGroup>
+            <th
+                *tuiHead="'action'"
+                tuiTh
+                [sorter]="null"
+            ></th>
+            <th
+                *tuiHead="'firstName'"
+                tuiTh
+                [sorter]="null"
+            >
+                First name
+            </th>
+            <th
+                *tuiHead="'lastName'"
+                tuiTh
+                class="last-name-col"
+                [sorter]="null"
+            >
+                Last name
+            </th>
+            <th
+                *tuiHead="'role'"
+                tuiTh
+                [sorter]="null"
+            >
+                Role
+            </th>
+            <th
+                *tuiHead="'balance'"
+                tuiTh
+                [sorter]="null"
+            >
+                Balance
+            </th>
+        </tr>
+    </thead>
+
+    <tbody tuiTbody>
+        <tr
+            tuiTr
+            class="expand-heading-row"
+            (click)="expand.toggle()"
+        >
+            <td
+                *tuiCell="'action'"
+                tuiTd
+            >
+                <tui-icon
+                    class="t-chevron"
+                    [tuiChevron]="expand.expanded()"
+                />
+            </td>
+            <td
+                *tuiCell="'firstName'"
+                tuiTd
+                [colSpan]="2"
+            >
+                {{ basicData.length }}
+                Developers (basic usage)
+            </td>
+            <ng-container *tuiCell="'lastName'" />
+            <td
+                *tuiCell="'role'"
+                tuiTd
+            >
+                dev
+            </td>
+            <td
+                *tuiCell="'balance'"
+                tuiTd
+            >
+                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+            </td>
+        </tr>
+
+        <tui-table-expand
+            #expand
+            [expanded]="true"
+        >
+            <tr
+                *ngFor="let item of basicData"
+                tuiTr
+            >
+                <td
+                    *tuiCell="'action'"
+                    tuiTd
+                ></td>
+                <td
+                    *tuiCell="'firstName'"
+                    tuiTd
+                >
+                    <div>
+                        <tui-chip
+                            size="s"
+                            [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
+                        >
+                            {{ item.firstName }}
+                        </tui-chip>
+                    </div>
+                </td>
+                <td
+                    *tuiCell="'lastName'"
+                    tuiTd
+                >
+                    {{ item.lastName }}
+                </td>
+                <td
+                    *tuiCell="'role'"
+                    tuiTd
+                >
+                    {{ item.role }}
+                </td>
+                <td
+                    *tuiCell="'balance'"
+                    tuiTd
+                >
+                    {{ item.balance | tuiFormatNumber | async }}
+                </td>
+            </tr>
+        </tui-table-expand>
+    </tbody>
+
+    <tbody tuiTbody>
+        <tr
+            tuiTr
+            class="expand-heading-row"
+            (click)="manualToggle()"
+        >
+            <td
+                *tuiCell="'action'"
+                tuiTd
+            >
+                <tui-icon
+                    class="t-chevron"
+                    [tuiChevron]="manualOpen"
+                />
+            </td>
+            <td
+                *tuiCell="'firstName'"
+                tuiTd
+                [colSpan]="2"
+            >
+                {{ manualOpenData.length }}
+                Designers (manual handling)
+            </td>
+            <ng-container *tuiCell="'lastName'" />
+            <td
+                *tuiCell="'role'"
+                tuiTd
+            >
+                design
+            </td>
+            <td
+                *tuiCell="'balance'"
+                tuiTd
+            >
+                {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+            </td>
+        </tr>
+
+        <tui-table-expand [expanded]="manualOpen">
+            <tr
+                *ngFor="let item of manualOpenData"
+                tuiTr
+            >
+                <td
+                    *tuiCell="'action'"
+                    tuiTd
+                ></td>
+                <td
+                    *tuiCell="'firstName'"
+                    tuiTd
+                >
+                    {{ item.firstName }}
+                </td>
+                <td
+                    *tuiCell="'lastName'"
+                    tuiTd
+                >
+                    {{ item.lastName }}
+                </td>
+                <td
+                    *tuiCell="'role'"
+                    tuiTd
+                >
+                    {{ item.role }}
+                </td>
+                <td
+                    *tuiCell="'balance'"
+                    tuiTd
+                >
+                    {{ item.balance | tuiFormatNumber | async }}
+                </td>
+            </tr>
+        </tui-table-expand>
+    </tbody>
+
+    <tbody tuiTbody>
+        <tr
+            tuiTr
+            class="expand-heading-row-custom"
+        >
+            <td
+                *tuiCell="'action'"
+                tuiTd
+                class="expand-heading-row-custom__expand"
+                (click)="customToggle()"
+            >
+                <tui-icon
+                    class="t-chevron"
+                    [tuiChevron]="customOpen"
+                />
+            </td>
+            <td
+                *tuiCell="'firstName'"
+                tuiTd
+                [colSpan]="2"
+            >
+                Custom content (click on chevron)
+            </td>
+            <ng-container *tuiCell="'lastName'" />
+            <td
+                *tuiCell="'role'"
+                tuiTd
+            >
+                all
+            </td>
+            <td
+                *tuiCell="'balance'"
+                tuiTd
+            >
+                {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+            </td>
+        </tr>
+
+        <tr>
+            <td [colSpan]="columns.length">
+                <tui-expand [expanded]="customOpen">
+                    <div class="chips">
+                        <tui-chip
+                            *ngFor="let item of customContentData"
+                            size="s"
+                            [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
+                            [tuiHint]="'Balance: ' + item.balance + '. Role: ' + item.role"
+                        >
+                            {{ item.firstName }}
+                            {{ item.lastName }}
+                        </tui-chip>
+                    </div>
+                </tui-expand>
+            </td>
+        </tr>
+    </tbody>
+</table>

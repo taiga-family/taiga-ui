@@ -21,7 +21,7 @@ import type {TuiRectAccessor} from '@taiga-ui/core/classes';
 import {tuiAsDriver, tuiAsRectAccessor, TuiDriver} from '@taiga-ui/core/classes';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
 import {tuiGetWordRange} from '@taiga-ui/core/utils';
-import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
+import {BehaviorSubject, combineLatest, distinctUntilChanged, filter, map} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 
@@ -51,6 +51,7 @@ export class TuiDropdownSelection
         this.handler$,
         inject(TUI_SELECTION_STREAM).pipe(
             map(() => this.getRange()),
+            filter((range) => this.isValid(range)),
             distinctUntilChanged(
                 (x, y) =>
                     x.startOffset === y.startOffset &&
@@ -114,7 +115,7 @@ export class TuiDropdownSelection
         }
     }
 
-    protected getRange(): Range {
+    private getRange(): Range {
         const active = tuiGetNativeFocused(this.doc);
         const selection = this.doc.getSelection();
         const range =
@@ -128,7 +129,7 @@ export class TuiDropdownSelection
     /**
      * Check if given range is at least partially inside dropdown
      */
-    protected inDropdown(range: Range): boolean {
+    private inDropdown(range: Range): boolean {
         const {startContainer, endContainer} = range;
         const inDropdown = this.boxContains(range.commonAncestorContainer);
         const hostToDropdown =
@@ -144,6 +145,17 @@ export class TuiDropdownSelection
      */
     private boxContains(node: Node): boolean {
         return !!this.dropdown.ref()?.location.nativeElement.contains(node);
+    }
+
+    /**
+     * Check if range is not inside tui-textfield's DOM elements
+     */
+    private isValid(range: Range): boolean {
+        return (
+            !this.el.contains(range.commonAncestorContainer) ||
+            !this.el.closest('tui-textfield') ||
+            range.intersectsNode(this.ghost || this.el)
+        );
     }
 
     private veryVerySadInputFix(element: HTMLInputElement | HTMLTextAreaElement): Range {
@@ -170,12 +182,15 @@ export class TuiDropdownSelection
      */
     private initGhost(element: HTMLInputElement | HTMLTextAreaElement): HTMLElement {
         const ghost = this.doc.createElement('div');
-        const {font, letterSpacing, textTransform, padding} = getComputedStyle(element);
+        const {font, letterSpacing, textTransform, padding, borderTop} =
+            getComputedStyle(element);
 
         ghost.style.position = 'absolute';
         ghost.style.pointerEvents = 'none';
         ghost.style.opacity = '0';
         ghost.style.whiteSpace = 'pre-wrap';
+        ghost.style.boxSizing = 'border-box';
+        ghost.style.borderTop = borderTop;
         ghost.style.font = font;
         ghost.style.letterSpacing = letterSpacing;
         ghost.style.textTransform = textTransform;

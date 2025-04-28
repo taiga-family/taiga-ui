@@ -27,13 +27,19 @@
     </tui-axes>
 </div>
 
-<tui-select
+<tui-textfield
+    tuiChevron
     class="select"
-    [(ngModel)]="appearance"
 >
-    Hint appearance
+    <label tuiLabel>Hint appearance</label>
+
+    <input
+        tuiSelect
+        [(ngModel)]="appearance"
+    />
     <tui-data-list-wrapper
-        *tuiDataList
+        *tuiTextfieldDropdown
+        new
         [items]="appearances"
     />
-</tui-select>
+</tui-textfield>

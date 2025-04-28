@@ -87,7 +87,7 @@ export class TuiDrawerDirective implements DoCheck {
     private readonly open = inject(TuiDropdownOpen);
 
     public ngDoCheck(): void {
-        this.icons.iconStart = this.open.tuiDropdownOpen ? this.x : '';
+        this.icons.iconStart.set(this.open.tuiDropdownOpen ? this.x : '');
     }
 
     @ViewChild(TemplateRef)

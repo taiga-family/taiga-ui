@@ -1,16 +1,22 @@
 <form [formGroup]="group">
     <tui-input formControlName="name">Name</tui-input>
-    <tui-select
+    <tui-textfield
+        tuiChevron
         class="tui-space_vertical-3"
-        [ngModelOptions]="{standalone: true}"
-        [(ngModel)]="type"
     >
-        Connection
+        <label tuiLabel>Connection</label>
+
+        <input
+            tuiSelect
+            [ngModelOptions]="{standalone: true}"
+            [(ngModel)]="type"
+        />
         <tui-data-list-wrapper
-            *tuiDataList
+            *tuiTextfieldDropdown
+            new
             [items]="items"
         />
-    </tui-select>
+    </tui-textfield>
     <tui-input
         *ngIf="type === items[0]!; else phone"
         formControlName="contact"

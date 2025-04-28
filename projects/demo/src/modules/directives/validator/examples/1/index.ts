@@ -10,8 +10,9 @@ import {
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidator} from '@taiga-ui/cdk';
-import {TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiInputModule, TuiInputPhoneModule, TuiSelectModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
+import {TuiInputModule, TuiInputPhoneModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,
@@ -19,10 +20,12 @@ import {TuiInputModule, TuiInputPhoneModule, TuiSelectModule} from '@taiga-ui/le
         FormsModule,
         NgIf,
         ReactiveFormsModule,
+        TuiChevron,
         TuiDataListWrapper,
         TuiInputModule,
         TuiInputPhoneModule,
-        TuiSelectModule,
+        TuiSelect,
+        TuiTextfield,
         TuiValidator,
     ],
     templateUrl: './index.html',

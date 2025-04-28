@@ -3,12 +3,18 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce';
-import {TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiSelectModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiDataListWrapper, TuiSelectModule],
+    imports: [
+        ReactiveFormsModule,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiSelect,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

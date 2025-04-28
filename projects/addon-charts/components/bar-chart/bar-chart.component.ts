@@ -75,6 +75,10 @@ export class TuiBarChart {
         return this.hintOptions?.content || '';
     }
 
+    protected get hintAppearance(): string {
+        return this.hintOptions?.appearance || '';
+    }
+
     protected getHintId(index: number): string {
         return `${this.autoId}_${index}`;
     }

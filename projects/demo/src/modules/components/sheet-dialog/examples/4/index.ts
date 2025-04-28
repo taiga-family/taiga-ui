@@ -1,18 +1,13 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
-import type {TuiSwipeDirection} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MATCHER, tuiControlValue, TuiSwipe} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
 import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
-import {
-    TuiInputComponent,
-    TuiInputModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 const USERS = [
@@ -47,7 +42,6 @@ const USERS = [
         TuiInitialsPipe,
         TuiInputModule,
         TuiSheetDialog,
-        TuiSwipe,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
@@ -56,9 +50,6 @@ const USERS = [
     changeDetection,
 })
 export default class Example {
-    @ViewChild(TuiInputComponent)
-    private readonly input?: TuiInputComponent;
-
     protected open = false;
 
     protected readonly offset = 16;
@@ -75,27 +66,5 @@ export default class Example {
         if (open) {
             this.search.setValue('');
         }
-    }
-
-    protected onSwipe(direction: TuiSwipeDirection): void {
-        if (direction === 'top') {
-            this.scroll();
-        }
-    }
-
-    protected onFocus(): void {
-        this.scroll();
-        this.input?.nativeFocusableElement?.focus();
-    }
-
-    private scroll(): void {
-        const input = this.input?.nativeFocusableElement;
-        const container = input?.closest('tui-sheet-dialog');
-
-        if (!container) {
-            return;
-        }
-
-        container.scrollTop = container.clientHeight;
     }
 }

@@ -7,12 +7,8 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {TuiButton, TuiDialogService, TuiTextfield} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiSlider} from '@taiga-ui/kit';
-import {
-    TuiInputModule,
-    TuiSelectModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiChevron, TuiDataListWrapper, TuiSelect, TuiSlider} from '@taiga-ui/kit';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -23,9 +19,10 @@ import {injectContext} from '@taiga-ui/polymorpheus';
         TuiAmountPipe,
         TuiAutoFocus,
         TuiButton,
+        TuiChevron,
         TuiDataListWrapper,
         TuiInputModule,
-        TuiSelectModule,
+        TuiSelect,
         TuiSlider,
         TuiTextfield,
         TuiTextfieldControllerModule,

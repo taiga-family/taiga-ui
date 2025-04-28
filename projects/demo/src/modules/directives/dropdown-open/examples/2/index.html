@@ -23,16 +23,23 @@
     </button>
 </div>
 <ng-template #dropdown>
-    <tui-select
+    <tui-textfield
+        tuiChevron
         class="margin"
-        [(ngModel)]="selected"
     >
-        Nested Select
+        <label tuiLabel>Nested Select</label>
+
+        <input
+            tuiSelect
+            [(ngModel)]="selected"
+        />
+
         <tui-data-list-wrapper
-            *tuiDataList
+            *tuiTextfieldDropdown
+            new
             [items]="selectItems"
         />
-    </tui-select>
+    </tui-textfield>
     <tui-data-list>
         <button
             *ngFor="let item of items"

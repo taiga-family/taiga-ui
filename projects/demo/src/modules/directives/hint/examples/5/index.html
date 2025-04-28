@@ -1,18 +1,27 @@
 <form [formGroup]="form">
-    <tui-select
-        formControlName="period"
-        tuiHintDirection="top-left"
-        [tuiHintContent]="periodHint"
-        [tuiTextfieldSize]="'m'"
-        [valueContent]="stringify | tuiStringifyContent"
+    <tui-textfield
+        tuiChevron
+        tuiTextfieldSize="m"
+        [content]="stringify | tuiStringifyContent"
     >
-        Term
+        <label tuiLabel>Term</label>
+
+        <input
+            formControlName="period"
+            tuiSelect
+        />
         <tui-data-list-wrapper
-            *tuiDataList
+            *tuiTextfieldDropdown
+            new
             [itemContent]="stringify | tuiStringifyContent"
             [items]="items | tuiFilterByInput"
         />
-    </tui-select>
+
+        <tui-icon
+            tuiHintDirection="top-left"
+            [tuiTooltip]="periodHint"
+        />
+    </tui-textfield>
     <ng-template #periodHint>
         You will pay in equal installments on a monthly basis You will pay in equal installments on a monthly basis
     </ng-template>

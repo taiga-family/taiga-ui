@@ -15,8 +15,8 @@ import {
     TuiScrollbar,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiInputNumber} from '@taiga-ui/kit';
-import {TuiInputDateModule, TuiTextareaModule} from '@taiga-ui/legacy';
+import {TuiChevron, TuiDataListWrapper, TuiInputNumber, TuiTextarea} from '@taiga-ui/kit';
+import {TuiInputDateModule} from '@taiga-ui/legacy';
 
 interface Item {
     readonly date: TuiDay;
@@ -43,7 +43,7 @@ interface Item {
         TuiNumberFormat,
         TuiScrollbar,
         TuiTable,
-        TuiTextareaModule,
+        TuiTextarea,
         TuiTextfield,
         TuiValidator,
         WaIntersectionObserver,

@@ -9,15 +9,17 @@ import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDropdown, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
+    TuiChevron,
     TuiDataListWrapper,
+    TuiFade,
     TuiFilterByInputPipe,
     TuiInputNumber,
+    TuiSelect,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 import {
     TuiComboBoxModule,
     TuiMultiSelectModule,
-    TuiSelectModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
@@ -36,14 +38,16 @@ interface User {
         TuiAvatar,
         TuiButton,
         TuiCell,
+        TuiChevron,
         TuiComboBoxModule,
         TuiDataListWrapper,
         TuiDropdown,
         TuiDropdownMobile,
+        TuiFade,
         TuiFilterByInputPipe,
         TuiInputNumber,
         TuiMultiSelectModule,
-        TuiSelectModule,
+        TuiSelect,
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
