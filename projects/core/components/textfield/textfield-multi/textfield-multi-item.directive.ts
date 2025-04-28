@@ -3,11 +3,11 @@ import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
 @Directive({
     standalone: true,
-    selector: 'ng-template[tuiTextfieldMultiItem]',
+    selector: 'ng-template[tuiTextfieldItem]',
 })
-export class TuiTextfieldMultiItem {
+export class TuiTextfieldItem {
     public static ngTemplateContextGuard(
-        _dir: TuiTextfieldMultiItem,
+        _dir: TuiTextfieldItem,
         _ctx: unknown,
     ): _ctx is PolymorpheusContext<{
         index: number;
