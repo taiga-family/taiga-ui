@@ -6,7 +6,7 @@
     />
 
     <tui-default-chip
-        *tuiTextfieldMultiItem="let context"
+        *tuiTextfieldItem="let context"
         tuiHint="Hello {{ context.item }}"
         [appearance]="context.item === 'invalid' ? 'error' : 'neutral'"
         [iconStart]="context.item === 'invalid' ? '@tui.info' : null"

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintDirective, TuiTextfield, TuiTextfieldMultiItem} from '@taiga-ui/core';
+import {TuiHintDirective, TuiTextfield, TuiTextfieldItem} from '@taiga-ui/core';
 import {TuiDefaultChip, TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
@@ -14,7 +14,7 @@ import {TuiDefaultChip, TuiInputChip} from '@taiga-ui/kit';
         TuiHintDirective,
         TuiInputChip,
         TuiTextfield,
-        TuiTextfieldMultiItem,
+        TuiTextfieldItem,
     ],
     templateUrl: './index.html',
     encapsulation,

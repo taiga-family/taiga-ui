@@ -24,6 +24,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
 import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
 import {TuiInputChipDirective} from './input-chip.directive';
+import type {TuiStringHandler} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
@@ -114,7 +115,7 @@ export class TuiDefaultChip<T> {
 
     protected readonly editMode = signal(false);
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
-    protected stringify = this.itemsHandlers.stringify();
+    protected stringify: TuiStringHandler<T> = this.itemsHandlers.stringify();
     protected appearance = inject(TuiAppearance).appearance();
     protected editModeAppearance = computed(() => {
         const app = this.editMode() ? '' : this.appearance;
