@@ -8,6 +8,7 @@ import {
     signal,
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
@@ -24,7 +25,6 @@ import {injectContext} from '@taiga-ui/polymorpheus';
 import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
 import {TuiInputChipDirective} from './input-chip.directive';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
