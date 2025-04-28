@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.114.0](https://github.com/taiga-family/taiga-ui/compare/v3.113.0...v3.114.0) (2025-04-28)
+
+### Bug Fixes
+
+- **kit:** `InputNumber` rejects decimal part (even if `precision > 0`) if affixes include decimal pseudo separator
+  ([#10892](https://github.com/taiga-family/taiga-ui/issues/10892))
+  ([f9ce6fd](https://github.com/taiga-family/taiga-ui/commit/f9ce6fda44c232a6eeb2a6ab39a9b42e938f6065))
+
 ## [3.113.0](https://github.com/taiga-family/taiga-ui/compare/v3.112.0...v3.113.0) (2025-04-21)
 
 ## [3.112.0](https://github.com/taiga-family/taiga-ui/compare/v3.111.0...v3.112.0) (2025-04-14)
