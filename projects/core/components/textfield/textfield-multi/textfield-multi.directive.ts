@@ -6,9 +6,13 @@ import {tuiAsTextfieldAccessor} from '../textfield-accessor';
 
 @Directive({
     standalone: true,
-    selector: 'input[tuiTextfieldMulti]',
+    selector: 'input[tuiInputChip]',
     providers: [tuiAsTextfieldAccessor(TuiTextfieldMultiDirective)],
     hostDirectives: [TuiNativeValidator],
+    host: {
+        '[id]': 'textfield.id',
+        '[readOnly]': 'readOnly',
+    },
 })
 export class TuiTextfieldMultiDirective<T> extends TuiTextfieldBase<T> {}
 

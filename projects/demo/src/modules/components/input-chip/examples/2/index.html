@@ -2,10 +2,11 @@
     <input
         placeholder="Enter"
         tuiInputChip
+        [unique]="false"
         [(ngModel)]="value"
     />
 
-    <tui-default-chip
+    <tui-input-chip-item
         *tuiTextfieldItem
         appearance="accent"
     />
