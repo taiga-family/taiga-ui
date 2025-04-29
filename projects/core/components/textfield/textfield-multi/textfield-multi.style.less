@@ -25,17 +25,23 @@ tui-textfield[multi] {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        pointer-events: none;
         padding: 0.5rem 0;
         overflow: scroll;
+        scroll-behavior: smooth;
         inline-size: calc(100% - var(--t-side) - var(--t-padding) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
 
-        &:has([tuiChip]) ~ .t-content .t-clear {
+        &:has(> *:not(.t-input_wrapper)) ~ .t-content .t-clear {
             display: flex;
         }
 
         &:has(> *:not(.t-input_wrapper)) input:defined::placeholder {
             opacity: 0;
         }
+    }
+
+    &[data-mode~='readonly'] .t-content .t-clear {
+        display: none;
     }
 
     .t-input_wrapper {

@@ -24,11 +24,11 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
-import {TuiInputChipDirective} from './input-chip.directive';
+import {TuiInputChipDirective} from '../input-chip.directive';
 
 @Component({
     standalone: true,
-    selector: 'tui-default-chip',
+    selector: 'tui-input-chip-item',
     imports: [
         FormsModule,
         NgIf,
@@ -54,9 +54,10 @@ import {TuiInputChipDirective} from './input-chip.directive';
         />
         <div
             tuiFade
-            tuiFadeOffset="2rem"
+            tuiFadeOffset="0.5rem"
             tuiHintOverflow
             [style.pointer-events]="editMode() ? 'none' : 'auto'"
+            [style.visibility]="editMode() ? 'hidden' : 'visible'"
             (dblclick)="editable && editMode.set(true); editable && input.focus()"
         >
             {{ internal() }}
@@ -66,7 +67,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
             iconStart="@tui.x"
             tuiIconButton
             type="button"
-            (click.prevent)="remove()"
+            (click.prevent)="directive()?.interactive() && remove()"
         >
             Remove
         </button>
@@ -75,6 +76,9 @@ import {TuiInputChipDirective} from './input-chip.directive';
         `
             :host {
                 margin: 0.125rem 0.25rem 0.125rem 0;
+                input {
+                    padding: var(--t-padding);
+                }
             }
         `,
     ],
@@ -90,38 +94,30 @@ import {TuiInputChipDirective} from './input-chip.directive';
         '(keydown.arrowRight.prevent)': 'moveFocus(1)',
     },
 })
-export class TuiDefaultChip<T> {
+export class TuiInputChipItem<T> {
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
-    private readonly context = signal(
-        injectContext<
-            PolymorpheusContext<{
-                index: number;
-                item: T;
-            }>
-        >()?.$implicit,
-    );
+    private readonly context = injectContext<
+        PolymorpheusContext<{
+            index: number;
+            item: T;
+        }>
+    >();
 
     protected readonly directive = tuiInjectAuxiliary<TuiInputChipDirective<T>>(
         (x) => x instanceof TuiInputChipDirective<T>,
     );
 
-    protected item = computed(() => {
-        return this.context()?.item;
-    });
-
     protected value = computed(() => this.directive()?.value() ?? []);
 
-    protected readonly internal = signal(this.item());
+    protected readonly internal = signal(this.item);
 
     protected readonly editMode = signal(false);
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
     protected stringify: TuiStringHandler<T> = this.itemsHandlers.stringify();
     protected appearance = inject(TuiAppearance).appearance();
-    protected editModeAppearance = computed(() => {
-        const app = this.editMode() ? '' : this.appearance;
-
-        return app;
-    });
+    protected editModeAppearance = computed(() =>
+        this.editMode() ? '' : this.appearance,
+    );
 
     protected binding = tuiDirectiveBinding(
         TuiAppearance,
@@ -132,14 +128,9 @@ export class TuiDefaultChip<T> {
     @Input()
     public editable = true;
 
-    @Input('context')
-    public set c(_context: {index: number; item: T}) {
-        this.internal.set(this.item());
-    }
-
     protected remove(): void {
         this.directive()?.onChange(
-            this.value().filter((_, index) => index !== this.context().index),
+            this.value().filter((_, index) => index !== this.index),
         );
         this.directive()?.el.focus();
     }
@@ -147,7 +138,7 @@ export class TuiDefaultChip<T> {
     protected edit(): void {
         this.directive()?.onChange(
             this.value().map((item, index) =>
-                index === this.context().index ? (this.internal() ?? item) : item,
+                index === this.index ? (this.internal() ?? item) : item,
             ),
         );
         this.editMode.set(false);
@@ -160,6 +151,14 @@ export class TuiDefaultChip<T> {
     }
 
     protected moveFocus(step: number): void {
-        this.directive()?.moveFocus(step, this.context().index);
+        this.directive()?.moveFocus(step, this.index);
+    }
+
+    private get index(): number {
+        return this.context.$implicit.index;
+    }
+
+    private get item(): T {
+        return this.context.$implicit.item;
     }
 }
