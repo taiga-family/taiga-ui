@@ -3,16 +3,16 @@ import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiHintDirective, TuiTextfield, TuiTextfieldItem} from '@taiga-ui/core';
-import {TuiInputChipItem, TuiInputChip} from '@taiga-ui/kit';
+import {TuiInputChip, TuiInputChipItem} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
-        TuiInputChipItem,
         TuiHintDirective,
         TuiInputChip,
+        TuiInputChipItem,
         TuiTextfield,
         TuiTextfieldItem,
     ],
