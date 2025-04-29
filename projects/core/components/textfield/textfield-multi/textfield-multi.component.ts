@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import {type AfterContentInit} from '@angular/core';
+import type {AfterContentInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,

@@ -5,12 +5,12 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiInputChipDirective} from '@taiga-ui/kit';
 import {
     TuiTextfield,
     TuiTextfieldComponent,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core';
+import {TuiInputChipDirective} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -20,9 +20,9 @@ import {
         TuiDocControl,
         TuiDocTextfield,
         TuiInputChipDirective,
-        TuiTextfieldMultiComponent,
-        TuiTextfieldComponent,
         TuiTextfield,
+        TuiTextfieldComponent,
+        TuiTextfieldMultiComponent,
     ],
     templateUrl: './index.html',
     styles: [
