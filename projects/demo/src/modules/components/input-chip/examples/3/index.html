@@ -5,7 +5,7 @@
         [formControl]="control"
     />
 
-    <tui-default-chip
+    <tui-input-chip-item
         *tuiTextfieldItem="let context"
         tuiHint="Hello {{ context.item }}"
         [appearance]="context.item === 'invalid' ? 'error' : 'neutral'"
