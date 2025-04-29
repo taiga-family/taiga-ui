@@ -3,11 +3,13 @@ import type {AfterViewInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     inject,
     Input,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {
@@ -25,9 +27,10 @@ import {
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {timer} from 'rxjs';
 
-import {TuiChipWrapper} from './chip-wrapper.component';
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
+import {TuiChipWrapper} from './input-chip-item/chip-wrapper.component';
 
 @Component({
     standalone: true,
@@ -77,6 +80,7 @@ export class TuiInputChipDirective<T>
     private readonly template?: TemplateRef<unknown>;
 
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
+    private readonly destroyRef = inject(DestroyRef);
 
     protected readonly textfieldValue = tuiValueBinding();
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
@@ -86,6 +90,9 @@ export class TuiInputChipDirective<T>
 
     @Input()
     public separator: RegExp | string = this.options.separator;
+
+    @Input()
+    public unique = this.options.unique;
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
@@ -118,12 +125,15 @@ export class TuiInputChipDirective<T>
         const value = this.textfieldValue()
             .trim()
             .split(this.separator)
-            .filter(Boolean) as T[];
+            .filter(
+                (item) => !!item && this.unique && !this.value().find((i) => i === item),
+            ) as T[];
 
         if (value.length) {
             this.onChange([...this.value(), ...value]);
 
             this.textfieldValue.set('');
+            this.scrollTo();
         }
     }
 
@@ -152,5 +162,20 @@ export class TuiInputChipDirective<T>
 
             this.moveFocus(-1);
         }
+    }
+
+    protected scrollTo(scrollLeft = this.scrollRef?.scrollWidth): void {
+        // Allow change detection to run and add new tag to DOM
+        timer(0)
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => {
+                if (this.scrollRef) {
+                    this.scrollRef.scrollLeft = scrollLeft || 0;
+                }
+            });
+    }
+
+    private get scrollRef(): HTMLElement | null {
+        return this.textfield.container?.nativeElement ?? null;
     }
 }

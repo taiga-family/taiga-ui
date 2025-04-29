@@ -43,11 +43,42 @@
     <ng-template pageTab>
         <tui-doc-demo [control]="control">
             <ng-template>
-                <div>soon</div>
+                <tui-textfield
+                    multi
+                    [rows]="rows"
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    <input
+                        placeholder="Enter"
+                        tuiInputChip
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+                </tui-textfield>
             </ng-template>
         </tui-doc-demo>
         <table tuiDocAPI>
-            <tbody></tbody>
+            <tbody>
+                <tr
+                    name="[unique]"
+                    tuiDocAPIItem
+                    type="boolean"
+                    [(value)]="unique"
+                >
+                    Ability to enter unique or non-unique tags
+                </tr>
+                <tr
+                    name="[rows]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="rows"
+                >
+                    Maximum number of rows
+                </tr>
+            </tbody>
 
             <tbody
                 #textfieldDoc
