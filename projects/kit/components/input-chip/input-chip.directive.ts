@@ -30,7 +30,7 @@ import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus'
 import {timer} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
-import {TuiChipWrapper} from './input-chip-item/chip-wrapper.component';
+import {TuiChipWrapper} from './input-chip-item/input-chip-wrapper.component';
 
 @Component({
     standalone: true,
@@ -125,12 +125,10 @@ export class TuiInputChipDirective<T>
         const value = this.textfieldValue()
             .trim()
             .split(this.separator)
-            .filter(
-                (item) => !!item && this.unique && !this.value().find((i) => i === item),
-            ) as T[];
+            .filter(Boolean) as T[];
 
         if (value.length) {
-            this.onChange([...this.value(), ...value]);
+            this.onChange(this.filterValue([...this.value(), ...value]));
 
             this.textfieldValue.set('');
             this.scrollTo();
@@ -177,5 +175,14 @@ export class TuiInputChipDirective<T>
 
     private get scrollRef(): HTMLElement | null {
         return this.textfield.container?.nativeElement ?? null;
+    }
+
+    private filterValue(value: T[]): T[] {
+        const seen = new Set();
+
+        return value
+            .reverse()
+            .filter((item) => !this.unique || (item && !seen.has(item) && seen.add(item)))
+            .reverse();
     }
 }

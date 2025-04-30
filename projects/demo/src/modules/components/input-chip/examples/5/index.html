@@ -1,13 +1,13 @@
 <tui-textfield multi>
     <input
-        placeholder="Enter"
+        placeholder="Only 3 letters"
         tuiInputChip
-        [unique]="false"
-        [(ngModel)]="value"
+        [formControl]="control"
+        [maskito]="mask"
     />
 
     <tui-input-chip-item
         *tuiTextfieldItem
-        appearance="accent"
+        [maskito]="mask"
     />
 </tui-textfield>

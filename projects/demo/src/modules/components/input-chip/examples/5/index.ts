@@ -2,15 +2,17 @@ import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintDirective, TuiTextfield, TuiTextfieldItem} from '@taiga-ui/core';
+import {MaskitoDirective} from '@maskito/angular';
+import type {MaskitoOptions} from '@maskito/core';
+import {TuiTextfield, TuiTextfieldItem} from '@taiga-ui/core';
 import {TuiInputChip, TuiInputChipItem} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         FormsModule,
+        MaskitoDirective,
         ReactiveFormsModule,
-        TuiHintDirective,
         TuiInputChip,
         TuiInputChipItem,
         TuiTextfield,
@@ -21,5 +23,9 @@ import {TuiInputChip, TuiInputChipItem} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    public readonly control = new FormControl(['invalid', 'value']);
+    protected readonly mask: MaskitoOptions = {
+        mask: [/\D/, /\D/, /\D/],
+    };
+
+    protected readonly control = new FormControl([]);
 }
