@@ -73,7 +73,7 @@ export class IconsGroup implements OnInit {
             .pipe(
                 debounceTime(500),
                 map((search) => search || ''),
-                filter((search) => search.length > 2 || search.length === 0),
+                filter((search) => search.length >= 2 || search.length === 0),
                 takeUntilDestroyed(this.destroyRef),
             )
             .subscribe((search) => {
