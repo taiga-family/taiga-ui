@@ -67,27 +67,17 @@ import {TuiInputChipDirective} from '../input-chip.directive';
             iconStart="@tui.x"
             tuiIconButton
             type="button"
-            (click.prevent)="directive()?.interactive() && remove()"
+            (click.stop.prevent)="directive()?.interactive() && remove()"
         >
             Remove
         </button>
     `,
-    styles: [
-        `
-            :host {
-                margin: 0.125rem 0.25rem 0.125rem 0;
-                input {
-                    padding: var(--t-padding);
-                }
-            }
-        `,
-    ],
+    styleUrls: ['./input-chip-item.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiChip],
     host: {
         tuiChip: '',
         tabIndex: '0',
-        '[size]': "textfieldOptions.size() === 'l' ? 's' : 'xs'",
         '(click.stop)': '(0)',
         '(keydown.backspace)': 'remove()',
         '(keydown.arrowLeft.prevent)': 'moveFocus(-1)',
@@ -119,10 +109,16 @@ export class TuiInputChipItem<T> {
         this.editMode() ? '' : this.appearance,
     );
 
-    protected binding = tuiDirectiveBinding(
+    protected hostAppearance = tuiDirectiveBinding(
         TuiAppearance,
         'tuiAppearance',
         this.editModeAppearance,
+    );
+
+    protected size = tuiDirectiveBinding(
+        TuiChip,
+        'size',
+        computed(() => (this.textfieldOptions.size() === 'l' ? 's' : 'xs')),
     );
 
     @Input()
@@ -132,7 +128,7 @@ export class TuiInputChipItem<T> {
         this.directive()?.onChange(
             this.value().filter((_, index) => index !== this.index),
         );
-        this.directive()?.el.focus();
+        this.directive()?.el.focus({preventScroll: true});
     }
 
     protected edit(): void {
@@ -142,7 +138,7 @@ export class TuiInputChipItem<T> {
             ),
         );
         this.editMode.set(false);
-        this.directive()?.el.focus();
+        this.directive()?.el.focus({preventScroll: true});
     }
 
     protected cancelEdit(): void {
