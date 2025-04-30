@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import type {AfterContentInit} from '@angular/core';
+import {type AfterContentInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -52,7 +52,9 @@ import {TuiTextfieldItem} from './textfield-multi-item.directive';
         TuiWithAppearance,
     ],
     host: {
-        '(mousedown.silent)': 'input?.nativeElement.focus()',
+        '(focusout)': 'onFocusout($event.relatedTarget)',
+        '(mousedown)': '0',
+        '[class._expandable]': 'rows > 1',
     },
 })
 export class TuiTextfieldMultiComponent<T>
@@ -76,5 +78,27 @@ export class TuiTextfieldMultiComponent<T>
 
     public override handleOption(_option: T): void {
         // TODO
+    }
+
+    public onFocusout(target: HTMLElement | null): void {
+        if (
+            this.container &&
+            (!target || !this.container?.nativeElement.contains(target))
+        ) {
+            this.container.nativeElement.scrollLeft = 0;
+        }
+    }
+
+    protected override onIconClick(event: Event): void {
+        if (event.target !== this.el || this.input?.nativeElement.matches(':read-only')) {
+            return;
+        }
+
+        event.preventDefault();
+        this.input?.nativeElement.focus();
+
+        if (this.dropdownOpen.tuiDropdownEnabled && this.dropdown.content) {
+            this.open.update((x) => !x);
+        }
     }
 }

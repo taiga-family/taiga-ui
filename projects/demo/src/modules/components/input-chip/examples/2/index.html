@@ -1,13 +1,11 @@
-<tui-textfield multi>
+<tui-textfield
+    multi
+    tuiTextfieldSize="m"
+>
     <input
         placeholder="Enter"
         tuiInputChip
         [unique]="false"
         [(ngModel)]="value"
-    />
-
-    <tui-input-chip-item
-        *tuiTextfieldItem
-        appearance="accent"
     />
 </tui-textfield>
