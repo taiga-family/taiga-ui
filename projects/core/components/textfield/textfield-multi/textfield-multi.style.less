@@ -6,6 +6,8 @@ tui-textfield[multi] {
     align-items: stretch;
     cursor: text;
 
+    --t-padding: 0.75rem;
+
     &::before,
     &::after {
         block-size: var(--t-height);
@@ -40,6 +42,16 @@ tui-textfield[multi] {
         }
     }
 
+    &:not(._expandable) {
+        .t-container {
+            margin-inline-start: calc(-1 * var(--t-padding));
+
+            & > *:first-child {
+                margin-inline-start: var(--t-padding);
+            }
+        }
+    }
+
     &[data-mode~='readonly'] .t-content .t-clear {
         display: none;
     }
@@ -70,5 +82,21 @@ tui-textfield[multi] {
     .t-filler:defined {
         position: absolute;
         left: 0;
+    }
+
+    &[data-size='m'] {
+        --t-padding: 0.625rem;
+
+        .t-ghost {
+            min-block-size: 1.75rem;
+        }
+    }
+
+    &[data-size='s'] {
+        --t-padding: 0.25rem;
+
+        .t-ghost {
+            min-block-size: 1rem;
+        }
     }
 }
