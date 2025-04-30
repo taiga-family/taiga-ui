@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/polymorpheus';
 import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
-import {TuiInputChipItem} from './input-chip-item';
+import {TuiInputChipItem} from './input-chip-item.component';
 
 /*
  * Internal wrapper for polymorpheus-context
@@ -25,7 +25,7 @@ import {TuiInputChipItem} from './input-chip-item';
             {{ text }}
         </ng-container>
     `,
-    styles: [':host {display: contents}'],
+    styles: [':host {}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiChipWrapper<T> {
