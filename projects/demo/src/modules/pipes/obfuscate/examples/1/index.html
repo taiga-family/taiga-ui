@@ -1,0 +1,14 @@
+<p>
+    Obfuscate "abc" by default:
+    {{ 'abc' | tuiObfuscate }}
+</p>
+
+<p>
+    Obfuscate "abc" with "#":
+    {{ 'abc' | tuiObfuscate: '#' }}
+</p>
+
+<p>
+    Obfuscate value by recipe 'city':
+    {{ 'Moscow' | tuiObfuscate: 'city' }}
+</p>
