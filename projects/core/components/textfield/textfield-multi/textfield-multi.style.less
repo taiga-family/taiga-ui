@@ -29,8 +29,6 @@ tui-textfield[multi] {
         align-items: center;
         pointer-events: none;
         padding: 0.5rem 0;
-        overflow: scroll;
-        scroll-behavior: smooth;
         inline-size: calc(100% - var(--t-side) - var(--t-padding) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
 
         &:has(> *:not(.t-input_wrapper)) ~ .t-content .t-clear {
@@ -44,6 +42,8 @@ tui-textfield[multi] {
 
     &:not(._expandable) {
         .t-container {
+            overflow: scroll;
+            scroll-behavior: smooth;
             margin-inline-start: calc(-1 * var(--t-padding));
 
             & > *:first-child {
@@ -62,6 +62,7 @@ tui-textfield[multi] {
         align-items: center;
         flex: 1;
         max-inline-size: 100%;
+        margin-left: 0.25rem;
 
         .t-ghost {
             visibility: hidden;
@@ -95,8 +96,14 @@ tui-textfield[multi] {
     &[data-size='s'] {
         --t-padding: 0.25rem;
 
+        padding-inline-end: 0.625rem;
+
         .t-ghost {
             min-block-size: 1rem;
+        }
+
+        .t-container {
+            padding: 0.125rem 0;
         }
     }
 }
