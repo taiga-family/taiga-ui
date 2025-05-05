@@ -2,13 +2,12 @@
     <input
         placeholder="Enter"
         tuiInputChip
-        [formControl]="control"
+        [unique]="false"
+        [(ngModel)]="value"
     />
 
     <tui-input-chip-item
-        *tuiTextfieldItem="let context"
-        tuiHint="Hello {{ context.item }}"
-        [appearance]="context.item === 'invalid' ? 'error' : 'neutral'"
-        [iconStart]="context.item === 'invalid' ? '@tui.info' : null"
+        *tuiTextfieldItem
+        appearance="accent"
     />
 </tui-textfield>
