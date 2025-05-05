@@ -204,33 +204,7 @@ design your app with Taiga UI components.
                         src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
                 /></a>
             </div>
-        </td>
-        <td align="center">
-            <a href="https://github.com/mdlufy"
-                ><img
-                    src="https://github.com/mdlufy.png?size=200"
-                    width="100"
-                    style="margin-bottom: -4px; border-radius: 8px;"
-                    alt="German Panov"
-                /><br /><b>German&nbsp;Panov</b></a
-            >
-            <div style="margin-top: 4px">
-                <a
-                    href="https://github.com/mdlufy"
-                    title="GitHub"
-                    ><img
-                        width="16"
-                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
-                /></a>
-                <a
-                    href="https://t.me/mdlufy"
-                    title="Telegram"
-                    ><img
-                        width="16"
-                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
-                /></a>
-            </div>
-        </td>
+        </td> 
         <td align="center">
             <a href="https://github.com/splincode"
                 ><img
@@ -257,6 +231,39 @@ design your app with Taiga UI components.
                 /></a>
                 <a
                     href="https://t.me/splincode"
+                    title="Telegram"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/send.svg"
+                /></a>
+            </div>
+        </td>
+        <td align="center">
+            <a href="https://github.com/mdlufy"
+                ><img
+                    src="https://github.com/mdlufy.png?size=200"
+                    width="100"
+                    style="margin-bottom: -4px; border-radius: 8px;"
+                    alt="German Panov"
+                /><br /><b>German&nbsp;Panov</b></a
+            >
+            <div style="margin-top: 4px">
+                <a
+                    href="https://twitter.com/mdlufy_"
+                    title="Twitter"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/twitter.svg"
+                /></a>
+                <a
+                    href="https://github.com/mdlufy"
+                    title="GitHub"
+                    ><img
+                        width="16"
+                        src="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg"
+                /></a>
+                <a
+                    href="https://t.me/mdlufy"
                     title="Telegram"
                     ><img
                         width="16"
