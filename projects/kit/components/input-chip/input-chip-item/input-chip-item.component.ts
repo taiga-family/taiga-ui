@@ -16,7 +16,7 @@ import {
     tuiInjectAuxiliary,
 } from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {TuiHintOverflow} from '@taiga-ui/core/directives/hint';
+import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
@@ -58,6 +58,7 @@ import {TuiInputChipDirective} from '../input-chip.directive';
             tuiHintOverflow
             [style.pointer-events]="editMode() ? 'none' : 'auto'"
             [style.visibility]="editMode() ? 'hidden' : 'visible'"
+            [tuiHint]="hint?.content() ? '' : stringify(internal())"
             (dblclick)="editable && editMode.set(true); editable && input.focus()"
         >
             {{ internal() }}
@@ -78,6 +79,7 @@ import {TuiInputChipDirective} from '../input-chip.directive';
     host: {
         tuiChip: '',
         tabIndex: '0',
+        '[class._edit]': 'editMode()',
         '(click.stop)': '(0)',
         '(keydown.backspace)': 'remove()',
         '(keydown.arrowLeft.prevent)': 'moveFocus(-1)',
@@ -103,6 +105,7 @@ export class TuiInputChipItem<T> {
 
     protected readonly editMode = signal(false);
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
+    protected hint = inject(TuiHintDirective, {self: true, optional: true});
     protected stringify: TuiStringHandler<T> = this.itemsHandlers.stringify();
     protected appearance = inject(TuiAppearance).appearance();
     protected editModeAppearance = computed(() =>
@@ -144,6 +147,7 @@ export class TuiInputChipItem<T> {
     protected cancelEdit(): void {
         this.editMode.set(false);
         this.directive()?.setValue(this.value());
+        this.internal.set(this.item);
     }
 
     protected moveFocus(step: number): void {

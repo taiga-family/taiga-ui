@@ -1,0 +1,14 @@
+<tui-textfield multi>
+    <input
+        placeholder="Enter"
+        tuiInputChip
+        [formControl]="control"
+    />
+
+    <div
+        *tuiTextfieldItem="let context"
+        [style.line-height.rem]="2"
+    >
+        {{ context.item }},
+    </div>
+</tui-textfield>
