@@ -25,7 +25,17 @@ import {TuiInputChipItem} from './input-chip-item.component';
             {{ text }}
         </ng-container>
     `,
-    styles: [':host {}'],
+    styles: [
+        `
+            :host {
+                max-width: 100%;
+
+                &:last-of-type {
+                    max-width: 80%;
+                }
+            }
+        `,
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiChipWrapper<T> {
