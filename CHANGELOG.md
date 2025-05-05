@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.36.0](https://github.com/taiga-family/taiga-ui/compare/v4.35.0...v4.36.0) (2025-05-05)
+
+### 🐞 Bug Fixes
+
+- **core:** `Dialogs` fix long words wrapping ([#10947](https://github.com/taiga-family/taiga-ui/issues/10947))
+  ([9ac123c](https://github.com/taiga-family/taiga-ui/commit/9ac123cd8abfe1009c07073c6ec54262f2f71bf9))
+- **core:** change label font size in data list ([#10928](https://github.com/taiga-family/taiga-ui/issues/10928))
+  ([3e04536](https://github.com/taiga-family/taiga-ui/commit/3e045363d1938711bb11a61aadbc0dc5a8620071))
+
 ## [4.35.0](https://github.com/taiga-family/taiga-ui/compare/v4.34.0...v4.35.0) (2025-04-28)
 
 ### 🚀 Features
