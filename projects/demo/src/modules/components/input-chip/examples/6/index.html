@@ -1,14 +1,13 @@
 <tui-textfield multi>
     <input
-        placeholder="Enter"
+        placeholder="Only 3 letters"
         tuiInputChip
         [formControl]="control"
+        [maskito]="mask"
     />
 
-    <div
-        *tuiTextfieldItem="let context"
-        [style.line-height.rem]="2"
-    >
-        {{ context.item }},
-    </div>
+    <tui-input-chip-item
+        *tuiTextfieldItem
+        [maskito]="mask"
+    />
 </tui-textfield>
