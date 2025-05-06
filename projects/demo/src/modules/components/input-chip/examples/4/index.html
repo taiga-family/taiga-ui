@@ -7,7 +7,7 @@
     />
 
     <tui-input-chip-item
-        *tuiTextfieldItem
-        appearance="accent"
+        *tuiTextfieldItem="let context"
+        [tuiHint]="'Hello ' + context.item"
     />
 </tui-textfield>

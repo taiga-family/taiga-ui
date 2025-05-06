@@ -2,10 +2,12 @@ import {NgIf} from '@angular/common';
 import type {AfterContentInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     ContentChild,
     ElementRef,
     forwardRef,
+    inject,
     Input,
     TemplateRef,
     ViewChild,
@@ -13,10 +15,14 @@ import {
 } from '@angular/core';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
-import {TuiWithAppearance} from '@taiga-ui/core/directives';
+import {
+    tuiAsDataListHost,
+    TuiWithOptionContent,
+} from '@taiga-ui/core/components/data-list';
+import {TuiWithAppearance, TuiWithItemsHandlers} from '@taiga-ui/core/directives';
 import {
     TuiDropdownDirective,
     TuiDropdownFixed,
@@ -33,7 +39,14 @@ import {TuiTextfieldItem} from './textfield-multi-item.directive';
 @Component({
     standalone: true,
     selector: 'tui-textfield[multi]',
-    imports: [NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
+    imports: [
+        NgIf,
+        PolymorpheusOutlet,
+        TuiButton,
+        TuiScrollControls,
+        TuiScrollRef,
+        WaResizeObserver,
+    ],
     templateUrl: './textfield-multi.template.html',
     styleUrls: ['./textfield-multi.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -49,6 +62,8 @@ import {TuiTextfieldItem} from './textfield-multi-item.directive';
         TuiWithDropdownOpen,
         TuiWithTextfieldDropdown,
         TuiWithIcons,
+        TuiWithItemsHandlers,
+        TuiWithOptionContent,
         TuiWithAppearance,
     ],
     host: {
@@ -61,6 +76,8 @@ export class TuiTextfieldMultiComponent<T>
     extends TuiTextfieldComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
+    protected readonly cdr = inject(ChangeDetectorRef);
+
     @ContentChild(forwardRef(() => TuiTextfieldMultiDirective), {
         read: ElementRef,
         static: true,
@@ -76,8 +93,8 @@ export class TuiTextfieldMultiComponent<T>
     @Input()
     public rows = 100;
 
-    public override handleOption(_option: T): void {
-        // TODO
+    public override handleOption(option: T): void {
+        this.accessor?.setValue([...(this.control?.value ?? []), option]);
     }
 
     public onFocusout(target: HTMLElement | null): void {
@@ -87,6 +104,26 @@ export class TuiTextfieldMultiComponent<T>
         ) {
             this.container.nativeElement.scrollLeft = 0;
         }
+    }
+
+    protected get computeMaxHeight(): number | null {
+        return this.expandable && this.control?.value?.length && this.lineHeight
+            ? this.rows * this.lineHeight
+            : null;
+    }
+
+    protected get expandable(): boolean {
+        return this.rows > 1;
+    }
+
+    protected get lineHeight(): number {
+        return (
+            (this.container?.nativeElement?.firstChild as HTMLElement)?.offsetHeight ?? 0
+        );
+    }
+
+    protected chipResize(): void {
+        this.cdr.detectChanges();
     }
 
     protected override onIconClick(event: Event): void {
