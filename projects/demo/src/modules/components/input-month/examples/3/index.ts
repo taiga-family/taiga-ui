@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiMonth} from '@taiga-ui/cdk';
 import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputMonth, tuiInputMonthOptionsProvider, TuiTooltip} from '@taiga-ui/kit';
+import {tuiInputDateOptionsProvider, TuiInputMonth, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -13,7 +13,7 @@ import {TuiInputMonth, tuiInputMonthOptionsProvider, TuiTooltip} from '@taiga-ui
     encapsulation,
     changeDetection,
     providers: [
-        tuiInputMonthOptionsProvider({
+        tuiInputDateOptionsProvider({
             // Callback has the first argument – size of the textfield box ('s' | 'm' | 'l')
             icon: () => '',
         }),
