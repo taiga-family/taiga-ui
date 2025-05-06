@@ -2,7 +2,9 @@
     margin: 0.125rem 0.25rem 0.125rem 0;
 
     input {
-        padding-left: 0.25rem;
+        padding: 0 0 0 0.25rem;
+        transition: none;
+        color: transparent;
     }
 
     :host-context([data-size='s']) & {
@@ -10,6 +12,12 @@
     }
 
     &._edit {
+        background: transparent;
+
+        input {
+            color: var(--tui-text-primary);
+        }
+
         &::before {
             color: transparent;
             transition: none;

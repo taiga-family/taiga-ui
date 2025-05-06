@@ -15,7 +15,6 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     tuiInjectAuxiliary,
 } from '@taiga-ui/core/components/textfield';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
@@ -45,7 +44,6 @@ import {TuiInputChipDirective} from '../input-chip.directive';
             tuiChip
             [ngModel]="internal()"
             [readOnly]="!editMode()"
-            [style.color]="editMode() ? 'var(--tui-text-primary)' : 'transparent'"
             (blur)="cancelEdit()"
             (keydown.backspace.stop)="(0)"
             (keydown.enter)="edit()"
@@ -107,16 +105,6 @@ export class TuiInputChipItem<T> {
     protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
     protected hint = inject(TuiHintDirective, {self: true, optional: true});
     protected stringify: TuiStringHandler<T> = this.itemsHandlers.stringify();
-    protected appearance = inject(TuiAppearance).appearance();
-    protected editModeAppearance = computed(() =>
-        this.editMode() ? '' : this.appearance,
-    );
-
-    protected hostAppearance = tuiDirectiveBinding(
-        TuiAppearance,
-        'tuiAppearance',
-        this.editModeAppearance,
-    );
 
     protected size = tuiDirectiveBinding(
         TuiChip,
