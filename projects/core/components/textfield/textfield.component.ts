@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import {type AfterContentInit, type QueryList} from '@angular/core';
+import type {AfterContentInit, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
