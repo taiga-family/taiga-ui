@@ -1,14 +1,20 @@
-<tui-textfield multi>
+<tui-textfield
+    multi
+    [rows]="3"
+>
     <input
-        placeholder="Enter"
         tuiInputChip
         [formControl]="control"
     />
+</tui-textfield>
 
-    <div
-        *tuiTextfieldItem="let context"
-        [style.line-height.rem]="2"
-    >
-        {{ context.item }},
-    </div>
+<tui-textfield
+    multi
+    [rows]="1"
+    [style.margin-block-start.rem]="1"
+>
+    <input
+        tuiInputChip
+        [formControl]="control"
+    />
 </tui-textfield>
