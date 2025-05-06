@@ -33,17 +33,31 @@
         />
 
         <tui-doc-example
-            id="validation"
-            heading="Validation"
+            id="tooltip"
+            heading="Tooltip"
             [component]="4 | tuiComponent"
             [content]="4 | tuiExample"
         />
 
         <tui-doc-example
-            id="Mask"
-            heading="Mask"
+            id="validation"
+            heading="validation"
             [component]="5 | tuiComponent"
             [content]="5 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="mask"
+            heading="mask"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="overflow"
+            heading="Overflow"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
         />
     </ng-template>
 
@@ -62,7 +76,9 @@
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [readOnly]="controlDoc.readonly"
+                        [separator]="separator"
                         [tuiDisabled]="controlDoc.disabled"
+                        [unique]="unique"
                     />
                 </tui-textfield>
             </ng-template>
@@ -84,6 +100,14 @@
                     [(value)]="rows"
                 >
                     Maximum number of rows
+                </tr>
+                <tr
+                    name="[separator]"
+                    tuiDocAPIItem
+                    type="string"
+                    [(value)]="separator"
+                >
+                    String or RegExp to separate tags
                 </tr>
             </tbody>
 

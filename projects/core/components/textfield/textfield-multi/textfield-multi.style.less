@@ -21,21 +21,30 @@ tui-textfield[multi] {
         outline: none;
     }
 
+    .t-scroll {
+        .fullsize(absolute, inset);
+
+        top: 0.25rem;
+        bottom: 0.25rem;
+        min-block-size: 0;
+    }
+
     .t-container {
         .scrollbar-hidden();
 
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        pointer-events: none;
+        overflow: scroll;
+        scroll-behavior: smooth;
         padding: 0.5rem 0;
         inline-size: calc(100% - var(--t-side) - var(--t-padding) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
 
-        &:has(> *:not(.t-input_wrapper)) ~ .t-content .t-clear {
+        &:has(> *:not(.t-input_wrapper, tui-scroll-controls)) ~ .t-content .t-clear {
             display: flex;
         }
 
-        &:has(> *:not(.t-input_wrapper)) input:defined::placeholder {
+        &:has(> *:not(.t-input_wrapper, tui-scroll-controls)) input:defined::placeholder {
             opacity: 0;
         }
     }

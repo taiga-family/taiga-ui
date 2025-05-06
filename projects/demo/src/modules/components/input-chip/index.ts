@@ -40,5 +40,6 @@ export default class PageComponent {
     protected readonly control = new FormControl(null);
     protected value = [];
     protected rows = 5;
-    protected unique = false;
+    protected unique = true;
+    protected separator = ',';
 }
