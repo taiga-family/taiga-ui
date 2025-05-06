@@ -97,7 +97,7 @@ export class TuiInputChipDirective<T>
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
     public setValue(value: T[]): void {
-        this.onChange(value);
+        this.onChange(this.filterValue(value));
         this.textfieldValue.set('');
     }
 
@@ -162,13 +162,19 @@ export class TuiInputChipDirective<T>
         }
     }
 
-    protected scrollTo(scrollLeft = this.scrollRef?.scrollWidth): void {
+    protected scrollTo(): void {
         // Allow change detection to run and add new tag to DOM
         timer(0)
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe(() => {
-                if (this.scrollRef) {
-                    this.scrollRef.scrollLeft = scrollLeft || 0;
+                if (!this.scrollRef) {
+                    return;
+                }
+
+                if (this.textfield.rows === 1) {
+                    this.scrollRef.scrollLeft = this.scrollRef.scrollWidth || 0;
+                } else {
+                    this.scrollRef.scrollTop = this.scrollRef.scrollHeight || 0;
                 }
             });
     }
