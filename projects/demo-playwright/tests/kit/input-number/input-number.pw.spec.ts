@@ -268,6 +268,54 @@ describe('InputNumber', () => {
 
                     await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}1`);
                 });
+
+                test('sets 2 on mousedown', async ({page}) => {
+                    await inputNumber.stepUp.dispatchEvent('mousedown');
+
+                    const textfieldHandle = await inputNumber.textfield.elementHandle();
+
+                    await page.waitForFunction(
+                        (input) => {
+                            const value = (input as HTMLInputElement).value;
+
+                            return Number(value) > 1;
+                        },
+                        textfieldHandle,
+                        {timeout: 1000},
+                    );
+
+                    await inputNumber.stepUp.dispatchEvent('mouseup');
+
+                    const value = await inputNumber.textfield.inputValue();
+
+                    expect(Number(value)).toBe(2);
+                });
+
+                test('sets 0 from 2 on mousedown', async ({page}) => {
+                    await inputNumber.textfield.fill('2');
+
+                    await expect(inputNumber.textfield).toHaveValue('2');
+
+                    await inputNumber.stepDown.dispatchEvent('mousedown');
+
+                    const textfieldHandle = await inputNumber.textfield.elementHandle();
+
+                    await page.waitForFunction(
+                        (input) => {
+                            const value = (input as HTMLInputElement).value;
+
+                            return Number(value) === 0;
+                        },
+                        textfieldHandle,
+                        {timeout: 1000},
+                    );
+
+                    await inputNumber.stepDown.dispatchEvent('mouseup');
+
+                    const value = await inputNumber.textfield.inputValue();
+
+                    expect(Number(value)).toBe(0);
+                });
             });
 
             describe('[step]=3', () => {
