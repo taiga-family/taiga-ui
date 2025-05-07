@@ -1,16 +1,11 @@
 import {Component} from '@angular/core';
-import {
-    type AbstractControl,
-    FormControl,
-    FormsModule,
-    ReactiveFormsModule,
-    type ValidationErrors,
-} from '@angular/forms';
+import type {AbstractControl, ValidationErrors} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiTextfield, TuiTextfieldItem} from '@taiga-ui/core';
 import {TuiInputChip, TuiInputChipItem} from '@taiga-ui/kit';
-import {TuiValidationError} from '@taiga-ui/cdk';
 
 export function customValidator({value}: AbstractControl): ValidationErrors | null {
     return value.some((v: string) => v === 'invalid')
