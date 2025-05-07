@@ -7,6 +7,9 @@ import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiTextfieldBase} from './textfield.directive';
 import {tuiAsTextfieldAccessor} from './textfield-accessor';
 
+/**
+ * @deprecated use {@link TuiSelect} from @taiga-ui/kit instead
+ */
 @Component({
     standalone: true,
     selector: 'select[tuiTextfield]',
