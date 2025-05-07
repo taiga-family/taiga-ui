@@ -64,6 +64,7 @@ import {TuiChipWrapper} from './input-chip-item/input-chip-wrapper.component';
         '[disabled]': 'disabled()',
         '(input)': 'textfieldValue.set(el.value)',
         '(keydown.enter)': 'onEnter()',
+        '(blur)': 'onTouched();',
         '(keydown.backspace)': 'onBackspace()',
         '(keydown.arrowLeft)': 'onBackspace()',
         '(keydown.silent)': 'onKeydown($event)',
