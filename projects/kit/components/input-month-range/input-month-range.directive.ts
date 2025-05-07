@@ -1,13 +1,13 @@
-import {computed, Directive, effect, inject, signal} from '@angular/core';
+import {Directive, effect, inject, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
 import {RANGE_SEPARATOR_CHAR, TuiMonthRange} from '@taiga-ui/cdk/date-time';
-import {tuiValueBinding} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,
+    TuiTextfieldDirective,
     tuiTextfieldIconBinding,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
@@ -31,6 +31,8 @@ import {TUI_INPUT_DATE_OPTIONS, TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens'
     },
 })
 export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null> {
+    private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER));
     private readonly open = tuiDropdownOpen();
     private readonly intermediateValue = signal<TuiMonth | null>(null);
 
@@ -38,18 +40,18 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
         (x) => x instanceof TuiCalendarMonth,
     );
 
-    private readonly formatter = toSignal(inject(TUI_MONTH_FORMATTER), {
-        initialValue: () => '',
-    });
-
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
 
-    protected readonly textfieldValue = tuiValueBinding(
-        computed((value = this.value(), format = this.formatter()) =>
-            value ? format(value.from) + RANGE_SEPARATOR_CHAR + format(value.to) : '',
-        ),
-    );
+    protected readonly valueEffect = effect(() => {
+        const value = this.value();
+        const format = this.formatter() || (() => '');
+        const string = value
+            ? format(value.from) + RANGE_SEPARATOR_CHAR + format(value.to)
+            : '';
+
+        this.textfield.value.set(string);
+    }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly calendarInit = effect(() => {
         const calendar = this.calendar();

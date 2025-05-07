@@ -3,15 +3,18 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    effect,
     inject,
     Input,
     signal,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
+    TuiTextfieldDirective,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
@@ -29,7 +32,6 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
     host: {
         '[attr.aria-invalid]': 'invalid()',
         '[disabled]': '!interactive()',
-        '[value]': 'stringified()',
         '(change)': 'selectOption($event.target.options.selectedIndex)',
     },
 })
@@ -37,6 +39,8 @@ export class TuiNativeSelect<T>
     extends TuiControl<T | null>
     implements TuiTextfieldAccessor<T>
 {
+    private readonly textfield = inject(TuiTextfieldDirective);
+
     protected readonly isFlat = tuiIsFlat;
     protected readonly placeholder = signal('');
     protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -54,6 +58,10 @@ export class TuiNativeSelect<T>
             (x: T) =>
                 tuiIsPresent(value) && this.itemsHandlers.identityMatcher()(x, value),
     );
+
+    protected readonly valueEffect = effect(() => {
+        this.textfield.value.set(this.stringified());
+    }, TUI_ALLOW_SIGNAL_WRITES);
 
     @Input()
     public items: ReadonlyArray<readonly T[]> | readonly T[] | null = [];
