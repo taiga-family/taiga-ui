@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components';
+import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
@@ -69,7 +69,7 @@ import {TuiTextfieldItem} from './textfield-multi-item.directive';
     host: {
         '(focusout)': 'onFocusout($event.relatedTarget)',
         '(mousedown)': '0',
-        '[class._expandable]': 'rows > 1',
+        '[class._expandable]': 'expandable',
     },
 })
 export class TuiTextfieldMultiComponent<T>
