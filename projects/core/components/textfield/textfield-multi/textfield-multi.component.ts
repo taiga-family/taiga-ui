@@ -15,13 +15,13 @@ import {
 } from '@angular/core';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsDataListHost,
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
+import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {TuiWithAppearance, TuiWithItemsHandlers} from '@taiga-ui/core/directives';
 import {
     TuiDropdownDirective,
