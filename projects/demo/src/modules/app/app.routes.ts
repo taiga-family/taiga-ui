@@ -390,6 +390,11 @@ export const ROUTES: Routes = [
         title: 'Fade',
     }),
     route({
+        path: DemoRoute.MiddleEllipsis,
+        loadComponent: async () => import('../directives/middle-ellipsis'),
+        title: 'MiddleEllipsis',
+    }),
+    route({
         path: DemoRoute.Sensitive,
         loadComponent: async () => import('../directives/sensitive'),
         title: 'Sensitive',
