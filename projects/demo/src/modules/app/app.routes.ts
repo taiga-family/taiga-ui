@@ -515,6 +515,11 @@ export const ROUTES: Routes = [
         title: 'Island',
     }),
     route({
+        path: DemoRoute.FileUploader,
+        loadComponent: async () => import('../components/file-uploader'),
+        title: 'FileUploader',
+    }),
+    route({
         path: DemoRoute.ItemsWithMore,
         loadComponent: async () => import('../components/items-with-more'),
         title: 'ItemsWithMore',
