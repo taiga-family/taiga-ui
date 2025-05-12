@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.115.0](https://github.com/taiga-family/taiga-ui/compare/v3.114.0...v3.115.0) (2025-05-12)
+
+### Bug Fixes
+
+- **addon-mobile:** `SheetDialog` add env offset ([#10961](https://github.com/taiga-family/taiga-ui/issues/10961))
+  ([205f4ee](https://github.com/taiga-family/taiga-ui/commit/205f4ee08b993d5c67d0bb07d76ba268718abc83))
+
 ## [3.114.0](https://github.com/taiga-family/taiga-ui/compare/v3.113.0...v3.114.0) (2025-04-28)
 
 ### Bug Fixes
