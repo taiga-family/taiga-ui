@@ -28,7 +28,7 @@
         .t-sheet {
             display: flex;
             flex-direction: column;
-            min-block-size: calc(100% - 1rem);
+            min-block-size: calc(100% - 1rem - env(safe-area-inset-bottom));
         }
 
         // TODO: make default in v5
@@ -48,6 +48,7 @@
 }
 
 .t-stop {
+    top: env(safe-area-inset-bottom);
     scroll-snap-stop: normal;
     scroll-snap-align: start;
     height: 1rem;
@@ -140,7 +141,7 @@
 }
 
 .t-footer {
-    height: 1rem;
+    height: calc(1rem + env(safe-area-inset-bottom));
     scroll-snap-stop: always;
     scroll-snap-align: end;
     background: var(--tui-elevation-01);
