@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.37.0](https://github.com/taiga-family/taiga-ui/compare/v4.36.0...v4.37.0) (2025-05-12)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCardGroup` fix icons position
+  ([#10952](https://github.com/taiga-family/taiga-ui/issues/10952))
+  ([63253b8](https://github.com/taiga-family/taiga-ui/commit/63253b822cd9a4456372306cfcd8e2de94ec6170))
+- **core:** `Dialogs` fix overlay scrolling out of viewport
+  ([#10953](https://github.com/taiga-family/taiga-ui/issues/10953))
+  ([c39887e](https://github.com/taiga-family/taiga-ui/commit/c39887e53fea2a4077adaa49f2465e2f17117fd8))
+
 ## [4.36.0](https://github.com/taiga-family/taiga-ui/compare/v4.35.0...v4.36.0) (2025-05-05)
 
 ### 🐞 Bug Fixes
