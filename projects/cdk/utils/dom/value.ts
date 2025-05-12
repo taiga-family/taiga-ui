@@ -41,11 +41,11 @@ export function tuiValue(
         const update = (): void => value.set(el.value);
 
         el.addEventListener('input', update);
-        el.addEventListener('programmaticinput', update);
+        el.addEventListener('tui-input', update);
 
         return (): void => {
             el.removeEventListener('input', update);
-            el.removeEventListener('programmaticinput', update);
+            el.removeEventListener('tui-input', update);
         };
     };
 
@@ -91,7 +91,7 @@ function patch(prototype: WithValue): void {
     Object.defineProperty(prototype, 'value', {
         set(this: WithValue, detail: string) {
             const value = this.value;
-            const event = new CustomEvent('programmaticinput', {detail, bubbles: true});
+            const event = new CustomEvent('tui-input', {detail, bubbles: true});
 
             set!.call(this, detail);
 
