@@ -3,9 +3,11 @@
 :host {
     .fullsize(fixed, inset);
     right: -1rem;
+    top: calc(var(--tui-offset) + env(safe-area-inset-top));
     display: flex;
     flex-direction: column;
     clip-path: inset(0 1rem 0 0 round 0.75rem 0.75rem 0 0);
+    block-size: calc(100% - var(--tui-offset) - env(safe-area-inset-top));
     font: var(--tui-font-text-m);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
