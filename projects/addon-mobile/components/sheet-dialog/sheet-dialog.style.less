@@ -3,9 +3,11 @@
 :host {
     .fullsize(fixed, inset);
     right: -1rem;
+    top: calc(var(--tui-offset) + env(safe-area-inset-top));
     display: flex;
     flex-direction: column;
     clip-path: inset(0 1rem 0 0 round 0.75rem 0.75rem 0 0);
+    block-size: calc(100% - var(--tui-offset) - env(safe-area-inset-top));
     font: var(--tui-font-text-m);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
@@ -26,7 +28,7 @@
         .t-sheet {
             display: flex;
             flex-direction: column;
-            min-block-size: calc(100% - 1rem);
+            min-block-size: calc(100% - 1rem - env(safe-area-inset-bottom));
         }
 
         // TODO: make default in v5
@@ -46,6 +48,7 @@
 }
 
 .t-stop {
+    top: env(safe-area-inset-bottom);
     scroll-snap-stop: normal;
     scroll-snap-align: start;
     height: 1rem;
@@ -138,7 +141,7 @@
 }
 
 .t-footer {
-    height: 1rem;
+    height: calc(1rem + env(safe-area-inset-bottom));
     scroll-snap-stop: always;
     scroll-snap-align: end;
     background: var(--tui-elevation-01);

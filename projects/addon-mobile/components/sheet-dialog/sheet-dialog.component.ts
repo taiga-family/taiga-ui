@@ -38,6 +38,7 @@ function isCloseable(this: TuiSheetDialogComponent<unknown>): boolean {
     host: {
         '[$.class._stuck]': 'stuck$',
         '($.class._stuck)': 'stuck$',
+        '[style.--tui-offset.px]': 'context.offset',
         '[class._fullscreen]': 'context.fullscreen === true',
         '[attr.data-appearance]': 'context.appearance',
     },
@@ -70,11 +71,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         @Inject(POLYMORPHEUS_CONTEXT)
         readonly context: TuiDialog<TuiSheetDialogOptions<I>, any>,
     ) {}
-
-    @HostBinding('style.top.px')
-    get offset(): number {
-        return this.context.offset;
-    }
 
     @HostBinding('class._closeable')
     get closeable(): boolean {
