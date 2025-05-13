@@ -10,11 +10,10 @@ import {
     PLATFORM_ID,
     signal,
 } from '@angular/core';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 
 type WithValue = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
-
-let patched = false;
 
 export function tuiValue(
     input:
@@ -24,12 +23,14 @@ export function tuiValue(
         | WithValue,
     injector = inject(INJECTOR),
 ): WritableSignal<string> {
-    if (!patched && isPlatformBrowser(injector.get(PLATFORM_ID))) {
-        patched = true;
+    const win = injector.get<any>(WA_WINDOW);
 
-        patch(HTMLInputElement.prototype);
-        patch(HTMLTextAreaElement.prototype);
-        patch(HTMLSelectElement.prototype);
+    if (!win.tuiInputPatched && isPlatformBrowser(injector.get(PLATFORM_ID))) {
+        win.tuiInputPatched = true;
+
+        patch(win.HTMLInputElement.prototype);
+        patch(win.HTMLTextAreaElement.prototype);
+        patch(win.HTMLSelectElement.prototype);
     }
 
     let element = isSignal(input) ? undefined : coerceElement(input);
