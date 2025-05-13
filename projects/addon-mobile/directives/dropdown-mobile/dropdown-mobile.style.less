@@ -16,6 +16,11 @@ tui-dropdown-mobile:not(._sheet) {
         0 20rem var(--tui-background-base),
         0 30rem var(--tui-background-base);
 
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+
     &::after {
         content: '';
         display: block;
@@ -52,6 +57,11 @@ tui-dropdown-mobile._sheet {
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     overscroll-behavior: none;
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
 
     tui-root:has(tui-dialogs > :nth-child(2)) & {
         background: transparent;

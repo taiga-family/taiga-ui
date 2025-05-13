@@ -4,18 +4,16 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    inject,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TuiAnimated} from '@taiga-ui/cdk';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiSlideInTop} from '@taiga-ui/core/animations';
-import {TUI_ANIMATIONS_SPEED, TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
+import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {exhaustMap, filter, isObservable, merge, of, Subject, take} from 'rxjs';
 
@@ -29,9 +27,8 @@ import type {TuiSheetDialogOptions} from './sheet-dialog.options';
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
-    animations: [tuiSlideInTop],
+    hostDirectives: [TuiAnimated],
     host: {
-        '[@tuiSlideInTop]': 'slideInTop',
         '[style.--tui-offset.px]': 'context.offset',
         '[class._closeable]': 'context.closeable',
         '[class._fullscreen]': 'context.fullscreen === true',
@@ -48,14 +45,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     private readonly el = tuiInjectElement();
     private pointers = 0;
-
-    protected readonly slideInTop = {
-        value: '',
-        params: {
-            start: '100vh',
-            duration: tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)),
-        },
-    };
 
     protected readonly context =
         injectContext<TuiPopover<TuiSheetDialogOptions<I>, any>>();

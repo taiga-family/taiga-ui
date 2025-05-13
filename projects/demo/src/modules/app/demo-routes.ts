@@ -221,7 +221,6 @@ export const DemoRoute = {
     Miscellaneous: '/utils/miscellaneous',
     Tokens: '/utils/tokens',
     Pure: '/utils/pure',
-    Animations: '/animations',
     StackblitzStarter: '/stackblitz',
     MigrationGuide: '/migration-guide',
     Obfuscate: '/pipes/obfuscate',

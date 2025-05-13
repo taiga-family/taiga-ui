@@ -1,15 +1,28 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    display: block;
+    .transition(grid-template-rows);
+
+    display: grid;
     font: var(--tui-font-text-s);
     color: var(--tui-text-negative);
     overflow-wrap: break-word;
-    animation: tuiPresent 1s infinite;
+    grid-template-rows: 0fr;
+
+    &._error {
+        grid-template-rows: 1fr;
+    }
 }
 
 .t-message-text {
     white-space: pre-line;
+    grid-row: 1 / span 2;
+    overflow: hidden;
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade;
+    }
 
     &::before {
         content: '';

@@ -8,16 +8,14 @@ import {
 } from '@angular/core';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
+import {TuiAnimated} from '@taiga-ui/cdk';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import type {TuiSwipeEvent} from '@taiga-ui/cdk/directives/swipe';
 import {TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
-import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDropdownMobile} from './dropdown-mobile.directive';
@@ -32,11 +30,8 @@ const GAP = 16;
     styleUrls: ['./dropdown-mobile.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiSlideInTop, tuiFadeIn],
-    hostDirectives: [TuiActiveZone],
+    hostDirectives: [TuiActiveZone, TuiAnimated],
     host: {
-        '[@tuiFadeIn]': 'animation',
-        '[@tuiSlideInTop]': 'animation',
         '[class._sheet]': 'directive.tuiDropdownMobile',
         '(document:click.zoneless.capture)': 'onClick($event)',
         '(window>scroll.zoneless.capture)':
@@ -56,13 +51,6 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
 
     protected readonly directive = inject(TuiDropdownMobile);
     protected readonly dropdown = inject(TuiDropdownDirective);
-    protected readonly animation = {
-        value: '',
-        params: {
-            start: '100vh',
-            duration: tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)),
-        },
-    } as const;
 
     constructor() {
         this.observer.observe(this.dropdown.el);

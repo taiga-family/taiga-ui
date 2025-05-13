@@ -1,41 +1,43 @@
-<tui-push
-    *ngIf="!isDirective; else directive"
-    [heading]="context.heading"
-    [timestamp]="context.timestamp"
-    [type]="context.type"
-    (close)="context.$implicit.complete()"
->
-    <img
-        *ngIf="context.image"
-        alt=""
-        [src]="context.image"
-    />
-    <tui-icon
-        *ngIf="context.icon"
-        [icon]="context.icon"
-        [style.color]="context.iconColor"
-    />
-    <div
-        *polymorpheusOutlet="context.content as text; context: context"
-        [innerHTML]="text"
-    ></div>
-    <button
-        *ngIf="context.buttons.length > 1"
-        tuiButton
-        type="button"
-        (click)="context.$implicit.next(context.buttons[0] || '')"
+<div class="t-wrapper">
+    <tui-push
+        *ngIf="!isDirective; else directive"
+        [heading]="context.heading"
+        [timestamp]="context.timestamp"
+        [type]="context.type"
+        (close)="context.$implicit.complete()"
     >
-        {{ context.buttons[0] }}
-    </button>
-    <button
-        *ngIf="context.buttons.length"
-        tuiLink
-        type="button"
-        (click)="context.$implicit.next(context.buttons[context.buttons.length - 1] || '')"
-    >
-        {{ context.buttons[context.buttons.length - 1] }}
-    </button>
-</tui-push>
-<ng-template #directive>
-    <ng-container *polymorpheusOutlet="context.content" />
-</ng-template>
+        <img
+            *ngIf="context.image"
+            alt=""
+            [src]="context.image"
+        />
+        <tui-icon
+            *ngIf="context.icon"
+            [icon]="context.icon"
+            [style.color]="context.iconColor"
+        />
+        <div
+            *polymorpheusOutlet="context.content as text; context: context"
+            [innerHTML]="text"
+        ></div>
+        <button
+            *ngIf="context.buttons.length > 1"
+            tuiButton
+            type="button"
+            (click)="context.$implicit.next(context.buttons[0] || '')"
+        >
+            {{ context.buttons[0] }}
+        </button>
+        <button
+            *ngIf="context.buttons.length"
+            tuiLink
+            type="button"
+            (click)="context.$implicit.next(context.buttons[context.buttons.length - 1] || '')"
+        >
+            {{ context.buttons[context.buttons.length - 1] }}
+        </button>
+    </tui-push>
+    <ng-template #directive>
+        <ng-container *polymorpheusOutlet="context.content" />
+    </ng-template>
+</div>

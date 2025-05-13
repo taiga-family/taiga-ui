@@ -7,7 +7,6 @@ import {
     TemplateRef,
 } from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
@@ -23,8 +22,6 @@ import {TuiHintDirective} from './hint.directive';
     imports: [PolymorpheusOutlet],
     template: '<ng-container *polymorpheusOutlet="context.$implicit.content()" />',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiParentAnimation],
-    host: {'[@tuiParentAnimation]': ''},
 })
 export class TuiHintUnstyledComponent {
     protected readonly context =

@@ -1,6 +1,7 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
@@ -26,27 +27,20 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiFadeIn, tuiSlideIn, tuiHeightCollapse],
+    hostDirectives: [TuiAnimated],
     host: {
         role: 'alert',
         '[style.margin]': 'position',
-        '[@tuiFadeIn]': 'options',
-        '[@tuiSlideIn]': 'animation',
-        '[@tuiHeightCollapse]': 'animation',
+        '[style.--tui-from]': 'from',
     },
 })
 export class TuiAlertComponent<O, I> {
     private readonly el = tuiInjectElement();
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly options = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
     protected readonly position = inject(TUI_ALERT_POSITION);
     protected readonly item = injectContext<TuiPopover<TuiAlertOptions<I>, O>>();
-
-    protected readonly animation = this.position.endsWith('auto')
-        ? {...this.options, value: 'right'}
-        : {...this.options, value: 'left'};
 
     protected readonly sub = of(
         typeof this.item.autoClose === 'function'
@@ -60,4 +54,8 @@ export class TuiAlertComponent<O, I> {
             takeUntilDestroyed(),
         )
         .subscribe(() => this.item.$implicit.complete());
+
+    get from(): string {
+        return this.position.endsWith('auto') ? 'translateX(100%)' : 'translateX(-100%)';
+    }
 }
