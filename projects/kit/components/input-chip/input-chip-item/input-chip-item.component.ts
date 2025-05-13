@@ -8,6 +8,7 @@ import {
     signal,
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -62,11 +63,12 @@ import {TuiInputChipDirective} from '../input-chip.directive';
             {{ internal() }}
         </div>
         <button
-            *ngIf="!editMode()"
+            *ngIf="directive()?.interactive() && !editMode()"
             iconStart="@tui.x"
             tuiIconButton
             type="button"
-            (click.stop.prevent)="directive()?.interactive() && remove()"
+            (click.stop.prevent)="remove(!mobile)"
+            (pointerdown.stop.prevent)="(0)"
         >
             Remove
         </button>
@@ -79,7 +81,7 @@ import {TuiInputChipDirective} from '../input-chip.directive';
         tabIndex: '0',
         '[class._edit]': 'editMode()',
         '(click.stop)': '(0)',
-        '(keydown.backspace)': 'remove()',
+        '(keydown.backspace.prevent)': 'remove(true)',
         '(keydown.arrowLeft.prevent)': 'moveFocus(-1)',
         '(keydown.arrowRight.prevent)': 'moveFocus(1)',
     },
@@ -93,6 +95,7 @@ export class TuiInputChipItem<T> {
         }>
     >();
 
+    protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly directive = tuiInjectAuxiliary<TuiInputChipDirective<T>>(
         (x) => x instanceof TuiInputChipDirective<T>,
     );
@@ -115,11 +118,14 @@ export class TuiInputChipItem<T> {
     @Input()
     public editable = true;
 
-    protected remove(): void {
+    protected remove(focusInput = true): void {
         this.directive()?.onChange(
             this.value().filter((_, index) => index !== this.index),
         );
-        this.directive()?.el.focus({preventScroll: true});
+
+        if (focusInput) {
+            this.directive()?.el.focus({preventScroll: true});
+        }
     }
 
     protected edit(): void {
