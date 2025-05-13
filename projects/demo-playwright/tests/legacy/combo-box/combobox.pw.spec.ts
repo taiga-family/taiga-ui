@@ -11,7 +11,7 @@ test.describe('ComboBox', () => {
     test.use({viewport: {width: 500, height: 500}});
 
     test("Don't allow disabled options to be selected by typing them", async ({page}) => {
-        await tuiGoto(page, DemoRoute.ComboBox);
+        await tuiGoto(page, DemoRoute.ComboBoxLegacy);
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#ignore-disabled');
@@ -51,7 +51,7 @@ test.describe('ComboBox', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,
+                    `${DemoRoute.ComboBoxLegacy}/API?strict=${strict}&sandboxExpanded=true`,
                 );
 
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
@@ -115,7 +115,7 @@ test.describe('ComboBox', () => {
 
                 await tuiGoto(
                     page,
-                    `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,
+                    `${DemoRoute.ComboBoxLegacy}/API?strict=${strict}&sandboxExpanded=true`,
                 );
 
                 await textfield.click();
