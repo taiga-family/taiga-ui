@@ -51,7 +51,7 @@ test.describe('ComboBox', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,
+                    `${DemoRoute.ComboBoxLegacy}/API?strict=${strict}&sandboxExpanded=true`,
                 );
 
                 const {apiPageExample} = new TuiDocumentationPagePO(page);
@@ -115,7 +115,7 @@ test.describe('ComboBox', () => {
 
                 await tuiGoto(
                     page,
-                    `components/combo-box/API?strict=${strict}&sandboxExpanded=true`,
+                    `${DemoRoute.ComboBoxLegacy}/API?strict=${strict}&sandboxExpanded=true`,
                 );
 
                 await textfield.click();
