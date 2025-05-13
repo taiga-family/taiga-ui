@@ -837,10 +837,10 @@ export const pages: DocRoutePages = [
         subPages: [
             {
                 section: 'Components',
-                title: 'ComboBox',
+                title: 'ComboBox [deprecated]',
                 keywords:
                     'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
-                route: DemoRoute.ComboBox,
+                route: DemoRoute.ComboBoxLegacy,
             },
             {
                 section: 'Components',

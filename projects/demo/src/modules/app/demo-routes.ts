@@ -55,7 +55,7 @@ export const DemoRoute = {
     Carousel: '/components/carousel',
     ThumbnailCard: '/components/thumbnail-card',
     Checkbox: '/components/checkbox',
-    ComboBox: '/components/combo-box',
+    ComboBoxLegacy: '/components/combo-box-legacy',
     DataList: '/components/data-list',
     DataListWrapper: '/components/data-list-wrapper',
     Dialog: '/components/dialog',

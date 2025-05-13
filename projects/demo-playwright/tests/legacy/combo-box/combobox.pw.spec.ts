@@ -11,7 +11,7 @@ test.describe('ComboBox', () => {
     test.use({viewport: {width: 500, height: 500}});
 
     test("Don't allow disabled options to be selected by typing them", async ({page}) => {
-        await tuiGoto(page, DemoRoute.ComboBox);
+        await tuiGoto(page, DemoRoute.ComboBoxLegacy);
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#ignore-disabled');
