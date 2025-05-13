@@ -24,6 +24,11 @@
     bottom: 0;
     pointer-events: auto;
 
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade;
+    }
+
     &_vertical {
         top: 0;
         inline-size: @scroll-width-large;

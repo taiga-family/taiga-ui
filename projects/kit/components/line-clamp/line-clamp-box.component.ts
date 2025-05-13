@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {tuiFadeIn} from '@taiga-ui/core/animations';
+import {TuiAnimated} from '@taiga-ui/cdk';
 import {TUI_HINT_PROVIDERS, TuiHintComponent} from '@taiga-ui/core/directives/hint';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -13,7 +13,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     styleUrls: ['./line-clamp-box.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_HINT_PROVIDERS,
-    animations: [tuiFadeIn],
+    hostDirectives: [TuiAnimated],
     host: {
         '[style.min-width.px]': 'width',
     },

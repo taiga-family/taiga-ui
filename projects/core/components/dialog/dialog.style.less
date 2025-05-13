@@ -10,6 +10,11 @@
     border-radius: 1.5rem;
     border: 2.5rem solid transparent;
 
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+
     &::after {
         .fullsize();
 

@@ -7,4 +7,9 @@
     box-shadow:
         0 10rem var(--tui-background-elevation-1),
         0 -90vh 1rem 2rem var(--tui-service-backdrop);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
 }

@@ -1117,12 +1117,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/utils/pure'),
         title: 'Pure',
     }),
-    // ANIMATIONS
-    route({
-        path: DemoRoute.Animations,
-        loadComponent: async () => import('../components/animations'),
-        title: 'Animations',
-    }),
     route({
         path: DemoRoute.StackblitzStarter,
         loadComponent: async () => import('./stackblitz/starter'),

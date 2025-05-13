@@ -34,7 +34,8 @@
     outline: none;
     overflow: auto;
 
-    &.ng-animating {
+    &:has(> .tui-enter),
+    &:has(> .tui-leave) {
         overflow: clip;
     }
 }

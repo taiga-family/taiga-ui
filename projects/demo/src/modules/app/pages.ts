@@ -1321,12 +1321,6 @@ export const pages: DocRoutePages = [
     // Tools
     {
         section: 'Tools',
-        title: 'Animations',
-        keywords: 'animation, animations, анимация, анимации',
-        route: DemoRoute.Animations,
-    },
-    {
-        section: 'Tools',
         title: 'Directives',
         subPages: [
             {

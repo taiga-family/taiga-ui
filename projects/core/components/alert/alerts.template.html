@@ -1,7 +1,7 @@
 <div
     *ngFor="let group of alerts$ | async; trackBy: trackBy"
+    tuiAnimatedParent
     class="t-wrapper"
-    @tuiParentAnimation
 >
     <ng-container
         *ngFor="let item of group"

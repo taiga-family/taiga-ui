@@ -1,0 +1,51 @@
+/** @deprecated TODO remove in v5 */
+@keyframes tuiSkeletonVibe {
+    to {
+        opacity: 0.5;
+    }
+}
+
+@keyframes tuiPresent {
+    to {
+        content: '';
+    }
+}
+
+@keyframes tuiFade {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes tuiSlide {
+    from {
+        transform: var(--tui-from, translateY(100%));
+    }
+}
+
+@keyframes tuiScale {
+    from {
+        transform: scale(0);
+    }
+}
+
+@keyframes tuiCollapse {
+    from {
+        grid-template-rows: 0fr;
+    }
+
+    to {
+        grid-template-rows: 1fr;
+    }
+}
+
+.tui-enter,
+.tui-leave {
+    animation-duration: var(--tui-duration);
+    animation-timing-function: ease-in-out;
+    pointer-events: none;
+}
+
+.tui-leave {
+    animation-direction: reverse;
+}

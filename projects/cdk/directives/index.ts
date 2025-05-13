@@ -1,4 +1,5 @@
 export * from '@taiga-ui/cdk/directives/active-zone';
+export * from '@taiga-ui/cdk/directives/animated';
 export * from '@taiga-ui/cdk/directives/auto-focus';
 export * from '@taiga-ui/cdk/directives/click-outside';
 export * from '@taiga-ui/cdk/directives/control';

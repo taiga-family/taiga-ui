@@ -8,7 +8,10 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
+import {
+    EVENT_MANAGER_PLUGINS,
+    REMOVE_STYLES_ON_COMPONENT_DESTROY,
+} from '@angular/platform-browser';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiFontSize} from '@taiga-ui/cdk/directives/font-size';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
@@ -58,6 +61,13 @@ import {map} from 'rxjs';
         '(touchstart.passive.zoneless)': '0',
         '(document:fullscreenchange)': 'top.set(isTopLayer)',
     },
+    providers: [
+        // TODO move to provideTaiga in v5
+        {
+            provide: REMOVE_STYLES_ON_COMPONENT_DESTROY,
+            useValue: false,
+        },
+    ],
 })
 export class TuiRoot {
     private readonly doc = inject(DOCUMENT);

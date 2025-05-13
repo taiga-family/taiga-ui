@@ -12,23 +12,29 @@ const TRANSITION = '{{duration}}ms ease-in-out';
 const DURATION = {params: {duration: 300}};
 const STAGGER = 300;
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export interface TuiDurationOptions {
     params: {duration: number};
     value: string;
 }
 
 /**
- * Add to enable child :leave animation (fixes https://github.com/angular/angular/issues/15753)
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
  */
 export const tuiParentAnimation = trigger('tuiParentAnimation', [
     transition(':leave', [query(':scope > *', [animateChild()], {optional: true})]),
 ]);
 
 /**
- * Add on parent to stop initial :enter animation for children
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
  */
 export const tuiParentStop = trigger('tuiParentStop', [transition(':enter', [])]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiHost = trigger('tuiHost', [
     transition(':enter', [
         style({overflow: 'clip'}),
@@ -37,6 +43,9 @@ export const tuiHost = trigger('tuiHost', [
     transition(':leave', [query(':scope > *', [animateChild()], {optional: true})]),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiHeightCollapse = trigger('tuiHeightCollapse', [
     transition(
         ':enter',
@@ -50,6 +59,9 @@ export const tuiHeightCollapse = trigger('tuiHeightCollapse', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiHeightCollapseList = trigger('tuiHeightCollapseList', [
     transition(
         '* => *',
@@ -79,6 +91,9 @@ export const tuiHeightCollapseList = trigger('tuiHeightCollapseList', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiWidthCollapse = trigger('tuiWidthCollapse', [
     transition(
         ':enter',
@@ -92,6 +107,9 @@ export const tuiWidthCollapse = trigger('tuiWidthCollapse', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiWidthCollapseList = trigger('tuiWidthCollapseList', [
     transition(
         '* => *',
@@ -121,6 +139,9 @@ export const tuiWidthCollapseList = trigger('tuiWidthCollapseList', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiCrossFade = trigger('tuiCrossFade', [
     transition(
         ':enter',
@@ -152,6 +173,9 @@ export const tuiCrossFade = trigger('tuiCrossFade', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiFadeIn = trigger('tuiFadeIn', [
     transition(
         ':enter',
@@ -165,6 +189,9 @@ export const tuiFadeIn = trigger('tuiFadeIn', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiFadeInList = trigger('tuiFadeInList', [
     transition(
         '* => *',
@@ -194,6 +221,9 @@ export const tuiFadeInList = trigger('tuiFadeInList', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiFadeInTop = trigger('tuiFadeInTop', [
     transition(
         ':enter',
@@ -216,6 +246,9 @@ export const tuiFadeInTop = trigger('tuiFadeInTop', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiFadeInBottom = trigger('tuiFadeInBottom', [
     transition(
         ':enter',
@@ -238,6 +271,9 @@ export const tuiFadeInBottom = trigger('tuiFadeInBottom', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiDropdownAnimation = trigger('tuiDropdownAnimation', [
     transition(
         ':enter',
@@ -260,6 +296,9 @@ export const tuiDropdownAnimation = trigger('tuiDropdownAnimation', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiScaleIn = trigger('tuiScaleIn', [
     transition(
         ':enter',
@@ -279,6 +318,9 @@ export const tuiScaleIn = trigger('tuiScaleIn', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiPop = trigger('tuiPop', [
     transition(
         ':enter',
@@ -300,6 +342,9 @@ export const tuiPop = trigger('tuiPop', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiScaleInList = trigger('tuiScaleInList', [
     transition(
         '* => *',
@@ -329,6 +374,9 @@ export const tuiScaleInList = trigger('tuiScaleInList', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiSlideIn = trigger('tuiSlideIn', [
     transition(
         '* => left',
@@ -364,6 +412,9 @@ export const tuiSlideIn = trigger('tuiSlideIn', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiSlideInLeft = trigger('tuiSlideInLeft', [
     transition(
         ':enter',
@@ -383,6 +434,9 @@ export const tuiSlideInLeft = trigger('tuiSlideInLeft', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiSlideInLeftList = trigger('tuiSlideInLeftList', [
     transition(
         '* => *',
@@ -412,6 +466,9 @@ export const tuiSlideInLeftList = trigger('tuiSlideInLeftList', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiSlideInRight = trigger('tuiSlideInRight', [
     transition(
         ':enter',
@@ -431,6 +488,9 @@ export const tuiSlideInRight = trigger('tuiSlideInRight', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiSlideInRightList = trigger('tuiSlideInRightList', [
     transition(
         '* => *',
@@ -460,6 +520,9 @@ export const tuiSlideInRightList = trigger('tuiSlideInRightList', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiSlideInTop = trigger('tuiSlideInTop', [
     transition(
         ':enter',
@@ -479,6 +542,9 @@ export const tuiSlideInTop = trigger('tuiSlideInTop', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiSlideInTopList = trigger('tuiSlideInTopList', [
     transition(
         '* => *',
@@ -508,6 +574,9 @@ export const tuiSlideInTopList = trigger('tuiSlideInTopList', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiSlideInBottom = trigger('tuiSlideInBottom', [
     transition(
         ':enter',
@@ -527,6 +596,9 @@ export const tuiSlideInBottom = trigger('tuiSlideInBottom', [
     ),
 ]);
 
+/**
+ * @deprecated Angular animations are deprecated, use {@link TuiAnimated} directive and CSS instead
+ */
 export const tuiSlideInBottomList = trigger('tuiSlideInBottomList', [
     transition(
         '* => *',

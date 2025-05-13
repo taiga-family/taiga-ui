@@ -3,7 +3,7 @@ import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiAnimated, TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TuiAppearance,
     TuiButton,
@@ -31,15 +31,14 @@ import {TuiCardLarge} from '@taiga-ui/layout';
         TuiTextarea,
         TuiTextfield,
         TuiTitle,
+        TuiAnimated,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    animations: [tuiFadeIn, tuiSlideIn],
 })
 export default class Example {
-    protected readonly animation = {...tuiToAnimationOptions(), value: 'right'};
     protected readonly step = signal(0);
     protected rating = 0;
     protected comment = '';

@@ -11,6 +11,11 @@
     border-top-left-radius: 1.25rem;
     border-top-right-radius: 1.25rem;
 
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+
     &._overlay::before {
         .transition(opacity);
 
