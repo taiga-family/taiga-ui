@@ -19,6 +19,7 @@ import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDropdownMobile} from './dropdown-mobile.directive';
+import {TUI_DROPDOWN_MOBILE_OPTIONS} from './dropdown-mobile.options';
 
 const GAP = 16;
 
@@ -45,6 +46,7 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
     private readonly keyboard = inject(TuiKeyboardService);
     private readonly doc = inject(DOCUMENT);
     private readonly scrollTop = this.doc.documentElement.scrollTop;
+    private readonly options = inject(TUI_DROPDOWN_MOBILE_OPTIONS);
     private readonly observer = new ResizeObserver(() =>
         this.refresh(this.doc.defaultView!.visualViewport!),
     );
@@ -117,8 +119,8 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         this.doc.documentElement.scrollTop = 0;
 
         const rect = this.dropdown.el.getBoundingClientRect();
-        const top = offsetTop + GAP - rect.top;
-        const offset = rect.height + GAP * 2;
+        const top = offsetTop + this.options.topShift - rect.top;
+        const offset = rect.height + this.options.topShift + GAP;
 
         this.el.style.setProperty('top', tuiPx(offsetTop + offset));
         this.el.style.setProperty('height', tuiPx(height - offset));

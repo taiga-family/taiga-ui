@@ -1,0 +1,13 @@
+<tui-textfield tuiChevron>
+    <input
+        placeholder="British monarchs"
+        tuiComboBox
+        [(ngModel)]="value"
+    />
+
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [items]="items | tuiFilterByInput: matcher"
+    />
+</tui-textfield>

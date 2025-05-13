@@ -1,6 +1,7 @@
 import type {Provider, Type} from '@angular/core';
 import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiDataListAccessor<T = unknown> {
@@ -28,7 +29,7 @@ export interface TuiDataListHost<T> {
 export const TUI_DATA_LIST_ACCESSOR = tuiCreateToken<TuiDataListAccessor>();
 
 export function tuiAsDataListAccessor(accessor: Type<TuiDataListAccessor>): Provider {
-    return tuiProvide(TUI_DATA_LIST_ACCESSOR, accessor);
+    return [tuiProvide(TUI_DATA_LIST_ACCESSOR, accessor), tuiAsAuxiliary(accessor)];
 }
 
 /**
