@@ -1,5 +1,5 @@
 ```html
-<tui-textfield>
+<tui-textfield multi>
   <input
     tuiInputChip
     [(ngModel)]="value"
