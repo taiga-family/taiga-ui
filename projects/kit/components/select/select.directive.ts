@@ -5,7 +5,6 @@ import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
-    tuiAsAuxiliary,
     tuiAsTextfieldAccessor,
     TuiSelectLike,
     TuiTextfieldDirective,
@@ -14,6 +13,7 @@ import {
 import {tuiDropdownEnabled, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 import {TuiSelectOption} from './select-option/select-option.component';
 
@@ -49,7 +49,7 @@ export class TuiSelectDirective<T>
         this.textfield.value.set(string);
     }, TUI_ALLOW_SIGNAL_WRITES);
 
-    public setValue(value: T): void {
+    public setValue(value: T | null): void {
         this.onChange(value);
 
         if (!value) {

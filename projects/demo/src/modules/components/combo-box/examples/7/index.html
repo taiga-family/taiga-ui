@@ -1,0 +1,27 @@
+<tui-textfield
+    tuiChevron
+    [content]="control.value && content"
+>
+    <input
+        tuiComboBox
+        [formControl]="control"
+        [strictMatcher]="strictMatcher"
+    />
+
+    <tui-data-list *tuiTextfieldDropdown>
+        <button
+            *ngFor="let item of items"
+            new
+            tuiOption
+            type="button"
+            [value]="item.id"
+        >
+            {{ item.name }}
+        </button>
+    </tui-data-list>
+</tui-textfield>
+
+<p>
+    <strong>Form control:</strong>
+    <code>{{ control.value | json }}</code>
+</p>
