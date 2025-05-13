@@ -51,12 +51,12 @@ class Account {
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    protected readonly routes = DemoRoute;
-
     @ViewChild('valueTemplateContent')
     private readonly valueTemplateRef: PolymorpheusContent<
         TuiValueContentContext<Account>
     >;
+
+    protected readonly routes = DemoRoute;
 
     protected readonly example9 = {
         TypeScript: import('./examples/9/index.ts?raw'),
