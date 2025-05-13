@@ -1,10 +1,8 @@
 import type {OnChanges} from '@angular/core';
 import {computed, Directive, inject, Input, signal} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiControlValue} from '@taiga-ui/cdk/observables';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {
     TuiAppearance,
     tuiAppearance,
@@ -15,7 +13,6 @@ import {
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
-import {fromEvent, map, merge, switchMap, timer} from 'rxjs';
 
 import {TuiTextfieldComponent} from './textfield.component';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -46,14 +43,7 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     @Input()
     public invalid: boolean | null = null;
 
-    public readonly value = toSignal(
-        merge(
-            fromEvent(this.el, 'input'),
-            timer(0) // https://github.com/angular/angular/issues/54418
-                .pipe(switchMap(() => tuiControlValue(this.control))),
-        ).pipe(map(() => this.el.value)),
-        {initialValue: this.el.value},
-    );
+    public readonly value = tuiValue(this.el);
 
     @Input('focused')
     public set focusedSetter(focused: boolean | null) {
@@ -112,7 +102,7 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     host: {
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly',
-        '[class._empty]': 'el.value === ""',
+        '[class._empty]': 'value() === ""',
         '(input)': '0',
         '(focusin)': '0',
         '(focusout)': '0',

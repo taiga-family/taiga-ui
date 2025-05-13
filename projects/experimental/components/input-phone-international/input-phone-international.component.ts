@@ -38,11 +38,7 @@ import {
     tuiAutoFocusOptionsProvider,
 } from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {
-    tuiInjectElement,
-    tuiIsInputEvent,
-    tuiValueBinding,
-} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement, tuiIsInputEvent, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList, TuiOptionNew} from '@taiga-ui/core/components/data-list';
@@ -134,7 +130,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         computed(() => this.computeMask(this.code(), this.metadata())),
     );
 
-    protected readonly masked = tuiValueBinding();
+    protected readonly masked = tuiValue(this.el);
 
     protected valueChangeEffect = effect(() => {
         this.onChange(this.unmask(this.masked()));

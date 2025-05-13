@@ -87,7 +87,7 @@ export class TuiSliderKeyStepsBase {
         'input[tuiSlider][keySteps][ngModel],input[tuiSlider][keySteps][formControl],input[tuiSlider][keySteps][formControlName]',
     providers: [tuiFallbackValueProvider(0)],
     host: {
-        '[value]': 'this.value()',
+        '[value]': 'value()',
         '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',
         '(input)': 'onChange($event.target.value)',

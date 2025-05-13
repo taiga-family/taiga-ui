@@ -2,6 +2,7 @@ import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     DestroyRef,
     inject,
     Input,
@@ -43,11 +44,12 @@ export class TuiInputNumberStep {
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
 
-    protected readonly element = tuiInjectElement<HTMLInputElement>();
-    protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
+    protected readonly el = tuiInjectElement<HTMLInputElement>();
+    protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
-    protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
+    protected readonly input = inject(TuiInputNumberDirective, {self: true});
     protected readonly step = signal(this.options.step);
+    protected readonly value = computed(() => this.input.value() ?? NaN);
 
     // TODO(v5): replace with signal input
     @Input('step')
@@ -56,24 +58,19 @@ export class TuiInputNumberStep {
     }
 
     protected onStep(step: number): void {
-        const {inputNumber} = this;
-        const newValue = tuiClamp(
-            (inputNumber.value() ?? 0) + step,
-            inputNumber.min(),
-            inputNumber.max(),
-        );
+        const current = Number.isNaN(this.value()) ? 0 : this.value();
+        const value = tuiClamp(current + step, this.input.min(), this.input.max());
 
-        if (this.inputNumber.value() === null) {
+        if (Number.isNaN(this.value())) {
             timer(0)
                 .pipe(tuiZonefree(this.zone), takeUntilDestroyed(this.destroyRef))
                 .subscribe(() => {
-                    const caretIndex =
-                        this.element.value.length - inputNumber.postfix().length;
+                    const caretIndex = this.el.value.length - this.input.postfix().length;
 
-                    this.element.setSelectionRange(caretIndex, caretIndex);
+                    this.el.setSelectionRange(caretIndex, caretIndex);
                 });
         }
 
-        this.inputNumber.setValue(newValue);
+        this.input.setValue(value);
     }
 }

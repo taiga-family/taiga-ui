@@ -331,10 +331,7 @@ describe('InputNumber', () => {
                 });
 
                 test('Minimum limit cannot be violated via steps', async () => {
-                    await expect(inputNumber.stepDown).toBeDisabled();
-
-                    // eslint-disable-next-line playwright/no-force-option
-                    await inputNumber.stepDown.click({force: true});
+                    await inputNumber.stepDown.click();
                     await inputNumber.textfield.press('ArrowDown');
 
                     await expect(inputNumber.textfield).toHaveValue('0');
