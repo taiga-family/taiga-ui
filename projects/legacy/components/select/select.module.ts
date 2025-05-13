@@ -22,6 +22,10 @@ import {TuiNativeSelectGroupComponent} from './native-select/native-select-group
 import {TuiSelectComponent} from './select.component';
 import {TuiSelectDirective} from './select.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/select TuiSelect} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         CommonModule,

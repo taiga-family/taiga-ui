@@ -42,6 +42,10 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {TuiSelectOptions} from './select.options';
 import {TUI_SELECT_OPTIONS} from './select.options';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/select TuiSelect} (from @taiga-ui/kit) instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-select',

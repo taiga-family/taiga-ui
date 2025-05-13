@@ -1,14 +1,26 @@
 <tui-doc-page
+    deprecated
     header="SelectLegacy"
     package="LEGACY"
     path="legacy/components/select"
     type="components"
 >
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.Select"
+            >
+                <strong>new version of Select</strong>
+            </a>
+            instead!
+        </tui-notification>
+
+        <p>
             <code>Select</code>
             is a field with dropdown to choose one item.
-        </div>
+        </p>
 
         <tui-doc-example
             id="base"

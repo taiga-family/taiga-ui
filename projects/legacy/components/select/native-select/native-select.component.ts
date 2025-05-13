@@ -6,6 +6,10 @@ import {AbstractTuiNativeSelect} from '@taiga-ui/legacy/classes';
 
 import type {TuiSelectDirective} from '../select.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use native picker from new version of {@link https://taiga-ui.dev/components/select#native-picker-disabled-option TuiSelect} (from @taiga-ui/kit) instead
+ */
 @Component({
     standalone: false,
     selector: 'select[tuiSelect]:not([labels]):not([multiple])',
