@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {
     tuiGetClipboardDataText,
     tuiInjectElement,
@@ -82,6 +82,7 @@ export class TuiInputChipDirective<T>
 
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
     private readonly destroyRef = inject(DestroyRef);
+    private readonly mobile = inject(TUI_IS_MOBILE);
 
     protected readonly textfieldValue = tuiValueBinding();
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
@@ -113,13 +114,15 @@ export class TuiInputChipDirective<T>
             this.el.focus();
         }
 
-        tuiMoveFocus(index ?? this.elements.length - 1, this.elements, step);
+        tuiMoveFocus(index ?? this.elements.length, this.elements, step);
     }
 
     protected get elements(): readonly HTMLElement[] {
-        return Array.from(this.textfield.container?.nativeElement.children ?? []).map(
-            ({firstChild}) => firstChild,
-        ) as HTMLElement[];
+        return Array.from(
+            this.textfield.container?.nativeElement.querySelectorAll(
+                'tui-chip-wrapper',
+            ) ?? [],
+        ).map(({firstChild}) => firstChild) as HTMLElement[];
     }
 
     protected onEnter(): void {
@@ -156,9 +159,13 @@ export class TuiInputChipDirective<T>
     }
 
     protected onBackspace(): void {
-        if (!this.el.value) {
-            this.textfieldValue.set('');
+        if (this.el.value) {
+            return;
+        }
 
+        if (this.mobile) {
+            this.onChange(this.value().slice(0, -1));
+        } else {
             this.moveFocus(-1);
         }
     }
@@ -185,11 +192,6 @@ export class TuiInputChipDirective<T>
     }
 
     private filterValue(value: T[]): T[] {
-        const seen = new Set();
-
-        return value
-            .reverse()
-            .filter((item) => !this.unique || (item && !seen.has(item) && seen.add(item)))
-            .reverse();
+        return this.unique ? Array.from(new Set(value.reverse())).reverse() : value;
     }
 }
