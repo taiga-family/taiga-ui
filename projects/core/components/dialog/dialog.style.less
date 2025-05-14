@@ -1,6 +1,11 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
+    --sat: env(safe-area-inset-top);
+    --sar: env(safe-area-inset-right);
+    --sab: env(safe-area-inset-bottom);
+    --sal: env(safe-area-inset-left);
+
     position: relative;
     display: flex;
     font: var(--tui-font-text-m);
@@ -56,7 +61,7 @@
     &[data-size='page'] {
         /* stylelint-disable-next-line */
         min-width: 100vw;
-        min-height: calc(100% - env(safe-area-inset-top));
+        min-height: 100%;
         border-radius: 0;
         border: none;
         background: var(--tui-elevation-01);
@@ -90,12 +95,10 @@
             max-width: 100%;
             border-radius: 0;
             border: none;
-            margin: env(safe-area-inset-top) 0 0;
-            block-size: calc(100% - env(safe-area-inset-top));
-            padding-bottom: env(safe-area-inset-bottom);
+            margin: auto 0 0;
 
             .t-content {
-                padding: 1.5rem;
+                padding: 1.5rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
             }
 
             .t-heading {
@@ -137,7 +140,6 @@
     border-radius: inherit;
     padding: 2rem;
     background: var(--tui-elevation-01);
-    overflow: hidden;
 
     &:not(:first-child) {
         border-top-left-radius: 0;
