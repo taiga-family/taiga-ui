@@ -1,9 +1,9 @@
 <header tuiNavigationHeader>
     <strong>Taiga UI</strong>
     <hr />
-    <tui-textfield>
+    <tui-textfield (pointerdown.capture.stop)="(0)">
         <input
-            tuiSearchHotkey
+            placeholder="test"
             [formControl]="control"
             [tuiInputSearch]="search"
             [(tuiInputSearchOpen)]="open"
