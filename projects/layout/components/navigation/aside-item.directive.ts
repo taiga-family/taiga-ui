@@ -44,7 +44,7 @@ import {TuiHintAsideDirective} from './hint-aside.directive';
         tuiOption: '',
         '[class._link]': 'link',
         '[class._active]': 'active()',
-        '[class._custom]': 'icon !== icons.iconEnd',
+        '[class._custom]': 'icon !== icons.iconEnd()',
     },
 })
 export class TuiAsideItemDirective implements TuiDataListHost<unknown> {
