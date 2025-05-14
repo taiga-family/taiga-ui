@@ -1,0 +1,37 @@
+<div>
+    <div>
+        Using
+        <strong>TUI_OBFUSCATE_OPTION</strong>
+        injection token you can customize obfuscate result by adding callback functions.
+    </div>
+
+    <section>
+        <h3>Description:</h3>
+        <dl>
+            <dt>
+                <code>default</code>
+            </dt>
+            <dd class="tui-space_bottom-5">obfuscate value by default if no recipe was specified</dd>
+            <dt>
+                <code>recipes</code>
+            </dt>
+            <dd>contains callback functions for custom obfuscation</dd>
+        </dl>
+    </section>
+
+    <section>
+        <h3>Defaults:</h3>
+        <ul class="tui-list tui-list_small">
+            <li class="tui-list__item">
+                default =
+                <code>(value: string, symbol?: string): string => (symbol ?? '*').repeat(value.length)</code>
+            </li>
+            <li class="tui-list__item">
+                recipes =
+                <code>empty object</code>
+            </li>
+        </ul>
+    </section>
+</div>
+
+<tui-doc-code [code]="provideObfuscateOptionToken" />

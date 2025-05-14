@@ -1,0 +1,55 @@
+<tui-doc-page
+    header="Obfuscate"
+    package="CDK"
+    type="pipes"
+>
+    <ng-template pageTab>
+        <p>Pipe for obfuscating sensitive data</p>
+
+        <p>
+            Obfuscation can be customized by using
+            <a
+                fragment="obfuscate-option"
+                tuiLink
+                [routerLink]="routes.Tokens"
+            >
+                TUI_OBFUSCATE_OPTION
+            </a>
+        </p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample: 'html,ts'"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <div [style.max-width.rem]="20">
+            <tui-textfield
+                tuiTextfieldSize="m"
+                class="tui-space_bottom-4"
+            >
+                <input
+                    tuiTextfield
+                    [formControl]="control"
+                />
+            </tui-textfield>
+
+            <strong>Obfuscated value:</strong>
+            <br />
+            <code>
+                {{ control.value ?? '' | tuiObfuscate: obfuscateDoc.recipe() }}
+            </code>
+        </div>
+        <table tuiDocAPI>
+            <tbody
+                #obfuscateDoc
+                tuiDocObfuscate
+            ></tbody>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>
