@@ -32,6 +32,8 @@ import {timer} from 'rxjs';
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
 import {TuiChipWrapper} from './input-chip-item/input-chip-wrapper.component';
 
+const BACKSPACE_CODE = 8;
+
 @Component({
     standalone: true,
     selector: 'input[tuiInputChip]',
@@ -65,7 +67,6 @@ import {TuiChipWrapper} from './input-chip-item/input-chip-wrapper.component';
         '(input)': 'textfieldValue.set(el.value)',
         '(keydown.enter)': 'onEnter()',
         '(blur)': 'onTouched();',
-        '(keydown.backspace)': 'onBackspace()',
         '(keydown.arrowLeft)': 'onBackspace()',
         '(keydown.silent)': 'onKeydown($event)',
         '(input.silent)': 'open.set(true)',
@@ -140,6 +141,11 @@ export class TuiInputChipDirective<T>
     }
 
     protected onKeydown(keydown: KeyboardEvent): void {
+        // (keydown.backspace) doesn't emit event on empty input in ios safari
+        if (keydown.keyCode === BACKSPACE_CODE) {
+            this.onBackspace();
+        }
+
         if (keydown.key.match(this.separator)) {
             keydown.preventDefault();
             this.onEnter();
