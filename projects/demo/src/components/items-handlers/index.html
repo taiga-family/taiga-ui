@@ -1,0 +1,65 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <strong>ItemsHandlers</strong>
+            <span tuiSubtitle>
+                Applied as a host directive to
+                <code>&lt;tui-textfield /&gt;</code>
+            </span>
+        </span>
+    </td>
+</tr>
+
+<tr
+    *ngIf="!hiddenOptions.includes('stringify')"
+    name="[stringify]"
+    tuiDocAPIItem
+    type="TuiStringHandler"
+    [items]="stringifyVariants"
+    [value]="stringify()"
+    (valueChange)="stringify.set($event)"
+>
+    A function that transforms datalist's items into a string.
+    <code>String(value)</code>
+    by default.
+
+    <p>
+        <strong>Must be a pure function!</strong>
+    </p>
+</tr>
+
+<tr
+    *ngIf="!hiddenOptions.includes('identityMatcher')"
+    name="[identityMatcher]"
+    tuiDocAPIItem
+    type="TuiIdentityMatcher"
+    [items]="identityMatcherVariants"
+    [value]="identityMatcher()"
+    (valueChange)="identityMatcher.set($event)"
+>
+    Function that matches form control value and datalist's items, e.g. if objects are copied. Uses
+    <code>===</code>
+    by default.
+
+    <p>
+        <strong>Must be a pure function!</strong>
+    </p>
+</tr>
+
+<tr
+    *ngIf="!hiddenOptions.includes('disabledItemHandler')"
+    name="[disabledItemHandler]"
+    tuiDocAPIItem
+    type="TuiBooleanHandler"
+    [items]="disabledItemHandlerVariants"
+    [value]="disabledItemHandler()"
+    (valueChange)="disabledItemHandler.set($event)"
+>
+    <div>A handler that gets a datalist's items and returns true if it is disabled.</div>
+
+    <p>
+        <strong>Must be a pure function!</strong>
+    </p>
+</tr>
+
+<ng-content />
