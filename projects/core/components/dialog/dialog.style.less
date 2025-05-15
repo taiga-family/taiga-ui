@@ -1,11 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    --sat: env(safe-area-inset-top);
-    --sar: env(safe-area-inset-right);
-    --sab: env(safe-area-inset-bottom);
-    --sal: env(safe-area-inset-left);
-
     position: relative;
     display: flex;
     font: var(--tui-font-text-m);
@@ -111,10 +106,6 @@
         &[data-size='page'] {
             max-block-size: 100%;
             padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
-
-            .t-content {
-                overflow: hidden;
-            }
         }
     }
 }

@@ -1,8 +1,6 @@
 import {
-    AfterViewInit,
     ChangeDetectionStrategy,
     Component,
-    ElementRef,
     HostBinding,
     HostListener,
     Inject,
@@ -51,7 +49,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
         '[attr.data-appearance]': 'context.appearance',
     },
 })
-export class TuiDialogComponent<O, I> implements AfterViewInit {
+export class TuiDialogComponent<O, I> {
     private readonly animation = {
         value: '',
         params: {
@@ -81,7 +79,6 @@ export class TuiDialogComponent<O, I> implements AfterViewInit {
         @Inject(TUI_DIALOGS_CLOSE) close$: Observable<unknown>,
         @Inject(TUI_CLOSE_WORD) readonly closeWord$: Observable<string>,
         @Inject(TUI_COMMON_ICONS) readonly icons: TuiCommonIcons,
-        @Inject(ElementRef) private readonly el: ElementRef<HTMLElement>,
     ) {
         merge(
             this.close$.pipe(switchMap(() => toObservable(context.closeable))),
@@ -131,29 +128,6 @@ export class TuiDialogComponent<O, I> implements AfterViewInit {
         }
 
         return this.darkCloseButton ? 'glass' : '';
-    }
-
-    ngAfterViewInit(): void {
-        // eslint-disable-next-line
-        console.log(
-            this.el.nativeElement.scrollHeight,
-            this.el.nativeElement.clientHeight,
-            this.el.nativeElement.getBoundingClientRect().top,
-            parseInt(
-                getComputedStyle(this.el.nativeElement).getPropertyValue('--sat'),
-                10,
-            ),
-        );
-
-        // const marginTop = Math.max(
-        //     this.el.nativeElement.getBoundingClientRect().top,
-        //     parseInt(
-        //         getComputedStyle(this.el.nativeElement).getPropertyValue('--sat'),
-        //         10,
-        //     ),
-        // );
-
-        // this.el.nativeElement.style.setProperty('margin-top', `${marginTop}px`);
     }
 
     private close(): void {
