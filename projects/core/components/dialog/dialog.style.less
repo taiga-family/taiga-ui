@@ -98,12 +98,22 @@
             margin: auto 0 0;
 
             .t-content {
-                padding: 1.5rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
+                padding: 1.5rem;
             }
 
             .t-heading {
                 margin-bottom: 0.5rem;
                 font: var(--tui-font-heading-5);
+            }
+        }
+
+        &[data-size='fullscreen'],
+        &[data-size='page'] {
+            max-block-size: 100%;
+            padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+
+            .t-content {
+                overflow: hidden;
             }
         }
     }

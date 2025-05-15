@@ -135,17 +135,9 @@ export class TuiDialogComponent<O, I> implements AfterViewInit {
 
     ngAfterViewInit(): void {
         // eslint-disable-next-line
-        // console.log(
-        //     this.el.nativeElement.scrollHeight,
-        //     this.el.nativeElement.clientHeight,
-        //     this.el.nativeElement.getBoundingClientRect().top,
-        //     parseInt(
-        //         getComputedStyle(this.el.nativeElement).getPropertyValue('--sat'),
-        //         10,
-        //     ),
-        // );
-
-        const marginTop = Math.max(
+        console.log(
+            this.el.nativeElement.scrollHeight,
+            this.el.nativeElement.clientHeight,
             this.el.nativeElement.getBoundingClientRect().top,
             parseInt(
                 getComputedStyle(this.el.nativeElement).getPropertyValue('--sat'),
@@ -153,7 +145,15 @@ export class TuiDialogComponent<O, I> implements AfterViewInit {
             ),
         );
 
-        this.el.nativeElement.style.setProperty('margin-top', `${marginTop}px`);
+        // const marginTop = Math.max(
+        //     this.el.nativeElement.getBoundingClientRect().top,
+        //     parseInt(
+        //         getComputedStyle(this.el.nativeElement).getPropertyValue('--sat'),
+        //         10,
+        //     ),
+        // );
+
+        // this.el.nativeElement.style.setProperty('margin-top', `${marginTop}px`);
     }
 
     private close(): void {
