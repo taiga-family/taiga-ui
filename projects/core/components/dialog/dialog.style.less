@@ -85,6 +85,16 @@
                 font: var(--tui-font-heading-5);
             }
         }
+
+        &[data-size='fullscreen'],
+        &[data-size='page'] {
+            max-block-size: 100%;
+            padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+
+            .t-content {
+                overflow: hidden;
+            }
+        }
     }
 
     &[data-size='page'],
