@@ -3,7 +3,7 @@ import type {workspaces} from '@angular-devkit/core';
 import type {TuiSchema} from '../ng-add/schema';
 
 export function getProjects(
-    options: TuiSchema,
+    options: Pick<TuiSchema, 'project'>,
     workspace: workspaces.WorkspaceDefinition,
 ): workspaces.ProjectDefinition[] {
     const projects = Array.from(workspace.projects.entries())

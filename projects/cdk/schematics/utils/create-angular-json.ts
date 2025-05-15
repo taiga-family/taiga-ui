@@ -1,8 +1,9 @@
 import {createSourceFile} from 'ng-morph';
 
-export function createAngularJson(
-    {stylesExist}: {stylesExist: boolean} = {stylesExist: false},
-): void {
+export function createAngularJson({
+    stylesExist = false,
+    root = '',
+}: {stylesExist?: boolean; root?: string} = {}): void {
     createSourceFile(
         'angular.json',
         `
@@ -10,7 +11,7 @@ export function createAngularJson(
   "version": 1,
   "projects": {
     "demo": {
-        "root": "",
+        "root": "${root}",
         "architect": {
           "build": {
             "options": {
