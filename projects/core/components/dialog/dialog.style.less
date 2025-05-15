@@ -89,11 +89,8 @@
         &[data-size='fullscreen'],
         &[data-size='page'] {
             max-block-size: 100%;
-            padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
-
-            .t-content {
-                overflow: hidden;
-            }
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
         }
     }
 
