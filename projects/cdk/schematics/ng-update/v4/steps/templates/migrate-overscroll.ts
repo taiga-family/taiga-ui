@@ -55,6 +55,6 @@ function addTodo(
 ): void {
     recorder.insertRight(
         templateOffset + (sourceCodeLocation?.startTag?.startOffset ?? 0),
-        '<!-- Taiga migration TODO: use "overscroll-behavior" ccs property instead of "tuiOverscroll" directive -->\n',
+        '<!-- TODO: (Taiga UI migration) use "overscroll-behavior" ccs property instead of "tuiOverscroll" directive -->\n',
     );
 }

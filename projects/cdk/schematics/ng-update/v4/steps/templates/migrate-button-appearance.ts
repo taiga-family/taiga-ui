@@ -89,6 +89,6 @@ export function migrateButtonAppearance({
 function addTodo(recorder: UpdateRecorder, templateOffset: number): void {
     recorder.insertRight(
         templateOffset,
-        '<!-- Taiga migration TODO: tuiButton "whiteblock-active" appearance is no longer available. Use \'appearance="outline-grayscale" tuiAppearanceMode="checked"\' -->\n',
+        '<!-- TODO: (Taiga UI migration) tuiButton "whiteblock-active" appearance is no longer available. Use \'appearance="outline-grayscale" tuiAppearanceMode="checked"\' -->\n',
     );
 }

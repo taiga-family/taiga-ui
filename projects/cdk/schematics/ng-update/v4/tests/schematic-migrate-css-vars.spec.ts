@@ -69,10 +69,10 @@ const STYLES_AFTER = `@import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
     box-shadow: var(--tui-shadow-small);
-// TODO: night variables have been removed. Use tuiTheme="dark" on an element to switch colors to dark theme
+// TODO: (Taiga UI migration) night variables have been removed. Use tuiTheme="dark" on an element to switch colors to dark theme
     color: var(--tui-text-primary);
     --tui-background-base: 'black';
-// TODO: night variables have been removed. Use tuiTheme="dark" on an element to switch colors to dark theme
+// TODO: (Taiga UI migration) night variables have been removed. Use tuiTheme="dark" on an element to switch colors to dark theme
     --tui-status-info-pale: 'blue';
     --tui-shadow-medium: #fff;
 
