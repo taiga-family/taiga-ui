@@ -1,7 +1,7 @@
 import type {Provider} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';

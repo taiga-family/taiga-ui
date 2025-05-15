@@ -1,6 +1,6 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 
 @Component({

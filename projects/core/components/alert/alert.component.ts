@@ -4,16 +4,10 @@ import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiFadeIn, tuiHeightCollapse, tuiSlideIn} from '@taiga-ui/core/animations';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiNotification} from '@taiga-ui/core/components/notification';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
-import {
-    TUI_ANIMATIONS_SPEED,
-    TUI_CLOSE_WORD,
-    TUI_COMMON_ICONS,
-} from '@taiga-ui/core/tokens';
-import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
+import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, fromEvent, of, repeat, switchMap, takeUntil, timer} from 'rxjs';
 

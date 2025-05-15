@@ -6,7 +6,7 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSlideInLeft} from '@taiga-ui/core/animations';
