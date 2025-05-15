@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TUI_HINT_PROVIDERS, TuiHintComponent} from '@taiga-ui/core/directives/hint';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 

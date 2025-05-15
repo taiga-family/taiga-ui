@@ -3,6 +3,7 @@ import {
     ApplicationRef,
     Directive,
     inject,
+    type OnDestroy,
     ViewContainerRef,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -19,7 +20,7 @@ export const TUI_LEAVE = 'tui-leave';
         '(animationcancel.self)': 'remove()',
     },
 })
-export class TuiAnimated {
+export class TuiAnimated implements OnDestroy {
     private readonly el = tuiInjectElement<HTMLElement>();
     private readonly app = inject(ApplicationRef);
 
@@ -45,10 +46,10 @@ export class TuiAnimated {
 
         afterNextRender(() => {
             this.remove();
-            renderer.removeChild = (parent: any, child: Node, host?: boolean) => {
-                const remove = () => removeChild.call(renderer, parent, child, host);
+            renderer.removeChild = (parent: Node, el: Node, host?: boolean) => {
+                const remove = (): void => removeChild.call(renderer, parent, el, host);
                 const elements: Element[] = data[TUI_LEAVE];
-                const element = elements.find((leave) => child.contains(leave));
+                const element = elements.find((leave) => el.contains(leave));
                 const {length} = element?.getAnimations() || [];
 
                 if (!element) {
@@ -62,16 +63,28 @@ export class TuiAnimated {
 
                 const animations = element.getAnimations();
                 const last = animations[animations.length - 1];
-
-                if (animations.length > length && last) {
-                    last.onfinish = () => {
+                const finish = () => {
+                    if (parent.contains(el)) {
                         remove();
                         this.app.tick();
-                    };
+                    }
+                };
+
+                if (animations.length > length && last) {
+                    last.onfinish = finish;
+                    last.oncancel = finish;
                 } else {
                     remove();
                 }
             };
+        });
+    }
+
+    public ngOnDestroy(): void {
+        const data = this.renderer?.data || {[TUI_LEAVE]: []};
+
+        setTimeout(() => {
+            data[TUI_LEAVE] = data[TUI_LEAVE].filter((e: Element) => e !== this.el);
         });
     }
 

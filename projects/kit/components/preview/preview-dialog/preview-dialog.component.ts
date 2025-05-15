@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 

@@ -6,7 +6,7 @@ import {
     Input,
     PLATFORM_ID,
 } from '@angular/core';
-import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 

@@ -7,7 +7,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import type {TuiPopover} from '@taiga-ui/cdk/services';

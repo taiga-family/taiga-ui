@@ -1,6 +1,6 @@
 import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.directive';

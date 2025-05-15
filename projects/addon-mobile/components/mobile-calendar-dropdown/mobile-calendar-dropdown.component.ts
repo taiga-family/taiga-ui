@@ -2,7 +2,7 @@ import type {ValueProvider} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
-import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiDayLike} from '@taiga-ui/cdk/date-time';

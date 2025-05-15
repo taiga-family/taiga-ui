@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiButtonOptions} from '@taiga-ui/core/components/button';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';

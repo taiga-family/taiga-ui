@@ -255,7 +255,7 @@ export const config: ApplicationConfig = {
         }),
         {
             provide: REMOVE_STYLES_ON_COMPONENT_DESTROY,
-            useValue: false,
+            useValue: true,
         },
     ],
 };
