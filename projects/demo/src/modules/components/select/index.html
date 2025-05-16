@@ -301,8 +301,12 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-textfield
+                    *tuiLet="textfieldDoc.size === 's' || !control.value as showPlaceholder"
                     tuiChevron
                     [content]="control.value && textfieldContent"
+                    [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
+                    [identityMatcher]="itemsHandlers.identityMatcher()"
+                    [stringify]="itemsHandlers.stringify()"
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiDropdownAppearance]="dropdown.appearance"
                     [tuiDropdownDirection]="dropdown.direction"
@@ -314,11 +318,18 @@
                     [tuiTextfieldSize]="textfieldDoc.size"
                     [(open)]="dropdown.open"
                 >
+                    <label
+                        *ngIf="!showPlaceholder"
+                        tuiLabel
+                    >
+                        Choose country
+                    </label>
+
                     <input
-                        placeholder="Select something"
                         tuiSelect
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
+                        [placeholder]="showPlaceholder ? 'Choose country' : ''"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -326,12 +337,17 @@
                     <tui-data-list-wrapper
                         *tuiTextfieldDropdown
                         new
-                        [items]="items"
+                        [items]="countries$ | async"
                     />
                 </tui-textfield>
             </ng-template>
         </tui-doc-demo>
         <table tuiDocAPI>
+            <tbody
+                #itemsHandlers
+                tuiDocItemsHandlers
+            ></tbody>
+
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
