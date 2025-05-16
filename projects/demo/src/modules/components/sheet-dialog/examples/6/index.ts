@@ -6,13 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import type {TuiMatcher} from '@taiga-ui/cdk';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiDropdown,
-    TuiFallbackSrcPipe,
-    TuiNotification,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiFallbackSrcPipe, TuiNotification, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarLabeled, TuiFade, TuiFloatingContainer} from '@taiga-ui/kit';
 import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
 
@@ -28,7 +22,6 @@ import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
         TuiAvatarLabeled,
         TuiButton,
         TuiCell,
-        TuiDropdown,
         TuiFade,
         TuiFallbackSrcPipe,
         TuiFilterPipe,

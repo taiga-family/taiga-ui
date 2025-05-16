@@ -102,7 +102,7 @@ export class TuiInputSearch implements OnChanges {
     }
 
     public close(): void {
-        this.el.placeholder = this.placeholder;
+        this.el.placeholder = this.placeholder || this.el.placeholder;
         this.parent?.insertBefore(this.textfield.el, this.neighbor);
         this.ref?.destroy();
         this.tuiInputSearchOpen = false;
