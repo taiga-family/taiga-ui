@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk';
@@ -54,6 +55,8 @@ export default class PageComponent extends AbstractExampleTuiControl {
     private readonly valueTemplateRef: PolymorpheusContent<
         TuiValueContentContext<Account>
     >;
+
+    protected readonly routes = DemoRoute;
 
     protected readonly example9 = {
         TypeScript: import('./examples/9/index.ts?raw'),
