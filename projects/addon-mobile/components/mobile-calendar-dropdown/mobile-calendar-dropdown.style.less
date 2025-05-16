@@ -7,4 +7,6 @@
     box-shadow:
         0 10rem var(--tui-background-elevation-1),
         0 -90vh 1rem 2rem var(--tui-service-backdrop);
+    block-size: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
 }
