@@ -8,7 +8,7 @@ import {
     Injector,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiAnimatedParent} from '@taiga-ui/cdk';
+import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import type {TuiMapper} from '@taiga-ui/cdk/types';
 // eslint-disable-next-line no-restricted-imports
@@ -20,7 +20,7 @@ import {TUI_ALERTS_GROUPED} from './alert.tokens';
 @Component({
     standalone: true,
     selector: 'tui-alerts',
-    imports: [CommonModule, TuiMapperPipe, TuiAnimatedParent],
+    imports: [CommonModule, TuiAnimatedParent, TuiMapperPipe],
     templateUrl: './alerts.template.html',
     styleUrls: ['./alerts.style.less'],
     encapsulation: ViewEncapsulation.None,

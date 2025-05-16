@@ -49,7 +49,7 @@ export class TuiAlertComponent<O, I> {
         )
         .subscribe(() => this.item.$implicit.complete());
 
-    get from(): string {
+    public get from(): string {
         return this.position.endsWith('auto') ? 'translateX(100%)' : 'translateX(-100%)';
     }
 }

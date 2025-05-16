@@ -1,8 +1,8 @@
 import type {AfterViewInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';

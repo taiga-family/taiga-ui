@@ -34,7 +34,7 @@ export class TuiDrawer {
     @Input()
     public overlay = false;
 
-    get from(): string {
+    public get from(): string {
         return this.direction === 'right' ? 'translateX(100%)' : 'translateX(-100%)';
     }
 }

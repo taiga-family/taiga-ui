@@ -8,8 +8,8 @@ import {
     inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TuiAnimatedParent} from '@taiga-ui/cdk';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 

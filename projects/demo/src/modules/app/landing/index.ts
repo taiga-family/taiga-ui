@@ -28,11 +28,11 @@ import {TuiButton} from '@taiga-ui/core';
     imports: [
         NgIf,
         RouterLink,
+        TuiAnimated,
         TuiAutoFocus,
         TuiButton,
         TuiRepeatTimes,
         WaIntersectionObserver,
-        TuiAnimated,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
