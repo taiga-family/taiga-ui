@@ -73,7 +73,7 @@ const TEMPLATE_AFTER = `
 "></a>
 `;
 
-const TEMPLATE_WITH_CONDITION_AFTER = `<!-- Taiga migration TODO: tuiButton "whiteblock-active" appearance is no longer available. Use 'appearance="outline-grayscale" tuiAppearanceMode="checked"' -->
+const TEMPLATE_WITH_CONDITION_AFTER = `<!-- TODO: (Taiga UI migration) tuiButton "whiteblock-active" appearance is no longer available. Use 'appearance="outline-grayscale" tuiAppearanceMode="checked"' -->
 
 <a tuiButton [appearance]="
   true ? appearance : 'flat'

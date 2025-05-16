@@ -142,7 +142,7 @@ const TEMPLATE_AFTER = `
     ></tui-avatar>
 </tui-badged-content>
 
-<!-- Taiga migration TODO: contentTop and contentBottom inputs has been removed. Use ng-content, see taiga-ui.dev/components/badged-content  -->
+<!-- TODO: (Taiga UI migration) contentTop and contentBottom inputs has been removed. Use ng-content, see taiga-ui.dev/components/badged-content  -->
 <tui-badged-content
  ${''}
  [style.--tui-radius.%]="50">

@@ -98,7 +98,7 @@ export const DEPRECATED_NUMERIC_VARS = {
 };
 
 export const NIGHT_VAR_COMMENT =
-    'TODO: night variables have been removed. Use tuiTheme="dark" on an element to switch colors to dark theme';
+    'TODO: (Taiga UI migration) night variables have been removed. Use tuiTheme="dark" on an element to switch colors to dark theme';
 
 export const DEPRECATE_VARS_WITH_COMMENT = [
     '--tui-clear-inverse',

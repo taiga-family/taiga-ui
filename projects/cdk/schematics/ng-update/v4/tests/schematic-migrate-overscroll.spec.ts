@@ -49,7 +49,7 @@ tuiOverscroll
 `;
 
 const TEMPLATE_AFTER = `
-<!-- Taiga migration TODO: use "overscroll-behavior" ccs property instead of "tuiOverscroll" directive -->
+<!-- TODO: (Taiga UI migration) use "overscroll-behavior" ccs property instead of "tuiOverscroll" directive -->
 <div></div>
 
 <div class="box"></div>
