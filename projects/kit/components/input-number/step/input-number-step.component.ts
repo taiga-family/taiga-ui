@@ -10,17 +10,22 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiClamp, tuiInjectElement, tuiZonefree} from '@taiga-ui/cdk';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_TEXTFIELD_OPTIONS, TuiButton, TuiTextfieldContent} from '@taiga-ui/core';
 import {
     BehaviorSubject,
     concat,
-    finalize,
+    EMPTY,
+    map,
     merge,
+    mergeMap,
+    Subject,
     switchMap,
     take,
     takeUntil,
+    tap,
     timer,
 } from 'rxjs';
 
@@ -52,6 +57,65 @@ export class TuiInputNumberStep {
     protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
     protected readonly step = signal(this.options.step);
+    protected readonly step$ = new Subject<number>();
+    protected readonly stop$ = merge(
+        tuiTypedFromEvent(document, 'pointerup'),
+        tuiTypedFromEvent(document, 'pointerleave'),
+        tuiTypedFromEvent(document, 'pointercancel'),
+    );
+
+    protected readonly sub = this.step$
+        .pipe(
+            switchMap((stepValue) => {
+                this.element.focus();
+
+                const initialDelay = 300;
+                const delayDecrement = 15;
+                const minDelay = 100;
+                const acceleration$ = new BehaviorSubject<number>(initialDelay);
+
+                return acceleration$
+                    .pipe(
+                        switchMap((delay) =>
+                            concat(timer(delay).pipe(take(1)), timer(0, delay)),
+                        ),
+                        map(() => {
+                            acceleration$.next(
+                                Math.max(acceleration$.value - delayDecrement, minDelay),
+                            );
+
+                            return stepValue;
+                        }),
+                    )
+                    .pipe(takeUntil(this.stop$));
+            }),
+            takeUntilDestroyed(this.destroyRef),
+            mergeMap((stepValue) => {
+                const {inputNumber} = this;
+                const newValue = tuiClamp(
+                    (inputNumber.value() ?? 0) + stepValue,
+                    inputNumber.min(),
+                    inputNumber.max(),
+                );
+
+                this.inputNumber.setValue(newValue);
+
+                if (this.inputNumber.value() === null) {
+                    return timer(0).pipe(
+                        takeUntilDestroyed(this.destroyRef),
+                        tap(() => {
+                            const caretIndex =
+                                this.element.value.length - inputNumber.postfix().length;
+
+                            this.element.setSelectionRange(caretIndex, caretIndex);
+                        }),
+                    );
+                }
+
+                return EMPTY;
+            }),
+        )
+        .subscribe();
 
     // TODO(v5): replace with signal input
     @Input('step')
@@ -79,44 +143,5 @@ export class TuiInputNumberStep {
         }
 
         this.inputNumber.setValue(newValue);
-    }
-
-    protected startStep(event: Event, stepValue: number): void {
-        event.preventDefault();
-        this.element.focus();
-
-        const button = event.target as HTMLButtonElement;
-
-        const stop$ = merge(
-            tuiTypedFromEvent(button, 'mouseup'),
-            tuiTypedFromEvent(button, 'mouseleave'),
-            tuiTypedFromEvent(button, 'touchend'),
-            tuiTypedFromEvent(button, 'touchcancel'),
-            tuiTypedFromEvent(document, 'mouseup'),
-        );
-
-        const initialDelay = 300;
-        const delayDecrement = 30;
-        const minDelay = 50;
-
-        const acceleration$ = new BehaviorSubject<number>(initialDelay);
-
-        acceleration$
-            .pipe(
-                switchMap((delay) => concat(timer(delay).pipe(take(1)), timer(0, delay))),
-                takeUntil(stop$),
-                tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroyRef),
-                finalize(() => acceleration$.complete()),
-            )
-            .subscribe(() => {
-                this.zone.run(() => {
-                    this.onStep(stepValue);
-
-                    acceleration$.next(
-                        Math.max(acceleration$.value - delayDecrement, minDelay),
-                    );
-                });
-            });
     }
 }

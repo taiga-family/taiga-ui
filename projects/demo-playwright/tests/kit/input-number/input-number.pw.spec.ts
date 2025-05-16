@@ -269,52 +269,45 @@ describe('InputNumber', () => {
                     await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}1`);
                 });
 
-                test('sets 2 on mousedown', async ({page}) => {
-                    await inputNumber.stepUp.dispatchEvent('mousedown');
+                test('sets 2 on pointer press and hold', async ({page}) => {
+                    const stepUpBox = await inputNumber.stepUp.boundingBox();
 
-                    const textfieldHandle = await inputNumber.textfield.elementHandle();
+                    expect(stepUpBox).not.toBeNull();
 
-                    await page.waitForFunction(
-                        (input) => {
-                            const value = (input as HTMLInputElement).value;
-
-                            return Number(value) > 1;
-                        },
-                        textfieldHandle,
-                        {timeout: 1000},
+                    await page.mouse.move(
+                        stepUpBox!.x + stepUpBox!.width / 2,
+                        stepUpBox!.y + stepUpBox!.height / 2,
                     );
 
-                    await inputNumber.stepUp.dispatchEvent('mouseup');
+                    await page.mouse.down();
 
-                    const value = await inputNumber.textfield.inputValue();
+                    await page.waitForTimeout(500);
 
-                    expect(Number(value)).toBe(2);
-                });
-
-                test('sets 0 from 2 on mousedown', async ({page}) => {
-                    await inputNumber.textfield.fill('2');
+                    await page.mouse.up();
 
                     await expect(inputNumber.textfield).toHaveValue('2');
+                });
 
-                    await inputNumber.stepDown.dispatchEvent('mousedown');
+                test('sets 0 from 2 on pointer press and hold', async ({page}) => {
+                    await inputNumber.textfield.fill('2');
+                    await expect(inputNumber.textfield).toHaveValue('2');
 
-                    const textfieldHandle = await inputNumber.textfield.elementHandle();
+                    const stepDownBox = await inputNumber.stepDown.boundingBox();
 
-                    await page.waitForFunction(
-                        (input) => {
-                            const value = (input as HTMLInputElement).value;
+                    expect(stepDownBox).not.toBeNull();
 
-                            return Number(value) === 0;
-                        },
-                        textfieldHandle,
-                        {timeout: 1000},
+                    await page.mouse.move(
+                        stepDownBox!.x + stepDownBox!.width / 2,
+                        stepDownBox!.y + stepDownBox!.height / 2,
                     );
 
-                    await inputNumber.stepDown.dispatchEvent('mouseup');
+                    await page.mouse.down();
 
-                    const value = await inputNumber.textfield.inputValue();
+                    await page.waitForTimeout(500);
 
-                    expect(Number(value)).toBe(0);
+                    await page.mouse.up();
+
+                    await expect(inputNumber.textfield).toHaveValue('0');
                 });
             });
 
