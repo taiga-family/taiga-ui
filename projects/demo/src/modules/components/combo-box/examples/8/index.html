@@ -1,0 +1,31 @@
+<tui-textfield tuiChevron>
+    <input
+        placeholder="Country"
+        tuiComboBox
+        [(ngModel)]="value"
+    />
+
+    <ng-container *tuiTextfieldDropdown>
+        <!-- 48 = 44 height + 4 margin -->
+        <!-- 8 = data list padding -->
+        <cdk-virtual-scroll-viewport
+            *ngIf="countries$ | async | tuiFilterByInput as items"
+            tuiScrollable
+            class="scroll"
+            [itemSize]="48"
+            [style.height.px]="(items.length ? items.length : 1) * 48 + 8"
+        >
+            <tui-data-list>
+                <button
+                    *cdkVirtualFor="let item of items"
+                    new
+                    tuiOption
+                    type="button"
+                    [value]="item"
+                >
+                    {{ item }}
+                </button>
+            </tui-data-list>
+        </cdk-virtual-scroll-viewport>
+    </ng-container>
+</tui-textfield>

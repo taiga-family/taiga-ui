@@ -42,6 +42,10 @@ import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/combo-box TuiComboBox} (from @taiga-ui/kit) instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-combo-box',
