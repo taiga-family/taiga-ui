@@ -7,6 +7,8 @@
             tuiButton
             type="button"
             [appearance]="appearance"
+            [cdkCopyToClipboard]="appearance"
+            (cdkCopyToClipboardCopied)="$event && onCopy(appearance)"
         >
             {{ appearance }}
         </button>
