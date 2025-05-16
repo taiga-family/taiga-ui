@@ -1,3 +1,4 @@
+import type {AfterViewInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -49,11 +50,22 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
         '[attr.tuiTheme]': 'theme()',
     },
 })
-export class TuiDropdownComponent {
+export class TuiDropdownComponent implements AfterViewInit {
     private readonly el = tuiInjectElement();
     private readonly accessor = inject(TuiRectAccessor);
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vvs = inject(TuiVisualViewportService);
+
+    private readonly styles$ = inject(TuiPositionService).pipe(
+        takeWhile(
+            () =>
+                this.directive.el.isConnected &&
+                !!this.directive.el.getBoundingClientRect().height,
+        ),
+        map((v) => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
+        map(([top, left]) => this.getStyles(left, top)),
+        takeUntilDestroyed(),
+    );
 
     protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
@@ -65,21 +77,12 @@ export class TuiDropdownComponent {
         this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme'),
     );
 
-    protected readonly sub = inject(TuiPositionService)
-        .pipe(
-            takeWhile(
-                () =>
-                    this.directive.el.isConnected &&
-                    !!this.directive.el.getBoundingClientRect().height,
-            ),
-            map((v) => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
-            map(([top, left]) => this.getStyles(left, top)),
-            takeUntilDestroyed(),
-        )
-        .subscribe({
+    public ngAfterViewInit(): void {
+        this.styles$.subscribe({
             next: (styles) => Object.assign(this.el.style, styles),
             complete: () => this.close?.(),
         });
+    }
 
     protected readonly close = (): void => this.directive.toggle(false);
 
