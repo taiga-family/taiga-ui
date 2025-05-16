@@ -11,17 +11,23 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiClamp, tuiInjectElement, tuiZonefree} from '@taiga-ui/cdk';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_TEXTFIELD_OPTIONS, TuiButton, TuiTextfieldContent} from '@taiga-ui/core';
 import {
     BehaviorSubject,
     concat,
+    EMPTY,
     finalize,
+    map,
     merge,
+    mergeMap,
+    Subject,
     switchMap,
     take,
     takeUntil,
+    tap,
     timer,
 } from 'rxjs';
 
@@ -53,7 +59,68 @@ export class TuiInputNumberStep {
     protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly input = inject(TuiInputNumberDirective, {self: true});
     protected readonly step = signal(this.options.step);
+
     protected readonly value = computed(() => this.input.value() ?? NaN);
+
+    protected readonly step$ = new Subject<number>();
+    protected readonly stop$ = merge(
+        tuiTypedFromEvent(document, 'pointerup'),
+        tuiTypedFromEvent(document, 'pointerleave'),
+        tuiTypedFromEvent(document, 'pointercancel'),
+    );
+
+    protected readonly sub = this.step$
+        .pipe(
+            switchMap((stepValue) => {
+                this.el.focus();
+
+                const initialDelay = 300;
+                const delayDecrement = 15;
+                const minDelay = 100;
+                const acceleration$ = new BehaviorSubject<number>(initialDelay);
+
+                return acceleration$
+                    .pipe(
+                        switchMap((delay) =>
+                            concat(timer(delay).pipe(take(1)), timer(0, delay)),
+                        ),
+                        map(() => {
+                            acceleration$.next(
+                                Math.max(acceleration$.value - delayDecrement, minDelay),
+                            );
+
+                            return stepValue;
+                        }),
+                    )
+                    .pipe(takeUntil(this.stop$));
+            }),
+            takeUntilDestroyed(this.destroyRef),
+            mergeMap((stepValue) => {
+                const {input} = this;
+                const newValue = tuiClamp(
+                    (input.value() ?? 0) + stepValue,
+                    input.min(),
+                    input.max(),
+                );
+
+                this.input.setValue(newValue);
+
+                if (this.input.value() === null) {
+                    return timer(0).pipe(
+                        takeUntilDestroyed(this.destroyRef),
+                        tap(() => {
+                            const caretIndex =
+                                this.el.value.length - input.postfix().length;
+
+                            this.el.setSelectionRange(caretIndex, caretIndex);
+                        }),
+                    );
+                }
+
+                return EMPTY;
+            }),
+        )
+        .subscribe();
 
     // TODO(v5): replace with signal input
     @Input('step')

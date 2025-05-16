@@ -13,7 +13,7 @@
             [disabled]="!input.interactive() || value() >= input.max()"
             [iconStart]="options.icons.increase"
             (click.prevent)="onStep(step())"
-            (mousedown)="startStep($event, step())"
+            (pointerdown.prevent)="step$.next(step())"
         >
             +
         </button>
@@ -28,7 +28,7 @@
             [disabled]="!input.interactive() || value() <= input.min()"
             [iconStart]="options.icons.decrease"
             (click.prevent)="onStep(-step())"
-            (mousedown)="startStep($event, -step())"
+            (pointerdown.prevent)="step$.next(-step())"
         >
             -
         </button>
