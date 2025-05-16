@@ -7,10 +7,10 @@ import {
     successLog,
 } from 'ng-morph';
 
-import type {TuiSchema} from '../../ng-add/schema';
-import {getNamedImportReferences} from '../../utils/get-named-import-references';
-import {removeImport} from '../../utils/import-manipulations';
-import type {RemovedModule} from '../interfaces/removed-module';
+import type {TuiSchema} from '../ng-add/schema';
+import type {RemovedModule} from '../ng-update/interfaces/removed-module';
+import {getNamedImportReferences} from './get-named-import-references';
+import {removeImport} from './import-manipulations';
 
 export function removeModules(
     options: TuiSchema,

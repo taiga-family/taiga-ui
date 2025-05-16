@@ -13,8 +13,8 @@ import {
 
 import {ALL_TS_FILES} from '../../../constants/file-globs';
 import type {TuiSchema} from '../../../ng-add/schema';
+import {removeModules} from '../../../utils/remove-module';
 import {renameTypes, replaceIdentifiers} from '../../steps';
-import {removeModules} from '../../steps/remove-module';
 import {getFileSystem} from '../../utils/get-file-system';
 import {DOC_SYMBOLS_TO_REPLACE} from './replace-symbols';
 

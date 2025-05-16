@@ -1,4 +1,4 @@
-export * from './remove-module';
+export * from '../../utils/remove-module';
 export * from './rename-types';
 export * from './replace-deep-import';
 export * from './replace-enums';

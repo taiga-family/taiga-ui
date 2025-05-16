@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`migrateTuiLet should migrate template 1`] = `
+"
+@let val = value;
+
+
+
+<div>
+    @let val2 = value;
+    
+    
+</div>
+"
+`;
+
+exports[`migrateTuiLet should migrate ts files 1`] = `
+"
+@Component({
+    standalone: true,
+    templateUrl: './test.template.html',
+    imports: [],
+})
+export class Test {
+    readonly value = 'foo';
+}"
+`;
