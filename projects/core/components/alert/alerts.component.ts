@@ -11,6 +11,7 @@ import {
 import {TuiAnimatedParent} from '@taiga-ui/cdk';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import type {TuiMapper} from '@taiga-ui/cdk/types';
+// eslint-disable-next-line no-restricted-imports
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {identity} from 'rxjs';
 

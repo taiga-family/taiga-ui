@@ -161,3 +161,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+@mixin tui-mask($x, $y, $r) {
+    mask: radial-gradient(circle at $x $y, transparent $r, black $r)
+}

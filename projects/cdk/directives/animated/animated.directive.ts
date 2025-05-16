@@ -63,7 +63,7 @@ export class TuiAnimated implements OnDestroy {
 
                 const animations = element.getAnimations();
                 const last = animations[animations.length - 1];
-                const finish = () => {
+                const finish = (): void => {
                     if (parent.contains(el)) {
                         remove();
                         this.app.tick();
