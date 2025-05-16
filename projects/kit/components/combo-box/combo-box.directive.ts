@@ -72,8 +72,6 @@ export class TuiComboBox<T>
     @Input()
     public strict = true;
 
-    // TODO before merge: `strictMatcher` is used not only for `[strict]=true`.
-    //  Should we rename it to `searchMatcher` ?
     @Input()
     public strictMatcher: TuiStringMatcher<T> | null = TUI_STRICT_MATCHER;
 
