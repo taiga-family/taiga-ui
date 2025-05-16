@@ -1,0 +1,222 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
+:host {
+    position: relative;
+    transition: transform var(--tui-duration);
+
+    &[data-state='error']::ng-deep {
+        [tuiSubtitle],
+        [tuiFilePreview] > tui-icon {
+            color: var(--tui-text-negative);
+        }
+    }
+
+    &[data-state='disabled'] {
+        pointer-events: none;
+        opacity: 0.5;
+
+        &::ng-deep [tuiButtonClose] {
+            opacity: 0;
+        }
+    }
+
+    &::ng-deep [tuiFilePreview] {
+        display: flex;
+        background-color: var(--tui-background-neutral-1);
+        border-radius: var(--tui-radius-l);
+        min-inline-size: 2.5rem;
+        min-block-size: 2.5rem;
+        align-items: center;
+        justify-content: center;
+
+        & > [tuiIconButton]::before {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+:host[data-mode='cell'] {
+    &::ng-deep [tuiFilePreview] {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-inline-size: 6.5rem;
+        max-block-size: 6.5rem;
+
+        :host[data-size='s'] & {
+            display: none;
+        }
+
+        & > img {
+            inline-size: 2.5rem;
+            block-size: 2.5rem;
+            border-radius: 0.75rem;
+            box-sizing: border-box;
+            border: 1px solid var(--tui-background-neutral-1);
+        }
+    }
+
+    &[data-size='s']::ng-deep [tuiFilePreview] {
+        border-radius: var(--tui-radius-m);
+        min-inline-size: 2rem;
+        min-block-size: 2rem;
+
+        & > tui-icon {
+            inline-size: 1.25rem;
+            block-size: 1.25rem;
+        }
+
+        & tui-progress-circle {
+            --t-diameter: 1.5rem;
+        }
+
+        & [tuiProgressLabel] [tuiIconButton]::before {
+            font-size: 0.75rem;
+        }
+
+        [tuiIconButton]::before {
+            font-size: 1.25rem;
+        }
+    }
+
+    &[data-size='s']::ng-deep [tuiFilePreview] > img {
+        inline-size: 2rem;
+        block-size: 2rem;
+    }
+
+    &::ng-deep [tuiButtonClose] {
+        color: var(--tui-text-secondary);
+    }
+
+    &::ng-deep [tuiTitle] {
+        font-size: 0.9375rem;
+
+        [tuiSubtitle] {
+            font-size: 0.8125rem;
+        }
+
+        :host-context([data-platform='ios']) & {
+            font-size: 1.0625rem;
+        }
+
+        :host-context([data-platform='android']) & {
+            font-size: 16px;
+        }
+    }
+
+    &[data-size='s']::ng-deep [tuiTitle] {
+        font-size: 0.8125rem;
+        gap: 2px;
+
+        [tuiSubtitle] {
+            font-size: 0.6875rem;
+        }
+    }
+}
+
+:host[data-mode='card'] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+    inline-size: max-content;
+
+    :host-context([data-platform='ios'], [data-platform='android']) &:active {
+        transform: scale(0.95);
+    }
+
+    &::ng-deep [tuiFilePreview] {
+        position: relative;
+        inline-size: 5rem;
+        block-size: 5rem;
+
+        tui-icon {
+            block-size: 3rem;
+            inline-size: 3rem;
+        }
+
+        & [tuiIconButton]::before {
+            font-size: 1rem;
+        }
+
+        & > [tuiIconButton]::before {
+            font-size: 1.5rem;
+        }
+
+        & tui-progress-circle {
+            --t-diameter: 2rem;
+        }
+
+        :host-context([data-platform='ios'], [data-platform='android']) & {
+            inline-size: 6.25rem;
+            block-size: 6.25rem;
+
+            tui-icon {
+                block-size: 3.625rem;
+                inline-size: 3.625rem;
+            }
+
+            & tui-progress-circle {
+                --t-diameter: 2.5rem;
+            }
+
+            & [tuiProgressLabel] [tuiIconButton]::before {
+                font-size: 1.25rem;
+            }
+        }
+
+        [tuiButtonClose] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            block-size: 1.5rem;
+            inline-size: 1.5rem;
+            transform: translate3d(0.5rem, -0.5rem, 0);
+            transition: opacity var(--tui-duration);
+            border-radius: 100%;
+        }
+
+        & > img {
+            inline-size: 100%;
+            block-size: 100%;
+            border: 1px solid var(--tui-background-neutral-1);
+        }
+    }
+
+    :host-context([data-platform='ios'], [data-platform='android']) & {
+        &:not(._longtapped):not([data-state='error'])::ng-deep {
+            [tuiButtonClose] {
+                opacity: 0;
+            }
+        }
+    }
+
+    &::ng-deep [tuiTitle] {
+        align-items: center;
+        text-align: center;
+        font-size: 0.8125rem;
+        gap: 2px;
+
+        [tuiSubtitle] {
+            font-size: 0.6875rem;
+        }
+
+        :host-context([data-platform='ios']) & {
+            font-size: 0.9375rem;
+
+            [tuiSubtitle] {
+                font-size: 0.8125rem;
+            }
+        }
+
+        :host-context([data-platform='android']) & {
+            font-size: 0.875rem;
+
+            [tuiSubtitle] {
+                font-size: 0.8125rem;
+            }
+        }
+    }
+}
