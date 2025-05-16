@@ -2,7 +2,7 @@ import {NgForOf} from '@angular/common';
 import type {Signal} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {TuiAnimatedParent} from '@taiga-ui/cdk';
+import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
 import {TuiFocusTrap} from '@taiga-ui/cdk/directives/focus-trap';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -17,10 +17,10 @@ import {TUI_DIALOGS} from './dialog.tokens';
     imports: [
         NgForOf,
         PolymorpheusOutlet,
+        TuiAnimatedParent,
         TuiFocusTrap,
         TuiScrollControls,
         TuiScrollRef,
-        TuiAnimatedParent,
     ],
     templateUrl: './dialogs.template.html',
     styleUrls: ['./dialogs.style.less'],

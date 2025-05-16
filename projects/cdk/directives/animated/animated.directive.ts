@@ -1,9 +1,9 @@
+import type {OnDestroy} from '@angular/core';
 import {
     afterNextRender,
     ApplicationRef,
     Directive,
     inject,
-    type OnDestroy,
     ViewContainerRef,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -21,11 +21,11 @@ export const TUI_LEAVE = 'tui-leave';
     },
 })
 export class TuiAnimated implements OnDestroy {
-    private readonly el = tuiInjectElement<HTMLElement>();
+    private readonly el = tuiInjectElement();
     private readonly app = inject(ApplicationRef);
 
     // @ts-ignore https://github.com/angular/angular/blob/main/packages/core/src/render3/interfaces/view.ts#L56
-    private readonly renderer = inject(ViewContainerRef)['_hostLView']?.[11];
+    private readonly renderer = inject(ViewContainerRef)._hostLView?.[11];
 
     constructor() {
         if (!this.renderer) {
@@ -46,6 +46,7 @@ export class TuiAnimated implements OnDestroy {
 
         afterNextRender(() => {
             this.remove();
+
             renderer.removeChild = (parent: Node, el: Node, host?: boolean) => {
                 const remove = (): void => removeChild.call(renderer, parent, el, host);
                 const elements: Element[] = data[TUI_LEAVE];

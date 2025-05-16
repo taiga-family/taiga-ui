@@ -1,8 +1,8 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiValidationError} from '@taiga-ui/cdk/classes';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED, TUI_DEFAULT_ERROR_MESSAGE} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils';

@@ -12,7 +12,7 @@ import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
 @Component({
     standalone: true,
     selector: 'tui-scroll-controls',
-    imports: [AsyncPipe, NgIf, TuiScrollbarDirective, TuiAnimated],
+    imports: [AsyncPipe, NgIf, TuiAnimated, TuiScrollbarDirective],
     templateUrl: './scroll-controls.template.html',
     styleUrls: ['./scroll-controls.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

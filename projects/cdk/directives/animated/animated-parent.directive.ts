@@ -11,9 +11,6 @@ import {TUI_ENTER, TUI_LEAVE, TuiAnimated} from './animated.directive';
     standalone: true,
     selector: '[tuiAnimatedParent]',
     providers: [provideMutationObserverInit({childList: true})],
-    host: {
-        '(waMutationObserver)': 'handle()',
-    },
     hostDirectives: [
         TuiAnimated,
         {
@@ -21,6 +18,9 @@ import {TUI_ENTER, TUI_LEAVE, TuiAnimated} from './animated.directive';
             outputs: ['waMutationObserver'],
         },
     ],
+    host: {
+        '(waMutationObserver)': 'handle()',
+    },
 })
 export class TuiAnimatedParent {
     private readonly el = tuiInjectElement();
