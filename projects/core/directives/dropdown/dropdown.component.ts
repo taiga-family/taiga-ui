@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiDropdownAnimation} from '@taiga-ui/core/animations';
 import {
     tuiPositionAccessorFor,
     TuiRectAccessor,
@@ -12,8 +12,7 @@ import {
 } from '@taiga-ui/core/classes';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_SPEED, TUI_DARK_MODE, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
-import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
+import {TUI_DARK_MODE, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map, takeWhile} from 'rxjs';
 
@@ -41,10 +40,8 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
         tuiPositionAccessorFor('dropdown', TuiDropdownPosition),
         tuiRectAccessorFor('dropdown', TuiDropdownDirective),
     ],
-    animations: [tuiDropdownAnimation],
-    hostDirectives: [TuiActiveZone],
+    hostDirectives: [TuiActiveZone, TuiAnimated],
     host: {
-        '[@tuiDropdownAnimation]': 'animation',
         '[attr.data-appearance]': 'options.appearance',
         '[attr.tuiTheme]': 'theme()',
     },
@@ -55,7 +52,6 @@ export class TuiDropdownComponent {
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly vvs = inject(TuiVisualViewportService);
 
-    protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
     protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
     protected readonly directive = inject(TuiDropdownDirective);
     protected readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});

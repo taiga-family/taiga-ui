@@ -8,6 +8,13 @@
     color: var(--tui-text-primary);
     pointer-events: auto;
 
+    --tui-from: translateX(-100%);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiSlide;
+    }
+
     ::ng-deep tui-data-list {
         [tuiOption] {
             justify-content: flex-start;

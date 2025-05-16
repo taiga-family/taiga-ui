@@ -7,11 +7,10 @@
 </button>
 <div
     *tuiPopup="!!step()"
+    tuiAnimated
     tuiAppearance="floating"
     tuiCardLarge="compact"
     class="popover"
-    [@tuiFadeIn]="animation"
-    [@tuiSlideIn]="animation"
 >
     <ng-container *ngIf="step() === 1">
         <h1 tuiTitle>

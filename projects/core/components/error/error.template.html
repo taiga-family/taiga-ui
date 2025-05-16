@@ -1,9 +1,8 @@
 <div
-    *ngIf="error && visible"
+    *ngIf="error"
     automation-id="tui-error__text"
+    tuiAnimated
     class="t-message-text"
-    [@tuiFadeIn]="options"
-    [@tuiHeightCollapse]="options"
 >
     <ng-container *polymorpheusOutlet="error.message || default() as text; context: error.context || {}">
         {{ text }}

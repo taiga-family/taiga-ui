@@ -1,21 +1,21 @@
 import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiFadeIn, tuiScaleIn} from '@taiga-ui/core/animations';
 import {
     tuiPositionAccessorFor,
     TuiRectAccessor,
     tuiRectAccessorFor,
 } from '@taiga-ui/core/classes';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_SPEED, TUI_VIEWPORT} from '@taiga-ui/core/tokens';
-import {tuiIsObscured, tuiToAnimationOptions} from '@taiga-ui/core/utils';
+import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
+import {tuiIsObscured} from '@taiga-ui/core/utils';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map, takeWhile} from 'rxjs';
 
@@ -48,10 +48,8 @@ const GAP = 8;
     styleUrls: ['./hint.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_HINT_PROVIDERS,
-    animations: [tuiFadeIn, tuiScaleIn],
+    hostDirectives: [TuiAnimated],
     host: {
-        '[@tuiScaleIn]': 'isMobile ? options : desktop',
-        '[@tuiFadeIn]': 'options',
         '[class._untouchable]': 'pointer',
         '[class._mobile]': 'isMobile',
         '[attr.data-appearance]': 'appearance',
@@ -64,12 +62,6 @@ export class TuiHintComponent<C = any> {
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
-
-    protected readonly desktop = {value: '', params: {end: 1, start: 1}};
-    protected readonly options = tuiToAnimationOptions(
-        inject(TUI_ANIMATIONS_SPEED),
-        'cubic-bezier(0.35, 1.3, 0.25, 1)',
-    );
 
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);

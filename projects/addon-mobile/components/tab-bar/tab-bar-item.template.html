@@ -5,8 +5,8 @@
 <span class="t-wrapper">
     <span
         *ngIf="badge as value"
+        tuiAnimated
         class="t-badge"
-        [@tuiScaleIn]="options"
     >
         {{ format(value) }}
     </span>
