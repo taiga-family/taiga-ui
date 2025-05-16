@@ -1,0 +1,29 @@
+<tr>
+    <td colspan="3">
+        <span tuiTitle>
+            <a
+                fragment="obfuscate-option"
+                target="_blank"
+                tuiLink
+                [routerLink]="routes.Tokens"
+            >
+                <strong>TUI_OBFUSCATE_OPTION</strong>
+            </a>
+            <div tuiSubtitle>
+                Usage example:
+                <br />
+                <code>{{ displayOption() | json }}</code>
+            </div>
+        </span>
+    </td>
+</tr>
+
+<tr
+    name="[recipe]"
+    tuiDocAPIItem
+    type="string"
+    [value]="recipe()"
+    (valueChange)="recipe.set($event)"
+>
+    recipe for obfuscate value
+</tr>

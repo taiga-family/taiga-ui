@@ -1133,6 +1133,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../info/migration-guide'),
         title: 'Migration Guide',
     }),
+    route({
+        path: DemoRoute.Obfuscate,
+        loadComponent: async () => import('../pipes/obfuscate'),
+        title: 'Obfuscate',
+    }),
     {
         path: '**',
         redirectTo: '',

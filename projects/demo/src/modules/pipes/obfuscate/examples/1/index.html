@@ -1,0 +1,17 @@
+<p>
+    Obfuscate "+7(900)500-40-20" by default:
+    <br />
+    {{ '+7(900)500-40-20' | tuiObfuscate }}
+</p>
+
+<p>
+    Obfuscate "2200 4400" with "#":
+    <br />
+    {{ '2200 4400' | tuiObfuscate: '#' }}
+</p>
+
+<p>
+    Obfuscate "Moscow" by recipe 'city':
+    <br />
+    {{ 'Moscow' | tuiObfuscate: 'city' }}
+</p>
