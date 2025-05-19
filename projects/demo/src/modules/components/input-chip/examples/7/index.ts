@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
@@ -7,9 +7,9 @@ import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, TuiInputChip, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiInputChip, TuiTextfield],
     templateUrl: './index.html',
-    styles: [':host {display: block; max-inline-size: 15rem;}'],
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

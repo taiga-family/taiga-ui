@@ -53,14 +53,6 @@
                     Ability to enter unique or non-unique tags
                 </tr>
                 <tr
-                    name="[rows]"
-                    tuiDocAPIItem
-                    type="number"
-                    [(value)]="rows"
-                >
-                    Maximum number of rows
-                </tr>
-                <tr
                     name="[separator]"
                     tuiDocAPIItem
                     type="string"
@@ -73,6 +65,7 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+                [hiddenOptions]="[]"
             ></tbody>
 
             <tbody
