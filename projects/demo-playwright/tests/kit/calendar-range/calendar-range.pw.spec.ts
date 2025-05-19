@@ -232,5 +232,62 @@ describe('CalendarRange', () => {
                 await expect.soft(example).toHaveScreenshot('09-3-has-hover-effect.png');
             });
         });
+
+        describe('[maxLength] property', () => {
+            let alert!: Locator;
+
+            beforeEach(async ({page}) => {
+                await tuiGoto(page, `${DemoRoute.CalendarRange}/API?maxLength$=0`, {
+                    date: today,
+                });
+                alert = page.locator('tui-alerts tui-notification');
+            });
+
+            test('click on the 1st date (beginning of date range) disables invalid cells for the 2nd date', async () => {
+                const [calendarSheet] = await calendarRange
+                    .getCalendars()
+                    .then(async ([x]) => x.getCalendarSheets());
+
+                await calendarSheet.clickOnDay(15);
+
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot('10-1-max-length-disables-cells.png');
+
+                await expect(alert).not.toBeAttached();
+            });
+
+            test('click on disabled cell does nothing', async () => {
+                const [calendarSheet] = await calendarRange
+                    .getCalendars()
+                    .then(async ([x]) => x.getCalendarSheets());
+
+                await calendarSheet.clickOnDay(15);
+
+                await expect(alert).not.toBeAttached();
+
+                await calendarSheet.clickOnDay(30);
+
+                await expect(alert).not.toBeAttached();
+
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot('10-2-max-length-after-click-on-disabled-cell.png');
+            });
+
+            test('selects valid 2nd date – date range is completed', async () => {
+                const [calendarSheet] = await calendarRange
+                    .getCalendars()
+                    .then(async ([x]) => x.getCalendarSheets());
+
+                await calendarSheet.clickOnDay(15);
+                await calendarSheet.clickOnDay(19);
+
+                await expect(alert).toContainText('15.09.2020 – 19.09.2020');
+                await expect
+                    .soft(example)
+                    .toHaveScreenshot('10-3-max-length-selects-2nd-valid-date.png');
+            });
+        });
     });
 });
