@@ -288,6 +288,23 @@ describe('rangeCalendarComponent', () => {
             );
         });
 
+        it('should fire itemChange before valueChange', () => {
+            const itemChangeSpy = jest.spyOn(testComponent.component.itemChange, 'emit');
+            const valueChangeSpy = jest.spyOn(
+                testComponent.component.valueChange,
+                'emit',
+            );
+
+            if (component.items[1]) {
+                component['onItemSelect'](component.items[1]);
+            }
+
+            const itemChangeOrder = itemChangeSpy.mock.invocationCallOrder[0] || 0;
+            const valueChangeOrder = valueChangeSpy.mock.invocationCallOrder[0] || 0;
+
+            expect(itemChangeOrder).toBeLessThan(valueChangeOrder);
+        });
+
         it('when min later than current month, defaultViewedMonth is next month after min', () => {
             const minDate = TuiDay.currentLocal().append({month: 3});
 

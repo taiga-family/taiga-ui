@@ -201,12 +201,12 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected onItemSelect(item: TuiDayRangePeriod | string): void {
         if (!tuiIsString(item)) {
             this.selectedActivePeriod = item;
-            this.updateValue(item.range.dayLimit(this.min, this.max));
             this.itemChange.emit(item);
+            this.updateValue(item.range.dayLimit(this.min, this.max));
         } else if (this.activePeriod !== null) {
             this.selectedActivePeriod = null;
-            this.updateValue(null);
             this.itemChange.emit(null);
+            this.updateValue(null);
         }
 
         this.initDefaultViewedMonth();
@@ -224,8 +224,8 @@ export class TuiCalendarRange implements OnInit, OnChanges {
             const range = TuiDayRange.sort(this.value, day);
 
             this.value = range;
-            this.updateValue(range);
             this.itemChange.emit(this.findItemByDayRange(range));
+            this.updateValue(range);
         } else {
             this.value = day;
         }
