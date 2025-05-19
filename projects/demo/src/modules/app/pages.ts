@@ -1609,6 +1609,13 @@ export const pages: DocRoutePages = [
                 keywords: 'dadata, ввод, email, подсказка',
                 route: DemoRoute.Emails,
             },
+            {
+                section: 'Tools',
+                title: 'Obfuscate',
+                keywords:
+                    'obfuscate, mask, sensitive, pipe, обфускация, преобразование, пайп, маска, чувствительные, критичные',
+                route: DemoRoute.Obfuscate,
+            },
         ],
     },
     {

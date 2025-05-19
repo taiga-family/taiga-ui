@@ -224,4 +224,5 @@ export const DemoRoute = {
     Animations: '/animations',
     StackblitzStarter: '/stackblitz',
     MigrationGuide: '/migration-guide',
+    Obfuscate: '/pipes/obfuscate',
 } as const;
