@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.116.0](https://github.com/taiga-family/taiga-ui/compare/v3.115.0...v3.116.0) (2025-05-19)
+
+### Features
+
+- **core:** `Dialog` add safe-area support ([#10968](https://github.com/taiga-family/taiga-ui/issues/10968))
+  ([c3b3910](https://github.com/taiga-family/taiga-ui/commit/c3b391094d9a697698ea167a46f3e48720d33aa7))
+
+### Bug Fixes
+
+- **addon-charts:** `ArcChart` fix zoom in Safari ([#10983](https://github.com/taiga-family/taiga-ui/issues/10983))
+  ([bf2517e](https://github.com/taiga-family/taiga-ui/commit/bf2517e83df336386a11806339ce3b01b06185c1))
+
 ## [3.115.0](https://github.com/taiga-family/taiga-ui/compare/v3.114.0...v3.115.0) (2025-05-12)
 
 ### Bug Fixes
