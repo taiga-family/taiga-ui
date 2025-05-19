@@ -11,7 +11,7 @@
         [disabled]="disabled()"
         [size]="size()"
         [tuiAppearanceFocus]="open()"
-        (mousedown.prevent)="interactive() && open.set(!open())"
+        (pointerdown.prevent)="interactive() && open.set(!open())"
     >
         <img
             class="t-ipi-flag"

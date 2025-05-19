@@ -1,12 +1,7 @@
 <tui-notification>
-    Taiga UI watches for
-    <code>visualViewport</code>
-    changes and updates following CSS variables automatically:
-    <code>--tui-viewport-x</code>
-    <code>--tui-viewport-y</code>
-    <code>--tui-viewport-width</code>
-    <code>--tui-viewport-height</code>
-    <code>--tui-viewport-scale</code>
+    When mobile styles are enabled you can use
+    <code style="white-space: nowrap">input[type='search'][tuiSearch]</code>
+    to imitate iOS native input
 </tui-notification>
 <p>
     <button
@@ -39,7 +34,7 @@
 </ng-template>
 <ng-template
     [tuiSheetDialog]="open()"
-    [tuiSheetDialogOptions]="{label: bar, bar: false}"
+    [tuiSheetDialogOptions]="{label: bar, bar: false, fullscreen: true}"
     (tuiSheetDialogChange)="open.set($event)"
 >
     <div class="favorites">
