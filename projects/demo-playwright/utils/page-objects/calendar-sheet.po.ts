@@ -26,6 +26,6 @@ export class TuiCalendarSheetPO {
     public async clickOnDay(day: number): Promise<void> {
         const element = await this.getCalendarDay(day);
 
-        return element!.click();
+        return element!.click({force: true});
     }
 }
