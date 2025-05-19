@@ -29,6 +29,7 @@ import {TuiInputChipItem} from './input-chip-item.component';
         `
             :host {
                 max-width: 100%;
+                overflow: hidden;
 
                 &:last-of-type {
                     max-width: 80%;
