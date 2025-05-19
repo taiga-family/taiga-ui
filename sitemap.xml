@@ -169,7 +169,7 @@
     <loc>https://taiga-ui.dev/components/checkbox/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/combo-box/</loc>
+    <loc>https://taiga-ui.dev/components/combo-box-legacy/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/data-list/</loc>
@@ -676,6 +676,9 @@
     <loc>https://taiga-ui.dev/migration-guide/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/pipes/obfuscate/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/accordion/API/</loc>
   </url>
   <url>
@@ -916,10 +919,10 @@
     <loc>https://taiga-ui.dev/components/checkbox/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/combo-box/API/</loc>
+    <loc>https://taiga-ui.dev/components/combo-box-legacy/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/combo-box/Setup/</loc>
+    <loc>https://taiga-ui.dev/components/combo-box-legacy/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/data-list/API/</loc>
@@ -1862,6 +1865,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/utils/pure/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/pipes/obfuscate/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/pipes/obfuscate/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev//</loc>
