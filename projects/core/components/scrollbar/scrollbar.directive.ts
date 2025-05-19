@@ -1,14 +1,22 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, ElementRef, inject, INJECTOR, Injector, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {
-    tuiScrollFrom,
-    tuiZonefree,
-    tuiZonefreeScheduler,
-} from '@taiga-ui/cdk/observables';
+    MutationObserverService,
+    provideMutationObserverInit,
+} from '@ng-web-apis/mutation-observer';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {merge, throttleTime} from 'rxjs';
+import {
+    debounceTime,
+    distinctUntilChanged,
+    filter,
+    map,
+    merge,
+    scan,
+    throttleTime,
+} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -31,6 +39,41 @@ interface ComputedDimension {
 export class TuiScrollbarDirective {
     private readonly el = inject(TUI_SCROLL_REF).nativeElement;
     private readonly style = tuiInjectElement().style;
+    private readonly injector = inject(INJECTOR);
+
+    private readonly resizeObserverService = Injector.create({
+        providers: [
+            ResizeObserverService,
+            {
+                provide: ElementRef,
+                useFactory: () => new ElementRef(this.el),
+            },
+        ],
+        parent: this.injector,
+    }).get(ResizeObserverService);
+
+    private readonly mutationObserverService = Injector.create({
+        providers: [
+            MutationObserverService,
+            provideMutationObserverInit({
+                // childList: true,
+                // characterData: true,
+                // subtree: true,
+
+                // attributes: true,
+                // attributeFilter: ['style', 'class'],
+
+                childList: true,
+                characterData: true,
+                subtree: true,
+            }),
+            {
+                provide: ElementRef,
+                useFactory: () => new ElementRef(this.el),
+            },
+        ],
+        parent: this.injector,
+    }).get(MutationObserverService);
 
     protected readonly scrollSub = inject(TuiScrollbarService)
         .pipe(takeUntilDestroyed())
@@ -47,35 +90,75 @@ export class TuiScrollbarDirective {
         });
 
     protected readonly styleSub = merge(
-        inject(WA_ANIMATION_FRAME).pipe(throttleTime(100, tuiZonefreeScheduler())),
-        tuiScrollFrom(this.el),
-    )
-        .pipe(tuiZonefree(), takeUntilDestroyed())
-        .subscribe(() => {
-            const dimension: ComputedDimension = {
-                scrollTop: this.el.scrollTop,
+        this.resizeObserverService.pipe(
+            filter(([entry]) => !!entry),
+            map(([entry]) => ({
+                clientHeight: entry!.contentRect.height,
+                clientWidth: entry!.contentRect.width,
+            })),
+            debounceTime(100),
+        ),
+        this.mutationObserverService.pipe(
+            map(() => ({
                 scrollHeight: this.el.scrollHeight,
-                clientHeight: this.el.clientHeight,
-                scrollLeft: this.el.scrollLeft,
                 scrollWidth: this.el.scrollWidth,
+                clientHeight: this.el.clientHeight,
                 clientWidth: this.el.clientWidth,
-            };
+            })),
+            debounceTime(100),
+        ),
+        tuiScrollFrom(this.el).pipe(
+            throttleTime(16, undefined, {trailing: true}),
+            map(() => ({
+                scrollTop: this.el.scrollTop,
+                scrollLeft: this.el.scrollLeft,
+            })),
+        ),
+    )
+        .pipe(
+            scan((prev, current) => ({...prev, ...current}), {
+                clientHeight: 0,
+                clientWidth: 0,
+                scrollHeight: 0,
+                scrollWidth: 0,
+                scrollTop: 0,
+                scrollLeft: 0,
+            }),
+            distinctUntilChanged(
+                (a, b) =>
+                    a.scrollTop === b.scrollTop &&
+                    a.scrollLeft === b.scrollLeft &&
+                    a.clientHeight === b.clientHeight &&
+                    a.clientWidth === b.clientWidth &&
+                    a.scrollHeight === b.scrollHeight &&
+                    a.scrollWidth === b.scrollWidth,
+            ),
+            tuiZonefree(),
+            takeUntilDestroyed(),
+        )
+        .subscribe((dimension) => {
+            // eslint-disable-next-line
+            console.log('[dimension]', dimension);
 
-            const thumb = `${this.getThumb(dimension) * 100}%`;
-            const view = `${this.getView(dimension) * 100}%`;
-
-            if (this.tuiScrollbar === 'vertical') {
-                this.style.top = thumb;
-                this.style.height = view;
-            } else {
-                this.style.left = thumb;
-                this.style.insetInlineStart = thumb;
-                this.style.width = view;
-            }
+            this.updateThumbStyles(dimension);
         });
 
     @Input()
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
+
+    private updateThumbStyles(dimension: ComputedDimension): void {
+        const thumb = `${this.getThumb(dimension) * 100}%`;
+        const view = `${this.getView(dimension) * 100}%`;
+
+        if (this.tuiScrollbar === 'vertical') {
+            this.style.top = thumb;
+            this.style.height = view;
+        } else {
+            this.style.left = thumb;
+            this.style.insetInlineStart = thumb;
+            this.style.width = view;
+        }
+    }
 
     private getScrolled(dimension: ComputedDimension): number {
         return this.tuiScrollbar === 'vertical'
