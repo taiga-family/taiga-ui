@@ -7,12 +7,10 @@ import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
-import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {
     calculateDisabledItemHandler,
     TUI_DAY_CAPS_MAPPER,
@@ -36,12 +34,7 @@ export interface TuiMobileCalendarData {
     templateUrl: './mobile-calendar-dropdown.template.html',
     styleUrls: ['./mobile-calendar-dropdown.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiSlideInTop, tuiFadeIn],
-    hostDirectives: [TuiActiveZone],
-    host: {
-        '[@tuiSlideInTop]': 'animation',
-        '[@tuiFadeIn]': 'animation',
-    },
+    hostDirectives: [TuiActiveZone, TuiAnimated],
 })
 export class TuiMobileCalendarDropdown {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
@@ -52,14 +45,6 @@ export class TuiMobileCalendarDropdown {
     private readonly data: TuiMobileCalendarData = this.context?.data || {};
 
     private selectedPeriod: TuiDayRange | null = null;
-
-    protected readonly animation = {
-        value: '',
-        params: {
-            start: '100vh',
-            duration: tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)),
-        },
-    };
 
     // TODO: Refactor to proper Date, DateMulti and DateRange components after they are added to kit
     protected readonly control: any = inject(TuiControl, {optional: true});

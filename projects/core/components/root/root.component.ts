@@ -4,6 +4,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
+    RendererFactory2,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
@@ -44,7 +45,7 @@ import {map} from 'rxjs';
         TuiScrollControls,
     ],
     templateUrl: './root.template.html',
-    styleUrls: ['./root.style.less'],
+    styleUrls: ['./animations.less', './root.style.less'],
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
@@ -80,6 +81,15 @@ export class TuiRoot {
         !this.nativeScrollbar && !inject(TUI_IS_MOBILE) && !this.isChildRoot;
 
     constructor() {
+        // TODO move to provideTaiga in v5
+        const factory = inject<any>(RendererFactory2);
+
+        factory.removeStylesOnCompDestroy = false;
+
+        if (factory.delegate) {
+            factory.delegate.removeStylesOnCompDestroy = false;
+        }
+
         if (!this.top()) {
             return;
         }

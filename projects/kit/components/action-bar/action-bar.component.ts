@@ -1,13 +1,11 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiFadeIn, tuiSlideInTop} from '@taiga-ui/core/animations';
 import type {TuiButtonOptions} from '@taiga-ui/core/components/button';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
 import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import type {TuiSizeS} from '@taiga-ui/core/types';
-import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
     standalone: true,
@@ -20,17 +18,13 @@ import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
         tuiProvide(TUI_BUTTON_OPTIONS, TuiActionBarComponent),
         tuiLinkOptionsProvider({appearance: 'action-grayscale', pseudo: true}),
     ],
-    animations: [tuiFadeIn, tuiSlideInTop],
+    hostDirectives: [TuiAnimated],
     host: {
         tuiTheme: 'dark',
         '[attr.data-size]': 'size',
-        '[@tuiFadeIn]': 'animation',
-        '[@tuiSlideInTop]': 'animation',
     },
 })
 export class TuiActionBarComponent implements TuiButtonOptions {
-    protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
-
     @Input()
     public expanded = false;
 

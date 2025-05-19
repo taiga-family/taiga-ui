@@ -9,4 +9,9 @@
         0 -90vh 1rem 2rem var(--tui-service-backdrop);
     block-size: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
 }

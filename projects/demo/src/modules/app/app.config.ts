@@ -8,6 +8,7 @@ import {HttpClient, provideHttpClient} from '@angular/common/http';
 import type {ApplicationConfig} from '@angular/core';
 import {inject, PLATFORM_ID, provideZoneChangeDetection} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import type {UrlTree} from '@angular/router';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
@@ -252,5 +253,9 @@ export const config: ApplicationConfig = {
             eventCoalescing: false,
             runCoalescing: false,
         }),
+        {
+            provide: REMOVE_STYLES_ON_COMPONENT_DESTROY,
+            useValue: true,
+        },
     ],
 };

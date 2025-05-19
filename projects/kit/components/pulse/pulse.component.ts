@@ -6,11 +6,9 @@ import {
     Input,
     PLATFORM_ID,
 } from '@angular/core';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiFadeIn, tuiScaleIn} from '@taiga-ui/core/animations';
 import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
-import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
     standalone: true,
@@ -19,18 +17,14 @@ import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
     styleUrls: ['./pulse.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsRectAccessor(TuiPulse)],
-    animations: [tuiFadeIn, tuiScaleIn],
+    hostDirectives: [TuiAnimated],
     host: {
-        '[@tuiFadeIn]': 'animation',
-        '[@tuiScaleIn]': 'animation',
         '[class._playing]': 'playing',
     },
 })
 export class TuiPulse extends TuiRectAccessor {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly el = tuiInjectElement();
-
-    protected readonly animation = tuiToAnimationOptions(inject(TUI_ANIMATIONS_SPEED));
 
     @Input()
     public playing = true;

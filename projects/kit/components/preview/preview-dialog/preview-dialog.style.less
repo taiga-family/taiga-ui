@@ -3,6 +3,11 @@
 tui-preview-dialog {
     inline-size: 100%;
     block-size: 100%;
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
 }
 
 /* stylelint-disable order/order */

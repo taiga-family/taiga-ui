@@ -20,6 +20,11 @@
     font: var(--tui-font-text-m);
     white-space: nowrap;
 
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+
     &[data-size='s'] {
         border-radius: var(--tui-radius-l);
         font: var(--tui-font-text-s);

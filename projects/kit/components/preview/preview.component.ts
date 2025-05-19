@@ -16,7 +16,6 @@ import {tuiDragAndDropFrom, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiHint} from '@taiga-ui/core/directives/hint';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/kit/tokens';
@@ -47,7 +46,6 @@ const ROTATION_ANGLE = 90;
     templateUrl: './preview.template.html',
     styleUrls: ['./preview.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiSlideInTop],
 })
 export class TuiPreviewComponent {
     private readonly el = tuiInjectElement();

@@ -11,6 +11,11 @@
     position: relative;
     color: var(--tui-background-accent-1);
 
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiScale;
+    }
+
     &::before,
     &::after {
         .transition(box-shadow);

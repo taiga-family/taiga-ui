@@ -1,23 +1,18 @@
-import type {AnimationOptions} from '@angular/animations';
 import {NgForOf, NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
-import {tuiFadeIn} from '@taiga-ui/core/animations';
-import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
-import {tuiGetDuration, tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {tuiSlideInTopHeader} from './dynamic-header.animations';
 import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.directive';
 
 @Component({
     standalone: true,
     selector: '[tuiDynamicHeader]',
-    imports: [NgForOf, NgIf, PolymorpheusOutlet],
+    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiAnimated],
     template: `
         <div
             *ngIf="!container.hiddenHeaders().length; else dynamic"
-            [@tuiFadeIn]="fadeOptions"
-            [@tuiSlideInTopHeader]="slideOptions()"
+            tuiAnimated
         >
             <ng-content />
         </div>
@@ -27,8 +22,7 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
             >
                 <div
                     *ngIf="last"
-                    [@tuiFadeIn]="fadeOptions"
-                    [@tuiSlideInTopHeader]="slideOptions()"
+                    tuiAnimated
                 >
                     <div *polymorpheusOutlet="header as text">{{ text }}</div>
                 </div>
@@ -37,27 +31,10 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
     `,
     styleUrls: ['./dynamic-header.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    animations: [tuiSlideInTopHeader, tuiFadeIn],
+    host: {
+        '[style.--t-dir]': 'container.scrollDir() || -1',
+    },
 })
 export class TuiDynamicHeaderComponent {
-    protected speed = inject(TUI_ANIMATIONS_SPEED);
-    protected readonly fadeOptions = tuiToAnimationOptions();
     protected readonly container = inject(TuiDynamicHeaderContainerDirective);
-
-    protected slideOptions = computed(() => {
-        return this.getSlideOptions(this.container.scrollDir() || -1);
-    });
-
-    private getSlideOptions(direction: -1 | 1): AnimationOptions {
-        return {
-            value: '',
-            params: {
-                duration: tuiGetDuration(this.speed),
-                leaveEnd: 0,
-                leaveStart: direction > 0 ? '200%' : '-200%',
-                enterStart: direction > 0 ? '-200%' : '200%',
-                enterEnd: 0,
-            },
-        } as unknown as AnimationOptions;
-    }
 }

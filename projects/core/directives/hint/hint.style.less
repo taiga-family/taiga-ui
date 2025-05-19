@@ -15,6 +15,25 @@
 
     --tui-background-elevation-2: var(--tui-background-elevation-3);
 
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade;
+    }
+
+    :host-context(tui-root._mobile) {
+        &.tui-enter {
+            animation:
+                tuiFade var(--tui-duration) ease-in-out,
+                tuiScale var(--tui-duration) cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        &.tui-leave {
+            animation:
+                tuiFade var(--tui-duration) ease-in-out reverse,
+                tuiScale var(--tui-duration) ease-in-out reverse;
+        }
+    }
+
     &::before {
         content: '';
         position: absolute;

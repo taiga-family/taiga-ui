@@ -15,8 +15,11 @@
     isolation: isolate;
     pointer-events: auto; // if custom portal host has pointer events none
 
-    &.ng-animating {
-        pointer-events: none;
+    --tui-from: translateY(-1rem);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
     }
 
     &:not([style*='top']) {

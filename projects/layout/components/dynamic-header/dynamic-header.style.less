@@ -9,6 +9,19 @@
     }
 }
 
-.ng-animating:not(:first-of-type) {
+.tui-enter {
+    animation-name: tuiFade, tuiSlide;
+
+    --tui-from: translateY(calc(-200% * var(--t-dir)));
+}
+
+.tui-leave {
+    animation-name: tuiFade, tuiSlide;
+
+    --tui-from: translateY(calc(200% * var(--t-dir)));
+}
+
+.tui-enter:not(:first-of-type),
+.tui-leave:not(:first-of-type) {
     position: absolute;
 }

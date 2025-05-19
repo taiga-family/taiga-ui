@@ -1,27 +1,29 @@
-<tui-notification
-    size="m"
-    [appearance]="item.appearance"
-    [class.t-closeable]="item.closeable"
-    [icon]="item.icon"
->
-    <span tuiTitle>
-        <ng-container *polymorpheusOutlet="item.label as text; context: item">
-            {{ text }}
-        </ng-container>
-        <span tuiSubtitle>
-            <span
-                *polymorpheusOutlet="item.content as text; context: item"
-                [innerHTML]="text"
-            ></span>
-        </span>
-    </span>
-    <button
-        *ngIf="item.closeable"
-        tuiIconButton
-        type="button"
-        [iconStart]="icons.close"
-        (click)="item.$implicit.complete()"
+<div class="t-wrapper">
+    <tui-notification
+        size="m"
+        [appearance]="item.appearance"
+        [class.t-closeable]="item.closeable"
+        [icon]="item.icon"
     >
-        {{ close() }}
-    </button>
-</tui-notification>
+        <span tuiTitle>
+            <ng-container *polymorpheusOutlet="item.label as text; context: item">
+                {{ text }}
+            </ng-container>
+            <span tuiSubtitle>
+                <span
+                    *polymorpheusOutlet="item.content as text; context: item"
+                    [innerHTML]="text"
+                ></span>
+            </span>
+        </span>
+        <button
+            *ngIf="item.closeable"
+            tuiIconButton
+            type="button"
+            [iconStart]="icons.close"
+            (click)="item.$implicit.complete()"
+        >
+            {{ close() }}
+        </button>
+    </tui-notification>
+</div>

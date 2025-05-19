@@ -14,14 +14,21 @@ import {
     WA_INTERSECTION_ROOT,
     WaIntersectionObserver,
 } from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY, TuiAutoFocus, tuiProvide, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
+import {
+    EMPTY_QUERY,
+    TuiAnimated,
+    TuiAutoFocus,
+    tuiProvide,
+    TuiRepeatTimes,
+} from '@taiga-ui/cdk';
+import {TuiButton} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     imports: [
         NgIf,
         RouterLink,
+        TuiAnimated,
         TuiAutoFocus,
         TuiButton,
         TuiRepeatTimes,
@@ -31,7 +38,6 @@ import {TuiButton, tuiFadeIn} from '@taiga-ui/core';
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(WA_INTERSECTION_ROOT, ElementRef)],
-    animations: [tuiFadeIn],
     host: {
         tuiTheme: 'light',
         '[class._hide]': 'hidden',
