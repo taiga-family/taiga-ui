@@ -14,6 +14,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
@@ -34,7 +35,6 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TuiTextfieldComponent} from '../textfield.component';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
 import {TuiTextfieldMultiDirective} from './textfield-multi.directive';
-import {TuiTextfieldItem} from './textfield-multi-item.directive';
 
 @Component({
     standalone: true,
@@ -87,7 +87,7 @@ export class TuiTextfieldMultiComponent<T>
     @ViewChild('container', {read: ElementRef, static: true})
     public readonly container?: ElementRef<HTMLElement>;
 
-    @ContentChild(TuiTextfieldItem, {read: TemplateRef})
+    @ContentChild(TuiItem, {read: TemplateRef})
     public readonly item?: TemplateRef<unknown>;
 
     @Input()
