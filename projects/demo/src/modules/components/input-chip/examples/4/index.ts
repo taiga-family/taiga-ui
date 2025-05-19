@@ -2,19 +2,13 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHint, TuiTextfield, TuiTextfieldItem} from '@taiga-ui/core';
-import {TuiInputChip, TuiInputChipItem} from '@taiga-ui/kit';
+import {TuiItem} from '@taiga-ui/cdk';
+import {TuiHint, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        FormsModule,
-        TuiHint,
-        TuiInputChip,
-        TuiInputChipItem,
-        TuiTextfield,
-        TuiTextfieldItem,
-    ],
+    imports: [FormsModule, TuiHint, TuiInputChip, TuiItem, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
