@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40385],{40385:n=>{n.exports="@width: 15rem;\n\n.button {\n    inline-size: @width;\n    border-radius: 1rem 1rem 0 0;\n}\n\n.container {\n    block-size: 6rem;\n    inline-size: @width;\n    overflow: hidden;\n    background: #222;\n    color: var(--tui-status-warning);\n}\n"}}]);
