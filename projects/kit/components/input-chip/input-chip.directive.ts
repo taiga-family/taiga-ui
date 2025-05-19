@@ -15,7 +15,7 @@ import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {
     tuiGetClipboardDataText,
     tuiInjectElement,
-    tuiValueBinding,
+    tuiValue,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
@@ -85,7 +85,6 @@ export class TuiInputChipDirective<T>
     private readonly destroyRef = inject(DestroyRef);
     private readonly mobile = inject(TUI_IS_MOBILE);
 
-    protected readonly textfieldValue = tuiValueBinding();
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
     protected readonly wrapper = new PolymorpheusComponent(TuiChipWrapper);
 
@@ -98,6 +97,7 @@ export class TuiInputChipDirective<T>
     public unique = this.options.unique;
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
+    public readonly textfieldValue = tuiValue(this.el);
 
     public setValue(value: T[]): void {
         this.onChange(this.filterValue(value));
@@ -127,10 +127,9 @@ export class TuiInputChipDirective<T>
     }
 
     protected onEnter(): void {
-        const value = this.textfieldValue()
-            .trim()
-            .split(this.separator)
-            .filter(Boolean) as T[];
+        const value = this.separator
+            ? (this.textfieldValue().trim().split(this.separator).filter(Boolean) as T[])
+            : ([this.textfieldValue().trim()] as T[]);
 
         if (value.length) {
             this.onChange(this.filterValue([...this.value(), ...value]));
@@ -146,7 +145,7 @@ export class TuiInputChipDirective<T>
             this.onBackspace();
         }
 
-        if (keydown.key.match(this.separator)) {
+        if (this.separator && keydown.key.match(this.separator)) {
             keydown.preventDefault();
             this.onEnter();
         }
