@@ -8,7 +8,7 @@ import {TUI_TEXTFIELD_OPTIONS, TuiTitle} from '@taiga-ui/core';
 @Component({
     standalone: true,
     selector: 'tbody[tuiDocTextfield]',
-    imports: [NgIf, TuiDocAPIItem, TuiTitle, TuiDocAPINumberItem],
+    imports: [NgIf, TuiDocAPIItem, TuiDocAPINumberItem, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

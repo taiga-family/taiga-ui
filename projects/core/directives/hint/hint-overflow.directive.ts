@@ -1,4 +1,4 @@
-import {Directive, inject} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 
 import {TuiHintDirective} from './hint.directive';
 
@@ -8,7 +8,7 @@ import {TuiHintDirective} from './hint.directive';
     hostDirectives: [
         {
             directive: TuiHintDirective,
-            inputs: ['tuiHintAppearance', 'tuiHint'],
+            inputs: ['tuiHintAppearance'],
         },
     ],
     host: {
@@ -18,8 +18,11 @@ import {TuiHintDirective} from './hint.directive';
 export class TuiHintOverflow {
     private readonly hint = inject(TuiHintDirective);
 
+    @Input()
+    public tuiHintOverflow?: string;
+
     protected onMouseEnter({scrollWidth, clientWidth, textContent}: Element): void {
         this.hint.tuiHint =
-            scrollWidth > clientWidth ? (this.hint.content() ?? textContent) : '';
+            scrollWidth > clientWidth ? (this.tuiHintOverflow ?? textContent) : '';
     }
 }

@@ -33,7 +33,6 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(null);
     protected value = [];
-    protected rows = 5;
     protected unique = true;
     protected separator = ',';
 

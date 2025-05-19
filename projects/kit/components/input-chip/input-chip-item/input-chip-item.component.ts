@@ -54,11 +54,10 @@ import {TuiInputChipDirective} from '../input-chip.directive';
         <div
             tuiFade
             tuiFadeOffset="0.5rem"
-            tuiHintOverflow
             [style.pointer-events]="editMode() ? 'none' : 'auto'"
             [style.visibility]="editMode() ? 'hidden' : 'visible'"
-            [tuiHint]="hint?.content() ? '' : stringify(internal())"
-            (dblclick)="editable && editMode.set(true); editable && input.focus()"
+            [tuiHintOverflow]="hint?.content() ? '' : stringify(internal())"
+            (dblclick)="onDbClick(input)"
         >
             {{ internal() }}
         </div>
@@ -146,6 +145,13 @@ export class TuiInputChipItem<T> {
 
     protected moveFocus(step: number): void {
         this.directive()?.moveFocus(step, this.index);
+    }
+
+    protected onDbClick(el: HTMLInputElement): void {
+        if (this.editable) {
+            this.editMode.set(true);
+            el.focus();
+        }
     }
 
     private get index(): number {
