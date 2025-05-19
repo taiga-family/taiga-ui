@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.38.0](https://github.com/taiga-family/taiga-ui/compare/v4.37.0...v4.38.0) (2025-05-19)
+
+### 🐞 Bug Fixes
+
+- **addon-charts:** `ArcChart` fix zoom in Safari ([#10982](https://github.com/taiga-family/taiga-ui/issues/10982))
+  ([ab6c5a1](https://github.com/taiga-family/taiga-ui/commit/ab6c5a10756b15b8fbb77775bbff5260da93baf8))
+- **core:** fix dropdown position on render ([#10971](https://github.com/taiga-family/taiga-ui/issues/10971))
+  ([094d660](https://github.com/taiga-family/taiga-ui/commit/094d660f22830afe0a0aa50d5930dd24f0125bcc))
+- **kit:** `CalendarRange` fix value change events order
+  ([#10984](https://github.com/taiga-family/taiga-ui/issues/10984))
+  ([97ed6e7](https://github.com/taiga-family/taiga-ui/commit/97ed6e771f9c322c10af13a4b14700516029db80))
+- **kit:** `CalendarRange` is is not limited by `maxLength`
+  ([#10988](https://github.com/taiga-family/taiga-ui/issues/10988))
+  ([9e529a5](https://github.com/taiga-family/taiga-ui/commit/9e529a571aff3b82a4fd4f5eea3e420883b75849))
+- **layout:** `AsideItem` fix `_custom` class ([#10972](https://github.com/taiga-family/taiga-ui/issues/10972))
+  ([efd8648](https://github.com/taiga-family/taiga-ui/commit/efd86484576ac360fcc5de3455d47e0e7b980fef))
+- **layout:** `InputSearch` fix setting placeholder ([#10973](https://github.com/taiga-family/taiga-ui/issues/10973))
+  ([1943ed9](https://github.com/taiga-family/taiga-ui/commit/1943ed91027f454865246a0773ad31f8e5146caa))
+
+### 🚀 Features
+
+- **cdk:** `tuiValue` add new util ([#10902](https://github.com/taiga-family/taiga-ui/issues/10902))
+  ([e7da31c](https://github.com/taiga-family/taiga-ui/commit/e7da31cfdfea80a032e2dd22d199a852a24bff31))
+- **cdk:** add `Let` migration ([#10979](https://github.com/taiga-family/taiga-ui/issues/10979))
+  ([0f22b87](https://github.com/taiga-family/taiga-ui/commit/0f22b8728d0d543556fbe256a17a02c18af28852))
+- **cdk:** new `Obfuscate` pipe ([#10893](https://github.com/taiga-family/taiga-ui/issues/10893))
+  ([6e03fe3](https://github.com/taiga-family/taiga-ui/commit/6e03fe31f6721c31b9519e62a7d929cd3d54b0ac))
+- **core:** `Dialog` add safe-area support ([#10981](https://github.com/taiga-family/taiga-ui/issues/10981))
+  ([fdf34bb](https://github.com/taiga-family/taiga-ui/commit/fdf34bb054638e6c16f5a02dbcceaa6e76dcdb36))
+
 ## [4.37.0](https://github.com/taiga-family/taiga-ui/compare/v4.36.0...v4.37.0) (2025-05-12)
 
 ### 🐞 Bug Fixes
