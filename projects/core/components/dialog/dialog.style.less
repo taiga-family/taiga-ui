@@ -101,6 +101,15 @@
                 font: var(--tui-font-heading-5);
             }
         }
+
+        &[data-size='fullscreen'],
+        &[data-size='page'] {
+            padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+
+            .t-close {
+                top: calc(1rem + env(safe-area-inset-top));
+            }
+        }
     }
 }
 
