@@ -14,6 +14,7 @@ import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_TEXTFIELD_OPTIONS, TuiButton, TuiTextfieldContent} from '@taiga-ui/core';
+import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
     concat,
@@ -66,54 +67,9 @@ export class TuiInputNumberStep {
 
     protected readonly sub = this.step$
         .pipe(
-            switchMap((stepValue) => {
-                this.element.focus();
-
-                const initialDelay = 300;
-                const delayDecrement = 15;
-                const minDelay = 100;
-                const acceleration$ = new BehaviorSubject<number>(initialDelay);
-
-                return acceleration$
-                    .pipe(
-                        switchMap((delay) =>
-                            concat(timer(delay).pipe(take(1)), timer(0, delay)),
-                        ),
-                        map(() => {
-                            acceleration$.next(
-                                Math.max(acceleration$.value - delayDecrement, minDelay),
-                            );
-
-                            return stepValue;
-                        }),
-                    )
-                    .pipe(takeUntil(this.stop$));
-            }),
+            switchMap((stepValue) => this.accelerate$(stepValue)),
+            mergeMap((stepValue) => this.stepChange$(stepValue)),
             takeUntilDestroyed(this.destroyRef),
-            mergeMap((stepValue) => {
-                const {inputNumber} = this;
-                const newValue = tuiClamp(
-                    (inputNumber.value() ?? 0) + stepValue,
-                    inputNumber.min(),
-                    inputNumber.max(),
-                );
-
-                this.inputNumber.setValue(newValue);
-
-                if (this.inputNumber.value() === null) {
-                    return timer(0).pipe(
-                        takeUntilDestroyed(this.destroyRef),
-                        tap(() => {
-                            const caretIndex =
-                                this.element.value.length - inputNumber.postfix().length;
-
-                            this.element.setSelectionRange(caretIndex, caretIndex);
-                        }),
-                    );
-                }
-
-                return EMPTY;
-            }),
         )
         .subscribe();
 
@@ -134,14 +90,57 @@ export class TuiInputNumberStep {
         if (this.inputNumber.value() === null) {
             timer(0)
                 .pipe(tuiZonefree(this.zone), takeUntilDestroyed(this.destroyRef))
-                .subscribe(() => {
-                    const caretIndex =
-                        this.element.value.length - inputNumber.postfix().length;
-
-                    this.element.setSelectionRange(caretIndex, caretIndex);
-                });
+                .subscribe(() => this.setCaretPosition(this.inputNumber));
         }
 
         this.inputNumber.setValue(newValue);
+    }
+
+    private accelerate$(stepValue: number): Observable<number> {
+        this.element.focus();
+
+        const initialDelay = 300;
+        const delayDecrement = 15;
+        const minDelay = 100;
+        const acceleration$ = new BehaviorSubject<number>(initialDelay);
+
+        return acceleration$
+            .pipe(
+                switchMap((delay) => concat(timer(delay).pipe(take(1)), timer(0, delay))),
+                map(() => {
+                    acceleration$.next(
+                        Math.max(acceleration$.value - delayDecrement, minDelay),
+                    );
+
+                    return stepValue;
+                }),
+            )
+            .pipe(takeUntil(this.stop$));
+    }
+
+    private stepChange$(stepValue: number): Observable<number> {
+        const {inputNumber} = this;
+        const newValue = tuiClamp(
+            (inputNumber.value() ?? 0) + stepValue,
+            inputNumber.min(),
+            inputNumber.max(),
+        );
+
+        this.inputNumber.setValue(newValue);
+
+        if (this.inputNumber.value() === null) {
+            return timer(0).pipe(
+                takeUntilDestroyed(this.destroyRef),
+                tap(() => this.setCaretPosition(inputNumber)),
+            );
+        }
+
+        return EMPTY;
+    }
+
+    private setCaretPosition(inputNumber: TuiInputNumberDirective): void {
+        const caretIndex = this.element.value.length - inputNumber.postfix().length;
+
+        this.element.setSelectionRange(caretIndex, caretIndex);
     }
 }
