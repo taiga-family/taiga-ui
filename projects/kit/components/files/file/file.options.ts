@@ -1,7 +1,7 @@
-import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
-import type {TuiSizeL} from '@taiga-ui/core/types';
+import {inject, LOCALE_ID} from '@angular/core';
+import type {TuiContext} from '@taiga-ui/cdk';
+import {tuiCreateOptions} from '@taiga-ui/cdk';
+import type {TuiAppearanceOptions, TuiSizeL} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import type {TuiFileState} from '../files.types';
@@ -11,6 +11,7 @@ export interface TuiFileOptions extends TuiAppearanceOptions {
     readonly formatSize: (
         units: readonly [string, string, string],
         size?: number,
+        locale?: string,
     ) => string | null;
     readonly icons: Record<
         Exclude<TuiFileState, 'loading'>,
@@ -20,7 +21,11 @@ export interface TuiFileOptions extends TuiAppearanceOptions {
 
 export const TUI_FILE_DEFAULT_OPTIONS: TuiFileOptions = {
     appearance: 'outline',
-    formatSize: tuiFormatSize,
+    formatSize: (units, size) => {
+        const locale = inject(LOCALE_ID);
+
+        return tuiFormatSize(units, size, locale);
+    },
     icons: {
         normal: ({$implicit}) => ($implicit === 'l' ? '@tui.file' : '@tui.circle-check'),
         error: '@tui.circle-alert',
@@ -31,6 +36,4 @@ export const TUI_FILE_DEFAULT_OPTIONS: TuiFileOptions = {
 /**
  * Default parameters for file component
  */
-export const [TUI_FILE_OPTIONS, tuiFileOptionsProvider] = tuiCreateOptions(
-    TUI_FILE_DEFAULT_OPTIONS,
-);
+export const [TUI_FILE_OPTIONS] = tuiCreateOptions(TUI_FILE_DEFAULT_OPTIONS);
