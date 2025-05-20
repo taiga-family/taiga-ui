@@ -19,10 +19,12 @@ export class TuiHintOverflow {
     private readonly hint = inject(TuiHintDirective);
 
     @Input()
-    public tuiHintOverflow?: string;
+    public tuiHintOverflow: string | null = '';
 
     protected onMouseEnter({scrollWidth, clientWidth, textContent}: Element): void {
         this.hint.tuiHint =
-            scrollWidth > clientWidth ? (this.tuiHintOverflow ?? textContent) : '';
+            scrollWidth > clientWidth && this.tuiHintOverflow !== null
+                ? this.tuiHintOverflow || textContent
+                : '';
     }
 }

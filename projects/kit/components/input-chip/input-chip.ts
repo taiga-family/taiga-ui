@@ -1,4 +1,4 @@
 import {TuiInputChipDirective} from './input-chip.directive';
-import {TuiInputChipItem} from './input-chip-item/input-chip-item.component';
+import {TuiInputChipComponent} from './input-chip-item/input-chip.component';
 
-export const TuiInputChip = [TuiInputChipDirective, TuiInputChipItem] as const;
+export const TuiInputChip = [TuiInputChipDirective, TuiInputChipComponent] as const;

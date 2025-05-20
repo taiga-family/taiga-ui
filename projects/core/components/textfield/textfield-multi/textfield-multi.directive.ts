@@ -12,7 +12,7 @@ import {tuiAsTextfieldAccessor} from '../textfield-accessor';
     host: {
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly',
-        '(blur.debounce~0ms)': 'm.set(mode)',
+        '(blur)': 'onBlur()',
     },
 })
 export class TuiTextfieldMultiDirective<T> extends TuiTextfieldBase<T> {
@@ -27,7 +27,9 @@ export class TuiTextfieldMultiDirective<T> extends TuiTextfieldBase<T> {
             distinctUntilChanged(),
             takeUntilDestroyed(),
         )
-        .subscribe(() => this.m.set(this.mode));
+        .subscribe(() => {
+            this.m.set(this.mode);
+        });
 
     public override get mode(): string | null {
         if (this.readOnly) {
@@ -46,6 +48,11 @@ export class TuiTextfieldMultiDirective<T> extends TuiTextfieldBase<T> {
         }
 
         return null;
+    }
+
+    protected onBlur(): void {
+        this.control?.control?.markAsTouched();
+        this.m.set(this.mode);
     }
 }
 

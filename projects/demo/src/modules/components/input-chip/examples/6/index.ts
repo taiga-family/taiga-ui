@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoDirective} from '@maskito/angular';
@@ -10,14 +10,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        FormsModule,
-        MaskitoDirective,
-        ReactiveFormsModule,
-        TuiInputChip,
-        TuiItem,
-        TuiTextfield,
-    ],
+    imports: [MaskitoDirective, ReactiveFormsModule, TuiInputChip, TuiItem, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
