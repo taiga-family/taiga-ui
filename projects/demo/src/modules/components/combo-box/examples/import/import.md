@@ -1,13 +1,14 @@
 ```ts
 import {FormsModule} from '@angular/forms';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiSelect, TuiComboBox} from '@taiga-ui/kit';
+import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 
 @Component({
   imports: [
     // ...
     FormsModule,
     TuiTextfield,
+    TuiChevron,
     TuiComboBox,
   ],
 })
