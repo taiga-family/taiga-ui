@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import type {AbstractControl, ValidationErrors} from '@angular/forms';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiItem, TuiValidationError} from '@taiga-ui/cdk';
