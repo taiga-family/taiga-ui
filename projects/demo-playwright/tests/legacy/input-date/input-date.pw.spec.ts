@@ -22,7 +22,7 @@ test.describe('InputDate', () => {
         });
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.InputDate);
+            await tuiGoto(page, DemoRoute.InputDateLegacy);
 
             documentationPage = new TuiDocumentationPagePO(page);
         });
@@ -151,7 +151,7 @@ test.describe('InputDate', () => {
         });
 
         test('maximum month less than current month', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDate}/API?max$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateLegacy}/API?max$=1`);
 
             await inputDate.textfield.scrollIntoViewIfNeeded();
             await inputDate.textfield.click();
@@ -161,7 +161,7 @@ test.describe('InputDate', () => {
         });
 
         test('minimum month more than current month', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDate}/API?min$=3`);
+            await tuiGoto(page, `${DemoRoute.InputDateLegacy}/API?min$=3`);
 
             await inputDate.textfield.scrollIntoViewIfNeeded();
             await inputDate.textfield.click();
@@ -172,7 +172,7 @@ test.describe('InputDate', () => {
 
         test.describe('Invalid date cases', () => {
             test('does not accept day > 31', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDate}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateLegacy}/API`);
                 await inputDate.textfield.scrollIntoViewIfNeeded();
                 await inputDate.textfield.focus();
                 await page.keyboard.type('35');
@@ -185,7 +185,7 @@ test.describe('InputDate', () => {
             });
 
             test('does not accept month > 12', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDate}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateLegacy}/API`);
                 await inputDate.textfield.scrollIntoViewIfNeeded();
                 await inputDate.textfield.focus();
                 await page.keyboard.type('1715');
@@ -204,7 +204,7 @@ test.describe('InputDate', () => {
             });
 
             test('Type 999999 => 09.09.9999', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDate}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateLegacy}/API`);
                 await inputDate.textfield.scrollIntoViewIfNeeded();
                 await inputDate.textfield.focus();
                 await page.keyboard.type('999999');
@@ -224,7 +224,7 @@ test.describe('InputDate', () => {
         });
 
         test('Click any day after `Until today` was selected', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDate}/API?items$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateLegacy}/API?items$=1`);
 
             await inputDate.textfield.click();
             await calendar.itemButton.click();
@@ -241,7 +241,7 @@ test.describe('InputDate', () => {
         test('Click `Until today`, calendar not switched to large date', async ({
             page,
         }) => {
-            await tuiGoto(page, `${DemoRoute.InputDate}/API?items$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateLegacy}/API?items$=1`);
 
             await inputDate.textfield.click();
             await calendar.itemButton.click();
@@ -254,7 +254,7 @@ test.describe('InputDate', () => {
         test('Press backspace to remove `Until today`, textfield is empty', async ({
             page,
         }) => {
-            await tuiGoto(page, `${DemoRoute.InputDate}/API?items$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateLegacy}/API?items$=1`);
 
             await inputDate.textfield.click();
             await calendar.itemButton.click();
@@ -267,7 +267,7 @@ test.describe('InputDate', () => {
         });
 
         test('Enter item date, it converts to item name', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDate}/API?items$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateLegacy}/API?items$=1`);
 
             const today = new Date(2020, 8, 25).toLocaleDateString('fr-FR');
 
@@ -290,7 +290,7 @@ test.describe('InputDate', () => {
 
         ['russian', 'english', 'spanish'].forEach((language) => {
             test(`mobile calendar - ${language}`, async ({page}) => {
-                await tuiGoto(page, DemoRoute.InputDate, {language});
+                await tuiGoto(page, DemoRoute.InputDateLegacy, {language});
                 const api = new TuiDocumentationPagePO(page);
                 const example = api.getExample('#base');
 
@@ -303,7 +303,7 @@ test.describe('InputDate', () => {
         });
 
         test('native data picker', async ({page}) => {
-            await tuiGoto(page, DemoRoute.InputDate);
+            await tuiGoto(page, DemoRoute.InputDateLegacy);
             const example = new TuiDocumentationPagePO(page).getExample(
                 '#native-input-date',
             );

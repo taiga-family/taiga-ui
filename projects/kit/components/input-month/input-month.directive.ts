@@ -45,11 +45,11 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
         this.textfield.value.set(this.formatter()?.(this.value()) || '');
     }, TUI_ALLOW_SIGNAL_WRITES);
 
-    protected readonly calendarSync = effect(() => {
+    protected readonly calendarIn = effect(() => {
         this.calendar()?.value.set(this.value());
     }, TUI_ALLOW_SIGNAL_WRITES);
 
-    protected onMonthClickEffect = effect((onCleanup) => {
+    protected readonly calendarOut = effect((onCleanup) => {
         const subscription = this.calendar()?.monthClick.subscribe((month) => {
             this.onChange(month);
             this.open.set(false);
