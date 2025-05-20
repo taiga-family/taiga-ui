@@ -1,7 +1,8 @@
 import {inject, LOCALE_ID} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiCreateOptions} from '@taiga-ui/cdk';
-import type {TuiAppearanceOptions, TuiSizeL} from '@taiga-ui/core';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
+import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
+import type {TuiSizeL} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import type {TuiFileState} from '../files.types';
@@ -36,4 +37,6 @@ export const TUI_FILE_DEFAULT_OPTIONS: TuiFileOptions = {
 /**
  * Default parameters for file component
  */
-export const [TUI_FILE_OPTIONS] = tuiCreateOptions(TUI_FILE_DEFAULT_OPTIONS);
+export const [TUI_FILE_OPTIONS, tuiFileOptionsProvider] = tuiCreateOptions(
+    TUI_FILE_DEFAULT_OPTIONS,
+);
