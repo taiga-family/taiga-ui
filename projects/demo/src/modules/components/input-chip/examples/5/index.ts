@@ -15,7 +15,7 @@ export function customValidator({value}: AbstractControl): ValidationErrors | nu
 
 @Component({
     standalone: true,
-    imports: [FormsModule, ReactiveFormsModule, TuiInputChip, TuiItem, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiInputChip, TuiItem, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

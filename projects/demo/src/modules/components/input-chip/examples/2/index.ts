@@ -9,6 +9,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
     standalone: true,
     imports: [FormsModule, TuiInputChip, TuiTextfield],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

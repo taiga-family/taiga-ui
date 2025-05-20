@@ -63,13 +63,14 @@ const BACKSPACE_CODE = 8;
     ],
     hostDirectives: [TuiWithTextfieldMulti],
     host: {
+        enterkeyhint: 'enter',
         '[disabled]': 'disabled()',
         '(input)': 'textfieldValue.set(el.value)',
-        '(keydown.enter)': 'onEnter()',
+        '(keydown.enter.prevent)': 'onEnter()',
         '(blur)': 'onTouched();',
         '(keydown.arrowLeft)': 'onBackspace()',
         '(keydown.silent)': 'onKeydown($event)',
-        '(input.silent)': 'open.set(true)',
+        '(input.silent)': 'onInput($event)',
         '(paste.prevent)': 'onPaste($event)',
         '(drop.prevent)': 'onDrop($event)',
     },
@@ -118,6 +119,16 @@ export class TuiInputChipDirective<T>
         tuiMoveFocus(index ?? this.elements.length, this.elements, step);
     }
 
+    public remove(index: number): void {
+        this.onChange(this.value().filter((_, i) => i !== index));
+
+        if (!this.mobile) {
+            this.el.focus({preventScroll: true});
+        }
+
+        this.textfield.refresh();
+    }
+
     protected get elements(): readonly HTMLElement[] {
         return Array.from(
             this.textfield.container?.nativeElement.querySelectorAll(
@@ -131,11 +142,19 @@ export class TuiInputChipDirective<T>
             ? (this.textfieldValue().trim().split(this.separator).filter(Boolean) as T[])
             : ([this.textfieldValue().trim()] as T[]);
 
+        this.textfieldValue.set('');
+
         if (value.length) {
             this.onChange(this.filterValue([...this.value(), ...value]));
-
-            this.textfieldValue.set('');
             this.scrollTo();
+        }
+    }
+
+    protected onInput(): void {
+        this.open.set(true);
+
+        if (this.separator && this.el.value.match(this.separator)) {
+            this.onEnter();
         }
     }
 
@@ -143,11 +162,6 @@ export class TuiInputChipDirective<T>
         // (keydown.backspace) doesn't emit event on empty input in ios safari
         if (keydown.keyCode === BACKSPACE_CODE) {
             this.onBackspace();
-        }
-
-        if (this.separator && keydown.key.match(this.separator)) {
-            keydown.preventDefault();
-            this.onEnter();
         }
     }
 

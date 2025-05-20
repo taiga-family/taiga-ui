@@ -9,7 +9,7 @@ import {
 } from '@taiga-ui/polymorpheus';
 import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
-import {TuiInputChipItem} from './input-chip-item.component';
+import {TuiInputChipComponent} from './input-chip.component';
 
 /*
  * Internal wrapper for polymorpheus-context
@@ -29,6 +29,7 @@ import {TuiInputChipItem} from './input-chip-item.component';
         `
             :host {
                 max-width: 100%;
+                flex-shrink: 0;
                 overflow: hidden;
 
                 &:last-of-type {
@@ -49,7 +50,7 @@ export class TuiChipWrapper<T> {
 
     protected readonly default: PolymorpheusContent<
         TuiContext<{index: number; item: T}>
-    > = new PolymorpheusComponent(TuiInputChipItem);
+    > = new PolymorpheusComponent(TuiInputChipComponent);
 
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
 }
