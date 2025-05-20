@@ -40,7 +40,7 @@ export class TuiDocThemeDarkService extends BehaviorSubject<boolean> {
     }
 
     public override next(dark: boolean): void {
-        this.storage.setItem(this.key, String(dark));
+        this.storage?.setItem(this.key, String(dark));
         super.next(dark);
     }
 
@@ -49,10 +49,12 @@ export class TuiDocThemeDarkService extends BehaviorSubject<boolean> {
     }
 }
 
-function isDark(storage: Storage, key: string, window: Window): boolean {
+function isDark(storage: Storage | null, key: string, window: Window): boolean {
     const fallback =
         window.matchMedia('(prefers-color-scheme: dark)').matches ||
         inject(TUI_DARK_THEME);
 
-    return storage.getItem(key) === 'true' || (storage.getItem(key) === null && fallback);
+    return (
+        storage?.getItem(key) === 'true' || (storage?.getItem(key) === null && fallback)
+    );
 }

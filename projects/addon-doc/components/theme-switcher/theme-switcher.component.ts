@@ -16,7 +16,7 @@ export function tuiDocThemeProvider(): FactoryProvider {
     return {
         provide: TUI_THEME,
         useFactory: () =>
-            inject(WA_LOCAL_STORAGE).getItem(inject(TUI_THEME_KEY)) || 'Taiga UI',
+            inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_THEME_KEY)) || 'Taiga UI',
     };
 }
 
@@ -37,7 +37,7 @@ export class TuiDocThemeSwitcher {
     protected readonly keys = Object.keys(this.themes);
 
     public onTheme(theme: string): void {
-        this.storage.setItem(this.key, theme);
+        this.storage?.setItem(this.key, theme);
         this.location.reload();
     }
 }
