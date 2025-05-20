@@ -5,7 +5,7 @@
         [formControl]="control"
     />
 
-    <tui-input-chip-item
+    <tui-input-chip
         *tuiItem="let context"
         [appearance]="context.item === 'invalid' ? 'error' : 'neutral'"
         [iconStart]="context.item === 'invalid' ? '@tui.info' : null"

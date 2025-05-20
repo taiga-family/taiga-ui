@@ -76,7 +76,7 @@ export class TuiTextfieldMultiComponent<T>
     extends TuiTextfieldComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
-    protected readonly cdr = inject(ChangeDetectorRef);
+    private readonly cdr = inject(ChangeDetectorRef);
 
     @ContentChild(forwardRef(() => TuiTextfieldMultiDirective), {
         read: ElementRef,
@@ -106,6 +106,10 @@ export class TuiTextfieldMultiComponent<T>
         }
     }
 
+    public refresh(): void {
+        this.cdr.detectChanges();
+    }
+
     protected get computeMaxHeight(): number | null {
         return this.expandable && this.control?.value?.length && this.lineHeight
             ? this.rows * this.lineHeight
@@ -120,10 +124,6 @@ export class TuiTextfieldMultiComponent<T>
         return (
             (this.container?.nativeElement?.firstChild as HTMLElement)?.offsetHeight ?? 0
         );
-    }
-
-    protected chipResize(): void {
-        this.cdr.detectChanges();
     }
 
     protected override onIconClick(event: Event): void {
