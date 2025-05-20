@@ -28,7 +28,7 @@ import {TuiInputChipDirective} from '../input-chip.directive';
 
 @Component({
     standalone: true,
-    selector: 'tui-input-chip-item',
+    selector: 'tui-input-chip',
     imports: [
         FormsModule,
         NgIf,
@@ -42,6 +42,8 @@ import {TuiInputChipDirective} from '../input-chip.directive';
         <input
             #input
             appearance=""
+            enterkeyhint="enter"
+            tabIndex="-1"
             tuiChip
             [ngModel]="internal()"
             [readOnly]="!editMode()"
@@ -56,7 +58,7 @@ import {TuiInputChipDirective} from '../input-chip.directive';
             tuiFadeOffset="0.5rem"
             [style.pointer-events]="editMode() ? 'none' : 'auto'"
             [style.visibility]="editMode() ? 'hidden' : 'visible'"
-            [tuiHintOverflow]="hint?.content() ? '' : stringify(internal())"
+            [tuiHintOverflow]="hint?.content() ? null : stringify(internal())"
             (dblclick)="onDbClick(input)"
         >
             {{ internal() }}
@@ -64,28 +66,29 @@ import {TuiInputChipDirective} from '../input-chip.directive';
         <button
             *ngIf="directive()?.interactive() && !editMode()"
             iconStart="@tui.x"
+            tabIndex="-1"
             tuiIconButton
             type="button"
-            (click.stop.prevent)="remove(!mobile)"
-            (pointerdown.stop.prevent)="(0)"
+            (click.stop.prevent)="remove()"
+            (mousedown.prevent.stop)="(0)"
         >
             Remove
         </button>
     `,
-    styleUrls: ['./input-chip-item.styles.less'],
+    styleUrls: ['./input-chip.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiChip],
     host: {
         tuiChip: '',
-        tabIndex: '0',
+        tabIndex: '-1',
         '[class._edit]': 'editMode()',
         '(click.stop)': '(0)',
-        '(keydown.backspace.prevent)': 'remove(true)',
+        '(keydown.backspace.prevent)': 'remove()',
         '(keydown.arrowLeft.prevent)': 'moveFocus(-1)',
         '(keydown.arrowRight.prevent)': 'moveFocus(1)',
     },
 })
-export class TuiInputChipItem<T> {
+export class TuiInputChipComponent<T> {
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly context = injectContext<
         PolymorpheusContext<{
@@ -117,14 +120,8 @@ export class TuiInputChipItem<T> {
     @Input()
     public editable = true;
 
-    protected remove(focusInput = true): void {
-        this.directive()?.onChange(
-            this.value().filter((_, index) => index !== this.index),
-        );
-
-        if (focusInput) {
-            this.directive()?.el.focus({preventScroll: true});
-        }
+    protected remove(): void {
+        this.directive()?.remove(this.index);
     }
 
     protected edit(): void {
