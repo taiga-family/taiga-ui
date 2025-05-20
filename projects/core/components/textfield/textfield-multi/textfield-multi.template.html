@@ -5,7 +5,7 @@
     [style.flex-wrap]="rows > 1 ? 'wrap' : 'nowrap'"
     [style.max-height.px]="computeMaxHeight"
     (click.stop)="input?.nativeElement?.focus()"
-    (waResizeObserver)="chipResize()"
+    (waResizeObserver)="refresh()"
 >
     <ng-container #vcr />
 
