@@ -21,7 +21,7 @@ test.describe('InputTime', () => {
             ].entries(),
         ).forEach(([exampleIndex, id]) => {
             test(`${id}`, async ({page}) => {
-                await tuiGoto(page, DemoRoute.InputTime, {date: MOCK_DATE});
+                await tuiGoto(page, DemoRoute.InputTimeLegacy, {date: MOCK_DATE});
 
                 documentationPage = new TuiDocumentationPagePO(page);
 
@@ -63,7 +63,7 @@ test.describe('InputTime', () => {
             'HH:MM:SS.MSS AA',
         ].forEach((mode) => {
             test(`the input is configured for ${mode} mode`, async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=${mode}`, {
+                await tuiGoto(page, `${DemoRoute.InputTimeLegacy}/API?mode=${mode}`, {
                     date: MOCK_DATE,
                 });
 
@@ -87,7 +87,7 @@ test.describe('InputTime', () => {
                     'This feature is only relevant in Chrome',
                 );
 
-                await tuiGoto(page, `${DemoRoute.InputTime}/API?items$=1`, {
+                await tuiGoto(page, `${DemoRoute.InputTimeLegacy}/API?items$=1`, {
                     date: MOCK_DATE,
                 });
 
@@ -103,7 +103,7 @@ test.describe('InputTime', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputTime}/API?disabledItemHandler$=1&items$=1`,
+                    `${DemoRoute.InputTimeLegacy}/API?disabledItemHandler$=1&items$=1`,
                     {
                         date: MOCK_DATE,
                     },
@@ -131,7 +131,7 @@ test.describe('InputTime', () => {
 
                     await tuiGoto(
                         page,
-                        `${DemoRoute.InputTime}/API?items$=1&itemSize=${size}`,
+                        `${DemoRoute.InputTimeLegacy}/API?items$=1&itemSize=${size}`,
                         {
                             date: MOCK_DATE,
                         },
@@ -148,9 +148,13 @@ test.describe('InputTime', () => {
             test('strict forces to select the closest value from items', async ({
                 page,
             }) => {
-                await tuiGoto(page, `${DemoRoute.InputTime}/API?strict=true&items$=1`, {
-                    date: MOCK_DATE,
-                });
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputTimeLegacy}/API?strict=true&items$=1`,
+                    {
+                        date: MOCK_DATE,
+                    },
+                );
 
                 await inputTime.textfield.click();
                 await inputTime.textfield.clear();
@@ -163,7 +167,7 @@ test.describe('InputTime', () => {
         test.describe('Basic typing from keyboard', () => {
             test.describe('HH:MM', () => {
                 test.beforeEach(async ({page}) => {
-                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM`);
+                    await tuiGoto(page, `${DemoRoute.InputTimeLegacy}/API?mode=HH:MM`);
                     await inputTime.textfield.clear();
 
                     await expect(inputTime.textfield).toHaveValue('');
@@ -225,7 +229,10 @@ test.describe('InputTime', () => {
 
             test.describe('HH:MM AA', () => {
                 test.beforeEach(async ({page}) => {
-                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM%20AA`);
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputTimeLegacy}/API?mode=HH:MM%20AA`,
+                    );
                     await inputTime.textfield.clear();
 
                     await expect(inputTime.textfield).toHaveValue('');
@@ -299,7 +306,7 @@ test.describe('InputTime', () => {
 
             test.describe('HH:MM', () => {
                 test.beforeEach(async ({page}) => {
-                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM`);
+                    await tuiGoto(page, `${DemoRoute.InputTimeLegacy}/API?mode=HH:MM`);
                 });
 
                 check('1', '01:00');
@@ -312,7 +319,10 @@ test.describe('InputTime', () => {
 
             test.describe('HH:MM AA', () => {
                 test.beforeEach(async ({page}) => {
-                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM%20AA`);
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputTimeLegacy}/API?mode=HH:MM%20AA`,
+                    );
                 });
 
                 check('0', '12:00 AM');
@@ -323,7 +333,7 @@ test.describe('InputTime', () => {
 
             test.describe('HH:MM:SS', () => {
                 test.beforeEach(async ({page}) => {
-                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM:SS`);
+                    await tuiGoto(page, `${DemoRoute.InputTimeLegacy}/API?mode=HH:MM:SS`);
                 });
 
                 check('1', '01:00:00');
@@ -339,7 +349,10 @@ test.describe('InputTime', () => {
 
             test.describe('HH:MM:SS.MSS', () => {
                 test.beforeEach(async ({page}) => {
-                    await tuiGoto(page, `${DemoRoute.InputTime}/API?mode=HH:MM:SS.MSS`);
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputTimeLegacy}/API?mode=HH:MM:SS.MSS`,
+                    );
                 });
 
                 check('1', '01:00:00.000');
@@ -360,7 +373,7 @@ test.describe('InputTime', () => {
     });
 
     test('Do not match value until user is writing value', async ({page}) => {
-        await tuiGoto(page, DemoRoute.InputTime, {date: MOCK_DATE});
+        await tuiGoto(page, DemoRoute.InputTimeLegacy, {date: MOCK_DATE});
 
         const documentationPage = new TuiDocumentationPagePO(page);
         const example = documentationPage.getExample('#options');
