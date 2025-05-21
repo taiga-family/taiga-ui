@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[31847],{31847:n=>{n.exports='<tui-input-time\n    [formControl]="control"\n    [items]="items"\n>\n    Input time\n</tui-input-time>\n\n<p>Stringified control value:</p>\n<p>\n    <code>{{ control.value }}</code>\n</p>\n'}}]);
