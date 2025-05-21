@@ -515,6 +515,11 @@ export const ROUTES: Routes = [
         title: 'InputTag ⛔',
     }),
     route({
+        path: DemoRoute.InputTime,
+        loadComponent: async () => import('../components/input-time'),
+        title: 'InputTime',
+    }),
+    route({
         path: DemoRoute.InputTimeLegacy,
         loadComponent: async () => import('../components/input-time-legacy'),
         title: 'InputTime ⛔',

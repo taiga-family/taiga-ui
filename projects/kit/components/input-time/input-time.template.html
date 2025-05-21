@@ -1,0 +1,10 @@
+<ng-container *ngIf="host.nativePickerEnabled">
+    <input
+        *tuiTextfieldContent
+        type="time"
+        [attr.list]="list"
+        [step]="step()"
+        [value]="value()"
+        (change)="setValue($any($event.target).value)"
+    />
+</ng-container>
