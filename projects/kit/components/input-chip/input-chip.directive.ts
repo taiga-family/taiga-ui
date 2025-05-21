@@ -30,7 +30,7 @@ import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus'
 import {timer} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
-import {TuiChipWrapper} from './input-chip-item/input-chip-wrapper.component';
+import {TuiChipWrapper} from './input-chip-wrapper.component';
 
 const BACKSPACE_CODE = 8;
 
