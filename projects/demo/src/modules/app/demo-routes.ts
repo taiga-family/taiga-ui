@@ -94,7 +94,7 @@ export const DemoRoute = {
     InputSlider: '/components/input-slider',
     InputSliderLegacy: '/legacy/input-slider',
     InputTag: '/components/input-tag',
-    InputTime: '/components/input-time',
+    InputTimeLegacy: '/components/input-time-legacy',
     InputPhoneInternational: '/components/input-phone-international',
     InputPin: '/components/input-pin',
     InputYear: '/components/input-year',

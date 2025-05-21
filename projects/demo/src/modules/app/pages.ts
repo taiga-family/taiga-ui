@@ -622,10 +622,10 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputTime',
+                title: 'InputTime [deprecated]',
                 keywords:
                     'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
-                route: DemoRoute.InputTime,
+                route: DemoRoute.InputTimeLegacy,
             },
             {
                 section: 'Components',
