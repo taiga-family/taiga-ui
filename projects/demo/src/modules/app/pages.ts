@@ -568,6 +568,13 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputTime',
+                keywords:
+                    'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
+                route: DemoRoute.InputTime,
+            },
+            {
+                section: 'Components',
                 title: 'InputFiles',
                 keywords: 'input-files, files, file, файлы',
                 route: DemoRoute.InputFiles,

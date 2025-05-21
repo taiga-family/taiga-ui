@@ -8,10 +8,12 @@ import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 
 export function tuiTextfieldIconBinding(
-    token: ProviderToken<{icon: TuiHandler<TuiSizeL | TuiSizeS, string>}>,
+    token:
+        | ProviderToken<{icon: TuiHandler<TuiSizeL | TuiSizeS, string>}>
+        | {icon: TuiHandler<TuiSizeL | TuiSizeS, string>},
 ): Signal<string> {
     const textfield = inject(TUI_TEXTFIELD_OPTIONS);
-    const options = inject(token);
+    const options = 'icon' in token ? token : inject(token);
 
     return tuiDirectiveBinding(
         TuiIcons,
