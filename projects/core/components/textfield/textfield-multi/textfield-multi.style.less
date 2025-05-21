@@ -54,6 +54,7 @@ tui-textfield[multi] {
             overflow: scroll;
             scroll-behavior: smooth;
             margin-inline-start: calc(-1 * var(--t-padding));
+            inline-size: calc(100% - var(--t-side) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
 
             & > *:first-child {
                 margin-inline-start: var(--t-padding);

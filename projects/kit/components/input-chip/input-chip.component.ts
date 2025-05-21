@@ -24,7 +24,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
-import {TuiInputChipDirective} from '../input-chip.directive';
+import {TuiInputChipDirective} from './input-chip.directive';
 
 @Component({
     standalone: true,
@@ -82,7 +82,6 @@ import {TuiInputChipDirective} from '../input-chip.directive';
         tuiChip: '',
         tabIndex: '-1',
         '[class._edit]': 'editMode()',
-        '(click.stop)': '(0)',
         '(keydown.backspace.prevent)': 'remove()',
         '(keydown.arrowLeft.prevent)': 'moveFocus(-1)',
         '(keydown.arrowRight.prevent)': 'moveFocus(1)',

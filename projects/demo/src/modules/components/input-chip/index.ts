@@ -19,13 +19,6 @@ import {TuiInputChip} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styles: [
-        `
-            tui-textfield {
-                max-inline-size: 25rem;
-            }
-        `,
-    ],
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
