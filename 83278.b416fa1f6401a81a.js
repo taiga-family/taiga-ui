@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[83278],{83278:n=>{n.exports=".label-wrapper {\n    inline-size: 100%;\n}\n\n.progress {\n    &:nth-child(1) {\n        color: #a3ecb3;\n    }\n\n    &:nth-child(2) {\n        color: #39b54a;\n    }\n}\n"}}]);
