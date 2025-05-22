@@ -16,7 +16,10 @@
     <section>
         <ng-container *polymorpheusOutlet="context.content as text; context: context">
             <div [innerHTML]="text"></div>
-            <div class="t-buttons">
+            <div
+                *ngIf="context.closeable || context.dismissible"
+                class="t-buttons"
+            >
                 <button
                     size="m"
                     tuiAutoFocus

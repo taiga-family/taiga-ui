@@ -511,11 +511,11 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputDate',
+                title: 'InputDate [deprecated]',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar',
-                route: DemoRoute.InputDate,
+                route: DemoRoute.InputDateLegacy,
             },
             {
                 section: 'Components',

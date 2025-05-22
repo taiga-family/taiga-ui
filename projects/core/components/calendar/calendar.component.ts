@@ -19,6 +19,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
+import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
 
 import type {TuiMarkerHandler} from './calendar-sheet.component';
 import {TuiCalendarSheet} from './calendar-sheet.component';
@@ -39,10 +40,10 @@ import {TuiCalendarYear} from './calendar-year.component';
     templateUrl: './calendar.template.html',
     styleUrls: ['./calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAsAuxiliary(TuiCalendar)],
 })
 export class TuiCalendar {
     private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
-
     private view: 'month' | 'year' = 'month';
 
     @Input()
