@@ -132,7 +132,7 @@ test.describe('InputDate', () => {
             test(`correct filler display for size=${size}`, async ({page}) => {
                 await tuiGoto(
                     page,
-                    `/components/input-date/API?tuiTextfieldSize=${size}`,
+                    `${DemoRoute.InputDateLegacy}/API?tuiTextfieldSize=${size}`,
                 );
 
                 await inputDate.textfield.click();
