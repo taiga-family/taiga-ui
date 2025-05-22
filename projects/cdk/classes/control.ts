@@ -6,6 +6,7 @@ import {
     inject,
     Input,
     signal,
+    untracked,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {ControlValueAccessor, FormControlStatus} from '@angular/forms';
@@ -98,7 +99,9 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         this.refresh$.next();
 
         this.onChange = (value: T) => {
-            if (value === this.internal()) {
+            const internal = untracked(() => this.internal());
+
+            if (value === internal) {
                 return;
             }
 
