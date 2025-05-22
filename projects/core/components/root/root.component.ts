@@ -115,7 +115,7 @@ export class TuiRoot {
     }
 
     protected get isTopLayer(): boolean {
-        return this.doc.fullscreenElement
+        return this.doc.fullscreenElement?.matches('tui-root')
             ? this.doc.fullscreenElement === this.el
             : !this.isChildRoot;
     }
