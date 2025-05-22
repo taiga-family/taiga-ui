@@ -70,17 +70,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         .subscribe(() => this.context.$implicit.complete());
 
     public ngAfterViewInit(): void {
-        // eslint-disable-next-line
-        console.log(
-            this.el.scrollTop,
-            this.stops,
-            this.initial,
-            this.stops
-                .map((e) => e.nativeElement.offsetTop - this.context.offset)
-                .concat(this.el.clientHeight ?? Infinity),
-            this.el.clientHeight,
-        );
-
         this.el.scrollTop = this.initial;
     }
 
