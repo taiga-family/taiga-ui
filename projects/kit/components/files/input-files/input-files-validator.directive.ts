@@ -11,8 +11,8 @@ import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 
 @Directive({
     standalone: true,
-    exportAs: 'tuiInputFilesValidator',
     inputs: ['accept', 'maxFileSize'],
+    exportAs: 'tuiInputFilesValidator',
     host: {
         '[accept]': 'accept',
     },

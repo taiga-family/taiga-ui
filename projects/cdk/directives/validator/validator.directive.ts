@@ -8,8 +8,8 @@ import {tuiProvide} from '@taiga-ui/cdk/utils';
 @Directive({
     standalone: true,
     selector: '[tuiValidator]',
-    providers: [tuiProvide(NG_VALIDATORS, TuiValidator, true)],
     inputs: ['validate: tuiValidator'],
+    providers: [tuiProvide(NG_VALIDATORS, TuiValidator, true)],
 })
 export class TuiValidator implements Validator, OnChanges {
     protected onChange = EMPTY_FUNCTION;
