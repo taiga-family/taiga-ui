@@ -335,7 +335,7 @@
                         tuiComboBox
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
-                        [matcher]="strictMatcher"
+                        [matcher]="matcher"
                         [readOnly]="controlDoc.readonly"
                         [strict]="strict"
                         [tuiDisabled]="controlDoc.disabled"
@@ -361,11 +361,11 @@
             </tr>
 
             <tr
-                name="[strictMatcher]"
+                name="[matcher]"
                 tuiDocAPIItem
                 type="TuiStringMatcher | null"
-                [items]="strictMatcherVariants"
-                [(value)]="strictMatcher"
+                [items]="matcherVariants"
+                [(value)]="matcher"
             >
                 A
                 <strong>pure</strong>
