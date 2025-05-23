@@ -1,6 +1,7 @@
 import type {OnChanges, OnInit} from '@angular/core';
 import {Directive, inject} from '@angular/core';
-import {Validators} from '@angular/forms';
+import {NG_VALIDATORS, Validators} from '@angular/forms';
+import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 
 import {
@@ -13,6 +14,7 @@ import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
     standalone: true,
     inputs: ['accept', 'maxFileSize'],
     exportAs: 'tuiInputFilesValidator',
+    providers: [tuiProvide(NG_VALIDATORS, TuiInputFilesValidator, true)],
     host: {
         '[accept]': 'accept',
     },
