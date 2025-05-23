@@ -6,7 +6,7 @@
         "**/projects/i18n/languages/**",
         "**/addon-commerce/utils/get-currency-symbol.ts",
         "**/demo/src/modules/components/select/examples/2/index.ts",
-        "projects/demo/src/modules/components/combo-box/examples/5/index.ts"
+        "projects/demo/src/modules/components/combo-box/examples/{5,7}/index.ts"
     ],
     "ignoreWords": [
         "programmaticinput",
