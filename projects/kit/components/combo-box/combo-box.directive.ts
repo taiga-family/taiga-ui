@@ -11,6 +11,7 @@ import {
     tuiAsTextfieldAccessor,
     tuiInjectAuxiliary,
     TuiTextfieldComponent,
+    TuiTextfieldDirective,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownEnabled, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
@@ -42,7 +43,8 @@ export class TuiComboBox<T>
     implements TuiTextfieldAccessor<T>
 {
     private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly textfield: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
+    private readonly host: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
+    private readonly textfield: TuiTextfieldDirective<T> = inject(TuiTextfieldDirective);
 
     private readonly open = tuiDropdownOpen();
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
@@ -71,7 +73,7 @@ export class TuiComboBox<T>
     protected readonly blurEffect = effect(() => {
         const value = untracked(() => this.value());
 
-        if (!this.textfield.focused() && this.strict && !value) {
+        if (!this.host.focused() && this.strict && !value) {
             this.textfield.value.set('');
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
