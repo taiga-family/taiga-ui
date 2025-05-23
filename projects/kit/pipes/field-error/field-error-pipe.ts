@@ -98,7 +98,7 @@ export class TuiFieldErrorPipe implements PipeTransform, ControlValueAccessor {
         context: any,
         content?: Observable<PolymorpheusContent> | PolymorpheusContent,
     ): Observable<TuiValidationError> {
-        if (content === undefined && context instanceof TuiValidationError) {
+        if (context instanceof TuiValidationError) {
             return of(context);
         }
 
