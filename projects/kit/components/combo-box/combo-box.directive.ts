@@ -57,8 +57,15 @@ export class TuiComboBox<T>
         const stringified = tuiIsString(value)
             ? value
             : this.itemsHandlers.stringify()(value);
+        const match = this.match(stringified);
 
         this.textfield.value.update((x) => stringified || x);
+
+        if (match) {
+            setTimeout((end = this.el.value.length) =>
+                this.el.setSelectionRange(end, end),
+            );
+        }
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly blurEffect = effect(() => {
@@ -89,18 +96,10 @@ export class TuiComboBox<T>
     }
 
     protected onInput(value: string): void {
-        const match = this.options.find((item) =>
-            this.matcher?.(item, value, this.itemsHandlers.stringify()),
-        );
+        const match = this.match(value);
         const fallback = this.strict || !value ? null : value;
 
         this.onChange(match ?? fallback);
-
-        if (match) {
-            setTimeout((end = this.el.value.length) =>
-                this.el.setSelectionRange(end, end),
-            );
-        }
 
         if (this.dropdownEnabled()) {
             this.open.set(!match);
@@ -115,13 +114,18 @@ export class TuiComboBox<T>
         if (this.options.length === 1) {
             this.onChange(this.options[0]!);
             this.open.set(false);
-            setTimeout((end = this.el.value.length) =>
-                this.el.setSelectionRange(end, end),
-            );
         }
     }
 
     private get options(): readonly T[] {
         return this.datalist()?.getOptions() || [];
+    }
+
+    private match(value: string): T | null {
+        return (
+            this.options.find((item) =>
+                this.matcher?.(item, value, this.itemsHandlers.stringify()),
+            ) ?? null
+        );
     }
 }
