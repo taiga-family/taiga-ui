@@ -32,9 +32,7 @@ export class TuiNonNullableValueTransformer<T> extends TuiValueTransformer<T | n
     }
 }
 
-class TuiIdentityValueTransformer<T> extends TuiValueTransformer<T, T> {
-    public override fromControlValue = identity;
-    public override toControlValue = identity;
-}
-
-export const TUI_IDENTITY_VALUE_TRANSFORMER = new TuiIdentityValueTransformer();
+export const TUI_IDENTITY_VALUE_TRANSFORMER: TuiValueTransformer<any, any> = {
+    fromControlValue: identity,
+    toControlValue: identity,
+};

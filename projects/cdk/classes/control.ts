@@ -13,7 +13,7 @@ import type {ControlValueAccessor, FormControlStatus} from '@angular/forms';
 import {NgControl, NgModel} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {TUI_FALLBACK_VALUE} from '@taiga-ui/cdk/tokens';
-import {tuiProvide, tuiPure} from '@taiga-ui/cdk/utils';
+import {tuiProvide} from '@taiga-ui/cdk/utils';
 import {
     delay,
     distinctUntilChanged,
@@ -26,7 +26,7 @@ import {
     switchMap,
 } from 'rxjs';
 
-import {TuiValueTransformer} from './value-transformer';
+import {TUI_IDENTITY_VALUE_TRANSFORMER, TuiValueTransformer} from './value-transformer';
 
 const FLAGS = {self: true, optional: true};
 
@@ -42,7 +42,8 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
 
     protected readonly control = inject(NgControl, {self: true});
     protected readonly cdr = inject(ChangeDetectorRef);
-    protected transformer = inject(TuiValueTransformer, FLAGS);
+    protected transformer =
+        inject(TuiValueTransformer, FLAGS) ?? TUI_IDENTITY_VALUE_TRANSFORMER;
 
     public readonly value = computed(() => this.internal() ?? this.fallback);
     public readonly readOnly = signal(false);
@@ -105,7 +106,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
                 return;
             }
 
-            onChange(this.toControlValue(value));
+            onChange(this.transformer.toControlValue(value));
             this.internal.set(value);
             this.update();
         };
@@ -126,18 +127,8 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         // TODO: https://github.com/angular/angular/issues/14988
         const safe = this.control instanceof NgModel ? this.control.model : value;
 
-        this.internal.set(this.fromControlValue(safe));
+        this.internal.set(this.transformer.fromControlValue(safe));
         this.update();
-    }
-
-    @tuiPure
-    private fromControlValue(value: unknown): T {
-        return this.transformer ? this.transformer.fromControlValue(value) : (value as T);
-    }
-
-    @tuiPure
-    private toControlValue(value: T): unknown {
-        return this.transformer ? this.transformer.toControlValue(value) : value;
     }
 
     private update(): void {

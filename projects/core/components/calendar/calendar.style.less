@@ -1,22 +1,21 @@
-@verticalSpace: 1rem;
-@horizontalSpace: 1.125rem;
-@itemSize: 2.25rem;
-@paginationSize: 1.5rem;
-@calendarSize: @itemSize * 7;
-
 :host {
     display: block;
-    min-block-size: @paginationSize + @verticalSpace + @calendarSize;
-    inline-size: @calendarSize;
-    padding: @verticalSpace @horizontalSpace;
-    box-sizing: content-box;
+    min-block-size: 20.25rem;
+    inline-size: 18rem;
+    padding: 1rem 1.125rem;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+:host-context(tui-dropdown-mobile) {
+    inline-size: 100%;
 }
 
 .t-scrollbar {
-    block-size: @paginationSize + @verticalSpace + @calendarSize;
-    inline-size: @calendarSize + @horizontalSpace;
+    block-size: 18.25rem;
+    inline-size: calc(100% + 1rem);
 }
 
 .t-pagination {
-    margin-bottom: @verticalSpace;
+    margin-bottom: 1rem;
 }

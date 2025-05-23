@@ -38,7 +38,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
 
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
-        computed(() => !this.nativePickerEnabled && this.interactive()),
+        computed(() => !this.native && this.interactive()),
     );
 
     protected readonly valueEffect = effect(() => {
@@ -62,7 +62,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
         (x) => x instanceof TuiCalendarMonth,
     );
 
-    public readonly nativePickerEnabled =
+    public readonly native =
         tuiInjectElement<HTMLInputElement>().type === 'month' && inject(TUI_IS_MOBILE);
 
     protected clear(): void {

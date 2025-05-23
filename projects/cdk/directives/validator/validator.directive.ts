@@ -1,4 +1,4 @@
-import type {OnChanges, OnDestroy} from '@angular/core';
+import type {OnChanges} from '@angular/core';
 import {Directive, Input} from '@angular/core';
 import type {
     AbstractControl,
@@ -15,7 +15,7 @@ import {tuiProvide} from '@taiga-ui/cdk/utils';
     selector: '[tuiValidator]',
     providers: [tuiProvide(NG_VALIDATORS, TuiValidator, true)],
 })
-export class TuiValidator implements Validator, OnChanges, OnDestroy {
+export class TuiValidator implements Validator, OnChanges {
     private onChange = EMPTY_FUNCTION;
 
     @Input()
@@ -30,11 +30,6 @@ export class TuiValidator implements Validator, OnChanges, OnDestroy {
     }
 
     public ngOnChanges(): void {
-        this.onChange();
-    }
-
-    public ngOnDestroy(): void {
-        this.tuiValidator = Validators.nullValidator;
         this.onChange();
     }
 }
