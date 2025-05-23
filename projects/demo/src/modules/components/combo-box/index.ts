@@ -58,12 +58,12 @@ export default class PageComponent {
         map((x) => Object.entries(x).map(([id, name]) => ({id, name}))),
     );
 
-    protected readonly strictMatcherVariants: ReadonlyArray<TuiStringMatcher<Country>> = [
+    protected readonly matcherVariants: ReadonlyArray<TuiStringMatcher<Country>> = [
         TUI_STRICT_MATCHER as TuiStringMatcher<Country>,
         (item: Country, search: string) => item.id === search,
     ];
 
-    protected strictMatcher = this.strictMatcherVariants[0]!;
+    protected matcher = this.matcherVariants[0]!;
 
     protected readonly textfieldContentVariants = computed(() => [
         '',
