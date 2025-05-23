@@ -1,24 +1,30 @@
-<tui-textfield tuiChevron>
+<tui-textfield
+    tuiChevron
+    [content]="value && '*' + value.number.slice(-4)"
+>
     <input
-        placeholder="Install library"
+        placeholder="Choose a card"
         tuiComboBox
         [(ngModel)]="value"
     />
 
-    <tui-data-list *tuiTextfieldDropdown>
-        <tui-opt-group
-            *ngFor="let group of taigaFamilyLibs"
-            [label]="group.name"
-        >
-            <button
-                *ngFor="let lib of group.libraries | tuiFilterByInput"
-                new
-                tuiOption
-                type="button"
-                [value]="lib"
-            >
-                {{ lib }}
-            </button>
-        </tui-opt-group>
-    </tui-data-list>
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [itemContent]="dropdownOptionContent"
+        [items]="cards | tuiFilterByInput: matcher"
+    />
 </tui-textfield>
+
+<ng-template
+    #dropdownOptionContent
+    let-card
+>
+    <div class="card">
+        <tui-thumbnail-card [paymentSystem]="card.paymentSystem">
+            {{ card.number.slice(-4) }}
+        </tui-thumbnail-card>
+
+        {{ card.name }}
+    </div>
+</ng-template>

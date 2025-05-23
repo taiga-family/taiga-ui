@@ -1,27 +1,24 @@
-<tui-textfield
-    tuiChevron
-    [content]="control.value && content"
->
+<tui-textfield tuiChevron>
     <input
+        placeholder="Install library"
         tuiComboBox
-        [formControl]="control"
-        [matcher]="matcher"
+        [(ngModel)]="value"
     />
 
     <tui-data-list *tuiTextfieldDropdown>
-        <button
-            *ngFor="let item of items"
-            new
-            tuiOption
-            type="button"
-            [value]="item.id"
+        <tui-opt-group
+            *ngFor="let group of taigaFamilyLibs"
+            [label]="group.name"
         >
-            {{ item.name }}
-        </button>
+            <button
+                *ngFor="let lib of group.libraries | tuiFilterByInput"
+                new
+                tuiOption
+                type="button"
+                [value]="lib"
+            >
+                {{ lib }}
+            </button>
+        </tui-opt-group>
     </tui-data-list>
 </tui-textfield>
-
-<p>
-    <strong>Form control:</strong>
-    <code>{{ control.value | json }}</code>
-</p>
