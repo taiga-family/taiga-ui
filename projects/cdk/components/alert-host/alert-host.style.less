@@ -7,6 +7,8 @@ tui-alert-host > .t-wrapper {
     height: 100%;
     flex-direction: column;
     pointer-events: none;
+    box-sizing: border-box;
+    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
 
     & > * {
         pointer-events: auto;
