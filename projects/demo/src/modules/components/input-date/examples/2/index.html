@@ -1,0 +1,23 @@
+<tui-textfield [content]="control.value?.daySame(today) ? 'Today' : ''">
+    <label tuiLabel>Choose a date</label>
+    <input
+        tuiInputDate
+        [formControl]="control"
+    />
+    <ng-template
+        let-close
+        tuiTextfieldDropdown
+    >
+        <tui-calendar />
+        <button
+            appearance="action"
+            size="m"
+            tuiButton
+            type="button"
+            class="button"
+            (click)="control.setValue(today); close()"
+        >
+            Today
+        </button>
+    </ng-template>
+</tui-textfield>

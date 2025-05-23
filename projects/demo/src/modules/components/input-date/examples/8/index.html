@@ -1,0 +1,31 @@
+<tui-textfield>
+    <label tuiLabel>Select date</label>
+    <input
+        list="dates"
+        tuiInputDate
+        type="date"
+        [(ngModel)]="value"
+    />
+    <datalist id="dates">
+        <option
+            *ngFor="let date of dates | keyvalue: asIs"
+            [value]="date.value.toJSON()"
+        >
+            {{ date.key }}
+        </option>
+    </datalist>
+    <section *tuiTextfieldDropdown>
+        <tui-calendar />
+        <tui-data-list>
+            <button
+                *ngFor="let date of dates | keyvalue: asIs"
+                tuiOption
+                [class.current]="value?.daySame(date.value)"
+                [iconEnd]="value?.daySame(date.value) ? '@tui.check' : ''"
+                [value]="date.value"
+            >
+                {{ date.key }}
+            </button>
+        </tui-data-list>
+    </section>
+</tui-textfield>

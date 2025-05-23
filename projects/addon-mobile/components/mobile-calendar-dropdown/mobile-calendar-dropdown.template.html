@@ -4,6 +4,7 @@
     [min]="min()"
     [multi]="multi"
     [single]="single"
+    [value]="directive?.date?.value()"
     (cancel)="close()"
     (confirm)="confirm($event)"
     (valueChange)="onValueChange($event)"
