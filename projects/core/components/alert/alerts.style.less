@@ -6,7 +6,8 @@ tui-alerts > .t-wrapper {
     display: flex;
     flex-direction: column;
     pointer-events: none;
-    block-size: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    box-sizing: border-box;
+    block-size: 100%;
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
 
     & > * {
