@@ -17,13 +17,13 @@ export const TUI_DARK_MODE = tuiCreateTokenFromFactory<
 
     const storage = inject(WA_LOCAL_STORAGE);
     const key = inject(TUI_DARK_MODE_KEY);
-    const saved = storage.getItem(key);
+    const saved = storage?.getItem(key);
     const media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');
     const result = signal(Boolean((saved && JSON.parse(saved)) ?? media.matches));
 
     fromEvent(media, 'change')
         .pipe(
-            filter(() => !storage.getItem(key)),
+            filter(() => !storage?.getItem(key)),
             takeUntilDestroyed(),
         )
         .subscribe(() => {
@@ -37,13 +37,13 @@ export const TUI_DARK_MODE = tuiCreateTokenFromFactory<
         if (automatic) {
             automatic = false;
         } else {
-            storage.setItem(key, value);
+            storage?.setItem(key, value);
         }
     });
 
     return Object.assign(result, {
         reset: () => {
-            storage.removeItem(key);
+            storage?.removeItem(key);
             automatic = true;
             result.set(media.matches);
         },
