@@ -44,7 +44,7 @@ export default class Example {
         $implicit: id,
     }) => this.items.find((item) => item.id === id)?.name ?? '';
 
-    protected readonly strictMatcher: TuiStringMatcher<number> = (id, query) => {
+    protected readonly matcher: TuiStringMatcher<number> = (id, query) => {
         const {name} = this.items.find((item) => item.id === id)!;
 
         return String(id) === query || name.toLowerCase() === query.toLowerCase();

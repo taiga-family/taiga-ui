@@ -73,7 +73,7 @@ export class TuiComboBox<T>
     public strict = true;
 
     @Input()
-    public strictMatcher: TuiStringMatcher<T> | null = TUI_STRICT_MATCHER;
+    public matcher: TuiStringMatcher<T> | null = TUI_STRICT_MATCHER;
 
     public setValue(value: T): void {
         this.onChange(value);
@@ -90,7 +90,7 @@ export class TuiComboBox<T>
 
     protected onInput(value: string): void {
         const match = this.options.find((item) =>
-            this.strictMatcher?.(item, value, this.itemsHandlers.stringify()),
+            this.matcher?.(item, value, this.itemsHandlers.stringify()),
         );
         const fallback = this.strict || !value ? null : value;
 
