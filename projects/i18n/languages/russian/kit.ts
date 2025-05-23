@@ -11,6 +11,7 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['от', 'до'],
     countTexts: ['Плюс', 'Минус'],
     time: {
+        'MM:SS': 'ММ:СС',
         'HH:MM': 'ЧЧ:ММ',
         'HH:MM AA': 'ЧЧ:ММ AA',
         'HH:MM:SS': 'ЧЧ:ММ:СС',

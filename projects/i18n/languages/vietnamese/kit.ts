@@ -11,6 +11,7 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['từ', 'đến'],
     countTexts: ['Cộng', 'Trừ'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

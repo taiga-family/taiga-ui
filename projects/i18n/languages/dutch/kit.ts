@@ -11,6 +11,7 @@ export const TUI_DUTCH_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['van', 'tot'],
     countTexts: ['Plus', 'Min'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

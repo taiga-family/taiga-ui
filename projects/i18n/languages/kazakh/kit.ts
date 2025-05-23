@@ -11,6 +11,7 @@ export const TUI_KAZAKH_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['бастап', 'дейін'],
     countTexts: ['Плюс', 'Минус'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

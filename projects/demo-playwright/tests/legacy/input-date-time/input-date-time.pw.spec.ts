@@ -46,7 +46,7 @@ test.describe('InputDateTime', () => {
 
         test('[max] property cannot be bypassed via selection', async ({page}) => {
             // max = [tomorrow, {hours: 16, minutes: 20, seconds: 0, ms: 0}]
-            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?max$=4`, {
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?max$=4&timeMode=HH:MM`, {
                 date: new Date(2018, 10, 1),
             });
 
@@ -85,7 +85,7 @@ test.describe('InputDateTime', () => {
 
         test('[min] property cannot be bypassed via selection', async ({page}) => {
             // min = [yesterday, {hours: 12, minutes: 20, seconds: 0, ms: 0}]
-            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?min$=4`, {
+            await tuiGoto(page, `${DemoRoute.InputDateTime}/API?min$=4&timeMode=HH:MM`, {
                 date: new Date(2018, 10, 1),
             });
 

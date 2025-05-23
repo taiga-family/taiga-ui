@@ -11,6 +11,7 @@ export const TUI_ITALIAN_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['da', 'a'],
     countTexts: ['Più', 'Meno'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

@@ -15,6 +15,7 @@ export const TUI_LITHUANIAN_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['nuo', 'iki'],
     countTexts: ['Plius', 'Minus'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

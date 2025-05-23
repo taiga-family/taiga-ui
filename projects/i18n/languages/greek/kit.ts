@@ -11,6 +11,7 @@ export const TUI_GREEK_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['από', 'έως'],
     countTexts: ['Πρόσθεσε', 'Μείωσε'],
     time: {
+        'MM:SS': 'ΛΛ:ΔΔ',
         'HH:MM': 'ΩΩ:ΛΛ',
         'HH:MM AA': 'ΩΩ:ΛΛ π.μ./μ.μ.',
         'HH:MM:SS': 'ΩΩ:ΛΛ:ΔΔ',

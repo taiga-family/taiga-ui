@@ -10,7 +10,8 @@ export type TuiTimeMode =
     | 'HH:MM:SS.MSS AA'
     | 'HH:MM:SS.MSS'
     | 'HH:MM:SS'
-    | 'HH:MM';
+    | 'HH:MM'
+    | 'MM:SS';
 
 /**
  * Optionally has year and/or month and/or day
