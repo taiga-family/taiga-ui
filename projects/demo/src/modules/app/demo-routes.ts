@@ -78,6 +78,7 @@ export const DemoRoute = {
     Skeleton: '/directives/skeleton',
     InputInline: '/components/input-inline',
     Input: '/components/input',
+    InputDate: '/components/input-date',
     InputDateLegacy: '/components/input-date-legacy',
     InputDateMulti: '/components/input-date-multi',
     InputCard: '/components/input-card',

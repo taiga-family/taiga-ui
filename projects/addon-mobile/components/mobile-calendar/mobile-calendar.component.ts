@@ -199,6 +199,17 @@ export class TuiMobileCalendar implements AfterViewInit {
             });
     }
 
+    @Input()
+    public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null | undefined) {
+        if (value !== undefined) {
+            this.value$.next(value);
+        }
+    }
+
+    public get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
+        return this.value$.value;
+    }
+
     public ngAfterViewInit(): void {
         this.activeYear = this.initialYear;
         this.activeMonth = this.initialMonth;
@@ -219,15 +230,6 @@ export class TuiMobileCalendar implements AfterViewInit {
         timer(0, tuiZonefreeScheduler(this.ngZone))
             .pipe(tuiZonefree(this.ngZone), takeUntilDestroyed(this.destroyRef))
             .subscribe(() => this.scrollToActiveMonth());
-    }
-
-    @Input()
-    protected set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
-        this.value$.next(value);
-    }
-
-    protected get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
-        return this.value$.value;
     }
 
     protected get yearWidth(): number {
