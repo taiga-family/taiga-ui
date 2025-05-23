@@ -8,8 +8,8 @@ export function tuiCreateUnfinishedValidator(
 ): ValidatorFn {
     return ({
         value,
-    }: AbstractControl): {unfinished: TuiValidationError | string} | null =>
+    }: AbstractControl): {tuiUnfinished: TuiValidationError | string} | null =>
         value === null && element.value !== ''
-            ? {unfinished: new TuiValidationError(message)}
+            ? {tuiUnfinished: message ? new TuiValidationError(message) : ''}
             : null;
 }

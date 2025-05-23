@@ -10,6 +10,7 @@ import {map, of} from 'rxjs';
 
 /**
  * Stream that emits calendar data change
+ * @deprecated this should be rewritten in v5
  */
 export const TUI_CALENDAR_DATE_STREAM =
     tuiCreateToken<Observable<TuiDay | TuiDayRange | null>>();

@@ -78,9 +78,9 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
     host: {
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
-        '[class._with-template]': 'content',
-        '[class._disabled]': 'input?.nativeElement.disabled',
-        '(mousedown)': 'onIconClick($event)',
+        '[class._with-template]': 'content && control?.value != null',
+        '[class._disabled]': 'input?.nativeElement?.disabled',
+        '(pointerdown)': 'onIconClick($event)',
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterContentInit {
