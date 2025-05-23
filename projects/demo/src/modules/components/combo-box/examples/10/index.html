@@ -1,13 +1,16 @@
-<tui-textfield tuiChevron>
+<tui-textfield
+    tuiChevron
+    tuiDropdownMobile
+>
     <input
-        placeholder="Select something"
+        placeholder="Select destination"
         tuiComboBox
-        [formControl]="control"
+        [(ngModel)]="value"
     />
 
     <tui-data-list-wrapper
         *tuiTextfieldDropdown
         new
-        [items]="items | tuiFilterByInput"
+        [items]="countries$ | async | tuiFilterByInput"
     />
 </tui-textfield>

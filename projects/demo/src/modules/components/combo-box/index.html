@@ -19,23 +19,18 @@
         .
 
         <tui-doc-example
-            id="filter-by-input-pipe"
-            heading="Filter items"
+            id="basic"
+            heading="Basic"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
-            [description]="filterByInputDescription"
+            [description]="basicDescription"
         >
-            <ng-template #filterByInputDescription>
+            <ng-template #basicDescription>
                 The main helper you’ll use with almost every
                 <code>ComboBox</code>
                 is the
                 <code>tuiFilterByInput</code>
                 pipe. It enables item filtering based on the user’s input as they type.
-
-                <p>
-                    You can configure any filtering logic by passing a custom matcher function as an argument to the
-                    pipe.
-                </p>
             </ng-template>
         </tui-doc-example>
 
@@ -60,10 +55,24 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="textfield-customization"
-            heading="Textfield customization"
+            id="client-side-filtering"
+            heading="Client-side filtering"
             [component]="3 | tuiComponent"
             [content]="3 | tuiExample"
+            [description]="clientSideFilteringDescription"
+        >
+            <ng-template #clientSideFilteringDescription>
+                You can configure any filtering logic by passing a custom matcher function as an argument to the
+                <code>tuiFilterByInput</code>
+                pipe.
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="textfield-customization"
+            heading="Textfield customization"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
             [description]="textfieldBasedDescription"
         >
             <ng-template #textfieldBasedDescription>
@@ -100,8 +109,8 @@
         <tui-doc-example
             id="items-handlers"
             heading="Items handlers"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
             [description]="itemsHandlersDescription"
         >
             <ng-template #itemsHandlersDescription>
@@ -130,8 +139,8 @@
         <tui-doc-example
             id="content-customization"
             heading="Customize content"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
             [description]="contentDescription"
         >
             <ng-template #contentDescription>
@@ -165,8 +174,8 @@
         <tui-doc-example
             id="data-list"
             heading="With DataList"
-            [component]="6 | tuiComponent"
-            [content]="6 | tuiExample"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
             [description]="datalistDescription"
         >
             <ng-template #datalistDescription>
@@ -189,8 +198,8 @@
         <tui-doc-example
             id="form-control-output"
             heading="Choose form control output"
-            [component]="7 | tuiComponent"
-            [content]="7 | tuiExample"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample"
             [description]="formControlOutputDescription"
         >
             <ng-template #formControlOutputDescription>
@@ -214,8 +223,8 @@
         <tui-doc-example
             id="virtual-scroll"
             heading="Virtual scroll"
-            [component]="8 | tuiComponent"
-            [content]="8 | tuiExample"
+            [component]="9 | tuiComponent"
+            [content]="9 | tuiExample"
             [description]="virtualScrollDescription"
         >
             <ng-template #virtualScrollDescription>
@@ -236,8 +245,8 @@
         <tui-doc-example
             id="dropdown-mobile"
             heading="With DropdownMobile"
-            [component]="9 | tuiComponent"
-            [content]="9 | tuiExample"
+            [component]="10 | tuiComponent"
+            [content]="10 | tuiExample"
             [description]="dropdownMobileDescription"
         >
             <ng-template #dropdownMobileDescription>
@@ -272,8 +281,8 @@
         <tui-doc-example
             id="override-option-component"
             heading="Override option component"
-            [component]="10 | tuiComponent"
-            [content]="10 | tuiExample: 'html,ts,less' : {'option.ts': selectOptionExample}"
+            [component]="11 | tuiComponent"
+            [content]="11 | tuiExample: 'html,ts,less' : {'option.ts': selectOptionExample}"
             [description]="overrideOptionDescription"
         >
             <ng-template #overrideOptionDescription>

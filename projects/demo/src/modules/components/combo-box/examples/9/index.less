@@ -1,9 +1,7 @@
-@sticky-header-height: 4.1875rem;
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 
-:root {
-    --tui-dropdown-mobile-offset: @sticky-header-height + 1rem;
-}
+.scroll {
+    .scrollbar-hidden();
 
-header[tuiDocHeader] {
-    visibility: visible;
+    block-size: 12.5rem;
 }

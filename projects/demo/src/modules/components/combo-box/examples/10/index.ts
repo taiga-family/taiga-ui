@@ -1,36 +1,40 @@
-import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {AsyncPipe} from '@angular/common';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAsOptionContent, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiTextfield} from '@taiga-ui/core';
 import {
+    TUI_COUNTRIES,
     TuiChevron,
     TuiComboBox,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-
-import {Option} from './option';
+import type {Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
     standalone: true,
     imports: [
-        ReactiveFormsModule,
+        AsyncPipe,
+        FormsModule,
         TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,
+        TuiDropdownMobile,
         TuiFilterByInputPipe,
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    encapsulation,
+    styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
     changeDetection,
-    providers: [tuiAsOptionContent(Option)],
 })
 export default class Example {
-    protected readonly items = new Array(5)
-        .fill(null)
-        .map((_, index) => `Option ${index + 1}`);
+    protected readonly countries$: Observable<string[]> = inject(TUI_COUNTRIES).pipe(
+        map(Object.values),
+    );
 
-    protected readonly control = new FormControl<string | null>(this.items[2]!);
+    protected value: string | null = null;
 }

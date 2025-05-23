@@ -1,9 +1,5 @@
-<tui-textfield
-    tuiChevron
-    [content]="value && '*' + value.number.slice(-4)"
->
+<tui-textfield tuiChevron>
     <input
-        placeholder="Choose a card"
         tuiComboBox
         [(ngModel)]="value"
     />
@@ -11,20 +7,6 @@
     <tui-data-list-wrapper
         *tuiTextfieldDropdown
         new
-        [itemContent]="dropdownOptionContent"
-        [items]="cards | tuiFilterByInput: matcher"
+        [items]="users | tuiFilterByInput"
     />
 </tui-textfield>
-
-<ng-template
-    #dropdownOptionContent
-    let-card
->
-    <div class="card">
-        <tui-thumbnail-card [paymentSystem]="card.paymentSystem">
-            {{ card.number.slice(-4) }}
-        </tui-thumbnail-card>
-
-        {{ card.name }}
-    </div>
-</ng-template>
