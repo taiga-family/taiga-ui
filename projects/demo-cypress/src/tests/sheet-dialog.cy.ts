@@ -50,6 +50,13 @@ describe('TuiSheetDialog', () => {
 
     it('open sheet', () => {
         cy.get('button').click();
+
+        cy.get('tui-sheet-dialog')
+            .should('be.visible')
+            .should(($el) => {
+                expect($el[0]?.scrollTop).to.equal(0);
+            });
+
         cy.get('tui-sheet-dialog').compareSnapshot('tui-sheet-dialog__1');
     });
 });
