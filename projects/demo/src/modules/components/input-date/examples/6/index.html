@@ -1,0 +1,30 @@
+<form
+    tuiForm="l"
+    [formGroup]="form"
+>
+    <tui-textfield>
+        <label tuiLabel>Native picker</label>
+        <input
+            formControlName="native"
+            tuiInputDate
+            type="date"
+        />
+        <tui-calendar *tuiTextfieldDropdown />
+    </tui-textfield>
+    <tui-textfield tuiDropdownMobile="Pick a date">
+        <label tuiLabel>Mobile dropdown</label>
+        <input
+            formControlName="mobile"
+            tuiInputDate
+        />
+        <tui-calendar *tuiTextfieldDropdown />
+    </tui-textfield>
+    <tui-textfield tuiMobileCalendar>
+        <label tuiLabel>Mobile calendar</label>
+        <input
+            formControlName="fullscreen"
+            tuiInputDate
+        />
+        <tui-calendar *tuiTextfieldDropdown />
+    </tui-textfield>
+</form>

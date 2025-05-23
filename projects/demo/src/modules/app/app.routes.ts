@@ -410,6 +410,11 @@ export const ROUTES: Routes = [
         title: 'Input',
     }),
     route({
+        path: DemoRoute.InputDate,
+        title: 'InputDate',
+        loadComponent: async () => import('../components/input-date'),
+    }),
+    route({
         path: DemoRoute.InputDateLegacy,
         title: 'InputDate [deprecated]',
         loadComponent: async () => import('../components/input-date-legacy'),

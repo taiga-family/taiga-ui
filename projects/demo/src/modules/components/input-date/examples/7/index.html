@@ -1,0 +1,11 @@
+<tui-textfield [disabledItemHandler]="handler">
+    <label tuiLabel>Choose a date</label>
+    <input
+        tuiInputDate
+        type="date"
+        [max]="max"
+        [min]="min"
+        [(ngModel)]="value"
+    />
+    <tui-calendar *tuiTextfieldDropdown />
+</tui-textfield>

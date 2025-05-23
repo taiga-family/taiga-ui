@@ -19,6 +19,8 @@ import {TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import type {Observer} from 'rxjs';
 
+import {TuiMobileCalendarDropdownNew} from './mobile-calendar-dropdown.directive';
+
 export interface TuiMobileCalendarData {
     disabledItemHandler?: TuiBooleanHandler<TuiDay>;
     max?: TuiDay | null;
@@ -27,6 +29,7 @@ export interface TuiMobileCalendarData {
     single?: boolean;
 }
 
+// TODO: Rename to TuiMobileCalendarDropdownComponent in v5, this component is terrible and needs a complete rewrite
 @Component({
     standalone: true,
     selector: 'tui-mobile-calendar-dropdown',
@@ -50,7 +53,9 @@ export class TuiMobileCalendarDropdown {
     protected readonly control: any = inject(TuiControl, {optional: true});
     protected readonly range = this.is('tui-input-date-range');
     protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
+    protected readonly directive = inject(TuiMobileCalendarDropdownNew, {optional: true});
     protected readonly single =
+        !!this.directive?.date ||
         this.data.single || // TODO(v5): use `rangeMode` from DI token `TUI_CALENDAR_SHEET_DEFAULT_OPTIONS`
         this.is('tui-input-date:not([multiple])');
 
@@ -59,6 +64,10 @@ export class TuiMobileCalendarDropdown {
     }
 
     public max(): TuiDay {
+        if (this.directive?.date) {
+            return this.directive.date.max();
+        }
+
         return (
             this.data.max ||
             (this.range
@@ -74,6 +83,10 @@ export class TuiMobileCalendarDropdown {
     }
 
     public min(): TuiDay {
+        if (this.directive?.date) {
+            return this.directive.date.min();
+        }
+
         return (
             this.data.min ||
             (this.range
@@ -102,7 +115,8 @@ export class TuiMobileCalendarDropdown {
 
     protected get calculatedDisabledItemHandler(): TuiBooleanHandler<TuiDay> {
         return this.calculateDisabledItemHandler(
-            this.data.disabledItemHandler ||
+            this.directive?.handlers.disabledItemHandler() ||
+                this.data.disabledItemHandler ||
                 this.control?.disabledItemHandler ||
                 TUI_FALSE_HANDLER,
             this.selectedPeriod,
@@ -121,6 +135,10 @@ export class TuiMobileCalendarDropdown {
 
         if (this.control) {
             this.control.value = normalizedValue;
+        }
+
+        if (this.directive?.date) {
+            this.directive.date.onChange(normalizedValue);
         }
 
         this.observer?.next(normalizedValue);
