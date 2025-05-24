@@ -11,6 +11,7 @@ export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['dari', 'ke'],
     countTexts: ['Tambah', 'Tolak'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

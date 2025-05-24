@@ -11,6 +11,7 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['from', 'to'],
     countTexts: ['Plus', 'Minus'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

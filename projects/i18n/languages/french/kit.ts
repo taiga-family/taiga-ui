@@ -15,6 +15,7 @@ export const TUI_FRENCH_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['De', 'À'],
     countTexts: ['Plus', 'Moins'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

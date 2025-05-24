@@ -11,6 +11,7 @@ export const TUI_SPANISH_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['desde', 'hasta'],
     countTexts: ['Más', 'Menos'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',
