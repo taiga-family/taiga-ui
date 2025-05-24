@@ -28,7 +28,9 @@
         "Serebrennikov",
         "finedog",
         "Kryal",
-        "Tureborg"
+        "Tureborg",
+        "longname",
+        "Ellipsizing"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
