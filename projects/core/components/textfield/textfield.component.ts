@@ -41,7 +41,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -51,7 +51,6 @@ import {TuiTextfieldDirective} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 import type {TuiTextfieldAccessor} from './textfield-accessor';
 import {TUI_TEXTFIELD_ACCESSOR} from './textfield-accessor';
-import {TUI_AUXILIARY} from './textfield-auxiliary';
 import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 @Component({
