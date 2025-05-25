@@ -10,6 +10,11 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {
+    TUI_INPUT_NUMBER_DELAY_DECREMENT,
+    TUI_INPUT_NUMBER_INITIAL_DELAY,
+    TUI_INPUT_NUMBER_MIN_DELAY,
+} from '@taiga-ui/cdk';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -80,12 +85,7 @@ export class TuiInputNumberStep {
     }
 
     protected onStep(step: number): void {
-        const {inputNumber} = this;
-        const newValue = tuiClamp(
-            (inputNumber.value() ?? 0) + step,
-            inputNumber.min(),
-            inputNumber.max(),
-        );
+        const {clampedValue} = this.calculateClampedValue(step);
 
         if (this.inputNumber.value() === null) {
             timer(0)
@@ -93,23 +93,23 @@ export class TuiInputNumberStep {
                 .subscribe(() => this.setCaretPosition(this.inputNumber));
         }
 
-        this.inputNumber.setValue(newValue);
+        this.inputNumber.setValue(clampedValue);
     }
 
     private accelerate$(stepValue: number): Observable<number> {
         this.element.focus();
 
-        const initialDelay = 300;
-        const delayDecrement = 15;
-        const minDelay = 100;
-        const acceleration$ = new BehaviorSubject<number>(initialDelay);
+        const acceleration$ = new BehaviorSubject<number>(TUI_INPUT_NUMBER_INITIAL_DELAY);
 
         return acceleration$
             .pipe(
                 switchMap((delay) => concat(timer(delay).pipe(take(1)), timer(0, delay))),
                 map(() => {
                     acceleration$.next(
-                        Math.max(acceleration$.value - delayDecrement, minDelay),
+                        Math.max(
+                            acceleration$.value - TUI_INPUT_NUMBER_DELAY_DECREMENT,
+                            TUI_INPUT_NUMBER_MIN_DELAY,
+                        ),
                     );
 
                     return stepValue;
@@ -119,14 +119,9 @@ export class TuiInputNumberStep {
     }
 
     private stepChange$(stepValue: number): Observable<number> {
-        const {inputNumber} = this;
-        const newValue = tuiClamp(
-            (inputNumber.value() ?? 0) + stepValue,
-            inputNumber.min(),
-            inputNumber.max(),
-        );
+        const {inputNumber, clampedValue} = this.calculateClampedValue(stepValue);
 
-        this.inputNumber.setValue(newValue);
+        this.inputNumber.setValue(clampedValue);
 
         if (this.inputNumber.value() === null) {
             return timer(0).pipe(
@@ -142,5 +137,21 @@ export class TuiInputNumberStep {
         const caretIndex = this.element.value.length - inputNumber.postfix().length;
 
         this.element.setSelectionRange(caretIndex, caretIndex);
+    }
+
+    private calculateClampedValue(step: number): {
+        clampedValue: number;
+        inputNumber: TuiInputNumberDirective;
+    } {
+        const {inputNumber} = this;
+
+        return {
+            clampedValue: tuiClamp(
+                (inputNumber.value() ?? 0) + step,
+                inputNumber.min(),
+                inputNumber.max(),
+            ),
+            inputNumber,
+        };
     }
 }
