@@ -24,6 +24,7 @@ import {
     BehaviorSubject,
     concat,
     EMPTY,
+    finalize,
     map,
     merge,
     mergeMap,
@@ -64,6 +65,7 @@ export class TuiInputNumberStep {
     protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
     protected readonly step = signal(this.options.step);
     protected readonly step$ = new Subject<number>();
+
     protected readonly stop$ = merge(
         tuiTypedFromEvent(document, 'pointerup'),
         tuiTypedFromEvent(document, 'pointerleave'),
@@ -113,6 +115,9 @@ export class TuiInputNumberStep {
                     );
 
                     return stepValue;
+                }),
+                finalize(() => {
+                    acceleration$.complete();
                 }),
             )
             .pipe(takeUntil(this.stop$));
