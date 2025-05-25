@@ -11,6 +11,11 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {
+    TUI_INPUT_NUMBER_DELAY_DECREMENT,
+    TUI_INPUT_NUMBER_INITIAL_DELAY,
+    TUI_INPUT_NUMBER_MIN_DELAY,
+} from '@taiga-ui/cdk';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -20,7 +25,6 @@ import {
     BehaviorSubject,
     concat,
     EMPTY,
-    finalize,
     map,
     merge,
     mergeMap,
@@ -85,8 +89,7 @@ export class TuiInputNumberStep {
     }
 
     protected onStep(step: number): void {
-        const current = Number.isNaN(this.value()) ? 0 : this.value();
-        const value = tuiClamp(current + step, this.input.min(), this.input.max());
+        const {clampedValue} = this.calculateClampedValue(step);
 
         if (Number.isNaN(this.value())) {
             timer(0)
@@ -94,62 +97,23 @@ export class TuiInputNumberStep {
                 .subscribe(() => this.setCaretPosition(this.input));
         }
 
-        this.input.setValue(value);
-    }
-
-    protected startStep(event: Event, stepValue: number): void {
-        event.preventDefault();
-        this.el.focus();
-
-        const button = event.target as HTMLButtonElement;
-
-        const stop$ = merge(
-            tuiTypedFromEvent(button, 'mouseup'),
-            tuiTypedFromEvent(button, 'mouseleave'),
-            tuiTypedFromEvent(button, 'touchend'),
-            tuiTypedFromEvent(button, 'touchcancel'),
-            tuiTypedFromEvent(document, 'mouseup'),
-        );
-
-        const initialDelay = 300;
-        const delayDecrement = 30;
-        const minDelay = 50;
-
-        const acceleration$ = new BehaviorSubject<number>(initialDelay);
-
-        acceleration$
-            .pipe(
-                switchMap((delay) => concat(timer(delay).pipe(take(1)), timer(0, delay))),
-                takeUntil(stop$),
-                tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroyRef),
-                finalize(() => acceleration$.complete()),
-            )
-            .subscribe(() => {
-                this.zone.run(() => {
-                    this.onStep(stepValue);
-
-                    acceleration$.next(
-                        Math.max(acceleration$.value - delayDecrement, minDelay),
-                    );
-                });
-            });
+        this.input.setValue(clampedValue);
     }
 
     private accelerate$(stepValue: number): Observable<number> {
         this.el.focus();
 
-        const initialDelay = 300;
-        const delayDecrement = 15;
-        const minDelay = 100;
-        const acceleration$ = new BehaviorSubject<number>(initialDelay);
+        const acceleration$ = new BehaviorSubject<number>(TUI_INPUT_NUMBER_INITIAL_DELAY);
 
         return acceleration$
             .pipe(
                 switchMap((delay) => concat(timer(delay).pipe(take(1)), timer(0, delay))),
                 map(() => {
                     acceleration$.next(
-                        Math.max(acceleration$.value - delayDecrement, minDelay),
+                        Math.max(
+                            acceleration$.value - TUI_INPUT_NUMBER_DELAY_DECREMENT,
+                            TUI_INPUT_NUMBER_MIN_DELAY,
+                        ),
                     );
 
                     return stepValue;
@@ -159,14 +123,9 @@ export class TuiInputNumberStep {
     }
 
     private stepChange$(stepValue: number): Observable<number> {
-        const {input} = this;
-        const newValue = tuiClamp(
-            (input.value() ?? 0) + stepValue,
-            input.min(),
-            input.max(),
-        );
+        const {input, clampedValue} = this.calculateClampedValue(stepValue);
 
-        this.input.setValue(newValue);
+        this.input.setValue(clampedValue);
 
         if (this.input.value() === null) {
             return timer(0).pipe(
@@ -182,5 +141,17 @@ export class TuiInputNumberStep {
         const caretIndex = this.el.value.length - inputNumber.postfix().length;
 
         this.el.setSelectionRange(caretIndex, caretIndex);
+    }
+
+    private calculateClampedValue(step: number): {
+        clampedValue: number;
+        input: TuiInputNumberDirective;
+    } {
+        const {input} = this;
+
+        return {
+            clampedValue: tuiClamp((input.value() ?? 0) + step, input.min(), input.max()),
+            input,
+        };
     }
 }
