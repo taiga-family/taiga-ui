@@ -7,7 +7,7 @@ import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiDay} from '@taiga-ui/cdk';
+import type {TuiDay} from '@taiga-ui/cdk';
 import {TuiDropdown, tuiItemsHandlersProvider, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 
@@ -16,22 +16,22 @@ import {TuiInputDate} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
-        TuiTextfield,
-        TuiDropdown,
         TuiDocControl,
         TuiDocDropdown,
+        TuiDocIcons,
         TuiDocItemsHandlers,
         TuiDocTextfield,
+        TuiDropdown,
         TuiInputDate,
-        TuiDocIcons,
+        TuiTextfield,
     ],
+    templateUrl: './index.html',
+    changeDetection,
     providers: [
         tuiItemsHandlersProvider({
             disabledItemHandler: signal((item: TuiDay) => item.dayOfWeek() > 4),
         }),
     ],
-    templateUrl: './index.html',
-    changeDetection,
 })
 export default class Example {
     protected readonly control = new FormControl();

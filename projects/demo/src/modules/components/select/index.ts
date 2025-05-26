@@ -37,13 +37,13 @@ interface Country {
         TuiSelect,
         TuiTextfield,
     ],
+    templateUrl: './index.html',
+    changeDetection,
     providers: [
         tuiItemsHandlersProvider<Country>({
             disabledItemHandler: signal((item) => item.id.charCodeAt(1) % 3 === 0),
         }),
     ],
-    templateUrl: './index.html',
-    changeDetection,
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;

@@ -7,7 +7,7 @@ import {TuiTitle} from '@taiga-ui/core';
 @Component({
     standalone: true,
     selector: 'tbody[tuiDocIcons]',
-    imports: [TuiDocAPIItem, TuiTitle, NgIf],
+    imports: [NgIf, TuiDocAPIItem, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
