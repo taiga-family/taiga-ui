@@ -2,14 +2,8 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {TuiTextfieldMultiComponent} from '@taiga-ui/core/components/textfield';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {
-    injectContext,
-    PolymorpheusComponent,
-    PolymorpheusOutlet,
-} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
-
-import {TuiInputChipComponent} from './input-chip.component';
 
 /*
  * Internal wrapper for polymorpheus-context
@@ -19,17 +13,17 @@ import {TuiInputChipComponent} from './input-chip.component';
     selector: 'tui-chip-wrapper',
     imports: [PolymorpheusOutlet],
     template: `
+        <!-- prettier-ignore -->
         <ng-container
             *polymorpheusOutlet="textfield.item ?? default as text; context: context"
-        >
-            {{ text }}
-        </ng-container>
+        >{{ text }}</ng-container>
     `,
     styles: [
         `
             :host {
                 max-width: 100%;
                 flex-shrink: 0;
+                white-space: pre-wrap;
                 overflow: hidden;
 
                 &:last-of-type {
@@ -44,13 +38,22 @@ export class TuiChipWrapper<T> {
     protected readonly context = injectContext<
         PolymorpheusContext<{
             index: number;
+            length: number;
             item: T;
         }>
     >();
 
-    protected readonly default: PolymorpheusContent<
-        TuiContext<{index: number; item: T}>
-    > = new PolymorpheusComponent(TuiInputChipComponent);
-
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
+
+    protected readonly default: PolymorpheusContent<
+        TuiContext<{index: number; item: T; length: number}>
+    > = ({$implicit}) => {
+        const {item, index, length} = $implicit;
+
+        if (this.textfield.focused()) {
+            return `${$implicit.item}, `;
+        } else {
+            return index + 1 === length ? `${item}` : `${item}, `;
+        }
+    };
 }
