@@ -3,9 +3,11 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    ElementRef,
     inject,
     Input,
     signal,
+    ViewChild,
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -28,7 +30,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
 
 @Component({
     standalone: true,
-    selector: 'tui-input-chip',
+    selector: 'button[tuiInputChip], tui-input-chip',
     imports: [
         FormsModule,
         NgIf,
@@ -59,7 +61,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
             [style.pointer-events]="editMode() ? 'none' : 'auto'"
             [style.visibility]="editMode() ? 'hidden' : 'visible'"
             [tuiHintOverflow]="hint?.content() ? null : stringify(internal())"
-            (dblclick)="onDbClick(input)"
+            (dblclick)="setEditMode()"
         >
             {{ internal() }}
         </div>
@@ -69,7 +71,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
             tabIndex="-1"
             tuiIconButton
             type="button"
-            (click.stop.prevent)="remove()"
+            (click.stop.prevent)="delete()"
             (mousedown.prevent.stop)="(0)"
         >
             Remove
@@ -82,9 +84,10 @@ import {TuiInputChipDirective} from './input-chip.directive';
         tuiChip: '',
         tabIndex: '-1',
         '[class._edit]': 'editMode()',
-        '(keydown.backspace.prevent)': 'remove()',
+        '(keydown.backspace.prevent)': 'delete()',
         '(keydown.arrowLeft.prevent)': 'moveFocus(-1)',
         '(keydown.arrowRight.prevent)': 'moveFocus(1)',
+        '(keydown.enter)': 'setEditMode()',
     },
 })
 export class TuiInputChipComponent<T> {
@@ -95,6 +98,9 @@ export class TuiInputChipComponent<T> {
             item: T;
         }>
     >();
+
+    @ViewChild('input', {read: ElementRef, static: true})
+    protected readonly el?: ElementRef<HTMLElement>;
 
     protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly directive = tuiInjectAuxiliary<TuiInputChipDirective<T>>(
@@ -119,17 +125,22 @@ export class TuiInputChipComponent<T> {
     @Input()
     public editable = true;
 
-    protected remove(): void {
-        this.directive()?.remove(this.index);
+    protected delete(): void {
+        this.directive()?.delete(this.index);
     }
 
     protected edit(): void {
-        this.directive()?.onChange(
-            this.value().map((item, index) =>
-                index === this.index ? (this.internal() ?? item) : item,
-            ),
-        );
-        this.editMode.set(false);
+        if (!this.internal()) {
+            this.delete();
+        } else {
+            this.directive()?.onChange(
+                this.value().map((item, index) =>
+                    index === this.index ? (this.internal() ?? item) : item,
+                ),
+            );
+            this.editMode.set(false);
+        }
+
         this.directive()?.el.focus({preventScroll: true});
     }
 
@@ -140,13 +151,15 @@ export class TuiInputChipComponent<T> {
     }
 
     protected moveFocus(step: number): void {
-        this.directive()?.moveFocus(step, this.index);
+        if (this.directive()?.interactive()) {
+            this.directive()?.moveFocus(step, this.index);
+        }
     }
 
-    protected onDbClick(el: HTMLInputElement): void {
-        if (this.editable) {
+    protected setEditMode(): void {
+        if (this.editable && this.directive()?.interactive()) {
             this.editMode.set(true);
-            el.focus();
+            this.el?.nativeElement.focus();
         }
     }
 

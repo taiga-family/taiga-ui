@@ -40,12 +40,24 @@ tui-textfield[multi] {
         padding: 0.5rem 0;
         inline-size: calc(100% - var(--t-side) - var(--t-padding) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
 
-        &:has(> *:not(.t-input_wrapper, tui-scroll-controls)) ~ .t-content .t-clear {
+        & ~ .t-content .t-clear {
             display: flex;
         }
 
-        &:has(> *:not(.t-input_wrapper, tui-scroll-controls)) input:defined::placeholder {
+        input:defined::placeholder {
             opacity: 0;
+        }
+    }
+
+    &._empty {
+        .t-container {
+            & ~ .t-content .t-clear {
+                display: none;
+            }
+
+            input:defined::placeholder {
+                opacity: 1;
+            }
         }
     }
 
@@ -62,8 +74,16 @@ tui-textfield[multi] {
         }
     }
 
-    &[data-mode~='readonly'] .t-content .t-clear {
-        display: none;
+    &[data-mode~='readonly'],
+    &._disabled {
+        .t-content .t-clear {
+            display: none;
+        }
+    }
+
+    &:hover:not(._disabled):not([data-state]),
+    &[data-state='hover'] {
+        --t-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
     }
 
     .t-input_wrapper {
@@ -114,6 +134,14 @@ tui-textfield[multi] {
 
         .t-container {
             padding: 0.125rem 0;
+        }
+    }
+
+    &._text .t-input_wrapper {
+        margin-left: 0;
+
+        .t-ghost {
+            min-block-size: 1em;
         }
     }
 }

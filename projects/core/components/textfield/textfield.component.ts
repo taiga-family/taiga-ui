@@ -194,7 +194,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
     protected onIconClick(): void {
-        this.input?.nativeElement.focus({preventScroll: true});
+        this.input?.nativeElement.focus();
 
         if (
             this.dropdownOpen.tuiDropdownEnabled &&

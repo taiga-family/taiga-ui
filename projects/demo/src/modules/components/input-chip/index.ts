@@ -36,6 +36,8 @@ export default class PageComponent {
         'Hint',
         'Validation',
         'Mask',
+        'Dropdown',
         'Overflow',
+        'Text chip',
     ];
 }
