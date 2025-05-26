@@ -19,7 +19,7 @@ import {
     tuiValue,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
-import {type TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
+import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsAuxiliary,
     tuiAsTextfieldAccessor,
@@ -68,7 +68,7 @@ const BACKSPACE_CODE = 8;
         '[disabled]': 'disabled()',
         '(keydown.enter.prevent)': 'onEnter()',
         '(blur)': 'onEnter();',
-        '(keydown.arrowLeft)': 'onBackspace()',
+        '(keydown.arrowLeft)': 'onKeydownLeft()',
         '(keydown.silent)': 'onKeydown($event)',
         '(input.silent)': 'onInput($event)',
         '(paste.prevent)': 'onPaste($event)',
@@ -186,6 +186,12 @@ export class TuiInputChipDirective<T>
             this.onChange(this.value().slice(0, -1));
         } else {
             this.moveFocus(-1);
+        }
+    }
+
+    protected onKeydownLeft(): void {
+        if (tuiIsHTMLElement(this.elements[0])) {
+            this.onBackspace();
         }
     }
 
