@@ -1,19 +1,14 @@
-<tui-textfield
-    multi
-    [rows]="3"
->
+<tui-textfield multi>
     <input
+        placeholder="Enter"
         tuiInputChip
-        [formControl]="control"
+        [(ngModel)]="value"
     />
-</tui-textfield>
 
-<tui-textfield
-    multi
-    [rows]="1"
->
-    <input
-        tuiInputChip
-        [formControl]="control"
+    <tui-input-chip *tuiItem />
+
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        [items]="items | tuiFilterByInput"
     />
 </tui-textfield>
