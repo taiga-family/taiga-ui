@@ -202,14 +202,8 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         nullableMin: number | null,
         nullableMax: number | null,
     ): void {
-        const min =
-            this.transformer?.fromControlValue(nullableMin) ??
-            nullableMin ??
-            this.options.min;
-        const max =
-            this.transformer?.fromControlValue(nullableMax) ??
-            nullableMax ??
-            this.options.max;
+        const min = this.transformer.fromControlValue(nullableMin) ?? this.options.min;
+        const max = this.transformer.fromControlValue(nullableMax) ?? this.options.max;
 
         this.min.set(Math.min(min, max));
         this.max.set(Math.max(min, max));

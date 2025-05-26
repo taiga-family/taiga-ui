@@ -53,7 +53,7 @@ export class TuiSearchHistory {
     public popular: readonly string[] = [];
 
     protected store(item: string): void {
-        this.storage.setItem(
+        this.storage?.setItem(
             this.options.key,
             JSON.stringify(
                 Array.from(new Set([item.trim(), ...this.items]))
@@ -66,7 +66,7 @@ export class TuiSearchHistory {
     protected remove(item: string): void {
         this.textfield.input?.nativeElement.focus();
         this.history = this.history.filter((v) => v !== item);
-        this.storage.setItem(
+        this.storage?.setItem(
             this.options.key,
             JSON.stringify(this.items.filter((v) => v !== item)),
         );
@@ -78,6 +78,6 @@ export class TuiSearchHistory {
     }
 
     private get items(): readonly string[] {
-        return JSON.parse(this.storage.getItem(this.options.key) || '[]');
+        return JSON.parse(this.storage?.getItem(this.options.key) || '[]');
     }
 }

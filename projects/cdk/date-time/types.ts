@@ -2,6 +2,7 @@
  * * DMY - dd.mm.yyyy
  * * MDY - mm.dd.yyyy
  * * YMD - yyyy.mm.dd
+ * TODO: Change to be MaskitoDateMode compatible in v5
  */
 export type TuiDateMode = 'DMY' | 'MDY' | 'YMD';
 export type TuiTimeMode =

@@ -64,10 +64,10 @@ export abstract class AbstractDemo implements OnInit {
     }
 
     protected async replaceEnvInURI(): Promise<void> {
-        const env = this.storage.getItem('env');
+        const env = this.storage?.getItem('env');
 
         if (env) {
-            this.storage.removeItem('env');
+            this.storage?.removeItem('env');
             await this.router.navigateByUrl(env);
         }
     }

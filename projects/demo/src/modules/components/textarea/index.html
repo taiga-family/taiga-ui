@@ -19,6 +19,8 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-textfield
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -60,12 +62,14 @@
                     Maximum number of rows before scroll appears
                 </tr>
             </tbody>
-
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
             ></tbody>
-
+            <tbody
+                #icons
+                tuiDocIcons
+            ></tbody>
             <tbody
                 #controlDoc
                 tuiDocControl

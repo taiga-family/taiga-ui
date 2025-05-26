@@ -38,7 +38,7 @@ export class TuiLanguageSwitcherService extends BehaviorSubject<Observable<TuiLa
     constructor() {
         super(
             tuiAsyncLoadLanguage(
-                inject(WA_LOCAL_STORAGE).getItem(inject(TUI_LANGUAGE_STORAGE_KEY)),
+                inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_LANGUAGE_STORAGE_KEY)),
                 inject(TUI_LANGUAGE_LOADER, {optional: true}),
                 inject(TUI_DEFAULT_LANGUAGE),
             ),
@@ -46,18 +46,16 @@ export class TuiLanguageSwitcherService extends BehaviorSubject<Observable<TuiLa
     }
 
     public get language(): TuiLanguageName {
-        return this.storage.getItem(this.key) || this.fallback.name;
+        return this.storage?.getItem(this.key) || this.fallback.name;
     }
 
     public setLanguage(language: TuiLanguageName): void {
-        this.storage.setItem(this.key, language);
-
+        this.storage?.setItem(this.key, language);
         this.next(tuiAsyncLoadLanguage(language, this.loader, this.fallback));
     }
 
     protected clear(): void {
-        this.storage.removeItem(this.key);
-
+        this.storage?.removeItem(this.key);
         this.next(of(this.fallback));
     }
 }

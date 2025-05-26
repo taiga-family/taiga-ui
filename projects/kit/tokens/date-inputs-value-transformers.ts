@@ -1,14 +1,14 @@
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {TUI_IDENTITY_VALUE_TRANSFORMER} from '@taiga-ui/cdk/classes';
 import type {TuiDay, TuiDayRange, TuiTime} from '@taiga-ui/cdk/date-time';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
-
-// TODO: Refactor to use `TuiValueTransformer` and add ability to provide it for all controls
 
 /**
  * Control value transformer of TuiDay to custom value format for InputDate* components
  */
-export const TUI_DATE_VALUE_TRANSFORMER =
-    tuiCreateToken<TuiValueTransformer<TuiDay | null>>();
+export const TUI_DATE_VALUE_TRANSFORMER = tuiCreateToken<
+    TuiValueTransformer<TuiDay | null>
+>(TUI_IDENTITY_VALUE_TRANSFORMER);
 
 /**
  * Control value transformer for InputDateRange component

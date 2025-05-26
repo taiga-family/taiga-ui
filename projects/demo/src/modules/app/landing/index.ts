@@ -66,7 +66,7 @@ export default class Page implements OnInit {
     }
 
     protected get hidden(): boolean {
-        return !!this.storage.getItem('env');
+        return !!this.storage?.getItem('env');
     }
 
     protected onIntersection(

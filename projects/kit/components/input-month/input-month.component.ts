@@ -8,19 +8,18 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
 
-import {TuiInputMonthDirective} from '../input-month.directive';
+import {TuiInputMonthDirective} from './input-month.directive';
 
 @Component({
     standalone: true,
     selector: 'input[tuiInputMonth][type="month"]',
     imports: [NgIf, TuiTextfieldContent],
-    templateUrl: './native-month-picker.template.html',
-    styleUrls: ['./native-month-picker.style.less'],
+    templateUrl: './input-month.template.html',
+    styleUrls: ['./input-month.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -28,9 +27,7 @@ import {TuiInputMonthDirective} from '../input-month.directive';
         '[type]': '"text"',
     },
 })
-export class TuiNativeMonthPicker {
-    private readonly control = inject(TuiControl);
-
+export class TuiInputMonthComponent {
     protected readonly host = inject(TuiInputMonthDirective);
     protected readonly min = signal<TuiMonth | null>(null);
     protected readonly max = signal<TuiMonth | null>(null);
@@ -57,11 +54,11 @@ export class TuiNativeMonthPicker {
 
     protected onInput(value: string): void {
         if (!value) {
-            return this.control.onChange(null);
+            return this.host.onChange(null);
         }
 
         const [year = 0, month = 0] = value.split('-').map(Number);
 
-        this.control.onChange(new TuiMonth(year, month - 1));
+        this.host.onChange(new TuiMonth(year, month - 1));
     }
 }
