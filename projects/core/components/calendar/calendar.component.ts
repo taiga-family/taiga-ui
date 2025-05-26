@@ -1,8 +1,10 @@
 import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     EventEmitter,
+    inject,
     Input,
     Output,
 } from '@angular/core';
@@ -43,6 +45,7 @@ import {TuiCalendarYear} from './calendar-year.component';
     providers: [tuiAsAuxiliary(TuiCalendar)],
 })
 export class TuiCalendar {
+    private readonly cdr = inject(ChangeDetectorRef);
     private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
     private view: 'month' | 'year' = 'month';
 
@@ -84,6 +87,7 @@ export class TuiCalendar {
 
     @Input()
     public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
+        this.cdr.markForCheck();
         this.day = value;
 
         if (
