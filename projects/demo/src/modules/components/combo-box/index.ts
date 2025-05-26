@@ -74,7 +74,11 @@ export default class PageComponent {
 
     protected strict = true;
 
-    protected selectOptionExample: TuiRawLoaderContent = import(
-        './examples/11/option.ts?raw'
+    protected readonly databaseExample: TuiRawLoaderContent = import(
+        './examples/5/database.ts?raw'
+    );
+
+    protected readonly selectOptionExample: TuiRawLoaderContent = import(
+        './examples/12/option.ts?raw'
     );
 }

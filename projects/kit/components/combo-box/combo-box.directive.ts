@@ -14,7 +14,11 @@ import {
     TuiTextfieldDirective,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {tuiDropdownEnabled, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {
+    TuiDropdownDirective,
+    tuiDropdownEnabled,
+    tuiDropdownOpen,
+} from '@taiga-ui/core/directives/dropdown';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
@@ -33,7 +37,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
     host: {
         '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',
-        '(click)': 'toggle()',
+        '(click)': 'toggleDropdown()',
         '(input)': 'onInput($event.target.value)',
         '(keydown.enter)': 'keydownEnter($event)',
     },
@@ -47,6 +51,7 @@ export class TuiComboBox<T>
     private readonly textfield: TuiTextfieldDirective<T> = inject(TuiTextfieldDirective);
 
     private readonly open = tuiDropdownOpen();
+    private readonly dropdown = inject(TuiDropdownDirective);
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
         (x) => 'getOptions' in x,
@@ -88,13 +93,15 @@ export class TuiComboBox<T>
         this.onChange(value);
 
         if (!value) {
-            this.open.set(true);
+            this.toggleDropdown(true);
             this.textfield.value.set('');
         }
     }
 
-    protected toggle(): void {
-        this.open.update((x) => this.dropdownEnabled() && !x);
+    protected toggleDropdown(open = !this.open()): void {
+        if (this.dropdownEnabled() && this.dropdown.content) {
+            this.open.set(open);
+        }
     }
 
     protected onInput(value: string): void {
@@ -102,10 +109,7 @@ export class TuiComboBox<T>
         const fallback = this.strict || !value ? null : value;
 
         this.onChange(match ?? fallback);
-
-        if (this.dropdownEnabled()) {
-            this.open.set(!match);
-        }
+        setTimeout(() => this.toggleDropdown(!match));
     }
 
     protected keydownEnter(event: KeyboardEvent): void {
@@ -115,7 +119,7 @@ export class TuiComboBox<T>
 
         if (this.options.length === 1) {
             this.onChange(this.options[0]!);
-            this.open.set(false);
+            this.toggleDropdown(false);
         }
     }
 

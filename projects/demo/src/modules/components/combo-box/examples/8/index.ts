@@ -1,52 +1,67 @@
-import {JsonPipe, NgForOf} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiContext, TuiStringMatcher} from '@taiga-ui/cdk';
 import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-
-interface Python {
-    readonly id: number;
-    readonly name: string;
-}
+import {TuiChevron, TuiChip, TuiComboBox, TuiFilterByInputPipe} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
-        JsonPipe,
-        NgForOf,
-        ReactiveFormsModule,
+        CommonModule,
+        FormsModule,
         TuiChevron,
+        TuiChip,
         TuiComboBox,
         TuiDataList,
+        TuiFilterByInputPipe,
         TuiTextfield,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly control = new FormControl<number | null>(777);
-
-    protected readonly items: readonly Python[] = [
-        {id: 42, name: 'John Cleese'},
-        {id: 237, name: 'Eric Idle'},
-        {id: 666, name: 'Michael Palin'},
-        {id: 123, name: 'Terry Gilliam'},
-        {id: 777, name: 'Terry Jones'},
-        {id: 999, name: 'Graham Chapman'},
-    ];
-
-    protected readonly content: PolymorpheusContent<TuiContext<number | null>> = ({
-        $implicit: id,
-    }) => this.items.find((item) => item.id === id)?.name ?? '';
-
-    protected readonly matcher: TuiStringMatcher<number> = (id, query) => {
-        const {name} = this.items.find((item) => item.id === id)!;
-
-        return String(id) === query || name.toLowerCase() === query.toLowerCase();
+    protected filmDatabase = {
+        Action: [
+            'The Dark Knight',
+            'Inception',
+            'The Matrix',
+            'The Dark Knight Rises',
+            'Gladiator',
+        ],
+        Comedy: [
+            'The Wolf of Wall Street',
+            'Back to the Future',
+            'Guardians of the Galaxy',
+            'The Truman Show',
+            'Deadpool',
+        ],
+        Drama: [
+            'The Shawshank Redemption',
+            'The Godfather',
+            "Schindler's List",
+            '12 Angry Men',
+        ],
+        Horror: ['The Silence of the Lambs', 'Alien', 'Psycho', 'The Shining'],
+        Romance: [
+            'Forrest Gump',
+            'Titanic',
+            'Good Will Hunting',
+            'Eternal Sunshine of the Spotless Mind',
+            'Slumdog Millionaire',
+        ],
     };
+
+    protected categories: string[] = Object.keys(this.filmDatabase);
+    protected filters: Record<string, boolean> = this.categories.reduce(
+        (acc, category, i) => ({...acc, [category]: i % 2 === 0}),
+        {},
+    );
+
+    protected selectedCategory = true;
+
+    protected value: string | null = null;
 }

@@ -1,11 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
-import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import type {TuiStringMatcher} from '@taiga-ui/cdk';
-import {TuiTextfield} from '@taiga-ui/core';
+import {tuiItemsHandlersProvider, TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
@@ -13,10 +10,9 @@ import {
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
 
-interface Card {
-    name: string;
-    number: string;
-    paymentSystem: TuiPaymentSystem;
+interface Character {
+    readonly id: number;
+    readonly name: string;
 }
 
 @Component({
@@ -28,27 +24,38 @@ interface Card {
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiTextfield,
-        TuiThumbnailCard,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
+    providers: [
+        /**
+         * You can also use input props of `Textfield`
+         * (they will have more priority):
+         * ```html
+         * <tui-textfield
+         *     [identityMatcher]="..."
+         *     [stringify]="..."
+         *     [disabledItemHandler]="..."
+         * />
+         * ```
+         */
+        tuiItemsHandlersProvider({
+            stringify: signal((x: Character) => x.name),
+            identityMatcher: signal((a: Character, b: Character) => a.id === b.id),
+            disabledItemHandler: signal((x: Character) => x.name.includes('Trevor')),
+        }),
+    ],
 })
 export default class Example {
-    protected cards: Card[] = [
-        {name: 'Bitcoin', number: '5555555555554444', paymentSystem: 'mastercard'},
-        {name: 'Salary', number: '4242424242424242', paymentSystem: 'visa'},
-        {name: 'Charity', number: '2201382000000013', paymentSystem: 'mir'},
-        {name: 'Subscriptions', number: '6200000000000005', paymentSystem: 'unionpay'},
+    protected readonly users: Character[] = [
+        {id: 42, name: 'Tommy Vercetti'},
+        {id: 237, name: 'Carl Johnson'},
+        {id: 666, name: 'Niko Bellic'},
+        {id: 999, name: 'Trevor Philips'},
+        {id: 123, name: 'Michael De Santa'},
+        {id: 777, name: 'Franklin Clinton'},
     ];
 
-    protected value: Card | null = null;
-
-    protected readonly matcher: TuiStringMatcher<Card> = (item, value) => {
-        return (
-            item.name.toLowerCase().includes(value.toLowerCase()) ||
-            item.number.includes(value)
-        );
-    };
+    protected value: Character | null = {id: 42, name: 'Tommy Vercetti'}; // !== this.users[0]
 }

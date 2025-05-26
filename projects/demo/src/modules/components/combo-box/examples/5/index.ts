@@ -1,61 +1,43 @@
-import {Component, signal} from '@angular/core';
+import {AsyncPipe, NgIf} from '@angular/common';
+import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiItemsHandlersProvider, TuiTextfield} from '@taiga-ui/core';
-import {
-    TuiChevron,
-    TuiComboBox,
-    TuiDataListWrapper,
-    TuiFilterByInputPipe,
-} from '@taiga-ui/kit';
+import {TuiLet} from '@taiga-ui/cdk';
+import {TuiLoader, TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
+import {debounceTime, of, Subject, switchMap, tap} from 'rxjs';
 
-interface Character {
-    readonly id: number;
-    readonly name: string;
-}
+import {DatabaseServer} from './database';
 
 @Component({
     standalone: true,
     imports: [
+        AsyncPipe,
         FormsModule,
+        NgIf,
         TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,
-        TuiFilterByInputPipe,
+        TuiLet,
+        TuiLoader,
         TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [
-        /**
-         * You can also use input props of `Textfield`
-         * (they will have more priority):
-         * ```html
-         * <tui-textfield
-         *     [identityMatcher]="..."
-         *     [stringify]="..."
-         *     [disabledItemHandler]="..."
-         * />
-         * ```
-         */
-        tuiItemsHandlersProvider({
-            stringify: signal((x: Character) => x.name),
-            identityMatcher: signal((a: Character, b: Character) => a.id === b.id),
-            disabledItemHandler: signal((x: Character) => x.name.includes('Trevor')),
-        }),
-    ],
 })
 export default class Example {
-    protected readonly users: Character[] = [
-        {id: 42, name: 'Tommy Vercetti'},
-        {id: 237, name: 'Carl Johnson'},
-        {id: 666, name: 'Niko Bellic'},
-        {id: 999, name: 'Trevor Philips'},
-        {id: 123, name: 'Michael De Santa'},
-        {id: 777, name: 'Franklin Clinton'},
-    ];
+    private readonly api = inject(DatabaseServer);
 
-    protected value: Character | null = {id: 42, name: 'Tommy Vercetti'}; // !== this.users[0]
+    protected readonly search$ = new Subject<string>();
+    protected readonly showLoader = signal(false);
+    protected readonly items$ = this.search$.pipe(
+        tap(() => this.showLoader.set(true)),
+        debounceTime(300),
+        switchMap((query) => (query.length >= 2 ? this.api.request$(query) : of(null))),
+        tap(() => this.showLoader.set(false)),
+    );
+
+    protected value: string | null = null;
 }

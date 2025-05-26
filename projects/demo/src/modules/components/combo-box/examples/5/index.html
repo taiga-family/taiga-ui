@@ -1,12 +1,37 @@
-<tui-textfield tuiChevron>
+<tui-textfield
+    *tuiLet="items$ | async as items"
+    tuiChevron
+>
     <input
+        #inputRef
+        placeholder="Enter at least 2 characters"
         tuiComboBox
         [(ngModel)]="value"
+        (input)="search$.next($any($event.target).value)"
     />
 
-    <tui-data-list-wrapper
-        *tuiTextfieldDropdown
-        new
-        [items]="users | tuiFilterByInput"
-    />
+    <ng-container *ngIf="inputRef.value.length >= 2">
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            [emptyContent]="notFound"
+            [items]="items"
+        />
+
+        <tui-loader *ngIf="items && showLoader()" />
+    </ng-container>
 </tui-textfield>
+
+<ng-template #notFound>
+    <div>
+        <p>Nothing found!</p>
+
+        <hr />
+
+        <p>
+            Pass empty array to the
+            <strong>tui-data-list-wrapper[items]</strong>
+            to show this message.
+        </p>
+    </div>
+</ng-template>

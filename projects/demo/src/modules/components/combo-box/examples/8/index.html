@@ -1,27 +1,45 @@
-<tui-textfield
-    tuiChevron
-    [content]="control.value && content"
->
+<tui-textfield tuiChevron>
     <input
+        placeholder="Select film"
         tuiComboBox
-        [formControl]="control"
-        [matcher]="matcher"
+        [(ngModel)]="value"
     />
 
-    <tui-data-list *tuiTextfieldDropdown>
-        <button
-            *ngFor="let item of items"
-            new
-            tuiOption
-            type="button"
-            [value]="item.id"
-        >
-            {{ item.name }}
-        </button>
+    <tui-data-list
+        *tuiTextfieldDropdown
+        size="s"
+    >
+        <section class="filters">
+            <label
+                *ngFor="let category of categories"
+                tuiChip
+                [appearance]="filters[category] ? 'accent' : 'neutral'"
+                (pointerdown.prevent)="(0)"
+            >
+                {{ category }}
+                <input
+                    hidden
+                    type="checkbox"
+                    [(ngModel)]="filters[category]"
+                />
+            </label>
+        </section>
+
+        <ng-container *ngFor="let group of filmDatabase | keyvalue">
+            <tui-opt-group
+                *ngIf="filters[group.key]"
+                [label]="group.key"
+            >
+                <button
+                    *ngFor="let film of group.value | tuiFilterByInput"
+                    new
+                    tuiOption
+                    type="button"
+                    [value]="film"
+                >
+                    {{ film }}
+                </button>
+            </tui-opt-group>
+        </ng-container>
     </tui-data-list>
 </tui-textfield>
-
-<p>
-    <strong>Form control:</strong>
-    <code>{{ control.value | json }}</code>
-</p>
