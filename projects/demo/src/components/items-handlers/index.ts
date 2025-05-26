@@ -7,7 +7,7 @@ import type {
     TuiLooseUnion,
     TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiItemsHandlers} from '@taiga-ui/core';
 import {TUI_ITEMS_HANDLERS, TuiTitle} from '@taiga-ui/core';
 
@@ -32,9 +32,7 @@ export class TuiDocItemsHandlers {
     ];
 
     protected disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<any>> = [
-        (item) => item.id.charCodeAt(1) % 3 === 0,
-        () => Math.random() > 0.5,
-        TUI_TRUE_HANDLER,
+        TUI_FALSE_HANDLER,
         this.options.disabledItemHandler(),
     ];
 

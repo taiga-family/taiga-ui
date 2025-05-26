@@ -1,4 +1,4 @@
-import {Component, computed, inject} from '@angular/core';
+import {Component, computed, inject, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
@@ -10,7 +10,7 @@ import {TuiDemo} from '@demo/utils';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import type {TuiContext} from '@taiga-ui/cdk';
 import {TUI_IS_MOBILE, TuiLet} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown, tuiItemsHandlersProvider, TuiTextfield} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
@@ -36,6 +36,11 @@ interface Country {
         TuiLet,
         TuiSelect,
         TuiTextfield,
+    ],
+    providers: [
+        tuiItemsHandlersProvider<Country>({
+            disabledItemHandler: signal((item) => item.id.charCodeAt(1) % 3 === 0),
+        }),
     ],
     templateUrl: './index.html',
     changeDetection,

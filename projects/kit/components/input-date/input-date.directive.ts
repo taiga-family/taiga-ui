@@ -63,7 +63,7 @@ const ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
         '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',
         '(input)': 'onValueChange($event.target.value)',
-        '(click)': 'onClick()',
+        '(click.capture.stop)': 'onClick()',
     },
 })
 export class TuiInputDateDirective
@@ -76,7 +76,6 @@ export class TuiInputDateDirective
     private readonly handlers = inject(TuiItemsHandlersDirective);
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly texts = toSignal(inject(TUI_DATE_TEXTS));
-    private readonly open = tuiDropdownOpen();
     private readonly calendar = tuiInjectAuxiliary<TuiCalendar>(
         (x) => x instanceof TuiCalendar,
     );
@@ -93,6 +92,7 @@ export class TuiInputDateDirective
         {},
     );
 
+    protected readonly open = tuiDropdownOpen();
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),

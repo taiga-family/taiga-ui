@@ -110,7 +110,69 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo>...</tui-doc-demo>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-textfield
+                    [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
+                    [iconStart]="icons.iconStart"
+                    [tuiDropdownAlign]="dropdown.align"
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                    [(open)]="dropdown.open"
+                >
+                    <label
+                        *ngIf="textfieldDoc.size !== 's'"
+                        tuiLabel
+                    >
+                        Choose country
+                    </label>
+
+                    <input
+                        tuiInputDate
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''"
+                        [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+
+                    <tui-calendar *tuiTextfieldDropdown />
+                </tui-textfield>
+            </ng-template>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tbody
+                #textfieldDoc
+                tuiDocTextfield
+            ></tbody>
+            <tbody
+                #itemsHandlers
+                tuiDocItemsHandlers
+                [hiddenOptions]="['stringify', 'identityMatcher']"
+            ></tbody>
+            <tbody
+                #icons
+                tuiDocIcons
+                [hiddenOptions]="['iconEnd']"
+            ></tbody>
+            <tbody
+                #dropdown
+                tuiDocDropdown
+                [hiddenOptions]="[
+                    'tuiDropdownEnabled',
+                    'limitWidth',
+                    'appearance',
+                    'maxHeight',
+                    'minHeight',
+                    'offset',
+                    'direction',
+                ]"
+            ></tbody>
+            <tbody
+                #controlDoc
+                tuiDocControl
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
