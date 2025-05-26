@@ -1,7 +1,10 @@
 import {Directive, effect, inject} from '@angular/core';
-import {NG_VALIDATORS, type ValidatorFn} from '@angular/forms';
-import {TUI_ALLOW_SIGNAL_WRITES, tuiProvide, TuiValidator} from '@taiga-ui/cdk';
-import {TuiItemsHandlersDirective} from '@taiga-ui/core';
+import type {ValidatorFn} from '@angular/forms';
+import {NG_VALIDATORS} from '@angular/forms';
+import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
+import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
 
 @Directive({
     standalone: true,

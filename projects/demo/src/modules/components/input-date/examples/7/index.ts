@@ -8,7 +8,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiTextfield, TuiInputDate],
+    imports: [FormsModule, TuiInputDate, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

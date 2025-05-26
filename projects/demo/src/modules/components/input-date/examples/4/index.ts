@@ -9,7 +9,7 @@ import {TUI_DATE_VALUE_TRANSFORMER, TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiTextfield, TuiInputDate, JsonPipe],
+    imports: [FormsModule, JsonPipe, TuiInputDate, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

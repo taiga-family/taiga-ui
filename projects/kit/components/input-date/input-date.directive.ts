@@ -1,43 +1,35 @@
-import {
-    computed,
-    Directive,
-    effect,
-    inject,
-    Input,
-    type OnChanges,
-    signal,
-} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
-import {type MaskitoDateMode, maskitoDateOptionsGenerator} from '@maskito/kit';
+import type {MaskitoDateMode} from '@maskito/kit';
+import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import {tuiAsControl, TuiControl, TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
+import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
+import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk/date-time';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     changeDateSeparator,
-    DATE_FILLER_LENGTH,
-    TUI_IS_MOBILE,
-    type TuiDateMode,
     tuiDirectiveBinding,
-    tuiInjectElement,
     tuiProvide,
-    TuiValueTransformer,
-} from '@taiga-ui/cdk';
-import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import {TuiDay} from '@taiga-ui/cdk/date-time';
-import {
-    TUI_DATE_FORMAT,
-    TUI_DEFAULT_DATE_FORMAT,
-    tuiDropdownEnabled,
-    TuiItemsHandlersDirective,
-    TuiTextfieldComponent,
-    TuiTextfieldDirective,
-} from '@taiga-ui/core';
+} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
     tuiInjectAuxiliary,
+    TuiTextfieldComponent,
+    TuiTextfieldDirective,
     tuiTextfieldIconBinding,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TuiDropdownAuto, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {
+    TuiDropdownAuto,
+    tuiDropdownEnabled,
+    tuiDropdownOpen,
+} from '@taiga-ui/core/directives/dropdown';
+import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
