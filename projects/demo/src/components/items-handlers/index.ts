@@ -8,14 +8,19 @@ import type {
     TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
-import type {TuiItemsHandlers} from '@taiga-ui/core';
-import {TUI_ITEMS_HANDLERS, TuiTitle} from '@taiga-ui/core';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+    TuiTitle,
+    TuiWithItemsHandlers,
+} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
     selector: 'tbody[tuiDocItemsHandlers]',
     imports: [NgIf, TuiDocAPIItem, TuiTitle],
     templateUrl: './index.html',
+    hostDirectives: [TuiWithItemsHandlers],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocItemsHandlers {
