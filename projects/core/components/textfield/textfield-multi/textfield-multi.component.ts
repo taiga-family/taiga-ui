@@ -70,6 +70,9 @@ import {TuiTextfieldMultiDirective} from './textfield-multi.directive';
         '(focusout)': 'onFocusout($event.relatedTarget)',
         '(mousedown)': '0',
         '[class._expandable]': 'expandable',
+        '[attr.data-state]': 'disabled ? "disabled" : null',
+        '[class._text]': '!item',
+        '[class._empty]': 'empty',
     },
 })
 export class TuiTextfieldMultiComponent<T>
@@ -98,11 +101,8 @@ export class TuiTextfieldMultiComponent<T>
     }
 
     public onFocusout(target: HTMLElement | null): void {
-        if (
-            this.container &&
-            (!target || !this.container?.nativeElement.contains(target))
-        ) {
-            this.container.nativeElement.scrollLeft = 0;
+        if (!target || !this.el.contains(target)) {
+            this.container?.nativeElement.scrollTo({left: 0});
         }
     }
 
@@ -116,26 +116,23 @@ export class TuiTextfieldMultiComponent<T>
             : null;
     }
 
+    protected get empty(): boolean {
+        return !this.container?.nativeElement.querySelectorAll(
+            ':scope > *:not(.t-input_wrapper, tui-scroll-controls)',
+        ).length;
+    }
+
     protected get expandable(): boolean {
         return this.rows > 1;
+    }
+
+    protected get disabled(): boolean {
+        return !!this.input?.nativeElement.disabled;
     }
 
     protected get lineHeight(): number {
         return (
             (this.container?.nativeElement?.firstChild as HTMLElement)?.offsetHeight ?? 0
         );
-    }
-
-    protected override onIconClick(event: Event): void {
-        if (event.target !== this.el || this.input?.nativeElement.matches(':read-only')) {
-            return;
-        }
-
-        event.preventDefault();
-        this.input?.nativeElement.focus();
-
-        if (this.dropdownOpen.tuiDropdownEnabled && this.dropdown.content) {
-            this.open.update((x) => !x);
-        }
     }
 }

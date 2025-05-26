@@ -15,10 +15,11 @@ import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {
     tuiGetClipboardDataText,
     tuiInjectElement,
+    tuiIsHTMLElement,
     tuiValue,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
-import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
+import {type TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsAuxiliary,
     tuiAsTextfieldAccessor,
@@ -45,7 +46,7 @@ const BACKSPACE_CODE = 8;
                     *polymorpheusOutlet="
                         wrapper as text;
                         context: {
-                            $implicit: {item, index: i},
+                            $implicit: {item, index: i, length: value().length},
                         }
                     "
                 >
@@ -65,9 +66,8 @@ const BACKSPACE_CODE = 8;
     host: {
         enterkeyhint: 'enter',
         '[disabled]': 'disabled()',
-        '(input)': 'textfieldValue.set(el.value)',
         '(keydown.enter.prevent)': 'onEnter()',
-        '(blur)': 'onTouched();',
+        '(blur)': 'onEnter();',
         '(keydown.arrowLeft)': 'onBackspace()',
         '(keydown.silent)': 'onKeydown($event)',
         '(input.silent)': 'onInput($event)',
@@ -119,7 +119,7 @@ export class TuiInputChipDirective<T>
         tuiMoveFocus(index ?? this.elements.length, this.elements, step);
     }
 
-    public remove(index: number): void {
+    public delete(index: number): void {
         this.onChange(this.value().filter((_, i) => i !== index));
 
         if (!this.mobile) {
@@ -178,11 +178,11 @@ export class TuiInputChipDirective<T>
     }
 
     protected onBackspace(): void {
-        if (this.el.value) {
+        if (this.el.value || !this.elements.length || !this.interactive()) {
             return;
         }
 
-        if (this.mobile) {
+        if (this.mobile || !tuiIsHTMLElement(this.elements[0])) {
             this.onChange(this.value().slice(0, -1));
         } else {
             this.moveFocus(-1);
