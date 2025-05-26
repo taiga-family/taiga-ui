@@ -67,6 +67,7 @@ const ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
         MaskitoDirective,
     ],
     host: {
+        '[attr.inputmode]': 'open() ? "none" : "numeric"',
         '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',
         '(input)': 'onValueChange($event.target.value)',
@@ -151,18 +152,18 @@ export class TuiInputDateDirective
     });
 
     @Input('min')
-    public _min: TuiDay | null = this.options.min;
+    public minInput: TuiDay | null = this.options.min;
 
     @Input('max')
-    public _max: TuiDay | null = this.options.max;
+    public maxInput: TuiDay | null = this.options.max;
 
     public readonly native = this.el.type === 'date' && this.mobile;
     public readonly min = signal(this.options.min);
     public readonly max = signal(this.options.max);
 
     public ngOnChanges(): void {
-        this.min.set(this._min || this.options.min);
-        this.max.set(this._max || this.options.max);
+        this.min.set(this.minInput || this.options.min);
+        this.max.set(this.maxInput || this.options.max);
     }
 
     protected onClick(): void {

@@ -28,7 +28,7 @@ export default class Example {
     protected dates = {
         Today: this.today,
         Tomorrow: this.today.append({day: 1}),
-        'End of week': this.today.append({day: 6 - this.today.dayOfWeek() - 1}),
+        'End of week': this.today.append({day: 6 - this.today.dayOfWeek()}),
         'End of month': new TuiDay(this.today.year, this.today.month, 1).append({
             month: 1,
             day: -1,

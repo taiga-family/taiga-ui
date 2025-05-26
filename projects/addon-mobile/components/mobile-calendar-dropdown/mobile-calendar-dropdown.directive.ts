@@ -20,8 +20,7 @@ import {TuiMobileCalendarDropdown} from './mobile-calendar-dropdown.component';
     ],
 })
 export class TuiMobileCalendarDropdownNew {
-    public readonly handlers = inject(TuiItemsHandlersDirective);
-
     @ContentChild(TuiInputDateDirective)
     public readonly date?: TuiInputDateDirective;
+    public readonly handlers = inject(TuiItemsHandlersDirective);
 }
