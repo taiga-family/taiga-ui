@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
+import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -14,6 +15,7 @@ import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
         ReactiveFormsModule,
         TuiDemo,
         TuiDocControl,
+        TuiDocIcons,
         TuiDocTextfield,
         TuiTextarea,
         TuiTextfield,
@@ -24,7 +26,7 @@ import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
 })
 export default class PageComponent {
     protected readonly options = inject(TUI_TEXTAREA_OPTIONS);
-    protected readonly examples = ['Sizes', 'Limit', 'Custom highlight'];
+    protected readonly examples = ['Sizes', 'Limit', 'Custom highlight', 'Icons'];
     protected readonly control = new FormControl(null);
 
     protected min = this.options.min;

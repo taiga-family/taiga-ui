@@ -8,22 +8,20 @@ tui-icon[tuiChevron]::after {
 }
 
 [tuiChevron][tuiIcons]::after {
-    block-size: 1rem;
-
     tui-textfield& {
         font-size: 1rem;
     }
 
     tui-textfield[data-size='s']& {
-        margin-inline-end: -0.125rem;
+        margin-inline-end: calc(-0.125rem - var(--t-padding));
     }
 
     tui-textfield[data-size='m']& {
-        margin-inline-end: 0.125rem;
+        margin-inline-end: calc(0.125rem - var(--t-padding));
     }
 
     tui-textfield[data-size='l']& {
-        margin-inline-end: 0.25rem;
+        margin-inline-end: calc(0.25rem - var(--t-padding));
     }
 }
 

@@ -19,6 +19,7 @@ tui-textfield {
     font: var(--tui-font-text-ui-m);
     box-sizing: border-box;
     gap: 0 0.25rem;
+    isolation: isolate;
 
     &[style*='--t-icon-start:'] {
         --t-left: 2.25rem;
@@ -26,6 +27,15 @@ tui-textfield {
 
     &[style*='--t-icon-end:'] {
         --t-right: 2.25rem;
+    }
+
+    &[tuiIcons]::after {
+        position: relative;
+        block-size: auto;
+        align-self: stretch;
+        border-left: var(--t-padding) solid transparent;
+        border-right: var(--t-padding) solid transparent;
+        margin: 0 calc(-1 * var(--t-padding));
     }
 
     &::-webkit-resizer {
@@ -86,7 +96,7 @@ tui-textfield {
         }
 
         &::after {
-            margin: 0 -0.175rem 0 0.575rem;
+            margin: 0 calc(-0.175rem - var(--t-padding)) 0 calc(0.575rem - var(--t-padding));
             font-size: 1rem;
         }
 
@@ -123,7 +133,7 @@ tui-textfield {
         }
 
         &::after {
-            margin: 0 -0.125rem 0 0.25rem;
+            margin: 0 calc(-0.125rem - var(--t-padding)) 0 calc(0.25rem - var(--t-padding));
         }
 
         input,
@@ -344,6 +354,7 @@ tui-textfield {
     }
 
     & > .t-content {
+        z-index: 1;
         display: flex;
         block-size: var(--t-height);
         align-items: center;
