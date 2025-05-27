@@ -109,13 +109,15 @@ export class TuiComboBox<T>
         const fallback = this.strict || !value ? null : value;
 
         this.onChange(match ?? fallback);
-        setTimeout(() => this.toggleDropdown(!match));
+        setTimeout(() => this.toggleDropdown(true));
     }
 
     protected keydownEnter(event: KeyboardEvent): void {
-        if (this.open()) {
-            event.preventDefault();
+        if (!this.open()) {
+            return;
         }
+
+        event.preventDefault();
 
         if (this.options.length === 1) {
             this.onChange(this.options[0]!);
