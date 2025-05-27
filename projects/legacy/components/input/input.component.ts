@@ -38,7 +38,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         tuiAsDataListHost(TuiInputComponent),
         tuiAsControl(TuiInputComponent),
     ],
-    viewProviders: [TuiDropdownFixed],
+    hostDirectives: [TuiDropdownFixed],
     host: {
         '[attr.data-size]': 'size',
     },
