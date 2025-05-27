@@ -10,6 +10,7 @@ type OutputKeysOf<T> = {
 type OutputTypeOf<T> =
     T extends Signal<infer R> ? R : T extends Observable<infer O> ? O : never;
 
+/** @deprecated remove in v5 */
 export function tuiDirectiveListener<T, K extends OutputKeysOf<T>>(
     token: ProviderToken<T>,
     key: K,

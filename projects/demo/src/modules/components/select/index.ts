@@ -65,4 +65,7 @@ export default class PageComponent {
     protected selectOptionExample: TuiRawLoaderContent = import(
         './examples/10/option.ts?raw'
     );
+
+    protected readonly handler = (item: Country): boolean =>
+        item.id.charCodeAt(1) % 3 === 0;
 }

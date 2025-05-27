@@ -7,6 +7,7 @@
     </td>
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('iconStart')"
     name="[iconStart]"
     tuiDocAPIItem
     type="string"
@@ -16,6 +17,7 @@
     Icon on the left side
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('iconEnd')"
     name="[iconEnd]"
     tuiDocAPIItem
     type="string"

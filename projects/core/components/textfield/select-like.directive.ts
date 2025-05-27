@@ -11,10 +11,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 @Component({
     standalone: true,
     template: '',
-    styles: [
-        '.t-select-like {caret-color: transparent}',
-        '.t-select-like:not(:disabled):not(:read-only) {cursor: pointer}',
-    ],
+    styles: ['.t-select-like:not(:disabled):not(:read-only) {cursor: pointer}'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

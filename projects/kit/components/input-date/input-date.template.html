@@ -1,0 +1,13 @@
+<ng-container *ngIf="host.native">
+    <input
+        *tuiTextfieldContent
+        type="date"
+        [attr.list]="list"
+        [max]="host.max().toJSON()"
+        [min]="host.min().toJSON()"
+        [value]="host.value()?.toJSON()"
+        (click.stop.zoneless)="(0)"
+        (input)="onInput($any($event.target).value)"
+        (pointerdown.stop.zoneless)="(0)"
+    />
+</ng-container>
