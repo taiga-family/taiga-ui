@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[65558],{65558:n=>{n.exports="section {\n    display: flex;\n}\n\ntui-data-list {\n    inline-size: 10rem;\n    box-shadow: -1px 0 var(--tui-border-normal);\n}\n\n.current ~ button::after {\n    display: none;\n}\n"}}]);
