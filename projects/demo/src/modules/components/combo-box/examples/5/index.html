@@ -4,34 +4,18 @@
 >
     <input
         #inputRef
-        placeholder="Enter at least 2 characters"
+        placeholder="Search country"
         tuiComboBox
         [(ngModel)]="value"
         (input)="search$.next($any($event.target).value)"
     />
 
-    <ng-container *ngIf="inputRef.value.length >= 2">
-        <tui-data-list-wrapper
-            *tuiTextfieldDropdown
-            new
-            [emptyContent]="notFound"
-            [items]="items"
-        />
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [emptyContent]="inputRef.value.length < 2 ? 'Enter at least 2 characters' : 'Nothing found!'"
+        [items]="inputRef.value.length < 2 ? [] : items"
+    />
 
-        <tui-loader *ngIf="items && showLoader()" />
-    </ng-container>
+    <tui-loader *ngIf="items && showLoader()" />
 </tui-textfield>
-
-<ng-template #notFound>
-    <div>
-        <p>Nothing found!</p>
-
-        <hr />
-
-        <p>
-            Pass empty array to the
-            <strong>tui-data-list-wrapper[items]</strong>
-            to show this message.
-        </p>
-    </div>
-</ng-template>
