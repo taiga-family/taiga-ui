@@ -20,7 +20,7 @@ import {TUI_ITEMS_HANDLERS, TuiTitle, TuiWithItemsHandlers} from '@taiga-ui/core
     hostDirectives: [TuiWithItemsHandlers],
 })
 export class TuiDocItemsHandlers {
-    private readonly options = inject(TUI_ITEMS_HANDLERS);
+    protected readonly options = inject(TUI_ITEMS_HANDLERS);
     protected readonly stringifyVariants: Array<TuiStringHandler<any>> = [
         (x) => x.name,
         (x) => String(x),
@@ -32,15 +32,12 @@ export class TuiDocItemsHandlers {
         this.options.identityMatcher(),
     ];
 
-    protected disabledItemHandlerVariants: ReadonlyArray<TuiBooleanHandler<any>> = [
-        TUI_FALSE_HANDLER,
-        this.options.disabledItemHandler(),
-    ];
+    protected readonly falseHandler = TUI_FALSE_HANDLER;
 
     @Input()
     public hiddenOptions: Array<TuiLooseUnion<keyof TuiItemsHandlers<unknown>>> = [];
 
     public readonly stringify = signal(this.stringifyVariants[0]!);
-    public readonly disabledItemHandler = signal(this.disabledItemHandlerVariants[0]!);
+    public readonly disabledItemHandler = signal(this.falseHandler);
     public readonly identityMatcher = signal(this.identityMatcherVariants[0]!);
 }
