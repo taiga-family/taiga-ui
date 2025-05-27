@@ -107,6 +107,7 @@ export class TuiDataListComponent<T>
 
     public handleTab(event: KeyboardEvent): void {
         const target = event.target as HTMLElement;
+
         target.blur();
     }
 
