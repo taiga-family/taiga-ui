@@ -1,6 +1,7 @@
 import type {AfterViewInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -84,7 +85,8 @@ export class TuiDropdownComponent implements AfterViewInit {
 
     private getStyles(x: number, y: number): Record<string, string> {
         const {maxHeight, minHeight, offset, limitWidth} = this.options;
-        const {left = 0, top = 0} = this.el.offsetParent?.getBoundingClientRect() || {};
+        const parent = this.el.offsetParent?.getBoundingClientRect() || EMPTY_CLIENT_RECT;
+        const {left = 0, top = 0} = this.position === 'fixed' ? {} : parent;
         const rect = this.accessor.getClientRect();
         const viewport = this.viewport.getClientRect();
         const above = rect.top - viewport.top - 2 * offset;
