@@ -127,7 +127,7 @@ export class TuiTextfieldMultiComponent<T>
     }
 
     protected get disabled(): boolean {
-        return !!this.input?.nativeElement.disabled;
+        return !!this.control?.disabled;
     }
 
     protected get lineHeight(): number {
