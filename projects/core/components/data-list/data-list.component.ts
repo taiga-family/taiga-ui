@@ -64,8 +64,8 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
         '(mousedown.prevent)': '(0)',
         '(wheel.zoneless.passive)': 'handleFocusLossIfNecessary()',
         '(mouseleave)': 'handleFocusLossIfNecessary($event.target)',
-        '(keydown.tab)': 'handleFocusLossIfNecessary()',
-        '(keydown.shift.tab)': 'handleFocusLossIfNecessary()',
+        '(keydown.tab.prevent)': 'handleTab($event)',
+        '(keydown.shift.tab)': 'handleShiftTab()',
         '(keydown.arrowDown.prevent)': 'onKeyDownArrow($event.target, 1)',
         '(keydown.arrowUp.prevent)': 'onKeyDownArrow($event.target, -1)',
     },
@@ -100,6 +100,17 @@ export class TuiDataListComponent<T>
     }
 
     public handleFocusLossIfNecessary(element: Element = this.el): void {
+        if (!tuiIsNativeFocusedIn(element)) {
+            this.origin?.focus({preventScroll: true});
+        }
+    }
+
+    public handleTab(event: KeyboardEvent): void {
+        const target = event.target as HTMLElement;
+        target.blur();
+    }
+
+    public handleShiftTab(element: Element = this.el): void {
         if (tuiIsNativeFocusedIn(element)) {
             this.origin?.focus({preventScroll: true});
         }
