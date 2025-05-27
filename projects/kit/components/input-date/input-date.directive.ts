@@ -31,8 +31,8 @@ import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TUI_DATE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
-import {TuiInputDateValidator} from './input-date.validator';
 import {TUI_INPUT_DATE_OPTIONS_NEW} from './input-date.options';
+import {TuiInputDateValidator} from './input-date.validator';
 
 const ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
     DMY: 'dd/mm/yyyy',
