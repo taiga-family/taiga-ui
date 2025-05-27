@@ -1,4 +1,5 @@
-import {ChangeDetectorRef, Directive, inject, type OnChanges} from '@angular/core';
+import type {OnChanges} from '@angular/core';
+import {ChangeDetectorRef, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {distinctUntilChanged, EMPTY, merge, switchMap, timer} from 'rxjs';
 
@@ -13,7 +14,7 @@ import {TuiTextfieldMultiComponent} from './textfield-multi.component';
     host: {
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly',
-        '(blur)': 'onBlur()',
+        '(blur)': 'onBlur($event.relatedTarget)',
     },
 })
 export class TuiTextfieldMultiDirective<T>
@@ -62,7 +63,11 @@ export class TuiTextfieldMultiDirective<T>
         this.cdr.detectChanges();
     }
 
-    protected onBlur(): void {
+    protected onBlur(relatedTarget: HTMLElement | null): void {
+        if (relatedTarget?.closest('tui-textfield')) {
+            return;
+        }
+
         this.control?.control?.markAsTouched();
         this.m.set(this.mode);
     }

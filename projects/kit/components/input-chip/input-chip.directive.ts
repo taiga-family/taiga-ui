@@ -21,7 +21,6 @@ import {
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
-    tuiAsAuxiliary,
     tuiAsTextfieldAccessor,
     TuiTextfieldMultiComponent,
     TuiWithTextfieldMulti,
@@ -32,6 +31,7 @@ import {timer} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
 import {TuiChipWrapper} from './input-chip-wrapper.component';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 const BACKSPACE_CODE = 8;
 
