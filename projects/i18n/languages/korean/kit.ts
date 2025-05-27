@@ -11,6 +11,7 @@ export const TUI_KOREAN_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['~에서', '에게'],
     countTexts: ['을 더한', '마이너스'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

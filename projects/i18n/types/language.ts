@@ -98,6 +98,7 @@ export interface TuiLanguageKit {
     ];
     showAll: string;
     time: {
+        'MM:SS': string;
         'HH:MM': string;
         'HH:MM AA': string;
         'HH:MM:SS': string;

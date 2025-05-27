@@ -68,6 +68,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         'HH:MM:SS AA',
         'HH:MM:SS.MSS',
         'HH:MM:SS.MSS AA',
+        'MM:SS',
     ];
 
     protected mode = this.modeVariants[0]!;

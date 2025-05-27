@@ -11,6 +11,7 @@ export const TUI_JAPAN_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['から', 'に'],
     countTexts: ['プラス', 'マイナス'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',
