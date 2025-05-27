@@ -30,7 +30,7 @@ test.describe('ComboBox', () => {
             .soft(page)
             .toHaveScreenshot('01-combobox-dont-allow-disabled-02.png');
 
-        await page.click('body');
+        await page.click('body', {position: {x: 0, y: 0}});
         await example.scrollIntoViewIfNeeded();
 
         await expect

@@ -1,0 +1,21 @@
+<tui-textfield
+    *tuiLet="items$ | async as items"
+    tuiChevron
+>
+    <input
+        #inputRef
+        placeholder="Search country"
+        tuiComboBox
+        [(ngModel)]="value"
+        (input)="search$.next($any($event.target).value)"
+    />
+
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [emptyContent]="inputRef.value.length < 2 ? 'Enter at least 2 characters' : 'Nothing found!'"
+        [items]="inputRef.value.length < 2 ? [] : items"
+    />
+
+    <tui-loader *ngIf="items && showLoader()" />
+</tui-textfield>

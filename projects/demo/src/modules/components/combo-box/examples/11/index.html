@@ -1,0 +1,16 @@
+<tui-textfield
+    tuiChevron
+    tuiDropdownMobile
+>
+    <input
+        placeholder="Select destination"
+        tuiComboBox
+        [(ngModel)]="value"
+    />
+
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [items]="countries$ | async | tuiFilterByInput"
+    />
+</tui-textfield>

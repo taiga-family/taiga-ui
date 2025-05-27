@@ -21,7 +21,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 import type {TuiMarkerHandler} from './calendar-sheet.component';
 import {TuiCalendarSheet} from './calendar-sheet.component';
