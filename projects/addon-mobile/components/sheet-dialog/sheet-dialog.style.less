@@ -3,7 +3,7 @@
 :host {
     .scrollbar-hidden();
 
-    display: block;
+    display: flex;
     inline-size: 100%;
     max-inline-size: 40rem;
     block-size: calc(100% - var(--tui-offset) - env(safe-area-inset-top));
@@ -26,11 +26,17 @@
         z-index: -1;
     }
 
-    .t-stops {
-        display: flex;
+    &._closeable {
+        display: block;
+
+        .t-stops {
+            display: flex;
+        }
     }
 
     &._fullscreen {
+        display: block;
+
         .t-sheet {
             display: flex;
             flex-direction: column;

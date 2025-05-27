@@ -82,6 +82,10 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     }
 
     private get initial(): number {
+        if (!this.context.closeable) {
+            return 0;
+        }
+
         return (
             this.stops
                 .map((e) => e.nativeElement.offsetTop - this.context.offset)
