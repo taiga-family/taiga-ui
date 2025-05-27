@@ -26,12 +26,12 @@ import {
     TuiWithTextfieldMulti,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {timer} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
 import {TuiChipWrapper} from './input-chip-wrapper.component';
-import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 const BACKSPACE_CODE = 8;
 
