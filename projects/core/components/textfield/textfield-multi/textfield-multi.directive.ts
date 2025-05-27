@@ -1,9 +1,10 @@
-import {Directive} from '@angular/core';
+import {ChangeDetectorRef, Directive, inject, type OnChanges} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {distinctUntilChanged, EMPTY, merge, switchMap, timer} from 'rxjs';
 
 import {TuiTextfieldBase} from '../textfield.directive';
 import {tuiAsTextfieldAccessor} from '../textfield-accessor';
+import {TuiTextfieldMultiComponent} from './textfield-multi.component';
 
 @Directive({
     standalone: true,
@@ -15,7 +16,13 @@ import {tuiAsTextfieldAccessor} from '../textfield-accessor';
         '(blur)': 'onBlur()',
     },
 })
-export class TuiTextfieldMultiDirective<T> extends TuiTextfieldBase<T> {
+export class TuiTextfieldMultiDirective<T>
+    extends TuiTextfieldBase<T>
+    implements OnChanges
+{
+    protected readonly cdr = inject(ChangeDetectorRef);
+    protected readonly textfieldMulti = inject(TuiTextfieldMultiComponent);
+
     protected update = timer(0)
         .pipe(
             switchMap(() =>
@@ -48,6 +55,11 @@ export class TuiTextfieldMultiDirective<T> extends TuiTextfieldBase<T> {
         }
 
         return null;
+    }
+
+    public override ngOnChanges(): void {
+        this.m.set(this.mode);
+        this.cdr.detectChanges();
     }
 
     protected onBlur(): void {
