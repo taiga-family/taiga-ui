@@ -1,10 +1,9 @@
-import type {OnChanges} from '@angular/core';
 import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoDateMode} from '@maskito/kit';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import {tuiAsControl, TuiControl, TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
 import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk/date-time';
@@ -13,7 +12,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     changeDateSeparator,
     tuiDirectiveBinding,
-    tuiProvide,
 } from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
@@ -30,14 +28,11 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
-import {
-    TUI_DATE_TEXTS,
-    TUI_DATE_VALUE_TRANSFORMER,
-    TUI_INPUT_DATE_OPTIONS,
-} from '@taiga-ui/kit/tokens';
+import {TUI_DATE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TuiInputDateValidator} from './input-date.validator';
+import {TUI_INPUT_DATE_OPTIONS_NEW} from './input-date.options';
 
 const ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
     DMY: 'dd/mm/yyyy',
@@ -50,7 +45,7 @@ const ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
     selector: 'input[tuiInputDate]',
     providers: [
         tuiAsControl(TuiInputDateDirective),
-        tuiProvide(TuiValueTransformer, TUI_DATE_VALUE_TRANSFORMER),
+        tuiValueTransformerFrom(TUI_INPUT_DATE_OPTIONS_NEW),
     ],
     hostDirectives: [
         TuiWithTextfield,
@@ -66,13 +61,10 @@ const ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
         '(click.capture.stop)': 'onClick()',
     },
 })
-export class TuiInputDateDirective
-    extends TuiControl<TuiDay | null>
-    implements OnChanges
-{
+export class TuiInputDateDirective extends TuiControl<TuiDay | null> {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly mobile = inject(TUI_IS_MOBILE);
-    private readonly options = inject(TUI_INPUT_DATE_OPTIONS);
+    private readonly options = inject(TUI_INPUT_DATE_OPTIONS_NEW);
     private readonly handlers = inject(TuiItemsHandlersDirective);
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly texts = toSignal(inject(TUI_DATE_TEXTS));
@@ -93,7 +85,7 @@ export class TuiInputDateDirective
     );
 
     protected readonly open = tuiDropdownOpen();
-    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS);
+    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS_NEW);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
     );
@@ -144,19 +136,18 @@ export class TuiInputDateDirective
     });
 
     @Input('min')
-    public minInput: TuiDay | null = this.options.min;
+    public set minSetter(min: TuiDay | null) {
+        this.min.set(min || this.options.min);
+    }
 
     @Input('max')
-    public maxInput: TuiDay | null = this.options.max;
+    public set maxSetter(max: TuiDay | null) {
+        this.max.set(max || this.options.max);
+    }
 
     public readonly native = this.el.type === 'date' && this.mobile;
     public readonly min = signal(this.options.min);
     public readonly max = signal(this.options.max);
-
-    public ngOnChanges(): void {
-        this.min.set(this.minInput || this.options.min);
-        this.max.set(this.maxInput || this.options.max);
-    }
 
     protected onClick(): void {
         if (!this.mobile) {

@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TUI_DATE_VALUE_TRANSFORMER, TuiInputDate} from '@taiga-ui/kit';
+import {TuiInputDate, tuiInputDateOptionsProviderNew} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -14,15 +14,14 @@ import {TUI_DATE_VALUE_TRANSFORMER, TuiInputDate} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
     providers: [
-        {
-            provide: TUI_DATE_VALUE_TRANSFORMER,
-            useValue: {
+        tuiInputDateOptionsProviderNew({
+            valueTransformer: {
                 fromControlValue: (value: Date | null): TuiDay | null =>
-                    value && TuiDay.fromLocalNativeDate(value),
+                    value && TuiDay.fromUtcNativeDate(value),
                 toControlValue: (value: TuiDay | null): Date | null =>
-                    value?.toLocalNativeDate() || null,
+                    value?.toUtcNativeDate() || null,
             },
-        },
+        }),
     ],
 })
 export default class Example {
