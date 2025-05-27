@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.39.0](https://github.com/taiga-family/taiga-ui/compare/v4.38.0...v4.39.0) (2025-05-27)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `SheetDialog` scroll with closeable: false
+  ([#10998](https://github.com/taiga-family/taiga-ui/issues/10998))
+  ([76d5991](https://github.com/taiga-family/taiga-ui/commit/76d599118cf89117e559a9f350c05bd7893fd68c))
+- **addon-table:** `Th` allow aligning to the right when sortable
+  ([#11012](https://github.com/taiga-family/taiga-ui/issues/11012))
+  ([92e5eb0](https://github.com/taiga-family/taiga-ui/commit/92e5eb0ef27771e99d2e73ab4b3ace32b7391304))
+- **cdk:** `TuiControl` should use `untracked` for signals inside `onChange`
+  ([#11002](https://github.com/taiga-family/taiga-ui/issues/11002))
+  ([a3c8b14](https://github.com/taiga-family/taiga-ui/commit/a3c8b14d66f26675fbd7261c553211d617534c1e))
+- **core:** `DARK_MODE` fix for disabled local storage ([#10991](https://github.com/taiga-family/taiga-ui/issues/10991))
+  ([49304f2](https://github.com/taiga-family/taiga-ui/commit/49304f2481e61bd6c682afeedc741c03ea2dacdf))
+- **core:** `Dropdown` fix positioning in Firefox ([#11015](https://github.com/taiga-family/taiga-ui/issues/11015))
+  ([73c78f4](https://github.com/taiga-family/taiga-ui/commit/73c78f4e7c757ea8d59cb9f606756844a8d9b261))
+- **core:** `Root` fix broken fullscreen content inside dialogs
+  ([#10999](https://github.com/taiga-family/taiga-ui/issues/10999))
+  ([203d90c](https://github.com/taiga-family/taiga-ui/commit/203d90c06098666ab87124c7805d98d4e77650c8))
+- **core:** `Textfield` make right icon click area bigger
+  ([#11013](https://github.com/taiga-family/taiga-ui/issues/11013))
+  ([99e3a33](https://github.com/taiga-family/taiga-ui/commit/99e3a330d81164896546f4535b4b276119e5eeb5))
+- **kit:** `Carousel` fix hydration error `NG0506` ([#10997](https://github.com/taiga-family/taiga-ui/issues/10997))
+  ([08b9c02](https://github.com/taiga-family/taiga-ui/commit/08b9c027a87958eb6380af51b2d6fdde75cce8cd))
+- **legacy:** `Input` fix default data-list limit width
+  ([#11003](https://github.com/taiga-family/taiga-ui/issues/11003))
+  ([df028e3](https://github.com/taiga-family/taiga-ui/commit/df028e31a1a24a5caf9e88aee25a18b885cdd77f))
+
+### 🚀 Features
+
+- add 'MM:SS' option to TuiTimeMode ([#11008](https://github.com/taiga-family/taiga-ui/issues/11008))
+  ([7728984](https://github.com/taiga-family/taiga-ui/commit/7728984af0638dff3e63ddd54fefa22f28d80ced))
+- **cdk:** `Animated` add new directive, drop all Angular animations
+  ([#10966](https://github.com/taiga-family/taiga-ui/issues/10966))
+  ([507d44d](https://github.com/taiga-family/taiga-ui/commit/507d44da0071fc32101b9ca193e2beeb9cd87f6e))
+- **core:** `Alert` add safe-area support ([#11006](https://github.com/taiga-family/taiga-ui/issues/11006))
+  ([be6bf86](https://github.com/taiga-family/taiga-ui/commit/be6bf8684362132ef05058be025c5526736cc948))
+- **kit:** `ComboBox` refactor to new `Textfield` ([#10980](https://github.com/taiga-family/taiga-ui/issues/10980))
+  ([e497841](https://github.com/taiga-family/taiga-ui/commit/e4978417875e204b048a4a0e5801dc3b19f98e2c))
+- **kit:** `InputDate` add new `Textfield` based version
+  ([#11009](https://github.com/taiga-family/taiga-ui/issues/11009))
+  ([8c19a18](https://github.com/taiga-family/taiga-ui/commit/8c19a180ca16aea0395162ab220fa48093451b68))
+
 ## [4.38.0](https://github.com/taiga-family/taiga-ui/compare/v4.37.0...v4.38.0) (2025-05-19)
 
 ### 🐞 Bug Fixes
