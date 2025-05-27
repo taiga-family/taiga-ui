@@ -1,4 +1,4 @@
-import {inject} from '@angular/core';
+import {type FactoryProvider, inject} from '@angular/core';
 import {
     TUI_IDENTITY_VALUE_TRANSFORMER,
     tuiCreateTokenFromFactory,
@@ -24,7 +24,7 @@ export const TUI_INPUT_MONTH_RANGE_OPTIONS =
 
 export const tuiInputMonthRangeOptionsProvider = (
     options: Partial<TuiInputMonthRangeOptions>,
-) =>
+): FactoryProvider =>
     tuiProvideOptions(
         TUI_INPUT_MONTH_RANGE_OPTIONS,
         options,

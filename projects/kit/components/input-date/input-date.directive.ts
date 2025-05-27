@@ -135,6 +135,10 @@ export class TuiInputDateDirective extends TuiControl<TuiDay | null> {
         onCleanup(() => subscription?.unsubscribe());
     });
 
+    public readonly native = this.el.type === 'date' && this.mobile;
+    public readonly min = signal(this.options.min);
+    public readonly max = signal(this.options.max);
+
     @Input('min')
     public set minSetter(min: TuiDay | null) {
         this.min.set(min || this.options.min);
@@ -144,10 +148,6 @@ export class TuiInputDateDirective extends TuiControl<TuiDay | null> {
     public set maxSetter(max: TuiDay | null) {
         this.max.set(max || this.options.max);
     }
-
-    public readonly native = this.el.type === 'date' && this.mobile;
-    public readonly min = signal(this.options.min);
-    public readonly max = signal(this.options.max);
 
     protected onClick(): void {
         if (!this.mobile) {
