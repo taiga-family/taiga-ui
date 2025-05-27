@@ -1,9 +1,7 @@
 import type {FactoryProvider} from '@angular/core';
 import {inject} from '@angular/core';
-import type {
-    TUI_IDENTITY_VALUE_TRANSFORMER,
-    TuiValueTransformer,
-} from '@taiga-ui/cdk/classes';
+import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {TUI_IDENTITY_VALUE_TRANSFORMER} from '@taiga-ui/cdk/classes';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {
