@@ -1,12 +1,7 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input, signal} from '@angular/core';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import type {
-    TuiBooleanHandler,
-    TuiIdentityMatcher,
-    TuiLooseUnion,
-    TuiStringHandler,
-} from '@taiga-ui/cdk';
+import type {TuiIdentityMatcher, TuiLooseUnion, TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import type {TuiItemsHandlers} from '@taiga-ui/core';
 import {TUI_ITEMS_HANDLERS, TuiTitle, TuiWithItemsHandlers} from '@taiga-ui/core';
