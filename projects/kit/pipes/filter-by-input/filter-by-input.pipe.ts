@@ -5,6 +5,8 @@ import type {TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
+import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 // TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields
@@ -17,6 +19,8 @@ export class TuiFilterByInputPipe implements PipeTransform {
     // TODO: Remove optional after legacy controls are dropped
     private readonly textfield = inject(TuiTextfieldComponent, {optional: true});
     private readonly host = inject(TUI_DATA_LIST_HOST);
+    private readonly itemsHandlers: TuiItemsHandlers<unknown> =
+        inject(TUI_ITEMS_HANDLERS);
 
     public transform<T>(
         items: ReadonlyArray<readonly T[]>,
@@ -38,7 +42,10 @@ export class TuiFilterByInputPipe implements PipeTransform {
         return this.filter<T>(
             items,
             matcher,
-            this.host.stringify || String,
+            (this.textfield
+                ? this.itemsHandlers.stringify()
+                : // TODO(v5): delete backward compatibility
+                  this.host.stringify) || String,
             this.textfield?.input?.nativeElement.value ||
                 (this.host as any).nativeFocusableElement?.value ||
                 '',

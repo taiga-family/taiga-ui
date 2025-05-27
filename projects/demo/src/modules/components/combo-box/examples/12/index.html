@@ -1,0 +1,13 @@
+<tui-textfield tuiChevron>
+    <input
+        placeholder="Select something"
+        tuiComboBox
+        [formControl]="control"
+    />
+
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [items]="items | tuiFilterByInput"
+    />
+</tui-textfield>

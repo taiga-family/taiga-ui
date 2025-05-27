@@ -72,6 +72,10 @@ tui-textfield {
         resize: none;
         padding-block-start: 1.125rem;
         padding-block-end: 1.125rem;
+
+        &[inputmode='none'] {
+            caret-color: transparent;
+        }
     }
 
     &[data-size='s'] {

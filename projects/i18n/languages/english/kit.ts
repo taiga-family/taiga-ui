@@ -11,6 +11,7 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['from', 'to'],
     countTexts: ['Plus', 'Minus'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',
@@ -18,6 +19,7 @@ export const TUI_ENGLISH_LANGUAGE_KIT: TuiLanguageKit = {
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
         'HH:MM:SS.MSS AA': 'HH:MM:SS.MSS AA',
     },
+    // TODO(v5): transform to uppercase for ALL languages
     dateTexts: {
         DMY: 'dd.mm.yyyy',
         MDY: 'mm.dd.yyyy',

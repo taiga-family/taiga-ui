@@ -28,7 +28,7 @@ import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiSpinButton} from '@taiga-ui/core/components/spin-button';
-import {tuiAsAuxiliary} from '@taiga-ui/core/components/textfield';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {TUI_CALENDAR_MONTHS} from '@taiga-ui/kit/tokens';
 
 import {TUI_CALENDAR_MONTH_OPTIONS} from './calendar-month.options';

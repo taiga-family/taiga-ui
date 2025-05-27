@@ -11,6 +11,7 @@ export const TUI_BELARUSIAN_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['ад', 'да'],
     countTexts: ['Плюс', 'Мінус'],
     time: {
+        'MM:SS': 'ХХ:СС',
         'HH:MM': 'ГГ:ХХ',
         'HH:MM AA': 'ГГ:ХХ АА',
         'HH:MM:SS': 'ГГ:ХХ:СС',

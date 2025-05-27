@@ -10,6 +10,6 @@ export function tuiCreateUnfinishedValidator(
         value,
     }: AbstractControl): {tuiUnfinished: TuiValidationError | string} | null =>
         value === null && element.value !== ''
-            ? {tuiUnfinished: message ? new TuiValidationError(message) : ''}
+            ? {tuiUnfinished: new TuiValidationError(message)}
             : null;
 }

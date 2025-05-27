@@ -90,6 +90,7 @@
     Dropdown offset
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('direction')"
     name="(tuiDropdownDirectionChange)"
     tuiDocAPIItem
     type="TuiVerticalDirection"

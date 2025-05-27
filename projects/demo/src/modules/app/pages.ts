@@ -511,6 +511,14 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputDate',
+                keywords:
+                    'поле, инпут, форма, ввод, input, календарь, день, ' +
+                    'неделя, месяц, год, дата, calendar',
+                route: DemoRoute.InputDate,
+            },
+            {
+                section: 'Components',
                 title: 'InputDate [deprecated]',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
@@ -835,6 +843,13 @@ export const pages: DocRoutePages = [
         section: 'Components',
         title: 'Selects',
         subPages: [
+            {
+                section: 'Components',
+                title: 'ComboBox',
+                keywords:
+                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
+                route: DemoRoute.ComboBox,
+            },
             {
                 section: 'Components',
                 title: 'ComboBox [deprecated]',

@@ -1,15 +1,27 @@
 <tui-doc-page
+    deprecated
     header="ComboBoxLegacy"
     package="LEGACY"
     path="legacy/components/combo-box"
     type="components"
 >
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.ComboBox"
+            >
+                <strong>new version of ComboBox</strong>
+            </a>
+            instead!
+        </tui-notification>
+
+        <p>
             <code>ComboBox</code>
             is a textfield with a dropdown with items. You can choose one of available options or input a value
             manually.
-        </div>
+        </p>
 
         <tui-doc-example
             id="async"

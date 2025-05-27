@@ -11,6 +11,7 @@ export const TUI_TURKISH_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['dan', 'a'],
     countTexts: ['Artı', 'Eksi'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

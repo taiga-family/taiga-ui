@@ -11,6 +11,7 @@ export const TUI_HEBREW_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['מ', 'ל'],
     countTexts: ['ועוד', 'מִינוּס'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

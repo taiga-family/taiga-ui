@@ -295,6 +295,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/checkbox'),
     }),
     route({
+        path: DemoRoute.ComboBox,
+        title: 'ComboBox',
+        loadComponent: async () => import('../components/combo-box'),
+    }),
+    route({
         path: DemoRoute.ComboBoxLegacy,
         title: 'ComboBox [deprecated]',
         loadComponent: async () => import('../components/combo-box-legacy'),
@@ -408,6 +413,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.Input,
         loadComponent: async () => import('../components/input'),
         title: 'Input',
+    }),
+    route({
+        path: DemoRoute.InputDate,
+        title: 'InputDate',
+        loadComponent: async () => import('../components/input-date'),
     }),
     route({
         path: DemoRoute.InputDateLegacy,

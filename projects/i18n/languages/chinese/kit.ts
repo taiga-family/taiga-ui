@@ -11,6 +11,7 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
     range: ['从', '至'],
     countTexts: ['加', '减'],
     time: {
+        'MM:SS': 'MM:SS',
         'HH:MM': 'HH:MM',
         'HH:MM AA': 'HH:MM AA',
         'HH:MM:SS': 'HH:MM:SS',

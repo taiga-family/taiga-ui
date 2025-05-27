@@ -18,6 +18,10 @@ import {TuiComboBoxComponent} from './combo-box.component';
 import {TuiComboBoxDirective} from './combo-box.directive';
 import {TuiComboBoxStrictDirective} from './combo-box-strict.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/combo-box TuiComboBox} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         CommonModule,

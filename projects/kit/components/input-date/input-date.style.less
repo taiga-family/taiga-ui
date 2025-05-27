@@ -1,0 +1,17 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+// TODO: replace with `tui-textfield:has([tuiInputDate]) input[type='date']` (when all browsers supports :has())
+tui-textfield input[tuiInputDate] ~ .t-content input[type='date'] {
+    position: absolute;
+    top: 0;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    inline-size: 2.5rem;
+    padding: 0;
+    opacity: 0;
+
+    &::-webkit-calendar-picker-indicator {
+        .fullsize(); // Extends clickable area for icon to open native calendar
+    }
+}

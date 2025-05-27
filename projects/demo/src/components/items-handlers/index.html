@@ -2,10 +2,7 @@
     <td colspan="3">
         <span tuiTitle>
             <strong>ItemsHandlers</strong>
-            <span tuiSubtitle>
-                Applied as a host directive to
-                <code>&lt;tui-textfield /&gt;</code>
-            </span>
+            <span tuiSubtitle>Applied as a host directive</span>
         </span>
     </td>
 </tr>
@@ -51,7 +48,7 @@
     name="[disabledItemHandler]"
     tuiDocAPIItem
     type="TuiBooleanHandler"
-    [items]="disabledItemHandlerVariants"
+    [items]="[falseHandler, options.disabledItemHandler()]"
     [value]="disabledItemHandler()"
     (valueChange)="disabledItemHandler.set($event)"
 >
