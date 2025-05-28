@@ -29,3 +29,7 @@ tui-icon[tuiChevron]::after {
 tui-icon[tuiChevron]._chevron-rotated::after {
     transform: rotate(180deg);
 }
+
+[tuiChevron]:has(input[tuiAppearance]:read-only)::after {
+    cursor: default;
+}

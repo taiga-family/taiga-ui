@@ -79,7 +79,8 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content && control?.value != null',
         '[class._disabled]': 'input?.nativeElement?.disabled',
-        '(pointerdown)': 'onIconClick($event)',
+        '(click.self.prevent)': '0',
+        '(pointerdown.self.prevent)': 'onIconClick()',
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterContentInit {
@@ -182,15 +183,14 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     }
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
-    protected onIconClick(event: Event): void {
-        if (event.target !== this.el || this.input?.nativeElement.matches(':read-only')) {
-            return;
-        }
-
-        event.preventDefault();
+    protected onIconClick(): void {
         this.input?.nativeElement.focus({preventScroll: true});
 
-        if (this.dropdownOpen.tuiDropdownEnabled && this.dropdown.content) {
+        if (
+            this.dropdownOpen.tuiDropdownEnabled &&
+            this.dropdown.content &&
+            !this.input?.nativeElement.matches(':read-only')
+        ) {
             this.open.update((x) => !x);
         }
     }
