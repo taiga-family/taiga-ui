@@ -76,8 +76,8 @@ export class TuiForm {
 
     public size: TuiFormOptions['size'] = this.options.size;
 
-    @Input('tuiForm')
-    public set tuiFormSize(size: TuiFormOptions['size'] | '') {
+    @Input()
+    public set tuiForm(size: TuiFormOptions['size'] | '') {
         this.size = size || this.options.size;
     }
 }
