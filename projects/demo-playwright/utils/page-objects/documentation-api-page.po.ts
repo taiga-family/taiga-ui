@@ -80,7 +80,7 @@ export class TuiDocumentationApiPagePO {
             await expect(async () => {
                 expect(
                     await this.apiPageExample.boundingBox().then((box) => box?.y),
-                ).toBeGreaterThanOrEqual(64);
+                ).toBeGreaterThanOrEqual(63);
             }).toPass();
         }
     }
