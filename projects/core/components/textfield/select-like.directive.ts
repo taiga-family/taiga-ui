@@ -11,7 +11,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 @Component({
     standalone: true,
     template: '',
-    styles: ['.t-select-like:not(:disabled):not(:read-only) {cursor: pointer}'],
+    styles: ['.t-select-like:not(:read-only) {cursor: pointer}'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -25,6 +25,7 @@ class TuiSelectLikeStyles {}
     host: {
         class: 't-select-like',
         inputmode: 'none',
+        spellcheck: 'false',
         autocomplete: 'off',
         // Click on cleaner icon does not trigger `beforeinput` event --> handle all kind of deletion in input event
         '(beforeinput)': '$event.inputType.includes("delete") || $event.preventDefault()',

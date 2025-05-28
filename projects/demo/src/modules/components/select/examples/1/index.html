@@ -1,28 +1,29 @@
-<tui-textfield
-    iconStart="@tui.user-round"
-    tuiChevron
-    tuiTextfieldSize="m"
-    [tuiTextfieldCleaner]="false"
->
-    <label tuiLabel>I am a label</label>
+<label tuiLabel>
+    I am a label
+    <tui-textfield
+        iconStart="@tui.user-round"
+        tuiChevron
+        tuiTextfieldSize="m"
+        [tuiTextfieldCleaner]="false"
+    >
+        <input
+            placeholder="I am placeholder"
+            tuiSelect
+            [(ngModel)]="value"
+        />
 
-    <input
-        placeholder="I am placeholder"
-        tuiSelect
-        [(ngModel)]="value"
-    />
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            [items]="users"
+        />
 
-    <tui-data-list-wrapper
-        *tuiTextfieldDropdown
-        new
-        [items]="users"
-    />
+        <tui-icon
+            *ngIf="value"
+            icon="@tui.badge-check"
+            style="color: var(--tui-status-info); pointer-events: none"
+        />
 
-    <tui-icon
-        *ngIf="value"
-        icon="@tui.badge-check"
-        style="color: var(--tui-status-info); pointer-events: none"
-    />
-
-    <tui-icon tuiTooltip="I am a hint" />
-</tui-textfield>
+        <tui-icon tuiTooltip="I am a hint" />
+    </tui-textfield>
+</label>
