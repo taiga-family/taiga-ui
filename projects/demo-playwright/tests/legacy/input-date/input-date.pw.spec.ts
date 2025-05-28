@@ -177,8 +177,15 @@ test.describe('InputDate', () => {
                 await inputDate.textfield.focus();
                 await page.keyboard.type('35');
 
-                await expect(inputDate.textfield).toHaveJSProperty('selectionStart', 1);
-                await expect(inputDate.textfield).toHaveJSProperty('selectionEnd', 1);
+                await expect(inputDate.textfield).toHaveValue('03.05');
+                await expect(inputDate.textfield).toHaveJSProperty(
+                    'selectionStart',
+                    '03.05'.length,
+                );
+                await expect(inputDate.textfield).toHaveJSProperty(
+                    'selectionEnd',
+                    '03.05'.length,
+                );
                 await expect
                     .soft(inputDate.textfield)
                     .toHaveScreenshot('05-input-date.png');
