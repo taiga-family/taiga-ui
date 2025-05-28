@@ -25,6 +25,7 @@ class TuiSelectLikeStyles {}
     host: {
         class: 't-select-like',
         inputmode: 'none',
+        spellcheck: 'false',
         autocomplete: 'off',
         // Click on cleaner icon does not trigger `beforeinput` event --> handle all kind of deletion in input event
         '(beforeinput)': '$event.inputType.includes("delete") || $event.preventDefault()',
