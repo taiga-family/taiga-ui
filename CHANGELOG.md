@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.39.1](https://github.com/taiga-family/taiga-ui/compare/v4.39.0...v4.39.1) (2025-05-28)
+
+### 🐞 Bug Fixes
+
+- **core:** `Textfield` fix errors and issues with chevron + dropdown
+  ([#11025](https://github.com/taiga-family/taiga-ui/issues/11025))
+  ([b8ab88d](https://github.com/taiga-family/taiga-ui/commit/b8ab88d616d697ff90d774b992e9afa04816fd80))
+
 ## [4.39.0](https://github.com/taiga-family/taiga-ui/compare/v4.38.0...v4.39.0) (2025-05-27)
 
 ### 🐞 Bug Fixes
