@@ -8,7 +8,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
@@ -23,11 +23,11 @@ import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 import type {TuiFormOptions} from './form.options';
 import {TUI_FORM_OPTIONS} from './form.options';
 
-const HEADER_SIZE: Record<string, string> = {
+const HEADER_SIZE = {
     s: 'xxxs',
     m: 'xs',
     l: 's',
-};
+} as const;
 
 @Component({
     standalone: true,
@@ -47,7 +47,7 @@ class TuiFormStyles {}
     providers: [
         projectSize(TUI_BUTTON_OPTIONS, (size) => size),
         projectSize(TUI_NOTIFICATION_OPTIONS, (size) => size),
-        projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size]!),
+        projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size]),
         projectSize(TUI_SWITCH_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         projectSize(TUI_SEGMENTED_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         {
@@ -84,7 +84,7 @@ export class TuiForm {
 
 function projectSize(
     provide: InjectionToken<any>,
-    project: TuiStringHandler<string>,
+    project: TuiHandler<TuiFormOptions['size'], string>,
 ): Provider {
     return {
         provide,
