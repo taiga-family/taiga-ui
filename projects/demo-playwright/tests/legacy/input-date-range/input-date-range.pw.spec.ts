@@ -124,17 +124,13 @@ describe('InputDateRange', () => {
                 .toHaveScreenshot('06-calendar-maximum-month-with-items.png');
         });
 
-        describe('prevents changes if you enter an invalid date', () => {
+        describe('pads with zeroes if you enter an invalid date', () => {
             test('day > 31', async ({page}) => {
                 await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
 
                 await inputDateRange.textfield.pressSequentially('32');
 
-                await expect(inputDateRange.textfield).toHaveValue('3');
-
-                await inputDateRange.textfield.pressSequentially('1');
-
-                await expect(inputDateRange.textfield).toHaveValue('31');
+                await expect(inputDateRange.textfield).toHaveValue('03.02');
             });
 
             test('month > 12', async ({page}) => {
