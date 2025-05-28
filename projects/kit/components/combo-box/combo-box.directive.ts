@@ -1,4 +1,13 @@
-import {Directive, effect, inject, Input, untracked} from '@angular/core';
+import {
+    computed,
+    Directive,
+    effect,
+    inject,
+    Input,
+    isSignal,
+    signal,
+    untracked,
+} from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import type {TuiStringMatcher} from '@taiga-ui/cdk/types';
@@ -38,7 +47,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
         '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',
         '(click)': 'toggleDropdown()',
-        '(input)': 'onInput($event.target.value)',
+        '(input.debounce~0ms)': 'toggleDropdown(true)',
         '(keydown.enter)': 'keydownEnter($event)',
     },
 })
@@ -49,67 +58,92 @@ export class TuiComboBox<T>
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly host: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
     private readonly textfield: TuiTextfieldDirective<T> = inject(TuiTextfieldDirective);
-
     private readonly open = tuiDropdownOpen();
+    private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+    private readonly matcher = signal<TuiStringMatcher<T>>(TUI_STRICT_MATCHER);
+    private readonly strict = signal(true);
     private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
-        (x) => 'getOptions' in x,
+        (x) => x !== this && 'options' in x && isSignal(x.options),
     );
 
-    protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
+    private readonly options = computed(
+        () =>
+            this.datalist()
+                ?.options?.() // TODO(v5): remove optional call `?.()`
+                .filter((x) => !this.itemsHandlers.disabledItemHandler()(x)) ?? [],
+    );
 
-    protected readonly valueEffect = effect(() => {
-        const value = this.value() ?? '';
-        const stringified = tuiIsString(value)
-            ? value
-            : this.itemsHandlers.stringify()(value);
-        const match = this.match(stringified);
+    protected readonly matchingEffect = effect(() => {
+        const options = this.options();
 
-        this.textfield.value.update((x) => stringified || x);
+        if (!options.length) {
+            if (!this.strict()) {
+                this.onChange(this.textfield.value());
+            }
 
-        if (match) {
-            setTimeout((end = this.el.value.length) =>
-                this.el.setSelectionRange(end, end),
-            );
+            return;
+        }
+
+        const selectedOption =
+            options.find((x) =>
+                this.matcher()(x, this.textfield.value(), this.itemsHandlers.stringify()),
+            ) ?? null;
+        const stringified = this.stringify(selectedOption);
+        const fallback = this.strict() ? null : this.textfield.value();
+
+        this.onChange(selectedOption ?? fallback);
+
+        if (stringified && stringified !== untracked(() => this.textfield.value())) {
+            this.textfield.value.set(stringified);
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly blurEffect = effect(() => {
-        const value = untracked(() => this.value());
+        const incomplete = untracked(() => this.strict() && !this.value());
 
-        if (!this.host.focused() && this.strict && !value) {
+        if (!this.host.focused() && incomplete) {
             this.textfield.value.set('');
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
 
-    @Input()
-    public strict = true;
+    // TODO(v5): use signal input
+    @Input('strict')
+    public set strictSetter(x: boolean) {
+        this.strict.set(x);
+    }
 
-    @Input()
-    public matcher: TuiStringMatcher<T> | null = TUI_STRICT_MATCHER;
+    // TODO(v5): use signal input
+    @Input('matcher')
+    public set matcherSetter(x: TuiStringMatcher<T> | null) {
+        this.matcher.set(x ?? TUI_STRICT_MATCHER);
+    }
 
-    public setValue(value: T): void {
+    public setValue(value: T | string | null): void {
+        const stringified = this.stringify(value);
+
+        if (stringified !== this.textfield.value()) {
+            this.textfield.value.set(stringified);
+            setTimeout((end = stringified.length) => this.el.setSelectionRange(end, end));
+        }
+
         this.onChange(value);
 
         if (!value) {
             this.toggleDropdown(true);
-            this.textfield.value.set('');
         }
+    }
+
+    public override writeValue(value: T | string | null): void {
+        super.writeValue(value);
+        this.setValue(value);
     }
 
     protected toggleDropdown(open = !this.open()): void {
         if (this.dropdownEnabled() && this.dropdown.content) {
             this.open.set(open);
         }
-    }
-
-    protected onInput(value: string): void {
-        const match = this.match(value);
-        const fallback = this.strict || !value ? null : value;
-
-        this.onChange(match ?? fallback);
-        setTimeout(() => this.toggleDropdown(true));
     }
 
     protected keydownEnter(event: KeyboardEvent): void {
@@ -119,21 +153,17 @@ export class TuiComboBox<T>
 
         event.preventDefault();
 
-        if (this.options.length === 1) {
-            this.onChange(this.options[0]!);
+        if (this.options().length === 1) {
+            this.setValue(this.options()[0]!);
             this.toggleDropdown(false);
         }
     }
 
-    private get options(): readonly T[] {
-        return this.datalist()?.getOptions() || [];
-    }
+    private stringify(value: T | string | null): string {
+        if (tuiIsString(value)) {
+            return value;
+        }
 
-    private match(value: string): T | null {
-        return (
-            this.options.find((item) =>
-                this.matcher?.(item, value, this.itemsHandlers.stringify()),
-            ) ?? null
-        );
+        return value ? this.itemsHandlers.stringify()(value) : '';
     }
 }

@@ -1,11 +1,16 @@
-import type {Provider, Type} from '@angular/core';
+import type {Provider, Signal, Type} from '@angular/core';
 import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiDataListAccessor<T = unknown> {
+    /**
+     * @deprecated Use `options` property instead
+     */
     getOptions(includeDisabled?: boolean): readonly T[];
+    // TODO(v5): remove `undefined` for this property
+    options?: Signal<readonly T[]>;
 }
 
 // TODO: Consider refactoring checkOption, it is only needed in ComboBox
