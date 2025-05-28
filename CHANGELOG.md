@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.39.2](https://github.com/taiga-family/taiga-ui/compare/v4.39.1...v4.39.2) (2025-05-28)
+
+### 🐞 Bug Fixes
+
+- **cdk:** `Animation` fix for Angular 18+ ([#11032](https://github.com/taiga-family/taiga-ui/issues/11032))
+  ([c95d085](https://github.com/taiga-family/taiga-ui/commit/c95d085d0e5cfee504711f28839d9d5df92765e2))
+
 ### [4.39.1](https://github.com/taiga-family/taiga-ui/compare/v4.39.0...v4.39.1) (2025-05-28)
 
 ### 🐞 Bug Fixes
