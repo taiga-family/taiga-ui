@@ -22,6 +22,7 @@ import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
+import {Subject} from 'rxjs';
 
 import type {TuiMarkerHandler} from './calendar-sheet.component';
 import {TuiCalendarSheet} from './calendar-sheet.component';
@@ -85,6 +86,7 @@ export class TuiCalendar {
     @Output()
     public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
+    // TODO: Normalize with TuiCalendarRange in v5
     @Input()
     public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
         this.cdr.markForCheck();
@@ -104,6 +106,14 @@ export class TuiCalendar {
         this.view = view;
     }
 
+    /** @deprecated for private use only until Calendars are refactored */
+    public readonly valueChange = new Subject<TuiDay>();
+
+    /** @deprecated for private use only until Calendars are refactored */
+    public set valueSetter(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
+        this.value = value;
+    }
+
     public get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
         return this.day;
     }
@@ -114,6 +124,7 @@ export class TuiCalendar {
 
     public onDayClick(day: TuiDay): void {
         this.dayClick.emit(day);
+        this.valueChange.next(day);
     }
 
     public onHoveredItemChange(day: TuiDay | null): void {

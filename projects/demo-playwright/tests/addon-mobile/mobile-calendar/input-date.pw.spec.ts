@@ -14,7 +14,7 @@ test.describe('InputDate and mobile user agent', () => {
     });
 
     test('InputDateRange', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.InputDateRange}/API`, {date});
+        await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`, {date});
 
         await new TuiDocumentationPagePO(page).apiPageExample
             .locator('tui-input-date-range .t-icons')
