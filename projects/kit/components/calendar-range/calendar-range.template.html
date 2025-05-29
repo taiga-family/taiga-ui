@@ -3,31 +3,29 @@
     class="t-calendar"
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [markerHandler]="markerHandler"
-    [max]="max | tuiMapper: capsMapper : value : maxLength : false"
+    [max]="max | tuiMapper: capsMapper : currentValue : maxLength : false"
     [maxViewedMonth]="items.length ? null : (defaultViewedMonth | tuiMapper: monthOffset : -1)"
-    [min]="min | tuiMapper: capsMapper : value : maxLength : true"
+    [min]="min | tuiMapper: capsMapper : currentValue : maxLength : true"
     [month]="defaultViewedMonth"
     [showAdjacent]="!!items.length"
-    [value]="value"
+    [value]="currentValue"
     [(hoveredItem)]="hoveredItem"
     (dayClick)="onDayClick($event)"
     (monthChange)="onMonthChange($event)"
-    (mousedown.prevent.zoneless)="(0)"
 />
 <tui-calendar
     *ngIf="!items.length; else presets"
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [markerHandler]="markerHandler"
-    [max]="max | tuiMapper: capsMapper : value : maxLength : false"
-    [min]="min | tuiMapper: capsMapper : value : maxLength : true"
+    [max]="max | tuiMapper: capsMapper : currentValue : maxLength : false"
+    [min]="min | tuiMapper: capsMapper : currentValue : maxLength : true"
     [minViewedMonth]="defaultViewedMonth | tuiMapper: monthOffset : 1"
     [month]="defaultViewedMonth | tuiMapper: monthOffset : 1"
     [showAdjacent]="false"
-    [value]="value"
+    [value]="currentValue"
     [(hoveredItem)]="hoveredItem"
     (dayClick)="onDayClick($event)"
     (monthChange)="onMonthChange($event.append({month: -1}))"
-    (mousedown.prevent.zoneless)="(0)"
 />
 <ng-template #presets>
     <tui-data-list
@@ -43,7 +41,7 @@
             type="button"
             [attr.aria-checked]="isItemActive(item)"
             (click)="onItemSelect(item)"
-            (mousedown.prevent.zoneless)="(0)"
+            (pointerdown.prevent.zoneless)="(0)"
         >
             {{ item }}
             <tui-icon
