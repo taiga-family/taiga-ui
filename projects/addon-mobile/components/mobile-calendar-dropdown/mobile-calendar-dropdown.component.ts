@@ -51,11 +51,11 @@ export class TuiMobileCalendarDropdown {
 
     // TODO: Refactor to proper Date, DateMulti and DateRange components after they are added to kit
     protected readonly control: any = inject(TuiControl, {optional: true});
-    protected readonly range = this.is('tui-input-date-range');
-    protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
     protected readonly directive = inject(TuiMobileCalendarDropdownNew, {optional: true});
+    protected readonly range = !!this.directive?.range || this.is('tui-input-date-range');
+    protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
     protected readonly single =
-        !!this.directive?.date ||
+        !!this.directive?.single ||
         this.data.single || // TODO(v5): use `rangeMode` from DI token `TUI_CALENDAR_SHEET_DEFAULT_OPTIONS`
         this.is('tui-input-date:not([multiple])');
 

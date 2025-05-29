@@ -1,20 +1,20 @@
 <tui-calendar
     automation-id="tui-calendar-range__calendar"
-    class="t-calendar"
+    [class.t-calendar]="!mobile"
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [markerHandler]="markerHandler"
     [max]="max | tuiMapper: capsMapper : currentValue : maxLength : false"
-    [maxViewedMonth]="items.length ? null : (defaultViewedMonth | tuiMapper: monthOffset : -1)"
+    [maxViewedMonth]="items.length || mobile ? null : (defaultViewedMonth | tuiMapper: monthOffset : -1)"
     [min]="min | tuiMapper: capsMapper : currentValue : maxLength : true"
     [month]="defaultViewedMonth"
-    [showAdjacent]="!!items.length"
+    [showAdjacent]="!!items.length || mobile"
     [value]="currentValue"
     [(hoveredItem)]="hoveredItem"
     (dayClick)="onDayClick($event)"
     (monthChange)="onMonthChange($event)"
 />
 <tui-calendar
-    *ngIf="!items.length; else presets"
+    *ngIf="!items.length && !mobile; else presets"
     [disabledItemHandler]="calculatedDisabledItemHandler"
     [markerHandler]="markerHandler"
     [max]="max | tuiMapper: capsMapper : currentValue : maxLength : false"
@@ -29,6 +29,7 @@
 />
 <ng-template #presets>
     <tui-data-list
+        *ngIf="!mobile"
         automation-id="tui-calendar-range__menu"
         role="menu"
         [style.flex]="1"

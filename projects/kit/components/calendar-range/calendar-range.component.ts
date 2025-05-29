@@ -21,6 +21,7 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
+import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
@@ -50,6 +51,7 @@ import type {TuiDayRangePeriod} from './day-range-period';
         tuiCalendarSheetOptionsProvider({rangeMode: true}),
     ],
     host: {
+        '[class._mobile]': 'mobile',
         '(document:keydown.capture)': 'onEsc($event)',
     },
 })
@@ -68,6 +70,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
+    protected readonly mobile = inject(TUI_IS_MOBILE);
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
