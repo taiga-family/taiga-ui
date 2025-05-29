@@ -9,7 +9,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, type TuiDayLike} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputDateDirective, TuiInputDateRange} from '@taiga-ui/kit';
+import {TuiInputDateRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -24,14 +24,12 @@ import {TuiInputDateDirective, TuiInputDateRange} from '@taiga-ui/kit';
         TuiDropdown,
         TuiInputDateRange,
         TuiTextfield,
-        TuiInputDateDirective,
     ],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Example {
     protected readonly control = new FormControl();
-    protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
 
     protected readonly dates = [
         TUI_FIRST_DAY,
@@ -48,4 +46,6 @@ export default class Example {
 
     protected minLength: TuiDayLike | null = null;
     protected maxLength: TuiDayLike | null = null;
+
+    protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
 }

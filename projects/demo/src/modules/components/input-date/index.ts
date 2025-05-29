@@ -30,7 +30,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly control = new FormControl();
-    protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
+
     protected readonly dates = [
         TUI_FIRST_DAY,
         TuiDay.currentLocal(),
@@ -41,4 +41,6 @@ export default class Example {
 
     protected min = this.dates[0];
     protected max = this.dates[4];
+
+    protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
 }
