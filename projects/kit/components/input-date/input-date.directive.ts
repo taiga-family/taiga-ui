@@ -5,7 +5,7 @@ import type {MaskitoDateMode} from '@maskito/kit';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import {
+import type {
     DATE_FILLER_LENGTH,
     type TuiDateMode,
     TuiDay,
