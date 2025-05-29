@@ -2,7 +2,6 @@ import type {Page} from '@playwright/test';
 import {expect} from '@playwright/test';
 
 import {tuiRemoveElement} from './hide-element';
-import {tuiMockDate} from './mock-date';
 import {tuiWaitForFonts} from './wait-for-fonts';
 import {waitIcons} from './wait-icons';
 import {waitStableState} from './wait-stable-state';
@@ -47,7 +46,7 @@ export async function tuiGoto(
         );
     }
 
-    await tuiMockDate(page, date);
+    await page.clock.setFixedTime(date);
 
     await page.route('https://fonts.gstatic.com/**', async (route) =>
         route.fulfill({path: `${__dirname}/../stubs/manrope-fonts.ttf`}),
