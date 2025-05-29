@@ -44,6 +44,9 @@ import {TuiCalendarYear} from './calendar-year.component';
     styleUrls: ['./calendar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendar)],
+    host: {
+        '(pointerdown.prevent.zoneless)': '0',
+    },
 })
 export class TuiCalendar {
     private readonly cdr = inject(ChangeDetectorRef);
@@ -89,7 +92,6 @@ export class TuiCalendar {
     /** @deprecated for private use only until Calendars are refactored */
     public readonly valueChange = new Subject<TuiDay>();
 
-    // TODO: Normalize with TuiCalendarRange in v5
     @Input()
     public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
         this.cdr.markForCheck();
@@ -107,11 +109,6 @@ export class TuiCalendar {
     @Input()
     public set initialView(view: 'month' | 'year') {
         this.view = view;
-    }
-
-    /** @deprecated for private use only until Calendars are refactored */
-    public set valueSetter(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
-        this.value = value;
     }
 
     public get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {

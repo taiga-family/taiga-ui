@@ -11,7 +11,7 @@ import {
 } from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {CHAR_HYPHEN, CHAR_MINUS, TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
 import {
@@ -31,7 +31,6 @@ const DEFAULT_MAX_LENGTH = 18;
     selector: 'input[tuiInputNumber]',
     providers: [
         tuiAsControl(TuiInputNumberDirective),
-        tuiFallbackValueProvider(null),
         tuiValueTransformerFrom(TUI_INPUT_NUMBER_OPTIONS),
     ],
     hostDirectives: [TuiWithTextfield, MaskitoDirective],
