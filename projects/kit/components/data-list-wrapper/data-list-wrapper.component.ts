@@ -109,13 +109,13 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
             .filter(tuiIsPresent);
     }
 
-    protected $cast(items: readonly K[]): readonly T[] {
-        return items as unknown as readonly T[];
-    }
-
     // TODO(v5): use signal `viewChild`
     @ViewChild(TuiDataListComponent)
-    private set datalistSetter(x: TuiDataListComponent<T>) {
+    protected set datalistSetter(x: TuiDataListComponent<T>) {
         this.datalist.set(x);
+    }
+
+    protected $cast(items: readonly K[]): readonly T[] {
+        return items as unknown as readonly T[];
     }
 }
