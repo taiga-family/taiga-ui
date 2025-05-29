@@ -101,10 +101,6 @@ tui-segmented {
             &:not(.tui-segmented_active):not(:active):hover + * {
                 border-image: linear-gradient(var(--tui-border-normal), transparent) 1 / 0 0 25% 0.5 / 100 0 0 0.5;
             }
-
-            &.tui-segmented_active:hover {
-                opacity: var(--tui-disabled-opacity);
-            }
         }
 
         &:active,
@@ -142,6 +138,7 @@ tui-segmented {
     }
 }
 
+// TODO(v5): change color of var elevation-3 and change color of active item to elevation-3
 [tuiTheme='dark'] tui-segmented,
 tui-segmented[tuiTheme='dark'] {
     --tui-background-base: var(--tui-background-neutral-1-hover);
