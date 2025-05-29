@@ -55,6 +55,9 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
         ),
     );
 
+    public readonly minLength = signal<TuiDayLike | null>(null);
+    public readonly maxLength = signal<TuiDayLike | null>(null);
+
     @Input('minLength')
     public set minLengthSetter(minLength: TuiDayLike | null) {
         this.minLength.set(minLength);
@@ -65,10 +68,7 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
         this.maxLength.set(maxLength);
     }
 
-    public readonly minLength = signal<TuiDayLike | null>(null);
-    public readonly maxLength = signal<TuiDayLike | null>(null);
-
-    protected override processCalendar(calendar: TuiCalendarRange) {
+    protected override processCalendar(calendar: TuiCalendarRange): void {
         super.processCalendar(calendar);
 
         calendar.minLength = this.minLength();

@@ -1,4 +1,4 @@
-import {TuiCalendarRange} from 'projects/kit/components/calendar-range';
+import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 
 import {TuiInputDateRangeDirective} from './input-date-range.directive';
 
