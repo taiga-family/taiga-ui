@@ -86,6 +86,9 @@ export class TuiCalendar {
     @Output()
     public readonly hoveredItemChange = new EventEmitter<TuiDay | null>();
 
+    /** @deprecated for private use only until Calendars are refactored */
+    public readonly valueChange = new Subject<TuiDay>();
+
     // TODO: Normalize with TuiCalendarRange in v5
     @Input()
     public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
@@ -105,9 +108,6 @@ export class TuiCalendar {
     public set initialView(view: 'month' | 'year') {
         this.view = view;
     }
-
-    /** @deprecated for private use only until Calendars are refactored */
-    public readonly valueChange = new Subject<TuiDay>();
 
     /** @deprecated for private use only until Calendars are refactored */
     public set valueSetter(value: TuiDay | TuiDayRange | readonly TuiDay[] | null) {
