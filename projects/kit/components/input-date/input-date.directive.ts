@@ -5,12 +5,8 @@ import type {MaskitoDateMode} from '@maskito/kit';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import type {
-    DATE_FILLER_LENGTH,
-    type TuiDateMode,
-    TuiDay,
-    TuiDayRange,
-} from '@taiga-ui/cdk/date-time';
+import type {TuiDateMode, TuiDayRange} from '@taiga-ui/cdk/date-time';
+import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
