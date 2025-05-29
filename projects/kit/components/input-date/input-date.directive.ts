@@ -127,11 +127,11 @@ export abstract class TuiInputDateBase<
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    protected abstract onValueChange(value: string): void;
-
     public readonly native = this.el.type === 'date' && this.mobile;
     public readonly min = signal(this.options.min);
     public readonly max = signal(this.options.max);
+
+    protected abstract onValueChange(value: string): void;
 
     @Input('min')
     public set minSetter(min: TuiDay | null) {
