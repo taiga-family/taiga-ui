@@ -513,6 +513,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputDateRange',
+                keywords: 'calendar, календарь, даты, период',
+                route: DemoRoute.InputDateRange,
+            },
+            {
+                section: 'Components',
                 title: 'InputInline',
                 keywords: 'input',
                 route: DemoRoute.InputInline,
