@@ -26,6 +26,7 @@ export function tuiFilesAccepted(control?: AbstractControl | null): File[] {
 export function tuiFormatSize(
     units: readonly [string, string, string],
     size?: number,
+    locale?: string,
 ): string | null {
     if (size === undefined) {
         return null;
@@ -39,5 +40,5 @@ export function tuiFormatSize(
         return `${(size / BYTES_PER_KIB).toFixed(0)} ${units[1]}`;
     }
 
-    return `${tuiRound(size / BYTES_PER_MIB, 2).toLocaleString('ru-RU')} ${units[2]}`;
+    return `${tuiRound(size / BYTES_PER_MIB, 2).toLocaleString(locale)} ${units[2]}`;
 }

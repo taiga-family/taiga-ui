@@ -5,6 +5,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    LOCALE_ID,
     Output,
 } from '@angular/core';
 import type {SafeValue} from '@angular/platform-browser';
@@ -56,6 +57,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
 export class TuiFile {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly options = inject(TUI_FILE_OPTIONS);
+    private readonly locale = inject(LOCALE_ID);
     private readonly units$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
     private readonly win = inject(WA_WINDOW) as Window & {File: typeof File};
 
@@ -143,7 +145,9 @@ export class TuiFile {
         file: TuiFileLike,
         units$: Observable<readonly [string, string, string]>,
     ): Observable<string | null> {
-        return units$.pipe(map((units) => this.options.formatSize(units, file.size)));
+        return units$.pipe(
+            map((units) => this.options.formatSize(units, file.size, this.locale)),
+        );
     }
 
     @tuiPure
