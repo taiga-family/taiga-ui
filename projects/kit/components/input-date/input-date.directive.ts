@@ -5,8 +5,12 @@ import type {MaskitoDateMode} from '@maskito/kit';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
-import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk/date-time';
+import {
+    DATE_FILLER_LENGTH,
+    type TuiDateMode,
+    TuiDay,
+    TuiDayRange,
+} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -45,17 +49,6 @@ export const TUI_DATE_ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
 
 @Directive({
     standalone: true,
-    selector: 'input[tuiInputDate]',
-    providers: [
-        tuiAsControl(TuiInputDateDirective),
-        tuiValueTransformerFrom(TUI_INPUT_DATE_OPTIONS_NEW),
-    ],
-    hostDirectives: [
-        TuiWithTextfield,
-        TuiDropdownAuto,
-        TuiItemsHandlersValidator,
-        MaskitoDirective,
-    ],
     host: {
         '[attr.inputmode]': 'open() ? "none" : "numeric"',
         '[disabled]': 'disabled()',
@@ -64,7 +57,9 @@ export const TUI_DATE_ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
         '(click.capture.stop)': 'onClick()',
     },
 })
-export class TuiInputDateDirective extends TuiControl<TuiDay | null> {
+export abstract class TuiInputDateBase<
+    T extends TuiDay | TuiDayRange,
+> extends TuiControl<T | null> {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly mobile = inject(TUI_IS_MOBILE);
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS_NEW);
@@ -126,6 +121,7 @@ export class TuiInputDateDirective extends TuiControl<TuiDay | null> {
         const subscription = this.calendar()?.valueChange.subscribe((value: any) => {
             this.onChange(value);
             this.open.set(false);
+            this.el.blur();
         });
 
         onCleanup(() => subscription?.unsubscribe());
@@ -146,7 +142,7 @@ export class TuiInputDateDirective extends TuiControl<TuiDay | null> {
     }
 
     protected processCalendar(calendar: TuiCalendar | TuiCalendarRange): void {
-        calendar.valueSetter = this.value();
+        calendar.value = this.value();
         calendar.disabledItemHandler = this.handlers.disabledItemHandler();
         calendar.min = this.min();
         calendar.max = this.max();
@@ -158,12 +154,30 @@ export class TuiInputDateDirective extends TuiControl<TuiDay | null> {
         }
     }
 
-    protected onValueChange(value: string): void {
+    protected abstract onValueChange(value: string): void;
+}
+
+@Directive({
+    standalone: true,
+    selector: 'input[tuiInputDate]',
+    providers: [
+        tuiAsControl(TuiInputDateDirective),
+        tuiValueTransformerFrom(TUI_INPUT_DATE_OPTIONS_NEW),
+    ],
+    hostDirectives: [
+        TuiWithTextfield,
+        TuiDropdownAuto,
+        TuiItemsHandlersValidator,
+        MaskitoDirective,
+    ],
+})
+export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
+    protected override onValueChange(value: string): void {
         this.control?.control?.updateValueAndValidity({emitEvent: false});
         this.onChange(
-            value.length !== DATE_FILLER_LENGTH
-                ? null
-                : TuiDay.normalizeParse(value, this.format().mode),
+            value.length === DATE_FILLER_LENGTH
+                ? TuiDay.normalizeParse(value, this.format().mode)
+                : null,
         );
     }
 }

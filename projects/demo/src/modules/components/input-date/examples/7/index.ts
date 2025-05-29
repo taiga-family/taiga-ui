@@ -18,10 +18,7 @@ export default class Example {
 
     protected readonly today = TuiDay.currentLocal();
     protected readonly min = new TuiDay(this.today.year, this.today.month, 1);
-    protected readonly max = new TuiDay(this.today.year, this.today.month, 1).append({
-        month: 1,
-        day: -1,
-    });
+    protected readonly max = this.min.append({month: 1, day: -1});
 
     protected readonly handler = (day: TuiDay): boolean => day.daySame(this.today);
 }
