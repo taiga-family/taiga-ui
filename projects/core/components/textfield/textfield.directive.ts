@@ -19,6 +19,7 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 import type {TuiTextfieldAccessor} from './textfield-accessor';
 import {tuiAsTextfieldAccessor} from './textfield-accessor';
 
+// TODO: Drop in v5 after updated Angular and hostDirectives inherit
 @Directive()
 export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     // TODO: refactor to signal inputs after Angular update

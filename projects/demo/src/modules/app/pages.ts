@@ -491,12 +491,6 @@ export const pages: DocRoutePages = [
         subPages: [
             {
                 section: 'Components',
-                title: 'Input',
-                keywords: 'поле, инпут, форма, ввод, input, table, таблица',
-                route: DemoRoute.Input,
-            },
-            {
-                section: 'Components',
                 title: 'InputCard',
                 keywords:
                     'карта, visa, mastercard, credit, card, срок, expire, код, cvc, cvv',
@@ -519,6 +513,67 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputInline',
+                keywords: 'input',
+                route: DemoRoute.InputInline,
+            },
+            {
+                section: 'Components',
+                title: 'InputMonth',
+                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
+                route: DemoRoute.InputMonth,
+            },
+            {
+                section: 'Components',
+                title: 'InputNumber',
+                keywords: 'textfield, input, number, count, digit, money, число',
+                route: DemoRoute.InputNumber,
+            },
+            {
+                section: 'Components',
+                title: 'InputPhoneInternational',
+                keywords:
+                    'поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
+                route: DemoRoute.InputPhoneInternational,
+            },
+            {
+                section: 'Components',
+                title: 'InputPin',
+                keywords: 'поле, инпут, форма, ввод, input, pin, пин, код',
+                route: DemoRoute.InputPin,
+            },
+            {
+                section: 'Components',
+                title: 'InputSlider',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
+                route: DemoRoute.InputSlider,
+            },
+            {
+                section: 'Components',
+                title: 'InputFiles',
+                keywords: 'input-files, files, file, файлы',
+                route: DemoRoute.InputFiles,
+            },
+            {
+                section: 'Components',
+                title: 'Textarea',
+                keywords: 'поле, инпут, форма, ввод, textarea, area',
+                route: DemoRoute.Textarea,
+            },
+        ],
+    },
+    {
+        section: 'Components',
+        title: 'Inputs (Legacy)',
+        subPages: [
+            {
+                section: 'Components',
+                title: 'Input',
+                keywords: 'поле, инпут, форма, ввод, input, table, таблица',
+                route: DemoRoute.Input,
+            },
+            {
+                section: 'Components',
                 title: 'InputDate [deprecated]',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
@@ -537,7 +592,7 @@ export const pages: DocRoutePages = [
                 section: 'Components',
                 title: 'InputDateRange',
                 keywords: 'calendar, календарь, даты, период',
-                route: DemoRoute.InputDateRange,
+                route: DemoRoute.InputDateRangeLegacy,
             },
             {
                 section: 'Components',
@@ -546,18 +601,6 @@ export const pages: DocRoutePages = [
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',
                 route: DemoRoute.InputDateTime,
-            },
-            {
-                section: 'Components',
-                title: 'InputInline',
-                keywords: 'input',
-                route: DemoRoute.InputInline,
-            },
-            {
-                section: 'Components',
-                title: 'InputMonth',
-                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
-                route: DemoRoute.InputMonth,
             },
             {
                 section: 'Components',
@@ -570,12 +613,6 @@ export const pages: DocRoutePages = [
                 title: 'InputMonthRange [deprecated]',
                 keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
                 route: DemoRoute.InputMonthRange,
-            },
-            {
-                section: 'Components',
-                title: 'InputNumber',
-                keywords: 'textfield, input, number, count, digit, money, число',
-                route: DemoRoute.InputNumber,
             },
             {
                 section: 'Components',
@@ -593,28 +630,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputPhoneInternational',
-                keywords:
-                    'поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
-                route: DemoRoute.InputPhoneInternational,
-            },
-            {
-                section: 'Components',
-                title: 'InputPin',
-                keywords: 'поле, инпут, форма, ввод, input, pin, пин, код',
-                route: DemoRoute.InputPin,
-            },
-            {
-                section: 'Components',
                 title: 'InputRange',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: DemoRoute.InputRange,
-            },
-            {
-                section: 'Components',
-                title: 'InputSlider',
-                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputSlider,
             },
             {
                 section: 'Components',
@@ -649,9 +667,10 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'Textarea',
-                keywords: 'поле, инпут, форма, ввод, textarea, area',
-                route: DemoRoute.Textarea,
+                title: 'InputColor',
+                keywords:
+                    'input-color, gradient, picker, color, цвет, выбор, градиент, gradient, палитра',
+                route: DemoRoute.InputColor,
             },
             {
                 section: 'Components',
@@ -661,16 +680,16 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputFiles',
-                keywords: 'input-files, files, file, файлы',
-                route: DemoRoute.InputFiles,
+                title: 'ComboBox [deprecated]',
+                keywords:
+                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
+                route: DemoRoute.ComboBoxLegacy,
             },
             {
                 section: 'Components',
-                title: 'InputColor',
-                keywords:
-                    'input-color, gradient, picker, color, цвет, выбор, градиент, gradient, палитра',
-                route: DemoRoute.InputColor,
+                title: 'Select [deprecated]',
+                keywords: 'инпут, форма, ввод, select, селект, выбор',
+                route: DemoRoute.SelectLegacy,
             },
         ],
     },
@@ -852,13 +871,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'ComboBox [deprecated]',
-                keywords:
-                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
-                route: DemoRoute.ComboBoxLegacy,
-            },
-            {
-                section: 'Components',
                 title: 'MultiSelect',
                 keywords:
                     'инпут, форма, ввод, select, селект, выбор, multiselect, мультиселект',
@@ -869,12 +881,6 @@ export const pages: DocRoutePages = [
                 title: 'Select',
                 keywords: 'инпут, форма, ввод, select, селект, выбор',
                 route: DemoRoute.Select,
-            },
-            {
-                section: 'Components',
-                title: 'Select [deprecated]',
-                keywords: 'инпут, форма, ввод, select, селект, выбор',
-                route: DemoRoute.SelectLegacy,
             },
         ],
     },

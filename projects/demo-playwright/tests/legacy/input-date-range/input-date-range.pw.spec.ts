@@ -48,7 +48,7 @@ describe('InputDateRange', () => {
             }) => {
                 await tuiGoto(
                     page,
-                    `${DemoRoute.InputDateRange}/API?tuiTextfieldSize=${size}`,
+                    `${DemoRoute.InputDateRangeLegacy}/API?tuiTextfieldSize=${size}`,
                 );
 
                 await inputDateRange.textfield.click();
@@ -90,7 +90,7 @@ describe('InputDateRange', () => {
         });
 
         test('Maximum month less than current month', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?min$=3`);
+            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?min$=3`);
             await inputDateRange.textfield.click();
 
             await expect
@@ -102,7 +102,7 @@ describe('InputDateRange', () => {
         });
 
         test('Minimum month more than current month', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?min$=3`);
+            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?min$=3`);
             await inputDateRange.textfield.click();
 
             await expect
@@ -113,7 +113,7 @@ describe('InputDateRange', () => {
         });
 
         test('Maximum month when items not empty', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1&max$=7`);
+            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?items$=1&max$=7`);
             await inputDateRange.textfield.click();
 
             await expect
@@ -126,7 +126,7 @@ describe('InputDateRange', () => {
 
         describe('pads with zeroes if you enter an invalid date', () => {
             test('day > 31', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
 
                 await inputDateRange.textfield.pressSequentially('32');
 
@@ -134,7 +134,7 @@ describe('InputDateRange', () => {
             });
 
             test('month > 12', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
 
                 await inputDateRange.textfield.pressSequentially('2913');
 
@@ -146,7 +146,7 @@ describe('InputDateRange', () => {
             });
 
             test('pads date range if it is less than [minLength]', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=0`); // minLength = {day: 3}
+                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?minLength$=0`); // minLength = {day: 3}
 
                 await inputDateRange.textfield.pressSequentially('21052023-22052023');
 
@@ -156,7 +156,7 @@ describe('InputDateRange', () => {
             });
 
             test('cuts date range if it is more than [maxLength]', async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRange}/API?maxLength$=0`); // maxLength = {day: 5}
+                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?maxLength$=0`); // maxLength = {day: 5}
 
                 await inputDateRange.textfield.pressSequentially('20052023-29052023');
 
@@ -173,7 +173,7 @@ describe('InputDateRange', () => {
 
             await tuiGoto(
                 page,
-                `${DemoRoute.InputDateRange}/API?items$=1&sandboxExpanded=true`,
+                `${DemoRoute.InputDateRangeLegacy}/API?items$=1&sandboxExpanded=true`,
             );
 
             await inputDateRange.textfield.click();
@@ -194,7 +194,7 @@ describe('InputDateRange', () => {
         });
 
         test('Calendar shows end of period, when selected any range', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?items$=1`);
 
             await inputDateRange.textfield.click();
             await inputDateRange.selectItem(0);
@@ -207,7 +207,7 @@ describe('InputDateRange', () => {
         });
 
         test('Press backspace to remove item, textfield is empty', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?items$=1`);
 
             await inputDateRange.textfield.click();
             await calendar.itemButton.first().click();
@@ -222,7 +222,7 @@ describe('InputDateRange', () => {
         });
 
         test('Enter item date, it converts to item name', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?items$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?items$=1`);
 
             await inputDateRange.textfield.focus();
             await inputDateRange.textfield.fill('25.09.2020 - 25.09.2020');
@@ -245,7 +245,7 @@ describe('InputDateRange', () => {
             test('Selection of only single date produces range with the same start and end', async ({
                 page,
             }) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
                 await inputDateRange.textfieldIcon.click();
 
                 const [calendarSheet] = await mobileCalendar.getCalendarSheets();
@@ -263,7 +263,7 @@ describe('InputDateRange', () => {
             test('double click on the same day - selects single-day range', async ({
                 page,
             }) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
 
                 await inputDateRange.textfield.click();
 
@@ -285,7 +285,7 @@ describe('InputDateRange', () => {
             test('allows to select new range start after double click on the same day', async ({
                 page,
             }) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
 
                 await inputDateRange.textfield.click();
 
@@ -318,7 +318,7 @@ describe('InputDateRange', () => {
             test('no highlighting hover effect after double click on the same day', async ({
                 page,
             }) => {
-                await tuiGoto(page, `${DemoRoute.InputDateRange}/API`);
+                await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API`);
 
                 await inputDateRange.textfield.click();
 
@@ -358,7 +358,7 @@ describe('InputDateRange', () => {
         });
 
         test('minLength=15', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputDateRange}/API?minLength$=1`);
+            await tuiGoto(page, `${DemoRoute.InputDateRangeLegacy}/API?minLength$=1`);
 
             const calendarSheet = new TuiCalendarSheetPO(
                 inputDateRange.calendar.locator('tui-calendar-sheet'),
@@ -381,7 +381,7 @@ describe('InputDateRange', () => {
 
     describe('Examples', () => {
         beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.InputDateRange);
+            await tuiGoto(page, DemoRoute.InputDateRangeLegacy);
         });
 
         test('Select second same range => after close/open calendar displays selected period displays correctly', async () => {
@@ -458,7 +458,7 @@ describe('InputDateRange', () => {
     });
 
     test('check valid active period', async ({page}) => {
-        await tuiGoto(page, DemoRoute.InputDateRange);
+        await tuiGoto(page, DemoRoute.InputDateRangeLegacy);
 
         const example = documentationPage.getExample('#custom-period');
         const inputDateRange = new TuiInputDateRangePO(

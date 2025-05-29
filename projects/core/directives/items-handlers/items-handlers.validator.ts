@@ -4,13 +4,14 @@ import {NG_VALIDATORS} from '@angular/forms';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
+
+import {TuiItemsHandlersDirective} from './items-handlers.directive';
 
 @Directive({
     standalone: true,
-    providers: [tuiProvide(NG_VALIDATORS, TuiInputDateValidator, true)],
+    providers: [tuiProvide(NG_VALIDATORS, TuiItemsHandlersValidator, true)],
 })
-export class TuiInputDateValidator extends TuiValidator {
+export class TuiItemsHandlersValidator extends TuiValidator {
     private readonly handlers = inject(TuiItemsHandlersDirective);
 
     protected readonly update = effect(() => {
@@ -19,7 +20,9 @@ export class TuiInputDateValidator extends TuiValidator {
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     public override validate: ValidatorFn = ({value}) =>
-        value && this.handlers.disabledItemHandler()(value)
-            ? {tuiDisabledDate: value}
+        (Array.isArray(value) &&
+            value.some((item) => this.handlers.disabledItemHandler()(item))) ||
+        (value && this.handlers.disabledItemHandler()(value))
+            ? {tuiDisabledItem: value}
             : null;
 }
