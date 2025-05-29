@@ -76,10 +76,11 @@ export class TuiComboBox<T>
 
     protected readonly matchingEffect = effect(() => {
         const options = this.options();
+        const textfieldValue = this.textfield.value();
 
         if (!options.length) {
             if (!this.strict()) {
-                this.onChange(this.textfield.value());
+                this.onChange(textfieldValue || null);
             }
 
             return;
@@ -87,14 +88,14 @@ export class TuiComboBox<T>
 
         const selectedOption =
             options.find((x) =>
-                this.matcher()(x, this.textfield.value(), this.itemsHandlers.stringify()),
+                this.matcher()(x, textfieldValue, this.itemsHandlers.stringify()),
             ) ?? null;
         const stringified = this.stringify(selectedOption);
-        const fallback = this.strict() ? null : this.textfield.value();
+        const fallback = this.strict() || !textfieldValue ? null : textfieldValue;
 
         this.onChange(selectedOption ?? fallback);
 
-        if (stringified && stringified !== untracked(() => this.textfield.value())) {
+        if (stringified && stringified !== textfieldValue) {
             this.textfield.value.set(stringified);
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
