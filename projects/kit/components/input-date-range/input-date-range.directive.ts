@@ -2,10 +2,10 @@ import {computed, Directive, Input, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
+import type {TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {
     DATE_RANGE_FILLER_LENGTH,
     RANGE_SEPARATOR_CHAR,
-    type TuiDayLike,
     TuiDayRange,
 } from '@taiga-ui/cdk/date-time';
 import {tuiDirectiveBinding, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -14,7 +14,7 @@ import {
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
-import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
+import type {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {
     TUI_DATE_ADAPTER,
     TUI_INPUT_DATE_OPTIONS_NEW,

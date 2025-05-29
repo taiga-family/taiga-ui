@@ -2,8 +2,8 @@ import {ContentChild, Directive, inject} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/directives/dropdown';
 import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
-import {TuiInputDateRangeDirective} from '@taiga-ui/kit';
 import {TuiInputDateDirective} from '@taiga-ui/kit/components/input-date';
+import {TuiInputDateRangeDirective} from '@taiga-ui/kit/components/input-date-range';
 
 import {TuiMobileCalendarDropdown} from './mobile-calendar-dropdown.component';
 
