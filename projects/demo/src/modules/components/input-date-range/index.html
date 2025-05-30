@@ -1,14 +1,14 @@
 <tui-doc-page
-    header="InputDate"
+    header="InputDateRange"
     package="KIT"
     type="components"
 >
     <ng-template pageTab>
-        <code>InputDate</code>
+        <code>InputDateRange</code>
         =
         <code>Textfield</code>
         +
-        <code>Calendar</code>
+        <code>CalendarRange</code>
         + ❤️
 
         <tui-doc-example
@@ -19,9 +19,9 @@
         />
 
         <tui-doc-example
-            id="custom-dropdown"
-            description="You can customize dropdown content and change how particular dates display"
-            heading="Custom dropdown"
+            id="datalist"
+            description="Currently not implemented on mobile devices"
+            heading="DataList"
             [component]="2 | tuiComponent"
             [content]="2 | tuiExample"
         />
@@ -49,10 +49,9 @@
         >
             <ng-template #transformer>
                 By default component works with our internal type called
-                <code>TuiDay</code>
-                . If you prefer to use anything else, like a string or native
-                <code>Date</code>
-                you can provide custom transformer in options to store value in different format in form control
+                <code>TuiDayRange</code>
+                . If you prefer to use anything else, like a string you can provide custom transformer in options to
+                store value in different format in form control
             </ng-template>
         </tui-doc-example>
 
@@ -80,7 +79,7 @@
             [description]="mobile"
         >
             <ng-template #mobile>
-                You can use several different approaches to optimize UX on mobile devices when tapping the icon.
+                You can enable a different picker to improve UX on mobile devices when tapping the icon.
                 <strong>Open this on a mobile device or enable emulation in DevTools and refresh the page</strong>
             </ng-template>
         </tui-doc-example>
@@ -90,20 +89,6 @@
             heading="Limits"
             [component]="7 | tuiComponent"
             [content]="7 | tuiExample"
-            [description]="limits"
-        >
-            <ng-template #limits>
-                Individual disabled dates still can be typed in manually or picked on mobile in native picker but
-                control will be automatically marked as invalid
-            </ng-template>
-        </tui-doc-example>
-
-        <tui-doc-example
-            id="datalist"
-            description="Native mobile pickers have limited browser support for native datalist"
-            heading="Datalist"
-            [component]="8 | tuiComponent"
-            [content]="8 | tuiExample"
         />
     </ng-template>
 
@@ -122,21 +107,23 @@
                         *ngIf="textfieldDoc.size !== 's'"
                         tuiLabel
                     >
-                        Choose date
+                        Choose range
                     </label>
 
                     <input
-                        tuiInputDate
+                        tuiInputDateRange
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max"
+                        [maxLength]="maxLength"
                         [min]="min"
-                        [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''"
+                        [minLength]="minLength"
+                        [placeholder]="textfieldDoc.size === 's' ? 'Choose range' : ''"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
 
-                    <tui-calendar *tuiTextfieldDropdown />
+                    <tui-calendar-range *tuiTextfieldDropdown />
                 </tui-textfield>
             </ng-template>
         </tui-doc-demo>
@@ -158,6 +145,24 @@
                 [(value)]="max"
             >
                 Max date
+            </tr>
+            <tr
+                name="[minLength]"
+                tuiDocAPIItem
+                type="TuiDayLike | null"
+                [items]="limits"
+                [(value)]="minLength"
+            >
+                Min length of the range
+            </tr>
+            <tr
+                name="[maxLength]"
+                tuiDocAPIItem
+                type="TuiDayLike | null"
+                [items]="limits"
+                [(value)]="maxLength"
+            >
+                Max length of the range
             </tr>
             <tbody
                 #itemsHandlers
