@@ -36,10 +36,10 @@ export class TuiNativeValidator implements Validator {
     }
 
     protected handleValidation(): void {
-        this.el.setCustomValidity?.(
-            this.control$.value?.touched && this.control$.value?.invalid
-                ? this.tuiNativeValidator
-                : '',
-        );
+        const invalid = this.control$.value?.touched && this.control$.value?.invalid;
+
+        // TODO: Replace with :has(:invalid) when supported
+        this.el.closest('tui-textfield')?.classList.toggle('tui-invalid', invalid);
+        this.el.setCustomValidity?.(invalid ? this.tuiNativeValidator : '');
     }
 }

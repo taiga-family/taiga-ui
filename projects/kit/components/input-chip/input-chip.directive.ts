@@ -10,6 +10,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {
@@ -19,11 +20,13 @@ import {
     tuiValue,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
-import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
+import {
+    type TuiTextfieldAccessor,
+    TuiTextfieldBase,
+} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
     TuiTextfieldMultiComponent,
-    TuiWithTextfieldMulti,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
@@ -62,7 +65,13 @@ const BACKSPACE_CODE = 8;
         tuiAsTextfieldAccessor(TuiInputChipDirective),
         tuiAsAuxiliary(TuiInputChipDirective),
     ],
-    hostDirectives: [TuiWithTextfieldMulti],
+    hostDirectives: [
+        TuiNativeValidator,
+        {
+            directive: TuiTextfieldBase,
+            inputs: ['invalid', 'focused', 'readOnly', 'state'],
+        },
+    ],
     host: {
         enterkeyhint: 'enter',
         '[disabled]': 'disabled()',
