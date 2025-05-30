@@ -38,14 +38,14 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
         await inputPhoneInternational.select.click();
 
         await expect(
-            inputPhoneInternational.dropdown.locator('tui-textfield input'),
+            inputPhoneInternational.dropdown.locator('tui-textfield input[tuiTextfield]'),
         ).toBeFocused();
     });
 
     test('items is filtered by textfield inside dropdown', async () => {
         await inputPhoneInternational.select.click();
         await inputPhoneInternational.dropdown
-            .locator('tui-textfield input')
+            .locator('tui-textfield input[tuiTextfield]')
             .fill('aust');
 
         const options = await inputPhoneInternational.getOptions();
