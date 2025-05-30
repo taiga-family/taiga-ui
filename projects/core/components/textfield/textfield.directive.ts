@@ -47,7 +47,7 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     );
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+    protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly textfield: TuiTextfieldComponent<T> =
         inject(TuiTextfieldComponent);
 
@@ -100,7 +100,7 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
             this.el.ownerDocument.execCommand(
                 'insertText',
                 false,
-                this.itemsHandlers.stringify()(value),
+                this.handlers.stringify()(value),
             );
         }
     }
