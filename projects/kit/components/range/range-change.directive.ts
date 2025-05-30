@@ -19,6 +19,7 @@ export class TuiRangeChange {
 
     @Output()
     public readonly activeThumbChange = new EventEmitter<'left' | 'right'>();
+
     constructor() {
         let activeThumb: 'left' | 'right';
 
