@@ -10,7 +10,7 @@
     <ng-container #vcr />
 
     <span class="t-input_wrapper">
-        <span class="t-ghost">{{ input?.nativeElement?.value }}</span>
+        <span class="t-ghost">{{ value() }}</span>
         <ng-content select="input" />
         <input
             *ngIf="showFiller()"
@@ -28,7 +28,7 @@
 
 <span
     class="t-content"
-    (mousedown.prevent)="input?.nativeElement?.focus()"
+    (pointerdown.prevent)="input?.nativeElement?.focus()"
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />

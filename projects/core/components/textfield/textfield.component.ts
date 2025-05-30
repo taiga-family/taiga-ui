@@ -48,7 +48,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {ReplaySubject, startWith, switchMap} from 'rxjs';
 
-import {TuiTextfieldDirective} from './textfield.directive';
+import {TuiTextfieldBase} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 import type {TuiTextfieldAccessor} from './textfield-accessor';
 import {TUI_TEXTFIELD_ACCESSOR} from './textfield-accessor';
@@ -138,7 +138,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     public readonly accessor?: TuiTextfieldAccessor<T>;
 
     // TODO: Replace with signal query when Angular is updated v5
-    @ContentChild(forwardRef(() => TuiTextfieldDirective), {
+    @ContentChild(forwardRef(() => TuiTextfieldBase), {
         read: ElementRef,
         static: true,
     })

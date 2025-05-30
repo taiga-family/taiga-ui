@@ -1,6 +1,7 @@
 import type {OnChanges} from '@angular/core';
 import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -110,7 +111,10 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     // TODO: Remove :not in v.5
     selector:
         'input[tuiTextfield]:not([tuiInputCard]):not([tuiInputExpire]):not([tuiInputCVC])',
-    providers: [tuiAsTextfieldAccessor(TuiTextfieldDirective)],
+    providers: [
+        tuiAsTextfieldAccessor(TuiTextfieldDirective),
+        tuiProvide(TuiTextfieldBase, TuiTextfieldDirective),
+    ],
     hostDirectives: [TuiNativeValidator, TuiAppearance],
 })
 export class TuiTextfieldDirective<T> extends TuiTextfieldBase<T> {}
