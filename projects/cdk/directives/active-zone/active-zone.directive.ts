@@ -17,6 +17,7 @@ import {distinctUntilChanged, map, share, skip, startWith, tap} from 'rxjs';
     },
 })
 export class TuiActiveZone implements OnDestroy {
+    // TODO: Should we remove in v5? It's no longer used in Taiga UI
     private readonly control: any = inject(NgControl, {self: true, optional: true});
     private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
     private readonly zone = inject(NgZone);
