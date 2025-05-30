@@ -37,7 +37,7 @@ tui-textfield[multi] {
         align-items: center;
         overflow: scroll;
         scroll-behavior: smooth;
-        padding: 0.5rem 0;
+        padding: 0.625rem 0;
         inline-size: calc(100% - var(--t-side) - var(--t-padding) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
 
         & ~ .t-content .t-clear {
@@ -116,6 +116,10 @@ tui-textfield[multi] {
         .t-ghost {
             min-block-size: 1.75rem;
         }
+
+        .t-container {
+            padding: 0.5rem 0;
+        }
     }
 
     &[data-size='s'] {
@@ -124,7 +128,7 @@ tui-textfield[multi] {
         padding-inline-end: 0.625rem;
 
         .t-ghost {
-            min-block-size: 1rem;
+            min-block-size: 1.75rem;
         }
 
         .t-container {
