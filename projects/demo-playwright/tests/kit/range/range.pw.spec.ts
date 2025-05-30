@@ -33,7 +33,7 @@ test.describe('TuiRange', () => {
             });
 
             test('click on the end of the track changes only nearest (right) slider', async () => {
-                await range.host.click({position: {x: 276, y: 0}});
+                await range.host.click({position: {x: 290, y: 0}});
 
                 await expect(range.left).toHaveValue('4');
                 await expect(range.right).toHaveValue('10');
@@ -43,8 +43,8 @@ test.describe('TuiRange', () => {
             });
 
             test('click between two thumbs triggers only nearest thumb', async () => {
-                await range.host.click({position: {x: 150, y: 0}});
-                await range.host.click({position: {x: 276, y: 0}});
+                await range.host.click({position: {x: 157, y: 0}});
+                await range.host.click({position: {x: 290, y: 0}});
 
                 await expect(range.left).toHaveValue('4');
                 await expect(range.right).toHaveValue('10');
@@ -52,8 +52,8 @@ test.describe('TuiRange', () => {
                     .soft(example)
                     .toHaveScreenshot('03-range-click-checks-4-10.png');
 
-                await range.host.click({position: {x: 155, y: 0}});
-                await range.host.click({position: {x: 276, y: 0}});
+                await range.host.click({position: {x: 163, y: 0}});
+                await range.host.click({position: {x: 290, y: 0}});
 
                 await expect(range.left).toHaveValue('5');
                 await expect(range.right).toHaveValue('10');
@@ -100,7 +100,7 @@ test.describe('TuiRange', () => {
                 test('pressing of Arrow Right increases by one step (after focus on left slider)', async ({
                     page,
                 }) => {
-                    await range.host.click({position: {x: 276, y: 0}});
+                    await range.host.click({position: {x: 290, y: 0}});
 
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('1000');
@@ -135,7 +135,7 @@ test.describe('TuiRange', () => {
                 test('pressing of Arrow Left decreases by one step (after setting right thumb active via click)', async ({
                     page,
                 }) => {
-                    await range.host.click({position: {x: 276, y: 0}});
+                    await range.host.click({position: {x: 290, y: 0}});
 
                     await expect(range.left).toHaveValue('0');
                     await expect(range.right).toHaveValue('1000');
@@ -202,7 +202,7 @@ test.describe('TuiRange', () => {
                 test('cannot set right thumb less than left thumb (by ArrowLeft)', async ({
                     page,
                 }) => {
-                    await range.host.click({position: {x: 276, y: 0}});
+                    await range.host.click({position: {x: 290, y: 0}});
                     await range.left.focus();
                     await page.keyboard.down('ArrowRight');
                     await page.keyboard.down('ArrowRight');
