@@ -1,9 +1,9 @@
 import type {OnChanges} from '@angular/core';
 import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {NgControl} from '@angular/forms';
-import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiAppearance,
     tuiAppearance,
