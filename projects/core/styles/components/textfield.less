@@ -164,7 +164,7 @@ tui-textfield {
     &:hover {
         color: var(--tui-text-secondary);
 
-        &:has(input:read-only),
+        &:has(input:read-only):not([multi]),
         &:has(textarea:read-only),
         &:has(select[data-mode~='readonly']) {
             color: var(--tui-text-tertiary);

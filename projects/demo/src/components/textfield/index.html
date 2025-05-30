@@ -42,4 +42,14 @@
     </p>
 </tr>
 
+<tr
+    *ngIf="!hiddenOptions.includes('rows')"
+    name="[rows]"
+    tuiDocAPIItem
+    type="number"
+    [(value)]="rows"
+>
+    Maximum number of rows
+</tr>
+
 <ng-content />

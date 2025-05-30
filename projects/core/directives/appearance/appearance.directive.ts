@@ -1,14 +1,17 @@
 import {
     afterNextRender,
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     computed,
     Directive,
+    effect,
     inject,
     Input,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiInteractiveState} from '@taiga-ui/core/types';
@@ -41,12 +44,24 @@ class TuiAppearanceStyles {}
     },
 })
 export class TuiAppearance {
+    private readonly cdr = inject(ChangeDetectorRef, {skipSelf: true});
     private readonly el = tuiInjectElement();
 
     protected readonly nothing = tuiWithStyles(TuiAppearanceStyles);
     protected readonly modes = computed((mode = this.mode()) =>
         !mode || tuiIsString(mode) ? mode : mode.join(' '),
     );
+
+    // TODO: Remove when Angular is updated
+    protected readonly update = effect(() => {
+        this.mode();
+        this.state();
+        this.focus();
+
+        if (this.el.matches('tui-textfield[multi]')) {
+            this.cdr.detectChanges();
+        }
+    }, TUI_ALLOW_SIGNAL_WRITES);
 
     // TODO: refactor to signal inputs after Angular update
     public readonly appearance = signal(inject(TUI_APPEARANCE_OPTIONS).appearance);

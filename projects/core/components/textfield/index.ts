@@ -10,3 +10,4 @@ export * from './textfield-dropdown.directive';
 export * from './textfield-icon';
 // Moving it down for order of compilation
 export * from './select.directive';
+export * from './textfield-multi/textfield-multi.component';
