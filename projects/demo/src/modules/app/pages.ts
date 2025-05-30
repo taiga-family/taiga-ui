@@ -505,6 +505,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputChip',
+                keywords: 'поле, инпут, форма, ввод, input, chip, tag, тэг',
+                route: DemoRoute.InputChip,
+            },
+            {
+                section: 'Components',
                 title: 'InputDate',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
@@ -639,12 +645,6 @@ export const pages: DocRoutePages = [
                 title: 'InputSlider [deprecated]',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: DemoRoute.InputSliderLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputChip',
-                keywords: 'поле, инпут, форма, ввод, input, chip, tag, тэг',
-                route: DemoRoute.InputChip,
             },
             {
                 section: 'Components',
