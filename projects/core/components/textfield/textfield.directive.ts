@@ -35,7 +35,7 @@ import {tuiAsTextfieldAccessor} from './textfield-accessor';
 })
 export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     // TODO: refactor to signal inputs after Angular update
-    protected readonly focused = signal<boolean | null>(null);
+    private readonly focused = signal<boolean | null>(null);
 
     protected readonly control = inject(NgControl, {optional: true});
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance, {});
