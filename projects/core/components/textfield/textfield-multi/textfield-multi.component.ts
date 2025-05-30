@@ -6,7 +6,6 @@ import {
     Component,
     ContentChild,
     ElementRef,
-    forwardRef,
     inject,
     Input,
     TemplateRef,
@@ -34,7 +33,6 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiTextfieldComponent} from '../textfield.component';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
-import {TuiTextfieldMultiDirective} from './textfield-multi.directive';
 
 @Component({
     standalone: true,
@@ -70,7 +68,7 @@ import {TuiTextfieldMultiDirective} from './textfield-multi.directive';
         '(focusout)': 'onFocusout($event.relatedTarget)',
         '(mousedown)': '0',
         '[class._expandable]': 'expandable',
-        '[attr.data-state]': 'disabled ? "disabled" : null',
+        '[attr.data-state]': 'ngControl?.disabled ? "disabled" : null',
         '[class._text]': '!item',
         '[class._empty]': 'empty',
     },
@@ -80,12 +78,6 @@ export class TuiTextfieldMultiComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
     private readonly cdr = inject(ChangeDetectorRef);
-
-    @ContentChild(forwardRef(() => TuiTextfieldMultiDirective), {
-        read: ElementRef,
-        static: true,
-    })
-    public override readonly input?: ElementRef<HTMLInputElement>;
 
     @ViewChild('container', {read: ElementRef, static: true})
     public readonly container?: ElementRef<HTMLElement>;
@@ -97,7 +89,7 @@ export class TuiTextfieldMultiComponent<T>
     public rows = 100;
 
     public override handleOption(option: T): void {
-        this.accessor?.setValue([...(this.control?.value ?? []), option]);
+        this.accessor?.setValue([...(this.ngControl?.value ?? []), option]);
     }
 
     public onFocusout(target: HTMLElement | null): void {
@@ -111,7 +103,7 @@ export class TuiTextfieldMultiComponent<T>
     }
 
     protected get computeMaxHeight(): number | null {
-        return this.expandable && this.control?.value?.length && this.lineHeight
+        return this.expandable && this.ngControl?.value?.length && this.lineHeight
             ? this.rows * this.lineHeight
             : null;
     }
@@ -124,10 +116,6 @@ export class TuiTextfieldMultiComponent<T>
 
     protected get expandable(): boolean {
         return this.rows > 1;
-    }
-
-    protected get disabled(): boolean {
-        return !!this.control?.disabled;
     }
 
     protected get lineHeight(): number {

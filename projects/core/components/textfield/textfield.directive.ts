@@ -20,7 +20,18 @@ import type {TuiTextfieldAccessor} from './textfield-accessor';
 import {tuiAsTextfieldAccessor} from './textfield-accessor';
 
 // TODO: Drop in v5 after updated Angular and hostDirectives inherit
-@Directive()
+@Directive({
+    standalone: true,
+    providers: [tuiAsTextfieldAccessor(TuiTextfieldBase)],
+    host: {
+        '[id]': 'textfield.id',
+        '[readOnly]': 'readOnly',
+        '[class._empty]': 'value() === ""',
+        '(input)': '0',
+        '(focusin)': '0',
+        '(focusout)': '0',
+    },
+})
 export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     // TODO: refactor to signal inputs after Angular update
     protected readonly focused = signal<boolean | null>(null);
@@ -101,14 +112,6 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
         'input[tuiTextfield]:not([tuiInputCard]):not([tuiInputExpire]):not([tuiInputCVC])',
     providers: [tuiAsTextfieldAccessor(TuiTextfieldDirective)],
     hostDirectives: [TuiNativeValidator, TuiAppearance],
-    host: {
-        '[id]': 'textfield.id',
-        '[readOnly]': 'readOnly',
-        '[class._empty]': 'value() === ""',
-        '(input)': '0',
-        '(focusin)': '0',
-        '(focusout)': '0',
-    },
 })
 export class TuiTextfieldDirective<T> extends TuiTextfieldBase<T> {}
 
