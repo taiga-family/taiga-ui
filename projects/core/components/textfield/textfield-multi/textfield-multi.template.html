@@ -1,9 +1,8 @@
 <div
-    #container
     tuiScrollRef
     class="t-container"
     [style.flex-wrap]="rows > 1 ? 'wrap' : 'nowrap'"
-    [style.max-height.px]="computeMaxHeight"
+    [style.max-height.px]="maxHeight"
     (click.stop)="input?.nativeElement?.focus()"
     (waResizeObserver)="refresh()"
 >
@@ -21,7 +20,7 @@
         />
     </span>
     <tui-scroll-controls
-        *ngIf="computeMaxHeight"
+        *ngIf="maxHeight"
         class="t-scroll"
     />
 </div>

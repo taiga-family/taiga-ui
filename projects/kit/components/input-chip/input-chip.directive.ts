@@ -138,9 +138,8 @@ export class TuiInputChipDirective<T>
 
     protected get elements(): readonly HTMLElement[] {
         return Array.from(
-            this.textfield.container?.nativeElement.querySelectorAll(
-                'tui-chip-wrapper',
-            ) ?? [],
+            this.textfield.items?.nativeElement.querySelectorAll('tui-chip-wrapper') ??
+                [],
         ).map(({firstChild}) => firstChild) as HTMLElement[];
     }
 
@@ -220,7 +219,7 @@ export class TuiInputChipDirective<T>
     }
 
     private get scrollRef(): HTMLElement | null {
-        return this.textfield.container?.nativeElement ?? null;
+        return this.textfield.items?.nativeElement ?? null;
     }
 
     private filterValue(value: T[]): T[] {
