@@ -10,8 +10,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {
     tuiGetClipboardDataText,
@@ -20,12 +20,10 @@ import {
     tuiValue,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
-import {
-    type TuiTextfieldAccessor,
-    TuiTextfieldBase,
-} from '@taiga-ui/core/components/textfield';
+import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
+    TuiTextfieldBase,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
