@@ -64,6 +64,7 @@ export class TuiElasticStickyService extends Observable<number> {
     }
 
     private get host(): Element {
+        // TODO: Test if we still need it now, that templates pass injector
         return this.el.closest(SCROLL_REF_SELECTOR) || this.scrollRef;
     }
 
