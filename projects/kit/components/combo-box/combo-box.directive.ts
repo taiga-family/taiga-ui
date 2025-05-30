@@ -36,7 +36,6 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
     hostDirectives: [TuiWithTextfield],
     host: {
         '[disabled]': 'disabled()',
-        '(blur)': 'onTouched()',
         '(click)': 'toggleDropdown()',
         '(input)': 'onInput($event.target.value)',
         '(keydown.enter)': 'keydownEnter($event)',

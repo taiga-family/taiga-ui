@@ -48,7 +48,6 @@ export const TUI_DATE_ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
     host: {
         '[attr.inputmode]': 'open() ? "none" : "numeric"',
         '[disabled]': 'disabled()',
-        '(blur)': 'onTouched()',
         '(input)': 'onValueChange($event.target.value)',
         '(click.capture.stop)': 'onClick()',
     },

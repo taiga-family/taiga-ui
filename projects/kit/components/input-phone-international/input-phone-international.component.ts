@@ -63,6 +63,7 @@ import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international
 
 const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
 
+/** @deprecated use version from experimental package instead */
 @Component({
     standalone: true,
     selector: 'tui-input-phone-international',

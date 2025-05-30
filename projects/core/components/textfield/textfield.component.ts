@@ -18,6 +18,7 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {TuiControl} from '@taiga-ui/cdk/classes';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
@@ -77,10 +78,11 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
     host: {
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
-        '[class._with-template]': 'content && control?.value != null',
+        '[class._with-template]': 'content && ngControl?.value != null',
         '[class._disabled]': 'input?.nativeElement?.disabled',
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
+        '(tuiActiveZoneChange)': '!$event && control?.onTouched()',
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterContentInit {
@@ -100,7 +102,10 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     protected readonly label?: ElementRef<HTMLElement>;
 
     @ContentChild(NgControl)
-    protected readonly control?: NgControl;
+    protected readonly ngControl?: NgControl;
+
+    @ContentChild(TuiControl)
+    protected readonly control?: TuiControl<unknown>;
 
     @ContentChildren(TUI_AUXILIARY, {descendants: true})
     protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;

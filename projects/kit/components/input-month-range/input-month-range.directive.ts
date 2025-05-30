@@ -31,7 +31,6 @@ import {TUI_INPUT_MONTH_RANGE_OPTIONS} from './input-month-range.options';
     hostDirectives: [TuiWithTextfield, TuiSelectLike, TuiDropdownAuto],
     host: {
         '[disabled]': 'disabled()',
-        '(blur)': 'onTouched()',
         '(input)': '$event.inputType?.includes("delete") && clear()',
     },
 })

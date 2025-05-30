@@ -102,7 +102,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         ngSkipHydration: 'true',
         '[attr.inputmode]': '!ios && open() ? "none" : null',
         '[disabled]': 'disabled()',
-        '(blur)': 'onTouched()',
         '(input)': 'masked.set($event.target.value)',
         '(click)': 'open.set(false)',
         '(beforeinput.capture)': 'onPaste($event)',
