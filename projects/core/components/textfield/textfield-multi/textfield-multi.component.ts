@@ -66,7 +66,7 @@ import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
     ],
     host: {
         '(focusout)': 'onFocusout($event.relatedTarget)',
-        '(mousedown)': '0',
+        '(pointerdown)': '0',
         '[class._expandable]': 'expandable',
         '[attr.data-state]': 'ngControl?.disabled ? "disabled" : null',
         '[class._text]': '!item',
