@@ -17,7 +17,16 @@
             heading="Platforms"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
-        />
+            [description]="platformDescription"
+        >
+            <ng-template #platformDescription>
+                Add import of
+                <code>&#64;taiga-ui/addon-mobile/styles/taiga-ui-mobile.less</code>
+                to your encapsulated global styles to enable power of
+                <code>TuiPlatform</code>
+                directive.
+            </ng-template>
+        </tui-doc-example>
 
         <tui-doc-example
             id="decorative"
