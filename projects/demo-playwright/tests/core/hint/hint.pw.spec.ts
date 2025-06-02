@@ -72,16 +72,17 @@ test.describe('TuiHint', () => {
 
         test(`${mode} mode hint with delay`, async ({page}) => {
             await page.setViewportSize({width: 750, height: 200});
+            await page.clock.install();
             await tuiGoto(
                 page,
-                `/directives/hint/API?tuiHintShowDelay=1000&darkMode=${mode}`,
+                `${DemoRoute.Hint}/API?tuiHintShowDelay=1000&darkMode=${mode}`,
             );
             const example = new TuiDocumentationPagePO(page);
 
             await example.prepareBeforeScreenshot();
 
             await example.apiPageExample.locator('span').hover();
-            await page.waitForTimeout(0);
+            await page.clock.runFor(0);
 
             await expect
                 .soft(page)
@@ -89,15 +90,15 @@ test.describe('TuiHint', () => {
                     `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-0.png`,
                 );
 
-            await page.waitForTimeout(600);
+            await page.clock.runFor(600);
 
             await expect
                 .soft(page)
                 .toHaveScreenshot(
-                    `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-after-500.png`,
+                    `03-hint-mode-${mode}-tuiHintShowDelay-1000-wait-after-600.png`,
                 );
 
-            await page.waitForTimeout(1500);
+            await page.clock.runFor(1500);
 
             await expect
                 .soft(page)
