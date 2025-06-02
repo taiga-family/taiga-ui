@@ -126,11 +126,12 @@ export class TuiInputChipDirective<T>
     protected onEnter(): void {
         const value = this.textfield.value().trim();
         const items: any[] = this.separator ? value.split(this.separator) : [value];
+        const added = items.filter(Boolean);
 
         this.textfield.value.set('');
 
-        if (items.length) {
-            this.onChange(this.filterValue([...this.value(), ...items.filter(Boolean)]));
+        if (added.length) {
+            this.onChange(this.filterValue([...this.value(), ...added]));
             this.scrollTo();
         }
     }
