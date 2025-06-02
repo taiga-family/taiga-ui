@@ -102,10 +102,8 @@ export class TuiTextfieldMultiComponent<T>
     }
 
     protected get maxHeight(): number | null {
-        const {clientHeight = 0} = this.items?.nativeElement.firstElementChild || {};
-
-        return this.rows > 1 && this.ngControl?.value?.length && clientHeight
-            ? this.rows * clientHeight
+        return this.rows > 1 && this.ngControl?.value?.length
+            ? this.rows * (this.items?.nativeElement.firstElementChild?.clientHeight ?? 0)
             : null;
     }
 }
