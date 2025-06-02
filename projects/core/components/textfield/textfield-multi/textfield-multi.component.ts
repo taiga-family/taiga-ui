@@ -2,7 +2,6 @@ import {NgIf} from '@angular/common';
 import type {AfterContentInit, ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
     inject,
@@ -74,7 +73,7 @@ import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
         '[class._text]': '!item',
         '[class._empty]': '!ngControl?.value?.length',
         '(pointerdown)': '0',
-        '(tuiActiveZoneChange)': '!$event && items?.nativeElement.scrollTo({left: 0})',
+        '(tuiActiveZoneChange)': '!$event && items?.nativeElement?.scrollTo({left: 0})',
     },
 })
 export class TuiTextfieldMultiComponent<T>
@@ -82,7 +81,6 @@ export class TuiTextfieldMultiComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
     private readonly handlers = inject(TUI_ITEMS_HANDLERS);
-    private readonly cdr = inject(ChangeDetectorRef);
 
     @ViewChild(TUI_SCROLL_REF, {static: true})
     public readonly items?: ElementRef<HTMLElement>;
@@ -101,10 +99,6 @@ export class TuiTextfieldMultiComponent<T>
                 this.handlers.identityMatcher(),
             ),
         );
-    }
-
-    public refresh(): void {
-        this.cdr.detectChanges();
     }
 
     protected get maxHeight(): number | null {

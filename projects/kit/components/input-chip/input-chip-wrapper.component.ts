@@ -5,6 +5,12 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
+interface Chip<T> {
+    readonly item: T;
+    readonly index: number;
+    readonly length: number;
+}
+
 /*
  * Internal wrapper for polymorpheus-context
  */
@@ -35,25 +41,10 @@ import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiChipWrapper<T> {
-    protected readonly context = injectContext<
-        PolymorpheusContext<{
-            index: number;
-            length: number;
-            item: T;
-        }>
-    >();
-
+    protected readonly context = injectContext<PolymorpheusContext<Chip<T>>>();
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
 
-    protected readonly default: PolymorpheusContent<
-        TuiContext<{index: number; item: T; length: number}>
-    > = ({$implicit}) => {
-        const {item, index, length} = $implicit;
-
-        if (this.textfield.focused()) {
-            return `${$implicit.item}, `;
-        } else {
-            return index + 1 === length ? `${item}` : `${item}, `;
-        }
-    };
+    protected readonly default: PolymorpheusContent<TuiContext<Chip<T>>> = ({
+        $implicit: {item, index, length},
+    }) => (index + 1 === length && !this.textfield.focused() ? `${item}` : `${item}, `);
 }
