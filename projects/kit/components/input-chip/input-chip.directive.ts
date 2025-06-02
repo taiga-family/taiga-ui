@@ -12,13 +12,11 @@ import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
-import {
-    type TuiTextfieldAccessor,
-    TuiTextfieldContent,
-} from '@taiga-ui/core/components/textfield';
+import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
     TuiTextfieldBase,
+    TuiTextfieldContent,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
