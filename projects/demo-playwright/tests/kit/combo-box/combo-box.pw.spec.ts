@@ -29,7 +29,7 @@ describe('ComboBox', () => {
                 `${DemoRoute.ComboBox}/API?sandboxExpanded=true&disabledItemHandler$=1`,
             );
 
-            comboBox.textfield.fill('austria');
+            await comboBox.textfield.fill('austria');
 
             const option = comboBox.dropdown.locator('[tuiOption]', {
                 hasText: 'Austria',
@@ -47,7 +47,7 @@ describe('ComboBox', () => {
         }) => {
             await tuiGoto(page, `${DemoRoute.ComboBox}/API?sandboxExpanded=true`);
 
-            comboBox.textfield.fill('austria');
+            await comboBox.textfield.fill('austria');
 
             const option = comboBox.dropdown.locator('[tuiOption]', {
                 hasText: 'Austria',
@@ -66,12 +66,12 @@ describe('ComboBox', () => {
         }) => {
             await tuiGoto(page, `${DemoRoute.ComboBox}/API?sandboxExpanded=true`);
 
-            comboBox.textfield.fill('aUsTri');
+            await comboBox.textfield.fill('aUsTri');
 
             await expect(comboBox.textfield).toHaveValue('aUsTri');
             await expect(example).toContainText('"testValue": null');
 
-            comboBox.textfield.pressSequentially('a');
+            await comboBox.textfield.pressSequentially('a');
 
             await expect(comboBox.textfield).toHaveValue('Austria');
 
@@ -84,7 +84,7 @@ describe('ComboBox', () => {
         }) => {
             await tuiGoto(page, `${DemoRoute.ComboBox}/API?sandboxExpanded=true`);
 
-            comboBox.textfield.fill('austr');
+            await comboBox.textfield.fill('austr');
 
             await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(2);
 
@@ -93,7 +93,7 @@ describe('ComboBox', () => {
             await expect(comboBox.textfield).toHaveValue('austr');
             await expect(example).toContainText('"testValue": null');
 
-            comboBox.textfield.pressSequentially('i');
+            await comboBox.textfield.pressSequentially('i');
 
             await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(1);
 
@@ -145,7 +145,7 @@ describe('ComboBox', () => {
 
             beforeEach(async ({page}) => {
                 await page.clock.install();
-                await tuiGoto(page, DemoRoute.ComboBox, {date: null});
+                await tuiGoto(page, DemoRoute.ComboBox);
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#server-side-filtering');
