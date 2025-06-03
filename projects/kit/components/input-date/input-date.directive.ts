@@ -46,7 +46,7 @@ export const TUI_DATE_ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
 @Directive({
     standalone: true,
     host: {
-        '[attr.inputmode]': 'open() ? "none" : "numeric"',
+        '[attr.inputmode]': 'mobile && open() ? "none" : "numeric"',
         '[disabled]': 'disabled()',
         '(input)': 'onValueChange($event.target.value)',
         '(click.capture.stop)': 'onClick()',

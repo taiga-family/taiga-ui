@@ -10,7 +10,6 @@ import {tuiCreateDefaultDayRangePeriods, TuiInputDateRange} from '@taiga-ui/kit'
     standalone: true,
     imports: [ReactiveFormsModule, TuiInputDateRange, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
