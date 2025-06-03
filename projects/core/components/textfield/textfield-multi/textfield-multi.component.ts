@@ -72,7 +72,6 @@ import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
         '[attr.data-state]': 'ngControl?.disabled ? "disabled" : null',
         '[class._text]': '!item',
         '[class._empty]': '!ngControl?.value?.length',
-        '(pointerdown)': '0',
         '(tuiActiveZoneChange)': '!$event && items?.nativeElement?.scrollTo({left: 0})',
     },
 })

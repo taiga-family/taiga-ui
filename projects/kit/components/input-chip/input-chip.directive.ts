@@ -1,12 +1,5 @@
 import {NgForOf} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    DestroyRef,
-    inject,
-    Input,
-} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
@@ -22,7 +15,6 @@ import {
 import {tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {timer} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
 import {TuiChipWrapper} from './input-chip-wrapper.component';
@@ -80,7 +72,6 @@ export class TuiInputChipDirective<T>
     implements TuiTextfieldAccessor<T[]>
 {
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
-    private readonly destroyRef = inject(DestroyRef);
     private readonly mobile = inject(TUI_IS_MOBILE);
 
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
@@ -182,14 +173,12 @@ export class TuiInputChipDirective<T>
 
     protected scrollTo(): void {
         // Allow change detection to run and add new tag to DOM
-        timer(0)
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(() => {
-                this.textfield.items?.nativeElement.scrollTo({
-                    top: Number.MAX_SAFE_INTEGER,
-                    left: Number.MAX_SAFE_INTEGER,
-                });
+        setTimeout(() => {
+            this.textfield.items?.nativeElement.scrollTo({
+                top: Number.MAX_SAFE_INTEGER,
+                left: Number.MAX_SAFE_INTEGER,
             });
+        });
     }
 
     private filterValue(value: T[]): T[] {
