@@ -69,8 +69,8 @@ const ARROW_LEFT_CODE = 37;
         '[disabled]': 'disabled()',
         '(blur)': 'onEnter();',
         '(keydown.enter.prevent)': 'onEnter()',
-        '(keydown.silent)': 'onKeydown($event.keyCode)',
-        '(input.silent)': 'onInput($event)',
+        '(keydown.zoneless)': 'onKeydown($event.keyCode)',
+        '(input)': 'onInput($event)',
         '(paste.prevent)': 'onPaste($event)',
         '(drop.prevent)': 'onPaste($event)',
     },
@@ -130,10 +130,12 @@ export class TuiInputChipDirective<T>
 
         this.textfield.value.set('');
 
-        if (added.length) {
-            this.onChange(this.filterValue([...this.value(), ...added]));
-            this.scrollTo();
+        if (!added.length) {
+            return;
         }
+
+        this.onChange(this.filterValue([...this.value(), ...added]));
+        this.scrollTo();
     }
 
     protected onInput(): void {
