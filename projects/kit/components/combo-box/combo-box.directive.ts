@@ -12,7 +12,6 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import type {TuiStringMatcher} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDataListAccessor} from '@taiga-ui/core/components/data-list';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
@@ -46,7 +45,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
     host: {
         '[disabled]': 'disabled()',
         '(click)': 'toggleDropdown()',
-        '(input.debounce~0ms)': 'toggleDropdown(true)',
+        '(input)': 'onInput()',
         '(keydown.enter)': 'keydownEnter($event)',
     },
 })
@@ -60,8 +59,10 @@ export class TuiComboBox<T>
     private readonly open = tuiDropdownOpen();
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
-    private readonly matcher = signal<TuiStringMatcher<T>>(TUI_STRICT_MATCHER);
+    private readonly itemsHandlers: TuiItemsHandlers<T | string> =
+        inject(TUI_ITEMS_HANDLERS);
+
+    private readonly matcher = signal<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
     private readonly strict = signal(true);
     private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
         (x) => x !== this && 'options' in x && isSignal(x.options),
@@ -74,21 +75,24 @@ export class TuiComboBox<T>
                 .filter((x) => !this.itemsHandlers.disabledItemHandler()(x)) ?? [],
     );
 
+    protected readonly nonStrictValueEffect = effect(() => {
+        if (!this.options().length && !this.strict()) {
+            this.onChange(this.textfield.value());
+        }
+    }, TUI_ALLOW_SIGNAL_WRITES);
+
     protected readonly matchingEffect = effect(() => {
         const options = this.options();
-        const textfieldValue = this.textfield.value();
+        const matcher = this.matcher();
 
-        if (!options.length) {
-            if (!this.strict()) {
-                this.onChange(textfieldValue || null);
-            }
-
+        if (!options.length || !matcher) {
             return;
         }
 
+        const textfieldValue = this.textfield.value();
         const selectedOption =
             options.find((x) =>
-                this.matcher()(x, textfieldValue, this.itemsHandlers.stringify()),
+                matcher(x, textfieldValue, this.itemsHandlers.stringify()),
             ) ?? null;
         const stringified = this.stringify(selectedOption);
         const fallback = this.strict() || !textfieldValue ? null : textfieldValue;
@@ -117,10 +121,10 @@ export class TuiComboBox<T>
     // TODO(v5): use signal input
     @Input('matcher')
     public set matcherSetter(x: TuiStringMatcher<T> | null) {
-        this.matcher.set(x ?? TUI_STRICT_MATCHER);
+        this.matcher.set(x);
     }
 
-    public setValue(value: T | string | null): void {
+    public setValue(value: T | null): void {
         const stringified = this.stringify(value);
 
         if (stringified !== this.textfield.value()) {
@@ -146,6 +150,10 @@ export class TuiComboBox<T>
         }
     }
 
+    protected onInput(): void {
+        setTimeout(() => this.toggleDropdown(true));
+    }
+
     protected keydownEnter(event: KeyboardEvent): void {
         if (!this.open()) {
             return;
@@ -160,10 +168,6 @@ export class TuiComboBox<T>
     }
 
     private stringify(value: T | string | null): string {
-        if (tuiIsString(value)) {
-            return value;
-        }
-
         return value ? this.itemsHandlers.stringify()(value) : '';
     }
 }
