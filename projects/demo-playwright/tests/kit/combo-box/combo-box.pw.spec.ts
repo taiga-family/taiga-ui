@@ -144,7 +144,8 @@ describe('ComboBox', () => {
             let comboBox!: TuiComboBoxPO;
 
             beforeEach(async ({page}) => {
-                await tuiGoto(page, DemoRoute.ComboBox);
+                await page.clock.install();
+                await tuiGoto(page, DemoRoute.ComboBox, {date: null});
                 const documentationPage = new TuiDocumentationPagePO(page);
 
                 example = documentationPage.getExample('#server-side-filtering');
