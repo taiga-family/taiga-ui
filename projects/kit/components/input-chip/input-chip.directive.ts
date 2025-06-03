@@ -143,6 +143,8 @@ export class TuiInputChipDirective<T>
 
         if (this.separator && this.textfield.value().match(this.separator)) {
             this.onEnter();
+        } else {
+            this.scrollTo();
         }
     }
 
