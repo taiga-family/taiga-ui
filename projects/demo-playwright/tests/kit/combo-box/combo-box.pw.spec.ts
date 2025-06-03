@@ -144,7 +144,6 @@ describe('ComboBox', () => {
             let comboBox!: TuiComboBoxPO;
 
             beforeEach(async ({page}) => {
-                await page.clock.install();
                 await tuiGoto(page, DemoRoute.ComboBox);
                 const documentationPage = new TuiDocumentationPagePO(page);
 
