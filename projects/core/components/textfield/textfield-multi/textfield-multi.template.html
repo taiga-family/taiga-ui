@@ -49,7 +49,7 @@
     <ng-content select="tui-icon" />
 </span>
 <span class="t-template">
-    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value}">
+    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: ngControl?.value}">
         {{ text }}
     </ng-container>
 </span>
