@@ -97,7 +97,7 @@ export class TuiTextfieldMultiComponent<T>
     public rows = 100;
 
     public override handleOption(option: T): void {
-        this.accessor?.setValue([...(this.control?.value ?? []), option]);
+        this.accessor?.setValue([...(this.ngControl?.value ?? []), option]);
     }
 
     public onFocusout(target: HTMLElement | null): void {
@@ -111,7 +111,7 @@ export class TuiTextfieldMultiComponent<T>
     }
 
     protected get computeMaxHeight(): number | null {
-        return this.expandable && this.control?.value?.length && this.lineHeight
+        return this.expandable && this.ngControl?.value?.length && this.lineHeight
             ? this.rows * this.lineHeight
             : null;
     }
@@ -127,7 +127,7 @@ export class TuiTextfieldMultiComponent<T>
     }
 
     protected get disabled(): boolean {
-        return !!this.control?.disabled;
+        return !!this.ngControl?.disabled;
     }
 
     protected get lineHeight(): number {
