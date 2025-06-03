@@ -77,7 +77,7 @@ export class TuiComboBox<T>
 
     protected readonly nonStrictValueEffect = effect(() => {
         if (!this.options().length && !this.strict()) {
-            this.onChange(this.textfield.value());
+            this.onChange(this.textfield.value() || null);
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
 
@@ -161,8 +161,10 @@ export class TuiComboBox<T>
 
         event.preventDefault();
 
-        if (this.options().length === 1) {
-            this.setValue(this.options()[0]!);
+        const options = this.options();
+
+        if (options.length === 1 && options[0]) {
+            this.setValue(options[0]);
             this.toggleDropdown(false);
         }
     }
