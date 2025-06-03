@@ -2,12 +2,13 @@ import type {Page} from '@playwright/test';
 import {expect} from '@playwright/test';
 
 import {tuiRemoveElement} from './hide-element';
+import {tuiMockDate} from './mock-date';
 import {tuiWaitForFonts} from './wait-for-fonts';
 import {waitIcons} from './wait-icons';
 import {waitStableState} from './wait-stable-state';
 
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
-    date?: Date;
+    date?: Date | null;
     language?: string;
     hideHeader?: boolean;
     enableNightMode?: boolean;
@@ -26,8 +27,6 @@ export async function tuiGoto(
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
 ): ReturnType<Page['goto']> {
-    await page.clock.install({time: date});
-
     await page.addInitScript(() => {
         globalThis.Math.random = () => 0.42;
     });
@@ -46,6 +45,10 @@ export async function tuiGoto(
             (lang) => globalThis.localStorage.setItem('tuiLanguage', lang),
             language,
         );
+    }
+
+    if (date) {
+        await tuiMockDate(page, date);
     }
 
     await page.route('https://fonts.gstatic.com/**', async (route) =>
