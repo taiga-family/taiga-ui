@@ -26,8 +26,6 @@ export async function tuiGoto(
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
 ): ReturnType<Page['goto']> {
-    await page.clock.install({time: date});
-
     await page.addInitScript(() => {
         globalThis.Math.random = () => 0.42;
     });
@@ -47,6 +45,8 @@ export async function tuiGoto(
             language,
         );
     }
+
+    await page.clock.setFixedTime(date);
 
     await page.route('https://fonts.gstatic.com/**', async (route) =>
         route.fulfill({path: `${__dirname}/../stubs/manrope-fonts.ttf`}),
