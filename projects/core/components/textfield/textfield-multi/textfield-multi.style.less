@@ -38,15 +38,14 @@ tui-textfield[multi] {
         }
     }
 
-    &._empty {
-        .t-container {
-            & ~ .t-content .t-clear {
-                display: none;
-            }
+    &._empty .t-container ~ .t-content .t-clear {
+        display: none;
+    }
 
-            input:defined::placeholder {
-                opacity: 1;
-            }
+    &._empty .t-container,
+    &[data-focus='true']:not(:focus-within) .t-container {
+        input::placeholder {
+            opacity: 1;
         }
     }
 

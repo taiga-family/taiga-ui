@@ -68,6 +68,7 @@ import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
         TuiWithAppearance,
     ],
     host: {
+        class: 'tui-interactive',
         '[class._expandable]': 'rows > 1',
         '[attr.data-state]': 'ngControl?.disabled ? "disabled" : null',
         '[class._text]': '!item',

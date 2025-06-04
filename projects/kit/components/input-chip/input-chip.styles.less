@@ -1,11 +1,16 @@
 :host {
+    cursor: pointer;
     margin: 0.125rem 0.25rem 0.125rem 0;
 
     .t-input {
-        padding: 0 0 0 0.25rem;
+        padding: inherit;
         transition: none;
         color: transparent;
         outline: none;
+
+        &:read-write {
+            cursor: text;
+        }
     }
 
     &._edit {

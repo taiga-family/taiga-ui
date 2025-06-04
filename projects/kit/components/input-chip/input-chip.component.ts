@@ -29,7 +29,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
 
 @Component({
     standalone: true,
-    selector: 'button[tuiInputChip], tui-input-chip',
+    selector: 'tui-input-chip',
     imports: [
         FormsModule,
         NgIf,
@@ -60,8 +60,6 @@ import {TuiInputChipDirective} from './input-chip.directive';
             tuiFadeOffset="0.5rem"
             class="t-text"
             [tuiHintOverflow]="hint?.content() ? null : stringify(internal())"
-            (dblclick)="!mobile && setEditMode()"
-            (longtap)="setEditMode()"
         >
             {{ internal() }}
         </div>
@@ -83,11 +81,15 @@ import {TuiInputChipDirective} from './input-chip.directive';
     host: {
         tuiChip: '',
         tabIndex: '-1',
+        class: 'tui-interactive',
         '[class._edit]': 'editMode()',
+        '(click)': '(mobile || editMode()) && $event.stopPropagation()',
+        '(dblclick)': 'setEditMode()',
+        '(pointerdown.prevent.zoneless)': '0',
         '(keydown.backspace.prevent)': 'delete()',
         '(keydown.arrowLeft.prevent)': 'moveFocus(-1)',
         '(keydown.arrowRight.prevent)': 'moveFocus(1)',
-        '(keydown.enter)': 'setEditMode()',
+        '(keydown.enter.prevent)': 'setEditMode()',
     },
 })
 export class TuiInputChipComponent<T> {
