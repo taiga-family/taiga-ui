@@ -5,11 +5,17 @@
     [style.max-height.px]="maxHeight"
     (click.stop)="input?.nativeElement?.focus()"
 >
-    <ng-container #vcr />
-
-    <span class="t-input_wrapper">
-        <span class="t-ghost">{{ value() }}</span>
+    <ng-template
+        *ngFor="let item of ngControl?.value; let index = index"
+        [polymorpheusOutlet]="component"
+        [polymorpheusOutletContext]="{$implicit: {item, index}}"
+    />
+    <span
+        class="t-input_wrapper"
+        (keydown.arrowLeft)="onLeft($event)"
+    >
         <ng-content select="input" />
+        <span class="t-ghost">{{ value() }}</span>
         <input
             *ngIf="showFiller()"
             aria-hidden="true"
@@ -44,6 +50,7 @@
     >
         {{ clear() }}
     </button>
+    <ng-container #vcr />
     <ng-content select="tui-icon" />
 </span>
 <span
