@@ -28,18 +28,11 @@ const ARROW_LEFT_CODE = 37;
     imports: [NgForOf, PolymorpheusOutlet, TuiTextfieldContent],
     template: `
         <ng-template tuiTextfieldContent>
-            <ng-container *ngFor="let item of value(); let i = index">
-                <ng-container
-                    *polymorpheusOutlet="
-                        wrapper as text;
-                        context: {
-                            $implicit: {item, index: i, length: value().length},
-                        }
-                    "
-                >
-                    {{ text }}
-                </ng-container>
-            </ng-container>
+            <ng-template
+                *ngFor="let item of value(); let index = index"
+                [polymorpheusOutlet]="wrapper"
+                [polymorpheusOutletContext]="{$implicit: {item, index}}"
+            />
         </ng-template>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,

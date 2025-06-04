@@ -11,14 +11,6 @@ tui-textfield[multi] {
         block-size: var(--t-height);
     }
 
-    input:defined {
-        appearance: none;
-        box-sizing: border-box;
-        border-radius: inherit;
-        border: none;
-        outline: none;
-    }
-
     .t-scroll {
         .fullsize(absolute, inset);
 
@@ -41,7 +33,7 @@ tui-textfield[multi] {
             display: flex;
         }
 
-        input:defined::placeholder {
+        input:not(:focus)::placeholder {
             opacity: 0;
         }
     }

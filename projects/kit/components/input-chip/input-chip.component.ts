@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
@@ -24,7 +24,6 @@ import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {injectContext} from '@taiga-ui/polymorpheus';
-import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
 import {TuiInputChipDirective} from './input-chip.directive';
 
@@ -47,6 +46,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
             enterkeyhint="enter"
             tabIndex="-1"
             tuiChip
+            class="t-input"
             [ngModel]="internal()"
             [readOnly]="!editMode()"
             (blur)="cancelEdit()"
@@ -58,10 +58,10 @@ import {TuiInputChipDirective} from './input-chip.directive';
         <div
             tuiFade
             tuiFadeOffset="0.5rem"
-            [style.pointer-events]="editMode() ? 'none' : 'auto'"
-            [style.visibility]="editMode() ? 'hidden' : 'visible'"
+            class="t-text"
             [tuiHintOverflow]="hint?.content() ? null : stringify(internal())"
-            (dblclick)="setEditMode()"
+            (dblclick)="!mobile && setEditMode()"
+            (longtap)="setEditMode()"
         >
             {{ internal() }}
         </div>
@@ -93,7 +93,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
 export class TuiInputChipComponent<T> {
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly context = injectContext<
-        PolymorpheusContext<{
+        TuiContext<{
             index: number;
             item: T;
         }>
