@@ -1,10 +1,12 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
-import {TuiTextfieldMultiComponent} from '@taiga-ui/core/components/textfield';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-interface Chip<T> {
+import {TuiTextfieldMultiComponent} from './textfield-multi.component';
+
+export interface TuiTextfieldItem<T> {
     readonly item: T;
     readonly index: number;
 }
@@ -14,7 +16,7 @@ interface Chip<T> {
  */
 @Component({
     standalone: true,
-    selector: 'tui-chip-wrapper',
+    selector: 'tui-textfield-item',
     imports: [PolymorpheusOutlet],
     template:
         '<ng-container *polymorpheusOutlet="content as text; context: context">{{ text }}</ng-container>',
@@ -47,13 +49,18 @@ interface Chip<T> {
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._string]': '!textfield.item',
+        '(keydown.arrowLeft.prevent)': 'el.previousElementSibling?.firstChild?.focus()',
+        '(keydown.arrowRight.prevent)': 'el.nextElementSibling?.firstChild?.focus()',
     },
 })
-export class TuiChipWrapper<T> {
-    protected readonly context = injectContext<TuiContext<Chip<T>>>();
-    protected readonly textfield = inject(TuiTextfieldMultiComponent);
+export class TuiTextfieldItemComponent<T> {
+    protected readonly el = tuiInjectElement();
+    protected readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
+    protected readonly textfield: TuiTextfieldMultiComponent<T> = inject(
+        TuiTextfieldMultiComponent,
+    );
 
-    protected get content(): PolymorpheusContent<TuiContext<Chip<T>>> {
+    protected get content(): PolymorpheusContent<TuiContext<TuiTextfieldItem<T>>> {
         return this.textfield.item ?? String(this.context.$implicit.item);
     }
 }
