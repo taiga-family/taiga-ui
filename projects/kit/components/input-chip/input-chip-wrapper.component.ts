@@ -44,10 +44,10 @@ interface Chip<T> {
             }
         `,
     ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._string]': '!textfield.item',
     },
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiChipWrapper<T> {
     protected readonly context = injectContext<TuiContext<Chip<T>>>();
