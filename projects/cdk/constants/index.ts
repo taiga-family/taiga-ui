@@ -1,5 +1,4 @@
 export * from './allow-signal-writes';
-export * from './delay';
 export * from './empty';
 export * from './handlers';
 export * from './matchers';
