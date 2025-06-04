@@ -33,11 +33,11 @@ import {TuiInputChipDirective} from './input-chip.directive';
         FormsModule,
         NgIf,
         ReactiveFormsModule,
+        TuiAutoFocus,
         TuiButton,
         TuiChip,
         TuiFade,
         TuiHintOverflow,
-        TuiAutoFocus,
     ],
     template: `
         <input
