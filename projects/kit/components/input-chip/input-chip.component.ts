@@ -3,13 +3,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ElementRef,
     inject,
     Input,
     signal,
-    ViewChild,
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -38,17 +37,17 @@ import {TuiInputChipDirective} from './input-chip.directive';
         TuiChip,
         TuiFade,
         TuiHintOverflow,
+        TuiAutoFocus,
     ],
     template: `
         <input
-            #input
+            *ngIf="editMode()"
             appearance=""
             enterkeyhint="enter"
-            tabIndex="-1"
+            tuiAutoFocus
             tuiChip
             class="t-input"
             [ngModel]="internal()"
-            [readOnly]="!editMode()"
             (blur)="cancelEdit()"
             (keydown.backspace.stop)="(0)"
             (keydown.enter)="edit()"
@@ -60,6 +59,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
             tuiFadeOffset="0.5rem"
             class="t-text"
             [tuiHintOverflow]="hint?.content() ? null : stringify(internal())"
+            (pointerdown.prevent.zoneless)="(0)"
         >
             {{ internal() }}
         </div>
@@ -70,7 +70,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
             tuiIconButton
             type="button"
             (click.stop.prevent)="delete()"
-            (mousedown.prevent.stop)="(0)"
+            (pointerdown.prevent.stop.zoneless)="(0)"
         >
             Remove
         </button>
@@ -85,7 +85,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
         '[class._edit]': 'editMode()',
         '(click)': '(mobile || editMode()) && $event.stopPropagation()',
         '(dblclick)': 'setEditMode()',
-        '(pointerdown.prevent.zoneless)': '0',
+        '(pointerdown.self.prevent.zoneless)': '0',
         '(keydown.backspace.prevent)': 'delete()',
         '(keydown.arrowLeft.prevent)': 'moveFocus(-1)',
         '(keydown.arrowRight.prevent)': 'moveFocus(1)',
@@ -100,9 +100,6 @@ export class TuiInputChipComponent<T> {
             item: T;
         }>
     >();
-
-    @ViewChild('input', {read: ElementRef, static: true})
-    protected readonly el?: ElementRef<HTMLElement>;
 
     protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly directive = tuiInjectAuxiliary<TuiInputChipDirective<T>>(
@@ -161,7 +158,6 @@ export class TuiInputChipComponent<T> {
     protected setEditMode(): void {
         if (this.editable && this.directive()?.interactive()) {
             this.editMode.set(true);
-            this.el?.nativeElement.focus();
         }
     }
 
