@@ -83,7 +83,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
         tabIndex: '-1',
         class: 'tui-interactive',
         '[class._edit]': 'editMode()',
-        '(click)': '(mobile || editMode()) && $event.stopPropagation()',
+        '(click)': 'editMode() && $event.stopPropagation()',
         '(dblclick)': 'setEditMode()',
         '(pointerdown.self.prevent.zoneless)': '0',
         '(keydown.backspace.prevent)': 'delete()',
