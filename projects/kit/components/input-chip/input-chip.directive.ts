@@ -1,41 +1,24 @@
-import {NgForOf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
     TuiTextfieldBase,
-    TuiTextfieldContent,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
-import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
-import {TuiChipWrapper} from './input-chip-wrapper.component';
 
 const BACKSPACE_CODE = 8;
-const ARROW_LEFT_CODE = 37;
 
-@Component({
+@Directive({
     standalone: true,
     selector: 'input[tuiInputChip]',
-    imports: [NgForOf, PolymorpheusOutlet, TuiTextfieldContent],
-    template: `
-        <ng-template tuiTextfieldContent>
-            <ng-template
-                *ngFor="let item of value(); let index = index"
-                [polymorpheusOutlet]="wrapper"
-                [polymorpheusOutletContext]="{$implicit: {item, index}}"
-            />
-        </ng-template>
-    `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsControl(TuiInputChipDirective),
         tuiFallbackValueProvider([]),
@@ -54,7 +37,7 @@ const ARROW_LEFT_CODE = 37;
         '[disabled]': 'disabled()',
         '(blur)': 'onEnter();',
         '(keydown.enter.prevent)': 'onEnter()',
-        '(keydown.zoneless)': 'onKeydown($event.keyCode)',
+        '(keydown.zoneless)': 'onBackspace($event.keyCode)',
         '(input)': 'onInput($event)',
         '(paste.prevent)': 'onPaste($event)',
         '(drop.prevent)': 'onPaste($event)',
@@ -66,10 +49,8 @@ export class TuiInputChipDirective<T>
 {
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
     private readonly mobile = inject(TUI_IS_MOBILE);
-
-    protected readonly textfield = inject(TuiTextfieldMultiComponent);
-    protected readonly wrapper = new PolymorpheusComponent(TuiChipWrapper);
-    protected readonly open = tuiDropdownOpen();
+    private readonly textfield = inject(TuiTextfieldMultiComponent);
+    private readonly open = tuiDropdownOpen();
 
     @Input()
     public separator = this.options.separator;
@@ -80,45 +61,17 @@ export class TuiInputChipDirective<T>
     public readonly el = tuiInjectElement<HTMLInputElement>();
 
     public setValue(value: T[]): void {
-        this.onChange(this.filterValue(value));
         this.textfield.value.set('');
-    }
-
-    public moveFocus(step: number, index?: number): void {
-        if (step > 0 && index === this.value().length - 1) {
-            this.el.focus();
-
-            return;
-        }
-
-        const items = this.textfield.items?.nativeElement;
-        const elements = Array.from(items?.querySelectorAll('tui-chip-wrapper') ?? [])
-            .map(({firstElementChild}) => firstElementChild)
-            .filter(Boolean) as HTMLElement[];
-
-        tuiMoveFocus(index ?? elements.length, elements, step);
-    }
-
-    public delete(index: number): void {
-        this.onChange(this.value().filter((_, i) => i !== index));
-
-        if (!this.mobile) {
-            this.el.focus({preventScroll: true});
-        }
+        this.onChange(
+            this.unique ? Array.from(new Set(value.reverse())).reverse() : value,
+        );
     }
 
     protected onEnter(): void {
         const value = this.textfield.value().trim();
         const items: any[] = this.separator ? value.split(this.separator) : [value];
-        const added = items.filter(Boolean);
 
-        this.textfield.value.set('');
-
-        if (!added.length) {
-            return;
-        }
-
-        this.onChange(this.filterValue([...this.value(), ...added]));
+        this.setValue([...this.value(), ...items.filter(Boolean)]);
         this.scrollTo();
     }
 
@@ -132,16 +85,6 @@ export class TuiInputChipDirective<T>
         }
     }
 
-    protected onKeydown(keyCode: number): void {
-        // (keydown.backspace) doesn't emit event on empty input in ios safari
-        if (
-            keyCode === BACKSPACE_CODE ||
-            (keyCode === ARROW_LEFT_CODE && this.textfield.item)
-        ) {
-            this.onBackspace();
-        }
-    }
-
     protected onPaste(event: ClipboardEvent | DragEvent): void {
         const value =
             'dataTransfer' in event
@@ -152,15 +95,15 @@ export class TuiInputChipDirective<T>
         this.onEnter();
     }
 
-    protected onBackspace(): void {
-        if (this.textfield.value() || !this.interactive()) {
-            return;
-        }
-
-        if (this.mobile || !this.textfield.item) {
+    protected onBackspace(keyCode: number): void {
+        // (keydown.backspace) doesn't emit event on empty input in ios safari
+        if (
+            keyCode === BACKSPACE_CODE &&
+            !this.textfield.value() &&
+            this.interactive() &&
+            (this.mobile || !this.textfield.item)
+        ) {
             this.onChange(this.value().slice(0, -1));
-        } else {
-            this.moveFocus(-1);
         }
     }
 
@@ -172,9 +115,5 @@ export class TuiInputChipDirective<T>
                 left: Number.MAX_SAFE_INTEGER,
             });
         });
-    }
-
-    private filterValue(value: T[]): T[] {
-        return this.unique ? Array.from(new Set(value.reverse())).reverse() : value;
     }
 }
