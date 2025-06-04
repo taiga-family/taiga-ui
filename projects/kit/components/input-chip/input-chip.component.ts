@@ -3,15 +3,14 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ElementRef,
     inject,
     Input,
     signal,
-    ViewChild,
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
@@ -24,17 +23,17 @@ import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {injectContext} from '@taiga-ui/polymorpheus';
-import type {PolymorpheusContext} from '@taiga-ui/polymorpheus/classes/context';
 
 import {TuiInputChipDirective} from './input-chip.directive';
 
 @Component({
     standalone: true,
-    selector: 'button[tuiInputChip], tui-input-chip',
+    selector: 'tui-input-chip',
     imports: [
         FormsModule,
         NgIf,
         ReactiveFormsModule,
+        TuiAutoFocus,
         TuiButton,
         TuiChip,
         TuiFade,
@@ -42,13 +41,13 @@ import {TuiInputChipDirective} from './input-chip.directive';
     ],
     template: `
         <input
-            #input
+            *ngIf="editMode()"
             appearance=""
             enterkeyhint="enter"
-            tabIndex="-1"
+            tuiAutoFocus
             tuiChip
+            class="t-input"
             [ngModel]="internal()"
-            [readOnly]="!editMode()"
             (blur)="cancelEdit()"
             (keydown.backspace.stop)="(0)"
             (keydown.enter)="edit()"
@@ -58,10 +57,9 @@ import {TuiInputChipDirective} from './input-chip.directive';
         <div
             tuiFade
             tuiFadeOffset="0.5rem"
-            [style.pointer-events]="editMode() ? 'none' : 'auto'"
-            [style.visibility]="editMode() ? 'hidden' : 'visible'"
+            class="t-text"
             [tuiHintOverflow]="hint?.content() ? null : stringify(internal())"
-            (dblclick)="setEditMode()"
+            (pointerdown.prevent.zoneless)="(0)"
         >
             {{ internal() }}
         </div>
@@ -72,7 +70,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
             tuiIconButton
             type="button"
             (click.stop.prevent)="delete()"
-            (mousedown.prevent.stop)="(0)"
+            (pointerdown.prevent.stop.zoneless)="(0)"
         >
             Remove
         </button>
@@ -83,24 +81,25 @@ import {TuiInputChipDirective} from './input-chip.directive';
     host: {
         tuiChip: '',
         tabIndex: '-1',
+        class: 'tui-interactive',
         '[class._edit]': 'editMode()',
+        '(click)': 'editMode() && $event.stopPropagation()',
+        '(dblclick)': 'setEditMode()',
+        '(pointerdown.self.prevent.zoneless)': '0',
         '(keydown.backspace.prevent)': 'delete()',
         '(keydown.arrowLeft.prevent)': 'moveFocus(-1)',
         '(keydown.arrowRight.prevent)': 'moveFocus(1)',
-        '(keydown.enter)': 'setEditMode()',
+        '(keydown.enter.prevent)': 'setEditMode()',
     },
 })
 export class TuiInputChipComponent<T> {
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly context = injectContext<
-        PolymorpheusContext<{
+        TuiContext<{
             index: number;
             item: T;
         }>
     >();
-
-    @ViewChild('input', {read: ElementRef, static: true})
-    protected readonly el?: ElementRef<HTMLElement>;
 
     protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly directive = tuiInjectAuxiliary<TuiInputChipDirective<T>>(
@@ -159,7 +158,6 @@ export class TuiInputChipComponent<T> {
     protected setEditMode(): void {
         if (this.editable && this.directive()?.interactive()) {
             this.editMode.set(true);
-            this.el?.nativeElement.focus();
         }
     }
 
