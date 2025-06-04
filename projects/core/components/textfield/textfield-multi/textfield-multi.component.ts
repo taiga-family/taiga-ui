@@ -11,8 +11,9 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
-import {type TuiContext, tuiIsElement} from '@taiga-ui/cdk';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayToggle, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
@@ -33,25 +34,20 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {
-    PolymorpheusComponent,
-    type PolymorpheusContent,
-    PolymorpheusOutlet,
-} from '@taiga-ui/polymorpheus';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {
-    type TuiTextfieldItem,
-    TuiTextfieldItemComponent,
-} from './textfield-item.component';
 import {TuiTextfieldComponent} from '../textfield.component';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
+import type {TuiTextfieldItem} from './textfield-item.component';
+import {TuiTextfieldItemComponent} from './textfield-item.component';
 
 @Component({
     standalone: true,
     selector: 'tui-textfield[multi]',
     imports: [
-        NgIf,
         NgForOf,
+        NgIf,
         PolymorpheusOutlet,
         TuiButton,
         TuiScrollControls,

@@ -13,10 +13,10 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import type {TuiTextfieldItem} from '@taiga-ui/core/components/textfield';
 import {
     TUI_TEXTFIELD_OPTIONS,
     tuiInjectAuxiliary,
-    type TuiTextfieldItem,
 } from '@taiga-ui/core/components/textfield';
 import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';

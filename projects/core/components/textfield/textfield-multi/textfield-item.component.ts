@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {tuiInjectElement} from '@taiga-ui/cdk';
 import type {TuiContext} from '@taiga-ui/cdk/types';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
