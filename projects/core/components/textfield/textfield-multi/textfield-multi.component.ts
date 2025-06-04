@@ -121,6 +121,6 @@ export class TuiTextfieldMultiComponent<T>
         }
 
         event.preventDefault();
-        event.currentTarget?.previousElementSibling?.firstElementChild?.focus();
+        event.currentTarget.previousElementSibling?.firstElementChild?.focus();
     }
 }
