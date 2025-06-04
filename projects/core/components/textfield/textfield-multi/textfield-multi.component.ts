@@ -2,7 +2,6 @@ import {NgIf} from '@angular/common';
 import type {AfterContentInit, ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     ContentChild,
     inject,
@@ -69,12 +68,12 @@ import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
         TuiWithAppearance,
     ],
     host: {
+        class: 'tui-interactive',
         '[class._expandable]': 'rows > 1',
         '[attr.data-state]': 'ngControl?.disabled ? "disabled" : null',
         '[class._text]': '!item',
         '[class._empty]': '!ngControl?.value?.length',
-        '(pointerdown)': '0',
-        '(tuiActiveZoneChange)': '!$event && items?.nativeElement.scrollTo({left: 0})',
+        '(tuiActiveZoneChange)': '!$event && items?.nativeElement?.scrollTo({left: 0})',
     },
 })
 export class TuiTextfieldMultiComponent<T>
@@ -82,7 +81,6 @@ export class TuiTextfieldMultiComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
     private readonly handlers = inject(TUI_ITEMS_HANDLERS);
-    private readonly cdr = inject(ChangeDetectorRef);
 
     @ViewChild(TUI_SCROLL_REF, {static: true})
     public readonly items?: ElementRef<HTMLElement>;
@@ -103,15 +101,9 @@ export class TuiTextfieldMultiComponent<T>
         );
     }
 
-    public refresh(): void {
-        this.cdr.detectChanges();
-    }
-
     protected get maxHeight(): number | null {
-        const {clientHeight = 0} = this.items?.nativeElement.firstElementChild || {};
-
-        return this.rows > 1 && this.ngControl?.value?.length && clientHeight
-            ? this.rows * clientHeight
+        return this.rows > 1 && this.ngControl?.value?.length
+            ? this.rows * (this.items?.nativeElement.firstElementChild?.clientHeight ?? 0)
             : null;
     }
 }

@@ -1,21 +1,21 @@
 :host {
+    cursor: pointer;
     margin: 0.125rem 0.25rem 0.125rem 0;
 
-    input {
-        padding: 0 0 0 0.25rem;
+    .t-input {
+        padding: inherit;
         transition: none;
-        color: transparent;
-    }
-
-    tui-textfield([data-size='s']) & {
-        margin: 0.0625rem 0.125rem 0.0625rem 0;
+        color: var(--tui-text-primary);
+        cursor: text;
+        outline: none;
     }
 
     &._edit {
         background: transparent;
 
-        input {
-            color: var(--tui-text-primary);
+        .t-text {
+            pointer-events: none;
+            visibility: hidden;
         }
 
         &::before {
@@ -23,4 +23,8 @@
             transition: none;
         }
     }
+}
+
+:host-context(tui-textfield[data-size='s']) {
+    margin: 0.0625rem 0.125rem 0.0625rem 0;
 }

@@ -6,19 +6,9 @@ tui-textfield[multi] {
     align-items: stretch;
     cursor: text;
 
-    --t-padding: 0.75rem;
-
     &::before,
     &::after {
         block-size: var(--t-height);
-    }
-
-    input:defined {
-        appearance: none;
-        box-sizing: border-box;
-        border-radius: inherit;
-        border: none;
-        outline: none;
     }
 
     .t-scroll {
@@ -37,27 +27,25 @@ tui-textfield[multi] {
         align-items: center;
         overflow: scroll;
         scroll-behavior: smooth;
-        padding: 0.625rem 0;
         inline-size: calc(100% - var(--t-side) - var(--t-padding) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
 
         & ~ .t-content .t-clear {
             display: flex;
         }
 
-        input:defined::placeholder {
+        input:not(:focus)::placeholder {
             opacity: 0;
         }
     }
 
-    &._empty {
-        .t-container {
-            & ~ .t-content .t-clear {
-                display: none;
-            }
+    &._empty .t-container ~ .t-content .t-clear {
+        display: none;
+    }
 
-            input:defined::placeholder {
-                opacity: 1;
-            }
+    &._empty .t-container,
+    &[data-focus='true']:not(:focus-within) .t-container {
+        input::placeholder {
+            opacity: 1;
         }
     }
 
@@ -70,6 +58,10 @@ tui-textfield[multi] {
 
             & > *:first-child {
                 margin-inline-start: var(--t-padding);
+            }
+
+            & > .t-input_wrapper:first-child {
+                margin-inline-start: calc(var(--t-padding) + 0.125rem);
             }
         }
     }
@@ -87,14 +79,14 @@ tui-textfield[multi] {
         align-items: center;
         flex: 1;
         max-inline-size: 100%;
-        margin-left: 0.25rem;
+        margin-inline-start: 0.125rem;
 
         .t-ghost {
             visibility: hidden;
             white-space: pre;
             text-overflow: clip;
-            min-inline-size: 0.125rem;
-            min-block-size: 2.25rem;
+            padding-inline-end: 0.125rem;
+            min-block-size: 1.75rem;
         }
 
         input:defined {
@@ -110,12 +102,24 @@ tui-textfield[multi] {
         left: 0;
     }
 
-    &[data-size='m'] {
-        --t-padding: 0.625rem;
+    &[data-size='l'] {
+        --t-padding: 0.75rem;
+
+        .t-input_wrapper:first-child {
+            border-inline-start: 0.125rem solid transparent;
+        }
+
+        .t-container {
+            padding: 0.625rem 0;
+        }
 
         .t-ghost {
-            min-block-size: 1.75rem;
+            min-block-size: 2.25rem;
         }
+    }
+
+    &[data-size='m'] {
+        --t-padding: 0.625rem;
 
         .t-container {
             padding: 0.5rem 0;
@@ -127,8 +131,8 @@ tui-textfield[multi] {
 
         padding-inline-end: 0.625rem;
 
-        .t-ghost {
-            min-block-size: 1.75rem;
+        .t-input_wrapper:first-child {
+            border-inline-start: 0.25rem solid transparent;
         }
 
         .t-container {
@@ -137,7 +141,7 @@ tui-textfield[multi] {
     }
 
     &._text .t-input_wrapper {
-        margin-left: 0;
+        margin-inline-start: 0;
 
         .t-ghost {
             min-block-size: 1em;
