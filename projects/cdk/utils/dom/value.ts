@@ -41,12 +41,12 @@ export function tuiValue(
     const process = (el: WithValue): (() => void) => {
         const update = (): void => value.set(el.value);
 
-        el.addEventListener('input', update);
-        el.addEventListener('tui-input', update);
+        el.addEventListener('input', update, {capture: true});
+        el.addEventListener('tui-input', update, {capture: true});
 
         return (): void => {
-            el.removeEventListener('input', update);
-            el.removeEventListener('tui-input', update);
+            el.removeEventListener('input', update, {capture: true});
+            el.removeEventListener('tui-input', update, {capture: true});
         };
     };
 
