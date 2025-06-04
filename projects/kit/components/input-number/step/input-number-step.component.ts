@@ -11,27 +11,19 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {
-    TUI_INPUT_NUMBER_DELAY_DECREMENT,
-    TUI_INPUT_NUMBER_INITIAL_DELAY,
-    TUI_INPUT_NUMBER_MIN_DELAY,
-} from '@taiga-ui/cdk';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_TEXTFIELD_OPTIONS, TuiButton, TuiTextfieldContent} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
 import {
-    BehaviorSubject,
-    concat,
     EMPTY,
-    finalize,
+    expand,
     map,
     merge,
     mergeMap,
     Subject,
     switchMap,
-    take,
     takeUntil,
     tap,
     timer,
@@ -57,6 +49,10 @@ import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
     },
 })
 export class TuiInputNumberStep {
+    private readonly INITIAL_DELAY = 300;
+    private readonly DELAY_DECREMENT = 15;
+    private readonly MIN_DELAY = 100;
+
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
 
@@ -105,26 +101,20 @@ export class TuiInputNumberStep {
     private accelerate$(stepValue: number): Observable<number> {
         this.el.focus();
 
-        const acceleration$ = new BehaviorSubject<number>(TUI_INPUT_NUMBER_INITIAL_DELAY);
+        let currentDelay = this.INITIAL_DELAY;
 
-        return acceleration$
-            .pipe(
-                switchMap((delay) => concat(timer(delay).pipe(take(1)), timer(0, delay))),
-                map(() => {
-                    acceleration$.next(
-                        Math.max(
-                            acceleration$.value - TUI_INPUT_NUMBER_DELAY_DECREMENT,
-                            TUI_INPUT_NUMBER_MIN_DELAY,
-                        ),
-                    );
+        return timer(currentDelay).pipe(
+            expand(() => {
+                currentDelay = Math.max(
+                    currentDelay - this.DELAY_DECREMENT,
+                    this.MIN_DELAY,
+                );
 
-                    return stepValue;
-                }),
-                finalize(() => {
-                    acceleration$.complete();
-                }),
-            )
-            .pipe(takeUntil(this.stop$));
+                return timer(currentDelay);
+            }),
+            map(() => stepValue),
+            takeUntil(this.stop$),
+        );
     }
 
     private stepChange$(stepValue: number): Observable<number> {
