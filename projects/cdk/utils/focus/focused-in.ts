@@ -7,8 +7,8 @@ import {fromEvent, map, merge, observeOn} from 'rxjs';
 export function tuiFocusedIn(node: Node): Signal<boolean> {
     return toSignal(
         merge(
-            fromEvent(node, 'focusin').pipe(map(TUI_TRUE_HANDLER)),
-            fromEvent(node, 'focusout').pipe(map(TUI_FALSE_HANDLER)),
+            fromEvent(node, 'focus', {capture: true}).pipe(map(TUI_TRUE_HANDLER)),
+            fromEvent(node, 'blur', {capture: true}).pipe(map(TUI_FALSE_HANDLER)),
         ).pipe(observeOn(tuiUntrackedScheduler)),
         {initialValue: false},
     );

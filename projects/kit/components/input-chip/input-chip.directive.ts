@@ -1,59 +1,38 @@
 import {NgForOf} from '@angular/common';
-import type {AfterViewInit} from '@angular/core';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    DestroyRef,
-    inject,
-    Input,
-    TemplateRef,
-    ViewChild,
-} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {
-    tuiGetClipboardDataText,
-    tuiInjectElement,
-    tuiIsHTMLElement,
-    tuiValue,
-} from '@taiga-ui/cdk/utils/dom';
+import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
     TuiTextfieldBase,
+    TuiTextfieldContent,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {timer} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
 import {TuiChipWrapper} from './input-chip-wrapper.component';
 
 const BACKSPACE_CODE = 8;
+const ARROW_LEFT_CODE = 37;
 
 @Component({
     standalone: true,
     selector: 'input[tuiInputChip]',
-    imports: [NgForOf, PolymorpheusOutlet],
+    imports: [NgForOf, PolymorpheusOutlet, TuiTextfieldContent],
     template: `
-        <ng-template #template>
-            <ng-container *ngFor="let item of value(); let i = index">
-                <ng-container
-                    *polymorpheusOutlet="
-                        wrapper as text;
-                        context: {
-                            $implicit: {item, index: i, length: value().length},
-                        }
-                    "
-                >
-                    {{ text }}
-                </ng-container>
-            </ng-container>
+        <ng-template tuiTextfieldContent>
+            <ng-template
+                *ngFor="let item of value(); let index = index"
+                [polymorpheusOutlet]="wrapper"
+                [polymorpheusOutletContext]="{$implicit: {item, index}}"
+            />
         </ng-template>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -73,57 +52,51 @@ const BACKSPACE_CODE = 8;
     host: {
         enterkeyhint: 'enter',
         '[disabled]': 'disabled()',
-        '(keydown.enter.prevent)': 'onEnter()',
         '(blur)': 'onEnter();',
-        '(keydown.arrowLeft)': 'onKeydownLeft()',
-        '(keydown.silent)': 'onKeydown($event)',
-        '(input.silent)': 'onInput($event)',
+        '(keydown.enter.prevent)': 'onEnter()',
+        '(keydown.zoneless)': 'onKeydown($event.keyCode)',
+        '(input)': 'onInput($event)',
         '(paste.prevent)': 'onPaste($event)',
-        '(drop.prevent)': 'onDrop($event)',
+        '(drop.prevent)': 'onPaste($event)',
     },
 })
 export class TuiInputChipDirective<T>
     extends TuiControl<T[]>
-    implements TuiTextfieldAccessor<T[]>, AfterViewInit
+    implements TuiTextfieldAccessor<T[]>
 {
-    @ViewChild(TemplateRef)
-    private readonly template?: TemplateRef<unknown>;
-
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
-    private readonly destroyRef = inject(DestroyRef);
     private readonly mobile = inject(TUI_IS_MOBILE);
 
     protected readonly textfield = inject(TuiTextfieldMultiComponent);
     protected readonly wrapper = new PolymorpheusComponent(TuiChipWrapper);
-
     protected readonly open = tuiDropdownOpen();
 
     @Input()
-    public separator: RegExp | string = this.options.separator;
+    public separator = this.options.separator;
 
     @Input()
     public unique = this.options.unique;
 
     public readonly el = tuiInjectElement<HTMLInputElement>();
-    public readonly textfieldValue = tuiValue(this.el);
 
     public setValue(value: T[]): void {
         this.onChange(this.filterValue(value));
-        this.textfieldValue.set('');
-    }
-
-    public ngAfterViewInit(): void {
-        if (this.template) {
-            this.textfield.vcr?.createEmbeddedView(this.template);
-        }
+        this.textfield.value.set('');
     }
 
     public moveFocus(step: number, index?: number): void {
         if (step > 0 && index === this.value().length - 1) {
             this.el.focus();
+
+            return;
         }
 
-        tuiMoveFocus(index ?? this.elements.length, this.elements, step);
+        const items = this.textfield.items?.nativeElement;
+        const elements = Array.from(items?.querySelectorAll('tui-chip-wrapper') ?? [])
+            .map(({firstElementChild}) => firstElementChild)
+            .filter(Boolean) as HTMLElement[];
+
+        tuiMoveFocus(index ?? elements.length, elements, step);
     }
 
     public delete(index: number): void {
@@ -132,94 +105,73 @@ export class TuiInputChipDirective<T>
         if (!this.mobile) {
             this.el.focus({preventScroll: true});
         }
-
-        this.textfield.refresh();
-    }
-
-    protected get elements(): readonly HTMLElement[] {
-        return Array.from(
-            this.textfield.items?.nativeElement.querySelectorAll('tui-chip-wrapper') ??
-                [],
-        ).map(({firstChild}) => firstChild) as HTMLElement[];
     }
 
     protected onEnter(): void {
-        const value = this.separator
-            ? (this.textfieldValue().trim().split(this.separator).filter(Boolean) as T[])
-            : ([this.textfieldValue().trim()] as T[]);
+        const value = this.textfield.value().trim();
+        const items: any[] = this.separator ? value.split(this.separator) : [value];
+        const added = items.filter(Boolean);
 
-        this.textfieldValue.set('');
+        this.textfield.value.set('');
 
-        if (value.length) {
-            this.onChange(this.filterValue([...this.value(), ...value]));
-            this.scrollTo();
+        if (!added.length) {
+            return;
         }
+
+        this.onChange(this.filterValue([...this.value(), ...added]));
+        this.scrollTo();
     }
 
     protected onInput(): void {
         this.open.set(true);
 
-        if (this.separator && this.el.value.match(this.separator)) {
+        if (this.separator && this.textfield.value().match(this.separator)) {
             this.onEnter();
+        } else {
+            this.scrollTo();
         }
     }
 
-    protected onKeydown(keydown: KeyboardEvent): void {
+    protected onKeydown(keyCode: number): void {
         // (keydown.backspace) doesn't emit event on empty input in ios safari
-        if (keydown.keyCode === BACKSPACE_CODE) {
+        if (
+            keyCode === BACKSPACE_CODE ||
+            (keyCode === ARROW_LEFT_CODE && this.textfield.item)
+        ) {
             this.onBackspace();
         }
     }
 
-    protected onPaste(event: ClipboardEvent): void {
-        this.textfieldValue.set(tuiGetClipboardDataText(event));
+    protected onPaste(event: ClipboardEvent | DragEvent): void {
+        const value =
+            'dataTransfer' in event
+                ? event.dataTransfer?.getData('text/plain') || ''
+                : tuiGetClipboardDataText(event);
+
+        this.textfield.value.set(value);
         this.onEnter();
     }
 
-    protected onDrop({dataTransfer}: DragEvent): void {
-        if (dataTransfer) {
-            this.textfieldValue.set(dataTransfer.getData('text') || '');
-            this.onEnter();
-        }
-    }
-
     protected onBackspace(): void {
-        if (this.el.value || !this.elements.length || !this.interactive()) {
+        if (this.textfield.value() || !this.interactive()) {
             return;
         }
 
-        if (this.mobile || !tuiIsHTMLElement(this.elements[0])) {
+        if (this.mobile || !this.textfield.item) {
             this.onChange(this.value().slice(0, -1));
         } else {
             this.moveFocus(-1);
         }
     }
 
-    protected onKeydownLeft(): void {
-        if (tuiIsHTMLElement(this.elements[0])) {
-            this.onBackspace();
-        }
-    }
-
     protected scrollTo(): void {
         // Allow change detection to run and add new tag to DOM
-        timer(0)
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe(() => {
-                if (!this.scrollRef) {
-                    return;
-                }
-
-                if (this.textfield.rows === 1) {
-                    this.scrollRef.scrollLeft = this.scrollRef.scrollWidth || 0;
-                } else {
-                    this.scrollRef.scrollTop = this.scrollRef.scrollHeight || 0;
-                }
+        setTimeout(() => {
+            this.textfield.items?.nativeElement.scrollTo({
+                top: Number.MAX_SAFE_INTEGER,
+                left: Number.MAX_SAFE_INTEGER,
             });
-    }
-
-    private get scrollRef(): HTMLElement | null {
-        return this.textfield.items?.nativeElement ?? null;
+        });
     }
 
     private filterValue(value: T[]): T[] {
