@@ -1,4 +1,4 @@
-import {NgIf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import type {AfterContentInit, ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
@@ -11,6 +11,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {type TuiContext, tuiIsElement} from '@taiga-ui/cdk';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiArrayToggle, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
@@ -32,8 +33,16 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {
+    PolymorpheusComponent,
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+} from '@taiga-ui/polymorpheus';
 
+import {
+    type TuiTextfieldItem,
+    TuiTextfieldItemComponent,
+} from './textfield-item.component';
 import {TuiTextfieldComponent} from '../textfield.component';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
 
@@ -42,6 +51,7 @@ import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
     selector: 'tui-textfield[multi]',
     imports: [
         NgIf,
+        NgForOf,
         PolymorpheusOutlet,
         TuiButton,
         TuiScrollControls,
@@ -80,7 +90,9 @@ export class TuiTextfieldMultiComponent<T>
     extends TuiTextfieldComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
-    private readonly handlers = inject(TUI_ITEMS_HANDLERS);
+    protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
+    protected readonly component: PolymorpheusContent<TuiContext<TuiTextfieldItem<T>>> =
+        new PolymorpheusComponent(TuiTextfieldItemComponent);
 
     @ViewChild(TUI_SCROLL_REF, {static: true})
     public readonly items?: ElementRef<HTMLElement>;
@@ -105,5 +117,14 @@ export class TuiTextfieldMultiComponent<T>
         return this.rows > 1 && this.ngControl?.value?.length
             ? this.rows * (this.items?.nativeElement.firstElementChild?.clientHeight ?? 0)
             : null;
+    }
+
+    protected onLeft(event: any): void {
+        if (this.value() || !tuiIsElement(event.currentTarget)) {
+            return;
+        }
+
+        event.preventDefault();
+        event.currentTarget?.previousElementSibling?.firstElementChild?.focus();
     }
 }

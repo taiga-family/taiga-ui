@@ -16,9 +16,9 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     TUI_TEXTFIELD_OPTIONS,
     tuiInjectAuxiliary,
+    type TuiTextfieldItem,
 } from '@taiga-ui/core/components/textfield';
 import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
@@ -41,17 +41,17 @@ import {TuiInputChipDirective} from './input-chip.directive';
     ],
     template: `
         <input
-            *ngIf="editMode()"
+            *ngIf="editing()"
             appearance=""
             enterkeyhint="enter"
             tuiAutoFocus
             tuiChip
             class="t-input"
             [ngModel]="internal()"
-            (blur)="cancelEdit()"
-            (keydown.backspace.stop)="(0)"
-            (keydown.enter)="edit()"
-            (keydown.esc)="cancelEdit()"
+            (blur)="cancel()"
+            (keydown.enter)="save()"
+            (keydown.esc)="cancel()"
+            (keydown.stop)="(0)"
             (ngModelChange)="internal.set($event)"
         />
         <div
@@ -64,12 +64,12 @@ import {TuiInputChipDirective} from './input-chip.directive';
             {{ internal() }}
         </div>
         <button
-            *ngIf="directive()?.interactive() && !editMode()"
+            *ngIf="directive()?.interactive() && !editing()"
             iconStart="@tui.x"
             tabIndex="-1"
             tuiIconButton
             type="button"
-            (click.stop.prevent)="delete()"
+            (click.stop)="delete()"
             (pointerdown.prevent.stop.zoneless)="(0)"
         >
             Remove
@@ -82,90 +82,74 @@ import {TuiInputChipDirective} from './input-chip.directive';
         tuiChip: '',
         tabIndex: '-1',
         class: 'tui-interactive',
-        '[class._edit]': 'editMode()',
-        '(click)': 'editMode() && $event.stopPropagation()',
-        '(dblclick)': 'setEditMode()',
+        '[class._edit]': 'editing()',
+        '(click)': 'editing() && $event.stopPropagation()',
         '(pointerdown.self.prevent.zoneless)': '0',
         '(keydown.backspace.prevent)': 'delete()',
-        '(keydown.arrowLeft.prevent)': 'moveFocus(-1)',
-        '(keydown.arrowRight.prevent)': 'moveFocus(1)',
-        '(keydown.enter.prevent)': 'setEditMode()',
+        '(keydown.enter.prevent)': 'edit()',
+        '(dblclick)': 'edit()',
     },
 })
 export class TuiInputChipComponent<T> {
-    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
-    private readonly context = injectContext<
-        TuiContext<{
-            index: number;
-            item: T;
-        }>
-    >();
+    private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
+    private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
+    private readonly value = computed(() => this.directive()?.value() ?? []);
 
     protected readonly mobile = inject(TUI_IS_MOBILE);
+    protected readonly internal = signal(this.context.$implicit.item);
+    protected readonly editing = signal(false);
+    protected readonly hint = inject(TuiHintDirective, {self: true, optional: true});
+    protected readonly stringify: TuiStringHandler<T> =
+        inject(TUI_ITEMS_HANDLERS).stringify();
+
     protected readonly directive = tuiInjectAuxiliary<TuiInputChipDirective<T>>(
-        (x) => x instanceof TuiInputChipDirective<T>,
+        (x) => x instanceof TuiInputChipDirective,
     );
 
-    protected value = computed(() => this.directive()?.value() ?? []);
-
-    protected readonly internal = signal(this.item);
-
-    protected readonly editMode = signal(false);
-    protected readonly textfieldOptions = inject(TUI_TEXTFIELD_OPTIONS);
-    protected hint = inject(TuiHintDirective, {self: true, optional: true});
-    protected stringify: TuiStringHandler<T> = this.itemsHandlers.stringify();
-
-    protected size = tuiDirectiveBinding(
+    protected readonly size = tuiDirectiveBinding(
         TuiChip,
         'size',
-        computed(() => (this.textfieldOptions.size() === 'l' ? 's' : 'xs')),
+        computed(() => (this.options.size() === 'l' ? 's' : 'xs')),
     );
 
     @Input()
     public editable = true;
 
-    protected delete(): void {
-        this.directive()?.delete(this.index);
+    protected get index(): number {
+        return this.context.$implicit.index;
     }
 
-    protected edit(): void {
+    protected delete(): void {
+        this.directive()?.onChange(this.value().filter((_, i) => i !== this.index));
+
+        if (!this.mobile) {
+            this.directive()?.el.focus({preventScroll: true});
+        }
+    }
+
+    protected save(): void {
         if (!this.internal()) {
             this.delete();
         } else {
             this.directive()?.onChange(
                 this.value().map((item, index) =>
-                    index === this.index ? (this.internal() ?? item) : item,
+                    index === this.index ? this.internal() : item,
                 ),
             );
-            this.editMode.set(false);
         }
 
+        this.editing.set(false);
         this.directive()?.el.focus({preventScroll: true});
     }
 
-    protected cancelEdit(): void {
-        this.editMode.set(false);
-        this.directive()?.setValue(this.value());
-        this.internal.set(this.item);
+    protected cancel(): void {
+        this.editing.set(false);
+        this.internal.set(this.context.$implicit.item);
     }
 
-    protected moveFocus(step: number): void {
-        if (this.directive()?.interactive()) {
-            this.directive()?.moveFocus(step, this.index);
-        }
-    }
-
-    protected setEditMode(): void {
+    protected edit(): void {
         if (this.editable && this.directive()?.interactive()) {
-            this.editMode.set(true);
+            this.editing.set(true);
         }
-    }
-
-    private get index(): number {
-        return this.context.$implicit.index;
-    }
-
-    private get item(): T {
-        return this.context.$implicit.item;
     }
 }
