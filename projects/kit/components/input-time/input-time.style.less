@@ -1,0 +1,16 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+// TODO: replace with `tui-textfield:has([tuiInputTime]) input[type='time']` (when all browsers supports :has())
+tui-textfield input[tuiInputTime] ~ .t-content input[type='time'] {
+    position: absolute;
+    right: 0;
+    left: auto;
+    inline-size: calc(var(--t-right) + var(--t-padding));
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+
+    &::-webkit-calendar-picker-indicator {
+        .fullsize(); // Extends clickable area for icon to open native picker
+    }
+}
