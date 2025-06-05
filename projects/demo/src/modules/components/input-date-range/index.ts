@@ -7,9 +7,10 @@ import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import type {TuiDayLike} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputDate} from '@taiga-ui/kit';
+import {TuiInputDateRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -22,7 +23,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
-        TuiInputDate,
+        TuiInputDateRange,
         TuiTextfield,
     ],
     templateUrl: './index.html',
@@ -41,6 +42,11 @@ export default class Example {
 
     protected min = this.dates[0];
     protected max = this.dates[4];
+
+    protected readonly limits = [{day: 3}, {day: 5}] as const;
+
+    protected minLength: TuiDayLike | null = null;
+    protected maxLength: TuiDayLike | null = null;
 
     protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
 }

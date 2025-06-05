@@ -1,0 +1,11 @@
+<label tuiLabel>
+    Choose range
+    <tui-textfield tuiTextfieldSize="s">
+        <input
+            placeholder="Using US format"
+            tuiInputDateRange
+            [(ngModel)]="value"
+        />
+        <tui-calendar-range *tuiTextfieldDropdown />
+    </tui-textfield>
+</label>

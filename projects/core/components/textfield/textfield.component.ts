@@ -82,6 +82,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
         '[class._disabled]': 'input?.nativeElement?.disabled',
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
+        '(scroll.capture.zoneless)': 'onScroll($event.target)',
         '(tuiActiveZoneChange)': '!$event && control?.onTouched()',
     },
 })
@@ -97,6 +98,9 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     private readonly inputQuery = signal<ElementRef<HTMLInputElement> | undefined>(
         undefined,
     );
+
+    @ViewChild('ghost')
+    protected readonly ghost?: ElementRef<HTMLElement>;
 
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
     protected readonly label?: ElementRef<HTMLElement>;
@@ -197,6 +201,14 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
             !this.input?.nativeElement.matches(':read-only')
         ) {
             this.open.update((x) => !x);
+        }
+    }
+
+    protected onScroll(element: HTMLElement): void {
+        if (this.input?.nativeElement === element) {
+            this.ghost?.nativeElement.scrollTo({
+                left: this.input.nativeElement.scrollLeft,
+            });
         }
     }
 }
