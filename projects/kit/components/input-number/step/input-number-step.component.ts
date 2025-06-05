@@ -16,18 +16,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_TEXTFIELD_OPTIONS, TuiButton, TuiTextfieldContent} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
-import {
-    EMPTY,
-    expand,
-    map,
-    merge,
-    mergeMap,
-    Subject,
-    switchMap,
-    takeUntil,
-    tap,
-    timer,
-} from 'rxjs';
+import {expand, map, merge, Subject, switchMap, takeUntil, tap, timer} from 'rxjs';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
 import type {TuiInputNumberOptions} from '../input-number.options';
@@ -75,7 +64,7 @@ export class TuiInputNumberStep {
     protected readonly sub = this.step$
         .pipe(
             switchMap((stepValue) => this.accelerate$(stepValue)),
-            mergeMap((stepValue) => this.stepChange$(stepValue)),
+            tap((stepValue) => this.stepChange(stepValue)),
             takeUntilDestroyed(this.destroyRef),
         )
         .subscribe();
@@ -117,19 +106,16 @@ export class TuiInputNumberStep {
         );
     }
 
-    private stepChange$(stepValue: number): Observable<number> {
+    private stepChange(stepValue: number): void {
         const {input, clampedValue} = this.calculateClampedValue(stepValue);
 
         this.input.setValue(clampedValue);
 
         if (this.input.value() === null) {
-            return timer(0).pipe(
-                takeUntilDestroyed(this.destroyRef),
-                tap(() => this.setCaretPosition(input)),
-            );
+            timer(0)
+                .pipe(tuiZonefree(this.zone), takeUntilDestroyed(this.destroyRef))
+                .subscribe(() => this.setCaretPosition(input));
         }
-
-        return EMPTY;
     }
 
     private setCaretPosition(inputNumber: TuiInputNumberDirective): void {
