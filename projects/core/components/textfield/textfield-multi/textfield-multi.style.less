@@ -1,0 +1,150 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+@import '@taiga-ui/core/styles/components/textfield.less';
+
+tui-textfield[multi] {
+    overflow: hidden;
+    align-items: stretch;
+    cursor: text;
+
+    &::before,
+    &::after {
+        block-size: var(--t-height);
+    }
+
+    .t-scroll {
+        .fullsize(absolute, inset);
+
+        top: 0.25rem;
+        bottom: 0.25rem;
+        min-block-size: 0;
+    }
+
+    .t-container {
+        .scrollbar-hidden();
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        overflow: scroll;
+        scroll-behavior: smooth;
+        inline-size: calc(100% - var(--t-side) - var(--t-padding) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
+
+        & ~ .t-content .t-clear {
+            display: flex;
+        }
+
+        input:not(:focus)::placeholder {
+            opacity: 0;
+        }
+    }
+
+    &._empty .t-container ~ .t-content .t-clear {
+        display: none;
+    }
+
+    &._empty .t-container,
+    &[data-focus='true']:not(:focus-within) .t-container {
+        input::placeholder {
+            opacity: 1;
+        }
+    }
+
+    &:not(._expandable) {
+        .t-container {
+            overflow: scroll;
+            scroll-behavior: smooth;
+            margin-inline-start: calc(-1 * var(--t-padding));
+            inline-size: calc(100% - var(--t-side) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
+
+            & > *:first-child {
+                margin-inline-start: var(--t-padding);
+            }
+
+            & > .t-input_wrapper:first-child {
+                margin-inline-start: calc(var(--t-padding) + 0.125rem);
+            }
+        }
+    }
+
+    &[data-mode~='readonly'],
+    &._disabled {
+        .t-content .t-clear {
+            display: none;
+        }
+    }
+
+    .t-input_wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        max-inline-size: 100%;
+        margin-inline-start: 0.125rem;
+
+        .t-ghost {
+            visibility: hidden;
+            white-space: pre;
+            text-overflow: clip;
+            padding-inline-end: 0.125rem;
+            min-block-size: 1.75rem;
+        }
+
+        input:defined {
+            position: absolute;
+            left: 0;
+            inline-size: 100%;
+            padding: 0;
+        }
+    }
+
+    .t-filler:defined {
+        position: absolute;
+        left: 0;
+    }
+
+    &[data-size='l'] {
+        --t-padding: 0.75rem;
+
+        .t-input_wrapper:first-child {
+            border-inline-start: 0.125rem solid transparent;
+        }
+
+        .t-container {
+            padding: 0.625rem 0;
+        }
+
+        .t-ghost {
+            min-block-size: 2.25rem;
+        }
+    }
+
+    &[data-size='m'] {
+        --t-padding: 0.625rem;
+
+        .t-container {
+            padding: 0.5rem 0;
+        }
+    }
+
+    &[data-size='s'] {
+        --t-padding: 0.25rem;
+
+        padding-inline-end: 0.625rem;
+
+        .t-input_wrapper:first-child {
+            border-inline-start: 0.25rem solid transparent;
+        }
+
+        .t-container {
+            padding: 0.125rem 0;
+        }
+    }
+
+    &._text .t-input_wrapper {
+        margin-inline-start: 0;
+
+        .t-ghost {
+            min-block-size: 1em;
+        }
+    }
+}

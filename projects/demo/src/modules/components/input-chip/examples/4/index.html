@@ -1,0 +1,13 @@
+<tui-textfield multi>
+    <input
+        placeholder="Enter"
+        tuiInputChip
+        [unique]="false"
+        [(ngModel)]="value"
+    />
+
+    <tui-input-chip
+        *tuiItem="let context"
+        [tuiHint]="'Hello ' + context.item"
+    />
+</tui-textfield>

@@ -1,0 +1,13 @@
+<tui-textfield multi>
+    <input
+        placeholder="Only 3 letters"
+        tuiInputChip
+        [formControl]="control"
+        [maskito]="mask"
+    />
+
+    <tui-input-chip
+        *tuiItem
+        [maskito]="mask"
+    />
+</tui-textfield>
