@@ -5,6 +5,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
 import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/classes';
 import type {TuiPortalItem} from '@taiga-ui/core/types';
+import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
@@ -64,6 +65,10 @@ export class TuiHintDirective<C>
         if (!content) {
             this.toggle(false);
         }
+    }
+
+    public get isFixedPosition(): boolean {
+        return tuiCheckFixedPosition(this.el);
     }
 
     public ngOnDestroy(): void {
