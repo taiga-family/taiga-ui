@@ -4,6 +4,7 @@ import {
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputSliderPO,
+    TuiSliderPO,
 } from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
@@ -268,6 +269,48 @@ describe('InputSlider', () => {
                         `input-slider-to-slider-keyboard-arrow-down-${i}.png`,
                     );
             }
+        });
+
+        describe('min/max restraints also works for slider', () => {
+            let slider!: TuiSliderPO;
+            let track!: {x: number; y: number; width: number; height: number};
+
+            beforeEach(async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputSlider}/API?min=5&max=10&step=1&keySteps=null`,
+                );
+
+                slider = new TuiSliderPO(inputSlider.slider);
+                track = (await inputSlider.slider.boundingBox())!;
+                expect(track).toBeTruthy();
+            });
+
+            test('click on slider', async () => {
+                await inputSlider.slider.click({
+                    position: {x: 0.85 * track.width, y: track.height / 2},
+                });
+
+                await expect(inputSlider.slider).toHaveValue('9');
+                await expect(async () => {
+                    expect(await slider.fillPercentage).toBe(80);
+                }).toPass();
+            });
+
+            test('move thumb', async ({page}) => {
+                await page.mouse.move(track.x, track.y + track.height / 2);
+                await page.mouse.down();
+                await page.mouse.move(
+                    track.x + track.width * 0.85,
+                    track.y + track.height / 2,
+                );
+                await page.mouse.up();
+
+                await expect(inputSlider.slider).toHaveValue('9');
+                await expect(async () => {
+                    expect(await slider.fillPercentage).toBe(80);
+                }).toPass();
+            });
         });
     });
 });
