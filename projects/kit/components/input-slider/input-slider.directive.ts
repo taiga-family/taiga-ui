@@ -74,7 +74,10 @@ export class TuiInputSliderDirective {
             return;
         }
 
-        if (slider.keySteps && Number.isFinite(slider.keySteps?.totalSteps)) {
+        if (
+            slider.keySteps?.transformer() &&
+            Number.isFinite(slider.keySteps?.totalSteps)
+        ) {
             // TODO(v5): move all if-condition body inside `TuiSliderKeyStepsBase`
             slider.min = 0;
             slider.step = 1;
