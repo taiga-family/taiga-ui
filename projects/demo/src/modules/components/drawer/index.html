@@ -13,5 +13,113 @@
         />
     </ng-template>
 
+    <ng-template pageTab="API">
+        <tui-doc-demo>
+            <button
+                size="m"
+                tuiButton
+                type="button"
+                (click)="open.set(true)"
+            >
+                Open
+            </button>
+
+            <tui-drawer
+                *tuiPopup="open()"
+                [direction]="direction"
+                [overlay]="overlay"
+                (click.self)="onClose()"
+            >
+                <header>
+                    <h2 tuiHeader>
+                        <div tuiTitle>Header</div>
+                        <div tuiAccessories>
+                            <button
+                                tuiButton
+                                type="button"
+                                (click)="onClose()"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </h2>
+                </header>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate perspiciatis exercitationem
+                    nemo velit aliquam voluptates non porro, vel, nihil laudantium sapiente ex omnis corrupti assumenda
+                    voluptatibus, architecto sequi saepe consectetur ratione qui. Beatae, sapiente explicabo velit
+                    facere repudiandae veniam et soluta quia qui expedita voluptate accusamus dolor adipisci. Illo quia
+                    sint consequatur unde nulla fuga eum officiis, impedit dolorem? Vel itaque temporibus nihil quia?
+                    Provident earum aperiam autem veritatis hic doloremque unde nesciunt accusantium nisi corrupti.
+                </p>
+
+                <footer tuiHeader>
+                    <div tuiTitle>Footer</div>
+                    <button
+                        appearance="secondary"
+                        tuiButton
+                        type="button"
+                        (click)="onClose()"
+                    >
+                        Close
+                    </button>
+                </footer>
+            </tui-drawer>
+        </tui-doc-demo>
+
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="direction"
+                documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyValues]="directionVariants"
+                [(documentationPropertyValue)]="direction"
+            >
+                Drawer opening direction:
+                <code>'left'</code>
+                or
+                <code>'right'</code>
+                . Default is
+                <code>'right'</code>
+                .
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="overlay"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="overlay"
+            >
+                Show overlay under the drawer.
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="header"
+                documentationPropertyType="TemplateRef"
+            >
+                Slot for custom drawer header content. Use the
+                <code>&lt;header&gt;</code>
+                tag inside the drawer content.
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="footer"
+                documentationPropertyType="TemplateRef"
+            >
+                Slot for custom drawer footer content. Use the
+                <code>&lt;footer&gt;</code>
+                tag inside the drawer content.
+            </ng-template>
+
+            <ng-template
+                documentationPropertyName="scrollbar"
+                documentationPropertyType="TuiScrollbar"
+            >
+                The drawer uses
+                <code>tui-scrollbar</code>
+                for both main content and footer.
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
     <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>
