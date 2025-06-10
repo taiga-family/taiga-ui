@@ -172,7 +172,7 @@
     <loc>https://taiga-ui.dev/components/combo-box/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/combo-box-legacy/</loc>
+    <loc>https://taiga-ui.dev/legacy/combo-box/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/data-list/</loc>
@@ -244,7 +244,7 @@
     <loc>https://taiga-ui.dev/components/input-date/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-date-legacy/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-date/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-date-multi/</loc>
@@ -265,7 +265,7 @@
     <loc>https://taiga-ui.dev/legacy/input-month/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-month-range/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-month-range/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-number/</loc>
@@ -283,6 +283,9 @@
     <loc>https://taiga-ui.dev/components/input-date-range/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/legacy/input-date-range/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/input-slider/</loc>
   </url>
   <url>
@@ -292,7 +295,7 @@
     <loc>https://taiga-ui.dev/components/input-tag/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-time-legacy/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-time/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-phone-international/</loc>
@@ -409,7 +412,7 @@
     <loc>https://taiga-ui.dev/components/textarea/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/textarea-legacy/</loc>
+    <loc>https://taiga-ui.dev/legacy/textarea/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/primitive-textfield/</loc>
@@ -928,10 +931,10 @@
     <loc>https://taiga-ui.dev/components/combo-box/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/combo-box-legacy/API/</loc>
+    <loc>https://taiga-ui.dev/legacy/combo-box/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/combo-box-legacy/Setup/</loc>
+    <loc>https://taiga-ui.dev/legacy/combo-box/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/data-list/API/</loc>
@@ -1072,10 +1075,10 @@
     <loc>https://taiga-ui.dev/components/input-date/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-date-legacy/API/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-date/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-date-legacy/Setup/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-date/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-date-multi/API/</loc>
@@ -1114,10 +1117,10 @@
     <loc>https://taiga-ui.dev/legacy/input-month/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-month-range/API/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-month-range/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-month-range/Setup/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-month-range/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-number/API/</loc>
@@ -1150,6 +1153,12 @@
     <loc>https://taiga-ui.dev/components/input-date-range/Setup/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/legacy/input-date-range/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/legacy/input-date-range/Setup/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/input-slider/API/</loc>
   </url>
   <url>
@@ -1168,10 +1177,10 @@
     <loc>https://taiga-ui.dev/components/input-tag/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-time-legacy/API/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-time/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-time-legacy/Setup/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-time/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-phone-international/API/</loc>
@@ -1396,10 +1405,10 @@
     <loc>https://taiga-ui.dev/components/textarea/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/textarea-legacy/API/</loc>
+    <loc>https://taiga-ui.dev/legacy/textarea/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/textarea-legacy/Setup/</loc>
+    <loc>https://taiga-ui.dev/legacy/textarea/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/primitive-textfield/API/</loc>
