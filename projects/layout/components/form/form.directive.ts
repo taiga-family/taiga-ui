@@ -5,23 +5,29 @@ import {
     Directive,
     inject,
     Input,
+    signal,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import {tuiNotificationOptionsProvider} from '@taiga-ui/core/components/notification';
-import {TuiTextfieldOptionsDirective} from '@taiga-ui/core/components/textfield';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
+import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
+import {
+    TUI_TEXTFIELD_OPTIONS,
+    TuiTextfieldOptionsDirective,
+} from '@taiga-ui/core/components/textfield';
 import {TUI_SEGMENTED_OPTIONS} from '@taiga-ui/kit/components/segmented';
 import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
 import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 
-const HEADER_SIZE: Record<string, string> = {
+import type {TuiFormOptions} from './form.options';
+import {TUI_FORM_OPTIONS} from './form.options';
+
+const HEADER_SIZE = {
     s: 'xxxs',
     m: 'xs',
     l: 's',
-};
+} as const;
 
 @Component({
     standalone: true,
@@ -39,20 +45,23 @@ class TuiFormStyles {}
     standalone: true,
     selector: '[tuiForm]',
     providers: [
-        tuiButtonOptionsProvider(TuiForm),
-        tuiNotificationOptionsProvider(TuiForm),
-        projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size]!),
+        projectSize(TUI_BUTTON_OPTIONS, (size) => size),
+        projectSize(TUI_NOTIFICATION_OPTIONS, (size) => size),
+        projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size]),
         projectSize(TUI_SWITCH_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         projectSize(TUI_SEGMENTED_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
+        {
+            provide: TUI_TEXTFIELD_OPTIONS,
+            useFactory: () => ({
+                ...inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true}),
+                size: signal(inject(TuiForm).size),
+            }),
+        },
     ],
     hostDirectives: [
         {
             directive: TuiTextfieldOptionsDirective,
-            inputs: [
-                'tuiTextfieldSize: tuiForm',
-                'tuiTextfieldAppearance',
-                'tuiTextfieldCleaner',
-            ],
+            inputs: ['tuiTextfieldAppearance', 'tuiTextfieldCleaner'],
         },
     ],
     host: {
@@ -61,15 +70,21 @@ class TuiFormStyles {}
     },
 })
 export class TuiForm {
+    protected readonly options = inject(TUI_FORM_OPTIONS);
+
     protected readonly nothing = tuiWithStyles(TuiFormStyles);
 
-    @Input('tuiForm')
-    public size: TuiSizeL | TuiSizeS = 'l';
+    public size: TuiFormOptions['size'] = this.options.size;
+
+    @Input()
+    public set tuiForm(size: TuiFormOptions['size'] | '') {
+        this.size = size || this.options.size;
+    }
 }
 
 function projectSize(
     provide: InjectionToken<any>,
-    project: TuiStringHandler<string>,
+    project: TuiHandler<TuiFormOptions['size'], string>,
 ): Provider {
     return {
         provide,
