@@ -1,5 +1,5 @@
 import {NgForOf, NgIf} from '@angular/common';
-import {type AfterContentInit, type ElementRef} from '@angular/core';
+import type {AfterContentInit, ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
