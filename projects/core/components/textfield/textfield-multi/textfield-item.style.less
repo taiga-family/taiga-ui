@@ -1,0 +1,22 @@
+:host {
+    max-inline-size: 100%;
+    flex-shrink: 0;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+
+    &._string {
+        overflow: hidden;
+
+        &::after {
+            content: ', ';
+        }
+    }
+
+    &:last-of-type {
+        max-inline-size: 80%;
+    }
+}
+
+:host-context(tui-textfield:not([data-focus='true'])):last-of-type::after {
+    display: none;
+}

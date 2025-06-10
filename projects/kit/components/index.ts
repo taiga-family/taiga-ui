@@ -22,6 +22,7 @@ export * from '@taiga-ui/kit/components/elastic-container';
 export * from '@taiga-ui/kit/components/files';
 export * from '@taiga-ui/kit/components/filter';
 export * from '@taiga-ui/kit/components/floating-container';
+export * from '@taiga-ui/kit/components/input-chip';
 export * from '@taiga-ui/kit/components/input-date';
 export * from '@taiga-ui/kit/components/input-date-range';
 export * from '@taiga-ui/kit/components/input-inline';
