@@ -1,6 +1,7 @@
 import type {TuiLooseUnion} from '@taiga-ui/cdk/types';
 
 export type TuiLanguageName = TuiLooseUnion<
+    | 'arabic'
     | 'belarusian'
     | 'chinese'
     | 'dutch'

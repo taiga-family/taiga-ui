@@ -42,6 +42,7 @@ export class TuiDocLanguageSwitcher {
     protected open = false;
 
     public readonly flags = new Map<TuiLanguageName, TuiCountryIsoCode>([
+        ['arabic', 'SA'],
         ['belarusian', 'BY'],
         ['chinese', 'CN'],
         ['dutch', 'NL'],
