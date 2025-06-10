@@ -14,8 +14,6 @@ import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
 
-const BACKSPACE_CODE = 8;
-
 @Directive({
     standalone: true,
     selector: 'input[tuiInputChip]',
@@ -37,8 +35,8 @@ const BACKSPACE_CODE = 8;
         '[disabled]': 'disabled()',
         '(blur)': 'onEnter();',
         '(keydown.enter.prevent)': 'onEnter()',
-        '(keydown.zoneless)': 'onBackspace($event.keyCode)',
-        '(input)': 'onInput($event)',
+        '(keydown.zoneless)': 'onBackspace($event.key)',
+        '(input)': 'onInput()',
         '(paste.prevent)': 'onPaste($event)',
         '(drop.prevent)': 'onPaste($event)',
     },
@@ -95,10 +93,10 @@ export class TuiInputChipDirective<T>
         this.onEnter();
     }
 
-    protected onBackspace(keyCode: number): void {
+    protected onBackspace(key: string): void {
         // (keydown.backspace) doesn't emit event on empty input in ios safari
         if (
-            keyCode === BACKSPACE_CODE &&
+            key === 'Backspace' &&
             !this.textfield.value() &&
             this.interactive() &&
             (this.mobile || !this.textfield.item)

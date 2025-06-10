@@ -26,7 +26,7 @@ tui-textfield[multi] {
         flex-wrap: wrap;
         align-items: center;
         overflow: scroll;
-        scroll-behavior: smooth;
+        scroll-behavior: var(--tui-scroll-behavior);
         inline-size: calc(100% - var(--t-side) - var(--t-padding) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
 
         & ~ .t-content .t-clear {
@@ -52,7 +52,7 @@ tui-textfield[multi] {
     &:not(._expandable) {
         .t-container {
             overflow: scroll;
-            scroll-behavior: smooth;
+            scroll-behavior: var(--tui-scroll-behavior);
             margin-inline-start: calc(-1 * var(--t-padding));
             inline-size: calc(100% - var(--t-side) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
 
