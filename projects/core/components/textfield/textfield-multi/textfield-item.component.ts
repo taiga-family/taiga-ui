@@ -20,32 +20,7 @@ export interface TuiTextfieldItem<T> {
     imports: [PolymorpheusOutlet],
     template:
         '<ng-container *polymorpheusOutlet="content as text; context: context">{{ text }}</ng-container>',
-    styles: [
-        `
-            :host {
-                max-width: 100%;
-                flex-shrink: 0;
-                white-space: pre-wrap;
-                text-overflow: ellipsis;
-
-                &._string {
-                    overflow: hidden;
-
-                    &::after {
-                        content: ', ';
-                    }
-                }
-
-                &:last-of-type {
-                    max-width: 80%;
-                }
-            }
-
-            :host-context(tui-textfield:not([data-focus='true'])):last-of-type::after {
-                display: none;
-            }
-        `,
-    ],
+    styleUrls: ['./textfield-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._string]': '!textfield.item',

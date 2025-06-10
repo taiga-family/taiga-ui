@@ -8,6 +8,7 @@ import {
     signal,
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MaskitoDirective} from '@maskito/angular';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
@@ -31,6 +32,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
     selector: 'tui-input-chip',
     imports: [
         FormsModule,
+        MaskitoDirective,
         NgIf,
         ReactiveFormsModule,
         TuiAutoFocus,
@@ -47,6 +49,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
             tuiAutoFocus
             tuiChip
             class="t-input"
+            [maskito]="maskito?.options ?? null"
             [ngModel]="internal()"
             (blur)="cancel()"
             (keydown.enter)="save()"
@@ -95,6 +98,7 @@ export class TuiInputChipComponent<T> {
     private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
     private readonly value = computed(() => this.directive()?.value() ?? []);
 
+    protected readonly maskito = inject(MaskitoDirective, {optional: true});
     protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly internal = signal(this.context.$implicit.item);
     protected readonly editing = signal(false);
