@@ -9,6 +9,6 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <rect x="2" y="7" vector-effect="non-scaling-stroke" width="16" height="10" rx="2" ry="2" />
-    <line vector-effect="non-scaling-stroke" x1="22" x2="22" y1="11" y2="13" />
+    <path vector-effect="non-scaling-stroke" d="M 22 14 L 22 10" />
+    <rect x="2" y="6" vector-effect="non-scaling-stroke" width="16" height="12" rx="2" />
 </svg>

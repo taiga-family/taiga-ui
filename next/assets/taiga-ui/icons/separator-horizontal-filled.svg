@@ -9,7 +9,7 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <line vector-effect="non-scaling-stroke" x1="3" x2="21" y1="12" y2="12" />
-    <polyline vector-effect="non-scaling-stroke" points="8 8 12 4 16 8" />
-    <polyline vector-effect="non-scaling-stroke" points="16 16 12 20 8 16" />
+    <path vector-effect="non-scaling-stroke" d="m16 16-4 4-4-4" />
+    <path vector-effect="non-scaling-stroke" d="M3 12h18" />
+    <path vector-effect="non-scaling-stroke" d="m8 8 4-4 4 4" />
 </svg>
