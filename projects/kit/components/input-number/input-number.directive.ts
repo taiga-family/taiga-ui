@@ -86,13 +86,20 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly element = tuiInjectElement<HTMLInputElement>();
 
-    protected readonly inputMode = computed(() => {
-        if (this.isIOS && this.min() < 0) {
+    protected readonly inputMode = computed((needMinus = this.min() < 0) => {
+        if (this.isIOS && needMinus) {
             // iPhone does not have minus sign if inputMode is equal to 'numeric' / 'decimal'
             return 'text';
         }
 
-        return this.precision() ? 'decimal' : 'numeric';
+        return this.precision() &&
+            /**
+             * Samsung Keyboard does not minus sign for `decimal` input mode
+             * @see https://github.com/taiga-family/taiga-ui/issues/11061#issuecomment-2939103792
+             */
+            !needMinus
+            ? 'decimal'
+            : 'numeric';
     });
 
     protected readonly defaultMaxLength = computed(() => {

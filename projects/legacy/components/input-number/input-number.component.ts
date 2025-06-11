@@ -122,7 +122,14 @@ export class TuiInputNumberComponent
             return 'text';
         }
 
-        return !this.precision ? 'numeric' : 'decimal';
+        return this.precision ||
+            /**
+             * Samsung Keyboard does not minus sign for `decimal` input mode
+             * @see https://github.com/taiga-family/taiga-ui/issues/11061#issuecomment-2939103792
+             */
+            !this.isNegativeAllowed
+            ? 'decimal'
+            : 'numeric';
     }
 
     public get calculatedMaxLength(): number {
