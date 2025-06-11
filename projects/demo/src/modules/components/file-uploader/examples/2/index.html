@@ -1,0 +1,168 @@
+<tui-segmented class="platforms">
+    <label *ngFor="let platform of platforms">
+        <input
+            name="radio"
+            type="radio"
+            [value]="platform"
+            [(ngModel)]="selected"
+        />
+        {{ platform.name }}
+    </label>
+</tui-segmented>
+
+<section [tuiPlatform]="selected.tuiPlatform">
+    <tui-file mode="card">
+        <div tuiFilePreview>
+            <img
+                alt=""
+                src="assets/images/example-cert.png"
+                tuiFilePreview
+            />
+            <button
+                appearance="glass"
+                tuiButtonClose
+                tuiIconButton
+                type="button"
+            >
+                Remove
+            </button>
+        </div>
+        <div tuiTitle>
+            filename.png
+            <div tuiSubtitle>30 Mb</div>
+        </div>
+    </tui-file>
+
+    <tui-file mode="card">
+        <div tuiFilePreview>
+            <tui-icon
+                icon="@tui.image"
+                [style.color]="'var(--tui-chart-categorical-16)'"
+            />
+            <button
+                appearance="glass"
+                tuiButtonClose
+                tuiIconButton
+                type="button"
+            >
+                Remove
+            </button>
+        </div>
+        <div tuiTitle>
+            filename.png
+            <div tuiSubtitle>30 Mb</div>
+        </div>
+    </tui-file>
+
+    <tui-file mode="card">
+        <div tuiFilePreview>
+            <label tuiProgressLabel>
+                <tui-progress-circle
+                    size="xxs"
+                    [max]="100"
+                    [style.--tui-thickness]="'0.175rem'"
+                    [value]="60"
+                />
+
+                <button
+                    appearance=""
+                    iconStart="@tui.x"
+                    size="xs"
+                    tuiIconButton
+                    type="button"
+                    [style.border-radius.%]="100"
+                    [style.color]="'var(--tui-background-accent-1)'"
+                >
+                    Cancel
+                </button>
+            </label>
+            <button
+                appearance="glass"
+                tuiButtonClose
+                tuiIconButton
+                type="button"
+            >
+                Remove
+            </button>
+        </div>
+        <div tuiTitle>
+            filename.png
+            <div tuiSubtitle>12 Mb / 30 Mb</div>
+        </div>
+    </tui-file>
+
+    <tui-file
+        mode="card"
+        state="error"
+    >
+        <div tuiFilePreview>
+            <button
+                appearance=""
+                iconStart="@tui.rotate-cw"
+                size="xs"
+                tuiIconButton
+                type="button"
+                [style.border-radius.%]="100"
+                [style.color]="'var(--tui-background-accent-1)'"
+            >
+                Reload
+            </button>
+            <button
+                appearance="glass"
+                tuiButtonClose
+                tuiIconButton
+                type="button"
+            >
+                Remove
+            </button>
+        </div>
+        <div tuiTitle>
+            filename.png
+            <div tuiSubtitle>30 Mb</div>
+        </div>
+    </tui-file>
+
+    <tui-file
+        mode="card"
+        state="error"
+    >
+        <div tuiFilePreview>
+            <tui-icon icon="@tui.file-x" />
+            <button
+                appearance="glass"
+                tuiButtonClose
+                tuiIconButton
+                type="button"
+            >
+                Remove
+            </button>
+        </div>
+        <div tuiTitle>
+            filename.png
+            <div tuiSubtitle>30 Mb</div>
+        </div>
+    </tui-file>
+    <tui-file
+        mode="card"
+        state="disabled"
+    >
+        <div tuiFilePreview>
+            <tui-icon
+                icon="@tui.file-x"
+                [style.color]="'var(--tui-background-accent-1)'"
+            />
+            <button
+                appearance="glass"
+                tuiButtonClose
+                tuiIconButton
+                type="button"
+            >
+                Remove
+            </button>
+        </div>
+        <div tuiTitle>
+            filename.png
+            <div tuiSubtitle>30 Mb</div>
+        </div>
+    </tui-file>
+</section>
