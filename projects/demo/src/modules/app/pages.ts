@@ -1520,6 +1520,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
+                title: 'MiddleEllipsis',
+                keywords: 'text, middle, ellipsis',
+                route: DemoRoute.MiddleEllipsis,
+            },
+            {
+                section: 'Tools',
                 title: 'Sensitive',
                 keywords: 'sensitive, pixel, mask, пиксель, маска',
                 route: DemoRoute.Sensitive,

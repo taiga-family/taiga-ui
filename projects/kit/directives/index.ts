@@ -10,6 +10,7 @@ export * from '@taiga-ui/kit/directives/fluid-typography';
 export * from '@taiga-ui/kit/directives/highlight';
 export * from '@taiga-ui/kit/directives/icon-badge';
 export * from '@taiga-ui/kit/directives/lazy-loading';
+export * from '@taiga-ui/kit/directives/middle-ellipsis';
 export * from '@taiga-ui/kit/directives/password';
 export * from '@taiga-ui/kit/directives/present';
 export * from '@taiga-ui/kit/directives/sensitive';
