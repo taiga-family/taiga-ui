@@ -163,10 +163,12 @@ export class TuiDropdownOpen implements OnChanges {
         this.focusDropdown(up);
     }
 
-    protected onKeydown({key, target, defaultPrevented}: KeyboardEvent): void {
+    protected onKeydown(event: KeyboardEvent): void {
+        const target = tuiGetActualTarget(event);
+
         if (
-            !defaultPrevented &&
-            tuiIsEditingKey(key) &&
+            !event.defaultPrevented &&
+            tuiIsEditingKey(event.key) &&
             this.editable &&
             this.focused &&
             tuiIsHTMLElement(target) &&
