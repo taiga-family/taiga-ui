@@ -20,6 +20,10 @@
                 {
                     "target": "i18n",
                     "params": "ignore"
+                },
+                {
+                    "target": "generate-llms-file",
+                    "params": "ignore"
                 }
             ],
             "options": {
@@ -235,6 +239,13 @@
                     "params": "ignore"
                 }
             ]
+        },
+        "generate-llms-file": {
+            "executor": "nx:run-commands",
+            "options": {
+                "parallel": false,
+                "command": "ts-node ./projects/demo/scripts/llms.ts"
+            }
         },
         "prerender": {
             "executor": "@nguniversal/builders:prerender",
