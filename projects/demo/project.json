@@ -62,6 +62,16 @@
                         "glob": "**/*",
                         "input": "projects/icons-fontawesome/src",
                         "output": "assets/taiga-ui/icons/"
+                    },
+                    {
+                        "glob": "llms.txt",
+                        "input": "{projectRoot}/src/",
+                        "output": "./"
+                    },
+                    {
+                        "glob": "llms-full.txt",
+                        "input": "{projectRoot}/src/",
+                        "output": "./"
                     }
                 ],
                 "baseHref": "/",
