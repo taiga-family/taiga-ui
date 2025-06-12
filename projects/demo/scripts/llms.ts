@@ -1,59 +1,59 @@
-// The purpose of this script is to generate a llms-full.txt
-// Run with `node projects/demo/scripts/llms.mjs` to generate llms-full.txt based on documentation
-
 import fs from 'fs/promises';
 import path from 'path';
 
-const MODULES_PATH = path.resolve(new URL('.', import.meta.url).pathname, '../src/modules');
-const OUTPUT_FILE = path.resolve(new URL('.', import.meta.url).pathname, '../src/llms-full.txt');
+const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
+const OUTPUT_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms-full.txt');
 
 const FOLDERS_TO_SCAN = ['components', 'directives', 'tokens', 'customization', 'pipes'];
 
-async function fileExists(filePath) {
+interface ComponentHeader {
+    header: string | null;
+    package: string | null;
+    type: string | null;
+    deprecated: boolean;
+}
+
+async function fileExists(filePath: string): Promise<boolean> {
     try {
         await fs.access(filePath);
+
         return true;
     } catch {
         return false;
     }
 }
 
-async function readIndexHtml(folderPath) {
+async function readIndexHtml(folderPath: string): Promise<string> {
     const indexPath = path.join(folderPath, 'index.html');
 
     if (!(await fileExists(indexPath))) {
         return '';
     }
 
-    return await fs.readFile(indexPath, 'utf-8');
+    return fs.readFile(indexPath, 'utf-8');
 }
 
-// parse header from tui-doc-page
-function getComponentHeader(content) {
-    const match = content.match(
-        /<tui-doc-page[^>]*(deprecated)?[^>]*header="([^"]+)"[^>]*package="([^"]+)"[^>]*type="([^"]+)"[^>]*>/i,
-    );
+function getComponentHeader(content: string): ComponentHeader {
+    const match =
+        /<tui-doc-page[^>]*(deprecated)?[^>]*header="([^"]+)"[^>]*package="([^"]+)"[^>]*type="([^"]+)"[^>]*>/i.exec(
+            content,
+        );
 
     if (!match) {
-        return null;
+        return {header: null, package: null, type: null, deprecated: false};
     }
 
     const deprecated = !!match[1];
-    const header = match[2]?.trim();
-    const packageValue = match[3]?.trim();
-    const type = match[4]?.trim();
+    const header = match[2]?.trim() || null;
+    const packageValue = match[3]?.trim() || null;
+    const type = match[4]?.trim() || null;
 
-    return {
-        header,
-        package: packageValue,
-        type,
-        deprecated,
-    };
+    return {header, package: packageValue, type, deprecated};
 }
 
-// parse description from first <ng-template pageTab> to <tui-doc-example>
-function getComponentDescription(content) {
-    const templateMatch = content.match(/<ng-template[^>]+pageTab[^>]*>([\s\S]*?)<tui-doc-example/i);
+function getComponentDescription(content: string): string | undefined {
+    const templateMatch =
+        /<ng-template[^>]+pageTab[^>]*>([\s\S]*?)<tui-doc-example/i.exec(content);
 
     if (!templateMatch) {
         return '';
@@ -61,19 +61,17 @@ function getComponentDescription(content) {
 
     const templateContent = templateMatch[1];
 
-    // remove all ng-template and script-tags
     const cleanContent = templateContent
-        .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-        .replace(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '')
-        .replace(/<(\/?(p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
-        .replace(/<[^>]+>/g, '')
+        ?.replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+        .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '')
+        .replaceAll(/<((\/?)(p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
+        .replaceAll(/<[^>]+>/g, '')
         .trim();
 
     return cleanContent;
 }
 
-// parse import.md and template.md
-async function getImportExamples(folderPath) {
+async function getImportExamples(folderPath: string): Promise<string> {
     const importFolderPath = path.join(folderPath, 'examples', 'import');
 
     if (!(await fileExists(importFolderPath))) {
@@ -86,56 +84,58 @@ async function getImportExamples(folderPath) {
 
     if (await fileExists(importMdPath)) {
         const content = await fs.readFile(importMdPath, 'utf-8');
+
         result += `\n### How to Use (Import)\n\n${content.trim()}`;
     }
 
     if (await fileExists(templateMdPath)) {
         const content = await fs.readFile(templateMdPath, 'utf-8');
+
         result += `\n### How to Use (Template)\n\n${content.trim()}`;
     }
 
     return result;
 }
 
-// parse example from <tui-doc-demo>
-function getComponentExample(content) {
-    const match = content.match(/<tui-doc-demo[^>]*>([\s\S]*?)<\/tui-doc-demo>/i);
+function getComponentExample(content: string): string {
+    const match = /<tui-doc-demo[^>]*>([\s\S]*?)<\/tui-doc-demo>/i.exec(content);
 
     if (!match) {
         return '';
     }
 
-    const html = match[1].replace(/<(\/?(tui-|button|input|a|code|span|div)[^>]+)>/gi, '<$1>').trim();
+    const html = match[1]
+        ?.replaceAll(/<(\/?(tui-|button|input|a|code|span|div)[^>]+)>/gi, '<$1>')
+        .trim();
 
     return `\n### Example\n\n\`\`\`html\n${html}\n\`\`\``;
 }
 
-// parse API from <table tuiDocAPI>
-function getComponentApiFromTable(content) {
-    const tableMatch = content.match(/<table tuiDocAPI[^>]*>([\s\S]*?)<\/table>/i);
+function getComponentApiFromTable(content: string): string {
+    const tableMatch = /<table tuiDocAPI[^>]*>([\s\S]*?)<\/table>/i.exec(content);
 
     if (!tableMatch) {
         return '';
     }
 
     const tableContent = tableMatch[1];
-    const apiRows = tableContent.match(/<tr[^>]+name="([^"]+)"[^>]*>[\s\S]*?<\/tr>/gi);
+    const apiRows = tableContent?.match(/<tr[^>]+name="([^"]+)"[^>]*>[\s\S]*?<\/tr>/gi);
 
     if (!apiRows) {
         return '';
     }
 
-    const rows = [];
+    const rows: string[] = [];
 
     for (const row of apiRows) {
-        const nameMatch = row.match(/name="([^"]+)"/i);
-        const typeMatch = row.match(/type="([^"]+)"/i);
-        const descriptionMatch = row.match(/>([^<>]+?)<\/tr>/i);
+        const nameMatch = /name="([^"]+)"/i.exec(row);
+        const typeMatch = /type="([^"]+)"/i.exec(row);
+        const descriptionMatch = />([^<>]+?)<\/tr>/i.exec(row);
 
         if (nameMatch && typeMatch) {
-            const name = nameMatch[1].trim();
-            const type = typeMatch[1].trim();
-            const description = descriptionMatch && descriptionMatch[1] ? descriptionMatch[1].trim() : '—';
+            const name = nameMatch[1]?.trim();
+            const type = typeMatch[1]?.trim();
+            const description = descriptionMatch?.[1] ? descriptionMatch[1].trim() : '—';
 
             rows.push(`| ${name} | \`${type}\` | ${description} |`);
         }
@@ -148,16 +148,16 @@ function getComponentApiFromTable(content) {
     return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
 }
 
-// parse API from <tui-doc-documentation> with <ng-template documentationPropertyName="...">
-function getComponentApiFromTemplates(content) {
-    const templateMatch = content.match(/<tui-doc-documentation[^>]*>([\s\S]*?)<\/tui-doc-documentation>/i);
+function getComponentApiFromTemplates(content: string): string {
+    const templateMatch =
+        /<tui-doc-documentation[^>]*>([\s\S]*?)<\/tui-doc-documentation>/i.exec(content);
 
     if (!templateMatch) {
         return '';
     }
 
     const templatesContent = templateMatch[1];
-    const templateRows = templatesContent.match(
+    const templateRows = templatesContent?.match(
         /<ng-template[^>]+documentationPropertyName="([^"]+)"[^>]+documentationPropertyType="([^"]+)"[^>]*>([\s\S]*?)<\/ng-template>/gi,
     );
 
@@ -165,21 +165,22 @@ function getComponentApiFromTemplates(content) {
         return '';
     }
 
-    const rows = [];
+    const rows: string[] = [];
 
     for (const row of templateRows) {
-        const nameMatch = row.match(/documentationPropertyName="([^"]+)"/i);
-        const typeMatch = row.match(/documentationPropertyType="([^"]+)"/i);
-        const innerContentMatch = row.match(/>([\s\S]*?)<\/ng-template>/i);
+        const nameMatch = /documentationPropertyName="([^"]+)"/i.exec(row);
+        const typeMatch = /documentationPropertyType="([^"]+)"/i.exec(row);
+        const innerContentMatch = />([\s\S]*?)<\/ng-template>/i.exec(row);
 
         if (nameMatch && typeMatch) {
-            const name = nameMatch[1].trim();
-            const type = typeMatch[1].trim();
+            const name = nameMatch[1]?.trim();
+            const type = typeMatch[1]?.trim();
 
-            let description =
-                innerContentMatch && innerContentMatch[1] ? innerContentMatch[1].replace(/<[^>]+>/g, '').trim() : '—';
+            let description = innerContentMatch?.[1]
+                ? innerContentMatch[1].replaceAll(/<[^>]+>/g, '').trim()
+                : '—';
 
-            description = description.replace(/\s+/g, ' ');
+            description = description.replaceAll(/\s+/g, ' ');
 
             rows.push(`| ${name} | \`${type}\` | ${description} |`);
         }
@@ -192,8 +193,10 @@ function getComponentApiFromTemplates(content) {
     return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
 }
 
-// parse content from index.ts and index.less
-async function getComponentSourceFiles(folderPath, hasExample) {
+async function getComponentSourceFiles(
+    folderPath: string,
+    hasExample: boolean,
+): Promise<string> {
     if (!hasExample) {
         return '';
     }
@@ -205,19 +208,21 @@ async function getComponentSourceFiles(folderPath, hasExample) {
 
     if (await fileExists(tsPath)) {
         const tsContent = await fs.readFile(tsPath, 'utf-8');
+
         result += `\n### TypeScript\n\n\`\`\`ts\n${tsContent.trim()}\n\`\`\``;
     }
 
     if (await fileExists(lessPath)) {
         const lessContent = await fs.readFile(lessPath, 'utf-8');
+
         result += `\n### LESS\n\n\`\`\`less\n${lessContent.trim()}\n\`\`\``;
     }
 
     return result;
 }
 
-async function getAllFolders() {
-    let folders = [];
+async function getAllFolders(): Promise<string[]> {
+    const folders: string[] = [];
 
     for (const subFolder of FOLDERS_TO_SCAN) {
         const dirPath = path.join(MODULES_PATH, subFolder);
@@ -232,7 +237,7 @@ async function getAllFolders() {
 
     return folders;
 
-    async function scanDir(currentPath) {
+    async function scanDir(currentPath: string): Promise<void> {
         const entries = await fs.readdir(currentPath, {withFileTypes: true});
 
         for (const entry of entries) {
@@ -252,11 +257,10 @@ async function getAllFolders() {
     }
 }
 
-// recursive get .md files in folder and subfolders
-async function getMarkdownFiles(startPath) {
-    const result = [];
+async function getMarkdownFiles(startPath: string): Promise<string[]> {
+    const result: string[] = [];
 
-    async function scanDir(currentPath) {
+    async function scanDir(currentPath: string): Promise<void> {
         const entries = await fs.readdir(currentPath, {withFileTypes: true});
 
         for (const entry of entries) {
@@ -264,7 +268,10 @@ async function getMarkdownFiles(startPath) {
 
             if (entry.isDirectory()) {
                 await scanDir(fullPath);
-            } else if (entry.isFile() && path.extname(entry.name).toLowerCase() === '.md') {
+            } else if (
+                entry.isFile() &&
+                path.extname(entry.name).toLowerCase() === '.md'
+            ) {
                 result.push(fullPath);
             }
         }
@@ -275,8 +282,7 @@ async function getMarkdownFiles(startPath) {
     return result;
 }
 
-// parse content from .md file
-async function processMarkdownFile(filePath) {
+async function processMarkdownFile(filePath: string): Promise<string> {
     const content = await fs.readFile(filePath, 'utf-8');
 
     const relativePath = path.relative(MODULES_PATH, filePath);
@@ -285,14 +291,16 @@ async function processMarkdownFile(filePath) {
     return `${title}\n\n${content.trim()}\n`;
 }
 
-async function main() {
+async function main(): Promise<void> {
     const EXAMPLES_MD_PATH = path.join(MODULES_PATH, 'app', 'home', 'examples');
-    console.log(`Search .md files in: ${EXAMPLES_MD_PATH}`);
+
+    console.info(`Search .md files in: ${EXAMPLES_MD_PATH}`);
 
     const exampleMarkdownFiles = await getMarkdownFiles(EXAMPLES_MD_PATH);
-    console.log(`Found .md files in examples: ${exampleMarkdownFiles.length}`);
 
-    const output = [];
+    console.info(`Found .md files in examples: ${exampleMarkdownFiles.length}`);
+
+    const output: string[] = [];
 
     for (const mdFile of exampleMarkdownFiles) {
         const processed = await processMarkdownFile(mdFile);
@@ -304,17 +312,24 @@ async function main() {
 
     if (allFolders.length === 0) {
         console.warn(`Folders with content not found in ${MODULES_PATH}`);
+
         return;
     }
 
-    console.log(`Found folders with content: ${allFolders.length}`);
+    console.info(`Found folders with content: ${allFolders.length}`);
 
     for (const folderPath of allFolders) {
         const content = await readIndexHtml(folderPath);
-        if (!content) continue;
+
+        if (!content) {
+            continue;
+        }
 
         const headerData = getComponentHeader(content);
-        if (!headerData) continue;
+
+        if (!headerData?.header) {
+            continue;
+        }
 
         const parentFolder = path.basename(path.dirname(folderPath));
         const title = `${parentFolder}/${headerData.header}`;
@@ -322,7 +337,9 @@ async function main() {
         output.push(`# ${title}\n`);
 
         if (headerData.deprecated) {
-            output.push(`> ⚠️ **Deprecated** — use the new version from experimental package\n`);
+            output.push(
+                '> ⚠️ **Deprecated** — use the new version from experimental package\n',
+            );
         }
 
         output.push(`- **Package**: \`${headerData.package}\``);
@@ -330,30 +347,46 @@ async function main() {
         output.push('');
 
         const description = getComponentDescription(content);
-        if (description) output.push(`${description}\n`);
+
+        if (description) {
+            output.push(`${description}\n`);
+        }
 
         const importExample = await getImportExamples(folderPath);
-        if (importExample) output.push(importExample);
+
+        if (importExample) {
+            output.push(importExample);
+        }
 
         const example = getComponentExample(content);
-        if (example) output.push(example);
+
+        if (example) {
+            output.push(example);
+        }
 
         const apiFromTable = getComponentApiFromTable(content);
-        if (apiFromTable) output.push(apiFromTable);
+
+        if (apiFromTable) {
+            output.push(apiFromTable);
+        }
 
         const apiFromTemplates = getComponentApiFromTemplates(content);
-        if (apiFromTemplates) output.push(apiFromTemplates);
+
+        if (apiFromTemplates) {
+            output.push(apiFromTemplates);
+        }
 
         const sourceFiles = await getComponentSourceFiles(folderPath, !!example);
+
         if (sourceFiles) {
-            output.push(`${sourceFiles}\n`);
+            output.push(sourceFiles);
         }
 
         output.push('\n---\n');
     }
 
     await fs.writeFile(OUTPUT_FILE, output.join('\n'), 'utf-8');
-    console.log(`Successfully file saved: ${OUTPUT_FILE}`);
+    console.info(`Successfully file saved: ${OUTPUT_FILE}`);
 }
 
 main().catch(console.error);

@@ -295,7 +295,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Accordion
@@ -468,7 +467,6 @@ export default class Page {
     }
 }
 ```
-
 
 ---
 
@@ -661,7 +659,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/AppBar
@@ -817,7 +814,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Avatar
@@ -922,7 +918,6 @@ export default class Page {
     protected round = true;
 }
 ```
-
 
 ---
 
@@ -1077,7 +1072,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Badge
@@ -1194,7 +1188,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/BadgeNotification
@@ -1267,7 +1260,6 @@ export default class Example {
     protected size: TuiSizeL | TuiSizeXS = this.sizeVariants[0]!;
 }
 ```
-
 
 ---
 
@@ -1359,7 +1351,6 @@ export default class Example {
 }
 ```
 
-
 ---
 
 # components/Bar
@@ -1448,7 +1439,6 @@ export default class Page {
     block-size: 6.25rem;
 }
 ```
-
 
 ---
 
@@ -1560,7 +1550,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/BarSet
@@ -1661,7 +1650,6 @@ export default class Page {
     box-shadow: 0 1px var(--tui-border-normal);
 }
 ```
-
 
 ---
 
@@ -1784,7 +1772,6 @@ export default class Example {
     protected size = this.sizes[2]!;
 }
 ```
-
 
 ---
 
@@ -1942,7 +1929,6 @@ export default class Example {
 }
 ```
 
-
 ---
 
 # components/BottomSheet
@@ -2091,7 +2077,6 @@ export default class Example {
 }
 ```
 
-
 ---
 
 # components/Button
@@ -2185,7 +2170,6 @@ export default class Page {
     protected loading = false;
 }
 ```
-
 
 ---
 
@@ -2441,7 +2425,6 @@ export default class Example {
 }
 ```
 
-
 ---
 
 # components/CalendarMonth
@@ -2580,7 +2563,6 @@ export default class Example {
     protected readonly routes = DemoRoute;
 }
 ```
-
 
 ---
 
@@ -2739,7 +2721,6 @@ export default class Example {
     protected readonly routes = DemoRoute;
 }
 ```
-
 
 ---
 
@@ -3022,7 +3003,6 @@ export default class Example {
 }
 ```
 
-
 ---
 
 # components/Cell
@@ -3153,7 +3133,6 @@ export default class Example {
 }
 ```
 
-
 ---
 
 # components/Checkbox
@@ -3278,7 +3257,6 @@ export default class Example {
     protected size = this.sizes[2]!;
 }
 ```
-
 
 ---
 
@@ -3477,7 +3455,6 @@ export default class PageComponent {
         item.id.charCodeAt(1) % 3 === 0;
 }
 ```
-
 
 ---
 
@@ -3755,7 +3732,6 @@ export default class Example extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/Compass
@@ -3828,7 +3804,6 @@ export default class Page {
     protected degrees = 90;
 }
 ```
-
 
 ---
 
@@ -3919,7 +3894,6 @@ export default class Example implements TuiConfirmData {
     }
 }
 ```
-
 
 ---
 
@@ -4031,7 +4005,6 @@ export default class Page {
     };
 }
 ```
-
 
 ---
 
@@ -4275,7 +4248,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Drawer
@@ -4454,7 +4426,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Expand
@@ -4628,7 +4599,6 @@ export default class Page {
     protected size = this.sizeVariants[2]!;
 }
 ```
-
 
 ---
 
@@ -4836,7 +4806,6 @@ footer {
     margin-right: 1rem;
 }
 ```
-
 
 ---
 
@@ -5063,7 +5032,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Header
@@ -5233,7 +5201,6 @@ export default class Page {
     protected size = 48;
 }
 ```
-
 
 ---
 
@@ -5480,7 +5447,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputCard
@@ -5630,7 +5596,6 @@ export default class Page {
     }
 }
 ```
-
 
 ---
 
@@ -5809,7 +5774,6 @@ export default class PageComponent {
 }
 ```
 
-
 ---
 
 # components/InputColor
@@ -5868,7 +5832,6 @@ import {TuiColorPickerModule} from '@taiga-ui/legacy';
 })
 export default class Page {}
 ```
-
 
 ---
 
@@ -6009,7 +5972,6 @@ export default class Example {
     protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
 }
 ```
-
 
 ---
 
@@ -6234,7 +6196,6 @@ export default class Example extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputDateMulti
@@ -6406,7 +6367,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputDateRange
@@ -6556,7 +6516,6 @@ export default class Example {
     protected readonly handler = (item: TuiDay): boolean => item.dayOfWeek() > 4;
 }
 ```
-
 
 ---
 
@@ -6802,7 +6761,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputDateTime
@@ -7028,7 +6986,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputFiles
@@ -7200,7 +7157,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
     }
 }
 ```
-
 
 ---
 
@@ -7410,7 +7366,6 @@ tui-doc-example tui-textfield:has([tuiInputMonthRange]) {
 }
 ```
 
-
 ---
 
 # components/InputMonthLegacy
@@ -7558,7 +7513,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
     public control = new FormControl<TuiMonth | null>(null, Validators.required);
 }
 ```
-
 
 ---
 
@@ -7720,7 +7674,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputNumber
@@ -7872,7 +7825,6 @@ tui-doc-example tui-textfield:has([tuiInputNumber]) {
     max-inline-size: 22rem;
 }
 ```
-
 
 ---
 
@@ -8051,7 +8003,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputPhone
@@ -8218,7 +8169,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
     color: var(--tui-text-tertiary);
 }
 ```
-
 
 ---
 
@@ -8405,7 +8355,6 @@ export default class PageComponent {
     ]);
 }
 ```
-
 
 ---
 
@@ -8639,7 +8588,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputSearch
@@ -8869,7 +8817,6 @@ export default class PageComponent {
 }
 ```
 
-
 ---
 
 # components/InputSliderLegacy
@@ -9079,7 +9026,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputTag
@@ -9284,7 +9230,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputTimeLegacy
@@ -9487,7 +9432,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/InputYear
@@ -9611,7 +9555,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
     public control = new FormControl<number | null>(null, Validators.required);
 }
 ```
-
 
 ---
 
@@ -9806,7 +9749,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/ItemGroup
@@ -9919,7 +9861,6 @@ export default class Example {
 }
 ```
 
-
 ---
 
 # components/ItemsWithMore
@@ -10027,7 +9968,6 @@ export default class Page {
     protected linesLimit = this.linesLimitVariants[0]!;
 }
 ```
-
 
 ---
 
@@ -10171,7 +10111,6 @@ export default class Page {
     protected color = '';
 }
 ```
-
 
 ---
 
@@ -10358,7 +10297,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/LineClamp
@@ -10464,7 +10402,6 @@ export default class Page {
     max-inline-size: 60%;
 }
 ```
-
 
 ---
 
@@ -10632,7 +10569,6 @@ export default class Page {
     color: #bc71c9;
 }
 ```
-
 
 ---
 
@@ -10834,7 +10770,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Message
@@ -10902,7 +10837,6 @@ export default class Example {
     ];
 }
 ```
-
 
 ---
 
@@ -11051,7 +10985,6 @@ export default class Page {
     block-size: min(28.75rem, 60vh);
 }
 ```
-
 
 ---
 
@@ -11380,7 +11313,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/Navigation
@@ -11556,7 +11488,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Pagination
@@ -11643,7 +11574,6 @@ export default class Page {
     protected sidePadding = 1;
 }
 ```
-
 
 ---
 
@@ -11796,7 +11726,6 @@ export default class Page {
     margin: 0 auto;
 }
 ```
-
 
 ---
 
@@ -12193,7 +12122,6 @@ export default class PageComponent extends AbstractExampleTuiInteractive {
 }
 ```
 
-
 ---
 
 # components/ProgressBar
@@ -12326,7 +12254,6 @@ dd {
 }
 ```
 
-
 ---
 
 # components/ProgressCircle
@@ -12441,7 +12368,6 @@ dd {
     margin: 0;
 }
 ```
-
 
 ---
 
@@ -12636,7 +12562,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Radio
@@ -12829,7 +12754,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Rating
@@ -12992,7 +12916,6 @@ export default class Page {
     margin: 0 auto;
 }
 ```
-
 
 ---
 
@@ -13309,7 +13232,6 @@ export default class PageComponent {
 }
 ```
 
-
 ---
 
 # components/SelectLegacy
@@ -13542,7 +13464,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # services/BreakpointService
@@ -13757,7 +13678,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/SheetDialog
@@ -13900,7 +13820,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Slider
@@ -14037,7 +13956,6 @@ export default class Page {
     }
 }
 ```
-
 
 ---
 
@@ -14212,7 +14130,6 @@ export default class Page {
     protected state: 'error' | 'normal' | 'pass' = this.stateVariants[0];
 }
 ```
-
 
 ---
 
@@ -14683,7 +14600,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Tabs
@@ -14833,7 +14749,6 @@ export default class Page {
     protected size = this.sizes[1]!;
 }
 ```
-
 
 ---
 
@@ -15017,7 +14932,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # components/Textarea
@@ -15135,7 +15049,6 @@ export default class PageComponent {
     protected max = this.options.max;
 }
 ```
-
 
 ---
 
@@ -15283,7 +15196,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
 }
 ```
 
-
 ---
 
 # components/Textfield
@@ -15404,7 +15316,6 @@ export default class Page {
     protected filler = '';
 }
 ```
-
 
 ---
 
@@ -15532,7 +15443,6 @@ export default class Example {
         '#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)';
 }
 ```
-
 
 ---
 
@@ -15673,7 +15583,6 @@ export default class Page {
     }
 }
 ```
-
 
 ---
 
@@ -15998,7 +15907,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # directives/AutoFocus
@@ -16312,7 +16220,6 @@ export default class PageComponent extends AbstractExampleTuiDropdown {
 }
 ```
 
-
 ---
 
 # directives/DropdownContext
@@ -16424,7 +16331,6 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
 export default class PageComponent extends AbstractExampleTuiDropdown {}
 ```
 
-
 ---
 
 # directives/DropdownHover
@@ -16535,7 +16441,6 @@ export default class PageComponent extends AbstractExampleTuiDropdown {
     protected hideDelay = 500;
 }
 ```
-
 
 ---
 
@@ -16725,7 +16630,6 @@ export default class PageComponent extends AbstractExampleTuiDropdown {
 }
 ```
 
-
 ---
 
 # directives/DropdownSelection
@@ -16844,7 +16748,6 @@ export default class PageComponent extends AbstractExampleTuiDropdown {
     padding: 0.5rem 1.25rem;
 }
 ```
-
 
 ---
 
@@ -17023,7 +16926,6 @@ export default class Page {
     white-space: nowrap;
 }
 ```
-
 
 ---
 
@@ -17235,7 +17137,6 @@ export default class PageComponent extends AbstractExampleTuiHint {
 }
 ```
 
-
 ---
 
 # directives/HintDescribe
@@ -17318,7 +17219,6 @@ export default class PageComponent extends AbstractExampleTuiHint {
     protected id = '';
 }
 ```
-
 
 ---
 
@@ -17423,7 +17323,6 @@ export default class PageComponent extends AbstractExampleTuiHint {
 }
 ```
 
-
 ---
 
 # directives/HintPointer
@@ -17510,7 +17409,6 @@ export default class PageComponent extends AbstractExampleTuiHint {
     protected hideDelay = 0;
 }
 ```
-
 
 ---
 
@@ -17946,7 +17844,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # directives/Resizer
@@ -18080,7 +17977,6 @@ export default class Page {
     protected sensitive = true;
 }
 ```
-
 
 ---
 
@@ -18360,7 +18256,6 @@ export default class Page {
     protected readonly routes = DemoRoute;
 }
 ```
-
 
 ---
 
@@ -18698,7 +18593,6 @@ export default class Page {
 }
 ```
 
-
 ---
 
 # pipes/Emails
@@ -18950,7 +18844,6 @@ export default class Page {
     }
 }
 ```
-
 
 ---
 
