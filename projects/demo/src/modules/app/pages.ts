@@ -104,6 +104,12 @@ export const pages: DocRoutePages = [
             },
         ],
     },
+    {
+        section: 'Documentation',
+        title: 'AI support',
+        keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
+        route: DemoRoute.AISupport,
+    },
     // Foundations
     {
         section: 'Foundations',
