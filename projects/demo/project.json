@@ -20,6 +20,10 @@
                 {
                     "target": "i18n",
                     "params": "ignore"
+                },
+                {
+                    "target": "generate-llms-file",
+                    "params": "ignore"
                 }
             ],
             "options": {
@@ -62,6 +66,16 @@
                         "glob": "**/*",
                         "input": "projects/icons-fontawesome/src",
                         "output": "assets/taiga-ui/icons/"
+                    },
+                    {
+                        "glob": "llms.txt",
+                        "input": "{projectRoot}/src/",
+                        "output": "./"
+                    },
+                    {
+                        "glob": "llms-full.txt",
+                        "input": "{projectRoot}/src/",
+                        "output": "./"
                     }
                 ],
                 "baseHref": "/",
@@ -225,6 +239,13 @@
                     "params": "ignore"
                 }
             ]
+        },
+        "generate-llms-file": {
+            "executor": "nx:run-commands",
+            "options": {
+                "parallel": false,
+                "command": "ts-node ./projects/demo/scripts/llms.ts"
+            }
         },
         "prerender": {
             "executor": "@nguniversal/builders:prerender",

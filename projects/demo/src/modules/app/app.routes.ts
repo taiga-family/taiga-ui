@@ -1143,6 +1143,11 @@ export const ROUTES: Routes = [
         title: 'Migration Guide',
     }),
     route({
+        path: DemoRoute.AISupport,
+        loadComponent: async () => import('../info/ai-support'),
+        title: 'AI support',
+    }),
+    route({
         path: DemoRoute.Obfuscate,
         loadComponent: async () => import('../pipes/obfuscate'),
         title: 'Obfuscate',

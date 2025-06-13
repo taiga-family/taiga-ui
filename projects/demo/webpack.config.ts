@@ -109,7 +109,7 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
                             use: {
                                 loader: path.resolve(
                                     __dirname,
-                                    'webpack-loaders/export-as-loader.js',
+                                    'scripts/export-as-loader.js',
                                 ),
                             },
                         },
