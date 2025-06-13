@@ -4,6 +4,7 @@ import path from 'path';
 const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
 const OUTPUT_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms-full.txt');
 
+// child folders of the main `modules` folder from which the content will be taken
 const FOLDERS_TO_SCAN = ['components', 'directives', 'tokens', 'customization', 'pipes'];
 
 interface ComponentHeader {
@@ -33,6 +34,7 @@ async function readIndexHtml(folderPath: string): Promise<string> {
     return fs.readFile(indexPath, 'utf-8');
 }
 
+// parse metadata from tui-doc-page
 function getComponentHeader(content: string): ComponentHeader {
     const match =
         /<tui-doc-page[^>]*(deprecated)?[^>]*header="([^"]+)"[^>]*package="([^"]+)"[^>]*type="([^"]+)"[^>]*>/i.exec(
@@ -51,6 +53,7 @@ function getComponentHeader(content: string): ComponentHeader {
     return {header, package: packageValue, type, deprecated};
 }
 
+// parse component text from tui-doc-page
 function getComponentDescription(content: string): string | undefined {
     const templateMatch =
         /<ng-template[^>]+pageTab[^>]*>([\s\S]*?)<tui-doc-example/i.exec(content);
@@ -71,6 +74,7 @@ function getComponentDescription(content: string): string | undefined {
     return cleanContent;
 }
 
+// parse example import.md and template.md
 async function getImportExamples(folderPath: string): Promise<string> {
     const importFolderPath = path.join(folderPath, 'examples', 'import');
 
@@ -97,6 +101,7 @@ async function getImportExamples(folderPath: string): Promise<string> {
     return result;
 }
 
+// parse example from tui-doc-demo
 function getComponentExample(content: string): string {
     const match = /<tui-doc-demo[^>]*>([\s\S]*?)<\/tui-doc-demo>/i.exec(content);
 
@@ -111,6 +116,7 @@ function getComponentExample(content: string): string {
     return `\n### Example\n\n\`\`\`html\n${html}\n\`\`\``;
 }
 
+// parse API properties from tuiDocAPI
 function getComponentApiFromTable(content: string): string {
     const tableMatch = /<table tuiDocAPI[^>]*>([\s\S]*?)<\/table>/i.exec(content);
 
@@ -148,6 +154,7 @@ function getComponentApiFromTable(content: string): string {
     return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
 }
 
+// parse API properties from tui-doc-documentation
 function getComponentApiFromTemplates(content: string): string {
     const templateMatch =
         /<tui-doc-documentation[^>]*>([\s\S]*?)<\/tui-doc-documentation>/i.exec(content);
@@ -193,6 +200,7 @@ function getComponentApiFromTemplates(content: string): string {
     return `\n### API\n\n| Property | Type | Description |\n|----------|-----|----------|\n${rows.join('\n')}`;
 }
 
+// parse example index.ts and index.less files
 async function getComponentSourceFiles(
     folderPath: string,
     hasExample: boolean,
@@ -257,6 +265,7 @@ async function getAllFolders(): Promise<string[]> {
     }
 }
 
+// recursive get all .md files from startPath
 async function getMarkdownFiles(startPath: string): Promise<string[]> {
     const result: string[] = [];
 
@@ -282,6 +291,7 @@ async function getMarkdownFiles(startPath: string): Promise<string[]> {
     return result;
 }
 
+// parse markdown files content
 async function processMarkdownFile(filePath: string): Promise<string> {
     const content = await fs.readFile(filePath, 'utf-8');
 
