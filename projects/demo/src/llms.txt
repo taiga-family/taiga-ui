@@ -2,9 +2,6 @@
 
 > Taiga UI - a powerful set of open source components for Angular.
 
-## Recent Taiga UI Version
-- [4.40.0](https://github.com/taiga-family/taiga-ui/compare/v4.39.2...v4.40.0) (2025-06-10)
-
 ## Documentation Sections
 
 ### Documentation
