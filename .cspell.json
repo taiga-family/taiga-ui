@@ -7,7 +7,8 @@
         "**/addon-commerce/utils/get-currency-symbol.ts",
         "**/demo/src/modules/components/select/examples/2/index.ts",
         "projects/demo/src/modules/components/combo-box/examples/{6,8}/index.ts",
-        "projects/demo-playwright/tests/kit/combo-box/combo-box.pw.spec.ts"
+        "projects/demo-playwright/tests/kit/combo-box/combo-box.pw.spec.ts",
+        "projects/demo/src/llms-full.txt"
     ],
     "ignoreWords": [
         "programmaticinput",
@@ -30,7 +31,8 @@
         "Serebrennikov",
         "finedog",
         "Kryal",
-        "Tureborg"
+        "Tureborg",
+        "llms"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
