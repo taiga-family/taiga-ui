@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.41.0](https://github.com/taiga-family/taiga-ui/compare/v4.40.0...v4.41.0) (2025-06-16)
+
+### 🐞 Bug Fixes
+
+- **kit:** `InputNumber` has missing minus sign for `min < 0` on Samsung with system keyboard
+  ([#11103](https://github.com/taiga-family/taiga-ui/issues/11103))
+  ([a348167](https://github.com/taiga-family/taiga-ui/commit/a34816755727f852f4508d8611d6775a0a685fef))
+
+### 🚀 Features
+
+- **layout:** `Form` add default options ([#11016](https://github.com/taiga-family/taiga-ui/issues/11016))
+  ([d66945a](https://github.com/taiga-family/taiga-ui/commit/d66945a90964810d6a6fe39ff2638ae7dd4f6732))
+
 ## [4.40.0](https://github.com/taiga-family/taiga-ui/compare/v4.39.2...v4.40.0) (2025-06-10)
 
 ### 🚀 Features
