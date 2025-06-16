@@ -273,8 +273,10 @@
                     <input
                         placeholder="Pick a time"
                         tuiInputTime
+                        [accept]="accept"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
+                        [mode]="mode"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -293,12 +295,15 @@
             </tr>
 
             <tr
-                name="[acceptableValues]"
+                name="[accept]"
                 tuiDocAPIItem
-                type="TuiTime[]"
-                [value]="[]"
+                type="ReadonlyArray<TuiTime>"
+                [items]="acceptVariants"
+                [(value)]="accept"
             >
-                TODO
+                Limited array of allowed
+                <code>TuiTime</code>
+                values to choose
             </tr>
 
             <tbody

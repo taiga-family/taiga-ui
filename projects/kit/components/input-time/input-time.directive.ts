@@ -111,8 +111,8 @@ export class TuiInputTimeDirective
     }
 
     // TODO(v5): use signal inputs
-    @Input('acceptableValues')
-    public set acceptableValuesSetter(x: readonly TuiTime[]) {
+    @Input('accept')
+    public set acceptSetter(x: readonly TuiTime[]) {
         this.acceptableValues.set(x);
     }
 
