@@ -6,14 +6,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiTimeMode} from '@taiga-ui/cdk';
+import {TuiTime} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiInputTime} from '@taiga-ui/kit';
+import {TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     imports: [
         ReactiveFormsModule,
-        TuiDataListWrapper,
         TuiDemo,
         TuiDocControl,
         TuiDocTextfield,
@@ -37,5 +37,11 @@ export default class PageComponent {
         'MM:SS',
     ] as const satisfies readonly TuiTimeMode[];
 
+    protected readonly acceptVariants = [
+        [],
+        [12, 13, 14, 15, 16, 17, 18].map((x) => new TuiTime(x, 0)),
+    ] as const satisfies ReadonlyArray<readonly TuiTime[]>;
+
     protected mode: TuiTimeMode = this.modeVariants[0];
+    protected accept: readonly TuiTime[] = this.acceptVariants[0];
 }
