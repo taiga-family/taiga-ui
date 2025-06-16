@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.40.0](https://github.com/taiga-family/taiga-ui/compare/v4.39.2...v4.40.0) (2025-06-10)
+
+### 🚀 Features
+
+- **core:** add css variables to `:host` ([#11046](https://github.com/taiga-family/taiga-ui/issues/11046))
+  ([3c13004](https://github.com/taiga-family/taiga-ui/commit/3c13004394fca47f6429addcfb215d6e7a28ed6d))
+- **kit:** `InputDateRange` add new `Textfield` based version
+  ([#11043](https://github.com/taiga-family/taiga-ui/issues/11043))
+  ([804031a](https://github.com/taiga-family/taiga-ui/commit/804031a196fe1b04c91556f26f6a3aa348621ffc))
+- **kit:** `Segmented` change active item style according to specs
+  ([#11026](https://github.com/taiga-family/taiga-ui/issues/11026))
+  ([914b6a9](https://github.com/taiga-family/taiga-ui/commit/914b6a949771fb3ffe1f89326f0e095137cc85ab))
+
+### 🐞 Bug Fixes
+
+- **core:** `Dropdown` check for fixed parent only once
+  ([#11066](https://github.com/taiga-family/taiga-ui/issues/11066))
+  ([902713b](https://github.com/taiga-family/taiga-ui/commit/902713bbf7511a852a80246a5831133050fbb0db))
+- **core:** `Textfield` label offset em to rem ([#11070](https://github.com/taiga-family/taiga-ui/issues/11070))
+  ([51bb425](https://github.com/taiga-family/taiga-ui/commit/51bb425692166725e57ed0bedd414dc24a01c2ba))
+- **kit:** `ComboBox` should retrigger value matching on new items in datalist
+  ([#11039](https://github.com/taiga-family/taiga-ui/issues/11039))
+  ([e35fddd](https://github.com/taiga-family/taiga-ui/commit/e35fddd5b705530f0b3bf2fd4c127c81652dcecb))
+- **kit:** `InputPin` fix focus ([#11036](https://github.com/taiga-family/taiga-ui/issues/11036))
+  ([0d09391](https://github.com/taiga-family/taiga-ui/commit/0d093917f046a5edce31906d29dbb065757208f0))
+- **kit:** `InputSlider` has broken `min`/`max` when `keySteps=null`
+  ([#11078](https://github.com/taiga-family/taiga-ui/issues/11078))
+  ([0927cb9](https://github.com/taiga-family/taiga-ui/commit/0927cb909862e71a34f3f99f57e17f4458af950d))
+- **kit:** `TuiFile` & `tuiFormatSize` uses `LOCALE_ID` instead of hard coded locale
+  ([#11004](https://github.com/taiga-family/taiga-ui/issues/11004))
+  ([31339c4](https://github.com/taiga-family/taiga-ui/commit/31339c4969331db25062dbd48429df6ea37951fb))
+
 ### [4.39.2](https://github.com/taiga-family/taiga-ui/compare/v4.39.1...v4.39.2) (2025-05-28)
 
 ### 🐞 Bug Fixes
