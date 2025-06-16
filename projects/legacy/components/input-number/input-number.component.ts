@@ -117,12 +117,17 @@ export class TuiInputNumberComponent
     }
 
     public get inputMode(): string {
-        if (this.isIOS && this.isNegativeAllowed) {
-            // iPhone does not have minus sign if inputMode is equal to 'numeric' / 'decimal'
-            return 'text';
+        if (this.isIOS) {
+            return this.isNegativeAllowed
+                ? 'text' // iPhone does not have minus sign if inputMode equals to 'numeric' / 'decimal'
+                : 'decimal';
         }
 
-        return !this.precision ? 'numeric' : 'decimal';
+        /**
+         * Samsung Keyboard does not minus sign for `inputmode=decimal`
+         * @see https://github.com/taiga-family/taiga-ui/issues/11061#issuecomment-2939103792
+         */
+        return 'numeric';
     }
 
     public get calculatedMaxLength(): number {
