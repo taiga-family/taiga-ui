@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.117.0](https://github.com/taiga-family/taiga-ui/compare/v3.116.0...v3.117.0) (2025-06-16)
+
+### Features
+
+- **core:** `Alert` add safe-area support ([#11001](https://github.com/taiga-family/taiga-ui/issues/11001))
+  ([c1ae7f7](https://github.com/taiga-family/taiga-ui/commit/c1ae7f7fab6ceed1c2a4aee6a3df45d776537d77))
+- **core:** add variables to :host ([#11045](https://github.com/taiga-family/taiga-ui/issues/11045))
+  ([da719df](https://github.com/taiga-family/taiga-ui/commit/da719dff550a3047d30d05398760b335c6bfa8de))
+
+### Bug Fixes
+
+- **core:** fix dropdown width ([#11057](https://github.com/taiga-family/taiga-ui/issues/11057))
+  ([37c515d](https://github.com/taiga-family/taiga-ui/commit/37c515d0f32c51c03fc3ccac08027e8123f3fd3c))
+- replace `InjectFlags` with shallow copy to support Angular v20
+  ([#11074](https://github.com/taiga-family/taiga-ui/issues/11074))
+  ([fc68af0](https://github.com/taiga-family/taiga-ui/commit/fc68af00741a0b26655a6f29213b6036518a95d1))
+
 ## [3.116.0](https://github.com/taiga-family/taiga-ui/compare/v3.115.0...v3.116.0) (2025-05-19)
 
 ### Features
