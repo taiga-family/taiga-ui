@@ -92,14 +92,11 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
             return 'text';
         }
 
-        return this.precision() &&
-            /**
-             * Samsung Keyboard does not minus sign for `decimal` input mode
-             * @see https://github.com/taiga-family/taiga-ui/issues/11061#issuecomment-2939103792
-             */
-            !needMinus
-            ? 'decimal'
-            : 'numeric';
+        /**
+         * Samsung Keyboard does not minus sign for `inputmode=decimal`
+         * @see https://github.com/taiga-family/taiga-ui/issues/11061#issuecomment-2939103792
+         */
+        return 'numeric';
     });
 
     protected readonly defaultMaxLength = computed(() => {
