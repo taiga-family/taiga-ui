@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {TuiBooleanHandler, TuiTimeMode} from '@taiga-ui/cdk';
@@ -33,6 +34,7 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
+    protected readonly routes = DemoRoute;
     protected readonly disabledItemHandlerVariants: ReadonlyArray<
         TuiBooleanHandler<TuiTime>
     > = [
