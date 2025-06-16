@@ -485,6 +485,11 @@ export const ROUTES: Routes = [
         title: 'InputRange',
     }),
     route({
+        path: DemoRoute.InputDateRange,
+        loadComponent: async () => import('../components/input-date-range'),
+        title: 'InputDateRange',
+    }),
+    route({
         path: DemoRoute.InputDateRangeLegacy,
         loadComponent: async () => import('../components/input-date-range-legacy'),
         title: 'InputDateRange [deprecated]',

@@ -129,6 +129,8 @@
                         tuiInputDate
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
+                        [max]="max"
+                        [min]="min"
                         [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
@@ -139,15 +141,33 @@
             </ng-template>
         </tui-doc-demo>
         <table tuiDocAPI>
-            <tbody
-                #textfieldDoc
-                tuiDocTextfield
-            ></tbody>
+            <tr
+                name="[min]"
+                tuiDocAPIItem
+                type="TuiDay"
+                [items]="dates"
+                [(value)]="min"
+            >
+                Min date
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="TuiDay"
+                [items]="dates"
+                [(value)]="max"
+            >
+                Max date
+            </tr>
             <tbody
                 #itemsHandlers
                 tuiDocItemsHandlers
                 [disabledItemHandler]="handler"
                 [hiddenOptions]="['stringify', 'identityMatcher']"
+            ></tbody>
+            <tbody
+                #textfieldDoc
+                tuiDocTextfield
             ></tbody>
             <tbody
                 #icons

@@ -76,6 +76,7 @@ test.describe('TuiHint', () => {
             await tuiGoto(
                 page,
                 `${DemoRoute.Hint}/API?tuiHintShowDelay=1000&darkMode=${mode}`,
+                {date: null},
             );
             const example = new TuiDocumentationPagePO(page);
 

@@ -3,12 +3,15 @@ import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     EventEmitter,
     forwardRef,
     inject,
     Input,
     isSignal,
     Output,
+    signal,
+    ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
@@ -21,6 +24,7 @@ import type {TuiDataListAccessor} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsDataListAccessor,
     TuiDataList,
+    TuiDataListComponent,
     tuiInjectDataListSize,
     TuiOption,
     TuiOptionWithValue,
@@ -45,15 +49,18 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
 })
 export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccessor<T> {
+    private readonly datalist = signal<TuiDataListComponent<T> | null>(null);
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     // TODO(v5): delete
     private readonly itemsHandlersLegacy: TuiItemsHandlersLegacy<T> = inject(
         TUI_ITEMS_HANDLERS_LEGACY,
     );
 
+    // TODO(v5): delete
     @ViewChildren(forwardRef(() => TuiOption))
     protected readonly legacyOptionsQuery: QueryList<TuiOption<T>> = EMPTY_QUERY;
 
+    // TODO(v5): delete
     @ViewChildren(forwardRef(() => TuiOptionWithValue))
     protected readonly optionsQuery: QueryList<TuiOptionWithValue<T>> = EMPTY_QUERY;
 
@@ -76,6 +83,8 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
     @Output()
     public readonly itemClick = new EventEmitter<T>();
 
+    public readonly options = computed(() => this.datalist()?.options() ?? []);
+
     @Input()
     public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
         this.newOptionMode
@@ -89,6 +98,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
         return {$implicit, active: tuiIsNativeFocused(nativeElement)};
     }
 
+    // TODO(v5): delete
     public getOptions(includeDisabled = false): readonly T[] {
         return [
             ...this.legacyOptionsQuery, // TODO(v5): delete
@@ -97,6 +107,12 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => (isSignal(value) ? value() : value))
             .filter(tuiIsPresent);
+    }
+
+    // TODO(v5): use signal `viewChild`
+    @ViewChild(TuiDataListComponent)
+    protected set datalistSetter(x: TuiDataListComponent<T>) {
+        this.datalist.set(x);
     }
 
     protected $cast(items: readonly K[]): readonly T[] {
