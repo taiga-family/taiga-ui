@@ -8,6 +8,6 @@
     <tui-data-list-wrapper
         *tuiTextfieldDropdown
         new
-        [items]="items | tuiFilterByInput"
+        [items]="items | tuiFilterByInput: matcher"
     />
 </tui-textfield>
