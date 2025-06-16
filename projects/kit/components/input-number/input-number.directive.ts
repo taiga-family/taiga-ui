@@ -86,8 +86,8 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly element = tuiInjectElement<HTMLInputElement>();
 
-    protected readonly inputMode = computed((needMinus = this.min() < 0) => {
-        if (this.isIOS && needMinus) {
+    protected readonly inputMode = computed(() => {
+        if (this.isIOS && this.min() < 0) {
             // iPhone does not have minus sign if inputMode is equal to 'numeric' / 'decimal'
             return 'text';
         }
