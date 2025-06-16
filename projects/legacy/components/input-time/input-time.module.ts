@@ -18,6 +18,10 @@ import {TuiInputTimeComponent} from './input-time.component';
 import {TuiInputTimeDirective} from './input-time.directive';
 import {TuiNativeTimeComponent} from './native-time/native-time.component';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-time TuiInputTime} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         CommonModule,

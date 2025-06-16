@@ -5,6 +5,10 @@ import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneo
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-time#options TuiInputTime} (from @taiga-ui/kit) instead
+ */
 export interface TuiInputTimeOptions {
     readonly icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
     readonly itemSize: TuiSizeL | TuiSizeS;
@@ -14,10 +18,16 @@ export interface TuiInputTimeOptions {
     readonly nativePicker?: boolean;
 }
 
-// TODO(v5): delete it
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-time#options TuiInputTime} (from @taiga-ui/kit) instead
+ */
 export type TuiTimeFormatParts = 'HH' | 'MM' | 'MS' | 'SS';
 
-// TODO(v5): delete it
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-time#options TuiInputTime} (from @taiga-ui/kit) instead
+ */
 export const MAX_TIME_VALUES: Record<TuiTimeFormatParts, number> = {
     HH: 23,
     MM: 59,
@@ -25,6 +35,10 @@ export const MAX_TIME_VALUES: Record<TuiTimeFormatParts, number> = {
     MS: 999,
 };
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-time#options TuiInputTime} (from @taiga-ui/kit) instead
+ */
 export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
     icon: () => '@tui.clock',
     mode: 'HH:MM',
@@ -34,10 +48,16 @@ export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
 };
 
 /**
+ * TODO(v5): delete it
  * Default parameters for InputTime component
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-time#options TuiInputTime} (from @taiga-ui/kit) instead
  */
 export const TUI_INPUT_TIME_OPTIONS = tuiCreateToken(TUI_INPUT_TIME_DEFAULT_OPTIONS);
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-time#options TuiInputTime} (from @taiga-ui/kit) instead
+ */
 export function tuiInputTimeOptionsProvider(
     options: Partial<TuiInputTimeOptions>,
 ): Provider {
