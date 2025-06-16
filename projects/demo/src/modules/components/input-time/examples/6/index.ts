@@ -2,7 +2,7 @@ import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler, TuiStringMatcher} from '@taiga-ui/cdk';
 import {TuiTime} from '@taiga-ui/cdk';
 import {tuiItemsHandlersProvider, TuiTextfield} from '@taiga-ui/core';
 import {
@@ -55,4 +55,7 @@ export default class Example {
 
     protected readonly disabledItemHandler: TuiBooleanHandler<TuiTime> = (x) =>
         x?.valueOf() === this.items[0]!.valueOf();
+
+    protected readonly matcher: TuiStringMatcher<TuiTime> = (item, query) =>
+        item.toString('HH:MM').startsWith(query);
 }
