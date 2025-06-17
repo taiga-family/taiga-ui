@@ -1,14 +1,13 @@
 import type {MaskitoTimeParams} from '@maskito/kit';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import type {TuiTime, TuiTimeMode} from '@taiga-ui/cdk/date-time';
+import type {TuiTime} from '@taiga-ui/cdk/date-time';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiInputTimeOptions
-    extends Required<Pick<MaskitoTimeParams, 'timeSegmentMaxValues'>> {
+    extends Required<Pick<MaskitoTimeParams, 'mode' | 'timeSegmentMaxValues'>> {
     readonly icon: TuiHandler<TuiSizeL | TuiSizeS, string>;
-    readonly mode: TuiTimeMode; // TODO: use Pick<MaskitoTimeParams, 'mode' | ...>
     readonly valueTransformer: TuiValueTransformer<TuiTime | null, any> | null;
 }
 

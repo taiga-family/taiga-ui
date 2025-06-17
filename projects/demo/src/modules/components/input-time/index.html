@@ -12,7 +12,23 @@
             heading="Mode"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
-        />
+            [description]="modeDescription"
+        >
+            <ng-template #modeDescription>
+                <code>InputTime</code>
+                supports all possible time segments: hours, minutes, seconds, and even milliseconds. Property
+                <code>mode</code>
+                allows to choose specific combination of the segments. Explore
+                <a
+                    href="https://github.com/taiga-family/maskito/blob/main/projects/kit/src/lib/types/time-mode.ts"
+                    target="_blank"
+                    tuiLink
+                >
+                    <strong>MaskitoTimeMode</strong>
+                </a>
+                type to see all available modes.
+            </ng-template>
+        </tui-doc-example>
 
         <tui-doc-example
             id="am-pm"
@@ -127,7 +143,11 @@
             [description]="strictDescription"
         >
             <ng-template #strictDescription>
-                <!-- TODO: maybe rename strict to [allowedValues]: TuiTime[];?? -->
+                Property
+                <code>accept</code>
+                allows to limit the set of allowed values. It is useful when you want to restrict user input to a
+                specific set of time periods, for example, to allow only working hours with equally distant time
+                intervals.
             </ng-template>
         </tui-doc-example>
 
@@ -158,6 +178,24 @@
                     <code>Textfield</code>
                     ).
                 </p>
+
+                Explore
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Dropdown"
+                >
+                    <strong>Dropdown</strong>
+                </a>
+                and
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.DataList"
+                >
+                    <strong>DataList</strong>
+                </a>
+                documentation pages for more customization options.
             </ng-template>
         </tui-doc-example>
 

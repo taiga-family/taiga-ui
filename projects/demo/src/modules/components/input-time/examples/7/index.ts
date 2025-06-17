@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiTime} from '@taiga-ui/cdk';
+import {TuiTime} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputTime, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
 
@@ -17,14 +17,11 @@ import {TuiInputTime, tuiInputTimeOptionsProvider} from '@taiga-ui/kit';
             icon: () => '@tui.timer',
             mode: 'HH:MM:SS.MSS',
             timeSegmentMaxValues: {
-                hours: 47,
-                minutes: 59,
-                seconds: 59,
-                milliseconds: 999,
+                hours: 24 * 7,
             },
         }),
     ],
 })
 export default class Example {
-    protected value: TuiTime | null = null;
+    protected value: TuiTime | null = new TuiTime(99, 59, 59, 999);
 }
