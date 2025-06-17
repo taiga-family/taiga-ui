@@ -1,0 +1,30 @@
+:host {
+    cursor: pointer;
+    margin: 0.125rem 0.25rem 0.125rem 0;
+
+    .t-input {
+        padding: inherit;
+        transition: none;
+        color: var(--tui-text-primary);
+        cursor: text;
+        outline: none;
+    }
+
+    &._edit {
+        background: transparent;
+
+        .t-text {
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        &::before {
+            color: transparent;
+            transition: none;
+        }
+    }
+}
+
+:host-context(tui-textfield[data-size='s']) {
+    margin: 0.0625rem 0.125rem 0.0625rem 0;
+}

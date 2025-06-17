@@ -445,6 +445,11 @@ export const ROUTES: Routes = [
         title: 'InputDateTime',
     }),
     route({
+        path: DemoRoute.InputChip,
+        loadComponent: async () => import('../components/input-chip'),
+        title: 'InputChip',
+    }),
+    route({
         path: DemoRoute.InputMonth,
         loadComponent: async () => import('../components/input-month'),
         title: 'InputMonth',

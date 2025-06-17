@@ -1,0 +1,63 @@
+<div
+    tuiScrollRef
+    class="t-container"
+    [style.flex-wrap]="rows > 1 ? 'wrap' : 'nowrap'"
+    [style.max-height.px]="maxHeight"
+    (click.stop)="input?.nativeElement?.focus()"
+>
+    <ng-template
+        *ngFor="let item of ngControl?.value; let index = index"
+        [polymorpheusOutlet]="component"
+        [polymorpheusOutletContext]="{$implicit: {item, index}}"
+    />
+    <span
+        class="t-input_wrapper"
+        (keydown.arrowLeft)="onLeft($event)"
+    >
+        <ng-content select="input" />
+        <span class="t-ghost">{{ value() }}</span>
+        <input
+            *ngIf="showFiller()"
+            aria-hidden="true"
+            disabled
+            class="t-filler"
+            [value]="computedFiller()"
+        />
+    </span>
+    <tui-scroll-controls
+        *ngIf="maxHeight"
+        class="t-scroll"
+    />
+</div>
+
+<span
+    class="t-content"
+    (pointerdown.prevent)="input?.nativeElement?.focus()"
+    (waResizeObserver)="$event[0] && onResize($event[0])"
+>
+    <ng-content />
+    <button
+        *ngIf="options.cleaner()"
+        appearance="icon"
+        size="xs"
+        tabindex="-1"
+        tuiIconButton
+        type="button"
+        class="t-clear"
+        [iconStart]="icons.close"
+        (click)="accessor?.setValue([])"
+        (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
+    >
+        {{ clear() }}
+    </button>
+    <ng-container #vcr />
+    <ng-content select="tui-icon" />
+</span>
+<span
+    *ngIf="ngControl?.value != null"
+    class="t-template"
+>
+    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: ngControl?.value}">
+        {{ text }}
+    </ng-container>
+</span>
