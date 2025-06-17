@@ -84,11 +84,21 @@
     pointer-events: none;
 
     &::-webkit-slider-thumb {
-        pointer-events: all;
+        pointer-events: auto;
     }
 
     &::-moz-range-thumb {
-        pointer-events: all;
+        pointer-events: auto;
+    }
+
+    :host._disabled & {
+        &::-webkit-slider-thumb {
+            pointer-events: none;
+        }
+
+        &::-moz-range-thumb {
+            pointer-events: none;
+        }
     }
 }
 
