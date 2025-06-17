@@ -18,6 +18,11 @@ export const TUI_UKRAINIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'HH:MM:SS AA': 'ГГ:ХХ:СС АА',
         'HH:MM:SS.MSS': 'ГГ:ХХ:СС.МСС',
         'HH:MM:SS.MSS AA': 'ГГ:ХХ:СС.МСС АА',
+        'HH AA': 'ГГ АА',
+        HH: 'ГГ',
+        'MM:SS.MSS': 'ХХ:СС.МСС',
+        'MM.SS.MSS': 'ХХ.СС.МСС',
+        'SS.MSS': 'СС.МСС',
     },
     dateTexts: {
         DMY: 'dd.mm.yyyy',
