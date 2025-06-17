@@ -18,6 +18,11 @@ export const TUI_ARABIC_LANGUAGE_KIT: TuiLanguageKit = {
         'HH:MM:SS AA': 'HH:MM:SS AA',
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
         'HH:MM:SS.MSS AA': 'HH:MM:SS.MSS AA',
+        'HH AA': 'HH AA',
+        HH: 'HH',
+        'MM:SS.MSS': 'MM:SS.MSS',
+        'MM.SS.MSS': 'MM.SS.MSS',
+        'SS.MSS': 'SS.MSS',
     },
     dateTexts: {
         DMY: 'dd/mm/yyyy',
