@@ -15,11 +15,15 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TUI_TEXTFIELD_OPTIONS, TuiButton, TuiTextfieldContent} from '@taiga-ui/core';
 import type {Observable} from 'rxjs';
-import {expand, map, merge, Subject, switchMap, takeUntil, tap, timer} from 'rxjs';
+import {expand, map, merge, Subject, switchMap, takeUntil, timer} from 'rxjs';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
 import type {TuiInputNumberOptions} from '../input-number.options';
 import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
+
+const INITIAL_DELAY = 300;
+const DELAY_DECREMENT = 15;
+const MIN_DELAY = 100;
 
 @Component({
     standalone: true,
@@ -37,10 +41,6 @@ import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
     },
 })
 export class TuiInputNumberStep {
-    private readonly INITIAL_DELAY = 300;
-    private readonly DELAY_DECREMENT = 15;
-    private readonly MIN_DELAY = 100;
-
     private readonly destroyRef = inject(DestroyRef);
     private readonly zone = inject(NgZone);
 
@@ -60,10 +60,9 @@ export class TuiInputNumberStep {
     protected readonly sub = this.step$
         .pipe(
             switchMap((stepValue) => this.accelerate$(stepValue)),
-            tap((stepValue) => this.stepChange(stepValue)),
             takeUntilDestroyed(this.destroyRef),
         )
-        .subscribe();
+        .subscribe((stepValue) => this.stepChange(stepValue));
 
     // TODO(v5): replace with signal input
     @Input('step')
@@ -72,7 +71,7 @@ export class TuiInputNumberStep {
     }
 
     protected onStep(step: number): void {
-        const {clampedValue} = this.calculateClampedValue(step);
+        const clampedValue = this.calculateClampedValue(step);
 
         if (this.inputNumber.value() === null) {
             timer(0)
@@ -86,14 +85,11 @@ export class TuiInputNumberStep {
     private accelerate$(stepValue: number): Observable<number> {
         this.element.focus();
 
-        let currentDelay = this.INITIAL_DELAY;
+        let currentDelay = INITIAL_DELAY;
 
         return timer(currentDelay).pipe(
             expand(() => {
-                currentDelay = Math.max(
-                    currentDelay - this.DELAY_DECREMENT,
-                    this.MIN_DELAY,
-                );
+                currentDelay = Math.max(currentDelay - DELAY_DECREMENT, MIN_DELAY);
 
                 return timer(currentDelay);
             }),
@@ -103,14 +99,14 @@ export class TuiInputNumberStep {
     }
 
     private stepChange(stepValue: number): void {
-        const {inputNumber, clampedValue} = this.calculateClampedValue(stepValue);
+        const clampedValue = this.calculateClampedValue(stepValue);
 
         this.inputNumber.setValue(clampedValue);
 
         if (this.inputNumber.value() === null) {
             timer(0)
                 .pipe(tuiZonefree(this.zone), takeUntilDestroyed(this.destroyRef))
-                .subscribe(() => this.setCaretPosition(inputNumber));
+                .subscribe(() => this.setCaretPosition(this.inputNumber));
         }
     }
 
@@ -120,19 +116,11 @@ export class TuiInputNumberStep {
         this.element.setSelectionRange(caretIndex, caretIndex);
     }
 
-    private calculateClampedValue(step: number): {
-        clampedValue: number;
-        inputNumber: TuiInputNumberDirective;
-    } {
-        const {inputNumber} = this;
-
-        return {
-            clampedValue: tuiClamp(
-                (inputNumber.value() ?? 0) + step,
-                inputNumber.min(),
-                inputNumber.max(),
-            ),
-            inputNumber,
-        };
+    private calculateClampedValue(step: number): number {
+        return tuiClamp(
+            (this.inputNumber.value() ?? 0) + step,
+            this.inputNumber.min(),
+            this.inputNumber.max(),
+        );
     }
 }
