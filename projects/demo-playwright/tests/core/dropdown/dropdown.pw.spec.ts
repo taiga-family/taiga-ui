@@ -65,34 +65,34 @@ test.describe('Dropdown', () => {
     // however if you open nested dropdown and click somewhere inside of it
     // so that nothing is focused for some reason second Esc press
     // has no effect but third one works, seems like some CloseWatcher issue
-    //
-    // test('Esc -> Hosted Dropdown', async ({page}) => {
-    //     await tuiGoto(page, DemoRoute.DropdownOpen);
-    //     const example = new TuiDocumentationPagePO(page).getExample('#tui-dropdown-host');
-    //
-    //     await example.scrollIntoViewIfNeeded();
-    //     await example.locator('button[tuiChevron]').click();
-    //
-    //     await expect.soft(page).toHaveScreenshot('06-dropdown.png');
-    //
-    //     await page
-    //         .locator("tui-dropdown [automation-id='tui-select__textfield']")
-    //         .click();
-    //
-    //     await page
-    //         .locator("tui-dropdown [automation-id='tui-select__textfield'] input")
-    //         .focus();
-    //
-    //     await expect.soft(page).toHaveScreenshot('07-dropdown.png');
-    //
-    //     await page.keyboard.press('Escape');
-    //
-    //     await expect.soft(page).toHaveScreenshot('08-dropdown.png');
-    //
-    //     await page.keyboard.press('Escape');
-    //
-    //     await expect.soft(page).toHaveScreenshot('09-dropdown.png');
-    // });
+    // eslint-disable-next-line playwright/no-skipped-test
+    test.skip('Esc -> Hosted Dropdown', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DropdownOpen);
+        const example = new TuiDocumentationPagePO(page).getExample('#tui-dropdown-host');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('button[tuiChevron]').click();
+
+        await expect.soft(page).toHaveScreenshot('06-dropdown.png');
+
+        await page
+            .locator("tui-dropdown [automation-id='tui-select__textfield']")
+            .click();
+
+        await page
+            .locator("tui-dropdown [automation-id='tui-select__textfield'] input")
+            .focus();
+
+        await expect.soft(page).toHaveScreenshot('07-dropdown.png');
+
+        await page.keyboard.press('Escape');
+
+        await expect.soft(page).toHaveScreenshot('08-dropdown.png');
+
+        await page.keyboard.press('Escape');
+
+        await expect.soft(page).toHaveScreenshot('09-dropdown.png');
+    });
 
     test('Scrollbar dropdown in active zone', async ({page}) => {
         await tuiGoto(page, `${DemoRoute.Dropdown}/API?tuiDropdownMaxHeight=150`);
