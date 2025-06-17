@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import type {TuiStringMatcher} from '@taiga-ui/cdk';
+import type {TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,
@@ -52,5 +52,5 @@ export default class Example {
         );
     };
 
-    protected readonly stringify = (item: Card): string => item.number;
+    protected readonly stringify: TuiStringHandler<Card> = (x) => x.number;
 }
