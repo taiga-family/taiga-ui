@@ -6,8 +6,8 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import type {MaskitoTimeMode} from '@maskito/kit';
 import {TuiControl} from '@taiga-ui/cdk/classes';
-import type {TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -39,7 +39,7 @@ export class TuiInputTimeComponent {
     protected readonly textfield = inject(TuiTextfieldDirective);
     protected readonly value = computed((value = this.control.value()) =>
         value
-            ? value.toString(this.host.timeMode().replace(' AA', '') as TuiTimeMode)
+            ? value.toString(this.host.timeMode().replace(' AA', '') as MaskitoTimeMode)
             : '',
     );
 

@@ -2,11 +2,10 @@ import {computed, Directive, effect, inject, Input, signal} from '@angular/core'
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
-import type {MaskitoTimeParams} from '@maskito/kit';
+import type {MaskitoTimeMode, MaskitoTimeParams} from '@maskito/kit';
 import {maskitoSelectionChangeHandler, maskitoTimeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import type {TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -106,7 +105,7 @@ export class TuiInputTimeDirective
 
     // TODO(v5): use signal inputs
     @Input('mode')
-    public set modeSetter(x: TuiTimeMode) {
+    public set modeSetter(x: MaskitoTimeMode) {
         this.timeMode.set(x);
     }
 
