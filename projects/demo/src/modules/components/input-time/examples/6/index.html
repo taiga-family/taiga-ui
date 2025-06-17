@@ -1,13 +1,10 @@
-<tui-textfield [disabledItemHandler]="disabledItemHandler">
+<tui-textfield>
     <input
-        placeholder="Click me to open dropdown"
+        placeholder="Meeting time"
         tuiInputTime
+        [accept]="acceptableValues"
         [(ngModel)]="value"
     />
 
-    <tui-data-list-wrapper
-        *tuiTextfieldDropdown
-        new
-        [items]="items | tuiFilterByInput: matcher"
-    />
+    <tui-icon tuiTooltip="Only time from 10:00 to 18:00 AND divisible by 30 is permitted" />
 </tui-textfield>

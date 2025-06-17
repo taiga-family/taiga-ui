@@ -1,10 +1,20 @@
-<tui-textfield>
+<tui-textfield
+    iconStart="@tui.alarm-clock"
+    tuiTextfieldSize="m"
+    [tuiTextfieldCleaner]="false"
+>
+    <label tuiLabel>I am a label</label>
+
     <input
-        placeholder="Meeting time"
+        placeholder="I am placeholder"
         tuiInputTime
-        [accept]="acceptableValues"
         [(ngModel)]="value"
     />
 
-    <tui-icon tuiTooltip="Only time from 10:00 to 18:00 AND divisible by 30 is permitted" />
+    <tui-icon
+        *ngIf="value"
+        [icon]="isNight(value) ? '@tui.moon' : '@tui.sun'"
+    />
+
+    <tui-icon tuiTooltip="I am a hint" />
 </tui-textfield>
