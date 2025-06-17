@@ -1132,14 +1132,18 @@ export const pages: DocRoutePages = [
                 title: 'Medium',
                 keywords: 'card, card-medium, medium, block, карточка, блок',
                 route: DemoRoute.CardMedium,
-                meta: {},
+                meta: {
+                    name: 'tui-card-medium',
+                },
             },
             {
                 section: 'Layout',
                 title: 'Large',
                 keywords: 'card, card-large, large, block, карточка, блок',
                 route: DemoRoute.CardLarge,
-                meta: {},
+                meta: {
+                    name: 'tui-card-large',
+                },
             },
             {
                 section: 'Layout',
