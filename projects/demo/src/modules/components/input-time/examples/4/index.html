@@ -1,20 +1,8 @@
-<tui-textfield
-    iconStart="@tui.alarm-clock"
-    tuiTextfieldSize="m"
-    [tuiTextfieldCleaner]="false"
->
-    <label tuiLabel>I am a label</label>
+<tui-textfield>
+    <label tuiLabel>Time left</label>
 
     <input
-        placeholder="I am placeholder"
         tuiInputTime
         [(ngModel)]="value"
     />
-
-    <tui-icon
-        *ngIf="value"
-        [icon]="isNight(value) ? '@tui.moon' : '@tui.sun'"
-    />
-
-    <tui-icon tuiTooltip="I am a hint" />
 </tui-textfield>

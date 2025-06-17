@@ -1,8 +1,13 @@
-<tui-textfield>
-    <label tuiLabel>Time left</label>
-
+<tui-textfield [disabledItemHandler]="disabledItemHandler">
     <input
+        placeholder="Click me to open dropdown"
         tuiInputTime
         [(ngModel)]="value"
+    />
+
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [items]="items | tuiFilterByInput: matcher"
     />
 </tui-textfield>
