@@ -1,0 +1,381 @@
+<tui-segmented class="platforms">
+    <label *ngFor="let platform of platforms">
+        <input
+            name="radio"
+            type="radio"
+            [value]="platform"
+            [(ngModel)]="selected"
+        />
+        {{ platform.name }}
+    </label>
+</tui-segmented>
+
+<section [tuiPlatform]="selected.tuiPlatform">
+    <ng-container *ngIf="selected.tuiPlatform === 'web'; else mobile">
+        <tui-file [size]="selected.size">
+            <label tuiCell>
+                <div tuiFilePreview>
+                    <img
+                        alt=""
+                        src="assets/images/example-cert.png"
+                        tuiFilePreview
+                    />
+                </div>
+                <div tuiTitle>
+                    filename.png
+                    <div tuiSubtitle>30 Mb</div>
+                </div>
+                <button
+                    appearance="close"
+                    iconStart="@tui.x"
+                    size="xs"
+                    tuiButtonClose
+                    tuiIconButton
+                    type="button"
+                >
+                    Remove
+                </button>
+            </label>
+        </tui-file>
+
+        <tui-file [size]="selected.size">
+            <label tuiCell>
+                <div tuiFilePreview>
+                    <tui-icon
+                        icon="@tui.image"
+                        [style.color]="'var(--tui-chart-categorical-16)'"
+                    />
+                </div>
+                <div tuiTitle>
+                    filename.png
+                    <div tuiSubtitle>30 Mb</div>
+                </div>
+                <button
+                    appearance="close"
+                    iconStart="@tui.x"
+                    size="xs"
+                    tuiButtonClose
+                    tuiIconButton
+                    type="button"
+                >
+                    Remove
+                </button>
+            </label>
+        </tui-file>
+
+        <tui-file [size]="selected.size">
+            <label tuiCell>
+                <div tuiFilePreview>
+                    <label tuiProgressLabel>
+                        <tui-progress-circle
+                            size="xxs"
+                            [max]="100"
+                            [style.--tui-thickness]="'0.175rem'"
+                            [value]="60"
+                        />
+
+                        <button
+                            appearance=""
+                            iconStart="@tui.x"
+                            size="xs"
+                            tuiButtonClose
+                            tuiIconButton
+                            type="button"
+                            [style.border-radius.%]="100"
+                            [style.color]="'var(--tui-background-accent-1)'"
+                        >
+                            Cancel
+                        </button>
+                    </label>
+                </div>
+                <div tuiTitle>
+                    filename.png
+                    <div tuiSubtitle>12 Mb / 30 Mb</div>
+                </div>
+                <button
+                    appearance="close"
+                    iconStart="@tui.x"
+                    size="xs"
+                    tuiButtonClose
+                    tuiIconButton
+                    type="button"
+                >
+                    Remove
+                </button>
+            </label>
+        </tui-file>
+
+        <tui-file
+            state="error"
+            [size]="selected.size"
+        >
+            <label tuiCell>
+                <div tuiFilePreview>
+                    <button
+                        appearance=""
+                        iconStart="@tui.rotate-cw"
+                        size="xs"
+                        tuiButtonClose
+                        tuiIconButton
+                        type="button"
+                        [style.border-radius.%]="100"
+                        [style.color]="'var(--tui-background-accent-1)'"
+                    >
+                        Reload
+                    </button>
+                </div>
+                <div tuiTitle>
+                    filename.png
+                    <div tuiSubtitle>30 Mb</div>
+                </div>
+                <button
+                    appearance="close"
+                    iconStart="@tui.x"
+                    size="xs"
+                    tuiButtonClose
+                    tuiIconButton
+                    type="button"
+                >
+                    Remove
+                </button>
+            </label>
+        </tui-file>
+
+        <tui-file
+            state="error"
+            [size]="selected.size"
+        >
+            <label tuiCell>
+                <div tuiFilePreview>
+                    <tui-icon icon="@tui.file-x" />
+                </div>
+                <div tuiTitle>
+                    filename.png
+                    <div tuiSubtitle>30 Mb</div>
+                </div>
+                <button
+                    appearance="close"
+                    iconStart="@tui.x"
+                    size="xs"
+                    tuiButtonClose
+                    tuiIconButton
+                    type="button"
+                >
+                    Remove
+                </button>
+            </label>
+        </tui-file>
+        <tui-file
+            state="disabled"
+            [size]="selected.size"
+        >
+            <label tuiCell>
+                <div tuiFilePreview>
+                    <tui-icon
+                        icon="@tui.file-x"
+                        [style.color]="'var(--tui-background-accent-1)'"
+                    />
+                </div>
+                <div tuiTitle>
+                    filename.png
+                    <div tuiSubtitle>30 Mb</div>
+                </div>
+                <button
+                    appearance="close"
+                    iconStart="@tui.x"
+                    size="xs"
+                    tuiButtonClose
+                    tuiIconButton
+                    type="button"
+                >
+                    Remove
+                </button>
+            </label>
+        </tui-file>
+    </ng-container>
+
+    <ng-template #mobile>
+        <tui-file [size]="selected.size">
+            <tui-swipe-actions>
+                <label tuiCell>
+                    <div tuiFilePreview>
+                        <img
+                            alt=""
+                            src="assets/images/example-cert.png"
+                            tuiFilePreview
+                        />
+                    </div>
+                    <div tuiTitle>
+                        filename.png
+                        <div tuiSubtitle>30 Mb</div>
+                    </div>
+                </label>
+                <div tuiSwipeAction>
+                    <button
+                        appearance="close"
+                        iconStart="@tui.x"
+                        size="xs"
+                        tuiButtonClose
+                        tuiIconButton
+                        type="button"
+                    >
+                        Remove
+                    </button>
+                </div>
+            </tui-swipe-actions>
+        </tui-file>
+
+        <tui-file [size]="selected.size">
+            <tui-swipe-actions>
+                <label tuiCell>
+                    <div tuiFilePreview>
+                        <tui-icon
+                            icon="@tui.image"
+                            [style.color]="'var(--tui-chart-categorical-16)'"
+                        />
+                    </div>
+                    <div tuiTitle>
+                        filename.png
+                        <div tuiSubtitle>30 Mb</div>
+                    </div>
+                </label>
+                <div tuiSwipeAction>
+                    <button
+                        appearance="close"
+                        iconStart="@tui.x"
+                        size="xs"
+                        tuiButtonClose
+                        tuiIconButton
+                        type="button"
+                    >
+                        Remove
+                    </button>
+                </div>
+            </tui-swipe-actions>
+        </tui-file>
+
+        <tui-file [size]="selected.size">
+            <tui-swipe-actions>
+                <label tuiCell>
+                    <div tuiFilePreview>
+                        <label tuiProgressLabel>
+                            <tui-progress-circle
+                                size="xxs"
+                                [max]="100"
+                                [style.--tui-thickness]="'0.175rem'"
+                                [value]="60"
+                            />
+
+                            <button
+                                appearance=""
+                                iconStart="@tui.x"
+                                size="xs"
+                                tuiButtonClose
+                                tuiIconButton
+                                type="button"
+                                [style.border-radius.%]="100"
+                                [style.color]="'var(--tui-background-accent-1)'"
+                            >
+                                Cancel
+                            </button>
+                        </label>
+                    </div>
+                    <div tuiTitle>
+                        filename.png
+                        <div tuiSubtitle>12 Mb / 30 Mb</div>
+                    </div>
+                </label>
+                <div tuiSwipeAction>
+                    <button
+                        appearance="close"
+                        iconStart="@tui.x"
+                        size="xs"
+                        tuiButtonClose
+                        tuiIconButton
+                        type="button"
+                    >
+                        Remove
+                    </button>
+                </div>
+            </tui-swipe-actions>
+        </tui-file>
+
+        <tui-file
+            state="error"
+            [size]="selected.size"
+        >
+            <label tuiCell>
+                <div tuiFilePreview>
+                    <button
+                        appearance=""
+                        iconStart="@tui.rotate-cw"
+                        size="xs"
+                        tuiButtonClose
+                        tuiIconButton
+                        type="button"
+                        [style.border-radius.%]="100"
+                        [style.color]="'var(--tui-background-accent-1)'"
+                    >
+                        Reload
+                    </button>
+                </div>
+                <div tuiTitle>
+                    filename.png
+                    <div tuiSubtitle>30 Mb</div>
+                </div>
+                <button
+                    appearance="close"
+                    iconStart="@tui.x"
+                    size="xs"
+                    tuiButtonClose
+                    tuiIconButton
+                    type="button"
+                >
+                    Remove
+                </button>
+            </label>
+        </tui-file>
+
+        <tui-file
+            state="error"
+            [size]="selected.size"
+        >
+            <label tuiCell>
+                <div tuiFilePreview>
+                    <tui-icon icon="@tui.file-x" />
+                </div>
+                <div tuiTitle>
+                    filename.png
+                    <div tuiSubtitle>30 Mb</div>
+                </div>
+                <button
+                    appearance="close"
+                    iconStart="@tui.x"
+                    size="xs"
+                    tuiButtonClose
+                    tuiIconButton
+                    type="button"
+                >
+                    Remove
+                </button>
+            </label>
+        </tui-file>
+        <tui-file
+            state="disabled"
+            [size]="selected.size"
+        >
+            <label tuiCell>
+                <div tuiFilePreview>
+                    <tui-icon
+                        icon="@tui.file-x"
+                        [style.color]="'var(--tui-background-accent-1)'"
+                    />
+                </div>
+                <div tuiTitle>
+                    filename.png
+                    <div tuiSubtitle>30 Mb</div>
+                </div>
+            </label>
+        </tui-file>
+    </ng-template>
+</section>

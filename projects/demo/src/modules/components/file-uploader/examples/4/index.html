@@ -1,0 +1,78 @@
+<tui-segmented class="platforms">
+    <label *ngFor="let platform of platforms">
+        <input
+            name="radio"
+            type="radio"
+            [value]="platform"
+            [(ngModel)]="selected"
+        />
+        {{ platform.name }}
+    </label>
+</tui-segmented>
+
+<div [tuiPlatform]="selected.tuiPlatform">
+    <tui-file-uploader [size]="selected.size">
+        <tui-file
+            *ngIf="selected.tuiPlatform === 'ios' || selected.tuiPlatform === 'android'"
+            mode="card"
+            tuiDropZone
+        >
+            <input
+                tuiDropZone
+                type="file"
+            />
+
+            <div tuiFilePreview>
+                <tui-icon
+                    icon="@tui.plus"
+                    [style.color]="'var(--tui-chart-categorical-21)'"
+                    [style.width.px]="24"
+                />
+            </div>
+            <div tuiTitle>
+                Upload
+                <br />
+                document
+            </div>
+        </tui-file>
+
+        <label
+            *ngIf="selected.tuiPlatform === 'web'"
+            tuiDropZone
+        >
+            <input
+                tuiDropZone
+                type="file"
+            />
+
+            <a tuiLink>Click</a>
+            or drag-and-drop files here
+
+            <tui-icon icon="@tui.circle-help" />
+        </label>
+
+        <tui-file
+            *ngFor="let file of files"
+            mode="card"
+        >
+            <div tuiFilePreview>
+                <tui-icon
+                    icon="@tui.file-type-2"
+                    [style.color]="'var(--tui-chart-categorical-21)'"
+                />
+                <button
+                    appearance="glass"
+                    tuiButtonClose
+                    tuiIconButton
+                    type="button"
+                >
+                    Remove
+                </button>
+            </div>
+            <div tuiTitle>
+                {{ file.name }}
+                <div tuiSubtitle>{{ file.size }}</div>
+            </div>
+        </tui-file>
+    </tui-file-uploader>
+</div>
