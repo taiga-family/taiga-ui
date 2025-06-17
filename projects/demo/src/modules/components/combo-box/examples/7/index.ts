@@ -51,4 +51,6 @@ export default class Example {
             item.number.includes(value)
         );
     };
+
+    protected readonly stringify = (item: Card): string => item.number;
 }
