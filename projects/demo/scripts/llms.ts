@@ -36,19 +36,23 @@ async function readIndexHtml(folderPath: string): Promise<string> {
 
 // parse metadata from tui-doc-page
 function getComponentHeader(content: string): ComponentHeader {
-    const match =
-        /<tui-doc-page[^>]*(deprecated)?[^>]*header="([^"]+)"[^>]*package="([^"]+)"[^>]*type="([^"]+)"[^>]*>/i.exec(
-            content,
-        );
+    const tagMatch = /<tui-doc-page\s+([^>]*)>/i.exec(content);
 
-    if (!match) {
+    if (!tagMatch?.[1]) {
         return {header: null, package: null, type: null, deprecated: false};
     }
 
-    const deprecated = !!match[1];
-    const header = match[2]?.trim() || null;
-    const packageValue = match[3]?.trim() || null;
-    const type = match[4]?.trim() || null;
+    const tagContent = tagMatch[1];
+    const deprecated = /(^|\s)deprecated(\s|$)/i.test(tagContent);
+
+    const headerMatch = /header="([^"]*)"/i.exec(tagContent);
+    const header = headerMatch?.[1]?.trim() || null;
+
+    const packageMatch = /package="([^"]*)"/i.exec(tagContent);
+    const packageValue = packageMatch?.[1]?.trim() || null;
+
+    const typeMatch = /type="([^"]*)"/i.exec(tagContent);
+    const type = typeMatch?.[1]?.trim() || null;
 
     return {header, package: packageValue, type, deprecated};
 }
@@ -231,27 +235,40 @@ async function getComponentSourceFiles(
 
 async function getAllFolders(): Promise<string[]> {
     const folders: string[] = [];
+    const SKIP_FOLDERS = [
+        'examples',
+        'assets',
+        'src',
+        'data',
+        'mocks',
+        'test',
+        '__test__',
+        'node_modules',
+        'dist',
+        'lib',
+        'build',
+        'coverage',
+        'docs',
+    ];
 
-    for (const subFolder of FOLDERS_TO_SCAN) {
-        const dirPath = path.join(MODULES_PATH, subFolder);
-        const exists = await fileExists(dirPath);
-
-        if (exists) {
-            await scanDir(dirPath);
-        } else {
-            console.warn(`Folder ${subFolder} not found in ${MODULES_PATH}`);
+    async function scanDir(currentPath: string, depth = 0): Promise<void> {
+        // limiting the depth of recursion
+        if (depth > 3) {
+            return;
         }
-    }
 
-    return folders;
-
-    async function scanDir(currentPath: string): Promise<void> {
         const entries = await fs.readdir(currentPath, {withFileTypes: true});
 
         for (const entry of entries) {
             const fullPath = path.join(currentPath, entry.name);
 
             if (entry.isDirectory()) {
+                const lowerName = entry.name.toLowerCase();
+
+                if (SKIP_FOLDERS.includes(lowerName)) {
+                    continue;
+                }
+
                 const indexPath = path.join(fullPath, 'index.html');
                 const exists = await fileExists(indexPath);
 
@@ -259,10 +276,22 @@ async function getAllFolders(): Promise<string[]> {
                     folders.push(fullPath);
                 }
 
-                await scanDir(fullPath);
+                await scanDir(fullPath, depth + 1);
             }
         }
     }
+
+    for (const subFolder of FOLDERS_TO_SCAN) {
+        const dirPath = path.join(MODULES_PATH, subFolder);
+
+        if (await fileExists(dirPath)) {
+            await scanDir(dirPath, 0);
+        } else {
+            console.warn(`Folder ${subFolder} not found in ${MODULES_PATH}`);
+        }
+    }
+
+    return folders;
 }
 
 // recursive get all .md files from startPath
@@ -313,11 +342,10 @@ async function main(): Promise<void> {
     const output: string[] = [];
 
     for (const mdFile of exampleMarkdownFiles) {
-        const processed = await processMarkdownFile(mdFile);
-
-        output.push(processed);
+        output.push(await processMarkdownFile(mdFile));
     }
 
+    console.info(`Scanning component folders in: ${MODULES_PATH}`);
     const allFolders = await getAllFolders();
 
     if (allFolders.length === 0) {
@@ -326,7 +354,12 @@ async function main(): Promise<void> {
         return;
     }
 
-    console.info(`Found folders with content: ${allFolders.length}`);
+    console.info(`Total component folders found: ${allFolders.length}`);
+
+    // statistics
+    let includedCount = 0;
+    let skippedDeprecated = 0;
+    let skippedLegacy = 0;
 
     for (const folderPath of allFolders) {
         const content = await readIndexHtml(folderPath);
@@ -337,9 +370,30 @@ async function main(): Promise<void> {
 
         const headerData = getComponentHeader(content);
 
+        // skip deprecated
+        if (headerData.deprecated) {
+            skippedDeprecated++;
+
+            console.warn(`[SKIPPED] Deprecated component: ${path.basename(folderPath)}`);
+
+            continue;
+        }
+
+        // skip legacy
+        if ((headerData.package || '').toUpperCase() === 'LEGACY') {
+            skippedLegacy++;
+
+            console.warn(`[SKIPPED] Legacy component: ${path.basename(folderPath)}`);
+
+            continue;
+        }
+
         if (!headerData?.header) {
             continue;
         }
+
+        // success validated component
+        includedCount++;
 
         const parentFolder = path.basename(path.dirname(folderPath));
         const title = `${parentFolder}/${headerData.header}`;
@@ -395,8 +449,17 @@ async function main(): Promise<void> {
         output.push('\n---\n');
     }
 
+    console.info('\n====== COMPONENT PROCESSING SUMMARY ======');
+    console.info(`Total components found: ${allFolders.length}`);
+    console.info(`- Included in output: ${includedCount}`);
+    console.info(`- Skipped (deprecated): ${skippedDeprecated}`);
+    console.info(`- Skipped (legacy): ${skippedLegacy}`);
+    console.info('========================================');
+
     await fs.writeFile(OUTPUT_FILE, output.join('\n'), 'utf-8');
+
     console.info(`Successfully file saved: ${OUTPUT_FILE}`);
+    console.info(`Total components in output: ${includedCount}`);
 }
 
 main().catch(console.error);
