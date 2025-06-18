@@ -1,6 +1,7 @@
 export const DemoRoute = {
     GettingStarted: '/getting-started',
     BrowserSupport: '/browser-support',
+    AISupport: '/ai-support',
     SSR: '/ssr',
     Related: '/related',
     Jest: '/testing/jest',
