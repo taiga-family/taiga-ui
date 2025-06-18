@@ -49,9 +49,8 @@ export class TuiInputNumberStep {
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly input = inject(TuiInputNumberDirective, {self: true});
-    protected readonly step = signal(this.options.step);
-
     protected readonly value = computed(() => this.input.value() ?? NaN);
+    protected readonly step = signal(this.options.step);
 
     protected readonly step$ = new Subject<number>();
 
@@ -121,10 +120,8 @@ export class TuiInputNumberStep {
     }
 
     private calculateClampedValue(step: number): number {
-        return tuiClamp(
-            (this.input.value() ?? 0) + step,
-            this.input.min(),
-            this.input.max(),
-        );
+        const current = Number.isNaN(this.value()) ? 0 : this.value();
+
+        return tuiClamp(current + step, this.input.min(), this.input.max());
     }
 }
