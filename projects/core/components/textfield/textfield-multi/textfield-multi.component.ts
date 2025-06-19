@@ -13,8 +13,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService, WaResizeObserver} from '@ng-web-apis/resize-observer';
-import {tuiZonefree} from '@taiga-ui/cdk';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayToggle, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
