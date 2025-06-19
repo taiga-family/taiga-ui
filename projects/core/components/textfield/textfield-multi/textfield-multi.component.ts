@@ -1,11 +1,13 @@
 import {NgForOf, NgIf} from '@angular/common';
-import {type AfterContentInit, ElementRef, signal} from '@angular/core';
+import type {AfterContentInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
+    ElementRef,
     inject,
     Input,
+    signal,
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
