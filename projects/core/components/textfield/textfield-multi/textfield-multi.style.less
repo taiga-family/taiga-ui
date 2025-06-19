@@ -1,6 +1,18 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 @import '@taiga-ui/core/styles/components/textfield.less';
 
+@keyframes horizontal {
+    from {
+        clip-path: inset(
+            0 calc(100% - var(--t-width) + var(--t-right, 0rem) + var(--t-side) + 2 * var(--t-padding)) 0 0
+        );
+    }
+
+    to {
+        clip-path: inset(0);
+    }
+}
+
 tui-textfield[multi] {
     flex-wrap: nowrap;
     overflow: scroll;
@@ -23,7 +35,13 @@ tui-textfield[multi] {
         display: flex;
         flex: 1;
         align-items: center;
-        clip-path: inset(0 var(--t-clip-right, 0) 0 0);
+        //clip-path: inset(0 var(--t-clip-right, 0) 0 0);
+
+        animation-name: horizontal;
+        animation-timeline: scroll(x);
+        animation-duration: 1ms;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
     }
 
     .t-clear {

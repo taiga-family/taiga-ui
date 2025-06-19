@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService, WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {tuiZonefree} from '@taiga-ui/cdk';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
@@ -38,7 +39,7 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {fromEvent, merge} from 'rxjs';
+import {merge} from 'rxjs';
 
 import {TuiTextfieldComponent} from '../textfield.component';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
@@ -96,19 +97,16 @@ export class TuiTextfieldMultiComponent<T>
         new PolymorpheusComponent(TuiTextfieldItemComponent);
 
     protected readonly scroll = merge(
-        fromEvent(this.el, 'scroll'),
+        // fromEvent(this.el, 'scroll'),
         inject(ResizeObserverService),
     )
-        .pipe(takeUntilDestroyed())
+        .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => {
-            if (this.rows > 1) {
-                return;
-            }
-
             const {scrollWidth, scrollLeft, clientWidth} = this.el;
             const offset = scrollWidth - scrollLeft - clientWidth;
 
             this.el.style.setProperty('--t-clip-right', `${offset}px`);
+            this.el.style.setProperty('--t-width', `${clientWidth}px`);
         });
 
     @ContentChild(TuiItem, {read: TemplateRef})
