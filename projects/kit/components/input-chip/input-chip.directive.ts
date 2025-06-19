@@ -108,7 +108,7 @@ export class TuiInputChipDirective<T>
     protected scrollTo(): void {
         // Allow change detection to run and add new tag to DOM
         setTimeout(() => {
-            this.textfield.items?.nativeElement.scrollTo({
+            this.textfield.el.scrollTo({
                 top: Number.MAX_SAFE_INTEGER,
                 left: Number.MAX_SAFE_INTEGER,
             });

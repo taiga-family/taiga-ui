@@ -1,9 +1,10 @@
+<tui-scroll-controls *ngIf="rows > 1" />
+
 <div
-    tuiScrollRef
     class="t-container"
     [style.flex-wrap]="rows > 1 ? 'wrap' : 'nowrap'"
-    [style.max-height.px]="maxHeight"
     (click.stop)="input?.nativeElement?.focus()"
+    (waResizeObserver)="$event[0] && onItems($event[0])"
 >
     <ng-template
         *ngFor="let item of ngControl?.value; let index = index"
@@ -15,7 +16,7 @@
         (keydown.arrowLeft)="onLeft($event)"
     >
         <ng-content select="input" />
-        <span class="t-ghost">{{ value() }}</span>
+        <span class="t-ghost">{{ value() || input?.nativeElement?.placeholder }}</span>
         <input
             *ngIf="showFiller()"
             aria-hidden="true"
@@ -24,10 +25,6 @@
             [value]="computedFiller()"
         />
     </span>
-    <tui-scroll-controls
-        *ngIf="maxHeight"
-        class="t-scroll"
-    />
 </div>
 
 <span

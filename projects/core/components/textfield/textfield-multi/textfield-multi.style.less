@@ -2,74 +2,50 @@
 @import '@taiga-ui/core/styles/components/textfield.less';
 
 tui-textfield[multi] {
-    overflow: hidden;
+    flex-wrap: nowrap;
+    overflow: scroll;
     align-items: stretch;
     cursor: text;
+    scroll-behavior: var(--tui-scroll-behavior);
 
     &::before,
     &::after {
         block-size: var(--t-height);
     }
 
-    .t-scroll {
-        .fullsize(absolute, inset);
-
-        top: 0.25rem;
-        bottom: 0.25rem;
-        min-block-size: 0;
+    .t-content {
+        position: sticky;
+        top: 0;
+        right: 0;
     }
 
     .t-container {
-        .scrollbar-hidden();
-
         display: flex;
-        flex-wrap: wrap;
+        flex: 1;
         align-items: center;
-        overflow: scroll;
-        scroll-behavior: var(--tui-scroll-behavior);
-        inline-size: calc(100% - var(--t-side) - var(--t-padding) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
+        clip-path: inset(0 var(--t-clip-right, 0) 0 0);
+    }
 
-        & ~ .t-content .t-clear {
-            display: flex;
-        }
+    .t-clear {
+        display: flex;
+    }
 
-        input:not(:focus)::placeholder {
-            opacity: 0;
+    &[data-mode~='readonly'],
+    &._disabled,
+    &._empty {
+        .t-clear {
+            display: none;
         }
     }
 
-    &._empty .t-container ~ .t-content .t-clear {
-        display: none;
+    .t-container input:not(:focus)::placeholder {
+        opacity: 0;
     }
 
     &._empty .t-container,
     &[data-focus='true']:not(:focus-within) .t-container {
         input::placeholder {
             opacity: 1;
-        }
-    }
-
-    &:not(._expandable) {
-        .t-container {
-            overflow: scroll;
-            scroll-behavior: var(--tui-scroll-behavior);
-            margin-inline-start: calc(-1 * var(--t-padding));
-            inline-size: calc(100% - var(--t-side) - var(--t-left, ~'0rem') - var(--t-right, ~'0rem'));
-
-            & > *:first-child {
-                margin-inline-start: var(--t-padding);
-            }
-
-            & > .t-input_wrapper:first-child {
-                margin-inline-start: calc(var(--t-padding) + 0.125rem);
-            }
-        }
-    }
-
-    &[data-mode~='readonly'],
-    &._disabled {
-        .t-content .t-clear {
-            display: none;
         }
     }
 

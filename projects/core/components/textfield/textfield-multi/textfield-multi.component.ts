@@ -1,5 +1,5 @@
 import {NgForOf, NgIf} from '@angular/common';
-import type {AfterContentInit, ElementRef} from '@angular/core';
+import {type AfterContentInit, ElementRef, signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,10 +7,10 @@ import {
     inject,
     Input,
     TemplateRef,
-    ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {ResizeObserverService, WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
@@ -21,7 +21,7 @@ import {
     tuiAsDataListHost,
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
-import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
+import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {
     TUI_ITEMS_HANDLERS,
     TuiWithAppearance,
@@ -36,6 +36,7 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {fromEvent, merge} from 'rxjs';
 
 import {TuiTextfieldComponent} from '../textfield.component';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
@@ -51,7 +52,6 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
         PolymorpheusOutlet,
         TuiButton,
         TuiScrollControls,
-        TuiScrollRef,
         WaResizeObserver,
     ],
     templateUrl: './textfield-multi.template.html',
@@ -62,6 +62,8 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
         tuiAsDataListHost(TuiTextfieldMultiComponent),
         tuiProvide(TuiTextfieldComponent, TuiTextfieldMultiComponent),
+        tuiProvide(TUI_SCROLL_REF, ElementRef),
+        ResizeObserverService,
     ],
     hostDirectives: [
         TuiDropdownFixed,
@@ -75,23 +77,37 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
     ],
     host: {
         class: 'tui-interactive',
-        '[class._expandable]': 'rows > 1',
         '[attr.data-state]': 'ngControl?.disabled ? "disabled" : null',
         '[class._text]': '!item',
         '[class._empty]': '!ngControl?.value?.length',
-        '(tuiActiveZoneChange)': '!$event && items?.nativeElement?.scrollTo({left: 0})',
+        '[style.max-height.px]': 'maxHeight()',
+        '(tuiActiveZoneChange)': '!$event && el.scrollTo({left: 0})',
     },
 })
 export class TuiTextfieldMultiComponent<T>
     extends TuiTextfieldComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
+    protected readonly maxHeight = signal<number | null>(null);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component: PolymorpheusContent<TuiContext<TuiTextfieldItem<T>>> =
         new PolymorpheusComponent(TuiTextfieldItemComponent);
 
-    @ViewChild(TUI_SCROLL_REF, {static: true})
-    public readonly items?: ElementRef<HTMLElement>;
+    protected readonly scroll = merge(
+        fromEvent(this.el, 'scroll'),
+        inject(ResizeObserverService),
+    )
+        .pipe(takeUntilDestroyed())
+        .subscribe(() => {
+            if (this.rows > 1) {
+                return;
+            }
+
+            const {scrollWidth, scrollLeft, clientWidth} = this.el;
+            const offset = scrollWidth - scrollLeft - clientWidth;
+
+            this.el.style.setProperty('--t-clip-right', `${offset}px`);
+        });
 
     @ContentChild(TuiItem, {read: TemplateRef})
     public readonly item?: TemplateRef<unknown>;
@@ -109,10 +125,12 @@ export class TuiTextfieldMultiComponent<T>
         );
     }
 
-    protected get maxHeight(): number | null {
-        return this.rows > 1 && this.ngControl?.value?.length
-            ? this.rows * (this.items?.nativeElement.firstElementChild?.clientHeight ?? 0)
-            : null;
+    protected onItems({target}: ResizeObserverEntry): void {
+        this.maxHeight.set(
+            this.rows > 1 && this.ngControl?.value?.length
+                ? this.rows * (target.firstElementChild?.clientHeight ?? 0)
+                : null,
+        );
     }
 
     protected onLeft(event: any): void {
