@@ -13,11 +13,11 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
-import {tuiPx, tuiZonefree} from '@taiga-ui/cdk';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiArrayToggle, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiArrayToggle, tuiProvide, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
