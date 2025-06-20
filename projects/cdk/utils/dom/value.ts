@@ -9,6 +9,7 @@ import {
     isSignal,
     PLATFORM_ID,
     signal,
+    untracked,
 } from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
@@ -39,7 +40,7 @@ export function tuiValue(
     const options = {injector, ...TUI_ALLOW_SIGNAL_WRITES};
     const value = signal(element?.value || '');
     const process = (el: WithValue): (() => void) => {
-        const update = (): void => value.set(el.value);
+        const update = (): void => untracked(() => value.set(el.value));
 
         el.addEventListener('input', update);
         el.addEventListener('tui-input', update);
