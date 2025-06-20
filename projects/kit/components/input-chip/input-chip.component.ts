@@ -41,43 +41,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
         TuiFade,
         TuiHintOverflow,
     ],
-    template: `
-        <input
-            *ngIf="editing()"
-            appearance=""
-            enterkeyhint="enter"
-            tuiAutoFocus
-            tuiChip
-            class="t-input"
-            [maskito]="maskito?.options ?? null"
-            [ngModel]="internal()"
-            (blur)="cancel()"
-            (keydown.enter)="save()"
-            (keydown.esc)="cancel()"
-            (keydown.stop)="(0)"
-            (ngModelChange)="internal.set($event)"
-        />
-        <div
-            tuiFade
-            tuiFadeOffset="0.5rem"
-            class="t-text"
-            [tuiHintOverflow]="hint?.content() ? null : stringify(internal())"
-            (pointerdown.prevent.zoneless)="(0)"
-        >
-            {{ internal() }}
-        </div>
-        <button
-            *ngIf="directive()?.interactive() && !editing()"
-            iconStart="@tui.x"
-            tabIndex="-1"
-            tuiIconButton
-            type="button"
-            (click.stop)="delete()"
-            (pointerdown.prevent.stop.zoneless)="(0)"
-        >
-            Remove
-        </button>
-    `,
+    templateUrl: './input-chip.template.html',
     styleUrls: ['./input-chip.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiChip],

@@ -1,47 +1,74 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 @import '@taiga-ui/core/styles/components/textfield.less';
 
-@keyframes horizontal {
-    from {
-        clip-path: inset(
-            0 calc(100% - var(--t-width) + var(--t-right, 0rem) + var(--t-side) + 2 * var(--t-padding)) 0 0
-        );
-    }
-
-    to {
-        clip-path: inset(0);
-    }
-}
-
 tui-textfield[multi] {
     flex-wrap: nowrap;
     overflow: scroll;
     align-items: stretch;
     cursor: text;
+    gap: 0;
+    max-block-size: calc(var(--t-vertical) * 2 + var(--t-item-height) * var(--t-rows));
+    overscroll-behavior: none;
     scroll-behavior: var(--tui-scroll-behavior);
 
     &::before,
     &::after {
+        position: sticky;
+        top: 0;
+        left: 0;
         block-size: var(--t-height);
+    }
+
+    &::after {
+        left: calc(100% - var(--t-right) - 0.375rem);
+        margin-inline-end: calc(-1 * var(--t-padding));
+    }
+
+    .t-scrollbar {
+        transform: translateX(var(--t-padding));
+    }
+
+    &[style*='--t-icon-start:'] .t-scrollbar {
+        margin: 0 calc(3rem + 1px - 100%) 0 -3rem;
     }
 
     .t-content {
         position: sticky;
         top: 0;
-        right: 0;
+        left: calc(100% - var(--t-side) - var(--t-right) + var(--t-padding) - 0.5rem);
+        margin: 0;
+        gap: 0.25rem;
     }
 
-    .t-container {
+    .t-items {
+        position: sticky;
+        left: 0;
         display: flex;
+        min-inline-size: 0;
+        min-block-size: fit-content;
         flex: 1;
         align-items: center;
-        //clip-path: inset(0 var(--t-clip-right, 0) 0 0);
+        flex-wrap: wrap;
+        padding: var(--t-vertical) 0;
+        clip-path: inset(0 0 0 calc(-1 * var(--t-padding)));
 
-        animation-name: horizontal;
-        animation-timeline: scroll(x);
-        animation-duration: 1ms;
-        animation-timing-function: linear;
-        animation-fill-mode: both;
+        &::after {
+            content: '';
+            min-inline-size: 1px;
+            min-block-size: 1px;
+        }
+
+        &_horizontal {
+            flex-wrap: nowrap;
+
+            .t-input {
+                padding-inline-end: calc(var(--t-side) + var(--t-right) + var(--t-padding));
+            }
+        }
+
+        &:not(&_horizontal) {
+            --t-scroll: 0;
+        }
     }
 
     .t-clear {
@@ -56,31 +83,45 @@ tui-textfield[multi] {
         }
     }
 
-    .t-container input:not(:focus)::placeholder {
-        opacity: 0;
-    }
+    .t-items input:not(:focus) {
+        &::placeholder {
+            opacity: 0;
+        }
 
-    &._empty .t-container,
-    &[data-focus='true']:not(:focus-within) .t-container {
-        input::placeholder {
-            opacity: 1;
+        ~ .t-ghost::before {
+            display: none;
         }
     }
 
-    .t-input_wrapper {
+    &._empty .t-items,
+    &[data-focus='true']:not(:focus-within) .t-items {
+        input::placeholder {
+            opacity: 1;
+        }
+
+        .t-ghost::before {
+            display: inline;
+        }
+    }
+
+    .t-input {
         position: relative;
         display: flex;
         align-items: center;
         flex: 1;
         max-inline-size: 100%;
-        margin-inline-start: 0.125rem;
+        transform: translateX(var(--t-scroll));
 
         .t-ghost {
             visibility: hidden;
             white-space: pre;
             text-overflow: clip;
             padding-inline-end: 0.125rem;
-            min-block-size: 1.75rem;
+            min-block-size: var(--t-item-height, 1em);
+
+            &:empty::before {
+                content: attr(data-placeholder);
+            }
         }
 
         input:defined {
@@ -97,48 +138,51 @@ tui-textfield[multi] {
     }
 
     &[data-size='l'] {
-        --t-padding: 0.75rem;
+        --t-vertical: 0.625rem;
 
-        .t-input_wrapper:first-child {
-            border-inline-start: 0.125rem solid transparent;
+        &::before {
+            margin-inline-end: 0.75rem;
         }
 
-        .t-container {
-            padding: 0.625rem 0;
-        }
-
-        .t-ghost {
-            min-block-size: 2.25rem;
+        &::after {
+            left: calc(100% - var(--t-right) - 0.25rem);
+            margin-inline-start: -0.75rem;
         }
     }
 
     &[data-size='m'] {
-        --t-padding: 0.625rem;
+        --t-vertical: 0.5rem;
 
-        .t-container {
-            padding: 0.5rem 0;
+        &::before {
+            left: -0.125rem;
+            margin-inline-end: 0.375rem;
+        }
+
+        &::after {
+            border-inline-end-width: 0.625rem;
+            margin-inline-start: -0.25rem;
+        }
+
+        .t-content {
+            transform: translateX(0.125rem);
         }
     }
 
     &[data-size='s'] {
-        --t-padding: 0.25rem;
+        --t-vertical: 0.125rem;
 
-        padding-inline-end: 0.625rem;
-
-        .t-input_wrapper:first-child {
-            border-inline-start: 0.25rem solid transparent;
+        &::before {
+            left: -0.125rem;
+            margin-inline-end: 0.375rem;
         }
 
-        .t-container {
-            padding: 0.125rem 0;
+        .t-content {
+            gap: 0;
+            transform: translateX(0.375rem);
         }
     }
 
-    &._text .t-input_wrapper {
-        margin-inline-start: 0;
-
-        .t-ghost {
-            min-block-size: 1em;
-        }
+    tui-textfield-item {
+        transform: translateX(var(--t-scroll));
     }
 }

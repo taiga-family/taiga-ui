@@ -1,9 +1,12 @@
-<tui-scroll-controls *ngIf="rows > 1" />
+<tui-scroll-controls
+    *ngIf="rows > 1"
+    class="t-scrollbar"
+/>
 
 <div
-    class="t-container"
-    [style.flex-wrap]="rows > 1 ? 'wrap' : 'nowrap'"
-    (click.stop)="input?.nativeElement?.focus()"
+    class="t-items"
+    [class.t-items_horizontal]="rows === 1"
+    (click.stop)="focus()"
     (waResizeObserver)="$event[0] && onItems($event[0])"
 >
     <ng-template
@@ -12,11 +15,15 @@
         [polymorpheusOutletContext]="{$implicit: {item, index}}"
     />
     <span
-        class="t-input_wrapper"
+        class="t-input"
         (keydown.arrowLeft)="onLeft($event)"
     >
         <ng-content select="input" />
-        <span class="t-ghost">{{ value() || input?.nativeElement?.placeholder }}</span>
+        <span
+            class="t-ghost"
+            [attr.data-placeholder]="input?.nativeElement?.placeholder"
+            [textContent]="value()"
+        ></span>
         <input
             *ngIf="showFiller()"
             aria-hidden="true"
@@ -29,7 +36,7 @@
 
 <span
     class="t-content"
-    (pointerdown.prevent)="input?.nativeElement?.focus()"
+    (pointerdown.prevent)="focus()"
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
@@ -43,7 +50,7 @@
         class="t-clear"
         [iconStart]="icons.close"
         (click)="accessor?.setValue([])"
-        (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
+        (pointerdown.zoneless.prevent)="focus()"
     >
         {{ clear() }}
     </button>

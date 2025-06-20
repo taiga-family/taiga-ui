@@ -12,9 +12,9 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {ResizeObserverService, WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {WaResizeObserver} from '@ng-web-apis/resize-observer';
+import {tuiPx, tuiZonefree} from '@taiga-ui/cdk';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayToggle, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -39,7 +39,7 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {merge} from 'rxjs';
+import {filter, fromEvent} from 'rxjs';
 
 import {TuiTextfieldComponent} from '../textfield.component';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
@@ -66,7 +66,6 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
         tuiAsDataListHost(TuiTextfieldMultiComponent),
         tuiProvide(TuiTextfieldComponent, TuiTextfieldMultiComponent),
         tuiProvide(TUI_SCROLL_REF, ElementRef),
-        ResizeObserverService,
     ],
     hostDirectives: [
         TuiDropdownFixed,
@@ -81,9 +80,9 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
     host: {
         class: 'tui-interactive',
         '[attr.data-state]': 'ngControl?.disabled ? "disabled" : null',
-        '[class._text]': '!item',
         '[class._empty]': '!ngControl?.value?.length',
-        '[style.max-height.px]': 'maxHeight()',
+        '[style.--t-item-height.px]': 'height()',
+        '[style.--t-rows]': 'rows',
         '(tuiActiveZoneChange)': '!$event && el.scrollTo({left: 0})',
     },
 })
@@ -91,22 +90,19 @@ export class TuiTextfieldMultiComponent<T>
     extends TuiTextfieldComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
-    protected readonly maxHeight = signal<number | null>(null);
+    protected readonly height = signal<number | null>(null);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component: PolymorpheusContent<TuiContext<TuiTextfieldItem<T>>> =
         new PolymorpheusComponent(TuiTextfieldItemComponent);
 
-    protected readonly scroll = merge(
-        // fromEvent(this.el, 'scroll'),
-        inject(ResizeObserverService),
-    )
-        .pipe(tuiZonefree(), takeUntilDestroyed())
+    protected readonly sub = fromEvent(this.el, 'scroll')
+        .pipe(
+            filter(() => this.rows === 1),
+            tuiZonefree(),
+            takeUntilDestroyed(),
+        )
         .subscribe(() => {
-            const {scrollWidth, scrollLeft, clientWidth} = this.el;
-            const offset = scrollWidth - scrollLeft - clientWidth;
-
-            this.el.style.setProperty('--t-clip-right', `${offset}px`);
-            this.el.style.setProperty('--t-width', `${clientWidth}px`);
+            this.el.style.setProperty('--t-scroll', tuiPx(-1 * this.el.scrollLeft));
         });
 
     @ContentChild(TuiItem, {read: TemplateRef})
@@ -126,11 +122,14 @@ export class TuiTextfieldMultiComponent<T>
     }
 
     protected onItems({target}: ResizeObserverEntry): void {
-        this.maxHeight.set(
+        const height =
             this.rows > 1 && this.ngControl?.value?.length
-                ? this.rows * (target.firstElementChild?.clientHeight ?? 0)
-                : null,
-        );
+                ? (target.firstElementChild?.clientHeight ?? 0)
+                : null;
+
+        if (height !== 0) {
+            this.height.set(height);
+        }
     }
 
     protected onLeft(event: any): void {
@@ -140,5 +139,10 @@ export class TuiTextfieldMultiComponent<T>
 
         event.preventDefault();
         event.currentTarget.previousElementSibling?.firstElementChild?.focus();
+    }
+
+    protected focus(): void {
+        this.input?.nativeElement.focus();
+        this.el.scrollTo({left: Number.MAX_SAFE_INTEGER, top: Number.MAX_SAFE_INTEGER});
     }
 }
