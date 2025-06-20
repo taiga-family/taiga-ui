@@ -14,7 +14,6 @@ import {TUI_COMMON_ICONS, TUI_ICON_START} from '@taiga-ui/core/tokens';
     ],
     host: {
         '[style.--t-radius.%]': '100',
-        '[style.--tui-height-s.rem]': '1.875',
     },
 })
 export class TuiButtonClose {}
