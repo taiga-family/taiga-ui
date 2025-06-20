@@ -5,6 +5,10 @@
  * TODO: Change to be MaskitoDateMode compatible in v5
  */
 export type TuiDateMode = 'DMY' | 'MDY' | 'YMD';
+/**
+ * TODO(v5): replace all its usage by MaskitoTimeMode and delete it
+ * @deprecated use `MaskitoTimeMode` (from `@maskito/kit`) instead
+ */
 export type TuiTimeMode =
     | 'HH AA'
     | 'HH:MM AA'
