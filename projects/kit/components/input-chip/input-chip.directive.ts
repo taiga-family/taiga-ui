@@ -69,8 +69,10 @@ export class TuiInputChipDirective<T>
         const value = this.textfield.value().trim();
         const items: any[] = this.separator ? value.split(this.separator) : [value];
 
-        this.setValue([...this.value(), ...items.filter(Boolean)]);
-        this.scrollTo();
+        if (value) {
+            this.setValue([...this.value(), ...items.filter(Boolean)]);
+            this.scrollTo();
+        }
     }
 
     protected onInput(): void {
@@ -108,7 +110,7 @@ export class TuiInputChipDirective<T>
     protected scrollTo(): void {
         // Allow change detection to run and add new tag to DOM
         setTimeout(() => {
-            this.textfield.items?.nativeElement.scrollTo({
+            this.textfield.el.scrollTo({
                 top: Number.MAX_SAFE_INTEGER,
                 left: Number.MAX_SAFE_INTEGER,
             });

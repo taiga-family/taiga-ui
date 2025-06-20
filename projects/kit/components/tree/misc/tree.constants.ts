@@ -8,5 +8,5 @@ export const TUI_TREE_ITEM_CONTENT = new PolymorpheusComponent(TuiTreeItemConten
 
 export const TUI_DEFAULT_TREE_CONTROLLER: TuiTreeController = {
     isExpanded: TUI_TRUE_HANDLER,
-    toggle: EMPTY_FUNCTION as () => void,
+    toggle: EMPTY_FUNCTION,
 };
