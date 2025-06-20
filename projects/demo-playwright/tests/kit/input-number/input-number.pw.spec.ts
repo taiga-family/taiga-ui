@@ -268,6 +268,47 @@ describe('InputNumber', () => {
 
                     await expect(inputNumber.textfield).toHaveValue(`${CHAR_MINUS}1`);
                 });
+
+                test('sets 2 on pointer press and hold', async ({page}) => {
+                    const stepUpBox = await inputNumber.stepUp.boundingBox();
+
+                    expect(stepUpBox).not.toBeNull();
+
+                    await page.mouse.move(
+                        stepUpBox!.x + stepUpBox!.width / 2,
+                        stepUpBox!.y + stepUpBox!.height / 2,
+                    );
+
+                    await page.mouse.down();
+
+                    await page.waitForTimeout(500);
+
+                    await page.mouse.up();
+
+                    await expect(inputNumber.textfield).toHaveValue('2');
+                });
+
+                test('sets 0 from 2 on pointer press and hold', async ({page}) => {
+                    await inputNumber.textfield.fill('2');
+                    await expect(inputNumber.textfield).toHaveValue('2');
+
+                    const stepDownBox = await inputNumber.stepDown.boundingBox();
+
+                    expect(stepDownBox).not.toBeNull();
+
+                    await page.mouse.move(
+                        stepDownBox!.x + stepDownBox!.width / 2,
+                        stepDownBox!.y + stepDownBox!.height / 2,
+                    );
+
+                    await page.mouse.down();
+
+                    await page.waitForTimeout(500);
+
+                    await page.mouse.up();
+
+                    await expect(inputNumber.textfield).toHaveValue('0');
+                });
             });
 
             describe('[step]=3', () => {
