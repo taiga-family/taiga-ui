@@ -135,6 +135,10 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
                             resourceQuery: RAW_TS_QUERY,
                             type: 'asset/source',
                         },
+                        {
+                            test: /\.node$/,
+                            use: 'node-loader',
+                        },
                     ],
                 },
                 ...(process.env['TUI_CI'] === 'true' && !server
