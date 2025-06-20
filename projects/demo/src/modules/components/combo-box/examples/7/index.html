@@ -1,6 +1,8 @@
 <tui-textfield
+    #textfield
     tuiChevron
-    [content]="value && '*' + value.number.slice(-4)"
+    [content]="value && !textfield.focused() ? content : ''"
+    [stringify]="stringify"
 >
     <input
         placeholder="Choose a card"
@@ -11,13 +13,13 @@
     <tui-data-list-wrapper
         *tuiTextfieldDropdown
         new
-        [itemContent]="dropdownOptionContent"
+        [itemContent]="content"
         [items]="cards | tuiFilterByInput: matcher"
     />
 </tui-textfield>
 
 <ng-template
-    #dropdownOptionContent
+    #content
     let-card
 >
     <div class="card">
