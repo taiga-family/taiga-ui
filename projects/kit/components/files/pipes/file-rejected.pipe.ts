@@ -1,5 +1,5 @@
 import type {PipeTransform} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
+import {inject, LOCALE_ID, Pipe} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
@@ -21,6 +21,7 @@ import {TUI_INPUT_FILES_OPTIONS} from '../input-files/input-files.options';
 export class TuiFileRejectedPipe implements PipeTransform {
     private readonly options = inject(TUI_INPUT_FILES_OPTIONS);
     private readonly formatSize = inject(TUI_FILE_OPTIONS).formatSize;
+    private readonly locale = inject(LOCALE_ID);
     private readonly text$ = inject(TUI_INPUT_FILE_TEXTS);
     private readonly unit$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
 
@@ -49,7 +50,7 @@ export class TuiFileRejectedPipe implements PipeTransform {
                     return {
                         name: file.name,
                         size: file.size,
-                        content: `${maxSizeRejectionReason}${CHAR_NO_BREAK_SPACE}${this.formatSize(units, maxFileSize)}`,
+                        content: `${maxSizeRejectionReason}${CHAR_NO_BREAK_SPACE}${this.formatSize(units, maxFileSize, this.locale)}`,
                     };
                 }
 
