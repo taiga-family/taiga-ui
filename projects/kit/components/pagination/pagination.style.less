@@ -13,9 +13,11 @@
 }
 
 .t-button {
-    inline-size: var(--tui-height-s);
+    min-inline-size: var(--tui-height-s);
     margin: 0 0.125rem;
     flex-shrink: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
 
     &:first-child {
         margin-inline-start: 0;
@@ -26,7 +28,9 @@
     }
 
     &[data-size='xs'] {
-        inline-size: var(--tui-height-xs);
+        min-inline-size: var(--tui-height-xs);
+        padding-left: 0.375rem;
+        padding-right: 0.375rem;
     }
 
     &&&_small {
