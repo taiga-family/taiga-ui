@@ -33,6 +33,7 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     ],
     host: {
         '(tuiPresentChange)': 'visible$.next($event)',
+        ngSkipHydration: 'true',
     },
 })
 export class TuiTableExpand {
