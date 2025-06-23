@@ -23,7 +23,11 @@
         <span
             class="t-ghost"
             [attr.data-placeholder]="input?.nativeElement?.placeholder"
-            [textContent]="value()"
+            [textContent]="
+                value() && value().length < (input?.nativeElement?.placeholder?.length || 0)
+                    ? input?.nativeElement?.placeholder
+                    : value()
+            "
         ></span>
         <input
             *ngIf="showFiller()"

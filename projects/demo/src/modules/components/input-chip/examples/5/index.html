@@ -1,13 +1,17 @@
-<tui-textfield multi>
+<tui-textfield
+    filler="•••"
+    multi
+    [style.width.rem]="19"
+>
     <input
-        placeholder="Enter"
+        placeholder="Type 3 digits"
         tuiInputChip
         [formControl]="control"
+        [maskito]="mask"
     />
 
     <tui-input-chip
-        *tuiItem="let context"
-        [appearance]="context.item === 'invalid' ? 'error' : 'neutral'"
-        [iconStart]="context.item === 'invalid' ? '@tui.info' : ''"
+        *tuiItem
+        [maskito]="mask"
     />
 </tui-textfield>

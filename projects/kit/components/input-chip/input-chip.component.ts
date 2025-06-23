@@ -3,15 +3,15 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    ElementRef,
     inject,
     Input,
     signal,
+    ViewChild,
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MaskitoDirective} from '@maskito/angular';
-import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiTextfieldItem} from '@taiga-ui/core/components/textfield';
@@ -20,7 +20,10 @@ import {
     tuiInjectAuxiliary,
 } from '@taiga-ui/core/components/textfield';
 import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {injectContext} from '@taiga-ui/polymorpheus';
@@ -32,10 +35,8 @@ import {TuiInputChipDirective} from './input-chip.directive';
     selector: 'tui-input-chip',
     imports: [
         FormsModule,
-        MaskitoDirective,
         NgIf,
         ReactiveFormsModule,
-        TuiAutoFocus,
         TuiButton,
         TuiChip,
         TuiFade,
@@ -58,17 +59,17 @@ import {TuiInputChipDirective} from './input-chip.directive';
     },
 })
 export class TuiInputChipComponent<T> {
+    @ViewChild(TuiChip, {read: ElementRef})
+    private readonly input?: ElementRef<HTMLInputElement>;
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
     private readonly value = computed(() => this.directive()?.value() ?? []);
 
-    protected readonly maskito = inject(MaskitoDirective, {optional: true});
     protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly internal = signal(this.context.$implicit.item);
     protected readonly editing = signal(false);
     protected readonly hint = inject(TuiHintDirective, {self: true, optional: true});
-    protected readonly stringify: TuiStringHandler<T> =
-        inject(TUI_ITEMS_HANDLERS).stringify();
+    protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
     protected readonly directive = tuiInjectAuxiliary<TuiInputChipDirective<T>>(
         (x) => x instanceof TuiInputChipDirective,
@@ -98,14 +99,15 @@ export class TuiInputChipComponent<T> {
     protected save(): void {
         if (!this.internal()) {
             this.delete();
-        } else {
-            this.directive()?.onChange(
-                this.value().map((item, index) =>
-                    index === this.index ? this.internal() : item,
-                ),
-            );
+        } else if (this.handlers.disabledItemHandler()(this.internal())) {
+            return;
         }
 
+        const value = this.value().map((item, index) =>
+            index === this.index ? this.internal() : item,
+        );
+
+        this.directive()?.onChange(value);
         this.editing.set(false);
         this.directive()?.el.focus({preventScroll: true});
     }
@@ -116,8 +118,11 @@ export class TuiInputChipComponent<T> {
     }
 
     protected edit(): void {
-        if (this.editable && this.directive()?.interactive()) {
-            this.editing.set(true);
+        if (!this.editable || !this.directive()?.interactive()) {
+            return;
         }
+
+        this.editing.set(true);
+        setTimeout(() => this.input?.nativeElement.focus());
     }
 }

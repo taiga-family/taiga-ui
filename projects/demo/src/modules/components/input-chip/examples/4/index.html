@@ -1,13 +1,18 @@
-<tui-textfield multi>
+<tui-textfield
+    #textfield
+    multi
+    tuiChevron
+    [disabledItemHandler]="handler"
+    [style.width.rem]="19"
+>
     <input
-        placeholder="Enter"
         tuiInputChip
-        [unique]="false"
+        [placeholder]="textfield.focused() || value.length ? 'Type something' : 'Component with suggestions'"
         [(ngModel)]="value"
     />
-
-    <tui-input-chip
-        *tuiItem="let context"
-        [tuiHint]="'Hello ' + context.item"
+    <tui-input-chip *tuiItem />
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        [items]="items | tuiFilterByInput"
     />
 </tui-textfield>

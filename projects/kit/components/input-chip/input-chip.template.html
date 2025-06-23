@@ -1,11 +1,9 @@
 <input
-    *ngIf="editing()"
     appearance=""
     enterkeyhint="enter"
-    tuiAutoFocus
     tuiChip
     class="t-input"
-    [maskito]="maskito?.options ?? null"
+    [disabled]="!editing()"
     [ngModel]="internal()"
     (blur)="cancel()"
     (keydown.enter)="save()"
@@ -17,7 +15,7 @@
     tuiFade
     tuiFadeOffset="0.5rem"
     class="t-text"
-    [tuiHintOverflow]="hint?.content() ? null : stringify(internal())"
+    [tuiHintOverflow]="hint?.content() ? null : handlers.stringify()(internal())"
     (pointerdown.prevent.zoneless)="(0)"
 >
     {{ internal() }}

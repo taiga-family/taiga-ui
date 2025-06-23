@@ -3,6 +3,7 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from '@taiga-ui/core';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
@@ -45,6 +46,7 @@ export class TuiInputChipDirective<T>
     extends TuiControl<T[]>
     implements TuiTextfieldAccessor<T[]>
 {
+    private readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
     private readonly mobile = inject(TUI_IS_MOBILE);
     private readonly textfield = inject(TuiTextfieldMultiComponent);
@@ -68,11 +70,16 @@ export class TuiInputChipDirective<T>
     protected onEnter(): void {
         const value = this.textfield.value().trim();
         const items: any[] = this.separator ? value.split(this.separator) : [value];
+        const valid = items.filter(
+            (item) => item && !this.handlers.disabledItemHandler()(item),
+        );
 
-        if (value) {
-            this.setValue([...this.value(), ...items.filter(Boolean)]);
-            this.scrollTo();
+        if (!value || !valid.length) {
+            return;
         }
+
+        this.setValue([...this.value(), ...valid]);
+        this.scrollTo();
     }
 
     protected onInput(): void {

@@ -1,17 +1,24 @@
 import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTextfield} from '@taiga-ui/core';
-import {TuiInputChip} from '@taiga-ui/kit';
+import {TuiHint, TuiIcon, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputChip, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiInputChip, TuiTextfield],
+    imports: [
+        ReactiveFormsModule,
+        TuiInputChip,
+        TuiTextfield,
+        TuiIcon,
+        TuiTooltip,
+        TuiHint,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value: string[] = ['say', 'my', 'name'];
+    protected readonly control = new FormControl(['Keep', 'it', 'simple']);
 }
