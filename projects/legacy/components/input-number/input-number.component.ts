@@ -145,10 +145,7 @@ export class TuiInputNumberComponent
     }
 
     public onValueChange(nativeValue: string): void {
-        const parsedValue = maskitoParseNumber(
-            nativeValue,
-            this.numberFormat.decimalSeparator,
-        );
+        const parsedValue = maskitoParseNumber(nativeValue, this.numberFormat);
 
         this.unfinishedValue = null;
 
@@ -262,7 +259,7 @@ export class TuiInputNumberComponent
         this.updateFocused(focused);
 
         const nativeNumberValue = this.unfinishedValue
-            ? maskitoParseNumber(this.unfinishedValue, this.numberFormat.decimalSeparator)
+            ? maskitoParseNumber(this.unfinishedValue, this.numberFormat)
             : this.nativeNumberValue;
 
         this.unfinishedValue = null;
@@ -311,7 +308,7 @@ export class TuiInputNumberComponent
     }
 
     private get nativeNumberValue(): number {
-        return maskitoParseNumber(this.nativeValue, this.numberFormat.decimalSeparator);
+        return maskitoParseNumber(this.nativeValue, this.numberFormat);
     }
 
     private get precision(): number {
