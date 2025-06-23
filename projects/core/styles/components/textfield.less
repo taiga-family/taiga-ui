@@ -6,6 +6,8 @@ tui-textfield {
 
     --t-height: var(--tui-height-l);
     --t-padding: var(--tui-padding-l);
+    --t-right: ~'0rem';
+    --t-left: ~'0rem';
 
     position: relative;
     display: flex;
@@ -101,7 +103,7 @@ tui-textfield {
         }
 
         &::after {
-            margin: 0 calc(-0.175rem - var(--t-padding)) 0 calc(0.575rem - var(--t-padding));
+            margin: 0 calc(-0.125rem - var(--t-padding)) 0 calc(0.575rem - var(--t-padding));
             font-size: 1rem;
         }
 

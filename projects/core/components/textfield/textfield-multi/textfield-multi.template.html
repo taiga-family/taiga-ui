@@ -9,6 +9,7 @@
     (click.stop)="focus()"
     (waResizeObserver)="$event[0] && onItems($event[0])"
 >
+    <ng-content select="label" />
     <ng-template
         *ngFor="let item of ngControl?.value; let index = index"
         [polymorpheusOutlet]="component"

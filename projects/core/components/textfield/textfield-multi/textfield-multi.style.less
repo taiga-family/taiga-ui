@@ -7,7 +7,7 @@ tui-textfield[multi] {
     align-items: stretch;
     cursor: text;
     gap: 0;
-    max-block-size: calc(var(--t-vertical) * 2 + var(--t-item-height) * var(--t-rows));
+    max-block-size: calc(var(--t-vertical) * 2 + var(--t-item-height) * var(--t-rows) + var(--t-label, ~'0px'));
     overscroll-behavior: none;
     scroll-behavior: var(--tui-scroll-behavior);
 
@@ -20,29 +20,30 @@ tui-textfield[multi] {
     }
 
     &::after {
-        left: calc(100% - var(--t-right) - 0.375rem);
         margin-inline-end: calc(-1 * var(--t-padding));
     }
 
-    .t-scrollbar {
+    > .t-scrollbar {
         transform: translateX(var(--t-padding));
+        margin: 0 calc(1px - 100% + var(--t-left)) 0 calc(-1 * var(--t-left));
+
+        .t-bar_horizontal {
+            // Safari shows horizontal scrollbar in vertical mode
+            display: none;
+        }
     }
 
-    &[style*='--t-icon-start:'] .t-scrollbar {
-        margin: 0 calc(3rem + 1px - 100%) 0 -3rem;
-    }
-
-    .t-content {
+    > .t-content {
         position: sticky;
         top: 0;
-        left: calc(100% - var(--t-side) - var(--t-right) + var(--t-padding) - 0.5rem);
+        left: calc(100% - var(--t-side) - var(--t-right) + var(--t-padding) - var(--t-offest));
         margin: 0;
         gap: 0.25rem;
     }
 
-    .t-items {
+    > .t-items {
         position: sticky;
-        left: 0;
+        left: var(--t-left);
         display: flex;
         min-inline-size: 0;
         min-block-size: fit-content;
@@ -50,7 +51,6 @@ tui-textfield[multi] {
         align-items: center;
         flex-wrap: wrap;
         padding: var(--t-vertical) 0;
-        clip-path: inset(0 0 0 calc(-1 * var(--t-padding)));
 
         &::after {
             content: '';
@@ -59,9 +59,10 @@ tui-textfield[multi] {
         }
 
         &_horizontal {
+            clip-path: inset(0 0 0 calc(var(--t-left) / 2 - var(--t-padding) - 0.25rem));
             flex-wrap: nowrap;
 
-            .t-input {
+            > .t-input {
                 padding-inline-end: calc(var(--t-side) + var(--t-right) + var(--t-padding));
             }
         }
@@ -69,21 +70,68 @@ tui-textfield[multi] {
         &:not(&_horizontal) {
             --t-scroll: 0;
         }
+
+        > [tuiLabel] {
+            position: absolute;
+            top: 0;
+        }
+
+        > .t-input {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex: 1;
+            max-inline-size: 100%;
+            transform: translateX(var(--t-scroll));
+
+            input {
+                position: absolute;
+                left: 0;
+                inline-size: 100%;
+                padding: 0;
+            }
+
+            .t-ghost {
+                visibility: hidden;
+                white-space: pre;
+                text-overflow: clip;
+                padding-inline-end: 0.125rem;
+                min-block-size: var(--t-item-height, 1em);
+
+                &:empty::before {
+                    content: attr(data-placeholder);
+                }
+            }
+
+            .t-filler {
+                position: absolute;
+                left: 0;
+            }
+        }
     }
 
-    .t-clear {
+    > .t-content .t-clear {
         display: flex;
     }
 
-    &[data-mode~='readonly'],
-    &._disabled,
-    &._empty {
+    &[data-mode~='invalid']:not([data-mode~='readonly']) > .t-items > [tuiLabel] {
+        color: var(--tui-text-negative);
+    }
+
+    &[data-focus='true']:not([data-mode~='readonly']) > .t-items > [tuiLabel] {
+        color: var(--tui-text-primary);
+    }
+
+    &[data-mode~='readonly'] > .t-content,
+    &._disabled > .t-content,
+    &._empty > .t-content {
         .t-clear {
             display: none;
         }
     }
 
-    .t-items input:not(:focus) {
+    > .t-items input:not(:focus),
+    &[data-mode~='readonly'] > .t-items input {
         &::placeholder {
             opacity: 0;
         }
@@ -93,8 +141,8 @@ tui-textfield[multi] {
         }
     }
 
-    &._empty .t-items,
-    &[data-focus='true']:not(:focus-within) .t-items {
+    &:not([data-mode~='readonly'])._empty > .t-items,
+    &[data-focus='true']:not([data-mode~='readonly']):not(:focus-within) > .t-items {
         input::placeholder {
             opacity: 1;
         }
@@ -104,41 +152,17 @@ tui-textfield[multi] {
         }
     }
 
-    .t-input {
-        position: relative;
-        display: flex;
-        align-items: center;
-        flex: 1;
-        max-inline-size: 100%;
-        transform: translateX(var(--t-scroll));
-
-        .t-ghost {
-            visibility: hidden;
-            white-space: pre;
-            text-overflow: clip;
-            padding-inline-end: 0.125rem;
-            min-block-size: var(--t-item-height, 1em);
-
-            &:empty::before {
-                content: attr(data-placeholder);
-            }
+    &:not(._empty),
+    &[data-focus='true']:not([data-mode~='readonly']) {
+        > .t-items [tuiLabel] {
+            font-size: 0.83em;
+            transform: translateY(-0.7rem);
         }
-
-        input:defined {
-            position: absolute;
-            left: 0;
-            inline-size: 100%;
-            padding: 0;
-        }
-    }
-
-    .t-filler:defined {
-        position: absolute;
-        left: 0;
     }
 
     &[data-size='l'] {
         --t-vertical: 0.625rem;
+        --t-offest: calc(1rem - var(--t-right) / 4.5);
 
         &::before {
             margin-inline-end: 0.75rem;
@@ -148,10 +172,19 @@ tui-textfield[multi] {
             left: calc(100% - var(--t-right) - 0.25rem);
             margin-inline-start: -0.75rem;
         }
+
+        &._with-label {
+            --t-vertical: 1.125rem;
+
+            > .t-items {
+                padding: 1.75rem 0 0.5rem;
+            }
+        }
     }
 
     &[data-size='m'] {
         --t-vertical: 0.5rem;
+        --t-offest: calc(0.75rem + var(--t-right) / 14);
 
         &::before {
             left: -0.125rem;
@@ -159,24 +192,39 @@ tui-textfield[multi] {
         }
 
         &::after {
+            left: calc(100% - var(--t-right) - 0.375rem);
             border-inline-end-width: 0.625rem;
             margin-inline-start: -0.25rem;
         }
 
-        .t-content {
+        &._with-label {
+            --t-vertical: 0.875rem;
+
+            > .t-items {
+                padding: 1.375rem 0 0.375rem;
+            }
+        }
+
+        > .t-content {
             transform: translateX(0.125rem);
         }
     }
 
     &[data-size='s'] {
         --t-vertical: 0.125rem;
+        --t-offest: calc(0.625rem + var(--t-right) / 6.667);
 
         &::before {
             left: -0.125rem;
             margin-inline-end: 0.375rem;
         }
 
-        .t-content {
+        &::after {
+            left: calc(100% - var(--t-right) - 0.25rem);
+            border-inline-end-width: 0.5rem;
+        }
+
+        > .t-content {
             gap: 0;
             transform: translateX(0.375rem);
         }

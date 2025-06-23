@@ -124,7 +124,7 @@ export class TuiTextfieldMultiComponent<T>
     protected onItems({target}: ResizeObserverEntry): void {
         const height =
             this.rows > 1 && this.ngControl?.value?.length
-                ? (target.firstElementChild?.clientHeight ?? 0)
+                ? (target.querySelector('tui-textfield-item')?.clientHeight ?? 0)
                 : null;
 
         if (height !== 0) {
