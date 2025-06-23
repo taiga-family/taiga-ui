@@ -65,7 +65,7 @@ export function replaceIdentifier({from, to}: ReplacementIdentifierMulti): void 
                 decorator?.getFirstChildIfKind(ts.SyntaxKind.Identifier)?.getText() ===
                 'NgModule';
 
-            ref.replaceWithText(getReplacementText(to, !!inModule));
+            ref.replaceWithText(getReplacementText(to, inModule));
         }
     });
 }

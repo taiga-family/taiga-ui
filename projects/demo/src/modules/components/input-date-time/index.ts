@@ -58,7 +58,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
         new TuiDay(2017, 11, 11),
         new TuiDay(2020, 2, 5),
         new TuiDay(2300, 0, 1),
-        [this.today.append({day: +1}), new TuiTime(16, 20)],
+        [this.today.append({day: 1}), new TuiTime(16, 20)],
     ];
 
     protected max: TuiDay | [TuiDay, TuiTime] = this.maxVariants[0]!;
