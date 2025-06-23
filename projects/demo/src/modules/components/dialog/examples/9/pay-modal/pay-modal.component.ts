@@ -133,7 +133,7 @@ export class PayModal implements OnInit {
     }
 
     private maskedNumber(savedCard: AccountCard): string {
-        return `${savedCard.firstSix.toString().slice(0, -2)}***${savedCard.lastFour}`;
+        return `${(savedCard.firstSix satisfies string).slice(0, -2)}***${savedCard.lastFour}`;
     }
 
     private fetchCardsAndSetPrimaryCard(): void {

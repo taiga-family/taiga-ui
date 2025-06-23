@@ -51,7 +51,7 @@ export class TuiAnimated implements OnDestroy {
                 const remove = (): void => removeChild.call(renderer, parent, el, host);
                 const elements: Element[] = data[TUI_LEAVE];
                 const element = elements.find((leave) => el.contains(leave));
-                const {length} = element?.getAnimations() || [];
+                const {length} = element?.getAnimations?.() || [];
 
                 if (!element) {
                     remove();
@@ -62,7 +62,7 @@ export class TuiAnimated implements OnDestroy {
                 elements.splice(elements.indexOf(element), 1);
                 element.classList.add(TUI_LEAVE);
 
-                const animations = element.getAnimations();
+                const animations = element.getAnimations?.() ?? [];
                 const last = animations[animations.length - 1];
                 const finish = (): void => {
                     if (!parent || parent.contains(el)) {
@@ -90,7 +90,7 @@ export class TuiAnimated implements OnDestroy {
     }
 
     protected remove(): void {
-        if (this.el.isConnected && !this.el.getAnimations().length) {
+        if (this.el.isConnected && !this.el.getAnimations?.().length) {
             this.el.classList.remove(TUI_ENTER);
         }
     }

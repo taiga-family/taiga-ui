@@ -454,7 +454,7 @@ export class TuiInputTagComponent
 
     protected trackByFn(_: number, tag: string): string {
         // Actually tag has TuiStringifiableItem type not string
-        return tag.toString();
+        return tag;
     }
 
     private get lineHeight(): number {

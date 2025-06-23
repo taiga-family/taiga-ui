@@ -61,7 +61,7 @@ export class TuiMedia {
     }
 
     public get paused(): boolean {
-        return Boolean(this.el.paused);
+        return this.el.paused;
     }
 
     protected onPausedChange(paused: boolean): void {
