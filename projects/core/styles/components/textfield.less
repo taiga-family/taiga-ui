@@ -153,6 +153,27 @@ tui-textfield {
         }
     }
 
+    &[data-size='l'] {
+        input:not([type='range']),
+        select:defined,
+        textarea:defined {
+            &:-webkit-autofill,
+            &:not(._empty):not(:placeholder-shown) {
+                & ~ label {
+                    transform: translateY(-0.7rem);
+                }
+            }
+
+            &:not([data-mode~='readonly']) {
+                .appearance-focus({
+                    & ~ label {
+                        transform: translateY(-0.7rem);
+                    }
+                });
+            }
+        }
+    }
+
     /*
     TODO: refactor to the following way after Chrome 105+ & Safari 15.4+
     &:hover:has(input:not(:read-only)),
@@ -273,7 +294,7 @@ tui-textfield {
         &:not(._empty):not(:placeholder-shown) {
             & ~ label {
                 font-size: 0.83em;
-                transform: translateY(-0.7rem);
+                transform: translateY(-0.7em);
             }
 
             &:not(:disabled)[data-mode~='invalid'] ~ label,
@@ -296,7 +317,7 @@ tui-textfield {
                 & ~ label {
                     color: var(--tui-text-primary) !important;
                     font-size: 0.83em;
-                    transform: translateY(-0.7rem);
+                    transform: translateY(-0.7em);
                 }
             });
         }
