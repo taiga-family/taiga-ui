@@ -33,14 +33,6 @@ tui-textfield[multi] {
         }
     }
 
-    > .t-content {
-        position: sticky;
-        top: 0;
-        left: calc(100% - var(--t-side) - var(--t-right) + var(--t-padding) - var(--t-offest));
-        margin: 0;
-        gap: 0.25rem;
-    }
-
     > .t-items {
         position: sticky;
         left: var(--t-left);
@@ -71,7 +63,7 @@ tui-textfield[multi] {
             --t-scroll: 0;
         }
 
-        > [tuiLabel] {
+        > label[tuiLabel] {
             position: absolute;
             top: 0;
             inline-size: 100%;
@@ -109,6 +101,14 @@ tui-textfield[multi] {
                 left: 0;
                 color: var(--tui-text-tertiary);
             }
+        }
+
+        ~ .t-content {
+            position: sticky;
+            top: 0;
+            left: calc(100% - var(--t-side) - var(--t-right) + var(--t-padding) - var(--t-offest));
+            margin: 0;
+            gap: 0.25rem;
         }
     }
 
