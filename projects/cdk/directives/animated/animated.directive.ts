@@ -28,7 +28,7 @@ export class TuiAnimated implements OnDestroy {
 
     constructor() {
         afterNextRender(() => this.remove());
-        
+
         if (!this.renderer) {
             return;
         }
