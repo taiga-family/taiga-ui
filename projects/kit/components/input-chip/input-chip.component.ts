@@ -20,10 +20,8 @@ import {
     tuiInjectAuxiliary,
 } from '@taiga-ui/core/components/textfield';
 import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
-import {
-    TUI_ITEMS_HANDLERS,
-    type TuiItemsHandlers,
-} from '@taiga-ui/core/directives/items-handlers';
+import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {injectContext} from '@taiga-ui/polymorpheus';
@@ -61,6 +59,7 @@ import {TuiInputChipDirective} from './input-chip.directive';
 export class TuiInputChipComponent<T> {
     @ViewChild(TuiChip, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
+
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
     private readonly value = computed(() => this.directive()?.value() ?? []);

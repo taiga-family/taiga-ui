@@ -15,11 +15,11 @@ import {
     standalone: true,
     imports: [
         FormsModule,
+        TuiChevron,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiInputChip,
         TuiTextfield,
-        TuiChevron,
     ],
     templateUrl: './index.html',
     encapsulation,

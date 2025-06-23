@@ -9,11 +9,11 @@ import {TuiInputChip, TuiTooltip} from '@taiga-ui/kit';
     standalone: true,
     imports: [
         ReactiveFormsModule,
+        TuiHint,
+        TuiIcon,
         TuiInputChip,
         TuiTextfield,
-        TuiIcon,
         TuiTooltip,
-        TuiHint,
     ],
     templateUrl: './index.html',
     encapsulation,
