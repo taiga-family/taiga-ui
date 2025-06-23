@@ -5716,8 +5716,8 @@ export default class PageComponent {
         TAIGA_BIRTHDAY,
         TAIGA_V3,
         TAIGA_V4,
-        TuiDay.currentLocal().append({year: +10, month: +1}),
-        TuiDay.currentLocal().append({year: +100, month: +1}),
+        TuiDay.currentLocal().append({year: 10, month: 1}),
+        TuiDay.currentLocal().append({year: 100, month: 1}),
     ] as const satisfies readonly TuiMonth[];
 
     protected readonly yearVariants = [
