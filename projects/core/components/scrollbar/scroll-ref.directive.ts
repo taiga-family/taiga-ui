@@ -6,7 +6,7 @@ export const SCROLL_REF_SELECTOR = '[tuiScrollRef]';
 
 @Directive({
     standalone: true,
-    selector: SCROLL_REF_SELECTOR,
+    selector: '[tuiScrollRef]',
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
 })
 export class TuiScrollRef {}
