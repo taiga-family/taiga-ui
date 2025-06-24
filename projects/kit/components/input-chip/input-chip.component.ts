@@ -51,7 +51,6 @@ import {TuiInputChipDirective} from './input-chip.directive';
         '[class._edit]': 'editing()',
         '[attr.tabIndex]': 'disabled() ? null : -1',
         '(click)': 'editing() && $event.stopPropagation()',
-        '(pointerdown.self.prevent.zoneless)': '0',
         '(keydown.backspace.prevent)': 'delete()',
         '(keydown.enter.prevent)': 'edit()',
         '(dblclick)': 'edit()',

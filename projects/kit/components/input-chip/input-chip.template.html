@@ -16,7 +16,7 @@
     tuiFadeOffset="0.5rem"
     class="t-text"
     [tuiHintOverflow]="hint?.content() ? null : handlers.stringify()(internal())"
-    (pointerdown.prevent.zoneless)="(0)"
+    (mousedown.prevent.zoneless)="(0)"
 >
     {{ internal() }}
 </div>
