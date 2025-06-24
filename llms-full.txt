@@ -3847,6 +3847,115 @@ export class Example {}
 </tui-drawer>
 ```
 
+### Example
+
+```html
+<button
+                size="m"
+                tuiButton
+                type="button"
+                (click)="open.set(true)"
+            >
+                Open
+            </button>
+
+            <tui-drawer
+                *tuiPopup="open()"
+                [direction]="direction"
+                [overlay]="overlay"
+                (click.self)="onClose()"
+            >
+                <header>
+                    <h2 tuiHeader>
+                        <div tuiTitle>Header</div>
+                        <div tuiAccessories>
+                            <button
+                                tuiButton
+                                type="button"
+                                (click)="onClose()"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </h2>
+                </header>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate perspiciatis exercitationem
+                    nemo velit aliquam voluptates non porro, vel, nihil laudantium sapiente ex omnis corrupti assumenda
+                    voluptatibus, architecto sequi saepe consectetur ratione qui. Beatae, sapiente explicabo velit
+                    facere repudiandae veniam et soluta quia qui expedita voluptate accusamus dolor adipisci. Illo quia
+                    sint consequatur unde nulla fuga eum officiis, impedit dolorem? Vel itaque temporibus nihil quia?
+                    Provident earum aperiam autem veritatis hic doloremque unde nesciunt accusantium nisi corrupti.
+                </p>
+
+                <footer tuiHeader>
+                    <div tuiTitle>Footer</div>
+                    <button
+                        appearance="secondary"
+                        tuiButton
+                        type="button"
+                        (click)="onClose()"
+                    >
+                        Close
+                    </button>
+                </footer>
+            </tui-drawer>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [direction] | `TuiHorizontalDirection` | . |
+| [overlay] | `boolean` | Show overlay under the drawer. |
+| header | `string` | tag inside the drawer. |
+| footer | `string` | tag inside the drawer. |
+
+### TypeScript
+
+```ts
+import {Component, signal} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import type {TuiHorizontalDirection} from '@taiga-ui/core';
+import {TuiButton, TuiPopup, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiDrawer} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiButton,
+        TuiDemo,
+        TuiDrawer,
+        TuiHeader,
+        TuiPopup,
+        TuiTextfield,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected readonly examples = ['Full', 'Modal'];
+    protected readonly directionVariants: readonly TuiHorizontalDirection[] = [
+        'left',
+        'right',
+    ];
+
+    protected open = signal(false);
+    protected overlay = false;
+    protected direction: TuiHorizontalDirection = 'right';
+
+    public onClose(): void {
+        this.open.set(false);
+    }
+}
+```
+
 ---
 
 # components/ElasticContainer
