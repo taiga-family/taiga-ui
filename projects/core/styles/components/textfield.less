@@ -179,9 +179,9 @@ tui-textfield {
         margin-inline-end: 0.5rem;
     }
 
-    &:has(:disabled:not(.t-filler, button, option))::before,
-    &:has(:disabled:not(.t-filler, button, option))::after,
-    &:has(:disabled:not(.t-filler, button, option)) > .t-template {
+    &:has(:disabled:not(.t-filler, button, option, [tuiChip]))::before,
+    &:has(:disabled:not(.t-filler, button, option, [tuiChip]))::after,
+    &:has(:disabled:not(.t-filler, button, option, [tuiChip])) > .t-template {
         opacity: var(--tui-disabled-opacity);
     }
 

@@ -57,23 +57,41 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="dropdown"
-            heading="Dropdown"
+            id="disabled-items"
+            heading="Disabled items"
             [component]="4 | tuiComponent"
             [content]="4 | tuiExample"
+            [description]="disabled"
+        >
+            <ng-template #disabled>
+                Individual tags can be disabled using
+                <code>disabledItemHandler</code>
+                , this would prevent them from being edited, removed or added.
+                <strong>Note:</strong>
+                keep in mind cleaner would still empty the control. If you want a different behavior, you can disable
+                built-in cleaner and provide your own
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="dropdown"
+            heading="Dropdown"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
             [description]="dropdown"
         >
             <ng-template #dropdown>
+                With
                 <code>disabledItemHandler</code>
-                can also be used to disallow particular values from being added by enter or blur
+                you can force the component to only accept suggested values
             </ng-template>
         </tui-doc-example>
 
         <tui-doc-example
             id="mask"
             heading="Mask"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
             [description]="mask"
         >
             <ng-template #mask>

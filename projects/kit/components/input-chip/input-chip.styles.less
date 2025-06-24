@@ -1,6 +1,10 @@
 :host {
     cursor: pointer;
 
+    &[data-state='disabled'] {
+        pointer-events: none;
+    }
+
     .t-input {
         padding: inherit;
         transition: none;

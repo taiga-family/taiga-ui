@@ -21,7 +21,7 @@
     {{ internal() }}
 </div>
 <button
-    *ngIf="directive()?.interactive() && !editing()"
+    *ngIf="directive()?.interactive() && !editing() && !disabled()"
     iconStart="@tui.x"
     tabIndex="-1"
     tuiIconButton

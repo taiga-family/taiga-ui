@@ -19,6 +19,7 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     tuiInjectAuxiliary,
 } from '@taiga-ui/core/components/textfield';
+import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
@@ -46,9 +47,9 @@ import {TuiInputChipDirective} from './input-chip.directive';
     hostDirectives: [TuiChip],
     host: {
         tuiChip: '',
-        tabIndex: '-1',
         class: 'tui-interactive',
         '[class._edit]': 'editing()',
+        '[attr.tabIndex]': 'disabled() ? null : -1',
         '(click)': 'editing() && $event.stopPropagation()',
         '(pointerdown.self.prevent.zoneless)': '0',
         '(keydown.backspace.prevent)': 'delete()',
@@ -72,6 +73,16 @@ export class TuiInputChipComponent<T> {
 
     protected readonly directive = tuiInjectAuxiliary<TuiInputChipDirective<T>>(
         (x) => x instanceof TuiInputChipDirective,
+    );
+
+    protected readonly disabled = tuiDirectiveBinding(
+        TuiAppearance,
+        'tuiAppearanceState',
+        computed(() =>
+            this.handlers.disabledItemHandler()(this.context.$implicit.item)
+                ? 'disabled'
+                : null,
+        ),
     );
 
     protected readonly size = tuiDirectiveBinding(
