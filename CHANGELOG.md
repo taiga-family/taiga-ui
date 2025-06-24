@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.42.0](https://github.com/taiga-family/taiga-ui/compare/v4.41.0...v4.42.0) (2025-06-24)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `Card` fix buttons stretching in header
+  ([#11151](https://github.com/taiga-family/taiga-ui/issues/11151))
+  ([f95e701](https://github.com/taiga-family/taiga-ui/commit/f95e7016f91d2f1ed822d6e4b9416ab193eb078b))
+- **addon-table:** skip hydration for table-expand ([#11141](https://github.com/taiga-family/taiga-ui/issues/11141))
+  ([f0c5e8e](https://github.com/taiga-family/taiga-ui/commit/f0c5e8e3ced068264321a1afe96fdaafc706f8d8))
+- **core:** `Dialog` throws `TypeError: undefined is not an object (evaluating 'n.key.toLowerCase')`
+  ([#11127](https://github.com/taiga-family/taiga-ui/issues/11127))
+  ([79cf29a](https://github.com/taiga-family/taiga-ui/commit/79cf29a14535d5e6dd4a5d9e804072da26884057))
+- **core:** `DropdownOpen` has unexpected auto focus inside Shadow DOM
+  ([#11090](https://github.com/taiga-family/taiga-ui/issues/11090))
+  ([37e7431](https://github.com/taiga-family/taiga-ui/commit/37e7431e443f5aeb67a5a799c07eb8e181e079c0))
+- **core:** `Textfield` label transform only for `L` size
+  ([#11143](https://github.com/taiga-family/taiga-ui/issues/11143))
+  ([70f9ced](https://github.com/taiga-family/taiga-ui/commit/70f9cedb501b55b88f052d233611de5236ceea19))
+- **core:** `Textfield` throws `RuntimeError: NG0600` ([#11126](https://github.com/taiga-family/taiga-ui/issues/11126))
+  ([4634537](https://github.com/taiga-family/taiga-ui/commit/463453793dd98c9cc4a9120acf7c7c8cb26011f3))
+- **kit:** `ButtonClose` update size to match other buttons
+  ([#11124](https://github.com/taiga-family/taiga-ui/issues/11124))
+  ([cd933a4](https://github.com/taiga-family/taiga-ui/commit/cd933a403fbfc9c2c9e988817f4a10699b4108d1))
+- **kit:** `InputDate` fix textfield value after resetting
+  ([#11131](https://github.com/taiga-family/taiga-ui/issues/11131))
+  ([e095aa7](https://github.com/taiga-family/taiga-ui/commit/e095aa7bce49eacda9f88dac5ba1002c5d6d5d38))
+- **kit:** `LineClamp` fix `TuiAnimated matches multiple times` error
+  ([#11146](https://github.com/taiga-family/taiga-ui/issues/11146))
+  ([406dec3](https://github.com/taiga-family/taiga-ui/commit/406dec3b0c205bee93689d8716d913a6c6f22984))
+- **kit:** `Slider` fix being draggable when disabled ([#11050](https://github.com/taiga-family/taiga-ui/issues/11050))
+  ([3cbb208](https://github.com/taiga-family/taiga-ui/commit/3cbb208ffab48ad4065f6271535c817f2ddbd857))
+- **kit:** fix incorrect import from i18n ([#11115](https://github.com/taiga-family/taiga-ui/issues/11115))
+  ([7853a79](https://github.com/taiga-family/taiga-ui/commit/7853a7944ecaa7b7c71425df7003adb4d8ef2603))
+- **kit:** use `LOCALE_ID` in `FileRejected` pipe ([#11128](https://github.com/taiga-family/taiga-ui/issues/11128))
+  ([e464506](https://github.com/taiga-family/taiga-ui/commit/e46450651edc1f362b06e3430e99c4e112c1de49))
+- **legacy:** `InputColor` fix orientation inside `Accordion`
+  ([#11152](https://github.com/taiga-family/taiga-ui/issues/11152))
+  ([702ff16](https://github.com/taiga-family/taiga-ui/commit/702ff166d814a9614af3f2728bc8e91c3bbd0718))
+
+### 🚀 Features
+
+- `InputChip` add new component ([#10852](https://github.com/taiga-family/taiga-ui/issues/10852))
+  ([0c75661](https://github.com/taiga-family/taiga-ui/commit/0c75661b12bd8eb202307a2ebcd5f023876eabb4))
+- **i18n:** add Arabic ([#11091](https://github.com/taiga-family/taiga-ui/issues/11091))
+  ([5fa3e29](https://github.com/taiga-family/taiga-ui/commit/5fa3e2906fb308de17a21131492beefb8d40b4a2))
+
 ## [4.41.0](https://github.com/taiga-family/taiga-ui/compare/v4.40.0...v4.41.0) (2025-06-16)
 
 ### 🐞 Bug Fixes
