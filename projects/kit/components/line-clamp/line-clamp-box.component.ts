@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {TUI_HINT_PROVIDERS, TuiHintComponent} from '@taiga-ui/core/directives/hint';
+import {TUI_HINT_PROVIDERS, TuiHintBaseComponent} from '@taiga-ui/core/directives/hint';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -18,7 +18,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
         '[style.min-width.px]': 'width',
     },
 })
-export class TuiLineClampBox extends TuiHintComponent {
+export class TuiLineClampBox extends TuiHintBaseComponent {
     protected get width(): number {
         return this.accessor.getClientRect().width;
     }
