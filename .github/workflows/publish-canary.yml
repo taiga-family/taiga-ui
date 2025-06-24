@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: '0 20 * * 1-5' # At UTC 20:00 (MSK 23:00) on every day-of-week from Monday through Friday
 
+env:
+  NX_DISABLE_NX_CACHE: true
+  NX_DISABLE_REMOTE_CACHE: true
+
 jobs:
   publish-canary:
     runs-on: ubuntu-latest
