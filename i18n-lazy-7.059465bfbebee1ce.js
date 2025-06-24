@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[3934],{95380:(e,s,a)=>{a.r(s),a.d(s,{TUI_ARABIC_LANGUAGE_ADDON_TABLE:()=>n});const n={showHideText:"إظهار/إخفاء",paginationTexts:{pages:"صفحة",linesPerPage:"سطر في الصفحة",of:"من"}}}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[42478],{20097:e=>{e.exports='```html\n<tui-textfield>\n  <label tuiLabel>Label</label>\n  <textarea\n    tuiTextarea\n    [(ngModel)]="value"\n  ></textarea>\n</tui-textfield>\n```\n'}}]);
