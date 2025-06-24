@@ -1,6 +1,10 @@
-<tui-textfield multi>
+<tui-textfield
+    filler="•••"
+    multi
+    [style.width.rem]="19"
+>
     <input
-        placeholder="Only 3 letters"
+        placeholder="Type 3 digits"
         tuiInputChip
         [formControl]="control"
         [maskito]="mask"

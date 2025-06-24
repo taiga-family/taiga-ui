@@ -1,27 +1,30 @@
 import {NgForOf, NgIf} from '@angular/common';
-import type {AfterContentInit, ElementRef} from '@angular/core';
+import type {AfterContentInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
+    ElementRef,
     inject,
     Input,
+    signal,
     TemplateRef,
-    ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiArrayToggle, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiArrayToggle, tuiProvide, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsDataListHost,
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
-import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
+import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {
     TUI_ITEMS_HANDLERS,
     TuiWithAppearance,
@@ -36,6 +39,7 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {filter, fromEvent} from 'rxjs';
 
 import {TuiTextfieldComponent} from '../textfield.component';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
@@ -51,7 +55,6 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
         PolymorpheusOutlet,
         TuiButton,
         TuiScrollControls,
-        TuiScrollRef,
         WaResizeObserver,
     ],
     templateUrl: './textfield-multi.template.html',
@@ -62,6 +65,7 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
         tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
         tuiAsDataListHost(TuiTextfieldMultiComponent),
         tuiProvide(TuiTextfieldComponent, TuiTextfieldMultiComponent),
+        tuiProvide(TUI_SCROLL_REF, ElementRef),
     ],
     hostDirectives: [
         TuiDropdownFixed,
@@ -75,23 +79,31 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
     ],
     host: {
         class: 'tui-interactive',
-        '[class._expandable]': 'rows > 1',
         '[attr.data-state]': 'ngControl?.disabled ? "disabled" : null',
-        '[class._text]': '!item',
         '[class._empty]': '!ngControl?.value?.length',
-        '(tuiActiveZoneChange)': '!$event && items?.nativeElement?.scrollTo({left: 0})',
+        '[style.--t-item-height.px]': 'height()',
+        '[style.--t-rows]': 'rows',
+        '(tuiActiveZoneChange)': '!$event && el.scrollTo({left: 0})',
     },
 })
 export class TuiTextfieldMultiComponent<T>
     extends TuiTextfieldComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
+    protected readonly height = signal<number | null>(null);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component: PolymorpheusContent<TuiContext<TuiTextfieldItem<T>>> =
         new PolymorpheusComponent(TuiTextfieldItemComponent);
 
-    @ViewChild(TUI_SCROLL_REF, {static: true})
-    public readonly items?: ElementRef<HTMLElement>;
+    protected readonly sub = fromEvent(this.el, 'scroll')
+        .pipe(
+            filter(() => this.rows === 1),
+            tuiZonefree(),
+            takeUntilDestroyed(),
+        )
+        .subscribe(() => {
+            this.el.style.setProperty('--t-scroll', tuiPx(-1 * this.el.scrollLeft));
+        });
 
     @ContentChild(TuiItem, {read: TemplateRef})
     public readonly item?: TemplateRef<unknown>;
@@ -109,10 +121,15 @@ export class TuiTextfieldMultiComponent<T>
         );
     }
 
-    protected get maxHeight(): number | null {
-        return this.rows > 1 && this.ngControl?.value?.length
-            ? this.rows * (this.items?.nativeElement.firstElementChild?.clientHeight ?? 0)
-            : null;
+    protected onItems({target}: ResizeObserverEntry): void {
+        const height =
+            this.rows > 1 && this.ngControl?.value?.length
+                ? (target.querySelector('tui-textfield-item')?.clientHeight ?? 0)
+                : null;
+
+        if (height !== 0) {
+            this.height.set(height);
+        }
     }
 
     protected onLeft(event: any): void {
@@ -122,5 +139,10 @@ export class TuiTextfieldMultiComponent<T>
 
         event.preventDefault();
         event.currentTarget.previousElementSibling?.firstElementChild?.focus();
+    }
+
+    protected focus(): void {
+        this.input?.nativeElement.focus();
+        this.el.scrollTo({left: Number.MAX_SAFE_INTEGER, top: Number.MAX_SAFE_INTEGER});
     }
 }

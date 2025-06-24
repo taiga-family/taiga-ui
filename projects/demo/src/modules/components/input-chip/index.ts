@@ -24,20 +24,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
-    protected readonly control = new FormControl(null);
-    protected value = [];
+    protected readonly control = new FormControl();
     protected unique = true;
     protected separator = ',';
-
-    protected examples = [
-        'Basic',
-        'Size',
-        'Customization',
-        'Hint',
-        'Validation',
-        'Mask',
-        'Dropdown',
-        'Overflow',
-        'Text chip',
-    ];
 }

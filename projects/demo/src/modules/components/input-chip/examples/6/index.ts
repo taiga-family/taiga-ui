@@ -4,21 +4,19 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
-import {TuiItem} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [MaskitoDirective, ReactiveFormsModule, TuiInputChip, TuiItem, TuiTextfield],
+    imports: [MaskitoDirective, ReactiveFormsModule, TuiInputChip, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
+    protected readonly control = new FormControl();
     protected readonly mask: MaskitoOptions = {
-        mask: [/\D/, /\D/, /\D/],
+        mask: [/\d/, /\d/, /\d/],
     };
-
-    protected readonly control = new FormControl([]);
 }

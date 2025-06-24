@@ -1,25 +1,33 @@
-import {Component} from '@angular/core';
-import type {AbstractControl, ValidationErrors} from '@angular/forms';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiValidationError} from '@taiga-ui/cdk';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiInputChip} from '@taiga-ui/kit';
-
-export function customValidator({value}: AbstractControl): ValidationErrors | null {
-    return value.some((v: string) => v === 'invalid')
-        ? {invalid: new TuiValidationError('invalid chip')}
-        : null;
-}
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiFilterByInputPipe,
+    TuiInputChip,
+} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputChip, TuiTextfield],
+    imports: [
+        FormsModule,
+        TuiChevron,
+        TuiDataListWrapper,
+        TuiFilterByInputPipe,
+        TuiInputChip,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    public readonly control = new FormControl(['invalid', 'value'], customValidator);
+    protected value: string[] = [];
+    protected readonly items: string[] = inject('Pythons' as any);
+    protected readonly handler: TuiBooleanHandler<string> = (item) =>
+        !this.items.includes(item);
 }

@@ -1,21 +1,34 @@
+<tui-scroll-controls
+    *ngIf="rows > 1"
+    class="t-scrollbar"
+/>
+
 <div
-    tuiScrollRef
-    class="t-container"
-    [style.flex-wrap]="rows > 1 ? 'wrap' : 'nowrap'"
-    [style.max-height.px]="maxHeight"
-    (click.stop)="input?.nativeElement?.focus()"
+    class="t-items"
+    [class.t-items_horizontal]="rows === 1"
+    (click.stop)="focus()"
+    (waResizeObserver)="$event[0] && onItems($event[0])"
 >
+    <ng-content select="label" />
     <ng-template
         *ngFor="let item of ngControl?.value; let index = index"
         [polymorpheusOutlet]="component"
         [polymorpheusOutletContext]="{$implicit: {item, index}}"
     />
     <span
-        class="t-input_wrapper"
+        class="t-input"
         (keydown.arrowLeft)="onLeft($event)"
     >
         <ng-content select="input" />
-        <span class="t-ghost">{{ value() }}</span>
+        <span
+            class="t-ghost"
+            [attr.data-placeholder]="input?.nativeElement?.placeholder"
+            [textContent]="
+                value() && value().length < (input?.nativeElement?.placeholder?.length || 0)
+                    ? input?.nativeElement?.placeholder
+                    : value()
+            "
+        ></span>
         <input
             *ngIf="showFiller()"
             aria-hidden="true"
@@ -24,15 +37,11 @@
             [value]="computedFiller()"
         />
     </span>
-    <tui-scroll-controls
-        *ngIf="maxHeight"
-        class="t-scroll"
-    />
 </div>
 
 <span
     class="t-content"
-    (pointerdown.prevent)="input?.nativeElement?.focus()"
+    (pointerdown.prevent)="focus()"
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
@@ -46,13 +55,14 @@
         class="t-clear"
         [iconStart]="icons.close"
         (click)="accessor?.setValue([])"
-        (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
+        (pointerdown.zoneless.prevent)="focus()"
     >
         {{ clear() }}
     </button>
     <ng-container #vcr />
     <ng-content select="tui-icon" />
 </span>
+
 <span
     *ngIf="ngControl?.value != null"
     class="t-template"

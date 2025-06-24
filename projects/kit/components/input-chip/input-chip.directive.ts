@@ -10,6 +10,8 @@ import {
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
@@ -45,6 +47,7 @@ export class TuiInputChipDirective<T>
     extends TuiControl<T[]>
     implements TuiTextfieldAccessor<T[]>
 {
+    private readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
     private readonly mobile = inject(TUI_IS_MOBILE);
     private readonly textfield = inject(TuiTextfieldMultiComponent);
@@ -68,8 +71,15 @@ export class TuiInputChipDirective<T>
     protected onEnter(): void {
         const value = this.textfield.value().trim();
         const items: any[] = this.separator ? value.split(this.separator) : [value];
+        const valid = items.filter(
+            (item) => item && !this.handlers.disabledItemHandler()(item),
+        );
 
-        this.setValue([...this.value(), ...items.filter(Boolean)]);
+        if (!value || !valid.length) {
+            return;
+        }
+
+        this.setValue([...this.value(), ...valid]);
         this.scrollTo();
     }
 
@@ -108,7 +118,7 @@ export class TuiInputChipDirective<T>
     protected scrollTo(): void {
         // Allow change detection to run and add new tag to DOM
         setTimeout(() => {
-            this.textfield.items?.nativeElement.scrollTo({
+            this.textfield.el.scrollTo({
                 top: Number.MAX_SAFE_INTEGER,
                 left: Number.MAX_SAFE_INTEGER,
             });

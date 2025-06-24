@@ -59,7 +59,7 @@
     }
 }
 
-.t-text {
+.t-ghost {
     z-index: 1;
     order: 1;
     inline-size: stretch;
@@ -77,27 +77,27 @@
         content: ' ';
     }
 
-    ::ng-deep tui-textfield._with-label[data-size='m'] & {
+    ::ng-deep tui-textfield._with-label[data-size='m'] textarea ~ & {
         margin-block-start: -1.375rem;
         padding-block-end: 0.3125rem;
     }
 
-    ::ng-deep tui-textfield._with-label[data-size='l'] & {
+    ::ng-deep tui-textfield._with-label[data-size='l'] textarea ~ & {
         margin-block-start: -1.75rem;
         padding-block-end: 0.5rem;
     }
 
-    ::ng-deep tui-textfield[data-size='s'] & {
+    ::ng-deep tui-textfield[data-size='s'] textarea ~ & {
         margin-block-start: -1.5rem;
         padding-block-end: 0.5rem;
     }
 
-    ::ng-deep tui-textfield[data-size='m'] & {
+    ::ng-deep tui-textfield[data-size='m'] textarea ~ & {
         margin-block-start: -2rem;
         padding-block-end: 0.875rem;
     }
 
-    ::ng-deep tui-textfield[data-size='l'] & {
+    ::ng-deep tui-textfield[data-size='l'] textarea ~ & {
         margin-block-start: -2.5rem;
         padding-block-end: 1rem;
     }

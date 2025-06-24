@@ -13,15 +13,100 @@
             + ❤️
         </p>
 
-        <tui-notification appearance="warning">Component is in the active development</tui-notification>
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+            [description]="basic"
+        >
+            <ng-template #basic>
+                <code>Textfield[multi]</code>
+                is used to display array of items. By default they are presented as plain strings.
+            </ng-template>
+        </tui-doc-example>
 
         <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+            id="chips"
+            heading="Chips"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+            [description]="chips"
+        >
+            <ng-template #chips>
+                Use
+                <code>*tuiItem</code>
+                directive to provide custom representation. You can use
+                <code>tui-input-chip</code>
+                out of the box or implement your own. The context is
+                <code>TuiContext&lt;&#123; item: T, index: number &#125;&gt;</code>
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="customization"
+            heading="Customization"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+            [description]="customization"
+        >
+            <ng-template #customization>
+                You can customize many aspects of the component, from standard textfield options like icons and tooltips
+                to changing the appearance of each individual chip.
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="disabled-items"
+            heading="Disabled items"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+            [description]="disabled"
+        >
+            <ng-template #disabled>
+                Individual tags can be disabled using
+                <code>disabledItemHandler</code>
+                , this would prevent them from being edited, removed or added.
+                <strong>Note:</strong>
+                keep in mind cleaner would still empty the control. If you want a different behavior, you can disable
+                built-in cleaner and provide your own
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="dropdown"
+            heading="Dropdown"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+            [description]="dropdown"
+        >
+            <ng-template #dropdown>
+                With
+                <code>disabledItemHandler</code>
+                you can force the component to only accept suggested values
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="mask"
+            heading="Mask"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+            [description]="mask"
+        >
+            <ng-template #mask>
+                Component can be used with
+                <a
+                    href="https://maskito.dev"
+                    rel="noreferrer noopener"
+                    target="_blank"
+                    tuiLink
+                >
+                    Maskito
+                </a>
+                to facilitate input masking.
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
