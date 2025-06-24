@@ -21,13 +21,14 @@ export const TUI_LEAVE = 'tui-leave';
     },
 })
 export class TuiAnimated implements OnDestroy {
+    // @ts-ignore https://github.com/angular/angular/blob/main/packages/core/src/render3/interfaces/view.ts#L56
+    private readonly renderer = inject(ViewContainerRef)._hostLView?.[11];
     private readonly el = tuiInjectElement();
     private readonly app = inject(ApplicationRef);
 
-    // @ts-ignore https://github.com/angular/angular/blob/main/packages/core/src/render3/interfaces/view.ts#L56
-    private readonly renderer = inject(ViewContainerRef)._hostLView?.[11];
-
     constructor() {
+        afterNextRender(() => this.remove());
+
         if (!this.renderer) {
             return;
         }
@@ -45,8 +46,6 @@ export class TuiAnimated implements OnDestroy {
         data[TUI_LEAVE] = [this.el];
 
         afterNextRender(() => {
-            this.remove();
-
             renderer.removeChild = (parent: Node, el: Node, host?: boolean) => {
                 const remove = (): void => removeChild.call(renderer, parent, el, host);
                 const elements: Element[] = data[TUI_LEAVE];
