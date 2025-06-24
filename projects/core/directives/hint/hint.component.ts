@@ -34,21 +34,11 @@ export const TUI_HINT_PROVIDERS = [
 
 const GAP = 8;
 
+// TODO(v5): remove base component after angular update
 @Component({
     standalone: true,
-    selector: 'tui-hint',
-    imports: [PolymorpheusOutlet],
-    template: `
-        <ng-content />
-        <span
-            *polymorpheusOutlet="content() as text; context: hint.context"
-            [innerHTML]="text"
-        ></span>
-    `,
-    styleUrls: ['./hint.style.less'],
+    template: '',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_HINT_PROVIDERS,
-    hostDirectives: [TuiAnimated],
     host: {
         '[class._untouchable]': 'pointer',
         '[class._mobile]': 'isMobile',
@@ -57,7 +47,7 @@ const GAP = 8;
         '(document:click)': 'onClick($event.target)',
     },
 })
-export class TuiHintComponent<C = any> {
+export class TuiHintBaseComponent<C = any> {
     private readonly el = tuiInjectElement();
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
@@ -143,3 +133,21 @@ export class TuiHintComponent<C = any> {
         );
     }
 }
+
+@Component({
+    standalone: true,
+    selector: 'tui-hint',
+    imports: [PolymorpheusOutlet],
+    template: `
+        <ng-content />
+        <span
+            *polymorpheusOutlet="content() as text; context: hint.context"
+            [innerHTML]="text"
+        ></span>
+    `,
+    styleUrls: ['./hint.style.less'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: TUI_HINT_PROVIDERS,
+    hostDirectives: [TuiAnimated],
+})
+export class TuiHintComponent<C = any> extends TuiHintBaseComponent<C> {}

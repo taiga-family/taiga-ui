@@ -6,6 +6,7 @@ tui-textfield {
 
     --t-height: var(--tui-height-l);
     --t-padding: var(--tui-padding-l);
+    --t-label: -0.7em;
 
     position: relative;
     display: flex;
@@ -153,6 +154,10 @@ tui-textfield {
         }
     }
 
+    &[data-size='l'] {
+        --t-label: -0.7rem;
+    }
+
     /*
     TODO: refactor to the following way after Chrome 105+ & Safari 15.4+
     &:hover:has(input:not(:read-only)),
@@ -273,7 +278,7 @@ tui-textfield {
         &:not(._empty):not(:placeholder-shown) {
             & ~ label {
                 font-size: 0.83em;
-                transform: translateY(-0.7rem);
+                transform: translateY(var(--t-label));
             }
 
             &:not(:disabled)[data-mode~='invalid'] ~ label,
@@ -296,7 +301,7 @@ tui-textfield {
                 & ~ label {
                     color: var(--tui-text-primary) !important;
                     font-size: 0.83em;
-                    transform: translateY(-0.7rem);
+                    transform: translateY(var(--t-label));
                 }
             });
         }
