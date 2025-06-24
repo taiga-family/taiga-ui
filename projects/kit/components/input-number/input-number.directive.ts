@@ -51,7 +51,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     });
 
     private readonly formatted = computed(() =>
-        maskitoParseNumber(this.textfield.value(), this.numberFormat().decimalSeparator),
+        maskitoParseNumber(this.textfield.value(), this.numberFormat()),
     );
 
     private readonly precision = computed(() =>

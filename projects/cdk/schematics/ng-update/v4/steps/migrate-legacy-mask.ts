@@ -49,7 +49,7 @@ function migrateTuiMaskedMoneyValueIsEmpty(options: TuiSchema): void {
             const [value] = parent.getArguments();
 
             parent.replaceWithText(
-                `Number.isNaN(maskitoParseNumber(${value?.getText()}, ','))`,
+                `Number.isNaN(maskitoParseNumber(${value?.getText()}, {decimalSeparator: ','}))`,
             );
         }
     });
@@ -82,7 +82,7 @@ function migrateTuiMaskedNumberStringToNumber(options: TuiSchema): void {
             const [value, decimalSeparator] = parent.getArguments();
 
             parent.replaceWithText(
-                `maskitoParseNumber(${value?.getText()}, ${decimalSeparator?.getText()})`,
+                `maskitoParseNumber(${value?.getText()}, {decimalSeparator: ${decimalSeparator?.getText()}})`,
             );
         }
     });
