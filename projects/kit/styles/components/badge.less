@@ -68,17 +68,6 @@ tui-badge,
         --t-status: var(--tui-status-neutral);
     }
 
-    &[tuiStatus][data-appearance='error']::before, /* TODO @deprecated remove in v5 */
-    &[tuiStatus][data-appearance='success']::before, /* TODO @deprecated remove in v5 */
-    &[tuiStatus][data-appearance='negative']::before,
-    &[tuiStatus][data-appearance='positive']::before,
-    &[tuiStatus][data-appearance='warning']::before,
-    &[tuiStatus][data-appearance='info']::before,
-    &[tuiStatus][data-appearance='neutral']::before {
-        content: '';
-        display: block;
-    }
-
     &[data-size='s'] {
         --t-padding: 0 0.3125rem;
         --t-size: 1rem;
