@@ -6,7 +6,8 @@
     }
 
     .t-input {
-        padding: inherit;
+        padding: 0;
+        text-indent: 0.375rem;
         transition: none;
         color: var(--tui-text-primary);
         cursor: text;
@@ -45,4 +46,8 @@
 :host-context(tui-textfield[data-size='l']) {
     left: -0.25rem;
     margin: 0.125rem 0.25rem 0.125rem 0;
+
+    .t-input {
+        text-indent: 0.625rem;
+    }
 }
