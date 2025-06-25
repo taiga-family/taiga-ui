@@ -69,6 +69,11 @@ export default class PageComponent {
         '',
         'TOP SECRET',
         ({$implicit: x}: TuiContext<any>) =>
+            x.name
+                .split(' ')
+                .map((x: string) => '*'.repeat(x.length))
+                .join(' '),
+        ({$implicit: x}: TuiContext<any>) =>
             x?.name.includes('i') ? `->${x.name}<-` : x?.name,
     ]);
 
