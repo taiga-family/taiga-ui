@@ -12,9 +12,11 @@
     xxl: 8em;
 };
 
+@radius: calc((var(--t-diameter) - var(--t-stroke-width)) / 2);
+@circumference: calc(2 * pi() * @radius);
+
 :host {
-    --t-track-stroke: var(--tui-thickness, 0.375em);
-    --t-progress-stroke: var(--tui-thickness, 0.375em);
+    --t-stroke-width: var(--tui-thickness, 0.375em);
 
     position: relative;
     display: block;
@@ -29,9 +31,13 @@
     border-radius: 100%;
     mask: radial-gradient(
         closest-side,
-        transparent calc(100% - var(--t-track-stroke)),
-        #000 calc(100% - var(--t-track-stroke) + 0.5px)
+        transparent calc(100% - var(--t-stroke-width)),
+        #000 calc(100% - var(--t-stroke-width) + 0.5px)
     );
+
+    &._arc {
+        transform: rotate(135deg);
+    }
 
     &[data-size='xxs'] {
         --t-diameter: @diameter[xxs];
@@ -62,36 +68,39 @@
     }
 }
 
-.t-track {
+.t-track,
+.t-progress {
     fill: transparent;
-    stroke: var(--tui-background-neutral-1);
-    stroke-width: var(--t-track-stroke);
-
+    stroke-linecap: round;
+    stroke-width: var(--t-stroke-width);
     /* clean-css ignore:start */
-    r: calc((var(--t-diameter) - var(--t-track-stroke)) / 2);
-
+    r: @radius;
     /* clean-css ignore:end */
 }
 
-.t-progress {
-    @radius: calc((var(--t-diameter) - var(--t-progress-stroke)) / 2);
-    @circumference: calc(2 * pi() * @radius);
+.t-track {
+    stroke: var(--tui-background-neutral-1);
 
-    fill: transparent;
+    :host._arc & {
+        stroke-dasharray: calc(0.75 * @circumference) calc(0.25 * @circumference);
+    }
+}
+
+.t-progress {
     stroke: var(--tui-progress-color, currentColor);
-    stroke-linecap: round;
-    stroke-width: var(--t-progress-stroke);
     stroke-dasharray: @circumference;
     stroke-dashoffset: @circumference;
 
-    /* clean-css ignore:start */
-    r: @radius;
-
-    /* clean-css ignore:end */
-
     &_filled {
-        transition: stroke-dashoffset var(--tui-duration) linear;
+        .transition(~'stroke-dashoffset, stroke-dasharray');
+
+        transition-timing-function: linear;
         stroke-dashoffset: calc(@circumference - var(--t-progress-ratio) * @circumference);
+    }
+
+    :host._arc & {
+        stroke-dashoffset: 0.1px;
+        stroke-dasharray: calc(0.75 * var(--t-progress-ratio) * @circumference) calc(@circumference);
     }
 }
 
