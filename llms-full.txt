@@ -8562,6 +8562,7 @@ export class Example {}
 
 ```html
 <tui-progress-circle
+                [arc]="arc"
                 [color]="color"
                 [max]="max"
                 [size]="size"
@@ -8577,6 +8578,7 @@ export class Example {}
 | max | `number` | This property describes how much work the task indicated by the progress element requires. The default value is 1 . |
 | size | `TuiSizeXXL | TuiSizeXXS` | Size of the circle. |
 | color | `string` | Color of the progress indicator. We recommend set solid color via CSS-property color . |
+| arc | `boolean` | Use arc shape with small bottom open arc sector (instead of default circle). |
 
 ### TypeScript
 
@@ -8599,6 +8601,7 @@ import {tuiInputNumberOptionsProvider, TuiProgress} from '@taiga-ui/kit';
 export default class Page {
     protected value = 6;
     protected max = 10;
+    protected arc = false;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
         'xxs',
