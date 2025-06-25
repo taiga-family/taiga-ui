@@ -25,6 +25,7 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiInspectPipe} from '../documentation/pipes/inspect.pipe';
 import {TuiDocTypeReferencePipe} from '../documentation/pipes/type-reference.pipe';
 import {TuiDocAPINumberItem} from './api-item-number.directive';
+import {TuiDropdown} from '@taiga-ui/core';
 
 const SERIALIZED_SUFFIX = '$';
 
@@ -45,6 +46,7 @@ const SERIALIZED_SUFFIX = '$';
         TuiInspectPipe,
         TuiSwitch,
         TuiTextfield,
+        TuiDropdown,
     ],
     templateUrl: './api-item.template.html',
     styleUrls: ['./api-item.style.less'],

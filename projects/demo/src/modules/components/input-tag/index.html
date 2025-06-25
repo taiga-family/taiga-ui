@@ -1,9 +1,21 @@
 <tui-doc-page
+    deprecated
     header="InputTag"
     package="LEGACY"
     type="components"
 >
     <ng-template pageTab>
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.InputChip"
+            >
+                <strong>InputChip</strong>
+            </a>
+            instead!
+        </tui-notification>
+
         <div class="tui-space_bottom-3">
             <code>InputTag</code>
             allows to input several tags with autocomplete and list in dropdown.

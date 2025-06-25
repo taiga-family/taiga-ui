@@ -11,12 +11,14 @@ import {TuiDropdownPortal} from './dropdown-portal.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 import {TuiDropdownPositionSided} from './dropdown-position-sided.directive';
 import {TuiDropdownSelection} from './dropdown-selection.directive';
+import {TuiDropdownContent} from './dropdown-content.directive';
 
 export const TuiDropdown = [
     TuiDropdownOptionsDirective,
     TuiDropdownDriverDirective,
     TuiDropdownDirective,
     TuiDropdownComponent,
+    TuiDropdownContent,
     TuiDropdownOpen,
     TuiDropdownOpenLegacy,
     TuiDropdownPortal,

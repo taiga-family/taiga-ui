@@ -8,6 +8,9 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export class TuiTextfieldDropdownDirective {}
 
+/**
+ * @deprecated use {@link TuiDropdownContent} instead
+ */
 @Directive({
     standalone: true,
 })

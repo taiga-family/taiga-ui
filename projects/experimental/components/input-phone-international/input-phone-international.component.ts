@@ -10,8 +10,6 @@ import {
     Input,
     Output,
     signal,
-    TemplateRef,
-    ViewChild,
     ViewChildren,
     ViewEncapsulation,
 } from '@angular/core';
@@ -46,11 +44,10 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfield,
     TuiTextfieldContent,
-    TuiTextfieldDropdownDirective,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
-    tuiDropdown,
+    TuiDropdown,
     TuiDropdownOpen,
     tuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
@@ -63,7 +60,6 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiGetCallingCode, tuiMaskito} from '@taiga-ui/kit/utils';
 import {TuiCell} from '@taiga-ui/layout/components/cell';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
 import type {MetadataJson} from 'libphonenumber-js/core';
 import {filter, from, skip} from 'rxjs';
@@ -86,6 +82,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiTextfield,
         TuiTextfieldContent,
         TuiTitle,
+        TuiDropdown,
     ],
     templateUrl: './input-phone-international.template.html',
     styleUrls: ['./input-phone-international.style.less'],
@@ -121,7 +118,6 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     protected readonly metadata = toSignal(from(this.options.metadata));
     protected readonly names = toSignal(inject(TUI_COUNTRIES));
     protected readonly open = tuiDropdownOpen();
-    protected readonly dropdown = tuiDropdown(null);
     protected readonly search = signal<string>('');
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
 
@@ -195,11 +191,6 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         this.masked.set(
             maskitoTransform(this.value() ?? '', this.mask() || MASKITO_DEFAULT_OPTIONS),
         );
-    }
-
-    @ViewChild(TuiTextfieldDropdownDirective, {read: TemplateRef})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
     }
 
     protected onPaste(event: Event): void {

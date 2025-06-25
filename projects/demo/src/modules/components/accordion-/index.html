@@ -5,22 +5,15 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-notification appearance="warning">
-            <h3 tuiTitle>
-                This component is deprecated
-                <span tuiSubtitle>
-                    Use
-                    <a
-                        tuiLink
-                        [routerLink]="routes.Accordion"
-                    >
-                        Accordion
-                    </a>
-                    from
-                    <code>&#64;taiga-ui/experimental</code>
-                    package instead
-                </span>
-            </h3>
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.Accordion"
+            >
+                <strong>new version of Accordion</strong>
+            </a>
+            instead!
         </tui-notification>
 
         <tui-doc-example
