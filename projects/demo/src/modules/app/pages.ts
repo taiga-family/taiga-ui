@@ -608,7 +608,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputDateRange',
+                title: 'InputDateRange [deprecated]',
                 keywords: 'calendar, календарь, даты, период',
                 route: DemoRoute.InputDateRangeLegacy,
             },
@@ -660,7 +660,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputTag',
+                title: 'InputTag [deprecated]',
                 keywords: 'поле, инпут, форма, ввод, input, tag, тэг',
                 route: DemoRoute.InputTag,
             },
@@ -941,9 +941,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputSlider [deprecated]',
+                title: 'InputSlider',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputSliderLegacy,
+                route: DemoRoute.InputSlider,
             },
             {
                 section: 'Components',
