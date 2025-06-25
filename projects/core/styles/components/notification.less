@@ -36,18 +36,18 @@ tui-notification,
     box-sizing: border-box;
     text-align: start;
     text-decoration: none;
-    border-inline-start: var(--t-left) solid transparent;
-    border-inline-end: var(--t-right) solid transparent;
+    border-inline-start: var(--t-start) solid transparent;
+    border-inline-end: var(--t-end) solid transparent;
 
-    --t-left: 0;
-    --t-right: 0;
+    --t-start: 0;
+    --t-end: 0;
 
     &[style*='--t-icon-start:'] {
-        --t-left: 2rem;
+        --t-start: 2rem;
     }
 
     &[style*='--t-icon-end:'] {
-        --t-right: 1.5rem;
+        --t-end: 1.5rem;
     }
 
     &::before {
@@ -71,7 +71,7 @@ tui-notification,
         border-radius: var(--tui-radius-m);
 
         &[style*='--t-icon-start:'] {
-            --t-left: 1.5rem;
+            --t-start: 1.5rem;
         }
 
         &::before {
@@ -115,7 +115,7 @@ tui-notification,
         border-radius: var(--tui-radius-m);
 
         &[style*='--t-icon-start:'] {
-            --t-left: 1.625rem;
+            --t-start: 1.625rem;
         }
 
         &::before {

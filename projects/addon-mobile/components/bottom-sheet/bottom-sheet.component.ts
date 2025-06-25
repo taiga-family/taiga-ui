@@ -26,7 +26,7 @@ const OPTIONS = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiHeaderOptionsProvider({size: 'h5'})],
     host: {
-        '[style.--t-start]': 'stops[0]',
+        '[style.--t-initial]': 'stops[0]',
         '[style.scroll-snap-type]': 'stops.length > 1 ? "y mandatory" : null',
         '(scroll.zoneless)': 'onScroll()',
         '(resize)': 'onScroll()',
