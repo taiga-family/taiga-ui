@@ -17,6 +17,7 @@ import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
@@ -25,7 +26,6 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiInspectPipe} from '../documentation/pipes/inspect.pipe';
 import {TuiDocTypeReferencePipe} from '../documentation/pipes/type-reference.pipe';
 import {TuiDocAPINumberItem} from './api-item-number.directive';
-import {TuiDropdown} from '@taiga-ui/core';
 
 const SERIALIZED_SUFFIX = '$';
 
@@ -41,12 +41,12 @@ const SERIALIZED_SUFFIX = '$';
         TuiChevron,
         TuiDataListWrapper,
         TuiDocTypeReferencePipe,
+        TuiDropdown,
         TuiIcon,
         TuiInputNumber,
         TuiInspectPipe,
         TuiSwitch,
         TuiTextfield,
-        TuiDropdown,
     ],
     templateUrl: './api-item.template.html',
     styleUrls: ['./api-item.style.less'],

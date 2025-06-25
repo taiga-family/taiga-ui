@@ -1,4 +1,5 @@
-import {Directive, inject, type OnDestroy, TemplateRef} from '@angular/core';
+import type {OnDestroy} from '@angular/core';
+import {Directive, inject, TemplateRef} from '@angular/core';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 
