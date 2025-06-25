@@ -1,5 +1,5 @@
 ```ts
-import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
+import {TuiAnimated} from '@taiga-ui/cdk';
 
 // ...
 

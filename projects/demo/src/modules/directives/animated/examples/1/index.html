@@ -1,67 +1,17 @@
 <button
+    appearance="outline"
     tuiButton
     type="button"
-    (click)="step.set(step() || 1)"
+    class="button"
+    (click)="isOpen = !isOpen"
 >
-    Show popover
+    {{ isOpen ? 'Hide me' : 'Show opening crawl' }}
 </button>
+
 <div
-    *tuiPopup="!!step()"
+    *ngIf="isOpen"
     tuiAnimated
-    tuiAppearance="floating"
-    tuiCardLarge="compact"
-    class="popover"
+    class="container"
 >
-    <ng-container *ngIf="step() === 1">
-        <h1 tuiTitle>
-            Leave your feedback
-            <span tuiSubtitle>It will only take 3 minutes</span>
-        </h1>
-        <tui-rating [(ngModel)]="rating" />
-    </ng-container>
-    <ng-container *ngIf="step() === 2">
-        <h1 tuiTitle>Why so?</h1>
-        <tui-textfield tuiTextfieldSize="m">
-            <textarea
-                placeholder="Leave a few words"
-                tuiAutoFocus
-                tuiTextarea
-                [max]="3"
-                [min]="3"
-                [(ngModel)]="comment"
-            ></textarea>
-        </tui-textfield>
-    </ng-container>
-    <button
-        appearance="icon"
-        iconStart="@tui.x"
-        size="xs"
-        tuiIconButton
-        type="button"
-        class="close"
-        (click)="close()"
-    >
-        Close
-    </button>
-    <footer class="footer">
-        <button
-            *ngIf="step() === 2"
-            appearance="secondary"
-            size="s"
-            tuiButton
-            type="button"
-            (click)="step.set(1)"
-        >
-            Back
-        </button>
-        <button
-            appearance="primary"
-            size="s"
-            tuiButton
-            type="button"
-            (click)="step() === 1 ? step.set(2) : close()"
-        >
-            {{ step() === 1 ? 'Next' : 'Submit' }}
-        </button>
-    </footer>
+    A long time ago in a galaxy far, far away....
 </div>
