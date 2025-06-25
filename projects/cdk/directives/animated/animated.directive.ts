@@ -21,13 +21,14 @@ export const TUI_LEAVE = 'tui-leave';
     },
 })
 export class TuiAnimated implements OnDestroy {
+    // @ts-ignore https://github.com/angular/angular/blob/main/packages/core/src/render3/interfaces/view.ts#L56
+    private readonly renderer = inject(ViewContainerRef)._hostLView?.[11];
     private readonly el = tuiInjectElement();
     private readonly app = inject(ApplicationRef);
 
-    // @ts-ignore https://github.com/angular/angular/blob/main/packages/core/src/render3/interfaces/view.ts#L56
-    private readonly renderer = inject(ViewContainerRef)._hostLView?.[11];
-
     constructor() {
+        afterNextRender(() => this.remove());
+
         if (!this.renderer) {
             return;
         }
@@ -45,13 +46,11 @@ export class TuiAnimated implements OnDestroy {
         data[TUI_LEAVE] = [this.el];
 
         afterNextRender(() => {
-            this.remove();
-
             renderer.removeChild = (parent: Node, el: Node, host?: boolean) => {
                 const remove = (): void => removeChild.call(renderer, parent, el, host);
                 const elements: Element[] = data[TUI_LEAVE];
                 const element = elements.find((leave) => el.contains(leave));
-                const {length} = element?.getAnimations() || [];
+                const {length} = element?.getAnimations?.() || [];
 
                 if (!element) {
                     remove();
@@ -62,7 +61,7 @@ export class TuiAnimated implements OnDestroy {
                 elements.splice(elements.indexOf(element), 1);
                 element.classList.add(TUI_LEAVE);
 
-                const animations = element.getAnimations();
+                const animations = element.getAnimations?.() ?? [];
                 const last = animations[animations.length - 1];
                 const finish = (): void => {
                     if (!parent || parent.contains(el)) {
@@ -90,7 +89,7 @@ export class TuiAnimated implements OnDestroy {
     }
 
     protected remove(): void {
-        if (this.el.isConnected && !this.el.getAnimations().length) {
+        if (this.el.isConnected && !this.el.getAnimations?.().length) {
             this.el.classList.remove(TUI_ENTER);
         }
     }

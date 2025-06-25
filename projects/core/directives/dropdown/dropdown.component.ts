@@ -60,7 +60,7 @@ export class TuiDropdownComponent implements AfterViewInit {
                 this.directive.el.isConnected &&
                 !!this.directive.el.getBoundingClientRect().height,
         ),
-        map((v) => (this.directive.position === 'fixed' ? this.vvs.correct(v) : v)),
+        map((v) => (this.position === 'fixed' ? this.vvs.correct(v) : v)),
         map(([top, left]) => this.getStyles(left, top)),
         takeUntilDestroyed(),
     );
@@ -107,6 +107,7 @@ export class TuiDropdownComponent implements AfterViewInit {
             maxHeight: tuiPx(Math.round(height)),
             width: limitWidth === 'fixed' ? tuiPx(Math.round(rect.width)) : '',
             minWidth: limitWidth === 'min' ? tuiPx(Math.round(rect.width)) : '',
+            maxWidth: tuiPx(Math.round(viewport.width) - 16), // 8px min gap from each side
         };
     }
 }

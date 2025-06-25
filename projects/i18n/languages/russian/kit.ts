@@ -18,6 +18,11 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         'HH:MM:SS AA': 'ЧЧ:ММ:СС AA',
         'HH:MM:SS.MSS': 'ЧЧ:ММ:СС.МСС',
         'HH:MM:SS.MSS AA': 'ЧЧ:ММ:СС.МСС AA',
+        'HH AA': 'ЧЧ AA',
+        HH: 'ЧЧ',
+        'MM:SS.MSS': 'ММ:СС.МСС',
+        'MM.SS.MSS': 'ММ.СС.МСС',
+        'SS.MSS': 'СС.МСС',
     },
     dateTexts: {
         DMY: 'ДД.ММ.ГГГГ',

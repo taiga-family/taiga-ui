@@ -46,9 +46,8 @@ export const TUI_DATE_ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
 @Directive({
     standalone: true,
     host: {
-        '[attr.inputmode]': 'open() ? "none" : "numeric"',
+        '[attr.inputmode]': 'mobile && open() ? "none" : "numeric"',
         '[disabled]': 'disabled()',
-        '(blur)': 'onTouched()',
         '(input)': 'onValueChange($event.target.value)',
         '(click.capture.stop)': 'onClick()',
     },
@@ -102,7 +101,7 @@ export abstract class TuiInputDateBase<
     protected readonly valueEffect = effect(() => {
         const value =
             this.value()?.toString(this.format().mode, this.format().separator) ??
-            this.el.value;
+            (this.filler().length === this.el.value.length ? '' : this.el.value);
 
         this.textfield.value.set(value);
     }, TUI_ALLOW_SIGNAL_WRITES);

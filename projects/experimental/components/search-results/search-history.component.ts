@@ -23,7 +23,7 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
         `
             :host:not(:empty) {
                 display: block;
-                padding: 0.325rem 0;
+                padding: 0.375rem 0;
             }
         `,
     ],

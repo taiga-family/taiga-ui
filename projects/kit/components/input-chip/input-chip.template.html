@@ -1,0 +1,33 @@
+<input
+    appearance=""
+    enterkeyhint="enter"
+    tuiChip
+    class="t-input"
+    [disabled]="!editing()"
+    [ngModel]="internal()"
+    (blur)="cancel()"
+    (keydown.enter)="save()"
+    (keydown.esc)="cancel()"
+    (keydown.stop)="(0)"
+    (ngModelChange)="internal.set($event)"
+/>
+<div
+    tuiFade
+    tuiFadeOffset="0.5rem"
+    class="t-text"
+    [tuiHintOverflow]="hint?.content() ? null : handlers.stringify()(internal())"
+    (mousedown.prevent.zoneless)="(0)"
+>
+    {{ internal() }}
+</div>
+<button
+    *ngIf="directive()?.interactive() && !editing() && !disabled()"
+    iconStart="@tui.x"
+    tabIndex="-1"
+    tuiIconButton
+    type="button"
+    (click.stop)="delete()"
+    (pointerdown.prevent.stop.zoneless)="(0)"
+>
+    Remove
+</button>

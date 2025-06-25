@@ -2,7 +2,7 @@ import type {Provider, Type} from '@angular/core';
 import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export interface TuiTextfieldAccessor<T = unknown> {
-    setValue(value: T | null): void;
+    setValue(value: T | T[] | null): void;
 }
 
 export const TUI_TEXTFIELD_ACCESSOR = tuiCreateToken<TuiTextfieldAccessor>();

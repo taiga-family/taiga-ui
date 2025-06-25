@@ -16,6 +16,7 @@ import {tuiInputNumberOptionsProvider, TuiProgress} from '@taiga-ui/kit';
 export default class Page {
     protected value = 6;
     protected max = 10;
+    protected arc = false;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
         'xxs',

@@ -26,7 +26,7 @@ export class TuiDialogCloseService extends Observable<unknown> {
             return (
                 // @ts-ignore
                 typeof CloseWatcher === 'undefined' &&
-                event.key.toLowerCase() === 'escape' &&
+                event.key?.toLowerCase() === 'escape' &&
                 !event.defaultPrevented &&
                 (this.el.contains(target) || this.isOutside(target))
             );

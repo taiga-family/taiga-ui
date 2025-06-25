@@ -1,0 +1,22 @@
+<form
+    tuiForm="m"
+    [formGroup]="form"
+>
+    <tui-textfield tuiDropdownMobile="Pick a range">
+        <label tuiLabel>Mobile dropdown</label>
+        <input
+            formControlName="mobile"
+            tuiInputDateRange
+        />
+        <tui-calendar-range *tuiTextfieldDropdown />
+    </tui-textfield>
+
+    <tui-textfield tuiMobileCalendar>
+        <label tuiLabel>Mobile calendar</label>
+        <input
+            formControlName="fullscreen"
+            tuiInputDateRange
+        />
+        <tui-calendar-range *tuiTextfieldDropdown />
+    </tui-textfield>
+</form>

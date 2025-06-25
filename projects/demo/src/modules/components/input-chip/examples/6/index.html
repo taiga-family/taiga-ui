@@ -1,0 +1,17 @@
+<tui-textfield
+    filler="•••"
+    multi
+    [style.width.rem]="19"
+>
+    <input
+        placeholder="Type 3 digits"
+        tuiInputChip
+        [formControl]="control"
+        [maskito]="mask"
+    />
+
+    <tui-input-chip
+        *tuiItem
+        [maskito]="mask"
+    />
+</tui-textfield>

@@ -7,7 +7,7 @@ export function tuiRgbaToHex(color: string): string {
         /^rgba?\((\d+),(\d+),(\d+),?([^,\s)]+)?/i.exec(color.replaceAll(/\s/g, '')) ??
         null;
 
-    let alpha: number | string = (rgb?.[4] ?? '').toString().trim();
+    let alpha: number | string = ((rgb?.[4] ?? '') satisfies string).trim();
 
     let hex = rgb
         ? ((parseInt(rgb?.[1] ?? '', 10) || 0) | (1 << 8)).toString(16).slice(1) +

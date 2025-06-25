@@ -26,15 +26,16 @@
     <ng-content select="tui-icon" />
 </span>
 <span
-    *ngIf="control?.value != null"
+    *ngIf="ngControl?.value != null"
     class="t-template"
 >
-    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value}">
+    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: ngControl?.value}">
         {{ text }}
     </ng-container>
 </span>
 <input
     *ngIf="showFiller()"
+    #ghost
     aria-hidden="true"
     disabled
     class="t-filler"

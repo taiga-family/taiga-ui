@@ -29,7 +29,7 @@ export function tuiObfuscate(value: string, symbol: string): string {
 
     obfuscateIndexes = obfuscateIndexes.slice(visible, obfuscateIndexes.length);
 
-    const lastIndex = Number(obfuscateIndexes.length) - visible;
+    const lastIndex = (obfuscateIndexes.length satisfies number) - visible;
 
     obfuscateIndexes = obfuscateIndexes.slice(0, lastIndex < 0 ? 0 : lastIndex);
 

@@ -29,7 +29,6 @@ import {TuiSelectOption} from './select-option/select-option.component';
     hostDirectives: [TuiWithTextfield, TuiSelectLike],
     host: {
         '[disabled]': 'disabled()',
-        '(blur)': 'onTouched()',
         '(input)': '$event.inputType?.includes("delete") && setValue(null)',
     },
 })

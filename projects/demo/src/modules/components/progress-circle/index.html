@@ -94,11 +94,27 @@
                 to customize width of the circle's stroke.
             </ng-template>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="arc"
+            heading="Arc mode"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample"
+            [description]="arcDescription"
+        >
+            <ng-template #arcDescription>
+                Set
+                <code>arc</code>
+                attribute to transform default circular shape into arc with small bottom open arc sector (gap between
+                arc ends).
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-progress-circle
+                [arc]="arc"
                 [color]="color"
                 [max]="max"
                 [size]="size"
@@ -158,6 +174,15 @@
                     <code>color</code>
                     .
                 </p>
+            </ng-template>
+
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="arc"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="arc"
+            >
+                Use arc shape with small bottom open arc sector (instead of default circle).
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

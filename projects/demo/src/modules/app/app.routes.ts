@@ -445,6 +445,11 @@ export const ROUTES: Routes = [
         title: 'InputDateTime',
     }),
     route({
+        path: DemoRoute.InputChip,
+        loadComponent: async () => import('../components/input-chip'),
+        title: 'InputChip',
+    }),
+    route({
         path: DemoRoute.InputMonth,
         loadComponent: async () => import('../components/input-month'),
         title: 'InputMonth',
@@ -483,6 +488,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.InputRange,
         loadComponent: async () => import('../components/input-range'),
         title: 'InputRange',
+    }),
+    route({
+        path: DemoRoute.InputDateRange,
+        loadComponent: async () => import('../components/input-date-range'),
+        title: 'InputDateRange',
     }),
     route({
         path: DemoRoute.InputDateRangeLegacy,
@@ -1141,6 +1151,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.MigrationGuide,
         loadComponent: async () => import('../info/migration-guide'),
         title: 'Migration Guide',
+    }),
+    route({
+        path: DemoRoute.AISupport,
+        loadComponent: async () => import('../info/ai-support'),
+        title: 'AI support',
     }),
     route({
         path: DemoRoute.Obfuscate,

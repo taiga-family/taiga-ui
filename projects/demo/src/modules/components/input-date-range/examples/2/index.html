@@ -1,0 +1,11 @@
+<tui-textfield [content]="content">
+    <label tuiLabel>Choose range</label>
+    <input
+        tuiInputDateRange
+        [formControl]="control"
+    />
+    <tui-calendar-range
+        *tuiTextfieldDropdown
+        [items]="items"
+    />
+</tui-textfield>

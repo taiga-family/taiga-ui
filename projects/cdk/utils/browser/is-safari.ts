@@ -7,9 +7,10 @@ export function tuiIsSafari({ownerDocument: doc}: Element): boolean {
         win.safari?.pushNotification?.toString() === '[object SafariRemoteNotification]';
 
     const isIosSafari =
-        !!win.navigator?.vendor?.includes('Apple') &&
-        !win.navigator?.userAgent?.includes('CriOS') &&
-        !win.navigator?.userAgent?.includes('FxiOS');
+        (win.navigator?.vendor?.includes('Apple') &&
+            !win.navigator?.userAgent?.includes('CriOS') &&
+            !win.navigator?.userAgent?.includes('FxiOS')) ??
+        false;
 
     return isMacOsSafari || isIosSafari;
 }

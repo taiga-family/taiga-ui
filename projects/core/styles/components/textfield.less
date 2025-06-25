@@ -6,6 +6,9 @@ tui-textfield {
 
     --t-height: var(--tui-height-l);
     --t-padding: var(--tui-padding-l);
+    --t-label: -0.7em;
+    --t-right: ~'0rem';
+    --t-left: ~'0rem';
 
     position: relative;
     display: flex;
@@ -70,6 +73,7 @@ tui-textfield {
     textarea {
         font: var(--tui-font-text-ui-m);
         resize: none;
+        outline: none;
         padding-block-start: 1.125rem;
         padding-block-end: 1.125rem;
 
@@ -100,7 +104,7 @@ tui-textfield {
         }
 
         &::after {
-            margin: 0 calc(-0.175rem - var(--t-padding)) 0 calc(0.575rem - var(--t-padding));
+            margin: 0 calc(-0.125rem - var(--t-padding)) 0 calc(0.575rem - var(--t-padding));
             font-size: 1rem;
         }
 
@@ -113,7 +117,7 @@ tui-textfield {
         }
 
         & > .t-content {
-            margin-inline-end: -0.325rem;
+            margin-inline-end: -0.375rem;
         }
     }
 
@@ -153,6 +157,10 @@ tui-textfield {
         }
     }
 
+    &[data-size='l'] {
+        --t-label: -0.7rem;
+    }
+
     /*
     TODO: refactor to the following way after Chrome 105+ & Safari 15.4+
     &:hover:has(input:not(:read-only)),
@@ -164,7 +172,7 @@ tui-textfield {
     &:hover {
         color: var(--tui-text-secondary);
 
-        &:has(input:read-only),
+        &:has(input:read-only):not([multi]),
         &:has(textarea:read-only),
         &:has(select[data-mode~='readonly']) {
             color: var(--tui-text-tertiary);
@@ -176,9 +184,9 @@ tui-textfield {
         margin-inline-end: 0.5rem;
     }
 
-    &:has(:disabled:not(.t-filler, button, option))::before,
-    &:has(:disabled:not(.t-filler, button, option))::after,
-    &:has(:disabled:not(.t-filler, button, option)) > .t-template {
+    &:has(:disabled:not(.t-filler, button, option, [tuiChip]))::before,
+    &:has(:disabled:not(.t-filler, button, option, [tuiChip]))::after,
+    &:has(:disabled:not(.t-filler, button, option, [tuiChip])) > .t-template {
         opacity: var(--tui-disabled-opacity);
     }
 
@@ -273,7 +281,7 @@ tui-textfield {
         &:not(._empty):not(:placeholder-shown) {
             & ~ label {
                 font-size: 0.83em;
-                transform: translateY(-0.7em);
+                transform: translateY(var(--t-label));
             }
 
             &:not(:disabled)[data-mode~='invalid'] ~ label,
@@ -296,7 +304,7 @@ tui-textfield {
                 & ~ label {
                     color: var(--tui-text-primary) !important;
                     font-size: 0.83em;
-                    transform: translateY(-0.7em);
+                    transform: translateY(var(--t-label));
                 }
             });
         }

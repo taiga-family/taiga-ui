@@ -104,6 +104,12 @@ export const pages: DocRoutePages = [
             },
         ],
     },
+    {
+        section: 'Documentation',
+        title: 'AI support',
+        keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
+        route: DemoRoute.AISupport,
+    },
     // Foundations
     {
         section: 'Foundations',
@@ -505,11 +511,23 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputChip',
+                keywords: 'поле, инпут, форма, ввод, input, chip, tag, тэг',
+                route: DemoRoute.InputChip,
+            },
+            {
+                section: 'Components',
                 title: 'InputDate',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar',
                 route: DemoRoute.InputDate,
+            },
+            {
+                section: 'Components',
+                title: 'InputDateRange',
+                keywords: 'calendar, календарь, даты, период',
+                route: DemoRoute.InputDateRange,
             },
             {
                 section: 'Components',
@@ -1126,14 +1144,18 @@ export const pages: DocRoutePages = [
                 title: 'Medium',
                 keywords: 'card, card-medium, medium, block, карточка, блок',
                 route: DemoRoute.CardMedium,
-                meta: {},
+                meta: {
+                    name: 'tui-card-medium',
+                },
             },
             {
                 section: 'Layout',
                 title: 'Large',
                 keywords: 'card, card-large, large, block, карточка, блок',
                 route: DemoRoute.CardLarge,
-                meta: {},
+                meta: {
+                    name: 'tui-card-large',
+                },
             },
             {
                 section: 'Layout',

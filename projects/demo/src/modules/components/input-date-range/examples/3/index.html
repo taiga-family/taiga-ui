@@ -1,0 +1,39 @@
+<form
+    tuiForm="m"
+    [formGroup]="form"
+>
+    <tui-textfield>
+        <label tuiLabel>Required range</label>
+        <input
+            formControlName="required"
+            tuiInputDateRange
+        />
+        <tui-calendar-range *tuiTextfieldDropdown />
+    </tui-textfield>
+    <tui-error
+        formControlName="required"
+        [error]="[] | tuiFieldError | async"
+    />
+    <tui-textfield>
+        <label tuiLabel>Optional range</label>
+        <input
+            formControlName="optional"
+            tuiInputDateRange
+            tuiUnfinishedValidator
+        />
+        <tui-calendar-range *tuiTextfieldDropdown />
+    </tui-textfield>
+    <tui-error
+        formControlName="optional"
+        [error]="[] | tuiFieldError | async"
+    />
+    <footer>
+        <button
+            tuiButton
+            type="submit"
+            [disabled]="form.invalid"
+        >
+            Submit
+        </button>
+    </footer>
+</form>
