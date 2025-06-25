@@ -31,6 +31,10 @@ export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;
 export const LINE_HEIGHT_L = 24;
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/textarea Textarea} (from @taiga-ui/kit) instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-textarea',
