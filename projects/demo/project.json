@@ -271,6 +271,10 @@
                 {
                     "target": "generate-sitemap-file",
                     "params": "ignore"
+                },
+                {
+                    "target": "generate-llms-file",
+                    "params": "ignore"
                 }
             ],
             "defaultConfiguration": "production"
