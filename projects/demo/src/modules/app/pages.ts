@@ -941,9 +941,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputSlider ⛔',
+                title: 'InputSlider',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputSliderLegacy,
+                route: DemoRoute.InputSlider,
             },
             {
                 section: 'Components',
