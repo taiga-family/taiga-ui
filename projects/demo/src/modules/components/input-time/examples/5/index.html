@@ -13,7 +13,7 @@
 
     <tui-icon
         *ngIf="value"
-        [icon]="isNight(value) ? '@tui.moon' : '@tui.sun'"
+        [icon]="value.hours < 8 ? '@tui.moon' : '@tui.sun'"
     />
 
     <tui-icon tuiTooltip="I am a hint" />
