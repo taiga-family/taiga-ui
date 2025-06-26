@@ -1,7 +1,6 @@
 import {TuiDropdownComponent} from './dropdown.component';
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownDriverDirective} from './dropdown.driver';
-import {TuiDropdownContent} from './dropdown-content.directive';
 import {TuiDropdownContext} from './dropdown-context.directive';
 import {TuiDropdownHover} from './dropdown-hover.directive';
 import {TuiDropdownManual} from './dropdown-manual.directive';
@@ -18,7 +17,6 @@ export const TuiDropdown = [
     TuiDropdownDriverDirective,
     TuiDropdownDirective,
     TuiDropdownComponent,
-    TuiDropdownContent,
     TuiDropdownOpen,
     TuiDropdownOpenLegacy,
     TuiDropdownPortal,

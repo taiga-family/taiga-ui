@@ -1,14 +1,25 @@
-import {Directive} from '@angular/core';
-import {TuiDropdownContent} from '@taiga-ui/core/directives/dropdown';
+import {Directive, inject, TemplateRef} from '@angular/core';
+import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 
+// TODO: Change selector to tuiDropdown in v5 and move to TuiDropdown
 @Directive({
     standalone: true,
     selector: 'ng-template[tuiTextfieldDropdown]',
 })
-export class TuiTextfieldDropdownDirective extends TuiDropdownContent {}
+export class TuiTextfieldDropdownDirective {
+    private readonly directive = inject(TuiDropdownDirective);
+
+    constructor() {
+        this.directive.tuiDropdown = inject(TemplateRef);
+    }
+
+    public ngOnDestroy(): void {
+        this.directive.tuiDropdown = null;
+    }
+}
 
 /**
- * @deprecated use {@link TuiDropdownContent} instead
+ * @deprecated remove in v5
  */
 @Directive({
     standalone: true,
