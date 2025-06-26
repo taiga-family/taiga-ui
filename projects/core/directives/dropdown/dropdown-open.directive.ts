@@ -154,7 +154,7 @@ export class TuiDropdownOpen implements OnChanges {
             !tuiIsElement(event.target) ||
             !this.host.contains(event.target) ||
             !this.tuiDropdownEnabled ||
-            !this.directive.content
+            !this.directive._content()
         ) {
             return;
         }
