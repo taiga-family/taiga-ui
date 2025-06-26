@@ -356,8 +356,9 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-textfield
+                    #textfield
                     tuiChevron
-                    [content]="control.value && textfieldContent"
+                    [content]="!textfield.focused() && control.value ? textfieldContent : ''"
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
                     [identityMatcher]="itemsHandlers.identityMatcher()"
                     [stringify]="itemsHandlers.stringify()"
@@ -434,6 +435,11 @@
                     [(value)]="textfieldContent"
                 >
                     A template for custom view of textfield value.
+
+                    <p>
+                        We strongly recommend to unset this property on focus – otherwise, it breaks UX on attempt to
+                        edit field by keyboard!
+                    </p>
                 </tr>
             </tbody>
 
