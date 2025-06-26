@@ -46,11 +46,7 @@ import {
     TuiTextfieldContent,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {
-    TuiDropdown,
-    TuiDropdownOpen,
-    tuiDropdownOpen,
-} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownOpen, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -78,7 +74,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiCell,
         TuiChevron,
         TuiDataList,
-        TuiDropdown,
         TuiFlagPipe,
         TuiTextfield,
         TuiTextfieldContent,
