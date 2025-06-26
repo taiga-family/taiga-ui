@@ -33,6 +33,7 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
         },
     ],
     host: {
+        title: '',
         type: 'file',
         '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',
