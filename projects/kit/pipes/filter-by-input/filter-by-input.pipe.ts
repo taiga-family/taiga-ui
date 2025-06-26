@@ -75,10 +75,9 @@ export class TuiFilterByInputPipe implements PipeTransform {
         query: string,
     ): readonly T[] {
         const match = this.getMatch(items, stringify, query);
+        const filtered = items.filter((item) => matcher(item, query, stringify));
 
-        return match != null
-            ? items
-            : items.filter((item) => matcher(item, query, stringify));
+        return match != null && filtered.length === 1 ? items : filtered;
     }
 
     private filter2d<T>(
@@ -88,10 +87,11 @@ export class TuiFilterByInputPipe implements PipeTransform {
         query: string,
     ): ReadonlyArray<readonly T[]> {
         const match = items.find((item) => this.getMatch(item, stringify, query) != null);
+        const filtered = items.map((inner) =>
+            this.filterFlat(inner, matcher, stringify, query),
+        );
 
-        return match != null
-            ? items
-            : items.map((inner) => this.filterFlat(inner, matcher, stringify, query));
+        return match != null && filtered.flat().length === 1 ? items : filtered;
     }
 
     private getMatch<T>(
