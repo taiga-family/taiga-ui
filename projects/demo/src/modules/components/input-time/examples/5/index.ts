@@ -21,8 +21,4 @@ import {TuiInputTime, tuiInputTimeOptionsProvider, TuiTooltip} from '@taiga-ui/k
 })
 export default class Example {
     protected value: TuiTime | null = new TuiTime(9, 0);
-
-    protected isNight({hours}: TuiTime): boolean {
-        return hours >= 0 && hours < 8;
-    }
 }
