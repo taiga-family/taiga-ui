@@ -19,7 +19,11 @@ import {
     tuiTextfieldIconBinding,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {tuiDropdownEnabled, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {
+    TuiDropdownDirective,
+    tuiDropdownEnabled,
+    tuiDropdownOpen,
+} from '@taiga-ui/core/directives/dropdown';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens/auxiliary';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
@@ -50,6 +54,7 @@ export class TuiInputTimeDirective
     implements TuiTextfieldAccessor<TuiTime | null>
 {
     private readonly textfield = inject(TuiTextfieldDirective);
+    private readonly dropdown = inject(TuiDropdownDirective);
     private readonly open = tuiDropdownOpen();
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
     private readonly fillers = toSignal(inject(TUI_TIME_TEXTS));
@@ -76,7 +81,7 @@ export class TuiInputTimeDirective
             this.computeMask({
                 ...this.options,
                 mode: this.timeMode(),
-                step: this.interactive() && !this.open() ? 1 : 0,
+                step: this.interactive() && !this.dropdown._content() ? 1 : 0,
             }),
         ),
     );
