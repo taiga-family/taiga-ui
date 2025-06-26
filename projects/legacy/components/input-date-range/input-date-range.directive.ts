@@ -5,6 +5,10 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import type {TuiInputDateRangeComponent} from './input-date-range.component';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-date-range TuiInputDateRange} (from @taiga-ui/kit) instead
+ */
 @Directive({
     standalone: false,
     selector: 'tui-input-date-range',

@@ -4,6 +4,10 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import {TuiInputDateDirective} from '../input-date.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-date#mobile TuiInputDate} (from @taiga-ui/kit) instead
+ */
 @Directive({
     standalone: false,
     selector: 'input[tuiDate]',

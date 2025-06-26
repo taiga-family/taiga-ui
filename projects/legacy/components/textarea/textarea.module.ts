@@ -15,6 +15,10 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiTextareaComponent} from './textarea.component';
 import {TuiTextareaDirective} from './textarea.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/textarea Textarea} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         CommonModule,

@@ -17,6 +17,10 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 import {TuiInputTagComponent} from './input-tag.component';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use {@link https://taiga-ui.dev/components/input-chip TuiInputChip} instead
+ */
 @NgModule({
     imports: [
         CommonModule,
