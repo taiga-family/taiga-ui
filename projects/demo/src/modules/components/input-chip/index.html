@@ -107,6 +107,16 @@
                 to facilitate input masking.
             </ng-template>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="direction"
+            heading="Direction"
+            [component]="7 | tuiComponent"
+            [content]="7 | tuiExample"
+            [description]="direction"
+        >
+            <ng-template #direction>Component can be used together with RTL direction</ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>

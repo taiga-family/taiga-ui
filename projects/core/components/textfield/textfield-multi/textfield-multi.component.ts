@@ -140,9 +140,4 @@ export class TuiTextfieldMultiComponent<T>
         event.preventDefault();
         event.currentTarget.previousElementSibling?.firstElementChild?.focus();
     }
-
-    protected focus(): void {
-        this.input?.nativeElement.focus();
-        this.el.scrollTo({left: Number.MAX_SAFE_INTEGER, top: Number.MAX_SAFE_INTEGER});
-    }
 }
