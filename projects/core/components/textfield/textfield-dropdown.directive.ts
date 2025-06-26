@@ -1,3 +1,4 @@
+import type {OnDestroy} from '@angular/core';
 import {Directive, inject, TemplateRef} from '@angular/core';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 
@@ -6,7 +7,7 @@ import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
     standalone: true,
     selector: 'ng-template[tuiTextfieldDropdown]',
 })
-export class TuiTextfieldDropdownDirective {
+export class TuiTextfieldDropdownDirective implements OnDestroy {
     private readonly directive = inject(TuiDropdownDirective);
 
     constructor() {
