@@ -1,12 +1,11 @@
-import {ContentChild, Directive, TemplateRef} from '@angular/core';
-import {tuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {Directive} from '@angular/core';
+import {TuiDropdownContent} from '@taiga-ui/core/directives/dropdown';
 
 @Directive({
     standalone: true,
     selector: 'ng-template[tuiTextfieldDropdown]',
 })
-export class TuiTextfieldDropdownDirective {}
+export class TuiTextfieldDropdownDirective extends TuiDropdownContent {}
 
 /**
  * @deprecated use {@link TuiDropdownContent} instead
@@ -14,11 +13,4 @@ export class TuiTextfieldDropdownDirective {}
 @Directive({
     standalone: true,
 })
-export class TuiWithTextfieldDropdown {
-    private readonly dropdown = tuiDropdown(null);
-
-    @ContentChild(TuiTextfieldDropdownDirective, {read: TemplateRef, descendants: true})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
-}
+export class TuiWithTextfieldDropdown {}
