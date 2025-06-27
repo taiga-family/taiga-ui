@@ -57,7 +57,6 @@ export class TuiInputTimeDirective
     private readonly open = tuiDropdownOpen();
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
     private readonly fillers = toSignal(inject(TUI_TIME_TEXTS));
-    private readonly acceptableValues = signal<readonly TuiTime[]>([]);
 
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_TIME_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
@@ -81,6 +80,9 @@ export class TuiInputTimeDirective
         ),
     );
 
+    @Input()
+    public accept: readonly TuiTime[] = [];
+
     public readonly native =
         tuiInjectElement<HTMLInputElement>().type === 'time' && inject(TUI_IS_MOBILE);
 
@@ -90,12 +92,6 @@ export class TuiInputTimeDirective
     @Input('mode')
     public set modeSetter(x: MaskitoTimeMode) {
         this.timeMode.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input('accept')
-    public set acceptSetter(x: readonly TuiTime[]) {
-        this.acceptableValues.set(x);
     }
 
     public setValue(value: TuiTime | null): void {
@@ -116,9 +112,7 @@ export class TuiInputTimeDirective
         const time =
             value.length === this.timeMode().length ? TuiTime.fromString(value) : null;
         const newValue =
-            this.acceptableValues().length && time
-                ? this.findNearestTime(time, this.acceptableValues())
-                : time;
+            this.accept.length && time ? this.findNearestTime(time, this.accept) : time;
 
         this.control?.control?.updateValueAndValidity({emitEvent: false});
         this.onChange(newValue);
