@@ -43,8 +43,8 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
     ],
     hostDirectives: [TuiWithTextfield, MaskitoDirective],
     host: {
+        inputmode: 'numeric',
         '[disabled]': 'disabled()',
-        '[attr.inputMode]': 'inputMode()',
         '(click)': 'toggle()',
     },
 })
@@ -69,10 +69,6 @@ export class TuiInputTimeDirective
         'fillerSetter',
         computed((fillers = this.fillers()) => fillers?.[this.timeMode()] ?? ''),
         {},
-    );
-
-    protected readonly inputMode = computed(() =>
-        this.timeMode().includes('AA') ? 'text' : 'numeric',
     );
 
     protected readonly mask = tuiMaskito(
