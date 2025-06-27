@@ -60,6 +60,7 @@ export class TuiInputTimeComponent {
         const mode = this.host.timeMode();
         const time = TuiTime.fromString(value);
 
+        this.control.onChange(time);
         this.textfield.value.set(time.toString(mode));
     }
 }
