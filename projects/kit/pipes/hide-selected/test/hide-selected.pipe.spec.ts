@@ -1,7 +1,7 @@
-import {TestBed} from '@angular/core/testing';
-import {TuiHideSelectedPipe} from '@taiga-ui/kit';
-import {TUI_ITEMS_HANDLERS, TuiTextfieldComponent} from '@taiga-ui/core';
 import {signal} from '@angular/core';
+import {TestBed} from '@angular/core/testing';
+import {TUI_ITEMS_HANDLERS, TuiTextfieldComponent} from '@taiga-ui/core';
+import {TuiHideSelectedPipe} from '@taiga-ui/kit';
 
 describe('HideSelected pipe', () => {
     let handlers: any;
