@@ -45,7 +45,6 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
     host: {
         '[disabled]': 'disabled()',
         '[attr.inputMode]': 'inputMode()',
-        '(blur)': 'onTouched()',
         '(click)': 'toggle()',
     },
 })
@@ -62,7 +61,7 @@ export class TuiInputTimeDirective
 
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_TIME_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
-        computed(() => !this.nativePickerEnabled && this.interactive()),
+        computed(() => !this.native && this.interactive()),
     );
 
     protected readonly filler = tuiDirectiveBinding(
@@ -103,7 +102,7 @@ export class TuiInputTimeDirective
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
 
-    public readonly nativePickerEnabled =
+    public readonly native =
         tuiInjectElement<HTMLInputElement>().type === 'time' && inject(TUI_IS_MOBILE);
 
     public readonly timeMode = signal(this.options.mode);
