@@ -1,23 +1,12 @@
-<tui-textfield [tuiTextfieldCleaner]="false">
-    <label tuiLabel>Flat angle</label>
-
+<tui-textfield>
+    <label tuiLabel>Click icon to copy</label>
     <input
-        #input
-        placeholder="3,14"
+        placeholder="I am placeholder"
         tuiTextfield
-        [maskito]="options"
         [(ngModel)]="value"
     />
-
-    <button
-        *ngIf="value"
-        iconStart="@tui.x"
-        tabindex="-1"
-        tuiIconButton
-        type="button"
-        (click)="clear()"
-        (pointerdown.zoneless.prevent)="input.focus()"
-    >
-        Clear
-    </button>
+    <tui-icon
+        icon="@tui.copy"
+        tuiCopy
+    />
 </tui-textfield>
