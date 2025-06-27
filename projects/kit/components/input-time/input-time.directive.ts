@@ -60,7 +60,7 @@ export class TuiInputTimeDirective
     private readonly fillers = toSignal(inject(TUI_TIME_TEXTS));
     private readonly acceptableValues = signal<readonly TuiTime[]>([]);
 
-    protected readonly icon = tuiTextfieldIconBinding(this.options);
+    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_TIME_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.nativePickerEnabled && this.interactive()),
     );
