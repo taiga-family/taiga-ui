@@ -9,6 +9,21 @@
     </div>
     <header tuiDocHeader>
         <ng-content select="tuiDocHeader" />
+
+        <button
+            *ngIf="dir"
+            appearance="outline"
+            aria-label="Switch directionality of the element's text"
+            iconEnd="@tui.a-large-small"
+            size="s"
+            tuiButton
+            type="button"
+            class="tui-doc-switch-direction"
+            (click)="changeTextDirection()"
+        >
+            <tui-icon icon="@tui.arrow-right-left" />
+        </button>
+
         <button
             appearance="secondary"
             aria-label="Switch between dark and light mode"
