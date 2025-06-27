@@ -36,8 +36,8 @@ tui-textfield {
         position: relative;
         block-size: auto;
         align-self: stretch;
-        border-left: var(--t-padding) solid transparent;
-        border-right: var(--t-padding) solid transparent;
+        border-inline-start: var(--t-padding) solid transparent;
+        border-inline-end: var(--t-padding) solid transparent;
         margin: 0 calc(-1 * var(--t-padding));
     }
 
@@ -99,12 +99,14 @@ tui-textfield {
         }
 
         &::before {
-            margin: 0 0.5rem 0 -0.125rem;
+            margin-inline-end: 0.5rem;
+            margin-inline-start: -0.125rem;
             font-size: 1rem;
         }
 
         &::after {
-            margin: 0 calc(-0.125rem - var(--t-padding)) 0 calc(0.625rem - var(--t-padding));
+            margin-inline-end: calc(-0.125rem - var(--t-padding));
+            margin-inline-start: calc(0.625rem - var(--t-padding));
             font-size: 1rem;
         }
 
@@ -137,11 +139,13 @@ tui-textfield {
         }
 
         &::before {
-            margin: 0 0.125rem 0 -0.125rem;
+            margin-inline-start: -0.125rem;
+            margin-inline-end: 0.125rem;
         }
 
         &::after {
-            margin: 0 calc(-0.125rem - var(--t-padding)) 0 calc(0.25rem - var(--t-padding));
+            margin-inline-start: calc(0.25rem - var(--t-padding));
+            margin-inline-end: calc(-0.125rem - var(--t-padding));
         }
 
         input,
@@ -218,7 +222,7 @@ tui-textfield {
         input:not([type='range']),
         select:defined,
         textarea:defined {
-            padding-top: calc(var(--t-height) / 3);
+            padding-block-start: calc(var(--t-height) / 3);
             padding-block-end: 0;
 
             &::placeholder,
@@ -309,6 +313,7 @@ tui-textfield {
             });
         }
 
+        // @deprecated remove in v5
         .ios-only({
             &._ios-fix {
                 position: fixed;

@@ -1,6 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
 @import '@taiga-ui/core/styles/components/textfield.less';
 
+// TODO: Remove all the @supports in v5
 tui-textfield[multi][multi] {
     flex-wrap: nowrap;
     overflow: scroll;
@@ -17,6 +18,11 @@ tui-textfield[multi][multi] {
         top: 0;
         left: 0;
         block-size: var(--t-height);
+
+        @supports (inset-inline-start: 0) {
+            left: unset;
+            inset-inline-start: 0;
+        }
     }
 
     &[tuiChevron]::after {
@@ -26,7 +32,8 @@ tui-textfield[multi][multi] {
 
     > .t-scrollbar {
         transform: translateX(var(--t-padding));
-        margin: 0 calc(1px - 100% + var(--t-start)) 0 calc(-1 * var(--t-start));
+        margin-inline-start: calc(-1 * var(--t-start));
+        margin-inline-end: calc(1px - 100% + var(--t-start));
 
         .t-bar_horizontal {
             // Safari shows horizontal scrollbar in vertical mode
@@ -45,6 +52,11 @@ tui-textfield[multi][multi] {
         flex-wrap: wrap;
         padding: var(--t-vertical) 0;
 
+        @supports (inset-inline-start: 0) {
+            left: unset;
+            inset-inline-start: 0;
+        }
+
         &::after {
             content: '';
             min-inline-size: 1px;
@@ -54,6 +66,10 @@ tui-textfield[multi][multi] {
         &_horizontal {
             clip-path: inset(0 0 0 calc(var(--t-start) / 2 - var(--t-padding) - 0.25rem));
             flex-wrap: nowrap;
+
+            &:dir(rtl) {
+                clip-path: inset(0 calc(var(--t-start) / 2 - var(--t-padding) - 0.25rem) 0 0);
+            }
 
             > .t-input {
                 padding-inline-end: calc(var(--t-side) + var(--t-end) + var(--t-padding));
@@ -83,6 +99,11 @@ tui-textfield[multi][multi] {
                 left: 0;
                 inline-size: 100%;
                 padding: 0;
+
+                @supports (inset-inline-start: 0) {
+                    left: unset;
+                    inset-inline-start: 0;
+                }
             }
 
             .t-ghost {
@@ -101,6 +122,11 @@ tui-textfield[multi][multi] {
                 position: absolute;
                 left: 0;
                 color: var(--tui-text-tertiary);
+
+                @supports (inset-inline-start: 0) {
+                    left: unset;
+                    inset-inline-start: 0;
+                }
             }
         }
     }
@@ -111,6 +137,11 @@ tui-textfield[multi][multi] {
         left: calc(100% - var(--t-side) - var(--t-end) + var(--t-padding) - var(--t-offset));
         margin: 0;
         gap: 0.25rem;
+
+        @supports (inset-inline-start: 0) {
+            left: unset;
+            inset-inline-start: calc(100% - var(--t-side) - var(--t-end) + var(--t-padding) - var(--t-offset));
+        }
     }
 
     > .t-content .t-clear {
@@ -176,6 +207,11 @@ tui-textfield[multi][multi] {
             left: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
             margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
             margin-inline-start: -0.75rem;
+
+            @supports (inset-inline-start: 0) {
+                left: unset;
+                inset-inline-start: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
+            }
         }
 
         &._with-label {
@@ -194,6 +230,11 @@ tui-textfield[multi][multi] {
         &::before {
             left: -0.125rem;
             margin-inline-end: 0.375rem;
+
+            @supports (inset-inline-start: 0) {
+                left: unset;
+                inset-inline-start: -0.125rem;
+            }
         }
 
         &::after {
@@ -202,6 +243,11 @@ tui-textfield[multi][multi] {
             border-width: 0.625rem;
             // tuiChevron changes icon size to 1rem
             margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
+
+            @supports (inset-inline-start: 0) {
+                left: unset;
+                inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
+            }
         }
 
         &._with-label {
@@ -224,12 +270,22 @@ tui-textfield[multi][multi] {
         &::before {
             left: -0.125rem;
             margin-inline-end: 0.375rem;
+
+            @supports (inset-inline-start: 0) {
+                left: unset;
+                inset-inline-start: -0.125rem;
+            }
         }
 
         &::after {
             left: calc(100% - var(--t-end) - 0.125rem);
             border-width: 0.5rem;
             margin-inline-end: calc(-1 * var(--t-padding));
+
+            @supports (inset-inline-start: 0) {
+                left: unset;
+                inset-inline-start: calc(100% - var(--t-end) - 0.125rem);
+            }
         }
 
         > .t-content {

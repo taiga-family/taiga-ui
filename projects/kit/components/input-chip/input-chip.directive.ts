@@ -116,11 +116,17 @@ export class TuiInputChipDirective<T>
     }
 
     protected scrollTo(): void {
+        let sign = 1;
+
+        try {
+            sign = this.textfield.el.matches(':dir(rtl)') ? -1 : 1;
+        } catch {}
+
         // Allow change detection to run and add new tag to DOM
         setTimeout(() => {
             this.textfield.el.scrollTo({
+                left: sign * Number.MAX_SAFE_INTEGER,
                 top: Number.MAX_SAFE_INTEGER,
-                left: Number.MAX_SAFE_INTEGER,
             });
         });
     }
