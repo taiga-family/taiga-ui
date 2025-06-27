@@ -1,11 +1,10 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import type {MaskitoTimeMode, MaskitoTimeParams} from '@maskito/kit';
 import {maskitoSelectionChangeHandler, maskitoTimeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -46,6 +45,7 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
         inputmode: 'numeric',
         '[disabled]': 'disabled()',
         '(click)': 'toggle()',
+        '(input)': 'onInput($event.target.value)',
     },
 })
 export class TuiInputTimeDirective
@@ -81,23 +81,6 @@ export class TuiInputTimeDirective
         ),
     );
 
-    protected readonly valueEffect = effect(() => {
-        const value = this.textfield.value();
-        const time =
-            value.length === this.timeMode().length ? TuiTime.fromString(value) : null;
-        const newValue =
-            this.acceptableValues().length && time
-                ? this.findNearestTime(time, this.acceptableValues())
-                : time;
-
-        this.control?.control?.updateValueAndValidity({emitEvent: false});
-        this.onChange(newValue);
-
-        if (newValue && newValue !== time) {
-            this.textfield.value.set(newValue?.toString(this.timeMode()));
-        }
-    }, TUI_ALLOW_SIGNAL_WRITES);
-
     public readonly native =
         tuiInjectElement<HTMLInputElement>().type === 'time' && inject(TUI_IS_MOBILE);
 
@@ -116,6 +99,7 @@ export class TuiInputTimeDirective
     }
 
     public setValue(value: TuiTime | null): void {
+        this.onChange(value);
         this.textfield.value.set(value?.toString(this.timeMode()) ?? '');
 
         if (!value) {
@@ -126,6 +110,22 @@ export class TuiInputTimeDirective
     public override writeValue(value: TuiTime | null): void {
         super.writeValue(value);
         this.textfield.value.set(this.value()?.toString(this.timeMode()) ?? '');
+    }
+
+    protected onInput(value: string): void {
+        const time =
+            value.length === this.timeMode().length ? TuiTime.fromString(value) : null;
+        const newValue =
+            this.acceptableValues().length && time
+                ? this.findNearestTime(time, this.acceptableValues())
+                : time;
+
+        this.control?.control?.updateValueAndValidity({emitEvent: false});
+        this.onChange(newValue);
+
+        if (newValue && newValue !== time) {
+            this.textfield.value.set(newValue?.toString(this.timeMode()));
+        }
     }
 
     protected toggle(): void {
