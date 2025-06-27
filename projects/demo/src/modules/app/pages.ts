@@ -166,7 +166,7 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Accordion (Deprecated)',
+        title: 'Accordion ⛔',
         keywords: 'open, аккордеон, expand, раскрывашка, spoiler, cut',
         route: DemoRoute.AccordionOld,
     },
@@ -592,7 +592,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputDate [deprecated]',
+                title: 'InputDate ⛔',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar',
@@ -608,7 +608,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputDateRange',
+                title: 'InputDateRange ⛔',
                 keywords: 'calendar, календарь, даты, период',
                 route: DemoRoute.InputDateRangeLegacy,
             },
@@ -622,19 +622,19 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputMonth [deprecated]',
+                title: 'InputMonth ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
                 route: DemoRoute.InputMonthLegacy,
             },
             {
                 section: 'Components',
-                title: 'InputMonthRange [deprecated]',
+                title: 'InputMonthRange ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
                 route: DemoRoute.InputMonthRange,
             },
             {
                 section: 'Components',
-                title: 'InputNumber [deprecated]',
+                title: 'InputNumber ⛔',
                 keywords:
                     'поле, инпут, number, число, форма, ввод, input, money, деньги, ' +
                     'cash, копейки, рубли, доллары, евро, control, контрол',
@@ -654,19 +654,19 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputSlider [deprecated]',
+                title: 'InputSlider ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: DemoRoute.InputSliderLegacy,
             },
             {
                 section: 'Components',
-                title: 'InputTag',
+                title: 'InputTag ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, tag, тэг',
                 route: DemoRoute.InputTag,
             },
             {
                 section: 'Components',
-                title: 'InputTime [deprecated]',
+                title: 'InputTime ⛔',
                 keywords:
                     'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
                 route: DemoRoute.InputTimeLegacy,
@@ -679,7 +679,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'PrimitiveTextfield',
+                title: 'PrimitiveTextfield ⛔',
                 keywords: 'текст, инпут, база, input',
                 route: DemoRoute.PrimitiveTextfield,
             },
@@ -692,20 +692,20 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'Textarea [deprecated]',
+                title: 'Textarea ⛔',
                 keywords: 'поле, инпут, форма, ввод, textarea, area',
                 route: DemoRoute.TextareaLegacy,
             },
             {
                 section: 'Components',
-                title: 'ComboBox [deprecated]',
+                title: 'ComboBox ⛔',
                 keywords:
                     'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
                 route: DemoRoute.ComboBoxLegacy,
             },
             {
                 section: 'Components',
-                title: 'Select [deprecated]',
+                title: 'Select ⛔',
                 keywords: 'инпут, форма, ввод, select, селект, выбор',
                 route: DemoRoute.SelectLegacy,
             },
@@ -941,9 +941,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputSlider [deprecated]',
+                title: 'InputSlider',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputSliderLegacy,
+                route: DemoRoute.InputSlider,
             },
             {
                 section: 'Components',
@@ -1472,7 +1472,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'Sidebar',
+                title: 'Sidebar ⛔',
                 keywords:
                     'sidebar, hamburger, drawer menu, mobile, смартфон, pwa, native, hybrid, сайдбар, меню',
                 route: DemoRoute.Sidebar,
