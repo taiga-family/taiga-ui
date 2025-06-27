@@ -1,13 +1,13 @@
+import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {
-    TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
+    TuiHideSelectedPipe,
     TuiInputChip,
 } from '@taiga-ui/kit';
 
@@ -15,19 +15,22 @@ import {
     standalone: true,
     imports: [
         FormsModule,
-        TuiChevron,
+        NgIf,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
+        TuiHideSelectedPipe,
         TuiInputChip,
         TuiTextfield,
     ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value: string[] = [];
+    protected strings: string[] = [];
+    protected pythons: string[] = [];
+
     protected readonly items: string[] = inject('Pythons' as any);
-    protected readonly handler: TuiBooleanHandler<string> = (item) =>
-        !this.items.includes(item);
+    protected readonly handler = (item: string): boolean => !this.items.includes(item);
 }

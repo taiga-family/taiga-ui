@@ -1,5 +1,7 @@
 import {Directive, inject, Input} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -9,10 +11,11 @@ import {
     TuiTextfieldBase,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
-import {tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdownDirective, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
+import {filter} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
 
@@ -35,7 +38,6 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
     host: {
         enterkeyhint: 'enter',
         '[disabled]': 'disabled()',
-        '(blur)': 'onEnter();',
         '(keydown.enter.prevent)': 'onEnter()',
         '(keydown.zoneless)': 'onBackspace($event.key)',
         '(input)': 'onInput()',
@@ -52,6 +54,14 @@ export class TuiInputChipDirective<T>
     private readonly mobile = inject(TUI_IS_MOBILE);
     private readonly textfield = inject(TuiTextfieldMultiComponent);
     private readonly open = tuiDropdownOpen();
+    private readonly dropdown = inject(TuiDropdownDirective);
+
+    protected readonly sub = inject(TuiActiveZone)
+        .tuiActiveZoneChange.pipe(
+            filter((active) => !active),
+            takeUntilDestroyed(),
+        )
+        .subscribe(() => this.onEnter());
 
     @Input()
     public separator = this.options.separator;
@@ -84,7 +94,7 @@ export class TuiInputChipDirective<T>
     }
 
     protected onInput(): void {
-        this.open.set(true);
+        this.open.set(!!this.dropdown.content);
 
         if (this.separator && this.textfield.value().match(this.separator)) {
             this.onEnter();

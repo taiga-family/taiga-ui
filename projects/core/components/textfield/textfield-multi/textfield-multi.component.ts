@@ -79,8 +79,8 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
     ],
     host: {
         class: 'tui-interactive',
-        '[attr.data-state]': 'ngControl?.disabled ? "disabled" : null',
-        '[class._empty]': '!ngControl?.value?.length',
+        '[attr.data-state]': 'control?.disabled ? "disabled" : null',
+        '[class._empty]': '!control?.value?.length',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows',
         '(tuiActiveZoneChange)': '!$event && el.scrollTo({left: 0})',
@@ -105,16 +105,17 @@ export class TuiTextfieldMultiComponent<T>
             this.el.style.setProperty('--t-scroll', tuiPx(-1 * this.el.scrollLeft));
         });
 
-    @ContentChild(TuiItem, {read: TemplateRef})
+    @ContentChild(TuiItem, {read: TemplateRef, descendants: true})
     public readonly item?: TemplateRef<unknown>;
 
     @Input()
     public rows = 100;
 
     public override handleOption(option: T): void {
+        this.input?.nativeElement.focus();
         this.accessor?.setValue(
             tuiArrayToggle(
-                this.ngControl?.value ?? [],
+                this.control?.value ?? [],
                 option,
                 this.handlers.identityMatcher(),
             ),
@@ -123,7 +124,7 @@ export class TuiTextfieldMultiComponent<T>
 
     protected onItems({target}: ResizeObserverEntry): void {
         const height =
-            this.rows > 1 && this.ngControl?.value?.length
+            this.rows > 1 && this.control?.value?.length
                 ? (target.querySelector('tui-textfield-item')?.clientHeight ?? 0)
                 : null;
 
