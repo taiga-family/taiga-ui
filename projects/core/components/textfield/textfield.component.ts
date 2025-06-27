@@ -181,7 +181,9 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
     public handleOption(option: T): void {
         this.accessor?.setValue(option);
-        this.open.set(false);
+        // Ensure all external (click) handlers are called before closing dropdown
+        // <button tuiOption (click)="..." />
+        setTimeout(() => this.open.set(false));
     }
 
     protected get hasLabel(): boolean {
