@@ -1,9 +1,21 @@
 <tui-doc-page
+    deprecated
     header="InputDateRangeLegacy"
     package="LEGACY"
     type="components"
 >
     <ng-template pageTab>
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.InputDateRange"
+            >
+                <strong>new version of InputDateRange</strong>
+            </a>
+            instead!
+        </tui-notification>
+
         <p class="tui-space_bottom-9">
             <code>InputDate</code>
             is a field to input a range of dates.
