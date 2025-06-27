@@ -73,14 +73,14 @@ describe('Select', () => {
             });
         });
 
-        it('emits (itemClick) on the first option click ', () => {
+        it('emits (itemClick) on the first option click', () => {
             cy.get('[tuiSelect]').click();
             cy.get('[tuiOption]').first().click();
 
             cy.get('@itemClick').should('have.been.calledWith', 'Option 0');
         });
 
-        it('emits (itemClick) on the last option click ', () => {
+        it('emits (itemClick) on the last option click', () => {
             cy.get('[tuiSelect]').click();
             cy.get('[tuiOption]').last().click();
 
