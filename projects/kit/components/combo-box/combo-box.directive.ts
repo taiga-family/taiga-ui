@@ -145,7 +145,7 @@ export class TuiComboBox<T>
     }
 
     protected toggleDropdown(open = !this.open()): void {
-        if (this.dropdownEnabled() && this.dropdown.content) {
+        if (this.dropdownEnabled() && this.dropdown._content()) {
             this.open.set(open);
         }
     }

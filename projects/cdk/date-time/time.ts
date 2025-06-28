@@ -184,7 +184,9 @@ export class TuiTime implements TuiTimeLike {
     /**
      * Converts TuiTime to string
      */
-    public toString(mode?: TuiTimeMode): string {
+    public toString(
+        mode?: TuiTimeMode, // TODO(v5): remove usage of `TuiTimeMode` and inline all modes as huge union type
+    ): string {
         const needAddMs = mode?.startsWith('HH:MM:SS.MSS') || (!mode && this.ms > 0);
         const needAddSeconds =
             needAddMs || mode?.startsWith('HH:MM:SS') || (!mode && this.seconds > 0);
