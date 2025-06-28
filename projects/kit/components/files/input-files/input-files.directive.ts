@@ -35,6 +35,7 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
     host: {
         title: '',
         type: 'file',
+        title: '',
         '[disabled]': 'disabled()',
         '(blur)': 'onTouched()',
         '(click)': 'onClick($event)',
