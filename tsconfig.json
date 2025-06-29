@@ -3,7 +3,8 @@
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./dist",
-        "typeRoots": ["node_modules/@types"],
+        "typeRoots": ["node_modules/@types", "node_modules/@taiga-ui/tsconfig"],
+        "types": ["node", "ng-dev-mode"],
         "noUnusedLocals": false,
         "noUnusedParameters": false,
         "paths": {
