@@ -30,7 +30,8 @@ export default class Page {
         'Size',
         'States',
         'Dropdown',
-        'Interactive icons',
+        'InputPassword',
+        'InputCopy',
         'Mask',
         'Fieldset',
     ];
