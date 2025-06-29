@@ -26,6 +26,7 @@ import {Subject} from 'rxjs';
 
 import type {TuiMarkerHandler} from './calendar-sheet.component';
 import {TuiCalendarSheet} from './calendar-sheet.component';
+import {TUI_CALENDAR_SHEET_OPTIONS} from './calendar-sheet.options';
 import {TuiCalendarSpin} from './calendar-spin.component';
 import {TuiCalendarYear} from './calendar-year.component';
 
@@ -52,6 +53,7 @@ export class TuiCalendar {
     private readonly cdr = inject(ChangeDetectorRef);
     private day: TuiDay | TuiDayRange | readonly TuiDay[] | null = null;
     private view: 'month' | 'year' = 'month';
+    protected readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
 
     @Input()
     public month: TuiMonth = TuiMonth.currentLocal();

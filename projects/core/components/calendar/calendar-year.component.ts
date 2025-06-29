@@ -6,11 +6,11 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiDay} from '@taiga-ui/cdk/date-time';
+import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {
     MAX_YEAR,
     MIN_YEAR,
-    TuiDayRange,
+    TuiDay,
     TuiMonth,
     TuiMonthRange,
     TuiYear,
@@ -33,7 +33,7 @@ const ITEMS_IN_ROW = 4;
     styleUrls: ['./calendar-year.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._picking]': 'isSingle',
+        '[class._picking]': 'isRangePicking',
     },
 })
 export class TuiCalendarYear {
@@ -59,6 +59,9 @@ export class TuiCalendarYear {
     public max: number | null = MAX_YEAR;
 
     @Input()
+    public rangeMode = false;
+
+    @Input()
     public disabledItemHandler: TuiBooleanHandler<number> = TUI_FALSE_HANDLER;
 
     @Output()
@@ -75,45 +78,49 @@ export class TuiCalendarYear {
     public getItemRange(item: number): 'active' | 'end' | 'middle' | 'start' | null {
         const {value, hoveredItem} = this;
 
-        if (value instanceof TuiYear) {
-            return value.year === item ? 'active' : null;
+        if (value instanceof TuiYear && value.year === item) {
+            return 'active';
         }
 
         if (tuiIsNumber(value)) {
             return value === item ? 'active' : null;
         }
 
-        if (!(value instanceof TuiMonthRange)) {
+        if (!(value instanceof TuiMonthRange) && !(value instanceof TuiYear)) {
             return value?.find((day) => day.year === item) ? 'active' : null;
         }
 
-        const hovered = this.isSingle ? hoveredItem : null;
-        const from = Math.min(value.from.year, hovered ?? value.to.year);
-        const to = Math.max(value.from.year, hovered ?? value.to.year);
+        const hovered = this.isRangePicking ? hoveredItem : null;
+        const from = 'from' in value ? value.from?.year : value.year;
+        const to = 'from' in value ? value.to.year : value.year;
 
-        if (from === to && value.from.year === value.to.year && from === item) {
+        const min = Math.min(from, hovered ?? to);
+        const max = Math.max(from, hovered ?? to);
+
+        if (min === max && from === to && from === item) {
             return 'active';
         }
 
-        if (from === item) {
+        if (min === item) {
             return 'start';
         }
 
-        if (to === item) {
+        if (max === item) {
             return 'end';
         }
 
-        return from < item && item < to ? 'middle' : null;
+        return min < item && item < max ? 'middle' : null;
     }
 
     public onItemHovered(hovered: boolean, item: number): void {
         this.updateHoveredItem(hovered, item);
     }
 
-    protected get isSingle(): boolean {
-        return this.value instanceof TuiMonthRange
-            ? this.value.from.monthSame(this.value.to)
-            : this.value instanceof TuiDayRange && this.value.isSingleDay;
+    protected get isRangePicking(): boolean {
+        return (
+            this.rangeMode &&
+            (this.value instanceof TuiDay || this.value instanceof TuiMonth)
+        );
     }
 
     protected get rows(): number {
