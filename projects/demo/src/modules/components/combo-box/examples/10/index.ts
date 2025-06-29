@@ -1,13 +1,10 @@
-import {
-    CdkFixedSizeVirtualScroll,
-    CdkVirtualForOf,
-    CdkVirtualScrollViewport,
-} from '@angular/cdk/scrolling';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {AsyncPipe, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiScrollable, TuiTextfield} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
@@ -22,15 +19,14 @@ import {map} from 'rxjs';
     standalone: true,
     imports: [
         AsyncPipe,
-        CdkFixedSizeVirtualScroll,
-        CdkVirtualForOf,
-        CdkVirtualScrollViewport,
         FormsModule,
         NgIf,
+        ScrollingModule,
         TuiChevron,
         TuiComboBox,
         TuiDataList,
         TuiFilterByInputPipe,
+        TuiLet,
         TuiScrollable,
         TuiTextfield,
     ],
