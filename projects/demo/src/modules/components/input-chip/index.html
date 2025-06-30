@@ -69,7 +69,7 @@
                 , this would prevent them from being edited, removed or added.
                 <strong>Note:</strong>
                 keep in mind cleaner would still empty the control. If you want a different behavior, you can disable
-                built-in cleaner and provide your own
+                built-in cleaner and provide your own.
             </ng-template>
         </tui-doc-example>
 
@@ -81,9 +81,10 @@
             [description]="dropdown"
         >
             <ng-template #dropdown>
-                With
+                <code>InputChip</code>
+                can act as multiple value input with suggestions or as multi-select. With
                 <code>disabledItemHandler</code>
-                you can force the component to only accept suggested values
+                you can force the component to only accept suggested values.
             </ng-template>
         </tui-doc-example>
 
@@ -115,7 +116,7 @@
             [content]="7 | tuiExample"
             [description]="direction"
         >
-            <ng-template #direction>Component can be used together with RTL direction</ng-template>
+            <ng-template #direction>Component can be used together with RTL direction.</ng-template>
         </tui-doc-example>
     </ng-template>
 

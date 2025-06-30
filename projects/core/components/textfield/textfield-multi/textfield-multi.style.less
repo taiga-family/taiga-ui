@@ -25,6 +25,10 @@ tui-textfield[multi][multi] {
         }
     }
 
+    &:has([tuiSelectLike]) {
+        cursor: pointer;
+    }
+
     &[tuiChevron]::after {
         top: 0.375rem;
         block-size: calc(var(--t-height) - 0.75rem);
