@@ -1,5 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated use new version of {@link TuiInputNumberOptions} (from @taiga-ui/kit) instead
@@ -33,7 +34,9 @@ export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
  * @deprecated use new version of {@link TUI_INPUT_NUMBER_OPTIONS} (from @taiga-ui/kit) instead
  * TODO(v5): delete it
  */
-export const TUI_INPUT_NUMBER_OPTIONS = tuiCreateToken(TUI_INPUT_NUMBER_DEFAULT_OPTIONS);
+export const TUI_INPUT_NUMBER_OPTIONS = new InjectionToken('TUI_INPUT_NUMBER_OPTIONS', {
+    factory: () => TUI_INPUT_NUMBER_DEFAULT_OPTIONS,
+});
 
 /**
  * @deprecated use new version of {@link tuiInputNumberOptionsProvider} (from @taiga-ui/kit) instead

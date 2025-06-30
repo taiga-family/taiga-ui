@@ -1,7 +1,8 @@
 import type {Provider} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated use {@link TuiPassword} with {@link TuiTextfield}
@@ -26,8 +27,11 @@ export const TUI_INPUT_PASSWORD_DEFAULT_OPTIONS: TuiInputPasswordOptions = {
 /**
  * @deprecated use {@link TuiPassword} with {@link TuiTextfield}
  */
-export const TUI_INPUT_PASSWORD_OPTIONS = tuiCreateToken(
-    TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
+export const TUI_INPUT_PASSWORD_OPTIONS = new InjectionToken(
+    'TUI_INPUT_PASSWORD_OPTIONS',
+    {
+        factory: () => TUI_INPUT_PASSWORD_DEFAULT_OPTIONS,
+    },
 );
 
 /**

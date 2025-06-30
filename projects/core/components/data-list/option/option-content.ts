@@ -1,16 +1,15 @@
 import type {Provider, TemplateRef, Type} from '@angular/core';
-import {ContentChild, Directive, inject} from '@angular/core';
+import {ContentChild, Directive, inject, InjectionToken} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 /**
  * Content for tuiOption component
  */
-export const TUI_OPTION_CONTENT = tuiCreateToken<
+export const TUI_OPTION_CONTENT = new InjectionToken<
     | PolymorpheusContent<TuiContext<TemplateRef<Record<string, unknown>>>> // TODO(v5): delete
     | Type<any>
->();
+>('TUI_OPTION_CONTENT');
 
 export function tuiAsOptionContent(
     useValue:

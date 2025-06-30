@@ -1,11 +1,13 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiSpinIcons {
     readonly decrement: string;
     readonly increment: string;
 }
 
-export const TUI_SPIN_ICONS = tuiCreateToken<TuiSpinIcons>({
-    decrement: '@tui.chevron-left',
-    increment: '@tui.chevron-right',
+export const TUI_SPIN_ICONS = new InjectionToken<TuiSpinIcons>('TUI_SPIN_ICONS', {
+    factory: () => ({
+        decrement: '@tui.chevron-left',
+        increment: '@tui.chevron-right',
+    }),
 });

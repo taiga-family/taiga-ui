@@ -1,4 +1,4 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiMedia {
     readonly desktopLarge: number;
@@ -10,8 +10,10 @@ export interface TuiMedia {
 /**
  * Token for media constant
  */
-export const TUI_MEDIA = tuiCreateToken<TuiMedia>({
-    mobile: 768,
-    desktopSmall: 1024,
-    desktopLarge: 1280,
+export const TUI_MEDIA = new InjectionToken<TuiMedia>('TUI_MEDIA', {
+    factory: () => ({
+        mobile: 768,
+        desktopSmall: 1024,
+        desktopLarge: 1280,
+    }),
 });

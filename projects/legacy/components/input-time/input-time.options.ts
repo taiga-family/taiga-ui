@@ -1,9 +1,10 @@
 import type {Provider} from '@angular/core';
 import type {TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiInputTimeOptions {
     readonly icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;
@@ -36,7 +37,9 @@ export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
 /**
  * Default parameters for InputTime component
  */
-export const TUI_INPUT_TIME_OPTIONS = tuiCreateToken(TUI_INPUT_TIME_DEFAULT_OPTIONS);
+export const TUI_INPUT_TIME_OPTIONS = new InjectionToken('TUI_INPUT_TIME_OPTIONS', {
+    factory: () => TUI_INPUT_TIME_DEFAULT_OPTIONS,
+});
 
 export function tuiInputTimeOptionsProvider(
     options: Partial<TuiInputTimeOptions>,

@@ -1,5 +1,6 @@
 import type {Provider, Type} from '@angular/core';
-import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0
@@ -27,7 +28,9 @@ export interface TuiTextfieldHost {
  * @deprecated: drop in v5.0
  * An interface to communicate with textfield based controls
  */
-export const TUI_TEXTFIELD_HOST = tuiCreateToken<TuiTextfieldHost>();
+export const TUI_TEXTFIELD_HOST = new InjectionToken<TuiTextfieldHost>(
+    'TUI_TEXTFIELD_HOST',
+);
 
 /**
  * @deprecated: drop in v5.0

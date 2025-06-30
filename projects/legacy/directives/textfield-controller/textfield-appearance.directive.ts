@@ -1,9 +1,12 @@
-import {Directive, Input} from '@angular/core';
-import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {Directive, Input, InjectionToken} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {AbstractTuiController} from '@taiga-ui/legacy/classes';
 
-export const TUI_TEXTFIELD_APPEARANCE_DIRECTIVE = tuiCreateTokenFromFactory(
-    () => new TuiTextfieldAppearanceDirective(),
+export const TUI_TEXTFIELD_APPEARANCE_DIRECTIVE = new InjectionToken(
+    'TUI_TEXTFIELD_APPEARANCE_DIRECTIVE',
+    {
+        factory: () => new TuiTextfieldAppearanceDirective(),
+    },
 );
 
 @Directive({

@@ -1,16 +1,18 @@
 import type {Provider} from '@angular/core';
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
-
 import {TUI_ASSETS_PATH} from './assets-path';
 import {TUI_ICON_REGISTRY} from './icons';
 
-export const TUI_ICON_RESOLVER = tuiCreateTokenFromFactory<TuiStringHandler<string>>(
-    () => {
-        const path = inject(TUI_ASSETS_PATH);
+export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
+    'TUI_ICON_RESOLVER',
+    {
+        factory: () => {
+            const path = inject(TUI_ASSETS_PATH);
 
-        return (icon) => `${path}/${icon.replace('@tui.', '').split('.').join('/')}.svg`;
+            return (icon) =>
+                `${path}/${icon.replace('@tui.', '').split('.').join('/')}.svg`;
+        },
     },
 );
 

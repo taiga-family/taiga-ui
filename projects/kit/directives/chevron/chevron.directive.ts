@@ -7,17 +7,16 @@ import {
     Input,
     signal,
     ViewEncapsulation,
+    InjectionToken,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {
-    tuiCreateToken,
-    tuiProvide,
-    tuiWithStyles,
-} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TUI_ICON_END} from '@taiga-ui/core/tokens';
 
-export const TUI_CHEVRON = tuiCreateToken('@tui.chevron-down');
+export const TUI_CHEVRON = new InjectionToken('TUI_CHEVRON', {
+    factory: () => '@tui.chevron-down',
+});
 
 @Component({
     standalone: true,

@@ -1,7 +1,9 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {InjectionToken} from '@angular/core';
 
 /**
  * Main logo
  */
-export const TUI_DOC_LOGO = tuiCreateToken<PolymorpheusContent>('');
+export const TUI_DOC_LOGO = new InjectionToken<PolymorpheusContent>('TUI_DOC_LOGO', {
+    factory: () => '',
+});

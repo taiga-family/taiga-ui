@@ -1,5 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiFluidTypographyOptions {
     readonly min: number;
@@ -11,8 +12,11 @@ export const TUI_FLUID_TYPOGRAPHY_DEFAULT_OPTIONS: TuiFluidTypographyOptions = {
     max: 1.5,
 };
 
-export const TUI_FLUID_TYPOGRAPHY_OPTIONS = tuiCreateToken(
-    TUI_FLUID_TYPOGRAPHY_DEFAULT_OPTIONS,
+export const TUI_FLUID_TYPOGRAPHY_OPTIONS = new InjectionToken(
+    'TUI_FLUID_TYPOGRAPHY_OPTIONS',
+    {
+        factory: () => TUI_FLUID_TYPOGRAPHY_DEFAULT_OPTIONS,
+    },
 );
 
 export function tuiFluidTypographyOptionsProvider(

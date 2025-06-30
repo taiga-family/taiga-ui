@@ -1,8 +1,9 @@
 import type {Provider} from '@angular/core';
 import {TUI_EXAMPLE_PRIMARY_FILE_NAME} from '@taiga-ui/addon-doc/types';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiDocExampleOptions {
     codeEditorVisibilityHandler: TuiBooleanHandler<Record<string, string>>;
@@ -23,7 +24,9 @@ export const TUI_DOC_EXAMPLE_DEFAULT_OPTIONS: TuiDocExampleOptions = {
 /**
  * Default parameters for DocExample component
  */
-export const TUI_DOC_EXAMPLE_OPTIONS = tuiCreateToken(TUI_DOC_EXAMPLE_DEFAULT_OPTIONS);
+export const TUI_DOC_EXAMPLE_OPTIONS = new InjectionToken('TUI_DOC_EXAMPLE_OPTIONS', {
+    factory: () => TUI_DOC_EXAMPLE_DEFAULT_OPTIONS,
+});
 
 export function tuiDocExampleOptionsProvider(
     options: Partial<TuiDocExampleOptions>,

@@ -1,7 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {ElementRef, inject} from '@angular/core';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
-
-export const TUI_SCROLL_REF = tuiCreateTokenFromFactory(
-    () => new ElementRef(inject(DOCUMENT).documentElement),
-);
+import {ElementRef, inject, InjectionToken} from '@angular/core';
+export const TUI_SCROLL_REF = new InjectionToken('TUI_SCROLL_REF', {
+    factory: () => new ElementRef(inject(DOCUMENT).documentElement),
+});

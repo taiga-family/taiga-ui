@@ -1,6 +1,14 @@
 import type {FactoryProvider, OnChanges} from '@angular/core';
-import {Directive, inject, Input, Optional, Self, SkipSelf} from '@angular/core';
-import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    Directive,
+    inject,
+    Input,
+    Optional,
+    Self,
+    SkipSelf,
+    InjectionToken,
+} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {Subject} from 'rxjs';
@@ -55,7 +63,9 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
 /**
  * Default parameters for hint directive
  */
-export const TUI_HINT_OPTIONS = tuiCreateToken(TUI_HINT_DEFAULT_OPTIONS);
+export const TUI_HINT_OPTIONS = new InjectionToken('TUI_HINT_OPTIONS', {
+    factory: () => TUI_HINT_DEFAULT_OPTIONS,
+});
 
 export const tuiHintOptionsProvider: (
     options: Partial<TuiHintOptions>,

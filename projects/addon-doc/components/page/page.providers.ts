@@ -1,19 +1,20 @@
 import type {Provider} from '@angular/core';
-import {ElementRef} from '@angular/core';
+import {ElementRef, InjectionToken} from '@angular/core';
 import type {ActivatedRouteSnapshot} from '@angular/router';
 import {TUI_DOC_SEE_ALSO} from '@taiga-ui/addon-doc/tokens';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-export const TUI_DOC_TABS = tuiCreateToken<
+export const TUI_DOC_TABS = new InjectionToken<
     TuiHandler<ActivatedRouteSnapshot, Record<string, PolymorpheusContent>>
->(() => ({}));
+>('TUI_DOC_TABS', {
+    factory: () => () => ({}),
+});
 
 /**
  * Array if related page titles
  */
-export const PAGE_SEE_ALSO = tuiCreateToken<readonly string[]>();
+export const PAGE_SEE_ALSO = new InjectionToken<readonly string[]>('PAGE_SEE_ALSO');
 
 export const PAGE_PROVIDERS: Provider[] = [
     {

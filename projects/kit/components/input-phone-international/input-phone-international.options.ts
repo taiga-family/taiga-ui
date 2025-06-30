@@ -1,9 +1,10 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import type {MetadataJson} from 'libphonenumber-js/core';
 import type {Observable} from 'rxjs';
 import {of} from 'rxjs';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiInputPhoneInternationalOptions {
     readonly countries: readonly TuiCountryIsoCode[];
@@ -23,8 +24,11 @@ export const TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS: TuiInputPhoneInterna
 /**
  * Default parameters for input phone international component
  */
-export const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS = tuiCreateToken(
-    TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS,
+export const TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS = new InjectionToken(
+    'TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS',
+    {
+        factory: () => TUI_INPUT_PHONE_INTERNATIONAL_DEFAULT_OPTIONS,
+    },
 );
 
 export function tuiInputPhoneInternationalOptionsProvider(

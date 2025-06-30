@@ -1,18 +1,19 @@
 import {DOCUMENT} from '@angular/common';
 import type {Provider} from '@angular/core';
-import {ChangeDetectorRef, ElementRef} from '@angular/core';
+import {ChangeDetectorRef, ElementRef, InjectionToken} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
 import type {Observable} from 'rxjs';
 import {debounceTime, filter, merge, startWith, tap} from 'rxjs';
 
-export const TUI_TABS_REFRESH = tuiCreateToken<Observable<unknown>>();
+export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(
+    'TUI_TABS_REFRESH',
+);
 
 export const TUI_TABS_PROVIDERS: Provider[] = [
     ResizeObserverService,

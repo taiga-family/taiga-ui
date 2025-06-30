@@ -5,7 +5,8 @@ import type {
     TuiIdentityMatcher,
     TuiStringHandler,
 } from '@taiga-ui/cdk/types';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated use it only for LEGACY controls. For new controls use the same entity from `@taiga-ui/kit`.
@@ -31,7 +32,9 @@ export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {
  * @deprecated use it only for LEGACY controls. For new controls use the same entity from `@taiga-ui/kit`.
  * TODO(v5): delete
  */
-export const TUI_ITEMS_HANDLERS = tuiCreateToken(TUI_DEFAULT_ITEMS_HANDLERS);
+export const TUI_ITEMS_HANDLERS = new InjectionToken('TUI_ITEMS_HANDLERS', {
+    factory: () => TUI_DEFAULT_ITEMS_HANDLERS,
+});
 
 /**
  * @deprecated use it only for LEGACY controls. For new controls use the same entity from `@taiga-ui/kit`.

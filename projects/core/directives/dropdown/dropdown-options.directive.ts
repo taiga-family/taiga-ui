@@ -1,6 +1,14 @@
 import type {FactoryProvider} from '@angular/core';
-import {Directive, inject, Input, Optional, Self, SkipSelf} from '@angular/core';
-import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    Directive,
+    inject,
+    Input,
+    Optional,
+    Self,
+    SkipSelf,
+    InjectionToken,
+} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiVerticalDirection} from '@taiga-ui/core/types';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 
@@ -31,7 +39,9 @@ export const TUI_DROPDOWN_DEFAULT_OPTIONS: TuiDropdownOptions = {
 /**
  * Default parameters for dropdown directive
  */
-export const TUI_DROPDOWN_OPTIONS = tuiCreateToken(TUI_DROPDOWN_DEFAULT_OPTIONS);
+export const TUI_DROPDOWN_OPTIONS = new InjectionToken('TUI_DROPDOWN_OPTIONS', {
+    factory: () => TUI_DROPDOWN_DEFAULT_OPTIONS,
+});
 
 export const tuiDropdownOptionsProvider: (
     options: Partial<TuiDropdownOptions>,

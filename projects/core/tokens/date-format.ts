@@ -1,7 +1,6 @@
-import type {InjectionToken, Provider} from '@angular/core';
-import {Optional, SkipSelf} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {Optional, SkipSelf, InjectionToken} from '@angular/core';
 import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 
@@ -29,7 +28,9 @@ export const TUI_DEFAULT_DATE_FORMAT: TuiDateFormatSettings = {
  * Formatting configuration for displayed dates
  */
 export const TUI_DATE_FORMAT: InjectionToken<Observable<TuiDateFormatSettings>> =
-    tuiCreateToken(of(TUI_DEFAULT_DATE_FORMAT));
+    new InjectionToken('TUI_DATE_FORMAT', {
+        factory: () => of(TUI_DEFAULT_DATE_FORMAT),
+    });
 
 export function tuiDateFormatProvider(options: Partial<TuiDateFormatSettings>): Provider {
     return {

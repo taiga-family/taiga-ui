@@ -1,6 +1,4 @@
-import {signal} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
-
+import {signal, InjectionToken} from '@angular/core';
 /**
  * TODO: think about reorganization in @taiga-ui/i18n way
  */
@@ -9,11 +7,12 @@ import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
  * tui-doc-demo i18n texts
  * Works with a tuple
  */
-export const TUI_DOC_DEMO_TEXTS = tuiCreateToken<[string, string, string]>([
-    'Dark mode',
-    'Background',
-    'Form value',
-]);
+export const TUI_DOC_DEMO_TEXTS = new InjectionToken<[string, string, string]>(
+    'TUI_DOC_DEMO_TEXTS',
+    {
+        factory: () => ['Dark mode', 'Background', 'Form value'],
+    },
+);
 
 /**
  * tui-doc-documentation i18n texts
@@ -26,18 +25,20 @@ export const TUI_DOC_DEMO_TEXTS = tuiCreateToken<[string, string, string]>([
  * @string @deprecated message for tooltip about ng-polymorpheus
  * ]
  */
-export const TUI_DOC_DOCUMENTATION_TEXTS = tuiCreateToken<
+export const TUI_DOC_DOCUMENTATION_TEXTS = new InjectionToken<
     [argument: string, type: string, name: string, value: string, tooltip: string]
->([
-    'Argument',
-    'Type',
-    'Name and description',
-    'Value',
-    /**
-     * @deprecated
-     */
-    'Learn about our dynamic templates from ',
-]);
+>('TUI_DOC_DOCUMENTATION_TEXTS', {
+    factory: () => [
+        'Argument',
+        'Type',
+        'Name and description',
+        'Value',
+        /**
+         * @deprecated
+         */
+        'Learn about our dynamic templates from ',
+    ],
+});
 
 /**
  * tui-doc-example i18n texts
@@ -48,14 +49,25 @@ export const TUI_DOC_DOCUMENTATION_TEXTS = tuiCreateToken<
  * @string link to a sample copied message label
  * ]
  */
-export const TUI_DOC_EXAMPLE_TEXTS = tuiCreateToken<[string, string, string]>([
-    'Preview',
-    'Link to a sample was successfully copied',
-    'Done',
-]);
+export const TUI_DOC_EXAMPLE_TEXTS = new InjectionToken<[string, string, string]>(
+    'TUI_DOC_EXAMPLE_TEXTS',
+    {
+        factory: () => ['Preview', 'Link to a sample was successfully copied', 'Done'],
+    },
+);
 
-export const TUI_DOC_MENU_TEXT = tuiCreateToken('Menu');
-export const TUI_DOC_SEARCH_TEXT = tuiCreateToken('Search');
-export const TUI_DOC_SEE_ALSO_TEXT = tuiCreateToken('See also');
-export const TUI_DOC_SOURCE_CODE_TEXT = tuiCreateToken('Source code');
-export const TUI_DOC_SEARCH_ENABLED = tuiCreateToken(signal(true));
+export const TUI_DOC_MENU_TEXT = new InjectionToken('TUI_DOC_MENU_TEXT', {
+    factory: () => 'Menu',
+});
+export const TUI_DOC_SEARCH_TEXT = new InjectionToken('TUI_DOC_SEARCH_TEXT', {
+    factory: () => 'Search',
+});
+export const TUI_DOC_SEE_ALSO_TEXT = new InjectionToken('TUI_DOC_SEE_ALSO_TEXT', {
+    factory: () => 'See also',
+});
+export const TUI_DOC_SOURCE_CODE_TEXT = new InjectionToken('TUI_DOC_SOURCE_CODE_TEXT', {
+    factory: () => 'Source code',
+});
+export const TUI_DOC_SEARCH_ENABLED = new InjectionToken('TUI_DOC_SEARCH_ENABLED', {
+    factory: () => signal(true),
+});

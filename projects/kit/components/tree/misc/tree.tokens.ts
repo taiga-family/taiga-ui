@@ -1,46 +1,59 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_DEFAULT_TREE_CONTROLLER, TUI_TREE_ITEM_CONTENT} from './tree.constants';
 import type {TuiTreeAccessor, TuiTreeItemContext, TuiTreeLoader} from './tree.interfaces';
+import {InjectionToken} from '@angular/core';
 
 /**
  * Controller for tracking value - TuiTreeItemComponent pairs
  */
-export const TUI_TREE_ACCESSOR = tuiCreateToken<TuiTreeAccessor<unknown>>();
+export const TUI_TREE_ACCESSOR = new InjectionToken<TuiTreeAccessor<unknown>>(
+    'TUI_TREE_ACCESSOR',
+);
 
 /**
  * Controller for expanding the tree
  */
-export const TUI_TREE_CONTROLLER = tuiCreateToken(TUI_DEFAULT_TREE_CONTROLLER);
+export const TUI_TREE_CONTROLLER = new InjectionToken('TUI_TREE_CONTROLLER', {
+    factory: () => TUI_DEFAULT_TREE_CONTROLLER,
+});
 
 /**
  * A node of a tree view
  */
-export const TUI_TREE_NODE = tuiCreateToken();
+export const TUI_TREE_NODE = new InjectionToken('TUI_TREE_NODE');
 
 /**
  * A tree node placeholder for loading
  */
-export const TUI_TREE_LOADING = tuiCreateToken({});
+export const TUI_TREE_LOADING = new InjectionToken('TUI_TREE_LOADING', {
+    factory: () => ({}),
+});
 
 /**
  * A tree node starting point
  */
-export const TUI_TREE_START = tuiCreateToken();
+export const TUI_TREE_START = new InjectionToken('TUI_TREE_START');
 
 /**
  * A service to load tree progressively
  */
-export const TUI_TREE_LOADER = tuiCreateToken<TuiTreeLoader<unknown>>();
+export const TUI_TREE_LOADER = new InjectionToken<TuiTreeLoader<unknown>>(
+    'TUI_TREE_LOADER',
+);
 
 /**
  * Content for a tree item
  */
-export const TUI_TREE_CONTENT =
-    tuiCreateToken<PolymorpheusContent<TuiTreeItemContext>>(TUI_TREE_ITEM_CONTENT);
+export const TUI_TREE_CONTENT = new InjectionToken<
+    PolymorpheusContent<TuiTreeItemContext>
+>('TUI_TREE_CONTENT', {
+    factory: () => TUI_TREE_ITEM_CONTENT,
+});
 
 /**
  * Nesting level of current TreeView node
  */
-export const TUI_TREE_LEVEL = tuiCreateToken(-1);
+export const TUI_TREE_LEVEL = new InjectionToken('TUI_TREE_LEVEL', {
+    factory: () => -1,
+});

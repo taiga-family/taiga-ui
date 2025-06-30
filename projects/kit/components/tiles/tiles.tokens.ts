@@ -1,4 +1,4 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 export type TuiReorderFunction = (
     order: Map<number, number>,
@@ -46,4 +46,9 @@ export const tuiTilesShift: TuiReorderFunction = (order, currentIndex, newIndex)
     return newOrder;
 };
 
-export const TUI_TILES_REORDER = tuiCreateToken<TuiReorderFunction>(tuiTilesSwap);
+export const TUI_TILES_REORDER = new InjectionToken<TuiReorderFunction>(
+    'TUI_TILES_REORDER',
+    {
+        factory: () => tuiTilesSwap,
+    },
+);

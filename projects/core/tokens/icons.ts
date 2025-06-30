@@ -1,8 +1,11 @@
 import type {FactoryProvider} from '@angular/core';
-import {inject} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
-
-export const TUI_ICON_REGISTRY = tuiCreateToken<Record<string, string>>({});
+import {inject, InjectionToken} from '@angular/core';
+export const TUI_ICON_REGISTRY = new InjectionToken<Record<string, string>>(
+    'TUI_ICON_REGISTRY',
+    {
+        factory: () => ({}),
+    },
+);
 
 /**
  * @deprecated: use {@link TUI_ICON_REGISTRY}

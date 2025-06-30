@@ -1,9 +1,10 @@
 import type {Provider} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiHintDirection} from '@taiga-ui/core/directives/hint';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated use {@link TuiCopy} with {@link TuiTextfield}
@@ -28,7 +29,9 @@ export const TUI_INPUT_COPY_DEFAULT_OPTIONS: TuiInputCopyOptions = {
 /**
  * @deprecated use {@link TuiCopy} with {@link TuiTextfield}
  */
-export const TUI_INPUT_COPY_OPTIONS = tuiCreateToken(TUI_INPUT_COPY_DEFAULT_OPTIONS);
+export const TUI_INPUT_COPY_OPTIONS = new InjectionToken('TUI_INPUT_COPY_OPTIONS', {
+    factory: () => TUI_INPUT_COPY_DEFAULT_OPTIONS,
+});
 
 /**
  * @deprecated use {@link TuiCopy} with {@link TuiTextfield}

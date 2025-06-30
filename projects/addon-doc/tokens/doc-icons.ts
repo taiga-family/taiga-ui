@@ -1,5 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiDocIcons {
     readonly code: string;
@@ -32,7 +33,9 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     expand: '@tui.expand',
 };
 
-export const TUI_DOC_ICONS = tuiCreateToken(TUI_DOC_DEFAULT_ICONS);
+export const TUI_DOC_ICONS = new InjectionToken('TUI_DOC_ICONS', {
+    factory: () => TUI_DOC_DEFAULT_ICONS,
+});
 
 export function tuiDocIconsProvider(icons: Partial<TuiDocIcons>): Provider {
     return tuiProvideOptions(TUI_DOC_ICONS, icons, TUI_DOC_DEFAULT_ICONS);

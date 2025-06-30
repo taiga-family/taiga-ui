@@ -2,7 +2,8 @@ import type {Provider} from '@angular/core';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiInputCardOptions {
     /** @deprecated apparently "off" doesn't disable autocomplete */
@@ -20,7 +21,9 @@ export const TUI_INPUT_CARD_DEFAULT_OPTIONS: TuiInputCardOptions = {
     autocomplete: false,
 };
 
-export const TUI_INPUT_CARD_OPTIONS = tuiCreateToken(TUI_INPUT_CARD_DEFAULT_OPTIONS);
+export const TUI_INPUT_CARD_OPTIONS = new InjectionToken('TUI_INPUT_CARD_OPTIONS', {
+    factory: () => TUI_INPUT_CARD_DEFAULT_OPTIONS,
+});
 
 export function tuiInputCardOptionsProvider(
     options: Partial<TuiInputCardOptions>,

@@ -1,11 +1,13 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
-export const TUI_EMAIL_PIPE_OPTIONS = tuiCreateToken([
-    'gmail.com',
-    'outlook.com',
-    'icloud.com',
-    'me.com',
-    'yahoo.com',
-    'mail.com',
-    'proton.me',
-]);
+export const TUI_EMAIL_PIPE_OPTIONS = new InjectionToken('TUI_EMAIL_PIPE_OPTIONS', {
+    factory: () => [
+        'gmail.com',
+        'outlook.com',
+        'icloud.com',
+        'me.com',
+        'yahoo.com',
+        'mail.com',
+        'proton.me',
+    ],
+});

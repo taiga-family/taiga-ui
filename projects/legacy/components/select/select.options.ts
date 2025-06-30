@@ -1,7 +1,8 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiValueContentContext} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {InjectionToken} from '@angular/core';
 
 /**
  * TODO(v5): delete it
@@ -23,7 +24,9 @@ export const TUI_SELECT_DEFAULT_OPTIONS: TuiSelectOptions<unknown> = {
  * TODO(v5): delete it
  * @deprecated use new version of {@link https://taiga-ui.dev/components/select TuiSelect} (from @taiga-ui/kit) instead
  */
-export const TUI_SELECT_OPTIONS = tuiCreateToken(TUI_SELECT_DEFAULT_OPTIONS);
+export const TUI_SELECT_OPTIONS = new InjectionToken('TUI_SELECT_OPTIONS', {
+    factory: () => TUI_SELECT_DEFAULT_OPTIONS,
+});
 
 /**
  * TODO(v5): delete it

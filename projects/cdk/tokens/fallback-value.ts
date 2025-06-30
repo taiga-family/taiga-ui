@@ -1,7 +1,9 @@
 import type {ValueProvider} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
-export const TUI_FALLBACK_VALUE = tuiCreateToken<any>(null);
+export const TUI_FALLBACK_VALUE = new InjectionToken<any>('TUI_FALLBACK_VALUE', {
+    factory: () => null,
+});
 
 export function tuiFallbackValueProvider<T>(useValue: T): ValueProvider {
     return {

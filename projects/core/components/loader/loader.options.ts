@@ -1,6 +1,7 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiLoaderOptions {
     readonly inheritColor: boolean;
@@ -18,7 +19,9 @@ export const TUI_LOADER_DEFAULT_OPTIONS: TuiLoaderOptions = {
 /**
  * Default parameters for loader component
  */
-export const TUI_LOADER_OPTIONS = tuiCreateToken(TUI_LOADER_DEFAULT_OPTIONS);
+export const TUI_LOADER_OPTIONS = new InjectionToken('TUI_LOADER_OPTIONS', {
+    factory: () => TUI_LOADER_DEFAULT_OPTIONS,
+});
 
 export function tuiLoaderOptionsProvider(options: Partial<TuiLoaderOptions>): Provider {
     return tuiProvideOptions(TUI_LOADER_OPTIONS, options, TUI_LOADER_DEFAULT_OPTIONS);

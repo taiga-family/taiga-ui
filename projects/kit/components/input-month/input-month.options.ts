@@ -1,13 +1,10 @@
 import type {FactoryProvider} from '@angular/core';
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_IDENTITY_VALUE_TRANSFORMER} from '@taiga-ui/cdk/classes';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
-import {
-    tuiCreateTokenFromFactory,
-    tuiProvideOptions,
-} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {
     TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
@@ -27,11 +24,14 @@ export const TUI_INPUT_MONTH_DEFAULT_OPTIONS: TuiInputMonthOptions = {
     valueTransformer: TUI_IDENTITY_VALUE_TRANSFORMER,
 };
 
-export const TUI_INPUT_MONTH_OPTIONS = tuiCreateTokenFromFactory<TuiInputMonthOptions>(
-    () => ({
-        ...inject(TUI_INPUT_DATE_OPTIONS_NEW),
-        valueTransformer: TUI_IDENTITY_VALUE_TRANSFORMER,
-    }),
+export const TUI_INPUT_MONTH_OPTIONS = new InjectionToken<TuiInputMonthOptions>(
+    'TUI_INPUT_MONTH_OPTIONS',
+    {
+        factory: () => ({
+            ...inject(TUI_INPUT_DATE_OPTIONS_NEW),
+            valueTransformer: TUI_IDENTITY_VALUE_TRANSFORMER,
+        }),
+    },
 );
 
 export const tuiInputMonthOptionsProvider = (
