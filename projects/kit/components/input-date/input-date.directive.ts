@@ -60,7 +60,6 @@ export abstract class TuiInputDateBase<
     T extends TuiDay | TuiDayRange,
 > extends TuiControl<T | null> {
     private readonly el = tuiInjectElement<HTMLInputElement>();
-    private readonly mobile = inject(TUI_IS_MOBILE);
     private readonly options = inject(TUI_INPUT_DATE_OPTIONS_NEW);
     private readonly handlers = inject(TuiItemsHandlersDirective);
     private readonly textfield = inject(TuiTextfieldDirective);
@@ -81,6 +80,7 @@ export abstract class TuiInputDateBase<
         {},
     );
 
+    protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly open = tuiDropdownOpen();
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS_NEW);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
