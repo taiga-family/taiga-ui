@@ -14,7 +14,6 @@ import {
 import {TuiDropdownDirective, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {filter} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
@@ -26,7 +25,6 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
         tuiAsControl(TuiInputChipDirective),
         tuiFallbackValueProvider([]),
         tuiAsTextfieldAccessor(TuiInputChipDirective),
-        tuiAsAuxiliary(TuiInputChipDirective),
     ],
     hostDirectives: [
         TuiNativeValidator,

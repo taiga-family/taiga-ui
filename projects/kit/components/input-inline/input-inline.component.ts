@@ -23,5 +23,5 @@ export class TuiInputInline {
     @ContentChild(NgControl)
     private readonly control?: NgControl;
 
-    protected readonly value$ = defer(() => tuiControlValue(this.control!));
+    protected readonly value$ = defer(() => tuiControlValue(this.control));
 }

@@ -1,7 +1,8 @@
 import {Directive} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
+import {tuiAsDataListHost, tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {TuiWithTextfieldDropdown} from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownDirective,
@@ -9,16 +10,22 @@ import {
     tuiDropdownOptionsProvider,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
+import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 
 @Directive({
     standalone: true,
     selector: 'button[tuiButtonSelect]',
     providers: [
-        // TODO: Add checkmark once we properly implement new Select, then add to demo
+        tuiAsOptionContent(TuiSelectOption),
         tuiAsDataListHost(TuiButtonSelect),
         tuiDropdownOptionsProvider({align: 'right'}),
     ],
-    hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen, TuiWithTextfieldDropdown],
+    hostDirectives: [
+        TuiDropdownDirective,
+        TuiNativeValidator,
+        TuiWithDropdownOpen,
+        TuiWithTextfieldDropdown,
+    ],
 })
 export class TuiButtonSelect<T> extends TuiControl<T> implements TuiDataListHost<T> {
     private readonly open = tuiDropdownOpen();
