@@ -1,8 +1,8 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeS} from '@taiga-ui/core/types';
-import {InjectionToken} from '@angular/core';
 
 export interface TuiSwitchOptions {
     readonly showIcons: boolean;

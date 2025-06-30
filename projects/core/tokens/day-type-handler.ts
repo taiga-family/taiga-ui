@@ -1,6 +1,6 @@
+import {InjectionToken} from '@angular/core';
 import type {TuiDay} from '@taiga-ui/cdk/date-time';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Token for adding data-type attribute to calendar cell

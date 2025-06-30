@@ -4,10 +4,10 @@ import {
     Directive,
     effect,
     inject,
+    InjectionToken,
     Input,
     signal,
     ViewEncapsulation,
-    InjectionToken,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';

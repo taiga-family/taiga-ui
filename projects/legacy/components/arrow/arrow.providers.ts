@@ -1,11 +1,11 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_ARROW} from './arrow.component';
-import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiChevron}

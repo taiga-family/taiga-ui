@@ -1,7 +1,7 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_VALIDATION_ERRORS = new InjectionToken<
     Record<string, Observable<PolymorpheusContent> | PolymorpheusContent>

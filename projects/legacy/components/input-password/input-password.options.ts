@@ -1,9 +1,9 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated use {@link TuiPassword} with {@link TuiTextfield}

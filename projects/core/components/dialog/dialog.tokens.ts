@@ -1,11 +1,11 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, EMPTY} from 'rxjs';
 
 import type {TuiDialogOptions} from './dialog.interfaces';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_DIALOGS = new InjectionToken('TUI_DIALOGS', {
     factory: () => new BehaviorSubject<ReadonlyArray<TuiPopover<any, any>>>([]),

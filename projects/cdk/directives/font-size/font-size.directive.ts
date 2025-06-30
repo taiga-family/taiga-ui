@@ -1,5 +1,5 @@
 import {isPlatformBrowser} from '@angular/common';
-import {DestroyRef, Directive, inject, PLATFORM_ID, InjectionToken} from '@angular/core';
+import {DestroyRef, Directive, inject, InjectionToken, PLATFORM_ID} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiFontSizeWatcher} from '@taiga-ui/cdk/utils/miscellaneous';

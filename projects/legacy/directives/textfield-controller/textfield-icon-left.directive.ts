@@ -1,4 +1,4 @@
-import {Directive, Input, InjectionToken} from '@angular/core';
+import {Directive, InjectionToken, Input} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';

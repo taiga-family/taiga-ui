@@ -1,8 +1,8 @@
+import {InjectionToken} from '@angular/core';
 import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {tuiExtractI18n} from '@taiga-ui/i18n/utils';
 import type {Observable} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_CONFIRM_WORDS = new InjectionToken('TUI_CONFIRM_WORDS', {
     factory: tuiExtractI18n('confirm'),

@@ -1,8 +1,8 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
-import {InjectionToken} from '@angular/core';
 
 export interface TuiAvatarOptions extends TuiAppearanceOptions {
     readonly appearance: string;

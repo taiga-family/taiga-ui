@@ -1,9 +1,9 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import {InjectionToken} from '@angular/core';
 
 export interface TuiInputCardOptions {
     /** @deprecated apparently "off" doesn't disable autocomplete */

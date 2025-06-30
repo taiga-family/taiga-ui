@@ -1,10 +1,10 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import type {MetadataJson} from 'libphonenumber-js/core';
 import type {Observable} from 'rxjs';
 import {of} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 export interface TuiInputPhoneInternationalOptions {
     readonly countries: readonly TuiCountryIsoCode[];

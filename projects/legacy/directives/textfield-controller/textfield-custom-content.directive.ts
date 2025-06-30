@@ -1,4 +1,4 @@
-import {Directive, Input, InjectionToken} from '@angular/core';
+import {Directive, InjectionToken, Input} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {AbstractTuiController} from '@taiga-ui/legacy/classes';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';

@@ -4,9 +4,9 @@ import {
     Component,
     ContentChildren,
     inject,
+    InjectionToken,
     Input,
     ViewChild,
-    InjectionToken,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {MaskitoOptions} from '@maskito/core';

@@ -1,7 +1,7 @@
 import type {Provider, Type} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0

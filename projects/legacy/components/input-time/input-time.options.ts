@@ -1,10 +1,10 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {InjectionToken} from '@angular/core';
 
 export interface TuiInputTimeOptions {
     readonly icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;

@@ -1,5 +1,5 @@
 import type {FactoryProvider, Provider} from '@angular/core';
-import {Optional, SkipSelf, InjectionToken} from '@angular/core';
+import {InjectionToken, Optional, SkipSelf} from '@angular/core';
 import type {TuiHandler, TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiIconsPathFactory} from '@taiga-ui/legacy/utils';

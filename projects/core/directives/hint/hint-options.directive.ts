@@ -2,11 +2,11 @@ import type {FactoryProvider, OnChanges} from '@angular/core';
 import {
     Directive,
     inject,
+    InjectionToken,
     Input,
     Optional,
     Self,
     SkipSelf,
-    InjectionToken,
 } from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';

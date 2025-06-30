@@ -1,7 +1,7 @@
+import {InjectionToken} from '@angular/core';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_IDENTITY_VALUE_TRANSFORMER} from '@taiga-ui/cdk/classes';
 import type {TuiDay, TuiDayRange, TuiTime} from '@taiga-ui/cdk/date-time';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Control value transformer of TuiDay to custom value format for InputDate* components

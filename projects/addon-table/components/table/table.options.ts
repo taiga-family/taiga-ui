@@ -1,8 +1,8 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {InjectionToken} from '@angular/core';
 
 export const TuiSortDirection = {
     Asc: 1,

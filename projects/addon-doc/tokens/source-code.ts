@@ -1,6 +1,6 @@
+import {InjectionToken} from '@angular/core';
 import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Source code link

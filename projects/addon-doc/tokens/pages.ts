@@ -8,7 +8,9 @@ export const TUI_DOC_PAGES = new InjectionToken<TuiDocRoutePages>('TUI_DOC_PAGES
     factory: () => [],
 });
 
-export const TUI_DOC_MAP_PAGES: InjectionToken<Map<string, TuiDocRoutePage>> =
-    new InjectionToken('TUI_DOC_MAP_PAGES', {
+export const TUI_DOC_MAP_PAGES = new InjectionToken<Map<string, TuiDocRoutePage>>(
+    'TUI_DOC_MAP_PAGES',
+    {
         factory: () => tuiToFlatMapPages(inject(TUI_DOC_PAGES)),
-    });
+    },
+);

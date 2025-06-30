@@ -1,4 +1,5 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {Event} from '@angular/router';
 import {ActivatedRoute, NavigationEnd, Router, Scroll} from '@angular/router';
@@ -10,7 +11,6 @@ import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
 import type {Observable} from 'rxjs';
 import {filter, map, mergeMap} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 function labelsProviderFactory(pages: TuiDocRoutePages): readonly string[] {
     return pages

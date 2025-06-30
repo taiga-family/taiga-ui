@@ -1,6 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import {InjectionToken} from '@angular/core';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * @deprecated use new version of {@link TuiInputNumberOptions} (from @taiga-ui/kit) instead

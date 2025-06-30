@@ -2,6 +2,7 @@ import {NgComponentOutlet} from '@angular/common';
 import {Component, inject, InjectionToken} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+
 import {Home} from '../home/home.component';
 
 export const TUI_HOME_COMPONENT = new InjectionToken('TUI_HOME_COMPONENT', {

@@ -1,5 +1,5 @@
-import {TUI_VERSION} from '@taiga-ui/cdk';
 import {InjectionToken} from '@angular/core';
+import {TUI_VERSION} from '@taiga-ui/cdk';
 
 export interface TuiVersionMeta {
     baseHref: string;

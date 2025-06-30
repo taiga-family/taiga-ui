@@ -1,5 +1,5 @@
 import type {Provider} from '@angular/core';
-import {Optional, Self, InjectionToken} from '@angular/core';
+import {InjectionToken, Optional, Self} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import type {TuiDay, TuiDayRange, TuiTime} from '@taiga-ui/cdk/date-time';

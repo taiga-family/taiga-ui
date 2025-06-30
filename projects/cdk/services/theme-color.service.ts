@@ -1,6 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable, InjectionToken} from '@angular/core';
 import {Meta} from '@angular/platform-browser';
+
 export const TUI_THEME_COLOR = new InjectionToken<string>('TUI_THEME_COLOR', {
     factory: () => inject(Meta).getTag('name="theme-color"')?.content ?? '',
 });

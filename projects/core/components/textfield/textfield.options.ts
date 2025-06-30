@@ -2,11 +2,11 @@ import type {Provider, WritableSignal} from '@angular/core';
 import {
     Directive,
     inject,
+    InjectionToken,
     Input,
     Optional,
     signal,
     SkipSelf,
-    InjectionToken,
 } from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';

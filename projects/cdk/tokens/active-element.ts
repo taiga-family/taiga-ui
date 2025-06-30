@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {inject, NgZone, InjectionToken} from '@angular/core';
+import {inject, InjectionToken, NgZone} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {

@@ -1,6 +1,7 @@
 import type {Provider} from '@angular/core';
 import {inject, InjectionToken} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+
 import {TUI_ASSETS_PATH} from './assets-path';
 import {TUI_ICON_REGISTRY} from './icons';
 

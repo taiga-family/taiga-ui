@@ -1,8 +1,8 @@
+import {InjectionToken} from '@angular/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_DEFAULT_TREE_CONTROLLER, TUI_TREE_ITEM_CONTENT} from './tree.constants';
 import type {TuiTreeAccessor, TuiTreeItemContext, TuiTreeLoader} from './tree.interfaces';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Controller for tracking value - TuiTreeItemComponent pairs

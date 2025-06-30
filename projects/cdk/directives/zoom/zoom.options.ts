@@ -1,5 +1,6 @@
-import type {TuiZoomOptions} from './zoom.types';
 import {InjectionToken} from '@angular/core';
+
+import type {TuiZoomOptions} from './zoom.types';
 
 /**
  * Zoom options

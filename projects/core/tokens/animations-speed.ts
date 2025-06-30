@@ -1,4 +1,5 @@
 import {inject, InjectionToken} from '@angular/core';
+
 import {TUI_REDUCED_MOTION} from './reduced-motion';
 
 /**

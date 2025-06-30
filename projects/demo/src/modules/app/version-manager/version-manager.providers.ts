@@ -1,10 +1,10 @@
 import {DOCUMENT} from '@angular/common';
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {TUI_BASE_HREF} from '@taiga-ui/cdk';
 
 import type {TuiVersionMeta} from './versions.constants';
 import {TUI_VERSIONS_META_MAP} from './versions.constants';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | null>(
     'TUI_SELECTED_VERSION_META',

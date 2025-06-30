@@ -1,5 +1,5 @@
-import {defer, of, switchMap, timer} from 'rxjs';
 import {InjectionToken} from '@angular/core';
+import {defer, of, switchMap, timer} from 'rxjs';
 
 /**
  * Stream that emits if loading of page is over (for example, to begin scrollIntoView)

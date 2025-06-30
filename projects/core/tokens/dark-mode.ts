@@ -1,5 +1,5 @@
 import type {WritableSignal} from '@angular/core';
-import {effect, inject, signal, InjectionToken} from '@angular/core';
+import {effect, inject, InjectionToken, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_LOCAL_STORAGE, WA_WINDOW} from '@ng-web-apis/common';
 import {filter, fromEvent} from 'rxjs';

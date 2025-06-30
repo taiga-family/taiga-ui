@@ -6,6 +6,7 @@ import {
     inject,
     InjectionToken,
 } from '@angular/core';
+
 const MAP = new InjectionToken('MAP', {
     factory: () => {
         const map = new Map();

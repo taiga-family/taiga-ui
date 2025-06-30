@@ -1,6 +1,6 @@
 import {VIRTUAL_SCROLL_STRATEGY} from '@angular/cdk/scrolling';
 import type {Provider} from '@angular/core';
-import {Optional, InjectionToken} from '@angular/core';
+import {InjectionToken, Optional} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {tuiWatch} from '@taiga-ui/cdk/observables';

@@ -1,7 +1,7 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_PDF_VIEWER_DEFAULT_OPTIONS: TuiPdfViewerOptions = {
     label: '',
