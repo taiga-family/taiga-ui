@@ -198,7 +198,7 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
         if (
             this.dropdownOpen.tuiDropdownEnabled &&
-            this.dropdown.content &&
+            this.dropdown._content() &&
             !this.input?.nativeElement.matches(':read-only')
         ) {
             this.open.update((x) => !x);

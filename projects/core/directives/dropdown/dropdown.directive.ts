@@ -72,22 +72,35 @@ export class TuiDropdownDirective
     );
 
     public ref = signal<ComponentRef<unknown> | null>(null);
-    public content: PolymorpheusContent<TuiContext<() => void>>;
+    // TODO(v5): rename to `content`
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    public readonly _content = signal<PolymorpheusContent<TuiContext<() => void>>>(null);
 
     @Input()
     public set tuiDropdown(content: PolymorpheusContent<TuiContext<() => void>>) {
-        this.content =
+        this._content.set(
             content instanceof TemplateRef
                 ? new PolymorpheusTemplate(content, this.cdr)
-                : content;
+                : content,
+        );
 
-        if (!this.content) {
+        if (!this._content()) {
             this.toggle(false);
         }
     }
 
     public get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
+    }
+
+    // TODO(v5): delete
+    public get content(): PolymorpheusContent<TuiContext<() => void>> {
+        return this._content();
+    }
+
+    // TODO(v5): delete
+    public set content(x: PolymorpheusContent<TuiContext<() => void>>) {
+        this._content.set(x);
     }
 
     public ngAfterViewChecked(): void {
@@ -105,7 +118,7 @@ export class TuiDropdownDirective
     public toggle(show: boolean): void {
         const ref = this.ref();
 
-        if (show && this.content && !ref) {
+        if (show && this._content() && !ref) {
             this.ref.set(this.service.add(this.component));
         } else if (!show && ref) {
             this.ref.set(null);

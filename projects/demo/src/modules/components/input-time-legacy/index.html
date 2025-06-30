@@ -1,14 +1,26 @@
 <tui-doc-page
+    deprecated
     header="InputTimeLegacy"
     package="LEGACY"
     path="legacy/components/input-time"
     type="components"
 >
     <ng-template pageTab>
-        <div class="tui-space_bottom-9">
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.InputTime"
+            >
+                <strong>new version of InputTime</strong>
+            </a>
+            instead!
+        </tui-notification>
+
+        <p class="tui-space_bottom-9">
             <code>InputTime</code>
             allows input time in HH:MM format
-        </div>
+        </p>
 
         <h3>DI-tokens for input-configurations:</h3>
         <dl>
