@@ -102,9 +102,6 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
     protected readonly label?: ElementRef<HTMLElement>;
 
-    @ContentChild(TuiControl)
-    protected readonly cva?: TuiControl<unknown>;
-
     @ContentChildren(TUI_AUXILIARY, {descendants: true})
     protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
 
@@ -136,6 +133,9 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
     @ContentChild(NgControl)
     public readonly control?: NgControl;
+
+    @ContentChild(TuiControl)
+    public readonly cva?: TuiControl<unknown>;
 
     // TODO: Replace with signal query when Angular is updated v5
     @ContentChild(forwardRef(() => TuiTextfieldBase), {

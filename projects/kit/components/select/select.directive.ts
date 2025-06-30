@@ -13,7 +13,6 @@ import {
 import {tuiDropdownEnabled, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 import {TuiSelectOption} from './select-option/select-option.component';
 
@@ -24,7 +23,6 @@ import {TuiSelectOption} from './select-option/select-option.component';
         tuiAsOptionContent(TuiSelectOption),
         tuiAsTextfieldAccessor(TuiSelectDirective),
         tuiAsControl(TuiSelectDirective),
-        tuiAsAuxiliary(TuiSelectDirective),
     ],
     hostDirectives: [TuiWithTextfield, TuiSelectLike],
     host: {

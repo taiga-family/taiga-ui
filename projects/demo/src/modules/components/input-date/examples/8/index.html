@@ -19,9 +19,8 @@
         <tui-data-list>
             <button
                 *ngFor="let date of dates | keyvalue: asIs"
+                new
                 tuiOption
-                [class.current]="value?.daySame(date.value)"
-                [iconEnd]="value?.daySame(date.value) ? '@tui.check' : ''"
                 [value]="date.value"
             >
                 {{ date.key }}

@@ -21,7 +21,7 @@
     {{ handlers.stringify()(internal()) }}
 </div>
 <button
-    *ngIf="directive()?.interactive() && !editing() && !disabled()"
+    *ngIf="textfield.cva?.interactive() && !editing() && !disabled()"
     iconStart="@tui.x"
     tabIndex="-1"
     tuiIconButton
