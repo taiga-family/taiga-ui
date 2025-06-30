@@ -98,7 +98,9 @@ export class TuiOptionNew<T = unknown> implements OnDestroy {
     },
 })
 export class TuiOptionWithValue<T = unknown> {
-    private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
+    private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST, {
+        optional: true,
+    });
 
     @Input()
     public disabled = false;

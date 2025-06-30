@@ -17,7 +17,7 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiTextfieldItem} from '@taiga-ui/core/components/textfield';
 import {
     TUI_TEXTFIELD_OPTIONS,
-    tuiInjectAuxiliary,
+    TuiTextfieldComponent,
 } from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
@@ -25,9 +25,8 @@ import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
+import {tuiInjectValue} from '@taiga-ui/kit/utils';
 import {injectContext} from '@taiga-ui/polymorpheus';
-
-import {TuiInputChipDirective} from './input-chip.directive';
 
 @Component({
     standalone: true,
@@ -62,17 +61,14 @@ export class TuiInputChipComponent<T> {
 
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS);
     private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
-    private readonly value = computed(() => this.directive()?.value() ?? []);
+    private readonly value = tuiInjectValue<readonly T[]>();
 
     protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly internal = signal(this.context.$implicit.item);
     protected readonly editing = signal(false);
     protected readonly hint = inject(TuiHintDirective, {self: true, optional: true});
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
-
-    protected readonly directive = tuiInjectAuxiliary<TuiInputChipDirective<T>>(
-        (x) => x instanceof TuiInputChipDirective,
-    );
+    protected readonly textfield = inject(TuiTextfieldComponent);
 
     protected readonly disabled = tuiDirectiveBinding(
         TuiAppearance,
@@ -98,10 +94,10 @@ export class TuiInputChipComponent<T> {
     }
 
     protected delete(): void {
-        this.directive()?.onChange(this.value().filter((_, i) => i !== this.index));
+        this.textfield.cva?.onChange(this.value().filter((_, i) => i !== this.index));
 
         if (!this.mobile) {
-            this.directive()?.el.focus({preventScroll: true});
+            this.textfield.input?.nativeElement.focus({preventScroll: true});
         }
     }
 
@@ -116,9 +112,9 @@ export class TuiInputChipComponent<T> {
             index === this.index ? this.internal() : item,
         );
 
-        this.directive()?.onChange(value);
+        this.textfield.cva?.onChange(value);
         this.editing.set(false);
-        this.directive()?.el.focus({preventScroll: true});
+        this.textfield.input?.nativeElement.focus({preventScroll: true});
     }
 
     protected cancel(): void {
@@ -129,7 +125,7 @@ export class TuiInputChipComponent<T> {
     protected edit(): void {
         if (
             !this.editable ||
-            !this.directive()?.interactive() ||
+            !this.textfield.cva?.interactive() ||
             !tuiIsString(this.internal())
         ) {
             return;
