@@ -28,8 +28,6 @@ export class TuiHideSelectedPipe implements PipeTransform {
 
         const value = this.textfield.control?.value || [];
 
-        console.error(items, value, this.handlers.identityMatcher());
-
         return tuiIsFlat(items)
             ? this.filter(items, value, this.handlers.identityMatcher())
             : this.filter2d(items, value, this.handlers.identityMatcher());
