@@ -17,8 +17,8 @@ import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TuiDataListComponent} from '../data-list.component';
-import {TUI_DATA_LIST_HOST} from '../data-list.tokens';
 import type {TuiDataListHost} from '../data-list.tokens';
+import {TUI_DATA_LIST_HOST} from '../data-list.tokens';
 import {TUI_OPTION_CONTENT} from './option-content';
 
 // TODO(v5): rename `TuiOptionNew` => `TuiOption` & remove [new] from selector
