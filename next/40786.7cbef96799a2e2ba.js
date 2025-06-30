@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40786],{40786:e=>{e.exports='<tui-textfield>\n    <input\n        tuiInputTime\n        [mode]="mode"\n        [(ngModel)]="value"\n    />\n</tui-textfield>\n'}}]);
