@@ -17,6 +17,14 @@
 <tui-badge appearance="neutral">Neutral</tui-badge>
 <tui-badge appearance="info">Info</tui-badge>
 
+<p>Custom status</p>
+<tui-badge
+    tuiStatus="var(--tui-chart-categorical-09)"
+    [style.background]="'var(--tui-chart-categorical-01)'"
+>
+    Custom
+</tui-badge>
+
 <p>Use CSS for support colors</p>
 <tui-badge
     *tuiRepeatTimes="let index of 20"
