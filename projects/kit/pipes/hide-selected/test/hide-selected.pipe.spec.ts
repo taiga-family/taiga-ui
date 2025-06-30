@@ -1,8 +1,8 @@
 import {signal} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 import {TUI_ITEMS_HANDLERS, TuiTextfieldComponent} from '@taiga-ui/core';
 import {TuiHideSelectedPipe} from '@taiga-ui/kit';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
 describe('HideSelected pipe', () => {
     let handlers: any;
