@@ -1,4 +1,4 @@
-import {computed, Directive, Input, signal} from '@angular/core';
+import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
@@ -14,6 +14,8 @@ import {
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
+import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import type {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {
     TUI_DATE_ADAPTER,
@@ -28,6 +30,7 @@ import {TUI_INPUT_DATE_RANGE_OPTIONS} from './input-date-range.options';
     standalone: true,
     selector: 'input[tuiInputDateRange]',
     providers: [
+        // TODO: Add SelectOption after data-list in calendar-range is refactored
         tuiAsControl(TuiInputDateRangeDirective),
         tuiValueTransformerFrom(TUI_INPUT_DATE_RANGE_OPTIONS),
         tuiProvide(TUI_INPUT_DATE_OPTIONS_NEW, TUI_INPUT_DATE_RANGE_OPTIONS),
@@ -35,6 +38,10 @@ import {TUI_INPUT_DATE_RANGE_OPTIONS} from './input-date-range.options';
     hostDirectives: [TuiWithTextfield, TuiDropdownAuto, MaskitoDirective],
 })
 export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
+    protected readonly identity = inject<TuiItemsHandlers<TuiDayRange>>(
+        TUI_ITEMS_HANDLERS,
+    ).identityMatcher.set((a, b) => a.daySame(b));
+
     protected readonly rangeFiller = tuiDirectiveBinding(
         TuiTextfieldComponent,
         'fillerSetter',

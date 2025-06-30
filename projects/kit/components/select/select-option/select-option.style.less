@@ -19,3 +19,7 @@
 :host._value._selected::after {
     opacity: 1;
 }
+
+:host._value._selected ~ ::ng-deep [tuiSelectOption]::after {
+    opacity: 0;
+}

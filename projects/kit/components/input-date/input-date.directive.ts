@@ -14,6 +14,7 @@ import {
     tuiDirectiveBinding,
 } from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
+import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {
     tuiInjectAuxiliary,
     TuiTextfieldComponent,
@@ -26,12 +27,15 @@ import {
     tuiDropdownEnabled,
     tuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
+import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {
+    TUI_ITEMS_HANDLERS,
     TuiItemsHandlersDirective,
     TuiItemsHandlersValidator,
 } from '@taiga-ui/core/directives/items-handlers';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
+import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {TUI_DATE_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
@@ -156,6 +160,7 @@ export abstract class TuiInputDateBase<
     standalone: true,
     selector: 'input[tuiInputDate]',
     providers: [
+        tuiAsOptionContent(TuiSelectOption),
         tuiAsControl(TuiInputDateDirective),
         tuiValueTransformerFrom(TUI_INPUT_DATE_OPTIONS_NEW),
     ],
@@ -167,6 +172,10 @@ export abstract class TuiInputDateBase<
     ],
 })
 export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
+    protected readonly identity = inject<TuiItemsHandlers<TuiDay>>(
+        TUI_ITEMS_HANDLERS,
+    ).identityMatcher.set((a, b) => a.daySame(b));
+
     protected override onValueChange(value: string): void {
         this.control?.control?.updateValueAndValidity({emitEvent: false});
         this.onChange(
