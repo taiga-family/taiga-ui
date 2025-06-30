@@ -1,3 +1,5 @@
+import type {BooleanInput} from '@angular/cdk/coercion';
+import {coerceBooleanProperty} from '@angular/cdk/coercion';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
@@ -15,6 +17,7 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
         '[attr.data-size]': 'size',
         '[style.--tui-progress-color]': 'color',
         '[style.--t-progress-ratio]': 'progressRatio',
+        '[class._arc]': 'arc',
     },
 })
 export class TuiProgressCircle {
@@ -33,6 +36,9 @@ export class TuiProgressCircle {
 
     @Input()
     public size: TuiSizeXXL | TuiSizeXXS = this.options.size;
+
+    @Input({transform: coerceBooleanProperty})
+    public arc: BooleanInput = false;
 
     protected get progressRatio(): number {
         const ratio = this.value / this.max;

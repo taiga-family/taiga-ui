@@ -1,5 +1,5 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import type {AfterViewChecked, ComponentRef, OnChanges, OnDestroy} from '@angular/core';
+import type {AfterViewChecked, ComponentRef, OnDestroy} from '@angular/core';
 import {
     ChangeDetectorRef,
     Directive,
@@ -46,13 +46,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     },
 })
 export class TuiDropdownDirective
-    implements
-        AfterViewChecked,
-        OnDestroy,
-        OnChanges,
-        TuiPortalItem,
-        TuiRectAccessor,
-        TuiVehicle
+    implements AfterViewChecked, OnDestroy, TuiPortalItem, TuiRectAccessor, TuiVehicle
 {
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiDropdownService);
@@ -60,10 +54,7 @@ export class TuiDropdownDirective
 
     // TODO: think of a better solution later
     private readonly drivers = coerceArray(
-        inject(TuiDropdownDriver, {
-            self: true,
-            optional: true,
-        }),
+        inject(TuiDropdownDriver, {self: true, optional: true}),
     );
 
     protected readonly sub = this.refresh$
@@ -81,28 +72,39 @@ export class TuiDropdownDirective
     );
 
     public ref = signal<ComponentRef<unknown> | null>(null);
-    public content: PolymorpheusContent<TuiContext<() => void>>;
+    // TODO(v5): rename to `content`
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    public readonly _content = signal<PolymorpheusContent<TuiContext<() => void>>>(null);
 
     @Input()
     public set tuiDropdown(content: PolymorpheusContent<TuiContext<() => void>>) {
-        this.content =
+        this._content.set(
             content instanceof TemplateRef
                 ? new PolymorpheusTemplate(content, this.cdr)
-                : content;
+                : content,
+        );
+
+        if (!this._content()) {
+            this.toggle(false);
+        }
     }
 
     public get position(): 'absolute' | 'fixed' {
         return tuiCheckFixedPosition(this.el) ? 'fixed' : 'absolute';
     }
 
-    public ngAfterViewChecked(): void {
-        this.refresh$.next();
+    // TODO(v5): delete
+    public get content(): PolymorpheusContent<TuiContext<() => void>> {
+        return this._content();
     }
 
-    public ngOnChanges(): void {
-        if (!this.content) {
-            this.toggle(false);
-        }
+    // TODO(v5): delete
+    public set content(x: PolymorpheusContent<TuiContext<() => void>>) {
+        this._content.set(x);
+    }
+
+    public ngAfterViewChecked(): void {
+        this.refresh$.next();
     }
 
     public ngOnDestroy(): void {
@@ -116,7 +118,7 @@ export class TuiDropdownDirective
     public toggle(show: boolean): void {
         const ref = this.ref();
 
-        if (show && this.content && !ref) {
+        if (show && this._content() && !ref) {
             this.ref.set(this.service.add(this.component));
         } else if (!show && ref) {
             this.ref.set(null);

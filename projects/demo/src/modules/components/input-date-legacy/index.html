@@ -6,6 +6,17 @@
     type="components"
 >
     <ng-template pageTab>
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.InputDate"
+            >
+                <strong>new version of InputDate</strong>
+            </a>
+            instead!
+        </tui-notification>
+
         <div class="tui-space_bottom-9">
             <code>InputDate</code>
             – input with a calendar.

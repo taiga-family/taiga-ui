@@ -55,6 +55,10 @@ import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-date TuiInputDate} (from @taiga-ui/kit) instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-input-date:not([multiple])',

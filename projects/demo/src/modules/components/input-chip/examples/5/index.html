@@ -1,0 +1,42 @@
+<tui-textfield multi>
+    <input
+        placeholder="Type for suggestions"
+        tuiInputChip
+        [(ngModel)]="strings"
+    />
+    <tui-input-chip *tuiItem />
+    <ng-container *ngIf="items | tuiHideSelected | tuiFilterByInput as items">
+        <ng-template
+            *ngIf="items.length"
+            tuiTextfieldDropdown
+        >
+            <tui-data-list-wrapper [items]="items" />
+        </ng-template>
+    </ng-container>
+</tui-textfield>
+
+<tui-textfield
+    #textfield
+    multi
+    [content]="!textfield.focused() && pythons.length ? 'Selected ' + pythons.length + ' out of ' + items.length : ''"
+    [disabledItemHandler]="handler"
+>
+    <label tuiLabel>Select Pythons</label>
+    <input
+        tuiInputChip
+        [placeholder]="pythons.length ? '' : 'Type for suggestions'"
+        [(ngModel)]="pythons"
+    />
+    <ng-template
+        *ngIf="!textfield.focused()"
+        tuiItem
+    />
+    <ng-container *ngIf="items | tuiHideSelected | tuiFilterByInput as items">
+        <ng-template
+            *ngIf="items.length"
+            tuiTextfieldDropdown
+        >
+            <tui-data-list-wrapper [items]="items" />
+        </ng-template>
+    </ng-container>
+</tui-textfield>

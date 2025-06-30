@@ -1,32 +1,22 @@
 import {Component, computed, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiControl} from '@taiga-ui/cdk';
-import {TuiDropdownOpen, tuiInjectAuxiliary, TuiOptionWithValue} from '@taiga-ui/core';
+import {TuiOptionWithValue} from '@taiga-ui/core';
+import {tuiInjectValue} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    selector: 'custom-option',
     template: '<span>{{selected() ? "←" : ""}}</span>',
     styles: [':host {flex-direction: row-reverse; justify-content: start}'],
     encapsulation,
     changeDetection,
     host: {
         '[style.font-weight]': 'selected() ? "bold" : null',
-        '(click)': 'onClick()',
     },
 })
 export class Option<T> {
-    private readonly dropdown = inject(TuiDropdownOpen);
     private readonly option = inject<TuiOptionWithValue<T>>(TuiOptionWithValue);
-    private readonly control = tuiInjectAuxiliary<TuiControl<T | null>>(
-        (x) => x instanceof TuiControl,
-    );
+    private readonly value = tuiInjectValue<T>();
 
-    protected selected = computed(() => this.control()?.value() === this.option.value());
-
-    protected onClick(): void {
-        this.control()?.onChange(this.option.value() ?? null);
-        this.dropdown.toggle(false);
-    }
+    protected selected = computed(() => this.value() === this.option.value());
 }

@@ -34,7 +34,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     imports: [PolymorpheusOutlet, TuiScrollbar],
     template: `
         <tui-scrollbar [style.height.%]="100">
-            <ng-container *polymorpheusOutlet="directive.content" />
+            <ng-container *polymorpheusOutlet="directive._content()" />
         </tui-scrollbar>
     `,
     styleUrls: ['./drawer.style.less'],

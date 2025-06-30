@@ -29,7 +29,6 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 
 @Directive({
@@ -39,7 +38,6 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
         tuiAsOptionContent(TuiSelectOption),
         tuiAsTextfieldAccessor(TuiComboBox),
         tuiAsControl(TuiComboBox),
-        tuiAsAuxiliary(TuiComboBox),
     ],
     hostDirectives: [TuiWithTextfield],
     host: {
@@ -145,7 +143,7 @@ export class TuiComboBox<T>
     }
 
     protected toggleDropdown(open = !this.open()): void {
-        if (this.dropdownEnabled() && this.dropdown.content) {
+        if (this.dropdownEnabled() && this.dropdown._content()) {
             this.open.set(open);
         }
     }

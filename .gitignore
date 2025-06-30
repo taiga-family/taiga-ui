@@ -42,4 +42,3 @@ projects/demo/src/llms-full.txt
 migrations.json
 sitemap.xml
 blob-report
-.env.local
