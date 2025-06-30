@@ -2,6 +2,7 @@ import {signal} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {TUI_ITEMS_HANDLERS, TuiTextfieldComponent} from '@taiga-ui/core';
 import {TuiHideSelectedPipe} from '@taiga-ui/kit';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
 describe('HideSelected pipe', () => {
     let handlers: any;
@@ -9,8 +10,8 @@ describe('HideSelected pipe', () => {
     let pipe: TuiHideSelectedPipe;
 
     beforeEach(() => {
-        textfield = {control: {value: [1, 2, 3]}};
-        handlers = {identityMatcher: signal(() => (a: any, b: any) => a === b)};
+        textfield = {control: {value: []}};
+        handlers = {identityMatcher: signal(TUI_FALSE_HANDLER)};
 
         TestBed.overrideProvider(TuiTextfieldComponent, {useValue: textfield})
             .overrideProvider(TUI_ITEMS_HANDLERS, {useValue: handlers})
@@ -20,10 +21,16 @@ describe('HideSelected pipe', () => {
     });
 
     it('works for flat arrays', () => {
+        handlers.identityMatcher.set((a: any, b: any) => a === b);
+        textfield.control.value = [1, 2, 3];
+
         expect(pipe.transform([1, 4, 5])).toEqual([4, 5]);
     });
 
     it('works for 2d arrays', () => {
+        handlers.identityMatcher.set((a: any, b: any) => a === b);
+        textfield.control.value = [1, 2, 3];
+
         expect(
             pipe.transform([
                 [1, 4, 5],

@@ -61,7 +61,10 @@ export class TuiInputChipDirective<T>
             filter((active) => !active),
             takeUntilDestroyed(),
         )
-        .subscribe(() => this.onEnter());
+        .subscribe(() => {
+            this.onEnter();
+            this.textfield.value.set('');
+        });
 
     @Input()
     public separator = this.options.separator;
