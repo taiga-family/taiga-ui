@@ -27,7 +27,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 })
 export class TuiSelectOption<T> {
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
-    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+    private readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly control = tuiInjectAuxiliary<TuiControl<T>>(
         (x) => x instanceof TuiControl,
     );
@@ -44,7 +44,7 @@ export class TuiSelectOption<T> {
         (controlValue = this.control()?.value(), optionValue = this.option?.value()) =>
             tuiIsPresent(optionValue) &&
             tuiIsPresent(controlValue) &&
-            this.itemsHandlers.identityMatcher()(controlValue, optionValue),
+            this.handlers.identityMatcher()(controlValue, optionValue),
     );
 
     protected readonly scrolled = tuiDirectiveBinding(

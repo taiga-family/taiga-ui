@@ -208,7 +208,14 @@ tui-textfield {
         textarea:defined {
             padding-block-start: calc(var(--t-height) / 3);
             padding-block-end: 0;
+        }
+    }
 
+    &:not([data-focus='true']):has(label:not(:empty)) {
+        & > .t-template,
+        input:not([type='range']),
+        select:defined,
+        textarea:defined {
             &::placeholder,
             &._empty {
                 color: transparent;
@@ -224,7 +231,14 @@ tui-textfield {
         textarea:defined {
             padding-block-start: calc(var(--t-height) / 3);
             padding-block-end: 0;
+        }
+    }
 
+    &:not([data-focus='true'])._with-label {
+        & > .t-template,
+        input:not([type='range']),
+        select:defined,
+        textarea:defined {
             &::placeholder,
             &._empty {
                 color: transparent;

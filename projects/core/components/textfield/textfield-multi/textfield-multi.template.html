@@ -11,7 +11,7 @@
 >
     <ng-content select="label" />
     <ng-template
-        *ngFor="let item of ngControl?.value; let index = index"
+        *ngFor="let item of control?.value; let index = index"
         [polymorpheusOutlet]="component"
         [polymorpheusOutletContext]="{$implicit: {item, index}}"
     />
@@ -41,7 +41,8 @@
 
 <span
     class="t-content"
-    (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
+    (click)="input?.nativeElement?.focus()"
+    (pointerdown.zoneless.prevent)="(0)"
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
@@ -63,10 +64,10 @@
 </span>
 
 <span
-    *ngIf="ngControl?.value != null"
+    *ngIf="control?.value != null"
     class="t-template"
 >
-    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: ngControl?.value}">
+    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value}">
         {{ text }}
     </ng-container>
 </span>

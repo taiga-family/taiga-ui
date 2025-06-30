@@ -294,6 +294,13 @@ tui-textfield[multi][multi] {
         }
     }
 
+    .appearance-focus({
+        input::placeholder,
+        input._empty {
+            color: var(--tui-text-tertiary);
+        }
+    });
+
     tui-textfield-item {
         transform: translateX(var(--t-scroll));
     }

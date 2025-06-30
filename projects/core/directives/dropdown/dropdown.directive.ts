@@ -1,5 +1,5 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import type {AfterViewChecked, ComponentRef, OnChanges, OnDestroy} from '@angular/core';
+import type {AfterViewChecked, ComponentRef, OnDestroy} from '@angular/core';
 import {
     ChangeDetectorRef,
     Directive,
@@ -46,13 +46,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     },
 })
 export class TuiDropdownDirective
-    implements
-        AfterViewChecked,
-        OnDestroy,
-        OnChanges,
-        TuiPortalItem,
-        TuiRectAccessor,
-        TuiVehicle
+    implements AfterViewChecked, OnDestroy, TuiPortalItem, TuiRectAccessor, TuiVehicle
 {
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiDropdownService);
@@ -60,10 +54,7 @@ export class TuiDropdownDirective
 
     // TODO: think of a better solution later
     private readonly drivers = coerceArray(
-        inject(TuiDropdownDriver, {
-            self: true,
-            optional: true,
-        }),
+        inject(TuiDropdownDriver, {self: true, optional: true}),
     );
 
     protected readonly sub = this.refresh$
@@ -89,6 +80,10 @@ export class TuiDropdownDirective
             content instanceof TemplateRef
                 ? new PolymorpheusTemplate(content, this.cdr)
                 : content;
+
+        if (!this.content) {
+            this.toggle(false);
+        }
     }
 
     public get position(): 'absolute' | 'fixed' {
@@ -97,12 +92,6 @@ export class TuiDropdownDirective
 
     public ngAfterViewChecked(): void {
         this.refresh$.next();
-    }
-
-    public ngOnChanges(): void {
-        if (!this.content) {
-            this.toggle(false);
-        }
     }
 
     public ngOnDestroy(): void {

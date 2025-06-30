@@ -78,12 +78,12 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
     host: {
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
-        '[class._with-template]': 'content && ngControl?.value != null',
+        '[class._with-template]': 'content && control?.value != null',
         '[class._disabled]': 'input?.nativeElement?.disabled',
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
-        '(tuiActiveZoneChange)': '!$event && control?.onTouched()',
+        '(tuiActiveZoneChange)': '!$event && cva?.onTouched()',
     },
 })
 export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterContentInit {
@@ -102,11 +102,8 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
     protected readonly label?: ElementRef<HTMLElement>;
 
-    @ContentChild(NgControl)
-    protected readonly ngControl?: NgControl;
-
     @ContentChild(TuiControl)
-    protected readonly control?: TuiControl<unknown>;
+    protected readonly cva?: TuiControl<unknown>;
 
     @ContentChildren(TUI_AUXILIARY, {descendants: true})
     protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
@@ -136,6 +133,9 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
     @ContentChild(TUI_TEXTFIELD_ACCESSOR, {descendants: true})
     public readonly accessor?: TuiTextfieldAccessor<T>;
+
+    @ContentChild(NgControl)
+    public readonly control?: NgControl;
 
     // TODO: Replace with signal query when Angular is updated v5
     @ContentChild(forwardRef(() => TuiTextfieldBase), {

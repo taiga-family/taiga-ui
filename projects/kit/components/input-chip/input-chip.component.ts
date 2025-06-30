@@ -12,7 +12,7 @@ import {
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import type {TuiTextfieldItem} from '@taiga-ui/core/components/textfield';
 import {
@@ -127,7 +127,11 @@ export class TuiInputChipComponent<T> {
     }
 
     protected edit(): void {
-        if (!this.editable || !this.directive()?.interactive()) {
+        if (
+            !this.editable ||
+            !this.directive()?.interactive() ||
+            !tuiIsString(this.internal())
+        ) {
             return;
         }
 
