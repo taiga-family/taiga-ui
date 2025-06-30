@@ -10,14 +10,14 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
-import {tuiIsPresent} from '@taiga-ui/cdk';
-import type {TuiItemsHandlers} from '@taiga-ui/core';
-import {
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiOptionWithValue} from '@taiga-ui/core/components/data-list';
+import {TuiLink} from '@taiga-ui/core/components/link';
+import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
+import type {
     TUI_ITEMS_HANDLERS,
-    TuiLink,
-    TuiOptionWithValue,
-    TuiTextfieldComponent,
-} from '@taiga-ui/core';
+    TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 

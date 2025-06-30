@@ -6,8 +6,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_IS_ANDROID} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {tuiInjectElement} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
