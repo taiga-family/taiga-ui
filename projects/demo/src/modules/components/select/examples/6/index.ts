@@ -1,8 +1,4 @@
-import {
-    CdkFixedSizeVirtualScroll,
-    CdkVirtualForOf,
-    CdkVirtualScrollViewport,
-} from '@angular/cdk/scrolling';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -16,10 +12,8 @@ import {map} from 'rxjs';
     standalone: true,
     imports: [
         AsyncPipe,
-        CdkFixedSizeVirtualScroll,
-        CdkVirtualForOf,
-        CdkVirtualScrollViewport,
         FormsModule,
+        ScrollingModule,
         TuiChevron,
         TuiDataList,
         TuiScrollable,
