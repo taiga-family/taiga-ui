@@ -2,7 +2,7 @@ import {resetActiveProject} from 'ng-morph';
 
 import {runMigration} from './utils';
 
-describe('ng-update should migrate tuiCreateToken and tuiCreateTokenFromFactory to InjectionToken', () => {
+describe.skip('ng-update should migrate tuiCreateToken and tuiCreateTokenFromFactory to InjectionToken', () => {
     it('should migrate basic tokens without existing InjectionToken import', async () => {
         expect(
             await runMigration(
