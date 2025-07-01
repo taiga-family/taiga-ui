@@ -1,4 +1,4 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 import type {TuiLanguageLoader} from '@taiga-ui/i18n/types';
 
 /**
@@ -6,4 +6,6 @@ import type {TuiLanguageLoader} from '@taiga-ui/i18n/types';
  * @note: cannot be transferred to a shared file
  * ReferenceError: Cannot access 'TUI_LANGUAGE_LOADER' before initialization
  */
-export const TUI_LANGUAGE_LOADER = tuiCreateToken<TuiLanguageLoader>();
+export const TUI_LANGUAGE_LOADER = new InjectionToken<TuiLanguageLoader>(
+    ngDevMode ? 'TUI_LANGUAGE_LOADER' : '',
+);

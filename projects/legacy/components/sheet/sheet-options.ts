@@ -1,4 +1,4 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import type {TuiSheet} from './sheet';
@@ -36,6 +36,11 @@ export const TUI_SHEET_DEFAULT_OPTIONS: Omit<TuiSheetOptions, 'data'> = {
  * @deprecated: drop in v5.0 use {@link TuiSheetDialog}
  * https://taiga-ui.dev/components/sheet-dialog
  */
-export const TUI_SHEET_OPTIONS = tuiCreateToken<Omit<TuiSheetOptions, 'data'>>({
-    ...TUI_SHEET_DEFAULT_OPTIONS,
-});
+export const TUI_SHEET_OPTIONS = new InjectionToken<Omit<TuiSheetOptions, 'data'>>(
+    ngDevMode ? 'TUI_SHEET_OPTIONS' : '',
+    {
+        factory: () => ({
+            ...TUI_SHEET_DEFAULT_OPTIONS,
+        }),
+    },
+);

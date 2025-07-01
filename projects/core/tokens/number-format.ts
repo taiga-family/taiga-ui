@@ -1,8 +1,7 @@
-import type {InjectionToken, Provider} from '@angular/core';
-import {Optional, SkipSelf} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {InjectionToken, Optional, SkipSelf} from '@angular/core';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import type {TuiRounding} from '@taiga-ui/cdk/types';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 
@@ -49,8 +48,12 @@ export const TUI_DEFAULT_NUMBER_FORMAT: TuiNumberFormatSettings = {
 /**
  * Formatting configuration for displayed numbers
  */
-export const TUI_NUMBER_FORMAT: InjectionToken<Observable<TuiNumberFormatSettings>> =
-    tuiCreateToken(of(TUI_DEFAULT_NUMBER_FORMAT));
+export const TUI_NUMBER_FORMAT = new InjectionToken<Observable<TuiNumberFormatSettings>>(
+    ngDevMode ? 'TUI_NUMBER_FORMAT' : '',
+    {
+        factory: () => of(TUI_DEFAULT_NUMBER_FORMAT),
+    },
+);
 
 export function tuiNumberFormatProvider(
     options: Partial<TuiNumberFormatSettings>,

@@ -1,11 +1,13 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
-export const TUI_VALIDATION_ERRORS = tuiCreateToken<
+export const TUI_VALIDATION_ERRORS = new InjectionToken<
     Record<string, Observable<PolymorpheusContent> | PolymorpheusContent>
->({});
+>(ngDevMode ? 'TUI_VALIDATION_ERRORS' : '', {
+    factory: () => ({}),
+});
 
 export const tuiValidationErrorsProvider = (
     useValue: Record<string, Observable<PolymorpheusContent> | PolymorpheusContent>,

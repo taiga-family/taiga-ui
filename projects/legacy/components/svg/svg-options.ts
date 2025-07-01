@@ -1,11 +1,7 @@
 import type {FactoryProvider, Provider} from '@angular/core';
-import {Optional, SkipSelf} from '@angular/core';
+import {InjectionToken, Optional, SkipSelf} from '@angular/core';
 import type {TuiHandler, TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk/types';
-import {
-    tuiCreateToken,
-    tuiCreateTokenFromFactory,
-    tuiIsString,
-} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiIconsPathFactory} from '@taiga-ui/legacy/utils';
 import {identity} from 'rxjs';
 
@@ -61,19 +57,26 @@ export const TUI_SVG_DEFAULT_OPTIONS: TuiSvgOptions = {
  * @deprecated: drop in v5.0 use {@link TuiIcon}
  * https://taiga-ui.dev/components/icon
  */
-export const TUI_SVG_OPTIONS = tuiCreateTokenFromFactory<TuiSvgOptions>(() => ({
-    iconsPlace: TUI_DEFAULT_ICONS_PLACE,
-    path: tuiIconsPathFactory(TUI_DEFAULT_ICONS_PLACE),
-    deprecated: TUI_SVG_DEFAULT_OPTIONS.deprecated,
-    srcProcessor: identity,
-    contentProcessor: tuiSvgLinearGradientProcessor,
-}));
+export const TUI_SVG_OPTIONS = new InjectionToken<TuiSvgOptions>(
+    ngDevMode ? 'TUI_SVG_OPTIONS' : '',
+    {
+        factory: () => ({
+            iconsPlace: TUI_DEFAULT_ICONS_PLACE,
+            path: tuiIconsPathFactory(TUI_DEFAULT_ICONS_PLACE),
+            deprecated: TUI_SVG_DEFAULT_OPTIONS.deprecated,
+            srcProcessor: identity,
+            contentProcessor: tuiSvgLinearGradientProcessor,
+        }),
+    },
+);
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiIcon}
  * https://taiga-ui.dev/components/icon
  */
-export const TUI_SVG_SRC_INTERCEPTORS = tuiCreateToken<TuiSvgInterceptorHandler>();
+export const TUI_SVG_SRC_INTERCEPTORS = new InjectionToken<TuiSvgInterceptorHandler>(
+    ngDevMode ? 'TUI_SVG_SRC_INTERCEPTORS' : '',
+);
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiIcon}
