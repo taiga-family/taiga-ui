@@ -3,10 +3,9 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiContext, TuiStringMatcher} from '@taiga-ui/cdk';
+import type {TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
 import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 interface Python {
     readonly id: number;
@@ -40,9 +39,8 @@ export default class Example {
         {id: 999, name: 'Graham Chapman'},
     ];
 
-    protected readonly content: PolymorpheusContent<TuiContext<number | null>> = ({
-        $implicit: id,
-    }) => this.items.find((item) => item.id === id)?.name ?? '';
+    protected readonly stringify: TuiStringHandler<number> = (id) =>
+        this.items.find((item) => item.id === id)?.name ?? '';
 
     protected readonly matcher: TuiStringMatcher<number> = (id, query) => {
         const {name} = this.items.find((item) => item.id === id)!;
