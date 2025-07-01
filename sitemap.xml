@@ -298,6 +298,9 @@
     <loc>https://taiga-ui.dev/components/input-tag/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/input-time/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/legacy/input-time/</loc>
   </url>
   <url>
@@ -1181,6 +1184,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-tag/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-time/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-time/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/legacy/input-time/API/</loc>
