@@ -41,7 +41,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {filter, fromEvent} from 'rxjs';
 
-import {TuiTextfieldComponent} from '../textfield.component';
+import {TuiTextfieldBaseComponent, TuiTextfieldComponent} from '../textfield.component';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
 import type {TuiTextfieldItem} from './textfield-item.component';
 import {TuiTextfieldItemComponent} from './textfield-item.component';
@@ -83,11 +83,21 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
         '[class._empty]': '!control?.value?.length',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows',
-        '(tuiActiveZoneChange)': '!$event && el.scrollTo({left: 0})',
+        '(click)': 'onClick($event.target)',
+        '(tuiActiveZoneChange)':
+            '!$event && (el.scrollTo({left: 0}) || cva?.onTouched())',
+        // TODO: Remove in v5
+        '[attr.data-size]': 'options.size()',
+        '[class._with-label]': 'hasLabel',
+        '[class._with-template]': 'content && control?.value != null',
+        '[class._disabled]': 'input?.nativeElement?.disabled',
+        '(click.self.prevent)': '0',
+        '(pointerdown.self.prevent)': 'onIconClick()',
+        '(scroll.capture.zoneless)': 'onScroll($event.target)',
     },
 })
 export class TuiTextfieldMultiComponent<T>
-    extends TuiTextfieldComponent<T>
+    extends TuiTextfieldBaseComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
     protected readonly height = signal<number | null>(null);
@@ -112,7 +122,6 @@ export class TuiTextfieldMultiComponent<T>
     public rows = 100;
 
     public override handleOption(option: T): void {
-        this.input?.nativeElement.focus();
         this.accessor?.setValue(
             tuiArrayToggle(
                 this.control?.value ?? [],
@@ -140,5 +149,15 @@ export class TuiTextfieldMultiComponent<T>
 
         event.preventDefault();
         event.currentTarget.previousElementSibling?.firstElementChild?.focus();
+    }
+
+    protected onClick(target: HTMLElement): void {
+        if (
+            target !== this.el &&
+            this.el.matches('[tuiChevron]') &&
+            !target.matches('input:read-only')
+        ) {
+            this.open.update((open) => !open);
+        }
     }
 }
