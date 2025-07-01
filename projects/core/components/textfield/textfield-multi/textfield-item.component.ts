@@ -26,6 +26,7 @@ export interface TuiTextfieldItem<T> {
     changeDetection: ChangeDetectionStrategy.Default,
     host: {
         '[class._string]': '!textfield.item',
+        '(pointerdown.self.prevent)': '0',
         '(keydown.arrowLeft.prevent)': 'el.previousElementSibling?.firstChild?.focus()',
         '(keydown.arrowRight.prevent)': 'el.nextElementSibling?.firstChild?.focus()',
     },
