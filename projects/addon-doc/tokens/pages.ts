@@ -1,16 +1,19 @@
-import type {InjectionToken} from '@angular/core';
 import {inject} from '@angular/core';
 import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiToFlatMapPages} from '@taiga-ui/addon-doc/utils';
-import {
-    tuiCreateToken,
-    tuiCreateTokenFromFactory,
-} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 /**
  * Documentation pages
  */
-export const TUI_DOC_PAGES = tuiCreateToken<TuiDocRoutePages>([]);
+export const TUI_DOC_PAGES = new InjectionToken<TuiDocRoutePages>(
+    ngDevMode ? 'TUI_DOC_PAGES' : '',
+    {
+        factory: () => [],
+    },
+);
 
 export const TUI_DOC_MAP_PAGES: InjectionToken<Map<string, TuiDocRoutePage>> =
-    tuiCreateTokenFromFactory(() => tuiToFlatMapPages(inject(TUI_DOC_PAGES)));
+    new InjectionToken(ngDevMode ? 'TUI_DOC_MAP_PAGES' : '', {
+        factory: () => tuiToFlatMapPages(inject(TUI_DOC_PAGES)),
+    });

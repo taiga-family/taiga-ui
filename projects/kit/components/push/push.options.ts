@@ -1,5 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiPushOptions {
     readonly buttons: readonly string[];
@@ -24,7 +25,9 @@ export const TUI_PUSH_DEFAULT_OPTIONS: TuiPushOptions = {
 /**
  * Default parameters for Push component
  */
-export const TUI_PUSH_OPTIONS = tuiCreateToken(TUI_PUSH_DEFAULT_OPTIONS);
+export const TUI_PUSH_OPTIONS = new InjectionToken(ngDevMode ? 'TUI_PUSH_OPTIONS' : '', {
+    factory: () => TUI_PUSH_DEFAULT_OPTIONS,
+});
 
 export function tuiPushOptionsProvider(options: Partial<TuiPushOptions>): Provider {
     return tuiProvideOptions(TUI_PUSH_OPTIONS, options, TUI_PUSH_DEFAULT_OPTIONS);

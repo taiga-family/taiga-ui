@@ -1,12 +1,12 @@
 import {inject} from '@angular/core';
 import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {isApple} from '@ng-web-apis/platform';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0
  * Apple(safari/webkit) detection
  */
-export const TUI_IS_APPLE = tuiCreateTokenFromFactory(() =>
-    isApple(inject(WA_NAVIGATOR)),
-);
+export const TUI_IS_APPLE = new InjectionToken(ngDevMode ? 'TUI_IS_APPLE' : '', {
+    factory: () => isApple(inject(WA_NAVIGATOR)),
+});

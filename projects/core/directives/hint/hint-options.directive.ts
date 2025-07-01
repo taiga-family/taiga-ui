@@ -1,9 +1,10 @@
 import type {FactoryProvider, OnChanges} from '@angular/core';
 import {Directive, inject, Input, Optional, Self, SkipSelf} from '@angular/core';
-import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {Subject} from 'rxjs';
+import {InjectionToken} from '@angular/core';
 
 export type TuiHintDirection =
     | 'bottom-left'
@@ -55,7 +56,9 @@ export const TUI_HINT_DEFAULT_OPTIONS: TuiHintOptions = {
 /**
  * Default parameters for hint directive
  */
-export const TUI_HINT_OPTIONS = tuiCreateToken(TUI_HINT_DEFAULT_OPTIONS);
+export const TUI_HINT_OPTIONS = new InjectionToken(ngDevMode ? 'TUI_HINT_OPTIONS' : '', {
+    factory: () => TUI_HINT_DEFAULT_OPTIONS,
+});
 
 export const tuiHintOptionsProvider: (
     options: Partial<TuiHintOptions>,

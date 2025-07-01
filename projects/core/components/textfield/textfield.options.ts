@@ -1,7 +1,8 @@
 import type {Provider, WritableSignal} from '@angular/core';
 import {Directive, inject, Input, Optional, signal, SkipSelf} from '@angular/core';
-import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {InjectionToken} from '@angular/core';
 
 const DEFAULT = {
     appearance: 'textfield',
@@ -15,11 +16,16 @@ export interface TuiTextfieldOptions {
     readonly cleaner: WritableSignal<boolean>;
 }
 
-export const TUI_TEXTFIELD_OPTIONS = tuiCreateToken<TuiTextfieldOptions>({
-    appearance: signal(DEFAULT.appearance),
-    size: signal(DEFAULT.size),
-    cleaner: signal(DEFAULT.cleaner),
-});
+export const TUI_TEXTFIELD_OPTIONS = new InjectionToken<TuiTextfieldOptions>(
+    ngDevMode ? 'TUI_TEXTFIELD_OPTIONS' : '',
+    {
+        factory: () => ({
+            appearance: signal(DEFAULT.appearance),
+            size: signal(DEFAULT.size),
+            cleaner: signal(DEFAULT.cleaner),
+        }),
+    },
+);
 
 export function tuiTextfieldOptionsProvider(
     options: Partial<TuiTextfieldOptions>,

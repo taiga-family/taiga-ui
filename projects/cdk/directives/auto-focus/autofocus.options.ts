@@ -1,11 +1,12 @@
 import {ElementRef, NgZone, Renderer2} from '@angular/core';
 import {WA_ANIMATION_FRAME, WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import {tuiCreateOptions, tuiCreateToken} from '@taiga-ui/cdk/utils';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils';
 import type {Observable} from 'rxjs';
 
 import {TuiDefaultAutofocusHandler} from './handlers/default.handler';
 import {TuiIosAutofocusHandler} from './handlers/ios.handler';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiAutofocusHandler {
     setFocus(): void;
@@ -24,7 +25,9 @@ export const [TUI_AUTOFOCUS_OPTIONS, tuiAutoFocusOptionsProvider] =
         preventScroll: false,
     });
 
-export const TUI_AUTOFOCUS_HANDLER = tuiCreateToken<TuiAutofocusHandler>();
+export const TUI_AUTOFOCUS_HANDLER = new InjectionToken<TuiAutofocusHandler>(
+    ngDevMode ? 'TUI_AUTOFOCUS_HANDLER' : '',
+);
 
 export const TUI_AUTOFOCUS_PROVIDERS = [
     {

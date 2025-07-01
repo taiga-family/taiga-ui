@@ -1,6 +1,7 @@
 import type {FactoryProvider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
+import {InjectionToken} from '@angular/core';
 
 // TODO: remove in v5
 export interface TuiLinkOptions extends TuiAppearanceOptions {
@@ -16,7 +17,9 @@ export const TUI_LINK_DEFAULT_OPTIONS: TuiLinkOptions = {
     pseudo: false,
 };
 
-export const TUI_LINK_OPTIONS = tuiCreateToken(TUI_LINK_DEFAULT_OPTIONS);
+export const TUI_LINK_OPTIONS = new InjectionToken(ngDevMode ? 'TUI_LINK_OPTIONS' : '', {
+    factory: () => TUI_LINK_DEFAULT_OPTIONS,
+});
 
 export function tuiLinkOptionsProvider(
     options: Partial<TuiLinkOptions>,

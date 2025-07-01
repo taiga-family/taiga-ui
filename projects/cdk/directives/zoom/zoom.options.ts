@@ -1,10 +1,14 @@
-import {tuiCreateToken} from '@taiga-ui/cdk/utils';
-
 import type {TuiZoomOptions} from './zoom.types';
+import {InjectionToken} from '@angular/core';
 
 /**
  * Zoom options
  */
-export const TUI_ZOOM_OPTIONS = tuiCreateToken<TuiZoomOptions>({
-    wheelSensitivity: 0.01,
-});
+export const TUI_ZOOM_OPTIONS = new InjectionToken<TuiZoomOptions>(
+    ngDevMode ? 'TUI_ZOOM_OPTIONS' : '',
+    {
+        factory: () => ({
+            wheelSensitivity: 0.01,
+        }),
+    },
+);

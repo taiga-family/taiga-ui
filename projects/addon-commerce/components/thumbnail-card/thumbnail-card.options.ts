@@ -2,8 +2,8 @@ import {inject} from '@angular/core';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiThumbnailCardOptions {
     readonly size: TuiSizeL | TuiSizeXS;
@@ -11,9 +11,13 @@ export interface TuiThumbnailCardOptions {
     readonly monoHandler: TuiBooleanHandler<TuiPaymentSystem>;
 }
 
-export const TUI_THUMBNAIL_CARD_OPTIONS =
-    tuiCreateTokenFromFactory<TuiThumbnailCardOptions>(() => ({
-        icons: inject(TUI_PAYMENT_SYSTEM_ICONS),
-        size: 'm',
-        monoHandler: (ps) => ps === 'mir' || ps === 'visa' || ps === 'electron',
-    }));
+export const TUI_THUMBNAIL_CARD_OPTIONS = new InjectionToken<TuiThumbnailCardOptions>(
+    ngDevMode ? 'TUI_THUMBNAIL_CARD_OPTIONS' : '',
+    {
+        factory: () => ({
+            icons: inject(TUI_PAYMENT_SYSTEM_ICONS),
+            size: 'm',
+            monoHandler: (ps) => ps === 'mir' || ps === 'visa' || ps === 'electron',
+        }),
+    },
+);

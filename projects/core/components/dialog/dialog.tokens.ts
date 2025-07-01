@@ -1,14 +1,15 @@
 import type {Provider} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {BehaviorSubject, EMPTY} from 'rxjs';
 
 import type {TuiDialogOptions} from './dialog.interfaces';
+import {InjectionToken} from '@angular/core';
 
-export const TUI_DIALOGS = tuiCreateToken(
-    new BehaviorSubject<ReadonlyArray<TuiPopover<any, any>>>([]),
-);
+export const TUI_DIALOGS = new InjectionToken(ngDevMode ? 'TUI_DIALOGS' : '', {
+    factory: () => new BehaviorSubject<ReadonlyArray<TuiPopover<any, any>>>([]),
+});
 
 export const TUI_DIALOG_DEFAULT_OPTIONS: TuiDialogOptions<void> = {
     appearance: '',
@@ -24,12 +25,22 @@ export const TUI_DIALOG_DEFAULT_OPTIONS: TuiDialogOptions<void> = {
 /**
  * A stream to close dialogs
  */
-export const TUI_DIALOGS_CLOSE = tuiCreateToken<Observable<unknown>>(EMPTY);
+export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
+    ngDevMode ? 'TUI_DIALOGS_CLOSE' : '',
+    {
+        factory: () => EMPTY,
+    },
+);
 
 /**
  * Default parameters for dialog component
  */
-export const TUI_DIALOG_OPTIONS = tuiCreateToken(TUI_DIALOG_DEFAULT_OPTIONS);
+export const TUI_DIALOG_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_DIALOG_OPTIONS' : '',
+    {
+        factory: () => TUI_DIALOG_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiDialogOptionsProvider(
     options: Partial<TuiDialogOptions<unknown>>,

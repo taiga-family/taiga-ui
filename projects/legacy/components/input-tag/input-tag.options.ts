@@ -1,6 +1,7 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiStatus} from '@taiga-ui/legacy/utils';
+import {InjectionToken} from '@angular/core';
 
 /**
  * TODO(v5): delete it
@@ -28,7 +29,12 @@ export const TUI_INPUT_TAG_DEFAULT_OPTIONS: TuiInputTagOptions = {
  * @deprecated: drop in v5.0
  * Default parameters for InputTag component
  */
-export const TUI_INPUT_TAG_OPTIONS = tuiCreateToken(TUI_INPUT_TAG_DEFAULT_OPTIONS);
+export const TUI_INPUT_TAG_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_INPUT_TAG_OPTIONS' : '',
+    {
+        factory: () => TUI_INPUT_TAG_DEFAULT_OPTIONS,
+    },
+);
 
 /**
  * TODO(v5): delete it

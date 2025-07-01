@@ -1,6 +1,7 @@
 import type {ExistingProvider, ProviderToken} from '@angular/core';
 import type {TuiLooseUnion} from '@taiga-ui/cdk/types';
-import {tuiCreateToken, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 /**
  * Bundled appearances for autocomplete purposes, not exported on purpose
@@ -41,7 +42,12 @@ export const TUI_APPEARANCE_DEFAULT_OPTIONS: TuiAppearanceOptions = {
     appearance: '',
 };
 
-export const TUI_APPEARANCE_OPTIONS = tuiCreateToken(TUI_APPEARANCE_DEFAULT_OPTIONS);
+export const TUI_APPEARANCE_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_APPEARANCE_OPTIONS' : '',
+    {
+        factory: () => TUI_APPEARANCE_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiAppearanceOptionsProvider(
     token: ProviderToken<TuiAppearanceOptions>,

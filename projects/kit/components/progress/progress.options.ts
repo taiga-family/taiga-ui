@@ -1,6 +1,7 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiProgressOptions {
     readonly color: string | null;
@@ -12,7 +13,12 @@ export const TUI_PROGRESS_DEFAULT_OPTIONS: TuiProgressOptions = {
     size: 'm',
 };
 
-export const TUI_PROGRESS_OPTIONS = tuiCreateToken(TUI_PROGRESS_DEFAULT_OPTIONS);
+export const TUI_PROGRESS_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_PROGRESS_OPTIONS' : '',
+    {
+        factory: () => TUI_PROGRESS_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiProgressOptionsProvider(
     options: Partial<TuiProgressOptions>,

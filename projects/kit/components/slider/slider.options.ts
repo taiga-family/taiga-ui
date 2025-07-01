@@ -1,6 +1,7 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeS} from '@taiga-ui/core/types';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiSliderOptions {
     readonly size: TuiSizeS;
@@ -15,7 +16,12 @@ export const TUI_SLIDER_DEFAULT_OPTIONS: TuiSliderOptions = {
 /**
  * Default parameters for Slider component
  */
-export const TUI_SLIDER_OPTIONS = tuiCreateToken(TUI_SLIDER_DEFAULT_OPTIONS);
+export const TUI_SLIDER_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_SLIDER_OPTIONS' : '',
+    {
+        factory: () => TUI_SLIDER_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiSliderOptionsProvider(options: Partial<TuiSliderOptions>): Provider {
     return tuiProvideOptions(TUI_SLIDER_OPTIONS, options, TUI_SLIDER_DEFAULT_OPTIONS);

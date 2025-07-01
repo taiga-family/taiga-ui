@@ -1,7 +1,8 @@
 import type {Provider} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiRatingOptions {
     readonly icon: PolymorpheusContent<TuiContext<number> & {value: number}>;
@@ -13,7 +14,12 @@ export const TUI_RATING_DEFAULT_OPTIONS: TuiRatingOptions = {
     max: 5,
 };
 
-export const TUI_RATING_OPTIONS = tuiCreateToken(TUI_RATING_DEFAULT_OPTIONS);
+export const TUI_RATING_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_RATING_OPTIONS' : '',
+    {
+        factory: () => TUI_RATING_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiRatingOptionsProvider(options: Partial<TuiRatingOptions>): Provider {
     return tuiProvideOptions(TUI_RATING_OPTIONS, options, TUI_RATING_DEFAULT_OPTIONS);

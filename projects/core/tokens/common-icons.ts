@@ -1,5 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 // TODO: Rename `ellipsis` to `more` in the next major version
 const COMMON_ICONS: TuiCommonIcons = {
@@ -20,7 +21,9 @@ export interface TuiCommonIcons {
     readonly ellipsis: string;
 }
 
-export const TUI_COMMON_ICONS = tuiCreateToken(COMMON_ICONS);
+export const TUI_COMMON_ICONS = new InjectionToken(ngDevMode ? 'TUI_COMMON_ICONS' : '', {
+    factory: () => COMMON_ICONS,
+});
 
 export function tuiCommonIconsProvider(icons: Partial<TuiCommonIcons>): Provider {
     return tuiProvideOptions(TUI_COMMON_ICONS, icons, COMMON_ICONS);

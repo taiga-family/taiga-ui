@@ -1,9 +1,13 @@
 import {Directive, Input} from '@angular/core';
-import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {AbstractTuiController} from '@taiga-ui/legacy/classes';
+import {InjectionToken} from '@angular/core';
 
-export const TUI_TEXTFIELD_POSTFIX = tuiCreateTokenFromFactory(
-    () => new TuiTextfieldPostfixDirective(),
+export const TUI_TEXTFIELD_POSTFIX = new InjectionToken(
+    ngDevMode ? 'TUI_TEXTFIELD_POSTFIX' : '',
+    {
+        factory: () => new TuiTextfieldPostfixDirective(),
+    },
 );
 
 @Directive({

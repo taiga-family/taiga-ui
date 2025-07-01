@@ -6,7 +6,7 @@ import type {
     TuiIdentityMatcher,
     TuiStringHandler,
 } from '@taiga-ui/cdk/types';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiItemsHandlers<T> {
     readonly disabledItemHandler: WritableSignal<TuiBooleanHandler<T>>;
@@ -23,7 +23,12 @@ export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {
 /**
  * Default items handlers for components
  */
-export const TUI_ITEMS_HANDLERS = tuiCreateToken(TUI_DEFAULT_ITEMS_HANDLERS);
+export const TUI_ITEMS_HANDLERS = new InjectionToken(
+    ngDevMode ? 'TUI_ITEMS_HANDLERS' : '',
+    {
+        factory: () => TUI_DEFAULT_ITEMS_HANDLERS,
+    },
+);
 
 export function tuiItemsHandlersProvider<T>(
     options: Partial<TuiItemsHandlers<T>>,

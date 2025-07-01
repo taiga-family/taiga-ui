@@ -1,11 +1,14 @@
 import type {Provider} from '@angular/core';
 import type {TuiGradientDirection} from '@taiga-ui/cdk/utils/color';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
-export const TUI_COLOR_SELECTOR_MODE_NAMES = tuiCreateToken<[string, string]>([
-    'Solid color',
-    'Gradient',
-]);
+export const TUI_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, string]>(
+    ngDevMode ? 'TUI_COLOR_SELECTOR_MODE_NAMES' : '',
+    {
+        factory: () => ['Solid color', 'Gradient'],
+    },
+);
 
 export const TUI_DEFAULT_INPUT_COLORS = new Map([
     ['color-black-100', '#909090'],
@@ -91,8 +94,11 @@ export const TUI_COLOR_SELECTOR_DEFAULT_OPTIONS: TuiColorSelectorOptions = {
     },
 };
 
-export const TUI_COLOR_SELECTOR_OPTIONS = tuiCreateToken(
-    TUI_COLOR_SELECTOR_DEFAULT_OPTIONS,
+export const TUI_COLOR_SELECTOR_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_COLOR_SELECTOR_OPTIONS' : '',
+    {
+        factory: () => TUI_COLOR_SELECTOR_DEFAULT_OPTIONS,
+    },
 );
 
 export function tuiColorSelectorOptionsProvider(

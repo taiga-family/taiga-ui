@@ -1,5 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 const LAYOUT_ICONS: TuiLayoutIcons = {
     filter: '@tui.filter',
@@ -11,7 +12,9 @@ export interface TuiLayoutIcons {
     readonly grid: string;
 }
 
-export const TUI_LAYOUT_ICONS = tuiCreateToken(LAYOUT_ICONS);
+export const TUI_LAYOUT_ICONS = new InjectionToken(ngDevMode ? 'TUI_LAYOUT_ICONS' : '', {
+    factory: () => LAYOUT_ICONS,
+});
 
 export function tuiLayoutIconsProvider(icons: Partial<TuiLayoutIcons>): Provider {
     return tuiProvideOptions(TUI_LAYOUT_ICONS, icons, LAYOUT_ICONS);

@@ -1,5 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiReorderOptions {
     readonly icons: {
@@ -17,7 +18,12 @@ export const TUI_REORDER_DEFAULT_OPTIONS: TuiReorderOptions = {
     },
 };
 
-export const TUI_REORDER_OPTIONS = tuiCreateToken(TUI_REORDER_DEFAULT_OPTIONS);
+export const TUI_REORDER_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_REORDER_OPTIONS' : '',
+    {
+        factory: () => TUI_REORDER_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiReorderOptionsProvider(options: Partial<TuiReorderOptions>): Provider {
     return tuiProvideOptions(TUI_REORDER_OPTIONS, options, TUI_REORDER_DEFAULT_OPTIONS);

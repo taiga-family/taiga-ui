@@ -1,6 +1,7 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL} from '@taiga-ui/core/types';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiInputFilesOptions {
     accept: string;
@@ -19,7 +20,12 @@ export const TUI_INPUT_FILES_DEFAULT_OPTIONS: TuiInputFilesOptions = {
 /**
  * Default parameters for input files component
  */
-export const TUI_INPUT_FILES_OPTIONS = tuiCreateToken(TUI_INPUT_FILES_DEFAULT_OPTIONS);
+export const TUI_INPUT_FILES_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_INPUT_FILES_OPTIONS' : '',
+    {
+        factory: () => TUI_INPUT_FILES_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiInputFilesOptionsProvider(
     options: Partial<TuiInputFilesOptions>,

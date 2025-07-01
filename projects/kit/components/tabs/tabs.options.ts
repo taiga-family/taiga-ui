@@ -1,6 +1,7 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL} from '@taiga-ui/core/types';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiTabsOptions {
     readonly exposeActive: boolean;
@@ -21,7 +22,9 @@ export const TUI_TABS_DEFAULT_OPTIONS: TuiTabsOptions = {
 /**
  * Default parameters for Tabs component
  */
-export const TUI_TABS_OPTIONS = tuiCreateToken(TUI_TABS_DEFAULT_OPTIONS);
+export const TUI_TABS_OPTIONS = new InjectionToken(ngDevMode ? 'TUI_TABS_OPTIONS' : '', {
+    factory: () => TUI_TABS_DEFAULT_OPTIONS,
+});
 
 export function tuiTabsOptionsProvider(options: Partial<TuiTabsOptions>): Provider {
     return tuiProvideOptions(TUI_TABS_OPTIONS, options, TUI_TABS_DEFAULT_OPTIONS);

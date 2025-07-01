@@ -1,7 +1,8 @@
 import type {Provider} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import {BehaviorSubject} from 'rxjs';
+import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}
@@ -17,9 +18,9 @@ export interface TuiTableBarOptions {
  * @deprecated drop in v5.0 use {@link TuiActionBar}
  * https://taiga-ui.dev/components/actions-bar
  */
-export const TUI_TABLE_BARS = tuiCreateToken(
-    new BehaviorSubject<ReadonlyArray<TuiPopover<any, any>>>([]),
-);
+export const TUI_TABLE_BARS = new InjectionToken(ngDevMode ? 'TUI_TABLE_BARS' : '', {
+    factory: () => new BehaviorSubject<ReadonlyArray<TuiPopover<any, any>>>([]),
+});
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}
@@ -35,7 +36,12 @@ export const TUI_TABLE_BAR_DEFAULT_OPTIONS: TuiTableBarOptions = {
  * @deprecated drop in v5.0 use {@link TuiActionBar}
  * https://taiga-ui.dev/components/actions-bar
  */
-export const TUI_TABLE_BAR_OPTIONS = tuiCreateToken(TUI_TABLE_BAR_DEFAULT_OPTIONS);
+export const TUI_TABLE_BAR_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_TABLE_BAR_OPTIONS' : '',
+    {
+        factory: () => TUI_TABLE_BAR_DEFAULT_OPTIONS,
+    },
+);
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}

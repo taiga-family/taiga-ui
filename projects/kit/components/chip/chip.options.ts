@@ -1,7 +1,8 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import type {TuiSizeXXS} from '@taiga-ui/core/types';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiChipOptions extends TuiAppearanceOptions {
     readonly size: TuiSizeXXS;
@@ -12,7 +13,9 @@ export const TUI_CHIP_DEFAULT_OPTIONS: TuiChipOptions = {
     size: 's',
 };
 
-export const TUI_CHIP_OPTIONS = tuiCreateToken(TUI_CHIP_DEFAULT_OPTIONS);
+export const TUI_CHIP_OPTIONS = new InjectionToken(ngDevMode ? 'TUI_CHIP_OPTIONS' : '', {
+    factory: () => TUI_CHIP_DEFAULT_OPTIONS,
+});
 
 export function tuiChipOptionsProvider(options: Partial<TuiChipOptions>): Provider {
     return tuiProvideOptions(TUI_CHIP_OPTIONS, options, TUI_CHIP_DEFAULT_OPTIONS);

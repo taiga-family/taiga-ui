@@ -1,10 +1,13 @@
 import {inject} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0
  */
-export const TUI_TOUCH_SUPPORTED = tuiCreateTokenFromFactory(
-    () => inject(WA_WINDOW).matchMedia('(any-pointer: coarse)').matches,
+export const TUI_TOUCH_SUPPORTED = new InjectionToken(
+    ngDevMode ? 'TUI_TOUCH_SUPPORTED' : '',
+    {
+        factory: () => inject(WA_WINDOW).matchMedia('(any-pointer: coarse)').matches,
+    },
 );

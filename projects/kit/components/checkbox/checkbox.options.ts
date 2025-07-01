@@ -1,7 +1,8 @@
 import type {Provider} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeS} from '@taiga-ui/core/types';
+import {InjectionToken} from '@angular/core';
 
 export interface TuiCheckboxOptions {
     readonly size: TuiSizeS;
@@ -22,7 +23,12 @@ export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
     },
 };
 
-export const TUI_CHECKBOX_OPTIONS = tuiCreateToken(TUI_CHECKBOX_DEFAULT_OPTIONS);
+export const TUI_CHECKBOX_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_CHECKBOX_OPTIONS' : '',
+    {
+        factory: () => TUI_CHECKBOX_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiCheckboxOptionsProvider(
     options: Partial<TuiCheckboxOptions>,
