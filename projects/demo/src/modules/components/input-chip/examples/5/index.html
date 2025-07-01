@@ -1,103 +1,19 @@
-<tui-textfield multi>
-    <input
-        placeholder="Type for suggestions"
-        tuiInputChip
-        [(ngModel)]="arbitrary"
-    />
-    <tui-input-chip *tuiItem />
-    <ng-container *ngIf="items | tuiHideSelected | tuiFilterByInput as items">
-        <ng-template
-            *ngIf="items.length"
-            tuiTextfieldDropdown
-        >
-            <tui-data-list-wrapper [items]="items" />
-        </ng-template>
-    </ng-container>
-</tui-textfield>
-
 <tui-textfield
-    #textfield
+    iconStart="@tui.heart"
     multi
-    [content]="!textfield.focused() && pythons.length ? 'Selected ' + pythons.length + ' out of ' + items.length : ''"
-    [disabledItemHandler]="handler"
->
-    <label tuiLabel>Select Pythons</label>
-    <input
-        tuiInputChip
-        [placeholder]="pythons.length ? '' : 'Type for suggestions'"
-        [(ngModel)]="pythons"
-    />
-    <ng-template
-        *ngIf="!textfield.focused()"
-        tuiItem
-    />
-    <ng-container *ngIf="items | tuiHideSelected | tuiFilterByInput as items">
-        <ng-template
-            *ngIf="items.length"
-            tuiTextfieldDropdown
-        >
-            <tui-data-list-wrapper [items]="items" />
-        </ng-template>
-    </ng-container>
-</tui-textfield>
-
-<tui-textfield
-    multi
-    tuiChevron
->
-    <label tuiLabel>Multi Select</label>
-    <input
-        tuiInputChip
-        tuiSelectLike
-        [placeholder]="multi.length ? '' : 'Pick from the list'"
-        [(ngModel)]="multi"
-    />
-    <tui-data-list-wrapper
-        *tuiTextfieldDropdown
-        new
-        tuiMultiSelectGroup
-        [items]="items"
-    />
-</tui-textfield>
-
-<tui-textfield
-    multi
-    tuiChevron
-    [disabledItemHandler]="strings"
-    [stringify]="stringify"
+    [style.width.rem]="19"
 >
     <input
         tuiInputChip
-        [placeholder]="objects.length ? '' : 'Picking objects'"
-        [(ngModel)]="objects"
+        [formControl]="control"
+        [placeholder]="!control.value?.length ? 'Type something' : ''"
     />
-    <tui-input-chip *tuiItem />
-    <tui-data-list *tuiTextfieldDropdown>
-        <tui-opt-group
-            label="Pythons"
-            tuiMultiSelectGroup
-        >
-            <button
-                *ngFor="let user of users | tuiFilterByInput"
-                new
-                tuiOption
-                [value]="user"
-            >
-                {{ user.name }}
-            </button>
-        </tui-opt-group>
-        <tui-opt-group
-            label="Collaborators"
-            tuiMultiSelectGroup
-        >
-            <button
-                *ngFor="let user of more | tuiFilterByInput"
-                new
-                tuiOption
-                [value]="user"
-            >
-                {{ user.name }}
-            </button>
-        </tui-opt-group>
-    </tui-data-list>
+    <tui-icon tuiTooltip="Only small words" />
+    <tui-input-chip
+        *tuiItem="let context"
+        [appearance]="context.item.length > 5 ? 'negative' : 'positive'"
+        [editable]="false"
+        [iconStart]="context.item.length > 5 ? '@tui.info' : ''"
+        [tuiHint]="context.item.length > 5 ? 'Please keep it under 6 chars' : ''"
+    />
 </tui-textfield>

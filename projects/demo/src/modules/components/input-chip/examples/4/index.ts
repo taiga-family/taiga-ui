@@ -1,26 +1,59 @@
-import {NgIf} from '@angular/common';
-import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {NgForOf, NgIf} from '@angular/common';
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputChip} from '@taiga-ui/kit';
+import {tuiIsString} from '@taiga-ui/cdk';
+import {TuiDataList, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiFilterByInputPipe,
+    TuiHideSelectedPipe,
+    TuiInputChip,
+    TuiMultiSelect,
+} from '@taiga-ui/kit';
+
+interface User {
+    readonly name: string;
+    readonly index: number;
+}
 
 @Component({
     standalone: true,
-    imports: [NgIf, ReactiveFormsModule, TuiButton, TuiInputChip, TuiTextfield],
+    imports: [
+        FormsModule,
+        NgForOf,
+        NgIf,
+        TuiChevron,
+        TuiDataList,
+        TuiDataListWrapper,
+        TuiFilterByInputPipe,
+        TuiHideSelectedPipe,
+        TuiInputChip,
+        TuiMultiSelect,
+        TuiSelectLike,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly required = ['Required', 'Obligatory'];
+    protected arbitrary: string[] = [];
+    protected pythons: string[] = [];
+    protected multi: string[] = [];
+    protected objects: User[] = [];
 
-    protected readonly control = new FormControl(this.required.concat('Removable'), {
-        nonNullable: true,
-    });
+    protected readonly items: string[] = inject('Pythons' as any);
+    protected readonly users = this.items.map((name, index) => ({name, index}));
+    protected readonly more = [
+        {name: 'Carol Cleveland', index: -1},
+        {name: 'Neil Innes', index: -2},
+    ];
 
-    protected readonly handler: TuiBooleanHandler<string> = (item) =>
-        this.required.includes(item);
+    protected readonly strings = tuiIsString;
+    protected readonly stringify = ({name}: User): string => name;
+    protected readonly handler = (item: string): boolean => !this.items.includes(item);
 }
