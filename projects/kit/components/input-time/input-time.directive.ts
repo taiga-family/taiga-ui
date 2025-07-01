@@ -23,7 +23,7 @@ import {
     tuiDropdownEnabled,
     tuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
-import {tuiAsAuxiliary} from '@taiga-ui/core/tokens/auxiliary';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
