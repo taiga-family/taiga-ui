@@ -3146,8 +3146,9 @@ export class Example {
 ```html
 <ng-template>
                 <tui-textfield
+                    #textfield
                     tuiChevron
-                    [content]="control.value && textfieldContent"
+                    [content]="!textfield.focused() && control.value ? textfieldContent : ''"
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
                     [identityMatcher]="itemsHandlers.identityMatcher()"
                     [stringify]="itemsHandlers.stringify()"
@@ -3189,7 +3190,7 @@ export class Example {
 | [strict] | `boolean` |  |
 | [matcher] | `TuiStringMatcher | null` | function that compares search text and datalist's items to define a match between them. Lowercase string
                 comparison function by default. |
-| [content] | `PolymorpheusContent` | A template for custom view of textfield value. |
+| [content] | `PolymorpheusContent` |  |
 
 ### TypeScript
 
@@ -3264,6 +3265,11 @@ export default class PageComponent {
     protected readonly textfieldContentVariants = computed(() => [
         '',
         'TOP SECRET',
+        ({$implicit: x}: TuiContext<any>) =>
+            x.name
+                .split(' ')
+                .map((x: string) => '*'.repeat(x.length))
+                .join(' '),
         ({$implicit: x}: TuiContext<any>) =>
             x?.name.includes('i') ? `->${x.name}<-` : x?.name,
     ]);
