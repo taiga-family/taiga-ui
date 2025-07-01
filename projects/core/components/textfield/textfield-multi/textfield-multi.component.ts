@@ -155,7 +155,7 @@ export class TuiTextfieldMultiComponent<T>
         if (
             target !== this.el &&
             this.el.matches('[tuiChevron]') &&
-            !target.matches('input:read-only')
+            !target.matches('input:read-only,input[inputmode="none"]')
         ) {
             this.open.update((open) => !open);
         }

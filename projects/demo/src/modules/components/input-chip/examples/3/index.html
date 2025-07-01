@@ -1,19 +1,24 @@
 <tui-textfield
-    iconStart="@tui.heart"
     multi
+    [disabledItemHandler]="handler"
     [style.width.rem]="19"
+    [tuiTextfieldCleaner]="false"
 >
     <input
         tuiInputChip
         [formControl]="control"
-        [placeholder]="!control.value?.length ? 'Type something' : ''"
     />
-    <tui-icon tuiTooltip="Only small words" />
-    <tui-input-chip
-        *tuiItem="let context"
-        [appearance]="context.item.length > 5 ? 'negative' : 'positive'"
-        [editable]="false"
-        [iconStart]="context.item.length > 5 ? '@tui.info' : ''"
-        [tuiHint]="context.item.length > 5 ? 'Please keep it under 6 chars' : ''"
-    />
+    <button
+        *ngIf="control.value.length > 2"
+        appearance="icon"
+        iconStart="@tui.x"
+        size="xs"
+        tabindex="-1"
+        tuiIconButton
+        type="button"
+        (click)="control.setValue(this.required)"
+    >
+        Clear
+    </button>
+    <tui-input-chip *tuiItem />
 </tui-textfield>

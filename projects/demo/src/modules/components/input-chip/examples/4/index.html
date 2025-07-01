@@ -1,24 +1,115 @@
-<tui-textfield
-    multi
-    [disabledItemHandler]="handler"
-    [style.width.rem]="19"
-    [tuiTextfieldCleaner]="false"
->
-    <input
-        tuiInputChip
-        [formControl]="control"
-    />
-    <button
-        *ngIf="control.value.length > 2"
-        appearance="icon"
-        iconStart="@tui.x"
-        size="xs"
-        tabindex="-1"
-        tuiIconButton
-        type="button"
-        (click)="control.setValue(this.required)"
+<label tuiLabel>
+    Arbitrary strings with suggestions
+    <tui-textfield multi>
+        <input
+            placeholder="Type something"
+            tuiInputChip
+            [(ngModel)]="arbitrary"
+        />
+        <tui-input-chip *tuiItem />
+        <ng-container *ngIf="items | tuiHideSelected | tuiFilterByInput as items">
+            <ng-template
+                *ngIf="items.length"
+                tuiTextfieldDropdown
+            >
+                <tui-data-list-wrapper [items]="items" />
+            </ng-template>
+        </ng-container>
+    </tui-textfield>
+</label>
+
+<label tuiLabel>
+    Only allowing items from the list and hiding values when not focused behind a custom content
+    <tui-textfield
+        #input
+        multi
+        [content]="!input.focused() && pythons.length ? 'Selected ' + pythons.length + ' out of ' + items.length : ''"
+        [disabledItemHandler]="handler"
     >
-        Clear
-    </button>
-    <tui-input-chip *tuiItem />
-</tui-textfield>
+        <label tuiLabel>Select Pythons</label>
+        <input
+            tuiInputChip
+            [placeholder]="pythons.length ? '' : 'Type for suggestions'"
+            [(ngModel)]="pythons"
+        />
+        <ng-template
+            *ngIf="!input.focused()"
+            tuiItem
+        />
+        <ng-container *ngIf="items | tuiHideSelected | tuiFilterByInput as items">
+            <ng-template
+                *ngIf="items.length"
+                tuiTextfieldDropdown
+            >
+                <tui-data-list-wrapper [items]="items" />
+            </ng-template>
+        </ng-container>
+    </tui-textfield>
+</label>
+
+<label tuiLabel>
+    Using checkboxes in the dropdown and making the textfield non-writable
+    <tui-textfield
+        multi
+        tuiChevron
+    >
+        <label tuiLabel>Multi Select</label>
+        <input
+            tuiInputChip
+            tuiSelectLike
+            [placeholder]="multi.length ? '' : 'Pick from the list'"
+            [(ngModel)]="multi"
+        />
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            tuiMultiSelectGroup
+            [items]="items"
+        />
+    </tui-textfield>
+</label>
+
+<label tuiLabel>
+    Working with objects
+    <tui-textfield
+        multi
+        tuiChevron
+        [disabledItemHandler]="strings"
+        [stringify]="stringify"
+    >
+        <input
+            tuiInputChip
+            [placeholder]="objects.length ? '' : 'Picking objects'"
+            [(ngModel)]="objects"
+        />
+        <tui-input-chip *tuiItem />
+        <tui-data-list *tuiTextfieldDropdown>
+            <tui-opt-group
+                label="Pythons"
+                tuiMultiSelectGroup
+            >
+                <button
+                    *ngFor="let user of users | tuiFilterByInput"
+                    new
+                    tuiOption
+                    [value]="user"
+                >
+                    {{ user.name }}
+                </button>
+            </tui-opt-group>
+            <tui-opt-group
+                label="Collaborators"
+                tuiMultiSelectGroup
+            >
+                <button
+                    *ngFor="let user of more | tuiFilterByInput"
+                    new
+                    tuiOption
+                    [value]="user"
+                >
+                    {{ user.name }}
+                </button>
+            </tui-opt-group>
+        </tui-data-list>
+    </tui-textfield>
+</label>
