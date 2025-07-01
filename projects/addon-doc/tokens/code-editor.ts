@@ -1,5 +1,5 @@
-import type {TuiCodeEditor} from '@taiga-ui/addon-doc/types';
 import {InjectionToken} from '@angular/core';
+import type {TuiCodeEditor} from '@taiga-ui/addon-doc/types';
 
 /**
  * Service for opening online IDE e.g. Stackblitz

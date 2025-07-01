@@ -1,7 +1,6 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, InjectionToken, Input} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {AbstractTuiController} from '@taiga-ui/legacy/classes';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_TEXTFIELD_LABEL_OUTSIDE = new InjectionToken(
     ngDevMode ? 'TUI_TEXTFIELD_LABEL_OUTSIDE' : '',

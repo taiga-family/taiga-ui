@@ -4,6 +4,7 @@ import {
     Component,
     ContentChildren,
     inject,
+    InjectionToken,
     Input,
     ViewChild,
 } from '@angular/core';
@@ -39,7 +40,6 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import type {TuiInputNumberOptions} from './input-number.options';
 import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
-import {InjectionToken} from '@angular/core';
 
 const DEFAULT_MAX_LENGTH = 18;
 

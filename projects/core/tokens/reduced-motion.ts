@@ -1,6 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {inject} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 
 export const TUI_REDUCED_MOTION = new InjectionToken(
     ngDevMode ? 'TUI_REDUCED_MOTION' : '',

@@ -1,4 +1,4 @@
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {
     TUI_CARD_CVC_TEXTS,
@@ -9,7 +9,6 @@ import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_MEDIA} from '@taiga-ui/core/tokens';
 import type {Observable} from 'rxjs';
 import {combineLatest, map, of, startWith, switchMap} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 export interface TuiCardGroupedTexts {
     readonly cardNumberText: string;

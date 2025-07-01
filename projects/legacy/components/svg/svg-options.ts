@@ -1,5 +1,5 @@
 import type {FactoryProvider, Provider} from '@angular/core';
-import {Optional, SkipSelf} from '@angular/core';
+import {InjectionToken, Optional, SkipSelf} from '@angular/core';
 import type {TuiHandler, TuiSafeHtml, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiIconsPathFactory} from '@taiga-ui/legacy/utils';
@@ -7,7 +7,6 @@ import {identity} from 'rxjs';
 
 import {tuiSvgLinearGradientProcessor} from './content-processor';
 import {TUI_DEPRECATED_ICONS} from './deprecated-icons';
-import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiIcon}

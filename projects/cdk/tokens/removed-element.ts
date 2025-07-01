@@ -1,7 +1,6 @@
 import {ɵAnimationEngine as AnimationEngine} from '@angular/animations/browser';
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import {BehaviorSubject, map, share, startWith, switchMap, timer} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Element currently being removed by AnimationEngine

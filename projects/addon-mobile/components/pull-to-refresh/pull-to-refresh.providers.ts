@@ -1,4 +1,4 @@
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -7,7 +7,6 @@ import {EMPTY} from 'rxjs';
 
 import {TUI_ANDROID_LOADER} from './loader-android/loader-android.component';
 import {TUI_IOS_LOADER} from './loader-ios/loader-ios.component';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Stream that emits when loading is over

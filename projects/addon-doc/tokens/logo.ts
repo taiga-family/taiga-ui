@@ -1,5 +1,5 @@
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {InjectionToken} from '@angular/core';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 /**
  * Main logo

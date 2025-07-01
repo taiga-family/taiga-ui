@@ -1,6 +1,6 @@
 import {VIRTUAL_SCROLL_STRATEGY} from '@angular/cdk/scrolling';
 import type {Provider} from '@angular/core';
-import {Optional} from '@angular/core';
+import {InjectionToken, Optional} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
@@ -11,7 +11,6 @@ import type {Observable} from 'rxjs';
 import {EMPTY} from 'rxjs';
 
 import {TuiMobileCalendarStrategy} from './mobile-calendar.strategy';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Stream for updating value

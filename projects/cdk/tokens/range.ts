@@ -1,6 +1,5 @@
 import {isPlatformBrowser} from '@angular/common';
-import {inject, PLATFORM_ID} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {inject, InjectionToken, PLATFORM_ID} from '@angular/core';
 
 /**
  * SSR safe default empty Range

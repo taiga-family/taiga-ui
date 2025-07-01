@@ -1,5 +1,5 @@
-import type {ControlValueAccessor} from '@angular/forms';
 import {InjectionToken} from '@angular/core';
+import type {ControlValueAccessor} from '@angular/forms';
 
 /**
  * @deprecated: drop in v5.0

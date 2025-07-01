@@ -1,9 +1,8 @@
 import type {Provider, Type} from '@angular/core';
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiRectAccessor} from '@taiga-ui/core/classes';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Viewport accessor

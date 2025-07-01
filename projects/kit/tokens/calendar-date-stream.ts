@@ -1,12 +1,11 @@
 import type {Provider} from '@angular/core';
-import {Optional, Self} from '@angular/core';
+import {InjectionToken, Optional, Self} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import type {TuiDay, TuiDayRange, TuiTime} from '@taiga-ui/cdk/date-time';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Stream that emits calendar data change

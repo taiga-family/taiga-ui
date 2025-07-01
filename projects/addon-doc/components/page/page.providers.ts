@@ -1,10 +1,9 @@
 import type {Provider} from '@angular/core';
-import {ElementRef} from '@angular/core';
+import {ElementRef, InjectionToken} from '@angular/core';
 import type {ActivatedRouteSnapshot} from '@angular/router';
 import {TUI_DOC_SEE_ALSO} from '@taiga-ui/addon-doc/tokens';
 import type {TuiHandler} from '@taiga-ui/cdk/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_DOC_TABS = new InjectionToken<
     TuiHandler<ActivatedRouteSnapshot, Record<string, PolymorpheusContent>>

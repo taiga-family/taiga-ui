@@ -1,5 +1,5 @@
-import {tuiExtractI18n} from '@taiga-ui/i18n/utils';
 import {InjectionToken} from '@angular/core';
+import {tuiExtractI18n} from '@taiga-ui/i18n/utils';
 
 export const TUI_INPUT_SEARCH = new InjectionToken(ngDevMode ? 'TUI_INPUT_SEARCH' : '', {
     factory: tuiExtractI18n('inputSearch'),

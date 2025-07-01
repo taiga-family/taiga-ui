@@ -1,9 +1,8 @@
 import {isPlatformBrowser} from '@angular/common';
-import {DestroyRef, Directive, inject, PLATFORM_ID} from '@angular/core';
+import {DestroyRef, Directive, inject, InjectionToken, PLATFORM_ID} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiFontSizeWatcher} from '@taiga-ui/cdk/utils/miscellaneous';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_FONT_SIZE_HANDLER = new InjectionToken<(size: number) => void>(
     ngDevMode ? 'TUI_FONT_SIZE_HANDLER' : '',

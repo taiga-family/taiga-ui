@@ -1,5 +1,5 @@
 import type {FactoryProvider} from '@angular/core';
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_IDENTITY_VALUE_TRANSFORMER} from '@taiga-ui/cdk/classes';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
@@ -10,7 +10,6 @@ import {
     TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
     TUI_INPUT_DATE_OPTIONS_NEW,
 } from '@taiga-ui/kit/components/input-date';
-import {InjectionToken} from '@angular/core';
 
 export interface TuiInputMonthOptions {
     readonly icon: TuiHandler<TuiSizeL | TuiSizeS, string>;

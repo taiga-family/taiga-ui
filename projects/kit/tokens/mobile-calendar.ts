@@ -1,8 +1,7 @@
 import type {FactoryProvider, Type} from '@angular/core';
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/directives/dropdown';
-import {InjectionToken} from '@angular/core';
 
 /**
  * A component for mobile data picker

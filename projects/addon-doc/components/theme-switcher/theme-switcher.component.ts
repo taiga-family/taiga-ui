@@ -1,13 +1,12 @@
 import {NgForOf} from '@angular/common';
 import type {FactoryProvider} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, InjectionToken} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_LOCAL_STORAGE, WA_LOCATION} from '@ng-web-apis/common';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TUI_THEME} from '@taiga-ui/core/tokens';
 import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_THEME_KEY = new InjectionToken(ngDevMode ? 'TUI_THEME_KEY' : '', {
     factory: () => 'data-tui-theme',

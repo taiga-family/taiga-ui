@@ -1,10 +1,17 @@
 import type {FactoryProvider, OnChanges} from '@angular/core';
-import {Directive, inject, Input, Optional, Self, SkipSelf} from '@angular/core';
+import {
+    Directive,
+    inject,
+    InjectionToken,
+    Input,
+    Optional,
+    Self,
+    SkipSelf,
+} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {Subject} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 export type TuiHintDirection =
     | 'bottom-left'

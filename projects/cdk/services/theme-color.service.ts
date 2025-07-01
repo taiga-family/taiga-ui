@@ -1,7 +1,6 @@
 import {DOCUMENT} from '@angular/common';
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, InjectionToken} from '@angular/core';
 import {Meta} from '@angular/platform-browser';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_THEME_COLOR = new InjectionToken<string>(
     ngDevMode ? 'TUI_THEME_COLOR' : '',

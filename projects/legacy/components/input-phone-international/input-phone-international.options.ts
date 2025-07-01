@@ -1,7 +1,7 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
-import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiInputPhoneInternational}

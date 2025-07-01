@@ -1,7 +1,6 @@
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {isApple} from '@ng-web-apis/platform';
-import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0

@@ -1,9 +1,8 @@
 import {DOCUMENT} from '@angular/common';
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import type {Observable} from 'rxjs';
 import {merge, share, switchMap, takeUntil} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 /**
  * A stream of possible selection changes

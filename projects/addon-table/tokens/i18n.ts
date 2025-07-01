@@ -1,5 +1,5 @@
-import {tuiExtractI18n} from '@taiga-ui/i18n/utils';
 import {InjectionToken} from '@angular/core';
+import {tuiExtractI18n} from '@taiga-ui/i18n/utils';
 
 /**
  * tui-reorder i18n button

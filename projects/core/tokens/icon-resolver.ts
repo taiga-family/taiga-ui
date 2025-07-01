@@ -1,9 +1,9 @@
 import type {Provider} from '@angular/core';
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+
 import {TUI_ASSETS_PATH} from './assets-path';
 import {TUI_ICON_REGISTRY} from './icons';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
     ngDevMode ? 'TUI_ICON_RESOLVER' : '',

@@ -1,9 +1,8 @@
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
-import {InjectionToken} from '@angular/core';
 
 export interface TuiThumbnailCardOptions {
     readonly size: TuiSizeL | TuiSizeXS;

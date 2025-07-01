@@ -1,10 +1,9 @@
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WA_NAVIGATOR, WA_USER_AGENT, WA_WINDOW} from '@ng-web-apis/common';
 import {isIos} from '@ng-web-apis/platform';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {fromEvent, map} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 // https://stackoverflow.com/a/11381730/2706426 http://detectmobilebrowsers.com/
 const firstRegex =

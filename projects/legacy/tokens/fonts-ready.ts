@@ -1,8 +1,7 @@
 import {DOCUMENT} from '@angular/common';
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
 import type {Observable} from 'rxjs';
 import {EMPTY, from, shareReplay} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0

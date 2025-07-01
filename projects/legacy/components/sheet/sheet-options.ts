@@ -1,7 +1,7 @@
+import {InjectionToken} from '@angular/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import type {TuiSheet} from './sheet';
-import {InjectionToken} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiSheetDialog}

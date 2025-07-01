@@ -1,6 +1,6 @@
-import {inject} from '@angular/core';
+import {inject, InjectionToken} from '@angular/core';
+
 import {TUI_REDUCED_MOTION} from './reduced-motion';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Speed of all Taiga UI animations. 1 equals 300ms.

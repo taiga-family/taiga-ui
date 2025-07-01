@@ -1,8 +1,15 @@
 import type {Provider, WritableSignal} from '@angular/core';
-import {Directive, inject, Input, Optional, signal, SkipSelf} from '@angular/core';
+import {
+    Directive,
+    inject,
+    InjectionToken,
+    Input,
+    Optional,
+    signal,
+    SkipSelf,
+} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import {InjectionToken} from '@angular/core';
 
 const DEFAULT = {
     appearance: 'textfield',

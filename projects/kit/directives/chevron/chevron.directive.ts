@@ -4,6 +4,7 @@ import {
     Directive,
     effect,
     inject,
+    InjectionToken,
     Input,
     signal,
     ViewEncapsulation,
@@ -12,7 +13,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TUI_ICON_END} from '@taiga-ui/core/tokens';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_CHEVRON = new InjectionToken(ngDevMode ? 'TUI_CHEVRON' : '', {
     factory: () => '@tui.chevron-down',

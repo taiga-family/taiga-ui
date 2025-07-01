@@ -1,9 +1,8 @@
 import type {WritableSignal} from '@angular/core';
-import {effect, inject, signal} from '@angular/core';
+import {effect, inject, InjectionToken, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_LOCAL_STORAGE, WA_WINDOW} from '@ng-web-apis/common';
 import {filter, fromEvent} from 'rxjs';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_DARK_MODE_DEFAULT_KEY = 'tuiDark';
 export const TUI_DARK_MODE_KEY = new InjectionToken(

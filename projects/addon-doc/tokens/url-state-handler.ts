@@ -1,6 +1,6 @@
+import {InjectionToken} from '@angular/core';
 import type {UrlTree} from '@angular/router';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
-import {InjectionToken} from '@angular/core';
 
 /**
  * TODO: delete it in 5.0

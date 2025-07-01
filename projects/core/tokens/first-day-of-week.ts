@@ -1,5 +1,5 @@
-import {TuiDayOfWeek} from '@taiga-ui/cdk/date-time';
 import {InjectionToken} from '@angular/core';
+import {TuiDayOfWeek} from '@taiga-ui/cdk/date-time';
 
 /**
  * The first day of the week index

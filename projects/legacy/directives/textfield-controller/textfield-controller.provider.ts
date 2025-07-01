@@ -1,5 +1,5 @@
 import type {Provider} from '@angular/core';
-import {ChangeDetectorRef} from '@angular/core';
+import {ChangeDetectorRef, InjectionToken} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/legacy/tokens';
@@ -28,7 +28,6 @@ import type {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
 import {TUI_TEXTFIELD_PREFIX} from './textfield-prefix.directive';
 import type {TuiTextfieldSizeDirective} from './textfield-size.directive';
 import {TUI_TEXTFIELD_SIZE} from './textfield-size.directive';
-import {InjectionToken} from '@angular/core';
 
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
     new InjectionToken<TuiTextfieldController>(

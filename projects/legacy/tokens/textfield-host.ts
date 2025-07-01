@@ -1,6 +1,6 @@
 import type {Provider, Type} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {InjectionToken} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * @deprecated: drop in v5.0

@@ -1,8 +1,7 @@
 import type {Provider, TemplateRef, Type} from '@angular/core';
-import {ContentChild, Directive, inject} from '@angular/core';
+import {ContentChild, Directive, inject, InjectionToken} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {InjectionToken} from '@angular/core';
 
 /**
  * Content for tuiOption component

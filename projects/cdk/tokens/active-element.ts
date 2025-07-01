@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {inject, NgZone} from '@angular/core';
+import {inject, InjectionToken, NgZone} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiTypedFromEvent, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {
@@ -25,7 +25,6 @@ import {
 } from 'rxjs';
 
 import {TUI_REMOVED_ELEMENT} from './removed-element';
-import {InjectionToken} from '@angular/core';
 
 // Checks if focusout event should be considered leaving active zone
 function isValidFocusout(target: any, removedElement: Element | null = null): boolean {

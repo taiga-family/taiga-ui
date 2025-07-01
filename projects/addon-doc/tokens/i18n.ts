@@ -1,5 +1,4 @@
-import {signal} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, signal} from '@angular/core';
 
 /**
  * TODO: think about reorganization in @taiga-ui/i18n way
