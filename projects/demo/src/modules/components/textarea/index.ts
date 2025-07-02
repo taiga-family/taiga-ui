@@ -8,6 +8,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
+import {DemoRoute} from '@demo/routes';
 
 @Component({
     standalone: true,
@@ -25,8 +26,9 @@ import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class PageComponent {
+    protected readonly routes = DemoRoute;
     protected readonly options = inject(TUI_TEXTAREA_OPTIONS);
-    protected readonly examples = ['Sizes', 'Limit', 'Custom highlight', 'Icons'];
+    protected readonly examples = ['Basic', 'Limit', 'Custom highlight', 'Icons'];
     protected readonly control = new FormControl(null);
 
     protected min = this.options.min;

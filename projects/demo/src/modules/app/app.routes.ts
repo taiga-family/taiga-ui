@@ -597,7 +597,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.MultiSelect,
         loadComponent: async () => import('../components/multi-select'),
-        title: 'MultiSelect',
+        title: 'MultiSelect ⛔',
     }),
     route({
         path: DemoRoute.Pagination,

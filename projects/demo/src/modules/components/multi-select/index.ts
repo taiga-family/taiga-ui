@@ -19,6 +19,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
+import {DemoRoute} from '@demo/routes';
 
 class Account {
     constructor(
@@ -157,4 +158,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
     protected setValue(): void {
         this.control.setValue([new Account('Dollar', 237)]);
     }
+
+    protected readonly routes = DemoRoute;
 }

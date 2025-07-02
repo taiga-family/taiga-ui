@@ -43,7 +43,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
     host: {
         '[disabled]': 'disabled()',
         '(click)': 'toggleDropdown()',
-        '(input)': 'onInput()',
+        '(input)': 'toggleDropdown(true)',
         '(keydown.enter)': 'keydownEnter($event)',
     },
 })
@@ -146,10 +146,6 @@ export class TuiComboBox<T>
         if (this.dropdownEnabled() && this.dropdown._content()) {
             this.open.set(open);
         }
-    }
-
-    protected onInput(): void {
-        setTimeout(() => this.toggleDropdown(true));
     }
 
     protected keydownEnter(event: KeyboardEvent): void {

@@ -1,8 +1,14 @@
+import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdownOptionsDirective, TuiIcon, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiDropdownOptionsDirective,
+    TuiIcon,
+    TuiSelectLike,
+    TuiTextfield,
+} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
@@ -14,6 +20,7 @@ import {
     standalone: true,
     imports: [
         FormsModule,
+        NgIf,
         TuiChevron,
         TuiDataListWrapper,
         TuiDropdownOptionsDirective,
@@ -21,6 +28,7 @@ import {
         TuiIcon,
         TuiTextfield,
         TuiTooltip,
+        TuiSelectLike,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
