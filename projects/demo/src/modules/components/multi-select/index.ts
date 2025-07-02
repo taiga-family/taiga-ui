@@ -61,6 +61,7 @@ class Account {
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
+    protected readonly routes = DemoRoute;
     protected readonly examples = [
         'Strings array',
         'Objects array',
@@ -158,6 +159,4 @@ export default class PageComponent extends AbstractExampleTuiControl {
     protected setValue(): void {
         this.control.setValue([new Account('Dollar', 237)]);
     }
-
-    protected readonly routes = DemoRoute;
 }
