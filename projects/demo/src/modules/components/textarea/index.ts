@@ -5,10 +5,10 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
-import {DemoRoute} from '@demo/routes';
 
 @Component({
     standalone: true,
