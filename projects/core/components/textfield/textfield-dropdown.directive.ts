@@ -1,5 +1,6 @@
+import {isPlatformBrowser} from '@angular/common';
 import type {OnDestroy} from '@angular/core';
-import {Directive, inject, TemplateRef} from '@angular/core';
+import {Directive, inject, PLATFORM_ID, TemplateRef} from '@angular/core';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 
 // TODO: Change selector to tuiDropdown in v5 and move to TuiDropdown
@@ -13,9 +14,12 @@ export class TuiTextfieldDropdownDirective implements OnDestroy {
     constructor() {
         this.directive.tuiDropdown = inject(TemplateRef);
 
-        // if (this.directive.el.matches?.(':focus-within')) {
-        //     this.directive.toggle(true);
-        // }
+        if (
+            isPlatformBrowser(inject(PLATFORM_ID)) &&
+            this.directive.el.matches(':focus-within')
+        ) {
+            this.directive.toggle(true);
+        }
     }
 
     public ngOnDestroy(): void {
