@@ -3,12 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiDropdownOptionsDirective,
-    TuiIcon,
-    TuiSelectLike,
-    TuiTextfield,
-} from '@taiga-ui/core';
+import {TuiDropdown, TuiIcon, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
@@ -23,7 +18,7 @@ import {
         NgIf,
         TuiChevron,
         TuiDataListWrapper,
-        TuiDropdownOptionsDirective,
+        TuiDropdown,
         TuiFilterByInputPipe,
         TuiIcon,
         TuiSelectLike,

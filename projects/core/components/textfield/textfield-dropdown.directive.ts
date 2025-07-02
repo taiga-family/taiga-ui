@@ -13,9 +13,9 @@ export class TuiTextfieldDropdownDirective implements OnDestroy {
     constructor() {
         this.directive.tuiDropdown = inject(TemplateRef);
 
-        if (this.directive.el.matches?.(':focus-within')) {
-            this.directive.toggle(true);
-        }
+        // if (this.directive.el.matches?.(':focus-within')) {
+        //     this.directive.toggle(true);
+        // }
     }
 
     public ngOnDestroy(): void {
