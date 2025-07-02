@@ -36,8 +36,8 @@ tui-data-list {
             font: var(--tui-font-text-s);
             min-block-size: 2rem;
             // TODO: use padding-block after Safari 14+
-            padding-top: 0.3125rem;
-            padding-bottom: 0.3125rem;
+            padding-block-start: 0.3125rem;
+            padding-block-end: 0.3125rem;
 
             &::before {
                 font-size: 1rem;
@@ -58,8 +58,8 @@ tui-data-list {
             font: var(--tui-font-text-s);
             min-block-size: 2.5rem;
             // TODO: use padding-block after Safari 14+
-            padding-top: 0.375rem;
-            padding-bottom: 0.375rem;
+            padding-block-start: 0.375rem;
+            padding-block-end: 0.375rem;
         }
     }
 
@@ -79,8 +79,8 @@ tui-data-list {
             font: var(--tui-font-text-m);
             min-block-size: 2.75rem;
             // TODO: use padding-block after Safari 14+
-            padding-top: 0.375rem;
-            padding-bottom: 0.375rem;
+            padding-block-start: 0.375rem;
+            padding-block-end: 0.375rem;
         }
     }
 
@@ -134,16 +134,16 @@ tui-data-list {
         &::after {
             font-size: 1rem;
             margin: 0 -0.75rem 0 auto;
-            border-left: 0.5rem solid;
-            border-right: 0.5rem solid;
+            border-inline-start: 0.5rem solid;
+            border-inline-end: 0.5rem solid;
         }
     }
 
     & > .t-empty,
     [tuiOption] {
         // TODO: use padding-inline after Safari 14+
-        padding-left: var(--t-option-padding-inline);
-        padding-right: var(--t-option-padding-inline);
+        padding-inline-start: var(--t-option-padding-inline);
+        padding-inline-end: var(--t-option-padding-inline);
     }
 }
 
@@ -162,8 +162,8 @@ tui-opt-group {
         line-height: 1.25rem;
 
         &::before {
-            padding-left: 0.625rem;
-            padding-right: 0.625rem;
+            padding-inline-start: 0.625rem;
+            padding-inline-end: 0.625rem;
         }
 
         &::after {
@@ -196,7 +196,7 @@ tui-opt-group {
 
     &:not(:empty) ~ & {
         &::before {
-            padding-top: calc(0.75rem + var(--tui-data-list-padding));
+            padding-block-start: calc(0.75rem + var(--tui-data-list-padding));
         }
 
         &[data-label='']::before,

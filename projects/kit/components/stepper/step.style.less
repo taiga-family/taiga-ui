@@ -8,7 +8,7 @@
     align-items: center;
     flex-shrink: 0;
     color: var(--tui-text-action);
-    margin-right: 1.5rem;
+    margin-inline-end: 1.5rem;
     outline: none;
     cursor: pointer;
     counter-increment: steps;
@@ -24,7 +24,7 @@
     }
 
     &:not(:last-of-type)._vertical {
-        margin-bottom: 1.25rem;
+        margin-block-end: 1.25rem;
     }
 
     &._active,
@@ -40,7 +40,7 @@
         right: 0;
         top: 50%;
         block-size: 1.5rem;
-        margin-top: -0.75rem;
+        margin-block-start: -0.75rem;
         background: var(--tui-service-selection-background);
     }
 }
@@ -53,7 +53,7 @@
     inline-size: 2rem;
     block-size: 2rem;
     border-radius: 100%;
-    margin-right: 0.75rem;
+    margin-inline-end: 0.75rem;
     flex-shrink: 0;
     align-items: center;
     align-self: flex-start;

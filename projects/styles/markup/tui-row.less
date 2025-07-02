@@ -6,8 +6,8 @@
 .generate-columns(@infix, @n, @padding, @i: 1) when (@i =< @n) {
     &_@{infix}-@{i} {
         inline-size: (@i * 100% / @n);
-        padding-left: @padding;
-        padding-right: @padding;
+        padding-inline-start: @padding;
+        padding-inline-end: @padding;
         box-sizing: border-box;
     }
 
@@ -16,7 +16,7 @@
 
 .generate-offset-columns(@infix, @n, @i: 1) when (@i =< @n) {
     &_@{infix}-@{i} {
-        margin-left: (@i * 100% / @n);
+        margin-inline-start: (@i * 100% / @n);
     }
 
     .generate-offset-columns(@infix, @n, (@i + 1));
@@ -25,8 +25,8 @@
 .generate-sme-columns(@n, @padding, @i: 1) when (@i =< @n) {
     &_@{i} {
         inline-size: (@i * 100% / @n);
-        padding-left: @padding;
-        padding-right: @padding;
+        padding-inline-start: @padding;
+        padding-inline-end: @padding;
         box-sizing: border-box;
     }
 
@@ -35,7 +35,7 @@
 
 .generate-sme-offset-columns(@n, @i: 1) when (@i =< @n) {
     &_@{i} {
-        margin-left: (@i * 100% / @n);
+        margin-inline-start: (@i * 100% / @n);
     }
 
     .generate-sme-offset-columns(@n, (@i + 1));
@@ -60,34 +60,34 @@
 
     &_adaptive.tui-row {
         @media @tui-desktop-lg-min {
-            margin-left: -@space-large;
-            margin-right: -@space-large;
+            margin-inline-start: -@space-large;
+            margin-inline-end: -@space-large;
         }
 
         @media @tui-desktop {
-            margin-left: -@space-normal;
-            margin-right: -@space-normal;
+            margin-inline-start: -@space-normal;
+            margin-inline-end: -@space-normal;
         }
 
         @media @tui-mobile {
-            margin-left: -@space-small;
-            margin-right: -@space-small;
+            margin-inline-start: -@space-small;
+            margin-inline-end: -@space-small;
         }
     }
 
     &_temporary.tui-row {
-        margin-left: -@space-normal;
-        margin-right: -@space-normal;
+        margin-inline-start: -@space-normal;
+        margin-inline-end: -@space-normal;
     }
 
     @media @tui-desktop-lg-min {
-        margin-left: -@space-large;
-        margin-right: -@space-large;
+        margin-inline-start: -@space-large;
+        margin-inline-end: -@space-large;
     }
 
     @media @tui-desktop {
-        margin-left: -@space-normal;
-        margin-right: -@space-normal;
+        margin-inline-start: -@space-normal;
+        margin-inline-end: -@space-normal;
     }
 }
 

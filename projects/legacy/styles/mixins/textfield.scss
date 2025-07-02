@@ -129,7 +129,7 @@ $line-height-l: 1.25rem;
 
     :host[data-size='l']:not(._label-outside) &,
     :host-context(tui-primitive-textfield[data-size='l']:not(._label-outside)):not(tui-primitive-textfield) {
-        padding-top: 1.25rem;
+        padding-block-start: 1.25rem;
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .t-content .t-placeholder {
@@ -140,7 +140,7 @@ $line-height-l: 1.25rem;
 
     :host[data-size='m']:not(._label-outside) &,
     :host-context(tui-primitive-textfield[data-size='m']:not(._label-outside)):not(tui-primitive-textfield) {
-        padding-top: 1rem;
+        padding-block-start: 1rem;
 
         // Workaround for raising placeholder in temporary autofill
         &:-webkit-autofill + .t-content .t-placeholder {

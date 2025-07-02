@@ -31,11 +31,11 @@
     padding: 1rem 1rem 0.875rem;
 
     &:first-child {
-        padding-left: 0;
+        padding-inline-start: 0;
     }
 
     &:last-child {
-        padding-right: 0;
+        padding-inline-end: 0;
     }
 
     &_prop {
@@ -72,7 +72,7 @@
 
 .t-property {
     font: var(--tui-font-text-m);
-    margin-bottom: 0.25rem;
+    margin-block-end: 0.25rem;
     font-family: monospace;
     color: @color-property;
 
@@ -92,7 +92,7 @@
 }
 
 .t-deprecated-label {
-    margin-right: 0.125rem;
+    margin-inline-end: 0.125rem;
     color: var(--tui-text-negative);
     font-size: 0.75rem;
 }
@@ -148,7 +148,7 @@
     display: block;
 
     @media not @tui-mobile {
-        margin-left: auto;
+        margin-inline-start: auto;
     }
 }
 
