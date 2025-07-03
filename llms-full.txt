@@ -2826,7 +2826,7 @@ export default class Example {
 }
 
 .button {
-    margin-top: 0.5rem;
+    margin-block-start: 0.5rem;
 }
 ```
 
@@ -4468,8 +4468,8 @@ export default class Example {
 }
 
 footer {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-inline-start: 1rem;
+    margin-inline-end: 1rem;
 }
 ```
 
@@ -5175,10 +5175,10 @@ export default class PageComponent {
 
 .control {
     flex: 1;
-    margin-bottom: 0.25rem;
+    margin-block-end: 0.25rem;
 
     &:not(:last-child) {
-        margin-right: 1.25rem;
+        margin-inline-end: 1.25rem;
     }
 }
 
@@ -12282,14 +12282,14 @@ export default class PageComponent extends AbstractExampleTuiDropdown {
 
 .buttons {
     display: flex;
-    margin-bottom: 0;
+    margin-block-end: 0;
 }
 
 .button {
     flex: 1;
 
     &:first-child {
-        margin-right: 0.75rem;
+        margin-inline-end: 0.75rem;
     }
 }
 ```
