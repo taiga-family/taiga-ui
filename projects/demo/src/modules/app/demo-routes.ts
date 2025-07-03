@@ -230,4 +230,5 @@ export const DemoRoute = {
     StackblitzStarter: '/stackblitz',
     MigrationGuide: '/migration-guide',
     Obfuscate: '/pipes/obfuscate',
+    Shimmer: '/directives/shimmer',
 } as const;

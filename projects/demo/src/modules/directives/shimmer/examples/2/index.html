@@ -1,0 +1,46 @@
+<section
+    tuiAppearance="floating"
+    tuiCardLarge
+>
+    <header tuiHeader>
+        <hgroup
+            tuiTitle
+            [style.opacity]="'var(--tui-disabled-opacity)'"
+        >
+            <h5>You got $237&nbsp;000,42 left</h5>
+            <p tuiSubtitle>Where's the money, Lebowski?</p>
+        </hgroup>
+
+        <aside tuiAccessories>
+            <tui-avatar
+                appearance="primary"
+                src="@tui.star"
+            />
+        </aside>
+    </header>
+    <tui-avatar-stack [style.opacity]="'var(--tui-disabled-opacity)'">
+        <tui-avatar src="https://avatars.githubusercontent.com/u/87331898" />
+        <tui-avatar src="https://avatars.githubusercontent.com/u/12021443" />
+        <tui-avatar src="https://avatars.githubusercontent.com/u/35179038" />
+        <tui-avatar src="https://avatars.githubusercontent.com/u/46284632" />
+        <tui-avatar src="https://avatars.githubusercontent.com/u/10106368" />
+        <tui-avatar src="https://avatars.githubusercontent.com/u/11832552" />
+    </tui-avatar-stack>
+    <footer>
+        <button
+            appearance="secondary"
+            size="m"
+            tuiButton
+            type="button"
+        >
+            It's down there
+        </button>
+        <button
+            size="m"
+            tuiButton
+            type="button"
+        >
+            Take another look
+        </button>
+    </footer>
+</section>

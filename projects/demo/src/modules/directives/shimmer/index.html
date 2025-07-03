@@ -1,0 +1,83 @@
+<tui-doc-page
+    header="Shimmer"
+    package="KIT"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>
+            <code>tuiShimmer</code>
+            shows a shimmer over any element
+        </p>
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <section
+                tuiAppearance="floating"
+                tuiCardLarge
+            >
+                <header tuiHeader>
+                    <hgroup
+                        tuiTitle
+                        [tuiShimmer]="shimmer"
+                    >
+                        <h5>You got $237&nbsp;000,42 left</h5>
+                        <p tuiSubtitle>Where's the money, Lebowski?</p>
+                    </hgroup>
+
+                    <aside tuiAccessories>
+                        <tui-avatar
+                            appearance="primary"
+                            src="@tui.star"
+                        />
+                    </aside>
+                </header>
+                <tui-avatar-stack [tuiShimmer]="shimmer">
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/87331898" />
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/12021443" />
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/35179038" />
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/46284632" />
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/10106368" />
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/11832552" />
+                </tui-avatar-stack>
+                <footer>
+                    <button
+                        appearance="secondary"
+                        size="m"
+                        tuiButton
+                        type="button"
+                    >
+                        It's down there
+                    </button>
+                    <button
+                        size="m"
+                        tuiButton
+                        type="button"
+                    >
+                        Take another look
+                    </button>
+                </footer>
+            </section>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[tuiShimmer]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="shimmer"
+            >
+                Shimmer state
+            </tr>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>

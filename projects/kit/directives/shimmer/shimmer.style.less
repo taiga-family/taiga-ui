@@ -1,0 +1,28 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+@keyframes tuiShimmer {
+    from {
+        mask-position:
+            top left,
+            -100rem;
+    }
+
+    to {
+        mask-position:
+            top left,
+            300rem;
+    }
+}
+
+[tuiShimmer] {
+    &._shimmer {
+        mask-image:
+            linear-gradient(black, black), linear-gradient(-70deg, transparent, rgba(0, 0, 0, 0.5), transparent);
+        mask-size:
+            100%,
+            6rem 100%;
+        mask-repeat: no-repeat;
+        mask-composite: subtract;
+        animation: tuiShimmer 8s infinite linear;
+    }
+}

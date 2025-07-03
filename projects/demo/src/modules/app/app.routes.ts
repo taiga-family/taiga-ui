@@ -1009,6 +1009,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../directives/auto-focus'),
         title: 'AutoFocus',
     }),
+    route({
+        path: DemoRoute.Shimmer,
+        loadComponent: async () => import('../directives/shimmer'),
+        title: 'Shimmer',
+    }),
     // PIPES
     route({
         path: DemoRoute.Currency,
