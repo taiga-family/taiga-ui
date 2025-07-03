@@ -1,15 +1,14 @@
 import {Component, forwardRef} from '@angular/core';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
-    imports: [DropdownDocumentation, TuiButton, TuiDemo, TuiDropdown],
+    imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
@@ -20,7 +19,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {
+export default class PageComponent {
     protected positionVariants = ['selection', 'word', 'tag'] as const;
 
     protected position: 'selection' | 'tag' | 'word' = this.positionVariants[0];
