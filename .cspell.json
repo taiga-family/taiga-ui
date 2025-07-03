@@ -34,7 +34,10 @@
         "Kryal",
         "Tureborg",
         "enterkeyhint",
-        "llms"
+        "llms",
+        "шиммер",
+        "фейд",
+        "Lebowski"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
