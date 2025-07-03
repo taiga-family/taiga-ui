@@ -10,6 +10,7 @@ export const TUI_USED_ICONS = [
     '@tui.settings',
     '@tui.chevron-down',
     '@tui.ellipsis',
+    '@tui.arrow-right-left',
     '@tui.star',
     '@tui.github',
     '@tui.calendar',
