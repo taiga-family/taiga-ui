@@ -46,7 +46,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
                 ? this.itemsHandlers.stringify()
                 : // TODO(v5): delete backward compatibility
                   this.host.stringify) || String,
-            this.textfield?.input?.nativeElement.value ||
+            this.textfield?.value() ||
                 (this.host as any).nativeFocusableElement?.value ||
                 '',
         );
