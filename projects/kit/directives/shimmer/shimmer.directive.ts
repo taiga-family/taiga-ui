@@ -1,9 +1,12 @@
+import {isPlatformBrowser} from '@angular/common';
 import type {OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    inject,
     Input,
+    PLATFORM_ID,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
@@ -31,6 +34,7 @@ class TuiShimmerStyles {}
     },
 })
 export class TuiShimmer implements OnChanges {
+    private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly el = tuiInjectElement();
     private animation?: Animation;
 
@@ -44,6 +48,10 @@ export class TuiShimmer implements OnChanges {
     }
 
     public ngOnChanges(): void {
+        if (!this.isBrowser) {
+            return;
+        }
+
         this.animation?.commitStyles();
         this.animation?.cancel();
 
