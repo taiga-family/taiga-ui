@@ -4,4 +4,4 @@ import {TuiMultiSelectGroupDirective} from './multi-select-group/multi-select-gr
 export const TuiMultiSelect = [
     TuiMultiSelectGroupComponent,
     TuiMultiSelectGroupDirective,
-];
+] as const;

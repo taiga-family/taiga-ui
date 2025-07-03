@@ -28,7 +28,7 @@
         align-items: stretch;
 
         > :last-child:not([tuiCell]) {
-            margin-top: auto;
+            margin-block-start: auto;
         }
     }
 
@@ -36,7 +36,7 @@
         padding: var(--t-dim) var(--t-dim) var(--t-dim) var(--t-padding);
 
         [tuiLink]:last-child {
-            margin-right: calc(-1 * var(--t-comp));
+            margin-inline-end: calc(-1 * var(--t-comp));
         }
     }
 
@@ -44,7 +44,7 @@
         margin: var(--t-comp) var(--t-comp) calc(1.5 * var(--t-comp)) 0;
 
         [tuiLink]:last-child {
-            margin-right: calc(-1 * var(--t-comp));
+            margin-inline-end: calc(-1 * var(--t-comp));
         }
     }
 
@@ -55,13 +55,13 @@
         border-radius: var(--tui-radius-l);
 
         &:last-of-type {
-            margin-bottom: -0.5rem;
+            margin-block-end: -0.5rem;
         }
     }
 
     > [tuiLink]:last-child {
         display: block;
         inline-size: fit-content;
-        margin-bottom: var(--t-comp);
+        margin-block-end: var(--t-comp);
     }
 }

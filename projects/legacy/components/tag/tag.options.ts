@@ -1,5 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {TuiStatus} from '@taiga-ui/legacy/utils';
 
@@ -27,7 +28,9 @@ export const TUI_TAG_DEFAULT_OPTIONS: TuiTagOptions = {
  * @deprecated: drop in v5.0 use {@link TuiChip}
  * https://taiga-ui.dev/components/chip
  */
-export const TUI_TAG_OPTIONS = tuiCreateToken(TUI_TAG_DEFAULT_OPTIONS);
+export const TUI_TAG_OPTIONS = new InjectionToken(ngDevMode ? 'TUI_TAG_OPTIONS' : '', {
+    factory: () => TUI_TAG_DEFAULT_OPTIONS,
+});
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiChip}

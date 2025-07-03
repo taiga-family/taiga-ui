@@ -1,6 +1,6 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, InjectionToken} from '@angular/core';
 import {WA_LOCAL_STORAGE, WA_WINDOW} from '@ng-web-apis/common';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TUI_DARK_MODE_DEFAULT_KEY, TUI_DARK_MODE_KEY} from '@taiga-ui/core/tokens';
 import {BehaviorSubject} from 'rxjs';
 
@@ -17,7 +17,9 @@ export const TUI_DARK_THEME_KEY = TUI_DARK_MODE_KEY;
 /**
  * @deprecated use {@link TUI_DARK_THEME} instead
  */
-export const TUI_DARK_THEME = tuiCreateToken(false);
+export const TUI_DARK_THEME = new InjectionToken(ngDevMode ? 'TUI_DARK_THEME' : '', {
+    factory: TUI_FALSE_HANDLER,
+});
 
 /**
  * @deprecated use {@link TUI_DARK_THEME} instead

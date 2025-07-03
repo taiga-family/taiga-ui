@@ -2,19 +2,19 @@ tui-block-status {
     padding: 2rem;
 
     .t-block-image:not(:empty) {
-        margin-bottom: 1.5rem;
+        margin-block-end: 1.5rem;
     }
 
     .t-block-actions:not(:empty) {
-        margin-top: 1.5rem;
+        margin-block-start: 1.5rem;
     }
 
     &._card {
         padding: 1.25rem;
 
         & .t-block-image {
-            margin-top: 0.75rem;
-            margin-bottom: 1rem;
+            margin-block-start: 0.75rem;
+            margin-block-end: 1rem;
         }
     }
 
@@ -27,7 +27,7 @@ tui-block-status {
         font: var(--tui-font-heading-5);
 
         & ~ .t-block-text:not(:empty) {
-            margin-top: 0.5rem;
+            margin-block-start: 0.5rem;
         }
     }
 
@@ -38,6 +38,6 @@ tui-block-status {
 
     a:not(:last-child),
     button:not(:last-child) {
-        margin-bottom: 0.5rem;
+        margin-block-end: 0.5rem;
     }
 }

@@ -7,38 +7,38 @@
     /* stylelint-disable */
     &__header {
         font: var(--tui-font-heading-5);
-        margin-top: @fields-space-large;
-        margin-bottom: @fields-space;
+        margin-block-start: @fields-space-large;
+        margin-block-end: @fields-space;
 
         @media @tui-mobile {
             font: var(--tui-font-text-l);
             font-weight: bold;
-            margin-bottom: @fields-space-mobile;
+            margin-block-end: @fields-space-mobile;
         }
 
-        &_margin-top_none {
-            margin-top: 0;
+        &_margin-block-start_none {
+            margin-block-start: 0;
         }
 
-        &_margin-bottom_none {
-            margin-bottom: 0;
+        &_margin-block-end_none {
+            margin-block-end: 0;
         }
 
-        &_margin-bottom_small {
-            margin-bottom: @fields-space - 0.25rem;
+        &_margin-block-end_small {
+            margin-block-end: @fields-space - 0.25rem;
 
             @media @tui-mobile {
-                margin-bottom: @fields-space-mobile - 0.25rem;
+                margin-block-end: @fields-space-mobile - 0.25rem;
             }
         }
     }
     /* stylelint-enable */
 
     &__row {
-        margin-top: @fields-space;
+        margin-block-start: @fields-space;
 
         &:first-child {
-            margin-top: 0;
+            margin-block-start: 0;
         }
 
         &_multi-fields {
@@ -63,55 +63,55 @@
         }
 
         @media @tui-mobile {
-            margin-top: @fields-space-mobile;
+            margin-block-start: @fields-space-mobile;
         }
     }
 
     &__multi-field {
         flex: 1 1 0;
         min-inline-size: 0;
-        margin-left: @fields-space;
+        margin-inline-start: @fields-space;
 
         &:first-child {
-            margin-left: 0;
+            margin-inline-start: 0;
         }
 
         @media @tui-mobile {
             flex-basis: 100%;
-            margin-top: @fields-space-mobile;
-            margin-left: 0;
+            margin-block-start: @fields-space-mobile;
+            margin-inline-start: 0;
 
             &:first-child {
-                margin-top: 0;
+                margin-block-start: 0;
             }
         }
     }
 
     &__field-note {
         font: var(--tui-font-text-s);
-        margin-top: 0.25rem;
+        margin-block-start: 0.25rem;
         color: var(--tui-text-secondary);
     }
 
     &__field-checkbox {
-        margin-top: 0.5rem;
+        margin-block-start: 0.5rem;
     }
 
     &__checkbox {
         flex: ~'1 1 calc(50% - 0.625rem)';
 
         &:nth-child(even) {
-            margin-left: 1.25rem;
+            margin-inline-start: 1.25rem;
         }
 
         &:nth-child(n + 3) {
-            margin-top: 1rem;
+            margin-block-start: 1rem;
         }
     }
 
     &__buttons {
         display: flex;
-        margin-top: @fields-space-large;
+        margin-block-start: @fields-space-large;
 
         &_align_end {
             justify-content: flex-end;
@@ -123,20 +123,20 @@
 
         @media @tui-mobile {
             flex-direction: column;
-            margin-top: @fields-space-large-mobile;
+            margin-block-start: @fields-space-large-mobile;
         }
     }
 
     &__button {
-        margin-left: 0.75rem;
+        margin-inline-start: 0.75rem;
 
         &:first-child {
-            margin-left: 0;
+            margin-inline-start: 0;
         }
 
         @media @tui-mobile {
-            margin-top: 0.5rem;
-            margin-left: 0;
+            margin-block-start: 0.5rem;
+            margin-inline-start: 0;
         }
     }
 }

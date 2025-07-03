@@ -1,6 +1,6 @@
+import {InjectionToken} from '@angular/core';
 import type {UrlTree} from '@angular/router';
 import type {TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**
  * TODO: delete it in 5.0
@@ -24,5 +24,9 @@ import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
  * ```
  * It is more robust to the cases when application has base href.
  */
-export const TUI_DOC_URL_STATE_HANDLER =
-    tuiCreateToken<TuiStringHandler<UrlTree>>(String);
+export const TUI_DOC_URL_STATE_HANDLER = new InjectionToken<TuiStringHandler<UrlTree>>(
+    ngDevMode ? 'TUI_DOC_URL_STATE_HANDLER' : '',
+    {
+        factory: () => String,
+    },
+);

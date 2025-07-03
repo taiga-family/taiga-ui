@@ -4,6 +4,7 @@ import {
     Component,
     ContentChildren,
     inject,
+    InjectionToken,
     Input,
     ViewChild,
 } from '@angular/core';
@@ -21,7 +22,7 @@ import {CHAR_HYPHEN, CHAR_MINUS, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiClamp, tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
-import {tuiCreateToken, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiDecimalMode} from '@taiga-ui/core/tokens';
 import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
@@ -46,8 +47,9 @@ const DEFAULT_MAX_LENGTH = 18;
  * @deprecated use new version of {@link https://taiga-ui.dev/components/input-number tuiInputNumberOptionsProvider} (from @taiga-ui/kit) (property `valueTransformer`) instead
  * TODO(v5): delete it
  */
-export const TUI_NUMBER_VALUE_TRANSFORMER =
-    tuiCreateToken<TuiValueTransformer<number | null>>();
+export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
+    TuiValueTransformer<number | null>
+>(ngDevMode ? 'TUI_NUMBER_VALUE_TRANSFORMER' : '');
 
 /**
  * @deprecated use new version of {@link https://taiga-ui.dev/components/input-number TuiInputNumber} (from @taiga-ui/kit) instead

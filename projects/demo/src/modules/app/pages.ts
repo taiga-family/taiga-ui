@@ -12,6 +12,7 @@ export interface DocMeta {
     readonly qualifiedName?: string; // name in Taiga UI, ex. Hint
     readonly documentationLink?: string;
     readonly figmaLink?: string;
+    readonly figmaVersion?: string; // default 1.0.0
     readonly anchor?: string; // anchor link, ex. 'full', 'card-heading'
 }
 
@@ -184,15 +185,19 @@ export const pages: DocRoutePages = [
         meta: [
             {
                 name: 'tui-avatar',
+                figmaVersion: '1.3.0',
             },
             {
                 name: 'tui-avatar-labelled',
+                figmaVersion: '1.0.1',
             },
             {
                 name: 'tui-avatar-stack',
+                figmaVersion: '1.0.3',
             },
             {
                 name: 'tui-avatar-subscription',
+                figmaVersion: '1.0.0',
             },
         ],
     },
@@ -903,7 +908,9 @@ export const pages: DocRoutePages = [
         title: 'Rating',
         keywords: 'рейтинг, оценка, звезда, rating, star, rate',
         route: DemoRoute.Rating,
-        meta: {},
+        meta: {
+            figmaVersion: '1.1.1',
+        },
     },
     {
         section: 'Components',
@@ -1270,6 +1277,7 @@ export const pages: DocRoutePages = [
         route: DemoRoute.AppBar,
         meta: {
             name: 'tui-appbar',
+            figmaVersion: '1.1.1',
         },
     },
     {
@@ -1540,7 +1548,9 @@ export const pages: DocRoutePages = [
                 title: 'Sensitive',
                 keywords: 'sensitive, pixel, mask, пиксель, маска',
                 route: DemoRoute.Sensitive,
-                meta: {},
+                meta: {
+                    figmaVersion: '1.1.0',
+                },
             },
             {
                 section: 'Tools',

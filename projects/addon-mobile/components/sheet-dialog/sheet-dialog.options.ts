@@ -1,6 +1,7 @@
 import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {TuiPopover} from '@taiga-ui/cdk/services';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 
@@ -29,7 +30,12 @@ export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
 /**
  * Default parameters for mobile dialog component
  */
-export const TUI_SHEET_DIALOG_OPTIONS = tuiCreateToken(TUI_SHEET_DIALOG_DEFAULT_OPTIONS);
+export const TUI_SHEET_DIALOG_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_SHEET_DIALOG_OPTIONS' : '',
+    {
+        factory: () => TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiSheetDialogOptionsProvider(
     options: Partial<TuiSheetDialogOptions>,

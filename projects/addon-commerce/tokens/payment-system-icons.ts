@@ -1,9 +1,10 @@
-import type {InjectionToken} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 
-export const TUI_PAYMENT_SYSTEM_ICONS: InjectionToken<Record<TuiPaymentSystem, string>> =
-    tuiCreateToken({
+export const TUI_PAYMENT_SYSTEM_ICONS = new InjectionToken<
+    Record<TuiPaymentSystem, string>
+>(ngDevMode ? 'TUI_PAYMENT_SYSTEM_ICONS' : '', {
+    factory: () => ({
         mir: '@tui.mir',
         visa: '@tui.visa',
         electron: '@tui.electron',
@@ -18,4 +19,5 @@ export const TUI_PAYMENT_SYSTEM_ICONS: InjectionToken<Record<TuiPaymentSystem, s
         unionpay: '@tui.union-pay',
         uzcard: '@tui.uzcard',
         verve: '@tui.verve',
-    });
+    }),
+});

@@ -8,7 +8,7 @@
     table-layout: fixed;
 
     tr:not(:first-child) {
-        border-top: 1px solid var(--tui-border-normal);
+        border-block-start: 1px solid var(--tui-border-normal);
     }
 
     td {
@@ -16,7 +16,7 @@
 
         &:last-child {
             color: var(--tui-text-secondary);
-            padding-right: 0;
+            padding-inline-end: 0;
         }
     }
 }
@@ -58,7 +58,7 @@
 .value {
     position: relative;
     inline-size: fit-content;
-    margin-right: 1rem;
+    margin-inline-end: 1rem;
     padding: 1rem 0.75rem;
     overflow-wrap: break-word;
     text-align: center;

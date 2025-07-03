@@ -202,29 +202,29 @@
     }
 
     & when (@direction = top) {
-        margin-top: 0.25rem * @size;
+        margin-block-start: 0.25rem * @size;
     }
 
     & when (@direction = bottom) {
-        margin-bottom: 0.25rem * @size;
+        margin-block-end: 0.25rem * @size;
     }
 
     & when (@direction = vertical) {
-        margin-top: 0.25rem * @size;
-        margin-bottom: 0.25rem * @size;
+        margin-block-start: 0.25rem * @size;
+        margin-block-end: 0.25rem * @size;
     }
 
     & when (@direction = left) {
-        margin-left: 0.25rem * @size;
+        margin-inline-start: 0.25rem * @size;
     }
 
     & when (@direction = right) {
-        margin-right: 0.25rem * @size;
+        margin-inline-end: 0.25rem * @size;
     }
 
     & when (@direction = horizontal) {
-        margin-right: 0.25rem * @size;
-        margin-left: 0.25rem * @size;
+        margin-inline-end: 0.25rem * @size;
+        margin-inline-start: 0.25rem * @size;
     }
 }
 

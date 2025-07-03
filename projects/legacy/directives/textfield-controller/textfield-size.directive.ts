@@ -1,10 +1,13 @@
-import {Directive, Input} from '@angular/core';
-import {tuiCreateTokenFromFactory, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {Directive, InjectionToken, Input} from '@angular/core';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiController} from '@taiga-ui/legacy/classes';
 
-export const TUI_TEXTFIELD_SIZE = tuiCreateTokenFromFactory(
-    () => new TuiTextfieldSizeDirective(),
+export const TUI_TEXTFIELD_SIZE = new InjectionToken(
+    ngDevMode ? 'TUI_TEXTFIELD_SIZE' : '',
+    {
+        factory: () => new TuiTextfieldSizeDirective(),
+    },
 );
 
 @Directive({

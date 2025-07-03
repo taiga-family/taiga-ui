@@ -1,5 +1,6 @@
-import type {FactoryProvider, InjectionToken, ProviderToken} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {FactoryProvider, ProviderToken} from '@angular/core';
+import {InjectionToken} from '@angular/core';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export function tuiCreateOptions<T>(
     defaults: T,
@@ -7,7 +8,9 @@ export function tuiCreateOptions<T>(
     token: InjectionToken<T>,
     provider: (item: Partial<T> | ProviderToken<Partial<T>>) => FactoryProvider,
 ] {
-    const token = tuiCreateToken(defaults);
+    const token = new InjectionToken(ngDevMode ? 'token' : '', {
+        factory: () => defaults,
+    });
 
     return [token, (options) => tuiProvideOptions(token, options, defaults)];
 }

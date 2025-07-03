@@ -86,7 +86,7 @@
 
 .t-input-wrapper {
     inline-size: 100%;
-    margin-bottom: 0.5rem;
+    margin-block-end: 0.5rem;
 }
 
 .t-expand {
@@ -117,7 +117,7 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border-left: 1px solid var(--tui-border-normal);
+    border-inline-start: 1px solid var(--tui-border-normal);
     outline: none;
     background: var(--tui-background-base);
     color: var(--tui-text-primary);
@@ -161,12 +161,12 @@
 .t-checkbox {
     display: flex;
     align-items: center;
-    margin-left: 0.75rem;
+    margin-inline-start: 0.75rem;
 }
 
 .t-button,
 .t-form-controls {
-    margin-top: 0.75rem;
+    margin-block-start: 0.75rem;
 }
 
 @supports (position: sticky) {
