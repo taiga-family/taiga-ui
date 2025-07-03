@@ -27,4 +27,14 @@ export default class PageComponent {
     protected readonly control = new FormControl();
     protected unique = true;
     protected separator = ',';
+
+    protected readonly examples = [
+        'Basic',
+        'Chips',
+        'Disabled items',
+        'MultiSelect',
+        'Customization',
+        'Mask',
+        'Direction',
+    ];
 }

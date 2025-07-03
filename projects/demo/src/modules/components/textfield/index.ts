@@ -27,12 +27,11 @@ import {TuiTooltip} from '@taiga-ui/kit';
 export default class Page {
     protected routes = DemoRoute;
     protected readonly examples = [
-        'Size',
+        'Basic',
         'States',
         'Dropdown',
         'Interactive icons',
         'Mask',
-        'Fieldset',
     ];
 
     protected value = '';

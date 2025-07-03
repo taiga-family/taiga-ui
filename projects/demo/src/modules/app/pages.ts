@@ -590,6 +590,27 @@ export const pages: DocRoutePages = [
                 keywords: 'поле, инпут, форма, ввод, textarea, area',
                 route: DemoRoute.Textarea,
             },
+            {
+                section: 'Components',
+                title: 'Textfield',
+                keywords:
+                    'form, input, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
+                route: DemoRoute.Textfield,
+                meta: {},
+            },
+            {
+                section: 'Components',
+                title: 'ComboBox',
+                keywords:
+                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
+                route: DemoRoute.ComboBox,
+            },
+            {
+                section: 'Components',
+                title: 'Select',
+                keywords: 'инпут, форма, ввод, select, селект, выбор',
+                route: DemoRoute.Select,
+            },
         ],
     },
     {
@@ -720,6 +741,13 @@ export const pages: DocRoutePages = [
                 title: 'Select ⛔',
                 keywords: 'инпут, форма, ввод, select, селект, выбор',
                 route: DemoRoute.SelectLegacy,
+            },
+            {
+                section: 'Components',
+                title: 'MultiSelect ⛔',
+                keywords:
+                    'инпут, форма, ввод, select, селект, выбор, multiselect, мультиселект',
+                route: DemoRoute.MultiSelect,
             },
         ],
     },
@@ -889,32 +917,6 @@ export const pages: DocRoutePages = [
         title: 'Pulse',
         keywords: 'сигнал, пульс, pulse, signal',
         route: DemoRoute.Pulse,
-    },
-    {
-        section: 'Components',
-        title: 'Selects',
-        subPages: [
-            {
-                section: 'Components',
-                title: 'ComboBox',
-                keywords:
-                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
-                route: DemoRoute.ComboBox,
-            },
-            {
-                section: 'Components',
-                title: 'MultiSelect',
-                keywords:
-                    'инпут, форма, ввод, select, селект, выбор, multiselect, мультиселект',
-                route: DemoRoute.MultiSelect,
-            },
-            {
-                section: 'Components',
-                title: 'Select',
-                keywords: 'инпут, форма, ввод, select, селект, выбор',
-                route: DemoRoute.Select,
-            },
-        ],
     },
     {
         section: 'Components',
@@ -1132,14 +1134,6 @@ export const pages: DocRoutePages = [
         title: 'SwipeActions',
         keywords: 'swipe, action, свайп, card, действие',
         route: DemoRoute.SwipeActions,
-        meta: {},
-    },
-    {
-        section: 'Components',
-        title: 'Textfield',
-        keywords:
-            'form, input, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
-        route: DemoRoute.Textfield,
         meta: {},
     },
     {

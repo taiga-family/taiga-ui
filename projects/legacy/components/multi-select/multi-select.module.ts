@@ -26,6 +26,10 @@ import {TuiMultiSelectGroupDirective} from './multi-select-group/multi-select-gr
 import {TuiNativeMultiSelectComponent} from './native-multi-select/native-multi-select.component';
 import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-multi-select-group.component';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-chip TuiInputChip} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         CommonModule,

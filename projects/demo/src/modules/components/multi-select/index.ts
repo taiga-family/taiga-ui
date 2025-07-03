@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import type {
@@ -60,6 +61,7 @@ class Account {
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
+    protected readonly routes = DemoRoute;
     protected readonly examples = [
         'Strings array',
         'Objects array',
