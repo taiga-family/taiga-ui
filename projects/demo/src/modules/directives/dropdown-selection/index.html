@@ -29,12 +29,11 @@
             <p
                 tuiDropdownSelection
                 [tuiDropdown]="dropdownContent"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
                 [tuiDropdownSelectionPosition]="position"
             >
                 Select a text to
@@ -53,28 +52,32 @@
                 </div>
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiDropdownSelection"
-                documentationPropertyType="TuiBooleanHandler<Range>"
+        <table tuiDocAPI>
+            <tr
+                name="[tuiDropdownSelection]"
+                tuiDocAPIItem
+                type="TuiBooleanHandler<Range>"
             >
                 <strong>Directive selector</strong>
                 . Optional: you can also set a handler that gets
                 <code>Range</code>
                 and returns show/close dropdown
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiDropdownSelectionPosition"
-                documentationPropertyType="'selection' | 'word' | 'tag'"
-                [documentationPropertyValues]="positionVariants"
-                [(documentationPropertyValue)]="position"
+            </tr>
+            <tr
+                name="[tuiDropdownSelectionPosition]"
+                tuiDocAPIItem
+                type="'selection' | 'word' | 'tag'"
+                [items]="positionVariants"
+                [(value)]="position"
             >
                 Position of dropdown near text selection
-            </ng-template>
-            <dropdown-documentation />
-        </tui-doc-documentation>
+            </tr>
+            <tbody
+                #dropdown
+                tuiDocDropdown
+                [hiddenOptions]="['open', 'tuiDropdownEnabled', 'tuiDropdownLimitWidth']"
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

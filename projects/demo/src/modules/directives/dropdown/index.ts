@@ -37,7 +37,6 @@ export default class PageComponent extends AbstractExampleTuiDropdown {
         'Interesting',
         'Change detection',
         'Appearance',
-        'Manual',
         'Mobile',
     ];
 
