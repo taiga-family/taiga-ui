@@ -5203,11 +5203,11 @@ export default class PageComponent {
 - **Type**: components
 
 InputChip
-            =
-            Textfield multi
-            +
-            Chip
-            + ❤️
+        uses specifically modified
+        
+            Textfield
+        
+        to represent array of selectable items.
 
 
 ### How to Use (Import)
@@ -5305,6 +5305,16 @@ export default class PageComponent {
     protected readonly control = new FormControl();
     protected unique = true;
     protected separator = ',';
+
+    protected readonly examples = [
+        'Basic',
+        'Chips',
+        'Disabled items',
+        'MultiSelect',
+        'Customization',
+        'Mask',
+        'Direction',
+    ];
 }
 ```
 
@@ -10749,7 +10759,12 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 
-A string input for multi line text
+Textarea
+        uses
+        
+            Textfield
+        
+        to create a multi-line string input.
 
 
 ### How to Use (Import)
@@ -10831,6 +10846,7 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
@@ -10851,8 +10867,9 @@ import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class PageComponent {
+    protected readonly routes = DemoRoute;
     protected readonly options = inject(TUI_TEXTAREA_OPTIONS);
-    protected readonly examples = ['Sizes', 'Limit', 'Custom highlight', 'Icons'];
+    protected readonly examples = ['Basic', 'Limit', 'Custom highlight', 'Icons'];
     protected readonly control = new FormControl(null);
 
     protected min = this.options.min;
@@ -10867,11 +10884,8 @@ export default class PageComponent {
 - **Package**: `CORE`
 - **Type**: components
 
-Basic textfield component to implement more complex controls based upon it.
-
-        
-            Textfield based controls are in the process of being refactored. For now it is recommended to use old
-            components from the Legacy package
+Textfield
+        is a low level component that other more complex controls are based upon.
 
 
 ### How to Use (Import)
@@ -10968,12 +10982,11 @@ import {TuiTooltip} from '@taiga-ui/kit';
 export default class Page {
     protected routes = DemoRoute;
     protected readonly examples = [
-        'Size',
+        'Basic',
         'States',
         'Dropdown',
         'Interactive icons',
         'Mask',
-        'Fieldset',
     ];
 
     protected value = '';
