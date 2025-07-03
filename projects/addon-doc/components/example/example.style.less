@@ -4,7 +4,7 @@
 :host {
     position: relative;
     display: block;
-    padding-top: 3.5rem;
+    padding-block-start: 3.5rem;
     clear: inline-end;
 
     &:target {
@@ -12,7 +12,7 @@
     }
 
     @media @tui-mobile {
-        padding-top: 2rem;
+        padding-block-start: 2rem;
     }
 }
 
@@ -36,11 +36,11 @@
 
 .t-link {
     font: var(--tui-font-heading-6);
-    padding-right: 0.1rem;
+    padding-inline-end: 0.1rem;
 
     @media not @tui-mobile {
         font: var(--tui-font-heading-5);
-        margin-left: -1.6rem;
+        margin-inline-start: -1.6rem;
 
         &:not(:hover):not(.t-link-active) {
             opacity: 0;
@@ -61,14 +61,14 @@
 
 .t-example {
     position: relative;
-    margin-top: 1.5rem;
+    margin-block-start: 1.5rem;
     border: 1px solid var(--tui-border-normal);
     border-radius: var(--tui-radius-m);
     box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
     overflow: hidden;
 
     @media @tui-mobile {
-        margin-top: 0.75rem;
+        margin-block-start: 0.75rem;
     }
 }
 

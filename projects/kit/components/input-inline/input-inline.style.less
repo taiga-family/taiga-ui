@@ -9,8 +9,8 @@ tui-input-inline {
     box-sizing: border-box;
 
     > .t-before {
-        padding-right: 0.02em; // to prevent caret shaking
-        margin-left: @safari-safe-space; // to prevent hiding characters in safari
+        padding-inline-end: 0.02em; // to prevent caret shaking
+        margin-inline-start: @safari-safe-space; // to prevent hiding characters in safari
         white-space: pre;
         visibility: hidden;
     }
@@ -18,7 +18,7 @@ tui-input-inline {
     > .t-placeholder {
         display: inline-block;
         min-inline-size: 1px;
-        margin-left: -@safari-safe-space;
+        margin-inline-start: -@safari-safe-space;
     }
 
     > input {

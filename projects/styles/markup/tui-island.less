@@ -124,7 +124,7 @@
         color: var(--tui-text-secondary);
 
         &_link.tui-island__paragraph {
-            margin-top: 1rem;
+            margin-block-start: 1rem;
 
             .tui-island_size_l & {
                 margin: 1rem 0 0;
@@ -132,7 +132,7 @@
         }
 
         &_button.tui-island__paragraph {
-            margin-top: 1.25rem;
+            margin-block-start: 1.25rem;
 
             .tui-island_size_l & {
                 margin: 1.25rem 0 0;
@@ -148,7 +148,7 @@
         margin: 0 0 0 1rem;
 
         .tui-island_size_l & {
-            margin-left: 2.25rem;
+            margin-inline-start: 2.25rem;
         }
 
         .tui-island_text-align_center & {
@@ -158,19 +158,19 @@
 
     &__carousel-controls {
         display: flex;
-        padding-bottom: 1rem;
-        margin-bottom: 1rem;
+        padding-block-end: 1rem;
+        margin-block-end: 1rem;
         border-block-end: 1px solid var(--tui-border-normal);
         white-space: nowrap;
     }
 
     &__carousel-pages {
-        margin-left: auto;
+        margin-inline-start: auto;
         color: var(--tui-text-secondary);
     }
 
     &__carousel-button {
-        margin-right: 0.5rem;
+        margin-inline-end: 0.5rem;
     }
 
     .tui-island &__footer-button {
@@ -189,12 +189,12 @@
 
     &__marker {
         &:first-child:not(:only-child) {
-            margin-right: 1.25rem;
+            margin-inline-end: 1.25rem;
         }
 
         &:not(:first-child),
         &:only-child {
-            margin-left: 1.25rem;
+            margin-inline-start: 1.25rem;
         }
     }
 }

@@ -61,8 +61,8 @@
 
 .t-content {
     display: block;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
     min-block-size: inherit;
     box-sizing: border-box;
     overflow: hidden;
@@ -113,11 +113,11 @@
 }
 
 :host-context(table)[data-size='m']._label-outside .t-wrapper {
-    padding-bottom: 0.75rem;
+    padding-block-end: 0.75rem;
 }
 
 :host-context(table)[data-size='l']._label-outside .t-wrapper {
-    padding-bottom: 1rem;
+    padding-block-end: 1rem;
 }
 
 .t-input-wrapper {
@@ -146,7 +146,7 @@
     }
 
     :host._has-counter._expandable & {
-        margin-bottom: 1.25rem;
+        margin-block-end: 1.25rem;
     }
 
     // For placeholder
@@ -227,7 +227,7 @@
     /* Safari 9+, < 13.1 */
     @supports (-webkit-marquee-repetition: infinite) and (object-fit: fill) {
         :host._ios & {
-            padding-left: 0.8125rem; // compensation of unkillable padding in mobile safari
+            padding-inline-start: 0.8125rem; // compensation of unkillable padding in mobile safari
         }
     }
 }
@@ -312,7 +312,7 @@
     bottom: 0.5rem;
     font: var(--tui-font-text-s);
     pointer-events: none;
-    margin-top: auto;
+    margin-block-start: auto;
     text-align: end;
     color: var(--tui-text-tertiary);
 }
