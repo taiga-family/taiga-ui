@@ -11,6 +11,14 @@
     font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     color: var(--tui-text-primary);
     -webkit-tap-highlight-color: transparent;
+
+    ::ng-deep .t-cell {
+        &::before,
+        &::after {
+            // iOS 18 is a total disgrace
+            transform: translate3d(0, 0, 1px);
+        }
+    }
 }
 
 .t-header {
