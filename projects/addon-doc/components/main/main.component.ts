@@ -7,10 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {RouterOutlet} from '@angular/router';
-import {
-    TUI_DOC_DIRECTION_ENABLED,
-    TUI_DOC_ICONS,
-} from '@taiga-ui/addon-doc/tokens';
+import {TUI_DOC_DIRECTION_ENABLED, TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiRoot} from '@taiga-ui/core/components/root';

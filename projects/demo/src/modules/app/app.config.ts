@@ -14,13 +14,11 @@ import type {UrlTree} from '@angular/router';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
 import {environment} from '@demo/environments/environment';
 import {WA_SESSION_STORAGE} from '@ng-web-apis/common';
-import {
-    TUI_DOC_DIRECTION_ENABLED,
-    type TuiDocSourceCodePathOptions,
-} from '@taiga-ui/addon-doc';
+import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
+    TUI_DOC_DIRECTION_ENABLED,
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
