@@ -305,14 +305,14 @@ test.describe('InputDateTime', () => {
             test('does not accept month > 12', async () => {
                 await inputDateTime.textfield.pressSequentially('2023/13');
 
-                await expect(inputDateTime.textfield).toHaveValue('2023/01/30');
+                await expect(inputDateTime.textfield).toHaveValue('2023/01/3');
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionStart',
-                    '2023/01/30'.length,
+                    '2023/01/3'.length,
                 );
                 await expect(inputDateTime.textfield).toHaveJSProperty(
                     'selectionEnd',
-                    '2023/01/30'.length,
+                    '2023/01/3'.length,
                 );
             });
         });
