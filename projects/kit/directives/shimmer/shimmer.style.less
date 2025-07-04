@@ -25,4 +25,13 @@
         mask-composite: subtract;
         animation: tuiShimmer 8s infinite linear;
     }
+
+    &._disabled {
+        animation: none;
+        mask: none;
+        pointer-events: none;
+        cursor: default;
+        user-select: none;
+        opacity: var(--tui-disabled-opacity);
+    }
 }

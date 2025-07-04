@@ -30,6 +30,8 @@ class TuiShimmerStyles {}
     host: {
         tuiShimmer: '',
         '[class._shimmer]': 'shimmer',
+        '[class._disabled]': 'disabled',
+        '[attr.inert]': 'shimmer || null',
     },
 })
 export class TuiShimmer implements OnChanges {
@@ -43,7 +45,7 @@ export class TuiShimmer implements OnChanges {
     public shimmer = false;
 
     public ngOnChanges(): void {
-        if (!this.isBrowser) {
+        if (!this.isBrowser || this.disabled) {
             return;
         }
 
@@ -74,5 +76,13 @@ export class TuiShimmer implements OnChanges {
                     console.error(error);
                 });
         }
+    }
+
+    protected get disabled(): boolean {
+        return (
+            parseFloat(
+                getComputedStyle(this.el).getPropertyValue('--tui-duration').trim(),
+            ) === 0
+        );
     }
 }
