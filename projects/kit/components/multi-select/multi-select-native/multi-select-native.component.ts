@@ -29,7 +29,7 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
         multiple: '',
         '(click.stop.zoneless)': '0',
         '(input)': 'onInput()',
-        '(focus)': 'mobile && el.click()',
+        '(focus)': 'mobile && el.showPicker?.()',
     },
 })
 export class TuiMultiSelectNative<T> {
