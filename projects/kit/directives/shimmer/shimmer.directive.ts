@@ -65,9 +65,19 @@ export class TuiShimmer implements OnChanges {
                 duration: 800,
             });
 
-            this.animation.finished.then(() => {
-                this.el.style.opacity = '';
-            });
+            this.animation.finished
+                .then(() => {
+                    this.el.style.opacity = '';
+                })
+                .catch((error: unknown) => {
+                    // fast switching animation state force AbortError
+                    // https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel#exceptions
+                    if (error instanceof DOMException && error.name === 'AbortError') {
+                        return;
+                    }
+
+                    console.error(error);
+                });
         }
     }
 }
