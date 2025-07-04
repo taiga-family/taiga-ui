@@ -74,7 +74,11 @@ export class TuiComboBox<T>
     );
 
     protected readonly nonStrictValueEffect = effect(() => {
-        if (!this.options().length && !this.strict()) {
+        if (
+            !this.options().length &&
+            !this.strict() &&
+            this.stringify(this.value()) !== this.textfield.value()
+        ) {
             this.onChange(this.textfield.value() || null);
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
