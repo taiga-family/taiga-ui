@@ -80,6 +80,7 @@ export class TuiShimmer implements OnChanges {
 
     protected get disabled(): boolean {
         return (
+            this.isBrowser &&
             parseFloat(
                 getComputedStyle(this.el).getPropertyValue('--tui-duration').trim(),
             ) === 0
