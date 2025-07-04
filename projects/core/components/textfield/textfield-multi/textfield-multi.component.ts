@@ -83,7 +83,7 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
         '[class._empty]': '!control?.value?.length',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows',
-        '(click)': 'onClick($event.target)',
+        '(click.prevent)': 'onClick($event.target)',
         '(tuiActiveZoneChange)':
             '!$event && (el.scrollTo({left: 0}) || cva?.onTouched())',
         // TODO: Remove in v5
@@ -91,7 +91,6 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content && control?.value != null',
         '[class._disabled]': 'input?.nativeElement?.disabled',
-        '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
     },
@@ -154,6 +153,7 @@ export class TuiTextfieldMultiComponent<T>
     protected onClick(target: HTMLElement): void {
         if (
             target !== this.el &&
+            this.cva?.interactive() &&
             this.el.matches('[tuiChevron]') &&
             !target.matches('input:read-only,input[inputmode="none"]')
         ) {

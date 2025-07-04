@@ -21,6 +21,7 @@
         (keydown.arrowLeft)="onLeft($event)"
     >
         <ng-content select="input" />
+        <ng-content select="select" />
         <span
             class="t-ghost"
             [attr.data-placeholder]="input?.nativeElement?.placeholder"

@@ -1,31 +1,12 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    Directive,
-    inject,
-    ViewEncapsulation,
-} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {TUI_IS_ANDROID} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-
-@Component({
-    standalone: true,
-    template: '',
-    styles: ['.t-select-like:not(:read-only) {cursor: pointer}'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-select-like',
-    },
-})
-class TuiSelectLikeStyles {}
 
 @Directive({
     standalone: true,
     selector: '[tuiSelectLike]',
     host: {
-        class: 't-select-like',
+        tuiSelectLike: '',
         inputmode: 'none',
         spellcheck: 'false',
         autocomplete: 'off',
@@ -39,8 +20,6 @@ class TuiSelectLikeStyles {}
 export class TuiSelectLike {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly isAndroid = inject(TUI_IS_ANDROID);
-
-    protected readonly nothing = tuiWithStyles(TuiSelectLikeStyles);
 
     protected clear(): void {
         this.el.value = '';

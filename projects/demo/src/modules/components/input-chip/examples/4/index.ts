@@ -55,5 +55,5 @@ export default class Example {
 
     protected readonly strings = tuiIsString;
     protected readonly stringify = ({name}: User): string => name;
-    protected readonly handler = (item: string): boolean => !this.items.includes(item);
+    protected readonly disabled = (item: string): boolean => !this.items.includes(item);
 }

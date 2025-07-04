@@ -5,13 +5,18 @@ import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
     TuiTextfieldBase,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
-import {TuiDropdownDirective, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {
+    TuiDropdownDirective,
+    TuiDropdownOpen,
+    tuiDropdownOpen,
+} from '@taiga-ui/core/directives/dropdown';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {filter} from 'rxjs';
@@ -53,6 +58,13 @@ export class TuiInputChipDirective<T>
     private readonly textfield = inject(TuiTextfieldMultiComponent);
     private readonly open = tuiDropdownOpen();
     private readonly dropdown = inject(TuiDropdownDirective);
+
+    protected readonly enabled = tuiDirectiveBinding(
+        TuiDropdownOpen,
+        'tuiDropdownEnabled',
+        this.interactive,
+        {},
+    );
 
     protected readonly sub = inject(TuiActiveZone)
         .tuiActiveZoneChange.pipe(

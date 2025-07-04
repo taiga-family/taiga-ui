@@ -1,0 +1,50 @@
+<!--<option-->
+<!--    *ngIf="showPlaceholder()"-->
+<!--    disabled-->
+<!--    selected-->
+<!--    value=""-->
+<!--&gt;-->
+<!--    {{ placeholder() }}-->
+<!--</option>-->
+
+<ng-container *ngIf="items && !isFlat(items); else flatItems">
+    <optgroup
+        *ngFor="let group of labels; let index = index"
+        [label]="labels[index]"
+    >
+        <ng-container *ngTemplateOutlet="options; context: {$implicit: items[index]}" />
+    </optgroup>
+    <ng-container *ngIf="!mobile">
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            [items]="items"
+            [labels]="labels"
+        />
+    </ng-container>
+</ng-container>
+
+<ng-template #flatItems>
+    <ng-container *ngTemplateOutlet="options; context: {$implicit: items}" />
+    <ng-container *ngIf="!mobile">
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            [items]="$any(items)"
+        />
+    </ng-container>
+</ng-template>
+
+<ng-template
+    #options
+    let-items
+>
+    <option
+        *ngFor="let option of items"
+        [disabled]="handlers.disabledItemHandler()(option)"
+        [selected]="isSelected()(option)"
+        [value]="handlers.stringify()(option)"
+    >
+        {{ handlers.stringify()(option) }}
+    </option>
+</ng-template>

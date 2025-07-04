@@ -280,7 +280,8 @@ tui-textfield {
         pointer-events: auto;
         background: transparent;
 
-        &:read-only ~ .t-filler {
+        // TODO: Remove :not when we drop old select tuiTextfield in v5
+        &:not(select):read-only ~ .t-filler {
             display: none;
         }
 
@@ -418,5 +419,9 @@ tui-textfield {
 
     [tuiFluidTypography] {
         font-weight: bold;
+    }
+
+    [tuiSelectLike]:not(:read-only) {
+        cursor: pointer;
     }
 }
