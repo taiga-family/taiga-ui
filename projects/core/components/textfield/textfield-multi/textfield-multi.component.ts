@@ -152,12 +152,15 @@ export class TuiTextfieldMultiComponent<T>
 
     protected onClick(target: HTMLElement): void {
         if (
-            target !== this.el &&
-            this.cva?.interactive() &&
-            this.el.matches('[tuiChevron]') &&
-            !target.matches('input:read-only,input[inputmode="none"]')
+            target === this.el ||
+            !this.cva?.interactive() ||
+            (!this.el.matches('[tuiChevron]') && !this.el.querySelector('select')) ||
+            target.matches('input:read-only,input[inputmode="none"]')
         ) {
-            this.open.update((open) => !open);
+            return;
         }
+
+        this.open.update((open) => !open);
+        this.input?.nativeElement.showPicker?.();
     }
 }

@@ -170,12 +170,16 @@ export class TuiTextfieldBaseComponent<T>
         this.input?.nativeElement.focus();
 
         if (
-            this.dropdownOpen.tuiDropdownEnabled &&
-            this.dropdown._content() &&
-            !this.input?.nativeElement.matches(':read-only')
+            !this.dropdownOpen.tuiDropdownEnabled ||
+            !this.dropdown._content() ||
+            !this.cva?.interactive() ||
+            this.input?.nativeElement.matches('input:read-only,textarea:read-only')
         ) {
-            this.open.update((x) => !x);
+            return;
         }
+
+        this.open.update((open) => !open);
+        this.input?.nativeElement.showPicker?.();
     }
 
     protected onScroll(element: HTMLElement): void {

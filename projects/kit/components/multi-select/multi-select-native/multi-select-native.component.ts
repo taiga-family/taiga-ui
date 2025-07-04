@@ -29,7 +29,6 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
         multiple: '',
         '(click.stop.zoneless)': '0',
         '(input)': 'onInput()',
-        '(focus)': 'mobile && el.showPicker?.()',
     },
 })
 export class TuiMultiSelectNative<T> {
@@ -63,8 +62,6 @@ export class TuiMultiSelectNative<T> {
         const items = this.items || [];
         const options = Array.from(this.el.selectedOptions).map(({index}) => index);
 
-        this.textfield.cva?.onChange(
-            items.flat().filter((_, index) => options.includes(index)),
-        );
+        this.textfield.cva?.onChange(items.flat().filter((_, i) => options.includes(i)));
     }
 }
