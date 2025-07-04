@@ -6,7 +6,9 @@ import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiInputTimeOptions
-    extends Required<Pick<MaskitoTimeParams, 'mode' | 'timeSegmentMaxValues'>> {
+    extends Required<
+        Pick<MaskitoTimeParams, 'mode' | 'timeSegmentMaxValues' | 'timeSegmentMinValues'>
+    > {
     readonly icon: TuiHandler<TuiSizeL | TuiSizeS, string>;
     readonly valueTransformer: TuiValueTransformer<TuiTime | null, any> | null;
 }
@@ -15,6 +17,7 @@ export const TUI_INPUT_TIME_DEFAULT_OPTIONS: TuiInputTimeOptions = {
     icon: () => '@tui.clock',
     mode: 'HH:MM',
     timeSegmentMaxValues: {},
+    timeSegmentMinValues: {},
     valueTransformer: null,
 };
 
