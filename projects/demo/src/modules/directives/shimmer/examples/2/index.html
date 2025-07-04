@@ -5,7 +5,8 @@
     <header tuiHeader>
         <hgroup
             tuiTitle
-            [style.opacity]="'var(--tui-disabled-opacity)'"
+            [style.--tui-duration]="0"
+            [tuiShimmer]="loading"
         >
             <h5>You got $237&nbsp;000,42 left</h5>
             <p tuiSubtitle>Where's the money, Lebowski?</p>
@@ -18,7 +19,10 @@
             />
         </aside>
     </header>
-    <tui-avatar-stack [style.opacity]="'var(--tui-disabled-opacity)'">
+    <tui-avatar-stack
+        [style.--tui-duration]="0"
+        [tuiShimmer]="loading"
+    >
         <tui-avatar src="https://avatars.githubusercontent.com/u/87331898" />
         <tui-avatar src="https://avatars.githubusercontent.com/u/12021443" />
         <tui-avatar src="https://avatars.githubusercontent.com/u/35179038" />
