@@ -23,6 +23,7 @@ export default class Example {
 
     protected readonly durationVariants = [0, 3000, 10000];
     protected readonly itemPaddingVariants = [null, '0 10px', '0'];
+    protected loop = false;
     protected draggable = false;
     protected duration = this.durationVariants[0]!;
     protected itemPadding: string | null = this.itemPaddingVariants[0]!;
