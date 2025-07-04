@@ -28,7 +28,7 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
     host: {
         multiple: '',
         '(click.stop.zoneless)': '0',
-        '(change)': 'selectOption($event.target.options.selectedIndex)',
+        '(input)': 'onInput()',
         '(focus)': 'mobile && el.click()',
     },
 })
@@ -59,12 +59,12 @@ export class TuiMultiSelectNative<T> {
         this.textfield.fillerSetter = placeholder;
     }
 
-    protected selectOption(index: number): void {
+    protected onInput(): void {
         const items = this.items || [];
-        const item = items.flat()[index];
+        const options = Array.from(this.el.selectedOptions).map(({index}) => index);
 
-        if (item) {
-            this.textfield.handleOption(item);
-        }
+        this.textfield.cva?.onChange(
+            items.flat().filter((_, index) => options.includes(index)),
+        );
     }
 }

@@ -32,10 +32,10 @@
             "
         ></span>
         <input
-            *ngIf="showFiller()"
             aria-hidden="true"
             disabled
             class="t-filler"
+            [class.t-filler_hidden]="!showFiller()"
             [value]="computedFiller()"
         />
     </span>

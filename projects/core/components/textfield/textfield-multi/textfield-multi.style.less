@@ -123,10 +123,15 @@ tui-textfield[multi][multi] {
                 position: absolute;
                 left: 0;
                 color: var(--tui-text-tertiary);
+                pointer-events: none;
 
                 @supports (inset-inline-start: 0) {
                     left: unset;
                     inset-inline-start: 0;
+                }
+
+                &_hidden {
+                    display: none;
                 }
             }
         }
@@ -323,6 +328,14 @@ tui-textfield[multi][multi] {
     select {
         opacity: 0;
         pointer-events: none;
+    }
+
+    &._empty > .t-items select ~ .t-filler {
+        display: block;
+    }
+
+    &._empty:not([data-focus='true']) > .t-items select ~ .t-filler {
+        color: var(--tui-text-secondary);
     }
 
     &:has([tuiSelectLike]) {

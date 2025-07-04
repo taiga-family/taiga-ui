@@ -85,13 +85,13 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
 
-    protected computedFiller = computed((value = this.value()) => {
-        const filledValue = value + this.filler().slice(value.length);
+    protected readonly computedFiller = computed((value = this.value()) => {
+        const filler = value + this.filler().slice(value.length);
 
-        return filledValue.length > value.length ? filledValue : '';
+        return filler.length > value.length ? filler : '';
     });
 
-    protected showFiller = computed<boolean>(
+    protected readonly showFiller = computed<boolean>(
         () =>
             this.focused() &&
             !!this.computedFiller() &&

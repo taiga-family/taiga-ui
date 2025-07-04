@@ -278,7 +278,7 @@ tui-textfield {
     select:defined,
     textarea:defined {
         pointer-events: auto;
-        background: transparent;
+        background: none;
 
         // TODO: Remove :not when we drop old select tuiTextfield in v5
         &:not(select):read-only ~ .t-filler {
@@ -412,7 +412,6 @@ tui-textfield {
 
     & > .t-filler:defined {
         pointer-events: none;
-        background: none;
         color: var(--tui-text-tertiary);
         opacity: 1;
     }
