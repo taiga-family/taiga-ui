@@ -1,12 +1,3 @@
-<!--<option-->
-<!--    *ngIf="showPlaceholder()"-->
-<!--    disabled-->
-<!--    selected-->
-<!--    value=""-->
-<!--&gt;-->
-<!--    {{ placeholder() }}-->
-<!--</option>-->
-
 <ng-container *ngIf="items && !isFlat(items); else flatItems">
     <optgroup
         *ngFor="let group of labels; let index = index"
