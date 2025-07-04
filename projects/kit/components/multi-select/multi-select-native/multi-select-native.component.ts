@@ -29,11 +29,11 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
         multiple: '',
         '(click.stop.zoneless)': '0',
         '(change)': 'selectOption($event.target.options.selectedIndex)',
-        '(focus)': 'mobile && el.showPicker?.()',
+        '(focus)': 'mobile && el.click()',
     },
 })
 export class TuiMultiSelectNative<T> {
-    private readonly control = inject(TuiControl);
+    private readonly control: TuiControl<readonly T[]> = inject(TuiControl);
     private readonly textfield = inject(TuiTextfieldComponent);
 
     protected readonly isFlat = tuiIsFlat;
@@ -44,7 +44,8 @@ export class TuiMultiSelectNative<T> {
     protected readonly isSelected = computed(
         (value = this.control.value()) =>
             (x: T) =>
-                tuiIsPresent(value) && this.handlers.identityMatcher()(x, value),
+                tuiIsPresent(value) &&
+                value.some((item) => this.handlers.identityMatcher()(x, item)),
     );
 
     @Input()
