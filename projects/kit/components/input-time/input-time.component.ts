@@ -57,10 +57,6 @@ export class TuiInputTimeComponent {
     });
 
     protected setValue(value: string): void {
-        const mode = this.host.timeMode();
-        const time = TuiTime.fromString(value);
-
-        this.control.onChange(time);
-        this.textfield.value.set(time.toString(mode));
+        this.host.setValue(TuiTime.fromString(value));
     }
 }

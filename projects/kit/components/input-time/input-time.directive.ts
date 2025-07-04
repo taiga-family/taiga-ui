@@ -3,7 +3,13 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import type {MaskitoTimeMode, MaskitoTimeParams} from '@maskito/kit';
-import {maskitoSelectionChangeHandler, maskitoTimeOptionsGenerator} from '@maskito/kit';
+import {
+    maskitoAddOnFocusPlugin,
+    maskitoCaretGuard,
+    maskitoRemoveOnBlurPlugin,
+    maskitoSelectionChangeHandler,
+    maskitoTimeOptionsGenerator,
+} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -57,6 +63,8 @@ export class TuiInputTimeDirective
     private readonly open = tuiDropdownOpen();
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
     private readonly fillers = toSignal(inject(TUI_TIME_TEXTS));
+    private readonly prefix = signal('');
+    private readonly postfix = signal('');
 
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_TIME_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
@@ -66,7 +74,9 @@ export class TuiInputTimeDirective
     protected readonly filler = tuiDirectiveBinding(
         TuiTextfieldComponent,
         'fillerSetter',
-        computed((fillers = this.fillers()) => fillers?.[this.timeMode()] ?? ''),
+        computed((filler = this.fillers()?.[this.timeMode()] ?? '') =>
+            this.postfix() ? '' : this.prefix() + filler,
+        ),
         {},
     );
 
@@ -76,6 +86,8 @@ export class TuiInputTimeDirective
                 ...this.options,
                 mode: this.timeMode(),
                 step: this.interactive() && !this.dropdown._content() ? 1 : 0,
+                prefix: this.prefix(),
+                postfix: this.postfix(),
             }),
         ),
     );
@@ -94,21 +106,36 @@ export class TuiInputTimeDirective
         this.timeMode.set(x);
     }
 
+    // TODO(v5): use signal inputs
+    @Input('prefix')
+    public set prefixSetter(x: string) {
+        this.prefix.set(x);
+    }
+
+    // TODO(v5): use signal inputs
+    @Input('postfix')
+    public set postfixSetter(x: string) {
+        this.postfix.set(x);
+    }
+
     public setValue(value: TuiTime | null): void {
         this.onChange(value);
-        this.textfield.value.set(value?.toString(this.timeMode()) ?? '');
+        this.textfield.value.set(this.stringify(value));
 
-        if (!value) {
+        if (!value && this.dropdownEnabled()) {
             this.open.set(true);
         }
     }
 
     public override writeValue(value: TuiTime | null): void {
         super.writeValue(value);
-        this.textfield.value.set(this.value()?.toString(this.timeMode()) ?? '');
+        this.textfield.value.set(this.stringify(this.value()));
     }
 
-    protected onInput(value: string): void {
+    protected onInput(valueWithAffixes: string): void {
+        const value = valueWithAffixes
+            .replace(this.prefix(), '')
+            .replace(this.postfix(), '');
         const time =
             value.length === this.timeMode().length ? TuiTime.fromString(value) : null;
         const newValue =
@@ -118,7 +145,7 @@ export class TuiInputTimeDirective
         this.onChange(newValue);
 
         if (newValue && newValue !== time) {
-            this.textfield.value.set(newValue?.toString(this.timeMode()));
+            this.textfield.value.set(this.stringify(newValue));
         }
     }
 
@@ -126,17 +153,24 @@ export class TuiInputTimeDirective
         this.open.update((x) => !x);
     }
 
-    private computeMask(params: MaskitoTimeParams): MaskitoOptions {
+    private computeMask(params: Required<MaskitoTimeParams>): MaskitoOptions {
         const options = maskitoTimeOptionsGenerator(params);
-        const {mode} = params;
+        const {mode, prefix, postfix} = params;
         const inputModeSwitchPlugin = maskitoSelectionChangeHandler((element) => {
             element.inputMode =
                 element.selectionStart! >= mode.indexOf(' AA') ? 'text' : 'numeric';
         });
+        const caretGuardPlugin = maskitoCaretGuard((value) => [
+            prefix.length,
+            value.length - postfix.length,
+        ]);
 
         return {
             ...options,
             plugins: options.plugins.concat(
+                caretGuardPlugin,
+                maskitoAddOnFocusPlugin(prefix + postfix),
+                maskitoRemoveOnBlurPlugin(prefix + postfix),
                 mode.includes('AA') ? inputModeSwitchPlugin : [],
             ),
         };
@@ -150,5 +184,9 @@ export class TuiInputTimeDirective
                 ? current
                 : previous,
         );
+    }
+
+    private stringify(time: TuiTime | null): string {
+        return this.prefix() + (time?.toString(this.timeMode()) || '') + this.postfix();
     }
 }

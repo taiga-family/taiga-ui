@@ -315,6 +315,8 @@
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [mode]="mode"
+                        [postfix]="postfix"
+                        [prefix]="prefix"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -330,6 +332,28 @@
                 [(value)]="mode"
             >
                 Time format mode
+            </tr>
+
+            <tr
+                name="[prefix]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="prefix"
+            >
+                Uneditable text
+                <strong>before</strong>
+                time
+            </tr>
+
+            <tr
+                name="[postfix]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="postfix"
+            >
+                Uneditable text
+                <strong>after</strong>
+                time
             </tr>
 
             <tr
