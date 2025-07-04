@@ -1,0 +1,76 @@
+<label tuiLabel>
+    Mobile dropdown with writable input
+    <tui-textfield
+        multi
+        tuiChevron
+        tuiDropdownMobile
+        [disabledItemHandler]="disabled"
+    >
+        <input
+            placeholder="Type something"
+            tuiInputChip
+            [(ngModel)]="writable"
+        />
+        <ng-template
+            *ngIf="items | tuiFilterByInput as items"
+            let-close
+            tuiTextfieldDropdown
+        >
+            <tui-data-list-wrapper
+                new
+                tuiMultiSelectGroup
+                [items]="items"
+            />
+            <button
+                appearance="accent"
+                size="m"
+                tuiButton
+                tuiDropdownButton
+                type="button"
+                (click)="close()"
+            >
+                Done
+            </button>
+        </ng-template>
+    </tui-textfield>
+</label>
+
+<label tuiLabel>
+    Mobile sheet with options
+    <tui-textfield
+        multi
+        tuiChevron
+        tuiDropdownMobile="Select Pythons"
+    >
+        <input
+            tuiInputChip
+            tuiSelectLike
+            [placeholder]="sheet.length ? '' : 'Select Pythons'"
+            [(ngModel)]="sheet"
+        />
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            tuiMultiSelectGroup
+            [items]="items"
+        />
+    </tui-textfield>
+</label>
+
+<label tuiLabel>
+    Native MultiSelect
+    <tui-textfield
+        multi
+        tuiChevron
+        [identityMatcher]="identity"
+        [stringify]="stringify"
+    >
+        <select
+            placeholder="Select Pythons"
+            tuiMultiSelect
+            [items]="[users]"
+            [labels]="['Pythons']"
+            [(ngModel)]="native"
+        ></select>
+    </tui-textfield>
+</label>
