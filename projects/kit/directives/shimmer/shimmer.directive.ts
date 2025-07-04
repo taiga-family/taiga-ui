@@ -7,7 +7,6 @@ import {
     inject,
     Input,
     PLATFORM_ID,
-    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -30,7 +29,7 @@ class TuiShimmerStyles {}
     selector: '[tuiShimmer]',
     host: {
         tuiShimmer: '',
-        '[class._shimmer]': 'shimmer()',
+        '[class._shimmer]': 'shimmer',
     },
 })
 export class TuiShimmer implements OnChanges {
@@ -40,12 +39,15 @@ export class TuiShimmer implements OnChanges {
 
     protected readonly nothing = tuiWithStyles(TuiShimmerStyles);
 
-    public shimmer = signal(false);
+    // public shimmer = false;
 
     @Input('tuiShimmer')
-    public set shimmerValue(cache: boolean) {
-        this.shimmer.set(cache);
-    }
+    public shimmer = false;
+
+    // @Input('tuiShimmer')
+    // public set shimmerValue(shimmer: boolean) {
+    //     this.shimmer = shimmer;
+    // }
 
     public ngOnChanges(): void {
         if (!this.isBrowser) {
@@ -55,7 +57,7 @@ export class TuiShimmer implements OnChanges {
         this.animation?.commitStyles();
         this.animation?.cancel();
 
-        if (this.shimmer()) {
+        if (this.shimmer) {
             this.animation = this.el.animate(
                 {opacity: [0.5, 0.25, 0.5, 0.5]},
                 {duration: 1500, iterations: Infinity},

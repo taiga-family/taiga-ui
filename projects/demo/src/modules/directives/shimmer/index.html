@@ -16,18 +16,14 @@
 
         <p>
             To indicate loading states in cards, headers, lists, avatars, and other UI elements. When you want to
-            visually communicate that content is loading, rather than missing or frozen.
-        </p>
-
-        <h3>How It Works</h3>
-
-        <p>
-            Applies a CSS animation (
-            <code>&#64;keyframes tuiShimmer</code>
-            ) to create a shimmering light stripe effect. Uses mask-image and gradients to apply the shimmer effect
-            selectively over content. Controls animation dynamically via
-            <code>&#64;Input</code>
-            , starting or stopping based on the boolean value.
+            visually communicate that content is loading, rather than missing or frozen. Shimmer is used when you have
+            cached data that is currently being refreshed and if you have no data at all — a better choice would be
+            <a
+                tuiLink
+                [routerLink]="routes.Skeleton"
+            >
+                <strong>Skeleton</strong>
+            </a>
         </p>
 
         <tui-doc-example
