@@ -39,15 +39,8 @@ export class TuiShimmer implements OnChanges {
 
     protected readonly nothing = tuiWithStyles(TuiShimmerStyles);
 
-    // public shimmer = false;
-
     @Input('tuiShimmer')
     public shimmer = false;
-
-    // @Input('tuiShimmer')
-    // public set shimmerValue(shimmer: boolean) {
-    //     this.shimmer = shimmer;
-    // }
 
     public ngOnChanges(): void {
         if (!this.isBrowser) {
