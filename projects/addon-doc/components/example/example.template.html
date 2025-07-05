@@ -17,6 +17,7 @@
         class="t-link"
         [attr.title]="copy()"
         [fragment]="id"
+        [relativeTo]="route.firstChild ?? route"
         [routerLinkActiveOptions]="{matrixParams: 'exact', queryParams: 'exact', paths: 'exact', fragment: 'exact'}"
         (click)="copyExampleLink($event.currentTarget)"
     >

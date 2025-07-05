@@ -2,7 +2,7 @@ import {Clipboard} from '@angular/cdk/clipboard';
 import {DOCUMENT, NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
 import {WA_LOCATION} from '@ng-web-apis/common';
 import {
     TUI_DOC_CODE_ACTIONS,
@@ -82,6 +82,8 @@ export class TuiDocExample {
         inject<ReadonlyArray<PolymorpheusContent<TuiContext<string>>>>(
             TUI_DOC_CODE_ACTIONS,
         );
+
+    protected readonly route = inject(ActivatedRoute);
 
     protected readonly defaultTabIndex = 0;
     protected readonly defaultTab = this.texts[this.defaultTabIndex];
