@@ -1009,6 +1009,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../directives/auto-focus'),
         title: 'AutoFocus',
     }),
+    route({
+        path: DemoRoute.Animated,
+        loadComponent: async () => import('../directives/animated'),
+        title: 'Animated',
+    }),
     // PIPES
     route({
         path: DemoRoute.Currency,
