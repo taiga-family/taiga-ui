@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -26,6 +27,7 @@ export interface TuiTextfieldItem<T> {
     changeDetection: ChangeDetectionStrategy.Default,
     host: {
         '[class._string]': '!textfield.item',
+        '[class._disabled]': 'handlers.disabledItemHandler()(context.$implicit.item)',
         '(pointerdown.self.prevent)': '0',
         '(keydown.arrowLeft.prevent)': 'el.previousElementSibling?.firstChild?.focus()',
         '(keydown.arrowRight.prevent)': 'el.nextElementSibling?.firstChild?.focus()',
@@ -33,12 +35,15 @@ export interface TuiTextfieldItem<T> {
 })
 export class TuiTextfieldItemComponent<T> {
     protected readonly el = tuiInjectElement();
+    protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
     protected readonly textfield: TuiTextfieldMultiComponent<T> = inject(
         TuiTextfieldMultiComponent,
     );
 
     protected get content(): PolymorpheusContent<TuiContext<TuiTextfieldItem<T>>> {
-        return this.textfield.item ?? String(this.context.$implicit.item);
+        return (
+            this.textfield.item ?? this.handlers.stringify()(this.context.$implicit.item)
+        );
     }
 }

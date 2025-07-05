@@ -21,6 +21,7 @@
         (keydown.arrowLeft)="onLeft($event)"
     >
         <ng-content select="input" />
+        <ng-content select="select" />
         <span
             class="t-ghost"
             [attr.data-placeholder]="input?.nativeElement?.placeholder"
@@ -31,10 +32,10 @@
             "
         ></span>
         <input
-            *ngIf="showFiller()"
             aria-hidden="true"
             disabled
             class="t-filler"
+            [class.t-filler_hidden]="!showFiller()"
             [value]="computedFiller()"
         />
     </span>

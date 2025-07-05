@@ -24,7 +24,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     `,
     styleUrls: ['./select-option.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [tuiCheckboxOptionsProvider({appearance: () => 'action'})],
+    providers: [tuiCheckboxOptionsProvider({appearance: () => 'action'})],
     hostDirectives: [TuiScrollIntoView],
     host: {
         tuiSelectOption: '',

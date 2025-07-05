@@ -33,7 +33,7 @@ import type {Observable} from 'rxjs';
     templateUrl: './bar-chart.template.html',
     styleUrls: ['./bar-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [tuiHintOptionsProvider({direction: 'top'})],
+    providers: [tuiHintOptionsProvider({direction: 'top'})],
 })
 export class TuiBarChart {
     private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});

@@ -36,5 +36,6 @@ export default class PageComponent {
         'Customization',
         'Mask',
         'Direction',
+        'Mobile',
     ];
 }

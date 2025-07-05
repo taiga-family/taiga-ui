@@ -73,6 +73,8 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         }
     }
 
+    protected readonly close = (): void => this.dropdown.toggle(false);
+
     protected onClick(event: MouseEvent): void {
         if (
             tuiIsElement(event.target) &&
@@ -97,10 +99,6 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         if (isIntersecting) {
             this.close();
         }
-    }
-
-    protected close(): void {
-        this.dropdown.toggle(false);
     }
 
     protected refresh({offsetTop, height}: VisualViewport): void {

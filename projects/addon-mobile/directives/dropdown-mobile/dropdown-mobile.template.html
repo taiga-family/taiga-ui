@@ -18,7 +18,7 @@
         {{ directive.tuiDropdownMobile }}
     </h2>
     <div class="t-content">
-        <ng-container *polymorpheusOutlet="dropdown.content as text">
+        <ng-container *polymorpheusOutlet="dropdown._content() as text; context: {$implicit: close}">
             {{ text }}
         </ng-container>
     </div>

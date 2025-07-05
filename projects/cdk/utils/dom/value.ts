@@ -14,7 +14,7 @@ import {
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 
-type WithValue = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+type WithValue = HTMLInputElement | HTMLTextAreaElement;
 
 export function tuiValue(
     input:
@@ -31,7 +31,6 @@ export function tuiValue(
 
         patch(win.HTMLInputElement.prototype);
         patch(win.HTMLTextAreaElement.prototype);
-        patch(win.HTMLSelectElement.prototype);
     }
 
     let element = isSignal(input) ? undefined : coerceElement(input);

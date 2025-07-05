@@ -20,6 +20,14 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
             [size]="size() === 'l' ? 'm' : 's'"
         />
     `,
+    styles: [
+        `
+            :host-context(tui-dropdown-mobile) input {
+                order: 100;
+                margin-inline-start: auto;
+            }
+        `,
+    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMultiSelectOption<T> {
