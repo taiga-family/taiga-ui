@@ -61,9 +61,11 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly calendarOut = effect((onCleanup) => {
-        const subscription = this.calendar()?.yearClick.subscribe((year) =>
-            this.onChange(year),
-        );
+        const subscription = this.calendar()?.yearClick.subscribe((year) => {
+            this.onChange(year);
+            this.cdr.detectChanges();
+            this.toggle();
+        });
 
         onCleanup(() => subscription?.unsubscribe());
     });
