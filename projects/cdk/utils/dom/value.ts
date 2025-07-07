@@ -58,12 +58,12 @@ export function tuiValue(
             element = coerceElement(input());
             cleanup();
 
-            if (element) {
+            if (element && !element.matches('select[multiple]')) {
                 value.set(element.value);
                 cleanup = process(element);
             }
         }, options);
-    } else if (element) {
+    } else if (element && !element.matches('select[multiple]')) {
         cleanup = process(element);
     }
 

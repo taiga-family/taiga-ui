@@ -113,10 +113,6 @@ tui-textfield[multi][multi] {
                 text-overflow: clip;
                 padding-inline-end: 0.125rem;
                 min-block-size: var(--t-item-height, 1em);
-
-                &:empty::before {
-                    content: attr(data-placeholder);
-                }
             }
 
             .t-filler {
@@ -176,20 +172,12 @@ tui-textfield[multi][multi] {
         &::placeholder {
             opacity: 0;
         }
-
-        ~ .t-ghost::before {
-            display: none;
-        }
     }
 
     &._empty > .t-items,
     &[data-focus='true']:not([data-mode~='readonly']):not(:focus-within) > .t-items {
         input::placeholder {
             opacity: 1;
-        }
-
-        .t-ghost::before {
-            display: inline;
         }
     }
 

@@ -22,11 +22,7 @@
     >
         <ng-content select="input" />
         <ng-content select="select" />
-        <span
-            class="t-ghost"
-            [attr.data-placeholder]="input?.nativeElement?.placeholder"
-            [textContent]="placeholder()"
-        ></span>
+        <span class="t-ghost">{{ placeholder }}</span>
         <input
             aria-hidden="true"
             disabled
