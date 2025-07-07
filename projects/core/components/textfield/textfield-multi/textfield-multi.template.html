@@ -25,11 +25,7 @@
         <span
             class="t-ghost"
             [attr.data-placeholder]="input?.nativeElement?.placeholder"
-            [textContent]="
-                value() && value().length < (input?.nativeElement?.placeholder?.length || 0)
-                    ? input?.nativeElement?.placeholder
-                    : value()
-            "
+            [textContent]="placeholder()"
         ></span>
         <input
             aria-hidden="true"

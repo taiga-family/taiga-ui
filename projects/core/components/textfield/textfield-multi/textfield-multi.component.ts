@@ -3,6 +3,7 @@ import type {AfterContentInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     ContentChild,
     ElementRef,
     inject,
@@ -113,6 +114,13 @@ export class TuiTextfieldMultiComponent<T>
         .subscribe(() => {
             this.el.style.setProperty('--t-scroll', tuiPx(-1 * this.el.scrollLeft));
         });
+
+    protected readonly placeholder = computed(
+        (placeholder = this.input?.nativeElement.placeholder || '') =>
+            this.value() && this.computedFiller().length < placeholder.length
+                ? placeholder
+                : this.computedFiller() || this.value(),
+    );
 
     @ContentChild(TuiItem, {read: TemplateRef, descendants: true})
     public readonly item?: TemplateRef<unknown>;

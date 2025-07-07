@@ -66,10 +66,10 @@
         [stringify]="stringify"
     >
         <select
-            placeholder="Select Pythons"
             tuiMultiSelect
             [items]="[users]"
             [labels]="['Pythons']"
+            [placeholder]="native.length ? 'and...' : 'Select Pythons'"
             [(ngModel)]="native"
         ></select>
     </tui-textfield>

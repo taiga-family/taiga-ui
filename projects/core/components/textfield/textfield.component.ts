@@ -171,7 +171,6 @@ export class TuiTextfieldBaseComponent<T>
 
         if (
             !this.dropdownOpen.tuiDropdownEnabled ||
-            !this.dropdown._content() ||
             !this.cva?.interactive() ||
             this.input?.nativeElement.matches('input:read-only,textarea:read-only')
         ) {
