@@ -3616,6 +3616,7 @@ export class Example {}
 | disabledItemHandler | `TuiBooleanHandler<T>` | " > A handler that gets an item and returns true if it is disabled. Must be a pure function |
 | size | `TuiSizeL | TuiSizeXS` | Size of items |
 | labels | `readonly string[]` | Group label |
+| itemClick | `T` | Emits on click on item from datalist |
 
 ---
 
@@ -11489,6 +11490,45 @@ export class Example {
     Button 2
   </button>
 </div>
+```
+
+---
+
+# directives/Animated
+
+- **Package**: `CDK`
+- **Type**: directives
+
+TuiAnimated
+            allows adding animation to DOM elements.
+
+
+### How to Use (Import)
+
+```ts
+import {TuiAnimated} from '@taiga-ui/cdk';
+
+// ...
+
+@Component({
+  standalone: true,
+  import: [
+    // ...
+    TuiAnimated,
+  ],
+  // ...
+})
+export class Example {}
+```
+### How to Use (Template)
+
+```html
+<span
+  *ngIf="isOpen"
+  tuiAnimated
+>
+  Active
+</span>
 ```
 
 ---
