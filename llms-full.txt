@@ -11923,7 +11923,6 @@ export default class PageComponent extends AbstractExampleTuiDropdown {
         'Interesting',
         'Change detection',
         'Appearance',
-        'Manual',
         'Mobile',
     ];
 
@@ -12016,12 +12015,11 @@ export class Example {}
 <p
                 tuiDropdownContext
                 [tuiDropdown]="dropdownContent"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
             >
                 Right click on me to
                 <strong>see a dropdown</strong>
@@ -12029,21 +12027,26 @@ export class Example {}
             </p>
 ```
 
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [tuiDropdown] | `PolymorpheusContent` | Content |
+
 ### TypeScript
 
 ```ts
 import {Component, forwardRef} from '@angular/core';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiDropdown} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
-    imports: [DropdownDocumentation, TuiDemo, TuiDropdown],
+    imports: [TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     changeDetection,
     providers: [
@@ -12053,7 +12056,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {}
+export default class PageComponent {}
 ```
 
 ---
@@ -12103,13 +12106,13 @@ export class Example {}
 <p
                 tuiDropdownHover
                 [tuiDropdown]="dropdownContent"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
                 [tuiDropdownHideDelay]="hideDelay"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownLimitWidth]="dropdown.limitWidth"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
                 [tuiDropdownShowDelay]="showDelay"
             >
                 Hover pointer over
@@ -12133,24 +12136,24 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiDropdownShowDelay | `number` | Show delay for dropdown appearance after hover |
-| tuiDropdownHideDelay | `number` | Hide delay for dropdown to disappear after pointer is moved away |
+| [tuiDropdown] | `PolymorpheusContent` | Content |
+| [tuiDropdownShowDelay] | `number` | Show delay for dropdown appearance after hover |
+| [tuiDropdownHideDelay] | `number` | Show delay for dropdown appearance after hover |
 
 ### TypeScript
 
 ```ts
 import {Component, forwardRef} from '@angular/core';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
-    imports: [DropdownDocumentation, TuiButton, TuiDemo, TuiDropdown],
+    imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     changeDetection,
     providers: [
@@ -12160,7 +12163,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {
+export default class PageComponent {
     protected showDelay = 200;
 
     protected hideDelay = 500;
@@ -12240,14 +12243,14 @@ export class Example {}
 <tui-input
                 class="input"
                 [ngModel]="input"
-                [tuiDropdown]="template ? dropdown : content"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdown]="template ? dropdownContent : content"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
                 [tuiDropdownEnabled]="enabled"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownLimitWidth]="dropdown.limitWidth"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
                 [(tuiDropdownOpen)]="open"
                 (ngModelChange)="onInput($event)"
             >
@@ -12259,31 +12262,29 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiDropdownOpen | `boolean` | Open/close state |
-| tuiDropdownEnabled | `boolean` | Should internal logic handle opening |
-| tuiDropdown | `PolymorpheusContent` | Content inside a dropdown |
+| [tuiDropdown] | `PolymorpheusContent` | Content inside a dropdown |
+| [(tuiDropdownOpen)] | `boolean` | Content inside a dropdown |
 
 ### TypeScript
 
 ```ts
 import {Component, forwardRef} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
     imports: [
-        DropdownDocumentation,
         FormsModule,
         TuiButton,
         TuiDemo,
+        TuiDocDropdown,
         TuiDropdown,
         TuiInputModule,
     ],
@@ -12297,10 +12298,8 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {
+export default class PageComponent {
     protected open = false;
-
-    protected sided = false;
 
     protected input = '';
 
@@ -12402,12 +12401,11 @@ export class Example {}
 <p
                 tuiDropdownSelection
                 [tuiDropdown]="dropdownContent"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
                 [tuiDropdownSelectionPosition]="position"
             >
                 Select a text to
@@ -12431,24 +12429,23 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiDropdownSelection | `TuiBooleanHandler<Range>` | " > Directive selector . Optional: you can also set a handler that gets Range and returns show/close dropdown |
-| tuiDropdownSelectionPosition | `'selection' | 'word' | 'tag'` | Position of dropdown near text selection |
+| [tuiDropdownSelection] | `TuiBooleanHandler<Range>` | and returns show/close dropdown |
+| [tuiDropdownSelectionPosition] | `'selection' | 'word' | 'tag'` | Position of dropdown near text selection |
 
 ### TypeScript
 
 ```ts
 import {Component, forwardRef} from '@angular/core';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
-    imports: [DropdownDocumentation, TuiButton, TuiDemo, TuiDropdown],
+    imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
@@ -12459,7 +12456,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {
+export default class PageComponent {
     protected positionVariants = ['selection', 'word', 'tag'] as const;
 
     protected position: 'selection' | 'tag' | 'word' = this.positionVariants[0];
