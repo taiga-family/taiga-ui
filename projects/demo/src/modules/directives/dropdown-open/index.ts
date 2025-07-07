@@ -1,21 +1,20 @@
 import {Component, forwardRef} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
     imports: [
-        DropdownDocumentation,
         FormsModule,
         TuiButton,
         TuiDemo,
+        TuiDocDropdown,
         TuiDropdown,
         TuiInputModule,
     ],
@@ -29,10 +28,8 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {
+export default class PageComponent {
     protected open = false;
-
-    protected sided = false;
 
     protected input = '';
 

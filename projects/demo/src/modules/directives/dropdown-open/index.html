@@ -66,21 +66,21 @@
             <tui-input
                 class="input"
                 [ngModel]="input"
-                [tuiDropdown]="template ? dropdown : content"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdown]="template ? dropdownContent : content"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
                 [tuiDropdownEnabled]="enabled"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownLimitWidth]="dropdown.limitWidth"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
                 [(tuiDropdownOpen)]="open"
                 (ngModelChange)="onInput($event)"
             >
                 Start typing
             </tui-input>
         </tui-doc-demo>
-        <ng-template #dropdown>
+        <ng-template #dropdownContent>
             <div class="dropdown">
                 <div>Do you like using Taiga UI?</div>
                 <p class="buttons">
@@ -106,35 +106,30 @@
                 </p>
             </div>
         </ng-template>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="tuiDropdownOpen"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="open"
-            >
-                Open/close state
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiDropdownEnabled"
-                documentationPropertyType="boolean"
-                [documentationPropertyValues]="enabledVariants"
-                [(documentationPropertyValue)]="enabledSelected"
-            >
-                Should internal logic handle opening
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiDropdown"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="contentVariants"
-                [(documentationPropertyValue)]="content"
+        <table tuiDocAPI>
+            <tr
+                name="[tuiDropdown]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="contentVariants"
+                [(value)]="content"
             >
                 Content inside a dropdown
-            </ng-template>
-        </tui-doc-documentation>
-        <dropdown-documentation />
+            </tr>
+            <tr
+                name="[(tuiDropdownOpen)]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="open"
+            >
+                Content inside a dropdown
+            </tr>
+            <tbody
+                #dropdown
+                tuiDocDropdown
+                [hiddenOptions]="['open']"
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
