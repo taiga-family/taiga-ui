@@ -1,5 +1,14 @@
 ```html
-<form [formGroup]="testForm">
-  <tui-input-year formControlName="testValue">Choose a month</tui-input-year>
-</form>
+<tui-textfield #textfield>
+  <input
+    tuiInputYear
+    [(ngModel)]="value"
+  />
+
+  <tui-calendar-year
+    *tuiTextfieldDropdown
+    [value]="value"
+    (yearClick)="textfield.handleOption($event)"
+  />
+</tui-textfield>
 ```

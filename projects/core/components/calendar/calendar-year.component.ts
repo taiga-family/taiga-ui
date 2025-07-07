@@ -49,8 +49,8 @@ export class TuiCalendarYear {
         | readonly TuiDay[]
         | null = null;
 
-    @Input()
-    public initialItem: number = this.currentYear;
+    @Input('initialItem')
+    public initial?: number;
 
     @Input()
     public min: number | null = MIN_YEAR;
@@ -66,6 +66,13 @@ export class TuiCalendarYear {
 
     @Output()
     public readonly yearClick = new EventEmitter<number>();
+
+    public get initialItem(): number {
+        return (
+            this.initial ??
+            (typeof this.value === 'number' ? this.value : this.currentYear)
+        );
+    }
 
     public isDisabled(item: number): boolean {
         return (
