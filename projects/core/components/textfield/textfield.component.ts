@@ -85,13 +85,13 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
 
-    protected computedFiller = computed((value = this.value()) => {
-        const filledValue = value + this.filler().slice(value.length);
+    protected readonly computedFiller = computed((value = this.value()) => {
+        const filler = value + this.filler().slice(value.length);
 
-        return filledValue.length > value.length ? filledValue : '';
+        return filler.length > value.length ? filler : '';
     });
 
-    protected showFiller = computed<boolean>(
+    protected readonly showFiller = computed<boolean>(
         () =>
             this.focused() &&
             !!this.computedFiller() &&
@@ -170,12 +170,15 @@ export class TuiTextfieldBaseComponent<T>
         this.input?.nativeElement.focus();
 
         if (
-            this.dropdownOpen.tuiDropdownEnabled &&
-            this.dropdown._content() &&
-            !this.input?.nativeElement.matches(':read-only')
+            !this.dropdownOpen.tuiDropdownEnabled ||
+            !this.cva?.interactive() ||
+            this.input?.nativeElement.matches('input:read-only,textarea:read-only')
         ) {
-            this.open.update((x) => !x);
+            return;
         }
+
+        this.open.update((open) => !open);
+        this.input?.nativeElement.showPicker?.();
     }
 
     protected onScroll(element: HTMLElement): void {

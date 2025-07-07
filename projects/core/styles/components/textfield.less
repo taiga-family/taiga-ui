@@ -278,9 +278,10 @@ tui-textfield {
     select:defined,
     textarea:defined {
         pointer-events: auto;
-        background: transparent;
+        background: none;
 
-        &:read-only ~ .t-filler {
+        // TODO: Remove :not when we drop old select tuiTextfield in v5
+        &:not(select):read-only ~ .t-filler {
             display: none;
         }
 
@@ -411,12 +412,15 @@ tui-textfield {
 
     & > .t-filler:defined {
         pointer-events: none;
-        background: none;
         color: var(--tui-text-tertiary);
         opacity: 1;
     }
 
     [tuiFluidTypography] {
         font-weight: bold;
+    }
+
+    [tuiSelectLike]:not(:read-only) {
+        cursor: pointer;
     }
 }

@@ -7,6 +7,10 @@
     &._string {
         overflow: hidden;
 
+        &._disabled {
+            opacity: var(--tui-disabled-opacity);
+        }
+
         &::after {
             content: ', ';
         }
@@ -21,6 +25,7 @@
     display: none;
 }
 
-:host-context(tui-textfield:has([tuiSelectLike])):last-of-type::after {
-    display: none;
+:host-context(tui-textfield:has([tuiSelectLike])):last-of-type::after,
+:host-context(tui-textfield[data-mode~='readonly']):last-of-type::after {
+    content: ' ';
 }

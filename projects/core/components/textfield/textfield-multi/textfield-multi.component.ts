@@ -83,7 +83,7 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
         '[class._empty]': '!control?.value?.length',
         '[style.--t-item-height.px]': 'height()',
         '[style.--t-rows]': 'rows',
-        '(click)': 'onClick($event.target)',
+        '(click.prevent)': 'onClick($event.target)',
         '(tuiActiveZoneChange)':
             '!$event && (el.scrollTo({left: 0}) || cva?.onTouched())',
         // TODO: Remove in v5
@@ -91,7 +91,6 @@ import {TuiTextfieldItemComponent} from './textfield-item.component';
         '[class._with-label]': 'hasLabel',
         '[class._with-template]': 'content && control?.value != null',
         '[class._disabled]': 'input?.nativeElement?.disabled',
-        '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
     },
@@ -131,6 +130,16 @@ export class TuiTextfieldMultiComponent<T>
         );
     }
 
+    protected get placeholder(): string {
+        const placeholder = this.input?.nativeElement.matches('input')
+            ? this.input.nativeElement.placeholder
+            : this.computedFiller();
+        const value = this.computedFiller() || this.value();
+        const longer = value.length > placeholder.length ? value : placeholder;
+
+        return this.focused() ? longer : '';
+    }
+
     protected onItems({target}: ResizeObserverEntry): void {
         const height =
             this.rows > 1 && this.control?.value?.length
@@ -153,11 +162,15 @@ export class TuiTextfieldMultiComponent<T>
 
     protected onClick(target: HTMLElement): void {
         if (
-            target !== this.el &&
-            this.el.matches('[tuiChevron]') &&
-            !target.matches('input:read-only,input[inputmode="none"]')
+            target === this.el ||
+            !this.cva?.interactive() ||
+            (!this.el.matches('[tuiChevron]') && !this.el.querySelector('select')) ||
+            target.matches('input:read-only,input[inputmode="none"]')
         ) {
-            this.open.update((open) => !open);
+            return;
         }
+
+        this.open.update((open) => !open);
+        this.input?.nativeElement.showPicker?.();
     }
 }

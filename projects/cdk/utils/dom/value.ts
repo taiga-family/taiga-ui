@@ -58,17 +58,25 @@ export function tuiValue(
             element = coerceElement(input());
             cleanup();
 
-            if (element) {
+            if (element && !element.matches('select[multiple]')) {
                 value.set(element.value);
                 cleanup = process(element);
             }
         }, options);
-    } else if (element) {
+    } else if (element && !element.matches('select[multiple]')) {
         cleanup = process(element);
     }
 
     effect(() => {
         const v = value();
+
+        /**
+         * select[multiple] elements have value of first selected option,
+         * but there could be more, setting value resets other selected options
+         */
+        if (element?.matches('select[multiple]')) {
+            return;
+        }
 
         if (element?.matches(':focus') && 'selectionStart' in element) {
             const {selectionStart, selectionEnd} = element;

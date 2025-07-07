@@ -24,7 +24,7 @@
         #input
         multi
         [content]="!input.focused() && pythons.length ? 'Selected ' + pythons.length + ' out of ' + items.length : ''"
-        [disabledItemHandler]="handler"
+        [disabledItemHandler]="disabled"
     >
         <label tuiLabel>Select Pythons</label>
         <input
