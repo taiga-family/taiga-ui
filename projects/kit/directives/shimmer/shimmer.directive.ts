@@ -30,7 +30,7 @@ class TuiShimmerStyles {}
     host: {
         tuiShimmer: '',
         '[class._shimmer]': 'shimmer',
-        '[class._disabled]': 'disabled',
+        '[class._disabled]': 'shimmer && disabled',
         '[attr.inert]': 'shimmer || null',
     },
 })

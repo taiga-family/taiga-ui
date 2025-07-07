@@ -30,12 +30,10 @@
         </aside>
     </header>
     <tui-avatar-stack [tuiShimmer]="loading">
-        <tui-avatar src="https://avatars.githubusercontent.com/u/87331898" />
-        <tui-avatar src="https://avatars.githubusercontent.com/u/12021443" />
-        <tui-avatar src="https://avatars.githubusercontent.com/u/35179038" />
-        <tui-avatar src="https://avatars.githubusercontent.com/u/46284632" />
-        <tui-avatar src="https://avatars.githubusercontent.com/u/10106368" />
-        <tui-avatar src="https://avatars.githubusercontent.com/u/11832552" />
+        <tui-avatar
+            *ngFor="let avatar of avatars"
+            [src]="avatar.src"
+        />
     </tui-avatar-stack>
     <footer>
         <button
@@ -85,27 +83,8 @@
     </header>
     <tui-avatar-stack>
         <tui-avatar
-            src="https://avatars.githubusercontent.com/u/87331898"
-            [tuiSkeleton]="loading"
-        />
-        <tui-avatar
-            src="https://avatars.githubusercontent.com/u/12021443"
-            [tuiSkeleton]="loading"
-        />
-        <tui-avatar
-            src="https://avatars.githubusercontent.com/u/35179038"
-            [tuiSkeleton]="loading"
-        />
-        <tui-avatar
-            src="https://avatars.githubusercontent.com/u/46284632"
-            [tuiSkeleton]="loading"
-        />
-        <tui-avatar
-            src="https://avatars.githubusercontent.com/u/10106368"
-            [tuiSkeleton]="loading"
-        />
-        <tui-avatar
-            src="https://avatars.githubusercontent.com/u/11832552"
+            *ngFor="let avatar of avatars"
+            [src]="avatar.src"
             [tuiSkeleton]="loading"
         />
     </tui-avatar-stack>

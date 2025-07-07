@@ -35,4 +35,13 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 })
 export default class Example {
     protected loading = true;
+
+    public avatars = [
+        {src: 'https://avatars.githubusercontent.com/mdlufy'},
+        {src: 'https://avatars.githubusercontent.com/splincode'},
+        {src: 'https://avatars.githubusercontent.com/nsbarsukov'},
+        {src: 'https://avatars.githubusercontent.com/vladimirpotekhin'},
+        {src: 'https://avatars.githubusercontent.com/marsibarsi'},
+        {src: 'https://avatars.githubusercontent.com/waterplea'},
+    ];
 }
