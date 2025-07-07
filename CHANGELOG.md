@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.44.0](https://github.com/taiga-family/taiga-ui/compare/v4.43.0...v4.44.0) (2025-07-07)
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** `Example` has broken anchor link navigation for `pageTab` with index > 1
+  ([#11247](https://github.com/taiga-family/taiga-ui/issues/11247))
+  ([b2f315f](https://github.com/taiga-family/taiga-ui/commit/b2f315f333abb04a2137052559fa7f6ddfb26b89))
+- **addon-mobile:** `MobileCalendar` fix for iOS 18 ([#11242](https://github.com/taiga-family/taiga-ui/issues/11242))
+  ([8dab365](https://github.com/taiga-family/taiga-ui/commit/8dab365eaff41b03148480d76a14918258c73f9d))
+- **core:** `tuiDialog` support optional context ([#11256](https://github.com/taiga-family/taiga-ui/issues/11256))
+  ([7d12258](https://github.com/taiga-family/taiga-ui/commit/7d12258383e2432560779566878aa855c3810fd6))
+- **kit:** `ComboBox` with `[strict]=false` should not stringify matched item inside form control value
+  ([#11240](https://github.com/taiga-family/taiga-ui/issues/11240))
+  ([2a8e4f9](https://github.com/taiga-family/taiga-ui/commit/2a8e4f9529abe6e5df476e5cfce98b69568797e8))
+- **kit:** `Multiselect` fix export type ([#11225](https://github.com/taiga-family/taiga-ui/issues/11225))
+  ([adb00be](https://github.com/taiga-family/taiga-ui/commit/adb00be59b3a31fd4c9ff3e11800148ed1b6eb87))
+
+### 🚀 Features
+
+- **addon-doc:** support for switching text direction in documentation
+  ([#11193](https://github.com/taiga-family/taiga-ui/issues/11193))
+  ([f5dab65](https://github.com/taiga-family/taiga-ui/commit/f5dab6509b320fd08de18ec1dd6ef15560d2dbd0))
+- **cdk:** improve error message for portals ([#11241](https://github.com/taiga-family/taiga-ui/issues/11241))
+  ([7b8c194](https://github.com/taiga-family/taiga-ui/commit/7b8c194af47283ee354298af0015d1c8eb8e0443))
+- **core:** `Textfield` auto-open dropdown if it is added when input is focused
+  ([#11232](https://github.com/taiga-family/taiga-ui/issues/11232))
+  ([cec8712](https://github.com/taiga-family/taiga-ui/commit/cec87125c0bc1a759fd9ae196201f07801eee410))
+- **core:** `Textfield` auto-open dropdown if it is added when input is focused
+  ([#11236](https://github.com/taiga-family/taiga-ui/issues/11236))
+  ([fa97d79](https://github.com/taiga-family/taiga-ui/commit/fa97d79b1d747ed1d0cb8304c52268d5f511ca0b))
+- **kit:** `InputTime` supports `[prefix]` / `[postfix]`
+  ([#11252](https://github.com/taiga-family/taiga-ui/issues/11252))
+  ([fd4ba2f](https://github.com/taiga-family/taiga-ui/commit/fd4ba2fdafbae54c68c84b625d09defa620bec69))
+- **kit:** `MultiSelect` add native mode on mobile ([#11249](https://github.com/taiga-family/taiga-ui/issues/11249))
+  ([6dbfd96](https://github.com/taiga-family/taiga-ui/commit/6dbfd964d721717b64f6366899fd08b0fd792a97))
+- **kit:** `Pagination` adjust button size ([#11149](https://github.com/taiga-family/taiga-ui/issues/11149))
+  ([69c23cb](https://github.com/taiga-family/taiga-ui/commit/69c23cb87f9b75b4079e622ec6fa5828a18a2edd))
+
 ## [4.43.0](https://github.com/taiga-family/taiga-ui/compare/v4.42.0...v4.43.0) (2025-07-01)
 
 ### 🐞 Bug Fixes
