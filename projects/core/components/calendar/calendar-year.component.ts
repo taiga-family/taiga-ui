@@ -1,7 +1,9 @@
 import {
     ChangeDetectionStrategy,
+    ChangeDetectorRef,
     Component,
     EventEmitter,
+    inject,
     Input,
     Output,
 } from '@angular/core';
@@ -21,6 +23,8 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
+import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 const LIMIT = 100;
 const ITEMS_IN_ROW = 4;
@@ -32,6 +36,7 @@ const ITEMS_IN_ROW = 4;
     templateUrl: './calendar-year.template.html',
     styleUrls: ['./calendar-year.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAsAuxiliary(TuiCalendarYear)],
     host: {
         '[class._picking]': 'isRangePicking',
     },
@@ -62,10 +67,14 @@ export class TuiCalendarYear {
     public rangeMode = false;
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<number> = TUI_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<number> = inject(
+        TuiItemsHandlersDirective,
+    ).disabledItemHandler();
 
     @Output()
     public readonly yearClick = new EventEmitter<number>();
+
+    public readonly cdr = inject(ChangeDetectorRef);
 
     public isDisabled(item: number): boolean {
         return (
