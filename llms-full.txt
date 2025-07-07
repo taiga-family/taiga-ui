@@ -2826,7 +2826,7 @@ export default class Example {
 }
 
 .button {
-    margin-top: 0.5rem;
+    margin-block-start: 0.5rem;
 }
 ```
 
@@ -3616,6 +3616,7 @@ export class Example {}
 | disabledItemHandler | `TuiBooleanHandler<T>` | " > A handler that gets an item and returns true if it is disabled. Must be a pure function |
 | size | `TuiSizeL | TuiSizeXS` | Size of items |
 | labels | `readonly string[]` | Group label |
+| itemClick | `T` | Emits on click on item from datalist |
 
 ---
 
@@ -4468,8 +4469,8 @@ export default class Example {
 }
 
 footer {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-inline-start: 1rem;
+    margin-inline-end: 1rem;
 }
 ```
 
@@ -5175,10 +5176,10 @@ export default class PageComponent {
 
 .control {
     flex: 1;
-    margin-bottom: 0.25rem;
+    margin-block-end: 0.25rem;
 
     &:not(:last-child) {
-        margin-right: 1.25rem;
+        margin-inline-end: 1.25rem;
     }
 }
 
@@ -5203,11 +5204,11 @@ export default class PageComponent {
 - **Type**: components
 
 InputChip
-            =
-            Textfield multi
-            +
-            Chip
-            + ❤️
+        uses specifically modified
+        
+            Textfield
+        
+        to represent array of selectable items.
 
 
 ### How to Use (Import)
@@ -5305,6 +5306,17 @@ export default class PageComponent {
     protected readonly control = new FormControl();
     protected unique = true;
     protected separator = ',';
+
+    protected readonly examples = [
+        'Basic',
+        'Chips',
+        'Disabled items',
+        'MultiSelect',
+        'Customization',
+        'Mask',
+        'Direction',
+        'Mobile',
+    ];
 }
 ```
 
@@ -6647,6 +6659,8 @@ export class Example {
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [mode]="mode"
+                        [postfix]="postfix"
+                        [prefix]="prefix"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -6659,6 +6673,8 @@ export class Example {
 | Property | Type | Description |
 |----------|-----|----------|
 | [mode] | `MaskitoTimeMode` | Time format mode |
+| [prefix] | `string` | time |
+| [postfix] | `string` | time |
 | [accept] | `ReadonlyArray<TuiTime>` | values to choose |
 
 ### TypeScript
@@ -6671,7 +6687,7 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiTimeMode} from '@taiga-ui/cdk';
+import type {MaskitoTimeMode} from '@maskito/kit';
 import {TuiTime} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputTime} from '@taiga-ui/kit';
@@ -6701,15 +6717,17 @@ export default class PageComponent {
         'HH:MM:SS.MSS',
         'HH:MM:SS.MSS AA',
         'MM:SS',
-    ] as const satisfies readonly TuiTimeMode[];
+    ] as const satisfies readonly MaskitoTimeMode[];
 
     protected readonly acceptVariants = [
         [],
         [12, 13, 14, 15, 16, 17, 18].map((x) => new TuiTime(x, 0)),
     ] as const satisfies ReadonlyArray<readonly TuiTime[]>;
 
-    protected mode: TuiTimeMode = this.modeVariants[0];
+    protected mode: MaskitoTimeMode = this.modeVariants[0];
     protected accept: readonly TuiTime[] = this.acceptVariants[0];
+    protected prefix = '';
+    protected postfix = '';
 }
 ```
 
@@ -10749,7 +10767,12 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 
-A string input for multi line text
+Textarea
+        uses
+        
+            Textfield
+        
+        to create a multi-line string input.
 
 
 ### How to Use (Import)
@@ -10831,6 +10854,7 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
@@ -10851,8 +10875,9 @@ import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class PageComponent {
+    protected readonly routes = DemoRoute;
     protected readonly options = inject(TUI_TEXTAREA_OPTIONS);
-    protected readonly examples = ['Sizes', 'Limit', 'Custom highlight', 'Icons'];
+    protected readonly examples = ['Basic', 'Limit', 'Custom highlight', 'Icons'];
     protected readonly control = new FormControl(null);
 
     protected min = this.options.min;
@@ -10867,11 +10892,8 @@ export default class PageComponent {
 - **Package**: `CORE`
 - **Type**: components
 
-Basic textfield component to implement more complex controls based upon it.
-
-        
-            Textfield based controls are in the process of being refactored. For now it is recommended to use old
-            components from the Legacy package
+Textfield
+        is a low level component that other more complex controls are based upon.
 
 
 ### How to Use (Import)
@@ -10968,12 +10990,12 @@ import {TuiTooltip} from '@taiga-ui/kit';
 export default class Page {
     protected routes = DemoRoute;
     protected readonly examples = [
-        'Size',
+        'Basic',
         'States',
         'Dropdown',
-        'Interactive icons',
+        'InputPassword',
+        'InputCopy',
         'Mask',
-        'Fieldset',
     ];
 
     protected value = '';
@@ -11480,6 +11502,45 @@ export class Example {
 
 ---
 
+# directives/Animated
+
+- **Package**: `CDK`
+- **Type**: directives
+
+TuiAnimated
+            allows adding animation to DOM elements.
+
+
+### How to Use (Import)
+
+```ts
+import {TuiAnimated} from '@taiga-ui/cdk';
+
+// ...
+
+@Component({
+  standalone: true,
+  import: [
+    // ...
+    TuiAnimated,
+  ],
+  // ...
+})
+export class Example {}
+```
+### How to Use (Template)
+
+```html
+<span
+  *ngIf="isOpen"
+  tuiAnimated
+>
+  Active
+</span>
+```
+
+---
+
 # directives/Appearance
 
 - **Package**: `CORE`
@@ -11862,7 +11923,6 @@ export default class PageComponent extends AbstractExampleTuiDropdown {
         'Interesting',
         'Change detection',
         'Appearance',
-        'Manual',
         'Mobile',
     ];
 
@@ -11955,12 +12015,11 @@ export class Example {}
 <p
                 tuiDropdownContext
                 [tuiDropdown]="dropdownContent"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
             >
                 Right click on me to
                 <strong>see a dropdown</strong>
@@ -11968,21 +12027,26 @@ export class Example {}
             </p>
 ```
 
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [tuiDropdown] | `PolymorpheusContent` | Content |
+
 ### TypeScript
 
 ```ts
 import {Component, forwardRef} from '@angular/core';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiDropdown} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
-    imports: [DropdownDocumentation, TuiDemo, TuiDropdown],
+    imports: [TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     changeDetection,
     providers: [
@@ -11992,7 +12056,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {}
+export default class PageComponent {}
 ```
 
 ---
@@ -12042,13 +12106,13 @@ export class Example {}
 <p
                 tuiDropdownHover
                 [tuiDropdown]="dropdownContent"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
                 [tuiDropdownHideDelay]="hideDelay"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownLimitWidth]="dropdown.limitWidth"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
                 [tuiDropdownShowDelay]="showDelay"
             >
                 Hover pointer over
@@ -12072,24 +12136,24 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiDropdownShowDelay | `number` | Show delay for dropdown appearance after hover |
-| tuiDropdownHideDelay | `number` | Hide delay for dropdown to disappear after pointer is moved away |
+| [tuiDropdown] | `PolymorpheusContent` | Content |
+| [tuiDropdownShowDelay] | `number` | Show delay for dropdown appearance after hover |
+| [tuiDropdownHideDelay] | `number` | Show delay for dropdown appearance after hover |
 
 ### TypeScript
 
 ```ts
 import {Component, forwardRef} from '@angular/core';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
-    imports: [DropdownDocumentation, TuiButton, TuiDemo, TuiDropdown],
+    imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     changeDetection,
     providers: [
@@ -12099,7 +12163,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {
+export default class PageComponent {
     protected showDelay = 200;
 
     protected hideDelay = 500;
@@ -12179,14 +12243,14 @@ export class Example {}
 <tui-input
                 class="input"
                 [ngModel]="input"
-                [tuiDropdown]="template ? dropdown : content"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdown]="template ? dropdownContent : content"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
                 [tuiDropdownEnabled]="enabled"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownLimitWidth]="dropdown.limitWidth"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
                 [(tuiDropdownOpen)]="open"
                 (ngModelChange)="onInput($event)"
             >
@@ -12198,31 +12262,29 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiDropdownOpen | `boolean` | Open/close state |
-| tuiDropdownEnabled | `boolean` | Should internal logic handle opening |
-| tuiDropdown | `PolymorpheusContent` | Content inside a dropdown |
+| [tuiDropdown] | `PolymorpheusContent` | Content inside a dropdown |
+| [(tuiDropdownOpen)] | `boolean` | Content inside a dropdown |
 
 ### TypeScript
 
 ```ts
 import {Component, forwardRef} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
     imports: [
-        DropdownDocumentation,
         FormsModule,
         TuiButton,
         TuiDemo,
+        TuiDocDropdown,
         TuiDropdown,
         TuiInputModule,
     ],
@@ -12236,10 +12298,8 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {
+export default class PageComponent {
     protected open = false;
-
-    protected sided = false;
 
     protected input = '';
 
@@ -12282,14 +12342,14 @@ export default class PageComponent extends AbstractExampleTuiDropdown {
 
 .buttons {
     display: flex;
-    margin-bottom: 0;
+    margin-block-end: 0;
 }
 
 .button {
     flex: 1;
 
     &:first-child {
-        margin-right: 0.75rem;
+        margin-inline-end: 0.75rem;
     }
 }
 ```
@@ -12341,12 +12401,11 @@ export class Example {}
 <p
                 tuiDropdownSelection
                 [tuiDropdown]="dropdownContent"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
                 [tuiDropdownSelectionPosition]="position"
             >
                 Select a text to
@@ -12370,24 +12429,23 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiDropdownSelection | `TuiBooleanHandler<Range>` | " > Directive selector . Optional: you can also set a handler that gets Range and returns show/close dropdown |
-| tuiDropdownSelectionPosition | `'selection' | 'word' | 'tag'` | Position of dropdown near text selection |
+| [tuiDropdownSelection] | `TuiBooleanHandler<Range>` | and returns show/close dropdown |
+| [tuiDropdownSelectionPosition] | `'selection' | 'word' | 'tag'` | Position of dropdown near text selection |
 
 ### TypeScript
 
 ```ts
 import {Component, forwardRef} from '@angular/core';
+import {TuiDocDropdown} from '@demo/components/dropdown';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
-import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
-    imports: [DropdownDocumentation, TuiButton, TuiDemo, TuiDropdown],
+    imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
@@ -12398,7 +12456,7 @@ import {DropdownDocumentation} from '../../components/abstract/dropdown-document
         },
     ],
 })
-export default class PageComponent extends AbstractExampleTuiDropdown {
+export default class PageComponent {
     protected positionVariants = ['selection', 'word', 'tag'] as const;
 
     protected position: 'selection' | 'tag' | 'word' = this.positionVariants[0];

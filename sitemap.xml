@@ -250,7 +250,7 @@
     <loc>https://taiga-ui.dev/legacy/input-date/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-date-multi/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-date-multi/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-card/</loc>
@@ -259,7 +259,7 @@
     <loc>https://taiga-ui.dev/components/input-card-group/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-date-time/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-date-time/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-month/</loc>
@@ -602,6 +602,9 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/directives/auto-focus/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/directives/animated/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/pipes/currency/</loc>
@@ -1090,10 +1093,10 @@
     <loc>https://taiga-ui.dev/legacy/input-date/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-date-multi/API/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-date-multi/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-date-multi/Setup/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-date-multi/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-card/API/</loc>
@@ -1108,10 +1111,10 @@
     <loc>https://taiga-ui.dev/components/input-card-group/Setup/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-date-time/API/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-date-time/API/</loc>
   </url>
   <url>
-    <loc>https://taiga-ui.dev/components/input-date-time/Setup/</loc>
+    <loc>https://taiga-ui.dev/legacy/input-date-time/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-month/API/</loc>
@@ -1748,6 +1751,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/directives/auto-focus/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/directives/animated/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/directives/animated/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/pipes/currency/API/</loc>
