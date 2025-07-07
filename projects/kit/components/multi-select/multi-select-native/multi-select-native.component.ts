@@ -1,7 +1,7 @@
 import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject, Input} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsPresent} from '@taiga-ui/cdk/utils';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {
@@ -37,8 +37,9 @@ export class TuiMultiSelectNative<T> {
 
     protected readonly isFlat = tuiIsFlat;
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
-    protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly el = tuiInjectElement<HTMLSelectElement>();
+    protected readonly mobile =
+        inject(TUI_IS_IOS) || (inject(TUI_IS_ANDROID) && 'showPicker' in this.el);
 
     protected readonly isSelected = computed(
         (value = this.control.value()) =>
