@@ -440,8 +440,8 @@ export const ROUTES: Routes = [
         title: 'InputCardGroup',
     }),
     route({
-        path: DemoRoute.InputDateTime,
-        loadComponent: async () => import('../components/input-date-time'),
+        path: DemoRoute.InputDateTimeLegacy,
+        loadComponent: async () => import('../components/input-date-time-legacy'),
         title: 'InputDateTime',
     }),
     route({

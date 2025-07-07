@@ -651,7 +651,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',
-                route: DemoRoute.InputDateTime,
+                route: DemoRoute.InputDateTimeLegacy,
             },
             {
                 section: 'Components',
