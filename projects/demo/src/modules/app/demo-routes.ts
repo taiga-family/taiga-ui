@@ -82,7 +82,7 @@ export const DemoRoute = {
     Input: '/components/input',
     InputDate: '/components/input-date',
     InputDateLegacy: '/legacy/input-date',
-    InputDateMulti: '/components/input-date-multi',
+    InputDateMultiLegacy: '/legacy/input-date-multi',
     InputCard: '/components/input-card',
     InputCardGroup: '/components/input-card-group',
     InputDateTime: '/components/input-date-time',
