@@ -14,7 +14,7 @@ import {
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 
-type WithValue = HTMLInputElement | HTMLTextAreaElement;
+type WithValue = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
 export function tuiValue(
     input:
@@ -31,6 +31,7 @@ export function tuiValue(
 
         patch(win.HTMLInputElement.prototype);
         patch(win.HTMLTextAreaElement.prototype);
+        patch(win.HTMLSelectElement.prototype);
     }
 
     let element = isSignal(input) ? undefined : coerceElement(input);
@@ -68,6 +69,14 @@ export function tuiValue(
 
     effect(() => {
         const v = value();
+
+        /**
+         * select[multiple] elements have value of first selected option,
+         * but there could be more, setting value resets other selected options
+         */
+        if (element?.matches('select[multiple]')) {
+            return;
+        }
 
         if (element?.matches(':focus') && 'selectionStart' in element) {
             const {selectionStart, selectionEnd} = element;

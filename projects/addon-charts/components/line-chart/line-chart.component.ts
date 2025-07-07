@@ -41,10 +41,8 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
     templateUrl: './line-chart.template.html',
     styleUrls: ['./line-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        ResizeObserverService,
-        tuiHintOptionsProvider({direction: 'top', hideDelay: 0}),
-    ],
+    providers: [ResizeObserverService],
+    viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],
     host: {
         '(mouseleave)': 'onMouseLeave()',
     },

@@ -68,7 +68,7 @@ export class TuiInputChipDirective<T>
 
     protected readonly sub = inject(TuiActiveZone)
         .tuiActiveZoneChange.pipe(
-            filter((active) => !active),
+            filter((active) => !active && !this.el.matches('select')),
             takeUntilDestroyed(),
         )
         .subscribe(() => {
