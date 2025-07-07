@@ -30,7 +30,8 @@ export default class Page {
         'Basic',
         'States',
         'Dropdown',
-        'Interactive icons',
+        'InputPassword',
+        'InputCopy',
         'Mask',
     ];
 
