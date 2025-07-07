@@ -1389,6 +1389,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
+                title: 'Animated',
+                keywords: 'animation, transition, css, fade, slide',
+                route: DemoRoute.Animated,
+            },
+            {
+                section: 'Tools',
                 title: 'AutoFocus',
                 keywords: 'focus, blur, фокус, авто',
                 route: DemoRoute.AutoFocus,

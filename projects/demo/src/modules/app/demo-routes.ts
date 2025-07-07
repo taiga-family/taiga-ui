@@ -200,6 +200,7 @@ export const DemoRoute = {
     Media: '/directives/media',
     Theme: '/directives/theme',
     AutoFocus: '/directives/auto-focus',
+    Animated: '/directives/animated',
     Currency: '/pipes/currency',
     FilterPipe: '/pipes/filter',
     FilterByInput: '/pipes/filter-by-input',
