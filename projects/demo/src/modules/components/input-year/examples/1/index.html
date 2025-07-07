@@ -1,10 +1,9 @@
-<tui-input-year
-    [formControl]="control"
-    [tuiTextfieldCleaner]="true"
->
-    Choose a year
+<tui-textfield>
+    <label tuiLabel>Choose a year</label>
     <input
         placeholder="Not 2022 please"
-        tuiTextfieldLegacy
+        tuiInputYear
+        [(ngModel)]="value"
     />
-</tui-input-year>
+    <tui-calendar-year *tuiTextfieldDropdown />
+</tui-textfield>

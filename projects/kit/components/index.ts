@@ -37,6 +37,7 @@ export * from '@taiga-ui/kit/components/input-phone-international';
 export * from '@taiga-ui/kit/components/input-pin';
 export * from '@taiga-ui/kit/components/input-slider';
 export * from '@taiga-ui/kit/components/input-time';
+export * from '@taiga-ui/kit/components/input-year';
 export * from '@taiga-ui/kit/components/items-with-more';
 export * from '@taiga-ui/kit/components/like';
 export * from '@taiga-ui/kit/components/line-clamp';
