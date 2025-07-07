@@ -24,14 +24,13 @@
         mask-repeat: no-repeat;
         mask-composite: subtract;
         animation: tuiShimmer 8s infinite linear;
+        pointer-events: none;
+        user-select: none;
     }
 
     &._disabled {
         animation: none;
         mask: none;
-        pointer-events: none;
-        cursor: default;
-        user-select: none;
         opacity: var(--tui-disabled-opacity);
     }
 }

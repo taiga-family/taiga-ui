@@ -39,13 +39,24 @@ export class TuiShimmer implements OnChanges {
     private readonly el = tuiInjectElement();
     private animation?: Animation;
 
+    protected disabled = false;
+
     protected readonly nothing = tuiWithStyles(TuiShimmerStyles);
 
     @Input('tuiShimmer')
     public shimmer = false;
 
     public ngOnChanges(): void {
-        if (!this.isBrowser || this.disabled) {
+        if (!this.isBrowser) {
+            return;
+        }
+
+        this.disabled =
+            parseFloat(
+                getComputedStyle(this.el).getPropertyValue('--tui-duration').trim(),
+            ) === 0;
+
+        if (this.disabled) {
             return;
         }
 
@@ -66,24 +77,7 @@ export class TuiShimmer implements OnChanges {
                 .then(() => {
                     this.el.style.opacity = '';
                 })
-                .catch((error: unknown) => {
-                    // fast switching animation state force AbortError
-                    // https://developer.mozilla.org/en-US/docs/Web/API/Animation/cancel#exceptions
-                    if (error instanceof DOMException && error.name === 'AbortError') {
-                        return;
-                    }
-
-                    console.error(error);
-                });
+                .catch(() => {});
         }
-    }
-
-    protected get disabled(): boolean {
-        return (
-            this.isBrowser &&
-            parseFloat(
-                getComputedStyle(this.el).getPropertyValue('--tui-duration').trim(),
-            ) === 0
-        );
     }
 }
