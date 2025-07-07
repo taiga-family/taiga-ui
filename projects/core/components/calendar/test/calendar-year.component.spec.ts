@@ -61,7 +61,7 @@ describe('TuiCalendarYearComponent', () => {
         it('returns null if there is no value', () => {
             const item = 2019;
 
-            component.value = null;
+            component.value.set(null);
 
             expect(component.getItemRange(item)).toBeNull();
         });
@@ -69,9 +69,8 @@ describe('TuiCalendarYearComponent', () => {
         it('returns start correctly', () => {
             const item = 2019;
 
-            component.value = new TuiDayRange(
-                new TuiDay(item, 1, 1),
-                new TuiDay(2020, 1, 1),
+            component.value.set(
+                new TuiDayRange(new TuiDay(item, 1, 1), new TuiDay(2020, 1, 1)),
             );
 
             expect(component.getItemRange(item)).toBe('start');
@@ -80,9 +79,8 @@ describe('TuiCalendarYearComponent', () => {
         it('returns end correctly', () => {
             const item = 2019;
 
-            component.value = new TuiDayRange(
-                new TuiDay(2018, 1, 1),
-                new TuiDay(item, 1, 1),
+            component.value.set(
+                new TuiDayRange(new TuiDay(2018, 1, 1), new TuiDay(item, 1, 1)),
             );
 
             expect(component.getItemRange(item)).toBe('end');
@@ -91,9 +89,8 @@ describe('TuiCalendarYearComponent', () => {
         it('returns active correctly', () => {
             const item = 2018;
 
-            component.value = new TuiDayRange(
-                new TuiDay(item, 1, 1),
-                new TuiDay(item, 2, 2),
+            component.value.set(
+                new TuiDayRange(new TuiDay(item, 1, 1), new TuiDay(item, 2, 2)),
             );
 
             expect(component.getItemRange(item)).toBe('active');

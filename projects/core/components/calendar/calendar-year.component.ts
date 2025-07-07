@@ -1,11 +1,13 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     EventEmitter,
+    inject,
     Input,
     Output,
+    signal,
 } from '@angular/core';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {
     MAX_YEAR,
@@ -21,9 +23,12 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives';
+import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 
 const LIMIT = 100;
 const ITEMS_IN_ROW = 4;
+const CURRENT_YEAR = TuiMonth.currentLocal().year;
 
 @Component({
     standalone: true,
@@ -32,51 +37,73 @@ const ITEMS_IN_ROW = 4;
     templateUrl: './calendar-year.template.html',
     styleUrls: ['./calendar-year.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiAsAuxiliary(TuiCalendarYear)],
     host: {
-        '[class._picking]': 'isRangePicking',
+        '[class._picking]': 'isRangePicking()',
     },
 })
 export class TuiCalendarYear {
-    private hoveredItem: number | null = null;
-    private readonly currentYear = TuiMonth.currentLocal().year;
+    private readonly hoveredItem = signal<number | null>(null);
 
-    @Input()
-    public value:
-        | TuiDayRange
-        | TuiMonthRange
-        | TuiYear
-        | number
-        | readonly TuiDay[]
-        | null = null;
-
-    @Input()
-    public initialItem: number = this.currentYear;
-
-    @Input()
-    public min: number | null = MIN_YEAR;
-
-    @Input()
-    public max: number | null = MAX_YEAR;
+    protected readonly isRangePicking = computed(
+        (x = this.value()) =>
+            this.rangeMode && (x instanceof TuiDay || x instanceof TuiMonth),
+    );
 
     @Input()
     public rangeMode = false;
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<number> = TUI_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<number> =
+        inject(TUI_ITEMS_HANDLERS).disabledItemHandler();
 
     @Output()
     public readonly yearClick = new EventEmitter<number>();
 
+    public readonly initialItem = signal<number>(CURRENT_YEAR);
+    public readonly min = signal(MIN_YEAR);
+    public readonly max = signal(MAX_YEAR);
+    public readonly value = signal<
+        TuiDayRange | TuiMonthRange | TuiYear | number | readonly TuiDay[] | null
+    >(null);
+
+    // TODO(v5): use signal inputs
+    @Input({alias: 'initialItem', transform: (x: number | null) => x ?? CURRENT_YEAR})
+    public set initialItemSetter(x: number | null) {
+        this.initialItem.set(x ?? CURRENT_YEAR);
+    }
+
+    // TODO(v5): use signal inputs
+    @Input({alias: 'min', transform: (x: number | null) => x ?? MIN_YEAR})
+    public set minSetter(x: number) {
+        this.min.set(x);
+    }
+
+    // TODO(v5): use signal inputs
+    @Input({alias: 'max', transform: (x: number | null) => x ?? MAX_YEAR})
+    public set maxSetter(x: number) {
+        this.max.set(x);
+    }
+
+    // TODO(v5): use signal inputs
+    @Input('value')
+    public set valueSetter(
+        x: TuiDayRange | TuiMonthRange | TuiYear | number | readonly TuiDay[] | null,
+    ) {
+        this.value.set(x);
+    }
+
     public isDisabled(item: number): boolean {
         return (
-            (this.max && this.max < item) ||
-            (this.min && this.min > item) ||
+            (this.max() && this.max() < item) ||
+            (this.min() && this.min() > item) ||
             this.disabledItemHandler(item)
         );
     }
 
     public getItemRange(item: number): 'active' | 'end' | 'middle' | 'start' | null {
-        const {value, hoveredItem} = this;
+        const value = this.value();
+        const hoveredItem = this.hoveredItem();
 
         if (value instanceof TuiYear && value.year === item) {
             return 'active';
@@ -90,7 +117,7 @@ export class TuiCalendarYear {
             return value?.find((day) => day.year === item) ? 'active' : null;
         }
 
-        const hovered = this.isRangePicking ? hoveredItem : null;
+        const hovered = this.isRangePicking() ? hoveredItem : null;
         const from = 'from' in value ? value.from?.year : value.year;
         const to = 'from' in value ? value.to.year : value.year;
 
@@ -113,14 +140,7 @@ export class TuiCalendarYear {
     }
 
     public onItemHovered(hovered: boolean, item: number): void {
-        this.updateHoveredItem(hovered, item);
-    }
-
-    protected get isRangePicking(): boolean {
-        return (
-            this.rangeMode &&
-            (this.value instanceof TuiDay || this.value instanceof TuiMonth)
-        );
+        this.hoveredItem.set(hovered ? item : null);
     }
 
     protected get rows(): number {
@@ -128,7 +148,7 @@ export class TuiCalendarYear {
     }
 
     protected scrollItemIntoView(item: number): boolean {
-        return this.initialItem === item;
+        return this.initialItem() === item;
     }
 
     protected getItem(rowIndex: number, colIndex: number): number {
@@ -136,24 +156,20 @@ export class TuiCalendarYear {
     }
 
     protected itemIsToday(item: number): boolean {
-        return this.currentYear === item;
+        return CURRENT_YEAR === item;
     }
 
     private get calculatedMin(): number {
-        const initial = this.initialItem - LIMIT;
-        const min = this.min ?? MIN_YEAR;
+        const initial = this.initialItem() - LIMIT;
+        const min = this.min() ?? MIN_YEAR;
 
         return min > initial ? min : initial;
     }
 
     private get calculatedMax(): number {
-        const initial = this.initialItem + LIMIT;
-        const max = this.max ?? MAX_YEAR;
+        const initial = this.initialItem() + LIMIT;
+        const max = this.max() ?? MAX_YEAR;
 
         return max < initial ? max + 1 : initial;
-    }
-
-    private updateHoveredItem(hovered: boolean, item: number): void {
-        this.hoveredItem = hovered ? item : null;
     }
 }

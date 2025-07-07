@@ -1,5 +1,7 @@
 ```ts
-import {TuiInputYearModule} from '@taiga-ui/legacy';
+import {FormsModule} from '@angular/forms';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputYear} from '@taiga-ui/kit';
 
 // ...
 
@@ -7,13 +9,12 @@ import {TuiInputYearModule} from '@taiga-ui/legacy';
   standalone: true,
   imports: [
     // ...
-    TuiInputYearModule,
+    FormsModule,
+    TuiTextfield,
+    TuiInputYear,
   ],
-  // ...
 })
 export class Example {
-  readonly testForm = new FormGroup({
-    testValue: new FormControl(null),
-  });
+  value: number | null = null;
 }
 ```
