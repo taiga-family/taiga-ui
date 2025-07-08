@@ -69,6 +69,7 @@ export const DemoRoute = {
     Form: '/layout/form',
     InputFiles: '/components/input-files',
     InputColor: '/components/input-color',
+    InputColorLegacy: '/components/input-color-legacy',
     Group: '/components/group',
     Dropdown: '/directives/dropdown',
     DropdownOpen: '/directives/dropdown-open',

@@ -10,6 +10,10 @@ import {TuiLegacyDropdownOpenMonitorDirective} from '@taiga-ui/legacy/directives
 import {TuiInputComponent} from './input.component';
 import {TuiInputDirective} from './input.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/textfield TuiTextfield} (from @taiga-ui/core) instead
+ */
 @NgModule({
     imports: [
         CommonModule,

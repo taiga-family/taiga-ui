@@ -1,66 +1,97 @@
 <tui-doc-page
     header="InputColor"
-    package="LEGACY"
+    package="KIT"
     type="components"
 >
     <ng-template pageTab>
-        <tui-doc-example
-            id="input"
-            heading="Input color"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-            [fullsize]="true"
-        />
+        <code>InputColor</code>
+        =
+        <code>Textfield</code>
+        +
+        <code>type="color"</code>
+        +
+        <code>
+            <a
+                href="https://maskito.dev"
+                rel="noopener noreferrer"
+                target="_blank"
+                tuiLink
+            >
+                Maskito
+            </a>
+        </code>
+        + ❤️
 
         <tui-doc-example
-            id="dropdown"
-            heading="Color selector in dropdown"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [heading]="example"
+            [id]="example | tuiKebab"
         />
-
-        <tui-doc-example
-            id="palette"
-            heading="Palette in dropdown"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="native"
-            heading="Native input color"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-        >
-            <tui-notification class="b-form tui-space_bottom-3">
-                You can easily integrative native color picker into input using interactive icon content and
-                <a
-                    appearance="action"
-                    href="https://github.com/taiga-family/maskito"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    tuiLink
-                    [pseudo]="false"
-                >
-                    Maskito
-                </a>
-                for masking
-            </tui-notification>
-        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-demo>
-            <tui-color-picker />
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-textfield
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    <label
+                        *ngIf="textfieldDoc.size !== 's'"
+                        tuiLabel
+                    >
+                        Choose color
+                    </label>
+
+                    <input
+                        list="colors"
+                        tuiInputColor
+                        [align]="align"
+                        [format]="format"
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [placeholder]="textfieldDoc.size === 's' ? 'Choose color' : ''"
+                        [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+                    <datalist id="colors">
+                        <option value="#800000"></option>
+                        <option value="#8B0000"></option>
+                        <option value="#A52A2A"></option>
+                        <option value="#DC143C"></option>
+                    </datalist>
+                </tui-textfield>
+            </ng-template>
         </tui-doc-demo>
         <table tuiDocAPI>
             <tr
-                name="[(color)]"
+                name="[align]"
                 tuiDocAPIItem
-                type="[number, number, number, number]"
+                type="TuiHorizontalDirection"
+                [items]="aligns"
+                [(value)]="align"
             >
-                RGBA color tuple
+                Alignment of the color picker
             </tr>
+            <tr
+                name="[format]"
+                tuiDocAPIItem
+                type="'hex' | 'hexa'"
+                [items]="formats"
+                [(value)]="format"
+            >
+                Color format
+            </tr>
+            <tbody
+                #textfieldDoc
+                tuiDocTextfield
+            ></tbody>
+            <tbody
+                #controlDoc
+                tuiDocControl
+            ></tbody>
         </table>
     </ng-template>
 

@@ -1,22 +1,18 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import type {SafeStyle} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
-import {TuiButton, TuiDropdown} from '@taiga-ui/core';
-import {TuiColorSelectorModule} from '@taiga-ui/legacy';
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputColor, tuiInputColorOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiColorSelectorModule, TuiDropdown],
+    imports: [FormsModule, TuiInputColor, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation,
+    changeDetection,
+    providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'right'})],
 })
 export default class Example {
-    private readonly sanitizer = inject(DomSanitizer);
-
-    protected color = '#ffdd2d';
-
-    protected get background(): SafeStyle {
-        return this.sanitizer.bypassSecurityTrustStyle(this.color);
-    }
+    protected value = '#ff7f50cc';
 }

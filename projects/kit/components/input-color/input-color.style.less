@@ -1,0 +1,49 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.tui-input-color_picker {
+    && {
+        position: relative;
+        font-size: 1rem;
+        inline-size: calc(var(--t-height) / 2);
+        block-size: calc(var(--t-height) / 2);
+        border: none;
+        border-radius: 100%;
+        padding: 0 !important;
+        overflow: hidden;
+        cursor: pointer;
+        background: repeating-conic-gradient(var(--tui-border-normal) 0% 25%, transparent 0% 50%);
+        box-shadow: 0 0 0 0.125rem var(--tui-border-normal);
+
+        &:disabled {
+            cursor: default;
+        }
+    }
+
+    tui-textfield[data-size='s'] & {
+        margin-inline-end: 0.25rem;
+    }
+
+    tui-textfield[data-size='l'] & {
+        margin-inline-end: -0.25rem;
+    }
+
+    &.tui-input-color_left {
+        position: absolute;
+        top: 50%;
+        transform: translate(50%, -50%);
+    }
+
+    &::-webkit-color-swatch-wrapper {
+        padding: 0;
+    }
+
+    &::-webkit-color-swatch {
+        border: none;
+        opacity: var(--t-opacity);
+    }
+
+    &::-moz-color-swatch {
+        border: none;
+        opacity: var(--t-opacity);
+    }
+}

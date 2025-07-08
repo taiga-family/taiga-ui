@@ -213,13 +213,13 @@
 
 :host-context(tui-textfield) :host([type='range']) {
     --tui-radius: var(--tui-radius-m);
-    @left-gap: calc(var(--tui-radius) / 2);
+    @gap: calc(var(--tui-radius) / 2);
 
     position: absolute;
     top: 100%;
-    left: @left-gap;
-    right: 0;
-    inline-size: calc(100% - @left-gap); // Double check Firefox if you want to set `width: auto`
+    left: @gap;
+    right: @gap;
+    inline-size: calc(100% - @gap * 2); // Double check Firefox if you want to set `width: auto`
     box-sizing: border-box;
     block-size: 1rem;
     margin: -0.5625rem 0 0;

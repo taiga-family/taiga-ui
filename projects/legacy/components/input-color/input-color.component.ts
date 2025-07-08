@@ -24,6 +24,10 @@ import type {
 
 type MaskMode = 'gradient' | 'hex' | 'rgb';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-color TuiInputColor} (from @taiga-ui/kit) instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-input-color',

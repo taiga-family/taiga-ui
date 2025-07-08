@@ -1,15 +1,21 @@
 ```ts
-import {TuiColorPickerModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputColor} from '@taiga-ui/kit';
 
 // ...
 
-@NgModule({
+@Component({
   standalone: true,
   imports: [
     // ...
-    TuiColorPickerModule,
+    TuiTextfield,
+    TuiInputColor,
   ],
   // ...
 })
-export class Example {}
+export class Example {
+  readonly testForm = new FormGroup({
+    testValue: new FormControl(),
+  });
+}
 ```

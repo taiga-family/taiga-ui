@@ -1,10 +1,23 @@
 <tui-doc-page
+    deprecated
     header="Input"
     package="LEGACY"
+    path="legacy/components/input"
     type="components"
 >
     <ng-template pageTab>
-        <div class="tui-space_bottom-3">
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.Textfield"
+            >
+                <strong>Textfield</strong>
+            </a>
+            instead!
+        </tui-notification>
+
+        <div class="tui-space_vertical-2">
             Input&nbsp;&mdash; is a single-line textfield. It's not recommended to use it with numbers, because the
             value type of this component is a string
         </div>

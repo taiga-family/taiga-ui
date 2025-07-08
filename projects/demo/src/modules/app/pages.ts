@@ -522,6 +522,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputColor',
+                keywords: 'input-color, picker, color, цвет, выбор, палитра',
+                route: DemoRoute.InputColor,
+            },
+            {
+                section: 'Components',
                 title: 'InputDate',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
@@ -619,7 +625,7 @@ export const pages: DocRoutePages = [
         subPages: [
             {
                 section: 'Components',
-                title: 'Input',
+                title: 'Input ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, table, таблица',
                 route: DemoRoute.Input,
             },
@@ -718,10 +724,10 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputColor',
+                title: 'InputColor ⛔',
                 keywords:
-                    'input-color, gradient, picker, color, цвет, выбор, градиент, gradient, палитра',
-                route: DemoRoute.InputColor,
+                    'input-color, picker, color, цвет, выбор, градиент, gradient, палитра',
+                route: DemoRoute.InputColorLegacy,
             },
             {
                 section: 'Components',

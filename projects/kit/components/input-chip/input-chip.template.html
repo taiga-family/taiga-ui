@@ -5,6 +5,7 @@
     class="t-input"
     [disabled]="!editing()"
     [ngModel]="internal()"
+    [ngModelOptions]="{standalone: true}"
     (blur)="cancel()"
     (keydown.enter)="save()"
     (keydown.esc)="cancel()"
