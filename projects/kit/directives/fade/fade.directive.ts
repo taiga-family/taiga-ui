@@ -80,21 +80,26 @@ export class TuiFade {
                 takeUntilDestroyed(),
             )
             .subscribe(() => {
-                el.classList.toggle('_start', !!el.scrollLeft || !!el.scrollTop);
                 el.classList.toggle('_end', this.isEnd(el));
+                el.classList.toggle(
+                    '_start',
+                    !!Math.floor(el.scrollLeft) || !!Math.floor(el.scrollTop),
+                );
             });
     }
 
-    private isEnd(el: HTMLElement): boolean {
-        if (this.orientation === 'vertical') {
-            return Math.round(el.scrollTop) < el.scrollHeight - el.clientHeight - BUFFER;
-        }
-
-        return (
-            (el.clientWidth &&
-                Math.round(el.scrollLeft) < el.scrollWidth - el.clientWidth - BUFFER) ||
-            // horizontal multiline fade can kick in early due to hanging elements of fonts so using bigger buffer
-            el.scrollHeight > el.clientHeight + 4 * BUFFER
-        );
+    private isEnd({
+        scrollTop,
+        scrollLeft,
+        scrollHeight,
+        scrollWidth,
+        clientHeight,
+        clientWidth,
+    }: HTMLElement): boolean {
+        return this.orientation === 'vertical'
+            ? Math.round(scrollTop) < scrollHeight - clientHeight - BUFFER
+            : Math.ceil(Math.abs(scrollLeft)) < scrollWidth - clientWidth - BUFFER ||
+                  // horizontal multiline fade can kick in early due to hanging elements of fonts so using bigger buffer
+                  scrollHeight > clientHeight + 4 * BUFFER;
     }
 }
