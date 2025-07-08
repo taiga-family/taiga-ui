@@ -8,7 +8,7 @@
         [class.tui-input-color_left]="align() === 'left'"
         [disabled]="!interactive()"
         [style.--t-opacity]="filled() ? opacity() / 255 : 0"
-        [value]="value().length > 6 ? this.value().slice(0, 7) : ''"
+        [value]="value().length > 6 ? value().slice(0, 7) : ''"
         (input)="onInput(input.value)"
     />
     <input
