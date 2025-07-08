@@ -60,12 +60,16 @@ tui-notification,
         .center-top();
 
         right: -0.5rem;
-        inset-inline-end: -0.5rem;
         font-size: 1rem;
         margin: 0;
         margin-inline-end: -0.25rem;
         margin-inline-start: auto;
         color: var(--tui-text-tertiary) !important;
+
+        @supports (inset-inline-end: -0.5rem) {
+            right: unset;
+            inset-inline-end: -0.5rem;
+        }
     }
 
     &[data-size='s'] {
@@ -87,7 +91,11 @@ tui-notification,
 
         &::after {
             right: -0.875rem;
-            inset-inline-end: -0.875rem;
+
+            @supports (inset-inline-end: -0.875rem) {
+                right: unset;
+                inset-inline-end: -0.875rem;
+            }
         }
 
         tui-icon {
@@ -111,7 +119,11 @@ tui-notification,
         > [tuiIconButton] {
             top: 0;
             right: 0;
-            inset-inline-end: 0;
+
+            @supports (inset-inline-end: 0) {
+                right: unset;
+                inset-inline-end: 0;
+            }
         }
     }
 
@@ -133,7 +145,11 @@ tui-notification,
 
         &::after {
             right: -0.75rem;
-            inset-inline-end: -0.75rem;
+
+            @supports (inset-inline-end: -0.75rem) {
+                right: unset;
+                inset-inline-end: -0.75rem;
+            }
         }
 
         tui-icon {
@@ -157,7 +173,11 @@ tui-notification,
         > [tuiIconButton] {
             top: 0.375rem;
             right: 0.5rem;
-            inset-inline-end: 0.5rem;
+
+            @supports (inset-inline-end: 0.5rem) {
+                right: unset;
+                inset-inline-end: 0.5rem;
+            }
         }
     }
 
@@ -183,9 +203,13 @@ tui-notification,
         position: absolute;
         top: 0.75rem;
         right: 0.75rem;
-        inset-inline-end: 0.75rem;
         box-shadow: none !important;
         background: transparent !important;
+
+        @supports (inset-inline-end: 0.75rem) {
+            right: unset;
+            inset-inline-end: 0.75rem;
+        }
     }
 }
 
