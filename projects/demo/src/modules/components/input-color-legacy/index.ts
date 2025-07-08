@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiColorPickerModule} from '@taiga-ui/legacy';
-import {DemoRoute} from '@demo/routes';
 
 @Component({
     standalone: true,

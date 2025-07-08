@@ -19,8 +19,8 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiIcons} from '@taiga-ui/core';
 import {TuiTextfieldContent, TuiWithTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {TuiSlider, tuiSliderOptionsProvider} from '@taiga-ui/kit/components/slider';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
