@@ -53,7 +53,7 @@ test.describe('Deep / Select', () => {
 
                     const example = api.apiPageExample;
                     const makeName = (dir: string): string =>
-                        `deep-${path}-${name}-row—${rowIndex}-select-option-${index}.${dir}.png`;
+                        `deep-${path}-${name}-row-${rowIndex}-select-option-${index}.${dir}.png`;
 
                     await expect.soft(example).toHaveScreenshot(makeName('ltr'));
                     await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
