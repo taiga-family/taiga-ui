@@ -1,0 +1,54 @@
+<form
+    tuiForm="m"
+    [formGroup]="form"
+>
+    <tui-textfield>
+        <label tuiLabel>Required</label>
+        <input
+            formControlName="timeRequired"
+            tuiInputDateTime
+        />
+        <tui-calendar *tuiTextfieldDropdown />
+    </tui-textfield>
+    <tui-error
+        formControlName="timeRequired"
+        [error]="[] | tuiFieldError | async"
+    />
+
+    <tui-textfield>
+        <label tuiLabel>At least day</label>
+        <input
+            formControlName="dayRequired"
+            tuiInputDateTime
+        />
+        <tui-calendar *tuiTextfieldDropdown />
+    </tui-textfield>
+    <tui-error
+        formControlName="dayRequired"
+        [error]="[] | tuiFieldError | async"
+    />
+
+    <tui-textfield>
+        <label tuiLabel>Optional + UnfinishedValidator</label>
+        <input
+            formControlName="optional"
+            tuiInputDateTime
+            tuiUnfinishedValidator
+        />
+        <tui-calendar *tuiTextfieldDropdown />
+    </tui-textfield>
+    <tui-error
+        formControlName="optional"
+        [error]="[] | tuiFieldError | async"
+    />
+
+    <footer>
+        <button
+            tuiButton
+            type="submit"
+            [disabled]="form.invalid"
+        >
+            Submit
+        </button>
+    </footer>
+</form>

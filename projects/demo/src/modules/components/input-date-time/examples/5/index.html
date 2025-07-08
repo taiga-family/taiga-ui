@@ -1,0 +1,10 @@
+<tui-textfield>
+    <input
+        placeholder="Choose a date"
+        tuiInputDateTime
+        [(ngModel)]="value"
+    />
+    <tui-calendar *tuiTextfieldDropdown />
+</tui-textfield>
+
+<p>{{ value | json }}</p>
