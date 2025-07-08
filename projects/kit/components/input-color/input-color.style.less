@@ -31,12 +31,8 @@
         position: absolute;
         top: 50%;
         left: calc(var(--t-height) / 4);
+        inset-inline-start: calc(var(--t-height) / 4);
         transform: translateY(-50%);
-
-        @supports (inset-inline-start: 1rem) {
-            left: unset;
-            inset-inline-start: calc(var(--t-height) / 4);
-        }
     }
 
     &::-webkit-color-swatch-wrapper {
