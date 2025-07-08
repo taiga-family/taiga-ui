@@ -111,6 +111,23 @@
         }
     }
 
+    [dir='rtl'] &:not([data-orientation='vertical']) > * {
+        &:first-child {
+            border-radius: 0 var(--t-group-radius) var(--t-group-radius) 0;
+            mask-image: var(--t-group-mask-end);
+        }
+
+        &:last-child {
+            border-radius: var(--t-group-radius) 0 0 var(--t-group-radius);
+            mask-image: var(--t-group-mask-start);
+        }
+
+        &:only-child {
+            border-radius: var(--t-group-radius);
+            mask: none;
+        }
+    }
+
     &[data-size='s'],
     &[data-size='m'] {
         --t-group-radius: var(--tui-radius-m);
