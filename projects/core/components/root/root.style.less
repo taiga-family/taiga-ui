@@ -19,6 +19,18 @@ tui-root {
     -webkit-tap-highlight-color: transparent;
 }
 
+:root {
+    --t-inline-start: left;
+    --t-inline-end: right;
+    --t-inline: 1;
+}
+
+[dir='rtl'] {
+    --t-inline-start: right;
+    --t-inline-end: left;
+    --t-inline: -1;
+}
+
 tui-root > .t-root-scrollbar {
     .fullsize(fixed, inset);
 
