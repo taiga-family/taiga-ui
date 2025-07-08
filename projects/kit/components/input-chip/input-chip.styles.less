@@ -38,31 +38,19 @@
 
 :host-context(tui-textfield[data-size='s']) {
     left: -0.375rem;
+    inset-inline-start: -0.375rem;
     margin: 0.0625rem 0;
     margin-inline-end: 0.125rem;
-
-    @supports (inset-inline-start: 0) {
-        left: unset;
-        inset-inline-start: -0.375rem;
-    }
 }
 
 :host-context(tui-textfield[data-size='m']) {
     left: -0.125rem;
-
-    @supports (inset-inline-start: 0) {
-        left: unset;
-        inset-inline-start: -0.125rem;
-    }
+    inset-inline-start: -0.125rem;
 }
 
 :host-context(tui-textfield[data-size='l']) {
     left: -0.25rem;
-
-    @supports (inset-inline-start: 0) {
-        left: unset;
-        inset-inline-start: -0.25rem;
-    }
+    inset-inline-start: -0.25rem;
 
     .t-input {
         text-indent: 0.625rem;

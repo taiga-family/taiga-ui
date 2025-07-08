@@ -17,12 +17,8 @@ tui-textfield[multi][multi] {
         position: sticky;
         top: 0;
         left: 0;
+        inset-inline-start: 0;
         block-size: var(--t-height);
-
-        @supports (inset-inline-start: 0) {
-            left: unset;
-            inset-inline-start: 0;
-        }
     }
 
     &[tuiChevron]::after {
@@ -45,17 +41,13 @@ tui-textfield[multi][multi] {
         position: sticky;
         left: var(--t-start);
         display: flex;
+        inset-inline-start: var(--t-start);
         min-inline-size: 0;
         min-block-size: fit-content;
         flex: 1;
         align-items: center;
         flex-wrap: wrap;
         padding: var(--t-vertical) 0;
-
-        @supports (inset-inline-start: 0) {
-            left: unset;
-            inset-inline-start: 0;
-        }
 
         &::after {
             content: '';
@@ -98,13 +90,9 @@ tui-textfield[multi][multi] {
             input {
                 position: absolute;
                 left: 0;
+                inset-inline-start: 0;
                 inline-size: 100%;
                 padding: 0;
-
-                @supports (inset-inline-start: 0) {
-                    left: unset;
-                    inset-inline-start: 0;
-                }
             }
 
             .t-ghost {
@@ -118,13 +106,9 @@ tui-textfield[multi][multi] {
             .t-filler {
                 position: absolute;
                 left: 0;
+                inset-inline-start: 0;
                 color: var(--tui-text-tertiary);
                 pointer-events: none;
-
-                @supports (inset-inline-start: 0) {
-                    left: unset;
-                    inset-inline-start: 0;
-                }
 
                 &_hidden {
                     display: none;
@@ -137,13 +121,9 @@ tui-textfield[multi][multi] {
         position: sticky;
         top: 0;
         left: calc(100% - var(--t-side) - var(--t-end) + var(--t-padding) - var(--t-offset));
+        inset-inline-start: calc(100% - var(--t-side) - var(--t-end) + var(--t-padding) - var(--t-offset));
         margin: 0;
         gap: 0.25rem;
-
-        @supports (inset-inline-start: 0) {
-            left: unset;
-            inset-inline-start: calc(100% - var(--t-side) - var(--t-end) + var(--t-padding) - var(--t-offset));
-        }
     }
 
     > .t-content .t-clear {
@@ -209,13 +189,9 @@ tui-textfield[multi][multi] {
         &::after {
             // tuiChevron changes icon size to 1rem
             left: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
+            inset-inline-start: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
             margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
             margin-inline-start: -0.75rem;
-
-            @supports (inset-inline-start: 0) {
-                left: unset;
-                inset-inline-start: calc(100% - var(--t-end) - 0.375rem + 0.25 * (1em - 1rem));
-            }
         }
 
         &._with-label {
@@ -233,25 +209,17 @@ tui-textfield[multi][multi] {
 
         &::before {
             left: -0.125rem;
+            inset-inline-start: -0.125rem;
             margin-inline-end: 0.375rem;
-
-            @supports (inset-inline-start: 0) {
-                left: unset;
-                inset-inline-start: -0.125rem;
-            }
         }
 
         &::after {
             left: calc(100% - var(--t-end) - 0.25rem);
+            inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
             margin-inline-start: -0.125rem;
             border-width: 0.625rem;
             // tuiChevron changes icon size to 1rem
             margin-inline-end: calc(0.5 * (1.5rem - 1em) - var(--t-padding));
-
-            @supports (inset-inline-start: 0) {
-                left: unset;
-                inset-inline-start: calc(100% - var(--t-end) - 0.25rem);
-            }
         }
 
         &._with-label {
@@ -273,23 +241,15 @@ tui-textfield[multi][multi] {
 
         &::before {
             left: -0.125rem;
+            inset-inline-start: -0.125rem;
             margin-inline-end: 0.375rem;
-
-            @supports (inset-inline-start: 0) {
-                left: unset;
-                inset-inline-start: -0.125rem;
-            }
         }
 
         &::after {
             left: calc(100% - var(--t-end) - 0.125rem);
+            inset-inline-start: calc(100% - var(--t-end) - 0.125rem);
             border-width: 0.5rem;
             margin-inline-end: calc(-1 * var(--t-padding));
-
-            @supports (inset-inline-start: 0) {
-                left: unset;
-                inset-inline-start: calc(100% - var(--t-end) - 0.125rem);
-            }
         }
 
         > .t-content {
