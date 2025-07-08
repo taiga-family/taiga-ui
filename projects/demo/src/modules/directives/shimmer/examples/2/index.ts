@@ -1,3 +1,4 @@
+import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -10,6 +11,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
     standalone: true,
     imports: [
         FormsModule,
+        NgFor,
         TuiAppearance,
         TuiAvatar,
         TuiAvatarStack,
@@ -29,12 +31,12 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 export default class Example {
     protected loading = true;
 
-    public avatars = [
-        {src: 'https://avatars.githubusercontent.com/mdlufy'},
-        {src: 'https://avatars.githubusercontent.com/splincode'},
-        {src: 'https://avatars.githubusercontent.com/nsbarsukov'},
-        {src: 'https://avatars.githubusercontent.com/vladimirpotekhin'},
-        {src: 'https://avatars.githubusercontent.com/marsibarsi'},
-        {src: 'https://avatars.githubusercontent.com/waterplea'},
+    protected readonly avatars = [
+        'https://avatars.githubusercontent.com/mdlufy',
+        'https://avatars.githubusercontent.com/splincode',
+        'https://avatars.githubusercontent.com/nsbarsukov',
+        'https://avatars.githubusercontent.com/vladimirpotekhin',
+        'https://avatars.githubusercontent.com/marsibarsi',
+        'https://avatars.githubusercontent.com/waterplea',
     ];
 }

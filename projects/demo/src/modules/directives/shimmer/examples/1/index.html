@@ -32,7 +32,7 @@
     <tui-avatar-stack [tuiShimmer]="loading">
         <tui-avatar
             *ngFor="let avatar of avatars"
-            [src]="avatar.src"
+            [src]="avatar"
         />
     </tui-avatar-stack>
     <footer>
@@ -84,7 +84,7 @@
     <tui-avatar-stack>
         <tui-avatar
             *ngFor="let avatar of avatars"
-            [src]="avatar.src"
+            [src]="avatar"
             [tuiSkeleton]="loading"
         />
     </tui-avatar-stack>
