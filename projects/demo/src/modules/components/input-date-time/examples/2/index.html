@@ -1,0 +1,14 @@
+<tui-textfield>
+    <label tuiLabel>Choose a date</label>
+    <input
+        tuiInputDateTime
+        [(ngModel)]="value"
+    />
+    <tui-calendar
+        *tuiTextfieldDropdown
+        [markerHandler]="markerHandler"
+        [month]="value?.[0] ?? defaultActiveMonth()"
+        [showAdjacent]="false"
+        (monthChange)="defaultActiveMonth.set($event)"
+    />
+</tui-textfield>

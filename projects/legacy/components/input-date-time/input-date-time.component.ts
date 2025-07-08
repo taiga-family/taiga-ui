@@ -53,6 +53,10 @@ import {BehaviorSubject, combineLatest, map, timer} from 'rxjs';
 
 const DATE_TIME_SEPARATOR = ', ';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-date-time TuiInputDateTime} (from @taiga-ui/kit) instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-input-date-time',

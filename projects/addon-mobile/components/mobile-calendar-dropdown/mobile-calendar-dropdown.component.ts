@@ -1,5 +1,5 @@
 import type {ValueProvider} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {TuiControl} from '@taiga-ui/cdk/classes';
@@ -56,8 +56,13 @@ export class TuiMobileCalendarDropdown {
     protected readonly multi = this.data.multi || this.is('tui-input-date[multiple]');
     protected readonly single =
         !!this.directive?.single ||
+        !!this.directive?.dateTime ||
         this.data.single || // TODO(v5): use `rangeMode` from DI token `TUI_CALENDAR_SHEET_DEFAULT_OPTIONS`
         this.is('tui-input-date:not([multiple])');
+
+    protected readonly value = computed((value = this.directive?.date?.value()) =>
+        Array.isArray(value) ? value[0] : (value ?? undefined),
+    );
 
     constructor() {
         this.keyboard.hide();
@@ -138,7 +143,7 @@ export class TuiMobileCalendarDropdown {
         }
 
         if (this.directive?.date) {
-            this.directive.date.onChange(normalizedValue);
+            this.directive.date.setDate(normalizedValue);
         }
 
         this.observer?.next(normalizedValue);

@@ -1,9 +1,12 @@
 import {ContentChild, Directive, inject} from '@angular/core';
+import type {TuiDay, TuiDayRange, TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/directives/dropdown';
 import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
+import type {TuiInputDateBase} from '@taiga-ui/kit/components/input-date';
 import {TuiInputDateDirective} from '@taiga-ui/kit/components/input-date';
 import {TuiInputDateRangeDirective} from '@taiga-ui/kit/components/input-date-range';
+import {TuiInputDateTimeDirective} from '@taiga-ui/kit/components/input-date-time';
 
 import {TuiMobileCalendarDropdown} from './mobile-calendar-dropdown.component';
 
@@ -28,9 +31,16 @@ export class TuiMobileCalendarDropdownNew {
     @ContentChild(TuiInputDateRangeDirective)
     public readonly range?: TuiInputDateRangeDirective;
 
+    @ContentChild(TuiInputDateTimeDirective)
+    public readonly dateTime?: TuiInputDateTimeDirective;
+
     public readonly handlers = inject(TuiItemsHandlersDirective);
 
-    public get date(): TuiInputDateDirective | TuiInputDateRangeDirective | undefined {
-        return this.single || this.range;
+    public get date():
+        | TuiInputDateBase<readonly [TuiDay, TuiTime | null]>
+        | TuiInputDateBase<TuiDay>
+        | TuiInputDateBase<TuiDayRange>
+        | undefined {
+        return this.single || this.range || this.dateTime;
     }
 }
