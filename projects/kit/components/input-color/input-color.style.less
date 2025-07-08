@@ -12,7 +12,7 @@
         overflow: hidden;
         cursor: pointer;
         background: repeating-conic-gradient(var(--tui-border-normal) 0% 25%, transparent 0% 50%);
-        box-shadow: 0 0 0 0.125rem var(--tui-border-normal);
+        box-shadow: 0 0 0 1px var(--tui-border-normal);
 
         &:disabled {
             cursor: default;
@@ -30,7 +30,13 @@
     &.tui-input-color_left {
         position: absolute;
         top: 50%;
-        transform: translate(50%, -50%);
+        left: calc(var(--t-height) / 4);
+        transform: translateY(-50%);
+
+        @supports (inset-inline-start: 1rem) {
+            left: unset;
+            inset-inline-start: calc(var(--t-height) / 4);
+        }
     }
 
     &::-webkit-color-swatch-wrapper {

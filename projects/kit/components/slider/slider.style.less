@@ -32,7 +32,7 @@
     @ticks-background-size: calc(100% - @thumb-width);
 
     @filling-progress-gradient: linear-gradient(
-        to right,
+        var(--t-dir, to right),
         @thumb-color calc(100% * var(--tui-slider-fill-ratio)),
         transparent calc(100% * var(--tui-slider-fill-ratio))
     );
@@ -99,6 +99,13 @@
     block-size: @thumb-diameters[@@size];
     border-radius: 50%;
     transform: var(--tui-slider-thumb-transform, @transform-noop);
+
+    @supports (inset-inline-start: 1rem) {
+        left: unset;
+        inset-inline-start: calc(
+            var(--tui-slider-fill-ratio) * 100% - var(--tui-slider-fill-ratio) * @thumb-diameters[@@size]
+        );
+    }
 }
 
 .thumb-overlay(@size) {
@@ -133,6 +140,10 @@
     background-clip: content-box; /* To clip filling of paddings */
     outline: none;
     border-radius: var(--tui-radius-m);
+
+    :host-context(:dir(rtl)) {
+        --t-dir: to left;
+    }
 
     &:active {
         cursor: ew-resize;

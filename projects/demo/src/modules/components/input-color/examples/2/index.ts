@@ -9,6 +9,7 @@ import {TuiInputColor, tuiInputColorOptionsProvider} from '@taiga-ui/kit';
     standalone: true,
     imports: [FormsModule, TuiInputColor, TuiTextfield],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
     providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'right'})],
