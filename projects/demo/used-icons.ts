@@ -65,6 +65,7 @@ export const TUI_USED_ICONS = [
     '@tui.info',
     '@tui.heart-filled',
     '@tui.dollar-sign',
+    '@tui.paintbrush',
     '@tui.paint-bucket',
     '@tui.file',
     '@tui.droplet',
