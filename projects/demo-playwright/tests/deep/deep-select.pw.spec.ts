@@ -51,11 +51,13 @@ test.describe('Deep / Select', () => {
                     // e2e flaky: wait more time for charts graphics
                     await page.waitForTimeout(path.includes('charts') ? 500 : 100);
 
-                    await expect
-                        .soft(api.apiPageExample)
-                        .toHaveScreenshot(
-                            `deep-${path}-${name}-row—${rowIndex}-select-option-${index}.png`,
-                        );
+                    const example = api.apiPageExample;
+                    const makeName = (dir: string): string =>
+                        `deep-${path}-${name}-row—${rowIndex}-select-option-${index}.${dir}.png`;
+
+                    await expect.soft(example).toHaveScreenshot(makeName('ltr'));
+                    await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
+                    await expect.soft(example).toHaveScreenshot(makeName('rtl'));
 
                     await select.click();
 

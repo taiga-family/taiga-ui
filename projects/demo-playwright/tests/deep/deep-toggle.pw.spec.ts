@@ -39,9 +39,13 @@ test.describe('Deep / Toggle', () => {
                     await page.waitForTimeout(300);
                 }
 
-                await expect
-                    .soft(api.apiPageExample)
-                    .toHaveScreenshot(`deep-${path}-${name}-row-${rowIndex}-toggled.png`);
+                const example = api.apiPageExample;
+                const makeName = (dir: string): string =>
+                    `deep-${path}-${name}-row-${rowIndex}-toggled.${dir}.png`;
+
+                await expect.soft(example).toHaveScreenshot(makeName('ltr'));
+                await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
+                await expect.soft(example).toHaveScreenshot(makeName('rtl'));
 
                 await toggle.click();
 

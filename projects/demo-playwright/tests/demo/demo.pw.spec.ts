@@ -43,12 +43,14 @@ test.describe('Demo', () => {
                 // e2e flaky: wait more time for charts graphics
                 await page.waitForTimeout(path.includes('charts') ? 1000 : 150);
 
-                await expect
-                    .soft(example)
-                    .toHaveScreenshot([
-                        path.replace('/', '').replaceAll('/', '-'),
-                        `${i + 1}.png`,
-                    ]);
+                const makeName = (dir: string): string[] => [
+                    path.replace('/', '').replaceAll('/', '-'),
+                    `${i + 1}.${dir}.png`,
+                ];
+
+                await expect.soft(example).toHaveScreenshot(makeName('ltr'));
+                await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
+                await expect.soft(example).toHaveScreenshot(makeName('rtl'));
             }
 
             await checkA11y(page, 'tui-doc-example > .t-example', {detailedReport: true});
