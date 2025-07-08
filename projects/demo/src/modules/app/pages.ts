@@ -1401,6 +1401,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
+                title: 'Shimmer',
+                keywords: 'shimmer, шиммер, fade, фейд, cache, кеш, кеширование',
+                route: DemoRoute.Shimmer,
+            },
+            {
+                section: 'Tools',
                 title: 'FluidTypography',
                 keywords: 'font, scale, textfield, input, size, text',
                 route: DemoRoute.FluidTypography,

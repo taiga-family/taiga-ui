@@ -1014,6 +1014,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../directives/animated'),
         title: 'Animated',
     }),
+    route({
+        path: DemoRoute.Shimmer,
+        loadComponent: async () => import('../directives/shimmer'),
+        title: 'Shimmer',
+    }),
     // PIPES
     route({
         path: DemoRoute.Currency,
