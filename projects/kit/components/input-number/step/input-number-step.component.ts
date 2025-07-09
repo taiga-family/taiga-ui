@@ -14,7 +14,11 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {TUI_TEXTFIELD_OPTIONS, TuiButton, TuiTextfieldContent} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core/components/button';
+import {
+    TUI_TEXTFIELD_OPTIONS,
+    TuiTextfieldContent,
+} from '@taiga-ui/core/components/textfield';
 import type {Observable} from 'rxjs';
 import {expand, map, merge, Subject, switchMap, takeUntil, timer} from 'rxjs';
 
