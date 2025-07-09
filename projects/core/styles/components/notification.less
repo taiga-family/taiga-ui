@@ -53,11 +53,7 @@ tui-notification,
     &::before {
         position: absolute;
         left: -1rem;
-
-        @supports (inset-inline-start: -1rem) {
-            left: unset;
-            inset-inline-start: -1rem;
-        }
+        inset-inline-start: -1rem;
     }
 
     &::after {
@@ -89,12 +85,8 @@ tui-notification,
         &::before {
             top: 0.5rem;
             left: -0.875rem;
+            inset-inline-start: -0.875rem;
             font-size: 1rem;
-
-            @supports (inset-inline-start: -0.875rem) {
-                left: unset;
-                inset-inline-start: -0.875rem;
-            }
         }
 
         &::after {
@@ -147,12 +139,8 @@ tui-notification,
 
         &::before {
             left: -0.875rem;
+            inset-inline-start: -0.875rem;
             font-size: 1.25rem;
-
-            @supports (inset-inline-start: -0.875rem) {
-                left: unset;
-                inset-inline-start: -0.875rem;
-            }
         }
 
         &::after {

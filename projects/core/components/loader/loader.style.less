@@ -68,6 +68,7 @@
     position: relative;
     left: -100%;
     display: flex;
+    inset-inline-start: -100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -79,11 +80,6 @@
     stroke: var(--tui-background-accent-1);
     animation: tuiFadeIn var(--tui-duration);
     font-size: 1rem; // to use em units as rem ones interchangeably (Safari)
-
-    @supports (inset-inline-start: -100%) {
-        left: unset;
-        inset-inline-start: -100%;
-    }
 
     &&_horizontal {
         flex-direction: row;
