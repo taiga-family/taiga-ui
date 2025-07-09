@@ -9,10 +9,12 @@
     top: 0;
     left: 0;
     z-index: 1;
+    inset-inline-start: 0;
     min-inline-size: calc(100% - 1px);
     min-block-size: calc(100% - 1px);
     max-inline-size: calc(100% - 1px);
     max-block-size: calc(100% - 1px);
+    float: inline-start;
     float: inline-start;
     margin-inline-end: calc(-100% + 1px);
     pointer-events: none;
@@ -32,10 +34,16 @@
     &_vertical {
         top: 0;
         inline-size: @scroll-width-large;
+
+        @supports (inset-inline-end: 0) {
+            right: unset;
+            inset-inline-end: 0;
+        }
     }
 
     &_horizontal {
         left: 0;
+        inset-inline-start: 0;
         block-size: @scroll-width-large;
     }
 
@@ -73,6 +81,7 @@
 
     .t-bar_vertical & {
         right: 0;
+        inset-inline-end: 0;
         inline-size: @scroll-width;
         min-block-size: @scroll-min-size;
     }

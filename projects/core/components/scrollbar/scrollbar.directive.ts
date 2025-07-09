@@ -69,6 +69,7 @@ export class TuiScrollbarDirective {
                 this.style.height = view;
             } else {
                 this.style.left = thumb;
+                this.style.insetInlineStart = thumb;
                 this.style.width = view;
             }
         });
@@ -102,7 +103,7 @@ export class TuiScrollbarDirective {
     private getThumb(dimension: ComputedDimension): number {
         const compensation = this.getCompensation(dimension) || this.getView(dimension);
 
-        return this.getScrolled(dimension) * (1 - compensation);
+        return Math.abs(this.getScrolled(dimension) * (1 - compensation));
     }
 
     private getView(dimension: ComputedDimension): number {
