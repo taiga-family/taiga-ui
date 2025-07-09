@@ -139,11 +139,7 @@ export class TuiInputChipDirective<T>
     }
 
     protected scrollTo(): void {
-        let sign = 1;
-
-        try {
-            sign = this.textfield.el.matches(':dir(rtl)') ? -1 : 1;
-        } catch {}
+        const sign = this.textfield.el.matches('[dir="rtl"] :scope') ? -1 : 1;
 
         // Allow change detection to run and add new tag to DOM
         setTimeout(() => {

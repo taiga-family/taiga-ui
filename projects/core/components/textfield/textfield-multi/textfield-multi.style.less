@@ -59,7 +59,7 @@ tui-textfield[multi][multi] {
             clip-path: inset(0 0 0 calc(var(--t-start) / 2 - var(--t-padding) - 0.25rem));
             flex-wrap: nowrap;
 
-            &:dir(rtl) {
+            [dir='rtl'] & {
                 clip-path: inset(0 calc(var(--t-start) / 2 - var(--t-padding) - 0.25rem) 0 0);
             }
 

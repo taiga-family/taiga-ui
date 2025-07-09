@@ -46,22 +46,14 @@ export class TuiSpinButton {
     public readonly rightClick = new EventEmitter<void>();
 
     public onLeftClick(): void {
-        if (!this.leftComputedDisabled) {
+        if (!this.disabled && !this.leftDisabled) {
             this.leftClick.emit();
         }
     }
 
     public onRightClick(): void {
-        if (!this.rightComputedDisabled) {
+        if (!this.disabled && !this.rightDisabled) {
             this.rightClick.emit();
         }
-    }
-
-    protected get leftComputedDisabled(): boolean {
-        return this.disabled || this.leftDisabled;
-    }
-
-    protected get rightComputedDisabled(): boolean {
-        return this.disabled || this.rightDisabled;
     }
 }

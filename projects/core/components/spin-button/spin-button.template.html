@@ -5,7 +5,8 @@
         size="xs"
         tuiIconButton
         type="button"
-        [class.t-hidden]="leftComputedDisabled"
+        class="t-button"
+        [class.t-button_hidden]="disabled || leftDisabled"
         [iconStart]="icons.decrement"
         [tabIndex]="focusable ? 0 : -1"
         (click)="onLeftClick()"
@@ -21,7 +22,8 @@
         size="xs"
         tuiIconButton
         type="button"
-        [class.t-hidden]="rightComputedDisabled"
+        class="t-button"
+        [class.t-button_hidden]="this.disabled || rightDisabled"
         [iconStart]="icons.increment"
         [tabIndex]="focusable ? 0 : -1"
         (click)="onRightClick()"

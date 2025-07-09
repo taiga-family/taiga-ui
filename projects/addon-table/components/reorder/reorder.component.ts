@@ -13,22 +13,14 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_TILES_REORDER, TuiTiles, tuiTilesShift} from '@taiga-ui/kit/components/tiles';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_REORDER_OPTIONS} from './reorder.options';
 
 @Component({
     standalone: true,
     selector: 'tui-reorder',
-    imports: [
-        AsyncPipe,
-        NgForOf,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiButton,
-        TuiIcon,
-        TuiTiles,
-    ],
+    imports: [AsyncPipe, NgForOf, PolymorpheusOutlet, TuiButton, TuiIcon, TuiTiles],
     templateUrl: './reorder.template.html',
     styleUrls: ['./reorder.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
