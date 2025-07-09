@@ -32,6 +32,7 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
         },
     ],
     host: {
+        ngSkipHydration: 'true',
         '(tuiPresentChange)': 'visible$.next($event)',
     },
 })

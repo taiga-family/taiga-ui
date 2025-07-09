@@ -20,6 +20,10 @@ import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiInputDateRangeComponent} from './input-date-range.component';
 import {TuiInputDateRangeDirective} from './input-date-range.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-date-range TuiInputDateRange} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         CommonModule,

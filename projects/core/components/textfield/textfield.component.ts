@@ -6,6 +6,7 @@ import {
     computed,
     ContentChild,
     ContentChildren,
+    Directive,
     ElementRef,
     forwardRef,
     inject,
@@ -48,51 +49,20 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {ReplaySubject, startWith, switchMap} from 'rxjs';
 
-import {TuiTextfieldDirective} from './textfield.directive';
+import {TuiTextfieldBase} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 import type {TuiTextfieldAccessor} from './textfield-accessor';
 import {TUI_TEXTFIELD_ACCESSOR} from './textfield-accessor';
 import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
-@Component({
-    standalone: true,
-    selector: 'tui-textfield',
-    imports: [NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
-    templateUrl: './textfield.template.html',
-    styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
-        tuiAsDataListHost(TuiTextfieldComponent),
-    ],
-    hostDirectives: [
-        TuiDropdownDirective,
-        TuiDropdownFixed,
-        TuiWithDropdownOpen,
-        TuiWithIcons,
-        TuiWithItemsHandlers,
-        TuiWithOptionContent,
-        TuiWithTextfieldDropdown,
-    ],
-    host: {
-        '[attr.data-size]': 'options.size()',
-        '[class._with-label]': 'hasLabel',
-        '[class._with-template]': 'content && ngControl?.value != null',
-        '[class._disabled]': 'input?.nativeElement?.disabled',
-        '(click.self.prevent)': '0',
-        '(pointerdown.self.prevent)': 'onIconClick()',
-        '(scroll.capture.zoneless)': 'onScroll($event.target)',
-        '(tuiActiveZoneChange)': '!$event && control?.onTouched()',
-    },
-})
-export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterContentInit {
+// TODO: Remove base class in v5
+@Directive()
+export class TuiTextfieldBaseComponent<T>
+    implements TuiDataListHost<T>, AfterContentInit
+{
     // TODO: refactor to signal inputs after Angular update
     private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
-    private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly dropdownOpen = inject(TuiDropdownOpen);
-    private readonly open = tuiDropdownOpen();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
     private readonly inputQuery = signal<ElementRef<HTMLInputElement> | undefined>(
@@ -105,25 +75,23 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
     protected readonly label?: ElementRef<HTMLElement>;
 
-    @ContentChild(NgControl)
-    protected readonly ngControl?: NgControl;
-
-    @ContentChild(TuiControl)
-    protected readonly control?: TuiControl<unknown>;
-
     @ContentChildren(TUI_AUXILIARY, {descendants: true})
     protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
+
+    protected readonly open = tuiDropdownOpen();
+    protected readonly dropdown = inject(TuiDropdownDirective);
+    protected readonly dropdownOpen = inject(TuiDropdownOpen);
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
 
-    protected computedFiller = computed((value = this.value()) => {
-        const filledValue = value + this.filler().slice(value.length);
+    protected readonly computedFiller = computed((value = this.value()) => {
+        const filler = value + this.filler().slice(value.length);
 
-        return filledValue.length > value.length ? filledValue : '';
+        return filler.length > value.length ? filler : '';
     });
 
-    protected showFiller = computed<boolean>(
+    protected readonly showFiller = computed<boolean>(
         () =>
             this.focused() &&
             !!this.computedFiller() &&
@@ -136,8 +104,14 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
     @ContentChild(TUI_TEXTFIELD_ACCESSOR, {descendants: true})
     public readonly accessor?: TuiTextfieldAccessor<T>;
 
+    @ContentChild(NgControl)
+    public readonly control?: NgControl;
+
+    @ContentChild(TuiControl)
+    public readonly cva?: TuiControl<unknown>;
+
     // TODO: Replace with signal query when Angular is updated v5
-    @ContentChild(forwardRef(() => TuiTextfieldDirective), {
+    @ContentChild(forwardRef(() => TuiTextfieldBase), {
         read: ElementRef,
         static: true,
     })
@@ -193,15 +167,18 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
 
     // Click on ::before,::after pseudo-elements ([iconStart] / [iconEnd])
     protected onIconClick(): void {
-        this.input?.nativeElement.focus({preventScroll: true});
+        this.input?.nativeElement.focus();
 
         if (
-            this.dropdownOpen.tuiDropdownEnabled &&
-            this.dropdown.content &&
-            !this.input?.nativeElement.matches(':read-only')
+            !this.dropdownOpen.tuiDropdownEnabled ||
+            !this.cva?.interactive() ||
+            this.input?.nativeElement.matches('input:read-only,textarea:read-only')
         ) {
-            this.open.update((x) => !x);
+            return;
         }
+
+        this.open.update((open) => !open);
+        this.input?.nativeElement.showPicker?.();
     }
 
     protected onScroll(element: HTMLElement): void {
@@ -212,3 +189,37 @@ export class TuiTextfieldComponent<T> implements TuiDataListHost<T>, AfterConten
         }
     }
 }
+
+@Component({
+    standalone: true,
+    selector: 'tui-textfield:not([multi])',
+    imports: [NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
+    templateUrl: './textfield.template.html',
+    styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
+        tuiAsDataListHost(TuiTextfieldComponent),
+    ],
+    hostDirectives: [
+        TuiDropdownDirective,
+        TuiDropdownFixed,
+        TuiWithDropdownOpen,
+        TuiWithIcons,
+        TuiWithItemsHandlers,
+        TuiWithOptionContent,
+        TuiWithTextfieldDropdown,
+    ],
+    host: {
+        '[attr.data-size]': 'options.size()',
+        '[class._with-label]': 'hasLabel',
+        '[class._with-template]': 'content && control?.value != null',
+        '[class._disabled]': 'input?.nativeElement?.disabled',
+        '(click.self.prevent)': '0',
+        '(pointerdown.self.prevent)': 'onIconClick()',
+        '(scroll.capture.zoneless)': 'onScroll($event.target)',
+        '(tuiActiveZoneChange)': '!$event && cva?.onTouched()',
+    },
+})
+export class TuiTextfieldComponent<T> extends TuiTextfieldBaseComponent<T> {}

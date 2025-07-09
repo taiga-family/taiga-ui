@@ -36,23 +36,28 @@ tui-notification,
     box-sizing: border-box;
     text-align: start;
     text-decoration: none;
-    border-inline-start: var(--t-left) solid transparent;
-    border-inline-end: var(--t-right) solid transparent;
+    border-inline-start: var(--t-start) solid transparent;
+    border-inline-end: var(--t-end) solid transparent;
 
-    --t-left: 0;
-    --t-right: 0;
+    --t-start: 0;
+    --t-end: 0;
 
     &[style*='--t-icon-start:'] {
-        --t-left: 2rem;
+        --t-start: 2rem;
     }
 
     &[style*='--t-icon-end:'] {
-        --t-right: 1.5rem;
+        --t-end: 1.5rem;
     }
 
     &::before {
         position: absolute;
         left: -1rem;
+
+        @supports (inset-inline-start: -1rem) {
+            left: unset;
+            inset-inline-start: -1rem;
+        }
     }
 
     &::after {
@@ -60,8 +65,15 @@ tui-notification,
 
         right: -0.5rem;
         font-size: 1rem;
-        margin: 0 -0.25rem 0 auto;
+        margin: 0;
+        margin-inline-end: -0.25rem;
+        margin-inline-start: auto;
         color: var(--tui-text-tertiary) !important;
+
+        @supports (inset-inline-end: -0.5rem) {
+            right: unset;
+            inset-inline-end: -0.5rem;
+        }
     }
 
     &[data-size='s'] {
@@ -71,17 +83,27 @@ tui-notification,
         border-radius: var(--tui-radius-m);
 
         &[style*='--t-icon-start:'] {
-            --t-left: 1.5rem;
+            --t-start: 1.5rem;
         }
 
         &::before {
             top: 0.5rem;
             left: -0.875rem;
             font-size: 1rem;
+
+            @supports (inset-inline-start: -0.875rem) {
+                left: unset;
+                inset-inline-start: -0.875rem;
+            }
         }
 
         &::after {
             right: -0.875rem;
+
+            @supports (inset-inline-end: -0.875rem) {
+                right: unset;
+                inset-inline-end: -0.875rem;
+            }
         }
 
         tui-icon {
@@ -105,6 +127,11 @@ tui-notification,
         > [tuiIconButton] {
             top: 0;
             right: 0;
+
+            @supports (inset-inline-end: 0) {
+                right: unset;
+                inset-inline-end: 0;
+            }
         }
     }
 
@@ -115,16 +142,26 @@ tui-notification,
         border-radius: var(--tui-radius-m);
 
         &[style*='--t-icon-start:'] {
-            --t-left: 1.625rem;
+            --t-start: 1.625rem;
         }
 
         &::before {
             left: -0.875rem;
             font-size: 1.25rem;
+
+            @supports (inset-inline-start: -0.875rem) {
+                left: unset;
+                inset-inline-start: -0.875rem;
+            }
         }
 
         &::after {
             right: -0.75rem;
+
+            @supports (inset-inline-end: -0.75rem) {
+                right: unset;
+                inset-inline-end: -0.75rem;
+            }
         }
 
         tui-icon {
@@ -148,6 +185,11 @@ tui-notification,
         > [tuiIconButton] {
             top: 0.375rem;
             right: 0.5rem;
+
+            @supports (inset-inline-end: 0.5rem) {
+                right: unset;
+                inset-inline-end: 0.5rem;
+            }
         }
     }
 
@@ -164,7 +206,7 @@ tui-notification,
             display: flex;
             align-items: center;
             gap: 1.25rem;
-            margin-top: 0.625rem;
+            margin-block-start: 0.625rem;
             font: var(--tui-font-text-s);
         }
     }
@@ -175,6 +217,11 @@ tui-notification,
         right: 0.75rem;
         box-shadow: none !important;
         background: transparent !important;
+
+        @supports (inset-inline-end: 0.75rem) {
+            right: unset;
+            inset-inline-end: 0.75rem;
+        }
     }
 }
 

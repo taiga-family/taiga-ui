@@ -17,7 +17,7 @@
                 type="button"
                 [disabled]="disabledItemHandler(item)"
                 [value]="item"
-                (click)="itemClick.emit(item)"
+                (click.capture)="itemClick.emit(item)"
             >
                 <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
                     {{ text }}

@@ -24,7 +24,7 @@ tui-block-status {
 
     .t-block-image:not(:empty) {
         display: flex;
-        margin-bottom: 2rem;
+        margin-block-end: 2rem;
     }
 
     .t-block-text:not(:empty) {
@@ -38,7 +38,7 @@ tui-block-status {
         flex-direction: column;
         align-items: center;
         inline-size: 100%;
-        margin-top: 2rem;
+        margin-block-start: 2rem;
     }
 
     h1,
@@ -51,7 +51,7 @@ tui-block-status {
         margin: 0;
 
         & ~ .t-block-text:not(:empty) {
-            margin-top: 1rem;
+            margin-block-start: 1rem;
         }
     }
 
@@ -62,7 +62,7 @@ tui-block-status {
 
     a:not(:last-child),
     button:not(:last-child) {
-        margin-bottom: 0.75rem;
+        margin-block-end: 0.75rem;
     }
 }
 
@@ -75,10 +75,10 @@ tui-block-status {
         h5,
         h6 {
             font: var(--tui-font-heading-6);
-            margin-top: 0;
+            margin-block-start: 0;
 
             & ~ .t-block-text:not(:empty) {
-                margin-top: 0.75rem;
+                margin-block-start: 0.75rem;
             }
         }
 
@@ -92,11 +92,11 @@ tui-block-status {
         }
 
         .t-block-actions:not(:empty) {
-            margin-top: 1.5rem;
+            margin-block-start: 1.5rem;
         }
 
         .t-block-image:not(:empty) {
-            margin-bottom: 1.5rem;
+            margin-block-end: 1.5rem;
         }
     }
 }

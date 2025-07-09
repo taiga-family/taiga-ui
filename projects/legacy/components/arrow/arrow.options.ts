@@ -1,5 +1,6 @@
 import type {Provider} from '@angular/core';
-import {tuiCreateToken, tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 /**
@@ -22,7 +23,12 @@ export const TUI_ARROW_DEFAULT_OPTIONS: TuiArrowOptions = {
  * @deprecated: drop in v5.0
  * Default parameters for arrow component
  */
-export const TUI_ARROW_OPTIONS = tuiCreateToken(TUI_ARROW_DEFAULT_OPTIONS);
+export const TUI_ARROW_OPTIONS = new InjectionToken(
+    ngDevMode ? 'TUI_ARROW_OPTIONS' : '',
+    {
+        factory: () => TUI_ARROW_DEFAULT_OPTIONS,
+    },
+);
 
 export function tuiArrowOptionsProvider(options: Partial<TuiArrowOptions>): Provider {
     return tuiProvideOptions(TUI_ARROW_OPTIONS, options, TUI_ARROW_DEFAULT_OPTIONS);

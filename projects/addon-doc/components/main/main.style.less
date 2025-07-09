@@ -73,7 +73,7 @@ a:focus code {
 
 .tui-doc-page {
     isolation: isolate;
-    padding-top: 4rem;
+    padding-block-start: 4rem;
 }
 
 tui-doc-navigation.tui-doc-navigation {
@@ -81,7 +81,7 @@ tui-doc-navigation.tui-doc-navigation {
     top: 4rem;
     bottom: 0;
     inline-size: @sidebar-width;
-    border-right: 1px solid var(--tui-border-normal);
+    border-inline-end: 1px solid var(--tui-border-normal);
 
     @media @tui-mobile {
         display: none;
@@ -89,10 +89,10 @@ tui-doc-navigation.tui-doc-navigation {
 }
 
 .tui-doc-content {
-    margin-left: @sidebar-width;
+    margin-inline-start: @sidebar-width;
 
     @media @tui-mobile {
-        margin-left: 0;
+        margin-inline-start: 0;
     }
 }
 
@@ -100,8 +100,9 @@ tui-doc-navigation.tui-doc-navigation {
     display: block;
 }
 
+.tui-doc-switch-direction,
 .tui-doc-dark-mode-switch {
-    margin-left: 1rem;
+    margin-inline-start: 1rem;
 }
 
 // highlightjs custom theme
@@ -220,7 +221,7 @@ tui-doc-code {
         vertical-align: top;
         opacity: 0.3;
         text-align: end;
-        padding-right: 1em !important;
+        padding-inline-end: 1em !important;
     }
 }
 

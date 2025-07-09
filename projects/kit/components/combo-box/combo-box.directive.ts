@@ -29,7 +29,6 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 
 @Directive({
@@ -39,13 +38,12 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
         tuiAsOptionContent(TuiSelectOption),
         tuiAsTextfieldAccessor(TuiComboBox),
         tuiAsControl(TuiComboBox),
-        tuiAsAuxiliary(TuiComboBox),
     ],
     hostDirectives: [TuiWithTextfield],
     host: {
         '[disabled]': 'disabled()',
         '(click)': 'toggleDropdown()',
-        '(input)': 'onInput()',
+        '(input)': 'toggleDropdown(true)',
         '(keydown.enter)': 'keydownEnter($event)',
     },
 })
@@ -76,7 +74,11 @@ export class TuiComboBox<T>
     );
 
     protected readonly nonStrictValueEffect = effect(() => {
-        if (!this.options().length && !this.strict()) {
+        if (
+            !this.options().length &&
+            !this.strict() &&
+            this.stringify(this.value()) !== this.textfield.value()
+        ) {
             this.onChange(this.textfield.value() || null);
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
@@ -145,13 +147,9 @@ export class TuiComboBox<T>
     }
 
     protected toggleDropdown(open = !this.open()): void {
-        if (this.dropdownEnabled() && this.dropdown.content) {
+        if (this.dropdownEnabled() && this.dropdown._content()) {
             this.open.set(open);
         }
-    }
-
-    protected onInput(): void {
-        setTimeout(() => this.toggleDropdown(true));
     }
 
     protected keydownEnter(event: KeyboardEvent): void {

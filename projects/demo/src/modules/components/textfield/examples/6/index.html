@@ -1,33 +1,23 @@
-<fieldset
-    tuiTextfieldSize="s"
-    [disabled]="disable()"
->
-    <legend>Payment fieldset</legend>
+<tui-textfield [tuiTextfieldCleaner]="false">
+    <label tuiLabel>Flat angle</label>
 
-    <tui-textfield iconStart="@tui.credit-card">
-        <input
-            placeholder="Card number"
-            tuiTextfield
-            [(ngModel)]="card"
-        />
-    </tui-textfield>
-
-    <tui-textfield iconStart="@tui.user">
-        <input
-            placeholder="Card holder"
-            tuiTextfield
-            [(ngModel)]="name"
-        />
-    </tui-textfield>
-</fieldset>
-
-<label tuiLabel>
     <input
-        size="s"
-        tuiSwitch
-        type="checkbox"
-        [ngModel]="disable()"
-        (ngModelChange)="disable.set($event)"
+        #input
+        placeholder="3,14"
+        tuiTextfield
+        [maskito]="options"
+        [(ngModel)]="value"
     />
-    Disable
-</label>
+
+    <button
+        *ngIf="value"
+        iconStart="@tui.x"
+        tabindex="-1"
+        tuiIconButton
+        type="button"
+        (click)="clear()"
+        (pointerdown.zoneless.prevent)="input.focus()"
+    >
+        Clear
+    </button>
+</tui-textfield>

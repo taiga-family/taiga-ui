@@ -1,7 +1,9 @@
 import type {ValueProvider} from '@angular/core';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {InjectionToken} from '@angular/core';
 
-export const TUI_ASSETS_PATH = tuiCreateToken('assets/taiga-ui/icons');
+export const TUI_ASSETS_PATH = new InjectionToken(ngDevMode ? 'TUI_ASSETS_PATH' : '', {
+    factory: () => 'assets/taiga-ui/icons',
+});
 
 export function tuiAssetsPathProvider(useValue: string): ValueProvider {
     return {

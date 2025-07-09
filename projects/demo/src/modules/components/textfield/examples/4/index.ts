@@ -3,13 +3,12 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
-import {TuiCopy, TuiPassword} from '@taiga-ui/kit';
+import {TuiPassword} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiCopy, TuiIcon, TuiPassword, TuiTextfield],
+    imports: [FormsModule, TuiIcon, TuiPassword, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })

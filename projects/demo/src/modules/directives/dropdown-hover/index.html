@@ -49,13 +49,13 @@
             <p
                 tuiDropdownHover
                 [tuiDropdown]="dropdownContent"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
                 [tuiDropdownHideDelay]="hideDelay"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownLimitWidth]="dropdown.limitWidth"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
                 [tuiDropdownShowDelay]="showDelay"
             >
                 Hover pointer over
@@ -74,25 +74,36 @@
                 </div>
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiDropdownShowDelay"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="showDelay"
+        <table tuiDocAPI>
+            <tr
+                name="[tuiDropdown]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+            >
+                Content
+            </tr>
+            <tr
+                name="[tuiDropdownShowDelay]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="showDelay"
             >
                 Show delay for dropdown appearance after hover
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiDropdownHideDelay"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="hideDelay"
+            </tr>
+            <tr
+                name="[tuiDropdownHideDelay]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="hideDelay"
             >
-                Hide delay for dropdown to disappear after pointer is moved away
-            </ng-template>
-            <dropdown-documentation />
-        </tui-doc-documentation>
+                Show delay for dropdown appearance after hover
+            </tr>
+            <tbody
+                #dropdown
+                tuiDocDropdown
+                [hiddenOptions]="['open', 'tuiDropdownEnabled']"
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

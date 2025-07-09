@@ -18,6 +18,7 @@ import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
+    TUI_DOC_DIRECTION_ENABLED,
     TUI_DOC_EXAMPLE_CONTENT_PROCESSOR,
     TUI_DOC_LOGO,
     TUI_DOC_PAGES,
@@ -158,6 +159,10 @@ export const config: ApplicationConfig = {
         {
             provide: TUI_DOC_LOGO,
             useValue: LOGO_CONTENT,
+        },
+        {
+            provide: TUI_DOC_DIRECTION_ENABLED,
+            useValue: true,
         },
         {
             provide: TUI_DOC_SEARCH_ENABLED,

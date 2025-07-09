@@ -96,7 +96,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.AccordionOld,
-        title: 'Accordion (Deprecated)',
+        title: 'Accordion ⛔',
         loadComponent: async () => import('../components/accordion-'),
     }),
     route({
@@ -301,7 +301,7 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.ComboBoxLegacy,
-        title: 'ComboBox [deprecated]',
+        title: 'ComboBox ⛔',
         loadComponent: async () => import('../components/combo-box-legacy'),
     }),
     route({
@@ -421,12 +421,12 @@ export const ROUTES: Routes = [
     }),
     route({
         path: DemoRoute.InputDateLegacy,
-        title: 'InputDate [deprecated]',
+        title: 'InputDate ⛔',
         loadComponent: async () => import('../components/input-date-legacy'),
     }),
     route({
-        path: DemoRoute.InputDateMulti,
-        loadComponent: async () => import('../components/input-date-multi'),
+        path: DemoRoute.InputDateMultiLegacy,
+        loadComponent: async () => import('../components/input-date-multi-legacy'),
         title: 'InputDateMulti',
     }),
     route({
@@ -440,9 +440,14 @@ export const ROUTES: Routes = [
         title: 'InputCardGroup',
     }),
     route({
-        path: DemoRoute.InputDateTime,
-        loadComponent: async () => import('../components/input-date-time'),
+        path: DemoRoute.InputDateTimeLegacy,
+        loadComponent: async () => import('../components/input-date-time-legacy'),
         title: 'InputDateTime',
+    }),
+    route({
+        path: DemoRoute.InputChip,
+        loadComponent: async () => import('../components/input-chip'),
+        title: 'InputChip',
     }),
     route({
         path: DemoRoute.InputMonth,
@@ -452,12 +457,12 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.InputMonthLegacy,
         loadComponent: async () => import('../components/input-month-legacy'),
-        title: 'InputMonth [deprecated]',
+        title: 'InputMonth ⛔',
     }),
     route({
         path: DemoRoute.InputMonthRange,
         loadComponent: async () => import('../components/input-month-range'),
-        title: 'InputMonthRange',
+        title: 'InputMonthRange ⛔',
     }),
     route({
         path: DemoRoute.InputNumber,
@@ -467,7 +472,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.InputNumberLegacy,
         loadComponent: async () => import('../components/input-number-legacy'),
-        title: 'InputNumber [deprecated]',
+        title: 'InputNumber ⛔',
     }),
     route({
         path: DemoRoute.InputPhone,
@@ -492,7 +497,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.InputDateRangeLegacy,
         loadComponent: async () => import('../components/input-date-range-legacy'),
-        title: 'InputDateRange [deprecated]',
+        title: 'InputDateRange ⛔',
     }),
     route({
         path: DemoRoute.InputSlider,
@@ -502,17 +507,22 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.InputSliderLegacy,
         loadComponent: async () => import('../components/input-slider-legacy'),
-        title: 'InputSlider [deprecated]',
+        title: 'InputSlider ⛔',
     }),
     route({
         path: DemoRoute.InputTag,
         loadComponent: async () => import('../components/input-tag'),
-        title: 'InputTag',
+        title: 'InputTag ⛔',
+    }),
+    route({
+        path: DemoRoute.InputTime,
+        loadComponent: async () => import('../components/input-time'),
+        title: 'InputTime',
     }),
     route({
         path: DemoRoute.InputTimeLegacy,
         loadComponent: async () => import('../components/input-time-legacy'),
-        title: 'InputTime [deprecated]',
+        title: 'InputTime ⛔',
     }),
     route({
         path: DemoRoute.InputPhoneInternational,
@@ -587,7 +597,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.MultiSelect,
         loadComponent: async () => import('../components/multi-select'),
-        title: 'MultiSelect',
+        title: 'MultiSelect ⛔',
     }),
     route({
         path: DemoRoute.Pagination,
@@ -627,7 +637,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.SelectLegacy,
         loadComponent: async () => import('../components/select-legacy'),
-        title: 'Select [deprecated]',
+        title: 'Select ⛔',
     }),
     route({
         path: DemoRoute.Scrollbar,
@@ -693,7 +703,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.TextareaLegacy,
         loadComponent: async () => import('../components/textarea-legacy'),
-        title: 'Textarea',
+        title: 'Textarea ⛔',
     }),
     route({
         path: DemoRoute.Textarea,
@@ -703,7 +713,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.PrimitiveTextfield,
         loadComponent: async () => import('../components/primitive-textfield'),
-        title: 'PrimitiveTextfield',
+        title: 'PrimitiveTextfield ⛔',
     }),
     route({
         path: DemoRoute.PdfViewer,
@@ -967,7 +977,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.Sidebar,
         loadComponent: async () => import('../directives/sidebar'),
-        title: 'Sidebar',
+        title: 'Sidebar ⛔',
     }),
     route({
         path: DemoRoute.Touchable,
@@ -998,6 +1008,16 @@ export const ROUTES: Routes = [
         path: DemoRoute.AutoFocus,
         loadComponent: async () => import('../directives/auto-focus'),
         title: 'AutoFocus',
+    }),
+    route({
+        path: DemoRoute.Animated,
+        loadComponent: async () => import('../directives/animated'),
+        title: 'Animated',
+    }),
+    route({
+        path: DemoRoute.Shimmer,
+        loadComponent: async () => import('../directives/shimmer'),
+        title: 'Shimmer',
     }),
     // PIPES
     route({
@@ -1141,6 +1161,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.MigrationGuide,
         loadComponent: async () => import('../info/migration-guide'),
         title: 'Migration Guide',
+    }),
+    route({
+        path: DemoRoute.AISupport,
+        loadComponent: async () => import('../info/ai-support'),
+        title: 'AI support',
     }),
     route({
         path: DemoRoute.Obfuscate,

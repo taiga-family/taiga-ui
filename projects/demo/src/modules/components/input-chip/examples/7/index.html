@@ -1,0 +1,35 @@
+<tui-textfield
+    multi
+    [rows]="1"
+>
+    <label tuiLabel>كلمات عربية</label>
+    <input
+        placeholder="مرحبا"
+        tuiInputChip
+        [(ngModel)]="value"
+    />
+</tui-textfield>
+
+<tui-textfield
+    multi
+    [rows]="1"
+>
+    <input
+        placeholder="مرحبا"
+        tuiInputChip
+        [(ngModel)]="value"
+    />
+    <tui-input-chip *tuiItem />
+</tui-textfield>
+
+<tui-textfield
+    multi
+    [rows]="2"
+>
+    <input
+        placeholder="مرحبا"
+        tuiInputChip
+        [(ngModel)]="value"
+    />
+    <tui-input-chip *tuiItem />
+</tui-textfield>

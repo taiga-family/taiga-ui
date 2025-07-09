@@ -2,11 +2,11 @@
 
 .interactive(@ruleset) {
     // TODO remove after dropping Safari 13 support
-    &:matches(a, button, select, textarea, input, label):not(:disabled) {
+    &:matches(a, button, select, textarea, input, label, .tui-interactive):not(:disabled) {
         @ruleset();
     }
 
-    &:is(a, button, select, textarea, input, label):not(:disabled) {
+    &:is(a, button, select, textarea, input, label, .tui-interactive):not(:disabled) {
         @ruleset();
     }
 }
@@ -162,7 +162,7 @@
 
 .tui-line-clamp(@count: 3) {
     display: -webkit-box;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: block-axis;
     -webkit-line-clamp: @count;
     line-clamp: @count;
     overflow: hidden;

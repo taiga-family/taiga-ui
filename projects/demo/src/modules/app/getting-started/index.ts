@@ -1,12 +1,16 @@
 import {NgComponentOutlet} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, inject, InjectionToken} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {tuiCreateToken} from '@taiga-ui/cdk';
 
 import {Home} from '../home/home.component';
 
-export const TUI_HOME_COMPONENT = tuiCreateToken(Home);
+export const TUI_HOME_COMPONENT = new InjectionToken(
+    ngDevMode ? 'TUI_HOME_COMPONENT' : '',
+    {
+        factory: () => Home,
+    },
+);
 
 @Component({
     standalone: true,

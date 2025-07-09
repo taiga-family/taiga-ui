@@ -43,7 +43,7 @@ test.describe('InputDate and mobile user agent', () => {
     });
 
     test('InputDateMulti', async ({page}) => {
-        await tuiGoto(page, `${DemoRoute.InputDateMulti}/API`, {date});
+        await tuiGoto(page, `${DemoRoute.InputDateMultiLegacy}/API`, {date});
 
         await new TuiDocumentationPagePO(page).apiPageExample
             .locator('tui-input-date[multiple] .t-icons')

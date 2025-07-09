@@ -1,10 +1,9 @@
-import type {InjectionToken, Provider} from '@angular/core';
-import {Optional, Self} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {InjectionToken, Optional, Self} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import type {TuiDay, TuiDayRange, TuiTime} from '@taiga-ui/cdk/date-time';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 
@@ -12,8 +11,9 @@ import {map, of} from 'rxjs';
  * Stream that emits calendar data change
  * @deprecated this should be rewritten in v5
  */
-export const TUI_CALENDAR_DATE_STREAM =
-    tuiCreateToken<Observable<TuiDay | TuiDayRange | null>>();
+export const TUI_CALENDAR_DATE_STREAM = new InjectionToken<
+    Observable<TuiDay | TuiDayRange | null>
+>(ngDevMode ? 'TUI_CALENDAR_DATE_STREAM' : '');
 
 export function tuiDateStreamWithTransformer(
     transformer: InjectionToken<TuiValueTransformer<any>>,

@@ -1,6 +1,6 @@
 <router-outlet *ngIf="isLanding(); else portal" />
 <ng-template #portal>
-    <tui-doc-main>
+    <tui-doc-main #main>
         <div
             ngProjectAs="tuiDocHeader"
             class="app-links"
@@ -29,6 +29,15 @@
                 More
                 <ng-template #more>
                     <tui-data-list size="m">
+                        <a
+                            iconStart="@tui.arrow-right-left"
+                            tuiOption
+                            class="app-link-dropdown"
+                            (click)="main.changeTextDirection()"
+                        >
+                            RTL / LTR
+                        </a>
+                        <hr />
                         <a
                             href="https://github.com/taiga-family/taiga-ui"
                             iconStart="assets/images/github.svg"

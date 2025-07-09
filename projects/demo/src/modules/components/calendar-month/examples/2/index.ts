@@ -15,7 +15,7 @@ import {TuiCalendarMonth, tuiCalendarMonthOptionsProvider} from '@taiga-ui/kit';
 export default class Example {
     protected value: TuiMonth | TuiMonthRange | null = null;
 
-    protected max = TuiMonth.currentLocal().append({year: +1});
+    protected max = TuiMonth.currentLocal().append({year: 1});
     protected min = new TuiMonth(2019, 7);
 
     protected onMonthClick(month: TuiMonth): void {

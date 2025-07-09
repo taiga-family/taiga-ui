@@ -1,11 +1,14 @@
 import {DOCUMENT} from '@angular/common';
 import type {Provider} from '@angular/core';
-import {TUI_BASE_HREF, tuiCreateToken} from '@taiga-ui/cdk';
+import {InjectionToken} from '@angular/core';
+import {TUI_BASE_HREF} from '@taiga-ui/cdk';
 
 import type {TuiVersionMeta} from './versions.constants';
 import {TUI_VERSIONS_META_MAP} from './versions.constants';
 
-export const TUI_SELECTED_VERSION_META = tuiCreateToken<TuiVersionMeta | null>();
+export const TUI_SELECTED_VERSION_META = new InjectionToken<TuiVersionMeta | null>(
+    ngDevMode ? 'TUI_SELECTED_VERSION_META' : '',
+);
 
 export const TUI_VERSION_MANAGER_PROVIDERS: Provider[] = [
     {

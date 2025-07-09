@@ -12,6 +12,7 @@ export interface DocMeta {
     readonly qualifiedName?: string; // name in Taiga UI, ex. Hint
     readonly documentationLink?: string;
     readonly figmaLink?: string;
+    readonly figmaVersion?: string; // default 1.0.0
     readonly anchor?: string; // anchor link, ex. 'full', 'card-heading'
 }
 
@@ -104,6 +105,12 @@ export const pages: DocRoutePages = [
             },
         ],
     },
+    {
+        section: 'Documentation',
+        title: 'AI support',
+        keywords: 'ai, llm, llms, models, искусственный интеллект, модели',
+        route: DemoRoute.AISupport,
+    },
     // Foundations
     {
         section: 'Foundations',
@@ -160,7 +167,7 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Accordion (Deprecated)',
+        title: 'Accordion ⛔',
         keywords: 'open, аккордеон, expand, раскрывашка, spoiler, cut',
         route: DemoRoute.AccordionOld,
     },
@@ -178,15 +185,19 @@ export const pages: DocRoutePages = [
         meta: [
             {
                 name: 'tui-avatar',
+                figmaVersion: '1.3.0',
             },
             {
                 name: 'tui-avatar-labelled',
+                figmaVersion: '1.0.1',
             },
             {
                 name: 'tui-avatar-stack',
+                figmaVersion: '1.0.3',
             },
             {
                 name: 'tui-avatar-subscription',
+                figmaVersion: '1.0.0',
             },
         ],
     },
@@ -505,6 +516,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputChip',
+                keywords: 'поле, инпут, форма, ввод, input, chip, tag, тэг',
+                route: DemoRoute.InputChip,
+            },
+            {
+                section: 'Components',
                 title: 'InputDate',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
@@ -556,6 +573,13 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputTime',
+                keywords:
+                    'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
+                route: DemoRoute.InputTime,
+            },
+            {
+                section: 'Components',
                 title: 'InputFiles',
                 keywords: 'input-files, files, file, файлы',
                 route: DemoRoute.InputFiles,
@@ -565,6 +589,27 @@ export const pages: DocRoutePages = [
                 title: 'Textarea',
                 keywords: 'поле, инпут, форма, ввод, textarea, area',
                 route: DemoRoute.Textarea,
+            },
+            {
+                section: 'Components',
+                title: 'Textfield',
+                keywords:
+                    'form, input, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
+                route: DemoRoute.Textfield,
+                meta: {},
+            },
+            {
+                section: 'Components',
+                title: 'ComboBox',
+                keywords:
+                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
+                route: DemoRoute.ComboBox,
+            },
+            {
+                section: 'Components',
+                title: 'Select',
+                keywords: 'инпут, форма, ввод, select, селект, выбор',
+                route: DemoRoute.Select,
             },
         ],
     },
@@ -580,7 +625,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputDate [deprecated]',
+                title: 'InputDate ⛔',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar',
@@ -592,11 +637,11 @@ export const pages: DocRoutePages = [
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar, multiple',
-                route: DemoRoute.InputDateMulti,
+                route: DemoRoute.InputDateMultiLegacy,
             },
             {
                 section: 'Components',
-                title: 'InputDateRange',
+                title: 'InputDateRange ⛔',
                 keywords: 'calendar, календарь, даты, период',
                 route: DemoRoute.InputDateRangeLegacy,
             },
@@ -606,23 +651,23 @@ export const pages: DocRoutePages = [
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',
-                route: DemoRoute.InputDateTime,
+                route: DemoRoute.InputDateTimeLegacy,
             },
             {
                 section: 'Components',
-                title: 'InputMonth [deprecated]',
+                title: 'InputMonth ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
                 route: DemoRoute.InputMonthLegacy,
             },
             {
                 section: 'Components',
-                title: 'InputMonthRange [deprecated]',
+                title: 'InputMonthRange ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
                 route: DemoRoute.InputMonthRange,
             },
             {
                 section: 'Components',
-                title: 'InputNumber [deprecated]',
+                title: 'InputNumber ⛔',
                 keywords:
                     'поле, инпут, number, число, форма, ввод, input, money, деньги, ' +
                     'cash, копейки, рубли, доллары, евро, control, контрол',
@@ -642,19 +687,19 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputSlider [deprecated]',
+                title: 'InputSlider ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: DemoRoute.InputSliderLegacy,
             },
             {
                 section: 'Components',
-                title: 'InputTag',
+                title: 'InputTag ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, tag, тэг',
                 route: DemoRoute.InputTag,
             },
             {
                 section: 'Components',
-                title: 'InputTime [deprecated]',
+                title: 'InputTime ⛔',
                 keywords:
                     'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
                 route: DemoRoute.InputTimeLegacy,
@@ -667,7 +712,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'PrimitiveTextfield',
+                title: 'PrimitiveTextfield ⛔',
                 keywords: 'текст, инпут, база, input',
                 route: DemoRoute.PrimitiveTextfield,
             },
@@ -680,22 +725,29 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'Textarea [deprecated]',
+                title: 'Textarea ⛔',
                 keywords: 'поле, инпут, форма, ввод, textarea, area',
                 route: DemoRoute.TextareaLegacy,
             },
             {
                 section: 'Components',
-                title: 'ComboBox [deprecated]',
+                title: 'ComboBox ⛔',
                 keywords:
                     'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
                 route: DemoRoute.ComboBoxLegacy,
             },
             {
                 section: 'Components',
-                title: 'Select [deprecated]',
+                title: 'Select ⛔',
                 keywords: 'инпут, форма, ввод, select, селект, выбор',
                 route: DemoRoute.SelectLegacy,
+            },
+            {
+                section: 'Components',
+                title: 'MultiSelect ⛔',
+                keywords:
+                    'инпут, форма, ввод, select, селект, выбор, multiselect, мультиселект',
+                route: DemoRoute.MultiSelect,
             },
         ],
     },
@@ -856,39 +908,15 @@ export const pages: DocRoutePages = [
         title: 'Rating',
         keywords: 'рейтинг, оценка, звезда, rating, star, rate',
         route: DemoRoute.Rating,
-        meta: {},
+        meta: {
+            figmaVersion: '1.1.1',
+        },
     },
     {
         section: 'Components',
         title: 'Pulse',
         keywords: 'сигнал, пульс, pulse, signal',
         route: DemoRoute.Pulse,
-    },
-    {
-        section: 'Components',
-        title: 'Selects',
-        subPages: [
-            {
-                section: 'Components',
-                title: 'ComboBox',
-                keywords:
-                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
-                route: DemoRoute.ComboBox,
-            },
-            {
-                section: 'Components',
-                title: 'MultiSelect',
-                keywords:
-                    'инпут, форма, ввод, select, селект, выбор, multiselect, мультиселект',
-                route: DemoRoute.MultiSelect,
-            },
-            {
-                section: 'Components',
-                title: 'Select',
-                keywords: 'инпут, форма, ввод, select, селект, выбор',
-                route: DemoRoute.Select,
-            },
-        ],
     },
     {
         section: 'Components',
@@ -929,9 +957,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputSlider [deprecated]',
+                title: 'InputSlider',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputSliderLegacy,
+                route: DemoRoute.InputSlider,
             },
             {
                 section: 'Components',
@@ -1110,14 +1138,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Textfield',
-        keywords:
-            'form, input, select, textarea, combobox, ввод, форма, поле, password, inputpassword, пароль, код, шифр, copy, inputcopy',
-        route: DemoRoute.Textfield,
-        meta: {},
-    },
-    {
-        section: 'Components',
         title: 'Title',
         keywords:
             'subtitle, заголовок, caption, description, подзаголовок, tuisubtitle, title',
@@ -1257,6 +1277,7 @@ export const pages: DocRoutePages = [
         route: DemoRoute.AppBar,
         meta: {
             name: 'tui-appbar',
+            figmaVersion: '1.1.1',
         },
     },
     {
@@ -1368,9 +1389,21 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
+                title: 'Animated',
+                keywords: 'animation, transition, css, fade, slide',
+                route: DemoRoute.Animated,
+            },
+            {
+                section: 'Tools',
                 title: 'AutoFocus',
                 keywords: 'focus, blur, фокус, авто',
                 route: DemoRoute.AutoFocus,
+            },
+            {
+                section: 'Tools',
+                title: 'Shimmer',
+                keywords: 'shimmer, шиммер, fade, фейд, cache, кеш, кеширование',
+                route: DemoRoute.Shimmer,
             },
             {
                 section: 'Tools',
@@ -1460,7 +1493,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'Sidebar',
+                title: 'Sidebar ⛔',
                 keywords:
                     'sidebar, hamburger, drawer menu, mobile, смартфон, pwa, native, hybrid, сайдбар, меню',
                 route: DemoRoute.Sidebar,
@@ -1527,7 +1560,9 @@ export const pages: DocRoutePages = [
                 title: 'Sensitive',
                 keywords: 'sensitive, pixel, mask, пиксель, маска',
                 route: DemoRoute.Sensitive,
-                meta: {},
+                meta: {
+                    figmaVersion: '1.1.0',
+                },
             },
             {
                 section: 'Tools',

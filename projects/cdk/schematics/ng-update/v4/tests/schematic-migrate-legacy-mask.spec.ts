@@ -55,9 +55,9 @@ import {
 })
 export class Test {
     onClick(): void {
-        const isEmpty = Number.isNaN(maskitoParseNumber('123,45', ','));
-        const parsedValue = maskitoParseNumber('123,45', ',');
-        const parsedValueAgain = maskitoParseNumber(this.value, this.decimalSeparator);
+        const isEmpty = Number.isNaN(maskitoParseNumber('123,45', {decimalSeparator: ','}));
+        const parsedValue = maskitoParseNumber('123,45', {decimalSeparator: ','});
+        const parsedValueAgain = maskitoParseNumber(this.value, {decimalSeparator: this.decimalSeparator});
         console.info(isEmpty, parsedValue, parsedValueAgain);
     }
 }`.trim();

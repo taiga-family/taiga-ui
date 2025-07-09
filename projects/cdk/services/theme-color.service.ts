@@ -1,10 +1,12 @@
 import {DOCUMENT} from '@angular/common';
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, InjectionToken} from '@angular/core';
 import {Meta} from '@angular/platform-browser';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils';
 
-export const TUI_THEME_COLOR = tuiCreateTokenFromFactory<string>(
-    () => inject(Meta).getTag('name="theme-color"')?.content ?? '',
+export const TUI_THEME_COLOR = new InjectionToken<string>(
+    ngDevMode ? 'TUI_THEME_COLOR' : '',
+    {
+        factory: () => inject(Meta).getTag('name="theme-color"')?.content ?? '',
+    },
 );
 
 interface TuiThemeColor {

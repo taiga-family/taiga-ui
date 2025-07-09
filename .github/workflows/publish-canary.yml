@@ -4,15 +4,19 @@ on:
   schedule:
     - cron: '0 20 * * 1-5' # At UTC 20:00 (MSK 23:00) on every day-of-week from Monday through Friday
 
+env:
+  NX_DISABLE_NX_CACHE: true
+  NX_DISABLE_REMOTE_CACHE: true
+
 jobs:
   publish-canary:
     runs-on: ubuntu-latest
     name: Publish canary
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: taiga-family/ci/actions/setup/variables@v1.128.0
-      - uses: taiga-family/ci/actions/setup/node@v1.128.0
-      - uses: taiga-family/ci/actions/setup/config/npm@v1.128.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.132.0
+      - uses: taiga-family/ci/actions/setup/node@v1.132.0
+      - uses: taiga-family/ci/actions/setup/config/npm@v1.132.0
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
       - run: npx ts-node ./scripts/publish-canary.ts

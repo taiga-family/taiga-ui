@@ -3,6 +3,7 @@ import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiAppearance,
     tuiAppearance,
@@ -20,21 +21,33 @@ import type {TuiTextfieldAccessor} from './textfield-accessor';
 import {tuiAsTextfieldAccessor} from './textfield-accessor';
 
 // TODO: Drop in v5 after updated Angular and hostDirectives inherit
-@Directive()
+@Directive({
+    standalone: true,
+    providers: [tuiAsTextfieldAccessor(TuiTextfieldBase)],
+    host: {
+        '[id]': 'textfield.id',
+        '[readOnly]': 'readOnly',
+        '[class._empty]': 'value() === ""',
+        '(input)': '0',
+        '(focusin)': '0',
+        '(focusout)': '0',
+    },
+})
 export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     // TODO: refactor to signal inputs after Angular update
     private readonly focused = signal<boolean | null>(null);
 
     protected readonly control = inject(NgControl, {optional: true});
-    protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance);
-    protected readonly s = tuiAppearanceState(null);
-    protected readonly m = tuiAppearanceMode(this.mode);
+    protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance, {});
+    protected readonly s = tuiAppearanceState(null, {});
+    protected readonly m = tuiAppearanceMode(this.mode, {});
     protected readonly f = tuiAppearanceFocus(
         computed(() => this.focused() ?? this.textfield.focused()),
+        {},
     );
 
     protected readonly el = tuiInjectElement<HTMLInputElement>();
-    protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
+    protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly textfield: TuiTextfieldComponent<T> =
         inject(TuiTextfieldComponent);
 
@@ -87,7 +100,7 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
             this.el.ownerDocument.execCommand(
                 'insertText',
                 false,
-                this.itemsHandlers.stringify()(value),
+                this.handlers.stringify()(value),
             );
         }
     }
@@ -98,16 +111,11 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     // TODO: Remove :not in v.5
     selector:
         'input[tuiTextfield]:not([tuiInputCard]):not([tuiInputExpire]):not([tuiInputCVC])',
-    providers: [tuiAsTextfieldAccessor(TuiTextfieldDirective)],
+    providers: [
+        tuiAsTextfieldAccessor(TuiTextfieldDirective),
+        tuiProvide(TuiTextfieldBase, TuiTextfieldDirective),
+    ],
     hostDirectives: [TuiNativeValidator, TuiAppearance],
-    host: {
-        '[id]': 'textfield.id',
-        '[readOnly]': 'readOnly',
-        '[class._empty]': 'value() === ""',
-        '(input)': '0',
-        '(focusin)': '0',
-        '(focusout)': '0',
-    },
 })
 export class TuiTextfieldDirective<T> extends TuiTextfieldBase<T> {}
 

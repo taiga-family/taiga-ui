@@ -83,7 +83,7 @@
     }
 
     :host._has-arrow & {
-        padding-right: 0.75rem;
+        padding-inline-end: 0.75rem;
     }
 
     :host-context([tuiTheme='dark']) &_open {
@@ -97,8 +97,8 @@
     }
 
     :host._no-padding & {
-        padding-left: 0;
-        padding-right: 0;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
     }
 
     :host._disabled & {
@@ -115,18 +115,18 @@
 .t-title {
     .text-overflow();
 
-    margin-right: 0;
+    margin-inline-end: 0;
     flex-grow: 1;
 
     :host._has-arrow & {
-        margin-right: 0.5rem;
+        margin-inline-end: 0.5rem;
     }
 }
 
 .t-icon {
     .transition(color);
 
-    margin-left: auto;
+    margin-inline-start: auto;
     border-width: 0.25rem;
     color: var(--tui-text-tertiary);
 

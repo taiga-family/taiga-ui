@@ -90,6 +90,10 @@ export function tuiAsPortal(portal: typeof TuiPortalService): Provider {
 
 export class TuiNoHostException extends Error {
     constructor() {
-        super(ngDevMode ? 'Portals cannot be used without TuiPortalHostComponent' : '');
+        super(
+            ngDevMode
+                ? 'Portals cannot be used without TuiPortalHostComponent; perhaps you forgot to wrap your application with tui-root.'
+                : '',
+        );
     }
 }

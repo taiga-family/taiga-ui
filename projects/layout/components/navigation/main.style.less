@@ -11,7 +11,7 @@ main[tuiNavigationMain] {
     place-content: start center;
     flex: 1;
     border: 1.5rem solid transparent;
-    border-top: 0;
+    border-block-start: 0;
     isolation: isolate;
     box-sizing: border-box;
 
@@ -34,7 +34,7 @@ main[tuiNavigationMain] {
             gap: 1rem;
 
             > :last-child:not([tuiTitle]) {
-                margin-bottom: 0.25rem;
+                margin-block-end: 0.25rem;
             }
         }
 
@@ -50,7 +50,7 @@ main[tuiNavigationMain] {
             [tuiSubtitle] {
                 /* stylelint-disable-next-line */
                 display: -webkit-box;
-                -webkit-box-orient: vertical;
+                -webkit-box-orient: block-axis;
                 -webkit-line-clamp: 2;
                 white-space: normal;
                 word-break: break-word;
@@ -88,7 +88,7 @@ main[tuiNavigationMain] {
     > tui-breadcrumbs:first-child {
         block-size: 1.25rem;
         padding: 0;
-        margin-top: 0.875rem;
+        margin-block-start: 0.875rem;
         justify-self: flex-start;
     }
 }

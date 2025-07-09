@@ -44,6 +44,29 @@
                 right bottom,
                 top;
         }
+
+        [dir='rtl'] & {
+            &._end {
+                mask-position:
+                    left bottom,
+                    calc(100% + var(--t-fade-size) + var(--t-fade-offset)) bottom,
+                    top;
+            }
+
+            &._start {
+                mask-position:
+                    calc(-1 * var(--t-fade-size) - var(--t-fade-offset)) bottom,
+                    right bottom,
+                    top;
+            }
+
+            &._start._end {
+                mask-position:
+                    left bottom,
+                    right bottom,
+                    top;
+            }
+        }
     }
 
     &[data-orientation='vertical'] {

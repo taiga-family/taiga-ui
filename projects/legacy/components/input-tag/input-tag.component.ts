@@ -64,6 +64,10 @@ const LINE_HEIGHT_REM = {
 };
 const TAG_VERTICAL_SPACE_REM = 0.125;
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use {@link https://taiga-ui.dev/components/input-chip TuiInputChip} instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-input-tag',
@@ -454,7 +458,7 @@ export class TuiInputTagComponent
 
     protected trackByFn(_: number, tag: string): string {
         // Actually tag has TuiStringifiableItem type not string
-        return tag.toString();
+        return tag;
     }
 
     private get lineHeight(): number {

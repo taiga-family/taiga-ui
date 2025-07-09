@@ -1,0 +1,31 @@
+:host {
+    max-inline-size: 100%;
+    flex-shrink: 0;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
+
+    &._string {
+        overflow: hidden;
+
+        &._disabled {
+            opacity: var(--tui-disabled-opacity);
+        }
+
+        &::after {
+            content: ', ';
+        }
+    }
+
+    &:last-of-type {
+        max-inline-size: 80%;
+    }
+}
+
+:host-context(tui-textfield:not([data-focus='true'])):last-of-type::after {
+    display: none;
+}
+
+:host-context(tui-textfield:has([tuiSelectLike])):last-of-type::after,
+:host-context(tui-textfield[data-mode~='readonly']):last-of-type::after {
+    content: ' ';
+}

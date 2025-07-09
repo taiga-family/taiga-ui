@@ -34,15 +34,15 @@
 }
 
 .t-content {
-    margin-top: 0.75rem;
+    margin-block-start: 0.75rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
-    padding-right: 0.75rem;
+    padding-inline-end: 0.75rem;
 
     :host._ios & {
-        margin-top: 0.25rem;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        margin-block-start: 0.25rem;
+        padding-inline-start: 1.5rem;
+        padding-inline-end: 1.5rem;
     }
 }
 
@@ -55,7 +55,7 @@
         inline-size: 100%;
 
         &:first-of-type {
-            margin-top: 1.125rem;
+            margin-block-start: 1.125rem;
         }
     }
 
@@ -66,7 +66,7 @@
         &_column {
             display: block;
             float: none;
-            margin-left: auto;
+            margin-inline-start: auto;
         }
     }
 }

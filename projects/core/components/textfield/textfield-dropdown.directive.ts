@@ -1,21 +1,36 @@
-import {ContentChild, Directive, TemplateRef} from '@angular/core';
-import {tuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {isPlatformBrowser} from '@angular/common';
+import type {OnDestroy} from '@angular/core';
+import {Directive, inject, PLATFORM_ID, TemplateRef} from '@angular/core';
+import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 
+// TODO: Change selector to tuiDropdown in v5 and move to TuiDropdown
 @Directive({
     standalone: true,
     selector: 'ng-template[tuiTextfieldDropdown]',
 })
-export class TuiTextfieldDropdownDirective {}
+export class TuiTextfieldDropdownDirective implements OnDestroy {
+    private readonly directive = inject(TuiDropdownDirective);
 
+    constructor() {
+        this.directive.tuiDropdown = inject(TemplateRef);
+
+        if (
+            isPlatformBrowser(inject(PLATFORM_ID)) &&
+            this.directive.el.matches(':focus-within')
+        ) {
+            this.directive.toggle(true);
+        }
+    }
+
+    public ngOnDestroy(): void {
+        this.directive.tuiDropdown = null;
+    }
+}
+
+/**
+ * @deprecated remove in v5
+ */
 @Directive({
     standalone: true,
 })
-export class TuiWithTextfieldDropdown {
-    private readonly dropdown = tuiDropdown(null);
-
-    @ContentChild(TuiTextfieldDropdownDirective, {read: TemplateRef, descendants: true})
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
-}
+export class TuiWithTextfieldDropdown {}

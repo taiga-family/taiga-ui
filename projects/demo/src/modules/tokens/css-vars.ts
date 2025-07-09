@@ -1,3 +1,8 @@
-import {tuiCreateToken} from '@taiga-ui/cdk';
+import {InjectionToken} from '@angular/core';
 
-export const CSS_VARS = tuiCreateToken<readonly string[]>([]);
+export const CSS_VARS = new InjectionToken<readonly string[]>(
+    ngDevMode ? 'CSS_VARS' : '',
+    {
+        factory: () => [],
+    },
+);

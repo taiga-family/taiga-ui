@@ -6,14 +6,17 @@
     />
 
     <ng-container *tuiTextfieldDropdown>
-        <!-- 48 = 44 height + 4 margin -->
+        <!-- 44 = option height -->
+        <!-- 4 = margin between options -->
         <!-- 8 = data list padding -->
         <cdk-virtual-scroll-viewport
-            *ngIf="countries$ | async | tuiFilterByInput as items"
+            *tuiLet="countries$ | async | tuiFilterByInput as items"
             tuiScrollable
             class="scroll"
-            [itemSize]="48"
-            [style.height.px]="(items.length ? items.length : 1) * 48 + 8"
+            [itemSize]="44"
+            [maxBufferPx]="44 * 10"
+            [minBufferPx]="44 * 5"
+            [style.height.px]="(items?.length || 1) * (44 + 4) + 8"
         >
             <tui-data-list>
                 <button

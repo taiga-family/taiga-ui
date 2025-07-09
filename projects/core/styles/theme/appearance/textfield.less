@@ -47,7 +47,8 @@
     });
 
     &[data-mode~='invalid'][data-mode~='invalid'],
-    &:invalid:not([data-mode]) {
+    &:invalid:not([data-mode]),
+    &.tui-invalid:not([data-mode]) {
         outline-color: var(--tui-status-negative);
     }
 

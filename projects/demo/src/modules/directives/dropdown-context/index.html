@@ -56,19 +56,31 @@
             <p
                 tuiDropdownContext
                 [tuiDropdown]="dropdownContent"
-                [tuiDropdownAlign]="dropdownAlign"
-                [tuiDropdownDirection]="dropdownDirection"
-                [tuiDropdownLimitWidth]="dropdownLimitWidth"
-                [tuiDropdownMaxHeight]="dropdownMaxHeight"
-                [tuiDropdownMinHeight]="dropdownMinHeight"
-                [tuiDropdownOffset]="dropdownOffset"
+                [tuiDropdownAlign]="dropdown.align"
+                [tuiDropdownDirection]="dropdown.direction"
+                [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                [tuiDropdownMinHeight]="dropdown.minHeight"
+                [tuiDropdownOffset]="dropdown.offset"
             >
                 Right click on me to
                 <strong>see a dropdown</strong>
                 <ng-template #dropdownContent>Hello there!</ng-template>
             </p>
         </tui-doc-demo>
-        <dropdown-documentation />
+        <table tuiDocAPI>
+            <tr
+                name="[tuiDropdown]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+            >
+                Content
+            </tr>
+            <tbody
+                #dropdown
+                tuiDocDropdown
+                [hiddenOptions]="['open', 'tuiDropdownEnabled', 'tuiDropdownLimitWidth']"
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

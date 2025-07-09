@@ -2,12 +2,16 @@ function isEmptyParamValue(value: string): boolean {
     return ['NaN', 'null', 'undefined'].includes(value);
 }
 
-function isBooleanParamValue(value: string): boolean {
+function isBooleanParamValue(value: unknown): value is boolean {
     return value === 'true' || value === 'false';
 }
 
-function isNumberParamValue(value: string): boolean {
-    return !!value.trim() && !Number.isNaN(Number(value)) && !value.startsWith('+');
+function isNumberParamValue(value: unknown): value is boolean {
+    return (
+        !!String(value).trim() &&
+        !Number.isNaN(Number(value)) &&
+        !String(value).startsWith('+')
+    );
 }
 
 function isPossibleArray(value: string): boolean {

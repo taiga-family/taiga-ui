@@ -17,7 +17,7 @@ const NEXT_YEAR = TuiMonth.currentLocal().year + 1;
     changeDetection,
 })
 export default class Example {
-    protected readonly min = TuiMonth.currentLocal().append({month: +1});
+    protected readonly min = TuiMonth.currentLocal().append({month: 1});
     protected readonly max = new TuiMonth(NEXT_YEAR, 11);
     protected value: TuiMonth | null = null;
     protected activeYear = new TuiYear(NEXT_YEAR);

@@ -1,0 +1,10 @@
+<tui-textfield *ngFor="let mode of supportedModes">
+    <label tuiLabel>{{ mode }}</label>
+
+    <input
+        tuiInputTime
+        type="time"
+        [mode]="mode"
+        [ngModel]="initialValue"
+    />
+</tui-textfield>

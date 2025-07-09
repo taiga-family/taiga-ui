@@ -17,7 +17,9 @@ type SingleUnionOrNever<T, U = T> = [T] extends [never]
 type ReplaceAny<T> = 0 extends T & 1 ? void : T;
 
 type ContextKeys<T> = {
-    [K in keyof T]: ReplaceAny<T[K]> extends TuiDialogContext<any, any> ? K : never;
+    [K in keyof T]: ReplaceAny<T[K]> extends TuiDialogContext<any, any> | null
+        ? K
+        : never;
 }[keyof T];
 
 type AssertNotMultipleContexts<T, K extends keyof T> = [K] extends [never]
@@ -30,7 +32,7 @@ type ExtractDialogData<T, K extends keyof T = ContextKeys<T>> = [K] extends [nev
     ? void
     : [SingleUnionOrNever<K>] extends [never]
       ? never
-      : T[K] extends TuiDialogContext<any, infer D>
+      : T[K] extends TuiDialogContext<any, infer D> | null
         ? D
         : void;
 
@@ -38,7 +40,7 @@ type ExtractDialogResult<T, K extends keyof T = ContextKeys<T>> = [K] extends [n
     ? void
     : [SingleUnionOrNever<K>] extends [never]
       ? never
-      : T[K] extends TuiDialogContext<infer R, any>
+      : T[K] extends TuiDialogContext<infer R, any> | null
         ? R
         : void;
 

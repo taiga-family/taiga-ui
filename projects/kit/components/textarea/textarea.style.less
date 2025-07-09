@@ -5,12 +5,12 @@
 
 // TODO: Refactor to :has(label) after Safari 15.4
 :host-context(tui-textfield._with-label[data-size='m']) {
-    border-top-width: @top-m-label;
+    border-block-start-width: @top-m-label;
     padding-block-start: 0;
 }
 
 :host-context(tui-textfield._with-label[data-size='l']) {
-    border-top-width: @top-l-label;
+    border-block-start-width: @top-l-label;
     padding-block-start: 0;
 }
 
@@ -34,8 +34,8 @@
     border: 0 solid transparent;
 
     &[data-appearance='table'] {
-        border-top: 1px solid transparent;
-        border-bottom: none !important;
+        border-block-start: 1px solid transparent;
+        border-block-end: none !important;
     }
 
     &:not(._mobile) {
@@ -59,15 +59,15 @@
     }
 }
 
-.t-text {
+.t-ghost {
     z-index: 1;
     order: 1;
     inline-size: stretch;
     white-space: pre-wrap;
     word-break: break-word;
     overflow-wrap: break-word;
-    padding-inline-start: var(--t-left);
-    padding-inline-end: calc(var(--t-right, ~'0rem') + var(--t-side));
+    padding-inline-start: var(--t-start);
+    padding-inline-end: calc(var(--t-end) + var(--t-side));
     pointer-events: none;
     box-sizing: content-box;
     overflow: hidden;
@@ -77,27 +77,27 @@
         content: ' ';
     }
 
-    ::ng-deep tui-textfield._with-label[data-size='m'] & {
+    ::ng-deep tui-textfield._with-label[data-size='m'] textarea ~ & {
         margin-block-start: -1.375rem;
         padding-block-end: 0.3125rem;
     }
 
-    ::ng-deep tui-textfield._with-label[data-size='l'] & {
+    ::ng-deep tui-textfield._with-label[data-size='l'] textarea ~ & {
         margin-block-start: -1.75rem;
         padding-block-end: 0.5rem;
     }
 
-    ::ng-deep tui-textfield[data-size='s'] & {
+    ::ng-deep tui-textfield[data-size='s'] textarea ~ & {
         margin-block-start: -1.5rem;
         padding-block-end: 0.5rem;
     }
 
-    ::ng-deep tui-textfield[data-size='m'] & {
+    ::ng-deep tui-textfield[data-size='m'] textarea ~ & {
         margin-block-start: -2rem;
         padding-block-end: 0.875rem;
     }
 
-    ::ng-deep tui-textfield[data-size='l'] & {
+    ::ng-deep tui-textfield[data-size='l'] textarea ~ & {
         margin-block-start: -2.5rem;
         padding-block-end: 1rem;
     }
