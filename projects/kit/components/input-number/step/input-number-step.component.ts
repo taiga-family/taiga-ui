@@ -1,17 +1,14 @@
-import {NgIf} from '@angular/common';
+import {DOCUMENT, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    DestroyRef,
     inject,
     Input,
-    NgZone,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -19,8 +16,7 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldContent,
 } from '@taiga-ui/core/components/textfield';
-import type {Observable} from 'rxjs';
-import {expand, map, merge, Subject, switchMap, takeUntil, timer} from 'rxjs';
+import {expand, fromEvent, map, merge, Subject, switchMap, takeUntil, timer} from 'rxjs';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
 import type {TuiInputNumberOptions} from '../input-number.options';
@@ -46,30 +42,33 @@ const MIN_DELAY = 100;
     },
 })
 export class TuiInputNumberStep {
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly zone = inject(NgZone);
-
     protected readonly el = tuiInjectElement<HTMLInputElement>();
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly input = inject(TuiInputNumberDirective, {self: true});
-    protected readonly value = computed(() => this.input.value() ?? NaN);
     protected readonly step = signal(this.options.step);
-
+    protected readonly value = computed(() => this.input.value() ?? NaN);
     protected readonly step$ = new Subject<number>();
+    protected readonly doc = inject(DOCUMENT);
 
     protected readonly stop$ = merge(
-        tuiTypedFromEvent(document, 'pointerup'),
-        tuiTypedFromEvent(document, 'pointerleave'),
-        tuiTypedFromEvent(document, 'pointercancel'),
+        fromEvent(this.doc, 'pointerup'),
+        fromEvent(this.doc, 'pointerleave'),
+        fromEvent(this.doc, 'pointercancel'),
     );
 
     protected readonly sub = this.step$
         .pipe(
-            switchMap((stepValue) => this.accelerate$(stepValue)),
-            takeUntilDestroyed(this.destroyRef),
+            switchMap((value) =>
+                timer(INITIAL_DELAY).pipe(
+                    expand((_, index) => timer(getDelay(index))),
+                    map(() => value),
+                    takeUntil(this.stop$),
+                ),
+            ),
+            takeUntilDestroyed(),
         )
-        .subscribe((stepValue) => this.stepChange(stepValue));
+        .subscribe((value) => this.onStep(value));
 
     // TODO(v5): replace with signal input
     @Input('step')
@@ -78,54 +77,13 @@ export class TuiInputNumberStep {
     }
 
     protected onStep(step: number): void {
-        const clampedValue = this.calculateClampedValue(step);
+        const current = this.input.value() ?? 0;
 
-        if (Number.isNaN(this.value())) {
-            timer(0)
-                .pipe(tuiZonefree(this.zone), takeUntilDestroyed(this.destroyRef))
-                .subscribe(() => this.setCaretPosition(this.input));
-        }
-
-        this.input.setValue(clampedValue);
+        this.input.setValue(tuiClamp(current + step, this.input.min(), this.input.max()));
+        this.el.setSelectionRange(Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
     }
+}
 
-    private accelerate$(stepValue: number): Observable<number> {
-        this.el.focus();
-
-        let currentDelay = INITIAL_DELAY;
-
-        return timer(currentDelay).pipe(
-            expand(() => {
-                currentDelay = Math.max(currentDelay - DELAY_DECREMENT, MIN_DELAY);
-
-                return timer(currentDelay);
-            }),
-            map(() => stepValue),
-            takeUntil(this.stop$),
-        );
-    }
-
-    private stepChange(stepValue: number): void {
-        const clampedValue = this.calculateClampedValue(stepValue);
-
-        this.input.setValue(clampedValue);
-
-        if (this.input.value() === null) {
-            timer(0)
-                .pipe(tuiZonefree(this.zone), takeUntilDestroyed(this.destroyRef))
-                .subscribe(() => this.setCaretPosition(this.input));
-        }
-    }
-
-    private setCaretPosition(inputNumber: TuiInputNumberDirective): void {
-        const caretIndex = this.el.value.length - inputNumber.postfix().length;
-
-        this.el.setSelectionRange(caretIndex, caretIndex);
-    }
-
-    private calculateClampedValue(step: number): number {
-        const current = Number.isNaN(this.value()) ? 0 : this.value();
-
-        return tuiClamp(current + step, this.input.min(), this.input.max());
-    }
+function getDelay(index: number): number {
+    return Math.max(INITIAL_DELAY - index * DELAY_DECREMENT, MIN_DELAY);
 }
