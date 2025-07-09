@@ -18,6 +18,7 @@ import {TuiInputDateMultiModule, TuiTextfieldControllerModule} from '@taiga-ui/l
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
+import {DemoRoute} from '@demo/routes';
 
 @Component({
     standalone: true,
@@ -40,6 +41,7 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     ],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
+    protected readonly routes = DemoRoute;
     protected minVariants = [
         TUI_FIRST_DAY,
         new TuiDay(2017, 2, 5),

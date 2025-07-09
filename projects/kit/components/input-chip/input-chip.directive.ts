@@ -52,13 +52,13 @@ export class TuiInputChipDirective<T>
     extends TuiControl<T[]>
     implements TuiTextfieldAccessor<T[]>
 {
-    private readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
     private readonly mobile = inject(TUI_IS_MOBILE);
     private readonly textfield = inject(TuiTextfieldMultiComponent);
-    private readonly open = tuiDropdownOpen();
     private readonly dropdown = inject(TuiDropdownDirective);
 
+    protected readonly open = tuiDropdownOpen();
+    protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly enabled = tuiDirectiveBinding(
         TuiDropdownOpen,
         'tuiDropdownEnabled',

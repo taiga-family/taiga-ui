@@ -432,6 +432,11 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.InputDateMultiLegacy,
         loadComponent: async () => import('../components/input-date-multi-legacy'),
+        title: 'InputDateMultiLegacy',
+    }),
+    route({
+        path: DemoRoute.InputDateMulti,
+        loadComponent: async () => import('../components/input-date-multi'),
         title: 'InputDateMulti',
     }),
     route({

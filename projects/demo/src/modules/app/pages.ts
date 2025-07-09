@@ -536,6 +536,14 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputDateMulti',
+                keywords:
+                    'поле, инпут, форма, ввод, input, календарь, день, ' +
+                    'неделя, месяц, год, дата, calendar, multiple',
+                route: DemoRoute.InputDateMulti,
+            },
+            {
+                section: 'Components',
                 title: 'InputDateRange',
                 keywords: 'calendar, календарь, даты, период',
                 route: DemoRoute.InputDateRange,
@@ -639,7 +647,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputDateMulti',
+                title: 'InputDateMulti ⛔',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar, multiple',
