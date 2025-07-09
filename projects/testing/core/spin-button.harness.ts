@@ -16,7 +16,7 @@ export class TuiSpinButtonHarness extends TuiComponentHarness {
     public async isRightDisabled(): Promise<boolean> {
         return (
             (await this.locatorForAll(TuiButtonHarness)())[1]?.hasClass(
-                't-button_t-hidden',
+                't-button_hidden',
             ) ?? false
         );
     }
