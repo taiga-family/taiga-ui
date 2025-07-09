@@ -163,10 +163,10 @@
     position: absolute;
     top: 1rem;
     right: 1rem;
-    inset-inline-end: 1rem;
 
-    @supports (inset-inline-end: 1rem) {
+    @supports (inset-inline-end: 0) {
         right: unset;
+        inset-inline-end: 1rem;
     }
 }
 
