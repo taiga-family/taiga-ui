@@ -589,6 +589,7 @@ export const pages: DocRoutePages = [
                 title: 'Textarea',
                 keywords: 'поле, инпут, форма, ввод, textarea, area',
                 route: DemoRoute.Textarea,
+                meta: {},
             },
             {
                 section: 'Components',
@@ -604,12 +605,14 @@ export const pages: DocRoutePages = [
                 keywords:
                     'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
                 route: DemoRoute.ComboBox,
+                meta: {},
             },
             {
                 section: 'Components',
                 title: 'Select',
                 keywords: 'инпут, форма, ввод, select, селект, выбор',
                 route: DemoRoute.Select,
+                meta: {},
             },
         ],
     },
