@@ -6,6 +6,7 @@ import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
@@ -14,7 +15,6 @@ import {
     TuiInputDate,
     TuiInputDateMultiDirective,
 } from '@taiga-ui/kit';
-import {DemoRoute} from '@demo/routes';
 
 @Component({
     standalone: true,
@@ -27,10 +27,10 @@ import {DemoRoute} from '@demo/routes';
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
-        TuiInputDate,
-        TuiTextfield,
-        TuiInputDateMultiDirective,
         TuiInputChipComponent,
+        TuiInputDate,
+        TuiInputDateMultiDirective,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     changeDetection,
