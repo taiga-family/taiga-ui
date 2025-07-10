@@ -134,19 +134,9 @@ jobs:
         id: playwright-version
         run: |
           echo "PLAYWRIGHT_VERSION=$(node -p 'require("./projects/demo-playwright/package.json").devDependencies["@playwright/test"]')" >> $GITHUB_ENV
-
-      - uses: actions/cache/restore@v4.2.3
-        id: playwright-cache
+      - uses: taiga-family/ci/actions/setup/playwright@v1.132.0
         with:
-          path: |
-            ~/Library/Caches/ms-playwright
-            ~/.cache/ms-playwright
-            **/node_modules/playwright
-          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
-      - run: npx playwright install --with-deps
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
-      - run: npx playwright install-deps
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
+          playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
         uses: actions/cache/restore@v4.2.3
