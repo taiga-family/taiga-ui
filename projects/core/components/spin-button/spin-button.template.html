@@ -23,7 +23,7 @@
         tuiIconButton
         type="button"
         class="t-button"
-        [class.t-button_hidden]="this.disabled || rightDisabled"
+        [class.t-button_hidden]="disabled || rightDisabled"
         [iconStart]="icons.increment"
         [tabIndex]="focusable ? 0 : -1"
         (click)="onRightClick()"
