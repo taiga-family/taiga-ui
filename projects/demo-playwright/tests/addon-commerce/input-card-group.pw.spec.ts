@@ -6,6 +6,7 @@ import {
 } from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
 test.describe('InputCardGroup', () => {
     let documentationPage: TuiDocumentationPagePO;
@@ -25,7 +26,7 @@ test.describe('InputCardGroup', () => {
             const {numberTextfield, cleanerIcon} = new TuiInputCardGroupPO(
                 apiPageExample,
             );
-            const entryValue = '1234 4567 8910 1112';
+            const entryValue = '1234 4567 8910 1112'.replaceAll(' ', CHAR_NO_BREAK_SPACE);
 
             await numberTextfield.pressSequentially(entryValue);
 
@@ -82,7 +83,7 @@ test.describe('InputCardGroup', () => {
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
                 new TuiInputCardGroupPO(example);
             const cardInfo = {
-                number: '5213 0000 4039 5834',
+                number: '5213 0000 4039 5834'.replaceAll(' ', CHAR_NO_BREAK_SPACE),
                 expiry: '02/38',
                 cvc: '123',
             };
@@ -178,7 +179,10 @@ test.describe('InputCardGroup', () => {
             const example = documentationPage.getExample('#custom-labels');
             const {numberTextfield, expiryTextfield, cvcTextfield, cleanerIcon} =
                 new TuiInputCardGroupPO(example);
-            const cardInfo = {number: '5586 2000 7149 2158', expiry: '12/25'};
+            const cardInfo = {
+                number: '5586 2000 7149 2158'.replaceAll(' ', CHAR_NO_BREAK_SPACE),
+                expiry: '12/25',
+            };
 
             await cvcTextfield.focus();
 
