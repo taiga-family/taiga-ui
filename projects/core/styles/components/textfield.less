@@ -423,4 +423,8 @@ tui-textfield {
     [tuiSelectLike]:not(:read-only) {
         cursor: pointer;
     }
+
+    &:has(input[type='tel']) {
+        direction: ltr;
+    }
 }

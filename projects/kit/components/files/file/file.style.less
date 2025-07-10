@@ -5,7 +5,8 @@
     display: flex;
     align-items: center;
     font: var(--tui-font-text-m);
-    padding: 0.625rem 2.25rem 0.625rem 0.625rem;
+    padding: 0.625rem;
+    padding-inline-end: 2.25rem;
     text-decoration: none;
     border-radius: var(--tui-radius-m);
 
@@ -72,6 +73,11 @@
     position: absolute;
     top: 0.625rem;
     right: 0.625rem;
+
+    @supports (inset-inline-end: 0) {
+        right: unset;
+        inset-inline-end: 0.625rem;
+    }
 
     &:focus {
         opacity: 1;
