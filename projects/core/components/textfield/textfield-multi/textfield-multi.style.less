@@ -27,7 +27,7 @@ tui-textfield[multi][multi] {
     }
 
     > .t-scrollbar {
-        transform: translateX(var(--t-padding));
+        transform: translateX(calc(var(--t-padding) * var(--t-inline)));
         margin-inline-start: calc(-1 * var(--t-start));
         margin-inline-end: calc(1px - 100% + var(--t-start));
 
