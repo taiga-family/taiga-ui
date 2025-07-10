@@ -1,12 +1,12 @@
 import {DemoRoute} from '@demo/routes';
 import {
+    CHAR_NO_BREAK_SPACE,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputCardGroupPO,
 } from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
-import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
 test.describe('InputCardGroup', () => {
     let documentationPage: TuiDocumentationPagePO;
