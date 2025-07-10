@@ -12,6 +12,11 @@ TODO: if :has() is supported by all browsers
     gap: 0.125rem;
     border-radius: inherit;
 
+    @supports (inset-inline-end: 0) {
+        right: unset;
+        inset-inline-end: 0;
+    }
+
     tui-textfield[data-size='s'] & {
         flex-direction: row-reverse;
     }
@@ -26,6 +31,18 @@ TODO: if :has() is supported by all browsers
 
         &:last-child {
             border-bottom-right-radius: inherit;
+        }
+
+        [dir='rtl'] & {
+            &:first-child {
+                border-radius: 0;
+                border-top-left-radius: inherit;
+            }
+
+            &:last-child {
+                border-radius: 0;
+                border-bottom-left-radius: inherit;
+            }
         }
 
         tui-textfield[data-size='l'] & {
@@ -48,6 +65,12 @@ TODO: if :has() is supported by all browsers
 [tuiInputNumber]._with-buttons {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+
+    [dir='rtl'] & {
+        border-radius: inherit;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
 }
 
 /*
@@ -75,6 +98,7 @@ tui-textfield {
 [tuiInputNumber]._with-buttons,
 [tuiInputNumber]._with-buttons ~ .t-template {
     inline-size: calc(100% - var(--t-input-number-offset-end));
+    margin-inline-end: var(--t-input-number-offset-end);
 }
 
 [tuiInputNumber]._with-buttons ~ .t-content {
