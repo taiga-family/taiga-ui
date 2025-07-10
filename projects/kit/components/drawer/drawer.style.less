@@ -2,8 +2,8 @@
 
 :host {
     position: fixed;
-    top: 3rem;
-    bottom: 0;
+    top: ~'max(3rem, env(safe-area-inset-top))';
+    bottom: env(safe-area-inset-bottom);
     inline-size: 36.25rem;
     max-inline-size: calc(100vw - 3rem);
     background: var(--tui-background-elevation-1);
