@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 @width-full: (472 / 16rem);
-@width-mobile: 18rem;
+@width-mobile: 19rem;
 @offset-full: 7.1875rem;
 @offset-small: 4.0625rem;
 @wrapper-offset-full: 6.5625rem;
@@ -9,21 +9,21 @@
 
 @keyframes outside {
     0% {
-        transform: translate3d(var(--t-translate), 0, 0);
+        transform: translate3d(calc(var(--t-translate) * var(--t-inline)), 0, 0);
     }
 
     100% {
-        transform: translate3d(100%, 0, 0);
+        transform: translate3d(calc(100% * var(--t-inline)), 0, 0);
     }
 }
 
 @keyframes inside {
     0% {
-        transform: translate3d(100%, 0, 0);
+        transform: translate3d(calc(100% * var(--t-inline)), 0, 0);
     }
 
     100% {
-        transform: translate3d(var(--t-translate), 0, 0);
+        transform: translate3d(calc(var(--t-translate) * var(--t-inline)), 0, 0);
     }
 }
 
@@ -94,12 +94,36 @@
     white-space: nowrap;
     pointer-events: none;
 
-    &_enable-mask::before {
-        content: attr(data-before);
+    &::after {
+        content: '*';
+        float: left;
+        opacity: 0;
+
+        :host-context([dir='rtl']) & {
+            float: none;
+        }
     }
 
-    &_enable-mask .t-collapsed-wrapper {
-        left: 1.375rem;
+    &_enable-mask {
+        &::before {
+            content: attr(data-before);
+        }
+
+        &::after {
+            opacity: 1;
+
+            :host-context([dir='rtl']) & {
+                transition: opacity 0s var(--tui-duration);
+            }
+        }
+
+        .t-collapsed-wrapper {
+            left: 1.375rem;
+
+            :host-context([dir='rtl']) & {
+                left: unset;
+            }
+        }
     }
 }
 
@@ -113,13 +137,20 @@
 }
 
 .t-value {
-    .transition(transform);
+    .transition(~'transform, clip-path');
 
     position: absolute;
     bottom: 0;
     right: 100%;
     display: block;
-    transform: translate3d(100%, 0, 0);
+    clip-path: inset(0);
+    transform: translate3d(calc(100% * var(--t-inline)), 0, 0);
+
+    :host-context([dir='rtl']) & {
+        right: unset;
+        left: 100%;
+        transform: translate3d(calc(100% * var(--t-inline)), 0, 0) !important;
+    }
 }
 
 .t-input {
@@ -133,6 +164,11 @@
     box-sizing: border-box;
     font: var(--tui-font-text-m);
     color: var(--tui-text-primary);
+    direction: ltr;
+
+    :host-context([dir='rtl']) & {
+        text-align: end;
+    }
 
     &::placeholder {
         color: var(--tui-text-tertiary);
@@ -166,8 +202,8 @@
             // hide: -webkit-strong-password-auto-fill-button
             // because safari forcing set display as block
             position: absolute;
-            left: -62.4375rem;
-            top: -62.4375rem;
+            left: -60rem;
+            top: -60rem;
             z-index: -999;
 
             // hide: -webkit-contacts-auto-fill-button
@@ -193,6 +229,11 @@
     align-items: center;
     block-size: 100%;
     gap: 0.25rem;
+
+    @supports (inset-inline-end: 0) {
+        right: unset;
+        inset-inline-end: 1rem;
+    }
 }
 
 .t-icon-outlet {
@@ -215,10 +256,14 @@
     line-height: 1.25rem;
     color: var(--tui-text-secondary);
 
+    &:empty::before {
+        content: attr(data-label);
+    }
+
     input:-webkit-autofill ~ &,
     &_raised {
-        font-size: 0.8156rem;
-        transform: translateY(-0.7em);
+        font-size: 0.83rem;
+        transform: translateY(-0.7rem);
 
         :host([data-mode~='invalid']) & {
             color: var(--tui-text-negative);

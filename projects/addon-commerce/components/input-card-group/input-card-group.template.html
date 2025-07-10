@@ -42,17 +42,17 @@
             <span class="t-collapsed-wrapper">
                 <span
                     class="t-value"
-                    [style.transform]="transform(ghost)"
-                >
-                    {{ formattedCard }}
-                </span>
+                    [style]="getStyle(ghost)"
+                    [textContent]="formattedCard"
+                ></span>
             </span>
         </span>
         <div
             class="t-label"
+            [attr.data-label]="texts()?.cardNumberText"
             [class.t-label_raised]="labelRaised()"
         >
-            {{ texts()?.cardNumberText }}
+            <ng-content />
         </div>
     </label>
 </div>

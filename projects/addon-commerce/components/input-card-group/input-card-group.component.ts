@@ -105,7 +105,7 @@ export interface TuiCard {
     host: {
         'data-size': 'l',
         '[style.--tui-duration.s]': '0',
-        '(mousedown)': 'onMouseDown($event)',
+        '(pointerdown)': 'onPointerDown($event)',
         '(scroll.zoneless)': '$event.target.scrollLeft = 0',
     },
 })
@@ -348,7 +348,7 @@ export class TuiInputCardGroup
     }
 
     protected get masked(): string {
-        return this.cardPrefilled ? `*${this.card.slice(-4)}` : '*';
+        return this.cardPrefilled ? `${this.card.slice(-4)}` : '';
     }
 
     protected onCardChange(card: string): void {
@@ -382,11 +382,13 @@ export class TuiInputCardGroup
         this.updateProperty(cvc, 'cvc');
     }
 
-    protected transform({offsetWidth}: HTMLSpanElement): string {
-        return this.cardCollapsed ? `translate3d(${offsetWidth}px, 0, 0)` : '';
+    protected getStyle({offsetWidth}: HTMLSpanElement): string {
+        return this.cardCollapsed
+            ? `transform: translate3d(calc(${offsetWidth}px * var(--t-inline)), 0, 0); clip-path: inset(0 0 0 calc(100% - ${offsetWidth}px));`
+            : '';
     }
 
-    protected onMouseDown(event: MouseEvent): void {
+    protected onPointerDown(event: MouseEvent): void {
         if (tuiIsElement(event.target) && tuiIsInput(event.target)) {
             return;
         }
@@ -396,7 +398,7 @@ export class TuiInputCardGroup
     }
 
     protected toggle(): void {
-        this.open.set(!this.open());
+        this.open.update((open) => !open);
     }
 
     @tuiPure

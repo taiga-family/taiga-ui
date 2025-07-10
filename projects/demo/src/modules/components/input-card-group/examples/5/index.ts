@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,7 +8,7 @@ import {of} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputCardGroup],
+    imports: [NgIf, ReactiveFormsModule, TuiInputCardGroup],
     templateUrl: './index.html',
     changeDetection,
     providers: [
