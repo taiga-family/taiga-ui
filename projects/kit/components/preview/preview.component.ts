@@ -21,7 +21,7 @@ import {TuiHint} from '@taiga-ui/core/directives/hint';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_TEXTS} from '@taiga-ui/kit/tokens';
 import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';
 
-import {TuiPreviewAction} from './preview-action/preview-action.directive';
+import {TuiPreviewAction} from './action/preview-action.directive';
 import {TuiPreviewZoom} from './zoom/preview-zoom.component';
 
 const INITIAL_SCALE_COEF = 0.8;

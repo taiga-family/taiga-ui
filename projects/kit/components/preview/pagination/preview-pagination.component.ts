@@ -11,7 +11,7 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_PAGINATION_TEXTS, TUI_PREVIEW_ICONS} from '@taiga-ui/kit/tokens';
 
-import {TuiPreviewAction} from '../preview-action/preview-action.directive';
+import {TuiPreviewAction} from '../action/preview-action.directive';
 
 @Component({
     standalone: true,

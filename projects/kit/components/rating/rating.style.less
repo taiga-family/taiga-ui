@@ -83,6 +83,10 @@
     font-size: inherit;
     clip-path: inset(0 var(--t-cut) 0 0);
 
+    :host-context([dir='rtl']) & {
+        clip-path: inset(0 0 0 var(--t-cut));
+    }
+
     ::ng-deep > * {
         font-size: 1rem;
     }
@@ -94,6 +98,10 @@
         display: none;
         color: var(--tui-text-tertiary);
         clip-path: inset(0 0 0 var(--t-cut));
+
+        :host-context([dir='rtl']) & {
+            clip-path: inset(0 var(--t-cut) 0 0);
+        }
     }
 
     &_fraction {

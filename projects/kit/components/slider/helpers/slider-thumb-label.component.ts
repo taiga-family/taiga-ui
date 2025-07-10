@@ -3,6 +3,7 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import type {AfterContentInit} from '@angular/core';
 import {ChangeDetectionStrategy, Component, ContentChild} from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 import type {TuiSizeS} from '@taiga-ui/core/types';
 
 import {TuiSliderComponent} from '../slider.component';
@@ -14,6 +15,7 @@ import {TuiSliderComponent} from '../slider.component';
     templateUrl: './slider-thumb-label.template.html',
     styleUrls: ['./slider-thumb-label.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [tuiHintOptionsProvider({direction: 'top', appearance: 'dark'})],
 })
 export class TuiSliderThumbLabel implements AfterContentInit {
     @ContentChild(TuiSliderComponent)
@@ -39,7 +41,7 @@ export class TuiSliderThumbLabel implements AfterContentInit {
         return this.slider?.valueRatio || 0;
     }
 
-    protected get ghostLeft(): number {
+    protected get ghostStart(): number {
         return this.ratio * (this.slider?.el.offsetWidth || 0);
     }
 }

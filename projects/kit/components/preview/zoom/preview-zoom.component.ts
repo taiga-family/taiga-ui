@@ -16,7 +16,7 @@ import {TuiSlider} from '@taiga-ui/kit/components/slider';
 import {TUI_PREVIEW_ICONS, TUI_PREVIEW_ZOOM_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, merge, of, startWith, switchMap, timer} from 'rxjs';
 
-import {TuiPreviewAction} from '../preview-action/preview-action.directive';
+import {TuiPreviewAction} from '../action/preview-action.directive';
 
 const STEP = 0.5;
 
