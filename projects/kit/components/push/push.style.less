@@ -29,6 +29,11 @@
     color: rgba(0, 0, 0, 0.54);
     background: rgba(242, 242, 242, 0.32);
     backdrop-filter: blur(1rem);
+
+    @supports (inset-inline-end: 0) {
+        right: unset;
+        inset-inline-end: 0.75rem;
+    }
 }
 
 .t-top {

@@ -14,6 +14,7 @@ import {DefaultValueAccessor, NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
 import {TUI_MASK_CARD} from '@taiga-ui/addon-commerce/constants';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {TuiTextfieldContent, TuiWithTextfield} from '@taiga-ui/core/components/textfield';
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
@@ -96,6 +97,7 @@ export class TuiInputCard implements OnInit {
 
         const onChanges = this.accessor.onChange.bind(this.accessor);
 
-        this.accessor.onChange = (value: string) => onChanges(value.replaceAll(' ', ''));
+        this.accessor.onChange = (value: string) =>
+            onChanges(value.replaceAll(CHAR_NO_BREAK_SPACE, ''));
     }
 }

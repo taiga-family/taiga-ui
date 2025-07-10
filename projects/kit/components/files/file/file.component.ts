@@ -26,7 +26,7 @@ import type {TuiSizeL} from '@taiga-ui/core/types';
 import type {TuiLanguage} from '@taiga-ui/i18n/types';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {map, of} from 'rxjs';
 
@@ -39,7 +39,6 @@ import {TUI_FILE_OPTIONS} from './file.options';
     imports: [
         CommonModule,
         PolymorpheusOutlet,
-        PolymorpheusTemplate,
         TuiButton,
         TuiHintOverflow,
         TuiIcon,

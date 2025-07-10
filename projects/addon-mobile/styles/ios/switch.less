@@ -41,11 +41,11 @@ input[tuiSwitch] {
         }
 
         &::after {
-            transform: scale(0.871) translateX(1.44rem);
+            transform: scale(0.871) translateX(calc(1.44rem * var(--t-inline)));
         }
 
         &:active::after {
-            transform: scale(0.871) translateX(1.0775rem);
+            transform: scale(0.871) translateX(calc(1.0775rem * var(--t-inline)));
         }
     }
 }

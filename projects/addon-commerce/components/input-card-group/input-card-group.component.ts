@@ -24,7 +24,7 @@ import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
+import {CHAR_NO_BREAK_SPACE, TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
 import {tuiHovered, TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
@@ -353,7 +353,7 @@ export class TuiInputCardGroup
 
     protected onCardChange(card: string): void {
         const {value, bin} = this;
-        const parsed = card.split(' ').join('');
+        const parsed = card.split(CHAR_NO_BREAK_SPACE).join('');
 
         if (value()?.card === parsed) {
             return;

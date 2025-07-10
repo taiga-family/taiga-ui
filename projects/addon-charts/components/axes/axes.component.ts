@@ -17,6 +17,7 @@ export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
     styleUrls: ['./axes.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        dir: 'ltr',
         '[class._centered]': 'centeredXLabels',
     },
 })

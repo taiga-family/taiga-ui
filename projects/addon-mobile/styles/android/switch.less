@@ -30,7 +30,7 @@ input[tuiSwitch] {
         content: '';
         position: absolute;
         top: 0;
-        left: 0;
+        inset-inline-start: 0;
         inline-size: 1.25rem;
         block-size: 1.25rem;
         border-radius: 100%;
@@ -49,7 +49,7 @@ input[tuiSwitch] {
 
         &::after {
             background: currentColor;
-            transform: translateX(1.25rem);
+            transform: translateX(calc(1.25rem * var(--t-inline)));
         }
     }
 
