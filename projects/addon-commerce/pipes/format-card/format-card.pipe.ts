@@ -1,5 +1,6 @@
 import type {PipeTransform} from '@angular/core';
 import {Pipe} from '@angular/core';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 
 @Pipe({
     standalone: true,
@@ -10,7 +11,9 @@ export class TuiFormatCardPipe implements PipeTransform {
         return value && !cardPrefilled
             ? value
                   .split('')
-                  .map((char, index) => (index && index % 4 === 0 ? ` ${char}` : char))
+                  .map((char, index) =>
+                      index && index % 4 === 0 ? `${CHAR_NO_BREAK_SPACE}${char}` : char,
+                  )
                   .join('')
             : '';
     }
