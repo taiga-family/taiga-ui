@@ -34,8 +34,9 @@ TODO: remove :not([tuiWrapper]) after legacy controls deletion
         outline: 0.125rem solid var(--tui-border-focus);
     });
 
-    &:invalid,
-    &[data-mode~='invalid'] {
+    &:invalid:not([data-mode]),
+    &[data-mode~='invalid'],
+    &.tui-invalid:not([data-mode]) {
         background-origin: border-box;
         background-position: top right;
         background-repeat: no-repeat;
