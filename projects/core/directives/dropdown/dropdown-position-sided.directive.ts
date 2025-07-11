@@ -35,7 +35,8 @@ export class TuiDropdownPositionSided extends TuiPositionAccessor {
         const hostRect = this.vertical.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
         const viewport = this.viewport.getClientRect();
         const {direction, minHeight, offset} = this.options;
-        const align = this.options.align === 'center' ? 'left' : this.options.align;
+        const adjusted = this.vertical.getAlign(this.options.align);
+        const align = adjusted === 'center' ? 'left' : adjusted;
         const available = {
             top: hostRect.bottom - viewport.top,
             left: hostRect.left - offset - viewport.left,

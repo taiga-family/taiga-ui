@@ -11,6 +11,10 @@ tui-avatar-stack {
     &[data-direction='right'] tui-avatar._round {
         --t-x: 100%;
 
+        [dir='rtl'] & {
+            --t-x: 0;
+        }
+
         &:last-child {
             mask-image: none;
         }
@@ -19,12 +23,17 @@ tui-avatar-stack {
     &[data-direction='left'] tui-avatar._round {
         --t-x: 0;
 
+        [dir='rtl'] & {
+            --t-x: 100%;
+        }
+
         &:first-child {
             mask-image: none;
         }
     }
 
-    &[data-direction='left'] tui-avatar:not(._round):not(:first-child) {
+    &[data-direction='left'] tui-avatar:not(._round):not(:first-child),
+    [dir='rtl'] &[data-direction='right'] tui-avatar:not(._round):not(:last-child) {
         mask-image:
             radial-gradient(circle at 0% 100%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
             radial-gradient(circle at 0% 0%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
@@ -35,7 +44,8 @@ tui-avatar-stack {
             bottom;
     }
 
-    &[data-direction='right'] tui-avatar:not(._round):not(:last-child) {
+    &[data-direction='right'] tui-avatar:not(._round):not(:last-child),
+    [dir='rtl'] &[data-direction='left'] tui-avatar:not(._round):not(:first-child) {
         mask-image:
             radial-gradient(circle at 150% 100%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),
             radial-gradient(circle at 150% 0%, transparent calc(var(--t-radius) + var(--t-gap)), #000 calc(var(--t-radius) + var(--t-gap) + 0.2px)),

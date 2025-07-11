@@ -1,5 +1,6 @@
 import {Directive, EventEmitter, inject, Output} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiFallbackAccessor,
@@ -10,12 +11,14 @@ import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import type {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
 
 import {TuiDropdownDirective} from './dropdown.directive';
+import type {TuiDropdownAlign} from './dropdown-options.directive';
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 
 @Directive({
     standalone: true,
 })
 export class TuiDropdownPosition extends TuiPositionAccessor {
+    private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
     private readonly viewport = inject(TUI_VIEWPORT);
 
@@ -43,7 +46,8 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
 
         const hostRect = this.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
         const viewportRect = this.viewport.getClientRect();
-        const {minHeight, align, direction, offset, limitWidth} = this.options;
+        const {minHeight, direction, offset, limitWidth} = this.options;
+        const align = this.getAlign(this.options.align);
         const viewport = {
             top: viewportRect.top - offset,
             bottom: viewportRect.bottom + offset,
@@ -84,5 +88,15 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
         this.emitDirection(better);
 
         return [position[better], position[align]];
+    }
+
+    public getAlign(align: TuiDropdownAlign): TuiDropdownAlign {
+        const rtl = this.el.matches('[dir="rtl"] :scope');
+
+        if (rtl && align === 'left') {
+            return 'right';
+        }
+
+        return rtl && align === 'right' ? 'left' : align;
     }
 }

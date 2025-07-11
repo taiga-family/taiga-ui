@@ -59,6 +59,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Documentation',
+        title: 'Direction: RTL',
+        keywords:
+            'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
+        route: DemoRoute.RTL,
+    },
+    {
+        section: 'Documentation',
         title: 'Documentation engine',
         keywords:
             'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',

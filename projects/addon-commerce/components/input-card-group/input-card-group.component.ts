@@ -384,7 +384,7 @@ export class TuiInputCardGroup
 
     protected getStyle({offsetWidth}: HTMLSpanElement): string {
         return this.cardCollapsed
-            ? `transform: translate3d(calc(${offsetWidth}px * var(--t-inline)), 0, 0); clip-path: inset(0 0 0 calc(100% - ${offsetWidth}px));`
+            ? `transform: translate3d(calc(${offsetWidth}px * var(--tui-inline)), 0, 0); clip-path: inset(0 0 0 calc(100% - ${offsetWidth}px));`
             : '';
     }
 

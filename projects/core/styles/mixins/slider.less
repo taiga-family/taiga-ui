@@ -17,6 +17,7 @@
 
         &:first-child {
             left: -@first-tick-center;
+            inset-inline-start: -@first-tick-center;
             flex: 1;
             text-align: start;
         }
@@ -25,6 +26,11 @@
             right: -@first-tick-center;
             flex: 1;
             text-align: end;
+
+            @supports (inset-inline-end: 0) {
+                right: unset;
+                inset-inline-end: -@first-tick-center;
+            }
         }
     }
 
@@ -43,10 +49,16 @@
         & > * {
             &:first-child {
                 left: -@thumb;
+                inset-inline-start: -@thumb;
             }
 
             &:last-child {
                 right: -@thumb;
+
+                @supports (inset-inline-end: 0) {
+                    right: unset;
+                    inset-inline-end: -@thumb;
+                }
             }
         }
     }
