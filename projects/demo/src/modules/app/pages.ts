@@ -586,6 +586,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputYear',
+                keywords: 'поле, инпут, форма, ввод, input, год, дата',
+                route: DemoRoute.InputYear,
+            },
+            {
+                section: 'Components',
                 title: 'InputFiles',
                 keywords: 'input-files, files, file, файлы',
                 route: DemoRoute.InputFiles,
@@ -712,9 +718,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputYear',
+                title: 'InputYear ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, год, дата',
-                route: DemoRoute.InputYear,
+                route: DemoRoute.InputYearLegacy,
             },
             {
                 section: 'Components',

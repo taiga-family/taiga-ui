@@ -9,7 +9,7 @@ test.describe('InputYear', () => {
 
     test.describe('Does not allow incorrect year entry', () => {
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputYear}/API?max=2020`);
+            await tuiGoto(page, `${DemoRoute.InputYearLegacy}/API?max=2020`);
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.apiPageExample.locator('input');
@@ -52,7 +52,7 @@ test.describe('InputYear', () => {
 
     test.describe('Value validation on blur', () => {
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputYear}/API?max=2024&min=2020`);
+            await tuiGoto(page, `${DemoRoute.InputYearLegacy}/API?max=2024&min=2020`);
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.apiPageExample.locator('input');
@@ -73,7 +73,7 @@ test.describe('InputYear', () => {
 
     test.describe('need select date from dropdown', () => {
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputYear}/API`);
+            await tuiGoto(page, `${DemoRoute.InputYearLegacy}/API`);
 
             documentationPO = new TuiDocumentationPagePO(page);
             input = documentationPO.apiPageExample.locator('input');

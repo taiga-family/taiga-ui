@@ -12,6 +12,10 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives';
 import {TuiInputYearComponent} from './input-year.component';
 import {TuiInputYearDirective} from './input-year.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-year TuiInputYear} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         MaskitoDirective,

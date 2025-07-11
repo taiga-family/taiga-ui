@@ -4,6 +4,10 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import type {TuiInputYearComponent} from './input-year.component';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-year TuiInputYear} (from @taiga-ui/kit) instead
+ */
 @Directive({
     standalone: false,
     selector: 'tui-input-year',
