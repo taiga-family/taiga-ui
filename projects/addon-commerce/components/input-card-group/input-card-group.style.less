@@ -9,21 +9,21 @@
 
 @keyframes outside {
     0% {
-        transform: translate3d(calc(var(--t-translate) * var(--t-inline)), 0, 0);
+        transform: translate3d(calc(var(--t-translate) * var(--tui-inline)), 0, 0);
     }
 
     100% {
-        transform: translate3d(calc(100% * var(--t-inline)), 0, 0);
+        transform: translate3d(calc(100% * var(--tui-inline)), 0, 0);
     }
 }
 
 @keyframes inside {
     0% {
-        transform: translate3d(calc(100% * var(--t-inline)), 0, 0);
+        transform: translate3d(calc(100% * var(--tui-inline)), 0, 0);
     }
 
     100% {
-        transform: translate3d(calc(var(--t-translate) * var(--t-inline)), 0, 0);
+        transform: translate3d(calc(var(--t-translate) * var(--tui-inline)), 0, 0);
     }
 }
 
@@ -144,12 +144,12 @@
     right: 100%;
     display: block;
     clip-path: inset(0);
-    transform: translate3d(calc(100% * var(--t-inline)), 0, 0);
+    transform: translate3d(calc(100% * var(--tui-inline)), 0, 0);
 
     :host-context([dir='rtl']) & {
         right: unset;
         left: 100%;
-        transform: translate3d(calc(100% * var(--t-inline)), 0, 0) !important;
+        transform: translate3d(calc(100% * var(--tui-inline)), 0, 0) !important;
     }
 }
 

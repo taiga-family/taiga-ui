@@ -8,6 +8,7 @@ aside[tuiNavigationAside] {
     left: 0;
     z-index: 1;
     display: flex;
+    inset-inline-start: 0;
     inline-size: 3rem;
     flex-direction: column;
     padding: 0.5rem 0.5rem 0.25rem;
@@ -21,11 +22,13 @@ aside[tuiNavigationAside] {
         top: 0;
         left: 100%;
         z-index: -1;
+        inset-inline-start: 100%;
         block-size: 3rem;
         inline-size: 3rem;
         pointer-events: none;
         border-top-left-radius: 1.25rem;
         box-shadow: -1.5rem 0 var(--tui-theme-color, #000);
+        transform: scaleX(var(--tui-inline));
     }
 
     &::after {
@@ -35,6 +38,7 @@ aside[tuiNavigationAside] {
         left: 0;
         bottom: -3rem;
         z-index: -1;
+        inset-inline-start: 0;
         inline-size: 3rem;
         background: inherit;
     }

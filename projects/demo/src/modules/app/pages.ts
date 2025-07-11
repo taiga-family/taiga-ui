@@ -59,6 +59,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Documentation',
+        title: 'Direction: RTL',
+        keywords: 'ssr, server, prerender, back, node, universal',
+        route: DemoRoute.RTL,
+    },
+    {
+        section: 'Documentation',
         title: 'Documentation engine',
         keywords:
             'doc, book, samples, demo, документация, демо, портал, story, боковая, панель, навигация, примеры',

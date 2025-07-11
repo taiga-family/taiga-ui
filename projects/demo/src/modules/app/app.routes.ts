@@ -26,6 +26,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../info/ssr'),
     }),
     route({
+        path: DemoRoute.RTL,
+        title: 'Direction: RTL',
+        loadComponent: async () => import('../info/rtl'),
+    }),
+    route({
         path: DemoRoute.Related,
         title: 'Taiga UI family',
         loadComponent: async () => import('../info/related'),
