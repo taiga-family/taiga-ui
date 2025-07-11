@@ -1,0 +1,13 @@
+<tui-textfield
+    multi
+    [disabledItemHandler]="handler"
+>
+    <input
+        tuiInputDateMulti
+        [(ngModel)]="value"
+    />
+
+    <tui-calendar *tuiTextfieldDropdown />
+
+    <tui-input-chip *tuiItem />
+</tui-textfield>

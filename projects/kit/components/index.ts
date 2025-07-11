@@ -25,6 +25,7 @@ export * from '@taiga-ui/kit/components/floating-container';
 export * from '@taiga-ui/kit/components/input-chip';
 export * from '@taiga-ui/kit/components/input-color';
 export * from '@taiga-ui/kit/components/input-date';
+export * from '@taiga-ui/kit/components/input-date-multi';
 export * from '@taiga-ui/kit/components/input-date-range';
 export * from '@taiga-ui/kit/components/input-inline';
 export * from '@taiga-ui/kit/components/input-month';
