@@ -5322,6 +5322,144 @@ export default class PageComponent {
 
 ---
 
+# components/InputColor
+
+- **Package**: `KIT`
+- **Type**: components
+
+InputColor
+        =
+        Textfield
+        +
+        type="color"
+        +
+        
+            
+                Maskito
+            
+        
+        + ❤️
+
+
+### How to Use (Import)
+
+```ts
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputColor} from '@taiga-ui/kit';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiTextfield,
+    TuiInputColor,
+  ],
+  // ...
+})
+export class Example {
+  readonly testForm = new FormGroup({
+    testValue: new FormControl(),
+  });
+}
+```
+### How to Use (Template)
+
+```html
+<form [formGroup]="testForm">
+  <tui-textfield>
+    <input
+      tuiInputColor
+      [formControl]="control"
+    />
+  </tui-textfield>
+</form>
+```
+
+### Example
+
+```html
+<ng-template>
+                <tui-textfield
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    <label
+                        *ngIf="textfieldDoc.size !== 's'"
+                        tuiLabel
+                    >
+                        Choose color
+                    </label>
+
+                    <input
+                        list="colors"
+                        tuiInputColor
+                        [align]="align"
+                        [format]="format"
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [placeholder]="textfieldDoc.size === 's' ? 'Choose color' : ''"
+                        [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+                    <datalist id="colors">
+                        <option value="#800000"></option>
+                        <option value="#8B0000"></option>
+                        <option value="#A52A2A"></option>
+                        <option value="#DC143C"></option>
+                    </datalist>
+                </tui-textfield>
+            </ng-template>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [align] | `TuiHorizontalDirection` | Alignment of the color picker |
+| [format] | `'hex' | 'hexa'` | Color format |
+
+### TypeScript
+
+```ts
+import {Component, inject} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
+import {TuiDocTextfield} from '@demo/components/textfield';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TUI_INPUT_COLOR_OPTIONS, TuiInputColor} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiDocControl,
+        TuiDocTextfield,
+        TuiInputColor,
+        TuiTextfield,
+    ],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class PageComponent {
+    protected readonly control = new FormControl();
+    protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
+    protected readonly examples = ['Basic', 'Opacity'];
+
+    protected readonly aligns = ['left', 'right'] as const;
+    protected align = this.options.align;
+
+    protected readonly formats = ['hex', 'hexa'] as const;
+    protected format: 'hex' | 'hexa' = this.options.format;
+}
+```
+
+---
+
 # components/InputDate
 
 - **Package**: `KIT`
