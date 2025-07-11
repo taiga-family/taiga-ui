@@ -60,7 +60,8 @@ export const pages: DocRoutePages = [
     {
         section: 'Documentation',
         title: 'Direction: RTL',
-        keywords: 'ssr, server, prerender, back, node, universal',
+        keywords:
+            'rtl, direction, right, left, arabic, hebrew, арабский, иврит, справа, налево',
         route: DemoRoute.RTL,
     },
     {
