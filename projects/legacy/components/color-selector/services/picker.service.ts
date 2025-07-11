@@ -6,6 +6,10 @@ import {tuiGetElementPoint, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {TuiPoint} from '@taiga-ui/core/types';
 import {map, Observable, startWith, switchMap, takeUntil} from 'rxjs';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-color TuiInputColor} (from @taiga-ui/kit) instead
+ */
 @Injectable()
 export class TuiPickerService extends Observable<TuiPoint> {
     private readonly el = tuiInjectElement();

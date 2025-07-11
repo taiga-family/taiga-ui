@@ -1,14 +1,13 @@
-<button
-    appearance=""
-    tuiButton
-    type="button"
-    [style.background]="background"
-    [style.color]="background"
-    [tuiDropdown]="picker"
-    [tuiDropdownOpen]="false"
->
-    <span class="invert">Color me Kubrick</span>
-    <ng-template #picker>
-        <tui-color-selector [(color)]="color" />
-    </ng-template>
-</button>
+<tui-textfield [iconStart]="'@tui.paintbrush'">
+    <label tuiLabel>Choose color</label>
+    <input
+        placeholder="#00000000"
+        tuiInputColor
+        [(ngModel)]="value"
+    />
+</tui-textfield>
+<label class="label">
+    <span>0%</span>
+    <span>Opacity</span>
+    <span>100%</span>
+</label>

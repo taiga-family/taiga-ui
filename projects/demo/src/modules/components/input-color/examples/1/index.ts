@@ -1,15 +1,17 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TUI_DEFAULT_INPUT_COLORS, TuiInputColorModule} from '@taiga-ui/legacy';
+import {TuiInputColor} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, TuiInputColorModule, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiInputColor, TuiTextfield],
     templateUrl: './index.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation,
+    changeDetection,
 })
 export default class Example {
-    protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
-    protected color = '#ffdd2d';
+    protected readonly control = new FormControl();
 }

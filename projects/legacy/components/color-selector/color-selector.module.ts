@@ -15,6 +15,10 @@ import {TuiColorSelectorComponent} from './color-selector.component';
 import {TuiLinearMultiPickerModule} from './linear-multi-picker/linear-multi-picker.module';
 import {TuiPaletteModule} from './palette/palette.module';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-color TuiInputColor} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         CommonModule,

@@ -26,6 +26,10 @@ import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/textfield TuiTextfield} (from @taiga-ui/core) instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-input',

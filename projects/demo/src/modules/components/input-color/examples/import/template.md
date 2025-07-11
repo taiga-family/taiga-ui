@@ -1,3 +1,10 @@
 ```html
-<tui-color-picker [(color)]="color"></tui-color-picker>
+<form [formGroup]="testForm">
+  <tui-textfield>
+    <input
+      tuiInputColor
+      [formControl]="control"
+    />
+  </tui-textfield>
+</form>
 ```

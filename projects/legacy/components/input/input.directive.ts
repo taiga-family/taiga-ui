@@ -4,6 +4,10 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import type {TuiInputComponent} from './input.component';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/textfield TuiTextfield} (from @taiga-ui/core) instead
+ */
 @Directive({
     standalone: false,
     selector: 'tui-input',

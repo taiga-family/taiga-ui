@@ -355,6 +355,11 @@ export const ROUTES: Routes = [
         title: 'InputColor',
     }),
     route({
+        path: DemoRoute.InputColorLegacy,
+        loadComponent: async () => import('../components/input-color-legacy'),
+        title: 'InputColor ⛔',
+    }),
+    route({
         path: DemoRoute.Form,
         loadComponent: async () => import('../components/form'),
         title: 'Form',
@@ -412,7 +417,7 @@ export const ROUTES: Routes = [
     route({
         path: DemoRoute.Input,
         loadComponent: async () => import('../components/input'),
-        title: 'Input',
+        title: 'Input ⛔',
     }),
     route({
         path: DemoRoute.InputDate,
