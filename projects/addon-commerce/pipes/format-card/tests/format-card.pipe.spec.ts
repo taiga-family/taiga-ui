@@ -1,5 +1,5 @@
 import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
-import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
+import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
 describe('TuiFormatCardPipe', () => {
     const pipe = new TuiFormatCardPipe();
