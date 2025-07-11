@@ -37,5 +37,6 @@ export default class PageComponent {
         'Mask',
         'Direction',
         'Mobile',
+        'Table',
     ];
 }
