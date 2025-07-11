@@ -1,0 +1,33 @@
+<form
+    tuiForm="l"
+    [formGroup]="form"
+>
+    <tui-textfield>
+        <label tuiLabel>Native picker</label>
+        <input
+            formControlName="native"
+            timeMode="HH:MM:SS.MSS"
+            tuiInputDateTime
+            type="datetime-local"
+        />
+        <tui-calendar *tuiTextfieldDropdown />
+    </tui-textfield>
+
+    <tui-textfield tuiDropdownMobile="Pick a date">
+        <label tuiLabel>Mobile dropdown</label>
+        <input
+            formControlName="mobile"
+            tuiInputDateTime
+        />
+        <tui-calendar *tuiTextfieldDropdown />
+    </tui-textfield>
+
+    <tui-textfield tuiMobileCalendar>
+        <label tuiLabel>Mobile calendar</label>
+        <input
+            formControlName="fullscreen"
+            tuiInputDateTime
+        />
+        <tui-calendar *tuiTextfieldDropdown />
+    </tui-textfield>
+</form>
