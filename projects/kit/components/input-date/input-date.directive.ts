@@ -120,7 +120,10 @@ export abstract class TuiInputDateBase<
         const subscription = this.calendar()?.valueChange.subscribe((value: any) => {
             this.onChange(value);
             this.open.set(false);
-            this.el.blur();
+
+            if (!this.el.closest('tui-dropdown')) {
+                this.el.blur();
+            }
         });
 
         onCleanup(() => subscription?.unsubscribe());
