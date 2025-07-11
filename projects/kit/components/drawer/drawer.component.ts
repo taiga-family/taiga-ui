@@ -21,7 +21,9 @@ import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
     host: {
         '[class._overlay]': 'overlay',
         '[style.border-top-left-radius]': 'direction === "left" ? 0 : null',
+        '[style.border-bottom-left-radius]': 'direction === "left" ? 0 : null',
         '[style.border-top-right-radius]': 'direction === "right" ? 0 : null',
+        '[style.border-bottom-right-radius]': 'direction === "right" ? 0 : null',
         '[style.left]': 'direction === "left" ? 0 : null',
         '[style.right]': 'direction === "right" ? 0 : null',
         '[style.--tui-from]': 'from',
