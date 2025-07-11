@@ -33,6 +33,12 @@
         "migrateTuiLet": {
             "description": "Migrate TuiLet directive to @let control flow",
             "factory": "./migrate-tui-let/index"
+        },
+        "updateToV5": {
+            "private": true,
+            "description": "Manually run migration to update Taiga to v5.x.x",
+            "factory": "./ng-update/v5/index#updateToV4",
+            "schema": "./ng-update/v5/schema.json"
         }
     }
 }
