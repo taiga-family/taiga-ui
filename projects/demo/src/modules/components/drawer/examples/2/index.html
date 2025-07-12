@@ -9,8 +9,9 @@
 <tui-drawer
     *tuiPopup="open()"
     direction="left"
-    class="drawer"
     [overlay]="true"
+    [style.inline-size.rem]="20"
+    [style.top.px]="0"
     (click.self)="onClose()"
 >
     <header class="header">
