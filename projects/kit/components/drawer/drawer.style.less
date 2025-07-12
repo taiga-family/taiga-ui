@@ -3,22 +3,19 @@
 :host {
     position: fixed;
     top: ~'max(3rem, env(safe-area-inset-top))';
-    bottom: env(safe-area-inset-bottom);
+    bottom: 0;
     inline-size: 36.25rem;
     max-inline-size: calc(100vw - 3rem);
     background: var(--tui-background-elevation-1);
     box-shadow: var(--tui-shadow-medium);
-    border-radius: 1.25rem 1.25rem ~'max(0rem, min(1.25rem, calc(1000 * env(safe-area-inset-bottom))))'
-        ~'max(0rem, min(1.25rem, calc(1000 * env(safe-area-inset-bottom))))';
-    // webview fullscreen app - 1.25rem, usual app - 0rem
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
 
     &[style*='top: 0'] {
-        bottom: 0;
         border-radius: 0;
 
         .t-aside {
             padding-block-start: env(safe-area-inset-top);
-            padding-block-end: env(safe-area-inset-bottom);
         }
     }
 
@@ -55,6 +52,7 @@
     overflow: hidden;
     background: inherit;
     box-sizing: border-box;
+    padding-block-end: env(safe-area-inset-bottom);
 }
 
 .t-scrollbar {
