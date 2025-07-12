@@ -15,7 +15,7 @@ import {CustomPortalService} from './service';
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                top: 0;
+                top: env(safe-area-inset-top);
                 height: 0;
                 width: 100%;
             }
