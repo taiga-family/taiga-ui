@@ -12,7 +12,7 @@
 
 .t-header {
     position: fixed;
-    top: 1rem;
+    top: ~'max(1rem, env(safe-area-inset-top))';
     display: flex;
     inline-size: 100%;
     padding: 0 1rem;
@@ -21,7 +21,7 @@
 
 .t-footer {
     position: absolute;
-    bottom: 1rem;
+    bottom: ~'max(1rem, env(safe-area-inset-bottom))';
     display: flex;
     inline-size: 100%;
     padding: 0 1rem;
