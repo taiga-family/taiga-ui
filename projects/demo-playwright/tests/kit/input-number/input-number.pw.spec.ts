@@ -281,7 +281,7 @@ describe('InputNumber', () => {
 
                     await page.mouse.down();
 
-                    await page.waitForTimeout(500);
+                    await page.waitForTimeout(350);
 
                     await page.mouse.up();
 
@@ -303,7 +303,7 @@ describe('InputNumber', () => {
 
                     await page.mouse.down();
 
-                    await page.waitForTimeout(500);
+                    await page.waitForTimeout(350);
 
                     await page.mouse.up();
 
