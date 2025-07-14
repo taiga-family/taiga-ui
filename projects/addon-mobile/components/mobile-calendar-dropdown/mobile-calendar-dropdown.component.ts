@@ -60,8 +60,9 @@ export class TuiMobileCalendarDropdown {
         this.data.single || // TODO(v5): use `rangeMode` from DI token `TUI_CALENDAR_SHEET_DEFAULT_OPTIONS`
         this.is('tui-input-date:not([multiple])');
 
-    protected readonly value = computed((value = this.directive?.date?.value()) =>
-        Array.isArray(value) ? value[0] : (value ?? undefined),
+    protected readonly value = computed<TuiDay | TuiDayRange | null>(
+        (value = this.directive?.date?.value()) =>
+            Array.isArray(value) ? value[0] : value,
     );
 
     constructor() {

@@ -37,7 +37,7 @@ export class TuiInputDateTimeComponent extends TuiNativeTimePicker {
 
     protected onInput(value: string): void {
         if (!value) {
-            return this.host.onChange(null);
+            return this.host.setValue(null);
         }
 
         const date = new Date(value);
