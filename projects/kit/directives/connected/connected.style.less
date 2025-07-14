@@ -20,6 +20,7 @@
         top: calc(var(--t-image-size) + 0.25rem);
         left: calc(var(--t-image-size) / 2);
         display: block;
+        inset-inline-start: calc(var(--t-image-size) / 2);
         block-size: var(--t-connected-height);
         inline-size: 1px;
         color: var(--tui-border-normal);
@@ -36,6 +37,7 @@
         &::before {
             top: 0;
             left: calc(var(--t-image-size) / 2);
+            inset-inline-start: calc(var(--t-image-size) / 2);
             block-size: 100%;
             margin: 0;
             background: var(--tui-border-normal);
@@ -67,7 +69,8 @@
 
     > tui-expand {
         > * {
-            padding: 0 0 0 3rem;
+            padding: 0;
+            padding-inline-start: 3rem;
         }
 
         &:not(:last-child)::before {
@@ -75,6 +78,7 @@
             position: absolute;
             top: 0;
             left: calc(var(--t-image-size) / 2);
+            inset-inline-start: calc(var(--t-image-size) / 2);
             block-size: 100%;
             inline-size: 1px;
             background: var(--tui-border-normal);

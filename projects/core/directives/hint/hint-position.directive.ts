@@ -1,6 +1,7 @@
 import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiFallbackAccessor,
@@ -23,6 +24,7 @@ const LEFT = 1;
     standalone: true,
 })
 export class TuiHintPosition extends TuiPositionAccessor {
+    private readonly el = tuiInjectElement();
     private readonly offset = inject(TUI_IS_MOBILE) ? 16 : 8;
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
@@ -55,6 +57,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const hostRect = this.accessor.getClientRect() ?? EMPTY_CLIENT_RECT;
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;
+        const rtl = this.el.matches('[dir="rtl"] :scope');
 
         this.points['top-left'][TOP] = hostRect.top - height - this.offset;
         this.points['top-left'][LEFT] = leftCenter - width + ARROW_OFFSET;
@@ -84,17 +87,15 @@ export class TuiHintPosition extends TuiPositionAccessor {
         this.points['right-bottom'][TOP] = this.points['left-bottom'][TOP];
         this.points['right-bottom'][LEFT] = this.points['right-top'][LEFT];
 
-        const priorityDirections = Array.isArray(this.direction)
-            ? this.direction
-            : [this.direction];
-        const sortedDirections = priorityDirections.concat(TUI_HINT_DIRECTIONS);
-
+        const array = Array.isArray(this.direction) ? this.direction : [this.direction];
+        const priority = array.map((direction) => adjust(direction, rtl));
         const direction =
-            sortedDirections.find((direction) =>
-                this.checkPosition(this.points[direction], width, height),
-            ) || this.fallback;
+            priority
+                .concat(TUI_HINT_DIRECTIONS)
+                .find((dir) => this.checkPosition(this.points[dir], width, height)) ||
+            this.fallback;
 
-        this.emitDirection(direction);
+        this.emitDirection(adjust(direction, rtl));
 
         return this.points[direction];
     }
@@ -116,4 +117,16 @@ export class TuiHintPosition extends TuiPositionAccessor {
             left + width < viewport.right - GAP
         );
     }
+}
+
+function adjust(direction: TuiHintDirection, rtl: boolean): TuiHintDirection {
+    if (rtl && direction.includes('left')) {
+        return direction.replace('left', 'right') as TuiHintDirection;
+    }
+
+    if (rtl && direction.includes('right')) {
+        return direction.replace('right', 'left') as TuiHintDirection;
+    }
+
+    return direction;
 }

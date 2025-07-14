@@ -3,6 +3,7 @@ export const DemoRoute = {
     BrowserSupport: '/browser-support',
     AISupport: '/ai-support',
     SSR: '/ssr',
+    RTL: '/rtl',
     Related: '/related',
     Jest: '/testing/jest',
     DisableAnimation: '/testing/disable-animation',
