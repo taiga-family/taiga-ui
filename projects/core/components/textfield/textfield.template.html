@@ -17,7 +17,7 @@
         type="button"
         class="t-clear"
         [iconStart]="icons.close"
-        (click)="accessor?.setValue(null)"
+        (click)="accessor?.setValue(null); dispatchEvent('input')"
         (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
     >
         {{ clear() }}

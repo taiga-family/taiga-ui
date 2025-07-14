@@ -188,6 +188,10 @@ export class TuiTextfieldBaseComponent<T>
             });
         }
     }
+
+    protected dispatchEvent(name: string): void {
+        this.input?.nativeElement.dispatchEvent(new Event(name, {bubbles: true}));
+    }
 }
 
 @Component({
