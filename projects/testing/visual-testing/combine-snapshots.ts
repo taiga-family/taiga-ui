@@ -6,7 +6,7 @@
  */
 import {createCanvas, loadImage} from 'canvas';
 
-export async function combineSnapshots(
+export async function tuiCombineSnapshots(
     imagesPaths: string[],
 ): Promise<NodeJS.ArrayBufferView> {
     const images = await Promise.all(imagesPaths.map(loadImage));

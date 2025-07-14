@@ -1,6 +1,6 @@
 import {readdirSync, writeFileSync} from 'node:fs';
 
-import {combineSnapshots} from './combine-snapshots';
+import {tuiCombineSnapshots} from './combine-snapshots';
 
 const FAILED_SCREENSHOTS_PATH = 'projects/demo-playwright/tests-results';
 const DIFF_IMAGE_POSTFIX = '-diff.png';
@@ -8,7 +8,7 @@ const OUTPUT_DIFF_IMAGE_POSTFIX = '.diff.png';
 const RETRY_COUNT = Number(process.env.RETRY_COUNT ?? 2);
 const REG_EXP = new RegExp(`retry${RETRY_COUNT}$|retry${RETRY_COUNT}/`);
 
-(async function combinePlaywrightFailedScreenshots(
+export async function tuiCombinePlaywrightFailedScreenshots(
     rootPath = FAILED_SCREENSHOTS_PATH,
 ): Promise<void> {
     const filesOrDirs = readdirSync(rootPath, {
@@ -20,7 +20,7 @@ const REG_EXP = new RegExp(`retry${RETRY_COUNT}$|retry${RETRY_COUNT}/`);
     );
 
     for (const {name} of filesOrDirs.filter((x) => x.isDirectory())) {
-        await combinePlaywrightFailedScreenshots(`${rootPath}/${name}`);
+        await tuiCombinePlaywrightFailedScreenshots(`${rootPath}/${name}`);
     }
 
     const imagesPaths: string[] = filesOrDirs
@@ -36,7 +36,7 @@ const REG_EXP = new RegExp(`retry${RETRY_COUNT}$|retry${RETRY_COUNT}/`);
     for (const diffImage of diffs) {
         const diffImageName = diffImage.split('/').pop()!.replace(DIFF_IMAGE_POSTFIX, '');
         const path = `${rootPath}/${diffImageName}${OUTPUT_DIFF_IMAGE_POSTFIX}`;
-        const buffer = await combineSnapshots(
+        const buffer = await tuiCombineSnapshots(
             imagesPaths.filter((path) =>
                 path.startsWith(diffImage.replace(DIFF_IMAGE_POSTFIX, '')),
             ),
@@ -46,4 +46,4 @@ const REG_EXP = new RegExp(`retry${RETRY_COUNT}$|retry${RETRY_COUNT}/`);
 
         console.info(`Write new diff: ${path}`);
     }
-})();
+}
