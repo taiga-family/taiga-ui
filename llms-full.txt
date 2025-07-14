@@ -5316,7 +5316,146 @@ export default class PageComponent {
         'Mask',
         'Direction',
         'Mobile',
+        'Table',
     ];
+}
+```
+
+---
+
+# components/InputColor
+
+- **Package**: `KIT`
+- **Type**: components
+
+InputColor
+        =
+        Textfield
+        +
+        type="color"
+        +
+        
+            
+                Maskito
+            
+        
+        + ❤️
+
+
+### How to Use (Import)
+
+```ts
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputColor} from '@taiga-ui/kit';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiTextfield,
+    TuiInputColor,
+  ],
+  // ...
+})
+export class Example {
+  readonly testForm = new FormGroup({
+    testValue: new FormControl(),
+  });
+}
+```
+### How to Use (Template)
+
+```html
+<form [formGroup]="testForm">
+  <tui-textfield>
+    <input
+      tuiInputColor
+      [formControl]="control"
+    />
+  </tui-textfield>
+</form>
+```
+
+### Example
+
+```html
+<ng-template>
+                <tui-textfield
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    <label
+                        *ngIf="textfieldDoc.size !== 's'"
+                        tuiLabel
+                    >
+                        Choose color
+                    </label>
+
+                    <input
+                        list="colors"
+                        tuiInputColor
+                        [align]="align"
+                        [format]="format"
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [placeholder]="textfieldDoc.size === 's' ? 'Choose color' : ''"
+                        [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+                    <datalist id="colors">
+                        <option value="#800000"></option>
+                        <option value="#8B0000"></option>
+                        <option value="#A52A2A"></option>
+                        <option value="#DC143C"></option>
+                    </datalist>
+                </tui-textfield>
+            </ng-template>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [align] | `TuiHorizontalDirection` | Alignment of the color picker |
+| [format] | `'hex' | 'hexa'` | Color format |
+
+### TypeScript
+
+```ts
+import {Component, inject} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
+import {TuiDocTextfield} from '@demo/components/textfield';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TUI_INPUT_COLOR_OPTIONS, TuiInputColor} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiDocControl,
+        TuiDocTextfield,
+        TuiInputColor,
+        TuiTextfield,
+    ],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class PageComponent {
+    protected readonly control = new FormControl();
+    protected readonly options = inject(TUI_INPUT_COLOR_OPTIONS);
+    protected readonly examples = ['Basic', 'Opacity'];
+
+    protected readonly aligns = ['left', 'right'] as const;
+    protected align = this.options.align;
+
+    protected readonly formats = ['hex', 'hexa'] as const;
+    protected format: 'hex' | 'hexa' = this.options.format;
 }
 ```
 
@@ -13609,6 +13748,162 @@ import {TuiSensitive} from '@taiga-ui/kit';
 })
 export default class Page {
     protected sensitive = true;
+}
+```
+
+---
+
+# directives/Shimmer
+
+- **Package**: `KIT`
+- **Type**: directives
+
+tuiShimmer
+            directive visually implements the "Shimmer" UI pattern — an animated loading indicator that simulates
+            content appearance while data is being fetched. This pattern enhances the user experience by providing
+            visual feedback during loading states, helping users understand that the interface is active and content is
+            on its way.
+        
+
+        When to Use
+
+        
+            To indicate loading states in cards, headers, lists, avatars, and other UI elements. When you want to
+            visually communicate that content is loading, rather than missing or frozen. Shimmer is used when you have
+            cached data that is currently being refreshed and if you have no data at all — a better choice would be
+            
+                Skeleton
+
+
+### How to Use (Import)
+
+```ts
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiShimmer,
+  ],
+})
+export class Example {
+  protected shimmer = true;
+}
+```
+### How to Use (Template)
+
+```html
+<!-- Usual HTML element -->
+<div [tuiShimmer]="shimmer">I'm shimmering</div>
+
+<!-- Or other component of Taiga UI -->
+<tui-calendar [tuiShimmer]="shimmer" />
+```
+
+### Example
+
+```html
+<section
+                tuiAppearance="floating"
+                tuiCardLarge
+            >
+                <header tuiHeader>
+                    <hgroup
+                        tuiTitle
+                        [tuiShimmer]="shimmer"
+                    >
+                        <h5>You got $237&nbsp;000,42 left</h5>
+                        <p tuiSubtitle>Where's the money, Lebowski?</p>
+                    </hgroup>
+
+                    <aside tuiAccessories>
+                        <tui-avatar
+                            appearance="primary"
+                            src="@tui.star"
+                        />
+                    </aside>
+                </header>
+                <tui-avatar-stack [tuiShimmer]="shimmer">
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/87331898" />
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/12021443" />
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/35179038" />
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/46284632" />
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/10106368" />
+                    <tui-avatar src="https://avatars.githubusercontent.com/u/11832552" />
+                </tui-avatar-stack>
+                <footer>
+                    <button
+                        appearance="secondary"
+                        size="m"
+                        tuiButton
+                        type="button"
+                    >
+                        It's down there
+                    </button>
+                    <button
+                        size="m"
+                        tuiButton
+                        type="button"
+                    >
+                        Take another look
+                    </button>
+                </footer>
+            </section>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [tuiShimmer] | `boolean` | Shimmer state |
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+import {TuiAppearance, TuiButton, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiAvatarStack, TuiShimmer} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        TuiAppearance,
+        TuiAvatar,
+        TuiAvatarStack,
+        TuiButton,
+        TuiCardLarge,
+        TuiDemo,
+        TuiHeader,
+        TuiLink,
+        TuiShimmer,
+        TuiTitle,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    changeDetection,
+})
+export default class Page {
+    protected readonly routes = DemoRoute;
+    protected readonly examples = ['Basic', 'Disabled animations'];
+
+    protected shimmer = true;
+}
+```
+### LESS
+
+```less
+footer {
+    display: flex;
+    gap: 1.25rem;
+
+    button {
+        flex: 1;
+    }
 }
 ```
 
