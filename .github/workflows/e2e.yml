@@ -75,7 +75,7 @@ jobs:
       - name: Prepare diff screenshots
         run: |
           npm install canvas --no-save --silent --force
-          npx ts-node ./scripts/visual-testing/combine-cypress-failed-screenshots.ts
+          npx ts-node -e "import { tuiCombineCypressFailedScreenshots as run } from './projects/testing/visual-testing'; run();";
 
       - name: Debug output
         continue-on-error: true
@@ -178,7 +178,7 @@ jobs:
       - name: Combine images to get diff reports
         run: |
           npm install canvas --no-save --silent --force
-          npx ts-node ./scripts/visual-testing/combine-playwright-failed-screenshots.ts
+          npx ts-node -e "import { tuiCombinePlaywrightFailedScreenshots as run } from './projects/testing/visual-testing'; run();";
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v4.6.2
