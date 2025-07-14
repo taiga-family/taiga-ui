@@ -15,7 +15,7 @@ import {TuiForm} from '@taiga-ui/layout';
 
 export function minLengthValidator(minLength: number): ValidatorFn {
     return ({value}): ValidationErrors | null =>
-        value?.filter(Boolean).length >= minLength ? null : {tuiMinLength: {value}};
+        value?.filter(Boolean).length >= minLength ? null : {required: {value}};
 }
 
 @Component({
