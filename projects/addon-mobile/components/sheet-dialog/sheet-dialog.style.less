@@ -6,12 +6,12 @@
     display: flex;
     inline-size: 100%;
     max-inline-size: 40rem;
-    block-size: calc(100% - var(--tui-offset) - env(safe-area-inset-top));
+    block-size: ~'calc(100% - max(var(--tui-offset), env(safe-area-inset-top)))';
     flex-direction: column;
     font: var(--tui-font-text-m);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    margin: calc(var(--tui-offset) + env(safe-area-inset-top)) auto 0;
+    margin: ~'max(var(--tui-offset), env(safe-area-inset-top))' auto 0;
     border-radius: 0.75rem 0.75rem 0 0;
 
     &.tui-enter,
@@ -133,7 +133,7 @@
     &::after {
         content: '';
         position: relative;
-        top: calc(1.5rem + env(safe-area-inset-bottom));
+        top: ~'max(1.5rem, env(safe-area-inset-bottom))';
         z-index: -1;
         display: block;
         scroll-snap-stop: always;
