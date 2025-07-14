@@ -10,7 +10,7 @@
     .center-left();
 
     position: fixed;
-    bottom: 1.25rem;
+    bottom: ~'max(1.25rem, env(safe-area-inset-bottom))';
     animation: tuiFadeIn var(--tui-duration) var(--tui-duration);
     animation-fill-mode: backwards;
 }
