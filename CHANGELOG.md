@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.45.0](https://github.com/taiga-family/taiga-ui/compare/v4.44.0...v4.45.0) (2025-07-14)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCard` use non-breaking spaces to support RTL
+  ([#11284](https://github.com/taiga-family/taiga-ui/issues/11284))
+  ([a42aae9](https://github.com/taiga-family/taiga-ui/commit/a42aae94ae6357749ee231900b0f4daefe1a85de))
+- **core:** `Group` support for RTL ([#11265](https://github.com/taiga-family/taiga-ui/issues/11265))
+  ([da2242c](https://github.com/taiga-family/taiga-ui/commit/da2242c8b3e2170bda318633fcf47fb40c6bcfdd))
+- **core:** `Scrollbar` support for RTL ([#11277](https://github.com/taiga-family/taiga-ui/issues/11277))
+  ([8431f17](https://github.com/taiga-family/taiga-ui/commit/8431f17a9c553cf8c63f74cb5439f5d172e4a20c))
+- **core:** chevron buttons support for RTL ([#11276](https://github.com/taiga-family/taiga-ui/issues/11276))
+  ([94d7cc8](https://github.com/taiga-family/taiga-ui/commit/94d7cc8ac0aa6f61dae8a1365531e5af47fecca8))
+- **core:** support invalid highlight inside `tuiTable`
+  ([#11297](https://github.com/taiga-family/taiga-ui/issues/11297))
+  ([3f1af5a](https://github.com/taiga-family/taiga-ui/commit/3f1af5a4048a6d6b550b92157c8ed0fb850a70e5))
+- **kit:** `Fade` support for RTL ([#11266](https://github.com/taiga-family/taiga-ui/issues/11266))
+  ([2c12ba9](https://github.com/taiga-family/taiga-ui/commit/2c12ba92f439280f956e61e8ecc471afa02a2009))
+- **kit:** `InputDate` fix closing parent dropdown ([#11302](https://github.com/taiga-family/taiga-ui/issues/11302))
+  ([3ef0874](https://github.com/taiga-family/taiga-ui/commit/3ef0874cab0dd9e7d4e21d5ab22688864a764e5d))
+- **kit:** `InputNumber` support for RTL ([#11282](https://github.com/taiga-family/taiga-ui/issues/11282))
+  ([06ba9a9](https://github.com/taiga-family/taiga-ui/commit/06ba9a98d712ab6769fd89760547c1cd025bbdab))
+- **kit:** `Slider` support for RTL ([#11267](https://github.com/taiga-family/taiga-ui/issues/11267))
+  ([a472927](https://github.com/taiga-family/taiga-ui/commit/a472927f5a153f811a7d42c51e77ce57a96a61a3))
+- **layout:** `Navigation` support for RTL ([#11300](https://github.com/taiga-family/taiga-ui/issues/11300))
+  ([1d93615](https://github.com/taiga-family/taiga-ui/commit/1d93615a4b0baa0ef6ec9e26802d58442fcd3fab))
+
+### 🚀 Features
+
+- **addon-commerce:** `InputCardGroup` custom initial label and RTL support
+  ([#11291](https://github.com/taiga-family/taiga-ui/issues/11291))
+  ([1584bde](https://github.com/taiga-family/taiga-ui/commit/1584bde42bb77be4a7e2134458c282e59b8962e0))
+- **addon-mobile:** `SwipeActions` support for RTL ([#11304](https://github.com/taiga-family/taiga-ui/issues/11304))
+  ([a2a2748](https://github.com/taiga-family/taiga-ui/commit/a2a27488cf6935970e18300bae1cfd50734bb69f))
+- **core:** `Textfield` dispatches `(input)` event on cleaner click
+  ([#11313](https://github.com/taiga-family/taiga-ui/issues/11313))
+  ([20e7a5d](https://github.com/taiga-family/taiga-ui/commit/20e7a5d791360a528e64b6365bd55f8be6ebc72e))
+- improve safe-area support for WebView ([#11299](https://github.com/taiga-family/taiga-ui/issues/11299))
+  ([0b06748](https://github.com/taiga-family/taiga-ui/commit/0b06748645755d2c484166e38f7814f67c480e96))
+- **kit:** `ActionBar` support safe-area top/bottom ([#11308](https://github.com/taiga-family/taiga-ui/issues/11308))
+  ([454afcb](https://github.com/taiga-family/taiga-ui/commit/454afcbfa376cdc294670a829011dc2002732518))
+- **kit:** `InputColor` add new component ([#11263](https://github.com/taiga-family/taiga-ui/issues/11263))
+  ([5c01902](https://github.com/taiga-family/taiga-ui/commit/5c01902978bf3f8178eddc939c7c81d6362b11ec))
+- **kit:** `PdfViewer` support safe-area top/bottom ([#11310](https://github.com/taiga-family/taiga-ui/issues/11310))
+  ([b1eb78b](https://github.com/taiga-family/taiga-ui/commit/b1eb78b27a2f3ce481d97acd199c209c737e49a2))
+- **kit:** `Preview` support safe-area top/bottom ([#11309](https://github.com/taiga-family/taiga-ui/issues/11309))
+  ([9dce522](https://github.com/taiga-family/taiga-ui/commit/9dce522236c1b38a0a8512be8a705d3b899aaf54))
+- **kit:** `Shimmer` add directive ([#11245](https://github.com/taiga-family/taiga-ui/issues/11245))
+  ([61dc804](https://github.com/taiga-family/taiga-ui/commit/61dc804cb88d324737591d709dc14d980bda02f0))
+- **testing:** export cypress and playwright utils ([#11312](https://github.com/taiga-family/taiga-ui/issues/11312))
+  ([8d992d5](https://github.com/taiga-family/taiga-ui/commit/8d992d514453529d0c3f181d51d0cb8fe1494a98))
+
 ## [4.44.0](https://github.com/taiga-family/taiga-ui/compare/v4.43.0...v4.44.0) (2025-07-07)
 
 ### 🐞 Bug Fixes
