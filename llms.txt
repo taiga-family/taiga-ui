@@ -201,6 +201,7 @@
 - [Directives / Resizer](https://taiga-ui.dev/directives/resizer)
 - [Directives / Ripple](https://taiga-ui.dev/directives/ripple)
 - [Directives / Sensitive](https://taiga-ui.dev/directives/sensitive)
+- [Directives / Shimmer](https://taiga-ui.dev/directives/shimmer)
 - [Directives / Skeleton](https://taiga-ui.dev/directives/skeleton)
 - [Directives / Swipe](https://taiga-ui.dev/directives/swipe)
 - [Directives / TextfieldController](https://taiga-ui.dev/directives/textfield-controller)

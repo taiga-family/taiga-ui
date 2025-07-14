@@ -13,6 +13,9 @@
     <loc>https://taiga-ui.dev/ssr/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/rtl/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/related/</loc>
   </url>
   <url>
@@ -209,6 +212,9 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-color/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-color-legacy/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/group/</loc>
@@ -697,6 +703,9 @@
     <loc>https://taiga-ui.dev/pipes/obfuscate/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/directives/shimmer/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/accordion/API/</loc>
   </url>
   <url>
@@ -1013,6 +1022,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-color/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-color-legacy/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-color-legacy/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/group/API/</loc>
@@ -1925,6 +1940,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/pipes/obfuscate/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/directives/shimmer/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/directives/shimmer/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev//</loc>
