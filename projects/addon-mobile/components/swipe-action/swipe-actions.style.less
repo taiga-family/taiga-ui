@@ -6,13 +6,7 @@
     --tui-action-gap: 24;
     --tui-actions-padding: 0.5rem;
     --tui-item-size: 44;
-    --t-x: 100%;
-    --t-rtl: 1;
-
-    [dir='rtl'] & {
-        --t-x: 0%;
-        --t-rtl: -1;
-    }
+    --t-x: calc(50% + 50% * var(--t-inline));
 
     display: flex;
     inline-size: stretch;
@@ -22,7 +16,7 @@
     scroll-snap-type: x mandatory;
     perspective: 1px;
     perspective-origin: calc(
-        var(--t-x) + var(--t-rtl) * (calc(1px * var(--tui-item-size) / 2) + var(--tui-actions-padding))
+        var(--t-x) + var(--t-inline) * (calc(1px * var(--tui-item-size) / 2) + var(--tui-actions-padding))
     );
 }
 
@@ -68,7 +62,7 @@
         --t-scale: calc(1 / var(--t-factor));
         --t-translate: calc(1px * (1 - 1 / var(--t-factor)));
 
-        transform: ~'translate3d(calc(calc((-100% * var(--t-rtl) - calc(1px * var(--t-rtl) * var(--tui-action-gap))) * (@{i} - 1)) / var(--t-scale)), 0, var(--t-translate))';
+        transform: ~'translate3d(calc(calc((-100% * var(--t-inline) - calc(1px * var(--t-inline) * var(--tui-action-gap))) * (@{i} - 1)) / var(--t-scale)), 0, var(--t-translate))';
         scale: var(--t-scale);
     }
 }
