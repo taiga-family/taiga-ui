@@ -25,7 +25,6 @@ import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
     host: {
         '[attr.aria-disabled]': 'loading',
         '[class._loading]': 'loading',
-        '(click.capture)': 'onClick($event)',
     },
 })
 export class TuiButtonLoading {
@@ -43,11 +42,5 @@ export class TuiButtonLoading {
 
     protected get label(): string {
         return tuiIsString(this.loading) ? this.loading : '';
-    }
-
-    protected onClick(event: MouseEvent): void {
-        if (this.loading) {
-            event.stopPropagation();
-        }
     }
 }
