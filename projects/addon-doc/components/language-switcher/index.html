@@ -22,6 +22,7 @@
                 <button
                     *ngFor="let name of names"
                     tuiOption
+                    new
                     type="button"
                     [value]="name | titlecase"
                     (click)="setLang(name)"
