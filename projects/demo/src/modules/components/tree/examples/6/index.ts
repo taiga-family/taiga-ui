@@ -5,11 +5,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY, TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiLabel} from '@taiga-ui/core';
+import {TuiButton, TuiLabel} from '@taiga-ui/core';
+import type {TuiTreeItem} from '@taiga-ui/kit';
 import {TuiCheckbox, TuiTree} from '@taiga-ui/kit';
 
 interface TreeNode {
-    readonly children?: readonly TreeNode[];
+    children?: readonly TreeNode[];
     readonly text: string;
 }
 
@@ -21,15 +22,24 @@ function flatten(item: TreeNode): readonly TreeNode[] {
 
 @Component({
     standalone: true,
-    imports: [FormsModule, NgForOf, TuiCheckbox, TuiLabel, TuiMapperPipe, TuiTree],
+    imports: [
+        FormsModule,
+        NgForOf,
+        TuiButton,
+        TuiCheckbox,
+        TuiLabel,
+        TuiMapperPipe,
+        TuiTree,
+    ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
     protected map = new Map<TreeNode, boolean>();
 
-    protected readonly data: TreeNode = {
+    protected data: TreeNode = {
         text: 'Topmost',
         children: [
             {
@@ -77,8 +87,26 @@ export default class Example {
         return result;
     };
 
-    protected onChecked(node: TreeNode, value: boolean): void {
-        flatten(node).forEach((item) => this.map.set(item, value));
+    protected onChecked(node: TreeNode, item: TuiTreeItem, value: boolean): void {
+        flatten(node).forEach((it) => this.map.set(it, value));
+
+        this.map = new Map(this.map.entries());
+
+        if (item.isExpandable) {
+            item.toggle(item);
+        }
+    }
+
+    protected add(node: TreeNode, item: TuiTreeItem): void {
+        const size = (node.children ?? []).length;
+
+        node.children = [...(node.children ?? []), {text: `Next level ${size + 1}`}];
+
+        if (item.isExpanded) {
+            item.toggle(item);
+        }
+
+        flatten(node).forEach((it) => this.map.set(it, this.map.get(it) ?? false));
 
         this.map = new Map(this.map.entries());
     }

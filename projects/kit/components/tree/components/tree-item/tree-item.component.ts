@@ -94,4 +94,8 @@ export class TuiTreeItem implements DoCheck {
     public checkChanges(): void {
         this.change$.next();
     }
+
+    public toggle(item: TuiTreeItem): void {
+        this.controller.toggle(item);
+    }
 }

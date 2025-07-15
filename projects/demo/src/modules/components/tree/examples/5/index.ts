@@ -4,19 +4,21 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import type {TuiHandler} from '@taiga-ui/cdk';
 import {EMPTY_ARRAY} from '@taiga-ui/cdk';
+import {TuiButton} from '@taiga-ui/core';
+import type {TuiTreeItem} from '@taiga-ui/kit';
 import {TUI_TREE_CONTENT, TuiTree} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {Folders} from './content';
 
 interface TreeNode {
-    readonly children?: readonly TreeNode[];
+    children?: readonly TreeNode[];
     readonly text: string;
 }
 
 @Component({
     standalone: true,
-    imports: [NgForOf, TuiTree],
+    imports: [NgForOf, TuiButton, TuiTree],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
@@ -55,4 +57,14 @@ export default class Example {
 
     protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = (item) =>
         item.children || EMPTY_ARRAY;
+
+    protected add(node: TreeNode, item: TuiTreeItem): void {
+        const size = (node.children ?? []).length;
+
+        node.children = [...(node.children ?? []), {text: `Next level ${size + 1}`}];
+
+        if (item.isExpanded) {
+            item.toggle(item);
+        }
+    }
 }

@@ -20,6 +20,7 @@ import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._expandable]': 'isExpandable',
+        '(click)': 'onClick()',
     },
 })
 export class TuiTreeItemContent implements DoCheck {

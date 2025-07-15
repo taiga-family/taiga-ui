@@ -8,7 +8,8 @@
 
 <ng-template
     #content
-    let-item
+    let-treeItem="node"
+    let-treeNode
 >
     <label
         tuiLabel
@@ -18,9 +19,20 @@
             size="s"
             tuiCheckbox
             type="checkbox"
-            [ngModel]="item | tuiMapper: getValue : map"
-            (ngModelChange)="onChecked(item, $event)"
+            [ngModel]="treeNode | tuiMapper: getValue : map"
+            (ngModelChange)="onChecked(treeNode, treeItem, $event)"
         />
-        <small>{{ item.text }}</small>
+        <small>{{ treeNode.text }}</small>
     </label>
+
+    <button
+        appearance="flat"
+        iconStart="@tui.circle-plus"
+        size="xs"
+        tuiIconButton
+        type="button"
+        (click)="add(treeNode, treeItem)"
+    >
+        Add new item
+    </button>
 </ng-template>
