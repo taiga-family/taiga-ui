@@ -60,6 +60,9 @@ export class TuiComboBox<T>
     private readonly itemsHandlers: TuiItemsHandlers<T | string> =
         inject(TUI_ITEMS_HANDLERS);
 
+    private readonly defaultAccessor: TuiTextfieldAccessor<T> =
+        inject(TuiTextfieldDirective);
+
     private readonly matcher = signal<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
     private readonly strict = signal(true);
     private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
@@ -127,13 +130,8 @@ export class TuiComboBox<T>
     }
 
     public setValue(value: T | null): void {
-        const stringified = this.stringify(value);
-
-        if (stringified !== this.textfield.value()) {
-            this.textfield.value.set(stringified);
-            setTimeout((end = stringified.length) => this.el.setSelectionRange(end, end));
-        }
-
+        this.defaultAccessor.setValue(value);
+        setTimeout((end = this.el.value.length) => this.el.setSelectionRange(end, end));
         this.onChange(value);
 
         if (!value) {
