@@ -64,7 +64,7 @@ export default class Page {
 
     protected appearance = this.appearanceVariants[0]!;
 
-    protected readonly iconVariants = ['Default', '@tui.heart'];
+    protected readonly iconVariants = ['Default', '@tui.heart', ''];
 
     protected icon = this.iconVariants[0]!;
 
