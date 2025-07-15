@@ -37,7 +37,7 @@
         "updateToV5": {
             "private": true,
             "description": "Manually run migration to update Taiga to v5.x.x",
-            "factory": "./ng-update/v5/index#updateToV4",
+            "factory": "./ng-update/v5/index#updateToV5",
             "schema": "./ng-update/v5/schema.json"
         }
     }

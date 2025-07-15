@@ -8,11 +8,13 @@ import {FINISH_SYMBOL, START_SYMBOL, titleLog} from 'ng-morph';
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import type {TuiSchema} from '../../ng-add/schema';
 import {getExecutionTime} from '../../utils/get-execution-time';
-import {migrateTokens} from './steps/migrate-tokens';
+import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
+import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
         migrateTokens(tree, options);
+        updateTsConfig(tree, options);
 
         context.addTask(new NodePackageInstallTask());
     };

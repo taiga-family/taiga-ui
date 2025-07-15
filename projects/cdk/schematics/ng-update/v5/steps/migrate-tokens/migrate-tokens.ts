@@ -11,16 +11,26 @@ import {
 } from 'ng-morph';
 import type {CallExpression, ImportDeclaration} from 'ts-morph';
 
-import {ALL_TS_FILES} from '../../../constants';
-import type {TuiSchema} from '../../../ng-add/schema';
-import {getNamedImportReferences} from '../../../utils/get-named-import-references';
-import {removeImport} from '../../../utils/import-manipulations';
-import {insertTodo} from '../../../utils/insert-todo';
+import {ALL_TS_FILES} from '../../../../constants';
+import type {TuiSchema} from '../../../../ng-add/schema';
+import {getNamedImportReferences} from '../../../../utils/get-named-import-references';
+import {removeImport} from '../../../../utils/import-manipulations';
+import {insertTodo} from '../../../../utils/insert-todo';
 
 const TOKEN_FUNCTIONS = ['tuiCreateToken', 'tuiCreateTokenFromFactory'];
 const ANGULAR_CORE = '@angular/core';
 const INJECTION_TOKEN = 'InjectionToken';
 
+/**
+ * Migrates Taiga UI token functions to Angular's InjectionToken
+ *
+ * This schematic:
+ * 1. Finds all references to `tuiCreateToken` and `tuiCreateTokenFromFactory`
+ * 2. Replaces them with equivalent `InjectionToken` implementations
+ * 3. Handles proper import management for `InjectionToken`
+ * 4. Preserves type parameters and factory functions
+ * 5. Adds descriptive error handling and logging
+ */
 export function migrateTokens(tree: Tree, options: TuiSchema): void {
     if (!options['skip-logs']) {
         infoLog('Starting token migration to InjectionToken...');
@@ -151,6 +161,19 @@ export function migrateTokens(tree: Tree, options: TuiSchema): void {
     }
 }
 
+/**
+ * Creates InjectionToken expression to replace token functions
+ *
+ * This function:
+ * - Preserves type parameters (<T> syntax)
+ * - Converts token values to factory functions when needed
+ * - Adds ngDevMode checks for token descriptions
+ * - Handles different cases for tuiCreateToken vs tuiCreateTokenFromFactory
+ *
+ * Example conversions:
+ * tuiCreateToken('default') → new InjectionToken(..., { factory: () => 'default' })
+ * tuiCreateTokenFromFactory(() => value) → new InjectionToken(..., { factory: () => value })
+ */
 function createInjectionTokenExpression(
     callExpression: CallExpression,
     constName: string,
