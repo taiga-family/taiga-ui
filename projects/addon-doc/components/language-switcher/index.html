@@ -21,6 +21,7 @@
             <tui-opt-group label="Language of components">
                 <button
                     *ngFor="let name of names"
+                    new
                     tuiOption
                     type="button"
                     [value]="name | titlecase"
