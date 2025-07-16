@@ -40,6 +40,7 @@ interface Country {
                     tuiComboBox
                     [formControl]="control"
                     [strict]="false"
+                    (input)="inputEvent.emit($any($event.target).value)"
                 />
 
                 <tui-data-list-wrapper
@@ -62,6 +63,9 @@ export class TestComboBox {
 
     @Output()
     public readonly valueChanges = new EventEmitter();
+
+    @Output()
+    public readonly inputEvent = new EventEmitter<string>();
 
     constructor() {
         this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
@@ -118,5 +122,59 @@ describe('ComboBox[strict=false]', () => {
                 name: 'Andorra',
             });
         });
+    });
+
+    describe('on cleaner click', () => {
+        beforeEach(() => {
+            cy.mount(TestComboBox, {
+                componentProperties: {
+                    valueChanges: createOutputSpy('valueChanges'),
+                    inputEvent: createOutputSpy('inputEvent'),
+                },
+            });
+        });
+
+        it('emits (input) event with empty string', () => {
+            cy.get('[tuiComboBox]').click();
+            cy.get('[tuiOption]').first().click();
+
+            cy.get('@valueChanges').should('have.been.calledOnceWith', {
+                id: 'AD',
+                name: 'Andorra',
+            });
+
+            cy.get('@inputEvent').should('have.been.calledWith', 'Andorra');
+
+            cy.get('tui-textfield .t-clear').click();
+
+            cy.get('@inputEvent').should('have.been.calledTwice');
+            cy.get('@inputEvent').should('have.been.calledWith', '');
+        });
+
+        it('form control emits null', () => {
+            cy.get('[tuiComboBox]').click();
+            cy.get('[tuiOption]').first().click();
+
+            cy.get('@valueChanges').should('have.been.calledOnceWith', {
+                id: 'AD',
+                name: 'Andorra',
+            });
+
+            cy.get('tui-textfield .t-clear').click();
+
+            cy.get('@valueChanges').should('have.been.calledTwice');
+            cy.get('@valueChanges').should('have.been.calledWith', null);
+        });
+    });
+
+    it('set caret to the end after click on item from datalist', () => {
+        cy.mount(TestComboBox);
+        cy.get('[tuiComboBox]').focus().type('and');
+        cy.get('[tuiOption]').first().click();
+
+        cy.get('[tuiComboBox]')
+            .should('have.value', 'Andorra')
+            .should('have.prop', 'selectionStart', 'Andorra'.length)
+            .should('have.prop', 'selectionEnd', 'Andorra'.length);
     });
 });

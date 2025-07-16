@@ -120,7 +120,12 @@ export class TuiInputTimeDirective
 
     public setValue(value: TuiTime | null): void {
         this.onChange(value);
-        this.textfield.value.set(this.stringify(value));
+
+        if (value) {
+            this.textfield.value.set(this.stringify(value));
+        } else {
+            this.textfield.setValue(value);
+        }
 
         if (!value && this.dropdownEnabled()) {
             this.open.set(true);
