@@ -92,6 +92,9 @@ export class TuiPreviewComponent {
     @Input()
     public rotatable = false;
 
+    @Input()
+    public initialZoom?: number;
+
     protected rotate(): void {
         this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);
     }
@@ -174,7 +177,11 @@ export class TuiPreviewComponent {
             this.el.clientHeight,
             this.el.clientWidth,
         );
-        this.zoom$.next(this.minZoom);
+        // Use initialZoom if provided, but ensure it's not below minZoom
+        const initialZoom = this.initialZoom 
+            ? Math.max(this.initialZoom, this.minZoom)
+            : this.minZoom;
+        this.zoom$.next(tuiClamp(initialZoom, this.minZoom, 2));
         this.coordinates$.next(EMPTY_COORDINATES);
         this.rotation$.next(0);
     }
