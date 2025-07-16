@@ -20,6 +20,14 @@
             [content]="2 | tuiExample"
             [fullsize]="true"
         />
+
+        <tui-doc-example
+            id="custom-range"
+            heading="Custom Range"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+            [description]="'Shows data within a custom date range with startMonth and endMonth inputs'"
+        />
     </ng-template>
 
     <ng-template pageTab>
@@ -39,6 +47,8 @@
                     [xStringify]="xStringify"
                     [y]="y"
                     [yStringify]="yStringify"
+                    [startMonth]="startMonth"
+                    [endMonth]="endMonth"
                 />
             </tui-axes>
         </tui-doc-demo>
@@ -113,6 +123,24 @@
                 [(documentationPropertyValue)]="yStringify"
             >
                 Function to stringify a value number to a string in axis Y hint
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="startMonth"
+                documentationPropertyType="TuiDay | null"
+                [documentationPropertyValues]="startMonthVariants"
+                [(documentationPropertyValue)]="startMonth"
+            >
+                Custom start date for the chart range. If not provided, uses the first date from data.
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="endMonth"
+                documentationPropertyType="TuiDay | null"
+                [documentationPropertyValues]="endMonthVariants"
+                [(documentationPropertyValue)]="endMonth"
+            >
+                Custom end date for the chart range. If not provided, uses the last date from data.
             </ng-template>
         </tui-doc-documentation>
     </ng-template>

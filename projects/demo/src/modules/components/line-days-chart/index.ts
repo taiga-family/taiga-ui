@@ -78,4 +78,20 @@ export default class Page {
     protected y = 0;
 
     protected height = 200;
+
+    protected startMonth: TuiDay | null = null;
+
+    protected endMonth: TuiDay | null = null;
+
+    protected readonly startMonthVariants: ReadonlyArray<TuiDay | null> = [
+        null,
+        new TuiDay(2020, 0, 1), // January 1st
+        new TuiDay(2020, 1, 1), // February 1st  
+    ];
+
+    protected readonly endMonthVariants: ReadonlyArray<TuiDay | null> = [
+        null,
+        new TuiDay(2020, 2, 31), // March 31st
+        new TuiDay(2020, 3, 30), // April 30th
+    ];
 }

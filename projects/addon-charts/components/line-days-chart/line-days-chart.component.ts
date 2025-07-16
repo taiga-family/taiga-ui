@@ -113,6 +113,14 @@ export class TuiLineDaysChart implements AfterViewInit {
             return;
         }
 
+        // Validate that start comes before end when custom range is provided
+        if (this.startMonth && this.endMonth && start.dayAfter(end)) {
+            ngDevMode &&
+                console.warn('[TuiLineDaysChart] startMonth should not be after endMonth');
+            this.value = [];
+            return;
+        }
+
         const mutable = [...value];
         const length = TuiDay.lengthBetween(start, end) + 1;
 
