@@ -8,10 +8,12 @@
             {{ text }}
         </ng-container>
     </ng-container>
-    <tui-tree
-        *ngFor="let child of children; trackBy: trackBy"
-        [content]="content"
-        [trackBy]="trackBy"
-        [value]="child"
-    />
+    <ng-container *ngIf="!item || item.isExpanded">
+        <tui-tree
+            *ngFor="let child of children; trackBy: trackBy"
+            [content]="content"
+            [trackBy]="trackBy"
+            [value]="child"
+        />
+    </ng-container>
 </tui-tree-item>
