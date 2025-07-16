@@ -1,0 +1,14 @@
+<ng-container *tuiLet="value$ | async as value">
+    <div
+        class="t-before"
+    >{{ value }}<span class="t-caret"></span></div>
+
+    <div
+        *ngIf="!value"
+        automation-id="tui-input-inline-textarea__placeholder"
+        class="t-placeholder"
+    >
+        <ng-content />
+    </div>
+</ng-container>
+<ng-content select="textarea" />

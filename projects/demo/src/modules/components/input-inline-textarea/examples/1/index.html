@@ -1,0 +1,36 @@
+<div class="content-container">
+    <h2
+        class="description"
+        [class.description_empty]="!description"
+    >
+        <tui-input-inline-textarea *ngIf="editing; else text">
+            Enter a multiline description
+            <textarea
+                tuiAutoFocus
+                rows="3"
+                [(ngModel)]="description"
+                (blur)="onBlur()"
+                (keydown.escape)="toggle()"
+            ></textarea>
+        </tui-input-inline-textarea>
+        <ng-template #text>
+            <span class="text-content">{{ description }}</span>
+            <button
+                appearance="icon"
+                iconStart="@tui.pencil"
+                size="xs"
+                tuiIconButton
+                type="button"
+                class="edit-button"
+                (click)="toggle()"
+            >
+                Edit description
+            </button>
+        </ng-template>
+    </h2>
+
+    <p>
+        The above content demonstrates a multiline inline text editing experience.
+        Notice how the pencil icon is positioned outside the component and can be easily shown/hidden.
+    </p>
+</div>

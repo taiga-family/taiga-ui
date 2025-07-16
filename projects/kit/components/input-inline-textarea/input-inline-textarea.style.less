@@ -1,0 +1,59 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+@safari-safe-space: 1px;
+
+tui-input-inline-textarea {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    min-inline-size: 0;
+
+    > .t-before {
+        padding-inline-end: 0.02em; // to prevent caret shaking
+        margin-inline-start: @safari-safe-space; // to prevent hiding characters in safari
+        white-space: pre-wrap;
+        visibility: hidden;
+        min-block-size: 1.25em; // minimum height for one line
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    > .t-before .t-caret {
+        // Small space to ensure textarea can grow beyond the visible text
+        display: inline-block;
+        inline-size: 1px;
+    }
+
+    > .t-placeholder {
+        position: absolute;
+        top: 0;
+        left: @safari-safe-space;
+        min-inline-size: 1px;
+        pointer-events: none;
+        color: var(--tui-text-tertiary);
+    }
+
+    > textarea {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        padding: inherit;
+        font: inherit;
+        color: inherit;
+        box-sizing: border-box;
+        inline-size: 100%;
+        block-size: 100%;
+        border-width: 0;
+        text-align: inherit;
+        letter-spacing: inherit;
+        text-indent: inherit;
+        text-transform: inherit;
+        outline: none;
+        resize: none;
+        overflow: hidden;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
