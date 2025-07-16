@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
 import {TuiRoot} from '@taiga-ui/core/components/root';
 
@@ -13,6 +13,7 @@ import {provideTaiga} from '../provide-taiga';
             <div>Test content</div>
         </tui-root>
     `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestApp {}
 
@@ -28,7 +29,7 @@ describe('provideTaiga integration', () => {
         }).compileComponents();
 
         const fixture = TestBed.createComponent(TestApp);
-        
+
         expect(() => fixture.detectChanges()).not.toThrow();
         expect(fixture.componentInstance).toBeDefined();
     });
@@ -40,7 +41,7 @@ describe('provideTaiga integration', () => {
         }).compileComponents();
 
         const fixture = TestBed.createComponent(TestApp);
-        
+
         expect(() => fixture.detectChanges()).not.toThrow();
         expect(fixture.componentInstance).toBeDefined();
     });
@@ -54,7 +55,7 @@ describe('provideTaiga integration', () => {
         }).compileComponents();
 
         const fixture = TestBed.createComponent(TestApp);
-        
+
         expect(() => fixture.detectChanges()).not.toThrow();
         expect(fixture.componentInstance).toBeDefined();
     });

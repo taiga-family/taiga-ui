@@ -77,6 +77,6 @@ export function provideTaiga(options: TuiProviderOptions = {}): Provider[] {
     // includes automatic detection of system theme preferences and persistence
     // of manual theme changes. If automaticDarkMode is enabled, we don't need
     // to provide additional configuration as the default behavior already handles this.
-    
+
     return providers;
 }

@@ -1,7 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
-import {tuiEnableFontScaling} from '../font-scaling';
 import type {TuiProviderOptions} from '../provide-taiga';
 import {provideTaiga} from '../provide-taiga';
 
@@ -16,11 +15,14 @@ describe('provideTaiga', () => {
         const providers = provideTaiga({fontScaling: true});
 
         expect(providers).toContain(NG_EVENT_PLUGINS);
-        expect(providers.some(provider => 
-            typeof provider === 'object' && 
-            provider !== null && 
-            'provide' in provider
-        )).toBe(true);
+        expect(
+            providers.some(
+                (provider) =>
+                    typeof provider === 'object' &&
+                    provider !== null &&
+                    'provide' in provider,
+            ),
+        ).toBe(true);
     });
 
     it('should not include additional providers when no options are enabled', () => {
@@ -50,11 +52,14 @@ describe('provideTaiga', () => {
 
         expect(providers).toContain(NG_EVENT_PLUGINS);
         expect(providers.length).toBe(2);
-        expect(providers.some(provider => 
-            typeof provider === 'object' && 
-            provider !== null && 
-            'provide' in provider
-        )).toBe(true);
+        expect(
+            providers.some(
+                (provider) =>
+                    typeof provider === 'object' &&
+                    provider !== null &&
+                    'provide' in provider,
+            ),
+        ).toBe(true);
     });
 
     it('should include all providers when all options are enabled', () => {
