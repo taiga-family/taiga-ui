@@ -43,6 +43,7 @@
     border-radius: inherit;
     overflow: hidden;
     background: inherit;
+    padding: 1.25rem 1.5rem;
 }
 
 .t-scrollbar {
@@ -56,6 +57,7 @@
         flex-direction: column;
         gap: 0.75rem;
         padding: 1.5rem 1.5rem 0.75rem;
+        margin: -1.25rem -1.5rem 0.75rem;
         box-shadow: inset 0 -1px var(--tui-border-normal);
         background: var(--tui-background-elevation-1);
 
@@ -98,7 +100,7 @@
 }
 
 .t-content {
-    padding: 1.25rem 1.5rem;
+    /* Remove forced padding to allow content customization */
 }
 
 .t-footer ::ng-deep footer {
@@ -109,6 +111,7 @@
     justify-content: flex-end;
     gap: 0.75rem;
     padding: 0.5rem 1.5rem;
+    margin: 0 -1.5rem -1.25rem;
     box-shadow: inset 0 1px var(--tui-border-normal);
     background: var(--tui-background-elevation-1);
 }
