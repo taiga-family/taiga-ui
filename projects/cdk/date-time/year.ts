@@ -132,4 +132,14 @@ export class TuiYear implements TuiYearLike {
     public toJSON(): string {
         return this.formattedYear;
     }
+
+    public clamp<T extends TuiYear>(min: T, max: T): T {
+        const value = this as unknown as T;
+
+        if (value < min) {
+            return min;
+        }
+
+        return value > max ? max : value;
+    }
 }

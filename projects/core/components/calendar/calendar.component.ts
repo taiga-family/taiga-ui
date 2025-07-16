@@ -138,6 +138,10 @@ export class TuiCalendar {
         return this.max ?? TUI_LAST_DAY;
     }
 
+    protected get clampedMonth(): TuiMonth {
+        return this.month.clamp(this.min ?? this.month, this.max ?? this.month);
+    }
+
     protected get computedMinViewedMonth(): TuiMonth {
         const min = this.computedMin;
         const minViewed = this.minViewedMonth ?? TUI_FIRST_DAY;

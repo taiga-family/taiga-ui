@@ -19,7 +19,7 @@
         class="t-pagination"
         [max]="computedMaxViewedMonth"
         [min]="computedMinViewedMonth"
-        [value]="month"
+        [value]="clampedMonth"
         (valueChange)="onPaginationValueChange($event)"
         (yearClick)="onPaginationYearClick()"
     />
@@ -28,7 +28,7 @@
         [disabledItemHandler]="disabledItemHandler | tuiMapper: disabledItemHandlerMapper : computedMin : computedMax"
         [hoveredItem]="hoveredItem"
         [markerHandler]="markerHandler"
-        [month]="month"
+        [month]="clampedMonth"
         [showAdjacent]="showAdjacent"
         [value]="value"
         (dayClick)="onDayClick($event)"
