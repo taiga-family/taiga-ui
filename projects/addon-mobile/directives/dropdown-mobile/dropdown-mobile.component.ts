@@ -45,8 +45,10 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
     private readonly keyboard = inject(TuiKeyboardService);
     private readonly doc = inject(DOCUMENT);
     private readonly scrollTop = this.doc.documentElement.scrollTop;
-    private readonly observer = new ResizeObserver(() =>
-        this.refresh(this.doc.defaultView!.visualViewport!),
+    private readonly observer = new ResizeObserver(
+        () =>
+            this.doc.defaultView?.visualViewport &&
+            this.refresh(this.doc.defaultView.visualViewport),
     );
 
     protected readonly directive = inject(TuiDropdownMobile);
