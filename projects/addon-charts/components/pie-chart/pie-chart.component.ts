@@ -16,6 +16,7 @@ import {
     TuiHint,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
+    type TuiHintDirection,
 } from '@taiga-ui/core/directives/hint';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -65,6 +66,9 @@ export class TuiPieChart {
 
     @Input()
     public activeItemIndex = NaN;
+
+    @Input()
+    public tuiHintDirection: TuiHintDirection | TuiHintDirection[] | null = null;
 
     @Output()
     public readonly activeItemIndexChange = new EventEmitter<number>();

@@ -25,6 +25,7 @@ import {
     TuiHintHover,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
+    type TuiHintDirection,
 } from '@taiga-ui/core/directives/hint';
 import type {TuiPoint} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -99,6 +100,9 @@ export class TuiLineChart implements OnChanges {
 
     @Input()
     public dots = this.options.dots;
+
+    @Input()
+    public tuiHintDirection: TuiHintDirection | TuiHintDirection[] | null = null;
 
     public value: readonly TuiPoint[] = [];
 

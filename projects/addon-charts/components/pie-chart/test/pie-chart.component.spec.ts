@@ -1,5 +1,5 @@
 import {Location} from '@angular/common';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {TuiPieChart} from '@taiga-ui/addon-charts';
@@ -10,12 +10,19 @@ describe('PieChart', () => {
         standalone: true,
         imports: [TuiPieChart],
         template: `
-            <tui-pie-chart [value]="value" />
+            <tui-pie-chart 
+                [tuiHintDirection]="hintDirection"
+                [value]="value" 
+            />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
+        @ViewChild(TuiPieChart)
+        public readonly component!: TuiPieChart;
+
         public readonly value = [1, 2, 3];
+        public hintDirection: any = 'bottom';
     }
 
     let fixture: ComponentFixture<Test>;

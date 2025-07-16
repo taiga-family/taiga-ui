@@ -7,6 +7,7 @@
     [tuiHintAppearance]="hintAppearance"
     [tuiHintContext]="{$implicit: index}"
     [tuiHintDescribe]="getHintId(index)"
+    [tuiHintDirection]="tuiHintDirection"
     [tuiHintHost]="hintHost"
     (click)="tapColumn.emit(index)"
     (keydown.enter)="tapColumn.emit(index)"

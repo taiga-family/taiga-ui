@@ -40,6 +40,7 @@
             [style.color]="'var(--tui-chart-categorical-' + index.toString().padStart(2, '0') + ')'"
             [tuiHint]="hintContent"
             [tuiHintContext]="{$implicit: index}"
+            [tuiHintDirection]="tuiHintDirection"
             [tuiPieChart]="segments[index] || [0, 0]"
             (tuiHoveredChange)="onHovered($event, index)"
         />

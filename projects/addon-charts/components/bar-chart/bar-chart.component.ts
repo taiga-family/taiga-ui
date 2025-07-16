@@ -21,6 +21,7 @@ import {
     TuiHintHover,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
+    type TuiHintDirection,
 } from '@taiga-ui/core/directives/hint';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -53,6 +54,9 @@ export class TuiBarChart {
 
     @Input()
     public collapsed = false;
+
+    @Input()
+    public tuiHintDirection: TuiHintDirection | TuiHintDirection[] | null = null;
 
     @Output()
     public readonly tapColumn = new EventEmitter<number>();

@@ -10,6 +10,7 @@ describe('BarChart', () => {
         template: `
             <tui-bar-chart
                 [max]="max"
+                [tuiHintDirection]="hintDirection"
                 [value]="value"
             />
         `,
@@ -25,6 +26,7 @@ describe('BarChart', () => {
         ];
 
         public max = NaN;
+        public hintDirection: any = 'bottom';
     }
 
     let fixture: ComponentFixture<Test>;
@@ -66,5 +68,12 @@ describe('BarChart', () => {
                 testComponent.component.computedMax,
             ),
         ).toBe(100);
+    });
+
+    it('should accept tuiHintDirection input', () => {
+        testComponent.hintDirection = 'left';
+        fixture.detectChanges();
+
+        expect(testComponent.component.tuiHintDirection).toBe('left');
     });
 });

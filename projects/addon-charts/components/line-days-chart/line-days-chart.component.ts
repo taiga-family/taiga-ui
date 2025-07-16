@@ -22,7 +22,7 @@ import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber, tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiHint} from '@taiga-ui/core/directives/hint';
+import {TuiHint, type TuiHintDirection} from '@taiga-ui/core/directives/hint';
 import type {TuiPoint} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
@@ -82,6 +82,9 @@ export class TuiLineDaysChart implements AfterViewInit {
 
     @Input()
     public dots = this.options.dots;
+
+    @Input()
+    public tuiHintDirection: TuiHintDirection | TuiHintDirection[] | null = null;
 
     public zIndex = 0;
 
