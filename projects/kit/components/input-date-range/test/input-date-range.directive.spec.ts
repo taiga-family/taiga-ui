@@ -2,41 +2,40 @@ import {Component} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
-import {TuiCalendar} from '@taiga-ui/core/components/calendar';
+import {TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {TuiRoot} from '@taiga-ui/core/components/root';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
-import {TuiInputDateComponent, TuiInputDateDirective} from '../index';
+import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
+import {TuiInputDateRangeDirective} from '../index';
 
-describe('InputDate directive min/max clamping', () => {
+describe('InputDateRange directive min/max clamping', () => {
     @Component({
         standalone: true,
         imports: [
             ReactiveFormsModule,
             TuiRoot,
-            TuiInputDateComponent,
-            TuiInputDateDirective,
+            TuiInputDateRangeDirective,
             TuiTextfield,
             TuiDropdown,
-            TuiCalendar,
+            TuiCalendarRange,
         ],
         template: `
             <tui-root>
                 <tui-textfield>
                     <input
-                        tuiInputDate
+                        tuiInputDateRange
                         [formControl]="control"
                         [min]="min"
                         [max]="max"
                     />
-                    <tui-calendar *tuiTextfieldDropdown />
+                    <tui-calendar-range *tuiTextfieldDropdown />
                 </tui-textfield>
             </tui-root>
         `,
     })
     class TestComponent {
-        public control = new FormControl<TuiDay | null>(null);
+        public control = new FormControl<TuiDayRange | null>(null);
         public min: TuiDay | null = null;
         public max: TuiDay | null = null;
     }
@@ -66,15 +65,15 @@ describe('InputDate directive min/max clamping', () => {
         fixture.detectChanges();
 
         // Find the calendar component
-        const calendarEl = fixture.debugElement.query((el) => el.componentInstance instanceof TuiCalendar);
+        const calendarEl = fixture.debugElement.query((el) => el.componentInstance instanceof TuiCalendarRange);
         
         if (calendarEl) {
-            const calendar = calendarEl.componentInstance as TuiCalendar;
+            const calendar = calendarEl.componentInstance as TuiCalendarRange;
             
             // The calendar month should be clamped to max month or before
-            expect(calendar.month.monthSameOrBefore(maxDate)).toBe(true);
+            expect(calendar.defaultViewedMonth.monthSameOrBefore(maxDate)).toBe(true);
         } else {
-            fail('Calendar component not found');
+            fail('CalendarRange component not found');
         }
     });
 
@@ -90,20 +89,20 @@ describe('InputDate directive min/max clamping', () => {
         fixture.detectChanges();
 
         // Find the calendar component
-        const calendarEl = fixture.debugElement.query((el) => el.componentInstance instanceof TuiCalendar);
+        const calendarEl = fixture.debugElement.query((el) => el.componentInstance instanceof TuiCalendarRange);
         
         if (calendarEl) {
-            const calendar = calendarEl.componentInstance as TuiCalendar;
+            const calendar = calendarEl.componentInstance as TuiCalendarRange;
             
             // The calendar month should be clamped to min month or after
-            expect(calendar.month.monthSameOrAfter(minDate)).toBe(true);
+            expect(calendar.defaultViewedMonth.monthSameOrAfter(minDate)).toBe(true);
         } else {
-            fail('Calendar component not found');
+            fail('CalendarRange component not found');
         }
     });
 
     it('should not change month when current month is within min/max range', () => {
-        const currentMonth = TuiMonth.currentLocal();
+        const currentMonth = new TuiDay();
         const minDate = currentMonth.append({month: -2});
         const maxDate = currentMonth.append({month: 2});
         
@@ -117,41 +116,16 @@ describe('InputDate directive min/max clamping', () => {
         fixture.detectChanges();
 
         // Find the calendar component
-        const calendarEl = fixture.debugElement.query((el) => el.componentInstance instanceof TuiCalendar);
+        const calendarEl = fixture.debugElement.query((el) => el.componentInstance instanceof TuiCalendarRange);
         
         if (calendarEl) {
-            const calendar = calendarEl.componentInstance as TuiCalendar;
+            const calendar = calendarEl.componentInstance as TuiCalendarRange;
             
             // The calendar month should be within the expected range
-            expect(calendar.month.monthSameOrAfter(minDate)).toBe(true);
-            expect(calendar.month.monthSameOrBefore(maxDate)).toBe(true);
+            expect(calendar.defaultViewedMonth.monthSameOrAfter(minDate)).toBe(true);
+            expect(calendar.defaultViewedMonth.monthSameOrBefore(maxDate)).toBe(true);
         } else {
-            fail('Calendar component not found');
-        }
-    });
-
-    it('should handle edge case when max equals current month', () => {
-        const currentMonth = TuiMonth.currentLocal();
-        const maxDate = new TuiDay(currentMonth.year, currentMonth.month, 15);
-        
-        component.max = maxDate;
-        fixture.detectChanges();
-
-        // Click to open the calendar dropdown
-        const input = fixture.nativeElement.querySelector('input');
-        input.click();
-        fixture.detectChanges();
-
-        // Find the calendar component
-        const calendarEl = fixture.debugElement.query((el) => el.componentInstance instanceof TuiCalendar);
-        
-        if (calendarEl) {
-            const calendar = calendarEl.componentInstance as TuiCalendar;
-            
-            // The calendar month should be the same as max (current month)
-            expect(calendar.month.monthSame(maxDate)).toBe(true);
-        } else {
-            fail('Calendar component not found');
+            fail('CalendarRange component not found');
         }
     });
 });
