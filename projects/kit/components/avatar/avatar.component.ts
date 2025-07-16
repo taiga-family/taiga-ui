@@ -1,7 +1,14 @@
 import {NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    Input,
+    signal,
+} from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -19,22 +26,46 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TUI_AVATAR_OPTIONS)],
-    hostDirectives: [
-        TuiWithAppearance,
-        {
-            directive: TuiIcons,
-            inputs: ['iconStart: src'],
-        },
-    ],
+    hostDirectives: [TuiWithAppearance, TuiIcons],
     host: {
         '[attr.data-size]': 'size',
-        '[attr.data-type]': 'type',
+        '[attr.data-type]': 'type()',
         '[class._round]': 'round',
-        '[class._svg]': 'svg',
+        '[class._svg]': 'svg()',
     },
 })
 export class TuiAvatar {
     private readonly options = inject(TUI_AVATAR_OPTIONS);
+
+    protected readonly src = signal<SafeResourceUrl | string | null | undefined>(null);
+    protected readonly value = computed<SafeResourceUrl | string>(() => this.src() ?? '');
+    protected readonly svg = computed(
+        (value = this.value()) => tuiIsString(value) && value.endsWith('.svg'),
+    );
+
+    protected readonly type = computed<'content' | 'icon' | 'img' | 'text'>(
+        (value = this.value()) => {
+            if (value && !tuiIsString(value)) {
+                return 'img';
+            }
+
+            if (value.startsWith('@tui.')) {
+                return 'icon';
+            }
+
+            if (value.length > 0 && value.length < 3) {
+                return 'text';
+            }
+
+            return value.length ? 'img' : 'content';
+        },
+    );
+
+    protected readonly icon = tuiDirectiveBinding(
+        TuiIcons,
+        'iconStart',
+        computed(() => (this.type() === 'icon' ? this.src() : null)),
+    );
 
     @Input()
     public size = this.options.size;
@@ -42,30 +73,9 @@ export class TuiAvatar {
     @Input()
     public round = this.options.round;
 
-    @Input()
-    public src?: SafeResourceUrl | string | null;
-
-    protected get value(): SafeResourceUrl | string {
-        return this.src || '';
-    }
-
-    protected get svg(): boolean {
-        return tuiIsString(this.value) && this.value.endsWith('.svg');
-    }
-
-    protected get type(): 'content' | 'icon' | 'img' | 'text' {
-        if (this.value && !tuiIsString(this.value)) {
-            return 'img';
-        }
-
-        if (this.value.startsWith('@tui.')) {
-            return 'icon';
-        }
-
-        if (this.value.length > 0 && this.value.length < 3) {
-            return 'text';
-        }
-
-        return this.value.length ? 'img' : 'content';
+    // TODO(v5): use signal inputs
+    @Input('src')
+    public set srcSetter(x: SafeResourceUrl | string | null | undefined) {
+        this.src.set(x);
     }
 }

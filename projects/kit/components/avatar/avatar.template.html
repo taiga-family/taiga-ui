@@ -1,8 +1,8 @@
 <img
-    *ngIf="type === 'img'"
+    *ngIf="type() === 'img'"
     alt=""
     loading="lazy"
-    [src]="value"
+    [src]="value()"
 />
-<ng-container *ngIf="type === 'text'">{{ value }}</ng-container>
+<ng-container *ngIf="type() === 'text'">{{ value() }}</ng-container>
 <ng-content />
