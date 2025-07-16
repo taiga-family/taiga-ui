@@ -8,6 +8,7 @@ export * from './calendar-sheet.harness';
 export * from './calendar-spin.harness';
 export * from './calendar-year.harness';
 export * from './card.harness';
+export * from './checkbox.harness';
 export * from './dialog.harness';
 export * from './dropdown-open.harness';
 export * from './island.harness';
