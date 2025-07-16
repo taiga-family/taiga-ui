@@ -24,12 +24,16 @@ export class TuiProgressColorSegments {
             ),
         ]).pipe(
             map(([colors, width]) => {
-                const segmentWidth = Math.ceil(width / colors.length);
-                const colorsString = colors.reduce(
-                    (acc, color, i) =>
-                        `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
-                    '',
-                );
+                const segmentWidth = width / colors.length;
+                const colorsString = colors.reduce((acc, color, i) => {
+                    const start = Math.round(i * segmentWidth);
+                    const end =
+                        i === colors.length - 1
+                            ? width
+                            : Math.round((i + 1) * segmentWidth);
+
+                    return `${acc}, ${color} ${start}px ${end}px`;
+                }, '');
 
                 return `linear-gradient(to right ${colorsString})`;
             }),
