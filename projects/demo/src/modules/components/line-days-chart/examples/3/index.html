@@ -1,0 +1,55 @@
+<div>
+    <h3>Custom Range Demo</h3>
+    <p>This demonstrates the new startMonth and endMonth feature.</p>
+    <p>Data exists only for July, but we show April to September range.</p>
+</div>
+
+<p>
+    <label>Custom Display Range:</label>
+    <tui-input-date-range
+        [maxLength]="maxLength"
+        [(ngModel)]="customRange"
+    >
+        Custom Range
+    </tui-input-date-range>
+</p>
+
+<div style="margin: 20px 0;">
+    <h4>Without Custom Range (default behavior):</h4>
+    <tui-axes
+        *ngIf="computeLabels$(dataRange) | async as labels"
+        class="axes"
+        [axisXLabels]="labels"
+        [horizontalLines]="4"
+        [verticalLines]="labels.length - 1"
+    >
+        <tui-line-days-chart
+            class="chart"
+            [height]="150"
+            [value]="value"
+            [xStringify]="xStringify$ | async"
+            [yStringify]="yStringify"
+        />
+    </tui-axes>
+</div>
+
+<div style="margin: 20px 0;">
+    <h4>With Custom Range (new feature):</h4>
+    <tui-axes
+        *ngIf="computeLabels$(customRange) | async as labels"
+        class="axes"
+        [axisXLabels]="labels"
+        [horizontalLines]="4"
+        [verticalLines]="labels.length - 1"
+    >
+        <tui-line-days-chart
+            class="chart"
+            [height]="150"
+            [value]="value"
+            [startMonth]="customRange.from"
+            [endMonth]="customRange.to"
+            [xStringify]="xStringify$ | async"
+            [yStringify]="yStringify"
+        />
+    </tui-axes>
+</div>

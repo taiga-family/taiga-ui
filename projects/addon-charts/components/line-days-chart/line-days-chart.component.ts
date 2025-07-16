@@ -4,6 +4,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
+    forwardRef,
     inject,
     Input,
     NgZone,
@@ -43,7 +44,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
         TuiHoveredService,
         {
             provide: TuiLineChartHint,
-            useExisting: TuiLineDaysChart,
+            useExisting: forwardRef(() => TuiLineDaysChart),
         },
     ],
     host: {
@@ -83,6 +84,12 @@ export class TuiLineDaysChart implements AfterViewInit {
     @Input()
     public dots = this.options.dots;
 
+    @Input()
+    public startMonth?: TuiDay;
+
+    @Input()
+    public endMonth?: TuiDay;
+
     public zIndex = 0;
 
     public value: ReadonlyArray<[TuiDay, number]> = [];
@@ -95,19 +102,32 @@ export class TuiLineDaysChart implements AfterViewInit {
             return;
         }
 
-        const start = value[0]?.[0];
-        const end = value[value.length - 1];
+        // Use custom range if provided, otherwise use data bounds
+        const dataStart = value[0]?.[0];
+        const dataEnd = value[value.length - 1]?.[0];
+        const start = this.startMonth ?? dataStart;
+        const end = this.endMonth ?? dataEnd;
+        
+        if (!start || !end) {
+            this.value = [];
+            return;
+        }
+
         const mutable = [...value];
-        const length = start && end ? TuiDay.lengthBetween(start, end[0]) + 1 : 0;
+        const length = TuiDay.lengthBetween(start, end) + 1;
 
         this.value = Array.from({length}, (_, day) => {
-            const startMutable = mutable[0]?.[0];
-            const currentDay = start?.append({day});
-            const shifted =
-                startMutable && currentDay?.daySame(startMutable)
-                    ? mutable.shift()
-                    : null;
-            const currentValue = shifted ? shifted[1] : NaN;
+            const currentDay = start.append({day});
+            const matchingDataIndex = mutable.findIndex(([dataDay]) => 
+                dataDay.daySame(currentDay)
+            );
+            
+            let currentValue = NaN;
+            if (matchingDataIndex !== -1) {
+                currentValue = mutable[matchingDataIndex]![1];
+                // Remove the matched item to avoid duplicate matching
+                mutable.splice(matchingDataIndex, 1);
+            }
 
             return [currentDay, currentValue] as [TuiDay, number];
         });
