@@ -159,6 +159,11 @@ export class TuiDropdownOpen implements OnChanges {
             return;
         }
 
+        // For dropdown-selection, allow default arrow key behavior for text navigation
+        if (this.el.hasAttribute('tuiDropdownSelection')) {
+            return;
+        }
+
         event.preventDefault();
         this.focusDropdown(up);
     }
