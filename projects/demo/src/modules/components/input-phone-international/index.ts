@@ -1,7 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
+import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
@@ -17,8 +19,10 @@ import {getCountries} from 'libphonenumber-js';
     imports: [
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocDropdown,
+        TuiDocIcons,
         TuiDocTextfield,
         TuiDropdown,
         TuiIcon,
@@ -36,6 +40,7 @@ import {getCountries} from 'libphonenumber-js';
 })
 export default class PageComponent {
     protected readonly routes = DemoRoute;
+    protected readonly appearances = ['textfield', 'outline', 'outline-grayscale'];
     protected readonly countriesVariants: ReadonlyArray<readonly TuiCountryIsoCode[]> = [
         ['RU', 'KZ', 'UA', 'BY'],
         getCountries(),

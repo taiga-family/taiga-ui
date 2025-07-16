@@ -242,6 +242,12 @@
         <tui-doc-demo [control]="formControl">
             <ng-template>
                 <tui-textfield
+                    [appearance]="appearance.appearance"
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
+                    [tuiAppearanceFocus]="appearance.focus"
+                    [tuiAppearanceMode]="appearance.mode"
+                    [tuiAppearanceState]="appearance.state"
                     [tuiDropdownAlign]="dropdown.align"
                     [tuiDropdownAppearance]="dropdown.appearance"
                     [tuiDropdownDirection]="dropdown.direction"
@@ -306,6 +312,14 @@
             <tbody
                 #control
                 tuiDocControl
+            ></tbody>
+            <tbody
+                #appearance
+                [tuiDocAppearance]="appearances"
+            ></tbody>
+            <tbody
+                #icons
+                tuiDocIcons
             ></tbody>
             <tbody
                 #dropdown

@@ -46,8 +46,12 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-textfield
+                [appearance]="appearance.appearance"
                 [iconEnd]="icons.iconEnd"
                 [iconStart]="icons.iconStart"
+                [tuiAppearanceFocus]="appearance.focus"
+                [tuiAppearanceMode]="appearance.mode"
+                [tuiAppearanceState]="appearance.state"
                 [tuiTextfieldCleaner]="textfield.cleaner"
                 [tuiTextfieldSize]="textfield.size"
             >
@@ -103,6 +107,10 @@
             <tbody
                 #textfield
                 tuiDocTextfield
+            ></tbody>
+            <tbody
+                #appearance
+                [tuiDocAppearance]="appearances"
             ></tbody>
             <tbody
                 #icons

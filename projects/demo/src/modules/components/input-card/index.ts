@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
@@ -14,6 +15,7 @@ import {TuiTextfield} from '@taiga-ui/core';
         FormsModule,
         ReactiveFormsModule,
         TuiDemo,
+        TuiDocAppearance,
         TuiDocControl,
         TuiDocIcons,
         TuiDocTextfield,
@@ -24,6 +26,7 @@ import {TuiTextfield} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Page {
+    protected readonly appearances = ['textfield', 'outline', 'outline-grayscale'];
     protected card = '';
     protected iconSelected: string | null = null;
 
