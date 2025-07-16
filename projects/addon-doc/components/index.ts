@@ -3,6 +3,7 @@ export * from './api/api-item.component';
 export * from './api/api-item-number.directive';
 export * from './code';
 export * from './copy';
+export * from './copy-api';
 export * from './demo';
 export * from './doc-tab';
 export * from './documentation/documentation.component';
