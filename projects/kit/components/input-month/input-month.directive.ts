@@ -84,18 +84,18 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
 
         const currentValue = this.value();
         const calendar = this.calendar();
-        
+
         if (!currentValue) {
             return;
         }
 
         // Calculate the new month
         const newMonth = currentValue.append({month: direction});
-        
+
         // Get min/max bounds from the calendar component
         const min = calendar?.min() ?? TUI_FIRST_DAY;
         const max = calendar?.max() ?? TUI_LAST_DAY;
-        
+
         // Check bounds
         if (newMonth.monthBefore(min) || newMonth.monthAfter(max)) {
             return;
