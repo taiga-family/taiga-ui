@@ -16,12 +16,12 @@ import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiContext, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiHintDirection} from '@taiga-ui/core/directives/hint';
 import {
     TuiHint,
     TuiHintHover,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
-    type TuiHintDirection,
 } from '@taiga-ui/core/directives/hint';
 import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';

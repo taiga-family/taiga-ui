@@ -10,9 +10,9 @@ describe('PieChart', () => {
         standalone: true,
         imports: [TuiPieChart],
         template: `
-            <tui-pie-chart 
+            <tui-pie-chart
                 [tuiHintDirection]="hintDirection"
-                [value]="value" 
+                [value]="value"
             />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,

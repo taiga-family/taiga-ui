@@ -12,11 +12,11 @@ import {tuiInjectId} from '@taiga-ui/cdk/services';
 import type {TuiContext} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import type {TuiHintDirection} from '@taiga-ui/core/directives/hint';
 import {
     TuiHint,
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
-    type TuiHintDirection,
 } from '@taiga-ui/core/directives/hint';
 import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
