@@ -19,7 +19,7 @@ import {exhaustMap, filter, isObservable, merge, of, Subject, take} from 'rxjs';
 
 import type {TuiSheetDialogOptions} from './sheet-dialog.options';
 
-const REQUIRED_ERROR = new Error('Required dialog was dismissed');
+const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
 
 @Component({
     standalone: true,
