@@ -227,16 +227,44 @@
         >
             4. Providers
         </h2>
-        <tui-tabs-with-more class="tabs">
+        <tui-tabs-with-more 
+            #providers
+            class="tabs"
+        >
             <button
                 *tuiItem
                 tuiTab
                 type="button"
             >
-                <tui-doc-tab src="assets/icons/ts.svg">main.ts</tui-doc-tab>
+                <tui-doc-tab src="assets/icons/ts.svg">main.ts (manual)</tui-doc-tab>
+            </button>
+            <button
+                *tuiItem
+                tuiTab
+                type="button"
+            >
+                <tui-doc-tab src="assets/icons/ts.svg">main.ts (provideTaiga)</tui-doc-tab>
             </button>
         </tui-tabs-with-more>
-        <tui-doc-code [code]="standaloneMain" />
+        <tui-doc-code 
+            *ngIf="providers.activeItemIndex === 0"
+            [code]="standaloneMain" 
+        />
+        <tui-doc-code 
+            *ngIf="providers.activeItemIndex === 1"
+            [code]="provideTaiga" 
+        />
+
+        <tui-notification 
+            *ngIf="providers.activeItemIndex === 1"
+            class="tui-space_top-5"
+            appearance="info"
+        >
+            <strong>New in v4.45+:</strong>
+            The <code>provideTaiga</code> helper simplifies setup by automatically including 
+            <code>provideEventPlugins()</code> and optionally enabling font scaling, 
+            automatic dark mode, and custom scrollbar styling based on configuration.
+        </tui-notification>
 
         <h2
             id="icons"

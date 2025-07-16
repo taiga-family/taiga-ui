@@ -33,4 +33,5 @@ export class Home {
     protected readonly nxMigrate = import('./examples/nx-migrate.md?raw');
     protected readonly standalone = import('./examples/app-standalone.md?raw');
     protected readonly standaloneMain = import('./examples/main-standalone.md?raw');
+    protected readonly provideTaiga = import('./examples/provide-taiga.md?raw');
 }
