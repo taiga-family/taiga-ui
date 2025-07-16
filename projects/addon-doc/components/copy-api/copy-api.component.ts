@@ -1,9 +1,9 @@
-import {Clipboard} from '@angular/cdk/clipboard';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {TUI_DOC_ICONS} from '@taiga-ui/addon-doc/tokens';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
@@ -15,36 +15,30 @@ const COPIED_TIMEOUT = 1500;
 @Component({
     standalone: true,
     selector: 'tui-doc-copy-api',
-    imports: [TuiButton, TuiIcon],
+    imports: [ClipboardModule, TuiButton],
     template: `
         <button
+            tuiIconButton
+            type="button"
             appearance="flat"
             size="s"
-            tuiButton
-            type="button"
             class="t-copy-api"
+            [iconStart]="icon()"
+            [cdkCopyToClipboard]="generatedCode"
             (click)="onCopy()"
         >
-            <tui-icon 
-                icon="@tui.copy"
-                class="t-icon"
-            />
-            {{ copied() ? texts()[1] : texts()[0] }}
+            {{ copyText() }}
         </button>
     `,
     styles: [`
         .t-copy-api {
-            gap: 0.25rem;
-        }
-        
-        .t-icon {
-            font-size: 1rem;
+            margin-top: 1rem;
         }
     `],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocCopyApi {
-    private readonly clipboard = inject(Clipboard);
+    private readonly icons = inject(TUI_DOC_ICONS);
     private readonly codeGenerator = inject(TuiCodeGeneratorService);
     private readonly copy$ = new Subject<void>();
 
@@ -57,28 +51,33 @@ export class TuiDocCopyApi {
     @Input()
     public content = '';
 
-    protected readonly texts = toSignal(inject(TUI_COPY_TEXTS), {
-        initialValue: ['Copy code', 'Copied!'] as const,
-    });
-
-    protected readonly copied = toSignal(
-        this.copy$.pipe(
-            switchMap(() =>
-                timer(COPIED_TIMEOUT).pipe(map(TUI_FALSE_HANDLER), startWith(true)),
-            ),
-        ),
-        {initialValue: false},
+    protected readonly copyText = toSignal(
+        inject(TUI_COPY_TEXTS).pipe(map(([copy]) => copy)),
+        {initialValue: 'Copy code'},
     );
 
-    protected onCopy(): void {
-        const code = this.codeGenerator.generateComponentCode(
+    protected readonly icon = toSignal(
+        this.copy$.pipe(
+            switchMap(() =>
+                timer(COPIED_TIMEOUT).pipe(
+                    map(() => this.icons.copy),
+                    startWith('✓'),
+                ),
+            ),
+            startWith(this.icons.copy),
+        ),
+        {initialValue: this.icons.copy},
+    );
+
+    protected get generatedCode(): string {
+        return this.codeGenerator.generateComponentCode(
             this.selector,
             this.apiItems,
             this.content,
         );
-        
-        if (this.clipboard.copy(code)) {
-            this.copy$.next();
-        }
+    }
+
+    protected onCopy(): void {
+        this.copy$.next();
     }
 }

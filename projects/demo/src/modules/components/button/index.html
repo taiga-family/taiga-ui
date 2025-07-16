@@ -32,6 +32,7 @@
         </tui-doc-demo>
         <table 
             tuiDocAPI
+            #apiTable
             tuiDocCopyApi="button"
             content="Button"
         >
@@ -63,6 +64,13 @@
                 tuiDocIcons
             ></tbody>
         </table>
+        <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+            <tui-doc-copy-api
+                selector="button"
+                content="Button"
+                [apiItems]="getApiConfig()"
+            />
+        </div>
     </ng-template>
 
     <tui-setup *pageTab />
