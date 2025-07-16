@@ -230,14 +230,33 @@ export class TuiLineDaysChart implements AfterViewInit {
                     )
                     .filter(tuiIsPresent),
             )
-            .map((month, index, array) =>
-                index === array.length - 1
-                    ? month
-                    : [
-                          ...month,
-                          array[index + 1]?.find((day) => !Number.isNaN(day[1])) || DUMMY,
-                      ],
-            );
+            .map((month, index, array) => {
+                if (index === array.length - 1) {
+                    return month;
+                }
+
+                const nextMonth = array[index + 1];
+                const nextPoint = nextMonth?.find((day) => !Number.isNaN(day[1]));
+                
+                // Only add a bridging point if the current month doesn't already
+                // end with a valid point that would create a duplicate
+                if (nextPoint && month.length > 0) {
+                    const lastPointOfCurrentMonth = month[month.length - 1];
+                    const nextPointIndex = nextPoint[0];
+                    const lastPointIndex = lastPointOfCurrentMonth[0];
+                    
+                    // If the next point is immediately after the last point,
+                    // don't add it to avoid duplicate points at month boundaries
+                    if (nextPointIndex === lastPointIndex + 1) {
+                        return month;
+                    }
+                }
+
+                return [
+                    ...month,
+                    nextPoint || DUMMY,
+                ];
+            });
     }
 
     private getDay(index: number): TuiDay | undefined {
