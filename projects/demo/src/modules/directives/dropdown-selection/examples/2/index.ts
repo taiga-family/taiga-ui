@@ -90,6 +90,7 @@ export default class Example {
     protected onArrow(event: Event, which: 'first' | 'last'): void {
         const item = this.options[which];
 
+        // Only handle arrow keys if dropdown is open and has options
         if (!item) {
             return;
         }
