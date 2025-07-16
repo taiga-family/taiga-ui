@@ -19,6 +19,8 @@ import {exhaustMap, filter, isObservable, merge, of, Subject, take} from 'rxjs';
 
 import type {TuiSheetDialogOptions} from './sheet-dialog.options';
 
+const REQUIRED_ERROR = new Error('Required dialog was dismissed');
+
 @Component({
     standalone: true,
     selector: 'tui-sheet-dialog',
@@ -67,7 +69,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
             filter(Boolean),
             takeUntilDestroyed(),
         )
-        .subscribe(() => this.context.$implicit.complete());
+        .subscribe(() => this.close());
 
     public ngAfterViewInit(): void {
         this.el.scrollTop = this.initial;
@@ -91,5 +93,13 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
                 .map((e) => e.nativeElement.offsetTop - this.context.offset)
                 .concat(this.el.clientHeight ?? Infinity)[this.context.initial] ?? 0
         );
+    }
+
+    private close(): void {
+        if (this.context.required) {
+            this.context.$implicit.error(REQUIRED_ERROR);
+        } else {
+            this.context.$implicit.complete();
+        }
     }
 }
