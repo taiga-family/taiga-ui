@@ -150,6 +150,30 @@ export abstract class TuiInputDateBase<
         calendar.disabledItemHandler = this.handlers.disabledItemHandler();
         calendar.min = this.min();
         calendar.max = this.max();
+        
+        // Clamp initial viewed month to min/max constraints
+        const min = this.min();
+        const max = this.max();
+        
+        if (calendar instanceof TuiCalendar) {
+            // For TuiCalendar, directly set the month if needed
+            const currentMonth = calendar.month;
+            
+            if (max && currentMonth.monthSameOrAfter(max)) {
+                calendar.month = max;
+            } else if (min && currentMonth.monthSameOrBefore(min)) {
+                calendar.month = min;
+            }
+        } else if (calendar instanceof TuiCalendarRange) {
+            // For TuiCalendarRange, use defaultViewedMonth property if needed
+            const currentMonth = calendar.defaultViewedMonth;
+            
+            if (max && currentMonth.monthSameOrAfter(max)) {
+                calendar.defaultViewedMonth = max;
+            } else if (min && currentMonth.monthSameOrBefore(min)) {
+                calendar.defaultViewedMonth = min;
+            }
+        }
     }
 
     protected onClick(): void {
