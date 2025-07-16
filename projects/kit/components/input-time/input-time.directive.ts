@@ -65,8 +65,6 @@ export class TuiInputTimeDirective
     private readonly fillers = toSignal(inject(TUI_TIME_TEXTS));
     private readonly prefix = signal('');
     private readonly postfix = signal('');
-    private readonly defaultAccessor: TuiTextfieldAccessor<TuiTime | null> =
-        inject(TuiTextfieldDirective);
 
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_TIME_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
@@ -126,7 +124,7 @@ export class TuiInputTimeDirective
         if (value) {
             this.textfield.value.set(this.stringify(value));
         } else {
-            this.defaultAccessor.setValue(value);
+            this.textfield.setValue(value);
         }
 
         if (!value && this.dropdownEnabled()) {

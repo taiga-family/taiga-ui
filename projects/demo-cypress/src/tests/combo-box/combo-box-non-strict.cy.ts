@@ -166,4 +166,15 @@ describe('ComboBox[strict=false]', () => {
             cy.get('@valueChanges').should('have.been.calledWith', null);
         });
     });
+
+    it('set caret to the end after click on item from datalist', () => {
+        cy.mount(TestComboBox);
+        cy.get('[tuiComboBox]').focus().type('and');
+        cy.get('[tuiOption]').first().click();
+
+        cy.get('[tuiComboBox]')
+            .should('have.value', 'Andorra')
+            .should('have.prop', 'selectionStart', 'Andorra'.length)
+            .should('have.prop', 'selectionEnd', 'Andorra'.length);
+    });
 });
