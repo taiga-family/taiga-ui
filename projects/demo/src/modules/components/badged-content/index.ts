@@ -26,5 +26,6 @@ export default class Example {
         'Basic',
         'Rounded content',
         'With different components',
+        'With image',
     ];
 }

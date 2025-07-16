@@ -4,9 +4,10 @@
     #badgeTop
     class="t-badge t-badge_top"
     [style.--t-badge-height.px]="badgeTop.offsetHeight"
+    [style.--t-img]="imgTop"
     (waResizeObserver)="onResize()"
 >
-    <ng-content select="tui-badge-notification[tuiSlot='top']" />
+    <ng-content select="tui-badge-notification[tuiSlot='top'], img[tuiSlot='top']" />
     <div class="t-border">
         <ng-content select="[tuiSlot='top']" />
     </div>
@@ -16,9 +17,10 @@
     #badgeBottom
     class="t-badge t-badge_bottom"
     [style.--t-badge-height.px]="badgeBottom.offsetHeight"
+    [style.--t-img]="imgBottom"
     (waResizeObserver)="onResize()"
 >
-    <ng-content select="tui-badge-notification[tuiSlot='bottom']" />
+    <ng-content select="tui-badge-notification[tuiSlot='bottom'], img[tuiSlot='bottom']" />
     <div class="t-border">
         <ng-content select="[tuiSlot='bottom']" />
     </div>

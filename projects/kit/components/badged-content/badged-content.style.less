@@ -17,6 +17,7 @@
 
     position: absolute;
     display: flex;
+    isolation: isolate;
 
     &_top {
         top: var(--t-offset);
@@ -26,6 +27,20 @@
     &_bottom {
         bottom: var(--t-offset);
         right: var(--t-offset);
+    }
+
+    &::before {
+        .center-all();
+
+        content: '';
+        position: absolute;
+        z-index: -1;
+        inline-size: 120%;
+        block-size: 120%;
+        mask-image: var(--t-img);
+        mask-size: 100%;
+        mask-repeat: no-repeat;
+        background-color: currentColor;
     }
 }
 
