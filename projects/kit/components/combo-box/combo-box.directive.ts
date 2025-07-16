@@ -11,7 +11,6 @@ import {
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import type {TuiStringMatcher} from '@taiga-ui/cdk/types';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import type {TuiDataListAccessor} from '@taiga-ui/core/components/data-list';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
@@ -51,7 +50,6 @@ export class TuiComboBox<T>
     extends TuiControl<T | string | null>
     implements TuiTextfieldAccessor<T>
 {
-    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly host: TuiTextfieldComponent<T> = inject(TuiTextfieldComponent);
     private readonly textfield: TuiTextfieldDirective<T> = inject(TuiTextfieldDirective);
     private readonly open = tuiDropdownOpen();
