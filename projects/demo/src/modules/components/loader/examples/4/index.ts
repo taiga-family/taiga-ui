@@ -1,21 +1,15 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
+import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiLoader],
+    imports: [TuiLoader],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [
-        tuiLoaderOptionsProvider({
-            size: 'l',
-            inheritColor: false,
-            overlay: true,
-        }),
-    ],
+    providers: [tuiLoaderOptionsProvider({size: 'xl'})],
 })
 export default class Example {}
