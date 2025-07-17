@@ -109,6 +109,10 @@
         display: none;
     }
 
+    &:not([data-type='icon'])::before {
+        mask: none;
+    }
+
     &[data-type='img']:not(._svg) {
         background: transparent;
     }
