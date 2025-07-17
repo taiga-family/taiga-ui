@@ -1,23 +1,154 @@
+import type {HarnessLoader} from '@angular/cdk/testing';
+import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import type {ComponentFixture} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiCheckbox} from '@taiga-ui/kit';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+
 import {TuiCheckboxHarness} from './checkbox.harness';
 
 describe('TuiCheckboxHarness', () => {
-    it('should have correct host selector', () => {
-        expect(TuiCheckboxHarness.hostSelector).toBe('input[type="checkbox"][tuiCheckbox]');
+    @Component({
+        standalone: true,
+        imports: [TuiCheckbox, ReactiveFormsModule],
+        template: `
+            <input
+                id="basic-checkbox"
+                tuiCheckbox
+                type="checkbox"
+                [formControl]="basicControl"
+            />
+            <input
+                id="size-m-checkbox"
+                tuiCheckbox
+                type="checkbox"
+                [formControl]="basicControl"
+                size="m"
+            />
+            <input
+                id="disabled-checkbox"
+                tuiCheckbox
+                type="checkbox"
+                [formControl]="disabledControl"
+            />
+            <input
+                id="indeterminate-checkbox"
+                tuiCheckbox
+                type="checkbox"
+                [formControl]="indeterminateControl"
+            />
+        `,
+        changeDetection: ChangeDetectionStrategy.OnPush,
+    })
+    class TestComponent {
+        public basicControl = new FormControl(false);
+        public disabledControl = new FormControl({value: false, disabled: true});
+        public indeterminateControl = new FormControl(null);
+    }
+
+    let fixture: ComponentFixture<TestComponent>;
+    let loader: HarnessLoader;
+    let testComponent: TestComponent;
+
+    beforeEach(async () => {
+        TestBed.configureTestingModule({
+            imports: [TestComponent],
+            providers: [NG_EVENT_PLUGINS],
+        });
+        await TestBed.compileComponents();
+        fixture = TestBed.createComponent(TestComponent);
+        loader = TestbedHarnessEnvironment.loader(fixture);
+        testComponent = fixture.componentInstance;
+        fixture.detectChanges();
     });
 
-    it('should have static with method', () => {
-        expect(typeof TuiCheckboxHarness.with).toBe('function');
+    it('should find checkbox by selector', async () => {
+        const checkbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#basic-checkbox'}));
+
+        expect(checkbox).toBeTruthy();
     });
 
-    it('should have all required public methods', () => {
-        const harness = new TuiCheckboxHarness(null as any);
+    it('should check if checkbox is initially unchecked', async () => {
+        const checkbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#basic-checkbox'}));
 
-        expect(typeof harness.isChecked).toBe('function');
-        expect(typeof harness.isIndeterminate).toBe('function');
-        expect(typeof harness.isDisabled).toBe('function');
-        expect(typeof harness.check).toBe('function');
-        expect(typeof harness.uncheck).toBe('function');
-        expect(typeof harness.toggle).toBe('function');
-        expect(typeof harness.getSize).toBe('function');
+        expect(await checkbox.isChecked()).toBe(false);
+    });
+
+    it('should check if checkbox is disabled', async () => {
+        const disabledCheckbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#disabled-checkbox'}));
+        const enabledCheckbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#basic-checkbox'}));
+
+        expect(await disabledCheckbox.isDisabled()).toBe(true);
+        expect(await enabledCheckbox.isDisabled()).toBe(false);
+    });
+
+    it('should check if checkbox is indeterminate', async () => {
+        const indeterminateCheckbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#indeterminate-checkbox'}));
+        const normalCheckbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#basic-checkbox'}));
+
+        expect(await indeterminateCheckbox.isIndeterminate()).toBe(true);
+        expect(await normalCheckbox.isIndeterminate()).toBe(false);
+    });
+
+    it('should check the checkbox', async () => {
+        const checkbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#basic-checkbox'}));
+
+        await checkbox.check();
+
+        expect(await checkbox.isChecked()).toBe(true);
+        expect(testComponent.basicControl.value).toBe(true);
+    });
+
+    it('should uncheck the checkbox', async () => {
+        const checkbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#basic-checkbox'}));
+
+        testComponent.basicControl.setValue(true);
+        fixture.detectChanges();
+
+        await checkbox.uncheck();
+
+        expect(await checkbox.isChecked()).toBe(false);
+        expect(testComponent.basicControl.value).toBe(false);
+    });
+
+    it('should toggle checkbox state', async () => {
+        const checkbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#basic-checkbox'}));
+
+        await checkbox.toggle();
+        expect(await checkbox.isChecked()).toBe(true);
+
+        await checkbox.toggle();
+        expect(await checkbox.isChecked()).toBe(false);
+    });
+
+    it('should get checkbox size', async () => {
+        const sizeMCheckbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#size-m-checkbox'}));
+        const basicCheckbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#basic-checkbox'}));
+
+        expect(await sizeMCheckbox.getSize()).toBe('m');
+        expect(await basicCheckbox.getSize()).toBeNull();
+    });
+
+    it('should not change state when checking already checked checkbox', async () => {
+        const checkbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#basic-checkbox'}));
+
+        testComponent.basicControl.setValue(true);
+        fixture.detectChanges();
+
+        await checkbox.check();
+
+        expect(await checkbox.isChecked()).toBe(true);
+        expect(testComponent.basicControl.value).toBe(true);
+    });
+
+    it('should not change state when unchecking already unchecked checkbox', async () => {
+        const checkbox = await loader.getHarness(TuiCheckboxHarness.with({selector: '#basic-checkbox'}));
+
+        await checkbox.uncheck();
+
+        expect(await checkbox.isChecked()).toBe(false);
+        expect(testComponent.basicControl.value).toBe(false);
     });
 });
