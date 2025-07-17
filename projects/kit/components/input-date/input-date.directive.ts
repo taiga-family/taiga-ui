@@ -101,7 +101,7 @@ export abstract class TuiInputDateBase<
     protected abstract onValueChange(value: string): void;
 
     public setDate(value: TuiDay | TuiDayRange): void {
-        this.onChange(value);
+        this.onChange(value as T);
         this.open.set(false);
 
         if (!this.el.closest('tui-dropdown')) {
