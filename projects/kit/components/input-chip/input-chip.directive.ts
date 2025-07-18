@@ -54,9 +54,9 @@ export class TuiInputChipDirective<T>
 {
     private readonly options = inject(TUI_INPUT_CHIP_OPTIONS);
     private readonly mobile = inject(TUI_IS_MOBILE);
-    private readonly textfield = inject(TuiTextfieldMultiComponent);
     private readonly dropdown = inject(TuiDropdownDirective);
 
+    protected readonly textfield = inject(TuiTextfieldMultiComponent);
     protected readonly open = tuiDropdownOpen();
     protected readonly handlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     protected readonly enabled = tuiDirectiveBinding(

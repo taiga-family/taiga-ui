@@ -2,7 +2,7 @@ import {computed, Directive, effect, inject, Input, signal} from '@angular/core'
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
+import {tuiAsControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {DATE_FILLER_LENGTH, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
@@ -31,7 +31,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         tuiAsControl(TuiInputDateMultiDirective),
         tuiFallbackValueProvider([]),
         tuiAsTextfieldAccessor(TuiInputDateMultiDirective),
-        tuiValueTransformerFrom(TUI_INPUT_DATE_OPTIONS_NEW),
     ],
     hostDirectives: [
         TuiNativeValidator,
@@ -43,7 +42,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         },
     ],
     host: {
-        '(input)': 'onValueChange($event.target.value)',
         '(keydown.enter.prevent)': '0',
     },
 })
@@ -139,7 +137,9 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         this.onValueChange(value);
     }
 
-    protected override onEnter(): void {}
+    protected override onEnter(): void {
+        this.onValueChange(this.textfield.value().trim());
+    }
 
     private updateValue(day: TuiDay): void {
         const exist = this.value().find((x) => x.daySame(day));

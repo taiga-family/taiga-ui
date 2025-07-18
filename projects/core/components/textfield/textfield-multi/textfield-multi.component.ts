@@ -165,8 +165,7 @@ export class TuiTextfieldMultiComponent<T>
             target === this.el ||
             !this.cva?.interactive() ||
             (!this.el.matches('[tuiChevron]') &&
-                !this.el.querySelector('select') &&
-                !this.el.querySelector('[tuiInputDateMulti]')) ||
+                !this.el.querySelector('select, [tuiInputDateMulti]')) ||
             target.matches('input:read-only,input[inputmode="none"]')
         ) {
             return;
