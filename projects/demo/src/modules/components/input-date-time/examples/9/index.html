@@ -1,0 +1,41 @@
+<tui-textfield>
+    <input
+        list="dates"
+        placeholder="Pick a date"
+        tuiInputDateTime
+        type="datetime-local"
+        [(ngModel)]="value"
+    />
+
+    <datalist id="dates">
+        <option
+            *ngFor="let date of dates | keyvalue: asIs"
+            [value]="toISOString(date.value)"
+        >
+            {{ date.key }}
+        </option>
+    </datalist>
+
+    <section *tuiTextfieldDropdown>
+        <tui-calendar />
+
+        <tui-data-list>
+            <button
+                *ngFor="let date of dates | keyvalue: asIs"
+                new
+                tuiOption
+                [value]="date.value"
+            >
+                {{ date.key }}
+            </button>
+
+            <button
+                new
+                tuiOption
+                [disabled]="true"
+            >
+                v5
+            </button>
+        </tui-data-list>
+    </section>
+</tui-textfield>

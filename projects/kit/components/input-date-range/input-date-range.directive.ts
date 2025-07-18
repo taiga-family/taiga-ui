@@ -1,18 +1,16 @@
-import {computed, Directive, inject, Input, signal} from '@angular/core';
+import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import type {TuiDayLike} from '@taiga-ui/cdk/date-time';
+import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
+import type {TuiDay, TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {
     DATE_RANGE_FILLER_LENGTH,
     RANGE_SEPARATOR_CHAR,
     TuiDayRange,
 } from '@taiga-ui/cdk/date-time';
-import {tuiDirectiveBinding, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    TuiTextfieldComponent,
-    TuiWithTextfield,
-} from '@taiga-ui/core/components/textfield';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
@@ -21,6 +19,7 @@ import {
     TUI_DATE_ADAPTER,
     TUI_INPUT_DATE_OPTIONS_NEW,
     TuiInputDateBase,
+    tuiWithDateFiller,
 } from '@taiga-ui/kit/components/input-date';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
@@ -42,14 +41,19 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
         TUI_ITEMS_HANDLERS,
     ).identityMatcher.set((a, b) => a.daySame(b));
 
-    protected readonly rangeFiller = tuiDirectiveBinding(
-        TuiTextfieldComponent,
-        'fillerSetter',
-        computed((filler = this.filler()) => `${filler}${RANGE_SEPARATOR_CHAR}${filler}`),
-        {},
+    protected override readonly filler = tuiWithDateFiller(
+        (filler) => `${filler}${RANGE_SEPARATOR_CHAR}${filler}`,
     );
 
-    protected override readonly mask = tuiMaskito(
+    protected readonly valueEffect = effect(() => {
+        const value =
+            this.stringify(this.value()) ??
+            (this.filler().length === this.el.value.length ? '' : this.el.value);
+
+        this.textfield.value.set(value);
+    }, TUI_ALLOW_SIGNAL_WRITES);
+
+    protected readonly mask = tuiMaskito(
         computed(() =>
             maskitoDateRangeOptionsGenerator({
                 dateSeparator: this.format().separator,
@@ -64,6 +68,16 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
 
     public readonly minLength = signal<TuiDayLike | null>(null);
     public readonly maxLength = signal<TuiDayLike | null>(null);
+
+    @Input('min')
+    public set minSetter(min: TuiDay | null) {
+        this.min.set(min || this.options.min);
+    }
+
+    @Input('max')
+    public set maxSetter(max: TuiDay | null) {
+        this.max.set(max || this.options.max);
+    }
 
     @Input('minLength')
     public set minLengthSetter(minLength: TuiDayLike | null) {

@@ -3,6 +3,10 @@ import {TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
 
 import {TuiInputDateTimeDirective} from '../input-date-time.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-date-time#mobile TuiInputDateTime} (from @taiga-ui/kit) instead
+ */
 @Directive({
     standalone: false,
     selector: 'input[tuiDateTime]',
