@@ -7,7 +7,6 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {
     MAX_YEAR,
