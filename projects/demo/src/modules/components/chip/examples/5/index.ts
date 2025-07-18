@@ -14,5 +14,26 @@ import {TuiChip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected chips = ['Free', 'Base', 'Pro', 'Enterprise'];
+    protected chips = [
+        'Free',
+        'Base',
+        'Pro',
+        'Enterprise',
+        'Premium',
+        'Ultimate',
+        'Starter',
+        'Advanced',
+        'Business',
+        'Enterprise',
+        'Personal',
+        'Standard',
+        'Essential',
+        'Professional',
+        'Deluxe',
+        'Gold',
+        'Silver',
+        'Bronze',
+        'Plus',
+        'Basic',
+    ];
 }
