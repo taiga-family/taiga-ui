@@ -49,4 +49,30 @@ test.describe('Carousel', () => {
             .soft(document.apiPageExample)
             .toHaveScreenshot('carousel-draggable.png');
     });
+
+    test('loop mode works in “Custom” example', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Carousel);
+        const document = new TuiDocumentationPagePO(page);
+
+        await document.waitTuiIcons();
+
+        const custom = page.locator('#custom').locator('..');
+
+        await custom.scrollIntoViewIfNeeded();
+
+        const btnNext = page.locator('#carousel-next');
+        const btnPrev = page.locator('#carousel-prev');
+
+        for (let i = 0; i < 8; i++) {
+            await btnNext.click();
+            await page.waitForTimeout(400);
+        }
+
+        await expect.soft(custom).toHaveScreenshot('carousel-loop-forward.png');
+
+        await btnPrev.click();
+        await page.waitForTimeout(400);
+
+        await expect.soft(custom).toHaveScreenshot('carousel-loop-back.png');
+    });
 });
