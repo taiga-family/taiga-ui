@@ -1,18 +1,21 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInputYearModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputYear} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiInputYearModule, TuiTextfieldControllerModule],
+    imports: [FormsModule, TuiInputYear, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly testForm = new FormGroup({
-        testValue: new FormControl<number | null>(null),
-    });
+    protected value: number | null = null;
+
+    protected readonly disabledHandler: TuiBooleanHandler<number> = (value) =>
+        [2020, 2022].includes(value);
 }
