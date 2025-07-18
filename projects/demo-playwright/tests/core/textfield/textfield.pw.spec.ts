@@ -3,6 +3,8 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import type {Locator} from '@playwright/test';
 import {expect, test} from '@playwright/test';
 
+import {tuiGetPseudoElement} from '../../../utils/get-pseudo-element';
+
 test.describe('Textfield', () => {
     test.describe('interactivity on hover', () => {
         let example!: Locator;
@@ -41,5 +43,33 @@ test.describe('Textfield', () => {
 
             await expect.soft(example).toHaveScreenshot('textfield-invalid-hover.png');
         });
+    });
+
+    test('open dropdown by click on chevron icon in Textfield page', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Textfield);
+        await page.locator('#dropdown').scrollIntoViewIfNeeded();
+
+        const pseudo = await tuiGetPseudoElement(
+            page,
+            '#dropdown tui-textfield[tuiChevron]',
+        );
+
+        await page.mouse.click(pseudo.clickX, pseudo.clickY);
+        await expect.soft(page.locator('tui-dropdown')).toHaveCount(1);
+    });
+
+    test('open dropdowns by click on chevron icon in InputChip page', async ({page}) => {
+        await tuiGoto(page, DemoRoute.InputChip);
+        await page.locator('#mobile').scrollIntoViewIfNeeded();
+
+        for (const i of [1, 2, 3]) {
+            const pseudo = await tuiGetPseudoElement(
+                page,
+                `#mobile [data-orientation]:nth-child(${i}) [tuiChevron]`,
+            );
+
+            await page.mouse.click(pseudo.clickX, pseudo.clickY);
+            await expect.soft(page.locator('tui-dropdown')).toHaveCount(1);
+        }
     });
 });
