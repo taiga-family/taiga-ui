@@ -33,7 +33,7 @@ import {
             <button
                 id="reset"
                 type="button"
-                (click)="formGroup.reset()"
+                (mouseenter)="formGroup.reset()"
             >
                 Reset
             </button>
@@ -135,7 +135,7 @@ describe('Textfield + form.reset()', () => {
                 expect(form.get('comboBox')!.value).to.be.equal(null);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiComboBox]').should('have.value', '');
     });
 
@@ -147,7 +147,7 @@ describe('Textfield + form.reset()', () => {
                 expect(form.get('time')!.value).to.be.equal(null);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputTime]').should('have.value', '');
     });
 
@@ -159,7 +159,7 @@ describe('Textfield + form.reset()', () => {
                 expect(form.get('number')!.value).to.be.equal(null);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputNumber]').should('have.value', '');
     });
 
@@ -172,7 +172,7 @@ describe('Textfield + form.reset()', () => {
                 expect(form.get('date')!.value).to.be.equal(null);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputDate]').should('have.value', '');
     });
 
@@ -185,7 +185,7 @@ describe('Textfield + form.reset()', () => {
                 expect(form.get('dateRange')!.value).to.be.equal(null);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputDateRange]').should('have.value', '');
     });
 
@@ -202,7 +202,7 @@ describe('Textfield + form.reset()', () => {
                 expect(month).to.be.equal(0);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputMonth]')
             .should('have.value', '')
             .then(() => {

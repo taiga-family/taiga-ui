@@ -157,8 +157,10 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     }
 
     public override writeValue(value: number | null): void {
-        super.writeValue(value);
-        this.setValue(this.value());
+        if (value !== this.value()) {
+            super.writeValue(value);
+            this.setValue(this.value());
+        }
     }
 
     public setValue(value: number | null): void {
