@@ -8,9 +8,14 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import type {SafeResourceUrl} from '@angular/platform-browser';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import type {TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
+import {
+    TUI_ICON_END,
+    TUI_ICON_START,
+    tuiInjectIconModeResolver,
+    type TuiResolvedIcon,
+} from '@taiga-ui/core/tokens';
 
 /**
  * Workaround for {@link TuiAvatar} to properly handle icon color in {@link TuiAppearance}
@@ -33,13 +38,14 @@ class TuiIconsStyles {}
     standalone: true,
     host: {
         tuiIcons: '',
-        '[style.--t-icon-start]': 'resolve(iconStart())',
-        '[style.--t-icon-end]': 'resolve(iconEnd())',
+        '[style.--t-icon-start]': 'resolveResource(iconStart())',
+        '[style.--t-icon-end]': 'resolveResource(iconEnd())',
+        '[class]': 'resolveClasses(iconStart(), iconEnd())',
     },
 })
 export class TuiIcons {
-    private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
-
+    private readonly resolver: TuiHandler<string, TuiResolvedIcon> =
+        tuiInjectIconModeResolver();
     protected readonly nothing = tuiWithStyles(TuiIconsStyles);
 
     public readonly iconStart = signal<Icon>(
@@ -62,7 +68,15 @@ export class TuiIcons {
         this.iconEnd.set(x);
     }
 
-    protected resolve(icon: Icon): string | null {
-        return icon ? `url(${this.resolver(icon.toString())})` : null;
+    protected resolveResource(icon: Icon): string | null {
+        return icon ? this.resolver(icon.toString()).resource.path : null;
+    }
+
+    protected resolveClasses(iconStart: Icon, iconEnd: Icon): string | null {
+        const classes: string[] = [];
+        if (iconStart)
+            classes.push(`${this.resolver(iconStart.toString()).className}-start`);
+        if (iconEnd) classes.push(`${this.resolver(iconEnd.toString()).className}-end`);
+        return classes.join(' ');
     }
 }

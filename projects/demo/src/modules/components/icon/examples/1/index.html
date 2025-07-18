@@ -3,7 +3,11 @@
     [style.color]="'var(--tui-background-accent-1)'"
 />
 
+<tui-icon icon="@font.favorite" />
+
+<tui-icon icon="@image.assets/taiga-ui/icons/heart.svg" />
+
 <img
     alt=""
-    [src]="'@tui.heart' | tuiIcon"
+    [src]="('@tui.heart' | tuiIcon).resource.src"
 />
