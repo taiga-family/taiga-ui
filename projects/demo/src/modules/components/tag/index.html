@@ -73,7 +73,7 @@
         <tui-doc-demo>
             <tui-tag
                 [autoColor]="autoColor"
-                [disabled]="disabled"
+                [disabled]="controlDoc.disabled"
                 [editable]="editable"
                 [hoverable]="hoverable"
                 [leftContent]="leftContent"
@@ -83,7 +83,7 @@
                 [size]="size"
                 [status]="status"
                 [value]="value"
-                (edited)="editTag($event); documentationPropertyModeEdited.emitEvent($event)"
+                (edited)="editTag($event); edited.emitEvent($event)"
             />
             <ng-template #errorIcon>
                 <tui-icon
@@ -92,108 +92,105 @@
                 />
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="autoColor"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="autoColor"
+        <table tuiDocAPI>
+            <tr
+                name="[autoColor]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="autoColor"
             >
                 Autocolor for tag
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
-            >
-                Disabled state
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="editable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="editable"
+            </tr>
+            <tr
+                name="[editable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="editable"
             >
                 Tag can be edited
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="hoverable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="hoverable"
+            </tr>
+            <tr
+                name="[hoverable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="hoverable"
             >
                 Enable hovered state
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="leftContent"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="leftContentVariants"
-                [(documentationPropertyValue)]="leftContentSelected"
+            </tr>
+            <tr
+                name="[leftContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="leftContentVariants"
+                [(value)]="leftContentSelected"
             >
                 Content left to text
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="maxLength"
-                documentationPropertyType="number | null"
-                [documentationPropertyValues]="maxLengthVariants"
-                [(documentationPropertyValue)]="maxLength"
+            </tr>
+            <tr
+                name="[maxLength]"
+                tuiDocAPIItem
+                type="number | null"
+                [items]="maxLengthVariants"
+                [(value)]="maxLength"
             >
                 Max length of tag (when editing)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="removable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="removable"
+            </tr>
+            <tr
+                name="[removable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="removable"
             >
                 Tag can be removed
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="showLoader"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="showLoader"
+            </tr>
+            <tr
+                name="[showLoader]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="showLoader"
             >
                 Show loader
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="status"
-                documentationPropertyType="TuiStatus"
-                [documentationPropertyValues]="statusVariants"
-                [(documentationPropertyValue)]="status"
+            </tr>
+            <tr
+                name="[status]"
+                tuiDocAPIItem
+                type="TuiStatus"
+                [items]="statusVariants"
+                [(value)]="status"
             >
                 Changes color
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="value"
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="value"
             >
                 String value of tag
-            </ng-template>
-            <ng-template
-                #documentationPropertyModeEdited="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="edited"
-                documentationPropertyType="string"
+            </tr>
+            <tr
+                #edited
+                name="(edited)"
+                tuiDocAPIItem
+                type="string"
             >
                 Emits tag change (if it was edited to space or empty string, it emits delete)
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+            <tbody
+                #controlDoc
+                tuiDocControl
+                [hiddenOptions]="['readOnly', 'invalid']"
+            ></tbody>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

@@ -1,5 +1,6 @@
 import type {TemplateRef} from '@angular/core';
 import {Component, ViewChild} from '@angular/core';
+import {TuiDocControl} from '@demo/components/control';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
@@ -11,7 +12,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo, TuiIcon, TuiTagModule],
+    imports: [TuiDemo, TuiDocControl, TuiIcon, TuiTagModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
@@ -21,8 +22,6 @@ export default class Page {
     protected errorTemplate?: TemplateRef<Record<string, unknown>>;
 
     protected removable = false;
-
-    protected disabled = false;
 
     protected editable = false;
 
