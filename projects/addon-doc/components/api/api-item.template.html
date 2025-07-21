@@ -59,7 +59,10 @@
         <code [style.margin]="0">{{ data | tuiInspectAny }}</code>
     </ng-template>
     <ng-template #noItems>
-        <ng-container [ngSwitch]="type">
+        <ng-container
+            *ngIf="value !== undefined"
+            [ngSwitch]="type"
+        >
             <input
                 *ngSwitchCase="'boolean'"
                 tuiSwitch
