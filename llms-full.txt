@@ -10379,8 +10379,8 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| orientation | `TuiOrientation` | Steps direction |
-| activeItemIndex | `number` | Active step index |
+| [orientation] | `TuiOrientation` | Steps direction |
+| [(activeItemIndex)] | `number` | Active step index |
 
 ### TypeScript
 
