@@ -82,7 +82,7 @@ export abstract class TuiInputDateBase<
 
     protected readonly valueEffect = effect(() => {
         const value =
-            (this.value() && this.stringify(this.value())) ??
+            this.stringify(this.value()) ||
             (this.filler().length === this.el.value.length ? '' : this.el.value);
 
         this.textfield.value.set(value);
