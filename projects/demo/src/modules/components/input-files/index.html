@@ -106,122 +106,126 @@
                 </ng-container>
             </tui-files>
         </tui-doc-demo>
-        <tui-doc-documentation heading="TuiInputFiles">
-            <ng-template
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
+        <h3>TuiInputFiles</h3>
+        <table tuiDocAPI>
+            <tr
+                name="[disabled]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
             >
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="accept"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="acceptVariants"
-                [(documentationPropertyValue)]="accept"
+            </tr>
+            <tr
+                name="[accept]"
+                tuiDocAPIItem
+                type="string"
+                [items]="acceptVariants"
+                [(value)]="accept"
             >
                 Allowed formats
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="maxFileSize"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="maxFileSizeVariants"
-                [(documentationPropertyValue)]="maxFileSize"
+            </tr>
+            <tr
+                name="[maxFileSize]"
+                tuiDocAPIItem
+                type="number"
+                [items]="maxFileSizeVariants"
+                [(value)]="maxFileSize"
             >
                 Max file size in bytes (30 MB by default — 30 * 1000 * 1000)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="multiple"
-                documentationPropertyType="boolean"
-                [documentationPropertyValue]="multiple"
-                (documentationPropertyValueChange)="multipleChange($event)"
+            </tr>
+            <tr
+                name="[multiple]"
+                tuiDocAPIItem
+                type="boolean"
+                [value]="multiple"
+                (valueChange)="multipleChange($event)"
             >
                 Allows to upload several files
-            </ng-template>
-            <ng-template
+            </tr>
+            <tr
                 #documentationPropertyReject="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="reject"
-                documentationPropertyType="TuiFileLike[]"
+                name="(reject)"
+                tuiDocAPIItem
+                type="TuiFileLike[]"
             >
                 Emits files that were rejected.
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
 
-        <tui-doc-documentation heading="TuiFiles">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="max"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="maxFilesCount"
+        <h3>TuiFiles</h3>
+        <table tuiDocAPI>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="maxFilesCount"
             >
                 Maximum number of displayed files
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="expanded"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="expanded"
+            </tr>
+            <tr
+                name="[(expanded)]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="expanded"
             >
                 Expanded/collapsed state for multiple files that are limited by the max property
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
 
-        <tui-doc-documentation heading="TuiFile">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="showDelete"
-                documentationPropertyType="boolean | 'always'"
-                [documentationPropertyValues]="showDeleteVariants"
-                [(documentationPropertyValue)]="showDelete"
+        <h3>TuiFile</h3>
+        <table tuiDocAPI>
+            <tr
+                name="[showDelete]"
+                tuiDocAPIItem
+                type="boolean | 'always'"
+                [items]="showDeleteVariants"
+                [(value)]="showDelete"
             >
                 Allow to delete file after attach it
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="file"
-                documentationPropertyType="TuiFileLike"
+            </tr>
+            <tr
+                name="[file]"
+                tuiDocAPIItem
+                type="TuiFileLike"
             >
                 File
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="state"
-                documentationPropertyType="TuiFileState"
+            </tr>
+            <tr
+                name="[state]"
+                tuiDocAPIItem
+                type="TuiFileState"
             >
                 State of the file
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="showSize"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="showSize"
+            </tr>
+            <tr
+                name="[showSize]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="showSize"
             >
                 Show file size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Component size
-            </ng-template>
-            <ng-template
+            </tr>
+            <tr
                 #documentationPropertyRemoved="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="remove"
-                documentationPropertyType="void"
+                name="(remove)"
+                tuiDocAPIItem
+                type="void"
             >
                 Emits on click on close button. When subscribed to, close button appears.
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
