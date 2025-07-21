@@ -3661,14 +3661,14 @@ Built-in implementation of Taiga UI modals
 
 | Property | Type | Description |
 |----------|-----|----------|
-| closeable | `boolean` | Show a cross to close dialog. Pass '"> if you want prevent closing, for example, with a confirmation prompt. Be careful, passing '"> will always display cross button even if it emits false value! |
-| dismissible | `boolean` | Dialog can be canceled with Escape key or with a click outside. Pass '"> if you want prevent closing, for example, with a confirmation prompt. |
-| data | `number` | Input data for dialog, type: '"> |
-| header | `PolymorpheusContent` | Content above a heading |
-| label | `string` | Heading of dialog |
-| required | `boolean` | Cross click, overlay click or Escape click emits an error into Observable (you can catch it with "catch" operator or onError handler) |
-| size | `TuiDialogSize` | Size |
-| appearance | `string` | Appearance of dialog |
+| [closeable] | `boolean` |  |
+| [dismissible] | `boolean` | if you want prevent closing, for example, with a confirmation prompt. |
+| [data] | `number` |  |
+| [header] | `PolymorpheusContent` | Content above a heading |
+| [label] | `string` | Heading of dialog |
+| [required] | `boolean` | (you can catch it with "catch" operator or onError handler) |
+| [size] | `TuiDialogSize` | Size |
+| [appearance] | `string` | Appearance of dialog |
 
 ### TypeScript
 
@@ -5949,7 +5949,7 @@ export class Example {}
                     [formControl]="control"
                     [maxFileSize]="maxFileSize"
                     [multiple]="multiple"
-                    (reject)="updateRejected($event); documentationPropertyReject.emitEvent($event)"
+                    (reject)="updateRejected($event); reject.emitEvent($event)"
                 />
             </label>
             <tui-files
@@ -5964,7 +5964,7 @@ export class Example {}
                         [showDelete]="showDelete"
                         [showSize]="showSize"
                         [size]="size"
-                        (remove)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
+                        (remove)="removeFile(file); remove.emitEvent($event)"
                     />
                 </ng-container>
 
@@ -5976,7 +5976,7 @@ export class Example {}
                         [showDelete]="showDelete"
                         [showSize]="showSize"
                         [size]="size"
-                        (remove)="removeFile(file); documentationPropertyRemoved.emitEvent($event)"
+                        (remove)="removeFile(file); remove.emitEvent($event)"
                     />
                 </ng-container>
             </tui-files>
@@ -5986,11 +5986,11 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| disabled | `boolean` | Disabled state (use formControl.disable() ) |
-| accept | `string` | Allowed formats |
-| maxFileSize | `number` | Max file size in bytes (30 MB by default — 30 * 1000 * 1000) |
-| multiple | `boolean` | Allows to upload several files |
-| reject | `TuiFileLike[]` | Emits files that were rejected. |
+| [disabled] | `boolean` | ) |
+| [accept] | `string` | Allowed formats |
+| [maxFileSize] | `number` | Max file size in bytes (30 MB by default — 30 * 1000 * 1000) |
+| [multiple] | `boolean` | Allows to upload several files |
+| (reject) | `TuiFileLike[]` | Emits files that were rejected. |
 
 ### TypeScript
 
