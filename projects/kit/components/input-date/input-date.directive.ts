@@ -100,6 +100,16 @@ export abstract class TuiInputDateBase<
 
     protected abstract onValueChange(value: string): void;
 
+    @Input('min')
+    public set minSetter(min: Exclude<T, TuiDayRange> | TuiDay | null) {
+        this.min.set(min instanceof TuiDay ? min : this.options.min);
+    }
+
+    @Input('max')
+    public set maxSetter(max: Exclude<T, TuiDayRange> | TuiDay | null) {
+        this.max.set(max instanceof TuiDay ? max : this.options.max);
+    }
+
     public setDate(value: TuiDay | TuiDayRange): void {
         this.onChange(value as T);
         this.open.set(false);
@@ -170,16 +180,6 @@ export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
 
         this.textfield.value.set(value);
     }, TUI_ALLOW_SIGNAL_WRITES);
-
-    @Input('min')
-    public set minSetter(min: TuiDay | null) {
-        this.min.set(min || this.options.min);
-    }
-
-    @Input('max')
-    public set maxSetter(max: TuiDay | null) {
-        this.max.set(max || this.options.max);
-    }
 
     protected override onValueChange(value: string): void {
         this.control?.control?.updateValueAndValidity({emitEvent: false});

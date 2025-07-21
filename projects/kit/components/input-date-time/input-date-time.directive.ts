@@ -111,7 +111,9 @@ export class TuiInputDateTimeDirective
     }
 
     @Input('min')
-    public set minSetter(min: TuiDay | readonly [TuiDay, TuiTime | null] | null) {
+    public override set minSetter(
+        min: TuiDay | readonly [TuiDay, TuiTime | null] | null,
+    ) {
         const [date, time] = Array.isArray(min) ? min : [min, null];
 
         this.min.set(date || this.options.min);
@@ -119,7 +121,9 @@ export class TuiInputDateTimeDirective
     }
 
     @Input('max')
-    public set maxSetter(max: TuiDay | readonly [TuiDay, TuiTime | null] | null) {
+    public override set maxSetter(
+        max: TuiDay | readonly [TuiDay, TuiTime | null] | null,
+    ) {
         const [date, time] = Array.isArray(max) ? max : [max, null];
 
         this.max.set(date || this.options.max);

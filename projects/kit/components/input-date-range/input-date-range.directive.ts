@@ -3,7 +3,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import type {TuiDay, TuiDayLike} from '@taiga-ui/cdk/date-time';
+import type {TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {
     DATE_RANGE_FILLER_LENGTH,
     RANGE_SEPARATOR_CHAR,
@@ -68,16 +68,6 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
 
     public readonly minLength = signal<TuiDayLike | null>(null);
     public readonly maxLength = signal<TuiDayLike | null>(null);
-
-    @Input('min')
-    public set minSetter(min: TuiDay | null) {
-        this.min.set(min || this.options.min);
-    }
-
-    @Input('max')
-    public set maxSetter(max: TuiDay | null) {
-        this.max.set(max || this.options.max);
-    }
 
     @Input('minLength')
     public set minLengthSetter(minLength: TuiDayLike | null) {
