@@ -38,19 +38,19 @@
             </em>
         </ng-template>
 
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="error"
-                documentationPropertyType="TuiValidationError | string | null"
-                [documentationPropertyValues]="errorVariants"
-                [(documentationPropertyValue)]="selectedError"
+        <table tuiDocAPI>
+            <tr
+                name="error"
+                tuiDocAPIItem
+                type="TuiValidationError | string | null"
+                [items]="errorVariants"
+                [(value)]="selectedError"
             >
                 Active state for
                 <code>routerLinkActive</code>
                 , for example
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

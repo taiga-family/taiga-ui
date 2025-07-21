@@ -163,76 +163,78 @@
                 </tui-input-date>
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
+        <table tuiDocAPI>
+            <tr
+                name="disabled"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
             >
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabledItemHandler"
-                documentationPropertyType="TuiBooleanHandler<TuiDay>"
-                [documentationPropertyValues]="disabledItemHandlerVariants"
-                [(documentationPropertyValue)]="disabledItemHandler"
+            </tr>
+            <tr
+                name="disabledItemHandler"
+                tuiDocAPIItem
+                type="TuiBooleanHandler<TuiDay>"
+                [items]="disabledItemHandlerVariants"
+                [(value)]="disabledItemHandler"
             >
                 <div>A handler that gets a date and returns true if it is disabled.</div>
 
                 <strong>Must be a pure function</strong>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="items"
-                documentationPropertyType="TuiNamedDay[]"
-                [documentationPropertyValues]="itemsVariants"
-                [(documentationPropertyValue)]="items"
+            </tr>
+            <tr
+                name="items"
+                tuiDocAPIItem
+                type="TuiNamedDay[]"
+                [items]="itemsVariants"
+                [(value)]="items"
             >
                 A list of preset dates for dropdown
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="markerHandler"
-                documentationPropertyType="TuiMarkerHandler | null"
-                [documentationPropertyValues]="markerHandlerVariants"
-                [(documentationPropertyValue)]="markerHandler"
+            </tr>
+            <tr
+                name="markerHandler"
+                tuiDocAPIItem
+                type="TuiMarkerHandler | null"
+                [items]="markerHandlerVariants"
+                [(value)]="markerHandler"
             >
                 A handler that gets date and returns null or a tuple with circled marker colors
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="min"
-                documentationPropertyType="TuiDay | null"
-                [documentationPropertyValues]="minVariants"
-                [(documentationPropertyValue)]="min"
+            </tr>
+            <tr
+                name="min"
+                tuiDocAPIItem
+                type="TuiDay | null"
+                [items]="minVariants"
+                [(value)]="min"
             >
                 Minimum date
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="max"
-                documentationPropertyType="TuiDay | null"
-                [documentationPropertyValues]="maxVariants"
-                [(documentationPropertyValue)]="max"
+            </tr>
+            <tr
+                name="max"
+                tuiDocAPIItem
+                type="TuiDay | null"
+                [items]="maxVariants"
+                [(value)]="max"
             >
                 Maximum date
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
         <inherited-documentation [dropdown]="true" />
-        <tui-doc-documentation heading="CSS customization">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="style.text-align"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="textAlignVariants"
-                [(documentationPropertyValue)]="textAlign"
+        <h3>CSS customization</h3>
+        <table tuiDocAPI>
+            <tr
+                name="style.text-align"
+                tuiDocAPIItem
+                type="string"
+                [items]="textAlignVariants"
+                [(value)]="textAlign"
             >
                 Custom align content by text-align
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <ng-template pageTab>

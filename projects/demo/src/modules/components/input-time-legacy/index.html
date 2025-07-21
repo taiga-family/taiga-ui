@@ -144,83 +144,85 @@
                 </tui-input-time>
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
+        <table tuiDocAPI>
+            <tr
+                name="disabled"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
             >
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabledItemHandler"
-                documentationPropertyType="TuiBooleanHandler<TuiTime>"
-                [documentationPropertyValues]="disabledItemHandlerVariants"
-                [(documentationPropertyValue)]="disabledItemHandler"
+            </tr>
+            <tr
+                name="disabledItemHandler"
+                tuiDocAPIItem
+                type="TuiBooleanHandler<TuiTime>"
+                [items]="disabledItemHandlerVariants"
+                [(value)]="disabledItemHandler"
             >
                 Handler to disable some items
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="items"
-                documentationPropertyType="ReadonlyArray<TuiTime>"
-                [documentationPropertyValues]="itemsVariants"
-                [(documentationPropertyValue)]="items"
+            </tr>
+            <tr
+                name="items"
+                tuiDocAPIItem
+                type="ReadonlyArray<TuiTime>"
+                [items]="itemsVariants"
+                [(value)]="items"
             >
                 Items to choose
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="itemsHidden"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="itemsHidden"
+            </tr>
+            <tr
+                name="itemsHidden"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="itemsHidden"
             >
                 Disable the display of the dropdown list
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="itemSize"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="itemSizeVariants"
-                [(documentationPropertyValue)]="itemSize"
+            </tr>
+            <tr
+                name="itemSize"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL"
+                [items]="itemSizeVariants"
+                [(value)]="itemSize"
             >
                 Item size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="strict"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="strict"
+            </tr>
+            <tr
+                name="strict"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="strict"
             >
                 Only
                 <code>items</code>
                 are allowed
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="mode"
-                documentationPropertyType="TuiTimeMode"
-                [documentationPropertyValues]="modeVariants"
-                [(documentationPropertyValue)]="mode"
+            </tr>
+            <tr
+                name="mode"
+                tuiDocAPIItem
+                type="TuiTimeMode"
+                [items]="modeVariants"
+                [(value)]="mode"
             >
                 Modes for seconds and ms support
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
         <inherited-documentation />
-        <tui-doc-documentation heading="CSS customization">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="style.text-align"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="textAlignVariants"
-                [(documentationPropertyValue)]="textAlign"
+        <h3>CSS customization</h3>
+        <table tuiDocAPI>
+            <tr
+                name="style.text-align"
+                tuiDocAPIItem
+                type="string"
+                [items]="textAlignVariants"
+                [(value)]="textAlign"
             >
                 Custom align content by text-align
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
