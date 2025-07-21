@@ -7,7 +7,6 @@ import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {DATE_FILLER_LENGTH, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import {tuiGetClipboardDataText} from '@taiga-ui/cdk/utils/dom';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
     tuiAsTextfieldAccessor,
@@ -106,7 +105,6 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
 
     protected processCalendar(calendar: TuiCalendar): void {
         calendar.value = this.value();
-        calendar.disabledItemHandler = this.handlers.disabledItemHandler();
         calendar.min = this.min();
         calendar.max = this.max();
         calendar.month =
@@ -123,22 +121,14 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
                 ? TuiDay.normalizeParse(value, this.format().mode)
                 : null;
 
-        if (newValue && !this.handlers.disabledItemHandler()?.(newValue)) {
+        if (newValue && !this.handlers.disabledItemHandler()(newValue)) {
             this.updateValue(newValue);
         }
     }
 
-    protected override onPaste(event: ClipboardEvent | DragEvent): void {
-        const value =
-            'dataTransfer' in event
-                ? event.dataTransfer?.getData('text/plain') || ''
-                : tuiGetClipboardDataText(event);
-
-        this.onValueChange(value);
-    }
-
     protected override onEnter(): void {
         this.onValueChange(this.textfield.value().trim());
+        this.scrollTo();
     }
 
     private updateValue(day: TuiDay): void {
