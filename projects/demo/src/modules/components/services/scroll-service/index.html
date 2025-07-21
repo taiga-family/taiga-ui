@@ -27,34 +27,38 @@
                 )
             </em>
         </p>
-        <tui-doc-documentation [showValues]="false">
-            <ng-template
-                documentationPropertyName="element"
-                documentationPropertyType="Element"
+        <table tuiDocAPI>
+            <tr
+                name="element"
+                tuiDocAPIItem
+                type="Element"
             >
                 Element to be scrolled
-            </ng-template>
-            <ng-template
-                documentationPropertyName="scrollTop"
-                documentationPropertyType="number"
+            </tr>
+            <tr
+                name="scrollTop"
+                tuiDocAPIItem
+                type="number"
             >
                 Target position from top
-            </ng-template>
-            <ng-template
-                documentationPropertyName="scrollLeft"
-                documentationPropertyType="number"
+            </tr>
+            <tr
+                name="scrollLeft"
+                tuiDocAPIItem
+                type="number"
             >
                 <strong>Optional</strong>
                 . Target position from left
-            </ng-template>
-            <ng-template
-                documentationPropertyName="duration"
-                documentationPropertyType="number"
+            </tr>
+            <tr
+                name="duration"
+                tuiDocAPIItem
+                type="number"
             >
                 <strong>Optional</strong>
                 . Duration time in ms (0 for an instant scroll).
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
     <ng-template pageTab>
         <ol class="tui-list tui-list_ordered">

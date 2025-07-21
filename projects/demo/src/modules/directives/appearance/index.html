@@ -29,13 +29,13 @@
                 Appearance
             </button>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiAppearance"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="appearances"
-                [(documentationPropertyValue)]="appearance"
+        <table tuiDocAPI>
+            <tr
+                name="tuiAppearance"
+                tuiDocAPIItem
+                type="string"
+                [items]="appearances"
+                [(value)]="appearance"
             >
                 Appearance (use
                 <code>appearance</code>
@@ -44,26 +44,26 @@
                 when used on a component that has such input due to
                 <code>hostDirectives</code>
                 )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiAppearanceFocus"
-                documentationPropertyType="boolean | null"
-                [documentationPropertyValues]="[true, false]"
-                [(documentationPropertyValue)]="focus"
+            </tr>
+            <tr
+                name="tuiAppearanceFocus"
+                tuiDocAPIItem
+                type="boolean | null"
+                [items]="[true, false]"
+                [(value)]="focus"
             >
                 Manual override of focused state
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiAppearanceState"
-                documentationPropertyType="TuiInteractiveState | null"
-                [documentationPropertyValues]="states"
-                [(documentationPropertyValue)]="state"
+            </tr>
+            <tr
+                name="tuiAppearanceState"
+                tuiDocAPIItem
+                type="TuiInteractiveState | null"
+                [items]="states"
+                [(value)]="state"
             >
                 Manual override of interactive state
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

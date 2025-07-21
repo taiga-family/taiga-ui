@@ -7,108 +7,108 @@
         Inherited from
         <code>TuiReactiveControl</code>
     </h6>
-    <tui-doc-documentation>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="readOnly"
-            documentationPropertyType="boolean"
-            [(documentationPropertyValue)]="documentedComponent.readOnly"
+    <table tuiDocAPI>
+        <tr
+            name="readOnly"
+            tuiDocAPIItem
+            type="boolean"
+            [(value)]="documentedComponent.readOnly"
         >
             Component is read only
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="pseudoInvalid"
-            documentationPropertyType="boolean | null"
-            [documentationPropertyValues]="booleanVariants"
-            [(documentationPropertyValue)]="documentedComponent.pseudoInvalid"
+        </tr>
+        <tr
+            name="pseudoInvalid"
+            tuiDocAPIItem
+            type="boolean | null"
+            [items]="booleanVariants"
+            [(value)]="documentedComponent.pseudoInvalid"
         >
             Set invalid state regardless of control
-        </ng-template>
-    </tui-doc-documentation>
+        </tr>
+    </table>
 </ng-container>
 <ng-container *ngIf="isTuiInteractive(documentedComponent)">
     <h6 class="tui-text_h6">
         Inherited from
         <code>TuiInteractive</code>
     </h6>
-    <tui-doc-documentation>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="focusable"
-            documentationPropertyType="boolean"
-            [(documentationPropertyValue)]="documentedComponent.focusable"
+    <table tuiDocAPI>
+        <tr
+            name="focusable"
+            tuiDocAPIItem
+            type="boolean"
+            [(value)]="documentedComponent.focusable"
         >
             Element can be focused
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="nativeId"
-            documentationPropertyType="string"
+        </tr>
+        <tr
+            name="nativeId"
+            tuiDocAPIItem
+            type="string"
         >
             Native ID attribute for element. It helps users with Screen Readers to use a page
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="pseudoHover"
-            documentationPropertyType="boolean | null"
-            [documentationPropertyValues]="booleanVariants"
-            [(documentationPropertyValue)]="documentedComponent.pseudoHovered"
+        </tr>
+        <tr
+            name="pseudoHover"
+            tuiDocAPIItem
+            type="boolean | null"
+            [items]="booleanVariants"
+            [(value)]="documentedComponent.pseudoHovered"
         >
             Visual hovered state
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="pseudoFocus"
-            documentationPropertyType="boolean | null"
-            [documentationPropertyValues]="booleanVariants"
-            [(documentationPropertyValue)]="documentedComponent.pseudoFocused"
+        </tr>
+        <tr
+            name="pseudoFocus"
+            tuiDocAPIItem
+            type="boolean | null"
+            [items]="booleanVariants"
+            [(value)]="documentedComponent.pseudoFocused"
         >
             Visual focused state
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="input"
-            documentationPropertyName="pseudoActive"
-            documentationPropertyType="boolean | null"
-            [documentationPropertyValues]="booleanVariants"
-            [(documentationPropertyValue)]="documentedComponent.pseudoPressed"
+        </tr>
+        <tr
+            name="pseudoActive"
+            tuiDocAPIItem
+            type="boolean | null"
+            [items]="booleanVariants"
+            [(value)]="documentedComponent.pseudoPressed"
         >
             Visual pressed state
-        </ng-template>
-        <ng-template
-            documentationPropertyMode="output"
-            documentationPropertyName="focusedChange"
-            documentationPropertyType="boolean"
+        </tr>
+        <tr
+            name="focusedChange"
+            tuiDocAPIItem
+            type="boolean"
         >
             Emits on focus and blur
-        </ng-template>
-    </tui-doc-documentation>
+        </tr>
+    </table>
 </ng-container>
 <!-- TODO: Do we need this? -->
-<tui-doc-documentation *ngIf="isTuiHint(documentedComponent)">
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiHintDirection"
-        documentationPropertyType="TuiHintDirection | TuiHintDirection[]"
-        [documentationPropertyValues]="directionVariants"
-        [(documentationPropertyValue)]="documentedComponent.direction"
+<table tuiDocAPI>
+    <tr
+        name="tuiHintDirection"
+        tuiDocAPIItem
+        type="TuiHintDirection | TuiHintDirection[]"
+        [items]="directionVariants"
+        [(value)]="documentedComponent.direction"
     >
         Hint direction
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiHintAppearance"
-        documentationPropertyType="string"
-        [documentationPropertyValues]="appearanceVariants"
-        [(documentationPropertyValue)]="documentedComponent.appearance"
+    </tr>
+    <tr
+        name="tuiHintAppearance"
+        tuiDocAPIItem
+        type="string"
+        [items]="appearanceVariants"
+        [(value)]="documentedComponent.appearance"
     >
         Hint mode
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="output"
-        documentationPropertyName="tuiHintDirectionChange"
-        documentationPropertyType="TuiHintDirection"
+    </tr>
+    <tr
+        name="tuiHintDirectionChange"
+        tuiDocAPIItem
+        type="TuiHintDirection"
     >
         Hint direction change
-    </ng-template>
-</tui-doc-documentation>
+    </tr>
+</table>

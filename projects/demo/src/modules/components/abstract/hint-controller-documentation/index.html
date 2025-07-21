@@ -14,32 +14,32 @@
     <code>TuiHint</code>
 </p>
 
-<tui-doc-documentation>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiHintContent"
-        documentationPropertyType="PolymorpheusContent"
-        [documentationPropertyValues]="documentedComponent.hintContentVariants"
-        [(documentationPropertyValue)]="documentedComponent.hintContent"
+<table tuiDocAPI>
+    <tr
+        name="tuiHintContent"
+        tuiDocAPIItem
+        type="PolymorpheusContent"
+        [items]="documentedComponent.hintContentVariants"
+        [(value)]="documentedComponent.hintContent"
     >
         Content of a hint
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiHintDirection"
-        documentationPropertyType="TuiHintDirection | TuiHintDirection[]"
-        [documentationPropertyValues]="documentedComponent.hintDirectionVariants"
-        [(documentationPropertyValue)]="documentedComponent.hintDirection"
+    </tr>
+    <tr
+        name="tuiHintDirection"
+        tuiDocAPIItem
+        type="TuiHintDirection | TuiHintDirection[]"
+        [items]="documentedComponent.hintDirectionVariants"
+        [(value)]="documentedComponent.hintDirection"
     >
         Hint direction
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiHintAppearance"
-        documentationPropertyType="string"
-        [documentationPropertyValues]="documentedComponent.hintAppearanceVariants"
-        [(documentationPropertyValue)]="documentedComponent.hintAppearance"
+    </tr>
+    <tr
+        name="tuiHintAppearance"
+        tuiDocAPIItem
+        type="string"
+        [items]="documentedComponent.hintAppearanceVariants"
+        [(value)]="documentedComponent.hintAppearance"
     >
         Hint mode
-    </ng-template>
-</tui-doc-documentation>
+    </tr>
+</table>

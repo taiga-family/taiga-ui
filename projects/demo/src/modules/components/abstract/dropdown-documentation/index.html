@@ -14,75 +14,75 @@
     <code>TuiDropdown</code>
 </p>
 
-<tui-doc-documentation>
-    <ng-template
-        documentationPropertyMode="input-output"
-        documentationPropertyName="tuiDropdownOpen"
-        documentationPropertyType="boolean"
-        [documentationPropertyValue]="(documentedComponent.dropdownOpen | async)!!"
-        (documentationPropertyValueChange)="documentedComponent.dropdownOpen.next($event)"
+<table tuiDocAPI>
+    <tr
+        name="tuiDropdownOpen"
+        tuiDocAPIItem
+        type="boolean"
+        [(value)]="(documentedComponent.dropdownOpen | async)!!"
+        (valueChange)="documentedComponent.dropdownOpen.next($event)"
     >
         Manual control/monitor for the dropdown being visible
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiDropdownAlign"
-        documentationPropertyType="TuiDropdownAlign"
-        [documentationPropertyValues]="documentedComponent.dropdownAlignVariants"
-        [(documentationPropertyValue)]="documentedComponent.dropdownAlign"
+    </tr>
+    <tr
+        name="tuiDropdownAlign"
+        tuiDocAPIItem
+        type="TuiDropdownAlign"
+        [items]="documentedComponent.dropdownAlignVariants"
+        [(value)]="documentedComponent.dropdownAlign"
     >
         Align of dropdown (does not work together with
         <code>limitWidth === 'fixed'</code>
         )
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiDropdownDirection"
-        documentationPropertyType="TuiVerticalDirection | null"
-        [documentationPropertyValues]="documentedComponent.dropdownDirectionVariants"
-        [(documentationPropertyValue)]="documentedComponent.dropdownDirection"
+    </tr>
+    <tr
+        name="tuiDropdownDirection"
+        tuiDocAPIItem
+        type="TuiVerticalDirection | null"
+        [items]="documentedComponent.dropdownDirectionVariants"
+        [(value)]="documentedComponent.dropdownDirection"
     >
         Set a vertical direction of dropdown
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiDropdownLimitWidth"
-        documentationPropertyType="TuiDropdownWidth"
-        [documentationPropertyValues]="documentedComponent.dropdownLimitWidthVariants"
-        [(documentationPropertyValue)]="documentedComponent.dropdownLimitWidth"
+    </tr>
+    <tr
+        name="tuiDropdownLimitWidth"
+        tuiDocAPIItem
+        type="TuiDropdownWidth"
+        [items]="documentedComponent.dropdownLimitWidthVariants"
+        [(value)]="documentedComponent.dropdownLimitWidth"
     >
         Limit width of dropdown
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiDropdownMinHeight"
-        documentationPropertyType="number"
-        [(documentationPropertyValue)]="documentedComponent.dropdownMinHeight"
+    </tr>
+    <tr
+        name="tuiDropdownMinHeight"
+        tuiDocAPIItem
+        type="number"
+        [(value)]="documentedComponent.dropdownMinHeight"
     >
         Minimum height to calculate that dropdown fits to set
         <code>tuiDropdownDirection</code>
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiDropdownMaxHeight"
-        documentationPropertyType="number"
-        [(documentationPropertyValue)]="documentedComponent.dropdownMaxHeight"
+    </tr>
+    <tr
+        name="tuiDropdownMaxHeight"
+        tuiDocAPIItem
+        type="number"
+        [(value)]="documentedComponent.dropdownMaxHeight"
     >
         Maximum height of dropdown
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiDropdownOffset"
-        documentationPropertyType="number"
-        [(documentationPropertyValue)]="documentedComponent.dropdownOffset"
+    </tr>
+    <tr
+        name="tuiDropdownOffset"
+        tuiDocAPIItem
+        type="number"
+        [(value)]="documentedComponent.dropdownOffset"
     >
         Dropdown offset
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="output"
-        documentationPropertyName="tuiDropdownDirectionChange"
-        documentationPropertyType="TuiVerticalDirection"
+    </tr>
+    <tr
+        name="tuiDropdownDirectionChange"
+        tuiDocAPIItem
+        type="TuiVerticalDirection"
     >
         Dropdown direction change
-    </ng-template>
-</tui-doc-documentation>
+    </tr>
+</table>
