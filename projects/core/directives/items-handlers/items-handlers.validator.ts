@@ -23,7 +23,7 @@ export class TuiItemsHandlersValidator extends TuiValidator {
     public disabledItemHandler: TuiBooleanHandler<any> = (value) =>
         Array.isArray(value)
             ? value.some((item) => this.handlers.disabledItemHandler()(item))
-            : value && this.handlers.disabledItemHandler()(value);
+            : Boolean(value) && this.handlers.disabledItemHandler()(value);
 
     public override validate: ValidatorFn = ({value}) =>
         this.disabledItemHandler(value) ? {tuiDisabledItem: value} : null;

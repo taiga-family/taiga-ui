@@ -24,11 +24,7 @@ import {
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {
-    TUI_ITEMS_HANDLERS,
-    TuiItemsHandlersValidator,
-} from '@taiga-ui/core/directives/items-handlers';
+import {TuiItemsHandlersValidator} from '@taiga-ui/core/directives/items-handlers';
 import {
     TUI_DATE_ADAPTER,
     TuiInputDateBase,
@@ -75,9 +71,6 @@ export class TuiInputDateTimeDirective
     });
 
     protected override valueEffect = effect(noop);
-
-    protected override readonly handlers =
-        inject<TuiItemsHandlers<readonly [TuiDay, TuiTime | null]>>(TUI_ITEMS_HANDLERS);
 
     protected readonly identity = this.handlers.identityMatcher.set(
         (a, b) => tuiSum(...a.map(Number)) === tuiSum(...b.map(Number)),
