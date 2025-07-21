@@ -53,45 +53,48 @@
                 </button>
             </tui-stepper>
         </tui-doc-demo>
-        <tui-doc-documentation heading="Stepper">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="orientation"
-                documentationPropertyType="TuiOrientation"
-                [documentationPropertyValues]="orientationVariants"
-                [(documentationPropertyValue)]="orientation"
+        <h3>Stepper</h3>
+        <table tuiDocAPI>
+            <tr
+                name="[orientation]"
+                tuiDocAPIItem
+                type="TuiOrientation"
+                [items]="orientationVariants"
+                [(value)]="orientation"
             >
                 Steps direction
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="activeItemIndex"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="activeItemIndex"
+            </tr>
+            <tr
+                name="[(activeItemIndex)]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="activeItemIndex"
             >
                 Active step index
-            </ng-template>
-        </tui-doc-documentation>
-        <tui-doc-documentation heading="Step">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="stepState"
-                documentationPropertyType="'normal' | 'pass' | 'error'"
-                [documentationPropertyValues]="stateVariants"
-                [(documentationPropertyValue)]="state"
+            </tr>
+        </table>
+
+        <h3>Step</h3>
+        <table tuiDocAPI>
+            <tr
+                name="[stepState]"
+                tuiDocAPIItem
+                type="'normal' | 'pass' | 'error'"
+                [items]="stateVariants"
+                [(value)]="state"
             >
                 Step state
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="icon"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="icon"
+            </tr>
+            <tr
+                name="[icon]"
+                tuiDocAPIItem
+                type="string"
+                [items]="iconVariants"
+                [(value)]="icon"
             >
                 Step custom icon
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
