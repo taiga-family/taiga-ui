@@ -11485,7 +11485,7 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiTreeController | `boolean` | Directive used to enable opening/closing of nodes with children. Boolean input is the default state. |
+| [tuiTreeController] | `boolean` | input is the default state. |
 
 ---
 
