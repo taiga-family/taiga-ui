@@ -196,11 +196,12 @@
                 Say "Hi and bye!"
             </button>
         </ng-template>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="closeable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="closeable"
+        <table tuiDocAPI>
+            <tr
+                name="[closeable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="closeable"
             >
                 Show a cross to close dialog.
 
@@ -213,62 +214,69 @@
                     <code>false</code>
                     value!
                 </p>
-            </ng-template>
-            <ng-template
-                documentationPropertyName="dismissible"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="dismissible"
+            </tr>
+            <tr
+                name="[dismissible]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="dismissible"
             >
                 Dialog can be canceled with Escape key or with a click outside. Pass
                 <code [textContent]="'Observable<boolean>'"></code>
                 if you want prevent closing, for example, with a confirmation prompt.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="data"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="data"
+            </tr>
+            <tr
+                name="[data]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="data"
             >
                 Input data for dialog, type:
                 <code [textContent]="'<T>'"></code>
-            </ng-template>
-            <ng-template
-                documentationPropertyName="header"
-                documentationPropertyType="PolymorpheusContent"
+            </tr>
+            <tr
+                name="[header]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
             >
                 Content above a heading
-            </ng-template>
-            <ng-template
-                documentationPropertyName="label"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="label"
+            </tr>
+            <tr
+                name="[label]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="label"
             >
                 Heading of dialog
-            </ng-template>
-            <ng-template
-                documentationPropertyName="required"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="required"
+            </tr>
+            <tr
+                name="[required]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="required"
             >
                 Cross click, overlay click or Escape click emits an error into
                 <code>Observable</code>
                 (you can catch it with "catch" operator or onError handler)
-            </ng-template>
-            <ng-template
-                documentationPropertyName="size"
-                documentationPropertyType="TuiDialogSize"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiDialogSize"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyName="appearance"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="appearance"
+            </tr>
+            <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="appearance"
             >
                 Appearance of dialog
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <ng-template pageTab>
