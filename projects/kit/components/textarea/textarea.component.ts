@@ -34,6 +34,7 @@ import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
     hostDirectives: [TuiWithTextfield],
     host: {
+        ngSkipHydration: 'true',
         '[class._mobile]': 'isMobile',
         '(scroll.zoneless)': 'onScroll()',
         // To trigger CD for #text
