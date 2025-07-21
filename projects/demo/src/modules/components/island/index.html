@@ -127,34 +127,34 @@
                 </div>
             </tui-island>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="hoverable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="hoverable"
+        <table tuiDocAPI>
+            <tr
+                name="[hoverable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="hoverable"
             >
                 Hoverable
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="textAlign"
-                documentationPropertyType="'left' | 'right' | 'center'"
-                [documentationPropertyValues]="textAlignVariants"
-                [(documentationPropertyValue)]="textAlign"
+            </tr>
+            <tr
+                name="[textAlign]"
+                tuiDocAPIItem
+                type="'left' | 'right' | 'center'"
+                [items]="textAlignVariants"
+                [(value)]="textAlign"
             >
                 Text align
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
