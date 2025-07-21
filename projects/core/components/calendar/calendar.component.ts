@@ -8,7 +8,6 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {
     TUI_FIRST_DAY,
@@ -21,6 +20,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
+import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {Subject} from 'rxjs';
 
@@ -59,7 +59,8 @@ export class TuiCalendar {
     public month: TuiMonth = TuiMonth.currentLocal();
 
     @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
+    public disabledItemHandler: TuiBooleanHandler<TuiDay> =
+        inject(TUI_ITEMS_HANDLERS).disabledItemHandler();
 
     @Input()
     public min: TuiDay | null = TUI_FIRST_DAY;

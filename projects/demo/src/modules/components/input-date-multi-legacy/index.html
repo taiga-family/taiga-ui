@@ -1,10 +1,21 @@
 <tui-doc-page
+    deprecated
     header="InputDateMultiLegacy"
     package="LEGACY"
     path="legacy/components/input-date-multi"
     type="components"
 >
     <ng-template pageTab>
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.InputDateMulti"
+            >
+                <strong>new version of InputDateMulti</strong>
+            </a>
+            instead!
+        </tui-notification>
         <tui-doc-example
             id="base"
             heading="Basic"
