@@ -80,6 +80,14 @@ export abstract class TuiInputDateBase<
         initialValue: TUI_DEFAULT_DATE_FORMAT,
     });
 
+    protected readonly valueEffect = effect(() => {
+        const value =
+            (this.value() && this.stringify(this.value())) ??
+            (this.filler().length === this.el.value.length ? '' : this.el.value);
+
+        this.textfield.value.set(value);
+    }, TUI_ALLOW_SIGNAL_WRITES);
+
     protected readonly calendarIn = effect(() => {
         if (this.calendar()) {
             this.processCalendar(this.calendar()!);
@@ -172,14 +180,6 @@ export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
             }),
         ),
     );
-
-    protected readonly valueEffect = effect(() => {
-        const value =
-            (this.value() && this.stringify(this.value())) ??
-            (this.filler().length === this.el.value.length ? '' : this.el.value);
-
-        this.textfield.value.set(value);
-    }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected override onValueChange(value: string): void {
         this.control?.control?.updateValueAndValidity({emitEvent: false});

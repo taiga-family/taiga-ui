@@ -1,8 +1,7 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {
     DATE_RANGE_FILLER_LENGTH,
@@ -44,14 +43,6 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
     protected override readonly filler = tuiWithDateFiller(
         (filler) => `${filler}${RANGE_SEPARATOR_CHAR}${filler}`,
     );
-
-    protected readonly valueEffect = effect(() => {
-        const value =
-            this.stringify(this.value()) ??
-            (this.filler().length === this.el.value.length ? '' : this.el.value);
-
-        this.textfield.value.set(value);
-    }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly mask = tuiMaskito(
         computed(() =>

@@ -1,4 +1,4 @@
-import {computed, Directive, inject, Input, signal} from '@angular/core';
+import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
@@ -37,6 +37,7 @@ import {
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
+import {noop} from 'rxjs';
 
 import {TUI_INPUT_DATE_TIME_OPTIONS} from './input-date-time.options';
 
@@ -72,6 +73,8 @@ export class TuiInputDateTimeDirective
 
         return `${date}${this.options.dateTimeSeparator}${time}`;
     });
+
+    protected override valueEffect = effect(noop);
 
     protected override readonly handlers =
         inject<TuiItemsHandlers<readonly [TuiDay, TuiTime | null]>>(TUI_ITEMS_HANDLERS);
