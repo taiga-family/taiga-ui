@@ -122,12 +122,12 @@
             />
         </tui-doc-demo>
 
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="value"
+        <table tuiDocAPI>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="value"
             >
                 This property specifies how much of the task that has been completed. It must be a valid floating point
                 number between 0 and
@@ -135,13 +135,12 @@
                 , or between 0 and 1 if
                 <code>max</code>
                 is omitted.
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="max"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="max"
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="max"
             >
                 <p>This property describes how much work the task indicated by the progress element requires.</p>
                 <p>
@@ -149,24 +148,22 @@
                     <code>1</code>
                     .
                 </p>
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeXXL | TuiSizeXXS"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeXXL | TuiSizeXXS"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size of the circle.
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="color"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="colorVariants"
-                [(documentationPropertyValue)]="color"
+            </tr>
+            <tr
+                name="[color]"
+                tuiDocAPIItem
+                type="string"
+                [items]="colorVariants"
+                [(value)]="color"
             >
                 Color of the progress indicator.
                 <p>
@@ -174,17 +171,16 @@
                     <code>color</code>
                     .
                 </p>
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="arc"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="arc"
+            </tr>
+            <tr
+                name="[arc]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="arc"
             >
                 Use arc shape with small bottom open arc sector (instead of default circle).
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
