@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.46.0](https://github.com/taiga-family/taiga-ui/compare/v4.45.0...v4.46.0) (2025-07-22)
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** add `[new]` attribute to option in i18n select button
+  ([#11320](https://github.com/taiga-family/taiga-ui/issues/11320))
+  ([8d214f0](https://github.com/taiga-family/taiga-ui/commit/8d214f0ba489b5bbbc909a5969d8c25160029484))
+- **core:** add fine-grained reactivity update in textfield
+  ([#11328](https://github.com/taiga-family/taiga-ui/issues/11328))
+  ([1e34b31](https://github.com/taiga-family/taiga-ui/commit/1e34b314be34d637c3642702d2b1c15a20b9a093))
+- **kit:** `Avatar` fix 404 in safari ([#11367](https://github.com/taiga-family/taiga-ui/issues/11367))
+  ([e2b4c0b](https://github.com/taiga-family/taiga-ui/commit/e2b4c0bf3db4133a09b3a0e7a0f6e79fb3c54c6b))
+- **kit:** `ComboBox` / `InputTime` has broken cleaner ([#11326](https://github.com/taiga-family/taiga-ui/issues/11326))
+  ([1e093fc](https://github.com/taiga-family/taiga-ui/commit/1e093fc9347f69b14f56e7234a0f9d225be956d1))
+- **kit:** `Textarea` throws `NG0502: During hydration, Angular expected an element to be present at this location`
+  ([#11387](https://github.com/taiga-family/taiga-ui/issues/11387))
+  ([19eed34](https://github.com/taiga-family/taiga-ui/commit/19eed34bfcfbe00135429664f9616d1c75a63381))
+- **kit:** correct open dropdown in textfield ([#11325](https://github.com/taiga-family/taiga-ui/issues/11325))
+  ([5b72c24](https://github.com/taiga-family/taiga-ui/commit/5b72c24cc1a8a69c6251187cde8ab4ee83811166))
+- **kit:** improve `tuiBadge` with `tuiStatus` in small size
+  ([#11334](https://github.com/taiga-family/taiga-ui/issues/11334))
+  ([b0bb2a3](https://github.com/taiga-family/taiga-ui/commit/b0bb2a3d50636c1ad813a824aa539b948b6068d5))
+- **legacy:** `MultiSelect` has missing checked indicator
+  ([#11385](https://github.com/taiga-family/taiga-ui/issues/11385))
+  ([e1908d8](https://github.com/taiga-family/taiga-ui/commit/e1908d8586d827ab782e51a59611c3b5a41b9870))
+
+### 🚀 Features
+
+- **kit:** `BadgedContent` add border when using image ([#11336](https://github.com/taiga-family/taiga-ui/issues/11336))
+  ([6b4bf84](https://github.com/taiga-family/taiga-ui/commit/6b4bf8409392edfc67e10b075cedf57e6cdfadf7))
+- **kit:** `InputDateMulti` add new component ([#11287](https://github.com/taiga-family/taiga-ui/issues/11287))
+  ([172c753](https://github.com/taiga-family/taiga-ui/commit/172c753922caa291f77df8ae8ccd6b20d733358a))
+- **kit:** `InputDateTime` add new `Textfield` based version
+  ([#11305](https://github.com/taiga-family/taiga-ui/issues/11305))
+  ([1730461](https://github.com/taiga-family/taiga-ui/commit/17304612750b39db40929014b7d4b8a1cb764753))
+- **kit:** `Pager` support rtl ([#11389](https://github.com/taiga-family/taiga-ui/issues/11389))
+  ([2a54805](https://github.com/taiga-family/taiga-ui/commit/2a548059038715aff2d1d1b3cf32b612c2d5a657))
+
 ## [4.45.0](https://github.com/taiga-family/taiga-ui/compare/v4.44.0...v4.45.0) (2025-07-14)
 
 ### 🐞 Bug Fixes
