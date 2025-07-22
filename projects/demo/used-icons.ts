@@ -106,7 +106,6 @@ export const TUI_USED_ICONS = [
     '@tui.terminal',
     '@tui.image',
     '@tui.cloud',
-    '@tui.snowflake',
     '@tui.grip-vertical',
     '@tui.camera',
     '@tui.folder',
