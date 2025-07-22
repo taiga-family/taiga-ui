@@ -163,8 +163,7 @@ describe('Textfield + form.reset()', () => {
         cy.get('[tuiInputNumber]').should('have.value', '');
     });
 
-    // TODO https://github.com/taiga-family/taiga-ui/issues/11365
-    it.skip('InputDate', () => {
+    it('InputDate', () => {
         cy.get('[tuiInputDate]')
             .type('99')
             .should('have.value', '09.09')
@@ -176,8 +175,7 @@ describe('Textfield + form.reset()', () => {
         cy.get('[tuiInputDate]').should('have.value', '');
     });
 
-    // TODO https://github.com/taiga-family/taiga-ui/issues/11365
-    it.skip('InputDateRange', () => {
+    it('InputDateRange', () => {
         cy.get('[tuiInputDateRange]')
             .type('992025')
             .should('have.value', '09.09.2025')
