@@ -178,7 +178,12 @@ export class TuiMonth extends TuiYear implements TuiMonthLike {
      * Returns native {@link Date} based on local time zone
      */
     public toLocalNativeDate(): Date {
-        return new Date(this.year, this.month);
+        const date = new Date(this.year, this.month);
+
+        // for years less than 1900
+        date.setFullYear(this.year);
+
+        return date;
     }
 
     /**
