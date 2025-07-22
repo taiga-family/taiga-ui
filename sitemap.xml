@@ -256,6 +256,9 @@
     <loc>https://taiga-ui.dev/legacy/input-date/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/input-date-multi/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/legacy/input-date-multi/</loc>
   </url>
   <url>
@@ -266,6 +269,9 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/legacy/input-date-time/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-date-time/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-month/</loc>
@@ -1108,6 +1114,12 @@
     <loc>https://taiga-ui.dev/legacy/input-date/Setup/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/input-date-multi/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-date-multi/Setup/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/legacy/input-date-multi/API/</loc>
   </url>
   <url>
@@ -1130,6 +1142,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/legacy/input-date-time/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-date-time/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-date-time/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-month/API/</loc>

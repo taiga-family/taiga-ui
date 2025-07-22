@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[46009],{46009:e=>{e.exports='```html\n<tui-textfield multi>\n  <input\n    tuiInputDateMulti\n    [(ngModel)]="value"\n  />\n  <tui-calendar *tuiTextfieldDropdown />\n</tui-textfield>\n```\n'}}]);
