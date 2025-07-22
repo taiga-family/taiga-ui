@@ -28,5 +28,6 @@ export function tuiCloseWatcher(): Observable<void> {
 
 function getWatcher(): CloseWatcher {
     // @ts-ignore
+    // eslint-disable-next-line unicorn/no-typeof-undefined
     return typeof CloseWatcher === 'undefined' ? {destroy: () => {}} : new CloseWatcher();
 }
