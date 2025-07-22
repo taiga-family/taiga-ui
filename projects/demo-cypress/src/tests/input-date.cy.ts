@@ -54,4 +54,11 @@ describe('InputDate', () => {
 
         cy.get('[tuiInputDate]').should('have.value', '15.01.201');
     });
+
+    it('allows to enter year < 1900 for unset `[min]` limit', () => {
+        cy.get('[tuiInputDate]')
+            .clear()
+            .type('2751703')
+            .should('have.value', '27.05.1703');
+    });
 });

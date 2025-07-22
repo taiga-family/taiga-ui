@@ -862,10 +862,28 @@ describe('TuiDay', () => {
                 });
             });
 
-            it('toLocalNativeDate returns native Date with time zone offset', () => {
-                const result = new TuiDay(2000, 0, 1);
+            describe('toLocalNativeDate', () => {
+                it('returns native Date with time zone offset', () => {
+                    const result = new TuiDay(2000, 0, 1);
 
-                expect(result.toLocalNativeDate()).toEqual(new Date(2000, 0, 1));
+                    expect(result.toLocalNativeDate()).toEqual(new Date(2000, 0, 1));
+                });
+
+                it('supports year < 1900', () => {
+                    const date = new TuiDay(1703, 4, 27).toLocalNativeDate();
+
+                    expect(date.getFullYear()).toEqual(1703);
+                    expect(date.getMonth()).toEqual(4);
+                    expect(date.getDate()).toEqual(27);
+                });
+
+                it('supports year < 100', () => {
+                    const date = new TuiDay(99, 4, 27).toLocalNativeDate();
+
+                    expect(date.getFullYear()).toEqual(99);
+                    expect(date.getMonth()).toEqual(4);
+                    expect(date.getDate()).toEqual(27);
+                });
             });
 
             it('toUtcNativeDate returns native Date without time zone offset', () => {

@@ -370,7 +370,11 @@ export class TuiDay extends TuiMonth {
      * Returns native {@link Date} based on local time zone
      */
     public override toLocalNativeDate(): Date {
-        return new Date(this.year, this.month, this.day);
+        const date = super.toLocalNativeDate();
+
+        date.setDate(this.day);
+
+        return date;
     }
 
     /**
