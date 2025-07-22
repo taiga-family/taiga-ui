@@ -4,6 +4,9 @@
     "nxCloudId": "65379685bc6d4d78e25c18d9",
     "parallel": 3,
     "showUsageWarnings": true,
+    "tui": {
+        "enabled": false
+    },
     "namedInputs": {
         "sharedGlobals": [
             "{workspaceRoot}/projects/testing/**/*.ts",
