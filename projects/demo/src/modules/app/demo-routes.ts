@@ -89,6 +89,7 @@ export const DemoRoute = {
     InputCard: '/components/input-card',
     InputCardGroup: '/components/input-card-group',
     InputDateTimeLegacy: '/legacy/input-date-time',
+    InputDateTime: '/components/input-date-time',
     InputMonth: '/components/input-month',
     InputMonthLegacy: '/legacy/input-month',
     InputMonthRange: '/legacy/input-month-range',

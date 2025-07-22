@@ -557,6 +557,14 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputDateTime',
+                keywords:
+                    'поле, инпут, форма, ввод, input, календарь, день, ' +
+                    'неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',
+                route: DemoRoute.InputDateTime,
+            },
+            {
+                section: 'Components',
                 title: 'InputInline',
                 keywords: 'input',
                 route: DemoRoute.InputInline,
@@ -671,7 +679,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputDateTime',
+                title: 'InputDateTime ⛔',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
                     'неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',

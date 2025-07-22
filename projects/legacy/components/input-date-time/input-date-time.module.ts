@@ -21,6 +21,10 @@ import {TuiInputDateTimeComponent} from './input-date-time.component';
 import {TuiInputDateTimeDirective} from './input-date-time.directive';
 import {TuiNativeDateTimeDirective} from './native-date-time/native-date-time.directive';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-date-time TuiInputDateTime} (from @taiga-ui/kit) instead
+ */
 @NgModule({
     imports: [
         CommonModule,
