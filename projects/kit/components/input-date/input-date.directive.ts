@@ -118,6 +118,11 @@ export abstract class TuiInputDateBase<
         this.max.set(max instanceof TuiDay ? max : this.options.max);
     }
 
+    public override writeValue(value: T | null): void {
+        super.writeValue(value);
+        this.textfield.value.set(this.stringify(this.value()));
+    }
+
     public setDate(value: TuiDay | TuiDayRange): void {
         this.onChange(value as T);
         this.open.set(false);
