@@ -16,4 +16,10 @@ export default [
             '@typescript-eslint/max-params': ['error', {countVoidThis: true, max: 5}],
         },
     },
+    {
+        files: ['**/*.html'],
+        rules: {
+            '@angular-eslint/template/prefer-template-literal': 'off',
+        },
+    },
 ];

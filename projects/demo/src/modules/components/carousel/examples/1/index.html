@@ -10,8 +10,8 @@
             <h2 class="title">{{ item }}</h2>
             <!-- TODO: update documentation here -->
             <a
-                href="https://en.wikipedia.org/wiki/{{ item }}"
                 tuiButton
+                [attr.href]="'https://en.wikipedia.org/wiki/' + item"
             >
                 Wiki
             </a>

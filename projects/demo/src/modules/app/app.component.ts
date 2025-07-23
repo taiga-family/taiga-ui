@@ -91,25 +91,25 @@ export class App extends AbstractDemo implements OnInit {
         {initialValue: true},
     );
 
-    public override async ngOnInit(): Promise<void> {
-        await super.ngOnInit();
+    public ngOnInit(): void {
+        this.replaceEnvInURI().then(() => {
+            if (this.isServer || this.isE2E || !environment.production) {
+                return;
+            }
 
-        if (this.isServer || this.isE2E || !environment.production) {
-            return;
-        }
+            this.enableYandexMetrika();
 
-        this.enableYandexMetrika();
-
-        this.http
-            .get<Record<string, any>>(environment.github)
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe((response) =>
-                this.stars.set(
-                    Intl.NumberFormat('en', {notation: 'compact'}).format(
-                        response['stargazers_count'],
+            this.http
+                .get<Record<string, any>>(environment.github)
+                .pipe(takeUntilDestroyed(this.destroyRef))
+                .subscribe((response) =>
+                    this.stars.set(
+                        Intl.NumberFormat('en', {notation: 'compact'}).format(
+                            response['stargazers_count'],
+                        ),
                     ),
-                ),
-            );
+                );
+        });
     }
 
     private enableYandexMetrika(): void {

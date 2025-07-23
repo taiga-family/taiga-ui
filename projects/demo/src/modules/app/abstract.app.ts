@@ -1,4 +1,3 @@
-import type {OnInit} from '@angular/core';
 import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import type {Router} from '@angular/router';
@@ -41,13 +40,9 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
 @Directive({
     standalone: true,
 })
-export abstract class AbstractDemo implements OnInit {
+export abstract class AbstractDemo {
     protected abstract readonly storage: Storage;
     protected abstract readonly router: Router;
-
-    public async ngOnInit(): Promise<void> {
-        await this.replaceEnvInURI();
-    }
 
     @tuiPure
     protected get isChristmas(): boolean {

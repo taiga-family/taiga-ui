@@ -35,6 +35,7 @@ export class TuiImgLazyLoading {
 
     protected readonly $ =
         !this.supported &&
+        // eslint-disable-next-line @angular-eslint/no-uncalled-signals
         this.loading$.pipe(takeUntilDestroyed()).subscribe((src) => this.src.set(src));
 
     @Input('src')

@@ -91,7 +91,7 @@
                 documentationPropertyType="string"
                 [(documentationPropertyValue)]="contentProjection"
             />
-            <tui-doc-code code="<tui-thumbnail-card>{{ contentProjection }}</tui-thumbnail-card>" />
+            <tui-doc-code [code]="'<tui-thumbnail-card>' + contentProjection + '</tui-thumbnail-card>'" />
         </tui-doc-documentation>
     </ng-template>
 
