@@ -95,7 +95,16 @@ export class TuiComboBox<T>
                 matcher(x, textfieldValue, this.itemsHandlers.stringify()),
             ) ?? null;
         const stringified = this.stringify(selectedOption);
-        const fallback = this.strict() || !textfieldValue ? null : textfieldValue;
+        const fallback =
+            this.strict() || !textfieldValue
+                ? /**
+                   * Don't clear already not-null form control value on new `this.options()` array.
+                   * Otherwise, `ComboBox` becomes incompatible with virtual scroll
+                   * (which displays large lists of elements by only rendering the items that fit on-screen).
+                   * Users can still able to patch form value with `null` on new items if they wish the such behavior.
+                   */
+                  this.value()
+                : textfieldValue;
 
         this.onChange(selectedOption ?? fallback);
 
