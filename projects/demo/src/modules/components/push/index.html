@@ -22,14 +22,14 @@
                 [lines]="lines"
                 [timestamp]="timestamp"
                 [type]="type"
-                (close)="documentationPropertyClose.emitEvent($event)"
+                (close)="close.emitEvent($event)"
             >
                 <img
                     alt=""
                     src="assets/images/roy.jpg"
                 />
                 <tui-icon icon="@tui.settings" />
-                I’ve seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched
+                I've seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched
                 C-Beams glitter in the dark near The Tannhauser Gate. All those moments will be lost in time, like tears
                 in rain.
                 <button
@@ -47,33 +47,38 @@
             </tui-push>
         </tui-doc-demo>
 
-        <tui-doc-documentation heading="Inputs/Outputs">
-            <ng-template
-                documentationPropertyName="heading"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="heading"
+        <h3>Inputs/Outputs</h3>
+        <table tuiDocAPI>
+            <tr
+                name="[heading]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="heading"
             >
                 Heading of the push
-            </ng-template>
-            <ng-template
-                documentationPropertyName="type"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="type"
+            </tr>
+            <tr
+                name="[type]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="type"
             >
                 Small text near icon, typically, category of the message
-            </ng-template>
-            <ng-template
-                documentationPropertyName="lines"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="lines"
+            </tr>
+            <tr
+                name="[lines]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="lines"
             >
                 A number of visible lines
-            </ng-template>
-            <ng-template
-                documentationPropertyName="timestamp"
-                documentationPropertyType="number | string"
-                [documentationPropertyValues]="timestampVars"
-                [(documentationPropertyValue)]="timestamp"
+            </tr>
+            <tr
+                name="[timestamp]"
+                tuiDocAPIItem
+                type="number | string"
+                [items]="timestampVars"
+                [(value)]="timestamp"
             >
                 Timestamp of the arrival. Formatted with
                 <a
@@ -83,52 +88,55 @@
                     <code>FormatDate</code>
                 </a>
                 pipe if the number is passed.
-            </ng-template>
-            <ng-template
-                #documentationPropertyClose="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="close"
-                documentationPropertyType="void"
+            </tr>
+            <tr
+                #close
+                name="(close)"
+                tuiDocAPIItem
+                type="void"
             >
                 Output for close button clicks. If you do not listen to this output, close button is hidden.
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
 
-        <tui-doc-documentation
-            heading="Content slots"
-            [showValues]="false"
-        >
-            <ng-template
-                documentationPropertyName="tui-icon"
-                documentationPropertyType="Icon"
-            >
-                Icon in the corner
-            </ng-template>
-            <ng-template
-                documentationPropertyName="img"
-                documentationPropertyType="Image"
+        <h3>Content slots</h3>
+        <table tuiDocAPI>
+            <tr
+                name="img"
+                tuiDocAPIItem
+                type="Image"
             >
                 Image at the top (360×170px)
-            </ng-template>
-            <ng-template
-                documentationPropertyName="tuiLink"
-                documentationPropertyType="Link/Button"
+            </tr>
+            <tr
+                name="tui-icon"
+                tuiDocAPIItem
+                type="Icon"
+            >
+                Icon in the corner
+            </tr>
+            <tr
+                name="tuiLink"
+                tuiDocAPIItem
+                type="Link/Button"
             >
                 Single button
-            </ng-template>
-            <ng-template
-                documentationPropertyName="tuiButton"
-                documentationPropertyType="Link/Button"
+            </tr>
+            <tr
+                name="tuiButton"
+                tuiDocAPIItem
+                type="Link/Button"
             >
                 Additional button when it requires two
-            </ng-template>
-            <ng-template
-                documentationPropertyName="ng-content"
-                documentationPropertyType="Arbitrary"
+            </tr>
+            <tr
+                name="ng-content"
+                tuiDocAPIItem
+                type="Arbitrary"
             >
                 The rest of the content is that push body.
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
