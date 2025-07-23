@@ -9347,14 +9347,14 @@ export class Example {}
                 [lines]="lines"
                 [timestamp]="timestamp"
                 [type]="type"
-                (close)="documentationPropertyClose.emitEvent($event)"
+                (close)="close.emitEvent($event)"
             >
                 <img
                     alt=""
                     src="assets/images/roy.jpg"
                 />
                 <tui-icon icon="@tui.settings" />
-                I’ve seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched
+                I've seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched
                 C-Beams glitter in the dark near The Tannhauser Gate. All those moments will be lost in time, like tears
                 in rain.
                 <button
@@ -9376,11 +9376,11 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| heading | `string` | Heading of the push |
-| type | `string` | Small text near icon, typically, category of the message |
-| lines | `number` | A number of visible lines |
-| timestamp | `number | string` | Timestamp of the arrival. Formatted with FormatDate pipe if the number is passed. |
-| close | `void` | Output for close button clicks. If you do not listen to this output, close button is hidden. |
+| [heading] | `string` | Heading of the push |
+| [type] | `string` | Small text near icon, typically, category of the message |
+| [lines] | `number` | A number of visible lines |
+| [timestamp] | `number | string` | pipe if the number is passed. |
+| (close) | `void` | Output for close button clicks. If you do not listen to this output, close button is hidden. |
 
 ### TypeScript
 
