@@ -10,13 +10,13 @@ import {
 import {TuiLet} from '@taiga-ui/cdk';
 import type {TuiDialogContext} from '@taiga-ui/core';
 import {TuiAlertService, TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiAvatar, TuiButton, TuiDemo, TuiLet, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiLet, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
