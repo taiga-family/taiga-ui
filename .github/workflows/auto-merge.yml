@@ -1,6 +1,8 @@
 name: 🤖 PR auto merge
 on:
   pull_request:
+    branches-ignore:
+      - 'safe-clone/**'
 
 env:
   PR_JOBS_NAME: '[ "Build packages", "Firebase", "Lint", "Tests result", "E2E result" ]'

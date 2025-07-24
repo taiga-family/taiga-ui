@@ -1,6 +1,8 @@
 name: ⚙️ E2E testing
 on:
   pull_request:
+    branches-ignore:
+      - 'safe-clone/**'
 
 env:
   RETRY_COUNT: 2

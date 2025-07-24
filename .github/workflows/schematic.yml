@@ -1,6 +1,8 @@
 name: ⚙️ Schematics
 on:
   pull_request:
+    branches-ignore:
+      - 'safe-clone/**'
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}

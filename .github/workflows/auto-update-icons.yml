@@ -1,6 +1,8 @@
 name: 🤖 Auto update bundled & used icons
 on:
   pull_request:
+    branches-ignore:
+      - 'safe-clone/**'
   workflow_dispatch:
 
 jobs:

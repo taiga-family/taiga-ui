@@ -1,0 +1,125 @@
+name: 🤖 Safe Fork PR Synchronization
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1-5'
+
+jobs:
+  synchronize-and-clean:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config --global user.name "taiga-family-bot"
+          git config --global user.email \
+            "taiga-family-bot@users.noreply.github.com"
+
+      - name: Find all active forks with 'safe clone' label
+        id: find-forks
+        run: |
+          # Get all open PRs from forks with 'safe clone' label
+          active_forks_json=$(curl -s -H "Authorization: token ${{ secrets.TAIGA_FAMILY_BOT_PAT }}" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls?state=open" \
+            | jq '[.[] | select(.head.repo.fork == true) | select(.labels[]?.name == "safe clone") | {fork: .head.repo.full_name, head_ref: .head.ref, pr_url: .html_url}]')
+
+          echo "Found $(echo "$active_forks_json" | jq length) active forks"
+          echo "forks_json=${active_forks_json}" >> $GITHUB_OUTPUT
+
+      - name: Process each active fork
+        if: steps.find-forks.outputs.forks_json != '[]'
+        env:
+          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+        run: |
+          echo "${{ steps.find-forks.outputs.forks_json }}" | jq -c '.[]' | while read -r fork_data; do
+            fork=$(echo "$fork_data" | jq -r '.fork')
+            head_ref=$(echo "$fork_data" | jq -r '.head_ref')
+            pr_url=$(echo "$fork_data" | jq -r '.pr_url')
+
+            # Sanitize head_ref to ensure it meets Git's branch naming requirements
+            sanitized_head_ref=$(echo "$head_ref" | tr -c 'a-zA-Z0-9._-' '-' | sed 's/^-*//;s/-*$//;s/-\{2,\}/-/g')
+
+            echo "Processing fork: $fork (branch: $sanitized_head_ref)"
+            mirror_branch="safe-clone/${fork//\//-}-$sanitized_head_ref"
+            # Fetch latest changes from fork
+            if ! git remote get-url "$fork" > /dev/null 2>&1; then
+              git remote add "$fork" "https://github.com/$fork.git"
+            fi
+            git fetch "$fork" "$head_ref"
+
+            # Create/update mirror branch
+            git checkout -B "$mirror_branch" "$fork/$head_ref"
+            git push --force origin "$mirror_branch"
+
+            # Check for existing PR
+            existing_pr=$(gh pr list --json number,state,title --head "$mirror_branch")
+            pr_number=$(echo "$existing_pr" | jq -r '.[0].number')
+            pr_state=$(echo "$existing_pr" | jq -r '.[0].state')
+
+            if [ "$pr_number" == "null" ]; then
+              # Create new PR
+              echo "Creating new PR for $mirror_branch"
+              gh pr create \
+                --title "[Safe Clone] Updates from $fork ($head_ref)" \
+                --body "Automatically synced from [source PR]($pr_url)" \
+                --head "$mirror_branch" \
+                --repo "${{ github.repository }}"
+            elif [ "$pr_state" == "CLOSED" ]; then
+              # Reopen and update closed PR
+              echo "Reopening PR #$pr_number"
+              gh pr reopen "$pr_number"
+              gh pr edit "$pr_number" \
+                --title "[Safe Clone] Updates from $fork ($head_ref) [Updated $(date +%F)]" \
+                --body "Automatically synced from [source PR]($pr_url)\n\nLast sync: $(date -u)"
+            else
+              # Update existing open PR
+              echo "PR #$pr_number already exists - updating"
+              gh pr comment "$pr_number" --body "Synced latest changes at $(date -u)"
+            fi
+          done
+
+      - name: Cleanup orphaned safe-clone branches
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+        run: |
+          # Get current active safe-clone branches from active forks
+          active_branches=$(echo "${{ steps.find-forks.outputs.forks_json }}" | \
+            jq -r '.[] | "safe-clone/\(.fork | gsub("/"; "-"))-\(.head_ref)"')
+
+          # Get all safe-clone branches in repository
+          git fetch --prune
+          all_safe_branches=$(git branch -r | grep -o 'origin/safe-clone/[^ ]*' | sed 's/origin\///')
+
+          for branch in $all_safe_branches; do
+            if ! echo "$active_branches" | grep -qxF "$branch"; then
+              echo "Found orphaned branch: $branch"
+
+              # Close associated PR if exists
+              pr_info=$(gh pr list --json number,state,title --head "$branch")
+              pr_number=$(echo "$pr_info" | jq -r '.[0].number')
+
+              if [ "$pr_number" != "null" ]; then
+                echo "Closing PR #$pr_number for $branch"
+                gh pr close "$pr_number" \
+                  --comment "Automatically closed: source fork/PR no longer exists or lost 'safe clone' label"
+              fi
+
+              # Delete branch
+              echo "Deleting branch $branch"
+              if git ls-remote --exit-code --heads origin "${branch}" > /dev/null; then
+                git push origin --delete "${branch}"
+                echo "Branch $branch deleted successfully"
+              else
+                echo "Branch $branch does not exist on the remote"
+              fi
+            fi
+          done
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true

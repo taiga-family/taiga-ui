@@ -1,9 +1,10 @@
 name: ⚙️ Unit tests
 on:
   pull_request:
+    branches-ignore:
+      - 'safe-clone/**'
   push:
-    branches:
-      - main
+    branches: [main]
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}

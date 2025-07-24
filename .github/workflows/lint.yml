@@ -1,6 +1,8 @@
 name: ⚙️ Lint
 on:
   pull_request:
+    branches-ignore:
+      - 'safe-clone/**'
   push:
     branches: [main]
 
