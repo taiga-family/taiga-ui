@@ -26,6 +26,11 @@ export default defineConfig({
                         assets: [
                             {
                                 glob: '**/*',
+                                input: 'projects/demo-cypress/src/fixtures/',
+                                output: './assets/',
+                            },
+                            {
+                                glob: '**/*',
                                 input: 'projects/demo/src/assets/',
                                 output: './assets/',
                             },
