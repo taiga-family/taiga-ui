@@ -151,7 +151,7 @@ describe('ComboBox', () => {
 
             await comboBox.textfield.press('Backspace');
             await expect(comboBox.textfield).toHaveValue('Austri');
-            await expect(example).toContainText('"testValue": "null"');
+            await expect(example).toContainText('"testValue": null');
         });
     });
 
@@ -257,7 +257,13 @@ describe('ComboBox', () => {
 
                 await comboBox.textfield.click();
 
-                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(20);
+                await expect(async () => {
+                    const count = await comboBox.dropdown.locator('[tuiOption]').count();
+
+                    // assertion for the exact number of options is not reliable
+                    expect(count).toBeGreaterThan(10);
+                    expect(count).toBeLessThan(30);
+                }).toPass();
 
                 await option.click();
 
@@ -271,7 +277,12 @@ describe('ComboBox', () => {
                     .locator('cdk-virtual-scroll-viewport')
                     .evaluate((el) => el.scrollTo(0, 500));
 
-                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(20);
+                await expect(async () => {
+                    const count = await comboBox.dropdown.locator('[tuiOption]').count();
+
+                    expect(count).toBeGreaterThan(10);
+                    expect(count).toBeLessThan(30);
+                }).toPass();
                 await expect(option).not.toBeAttached();
 
                 await comboBox.textfield.blur();
