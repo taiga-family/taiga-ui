@@ -1,0 +1,120 @@
+name: 🗂 Mirror PR from Fork
+on:
+  workflow_dispatch:
+  schedule:
+    # At UTC 06:00 (MSK 09:00) on every day-of-week from Monday through Friday
+    - cron: '0 6 * * 1-5'
+
+jobs:
+  mirror-fork-prs:
+    runs-on: ubuntu-latest
+    name: Mirror PRs from forks
+    env:
+      GH_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
+
+      - name: Configure git
+        run: |
+          git config --global user.name "taiga-family-bot"
+          git config --global user.email \
+            "taiga-family-bot@users.noreply.github.com"
+
+      - name: Find and mirror fork PRs
+        run: |
+          # Get list of open PRs from forks
+          echo "Searching for open PRs from forks..."
+
+          # Use GitHub CLI to get open PRs from forks
+          gh pr list --state open \
+            --json number,headRefName,headRepository,title,body,author \
+            --limit 100 > prs.json
+
+          # Filter PRs that are from forks (headRepository.name != "taiga-ui")
+          jq -r '.[] | select(.headRepository.name != "taiga-ui") | \
+            select(.headRepository.owner.login != "taiga-family") | \
+            "\(.number) \(.headRefName) \(.headRepository.owner.login)/" + \
+            "\(.headRepository.name) \(.title)"' \
+            prs.json > fork_prs.txt
+
+          if [ ! -s fork_prs.txt ]; then
+            echo "No fork PRs found."
+            exit 0
+          fi
+
+          echo "Found fork PRs:"
+          cat fork_prs.txt
+
+          # Process each fork PR
+          while IFS=' ' read -r pr_number head_ref repo_full_name title; do
+            echo "Processing PR #$pr_number from $repo_full_name"
+
+            # Check if mirror PR already exists
+            mirror_branch="mirror/fork-pr-$pr_number"
+            existing_mirror=$(gh pr list --head "$mirror_branch" \
+              --json number --jq '.[0].number // empty')
+
+            if [ -n "$existing_mirror" ]; then
+              echo "Mirror PR already exists for #$pr_number" \
+                "(mirror PR #$existing_mirror), skipping..."
+              continue
+            fi
+
+            # Get the fork repository details
+            repo_owner=$(echo "$repo_full_name" | cut -d'/' -f1)
+            repo_name=$(echo "$repo_full_name" | cut -d'/' -f2)
+
+            # Add fork as remote if not exists
+            if ! git remote get-url "$repo_owner" 2>/dev/null; then
+              git remote add "$repo_owner" \
+                "https://github.com/$repo_full_name.git"
+            fi
+
+            # Fetch the fork branch
+            echo "Fetching branch $head_ref from $repo_full_name..."
+            git fetch "$repo_owner" "$head_ref"
+
+            # Create and push mirror branch
+            echo "Creating mirror branch $mirror_branch..."
+            git checkout -b "$mirror_branch" "$repo_owner/$head_ref"
+            git push origin "$mirror_branch"
+
+            # Get original PR details
+            original_pr_data=$(gh pr view "$pr_number" \
+              --json title,body,author)
+            original_title=$(echo "$original_pr_data" | jq -r '.title')
+            original_body=$(echo "$original_pr_data" | jq -r '.body // ""')
+            original_author=$(echo "$original_pr_data" | jq -r '.author.login')
+
+            # Create mirror PR
+            mirror_title="🗂 Mirror: $original_title"
+            
+            # Create mirror PR with simple body
+            echo "Creating mirror PR..."
+            mirror_pr_number=$(gh pr create \
+              --title "$mirror_title" \
+              --body "Mirror of PR #$pr_number from fork $repo_full_name by @$original_author" \
+              --head "$mirror_branch" \
+              --base main \
+              --label "🗂 mirror" \
+              | grep -o '#[0-9]*' | tr -d '#')
+
+            echo "Created mirror PR #$mirror_pr_number for original PR #$pr_number"
+
+            # Return to main branch for next iteration
+            git checkout main
+
+          done < fork_prs.txt
+
+          # Cleanup
+          rm -f prs.json fork_prs.txt
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
