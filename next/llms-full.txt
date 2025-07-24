@@ -3333,7 +3333,8 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| degrees | `number` | Pointer direction in degrees |
+| [degrees] | `number` | Pointer direction in degrees |
+| [style.color] | `string` | Custom color |
 
 ### TypeScript
 
@@ -10194,14 +10195,14 @@ A mobile draggable sheet dialog
 
 | Property | Type | Description |
 |----------|-----|----------|
-| closeable | `boolean` | Whether or not a sheet can be closed by user. |
-| fullscreen | `boolean` | Fullscreen |
-| bar | `boolean` | Show bar |
-| data | `I` | Optional data to be passed to the sheet. |
-| label | `PolymorpheusContent` | Sheet label. |
-| stops | `string[]` | An array of stop points in any units for the sheet. |
-| initial | `number` | Initial stop index to open on. Index exceeding stops means to stop on top of the sheet's content. |
-| offset | `number` | Top offset px ( --tui-offset ) |
+| [closeable] | `boolean` | Whether or not a sheet can be closed by user. |
+| [fullscreen] | `boolean` | Fullscreen |
+| [bar] | `boolean` | Show bar |
+| [data] | `I` | Optional data to be passed to the sheet. |
+| [label] | `PolymorpheusContent` | Sheet label. |
+| [stops] | `string[]` | An array of stop points in any units for the sheet. |
+| [initial] | `number` | means to stop on top of the sheet's content. |
+| [offset] | `number` | ) |
 
 ### TypeScript
 
