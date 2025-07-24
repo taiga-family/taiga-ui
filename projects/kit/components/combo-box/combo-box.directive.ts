@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
-import type {TuiStringMatcher} from '@taiga-ui/cdk/types';
+import type {TuiSearchHandler, TuiStringMatcher} from '@taiga-ui/cdk/types';
 import type {TuiDataListAccessor} from '@taiga-ui/core/components/data-list';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
@@ -58,6 +58,14 @@ export class TuiComboBox<T>
     private readonly itemsHandlers: TuiItemsHandlers<T | string> =
         inject(TUI_ITEMS_HANDLERS);
 
+    /**
+     * TODO(v5): change default value
+     * items.find(
+     *   (x) => this.itemsHandlers.stringify()(x).toLowerCase() === query.toLowerCase()
+     * )
+     */
+    private readonly search = signal<TuiSearchHandler<T> | null>(null);
+
     private readonly matcher = signal<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
     private readonly strict = signal(true);
     private readonly datalist = tuiInjectAuxiliary<TuiDataListAccessor<T>>(
@@ -84,27 +92,21 @@ export class TuiComboBox<T>
     protected readonly matchingEffect = effect(() => {
         const options = this.options();
         const matcher = this.matcher();
+        const search = this.search();
 
-        if (!options.length || !matcher) {
+        if (!options.length || (!matcher && !search)) {
             return;
         }
 
         const textfieldValue = this.textfield.value();
-        const selectedOption =
-            options.find((x) =>
-                matcher(x, textfieldValue, this.itemsHandlers.stringify()),
-            ) ?? null;
+        const selectedOption = search
+            ? search(textfieldValue, options)
+            : matcher &&
+              options.find((x) =>
+                  matcher(x, textfieldValue, this.itemsHandlers.stringify()),
+              );
         const stringified = this.stringify(selectedOption);
-        const fallback =
-            this.strict() || !textfieldValue
-                ? /**
-                   * Don't clear already not-null form control value on new `this.options()` array.
-                   * Otherwise, `ComboBox` becomes incompatible with virtual scroll
-                   * (which displays large lists of elements by only rendering the items that fit on-screen).
-                   * Users can still able to patch form value with `null` on new items if they wish the such behavior.
-                   */
-                  this.value()
-                : textfieldValue;
+        const fallback = this.strict() || !textfieldValue ? null : textfieldValue;
 
         this.onChange(selectedOption ?? fallback);
 
@@ -127,7 +129,15 @@ export class TuiComboBox<T>
         this.strict.set(x);
     }
 
-    // TODO(v5): use signal input
+    /**
+     * TODO(v5): use signal input
+     */
+    @Input('search')
+    public set searchSetter(x: TuiSearchHandler<T> | null) {
+        this.search.set(x);
+    }
+
+    // TODO(v5): DELETE me
     @Input('matcher')
     public set matcherSetter(x: TuiStringMatcher<T> | null) {
         this.matcher.set(x);
@@ -168,7 +178,7 @@ export class TuiComboBox<T>
         }
     }
 
-    private stringify(value: T | string | null): string {
+    private stringify(value: T | string | null | undefined): string {
         return value != null ? this.itemsHandlers.stringify()(value) : '';
     }
 }
