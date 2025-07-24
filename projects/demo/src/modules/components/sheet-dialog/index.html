@@ -17,22 +17,24 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <button
-                tuiButton
-                type="button"
-                (click)="toggle()"
-            >
-                Click
-            </button>
-            <button
-                tuiButton
-                type="button"
-                class="tui-space_left-4"
-                (longtap)="toggle()"
-            >
-                Long tap
-            </button>
-            <ng-template #template>
+            <ng-container *tuiLet="label === 'Template' ? labelTemplate : label as dialogLabel">
+                <button
+                    tuiButton
+                    type="button"
+                    (click)="showDialog(sheetTemplate, dialogLabel)"
+                >
+                    Click
+                </button>
+                <button
+                    tuiButton
+                    type="button"
+                    class="tui-space_left-4"
+                    (longtap)="showDialog(sheetTemplate, dialogLabel)"
+                >
+                    Long tap
+                </button>
+            </ng-container>
+            <ng-template #labelTemplate>
                 <div class="label">
                     <tui-avatar size="m">KG</tui-avatar>
                     <label tuiTitle>
@@ -42,96 +44,127 @@
                 </div>
             </ng-template>
             <ng-template
-                [tuiSheetDialogOptions]="{
-                    label: label === 'Template' ? template : label,
-                    closeable: closeable,
-                    fullscreen: fullscreen,
-                    stops: stops,
-                    initial: initial,
-                    bar: bar,
-                    offset: offset,
-                }"
-                [(tuiSheetDialog)]="open"
+                #sheetTemplate
+                let-completeWith="completeWith"
+                let-observer
             >
                 <p [style.flex-grow]="1">
                     Karl Gambolputty de von
                     Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber
                     von Hautkopft of Ulm was the last-surviving relative of Johann Gambolputty de von.
                 </p>
-                <footer tuiFloatingContainer>
+                <footer
+                    tuiFloatingContainer
+                    class="button-container"
+                >
                     <button
                         tuiButton
                         type="button"
-                        (click)="toggle()"
+                        class="tui-space_right-1"
+                        (click)="observer.complete()"
                     >
                         Close
+                    </button>
+                    <button
+                        tuiButton
+                        type="button"
+                        class="tui-space_right-1"
+                        (click)="observer.next('Hi')"
+                    >
+                        Say "Hi"
+                    </button>
+                    <button
+                        tuiButton
+                        type="button"
+                        class="tui-space_right-1"
+                        (click)="completeWith('Hi and bye!')"
+                    >
+                        Say "Hi and bye!"
                     </button>
                 </footer>
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="closeable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="closeable"
+        <table tuiDocAPI>
+            <tr
+                name="closeable"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="closeable"
             >
                 Whether or not a sheet can be closed by user.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="fullscreen"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="fullscreen"
+            </tr>
+            <tr
+                name="fullscreen"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="fullscreen"
             >
                 Fullscreen
-            </ng-template>
-            <ng-template
-                documentationPropertyName="bar"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="bar"
+            </tr>
+            <tr
+                name="bar"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="bar"
             >
                 Show bar
-            </ng-template>
-            <ng-template
-                documentationPropertyName="data"
-                documentationPropertyType="I"
+            </tr>
+            <tr
+                name="data"
+                tuiDocAPIItem
+                type="I"
             >
                 Optional data to be passed to the sheet.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="label"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="labelVariants"
-                [(documentationPropertyValue)]="label"
+            </tr>
+            <tr
+                name="label"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="labelVariants"
+                [(value)]="label"
             >
                 Sheet label.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="stops"
-                documentationPropertyType="string[]"
-                [documentationPropertyValues]="stopsVariants"
-                [(documentationPropertyValue)]="stops"
+            </tr>
+            <tr
+                name="stops"
+                tuiDocAPIItem
+                type="string[]"
+                [items]="stopsVariants"
+                [(value)]="stops"
             >
                 An array of stop points in any units for the sheet.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="initial"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="initial"
+            </tr>
+            <tr
+                name="initial"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="initial"
             >
                 Initial stop index to open on. Index exceeding
                 <code>stops</code>
                 means to stop on top of the sheet's content.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="offset"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="offset"
+            </tr>
+            <tr
+                name="offset"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="offset"
             >
                 Top offset px (
                 <code>--tui-offset</code>
                 )
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+            <tr
+                name="required"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="required"
+            >
+                Dismissing dialog emits an error into
+                <code>Observable</code>
+                (you can catch it with "catch" operator or onError handler)
+            </tr>
+        </table>
     </ng-template>
 
     <ng-template pageTab>
