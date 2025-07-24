@@ -46,43 +46,31 @@ describe('TuiPreviewDialog Escape Key Behavior', () => {
     beforeEach(() => cy.mount(Test));
 
     it('should close only preview dialog on first escape key press', () => {
-        // Open the dialog
         cy.get('#open-dialog').click();
         cy.get('#dialog-content').should('be.visible');
 
-        // Open the preview dialog inside the main dialog
         cy.get('#open-preview').click();
         cy.get('tui-preview-dialog').should('exist');
 
-        // Wait a bit for animations
         cy.wait(100);
 
-        // Press escape key - should close only the preview dialog
         cy.get('body').trigger('keydown', {key: 'Escape', code: 'Escape'});
 
-        // Wait for animations
         cy.wait(200);
 
-        // Preview dialog should be closed, main dialog should remain open
         cy.get('tui-preview-dialog').should('not.exist');
         cy.get('#dialog-content').should('be.visible');
-
-        // Don't test the second escape for now - just verify the fix works
     });
 
     it('should handle escape key events with proper propagation', () => {
-        // Test just the preview dialog functionality
         cy.get('#open-dialog').click();
         cy.get('#open-preview').click();
 
-        // Verify preview dialog exists
         cy.get('tui-preview-dialog').should('exist');
 
-        // Test escape key functionality
         cy.get('body').trigger('keydown', {key: 'Escape', code: 'Escape'});
         cy.wait(200);
 
-        // Preview should close but dialog should remain
         cy.get('tui-preview-dialog').should('not.exist');
         cy.get('tui-dialog').should('exist');
     });
