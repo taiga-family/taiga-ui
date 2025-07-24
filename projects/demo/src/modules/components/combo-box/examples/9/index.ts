@@ -32,7 +32,7 @@ export default class Example {
 
     protected readonly items: readonly Python[] = [
         {id: 42, name: 'John Cleese'},
-        {id: 237, name: 'Eric Idle'},
+        {id: 0, name: 'Eric Idle'},
         {id: 666, name: 'Michael Palin'},
         {id: 123, name: 'Terry Gilliam'},
         {id: 777, name: 'Terry Jones'},
