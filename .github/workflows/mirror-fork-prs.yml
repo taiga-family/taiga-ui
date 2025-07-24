@@ -32,9 +32,8 @@ jobs:
             --json number,headRefName,headRepository,title,body,author \
             --limit 100 > prs.json
 
-          # Filter PRs that are from forks (headRepository.name != "taiga-ui")
-          jq -r '.[] | select(.headRepository.name != "taiga-ui") | \
-            select(.headRepository.owner.login != "taiga-family") | \
+          # Filter PRs that are from forks (different owner than taiga-family)
+          jq -r '.[] | select(.headRepository.owner.login != "taiga-family") | \
             "\(.number) \(.headRefName) \(.headRepository.owner.login)/" + \
             "\(.headRepository.name) \(.title)"' \
             prs.json > fork_prs.txt
