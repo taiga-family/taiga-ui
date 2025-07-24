@@ -17,9 +17,15 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
     host: {
-        '(document:keydown.esc)': 'context.$implicit.complete()',
+        '(document:keydown.esc)': 'onEscape($event)',
     },
 })
 export class TuiPreviewDialog {
     protected readonly context = injectContext<TuiPopover<void, void>>();
+
+    public onEscape(event: KeyboardEvent): void {
+        event.preventDefault();
+        event.stopPropagation();
+        this.context.$implicit.complete();
+    }
 }
