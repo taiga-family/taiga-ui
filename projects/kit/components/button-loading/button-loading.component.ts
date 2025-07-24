@@ -47,6 +47,7 @@ export class TuiButtonLoading {
 
     protected onClick(event: MouseEvent): void {
         if (this.loading) {
+            event.preventDefault();
             event.stopPropagation();
         }
     }
