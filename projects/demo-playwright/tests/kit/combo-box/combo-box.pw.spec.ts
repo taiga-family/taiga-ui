@@ -153,21 +153,21 @@ describe('ComboBox', () => {
                 );
             });
 
-            test('mached by typing complete name', async () => {
+            test('match option by typing complete name', async () => {
                 await comboBox.textfield.clear();
                 await comboBox.textfield.fill('eRiC iDle');
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');
                 await expect(example).toContainText('Form control:0');
             });
 
-            test('mached by typing id', async () => {
+            test('match option by typing id', async () => {
                 await comboBox.textfield.clear();
                 await comboBox.textfield.fill('0');
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');
                 await expect(example).toContainText('Form control:0');
             });
 
-            test('click on item and blur', async () => {
+            test('click on item and blur – keeps already matched option', async () => {
                 await comboBox.textfield.click();
                 await comboBox.dropdown
                     .locator('[tuiOption]', {
