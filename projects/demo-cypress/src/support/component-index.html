@@ -11,6 +11,20 @@
             name="viewport"
         />
         <title>Components App</title>
+
+        <style>
+            /**
+                Cypress does not intercept requests made outside the JavaScript context —
+                cy.intercept only works with XHR, Fetch, and WebSocket.
+                Browser requests for fonts, styles, and images
+                (such as through HTML <link>, <img>, or @font-face)
+                 are not intercepted.
+             */
+            @font-face {
+                font-family: 'Manrope';
+                src: url('./assets/manrope-fonts.ttf') format('woff2');
+            }
+        </style>
     </head>
     <body>
         <div

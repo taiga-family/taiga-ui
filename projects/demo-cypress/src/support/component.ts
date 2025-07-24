@@ -17,17 +17,6 @@ declare global {
 }
 
 export const stableMount: typeof mount = (component, config) => {
-    cy.intercept(
-        {method: 'GET', resourceType: 'font', url: 'https://fonts.gstatic.com/**'},
-        {
-            // Specify `null` as the encoding in order to read the file as a `Buffer` https://docs.cypress.io/api/commands/fixture#Encoding
-            fixture: 'manrope-fonts.ttf,null',
-            headers: {
-                devNotes: 'Mocked by Cypress',
-            },
-        },
-    );
-
     return mount(component, {
         ...config,
         providers: [
