@@ -23,7 +23,7 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 export class TuiPreviewDialog {
     protected readonly context = injectContext<TuiPopover<void, void>>();
 
-    public onEscape(event: KeyboardEvent): void {
+    protected onEscape(event: KeyboardEvent): void {
         event.preventDefault();
         event.stopPropagation();
         this.context.$implicit.complete();
