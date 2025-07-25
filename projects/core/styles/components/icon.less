@@ -5,10 +5,14 @@
  * @selector tui-icon
  *
  * @description
- * Container for displaying icons colored with CSS (color/background) using mask
+ * Container for displaying icons colored with CSS (color/background).
+ * Following icon modes can be used by settings a class:
+ * - .tui-svg-icon — applies mask
+ * - .tui-image-icon — sets the background
+ * - .tui-font-icon — sets the content
  *
  * @vars
- * --t-icon — mask for the icon
+ * --t-icon — used for the icon
  * --t-icon-bg — mask for the background
  *
  * @example
@@ -35,13 +39,30 @@ tui-icon {
         }
     }
 
-    &::after,
-    &[tuiIcons]::after {
+    &::after {
         .fullsize();
 
         content: '';
         display: block;
+    }
+
+    &.tui-svg-icon::after {
         mask: var(--t-icon) no-repeat center/contain;
         background: currentColor;
+    }
+
+    &.tui-image-icon::after {
+        background: var(--t-icon) no-repeat center/contain;
+        mask: none;
+    }
+
+    &.tui-font-icon::after {
+        content: var(--t-icon);
+        font-family: var(--t-font-icon, inherit);
+        font-size: 1em;
+        text-align: center;
+        line-height: 1;
+        font-weight: inherit;
+        text-transform: none;
     }
 }

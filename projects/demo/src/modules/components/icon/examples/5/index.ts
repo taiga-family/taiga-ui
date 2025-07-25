@@ -1,8 +1,14 @@
-import {Component, SkipSelf} from '@angular/core';
+import {Component, SkipSelf, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
+import type {TuiHandler, TuiStringHandler} from '@taiga-ui/cdk';
+import {
+    TUI_ICON_MODE_RESOLVER,
+    TUI_ICON_SVG_RESOURCE_RESOLVER,
+    TuiIcon,
+    type TuiIconResource,
+    type TuiResolvedIconMode,
+} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
@@ -13,13 +19,20 @@ import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
     changeDetection,
     providers: [
         {
-            provide: TUI_ICON_RESOLVER,
-            deps: [[new SkipSelf(), TUI_ICON_RESOLVER]],
-            useFactory(defaultResolver: TuiStringHandler<string>) {
-                return (name: string) =>
-                    name.startsWith('@tui.')
-                        ? defaultResolver(name)
-                        : `/assets/icons/${name}.svg`;
+            provide: TUI_ICON_MODE_RESOLVER,
+            deps: [[new SkipSelf(), TUI_ICON_MODE_RESOLVER]],
+            useFactory: (res: TuiHandler<string, TuiResolvedIconMode>) => {
+                return (icon: string) => {
+                    return icon.startsWith('@')
+                        ? res(icon)
+                        : {
+                              className: 'tui-svg-icon',
+                              resourceResolver: (name: string) => ({
+                                  path: `url(/assets/icons/${name}.svg)`,
+                                  src: `/assets/icons/${name}.svg`,
+                              }),
+                          };
+                };
             },
         },
     ],

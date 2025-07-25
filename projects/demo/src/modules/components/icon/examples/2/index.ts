@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, tuiIconResolverProvider} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
@@ -10,10 +10,6 @@ import {TuiIcon, tuiIconResolverProvider} from '@taiga-ui/core';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [
-        tuiIconResolverProvider((icon) =>
-            icon.includes('/') ? icon : `/assets/icons/${icon}.svg`,
-        ),
-    ],
+    providers: [],
 })
 export default class Example {}

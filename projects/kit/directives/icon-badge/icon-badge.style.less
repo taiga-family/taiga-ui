@@ -8,8 +8,29 @@
         inline-size: 0.57em;
         block-size: 0.57em;
         transform: translate(50%, 50%);
-        mask: var(--t-icon-badge) no-repeat center/contain;
+    }
+
+    &.tui-svg-icon-badge::before {
         background: currentColor;
+        mask: var(--t-icon-badge) no-repeat center/contain;
+    }
+
+    &.tui-image-icon-badge::before {
+        background: var(--t-icon-badge) no-repeat center/contain;
+    }
+
+    &.tui-font-icon-badge::before {
+        content: var(--t-icon-badge);
+        right: 0.25em;
+        bottom: 0.25em;
+        font-family: var(--t-font-icon, inherit);
+        font-size: 0.57em;
+        text-align: center;
+        line-height: 1;
+        font-weight: inherit;
+        text-transform: none;
+        inline-size: 1em;
+        block-size: 1em;
     }
 
     &[style*='--t-icon-badge:']::after {
@@ -17,5 +38,9 @@
             var(--t-icon),
             radial-gradient(circle at bottom 0.1em right 0.1em, transparent calc(0.4em - 0.5px), #000 0.4em);
         mask-composite: intersect;
+    }
+
+    &.tui-font-icon[style*='--t-icon-badge:']::after {
+        mask-image: radial-gradient(circle at bottom 0.1em right 0.1em, transparent calc(0.4em - 0.5px), #000 0.4em);
     }
 }
