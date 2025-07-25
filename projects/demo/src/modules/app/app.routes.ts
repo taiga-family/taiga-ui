@@ -555,6 +555,11 @@ export const ROUTES: Routes = [
         title: 'InputYear',
     }),
     route({
+        path: DemoRoute.InputYearLegacy,
+        loadComponent: async () => import('../components/input-year-legacy'),
+        title: 'InputYearLegacy',
+    }),
+    route({
         path: DemoRoute.Island,
         loadComponent: async () => import('../components/island'),
         title: 'Island',

@@ -25,17 +25,15 @@
 </tui-primitive-textfield>
 
 <ng-template #dropdown>
-    <div class="t-container">
-        <tui-scrollbar class="t-scrollbar">
-            <tui-calendar-year
-                [disabledItemHandler]="disabledItemHandler"
-                [initialItem]="value || initialItem"
-                [max]="max"
-                [min]="min"
-                [value]="value === null ? null : value"
-                (mousedown.prevent.zoneless)="(0)"
-                (yearClick)="onYearClick($event)"
-            />
-        </tui-scrollbar>
-    </div>
+    <tui-scrollbar>
+        <tui-calendar-year
+            [disabledItemHandler]="disabledItemHandler"
+            [initialItem]="value || initialItem"
+            [max]="max"
+            [min]="min"
+            [value]="value === null ? null : value"
+            (mousedown.prevent.zoneless)="(0)"
+            (yearClick)="onYearClick($event)"
+        />
+    </tui-scrollbar>
 </ng-template>
