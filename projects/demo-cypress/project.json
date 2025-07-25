@@ -12,7 +12,7 @@
                 "cypressConfig": "{projectRoot}/cypress.config.ts",
                 "testingType": "component",
                 "skipServe": true,
-                "devServerTarget": "demo:build",
+                "devServerTarget": "demo:build:development",
                 "browser": "chrome"
             }
         }

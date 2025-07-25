@@ -2,6 +2,8 @@ import {nxComponentTestingPreset} from '@nx/angular/plugins/component-testing';
 import {defineConfig} from 'cypress';
 import getCompareSnapshotsPlugin from 'cypress-image-diff-js/plugin';
 
+import webpackConfig from '../demo/webpack.config';
+
 const preset = nxComponentTestingPreset(__filename);
 
 export default defineConfig({
@@ -16,12 +18,17 @@ export default defineConfig({
         ...preset,
         devServer: {
             ...preset.devServer,
+            webpackConfig: webpackConfig({}),
             options: {
                 ...preset.devServer.options,
                 projectConfig: {
                     ...preset.devServer.options.projectConfig,
                     buildOptions: {
                         ...preset.devServer.options.projectConfig.buildOptions,
+                        buildLibsFromSource: false,
+                        progress: false,
+                        optimization: false,
+                        verbose: false,
                         tsConfig: './tsconfig.json',
                         assets: [
                             {

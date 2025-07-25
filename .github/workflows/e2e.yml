@@ -35,6 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Cypress / Component Testing
     env:
+      TUI_CI: 'false'
       CYPRESS_BASELINE_REPO: 'baseline'
       CYPRESS_RESULTS_FOLDER: 'projects/demo-cypress/tests-results'
       CYPRESS_BASELINE_SNAPSHOTS: 'projects/demo-cypress/tests-results/snapshots/baseline'
