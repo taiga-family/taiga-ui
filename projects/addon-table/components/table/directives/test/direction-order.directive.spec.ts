@@ -73,4 +73,25 @@ describe('TuiDirectionOrder directive', () => {
             expect(testComponent.directionOrderChange).not.toHaveBeenCalled();
         });
     });
+
+    describe('double emit issue when sorting by different key', () => {
+        it('should not emit sorting events twice when sorting by different key', () => {
+            const sorter1 = (a: any, b: any) => a.name?.localeCompare(b.name);
+            const sorter2 = (a: any, b: any) => a.age - b.age;
+
+            // First sort by name
+            testComponent.table.updateSorterAndDirection(sorter1);
+            
+            // Clear call counts
+            testComponent.directionOrderChange.mockClear();
+
+            // Sort by different key (age) - this should only emit once
+            testComponent.table.updateSorterAndDirection(sorter2);
+
+            // Direction should change to ascending when sorting by different key
+            // and should only be emitted once
+            expect(testComponent.directionOrderChange).toHaveBeenCalledTimes(1);
+            expect(testComponent.directionOrderChange).toHaveBeenCalledWith('asc');
+        });
+    });
 });
