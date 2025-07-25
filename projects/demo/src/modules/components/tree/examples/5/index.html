@@ -8,7 +8,19 @@
 
 <ng-template
     #content
-    let-item
+    let-treeItem="node"
+    let-treeNode
 >
-    {{ item.text }}
+    {{ treeNode.text }}
+
+    <button
+        appearance="flat"
+        iconStart="@tui.circle-plus"
+        size="xs"
+        tuiIconButton
+        type="button"
+        (click)="add(treeNode, treeItem)"
+    >
+        Add new item
+    </button>
 </ng-template>
