@@ -2,7 +2,7 @@
 
 :host {
     position: fixed;
-    top: 3rem;
+    top: ~'max(3rem, env(safe-area-inset-top))';
     bottom: 0;
     inline-size: 36.25rem;
     max-inline-size: calc(100vw - 3rem);
@@ -10,6 +10,14 @@
     box-shadow: var(--tui-shadow-medium);
     border-top-left-radius: 1.25rem;
     border-top-right-radius: 1.25rem;
+
+    &[style*='top: 0'] {
+        border-radius: 0;
+
+        .t-aside {
+            padding-block-start: env(safe-area-inset-top);
+        }
+    }
 
     &.tui-enter,
     &.tui-leave {
@@ -43,6 +51,8 @@
     border-radius: inherit;
     overflow: hidden;
     background: inherit;
+    box-sizing: border-box;
+    padding-block-end: env(safe-area-inset-bottom);
 }
 
 .t-scrollbar {
