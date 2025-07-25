@@ -23,60 +23,58 @@
     <ng-template pageTab>
         <h2>DataListWrapper</h2>
 
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="items"
-                documentationPropertyType="readonly T[] | ReadonlyArray<readonly T[]> | null"
+        <table tuiDocAPI>
+            <tr
+                name="[items]"
+                tuiDocAPIItem
+                type="readonly T[] | ReadonlyArray<readonly T[]> | null"
             >
                 Items to select
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="itemContent"
-                documentationPropertyType="PolymorpheusContent<TuiValueContentContext<T>>"
+            </tr>
+            <tr
+                name="[itemContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent<TuiValueContentContext<T>>"
             >
                 Content of an item
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="emptyContent"
-                documentationPropertyType="PolymorpheusContent"
+            </tr>
+            <tr
+                name="[emptyContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
             >
                 Content to display when there are no options inside
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabledItemHandler"
-                documentationPropertyType="TuiBooleanHandler<T>"
+            </tr>
+            <tr
+                name="[disabledItemHandler]"
+                tuiDocAPIItem
+                type="TuiBooleanHandler<T>"
             >
                 <div>A handler that gets an item and returns true if it is disabled.</div>
-
                 <strong>Must be a pure function</strong>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeL | TuiSizeXS"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL | TuiSizeXS"
             >
                 Size of items
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="labels"
-                documentationPropertyType="readonly string[]"
+            </tr>
+            <tr
+                name="[labels]"
+                tuiDocAPIItem
+                type="readonly string[]"
             >
                 Group label
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="output"
-                documentationPropertyName="itemClick"
-                documentationPropertyType="T"
+            </tr>
+            <tr
+                name="(itemClick)"
+                tuiDocAPIItem
+                type="T"
             >
                 Emits on click on item from datalist
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
