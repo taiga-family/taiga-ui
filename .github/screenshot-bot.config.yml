@@ -1,0 +1,15 @@
+# array of RegExp strings to match images inside artifacts (by their path or file name)
+# which shows difference between two screenshot and which will be added to bot report comment
+screenshotsDiffsPaths: [
+    '.*__diff_output__.*', # Cypress
+    '.*.diff.png', # Playwright
+  ]
+
+# array of RegExp strings to match branch names which should be skipped by bot
+branchesIgnore: ['^release/.*', '^v[0-9].x$']
+
+# array of attributes (key="value") for html-tag <img /> (screenshots)
+screenshotImageAttrs: []
+
+# Text which is placed at the beginning of section "Failed tests"
+failedTestsReportDescription: '<h3 align="center">Before (main) ← Diff → After (local)</h3>'
