@@ -3,7 +3,7 @@
     "private": true,
     "devDependencies": {
         "@nx/cypress": "21.3.2",
-        "cypress": "14.5.2",
+        "cypress": "14.5.3",
         "cypress-image-diff-js": "2.4.0",
         "cypress-plugin-tab": "1.0.5"
     }

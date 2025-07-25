@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, ViewChild} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+    ViewChild,
+} from '@angular/core';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
 import {
     TUI_FALSE_HANDLER,
@@ -29,8 +36,8 @@ describe('Mobile calendar', () => {
                 [max]="max"
                 [min]="min"
                 [single]="single"
-                (cancel)="onCancel.emit(true)"
-                (confirm)="onConfirm.emit($event)"
+                (cancel)="cancel.emit(true)"
+                (confirm)="confirm.emit($event)"
             />
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
@@ -49,15 +56,22 @@ describe('Mobile calendar', () => {
         @ViewChild(TuiMobileCalendar, {static: true})
         public calendar!: TuiMobileCalendar;
 
+        @Input()
         public single = true;
-        public onCancel = new EventEmitter<boolean>();
-        public onConfirm = new EventEmitter<TuiDay | TuiDayRange | readonly TuiDay[]>();
+
+        @Output()
+        public readonly cancel = new EventEmitter<boolean>();
+
+        @Output()
+        public readonly confirm = new EventEmitter<
+            TuiDay | TuiDayRange | readonly TuiDay[]
+        >();
     }
 
     it('the back button emits a cancel event', () => {
         cy.mount(Test, {
             componentProperties: {
-                onCancel: createOutputSpy('onCancelSpy'),
+                cancel: createOutputSpy('onCancelSpy'),
             },
         });
 
@@ -91,7 +105,7 @@ describe('Mobile calendar', () => {
         it('confirm event with selected day', () => {
             cy.mount(Test, {
                 componentProperties: {
-                    onConfirm: createOutputSpy('onConfirmSpy'),
+                    confirm: createOutputSpy('onConfirmSpy'),
                 },
             });
 
@@ -106,7 +120,7 @@ describe('Mobile calendar', () => {
             cy.mount(Test, {
                 componentProperties: {
                     single: false,
-                    onConfirm: createOutputSpy('onConfirmSpy'),
+                    confirm: createOutputSpy('onConfirmSpy'),
                 },
             });
 
@@ -124,7 +138,7 @@ describe('Mobile calendar', () => {
         xit('year selection scrolls through months', () => {
             cy.mount(Test, {
                 componentProperties: {
-                    onConfirm: createOutputSpy('onConfirmSpy'),
+                    confirm: createOutputSpy('onConfirmSpy'),
                 },
             })
                 .then((wrapper) => wrapper.component)
