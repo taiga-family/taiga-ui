@@ -105,7 +105,7 @@ export class TuiComboBox<T>
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly blurEffect = effect(() => {
-        const incomplete = untracked(() => this.strict() && !this.value());
+        const incomplete = untracked(() => this.strict() && this.value() === null);
 
         if (!this.host.focused() && incomplete) {
             this.textfield.value.set('');
@@ -160,6 +160,6 @@ export class TuiComboBox<T>
     }
 
     private stringify(value: T | string | null): string {
-        return value ? this.itemsHandlers.stringify()(value) : '';
+        return value != null ? this.itemsHandlers.stringify()(value) : '';
     }
 }
