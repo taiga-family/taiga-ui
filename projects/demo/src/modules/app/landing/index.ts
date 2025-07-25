@@ -57,8 +57,8 @@ export default class Page implements OnInit {
 
     protected intersected = false;
 
-    public async ngOnInit(): Promise<void> {
-        await this.clearQueryParams();
+    public ngOnInit(): void {
+        void this.clearQueryParams();
     }
 
     protected get background(): string {

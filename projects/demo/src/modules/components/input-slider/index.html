@@ -157,8 +157,8 @@
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
                     <input
-                        placeholder="Form control value is still {{ control.value }}"
                         tuiInputSlider
+                        [attr.placeholder]="'Form control value is still ' + control.value"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max()"
