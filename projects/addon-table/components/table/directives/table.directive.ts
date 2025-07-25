@@ -116,16 +116,30 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
 
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
+            // Same sorter - just toggle direction
             this.updateDirection(
                 this.direction === TuiSortDirection.Asc
                     ? TuiSortDirection.Desc
                     : TuiSortDirection.Asc,
             );
         } else {
-            this.updateDirection(1);
+            // Different sorter - update both atomically to avoid double emit
+            this.updateSorterAndDirectionAtomically(sorter, TuiSortDirection.Asc);
         }
+    }
 
-        this.updateSorter(sorter);
+    private updateSorterAndDirectionAtomically(
+        sorter: TuiComparator<T> | null,
+        direction: TuiSortDirection,
+    ): void {
+        // Update internal state first
+        this.sorter = sorter || (() => 0);
+        this.direction = direction;
+
+        // Then emit both events together in the same execution context
+        this.sorterChange.emit(this.sorter);
+        this.directionChange.emit(this.direction);
+        this.change$.next();
     }
 
     public ngOnChanges(): void {
