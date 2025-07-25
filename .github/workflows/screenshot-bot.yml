@@ -1,4 +1,4 @@
-name: 🤖Screenshot Report
+name: 🤖 Screenshot Report
 on:
   workflow_run:
     workflows: [E2E result]
