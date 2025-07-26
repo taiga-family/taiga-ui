@@ -1,4 +1,4 @@
-export function tuiRetargetedBoundaryCrossing(event: any): boolean {
+export function tuiRetargetedBoundaryCrossing(event: Event): boolean {
     // firefox
     if ('explicitOriginalTarget' in event) {
         return event?.explicitOriginalTarget !== event.target;
