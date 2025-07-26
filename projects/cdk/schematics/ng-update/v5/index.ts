@@ -10,11 +10,14 @@ import type {TuiSchema} from '../../ng-add/schema';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
+import {migrateTuiOnboardingToResponsiveDialog} from './steps/onboarding-flow/migrate-onboarding-flow';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
         migrateTokens(tree, options);
         updateTsConfig(tree, options);
+
+        migrateTuiOnboardingToResponsiveDialog(tree);
 
         context.addTask(new NodePackageInstallTask());
     };
