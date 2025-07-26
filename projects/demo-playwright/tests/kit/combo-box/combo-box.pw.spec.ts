@@ -139,10 +139,54 @@ describe('ComboBox', () => {
     });
 
     describe('Examples', () => {
-        describe('Server-side filtering', () => {
-            let example!: Locator;
-            let comboBox!: TuiComboBoxPO;
+        let example!: Locator;
+        let comboBox!: TuiComboBoxPO;
 
+        describe('Choose form control output', () => {
+            beforeEach(async ({page}) => {
+                await tuiGoto(page, DemoRoute.ComboBox);
+                const documentationPage = new TuiDocumentationPagePO(page);
+
+                example = documentationPage.getExample('#form-control-output');
+                comboBox = new TuiComboBoxPO(
+                    example.locator('tui-textfield:has([tuiComboBox])'),
+                );
+            });
+
+            test('match option by typing complete name', async () => {
+                await comboBox.textfield.clear();
+                await comboBox.textfield.fill('eRiC iDle');
+                await expect(comboBox.textfield).toHaveValue('Eric Idle');
+                await expect(example).toContainText('Form control:0');
+            });
+
+            test('match option by typing id', async () => {
+                await comboBox.textfield.clear();
+                await comboBox.textfield.fill('0');
+                await expect(comboBox.textfield).toHaveValue('Eric Idle');
+                await expect(example).toContainText('Form control:0');
+            });
+
+            test('click on item and blur – keeps already matched option', async () => {
+                await comboBox.textfield.click();
+                await comboBox.dropdown
+                    .locator('[tuiOption]', {
+                        hasText: 'Eric Idle',
+                    })
+                    .click();
+
+                await expect(comboBox.textfield).toHaveValue('Eric Idle');
+                await expect(example).toContainText('Form control:0');
+
+                await comboBox.closeDropdown();
+                await comboBox.textfield.blur();
+
+                await expect(comboBox.textfield).toHaveValue('Eric Idle');
+                await expect(example).toContainText('Form control:0');
+            });
+        });
+
+        describe('Server-side filtering', () => {
             beforeEach(async ({page}) => {
                 await page.clock.install();
                 await tuiGoto(page, DemoRoute.ComboBox, {date: null});

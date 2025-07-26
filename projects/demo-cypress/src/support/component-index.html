@@ -11,6 +11,12 @@
             name="viewport"
         />
         <title>Components App</title>
+    </head>
+    <body>
+        <div
+            data-cy-root
+            style="padding: 1rem; caret-color: transparent"
+        ></div>
 
         <style>
             /**
@@ -22,14 +28,19 @@
              */
             @font-face {
                 font-family: 'Manrope';
+                font-style: normal;
+                font-weight: 500;
+                font-display: swap;
+                src: url('./assets/manrope-fonts.ttf') format('truetype');
+            }
+
+            @font-face {
+                font-family: 'Manrope';
+                font-style: normal;
+                font-weight: 800;
+                font-display: swap;
                 src: url('./assets/manrope-fonts.ttf') format('truetype');
             }
         </style>
-    </head>
-    <body>
-        <div
-            data-cy-root
-            style="padding: 1rem; caret-color: transparent"
-        ></div>
     </body>
 </html>

@@ -13,7 +13,7 @@ import {TuiInputTimeDirective} from '../input-time.directive';
         >
             <option
                 *ngFor="let item of items"
-                value="{{ item }}"
+                [value]="item"
             ></option>
         </datalist>
     `,

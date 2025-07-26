@@ -74,8 +74,7 @@ export class TuiTableTr<T extends Partial<Record<keyof T, any>>>
         ),
     );
 
-    public async ngAfterContentInit(): Promise<void> {
-        await Promise.resolve();
-        this.contentReady$.next(true);
+    public ngAfterContentInit(): void {
+        Promise.resolve().then(() => this.contentReady$.next(true));
     }
 }

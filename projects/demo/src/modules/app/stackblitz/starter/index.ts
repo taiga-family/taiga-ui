@@ -20,9 +20,9 @@ export default class Page implements OnInit {
     private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
     private readonly stackblitz = inject(TuiStackblitzService);
 
-    public async ngOnInit(): Promise<void> {
+    public ngOnInit(): void {
         if (this.isBrowser) {
-            await this.openStackblitz();
+            void this.openStackblitz();
         }
     }
 
