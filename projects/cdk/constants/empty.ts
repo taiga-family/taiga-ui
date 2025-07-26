@@ -15,7 +15,7 @@ const rect = {
  * For type safety when using @ContentChildren and @ViewChildren
  *
  * NOTE: Be careful subscribing to 'changes'
- * @deprecated: use viewChild(), viewChildren(), contentChild() and contentChildren() for strict type checking
+ * @deprecated use viewChild(), viewChildren(), contentChild() and contentChildren() for strict type checking
  */
 export const EMPTY_QUERY = new QueryList<any>();
 export const EMPTY_ARRAY: [] = [];
