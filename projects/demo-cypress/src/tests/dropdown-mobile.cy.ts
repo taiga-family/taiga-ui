@@ -1,7 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile, TuiResponsiveDialog} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
@@ -21,6 +20,11 @@ import {
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+
+// Note: webpack compilation error
+// Do not change to @demo/utils
+// noinspection ES6PreferShortImport
+import {assets} from '../../../demo/src/utils/load-assets';
 
 interface User {
     readonly url: string;
