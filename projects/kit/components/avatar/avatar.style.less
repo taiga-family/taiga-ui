@@ -130,11 +130,6 @@
         --t-radius: calc(var(--t-size) / 2);
     }
 
-    &._svg img {
-        padding: 20%;
-        object-fit: contain;
-    }
-
     ::ng-deep img,
     ::ng-deep picture,
     ::ng-deep video {
@@ -143,5 +138,11 @@
         object-fit: cover;
         box-sizing: border-box;
         border-radius: inherit;
+    }
+
+    &._svg img {
+        padding: 20%;
+        object-fit: contain;
+        border-radius: unset;
     }
 }
