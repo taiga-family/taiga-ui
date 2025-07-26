@@ -136,6 +136,23 @@ describe('ComboBox', () => {
             await expect(comboBox.textfield).toHaveValue('Austri');
             await expect(example).toContainText('"testValue": "Austri"');
         });
+
+        test('set `null` on Backspace for matched value', async ({page}) => {
+            await tuiGoto(
+                page,
+                `${DemoRoute.ComboBox}/API?sandboxExpanded=true&strict=true`,
+            );
+
+            await comboBox.textfield.focus();
+            await comboBox.textfield.fill('aUsTrIa');
+            await expect(comboBox.textfield).toHaveValue('Austria');
+            await expect(example).toContainText('"id": "AT"');
+            await expect(example).toContainText('"name": "Austria"');
+
+            await comboBox.textfield.press('Backspace');
+            await expect(comboBox.textfield).toHaveValue('Austri');
+            await expect(example).toContainText('"testValue": null');
+        });
     });
 
     describe('Examples', () => {
@@ -216,6 +233,61 @@ describe('ComboBox', () => {
                     .toHaveScreenshot(
                         'example---server-side-filtering---combobox-option-has-checkmark.png',
                     );
+            });
+        });
+
+        describe('Virtual scroll', () => {
+            let example!: Locator;
+            let comboBox!: TuiComboBoxPO;
+
+            beforeEach(async ({page}) => {
+                await tuiGoto(page, DemoRoute.ComboBox);
+                const documentationPage = new TuiDocumentationPagePO(page);
+
+                example = documentationPage.getExample('#virtual-scroll');
+                comboBox = new TuiComboBoxPO(
+                    example.locator('tui-textfield:has([tuiComboBox])'),
+                );
+            });
+
+            test('textfield keeps already selected option even if option disappears from datalist by scroll', async () => {
+                const option = comboBox.dropdown.locator('[tuiOption]', {
+                    hasText: 'Afghanistan',
+                });
+
+                await comboBox.textfield.click();
+
+                await expect(async () => {
+                    const count = await comboBox.dropdown.locator('[tuiOption]').count();
+
+                    // assertion for the exact number of options is not reliable
+                    expect(count).toBeGreaterThan(10);
+                    expect(count).toBeLessThan(30);
+                }).toPass();
+
+                await option.click();
+
+                await expect(comboBox.textfield).toHaveValue('Afghanistan');
+
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(0);
+                await expect(comboBox.dropdown).not.toBeAttached();
+
+                await comboBox.textfield.click();
+                await comboBox.dropdown
+                    .locator('cdk-virtual-scroll-viewport')
+                    .evaluate((el) => el.scrollTo(0, 500));
+
+                await expect(async () => {
+                    const count = await comboBox.dropdown.locator('[tuiOption]').count();
+
+                    expect(count).toBeGreaterThan(10);
+                    expect(count).toBeLessThan(30);
+                }).toPass();
+                await expect(option).not.toBeAttached();
+
+                await comboBox.textfield.blur();
+
+                await expect(comboBox.textfield).toHaveValue('Afghanistan');
             });
         });
     });
