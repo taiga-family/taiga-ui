@@ -25,7 +25,6 @@ export class TuiPreviewDialog {
 
     protected onEscape(event: KeyboardEvent): void {
         event.preventDefault();
-        event.stopPropagation();
         this.context.$implicit.complete();
     }
 }
