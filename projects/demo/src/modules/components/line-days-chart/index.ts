@@ -1,4 +1,5 @@
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiAxes, TuiLineDaysChart} from '@taiga-ui/addon-charts';
@@ -6,8 +7,6 @@ import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -17,7 +16,9 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Page {
-    protected readonly months$ = inject(TUI_MONTHS);
+    protected readonly months = toSignal(inject(TUI_MONTHS), {
+        requireSync: true,
+    });
 
     protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         new Array(91)
@@ -37,33 +38,27 @@ export default class Page {
 
     protected value = this.valueVariants[0]!;
 
-    protected readonly labels$: Observable<readonly string[]> = this.months$.pipe(
-        map((months) => Array.from({length: 4}, (_, i) => months[i] ?? '')),
+    protected readonly labels = computed(() =>
+        Array.from({length: 4}, (_, i) => this.months()[i] ?? ''),
     );
 
     protected readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
         (y) => `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
     ];
 
-    protected readonly xStringifyVariants$: Observable<
-        ReadonlyArray<TuiStringHandler<TuiDay>>
-    > = this.months$.pipe(
-        map((months) => [({month, day}) => `${months[month]}, ${day}`]),
-    );
+    protected readonly xStringifyVariants = computed(() => [
+        ({month, day}: TuiDay) => `${this.months()[month]}, ${day}`,
+    ]);
 
-    protected readonly hintContentVariants$: Observable<
-        ReadonlyArray<PolymorpheusContent<TuiContext<[TuiDay, number]>>>
-    > = this.months$.pipe(
-        map((months) => [
-            '',
-            ({$implicit}) =>
-                `${months[$implicit[0].month]}, ${$implicit[0].day}\n${(
-                    10 * $implicit[1]
-                ).toLocaleString('en-US', {
-                    maximumFractionDigits: 0,
-                })} $`,
-        ]),
-    );
+    protected readonly hintContentVariants = computed(() => [
+        '',
+        ({$implicit}: {$implicit: [TuiDay, number]}) =>
+            `${this.months()[$implicit[0].month]}, ${$implicit[0].day}\n${(
+                10 * $implicit[1]
+            ).toLocaleString('en-US', {
+                maximumFractionDigits: 0,
+            })} $`,
+    ]);
 
     protected yStringify: TuiStringHandler<number> | null = null;
 
