@@ -1,3 +1,5 @@
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+
 export type TuiDeepPartial<T> = {
     [K in keyof T]?: T[K] extends object ? TuiDeepPartial<T[K]> : T[K];
 };
@@ -5,9 +7,9 @@ export type TuiDeepPartial<T> = {
 type EmptyValue = '' | null | undefined;
 
 function checkValueIsEmpty<T>(value: EmptyValue | T): value is EmptyValue {
-    const nextValue: any = typeof value === 'string' ? value.trim() : value;
-
-    return ['', NaN, null, undefined].includes(nextValue);
+    return tuiIsString(value)
+        ? value.trim() === ''
+        : value == null || Number.isNaN(value);
 }
 
 export function tuiCleanObject<T>(object: T): TuiDeepPartial<T> {

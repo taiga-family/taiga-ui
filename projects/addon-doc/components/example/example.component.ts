@@ -1,5 +1,6 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {DOCUMENT, NgForOf, NgIf} from '@angular/common';
+import type {Type} from '@angular/core';
 import {ChangeDetectionStrategy, Component, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
@@ -69,9 +70,9 @@ export class TuiDocExample {
         Record<string, TuiRawLoaderContent>
     >({});
 
-    private readonly lazyLoader$$ = new ReplaySubject<Promise<{readonly default: any}>>(
-        1,
-    );
+    private readonly lazyLoader$$ = new ReplaySubject<
+        Promise<{readonly default: Type<unknown>}>
+    >(1);
 
     protected readonly fullscreenEnabled = inject(DOCUMENT).fullscreenEnabled;
     protected readonly icons = inject(TUI_DOC_ICONS);
@@ -132,7 +133,7 @@ export class TuiDocExample {
     }
 
     @Input()
-    public set component(content: Promise<{readonly default: any}>) {
+    public set component(content: Promise<{readonly default: Type<unknown>}>) {
         this.lazyLoader$$.next(content);
     }
 
