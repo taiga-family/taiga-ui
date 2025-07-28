@@ -526,6 +526,10 @@ export const pages: DocRoutePages = [
                 title: 'InputChip',
                 keywords: 'поле, инпут, форма, ввод, input, chip, tag, тэг',
                 route: DemoRoute.InputChip,
+                meta: [
+                    {name: 'tui-input-chip'},
+                    {name: 'tui-multi-select', anchor: 'multi-select'},
+                ],
             },
             {
                 section: 'Components',
