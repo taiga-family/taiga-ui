@@ -24,7 +24,6 @@ import {BehaviorSubject, combineLatest, map, merge, startWith} from 'rxjs';
 import {TuiPreviewAction} from './action/preview-action.directive';
 import {TuiPreviewZoom} from './zoom/preview-zoom.component';
 
-const INITIAL_SCALE_COEF = 0.8;
 const EMPTY_COORDINATES: [number, number] = [0, 0];
 const ROTATION_ANGLE = 90;
 
@@ -92,6 +91,9 @@ export class TuiPreviewComponent {
     @Input()
     public rotatable = false;
 
+    @Input()
+    public initialScaleCoef = 0.8;
+
     protected rotate(): void {
         this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);
     }
@@ -150,15 +152,15 @@ export class TuiPreviewComponent {
         boxWidth: number,
     ): number {
         const bigSize =
-            contentHeight > boxHeight * INITIAL_SCALE_COEF ||
-            contentWidth > boxWidth * INITIAL_SCALE_COEF;
+            contentHeight > boxHeight * this.initialScaleCoef ||
+            contentWidth > boxWidth * this.initialScaleCoef;
         const {clientHeight, clientWidth} = this.el;
 
         return bigSize
             ? tuiRound(
                   Math.min(
-                      (clientHeight * INITIAL_SCALE_COEF) / contentHeight,
-                      (clientWidth * INITIAL_SCALE_COEF) / contentWidth,
+                      (clientHeight * this.initialScaleCoef) / contentHeight,
+                      (clientWidth * this.initialScaleCoef) / contentWidth,
                   ),
                   2,
               )
