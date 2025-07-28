@@ -92,7 +92,7 @@ export class TuiPreviewComponent {
     public rotatable = false;
 
     @Input()
-    public initialScaleCoef = 0.8;
+    public initialScale = 0.8;
 
     protected rotate(): void {
         this.rotation$.next(this.rotation$.value - ROTATION_ANGLE);
@@ -152,15 +152,15 @@ export class TuiPreviewComponent {
         boxWidth: number,
     ): number {
         const bigSize =
-            contentHeight > boxHeight * this.initialScaleCoef ||
-            contentWidth > boxWidth * this.initialScaleCoef;
+            contentHeight > boxHeight * this.initialScale ||
+            contentWidth > boxWidth * this.initialScale;
         const {clientHeight, clientWidth} = this.el;
 
         return bigSize
             ? tuiRound(
                   Math.min(
-                      (clientHeight * this.initialScaleCoef) / contentHeight,
-                      (clientWidth * this.initialScaleCoef) / contentWidth,
+                      (clientHeight * this.initialScale) / contentHeight,
+                      (clientWidth * this.initialScale) / contentWidth,
                   ),
                   2,
               )
