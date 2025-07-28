@@ -3612,13 +3612,13 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| items | `readonly T[] | ReadonlyArray<readonly T[]> | null` | | null" > Items to select |
-| itemContent | `PolymorpheusContent<TuiValueContentContext<T>>` | >" > Content of an item |
-| emptyContent | `PolymorpheusContent` | Content to display when there are no options inside |
-| disabledItemHandler | `TuiBooleanHandler<T>` | " > A handler that gets an item and returns true if it is disabled. Must be a pure function |
-| size | `TuiSizeL | TuiSizeXS` | Size of items |
-| labels | `readonly string[]` | Group label |
-| itemClick | `T` | Emits on click on item from datalist |
+| [items] | `readonly T[] | ReadonlyArray<readonly T[]> | null` | Items to select |
+| [itemContent] | `PolymorpheusContent<TuiValueContentContext<T>>` | Content of an item |
+| [emptyContent] | `PolymorpheusContent` | Content to display when there are no options inside |
+| [disabledItemHandler] | `TuiBooleanHandler<T>` |  |
+| [size] | `TuiSizeL | TuiSizeXS` | Size of items |
+| [labels] | `readonly string[]` | Group label |
+| (itemClick) | `T` | Emits on click on item from datalist |
 
 ---
 
@@ -7864,7 +7864,7 @@ export class Example {}
 ```html
 <tui-axes
                 class="axes"
-                [axisXLabels]="(labels$ | async) || []"
+                [axisXLabels]="labels()"
                 [horizontalLines]="4"
                 [verticalLines]="3"
             >
@@ -7885,19 +7885,20 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| dots | `boolean` | Show dots on chart |
-| hintContent | `PolymorpheusContent` | Content of hint for hover. It has $implicit in context with a tuple [TuiDay, number] |
-| height | `number` | Axis Y range, pixel scale is 1:1 |
-| y | `number` | Start of Y axis |
-| smoothingFactor | `number` | Smoothing factor from 0 to 99 |
-| value | `[TuiDay, number][]` | Array of data |
-| xStringify | `TuiStringHandler<TuiDay> | null` | | null" [documentationPropertyValues]="xStringifyVariants$ | async" [(documentationPropertyValue)]="xStringify" > Function to stringify a value number to a string in axis X hint |
-| yStringify | `TuiStringHandler<number> | null` | | null" [documentationPropertyValues]="yStringifyVariants" [(documentationPropertyValue)]="yStringify" > Function to stringify a value number to a string in axis Y hint |
+| [dots] | `boolean` | Show dots on chart |
+| [hintContent] | `PolymorpheusContent` |  |
+| [height] | `number` | Axis Y range, pixel scale is 1:1 |
+| [y] | `number` | Start of Y axis |
+| [smoothingFactor] | `number` | Smoothing factor from 0 to 99 |
+| [value] | `[TuiDay, number][]` | Array of data |
+| [xStringify] | `TuiStringHandler<TuiDay> | null` | Function to stringify a value number to a string in axis X hint |
+| [yStringify] | `TuiStringHandler<number> | null` | Function to stringify a value number to a string in axis Y hint |
 
 ### TypeScript
 
 ```ts
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiAxes, TuiLineDaysChart} from '@taiga-ui/addon-charts';
@@ -7905,8 +7906,6 @@ import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -7916,7 +7915,9 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Page {
-    protected readonly months$ = inject(TUI_MONTHS);
+    protected readonly months = toSignal(inject(TUI_MONTHS), {
+        requireSync: true,
+    });
 
     protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         new Array(91)
@@ -7936,33 +7937,27 @@ export default class Page {
 
     protected value = this.valueVariants[0]!;
 
-    protected readonly labels$: Observable<readonly string[]> = this.months$.pipe(
-        map((months) => Array.from({length: 4}, (_, i) => months[i] ?? '')),
+    protected readonly labels = computed(() =>
+        Array.from({length: 4}, (_, i) => this.months()[i] ?? ''),
     );
 
     protected readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
         (y) => `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
     ];
 
-    protected readonly xStringifyVariants$: Observable<
-        ReadonlyArray<TuiStringHandler<TuiDay>>
-    > = this.months$.pipe(
-        map((months) => [({month, day}) => `${months[month]}, ${day}`]),
-    );
+    protected readonly xStringifyVariants = computed(() => [
+        ({month, day}: TuiDay) => `${this.months()[month]}, ${day}`,
+    ]);
 
-    protected readonly hintContentVariants$: Observable<
-        ReadonlyArray<PolymorpheusContent<TuiContext<[TuiDay, number]>>>
-    > = this.months$.pipe(
-        map((months) => [
-            '',
-            ({$implicit}) =>
-                `${months[$implicit[0].month]}, ${$implicit[0].day}\n${(
-                    10 * $implicit[1]
-                ).toLocaleString('en-US', {
-                    maximumFractionDigits: 0,
-                })} $`,
-        ]),
-    );
+    protected readonly hintContentVariants = computed(() => [
+        '',
+        ({$implicit}: {$implicit: [TuiDay, number]}) =>
+            `${this.months()[$implicit[0].month]}, ${$implicit[0].day}\n${(
+                10 * $implicit[1]
+            ).toLocaleString('en-US', {
+                maximumFractionDigits: 0,
+            })} $`,
+    ]);
 
     protected yStringify: TuiStringHandler<number> | null = null;
 
