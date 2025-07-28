@@ -31,7 +31,7 @@ describe('tuiToFlatMapPages', () => {
         },
     ];
 
-    let consoleErrorMock: any;
+    let consoleErrorMock: jest.MockInstance<unknown, unknown[]>;
 
     beforeEach(() => {
         consoleErrorMock = jest

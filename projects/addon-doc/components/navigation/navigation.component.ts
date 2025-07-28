@@ -150,7 +150,7 @@ export class TuiDocNavigation {
         return this.items[this.items.length - 1] ?? [];
     }
 
-    protected $pages(pages: any): readonly TuiDocRoutePage[] {
+    protected $pages<T extends TuiDocRoutePage[]>(pages: T): readonly TuiDocRoutePage[] {
         return pages as TuiDocRoutePage[];
     }
 
