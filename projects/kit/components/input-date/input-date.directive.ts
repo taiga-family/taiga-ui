@@ -122,7 +122,7 @@ export abstract class TuiInputDateBase<
     }
 
     public override writeValue(value: T | null): void {
-        const reset = this.control.pristine && !value;
+        const reset = this.control.pristine && this.control.untouched && !value;
 
         if (value !== this.value() || reset) {
             super.writeValue(value);
