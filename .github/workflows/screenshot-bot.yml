@@ -3,6 +3,9 @@ on:
   workflow_run:
     workflows: [⚙️ E2E testing]
     types: [requested, completed]
+    branches-ignore:
+      - 'v[0-9].x'
+      - 'release/**'
   pull_request:
     types: [closed]
 
