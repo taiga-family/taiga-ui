@@ -17,22 +17,24 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <button
-                tuiButton
-                type="button"
-                (click)="toggle()"
-            >
-                Click
-            </button>
-            <button
-                tuiButton
-                type="button"
-                class="tui-space_left-4"
-                (longtap)="toggle()"
-            >
-                Long tap
-            </button>
-            <ng-template #template>
+            <ng-container *tuiLet="label === 'Template' ? labelTemplate : label as dialogLabel">
+                <button
+                    tuiButton
+                    type="button"
+                    (click)="showDialog(sheetTemplate, dialogLabel)"
+                >
+                    Click
+                </button>
+                <button
+                    tuiButton
+                    type="button"
+                    class="tui-space_left-4"
+                    (longtap)="showDialog(sheetTemplate, dialogLabel)"
+                >
+                    Long tap
+                </button>
+            </ng-container>
+            <ng-template #labelTemplate>
                 <div class="label">
                     <tui-avatar size="m">KG</tui-avatar>
                     <label tuiTitle>
@@ -42,16 +44,9 @@
                 </div>
             </ng-template>
             <ng-template
-                [tuiSheetDialogOptions]="{
-                    label: label === 'Template' ? template : label,
-                    closeable: closeable,
-                    fullscreen: fullscreen,
-                    stops: stops,
-                    initial: initial,
-                    bar: bar,
-                    offset: offset,
-                }"
-                [(tuiSheetDialog)]="open"
+                #sheetTemplate
+                let-completeWith="completeWith"
+                let-observer
             >
                 <p [style.flex-grow]="1">
                     Karl Gambolputty de von
@@ -62,9 +57,18 @@
                     <button
                         tuiButton
                         type="button"
-                        (click)="toggle()"
+                        class="tui-space_right-1"
+                        (click)="observer.next('Hi')"
                     >
-                        Close
+                        Say "Hi"
+                    </button>
+                    <button
+                        tuiButton
+                        type="button"
+                        class="tui-space_right-1"
+                        (click)="completeWith('Hi and bye!')"
+                    >
+                        Say "Hi and bye!"
                     </button>
                 </footer>
             </ng-template>
@@ -138,6 +142,16 @@
                 Top offset px (
                 <code>--tui-offset</code>
                 )
+            </tr>
+            <tr
+                name="[required]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="required"
+            >
+                Dismissing dialog emits an error into
+                <code>Observable</code>
+                (you can catch it with "catch" operator or onError handler)
             </tr>
         </table>
     </ng-template>

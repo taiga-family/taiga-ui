@@ -14,6 +14,7 @@ export interface TuiSheetDialogOptions<I = undefined> {
     readonly stops: readonly string[];
     readonly bar: boolean;
     readonly fullscreen: boolean;
+    readonly required: boolean;
 }
 
 export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
@@ -25,6 +26,7 @@ export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
     data: undefined,
     bar: true,
     fullscreen: false,
+    required: false,
 };
 
 /**
