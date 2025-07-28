@@ -141,7 +141,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     ): void {
         this.sorter = sorter || this.sorter;
         this.direction = direction;
-        
+
         this.sorterChange.emit(sorter);
         this.directionChange.emit(this.direction);
         this.change$.next();
