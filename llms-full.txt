@@ -10133,22 +10133,24 @@ A mobile draggable sheet dialog
 ### Example
 
 ```html
-<button
-                tuiButton
-                type="button"
-                (click)="toggle()"
-            >
-                Click
-            </button>
-            <button
-                tuiButton
-                type="button"
-                class="tui-space_left-4"
-                (longtap)="toggle()"
-            >
-                Long tap
-            </button>
-            <ng-template #template>
+<ng-container *tuiLet="label === 'Template' ? labelTemplate : label as dialogLabel">
+                <button
+                    tuiButton
+                    type="button"
+                    (click)="showDialog(sheetTemplate, dialogLabel)"
+                >
+                    Click
+                </button>
+                <button
+                    tuiButton
+                    type="button"
+                    class="tui-space_left-4"
+                    (longtap)="showDialog(sheetTemplate, dialogLabel)"
+                >
+                    Long tap
+                </button>
+            </ng-container>
+            <ng-template #labelTemplate>
                 <div class="label">
                     <tui-avatar size="m">KG</tui-avatar>
                     <label tuiTitle>
@@ -10158,16 +10160,9 @@ A mobile draggable sheet dialog
                 </div>
             </ng-template>
             <ng-template
-                [tuiSheetDialogOptions]="{
-                    label: label === 'Template' ? template : label,
-                    closeable: closeable,
-                    fullscreen: fullscreen,
-                    stops: stops,
-                    initial: initial,
-                    bar: bar,
-                    offset: offset,
-                }"
-                [(tuiSheetDialog)]="open"
+                #sheetTemplate
+                let-completeWith="completeWith"
+                let-observer
             >
                 <p [style.flex-grow]="1">
                     Karl Gambolputty de von
@@ -10178,9 +10173,18 @@ A mobile draggable sheet dialog
                     <button
                         tuiButton
                         type="button"
-                        (click)="toggle()"
+                        class="tui-space_right-1"
+                        (click)="observer.next('Hi')"
                     >
-                        Close
+                        Say "Hi"
+                    </button>
+                    <button
+                        tuiButton
+                        type="button"
+                        class="tui-space_right-1"
+                        (click)="completeWith('Hi and bye!')"
+                    >
+                        Say "Hi and bye!"
                     </button>
                 </footer>
             </ng-template>
@@ -10198,32 +10202,38 @@ A mobile draggable sheet dialog
 | [stops] | `string[]` | An array of stop points in any units for the sheet. |
 | [initial] | `number` | means to stop on top of the sheet's content. |
 | [offset] | `number` | ) |
+| [required] | `boolean` | (you can catch it with "catch" operator or onError handler) |
 
 ### TypeScript
 
 ```ts
-import {Component} from '@angular/core';
+import type {TemplateRef} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TUI_SHEET_DIALOG_DEFAULT_OPTIONS, TuiSheetDialog} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import type {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+import {
+    TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
+    TuiSheetDialogService,
+} from '@taiga-ui/addon-mobile';
+import {TuiLet} from '@taiga-ui/cdk';
+import type {TuiDialogContext} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAvatar,
-        TuiButton,
-        TuiDemo,
-        TuiFloatingContainer,
-        TuiSheetDialog,
-        TuiTitle,
-    ],
+    imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiLet, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
 })
 export default class Page {
+    private readonly sheetDialogs = inject(TuiSheetDialogService);
+    private readonly alerts = inject(TuiAlertService);
+
     protected readonly exampleComponent = import('./examples/import/component.md?raw');
     protected readonly examples = [
         'String',
@@ -10242,14 +10252,32 @@ export default class Page {
     protected stops = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.stops;
     protected label = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.label;
     protected offset = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.offset;
+    protected required = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.required;
 
     protected open = false;
 
     protected readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
     protected readonly labelVariants = [this.label, 'String label', 'Template'];
 
-    protected toggle(): void {
-        this.open = !this.open;
+    protected showDialog(
+        content: TemplateRef<TuiDialogContext<number, number>>,
+        label?: PolymorpheusContent<TuiSheetDialogOptions>,
+    ): void {
+        const {required, closeable, fullscreen, stops, initial, bar, offset} = this;
+
+        this.sheetDialogs
+            .open(content, {
+                label,
+                fullscreen,
+                stops,
+                initial,
+                bar,
+                offset,
+                required,
+                closeable,
+            })
+            .pipe(switchMap((response) => this.alerts.open(String(response))))
+            .subscribe();
     }
 }
 ```
