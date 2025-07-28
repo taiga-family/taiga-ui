@@ -7,4 +7,4 @@ export const TuiInputDateMulti = [
     TuiInputDateMultiDirective,
     TuiCalendar,
     TuiInputChipComponent,
-];
+] as const;
