@@ -100,7 +100,7 @@ describe('TuiTableDirective sorting events fix', () => {
         expect(sortTime!).toBeGreaterThan(Math.max(directionTime!, sorterTime!));
     });
 
-    it('should only emit directionChange when toggling same sorter', () => {
+    it('should emit both sorterChange and directionChange when toggling same sorter', () => {
         const sorter = (a: any, b: any): number => a.name?.localeCompare(b.name) || 0;
 
         // First sort by name
@@ -114,10 +114,11 @@ describe('TuiTableDirective sorting events fix', () => {
         // Sort by same key (should toggle direction)
         component.table.updateSorterAndDirection(sorter);
 
-        // Only direction should change when toggling same sorter
+        // Both events should be emitted when toggling same sorter
         expect(component.onDirectionChange).toHaveBeenCalledTimes(1);
-        expect(component.onSorterChange).toHaveBeenCalledTimes(0);
+        expect(component.onSorterChange).toHaveBeenCalledTimes(1);
 
         expect(component.onDirectionChange).toHaveBeenCalledWith(TuiSortDirection.Desc);
+        expect(component.onSorterChange).toHaveBeenCalledWith(sorter);
     });
 });
