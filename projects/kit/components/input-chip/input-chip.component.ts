@@ -23,6 +23,7 @@ import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
 import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
@@ -63,6 +64,7 @@ export class TuiInputChipComponent<T> {
     private readonly context = injectContext<TuiContext<TuiTextfieldItem<T>>>();
     private readonly value = tuiInjectValue<readonly T[]>();
 
+    protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly internal = signal(this.context.$implicit.item);
     protected readonly editing = signal(false);
