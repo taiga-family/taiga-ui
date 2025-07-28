@@ -11,34 +11,32 @@
     border-top-left-radius: 1.25rem;
     border-top-right-radius: 1.25rem;
 
-    &[style*='top: 0'] {
-        border-radius: 0;
-
-        .t-aside {
-            padding-block-start: env(safe-area-inset-top);
-        }
-    }
-
     &.tui-enter,
     &.tui-leave {
         animation-name: tuiFade, tuiSlide;
     }
 
-    &._overlay::before {
-        .transition(opacity);
+    &._overlay {
+        > .t-aside {
+            padding-block-start: env(safe-area-inset-top);
+        }
 
-        content: '';
-        position: fixed;
-        top: -100vh;
-        left: -100vw;
-        right: -100vw;
-        bottom: -100vh;
-        background: var(--tui-service-backdrop);
-        transition-timing-function: ease-out;
+        &::before {
+            .transition(opacity);
 
-        tui-root:has(tui-dialogs .t-overlay_visible) & {
-            opacity: 0;
-            transition-timing-function: ease-in;
+            content: '';
+            position: fixed;
+            top: -100vh;
+            left: -100vw;
+            right: -100vw;
+            bottom: -100vh;
+            background: var(--tui-service-backdrop);
+            transition-timing-function: ease-out;
+
+            tui-root:has(tui-dialogs .t-overlay_visible) & {
+                opacity: 0;
+                transition-timing-function: ease-in;
+            }
         }
     }
 }
