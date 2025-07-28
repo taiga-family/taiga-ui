@@ -490,26 +490,28 @@ describe('InputNumber', () => {
                     test('via button', async () => {
                         await inputNumber.stepUp.click();
                         await expect(inputNumber.textfield).toHaveValue('43kg');
+                        // Caret should be at the end of value but before postfix ("kg")
                         await expect(inputNumber.textfield).toHaveJSProperty(
                             'selectionStart',
-                            1,
+                            2,
                         );
                         await expect(inputNumber.textfield).toHaveJSProperty(
                             'selectionEnd',
-                            1,
+                            2,
                         );
                     });
 
                     test('via keyboard arrow', async () => {
                         await inputNumber.textfield.press('ArrowUp');
                         await expect(inputNumber.textfield).toHaveValue('43kg');
+                        // Caret should be at the end of value but before postfix ("kg")
                         await expect(inputNumber.textfield).toHaveJSProperty(
                             'selectionStart',
-                            1,
+                            2,
                         );
                         await expect(inputNumber.textfield).toHaveJSProperty(
                             'selectionEnd',
-                            1,
+                            2,
                         );
                     });
                 });
