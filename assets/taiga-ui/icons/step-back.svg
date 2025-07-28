@@ -9,6 +9,9 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <line vector-effect="non-scaling-stroke" x1="18" x2="18" y1="20" y2="4" />
-    <polygon vector-effect="non-scaling-stroke" points="14,20 4,12 14,4" />
+    <path
+        vector-effect="non-scaling-stroke"
+        d="M13.971 4.285A2 2 0 0 1 17 6v12a2 2 0 0 1-3.029 1.715l-9.997-5.998a2 2 0 0 1-.003-3.432z"
+    />
+    <path vector-effect="non-scaling-stroke" d="M21 20V4" />
 </svg>
