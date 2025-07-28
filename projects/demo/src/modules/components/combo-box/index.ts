@@ -8,7 +8,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import type {TuiContext, TuiSearchHandler, TuiStringMatcher} from '@taiga-ui/cdk';
+import type {TuiContext, TuiStringMatcher} from '@taiga-ui/cdk';
 import {TUI_IS_MOBILE, TUI_STRICT_MATCHER} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {
@@ -58,19 +58,12 @@ export default class PageComponent {
         map((x) => Object.entries(x).map(([id, name]) => ({id, name}))),
     );
 
-    protected readonly searchVariants: ReadonlyArray<TuiSearchHandler<Country>> = [
-        (query, options) =>
-            options.find(({name}) => name.toLowerCase() === query.toLowerCase()),
-        (query, options) => options.find(({id}) => id === query),
-    ];
-
     protected readonly matcherVariants: ReadonlyArray<TuiStringMatcher<Country>> = [
         TUI_STRICT_MATCHER as TuiStringMatcher<Country>,
         (item: Country, search: string) => item.id === search,
     ];
 
-    protected search = this.searchVariants[0]!;
-    protected matcher: TuiStringMatcher<Country> | null = null;
+    protected matcher = this.matcherVariants[0]!;
 
     protected readonly textfieldContentVariants = computed(() => [
         '',

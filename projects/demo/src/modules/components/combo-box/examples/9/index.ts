@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiSearchHandler, TuiStringHandler} from '@taiga-ui/cdk';
+import type {TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
 import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 
@@ -42,9 +42,9 @@ export default class Example {
     protected readonly stringify: TuiStringHandler<number> = (id) =>
         this.items.find((item) => item.id === id)?.name ?? '';
 
-    protected search: TuiSearchHandler<number> = (query) =>
-        this.items.find(
-            ({id, name}) =>
-                String(id) === query || name.toLowerCase() === query.toLowerCase(),
-        )?.id;
+    protected readonly matcher: TuiStringMatcher<number> = (id, query) => {
+        const {name} = this.items.find((item) => item.id === id)!;
+
+        return String(id) === query || name.toLowerCase() === query.toLowerCase();
+    };
 }

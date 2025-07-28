@@ -1,11 +1,9 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {AsyncPipe, NgIf} from '@angular/common';
-import {Component, computed, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiSearchHandler} from '@taiga-ui/cdk';
 import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiScrollable, TuiTextfield} from '@taiga-ui/core';
 import {
@@ -14,6 +12,7 @@ import {
     TuiComboBox,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
+import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
 
 @Component({
@@ -37,15 +36,8 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected readonly countries = toSignal(
-        inject(TUI_COUNTRIES).pipe(map((x) => Object.values(x))),
-        {initialValue: [] as string[]},
-    );
-
-    protected search = computed<TuiSearchHandler<string>>(
-        (items = this.countries()) =>
-            (query) =>
-                items.find((x) => x.toLowerCase() === query.toLowerCase()),
+    protected readonly countries$: Observable<string[]> = inject(TUI_COUNTRIES).pipe(
+        map(Object.values),
     );
 
     protected value = null;

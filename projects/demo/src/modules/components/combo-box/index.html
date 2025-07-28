@@ -380,7 +380,6 @@
                         [invalid]="controlDoc.invalid"
                         [matcher]="matcher"
                         [readOnly]="controlDoc.readonly"
-                        [search]="search"
                         [strict]="strict"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -405,38 +404,16 @@
             </tr>
 
             <tr
-                name="[search]"
-                tuiDocAPIItem
-                type="TuiSearchHandler<T> | null"
-                [items]="searchVariants"
-                [(value)]="search"
-            >
-                A
-                <strong>pure</strong>
-                function that accepts search text and all datalist option's values as arguments and returns matched
-                option value. Lowercase string comparison function by default.
-            </tr>
-
-            <tr
                 name="[matcher]"
                 tuiDocAPIItem
                 type="TuiStringMatcher | null"
                 [items]="matcherVariants"
                 [(value)]="matcher"
             >
-                <tui-notification appearance="negative">
-                    <strong>Deprecated!</strong>
-                    Use
-                    <code>[search]</code>
-                    instead
-                </tui-notification>
-
-                <p>
-                    A
-                    <strong>pure</strong>
-                    function that compares search text and datalist's items to define a match between them. Lowercase
-                    string comparison function by default.
-                </p>
+                A
+                <strong>pure</strong>
+                function that compares search text and datalist's items to define a match between them. Lowercase string
+                comparison function by default.
             </tr>
 
             <tbody
