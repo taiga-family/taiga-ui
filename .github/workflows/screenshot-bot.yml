@@ -1,7 +1,7 @@
 name: 🤖 Screenshot Report
 on:
   workflow_run:
-    workflows: [E2E result]
+    workflows: [⚙️ E2E testing]
     types: [requested, completed]
   pull_request:
     types: [closed]
