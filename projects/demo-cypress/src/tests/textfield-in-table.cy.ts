@@ -54,8 +54,8 @@ class MySelectTextfield {
                 placeholder="Enter text..."
                 tuiTextfield
             >
-Sample textarea content</textarea
-            >
+                Sample textarea content
+            </textarea>
         </tui-textarea>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
