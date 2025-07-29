@@ -216,7 +216,7 @@ export default class Example {
         size: number,
         minAge: number,
     ): Observable<ReadonlyArray<User | null>> {
-        console.info('Making a request');
+        console.info(`Sort by ${key} , direction : ${direction}`);
 
         const start = page * size;
         const end = start + size;

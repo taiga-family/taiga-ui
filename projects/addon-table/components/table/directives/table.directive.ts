@@ -116,16 +116,15 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
 
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
-            this.updateDirection(
+            this.updateSorter(
+                this.sorter,
                 this.direction === TuiSortDirection.Asc
                     ? TuiSortDirection.Desc
                     : TuiSortDirection.Asc,
             );
         } else {
-            this.updateDirection(1);
+            this.updateSorter(sorter);
         }
-
-        this.updateSorter(sorter);
     }
 
     public ngOnChanges(): void {
@@ -136,14 +135,13 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
         this.cdr.detectChanges();
     }
 
-    public updateSorter(sorter: TuiComparator<T> | null): void {
-        this.sorter = sorter || (() => 0);
-        this.sorterChange.emit(this.sorter);
-        this.change$.next();
-    }
-
-    private updateDirection(direction: TuiSortDirection): void {
+    public updateSorter(
+        sorter: TuiComparator<T> | null,
+        direction: TuiSortDirection = TuiSortDirection.Asc,
+    ): void {
+        this.sorter = sorter || this.sorter;
         this.direction = direction;
+        this.sorterChange.emit(sorter);
         this.directionChange.emit(this.direction);
         this.change$.next();
     }

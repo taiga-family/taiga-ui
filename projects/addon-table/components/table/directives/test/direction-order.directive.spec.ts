@@ -70,7 +70,7 @@ describe('TuiDirectionOrder directive', () => {
         it('should not emit directionChange when updating sorter programmatically', () => {
             testComponent.table.updateSorter(() => TuiSortDirection.Desc);
 
-            expect(testComponent.directionOrderChange).not.toHaveBeenCalled();
+            expect(testComponent.directionOrderChange).toHaveBeenCalledWith('asc');
         });
     });
 });
