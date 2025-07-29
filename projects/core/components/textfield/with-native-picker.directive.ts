@@ -7,7 +7,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
  * ___
  * From Angular 19+ all effects are called before host bindings.
  * If effects inside `tuiValue` will be called before `<input />` get `type="text"`,
- * it will cause loosing initial value
+ * it will cause loss of initial value
  */
 @Directive({standalone: true})
 export class TuiWithNativePicker {
