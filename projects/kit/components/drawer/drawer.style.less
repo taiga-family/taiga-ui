@@ -2,7 +2,7 @@
 
 :host {
     position: fixed;
-    top: 3rem;
+    top: ~'max(3rem, env(safe-area-inset-top))';
     bottom: 0;
     inline-size: 36.25rem;
     max-inline-size: calc(100vw - 3rem);
@@ -16,21 +16,27 @@
         animation-name: tuiFade, tuiSlide;
     }
 
-    &._overlay::before {
-        .transition(opacity);
+    &._overlay {
+        > .t-aside {
+            padding-block-start: env(safe-area-inset-top);
+        }
 
-        content: '';
-        position: fixed;
-        top: -100vh;
-        left: -100vw;
-        right: -100vw;
-        bottom: -100vh;
-        background: var(--tui-service-backdrop);
-        transition-timing-function: ease-out;
+        &::before {
+            .transition(opacity);
 
-        tui-root:has(tui-dialogs .t-overlay_visible) & {
-            opacity: 0;
-            transition-timing-function: ease-in;
+            content: '';
+            position: fixed;
+            top: -100vh;
+            left: -100vw;
+            right: -100vw;
+            bottom: -100vh;
+            background: var(--tui-service-backdrop);
+            transition-timing-function: ease-out;
+
+            tui-root:has(tui-dialogs .t-overlay_visible) & {
+                opacity: 0;
+                transition-timing-function: ease-in;
+            }
         }
     }
 }
@@ -43,6 +49,8 @@
     border-radius: inherit;
     overflow: hidden;
     background: inherit;
+    box-sizing: border-box;
+    padding-block-end: env(safe-area-inset-bottom);
 }
 
 .t-scrollbar {
