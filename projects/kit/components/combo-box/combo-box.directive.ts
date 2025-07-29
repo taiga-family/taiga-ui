@@ -169,7 +169,7 @@ export class TuiComboBox<T>
         }
     }
 
-    private stringify(value: T | string | null | undefined): string {
+    private stringify(value?: T | string | null): string {
         return value != null ? this.itemsHandlers.stringify()(value) : '';
     }
 }
