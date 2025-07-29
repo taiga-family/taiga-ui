@@ -25,6 +25,7 @@ import {tuiAsTextfieldAccessor} from './textfield-accessor';
     standalone: true,
     providers: [tuiAsTextfieldAccessor(TuiTextfieldBase)],
     host: {
+        tuiTextfield: '',
         '[id]': 'textfield.id',
         '[readOnly]': 'readOnly',
         '[class._empty]': 'value() === ""',
