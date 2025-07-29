@@ -171,7 +171,9 @@ export class TuiComboBoxComponent<T>
     }
 
     public toggle(): void {
-        this.open = !this.open;
+        if (this.interactive) {
+            this.open = !this.open;
+        }
     }
 
     protected get arrow(): PolymorpheusContent<
