@@ -11,7 +11,7 @@ import {
 import {FormsModule} from '@angular/forms';
 import type {Params} from '@angular/router';
 import {ActivatedRoute, UrlSerializer} from '@angular/router';
-import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
+import {TUI_DOC_ICONS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
@@ -56,6 +56,8 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
     private readonly alerts = inject(TuiAlertService);
+
+    protected readonly icons = inject(TUI_DOC_ICONS);
 
     protected readonly numberItem = inject(TuiDocAPINumberItem, {
         self: true,
