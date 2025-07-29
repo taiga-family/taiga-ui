@@ -7,7 +7,10 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
-import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
+import {
+    TuiTextfieldContent,
+    TuiWithNativePicker,
+} from '@taiga-ui/core/components/textfield';
 import {TuiNativeTimePicker} from '@taiga-ui/kit/components/input-time';
 
 import {TuiInputDateTimeDirective} from './input-date-time.directive';
@@ -20,6 +23,7 @@ import {TuiInputDateTimeDirective} from './input-date-time.directive';
     styleUrls: ['./input-date-time.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [TuiWithNativePicker],
     host: {ngSkipHydration: 'true'},
 })
 export class TuiInputDateTimeComponent extends TuiNativeTimePicker {

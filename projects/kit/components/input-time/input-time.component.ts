@@ -21,7 +21,6 @@ import {
 import {TuiInputTimeDirective} from './input-time.directive';
 
 @Directive({
-    hostDirectives: [TuiWithNativePicker],
     host: {
         '[attr.list]': 'null',
     },
@@ -61,6 +60,7 @@ export abstract class TuiNativeTimePicker {
     styleUrls: ['./input-time.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [TuiWithNativePicker],
     host: {ngSkipHydration: 'true'},
 })
 export class TuiInputTimeComponent extends TuiNativeTimePicker {
