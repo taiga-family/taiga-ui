@@ -3,11 +3,15 @@
  * @selector [tuiIcons]
  *
  * @description
- * Icons directive applies CSS mask to ::before and ::after pseudo elements
+ * Icons directive applies CSS to ::before and ::after pseudo elements.
+ * Following icon modes can be used by settings a class with '-start' or '-end' postfix:
+ * - .tui-svg-icon — applies mask
+ * - .tui-image-icon — sets the background
+ * - .tui-font-icon — sets the content
  *
  * @vars
- * --t-icon-start — mask for ::before element
- * --t-icon-end — mask for ::after element
+ * --t-icon-start — used to set ::before element
+ * --t-icon-end — used to set ::after element
  *
  * @example
  * <button tuiIcons style="--t-icon-start: url('icon.svg')"></button>
@@ -22,19 +26,64 @@
     &::before,
     &::after {
         content: '';
-        display: var(--t-icon-start);
         inline-size: 1em;
         block-size: 1em;
         line-height: 1em;
         font-size: 1.5rem;
         flex-shrink: 0;
         box-sizing: content-box;
-        background: currentColor;
-        mask: var(--t-icon-start) no-repeat center/contain padding-box;
+    }
+
+    &::before {
+        display: var(--t-icon-start, none);
     }
 
     &::after {
-        display: var(--t-icon-end);
+        display: var(--t-icon-end, none);
+    }
+
+    &.tui-svg-icon-start::before,
+    &.tui-svg-icon-end::after {
+        background: currentColor;
+    }
+
+    &.tui-svg-icon-start::before {
+        mask: var(--t-icon-start) no-repeat center/contain padding-box;
+    }
+
+    &.tui-svg-icon-end::after {
         mask: var(--t-icon-end) no-repeat center/contain padding-box;
+    }
+
+    &.tui-image-icon-start::before,
+    &.tui-image-icon-end::after {
+        background: no-repeat center/contain padding-box;
+        mask: none;
+    }
+
+    &.tui-image-icon-start::before {
+        background-image: var(--t-icon-start);
+    }
+
+    &.tui-image-icon-end::after {
+        background: var(--t-icon-end);
+    }
+
+    &.tui-font-icon-start::before,
+    &.tui-font-icon-end::after {
+        font-family: var(--t-font-icon, inherit);
+        font-size: 1em;
+        text-align: center;
+        line-height: 1;
+        font-weight: inherit;
+        text-transform: none;
+    }
+
+    &.tui-font-icon-start::before {
+        content: var(--t-icon-start);
+    }
+
+    &.tui-font-icon-end::after {
+        content: var(--t-icon-end);
     }
 }
