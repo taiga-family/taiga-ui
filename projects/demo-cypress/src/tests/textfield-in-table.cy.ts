@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiTable} from '@taiga-ui/addon-table';
+import {FormsModule} from '@angular/forms';
 import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
+import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiInputChip, TuiTextarea} from '@taiga-ui/kit';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -51,9 +51,11 @@ class MySelectTextfield {
     template: `
         <tui-textarea>
             <textarea
-                tuiTextfield
                 placeholder="Enter text..."
-            >Sample textarea content</textarea>
+                tuiTextfield
+            >
+Sample textarea content</textarea
+            >
         </tui-textarea>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -65,8 +67,8 @@ class MyTextarea {}
     imports: [FormsModule, TuiInputChip, TuiTextfield],
     template: `
         <tui-input-chip
-            [ngModel]="chips"
             placeholder="Add chips..."
+            [ngModel]="chips"
         >
             Type to add chips
         </tui-input-chip>
@@ -81,9 +83,7 @@ class MyInputChip {
     standalone: true,
     imports: [FormsModule, TuiInputCardGroup],
     template: `
-        <tui-input-card-group [ngModel]="card">
-            Enter card details
-        </tui-input-card-group>
+        <tui-input-card-group [ngModel]="card">Enter card details</tui-input-card-group>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
