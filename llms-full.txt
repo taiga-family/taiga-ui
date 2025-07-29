@@ -7170,6 +7170,135 @@ export default class PageComponent {
 
 ---
 
+# components/InputYear
+
+- **Package**: `KIT`
+- **Type**: components
+
+Component to input a single year
+
+
+### How to Use (Import)
+
+```ts
+import {FormsModule} from '@angular/forms';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputYear} from '@taiga-ui/kit';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    FormsModule,
+    TuiTextfield,
+    TuiInputYear,
+  ],
+})
+export class Example {
+  value: number | null = null;
+}
+```
+### How to Use (Template)
+
+```html
+<tui-textfield>
+  <input
+    tuiInputYear
+    [(ngModel)]="value"
+  />
+  <tui-calendar-year *tuiTextfieldDropdown />
+</tui-textfield>
+```
+
+### Example
+
+```html
+<ng-template>
+                <tui-textfield
+                    [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
+                    [tuiDropdownAlign]="dropdown.align"
+                    [tuiDropdownAppearance]="dropdown.appearance"
+                    [tuiDropdownDirection]="dropdown.direction"
+                    [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                    [tuiDropdownMinHeight]="dropdown.minHeight"
+                    [tuiDropdownOffset]="dropdown.offset"
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    <input
+                        placeholder="Put your birthday"
+                        tuiInputYear
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [max]="max"
+                        [min]="min"
+                        [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+                    <tui-calendar-year *tuiTextfieldDropdown />
+                </tui-textfield>
+            </ng-template>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [min] | `number` | Minimum year |
+| [max] | `number` | Maximum year |
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
+import {TuiDocDropdown} from '@demo/components/dropdown';
+import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
+import {TuiDocTextfield} from '@demo/components/textfield';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk';
+import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputYear} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiDocControl,
+        TuiDocDropdown,
+        TuiDocItemsHandlers,
+        TuiDocTextfield,
+        TuiDropdown,
+        TuiInputYear,
+        TuiTextfield,
+    ],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class PageComponent {
+    protected readonly examples = ['Basic', 'Limits', 'Transformer'];
+
+    protected readonly value = new FormControl<number | null>(null);
+    protected readonly minVariants = [TUI_FIRST_DAY.year, 2019, 2007];
+    protected readonly maxVariants = [TUI_LAST_DAY.year, 2020, 2023];
+    protected min = this.minVariants[0]!;
+    protected max = this.maxVariants[0]!;
+    protected readonly routes = DemoRoute;
+
+    public control = new FormControl<number | null>(null, Validators.required);
+    protected readonly handler = (year: number): boolean => year % 3 === 0;
+}
+```
+
+---
+
 # components/ItemGroup
 
 - **Package**: `LAYOUT`
