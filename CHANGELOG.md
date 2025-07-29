@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.47.0](https://github.com/taiga-family/taiga-ui/compare/v4.46.0...v4.47.0) (2025-07-29)
+
+### 🚀 Features
+
+- **addon-mobile:** add support for required option in sheet dialog
+  ([#11327](https://github.com/taiga-family/taiga-ui/issues/11327))
+  ([65ea12b](https://github.com/taiga-family/taiga-ui/commit/65ea12b553d7dcf2cbe29032dbd5600e94490ee2))
+- **core:** compute CSS URL resource only when icon name has changed
+  ([#11462](https://github.com/taiga-family/taiga-ui/issues/11462))
+  ([5715ba3](https://github.com/taiga-family/taiga-ui/commit/5715ba3cc638dabd31e1e65226b97b2f9cded8c9))
+- **kit:** `Drawer` support safe-area top/bottom ([#11296](https://github.com/taiga-family/taiga-ui/issues/11296))
+  ([b796cb7](https://github.com/taiga-family/taiga-ui/commit/b796cb70e166ca2d259fe1965e90806eb7362df3))
+- **kit:** `InputYear` refactor to new `Textfield` ([#11258](https://github.com/taiga-family/taiga-ui/issues/11258))
+  ([e5cb537](https://github.com/taiga-family/taiga-ui/commit/e5cb537520d3e110c37cd0d9ef8c2fa8c2a90c46))
+- **kit:** `Preview` supports configuration of initial zoom
+  ([#11436](https://github.com/taiga-family/taiga-ui/issues/11436))
+  ([3b06ea4](https://github.com/taiga-family/taiga-ui/commit/3b06ea4d0fa01e6f6cfb5238118702b7aec4928e))
+
+### 🐞 Bug Fixes
+
+- **addon-table:** double emit sorting events, when sort other key
+  ([#11432](https://github.com/taiga-family/taiga-ui/issues/11432))
+  ([29ba453](https://github.com/taiga-family/taiga-ui/commit/29ba453b00b49ce805ec12c4d5a5712b580773df))
+- **cdk:** `TuiDay.toLocalNativeDate()` does not support year < 1900
+  ([#11407](https://github.com/taiga-family/taiga-ui/issues/11407))
+  ([5b796cc](https://github.com/taiga-family/taiga-ui/commit/5b796cc603f9c7c16dbc4abb2159974dc9d29455))
+- **core:** prevent click handling when the button has type submit
+  ([#11317](https://github.com/taiga-family/taiga-ui/issues/11317))
+  ([249847f](https://github.com/taiga-family/taiga-ui/commit/249847fb1755a72752f47653427a03018150328f))
+- **kit, legacy:** date-related controls & `ComboBox` with `readOnly=true` should not open dropdown on click
+  ([#11461](https://github.com/taiga-family/taiga-ui/issues/11461))
+  ([d99469c](https://github.com/taiga-family/taiga-ui/commit/d99469c7a62783c9ff0c6b8bcaba0907c166c6b1))
+- **kit:** `Avatar` do not inherit border-radius for colored svg
+  ([#11421](https://github.com/taiga-family/taiga-ui/issues/11421))
+  ([4173de2](https://github.com/taiga-family/taiga-ui/commit/4173de2af591c034c98d1cc68f24759de569b2c5))
+- **kit:** `ComboBox` fails to use zero as form control value
+  ([#11414](https://github.com/taiga-family/taiga-ui/issues/11414))
+  ([aa6c74c](https://github.com/taiga-family/taiga-ui/commit/aa6c74ccaa4219a75c08c7a12457889d575c05e3))
+- **kit:** `ComboBox` with virtual scroll resets form control value on scroll
+  ([#11413](https://github.com/taiga-family/taiga-ui/issues/11413))
+  ([7f92639](https://github.com/taiga-family/taiga-ui/commit/7f926393a3462483d5d20cb8e92cc4a35be32ad6))
+- **kit:** `InputChip` fix overriding X icon ([#11435](https://github.com/taiga-family/taiga-ui/issues/11435))
+  ([606af04](https://github.com/taiga-family/taiga-ui/commit/606af0412eb5a1c6ef6dd4b5dd975e0998424413))
+- **kit:** `InputDateMulti` fix importing ([#11444](https://github.com/taiga-family/taiga-ui/issues/11444))
+  ([cefd30b](https://github.com/taiga-family/taiga-ui/commit/cefd30ba18001d9d090d243b92f5ff20722093d2))
+- **kit:** escape key propagation in preview dialog to prevent closing parent dialog
+  ([#11419](https://github.com/taiga-family/taiga-ui/issues/11419))
+  ([ac86533](https://github.com/taiga-family/taiga-ui/commit/ac8653330dc14007149ef88d1321d31efc69d77d))
+
 ## [4.46.0](https://github.com/taiga-family/taiga-ui/compare/v4.45.0...v4.46.0) (2025-07-22)
 
 ### 🐞 Bug Fixes
