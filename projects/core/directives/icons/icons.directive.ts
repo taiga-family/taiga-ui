@@ -1,6 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     Directive,
     inject,
     Input,
@@ -33,14 +34,16 @@ class TuiIconsStyles {}
     standalone: true,
     host: {
         tuiIcons: '',
-        '[style.--t-icon-start]': 'resolve(iconStart())',
-        '[style.--t-icon-end]': 'resolve(iconEnd())',
+        '[style.--t-icon-start]': 'iconStartUrl()',
+        '[style.--t-icon-end]': 'iconEndUrl()',
     },
 })
 export class TuiIcons {
     private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
     protected readonly nothing = tuiWithStyles(TuiIconsStyles);
+    protected readonly iconStartUrl = computed(() => this.resolve(this.iconStart()));
+    protected readonly iconEndUrl = computed(() => this.resolve(this.iconEnd()));
 
     public readonly iconStart = signal<Icon>(
         inject(TUI_ICON_START, {self: true, optional: true}) || '',
