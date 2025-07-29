@@ -140,7 +140,7 @@ export abstract class TuiInputDateBase<
     }
 
     protected onClick(): void {
-        if (!this.mobile) {
+        if (!this.mobile && this.dropdownEnabled()) {
             this.open.update((open) => !open);
         }
     }

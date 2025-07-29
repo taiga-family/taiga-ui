@@ -84,7 +84,9 @@ export class TuiDocumentationApiPagePO {
     }
 
     public getRow(rowName: string): Locator {
-        return this.page.locator(`.t-table .t-row:has-text("${rowName}")`);
+        return this.page.locator(
+            `.t-table .t-row:has-text("${rowName}"), [tuiDocApi] tr:has-text("${rowName}")`,
+        );
     }
 
     public async getRows(): Promise<Locator[]> {
