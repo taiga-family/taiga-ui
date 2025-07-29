@@ -1,10 +1,13 @@
-<tui-textfield [disabledItemHandler]="disabledHandler">
+<tui-textfield>
     <label tuiLabel>Choose a year</label>
     <input
         tuiInputYear
-        [max]="2025"
-        [min]="2018"
         [(ngModel)]="value"
     />
     <tui-calendar-year *tuiTextfieldDropdown />
 </tui-textfield>
+
+<p>
+    Control value:
+    <code>{{ value }}</code>
+</p>

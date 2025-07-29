@@ -108,6 +108,7 @@ export const DemoRoute = {
     InputPhoneInternational: '/components/input-phone-international',
     InputPin: '/components/input-pin',
     InputYear: '/components/input-year',
+    InputYearLegacy: '/legacy/input-year',
     Island: '/components/island',
     ItemsWithMore: '/components/items-with-more',
     Label: '/components/label',

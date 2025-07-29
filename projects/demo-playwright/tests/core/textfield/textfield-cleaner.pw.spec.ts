@@ -116,6 +116,15 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('');
         });
 
+        test('InputYear', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputYear}/API?tuiTextfieldCleaner=true`);
+
+            await input.pressSequentially('1234');
+            await expect(input).toHaveValue('1234');
+            await cleaner.click();
+            await expect(input).toHaveValue('');
+        });
+
         test('InputPhoneInternational', async ({page}) => {
             await tuiGoto(
                 page,
