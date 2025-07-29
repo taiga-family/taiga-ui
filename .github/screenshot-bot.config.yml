@@ -1,3 +1,13 @@
+diff-paths: [
+    '.*__diff_output__.*', # Cypress
+    '.*.diff.png', # Playwright
+  ]
+
+failed-report-description: '<h3 align="center">Before (main) ← Diff → After (local)</h3>'
+
+# TODO: remove all legacy configs below
+# after merge of https://github.com/taiga-family/argus/pull/277
+
 # array of RegExp strings to match images inside artifacts (by their path or file name)
 # which shows difference between two screenshot and which will be added to bot report comment
 screenshotsDiffsPaths: [
