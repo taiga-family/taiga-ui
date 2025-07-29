@@ -13,7 +13,6 @@ import {
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
@@ -22,6 +21,7 @@ import {
     TuiTextfieldComponent,
     TuiTextfieldDirective,
     tuiTextfieldIconBinding,
+    TuiWithNativePicker,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
@@ -96,7 +96,7 @@ export class TuiInputTimeDirective
     public accept: readonly TuiTime[] = [];
 
     public readonly native =
-        tuiInjectElement<HTMLInputElement>().type === 'time' && inject(TUI_IS_MOBILE);
+        Boolean(inject(TuiWithNativePicker, {optional: true})) && inject(TUI_IS_MOBILE);
 
     public readonly timeMode = signal(this.options.mode);
 

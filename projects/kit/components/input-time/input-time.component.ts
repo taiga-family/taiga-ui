@@ -15,13 +15,14 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     TuiTextfieldContent,
     TuiTextfieldDirective,
+    TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
 
 import {TuiInputTimeDirective} from './input-time.directive';
 
 @Directive({
+    hostDirectives: [TuiWithNativePicker],
     host: {
-        '[type]': '"text"',
         '[attr.list]': 'null',
     },
 })

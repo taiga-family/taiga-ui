@@ -16,6 +16,7 @@ import {
     tuiInjectAuxiliary,
     TuiTextfieldDirective,
     tuiTextfieldIconBinding,
+    TuiWithNativePicker,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
@@ -102,7 +103,9 @@ export abstract class TuiInputDateBase<
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    public readonly native = this.el.type.includes('date') && this.mobile;
+    public readonly native =
+        Boolean(inject(TuiWithNativePicker, {optional: true})) && this.mobile;
+
     public readonly min = signal(this.options.min);
     public readonly max = signal(this.options.max);
 
