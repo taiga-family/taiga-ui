@@ -20,7 +20,7 @@ describe('Textfield[readonly=true/false] + dropdown', () => {
         });
         [
             DemoRoute.ComboBox,
-            // DemoRoute.ComboBoxLegacy, // TODO
+            DemoRoute.ComboBoxLegacy,
             DemoRoute.Select,
             DemoRoute.SelectLegacy,
             DemoRoute.InputDate,
