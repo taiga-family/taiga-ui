@@ -104,7 +104,7 @@ export abstract class TuiInputDateBase<
     });
 
     public readonly native =
-        Boolean(inject(TuiWithNativePicker, {optional: true})) && this.mobile;
+        !!inject(TuiWithNativePicker, {optional: true}) && this.mobile;
 
     public readonly min = signal(this.options.min);
     public readonly max = signal(this.options.max);

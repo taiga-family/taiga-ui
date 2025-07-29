@@ -67,7 +67,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     );
 
     public readonly native =
-        Boolean(inject(TuiWithNativePicker, {optional: true})) && inject(TUI_IS_MOBILE);
+        !!inject(TuiWithNativePicker, {optional: true}) && inject(TUI_IS_MOBILE);
 
     protected clear(): void {
         this.onChange(null);
