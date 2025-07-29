@@ -3333,7 +3333,8 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| degrees | `number` | Pointer direction in degrees |
+| [degrees] | `number` | Pointer direction in degrees |
+| [style.color] | `string` | Custom color |
 
 ### TypeScript
 
@@ -3611,13 +3612,13 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| items | `readonly T[] | ReadonlyArray<readonly T[]> | null` | | null" > Items to select |
-| itemContent | `PolymorpheusContent<TuiValueContentContext<T>>` | >" > Content of an item |
-| emptyContent | `PolymorpheusContent` | Content to display when there are no options inside |
-| disabledItemHandler | `TuiBooleanHandler<T>` | " > A handler that gets an item and returns true if it is disabled. Must be a pure function |
-| size | `TuiSizeL | TuiSizeXS` | Size of items |
-| labels | `readonly string[]` | Group label |
-| itemClick | `T` | Emits on click on item from datalist |
+| [items] | `readonly T[] | ReadonlyArray<readonly T[]> | null` | Items to select |
+| [itemContent] | `PolymorpheusContent<TuiValueContentContext<T>>` | Content of an item |
+| [emptyContent] | `PolymorpheusContent` | Content to display when there are no options inside |
+| [disabledItemHandler] | `TuiBooleanHandler<T>` |  |
+| [size] | `TuiSizeL | TuiSizeXS` | Size of items |
+| [labels] | `readonly string[]` | Group label |
+| (itemClick) | `T` | Emits on click on item from datalist |
 
 ---
 
@@ -6924,8 +6925,8 @@ export class Example {
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
                     <input
-                        placeholder="Form control value is still {{ control.value }}"
                         tuiInputSlider
+                        [attr.placeholder]="'Form control value is still ' + control.value"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max()"
@@ -7164,6 +7165,135 @@ export default class PageComponent {
     protected accept: readonly TuiTime[] = this.acceptVariants[0];
     protected prefix = '';
     protected postfix = '';
+}
+```
+
+---
+
+# components/InputYear
+
+- **Package**: `KIT`
+- **Type**: components
+
+Component to input a single year
+
+
+### How to Use (Import)
+
+```ts
+import {FormsModule} from '@angular/forms';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputYear} from '@taiga-ui/kit';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    FormsModule,
+    TuiTextfield,
+    TuiInputYear,
+  ],
+})
+export class Example {
+  value: number | null = null;
+}
+```
+### How to Use (Template)
+
+```html
+<tui-textfield>
+  <input
+    tuiInputYear
+    [(ngModel)]="value"
+  />
+  <tui-calendar-year *tuiTextfieldDropdown />
+</tui-textfield>
+```
+
+### Example
+
+```html
+<ng-template>
+                <tui-textfield
+                    [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
+                    [tuiDropdownAlign]="dropdown.align"
+                    [tuiDropdownAppearance]="dropdown.appearance"
+                    [tuiDropdownDirection]="dropdown.direction"
+                    [tuiDropdownMaxHeight]="dropdown.maxHeight"
+                    [tuiDropdownMinHeight]="dropdown.minHeight"
+                    [tuiDropdownOffset]="dropdown.offset"
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    <input
+                        placeholder="Put your birthday"
+                        tuiInputYear
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [max]="max"
+                        [min]="min"
+                        [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+                    <tui-calendar-year *tuiTextfieldDropdown />
+                </tui-textfield>
+            </ng-template>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [min] | `number` | Minimum year |
+| [max] | `number` | Maximum year |
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
+import {TuiDocDropdown} from '@demo/components/dropdown';
+import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
+import {TuiDocTextfield} from '@demo/components/textfield';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk';
+import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputYear} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiDocControl,
+        TuiDocDropdown,
+        TuiDocItemsHandlers,
+        TuiDocTextfield,
+        TuiDropdown,
+        TuiInputYear,
+        TuiTextfield,
+    ],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class PageComponent {
+    protected readonly examples = ['Basic', 'Limits', 'Transformer'];
+
+    protected readonly value = new FormControl<number | null>(null);
+    protected readonly minVariants = [TUI_FIRST_DAY.year, 2019, 2007];
+    protected readonly maxVariants = [TUI_LAST_DAY.year, 2020, 2023];
+    protected min = this.minVariants[0]!;
+    protected max = this.maxVariants[0]!;
+    protected readonly routes = DemoRoute;
+
+    public control = new FormControl<number | null>(null, Validators.required);
+    protected readonly handler = (year: number): boolean => year % 3 === 0;
 }
 ```
 
@@ -7863,7 +7993,7 @@ export class Example {}
 ```html
 <tui-axes
                 class="axes"
-                [axisXLabels]="(labels$ | async) || []"
+                [axisXLabels]="labels()"
                 [horizontalLines]="4"
                 [verticalLines]="3"
             >
@@ -7884,19 +8014,20 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| dots | `boolean` | Show dots on chart |
-| hintContent | `PolymorpheusContent` | Content of hint for hover. It has $implicit in context with a tuple [TuiDay, number] |
-| height | `number` | Axis Y range, pixel scale is 1:1 |
-| y | `number` | Start of Y axis |
-| smoothingFactor | `number` | Smoothing factor from 0 to 99 |
-| value | `[TuiDay, number][]` | Array of data |
-| xStringify | `TuiStringHandler<TuiDay> | null` | | null" [documentationPropertyValues]="xStringifyVariants$ | async" [(documentationPropertyValue)]="xStringify" > Function to stringify a value number to a string in axis X hint |
-| yStringify | `TuiStringHandler<number> | null` | | null" [documentationPropertyValues]="yStringifyVariants" [(documentationPropertyValue)]="yStringify" > Function to stringify a value number to a string in axis Y hint |
+| [dots] | `boolean` | Show dots on chart |
+| [hintContent] | `PolymorpheusContent` |  |
+| [height] | `number` | Axis Y range, pixel scale is 1:1 |
+| [y] | `number` | Start of Y axis |
+| [smoothingFactor] | `number` | Smoothing factor from 0 to 99 |
+| [value] | `[TuiDay, number][]` | Array of data |
+| [xStringify] | `TuiStringHandler<TuiDay> | null` | Function to stringify a value number to a string in axis X hint |
+| [yStringify] | `TuiStringHandler<number> | null` | Function to stringify a value number to a string in axis Y hint |
 
 ### TypeScript
 
 ```ts
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiAxes, TuiLineDaysChart} from '@taiga-ui/addon-charts';
@@ -7904,8 +8035,6 @@ import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -7915,7 +8044,9 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Page {
-    protected readonly months$ = inject(TUI_MONTHS);
+    protected readonly months = toSignal(inject(TUI_MONTHS), {
+        requireSync: true,
+    });
 
     protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         new Array(91)
@@ -7935,33 +8066,27 @@ export default class Page {
 
     protected value = this.valueVariants[0]!;
 
-    protected readonly labels$: Observable<readonly string[]> = this.months$.pipe(
-        map((months) => Array.from({length: 4}, (_, i) => months[i] ?? '')),
+    protected readonly labels = computed(() =>
+        Array.from({length: 4}, (_, i) => this.months()[i] ?? ''),
     );
 
     protected readonly yStringifyVariants: ReadonlyArray<TuiStringHandler<number>> = [
         (y) => `${(10 * y).toLocaleString('en-US', {maximumFractionDigits: 0})} $`,
     ];
 
-    protected readonly xStringifyVariants$: Observable<
-        ReadonlyArray<TuiStringHandler<TuiDay>>
-    > = this.months$.pipe(
-        map((months) => [({month, day}) => `${months[month]}, ${day}`]),
-    );
+    protected readonly xStringifyVariants = computed(() => [
+        ({month, day}: TuiDay) => `${this.months()[month]}, ${day}`,
+    ]);
 
-    protected readonly hintContentVariants$: Observable<
-        ReadonlyArray<PolymorpheusContent<TuiContext<[TuiDay, number]>>>
-    > = this.months$.pipe(
-        map((months) => [
-            '',
-            ({$implicit}) =>
-                `${months[$implicit[0].month]}, ${$implicit[0].day}\n${(
-                    10 * $implicit[1]
-                ).toLocaleString('en-US', {
-                    maximumFractionDigits: 0,
-                })} $`,
-        ]),
-    );
+    protected readonly hintContentVariants = computed(() => [
+        '',
+        ({$implicit}: {$implicit: [TuiDay, number]}) =>
+            `${this.months()[$implicit[0].month]}, ${$implicit[0].day}\n${(
+                10 * $implicit[1]
+            ).toLocaleString('en-US', {
+                maximumFractionDigits: 0,
+            })} $`,
+    ]);
 
     protected yStringify: TuiStringHandler<number> | null = null;
 
@@ -9347,14 +9472,14 @@ export class Example {}
                 [lines]="lines"
                 [timestamp]="timestamp"
                 [type]="type"
-                (close)="documentationPropertyClose.emitEvent($event)"
+                (close)="close.emitEvent($event)"
             >
                 <img
                     alt=""
                     src="assets/images/roy.jpg"
                 />
                 <tui-icon icon="@tui.settings" />
-                I’ve seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched
+                I've seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched
                 C-Beams glitter in the dark near The Tannhauser Gate. All those moments will be lost in time, like tears
                 in rain.
                 <button
@@ -9376,11 +9501,11 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| heading | `string` | Heading of the push |
-| type | `string` | Small text near icon, typically, category of the message |
-| lines | `number` | A number of visible lines |
-| timestamp | `number | string` | Timestamp of the arrival. Formatted with FormatDate pipe if the number is passed. |
-| close | `void` | Output for close button clicks. If you do not listen to this output, close button is hidden. |
+| [heading] | `string` | Heading of the push |
+| [type] | `string` | Small text near icon, typically, category of the message |
+| [lines] | `number` | A number of visible lines |
+| [timestamp] | `number | string` | pipe if the number is passed. |
+| (close) | `void` | Output for close button clicks. If you do not listen to this output, close button is hidden. |
 
 ### TypeScript
 
@@ -10137,22 +10262,24 @@ A mobile draggable sheet dialog
 ### Example
 
 ```html
-<button
-                tuiButton
-                type="button"
-                (click)="toggle()"
-            >
-                Click
-            </button>
-            <button
-                tuiButton
-                type="button"
-                class="tui-space_left-4"
-                (longtap)="toggle()"
-            >
-                Long tap
-            </button>
-            <ng-template #template>
+<ng-container *tuiLet="label === 'Template' ? labelTemplate : label as dialogLabel">
+                <button
+                    tuiButton
+                    type="button"
+                    (click)="showDialog(sheetTemplate, dialogLabel)"
+                >
+                    Click
+                </button>
+                <button
+                    tuiButton
+                    type="button"
+                    class="tui-space_left-4"
+                    (longtap)="showDialog(sheetTemplate, dialogLabel)"
+                >
+                    Long tap
+                </button>
+            </ng-container>
+            <ng-template #labelTemplate>
                 <div class="label">
                     <tui-avatar size="m">KG</tui-avatar>
                     <label tuiTitle>
@@ -10162,16 +10289,9 @@ A mobile draggable sheet dialog
                 </div>
             </ng-template>
             <ng-template
-                [tuiSheetDialogOptions]="{
-                    label: label === 'Template' ? template : label,
-                    closeable: closeable,
-                    fullscreen: fullscreen,
-                    stops: stops,
-                    initial: initial,
-                    bar: bar,
-                    offset: offset,
-                }"
-                [(tuiSheetDialog)]="open"
+                #sheetTemplate
+                let-completeWith="completeWith"
+                let-observer
             >
                 <p [style.flex-grow]="1">
                     Karl Gambolputty de von
@@ -10182,9 +10302,18 @@ A mobile draggable sheet dialog
                     <button
                         tuiButton
                         type="button"
-                        (click)="toggle()"
+                        class="tui-space_right-1"
+                        (click)="observer.next('Hi')"
                     >
-                        Close
+                        Say "Hi"
+                    </button>
+                    <button
+                        tuiButton
+                        type="button"
+                        class="tui-space_right-1"
+                        (click)="completeWith('Hi and bye!')"
+                    >
+                        Say "Hi and bye!"
                     </button>
                 </footer>
             </ng-template>
@@ -10194,40 +10323,46 @@ A mobile draggable sheet dialog
 
 | Property | Type | Description |
 |----------|-----|----------|
-| closeable | `boolean` | Whether or not a sheet can be closed by user. |
-| fullscreen | `boolean` | Fullscreen |
-| bar | `boolean` | Show bar |
-| data | `I` | Optional data to be passed to the sheet. |
-| label | `PolymorpheusContent` | Sheet label. |
-| stops | `string[]` | An array of stop points in any units for the sheet. |
-| initial | `number` | Initial stop index to open on. Index exceeding stops means to stop on top of the sheet's content. |
-| offset | `number` | Top offset px ( --tui-offset ) |
+| [closeable] | `boolean` | Whether or not a sheet can be closed by user. |
+| [fullscreen] | `boolean` | Fullscreen |
+| [bar] | `boolean` | Show bar |
+| [data] | `I` | Optional data to be passed to the sheet. |
+| [label] | `PolymorpheusContent` | Sheet label. |
+| [stops] | `string[]` | An array of stop points in any units for the sheet. |
+| [initial] | `number` | means to stop on top of the sheet's content. |
+| [offset] | `number` | ) |
+| [required] | `boolean` | (you can catch it with "catch" operator or onError handler) |
 
 ### TypeScript
 
 ```ts
-import {Component} from '@angular/core';
+import type {TemplateRef} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TUI_SHEET_DIALOG_DEFAULT_OPTIONS, TuiSheetDialog} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import type {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
+import {
+    TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
+    TuiSheetDialogService,
+} from '@taiga-ui/addon-mobile';
+import {TuiLet} from '@taiga-ui/cdk';
+import type {TuiDialogContext} from '@taiga-ui/core';
+import {TuiAlertService, TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
+import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {switchMap} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAvatar,
-        TuiButton,
-        TuiDemo,
-        TuiFloatingContainer,
-        TuiSheetDialog,
-        TuiTitle,
-    ],
+    imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiLet, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
 })
 export default class Page {
+    private readonly sheetDialogs = inject(TuiSheetDialogService);
+    private readonly alerts = inject(TuiAlertService);
+
     protected readonly exampleComponent = import('./examples/import/component.md?raw');
     protected readonly examples = [
         'String',
@@ -10246,14 +10381,32 @@ export default class Page {
     protected stops = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.stops;
     protected label = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.label;
     protected offset = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.offset;
+    protected required = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.required;
 
     protected open = false;
 
     protected readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
     protected readonly labelVariants = [this.label, 'String label', 'Template'];
 
-    protected toggle(): void {
-        this.open = !this.open;
+    protected showDialog(
+        content: TemplateRef<TuiDialogContext<number, number>>,
+        label?: PolymorpheusContent<TuiSheetDialogOptions>,
+    ): void {
+        const {required, closeable, fullscreen, stops, initial, bar, offset} = this;
+
+        this.sheetDialogs
+            .open(content, {
+                label,
+                fullscreen,
+                stops,
+                initial,
+                bar,
+                offset,
+                required,
+                closeable,
+            })
+            .pipe(switchMap((response) => this.alerts.open(String(response))))
+            .subscribe();
     }
 }
 ```

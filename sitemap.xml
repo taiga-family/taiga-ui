@@ -328,6 +328,9 @@
     <loc>https://taiga-ui.dev/components/input-year/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/legacy/input-year/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/island/</loc>
   </url>
   <url>
@@ -1256,6 +1259,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/input-year/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/legacy/input-year/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/legacy/input-year/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/island/API/</loc>
