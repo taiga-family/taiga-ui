@@ -55,7 +55,8 @@ class MySelectTextfield {
                 tuiTextfield
             >
                 Sample textarea content
-            </textarea>
+            </textarea
+            >
         </tui-textarea>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
