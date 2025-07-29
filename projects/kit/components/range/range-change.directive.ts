@@ -17,11 +17,12 @@ export class TuiRangeChange {
     private readonly el = tuiInjectElement();
     private readonly range = inject(TuiRange);
 
+    // TODO(v5): use 'start' | 'end' instead
     @Output()
     public readonly activeThumbChange = new EventEmitter<'left' | 'right'>();
 
     constructor() {
-        let activeThumb: 'left' | 'right';
+        let activeThumb: 'end' | 'start';
 
         tuiTypedFromEvent(this.el, 'pointerdown', {
             passive: true,
@@ -31,9 +32,12 @@ export class TuiRangeChange {
                 tap(({clientX, target, pointerId}) => {
                     activeThumb = this.detectActiveThumb(clientX, target);
                     this.range.slidersRefs
-                        .get(activeThumb === 'left' ? 0 : 1)
+                        .get(activeThumb === 'start' ? 0 : 1)
                         ?.nativeElement.setPointerCapture(pointerId);
-                    this.activeThumbChange.emit(activeThumb);
+                    // TODO(v5): remove backward compatibility
+                    this.activeThumbChange.emit(
+                        activeThumb === 'start' ? 'left' : 'right',
+                    );
 
                     if (this.range.focusable) {
                         this.el.focus();
@@ -50,43 +54,43 @@ export class TuiRangeChange {
             .subscribe((fraction) => {
                 const value = this.range.toValue(fraction);
 
-                this.range.processValue(value, activeThumb === 'right');
+                this.range.processValue(value, activeThumb === 'end');
             });
     }
 
     private getFractionFromEvents(clickClientX: number): number {
-        const hostRect = this.el.getBoundingClientRect();
-        const value = clickClientX - hostRect.left;
-        const total = hostRect.width;
+        const {left, right, width} = this.el.getBoundingClientRect();
+        const start = this.el.matches('[dir="rtl"] :scope') ? right : left;
+        const value = Math.abs(tuiClamp(clickClientX, left, right) - start);
 
-        return tuiClamp(tuiRound(value / total, TUI_FLOATING_PRECISION), 0, 1);
+        return tuiRound(value / width, TUI_FLOATING_PRECISION);
     }
 
     private detectActiveThumb(
         clientX: number,
         target: EventTarget | null,
-    ): 'left' | 'right' {
-        const [leftSliderRef, rightSliderRef] = this.range.slidersRefs;
+    ): 'end' | 'start' {
+        const [startSliderRef, endSliderRef] = this.range.slidersRefs;
 
         switch (target) {
-            case leftSliderRef?.nativeElement:
-                return 'left';
-            case rightSliderRef?.nativeElement:
-                return 'right';
+            case endSliderRef?.nativeElement:
+                return 'end';
+            case startSliderRef?.nativeElement:
+                return 'start';
             default:
                 return this.findNearestActiveThumb(clientX);
         }
     }
 
-    private findNearestActiveThumb(clientX: number): 'left' | 'right' {
+    private findNearestActiveThumb(clientX: number): 'end' | 'start' {
         const fraction = this.getFractionFromEvents(clientX);
-        const deltaLeft = fraction * 100 - this.range.left();
-        const deltaRight = fraction * 100 - 100 + this.range.right();
+        const deltaStart = fraction * 100 - this.range.start();
+        const deltaEnd = fraction * 100 - 100 + this.range.end();
 
-        return Math.abs(deltaLeft) > Math.abs(deltaRight) ||
-            deltaRight > 0 ||
-            (this.range.left() === 0 && this.range.right() === 100)
-            ? 'right'
-            : 'left';
+        return Math.abs(deltaStart) > Math.abs(deltaEnd) ||
+            deltaEnd > 0 ||
+            (this.range.start() === 0 && this.range.end() === 100)
+            ? 'end'
+            : 'start';
     }
 }
