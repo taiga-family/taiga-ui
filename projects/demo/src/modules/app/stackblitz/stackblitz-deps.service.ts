@@ -18,7 +18,7 @@ export class StackblitzDepsService {
     }
 
     private getAngularPackages(): Record<string, string> {
-        const ngVersion = '18.x.x';
+        const ngVersion = '20.x.x';
 
         return {
             '@angular/animations': ngVersion,
@@ -29,7 +29,7 @@ export class StackblitzDepsService {
             '@angular/forms': ngVersion,
             '@angular/platform-browser': ngVersion,
             '@angular/router': ngVersion,
-            typescript: '5.4.x', // compatible with angular 18
+            typescript: '5.8.x', // compatible with angular 20
         };
     }
 
