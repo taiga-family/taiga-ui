@@ -14,7 +14,6 @@ class TestChild {
 
   constructor() {
     TestChild.constructorCallCount++;
-    console.log(`TestChild constructor called, count: ${TestChild.constructorCallCount}`);
   }
 }
 
@@ -76,15 +75,11 @@ describe('TuiExpand fix verification', () => {
     });
 
     it('should use content projection and render immediately', fakeAsync(() => {
-      console.log('=== Without TuiItem Test ===');
-      
       // Initial state - content should be projected immediately
       fixture.detectChanges();
       tick();
-      console.log(`After initial detection: constructorCount=${TestChild.constructorCallCount}`);
       
       const initialEl = fixture.nativeElement;
-      console.log('Initial DOM:', initialEl.innerHTML);
       
       // Child should be created immediately (no lazy loading without TuiItem)
       expect(TestChild.constructorCallCount).toBe(1);
@@ -95,10 +90,8 @@ describe('TuiExpand fix verification', () => {
       component.expanded.set(true);
       fixture.detectChanges();
       tick();
-      console.log(`After expanding: constructorCount=${TestChild.constructorCallCount}`);
       
       const expandedEl = fixture.nativeElement;
-      console.log('Expanded DOM:', expandedEl.innerHTML);
       
       // Should still be only one instance
       expect(TestChild.constructorCallCount).toBe(1);
@@ -121,15 +114,11 @@ describe('TuiExpand fix verification', () => {
     });
 
     it('should use template outlet and render lazily', fakeAsync(() => {
-      console.log('=== With TuiItem Test ===');
-      
       // Initial state - content should not be rendered (lazy loading)
       fixture.detectChanges();
       tick();
-      console.log(`After initial detection: constructorCount=${TestChild.constructorCallCount}`);
       
       const initialEl = fixture.nativeElement;
-      console.log('Initial DOM:', initialEl.innerHTML);
       
       // Child should NOT be created initially
       expect(TestChild.constructorCallCount).toBe(0);
@@ -139,10 +128,8 @@ describe('TuiExpand fix verification', () => {
       component.expanded.set(true);
       fixture.detectChanges();
       tick();
-      console.log(`After expanding: constructorCount=${TestChild.constructorCallCount}`);
       
       const expandedEl = fixture.nativeElement;
-      console.log('Expanded DOM:', expandedEl.innerHTML);
       
       // Child should be created exactly once
       expect(TestChild.constructorCallCount).toBe(1);
