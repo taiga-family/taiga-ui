@@ -141,7 +141,7 @@ describe('TuiExpand double projection fix', () => {
       // Initial state - neither expanded
       fixture.detectChanges();
       tick();
-      console.log(`Initial: constructorCount=${TestChild.constructorCallCount}`);
+      // Removed unnecessary console.log statement
       
       // Only the non-TuiItem content should be created (content projection)
       expect(TestChild.constructorCallCount).toBe(1);
