@@ -9,7 +9,7 @@ export interface TuiFluidTypographyOptions {
 
 export const TUI_FLUID_TYPOGRAPHY_DEFAULT_OPTIONS: TuiFluidTypographyOptions = {
     min: 0.625,
-    max: 1.5,
+    max: 1.25,
 };
 
 export const TUI_FLUID_TYPOGRAPHY_OPTIONS = new InjectionToken(
