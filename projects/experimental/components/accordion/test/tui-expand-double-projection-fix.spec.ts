@@ -94,16 +94,16 @@ describe('TuiExpand double projection fix', () => {
       // Initially accordion is closed
       fixture.detectChanges();
       tick();
-      console.log(`Initial state (closed): constructorCount=${TestChild.constructorCallCount}`);
+      // Initial state (closed): constructorCount is logged for debugging
       
       const initialCount = TestChild.constructorCallCount;
-      console.log(`Baseline constructor count: ${initialCount}`);
+      // Baseline constructor count is stored in initialCount
 
       // Open the accordion
       component.accordionOpen.set(true);
       fixture.detectChanges();
       tick();
-      console.log(`After opening: constructorCount=${TestChild.constructorCallCount}`);
+      // After opening: constructorCount is updated
 
       // Child should be created at most once more than initial
       expect(TestChild.constructorCallCount).toBeLessThanOrEqual(initialCount + 1);
