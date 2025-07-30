@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { TuiItem } from '@taiga-ui/cdk/directives/item';
 import { TuiExpand } from '@taiga-ui/experimental/components/expand';
@@ -7,6 +7,7 @@ import { TuiExpand } from '@taiga-ui/experimental/components/expand';
   standalone: true,
   selector: 'test-child',
   template: 'child-content',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestChild {
   public static constructorCallCount = 0;
@@ -30,6 +31,7 @@ class TestChild {
     TuiExpand,
     TestChild,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestExpandWithoutTuiItem {
   public expanded = signal<boolean>(false);
@@ -51,6 +53,7 @@ class TestExpandWithoutTuiItem {
     TuiItem,
     TestChild,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestExpandWithTuiItem {
   public expanded = signal<boolean>(false);
