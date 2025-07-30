@@ -22,7 +22,7 @@ test.describe('Source code button', () => {
             );
 
             const href = await sourceCodeLink.getAttribute('href');
-            const response = await request.get(href ?? '');
+            const response = await request.get(href ?? '', {maxRetries: 3});
 
             expect(response.ok).toBeTruthy();
             expect(response.status()).not.toBe(404);
