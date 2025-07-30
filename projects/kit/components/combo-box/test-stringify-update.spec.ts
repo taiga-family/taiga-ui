@@ -26,9 +26,9 @@ interface TestItem {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestComponent {
-    protected readonly control = new FormControl<number | null>(777);
-
     private readonly items = signal<readonly TestItem[]>([]);
+
+    protected readonly control = new FormControl<number | null>(777);
 
     protected readonly stringify = signal<TuiStringHandler<number>>(
         (id: number) => this.items().find((item) => item.id === id)?.name ?? String(id),
