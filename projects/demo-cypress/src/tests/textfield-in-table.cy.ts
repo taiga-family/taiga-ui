@@ -49,15 +49,12 @@ class MySelectTextfield {
     standalone: true,
     imports: [TuiTextarea, TuiTextfield],
     template: `
-        <tui-textarea>
+        <tui-textfield>
             <textarea
                 placeholder="Enter text..."
-                tuiTextfield
-            >
-                Sample textarea content
-            </textarea
-            >
-        </tui-textarea>
+                tuiTextarea
+            ></textarea>
+        </tui-textfield>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
