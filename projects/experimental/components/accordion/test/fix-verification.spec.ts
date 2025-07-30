@@ -86,8 +86,6 @@ describe('TuiExpand fix verification', () => {
       fixture.detectChanges();
       tick();
       
-      const expandedEl = fixture.nativeElement;
-      
       expect(TestChild.constructorCallCount).toBe(1);
     }));
   });
