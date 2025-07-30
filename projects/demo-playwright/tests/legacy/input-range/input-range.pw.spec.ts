@@ -18,7 +18,10 @@ test.describe('InputRange', () => {
 
     test.describe('Keyboard interactions', () => {
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputRange}/API?min=-100&max=100&quantum=5`);
+            await tuiGoto(
+                page,
+                `${DemoRoute.InputRangeLegacy}/API?min=-100&max=100&quantum=5`,
+            );
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
@@ -132,7 +135,10 @@ test.describe('InputRange', () => {
 
     test.describe('Rounding numbers (to the nearest step which satisfies quantum) (min=0 | max=10 | quantum=2.5)', () => {
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputRange}/API?min=0&max=10&quantum=2.5`);
+            await tuiGoto(
+                page,
+                `${DemoRoute.InputRangeLegacy}/API?min=0&max=10&quantum=2.5`,
+            );
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
@@ -166,7 +172,7 @@ test.describe('InputRange', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    '/components/input-range/API?min=-100&max=100&quantum=10',
+                    `${DemoRoute.InputRangeLegacy}/API?min=-100&max=100&quantum=10`,
                 );
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
                 inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
@@ -205,7 +211,10 @@ test.describe('InputRange', () => {
 
         test.describe('click on a thumb', () => {
             test.beforeEach(async ({page}) => {
-                await tuiGoto(page, `${DemoRoute.InputRange}/API?min=0&max=10&quantum=1`);
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputRangeLegacy}/API?min=0&max=10&quantum=1`,
+                );
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
                 inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
             });
@@ -240,7 +249,7 @@ test.describe('InputRange', () => {
 
     test.describe('Very long placeholder', () => {
         test('basic case', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputRange}/API`);
+            await tuiGoto(page, `${DemoRoute.InputRangeLegacy}/API`);
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
 
             await expect.soft(example).toHaveScreenshot('17-input-range.png');
@@ -249,7 +258,7 @@ test.describe('InputRange', () => {
         test('with `leftValueContent` and `rightValueContent', async ({page}) => {
             await tuiGoto(
                 page,
-                '/components/input-range/API?rightValueContent=TOP%20SECRET&leftValueContent=I%20am%20a%20leftValueContent',
+                `${DemoRoute.InputRangeLegacy}/API?rightValueContent=TOP%20SECRET&leftValueContent=I%20am%20a%20leftValueContent`,
             );
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
 
@@ -257,7 +266,7 @@ test.describe('InputRange', () => {
         });
 
         test('with `pluralize`', async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputRange}/API?pluralize$=1`);
+            await tuiGoto(page, `${DemoRoute.InputRangeLegacy}/API?pluralize$=1`);
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
 
             await expect.soft(example).toHaveScreenshot('19-input-range.png');
@@ -271,7 +280,10 @@ test.describe('InputRange', () => {
         });
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, `${DemoRoute.InputRange}/API?min=-20&max=20&quantum=5`);
+            await tuiGoto(
+                page,
+                `${DemoRoute.InputRangeLegacy}/API?min=-20&max=20&quantum=5`,
+            );
             example = new TuiDocumentationApiPagePO(page).apiPageExample;
             inputRange = new TuiInputRangePO(example.locator('tui-input-range'));
         });
