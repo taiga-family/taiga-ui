@@ -129,7 +129,7 @@ export class TuiComboBox<T>
 
         // If there's a current value, update the textfield display with the new stringify
         if (currentValue != null) {
-            const stringified = this.stringify(currentValue);
+            const stringified = this.itemsHandlers.stringify()(currentValue);
             const currentDisplay = untracked(() => this.textfield.value());
 
             if (stringified !== currentDisplay) {
