@@ -8,6 +8,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiHint, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
+import {TuiDocIcons} from '@demo/components/icons';
 
 @Component({
     standalone: true,
@@ -21,6 +22,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
         TuiInputNumber,
         TuiNumberFormat,
         TuiTextfield,
+        TuiDocIcons,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

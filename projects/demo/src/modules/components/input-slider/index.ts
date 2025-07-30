@@ -12,6 +12,7 @@ import {TuiNumberFormat, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputSlider} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {TuiDocIcons} from '@demo/components/icons';
 
 @Component({
     standalone: true,
@@ -25,6 +26,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiNumberFormat,
         TuiTextfield,
         TuiTitle,
+        TuiDocIcons,
     ],
     templateUrl: './index.html',
     changeDetection,

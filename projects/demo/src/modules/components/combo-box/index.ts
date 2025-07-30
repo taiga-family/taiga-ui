@@ -21,6 +21,7 @@ import {
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
+import {TuiDocIcons} from '@demo/components/icons';
 
 interface Country {
     id: string;
@@ -42,6 +43,7 @@ interface Country {
         TuiDropdown,
         TuiFilterByInputPipe,
         TuiTextfield,
+        TuiDocIcons,
     ],
     templateUrl: './index.html',
     changeDetection,

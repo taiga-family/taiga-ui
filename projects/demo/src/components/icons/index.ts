@@ -18,6 +18,8 @@ export class TuiDocIcons {
         '@tui.heart',
         '@tui.settings',
         '@tui.chevron-down',
+        '@tui.euro',
+        '@tui.dollar-sign',
     ];
 
     @Input()
