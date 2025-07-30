@@ -150,7 +150,7 @@ describe('TuiExpand double projection fix', () => {
       component.expandedWithTuiItem.set(true);
       fixture.detectChanges();
       tick();
-      console.log(`After expanding TuiItem: constructorCount=${TestChild.constructorCallCount}`);
+      // Debugging log removed; rely on assertions for validation
       
       expect(TestChild.constructorCallCount).toBe(2);
 
