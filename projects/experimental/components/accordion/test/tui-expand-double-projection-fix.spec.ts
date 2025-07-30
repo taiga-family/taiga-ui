@@ -158,7 +158,7 @@ describe('TuiExpand double projection fix', () => {
       component.expandedWithoutTuiItem.set(true);
       fixture.detectChanges();
       tick();
-      console.log(`After expanding regular content: constructorCount=${TestChild.constructorCallCount}`);
+      // Removed console.log for cleaner test output
       
       // Still should be 2 (regular content was already rendered)
       expect(TestChild.constructorCallCount).toBe(2);
