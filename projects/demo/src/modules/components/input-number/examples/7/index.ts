@@ -13,5 +13,5 @@ import {TuiFluidTypography, TuiInputNumber} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected value: number | null = null;
+    protected value = 10000;
 }
