@@ -18,11 +18,13 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
     imports: [NgIf, NgTemplateOutlet],
     template: `
         <div class="t-wrapper">
-            <ng-container
-                *ngIf="signal() || animating()"
-                [ngTemplateOutlet]="content || null"
-            />
-            <ng-content />
+            <ng-container *ngIf="content">
+                <ng-container
+                    *ngIf="signal() || animating()"
+                    [ngTemplateOutlet]="content"
+                />
+            </ng-container>
+            <ng-content *ngIf="!content" />
         </div>
     `,
     styleUrls: ['./expand.style.less'],
