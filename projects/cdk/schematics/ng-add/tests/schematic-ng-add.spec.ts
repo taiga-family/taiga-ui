@@ -110,6 +110,29 @@ describe('ng-add', () => {
         );
     });
 
+    it('skip addons', async () => {
+        const options: TuiSchema = {
+            addons: [''],
+            project: '',
+            'skip-logs': process.env['TUI_CI'] === 'true',
+        };
+
+        const tree = await runner.runSchematic('ng-add', options, host);
+
+        expect(tree.readContent('package.json')).toBe(
+            `{
+  "dependencies": {
+    "@angular/core": "~13.0.0",
+    "@taiga-ui/cdk": "${TAIGA_VERSION}",
+    "@taiga-ui/core": "${TAIGA_VERSION}",
+    "@taiga-ui/event-plugins": "^4.0.2",
+    "@taiga-ui/icons": "${TAIGA_VERSION}",
+    "@taiga-ui/kit": "${TAIGA_VERSION}"
+  }
+}`,
+        );
+    });
+
     it('should add assets and styles in angular.json', async () => {
         const tree = await runner.runSchematic(
             'ng-add-setup-project',

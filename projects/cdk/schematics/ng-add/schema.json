@@ -42,6 +42,10 @@
                     {
                         "value": "layout",
                         "label": "layout            Layout components"
+                    },
+                    {
+                        "value": "",
+                        "label": "No needed"
                     }
                 ]
             }
