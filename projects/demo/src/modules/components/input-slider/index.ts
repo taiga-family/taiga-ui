@@ -2,6 +2,7 @@ import type {Signal} from '@angular/core';
 import {Component, computed, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
+import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -12,7 +13,6 @@ import {TuiNumberFormat, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputSlider} from '@taiga-ui/kit';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {TuiDocIcons} from '@demo/components/icons';
 
 @Component({
     standalone: true,
@@ -20,13 +20,13 @@ import {TuiDocIcons} from '@demo/components/icons';
         ReactiveFormsModule,
         TuiDemo,
         TuiDocControl,
+        TuiDocIcons,
         TuiDocNumberFormat,
         TuiDocTextfield,
         TuiInputSlider,
         TuiNumberFormat,
         TuiTextfield,
         TuiTitle,
-        TuiDocIcons,
     ],
     templateUrl: './index.html',
     changeDetection,

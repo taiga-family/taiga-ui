@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
+import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,7 +9,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiHint, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
-import {TuiDocIcons} from '@demo/components/icons';
 
 @Component({
     standalone: true,
@@ -16,13 +16,13 @@ import {TuiDocIcons} from '@demo/components/icons';
         ReactiveFormsModule,
         TuiDemo,
         TuiDocControl,
+        TuiDocIcons,
         TuiDocNumberFormat,
         TuiDocTextfield,
         TuiHint,
         TuiInputNumber,
         TuiNumberFormat,
         TuiTextfield,
-        TuiDocIcons,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

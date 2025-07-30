@@ -2,6 +2,7 @@ import {Component, computed, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
+import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -21,7 +22,6 @@ import {
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import type {Observable} from 'rxjs';
 import {map} from 'rxjs';
-import {TuiDocIcons} from '@demo/components/icons';
 
 interface Country {
     id: string;
@@ -38,12 +38,12 @@ interface Country {
         TuiDemo,
         TuiDocControl,
         TuiDocDropdown,
+        TuiDocIcons,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
         TuiFilterByInputPipe,
         TuiTextfield,
-        TuiDocIcons,
     ],
     templateUrl: './index.html',
     changeDetection,
