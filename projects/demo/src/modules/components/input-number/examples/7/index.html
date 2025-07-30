@@ -1,13 +1,9 @@
-<tui-textfield
-    tuiTextfieldSize="s"
-    [style.width.rem]="10"
->
+<tui-textfield [style.width.rem]="10">
     <input
-        placeholder="Enter weight (kg)"
-        postfix=" kg"
+        postfix=" €"
+        tuiFluidTypography
         tuiInputNumber
         [min]="0"
-        [tuiFluidTypography]="[0.5, 1]"
         [(ngModel)]="value"
     />
 </tui-textfield>
