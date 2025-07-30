@@ -91,22 +91,18 @@ describe('TuiExpand double projection fix', () => {
     });
 
     it('should create child component only once when accordion opens (issue #11477 fix)', fakeAsync(() => {
-      // Initially accordion is closed
       fixture.detectChanges();
       tick();
       
       const initialCount = TestChild.constructorCallCount;
 
-      // Open the accordion
       component.accordionOpen.set(true);
       fixture.detectChanges();
       tick();
 
-      // Child should be created at most once more than initial
       expect(TestChild.constructorCallCount).toBeLessThanOrEqual(initialCount + 1);
       const afterOpenCount = TestChild.constructorCallCount;
 
-      // Close and reopen 
       component.accordionOpen.set(false);
       fixture.detectChanges();
       tick();
@@ -115,7 +111,6 @@ describe('TuiExpand double projection fix', () => {
       fixture.detectChanges();
       tick();
       
-      // Key test: No additional instantiations should occur
       expect(TestChild.constructorCallCount).toBeLessThanOrEqual(afterOpenCount + 1);
     }));
   });
@@ -134,26 +129,21 @@ describe('TuiExpand double projection fix', () => {
     });
 
     it('should handle both TuiItem and regular content correctly', fakeAsync(() => {
-      // Initial state - neither expanded
       fixture.detectChanges();
       tick();
       
-      // Only the non-TuiItem content should be created (content projection)
       expect(TestChild.constructorCallCount).toBe(1);
 
-      // Expand TuiItem content - should create one more child  
       component.expandedWithTuiItem.set(true);
       fixture.detectChanges();
       tick();
       
       expect(TestChild.constructorCallCount).toBe(2);
 
-      // Expand regular content - should not create additional children
       component.expandedWithoutTuiItem.set(true);
       fixture.detectChanges();
       tick();
       
-      // Still should be 2 (regular content was already rendered)
       expect(TestChild.constructorCallCount).toBe(2);
     }));
   });

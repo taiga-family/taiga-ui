@@ -75,23 +75,19 @@ describe('TuiExpand fix verification', () => {
     });
 
     it('should use content projection and render immediately', fakeAsync(() => {
-      // Initial state - content should be projected immediately
       fixture.detectChanges();
       tick();
       
-      // Child should be created immediately (no lazy loading without TuiItem)
       expect(TestChild.constructorCallCount).toBe(1);
       expect(fixture.nativeElement.innerHTML).toContain('child-content');
       expect(fixture.nativeElement.innerHTML).toContain('Regular content without tuiItem');
       
-      // Expand - content should still be there
       component.expanded.set(true);
       fixture.detectChanges();
       tick();
       
       const expandedEl = fixture.nativeElement;
       
-      // Should still be only one instance
       expect(TestChild.constructorCallCount).toBe(1);
     }));
   });
@@ -112,24 +108,20 @@ describe('TuiExpand fix verification', () => {
     });
 
     it('should use template outlet and render lazily', fakeAsync(() => {
-      // Initial state - content should not be rendered (lazy loading)
       fixture.detectChanges();
       tick();
       
       const initialEl = fixture.nativeElement;
       
-      // Child should NOT be created initially
       expect(TestChild.constructorCallCount).toBe(0);
       expect(initialEl.innerHTML).not.toContain('child-content');
       
-      // Expand - content should be rendered
       component.expanded.set(true);
       fixture.detectChanges();
       tick();
       
       const expandedEl = fixture.nativeElement;
       
-      // Child should be created exactly once
       expect(TestChild.constructorCallCount).toBe(1);
       expect(expandedEl.innerHTML).toContain('child-content');
       expect(expandedEl.innerHTML).toContain('Content with tuiItem');
