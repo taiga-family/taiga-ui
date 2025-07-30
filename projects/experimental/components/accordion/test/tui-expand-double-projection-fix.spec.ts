@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { TuiItem } from '@taiga-ui/cdk/directives/item';
 import { TuiExpand } from '@taiga-ui/experimental/components/expand';
@@ -8,13 +8,13 @@ import { TuiAccordion, TuiAccordionDirective } from '@taiga-ui/experimental/comp
   standalone: true,
   selector: 'test-child',
   template: 'child-content',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestChild {
   public static constructorCallCount = 0;
 
   constructor() {
     TestChild.constructorCallCount++;
-    console.log(`TestChild constructor called, count: ${TestChild.constructorCallCount}`);
   }
 }
 
@@ -38,6 +38,7 @@ class TestChild {
     TuiItem,
     TestChild,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestAccordionWithTuiItem {
   public accordionOpen = signal<boolean>(false);
@@ -47,7 +48,6 @@ class TestAccordionWithTuiItem {
   standalone: true,
   selector: 'test-expand-scenarios',
   template: `
-    <!-- Scenario 1: TuiExpand with TuiItem (lazy loading) -->
     <tui-expand [expanded]="expandedWithTuiItem()">
       <ng-container *tuiItem>
         <test-child></test-child>
@@ -55,7 +55,6 @@ class TestAccordionWithTuiItem {
       </ng-container>
     </tui-expand>
     
-    <!-- Scenario 2: TuiExpand without TuiItem (immediate rendering) -->
     <tui-expand [expanded]="expandedWithoutTuiItem()">
       <test-child></test-child>
       <div>Regular content</div>
@@ -66,6 +65,7 @@ class TestAccordionWithTuiItem {
     TuiItem,
     TestChild,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestExpandScenarios {
   public expandedWithTuiItem = signal<boolean>(false);
@@ -94,16 +94,13 @@ describe('TuiExpand double projection fix', () => {
       // Initially accordion is closed
       fixture.detectChanges();
       tick();
-      // Initial state (closed): constructorCount is logged for debugging
       
       const initialCount = TestChild.constructorCallCount;
-      // Baseline constructor count is stored in initialCount
 
       // Open the accordion
       component.accordionOpen.set(true);
       fixture.detectChanges();
       tick();
-      // After opening: constructorCount is updated
 
       // Child should be created at most once more than initial
       expect(TestChild.constructorCallCount).toBeLessThanOrEqual(initialCount + 1);
@@ -140,7 +137,6 @@ describe('TuiExpand double projection fix', () => {
       // Initial state - neither expanded
       fixture.detectChanges();
       tick();
-      // Removed unnecessary console.log statement
       
       // Only the non-TuiItem content should be created (content projection)
       expect(TestChild.constructorCallCount).toBe(1);
@@ -149,7 +145,6 @@ describe('TuiExpand double projection fix', () => {
       component.expandedWithTuiItem.set(true);
       fixture.detectChanges();
       tick();
-      // Debugging log removed; rely on assertions for validation
       
       expect(TestChild.constructorCallCount).toBe(2);
 
@@ -157,7 +152,6 @@ describe('TuiExpand double projection fix', () => {
       component.expandedWithoutTuiItem.set(true);
       fixture.detectChanges();
       tick();
-      // Removed console.log for cleaner test output
       
       // Still should be 2 (regular content was already rendered)
       expect(TestChild.constructorCallCount).toBe(2);

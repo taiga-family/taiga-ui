@@ -79,12 +79,10 @@ describe('TuiExpand fix verification', () => {
       fixture.detectChanges();
       tick();
       
-      const initialEl = fixture.nativeElement;
-      
       // Child should be created immediately (no lazy loading without TuiItem)
       expect(TestChild.constructorCallCount).toBe(1);
-      expect(initialEl.innerHTML).toContain('child-content');
-      expect(initialEl.innerHTML).toContain('Regular content without tuiItem');
+      expect(fixture.nativeElement.innerHTML).toContain('child-content');
+      expect(fixture.nativeElement.innerHTML).toContain('Regular content without tuiItem');
       
       // Expand - content should still be there
       component.expanded.set(true);
