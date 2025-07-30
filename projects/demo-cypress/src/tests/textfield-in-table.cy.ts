@@ -64,12 +64,14 @@ class MyTextarea {}
     standalone: true,
     imports: [FormsModule, TuiInputChip, TuiTextfield],
     template: `
-        <tui-input-chip
-            placeholder="Add chips..."
-            [ngModel]="chips"
-        >
-            Type to add chips
-        </tui-input-chip>
+        <tui-textfield multi>
+            <input
+                placeholder="Add chips..."
+                tuiInputChip
+                [ngModel]="chips"
+            />
+            <tui-input-chip *tuiItem />
+        </tui-textfield>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
