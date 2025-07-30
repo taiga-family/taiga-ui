@@ -117,8 +117,7 @@ describe('TuiExpand double projection fix', () => {
       component.accordionOpen.set(true);
       fixture.detectChanges();
       tick();
-      console.log(`After reopening: constructorCount=${TestChild.constructorCallCount}`);
-
+      
       // Key test: No additional instantiations should occur
       expect(TestChild.constructorCallCount).toBeLessThanOrEqual(afterOpenCount + 1);
     }));
