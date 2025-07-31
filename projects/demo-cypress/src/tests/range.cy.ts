@@ -13,7 +13,7 @@ describe('TuiRange', () => {
         imports: [ReactiveFormsModule, TuiRange],
         template: `
             <tui-range
-                [formControl]="testValue"
+                [formControl]="control"
                 [keySteps]="keySteps"
                 [limit]="limit"
                 [margin]="margin"
@@ -32,7 +32,7 @@ describe('TuiRange', () => {
         @ViewChild(TuiRange, {static: true, read: ElementRef})
         public el!: ElementRef<HTMLElement>;
 
-        public testValue = new FormControl([3, 5]);
+        public control = new FormControl([3, 5]);
         public max = 11;
         public min = 1;
         public segments = 10;
@@ -48,8 +48,8 @@ describe('TuiRange', () => {
             fixture = wrapper.fixture;
         });
 
-        cy.get('[automation-id="tui-range__left"]').as('leftThumb');
-        cy.get('[automation-id="tui-range__right"]').as('rightThumb');
+        cy.get('input[type="range"]:first-of-type').as('startThumb');
+        cy.get('input[type="range"]:last-of-type').as('endThumb');
     });
 
     it('The bar is filled from 20% to 60%', () => {
@@ -60,27 +60,27 @@ describe('TuiRange', () => {
     describe('Changing values', () => {
         describe('Left point', () => {
             it('Pressing the left arrow decreases the value by one step', () => {
-                cy.get('@leftThumb')
+                cy.get('@startThumb')
                     .focus()
                     .type('{leftArrow}')
                     .then(() => {
-                        expect(component.testValue.value?.[0]).to.equal(2);
-                        expect(component.testValue.value?.[1]).to.equal(5);
+                        expect(component.control.value?.[0]).to.equal(2);
+                        expect(component.control.value?.[1]).to.equal(5);
                     });
             });
 
             it('Pressing the right arrow increases the value by one step', () => {
-                cy.get('@leftThumb')
+                cy.get('@startThumb')
                     .focus()
                     .type('{rightArrow}')
                     .then(() => {
-                        expect(component.testValue.value?.[0]).to.equal(4);
-                        expect(component.testValue.value?.[1]).to.equal(5);
+                        expect(component.control.value?.[0]).to.equal(4);
+                        expect(component.control.value?.[1]).to.equal(5);
                     });
             });
 
             it('Pressing the left arrow correctly paints the strip', () => {
-                cy.get('@leftThumb')
+                cy.get('@startThumb')
                     .focus()
                     .type('{leftArrow}')
                     .then(() => {
@@ -90,7 +90,7 @@ describe('TuiRange', () => {
             });
 
             it('Pressing the right arrow correctly paints the strip', () => {
-                cy.get('@leftThumb')
+                cy.get('@startThumb')
                     .focus()
                     .type('{rightArrow}')
                     .then(() => {
@@ -103,27 +103,27 @@ describe('TuiRange', () => {
 
     describe('Right point', () => {
         it('Pressing the left arrow decreases the value by one step', () => {
-            cy.get('@rightThumb')
+            cy.get('@endThumb')
                 .focus()
                 .type('{leftArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[0]).to.equal(3);
-                    expect(component.testValue.value?.[1]).to.equal(4);
+                    expect(component.control.value?.[0]).to.equal(3);
+                    expect(component.control.value?.[1]).to.equal(4);
                 });
         });
 
         it('Pressing the right arrow increases the value by one step', () => {
-            cy.get('@rightThumb')
+            cy.get('@endThumb')
                 .focus()
                 .type('{rightArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[0]).to.equal(3);
-                    expect(component.testValue.value?.[1]).to.equal(6);
+                    expect(component.control.value?.[0]).to.equal(3);
+                    expect(component.control.value?.[1]).to.equal(6);
                 });
         });
 
         it('Pressing the left arrow correctly paints the strip', () => {
-            cy.get('@rightThumb')
+            cy.get('@endThumb')
                 .focus()
                 .type('{leftArrow}')
                 .then(() => {
@@ -133,7 +133,7 @@ describe('TuiRange', () => {
         });
 
         it('Pressing the right arrow correctly paints the strip', () => {
-            cy.get('@rightThumb')
+            cy.get('@endThumb')
                 .focus()
                 .type('{rightArrow}')
                 .then(() => {
@@ -145,78 +145,78 @@ describe('TuiRange', () => {
 
     describe('Borders', () => {
         it('Prevents the left border from exceeding the right', () => {
-            component.testValue.setValue([5, 5]);
-            cy.get('@leftThumb')
+            component.control.setValue([5, 5]);
+            cy.get('@startThumb')
                 .focus()
                 .type('{rightArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[0]).to.equal(5);
-                    expect(component.testValue.value?.[1]).to.equal(5);
+                    expect(component.control.value?.[0]).to.equal(5);
+                    expect(component.control.value?.[1]).to.equal(5);
                 });
         });
 
         it('Prevents the right border from dropping below the left', () => {
-            component.testValue.setValue([5, 5]);
-            cy.get('@rightThumb')
+            component.control.setValue([5, 5]);
+            cy.get('@endThumb')
                 .focus()
                 .type('{leftArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[0]).to.equal(5);
-                    expect(component.testValue.value?.[1]).to.equal(5);
+                    expect(component.control.value?.[0]).to.equal(5);
+                    expect(component.control.value?.[1]).to.equal(5);
                 });
         });
 
         it('Prevents the value from decreasing below the minimum', () => {
-            component.testValue.setValue([1, 11]);
-            cy.get('@leftThumb')
+            component.control.setValue([1, 11]);
+            cy.get('@startThumb')
                 .focus()
                 .type('{leftArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[0]).to.equal(1);
+                    expect(component.control.value?.[0]).to.equal(1);
                 });
         });
 
         it('Prevents the value from exceeding the maximum', () => {
-            component.testValue.setValue([1, 11]);
-            cy.get('@rightThumb')
+            component.control.setValue([1, 11]);
+            cy.get('@endThumb')
                 .focus()
                 .type('{rightArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[1]).to.equal(11);
+                    expect(component.control.value?.[1]).to.equal(11);
                 });
         });
 
         it('Adds a value to the closest allowed step', () => {
-            component.testValue.setValue([3.3, 5]);
-            cy.get('@leftThumb')
+            component.control.setValue([3.3, 5]);
+            cy.get('@startThumb')
                 .focus()
                 .type('{rightArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[0]).to.equal(4);
+                    expect(component.control.value?.[0]).to.equal(4);
                 });
         });
 
         it('Prevents the value from exceeding the limit', () => {
             component.step = 3;
             component.limit = 2;
-            component.testValue.setValue([1, 5]);
-            cy.get('@rightThumb')
+            component.control.setValue([1, 5]);
+            cy.get('@endThumb')
                 .focus()
                 .type('{rightArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[1]).to.equal(5);
+                    expect(component.control.value?.[1]).to.equal(5);
                 });
         });
 
         it('Allow the value in the limit', () => {
             component.step = 2;
             component.limit = 2;
-            component.testValue.setValue([1, 1]);
-            cy.get('@rightThumb')
+            component.control.setValue([1, 1]);
+            cy.get('@endThumb')
                 .focus()
                 .type('{rightArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[1]).to.equal(3);
+                    expect(component.control.value?.[1]).to.equal(3);
                 });
         });
 
@@ -224,23 +224,23 @@ describe('TuiRange', () => {
             component.limit = 0;
             component.step = 1;
             component.margin = 5;
-            component.testValue.setValue([1, 5]);
-            cy.get('@rightThumb')
+            component.control.setValue([1, 5]);
+            cy.get('@endThumb')
                 .focus()
                 .type('{leftArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[1]).to.equal(5);
+                    expect(component.control.value?.[1]).to.equal(5);
                 });
         });
 
         it('Allow the value within the margin', () => {
             component.margin = 5;
-            component.testValue.setValue([1, 7]);
-            cy.get('@rightThumb')
+            component.control.setValue([1, 7]);
+            cy.get('@endThumb')
                 .focus()
                 .type('{leftArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[1]).to.equal(6);
+                    expect(component.control.value?.[1]).to.equal(6);
                 });
         });
     });
@@ -250,35 +250,35 @@ describe('TuiRange', () => {
             component.min = 0;
             component.max = 10;
             component.step = 0.1;
-            component.testValue.setValue([1, 5]);
+            component.control.setValue([1, 5]);
         });
 
         it('Pressing the right arrow increases the value by one step (step = 1)', () => {
-            cy.get('@leftThumb')
+            cy.get('@startThumb')
                 .focus()
                 .type('{rightArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[0]).to.equal(1.1);
+                    expect(component.control.value?.[0]).to.equal(1.1);
                 });
         });
 
         it('Pressing the left arrow decreases the value by one step', () => {
-            cy.get('@rightThumb')
+            cy.get('@endThumb')
                 .focus()
                 .type('{leftArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[1]).to.equal(4.9);
+                    expect(component.control.value?.[1]).to.equal(4.9);
                 });
         });
 
         it('Pressing the right arrow increases the value by one step (step = 3)', () => {
-            component.testValue.setValue([0, 10]);
+            component.control.setValue([0, 10]);
             component.step = 3;
-            cy.get('@leftThumb')
+            cy.get('@startThumb')
                 .focus()
                 .type('{rightArrow}')
                 .then(() => {
-                    expect(component.testValue.value?.[0]).to.equal(3);
+                    expect(component.control.value?.[0]).to.equal(3);
                 });
         });
     });
@@ -293,7 +293,7 @@ describe('TuiRange', () => {
                 [100, 1_000_000],
             ];
             component.step = (component.max - component.min) / 10;
-            component.testValue.setValue([0, 0]);
+            component.control.setValue([0, 0]);
             fixture.detectChanges();
         });
 
@@ -342,7 +342,7 @@ describe('TuiRange', () => {
 
         testsContexts.forEach(({value, leftOffset, rightOffset}) => {
             it(`${JSON.stringify(value)}`, () => {
-                component.testValue.setValue(value as unknown as number[]);
+                component.control.setValue(value as unknown as number[]);
                 fixture.detectChanges();
 
                 expect(getFilledRangeOffset(component).left).to.equal(leftOffset);
