@@ -123,18 +123,18 @@ export class TuiComboBox<T>
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly stringifyEffect = effect(() => {
-        // Watch for changes to the stringify function
         this.itemsHandlers.stringify();
         const currentValue = untracked(() => this.value());
 
-        // If there's a current value, update the textfield display with the new stringify
-        if (currentValue != null) {
-            const stringified = this.itemsHandlers.stringify()(currentValue);
-            const currentDisplay = untracked(() => this.textfield.value());
+        if (currentValue == null) {
+            return;
+        }
 
-            if (stringified !== currentDisplay) {
-                this.textfield.value.set(stringified);
-            }
+        const stringified = this.itemsHandlers.stringify()(currentValue);
+        const currentDisplay = untracked(() => this.textfield.value());
+
+        if (stringified !== currentDisplay) {
+            this.textfield.value.set(stringified);
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
 
