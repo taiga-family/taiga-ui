@@ -206,6 +206,8 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-textfield
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -301,6 +303,11 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+            ></tbody>
+
+            <tbody
+                #icons
+                tuiDocIcons
             ></tbody>
 
             <tbody

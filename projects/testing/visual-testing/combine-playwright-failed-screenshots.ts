@@ -2,10 +2,15 @@ import {readdirSync, writeFileSync} from 'node:fs';
 
 import {tuiCombineSnapshots} from './combine-snapshots';
 
-const FAILED_SCREENSHOTS_PATH = 'projects/demo-playwright/tests-results';
-const DIFF_IMAGE_POSTFIX = '-diff.png';
-const OUTPUT_DIFF_IMAGE_POSTFIX = '.diff.png';
+const FAILED_SCREENSHOTS_PATH =
+    process.env.FAILED_SCREENSHOTS_PATH ?? 'projects/demo-playwright/tests-results';
+
+const DIFF_IMAGE_POSTFIX = process.env.DIFF_IMAGE_POSTFIX ?? '-diff.png';
+
+const OUTPUT_DIFF_IMAGE_POSTFIX = process.env.OUTPUT_DIFF_IMAGE_POSTFIX ?? '.diff.png';
+
 const RETRY_COUNT = Number(process.env.RETRY_COUNT ?? 2);
+
 const REG_EXP = new RegExp(`retry${RETRY_COUNT}$|retry${RETRY_COUNT}/`);
 
 export async function tuiCombinePlaywrightFailedScreenshots(

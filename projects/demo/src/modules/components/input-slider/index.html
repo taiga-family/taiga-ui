@@ -153,6 +153,8 @@
                 <tui-textfield
                     #textfield
                     [content]="textfield.focused() ? '' : textfieldContent"
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -316,7 +318,7 @@
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
-                [hiddenOptions]="['cleaner']"
+                [hiddenOptions]="['cleaner', 'rows']"
             >
                 <!--TODO: create the inherited documentation for Textfield ([content] + [filler] props)-->
                 <tr
@@ -329,6 +331,11 @@
                     A template for custom view of textfield value.
                 </tr>
             </tbody>
+
+            <tbody
+                #icons
+                tuiDocIcons
+            ></tbody>
 
             <tbody
                 #controlDoc

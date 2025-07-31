@@ -725,7 +725,7 @@ export const pages: DocRoutePages = [
                 section: 'Components',
                 title: 'InputRange',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputRange,
+                route: DemoRoute.InputRangeLegacy,
             },
             {
                 section: 'Components',
@@ -995,7 +995,7 @@ export const pages: DocRoutePages = [
                 section: 'Components',
                 title: 'InputRange',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputRange,
+                route: DemoRoute.InputRangeLegacy,
             },
             {
                 section: 'Components',
