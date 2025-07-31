@@ -1,17 +1,17 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
+import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiHint, TuiTextfield} from '@taiga-ui/core';
+import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputPhone, TuiInputTimeDirective} from '@taiga-ui/kit';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
-import {TuiInputPhone, TuiInputTimeDirective} from '@taiga-ui/kit';
-import {TuiDocControl} from '@demo/components/control';
-import {TuiDocTextfield} from '@demo/components/textfield';
 
 @Component({
     standalone: true,
@@ -19,14 +19,14 @@ import {TuiDocTextfield} from '@demo/components/textfield';
         InheritedDocumentation,
         ReactiveFormsModule,
         TuiDemo,
-        TuiDropdown,
-        TuiInputPhoneModule,
-        TuiTextfieldControllerModule,
-        TuiTextfield,
-        TuiInputPhone,
         TuiDocControl,
         TuiDocTextfield,
+        TuiDropdown,
+        TuiInputPhone,
+        TuiInputPhoneModule,
         TuiInputTimeDirective,
+        TuiTextfield,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
