@@ -37,7 +37,7 @@ function isText(value: string): boolean {
 @Directive({
     standalone: true,
     selector: 'input[tuiInputPhone]',
-    providers: [tuiAsControl(TuiInputPhoneDirective)],
+    providers: [tuiAsControl(TuiInputPhone)],
     hostDirectives: [TuiWithTextfield, MaskitoDirective],
     host: {
         '[type]': '"tel"',
@@ -47,7 +47,7 @@ function isText(value: string): boolean {
         '(tuiActiveZoneChange)': 'onActiveZone($event)',
     },
 })
-export class TuiInputPhoneDirective extends TuiControl<string | null> {
+export class TuiInputPhone extends TuiControl<string | null> {
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly host: TuiTextfieldComponent<string> = inject(TuiTextfieldComponent);
 

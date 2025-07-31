@@ -23,7 +23,7 @@ test.describe('InputPhone', () => {
         }) => {
             await tuiGoto(
                 page,
-                'components/input-phone/API?countryCode=%2B52&tuiTextfieldCleaner=true',
+                'legacy/input-phone/API?countryCode=%2B52&tuiTextfieldCleaner=true',
             );
 
             await inputPhone.textfield.focus();
@@ -45,7 +45,7 @@ test.describe('InputPhone', () => {
         }) => {
             await tuiGoto(
                 page,
-                'components/input-phone/API?countryCode=%2B1&tuiTextfieldCleaner=true',
+                'legacy/input-phone/API?countryCode=%2B1&tuiTextfieldCleaner=true',
             );
 
             await inputPhone.textfield.focus();
@@ -78,7 +78,7 @@ test.describe('InputPhone', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    'components/input-phone/API?countryCode=%2B1&tuiTextfieldCleaner=true&sandboxExpanded=true',
+                    'legacy/input-phone/API?countryCode=%2B1&tuiTextfieldCleaner=true&sandboxExpanded=true',
                 );
             });
 
@@ -113,7 +113,7 @@ test.describe('InputPhone', () => {
             test.beforeEach(async ({page}) => {
                 await tuiGoto(
                     page,
-                    '/components/input-phone/API?countryCode=%2B7&phoneMaskAfterCountryCode=(%23%23%23)%20%23%23%23-%23%23-%23%23',
+                    '/legacy/input-phone/API?countryCode=%2B7&phoneMaskAfterCountryCode=(%23%23%23)%20%23%23%23-%23%23-%23%23',
                 );
 
                 example = new TuiDocumentationApiPagePO(page).apiPageExample;
@@ -1440,7 +1440,7 @@ test.describe('InputPhone', () => {
         test('filler', async ({page}) => {
             await tuiGoto(
                 page,
-                '/components/input-phone/API?tuiTextfieldCustomContent=@tui.mastercard-mono&phoneMaskAfterCountryCode=(%23%23%23)%20%23%23%23-%23%23-%23%23&tuiTextfieldCleaner=true&focusable=true&tuiTextfieldPrefix=&tuiTextfieldPostfix=&tuiTextfieldFiller=57567567&tuiTextfieldSize=l&search=q3e',
+                '/legacy/input-phone/API?tuiTextfieldCustomContent=@tui.mastercard-mono&phoneMaskAfterCountryCode=(%23%23%23)%20%23%23%23-%23%23-%23%23&tuiTextfieldCleaner=true&focusable=true&tuiTextfieldPrefix=&tuiTextfieldPostfix=&tuiTextfieldFiller=57567567&tuiTextfieldSize=l&search=q3e',
             );
 
             const example = new TuiDocumentationApiPagePO(page).apiPageExample;
