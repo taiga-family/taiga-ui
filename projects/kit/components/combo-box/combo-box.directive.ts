@@ -124,17 +124,10 @@ export class TuiComboBox<T>
 
     protected readonly stringifyEffect = effect(() => {
         this.itemsHandlers.stringify();
-        const currentValue = untracked(() => this.value());
+        const value = untracked(() => this.value());
 
-        if (currentValue == null) {
-            return;
-        }
-
-        const stringified = this.itemsHandlers.stringify()(currentValue);
-        const currentDisplay = untracked(() => this.textfield.value());
-
-        if (stringified !== currentDisplay) {
-            this.textfield.value.set(stringified);
+        if (value !== null) {
+            this.textfield.value.set(this.itemsHandlers.stringify()(value));
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
 
