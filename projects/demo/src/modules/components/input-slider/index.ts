@@ -2,6 +2,7 @@ import type {Signal} from '@angular/core';
 import {Component, computed, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
+import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -19,6 +20,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         ReactiveFormsModule,
         TuiDemo,
         TuiDocControl,
+        TuiDocIcons,
         TuiDocNumberFormat,
         TuiDocTextfield,
         TuiInputSlider,
