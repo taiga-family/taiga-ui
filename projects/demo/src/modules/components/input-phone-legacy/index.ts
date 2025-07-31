@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiHint} from '@taiga-ui/core';
@@ -9,7 +10,6 @@ import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legac
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
-import {DemoRoute} from '@demo/routes';
 
 @Component({
     standalone: true,
@@ -38,10 +38,11 @@ export default class PageComponent extends AbstractExampleTuiControl {
         '### ###-####',
     ];
 
+    protected readonly routes = DemoRoute;
+
     protected phoneMaskAfterCountryCode = this.phoneMasksAfterCountryCode[0]!;
 
     public override cleaner = false;
 
     public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
-    protected readonly routes = DemoRoute;
 }

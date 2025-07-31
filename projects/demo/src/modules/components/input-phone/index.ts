@@ -3,12 +3,15 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiHint} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
+import {TuiInputPhone, TuiInputTimeDirective} from '@taiga-ui/kit';
+import {TuiDocControl} from '@demo/components/control';
+import {TuiDocTextfield} from '@demo/components/textfield';
 
 @Component({
     standalone: true,
@@ -17,9 +20,13 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         ReactiveFormsModule,
         TuiDemo,
         TuiDropdown,
-        TuiHint,
         TuiInputPhoneModule,
         TuiTextfieldControllerModule,
+        TuiTextfield,
+        TuiInputPhone,
+        TuiDocControl,
+        TuiDocTextfield,
+        TuiInputTimeDirective,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -38,8 +45,6 @@ export default class PageComponent extends AbstractExampleTuiControl {
     ];
 
     protected phoneMaskAfterCountryCode = this.phoneMasksAfterCountryCode[0]!;
-
-    public override cleaner = false;
 
     public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
 }
