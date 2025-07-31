@@ -19,7 +19,7 @@
         "@nguniversal/express-engine": "16.2.0",
         "@stackblitz/sdk": "1.11.0",
         "@taiga-ui/dompurify": "4.1.11",
-        "@types/express": "5.0.0",
+        "@types/express": "5.0.3",
         "date-fns": "4.1.0",
         "express": "4.21.2",
         "rxjs": "7.8.2",
