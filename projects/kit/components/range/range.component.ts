@@ -46,15 +46,15 @@ import {TuiRangeChange} from './range-change.directive';
         '[attr.data-size]': 'size',
         '[attr.tabindex]': '-1',
         '[attr.aria-disabled]': 'disabled()',
-        '[style.--t-left.%]': 'left()',
-        '[style.--t-right.%]': 'right()',
+        '[style.--t-start.%]': 'start()',
+        '[style.--t-end.%]': 'end()',
         '[style.background]': 'options.trackColor',
         '[class._disabled]': 'disabled()',
         '(focusout)': 'onTouched()',
         '(keydown.arrowUp.prevent)': 'changeByStep(1, $event.target)',
-        '(keydown.arrowRight.prevent)': 'changeByStep(1, $event.target)',
-        '(keydown.arrowLeft.prevent)': 'changeByStep(-1, $event.target)',
         '(keydown.arrowDown.prevent)': 'changeByStep(-1, $event.target)',
+        '(keydown.arrowRight.prevent)': 'changeByStep(rtl ? -1 : 1, $event.target)',
+        '(keydown.arrowLeft.prevent)': 'changeByStep(rtl ? 1 : -1, $event.target)',
     },
 })
 export class TuiRange extends TuiControl<[number, number]> implements OnChanges {
@@ -63,7 +63,7 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     private readonly el = tuiInjectElement();
 
     protected readonly options = inject(TUI_SLIDER_OPTIONS);
-    protected lastActiveThumb: 'left' | 'right' = 'right';
+    protected lastActiveThumb: 'end' | 'start' = 'end';
 
     @Input()
     public min = 0;
@@ -95,21 +95,21 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
     public readonly slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
 
-    public readonly left = computed(() => this.toPercent(this.value()[0]));
-    public readonly right = computed(() => 100 - this.toPercent(this.value()[1]));
+    public readonly start = computed(() => this.toPercent(this.value()[0]));
+    public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
 
     public ngOnChanges(): void {
-        this.changes.set(this.changes() + 1);
+        this.changes.update((x) => x + 1);
     }
 
-    public processValue(value: number, right: boolean): void {
-        if (right) {
+    public processValue(value: number, end: boolean): void {
+        if (end) {
             this.updateEnd(value);
         } else {
             this.updateStart(value);
         }
 
-        this.lastActiveThumb = right ? 'right' : 'left';
+        this.lastActiveThumb = end ? 'end' : 'start';
     }
 
     public toValue(fraction: number): number {
@@ -131,22 +131,22 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
         return 1 / this.segments;
     }
 
-    protected changeByStep(coefficient: number, target: HTMLElement): void {
-        const [sliderLeftRef, sliderRightRef] = this.slidersRefs;
-        const leftThumbElement = sliderLeftRef?.nativeElement;
-        const rightThumbElement = sliderRightRef?.nativeElement;
+    protected get rtl(): boolean {
+        return this.el.matches('[dir="rtl"] :scope');
+    }
 
-        const isRightThumb =
-            target === this.el
-                ? this.lastActiveThumb === 'right'
-                : target === rightThumbElement;
-        const activeThumbElement = isRightThumb ? rightThumbElement : leftThumbElement;
-        const previousValue = isRightThumb ? this.value()[1] : this.value()[0];
+    protected changeByStep(coefficient: number, target: HTMLElement): void {
+        const [startThumb, endThumb] = this.slidersRefs.map((x) => x?.nativeElement);
+
+        const isEndThumb =
+            target === this.el ? this.lastActiveThumb === 'end' : target === endThumb;
+        const activeThumbElement = isEndThumb ? endThumb : startThumb;
+        const previousValue = this.value()[isEndThumb ? 1 : 0];
         /** @bad TODO think about a solution without twice conversion */
         const previousFraction = this.toPercent(previousValue) / 100;
         const newFractionValue = previousFraction + coefficient * this.fractionStep;
 
-        this.processValue(this.toValue(newFractionValue), isRightThumb);
+        this.processValue(this.toValue(newFractionValue), isEndThumb);
         activeThumbElement?.focus();
     }
 
