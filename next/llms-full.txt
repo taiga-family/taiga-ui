@@ -11607,7 +11607,7 @@ export default class Page {
 
 # components/ThumbnailCard
 
-- **Package**: `ADDON COMMERCE`
+- **Package**: `ADDON-COMMERCE`
 - **Type**: components
 
 Customizable credit card thumbnail
