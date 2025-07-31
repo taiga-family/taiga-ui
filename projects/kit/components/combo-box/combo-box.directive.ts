@@ -55,8 +55,7 @@ export class TuiComboBox<T>
     private readonly open = tuiDropdownOpen();
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly handlers: TuiItemsHandlers<T | string> =
-        inject(TUI_ITEMS_HANDLERS);
+    private readonly handlers: TuiItemsHandlers<T | string> = inject(TUI_ITEMS_HANDLERS);
 
     private readonly matcher = signal<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
     private readonly strict = signal(true);
