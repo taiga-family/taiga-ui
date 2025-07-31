@@ -55,7 +55,7 @@ export class TuiComboBox<T>
     private readonly open = tuiDropdownOpen();
     private readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
     private readonly dropdown = inject(TuiDropdownDirective);
-    private readonly itemsHandlers: TuiItemsHandlers<T | string> =
+    private readonly handlers: TuiItemsHandlers<T | string> =
         inject(TUI_ITEMS_HANDLERS);
 
     private readonly matcher = signal<TuiStringMatcher<T> | null>(TUI_STRICT_MATCHER);
@@ -68,7 +68,7 @@ export class TuiComboBox<T>
         () =>
             this.datalist()
                 ?.options?.() // TODO(v5): remove optional call `?.()`
-                .filter((x) => !this.itemsHandlers.disabledItemHandler()(x)) ?? [],
+                .filter((x) => !this.handlers.disabledItemHandler()(x)) ?? [],
     );
 
     protected readonly nonStrictValueEffect = effect(() => {
@@ -91,7 +91,7 @@ export class TuiComboBox<T>
 
         const textfieldValue = this.textfield.value();
         const selectedOption = options.find((x) =>
-            matcher(x, textfieldValue, this.itemsHandlers.stringify()),
+            matcher(x, textfieldValue, this.handlers.stringify()),
         );
         const value = untracked(() => this.value());
         const unchanged = this.stringify(value) === textfieldValue;
@@ -123,11 +123,11 @@ export class TuiComboBox<T>
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly stringifyEffect = effect(() => {
-        this.itemsHandlers.stringify();
+        this.handlers.stringify();
         const value = untracked(() => this.value());
 
         if (value !== null) {
-            this.textfield.value.set(this.itemsHandlers.stringify()(value));
+            this.textfield.value.set(this.handlers.stringify()(value));
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
 
@@ -179,6 +179,6 @@ export class TuiComboBox<T>
     }
 
     private stringify(value?: T | string | null): string {
-        return value != null ? this.itemsHandlers.stringify()(value) : '';
+        return value != null ? this.handlers.stringify()(value) : '';
     }
 }
