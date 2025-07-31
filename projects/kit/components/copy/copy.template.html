@@ -1,0 +1,24 @@
+<span
+    #content
+    tuiHint="Copied"
+    tuiHintAppearance="onDark"
+    tuiHintDirection="top"
+    class="t-content"
+    [cdkCopyToClipboard]="content.textContent ?? ''"
+    [tuiHintManual]="(hint$ | async) ?? false"
+    (cdkCopyToClipboardCopied)="copied$.next($event)"
+>
+    <ng-content />
+</span>
+<button
+    appearance="icon"
+    iconRight="@tui.copy"
+    size="xs"
+    tuiIconButton
+    type="button"
+    class="t-button"
+    [cdkCopyToClipboard]="content.textContent ?? ''"
+    (cdkCopyToClipboardCopied)="copied$.next($event)"
+>
+    Copy
+</button>
