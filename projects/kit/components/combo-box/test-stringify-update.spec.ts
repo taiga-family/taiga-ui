@@ -1,8 +1,7 @@
-import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
 import type {ComponentFixture} from '@angular/core/testing';
 import {TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiComboBox} from '@taiga-ui/kit';
@@ -30,17 +29,13 @@ class TestComponent {
 
     protected readonly control = new FormControl<number | null>(777);
 
-    protected readonly stringify = signal<TuiStringHandler<number>>(
-        (id: number) => this.items().find((item) => item.id === id)?.name ?? String(id),
+    protected readonly stringify = computed(
+        () => (id: number) =>
+            this.items().find((item) => item.id === id)?.name ?? String(id),
     );
 
     public updateItems(items: readonly TestItem[]): void {
         this.items.set(items);
-        // Update stringify signal to use new items
-        this.stringify.set(
-            (id: number) =>
-                this.items().find((item) => item.id === id)?.name ?? String(id),
-        );
     }
 }
 
