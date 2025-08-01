@@ -13,10 +13,8 @@
     display: flex;
     font: var(--tui-font-heading-3);
     flex-wrap: wrap;
-    min-block-size: 7.25rem;
     color: var(--tui-text-primary);
     box-shadow: inset 0 -1px 0 0 var(--tui-border-normal);
-    padding: 3.75rem 0 0;
     box-sizing: border-box;
     flex-shrink: 0;
     margin: 0 ~'min(10vw, 8.75rem)';
@@ -24,15 +22,20 @@
     @media @tui-mobile {
         font: var(--tui-font-heading-4);
         min-block-size: 4.5rem;
-        padding: 1.25rem 1.25rem 0;
+        padding: 0 1.25rem;
         margin: 0;
     }
 }
 
 .t-title {
     min-inline-size: 100%;
+    padding: 3.75rem 0 0;
     font-size: inherit;
     margin: 0;
+
+    @media @tui-mobile {
+        padding: 1.25rem 0 0;
+    }
 }
 
 .t-tag {

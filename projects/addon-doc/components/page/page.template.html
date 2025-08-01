@@ -1,5 +1,8 @@
 <header class="t-header">
-    <h1 class="t-title">
+    <h1
+        *ngIf="header"
+        class="t-title"
+    >
         {{ header }}
         <tui-chip
             *ngIf="!!deprecated || deprecated === ''"
