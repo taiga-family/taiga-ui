@@ -144,8 +144,12 @@ export class TuiComboBox<T>
     }
 
     public override writeValue(value: T | string | null): void {
-        super.writeValue(value);
-        this.textfield.value.set(this.stringify(value));
+        const reset = this.control.pristine && this.control.untouched && !value;
+
+        if (value !== this.value() || reset) {
+            super.writeValue(value);
+            this.textfield.value.set(this.stringify(value));
+        }
     }
 
     protected toggleDropdown(open = !this.open()): void {
