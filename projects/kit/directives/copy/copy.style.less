@@ -21,6 +21,11 @@
             opacity: 1;
         }
     }
+
+    &:has(.t-button:focus-visible) .t-content {
+        opacity: var(--tui-disabled-opacity);
+        mask-position: 0;
+    }
 }
 
 .t-content {
