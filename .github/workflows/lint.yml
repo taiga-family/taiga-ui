@@ -27,10 +27,12 @@ jobs:
               npm run stylelint -- --fix
               npm run prettier -- --write
               npm run lint -- --fix
+              HTML_ESLINT=true npm run lint -- --fix
           else
               npm run stylelint
               npm run prettier -- --check
               npm run lint
+              HTML_ESLINT=true npm run lint
           fi
       - uses: taiga-family/ci/actions/auto/push@v1.138.0
         with:

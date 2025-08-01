@@ -15,6 +15,7 @@ import {
     tuiParseGradient,
 } from '@taiga-ui/cdk/utils/color';
 import {tuiDefaultSort, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 import {
     TUI_COLOR_SELECTOR_MODE_NAMES,
@@ -36,6 +37,7 @@ export class TuiColorSelectorComponent {
     private direction = this.selectorOptions.gradient.direction;
 
     private readonly sanitizer = inject(DomSanitizer);
+    protected readonly icons = inject(TUI_COMMON_ICONS);
     protected open = false;
 
     @Input()

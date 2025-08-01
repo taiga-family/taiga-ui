@@ -20,7 +20,8 @@
             >
                 {{ item.type }}
                 <tui-icon
-                    icon="@tui.external-link"
+                    *ngIf="icons.externalLink"
+                    [icon]="icons.externalLink"
                     [style.font-size.rem]="1"
                 />
             </a>

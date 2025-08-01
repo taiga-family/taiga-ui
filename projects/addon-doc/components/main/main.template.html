@@ -11,17 +11,17 @@
         <ng-content select="tuiDocHeader" />
 
         <button
-            *ngIf="dir"
+            *ngIf="dir && icons.ltr"
             appearance="outline"
             aria-label="Switch directionality of the element's text"
-            iconEnd="@tui.a-large-small"
             size="s"
             tuiButton
             type="button"
             class="tui-doc-switch-direction"
+            [iconEnd]="icons.ltr.preview"
             (click)="changeTextDirection()"
         >
-            <tui-icon icon="@tui.arrow-right-left" />
+            <tui-icon [icon]="icons.ltr.direction" />
         </button>
 
         <button
