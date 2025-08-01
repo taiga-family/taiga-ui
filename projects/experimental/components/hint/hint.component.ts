@@ -99,20 +99,27 @@ export class TuiHintComponent<C = any> {
     }
 
     @tuiPure
-    private apply(top: string, left: string, beakTop: number, beakLeft: number): void {
-        this.el.style.top = top;
-        this.el.style.left = left;
-        this.el.style.setProperty('--t-top', `${beakTop}%`);
-        this.el.style.setProperty('--t-left', `${beakLeft}%`);
+    private applyElementStyles(top: number, left: number, isFixed: boolean): void {
+        this.el.style.top = tuiPx(top);
+        this.el.style.left = tuiPx(left);
+        this.el.style.position = isFixed ? 'fixed' : 'absolute';
+    }
+
+    @tuiPure
+    private applyBeakStyles(top: number, left: number): void {
+        this.el.style.setProperty('--t-top', `${top}%`);
+        this.el.style.setProperty('--t-left', `${left}%`);
         this.el.style.setProperty(
             '--t-rotate',
-            !beakLeft || Math.ceil(beakLeft) === 100 ? '90deg' : '0deg',
+            !left || Math.ceil(left) === 100 ? '90deg' : '0deg',
         );
     }
 
     private update(top: number, left: number): void {
         const {clientHeight, clientWidth} = this.el;
         const rect = this.accessor.getClientRect();
+        const {top: parentTop = 0, left: parentLeft = 0} =
+            this.el.offsetParent?.getBoundingClientRect() || {};
 
         if (rect === EMPTY_CLIENT_RECT || !clientHeight || !clientWidth) {
             return;
@@ -130,9 +137,13 @@ export class TuiHintComponent<C = any> {
             rect.left + rect.width / 2 - safeLeft,
         ]);
 
-        this.apply(
-            tuiPx(Math.round(top)),
-            tuiPx(Math.round(safeLeft)),
+        this.applyElementStyles(
+            Math.round(top - parentTop),
+            Math.round(safeLeft - parentLeft),
+            this.hint.isFixedPosition,
+        );
+
+        this.applyBeakStyles(
             Math.round((tuiClamp(beakTop, 0, clientHeight) / clientHeight) * 100),
             Math.round((tuiClamp(beakLeft, 0, clientWidth) / clientWidth) * 100),
         );
