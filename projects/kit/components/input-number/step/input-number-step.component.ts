@@ -57,7 +57,7 @@ export class TuiInputNumberStep {
         fromEvent(this.doc, 'pointercancel'),
     );
 
-    protected readonly sub = this.step$
+    protected readonly stepping = this.step$
         .pipe(
             switchMap((value) =>
                 timer(INITIAL_DELAY).pipe(
