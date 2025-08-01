@@ -1,0 +1,56 @@
+<tui-textfield [content]="hideStartContent ? '' : content[0]">
+    <input
+        tuiInputNumber
+        [disabled]="disabled()"
+        [max]="value()[1]"
+        [min]="min"
+        [postfix]="postfix[0]"
+        [prefix]="prefix[0]"
+        [readOnly]="readOnly()"
+        [(ngModel)]="textfieldValueStart"
+        (blur)="textfieldValueStart = value()[0]"
+        (keydown.arrowDown)="takeStep($event, [-1, 0])"
+        (keydown.arrowUp)="takeStep($event, [1, 0])"
+        (ngModelChange)="onInput([$event, null])"
+    />
+
+    <input
+        tuiInputNumber
+        tuiTextfieldAppearance="none"
+        class="t-end"
+        [class._hidden]="!hideEndContent"
+        [disabled]="disabled()"
+        [max]="max"
+        [min]="value()[0]"
+        [postfix]="postfix[1]"
+        [prefix]="prefix[1]"
+        [readOnly]="readOnly()"
+        [(ngModel)]="textfieldValueEnd"
+        (blur)="textfieldValueEnd = value()[1]"
+        (keydown.arrowDown)="takeStep($event, [0, -1])"
+        (keydown.arrowUp)="takeStep($event, [0, 1])"
+        (ngModelChange)="onInput([null, $event])"
+    />
+
+    <div
+        *polymorpheusOutlet="content[1] as text; context: {$implicit: value()[1]}"
+        class="t-content"
+        [class._hidden]="hideEndContent"
+    >
+        {{ text }}
+    </div>
+</tui-textfield>
+
+<tui-range
+    [disabled]="!interactive()"
+    [focusable]="false"
+    [keySteps]="keySteps"
+    [max]="max"
+    [min]="min"
+    [ngModel]="value()"
+    [segments]="segments"
+    [step]="step"
+    (activeThumbChange)="onActiveThumbChange($event)"
+    (mousedown.prevent)="focusToTextInput()"
+    (ngModelChange)="onExternalValueUpdate($event)"
+/>

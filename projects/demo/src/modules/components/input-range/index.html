@@ -1,0 +1,186 @@
+<tui-doc-page
+    header="InputRange"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        TODO:
+        <ol>
+            <li>https://taiga-ui.dev/legacy/input-range#number-format</li>
+            <li>postfix + angular i18nPlural pipe</li>
+            <li>https://taiga-ui.dev/legacy/input-range#key-steps (dont forget to explain `[step]` logic!)</li>
+            <li>https://taiga-ui.dev/legacy/input-range#value-content</li>
+            <li>How implement "Minimum indivisible value" (`[quantum]`) using Value Transformer</li>
+        </ol>
+
+        <tui-doc-example
+            id="negative"
+            heading="Using negative values without minus sign"
+            [component]="99 | tuiComponent"
+            [content]="99 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-input-range
+                    [content]="content"
+                    [formControl]="control"
+                    [invalid]="controlDoc.invalid"
+                    [keySteps]="keySteps"
+                    [max]="max"
+                    [min]="min"
+                    [postfix]="postfix"
+                    [prefix]="prefix"
+                    [readOnly]="controlDoc.readonly"
+                    [segments]="segments"
+                    [step]="step"
+                    [tuiDisabled]="controlDoc.disabled"
+                    [tuiNumberFormat]="{
+                        decimalMode: numberFormatDoc.decimalMode(),
+                        rounding: numberFormatDoc.rounding(),
+                        thousandSeparator: numberFormatDoc.thousandSeparator(),
+                        decimalSeparator: numberFormatDoc.decimalSeparator(),
+                    }"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    TODO
+                </tui-input-range>
+            </ng-template>
+        </tui-doc-demo>
+
+        <table tuiDocAPI>
+            <tbody>
+                <tr
+                    name="[min]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="min"
+                >
+                    The
+                    <strong>lowest</strong>
+                    value in the range of permitted values
+                </tr>
+
+                <tr
+                    name="[max]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="max"
+                >
+                    The
+                    <strong>greatest</strong>
+                    value in the range of permitted values
+                </tr>
+
+                <tr
+                    name="[prefix]"
+                    tuiDocAPIItem
+                    type="readonly [string, string] | null"
+                    [items]="suffixVariants"
+                    [(value)]="prefix"
+                >
+                    Uneditable text
+                    <strong>before</strong>
+                    number
+                </tr>
+
+                <tr
+                    name="[postfix]"
+                    tuiDocAPIItem
+                    type="readonly [string, string] | null"
+                    [items]="suffixVariants"
+                    [(value)]="postfix"
+                >
+                    Uneditable text
+                    <strong>after</strong>
+                    number
+                </tr>
+
+                <tr
+                    name="[content]"
+                    tuiDocAPIItem
+                    type="[PolymorpheusContent, PolymorpheusContent]"
+                    [items]="contentVariants"
+                    [(value)]="content"
+                >
+                    A template for custom view of the selected value.
+                </tr>
+            </tbody>
+
+            <tbody>
+                <tr>
+                    <td colspan="3">
+                        <span tuiTitle>
+                            <a
+                                target="_blank"
+                                tuiLink
+                                [routerLink]="routes.Range"
+                            >
+                                <strong>TuiRange</strong>
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+
+                <tr
+                    name="[segments]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="segments"
+                >
+                    A number of visual segments (use
+                    <code>1</code>
+                    for no ticks)
+                </tr>
+
+                <tr
+                    name="[step]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="step"
+                >
+                    Granularity of each discrete slider step and value of increase/decrease on keyboard arrows
+
+                    <p>
+                        For non-linear slider (
+                        <code>[keySteps]</code>
+                        property is enabled)
+                        <code>[step]</code>
+                        means percentage of total track length.
+                    </p>
+                </tr>
+
+                <tr
+                    name="[keySteps]"
+                    tuiDocAPIItem
+                    type="TuiKeySteps"
+                    [items]="keyStepsVariants"
+                    [(value)]="keySteps"
+                >
+                    Anchor points of non-uniform format between value and position
+                </tr>
+            </tbody>
+
+            <tbody
+                #numberFormatDoc
+                tuiDocNumberFormat
+                [hiddenOptions]="['precision']"
+            ></tbody>
+
+            <tbody
+                #textfieldDoc
+                tuiDocTextfield
+                [hiddenOptions]="['cleaner', 'rows']"
+            ></tbody>
+
+            <tbody
+                #controlDoc
+                tuiDocControl
+            ></tbody>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>
