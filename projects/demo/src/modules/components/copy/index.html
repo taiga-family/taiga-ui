@@ -4,57 +4,30 @@
     type="components"
 >
     <ng-template pageTab>
-        <p>
-            The
-            <code>tui-copy</code>
-            component provides an elegant way to copy text content to the clipboard. It displays the content normally
-            and shows a copy button on hover, with visual feedback when content is copied.
-        </p>
-
-        <h3>Key Features</h3>
-        <ul>
-            <li>
-                <strong>Hover Interaction:</strong>
-                Copy button appears on hover with smooth opacity transitions
-            </li>
-            <li>
-                <strong>Visual Feedback:</strong>
-                Shows "Скопировано" (Copied) hint when content is successfully copied
-            </li>
-            <li>
-                <strong>Accessibility:</strong>
-                Supports keyboard navigation and screen readers
-            </li>
-            <li>
-                <strong>Flexible Content:</strong>
-                Accepts any HTML content via
-                <code>ng-content</code>
-            </li>
-            <li>
-                <strong>Automatic Cleanup:</strong>
-                Hint disappears after 2 seconds automatically
-            </li>
-        </ul>
-
-        <h3>Examples Overview</h3>
-        <ul>
-            <li>
-                <strong>Basic:</strong>
-                Simple text content with copy functionality
-            </li>
-            <li>
-                <strong>Single Line:</strong>
-                Longer text content with custom styling (ellipsis for overflow)
-            </li>
-        </ul>
+        This component provides an easy way to copy text content to the clipboard. It displays the content normally and
+        shows a copy button on hover, with visual feedback when content is copied.
 
         <tui-doc-example
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
+            [description]="description"
             [heading]="example"
             [id]="example | tuiKebab"
-        />
+        >
+            <ng-template
+                #description
+                [ngSwitch]="index"
+            >
+                <ng-container *ngSwitchCase="0">Using component in various scenarios.</ng-container>
+                <ng-container *ngSwitchCase="1">Using size option for various font size cases.</ng-container>
+                <ng-container *ngSwitchCase="2">
+                    Using
+                    <code>tui-icon[tuiCopy]</code>
+                    inside a textfield
+                </ng-container>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />
