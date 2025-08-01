@@ -8,6 +8,7 @@ export * from './textfield-auxiliary';
 export * from './textfield-content.directive';
 export * from './textfield-dropdown.directive';
 export * from './textfield-icon';
+export * from './with-native-picker.directive';
 // Moving it down for order of compilation
 export * from './select.directive';
 export * from './textfield-multi/textfield-item.component';

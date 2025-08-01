@@ -7,7 +7,10 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiDay} from '@taiga-ui/cdk/date-time';
-import {TuiTextfieldContent} from '@taiga-ui/core/components/textfield';
+import {
+    TuiTextfieldContent,
+    TuiWithNativePicker,
+} from '@taiga-ui/core/components/textfield';
 
 import {TuiInputDateDirective} from './input-date.directive';
 
@@ -19,9 +22,9 @@ import {TuiInputDateDirective} from './input-date.directive';
     styleUrls: ['./input-date.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [TuiWithNativePicker],
     host: {
         ngSkipHydration: 'true',
-        '[type]': '"text"',
         '[attr.list]': 'null',
     },
 })
