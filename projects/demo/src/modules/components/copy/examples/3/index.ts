@@ -1,15 +1,17 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiCopy} from '@taiga-ui/kit';
-import {TuiTitle} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
-    imports: [TuiCopy, TuiTitle],
+    imports: [FormsModule, TuiCopy, TuiIcon, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected value = '';
+}

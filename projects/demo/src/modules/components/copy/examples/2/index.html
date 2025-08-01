@@ -1,3 +1,9 @@
-<tui-copy>
-    <span>Here you can reproduce copy Taiga UI, which is so long that it can wrap</span>
-</tui-copy>
+<p *ngFor="let font of fonts; let index = index">
+    <tui-copy
+        [size]="index > 5 ? 'm' : 'l'"
+        [style.font]="'var(--tui-' + font + ')'"
+        [style.white-space]="'nowrap'"
+    >
+        {{ font }}
+    </tui-copy>
+</p>

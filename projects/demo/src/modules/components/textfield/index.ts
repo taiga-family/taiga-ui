@@ -31,7 +31,6 @@ export default class Page {
         'States',
         'Dropdown',
         'InputPassword',
-        'InputCopy',
         'Mask',
     ];
 
