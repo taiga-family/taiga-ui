@@ -1,4 +1,5 @@
 import 'cypress-plugin-tab';
+import './commands';
 
 import {provideNoopAnimations} from '@angular/platform-browser/animations';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';

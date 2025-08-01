@@ -71,7 +71,7 @@ export class TestComboBox {
         this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
     }
 
-    protected readonly stringify: TuiStringHandler<Country> = (x) => x.name;
+    protected readonly stringify: TuiStringHandler<Country> = (x) => x.name ?? x;
 }
 
 describe('ComboBox[strict=false]', () => {
@@ -117,6 +117,15 @@ describe('ComboBox[strict=false]', () => {
             cy.get('[tuiComboBox]').type('Andorra');
 
             cy.get('@valueChanges').should('have.callCount', 'Andorra'.length);
+            cy.get('@valueChanges').should('have.been.calledWith', {
+                id: 'AD',
+                name: 'Andorra',
+            });
+        });
+
+        it('formats textfield value on matching', () => {
+            cy.get('[tuiComboBox]').type('aNdOrRa').should('have.value', 'Andorra');
+
             cy.get('@valueChanges').should('have.been.calledWith', {
                 id: 'AD',
                 name: 'Andorra',
