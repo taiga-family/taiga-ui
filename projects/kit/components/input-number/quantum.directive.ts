@@ -7,19 +7,18 @@ import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
 
 import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 
-@Directive({
-    standalone: true,
-    selector: '[tuiInputNumber][quantum], [tuiInputSlider][quantum]',
-    providers: [tuiProvide(TuiValueTransformer, TuiQuantumValueTransformer)],
-})
-export class TuiQuantumValueTransformer extends TuiValueTransformer<
+@Directive()
+export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
     number | null,
     number | null
 > {
-    private readonly parent = inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer;
-
-    @Input()
+    protected parent: TuiValueTransformer<number | null, any> | null = null;
     public quantum = 1;
+
+    constructor(quantum = 1) {
+        super();
+        this.quantum = quantum;
+    }
 
     public override fromControlValue(controlValue: number | null): number | null {
         return this.parent?.fromControlValue(controlValue) ?? controlValue;
@@ -35,6 +34,22 @@ export class TuiQuantumValueTransformer extends TuiValueTransformer<
                   TUI_FLOATING_PRECISION,
               )
             : value;
+    }
+}
+
+@Directive({
+    standalone: true,
+    selector: '[tuiInputNumber][quantum], [tuiInputSlider][quantum]',
+    providers: [tuiProvide(TuiValueTransformer, TuiQuantumValueTransformer)],
+})
+export class TuiQuantumValueTransformer extends TuiQuantumValueTransformerBase {
+    protected override parent = inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer;
+
+    @Input()
+    public override quantum = 1;
+
+    constructor() {
+        super(1);
     }
 }
 

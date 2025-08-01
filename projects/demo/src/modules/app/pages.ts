@@ -627,6 +627,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputRange',
+                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
+                route: DemoRoute.InputRange,
+            },
+            {
+                section: 'Components',
                 title: 'InputSlider',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: DemoRoute.InputSlider,
@@ -750,7 +756,7 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputRange',
+                title: 'InputRange ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
                 route: DemoRoute.InputRangeLegacy,
             },
@@ -1027,7 +1033,7 @@ export const pages: DocRoutePages = [
                 section: 'Components',
                 title: 'InputRange',
                 keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputRangeLegacy,
+                route: DemoRoute.InputRange,
             },
             {
                 section: 'Components',
