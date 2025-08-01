@@ -121,6 +121,15 @@ export abstract class TuiInputDateBase<
         this.max.set(max instanceof TuiDay ? max : this.options.max);
     }
 
+    public override writeValue(value: T | null): void {
+        const reset = this.control.pristine && this.control.untouched && !value;
+
+        if (value !== this.value() || reset) {
+            super.writeValue(value);
+            this.textfield.value.set(this.stringify(this.value()));
+        }
+    }
+
     public setDate(value: TuiDay | TuiDayRange): void {
         this.onChange(value as T);
         this.open.set(false);
