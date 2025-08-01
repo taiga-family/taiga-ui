@@ -857,6 +857,11 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/ring-chart'),
         title: 'RingChart',
     }),
+    route({
+        path: DemoRoute.Copy,
+        loadComponent: async () => import('../components/copy'),
+        title: 'Copy',
+    }),
     // STYLES
     route({
         path: DemoRoute.Colors,

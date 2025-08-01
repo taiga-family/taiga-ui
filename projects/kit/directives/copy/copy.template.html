@@ -1,0 +1,30 @@
+<span
+    #content
+    tuiHintAppearance="dark"
+    tuiHintDirection="top"
+    class="t-content"
+    [cdkCopyToClipboard]="content.textContent ?? ''"
+    [tuiHint]="template"
+    [tuiHintManual]="!!hint()"
+    (cdkCopyToClipboardCopied)="copied$.next($event)"
+>
+    <ng-content />
+</span>
+<button
+    appearance="icon"
+    size="xs"
+    tuiIconButton
+    type="button"
+    class="t-button"
+    [attr.aria-label]="texts()?.[0]"
+    [cdkCopyToClipboard]="content.textContent ?? ''"
+    [iconStart]="icon"
+    (cdkCopyToClipboardCopied)="copied$.next($event)"
+></button>
+<ng-template #template>
+    <tui-icon
+        class="t-icon"
+        [icon]="check"
+    />
+    {{ texts()?.[1] }}
+</ng-template>

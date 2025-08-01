@@ -461,6 +461,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Copy',
+        keywords: 'копировать, copy, clipboard, буфер обмена, share',
+        route: DemoRoute.Copy,
+        meta: {},
+    },
+    {
+        section: 'Components',
         title: 'Hint',
         subPages: [
             {

@@ -35,11 +35,10 @@ import {TUI_COPY_OPTIONS} from './copy.options';
         '(click)': 'copy()',
         '[style.pointer-events]': 'disabled ? "none" : null',
         '[style.opacity]': 'disabled ? "var(--tui-disabled-opacity)" : null',
-        '[style.border]':
-            'textfield.options.size() === "s" ? "0.25rem solid transparent" : null',
+        '[style.border-width.rem]': 'textfield.options.size() === "l" ? null : 0.25',
     },
 })
-export class TuiCopy {
+export class TuiCopyDirective {
     private readonly options = inject(TUI_COPY_OPTIONS);
     private readonly copied$ = new Subject<void>();
     private readonly doc = inject(DOCUMENT);
