@@ -24,7 +24,16 @@ test.describe('Source code button', () => {
             const href = await sourceCodeLink.getAttribute('href');
             const response = await request.get(href ?? '', {maxRetries: 3});
 
-            expect(response.ok).toBeTruthy();
+            // eslint-disable-next-line playwright/no-conditional-in-test
+            if (!response.ok()) {
+                const docPageRoute = `https://taiga-ui.dev/next${path}`;
+
+                await page.goto(docPageRoute);
+
+                // eslint-disable-next-line playwright/no-skipped-test
+                test.skip(page.url() !== docPageRoute, 'New documentation page');
+            }
+
             expect(response.status()).not.toBe(404);
         });
     });
