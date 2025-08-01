@@ -1,12 +1,10 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {TuiDocControl} from '@demo/components/control';
-import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputPhone, TuiInputTimeDirective} from '@taiga-ui/kit';
+import {TuiDropdown, TuiHint} from '@taiga-ui/core';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
@@ -19,13 +17,9 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         InheritedDocumentation,
         ReactiveFormsModule,
         TuiDemo,
-        TuiDocControl,
-        TuiDocTextfield,
         TuiDropdown,
-        TuiInputPhone,
+        TuiHint,
         TuiInputPhoneModule,
-        TuiInputTimeDirective,
-        TuiTextfield,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
@@ -44,7 +38,11 @@ export default class PageComponent extends AbstractExampleTuiControl {
         '### ###-####',
     ];
 
+    protected readonly routes = DemoRoute;
+
     protected phoneMaskAfterCountryCode = this.phoneMasksAfterCountryCode[0]!;
+
+    public override cleaner = false;
 
     public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
 }

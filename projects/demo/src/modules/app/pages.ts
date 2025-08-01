@@ -587,6 +587,12 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
+                title: 'InputPhone',
+                keywords: 'поле, инпут, форма, ввод, input, phone, телефон, номера',
+                route: DemoRoute.InputPhone,
+            },
+            {
+                section: 'Components',
                 title: 'InputPhoneInternational',
                 keywords:
                     'поле, инпут, форма, ввод, input, phone, телефон, страны, номера,',
@@ -717,9 +723,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputPhone',
+                title: 'InputPhone ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, phone, телефон, номера',
-                route: DemoRoute.InputPhone,
+                route: DemoRoute.InputPhoneLegacy,
             },
             {
                 section: 'Components',

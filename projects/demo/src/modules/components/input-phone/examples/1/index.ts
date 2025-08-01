@@ -1,24 +1,17 @@
-import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiInputPhoneModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputPhone} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [JsonPipe, ReactiveFormsModule, TuiButton, TuiInputPhoneModule],
+    imports: [FormsModule, TuiInputPhone, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected testForm = new FormGroup({
-        testValue: new FormControl('+77777777777', Validators.required),
-    });
-
-    protected setValue(): void {
-        this.testForm.get('testValue')!.setValue('+79926775676');
-    }
+    public value = '+71234567890';
 }
