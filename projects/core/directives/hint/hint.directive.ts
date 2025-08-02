@@ -32,6 +32,7 @@ import {TuiHintPosition} from './hint-position.directive';
         {
             directive: TuiHintHover,
             inputs: ['tuiHintHideDelay', 'tuiHintShowDelay'],
+            outputs: ['tuiHintHoverChange'],
         },
         {
             directive: TuiHintPosition,
