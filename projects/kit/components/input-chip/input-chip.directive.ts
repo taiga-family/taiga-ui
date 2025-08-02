@@ -23,21 +23,9 @@ import {filter} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
 
+// TODO(v5): remove base component after angular update
 @Directive({
     standalone: true,
-    selector: 'input[tuiInputChip]',
-    providers: [
-        tuiAsControl(TuiInputChipDirective),
-        tuiFallbackValueProvider([]),
-        tuiAsTextfieldAccessor(TuiInputChipDirective),
-    ],
-    hostDirectives: [
-        TuiNativeValidator,
-        {
-            directive: TuiTextfieldBase,
-            inputs: ['invalid', 'focused', 'readOnly', 'state'],
-        },
-    ],
     host: {
         enterkeyhint: 'enter',
         '[disabled]': 'disabled()',
@@ -48,7 +36,7 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
         '(drop.prevent)': 'onPaste($event)',
     },
 })
-export class TuiInputChipDirective<T>
+export class TuiInputChipBaseDirective<T>
     extends TuiControl<T[]>
     implements TuiTextfieldAccessor<T[]>
 {
@@ -150,3 +138,21 @@ export class TuiInputChipDirective<T>
         });
     }
 }
+
+@Directive({
+    standalone: true,
+    selector: 'input[tuiInputChip]',
+    providers: [
+        tuiAsControl(TuiInputChipDirective),
+        tuiFallbackValueProvider([]),
+        tuiAsTextfieldAccessor(TuiInputChipDirective),
+    ],
+    hostDirectives: [
+        TuiNativeValidator,
+        {
+            directive: TuiTextfieldBase,
+            inputs: ['invalid', 'focused', 'readOnly', 'state'],
+        },
+    ],
+})
+export class TuiInputChipDirective<T> extends TuiInputChipBaseDirective<T> {}

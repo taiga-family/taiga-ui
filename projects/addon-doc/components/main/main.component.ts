@@ -37,7 +37,7 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
 })
 export class TuiDocMain {
     private readonly doc = inject(DOCUMENT);
-    private readonly icons = inject(TUI_DOC_ICONS);
+    protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly dir = inject(TUI_DOC_DIRECTION_ENABLED);
     protected readonly darkMode = inject(TUI_DARK_MODE);
     protected readonly theme = computed(() => (this.darkMode() ? 'dark' : null));

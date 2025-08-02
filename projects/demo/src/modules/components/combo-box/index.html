@@ -360,6 +360,7 @@
                     tuiChevron
                     [content]="!textfield.focused() && control.value ? textfieldContent : ''"
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
+                    [iconStart]="icons.iconStart"
                     [identityMatcher]="itemsHandlers.identityMatcher()"
                     [stringify]="itemsHandlers.stringify()"
                     [tuiDropdownAlign]="dropdown.align"
@@ -401,6 +402,18 @@
             >
                 Value must only be an item of suggestions&nbsp;
                 <code>&lt;T&gt;</code>
+
+                <p>
+                    When
+                    <code>false</code>
+                    , make sure your handlers, such as
+                    <code>stringify</code>
+                    can handle
+                    <code>string</code>
+                    value, as well as
+                    <code>&lt;T&gt;</code>
+                    !
+                </p>
             </tr>
 
             <tr
@@ -442,6 +455,12 @@
                     </p>
                 </tr>
             </tbody>
+
+            <tbody
+                #icons
+                tuiDocIcons
+                [hiddenOptions]="['iconEnd']"
+            ></tbody>
 
             <tbody
                 #dropdown

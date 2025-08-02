@@ -2,8 +2,8 @@ import {readFileSync, writeFileSync} from 'node:fs';
 
 import {tuiCombineSnapshots} from './combine-snapshots';
 
-const ROOT_PATH = 'projects/demo-cypress';
-const TEST_RESULTS_PATH = `${ROOT_PATH}/tests-results`;
+const ROOT_PATH = process.env.ROOT_PATH ?? 'projects/demo-cypress';
+const TEST_RESULTS_PATH = process.env.TEST_RESULTS_PATH ?? `${ROOT_PATH}/tests-results`;
 
 interface TestResult {
     status: 'fail' | 'pass';

@@ -4,12 +4,12 @@ import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/c
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import type {TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,
     TuiTextfieldDirective,
     tuiTextfieldIconBinding,
+    TuiWithNativePicker,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
@@ -67,7 +67,7 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
     );
 
     public readonly native =
-        tuiInjectElement<HTMLInputElement>().type === 'month' && inject(TUI_IS_MOBILE);
+        !!inject(TuiWithNativePicker, {optional: true}) && inject(TUI_IS_MOBILE);
 
     protected clear(): void {
         this.onChange(null);

@@ -45,8 +45,10 @@
         content: '';
         position: absolute;
         top: 0;
-        left: ~'max(calc(var(--t-left) - 1px), 1px)';
-        right: ~'max(var(--t-right), 1px)';
+        left: ~'max(calc(var(--t-start) - 1px), 1px)';
+        right: ~'max(var(--t-end), 1px)';
+        inset-inline-start: ~'max(calc(var(--t-start) - 1px), 1px)';
+        inset-inline-end: ~'max(var(--t-end), 1px)';
         block-size: 100%;
         background: var(--tui-background-accent-1);
         margin: 0 calc(-@thumb-width / 2);
@@ -59,12 +61,14 @@
         content: '';
         left: ((@thumb-width - @tick-thickness) / 2);
         right: ((@thumb-width + @tick-thickness) / 2);
+        inset-inline-start: ((@thumb-width - @tick-thickness) / 2);
+        inset-inline-end: ((@thumb-width + @tick-thickness) / 2);
         background-image: repeating-linear-gradient(
-            to right,
+            to var(--tui-inline-end),
             var(--tui-text-tertiary) 0 @tick-thickness,
             transparent 0 calc(var(--t-segment-width) / var(--t-bg-size-ratio))
         );
-        background-position-x: right;
+        background-position-x: var(--tui-inline-end);
         background-repeat: no-repeat;
         background-size: calc(100% * var(--t-bg-size-ratio));
     }
@@ -116,15 +120,6 @@
         &::-moz-range-progress {
             background: transparent;
         }
-
-        /* Not-chromium Edge (16-18) */
-        &::-ms-track {
-            background: transparent;
-        }
-
-        &::-ms-fill-lower {
-            background: transparent;
-        }
     }
 }
 
@@ -137,14 +132,16 @@
     left: 0;
     right: 0;
     z-index: 1;
-    transform: translate(0, -50%);
-
-    &:last-of-type {
-        --tui-slider-thumb-transform: translateX(50%) translateX(@thumb-shift);
-    }
+    transform: translateY(-50%);
 
     &:first-of-type {
-        --tui-slider-thumb-transform: translateX(-50%) translateX(-@thumb-shift);
+        --tui-slider-thumb-transform: translateX(calc(var(--tui-inline) * -50%))
+            translateX(calc(var(--tui-inline) * -@thumb-shift));
+    }
+
+    &:last-of-type {
+        --tui-slider-thumb-transform: translateX(calc(var(--tui-inline) * 50%))
+            translateX(calc(var(--tui-inline) * @thumb-shift));
     }
 
     :host._disabled & {
