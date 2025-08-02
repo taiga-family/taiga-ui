@@ -1,4 +1,4 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -61,7 +61,7 @@ export class TuiHintHover extends TuiDriver {
                 (this.el.hasAttribute('tuiHintPointer') || !tuiIsObscured(this.el)),
         ),
         tap((visible) => {
-            this.visible = visible;
+            this.hoverStateChanged(visible);
         }),
     );
 
@@ -75,6 +75,9 @@ export class TuiHintHover extends TuiDriver {
 
     @Input()
     public tuiHintHideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
+
+    @Output('tuiHintHoverChange')
+    public readonly tuiHintHoverChange = new EventEmitter<boolean>();
 
     public readonly type = 'hint';
 
@@ -91,5 +94,12 @@ export class TuiHintHover extends TuiDriver {
 
     public close(): void {
         this.toggle$.next(false);
+    }
+
+    public hoverStateChanged(visible: boolean): void {
+        if (visible !== this.visible) {
+            this.visible = visible;
+            this.tuiHintHoverChange.emit(this.visible);
+        }
     }
 }
