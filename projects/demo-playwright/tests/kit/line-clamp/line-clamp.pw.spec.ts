@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, waitStableState} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('LineClamp', () => {
@@ -113,12 +113,14 @@ test.describe('LineClamp', () => {
         await lineClampElement.hover();
         const hintElement = page.locator('tui-hints .hint');
         await expect(hintElement).toBeVisible();
+        await waitStableState(hintElement);
 
         await expect.soft(example).toHaveScreenshot('06-1-line-clamp-basic.png');
 
         // Click on the hint and verify it remains visible
         await hintElement.click();
         await expect(hintElement).toBeVisible();
+        await waitStableState(hintElement);
 
         await expect.soft(example).toHaveScreenshot('06-2-line-clamp-basic.png');
     });
