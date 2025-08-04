@@ -29,6 +29,8 @@
         <tui-doc-demo [control]="control">
             <ng-template>
                 <tui-textfield
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -36,10 +38,9 @@
 
                     <input
                         tuiInputPhone
-                        [countryCode]="countryCode"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
-                        [phoneMask]="phoneMaskAfterCountryCode"
+                        [mask]="phoneMask"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
@@ -48,27 +49,23 @@
         </tui-doc-demo>
         <table tuiDocAPI>
             <tr
-                name="[countryCode]"
-                tuiDocAPIItem
-                type="string"
-                [items]="countryCodes"
-                [(value)]="countryCode"
-            >
-                Country code
-            </tr>
-
-            <tr
                 name="[phoneMask]"
                 tuiDocAPIItem
                 type="string"
-                [(value)]="postfix"
+                [items]="phoneMasks"
+                [(value)]="phoneMask"
             >
-                Text mask after country code. You can use # , - and spaces as a template symbol
+                Text mask after country code. You can use # , - , brackets and spaces as a template symbol
             </tr>
 
             <tbody
                 #textfieldDoc
                 tuiDocTextfield
+            ></tbody>
+
+            <tbody
+                #icons
+                tuiDocIcons
             ></tbody>
 
             <tbody

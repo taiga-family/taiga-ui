@@ -14,7 +14,6 @@ import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/k
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiTextfieldComponent,
     TuiTextfieldDirective,
@@ -23,10 +22,8 @@ import {
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_PHONE_OPTIONS} from './input-phone.options';
-import {
-    tuiCreateCompletePhoneInsertionPreprocessor,
-    tuiCreatePhoneMaskExpression,
-} from './utils';
+import {tuiCreateCompletePhoneInsertionPreprocessor} from './utils/complete-phone-insertion-preprocessor';
+import {tuiCreatePhoneMaskExpression} from './utils/create-phone-mask-expression';
 
 const MASK_SYMBOLS = /[ \-_()]/g;
 
@@ -40,11 +37,10 @@ function isText(value: string): boolean {
     providers: [tuiAsControl(TuiInputPhone)],
     hostDirectives: [TuiWithTextfield, MaskitoDirective],
     host: {
-        '[type]': '"tel"',
+        type: 'tel',
         '[inputMode]': 'inputMode()',
         '[disabled]': 'disabled()',
         '(input)': 'onInput($event.target.value)',
-        '(tuiActiveZoneChange)': 'onActiveZone($event)',
     },
 })
 export class TuiInputPhone extends TuiControl<string | null> {
@@ -61,17 +57,7 @@ export class TuiInputPhone extends TuiControl<string | null> {
             return;
         }
 
-        this.textfield.value.set(
-            maskitoTransform(
-                value,
-                this.calculateMask(
-                    this.countryCode(),
-                    this.phoneMask(),
-                    this.nonRemovablePrefix(),
-                    this.allowText(),
-                ),
-            ),
-        );
+        this.textfield.value.set(maskitoTransform(value, this.mask()));
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly blurEffect = effect(() => {
@@ -87,28 +73,22 @@ export class TuiInputPhone extends TuiControl<string | null> {
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
-    protected readonly element = tuiInjectElement<HTMLInputElement>();
+    protected readonly el = tuiInjectElement<HTMLInputElement>();
 
-    protected readonly mask = tuiMaskito(
-        computed(() =>
-            this.calculateMask(
-                this.countryCode(),
-                this.phoneMask(),
-                this.nonRemovablePrefix(),
-                this.allowText(),
-            ),
+    protected readonly mask = computed(() =>
+        this.calculateMask(
+            this.countryCode(),
+            this.phoneMask(),
+            this.nonRemovablePrefix(),
+            this.allowText(),
         ),
     );
 
-    public readonly countryCode = signal(this.options.countryCode);
-    public readonly allowText = signal(this.options.allowText);
-    public readonly phoneMask = signal(this.options.phoneMaskAfterCountryCode);
+    protected readonly maskito = tuiMaskito(computed(() => this.mask()));
 
-    // TODO(v5): replace with signal input
-    @Input('countryCode')
-    public set countryCodeSetter(code: string) {
-        this.countryCode.set(code);
-    }
+    public readonly countryCode = signal(extractCountryCode(this.options.mask));
+    public readonly allowText = signal(this.options.allowText);
+    public readonly phoneMask = signal(extractMask(this.options.mask));
 
     // TODO(v5): replace with signal input
     @Input('allowText')
@@ -117,9 +97,10 @@ export class TuiInputPhone extends TuiControl<string | null> {
     }
 
     // TODO(v5): replace with signal input
-    @Input('phoneMask')
-    public set phoneMaskSetter(mask: string) {
-        this.phoneMask.set(mask);
+    @Input('mask')
+    public set maskSetter(mask: string) {
+        this.countryCode.set(extractCountryCode(mask));
+        this.phoneMask.set(extractMask(mask));
     }
 
     protected onInput(value: string): void {
@@ -140,7 +121,6 @@ export class TuiInputPhone extends TuiControl<string | null> {
         );
     }
 
-    @tuiPure
     private calculateMask(
         countryCode: string,
         phoneMaskAfterCountryCode: string,
@@ -177,4 +157,16 @@ export class TuiInputPhone extends TuiControl<string | null> {
                   ],
               };
     }
+}
+
+function extractCountryCode(mask: string): string {
+    const match = /^(\+\d+)/.exec(mask);
+
+    return match?.[1] || '';
+}
+
+function extractMask(mask: string): string {
+    const match = /^\+\d+(.*)$/.exec(mask);
+
+    return match?.[1]?.trim() || '';
 }

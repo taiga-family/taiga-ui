@@ -6,12 +6,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputPhone, TuiInputTimeDirective} from '@taiga-ui/kit';
+import {TuiInputPhone} from '@taiga-ui/kit';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
+import {TuiDocIcons} from '@demo/components/icons';
 
 @Component({
     standalone: true,
@@ -24,9 +25,9 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
         TuiDropdown,
         TuiInputPhone,
         TuiInputPhoneModule,
-        TuiInputTimeDirective,
         TuiTextfield,
         TuiTextfieldControllerModule,
+        TuiDocIcons,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -34,17 +35,13 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
-    protected countryCodes = ['+7', '+850', '+1', '+52'];
-
-    protected countryCode = this.countryCodes[0]!;
-
-    protected phoneMasksAfterCountryCode = [
-        '(###) ###-##-##',
-        '(####)+____:-#############',
-        '### ###-####',
+    protected phoneMasks = [
+        '+7 (###) ###-##-##',
+        '+850 (####)-#############',
+        '+1 ### ###-####',
     ];
 
-    protected phoneMaskAfterCountryCode = this.phoneMasksAfterCountryCode[0]!;
+    protected phoneMask = this.phoneMasks[0]!;
 
     public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
 }

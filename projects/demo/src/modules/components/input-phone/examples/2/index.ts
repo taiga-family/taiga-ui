@@ -80,9 +80,11 @@ const DATA: readonly User[] = [
     changeDetection,
 })
 export default class Example {
-    public value = signal('');
-    public items = DATA;
-    public user = computed(() => this.items.find(({phone}) => phone === this.value()));
+    public readonly value = signal('');
+    public readonly items = DATA;
+    public readonly user = computed(() =>
+        this.items.find(({phone}) => phone === this.value()),
+    );
 
     protected selectUser(user: User): void {
         this.value.set(user.phone);
