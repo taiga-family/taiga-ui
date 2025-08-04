@@ -58,6 +58,12 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
             provide: TUI_OPTION_CONTENT,
             useFactory: () =>
                 inject(TuiWithOptionContent, {optional: true})?.content ??
+                // TODO(v5): remove when all legacy controls are deleted
+                inject(TUI_OPTION_CONTENT, {
+                    host: true,
+                    skipSelf: true,
+                    optional: true,
+                }) ??
                 inject(TUI_OPTION_CONTENT, {skipSelf: true, optional: true}),
         },
     ],
