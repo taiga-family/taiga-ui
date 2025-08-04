@@ -109,19 +109,15 @@ test.describe('LineClamp', () => {
 
         await example.scrollIntoViewIfNeeded();
 
-        // Hover over the line clamp element and wait for the hint to appear
         await lineClampElement.hover();
         const hintElement = page.locator('tui-hints .hint');
 
         await expect(hintElement).toBeVisible();
-        await waitStableState(hintElement);
 
         await expect.soft(example).toHaveScreenshot('06-1-line-clamp-basic.png');
 
-        // Click on the hint and verify it remains visible
         await hintElement.click();
         await expect(hintElement).toBeVisible();
-        await waitStableState(hintElement);
 
         await expect.soft(example).toHaveScreenshot('06-2-line-clamp-basic.png');
     });
