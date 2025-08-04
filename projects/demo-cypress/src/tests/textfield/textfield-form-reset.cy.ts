@@ -33,7 +33,7 @@ import {
             <button
                 id="reset"
                 type="button"
-                (click)="formGroup.reset()"
+                (mouseenter)="formGroup.reset()"
             >
                 Reset
             </button>
@@ -135,7 +135,7 @@ describe('Textfield + form.reset()', () => {
                 expect(form.get('comboBox')!.value).to.be.equal(null);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiComboBox]').should('have.value', '');
     });
 
@@ -147,7 +147,7 @@ describe('Textfield + form.reset()', () => {
                 expect(form.get('time')!.value).to.be.equal(null);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputTime]').should('have.value', '');
     });
 
@@ -159,25 +159,50 @@ describe('Textfield + form.reset()', () => {
                 expect(form.get('number')!.value).to.be.equal(null);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputNumber]').should('have.value', '');
     });
 
-    // TODO https://github.com/taiga-family/taiga-ui/issues/11365
-    it.skip('InputDate', () => {
+    it('InputDate (pristine form control)', () => {
         cy.get('[tuiInputDate]')
+            .type('99')
+            .should('have.value', '09.09')
+            .then(() => {
+                const control = form.get('date')!;
+
+                expect(control.value).to.be.equal(null);
+                expect(control.pristine).to.be.equal(true);
+            });
+
+        cy.get('#reset').trigger('mouseenter');
+        cy.get('[tuiInputDate]').should('have.value', '');
+    });
+
+    it('InputDate (already dirty form control)', () => {
+        cy.get('[tuiInputDate]')
+            .type('992000')
+            .should('have.value', '09.09.2000')
+            .then(() => {
+                const control = form.get('date')!;
+                const {year, month, day} = control.value;
+
+                expect(year).be.equal(2000);
+                expect(month).be.equal(8);
+                expect(day).be.equal(9);
+                expect(control.pristine).be.equal(false);
+            })
+            .clear()
             .type('99')
             .should('have.value', '09.09')
             .then(() => {
                 expect(form.get('date')!.value).to.be.equal(null);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputDate]').should('have.value', '');
     });
 
-    // TODO https://github.com/taiga-family/taiga-ui/issues/11365
-    it.skip('InputDateRange', () => {
+    it('InputDateRange', () => {
         cy.get('[tuiInputDateRange]')
             .type('992025')
             .should('have.value', '09.09.2025')
@@ -185,7 +210,7 @@ describe('Textfield + form.reset()', () => {
                 expect(form.get('dateRange')!.value).to.be.equal(null);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputDateRange]').should('have.value', '');
     });
 
@@ -202,7 +227,7 @@ describe('Textfield + form.reset()', () => {
                 expect(month).to.be.equal(0);
             });
 
-        cy.get('#reset').click();
+        cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputMonth]')
             .should('have.value', '')
             .then(() => {

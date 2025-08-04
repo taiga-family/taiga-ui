@@ -3,7 +3,7 @@
     "extends": ["github>taiga-family/renovate-config"],
     "packageRules": [
         {
-            "matchPackageNames": ["/^@nx.*/", "/^nx$/"],
+            "matchPackageNames": ["/^@nx.*/", "/^nx$/", "cypress"],
             "enabled": false
         }
     ]

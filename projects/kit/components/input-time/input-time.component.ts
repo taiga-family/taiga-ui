@@ -15,13 +15,13 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     TuiTextfieldContent,
     TuiTextfieldDirective,
+    TuiWithNativePicker,
 } from '@taiga-ui/core/components/textfield';
 
 import {TuiInputTimeDirective} from './input-time.directive';
 
 @Directive({
     host: {
-        '[type]': '"text"',
         '[attr.list]': 'null',
     },
 })
@@ -60,6 +60,7 @@ export abstract class TuiNativeTimePicker {
     styleUrls: ['./input-time.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [TuiWithNativePicker],
     host: {ngSkipHydration: 'true'},
 })
 export class TuiInputTimeComponent extends TuiNativeTimePicker {

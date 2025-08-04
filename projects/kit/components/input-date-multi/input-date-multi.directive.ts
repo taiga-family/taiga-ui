@@ -7,6 +7,7 @@ import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {DATE_FILLER_LENGTH, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
     tuiAsTextfieldAccessor,
@@ -16,10 +17,11 @@ import {
 } from '@taiga-ui/core/components/textfield';
 import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
-import {TuiInputChipDirective} from '@taiga-ui/kit/components/input-chip';
+import {TuiInputChipBaseDirective} from '@taiga-ui/kit/components/input-chip';
 import {
     TUI_DATE_ADAPTER,
     TUI_INPUT_DATE_OPTIONS_NEW,
+    tuiWithDateFiller,
 } from '@taiga-ui/kit/components/input-date';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
@@ -44,10 +46,11 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         '(keydown.enter.prevent)': '0',
     },
 })
-export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
+export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay> {
     private readonly dateOptions = inject(TUI_INPUT_DATE_OPTIONS_NEW);
 
     protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS_NEW);
+    protected readonly filler = tuiWithDateFiller();
     protected readonly stringify = this.handlers.stringify.set((item) =>
         item.toString(this.format().mode, this.format().separator),
     );
@@ -98,11 +101,6 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
         this.max.set(max || this.dateOptions.max);
     }
 
-    protected clear(): void {
-        this.onChange([]);
-        this.open.set(this.interactive());
-    }
-
     protected processCalendar(calendar: TuiCalendar): void {
         calendar.value = this.value();
         calendar.min = this.min();
@@ -132,11 +130,6 @@ export class TuiInputDateMultiDirective extends TuiInputChipDirective<TuiDay> {
     }
 
     private updateValue(day: TuiDay): void {
-        const exist = this.value().find((x) => x.daySame(day));
-        const newValue = exist
-            ? this.value().filter((x) => !x.daySame(day))
-            : this.value().concat(day);
-
-        this.setValue(newValue);
+        this.setValue(tuiArrayToggle(this.value(), day, (a, b) => a.daySame(b)));
     }
 }

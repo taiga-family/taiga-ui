@@ -16,6 +16,7 @@ import {
     tuiInjectAuxiliary,
     TuiTextfieldDirective,
     tuiTextfieldIconBinding,
+    TuiWithNativePicker,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
@@ -102,7 +103,9 @@ export abstract class TuiInputDateBase<
         onCleanup(() => subscription?.unsubscribe());
     });
 
-    public readonly native = this.el.type.includes('date') && this.mobile;
+    public readonly native =
+        !!inject(TuiWithNativePicker, {optional: true}) && this.mobile;
+
     public readonly min = signal(this.options.min);
     public readonly max = signal(this.options.max);
 
@@ -116,6 +119,15 @@ export abstract class TuiInputDateBase<
     @Input('max')
     public set maxSetter(max: Exclude<T, TuiDayRange> | TuiDay | null) {
         this.max.set(max instanceof TuiDay ? max : this.options.max);
+    }
+
+    public override writeValue(value: T | null): void {
+        const reset = this.control.pristine && this.control.untouched && !value;
+
+        if (value !== this.value() || reset) {
+            super.writeValue(value);
+            this.textfield.value.set(this.stringify(this.value()));
+        }
     }
 
     public setDate(value: TuiDay | TuiDayRange): void {

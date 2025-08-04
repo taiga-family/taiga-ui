@@ -33,8 +33,8 @@
                     {{ mode }}
                     <tui-icon
                         *ngIf="isModeActive(mode)"
-                        icon="@tui.check"
                         class="t-checkmark"
+                        [icon]="icons.check"
                     />
                 </button>
             </tui-data-list>
