@@ -193,7 +193,7 @@ describe('Textfield + form.reset()', () => {
             .type('123')
             .should('have.value', '+1 123')
             .then(() => {
-                expect(form.get('number')!.value).to.be.equal('+1123');
+                expect(form.get('phone')!.value).to.be.equal('+1123');
             });
 
         cy.get('#reset').click();

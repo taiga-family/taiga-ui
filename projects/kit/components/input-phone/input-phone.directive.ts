@@ -11,7 +11,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import type {MaskitoOptions} from '@maskito/core';
 import {MASKITO_DEFAULT_OPTIONS, maskitoTransform} from '@maskito/core';
 import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/kit';
-import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -34,7 +34,10 @@ function isText(value: string): boolean {
 @Directive({
     standalone: true,
     selector: 'input[tuiInputPhone]',
-    providers: [tuiAsControl(TuiInputPhone)],
+    providers: [
+        tuiAsControl(TuiInputPhone),
+        tuiValueTransformerFrom(TUI_INPUT_PHONE_OPTIONS),
+    ],
     hostDirectives: [TuiWithTextfield, MaskitoDirective],
     host: {
         type: 'tel',

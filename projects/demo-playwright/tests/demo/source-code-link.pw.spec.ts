@@ -6,12 +6,12 @@ test.describe('Source code button', () => {
 
     demoPaths.forEach((path) => {
         test(`${path}`, async ({page, request}) => {
-            // eslint-disable-next-line playwright/no-skipped-test
-            test.skip(page.url().includes('input-phone'), 'TODO: delete after merge');
-
             const sourceCodeLink = new TuiDocumentationPagePO(page).sourceCodeLink;
 
             await tuiGoto(page, path);
+
+            // eslint-disable-next-line playwright/no-skipped-test
+            test.skip(page.url().includes('input-phone'), 'TODO: delete after merge');
 
             // eslint-disable-next-line playwright/no-skipped-test
             test.skip(

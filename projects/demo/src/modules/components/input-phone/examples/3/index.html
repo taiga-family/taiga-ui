@@ -2,10 +2,9 @@
     <label tuiLabel>Type a phone number</label>
 
     <input
-        autocomplete="tel"
-        mask="+7 ### ###-##-##"
         tuiInputPhone
-        [pattern]="pattern"
         [(ngModel)]="value"
     />
 </tui-textfield>
+
+<p>{{ value }}</p>
