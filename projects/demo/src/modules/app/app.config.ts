@@ -13,7 +13,6 @@ import {provideAnimations} from '@angular/platform-browser/animations';
 import type {UrlTree} from '@angular/router';
 import {provideRouter, withInMemoryScrolling} from '@angular/router';
 import {environment} from '@demo/environments/environment';
-import {WA_SESSION_STORAGE} from '@ng-web-apis/common';
 import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc';
 import {
     TUI_DOC_CODE_EDITOR,
@@ -32,12 +31,7 @@ import {
     tuiDocExampleOptionsProvider,
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
-import {
-    TUI_FALSE_HANDLER,
-    TUI_IS_E2E,
-    TUI_IS_PLAYWRIGHT,
-    TUI_PLATFORM,
-} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_IS_E2E, TUI_PLATFORM} from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
@@ -83,10 +77,6 @@ export const config: ApplicationConfig = {
         {
             provide: TUI_PLATFORM,
             useValue: 'web',
-        },
-        {
-            provide: TUI_IS_PLAYWRIGHT,
-            useFactory: () => Boolean(inject(WA_SESSION_STORAGE).getItem('playwright')),
         },
         {
             provide: HIGHLIGHT_OPTIONS,
