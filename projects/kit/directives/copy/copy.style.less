@@ -11,14 +11,16 @@
         --t-size: ~'max(calc(1em / 1.57), min(max(calc(1em / 1.18), 1.25rem), 1.5rem))';
     }
 
-    &:hover {
-        .t-content {
-            opacity: var(--tui-disabled-opacity);
-            mask-position: 0;
-        }
+    @media @tui-mouse {
+        &:hover {
+            .t-content {
+                opacity: var(--tui-disabled-opacity);
+                mask-position: 0;
+            }
 
-        .t-button {
-            opacity: 1;
+            .t-button {
+                opacity: 1;
+            }
         }
     }
 
