@@ -3151,6 +3151,7 @@ export class Example {
                     tuiChevron
                     [content]="!textfield.focused() && control.value ? textfieldContent : ''"
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
+                    [iconStart]="icons.iconStart"
                     [identityMatcher]="itemsHandlers.identityMatcher()"
                     [stringify]="itemsHandlers.stringify()"
                     [tuiDropdownAlign]="dropdown.align"
@@ -3200,6 +3201,7 @@ import {Component, computed, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocDropdown} from '@demo/components/dropdown';
+import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocItemsHandlers} from '@demo/components/items-handlers';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -3235,6 +3237,7 @@ interface Country {
         TuiDemo,
         TuiDocControl,
         TuiDocDropdown,
+        TuiDocIcons,
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
@@ -3452,6 +3455,38 @@ export default class Example implements TuiConfirmData {
             .subscribe();
     }
 }
+```
+
+---
+
+# components/Copy
+
+- **Package**: `KIT`
+- **Type**: components
+
+This component provides an easy way to copy text content to the clipboard. It displays the content normally and
+        shows a copy button on hover, with visual feedback when content is copied.
+
+
+### How to Use (Import)
+
+```ts
+import {Component} from '@angular/core';
+import {TuiCopy} from '@taiga-ui/kit';
+// ...
+
+@Component({
+  imports: [
+    // ...
+    TuiCopy,
+  ],
+})
+export class Example {}
+```
+### How to Use (Template)
+
+```html
+<tui-copy>Here you can reproduce copy Taiga UI</tui-copy>
 ```
 
 ---
@@ -6482,6 +6517,8 @@ export class Example {
 ```html
 <ng-template>
                 <tui-textfield
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -6532,6 +6569,7 @@ export class Example {
 import {Component, ViewEncapsulation} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
+import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6546,6 +6584,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
         ReactiveFormsModule,
         TuiDemo,
         TuiDocControl,
+        TuiDocIcons,
         TuiDocNumberFormat,
         TuiDocTextfield,
         TuiHint,
@@ -6921,6 +6960,8 @@ export class Example {
                 <tui-textfield
                     #textfield
                     [content]="textfield.focused() ? '' : textfieldContent"
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -6974,6 +7015,7 @@ import type {Signal} from '@angular/core';
 import {Component, computed, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
+import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6991,6 +7033,7 @@ import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
         ReactiveFormsModule,
         TuiDemo,
         TuiDocControl,
+        TuiDocIcons,
         TuiDocNumberFormat,
         TuiDocTextfield,
         TuiInputSlider,
@@ -11583,7 +11626,6 @@ export default class Page {
         'States',
         'Dropdown',
         'InputPassword',
-        'InputCopy',
         'Mask',
     ];
 
@@ -11596,7 +11638,7 @@ export default class Page {
 
 # components/ThumbnailCard
 
-- **Package**: `ADDON COMMERCE`
+- **Package**: `ADDON-COMMERCE`
 - **Type**: components
 
 Customizable credit card thumbnail
@@ -14863,10 +14905,11 @@ Pipe for creating autocomplete when entering email addresses
 ### How to Use (Import)
 
 ```ts
+import {NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {TuiDataList} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiInputModule} from '@taiga-ui/kit';
-import {TuiEmailsPipe} from '@taiga-ui/proprietary';
+import {TuiDataListWrapper, TuiEmailsPipe} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 // ...
 
@@ -14874,6 +14917,7 @@ import {TuiEmailsPipe} from '@taiga-ui/proprietary';
   standalone: true,
   imports: [
     // ...
+    NgIf,
     FormsModule,
     TuiEmailsPipe,
     TuiInputModule,
