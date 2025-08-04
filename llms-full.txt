@@ -3459,6 +3459,38 @@ export default class Example implements TuiConfirmData {
 
 ---
 
+# components/Copy
+
+- **Package**: `KIT`
+- **Type**: components
+
+This component provides an easy way to copy text content to the clipboard. It displays the content normally and
+        shows a copy button on hover, with visual feedback when content is copied.
+
+
+### How to Use (Import)
+
+```ts
+import {Component} from '@angular/core';
+import {TuiCopy} from '@taiga-ui/kit';
+// ...
+
+@Component({
+  imports: [
+    // ...
+    TuiCopy,
+  ],
+})
+export class Example {}
+```
+### How to Use (Template)
+
+```html
+<tui-copy>Here you can reproduce copy Taiga UI</tui-copy>
+```
+
+---
+
 # components/DataList
 
 - **Package**: `CORE`
@@ -11594,7 +11626,6 @@ export default class Page {
         'States',
         'Dropdown',
         'InputPassword',
-        'InputCopy',
         'Mask',
     ];
 
