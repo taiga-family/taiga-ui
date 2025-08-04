@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
+import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
@@ -12,7 +13,6 @@ import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legac
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
-import {TuiDocIcons} from '@demo/components/icons';
 
 @Component({
     standalone: true,
@@ -21,13 +21,13 @@ import {TuiDocIcons} from '@demo/components/icons';
         ReactiveFormsModule,
         TuiDemo,
         TuiDocControl,
+        TuiDocIcons,
         TuiDocTextfield,
         TuiDropdown,
         TuiInputPhone,
         TuiInputPhoneModule,
         TuiTextfield,
         TuiTextfieldControllerModule,
-        TuiDocIcons,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

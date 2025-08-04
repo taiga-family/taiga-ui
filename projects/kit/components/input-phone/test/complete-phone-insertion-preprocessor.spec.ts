@@ -1,7 +1,8 @@
 import type {MaskitoOptions} from '@maskito/core';
 import {maskitoTransform} from '@maskito/core';
-import {tuiCreatePhoneMaskExpression} from '../utils/create-phone-mask-expression';
+
 import {tuiCreateCompletePhoneInsertionPreprocessor} from '../utils/complete-phone-insertion-preprocessor';
+import {tuiCreatePhoneMaskExpression} from '../utils/create-phone-mask-expression';
 
 describe('tuiCreateCompletePhoneInsertionPreprocessor + browser autofill', () => {
     describe('Country prefix === +7', () => {

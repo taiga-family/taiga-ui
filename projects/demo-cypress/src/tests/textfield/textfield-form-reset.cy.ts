@@ -25,10 +25,10 @@ import {
         TuiInputDateRange,
         TuiInputMonth,
         TuiInputNumber,
+        TuiInputPhone,
         TuiInputTime,
         TuiRoot,
         TuiTextfield,
-        TuiInputPhone,
     ],
     template: `
         <tui-root>
