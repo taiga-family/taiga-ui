@@ -1,8 +1,9 @@
 ```ts
+import {NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {TuiDataList} from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiInputModule} from '@taiga-ui/kit';
-import {TuiEmailsPipe} from '@taiga-ui/proprietary';
+import {TuiDataListWrapper, TuiEmailsPipe} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 // ...
 
@@ -10,6 +11,7 @@ import {TuiEmailsPipe} from '@taiga-ui/proprietary';
   standalone: true,
   imports: [
     // ...
+    NgIf,
     FormsModule,
     TuiEmailsPipe,
     TuiInputModule,
