@@ -6620,6 +6620,154 @@ tui-doc-example tui-textfield:has([tuiInputNumber]) {
 
 ---
 
+# components/InputPhone
+
+- **Package**: `KIT`
+- **Type**: components
+
+InputPhone
+            allows to input a phone number
+
+
+### How to Use (Import)
+
+```ts
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputPhone} from '@taiga-ui/kit';
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiTextfield,
+    TuiInputPhone,
+  ],
+  // ...
+})
+export class Example {}
+```
+### How to Use (Template)
+
+```html
+<tui-textfield>
+  <input
+    tuiInputPhone
+    [ngModel]="value"
+  />
+</tui-textfield>
+```
+
+### Example
+
+```html
+<ng-template>
+                <tui-textfield
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
+                    [tuiTextfieldCleaner]="textfieldDoc.cleaner"
+                    [tuiTextfieldSize]="textfieldDoc.size"
+                >
+                    <label tuiLabel>Type a phone number</label>
+
+                    <input
+                        tuiInputPhone
+                        [formControl]="control"
+                        [invalid]="controlDoc.invalid"
+                        [mask]="phoneMask"
+                        [readOnly]="controlDoc.readonly"
+                        [tuiDisabled]="controlDoc.disabled"
+                    />
+                </tui-textfield>
+            </ng-template>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [mask] | `string` | Text mask. You can use # , - , brackets and spaces as a template symbol |
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
+import {TuiDocIcons} from '@demo/components/icons';
+import {TuiDocTextfield} from '@demo/components/textfield';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {tuiProvide} from '@taiga-ui/cdk';
+import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputPhone} from '@taiga-ui/kit';
+import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+
+import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
+import {AbstractExampleTuiControl} from '../abstract/control';
+import {InheritedDocumentation} from '../abstract/inherited-documentation';
+
+@Component({
+    standalone: true,
+    imports: [
+        InheritedDocumentation,
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiDocControl,
+        TuiDocIcons,
+        TuiDocTextfield,
+        TuiDropdown,
+        TuiInputPhone,
+        TuiInputPhoneModule,
+        TuiTextfield,
+        TuiTextfieldControllerModule,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    changeDetection,
+    providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
+})
+export default class PageComponent extends AbstractExampleTuiControl {
+    protected phoneMasks = [
+        '+7 (###) ###-##-##',
+        '+850 (####)-#############',
+        '+1 ### ###-####',
+    ];
+
+    protected phoneMask = this.phoneMasks[0]!;
+
+    public control = new FormControl('', [Validators.required, Validators.minLength(12)]);
+}
+```
+### LESS
+
+```less
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    inline-size: 100%;
+    margin: -0.625rem 0;
+}
+
+.avatar {
+    margin-inline-start: 0.75rem;
+}
+
+.name,
+.phone {
+    margin: 0;
+}
+
+.phone {
+    font: var(--tui-font-text-s);
+    color: var(--tui-text-tertiary);
+}
+```
+
+---
+
 # components/InputPhoneInternational
 
 - **Package**: `EXPERIMENTAL`
