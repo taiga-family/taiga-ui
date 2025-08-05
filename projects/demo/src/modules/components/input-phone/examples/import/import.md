@@ -1,21 +1,15 @@
 ```ts
-import {ReactiveFormsModule} from '@angular/forms';
-import {TuiInputPhoneModule} from '@taiga-ui/legacy';
-
-// ...
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputPhone} from '@taiga-ui/kit';
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    ReactiveFormsModule,
-    TuiInputPhoneModule,
+    TuiTextfield,
+    TuiInputPhone,
   ],
   // ...
 })
-export class Example {
-  testForm = new FormGroup({
-    testValue: new FormControl('+78005553535'),
-  });
-}
+export class Example {}
 ```

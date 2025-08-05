@@ -147,6 +147,15 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('');
         });
 
+        test('InputPhone', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputPhone}/API?tuiTextfieldCleaner=true`);
+
+            await input.pressSequentially('123456');
+            await expect(input).toHaveValue('+7 (123) 456');
+            await cleaner.click();
+            await expect(input).toHaveValue('+7 ');
+        });
+
         test('Textarea', async ({page}) => {
             await tuiGoto(page, `${DemoRoute.Textarea}/API?tuiTextfieldCleaner=true`);
 

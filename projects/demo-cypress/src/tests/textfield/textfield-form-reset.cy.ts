@@ -10,6 +10,7 @@ import {
     TuiInputDateRange,
     TuiInputMonth,
     TuiInputNumber,
+    TuiInputPhone,
     TuiInputTime,
 } from '@taiga-ui/kit';
 
@@ -24,6 +25,7 @@ import {
         TuiInputDateRange,
         TuiInputMonth,
         TuiInputNumber,
+        TuiInputPhone,
         TuiInputTime,
         TuiRoot,
         TuiTextfield,
@@ -63,6 +65,13 @@ import {
                     <input
                         formControlName="number"
                         tuiInputNumber
+                    />
+                </tui-textfield>
+
+                <tui-textfield>
+                    <input
+                        formControlName="phone"
+                        tuiInputPhone
                     />
                 </tui-textfield>
 
@@ -119,6 +128,7 @@ describe('Textfield + form.reset()', () => {
             date: new FormControl(null),
             dateRange: new FormControl(null),
             month: new FormControl(null),
+            phone: new FormControl(null),
         });
         cy.mount(Sandbox, {
             componentProperties: {
@@ -176,6 +186,18 @@ describe('Textfield + form.reset()', () => {
 
         cy.get('#reset').trigger('mouseenter');
         cy.get('[tuiInputDate]').should('have.value', '');
+    });
+
+    it('InputPhone', () => {
+        cy.get('[tuiInputPhone]')
+            .type('123')
+            .should('have.value', '+1 123')
+            .then(() => {
+                expect(form.get('phone')!.value).to.be.equal('+1123');
+            });
+
+        cy.get('#reset').click();
+        cy.get('[tuiInputPhone]').should('have.value', '');
     });
 
     it('InputDate (already dirty form control)', () => {
