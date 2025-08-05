@@ -18,7 +18,7 @@ export default class Example {
 
     public value = '+71234567890';
 
-    protected get pattern(): string {
-        return this.isIos ? '+[0-9-]{1,20}' : '';
+    protected get pattern(): string | null {
+        return this.isIos ? '+[0-9-]{1,20}' : null;
     }
 }
