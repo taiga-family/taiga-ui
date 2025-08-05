@@ -25,6 +25,6 @@ export default class Example {
 
     protected value = [0, 250];
 
-    // https://angular.io/api/common/I18nPluralPipe
+    // https://angular.dev/api/common/I18nPluralPipe#example
     protected pluralMap = {'=0': '0', '=1': '# item', '=1000': 'MAX', other: '# items'};
 }
