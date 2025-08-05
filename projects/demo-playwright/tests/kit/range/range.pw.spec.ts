@@ -19,7 +19,7 @@ test.describe('TuiRange', () => {
         test.describe('change selected range on click', () => {
             test.beforeEach(({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#sizes');
-                range = new TuiRangePO(example.locator('tui-range'));
+                range = new TuiRangePO(example.locator('tui-range').first());
             });
 
             test('click on the beginning of the track changes only nearest (left) slider', async () => {
