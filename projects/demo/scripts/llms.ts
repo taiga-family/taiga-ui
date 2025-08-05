@@ -388,7 +388,7 @@ async function main(): Promise<void> {
             continue;
         }
 
-        if (!headerData?.header) {
+        if (!headerData.header) {
             continue;
         }
 
@@ -400,6 +400,7 @@ async function main(): Promise<void> {
 
         output.push(`# ${title}\n`);
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (headerData.deprecated) {
             output.push(
                 '> ⚠️ **Deprecated** — use the new version from experimental package\n',

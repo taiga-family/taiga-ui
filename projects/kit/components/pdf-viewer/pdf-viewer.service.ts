@@ -1,14 +1,12 @@
 import {inject, Injectable} from '@angular/core';
-import type {SafeResourceUrl} from '@angular/platform-browser';
-import type {TuiPopoverContext} from '@taiga-ui/cdk/services';
-import {TuiPopoverService} from '@taiga-ui/cdk/services';
+import {type SafeResourceUrl} from '@angular/platform-browser';
+import {type TuiPopoverContext, TuiPopoverService} from '@taiga-ui/cdk/services';
 import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type Observable} from 'rxjs';
 
 import {TuiPdfViewerComponent} from './pdf-viewer.component';
-import type {TuiPdfViewerOptions} from './pdf-viewer.options';
-import {TUI_PDF_VIEWER_OPTIONS} from './pdf-viewer.options';
+import {TUI_PDF_VIEWER_OPTIONS, type TuiPdfViewerOptions} from './pdf-viewer.options';
 
 type Content<G> = PolymorpheusContent<
     TuiPdfViewerOptions<unknown> & TuiPopoverContext<G>

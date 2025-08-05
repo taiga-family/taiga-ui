@@ -1,5 +1,4 @@
-import type {CallExpression} from 'ng-morph';
-import {Node} from 'ng-morph';
+import {type CallExpression, Node} from 'ng-morph';
 
 import {getNamedImportReferences} from './get-named-import-references';
 
@@ -12,7 +11,9 @@ export function getStandaloneBootstrapFunction(path: string): CallExpression | n
         .map((ref) => ref.getParent())
         .find((node) => Node.isCallExpression(node));
 
-    const standaloneBootstrapFunction = standaloneBootstrapIdentifier as CallExpression;
+    const standaloneBootstrapFunction = standaloneBootstrapIdentifier as
+        | CallExpression
+        | undefined;
 
     return standaloneBootstrapFunction || null;
 }

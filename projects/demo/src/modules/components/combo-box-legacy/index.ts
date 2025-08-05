@@ -4,18 +4,19 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
-import type {TuiIdentityMatcher, TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_MATCHER,
     TUI_STRICT_MATCHER,
+    type TuiIdentityMatcher,
     tuiProvide,
     tuiPure,
+    type TuiStringHandler,
+    type TuiStringMatcher,
 } from '@taiga-ui/cdk';
-import type {TuiValueContentContext} from '@taiga-ui/core';
-import {TuiDropdown, TuiHint, TuiIcon} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiIcon, type TuiValueContentContext} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

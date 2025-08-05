@@ -4,11 +4,9 @@ import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiProvide} from '@taiga-ui/cdk';
-import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiNumberFormat} from '@taiga-ui/core';
-import type {TuiKeySteps} from '@taiga-ui/kit';
+import {type TuiContext, tuiProvide} from '@taiga-ui/cdk';
+import {TuiNumberFormat, type TuiSizeL} from '@taiga-ui/core';
+import {type TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';

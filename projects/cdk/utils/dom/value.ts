@@ -1,15 +1,17 @@
 import {coerceElement} from '@angular/cdk/coercion';
 import {isPlatformBrowser} from '@angular/common';
-import type {ElementRef, Signal, WritableSignal} from '@angular/core';
 import {
     DestroyRef,
     effect,
+    type ElementRef,
     inject,
     INJECTOR,
     isSignal,
     PLATFORM_ID,
+    type Signal,
     signal,
     untracked,
+    type WritableSignal,
 } from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';

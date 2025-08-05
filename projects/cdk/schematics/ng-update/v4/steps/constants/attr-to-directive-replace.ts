@@ -1,5 +1,5 @@
 import {hasElementAttribute} from '../../../../utils/templates/elements';
-import type {ReplacementAttributeToDirective} from '../../../interfaces';
+import {type ReplacementAttributeToDirective} from '../../../interfaces';
 
 export const ATTRS_TO_DIRECTIVE_REPLACE: ReplacementAttributeToDirective[] = [
     {

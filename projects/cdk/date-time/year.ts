@@ -2,7 +2,7 @@
 import {tuiInRange, tuiNormalizeToIntNumber} from '@taiga-ui/cdk/utils/math';
 
 import {MAX_YEAR, MIN_YEAR} from './date-time';
-import type {TuiYearLike} from './types';
+import {type TuiYearLike} from './types';
 
 /**
  * Immutable year object

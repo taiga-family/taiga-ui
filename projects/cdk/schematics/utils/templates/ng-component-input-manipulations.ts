@@ -1,8 +1,7 @@
-import type {DevkitFileSystem} from 'ng-morph';
-import {coerceArray} from 'ng-morph';
-import type {Element} from 'parse5/dist/tree-adapters/default';
+import {coerceArray, type DevkitFileSystem} from 'ng-morph';
+import {type Element} from 'parse5/dist/tree-adapters/default';
 
-import type {TemplateResource} from '../../ng-update/interfaces/template-resource';
+import {type TemplateResource} from '../../ng-update/interfaces/template-resource';
 import {addImportToClosestModule} from '../add-import-to-closest-module';
 import {
     findAttributeOnElementWithAttrs,

@@ -1,4 +1,3 @@
-import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,6 +5,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    type OnInit,
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -13,7 +13,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {TUI_ANIMATIONS_SPEED, TuiIcon, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {tuiInputPhoneInternationalOptionsProvider} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 

@@ -1,6 +1,6 @@
 import {NgForOf, NgIf} from '@angular/common';
-import type {AfterContentInit} from '@angular/core';
 import {
+    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChild,
@@ -15,13 +15,13 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayToggle, tuiProvide, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsDataListHost,
+    type TuiDataListHost,
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
@@ -37,14 +37,19 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {
+    PolymorpheusComponent,
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+} from '@taiga-ui/polymorpheus';
 import {filter, fromEvent} from 'rxjs';
 
 import {TuiTextfieldBaseComponent, TuiTextfieldComponent} from '../textfield.component';
 import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
-import type {TuiTextfieldItem} from './textfield-item.component';
-import {TuiTextfieldItemComponent} from './textfield-item.component';
+import {
+    type TuiTextfieldItem,
+    TuiTextfieldItemComponent,
+} from './textfield-item.component';
 
 @Component({
     standalone: true,
@@ -172,6 +177,7 @@ export class TuiTextfieldMultiComponent<T>
         }
 
         this.open.update((open) => !open);
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         this.input?.nativeElement.showPicker?.();
     }
 }

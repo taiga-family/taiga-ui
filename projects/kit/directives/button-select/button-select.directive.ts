@@ -1,8 +1,11 @@
 import {Directive} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost, tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import {
+    tuiAsDataListHost,
+    tuiAsOptionContent,
+    type TuiDataListHost,
+} from '@taiga-ui/core/components/data-list';
 import {TuiWithTextfieldDropdown} from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownDirective,

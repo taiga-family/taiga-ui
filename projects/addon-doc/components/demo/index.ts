@@ -1,10 +1,11 @@
 import {JsonPipe, Location, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {AfterViewInit, ElementRef} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     computed,
     ContentChild,
+    type ElementRef,
     inject,
     Input,
     signal,
@@ -12,12 +13,15 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
-import type {AbstractControl} from '@angular/forms';
-import {FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import type {Params, UrlTree} from '@angular/router';
-import {UrlSerializer} from '@angular/router';
+import {
+    type AbstractControl,
+    FormGroup,
+    FormsModule,
+    ReactiveFormsModule,
+} from '@angular/forms';
+import {type Params, UrlSerializer, type UrlTree} from '@angular/router';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
-import type {TuiDemoParams} from '@taiga-ui/addon-doc/types';
+import {type TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
 import {TuiResizable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';

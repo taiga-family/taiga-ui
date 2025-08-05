@@ -3,8 +3,7 @@ import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
-import type {TuiProgressBar} from '@taiga-ui/kit';
-import {TuiProgress} from '@taiga-ui/kit';
+import {TuiProgress, type TuiProgressBar} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

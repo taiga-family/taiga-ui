@@ -1,5 +1,10 @@
-import type {Type} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject, INJECTOR} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    INJECTOR,
+    type Type,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TuiDialogService} from '@taiga-ui/core/components/dialog';

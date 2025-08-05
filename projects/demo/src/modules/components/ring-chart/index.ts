@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiRingChart} from '@taiga-ui/addon-charts';
-import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
+import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

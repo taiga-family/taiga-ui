@@ -1,5 +1,4 @@
-import type {Page} from '@playwright/test';
-import {expect} from '@playwright/test';
+import {expect, type Page} from '@playwright/test';
 
 import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';

@@ -1,7 +1,7 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
-import type {ChildNode} from 'parse5/dist/tree-adapters/default';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Attribute, type ElementLocation} from 'parse5/dist/common/token';
+import {type ChildNode} from 'parse5/dist/tree-adapters/default';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {findAttr} from '../../../../utils/templates/inputs';
@@ -9,7 +9,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 
 export function migrateLabel({
     resource,
@@ -51,15 +51,14 @@ function migrateValue({
     templateOffset,
     childNodes,
 }: {
-    valueAttr: Attribute;
-    sourceCodeLocation: ElementLocation;
+    valueAttr: Attribute | undefined;
+    sourceCodeLocation: ElementLocation | undefined;
     recorder: UpdateRecorder;
     templateOffset: number;
     childNodes: ChildNode[];
 }): void {
     const attrValue = valueAttr?.value;
-    const {startTag, endTag} = sourceCodeLocation;
-    const insertTo = startTag?.endOffset;
+    const insertTo = sourceCodeLocation?.startTag?.endOffset;
 
     if (!attrValue || !insertTo) {
         return;
@@ -68,11 +67,14 @@ function migrateValue({
     const onlyTextContent =
         childNodes.length && childNodes.every((node) => node.nodeName === '#text');
 
-    if (onlyTextContent && startTag && endTag) {
+    if (onlyTextContent && sourceCodeLocation.startTag && sourceCodeLocation.endTag) {
         const content = `<span tuiTitle><span tuiSubtitle>${valueAttr.name === 'tuilabel' ? attrValue : `{{ ${attrValue} }}`}</span>`;
 
         recorder.insertRight(templateOffset + insertTo, content);
-        recorder.insertLeft(templateOffset + endTag.startOffset, '</span>');
+        recorder.insertLeft(
+            templateOffset + sourceCodeLocation.endTag.startOffset,
+            '</span>',
+        );
     } else {
         recorder.insertRight(
             insertTo + templateOffset,
@@ -80,7 +82,7 @@ function migrateValue({
         );
     }
 
-    const attrOffset = sourceCodeLocation?.attrs?.[valueAttr.name];
+    const attrOffset = sourceCodeLocation.attrs?.[valueAttr.name];
 
     if (attrOffset) {
         const {startOffset, endOffset} = attrOffset;

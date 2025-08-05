@@ -3,7 +3,7 @@ import {join} from 'node:path';
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
 
-import type {TuiSchema} from '../../../../ng-add/schema';
+import {type TuiSchema} from '../../../../ng-add/schema';
 
 const collectionPath = join(__dirname, '../../../../migration.json');
 

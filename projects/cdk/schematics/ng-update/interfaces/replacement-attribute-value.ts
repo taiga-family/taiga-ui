@@ -1,4 +1,4 @@
-import type {Element} from 'parse5/dist/tree-adapters/default';
+import {type Element} from 'parse5/dist/tree-adapters/default';
 
 export interface ReplacementAttributeValue {
     readonly attrNames: string[];

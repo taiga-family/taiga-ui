@@ -4,16 +4,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    type TuiBooleanHandler,
     TuiDay,
     tuiProvide,
 } from '@taiga-ui/cdk';
-import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiDropdown, TuiHint, TuiLink} from '@taiga-ui/core';
+import {TuiDropdown, TuiHint, TuiLink, type TuiMarkerHandler} from '@taiga-ui/core';
 import {
     TuiInputDateModule,
     TuiNamedDay,

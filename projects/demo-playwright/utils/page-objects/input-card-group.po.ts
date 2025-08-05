@@ -1,4 +1,4 @@
-import type {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 
 export class TuiInputCardGroupPO {
     public readonly numberTextfield = this.host.locator(

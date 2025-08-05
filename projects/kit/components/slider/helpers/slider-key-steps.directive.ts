@@ -1,16 +1,14 @@
 import {Directive, forwardRef, inject, INJECTOR, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {TuiControl} from '@taiga-ui/cdk/classes';
+import {TuiControl, type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {switchMap, timer} from 'rxjs';
 
 import {TuiSliderComponent} from '../slider.component';
-import type {TuiKeySteps} from './key-steps';
-import {tuiCreateKeyStepsTransformer} from './key-steps';
+import {tuiCreateKeyStepsTransformer, type TuiKeySteps} from './key-steps';
 
 @Directive({
     standalone: true,

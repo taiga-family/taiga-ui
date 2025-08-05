@@ -5,7 +5,7 @@ import {
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {
     PolymorpheusComponent,
     PolymorpheusOutlet,
@@ -56,7 +56,7 @@ export class TuiInputFiles {
         return !!this.files && !this.input?.disabled();
     }
 
-    protected onFilesSelected(input: HTMLInputElement): void {
+    protected onFilesSelected(input: HTMLInputElement | undefined): void {
         if (!input?.files) {
             return;
         }

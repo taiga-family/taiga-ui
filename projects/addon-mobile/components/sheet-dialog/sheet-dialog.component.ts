@@ -1,23 +1,24 @@
 import {NgForOf, NgIf} from '@angular/common';
-import type {AfterViewInit, QueryList} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
-import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {exhaustMap, filter, isObservable, merge, of, Subject, take} from 'rxjs';
 
-import type {TuiSheetDialogOptions} from './sheet-dialog.options';
+import {type TuiSheetDialogOptions} from './sheet-dialog.options';
 
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
 
@@ -91,6 +92,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         return (
             this.stops
                 .map((e) => e.nativeElement.offsetTop - this.context.offset)
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 .concat(this.el.clientHeight ?? Infinity)[this.context.initial] ?? 0
         );
     }

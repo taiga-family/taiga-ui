@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_IS_WEBKIT} from '@taiga-ui/cdk/tokens';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import {type TuiPoint} from '@taiga-ui/core/types';
 
 @Injectable({
     providedIn: 'root',

@@ -1,5 +1,4 @@
-import type {OnChanges} from '@angular/core';
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, Input, type OnChanges} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,

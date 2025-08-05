@@ -1,9 +1,8 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {InjectionToken, type Provider} from '@angular/core';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiSizeL, type TuiSizeM, type TuiSizeS} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_ARROW} from './arrow.component';
 

@@ -8,24 +8,23 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
     TUI_LAST_DISPLAYED_DAY,
     TuiDay,
+    type TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiNullableSame} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {Subject} from 'rxjs';
 
-import type {TuiMarkerHandler} from './calendar-sheet.component';
-import {TuiCalendarSheet} from './calendar-sheet.component';
+import {TuiCalendarSheet, type TuiMarkerHandler} from './calendar-sheet.component';
 import {TUI_CALENDAR_SHEET_OPTIONS} from './calendar-sheet.options';
 import {TuiCalendarSpin} from './calendar-spin.component';
 import {TuiCalendarYear} from './calendar-year.component';

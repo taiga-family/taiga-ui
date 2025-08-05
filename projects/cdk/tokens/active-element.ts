@@ -7,12 +7,12 @@ import {
     tuiGetDocumentOrShadowRoot,
     tuiIsNativeMouseFocusable,
 } from '@taiga-ui/cdk/utils';
-import type {Observable} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,
     map,
     merge,
+    type Observable,
     of,
     repeat,
     share,
@@ -86,7 +86,10 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                 focusin$.pipe(
                     switchMap((event) => {
                         const target = tuiGetActualTarget(event);
-                        const root = tuiGetDocumentOrShadowRoot(target) || doc;
+                        const root =
+                            (tuiGetDocumentOrShadowRoot(target) as
+                                | DocumentOrShadowRoot
+                                | undefined) || doc;
 
                         return root === doc
                             ? of(target)

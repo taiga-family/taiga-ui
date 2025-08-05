@@ -5,8 +5,10 @@ import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
 import {pairwise, startWith} from 'rxjs';
 
 import {TuiSheetDialogComponent} from './sheet-dialog.component';
-import type {TuiSheetDialogOptions} from './sheet-dialog.options';
-import {TUI_SHEET_DIALOG_OPTIONS} from './sheet-dialog.options';
+import {
+    TUI_SHEET_DIALOG_OPTIONS,
+    type TuiSheetDialogOptions,
+} from './sheet-dialog.options';
 
 const THEME = '#404040';
 

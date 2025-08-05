@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
+import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk';
 import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 

@@ -8,21 +8,21 @@ import {
     TuiLineDaysChart,
     TuiLineDaysChartHint,
 } from '@taiga-ui/addon-charts';
-import type {TuiDayLike, TuiMapper, TuiMatcher} from '@taiga-ui/cdk';
 import {
     TUI_IS_E2E,
     TuiDay,
+    type TuiDayLike,
     TuiDayRange,
     TuiFilterPipe,
+    type TuiMapper,
     TuiMapperPipe,
+    type TuiMatcher,
     TuiMonth,
     tuiPure,
 } from '@taiga-ui/cdk';
-import type {TuiPoint} from '@taiga-ui/core';
-import {TUI_MONTHS, TuiNotification} from '@taiga-ui/core';
+import {TUI_MONTHS, TuiNotification, type TuiPoint} from '@taiga-ui/core';
 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
-import type {Observable} from 'rxjs';
-import {map, of} from 'rxjs';
+import {map, type Observable, of} from 'rxjs';
 
 @Component({
     standalone: true,

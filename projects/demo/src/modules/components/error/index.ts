@@ -1,5 +1,4 @@
-import type {TemplateRef} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import {Component, type TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiValidationError} from '@taiga-ui/cdk';
@@ -20,7 +19,7 @@ export default class Page {
         'Error as HTML content',
     ];
 
-    protected selectedError = this.errorVariants[0]!;
+    protected selectedError: string | null = this.errorVariants[0]!;
 
     protected get error(): TuiValidationError | string | null {
         if (this.selectedError === null) {

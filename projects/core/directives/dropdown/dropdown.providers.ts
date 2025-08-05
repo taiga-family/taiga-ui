@@ -1,5 +1,4 @@
-import type {Type} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Type} from '@angular/core';
 
 import {TuiDropdownComponent} from './dropdown.component';
 

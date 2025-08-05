@@ -1,6 +1,6 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute} from 'parse5/dist/common/token';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Attribute} from 'parse5/dist/common/token';
 
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
@@ -9,7 +9,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 import {cleanObject} from '../utils/clean-object';
 import {removeAttrs} from '../utils/remove-attrs';
 
@@ -37,17 +37,17 @@ export function migrateMoney({
         const decimalAttr = findAttr(attrs, 'decimal');
         const precisionAttr = findAttr(attrs, 'precision');
         const signAttr = findAttr(attrs, 'sign');
-        const selfClosing = !sourceCodeLocation?.endTag;
+        const selfClosing = !sourceCodeLocation.endTag;
 
         if (!valueAttr) {
             return;
         }
 
-        const insertTo = sourceCodeLocation?.startTag?.endOffset ?? 0;
+        const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
         const value = isBinding(valueAttr) ? valueAttr.value : `'${valueAttr.value}'`;
         const currency =
             currencyAttr && isBinding(currencyAttr)
-                ? currencyAttr?.value
+                ? currencyAttr.value
                 : `'${currencyAttr?.value}'`;
 
         recorder.insertRight(
@@ -71,7 +71,7 @@ export function migrateMoney({
 
             const formatPart = `[tuiNumberFormat]='${format}'`;
 
-            const insertTo = (sourceCodeLocation?.startTag?.startOffset || 0) + 1;
+            const insertTo = (sourceCodeLocation.startTag?.startOffset || 0) + 1;
 
             recorder.insertRight(templateOffset + insertTo, formatPart);
         }

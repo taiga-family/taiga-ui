@@ -1,13 +1,14 @@
-import type {OnChanges, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
     inject,
     Input,
+    type OnChanges,
+    type OnInit,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';

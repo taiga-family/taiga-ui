@@ -1,8 +1,7 @@
-import type {Signal, WritableSignal} from '@angular/core';
-import {inject} from '@angular/core';
+import {inject, type Signal, type WritableSignal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TuiDropdownOpen} from './dropdown-open.directive';

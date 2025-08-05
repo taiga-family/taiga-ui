@@ -1,12 +1,17 @@
 import {inject, Injectable} from '@angular/core';
-import type {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile/components/sheet-dialog';
-import {TuiSheetDialogService} from '@taiga-ui/addon-mobile/components/sheet-dialog';
+import {
+    type TuiSheetDialogOptions,
+    TuiSheetDialogService,
+} from '@taiga-ui/addon-mobile/components/sheet-dialog';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDialogContext, TuiDialogOptions} from '@taiga-ui/core/components/dialog';
-import {TuiDialogService} from '@taiga-ui/core/components/dialog';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
+import {
+    type TuiDialogContext,
+    type TuiDialogOptions,
+    TuiDialogService,
+} from '@taiga-ui/core/components/dialog';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type Observable} from 'rxjs';
 
 export interface TuiResponsiveDialogOptions<I = undefined>
     extends Omit<TuiDialogOptions<I>, 'label'>,

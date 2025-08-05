@@ -2,7 +2,7 @@ import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
-import type {TuiInputComponent} from './input.component';
+import {type TuiInputComponent} from './input.component';
 
 /**
  * TODO(v5): delete it

@@ -1,6 +1,5 @@
-import type {ExistingProvider, ProviderToken} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import type {TuiLooseUnion} from '@taiga-ui/cdk/types';
+import {type ExistingProvider, InjectionToken, type ProviderToken} from '@angular/core';
+import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
 /**

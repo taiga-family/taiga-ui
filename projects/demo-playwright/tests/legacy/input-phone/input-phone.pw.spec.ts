@@ -6,8 +6,7 @@ import {
     tuiGoto,
     TuiInputPhonePO,
 } from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputPhone', () => {
     test.describe('API page', () => {

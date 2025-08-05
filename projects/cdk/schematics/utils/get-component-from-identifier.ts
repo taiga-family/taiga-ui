@@ -1,5 +1,4 @@
-import type {ClassDeclaration, Node} from 'ng-morph';
-import {getImports, getNgComponents} from 'ng-morph';
+import {type ClassDeclaration, getImports, getNgComponents, type Node} from 'ng-morph';
 
 export function getComponentFromIdentifier(
     identifier: Node,

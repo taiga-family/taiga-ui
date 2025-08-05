@@ -1,17 +1,15 @@
 import {NgTemplateOutlet} from '@angular/common';
-import type {
-    AfterViewInit,
-    ElementRef,
-    OnChanges,
-    QueryList,
-    TemplateRef,
-} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
+    type ElementRef,
     inject,
     Input,
+    type OnChanges,
+    type QueryList,
     signal,
+    type TemplateRef,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -22,7 +20,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 import {delay, map} from 'rxjs';
 
 @Component({
@@ -106,7 +104,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
 
     private get visibleWidth(): number {
         return (
-            (this.items?.map((item) => item.nativeElement.offsetWidth ?? 0) ?? [])
+            (this.items?.map((item) => item.nativeElement.offsetWidth) ?? [])
                 .slice(this.start, this.end + 1)
                 .reduce((sum, item) => sum + item + this.gap, 0) - this.gap
         );

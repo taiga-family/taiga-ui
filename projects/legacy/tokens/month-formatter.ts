@@ -1,10 +1,8 @@
-import type {FactoryProvider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import type {TuiMonth} from '@taiga-ui/cdk/date-time';
-import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {type FactoryProvider, InjectionToken} from '@angular/core';
+import {type TuiMonth} from '@taiga-ui/cdk/date-time';
+import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {TuiMonthPipe} from '@taiga-ui/core/pipes/month';
-import type {Observable} from 'rxjs';
-import {map, of} from 'rxjs';
+import {map, type Observable, of} from 'rxjs';
 
 /**
  * @deprecated: drop in v5.0

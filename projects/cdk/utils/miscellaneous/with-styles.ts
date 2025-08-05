@@ -1,10 +1,10 @@
-import type {Type} from '@angular/core';
 import {
     createComponent,
     DestroyRef,
     EnvironmentInjector,
     inject,
     InjectionToken,
+    type Type,
 } from '@angular/core';
 
 const MAP = new InjectionToken(ngDevMode ? 'MAP' : '', {

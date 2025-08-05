@@ -1,5 +1,4 @@
-import type {OnChanges} from '@angular/core';
-import {computed, Directive, inject, Input, signal} from '@angular/core';
+import {computed, Directive, inject, Input, type OnChanges, signal} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
@@ -11,14 +10,15 @@ import {
     tuiAppearanceMode,
     tuiAppearanceState,
 } from '@taiga-ui/core/directives/appearance';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import type {TuiInteractiveState} from '@taiga-ui/core/types';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
+import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
 import {TuiTextfieldComponent} from './textfield.component';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
-import type {TuiTextfieldAccessor} from './textfield-accessor';
-import {tuiAsTextfieldAccessor} from './textfield-accessor';
+import {tuiAsTextfieldAccessor, type TuiTextfieldAccessor} from './textfield-accessor';
 
 // TODO: Drop in v5 after updated Angular and hostDirectives inherit
 @Directive({

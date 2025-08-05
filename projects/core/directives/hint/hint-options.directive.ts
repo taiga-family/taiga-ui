@@ -1,16 +1,17 @@
-import type {FactoryProvider, OnChanges} from '@angular/core';
 import {
     Directive,
+    type FactoryProvider,
     inject,
     InjectionToken,
     Input,
+    type OnChanges,
     Optional,
     Self,
     SkipSelf,
 } from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {Subject} from 'rxjs';
 
 export type TuiHintDirection =

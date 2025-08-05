@@ -1,4 +1,4 @@
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiInputNumberOptions {

@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
 import {TuiRadioList} from '@taiga-ui/kit';
 

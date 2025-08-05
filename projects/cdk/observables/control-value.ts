@@ -1,4 +1,4 @@
-import type {AbstractControl, AbstractControlDirective} from '@angular/forms';
+import {type AbstractControl, type AbstractControlDirective} from '@angular/forms';
 import {Observable, startWith} from 'rxjs';
 
 /**

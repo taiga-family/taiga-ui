@@ -1,11 +1,12 @@
 import {NgIf} from '@angular/common';
-import type {DoCheck, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
+    type DoCheck,
     forwardRef,
     inject,
+    type QueryList,
     SkipSelf,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -13,11 +14,13 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
-import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
+import {
+    type TuiTreeController,
+    type TuiTreeItemContext,
+} from '../../misc/tree.interfaces';
 import {
     TUI_TREE_CONTENT,
     TUI_TREE_CONTROLLER,

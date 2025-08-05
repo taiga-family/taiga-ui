@@ -2,18 +2,20 @@ import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import type {TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {
     DATE_RANGE_FILLER_LENGTH,
     RANGE_SEPARATOR_CHAR,
+    type TuiDayLike,
     TuiDayRange,
 } from '@taiga-ui/cdk/date-time';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import type {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
+import {type TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {
     TUI_DATE_ADAPTER,
     TUI_INPUT_DATE_OPTIONS_NEW,
@@ -78,7 +80,7 @@ export class TuiInputDateRangeDirective extends TuiInputDateBase<TuiDayRange> {
     }
 
     protected override onValueChange(value: string): void {
-        this.control?.control?.updateValueAndValidity({emitEvent: false});
+        this.control.control?.updateValueAndValidity({emitEvent: false});
         this.onChange(
             value.length === DATE_RANGE_FILLER_LENGTH
                 ? TuiDayRange.normalizeParse(value, this.format().mode)

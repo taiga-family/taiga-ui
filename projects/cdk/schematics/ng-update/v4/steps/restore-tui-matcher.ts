@@ -6,8 +6,9 @@ import {
     SMALL_TAB_SYMBOL,
     titleLog,
 } from 'ng-morph';
+import {type TypeNode} from 'ts-morph';
 
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {replaceIdentifier} from '../../steps/replace-identifier';
 
@@ -27,7 +28,7 @@ function updateTuiMatcher(options: TuiSchema): void {
         const parent = ref.getParent();
 
         if (Node.isTypeReference(parent)) {
-            const typeArguments = parent.getTypeArguments();
+            const typeArguments = parent.getTypeArguments() as TypeNode[] | null;
 
             if (!typeArguments || typeArguments.length !== 1) {
                 return;

@@ -1,17 +1,17 @@
 import * as path from 'node:path';
 
-import type {
-    ClassDeclaration,
-    Decorator,
-    ObjectLiteralExpression,
-    Pattern,
-    PropertyAssignment,
-    Query,
-    StructureType,
+import {
+    type ClassDeclaration,
+    type Decorator,
+    getClasses,
+    type ObjectLiteralExpression,
+    type Pattern,
+    type PropertyAssignment,
+    type Query,
+    type StructureType,
 } from 'ng-morph';
-import {getClasses} from 'ng-morph';
 
-import type {TemplateResource} from '../../ng-update/interfaces/template-resource';
+import {type TemplateResource} from '../../ng-update/interfaces/template-resource';
 
 function decoratorToTemplateResource(decorator: Decorator): TemplateResource | null {
     const [metadata] = decorator.getArguments() as ObjectLiteralExpression[];
@@ -24,7 +24,7 @@ function decoratorToTemplateResource(decorator: Decorator): TemplateResource | n
 
     if (templateUrl) {
         const templatePath = path.parse(
-            templateUrl?.getInitializer()?.getText().replaceAll(/['"`]/g, '') || '',
+            templateUrl.getInitializer()?.getText().replaceAll(/['"`]/g, '') || '',
         );
 
         return {

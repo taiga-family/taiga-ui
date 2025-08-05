@@ -3,8 +3,11 @@ import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiBooleanHandler, TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
+import {
+    TUI_IS_MOBILE,
+    type TuiBooleanHandler,
+    type TuiStringHandler,
+} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 

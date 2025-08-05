@@ -1,7 +1,7 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
-import type {Element} from 'parse5/dist/tree-adapters/default';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Attribute, type ElementLocation} from 'parse5/dist/common/token';
+import {type Element} from 'parse5/dist/tree-adapters/default';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {findAttr} from '../../../../utils/templates/inputs';
@@ -9,7 +9,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 import {replaceSizeAttr} from './toggles/common';
 
 const badgeSizeMap = {
@@ -55,7 +55,7 @@ export function migrateBadge({
             return;
         }
 
-        const svg = (childNodes as Element[])?.find(
+        const svg = (childNodes as Element[] | undefined)?.find(
             (node) => node.nodeName === 'tui-svg',
         );
 
@@ -79,7 +79,7 @@ function migrateIcon({
     templateOffset,
 }: {
     svg: Element;
-    sourceCodeLocation: ElementLocation;
+    sourceCodeLocation: ElementLocation | undefined;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
@@ -94,7 +94,7 @@ function migrateIcon({
 
     recorder.insertRight(
         insertTo,
-        `${src?.name === 'src' ? 'iconStart' : '[iconStart]'}="${srcValue}"`,
+        `${src.name === 'src' ? 'iconStart' : '[iconStart]'}="${srcValue}"`,
     );
     recorder.remove(
         svg.sourceCodeLocation?.startOffset || 0,
@@ -109,8 +109,8 @@ function migrateBadgeValue({
     recorder,
     templateOffset,
 }: {
-    valueAttr: Attribute;
-    sourceCodeLocation: ElementLocation;
+    valueAttr: Attribute | undefined;
+    sourceCodeLocation: ElementLocation | undefined;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
@@ -140,13 +140,13 @@ function migrateBadgeValue({
     }
 
     if (selfClosing) {
-        recorder.remove((sourceCodeLocation.startTag?.endOffset ?? 2) - 2, 1);
+        recorder.remove((sourceCodeLocation?.startTag?.endOffset ?? 2) - 2, 1);
     }
 }
 
 function addTodo(
     recorder: UpdateRecorder,
-    sourceCodeLocation: ElementLocation,
+    sourceCodeLocation: ElementLocation | undefined,
     templateOffset: number,
 ): void {
     recorder.insertRight(

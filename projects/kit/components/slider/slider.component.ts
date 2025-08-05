@@ -11,7 +11,7 @@ import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 import {take} from 'rxjs';
 
 import {TUI_FLOATING_PRECISION} from './helpers/key-steps';

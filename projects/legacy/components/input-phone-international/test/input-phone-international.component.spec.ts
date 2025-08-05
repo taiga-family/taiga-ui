@@ -1,13 +1,21 @@
-import type {DebugElement} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type DebugElement,
+    ViewChild,
+} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {tuiAssetsPathProvider, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import type {TuiCountryIsoCode, TuiLanguage} from '@taiga-ui/i18n';
-import {TUI_ENGLISH_LANGUAGE, TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';
+import {
+    TUI_ENGLISH_LANGUAGE,
+    TUI_LANGUAGE,
+    TUI_RUSSIAN_LANGUAGE,
+    type TuiCountryIsoCode,
+    type TuiLanguage,
+} from '@taiga-ui/i18n';
 import {TuiInputPhoneInternationalComponent} from '@taiga-ui/legacy';
 import {of} from 'rxjs';
 
@@ -305,8 +313,9 @@ describe('InputPhoneInternational', () => {
     });
 
     function getDropdownCountryNames(): string[] {
-        const countryNameContainers =
-            fixture.debugElement.queryAll(By.css('.t-country-item-name')) || [];
+        const countryNameContainers = fixture.debugElement.queryAll(
+            By.css('.t-country-item-name'),
+        );
 
         return countryNameContainers.map((container) =>
             container.nativeElement.textContent?.trim(),

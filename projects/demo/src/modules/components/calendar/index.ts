@@ -3,17 +3,16 @@ import {RouterModule} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    type TuiBooleanHandler,
     TuiDay,
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiCalendar} from '@taiga-ui/core';
+import {TuiCalendar, type TuiMarkerHandler} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = [
     'var(--tui-background-accent-1)',

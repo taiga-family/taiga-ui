@@ -1,25 +1,27 @@
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     inject,
     Input,
+    type QueryList,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {EMPTY_QUERY, TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk/constants';
 import {tuiControlValue, tuiQueryListChanges} from '@taiga-ui/cdk/observables';
-import type {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import {type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import {
     tuiGetOriginalArrayFromQueryList,
     tuiIsPresent,
     tuiPure,
 } from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {TUI_DATA_LIST_HOST, TuiOption} from '@taiga-ui/core/components/data-list';
+import {
+    TUI_DATA_LIST_HOST,
+    type TuiDataListHost,
+    TuiOption,
+} from '@taiga-ui/core/components/data-list';
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
-import type {Observable} from 'rxjs';
-import {combineLatest, map} from 'rxjs';
+import {combineLatest, map, type Observable} from 'rxjs';
 
 @Component({
     standalone: false,
@@ -101,7 +103,7 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @tuiPure
     private get valueChanges$(): Observable<readonly T[]> {
-        return tuiControlValue<readonly T[]>(this.control).pipe(
+        return tuiControlValue<readonly T[] | undefined>(this.control).pipe(
             map((value) => value || []),
         );
     }

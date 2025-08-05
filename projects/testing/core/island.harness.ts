@@ -1,4 +1,4 @@
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiIslandHarness extends TuiComponentHarness {

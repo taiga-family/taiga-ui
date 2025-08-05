@@ -1,6 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import type {PipeTransform} from '@angular/core';
-import {Pipe} from '@angular/core';
+import {Pipe, type PipeTransform} from '@angular/core';
 import {CHAR_PLUS} from '@taiga-ui/cdk/constants';
 import {tuiFormatPhone} from '@taiga-ui/legacy/utils';
 
@@ -46,6 +45,7 @@ export class TuiFormatPhonePipe implements PipeTransform {
     ): string {
         ngDevMode &&
             console.assert(
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 value !== undefined,
                 'Undefined was passed to tuiFormatPhone pipe',
             );

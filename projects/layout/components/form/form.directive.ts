@@ -1,14 +1,15 @@
-import type {InjectionToken, Provider} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
     inject,
+    type InjectionToken,
     Input,
+    type Provider,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
@@ -20,8 +21,7 @@ import {TUI_SEGMENTED_OPTIONS} from '@taiga-ui/kit/components/segmented';
 import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
 import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 
-import type {TuiFormOptions} from './form.options';
-import {TUI_FORM_OPTIONS} from './form.options';
+import {TUI_FORM_OPTIONS, type TuiFormOptions} from './form.options';
 
 const HEADER_SIZE = {
     s: 'xxxs',

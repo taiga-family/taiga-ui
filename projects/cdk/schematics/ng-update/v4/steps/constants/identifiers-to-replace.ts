@@ -1,4 +1,4 @@
-import type {ReplacementIdentifierMulti} from '../../../interfaces';
+import {type ReplacementIdentifierMulti} from '../../../interfaces';
 
 export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {

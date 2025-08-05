@@ -13,11 +13,9 @@ describe('tuiGetCurrencyByCode', () => {
 
     it('the same number of keys', () => {
         expect(Object.keys(TUI_CURRENCY_DICTIONARY).length).toBe(
-            Object.keys(TuiCurrency ?? {}).length,
+            Object.keys(TuiCurrency).length,
         );
 
-        expect(Object.keys(TuiCurrency ?? {}).length).toBe(
-            Object.keys(TuiCurrencyCode ?? {}).length,
-        );
+        expect(Object.keys(TuiCurrency).length).toBe(Object.keys(TuiCurrencyCode).length);
     });
 });

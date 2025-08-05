@@ -1,6 +1,5 @@
 // cspell:disable
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDocCode} from '@taiga-ui/addon-doc';
 import {HIGHLIGHT_OPTIONS, HighlightModule} from 'ngx-highlightjs';
 
@@ -100,7 +99,7 @@ describe('TuiDocCodeComponent', () => {
     });
 
     async function waitHighlightJsParseContent(): Promise<void> {
-        await fixture?.whenStable();
+        await fixture.whenStable();
         fixture.detectChanges();
         await new Promise((resolve) => {
             setTimeout(resolve, 100);

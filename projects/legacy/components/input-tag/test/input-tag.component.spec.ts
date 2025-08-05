@@ -1,12 +1,13 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {CHAR_NO_BREAK_SPACE, TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiHint, TuiRoot} from '@taiga-ui/core';
+import {
+    CHAR_NO_BREAK_SPACE,
+    TUI_TRUE_HANDLER,
+    type TuiBooleanHandler,
+} from '@taiga-ui/cdk';
+import {TuiHint, TuiRoot, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputTagComponent,
@@ -466,7 +467,7 @@ function getPlaceholderText<T>(fixture: ComponentFixture<T>): string {
         new TuiPageObject(fixture)
             .getByAutomationId('tui-input-tag__placeholder')
             ?.nativeElement.textContent?.trim() ||
-        new TuiPageObject(fixture)?.getByAutomationId('tui-input-tag__native')
+        new TuiPageObject(fixture).getByAutomationId('tui-input-tag__native')
             ?.nativeElement.placeholder
     );
 }

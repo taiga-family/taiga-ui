@@ -1,5 +1,4 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Provider} from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 

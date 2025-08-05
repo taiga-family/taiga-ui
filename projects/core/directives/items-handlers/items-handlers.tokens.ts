@@ -1,10 +1,16 @@
-import type {Provider, WritableSignal} from '@angular/core';
-import {InjectionToken, Optional, signal, SkipSelf} from '@angular/core';
+import {
+    InjectionToken,
+    Optional,
+    type Provider,
+    signal,
+    SkipSelf,
+    type WritableSignal,
+} from '@angular/core';
 import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {
-    TuiBooleanHandler,
-    TuiIdentityMatcher,
-    TuiStringHandler,
+import {
+    type TuiBooleanHandler,
+    type TuiIdentityMatcher,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk/types';
 
 export interface TuiItemsHandlers<T> {

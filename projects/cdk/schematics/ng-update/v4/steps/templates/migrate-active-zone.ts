@@ -1,5 +1,5 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
 
 import {
     findElementsByFn,
@@ -11,7 +11,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 import {removeAttrs} from '../utils/remove-attrs';
 
 export function migrateActiveZoneParent({
@@ -50,9 +50,7 @@ export function migrateActiveZoneParent({
                 return;
             }
 
-            if (parentAttr) {
-                removeAttrs([parentAttr], sourceCodeLocation, recorder, templateOffset);
-            }
+            removeAttrs([parentAttr], sourceCodeLocation, recorder, templateOffset);
         });
     });
 }

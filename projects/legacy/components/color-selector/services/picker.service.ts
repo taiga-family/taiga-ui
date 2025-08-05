@@ -3,7 +3,7 @@ import {inject, Injectable} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiGetElementPoint, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import {type TuiPoint} from '@taiga-ui/core/types';
 import {map, Observable, startWith, switchMap, takeUntil} from 'rxjs';
 
 /**

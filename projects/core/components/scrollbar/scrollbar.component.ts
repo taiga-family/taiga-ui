@@ -78,6 +78,7 @@ export class TuiScrollbar {
         const scrollTop = offsetTop + offsetHeight / 2 - this.scrollRef.clientHeight / 2;
         const scrollLeft = offsetLeft + offsetWidth / 2 - this.scrollRef.clientWidth / 2;
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         this.scrollRef.scrollTo?.(scrollLeft, scrollTop);
     }
 }

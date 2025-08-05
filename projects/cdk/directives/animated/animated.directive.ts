@@ -1,9 +1,9 @@
-import type {OnDestroy} from '@angular/core';
 import {
     afterNextRender,
     ApplicationRef,
     Directive,
     inject,
+    type OnDestroy,
     ViewContainerRef,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -46,7 +46,7 @@ export class TuiAnimated implements OnDestroy {
         data[TUI_LEAVE] = [this.el];
 
         afterNextRender(() => {
-            renderer.removeChild = (parent: Node, el: Node, host?: boolean) => {
+            renderer.removeChild = (parent: Node | null, el: Node, host?: boolean) => {
                 const remove = (): void => removeChild.call(renderer, parent, el, host);
                 const elements: Element[] = data[TUI_LEAVE];
                 const element = elements.find((leave) => el.contains(leave));
@@ -59,10 +59,12 @@ export class TuiAnimated implements OnDestroy {
 
                 element.classList.remove(TUI_ENTER);
 
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 const {length} = element.getAnimations?.() || [];
 
                 element.classList.add(TUI_LEAVE);
 
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 const animations = element.getAnimations?.() ?? [];
                 const last = animations[animations.length - 1];
                 const finish = (): void => {
@@ -91,6 +93,7 @@ export class TuiAnimated implements OnDestroy {
     }
 
     protected remove(): void {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (this.el.isConnected && !this.el.getAnimations?.().length) {
             this.el.classList.remove(TUI_ENTER);
         }

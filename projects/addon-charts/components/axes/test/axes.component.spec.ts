@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiAxes} from '@taiga-ui/addon-charts';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 

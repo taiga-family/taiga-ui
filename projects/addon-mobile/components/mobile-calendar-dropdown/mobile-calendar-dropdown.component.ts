@@ -1,14 +1,24 @@
-import type {ValueProvider} from '@angular/core';
-import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+    type ValueProvider,
+} from '@angular/core';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile/components/mobile-calendar';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiDayLike} from '@taiga-ui/cdk/date-time';
-import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
+import {
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiDay,
+    type TuiDayLike,
+    TuiDayRange,
+} from '@taiga-ui/cdk/date-time';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {
@@ -17,7 +27,7 @@ import {
 } from '@taiga-ui/kit/components/calendar-range';
 import {TUI_MOBILE_CALENDAR} from '@taiga-ui/kit/tokens';
 import {injectContext} from '@taiga-ui/polymorpheus';
-import type {Observer} from 'rxjs';
+import {type Observer} from 'rxjs';
 
 import {TuiMobileCalendarDropdownNew} from './mobile-calendar-dropdown.directive';
 

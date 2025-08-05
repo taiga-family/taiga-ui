@@ -1,5 +1,5 @@
-import type {AfterContentInit, QueryList} from '@angular/core';
 import {
+    type AfterContentInit,
     ContentChildren,
     DestroyRef,
     Directive,
@@ -7,17 +7,18 @@ import {
     inject,
     Input,
     NgZone,
+    type QueryList,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiLineChartDrivers} from '@taiga-ui/addon-charts/components/line-chart';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import type {TuiDay} from '@taiga-ui/cdk/date-time';
+import {type TuiDay} from '@taiga-ui/cdk/date-time';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiPoint} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiPoint} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';
 
 import {TuiLineDaysChart} from './line-days-chart.component';
@@ -62,7 +63,7 @@ export class TuiLineDaysChartHint implements AfterContentInit {
         return this.getMap(...this.charts.map(({value}) => value)).get(String(day)) || [];
     }
 
-    public raise(day: TuiDay): void {
+    public raise(day?: TuiDay): void {
         const current = this.charts
             .map(({value}) => (day ? find(value, day) : []))
             .filter(([_, value]) => !Number.isNaN(value));

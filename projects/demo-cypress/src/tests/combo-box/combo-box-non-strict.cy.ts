@@ -7,12 +7,11 @@ import {
     Output,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 
 interface Country {
     id: string;
@@ -71,7 +70,7 @@ export class TestComboBox {
         this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
     }
 
-    protected readonly stringify: TuiStringHandler<Country> = (x) => x.name ?? x;
+    protected readonly stringify: TuiStringHandler<Country> = (x) => x.name;
 }
 
 describe('ComboBox[strict=false]', () => {

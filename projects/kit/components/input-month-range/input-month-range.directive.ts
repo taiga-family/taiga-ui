@@ -2,8 +2,11 @@ import {Directive, effect, inject, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import type {TuiMonth} from '@taiga-ui/cdk/date-time';
-import {RANGE_SEPARATOR_CHAR, TuiMonthRange} from '@taiga-ui/cdk/date-time';
+import {
+    RANGE_SEPARATOR_CHAR,
+    type TuiMonth,
+    TuiMonthRange,
+} from '@taiga-ui/cdk/date-time';
 import {
     tuiInjectAuxiliary,
     TuiSelectLike,

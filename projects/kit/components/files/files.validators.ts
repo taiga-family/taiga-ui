@@ -1,6 +1,6 @@
 import {coerceArray} from '@angular/cdk/coercion';
-import type {ValidatorFn} from '@angular/forms';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type ValidatorFn} from '@angular/forms';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 
 export const TUI_SIZE_ERROR = 'tuiSize';
 export const TUI_FORMAT_ERROR = 'tuiFormat';
@@ -39,8 +39,7 @@ function checkFormat({name, type}: File, formats: readonly string[]): boolean {
         (format) =>
             format === extension ||
             format === type ||
-            (format.split('/')[1] === '*' &&
-                type?.split('/')[0] === format.split('/')[0]),
+            (format.split('/')[1] === '*' && type.split('/')[0] === format.split('/')[0]),
     );
 }
 

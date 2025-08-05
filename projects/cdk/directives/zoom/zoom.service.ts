@@ -4,7 +4,7 @@ import {tuiDistanceBetweenTouches, tuiInjectElement} from '@taiga-ui/cdk/utils';
 import {filter, map, merge, Observable, scan, switchMap, takeUntil} from 'rxjs';
 
 import {TUI_ZOOM_OPTIONS} from './zoom.options';
-import type {TuiZoomEvent} from './zoom.types';
+import {type TuiZoomEvent} from './zoom.types';
 
 const TOUCH_SENSITIVITY = 0.01;
 

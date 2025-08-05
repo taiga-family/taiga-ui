@@ -17,7 +17,7 @@ import {
     TUI_DOC_SEARCH_ENABLED,
     TUI_DOC_SEARCH_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
-import type {TuiDocRoutePage, TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
+import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
 import {TuiSidebarDirective} from '@taiga-ui/addon-mobile/directives/sidebar';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
@@ -178,7 +178,7 @@ export class TuiDocNavigation {
             event.code === 'Slash' &&
             !this.doc.activeElement?.matches('input,textarea,[contenteditable]')
         ) {
-            this.searchInput?.nativeElement?.focus();
+            this.searchInput?.nativeElement.focus();
             event.preventDefault();
         }
     }

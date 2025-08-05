@@ -1,6 +1,6 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import type {Element} from 'parse5/dist/tree-adapters/default';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Element} from 'parse5/dist/tree-adapters/default';
 
 import {addImportToClosestModule} from '../../../utils/add-import-to-closest-module';
 import {findElementsWithAttributeOnTag} from '../../../utils/templates/elements';
@@ -8,8 +8,8 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../utils/templates/template-resource';
-import type {ReplacementAttributeValue} from '../../interfaces/replacement-attribute-value';
-import type {TemplateResource} from '../../interfaces/template-resource';
+import {type ReplacementAttributeValue} from '../../interfaces/replacement-attribute-value';
+import {type TemplateResource} from '../../interfaces/template-resource';
 
 export function replaceAttrValues({
     resource,

@@ -8,11 +8,11 @@ import {
     Output,
     signal,
 } from '@angular/core';
-import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {
     MAX_YEAR,
     MIN_YEAR,
     TuiDay,
+    type TuiDayRange,
     TuiMonth,
     TuiMonthRange,
     TuiYear,
@@ -20,7 +20,7 @@ import {
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives';
@@ -118,7 +118,7 @@ export class TuiCalendarYear {
         }
 
         const hovered = this.isRangePicking() ? hoveredItem : null;
-        const from = 'from' in value ? value.from?.year : value.year;
+        const from = 'from' in value ? value.from.year : value.year;
         const to = 'from' in value ? value.to.year : value.year;
 
         const min = Math.min(from, hovered ?? to);
@@ -161,14 +161,14 @@ export class TuiCalendarYear {
 
     private get calculatedMin(): number {
         const initial = this.initialItem() - LIMIT;
-        const min = this.min() ?? MIN_YEAR;
+        const min = this.min() || MIN_YEAR;
 
         return min > initial ? min : initial;
     }
 
     private get calculatedMax(): number {
         const initial = this.initialItem() + LIMIT;
-        const max = this.max() ?? MAX_YEAR;
+        const max = this.max() || MAX_YEAR;
 
         return max < initial ? max + 1 : initial;
     }

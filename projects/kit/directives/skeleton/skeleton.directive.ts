@@ -1,10 +1,11 @@
-import type {OnChanges, SimpleChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
     inject,
     Input,
+    type OnChanges,
+    type SimpleChanges,
     ViewEncapsulation,
 } from '@angular/core';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';

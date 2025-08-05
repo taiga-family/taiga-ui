@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core';
-import {TuiLink} from '@taiga-ui/core';
+import {TuiLink, type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider, TuiProgress} from '@taiga-ui/kit';
 
 @Component({

@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import type {IsActiveMatchOptions} from '@angular/router';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import {type IsActiveMatchOptions, RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';

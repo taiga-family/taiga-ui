@@ -1,21 +1,21 @@
-import type {JsonArray} from '@angular-devkit/core';
-import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {type JsonArray} from '@angular-devkit/core';
+import {type Rule, type SchematicContext, type Tree} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {getWorkspace, updateWorkspace} from '@schematics/angular/utility/workspace';
 import {addPackageJsonDependency} from 'ng-morph';
 
 import {tuiIsString} from '../../utils/miscellaneous/is-string';
 import {TAIGA_VERSION} from '../ng-add/constants/versions';
-import type {TuiSchema} from '../ng-add/schema';
-import type {Asset} from '../ng-update/interfaces/asset';
+import {type TuiSchema} from '../ng-add/schema';
+import {type Asset} from '../ng-update/interfaces/asset';
 import {getProjectTargetOptions} from './get-project-target-options';
 import {getProjects} from './get-projects';
 
-function hasTaigaIcons(assets: Asset[]): boolean {
+function hasTaigaIcons(assets?: Asset[]): boolean {
     return !!assets?.find((asset) =>
         tuiIsString(asset)
             ? asset.includes('taiga-ui')
-            : asset?.input?.includes('taiga-ui'),
+            : asset.input.includes('taiga-ui'),
     );
 }
 

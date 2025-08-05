@@ -1,5 +1,7 @@
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {TUI_IDENTITY_VALUE_TRANSFORMER} from '@taiga-ui/cdk/classes';
+import {
+    TUI_IDENTITY_VALUE_TRANSFORMER,
+    type TuiValueTransformer,
+} from '@taiga-ui/cdk/classes';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiInputPhoneOptions {

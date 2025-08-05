@@ -1,5 +1,4 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,26 +7,26 @@ import {
     inject,
     Input,
     Output,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
-import type {
-    TuiHorizontalDirection,
-    TuiSizeL,
-    TuiSizeS,
-    TuiSizeXS,
+import {
+    type TuiHorizontalDirection,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiSizeXS,
 } from '@taiga-ui/core/types';
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
@@ -59,7 +58,7 @@ export class TuiPagination {
     public size: TuiSizeL | TuiSizeS = 'l';
 
     @Input()
-    public readonly disabled = false;
+    public readonly disabled: boolean = false;
 
     /**
      * Amount of visible pages around active page

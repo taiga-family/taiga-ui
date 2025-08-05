@@ -1,7 +1,7 @@
 import {animate, style, transition, trigger} from '@angular/animations';
 import {NgForOf, NgIf, NgSwitch, NgSwitchCase, NgTemplateOutlet} from '@angular/common';
-import type {AfterContentInit, QueryList} from '@angular/core';
 import {
+    type AfterContentInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -9,6 +9,7 @@ import {
     DestroyRef,
     inject,
     Input,
+    type QueryList,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
@@ -20,7 +21,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiQueryListChanges, tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
 import {TuiToArrayPipe} from '@taiga-ui/cdk/pipes/to-array';
-import type {TuiMatcher} from '@taiga-ui/cdk/types';
+import {type TuiMatcher} from '@taiga-ui/cdk/types';
 import {TuiNotification} from '@taiga-ui/core/components/notification';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';

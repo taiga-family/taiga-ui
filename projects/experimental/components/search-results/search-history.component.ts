@@ -31,7 +31,7 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
 })
 export class TuiSearchHistory {
     private readonly textfield = inject(TuiTextfieldComponent);
-    private readonly storage = inject(WA_LOCAL_STORAGE);
+    private readonly storage = inject<Storage | undefined>(WA_LOCAL_STORAGE);
     private readonly control = inject(NgControl);
 
     protected readonly close = toSignal(inject(TUI_CLOSE_WORD));

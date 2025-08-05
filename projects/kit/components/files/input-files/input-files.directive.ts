@@ -5,14 +5,14 @@ import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {
+    type TuiAppearanceOptions,
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {filter, map, switchMap, timer} from 'rxjs';
 
-import type {TuiFileLike} from '../files.types';
+import {type TuiFileLike} from '../files.types';
 import {tuiFilesRejected} from '../files.utils';
 import {TuiInputFiles} from './input-files.component';
 import {TuiInputFilesValidator} from './input-files-validator.directive';

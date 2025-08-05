@@ -1,6 +1,5 @@
-import type {PipeTransform} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
-import type {TuiDurationOptions} from '@taiga-ui/core/animations';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {type TuiDurationOptions} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 

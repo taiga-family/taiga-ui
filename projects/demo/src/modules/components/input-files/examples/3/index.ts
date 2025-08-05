@@ -5,8 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
 import {TuiIcon, TuiLink} from '@taiga-ui/core';
-import type {TuiFileLike} from '@taiga-ui/kit';
-import {TuiFiles} from '@taiga-ui/kit';
+import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -59,14 +58,14 @@ export default class Example {
 
         this.restoredFiles = [...this.restoredFiles, file];
         this.removedFiles = this.removedFiles.filter(
-            (removed) => file.name !== removed?.name,
+            (removed) => file.name !== removed.name,
         );
     }
 
     protected remove(file: TuiFileLike): void {
         this.removedFiles = [...this.removedFiles, file];
         this.restoredFiles = this.restoredFiles.filter(
-            (restored) => file.name !== restored?.name,
+            (restored) => file.name !== restored.name,
         );
     }
 }

@@ -1,12 +1,13 @@
 import {NgForOf} from '@angular/common';
-import type {AfterViewInit, QueryList} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
     inject,
     Input,
     NgZone,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -20,12 +21,15 @@ import {EMPTY_ARRAY, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk/types';
+import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber, tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiHint} from '@taiga-ui/core/directives/hint';
-import type {TuiPoint} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {type TuiPoint} from '@taiga-ui/core/types';
+import {
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';
 
 import {TuiLineDaysChartHint} from './line-days-chart-hint.directive';
@@ -131,7 +135,7 @@ export class TuiLineDaysChart implements AfterViewInit {
             });
     }
 
-    public onHovered(day: TuiDay | number): void {
+    public onHovered(day?: TuiDay | number): void {
         if (tuiIsNumber(day)) {
             this.charts.forEach((chart) => chart.onHovered(NaN));
 

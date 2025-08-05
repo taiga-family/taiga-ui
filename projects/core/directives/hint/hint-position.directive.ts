@@ -9,11 +9,15 @@ import {
     TuiRectAccessor,
 } from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import {type TuiPoint} from '@taiga-ui/core/types';
 
 import {TuiHintDirective} from './hint.directive';
-import type {TuiHintDirection, TuiHintOptions} from './hint-options.directive';
-import {TUI_HINT_DIRECTIONS, TUI_HINT_OPTIONS} from './hint-options.directive';
+import {
+    TUI_HINT_DIRECTIONS,
+    TUI_HINT_OPTIONS,
+    type TuiHintDirection,
+    type TuiHintOptions,
+} from './hint-options.directive';
 
 const GAP = 8;
 const ARROW_OFFSET = 24;
@@ -54,6 +58,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
     public getPosition(rect: DOMRect, el?: HTMLElement): TuiPoint {
         const width = el?.clientWidth ?? rect.width;
         const height = el?.clientHeight ?? rect.height;
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         const hostRect = this.accessor.getClientRect() ?? EMPTY_CLIENT_RECT;
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;

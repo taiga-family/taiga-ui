@@ -1,17 +1,18 @@
-import type {AbstractControl} from '@angular/forms';
-import type {
-    TuiDropdownAlign,
-    TuiDropdownWidth,
-    TuiHintDirection,
-    TuiSizeL,
-    TuiSizeS,
-    TuiVerticalDirection,
+import {type AbstractControl} from '@angular/forms';
+import {
+    TUI_DROPDOWN_DEFAULT_OPTIONS,
+    TUI_HINT_DIRECTIONS,
+    type TuiDropdownAlign,
+    type TuiDropdownWidth,
+    type TuiHintDirection,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiVerticalDirection,
 } from '@taiga-ui/core';
-import {TUI_DROPDOWN_DEFAULT_OPTIONS, TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject} from 'rxjs';
 
-import type {AbstractExampleTuiDropdown} from './dropdown';
+import {type AbstractExampleTuiDropdown} from './dropdown';
 import {AbstractExampleTuiInteractive} from './interactive';
 
 const CUSTOM_SVG = `<svg xmlns="http://www.w3.org/2000/svg"

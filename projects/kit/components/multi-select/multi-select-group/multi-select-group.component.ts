@@ -1,4 +1,3 @@
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,6 +5,7 @@ import {
     ContentChildren,
     inject,
     Input,
+    type QueryList,
     signal,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -14,8 +14,10 @@ import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiOptionWithValue} from '@taiga-ui/core/components/data-list';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 

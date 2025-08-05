@@ -1,5 +1,5 @@
 /// <reference lib="es2021" />
-import type {SchematicContext} from '@angular-devkit/schematics';
+import {type SchematicContext} from '@angular-devkit/schematics';
 import {getSourceFiles} from 'ng-morph';
 
 import {ALL_FILES} from '../../../constants';

@@ -1,9 +1,9 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
-import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core/types';
 
 import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
 

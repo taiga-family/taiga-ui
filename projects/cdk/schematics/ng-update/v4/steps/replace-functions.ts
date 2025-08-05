@@ -1,7 +1,7 @@
 import {Node} from 'ng-morph';
 
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
-import type {ReplacementType} from '../../interfaces/replacement-type';
+import {type ReplacementType} from '../../interfaces/replacement-type';
 
 export function replaceFunctions(functions: readonly ReplacementType[]): void {
     functions.forEach(({from, to, moduleSpecifier}) => {
@@ -13,9 +13,9 @@ export function replaceFunctions(functions: readonly ReplacementType[]): void {
             const parent = ref.getParent();
 
             if (Node.isImportSpecifier(parent) || Node.isCallExpression(parent)) {
-                parent?.replaceWithText(
+                parent.replaceWithText(
                     parent
-                        ?.getText({includeJsDocComments: false})
+                        .getText({includeJsDocComments: false})
                         .trim()
                         .replace(from, to ?? from),
                 );

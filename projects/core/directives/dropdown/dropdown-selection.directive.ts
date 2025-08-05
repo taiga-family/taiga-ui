@@ -1,6 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import type {OnDestroy} from '@angular/core';
-import {Directive, inject, Input, ViewContainerRef} from '@angular/core';
+import {Directive, inject, Input, type OnDestroy, ViewContainerRef} from '@angular/core';
 import {
     CHAR_NO_BREAK_SPACE,
     CHAR_ZERO_WIDTH_SPACE,
@@ -8,7 +7,7 @@ import {
     TUI_TRUE_HANDLER,
 } from '@taiga-ui/cdk/constants';
 import {TUI_RANGE} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {
     tuiInjectElement,
     tuiIsElement,
@@ -17,8 +16,12 @@ import {
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiRectAccessor} from '@taiga-ui/core/classes';
-import {tuiAsDriver, tuiAsRectAccessor, TuiDriver} from '@taiga-ui/core/classes';
+import {
+    tuiAsDriver,
+    tuiAsRectAccessor,
+    TuiDriver,
+    type TuiRectAccessor,
+} from '@taiga-ui/core/classes';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
 import {tuiGetWordRange} from '@taiga-ui/core/utils';
 import {BehaviorSubject, combineLatest, distinctUntilChanged, filter, map} from 'rxjs';
@@ -121,7 +124,8 @@ export class TuiDropdownSelection
         const range =
             active && tuiIsTextfield(active) && this.el.contains(active)
                 ? this.veryVerySadInputFix(active)
-                : (selection?.rangeCount && selection.getRangeAt(0)) || this.range;
+                : // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                  (selection?.rangeCount && selection.getRangeAt(0)) || this.range;
 
         return range.cloneRange();
     }

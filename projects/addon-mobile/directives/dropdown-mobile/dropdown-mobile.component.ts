@@ -1,17 +1,17 @@
 import {DOCUMENT, NgIf} from '@angular/common';
-import type {AfterViewInit, OnDestroy} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     inject,
+    type OnDestroy,
     ViewEncapsulation,
 } from '@angular/core';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import type {TuiSwipeEvent} from '@taiga-ui/cdk/directives/swipe';
-import {TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
+import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk/directives/swipe';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';

@@ -1,4 +1,4 @@
-import type {Signal} from '@angular/core';
+import {type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiUntrackedScheduler} from '@taiga-ui/cdk/observables';

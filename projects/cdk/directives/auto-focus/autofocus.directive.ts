@@ -1,7 +1,5 @@
-import type {BooleanInput} from '@angular/cdk/coercion';
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
-import type {AfterViewInit} from '@angular/core';
-import {DestroyRef, Directive, inject, Input} from '@angular/core';
+import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
+import {type AfterViewInit, DestroyRef, Directive, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {timer} from 'rxjs';
 

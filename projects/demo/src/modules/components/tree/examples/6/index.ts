@@ -3,8 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiHandler} from '@taiga-ui/cdk';
-import {EMPTY_ARRAY, TuiMapperPipe} from '@taiga-ui/cdk';
+import {EMPTY_ARRAY, type TuiHandler, TuiMapperPipe} from '@taiga-ui/cdk';
 import {TuiLabel} from '@taiga-ui/core';
 import {TuiCheckbox, TuiTree} from '@taiga-ui/kit';
 
@@ -62,7 +61,7 @@ export default class Example {
     ): boolean | null => {
         let result: boolean | null = null;
         const flat = flatten(item);
-        const key = flat[0]!;
+        const key = flat[0];
 
         if (key) {
             result = !!map.get(key);

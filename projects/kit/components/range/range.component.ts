@@ -1,4 +1,3 @@
-import type {OnChanges, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,6 +5,8 @@ import {
     ElementRef,
     inject,
     Input,
+    type OnChanges,
+    type QueryList,
     signal,
     ViewChildren,
 } from '@angular/core';
@@ -16,10 +17,10 @@ import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiQuantize} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 import {
     TUI_SLIDER_OPTIONS,
+    type TuiKeySteps,
     tuiKeyStepValueToPercentage,
     tuiPercentageToKeyStepValue,
     TuiSlider,
@@ -93,7 +94,8 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     public limit = Infinity;
 
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
-    public readonly slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
+    public readonly slidersRefs: QueryList<ElementRef<HTMLInputElement> | undefined> =
+        EMPTY_QUERY;
 
     public readonly start = computed(() => this.toPercent(this.value()[0]));
     public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));

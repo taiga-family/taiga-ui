@@ -5,7 +5,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
+import {type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core/types';
 
 import {TUI_PROGRESS_OPTIONS} from '../progress.options';
 

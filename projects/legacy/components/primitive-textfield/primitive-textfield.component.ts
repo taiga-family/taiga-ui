@@ -1,21 +1,22 @@
-import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
+    type ElementRef,
     EventEmitter,
     inject,
     Input,
     Output,
+    type QueryList,
     ViewChild,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiRetargetedBoundaryCrossing} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_TEXTFIELD_OPTIONS as OPTIONS} from '@taiga-ui/core/components/textfield';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiInteractive} from '@taiga-ui/legacy/classes';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
@@ -24,12 +25,10 @@ import {
 } from '@taiga-ui/legacy/directives';
 import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
 import {tuiGetBorder} from '@taiga-ui/legacy/utils';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {fromEvent, map} from 'rxjs';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {fromEvent, map, type Observable} from 'rxjs';
 
-import type {TuiPrimitiveTextfield} from './primitive-textfield-types';
+import {type TuiPrimitiveTextfield} from './primitive-textfield-types';
 
 export const TUI_ICON_START_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
     s: 1.25,
@@ -288,7 +287,8 @@ export class TuiPrimitiveTextfieldComponent
 
     protected transitionStartHandler({propertyName, target}: TransitionEvent): void {
         const matchedAutofill =
-            propertyName.includes('box-shadow') && (target as Element)?.matches('input');
+            propertyName.includes('box-shadow') &&
+            (target as Element | undefined)?.matches('input');
 
         if (matchedAutofill) {
             this.onAutofilled(!this.autofilled);

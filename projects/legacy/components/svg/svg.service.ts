@@ -1,7 +1,6 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {inject, Injectable, SecurityContext} from '@angular/core';
-import type {SafeHtml} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {TUI_ICON_STARTS, TUI_SANITIZER} from '@taiga-ui/legacy/tokens';
 import {tuiProcessIcon} from '@taiga-ui/legacy/utils';
 import {BehaviorSubject} from 'rxjs';
@@ -58,11 +57,11 @@ export class TuiSvgService {
         };
     }
 
-    private parseSrc(name: string, src: string): SafeHtml {
+    private parseSrc(name: string, src: string): SafeHtml | string {
         return this.sanitize(tuiProcessIcon(src, name));
     }
 
-    private sanitize(src: string): SafeHtml {
+    private sanitize(src: string): SafeHtml | string {
         return this.sanitizer.bypassSecurityTrustHtml(
             (this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(SecurityContext.HTML, src)

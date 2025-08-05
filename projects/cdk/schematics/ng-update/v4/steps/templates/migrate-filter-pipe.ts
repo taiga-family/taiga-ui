@@ -1,12 +1,12 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
 
 import {findElementsInTemplateByFn} from '../../../../utils/templates/elements';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 
 export function migrateFilterPipe({
     resource,
@@ -21,6 +21,7 @@ export function migrateFilterPipe({
     const templateOffset = getTemplateOffset(resource);
 
     const elements = findElementsInTemplateByFn(template, (el) =>
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         el.attrs?.some((attr) => attr.value.includes('tuiFilterByInputWith')),
     );
 
@@ -31,7 +32,7 @@ export function migrateFilterPipe({
             return;
         }
 
-        const {startOffset, endOffset} = sourceCodeLocation?.attrs?.[attr.name] || {
+        const {startOffset, endOffset} = sourceCodeLocation.attrs?.[attr.name] || {
             startOffset: 0,
             endOffset: 0,
         };

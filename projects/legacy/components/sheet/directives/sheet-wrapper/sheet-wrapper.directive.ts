@@ -4,12 +4,12 @@ import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiIsFalsy, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {Observable} from 'rxjs';
 import {
     debounceTime,
     distinctUntilChanged,
     filter,
     map,
+    type Observable,
     race,
     startWith,
     switchMap,

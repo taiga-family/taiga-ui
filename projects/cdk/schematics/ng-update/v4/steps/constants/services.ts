@@ -1,4 +1,4 @@
-import type {ReplacementService} from '../../../interfaces';
+import {type ReplacementService} from '../../../interfaces';
 
 export const SERVICES_TO_REPLACE: ReplacementService[] = [
     {

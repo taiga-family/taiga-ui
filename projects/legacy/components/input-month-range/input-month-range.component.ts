@@ -6,21 +6,25 @@ import {
     ViewChild,
 } from '@angular/core';
 import {CHAR_EN_DASH, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiMonth, TuiYear} from '@taiga-ui/cdk/date-time';
-import {tuiDateClamp, TuiDay, TuiMonthRange} from '@taiga-ui/cdk/date-time';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {
+    tuiDateClamp,
+    TuiDay,
+    type TuiMonth,
+    TuiMonthRange,
+    type TuiYear,
+} from '@taiga-ui/cdk/date-time';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {TuiMonthPipe} from '@taiga-ui/core/pipes/month';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
-import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit/tokens';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {TUI_INPUT_DATE_OPTIONS, type TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
 import {
     TUI_MONTH_FORMATTER,
     TUI_MONTH_FORMATTER_PROVIDER,
     tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
 } from '@taiga-ui/legacy/tokens';
 
 /**

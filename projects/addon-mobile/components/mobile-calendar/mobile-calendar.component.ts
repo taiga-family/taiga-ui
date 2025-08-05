@@ -4,8 +4,8 @@ import {
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
 import {AsyncPipe, DOCUMENT, NgForOf, NgIf} from '@angular/common';
-import type {AfterViewInit} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
@@ -35,7 +35,7 @@ import {
 } from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TUI_IS_E2E, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_CALENDAR_SHEET_OPTIONS} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
@@ -54,7 +54,6 @@ import {
     TUI_DONE_WORD,
 } from '@taiga-ui/kit/tokens';
 import {tuiToggleDay} from '@taiga-ui/kit/utils';
-import type {MonoTypeOperatorFunction} from 'rxjs';
 import {
     BehaviorSubject,
     debounceTime,
@@ -64,6 +63,7 @@ import {
     identity,
     map,
     mergeMap,
+    type MonoTypeOperatorFunction,
     race,
     skip,
     switchMap,
@@ -257,7 +257,7 @@ export class TuiMobileCalendar implements AfterViewInit {
             this.value = TuiDayRange.sort(this.value, day);
         } else if (this.value instanceof TuiDayRange) {
             this.value = day;
-        } else if (!this.value) {
+        } else if (!(this.value as TuiDay | null)) {
             this.value = day;
         }
     }
@@ -295,7 +295,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly disabledItemHandlerMapper: TuiMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min, max) => (item) =>
+    > = (disabledItemHandler, min, max: TuiDay | null) => (item) =>
         item.dayBefore(min) ||
         (max !== null && item.dayAfter(max)) ||
         disabledItemHandler(item);
@@ -310,7 +310,7 @@ export class TuiMobileCalendar implements AfterViewInit {
         }
 
         if (!(this.value instanceof TuiDayRange)) {
-            return this.value?.[0]?.year ?? this.today.year;
+            return this.value[0]?.year ?? this.today.year;
         }
 
         return this.value.to.year;
@@ -327,8 +327,8 @@ export class TuiMobileCalendar implements AfterViewInit {
 
         if (!(this.value instanceof TuiDayRange)) {
             return (
-                (this.value?.[0]?.month ?? this.today.month) +
-                ((this.value?.[0]?.year ?? this.today.year) - STARTING_YEAR) *
+                (this.value[0]?.month ?? this.today.month) +
+                ((this.value[0]?.year ?? this.today.year) - STARTING_YEAR) *
                     MONTHS_IN_YEAR
             );
         }

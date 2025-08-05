@@ -1,5 +1,5 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
 
 import {findElementsWithAttributeOnTag} from '../../../../utils/templates/elements';
 import {findAttr} from '../../../../utils/templates/inputs';
@@ -7,7 +7,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 
 export function migrateExpandable({
     resource,
@@ -34,7 +34,7 @@ export function migrateExpandable({
             return;
         }
 
-        const expandableValue = expandableAttr?.value;
+        const expandableValue = expandableAttr.value;
         const expandableStart =
             sourceCodeLocation?.attrs?.[expandableAttr.name]?.startOffset ?? 0;
         const expandableEnd =

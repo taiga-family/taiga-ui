@@ -1,4 +1,4 @@
-import type {Routes} from '@angular/router';
+import {type Routes} from '@angular/router';
 import {tuiGenerateDialogableRoute as tuiRouteDialog} from '@taiga-ui/kit';
 
 export default [

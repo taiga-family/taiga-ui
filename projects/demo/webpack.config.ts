@@ -2,7 +2,7 @@ import path from 'node:path';
 
 import {sync as globSync} from 'glob';
 import TerserPlugin from 'terser-webpack-plugin';
-import type {Configuration, RuleSetRule} from 'webpack';
+import {type Configuration, type RuleSetRule} from 'webpack';
 import {merge} from 'webpack-merge';
 
 interface Options {
@@ -84,7 +84,7 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
             typeof rule === 'object' &&
             !!rule &&
             DO_NOT_MUTATE_RAW_FILE_CONTENTS.some(
-                (pattern) => rule.test instanceof RegExp && rule.test?.test(pattern),
+                (pattern) => rule.test instanceof RegExp && rule.test.test(pattern),
             )
                 ? {
                       ...(rule as unknown as RuleSetRule),

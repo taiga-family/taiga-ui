@@ -1,11 +1,11 @@
 import {DOCUMENT, isPlatformBrowser} from '@angular/common';
 import {inject, Injectable, PLATFORM_ID} from '@angular/core';
-import type {Params} from '@angular/router';
+import {type Params} from '@angular/router';
 import {TUI_IS_E2E, tuiCreateOptions} from '@taiga-ui/cdk';
 
 declare global {
     interface Window {
-        ym(
+        ym?(
             id: number | string,
             type: string,
             url: string,

@@ -72,6 +72,7 @@ export class TuiTouchable {
         const {ownerDocument} = element;
         const id = tuiFindTouchIndex(touches, identifier);
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (!ownerDocument || id === -1) {
             return true;
         }

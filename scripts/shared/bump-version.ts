@@ -1,5 +1,5 @@
 import {parseVersion} from './parse-version';
-import type {TuiReleaseMode} from './release-mode';
+import {type TuiReleaseMode} from './release-mode';
 
 export function bumpVersion(version: string, mode: TuiReleaseMode): string {
     let {major, minor, patch, rc} = parseVersion(version);

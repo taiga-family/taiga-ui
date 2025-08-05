@@ -7,25 +7,26 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoDateTimeOptionsGenerator,
     maskitoSelectionChangeHandler,
 } from '@maskito/kit';
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiDateMode, TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import {
     DATE_FILLER_LENGTH,
     tuiDateClamp,
+    type TuiDateMode,
     TuiDay,
     TuiMonth,
     TuiTime,
+    type TuiTimeMode,
 } from '@taiga-ui/cdk/date-time';
-import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler, TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {
     changeDateSeparator,
@@ -33,23 +34,24 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_TIME_VALUE_TRANSFORMER,
     TUI_INPUT_DATE_OPTIONS,
     TUI_TIME_TEXTS,
     tuiDateStreamWithTransformer,
+    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
-import type {Observable} from 'rxjs';
-import {BehaviorSubject, combineLatest, map, timer} from 'rxjs';
+import {BehaviorSubject, combineLatest, map, type Observable, timer} from 'rxjs';
 
 const DATE_TIME_SEPARATOR = ', ';
 
@@ -184,7 +186,7 @@ export class TuiInputDateTimeComponent
         }
 
         this.nativeValue.set(
-            this.value && (this.value[0] || this.value[1]) ? this.computedValue : '',
+            this.value?.[0] || this.value?.[1] ? this.computedValue : '',
         );
     }
 
@@ -286,7 +288,7 @@ export class TuiInputDateTimeComponent
 
     protected onDayClick(day: TuiDay): void {
         const modifiedTime =
-            (this.value?.[1] && this.clampTime(this.value?.[1], day)) ?? null;
+            (this.value?.[1] && this.clampTime(this.value[1], day)) ?? null;
         const newCaretIndex = DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length;
 
         this.value = [day, modifiedTime];
@@ -336,6 +338,7 @@ export class TuiInputDateTimeComponent
         const parsedTime = TuiTime.fromString(time);
         const parsedDate = TuiDay.normalizeParse(date, this.dateFormat.mode);
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         this.value = !parsedDate || !parsedTime ? null : [parsedDate, parsedTime];
     }
 

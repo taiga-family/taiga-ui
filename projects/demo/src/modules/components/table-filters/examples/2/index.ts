@@ -61,7 +61,7 @@ export default class Example {
 
     public addRow(): void {
         const name = this.testData[this.testIndex]?.name ?? '';
-        const balance = this.testData?.[this.testIndex]?.balance ?? 0;
+        const balance = this.testData[this.testIndex]?.balance ?? 0;
 
         this.array.push(
             new FormGroup({

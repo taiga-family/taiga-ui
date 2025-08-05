@@ -7,7 +7,7 @@ import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
-import type {TuiCountryIsoCode, TuiLanguageName} from '@taiga-ui/i18n/types';
+import {type TuiCountryIsoCode, type TuiLanguageName} from '@taiga-ui/i18n/types';
 import {TuiLanguageSwitcherService} from '@taiga-ui/i18n/utils';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiBadgedContent} from '@taiga-ui/kit/components/badged-content';

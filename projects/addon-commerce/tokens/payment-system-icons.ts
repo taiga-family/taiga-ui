@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 
 export const TUI_PAYMENT_SYSTEM_ICONS = new InjectionToken<
     Record<TuiPaymentSystem, string>

@@ -1,4 +1,5 @@
 import {addImports, editImports, getImports} from 'ng-morph';
+import {type ImportDeclaration} from 'ts-morph';
 
 export function addUniqueImport(
     filePath: string,
@@ -16,7 +17,7 @@ export function addUniqueImport(
 
     const existingDeclaration = getImports(filePath, {
         moduleSpecifier,
-    });
+    }) as ImportDeclaration[] | undefined;
 
     const imports = existingDeclaration?.[0];
 

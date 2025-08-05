@@ -1,5 +1,4 @@
-import type {Observable} from 'rxjs';
-import {fromEvent} from 'rxjs';
+import {fromEvent, type Observable} from 'rxjs';
 
 export interface TuiTypedEventTarget<E> {
     addEventListener(

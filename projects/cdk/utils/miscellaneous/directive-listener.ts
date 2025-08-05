@@ -1,7 +1,12 @@
-import type {InjectOptions, ProviderToken, Signal} from '@angular/core';
-import {inject, isSignal} from '@angular/core';
+import {
+    inject,
+    type InjectOptions,
+    isSignal,
+    type ProviderToken,
+    type Signal,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import type {Observable} from 'rxjs';
+import {type Observable} from 'rxjs';
 
 type OutputKeysOf<T> = {
     [K in keyof T]: T[K] extends Observable<any> | Signal<any> ? K : never;

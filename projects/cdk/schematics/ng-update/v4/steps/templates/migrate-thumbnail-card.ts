@@ -1,6 +1,6 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Attribute, type ElementLocation} from 'parse5/dist/common/token';
 
 import {findElementsByTagNames} from '../../../../utils/templates/elements';
 import {findAttr} from '../../../../utils/templates/inputs';
@@ -8,7 +8,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 
 export function migrateThumbnailCard({
     resource,
@@ -50,8 +50,8 @@ function migrateValue({
     recorder,
     templateOffset,
 }: {
-    valueAttr: Attribute;
-    sourceCodeLocation: ElementLocation;
+    valueAttr: Attribute | undefined;
+    sourceCodeLocation: ElementLocation | undefined;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
@@ -79,6 +79,6 @@ function migrateValue({
     }
 
     if (selfClosing) {
-        recorder.remove((sourceCodeLocation.startTag?.endOffset ?? 2) - 2, 1);
+        recorder.remove((sourceCodeLocation?.startTag?.endOffset ?? 2) - 2, 1);
     }
 }

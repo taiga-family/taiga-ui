@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TuiDocCode, TuiDocPage} from '@taiga-ui/addon-doc';
+import {TuiDocCode, TuiDocPage, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {tuiPure} from '@taiga-ui/cdk';
 
 import {toKebab} from './kebab.pipe';

@@ -1,11 +1,10 @@
 import {Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {Router} from '@angular/router';
+import {type Router} from '@angular/router';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TUI_DOC_PAGE_LOADED} from '@taiga-ui/addon-doc';
 import {tuiInjectElement, tuiPure, tuiZoneOptimized} from '@taiga-ui/cdk';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, map, shareReplay, startWith} from 'rxjs';
+import {distinctUntilChanged, map, type Observable, shareReplay, startWith} from 'rxjs';
 
 export const DEMO_PAGE_LOADED_PROVIDER = {
     provide: TUI_DOC_PAGE_LOADED,
@@ -41,7 +40,7 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
     standalone: true,
 })
 export abstract class AbstractDemo {
-    protected abstract readonly storage: Storage;
+    protected abstract readonly storage: Storage | undefined;
     protected abstract readonly router: Router;
 
     @tuiPure

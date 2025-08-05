@@ -1,7 +1,13 @@
-import type {AbstractType, ExistingProvider, FactoryProvider, Type} from '@angular/core';
-import {Optional, SkipSelf} from '@angular/core';
+import {
+    type AbstractType,
+    type ExistingProvider,
+    type FactoryProvider,
+    Optional,
+    SkipSelf,
+    type Type,
+} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import {type TuiPoint} from '@taiga-ui/core/types';
 
 export abstract class TuiAccessor {
     public abstract readonly type: string;
@@ -32,11 +38,13 @@ export function tuiProvideAccessor<T extends TuiAccessor>(
 
 export function tuiFallbackAccessor<T extends TuiAccessor>(
     type: string,
-): (accessors: readonly T[] | null, fallback: T) => T {
+): (accessors: T | readonly T[] | null, fallback: T) => T {
     return (accessors, fallback) =>
-        accessors?.find?.(
-            (accessor) => accessor !== fallback && accessor.type === type,
-        ) || fallback;
+        Array.isArray(accessors)
+            ? accessors.find(
+                  (accessor) => accessor !== fallback && accessor.type === type,
+              ) || fallback
+            : fallback;
 }
 
 export function tuiPositionAccessorFor(

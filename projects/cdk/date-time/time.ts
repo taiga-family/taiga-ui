@@ -12,7 +12,7 @@ import {
     MINUTES_IN_HOUR,
     SECONDS_IN_MINUTE,
 } from './date-time';
-import type {TuiTimeLike, TuiTimeMode} from './types';
+import {type TuiTimeLike, type TuiTimeMode} from './types';
 
 /**
  * Immutable time object with hours, minutes, seconds and ms
@@ -140,7 +140,8 @@ export class TuiTime implements TuiTimeLike {
         return (
             (/[AP]M/.exec(time.toUpperCase().replaceAll(/\W/g, ''))?.[0] as
                 | 'AM'
-                | 'PM') || null
+                | 'PM'
+                | null) || null
         );
     }
 

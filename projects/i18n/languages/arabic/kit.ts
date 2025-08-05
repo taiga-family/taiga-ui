@@ -1,4 +1,4 @@
-import type {TuiLanguageKit} from '@taiga-ui/i18n/types';
+import {type TuiLanguageKit} from '@taiga-ui/i18n/types';
 
 export const TUI_ARABIC_LANGUAGE_KIT: TuiLanguageKit = {
     cancel: 'الْإلغاء',

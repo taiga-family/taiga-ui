@@ -1,4 +1,4 @@
-import type {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 
 import {TuiTextfieldWithDataListPO} from './textfield-with-data-list.po';
 

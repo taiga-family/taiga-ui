@@ -1,8 +1,7 @@
-import type {PipeTransform} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
-import type {TuiLooseUnion} from '@taiga-ui/cdk/types';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
 import {TUI_ASSETS_PATH} from '@taiga-ui/core/tokens';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
 type IsoCode = TuiLooseUnion<TuiCountryIsoCode>;
 

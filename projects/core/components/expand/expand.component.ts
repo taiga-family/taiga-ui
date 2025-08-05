@@ -1,19 +1,18 @@
-import type {NgIfContext} from '@angular/common';
-import {NgIf, NgTemplateOutlet} from '@angular/common';
-import type {ElementRef} from '@angular/core';
+import {NgIf, type NgIfContext, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     ContentChild,
     DestroyRef,
+    type ElementRef,
     inject,
     Input,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiValuesOf} from '@taiga-ui/cdk/types';
+import {type TuiValuesOf} from '@taiga-ui/cdk/types';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {timer} from 'rxjs';

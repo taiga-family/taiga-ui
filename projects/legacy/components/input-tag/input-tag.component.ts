@@ -1,4 +1,3 @@
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,6 +7,7 @@ import {
     inject,
     Input,
     Output,
+    type QueryList,
     signal,
     TemplateRef,
     ViewChild,
@@ -15,8 +15,8 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY, TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import type {TuiBooleanHandler, TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
 import {
     tuiGetActualTarget,
     tuiGetClipboardDataText,
@@ -26,28 +26,32 @@ import {
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiArrayRemove, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsDataListHost,
     TuiDataListDirective,
+    type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiStringifiableItem} from '@taiga-ui/legacy/classes';
-import {AbstractTuiMultipleControl, tuiAsControl} from '@taiga-ui/legacy/classes';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {
+    AbstractTuiMultipleControl,
+    tuiAsControl,
+    type TuiStringifiableItem,
+} from '@taiga-ui/legacy/classes';
 import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import type {TuiStatus} from '@taiga-ui/legacy/utils';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
+import {type TuiStatus} from '@taiga-ui/legacy/utils';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {timer} from 'rxjs';
 
 import {TUI_INPUT_TAG_OPTIONS} from './input-tag.options';
@@ -236,7 +240,7 @@ export class TuiInputTagComponent
         return (
             ((!this.focused || this.inputHidden) &&
                 !this.value.length &&
-                !this.search?.trim()?.length &&
+                !this.search?.trim().length &&
                 !this.placeholder) ||
             !!this.valueContent
         );
@@ -484,6 +488,7 @@ export class TuiInputTagComponent
         return value
             .reverse()
             .filter(
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 (item) => !this.uniqueTags || (item && !seen.has(item) && seen.add(item)),
             )
             .reverse();

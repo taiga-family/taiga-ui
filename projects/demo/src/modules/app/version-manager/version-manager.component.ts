@@ -8,8 +8,7 @@ import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
 import {TUI_SELECTED_VERSION_META} from './version-manager.providers';
-import type {TuiVersionMeta} from './versions.constants';
-import {TUI_VERSIONS_META_OPTIONS} from './versions.constants';
+import {TUI_VERSIONS_META_OPTIONS, type TuiVersionMeta} from './versions.constants';
 
 @Component({
     standalone: true,

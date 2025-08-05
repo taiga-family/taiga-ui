@@ -1,6 +1,6 @@
 import {Location, NgForOf, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
-import type {AfterViewInit} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
@@ -9,8 +9,7 @@ import {
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import type {Params} from '@angular/router';
-import {ActivatedRoute, UrlSerializer} from '@angular/router';
+import {ActivatedRoute, type Params, UrlSerializer} from '@angular/router';
 import {TUI_DOC_ICONS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -93,7 +92,7 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
         console.info('emitEvent', event);
 
         const alert =
-            !event || event?.toString() === '[object Object]'
+            !event || event.toString() === '[object Object]'
                 ? tuiInspectAny(event, 2)
                 : (event as string);
 
@@ -115,7 +114,7 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
         }
 
         let value =
-            !!propertyValueWithSuffix && this.items
+            !!propertyValueWithSuffix && this.items.length > 0
                 ? this.items[propertyValueWithSuffix as number]
                 : tuiCoerceValue(propertyValue);
 
@@ -131,7 +130,9 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
 
         const isValueAvailableByKey = value instanceof Object;
         const computedValue =
-            isValueAvailableByKey && this.items ? this.items.indexOf(value as T) : value;
+            isValueAvailableByKey && this.items.length > 0
+                ? this.items.indexOf(value as T)
+                : value;
 
         const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : '';
         const propName = this.clearBrackets(this.name) + suffix;

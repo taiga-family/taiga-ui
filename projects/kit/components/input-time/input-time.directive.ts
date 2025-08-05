@@ -1,23 +1,24 @@
 import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoOptions} from '@maskito/core';
-import type {MaskitoTimeMode, MaskitoTimeParams} from '@maskito/kit';
+import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoAddOnFocusPlugin,
     maskitoCaretGuard,
     maskitoRemoveOnBlurPlugin,
     maskitoSelectionChangeHandler,
+    type MaskitoTimeMode,
     maskitoTimeOptionsGenerator,
+    type MaskitoTimeParams,
 } from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
-import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
+    type TuiTextfieldAccessor,
     TuiTextfieldComponent,
     TuiTextfieldDirective,
     tuiTextfieldIconBinding,
@@ -146,7 +147,7 @@ export class TuiInputTimeDirective
         const newValue =
             this.accept.length && time ? this.findNearestTime(time, this.accept) : time;
 
-        this.control?.control?.updateValueAndValidity({emitEvent: false});
+        this.control.control?.updateValueAndValidity({emitEvent: false});
         this.onChange(newValue);
 
         if (newValue && newValue !== time) {

@@ -1,5 +1,11 @@
-import type {AfterViewInit, ExistingProvider, Type} from '@angular/core';
-import {DestroyRef, Directive, inject} from '@angular/core';
+import {
+    type AfterViewInit,
+    DestroyRef,
+    Directive,
+    type ExistingProvider,
+    inject,
+    type Type,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {distinctUntilChanged, merge, Observable} from 'rxjs';
@@ -22,10 +28,10 @@ export abstract class TuiDriverDirective implements AfterViewInit {
     private readonly drivers: readonly TuiDriver[] =
         inject<any>(TuiDriver, {self: true, optional: true}) || [];
 
-    private readonly vehicles: readonly TuiVehicle[] = inject<any>(TuiVehicle, {
+    private readonly vehicles = inject<unknown>(TuiVehicle, {
         self: true,
         optional: true,
-    });
+    }) as readonly TuiVehicle[] | undefined;
 
     public ngAfterViewInit(): void {
         const vehicle = this.vehicles?.find(({type}) => type === this.type);

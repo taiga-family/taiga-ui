@@ -1,4 +1,4 @@
-import type {Tree} from '@angular-devkit/schematics';
+import {type Tree} from '@angular-devkit/schematics';
 import {
     createProject,
     getSourceFiles,
@@ -9,10 +9,10 @@ import {
     SyntaxKind,
     titleLog,
 } from 'ng-morph';
-import type {CallExpression, ImportDeclaration} from 'ts-morph';
+import {type CallExpression, type ImportDeclaration} from 'ts-morph';
 
 import {ALL_TS_FILES} from '../../../../constants';
-import type {TuiSchema} from '../../../../ng-add/schema';
+import {type TuiSchema} from '../../../../ng-add/schema';
 import {getNamedImportReferences} from '../../../../utils/get-named-import-references';
 import {removeImport} from '../../../../utils/import-manipulations';
 import {insertTodo} from '../../../../utils/insert-todo';
@@ -132,6 +132,7 @@ export function migrateTokens(tree: Tree, options: TuiSchema): void {
                     });
 
                     // add InjectionToken as regular import if needed
+                    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                     if (!hasValueImport) {
                         sourceFile.addImportDeclaration({
                             moduleSpecifier: ANGULAR_CORE,

@@ -5,11 +5,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiProvide} from '@taiga-ui/cdk';
-import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiHint, TuiNumberFormat} from '@taiga-ui/core';
-import type {TuiKeySteps} from '@taiga-ui/kit';
+import {type TuiContext, tuiProvide} from '@taiga-ui/cdk';
+import {TuiHint, TuiNumberFormat, type TuiSizeL} from '@taiga-ui/core';
+import {type TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';

@@ -1,6 +1,11 @@
-import type {TuiDayLike} from '@taiga-ui/cdk/date-time';
-import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay, TuiDayRange} from '@taiga-ui/cdk/date-time';
-import type {TuiMapper} from '@taiga-ui/cdk/types';
+import {
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiDay,
+    type TuiDayLike,
+    TuiDayRange,
+} from '@taiga-ui/cdk/date-time';
+import {type TuiMapper} from '@taiga-ui/cdk/types';
 
 export const TUI_DAY_CAPS_MAPPER: TuiMapper<
     [TuiDay | null, TuiDay | TuiDayRange | null, TuiDayLike | null, boolean],

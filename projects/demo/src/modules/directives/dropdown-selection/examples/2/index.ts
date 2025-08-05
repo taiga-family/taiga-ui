@@ -1,12 +1,21 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
-import type {QueryList} from '@angular/core';
-import {Component, ElementRef, ViewChild, ViewChildren} from '@angular/core';
+import {
+    Component,
+    ElementRef,
+    type QueryList,
+    ViewChild,
+    ViewChildren,
+} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
-import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk';
-import {EMPTY_QUERY, TuiMapperPipe} from '@taiga-ui/cdk';
+import {
+    EMPTY_QUERY,
+    type TuiBooleanHandler,
+    type TuiMapper,
+    TuiMapperPipe,
+} from '@taiga-ui/cdk';
 import {
     TuiDataList,
     TuiDriver,
@@ -18,7 +27,7 @@ import {
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiTextarea} from '@taiga-ui/kit';
 import {TuiTextareaModule} from '@taiga-ui/legacy';
-import type {Observable} from 'rxjs';
+import {type Observable} from 'rxjs';
 
 export interface User {
     readonly avatar: string;
@@ -88,7 +97,7 @@ export default class Example {
         String(tuiGetWordRange(range)).startsWith('@');
 
     protected onArrow(event: Event, which: 'first' | 'last'): void {
-        const item = this.options[which];
+        const item = this.options[which] as ElementRef<HTMLElement> | undefined;
 
         if (!item) {
             return;

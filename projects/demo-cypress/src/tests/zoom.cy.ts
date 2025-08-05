@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {TuiZoomEvent} from '@taiga-ui/cdk';
-import {tuiFloor, TuiZoom} from '@taiga-ui/cdk';
+import {tuiFloor, TuiZoom, type TuiZoomEvent} from '@taiga-ui/cdk';
 
 describe('TuiZoom', () => {
     let component: Test;

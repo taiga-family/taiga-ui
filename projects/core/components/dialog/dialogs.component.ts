@@ -1,10 +1,9 @@
 import {NgForOf} from '@angular/common';
-import type {Signal} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
 import {TuiFocusTrap} from '@taiga-ui/cdk/directives/focus-trap';
-import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';

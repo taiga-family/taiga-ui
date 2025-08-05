@@ -1,11 +1,11 @@
 import {isPlatformBrowser} from '@angular/common';
-import type {OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
     inject,
     Input,
+    type OnChanges,
     PLATFORM_ID,
     ViewEncapsulation,
 } from '@angular/core';

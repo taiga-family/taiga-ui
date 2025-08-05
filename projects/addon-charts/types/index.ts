@@ -1,4 +1,4 @@
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 
 /**
  * Native CSS border-style options

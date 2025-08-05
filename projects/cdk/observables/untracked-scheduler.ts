@@ -1,6 +1,10 @@
 import {untracked} from '@angular/core';
-import type {SchedulerAction, SchedulerLike, Subscription} from 'rxjs';
-import {queueScheduler} from 'rxjs';
+import {
+    queueScheduler,
+    type SchedulerAction,
+    type SchedulerLike,
+    type Subscription,
+} from 'rxjs';
 
 export const tuiUntrackedScheduler: SchedulerLike = {
     now: queueScheduler.now.bind(queueScheduler),

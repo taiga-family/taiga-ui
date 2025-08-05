@@ -1,7 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-import type {TuiHintOptions} from '@taiga-ui/core';
+import {type TuiHintOptions} from '@taiga-ui/core';
 
 test.describe('TuiHint', () => {
     test('TuiHint works', async ({page}) => {

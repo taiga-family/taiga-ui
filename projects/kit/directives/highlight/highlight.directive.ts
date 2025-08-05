@@ -1,6 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import type {OnChanges} from '@angular/core';
-import {Directive, inject, Input, Renderer2} from '@angular/core';
+import {Directive, inject, Input, type OnChanges, Renderer2} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';

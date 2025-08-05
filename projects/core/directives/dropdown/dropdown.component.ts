@@ -1,5 +1,10 @@
-import type {AfterViewInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {
+    type AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    computed,
+    inject,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -81,7 +86,8 @@ export class TuiDropdownComponent implements AfterViewInit {
         });
     }
 
-    protected readonly close = (): void => this.directive.toggle(false);
+    protected readonly close: (() => void) | undefined = (): void =>
+        this.directive.toggle(false);
 
     private getStyles(x: number, y: number): Record<string, string> {
         const {maxHeight, minHeight, offset, limitWidth} = this.options;

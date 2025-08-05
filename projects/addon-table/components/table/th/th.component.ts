@@ -7,7 +7,7 @@ import {
     inject,
     Input,
 } from '@angular/core';
-import type {TuiComparator} from '@taiga-ui/addon-table/types';
+import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 
@@ -39,7 +39,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
 
     protected width: number | null = null;
 
-    protected readonly table = inject<TuiTableDirective<T>>(
+    protected readonly table = inject<TuiTableDirective<T> | undefined>(
         forwardRef(() => TuiTableDirective),
         {optional: true},
     );
@@ -95,7 +95,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     private get isCurrentAndDescDirection(): boolean {
         return (
             this.sorter === this.table?.sorter &&
-            this.table?.direction === TuiSortDirection.Desc
+            this.table.direction === TuiSortDirection.Desc
         );
     }
 }

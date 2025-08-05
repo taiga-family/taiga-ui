@@ -4,7 +4,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiSizeL} from '@taiga-ui/core/types';
+import {type TuiSizeL} from '@taiga-ui/core/types';
 
 @Component({
     standalone: true,

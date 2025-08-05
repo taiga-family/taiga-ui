@@ -1,6 +1,5 @@
 import {Directive, Injectable} from '@angular/core';
-import type {TuiDriver} from '@taiga-ui/core/classes';
-import {TuiDriverDirective} from '@taiga-ui/core/classes';
+import {type TuiDriver, TuiDriverDirective} from '@taiga-ui/core/classes';
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable()

@@ -1,4 +1,3 @@
-import type {OnChanges} from '@angular/core';
 import {
     computed,
     ContentChild,
@@ -7,6 +6,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    type OnChanges,
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -42,8 +42,8 @@ function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
     return (
         // @ts-ignore
         typeof CloseWatcher === 'undefined' &&
-        // ?. for auto fill events
-        event.key?.toLowerCase() === 'escape' &&
+        // ?. for autofill events
+        (event.key as string | undefined)?.toLowerCase() === 'escape' &&
         this.tuiDropdownEnabled &&
         !!this.tuiDropdownOpen &&
         !this['dropdown']()?.nextElementSibling

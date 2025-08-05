@@ -1,33 +1,51 @@
-import type {Provider} from '@angular/core';
-import {ChangeDetectorRef, InjectionToken} from '@angular/core';
+import {ChangeDetectorRef, InjectionToken, type Provider} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_TEXTFIELD_APPEARANCE} from '@taiga-ui/legacy/tokens';
 import {merge, NEVER} from 'rxjs';
 
 import {TuiTextfieldController} from './textfield.controller';
-import type {TuiTextfieldOptions} from './textfield.options';
-import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
-import type {TuiTextfieldAppearanceDirective} from './textfield-appearance.directive';
-import {TUI_TEXTFIELD_APPEARANCE_DIRECTIVE} from './textfield-appearance.directive';
-import type {TuiTextfieldCleanerDirective} from './textfield-cleaner.directive';
-import {TUI_TEXTFIELD_CLEANER} from './textfield-cleaner.directive';
-import type {TuiTextfieldCustomContentDirective} from './textfield-custom-content.directive';
-import {TUI_TEXTFIELD_CUSTOM_CONTENT} from './textfield-custom-content.directive';
-import type {TuiTextfieldFillerDirective} from './textfield-filler.directive';
-import {TUI_TEXTFIELD_FILLER} from './textfield-filler.directive';
-import type {TuiTextfieldIconDirective} from './textfield-icon.directive';
-import {TUI_TEXTFIELD_ICON} from './textfield-icon.directive';
-import type {TuiTextfieldIconLeftDirective} from './textfield-icon-left.directive';
-import {TUI_TEXTFIELD_ICON_LEFT} from './textfield-icon-left.directive';
-import type {TuiTextfieldLabelOutsideDirective} from './textfield-label-outside.directive';
-import {TUI_TEXTFIELD_LABEL_OUTSIDE} from './textfield-label-outside.directive';
-import type {TuiTextfieldPostfixDirective} from './textfield-postfix.directive';
-import {TUI_TEXTFIELD_POSTFIX} from './textfield-postfix.directive';
-import type {TuiTextfieldPrefixDirective} from './textfield-prefix.directive';
-import {TUI_TEXTFIELD_PREFIX} from './textfield-prefix.directive';
-import type {TuiTextfieldSizeDirective} from './textfield-size.directive';
-import {TUI_TEXTFIELD_SIZE} from './textfield-size.directive';
+import {TUI_TEXTFIELD_OPTIONS, type TuiTextfieldOptions} from './textfield.options';
+import {
+    TUI_TEXTFIELD_APPEARANCE_DIRECTIVE,
+    type TuiTextfieldAppearanceDirective,
+} from './textfield-appearance.directive';
+import {
+    TUI_TEXTFIELD_CLEANER,
+    type TuiTextfieldCleanerDirective,
+} from './textfield-cleaner.directive';
+import {
+    TUI_TEXTFIELD_CUSTOM_CONTENT,
+    type TuiTextfieldCustomContentDirective,
+} from './textfield-custom-content.directive';
+import {
+    TUI_TEXTFIELD_FILLER,
+    type TuiTextfieldFillerDirective,
+} from './textfield-filler.directive';
+import {
+    TUI_TEXTFIELD_ICON,
+    type TuiTextfieldIconDirective,
+} from './textfield-icon.directive';
+import {
+    TUI_TEXTFIELD_ICON_LEFT,
+    type TuiTextfieldIconLeftDirective,
+} from './textfield-icon-left.directive';
+import {
+    TUI_TEXTFIELD_LABEL_OUTSIDE,
+    type TuiTextfieldLabelOutsideDirective,
+} from './textfield-label-outside.directive';
+import {
+    TUI_TEXTFIELD_POSTFIX,
+    type TuiTextfieldPostfixDirective,
+} from './textfield-postfix.directive';
+import {
+    TUI_TEXTFIELD_PREFIX,
+    type TuiTextfieldPrefixDirective,
+} from './textfield-prefix.directive';
+import {
+    TUI_TEXTFIELD_SIZE,
+    type TuiTextfieldSizeDirective,
+} from './textfield-size.directive';
 
 export const TUI_TEXTFIELD_WATCHED_CONTROLLER =
     new InjectionToken<TuiTextfieldController>(
@@ -70,6 +88,7 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
             ]
         ) => {
             const change$ = merge(
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 ...controllers.map(({change$}) => change$ || NEVER),
             ).pipe(tuiWatch(cdr), takeUntilDestroyed());
 

@@ -2,7 +2,7 @@ import {Directive} from '@angular/core';
 import {TuiPopoverDirective} from '@taiga-ui/cdk/directives/popover';
 import {tuiAsPopover} from '@taiga-ui/cdk/services';
 
-import type {TuiTableBarOptions} from './table-bar.options';
+import {type TuiTableBarOptions} from './table-bar.options';
 import {TuiTableBarsService} from './table-bars.service';
 
 /**

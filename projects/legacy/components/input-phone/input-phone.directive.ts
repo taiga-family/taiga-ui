@@ -1,9 +1,8 @@
-import type {DoCheck} from '@angular/core';
-import {Directive} from '@angular/core';
+import {Directive, type DoCheck} from '@angular/core';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
-import type {TuiInputPhoneComponent} from './input-phone.component';
+import {type TuiInputPhoneComponent} from './input-phone.component';
 
 @Directive({
     standalone: false,

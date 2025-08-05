@@ -10,9 +10,9 @@ export function tuiRgbaToHex(color: string): string {
     let alpha: number | string = ((rgb?.[4] ?? '') satisfies string).trim();
 
     let hex = rgb
-        ? ((parseInt(rgb?.[1] ?? '', 10) || 0) | (1 << 8)).toString(16).slice(1) +
-          ((parseInt(rgb?.[2] ?? '', 10) || 0) | (1 << 8)).toString(16).slice(1) +
-          ((parseInt(rgb?.[3] ?? '', 10) || 0) | (1 << 8)).toString(16).slice(1)
+        ? ((parseInt(rgb[1] ?? '', 10) || 0) | (1 << 8)).toString(16).slice(1) +
+          ((parseInt(rgb[2] ?? '', 10) || 0) | (1 << 8)).toString(16).slice(1) +
+          ((parseInt(rgb[3] ?? '', 10) || 0) | (1 << 8)).toString(16).slice(1)
         : color;
 
     alpha = alpha !== '' ? alpha : 0o1;

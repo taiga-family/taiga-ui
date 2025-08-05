@@ -1,4 +1,4 @@
-import type {TuiDocRoutePage, TuiDocRoutePageBase} from '@taiga-ui/addon-doc';
+import {type TuiDocRoutePage, type TuiDocRoutePageBase} from '@taiga-ui/addon-doc';
 
 import {DemoRoute} from './demo-routes';
 

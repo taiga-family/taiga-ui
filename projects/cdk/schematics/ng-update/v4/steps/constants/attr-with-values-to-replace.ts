@@ -1,5 +1,5 @@
 import {hasElementAttribute} from '../../../../utils/templates/elements';
-import type {ReplacementAttributeValue} from '../../../interfaces';
+import {type ReplacementAttributeValue} from '../../../interfaces';
 
 const hasPseudoInvalid = [
     'tui-checkbox',

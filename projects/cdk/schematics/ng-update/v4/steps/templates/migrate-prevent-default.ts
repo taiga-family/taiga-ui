@@ -1,5 +1,5 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
 
 import {findElementsWithAttribute} from '../../../../utils/templates/elements';
 import {findAttr} from '../../../../utils/templates/inputs';
@@ -7,7 +7,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 
 export function migratePreventDefault({
     resource,
@@ -37,9 +37,9 @@ export function migratePreventDefault({
         const event = preventDefaultAttr.value;
 
         const preventDefaultStart =
-            sourceCodeLocation?.attrs?.[preventDefaultAttr.name]?.startOffset || 0;
+            sourceCodeLocation.attrs?.[preventDefaultAttr.name]?.startOffset || 0;
         const preventDefaultEnd =
-            sourceCodeLocation?.attrs?.[preventDefaultAttr.name]?.endOffset || 0;
+            sourceCodeLocation.attrs?.[preventDefaultAttr.name]?.endOffset || 0;
 
         recorder.insertLeft(
             templateOffset + preventDefaultStart,

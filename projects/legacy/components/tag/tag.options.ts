@@ -1,8 +1,7 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Provider} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiStatus} from '@taiga-ui/legacy/utils';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiStatus} from '@taiga-ui/legacy/utils';
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiChip}

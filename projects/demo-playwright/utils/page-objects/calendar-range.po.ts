@@ -1,5 +1,4 @@
-import type {Locator} from '@playwright/test';
-import {expect} from '@playwright/test';
+import {expect, type Locator} from '@playwright/test';
 
 import {TuiCalendarPO} from './calendar.po';
 

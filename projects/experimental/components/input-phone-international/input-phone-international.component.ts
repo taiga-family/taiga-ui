@@ -1,5 +1,4 @@
 import {NgForOf, NgIf} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,6 +8,7 @@ import {
     inject,
     Input,
     Output,
+    type QueryList,
     signal,
     ViewChildren,
     ViewEncapsulation,
@@ -16,10 +16,10 @@ import {
 import {takeUntilDestroyed, toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoOptions} from '@maskito/core';
 import {
     MASKITO_DEFAULT_OPTIONS,
     maskitoInitialCalibrationPlugin,
+    type MaskitoOptions,
     maskitoTransform,
 } from '@maskito/core';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
@@ -50,14 +50,14 @@ import {TuiDropdownOpen, tuiDropdownOpen} from '@taiga-ui/core/directives/dropdo
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from '@taiga-ui/kit/components/input-phone-international';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiGetCallingCode, tuiMaskito} from '@taiga-ui/kit/utils';
 import {TuiCell} from '@taiga-ui/layout/components/cell';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
-import type {MetadataJson} from 'libphonenumber-js/core';
+import {type MetadataJson} from 'libphonenumber-js/core';
 import {filter, from, skip} from 'rxjs';
 
 const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
@@ -184,7 +184,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
 
         super.writeValue(unmasked);
         this.masked.set(
-            maskitoTransform(this.value() ?? '', this.mask() || MASKITO_DEFAULT_OPTIONS),
+            maskitoTransform(this.value(), this.mask() || MASKITO_DEFAULT_OPTIONS),
         );
     }
 

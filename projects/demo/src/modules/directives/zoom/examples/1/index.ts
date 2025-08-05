@@ -2,8 +2,7 @@ import {AsyncPipe, DecimalPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiZoomEvent} from '@taiga-ui/cdk';
-import {tuiClamp, TuiZoom} from '@taiga-ui/cdk';
+import {tuiClamp, TuiZoom, type TuiZoomEvent} from '@taiga-ui/cdk';
 import {map, scan, startWith, Subject} from 'rxjs';
 
 @Component({

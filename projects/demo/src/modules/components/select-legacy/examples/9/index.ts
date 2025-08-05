@@ -7,8 +7,7 @@ import {TuiCurrency} from '@taiga-ui/addon-commerce';
 import {TuiButton, TuiDataList} from '@taiga-ui/core';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
-import type {MyAccount} from './account';
-import {ExampleMyAccount} from './account';
+import {ExampleMyAccount, type MyAccount} from './account';
 
 @Component({
     standalone: true,

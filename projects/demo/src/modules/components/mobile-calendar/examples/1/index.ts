@@ -8,8 +8,7 @@ import {tuiControlValue, TuiDay} from '@taiga-ui/cdk';
 import {TUI_MONTHS, TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {combineLatest, map} from 'rxjs';
+import {combineLatest, map, type Observable} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -49,7 +48,7 @@ export default class Example {
     );
 
     protected readonly date$ = combineLatest([
-        tuiControlValue<TuiDay>(this.control),
+        tuiControlValue<TuiDay | undefined>(this.control),
         this.months$,
     ]).pipe(
         map(([value, months]) =>
