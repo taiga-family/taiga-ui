@@ -105,15 +105,19 @@ test.describe('LineClamp', () => {
         await tuiGoto(page, DemoRoute.LineClamp);
 
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
+        const lineClampElement = example.locator('tui-line-clamp').first();
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('tui-line-clamp').nth(0).hover();
-        await page.waitForTimeout(500);
+
+        await lineClampElement.hover();
+        const hintElement = page.locator('tui-hints .hint');
+
+        await expect(hintElement).toBeVisible();
 
         await expect.soft(example).toHaveScreenshot('06-1-line-clamp-basic.png');
 
-        await page.locator('tui-hints .hint').click();
-        await page.waitForTimeout(500);
+        await hintElement.click();
+        await expect(hintElement).toBeVisible();
 
         await expect.soft(example).toHaveScreenshot('06-2-line-clamp-basic.png');
     });
