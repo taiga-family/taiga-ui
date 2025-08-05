@@ -19,7 +19,7 @@
 };
 
 .customize-track(@progress-filling, @thumb-width) {
-    block-size: 100%;
+    block-size: var(--tui-thickness);
     border-radius: inherit;
 
     /*
@@ -128,8 +128,7 @@
     color: var(--tui-background-accent-1); /* See currentColor inside this file */
     cursor: pointer;
     appearance: none;
-    block-size: var(--tui-thickness);
-    padding: calc((@hitbox - var(--tui-thickness)) / 2) 0; /* To catch click events nearby THIN input's track */
+    block-size: 1rem;
     background-color: transparent;
     background-clip: content-box; /* To clip filling of paddings */
     outline: none;
@@ -224,9 +223,7 @@
     right: @gap;
     inline-size: calc(100% - @gap * 2); // Double check Firefox if you want to set `width: auto`
     box-sizing: border-box;
-    block-size: 1rem;
     margin: -0.5625rem 0 0;
-    padding: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: calc(var(--tui-radius) * 10) calc(var(--tui-radius) * 2);
     pointer-events: auto;
