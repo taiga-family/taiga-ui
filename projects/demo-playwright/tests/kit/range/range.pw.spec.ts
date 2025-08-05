@@ -18,7 +18,7 @@ test.describe('TuiRange', () => {
 
         test.describe('change selected range on click', () => {
             test.beforeEach(({page}) => {
-                example = new TuiDocumentationPagePO(page).getExample('#base');
+                example = new TuiDocumentationPagePO(page).getExample('#sizes');
                 range = new TuiRangePO(example.locator('tui-range'));
             });
 

@@ -13,7 +13,7 @@ import {TuiRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Sizes', 'Ticks and labels', 'KeySteps'];
+    protected readonly examples = ['Sizes', 'Segments', 'KeySteps'];
     protected readonly control = new FormControl([0, 0]);
 
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];

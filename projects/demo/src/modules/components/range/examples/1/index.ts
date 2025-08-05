@@ -13,7 +13,7 @@ import {TuiRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected value = [0, 40];
+    protected value = [4, 6];
 
-    protected readonly formControl = new FormControl([40, 60]);
+    protected readonly formControl = new FormControl([4, 6]);
 }
