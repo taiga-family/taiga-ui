@@ -1,16 +1,19 @@
 import {Component} from '@angular/core';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiRange],
+    imports: [FormsModule, ReactiveFormsModule, TuiRange],
     templateUrl: './index.html',
+    styles: [':host {display: flex; flex-direction: column;}'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly control = new FormControl([4, 6]);
+    protected value = [0, 40];
+
+    protected readonly formControl = new FormControl([40, 60]);
 }

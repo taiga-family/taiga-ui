@@ -1,5 +1,20 @@
 <tui-range
-    [formControl]="control"
-    [max]="10"
-    [step]="1"
+    size="s"
+    [max]="100"
+    [(ngModel)]="value"
+/>
+
+<tui-range
+    size="m"
+    [formControl]="formControl"
+    [max]="100"
+/>
+
+<p>Custom thickness</p>
+
+<tui-range
+    size="m"
+    [formControl]="formControl"
+    [max]="100"
+    [style.--tui-thickness.rem]="0.25"
 />

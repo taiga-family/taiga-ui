@@ -1,43 +1,30 @@
-<div
-    tuiAppearance="floating"
-    tuiCardLarge
-    class="card"
->
-    <strong>S-size</strong>
+<tui-range
+    id="range-with-segments"
+    size="m"
+    class="range"
+    [max]="max"
+    [min]="min"
+    [segments]="segments"
+    [step]="step"
+    [(ngModel)]="value"
+/>
 
-    <tui-range
-        id="s-size-range"
-        size="s"
-        [max]="100"
-        [(ngModel)]="smallRangeValue"
-    />
-
-    <div>
-        Control value:
-        <output for="s-size-range">
-            <code>{{ smallRangeValue | json }}</code>
-        </output>
+<div class="ticks-labels">
+    <div *ngFor="let label of labels">
+        <ng-container *ngIf="label !== 750; else labelWithIcon">
+            {{ label | i18nPlural: pluralMap }}
+        </ng-container>
     </div>
+
+    <ng-template #labelWithIcon>
+        <tui-icon icon="@tui.arrow-up" />
+        <div>3/4</div>
+    </ng-template>
 </div>
 
-<div
-    tuiAppearance="floating"
-    tuiCardLarge
-    class="card"
->
-    <strong>M-size</strong>
-
-    <tui-range
-        id="m-size-range"
-        size="m"
-        [formControl]="bigRangeControl"
-        [max]="100"
-    />
-
-    <div>
-        Control value:
-        <output for="m-size-range">
-            <code>{{ bigRangeControl.value | json }}</code>
-        </output>
-    </div>
-</div>
+<p class="tui-space_top-12 tui-space_bottom-0">
+    Control value:
+    <output for="range-with-segments">
+        <code>{{ value | json }}</code>
+    </output>
+</p>
