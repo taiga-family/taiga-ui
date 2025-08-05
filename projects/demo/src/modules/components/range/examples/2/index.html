@@ -11,7 +11,7 @@
 
 <div class="ticks-labels">
     <div *ngFor="let label of labels">
-        <ng-container *ngIf="label !== 750; else labelWithIcon">
+        <ng-container *ngIf="label !== 75; else labelWithIcon">
             {{ label | i18nPlural: pluralMap }}
         </ng-container>
     </div>
