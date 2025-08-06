@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import type {DoCheck, QueryList} from '@angular/core';
+import type {AfterContentInit, DoCheck, OnDestroy, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -15,7 +15,7 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
+import {distinctUntilChanged, map, startWith, Subject, Subscription} from 'rxjs';
 
 import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
 import {
@@ -45,7 +45,7 @@ import {
         '[class._expandable]': 'isExpandable',
     },
 })
-export class TuiTreeItem implements DoCheck {
+export class TuiTreeItem implements AfterContentInit, DoCheck, OnDestroy {
     @ContentChildren(TUI_TREE_NODE)
     private readonly nested: QueryList<unknown> = EMPTY_QUERY;
 
@@ -56,6 +56,9 @@ export class TuiTreeItem implements DoCheck {
     );
 
     private readonly change$ = new Subject<void>();
+
+    private expandableState = false;
+    private subscription?: Subscription;
 
     protected readonly level = inject<number>(forwardRef(() => TUI_TREE_LEVEL));
 
@@ -80,18 +83,34 @@ export class TuiTreeItem implements DoCheck {
     );
 
     public get isExpandable(): boolean {
-        return !!this.nested.length;
+        return this.expandableState;
     }
 
     public get isExpanded(): boolean {
         return this.controller.isExpanded(this);
     }
 
+    public ngAfterContentInit(): void {
+        this.updateExpandableState();
+        this.subscription = this.nested.changes.subscribe(() => {
+            this.updateExpandableState();
+        });
+    }
+
     public ngDoCheck(): void {
+        this.updateExpandableState();
         this.checkChanges();
+    }
+
+    public ngOnDestroy(): void {
+        this.subscription?.unsubscribe();
     }
 
     public checkChanges(): void {
         this.change$.next();
+    }
+
+    private updateExpandableState(): void {
+        this.expandableState = !!this.nested.length;
     }
 }
