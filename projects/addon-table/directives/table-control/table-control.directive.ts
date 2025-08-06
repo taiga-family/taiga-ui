@@ -25,7 +25,7 @@ export class TuiTableControlDirective<T> extends TuiControl<readonly T[]> {
         this.onChange(this.children().map((item) => item.tuiCheckboxRow));
     }
 
-    public process(checkbox: TuiCheckboxRowDirective<T>) {
+    public process(checkbox: TuiCheckboxRowDirective<T>): void {
         this.children.update((children) => tuiArrayToggle(children, checkbox));
     }
 }
