@@ -8,6 +8,7 @@ import {
     Input,
 } from '@angular/core';
 import type {TuiComparator} from '@taiga-ui/addon-table/types';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 
@@ -24,14 +25,13 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
     styleUrls: ['./th.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.min-width.px]': 'width',
         '[style.width.px]': 'width',
-        '[style.max-width.px]': 'width',
         '[class._sticky]': 'sticky',
     },
 })
 export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
+    private readonly el = tuiInjectElement();
 
     private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {
         optional: true,
@@ -89,7 +89,21 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     }
 
     protected onResized(width: number): void {
-        this.width = width;
+        const minWidth = this.getStyleValue('min-width');
+        const maxWidth = this.getStyleValue('max-width');
+
+        // Apply clamp logic to respect min/max constraints
+        let clampedWidth = width;
+
+        if (minWidth !== null && clampedWidth < minWidth) {
+            clampedWidth = minWidth;
+        }
+
+        if (maxWidth !== null && clampedWidth > maxWidth) {
+            clampedWidth = maxWidth;
+        }
+
+        this.width = clampedWidth;
     }
 
     private get isCurrentAndDescDirection(): boolean {
@@ -97,6 +111,38 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
             this.sorter === this.table?.sorter &&
             this.table?.direction === TuiSortDirection.Desc
         );
+    }
+
+    private getStyleValue(property: 'max-width' | 'min-width'): number | null {
+        // First try to get from inline styles
+        const inlineValue = this.el.style.getPropertyValue(property);
+
+        if (inlineValue) {
+            const parsed = this.parsePixelValue(inlineValue);
+
+            if (parsed !== null) {
+                return parsed;
+            }
+        }
+
+        // Fall back to computed styles
+        const computedStyle = getComputedStyle(this.el);
+        const computedValue =
+            property === 'min-width' ? computedStyle.minWidth : computedStyle.maxWidth;
+
+        return this.parsePixelValue(computedValue);
+    }
+
+    private parsePixelValue(value: string): number | null {
+        // Handle 'none', 'auto', or other non-pixel values
+        if (!value || value === 'none' || value === 'auto' || value === '0px') {
+            return null;
+        }
+
+        // Parse pixel values (e.g., "100px" -> 100)
+        const matches = /^(\d+(?:\.\d+)?)px$/.exec(value);
+
+        return matches?.[1] ? parseFloat(matches[1]) : null;
     }
 }
 
