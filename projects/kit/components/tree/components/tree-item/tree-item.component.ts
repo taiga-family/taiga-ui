@@ -1,5 +1,5 @@
 import {NgIf} from '@angular/common';
-import type {AfterContentInit, DoCheck, OnDestroy, QueryList} from '@angular/core';
+import type {DoCheck, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -15,7 +15,7 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
 import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {distinctUntilChanged, map, startWith, Subject, Subscription} from 'rxjs';
+import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
 import {
@@ -45,7 +45,7 @@ import {
         '[class._expandable]': 'isExpandable',
     },
 })
-export class TuiTreeItem implements AfterContentInit, DoCheck, OnDestroy {
+export class TuiTreeItem implements DoCheck {
     @ContentChildren(TUI_TREE_NODE)
     private readonly nested: QueryList<unknown> = EMPTY_QUERY;
 
@@ -56,9 +56,6 @@ export class TuiTreeItem implements AfterContentInit, DoCheck, OnDestroy {
     );
 
     private readonly change$ = new Subject<void>();
-
-    private expandableState = false;
-    private subscription?: Subscription;
 
     protected readonly level = inject<number>(forwardRef(() => TUI_TREE_LEVEL));
 
@@ -83,34 +80,36 @@ export class TuiTreeItem implements AfterContentInit, DoCheck, OnDestroy {
     );
 
     public get isExpandable(): boolean {
-        return this.expandableState;
+        if (!this.nested.length) {
+            return false;
+        }
+        
+        // Filter out any disconnected components from the QueryList
+        try {
+            const connectedNested = this.nested.filter((item: any) => {
+                // Check if the item has an element and if it's connected
+                if (item && typeof item === 'object' && 'el' in item) {
+                    return item.el && item.el.isConnected;
+                }
+                // If we can't determine, assume it's connected (safer default)
+                return true;
+            });
+            return !!connectedNested.length;
+        } catch (e) {
+            // Fallback to original logic if filtering fails
+            return !!this.nested.length;
+        }
     }
 
     public get isExpanded(): boolean {
         return this.controller.isExpanded(this);
     }
 
-    public ngAfterContentInit(): void {
-        this.updateExpandableState();
-        this.subscription = this.nested.changes.subscribe(() => {
-            this.updateExpandableState();
-        });
-    }
-
     public ngDoCheck(): void {
-        this.updateExpandableState();
         this.checkChanges();
-    }
-
-    public ngOnDestroy(): void {
-        this.subscription?.unsubscribe();
     }
 
     public checkChanges(): void {
         this.change$.next();
-    }
-
-    private updateExpandableState(): void {
-        this.expandableState = !!this.nested.length;
     }
 }

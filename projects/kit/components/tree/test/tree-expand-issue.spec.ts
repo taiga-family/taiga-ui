@@ -101,6 +101,10 @@ describe('Tree expansion after clearing children issue', () => {
         component.removeChildrens();
         fixture.detectChanges();
         await fixture.whenStable();
+        
+        // Force additional detection cycles to ensure DOM is updated
+        fixture.detectChanges();
+        await fixture.whenStable();
 
         // Should not be expandable when no children
         expect(rootItem.componentInstance.isExpandable).toBe(false);
@@ -109,8 +113,12 @@ describe('Tree expansion after clearing children issue', () => {
         component.addChildrens();
         fixture.detectChanges();
         await fixture.whenStable();
+        
+        // Force additional detection cycles
+        fixture.detectChanges();
+        await fixture.whenStable();
 
-        // This should be true but might fail due to the bug
+        // This should be true after the fix
         expect(rootItem.componentInstance.isExpandable).toBe(true);
 
         // Try to toggle expansion - this is where the bug might manifest
