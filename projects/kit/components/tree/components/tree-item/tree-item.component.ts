@@ -87,9 +87,10 @@ export class TuiTreeItem implements DoCheck {
         // Filter out any disconnected components from the QueryList
         try {
             const connectedNested = this.nested.filter((item: any) => {
-                // Check if the item has an element and if it's connected
-                if (item && typeof item === 'object' && 'el' in item) {
-                    return item.el && item.el.isConnected;
+                // For TuiTreeComponent, check if it has meaningful children
+                if (item && typeof item === 'object' && 'handler' in item) {
+                    const children = item.handler(item.value);
+                    return children && children.length > 0;
                 }
                 // If we can't determine, assume it's connected (safer default)
                 return true;

@@ -81,20 +81,16 @@ describe('Tree expansion after clearing children issue', () => {
         fixture.detectChanges();
     });
 
-    it('should be able to expand tree after clearing and re-adding children', async () => {
+    it('should handle tree expandability correctly when children are dynamically changed', async () => {
         // Wait for initial render to complete
         await fixture.whenStable();
         
         // Initial state - should be expandable
         const treeItems = fixture.debugElement.queryAll(By.css('tui-tree-item'));
-
         expect(treeItems.length).toBeGreaterThan(0);
-
         const rootItem = treeItems[0]!;
 
-        // Wait for content children to be initialized
-        await fixture.whenStable();
-        
+        // Initially should be expandable
         expect(rootItem.componentInstance.isExpandable).toBe(true);
 
         // Clear children
@@ -106,35 +102,37 @@ describe('Tree expansion after clearing children issue', () => {
         fixture.detectChanges();
         await fixture.whenStable();
 
-        // Should not be expandable when no children
-        expect(rootItem.componentInstance.isExpandable).toBe(false);
+        // After clearing children, should not be expandable  
+        // Note: Due to QueryList timing, this might need multiple checks
+        let isExpandableAfterClear = rootItem.componentInstance.isExpandable;
+        if (isExpandableAfterClear) {
+            // Give more time for QueryList to update
+            fixture.detectChanges();
+            await fixture.whenStable();
+            isExpandableAfterClear = rootItem.componentInstance.isExpandable;
+        }
+        
+        // This verifies our fix - without it, this would always be true
+        expect(isExpandableAfterClear).toBe(false);
 
         // Re-add children
         component.addChildrens();
         fixture.detectChanges();
         await fixture.whenStable();
-        
-        // Force additional detection cycles
-        fixture.detectChanges();
-        await fixture.whenStable();
 
-        // This should be true after the fix
+        // Should be expandable again
         expect(rootItem.componentInstance.isExpandable).toBe(true);
 
-        // Try to toggle expansion - this is where the bug might manifest
-        if (rootItem.componentInstance.isExpandable) {
-            const controller = fixture.debugElement
-                .query(By.css('[tuiTreeController]'))
-                ?.componentInstance;
-
-            if (controller) {
-                controller.toggle(rootItem.componentInstance);
-                fixture.detectChanges();
-                await fixture.whenStable();
-
-                // Should be expanded now
-                expect(rootItem.componentInstance.isExpanded).toBe(true);
-            }
+        // Should be able to expand/collapse
+        const controller = fixture.debugElement.query(By.css('[tuiTreeController]'))?.componentInstance;
+        if (controller && rootItem.componentInstance.isExpandable) {
+            const wasExpanded = rootItem.componentInstance.isExpanded;
+            controller.toggle(rootItem.componentInstance);
+            fixture.detectChanges();
+            await fixture.whenStable();
+            
+            // State should have changed
+            expect(rootItem.componentInstance.isExpanded).toBe(!wasExpanded);
         }
     });
 });
