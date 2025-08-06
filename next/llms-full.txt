@@ -9785,7 +9785,7 @@ export class Example {}
 - **Package**: `KIT`
 - **Type**: components
 
-Component allows to choose a part of a range
+A two-thumb slider for selecting a range of values
 
 
 ### How to Use (Import)
@@ -9875,6 +9875,7 @@ import {TuiRange} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
+    protected readonly examples = ['Sizes', 'Segments', 'KeySteps'];
     protected readonly control = new FormControl([0, 0]);
 
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
@@ -10617,25 +10618,13 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 
-tuiSlider
-            
-            
-                attribute component for native html tag
-                '">
-                to choose a value from a limited range.
-            
+Taiga UI styling of native html tag
+        '">
+        to choose a value from a limited range
         
-        
-            Read more about current input's type in
+            Read more about this input type in
             
                 MDN Docs
-            
-            .
-        
-        
-            Usage:
-            '">
-            .
 
 
 ### How to Use (Import)
@@ -10714,6 +10703,15 @@ import {TuiSlider} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
+    protected readonly examples = [
+        'Sizes',
+        'Colors',
+        'Segments',
+        'Disabled',
+        'KeySteps',
+        'Complex',
+    ];
+
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
     protected readonly segmentsVariants: Array<number[] | number> = [
         1,
