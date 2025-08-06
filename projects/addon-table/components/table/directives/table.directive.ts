@@ -117,7 +117,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     }
 
     @Input()
-    public sorter: TuiComparator<T> = () => 0;
+    public sorter: TuiComparator<T> | null = () => 0;
 
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
@@ -144,7 +144,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
         sorter: TuiComparator<T> | null,
         direction: TuiSortDirection = TuiSortDirection.Asc,
     ): void {
-        this.sorter = sorter || this.sorter;
+        this.sorter = sorter;
         this.direction = direction;
         this.sorterChange.emit(sorter);
         this.directionChange.emit(this.direction);

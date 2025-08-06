@@ -27,7 +27,7 @@ export class TuiTableSortable<T extends Partial<Record<keyof T, any>>>
         return this.th.key;
     }
 
-    public sorter: TuiComparator<T> = (): number => 0;
+    public sorter: TuiComparator<T> | null = (): number => 0;
 
     public ngOnChanges(): void {
         if (this.sortable) {

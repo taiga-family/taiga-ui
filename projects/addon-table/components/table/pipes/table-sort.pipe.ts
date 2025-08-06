@@ -20,9 +20,9 @@ export class TuiTableSortPipe<K = Partial<Record<any, any>>> implements PipeTran
     @tuiPure
     private sort<T extends K>(
         data: readonly T[],
-        sorter: TuiComparator<T>,
+        sorter: TuiComparator<T> | null,
         direction: TuiSortDirection,
     ): readonly T[] {
-        return [...data].sort((a, b) => direction * sorter(a, b));
+        return sorter ? [...data].sort((a, b) => direction * sorter(a, b)) : data;
     }
 }
