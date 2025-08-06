@@ -52,8 +52,14 @@ export class TuiAppearance {
         !mode || tuiIsString(mode) ? mode : mode.join(' '),
     );
 
+    // TODO: refactor to signal inputs after Angular update
+    public readonly appearance = signal(inject(TUI_APPEARANCE_OPTIONS).appearance);
+    public readonly state = signal<TuiInteractiveState | null>(null);
+    public readonly focus = signal<boolean | null>(null);
+    public readonly mode = signal<string | readonly string[] | null>(null);
+
     // TODO: Remove when Angular is updated
-    protected readonly update = effect(() => {
+    public readonly update = effect(() => {
         this.mode();
         this.state();
         this.focus();
@@ -62,12 +68,6 @@ export class TuiAppearance {
             this.cdr.detectChanges();
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
-
-    // TODO: refactor to signal inputs after Angular update
-    public readonly appearance = signal(inject(TUI_APPEARANCE_OPTIONS).appearance);
-    public readonly state = signal<TuiInteractiveState | null>(null);
-    public readonly focus = signal<boolean | null>(null);
-    public readonly mode = signal<string | readonly string[] | null>(null);
 
     constructor() {
         afterNextRender(() => {

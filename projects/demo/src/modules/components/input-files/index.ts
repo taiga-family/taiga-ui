@@ -4,20 +4,37 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiFiles, tuiFilesAccepted} from '@taiga-ui/kit';
+import {TuiFiles, tuiFilesAccepted, TuiInputMonthDirective} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
+import {TuiDocControl} from '@demo/components/control';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiDemo, TuiFiles],
+    imports: [
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiFiles,
+        TuiDocControl,
+        TuiInputMonthDirective,
+    ],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
 export default class PageComponent extends AbstractExampleTuiControl {
+    protected readonly examples = [
+        'Single',
+        'Multiple',
+        'Standalone',
+        'With button',
+        'Custom content',
+        'Camera capture',
+        'Model',
+    ];
+
     protected multiple = true;
     protected showSize = true;
     protected showDelete: boolean | 'always' = true;

@@ -5,63 +5,29 @@
     type="components"
 >
     <ng-template pageTab>
-        <p>An input for upload one or several files. It uses native input file abilities.</p>
+        An input for uploading one or several files using native input file capabilities
 
         <tui-doc-example
-            id="single"
-            heading="Basic single"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="multiple"
-            heading="multiple"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="standalone-files"
-            heading="Standalone files"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="with-button"
-            heading="With button"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="custom"
-            heading="Custom content"
-            [component]="5 | tuiComponent"
-            [content]="5 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="front-camera"
-            heading="Camera capture"
-            [component]="6 | tuiComponent"
-            [content]="6 | tuiExample"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [description]="description"
+            [heading]="example"
+            [id]="example | tuiKebab"
         >
-            <tui-notification
-                appearance="warning"
-                class="tui-space_bottom-4"
+            <ng-template
+                #description
+                [ngSwitch]="index"
             >
-                The capture attribute works only on mobile browsers
-            </tui-notification>
+                <ng-container *ngSwitchCase="0">Selecting one file at a time</ng-container>
+                <ng-container *ngSwitchCase="1">Selecting and processing multiple files at once</ng-container>
+                <ng-container *ngSwitchCase="2">Displaying file-like items without the input</ng-container>
+                <ng-container *ngSwitchCase="3">Collapsing files list when it's too long</ng-container>
+                <ng-container *ngSwitchCase="4">Customizing drop area</ng-container>
+                <ng-container *ngSwitchCase="5">The capture attribute works only on mobile browsers</ng-container>
+                <ng-container *ngSwitchCase="6">Using template driven forms</ng-container>
+            </ng-template>
         </tui-doc-example>
-
-        <tui-doc-example
-            id="model"
-            heading="ngModel"
-            [component]="7 | tuiComponent"
-            [content]="7 | tuiExample"
-        />
     </ng-template>
 
     <ng-template pageTab>
@@ -72,8 +38,10 @@
                     tuiInputFiles
                     [accept]="accept"
                     [formControl]="control"
+                    [invalid]="controlDoc.invalid"
                     [maxFileSize]="maxFileSize"
                     [multiple]="multiple"
+                    [tuiDisabled]="controlDoc.disabled"
                     (reject)="updateRejected($event); reject.emitEvent($event)"
                 />
             </label>
@@ -109,16 +77,6 @@
         <h3>TuiInputFiles</h3>
         <table tuiDocAPI>
             <tr
-                name="[disabled]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="disabled"
-            >
-                Disabled state (use
-                <code>formControl.disable()</code>
-                )
-            </tr>
-            <tr
                 name="[accept]"
                 tuiDocAPIItem
                 type="string"
@@ -153,6 +111,11 @@
             >
                 Emits files that were rejected.
             </tr>
+            <tbody
+                #controlDoc
+                tuiDocControl
+                [hiddenOptions]="['readOnly']"
+            ></tbody>
         </table>
 
         <h3>TuiFiles</h3>
