@@ -1,2 +1,44 @@
-<tui-input-phone [formControl]="control">Type phone number</tui-input-phone>
-<pre>Form value: {{ control.value | json }}</pre>
+<tui-textfield>
+    <label tuiLabel>{{ user() || 'Phone number or name' }}</label>
+
+    <input
+        #input
+        mask="+1 (###)###-####"
+        tuiInputPhone
+        [allowText]="true"
+        [ngModel]="value()"
+        (input)="onInput(input.value)"
+        (ngModelChange)="value.set($event)"
+    />
+
+    <ng-container *ngIf="items | tuiFilterByInput: matcher as filtered">
+        <ng-container *ngIf="!user() && input.value && filtered.length">
+            <tui-data-list-wrapper
+                *tuiTextfieldDropdown
+                new
+                [itemContent]="template"
+                [items]="filtered"
+                (itemClick)="selectUser($event)"
+            />
+        </ng-container>
+    </ng-container>
+</tui-textfield>
+
+<ng-template
+    #template
+    let-user
+>
+    <div tuiCell>
+        <tui-avatar
+            size="s"
+            [src]="user.avatarUrl"
+        />
+
+        <div tuiTitle>
+            {{ user }}
+            <span tuiSubtitle>{{ user.phone }}</span>
+        </div>
+    </div>
+</ng-template>
+
+<pre>value: {{ value() }}</pre>

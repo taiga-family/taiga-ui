@@ -13,7 +13,7 @@ in the html file.
 
 - Drop unused variables
 - Do not use console.log in codebase
-- Do not write comments in codebase
+- Copilot shouldn't write comments in codebase
 - First, write unit and e2e tests and make sure it fails before you start writing the bug fix
 
 ## TypeScript guideline
