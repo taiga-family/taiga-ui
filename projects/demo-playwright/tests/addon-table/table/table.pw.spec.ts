@@ -95,7 +95,7 @@ test.describe('Table', () => {
     test('Checkboxes', async ({page}) => {
         await tuiGoto(page, DemoRoute.Table);
         const example = new TuiDocumentationPagePO(page).getExample('#custom');
-        const checkboxes = await example.locator('input[type="checkbox]').all();
+        const checkboxes = await example.locator('input[type="checkbox"]').all();
 
         checkboxes[1]?.click();
 
