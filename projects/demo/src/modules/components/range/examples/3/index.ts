@@ -1,30 +1,34 @@
-import {I18nPluralPipe, JsonPipe, NgForOf, NgIf} from '@angular/common';
+import {JsonPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon} from '@taiga-ui/core';
+import type {TuiKeySteps} from '@taiga-ui/kit';
 import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [FormsModule, I18nPluralPipe, JsonPipe, NgForOf, NgIf, TuiIcon, TuiRange],
+    imports: [FormsModule, JsonPipe, NgForOf, TuiRange],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly min = 0;
-    protected readonly max = 1000;
-    protected readonly step = 250;
-    protected readonly segments = 4;
-    protected readonly labels = [...new Array(this.segments + 1).keys()].map(
-        (i) => this.min + this.step * i,
-    );
+    protected readonly ticksLabels = ['0', '10K', '100K', '500k', '1000K'];
+    protected readonly segments = this.ticksLabels.length - 1;
 
-    protected value = [0, 250];
+    // 12.5% (of total distance) per step
+    protected readonly stepPercentage = 100 / (2 * this.segments);
 
-    // https://angular.io/api/common/I18nPluralPipe
-    protected pluralMap = {'=0': '0', '=1': '# item', '=1000': 'MAX', other: '# items'};
+    protected value = [0, 100_000];
+
+    protected readonly keySteps: TuiKeySteps = [
+        // [percent, value]
+        [0, 0],
+        [25, 10_000],
+        [50, 100_000],
+        [75, 500_000],
+        [100, 1_000_000],
+    ];
 }

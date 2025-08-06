@@ -4,51 +4,29 @@
     type="components"
 >
     <ng-template pageTab>
-        <p>Component allows to choose a part of a range</p>
+        A two-thumb slider for selecting a range of values
 
         <tui-doc-example
-            id="base"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="sizes"
-            heading="Sizes"
-            [component]="2 | tuiComponent"
-            [content]="2 | tuiExample"
-            [fullsize]="true"
-        />
-
-        <tui-doc-example
-            id="segments"
-            heading="Visual segments + labels for ticks"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [description]="description"
+            [heading]="example"
+            [id]="example | tuiKebab"
         >
-            <tui-notification class="tui-space_bottom-8">
-                <p class="tui-space_top-0">
+            <ng-template
+                #description
+                [ngSwitch]="index"
+            >
+                <ng-container *ngSwitchCase="0">Built-in size options and custom thickness</ng-container>
+                <ng-container *ngSwitchCase="1">
                     Use mixin
                     <code>tui-slider-ticks-labels</code>
-                    to arrange ticks' labels (it places them strictly below ticks).
-                </p>
-                <div>
-                    The mixin accepts only a single argument – size of the slider (
-                    <code>m</code>
-                    or
-                    <code>s</code>
-                    ).
-                </div>
-            </tui-notification>
+                    to place labels strictly below ticks
+                </ng-container>
+                <ng-container *ngSwitchCase="2">Using progressive scale across the track</ng-container>
+            </ng-template>
         </tui-doc-example>
-
-        <tui-doc-example
-            id="key-steps"
-            heading="KeySteps"
-            [component]="4 | tuiComponent"
-            [content]="4 | tuiExample"
-        />
     </ng-template>
 
     <ng-template pageTab>

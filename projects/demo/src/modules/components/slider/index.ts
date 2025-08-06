@@ -11,6 +11,15 @@ import {TuiSlider} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
+    protected readonly examples = [
+        'Sizes',
+        'Colors',
+        'Segments',
+        'Disabled',
+        'KeySteps',
+        'Complex',
+    ];
+
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
     protected readonly segmentsVariants: Array<number[] | number> = [
         1,

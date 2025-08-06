@@ -1,29 +1,30 @@
-import {JsonPipe} from '@angular/common';
+import {I18nPluralPipe, JsonPipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
-import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core';
 import {TuiRange} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        FormsModule,
-        JsonPipe,
-        ReactiveFormsModule,
-        TuiAppearance,
-        TuiCardLarge,
-        TuiRange,
-    ],
+    imports: [FormsModule, I18nPluralPipe, JsonPipe, NgForOf, NgIf, TuiIcon, TuiRange],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected smallRangeValue = [0, 40];
+    protected readonly min = 0;
+    protected readonly max = 100;
+    protected readonly step = 25;
+    protected readonly segments = 4;
+    protected readonly labels = [...new Array(this.segments + 1).keys()].map(
+        (i) => this.min + this.step * i,
+    );
 
-    protected readonly bigRangeControl = new FormControl([40, 60]);
+    protected value = [0, 25];
+
+    // https://angular.dev/api/common/I18nPluralPipe#example
+    protected pluralMap = {'=0': '0', '=1': '# item', '=100': 'MAX', other: '# items'};
 }
