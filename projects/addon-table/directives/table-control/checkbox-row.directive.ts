@@ -1,11 +1,5 @@
-import {
-    computed,
-    Directive,
-    inject,
-    Input,
-    type OnDestroy,
-    type OnInit,
-} from '@angular/core';
+import type {OnDestroy, OnInit} from '@angular/core';
+import {computed, Directive, inject, Input} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 

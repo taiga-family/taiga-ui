@@ -1,9 +1,10 @@
-import {computed, Directive, type Signal, signal} from '@angular/core';
+import type {Signal} from '@angular/core';
+import {computed, Directive, signal} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 
-import {TuiCheckboxRowDirective} from './checkbox-row.directive';
+import type {TuiCheckboxRowDirective} from './checkbox-row.directive';
 
 @Directive({
     standalone: true,
@@ -11,7 +12,7 @@ import {TuiCheckboxRowDirective} from './checkbox-row.directive';
     providers: [tuiFallbackValueProvider([])],
 })
 export class TuiTableControlDirective<T> extends TuiControl<readonly T[]> {
-    private children = signal<readonly TuiCheckboxRowDirective<T>[]>([]);
+    private readonly children = signal<ReadonlyArray<TuiCheckboxRowDirective<T>>>([]);
 
     public readonly checked: Signal<boolean> = computed(() =>
         this.children().every((i) => this.value().includes(i.tuiCheckboxRow)),
