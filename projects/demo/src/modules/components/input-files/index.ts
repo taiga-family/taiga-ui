@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {TuiDocControl} from '@demo/components/control';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
@@ -9,15 +10,14 @@ import {map} from 'rxjs';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {TuiDocControl} from '@demo/components/control';
 
 @Component({
     standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
-        TuiFiles,
         TuiDocControl,
+        TuiFiles,
         TuiInputMonthDirective,
     ],
     templateUrl: './index.html',
