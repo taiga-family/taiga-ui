@@ -335,9 +335,8 @@ describe('CalendarSheet', () => {
         });
 
         function getDaysOfWeek(): string[] {
-            const daysOfWeekContainers = fixture.debugElement.queryAll(
-                By.css('.t-row_weekday .t-cell'),
-            );
+            const daysOfWeekContainers =
+                fixture.debugElement.queryAll(By.css('.t-row_weekday .t-cell')) || [];
 
             return daysOfWeekContainers.map(
                 (container) => container.nativeElement.textContent,
@@ -345,10 +344,14 @@ describe('CalendarSheet', () => {
         }
 
         function getColumnCells(columnIndex: number): DebugElement[] {
-            return fixture.debugElement.queryAll(
-                By.css(
-                    `.t-row:not(.t-row_weekday) .t-cell:nth-child(${columnIndex + 1})`,
-                ),
+            return (
+                fixture.debugElement.queryAll(
+                    By.css(
+                        `.t-row:not(.t-row_weekday) .t-cell:nth-child(${
+                            columnIndex + 1
+                        })`,
+                    ),
+                ) || []
             );
         }
 

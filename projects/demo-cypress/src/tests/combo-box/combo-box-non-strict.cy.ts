@@ -70,7 +70,7 @@ export class TestComboBox {
         this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
     }
 
-    protected readonly stringify: TuiStringHandler<Country> = (x) => x.name;
+    protected readonly stringify: TuiStringHandler<Country> = (x) => x.name ?? x;
 }
 
 describe('ComboBox[strict=false]', () => {

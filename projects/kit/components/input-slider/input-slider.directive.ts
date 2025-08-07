@@ -76,13 +76,11 @@ export class TuiInputSliderDirective {
 
         if (
             slider.keySteps?.transformer() &&
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             Number.isFinite(slider.keySteps?.totalSteps)
         ) {
             // TODO(v5): move all if-condition body inside `TuiSliderKeyStepsBase`
             slider.min = 0;
             slider.step = 1;
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             slider.max = slider.keySteps?.totalSteps ?? 100;
         } else {
             slider.min = this.inputNumber.min();
@@ -130,7 +128,7 @@ export class TuiInputSliderDirective {
 
     protected onBlur(): void {
         if (!this.element.value) {
-            this.inputNumber.setValue(this.value());
+            this.inputNumber.setValue(this.value() ?? null);
         }
     }
 

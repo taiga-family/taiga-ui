@@ -37,7 +37,7 @@ export class TuiAmountPipe implements PipeTransform {
                         : tuiFormatSignSymbol(value, this.options.sign);
                 const space =
                     currencySymbol &&
-                    (currencySymbol.length > 1 || currencyAlign === 'right')
+                    (currencySymbol?.length > 1 || currencyAlign === 'right')
                         ? CHAR_NO_BREAK_SPACE
                         : '';
 

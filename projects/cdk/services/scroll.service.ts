@@ -69,7 +69,6 @@ export class TuiScrollService {
 
         return observable.pipe(
             tap(([scrollTop, scrollLeft]) => {
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 elementOrWindow.scrollTo?.(scrollLeft, scrollTop);
             }),
         );

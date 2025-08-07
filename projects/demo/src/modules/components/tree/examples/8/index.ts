@@ -65,7 +65,7 @@ export default class Example {
         const targetParent = findParent(target, this.data);
 
         if (dragParent) {
-            dragParent.children = dragParent.children?.filter((item) => item !== drag);
+            dragParent.children = dragParent?.children?.filter((item) => item !== drag);
         }
 
         const index = (targetParent?.children?.indexOf(target) ?? 0) + position;

@@ -49,17 +49,14 @@ export class TuiMedia {
     @Input()
     public set paused(paused: boolean) {
         if (paused) {
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             this.el.pause?.();
         } else {
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             void this.el.play?.();
             this.updatePlaybackRate(this.playbackRate);
         }
     }
 
     public get currentTime(): number {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         return this.el.currentTime ?? 0;
     }
 

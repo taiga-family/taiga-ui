@@ -42,7 +42,6 @@ export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFi
         return (
             !!disabled ||
             !this.key ||
-            // eslint-disable-next-line unicorn/no-array-method-this-argument
             this.delegate.filter(item[this.key as keyof T], value)
         );
     }

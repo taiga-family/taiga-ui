@@ -7,6 +7,6 @@ import {WA_WINDOW} from '@ng-web-apis/common';
  */
 export const TUI_IS_FIREFOX = new InjectionToken(ngDevMode ? 'TUI_IS_FIREFOX' : '', {
     factory: () =>
-        inject<(Window & {mozCancelFullScreen: unknown}) | undefined>(WA_WINDOW)
+        (inject(WA_WINDOW) as Window & {mozCancelFullScreen: unknown})
             ?.mozCancelFullScreen !== undefined,
 });

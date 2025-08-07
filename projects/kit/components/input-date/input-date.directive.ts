@@ -200,7 +200,7 @@ export class TuiInputDateDirective extends TuiInputDateBase<TuiDay> {
     );
 
     protected override onValueChange(value: string): void {
-        this.control.control?.updateValueAndValidity({emitEvent: false});
+        this.control?.control?.updateValueAndValidity({emitEvent: false});
         this.onChange(
             value.length === DATE_FILLER_LENGTH
                 ? TuiDay.normalizeParse(value, this.format().mode)

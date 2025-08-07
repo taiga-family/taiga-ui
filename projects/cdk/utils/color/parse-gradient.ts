@@ -55,7 +55,7 @@ const REGEXP_ARRAY = [
     String.raw`\s*)?`,
 ];
 
-function getPosition(match: string | undefined, stops: number): string {
+function getPosition(match: string, stops: number): string {
     const fallback = stops === 1 ? '100%' : `${stops}%`;
 
     return match?.includes('%') ? match : fallback;

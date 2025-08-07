@@ -92,7 +92,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         return (
             this.stops
                 .map((e) => e.nativeElement.offsetTop - this.context.offset)
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 .concat(this.el.clientHeight ?? Infinity)[this.context.initial] ?? 0
         );
     }

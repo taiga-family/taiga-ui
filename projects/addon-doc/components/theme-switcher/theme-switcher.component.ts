@@ -27,9 +27,7 @@ export function tuiDocThemeProvider(): FactoryProvider {
     return {
         provide: TUI_THEME,
         useFactory: () =>
-            inject<Storage | undefined>(WA_LOCAL_STORAGE)?.getItem(
-                inject(TUI_THEME_KEY),
-            ) || 'Taiga UI',
+            inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_THEME_KEY)) || 'Taiga UI',
     };
 }
 
@@ -41,7 +39,7 @@ export function tuiDocThemeProvider(): FactoryProvider {
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocThemeSwitcher {
-    private readonly storage = inject<Storage | undefined>(WA_LOCAL_STORAGE);
+    private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly key = inject(TUI_THEME_KEY);
     private readonly location = inject(WA_LOCATION);
 

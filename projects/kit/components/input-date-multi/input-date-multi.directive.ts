@@ -105,7 +105,8 @@ export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay
         calendar.value = this.value();
         calendar.min = this.min();
         calendar.max = this.max();
-        calendar.month = this.value()[this.value().length - 1] ?? TuiMonth.currentLocal();
+        calendar.month =
+            this.value()?.[this.value().length - 1] ?? TuiMonth.currentLocal();
     }
 
     protected onClick(): void {

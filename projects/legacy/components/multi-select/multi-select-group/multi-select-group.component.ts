@@ -103,7 +103,7 @@ export class TuiMultiSelectGroupComponent<T> {
 
     @tuiPure
     private get valueChanges$(): Observable<readonly T[]> {
-        return tuiControlValue<readonly T[] | undefined>(this.control).pipe(
+        return tuiControlValue<readonly T[]>(this.control).pipe(
             map((value) => value || []),
         );
     }

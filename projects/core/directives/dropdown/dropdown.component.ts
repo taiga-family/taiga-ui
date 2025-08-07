@@ -86,8 +86,7 @@ export class TuiDropdownComponent implements AfterViewInit {
         });
     }
 
-    protected readonly close: (() => void) | undefined = (): void =>
-        this.directive.toggle(false);
+    protected readonly close = (): void => this.directive.toggle(false);
 
     private getStyles(x: number, y: number): Record<string, string> {
         const {maxHeight, minHeight, offset, limitWidth} = this.options;

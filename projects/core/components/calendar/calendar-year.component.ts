@@ -118,7 +118,7 @@ export class TuiCalendarYear {
         }
 
         const hovered = this.isRangePicking() ? hoveredItem : null;
-        const from = 'from' in value ? value.from.year : value.year;
+        const from = 'from' in value ? value.from?.year : value.year;
         const to = 'from' in value ? value.to.year : value.year;
 
         const min = Math.min(from, hovered ?? to);
@@ -161,14 +161,14 @@ export class TuiCalendarYear {
 
     private get calculatedMin(): number {
         const initial = this.initialItem() - LIMIT;
-        const min = this.min() || MIN_YEAR;
+        const min = this.min() ?? MIN_YEAR;
 
         return min > initial ? min : initial;
     }
 
     private get calculatedMax(): number {
         const initial = this.initialItem() + LIMIT;
-        const max = this.max() || MAX_YEAR;
+        const max = this.max() ?? MAX_YEAR;
 
         return max < initial ? max + 1 : initial;
     }

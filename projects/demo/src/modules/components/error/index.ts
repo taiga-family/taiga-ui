@@ -19,7 +19,7 @@ export default class Page {
         'Error as HTML content',
     ];
 
-    protected selectedError: string | null = this.errorVariants[0]!;
+    protected selectedError = this.errorVariants[0]!;
 
     protected get error(): TuiValidationError | string | null {
         if (this.selectedError === null) {

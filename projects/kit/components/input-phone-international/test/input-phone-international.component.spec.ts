@@ -240,7 +240,8 @@ describe('InputPhoneInternational', () => {
     });
 
     function getDropdownCountryNames(): string[] {
-        const countryNameContainers = fixture.debugElement.queryAll(By.css('.t-name'));
+        const countryNameContainers =
+            fixture.debugElement.queryAll(By.css('.t-name')) || [];
 
         return countryNameContainers.map((container) =>
             container.nativeElement.textContent?.trim(),

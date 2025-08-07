@@ -61,7 +61,7 @@ export default class Example {
     ): boolean | null => {
         let result: boolean | null = null;
         const flat = flatten(item);
-        const key = flat[0];
+        const key = flat[0]!;
 
         if (key) {
             result = !!map.get(key);

@@ -55,7 +55,7 @@ export function migrateBadge({
             return;
         }
 
-        const svg = (childNodes as Element[] | undefined)?.find(
+        const svg = (childNodes as Element[])?.find(
             (node) => node.nodeName === 'tui-svg',
         );
 
@@ -79,7 +79,7 @@ function migrateIcon({
     templateOffset,
 }: {
     svg: Element;
-    sourceCodeLocation: ElementLocation | undefined;
+    sourceCodeLocation: ElementLocation;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
@@ -94,7 +94,7 @@ function migrateIcon({
 
     recorder.insertRight(
         insertTo,
-        `${src.name === 'src' ? 'iconStart' : '[iconStart]'}="${srcValue}"`,
+        `${src?.name === 'src' ? 'iconStart' : '[iconStart]'}="${srcValue}"`,
     );
     recorder.remove(
         svg.sourceCodeLocation?.startOffset || 0,
@@ -109,8 +109,8 @@ function migrateBadgeValue({
     recorder,
     templateOffset,
 }: {
-    valueAttr: Attribute | undefined;
-    sourceCodeLocation: ElementLocation | undefined;
+    valueAttr: Attribute;
+    sourceCodeLocation: ElementLocation;
     recorder: UpdateRecorder;
     templateOffset: number;
 }): void {
@@ -140,13 +140,13 @@ function migrateBadgeValue({
     }
 
     if (selfClosing) {
-        recorder.remove((sourceCodeLocation?.startTag?.endOffset ?? 2) - 2, 1);
+        recorder.remove((sourceCodeLocation.startTag?.endOffset ?? 2) - 2, 1);
     }
 }
 
 function addTodo(
     recorder: UpdateRecorder,
-    sourceCodeLocation: ElementLocation | undefined,
+    sourceCodeLocation: ElementLocation,
     templateOffset: number,
 ): void {
     recorder.insertRight(

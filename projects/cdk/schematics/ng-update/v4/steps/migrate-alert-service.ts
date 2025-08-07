@@ -166,7 +166,7 @@ function toAlertServiceOpenCallExpression(node?: Node): CallExpression | undefin
 }
 
 function findOptionsInitializer(
-    ref?: PropertyAccessExpression,
+    ref: PropertyAccessExpression,
 ): ObjectLiteralExpression | undefined {
     return ref
         ?.getFirstChildByKind(SyntaxKind.Identifier)

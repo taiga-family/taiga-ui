@@ -239,7 +239,7 @@ test.describe('InputDate', () => {
 
             const [calendarSheet] = await calendar.getCalendarSheets();
 
-            await calendarSheet.clickOnDay(1);
+            await calendarSheet?.clickOnDay(1);
 
             await expect.soft(inputDate.textfield).toHaveScreenshot('10-input-date.png');
         });

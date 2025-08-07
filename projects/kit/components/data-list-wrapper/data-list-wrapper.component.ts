@@ -54,8 +54,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 })
 export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccessor<T> {
     private readonly datalist = signal<TuiDataListComponent<T> | null>(null);
-    private readonly itemsHandlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
-
+    private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     // TODO(v5): delete
     private readonly itemsHandlersLegacy: TuiItemsHandlersLegacy<T> = inject(
         TUI_ITEMS_HANDLERS_LEGACY,
@@ -76,8 +75,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<T> = this.newOptionMode
-        ? // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-          this.itemsHandlers?.disabledItemHandler()
+        ? this.itemsHandlers?.disabledItemHandler()
         : this.itemsHandlersLegacy.disabledItemHandler;
 
     @Input()

@@ -18,10 +18,10 @@ export async function waitIcons(options: Options): Promise<void> {
             return window
                 .decodeURI(
                     baseUrl +
-                        window
+                        (window
                             .getComputedStyle(element)
                             .getPropertyValue('--t-icon')
-                            .replaceAll(/url\(|\)/g, ''),
+                            ?.replace(/url\(|\)/g, '') ?? ''),
                 )
                 .replaceAll('\\', '');
         });

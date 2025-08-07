@@ -135,7 +135,7 @@ export class TuiLineDaysChart implements AfterViewInit {
             });
     }
 
-    public onHovered(day?: TuiDay | number): void {
+    public onHovered(day: TuiDay | number): void {
         if (tuiIsNumber(day)) {
             this.charts.forEach((chart) => chart.onHovered(NaN));
 

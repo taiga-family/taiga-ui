@@ -86,10 +86,7 @@ export const TUI_ACTIVE_ELEMENT = new InjectionToken<Observable<EventTarget | nu
                 focusin$.pipe(
                     switchMap((event) => {
                         const target = tuiGetActualTarget(event);
-                        const root =
-                            (tuiGetDocumentOrShadowRoot(target) as
-                                | DocumentOrShadowRoot
-                                | undefined) || doc;
+                        const root = tuiGetDocumentOrShadowRoot(target) || doc;
 
                         return root === doc
                             ? of(target)

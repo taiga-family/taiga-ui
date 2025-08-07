@@ -35,7 +35,7 @@ export function migrateProgressSegmented({
         }
 
         const max = maxAttr.value;
-        const insertTo = sourceCodeLocation.attrs?.[maxAttr.name]?.endOffset || 0;
+        const insertTo = sourceCodeLocation?.attrs?.[maxAttr.name]?.endOffset || 0;
 
         recorder.insertRight(insertTo + templateOffset, `  [segments]="${max}"`);
     });

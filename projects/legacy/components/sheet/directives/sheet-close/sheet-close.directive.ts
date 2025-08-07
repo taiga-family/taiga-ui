@@ -26,7 +26,6 @@ export class TuiSheetCloseDirective {
         tuiTypedFromEvent(this.el, TUI_SHEET_CLOSE),
         this.dragged$.pipe(
             tuiIfMap(() => this.scroll$.pipe(startWith(this.el.scrollTop)), tuiIsFalsy),
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             filter((y) => this.sheet.item?.closeable && this.shouldClose(y)),
             distinctUntilChanged(),
             tuiZonefull(this.zone),

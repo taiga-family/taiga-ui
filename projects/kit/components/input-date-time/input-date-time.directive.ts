@@ -156,7 +156,7 @@ export class TuiInputDateTimeDirective
 
     protected override onValueChange(value: string): void {
         this.textfield.value.set(value);
-        this.control.control?.updateValueAndValidity({emitEvent: false});
+        this.control?.control?.updateValueAndValidity({emitEvent: false});
 
         const [date = '', time = ''] = value.split(this.options.dateTimeSeparator);
         const parsedDate =

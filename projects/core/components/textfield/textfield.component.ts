@@ -72,7 +72,7 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly ghost?: ElementRef<HTMLElement>;
 
     @ContentChild(forwardRef(() => TuiLabel), {read: ElementRef})
-    protected readonly label?: ElementRef<HTMLElement | undefined>;
+    protected readonly label?: ElementRef<HTMLElement>;
 
     @ContentChildren(TUI_AUXILIARY, {descendants: true})
     protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
@@ -176,7 +176,6 @@ export class TuiTextfieldBaseComponent<T>
         }
 
         this.open.update((open) => !open);
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         this.input?.nativeElement.showPicker?.();
     }
 

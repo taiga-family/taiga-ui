@@ -39,7 +39,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
 
     protected width: number | null = null;
 
-    protected readonly table = inject<TuiTableDirective<T> | undefined>(
+    protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
         {optional: true},
     );
@@ -95,7 +95,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     private get isCurrentAndDescDirection(): boolean {
         return (
             this.sorter === this.table?.sorter &&
-            this.table.direction === TuiSortDirection.Desc
+            this.table?.direction === TuiSortDirection.Desc
         );
     }
 }

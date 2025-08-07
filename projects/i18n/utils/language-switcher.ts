@@ -34,15 +34,13 @@ export function tuiLanguageSwitcher(loader: TuiLanguageLoader): Provider[] {
 export class TuiLanguageSwitcherService extends BehaviorSubject<Observable<TuiLanguage>> {
     private readonly fallback = inject(TUI_DEFAULT_LANGUAGE);
     private readonly key = inject(TUI_LANGUAGE_STORAGE_KEY);
-    private readonly storage = inject<Storage | undefined>(WA_LOCAL_STORAGE);
+    private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly loader = inject(TUI_LANGUAGE_LOADER, {optional: true});
 
     constructor() {
         super(
             tuiAsyncLoadLanguage(
-                inject<Storage | undefined>(WA_LOCAL_STORAGE)?.getItem(
-                    inject(TUI_LANGUAGE_STORAGE_KEY),
-                ) ?? null,
+                inject(WA_LOCAL_STORAGE)?.getItem(inject(TUI_LANGUAGE_STORAGE_KEY)),
                 inject(TUI_LANGUAGE_LOADER, {optional: true}),
                 inject(TUI_DEFAULT_LANGUAGE),
             ),

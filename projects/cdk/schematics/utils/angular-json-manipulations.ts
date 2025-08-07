@@ -11,11 +11,11 @@ import {type Asset} from '../ng-update/interfaces/asset';
 import {getProjectTargetOptions} from './get-project-target-options';
 import {getProjects} from './get-projects';
 
-function hasTaigaIcons(assets?: Asset[]): boolean {
+function hasTaigaIcons(assets: Asset[]): boolean {
     return !!assets?.find((asset) =>
         tuiIsString(asset)
             ? asset.includes('taiga-ui')
-            : asset.input.includes('taiga-ui'),
+            : asset?.input?.includes('taiga-ui'),
     );
 }
 

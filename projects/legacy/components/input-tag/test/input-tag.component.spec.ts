@@ -467,7 +467,7 @@ function getPlaceholderText<T>(fixture: ComponentFixture<T>): string {
         new TuiPageObject(fixture)
             .getByAutomationId('tui-input-tag__placeholder')
             ?.nativeElement.textContent?.trim() ||
-        new TuiPageObject(fixture).getByAutomationId('tui-input-tag__native')
+        new TuiPageObject(fixture)?.getByAutomationId('tui-input-tag__native')
             ?.nativeElement.placeholder
     );
 }

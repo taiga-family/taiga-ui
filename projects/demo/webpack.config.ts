@@ -84,7 +84,7 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
             typeof rule === 'object' &&
             !!rule &&
             DO_NOT_MUTATE_RAW_FILE_CONTENTS.some(
-                (pattern) => rule.test instanceof RegExp && rule.test.test(pattern),
+                (pattern) => rule.test instanceof RegExp && rule.test?.test(pattern),
             )
                 ? {
                       ...(rule as unknown as RuleSetRule),

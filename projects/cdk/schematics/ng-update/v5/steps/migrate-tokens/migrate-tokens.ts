@@ -132,7 +132,6 @@ export function migrateTokens(tree: Tree, options: TuiSchema): void {
                     });
 
                     // add InjectionToken as regular import if needed
-                    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                     if (!hasValueImport) {
                         sourceFile.addImportDeclaration({
                             moduleSpecifier: ANGULAR_CORE,

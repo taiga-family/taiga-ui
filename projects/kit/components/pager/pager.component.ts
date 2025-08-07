@@ -104,7 +104,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
 
     private get visibleWidth(): number {
         return (
-            (this.items?.map((item) => item.nativeElement.offsetWidth) ?? [])
+            (this.items?.map((item) => item.nativeElement.offsetWidth ?? 0) ?? [])
                 .slice(this.start, this.end + 1)
                 .reduce((sum, item) => sum + item + this.gap, 0) - this.gap
         );

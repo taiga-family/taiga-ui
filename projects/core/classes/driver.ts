@@ -28,10 +28,10 @@ export abstract class TuiDriverDirective implements AfterViewInit {
     private readonly drivers: readonly TuiDriver[] =
         inject<any>(TuiDriver, {self: true, optional: true}) || [];
 
-    private readonly vehicles = inject<unknown>(TuiVehicle, {
+    private readonly vehicles: readonly TuiVehicle[] = inject<any>(TuiVehicle, {
         self: true,
         optional: true,
-    }) as readonly TuiVehicle[] | undefined;
+    });
 
     public ngAfterViewInit(): void {
         const vehicle = this.vehicles?.find(({type}) => type === this.type);

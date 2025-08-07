@@ -51,7 +51,6 @@ export class TuiAlgoliaSearch {
         const darkMode = inject(TUI_DARK_MODE);
 
         effect(() => {
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             documentElement?.setAttribute('data-theme', darkMode() ? 'dark' : 'light');
         });
     }

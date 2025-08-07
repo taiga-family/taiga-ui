@@ -53,7 +53,7 @@ export default class Example {
     ];
 
     protected readonly disabledItemHandler: TuiBooleanHandler<TuiTime> = (x) =>
-        x.valueOf() === this.items[0]?.valueOf();
+        x?.valueOf() === this.items[0]!.valueOf();
 
     protected readonly matcher: TuiStringMatcher<TuiTime> = (item, query) =>
         item.toString('HH:MM').startsWith(query);

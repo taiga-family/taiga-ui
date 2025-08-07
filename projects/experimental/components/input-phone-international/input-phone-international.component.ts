@@ -184,7 +184,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
 
         super.writeValue(unmasked);
         this.masked.set(
-            maskitoTransform(this.value(), this.mask() || MASKITO_DEFAULT_OPTIONS),
+            maskitoTransform(this.value() ?? '', this.mask() || MASKITO_DEFAULT_OPTIONS),
         );
     }
 

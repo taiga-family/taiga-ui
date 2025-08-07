@@ -16,16 +16,11 @@ export function tuiGetElementObscures(
 ): readonly [Element, Element, Element, Element] | [] | null {
     const {ownerDocument} = element;
 
-    if (
-        !(ownerDocument as Document | undefined)?.defaultView ||
-        !(element.getBoundingClientRect as
-            | typeof element.getBoundingClientRect
-            | undefined)
-    ) {
+    if (!ownerDocument?.defaultView || !element.getBoundingClientRect) {
         return null;
     }
 
-    const {innerWidth, innerHeight} = ownerDocument.defaultView as Window;
+    const {innerWidth, innerHeight} = ownerDocument.defaultView;
     const doc = tuiGetDocumentOrShadowRoot(element);
     const rect = element.getBoundingClientRect();
 

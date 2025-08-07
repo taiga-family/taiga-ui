@@ -1,7 +1,7 @@
 export function tuiRetargetedBoundaryCrossing(event: Event): boolean {
     // firefox
     if ('explicitOriginalTarget' in event) {
-        return event.explicitOriginalTarget !== event.target;
+        return event?.explicitOriginalTarget !== event.target;
     }
 
     // chrome
@@ -11,7 +11,7 @@ export function tuiRetargetedBoundaryCrossing(event: Event): boolean {
 
     // safari
     if ('detail' in event && 'webkitForce' in event) {
-        return event.detail === 0;
+        return event?.detail === 0;
     }
 
     return false;

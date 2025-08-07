@@ -287,8 +287,7 @@ export class TuiPrimitiveTextfieldComponent
 
     protected transitionStartHandler({propertyName, target}: TransitionEvent): void {
         const matchedAutofill =
-            propertyName.includes('box-shadow') &&
-            (target as Element | undefined)?.matches('input');
+            propertyName.includes('box-shadow') && (target as Element)?.matches('input');
 
         if (matchedAutofill) {
             this.onAutofilled(!this.autofilled);

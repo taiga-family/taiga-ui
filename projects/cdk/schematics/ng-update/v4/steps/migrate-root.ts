@@ -82,7 +82,7 @@ function addProviders({
     modulePath?: string;
 }): void {
     const providersArray = callExpression?.getParentWhile(Node.isArrayLiteralExpression);
-    const module = modulePath ? getNgModules(modulePath)[0] : undefined;
+    const module = modulePath && getNgModules(modulePath)?.[0];
 
     if (!providersArray && !modulePath) {
         return;

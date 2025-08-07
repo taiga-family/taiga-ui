@@ -63,7 +63,7 @@ export class TuiLineDaysChartHint implements AfterContentInit {
         return this.getMap(...this.charts.map(({value}) => value)).get(String(day)) || [];
     }
 
-    public raise(day?: TuiDay): void {
+    public raise(day: TuiDay): void {
         const current = this.charts
             .map(({value}) => (day ? find(value, day) : []))
             .filter(([_, value]) => !Number.isNaN(value));

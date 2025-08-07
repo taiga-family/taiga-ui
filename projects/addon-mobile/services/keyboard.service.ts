@@ -34,7 +34,7 @@ export class TuiKeyboardService implements OnDestroy {
     }
 
     public hide(): void {
-        const focused = tuiGetNativeFocused(this.doc) as HTMLInputElement | undefined;
+        const focused = tuiGetNativeFocused(this.doc) as HTMLInputElement;
 
         if (focused?.inputMode === undefined || this.element) {
             return;

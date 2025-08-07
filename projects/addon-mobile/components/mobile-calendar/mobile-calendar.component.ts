@@ -257,7 +257,7 @@ export class TuiMobileCalendar implements AfterViewInit {
             this.value = TuiDayRange.sort(this.value, day);
         } else if (this.value instanceof TuiDayRange) {
             this.value = day;
-        } else if (!(this.value as TuiDay | null)) {
+        } else if (!this.value) {
             this.value = day;
         }
     }
@@ -295,7 +295,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly disabledItemHandlerMapper: TuiMapper<
         [TuiBooleanHandler<TuiDay>, TuiDay, TuiDay],
         TuiBooleanHandler<TuiDay>
-    > = (disabledItemHandler, min, max: TuiDay | null) => (item) =>
+    > = (disabledItemHandler, min, max) => (item) =>
         item.dayBefore(min) ||
         (max !== null && item.dayAfter(max)) ||
         disabledItemHandler(item);
@@ -310,7 +310,7 @@ export class TuiMobileCalendar implements AfterViewInit {
         }
 
         if (!(this.value instanceof TuiDayRange)) {
-            return this.value[0]?.year ?? this.today.year;
+            return this.value?.[0]?.year ?? this.today.year;
         }
 
         return this.value.to.year;
@@ -327,8 +327,8 @@ export class TuiMobileCalendar implements AfterViewInit {
 
         if (!(this.value instanceof TuiDayRange)) {
             return (
-                (this.value[0]?.month ?? this.today.month) +
-                ((this.value[0]?.year ?? this.today.year) - STARTING_YEAR) *
+                (this.value?.[0]?.month ?? this.today.month) +
+                ((this.value?.[0]?.year ?? this.today.year) - STARTING_YEAR) *
                     MONTHS_IN_YEAR
             );
         }

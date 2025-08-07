@@ -50,7 +50,7 @@ export function migrateOverscroll({
 
 function addTodo(
     recorder: UpdateRecorder,
-    sourceCodeLocation: ElementLocation | undefined,
+    sourceCodeLocation: ElementLocation,
     templateOffset: number,
 ): void {
     recorder.insertRight(

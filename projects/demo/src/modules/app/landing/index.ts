@@ -51,7 +51,7 @@ export default class Page implements OnInit {
 
     private readonly router = inject(Router);
     private readonly activatedRoute = inject(ActivatedRoute);
-    protected readonly storage = inject<Storage | undefined>(WA_LOCAL_STORAGE);
+    protected readonly storage = inject(WA_LOCAL_STORAGE);
     protected readonly routes = DemoRoute;
 
     protected current = 0;

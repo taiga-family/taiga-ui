@@ -57,11 +57,11 @@ export class TuiSvgService {
         };
     }
 
-    private parseSrc(name: string, src: string): SafeHtml | string {
+    private parseSrc(name: string, src: string): SafeHtml {
         return this.sanitize(tuiProcessIcon(src, name));
     }
 
-    private sanitize(src: string): SafeHtml | string {
+    private sanitize(src: string): SafeHtml {
         return this.sanitizer.bypassSecurityTrustHtml(
             (this.tuiSanitizer
                 ? this.tuiSanitizer.sanitize(SecurityContext.HTML, src)

@@ -143,7 +143,7 @@ function migrateContent({
 }: {
     attr: Attribute | undefined;
     colorAttr: Attribute | undefined;
-    sourceCodeLocation: ElementLocation | undefined;
+    sourceCodeLocation: ElementLocation;
     recorder: UpdateRecorder;
     templateOffset: number;
     slot: 'bottom' | 'top';
@@ -155,7 +155,7 @@ function migrateContent({
 
     const {value} = attr;
     const colorAttrValue = colorAttr?.value;
-    const insertTo = sourceCodeLocation?.startTag?.endOffset ?? 0;
+    const insertTo = sourceCodeLocation.startTag?.endOffset ?? 0;
 
     if (value.startsWith('tuiIcon')) {
         recorder.insertRight(

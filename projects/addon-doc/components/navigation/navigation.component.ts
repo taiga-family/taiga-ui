@@ -178,7 +178,7 @@ export class TuiDocNavigation {
             event.code === 'Slash' &&
             !this.doc.activeElement?.matches('input,textarea,[contenteditable]')
         ) {
-            this.searchInput?.nativeElement.focus();
+            this.searchInput?.nativeElement?.focus();
             event.preventDefault();
         }
     }

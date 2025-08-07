@@ -240,7 +240,7 @@ export class TuiInputTagComponent
         return (
             ((!this.focused || this.inputHidden) &&
                 !this.value.length &&
-                !this.search?.trim().length &&
+                !this.search?.trim()?.length &&
                 !this.placeholder) ||
             !!this.valueContent
         );
@@ -488,7 +488,6 @@ export class TuiInputTagComponent
         return value
             .reverse()
             .filter(
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 (item) => !this.uniqueTags || (item && !seen.has(item) && seen.add(item)),
             )
             .reverse();

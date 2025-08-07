@@ -40,7 +40,7 @@ export const DEMO_PAGE_LOADED_PROVIDER = {
     standalone: true,
 })
 export abstract class AbstractDemo {
-    protected abstract readonly storage: Storage | undefined;
+    protected abstract readonly storage: Storage;
     protected abstract readonly router: Router;
 
     @tuiPure

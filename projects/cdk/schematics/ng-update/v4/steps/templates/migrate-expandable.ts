@@ -34,7 +34,7 @@ export function migrateExpandable({
             return;
         }
 
-        const expandableValue = expandableAttr.value;
+        const expandableValue = expandableAttr?.value;
         const expandableStart =
             sourceCodeLocation?.attrs?.[expandableAttr.name]?.startOffset ?? 0;
         const expandableEnd =

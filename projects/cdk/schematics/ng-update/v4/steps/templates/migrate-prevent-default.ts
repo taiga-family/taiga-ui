@@ -37,9 +37,9 @@ export function migratePreventDefault({
         const event = preventDefaultAttr.value;
 
         const preventDefaultStart =
-            sourceCodeLocation.attrs?.[preventDefaultAttr.name]?.startOffset || 0;
+            sourceCodeLocation?.attrs?.[preventDefaultAttr.name]?.startOffset || 0;
         const preventDefaultEnd =
-            sourceCodeLocation.attrs?.[preventDefaultAttr.name]?.endOffset || 0;
+            sourceCodeLocation?.attrs?.[preventDefaultAttr.name]?.endOffset || 0;
 
         recorder.insertLeft(
             templateOffset + preventDefaultStart,

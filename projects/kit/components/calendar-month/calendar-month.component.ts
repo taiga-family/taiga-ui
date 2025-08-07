@@ -127,7 +127,7 @@ export class TuiCalendarMonth {
         }
 
         if (!this.options.rangeMode && value instanceof TuiMonth) {
-            return value.monthSame(item) ? 'active' : null;
+            return value?.monthSame(item) ? 'active' : null;
         }
 
         const selectedRange =

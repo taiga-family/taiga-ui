@@ -92,7 +92,7 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
         console.info('emitEvent', event);
 
         const alert =
-            !event || event.toString() === '[object Object]'
+            !event || event?.toString() === '[object Object]'
                 ? tuiInspectAny(event, 2)
                 : (event as string);
 
@@ -114,7 +114,7 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
         }
 
         let value =
-            !!propertyValueWithSuffix && this.items.length > 0
+            !!propertyValueWithSuffix && this.items
                 ? this.items[propertyValueWithSuffix as number]
                 : tuiCoerceValue(propertyValue);
 
@@ -130,9 +130,7 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
 
         const isValueAvailableByKey = value instanceof Object;
         const computedValue =
-            isValueAvailableByKey && this.items.length > 0
-                ? this.items.indexOf(value as T)
-                : value;
+            isValueAvailableByKey && this.items ? this.items.indexOf(value as T) : value;
 
         const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : '';
         const propName = this.clearBrackets(this.name) + suffix;

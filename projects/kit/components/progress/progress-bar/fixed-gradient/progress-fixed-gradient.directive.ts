@@ -32,7 +32,6 @@ export class TuiProgressFixedGradientDirective {
 
     protected get progressPercent(): number {
         const {value} = this.nativeProgress;
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         const max = this.nativeProgress.max ?? 1;
 
         return Math.min((value / max) * 100, 100);

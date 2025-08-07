@@ -55,7 +55,7 @@ export class TuiFile {
     private readonly options = inject(TUI_FILE_OPTIONS);
     private readonly locale = inject(LOCALE_ID);
     private readonly units$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
-    private readonly win = inject(WA_WINDOW) as Window & {File?: typeof File};
+    private readonly win = inject(WA_WINDOW) as Window & {File: typeof File};
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly fileTexts$ = inject(TUI_FILE_TEXTS);
@@ -155,7 +155,7 @@ export class TuiFile {
         if (
             this.win.File &&
             file instanceof this.win.File &&
-            file.type.startsWith('image/')
+            file.type?.startsWith('image/')
         ) {
             return this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
         }

@@ -88,7 +88,6 @@ export const TEXTFIELD_CONTROLLER_PROVIDER: Provider = [
             ]
         ) => {
             const change$ = merge(
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 ...controllers.map(({change$}) => change$ || NEVER),
             ).pipe(tuiWatch(cdr), takeUntilDestroyed());
 

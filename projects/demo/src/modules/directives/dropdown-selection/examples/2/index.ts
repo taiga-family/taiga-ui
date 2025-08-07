@@ -97,7 +97,7 @@ export default class Example {
         String(tuiGetWordRange(range)).startsWith('@');
 
     protected onArrow(event: Event, which: 'first' | 'last'): void {
-        const item = this.options[which] as ElementRef<HTMLElement> | undefined;
+        const item = this.options[which];
 
         if (!item) {
             return;

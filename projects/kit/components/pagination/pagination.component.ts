@@ -58,7 +58,7 @@ export class TuiPagination {
     public size: TuiSizeL | TuiSizeS = 'l';
 
     @Input()
-    public readonly disabled: boolean = false;
+    public readonly disabled = false;
 
     /**
      * Amount of visible pages around active page

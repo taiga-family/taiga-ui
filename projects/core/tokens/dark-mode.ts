@@ -16,7 +16,7 @@ export const TUI_DARK_MODE = new InjectionToken<
     factory: () => {
         let automatic = true;
 
-        const storage = inject<Storage | undefined>(WA_LOCAL_STORAGE);
+        const storage = inject(WA_LOCAL_STORAGE);
         const key = inject(TUI_DARK_MODE_KEY);
         const saved = storage?.getItem(key);
         const media = inject(WA_WINDOW).matchMedia('(prefers-color-scheme: dark)');

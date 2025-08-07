@@ -18,9 +18,9 @@ export function tuiTypeReferenceParser(types: string): TuiDocTypeReferenceParsed
         let extracted = type.trim().replaceAll('readonly ', '').replaceAll('[]', '');
 
         extracted =
-            /ReadonlyArray<([^>]+)>/.exec(extracted)?.[1]?.split('&')[0] ?? extracted;
-        extracted = /\[([^\]]+)\]/.exec(extracted)?.[1]?.split(',')[0] ?? extracted;
-        extracted = (extracted.split('<')[0] ?? extracted).trim();
+            /ReadonlyArray<([^>]+)>/.exec(extracted)?.[1]?.split('&')?.[0] ?? extracted;
+        extracted = /\[([^\]]+)\]/.exec(extracted)?.[1]?.split(',')?.[0] ?? extracted;
+        extracted = (extracted.split('<')?.[0] ?? extracted)?.trim() ?? '';
         extracted = Number.isNaN(parseFloat(extracted)) ? extracted : 'number';
         extracted = /^'(.+)'$|^"(.+)"$|^`(.+)`$/.test(extracted) ? 'string' : extracted;
         extracted = extracted.length === 1 ? 'unknown' : extracted;

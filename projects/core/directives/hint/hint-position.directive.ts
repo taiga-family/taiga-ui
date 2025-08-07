@@ -58,7 +58,6 @@ export class TuiHintPosition extends TuiPositionAccessor {
     public getPosition(rect: DOMRect, el?: HTMLElement): TuiPoint {
         const width = el?.clientWidth ?? rect.width;
         const height = el?.clientHeight ?? rect.height;
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         const hostRect = this.accessor.getClientRect() ?? EMPTY_CLIENT_RECT;
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;

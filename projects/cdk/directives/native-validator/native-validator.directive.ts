@@ -35,12 +35,10 @@ export class TuiNativeValidator implements Validator {
     }
 
     protected handleValidation(): void {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         const invalid = this.control$.value?.touched && this.control$.value?.invalid;
 
         // TODO: Replace with :has(:invalid) when supported
         this.el.closest('tui-textfield')?.classList.toggle('tui-invalid', invalid);
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         this.el.setCustomValidity?.(invalid ? this.tuiNativeValidator : '');
     }
 }

@@ -11,9 +11,7 @@ export function getStandaloneBootstrapFunction(path: string): CallExpression | n
         .map((ref) => ref.getParent())
         .find((node) => Node.isCallExpression(node));
 
-    const standaloneBootstrapFunction = standaloneBootstrapIdentifier as
-        | CallExpression
-        | undefined;
+    const standaloneBootstrapFunction = standaloneBootstrapIdentifier as CallExpression;
 
     return standaloneBootstrapFunction || null;
 }

@@ -21,7 +21,6 @@ export function migrateFilterPipe({
     const templateOffset = getTemplateOffset(resource);
 
     const elements = findElementsInTemplateByFn(template, (el) =>
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         el.attrs?.some((attr) => attr.value.includes('tuiFilterByInputWith')),
     );
 
@@ -32,7 +31,7 @@ export function migrateFilterPipe({
             return;
         }
 
-        const {startOffset, endOffset} = sourceCodeLocation.attrs?.[attr.name] || {
+        const {startOffset, endOffset} = sourceCodeLocation?.attrs?.[attr.name] || {
             startOffset: 0,
             endOffset: 0,
         };

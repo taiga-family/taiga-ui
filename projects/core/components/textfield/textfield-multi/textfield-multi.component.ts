@@ -177,7 +177,6 @@ export class TuiTextfieldMultiComponent<T>
         }
 
         this.open.update((open) => !open);
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         this.input?.nativeElement.showPicker?.();
     }
 }

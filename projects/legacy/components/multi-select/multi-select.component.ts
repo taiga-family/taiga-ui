@@ -270,7 +270,8 @@ export class TuiMultiSelectComponent<T>
             ? this.inputTagOptions.separator
             : ',';
 
-        const matches = options.filter((option) => tags.includes(this.stringify(option)));
+        const matches =
+            options?.filter((option) => tags.includes(this.stringify(option))) ?? [];
         const matchingStrings = matches.map((v) => String(v));
         const invalid = tags.filter((value) => !matchingStrings.includes(value));
 
@@ -299,13 +300,10 @@ export class TuiMultiSelectComponent<T>
     private filterValue(value: T[]): T[] {
         const seen = new Set();
 
-        return (
-            value
-                .reverse()
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-                .filter((item) => item && !seen.has(item) && seen.add(item))
-                .reverse()
-        );
+        return value
+            .reverse()
+            .filter((item) => item && !seen.has(item) && seen.add(item))
+            .reverse();
     }
 
     private updateSearch(search: string | null): void {

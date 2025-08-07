@@ -39,7 +39,8 @@ function checkFormat({name, type}: File, formats: readonly string[]): boolean {
         (format) =>
             format === extension ||
             format === type ||
-            (format.split('/')[1] === '*' && type.split('/')[0] === format.split('/')[0]),
+            (format.split('/')[1] === '*' &&
+                type?.split('/')[0] === format.split('/')[0]),
     );
 }
 

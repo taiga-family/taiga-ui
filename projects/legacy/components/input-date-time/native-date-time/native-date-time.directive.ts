@@ -24,14 +24,14 @@ export class TuiNativeDateTimeDirective {
     protected readonly host = inject(TuiInputDateTimeDirective);
 
     protected get value(): string {
-        if (!this.host.rawValue?.[0] || !this.host.rawValue[1]) {
+        if (!this.host.rawValue?.[0] || !this.host.rawValue?.[1]) {
             return '';
         }
 
-        return `${this.host.rawValue[0].toString(
+        return `${this.host.rawValue[0]?.toString(
             'YMD',
             '-',
-        )}T${this.host.rawValue[1].toString('HH:MM')}`;
+        )}T${this.host.rawValue[1]?.toString('HH:MM')}`;
     }
 
     protected onChange(value: string): void {

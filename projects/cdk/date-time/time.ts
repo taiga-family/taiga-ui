@@ -140,8 +140,7 @@ export class TuiTime implements TuiTimeLike {
         return (
             (/[AP]M/.exec(time.toUpperCase().replaceAll(/\W/g, ''))?.[0] as
                 | 'AM'
-                | 'PM'
-                | null) || null
+                | 'PM') || null
         );
     }
 

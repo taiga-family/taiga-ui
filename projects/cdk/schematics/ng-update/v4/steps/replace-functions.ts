@@ -13,9 +13,9 @@ export function replaceFunctions(functions: readonly ReplacementType[]): void {
             const parent = ref.getParent();
 
             if (Node.isImportSpecifier(parent) || Node.isCallExpression(parent)) {
-                parent.replaceWithText(
+                parent?.replaceWithText(
                     parent
-                        .getText({includeJsDocComments: false})
+                        ?.getText({includeJsDocComments: false})
                         .trim()
                         .replace(from, to ?? from),
                 );

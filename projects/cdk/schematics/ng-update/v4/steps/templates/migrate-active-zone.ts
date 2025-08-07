@@ -50,7 +50,9 @@ export function migrateActiveZoneParent({
                 return;
             }
 
-            removeAttrs([parentAttr], sourceCodeLocation, recorder, templateOffset);
+            if (parentAttr) {
+                removeAttrs([parentAttr], sourceCodeLocation, recorder, templateOffset);
+            }
         });
     });
 }

@@ -147,7 +147,7 @@ export class TuiInputTimeDirective
         const newValue =
             this.accept.length && time ? this.findNearestTime(time, this.accept) : time;
 
-        this.control.control?.updateValueAndValidity({emitEvent: false});
+        this.control?.control?.updateValueAndValidity({emitEvent: false});
         this.onChange(newValue);
 
         if (newValue && newValue !== time) {

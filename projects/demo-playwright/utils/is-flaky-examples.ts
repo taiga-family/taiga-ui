@@ -55,7 +55,7 @@ export function tuiIsFlakyExample(
     );
 
     if (excluded) {
-        console.info(`skip test for: ${path}[${exampleIndex}]${browserName}`);
+        console.info(`skip test for: ${path}[${exampleIndex}]${browserName ?? ''}`);
     }
 
     return excluded;

@@ -56,7 +56,7 @@ export class TuiInputFiles {
         return !!this.files && !this.input?.disabled();
     }
 
-    protected onFilesSelected(input: HTMLInputElement | undefined): void {
+    protected onFilesSelected(input: HTMLInputElement): void {
         if (!input?.files) {
             return;
         }

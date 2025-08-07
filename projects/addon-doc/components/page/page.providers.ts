@@ -26,7 +26,8 @@ export const PAGE_PROVIDERS: Provider[] = [
             seeAlsoGroups: ReadonlyArray<readonly string[]>,
         ): readonly string[] => {
             const currentHeader = nativeElement.getAttribute('header');
-            const groups = seeAlsoGroups.filter((group) => group.includes(currentHeader));
+            const groups =
+                seeAlsoGroups.filter((group) => group.includes(currentHeader)) || [];
 
             const seeAlsoSet = new Set(
                 groups

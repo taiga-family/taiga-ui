@@ -21,9 +21,12 @@ export function replaceTag(
         recorder.insertRight(endTagOffset + templateOffset + END_TAG_OFFSET, to);
     }
 
-    recorder.remove(startTagOffset + templateOffset + START_TAG_OFFSET, from.length);
+    recorder.remove(
+        (startTagOffset ?? 0) + templateOffset + START_TAG_OFFSET,
+        from.length,
+    );
     recorder.insertRight(
-        startTagOffset + templateOffset + START_TAG_OFFSET,
+        (startTagOffset ?? 0) + templateOffset + START_TAG_OFFSET,
         `${to} ${addAttributes.join(' ')}`,
     );
 }

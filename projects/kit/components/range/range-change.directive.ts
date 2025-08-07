@@ -46,7 +46,7 @@ export class TuiRangeChange {
                 switchMap((event) =>
                     tuiTypedFromEvent(this.doc, 'pointermove').pipe(startWith(event)),
                 ),
-                map(({clientX}) => this.getFractionFromEvents(clientX)),
+                map(({clientX}) => this.getFractionFromEvents(clientX ?? 0)),
                 takeUntil(tuiTypedFromEvent(this.doc, 'pointerup', {passive: true})),
                 repeat(),
                 takeUntilDestroyed(),
@@ -58,7 +58,7 @@ export class TuiRangeChange {
             });
     }
 
-    private getFractionFromEvents(clickClientX = 0): number {
+    private getFractionFromEvents(clickClientX: number): number {
         const {left, right, width} = this.el.getBoundingClientRect();
         const start = this.el.matches('[dir="rtl"] :scope') ? right : left;
         const value = Math.abs(tuiClamp(clickClientX, left, right) - start);

@@ -34,7 +34,7 @@ import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
 })
 export class TuiAppBarComponent {
     @ViewChildren('side')
-    private readonly side: QueryList<ElementRef<HTMLElement> | undefined> = EMPTY_QUERY;
+    private readonly side: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     protected readonly width$ = merge(
         inject(ResizeObserverService, {self: true}),
@@ -45,8 +45,8 @@ export class TuiAppBarComponent {
             () =>
                 2 *
                 Math.max(
-                    this.side.first?.nativeElement.clientWidth ?? 0,
-                    this.side.last?.nativeElement.clientWidth ?? 0,
+                    this.side.first?.nativeElement.clientWidth,
+                    this.side.last?.nativeElement.clientWidth,
                 ),
         ),
     );

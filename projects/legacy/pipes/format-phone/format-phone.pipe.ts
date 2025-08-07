@@ -45,7 +45,6 @@ export class TuiFormatPhonePipe implements PipeTransform {
     ): string {
         ngDevMode &&
             console.assert(
-                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 value !== undefined,
                 'Undefined was passed to tuiFormatPhone pipe',
             );

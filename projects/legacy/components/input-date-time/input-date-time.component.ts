@@ -186,7 +186,7 @@ export class TuiInputDateTimeComponent
         }
 
         this.nativeValue.set(
-            this.value?.[0] || this.value?.[1] ? this.computedValue : '',
+            this.value && (this.value[0] || this.value[1]) ? this.computedValue : '',
         );
     }
 
@@ -288,7 +288,7 @@ export class TuiInputDateTimeComponent
 
     protected onDayClick(day: TuiDay): void {
         const modifiedTime =
-            (this.value?.[1] && this.clampTime(this.value[1], day)) ?? null;
+            (this.value?.[1] && this.clampTime(this.value?.[1], day)) ?? null;
         const newCaretIndex = DATE_FILLER_LENGTH + DATE_TIME_SEPARATOR.length;
 
         this.value = [day, modifiedTime];
@@ -338,7 +338,6 @@ export class TuiInputDateTimeComponent
         const parsedTime = TuiTime.fromString(time);
         const parsedDate = TuiDay.normalizeParse(date, this.dateFormat.mode);
 
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         this.value = !parsedDate || !parsedTime ? null : [parsedDate, parsedTime];
     }
 

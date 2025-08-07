@@ -89,8 +89,10 @@ export class TuiTagComponent {
     public readonly edited = new EventEmitter<string>();
 
     @ViewChild('input', {read: ElementRef})
-    protected set input(input: ElementRef<HTMLInputElement> | undefined) {
-        input?.nativeElement.focus();
+    protected set input(input: ElementRef<HTMLInputElement>) {
+        if (input) {
+            input.nativeElement.focus();
+        }
     }
 
     protected get backgroundColor(): string | null {

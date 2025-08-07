@@ -51,14 +51,15 @@ function migrateValue({
     templateOffset,
     childNodes,
 }: {
-    valueAttr: Attribute | undefined;
-    sourceCodeLocation: ElementLocation | undefined;
+    valueAttr: Attribute;
+    sourceCodeLocation: ElementLocation;
     recorder: UpdateRecorder;
     templateOffset: number;
     childNodes: ChildNode[];
 }): void {
     const attrValue = valueAttr?.value;
-    const insertTo = sourceCodeLocation?.startTag?.endOffset;
+    const {startTag, endTag} = sourceCodeLocation;
+    const insertTo = startTag?.endOffset;
 
     if (!attrValue || !insertTo) {
         return;
@@ -67,14 +68,11 @@ function migrateValue({
     const onlyTextContent =
         childNodes.length && childNodes.every((node) => node.nodeName === '#text');
 
-    if (onlyTextContent && sourceCodeLocation.startTag && sourceCodeLocation.endTag) {
+    if (onlyTextContent && startTag && endTag) {
         const content = `<span tuiTitle><span tuiSubtitle>${valueAttr.name === 'tuilabel' ? attrValue : `{{ ${attrValue} }}`}</span>`;
 
         recorder.insertRight(templateOffset + insertTo, content);
-        recorder.insertLeft(
-            templateOffset + sourceCodeLocation.endTag.startOffset,
-            '</span>',
-        );
+        recorder.insertLeft(templateOffset + endTag.startOffset, '</span>');
     } else {
         recorder.insertRight(
             insertTo + templateOffset,
@@ -82,7 +80,7 @@ function migrateValue({
         );
     }
 
-    const attrOffset = sourceCodeLocation.attrs?.[valueAttr.name];
+    const attrOffset = sourceCodeLocation?.attrs?.[valueAttr.name];
 
     if (attrOffset) {
         const {startOffset, endOffset} = attrOffset;

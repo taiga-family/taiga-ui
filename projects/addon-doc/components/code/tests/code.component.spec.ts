@@ -99,7 +99,7 @@ describe('TuiDocCodeComponent', () => {
     });
 
     async function waitHighlightJsParseContent(): Promise<void> {
-        await fixture.whenStable();
+        await fixture?.whenStable();
         fixture.detectChanges();
         await new Promise((resolve) => {
             setTimeout(resolve, 100);
