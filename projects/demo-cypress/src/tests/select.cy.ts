@@ -6,11 +6,15 @@ import {
     Output,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
-import type {TuiValueContentContext} from '@taiga-ui/core';
-import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {type TuiStringHandler} from '@taiga-ui/cdk';
+import {
+    TUI_ANIMATIONS_SPEED,
+    TuiRoot,
+    TuiTextfield,
+    type TuiValueContentContext,
+} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {createOutputSpy} from 'cypress/angular';
 
 interface User {
@@ -68,15 +72,15 @@ export class Sandbox {
 
     protected readonly control = new FormControl(this.options[0]!);
 
+    @Output()
+    public readonly itemClick = new EventEmitter<User>();
+
     @Input()
     public content: PolymorpheusContent<TuiValueContentContext<User>> = ({$implicit}) =>
         this.stringify($implicit);
 
     @Input()
     public stringify: TuiStringHandler<User> = (x) => x.name;
-
-    @Output()
-    public readonly itemClick = new EventEmitter<User>();
 }
 
 describe('Select', () => {
