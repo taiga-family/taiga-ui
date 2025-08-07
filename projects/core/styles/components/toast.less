@@ -1,0 +1,31 @@
+[tuiToast] {
+    display: flex;
+    box-sizing: border-box;
+    gap: 0.5rem;
+    font-size: 1rem;
+    background: var(--tui-background-elevation-3);
+    min-block-size: 3.5rem;
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    box-shadow: var(--tui-shadow-popup);
+    align-items: center;
+    justify-content: center;
+    inline-size: max-content;
+
+    [tuiTitle] {
+        max-inline-size: 25rem;
+        line-height: 100%;
+    }
+
+    [tuiIconButton] {
+        margin-inline-start: -0.25rem;
+    }
+
+    > :first-child:not([tuiTitle]) {
+        margin-inline-start: -0.25rem;
+    }
+
+    tui-avatar:first-child {
+        margin: -0.3125rem 0 -0.3125rem -0.25rem;
+    }
+}
