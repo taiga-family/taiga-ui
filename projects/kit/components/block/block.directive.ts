@@ -15,7 +15,7 @@ import {
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TUI_BLOCK_OPTIONS} from './block.options';

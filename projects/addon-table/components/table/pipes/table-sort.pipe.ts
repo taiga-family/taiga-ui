@@ -1,10 +1,9 @@
-import type {PipeTransform} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
-import type {TuiComparator} from '@taiga-ui/addon-table/types';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiTableDirective} from '../directives/table.directive';
-import type {TuiSortDirection} from '../table.options';
+import {type TuiSortDirection} from '../table.options';
 
 @Pipe({
     standalone: true,

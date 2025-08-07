@@ -1,20 +1,18 @@
-import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
+import {type Rule, type SchematicContext, type Tree} from '@angular-devkit/schematics';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
-import type {
-    ArrayLiteralExpression,
-    CallExpression,
-    ClassDeclaration,
-    Identifier,
-    ObjectLiteralExpression,
-    PropertyAssignment,
-} from 'ng-morph';
 import {
     addImportToComponent,
     addImportToNgModule,
     addProviderToNgModule,
+    type ArrayLiteralExpression,
+    type CallExpression,
+    type ClassDeclaration,
     createProject,
     getMainModule,
+    type Identifier,
     Node,
+    type ObjectLiteralExpression,
+    type PropertyAssignment,
     saveActiveProject,
     setActiveProject,
     SyntaxKind,
@@ -27,9 +25,12 @@ import {getProjectTargetOptions} from '../../utils/get-project-target-options';
 import {getProjects} from '../../utils/get-projects';
 import {getStandaloneBootstrapFunction} from '../../utils/get-standalone-bootstrap-function';
 import {pushToObjectArrayProperty} from '../../utils/push-to-array-property';
-import type {ImportingModule} from '../constants/modules';
-import {BROWSER_ANIMATION_MODULE, MAIN_MODULE} from '../constants/modules';
-import type {TuiSchema} from '../schema';
+import {
+    BROWSER_ANIMATION_MODULE,
+    type ImportingModule,
+    MAIN_MODULE,
+} from '../constants/modules';
+import {type TuiSchema} from '../schema';
 
 function addTuiModules({
     mainClass,

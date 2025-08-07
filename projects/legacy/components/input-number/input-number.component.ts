@@ -1,4 +1,3 @@
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -6,26 +5,29 @@ import {
     inject,
     InjectionToken,
     Input,
+    type QueryList,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {MaskitoOptions} from '@maskito/core';
-import {maskitoInitialCalibrationPlugin} from '@maskito/core';
-import type {MaskitoNumberParams} from '@maskito/kit';
+import {maskitoInitialCalibrationPlugin, type MaskitoOptions} from '@maskito/core';
 import {
     maskitoCaretGuard,
     maskitoNumberOptionsGenerator,
+    type MaskitoNumberParams,
     maskitoParseNumber,
 } from '@maskito/kit';
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {CHAR_HYPHEN, CHAR_MINUS, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiClamp, tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDecimalMode} from '@taiga-ui/core/tokens';
-import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {
+    TUI_DEFAULT_NUMBER_FORMAT,
+    TUI_NUMBER_FORMAT,
+    type TuiDecimalMode,
+} from '@taiga-ui/core/tokens';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
@@ -34,12 +36,16 @@ import {
     TUI_TEXTFIELD_SIZE,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import type {TuiInputNumberOptions} from './input-number.options';
-import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
+import {
+    TUI_INPUT_NUMBER_OPTIONS,
+    type TuiInputNumberOptions,
+} from './input-number.options';
 
 const DEFAULT_MAX_LENGTH = 18;
 

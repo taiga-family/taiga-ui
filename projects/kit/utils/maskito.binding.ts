@@ -1,6 +1,6 @@
-import type {Signal, WritableSignal} from '@angular/core';
+import {type Signal, type WritableSignal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils';
 
 type M = MaskitoOptions | null;

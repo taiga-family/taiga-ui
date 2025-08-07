@@ -1,7 +1,12 @@
-import type {DebugElement, Type} from '@angular/core';
-import {ChangeDetectionStrategy, Component, Optional, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type DebugElement,
+    Optional,
+    type Type,
+    ViewChild,
+} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {

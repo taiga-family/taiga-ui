@@ -1,7 +1,5 @@
-import type {DebugElement} from '@angular/core';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {ChangeDetectionStrategy, Component, type DebugElement} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';

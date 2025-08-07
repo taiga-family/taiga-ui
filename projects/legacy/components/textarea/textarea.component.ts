@@ -8,11 +8,11 @@ import {
     ViewChild,
 } from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {
     TUI_ICON_START_PADDINGS,
@@ -22,10 +22,12 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
 import {tuiGetBorder} from '@taiga-ui/legacy/utils';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export const DEFAULT_ROWS = 20;
 export const LINE_HEIGHT_M = 20;

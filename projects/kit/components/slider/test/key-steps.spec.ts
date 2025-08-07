@@ -1,5 +1,8 @@
-import type {TuiKeySteps} from '@taiga-ui/kit';
-import {tuiKeyStepValueToPercentage, tuiPercentageToKeyStepValue} from '@taiga-ui/kit';
+import {
+    type TuiKeySteps,
+    tuiKeyStepValueToPercentage,
+    tuiPercentageToKeyStepValue,
+} from '@taiga-ui/kit';
 
 describe('KeySteps utils', () => {
     const keySteps: TuiKeySteps = [

@@ -10,7 +10,7 @@ import {
 import {TuiLink} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
-import type {AbstractExampleTuiDropdown} from '../dropdown';
+import {type AbstractExampleTuiDropdown} from '../dropdown';
 
 @Component({
     standalone: true,

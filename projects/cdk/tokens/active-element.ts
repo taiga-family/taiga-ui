@@ -7,12 +7,12 @@ import {
     tuiGetDocumentOrShadowRoot,
     tuiIsNativeMouseFocusable,
 } from '@taiga-ui/cdk/utils';
-import type {Observable} from 'rxjs';
 import {
     distinctUntilChanged,
     filter,
     map,
     merge,
+    type Observable,
     of,
     repeat,
     share,

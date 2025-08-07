@@ -2,10 +2,12 @@ import {Component, inject} from '@angular/core';
 import {TuiDocIcons} from '@demo/components/icons';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce';
-import {TUI_PAYMENT_SYSTEM_ICONS, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk';
+import {
+    TUI_PAYMENT_SYSTEM_ICONS,
+    type TuiPaymentSystem,
+    TuiThumbnailCard,
+} from '@taiga-ui/addon-commerce';
+import {TUI_TRUE_HANDLER, type TuiBooleanHandler} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,

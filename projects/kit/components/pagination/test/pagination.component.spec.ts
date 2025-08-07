@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiPagination} from '@taiga-ui/kit';

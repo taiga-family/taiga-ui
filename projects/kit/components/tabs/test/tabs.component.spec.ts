@@ -1,8 +1,12 @@
 import {CommonModule} from '@angular/common';
-import type {DebugElement} from '@angular/core';
-import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type DebugElement,
+    Input,
+    ViewChild,
+} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {
     TUI_TAB_ACTIVATE,

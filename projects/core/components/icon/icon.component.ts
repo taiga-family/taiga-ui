@@ -6,7 +6,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 
 @Component({

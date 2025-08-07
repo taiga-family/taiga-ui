@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
     tuiInputPhoneInternationalOptionsProvider,
     TuiSortCountriesPipe,

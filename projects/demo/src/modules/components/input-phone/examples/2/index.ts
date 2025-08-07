@@ -3,8 +3,7 @@ import {Component, computed, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiMatcher} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, type TuiMatcher} from '@taiga-ui/cdk';
 import {TuiTextfield, TuiTextfieldContent, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,

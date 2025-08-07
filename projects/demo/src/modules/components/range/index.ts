@@ -2,9 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeS} from '@taiga-ui/core';
-import type {TuiKeySteps} from '@taiga-ui/kit';
-import {TuiRange} from '@taiga-ui/kit';
+import {type TuiSizeS} from '@taiga-ui/core';
+import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

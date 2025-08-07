@@ -1,4 +1,4 @@
-import type {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 
 import {TuiCalendarSheetPO} from './calendar-sheet.po';
 

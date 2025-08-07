@@ -11,8 +11,7 @@ import {
     TuiDataListWrapper,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 
 @Component({
     standalone: true,

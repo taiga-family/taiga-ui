@@ -1,5 +1,5 @@
 import {findAttr} from '../../../../utils/templates/inputs';
-import type {HtmlComment} from '../../../interfaces';
+import {type HtmlComment} from '../../../interfaces';
 
 export const HTML_COMMENTS: HtmlComment[] = [
     {

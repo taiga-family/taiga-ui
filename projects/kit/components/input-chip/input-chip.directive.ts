@@ -6,9 +6,9 @@ import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
+    type TuiTextfieldAccessor,
     TuiTextfieldBase,
     TuiTextfieldMultiComponent,
 } from '@taiga-ui/core/components/textfield';
@@ -17,8 +17,10 @@ import {
     TuiDropdownOpen,
     tuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {filter} from 'rxjs';
 
 import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';

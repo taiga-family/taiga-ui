@@ -1,4 +1,4 @@
-import type {TuiLanguageEditor} from '@taiga-ui/i18n/types';
+import {type TuiLanguageEditor} from '@taiga-ui/i18n/types';
 
 export const TUI_GERMAN_LANGUAGE_ADDON_EDITOR: TuiLanguageEditor = {
     colorSelectorModeNames: ['Farbe', 'Verlauf'],

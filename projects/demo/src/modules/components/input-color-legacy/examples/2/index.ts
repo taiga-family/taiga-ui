@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import type {SafeStyle} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeStyle} from '@angular/platform-browser';
 import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiColorSelectorModule} from '@taiga-ui/legacy';
 

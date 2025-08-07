@@ -1,6 +1,6 @@
-import type {ElementRef} from '@angular/core';
+import {type ElementRef} from '@angular/core';
 
-import type {TuiAutofocusHandler, TuiAutofocusOptions} from '../autofocus.options';
+import {type TuiAutofocusHandler, type TuiAutofocusOptions} from '../autofocus.options';
 
 export abstract class AbstractTuiAutofocusHandler implements TuiAutofocusHandler {
     constructor(

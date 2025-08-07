@@ -12,7 +12,7 @@ import {
 } from 'ng-morph';
 
 import {ALL_TS_FILES} from '../constants/file-globs';
-import type {TuiSchema} from '../ng-add/schema';
+import {type TuiSchema} from '../ng-add/schema';
 import {addUniqueImport} from './add-unique-import';
 
 const importsToAdd = new Map<

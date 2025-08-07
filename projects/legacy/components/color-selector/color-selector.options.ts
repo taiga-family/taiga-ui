@@ -1,6 +1,5 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import type {TuiGradientDirection} from '@taiga-ui/cdk/utils/color';
+import {InjectionToken, type Provider} from '@angular/core';
+import {type TuiGradientDirection} from '@taiga-ui/cdk/utils/color';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export const TUI_COLOR_SELECTOR_MODE_NAMES = new InjectionToken<[string, string]>(

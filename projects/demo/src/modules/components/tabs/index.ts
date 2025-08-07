@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
-import type {TuiSizeL} from '@taiga-ui/core';
+import {type TuiSizeL} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({

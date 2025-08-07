@@ -1,7 +1,6 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {inject, Injectable, SecurityContext} from '@angular/core';
-import type {SafeHtml} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {TUI_ICON_STARTS, TUI_SANITIZER} from '@taiga-ui/legacy/tokens';
 import {tuiProcessIcon} from '@taiga-ui/legacy/utils';
 import {BehaviorSubject} from 'rxjs';

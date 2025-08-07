@@ -1,11 +1,12 @@
-import type {DoCheck, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     DestroyRef,
+    type DoCheck,
     inject,
     Input,
+    type OnInit,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -15,7 +16,7 @@ import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 
 import {TUI_RADIO_OPTIONS} from './radio.options';
 

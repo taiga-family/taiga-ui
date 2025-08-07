@@ -1,6 +1,6 @@
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 
-import type {TuiLet} from './let.directive';
+import {type TuiLet} from './let.directive';
 
 /**
  * @internal

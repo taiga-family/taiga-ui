@@ -8,8 +8,7 @@ import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import type {TuiRatingOptions} from './rating.options';
-import {TUI_RATING_OPTIONS} from './rating.options';
+import {TUI_RATING_OPTIONS, type TuiRatingOptions} from './rating.options';
 
 @Component({
     standalone: true,

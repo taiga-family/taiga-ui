@@ -1,5 +1,4 @@
-import type {Provider} from '@angular/core';
-import {SkipSelf} from '@angular/core';
+import {type Provider, SkipSelf} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 

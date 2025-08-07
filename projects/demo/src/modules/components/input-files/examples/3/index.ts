@@ -5,8 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, TuiItem} from '@taiga-ui/cdk';
 import {TuiIcon, TuiLink} from '@taiga-ui/core';
-import type {TuiFileLike} from '@taiga-ui/kit';
-import {TuiFiles} from '@taiga-ui/kit';
+import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiFilter} from '@taiga-ui/kit';
 
 @Component({

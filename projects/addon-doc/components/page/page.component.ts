@@ -1,11 +1,11 @@
 import {KeyValuePipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     inject,
     Input,
+    type QueryList,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
 import {TUI_DOC_DEFAULT_TABS, TUI_DOC_SUPPORT_LANGUAGE} from '@taiga-ui/addon-doc/tokens';

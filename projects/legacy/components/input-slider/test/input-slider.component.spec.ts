@@ -1,10 +1,12 @@
-import type {TemplateRef} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type TemplateRef,
+    ViewChild,
+} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {CHAR_MINUS} from '@taiga-ui/cdk';
+import {CHAR_MINUS, type TuiContext} from '@taiga-ui/cdk';
 import {tuiNumberFormatProvider, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {

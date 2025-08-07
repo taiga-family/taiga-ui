@@ -1,5 +1,4 @@
 import {NgIf} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,12 +8,12 @@ import {
     inject,
     Input,
     Output,
+    type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_PROVIDER} from '../providers/table.provider';

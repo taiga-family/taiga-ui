@@ -2,10 +2,8 @@ import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiDay} from '@taiga-ui/cdk';
-import {TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
-import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiCalendar} from '@taiga-ui/core';
+import {type TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
+import {TuiCalendar, type TuiMarkerHandler} from '@taiga-ui/core';
 
 const TWO_DOTS: [string, string] = [
     'var(--tui-background-accent-1)',

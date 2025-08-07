@@ -9,7 +9,7 @@ import {
 } from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../constants';
-import type {TuiSchema} from '../../ng-add/schema';
+import {type TuiSchema} from '../../ng-add/schema';
 
 const DEEP_REGEX = /(@taiga-ui\/\w+)\/.*/;
 

@@ -1,10 +1,10 @@
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
-import type {TuiSizeL} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
+import {type TuiSizeL} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import type {TuiFileState} from '../files.types';
+import {type TuiFileState} from '../files.types';
 import {tuiFormatSize} from '../files.utils';
 
 export interface TuiFileOptions extends TuiAppearanceOptions {

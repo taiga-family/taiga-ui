@@ -1,16 +1,15 @@
 import {NgForOf} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
     inject,
     Input,
+    type QueryList,
     ViewChildren,
     ViewEncapsulation,
 } from '@angular/core';
-import type {ValidatorFn} from '@angular/forms';
-import {FormsModule, NgControl, Validators} from '@angular/forms';
+import {FormsModule, NgControl, type ValidatorFn, Validators} from '@angular/forms';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {
     EMPTY_QUERY,
@@ -19,11 +18,14 @@ import {
 } from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import {TuiIdService} from '@taiga-ui/cdk/services';
-import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
-import type {TuiSizeS, TuiValueContentContext} from '@taiga-ui/core/types';
+import {type TuiBooleanHandler, type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import {type TuiSizeS, type TuiValueContentContext} from '@taiga-ui/core/types';
 import {TuiRadio} from '@taiga-ui/kit/components/radio';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 const ERROR: ValidatorFn = () => ({error: 'Invalid'});
 

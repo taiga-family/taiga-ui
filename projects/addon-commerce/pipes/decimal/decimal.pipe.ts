@@ -1,10 +1,8 @@
-import type {PipeTransform} from '@angular/core';
-import {inject, INJECTOR, Injector, Pipe} from '@angular/core';
+import {inject, INJECTOR, Injector, Pipe, type PipeTransform} from '@angular/core';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce/pipes/amount';
-import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
+import {type TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
-import type {Observable} from 'rxjs';
-import {map, switchMap} from 'rxjs';
+import {map, type Observable, switchMap} from 'rxjs';
 
 @Pipe({standalone: true, name: 'tuiDecimal'})
 export class TuiDecimalPipe implements PipeTransform {

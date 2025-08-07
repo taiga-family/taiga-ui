@@ -1,42 +1,46 @@
 import {NgForOf, NgIf} from '@angular/common';
-import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    type ElementRef,
     EventEmitter,
     forwardRef,
     inject,
     Input,
     isSignal,
     Output,
+    type QueryList,
     signal,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiElement} from '@taiga-ui/cdk/directives/element';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListAccessor} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsDataListAccessor,
     TuiDataList,
+    type TuiDataListAccessor,
     TuiDataListComponent,
     tuiInjectDataListSize,
     TuiOption,
     TuiOptionWithValue,
 } from '@taiga-ui/core/components/data-list';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import type {TuiValueContentContext} from '@taiga-ui/core/types';
-import type {TuiItemsHandlers as TuiItemsHandlersLegacy} from '@taiga-ui/kit/tokens';
-import {TUI_ITEMS_HANDLERS as TUI_ITEMS_HANDLERS_LEGACY} from '@taiga-ui/kit/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
+import {type TuiValueContentContext} from '@taiga-ui/core/types';
+import {
+    TUI_ITEMS_HANDLERS as TUI_ITEMS_HANDLERS_LEGACY,
+    type TuiItemsHandlers as TuiItemsHandlersLegacy,
+} from '@taiga-ui/kit/tokens';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

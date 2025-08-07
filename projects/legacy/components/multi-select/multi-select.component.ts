@@ -10,30 +10,27 @@ import {
     ViewChild,
 } from '@angular/core';
 import {EMPTY_ARRAY, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {
-    TuiBooleanHandler,
-    TuiContext,
-    TuiMapper,
-    TuiStringHandler,
+import {
+    type TuiBooleanHandler,
+    type TuiContext,
+    type TuiMapper,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk/types';
 import {tuiGetClipboardDataText} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiArrayToggle, tuiIsString, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {
-    TuiDataListAccessor,
-    TuiDataListHost,
-} from '@taiga-ui/core/components/data-list';
 import {
     TUI_DATA_LIST_ACCESSOR,
     tuiAsDataListHost,
+    type TuiDataListAccessor,
     TuiDataListDirective,
+    type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
-import type {TuiSizeL, TuiSizeM, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
+import {type TuiSizeL, type TuiSizeM, type TuiSizeS} from '@taiga-ui/core/types';
+import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {
     AbstractTuiMultipleControl,
     tuiAsControl,
@@ -48,12 +45,16 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import type {TuiMultiSelectOptions} from './multi-select.options';
-import {TUI_MULTI_SELECT_OPTIONS} from './multi-select.options';
+import {
+    TUI_MULTI_SELECT_OPTIONS,
+    type TuiMultiSelectOptions,
+} from './multi-select.options';
 import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-select';
 
 @Component({

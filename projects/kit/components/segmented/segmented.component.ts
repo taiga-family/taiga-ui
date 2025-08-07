@@ -1,10 +1,10 @@
-import type {OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
     inject,
     Input,
+    type OnChanges,
     Output,
     ViewEncapsulation,
 } from '@angular/core';
@@ -14,7 +14,7 @@ import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement, tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 
 import {TuiSegmentedDirective} from './segmented.directive';

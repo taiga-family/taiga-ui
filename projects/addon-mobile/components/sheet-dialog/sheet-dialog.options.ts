@@ -1,9 +1,8 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {InjectionToken, type Provider} from '@angular/core';
+import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type Observable} from 'rxjs';
 
 export interface TuiSheetDialogOptions<I = undefined> {
     readonly closeable: Observable<boolean> | boolean;

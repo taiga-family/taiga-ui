@@ -1,4 +1,4 @@
-import type {Locator} from '@playwright/test';
+import {type Locator} from '@playwright/test';
 
 export class TuiTabsPO {
     public readonly more = this.host.locator('> button.t-more');

@@ -21,12 +21,11 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldContent, TuiWithTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
-import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
+import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {TuiSlider, tuiSliderOptionsProvider} from '@taiga-ui/kit/components/slider';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
-import type {TuiInputColorOptions} from './input-color.options';
-import {TUI_INPUT_COLOR_OPTIONS} from './input-color.options';
+import {TUI_INPUT_COLOR_OPTIONS, type TuiInputColorOptions} from './input-color.options';
 
 const REGEX = /[0-9a-fA-F]/;
 

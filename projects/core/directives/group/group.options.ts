@@ -1,7 +1,6 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Provider} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiOrientation, TuiSizeL} from '@taiga-ui/core/types';
+import {type TuiOrientation, type TuiSizeL} from '@taiga-ui/core/types';
 
 export interface TuiGroupOptions {
     readonly size: TuiSizeL;

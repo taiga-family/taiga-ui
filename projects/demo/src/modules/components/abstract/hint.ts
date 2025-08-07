@@ -1,5 +1,4 @@
-import type {TuiHintDirection} from '@taiga-ui/core';
-import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
+import {TUI_HINT_DIRECTIONS, type TuiHintDirection} from '@taiga-ui/core';
 
 export abstract class AbstractExampleTuiHint {
     public readonly appearanceVariants = ['', 'error', 'dark'];

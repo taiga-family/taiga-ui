@@ -2,18 +2,21 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiBooleanHandler, TuiDayLike} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    type TuiBooleanHandler,
     TuiDay,
+    type TuiDayLike,
     TuiMonth,
 } from '@taiga-ui/cdk';
-import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiLink} from '@taiga-ui/core';
-import type {TuiDayRangePeriod} from '@taiga-ui/kit';
-import {TuiCalendarRange, tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
+import {TuiLink, type TuiMarkerHandler} from '@taiga-ui/core';
+import {
+    TuiCalendarRange,
+    tuiCreateDefaultDayRangePeriods,
+    type TuiDayRangePeriod,
+} from '@taiga-ui/kit';
 
 const TWO_DOTS: [string, string] = [
     'var(--tui-background-accent-1)',

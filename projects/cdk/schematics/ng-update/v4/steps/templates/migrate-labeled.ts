@@ -1,6 +1,6 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import type {Location} from 'parse5/dist/common/token';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Location} from 'parse5/dist/common/token';
 
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {findElementsByTagNames} from '../../../../utils/templates/elements';
@@ -9,7 +9,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 import {replaceAttrValues} from '../../../utils/templates';
 
 export function migrateLabeled({

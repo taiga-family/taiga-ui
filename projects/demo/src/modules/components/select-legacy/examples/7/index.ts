@@ -3,10 +3,13 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
-import {EMPTY_ARRAY} from '@taiga-ui/cdk';
-import type {TuiValueContentContext} from '@taiga-ui/core';
-import {TuiButton, TuiDataList, TuiTitle} from '@taiga-ui/core';
+import {EMPTY_ARRAY, type TuiStringHandler} from '@taiga-ui/cdk';
+import {
+    TuiButton,
+    TuiDataList,
+    TuiTitle,
+    type TuiValueContentContext,
+} from '@taiga-ui/core';
 import {TuiMultiSelectModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 interface Account {

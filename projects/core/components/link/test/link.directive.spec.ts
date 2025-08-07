@@ -1,8 +1,7 @@
-import type {HarnessLoader} from '@angular/cdk/testing';
+import {type HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiLinkHarness} from '@taiga-ui/testing';
 
 import {TuiLink} from '../link.directive';

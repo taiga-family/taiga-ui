@@ -1,5 +1,4 @@
-import type {DoCheck} from '@angular/core';
-import {Directive, inject, TemplateRef} from '@angular/core';
+import {Directive, type DoCheck, inject, TemplateRef} from '@angular/core';
 
 import {TuiTextfieldComponent} from './textfield.component';
 

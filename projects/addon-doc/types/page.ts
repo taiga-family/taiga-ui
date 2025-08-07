@@ -1,4 +1,4 @@
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export type TuiDocRoutePages = ReadonlyArray<TuiDocRoutePage | TuiDocRoutePageGroup>;
 

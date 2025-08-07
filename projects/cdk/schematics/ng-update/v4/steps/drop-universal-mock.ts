@@ -8,7 +8,7 @@ import {
 } from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants/file-globs';
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 
 export function dropUniversalMock(options: TuiSchema): void {
     const moduleSpecifier = '@ng-web-apis/universal/mocks';

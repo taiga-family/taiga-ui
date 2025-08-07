@@ -1,8 +1,9 @@
-import type {AfterViewInit, DoCheck} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    type DoCheck,
     ElementRef,
     inject,
     Input,
@@ -18,15 +19,14 @@ import {
     TuiHint,
     TuiHintDirective,
 } from '@taiga-ui/core/directives/hint';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     BehaviorSubject,
     debounceTime,
     distinctUntilChanged,
     filter,
     map,
+    type Observable,
     of,
     pairwise,
     startWith,

@@ -1,4 +1,4 @@
-import type {TuiLanguageName} from './language-names';
+import {type TuiLanguageName} from './language-names';
 
 export interface TuiLanguageStorage extends Storage {
     getItem(key: string): TuiLanguageName | null;

@@ -1,13 +1,12 @@
 import {Directive, inject, Input, signal} from '@angular/core';
-import type {
-    TuiBooleanHandler,
-    TuiIdentityMatcher,
-    TuiStringHandler,
+import {
+    type TuiBooleanHandler,
+    type TuiIdentityMatcher,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
-import type {TuiItemsHandlers} from './items-handlers.tokens';
-import {TUI_ITEMS_HANDLERS} from './items-handlers.tokens';
+import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from './items-handlers.tokens';
 
 @Directive({
     standalone: true,

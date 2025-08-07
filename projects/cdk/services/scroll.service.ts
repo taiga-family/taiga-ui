@@ -4,8 +4,17 @@ import {WA_ANIMATION_FRAME, WA_PERFORMANCE} from '@ng-web-apis/common';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiEaseInOutQuad} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {Observable} from 'rxjs';
-import {defer, endWith, map, of, switchMap, takeUntil, tap, timer} from 'rxjs';
+import {
+    defer,
+    endWith,
+    map,
+    type Observable,
+    of,
+    switchMap,
+    takeUntil,
+    tap,
+    timer,
+} from 'rxjs';
 
 const SCROLL_TIME = 300;
 

@@ -1,10 +1,14 @@
-import type {TemplateRef} from '@angular/core';
-import {Component, inject} from '@angular/core';
+import {Component, inject, type TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiDialogContext, TuiDialogSize} from '@taiga-ui/core';
-import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
+import {
+    TuiAlertService,
+    TuiButton,
+    type TuiDialogContext,
+    TuiDialogService,
+    type TuiDialogSize,
+} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 

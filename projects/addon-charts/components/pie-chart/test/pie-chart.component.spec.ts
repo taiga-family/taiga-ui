@@ -1,7 +1,6 @@
 import {Location} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiPageObject} from '@taiga-ui/testing';
 

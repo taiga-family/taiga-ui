@@ -3,8 +3,7 @@ import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiIfMap, tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFalsy} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, filter, merge, startWith} from 'rxjs';
+import {distinctUntilChanged, filter, merge, type Observable, startWith} from 'rxjs';
 
 import {TuiSheetComponent} from '../../components/sheet/sheet.component';
 import {TUI_SHEET_CLOSE} from '../../components/sheet-heading/sheet-heading.component';

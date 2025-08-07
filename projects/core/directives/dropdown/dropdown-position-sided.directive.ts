@@ -2,7 +2,7 @@ import {Directive, inject, Input} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiAsPositionAccessor, TuiPositionAccessor} from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import {type TuiPoint} from '@taiga-ui/core/types';
 
 import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';

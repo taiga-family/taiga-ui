@@ -1,10 +1,10 @@
 import {isPlatformServer} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import type {OnInit} from '@angular/core';
 import {
     Component,
     DestroyRef,
     inject,
+    type OnInit,
     PLATFORM_ID,
     signal,
     ViewEncapsulation,

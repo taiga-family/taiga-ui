@@ -2,11 +2,17 @@ import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiDialogContext, TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiButton, TuiDataList, TuiDialogService} from '@taiga-ui/core';
+import {
+    TuiButton,
+    TuiDataList,
+    type TuiDialogContext,
+    TuiDialogService,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

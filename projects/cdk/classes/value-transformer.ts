@@ -1,5 +1,4 @@
-import type {FactoryProvider, ProviderToken} from '@angular/core';
-import {inject} from '@angular/core';
+import {type FactoryProvider, inject, type ProviderToken} from '@angular/core';
 import {identity} from 'rxjs';
 
 export abstract class TuiValueTransformer<From, To = unknown> {

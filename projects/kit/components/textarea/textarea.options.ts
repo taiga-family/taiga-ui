@@ -1,6 +1,6 @@
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiTextareaOptions {
     min: number;

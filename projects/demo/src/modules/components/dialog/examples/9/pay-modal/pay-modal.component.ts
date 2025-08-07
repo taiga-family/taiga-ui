@@ -1,25 +1,24 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
     inject,
+    type OnInit,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import type {TuiCard} from '@taiga-ui/addon-commerce';
 import {
+    type TuiCard,
     tuiCardNumberValidator,
     tuiDefaultCardValidator,
     TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
-import type {TuiValuesOf} from '@taiga-ui/cdk';
-import {TUI_IS_IOS, TuiAutoFocus, TuiLet} from '@taiga-ui/cdk';
-import type {TuiDialogContext} from '@taiga-ui/core';
+import {TUI_IS_IOS, TuiAutoFocus, TuiLet, type TuiValuesOf} from '@taiga-ui/cdk';
 import {
     TuiButton,
+    type TuiDialogContext,
     TuiFormatNumberPipe,
     TuiIconPipe,
     TuiLink,
@@ -30,8 +29,12 @@ import {TuiButtonLoading, TuiCheckbox} from '@taiga-ui/kit';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, map, switchMap} from 'rxjs';
 
-import type {AccountCard, DataForPayCardModal, FetchedCards} from '../helpers/models';
-import {PaymentMode} from '../helpers/models';
+import {
+    type AccountCard,
+    type DataForPayCardModal,
+    type FetchedCards,
+    PaymentMode,
+} from '../helpers/models';
 import {PayService} from '../helpers/pay.service';
 import {inputCardGroupedCVCValidator} from '../helpers/validator';
 

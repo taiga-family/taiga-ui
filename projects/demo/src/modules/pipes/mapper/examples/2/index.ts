@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiMapper} from '@taiga-ui/cdk';
-import {TuiMapperPipe} from '@taiga-ui/cdk';
+import {type TuiMapper, TuiMapperPipe} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,

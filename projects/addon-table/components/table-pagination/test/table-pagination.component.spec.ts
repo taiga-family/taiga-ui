@@ -1,8 +1,6 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
-import type {TuiTablePaginationEvent} from '@taiga-ui/addon-table';
-import {TuiTablePagination} from '@taiga-ui/addon-table';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import {TuiTablePagination, type TuiTablePaginationEvent} from '@taiga-ui/addon-table';
 
 describe('TablePagination', () => {
     let fixture: ComponentFixture<Test>;

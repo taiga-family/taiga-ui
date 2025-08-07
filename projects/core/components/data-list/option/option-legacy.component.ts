@@ -1,23 +1,22 @@
-import type {OnDestroy, TemplateRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     forwardRef,
     inject,
     Input,
+    type OnDestroy,
+    type TemplateRef,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiDataListComponent} from '../data-list.component';
-import type {TuiDataListHost} from '../data-list.tokens';
-import {TUI_DATA_LIST_HOST} from '../data-list.tokens';
+import {TUI_DATA_LIST_HOST, type TuiDataListHost} from '../data-list.tokens';
 import {TUI_OPTION_CONTENT} from './option-content';
 
 /**

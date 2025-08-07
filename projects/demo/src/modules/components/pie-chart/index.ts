@@ -4,11 +4,9 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiPieChart} from '@taiga-ui/addon-charts';
 import {TuiCurrency, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiRound, tuiSum} from '@taiga-ui/cdk';
-import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core';
-import {tuiFormatNumber} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiContext, tuiRound, tuiSum} from '@taiga-ui/cdk';
+import {tuiFormatNumber, type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

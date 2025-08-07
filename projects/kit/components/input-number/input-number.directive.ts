@@ -1,12 +1,11 @@
 import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoOptions} from '@maskito/core';
-import {maskitoInitialCalibrationPlugin} from '@maskito/core';
-import type {MaskitoNumberParams} from '@maskito/kit';
+import {maskitoInitialCalibrationPlugin, type MaskitoOptions} from '@maskito/core';
 import {
     maskitoCaretGuard,
     maskitoNumberOptionsGenerator,
+    type MaskitoNumberParams,
     maskitoParseNumber,
 } from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';

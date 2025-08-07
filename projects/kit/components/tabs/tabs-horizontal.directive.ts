@@ -1,5 +1,12 @@
-import type {AfterViewChecked, QueryList} from '@angular/core';
-import {ContentChildren, Directive, forwardRef, inject, Input} from '@angular/core';
+import {
+    type AfterViewChecked,
+    ContentChildren,
+    Directive,
+    forwardRef,
+    inject,
+    Input,
+    type QueryList,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,

@@ -1,8 +1,7 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {InjectionToken, type Provider} from '@angular/core';
+import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
-import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export interface TuiInputCardOptions {

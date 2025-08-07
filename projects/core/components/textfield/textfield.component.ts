@@ -1,6 +1,6 @@
 import {NgIf} from '@angular/common';
-import type {AfterContentInit, QueryList} from '@angular/core';
 import {
+    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -11,6 +11,7 @@ import {
     forwardRef,
     inject,
     Input,
+    type QueryList,
     signal,
     ViewChild,
     ViewContainerRef,
@@ -23,14 +24,14 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsDataListHost,
+    type TuiDataListHost,
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
 import {TuiLabel} from '@taiga-ui/core/components/label';
@@ -44,15 +45,13 @@ import {
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {ReplaySubject, startWith, switchMap} from 'rxjs';
 
 import {TuiTextfieldBase} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
-import type {TuiTextfieldAccessor} from './textfield-accessor';
-import {TUI_TEXTFIELD_ACCESSOR} from './textfield-accessor';
+import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-accessor';
 import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 // TODO: Remove base class in v5

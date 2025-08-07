@@ -1,6 +1,6 @@
 import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import type {TuiLineHandler, TuiLineType} from '@taiga-ui/addon-charts/types';
+import {type TuiLineHandler, type TuiLineType} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 

@@ -1,7 +1,11 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
-import type {AbstractControl, ValidatorFn} from '@angular/forms';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {
+    type AbstractControl,
+    FormControl,
+    ReactiveFormsModule,
+    type ValidatorFn,
+} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';

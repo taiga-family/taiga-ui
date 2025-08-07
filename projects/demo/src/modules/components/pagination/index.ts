@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiPagination} from '@taiga-ui/kit';
 
 @Component({

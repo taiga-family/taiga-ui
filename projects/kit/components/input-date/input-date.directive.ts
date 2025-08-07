@@ -1,14 +1,18 @@
 import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoDateMode} from '@maskito/kit';
-import {maskitoDateOptionsGenerator} from '@maskito/kit';
+import {type MaskitoDateMode, maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import type {TuiDateMode, TuiDayRange, TuiTime} from '@taiga-ui/cdk/date-time';
-import {DATE_FILLER_LENGTH, TuiDay} from '@taiga-ui/cdk/date-time';
+import {
+    DATE_FILLER_LENGTH,
+    type TuiDateMode,
+    TuiDay,
+    type TuiDayRange,
+    type TuiTime,
+} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
@@ -24,9 +28,9 @@ import {
     tuiDropdownEnabled,
     tuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {
     TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
     TuiItemsHandlersDirective,
     TuiItemsHandlersValidator,
 } from '@taiga-ui/core/directives/items-handlers';
@@ -36,8 +40,10 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {tuiWithDateFiller} from './date-filler';
-import type {TuiInputDateOptionsNew} from './input-date.options';
-import {TUI_INPUT_DATE_OPTIONS_NEW} from './input-date.options';
+import {
+    TUI_INPUT_DATE_OPTIONS_NEW,
+    type TuiInputDateOptionsNew,
+} from './input-date.options';
 
 export const TUI_DATE_ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
     DMY: 'dd/mm/yyyy',

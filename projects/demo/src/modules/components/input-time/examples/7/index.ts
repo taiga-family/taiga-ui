@@ -2,8 +2,7 @@ import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiBooleanHandler, TuiStringMatcher} from '@taiga-ui/cdk';
-import {TuiTime} from '@taiga-ui/cdk';
+import {type TuiBooleanHandler, type TuiStringMatcher, TuiTime} from '@taiga-ui/cdk';
 import {tuiItemsHandlersProvider, TuiTextfield} from '@taiga-ui/core';
 import {
     tuiCreateTimePeriods,

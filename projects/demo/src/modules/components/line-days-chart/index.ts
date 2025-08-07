@@ -3,10 +3,9 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiAxes, TuiLineDaysChart} from '@taiga-ui/addon-charts';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
-import {TuiDay} from '@taiga-ui/cdk';
+import {type TuiContext, TuiDay, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_MONTHS} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

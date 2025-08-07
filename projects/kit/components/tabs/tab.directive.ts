@@ -1,5 +1,4 @@
-import type {OnDestroy} from '@angular/core';
-import {Directive, inject} from '@angular/core';
+import {Directive, inject, type OnDestroy} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';

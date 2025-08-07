@@ -6,20 +6,18 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {tuiAsControl} from '@taiga-ui/cdk/classes';
+import {tuiAsControl, type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiDateClamp, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {changeDateSeparator, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
+import {type TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
@@ -28,6 +26,7 @@ import {
     TUI_MOBILE_CALENDAR,
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
+    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {tuiToggleDay} from '@taiga-ui/kit/utils';
 import {
@@ -38,10 +37,11 @@ import {
 import {TuiInputTagComponent} from '@taiga-ui/legacy/components/input-tag';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
+import {map, type Observable} from 'rxjs';
 
 @Component({
     standalone: false,

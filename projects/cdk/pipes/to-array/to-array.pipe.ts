@@ -1,5 +1,4 @@
-import type {PipeTransform, QueryList} from '@angular/core';
-import {Pipe} from '@angular/core';
+import {Pipe, type PipeTransform, type QueryList} from '@angular/core';
 
 @Pipe({
     standalone: true,

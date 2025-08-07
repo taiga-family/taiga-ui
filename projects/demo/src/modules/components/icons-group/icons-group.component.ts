@@ -1,7 +1,13 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {OnInit} from '@angular/core';
-import {Component, ContentChild, DestroyRef, inject, Input} from '@angular/core';
+import {
+    Component,
+    ContentChild,
+    DestroyRef,
+    inject,
+    Input,
+    type OnInit,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -15,8 +21,7 @@ import {
 import {TuiAlertService, TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {Observable} from 'rxjs';
-import {debounceTime, distinctUntilChanged, filter, map} from 'rxjs';
+import {debounceTime, distinctUntilChanged, filter, map, type Observable} from 'rxjs';
 
 import {IconsGroupTemplate} from './icons-group.directive';
 

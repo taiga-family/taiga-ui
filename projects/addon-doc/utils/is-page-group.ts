@@ -1,4 +1,4 @@
-import type {TuiDocRoutePage, TuiDocRoutePageGroup} from '@taiga-ui/addon-doc/types';
+import {type TuiDocRoutePage, type TuiDocRoutePageGroup} from '@taiga-ui/addon-doc/types';
 
 export function tuiIsRoutePageGroup(
     page: TuiDocRoutePage | TuiDocRoutePageGroup,

@@ -1,5 +1,4 @@
-import type {Provider} from '@angular/core';
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, type Provider} from '@angular/core';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DEFAULT_LANGUAGE,
@@ -7,9 +6,12 @@ import {
     TUI_LANGUAGE_LOADER,
     TUI_LANGUAGE_STORAGE_KEY,
 } from '@taiga-ui/i18n/tokens';
-import type {TuiLanguage, TuiLanguageLoader, TuiLanguageName} from '@taiga-ui/i18n/types';
-import type {Observable} from 'rxjs';
-import {BehaviorSubject, of, switchAll} from 'rxjs';
+import {
+    type TuiLanguage,
+    type TuiLanguageLoader,
+    type TuiLanguageName,
+} from '@taiga-ui/i18n/types';
+import {BehaviorSubject, type Observable, of, switchAll} from 'rxjs';
 
 import {tuiAsyncLoadLanguage} from './load-language';
 

@@ -1,5 +1,4 @@
 import {CommonModule} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,6 +8,7 @@ import {
     inject,
     Input,
     Output,
+    type QueryList,
     signal,
     TemplateRef,
     ViewChild,
@@ -17,8 +17,11 @@ import {
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoOptions} from '@maskito/core';
-import {maskitoInitialCalibrationPlugin, maskitoTransform} from '@maskito/core';
+import {
+    maskitoInitialCalibrationPlugin,
+    type MaskitoOptions,
+    maskitoTransform,
+} from '@maskito/core';
 import {maskitoRemoveOnBlurPlugin} from '@maskito/kit';
 import {maskitoGetCountryFromNumber, maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
@@ -49,14 +52,13 @@ import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiFlagPipe} from '@taiga-ui/core/pipes/flag';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiGetCallingCode} from '@taiga-ui/kit/utils';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
-import type {MetadataJson} from 'libphonenumber-js/core';
-import {getCountryCallingCode} from 'libphonenumber-js/core';
+import {getCountryCallingCode, type MetadataJson} from 'libphonenumber-js/core';
 import {from, skip} from 'rxjs';
 
 import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from './input-phone-international.options';

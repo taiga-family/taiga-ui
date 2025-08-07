@@ -1,4 +1,4 @@
-import type {Tree} from '@angular-devkit/schematics';
+import {type Tree} from '@angular-devkit/schematics';
 import {
     addPackageJsonDependency,
     getPackageJsonDependency,

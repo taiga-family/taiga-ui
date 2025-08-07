@@ -8,8 +8,7 @@ import {TUI_DEFAULT_MATCHER, TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
-import type {Observable} from 'rxjs';
-import {map, of, startWith, switchMap} from 'rxjs';
+import {map, type Observable, of, startWith, switchMap} from 'rxjs';
 
 class User {
     constructor(

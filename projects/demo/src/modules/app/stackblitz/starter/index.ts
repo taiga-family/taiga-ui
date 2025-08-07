@@ -1,6 +1,11 @@
 import {isPlatformBrowser} from '@angular/common';
-import type {OnInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject, PLATFORM_ID} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    type OnInit,
+    PLATFORM_ID,
+} from '@angular/core';
 import {TuiDemo} from '@demo/utils';
 import {tuiRawLoad, tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc';
 import {TuiLoader} from '@taiga-ui/core';

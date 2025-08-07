@@ -4,19 +4,19 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiMobileCalendar, tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
-import type {TuiBooleanHandler, TuiDayLike, TuiDayRange} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    type TuiBooleanHandler,
     TuiDay,
+    type TuiDayLike,
+    type TuiDayRange,
     TuiMonth,
     tuiProvide,
 } from '@taiga-ui/cdk';
-import type {TuiMarkerHandler} from '@taiga-ui/core';
-import {TuiHint} from '@taiga-ui/core';
-import type {TuiDayRangePeriod} from '@taiga-ui/kit';
-import {tuiCreateDefaultDayRangePeriods} from '@taiga-ui/kit';
+import {TuiHint, type TuiMarkerHandler} from '@taiga-ui/core';
+import {tuiCreateDefaultDayRangePeriods, type TuiDayRangePeriod} from '@taiga-ui/kit';
 import {TuiInputDateRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';

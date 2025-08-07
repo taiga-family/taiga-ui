@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import type {Observable} from 'rxjs';
-import {shareReplay, switchMap} from 'rxjs';
+import {type Observable, shareReplay, switchMap} from 'rxjs';
 import {fromFetch} from 'rxjs/fetch';
 
 /**

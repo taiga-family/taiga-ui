@@ -1,5 +1,5 @@
 /* eslint-disable rxjs/no-ignored-observable */
-import type {tuiDialog, TuiDialogContext} from '@taiga-ui/core';
+import {type tuiDialog, type TuiDialogContext} from '@taiga-ui/core';
 import {EMPTY} from 'rxjs';
 
 const tuiDialogMock: typeof tuiDialog = jest.fn(() => jest.fn(() => EMPTY));

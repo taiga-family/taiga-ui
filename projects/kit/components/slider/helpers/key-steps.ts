@@ -1,7 +1,7 @@
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {tuiRound} from '@taiga-ui/cdk/utils/math';
 
-import type {TuiSliderComponent} from '../slider.component';
+import {type TuiSliderComponent} from '../slider.component';
 
 /**
  * Used as a limit for eliminating JS issues with floating point math

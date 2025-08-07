@@ -1,7 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputTimePO} from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 const MOCK_DATE = new Date(2021, 10, 10, 15, 30, 42, 300);
 

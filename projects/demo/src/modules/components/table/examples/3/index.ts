@@ -1,12 +1,10 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
-import type {ValidatorFn} from '@angular/forms';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, type ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
-import type {TuiComparator} from '@taiga-ui/addon-table';
-import {TuiTable} from '@taiga-ui/addon-table';
+import {type TuiComparator, TuiTable} from '@taiga-ui/addon-table';
 import {TuiDay, tuiDefaultSort, TuiLet, TuiValidator} from '@taiga-ui/cdk';
 import {
     TuiFormatNumberPipe,

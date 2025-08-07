@@ -1,5 +1,5 @@
-import type {TuiCountryIsoCode} from './country-iso-code';
-import type {TuiLanguageName} from './language-names';
+import {type TuiCountryIsoCode} from './country-iso-code';
+import {type TuiLanguageName} from './language-names';
 
 export interface TuiLanguageCore {
     close: string;

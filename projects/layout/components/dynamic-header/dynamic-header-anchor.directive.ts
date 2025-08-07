@@ -1,5 +1,12 @@
-import type {AfterViewInit, OnDestroy} from '@angular/core';
-import {Directive, inject, signal, TemplateRef, ViewContainerRef} from '@angular/core';
+import {
+    type AfterViewInit,
+    Directive,
+    inject,
+    type OnDestroy,
+    signal,
+    TemplateRef,
+    ViewContainerRef,
+} from '@angular/core';
 import {WaIntersectionObserverDirective} from '@ng-web-apis/intersection-observer';
 
 import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.directive';

@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoMask} from '@maskito/core';
+import {type MaskitoMask} from '@maskito/core';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
