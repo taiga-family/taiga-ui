@@ -19,7 +19,9 @@ test.describe('Table', () => {
         const ageColumnHeader = example.locator('th').filter({hasText: 'Age'});
 
         // Take initial screenshot - no sort state
-        await expect.soft(example).toHaveScreenshot('02-table-virtual-scroll-no-sort.png');
+        await expect
+            .soft(example)
+            .toHaveScreenshot('02-table-virtual-scroll-no-sort.png');
 
         // First click: should sort ASC (up chevron)
         await ageColumnHeader.click();
@@ -31,10 +33,14 @@ test.describe('Table', () => {
 
         // Third click: should clear sort (no chevron/two chevrons)
         await ageColumnHeader.click();
-        await expect.soft(example).toHaveScreenshot('02-table-virtual-scroll-cleared.png');
+        await expect
+            .soft(example)
+            .toHaveScreenshot('02-table-virtual-scroll-cleared.png');
 
         // Fourth click: should sort ASC again (cycle repeats)
         await ageColumnHeader.click();
-        await expect.soft(example).toHaveScreenshot('02-table-virtual-scroll-asc-again.png');
+        await expect
+            .soft(example)
+            .toHaveScreenshot('02-table-virtual-scroll-asc-again.png');
     });
 });
