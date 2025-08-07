@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core/types';
 
@@ -15,13 +14,6 @@ export const TUI_AVATAR_DEFAULT_OPTIONS: TuiAvatarOptions = {
     size: 'l',
 };
 
-export const TUI_AVATAR_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_AVATAR_OPTIONS' : '',
-    {
-        factory: () => TUI_AVATAR_DEFAULT_OPTIONS,
-    },
+export const [TUI_AVATAR_OPTIONS, tuiAvatarOptionsProvider] = tuiCreateOptions(
+    TUI_AVATAR_DEFAULT_OPTIONS,
 );
-
-export function tuiAvatarOptionsProvider(options: Partial<TuiAvatarOptions>): Provider {
-    return tuiProvideOptions(TUI_AVATAR_OPTIONS, options, TUI_AVATAR_DEFAULT_OPTIONS);
-}
