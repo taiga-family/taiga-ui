@@ -25,7 +25,7 @@ jobs:
         run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/save@v4.2.3
+        uses: actions/cache/save@v4.2.4
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
@@ -139,7 +139,7 @@ jobs:
           playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v4.2.3
+        uses: actions/cache/restore@v4.2.4
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
