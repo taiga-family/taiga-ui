@@ -1000,6 +1000,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Toast',
+        keywords: 'toast, модал, popup, dialog, диалог, modal, окно',
+        route: DemoRoute.Toast,
+    },
+    {
+        section: 'Components',
         title: 'Rating',
         keywords: 'рейтинг, оценка, звезда, rating, star, rate',
         route: DemoRoute.Rating,
