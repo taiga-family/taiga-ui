@@ -12,6 +12,7 @@ import {
     TuiInputNumber,
     TuiInputPhone,
     TuiInputTime,
+    TuiSelect,
 } from '@taiga-ui/kit';
 
 @Component({
@@ -28,6 +29,7 @@ import {
         TuiInputPhone,
         TuiInputTime,
         TuiRoot,
+        TuiSelect,
         TuiTextfield,
     ],
     template: `
@@ -104,6 +106,19 @@ import {
                         [year]="year"
                     />
                 </tui-textfield>
+
+                <tui-textfield tuiChevron>
+                    <input
+                        formControlName="select"
+                        tuiSelect
+                    />
+
+                    <tui-data-list-wrapper
+                        *tuiTextfieldDropdown
+                        new
+                        [items]="['Taiga UI', 'Maskito']"
+                    />
+                </tui-textfield>
             </form>
         </tui-root>
     `,
@@ -129,6 +144,7 @@ describe('Textfield + form.reset()', () => {
             dateRange: new FormControl(null),
             month: new FormControl(null),
             phone: new FormControl(null),
+            select: new FormControl(null),
         });
         cy.mount(Sandbox, {
             componentProperties: {
@@ -254,6 +270,20 @@ describe('Textfield + form.reset()', () => {
             .should('have.value', '')
             .then(() => {
                 expect(form.get('month')!.value).to.be.equal(null);
+            });
+    });
+
+    it('Select', () => {
+        cy.get('[tuiSelect]').click();
+        cy.get('[tuiOption]').first().click();
+
+        cy.get('[tuiSelect]').should('have.value', 'Taiga UI');
+
+        cy.get('#reset').trigger('mouseenter');
+        cy.get('[tuiSelect]')
+            .should('have.value', '')
+            .then(() => {
+                expect(form.get('select')!.value).to.deep.equal(null);
             });
     });
 });

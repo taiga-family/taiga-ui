@@ -1,4 +1,4 @@
-import {NgIf} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {
     type AfterContentInit,
     ChangeDetectionStrategy,
@@ -191,7 +191,7 @@ export class TuiTextfieldBaseComponent<T>
 @Component({
     standalone: true,
     selector: 'tui-textfield:not([multi])',
-    imports: [NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
+    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
     templateUrl: './textfield.template.html',
     styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
     encapsulation: ViewEncapsulation.None,

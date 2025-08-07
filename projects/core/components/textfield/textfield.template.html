@@ -1,4 +1,4 @@
-<ng-container *ngIf="value()" />
+<ng-container *ngIf="control?.control?.valueChanges | async" />
 <ng-content select="input" />
 <ng-content select="select" />
 <ng-content select="textarea" />
