@@ -1,7 +1,6 @@
-import {NgIf} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {
     type AfterContentInit,
-    AsyncPipe,
     ChangeDetectionStrategy,
     Component,
     computed,
