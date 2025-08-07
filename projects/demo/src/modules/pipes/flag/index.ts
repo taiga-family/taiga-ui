@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiFlagPipe} from '@taiga-ui/core';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {getCountries} from 'libphonenumber-js';
 
 @Component({

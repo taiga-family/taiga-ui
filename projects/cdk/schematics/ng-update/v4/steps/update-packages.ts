@@ -1,7 +1,7 @@
 /// <reference lib="es2021" />
-import type {DevkitFileSystem} from 'ng-morph';
 import {
     addPackageJsonDependency,
+    type DevkitFileSystem,
     errorLog,
     getImports,
     getPackageJsonDependency,

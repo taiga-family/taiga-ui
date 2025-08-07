@@ -1,7 +1,6 @@
-import type {FactoryProvider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {type FactoryProvider, InjectionToken} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
+import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 
 // TODO: remove in v5
 export interface TuiLinkOptions extends TuiAppearanceOptions {

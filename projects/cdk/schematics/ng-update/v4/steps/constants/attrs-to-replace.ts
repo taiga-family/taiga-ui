@@ -1,6 +1,6 @@
 import {hasElementAttribute} from '../../../../utils/templates/elements';
 import {findAttr} from '../../../../utils/templates/inputs';
-import type {ReplacementAttribute} from '../../../interfaces';
+import {type ReplacementAttribute} from '../../../interfaces';
 
 export const ATTRS_TO_REPLACE: ReplacementAttribute[] = [
     {

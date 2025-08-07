@@ -1,12 +1,22 @@
 import {NgIf} from '@angular/common';
-import type {WritableSignal} from '@angular/core';
-import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    signal,
+    type WritableSignal,
+} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import type {TuiLooseUnion, TuiRounding} from '@taiga-ui/cdk';
-import type {TuiDecimalMode, TuiNumberFormatSettings} from '@taiga-ui/core';
-import {TUI_DEFAULT_NUMBER_FORMAT, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {type TuiLooseUnion, type TuiRounding} from '@taiga-ui/cdk';
+import {
+    TUI_DEFAULT_NUMBER_FORMAT,
+    type TuiDecimalMode,
+    TuiLink,
+    type TuiNumberFormatSettings,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
 @Component({

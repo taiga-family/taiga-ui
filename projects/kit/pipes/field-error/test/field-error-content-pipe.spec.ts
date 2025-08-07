@@ -1,6 +1,11 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {discardPeriodicTasks, fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {
+    type ComponentFixture,
+    discardPeriodicTasks,
+    fakeAsync,
+    TestBed,
+    tick,
+} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';

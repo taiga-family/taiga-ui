@@ -1,10 +1,10 @@
-import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
     inject,
     Input,
+    type OnInit,
     Output,
     signal,
     ViewEncapsulation,

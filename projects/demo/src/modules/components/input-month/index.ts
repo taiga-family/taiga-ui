@@ -5,8 +5,13 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TUI_FALSE_HANDLER, TuiDay, TuiMonth, TuiYear} from '@taiga-ui/cdk';
+import {
+    TUI_FALSE_HANDLER,
+    type TuiBooleanHandler,
+    TuiDay,
+    TuiMonth,
+    TuiYear,
+} from '@taiga-ui/cdk';
 import {TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiInputMonth} from '@taiga-ui/kit';
 

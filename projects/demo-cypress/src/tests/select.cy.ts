@@ -1,13 +1,31 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    EventEmitter,
+    Input,
+    Output,
+} from '@angular/core';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {type TuiStringHandler} from '@taiga-ui/cdk';
+import {
+    TUI_ANIMATIONS_SPEED,
+    TuiRoot,
+    TuiTextfield,
+    type TuiValueContentContext,
+} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {createOutputSpy} from 'cypress/angular';
+
+interface User {
+    name: string;
+    balance: number;
+}
 
 @Component({
     standalone: true,
     imports: [
-        FormsModule,
+        ReactiveFormsModule,
         TuiChevron,
         TuiDataListWrapper,
         TuiRoot,
@@ -16,31 +34,53 @@ import {createOutputSpy} from 'cypress/angular';
     ],
     template: `
         <tui-root>
-            <tui-textfield tuiChevron>
+            <tui-textfield
+                tuiChevron
+                [content]="content"
+                [stringify]="stringify"
+            >
                 <input
                     tuiSelect
-                    [(ngModel)]="value"
+                    [formControl]="control"
                 />
 
                 <tui-data-list-wrapper
                     *tuiTextfieldDropdown
                     new
+                    [itemContent]="content"
                     [items]="options"
                     (itemClick)="itemClick.emit($event)"
                 />
             </tui-textfield>
+
+            <button
+                id="patch"
+                type="button"
+                (click)="control.setValue(options.at(-1))"
+            >
+                Patch with last option
+            </button>
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
-export class TestSelect {
-    protected readonly options = new Array(5).fill(null).map((_, i) => `Option ${i}`);
+export class Sandbox {
+    protected readonly options: User[] = new Array(5)
+        .fill(null)
+        .map((_, i) => ({name: `User${i}`, balance: i}));
 
-    protected value: string | null = this.options[0]!;
+    protected readonly control = new FormControl(this.options[0]!);
 
     @Output()
-    public readonly itemClick = new EventEmitter<string>();
+    public readonly itemClick = new EventEmitter<User>();
+
+    @Input()
+    public content: PolymorpheusContent<TuiValueContentContext<User>> = ({$implicit}) =>
+        this.stringify($implicit);
+
+    @Input()
+    public stringify: TuiStringHandler<User> = (x) => x.name;
 }
 
 describe('Select', () => {
@@ -48,11 +88,21 @@ describe('Select', () => {
 
     describe('checked state of option', () => {
         beforeEach(() => {
-            cy.mount(TestSelect);
+            cy.mount(Sandbox);
         });
 
         it('form control has initial value => initial option has check mark', () => {
-            cy.get('[tuiSelect]').click();
+            cy.get('[tuiSelect]').click().should('have.value', 'User0');
+
+            cy.get('[tuiOption]')
+                .contains('User0')
+                .find('input[type="checkbox"]')
+                .should('be.checked');
+
+            cy.get('[tuiOption]')
+                .contains('User2')
+                .find('input[type="checkbox"]')
+                .should('not.be.checked');
 
             cy.compareSnapshot('select-form-control-has-initial-value-option-checked');
         });
@@ -62,13 +112,23 @@ describe('Select', () => {
             cy.get('[tuiOption]').last().click();
             cy.get('[tuiSelect]').click();
 
+            cy.get('[tuiOption]')
+                .contains('User0')
+                .find('input[type="checkbox"]')
+                .should('not.be.checked');
+
+            cy.get('[tuiOption]')
+                .last()
+                .find('input[type="checkbox"]')
+                .should('be.checked');
+
             cy.compareSnapshot('select-new-selected-option-checked');
         });
     });
 
     describe('DataListWrapper', () => {
         beforeEach(() => {
-            cy.mount(TestSelect, {
+            cy.mount(Sandbox, {
                 componentProperties: {itemClick: createOutputSpy('itemClick')},
             });
         });
@@ -77,14 +137,33 @@ describe('Select', () => {
             cy.get('[tuiSelect]').click();
             cy.get('[tuiOption]').first().click();
 
-            cy.get('@itemClick').should('have.been.calledWith', 'Option 0');
+            cy.get('@itemClick').should('have.been.calledWith', {
+                name: 'User0',
+                balance: 0,
+            });
         });
 
         it('emits (itemClick) on the last option click ', () => {
             cy.get('[tuiSelect]').click();
             cy.get('[tuiOption]').last().click();
 
-            cy.get('@itemClick').should('have.been.calledWith', 'Option 4');
+            cy.get('@itemClick').should('have.been.calledWith', {
+                name: 'User4',
+                balance: 4,
+            });
         });
+    });
+
+    it('tui-textfield[content] + formControl.setValue', () => {
+        cy.mount(Sandbox, {
+            componentProperties: {
+                content: ({$implicit}) => $implicit.name,
+                stringify: String, // default
+            },
+        });
+
+        cy.get('tui-textfield:has([tuiSelect])').should('contain.text', 'User0');
+        cy.get('#patch').click();
+        cy.get('tui-textfield:has([tuiSelect])').should('contain.text', 'User4');
     });
 });

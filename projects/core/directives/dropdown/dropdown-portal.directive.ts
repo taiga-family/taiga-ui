@@ -1,5 +1,11 @@
-import type {EmbeddedViewRef, OnDestroy} from '@angular/core';
-import {Directive, inject, Input, TemplateRef} from '@angular/core';
+import {
+    Directive,
+    type EmbeddedViewRef,
+    inject,
+    Input,
+    type OnDestroy,
+    TemplateRef,
+} from '@angular/core';
 
 import {TuiDropdownService} from './dropdown.service';
 

@@ -1,7 +1,7 @@
 /// <reference lib="es2021" />
-import type {DevkitFileSystem} from 'ng-morph';
 import {
     addPackageJsonDependency,
+    type DevkitFileSystem,
     getActiveProject,
     getPackageJsonDependency,
     infoLog,
@@ -12,7 +12,7 @@ import {
 } from 'ng-morph';
 
 import {TUI_VERSION} from '../../../../constants/version';
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 
 export function migrateProprietary(
     fileSystem: DevkitFileSystem,

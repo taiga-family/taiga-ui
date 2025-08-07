@@ -1,4 +1,4 @@
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
 export const TUI_BELARUSIAN_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> = {
     AC: 'Востраў Узнясення',

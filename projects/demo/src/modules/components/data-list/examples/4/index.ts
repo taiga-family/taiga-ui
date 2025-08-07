@@ -2,7 +2,11 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiContext, TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk';
+import {
+    type TuiContext,
+    type TuiIdentityMatcher,
+    type TuiStringHandler,
+} from '@taiga-ui/cdk';
 import {TuiDataList} from '@taiga-ui/core';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 

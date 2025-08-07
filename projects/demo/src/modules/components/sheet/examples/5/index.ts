@@ -3,8 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import type {TuiSheetOptions} from '@taiga-ui/legacy';
-import {TuiSheetModule} from '@taiga-ui/legacy';
+import {TuiSheetModule, type TuiSheetOptions} from '@taiga-ui/legacy';
 
 const FRAMES = 166;
 

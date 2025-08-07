@@ -1,11 +1,17 @@
-import type {OnDestroy} from '@angular/core';
-import {Directive, inject, Input, NgZone, Output} from '@angular/core';
+import {Directive, inject, Input, NgZone, type OnDestroy, Output} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
 import {tuiArrayRemove, tuiInjectElement, tuiPure} from '@taiga-ui/cdk/utils';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, map, share, skip, startWith, tap} from 'rxjs';
+import {
+    distinctUntilChanged,
+    map,
+    type Observable,
+    share,
+    skip,
+    startWith,
+    tap,
+} from 'rxjs';
 
 @Directive({
     standalone: true,

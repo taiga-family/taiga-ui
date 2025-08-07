@@ -3,7 +3,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import type {TuiSizeL} from '@taiga-ui/core';
+import {type TuiSizeL} from '@taiga-ui/core';
 import {TuiFiles, tuiFilesAccepted} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 

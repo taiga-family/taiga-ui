@@ -1,9 +1,21 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import type {OnInit, Provider, Type} from '@angular/core';
-import {ChangeDetectorRef, DestroyRef, Directive, inject, Input} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    DestroyRef,
+    Directive,
+    inject,
+    Input,
+    type OnInit,
+    type Provider,
+    type Type,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {AbstractControl, ControlValueAccessor} from '@angular/forms';
-import {NgControl, NgModel} from '@angular/forms';
+import {
+    type AbstractControl,
+    type ControlValueAccessor,
+    NgControl,
+    NgModel,
+} from '@angular/forms';
 import {TuiControl, TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiIsPresent, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';

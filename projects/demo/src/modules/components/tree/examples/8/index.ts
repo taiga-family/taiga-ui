@@ -2,8 +2,7 @@ import {NgIf} from '@angular/common';
 import {ChangeDetectorRef, Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiHandler} from '@taiga-ui/cdk';
-import {EMPTY_ARRAY} from '@taiga-ui/cdk';
+import {EMPTY_ARRAY, type TuiHandler} from '@taiga-ui/cdk';
 import {TuiTiles, TuiTree} from '@taiga-ui/kit';
 
 interface TreeNode {

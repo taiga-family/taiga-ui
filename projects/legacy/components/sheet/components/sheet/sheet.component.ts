@@ -1,11 +1,13 @@
-import type {AfterViewInit, ElementRef, QueryList} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
+    type ElementRef,
     inject,
     Input,
     NgZone,
+    type QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
@@ -19,7 +21,7 @@ import {tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import {map, timer} from 'rxjs';
 
-import type {TuiSheet, TuiSheetRequiredProps} from '../../sheet';
+import {type TuiSheet, type TuiSheetRequiredProps} from '../../sheet';
 import {TUI_SHEET_SCROLL} from '../../sheet-tokens';
 import {TUI_SHEET_ID} from '../sheet-heading/sheet-heading.component';
 import {TUI_SHEET_PROVIDERS} from './sheet.providers';

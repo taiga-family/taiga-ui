@@ -7,36 +7,36 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {MaskitoOptions} from '@maskito/core';
-import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
+import {MASKITO_DEFAULT_OPTIONS, type MaskitoOptions} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiDateMode, TuiDay, TuiDayLike} from '@taiga-ui/cdk/date-time';
 import {
     DATE_FILLER_LENGTH,
     DATE_RANGE_FILLER_LENGTH,
     RANGE_SEPARATOR_CHAR,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    type TuiDateMode,
+    type TuiDay,
+    type TuiDayLike,
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {
     changeDateSeparator,
     tuiIsPresent,
     tuiNullableSame,
     tuiPure,
 } from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
+import {type TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
-import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_TEXTS,
@@ -44,6 +44,7 @@ import {
     TUI_MOBILE_CALENDAR,
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
+    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
 import {
     AbstractTuiNullableControl,
@@ -51,10 +52,12 @@ import {
 } from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
 /**

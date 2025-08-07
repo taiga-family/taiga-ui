@@ -1,9 +1,8 @@
-import type {Provider, Signal, Type} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import type {TuiIdentityMatcher, TuiStringHandler} from '@taiga-ui/cdk/types';
+import {InjectionToken, type Provider, type Signal, type Type} from '@angular/core';
+import {type TuiIdentityMatcher, type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiDataListAccessor<T = unknown> {
     /**

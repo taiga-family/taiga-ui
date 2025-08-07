@@ -7,8 +7,8 @@ import {
     ViewChild,
 } from '@angular/core';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiHintDirection} from '@taiga-ui/core/directives/hint';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiHintDirection} from '@taiga-ui/core/directives/hint';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
@@ -16,17 +16,15 @@ import {
     TUI_TEXTFIELD_SIZE,
     TUI_VALUE_ACCESSOR_PROVIDER,
 } from '@taiga-ui/legacy/directives';
-import type {
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {BehaviorSubject, map, merge, of, switchMap, timer} from 'rxjs';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {BehaviorSubject, map, merge, type Observable, of, switchMap, timer} from 'rxjs';
 
-import type {TuiInputCopyOptions} from './input-copy.options';
-import {TUI_INPUT_COPY_OPTIONS} from './input-copy.options';
+import {TUI_INPUT_COPY_OPTIONS, type TuiInputCopyOptions} from './input-copy.options';
 
 /**
  * @deprecated use {@link TuiCopy} with {@link TuiTextfield}

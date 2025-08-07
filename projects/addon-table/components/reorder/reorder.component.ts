@@ -8,12 +8,11 @@ import {
     Output,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TUI_TILES_REORDER, TuiTiles, tuiTilesShift} from '@taiga-ui/kit/components/tiles';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_REORDER_OPTIONS} from './reorder.options';
 

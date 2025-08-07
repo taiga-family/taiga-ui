@@ -1,5 +1,11 @@
-import type {OnInit} from '@angular/core';
-import {ChangeDetectorRef, Component, DestroyRef, inject, NgZone} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    DestroyRef,
+    inject,
+    NgZone,
+    type OnInit,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';

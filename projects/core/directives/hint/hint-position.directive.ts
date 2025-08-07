@@ -9,11 +9,15 @@ import {
     TuiRectAccessor,
 } from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import {type TuiPoint} from '@taiga-ui/core/types';
 
 import {TuiHintDirective} from './hint.directive';
-import type {TuiHintDirection, TuiHintOptions} from './hint-options.directive';
-import {TUI_HINT_DIRECTIONS, TUI_HINT_OPTIONS} from './hint-options.directive';
+import {
+    TUI_HINT_DIRECTIONS,
+    TUI_HINT_OPTIONS,
+    type TuiHintDirection,
+    type TuiHintOptions,
+} from './hint-options.directive';
 
 const GAP = 8;
 const ARROW_OFFSET = 24;

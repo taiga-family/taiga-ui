@@ -1,4 +1,3 @@
-import type {OnChanges} from '@angular/core';
 import {
     computed,
     ContentChild,
@@ -7,6 +6,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    type OnChanges,
     Output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';

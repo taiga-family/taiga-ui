@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiMonth} from '@taiga-ui/cdk';
+import {type TuiMonth} from '@taiga-ui/cdk';
 import {TuiError, TuiTextfield} from '@taiga-ui/core';
 import {
     TuiFieldErrorPipe,

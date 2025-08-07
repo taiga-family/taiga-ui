@@ -1,5 +1,5 @@
-import type {MaskitoDateMode} from '@maskito/kit';
-import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
+import {type MaskitoDateMode} from '@maskito/kit';
+import {type TuiDateMode} from '@taiga-ui/cdk/date-time';
 
 /**
  * @deprecated: drop in v5.0

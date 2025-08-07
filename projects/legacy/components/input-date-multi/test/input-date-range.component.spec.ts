@@ -1,7 +1,5 @@
-import type {Type} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {ChangeDetectionStrategy, Component, type Type, ViewChild} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay} from '@taiga-ui/cdk';
 import {TuiRoot} from '@taiga-ui/core';
 import {TuiInputDateMultiComponent, TuiInputDateMultiModule} from '@taiga-ui/legacy';

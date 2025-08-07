@@ -1,5 +1,8 @@
-import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
-import {TuiCurrency, TuiCurrencyCode} from '@taiga-ui/addon-commerce/types';
+import {
+    TuiCurrency,
+    TuiCurrencyCode,
+    type TuiCurrencyVariants,
+} from '@taiga-ui/addon-commerce/types';
 
 export function tuiGetCurrencySymbol(currency: TuiCurrencyVariants): string | null {
     switch (currency) {

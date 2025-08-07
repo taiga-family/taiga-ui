@@ -9,8 +9,10 @@ import {
     TuiTextfield,
     TuiTextfieldComponent,
 } from '@taiga-ui/core/components/textfield';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputChipDirective} from '@taiga-ui/kit/components/input-chip';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';

@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAutoFocus, tuiAutoFocusOptionsProvider} from '@taiga-ui/cdk';
-import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiTextfield} from '@taiga-ui/core';
+import {type TuiDialogContext, TuiTextfield} from '@taiga-ui/core';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({

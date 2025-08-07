@@ -1,4 +1,4 @@
-import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
+import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 
 import {tuiRawLoad} from './raw-load';
 

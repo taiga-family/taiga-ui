@@ -6,9 +6,9 @@ import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
     PolymorpheusComponent,
+    type PolymorpheusContent,
     PolymorpheusOutlet,
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';

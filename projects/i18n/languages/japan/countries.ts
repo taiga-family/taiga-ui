@@ -1,4 +1,4 @@
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
 export const TUI_JAPAN_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> = {
     AD: 'Andorra',

@@ -1,6 +1,14 @@
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {Observable} from 'rxjs';
-import {concat, endWith, map, merge, repeat, take, takeWhile} from 'rxjs';
+import {
+    concat,
+    endWith,
+    map,
+    merge,
+    type Observable,
+    repeat,
+    take,
+    takeWhile,
+} from 'rxjs';
 
 import {tuiTypedFromEvent} from './typed-from-event';
 

@@ -6,14 +6,14 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
-import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     TUI_FLOATING_PRECISION,
+    type TuiKeySteps,
     TuiSliderComponent,
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
@@ -23,12 +23,12 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
-import type {
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 /**
  * TODO(v5): delete it

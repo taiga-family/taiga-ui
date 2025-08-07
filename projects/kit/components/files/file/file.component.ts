@@ -8,10 +8,9 @@ import {
     LOCALE_ID,
     Output,
 } from '@angular/core';
-import type {SafeValue} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeValue} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
@@ -22,15 +21,13 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {TuiHintOverflow} from '@taiga-ui/core/directives/hint';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import type {TuiSizeL} from '@taiga-ui/core/types';
-import type {TuiLanguage} from '@taiga-ui/i18n/types';
+import {type TuiSizeL} from '@taiga-ui/core/types';
+import {type TuiLanguage} from '@taiga-ui/i18n/types';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_FILE_TEXTS} from '@taiga-ui/kit/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {map, of} from 'rxjs';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {map, type Observable, of} from 'rxjs';
 
-import type {TuiFileLike, TuiFileState} from '../files.types';
+import {type TuiFileLike, type TuiFileState} from '../files.types';
 import {TUI_FILE_OPTIONS} from './file.options';
 
 @Component({

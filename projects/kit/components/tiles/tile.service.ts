@@ -1,18 +1,17 @@
 import {isPlatformBrowser} from '@angular/common';
-import type {OnDestroy} from '@angular/core';
-import {inject, Injectable, PLATFORM_ID} from '@angular/core';
+import {inject, Injectable, type OnDestroy, PLATFORM_ID} from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiArrayShallowEquals, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
     combineLatest,
     debounceTime,
     distinctUntilChanged,
     map,
+    type Observable,
     startWith,
     Subscription,
 } from 'rxjs';

@@ -16,8 +16,10 @@ import {TuiDropdownDirective, TuiDropdownOpen} from '@taiga-ui/core/directives/d
 import {TUI_COMMON_ICONS, TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
-import type {TuiTablePaginationOptions} from './table-pagination.options';
-import {TUI_TABLE_PAGINATION_OPTIONS} from './table-pagination.options';
+import {
+    TUI_TABLE_PAGINATION_OPTIONS,
+    type TuiTablePaginationOptions,
+} from './table-pagination.options';
 
 export interface TuiTablePaginationEvent {
     readonly page: number;

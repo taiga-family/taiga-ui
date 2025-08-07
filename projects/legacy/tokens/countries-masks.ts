@@ -1,5 +1,5 @@
 import {InjectionToken} from '@angular/core';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n/types';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 
 /**
  * @deprecated: drop in v5.0

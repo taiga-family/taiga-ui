@@ -1,5 +1,4 @@
-import type {FactoryProvider, ProviderToken} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {type FactoryProvider, InjectionToken, type ProviderToken} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export function tuiCreateOptions<T>(

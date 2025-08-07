@@ -1,6 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import type {OnInit} from '@angular/core';
-import {Component} from '@angular/core';
+import {Component, type OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';

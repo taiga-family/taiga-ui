@@ -1,4 +1,4 @@
-import type {ReplacementIdentifierMulti} from '../../interfaces/replacement-identifier';
+import {type ReplacementIdentifierMulti} from '../../interfaces/replacement-identifier';
 
 export const DOC_SYMBOLS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     {

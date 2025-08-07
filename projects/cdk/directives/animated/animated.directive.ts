@@ -1,9 +1,9 @@
-import type {OnDestroy} from '@angular/core';
 import {
     afterNextRender,
     ApplicationRef,
     Directive,
     inject,
+    type OnDestroy,
     ViewContainerRef,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';

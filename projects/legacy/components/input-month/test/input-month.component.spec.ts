@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
 import {TuiRoot} from '@taiga-ui/core';

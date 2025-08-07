@@ -7,7 +7,7 @@ import {
     titleLog,
 } from 'ng-morph';
 
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {replaceIdentifier} from '../../steps/replace-identifier';
 

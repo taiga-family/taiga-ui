@@ -1,10 +1,11 @@
-import type {DoCheck, Signal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    type DoCheck,
     inject,
     Input,
+    type Signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -24,7 +25,7 @@ import {
     TuiHintHover,
 } from '@taiga-ui/core/directives/hint';
 import {TUI_ICON_START} from '@taiga-ui/core/tokens';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 import {map} from 'rxjs';
 
 import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';

@@ -1,9 +1,9 @@
 import {Directive} from '@angular/core';
-import type {TuiDay, TuiTime} from '@taiga-ui/cdk/date-time';
+import {type TuiDay, type TuiTime} from '@taiga-ui/cdk/date-time';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
-import type {TuiInputDateTimeComponent} from './input-date-time.component';
+import {type TuiInputDateTimeComponent} from './input-date-time.component';
 
 /**
  * TODO(v5): delete it

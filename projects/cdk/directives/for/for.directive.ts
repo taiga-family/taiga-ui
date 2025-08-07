@@ -1,5 +1,12 @@
-import type {EmbeddedViewRef, OnChanges, TemplateRef} from '@angular/core';
-import {Directive, inject, Input, ViewContainerRef} from '@angular/core';
+import {
+    Directive,
+    type EmbeddedViewRef,
+    inject,
+    Input,
+    type OnChanges,
+    type TemplateRef,
+    ViewContainerRef,
+} from '@angular/core';
 
 @Directive({
     standalone: true,

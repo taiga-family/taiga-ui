@@ -1,4 +1,4 @@
-import type {ReplacementType} from '../../../interfaces';
+import {type ReplacementType} from '../../../interfaces';
 
 export const TYPES_TO_RENAME: readonly ReplacementType[] = [
     {

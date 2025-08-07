@@ -1,8 +1,8 @@
-import type {TuiContext} from '@taiga-ui/cdk/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable, Observer} from 'rxjs';
+import {type TuiContext} from '@taiga-ui/cdk/types';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type Observable, type Observer} from 'rxjs';
 
-import type {TuiSheetOptions} from './sheet-options';
+import {type TuiSheetOptions} from './sheet-options';
 
 /**
  * @deprecated: drop in v5.0 use {@link TuiSheetDialog}

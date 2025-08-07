@@ -1,16 +1,21 @@
-import type {Provider, Type} from '@angular/core';
 import {
     ChangeDetectorRef,
     computed,
     Directive,
     inject,
     Input,
+    type Provider,
     signal,
+    type Type,
     untracked,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {ControlValueAccessor, FormControlStatus} from '@angular/forms';
-import {NgControl, NgModel} from '@angular/forms';
+import {
+    type ControlValueAccessor,
+    type FormControlStatus,
+    NgControl,
+    NgModel,
+} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {TUI_FALLBACK_VALUE} from '@taiga-ui/cdk/tokens';
 import {tuiProvide} from '@taiga-ui/cdk/utils';

@@ -6,8 +6,13 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {TuiMonthLike, TuiYear} from '@taiga-ui/cdk/date-time';
-import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiMonth} from '@taiga-ui/cdk/date-time';
+import {
+    TUI_FIRST_DAY,
+    TUI_LAST_DAY,
+    TuiMonth,
+    type TuiMonthLike,
+    type TuiYear,
+} from '@taiga-ui/cdk/date-time';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiSpinButton} from '@taiga-ui/core/components/spin-button';
 import {TuiMonthPipe} from '@taiga-ui/core/pipes';

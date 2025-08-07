@@ -1,14 +1,16 @@
 import {DOCUMENT, isPlatformServer, NgIf} from '@angular/common';
-import type {AfterViewInit, ElementRef, Signal} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     computed,
+    type ElementRef,
     EventEmitter,
     inject,
     Input,
     Output,
     PLATFORM_ID,
+    type Signal,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -22,7 +24,7 @@ import {
 } from '@taiga-ui/addon-commerce/constants';
 import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
-import type {TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_NO_BREAK_SPACE, TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
 import {tuiHovered, TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
@@ -31,12 +33,14 @@ import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE, TUI_IS_WEBKIT} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
+import {
+    tuiAsDataListHost,
+    type TuiDataListHost,
+} from '@taiga-ui/core/components/data-list';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -57,8 +61,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, map, merge, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_INPUT_CARD_GROUP_OPTIONS} from './input-card-group.options';

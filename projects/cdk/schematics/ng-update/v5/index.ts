@@ -1,12 +1,16 @@
 import {performance} from 'node:perf_hooks';
 
-import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {chain} from '@angular-devkit/schematics';
+import {
+    chain,
+    type Rule,
+    type SchematicContext,
+    type Tree,
+} from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
 import {FINISH_SYMBOL, START_SYMBOL, titleLog} from 'ng-morph';
 
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
-import type {TuiSchema} from '../../ng-add/schema';
+import {type TuiSchema} from '../../ng-add/schema';
 import {getExecutionTime} from '../../utils/get-execution-time';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';

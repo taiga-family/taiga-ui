@@ -10,13 +10,15 @@ import {
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
-import type {TuiStringMatcher} from '@taiga-ui/cdk/types';
-import type {TuiDataListAccessor} from '@taiga-ui/core/components/data-list';
-import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
-import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
+import {type TuiStringMatcher} from '@taiga-ui/cdk/types';
+import {
+    tuiAsOptionContent,
+    type TuiDataListAccessor,
+} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsTextfieldAccessor,
     tuiInjectAuxiliary,
+    type TuiTextfieldAccessor,
     TuiTextfieldComponent,
     TuiTextfieldDirective,
     TuiWithTextfield,
@@ -26,8 +28,10 @@ import {
     tuiDropdownEnabled,
     tuiDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 
 @Directive({

@@ -1,5 +1,5 @@
-import type {AfterViewInit, OnChanges} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -7,25 +7,30 @@ import {
     EventEmitter,
     inject,
     Input,
+    type OnChanges,
     Output,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
-import type {TuiComparator} from '@taiga-ui/addon-table/types';
+import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import type {TuiTextfieldOptions} from '@taiga-ui/core/components/textfield';
-import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {
+    TUI_TEXTFIELD_OPTIONS,
+    type TuiTextfieldOptions,
+} from '@taiga-ui/core/components/textfield';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiChipOptionsProvider} from '@taiga-ui/kit/components/chip';
 import {tuiProgressOptionsProvider} from '@taiga-ui/kit/components/progress';
-import type {Observable} from 'rxjs';
-import {combineLatest, debounceTime, map, Subject} from 'rxjs';
+import {combineLatest, debounceTime, map, type Observable, Subject} from 'rxjs';
 
-import type {TuiTableSortChange} from '../table.options';
-import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
+import {
+    TUI_TABLE_OPTIONS,
+    TuiSortDirection,
+    type TuiTableSortChange,
+} from '../table.options';
 import {TuiStuck} from './stuck.directive';
 
 @Component({

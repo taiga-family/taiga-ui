@@ -5,7 +5,7 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {tuiHexToRgb, tuiRgbToHex} from '@taiga-ui/cdk/utils/color';
 
 const HEX_MODE_LENGTH = 6;

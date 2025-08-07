@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiLabel} from '@taiga-ui/core';
+import {TuiLabel, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 import {TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({

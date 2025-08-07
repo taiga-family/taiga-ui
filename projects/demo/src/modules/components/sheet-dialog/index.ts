@@ -1,17 +1,20 @@
-import type {TemplateRef} from '@angular/core';
-import {Component, inject} from '@angular/core';
+import {Component, inject, type TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
 import {
     TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
+    type TuiSheetDialogOptions,
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
 import {TuiLet} from '@taiga-ui/cdk';
-import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiAlertService, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiAlertService,
+    TuiButton,
+    type TuiDialogContext,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
 @Component({

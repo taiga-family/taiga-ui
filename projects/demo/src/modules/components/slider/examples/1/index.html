@@ -11,6 +11,15 @@
     size="m"
     tuiSlider
     type="range"
-    value="60"
     [formControl]="formControl"
+/>
+
+<p>Custom thickness</p>
+
+<input
+    size="m"
+    tuiSlider
+    type="range"
+    [formControl]="formControl"
+    [style.--tui-thickness.rem]="0.25"
 />

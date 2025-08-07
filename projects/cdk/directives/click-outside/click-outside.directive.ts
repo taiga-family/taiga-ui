@@ -6,8 +6,7 @@ import {
     tuiGetActualTarget,
     tuiInjectElement,
 } from '@taiga-ui/cdk/utils';
-import type {Observable} from 'rxjs';
-import {filter, fromEvent, map} from 'rxjs';
+import {filter, fromEvent, map, type Observable} from 'rxjs';
 
 /**
  * @deprecated use {@link TuiActiveZone} instead

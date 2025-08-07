@@ -1,7 +1,13 @@
 import {Clipboard} from '@angular/cdk/clipboard';
 import {DOCUMENT, NgForOf, NgIf} from '@angular/common';
-import type {Type} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject, Input, signal} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    Input,
+    signal,
+    type Type,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
 import {WA_LOCATION} from '@ng-web-apis/common';
@@ -12,11 +18,11 @@ import {
     TUI_DOC_EXAMPLE_TEXTS,
     TUI_DOC_ICONS,
 } from '@taiga-ui/addon-doc/tokens';
-import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
+import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiFullscreen} from '@taiga-ui/core/components/fullscreen';
@@ -24,8 +30,11 @@ import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {
+    PolymorpheusComponent,
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, map, ReplaySubject, switchAll, switchMap} from 'rxjs';
 
 import {TuiDocCode} from '../code';

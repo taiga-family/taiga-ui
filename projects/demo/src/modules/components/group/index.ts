@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiOrientation, TuiSizeL} from '@taiga-ui/core';
-import {TuiButton, TuiGroup} from '@taiga-ui/core';
+import {TuiButton, TuiGroup, type TuiOrientation, type TuiSizeL} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

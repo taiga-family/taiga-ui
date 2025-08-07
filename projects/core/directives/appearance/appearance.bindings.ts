@@ -1,6 +1,6 @@
-import type {InjectOptions, Signal, WritableSignal} from '@angular/core';
+import {type InjectOptions, type Signal, type WritableSignal} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiInteractiveState} from '@taiga-ui/core/types';
+import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
 import {TuiAppearance} from './appearance.directive';
 

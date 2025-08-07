@@ -1,6 +1,6 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Attribute, type ElementLocation} from 'parse5/dist/common/token';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {findAttr, isBinding} from '../../../../utils/templates/inputs';
@@ -8,7 +8,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 import {removeAttrs} from '../utils/remove-attrs';
 
 export function migrateBadgedContent({

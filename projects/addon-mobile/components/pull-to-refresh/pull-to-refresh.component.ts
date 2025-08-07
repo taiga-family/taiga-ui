@@ -3,13 +3,11 @@ import {ChangeDetectionStrategy, Component, inject, Input, Output} from '@angula
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import type {TuiContext, TuiHandler} from '@taiga-ui/cdk/types';
+import {type TuiContext, type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {distinctUntilChanged, filter, map, type Observable, startWith} from 'rxjs';
 
 import {
     TUI_PULL_TO_REFRESH_COMPONENT,

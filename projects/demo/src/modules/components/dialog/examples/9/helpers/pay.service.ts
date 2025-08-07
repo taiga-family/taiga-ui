@@ -1,10 +1,9 @@
 import {inject, Injectable} from '@angular/core';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
-import type {Observable} from 'rxjs';
-import {map, timer} from 'rxjs';
+import {map, type Observable, timer} from 'rxjs';
 
 import {MOCK_CARDS} from './mock-cards';
-import type {AccountCard, FetchedCards} from './models';
+import {type AccountCard, type FetchedCards} from './models';
 
 @Injectable({
     providedIn: 'root',

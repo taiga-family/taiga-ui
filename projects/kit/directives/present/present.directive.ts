@@ -1,5 +1,4 @@
-import type {OnDestroy} from '@angular/core';
-import {Directive, Output} from '@angular/core';
+import {Directive, type OnDestroy, Output} from '@angular/core';
 import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
 
 @Directive({

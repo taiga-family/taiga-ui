@@ -1,5 +1,4 @@
-import type {OnChanges, OnInit} from '@angular/core';
-import {Directive, inject} from '@angular/core';
+import {Directive, inject, type OnChanges, type OnInit} from '@angular/core';
 import {NG_VALIDATORS, Validators} from '@angular/forms';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';

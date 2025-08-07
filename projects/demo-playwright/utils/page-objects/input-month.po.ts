@@ -1,5 +1,4 @@
-import type {Locator} from '@playwright/test';
-import {expect} from '@playwright/test';
+import {expect, type Locator} from '@playwright/test';
 
 export class TuiInputMonthPO {
     public readonly cleaner = this.host.locator('.t-clear');

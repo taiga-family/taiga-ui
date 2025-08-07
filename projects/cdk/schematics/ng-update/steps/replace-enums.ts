@@ -1,17 +1,18 @@
-import type {ImportSpecifier, VariableDeclaration} from 'ng-morph';
 import {
+    type ImportSpecifier,
     infoLog,
     Node,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     SUCCESS_SYMBOL,
     successLog,
+    type VariableDeclaration,
 } from 'ng-morph';
 
-import type {TuiSchema} from '../../ng-add/schema';
+import {type TuiSchema} from '../../ng-add/schema';
 import {getNamedImportReferences} from '../../utils/get-named-import-references';
 import {removeImport} from '../../utils/import-manipulations';
-import type {ReplacementEnum} from '../interfaces/replacement-enum';
+import {type ReplacementEnum} from '../interfaces/replacement-enum';
 
 function replaceEnumWithString(
     enumName: string,

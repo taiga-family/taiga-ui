@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiInteractiveState} from '@taiga-ui/core';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton, type TuiInteractiveState} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

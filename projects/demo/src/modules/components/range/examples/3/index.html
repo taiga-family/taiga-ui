@@ -1,30 +1,20 @@
 <tui-range
-    id="range-with-segments"
+    id="range-with-key-steps"
     size="m"
     class="range"
-    [max]="max"
-    [min]="min"
+    [keySteps]="keySteps"
     [segments]="segments"
-    [step]="step"
+    [step]="stepPercentage"
     [(ngModel)]="value"
 />
 
 <div class="ticks-labels">
-    <div *ngFor="let label of labels">
-        <ng-container *ngIf="label !== 750; else labelWithIcon">
-            {{ label | i18nPlural: pluralMap }}
-        </ng-container>
-    </div>
-
-    <ng-template #labelWithIcon>
-        <tui-icon icon="@tui.arrow-up" />
-        <div>3/4</div>
-    </ng-template>
+    <span *ngFor="let label of ticksLabels">{{ label }}</span>
 </div>
 
 <p class="tui-space_top-12 tui-space_bottom-0">
     Control value:
-    <output for="range-with-segments">
+    <output for="range-with-key-steps">
         <code>{{ value | json }}</code>
     </output>
 </p>

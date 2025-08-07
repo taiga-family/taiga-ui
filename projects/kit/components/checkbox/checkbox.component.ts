@@ -1,11 +1,12 @@
-import type {DoCheck, OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     DestroyRef,
+    type DoCheck,
     inject,
     Input,
+    type OnInit,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -16,7 +17,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 
 import {TUI_CHECKBOX_OPTIONS} from './checkbox.options';
 

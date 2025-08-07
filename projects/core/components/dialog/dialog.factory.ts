@@ -1,9 +1,8 @@
-import type {Injector} from '@angular/core';
-import {assertInInjectionContext, inject, INJECTOR} from '@angular/core';
+import {assertInInjectionContext, inject, INJECTOR, type Injector} from '@angular/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
+import {type Observable} from 'rxjs';
 
-import type {TuiDialogContext, TuiDialogOptions} from './dialog.interfaces';
+import {type TuiDialogContext, type TuiDialogOptions} from './dialog.interfaces';
 import {TuiDialogService} from './dialog.service';
 
 type SingleUnionOrNever<T, U = T> = [T] extends [never]

@@ -1,5 +1,4 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Provider} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
 // TODO: Rename `ellipsis` to `more` in the next major version

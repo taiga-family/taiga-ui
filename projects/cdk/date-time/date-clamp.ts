@@ -1,4 +1,4 @@
-import type {TuiYear} from './year';
+import {type TuiYear} from './year';
 
 export function tuiDateClamp<T extends TuiYear>(date: T, min?: T, max?: T): T {
     if (max && max < date) {

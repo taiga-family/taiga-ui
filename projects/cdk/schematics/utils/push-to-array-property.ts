@@ -1,5 +1,4 @@
-import type {ObjectLiteralExpression} from 'ng-morph';
-import {Node} from 'ng-morph';
+import {Node, type ObjectLiteralExpression} from 'ng-morph';
 
 export function pushToObjectArrayProperty(
     objectExpression: ObjectLiteralExpression,

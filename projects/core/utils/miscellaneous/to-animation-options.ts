@@ -1,4 +1,4 @@
-import type {AnimationOptions} from '@angular/animations';
+import {type AnimationOptions} from '@angular/animations';
 import {inject} from '@angular/core';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 

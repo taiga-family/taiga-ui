@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeS} from '@taiga-ui/core';
+import {type TuiSizeS} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
@@ -11,6 +11,15 @@ import {TuiSlider} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
+    protected readonly examples = [
+        'Sizes',
+        'Colors',
+        'Segments',
+        'Disabled',
+        'KeySteps',
+        'Complex',
+    ];
+
     protected readonly sizeVariants: readonly TuiSizeS[] = ['s', 'm'];
     protected readonly segmentsVariants: Array<number[] | number> = [
         1,

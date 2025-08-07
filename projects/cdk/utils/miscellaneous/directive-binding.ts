@@ -1,5 +1,13 @@
-import type {InjectOptions, ProviderToken, Signal, WritableSignal} from '@angular/core';
-import {effect, inject, isSignal, signal} from '@angular/core';
+import {
+    effect,
+    inject,
+    type InjectOptions,
+    isSignal,
+    type ProviderToken,
+    type Signal,
+    signal,
+    type WritableSignal,
+} from '@angular/core';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 
 type SignalLikeTypeOf<T> = T extends Signal<infer R> ? R : T;

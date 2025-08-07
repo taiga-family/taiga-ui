@@ -1,25 +1,25 @@
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
     inject,
     Input,
+    type QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
 import {TuiRange} from '@taiga-ui/kit/components/range';
-import type {TuiKeySteps} from '@taiga-ui/kit/components/slider';
 import {
     TUI_FLOATING_PRECISION,
+    type TuiKeySteps,
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
 import {AbstractTuiControl, tuiAsControl} from '@taiga-ui/legacy/classes';
@@ -28,12 +28,12 @@ import {
     TEXTFIELD_CONTROLLER_PROVIDER,
     TUI_TEXTFIELD_WATCHED_CONTROLLER,
 } from '@taiga-ui/legacy/directives';
-import type {
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: false,

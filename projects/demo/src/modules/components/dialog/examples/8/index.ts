@@ -6,7 +6,7 @@ import {TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {TuiConfirmService} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

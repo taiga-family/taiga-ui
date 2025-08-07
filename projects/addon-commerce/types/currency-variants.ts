@@ -1,5 +1,5 @@
-import type {TuiCurrency} from './currency';
-import type {TuiCurrencyCode} from './currency-code';
+import {type TuiCurrency} from './currency';
+import {type TuiCurrencyCode} from './currency-code';
 
 export type TuiCurrencyAutocompletion =
     | keyof Record<TuiCurrency, string>

@@ -1,10 +1,10 @@
-import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     DestroyRef,
     inject,
+    type OnInit,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_WINDOW_SIZE} from '@taiga-ui/cdk/tokens';
@@ -13,7 +13,7 @@ import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {map} from 'rxjs';
 
-import type {TuiSheet} from '../../sheet';
+import {type TuiSheet} from '../../sheet';
 import {TuiSheetService} from '../../sheet.service';
 
 @Component({

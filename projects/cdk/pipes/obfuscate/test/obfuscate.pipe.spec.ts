@@ -1,6 +1,9 @@
 import {TestBed} from '@angular/core/testing';
-import type {TuiObfuscateOptions} from '@taiga-ui/cdk';
-import {TUI_OBFUSCATE_OPTIONS, TuiObfuscatePipe} from '@taiga-ui/cdk';
+import {
+    TUI_OBFUSCATE_OPTIONS,
+    type TuiObfuscateOptions,
+    TuiObfuscatePipe,
+} from '@taiga-ui/cdk';
 
 describe('tuiObfuscate', () => {
     describe('default', () => {

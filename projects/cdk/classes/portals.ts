@@ -1,21 +1,19 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import type {
-    ComponentRef,
-    EmbeddedViewRef,
-    Provider,
-    TemplateRef,
-    ViewRef,
-} from '@angular/core';
 import {
+    type ComponentRef,
     Directive,
+    type EmbeddedViewRef,
     inject,
     Injectable,
     INJECTOR,
+    type Provider,
+    type TemplateRef,
     ViewChild,
     ViewContainerRef,
+    type ViewRef,
 } from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils';
-import type {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 /**
  * Abstract class for host element for dynamically created portals.

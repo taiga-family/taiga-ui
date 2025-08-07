@@ -1,4 +1,4 @@
-import type {TuiDay} from '@taiga-ui/cdk/date-time';
+import {type TuiDay} from '@taiga-ui/cdk/date-time';
 
 /**
  * @deprecated: drop in v5.0

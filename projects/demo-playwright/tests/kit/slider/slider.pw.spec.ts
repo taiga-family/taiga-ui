@@ -1,8 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiSliderPO} from '@demo-playwright/utils';
 import {maskitoParseNumber} from '@maskito/kit';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('Slider', () => {
     test.use({viewport: {width: 500, height: 500}});

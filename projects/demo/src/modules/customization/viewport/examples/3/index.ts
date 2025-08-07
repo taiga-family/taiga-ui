@@ -4,8 +4,14 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiInjectElement} from '@taiga-ui/cdk';
-import type {TuiHintDirection, TuiRectAccessor} from '@taiga-ui/core';
-import {tuiAsViewport, TuiButton, TuiHint, TuiLink} from '@taiga-ui/core';
+import {
+    tuiAsViewport,
+    TuiButton,
+    TuiHint,
+    type TuiHintDirection,
+    TuiLink,
+    type TuiRectAccessor,
+} from '@taiga-ui/core';
 import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({

@@ -5,8 +5,7 @@ import {
     tuiGoto,
     TuiInputMonthPO,
 } from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 const {beforeEach, describe} = test;
 
@@ -145,6 +144,15 @@ describe('Textfield cleaner', () => {
             await expect(input).toHaveValue('09:09');
             await cleaner.click();
             await expect(input).toHaveValue('');
+        });
+
+        test('InputPhone', async ({page}) => {
+            await tuiGoto(page, `${DemoRoute.InputPhone}/API?tuiTextfieldCleaner=true`);
+
+            await input.pressSequentially('123456');
+            await expect(input).toHaveValue('+7 (123) 456');
+            await cleaner.click();
+            await expect(input).toHaveValue('+7 ');
         });
 
         test('Textarea', async ({page}) => {

@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
     TuiInputPhoneInternational,
     tuiInputPhoneInternationalOptionsProvider,

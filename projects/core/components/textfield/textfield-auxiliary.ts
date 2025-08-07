@@ -1,5 +1,4 @@
-import type {Signal} from '@angular/core';
-import {computed, inject} from '@angular/core';
+import {computed, inject, type Signal} from '@angular/core';
 
 import {TuiTextfieldComponent} from './textfield.component';
 

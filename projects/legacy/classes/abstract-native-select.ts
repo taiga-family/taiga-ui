@@ -1,11 +1,10 @@
 import {Directive, inject, Input, TemplateRef, ViewChild} from '@angular/core';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiDataListDirective} from '@taiga-ui/core/components/data-list';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
-import type {TuiTextfieldHost} from '@taiga-ui/legacy/tokens';
-import {TUI_TEXTFIELD_HOST} from '@taiga-ui/legacy/tokens';
+import {TUI_TEXTFIELD_HOST, type TuiTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import {AbstractTuiControl} from './control';
 

@@ -13,7 +13,7 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TUI_ICON_START} from '@taiga-ui/core/tokens';
 import {TUI_COMMON_ICONS} from '@taiga-ui/layout/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

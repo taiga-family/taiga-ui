@@ -7,23 +7,33 @@ import {
     Input,
     SecurityContext,
 } from '@angular/core';
-import type {SafeHtml} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TUI_BASE_HREF} from '@taiga-ui/cdk/tokens';
-import type {TuiSafeHtml} from '@taiga-ui/cdk/types';
+import {type TuiSafeHtml} from '@taiga-ui/cdk/types';
 import {tuiGetDocumentOrShadowRoot, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiStaticRequestService} from '@taiga-ui/legacy/services';
 import {TUI_SANITIZER} from '@taiga-ui/legacy/tokens';
 import {TUI_CACHE_BUSTING_PAYLOAD, tuiIsPresumedHTMLString} from '@taiga-ui/legacy/utils';
-import type {Observable} from 'rxjs';
-import {catchError, map, of, ReplaySubject, startWith, switchMap} from 'rxjs';
+import {
+    catchError,
+    map,
+    type Observable,
+    of,
+    ReplaySubject,
+    startWith,
+    switchMap,
+} from 'rxjs';
 
 import {TuiSvgService} from './svg.service';
-import type {TuiSvgInterceptorHandler, TuiSvgOptions} from './svg-options';
-import {TUI_SVG_OPTIONS, TUI_SVG_SRC_INTERCEPTORS} from './svg-options';
+import {
+    TUI_SVG_OPTIONS,
+    TUI_SVG_SRC_INTERCEPTORS,
+    type TuiSvgInterceptorHandler,
+    type TuiSvgOptions,
+} from './svg-options';
 
 const UNDEFINED_NAMED_ICON = 'Attempted to use undefined named icon';
 const MISSING_EXTERNAL_ICON = 'External icon is missing on the given URL';

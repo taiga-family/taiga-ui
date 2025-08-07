@@ -1,6 +1,11 @@
 import {NgIf, NgTemplateOutlet} from '@angular/common';
-import type {DoCheck} from '@angular/core';
-import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type DoCheck,
+    forwardRef,
+    inject,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -9,7 +14,10 @@ import {injectContext} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import {TUI_DEFAULT_TREE_CONTROLLER} from '../../misc/tree.constants';
-import type {TuiTreeController, TuiTreeItemContext} from '../../misc/tree.interfaces';
+import {
+    type TuiTreeController,
+    type TuiTreeItemContext,
+} from '../../misc/tree.interfaces';
 import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
 
 @Component({

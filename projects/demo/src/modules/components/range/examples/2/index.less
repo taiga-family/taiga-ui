@@ -1,17 +1,22 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-:host {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    row-gap: 1rem;
-}
+.range {
+    z-index: 1;
 
-.card {
-    box-sizing: border-box;
-    inline-size: 49%;
-
-    @media @tui-mobile {
+    /* (Optionally) expand clickable area as you wish */
+    &::after {
+        content: '';
+        position: absolute;
+        top: -0.5rem;
+        bottom: -1.5rem;
         inline-size: 100%;
     }
+}
+
+.ticks-labels {
+    .tui-slider-ticks-labels(m);
+}
+
+tui-icon {
+    border-width: 0.25rem;
 }

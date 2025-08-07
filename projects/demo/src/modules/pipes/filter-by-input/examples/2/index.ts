@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiStringMatcher} from '@taiga-ui/cdk';
+import {type TuiStringMatcher} from '@taiga-ui/cdk';
 import {
     TuiDataListWrapper,
     TuiFilterByInputPipe,

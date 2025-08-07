@@ -1,17 +1,17 @@
 import {NgForOf} from '@angular/common';
-import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
     EventEmitter,
     Input,
+    type OnInit,
     Output,
     signal,
 } from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
+import {type ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import type {TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk';
+import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_SPEED, TuiDataList, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';

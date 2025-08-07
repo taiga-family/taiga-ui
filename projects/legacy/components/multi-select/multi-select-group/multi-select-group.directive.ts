@@ -2,10 +2,10 @@ import {Directive, inject} from '@angular/core';
 import {NG_VALUE_ACCESSOR, NgControl} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
     TUI_DATA_LIST_HOST,
     tuiAsOptionContent,
+    type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
 import {AbstractTuiControl} from '@taiga-ui/legacy/classes';

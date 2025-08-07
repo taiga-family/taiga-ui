@@ -1,5 +1,5 @@
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
+import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 
 export interface TuiInputColorOptions {
     readonly format: 'hex' | 'hexa';

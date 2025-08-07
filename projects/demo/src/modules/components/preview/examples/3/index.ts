@@ -1,9 +1,7 @@
-import type {TemplateRef} from '@angular/core';
-import {Component, inject, ViewChild} from '@angular/core';
+import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton, type TuiDialogContext} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 
 @Component({

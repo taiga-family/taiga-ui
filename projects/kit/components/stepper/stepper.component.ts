@@ -1,5 +1,4 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import type {OnChanges, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -11,7 +10,9 @@ import {
     forwardRef,
     inject,
     Input,
+    type OnChanges,
     Output,
+    type QueryList,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
@@ -25,10 +26,9 @@ import {
     tuiPure,
 } from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
-import type {TuiOrientation} from '@taiga-ui/core/types';
+import {type TuiOrientation} from '@taiga-ui/core/types';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import type {Observable} from 'rxjs';
-import {delay} from 'rxjs';
+import {delay, type Observable} from 'rxjs';
 
 import {TuiStep} from './step.component';
 

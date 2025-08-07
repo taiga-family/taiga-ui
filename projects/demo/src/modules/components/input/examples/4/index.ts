@@ -9,7 +9,7 @@ import {TUI_DEFAULT_MATCHER, tuiControlValue, TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiInitialsPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiAvatar, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
 
 class User {

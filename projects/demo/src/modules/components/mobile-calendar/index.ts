@@ -4,16 +4,17 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
-import type {TuiBooleanHandler, TuiDayRange} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    type TuiBooleanHandler,
     tuiControlValue,
     TuiDay,
+    type TuiDayRange,
 } from '@taiga-ui/cdk';
 import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
-import type {Observable} from 'rxjs';
+import {type Observable} from 'rxjs';
 
 @Component({
     standalone: true,

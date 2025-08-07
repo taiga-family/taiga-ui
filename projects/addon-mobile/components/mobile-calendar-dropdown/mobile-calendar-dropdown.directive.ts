@@ -1,10 +1,12 @@
 import {ContentChild, Directive, inject} from '@angular/core';
-import type {TuiDay, TuiDayRange, TuiTime} from '@taiga-ui/cdk/date-time';
+import {type TuiDay, type TuiDayRange, type TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/directives/dropdown';
 import {TuiItemsHandlersDirective} from '@taiga-ui/core/directives/items-handlers';
-import type {TuiInputDateBase} from '@taiga-ui/kit/components/input-date';
-import {TuiInputDateDirective} from '@taiga-ui/kit/components/input-date';
+import {
+    type TuiInputDateBase,
+    TuiInputDateDirective,
+} from '@taiga-ui/kit/components/input-date';
 import {TuiInputDateRangeDirective} from '@taiga-ui/kit/components/input-date-range';
 import {TuiInputDateTimeDirective} from '@taiga-ui/kit/components/input-date-time';
 

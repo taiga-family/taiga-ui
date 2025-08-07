@@ -1,7 +1,5 @@
-import type {PipeTransform} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
-import type {TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TuiDocPage} from '@taiga-ui/addon-doc';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {TuiDocPage, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 
 import {toKebab} from './kebab.pipe';
 

@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiLineHandler} from '@taiga-ui/addon-charts';
-import {TuiAxes} from '@taiga-ui/addon-charts';
+import {TuiAxes, type TuiLineHandler} from '@taiga-ui/addon-charts';
 
 @Component({
     standalone: true,

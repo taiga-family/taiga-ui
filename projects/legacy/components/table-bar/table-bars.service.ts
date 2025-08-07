@@ -2,8 +2,11 @@ import {inject, Injectable} from '@angular/core';
 import {TuiPopoverService} from '@taiga-ui/cdk/services';
 
 import {TuiTableBarComponent} from './table-bar.component';
-import type {TuiTableBarOptions} from './table-bar.options';
-import {TUI_TABLE_BAR_OPTIONS, TUI_TABLE_BARS} from './table-bar.options';
+import {
+    TUI_TABLE_BAR_OPTIONS,
+    TUI_TABLE_BARS,
+    type TuiTableBarOptions,
+} from './table-bar.options';
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}

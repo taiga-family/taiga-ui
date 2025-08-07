@@ -1,8 +1,7 @@
-import type {BooleanInput} from '@angular/cdk/coercion';
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
+import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import type {TuiSizeXXL, TuiSizeXXS} from '@taiga-ui/core/types';
+import {type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core/types';
 import {delay, of} from 'rxjs';
 
 import {TUI_PROGRESS_OPTIONS} from '../progress.options';
