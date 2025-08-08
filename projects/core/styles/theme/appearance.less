@@ -11,3 +11,10 @@
 @import 'appearance/table.less';
 // Do not add it, we need it separately in proprietary theme
 // @import 'appearance/textfield.less';
+
+@supports (--tui-appearance: '') and (background: paint(transparent)) {
+    @property --tui-appearance {
+        syntax: '*';
+        inherits: false;
+    }
+}

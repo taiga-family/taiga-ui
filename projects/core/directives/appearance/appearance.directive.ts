@@ -11,6 +11,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -36,7 +37,7 @@ class TuiAppearanceStyles {}
     host: {
         class: 'tui-appearance-initializing',
         tuiAppearance: '',
-        '[attr.data-appearance]': 'appearance()',
+        '[attr.data-appearance]': 'computedAppearance()',
         '[attr.data-state]': 'state()',
         '[attr.data-focus]': 'focus()',
         '[attr.data-mode]': 'modes()',
@@ -45,6 +46,7 @@ class TuiAppearanceStyles {}
 export class TuiAppearance {
     private readonly cdr = inject(ChangeDetectorRef, {skipSelf: true});
     private readonly el = tuiInjectElement();
+    private readonly win = inject(WA_WINDOW);
 
     protected readonly nothing = tuiWithStyles(TuiAppearanceStyles);
     protected readonly modes = computed((mode = this.mode()) =>
@@ -64,6 +66,12 @@ export class TuiAppearance {
 
     // TODO: refactor to signal inputs after Angular update
     public readonly appearance = signal(inject(TUI_APPEARANCE_OPTIONS).appearance);
+    public readonly computedAppearance = computed(
+        () =>
+            this.win.getComputedStyle(this.el).getPropertyValue('--tui-appearance') ||
+            this.appearance(),
+    );
+
     public readonly state = signal<TuiInteractiveState | null>(null);
     public readonly focus = signal<boolean | null>(null);
     public readonly mode = signal<string | readonly string[] | null>(null);
