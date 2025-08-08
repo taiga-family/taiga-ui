@@ -1,7 +1,8 @@
 import {Directive, inject, Input} from '@angular/core';
 import {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {tuiRound} from '@taiga-ui/cdk/utils/math';
+import {tuiIsSafeToRound, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
 import {TUI_FLOATING_PRECISION} from '@taiga-ui/kit/components/slider';
 
 import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
@@ -27,7 +28,8 @@ export class TuiQuantumValueTransformer extends TuiValueTransformer<
     public toControlValue(internalValue: number | null): number | null {
         const value = this.parent?.toControlValue(internalValue) ?? internalValue;
 
-        return value != null
+        return value != null &&
+            tuiIsSafeToRound(value, tuiGetFractionPartPadded(this.quantum).length)
             ? tuiRound(
                   Math.round(value / this.quantum) * this.quantum,
                   TUI_FLOATING_PRECISION,
