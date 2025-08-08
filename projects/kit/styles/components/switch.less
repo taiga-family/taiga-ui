@@ -38,7 +38,7 @@
         &::before {
             inline-size: 1.125rem;
             transform: translateX(-1rem);
-            mask-size: 0.75rem;
+            font-size: 0.75rem;
         }
 
         &::after {
@@ -80,8 +80,8 @@
     &::before {
         display: var(--t-checked-icon, none);
         background: currentColor;
-        mask: var(--t-checked-icon) no-repeat center;
-        mask-size: 1rem;
+        mask: var(--t-checked-icon) no-repeat center / calc(1em + var(--tui-stroke-width, 0.125rem)) 1em;
+        font-size: 1rem;
         inline-size: 1.375rem;
         transform: translateX(-1.5rem);
     }

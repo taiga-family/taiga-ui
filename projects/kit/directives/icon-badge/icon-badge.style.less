@@ -8,7 +8,7 @@
         inline-size: 0.57em;
         block-size: 0.57em;
         transform: translate(50%, 50%);
-        mask: var(--t-icon-badge) no-repeat center/contain;
+        mask: var(--t-icon-badge) no-repeat center / calc(100% + var(--tui-stroke-width, 0.125rem)) 100%;
         background: currentColor;
     }
 

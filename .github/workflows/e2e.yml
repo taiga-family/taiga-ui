@@ -50,7 +50,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.3.0
         with:
-          ref: ${{ github.base_ref }}
+          ref: main
       - uses: taiga-family/ci/actions/setup/variables@v1.153.0
       - uses: taiga-family/ci/actions/setup/node@v1.153.0
         with:
@@ -159,7 +159,7 @@ jobs:
 
       - uses: taiga-family/ci/actions/run/clone@v1.153.0
         with:
-          branch: snapshots/demo/next/${{ github.base_ref }}
+          branch: snapshots/demo/next/main
           destination: ${{ env.DIST_NEXT }}
 
       - uses: taiga-family/ci/actions/run/serve@v1.153.0
