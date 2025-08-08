@@ -55,7 +55,10 @@
         "release:major": "ts-node ./scripts/release.ts --release-as major",
         "*** CI ***": "",
         "run-many:build:libs": "nx run-many --target build --all --exclude=demo --output-style=stream --nxBail",
-        "run-many:publish:libs": "nx run-many --target publish --all --output-style=stream --nxBail"
+        "run-many:publish:libs": "nx run-many --target publish --all --output-style=stream --nxBail",
+        "*** LLMS Generation ***": "",
+        "generate:llms": "ts-node ./projects/demo/scripts/llms/llms-generate.ts",
+        "generate:llms-full": "ts-node ./projects/demo/scripts/llms/llms-full-generate.ts"
     },
     "commitlint": {
         "extends": [
