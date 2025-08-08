@@ -546,7 +546,7 @@ describe('InputNumber', () => {
 
                 describe('rounds invalid number on blur', () => {
                     test('4 => 0', async () => {
-                        await inputNumber.textfield.fill('3');
+                        await inputNumber.textfield.fill('4');
                         await inputNumber.textfield.blur();
                         await expect(inputNumber.textfield).toHaveValue('0');
                     });
@@ -578,7 +578,7 @@ describe('InputNumber', () => {
 
                 describe('form control always contains only number which IS divisible by quantum value', () => {
                     test('4 => 0', async () => {
-                        await inputNumber.textfield.fill('3');
+                        await inputNumber.textfield.fill('4');
                         await expect(example).toContainText('"testValue": 0');
                         await inputNumber.textfield.blur();
                         await expect(example).toContainText('"testValue": 0');
