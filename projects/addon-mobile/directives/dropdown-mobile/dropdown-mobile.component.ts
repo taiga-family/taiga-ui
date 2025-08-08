@@ -117,11 +117,12 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
         this.doc.documentElement.scrollTop = 0;
 
         const rect = this.dropdown.el.getBoundingClientRect();
-        const topMargin = `var(--tui-dropdown-mobile-offset, ${tuiPx(GAP)})`;
+        const topMargin = `max(var(--tui-dropdown-mobile-offset, ${tuiPx(GAP)}), env(safe-area-inset-top))`;
         const offset = `(${topMargin} + ${tuiPx(rect.height + GAP)})`;
 
         this.el.style.setProperty('top', `calc(${tuiPx(offsetTop)} + ${offset})`);
         this.el.style.setProperty('height', `calc(${tuiPx(height)} - ${offset})`);
+
         this.doc.body.classList.add('t-dropdown-mobile');
         this.doc.body.style.setProperty(
             '--t-root-top',
