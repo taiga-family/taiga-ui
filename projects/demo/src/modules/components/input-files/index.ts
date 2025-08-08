@@ -18,7 +18,6 @@ import {AbstractExampleTuiControl} from '../abstract/control';
         TuiDemo,
         TuiDocControl,
         TuiFiles,
-        TuiInputMonthDirective,
     ],
     templateUrl: './index.html',
     changeDetection,
