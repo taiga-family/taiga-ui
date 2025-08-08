@@ -7,7 +7,6 @@ import {infoLog, SMALL_TAB_SYMBOL, titleLog} from 'ng-morph';
 import {DemoRoute} from '../projects/demo/src/modules/app/demo-routes';
 
 const EXCEPTIONS = [
-    '/',
     `${DemoRoute.Breakpoints}/Setup`,
     `${DemoRoute.Colors}/Status`,
     `${DemoRoute.Colors}/Base_palette`,
@@ -45,7 +44,8 @@ const EXCEPTIONS = [
     const routes =
         demoRoutesFileContent
             .match(/['"`](.*)['"`]/g)
-            ?.map((route) => route.replaceAll(/['"`]/g, '')) || [];
+            ?.map((route) => route.replaceAll(/['"`]/g, ''))
+            .filter(Boolean) || [];
 
     routes.forEach((route) => {
         if (
@@ -68,6 +68,7 @@ const EXCEPTIONS = [
             routes.push(`${route}/API`, `${route}/Setup`);
         }
     });
+
     routes.push(...EXCEPTIONS);
 
     titleLog('Generated routes:');
@@ -77,6 +78,6 @@ const EXCEPTIONS = [
 
     writeFileSync(
         join(process.cwd(), 'projects', 'demo', 'routes.txt'),
-        routes?.join('\n') || '',
+        routes.join('\n') || '',
     );
 })();
