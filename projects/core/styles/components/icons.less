@@ -30,11 +30,11 @@
         flex-shrink: 0;
         box-sizing: content-box;
         background: currentColor;
-        mask: var(--t-icon-start) no-repeat center/contain padding-box;
+        mask: var(--t-icon-start) no-repeat center / calc(1em + var(--tui-stroke-width, 0.125rem)) 1em padding-box;
     }
 
     &::after {
         display: var(--t-icon-end);
-        mask: var(--t-icon-end) no-repeat center/contain padding-box;
+        mask: var(--t-icon-end) no-repeat center / calc(1em + var(--tui-stroke-width, 0.125rem)) 1em padding-box;
     }
 }
