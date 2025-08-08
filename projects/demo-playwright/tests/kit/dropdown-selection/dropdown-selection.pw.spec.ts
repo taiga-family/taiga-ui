@@ -78,4 +78,26 @@ test.describe('DropdownSelection', () => {
         await expect(page.locator('tui-dropdown')).toBeVisible();
         await expect.soft(page).toHaveScreenshot('05-dropdown-selection-scrolled.png');
     });
+
+    test('keyArrowDown / keyArrowUp must be handled correctly', async ({page}) => {
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#textarea');
+
+        await example.scrollIntoViewIfNeeded();
+        await api.waitStableState();
+
+        await page.waitForTimeout(500); // flaky in Safari
+
+        await example.locator('textarea').focus();
+
+        await example.locator('textarea').fill('\n\n\n ');
+
+        await page.keyboard.press('ArrowUp');
+        await page.keyboard.press('ArrowUp');
+        await page.keyboard.press('ArrowUp');
+        await page.keyboard.press('@');
+
+        await expect(page.locator('tui-dropdown')).toBeVisible();
+        await expect.soft(page).toHaveScreenshot('06-dropdown-selection-keydown.png');
+    });
 });

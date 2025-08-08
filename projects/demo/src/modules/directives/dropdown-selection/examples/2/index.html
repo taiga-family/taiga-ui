@@ -10,8 +10,8 @@
         [max]="4"
         [min]="4"
         [(ngModel)]="value"
-        (keydown.arrowDown)="onArrow($event, 'first')"
-        (keydown.arrowUp)="onArrow($event, 'last')"
+        (keydown.stop.arrowDown)="onArrow($event, 'first')"
+        (keydown.stop.arrowUp)="onArrow($event, 'last')"
     ></textarea>
 
     <tui-data-list *tuiTextfieldDropdown>
