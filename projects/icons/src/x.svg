@@ -3,9 +3,10 @@
     width="24"
     height="24"
     viewBox="0 0 24 24"
+    preserveAspectRatio="xMinYMin meet"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
+    stroke-width="calc(100vw / 12)"
     stroke-linecap="round"
     stroke-linejoin="round"
 >
