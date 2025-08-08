@@ -1,7 +1,7 @@
 import {InjectionToken, type Provider} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
-import type {TuiSizeL} from '@taiga-ui/core/types';
+import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
+import {type TuiSizeL} from '@taiga-ui/core/types';
 
 export interface TuiInputFilesOptions extends TuiAppearanceOptions {
     accept: string;
