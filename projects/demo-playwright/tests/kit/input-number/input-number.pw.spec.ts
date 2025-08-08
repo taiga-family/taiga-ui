@@ -517,6 +517,90 @@ describe('InputNumber', () => {
             });
         });
 
+        describe('[quantum] prop', () => {
+            describe('[quantum]="10"', () => {
+                beforeEach(async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputNumber}/API?max=100&&quantum=10&sandboxExpanded=true`,
+                    );
+                });
+
+                describe('allows to enter number which IS NOT divisible by quantum value', () => {
+                    ['3', '5', '7', '9', '11', '14', '19'].forEach((value) => {
+                        test(`${value}`, async () => {
+                            await inputNumber.textfield.fill(value);
+                            await expect(inputNumber.textfield).toHaveValue(value);
+                        });
+                    });
+                });
+
+                describe('allows to enter number which IS divisible by quantum value', () => {
+                    ['0', '10', '20', '30', '60', '90', '100'].forEach((value) => {
+                        test(`${value}`, async () => {
+                            await inputNumber.textfield.fill(value);
+                            await expect(inputNumber.textfield).toHaveValue(value);
+                        });
+                    });
+                });
+
+                describe('rounds invalid number on blur', () => {
+                    test('4 => 0', async () => {
+                        await inputNumber.textfield.fill('3');
+                        await inputNumber.textfield.blur();
+                        await expect(inputNumber.textfield).toHaveValue('0');
+                    });
+
+                    test('5 => 10', async () => {
+                        await inputNumber.textfield.fill('5');
+                        await inputNumber.textfield.blur();
+                        await expect(inputNumber.textfield).toHaveValue('10');
+                    });
+
+                    test('6 => 10', async () => {
+                        await inputNumber.textfield.fill('6');
+                        await inputNumber.textfield.blur();
+                        await expect(inputNumber.textfield).toHaveValue('10');
+                    });
+
+                    test('19 => 20', async () => {
+                        await inputNumber.textfield.fill('19');
+                        await inputNumber.textfield.blur();
+                        await expect(inputNumber.textfield).toHaveValue('20');
+                    });
+
+                    test('77 => 80', async () => {
+                        await inputNumber.textfield.fill('77');
+                        await inputNumber.textfield.blur();
+                        await expect(inputNumber.textfield).toHaveValue('80');
+                    });
+                });
+
+                describe('form control always contains only number which IS divisible by quantum value', () => {
+                    test('4 => 0', async () => {
+                        await inputNumber.textfield.fill('3');
+                        await expect(example).toContainText('"testValue": 0');
+                        await inputNumber.textfield.blur();
+                        await expect(example).toContainText('"testValue": 0');
+                    });
+
+                    test('5 => 10', async () => {
+                        await inputNumber.textfield.fill('5');
+                        await expect(example).toContainText('"testValue": 10');
+                        await inputNumber.textfield.blur();
+                        await expect(example).toContainText('"testValue": 10');
+                    });
+
+                    test('77 => 80', async () => {
+                        await inputNumber.textfield.fill('77');
+                        await expect(example).toContainText('"testValue": 80');
+                        await inputNumber.textfield.blur();
+                        await expect(example).toContainText('"testValue": 80');
+                    });
+                });
+            });
+        });
+
         describe('[prefix] & [postfix] props', () => {
             (
                 [
