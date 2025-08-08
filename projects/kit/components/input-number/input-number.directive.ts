@@ -156,8 +156,12 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     }
 
     public override writeValue(value: number | null): void {
-        super.writeValue(value);
-        this.setValue(this.value());
+        const reset = this.control.pristine && this.control.untouched && !value;
+
+        if (value !== this.value() || reset) {
+            super.writeValue(value);
+            this.setValue(this.value());
+        }
     }
 
     public setValue(value: number | null): void {
