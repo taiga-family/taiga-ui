@@ -2,9 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
+import {TUI_FALSE_HANDLER, type TuiBooleanHandler, type TuiHandler} from '@taiga-ui/cdk';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiFilter} from '@taiga-ui/kit';
 
 class ItemWithBadge {

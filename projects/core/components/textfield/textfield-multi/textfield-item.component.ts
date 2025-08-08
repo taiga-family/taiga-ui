@@ -1,9 +1,12 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {
+    injectContext,
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+} from '@taiga-ui/polymorpheus';
 
 import {TuiTextfieldMultiComponent} from './textfield-multi.component';
 

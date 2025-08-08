@@ -1,6 +1,6 @@
-import type {DevkitFileSystem} from 'ng-morph';
 import {
     addProviderToNgModule,
+    type DevkitFileSystem,
     getActiveProject,
     getNgModules,
     getPackageJsonDependency,
@@ -10,7 +10,7 @@ import {
     SMALL_TAB_SYMBOL,
 } from 'ng-morph';
 
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {removeImport} from '../../../utils/import-manipulations';

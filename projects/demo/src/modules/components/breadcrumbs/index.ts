@@ -2,8 +2,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiItem} from '@taiga-ui/cdk';
-import type {TuiSizeL} from '@taiga-ui/core';
-import {TuiLink} from '@taiga-ui/core';
+import {TuiLink, type TuiSizeL} from '@taiga-ui/core';
 import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbs} from '@taiga-ui/kit';
 
 @Component({

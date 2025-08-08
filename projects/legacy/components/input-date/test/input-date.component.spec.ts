@@ -1,11 +1,21 @@
-import type {DebugElement, Type} from '@angular/core';
-import {ChangeDetectionStrategy, Component, Input, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type DebugElement,
+    Input,
+    type Type,
+    ViewChild,
+} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_LAST_DAY, TuiDay, TuiValueTransformer} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_DATE_FORMAT, TuiHint, TuiRoot} from '@taiga-ui/core';
+import {
+    TUI_DATE_FORMAT,
+    TuiHint,
+    TuiRoot,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {

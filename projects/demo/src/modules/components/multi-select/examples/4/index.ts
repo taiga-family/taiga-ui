@@ -2,13 +2,25 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import type {TuiContext, TuiHandler} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MATCHER, tuiIsNumber, TuiLet} from '@taiga-ui/cdk';
+import {
+    TUI_DEFAULT_MATCHER,
+    type TuiContext,
+    type TuiHandler,
+    tuiIsNumber,
+    TuiLet,
+} from '@taiga-ui/cdk';
 import {TuiDataList} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {Observable} from 'rxjs';
-import {map, shareReplay, startWith, Subject, switchMap, timer} from 'rxjs';
+import {
+    map,
+    type Observable,
+    shareReplay,
+    startWith,
+    Subject,
+    switchMap,
+    timer,
+} from 'rxjs';
 
 const DICTIONARY = [
     {id: 1, name: 'Luke Skywalker'},

@@ -1,5 +1,4 @@
 import {CommonModule} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,6 +7,7 @@ import {
     inject,
     Input,
     Output,
+    type QueryList,
     TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';

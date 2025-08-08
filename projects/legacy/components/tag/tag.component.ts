@@ -10,11 +10,11 @@ import {
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeS, TuiSizeXS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS, type TuiSizeXS} from '@taiga-ui/core/types';
 import {tuiStringHashToHsl} from '@taiga-ui/core/utils/format';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
-import type {TuiStatus} from '@taiga-ui/legacy/utils';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiStatus} from '@taiga-ui/legacy/utils';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_TAG_OPTIONS} from './tag.options';
 

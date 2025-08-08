@@ -4,18 +4,27 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
-import type {
-    TuiBooleanHandler,
-    TuiContext,
-    TuiIdentityMatcher,
-    TuiStringHandler,
+import {
+    TUI_FALSE_HANDLER,
+    TUI_TRUE_HANDLER,
+    type TuiBooleanHandler,
+    type TuiContext,
+    type TuiIdentityMatcher,
+    tuiProvide,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER, tuiProvide} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiButton, TuiDataList, TuiDropdown, TuiHint, TuiLink} from '@taiga-ui/core';
+import {
+    TuiButton,
+    TuiDataList,
+    TuiDropdown,
+    TuiHint,
+    TuiLink,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

@@ -1,6 +1,5 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {InjectionToken, type Provider} from '@angular/core';
+import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import {BehaviorSubject} from 'rxjs';
 

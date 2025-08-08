@@ -1,15 +1,21 @@
-import type {DoCheck, OnInit, TemplateRef} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type DoCheck,
+    inject,
+    type OnInit,
+    type TemplateRef,
+} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TUI_DEFAULT_IDENTITY_MATCHER} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
-import type {TuiContext, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import {type TuiContext, type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
     TUI_DATA_LIST_HOST,
     TuiDataListComponent,
+    type TuiDataListHost,
     TuiOption,
 } from '@taiga-ui/core/components/data-list';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';

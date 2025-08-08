@@ -1,11 +1,12 @@
 import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {AfterContentInit, QueryList} from '@angular/core';
 import {
+    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     forwardRef,
     inject,
+    type QueryList,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';

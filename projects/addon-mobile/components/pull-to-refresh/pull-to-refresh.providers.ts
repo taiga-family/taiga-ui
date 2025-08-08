@@ -1,9 +1,8 @@
 import {inject, InjectionToken} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import type {TuiContext} from '@taiga-ui/cdk/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {EMPTY} from 'rxjs';
+import {type TuiContext} from '@taiga-ui/cdk/types';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {EMPTY, type Observable} from 'rxjs';
 
 import {TUI_ANDROID_LOADER} from './loader-android/loader-android.component';
 import {TUI_IOS_LOADER} from './loader-ios/loader-ios.component';

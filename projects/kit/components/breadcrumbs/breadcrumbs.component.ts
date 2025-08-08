@@ -1,11 +1,11 @@
 import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     inject,
     Input,
+    type QueryList,
     TemplateRef,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -21,8 +21,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiItemsWithMore} from '@taiga-ui/kit/components/items-with-more';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 
-import type {TuiBreadcrumbsOptions} from './breadcrumbs.options';
-import {TUI_BREADCRUMBS_OPTIONS} from './breadcrumbs.options';
+import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs.options';
 
 @Component({
     standalone: true,

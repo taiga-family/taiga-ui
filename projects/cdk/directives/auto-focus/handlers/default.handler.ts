@@ -1,9 +1,8 @@
-import type {ElementRef, NgZone} from '@angular/core';
+import {type ElementRef, type NgZone} from '@angular/core';
 import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
-import type {Observable} from 'rxjs';
-import {map, race, skipWhile, take, throttleTime, timer} from 'rxjs';
+import {map, type Observable, race, skipWhile, take, throttleTime, timer} from 'rxjs';
 
-import type {TuiAutofocusOptions} from '../autofocus.options';
+import {type TuiAutofocusOptions} from '../autofocus.options';
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 
 const TIMEOUT = 1000;

@@ -1,8 +1,11 @@
 import {Directive, inject} from '@angular/core';
-import type {TuiRectAccessor} from '@taiga-ui/core/classes';
-import {tuiAsPositionAccessor, TuiPositionAccessor} from '@taiga-ui/core/classes';
+import {
+    tuiAsPositionAccessor,
+    TuiPositionAccessor,
+    type TuiRectAccessor,
+} from '@taiga-ui/core/classes';
 import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import {type TuiPoint} from '@taiga-ui/core/types';
 
 @Directive({
     standalone: true,

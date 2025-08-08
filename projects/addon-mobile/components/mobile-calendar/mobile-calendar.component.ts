@@ -4,8 +4,8 @@ import {
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
 import {AsyncPipe, DOCUMENT, NgForOf, NgIf} from '@angular/common';
-import type {AfterViewInit} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     DestroyRef,
@@ -35,7 +35,7 @@ import {
 } from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TUI_IS_E2E, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler, TuiMapper} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiMapper} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_CALENDAR_SHEET_OPTIONS} from '@taiga-ui/core/components/calendar';
 import {TuiLink} from '@taiga-ui/core/components/link';
@@ -54,7 +54,6 @@ import {
     TUI_DONE_WORD,
 } from '@taiga-ui/kit/tokens';
 import {tuiToggleDay} from '@taiga-ui/kit/utils';
-import type {MonoTypeOperatorFunction} from 'rxjs';
 import {
     BehaviorSubject,
     debounceTime,
@@ -64,6 +63,7 @@ import {
     identity,
     map,
     mergeMap,
+    type MonoTypeOperatorFunction,
     race,
     skip,
     switchMap,

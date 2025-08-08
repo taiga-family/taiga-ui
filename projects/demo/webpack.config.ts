@@ -2,7 +2,7 @@ import path from 'node:path';
 
 import {sync as globSync} from 'glob';
 import TerserPlugin from 'terser-webpack-plugin';
-import type {Configuration, RuleSetRule} from 'webpack';
+import {type Configuration, type RuleSetRule} from 'webpack';
 import {merge} from 'webpack-merge';
 
 interface Options {

@@ -1,7 +1,12 @@
 import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import type {ValidationErrors, ValidatorFn} from '@angular/forms';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {
+    FormControl,
+    FormGroup,
+    ReactiveFormsModule,
+    type ValidationErrors,
+    type ValidatorFn,
+} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiError, TuiTextfield} from '@taiga-ui/core';

@@ -1,6 +1,10 @@
 import {DOCUMENT} from '@angular/common';
-import type {Provider} from '@angular/core';
-import {ChangeDetectorRef, ElementRef, InjectionToken} from '@angular/core';
+import {
+    ChangeDetectorRef,
+    ElementRef,
+    InjectionToken,
+    type Provider,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
@@ -8,8 +12,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
-import type {Observable} from 'rxjs';
-import {debounceTime, filter, merge, startWith, tap} from 'rxjs';
+import {debounceTime, filter, merge, type Observable, startWith, tap} from 'rxjs';
 
 export const TUI_TABS_REFRESH = new InjectionToken<Observable<unknown>>(
     ngDevMode ? 'TUI_TABS_REFRESH' : '',

@@ -1,6 +1,6 @@
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
-import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
+import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
+import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core/types';
 
 export interface TuiButtonOptions extends TuiAppearanceOptions {
     readonly size: TuiSizeXL | TuiSizeXS;

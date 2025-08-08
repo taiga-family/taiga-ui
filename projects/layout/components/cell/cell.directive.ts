@@ -10,8 +10,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
-import type {TuiCellOptions} from './cell.options';
-import {TUI_CELL_OPTIONS} from './cell.options';
+import {TUI_CELL_OPTIONS, type TuiCellOptions} from './cell.options';
 
 @Component({
     standalone: true,

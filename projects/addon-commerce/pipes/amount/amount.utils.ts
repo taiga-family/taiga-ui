@@ -1,6 +1,6 @@
 import {CHAR_MINUS, CHAR_PLUS} from '@taiga-ui/cdk/constants';
 
-import type {TuiAmountSign, TuiAmountSignSymbol} from './amount.types';
+import {type TuiAmountSign, type TuiAmountSignSymbol} from './amount.types';
 
 export function tuiFormatSignSymbol(
     value: number,

@@ -4,26 +4,29 @@ import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
-import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
+import {
+    injectContext,
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+} from '@taiga-ui/polymorpheus';
 import {
     exhaustMap,
     filter,
     isObservable,
     map,
     merge,
+    type Observable,
     of,
     Subject,
     switchMap,
     take,
 } from 'rxjs';
 
-import type {TuiDialogOptions, TuiDialogSize} from './dialog.interfaces';
+import {type TuiDialogOptions, type TuiDialogSize} from './dialog.interfaces';
 import {TUI_DIALOGS_CLOSE} from './dialog.tokens';
 import {TuiDialogCloseService} from './dialog-close.service';
 

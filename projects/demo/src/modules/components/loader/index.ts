@@ -2,9 +2,8 @@ import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
-import {TuiLoader} from '@taiga-ui/core';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {TuiLoader, type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

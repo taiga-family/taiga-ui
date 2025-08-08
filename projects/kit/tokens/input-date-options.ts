@@ -1,9 +1,8 @@
-import type {TuiDay} from '@taiga-ui/cdk/date-time';
-import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {TUI_FIRST_DAY, TUI_LAST_DAY, type TuiDay} from '@taiga-ui/cdk/date-time';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiInputDateOptions {
     readonly icon: PolymorpheusContent<TuiContext<TuiSizeL | TuiSizeS>>;

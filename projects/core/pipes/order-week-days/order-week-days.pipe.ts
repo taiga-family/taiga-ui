@@ -1,8 +1,6 @@
-import type {PipeTransform} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core/tokens';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 
 function convertToSundayFirstWeekFormat(
     weekDaysNames: readonly string[],

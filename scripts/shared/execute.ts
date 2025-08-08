@@ -1,5 +1,4 @@
-import type {CommonExecOptions} from 'node:child_process';
-import {execSync} from 'node:child_process';
+import {type CommonExecOptions, execSync} from 'node:child_process';
 
 import {infoLog} from 'ng-morph';
 

@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
+import {type ComponentFixture} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import type {TuiKeySteps} from '@taiga-ui/kit';
-import {TuiRange} from '@taiga-ui/kit';
+import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 
 describe('TuiRange', () => {
     let component: Test;

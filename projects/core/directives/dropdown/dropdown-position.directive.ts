@@ -8,11 +8,10 @@ import {
     TuiRectAccessor,
 } from '@taiga-ui/core/classes';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
-import type {TuiPoint, TuiVerticalDirection} from '@taiga-ui/core/types';
+import {type TuiPoint, type TuiVerticalDirection} from '@taiga-ui/core/types';
 
 import {TuiDropdownDirective} from './dropdown.directive';
-import type {TuiDropdownAlign} from './dropdown-options.directive';
-import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
+import {TUI_DROPDOWN_OPTIONS, type TuiDropdownAlign} from './dropdown-options.directive';
 
 @Directive({
     standalone: true,

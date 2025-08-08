@@ -1,16 +1,16 @@
 import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {AfterContentInit, QueryList} from '@angular/core';
 import {
+    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChild,
     ContentChildren,
     forwardRef,
     inject,
+    type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import type {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs';
+import {map, type Observable, startWith} from 'rxjs';
 
 import {TuiTableHead} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';

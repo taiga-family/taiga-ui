@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiChevron} from '@taiga-ui/kit/directives';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 

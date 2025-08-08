@@ -1,5 +1,4 @@
-import type {Locator} from '@playwright/test';
-import {expect} from '@playwright/test';
+import {expect, type Locator} from '@playwright/test';
 
 export class TuiTextfieldWithDataListPO {
     public readonly textfield: Locator = this.host.getByRole('textbox');

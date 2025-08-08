@@ -1,5 +1,4 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,13 +6,14 @@ import {
     inject,
     Input,
     Output,
+    type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {TuiBarSet} from '@taiga-ui/addon-charts/components/bar-set';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
-import type {TuiContext, TuiMapper} from '@taiga-ui/cdk/types';
+import {type TuiContext, type TuiMapper} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -22,9 +22,9 @@ import {
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
 } from '@taiga-ui/core/directives/hint';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type Observable} from 'rxjs';
 
 @Component({
     standalone: true,

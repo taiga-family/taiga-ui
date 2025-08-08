@@ -1,5 +1,9 @@
-import type {ApplicationRef} from '@angular/core';
-import {ErrorHandler, importProvidersFrom, mergeApplicationConfig} from '@angular/core';
+import {
+    type ApplicationRef,
+    ErrorHandler,
+    importProvidersFrom,
+    mergeApplicationConfig,
+} from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
 import {provideServerRendering, ServerModule} from '@angular/platform-server';
 import {UNIVERSAL_PROVIDERS} from '@ng-web-apis/universal';

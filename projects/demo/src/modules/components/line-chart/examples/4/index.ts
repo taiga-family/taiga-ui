@@ -2,9 +2,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAxes, TuiLineChart} from '@taiga-ui/addon-charts';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
-import type {TuiPoint} from '@taiga-ui/core';
-import {TuiHint} from '@taiga-ui/core';
+import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiHint, type TuiPoint} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

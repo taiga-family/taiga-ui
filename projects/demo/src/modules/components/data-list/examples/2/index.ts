@@ -3,8 +3,14 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiButton, TuiDataList, TuiDialogService, TuiDropdown} from '@taiga-ui/core';
+import {
+    TuiButton,
+    TuiDataList,
+    TuiDialogService,
+    TuiDropdown,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({

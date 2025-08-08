@@ -1,5 +1,4 @@
-import type {PipeTransform} from '@angular/core';
-import {Pipe} from '@angular/core';
+import {Pipe, type PipeTransform} from '@angular/core';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 
 @Pipe({

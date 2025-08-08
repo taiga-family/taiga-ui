@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 import {filter, map, switchMap, timer} from 'rxjs';
 
-import type {TuiFileLike} from '../files.types';
+import {type TuiFileLike} from '../files.types';
 import {tuiFilesRejected} from '../files.utils';
 import {TuiInputFiles} from './input-files.component';
 import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';

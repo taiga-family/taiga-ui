@@ -1,5 +1,4 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import type {OnChanges, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,18 +6,20 @@ import {
     inject,
     Input,
     NgZone,
+    type OnChanges,
+    type QueryList,
     signal,
     ViewChildren,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import type {TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
+import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiHint,
@@ -26,10 +27,9 @@ import {
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
 } from '@taiga-ui/core/directives/hint';
-import type {TuiPoint} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, map, Subject} from 'rxjs';
+import {type TuiPoint} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {distinctUntilChanged, map, type Observable, Subject} from 'rxjs';
 
 import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
 import {TuiLineChartHint} from './line-chart-hint.directive';

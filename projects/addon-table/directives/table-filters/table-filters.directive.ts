@@ -1,8 +1,15 @@
 import {Directive} from '@angular/core';
-import type {Observable} from 'rxjs';
-import {identity, map, merge, ReplaySubject, startWith, switchMap} from 'rxjs';
+import {
+    identity,
+    map,
+    merge,
+    type Observable,
+    ReplaySubject,
+    startWith,
+    switchMap,
+} from 'rxjs';
 
-import type {TuiTableFilter} from './table-filter';
+import {type TuiTableFilter} from './table-filter';
 
 @Directive({
     standalone: true,

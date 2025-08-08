@@ -1,8 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TUI_COUNTRIES} from '@taiga-ui/kit';
-import type {Observable} from 'rxjs';
-import {delay, map} from 'rxjs';
+import {delay, map, type Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class DatabaseServer {

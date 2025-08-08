@@ -1,17 +1,17 @@
-import type {WritableSignal} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
     inject,
     TemplateRef,
+    type WritableSignal,
 } from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/types';
-import type {TuiPortalItem} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiPortalItem} from '@taiga-ui/core/types';
 import {
     injectContext,
     PolymorpheusComponent,
+    type PolymorpheusContent,
     PolymorpheusOutlet,
 } from '@taiga-ui/polymorpheus';
 

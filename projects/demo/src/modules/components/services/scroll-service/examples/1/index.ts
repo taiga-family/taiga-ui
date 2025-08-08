@@ -1,5 +1,4 @@
-import type {ElementRef} from '@angular/core';
-import {Component, DestroyRef, inject, signal} from '@angular/core';
+import {Component, DestroyRef, type ElementRef, inject, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';

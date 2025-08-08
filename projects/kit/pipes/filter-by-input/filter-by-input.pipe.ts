@@ -1,12 +1,13 @@
-import type {PipeTransform} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk/constants';
-import type {TuiStringHandler, TuiStringMatcher} from '@taiga-ui/cdk/types';
+import {type TuiStringHandler, type TuiStringMatcher} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 // TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields

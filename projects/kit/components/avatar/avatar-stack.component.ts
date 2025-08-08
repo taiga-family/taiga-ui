@@ -4,7 +4,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
+import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 
 @Component({
     standalone: true,

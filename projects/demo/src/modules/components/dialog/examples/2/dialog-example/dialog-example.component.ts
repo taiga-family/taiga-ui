@@ -1,12 +1,15 @@
 import {AsyncPipe} from '@angular/common';
-import type {TemplateRef} from '@angular/core';
-import {Component, inject} from '@angular/core';
+import {Component, inject, type TemplateRef} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import type {TuiDialogContext} from '@taiga-ui/core';
-import {TuiButton, TuiDialogService, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiButton,
+    type TuiDialogContext,
+    TuiDialogService,
+    TuiTextfield,
+} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect, TuiSlider} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {injectContext} from '@taiga-ui/polymorpheus';

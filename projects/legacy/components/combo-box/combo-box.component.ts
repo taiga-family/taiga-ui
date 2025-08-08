@@ -10,37 +10,36 @@ import {
     ViewChild,
 } from '@angular/core';
 import {TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
-import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import type {TuiContext, TuiStringMatcher} from '@taiga-ui/cdk/types';
+import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {type TuiContext, type TuiStringMatcher} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {
-    TuiDataListAccessor,
-    TuiDataListHost,
-} from '@taiga-ui/core/components/data-list';
 import {
     TUI_DATA_LIST_ACCESSOR,
     tuiAsDataListHost,
     tuiAsOptionContent,
+    type TuiDataListAccessor,
     TuiDataListDirective,
+    type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
-import type {
-    TuiSizeL,
-    TuiSizeM,
-    TuiSizeS,
-    TuiValueContentContext,
+import {
+    type TuiSizeL,
+    type TuiSizeM,
+    type TuiSizeS,
+    type TuiValueContentContext,
 } from '@taiga-ui/core/types';
-import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 /**
  * TODO(v5): delete it

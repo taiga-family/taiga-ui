@@ -1,7 +1,14 @@
-import type {DestroyRef} from '@angular/core';
+import {type DestroyRef} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {MonoTypeOperatorFunction} from 'rxjs';
-import {catchError, defaultIfEmpty, EMPTY, NEVER, pipe, takeUntil} from 'rxjs';
+import {
+    catchError,
+    defaultIfEmpty,
+    EMPTY,
+    type MonoTypeOperatorFunction,
+    NEVER,
+    pipe,
+    takeUntil,
+} from 'rxjs';
 
 // NOTE: takeUntilDestroyed and DestroyRef can cause error:
 // NG0911: View has already been destroyed

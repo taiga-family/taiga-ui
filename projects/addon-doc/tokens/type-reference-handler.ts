@@ -1,7 +1,9 @@
 import {InjectionToken} from '@angular/core';
-import type {TuiDocTypeReferenceParsed} from '@taiga-ui/addon-doc/utils';
-import {tuiTypeReferenceParser} from '@taiga-ui/addon-doc/utils';
-import type {TuiHandler, TuiStringHandler} from '@taiga-ui/cdk/types';
+import {
+    type TuiDocTypeReferenceParsed,
+    tuiTypeReferenceParser,
+} from '@taiga-ui/addon-doc/utils';
+import {type TuiHandler, type TuiStringHandler} from '@taiga-ui/cdk/types';
 
 export const TUI_DOC_TYPE_REFERENCE_HANDLER = new InjectionToken<TuiStringHandler<
     string | null

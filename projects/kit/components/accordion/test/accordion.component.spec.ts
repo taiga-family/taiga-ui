@@ -1,10 +1,13 @@
-import type {HarnessLoader} from '@angular/cdk/testing';
-import {parallel} from '@angular/cdk/testing';
+import {type HarnessLoader, parallel} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import type {QueryList} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ViewChild, ViewChildren} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type QueryList,
+    ViewChild,
+    ViewChildren,
+} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TuiDataList} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';

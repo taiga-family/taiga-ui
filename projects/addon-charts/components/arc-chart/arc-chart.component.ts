@@ -1,18 +1,27 @@
-import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    type ElementRef,
     Input,
     Output,
+    type QueryList,
     signal,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
-import type {TuiSizeXL} from '@taiga-ui/core/types';
-import type {Observable} from 'rxjs';
-import {map, merge, ReplaySubject, startWith, switchMap, tap, timer} from 'rxjs';
+import {type TuiSizeXL} from '@taiga-ui/core/types';
+import {
+    map,
+    merge,
+    type Observable,
+    ReplaySubject,
+    startWith,
+    switchMap,
+    tap,
+    timer,
+} from 'rxjs';
 
 const ARC = 0.76; // 3/4 with 1% safety offset
 const SIZE = {m: 9, l: 11, xl: 16} as const;

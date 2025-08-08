@@ -1,10 +1,12 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
-import type {TuiDecimalMode} from '@taiga-ui/core';
-import {TuiNumberFormat, tuiNumberFormatProvider} from '@taiga-ui/core';
+import {
+    type TuiDecimalMode,
+    TuiNumberFormat,
+    tuiNumberFormatProvider,
+} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO} from '@taiga-ui/testing';

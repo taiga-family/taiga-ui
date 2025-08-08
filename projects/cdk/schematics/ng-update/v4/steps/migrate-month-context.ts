@@ -1,6 +1,6 @@
-import type {ImportSpecifier} from 'ng-morph';
 import {
     FINISH_SYMBOL,
+    type ImportSpecifier,
     infoLog,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
@@ -8,7 +8,7 @@ import {
     titleLog,
 } from 'ng-morph';
 
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {removeImport} from '../../../utils/import-manipulations';

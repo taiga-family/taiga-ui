@@ -1,4 +1,4 @@
-import type {ComponentFixture} from '@angular/core/testing';
+import {type ComponentFixture} from '@angular/core/testing';
 
 export function smartTick<T extends Cypress.PrevSubjectMap<void>[Cypress.PrevSubject]>(
     $subject: T,

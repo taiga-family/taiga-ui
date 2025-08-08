@@ -4,7 +4,7 @@ import {DATE_FILLER_LENGTH, DATE_RANGE_FILLER_LENGTH} from './date-fillers';
 import {RANGE_SEPARATOR_CHAR} from './date-time';
 import {TuiDay} from './day';
 import {TuiMonthRange} from './month-range';
-import type {TuiDateMode} from './types';
+import {type TuiDateMode} from './types';
 
 /**
  * An immutable range of two {@link TuiDay} objects

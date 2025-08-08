@@ -1,7 +1,13 @@
 import {AsyncPipe} from '@angular/common';
-import type {OnDestroy, PipeTransform} from '@angular/core';
-import {inject, INJECTOR, Injector, Pipe} from '@angular/core';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {
+    inject,
+    INJECTOR,
+    Injector,
+    type OnDestroy,
+    Pipe,
+    type PipeTransform,
+} from '@angular/core';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiFieldErrorPipe} from './field-error-pipe';
 

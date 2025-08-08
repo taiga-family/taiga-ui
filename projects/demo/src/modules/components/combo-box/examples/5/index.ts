@@ -6,7 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet} from '@taiga-ui/cdk';
 import {TuiLoader, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
-import {debounceTime, of, Subject, switchMap, tap} from 'rxjs';
+import {debounceTime, filter, of, Subject, switchMap, tap} from 'rxjs';
 
 import {DatabaseServer} from './database';
 
@@ -30,9 +30,12 @@ import {DatabaseServer} from './database';
 export default class Example {
     private readonly api = inject(DatabaseServer);
 
-    protected readonly search$ = new Subject<string>();
     protected readonly showLoader = signal(false);
+    // Click on cleaner / datalist item triggers (input) events too
+    protected readonly search$ = new Subject<string>();
     protected readonly items$ = this.search$.pipe(
+        debounceTime(0), // ensure form control is updated after last input
+        filter(() => !this.value), // click on datalist item should not trigger new api request
         tap(() => this.showLoader.set(true)),
         debounceTime(300),
         switchMap((query) => (query.length >= 2 ? this.api.request$(query) : of(null))),

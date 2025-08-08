@@ -2,8 +2,12 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiNumberFormatSettings} from '@taiga-ui/core';
-import {TuiIcon, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiIcon,
+    TuiNumberFormat,
+    type TuiNumberFormatSettings,
+    TuiTextfield,
+} from '@taiga-ui/core';
 import {TuiInputNumber, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({

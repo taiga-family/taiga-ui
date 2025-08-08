@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
 
-import type {TuiSwipeOptions} from './swipe.types';
+import {type TuiSwipeOptions} from './swipe.types';
 
 export const TUI_SWIPE_OPTIONS = new InjectionToken<TuiSwipeOptions>(
     ngDevMode ? 'TUI_SWIPE_OPTIONS' : '',

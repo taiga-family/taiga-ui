@@ -1,6 +1,6 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute} from 'parse5/dist/common/token';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Attribute} from 'parse5/dist/common/token';
 
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
@@ -9,7 +9,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 import {normalizeAttrValue} from '../utils/normalize-attr-value';
 import {removeAttrs} from '../utils/remove-attrs';
 

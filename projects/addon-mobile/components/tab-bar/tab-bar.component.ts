@@ -1,4 +1,3 @@
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,6 +7,7 @@ import {
     forwardRef,
     Input,
     Output,
+    type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';

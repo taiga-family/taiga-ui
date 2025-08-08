@@ -1,10 +1,14 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 import {AsyncPipe, NgIf} from '@angular/common';
-import type {AfterContentInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, ContentChild} from '@angular/core';
+import {
+    type AfterContentInit,
+    ChangeDetectionStrategy,
+    Component,
+    ContentChild,
+} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 
 import {TuiSliderComponent} from '../slider.component';
 

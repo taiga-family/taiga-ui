@@ -1,10 +1,11 @@
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {TUI_IDENTITY_VALUE_TRANSFORMER} from '@taiga-ui/cdk/classes';
-import type {TuiDay} from '@taiga-ui/cdk/date-time';
-import {TUI_FIRST_DAY, TUI_LAST_DAY} from '@taiga-ui/cdk/date-time';
-import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {
+    TUI_IDENTITY_VALUE_TRANSFORMER,
+    type TuiValueTransformer,
+} from '@taiga-ui/cdk/classes';
+import {TUI_FIRST_DAY, TUI_LAST_DAY, type TuiDay} from '@taiga-ui/cdk/date-time';
+import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiInputDateOptionsNew {
     readonly icon: TuiHandler<TuiSizeL | TuiSizeS, string>;

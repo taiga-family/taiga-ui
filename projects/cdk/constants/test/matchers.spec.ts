@@ -1,8 +1,8 @@
-import type {TuiStringHandler} from '@taiga-ui/cdk';
 import {
     TUI_DEFAULT_IDENTITY_MATCHER,
     TUI_DEFAULT_MATCHER,
     TUI_STRICT_MATCHER,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk';
 
 class Item {

@@ -1,5 +1,5 @@
-import type {AfterViewInit} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     Directive,

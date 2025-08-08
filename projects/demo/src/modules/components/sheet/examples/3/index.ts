@@ -5,8 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiHeader} from '@taiga-ui/layout';
-import type {TuiSheetOptions} from '@taiga-ui/legacy';
-import {TuiSheetModule} from '@taiga-ui/legacy';
+import {TuiSheetModule, type TuiSheetOptions} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

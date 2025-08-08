@@ -3,13 +3,14 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiBooleanHandler, TuiMonthRange} from '@taiga-ui/cdk';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
     TUI_LAST_DAY,
+    type TuiBooleanHandler,
     TuiDay,
     TuiMonth,
+    type TuiMonthRange,
     tuiProvide,
 } from '@taiga-ui/cdk';
 import {TuiHint} from '@taiga-ui/core';

@@ -2,7 +2,7 @@ import {Directive} from '@angular/core';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
-import type {TuiInputYearComponent} from './input-year.component';
+import {type TuiInputYearComponent} from './input-year.component';
 
 /**
  * TODO(v5): delete it

@@ -1,7 +1,7 @@
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiNotificationOptions extends TuiAppearanceOptions {
     readonly icon: TuiStringHandler<string> | string;

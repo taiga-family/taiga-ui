@@ -1,7 +1,6 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Provider} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core/types';
+import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core/types';
 
 export interface TuiLoaderOptions {
     readonly inheritColor: boolean;

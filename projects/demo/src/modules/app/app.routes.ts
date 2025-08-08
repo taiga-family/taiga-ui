@@ -1,4 +1,4 @@
-import type {Routes} from '@angular/router';
+import {type Routes} from '@angular/router';
 import {tuiProvideRoutePageTab as route} from '@taiga-ui/addon-doc';
 
 import {DemoRoute} from './demo-routes';

@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiIslandDirective} from '@taiga-ui/legacy';
 
 import {StylesInfo} from '../../app/styles-info';

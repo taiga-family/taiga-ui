@@ -1,4 +1,4 @@
-import type {Locator, Page} from '@playwright/test';
+import {type Locator, type Page} from '@playwright/test';
 
 interface Options {
     page: Page;

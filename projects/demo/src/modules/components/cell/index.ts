@@ -4,8 +4,7 @@ import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
 import {TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import type {TuiCellOptions} from '@taiga-ui/layout';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiCell, type TuiCellOptions} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,

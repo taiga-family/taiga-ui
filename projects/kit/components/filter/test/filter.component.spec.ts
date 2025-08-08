@@ -1,10 +1,8 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
-import type {TuiSizeS} from '@taiga-ui/core';
+import {TUI_FALSE_HANDLER, type TuiBooleanHandler, type TuiHandler} from '@taiga-ui/cdk';
+import {type TuiSizeS} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiFilter} from '@taiga-ui/kit';
 

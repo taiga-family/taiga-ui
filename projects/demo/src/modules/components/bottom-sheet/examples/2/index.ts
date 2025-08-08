@@ -1,5 +1,4 @@
-import type {ElementRef} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import {Component, type ElementRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';

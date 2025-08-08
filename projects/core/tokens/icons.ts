@@ -1,5 +1,4 @@
-import type {FactoryProvider} from '@angular/core';
-import {inject, InjectionToken} from '@angular/core';
+import {type FactoryProvider, inject, InjectionToken} from '@angular/core';
 
 export const TUI_ICON_REGISTRY = new InjectionToken<Record<string, string>>(
     ngDevMode ? 'TUI_ICON_REGISTRY' : '',

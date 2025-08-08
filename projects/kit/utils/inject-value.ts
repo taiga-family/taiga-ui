@@ -1,5 +1,4 @@
-import type {Signal} from '@angular/core';
-import {inject} from '@angular/core';
+import {inject, type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';

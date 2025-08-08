@@ -1,8 +1,6 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken, Optional, SkipSelf} from '@angular/core';
-import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
-import type {Observable} from 'rxjs';
-import {map, of} from 'rxjs';
+import {InjectionToken, Optional, type Provider, SkipSelf} from '@angular/core';
+import {type TuiDateMode} from '@taiga-ui/cdk/date-time';
+import {map, type Observable, of} from 'rxjs';
 
 /**
  * Formatting configuration for displayed dates

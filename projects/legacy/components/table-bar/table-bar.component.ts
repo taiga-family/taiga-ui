@@ -1,6 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiParentAnimation, tuiSlideInTop} from '@taiga-ui/core/animations';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
@@ -15,7 +15,7 @@ import {
     PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
 
-import type {TuiTableBarOptions} from './table-bar.options';
+import {type TuiTableBarOptions} from './table-bar.options';
 
 /**
  * @deprecated drop in v5.0 use {@link TuiActionBar}

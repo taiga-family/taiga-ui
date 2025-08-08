@@ -2,8 +2,13 @@ import {Component, signal} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiHorizontalDirection} from '@taiga-ui/core';
-import {TuiButton, TuiPopup, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiButton,
+    type TuiHorizontalDirection,
+    TuiPopup,
+    TuiTextfield,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {TuiDrawer} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 

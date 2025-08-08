@@ -1,6 +1,5 @@
 import {Directive, inject} from '@angular/core';
-import type {AbstractControl} from '@angular/forms';
-import {NgControl} from '@angular/forms';
+import {type AbstractControl, NgControl} from '@angular/forms';
 
 @Directive({
     standalone: true,

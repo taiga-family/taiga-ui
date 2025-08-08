@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
-import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
+import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 
 @Component({
     standalone: true,

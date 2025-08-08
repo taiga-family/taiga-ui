@@ -4,8 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFormatDatePipe, TuiFormatDateService} from '@taiga-ui/core';
 import {formatDistance} from 'date-fns';
-import type {Observable} from 'rxjs';
-import {map, of, timer} from 'rxjs';
+import {map, type Observable, of, timer} from 'rxjs';
 
 @Injectable()
 export class FormatService extends TuiFormatDateService {

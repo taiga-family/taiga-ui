@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiCurrencyVariants} from '@taiga-ui/addon-commerce';
-import {tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
+import {type TuiCurrencyVariants, tuiGetCurrencySymbol} from '@taiga-ui/addon-commerce';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 

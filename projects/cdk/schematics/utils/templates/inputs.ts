@@ -1,4 +1,4 @@
-import type {Attribute} from 'parse5/dist/common/token';
+import {type Attribute} from 'parse5/dist/common/token';
 
 export function findAttr(attrs: Attribute[], name: string): Attribute | undefined {
     const lowercasedName = name.toLowerCase();

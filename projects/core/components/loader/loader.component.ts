@@ -4,8 +4,11 @@ import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiIsSafari} from '@taiga-ui/cdk/utils/browser';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 import {TUI_LOADER_OPTIONS} from './loader.options';
 

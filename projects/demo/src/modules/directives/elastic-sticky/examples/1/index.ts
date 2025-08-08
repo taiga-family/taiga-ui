@@ -1,14 +1,12 @@
 import {AsyncPipe} from '@angular/common';
-import type {AfterViewInit} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import {type AfterViewInit, Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
 import {tuiClamp} from '@taiga-ui/cdk';
 import {TuiScrollbar} from '@taiga-ui/core';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, map, startWith} from 'rxjs';
+import {distinctUntilChanged, map, type Observable, startWith} from 'rxjs';
 
 @Component({
     standalone: true,

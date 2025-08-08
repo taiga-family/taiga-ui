@@ -1,4 +1,3 @@
-import type {OnDestroy, Type} from '@angular/core';
 import {
     createComponent,
     Directive,
@@ -7,7 +6,9 @@ import {
     inject,
     INJECTOR,
     Input,
+    type OnDestroy,
     signal,
+    type Type,
     ViewContainerRef,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -17,8 +18,7 @@ import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TuiDataListComponent} from '../data-list.component';
-import type {TuiDataListHost} from '../data-list.tokens';
-import {TUI_DATA_LIST_HOST} from '../data-list.tokens';
+import {TUI_DATA_LIST_HOST, type TuiDataListHost} from '../data-list.tokens';
 import {TUI_OPTION_CONTENT} from './option-content';
 
 // TODO(v5): rename `TuiOptionNew` => `TuiOption` & remove [new] from selector

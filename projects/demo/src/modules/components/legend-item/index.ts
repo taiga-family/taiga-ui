@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiLegendItem} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import type {TuiSizeS} from '@taiga-ui/core';
+import {type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

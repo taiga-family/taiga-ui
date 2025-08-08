@@ -1,7 +1,7 @@
-import type {TuiPopoverContext} from '@taiga-ui/cdk/services';
-import type {TuiHandler} from '@taiga-ui/cdk/types';
-import type {TuiNotificationOptions} from '@taiga-ui/core/components/notification';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiPopoverContext} from '@taiga-ui/cdk/services';
+import {type TuiHandler} from '@taiga-ui/cdk/types';
+import {type TuiNotificationOptions} from '@taiga-ui/core/components/notification';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiAlertOptions<I = undefined>
     extends Omit<TuiNotificationOptions, 'size'> {

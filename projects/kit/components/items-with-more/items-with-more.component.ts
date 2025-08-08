@@ -1,5 +1,4 @@
 import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,6 +6,7 @@ import {
     ContentChildren,
     inject,
     Output,
+    type QueryList,
     TemplateRef,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -17,7 +17,7 @@ import {
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 
 import {TuiItemsWithMoreDirective} from './items-with-more.directive';
 import {TuiItemsWithMoreService} from './items-with-more.service';

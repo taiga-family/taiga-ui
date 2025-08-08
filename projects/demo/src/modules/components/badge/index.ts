@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeS, TuiSizeXL} from '@taiga-ui/core';
+import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
 import {TuiBadge, TuiFade, TuiRadioList} from '@taiga-ui/kit';
 
 @Component({

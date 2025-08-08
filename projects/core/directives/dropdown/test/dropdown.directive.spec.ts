@@ -1,7 +1,5 @@
-import type {ElementRef} from '@angular/core';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {ChangeDetectionStrategy, Component, type ElementRef} from '@angular/core';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDropdownDirective, TuiDropdownManual, TuiRoot} from '@taiga-ui/core';
 import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiPageObject} from '@taiga-ui/testing';

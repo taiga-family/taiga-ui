@@ -1,7 +1,5 @@
-import type {OnChanges} from '@angular/core';
-import {Directive} from '@angular/core';
-import type {Validator} from '@angular/forms';
-import {NG_VALIDATORS, Validators} from '@angular/forms';
+import {Directive, type OnChanges} from '@angular/core';
+import {NG_VALIDATORS, type Validator, Validators} from '@angular/forms';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils';
 

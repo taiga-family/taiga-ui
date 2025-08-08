@@ -1,14 +1,18 @@
-import type {DoCheck} from '@angular/core';
-import {Directive, inject} from '@angular/core';
+import {Directive, type DoCheck, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk/date-time';
-import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {type TuiMonth, type TuiMonthRange} from '@taiga-ui/cdk/date-time';
+import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {AbstractTuiTextfieldHost} from '@taiga-ui/legacy/classes';
 import {TUI_MONTH_FORMATTER, tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
-import type {Observable} from 'rxjs';
-import {combineLatest, distinctUntilChanged, Subject, switchMap} from 'rxjs';
+import {
+    combineLatest,
+    distinctUntilChanged,
+    type Observable,
+    Subject,
+    switchMap,
+} from 'rxjs';
 
-import type {TuiInputMonthRangeComponent} from './input-month-range.component';
+import {type TuiInputMonthRangeComponent} from './input-month-range.component';
 
 /**
  * TODO(v5): delete it

@@ -1,23 +1,23 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
-import type {DoCheck, TrackByFunction} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    type DoCheck,
     forwardRef,
     inject,
     Input,
+    type TrackByFunction,
     ViewChild,
 } from '@angular/core';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
-import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
 import {TuiTreeChildren} from '../../directives/tree-children.directive';
 import {TuiTreeNode} from '../../directives/tree-node.directive';
-import type {TuiTreeContext} from '../../misc/tree.interfaces';
+import {type TuiTreeContext} from '../../misc/tree.interfaces';
 import {TUI_TREE_NODE} from '../../misc/tree.tokens';
 import {TuiTreeItem} from '../tree-item/tree-item.component';
 

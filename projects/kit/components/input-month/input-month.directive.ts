@@ -2,7 +2,7 @@ import {computed, Directive, effect, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import type {TuiMonth} from '@taiga-ui/cdk/date-time';
+import {type TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {
     tuiInjectAuxiliary,

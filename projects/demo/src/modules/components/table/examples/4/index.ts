@@ -3,16 +3,14 @@ import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {
-    TuiComparator,
-    TuiSortChange,
-    TuiTablePaginationEvent,
-} from '@taiga-ui/addon-table';
 import {
+    type TuiComparator,
     TuiReorder,
+    type TuiSortChange,
     TuiSortDirection,
     TuiTable,
     TuiTablePagination,
+    type TuiTablePaginationEvent,
 } from '@taiga-ui/addon-table';
 import {
     TUI_DEFAULT_MATCHER,
@@ -33,13 +31,13 @@ import {
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiCheckbox, TuiChevron, TuiInputNumber} from '@taiga-ui/kit';
-import type {Observable} from 'rxjs';
 import {
     BehaviorSubject,
     combineLatest,
     debounceTime,
     filter,
     map,
+    type Observable,
     share,
     startWith,
     switchMap,

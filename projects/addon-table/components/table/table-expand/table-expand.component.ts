@@ -1,9 +1,9 @@
 import {isPlatformServer} from '@angular/common';
-import type {ElementRef} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    type ElementRef,
     EventEmitter,
     inject,
     Input,

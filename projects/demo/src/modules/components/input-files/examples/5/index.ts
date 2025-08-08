@@ -4,8 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiLink} from '@taiga-ui/core';
-import type {TuiFileLike} from '@taiga-ui/kit';
-import {TuiAvatar, TuiFiles} from '@taiga-ui/kit';
+import {TuiAvatar, type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

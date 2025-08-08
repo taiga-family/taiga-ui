@@ -1,7 +1,7 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import type {TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
@@ -9,7 +9,7 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiPushComponent} from './push.component';
 import {TuiPushDirective} from './push.directive';
-import type {TuiPushOptions} from './push.options';
+import {type TuiPushOptions} from './push.options';
 
 @Component({
     standalone: true,

@@ -1,6 +1,5 @@
-import type {TuiDay, TuiDayLike} from '@taiga-ui/cdk/date-time';
-import {TuiDayRange} from '@taiga-ui/cdk/date-time';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiDay, type TuiDayLike, TuiDayRange} from '@taiga-ui/cdk/date-time';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 
 export const calculateDisabledItemHandler: (
     disabledItemHandler: TuiBooleanHandler<TuiDay>,

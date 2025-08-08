@@ -28,6 +28,8 @@ export default process.env.HTML_ESLINT
               files: ['**/*.ts'],
               rules: {
                   'import/no-cycle': 'off',
+                  '@typescript-eslint/no-unnecessary-condition': 'off',
+                  'unicorn/no-array-method-this-argument': 'off',
                   '@typescript-eslint/max-params': [
                       'error',
                       {countVoidThis: true, max: 5},

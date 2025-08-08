@@ -3,14 +3,15 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiCard, TuiCardInputs} from '@taiga-ui/addon-commerce';
 import {
     TUI_INPUT_CARD_GROUP_OPTIONS,
+    type TuiCard,
+    type TuiCardInputs,
     TuiInputCardGroup,
     TuiThumbnailCard,
 } from '@taiga-ui/addon-commerce';
 import {tuiIsString} from '@taiga-ui/cdk';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

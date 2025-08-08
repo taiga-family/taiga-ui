@@ -1,8 +1,8 @@
 import {Directive, Input} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
-import type {TuiTreeItem} from '../components/tree-item/tree-item.component';
-import type {TuiTreeController} from '../misc/tree.interfaces';
+import {type TuiTreeItem} from '../components/tree-item/tree-item.component';
+import {type TuiTreeController} from '../misc/tree.interfaces';
 import {TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 
 @Directive({

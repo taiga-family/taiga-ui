@@ -1,7 +1,7 @@
 import {isPlatformServer} from '@angular/common';
 import {Directive, inject, Input, PLATFORM_ID, signal} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {SafeResourceUrl} from '@angular/platform-browser';
+import {type SafeResourceUrl} from '@angular/platform-browser';
 import {IntersectionObserverService} from '@ng-web-apis/intersection-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 

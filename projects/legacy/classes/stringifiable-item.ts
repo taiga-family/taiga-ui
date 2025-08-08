@@ -1,4 +1,4 @@
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 
 /**
  * @deprecated: drop in v5.0

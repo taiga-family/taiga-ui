@@ -2,7 +2,7 @@ import {ElementRef, InjectionToken, NgZone, Renderer2} from '@angular/core';
 import {WA_ANIMATION_FRAME, WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils';
-import type {Observable} from 'rxjs';
+import {type Observable} from 'rxjs';
 
 import {TuiDefaultAutofocusHandler} from './handlers/default.handler';
 import {TuiIosAutofocusHandler} from './handlers/ios.handler';

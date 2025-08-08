@@ -3,8 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiKeySteps} from '@taiga-ui/kit';
-import {TuiRange} from '@taiga-ui/kit';
+import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,

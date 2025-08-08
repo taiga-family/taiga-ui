@@ -1,5 +1,4 @@
-import type {Sanitizer} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Sanitizer} from '@angular/core';
 
 /**
  * @deprecated: drop in v5.0

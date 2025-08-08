@@ -1,7 +1,7 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import type {Attribute, ElementLocation} from 'parse5/dist/common/token';
-import type {ChildNode} from 'parse5/dist/tree-adapters/default';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem} from 'ng-morph';
+import {type Attribute, type ElementLocation} from 'parse5/dist/common/token';
+import {type ChildNode} from 'parse5/dist/tree-adapters/default';
 
 import {findElementsByTagName} from '../../../../utils/templates/elements';
 import {findAttr} from '../../../../utils/templates/inputs';
@@ -9,7 +9,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 
 export function migrateLabel({
     resource,

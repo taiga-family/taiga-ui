@@ -1,9 +1,10 @@
 import {NgForOf} from '@angular/common';
-import type {ElementRef, QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    type ElementRef,
     Input,
+    type QueryList,
     ViewChild,
     ViewChildren,
 } from '@angular/core';

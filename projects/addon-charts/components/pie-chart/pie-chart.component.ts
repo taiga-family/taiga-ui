@@ -9,7 +9,7 @@ import {
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -17,8 +17,8 @@ import {
     TuiHintOptionsDirective,
     tuiHintOptionsProvider,
 } from '@taiga-ui/core/directives/hint';
-import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiPieChartDirective} from './pie-chart.directive';
 

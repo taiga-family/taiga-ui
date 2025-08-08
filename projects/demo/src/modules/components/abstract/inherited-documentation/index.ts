@@ -5,8 +5,7 @@ import {
     TuiDocDocumentation,
     TuiDocDocumentationPropertyConnector,
 } from '@taiga-ui/addon-doc';
-import type {TuiHintDirection} from '@taiga-ui/core';
-import {TUI_HINT_DIRECTIONS} from '@taiga-ui/core';
+import {TUI_HINT_DIRECTIONS, type TuiHintDirection} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../control';
@@ -14,7 +13,7 @@ import {DropdownDocumentation} from '../dropdown-documentation';
 import {AbstractExampleTuiHint} from '../hint';
 import {HintControllerDocumentation} from '../hint-controller-documentation';
 import {AbstractExampleTuiInteractive} from '../interactive';
-import type {TuiSupportingDocumentationComponent} from '../supporting-documentation-component';
+import {type TuiSupportingDocumentationComponent} from '../supporting-documentation-component';
 import {TextfieldControllerDocumentation} from '../textfield-controller-documentation';
 
 @Component({

@@ -6,14 +6,13 @@ import {
     Renderer2,
     ViewChild,
 } from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {fakeAsync, TestBed, tick} from '@angular/core/testing';
+import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import type {TuiAutofocusOptions} from '@taiga-ui/cdk';
 import {
     TUI_AUTOFOCUS_HANDLER,
     TUI_AUTOFOCUS_OPTIONS,
     TuiAutoFocus,
+    type TuiAutofocusOptions,
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';

@@ -8,11 +8,11 @@ import {TUI_DEFAULT_MATCHER, TuiLet, tuiPure} from '@taiga-ui/cdk';
 import {TuiDataList} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {Observable} from 'rxjs';
 import {
     combineLatest,
     map,
     merge,
+    type Observable,
     of,
     share,
     startWith,

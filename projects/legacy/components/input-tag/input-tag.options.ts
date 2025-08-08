@@ -1,7 +1,6 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Provider} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiStatus} from '@taiga-ui/legacy/utils';
+import {type TuiStatus} from '@taiga-ui/legacy/utils';
 
 /**
  * TODO(v5): delete it

@@ -1,4 +1,4 @@
-import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
+import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {tuiGetMaxAllowedPhoneLength} from '@taiga-ui/legacy';
 
 describe('tuiGetMaxAllowedPhoneLength', () => {

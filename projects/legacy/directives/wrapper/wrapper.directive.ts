@@ -1,6 +1,6 @@
 import {Directive, Input} from '@angular/core';
-import type {TuiLooseUnion} from '@taiga-ui/cdk/types';
-import type {TuiInteractiveState} from '@taiga-ui/core/types';
+import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
+import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
 /**
  * @deprecated: drop in v5.0

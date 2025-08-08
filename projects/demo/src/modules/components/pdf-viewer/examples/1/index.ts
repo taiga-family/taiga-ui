@@ -4,9 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiNotification} from '@taiga-ui/core';
-import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
-import {TuiPdfViewerService} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

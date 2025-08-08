@@ -1,11 +1,20 @@
-import type {DebugElement} from '@angular/core';
-import {ChangeDetectionStrategy, Component, Input, signal} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {fakeAsync, TestBed, tick, waitForAsync} from '@angular/core/testing';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    type DebugElement,
+    Input,
+    signal,
+} from '@angular/core';
+import {
+    type ComponentFixture,
+    fakeAsync,
+    TestBed,
+    tick,
+    waitForAsync,
+} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import hljs from 'highlight.js';
-import type {HighlightLibrary} from 'ngx-highlightjs';
-import {Highlight, HighlightLoader} from 'ngx-highlightjs';
+import {Highlight, type HighlightLibrary, HighlightLoader} from 'ngx-highlightjs';
 import {BehaviorSubject} from 'rxjs';
 
 describe('Highlight Directive', () => {

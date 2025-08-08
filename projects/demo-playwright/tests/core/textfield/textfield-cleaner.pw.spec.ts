@@ -5,8 +5,7 @@ import {
     tuiGoto,
     TuiInputMonthPO,
 } from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 const {beforeEach, describe} = test;
 

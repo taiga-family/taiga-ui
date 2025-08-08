@@ -1,5 +1,5 @@
 import {Directive} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 
 @Directive({
     standalone: true,

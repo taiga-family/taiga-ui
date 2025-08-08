@@ -1,7 +1,9 @@
 import {CHAR_HYPHEN} from '@taiga-ui/cdk/constants';
 import {tuiRoundWith} from '@taiga-ui/cdk/utils/math';
-import type {TuiNumberFormatSettings} from '@taiga-ui/core/tokens';
-import {TUI_DEFAULT_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
+import {
+    TUI_DEFAULT_NUMBER_FORMAT,
+    type TuiNumberFormatSettings,
+} from '@taiga-ui/core/tokens';
 
 import {tuiGetFractionPartPadded} from './get-fractional-part-padded';
 

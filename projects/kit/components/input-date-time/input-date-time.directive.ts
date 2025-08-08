@@ -1,11 +1,12 @@
 import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoOptions} from '@maskito/core';
-import type {MaskitoDateTimeParams, MaskitoTimeMode} from '@maskito/kit';
+import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoDateTimeOptionsGenerator,
+    type MaskitoDateTimeParams,
     maskitoSelectionChangeHandler,
+    type MaskitoTimeMode,
 } from '@maskito/kit';
 import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {
@@ -16,11 +17,11 @@ import {
 } from '@taiga-ui/cdk/date-time';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiCalendar} from '@taiga-ui/core/components/calendar';
+import {type TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
-import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
+    type TuiTextfieldAccessor,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';

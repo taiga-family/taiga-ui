@@ -1,6 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import type {OnDestroy} from '@angular/core';
-import {Directive, inject} from '@angular/core';
+import {Directive, inject, type OnDestroy} from '@angular/core';
 import {
     tuiContainsOrAfter,
     tuiInjectElement,

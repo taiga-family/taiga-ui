@@ -1,7 +1,7 @@
-import type {ElementRef, NgZone, Renderer2} from '@angular/core';
+import {type ElementRef, type NgZone, type Renderer2} from '@angular/core';
 import {tuiIsPresent, tuiPx} from '@taiga-ui/cdk/utils';
 
-import type {TuiAutofocusOptions} from '../autofocus.options';
+import {type TuiAutofocusOptions} from '../autofocus.options';
 import {AbstractTuiAutofocusHandler} from './abstract.handler';
 
 const TEXTFIELD_ATTRS = [
