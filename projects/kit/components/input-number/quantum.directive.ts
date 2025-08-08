@@ -24,16 +24,15 @@ export class TuiQuantumValueTransformer extends TuiValueTransformer<
         return this.parent?.fromControlValue(controlValue) ?? controlValue;
     }
 
-    public toControlValue(internalValue: number | null): number {
+    public toControlValue(internalValue: number | null): number | null {
         const value = this.parent?.toControlValue(internalValue) ?? internalValue;
 
-        return (
-            value &&
-            tuiRound(
-                Math.round(value / this.quantum) * this.quantum,
-                TUI_FLOATING_PRECISION,
-            )
-        );
+        return value != null
+            ? tuiRound(
+                  Math.round(value / this.quantum) * this.quantum,
+                  TUI_FLOATING_PRECISION,
+              )
+            : value;
     }
 }
 
