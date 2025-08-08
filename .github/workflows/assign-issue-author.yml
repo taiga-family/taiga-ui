@@ -33,6 +33,7 @@ jobs:
             const linkedIssues = [...new Set(
               timelineEvents
                 .filter(event => event.event === 'cross-referenced')
+                .filter(event => event.source?.issue?.number)
                 .map(event => event.source.issue.number)
             )];
 
