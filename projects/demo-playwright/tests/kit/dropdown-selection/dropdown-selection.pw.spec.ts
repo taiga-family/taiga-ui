@@ -41,4 +41,41 @@ test.describe('DropdownSelection', () => {
 
         await expect.soft(page).toHaveScreenshot('04-dropdown-selection.png');
     });
+
+    test('dropdown after new line char must be opened', async ({page}) => {
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#textarea');
+
+        await example.scrollIntoViewIfNeeded();
+        await api.waitStableState();
+
+        await page.waitForTimeout(500); // flaky in Safari
+
+        await example.locator('textarea').focus();
+
+        await example.locator('textarea').fill('\n@');
+
+        await expect(page.locator('tui-dropdown')).toBeVisible();
+    });
+
+    test('dropdown in scrollable textarea must be properly positioned', async ({
+        page,
+    }) => {
+        const api = new TuiDocumentationPagePO(page);
+        const example = api.getExample('#textarea');
+
+        await example.scrollIntoViewIfNeeded();
+        await api.waitStableState();
+
+        await page.waitForTimeout(500); // flaky in Safari
+
+        await example.locator('textarea').focus();
+
+        await example
+            .locator('textarea')
+            .fill('hi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\nhi\n @');
+
+        await expect(page.locator('tui-dropdown')).toBeVisible();
+        await expect.soft(page).toHaveScreenshot('05-dropdown-selection-scrolled.png');
+    });
 });

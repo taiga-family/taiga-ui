@@ -111,8 +111,12 @@ export class TuiDropdownSelection
 
     public ngOnDestroy(): void {
         if (this.ghost) {
-            this.vcr.element.nativeElement.removeChild(this.ghost);
+            this.ghostHost.removeChild(this.ghost);
         }
+    }
+
+    private get ghostHost(): HTMLElement {
+        return this.el.querySelector('tui-textfield .t-ghost') || this.el;
     }
 
     private getRange(): Range {
@@ -159,11 +163,11 @@ export class TuiDropdownSelection
     }
 
     private veryVerySadInputFix(element: HTMLInputElement | HTMLTextAreaElement): Range {
-        const {ghost = this.initGhost(element)} = this;
-        const {top, left, width, height} = element.getBoundingClientRect();
+        const {ghost = this.initGhost(this.ghostHost)} = this;
+        const {top, left, width, height} = this.ghostHost.getBoundingClientRect();
         const {selectionStart, selectionEnd, value} = element;
         const range = this.doc.createRange();
-        const hostRect = this.el.getBoundingClientRect();
+        const hostRect = this.ghostHost.getBoundingClientRect();
 
         ghost.style.top = tuiPx(top - hostRect.top);
         ghost.style.left = tuiPx(left - hostRect.left);
@@ -180,7 +184,9 @@ export class TuiDropdownSelection
     /**
      * Create an invisible DIV styled exactly like input/textarea element inside directive
      */
-    private initGhost(element: HTMLInputElement | HTMLTextAreaElement): HTMLElement {
+    private initGhost(
+        element: HTMLElement | HTMLInputElement | HTMLTextAreaElement,
+    ): HTMLElement {
         const ghost = this.doc.createElement('div');
         const {font, letterSpacing, textTransform, padding, borderTop} =
             getComputedStyle(element);
@@ -196,7 +202,7 @@ export class TuiDropdownSelection
         ghost.style.textTransform = textTransform;
         ghost.style.padding = padding;
 
-        this.vcr.element.nativeElement.appendChild(ghost);
+        this.ghostHost.appendChild(ghost);
         this.ghost = ghost;
 
         return ghost;
