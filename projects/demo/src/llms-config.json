@@ -1,0 +1,38 @@
+{
+    "llms": {
+        "description": "Configuration for llms.txt (component links)",
+        "excludeSections": ["legacy", "deprecated"]
+    },
+    "llmsFull": {
+        "description": "Configuration for llms-full.txt (full documentation)",
+        "excludeSections": ["legacy", "deprecated"],
+        "includeExamples": {
+            "value": true,
+            "description": "Include component examples (HTML templates and usage). Extracted from <tui-doc-demo> sections. Adds ~40% to file size."
+        },
+        "includeApi": {
+            "value": true,
+            "description": "Include API documentation tables showing properties, methods, events. Extracted from <table tuiDocAPI> sections. Essential for component understanding."
+        },
+        "includeSourceCode": {
+            "value": true,
+            "description": "Include actual source code files (.ts, .html, .less). Can make files very large. Currently disabled for token efficiency."
+        },
+        "includeImportExamples": {
+            "value": true,
+            "description": "Include 'How to Use' import and template examples. Extracted from examples/import/import.md and template.md files. Provides essential usage information."
+        },
+        "includeMarkdownFiles": {
+            "value": true,
+            "description": "Include standalone markdown documentation files from examples directory. Adds general documentation content."
+        },
+        "includeUsageExamples": {
+            "value": false,
+            "description": "Include detailed usage examples for each component. Extracted from component documentation templates. Disabled to reduce file size."
+        },
+        "includeAllExamples": {
+            "value": true,
+            "description": "Include all available examples per component (if multiple exist). When false, only includes first example."
+        }
+    }
+}
