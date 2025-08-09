@@ -123,11 +123,11 @@ tui-tabs {
 
         &._underline._anchor-supported::before {
             position: absolute;
-            position-anchor: --active-tab;
             left: anchor(--active-tab left);
             bottom: 0;
+            position-anchor: --active-tab;
             block-size: 0.125rem;
-            width: anchor(--active-tab width);
+            inline-size: anchor(--active-tab width);
             background: var(--t-color);
             animation: tuiPresent 1ms;
             /* Remove JS-based transitions when using anchor positioning */
