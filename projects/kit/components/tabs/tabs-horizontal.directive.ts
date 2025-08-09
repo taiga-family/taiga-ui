@@ -44,6 +44,7 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
     ],
     host: {
         '[class._underline]': 'underline',
+        '[class._anchor-supported]': 'anchorSupported',
         '[style.--t-color]':
             "underline === true ? 'var(--tui-background-accent-1)' : underline",
         '(animationend)': 'refresh()',
@@ -55,6 +56,8 @@ export class TuiTabsHorizontal implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_TABS_OPTIONS);
     private readonly tabs = inject(TuiTabsDirective);
+
+    public readonly anchorSupported = this.supportsAnchorPositioning();
 
     @ContentChildren(forwardRef(() => TuiTab))
     protected readonly children: QueryList<unknown> = EMPTY_QUERY;
@@ -82,10 +85,43 @@ export class TuiTabsHorizontal implements AfterViewChecked {
             return;
         }
 
+        // Skip manual positioning if CSS anchor positioning is supported
+        if (this.anchorSupported) {
+            this.setupAnchorPositioning(activeElement);
+
+            return;
+        }
+
+        // Fallback to manual positioning for browsers without anchor support
         const {offsetLeft = 0, offsetWidth = 0} = activeElement || {};
 
         this.el.style.setProperty('--t-left', tuiPx(offsetLeft));
         this.el.style.setProperty('--t-width', tuiPx(offsetWidth));
+    }
+
+    private supportsAnchorPositioning(): boolean {
+        try {
+            return (
+                typeof CSS !== 'undefined' &&
+                typeof CSS.supports === 'function' &&
+                CSS.supports('anchor-name: --test')
+            );
+        } catch {
+            return false;
+        }
+    }
+
+    private setupAnchorPositioning(activeElement: HTMLElement | null): void {
+        // When using CSS anchor positioning, we only need to ensure the active element
+        // has the correct anchor name. The CSS handles the rest.
+        if (activeElement) {
+            // Remove anchor name from all tabs
+            this.tabs.tabs.forEach((tab) => {
+                tab.style.setProperty('anchor-name', '');
+            });
+            // Set anchor name for active tab
+            activeElement.style.setProperty('anchor-name', '--active-tab');
+        }
     }
 
     @tuiPure

@@ -15,6 +15,7 @@
     cursor: pointer;
     outline: none;
     color: inherit;
+    contain: layout style;
     /* stylelint-disable-next-line */
     margin-inline-start: var(--tui-tab-margin, 24px);
 
@@ -82,6 +83,7 @@ tui-tabs {
     box-shadow: inset 0 -1px var(--tui-border-normal);
     overflow: auto;
     isolation: isolate;
+    contain: layout style;
 
     &[data-size='m'] {
         font: var(--tui-font-text-s);
@@ -107,6 +109,30 @@ tui-tabs {
         inline-size: var(--t-width);
         background: var(--t-color);
         animation: tuiPresent 1ms;
+    }
+
+    /* CSS Anchor Positioning for modern browsers */
+    @supports (anchor-name: --tab-anchor) {
+        [tuiTab] {
+            anchor-name: --tab-element;
+        }
+
+        [tuiTab]._active {
+            anchor-name: --active-tab;
+        }
+
+        &._underline._anchor-supported::before {
+            position: absolute;
+            position-anchor: --active-tab;
+            left: anchor(--active-tab left);
+            bottom: 0;
+            block-size: 0.125rem;
+            width: anchor(--active-tab width);
+            background: var(--t-color);
+            animation: tuiPresent 1ms;
+            /* Remove JS-based transitions when using anchor positioning */
+            transition: none;
+        }
     }
 
     &._underline::before {
