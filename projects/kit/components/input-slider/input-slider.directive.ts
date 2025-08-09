@@ -21,6 +21,7 @@ import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumberDirective,
     tuiInputNumberOptionsProvider,
+    TuiWithQuantumValueTransformer,
 } from '@taiga-ui/kit/components/input-number';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
 import {filter, fromEvent} from 'rxjs';
@@ -38,9 +39,10 @@ import {filter, fromEvent} from 'rxjs';
             directive: TuiInputNumberDirective,
             inputs: ['min', 'max', 'prefix', 'postfix', 'invalid', 'readOnly'],
         },
+        TuiWithQuantumValueTransformer,
     ],
     host: {
-        '(blur)': 'onBlur()',
+        '(blur)': 'inputNumber.setValue(value() ?? null)',
         '(keydown.arrowUp)': 'onStep(1)',
         '(keydown.arrowDown)': 'onStep(-1)',
     },
@@ -48,7 +50,6 @@ import {filter, fromEvent} from 'rxjs';
 export class TuiInputSliderDirective {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly element = tuiInjectElement<HTMLInputElement>();
-    private readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
     private readonly slider = tuiInjectAuxiliary<TuiSliderComponent>(
         (x) => x instanceof TuiSliderComponent,
     );
@@ -57,12 +58,13 @@ export class TuiInputSliderDirective {
         TuiValueTransformer<number | null, number>
     >(TuiValueTransformer, {self: true});
 
-    private readonly value = computed(() =>
-        this.controlTransformer.toControlValue(this.inputNumber.value()),
-    );
-
     private readonly keyStepsTransformer = computed(
         () => this.slider()?.keySteps?.transformer() ?? TUI_IDENTITY_VALUE_TRANSFORMER,
+    );
+
+    protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
+    protected readonly value = computed(() =>
+        this.controlTransformer.toControlValue(this.inputNumber.value()),
     );
 
     protected readonly nothing = tuiWithStyles(TuiInputSliderStyles);
@@ -123,12 +125,6 @@ export class TuiInputSliderDirective {
             );
 
             this.inputNumber.setValue(newValue);
-        }
-    }
-
-    protected onBlur(): void {
-        if (!this.element.value) {
-            this.inputNumber.setValue(this.value() ?? null);
         }
     }
 

@@ -38,7 +38,7 @@ const DEFAULT_MAX_LENGTH = 18;
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]':
             'element.maxLength > 0 ? element.maxLength : defaultMaxLength()',
-        '(blur)': 'onBlur()',
+        '(blur)': 'setValue(transformer.fromControlValue(control.value))',
         '(focus)': 'onFocus()',
     },
 })
@@ -162,14 +162,6 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
 
     public setValue(value: number | null): void {
         this.textfield.value.set(this.formatNumber(value));
-    }
-
-    protected onBlur(): void {
-        this.onTouched();
-
-        if (!this.unfinished()) {
-            this.setValue(this.value());
-        }
     }
 
     protected onFocus(): void {

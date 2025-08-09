@@ -145,6 +145,42 @@
                 </p>
             </ng-template>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="quantum"
+            heading="Quantum"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+            [description]="quantumDescription"
+        >
+            <ng-template #quantumDescription>
+                Property
+                <code>[quantum]</code>
+                allows to set minimum indivisible value. Form control value never contains a number that is not
+                divisible by value of this property. Even if user enters any invalid number, it will be rounded to the
+                nearest valid one on
+                <code>blur</code>
+                event.
+
+                <p class="tui-space_bottom-0">
+                    In this example, form control value can only contain
+                    <code>0</code>
+                    ,
+                    <code>0.05</code>
+                    ,
+                    <code>0.1</code>
+                    ,
+                    <code>0.15</code>
+                    ...
+                    <code>0.9</code>
+                    ,
+                    <code>0.95</code>
+                    ,
+                    <code>1</code>
+                    .
+                </p>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -167,6 +203,7 @@
                         [min]="min()"
                         [postfix]="postfix"
                         [prefix]="prefix"
+                        [quantum]="quantum"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                         [tuiNumberFormat]="{
@@ -248,6 +285,15 @@
                     Uneditable text
                     <strong>after</strong>
                     number
+                </tr>
+
+                <tr
+                    name="[quantum]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="quantum"
+                >
+                    Minimum indivisible value
                 </tr>
             </tbody>
 

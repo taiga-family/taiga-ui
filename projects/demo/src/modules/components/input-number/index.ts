@@ -40,4 +40,5 @@ export default class PageComponent {
     protected step = 0;
     protected prefix = '';
     protected postfix = '';
+    protected quantum = 0.01;
 }

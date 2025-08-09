@@ -123,6 +123,98 @@ describe('InputSlider', () => {
         });
     });
 
+    describe('[quantum] prop', () => {
+        let inputSlider!: TuiInputSliderPO;
+        let example!: Locator;
+
+        describe('[quantum]="10"', () => {
+            beforeEach(async ({page}) => {
+                await tuiGoto(
+                    page,
+                    `${DemoRoute.InputSlider}/API?max=100&&quantum=10&sandboxExpanded=true`,
+                );
+
+                example = new TuiDocumentationPagePO(page).apiPageExample;
+                inputSlider = new TuiInputSliderPO(
+                    example.locator('tui-textfield:has([tuiInputSlider])'),
+                );
+            });
+
+            describe('allows to enter number which IS NOT divisible by quantum value', () => {
+                ['3', '5', '7', '9', '11', '14', '19'].forEach((value) => {
+                    test(`${value}`, async () => {
+                        await inputSlider.textfield.fill(value);
+                        await expect(inputSlider.textfield).toHaveValue(value);
+                    });
+                });
+            });
+
+            describe('allows to enter number which IS divisible by quantum value', () => {
+                ['0', '10', '20', '30', '60', '90', '100'].forEach((value) => {
+                    test(`${value}`, async () => {
+                        await inputSlider.textfield.fill(value);
+                        await expect(inputSlider.textfield).toHaveValue(value);
+                    });
+                });
+            });
+
+            describe('rounds invalid number on blur', () => {
+                test('4 => 0', async () => {
+                    await inputSlider.textfield.fill('4');
+                    await inputSlider.textfield.blur();
+                    await expect(inputSlider.textfield).toHaveValue('0');
+                });
+
+                test('5 => 10', async () => {
+                    await inputSlider.textfield.fill('5');
+                    await inputSlider.textfield.blur();
+                    await expect(inputSlider.textfield).toHaveValue('10');
+                });
+
+                test('6 => 10', async () => {
+                    await inputSlider.textfield.fill('6');
+                    await inputSlider.textfield.blur();
+                    await expect(inputSlider.textfield).toHaveValue('10');
+                });
+
+                test('19 => 20', async () => {
+                    await inputSlider.textfield.fill('19');
+                    await inputSlider.textfield.blur();
+                    await expect(inputSlider.textfield).toHaveValue('20');
+                });
+
+                test('77 => 80', async () => {
+                    await inputSlider.textfield.fill('77');
+                    await inputSlider.textfield.blur();
+                    await expect(inputSlider.textfield).toHaveValue('80');
+                });
+            });
+
+            describe('form control always contains only number which IS divisible by quantum value', () => {
+                test('4 => 0', async () => {
+                    await inputSlider.textfield.fill('4');
+                    await expect(example).toContainText('"testValue": 0');
+                    await inputSlider.textfield.blur();
+                    await expect(example).toContainText('"testValue": 0');
+                });
+
+                test('5 => 10', async () => {
+                    await inputSlider.textfield.fill('5');
+                    await expect(example).toContainText('"testValue": 10');
+                    await inputSlider.textfield.blur();
+                    await expect(example).toContainText('"testValue": 10');
+                });
+
+                test('77 => 80', async () => {
+                    await inputSlider.textfield.fill('77');
+                    await expect(example).toContainText('"testValue": 80');
+                    await inputSlider.textfield.blur();
+                    await expect(example).toContainText('"testValue": 80');
+                });
+            });
+        });
+    });
+
     describe('[disabled] prop', () => {
         test('disables both textfield and slider when host component has disabled state', async ({
             page,
