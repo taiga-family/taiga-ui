@@ -1,3 +1,14 @@
+/**
+ * Performance tests for the Tabs component
+ *
+ * This test suite measures the performance of various tabs operations:
+ * - Initial rendering time for tabs component
+ * - Tab switching response time
+ * - Tabs with more dropdown performance
+ * - Multiple tabs handling and rapid switching
+ *
+ * All performance thresholds are set to reasonable values based on expected user experience.
+ */
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiTabsPO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
