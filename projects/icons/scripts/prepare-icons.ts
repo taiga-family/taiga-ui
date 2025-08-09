@@ -10,15 +10,16 @@ const dest = process.argv[2] || path.join(process.cwd(), 'projects', 'icons', 's
 
 fs.readdirSync(src).forEach((filename: string) => {
     const filledFilename = renameToFilled(filename);
-    const content = prepareSvg(fs.readFileSync(path.join(src, filename), 'utf-8'));
+    const content = prepareSvg(
+        fs.readFileSync(path.join(src, filename), 'utf-8'),
+    ).replace(
+        'stroke-width="2"',
+        'stroke-width="calc(100vw / 12)" preserveAspectRatio="xMinYMin meet"',
+    );
+
+    const filled = content.replaceAll('fill="none"', 'fill="currentColor"');
     const filePath = path.join(dest, filename);
     const fileFilledPath = path.join(dest, filledFilename);
-    const filled = content
-        .replaceAll('fill="none"', 'fill="currentColor"')
-        .replace(
-            'stroke-width="2"',
-            'stroke-width="calc(100vw / 12)" preserveAspectRatio="xMinYMin meet"',
-        );
 
     fs.writeFileSync(filePath, content);
     verbose && console.info('copied:', filePath);

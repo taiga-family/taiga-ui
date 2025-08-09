@@ -5,5 +5,5 @@ export function prepareSvg(svg: string): string {
             /<(circle|ellipse|line|polygon|polyline|path|rect)/g,
             '<$1 vector-effect="non-scaling-stroke"',
         )
-        .replaceAll(/<!--.*?-->/g, '');
+        .replaceAll(/<!--.*?-->/g, '')x;
 }
