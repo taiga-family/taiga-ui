@@ -1,4 +1,12 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {
+    computed,
+    Directive,
+    effect,
+    inject,
+    Input,
+    signal,
+    untracked,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoDateMode, maskitoDateOptionsGenerator} from '@maskito/kit';
@@ -89,8 +97,10 @@ export abstract class TuiInputDateBase<
 
     protected readonly valueEffect = effect(() => {
         const value =
-            this.stringify(this.value()) ||
-            (this.filler().length === this.el.value.length ? '' : this.el.value);
+            this.stringify(untracked(() => this.value())) ||
+            (untracked(() => this.filler()).length === this.el.value.length
+                ? ''
+                : this.el.value);
 
         this.textfield.value.set(value);
     }, TUI_ALLOW_SIGNAL_WRITES);
@@ -146,15 +156,14 @@ export abstract class TuiInputDateBase<
     }
 
     protected processCalendar(calendar: TuiCalendar | TuiCalendarRange): void {
-        const value = this.value();
+        const value = untracked(() => this.value());
 
         calendar.value = Array.isArray(value) ? value[0] : value;
-        calendar.disabledItemHandler =
-            this.handlers.disabledItemHandler() as TuiBooleanHandler<
-                TuiDay | TuiDayRange
-            >;
-        calendar.min = this.min();
-        calendar.max = this.max();
+        calendar.disabledItemHandler = untracked(() =>
+            this.handlers.disabledItemHandler(),
+        ) as TuiBooleanHandler<TuiDay | TuiDayRange>;
+        calendar.min = untracked(() => this.min());
+        calendar.max = untracked(() => this.max());
     }
 
     protected onClick(): void {
