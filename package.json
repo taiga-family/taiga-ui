@@ -101,6 +101,16 @@
     "jest": {
         "preset": "@taiga-ui/jest-config"
     },
+    "overrides": {
+        "jest-preset-angular": {
+            "@angular/core": "$@angular/core",
+            "@angular/common": "$@angular/common",
+            "@angular/compiler-cli": "$@angular/compiler-cli",
+            "@angular/compiler": "$@angular/compiler",
+            "@angular/platform-browser": "$@angular/platform-browser",
+            "@angular/platform-browser-dynamic": "$@angular/platform-browser-dynamic"
+        }
+    },
     "devDependencies": {
         "@angular-devkit/build-angular": "16.2.16",
         "@angular-devkit/core": "16.2.16",
@@ -114,21 +124,22 @@
         "@angular/core": "16.2.12",
         "@angular/forms": "16.2.12",
         "@angular/platform-browser": "16.2.12",
+        "@angular/platform-browser-dynamic": "16.2.12",
         "@angular/router": "16.2.12",
         "@nx/angular": "20.1.4",
         "@nx/jest": "20.1.4",
         "@nx/workspace": "20.1.4",
         "@schematics/angular": "16.2.16",
-        "@taiga-ui/browserslist-config": "0.308.0",
-        "@taiga-ui/commitlint-config": "0.308.0",
-        "@taiga-ui/cspell-config": "0.308.0",
-        "@taiga-ui/design-tokens": "0.238.0",
-        "@taiga-ui/eslint-plugin-experience-next": "0.308.0",
+        "@taiga-ui/browserslist-config": "0.309.0",
+        "@taiga-ui/commitlint-config": "0.309.0",
+        "@taiga-ui/cspell-config": "0.309.0",
+        "@taiga-ui/design-tokens": "0.239.0",
+        "@taiga-ui/eslint-plugin-experience-next": "0.309.0",
         "@taiga-ui/event-plugins": "4.6.0",
-        "@taiga-ui/jest-config": "0.308.0",
-        "@taiga-ui/prettier-config": "0.308.0",
-        "@taiga-ui/stylelint-config": "0.308.0",
-        "@taiga-ui/tsconfig": "0.308.0",
+        "@taiga-ui/jest-config": "0.309.0",
+        "@taiga-ui/prettier-config": "0.309.0",
+        "@taiga-ui/stylelint-config": "0.309.0",
+        "@taiga-ui/tsconfig": "0.309.0",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
         "@types/markdown-it": "14.1.2",
