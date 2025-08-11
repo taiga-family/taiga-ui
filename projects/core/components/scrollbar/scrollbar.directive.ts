@@ -1,11 +1,16 @@
 import {Directive, ElementRef, inject, INJECTOR, Injector, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {
     MutationObserverService,
     provideMutationObserverInit,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {
+    tuiScrollFrom,
+    tuiZonefree,
+    tuiZonefreeScheduler,
+} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {
@@ -13,7 +18,6 @@ import {
     debounceTime,
     distinctUntilChanged,
     EMPTY,
-    fromEvent,
     map,
     merge,
     type Observable,
@@ -65,7 +69,7 @@ export class TuiScrollbarDirective {
     private readonly debounceMs = Number(
         (typeof window !== 'undefined' &&
             sessionStorage.getItem('tui-scrollbar-debounce')) ??
-            '100',
+            '50',
     );
 
     private readonly throttleMs = Number(
@@ -82,6 +86,10 @@ export class TuiScrollbarDirective {
     private readonly mutationEnabled =
         typeof window === 'undefined' ||
         sessionStorage.getItem('tui-scrollbar-no-mutation') !== '1';
+
+    private readonly useRafMode =
+        typeof window !== 'undefined' &&
+        sessionStorage.getItem('tui-scrollbar-raf') === '1';
 
     private readonly resizeObserverService = Injector.create({
         providers: [
@@ -101,8 +109,6 @@ export class TuiScrollbarDirective {
                 childList: true,
                 characterData: true,
                 subtree: true,
-                attributes: true, // Watch for attribute changes (e.g., src loading)
-                attributeFilter: ['src', 'style', 'class'], // Focus on attributes that might affect dimensions
             }),
             {
                 provide: ElementRef,
@@ -111,6 +117,9 @@ export class TuiScrollbarDirective {
         ],
         parent: this.injector,
     }).get(MutationObserverService);
+
+    @Input()
+    public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     protected readonly scrollSub = inject(TuiScrollbarService)
         .pipe(takeUntilDestroyed())
@@ -126,141 +135,139 @@ export class TuiScrollbarDirective {
             this.el.style.scrollBehavior = '';
         });
 
-    protected readonly styleSub = (
-        merge(
-            // Enhanced ResizeObserver to capture both initial and ongoing changes
-            this.resizeObserverService.pipe(
-                map(() => ({
-                    clientHeight: this.el.clientHeight,
-                    clientWidth: this.el.clientWidth,
-                    scrollHeight: this.el.scrollHeight,
-                    scrollWidth: this.el.scrollWidth,
-                })),
-                debounceTime(this.debounceMs),
-            ),
-            this.mutationEnabled
-                ? this.mutationObserverService.pipe(
-                      map(() => ({
-                          scrollHeight: this.el.scrollHeight,
-                          scrollWidth: this.el.scrollWidth,
-                          clientHeight: this.el.clientHeight,
-                          clientWidth: this.el.clientWidth,
-                      })),
-                      debounceTime(this.debounceMs),
-                  )
-                : (EMPTY as any),
-            // Listen for various dynamic content load events
-            this.mutationEnabled
-                ? merge(
-                      // Image load events
-                      fromEvent(this.el, 'load', {capture: true}).pipe(
-                          map((event: Event) => {
-                              const target = event.target;
+    protected readonly styleSub = this.useRafMode
+        ? this.rafBasedSubscription
+        : this.eventBasedSubscription;
 
-                              // Handle images, iframes, and other loadable elements
-                              if (
-                                  target instanceof HTMLImageElement ||
-                                  target instanceof HTMLIFrameElement ||
-                                  target instanceof HTMLVideoElement
-                              ) {
-                                  return {
-                                      scrollHeight: this.el.scrollHeight,
-                                      scrollWidth: this.el.scrollWidth,
-                                      clientHeight: this.el.clientHeight,
-                                      clientWidth: this.el.clientWidth,
-                                  };
-                              }
-
-                              return null;
-                          }),
-                      ),
-                      // Font load events that might affect text dimensions
-                      fromEvent(document.fonts, 'loadingdone').pipe(
-                          map(() => ({
-                              scrollHeight: this.el.scrollHeight,
-                              scrollWidth: this.el.scrollWidth,
-                              clientHeight: this.el.clientHeight,
-                              clientWidth: this.el.clientWidth,
-                          })),
-                      ),
-                      // Animation events that might affect layout
-                      merge(
-                          fromEvent(this.el, 'animationend', {capture: true}),
-                          fromEvent(this.el, 'transitionend', {capture: true}),
-                      ).pipe(
-                          map(() => ({
-                              scrollHeight: this.el.scrollHeight,
-                              scrollWidth: this.el.scrollWidth,
-                              clientHeight: this.el.clientHeight,
-                              clientWidth: this.el.clientWidth,
-                          })),
-                      ),
-                  ).pipe(
-                      // Filter out null values
-                      map(
-                          (dimensions) =>
-                              dimensions || {
-                                  scrollHeight: this.el.scrollHeight,
-                                  scrollWidth: this.el.scrollWidth,
-                                  clientHeight: this.el.clientHeight,
-                                  clientWidth: this.el.clientWidth,
-                              },
-                      ),
-                      // Small debounce to batch multiple events
-                      debounceTime(50),
-                  )
-                : (EMPTY as any),
-            tuiScrollFrom(this.el).pipe(
-                this.pipelineMode === 'audit'
-                    ? auditTime(this.throttleMs)
-                    : throttleTime(this.throttleMs, undefined, {trailing: true}),
-                map(() => ({
-                    scrollTop: this.el.scrollTop,
-                    scrollLeft: this.el.scrollLeft,
-                })),
+    // Original RAF-based implementation for baseline comparison
+    private get rafBasedSubscription(): any {
+        return merge(
+            inject(WA_ANIMATION_FRAME).pipe(
+                throttleTime(this.throttleMs, tuiZonefreeScheduler()),
             ),
-        ) as Observable<Partial<ComputedDimension>>
-    )
-        .pipe(
-            scan((prev: ComputedDimension, current: Partial<ComputedDimension>) => {
-                const next = {...prev, ...current};
-
-                return next;
-            }, TuiScrollbarDirective.initialDimensions),
-            distinctUntilChanged(
-                (a: ComputedDimension, b: ComputedDimension) =>
-                    a.scrollTop === b.scrollTop &&
-                    a.scrollLeft === b.scrollLeft &&
-                    a.clientHeight === b.clientHeight &&
-                    a.clientWidth === b.clientWidth &&
-                    a.scrollHeight === b.scrollHeight &&
-                    a.scrollWidth === b.scrollWidth,
-            ),
-            tuiZonefree(),
-            takeUntilDestroyed(),
+            tuiScrollFrom(this.el),
         )
-        .subscribe((dimension) => {
-            const t0 = this.perfEnabled ? performance.now() : 0;
+            .pipe(tuiZonefree(), takeUntilDestroyed())
+            .subscribe(() => {
+                const t0 = this.perfEnabled ? performance.now() : 0;
 
-            this.updateThumbStyles(dimension);
-
-            if (this.perfEnabled) {
-                const dt = performance.now() - t0;
-                const w = window as unknown as {
-                    __tuiScrollbarPerf?: {updates: number; totalMs: number};
+                const dimension: ComputedDimension = {
+                    scrollTop: this.el.scrollTop,
+                    scrollHeight: this.el.scrollHeight,
+                    clientHeight: this.el.clientHeight,
+                    scrollLeft: this.el.scrollLeft,
+                    scrollWidth: this.el.scrollWidth,
+                    clientWidth: this.el.clientWidth,
                 };
 
-                if (!w.__tuiScrollbarPerf) {
-                    w.__tuiScrollbarPerf = {updates: 0, totalMs: 0};
+                const thumb = `${(this.getThumb(dimension) * 100).toFixed(2)}%`;
+                const view = `${(this.getView(dimension) * 100).toFixed(2)}%`;
+
+                if (this.tuiScrollbar === 'vertical') {
+                    this.style.top = thumb;
+                    this.style.height = view;
+                } else {
+                    this.style.left = thumb;
+                    (this.style as any).insetInlineStart = thumb;
+                    this.style.width = view;
                 }
 
-                w.__tuiScrollbarPerf.updates += 1;
-                w.__tuiScrollbarPerf.totalMs += dt;
-            }
-        });
+                if (this.perfEnabled) {
+                    const dt = performance.now() - t0;
+                    const w = window as unknown as {
+                        __tuiScrollbarPerf?: {updates: number; totalMs: number};
+                    };
 
-    @Input()
-    public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
+                    if (!w.__tuiScrollbarPerf) {
+                        w.__tuiScrollbarPerf = {updates: 0, totalMs: 0};
+                    }
+
+                    w.__tuiScrollbarPerf.updates += 1;
+                    w.__tuiScrollbarPerf.totalMs += dt;
+                }
+            });
+    }
+
+    // Event-driven implementation for optimization comparison
+    private get eventBasedSubscription(): any {
+        return (
+            merge(
+                // Dimension changes (size/content) - moderate debounce for performance
+                this.resizeObserverService.pipe(
+                    map(() => ({
+                        clientHeight: this.el.clientHeight,
+                        clientWidth: this.el.clientWidth,
+                        scrollHeight: this.el.scrollHeight,
+                        scrollWidth: this.el.scrollWidth,
+                    })),
+                    debounceTime(this.debounceMs),
+                ),
+                this.mutationEnabled
+                    ? this.mutationObserverService.pipe(
+                          map(() => ({
+                              scrollHeight: this.el.scrollHeight,
+                              scrollWidth: this.el.scrollWidth,
+                              clientHeight: this.el.clientHeight,
+                              clientWidth: this.el.clientWidth,
+                          })),
+                          debounceTime(this.debounceMs),
+                      )
+                    : (EMPTY as any),
+                // Scroll position changes - immediate response with light throttling
+                tuiScrollFrom(this.el).pipe(
+                    this.pipelineMode === 'audit'
+                        ? auditTime(this.throttleMs)
+                        : throttleTime(this.throttleMs, undefined, {trailing: true}),
+                    map(() => ({
+                        scrollTop: this.el.scrollTop,
+                        scrollLeft: this.el.scrollLeft,
+                        // Also update dimensions on scroll to ensure freshness
+                        clientHeight: this.el.clientHeight,
+                        clientWidth: this.el.clientWidth,
+                        scrollHeight: this.el.scrollHeight,
+                        scrollWidth: this.el.scrollWidth,
+                    })),
+                ),
+            ) as Observable<Partial<ComputedDimension>>
+        )
+            .pipe(
+                scan((prev: ComputedDimension, current: Partial<ComputedDimension>) => {
+                    const next = {...prev, ...current};
+
+                    return next;
+                }, TuiScrollbarDirective.initialDimensions),
+                distinctUntilChanged(
+                    (a: ComputedDimension, b: ComputedDimension) =>
+                        a.scrollTop === b.scrollTop &&
+                        a.scrollLeft === b.scrollLeft &&
+                        a.clientHeight === b.clientHeight &&
+                        a.clientWidth === b.clientWidth &&
+                        a.scrollHeight === b.scrollHeight &&
+                        a.scrollWidth === b.scrollWidth,
+                ),
+                tuiZonefree(),
+                takeUntilDestroyed(),
+            )
+            .subscribe((dimension) => {
+                const t0 = this.perfEnabled ? performance.now() : 0;
+
+                this.updateThumbStyles(dimension);
+
+                if (this.perfEnabled) {
+                    const dt = performance.now() - t0;
+                    const w = window as unknown as {
+                        __tuiScrollbarPerf?: {updates: number; totalMs: number};
+                    };
+
+                    if (!w.__tuiScrollbarPerf) {
+                        w.__tuiScrollbarPerf = {updates: 0, totalMs: 0};
+                    }
+
+                    w.__tuiScrollbarPerf.updates += 1;
+                    w.__tuiScrollbarPerf.totalMs += dt;
+                }
+            });
+    }
 
     private updateThumbStyles(dimension: ComputedDimension): void {
         const thumbValue = this.getThumb(dimension);

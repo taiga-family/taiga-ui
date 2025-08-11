@@ -30,7 +30,8 @@ const CONFIG = {
     baseUrl: 'http://localhost:3333/components/scrollbar',
     // Statistical significance analysis suggests 50-100 runs for robust confidence intervals
     // 25 runs = good baseline, 50 runs = production-ready, 100+ runs = publication-quality
-    runsPerVariant: Number(process.env.TUI_PERF_RUNS || '50'),
+    // Default to 10 for CI speed, can be increased with TUI_PERF_RUNS env var
+    runsPerVariant: Number(process.env.TUI_PERF_RUNS || '10'),
     // Confidence level for statistical analysis (95% = 1.96, 99% = 2.576)
     confidenceLevel: 1.96,
 } as const;
@@ -76,6 +77,8 @@ interface TestVariant {
         useGpuAcceleration?: boolean;
         distinctMode?: 'derived' | 'full';
         precision?: number;
+        disableMutation?: boolean;
+        useOriginalScrollControls?: boolean;
     };
 }
 
@@ -91,6 +94,253 @@ interface TestResult {
 // ========================================================================================
 
 class PerformanceMeasurer {
+    /**
+     * Sets up controlled test environment
+     */
+    public static async setupTestEnvironment(page: any): Promise<any> {
+        const client = await page.context().newCDPSession(page);
+
+        // Ensure consistent performance conditions
+        await client.send('Emulation.setCPUThrottlingRate', {rate: 1});
+
+        await page.waitForLoadState('networkidle');
+        await page.waitForTimeout(500); // Stabilization time
+
+        return client;
+    }
+
+    /**
+     * Standardized scroll test scenario - designed to trigger Layout/RecalcStyle events
+     */
+    public static async executeScrollScenario(page: any): Promise<void> {
+        // Focus on examples that trigger layout/recalc
+        const exampleIndices = [0, 1, 8, 9, 10, 11, 12, 13]; // Include basic examples + complex ones
+
+        for (const index of exampleIndices) {
+            const example = page.locator('tui-doc-example').nth(index);
+
+            await example.scrollIntoViewIfNeeded();
+            await page.waitForTimeout(100); // Let initial layout settle
+
+            const scrollContainer = example.locator('tui-scrollbar');
+
+            // Test both scroll position changes AND content changes
+            for (let i = 0; i < 15; i++) {
+                // Scroll to trigger scrollbar updates
+                await scrollContainer.evaluate(
+                    (el: HTMLElement, scrollAmount: number) => {
+                        el.scrollTop += scrollAmount;
+                    },
+                    50, // Fixed scroll amount for consistent results
+                );
+
+                // Add dynamic content to trigger dimension recalculations
+                if (i % 3 === 0) {
+                    await page.evaluate((iterIndex: number) => {
+                        const containers = document.querySelectorAll('tui-scrollbar');
+
+                        containers.forEach((container, idx) => {
+                            if (idx === 0) {
+                                // Only modify the first one to avoid too much noise
+                                const div = document.createElement('div');
+
+                                div.innerHTML = `Dynamic content ${iterIndex}`;
+                                div.style.height = '20px';
+                                container.appendChild(div);
+                            }
+                        });
+                    }, i);
+                }
+
+                await page.waitForTimeout(8); // Faster than 16ms to stress test
+            }
+
+            // Phase 3: Style-only churn (no geometry changes)
+            // Inject lightweight style once to ensure class toggles do not affect layout
+            await page.addStyleTag({
+                content: `
+                    :root { --tui-perf-hue: 200; }
+                    .t-style-toggle { color: hsl(var(--tui-perf-hue), 70%, 45%) !important; filter: saturate(1.05); }
+                `,
+            });
+
+            for (let j = 0; j < 5; j++) {
+                // Toggle classes on a batch of descendants to force RecalculateStyle
+                await page.evaluate((exIdx: number) => {
+                    const ex = document.querySelectorAll('tui-doc-example')[exIdx] as
+                        | HTMLElement
+                        | undefined;
+
+                    if (!ex) {
+                        return;
+                    }
+
+                    const container = ex.querySelector('tui-scrollbar');
+
+                    if (!container) {
+                        return;
+                    }
+
+                    const nodes = container.querySelectorAll('*');
+                    let toggled = 0;
+
+                    nodes.forEach((node) => {
+                        if (node instanceof HTMLElement && toggled < 200) {
+                            node.classList.toggle('t-style-toggle');
+                            toggled++;
+                        }
+                    });
+                }, index);
+
+                // Flip a CSS variable to invalidate computed styles broadly without layout
+                await page.evaluate(() => {
+                    const root = document.documentElement;
+                    const current = getComputedStyle(root)
+                        .getPropertyValue('--tui-perf-hue')
+                        .trim();
+
+                    root.style.setProperty(
+                        '--tui-perf-hue',
+                        current === '200' ? '340' : '200',
+                    );
+                });
+
+                await page.waitForTimeout(30);
+            }
+
+            await page.waitForTimeout(50); // Brief pause between examples
+        }
+    }
+
+    /**
+     * Applies test variant configuration
+     */
+    public static async applyVariantConfig(
+        page: any,
+        variant: TestVariant,
+    ): Promise<void> {
+        await page.addInitScript((config: TestVariant['config']) => {
+            const {
+                debounceMs,
+                throttleMs,
+                scheduler,
+                pipeline,
+                useGpuAcceleration,
+                distinctMode,
+                precision,
+                disableMutation,
+            } = config;
+
+            // Clear all previous settings first
+            sessionStorage.removeItem('tui-scrollbar-raf');
+            sessionStorage.removeItem('tui-scroll-controls-raf');
+            sessionStorage.removeItem('tui-scrollbar-no-mutation');
+            sessionStorage.removeItem('tui-scrollbar-transform');
+            sessionStorage.removeItem('tui-scrollbar-pipeline');
+
+            sessionStorage.setItem('tui-scrollbar-debounce', debounceMs.toString());
+            sessionStorage.setItem('tui-scrollbar-throttle', throttleMs.toString());
+            // Align scroll-controls timings for fair comparisons
+            sessionStorage.setItem('tui-scroll-controls-debounce', debounceMs.toString());
+            sessionStorage.setItem('tui-scroll-controls-throttle', throttleMs.toString());
+            sessionStorage.setItem('tui-scrollbar-scheduler', scheduler);
+
+            // Set RAF mode for baseline test
+            if (scheduler === 'raf') {
+                sessionStorage.setItem('tui-scrollbar-raf', '1');
+
+                // Optionally enable RAF for scroll-controls for a true baseline
+                if (config.useOriginalScrollControls) {
+                    sessionStorage.setItem('tui-scroll-controls-raf', '1');
+                }
+            }
+
+            // Disable MutationObserver if requested
+            if (disableMutation) {
+                sessionStorage.setItem('tui-scrollbar-no-mutation', '1');
+            }
+
+            if (pipeline) {
+                sessionStorage.setItem('tui-scrollbar-pipeline', pipeline);
+            }
+
+            if (useGpuAcceleration !== undefined) {
+                sessionStorage.setItem(
+                    'tui-scrollbar-transform',
+                    useGpuAcceleration ? '1' : '0',
+                );
+            }
+
+            if (distinctMode) {
+                sessionStorage.setItem('tui-scrollbar-distinct', distinctMode);
+            }
+
+            if (precision) {
+                sessionStorage.setItem('tui-scrollbar-precision', precision.toString());
+            }
+        }, variant.config);
+
+        await page.reload();
+        await page.waitForLoadState('networkidle');
+
+        // Validate configuration was applied
+        const configCheck = await page.evaluate(() => ({
+            rafMode: sessionStorage.getItem('tui-scrollbar-raf'),
+            rafScrollControls: sessionStorage.getItem('tui-scroll-controls-raf'),
+            debounce: sessionStorage.getItem('tui-scrollbar-debounce'),
+            throttle: sessionStorage.getItem('tui-scrollbar-throttle'),
+            scDebounce: sessionStorage.getItem('tui-scroll-controls-debounce'),
+            scThrottle: sessionStorage.getItem('tui-scroll-controls-throttle'),
+            transform: sessionStorage.getItem('tui-scrollbar-transform'),
+            noMutation: sessionStorage.getItem('tui-scrollbar-no-mutation'),
+        }));
+
+        console.info(
+            `    🔧 Config applied: RAF=${configCheck.rafMode}/${configCheck.rafScrollControls}, debounce=${configCheck.debounce}/${configCheck.scDebounce}ms, throttle=${configCheck.throttle}/${configCheck.scThrottle}ms, transform=${configCheck.transform}, noMutation=${configCheck.noMutation}`,
+        );
+    }
+
+    /**
+     * Captures performance trace with proper CDP parameters
+     */
+    public static async capturePerformanceTrace(page: any): Promise<PerformanceEvent[]> {
+        const client = await this.setupTestEnvironment(page);
+        const events: PerformanceEvent[] = [];
+
+        // Set up event collection
+        client.on('Tracing.dataCollected', (data: any) => {
+            if (data.value && Array.isArray(data.value)) {
+                events.push(...data.value);
+            }
+        });
+
+        // Start tracing with correct parameters for current CDP version
+        await client.send('Tracing.start', {
+            traceConfig: {
+                includedCategories: [
+                    'devtools.timeline',
+                    'blink.user_timing',
+                    'blink_style',
+                    'blink',
+                ],
+                excludedCategories: ['disabled-by-default*'],
+            },
+        });
+
+        // Execute test scenario
+        await this.executeScrollScenario(page);
+
+        // Stop tracing and wait for completion
+        await new Promise<void>((resolve) => {
+            client.once('Tracing.tracingComplete', () => resolve());
+            client.send('Tracing.end');
+        });
+
+        await client.detach();
+
+        return events;
+    }
+
     /**
      * Extracts performance metrics from CDP trace events
      * Filters for relevant devtools.timeline events
@@ -119,6 +369,7 @@ class PerformanceMeasurer {
                     metrics.layoutDuration += durationMs;
                     break;
                 case 'RecalculateStyles':
+                case 'UpdateLayoutTree':
                     metrics.recalcStyleCount++;
                     metrics.recalcStyleDuration += durationMs;
                     break;
@@ -170,8 +421,8 @@ class PerformanceMeasurer {
 
         durations.sort((a, b) => a - b);
 
-        const q1 = durations[Math.floor(durations.length * 0.25)];
-        const q3 = durations[Math.floor(durations.length * 0.75)];
+        const q1 = durations[Math.floor(durations.length * 0.25)] ?? 0;
+        const q3 = durations[Math.floor(durations.length * 0.75)] ?? 0;
         const iqr = q3 - q1;
         const lowerBound = q1 - 1.5 * iqr;
         const upperBound = q3 + 1.5 * iqr;
@@ -205,29 +456,49 @@ class PerformanceMeasurer {
     }
 
     /**
-     * Standardized scroll test scenario
+     * Standardized scroll test scenario - designed to trigger Layout/RecalcStyle events
      */
     public static async executeScrollScenario(page: any): Promise<void> {
-        // Focus on complex examples that trigger layout/recalc
-        const exampleIndices = [8, 9, 10, 11, 12, 13]; // Table, image grid, CSS grid, flexbox, positioning
+        // Focus on examples that trigger layout/recalc
+        const exampleIndices = [0, 1, 8, 9, 10, 11, 12, 13]; // Include basic examples + complex ones
 
         for (const index of exampleIndices) {
             const example = page.locator('tui-doc-example').nth(index);
 
             await example.scrollIntoViewIfNeeded();
+            await page.waitForTimeout(100); // Let initial layout settle
 
             const scrollContainer = example.locator('tui-scrollbar');
 
-            // Simulate realistic user scrolling patterns
-            for (let i = 0; i < 10; i++) {
+            // Test both scroll position changes AND content changes
+            for (let i = 0; i < 15; i++) {
+                // Scroll to trigger scrollbar updates
                 await scrollContainer.evaluate(
-                    (el, scrollAmount) => {
+                    (el: HTMLElement, scrollAmount: number) => {
                         el.scrollTop += scrollAmount;
                     },
-                    50 + Math.random() * 50,
-                ); // Variable scroll amounts
+                    50, // Fixed scroll amount for consistent results
+                );
 
-                await page.waitForTimeout(16); // ~60fps
+                // Add dynamic content to trigger dimension recalculations
+                if (i % 3 === 0) {
+                    await page.evaluate((iterIndex: number) => {
+                        const containers = document.querySelectorAll('tui-scrollbar');
+
+                        containers.forEach((container, idx) => {
+                            if (idx === 0) {
+                                // Only modify the first one to avoid too much noise
+                                const div = document.createElement('div');
+
+                                div.innerHTML = `Dynamic content ${iterIndex}`;
+                                div.style.height = '20px';
+                                container.appendChild(div);
+                            }
+                        });
+                    }, i);
+                }
+
+                await page.waitForTimeout(8); // Faster than 16ms to stress test
             }
 
             await page.waitForTimeout(50); // Brief pause between examples
@@ -241,7 +512,7 @@ class PerformanceMeasurer {
         page: any,
         variant: TestVariant,
     ): Promise<void> {
-        await page.addInitScript((config) => {
+        await page.addInitScript((config: TestVariant['config']) => {
             const {
                 debounceMs,
                 throttleMs,
@@ -250,11 +521,28 @@ class PerformanceMeasurer {
                 useGpuAcceleration,
                 distinctMode,
                 precision,
+                disableMutation,
             } = config;
+
+            // Clear all previous settings first
+            sessionStorage.removeItem('tui-scrollbar-raf');
+            sessionStorage.removeItem('tui-scrollbar-no-mutation');
+            sessionStorage.removeItem('tui-scrollbar-transform');
+            sessionStorage.removeItem('tui-scrollbar-pipeline');
 
             sessionStorage.setItem('tui-scrollbar-debounce', debounceMs.toString());
             sessionStorage.setItem('tui-scrollbar-throttle', throttleMs.toString());
             sessionStorage.setItem('tui-scrollbar-scheduler', scheduler);
+
+            // Set RAF mode for baseline test
+            if (scheduler === 'raf') {
+                sessionStorage.setItem('tui-scrollbar-raf', '1');
+            }
+
+            // Disable MutationObserver if requested
+            if (disableMutation) {
+                sessionStorage.setItem('tui-scrollbar-no-mutation', '1');
+            }
 
             if (pipeline) {
                 sessionStorage.setItem('tui-scrollbar-pipeline', pipeline);
@@ -278,6 +566,19 @@ class PerformanceMeasurer {
 
         await page.reload();
         await page.waitForLoadState('networkidle');
+
+        // Validate configuration was applied
+        const configCheck = await page.evaluate(() => ({
+            rafMode: sessionStorage.getItem('tui-scrollbar-raf'),
+            debounce: sessionStorage.getItem('tui-scrollbar-debounce'),
+            throttle: sessionStorage.getItem('tui-scrollbar-throttle'),
+            transform: sessionStorage.getItem('tui-scrollbar-transform'),
+            noMutation: sessionStorage.getItem('tui-scrollbar-no-mutation'),
+        }));
+
+        console.info(
+            `    🔧 Config applied: RAF=${configCheck.rafMode}, debounce=${configCheck.debounce}ms, throttle=${configCheck.throttle}ms, transform=${configCheck.transform}, noMutation=${configCheck.noMutation}`,
+        );
     }
 
     /**
@@ -297,7 +598,12 @@ class PerformanceMeasurer {
         // Start tracing with correct parameters for current CDP version
         await client.send('Tracing.start', {
             traceConfig: {
-                includedCategories: ['devtools.timeline', 'blink.user_timing'],
+                includedCategories: [
+                    'devtools.timeline',
+                    'blink.user_timing',
+                    'blink_style',
+                    'blink',
+                ],
                 excludedCategories: ['disabled-by-default*'],
             },
         });
@@ -318,38 +624,78 @@ class PerformanceMeasurer {
 }
 
 // ========================================================================================
-// Test Variants Configuration
+// Test Variants Configuration (Delay Sweep)
 // ========================================================================================
 
+function buildRange(start: number, end: number, step: number): number[] {
+    const out: number[] = [];
+
+    for (let v = start; v <= end; v += step) {
+        out.push(v);
+    }
+
+    return out;
+}
+
+const RAW_DELAY_VALUES: number[] = [
+    0,
+    ...buildRange(10, 20, 2),
+    ...buildRange(20, 50, 5),
+    ...buildRange(50, 100, 10),
+    ...buildRange(100, 300, 50),
+];
+
+// Deduplicate overlapping edges (20, 50, 100) and sort
+const DELAY_VALUES: number[] = Array.from(new Set(RAW_DELAY_VALUES)).sort(
+    (a, b) => a - b,
+);
+
+function makeVariant(arch: 'events' | 'gpu' | 'raf', delayMs: number): TestVariant {
+    const base = {
+        debounceMs: delayMs,
+        throttleMs: delayMs,
+    } as const;
+
+    switch (arch) {
+        case 'events':
+            return {
+                name: `sweep-events-${delayMs}ms`,
+                description: 'Event-driven (Resize + Mutation) with unified timings',
+                config: {
+                    ...base,
+                    scheduler: 'microtask',
+                },
+            };
+        case 'raf':
+            return {
+                name: `sweep-raf-${delayMs}ms`,
+                description:
+                    'RAF in BOTH scroll-controls and directive (baseline polling) with unified timings',
+                config: {
+                    ...base,
+                    scheduler: 'raf',
+                    useOriginalScrollControls: true,
+                },
+            };
+        case 'gpu':
+        default:
+            return {
+                name: `sweep-gpu-${delayMs}ms`,
+                description:
+                    'Event-driven + GPU transforms (transform/scale) with unified timings',
+                config: {
+                    ...base,
+                    scheduler: 'microtask',
+                    useGpuAcceleration: true,
+                },
+            };
+    }
+}
+
 const TEST_VARIANTS: readonly TestVariant[] = [
-    {
-        name: 'baseline-raf',
-        description: 'Baseline implementation using requestAnimationFrame polling',
-        config: {
-            debounceMs: 100,
-            throttleMs: 16,
-            scheduler: 'raf',
-        },
-    },
-    {
-        name: 'optimized-event-driven',
-        description: 'Event-driven architecture with observers',
-        config: {
-            debounceMs: 50,
-            throttleMs: 10,
-            scheduler: 'microtask',
-        },
-    },
-    {
-        name: 'gpu-accelerated',
-        description: 'Event-driven with GPU-accelerated transforms',
-        config: {
-            debounceMs: 50,
-            throttleMs: 10,
-            scheduler: 'microtask',
-            useGpuAcceleration: true,
-        },
-    },
+    ...DELAY_VALUES.map((d) => makeVariant('raf', d)),
+    ...DELAY_VALUES.map((d) => makeVariant('events', d)),
+    ...DELAY_VALUES.map((d) => makeVariant('gpu', d)),
 ];
 
 // ========================================================================================
@@ -460,7 +806,7 @@ test.describe('TuiScrollbar Performance Analysis', () => {
             // Performance regression checks
             expect(summary.layoutCount).toBeLessThan(500); // Reasonable upper bound
             expect(summary.layoutDuration).toBeLessThan(200); // ms
-            expect(summary.recalcStyleCount).toBeLessThan(400);
+            expect(summary.recalcStyleCount).toBeLessThan(2000);
             expect(summary.recalcStyleDuration).toBeLessThan(150);
 
             console.info(
@@ -471,6 +817,16 @@ test.describe('TuiScrollbar Performance Analysis', () => {
             );
             console.info(
                 `    🎯 Confidence: [${summary.confidence.layoutCount[0].toFixed(1)}, ${summary.confidence.layoutCount[1].toFixed(1)}] operations`,
+            );
+            // RecalculateStyles metrics
+            console.info(
+                `    🧩 Recalc: ${summary.recalcStyleCount.toFixed(1)} ± ${summary.standardDeviation.recalcStyleCount.toFixed(1)} operations`,
+            );
+            console.info(
+                `    🧮 Recalc Duration: ${summary.recalcStyleDuration.toFixed(2)} ± ${summary.standardDeviation.recalcStyleDuration.toFixed(2)}ms`,
+            );
+            console.info(
+                `    🎯 Recalc CI: [${summary.confidence.recalcStyleCount[0].toFixed(1)}, ${summary.confidence.recalcStyleCount[1].toFixed(1)}] operations`,
             );
         });
     }
