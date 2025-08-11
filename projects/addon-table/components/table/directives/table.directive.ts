@@ -33,6 +33,8 @@ import {
 } from '../table.options';
 import {TuiStuck} from './stuck.directive';
 
+const EMPTY_COMPARATOR: TuiComparator<unknown> = () => 0;
+
 @Component({
     standalone: true,
     template: '',
@@ -78,6 +80,9 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
     @Input()
     public direction = this.options.direction;
 
+    @Input()
+    public sorter: TuiComparator<T> = EMPTY_COMPARATOR;
+
     /**
      * @deprecated: use sortChange
      */
@@ -116,9 +121,6 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
         this.size.set(size);
     }
 
-    @Input()
-    public sorter: TuiComparator<T> = () => 0;
-
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
             this.updateSorter(
@@ -144,7 +146,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
         sorter: TuiComparator<T> | null,
         direction: TuiSortDirection = TuiSortDirection.Asc,
     ): void {
-        this.sorter = sorter || this.sorter;
+        this.sorter = sorter || EMPTY_COMPARATOR;
         this.direction = direction;
         this.sorterChange.emit(sorter);
         this.directionChange.emit(this.direction);
