@@ -566,7 +566,9 @@ class ResultsManager {
 // Test Suite
 // ========================================================================================
 
-test.describe('TuiScrollbar Performance Analysis', () => {
+test.describe('TuiScrollbar Performance Analysis @perf', () => {
+    // Run serially for stable CDP tracing and consistent timings in CI
+    test.describe.configure({mode: 'serial'});
     test.setTimeout(120000); // 2 minutes per test
 
     test.beforeEach(async ({page}) => {

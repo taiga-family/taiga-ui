@@ -323,9 +323,11 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
 
             await Promise.all(scrollPromises);
 
-            // Verify all scrollbars are still functional
-            for (let i = 0; i < 3; i++) {
-                const thumb = examples[i].locator('.t-thumb').first();
+            // Verify all scrollbars are still functional (guard against pages with < 3 examples)
+            const checkCount = Math.min(3, examples.length);
+
+            for (let i = 0; i < checkCount; i++) {
+                const thumb = examples[i]!.locator('.t-thumb').first();
 
                 await expect(thumb).toBeVisible();
             }
