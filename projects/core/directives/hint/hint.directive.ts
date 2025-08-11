@@ -60,7 +60,7 @@ export class TuiHintDirective<C>
     public appearance = inject(TUI_HINT_OPTIONS).appearance;
 
     @Output('tuiHintVisible')
-    public readonly tuiHintVisible = new EventEmitter<boolean>();
+    public readonly visible = new EventEmitter<boolean>();
 
     public content = signal<PolymorpheusContent<C>>(null);
     public component = inject(PolymorpheusComponent<unknown>);
@@ -92,6 +92,6 @@ export class TuiHintDirective<C>
             this.service.remove(this);
         }
 
-        this.tuiHintVisible.emit(show);
+        this.visible.emit(show);
     }
 }
