@@ -67,6 +67,15 @@ export default defineConfig({
                   },
               }
             : null,
+        // Dedicated perf project to allow selecting only @perf tests on chromium in CI
+        {
+            name: 'chromium-perf',
+            use: {
+                ...devices['Desktop Chrome HiDPI'],
+                viewport: DEFAULT_VIEWPORT,
+            },
+            grep: /@perf/,
+        },
     ].filter(<T>(x: T | null): x is T => !!x),
     expect: {
         toHaveScreenshot: {

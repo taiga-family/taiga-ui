@@ -93,7 +93,7 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
             await expect(scrollbar).toBeVisible();
 
             // Get initial scrollbar size
-            // const initialSize = await scrollbar.boundingBox();
+            const initialSize = await scrollbar.boundingBox();
 
             // Refresh the page
             await page.reload();
