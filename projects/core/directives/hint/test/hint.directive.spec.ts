@@ -17,7 +17,7 @@ describe('Hint', () => {
                     tuiHintDirection="top"
                     class="host"
                     [tuiHint]="hint"
-                    (tuiHintHoverChange)="hoverStateChanged($event)"
+                    (tuiHintVisible)="hoverStateChanged($event)"
                 >
                     Tooltip host
                 </div>
@@ -82,7 +82,7 @@ describe('Hint', () => {
             expect(getTooltip()?.textContent?.trim()).toBe('Tooltip text');
         });
 
-        it('should emit tuiHintHoverChange on mouseenter/mouseout', fakeAsync(async () => {
+        it('should emit tuiHintVisible on mouseenter/mouseout', fakeAsync(async () => {
             await fixture.whenStable();
             fixture.detectChanges();
 
