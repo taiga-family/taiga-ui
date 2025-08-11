@@ -6553,6 +6553,7 @@ export class Example {
                         [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''"
                         [postfix]="postfix"
                         [prefix]="prefix"
+                        [quantum]="quantum"
                         [readOnly]="controlDoc.readonly"
                         [step]="step"
                         [tuiDisabled]="controlDoc.disabled"
@@ -6577,6 +6578,7 @@ export class Example {
 | [step] | `number` | Step to increase/decrease value with keyboard and buttons on the side |
 | [prefix] | `string` | number |
 | [postfix] | `string` | number |
+| [quantum] | `number` | Minimum indivisible value |
 
 ### TypeScript
 
@@ -6623,6 +6625,7 @@ export default class PageComponent {
     protected step = 0;
     protected prefix = '';
     protected postfix = '';
+    protected quantum = 0.01;
 }
 ```
 ### LESS
@@ -7137,6 +7140,7 @@ export class Example {
                         [min]="min()"
                         [postfix]="postfix"
                         [prefix]="prefix"
+                        [quantum]="quantum"
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                         [tuiNumberFormat]="{
@@ -7166,6 +7170,7 @@ export class Example {
 | [max] | `number` | value in the range of permitted values |
 | [prefix] | `string` | number |
 | [postfix] | `string` | number |
+| [quantum] | `number` | Minimum indivisible value |
 | [step] | `number` |  |
 | [segments] | `number[] | number` | for no ticks) |
 | [keySteps] | `TuiKeySteps | null` | Anchor points of non-uniform format between value and position |
@@ -7213,6 +7218,7 @@ export default class PageComponent {
     protected max = signal(100);
     protected prefix = '';
     protected postfix = '';
+    protected quantum = 0.01;
     protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
