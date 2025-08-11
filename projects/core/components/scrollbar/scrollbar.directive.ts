@@ -13,6 +13,7 @@ import {
     debounceTime,
     distinctUntilChanged,
     EMPTY,
+    fromEvent,
     map,
     merge,
     type Observable,
@@ -139,24 +140,74 @@ export class TuiScrollbarDirective {
             ),
             this.mutationEnabled
                 ? this.mutationObserverService.pipe(
-                      // Enhanced to handle image loading and content changes
-                      map(() => {
-                          // Check for any images that might still be loading
-                          //   const images = this.el.querySelectorAll('img');
-                          //   const allImagesLoaded = Array.from(images).every(
-                          //       (img) => img instanceof HTMLImageElement && img.complete,
-                          //   );
+                      map(() => ({
+                          scrollHeight: this.el.scrollHeight,
+                          scrollWidth: this.el.scrollWidth,
+                          clientHeight: this.el.clientHeight,
+                          clientWidth: this.el.clientWidth,
+                      })),
+                      debounceTime(this.debounceMs),
+                  )
+                : (EMPTY as any),
+            // Listen for various dynamic content load events
+            this.mutationEnabled
+                ? merge(
+                      // Image load events
+                      fromEvent(this.el, 'load', {capture: true}).pipe(
+                          map((event: Event) => {
+                              const target = event.target;
 
-                          return {
+                              // Handle images, iframes, and other loadable elements
+                              if (
+                                  target instanceof HTMLImageElement ||
+                                  target instanceof HTMLIFrameElement ||
+                                  target instanceof HTMLVideoElement
+                              ) {
+                                  return {
+                                      scrollHeight: this.el.scrollHeight,
+                                      scrollWidth: this.el.scrollWidth,
+                                      clientHeight: this.el.clientHeight,
+                                      clientWidth: this.el.clientWidth,
+                                  };
+                              }
+
+                              return null;
+                          }),
+                      ),
+                      // Font load events that might affect text dimensions
+                      fromEvent(document.fonts, 'loadingdone').pipe(
+                          map(() => ({
                               scrollHeight: this.el.scrollHeight,
                               scrollWidth: this.el.scrollWidth,
                               clientHeight: this.el.clientHeight,
                               clientWidth: this.el.clientWidth,
-                              //   _imagesReady: allImagesLoaded,
-                          };
-                      }),
-                      // Use longer debounce when images are loading to allow them to finish
-                      debounceTime(this.debounceMs),
+                          })),
+                      ),
+                      // Animation events that might affect layout
+                      merge(
+                          fromEvent(this.el, 'animationend', {capture: true}),
+                          fromEvent(this.el, 'transitionend', {capture: true}),
+                      ).pipe(
+                          map(() => ({
+                              scrollHeight: this.el.scrollHeight,
+                              scrollWidth: this.el.scrollWidth,
+                              clientHeight: this.el.clientHeight,
+                              clientWidth: this.el.clientWidth,
+                          })),
+                      ),
+                  ).pipe(
+                      // Filter out null values
+                      map(
+                          (dimensions) =>
+                              dimensions || {
+                                  scrollHeight: this.el.scrollHeight,
+                                  scrollWidth: this.el.scrollWidth,
+                                  clientHeight: this.el.clientHeight,
+                                  clientWidth: this.el.clientWidth,
+                              },
+                      ),
+                      // Small debounce to batch multiple events
+                      debounceTime(50),
                   )
                 : (EMPTY as any),
             tuiScrollFrom(this.el).pipe(
@@ -173,21 +224,6 @@ export class TuiScrollbarDirective {
         .pipe(
             scan((prev: ComputedDimension, current: Partial<ComputedDimension>) => {
                 const next = {...prev, ...current};
-
-                // Handle initialization and significant dimension changes
-                // const isInitializing = prev.scrollHeight === 0 && next.scrollHeight > 0;
-                // const hasSignificantChange =
-                //     Math.abs(next.scrollHeight - prev.scrollHeight) > 1;
-
-                // For image grids, we need to be more responsive to dimension changes
-                // if (isInitializing || hasSignificantChange) {
-                //     // Use a microtask to ensure DOM is fully updated
-                //     Promise.resolve().then(() => {
-                //         if (next.scrollHeight > 0) {
-                //             this.updateThumbStyles(next);
-                //         }
-                //     });
-                // }
 
                 return next;
             }, TuiScrollbarDirective.initialDimensions),

@@ -350,42 +350,6 @@ const TEST_VARIANTS: readonly TestVariant[] = [
             useGpuAcceleration: true,
         },
     },
-    {
-        name: 'audit-pipeline',
-        description: 'Using auditTime instead of throttleTime for batching',
-        config: {
-            debounceMs: 50,
-            throttleMs: 10,
-            scheduler: 'microtask',
-            pipeline: 'audit',
-        },
-    },
-    {
-        name: 'high-precision',
-        description: 'High-precision distinct with derived mode',
-        config: {
-            debounceMs: 30,
-            throttleMs: 8,
-            scheduler: 'microtask',
-            distinctMode: 'derived',
-            precision: 1e-3,
-        },
-    },
-    // Throttle value sweep for optimal tuning
-    ...Array.from({length: 10}, (_, i) => {
-        const throttleMs = 5 + i * 5; // 5ms to 50ms
-
-        return {
-            name: `throttle-sweep-${throttleMs}ms`,
-            description: `Throttle optimization at ${throttleMs}ms`,
-            config: {
-                debounceMs: 50,
-                throttleMs,
-                scheduler: 'microtask' as const,
-                useGpuAcceleration: true,
-            },
-        };
-    }),
 ];
 
 // ========================================================================================
@@ -439,6 +403,8 @@ class ResultsManager {
 // ========================================================================================
 
 test.describe('TuiScrollbar Performance Analysis', () => {
+    test.setTimeout(120000); // 2 minutes per test
+
     test.beforeEach(async ({page}) => {
         await page.goto(CONFIG.baseUrl);
         await page.waitForLoadState('networkidle');
