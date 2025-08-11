@@ -1,14 +1,11 @@
-import {pages} from '@demo/modules/app/pages';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-import {tuiGetDemoPathsForE2E} from '../../utils/get-demo-paths';
-
 test.describe('Source code button', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
-    const PUBLIC_DEMO = tuiGetDemoPathsForE2E(pages).length === demoPaths.length;
+    const proprietary = process.env['PROPRIETARY'] === 'true';
 
-    (PUBLIC_DEMO ? demoPaths : []).forEach((path) => {
+    (proprietary ? [] : demoPaths).forEach((path) => {
         test(`${path}`, async ({page, request}) => {
             const sourceCodeLink = new TuiDocumentationPagePO(page).sourceCodeLink;
 
@@ -44,7 +41,7 @@ test.describe('Source code button', () => {
 
     test('ensure GitHub still returns 404 for invalid path', async ({request}) => {
         // eslint-disable-next-line playwright/no-skipped-test
-        test.skip(!PUBLIC_DEMO);
+        test.skip(proprietary);
 
         const response = await request.get(
             'https://github.com/taiga-family/taiga-ui/tree/main/projects/kit/components/invalid-component-name',
