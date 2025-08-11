@@ -20,7 +20,6 @@ interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     hideNightMode?: boolean;
     hidePages?: boolean;
     hideDemo?: boolean;
-    waitStableStateOptions?: Parameters<typeof waitStableState>[1];
 }
 
 export async function tuiGoto(
@@ -37,7 +36,6 @@ export async function tuiGoto(
         enableNightMode = false,
         hidePages = true,
         hideDemo = true,
-        waitStableStateOptions,
         language,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
@@ -87,7 +85,7 @@ export async function tuiGoto(
         icons: await page.locator('tui-icon').all(),
     });
     await tuiWaitForFonts(page);
-    await waitStableState(app, waitStableStateOptions);
+    await waitStableState(app);
 
     if (hideHeader) {
         await tuiHideElement(page.locator('tui-doc-header'));
