@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.review.state == 'approved'
     steps:
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v4.3.0
       - uses: taiga-family/ci/actions/setup/variables@v1.139.0
       - uses: taiga-family/ci/actions/auto/label-when-approved@v1.139.0
         with:
