@@ -4,7 +4,7 @@
     "sourceRoot": "projects/{projectName}",
     "projectType": "application",
     "prefix": "app",
-    "implicitDependencies": ["!testing"],
+    "implicitDependencies": ["!testing", "icons*"],
     "targets": {
         "i18n": {
             "outputs": ["{workspaceRoot}/dist/i18n"],
