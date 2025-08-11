@@ -295,6 +295,9 @@
     <loc>https://taiga-ui.dev/legacy/input-range/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/legacy/input-phone/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/input-date-range/</loc>
   </url>
   <url>
@@ -1198,6 +1201,12 @@
     <loc>https://taiga-ui.dev/legacy/input-range/Setup/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/legacy/input-phone/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/legacy/input-phone/Setup/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/input-date-range/API/</loc>
   </url>
   <url>
@@ -1982,9 +1991,6 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/directives/shimmer/Setup/</loc>
-  </url>
-  <url>
-    <loc>https://taiga-ui.dev//</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/breakpoints/Setup/</loc>
