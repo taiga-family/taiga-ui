@@ -1,4 +1,4 @@
-import {Directive, type FactoryProvider, inject, type ProviderToken} from '@angular/core';
+import {type FactoryProvider, inject, type ProviderToken} from '@angular/core';
 import {identity} from 'rxjs';
 
 export abstract class TuiValueTransformer<From, To = unknown> {
@@ -30,13 +30,6 @@ export class TuiNonNullableValueTransformer<T> extends TuiValueTransformer<T | n
         return this.prevValue;
     }
 }
-
-@Directive({
-    standalone: true,
-    selector: '[tuiNonNullableValue]',
-    providers: [{provide: TuiValueTransformer, useClass: TuiNonNullableValueTransformer}],
-})
-export class TuiNonNullableValueDirective {}
 
 export const TUI_IDENTITY_VALUE_TRANSFORMER: TuiValueTransformer<any, any> = {
     fromControlValue: identity,

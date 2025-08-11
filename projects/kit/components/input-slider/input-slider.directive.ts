@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {
     TUI_IDENTITY_VALUE_TRANSFORMER,
-    TuiNonNullableValueDirective,
+    TuiNonNullableValueTransformer,
     TuiValueTransformer,
 } from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
@@ -20,6 +20,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumberDirective,
+    tuiInputNumberOptionsProvider,
     TuiWithQuantumValueTransformer,
 } from '@taiga-ui/kit/components/input-number';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
@@ -28,12 +29,16 @@ import {filter, fromEvent} from 'rxjs';
 @Directive({
     standalone: true,
     selector: 'input[tuiInputSlider]',
+    providers: [
+        tuiInputNumberOptionsProvider({
+            valueTransformer: new TuiNonNullableValueTransformer(),
+        }),
+    ],
     hostDirectives: [
         {
             directive: TuiInputNumberDirective,
             inputs: ['min', 'max', 'prefix', 'postfix', 'invalid', 'readOnly'],
         },
-        TuiNonNullableValueDirective,
         TuiWithQuantumValueTransformer,
     ],
     host: {
