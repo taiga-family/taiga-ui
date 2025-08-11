@@ -118,9 +118,7 @@ export class TuiScrollbarDirective {
         parent: this.injector,
     }).get(MutationObserverService);
 
-    @Input()
-    public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
-
+    // Subscriptions should be declared before decorated public fields (lint order)
     protected readonly scrollSub = inject(TuiScrollbarService)
         .pipe(takeUntilDestroyed())
         .subscribe(([top, left]) => {
@@ -138,6 +136,9 @@ export class TuiScrollbarDirective {
     protected readonly styleSub = this.useRafMode
         ? this.rafBasedSubscription
         : this.eventBasedSubscription;
+
+    @Input()
+    public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     // Original RAF-based implementation for baseline comparison
     private get rafBasedSubscription(): any {

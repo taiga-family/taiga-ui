@@ -1,4 +1,5 @@
 import {expect, test} from '@playwright/test';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
 /**
  * Comprehensive TuiScrollbar Test Suite
@@ -30,6 +31,9 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
                 // Small delay to allow scrollbar to stabilize
                 await page.waitForTimeout(100);
             }
+
+            // Basic sanity assertion to satisfy lint rule
+            expect(count).toBeGreaterThan(0);
         });
 
         test('scrollbar thumb is visible when content overflows', async ({page}) => {
@@ -89,7 +93,7 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
             await expect(scrollbar).toBeVisible();
 
             // Get initial scrollbar size
-            const initialSize = await scrollbar.boundingBox();
+            // const initialSize = await scrollbar.boundingBox();
 
             // Refresh the page
             await page.reload();
@@ -332,7 +336,6 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
             await example.scrollIntoViewIfNeeded();
 
             const scrollbar = example.locator('tui-scrollbar .t-thumb');
-            const initialSize = await scrollbar.boundingBox();
 
             // Simulate viewport resize
             await page.setViewportSize({width: 800, height: 600});
@@ -373,7 +376,7 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
             const scrollbar = page.locator('tui-scrollbar .t-thumb').last();
 
             // Either invisible or has minimal presence
-            const isVisible = await scrollbar.isVisible().catch(() => false);
+            const isVisible = await scrollbar.isVisible().catch(TUI_FALSE_HANDLER);
 
             if (isVisible) {
                 const size = await scrollbar.boundingBox();
@@ -400,7 +403,7 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
 
             // Scrollbar should handle exact fit gracefully
             const scrollbar = page.locator('tui-scrollbar .t-thumb').last();
-            const isVisible = await scrollbar.isVisible().catch(() => false);
+            const isVisible = await scrollbar.isVisible().catch(TUI_FALSE_HANDLER);
 
             // Should not cause layout issues
             if (isVisible) {
