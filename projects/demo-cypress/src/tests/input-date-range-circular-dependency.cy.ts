@@ -55,6 +55,7 @@ export class TestInputDateRangeCircularDependency {
     protected setRange(): void {
         const today = TuiDay.currentLocal();
         const nextWeek = today.append({day: 7});
+
         this.control.setValue(new TuiDayRange(today, nextWeek));
     }
 
@@ -63,6 +64,7 @@ export class TestInputDateRangeCircularDependency {
         for (let i = 0; i < 5; i++) {
             setTimeout(() => {
                 const day = TuiDay.currentLocal().append({day: i});
+
                 this.control.setValue(new TuiDayRange(day, day.append({day: 1})));
             }, i * 10);
         }
@@ -76,10 +78,10 @@ describe('InputDateRange Circular Dependency', () => {
         // Verify initial state
         cy.get('#control-value').should('contain', 'null');
         cy.get('#control-valid').should('contain', 'valid');
-        
+
         // Set a date range programmatically
         cy.get('#set-range').click();
-        
+
         // Verify the range was set
         cy.get('#control-value').should('not.contain', 'null');
         cy.get('[tuiInputDateRange]').should('not.have.value', '');
@@ -89,10 +91,10 @@ describe('InputDateRange Circular Dependency', () => {
         // Set a range first
         cy.get('#set-range').click();
         cy.get('#control-value').should('not.contain', 'null');
-        
+
         // Reset the form control
         cy.get('#reset').click();
-        
+
         // Verify reset worked
         cy.get('#control-value').should('contain', 'null');
         cy.get('[tuiInputDateRange]').should('have.value', '');
@@ -101,20 +103,21 @@ describe('InputDateRange Circular Dependency', () => {
     it('should handle rapid updates without circular dependency issues', () => {
         // Record start time to measure performance
         const startTime = Date.now();
-        
+
         // Trigger rapid updates
         cy.get('#rapid-updates').click();
-        
+
         // Wait for all updates to complete
         cy.wait(100);
-        
+
         // Verify the component is still responsive
         cy.get('#control-value').should('not.contain', 'null');
-        
+
         // Verify operation completed in reasonable time
         cy.then(() => {
             const endTime = Date.now();
             const duration = endTime - startTime;
+
             expect(duration).to.be.lessThan(500); // Should complete quickly
         });
     });
@@ -122,14 +125,15 @@ describe('InputDateRange Circular Dependency', () => {
     it('should handle typing in the input field correctly', () => {
         // Type a date range manually
         cy.get('[tuiInputDateRange]').type('01.01.2024 – 15.01.2024');
-        
+
         // Verify the value was entered (use should() callback to handle potential character encoding)
         cy.get('[tuiInputDateRange]').should(($input) => {
             const value = $input.val() as string;
+
             expect(value).to.include('01.01.2024');
             expect(value).to.include('15.01.2024');
         });
-        
+
         // Verify form control was updated
         cy.get('#control-value').should('not.contain', 'null');
     });
@@ -138,10 +142,10 @@ describe('InputDateRange Circular Dependency', () => {
         // Set a range first
         cy.get('#set-range').click();
         cy.get('[tuiInputDateRange]').should('not.have.value', '');
-        
+
         // Clear the input
         cy.get('[tuiInputDateRange]').clear();
-        
+
         // Verify it was cleared
         cy.get('[tuiInputDateRange]').should('have.value', '');
     });
@@ -149,11 +153,11 @@ describe('InputDateRange Circular Dependency', () => {
     it('should maintain form control synchronization', () => {
         // Set programmatically
         cy.get('#set-range').click();
-        
+
         // Verify both input and control value are updated
         cy.get('[tuiInputDateRange]').should('not.have.value', '');
         cy.get('#control-value').should('not.contain', 'null');
-        
+
         // Reset and verify synchronization
         cy.get('#reset').click();
         cy.get('[tuiInputDateRange]').should('have.value', '');
