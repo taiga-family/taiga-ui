@@ -135,12 +135,12 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
 
     @Input('min')
     public set minSetter(x: number | null) {
-        this.updateMinMaxLimits(x, this.max());
+        this.updateMinMaxLimits(this.transformer.fromControlValue(x), this.max());
     }
 
     @Input('max')
     public set maxSetter(x: number | null) {
-        this.updateMinMaxLimits(this.min(), x);
+        this.updateMinMaxLimits(this.min(), this.transformer.fromControlValue(x));
     }
 
     // TODO(v5): replace with signal input
@@ -197,8 +197,8 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         nullableMin: number | null,
         nullableMax: number | null,
     ): void {
-        const min = this.transformer.fromControlValue(nullableMin) ?? this.options.min;
-        const max = this.transformer.fromControlValue(nullableMax) ?? this.options.max;
+        const min = nullableMin ?? this.options.min;
+        const max = nullableMax ?? this.options.max;
 
         this.min.set(Math.min(min, max));
         this.max.set(Math.max(min, max));
