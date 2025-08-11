@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "runsPerVariant": 25,
+    "runsPerVariant": 50,
     "confidenceLevel": 1.96,
-    "timestamp": "2025-08-11T12:10:00.799Z",
-    "variants": 15
+    "timestamp": "2025-08-11T17:15:57.231Z",
+    "variants": 3
   },
   "results": {}
 }
