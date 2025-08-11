@@ -1,0 +1,16 @@
+<tui-scrollbar class="box tui-space_top-5">
+    <div class="grid">
+        <img 
+            *ngFor="let item of items" 
+            src="https://ng-web-apis.github.io/dist/assets/images/web-api.svg" 
+            class="image"
+            [attr.loading]="'lazy'"
+            [attr.decoding]="'async'"
+            [alt]="'Web API icon ' + (item + 1)"
+        />
+    </div>
+</tui-scrollbar>
+
+
+
+

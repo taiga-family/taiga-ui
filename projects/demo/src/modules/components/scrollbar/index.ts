@@ -18,5 +18,25 @@ export default class Page {
         'Virtual scroll',
         'Show scroll bars on hover',
         'Native scrollbar',
+        'Reflow: List',
+        'Reflow: Table',
+        'Reflow: Image grid',
+        'Reflow: CSS grid',
+        'Reflow: Flexbox',
+        'Reflow: Positioning',
     ];
+
+    constructor() {
+        if (typeof document !== 'undefined') {
+            const enabled =
+                typeof window !== 'undefined' &&
+                sessionStorage.getItem('tui-reflow-demo') === '1';
+
+            if (enabled) {
+                document.documentElement.setAttribute('data-tui-reflow-demo', '1');
+            } else {
+                document.documentElement.removeAttribute('data-tui-reflow-demo');
+            }
+        }
+    }
 }

@@ -1,0 +1,46 @@
+.box {
+    inline-size: 28rem;
+    block-size: 16rem;
+    border: 1px solid;
+    background: #fff;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+    gap: 0.5rem;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    min-height: 4rem; // Ensure consistent sizing before image loads
+    background: #eef2f7;
+    border: 1px solid #d0d7e2;
+    display: block; // Prevent layout shifts
+}
+
+:root[data-tui-reflow-demo="1"] .image {
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+.item {
+    display: inline-block;
+    background: #eee;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+}
+
+
+
+
