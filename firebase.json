@@ -4,6 +4,17 @@
         {
             "target": "taiga-previews-demo",
             "public": "dist/demo/browser",
+            "headers": [
+                {
+                    "source": "**",
+                    "headers": [
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-store"
+                        }
+                    ]
+                }
+            ],
             "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
             "rewrites": [
                 {
@@ -15,6 +26,17 @@
         {
             "target": "taiga-previews-demo-e2e-report",
             "public": "playwright-report",
+            "headers": [
+                {
+                    "source": "**",
+                    "headers": [
+                        {
+                            "key": "Cache-Control",
+                            "value": "no-store"
+                        }
+                    ]
+                }
+            ],
             "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
             "rewrites": [
                 {
