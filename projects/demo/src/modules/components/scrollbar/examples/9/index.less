@@ -1,0 +1,50 @@
+.box {
+    inline-size: 20rem;
+    block-size: 16rem;
+    border: 1px solid;
+}
+
+.list {
+    margin: 0;
+    padding: 0.25rem;
+    list-style: none;
+}
+
+.row {
+    transition: margin 60ms, width 60ms;
+    margin: 0.125rem 0;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.item {
+    width: 50%;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--tui-primary, #4dabf7);
+}
+
+:root[data-tui-reflow-demo="1"] .item {
+    animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        width: 50%;
+        margin-left: 0;
+    }
+    100% {
+        width: 100%;
+        margin-left: 2rem;
+    }
+}
+
+
+
+
