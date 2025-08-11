@@ -53,7 +53,7 @@ describe('InputNumber | Abs transformer (allow using negative values without min
         });
     });
 
-    it('Enter 5 => Textfield contains `5 days ago` & form control contans `-5`', () => {
+    it('Enter 5 => Textfield contains `5 days ago` & form control contains `-5`', () => {
         cy.get('[tuiInputNumber]')
             .type('5')
             .should('have.value', '5 days ago')
@@ -64,7 +64,8 @@ describe('InputNumber | Abs transformer (allow using negative values without min
             });
     });
 
-    it('Enter 1 => => Textfield contains `1 day ago` & form control contans `-1`', () => {
+
+    it('Enter 1 => => Textfield contains `1 day ago` & form control contains `-1`', () => {
         cy.get('[tuiInputNumber]')
             .type('1')
             .should('have.value', '1 day ago')
@@ -75,7 +76,7 @@ describe('InputNumber | Abs transformer (allow using negative values without min
             });
     });
 
-    it('1| day ago => => Press 5 => Textfield contains `15 days ago` & form control contans `-15`', () => {
+    it('1| day ago => => Press 5 => Textfield contains `15 days ago` & form control contains `-15`', () => {
         cy.get('[tuiInputNumber]')
             .type('1')
             .should('have.value', '1 day ago')
@@ -88,7 +89,7 @@ describe('InputNumber | Abs transformer (allow using negative values without min
             });
     });
 
-    it('15| days ago => => Backspace => Textfield contains `1 day ago` & form control contans `-1`', () => {
+    it('15| days ago => => Backspace => Textfield contains `1 day ago` & form control contains `-1`', () => {
         cy.get('[tuiInputNumber]')
             .type('15')
             .should('have.value', '15 days ago')
@@ -102,7 +103,7 @@ describe('InputNumber | Abs transformer (allow using negative values without min
     });
 
     describe('attempts to violate min/max restrictions', () => {
-        it('3| days ago => => Type 5 => Textfield contains `30 days ago` & form control contans `-30`', () => {
+        it('3| days ago => => Type 5 => Textfield contains `30 days ago` & form control contains `-30`', () => {
             cy.get('[tuiInputNumber]')
                 .type('3')
                 .should('have.value', '3 days ago')
@@ -115,7 +116,7 @@ describe('InputNumber | Abs transformer (allow using negative values without min
                 });
         });
 
-        it('2|5 days ago => => Type 0 => Textfield contains `30 days ago` & form control contans `-30`', () => {
+        it('2|5 days ago => => Type 0 => Textfield contains `30 days ago` & form control contains `-30`', () => {
             cy.get('[tuiInputNumber]')
                 .type('25')
                 .should('have.value', '25 days ago')
