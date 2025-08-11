@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.49.0](https://github.com/taiga-family/taiga-ui/compare/v4.48.0...v4.49.0) (2025-08-11)
+
+### 🐞 Bug Fixes
+
+- **cdk:** `NativeValidator` fix premature validation ([#11559](https://github.com/taiga-family/taiga-ui/issues/11559))
+  ([f9ea7b2](https://github.com/taiga-family/taiga-ui/commit/f9ea7b28e994db383ee0a6192459b9963c18eff3))
+- **core:** `Appearance` update `outline` according to the specs
+  ([#11530](https://github.com/taiga-family/taiga-ui/issues/11530))
+  ([653ff65](https://github.com/taiga-family/taiga-ui/commit/653ff658d1bd442fc02b323adbd9ec604a69e5ca))
+- **core:** `DropdownSelection` fix position inside new textarea
+  ([#11560](https://github.com/taiga-family/taiga-ui/issues/11560))
+  ([366a3fe](https://github.com/taiga-family/taiga-ui/commit/366a3feac2d36f86ed4f05b3c209ac045a054ec1))
+- **core:** `DropdownSided` change position depending on height instead of min-height
+  ([#11539](https://github.com/taiga-family/taiga-ui/issues/11539))
+  ([b720596](https://github.com/taiga-family/taiga-ui/commit/b720596ab5587e1956f5a9e780a994e2ba139273))
+- **core:** `Textfield` with `[content]` has CD problems on form control value patch
+  ([#11531](https://github.com/taiga-family/taiga-ui/issues/11531))
+  ([93e01aa](https://github.com/taiga-family/taiga-ui/commit/93e01aa61fd41250d05246fd41f403d67db62866))
+
+### 🚀 Features
+
+- **addon-mobile:** `DropdownMobile` safe-area top/bottom support
+  ([#11497](https://github.com/taiga-family/taiga-ui/issues/11497))
+  ([3cb228f](https://github.com/taiga-family/taiga-ui/commit/3cb228ff7c4ad9374cb407a72994d231fd41e065))
+- **cdk:** detect webdriver by default in e2e token ([#11523](https://github.com/taiga-family/taiga-ui/issues/11523))
+  ([a30d3e0](https://github.com/taiga-family/taiga-ui/commit/a30d3e0fbb908e7f9babb636fe76438fb284cef3))
+- **kit:** `InputNumber` & `InputSlider` support `quantum` property
+  ([#11567](https://github.com/taiga-family/taiga-ui/issues/11567))
+  ([19aef91](https://github.com/taiga-family/taiga-ui/commit/19aef91d49c0c7a4f5fbc5377f1e0acb5d118851))
+- **kit:** `InputPhone` add new component ([#11498](https://github.com/taiga-family/taiga-ui/issues/11498))
+  ([0b5890f](https://github.com/taiga-family/taiga-ui/commit/0b5890f30509654f0650fd54c87a8bd00202f2fd))
+- **kit:** `Slider`/`Range` allow track thickness customization
+  ([#11528](https://github.com/taiga-family/taiga-ui/issues/11528))
+  ([f3799af](https://github.com/taiga-family/taiga-ui/commit/f3799afca4e270ed55d14c163b73940550f3f806))
+
 ## [4.48.0](https://github.com/taiga-family/taiga-ui/compare/v4.47.0...v4.48.0) (2025-08-04)
 
 ### 🚀 Features
