@@ -64,7 +64,6 @@ describe('InputNumber | Abs transformer (allow using negative values without min
             });
     });
 
-
     it('Enter 1 => => Textfield contains `1 day ago` & form control contains `-1`', () => {
         cy.get('[tuiInputNumber]')
             .type('1')
