@@ -38,7 +38,11 @@
         "llms",
         "шиммер",
         "фейд",
-        "Lebowski"
+        "Lebowski",
+        "recalc",
+        "Recalc",
+        "flexbox",
+        "Flexbox"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

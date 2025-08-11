@@ -1,4 +1,5 @@
 import {expect, test} from '@playwright/test';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
 /**
  * TuiScrollbar Functionality Test Suite
@@ -215,7 +216,7 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
             await page.waitForTimeout(100);
 
             const scrollbar = page.locator('tui-scrollbar .t-thumb').last();
-            const isVisible = await scrollbar.isVisible().catch(() => false);
+            const isVisible = await scrollbar.isVisible().catch(TUI_FALSE_HANDLER);
 
             // Should either be invisible or have minimal size
             if (isVisible) {
@@ -240,7 +241,7 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
             await page.waitForTimeout(100);
 
             const scrollbar = page.locator('tui-scrollbar .t-thumb').last();
-            const isVisible = await scrollbar.isVisible().catch(() => false);
+            const isVisible = await scrollbar.isVisible().catch(TUI_FALSE_HANDLER);
 
             // Should handle exact fit without issues
             if (isVisible) {
@@ -308,7 +309,7 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
             const examples = await page.locator('tui-doc-example').all();
 
             // Scroll multiple examples simultaneously
-            const scrollPromises = examples.slice(0, 3).map(async (example, index) => {
+            const scrollPromises = examples.slice(0, 3).map(async (example, _index) => {
                 await example.scrollIntoViewIfNeeded();
                 const scrollContainer = example.locator('tui-scrollbar');
 
