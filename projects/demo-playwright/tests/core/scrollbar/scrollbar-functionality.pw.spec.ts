@@ -1,3 +1,5 @@
+import {DemoRoute} from '@demo/routes';
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
@@ -15,13 +17,13 @@ import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
 test.describe('TuiScrollbar - Functionality Suite', () => {
     test.beforeEach(async ({page}) => {
-        await page.goto('http://localhost:3333/components/scrollbar');
-        await page.waitForLoadState('networkidle');
+        await tuiGoto(page, DemoRoute.Scrollbar);
     });
 
     test.describe('Basic Functionality', () => {
         test('renders correctly and handles basic scrolling', async ({page}) => {
-            const firstExample = page.locator('tui-doc-example').first();
+            const doc = new TuiDocumentationPagePO(page);
+            const firstExample = doc.getExample('#vertical');
 
             await firstExample.scrollIntoViewIfNeeded();
 
@@ -44,7 +46,8 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
         });
 
         test('handles horizontal scrolling correctly', async ({page}) => {
-            const horizontalExample = page.locator('tui-doc-example').nth(1);
+            const doc = new TuiDocumentationPagePO(page);
+            const horizontalExample = doc.getExample('#horizontal');
 
             await horizontalExample.scrollIntoViewIfNeeded();
 
@@ -69,7 +72,8 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
         });
 
         test('programmatic scroll control works', async ({page}) => {
-            const programmableExample = page.locator('tui-doc-example').nth(2);
+            const doc = new TuiDocumentationPagePO(page);
+            const programmableExample = doc.getExample('#all');
 
             await programmableExample.scrollIntoViewIfNeeded();
 
@@ -92,7 +96,8 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
 
     test.describe('Dynamic Content Handling', () => {
         test('adapts to dynamic content changes', async ({page}) => {
-            const imageGridExample = page.locator('tui-doc-example').nth(10);
+            const doc = new TuiDocumentationPagePO(page);
+            const imageGridExample = doc.getExample('#reflow-image-grid');
 
             await imageGridExample.scrollIntoViewIfNeeded();
 
@@ -131,7 +136,8 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
         });
 
         test('handles rapid content changes gracefully', async ({page}) => {
-            const flexExample = page.locator('tui-doc-example').nth(12);
+            const doc = new TuiDocumentationPagePO(page);
+            const flexExample = doc.getExample('#reflow-flexbox');
 
             await flexExample.scrollIntoViewIfNeeded();
 
@@ -173,9 +179,10 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
                 {index: 12, name: 'Flexbox'},
                 {index: 13, name: 'Absolute positioning'},
             ];
+            const doc = new TuiDocumentationPagePO(page);
 
             for (const {index, name} of examples) {
-                const example = page.locator('tui-doc-example').nth(index);
+                const example = doc.pageExamples.nth(index);
 
                 await example.scrollIntoViewIfNeeded();
 
