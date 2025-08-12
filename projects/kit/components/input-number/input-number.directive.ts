@@ -82,6 +82,16 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         this.onChange(value);
     }, TUI_ALLOW_SIGNAL_WRITES);
 
+    protected readonly prefixPostfixUpdateEffect = effect(() => {
+        // Watch for postfix and prefix changes and update textfield value to prevent race condition
+        this.postfix();
+        this.prefix();
+
+        // Update textfield value based on current control value to ensure consistency
+        // This prevents mask recalibration from using stale textfield value
+        this.setValue(this.value());
+    }, TUI_ALLOW_SIGNAL_WRITES);
+
     protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly element = tuiInjectElement<HTMLInputElement>();
 
