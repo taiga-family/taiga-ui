@@ -571,7 +571,9 @@ test.describe('TuiScrollbar Performance Analysis @perf', () => {
     test.describe.configure({mode: 'serial'});
     test.setTimeout(120000); // 2 minutes per test
 
-    test.beforeEach(async ({page}) => {
+    test.beforeEach(async ({page, browserName}) => {
+        // eslint-disable-next-line playwright/no-skipped-test
+        test.skip(browserName !== 'chromium', 'Perf/CDP suite runs only on Chromium');
         await page.goto(CONFIG.baseUrl);
         await page.waitForLoadState('networkidle');
     });
