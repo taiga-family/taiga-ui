@@ -1,3 +1,5 @@
+import {DemoRoute} from '@demo/routes';
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
@@ -14,16 +16,15 @@ import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
 test.describe('TuiScrollbar - Comprehensive Suite', () => {
     test.beforeEach(async ({page}) => {
-        // Navigate to scrollbar demo page
-        await page.goto('http://localhost:3333/components/scrollbar');
-        await page.waitForLoadState('networkidle');
+        await tuiGoto(page, DemoRoute.Scrollbar);
     });
 
     test.describe('Basic Functionality', () => {
         test('does not cause layout shifts on component initialization', async ({
             page,
         }) => {
-            const examples = page.locator('tui-doc-example');
+            const doc = new TuiDocumentationPagePO(page);
+            const examples = doc.pageExamples;
             const count = await examples.count();
 
             for (let i = 0; i < count; i++) {
@@ -38,7 +39,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
 
         test('scrollbar thumb is visible when content overflows', async ({page}) => {
             // Test with the first vertical example
-            const verticalExample = page.locator('tui-doc-example').first();
+            const doc = new TuiDocumentationPagePO(page);
+            const verticalExample = doc.getExample('#vertical');
 
             await verticalExample.scrollIntoViewIfNeeded();
 
@@ -55,7 +57,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
 
         test('horizontal scrollbar works correctly', async ({page}) => {
             // Test horizontal scrollbar (example 2)
-            const horizontalExample = page.locator('tui-doc-example').nth(1);
+            const doc = new TuiDocumentationPagePO(page);
+            const horizontalExample = doc.getExample('#horizontal');
 
             await horizontalExample.scrollIntoViewIfNeeded();
 
@@ -83,7 +86,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
             page,
         }) => {
             // Navigate to the image grid example (example 11)
-            const imageGridExample = page.locator('tui-doc-example').nth(10);
+            const doc = new TuiDocumentationPagePO(page);
+            const imageGridExample = doc.getExample('#reflow-image-grid');
 
             await imageGridExample.scrollIntoViewIfNeeded();
 
@@ -121,7 +125,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
 
         test('scrollbar updates when content changes dynamically', async ({page}) => {
             // Navigate to the image grid example
-            const imageGridExample = page.locator('tui-doc-example').nth(10);
+            const doc = new TuiDocumentationPagePO(page);
+            const imageGridExample = doc.getExample('#reflow-image-grid');
 
             await imageGridExample.scrollIntoViewIfNeeded();
 
@@ -163,7 +168,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
         });
 
         test('scrollbar handles rapid page refreshes correctly', async ({page}) => {
-            const imageGridExample = page.locator('tui-doc-example').nth(10);
+            const doc = new TuiDocumentationPagePO(page);
+            const imageGridExample = doc.getExample('#reflow-image-grid');
 
             // Perform multiple rapid refreshes to test race conditions
             for (let i = 0; i < 3; i++) {
@@ -221,7 +227,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
 
     test.describe('Content Type Scenarios', () => {
         test('works correctly with CSS Grid reflow (example 12)', async ({page}) => {
-            const gridExample = page.locator('tui-doc-example').nth(11);
+            const doc = new TuiDocumentationPagePO(page);
+            const gridExample = doc.getExample('#reflow-css-grid');
 
             await gridExample.scrollIntoViewIfNeeded();
 
@@ -242,7 +249,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
         });
 
         test('works correctly with Flexbox layout (example 13)', async ({page}) => {
-            const flexExample = page.locator('tui-doc-example').nth(12);
+            const doc = new TuiDocumentationPagePO(page);
+            const flexExample = doc.getExample('#reflow-flexbox');
 
             await flexExample.scrollIntoViewIfNeeded();
 
@@ -263,7 +271,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
         });
 
         test('works correctly with absolute positioning (example 14)', async ({page}) => {
-            const positioningExample = page.locator('tui-doc-example').nth(13);
+            const doc = new TuiDocumentationPagePO(page);
+            const positioningExample = doc.getExample('#reflow-positioning');
 
             await positioningExample.scrollIntoViewIfNeeded();
 
@@ -279,7 +288,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
         });
 
         test('works correctly with table layout (example 10)', async ({page}) => {
-            const tableExample = page.locator('tui-doc-example').nth(9);
+            const doc = new TuiDocumentationPagePO(page);
+            const tableExample = doc.getExample('#reflow-table');
 
             await tableExample.scrollIntoViewIfNeeded();
 
@@ -309,7 +319,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
         test('scrollbar does not cause excessive reflows during scroll', async ({
             page,
         }) => {
-            const example = page.locator('tui-doc-example').first();
+            const doc = new TuiDocumentationPagePO(page);
+            const example = doc.getExample('#vertical');
 
             await example.scrollIntoViewIfNeeded();
 
@@ -331,7 +342,8 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
         });
 
         test('scrollbar handles viewport resize correctly', async ({page}) => {
-            const example = page.locator('tui-doc-example').first();
+            const doc = new TuiDocumentationPagePO(page);
+            const example = doc.getExample('#vertical');
 
             await example.scrollIntoViewIfNeeded();
 
