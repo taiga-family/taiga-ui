@@ -14,7 +14,12 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {provideRouter, type UrlTree, withInMemoryScrolling} from '@angular/router';
+import {
+    provideRouter,
+    Router,
+    type UrlTree,
+    withInMemoryScrolling,
+} from '@angular/router';
 import {environment} from '@demo/environments/environment';
 import {
     TUI_DOC_CODE_EDITOR,
@@ -36,6 +41,7 @@ import {
 } from '@taiga-ui/addon-doc';
 import {TUI_FALSE_HANDLER, TUI_IS_E2E, TUI_PLATFORM} from '@taiga-ui/cdk';
 import {
+    TUI_DIALOGS_CLOSE,
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
     TUI_HINT_DEFAULT_OPTIONS,
@@ -46,7 +52,7 @@ import {
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
-import {catchError, map, of} from 'rxjs';
+import {catchError, map, merge, of} from 'rxjs';
 
 import {DEFAULT_LANGUAGE_PAGE, SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
@@ -57,6 +63,7 @@ import {SEARCH_CONFIG} from './search/env';
 import {TuiStackblitzService} from './stackblitz/stackblitz.service';
 import {exampleContentProcessor} from './utils';
 import {TuiViewportScroller} from './utils/viewport-scroller.service';
+import {AuthService} from '../components/dialog-experimental/examples/4/service';
 
 export const config: ApplicationConfig = {
     providers: [
@@ -253,6 +260,10 @@ export const config: ApplicationConfig = {
         {
             provide: REMOVE_STYLES_ON_COMPONENT_DESTROY,
             useValue: true,
+        },
+        {
+            provide: TUI_DIALOGS_CLOSE,
+            useFactory: () => merge(inject(AuthService), inject(Router).events),
         },
     ],
 };

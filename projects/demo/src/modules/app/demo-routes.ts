@@ -62,6 +62,7 @@ export const DemoRoute = {
     DataList: '/components/data-list',
     DataListWrapper: '/components/data-list-wrapper',
     Dialog: '/components/dialog',
+    DialogExperimental: '/experimental/dialog',
     Drawer: '/components/drawer',
     Error: '/components/error',
     Expand: '/components/expand',
