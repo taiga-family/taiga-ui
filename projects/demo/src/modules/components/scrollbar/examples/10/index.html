@@ -1,11 +1,12 @@
 <tui-scrollbar class="box tui-space_top-5">
     <table class="table">
         <tr *ngFor="let row of rows">
-            <td *ngFor="let col of cols" class="cell">{{ col }}</td>
+            <td
+                *ngFor="let col of cols"
+                class="cell"
+            >
+                {{ col }}
+            </td>
         </tr>
     </table>
 </tui-scrollbar>
-
-
-
-

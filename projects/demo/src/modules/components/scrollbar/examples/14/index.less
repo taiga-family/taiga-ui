@@ -8,7 +8,7 @@
 .positioning-container {
     position: relative;
     padding: 1rem;
-    min-height: 100%;
+    min-block-size: 100%;
 }
 
 .positioned-item {
@@ -19,33 +19,33 @@
 }
 
 .item-wrapper {
+    position: relative;
+    display: flex;
     background: #e3f2fd;
     border: 2px solid #2196f3;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     padding: 0.75rem;
-    min-width: 4rem;
-    min-height: 3rem;
-    display: flex;
+    min-inline-size: 4rem;
+    min-block-size: 3rem;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
     overflow: hidden;
 }
 
 .item-label {
+    z-index: 2;
     font-weight: bold;
     font-size: 0.875rem;
     color: #1976d2;
-    z-index: 2;
 }
 
 .item-indicator {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     background: linear-gradient(45deg, transparent 30%, rgba(33, 150, 243, 0.1) 50%, transparent 70%);
     transform-origin: center;
     transition: transform 150ms ease;
@@ -53,17 +53,17 @@
 
 .container {
     position: relative;
-    height: 100rem;
+    block-size: 100rem;
 }
 
 .item {
     position: absolute;
-    width: 3rem;
-    height: 3rem;
+    inline-size: 3rem;
+    block-size: 3rem;
     background-color: var(--tui-warning-fill, #fcc419);
 }
 
-:root[data-tui-reflow-demo="1"] .item {
+:root[data-tui-reflow-demo='1'] .item {
     animation: pulse 5s infinite alternate;
 }
 
@@ -74,10 +74,11 @@
 @keyframes pulse {
     0% {
         transform: translateX(0) rotate(0deg);
-        margin-left: 0;
+        margin-inline-start: 0;
     }
+
     100% {
         transform: translateX(10rem) rotate(360deg);
-        margin-left: 3rem;
+        margin-inline-start: 3rem;
     }
 }

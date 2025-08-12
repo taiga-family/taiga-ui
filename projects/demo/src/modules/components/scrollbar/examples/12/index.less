@@ -13,12 +13,12 @@
 }
 
 .complex-item {
+    display: flex;
     background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 0.5rem;
-    min-height: 3rem;
-    display: flex;
+    min-block-size: 3rem;
     align-items: center;
     justify-content: center;
     transition: all 100ms ease;
@@ -36,12 +36,12 @@
 }
 
 /* Run reflow animation only when explicitly enabled */
-:root[data-tui-reflow-demo="1"] .grid {
+:root[data-tui-reflow-demo='1'] .grid {
     animation: pulse 5s infinite alternate;
 }
 
 .item {
-    height: 4rem;
+    block-size: 4rem;
     background-color: var(--tui-support-12, #8ecae6);
 }
 
@@ -50,6 +50,7 @@
         grid-template-columns: repeat(5, 1fr);
         gap: 1rem;
     }
+
     100% {
         grid-template-columns: repeat(8, 1fr);
         gap: 0.25rem;

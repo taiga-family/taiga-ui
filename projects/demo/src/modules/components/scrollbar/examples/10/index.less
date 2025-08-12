@@ -7,7 +7,7 @@
 
 .tbl {
     border-collapse: collapse;
-    width: 100%;
+    inline-size: 100%;
 }
 
 .tbl th,
@@ -18,7 +18,7 @@
 }
 
 .table {
-    width: 200%;
+    inline-size: 200%;
     border-collapse: collapse;
     background: #fafafa;
 }
@@ -28,19 +28,16 @@
     padding: 0.5rem;
 }
 
-:root[data-tui-reflow-demo="1"] .cell {
+:root[data-tui-reflow-demo='1'] .cell {
     animation: pulse 4s infinite alternate;
 }
 
 @keyframes pulse {
     0% {
-        width: 2rem;
+        inline-size: 2rem;
     }
+
     100% {
-        width: 5rem;
+        inline-size: 5rem;
     }
 }
-
-
-
-
