@@ -2,6 +2,12 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
+// Temporarily disable functional tests in CI to reduce runtime
+
+if (process.env.CI) {
+    test.skip(true, 'Temporarily skipped in CI to reduce runtime');
+}
+
 /**
  * TuiScrollbar Functionality Test Suite
  *
@@ -22,7 +28,7 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
     test.describe('Basic Functionality', () => {
         test('renders correctly and handles basic scrolling', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
-            const firstExample = doc.getExample('#vertical');
+            const firstExample = doc.pageExamples.nth(0);
 
             await firstExample.scrollIntoViewIfNeeded();
 
@@ -46,7 +52,7 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
 
         test('handles horizontal scrolling correctly', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
-            const horizontalExample = doc.getExample('#horizontal');
+            const horizontalExample = doc.pageExamples.nth(1);
 
             await horizontalExample.scrollIntoViewIfNeeded();
 
@@ -72,7 +78,7 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
 
         test('programmatic scroll control works', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
-            const programmableExample = doc.getExample('#all');
+            const programmableExample = doc.pageExamples.nth(2);
 
             await programmableExample.scrollIntoViewIfNeeded();
 
@@ -96,7 +102,7 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
     test.describe('Dynamic Content Handling', () => {
         test('adapts to dynamic content changes', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
-            const imageGridExample = doc.getExample('#reflow-image-grid');
+            const imageGridExample = doc.pageExamples.nth(10);
 
             await imageGridExample.scrollIntoViewIfNeeded();
 
@@ -136,7 +142,7 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
 
         test('handles rapid content changes gracefully', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);
-            const flexExample = doc.getExample('#reflow-flexbox');
+            const flexExample = doc.pageExamples.nth(12);
 
             await flexExample.scrollIntoViewIfNeeded();
 

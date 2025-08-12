@@ -18,12 +18,12 @@ export default class Page {
         'Virtual scroll',
         'Show scroll bars on hover',
         'Native scrollbar',
-        'Reflow: List',
-        'Reflow: Table',
-        'Reflow: Image grid',
-        'Reflow: CSS grid',
-        'Reflow: Flexbox',
-        'Reflow: Positioning',
+        'List',
+        'Table',
+        'Image',
+        'CSS',
+        'Flexbox',
+        'Positioning',
     ];
 
     constructor() {
