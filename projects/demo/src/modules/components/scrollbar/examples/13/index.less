@@ -11,13 +11,13 @@
     gap: 0.5rem;
 }
 
-:root[data-tui-reflow-demo="1"] .flex-container {
+:root[data-tui-reflow-demo='1'] .flex-container {
     animation: pulse 6s infinite alternate;
 }
 
 .flex-item {
     flex-basis: 10rem;
-    height: 5rem;
+    block-size: 5rem;
     background-color: var(--tui-success-fill, #51cf66);
 }
 
@@ -26,6 +26,7 @@
         gap: 0.5rem;
         align-items: flex-start;
     }
+
     100% {
         gap: 2rem;
         align-items: center;
@@ -37,7 +38,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    block-size: 100%;
 }
 
 .item-number {
@@ -49,5 +50,5 @@
 .item-details {
     font-size: 0.75rem;
     color: #6c757d;
-    margin-top: 0.125rem;
+    margin-block-start: 0.125rem;
 }

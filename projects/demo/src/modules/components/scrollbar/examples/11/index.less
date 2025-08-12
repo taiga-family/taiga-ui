@@ -12,15 +12,15 @@
 }
 
 .image {
-    width: 100%;
-    height: auto;
-    min-height: 4rem; // Ensure consistent sizing before image loads
+    display: block; // Prevent layout shifts
+    inline-size: 100%;
+    block-size: auto;
+    min-block-size: 4rem; // Ensure consistent sizing before image loads
     background: #eef2f7;
     border: 1px solid #d0d7e2;
-    display: block; // Prevent layout shifts
 }
 
-:root[data-tui-reflow-demo="1"] .image {
+:root[data-tui-reflow-demo='1'] .image {
     animation: pulse 2s infinite alternate;
 }
 
@@ -28,6 +28,7 @@
     0% {
         transform: scale(0.8);
     }
+
     100% {
         transform: scale(1.2);
     }
@@ -36,11 +37,7 @@
 .item {
     display: inline-block;
     background: #eee;
-    height: 2rem;
+    block-size: 2rem;
     line-height: 2rem;
     text-align: center;
 }
-
-
-
-
