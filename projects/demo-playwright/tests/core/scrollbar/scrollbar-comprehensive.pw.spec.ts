@@ -388,6 +388,7 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
 
             // Either invisible or has minimal presence
             let isVisible = false;
+
             try {
                 isVisible = await scrollbar.isVisible();
             } catch {}
@@ -418,6 +419,7 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
             // Scrollbar should handle exact fit gracefully
             const scrollbar = page.locator('tui-scrollbar .t-thumb').last();
             let isVisible = false;
+
             try {
                 isVisible = await scrollbar.isVisible();
             } catch {}
