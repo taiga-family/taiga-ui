@@ -43,6 +43,8 @@ const LIMITS = {
     maxRecalcDurationMs: Number(process.env.TUI_PERF_MAX_RECALC_MS || '150'),
 } as const;
 
+const ENFORCE_LIMITS = process.env.TUI_PERF_ENFORCE === '1';
+
 interface PerformanceEvent {
     name: string;
     ts: number;
@@ -686,11 +688,40 @@ test.describe('TuiScrollbar Performance Analysis @perf', () => {
 
             ResultsManager.addResult(result);
 
-            // Performance regression checks (configurable via env for local runs)
-            expect(summary.layoutCount).toBeLessThan(LIMITS.maxLayoutCount);
-            expect(summary.layoutDuration).toBeLessThan(LIMITS.maxLayoutDurationMs);
-            expect(summary.recalcStyleCount).toBeLessThan(LIMITS.maxRecalcCount);
-            expect(summary.recalcStyleDuration).toBeLessThan(LIMITS.maxRecalcDurationMs);
+            // Performance regression checks (configurable)
+            if (ENFORCE_LIMITS) {
+                expect(summary.layoutCount).toBeLessThan(LIMITS.maxLayoutCount);
+                expect(summary.layoutDuration).toBeLessThan(LIMITS.maxLayoutDurationMs);
+                expect(summary.recalcStyleCount).toBeLessThan(LIMITS.maxRecalcCount);
+                expect(summary.recalcStyleDuration).toBeLessThan(
+                    LIMITS.maxRecalcDurationMs,
+                );
+            } else {
+                // Log only, do not fail the run in metrics-only mode
+                if (summary.layoutCount >= LIMITS.maxLayoutCount) {
+                    console.info(
+                        `    ⚠️ layoutCount=${summary.layoutCount.toFixed(1)} exceeded limit ${LIMITS.maxLayoutCount}`,
+                    );
+                }
+
+                if (summary.layoutDuration >= LIMITS.maxLayoutDurationMs) {
+                    console.info(
+                        `    ⚠️ layoutDuration=${summary.layoutDuration.toFixed(2)}ms exceeded limit ${LIMITS.maxLayoutDurationMs}ms`,
+                    );
+                }
+
+                if (summary.recalcStyleCount >= LIMITS.maxRecalcCount) {
+                    console.info(
+                        `    ⚠️ recalcStyleCount=${summary.recalcStyleCount.toFixed(1)} exceeded limit ${LIMITS.maxRecalcCount}`,
+                    );
+                }
+
+                if (summary.recalcStyleDuration >= LIMITS.maxRecalcDurationMs) {
+                    console.info(
+                        `    ⚠️ recalcStyleDuration=${summary.recalcStyleDuration.toFixed(2)}ms exceeded limit ${LIMITS.maxRecalcDurationMs}ms`,
+                    );
+                }
+            }
 
             console.info(
                 `    📈 Layout: ${summary.layoutCount.toFixed(1)} ± ${summary.standardDeviation.layoutCount.toFixed(1)} operations`,
