@@ -223,6 +223,7 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
 
             const scrollbar = page.locator('tui-scrollbar .t-thumb').last();
             let isVisible = false;
+
             try {
                 isVisible = await scrollbar.isVisible();
             } catch {}
@@ -251,6 +252,7 @@ test.describe('TuiScrollbar - Functionality Suite', () => {
 
             const scrollbar = page.locator('tui-scrollbar .t-thumb').last();
             let isVisible = false;
+
             try {
                 isVisible = await scrollbar.isVisible();
             } catch {}
