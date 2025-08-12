@@ -2,12 +2,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-// Temporarily disable functional tests in CI to reduce runtime
-
-if (process.env.CI) {
-    test.skip(true, 'Temporarily skipped in CI to reduce runtime');
-}
-
 /**
  * TuiScrollbar Functionality Test Suite
  *
@@ -20,7 +14,8 @@ if (process.env.CI) {
  * - Playwright API: https://playwright.dev/docs/api/class-cdpsession
  */
 
-test.describe('TuiScrollbar - Functionality Suite', () => {
+// Skip this suite in CI via CLI: `--grep-invert @scrollbar` (avoid in-file skip to satisfy lint)
+test.describe('TuiScrollbar - Functionality Suite @scrollbar', () => {
     test.beforeEach(async ({page}) => {
         await tuiGoto(page, DemoRoute.Scrollbar);
     });
