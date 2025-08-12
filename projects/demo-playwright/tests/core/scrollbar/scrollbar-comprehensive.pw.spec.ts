@@ -1,7 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
 /**
  * Comprehensive TuiScrollbar Test Suite
@@ -388,7 +387,10 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
             const scrollbar = page.locator('tui-scrollbar .t-thumb').last();
 
             // Either invisible or has minimal presence
-            const isVisible = await scrollbar.isVisible().catch(TUI_FALSE_HANDLER);
+            let isVisible = false;
+            try {
+                isVisible = await scrollbar.isVisible();
+            } catch {}
 
             if (isVisible) {
                 const size = await scrollbar.boundingBox();
@@ -415,7 +417,10 @@ test.describe('TuiScrollbar - Comprehensive Suite', () => {
 
             // Scrollbar should handle exact fit gracefully
             const scrollbar = page.locator('tui-scrollbar .t-thumb').last();
-            const isVisible = await scrollbar.isVisible().catch(TUI_FALSE_HANDLER);
+            let isVisible = false;
+            try {
+                isVisible = await scrollbar.isVisible();
+            } catch {}
 
             // Should not cause layout issues
             if (isVisible) {
