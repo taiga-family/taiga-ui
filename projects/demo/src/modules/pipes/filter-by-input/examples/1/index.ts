@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
@@ -18,7 +19,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     changeDetection,
 })
 export default class Example {
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
+    protected readonly items = inject(ITEMS);
     protected readonly form = new FormGroup({
         user: new FormControl(''),
     });

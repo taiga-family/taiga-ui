@@ -3,6 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
 import {type TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TuiButton, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
@@ -40,7 +41,7 @@ interface User {
     changeDetection,
 })
 export default class Example {
-    protected readonly items: string[] = inject('Pythons' as any);
+    protected readonly items = inject(ITEMS);
     protected readonly users = this.items.map((name, index) => ({name, index}));
 
     protected writable: string[] = [];

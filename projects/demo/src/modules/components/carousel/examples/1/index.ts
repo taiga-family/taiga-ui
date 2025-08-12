@@ -2,6 +2,7 @@ import {NgFor} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
 
@@ -15,5 +16,5 @@ import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
 })
 export default class Example {
     protected index = 2;
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
+    protected readonly items = inject(ITEMS);
 }

@@ -56,17 +56,6 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         ResizeObserverService,
         DEMO_PAGE_LOADED_PROVIDER,
         TUI_VERSION_MANAGER_PROVIDERS,
-        {
-            provide: 'Pythons',
-            useValue: [
-                'John Cleese',
-                'Eric Idle',
-                'Michael Palin',
-                'Graham Chapman',
-                'Terry Gilliam',
-                'Terry Jones',
-            ],
-        },
     ],
 })
 export class App extends AbstractDemo implements OnInit {

@@ -3,6 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {TuiDataList} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
@@ -23,8 +24,7 @@ import {delay, type Observable, of, startWith, Subject, switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    // Database mock data
-    private readonly items = inject<readonly string[]>('Pythons' as any);
+    private readonly items = inject(ITEMS); // Database mock data
     private readonly search$ = new Subject<string>();
 
     protected value = [];

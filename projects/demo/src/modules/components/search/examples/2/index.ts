@@ -4,6 +4,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {tuiCountFilledControls} from '@taiga-ui/cdk';
 import {TuiButton, TuiLink, TuiTextfield} from '@taiga-ui/core';
 import {
@@ -45,7 +46,7 @@ export default class Example {
         segmented: new FormControl(),
     });
 
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
+    protected readonly items = inject(ITEMS);
     protected readonly filters = ['Python', 'JavaScript', 'TypeScript'];
     protected readonly segments = [null, 'Unread', 'Archived'];
 

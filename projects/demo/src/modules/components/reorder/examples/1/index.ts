@@ -2,6 +2,7 @@ import {JsonPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {TuiReorder} from '@taiga-ui/addon-table';
 
 @Component({
@@ -13,6 +14,6 @@ import {TuiReorder} from '@taiga-ui/addon-table';
     changeDetection,
 })
 export default class Example {
-    protected items = inject<readonly string[]>('Pythons' as any);
+    protected items = inject(ITEMS);
     protected enabled = this.items;
 }

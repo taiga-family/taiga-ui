@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {ITEMS} from '@demo/tokens';
 import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
@@ -11,6 +12,6 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
     changeDetection,
 })
 export default class Example {
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
+    protected readonly items = inject(ITEMS);
     protected value = '';
 }

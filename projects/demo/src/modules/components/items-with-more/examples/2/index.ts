@@ -3,6 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {TUI_FALSE_HANDLER, TuiItem} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiGroup, TuiIcon} from '@taiga-ui/core';
 import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
@@ -29,7 +30,7 @@ import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
+    protected readonly items = inject(ITEMS);
 
     protected value = this.items.map(TUI_FALSE_HANDLER) as boolean[];
 }

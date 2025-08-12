@@ -3,6 +3,7 @@ import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
 import {TuiButton, TuiFallbackSrcPipe, TuiNotification, TuiTitle} from '@taiga-ui/core';
@@ -69,7 +70,7 @@ export default class Example {
             avatar: '',
             email: 'johann@gmail.com',
         },
-        ...inject<readonly string[]>('Pythons' as any).map((name) => ({
+        ...inject(ITEMS).map((name) => ({
             name,
             avatar: '',
             email: `${name.split(' ')[0]}@gmail.com`,

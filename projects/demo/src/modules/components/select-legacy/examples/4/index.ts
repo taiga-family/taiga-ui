@@ -3,6 +3,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {TuiAlertService, TuiButton, TuiDataList, TuiIcon} from '@taiga-ui/core';
 import {type TuiSelectComponent, TuiSelectModule} from '@taiga-ui/legacy';
 
@@ -19,7 +20,7 @@ export default class Example {
 
     protected readonly pythons = [
         'de la Concordia «Gabo» García Márquez',
-        ...inject<readonly string[]>('Pythons' as any),
+        ...inject(ITEMS),
     ];
 
     protected value = this.pythons[0]!;

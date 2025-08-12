@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
 import {
@@ -30,7 +31,7 @@ import {
     changeDetection,
 })
 export default class Example {
-    protected readonly items: string[] = inject('Pythons' as any);
+    protected readonly items = inject(ITEMS);
 
     protected readonly multiControl = new FormControl(null, {
         validators: Validators.required,

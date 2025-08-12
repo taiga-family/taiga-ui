@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {type TuiStringMatcher} from '@taiga-ui/cdk';
 import {
     TuiDataListWrapper,
@@ -29,7 +30,7 @@ interface User {
     changeDetection,
 })
 export default class Example<T extends User = User> {
-    protected readonly items = inject<readonly string[]>('Pythons' as any);
+    protected readonly items = inject(ITEMS);
 
     protected readonly users = [
         {id: 1, name: 'John Cleese'},

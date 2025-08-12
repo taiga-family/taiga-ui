@@ -2,6 +2,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {ITEMS} from '@demo/tokens';
 import {tuiIsString} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListDropdownManager, TuiTabs} from '@taiga-ui/kit';
@@ -27,10 +28,7 @@ import {TuiChevron, TuiDataListDropdownManager, TuiTabs} from '@taiga-ui/kit';
 export default class Example {
     protected readonly collaborators = ['Carol Cleveland', 'Neil Innes'];
 
-    protected readonly tabs = [
-        this.collaborators,
-        ...inject<readonly string[]>('Pythons' as any),
-    ];
+    protected readonly tabs = [this.collaborators, ...inject(ITEMS)];
 
     protected activeElement = String(this.collaborators[0]);
 
