@@ -36,6 +36,13 @@ const CONFIG = {
     confidenceLevel: 1.96,
 } as const;
 
+const LIMITS = {
+    maxLayoutCount: Number(process.env.TUI_PERF_MAX_LAYOUT_COUNT || '500'),
+    maxLayoutDurationMs: Number(process.env.TUI_PERF_MAX_LAYOUT_MS || '200'),
+    maxRecalcCount: Number(process.env.TUI_PERF_MAX_RECALC_COUNT || '2000'),
+    maxRecalcDurationMs: Number(process.env.TUI_PERF_MAX_RECALC_MS || '150'),
+} as const;
+
 interface PerformanceEvent {
     name: string;
     ts: number;
@@ -559,6 +566,54 @@ class ResultsManager {
         console.info(
             `📈 Statistical significance: ${CONFIG.confidenceLevel}σ confidence intervals`,
         );
+
+        // Also print compact CI-friendly summary table
+        this.printSummaryTable();
+    }
+
+    private static printSummaryTable(): void {
+        const rows = Array.from(this.results.values()).map(({variant, summary}) => ({
+            name: variant.name,
+            layoutCount: summary.layoutCount,
+            layoutMs: summary.layoutDuration,
+            recalcCount: summary.recalcStyleCount,
+            recalcMs: summary.recalcStyleDuration,
+        }));
+
+        if (!rows.length) {
+            return;
+        }
+
+        const headers = [
+            'Variant',
+            'Layout (ops)',
+            'Layout (ms)',
+            'Recalc (ops)',
+            'Recalc (ms)',
+        ];
+        const data = rows.map((r) => [
+            r.name,
+            r.layoutCount.toFixed(1),
+            r.layoutMs.toFixed(2),
+            r.recalcCount.toFixed(1),
+            r.recalcMs.toFixed(2),
+        ]);
+
+        const colWidths: number[] = headers.map((h, i) =>
+            Math.max(h.length, ...data.map((row) => row[i]!.length)),
+        );
+
+        const pad = (text: string, i: number): string => text.padEnd(colWidths[i]!, ' ');
+
+        console.info('\n===== Scrollbar Performance Summary =====');
+        console.info(headers.map((h, i) => pad(h, i)).join('  '));
+        console.info(colWidths.map((w) => '-'.repeat(w)).join('  '));
+
+        for (const row of data) {
+            console.info(row.map((cell, i) => pad(cell, i)).join('  '));
+        }
+
+        console.info('========================================\n');
     }
 }
 
@@ -567,8 +622,14 @@ class ResultsManager {
 // ========================================================================================
 
 test.describe('TuiScrollbar Performance Analysis @perf', () => {
-    // Run serially for stable CDP tracing and consistent timings in CI
-    test.describe.configure({mode: 'serial'});
+    // Allow opting into parallel mode for faster local runs
+    if (process.env.TUI_PERF_PARALLEL === '1') {
+        test.describe.configure({mode: 'parallel'});
+    } else {
+        // Default: serial for stable CDP tracing and consistent timings in CI
+        test.describe.configure({mode: 'serial'});
+    }
+
     test.setTimeout(120000); // 2 minutes per test
 
     test.beforeEach(async ({page, browserName}) => {
@@ -625,11 +686,11 @@ test.describe('TuiScrollbar Performance Analysis @perf', () => {
 
             ResultsManager.addResult(result);
 
-            // Performance regression checks
-            expect(summary.layoutCount).toBeLessThan(500); // Reasonable upper bound
-            expect(summary.layoutDuration).toBeLessThan(200); // ms
-            expect(summary.recalcStyleCount).toBeLessThan(2000);
-            expect(summary.recalcStyleDuration).toBeLessThan(150);
+            // Performance regression checks (configurable via env for local runs)
+            expect(summary.layoutCount).toBeLessThan(LIMITS.maxLayoutCount);
+            expect(summary.layoutDuration).toBeLessThan(LIMITS.maxLayoutDurationMs);
+            expect(summary.recalcStyleCount).toBeLessThan(LIMITS.maxRecalcCount);
+            expect(summary.recalcStyleDuration).toBeLessThan(LIMITS.maxRecalcDurationMs);
 
             console.info(
                 `    📈 Layout: ${summary.layoutCount.toFixed(1)} ± ${summary.standardDeviation.layoutCount.toFixed(1)} operations`,
