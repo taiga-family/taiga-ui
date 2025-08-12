@@ -1,0 +1,23 @@
+<button
+    tuiButton
+    type="button"
+    (click)="open = true"
+>
+    Show dialog
+</button>
+<ng-template
+    [tuiDialogOptions]="{size: 's'}"
+    [(tuiDialog)]="open"
+>
+    <header>Hello!</header>
+    <p>Welcome to the website</p>
+    <footer>
+        <button
+            tuiButton
+            type="button"
+            (click)="auth.logout()"
+        >
+            Logout
+        </button>
+    </footer>
+</ng-template>
