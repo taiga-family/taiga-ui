@@ -148,7 +148,8 @@ jobs:
           npx nx e2e demo-playwright -- \
             --update-snapshots \
             --project=${{ matrix.shard.project }} \
-            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
+            --grep-invert @scrollbar
 
       - uses: taiga-family/ci/actions/run/clone@v1.142.0
         with:
@@ -166,7 +167,8 @@ jobs:
         run: |
           npx nx e2e demo-playwright -- \
             --project=${{ matrix.shard.project }} \
-            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
+            --grep-invert @scrollbar
 
       - name: Combine images to get diff reports
         run: |
@@ -189,6 +191,52 @@ jobs:
           name: ${{ env.PLAYWRIGHT_BLOB_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
           compression-level: 0
           retention-days: 1
+
+  playwright-perf:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    needs: [build-demo]
+    name: Playwright / Scrollbar Performance (Chromium)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.139.0
+      - uses: taiga-family/ci/actions/setup/node@v1.139.0
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: |
+          echo "PLAYWRIGHT_VERSION=$(node -p 'require("./projects/demo-playwright/package.json").devDependencies["@playwright/test"]')" >> $GITHUB_ENV
+      - uses: taiga-family/ci/actions/setup/playwright@v1.139.0
+        with:
+          playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
+      - name: Download cache / ${{ env.CACHE_DIST_KEY }}
+        uses: actions/cache/restore@v4.2.4
+        with:
+          path: dist/demo
+          key: ${{ env.CACHE_DIST_KEY }}
+      - uses: taiga-family/ci/actions/run/serve@v1.139.0
+        with:
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST }}
+          replaceBaseUrl: false
+      - name: Run scrollbar performance suite (Chromium, logs visible)
+        env:
+          TUI_PERF_RUNS: 10
+        run: |
+          npx nx e2e demo-playwright -- \
+            --project=chromium \
+            --reporter=list \
+            projects/demo-playwright/tests/core/scrollbar/scrollbar-performance.pw.spec.ts
+      - name: Publish performance summary
+        run: |
+          RESULTS=projects/demo-playwright/tests-results/scrollbar-performance-results.json
+          echo "### Scrollbar Performance Summary" >> $GITHUB_STEP_SUMMARY
+          node -e "const fs=require('fs');const p=process.env.RESULTS;const r=JSON.parse(fs.readFileSync(p,'utf8'));const rows=Object.values(r.results).map(x=>({name:x.variant.name,layout:x.summary.layoutCount.toFixed(1),layoutMs:x.summary.layoutDuration.toFixed(2),recalc:x.summary.recalcStyleCount.toFixed(1),recalcMs:x.summary.recalcStyleDuration.toFixed(2)}));const header='| Variant | Layout (ops) | Layout (ms) | Recalc (ops) | Recalc (ms) |';const sep='|---|---:|---:|---:|---:|';const lines=rows.map(r=>`| ${r.name} | ${r.layout} | ${r.layoutMs} | ${r.recalc} | ${r.recalcMs} |`).join('\n');console.log(header+'\n'+sep+'\n'+lines);" RESULTS="$RESULTS" | tee -a $GITHUB_STEP_SUMMARY
+      - name: Upload perf results artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: projects/demo-playwright/tests-results/scrollbar-performance-results.json
+          name: scrollbar-performance-results
+          retention-days: 7
 
   # workaround for status checks -- check this one job instead of each individual E2E job in the matrix
   # see https://github.com/orgs/community/discussions/9141#discussioncomment-2296809
