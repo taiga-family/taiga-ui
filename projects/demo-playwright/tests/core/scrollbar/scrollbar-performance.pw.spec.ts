@@ -386,20 +386,23 @@ class PerformanceMeasurer {
         const summary: any = {};
         const confidence: any = {};
         const standardDeviation: any = {};
+        const median: any = {};
 
         for (const metric of metrics) {
             const values = filteredRuns.map((run) => run[metric]);
             const mean = values.reduce((a, b) => a + b, 0) / values.length;
             const stdDev = this.standardDeviation(values);
+            const med = this.median(values);
             const marginOfError =
                 (CONFIG.confidenceLevel * stdDev) / Math.sqrt(values.length);
 
             summary[metric] = mean;
             standardDeviation[metric] = stdDev;
+            median[metric] = med;
             confidence[metric] = [mean - marginOfError, mean + marginOfError];
         }
 
-        return {...summary, confidence, standardDeviation};
+        return {...summary, confidence, standardDeviation, median};
     }
 
     private static removeOutliers(runs: PerformanceMetrics[]): PerformanceMetrics[] {
@@ -429,6 +432,17 @@ class PerformanceMeasurer {
             values.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / values.length;
 
         return Math.sqrt(variance);
+    }
+
+    private static median(values: number[]): number {
+        if (!values.length) {
+            return 0;
+        }
+
+        const arr = [...values].sort((a, b) => a - b);
+        const mid = Math.floor(arr.length / 2);
+
+        return arr.length % 2 === 0 ? (arr[mid - 1]! + arr[mid]!) / 2 : arr[mid]!;
     }
 }
 
@@ -580,6 +594,8 @@ class ResultsManager {
                 layoutMs: summary.layoutDuration,
                 recalcCount: summary.recalcStyleCount,
                 recalcMs: summary.recalcStyleDuration,
+                layoutMsMedian: (summary as any).median?.layoutDuration as number,
+                recalcMsMedian: (summary as any).median?.recalcStyleDuration as number,
                 layoutCountRange: `[${min(layoutOps).toFixed(0)}, ${max(layoutOps).toFixed(0)}]`,
                 layoutMsRange: `[${min(layoutTimes).toFixed(2)}, ${max(layoutTimes).toFixed(2)}]`,
                 recalcCountRange: `[${min(recalcOps).toFixed(0)}, ${max(recalcOps).toFixed(0)}]`,
@@ -595,8 +611,10 @@ class ResultsManager {
             'Variant',
             'Layout (ops)',
             'Layout (ms)',
+            'Layout (ms) median',
             'Recalc (ops)',
             'Recalc (ms)',
+            'Recalc (ms) median',
             'Layout ops [min,max]',
             'Layout ms [min,max]',
             'Recalc ops [min,max]',
@@ -606,8 +624,10 @@ class ResultsManager {
             r.name,
             r.layoutCount.toFixed(1),
             r.layoutMs.toFixed(2),
+            (r.layoutMsMedian ?? r.layoutMs).toFixed(2),
             r.recalcCount.toFixed(1),
             r.recalcMs.toFixed(2),
+            (r.recalcMsMedian ?? r.recalcMs).toFixed(2),
             r.layoutCountRange,
             r.layoutMsRange,
             r.recalcCountRange,
@@ -662,7 +682,13 @@ class ResultsManager {
     }
 
     private static compositeScore(s: StatisticalSummary): number {
-        return s.layoutDuration + s.recalcStyleDuration;
+        const med = (s as any).median as
+            | {layoutDuration: number; recalcStyleDuration: number}
+            | undefined;
+        const layout = med?.layoutDuration ?? s.layoutDuration;
+        const recalc = med?.recalcStyleDuration ?? s.recalcStyleDuration;
+
+        return layout + recalc;
     }
 
     private static pickElbow(
