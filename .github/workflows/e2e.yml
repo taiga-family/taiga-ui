@@ -5,7 +5,6 @@ on:
 env:
   RETRY_COUNT: 2
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  RUN_FULL_E2E: 'false'
 
 jobs:
   build-demo:
@@ -32,7 +31,7 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
   cypress:
-    if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
+    if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
     name: Cypress / Component Testing
     env:
@@ -41,25 +40,16 @@ jobs:
       CYPRESS_BASELINE_SNAPSHOTS: 'projects/demo-cypress/tests-results/snapshots/baseline'
       CYPRESS_BASELINE_SNAPSHOTS_KEY: 'cy_baseline_${{ github.event.pull_request.head.sha }}'
     steps:
-      - name: Skip (RUN_FULL_E2E=false)
-        if: ${{ env.RUN_FULL_E2E != 'true' }}
-        run: echo "Cypress job skipped by RUN_FULL_E2E=false"
       - uses: actions/checkout@v4.3.0
-        if: ${{ env.RUN_FULL_E2E == 'true' }}
         with:
           ref: ${{ github.base_ref }}
       - uses: taiga-family/ci/actions/setup/variables@v1.142.0
       - uses: taiga-family/ci/actions/setup/node@v1.142.0
 
       - name: Run tests for baseline state
-        if: ${{ env.RUN_FULL_E2E == 'true' }}
         run: npx nx component-test demo-cypress
-      - name: Run tests for baseline state (stub)
-        if: ${{ env.RUN_FULL_E2E != 'true' }}
-        run: echo "Cypress baseline tests skipped"
 
       - name: Save Cypress Baseline Snapshots
-        if: ${{ env.RUN_FULL_E2E == 'true' }}
         uses: actions/upload-artifact@v4.6.2
         with:
           path: ${{env.CYPRESS_BASELINE_SNAPSHOTS}}
@@ -73,7 +63,6 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.142.0
 
       - name: Download Cypress Baseline Snapshots
-        if: ${{ env.RUN_FULL_E2E == 'true' }}
         uses: actions/download-artifact@v4.3.0
         with:
           path: ${{env.CYPRESS_BASELINE_SNAPSHOTS}}
@@ -81,25 +70,18 @@ jobs:
           merge-multiple: true
 
       - name: Run tests for current state
-        if: ${{ env.RUN_FULL_E2E == 'true' }}
         run: npx nx component-test demo-cypress
-      - name: Run tests for current state (stub)
-        if: ${{ env.RUN_FULL_E2E != 'true' }}
-        run: echo "Cypress current tests skipped"
 
       - name: Prepare diff screenshots
-        if: ${{ env.RUN_FULL_E2E == 'true' }}
         run: |
           npm install canvas --no-save --silent --force
           npx ts-node -e "import { tuiCombineCypressFailedScreenshots as run } from './projects/testing/visual-testing'; run();";
 
       - name: Debug output
-        if: ${{ env.RUN_FULL_E2E == 'true' }}
         continue-on-error: true
         run: tree ${{ env.CYPRESS_RESULTS_FOLDER }}  -L 1
 
       - name: Upload artifacts
-        if: ${{ env.RUN_FULL_E2E == 'true' }}
         uses: actions/upload-artifact@v4.6.2
         with:
           path: '${{ env.CYPRESS_RESULTS_FOLDER }}/**/*.diff.png'
@@ -109,7 +91,7 @@ jobs:
           retention-days: 1
 
   playwright:
-    if: ${{ env.RUN_FULL_E2E == 'true' && !contains(github.head_ref , 'release/') }}
+    if: ${{ !contains(github.head_ref , 'release/') }}
     needs: [build-demo]
     strategy:
       fail-fast: false
@@ -162,7 +144,12 @@ jobs:
           replaceBaseUrl: false
 
       - name: Run screenshot tests on ${{ env.DIST }}
-        run: echo "Playwright matrix tests on DIST skipped"
+        run: |
+          npx nx e2e demo-playwright -- \
+            --update-snapshots \
+            --project=${{ matrix.shard.project }} \
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
+            --grep-invert @scrollbar
 
       - uses: taiga-family/ci/actions/run/clone@v1.142.0
         with:
@@ -177,7 +164,11 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
-        run: echo "Playwright matrix tests on DIST_NEXT skipped"
+        run: |
+          npx nx e2e demo-playwright -- \
+            --project=${{ matrix.shard.project }} \
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
+            --grep-invert @scrollbar
 
       - name: Combine images to get diff reports
         run: |
@@ -194,7 +185,6 @@ jobs:
           retention-days: 1
 
       - name: Upload reports / ${{ env.PLAYWRIGHT_BLOB_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
-        if: false
         uses: actions/upload-artifact@v4.6.2
         with:
           path: ./projects/demo-playwright/blob-report
@@ -203,7 +193,8 @@ jobs:
           retention-days: 1
 
   playwright-perf:
-    if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    needs: [build-demo]
     name: Playwright / Scrollbar Performance (Chromium)
     runs-on: ubuntu-latest
     steps:
@@ -222,14 +213,6 @@ jobs:
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
-      - name: Build demo (fallback if cache missing)
-        run: |
-          if [ ! -d dist/demo ] || [ -z "$(ls -A dist/demo 2>/dev/null)" ]; then
-            echo "Cache miss: building demo...";
-            npx nx build demo;
-          else
-            echo "Cache hit: dist/demo present";
-          fi
       - uses: taiga-family/ci/actions/run/serve@v1.139.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
@@ -299,11 +282,11 @@ jobs:
   playwright-composite-result:
     name: Playwright E2E Tests matrix result
     if: ${{ always() }}
-    needs: [playwright-perf]
+    needs: [playwright]
     runs-on: ubuntu-latest
     steps:
       - run: |
-          result="${{ needs.playwright-perf.result }}"
+          result="${{ needs.playwright.result }}"
           # mark as successful even if skipped
           if [[ $result == "success" || $result == "skipped" ]]; then
             exit 0
@@ -312,7 +295,7 @@ jobs:
           fi
 
   result:
-    if: ${{ env.RUN_FULL_E2E == 'true' && !contains(github.head_ref , 'release/') }}
+    if: ${{ !contains(github.head_ref , 'release/') }}
     name: E2E result
     needs: [playwright, cypress]
     runs-on: ubuntu-latest
