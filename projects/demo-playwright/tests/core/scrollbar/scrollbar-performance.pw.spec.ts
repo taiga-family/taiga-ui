@@ -921,12 +921,14 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', () => {
         await page.waitForLoadState('networkidle');
     });
 
-    // Log planned configurations up-front
-    console.info('Planned configurations:');
+    // Log planned configurations once before tests start
+    test.beforeAll(async () => {
+        console.info('Planned configurations:');
 
-    for (const v of TEST_VARIANTS) {
-        console.info(`  - ${v.name}`);
-    }
+        for (const v of TEST_VARIANTS) {
+            console.info(`  - ${v.name}`);
+        }
+    });
 
     for (const variant of TEST_VARIANTS) {
         test(`Performance: ${variant.name}`, async ({page}) => {
