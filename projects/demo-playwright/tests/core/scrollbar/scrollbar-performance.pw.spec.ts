@@ -894,7 +894,7 @@ class ResultsManager {
 // Test Suite
 // ========================================================================================
 
-test.describe('TuiScrollbar Performance Analysis @scrollbar', () => {
+test.describe('TuiScrollbar Performance Analysis @scrollbar', {tag: '@scrollbar'}, () => {
     // Allow opting into parallel mode for faster local runs
     if (process.env.TUI_PERF_PARALLEL === '1') {
         test.describe.configure({mode: 'parallel'});
