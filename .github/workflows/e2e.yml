@@ -32,7 +32,7 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
   cypress:
-    if: ${{ env.RUN_FULL_E2E == 'true' && !contains(github.head_ref , 'release/') }}
+    if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
     runs-on: ubuntu-latest
     name: Cypress / Component Testing
     env:
@@ -41,16 +41,22 @@ jobs:
       CYPRESS_BASELINE_SNAPSHOTS: 'projects/demo-cypress/tests-results/snapshots/baseline'
       CYPRESS_BASELINE_SNAPSHOTS_KEY: 'cy_baseline_${{ github.event.pull_request.head.sha }}'
     steps:
+      - name: Skip (RUN_FULL_E2E=false)
+        if: ${{ env.RUN_FULL_E2E != 'true' }}
+        run: echo "Cypress job skipped by RUN_FULL_E2E=false"
       - uses: actions/checkout@v4.3.0
+        if: ${{ env.RUN_FULL_E2E == 'true' }}
         with:
           ref: ${{ github.base_ref }}
       - uses: taiga-family/ci/actions/setup/variables@v1.144.0
       - uses: taiga-family/ci/actions/setup/node@v1.144.0
 
       - name: Run tests for baseline state
+        if: ${{ env.RUN_FULL_E2E == 'true' }}
         run: npx nx component-test demo-cypress
 
       - name: Save Cypress Baseline Snapshots
+        if: ${{ env.RUN_FULL_E2E == 'true' }}
         uses: actions/upload-artifact@v4.6.2
         with:
           path: ${{env.CYPRESS_BASELINE_SNAPSHOTS}}
@@ -64,6 +70,7 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.144.0
 
       - name: Download Cypress Baseline Snapshots
+        if: ${{ env.RUN_FULL_E2E == 'true' }}
         uses: actions/download-artifact@v4.3.0
         with:
           path: ${{env.CYPRESS_BASELINE_SNAPSHOTS}}
@@ -71,18 +78,22 @@ jobs:
           merge-multiple: true
 
       - name: Run tests for current state
+        if: ${{ env.RUN_FULL_E2E == 'true' }}
         run: npx nx component-test demo-cypress
 
       - name: Prepare diff screenshots
+        if: ${{ env.RUN_FULL_E2E == 'true' }}
         run: |
           npm install canvas --no-save --silent --force
           npx ts-node -e "import { tuiCombineCypressFailedScreenshots as run } from './projects/testing/visual-testing'; run();";
 
       - name: Debug output
+        if: ${{ env.RUN_FULL_E2E == 'true' }}
         continue-on-error: true
         run: tree ${{ env.CYPRESS_RESULTS_FOLDER }}  -L 1
 
       - name: Upload artifacts
+        if: ${{ env.RUN_FULL_E2E == 'true' }}
         uses: actions/upload-artifact@v4.6.2
         with:
           path: '${{ env.CYPRESS_RESULTS_FOLDER }}/**/*.diff.png'
