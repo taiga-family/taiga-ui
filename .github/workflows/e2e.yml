@@ -9,7 +9,7 @@ env:
 
 jobs:
   build-demo:
-    if: ${{ !contains(github.head_ref , 'release/') }}
+    if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
     name: Build demo
     runs-on: ubuntu-latest
     steps:
@@ -194,7 +194,7 @@ jobs:
           retention-days: 1
 
   playwright-perf:
-    if: ${{ !contains(github.head_ref , 'release/') }}
+    if: ${{ !contains(github.head_ref || github.ref_name, 'release/') }}
     name: Playwright / Scrollbar Performance (Chromium)
     runs-on: ubuntu-latest
     steps:
