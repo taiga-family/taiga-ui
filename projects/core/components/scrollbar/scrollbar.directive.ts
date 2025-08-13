@@ -14,7 +14,6 @@ import {
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {
-    auditTime,
     debounceTime,
     distinctUntilChanged,
     EMPTY,
@@ -59,8 +58,7 @@ export class TuiScrollbarDirective {
 
     // Runtime-tunable flags via sessionStorage for perf experiments
 
-    private readonly perfEnabled =
-        typeof window !== 'undefined' && sessionStorage.getItem('tui-perf') === '1';
+    private readonly perfEnabled = false;
 
     private readonly transformEnabled =
         typeof window !== 'undefined' &&
@@ -77,11 +75,6 @@ export class TuiScrollbarDirective {
             sessionStorage.getItem('tui-scrollbar-throttle')) ??
             '16',
     );
-
-    private readonly pipelineMode: 'audit' | 'throttle' = ((typeof window !==
-        'undefined' &&
-        sessionStorage.getItem('tui-scrollbar-pipeline')) ||
-        'throttle') as 'audit' | 'throttle';
 
     private readonly mutationEnabled =
         typeof window === 'undefined' ||
@@ -216,9 +209,7 @@ export class TuiScrollbarDirective {
                     : (EMPTY as any),
                 // Scroll position changes - immediate response with light throttling
                 tuiScrollFrom(this.el).pipe(
-                    this.pipelineMode === 'audit'
-                        ? auditTime(this.throttleMs)
-                        : throttleTime(this.throttleMs, undefined, {trailing: true}),
+                    throttleTime(this.throttleMs, undefined, {trailing: true}),
                     map(() => ({
                         scrollTop: this.el.scrollTop,
                         scrollLeft: this.el.scrollLeft,

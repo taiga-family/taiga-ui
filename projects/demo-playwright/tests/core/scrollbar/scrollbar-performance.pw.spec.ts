@@ -82,12 +82,8 @@ interface TestVariant {
     config: {
         debounceMs: number;
         throttleMs: number;
-        scheduler: 'idle' | 'immediate' | 'microtask' | 'raf';
-        pipeline?: 'audit' | 'throttle';
+        scheduler: 'microtask' | 'raf';
         useGpuAcceleration?: boolean;
-        distinctMode?: 'derived' | 'full';
-        precision?: number;
-        disableMutation?: boolean;
         useOriginalScrollControls?: boolean;
     };
 }
@@ -230,30 +226,18 @@ class PerformanceMeasurer {
         variant: TestVariant,
     ): Promise<void> {
         await page.addInitScript((config: TestVariant['config']) => {
-            const {
-                debounceMs,
-                throttleMs,
-                scheduler,
-                pipeline,
-                useGpuAcceleration,
-                distinctMode,
-                precision,
-                disableMutation,
-            } = config;
+            const {debounceMs, throttleMs, scheduler, useGpuAcceleration} = config;
 
             // Clear all previous settings first
             sessionStorage.removeItem('tui-scrollbar-raf');
             sessionStorage.removeItem('tui-scroll-controls-raf');
             sessionStorage.removeItem('tui-scrollbar-no-mutation');
             sessionStorage.removeItem('tui-scrollbar-transform');
-            sessionStorage.removeItem('tui-scrollbar-pipeline');
-
             sessionStorage.setItem('tui-scrollbar-debounce', debounceMs.toString());
             sessionStorage.setItem('tui-scrollbar-throttle', throttleMs.toString());
             // Align scroll-controls timings for fair comparisons
             sessionStorage.setItem('tui-scroll-controls-debounce', debounceMs.toString());
             sessionStorage.setItem('tui-scroll-controls-throttle', throttleMs.toString());
-            sessionStorage.setItem('tui-scrollbar-scheduler', scheduler);
 
             // Set RAF mode for baseline test
             if (scheduler === 'raf') {
@@ -265,28 +249,11 @@ class PerformanceMeasurer {
                 }
             }
 
-            // Disable MutationObserver if requested
-            if (disableMutation) {
-                sessionStorage.setItem('tui-scrollbar-no-mutation', '1');
-            }
-
-            if (pipeline) {
-                sessionStorage.setItem('tui-scrollbar-pipeline', pipeline);
-            }
-
             if (useGpuAcceleration !== undefined) {
                 sessionStorage.setItem(
                     'tui-scrollbar-transform',
                     useGpuAcceleration ? '1' : '0',
                 );
-            }
-
-            if (distinctMode) {
-                sessionStorage.setItem('tui-scrollbar-distinct', distinctMode);
-            }
-
-            if (precision) {
-                sessionStorage.setItem('tui-scrollbar-precision', precision.toString());
             }
         }, variant.config);
 
@@ -452,10 +419,10 @@ class PerformanceMeasurer {
 }
 
 // ========================================================================================
-// Test Variants Configuration (Delay Sweep)
+// Test Variants Configuration (Targeted Ranges)
 // ========================================================================================
 
-function buildRange(start: number, end: number, step: number): number[] {
+function range(start: number, end: number, step: number): number[] {
     const out: number[] = [];
 
     for (let v = start; v <= end; v += step) {
@@ -465,65 +432,59 @@ function buildRange(start: number, end: number, step: number): number[] {
     return out;
 }
 
-const RAW_DELAY_VALUES: number[] = [
-    0,
-    ...buildRange(10, 20, 2),
-    ...buildRange(20, 50, 5),
-    ...buildRange(50, 100, 10),
-    ...buildRange(100, 300, 50),
-];
+// Debounce for Resize/Mutation (ms)
+const DEBOUNCE_VALUES: number[] = range(50, 100, 10); // 50,60,70,80,90,100
 
-// Deduplicate overlapping edges (20, 50, 100) and sort
-const DELAY_VALUES: number[] = Array.from(new Set(RAW_DELAY_VALUES)).sort(
-    (a, b) => a - b,
-);
+// Throttle for Scroll (ms)
+const SCROLL_THROTTLE_VALUES: number[] = range(0, 16, 2); // 0..16 by 2
 
-function makeVariant(arch: 'events' | 'gpu' | 'raf', delayMs: number): TestVariant {
-    const base = {
-        debounceMs: delayMs,
-        throttleMs: delayMs,
-    } as const;
+// RAF throttle (ms) baseline
+const RAF_THROTTLE_VALUES: number[] = range(0, 10, 2); // 0..10 by 2
 
-    switch (arch) {
-        case 'events':
-            return {
-                name: `sweep-events-${delayMs}ms`,
-                description: 'Event-driven (Resize + Mutation) with unified timings',
-                config: {
-                    ...base,
-                    scheduler: 'microtask',
-                },
-            };
-        case 'raf':
-            return {
-                name: `sweep-raf-${delayMs}ms`,
-                description:
-                    'RAF in BOTH scroll-controls and directive (baseline polling) with unified timings',
-                config: {
-                    ...base,
-                    scheduler: 'raf',
-                    useOriginalScrollControls: true,
-                },
-            };
-        case 'gpu':
-        default:
-            return {
-                name: `sweep-gpu-${delayMs}ms`,
-                description:
-                    'Event-driven + GPU transforms (transform/scale) with unified timings',
-                config: {
-                    ...base,
-                    scheduler: 'microtask',
-                    useGpuAcceleration: true,
-                },
-            };
-    }
+function makeEventVariant(
+    debounceMs: number,
+    throttleMs: number,
+    withGpu: boolean,
+): TestVariant {
+    const title = withGpu ? 'events+transform(gpu)' : 'events';
+
+    return {
+        name: `${title}-d${debounceMs}ms-t${throttleMs}ms`,
+        description: `${title} with separate debounce (RO/MO) and throttle (scroll)`,
+        config: {
+            debounceMs,
+            throttleMs,
+            scheduler: 'microtask',
+            ...(withGpu ? {useGpuAcceleration: true} : {}),
+        },
+    };
+}
+
+function makeRafVariant(throttleMs: number): TestVariant {
+    return {
+        name: `raf-t${throttleMs}ms`,
+        description:
+            'RAF in BOTH scroll-controls and directive (baseline polling), throttle on RAF stream',
+        config: {
+            debounceMs: 0,
+            throttleMs,
+            scheduler: 'raf',
+            useOriginalScrollControls: true,
+        },
+    };
 }
 
 const TEST_VARIANTS: readonly TestVariant[] = [
-    ...DELAY_VALUES.map((d) => makeVariant('raf', d)),
-    ...DELAY_VALUES.map((d) => makeVariant('events', d)),
-    ...DELAY_VALUES.map((d) => makeVariant('gpu', d)),
+    // RAF baseline
+    ...RAF_THROTTLE_VALUES.map((t) => makeRafVariant(t)),
+    // Event-driven without GPU
+    ...DEBOUNCE_VALUES.flatMap((d) =>
+        SCROLL_THROTTLE_VALUES.map((t) => makeEventVariant(d, t, false)),
+    ),
+    // Event-driven with GPU transforms
+    ...DEBOUNCE_VALUES.flatMap((d) =>
+        SCROLL_THROTTLE_VALUES.map((t) => makeEventVariant(d, t, true)),
+    ),
 ];
 
 // ========================================================================================
