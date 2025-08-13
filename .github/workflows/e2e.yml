@@ -214,7 +214,7 @@ jobs:
           replaceBaseUrl: false
       - name: Run scrollbar performance suite (Chromium, logs visible)
         env:
-          ITERATIONS_PER_CONFIGURATION: 30
+          ITERATIONS_PER_CONFIGURATION: 10
         run: |
           npx nx e2e demo-playwright -- \
             --project=chromium \
@@ -250,46 +250,25 @@ jobs:
             const fs = require("fs");
             const p = process.env.RESULTS;
             const r = JSON.parse(fs.readFileSync(p, "utf8"));
-            const min = (a) => Math.min(...a);
-            const max = (a) => Math.max(...a);
-            const rows = Object.values(r.results).map(x => {
-              const layoutOps = x.runs.map(rr => rr.layoutCount);
-              const recalcOps = x.runs.map(rr => rr.recalcStyleCount);
-              const layoutOpsMedian = ((x.summary.median && x.summary.median.layoutCount) ?? x.summary.layoutCount);
-              const recalcOpsMedian = ((x.summary.median && x.summary.median.recalcStyleCount) ?? x.summary.recalcStyleCount);
-              return {
-                name: x.variant.name,
-                layoutOpsMean: Number(x.summary.layoutCount).toFixed(1),
-                layoutOpsMedian: Number(layoutOpsMedian).toFixed(1),
-                layoutOpsRange: `[${min(layoutOps).toFixed(0)}, ${max(layoutOps).toFixed(0)}]`,
-                recalcOpsMean: Number(x.summary.recalcStyleCount).toFixed(1),
-                recalcOpsMedian: Number(recalcOpsMedian).toFixed(1),
-                recalcOpsRange: `[${min(recalcOps).toFixed(0)}, ${max(recalcOps).toFixed(0)}]`,
-                layoutMsMean: Number(x.summary.layoutDuration).toFixed(2),
-                recalcMsMean: Number(x.summary.recalcStyleDuration).toFixed(2),
-              };
-            });
-            const header = "| Variant | Layout (ops) mean | Layout (ops) median | Layout ops [min,max] | Recalc (ops) mean | Recalc (ops) median | Recalc ops [min,max] | Layout (ms) mean | Recalc (ms) mean |";
-            const sep = "|---|---:|---:|---:|---:|---:|---:|---:|---:|";
-            const lines = rows.map(rw => `| ${rw.name} | ${rw.layoutOpsMean} | ${rw.layoutOpsMedian} | ${rw.layoutOpsRange} | ${rw.recalcOpsMean} | ${rw.recalcOpsMedian} | ${rw.recalcOpsRange} | ${rw.layoutMsMean} | ${rw.recalcMsMean} |`).join("\\n");
+            const rows = Object.values(r.results).map(x => ({
+              name: x.variant.name,
+              layout: x.summary.layoutCount.toFixed(1),
+              layoutMs: x.summary.layoutDuration.toFixed(2),
+              layoutMsMedian: ((x.summary.median && x.summary.median.layoutDuration) ?? x.summary.layoutDuration).toFixed(2),
+              recalc: x.summary.recalcStyleCount.toFixed(1),
+              recalcMs: x.summary.recalcStyleDuration.toFixed(2),
+              recalcMsMedian: ((x.summary.median && x.summary.median.recalcStyleDuration) ?? x.summary.recalcStyleDuration).toFixed(2),
+              compositeMedian: (((x.summary.median && x.summary.median.layoutDuration) ?? x.summary.layoutDuration) + ((x.summary.median && x.summary.median.recalcStyleDuration) ?? x.summary.recalcStyleDuration)).toFixed(2),
+            }));
+            const header = "| Variant | Composite (ms) median | Layout (ops) | Layout (ms) | Layout (ms) median | Recalc (ops) | Recalc (ms) | Recalc (ms) median |";
+            const sep = "|---|---:|---:|---:|---:|---:|---:|---:|";
+            const lines = rows.map(r => "| " + r.name + " | " + r.compositeMedian + " | " + r.layout + " | " + r.layoutMs + " | " + r.layoutMsMedian + " | " + r.recalc + " | " + r.recalcMs + " | " + r.recalcMsMedian + " |").join("\n");
             const out = "projects/demo-playwright/tests-results/scrollbar-performance-summary.md";
-            let md = header + "\\n" + sep + "\\n" + lines + "\\n\\n";
+            let md = header + "\n" + sep + "\n" + lines + "\n\n";
             const rec = r.recommendation;
             const baseline = r.results["raf-throttling100ms"];
             if (rec) {
-              md += `> ⭐ Final recommendation: ${rec.family} → ${rec.name} (debounce=${rec.debounceMs ?? "-"}ms, throttling=${rec.throttleMs}ms)\\n`;
-              if (baseline && r.results[rec.name]) {
-                const win = r.results[rec.name];
-                const wLayoutOps = ((win.summary.median && win.summary.median.layoutCount) ?? win.summary.layoutCount);
-                const wRecalcOps = ((win.summary.median && win.summary.median.recalcStyleCount) ?? win.summary.recalcStyleCount);
-                const bLayoutOps = ((baseline.summary.median && baseline.summary.median.layoutCount) ?? baseline.summary.layoutCount);
-                const bRecalcOps = ((baseline.summary.median && baseline.summary.median.recalcStyleCount) ?? baseline.summary.recalcStyleCount);
-                const dLayout = bLayoutOps - wLayoutOps;
-                const dRecalc = bRecalcOps - wRecalcOps;
-                const pct = (d, b) => b > 0 ? ((d / b) * 100).toFixed(1) + "%" : "0.0%";
-                md += `> • Layout (ops): ${wLayoutOps.toFixed(1)} (Δ ${dLayout.toFixed(1)}, ${pct(dLayout, bLayoutOps)}) vs baseline ${bLayoutOps.toFixed(1)}\\n`;
-                md += `> • Recalc (ops): ${wRecalcOps.toFixed(1)} (Δ ${dRecalc.toFixed(1)}, ${pct(dRecalc, bRecalcOps)}) vs baseline ${bRecalcOps.toFixed(1)}\\n`;
-              }
+              md += `> Recommended (${rec.family}): **${rec.name}**  \\\n+> Reason: elbow method on composite median time — first point where further improvement < 5% within the family; best across families by composite score.  \\\n+> Params: debounce=${rec.debounceMs ?? '-'}ms, throttle=${rec.throttleMs}ms, composite≈${Number(rec.score).toFixed(2)}ms\n`;
             }
             fs.writeFileSync(out, md, "utf8");
             console.log("Saved:", out);

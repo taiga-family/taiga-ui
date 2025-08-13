@@ -512,6 +512,10 @@ class ResultsManager {
         this.results.set(result.variant.name, result);
     }
 
+    public static getResultByName(name: string): TestResult | undefined {
+        return this.results.get(name);
+    }
+
     public static async saveResults(): Promise<void> {
         const outputPath = path.join(
             CONFIG.outputDir,
@@ -1014,47 +1018,40 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', {tag: '@scrollbar'
         const rec = (ResultsManager as any).computeRecommendation?.();
 
         if (rec) {
-            const resultsMap = (ResultsManager as any).results as Map<string, any>;
-            const baseline = resultsMap.get('raf-throttling100ms');
-            const winner = resultsMap.get(rec.name);
+            const baselineName = 'raf-throttling100ms';
+            const baseline = ResultsManager.getResultByName(baselineName);
+            const recResult = ResultsManager.getResultByName(rec.name);
 
-            if (baseline && winner) {
-                const baseMed = baseline.summary.median || baseline.summary;
-                const winMed = winner.summary.median || winner.summary;
+            if (baseline && recResult) {
+                const pick = (s: any, k: 'layoutCount' | 'recalcStyleCount'): number =>
+                    s.median && typeof s.median[k] === 'number' ? s.median[k] : s[k];
 
-                const baseLayoutOps = baseMed.layoutCount as number;
-                const baseRecalcOps = baseMed.recalcStyleCount as number;
-                const winLayoutOps = winMed.layoutCount as number;
-                const winRecalcOps = winMed.recalcStyleCount as number;
+                const bLayoutOps = pick(baseline.summary as any, 'layoutCount');
+                const bRecalcOps = pick(baseline.summary as any, 'recalcStyleCount');
+                const rLayoutOps = pick(recResult.summary as any, 'layoutCount');
+                const rRecalcOps = pick(recResult.summary as any, 'recalcStyleCount');
 
-                const layoutDeltaOps = baseLayoutOps - winLayoutOps;
-                const recalcDeltaOps = baseRecalcOps - winRecalcOps;
-
-                const pct = (d: number, base: number): string =>
-                    base > 0 ? `${((d / base) * 100).toFixed(1)}%` : '0.0%';
+                const dLayoutOps = bLayoutOps - rLayoutOps;
+                const dRecalcOps = bRecalcOps - rRecalcOps;
+                const pLayoutOps = bLayoutOps ? (dLayoutOps / bLayoutOps) * 100 : 0;
+                const pRecalcOps = bRecalcOps ? (dRecalcOps / bRecalcOps) * 100 : 0;
 
                 console.info(
-                    `⭐ Final recommendation: ${rec.family} → ${rec.name} (debounce=${
+                    `⭐ Recommendation: ${rec.family} → ${rec.name} (debounce=${
                         rec.debounceMs ?? '-'
-                    }ms, throttling=${rec.throttleMs}ms)`,
-                );
-                console.info(
-                    `   • Layout (ops): ${winLayoutOps.toFixed(1)} (Δ ${layoutDeltaOps.toFixed(
+                    }ms, throttling=${rec.throttleMs}ms); vs baseline ${baselineName}: layout ops ${rLayoutOps.toFixed(
                         1,
-                    )}, ${pct(layoutDeltaOps, baseLayoutOps)}) vs baseline ${baseLayoutOps.toFixed(
-                        1,
-                    )}`,
-                );
-                console.info(
-                    `   • Recalc (ops): ${winRecalcOps.toFixed(1)} (Δ ${recalcDeltaOps.toFixed(
-                        1,
-                    )}, ${pct(recalcDeltaOps, baseRecalcOps)}) vs baseline ${baseRecalcOps.toFixed(
-                        1,
-                    )}`,
+                    )} (${dLayoutOps >= 0 ? '-' : '+'}${Math.abs(dLayoutOps).toFixed(1)}, ${
+                        pLayoutOps >= 0 ? '-' : '+'
+                    }${Math.abs(pLayoutOps).toFixed(1)}%), recalc ops ${rRecalcOps.toFixed(1)} (${dRecalcOps >= 0 ? '-' : '+'}${Math.abs(
+                        dRecalcOps,
+                    ).toFixed(1)}, ${
+                        pRecalcOps >= 0 ? '-' : '+'
+                    }${Math.abs(pRecalcOps).toFixed(1)}%)`,
                 );
             } else {
                 console.info(
-                    `⭐ Final recommendation: ${rec.family} → ${rec.name} (debounce=${
+                    `⭐ Recommendation: ${rec.family} → ${rec.name} (debounce=${
                         rec.debounceMs ?? '-'
                     }ms, throttling=${rec.throttleMs}ms)`,
                 );
