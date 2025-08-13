@@ -161,6 +161,18 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         this.countryIsoCode.set(code);
     }
 
+    @tuiUntracked
+    public override writeValue(unmaskedValue: string): void {
+        super.writeValue(unmaskedValue);
+
+        const maskOptions = this.mask();
+
+        this.textfieldValue = maskOptions
+            ? maskitoTransform(this.value(), maskOptions)
+            : this.value(); // it will be calibrated later when mask is ready (by maskitoInitialCalibrationPlugin)
+        this.cdr.detectChanges();
+    }
+
     public focusFirstItem(): void {
         this.listOptions?.get(0)?.nativeElement.focus();
     }
@@ -190,18 +202,6 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         if (countryIsoCode) {
             this.countryIsoCode.set(countryIsoCode);
         }
-    }
-
-    @tuiUntracked
-    public override writeValue(unmaskedValue: string): void {
-        super.writeValue(unmaskedValue);
-
-        const maskOptions = this.mask();
-
-        this.textfieldValue = maskOptions
-            ? maskitoTransform(this.value(), maskOptions)
-            : this.value(); // it will be calibrated later when mask is ready (by maskitoInitialCalibrationPlugin)
-        this.cdr.detectChanges();
     }
 
     public onItemClick(isoCode: TuiCountryIsoCode): void {

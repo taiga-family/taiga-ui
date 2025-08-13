@@ -127,15 +127,15 @@ export class TuiInputDateTimeDirective
         this.maxTime.set(time ?? MAX_TIME);
     }
 
-    public setValue(value: readonly [TuiDay, TuiTime | null] | null): void {
-        this.onChange(value);
-        this.textfield.value.set(this.stringify(value));
-    }
-
     @tuiUntracked
     public override writeValue(value: [TuiDay, TuiTime | null] | null): void {
         super.writeValue(value);
         this.textfield.value.set(this.stringify(this.value()));
+    }
+
+    public setValue(value: readonly [TuiDay, TuiTime | null] | null): void {
+        this.onChange(value);
+        this.textfield.value.set(this.stringify(value));
     }
 
     public override setDate(newDate: TuiDay): void {
