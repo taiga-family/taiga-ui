@@ -14,6 +14,7 @@ import {
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiUntracked} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {
@@ -127,6 +128,7 @@ export abstract class TuiInputDateBase<
         this.max.set(max instanceof TuiDay ? max : this.options.max);
     }
 
+    @tuiUntracked
     public override writeValue(value: T | null): void {
         const reset = this.control.pristine && this.control.untouched && !value;
 

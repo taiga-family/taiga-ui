@@ -11,6 +11,7 @@ import {
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import {type TuiStringMatcher} from '@taiga-ui/cdk/types';
+import {tuiUntracked} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsOptionContent,
     type TuiDataListAccessor,
@@ -138,6 +139,12 @@ export class TuiComboBox<T>
         this.matcher.set(x);
     }
 
+    @tuiUntracked
+    public override writeValue(value: T | string | null): void {
+        super.writeValue(value);
+        this.textfield.value.set(this.stringify(value));
+    }
+
     public setValue(value: T | null): void {
         this.textfield.setValue(value);
         this.onChange(value);
@@ -145,11 +152,6 @@ export class TuiComboBox<T>
         if (!value) {
             this.toggleDropdown(true);
         }
-    }
-
-    public override writeValue(value: T | string | null): void {
-        super.writeValue(value);
-        this.textfield.value.set(this.stringify(value));
     }
 
     protected toggleDropdown(open = !this.open()): void {

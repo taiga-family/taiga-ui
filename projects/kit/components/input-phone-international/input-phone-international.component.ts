@@ -32,7 +32,7 @@ import {
 } from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiIsInputEvent} from '@taiga-ui/cdk/utils/dom';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding, tuiUntracked} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDataList, TuiOption} from '@taiga-ui/core/components/data-list';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -192,12 +192,7 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
         }
     }
 
-    public onItemClick(isoCode: TuiCountryIsoCode): void {
-        this.open.set(false);
-        this.countryIsoCode.set(isoCode);
-        this.input?.nativeElement.focus();
-    }
-
+    @tuiUntracked
     public override writeValue(unmaskedValue: string): void {
         super.writeValue(unmaskedValue);
 
@@ -207,6 +202,12 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
             ? maskitoTransform(this.value(), maskOptions)
             : this.value(); // it will be calibrated later when mask is ready (by maskitoInitialCalibrationPlugin)
         this.cdr.detectChanges();
+    }
+
+    public onItemClick(isoCode: TuiCountryIsoCode): void {
+        this.open.set(false);
+        this.countryIsoCode.set(isoCode);
+        this.input?.nativeElement.focus();
     }
 
     @ViewChild(forwardRef(() => TuiTextfieldDropdownDirective), {read: TemplateRef})

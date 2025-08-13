@@ -16,7 +16,7 @@ import {
     TuiTime,
 } from '@taiga-ui/cdk/date-time';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding, tuiUntracked} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {
@@ -132,6 +132,12 @@ export class TuiInputDateTimeDirective
         this.textfield.value.set(this.stringify(value));
     }
 
+    @tuiUntracked
+    public override writeValue(value: [TuiDay, TuiTime | null] | null): void {
+        super.writeValue(value);
+        this.textfield.value.set(this.stringify(this.value()));
+    }
+
     public override setDate(newDate: TuiDay): void {
         const [date, time] = this.clampTime([newDate, this.value()?.[1] ?? null]);
 
@@ -141,11 +147,6 @@ export class TuiInputDateTimeDirective
             (caretIndex = DATE_FILLER_LENGTH + this.options.dateTimeSeparator.length) =>
                 this.el.setSelectionRange(caretIndex, caretIndex),
         );
-    }
-
-    public override writeValue(value: [TuiDay, TuiTime | null] | null): void {
-        super.writeValue(value);
-        this.textfield.value.set(this.stringify(this.value()));
     }
 
     protected override processCalendar(calendar: TuiCalendar): void {
