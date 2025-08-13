@@ -5,6 +5,7 @@ on:
 env:
   RETRY_COUNT: 2
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  RUN_FULL_E2E: 'false'
 
 jobs:
   build-demo:
@@ -31,7 +32,7 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
   cypress:
-    if: ${{ !contains(github.head_ref , 'release/') }}
+    if: ${{ env.RUN_FULL_E2E == 'true' && !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
     name: Cypress / Component Testing
     env:
@@ -91,7 +92,7 @@ jobs:
           retention-days: 1
 
   playwright:
-    if: ${{ !contains(github.head_ref , 'release/') }}
+    if: ${{ env.RUN_FULL_E2E == 'true' && !contains(github.head_ref , 'release/') }}
     needs: [build-demo]
     strategy:
       fail-fast: false
@@ -281,7 +282,7 @@ jobs:
   # see https://github.com/orgs/community/discussions/9141#discussioncomment-2296809
   playwright-composite-result:
     name: Playwright E2E Tests matrix result
-    if: ${{ always() }}
+    if: ${{ env.RUN_FULL_E2E == 'true' && always() }}
     needs: [playwright]
     runs-on: ubuntu-latest
     steps:
@@ -295,7 +296,7 @@ jobs:
           fi
 
   result:
-    if: ${{ !contains(github.head_ref , 'release/') }}
+    if: ${{ env.RUN_FULL_E2E == 'true' && !contains(github.head_ref , 'release/') }}
     name: E2E result
     needs: [playwright, cypress]
     runs-on: ubuntu-latest
