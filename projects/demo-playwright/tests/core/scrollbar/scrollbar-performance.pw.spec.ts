@@ -1012,6 +1012,29 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', {tag: '@scrollbar'
             console.info(
                 `    🎯 Confidence: [${summary.confidence.layoutCount[0].toFixed(1)}, ${summary.confidence.layoutCount[1].toFixed(1)}] operations`,
             );
+            // Additional medians and CIs per metric
+            const medianLayoutOps = (summary as any).median?.layoutCount as
+                | number
+                | undefined;
+            const medianLayoutMs = (summary as any).median?.layoutDuration as
+                | number
+                | undefined;
+            const medianRecalcOps = (summary as any).median?.recalcStyleCount as
+                | number
+                | undefined;
+            const medianRecalcMs = (summary as any).median?.recalcStyleDuration as
+                | number
+                | undefined;
+
+            console.info(
+                `    ▫️ Layout ops median: ${(medianLayoutOps ?? summary.layoutCount).toFixed(1)}`,
+            );
+            console.info(
+                `    ▫️ Layout ms median: ${(medianLayoutMs ?? summary.layoutDuration).toFixed(2)}ms`,
+            );
+            console.info(
+                `    🎯 Layout ms CI: [${summary.confidence.layoutDuration[0].toFixed(2)}, ${summary.confidence.layoutDuration[1].toFixed(2)}] ms`,
+            );
             // RecalculateStyles metrics
             console.info(
                 `    🧩 Recalc: ${summary.recalcStyleCount.toFixed(1)} ± ${summary.standardDeviation.recalcStyleCount.toFixed(1)} operations`,
@@ -1021,6 +1044,15 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', {tag: '@scrollbar'
             );
             console.info(
                 `    🎯 Recalc CI: [${summary.confidence.recalcStyleCount[0].toFixed(1)}, ${summary.confidence.recalcStyleCount[1].toFixed(1)}] operations`,
+            );
+            console.info(
+                `    ▫️ Recalc ops median: ${(medianRecalcOps ?? summary.recalcStyleCount).toFixed(1)}`,
+            );
+            console.info(
+                `    ▫️ Recalc ms median: ${(medianRecalcMs ?? summary.recalcStyleDuration).toFixed(2)}ms`,
+            );
+            console.info(
+                `    🎯 Recalc ms CI: [${summary.confidence.recalcStyleDuration[0].toFixed(2)}, ${summary.confidence.recalcStyleDuration[1].toFixed(2)}] ms`,
             );
         });
     }
