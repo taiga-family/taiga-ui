@@ -1,7 +1,7 @@
 import {untracked} from '@angular/core';
 
 /**
- * @deprecated "experimentalDecorators": false
+ * @deprecated use "experimentalDecorators": false
  * TODO(v5): drop compatibility with legacy "experimentalDecorators": true
  */
 export function tuiUntracked<T>(
