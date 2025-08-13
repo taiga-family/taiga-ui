@@ -200,7 +200,7 @@ export const pages: DocRoutePages = [
             },
             {
                 name: 'tui-avatar-stack',
-                figmaVersion: '1.0.3',
+                figmaVersion: '1.3.0',
             },
             {
                 name: 'tui-avatar-subscription',
