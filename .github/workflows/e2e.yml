@@ -221,6 +221,7 @@ jobs:
       - name: Run scrollbar performance suite (Chromium, logs visible)
         env:
           TUI_PERF_RUNS: 10
+          TUI_PERF_PARALLEL: '1'
         run: |
           npx nx e2e demo-playwright -- \
             --project=chromium \

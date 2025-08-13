@@ -16,7 +16,6 @@ import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {
     debounceTime,
     distinctUntilChanged,
-    EMPTY,
     map,
     merge,
     type Observable,
@@ -58,8 +57,6 @@ export class TuiScrollbarDirective {
 
     // Runtime-tunable flags via sessionStorage for perf experiments
 
-    private readonly perfEnabled = false;
-
     private readonly transformEnabled =
         typeof window !== 'undefined' &&
         sessionStorage.getItem('tui-scrollbar-transform') === '1';
@@ -75,10 +72,6 @@ export class TuiScrollbarDirective {
             sessionStorage.getItem('tui-scrollbar-throttle')) ??
             '16',
     );
-
-    private readonly mutationEnabled =
-        typeof window === 'undefined' ||
-        sessionStorage.getItem('tui-scrollbar-no-mutation') !== '1';
 
     private readonly useRafMode =
         typeof window !== 'undefined' &&
@@ -143,8 +136,6 @@ export class TuiScrollbarDirective {
         )
             .pipe(tuiZonefree(), takeUntilDestroyed())
             .subscribe(() => {
-                const t0 = this.perfEnabled ? performance.now() : 0;
-
                 const dimension: ComputedDimension = {
                     scrollTop: this.el.scrollTop,
                     scrollHeight: this.el.scrollHeight,
@@ -165,20 +156,6 @@ export class TuiScrollbarDirective {
                     (this.style as any).insetInlineStart = thumb;
                     this.style.width = view;
                 }
-
-                if (this.perfEnabled) {
-                    const dt = performance.now() - t0;
-                    const w = window as unknown as {
-                        __tuiScrollbarPerf?: {updates: number; totalMs: number};
-                    };
-
-                    if (!w.__tuiScrollbarPerf) {
-                        w.__tuiScrollbarPerf = {updates: 0, totalMs: 0};
-                    }
-
-                    w.__tuiScrollbarPerf.updates += 1;
-                    w.__tuiScrollbarPerf.totalMs += dt;
-                }
             });
     }
 
@@ -196,17 +173,15 @@ export class TuiScrollbarDirective {
                     })),
                     debounceTime(this.debounceMs),
                 ),
-                this.mutationEnabled
-                    ? this.mutationObserverService.pipe(
-                          map(() => ({
-                              scrollHeight: this.el.scrollHeight,
-                              scrollWidth: this.el.scrollWidth,
-                              clientHeight: this.el.clientHeight,
-                              clientWidth: this.el.clientWidth,
-                          })),
-                          debounceTime(this.debounceMs),
-                      )
-                    : (EMPTY as any),
+                this.mutationObserverService.pipe(
+                    map(() => ({
+                        scrollHeight: this.el.scrollHeight,
+                        scrollWidth: this.el.scrollWidth,
+                        clientHeight: this.el.clientHeight,
+                        clientWidth: this.el.clientWidth,
+                    })),
+                    debounceTime(this.debounceMs),
+                ),
                 // Scroll position changes - immediate response with light throttling
                 tuiScrollFrom(this.el).pipe(
                     throttleTime(this.throttleMs, undefined, {trailing: true}),
@@ -241,23 +216,7 @@ export class TuiScrollbarDirective {
                 takeUntilDestroyed(),
             )
             .subscribe((dimension) => {
-                const t0 = this.perfEnabled ? performance.now() : 0;
-
                 this.updateThumbStyles(dimension);
-
-                if (this.perfEnabled) {
-                    const dt = performance.now() - t0;
-                    const w = window as unknown as {
-                        __tuiScrollbarPerf?: {updates: number; totalMs: number};
-                    };
-
-                    if (!w.__tuiScrollbarPerf) {
-                        w.__tuiScrollbarPerf = {updates: 0, totalMs: 0};
-                    }
-
-                    w.__tuiScrollbarPerf.updates += 1;
-                    w.__tuiScrollbarPerf.totalMs += dt;
-                }
             });
     }
 

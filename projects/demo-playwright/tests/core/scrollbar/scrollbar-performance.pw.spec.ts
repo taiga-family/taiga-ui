@@ -84,7 +84,6 @@ interface TestVariant {
         throttleMs: number;
         scheduler: 'microtask' | 'raf';
         useGpuAcceleration?: boolean;
-        useOriginalScrollControls?: boolean;
     };
 }
 
@@ -244,8 +243,7 @@ class PerformanceMeasurer {
 
             // Clear all previous settings first
             sessionStorage.removeItem('tui-scrollbar-raf');
-            sessionStorage.removeItem('tui-scroll-controls-raf');
-            sessionStorage.removeItem('tui-scrollbar-no-mutation');
+
             sessionStorage.removeItem('tui-scrollbar-transform');
             sessionStorage.setItem('tui-scrollbar-debounce', debounceMs.toString());
             sessionStorage.setItem('tui-scrollbar-throttle', throttleMs.toString());
@@ -256,11 +254,6 @@ class PerformanceMeasurer {
             // Set RAF mode for baseline test
             if (scheduler === 'raf') {
                 sessionStorage.setItem('tui-scrollbar-raf', '1');
-
-                // Optionally enable RAF for scroll-controls for a true baseline
-                if (config.useOriginalScrollControls) {
-                    sessionStorage.setItem('tui-scroll-controls-raf', '1');
-                }
             }
 
             if (useGpuAcceleration !== undefined) {
@@ -277,17 +270,16 @@ class PerformanceMeasurer {
         // Validate configuration was applied
         const configCheck = await page.evaluate(() => ({
             rafMode: sessionStorage.getItem('tui-scrollbar-raf'),
-            rafScrollControls: sessionStorage.getItem('tui-scroll-controls-raf'),
+
             debounce: sessionStorage.getItem('tui-scrollbar-debounce'),
             throttle: sessionStorage.getItem('tui-scrollbar-throttle'),
             scDebounce: sessionStorage.getItem('tui-scroll-controls-debounce'),
             scThrottle: sessionStorage.getItem('tui-scroll-controls-throttle'),
             transform: sessionStorage.getItem('tui-scrollbar-transform'),
-            noMutation: sessionStorage.getItem('tui-scrollbar-no-mutation'),
         }));
 
         console.info(
-            `    🔧 Config applied: RAF=${configCheck.rafMode}/${configCheck.rafScrollControls}, debounce=${configCheck.debounce}/${configCheck.scDebounce}ms, throttle=${configCheck.throttle}/${configCheck.scThrottle}ms, transform=${configCheck.transform}, noMutation=${configCheck.noMutation}`,
+            `    🔧 Config applied: RAF=${configCheck.rafMode}/${configCheck.rafScrollControls}, debounce=${configCheck.debounce}/${configCheck.scDebounce}ms, throttle=${configCheck.throttle}/${configCheck.scThrottle}ms, transform=${configCheck.transform}`,
         );
     }
 
@@ -499,7 +491,6 @@ function makeRafVariant(throttleMs: number): TestVariant {
             debounceMs: 0,
             throttleMs,
             scheduler: 'raf',
-            useOriginalScrollControls: true,
         },
     };
 }
@@ -593,11 +584,11 @@ class ResultsManager {
             return {
                 name: variant.name,
                 layoutCount: summary.layoutCount,
+                layoutCountMedian: (summary as any).median?.layoutCount as number,
                 layoutMs: summary.layoutDuration,
                 recalcCount: summary.recalcStyleCount,
+                recalcCountMedian: (summary as any).median?.recalcStyleCount as number,
                 recalcMs: summary.recalcStyleDuration,
-                layoutMsMedian: (summary as any).median?.layoutDuration as number,
-                recalcMsMedian: (summary as any).median?.recalcStyleDuration as number,
                 layoutCountRange: `[${min(layoutOps).toFixed(0)}, ${max(layoutOps).toFixed(0)}]`,
                 layoutMsRange: `[${min(layoutTimes).toFixed(2)}, ${max(layoutTimes).toFixed(2)}]`,
                 recalcCountRange: `[${min(recalcOps).toFixed(0)}, ${max(recalcOps).toFixed(0)}]`,
@@ -611,12 +602,12 @@ class ResultsManager {
 
         const headers = [
             'Variant',
-            'Layout (ops)',
-            'Layout (ms)',
-            'Layout (ms) median',
-            'Recalc (ops)',
-            'Recalc (ms)',
-            'Recalc (ms) median',
+            'Layout (ops) mean',
+            'Layout (ops) median',
+            'Layout (ms) mean',
+            'Recalc (ops) mean',
+            'Recalc (ops) median',
+            'Recalc (ms) mean',
             'Layout ops [min,max]',
             'Layout ms [min,max]',
             'Recalc ops [min,max]',
@@ -625,11 +616,11 @@ class ResultsManager {
         const data = rows.map((r) => [
             r.name,
             r.layoutCount.toFixed(1),
+            (r.layoutCountMedian ?? r.layoutCount).toFixed(1),
             r.layoutMs.toFixed(2),
-            (r.layoutMsMedian ?? r.layoutMs).toFixed(2),
             r.recalcCount.toFixed(1),
+            (r.recalcCountMedian ?? r.recalcCount).toFixed(1),
             r.recalcMs.toFixed(2),
-            (r.recalcMsMedian ?? r.recalcMs).toFixed(2),
             r.layoutCountRange,
             r.layoutMsRange,
             r.recalcCountRange,
@@ -922,7 +913,7 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', () => {
     });
 
     // Log planned configurations once before tests start
-    test.beforeAll(async () => {
+    test.beforeAll(() => {
         console.info('Planned configurations:');
 
         for (const v of TEST_VARIANTS) {
@@ -1036,5 +1027,14 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', () => {
 
     test.afterAll(async () => {
         await ResultsManager.saveResults();
+        const rec = (ResultsManager as any).computeRecommendation?.();
+
+        if (rec) {
+            console.info(
+                `⭐ Final recommendation: ${rec.family} → ${rec.name} (debounce=${
+                    rec.debounceMs ?? '-'
+                }ms, throttling=${rec.throttleMs}ms)`,
+            );
+        }
     });
 });
