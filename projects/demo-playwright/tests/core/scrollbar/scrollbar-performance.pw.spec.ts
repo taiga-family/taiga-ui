@@ -665,9 +665,9 @@ class ResultsManager {
         return s.layoutDuration + s.recalcStyleDuration;
     }
 
-    private static pickElbow<
-        T extends {key: ParsedVariantKey; score: number; name: string},
-    >(rows: readonly T[]): T {
+    private static pickElbow(
+        rows: ReadonlyArray<{name: string; key: ParsedVariantKey; score: number}>,
+    ): {name: string; key: ParsedVariantKey; score: number} {
         let pick = rows[0]!;
 
         for (let i = 1; i < rows.length; i++) {
