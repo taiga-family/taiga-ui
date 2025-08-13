@@ -26,7 +26,8 @@ import path from 'path';
 // ========================================================================================
 
 const CONFIG = {
-    outputDir: path.join(__dirname, '..', '..', 'tests-results'),
+    // Save under projects/demo-playwright/tests-results (single canonical folder)
+    outputDir: path.join(__dirname, '..', '..', '..', 'tests-results'),
     baseUrl: 'http://localhost:3333/components/scrollbar',
     // Statistical significance analysis suggests 50-100 runs for robust confidence intervals
     // 25 runs = good baseline, 50 runs = production-ready, 100+ runs = publication-quality
@@ -623,7 +624,7 @@ class ResultsManager {
 // Test Suite
 // ========================================================================================
 
-test.describe('TuiScrollbar Performance Analysis @perf', () => {
+test.describe('TuiScrollbar Performance Analysis @scrollbar', () => {
     // Allow opting into parallel mode for faster local runs
     if (process.env.TUI_PERF_PARALLEL === '1') {
         test.describe.configure({mode: 'parallel'});
