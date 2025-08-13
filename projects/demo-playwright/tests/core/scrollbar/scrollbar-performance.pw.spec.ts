@@ -1022,13 +1022,13 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', {tag: '@scrollbar'
                 const baseMed = baseline.summary.median || baseline.summary;
                 const winMed = winner.summary.median || winner.summary;
 
-                const baseLayoutMs = baseMed.layoutDuration;
-                const baseRecalcMs = baseMed.recalcStyleDuration;
-                const winLayoutMs = winMed.layoutDuration;
-                const winRecalcMs = winMed.recalcStyleDuration;
+                const baseLayoutOps = baseMed.layoutCount as number;
+                const baseRecalcOps = baseMed.recalcStyleCount as number;
+                const winLayoutOps = winMed.layoutCount as number;
+                const winRecalcOps = winMed.recalcStyleCount as number;
 
-                const layoutDeltaMs = baseLayoutMs - winLayoutMs;
-                const recalcDeltaMs = baseRecalcMs - winRecalcMs;
+                const layoutDeltaOps = baseLayoutOps - winLayoutOps;
+                const recalcDeltaOps = baseRecalcOps - winRecalcOps;
 
                 const pct = (d: number, base: number): string =>
                     base > 0 ? `${((d / base) * 100).toFixed(1)}%` : '0.0%';
@@ -1039,18 +1039,18 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', {tag: '@scrollbar'
                     }ms, throttling=${rec.throttleMs}ms)`,
                 );
                 console.info(
-                    `   • Layout: ${winLayoutMs.toFixed(2)}ms (Δ ${layoutDeltaMs.toFixed(
-                        2,
-                    )}ms, ${pct(layoutDeltaMs, baseLayoutMs)}) vs baseline ${baseLayoutMs.toFixed(
-                        2,
-                    )}ms`,
+                    `   • Layout (ops): ${winLayoutOps.toFixed(1)} (Δ ${layoutDeltaOps.toFixed(
+                        1,
+                    )}, ${pct(layoutDeltaOps, baseLayoutOps)}) vs baseline ${baseLayoutOps.toFixed(
+                        1,
+                    )}`,
                 );
                 console.info(
-                    `   • Recalc: ${winRecalcMs.toFixed(2)}ms (Δ ${recalcDeltaMs.toFixed(
-                        2,
-                    )}ms, ${pct(recalcDeltaMs, baseRecalcMs)}) vs baseline ${baseRecalcMs.toFixed(
-                        2,
-                    )}ms`,
+                    `   • Recalc (ops): ${winRecalcOps.toFixed(1)} (Δ ${recalcDeltaOps.toFixed(
+                        1,
+                    )}, ${pct(recalcDeltaOps, baseRecalcOps)}) vs baseline ${baseRecalcOps.toFixed(
+                        1,
+                    )}`,
                 );
             } else {
                 console.info(
