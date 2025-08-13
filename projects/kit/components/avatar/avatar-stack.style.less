@@ -34,10 +34,10 @@ tui-avatar-stack {
     }
 
     &[data-direction='right'] tui-avatar._round {
-        --t-x: 100%;
+        --tui-inline: -1;
 
         [dir='rtl'] & {
-            --t-x: 0;
+            --tui-inline: 1;
         }
 
         &:last-child {
@@ -46,12 +46,6 @@ tui-avatar-stack {
     }
 
     &[data-direction='left'] tui-avatar._round {
-        --t-x: 0;
-
-        [dir='rtl'] & {
-            --t-x: 100%;
-        }
-
         &:first-child {
             mask-image: none;
         }
