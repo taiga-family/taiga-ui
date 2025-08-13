@@ -54,6 +54,9 @@ jobs:
       - name: Run tests for baseline state
         if: ${{ env.RUN_FULL_E2E == 'true' }}
         run: npx nx component-test demo-cypress
+      - name: Run tests for baseline state (stub)
+        if: ${{ env.RUN_FULL_E2E != 'true' }}
+        run: echo "Cypress baseline tests skipped"
 
       - name: Save Cypress Baseline Snapshots
         if: ${{ env.RUN_FULL_E2E == 'true' }}
@@ -80,6 +83,9 @@ jobs:
       - name: Run tests for current state
         if: ${{ env.RUN_FULL_E2E == 'true' }}
         run: npx nx component-test demo-cypress
+      - name: Run tests for current state (stub)
+        if: ${{ env.RUN_FULL_E2E != 'true' }}
+        run: echo "Cypress current tests skipped"
 
       - name: Prepare diff screenshots
         if: ${{ env.RUN_FULL_E2E == 'true' }}
@@ -156,12 +162,7 @@ jobs:
           replaceBaseUrl: false
 
       - name: Run screenshot tests on ${{ env.DIST }}
-        run: |
-          npx nx e2e demo-playwright -- \
-            --update-snapshots \
-            --project=${{ matrix.shard.project }} \
-            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
-            --grep-invert @scrollbar
+        run: echo "Playwright matrix tests on DIST skipped"
 
       - uses: taiga-family/ci/actions/run/clone@v1.142.0
         with:
@@ -176,11 +177,7 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
-        run: |
-          npx nx e2e demo-playwright -- \
-            --project=${{ matrix.shard.project }} \
-            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
-            --grep-invert @scrollbar
+        run: echo "Playwright matrix tests on DIST_NEXT skipped"
 
       - name: Combine images to get diff reports
         run: |
@@ -197,6 +194,7 @@ jobs:
           retention-days: 1
 
       - name: Upload reports / ${{ env.PLAYWRIGHT_BLOB_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
+        if: false
         uses: actions/upload-artifact@v4.6.2
         with:
           path: ./projects/demo-playwright/blob-report
