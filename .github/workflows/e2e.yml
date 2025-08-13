@@ -195,7 +195,6 @@ jobs:
 
   playwright-perf:
     if: ${{ !contains(github.head_ref , 'release/') }}
-    needs: [build-demo]
     name: Playwright / Scrollbar Performance (Chromium)
     runs-on: ubuntu-latest
     steps:
@@ -214,6 +213,14 @@ jobs:
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
+      - name: Build demo (fallback if cache missing)
+        run: |
+          if [ ! -d dist/demo ] || [ -z "$(ls -A dist/demo 2>/dev/null)" ]; then
+            echo "Cache miss: building demo...";
+            npx nx build demo;
+          else
+            echo "Cache hit: dist/demo present";
+          fi
       - uses: taiga-family/ci/actions/run/serve@v1.139.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
