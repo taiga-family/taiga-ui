@@ -199,13 +199,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.139.0
-      - uses: taiga-family/ci/actions/setup/node@v1.139.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.140.0
+      - uses: taiga-family/ci/actions/setup/node@v1.140.0
       - name: Get installed Playwright version
         id: playwright-version
         run: |
           echo "PLAYWRIGHT_VERSION=$(node -p 'require("./projects/demo-playwright/package.json").devDependencies["@playwright/test"]')" >> $GITHUB_ENV
-      - uses: taiga-family/ci/actions/setup/playwright@v1.139.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.140.0
         with:
           playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
@@ -213,7 +213,7 @@ jobs:
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
-      - uses: taiga-family/ci/actions/run/serve@v1.139.0
+      - uses: taiga-family/ci/actions/run/serve@v1.140.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
