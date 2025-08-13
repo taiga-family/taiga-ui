@@ -1,7 +1,7 @@
 import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoInitialCalibrationPlugin, type MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions, maskitoTransform} from '@maskito/core';
 import {
     maskitoCaretGuard,
     maskitoNumberOptionsGenerator,
@@ -43,6 +43,7 @@ const DEFAULT_MAX_LENGTH = 18;
     },
 })
 export class TuiInputNumberDirective extends TuiControl<number | null> {
+    private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly numberFormat = toSignal(inject(TUI_NUMBER_FORMAT), {
@@ -61,29 +62,10 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         value < 0 ? value > this.max() : value < this.min(),
     );
 
-    protected readonly onChangeEffect = effect(() => {
-        const value = this.formatted();
-
-        if (Number.isNaN(value)) {
-            this.onChange(null);
-
-            return;
-        }
-
-        if (
-            this.unfinished() ||
-            value < this.min() ||
-            value > this.max() ||
-            this.value() === value
-        ) {
-            return;
-        }
-
-        this.onChange(value);
-    }, TUI_ALLOW_SIGNAL_WRITES);
-
-    protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly element = tuiInjectElement<HTMLInputElement>();
+    protected readonly mask = tuiMaskito(
+        computed(() => this.computeMask(this.maskParams)),
+    );
 
     protected readonly inputMode = computed(() => {
         if (this.isIOS) {
@@ -109,24 +91,36 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         return DEFAULT_MAX_LENGTH + precision + takeThousand;
     });
 
-    protected readonly mask = tuiMaskito(
-        computed(
-            (
-                {decimalMode, ...numberFormat} = this.numberFormat(),
-                maximumFractionDigits = this.precision(),
-            ) =>
-                this.computeMask({
-                    ...numberFormat,
-                    maximumFractionDigits,
-                    min: this.min(),
-                    max: this.max(),
-                    prefix: this.prefix(),
-                    postfix: this.postfix(),
-                    minimumFractionDigits:
-                        decimalMode === 'always' ? maximumFractionDigits : 0,
-                }),
-        ),
-    );
+    protected readonly onChangeEffect = effect(() => {
+        const value = this.formatted();
+
+        if (Number.isNaN(value)) {
+            this.onChange(null);
+
+            return;
+        }
+
+        if (
+            this.unfinished() ||
+            value < this.min() ||
+            value > this.max() ||
+            this.value() === value
+        ) {
+            return;
+        }
+
+        this.onChange(value);
+    }, TUI_ALLOW_SIGNAL_WRITES);
+
+    protected maskInitialCalibrationEffect = effect(() => {
+        const options = maskitoNumberOptionsGenerator({
+            ...this.maskParams,
+            min: Number.MIN_SAFE_INTEGER,
+            max: Number.MAX_SAFE_INTEGER,
+        });
+
+        this.textfield.value.update((x) => maskitoTransform(x, options));
+    }, TUI_ALLOW_SIGNAL_WRITES);
 
     public readonly min = signal(this.options.min);
     public readonly max = signal(this.options.max);
@@ -170,6 +164,21 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         }
     }
 
+    private get maskParams(): MaskitoNumberParams {
+        const {decimalMode, ...numberFormat} = this.numberFormat();
+        const maximumFractionDigits = this.precision();
+
+        return {
+            ...numberFormat,
+            maximumFractionDigits,
+            min: this.min(),
+            max: this.max(),
+            prefix: this.prefix(),
+            postfix: this.postfix(),
+            minimumFractionDigits: decimalMode === 'always' ? maximumFractionDigits : 0,
+        };
+    }
+
     private formatNumber(value: number | null): string {
         if (value === null || Number.isNaN(value)) {
             return '';
@@ -207,19 +216,11 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     private computeMask(params: MaskitoNumberParams): MaskitoOptions {
         const {prefix = '', postfix = ''} = params;
         const {plugins, ...options} = maskitoNumberOptionsGenerator(params);
-        const initialCalibrationPlugin = maskitoInitialCalibrationPlugin(
-            maskitoNumberOptionsGenerator({
-                ...params,
-                min: Number.MIN_SAFE_INTEGER,
-                max: Number.MAX_SAFE_INTEGER,
-            }),
-        );
 
         return {
             ...options,
             plugins: [
                 ...plugins,
-                initialCalibrationPlugin,
                 maskitoCaretGuard((value) => [
                     prefix.length,
                     value.length - postfix.length,
