@@ -95,6 +95,20 @@ interface TestResult {
     timestamp: number;
 }
 
+interface ParsedVariantKey {
+    family: 'events' | 'events+transform(gpu)' | 'other' | 'raf';
+    debounceMs?: number;
+    throttleMs: number;
+}
+
+interface Recommendation {
+    family: 'events' | 'events+transform(gpu)' | 'raf';
+    name: string;
+    debounceMs?: number;
+    throttleMs: number;
+    score: number;
+}
+
 // ========================================================================================
 // Performance Measurement Core
 // ========================================================================================
@@ -503,6 +517,7 @@ class ResultsManager {
             CONFIG.outputDir,
             'scrollbar-performance-results.json',
         );
+        const recommendation = this.computeRecommendation();
         const aggregatedResults = {
             metadata: {
                 runsPerVariant: CONFIG.runsPerVariant,
@@ -511,6 +526,7 @@ class ResultsManager {
                 variants: TEST_VARIANTS.length,
             },
             results: Object.fromEntries(this.results),
+            recommendation,
         };
 
         if (!fs.existsSync(CONFIG.outputDir)) {
@@ -533,6 +549,19 @@ class ResultsManager {
 
         // Also print compact CI-friendly summary table
         this.printSummaryTable();
+
+        // Create a simple SVG chart artifact highlighting the recommendation
+        try {
+            const svgPath = path.join(
+                CONFIG.outputDir,
+                'scrollbar-performance-recommendation.svg',
+            );
+
+            await this.writeRecommendationSvg(svgPath, recommendation);
+            console.info(`🖼  Wrote recommendation chart: ${svgPath}`);
+        } catch (e) {
+            console.warn('Failed to write recommendation SVG:', e);
+        }
     }
 
     private static printSummaryTable(): void {
@@ -578,6 +607,248 @@ class ResultsManager {
         }
 
         console.info('========================================\n');
+    }
+
+    private static parseVariantKey(name: string): ParsedVariantKey {
+        if (name.startsWith('raf-t')) {
+            const m = /^raf-t(\d+)ms$/.exec(name);
+
+            return {family: 'raf', throttleMs: Number(m?.[1] || 0)};
+        }
+
+        const evGpu = /^events\+transform\(gpu\)-d(\d+)ms-t(\d+)ms$/.exec(name);
+
+        if (evGpu) {
+            return {
+                family: 'events+transform(gpu)',
+                debounceMs: Number(evGpu[1]!),
+                throttleMs: Number(evGpu[2]!),
+            };
+        }
+
+        const ev = /^events-d(\d+)ms-t(\d+)ms$/.exec(name);
+
+        if (ev) {
+            return {
+                family: 'events',
+                debounceMs: Number(ev[1]!),
+                throttleMs: Number(ev[2]!),
+            };
+        }
+
+        return {family: 'other', throttleMs: 0};
+    }
+
+    private static compositeScore(s: StatisticalSummary): number {
+        return s.layoutDuration + s.recalcStyleDuration;
+    }
+
+    private static computeRecommendation(): Recommendation | undefined {
+        const entries = Array.from(this.results.values());
+
+        if (!entries.length) {
+            return undefined;
+        }
+
+        // Group by family
+        const groups = new Map<string, TestResult[]>();
+
+        for (const r of entries) {
+            const key = this.parseVariantKey(r.variant.name).family;
+
+            if (key === 'other') {
+                continue;
+            }
+
+            groups.set(key, [...(groups.get(key) || []), r]);
+        }
+
+        const candidates: Recommendation[] = [];
+
+        for (const [family, arr] of groups) {
+            if (family === 'raf') {
+                // Elbow along throttle for RAF
+                const rows = arr
+                    .map((x) => ({
+                        key: this.parseVariantKey(x.variant.name),
+                        score: this.compositeScore(x.summary),
+                        name: x.variant.name,
+                    }))
+                    .sort((a, b) => a.key.throttleMs - b.key.throttleMs);
+
+                let pick = rows[0]!;
+
+                for (let i = 1; i < rows.length; i++) {
+                    const prev = rows[i - 1]!;
+                    const curr = rows[i]!;
+                    const improvement = (prev.score - curr.score) / prev.score;
+
+                    if (improvement < 0.05) {
+                        pick = curr;
+                        break;
+                    }
+
+                    pick = curr;
+                }
+
+                candidates.push({
+                    family: 'raf',
+                    name: pick.name,
+                    throttleMs: pick.key.throttleMs,
+                    score: pick.score,
+                });
+            } else {
+                // For events families, do elbow along throttle for each debounce, then pick best
+                const byDebounce = new Map<
+                    number,
+                    Array<{name: string; key: ParsedVariantKey; score: number}>
+                >();
+
+                for (const x of arr) {
+                    const key = this.parseVariantKey(x.variant.name);
+
+                    if (key.debounceMs === undefined) {
+                        continue;
+                    }
+
+                    const score = this.compositeScore(x.summary);
+                    const list = byDebounce.get(key.debounceMs) || [];
+
+                    list.push({name: x.variant.name, key, score});
+                    byDebounce.set(key.debounceMs, list);
+                }
+
+                let best:
+                    | {name: string; key: ParsedVariantKey; score: number}
+                    | undefined;
+
+                for (const [, list] of byDebounce) {
+                    const rows = list.sort((a, b) => a.key.throttleMs - b.key.throttleMs);
+                    let pick = rows[0]!;
+
+                    for (let i = 1; i < rows.length; i++) {
+                        const prev = rows[i - 1]!;
+                        const curr = rows[i]!;
+                        const improvement = (prev.score - curr.score) / prev.score;
+
+                        if (improvement < 0.05) {
+                            pick = curr;
+                            break;
+                        }
+
+                        pick = curr;
+                    }
+
+                    if (!best || pick.score < best.score) {
+                        best = pick;
+                    }
+                }
+
+                if (best) {
+                    candidates.push({
+                        family: family as Recommendation['family'],
+                        name: best.name,
+                        debounceMs: best.key.debounceMs,
+                        throttleMs: best.key.throttleMs,
+                        score: best.score,
+                    });
+                }
+            }
+        }
+
+        // Overall best by score
+        candidates.sort((a, b) => a.score - b.score);
+        const winner = candidates[0];
+
+        if (winner) {
+            console.info(
+                `⭐ Recommended (${winner.family}): ${winner.name}  [debounce=${
+                    winner.debounceMs ?? '-'
+                }ms, throttle=${winner.throttleMs}ms]  composite=${winner.score.toFixed(2)}ms`,
+            );
+        }
+
+        return winner;
+    }
+
+    private static async writeRecommendationSvg(
+        outPath: string,
+        rec?: Recommendation,
+    ): Promise<void> {
+        // Build a simple line plot of composite score vs throttle for the recommended family
+        if (!rec) {
+            return;
+        }
+
+        const entries = Array.from(this.results.values());
+        const family = rec.family;
+        const list = entries.filter((r) => {
+            const k = this.parseVariantKey(r.variant.name);
+
+            if (k.family !== family) {
+                return false;
+            }
+
+            if (family === 'raf') {
+                return true;
+            }
+
+            return k.debounceMs === rec.debounceMs;
+        });
+        const points = list
+            .map((x) => ({
+                k: this.parseVariantKey(x.variant.name),
+                s: this.compositeScore(x.summary),
+            }))
+            .sort((a, b) => a.k.throttleMs - b.k.throttleMs);
+
+        const w = 800;
+        const h = 400;
+        const pad = 50;
+        const xs = points.map((p) => p.k.throttleMs);
+        const ys = points.map((p) => p.s);
+        const xmin = Math.min(...xs);
+        const xmax = Math.max(...xs);
+        const ymin = Math.min(...ys);
+        const ymax = Math.max(...ys);
+        const xscale = (x: number) =>
+            pad + ((x - xmin) / (xmax - xmin || 1)) * (w - 2 * pad);
+        const yscale = (y: number) =>
+            h - pad - ((y - ymin) / (ymax - ymin || 1)) * (h - 2 * pad);
+
+        const pathD = points
+            .map((p, i) => `${i ? 'L' : 'M'}${xscale(p.k.throttleMs)},${yscale(p.s)}`)
+            .join(' ');
+
+        const recX = xscale(rec.throttleMs);
+        const recY = yscale(
+            points.find((p) => p.k.throttleMs === rec.throttleMs)?.s ?? ymin,
+        );
+
+        const svg =
+            '<?xml version="1.0" encoding="UTF-8"?>\n' +
+            `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">\n` +
+            `  <rect x="0" y="0" width="${w}" height="${h}" fill="#fff"/>\n` +
+            '  <g stroke="#ccc">\n' +
+            `    <line x1="${pad}" y1="${h - pad}" x2="${w - pad}" y2="${h - pad}"/>\n` +
+            `    <line x1="${pad}" y1="${pad}" x2="${pad}" y2="${h - pad}"/>\n` +
+            '  </g>\n' +
+            `  <path d="${pathD}" fill="none" stroke="#007acc" stroke-width="2"/>\n` +
+            `  ${points
+                .map(
+                    (p) =>
+                        `<circle cx="${xscale(p.k.throttleMs)}" cy="${yscale(
+                            p.s,
+                        )}" r="3" fill="#007acc"/>`,
+                )
+                .join('')}\n` +
+            `  <circle cx="${recX}" cy="${recY}" r="6" fill="red"/>\n` +
+            `  <text x="${pad}" y="20" font-family="monospace" font-size="14">${family} recommended: throttle=${rec.throttleMs}ms$${
+                rec.debounceMs ? `, debounce=${rec.debounceMs}ms` : ''
+            }</text>\n` +
+            '</svg>';
+
+        await fs.promises.writeFile(outPath, svg, 'utf8');
     }
 }
 
