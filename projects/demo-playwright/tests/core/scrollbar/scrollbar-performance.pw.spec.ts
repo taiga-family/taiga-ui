@@ -466,8 +466,10 @@ const DEBOUNCE_VALUES: number[] = range(50, 100, 10); // 50,60,70,80,90,100
 // Throttle for Scroll (ms)
 const SCROLL_THROTTLE_VALUES: number[] = range(0, 16, 2); // 0..16 by 2
 
-// RAF throttle (ms) baseline
-const RAF_THROTTLE_VALUES: number[] = range(0, 10, 2); // 0..10 by 2
+// RAF throttle (ms) baseline + extended sweep (include 12,14,16 and current prod 100)
+const RAF_THROTTLE_VALUES: number[] = Array.from(
+    new Set([100, 12, 14, 16, ...range(0, 10, 2)]),
+).sort((a, b) => a - b);
 
 function makeEventVariant(
     debounceMs: number,
@@ -477,7 +479,7 @@ function makeEventVariant(
     const title = withGpu ? 'events+transform(gpu)' : 'events';
 
     return {
-        name: `${title}-d${debounceMs}ms-t${throttleMs}ms`,
+        name: `${title}-debounce${debounceMs}ms-throttling${throttleMs}ms`,
         description: `${title} with separate debounce (RO/MO) and throttle (scroll)`,
         config: {
             debounceMs,
@@ -490,7 +492,7 @@ function makeEventVariant(
 
 function makeRafVariant(throttleMs: number): TestVariant {
     return {
-        name: `raf-t${throttleMs}ms`,
+        name: `raf-throttling${throttleMs}ms`,
         description:
             'RAF in BOTH scroll-controls and directive (baseline polling), throttle on RAF stream',
         config: {
@@ -652,13 +654,15 @@ class ResultsManager {
     }
 
     private static parseVariantKey(name: string): ParsedVariantKey {
-        if (name.startsWith('raf-t')) {
-            const m = /^raf-t(\d+)ms$/.exec(name);
+        if (name.startsWith('raf-throttling')) {
+            const m = /^raf-throttling(\d+)ms$/.exec(name);
 
             return {family: 'raf', throttleMs: Number(m?.[1] || 0)};
         }
 
-        const evGpu = /^events\+transform\(gpu\)-d(\d+)ms-t(\d+)ms$/.exec(name);
+        const evGpu = /^events\+transform\(gpu\)-debounce(\d+)ms-throttling(\d+)ms$/.exec(
+            name,
+        );
 
         if (evGpu) {
             return {
@@ -668,7 +672,7 @@ class ResultsManager {
             };
         }
 
-        const ev = /^events-d(\d+)ms-t(\d+)ms$/.exec(name);
+        const ev = /^events-debounce(\d+)ms-throttling(\d+)ms$/.exec(name);
 
         if (ev) {
             return {
@@ -916,6 +920,13 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', () => {
         await page.goto(CONFIG.baseUrl);
         await page.waitForLoadState('networkidle');
     });
+
+    // Log planned configurations up-front
+    console.info('Planned configurations:');
+
+    for (const v of TEST_VARIANTS) {
+        console.info(`  - ${v.name}`);
+    }
 
     for (const variant of TEST_VARIANTS) {
         test(`Performance: ${variant.name}`, async ({page}) => {
