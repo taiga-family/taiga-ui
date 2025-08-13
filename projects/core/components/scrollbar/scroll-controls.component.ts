@@ -47,7 +47,7 @@ export class TuiScrollControls {
     // Runtime-configurable RAF mode for testing
     private readonly useRafMode =
         typeof window !== 'undefined' &&
-        sessionStorage.getItem('tui-scroll-controls-raf') === '1';
+        sessionStorage.getItem('tui-scrollbar-raf') === '1';
 
     // Runtime-configurable timings for fair perf comparisons
     private readonly scDebounceMs = Number(
