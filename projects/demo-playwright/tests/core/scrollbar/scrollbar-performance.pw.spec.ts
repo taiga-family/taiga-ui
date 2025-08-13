@@ -565,13 +565,27 @@ class ResultsManager {
     }
 
     private static printSummaryTable(): void {
-        const rows = Array.from(this.results.values()).map(({variant, summary}) => ({
-            name: variant.name,
-            layoutCount: summary.layoutCount,
-            layoutMs: summary.layoutDuration,
-            recalcCount: summary.recalcStyleCount,
-            recalcMs: summary.recalcStyleDuration,
-        }));
+        const rows = Array.from(this.results.values()).map(({variant, summary, runs}) => {
+            const layoutOps = runs.map((r) => r.layoutCount);
+            const recalcOps = runs.map((r) => r.recalcStyleCount);
+            const layoutTimes = runs.map((r) => r.layoutDuration);
+            const recalcTimes = runs.map((r) => r.recalcStyleDuration);
+
+            const min = (arr: number[]): number => Math.min(...arr);
+            const max = (arr: number[]): number => Math.max(...arr);
+
+            return {
+                name: variant.name,
+                layoutCount: summary.layoutCount,
+                layoutMs: summary.layoutDuration,
+                recalcCount: summary.recalcStyleCount,
+                recalcMs: summary.recalcStyleDuration,
+                layoutCountRange: `[${min(layoutOps).toFixed(0)}, ${max(layoutOps).toFixed(0)}]`,
+                layoutMsRange: `[${min(layoutTimes).toFixed(2)}, ${max(layoutTimes).toFixed(2)}]`,
+                recalcCountRange: `[${min(recalcOps).toFixed(0)}, ${max(recalcOps).toFixed(0)}]`,
+                recalcMsRange: `[${min(recalcTimes).toFixed(2)}, ${max(recalcTimes).toFixed(2)}]`,
+            };
+        });
 
         if (!rows.length) {
             return;
@@ -583,6 +597,10 @@ class ResultsManager {
             'Layout (ms)',
             'Recalc (ops)',
             'Recalc (ms)',
+            'Layout ops [min,max]',
+            'Layout ms [min,max]',
+            'Recalc ops [min,max]',
+            'Recalc ms [min,max]',
         ];
         const data = rows.map((r) => [
             r.name,
@@ -590,6 +608,10 @@ class ResultsManager {
             r.layoutMs.toFixed(2),
             r.recalcCount.toFixed(1),
             r.recalcMs.toFixed(2),
+            r.layoutCountRange,
+            r.layoutMsRange,
+            r.recalcCountRange,
+            r.recalcMsRange,
         ]);
 
         const colWidths: number[] = headers.map((h, i) =>
@@ -643,6 +665,27 @@ class ResultsManager {
         return s.layoutDuration + s.recalcStyleDuration;
     }
 
+    private static pickElbow<
+        T extends {key: ParsedVariantKey; score: number; name: string},
+    >(rows: readonly T[]): T {
+        let pick = rows[0]!;
+
+        for (let i = 1; i < rows.length; i++) {
+            const prev = rows[i - 1]!;
+            const curr = rows[i]!;
+            const improvement = (prev.score - curr.score) / prev.score;
+
+            if (improvement < 0.05) {
+                pick = curr;
+                break;
+            }
+
+            pick = curr;
+        }
+
+        return pick;
+    }
+
     private static computeRecommendation(): Recommendation | undefined {
         const entries = Array.from(this.results.values());
 
@@ -676,20 +719,7 @@ class ResultsManager {
                     }))
                     .sort((a, b) => a.key.throttleMs - b.key.throttleMs);
 
-                let pick = rows[0]!;
-
-                for (let i = 1; i < rows.length; i++) {
-                    const prev = rows[i - 1]!;
-                    const curr = rows[i]!;
-                    const improvement = (prev.score - curr.score) / prev.score;
-
-                    if (improvement < 0.05) {
-                        pick = curr;
-                        break;
-                    }
-
-                    pick = curr;
-                }
+                const pick = this.pickElbow(rows);
 
                 candidates.push({
                     family: 'raf',
@@ -724,20 +754,7 @@ class ResultsManager {
 
                 for (const [, list] of byDebounce) {
                     const rows = list.sort((a, b) => a.key.throttleMs - b.key.throttleMs);
-                    let pick = rows[0]!;
-
-                    for (let i = 1; i < rows.length; i++) {
-                        const prev = rows[i - 1]!;
-                        const curr = rows[i]!;
-                        const improvement = (prev.score - curr.score) / prev.score;
-
-                        if (improvement < 0.05) {
-                            pick = curr;
-                            break;
-                        }
-
-                        pick = curr;
-                    }
+                    const pick = this.pickElbow(rows);
 
                     if (!best || pick.score < best.score) {
                         best = pick;
@@ -811,9 +828,9 @@ class ResultsManager {
         const xmax = Math.max(...xs);
         const ymin = Math.min(...ys);
         const ymax = Math.max(...ys);
-        const xscale = (x: number) =>
+        const xscale = (x: number): number =>
             pad + ((x - xmin) / (xmax - xmin || 1)) * (w - 2 * pad);
-        const yscale = (y: number) =>
+        const yscale = (y: number): number =>
             h - pad - ((y - ymin) / (ymax - ymin || 1)) * (h - 2 * pad);
 
         const pathD = points
