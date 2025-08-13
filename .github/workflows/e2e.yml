@@ -230,6 +230,7 @@ jobs:
       - name: Publish performance summary
         run: |
           RESULTS=projects/demo-playwright/tests-results/scrollbar-performance-results.json
+          export RESULTS
           echo "### Scrollbar Performance Summary" >> $GITHUB_STEP_SUMMARY
           node -e '
             const fs = require("fs");
@@ -246,11 +247,12 @@ jobs:
             const sep = "|---|---:|---:|---:|---:|";
             const lines = rows.map(r => "| " + r.name + " | " + r.layout + " | " + r.layoutMs + " | " + r.recalc + " | " + r.recalcMs + " |").join("\n");
             console.log(header + "\n" + sep + "\n" + lines);
-          ' RESULTS="$RESULTS" | tee -a $GITHUB_STEP_SUMMARY
+          ' | tee -a $GITHUB_STEP_SUMMARY
 
       - name: Write performance summary file
         run: |
           RESULTS=projects/demo-playwright/tests-results/scrollbar-performance-results.json
+          export RESULTS
           node -e '
             const fs = require("fs");
             const p = process.env.RESULTS;
@@ -268,7 +270,7 @@ jobs:
             const out = "projects/demo-playwright/tests-results/scrollbar-performance-summary.md";
             fs.writeFileSync(out, header + "\n" + sep + "\n" + lines + "\n", "utf8");
             console.log("Saved:", out);
-          ' RESULTS="$RESULTS"
+          '
       - name: Upload perf results artifact
         uses: actions/upload-artifact@v4
         with:
