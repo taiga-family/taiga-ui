@@ -791,14 +791,6 @@ class ResultsManager {
         candidates.sort((a, b) => a.score - b.score);
         const winner = candidates[0];
 
-        if (winner) {
-            console.info(
-                `⭐ Recommended (${winner.family}): ${winner.name}  [debounce=${
-                    winner.debounceMs ?? '-'
-                }ms, throttle=${winner.throttleMs}ms]  composite=${winner.score.toFixed(2)}ms`,
-            );
-        }
-
         return winner;
     }
 
@@ -1022,11 +1014,51 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', {tag: '@scrollbar'
         const rec = (ResultsManager as any).computeRecommendation?.();
 
         if (rec) {
-            console.info(
-                `⭐ Final recommendation: ${rec.family} → ${rec.name} (debounce=${
-                    rec.debounceMs ?? '-'
-                }ms, throttling=${rec.throttleMs}ms)`,
-            );
+            const resultsMap = (ResultsManager as any).results as Map<string, any>;
+            const baseline = resultsMap.get('raf-throttling100ms');
+            const winner = resultsMap.get(rec.name);
+
+            if (baseline && winner) {
+                const baseMed = baseline.summary.median || baseline.summary;
+                const winMed = winner.summary.median || winner.summary;
+
+                const baseLayoutMs = baseMed.layoutDuration;
+                const baseRecalcMs = baseMed.recalcStyleDuration;
+                const winLayoutMs = winMed.layoutDuration;
+                const winRecalcMs = winMed.recalcStyleDuration;
+
+                const layoutDeltaMs = baseLayoutMs - winLayoutMs;
+                const recalcDeltaMs = baseRecalcMs - winRecalcMs;
+
+                const pct = (d: number, base: number): string =>
+                    base > 0 ? `${((d / base) * 100).toFixed(1)}%` : '0.0%';
+
+                console.info(
+                    `⭐ Final recommendation: ${rec.family} → ${rec.name} (debounce=${
+                        rec.debounceMs ?? '-'
+                    }ms, throttling=${rec.throttleMs}ms)`,
+                );
+                console.info(
+                    `   • Layout: ${winLayoutMs.toFixed(2)}ms (Δ ${layoutDeltaMs.toFixed(
+                        2,
+                    )}ms, ${pct(layoutDeltaMs, baseLayoutMs)}) vs baseline ${baseLayoutMs.toFixed(
+                        2,
+                    )}ms`,
+                );
+                console.info(
+                    `   • Recalc: ${winRecalcMs.toFixed(2)}ms (Δ ${recalcDeltaMs.toFixed(
+                        2,
+                    )}ms, ${pct(recalcDeltaMs, baseRecalcMs)}) vs baseline ${baseRecalcMs.toFixed(
+                        2,
+                    )}ms`,
+                );
+            } else {
+                console.info(
+                    `⭐ Final recommendation: ${rec.family} → ${rec.name} (debounce=${
+                        rec.debounceMs ?? '-'
+                    }ms, throttling=${rec.throttleMs}ms)`,
+                );
+            }
         }
     });
 });
