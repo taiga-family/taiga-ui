@@ -15,6 +15,8 @@ export const TUI_USED_ICONS = [
     '@tui.arrow-right-left',
     '@tui.star',
     '@tui.github',
+    '@tui.square-filled',
+    '@tui.zap-filled',
     '@tui.calendar',
     '@tui.visa-mono',
     '@tui.mastercard-mono',
