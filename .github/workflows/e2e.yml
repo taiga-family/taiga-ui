@@ -220,7 +220,7 @@ jobs:
           replaceBaseUrl: false
       - name: Run scrollbar performance suite (Chromium, logs visible)
         env:
-          TUI_PERF_RUNS: 2
+          ITERATIONS_PER_CONFIGURATION: 2
         run: |
           npx nx e2e demo-playwright -- \
             --project=chromium \
@@ -260,14 +260,22 @@ jobs:
               name: x.variant.name,
               layout: x.summary.layoutCount.toFixed(1),
               layoutMs: x.summary.layoutDuration.toFixed(2),
+              layoutMsMedian: ((x.summary.median && x.summary.median.layoutDuration) ?? x.summary.layoutDuration).toFixed(2),
               recalc: x.summary.recalcStyleCount.toFixed(1),
               recalcMs: x.summary.recalcStyleDuration.toFixed(2),
+              recalcMsMedian: ((x.summary.median && x.summary.median.recalcStyleDuration) ?? x.summary.recalcStyleDuration).toFixed(2),
+              compositeMedian: (((x.summary.median && x.summary.median.layoutDuration) ?? x.summary.layoutDuration) + ((x.summary.median && x.summary.median.recalcStyleDuration) ?? x.summary.recalcStyleDuration)).toFixed(2),
             }));
-            const header = "| Variant | Layout (ops) | Layout (ms) | Recalc (ops) | Recalc (ms) |";
-            const sep = "|---|---:|---:|---:|---:|";
-            const lines = rows.map(r => "| " + r.name + " | " + r.layout + " | " + r.layoutMs + " | " + r.recalc + " | " + r.recalcMs + " |").join("\n");
+            const header = "| Variant | Composite (ms) median | Layout (ops) | Layout (ms) | Layout (ms) median | Recalc (ops) | Recalc (ms) | Recalc (ms) median |";
+            const sep = "|---|---:|---:|---:|---:|---:|---:|---:|";
+            const lines = rows.map(r => "| " + r.name + " | " + r.compositeMedian + " | " + r.layout + " | " + r.layoutMs + " | " + r.layoutMsMedian + " | " + r.recalc + " | " + r.recalcMs + " | " + r.recalcMsMedian + " |").join("\n");
             const out = "projects/demo-playwright/tests-results/scrollbar-performance-summary.md";
-            fs.writeFileSync(out, header + "\n" + sep + "\n" + lines + "\n", "utf8");
+            let md = header + "\n" + sep + "\n" + lines + "\n\n";
+            const rec = r.recommendation;
+            if (rec) {
+              md += `> Recommended (${rec.family}): **${rec.name}**  \\\n+> Reason: elbow method on composite median time — first point where further improvement < 5% within the family; best across families by composite score.  \\\n+> Params: debounce=${rec.debounceMs ?? '-'}ms, throttle=${rec.throttleMs}ms, composite≈${Number(rec.score).toFixed(2)}ms\n`;
+            }
+            fs.writeFileSync(out, md, "utf8");
             console.log("Saved:", out);
           '
       - name: Upload perf results artifact

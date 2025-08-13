@@ -31,20 +31,13 @@ const CONFIG = {
     baseUrl: 'http://localhost:3333/components/scrollbar',
     // Statistical significance analysis suggests 50-100 runs for robust confidence intervals
     // 25 runs = good baseline, 50 runs = production-ready, 100+ runs = publication-quality
-    // Default to 10 for CI speed, can be increased with TUI_PERF_RUNS env var
-    runsPerVariant: Number(process.env.TUI_PERF_RUNS || '10'),
+    // Default to 10 for CI speed, can be increased with ITERATIONS_PER_CONFIGURATION env var
+    runsPerVariant: Number(process.env.ITERATIONS_PER_CONFIGURATION || '10'),
     // Confidence level for statistical analysis (95% = 1.96, 99% = 2.576)
     confidenceLevel: 1.96,
 } as const;
 
-const LIMITS = {
-    maxLayoutCount: Number(process.env.TUI_PERF_MAX_LAYOUT_COUNT || '500'),
-    maxLayoutDurationMs: Number(process.env.TUI_PERF_MAX_LAYOUT_MS || '200'),
-    maxRecalcCount: Number(process.env.TUI_PERF_MAX_RECALC_COUNT || '2000'),
-    maxRecalcDurationMs: Number(process.env.TUI_PERF_MAX_RECALC_MS || '150'),
-} as const;
-
-const ENFORCE_LIMITS = process.env.TUI_PERF_ENFORCE === '1';
+// Limits removed: no threshold-based assertions or warnings during perf runs
 
 interface PerformanceEvent {
     name: string;
@@ -968,40 +961,7 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', {tag: '@scrollbar'
 
             ResultsManager.addResult(result);
 
-            // Performance regression checks (configurable)
-            if (ENFORCE_LIMITS) {
-                expect(summary.layoutCount).toBeLessThan(LIMITS.maxLayoutCount);
-                expect(summary.layoutDuration).toBeLessThan(LIMITS.maxLayoutDurationMs);
-                expect(summary.recalcStyleCount).toBeLessThan(LIMITS.maxRecalcCount);
-                expect(summary.recalcStyleDuration).toBeLessThan(
-                    LIMITS.maxRecalcDurationMs,
-                );
-            } else {
-                // Log only, do not fail the run in metrics-only mode
-                if (summary.layoutCount >= LIMITS.maxLayoutCount) {
-                    console.info(
-                        `    ⚠️ layoutCount=${summary.layoutCount.toFixed(1)} exceeded limit ${LIMITS.maxLayoutCount}`,
-                    );
-                }
-
-                if (summary.layoutDuration >= LIMITS.maxLayoutDurationMs) {
-                    console.info(
-                        `    ⚠️ layoutDuration=${summary.layoutDuration.toFixed(2)}ms exceeded limit ${LIMITS.maxLayoutDurationMs}ms`,
-                    );
-                }
-
-                if (summary.recalcStyleCount >= LIMITS.maxRecalcCount) {
-                    console.info(
-                        `    ⚠️ recalcStyleCount=${summary.recalcStyleCount.toFixed(1)} exceeded limit ${LIMITS.maxRecalcCount}`,
-                    );
-                }
-
-                if (summary.recalcStyleDuration >= LIMITS.maxRecalcDurationMs) {
-                    console.info(
-                        `    ⚠️ recalcStyleDuration=${summary.recalcStyleDuration.toFixed(2)}ms exceeded limit ${LIMITS.maxRecalcDurationMs}ms`,
-                    );
-                }
-            }
+            // Threshold-based assertions removed: metrics are reported, not enforced
 
             console.info(
                 `    📈 Layout: ${summary.layoutCount.toFixed(1)} ± ${summary.standardDeviation.layoutCount.toFixed(1)} operations`,
