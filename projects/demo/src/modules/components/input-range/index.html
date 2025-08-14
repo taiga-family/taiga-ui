@@ -7,8 +7,20 @@
         <tui-doc-example
             id="number-format"
             heading="Override number format"
+            [component]="70 | tuiComponent"
+            [content]="70 | tuiExample"
+            [description]="numberFormatDescription"
         >
-            TODO: https://taiga-ui.dev/legacy/input-range#number-format
+            <ng-template #numberFormatDescription>
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.NumberFormat"
+                >
+                    <strong>TuiNumberFormat</strong>
+                </a>
+                allows to customize separators specific for your locale.
+            </ng-template>
         </tui-doc-example>
 
         <tui-doc-example
