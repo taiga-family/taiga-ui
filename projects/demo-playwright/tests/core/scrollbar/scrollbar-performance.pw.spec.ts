@@ -569,29 +569,13 @@ class ResultsManager {
     }
 
     private static printSummaryTable(): void {
-        const rows = Array.from(this.results.values()).map(({variant, summary, runs}) => {
-            const layoutOps = runs.map((r) => r.layoutCount);
-            const recalcOps = runs.map((r) => r.recalcStyleCount);
-            const layoutTimes = runs.map((r) => r.layoutDuration);
-            const recalcTimes = runs.map((r) => r.recalcStyleDuration);
-
-            const min = (arr: number[]): number => Math.min(...arr);
-            const max = (arr: number[]): number => Math.max(...arr);
-
-            return {
-                name: variant.name,
-                layoutCount: summary.layoutCount,
-                layoutCountMedian: (summary as any).median?.layoutCount as number,
-                layoutMs: summary.layoutDuration,
-                recalcCount: summary.recalcStyleCount,
-                recalcCountMedian: (summary as any).median?.recalcStyleCount as number,
-                recalcMs: summary.recalcStyleDuration,
-                layoutCountRange: `[${min(layoutOps).toFixed(0)}, ${max(layoutOps).toFixed(0)}]`,
-                layoutMsRange: `[${min(layoutTimes).toFixed(2)}, ${max(layoutTimes).toFixed(2)}]`,
-                recalcCountRange: `[${min(recalcOps).toFixed(0)}, ${max(recalcOps).toFixed(0)}]`,
-                recalcMsRange: `[${min(recalcTimes).toFixed(2)}, ${max(recalcTimes).toFixed(2)}]`,
-            };
-        });
+        const rows = Array.from(this.results.values()).map(({variant, summary}) => ({
+            name: variant.name,
+            layoutCountMean: summary.layoutCount,
+            layoutCountMedian: (summary as any).median?.layoutCount as number,
+            recalcCountMean: summary.recalcStyleCount,
+            recalcCountMedian: (summary as any).median?.recalcStyleCount as number,
+        }));
 
         if (!rows.length) {
             return;
@@ -601,27 +585,15 @@ class ResultsManager {
             'Variant',
             'Layout (ops) mean',
             'Layout (ops) median',
-            'Layout (ms) mean',
             'Recalc (ops) mean',
             'Recalc (ops) median',
-            'Recalc (ms) mean',
-            'Layout ops [min,max]',
-            'Layout ms [min,max]',
-            'Recalc ops [min,max]',
-            'Recalc ms [min,max]',
         ];
         const data = rows.map((r) => [
             r.name,
-            r.layoutCount.toFixed(1),
-            (r.layoutCountMedian ?? r.layoutCount).toFixed(1),
-            r.layoutMs.toFixed(2),
-            r.recalcCount.toFixed(1),
-            (r.recalcCountMedian ?? r.recalcCount).toFixed(1),
-            r.recalcMs.toFixed(2),
-            r.layoutCountRange,
-            r.layoutMsRange,
-            r.recalcCountRange,
-            r.recalcMsRange,
+            r.layoutCountMean.toFixed(1),
+            (r.layoutCountMedian ?? r.layoutCountMean).toFixed(1),
+            r.recalcCountMean.toFixed(1),
+            (r.recalcCountMedian ?? r.recalcCountMean).toFixed(1),
         ]);
 
         const colWidths: number[] = headers.map((h, i) =>
