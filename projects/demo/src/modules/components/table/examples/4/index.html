@@ -51,6 +51,13 @@
     [overlay]="true"
     [showLoader]="!!(loading$ | async)"
 >
+    <p>
+        <b>Sort key:</b>
+        {{ sortKey$ | async }},
+        <b>direction:</b>
+        {{ direction$ | async }}
+    </p>
+
     <table
         *ngIf="data$ | async as data"
         tuiTable

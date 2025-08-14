@@ -1,6 +1,6 @@
 {
     "name": "@taiga-ui/components",
-    "version": "4.48.0",
+    "version": "4.49.0",
     "private": true,
     "description": "Taiga UI is a set of components, services, directives and other tools to build high quality UI using modern Angular framework",
     "keywords": [
@@ -55,7 +55,10 @@
         "release:major": "ts-node ./scripts/release.ts --release-as major",
         "*** CI ***": "",
         "run-many:build:libs": "nx run-many --target build --all --exclude=demo --output-style=stream --nxBail",
-        "run-many:publish:libs": "nx run-many --target publish --all --output-style=stream --nxBail"
+        "run-many:publish:libs": "nx run-many --target publish --all --output-style=stream --nxBail",
+        "*** LLMS Generation ***": "",
+        "generate:llms": "ts-node ./projects/demo/scripts/llms/llms-generate.ts",
+        "generate:llms-full": "ts-node ./projects/demo/scripts/llms/llms-full-generate.ts"
     },
     "commitlint": {
         "extends": [
@@ -101,6 +104,16 @@
     "jest": {
         "preset": "@taiga-ui/jest-config"
     },
+    "overrides": {
+        "jest-preset-angular": {
+            "@angular/core": "$@angular/core",
+            "@angular/common": "$@angular/common",
+            "@angular/compiler-cli": "$@angular/compiler-cli",
+            "@angular/compiler": "$@angular/compiler",
+            "@angular/platform-browser": "$@angular/platform-browser",
+            "@angular/platform-browser-dynamic": "$@angular/platform-browser-dynamic"
+        }
+    },
     "devDependencies": {
         "@angular-devkit/build-angular": "16.2.16",
         "@angular-devkit/core": "16.2.16",
@@ -114,25 +127,26 @@
         "@angular/core": "16.2.12",
         "@angular/forms": "16.2.12",
         "@angular/platform-browser": "16.2.12",
+        "@angular/platform-browser-dynamic": "16.2.12",
         "@angular/router": "16.2.12",
         "@nx/angular": "20.1.4",
         "@nx/jest": "20.1.4",
         "@nx/workspace": "20.1.4",
         "@schematics/angular": "16.2.16",
-        "@taiga-ui/browserslist-config": "0.308.0",
-        "@taiga-ui/commitlint-config": "0.308.0",
-        "@taiga-ui/cspell-config": "0.308.0",
-        "@taiga-ui/design-tokens": "0.238.0",
-        "@taiga-ui/eslint-plugin-experience-next": "0.308.0",
+        "@taiga-ui/browserslist-config": "0.309.0",
+        "@taiga-ui/commitlint-config": "0.309.0",
+        "@taiga-ui/cspell-config": "0.309.0",
+        "@taiga-ui/design-tokens": "0.239.0",
+        "@taiga-ui/eslint-plugin-experience-next": "0.309.0",
         "@taiga-ui/event-plugins": "4.6.0",
-        "@taiga-ui/jest-config": "0.308.0",
-        "@taiga-ui/prettier-config": "0.308.0",
-        "@taiga-ui/stylelint-config": "0.308.0",
-        "@taiga-ui/tsconfig": "0.308.0",
+        "@taiga-ui/jest-config": "0.309.0",
+        "@taiga-ui/prettier-config": "0.309.0",
+        "@taiga-ui/stylelint-config": "0.309.0",
+        "@taiga-ui/tsconfig": "0.309.0",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
         "@types/markdown-it": "14.1.2",
-        "@types/node": "22.17.0",
+        "@types/node": "22.17.1",
         "@types/webpack-env": "1.18.8",
         "cpy-cli": "5.0.0",
         "husky": "9.1.7",
@@ -148,7 +162,7 @@
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",
         "typescript": "5.0.4",
-        "webpack": "5.101.0"
+        "webpack": "5.101.1"
     },
     "engines": {
         "node": ">= 20",

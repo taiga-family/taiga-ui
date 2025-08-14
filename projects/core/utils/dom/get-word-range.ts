@@ -37,6 +37,7 @@ export function tuiGetWordRange(currentRange: Range): Range {
         const offset =
             Math.max(
                 content.lastIndexOf(' '),
+                content.lastIndexOf('\n'),
                 content.lastIndexOf(CHAR_NO_BREAK_SPACE),
                 content.lastIndexOf(CHAR_ZERO_WIDTH_SPACE),
             ) + 1;
@@ -58,6 +59,7 @@ export function tuiGetWordRange(currentRange: Range): Range {
             container === endContainer ? textContent.slice(endOffset + 1) : textContent;
         const offset = [
             content.indexOf(' '),
+            content.lastIndexOf('\n'),
             content.indexOf(CHAR_NO_BREAK_SPACE),
             content.indexOf(CHAR_ZERO_WIDTH_SPACE),
         ].reduce(

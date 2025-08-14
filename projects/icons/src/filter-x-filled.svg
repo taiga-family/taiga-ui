@@ -9,7 +9,10 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path vector-effect="non-scaling-stroke" d="M13.013 3H2l8 9.46V19l4 2v-8.54l.9-1.055" />
-    <path vector-effect="non-scaling-stroke" d="m22 3-5 5" />
-    <path vector-effect="non-scaling-stroke" d="m17 3 5 5" />
+    <path
+        vector-effect="non-scaling-stroke"
+        d="M12.531 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14v6a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341l.427-.473"
+    />
+    <path vector-effect="non-scaling-stroke" d="m16.5 3.5 5 5" />
+    <path vector-effect="non-scaling-stroke" d="m21.5 3.5-5 5" />
 </svg>

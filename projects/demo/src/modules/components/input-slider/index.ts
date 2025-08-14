@@ -37,6 +37,7 @@ export default class PageComponent {
     protected max = signal(100);
     protected prefix = '';
     protected postfix = '';
+    protected quantum = 0.01;
     protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
