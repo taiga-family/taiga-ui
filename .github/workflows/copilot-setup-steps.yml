@@ -20,5 +20,5 @@ jobs:
       - uses: actions/checkout@v4.3.0
         with:
           lfs: true
-      - uses: taiga-family/ci/actions/setup/variables@v1.142.0
-      - uses: taiga-family/ci/actions/setup/node@v1.142.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.144.0
+      - uses: taiga-family/ci/actions/setup/node@v1.144.0
