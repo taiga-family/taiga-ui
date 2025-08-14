@@ -33,11 +33,12 @@
     />
 
     <div
-        *polymorpheusOutlet="content[1] as text; context: {$implicit: value()[1]}"
-        class="t-content"
+        class="t-content-end"
         [class._hidden]="hideEndContent"
     >
-        {{ text }}
+        <ng-container *polymorpheusOutlet="content[1] as text; context: {$implicit: value()[1]}">
+            {{ text }}
+        </ng-container>
     </div>
 </tui-textfield>
 
