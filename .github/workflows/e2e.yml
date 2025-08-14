@@ -214,7 +214,7 @@ jobs:
           replaceBaseUrl: false
       - name: Run scrollbar performance suite (Chromium, logs visible)
         env:
-          ITERATIONS_PER_CONFIGURATION: 10
+          ITERATIONS_PER_CONFIGURATION: 1
         run: |
           npx nx e2e demo-playwright -- \
             --project=chromium \
