@@ -94,22 +94,15 @@
     }
 
     :host[data-size='m'] & {
-        inline-size: 0.875rem;
-        block-size: 0.875rem;
+        font-size: 0.875rem;
 
         &::after {
             transform: scale(0.5);
         }
     }
 
-    :host[data-size='l'] & {
-        inline-size: 1rem;
-        block-size: 1rem;
-
-        &::after {
-            color: #fff;
-            transform: scale(0.625);
-        }
+    :host[data-size='l'] &::after {
+        transform: scale(0.625);
     }
 
     &::before {
@@ -159,7 +152,7 @@
 }
 
 .t-icon {
-    inline-size: 1rem;
-    block-size: 1rem;
+    inline-size: 1em;
+    block-size: 1em;
     font-size: 1rem;
 }
