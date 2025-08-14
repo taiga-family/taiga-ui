@@ -7,8 +7,33 @@
         TODO:
         <ol>
             <li>https://taiga-ui.dev/legacy/input-range#number-format</li>
-            <li>postfix + angular i18nPlural pipe</li>
         </ol>
+
+        <tui-doc-example
+            id="affixes"
+            heading="Affixes"
+            [component]="80 | tuiComponent"
+            [content]="80 | tuiExample"
+            [description]="affixesDescription"
+        >
+            <ng-template #affixesDescription>
+                Use
+                <code>prefix</code>
+                /
+                <code>postfix</code>
+                parameters to set non-removable text before / after the number.
+                <br />
+                To get currency symbol use
+                <a
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.Currency"
+                >
+                    <strong>Currency</strong>
+                </a>
+                pipe.
+            </ng-template>
+        </tui-doc-example>
 
         <tui-doc-example
             id="key-steps"
