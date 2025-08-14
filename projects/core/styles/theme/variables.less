@@ -1,10 +1,13 @@
-@font-fallback: -apple-system, 'BlinkMacSystemFont', system-ui, 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
+@import (inline) '@taiga-ui/design-tokens/fonts/desktop.css';
+@import (inline) '@taiga-ui/design-tokens/palette/shadow.css';
+@import (inline) '@taiga-ui/design-tokens/palette/animation.css';
+@import (inline) '@taiga-ui/design-tokens/palette/gradient.css';
 
 &:root,
 &:host {
     // Fonts
-    --tui-font-heading: 'Manrope', @font-fallback;
-    --tui-font-text: 'Manrope', @font-fallback;
+    --tui-font-heading: 'Manrope', var(--tui-font-family-fallback);
+    --tui-font-text: 'Manrope', var(--tui-font-family-fallback);
     --tui-font-offset: ~'0rem';
     // Heading
     --tui-font-heading-1: bold calc(var(--tui-font-offset) + 3.125rem) / 3.5rem var(--tui-font-heading);
