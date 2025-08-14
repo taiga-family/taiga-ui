@@ -46,6 +46,8 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly minRaw = signal(this.options.min);
+    private readonly maxRaw = signal(this.options.max);
     private readonly numberFormat = toSignal(inject(TUI_NUMBER_FORMAT), {
         initialValue: TUI_DEFAULT_NUMBER_FORMAT,
     });
@@ -122,19 +124,19 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         this.textfield.value.update((x) => maskitoTransform(x, options));
     }, TUI_ALLOW_SIGNAL_WRITES);
 
-    public readonly min = signal(this.options.min);
-    public readonly max = signal(this.options.max);
+    public readonly min = computed(() => Math.min(this.minRaw(), this.maxRaw()));
+    public readonly max = computed(() => Math.max(this.minRaw(), this.maxRaw()));
     public readonly prefix = signal(this.options.prefix);
     public readonly postfix = signal(this.options.postfix);
 
     @Input('min')
     public set minSetter(x: number | null) {
-        this.updateMinMaxLimits(this.transformer.fromControlValue(x), this.max());
+        this.minRaw.set(this.transformer.fromControlValue(x ?? this.options.min));
     }
 
     @Input('max')
     public set maxSetter(x: number | null) {
-        this.updateMinMaxLimits(this.min(), this.transformer.fromControlValue(x));
+        this.maxRaw.set(this.transformer.fromControlValue(x ?? this.options.max));
     }
 
     // TODO(v5): replace with signal input
@@ -200,17 +202,6 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
             }).replace(CHAR_HYPHEN, CHAR_MINUS) +
             this.postfix()
         );
-    }
-
-    private updateMinMaxLimits(
-        nullableMin: number | null,
-        nullableMax: number | null,
-    ): void {
-        const min = nullableMin ?? this.options.min;
-        const max = nullableMax ?? this.options.max;
-
-        this.min.set(Math.min(min, max));
-        this.max.set(Math.max(min, max));
     }
 
     private computeMask(params: MaskitoNumberParams): MaskitoOptions {

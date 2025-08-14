@@ -14,10 +14,17 @@ import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
                     tuiInputNumber
                     [formControl]="control"
                     [max]="0"
-                    [min]="-30"
+                    [min]="min"
                     [postfix]="control.value | i18nPlural: pluralize"
                 />
             </tui-textfield>
+
+            <button
+                id="min"
+                (click)="min = -29"
+            >
+                Change min
+            </button>
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,6 +43,7 @@ import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
     ],
 })
 class SandBox {
+    protected min = -30;
     protected readonly pluralize = {
         '=-1': ' day ago',
         other: ' days ago',
@@ -126,6 +134,54 @@ describe('InputNumber | Abs transformer (allow using negative values without min
                 .should('have.prop', 'selectionEnd', 2)
                 .then(() => {
                     expect(component.control.value).to.equal(-30);
+                });
+        });
+    });
+
+    describe('runtime changes of input property `[min]`', () => {
+        it('textfield keeps the same value after focus + blur', () => {
+            cy.get('[tuiInputNumber]')
+                .type('5')
+                .should('have.value', '5 days ago')
+                .then(() => {
+                    expect(component.control.value).to.equal(-5);
+                });
+
+            cy.get('#min').click();
+
+            cy.get('[tuiInputNumber]')
+                .click()
+                .should('have.value', '5 days ago')
+                .then(() => {
+                    expect(component.control.value).to.equal(-5);
+                })
+                .blur()
+                .should('have.value', '5 days ago')
+                .then(() => {
+                    expect(component.control.value).to.equal(-5);
+                });
+        });
+
+        it('allow to enter new valid value', () => {
+            cy.get('[tuiInputNumber]')
+                .type('1')
+                .should('have.value', '1 day ago')
+                .then(() => {
+                    expect(component.control.value).to.equal(-1);
+                });
+
+            cy.get('#min').click();
+
+            cy.get('[tuiInputNumber]')
+                .type('7')
+                .should('have.value', '17 days ago')
+                .then(() => {
+                    expect(component.control.value).to.equal(-17);
+                })
+                .blur()
+                .should('have.value', '17 days ago')
+                .then(() => {
+                    expect(component.control.value).to.equal(-17);
                 });
         });
     });
