@@ -8,8 +8,28 @@
         <ol>
             <li>https://taiga-ui.dev/legacy/input-range#number-format</li>
             <li>postfix + angular i18nPlural pipe</li>
-            <li>https://taiga-ui.dev/legacy/input-range#key-steps (dont forget to explain `[step]` logic!)</li>
         </ol>
+
+        <tui-doc-example
+            id="key-steps"
+            heading="KeySteps"
+            [component]="85 | tuiComponent"
+            [content]="85 | tuiExample"
+            [description]="keyStepsDescription"
+        >
+            <ng-template #keyStepsDescription>
+                <strong>Key steps</strong>
+                – anchor points of non-uniform format between control's value and slider's position.
+
+                <p class="tui-space_bottom-0">
+                    When
+                    <code>[keySteps]</code>
+                    property is enabled,
+                    <code>[step]</code>
+                    means percentage of total track length.
+                </p>
+            </ng-template>
+        </tui-doc-example>
 
         <tui-doc-example
             id="content"
