@@ -2,10 +2,12 @@ import {
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
+    computed,
     ElementRef,
     inject,
     Input,
     type QueryList,
+    signal,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
@@ -15,15 +17,15 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
-import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
+import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumber,
     TuiInputNumberDirective,
+    TuiQuantumValueTransformerBase,
 } from '@taiga-ui/kit/components/input-number';
 import {TuiRange} from '@taiga-ui/kit/components/range';
 import {
-    TUI_FLOATING_PRECISION,
     type TuiKeySteps,
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
@@ -61,6 +63,10 @@ export class TuiInputRange
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly options = inject(TUI_INPUT_RANGE_OPTIONS);
+    private readonly quantum = signal(1);
+    private readonly quantumTransformer = computed(
+        () => new TuiQuantumValueTransformerBase(this.quantum()),
+    );
 
     protected textfieldValueStart = this.value()[0];
     protected textfieldValueEnd = this.value()[1];
@@ -71,10 +77,6 @@ export class TuiInputRange
 
     @Input()
     public max = this.options.max;
-
-    // TODO: delete
-    @Input()
-    public quantum = 1;
 
     @Input()
     public step = this.options.step;
@@ -96,6 +98,12 @@ export class TuiInputRange
 
     @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
     public postfix: readonly [string, string] = this.options.postfix;
+
+    // TODO(v5): use signal inputs
+    @Input('quantum')
+    public set quantumSetter(x: number) {
+        this.quantum.set(x);
+    }
 
     public override writeValue(value: [number, number]): void {
         super.writeValue(value);
@@ -199,11 +207,10 @@ export class TuiInputRange
     }
 
     private calibrate(value: number): number {
-        const rounded = tuiRound(
-            Math.round(value / this.quantum) * this.quantum,
-            TUI_FLOATING_PRECISION,
+        return tuiClamp(
+            this.quantumTransformer().toControlValue(value) ?? value,
+            this.min,
+            this.max,
         );
-
-        return tuiClamp(rounded, this.min, this.max);
     }
 }

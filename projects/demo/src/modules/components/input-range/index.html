@@ -10,8 +10,43 @@
             <li>postfix + angular i18nPlural pipe</li>
             <li>https://taiga-ui.dev/legacy/input-range#key-steps (dont forget to explain `[step]` logic!)</li>
             <li>https://taiga-ui.dev/legacy/input-range#value-content</li>
-            <li>How implement "Minimum indivisible value" (`[quantum]`) using Value Transformer</li>
         </ol>
+
+        <tui-doc-example
+            id="quantum"
+            heading="Quantum"
+            [component]="95 | tuiComponent"
+            [content]="95 | tuiExample"
+            [description]="quantumDescription"
+        >
+            <ng-template #quantumDescription>
+                Property
+                <code>[quantum]</code>
+                allows to set minimum indivisible value. Form control value never contains a number that is not
+                divisible by value of this property. Even if user enters any invalid number, it will be rounded to the
+                nearest valid one on
+                <code>blur</code>
+                event.
+
+                <p class="tui-space_bottom-0">
+                    In this example, form control value can only contain
+                    <code>0</code>
+                    ,
+                    <code>0.05</code>
+                    ,
+                    <code>0.1</code>
+                    ,
+                    <code>0.15</code>
+                    ...
+                    <code>0.9</code>
+                    ,
+                    <code>0.95</code>
+                    ,
+                    <code>1</code>
+                    .
+                </p>
+            </ng-template>
+        </tui-doc-example>
 
         <tui-doc-example
             id="negative"
@@ -42,6 +77,7 @@
                         rounding: numberFormatDoc.rounding(),
                         thousandSeparator: numberFormatDoc.thousandSeparator(),
                         decimalSeparator: numberFormatDoc.decimalSeparator(),
+                        precision: numberFormatDoc.precision(),
                     }"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
@@ -166,7 +202,6 @@
             <tbody
                 #numberFormatDoc
                 tuiDocNumberFormat
-                [hiddenOptions]="['precision']"
             ></tbody>
 
             <tbody

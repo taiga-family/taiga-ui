@@ -1,0 +1,12 @@
+<tui-input-range
+    [max]="1"
+    [min]="0"
+    [quantum]="quantum"
+    [step]="step"
+    [(ngModel)]="value"
+>
+    How far back to look
+</tui-input-range>
+
+<p><strong>Control value:</strong></p>
+<code>{{ value | json }}</code>
