@@ -4,10 +4,19 @@
     type="components"
 >
     <ng-template pageTab>
-        TODO:
-        <ol>
-            <li>https://taiga-ui.dev/legacy/input-range#number-format</li>
-        </ol>
+        <tui-doc-example
+            id="number-format"
+            heading="Override number format"
+        >
+            TODO: https://taiga-ui.dev/legacy/input-range#number-format
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="segments"
+            heading="Visual segments + labels for ticks"
+        >
+            TODO: https://taiga-ui.dev/legacy/input-range#segments
+        </tui-doc-example>
 
         <tui-doc-example
             id="affixes"
@@ -36,6 +45,13 @@
         </tui-doc-example>
 
         <tui-doc-example
+            id="content"
+            heading="Custom value content"
+            [component]="90 | tuiComponent"
+            [content]="90 | tuiExample"
+        />
+
+        <tui-doc-example
             id="key-steps"
             heading="KeySteps"
             [component]="85 | tuiComponent"
@@ -55,13 +71,6 @@
                 </p>
             </ng-template>
         </tui-doc-example>
-
-        <tui-doc-example
-            id="content"
-            heading="Custom value content"
-            [component]="90 | tuiComponent"
-            [content]="90 | tuiExample"
-        />
 
         <tui-doc-example
             id="quantum"
