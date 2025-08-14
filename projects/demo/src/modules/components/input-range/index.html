@@ -157,6 +157,7 @@
                     [min]="min"
                     [postfix]="postfix"
                     [prefix]="prefix"
+                    [quantum]="quantum"
                     [readOnly]="controlDoc.readonly"
                     [segments]="segments"
                     [step]="step"
@@ -169,9 +170,7 @@
                         precision: numberFormatDoc.precision(),
                     }"
                     [tuiTextfieldSize]="textfieldDoc.size"
-                >
-                    TODO
-                </tui-input-range>
+                />
             </ng-template>
         </tui-doc-demo>
 
@@ -231,6 +230,15 @@
                     [(value)]="content"
                 >
                     A template for custom view of the selected value.
+                </tr>
+
+                <tr
+                    name="[quantum]"
+                    tuiDocAPIItem
+                    type="number"
+                    [(value)]="quantum"
+                >
+                    Minimum indivisible value
                 </tr>
             </tbody>
 

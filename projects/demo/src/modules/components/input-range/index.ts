@@ -30,8 +30,6 @@ export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl([0, 10]);
 
-    protected quantumVariants: readonly number[] = [1, 0.001, 10, 100];
-
     protected readonly suffixVariants: Array<[string, string]> = [
         ['$', '$'],
         ['€', '€'],
@@ -75,7 +73,7 @@ export default class PageComponent {
     protected segments = 1;
     protected prefix: [string, string] | null = null;
     protected postfix: [string, string] | null = null;
-    protected quantum = this.quantumVariants[0]!;
+    protected quantum = 0.01;
     protected keySteps: TuiKeySteps | null = null;
     protected content = this.contentVariants[0]!;
 }
