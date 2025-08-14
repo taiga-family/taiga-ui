@@ -21,6 +21,7 @@ import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
             <button
                 id="min"
+                type="button"
                 (click)="min = -29"
             >
                 Change min
