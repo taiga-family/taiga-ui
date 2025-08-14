@@ -40,6 +40,9 @@ export default defineConfig({
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? Number(process.env.RETRY_COUNT ?? 2) : 0,
     workers: process.env.CI ? '100%' : '50%',
+    snapshotPathTemplate:
+        process.env.SNAPSHOT_PATH_TEMPLATE ??
+        '{testDir}/snapshots/{platform}-{projectName}/{testFilePath}/{arg}{ext}',
     timeout: 5 * 60 * 1000,
     use: {
         baseURL: `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
@@ -55,8 +58,7 @@ export default defineConfig({
         },
     },
     projects: process.env.CI
-        ? [chromium]
-        : [
+        ? [
               chromium,
               {
                   name: 'webkit',
@@ -66,7 +68,8 @@ export default defineConfig({
                   name: 'firefox',
                   use: {...devices['Desktop Firefox HiDPI'], viewport: DEFAULT_VIEWPORT},
               },
-          ],
+          ]
+        : [chromium],
     expect: {
         toHaveScreenshot: {
             animations: 'disabled',
