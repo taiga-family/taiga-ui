@@ -47,12 +47,10 @@ export class TuiHintDirective<C>
 {
     private readonly service = inject(TuiHintService);
 
-    @Input('tuiHintContext')
-    public context?: C;
-
     @Input('tuiHintAppearance')
     public appearance = inject(TUI_HINT_OPTIONS).appearance;
 
+    public contextSignal = signal<C | undefined>(undefined);
     public content = signal<PolymorpheusContent<C>>(null);
     public component = inject(PolymorpheusComponent<unknown>);
     public readonly el = tuiInjectElement();
@@ -66,6 +64,16 @@ export class TuiHintDirective<C>
         if (!content) {
             this.toggle(false);
         }
+    }
+
+    @Input()
+    public set tuiHintContext(context: C) {
+        this.contextSignal.set(context);
+    }
+
+    // TODO: drop in 5.0
+    public get context(): C | undefined {
+        return this.contextSignal();
     }
 
     public ngOnDestroy(): void {
