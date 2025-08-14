@@ -28,7 +28,7 @@
     --docsearch-hit-color: var(--tui-text-primary);
     --docsearch-hit-active-color: var(--tui-background-base);
     --docsearch-hit-background: var(--tui-background-base);
-    --docsearch-hit-shadow: 0 1px 3px 0 rgb(212, 217, 225);
+    --docsearch-hit-shadow: 0 0.0625rem 0.1875rem 0 rgb(212, 217, 225);
 
     /* key */
     --docsearch-key-gradient: none;
@@ -106,7 +106,7 @@ html[data-theme='dark'] {
 }
 
 .DocSearch-Container {
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(0.25rem);
 
     @media @tui-mobile {
         position: fixed;
