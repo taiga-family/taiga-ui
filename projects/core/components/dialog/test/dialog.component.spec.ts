@@ -10,9 +10,7 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
     @Component({
         standalone: true,
         imports: [TuiRoot],
-        template: `
-            <tui-root />
-        `,
+        template: '<tui-root />',
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {}
