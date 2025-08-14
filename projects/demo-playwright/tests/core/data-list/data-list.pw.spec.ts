@@ -34,7 +34,6 @@ test.describe('DataList', () => {
     });
 
     test('Submenu', async ({page, browserName}) => {
-        // eslint-disable-next-line playwright/no-skipped-test
         test.skip(
             browserName !== 'chromium',
             // TODO: bug https://github.com/taiga-family/taiga-ui/issues/9837
@@ -99,7 +98,6 @@ test.describe('DataList', () => {
     });
 
     test('Form control', async ({page, browserName}) => {
-        // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Skip flaky in Safari');
 
         await tuiGoto(page, DemoRoute.DataList);
@@ -117,7 +115,6 @@ test.describe('DataList', () => {
     });
 
     test('Complex', async ({page, browserName}) => {
-        // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Skip flaky in Safari');
 
         await page.setViewportSize({width: 1400, height: 500});
@@ -176,7 +173,6 @@ test.describe('DataList', () => {
     });
 
     test('Options with long text', async ({page, browserName}) => {
-        // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Skip flaky in Safari');
 
         await page.setViewportSize({width: 750, height: 900});
