@@ -1,16 +1,11 @@
 import {Directive, ElementRef, inject, INJECTOR, Injector, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {
     MutationObserverService,
     provideMutationObserverInit,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {
-    tuiScrollFrom,
-    tuiZonefree,
-    tuiZonefreeScheduler,
-} from '@taiga-ui/cdk/observables';
+import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {
@@ -55,27 +50,9 @@ export class TuiScrollbarDirective {
     private readonly style = tuiInjectElement().style;
     private readonly injector = inject(INJECTOR);
 
-    // Runtime-tunable flags via sessionStorage for perf experiments
-
-    private readonly transformEnabled =
-        typeof window !== 'undefined' &&
-        sessionStorage.getItem('tui-scrollbar-transform') === '1';
-
-    private readonly debounceMs = Number(
-        (typeof window !== 'undefined' &&
-            sessionStorage.getItem('tui-scrollbar-debounce')) ??
-            '50',
-    );
-
-    private readonly throttleMs = Number(
-        (typeof window !== 'undefined' &&
-            sessionStorage.getItem('tui-scrollbar-throttle')) ??
-            '16',
-    );
-
-    private readonly useRafMode =
-        typeof window !== 'undefined' &&
-        sessionStorage.getItem('tui-scrollbar-raf') === '1';
+    private readonly transformEnabled = true;
+    private readonly debounceMs = 100;
+    private readonly throttleMs = 8;
 
     private readonly resizeObserverService = Injector.create({
         providers: [
@@ -119,47 +96,12 @@ export class TuiScrollbarDirective {
             this.el.style.scrollBehavior = '';
         });
 
-    protected readonly styleSub = this.useRafMode
-        ? this.rafBasedSubscription
-        : this.eventBasedSubscription;
+    protected readonly styleSub = this.eventBasedSubscription;
 
     @Input()
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
-    // Original RAF-based implementation for baseline comparison
-    private get rafBasedSubscription(): any {
-        return merge(
-            inject(WA_ANIMATION_FRAME).pipe(
-                throttleTime(this.throttleMs, tuiZonefreeScheduler()),
-            ),
-            tuiScrollFrom(this.el),
-        )
-            .pipe(tuiZonefree(), takeUntilDestroyed())
-            .subscribe(() => {
-                const dimension: ComputedDimension = {
-                    scrollTop: this.el.scrollTop,
-                    scrollHeight: this.el.scrollHeight,
-                    clientHeight: this.el.clientHeight,
-                    scrollLeft: this.el.scrollLeft,
-                    scrollWidth: this.el.scrollWidth,
-                    clientWidth: this.el.clientWidth,
-                };
-
-                const thumb = `${(this.getThumb(dimension) * 100).toFixed(2)}%`;
-                const view = `${(this.getView(dimension) * 100).toFixed(2)}%`;
-
-                if (this.tuiScrollbar === 'vertical') {
-                    this.style.top = thumb;
-                    this.style.height = view;
-                } else {
-                    this.style.left = thumb;
-                    (this.style as any).insetInlineStart = thumb;
-                    this.style.width = view;
-                }
-            });
-    }
-
-    // Event-driven implementation for optimization comparison
+    // Event-driven implementation (default)
     private get eventBasedSubscription(): any {
         return (
             merge(
