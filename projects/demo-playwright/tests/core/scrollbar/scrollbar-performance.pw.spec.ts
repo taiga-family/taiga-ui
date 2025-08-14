@@ -1,7 +1,4 @@
-import fs from 'node:fs';
-
 import {expect, test} from '@playwright/test';
-import path from 'path';
 
 /**
  * TuiScrollbar Performance Analysis Suite
@@ -26,8 +23,6 @@ import path from 'path';
 // ========================================================================================
 
 const CONFIG = {
-    // Save under projects/demo-playwright/tests-results (single canonical folder)
-    outputDir: path.join(__dirname, '..', '..', '..', 'tests-results'),
     baseUrl: 'http://localhost:3333/components/scrollbar',
     // Statistical significance analysis suggests 50-100 runs for robust confidence intervals
     // 25 runs = good baseline, 50 runs = production-ready, 100+ runs = publication-quality
@@ -516,34 +511,7 @@ class ResultsManager {
         return this.results.get(name);
     }
 
-    public static async saveResults(): Promise<void> {
-        const outputPath = path.join(
-            CONFIG.outputDir,
-            'scrollbar-performance-results.json',
-        );
-        const recommendation = this.computeRecommendation();
-        const aggregatedResults = {
-            metadata: {
-                runsPerVariant: CONFIG.runsPerVariant,
-                confidenceLevel: CONFIG.confidenceLevel,
-                timestamp: new Date().toISOString(),
-                variants: TEST_VARIANTS.length,
-            },
-            results: Object.fromEntries(this.results),
-            recommendation,
-        };
-
-        if (!fs.existsSync(CONFIG.outputDir)) {
-            fs.mkdirSync(CONFIG.outputDir, {recursive: true});
-        }
-
-        await fs.promises.writeFile(
-            outputPath,
-            JSON.stringify(aggregatedResults, null, 2),
-            'utf8',
-        );
-
-        console.info(`✅ Performance results saved to: ${outputPath}`);
+    public static printReports(): void {
         console.info(
             `📊 Tested ${this.results.size} variants with ${CONFIG.runsPerVariant} runs each`,
         );
@@ -551,24 +519,14 @@ class ResultsManager {
             `📈 Statistical significance: ${CONFIG.confidenceLevel}σ confidence intervals`,
         );
 
-        // Also print compact CI-friendly summary table
-        this.printSummaryTable();
+        // Short table: ops only (mean/median)
+        this.printShortOpsTable();
 
-        // Create a simple SVG chart artifact highlighting the recommendation
-        try {
-            const svgPath = path.join(
-                CONFIG.outputDir,
-                'scrollbar-performance-recommendation.svg',
-            );
-
-            await this.writeRecommendationSvg(svgPath, recommendation);
-            console.info(`🖼  Wrote recommendation chart: ${svgPath}`);
-        } catch (e) {
-            console.warn('Failed to write recommendation SVG:', e);
-        }
+        // Full table: ops and durations with CIs
+        this.printFullTable();
     }
 
-    private static printSummaryTable(): void {
+    private static printShortOpsTable(): void {
         const rows = Array.from(this.results.values()).map(({variant, summary}) => ({
             name: variant.name,
             layoutCountMean: summary.layoutCount,
@@ -602,7 +560,85 @@ class ResultsManager {
 
         const pad = (text: string, i: number): string => text.padEnd(colWidths[i]!, ' ');
 
-        console.info('\n===== Scrollbar Performance Summary =====');
+        console.info('\n===== Scrollbar Performance (short, ops only) =====');
+        console.info(headers.map((h, i) => pad(h, i)).join('  '));
+        console.info(colWidths.map((w) => '-'.repeat(w)).join('  '));
+
+        for (const row of data) {
+            console.info(row.map((cell, i) => pad(cell, i)).join('  '));
+        }
+
+        console.info('========================================\n');
+    }
+
+    private static printFullTable(): void {
+        const rows = Array.from(this.results.values()).map(({variant, summary}) => {
+            const m = (summary as any).median as PerformanceMetrics | undefined;
+
+            return {
+                name: variant.name,
+                layoutOpsMean: summary.layoutCount,
+                layoutOpsMedian: m?.layoutCount ?? summary.layoutCount,
+                layoutOpsCI: summary.confidence.layoutCount,
+                recalcOpsMean: summary.recalcStyleCount,
+                recalcOpsMedian: m?.recalcStyleCount ?? summary.recalcStyleCount,
+                recalcOpsCI: summary.confidence.recalcStyleCount,
+                layoutMsMean: summary.layoutDuration,
+                layoutMsMedian: m?.layoutDuration ?? summary.layoutDuration,
+                layoutMsCI: summary.confidence.layoutDuration,
+                recalcMsMean: summary.recalcStyleDuration,
+                recalcMsMedian: m?.recalcStyleDuration ?? summary.recalcStyleDuration,
+                recalcMsCI: summary.confidence.recalcStyleDuration,
+            };
+        });
+
+        if (!rows.length) {
+            return;
+        }
+
+        const headers = [
+            'Variant',
+            'Layout ops (mean)',
+            'Layout ops (median)',
+            'Layout ops CI',
+            'Recalc ops (mean)',
+            'Recalc ops (median)',
+            'Recalc ops CI',
+            'Layout ms (mean)',
+            'Layout ms (median)',
+            'Layout ms CI',
+            'Recalc ms (mean)',
+            'Recalc ms (median)',
+            'Recalc ms CI',
+        ];
+
+        function ci(a: [number, number]): string {
+            return `[${a[0].toFixed(2)}, ${a[1].toFixed(2)}]`;
+        }
+
+        const data = rows.map((r) => [
+            r.name,
+            r.layoutOpsMean.toFixed(1),
+            r.layoutOpsMedian.toFixed(1),
+            ci(r.layoutOpsCI),
+            r.recalcOpsMean.toFixed(1),
+            r.recalcOpsMedian.toFixed(1),
+            ci(r.recalcOpsCI),
+            r.layoutMsMean.toFixed(2),
+            r.layoutMsMedian.toFixed(2),
+            ci(r.layoutMsCI),
+            r.recalcMsMean.toFixed(2),
+            r.recalcMsMedian.toFixed(2),
+            ci(r.recalcMsCI),
+        ]);
+
+        const colWidths: number[] = headers.map((h, i) =>
+            Math.max(h.length, ...data.map((row) => row[i]!.length)),
+        );
+
+        const pad = (text: string, i: number): string => text.padEnd(colWidths[i]!, ' ');
+
+        console.info('\n===== Scrollbar Performance (full) =====');
         console.info(headers.map((h, i) => pad(h, i)).join('  '));
         console.info(colWidths.map((w) => '-'.repeat(w)).join('  '));
 
@@ -770,85 +806,7 @@ class ResultsManager {
         return winner;
     }
 
-    private static async writeRecommendationSvg(
-        outPath: string,
-        rec?: Recommendation,
-    ): Promise<void> {
-        // Build a simple line plot of composite score vs throttle for the recommended family
-        if (!rec) {
-            return;
-        }
-
-        const entries = Array.from(this.results.values());
-        const family = rec.family;
-        const list = entries.filter((r) => {
-            const k = this.parseVariantKey(r.variant.name);
-
-            if (k.family !== family) {
-                return false;
-            }
-
-            if (family === 'raf') {
-                return true;
-            }
-
-            return k.debounceMs === rec.debounceMs;
-        });
-        const points = list
-            .map((x) => ({
-                k: this.parseVariantKey(x.variant.name),
-                s: this.compositeScore(x.summary),
-            }))
-            .sort((a, b) => a.k.throttleMs - b.k.throttleMs);
-
-        const w = 800;
-        const h = 400;
-        const pad = 50;
-        const xs = points.map((p) => p.k.throttleMs);
-        const ys = points.map((p) => p.s);
-        const xmin = Math.min(...xs);
-        const xmax = Math.max(...xs);
-        const ymin = Math.min(...ys);
-        const ymax = Math.max(...ys);
-        const xscale = (x: number): number =>
-            pad + ((x - xmin) / (xmax - xmin || 1)) * (w - 2 * pad);
-        const yscale = (y: number): number =>
-            h - pad - ((y - ymin) / (ymax - ymin || 1)) * (h - 2 * pad);
-
-        const pathD = points
-            .map((p, i) => `${i ? 'L' : 'M'}${xscale(p.k.throttleMs)},${yscale(p.s)}`)
-            .join(' ');
-
-        const recX = xscale(rec.throttleMs);
-        const recY = yscale(
-            points.find((p) => p.k.throttleMs === rec.throttleMs)?.s ?? ymin,
-        );
-
-        const svg =
-            '<?xml version="1.0" encoding="UTF-8"?>\n' +
-            `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}">\n` +
-            `  <rect x="0" y="0" width="${w}" height="${h}" fill="#fff"/>\n` +
-            '  <g stroke="#ccc">\n' +
-            `    <line x1="${pad}" y1="${h - pad}" x2="${w - pad}" y2="${h - pad}"/>\n` +
-            `    <line x1="${pad}" y1="${pad}" x2="${pad}" y2="${h - pad}"/>\n` +
-            '  </g>\n' +
-            `  <path d="${pathD}" fill="none" stroke="#007acc" stroke-width="2"/>\n` +
-            `  ${points
-                .map(
-                    (p) =>
-                        `<circle cx="${xscale(p.k.throttleMs)}" cy="${yscale(
-                            p.s,
-                        )}" r="3" fill="#007acc"/>`,
-                )
-                .join('')}\n` +
-            `  <circle cx="${recX}" cy="${recY}" r="6" fill="red"/>\n` +
-            `  <text x="${pad}" y="20" font-family="monospace" font-size="14">${family} recommended: throttle=${rec.throttleMs}ms$${
-                rec.debounceMs ? `, debounce=${rec.debounceMs}ms` : ''
-            }</text>\n` +
-            '</svg>';
-
-        await fs.promises.writeFile(outPath, svg, 'utf8');
-    }
+    // SVG/chart artifact removed: logs only
 }
 
 // ========================================================================================
@@ -988,8 +946,8 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', {tag: '@scrollbar'
         });
     }
 
-    test.afterAll(async () => {
-        await ResultsManager.saveResults();
+    test.afterAll(() => {
+        ResultsManager.printReports();
         const rec = (ResultsManager as any).computeRecommendation?.();
 
         if (rec) {
