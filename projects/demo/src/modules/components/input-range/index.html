@@ -12,13 +12,6 @@
         </tui-doc-example>
 
         <tui-doc-example
-            id="segments"
-            heading="Visual segments + labels for ticks"
-        >
-            TODO: https://taiga-ui.dev/legacy/input-range#segments
-        </tui-doc-example>
-
-        <tui-doc-example
             id="affixes"
             heading="Affixes"
             [component]="80 | tuiComponent"
@@ -41,6 +34,20 @@
                     <strong>Currency</strong>
                 </a>
                 pipe.
+            </ng-template>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="segments"
+            heading="Visual segments + labels for ticks"
+            [component]="82 | tuiComponent"
+            [content]="82 | tuiExample"
+            [description]="segmentsDescription"
+        >
+            <ng-template #segmentsDescription>
+                Use mixin
+                <code>tui-slider-ticks-labels</code>
+                to arrange ticks' labels (it places them strictly below ticks).
             </ng-template>
         </tui-doc-example>
 
