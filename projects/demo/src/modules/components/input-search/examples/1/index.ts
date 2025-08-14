@@ -38,7 +38,7 @@ const DATA: Record<string, readonly Result[]> = {
         {
             title: 'Web APIs with Angular',
             href: 'https://github.com/taiga-family/ng-web-apis',
-            icon: '@tui.gitlab',
+            icon: '@tui.github',
         },
     ],
     Links: [
