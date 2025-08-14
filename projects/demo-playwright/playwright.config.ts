@@ -20,6 +20,10 @@ process.env['AXE_CONFIG'] = JSON.stringify({
     ],
 });
 
+const chromium = {
+    name: 'chromium',
+    use: {...devices['Desktop Chrome HiDPI'], viewport: DEFAULT_VIEWPORT},
+};
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -50,24 +54,19 @@ export default defineConfig({
             hasTouch: true,
         },
     },
-    projects: [
-        {
-            name: 'chromium',
-            use: {
-                ...devices['Desktop Chrome HiDPI'],
-                viewport: DEFAULT_VIEWPORT,
-            },
-        },
-        process.env.CI
-            ? {
+    projects: process.env.CI
+        ? [chromium]
+        : [
+              chromium,
+              {
                   name: 'webkit',
-                  use: {
-                      ...devices['Desktop Safari'],
-                      viewport: DEFAULT_VIEWPORT,
-                  },
-              }
-            : null,
-    ].filter(<T>(x: T | null): x is T => !!x),
+                  use: {...devices['Desktop Safari'], viewport: DEFAULT_VIEWPORT},
+              },
+              {
+                  name: 'firefox',
+                  use: {...devices['Desktop Firefox HiDPI'], viewport: DEFAULT_VIEWPORT},
+              },
+          ],
     expect: {
         toHaveScreenshot: {
             animations: 'disabled',
