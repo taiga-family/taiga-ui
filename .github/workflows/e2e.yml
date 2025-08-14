@@ -8,7 +8,7 @@ env:
 
 jobs:
   build-demo:
-    if: ${{ !contains(github.head_ref, 'release/') }}
+    if: ${{ !contains(github.head_ref , 'release/') }}
     name: Build demo
     runs-on: ubuntu-latest
     steps:
@@ -143,13 +143,12 @@ jobs:
           directory: ${{ env.DIST }}
           replaceBaseUrl: false
 
-      - name: Run screenshot tests on ${{ env.DIST }} (exclude perf)
+      - name: Run screenshot tests on ${{ env.DIST }}
         run: |
           npx nx e2e demo-playwright -- \
             --update-snapshots \
             --project=${{ matrix.shard.project }} \
-            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
-            --grep-invert @scrollbar
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
 
       - uses: taiga-family/ci/actions/run/clone@v1.144.0
         with:
@@ -162,13 +161,12 @@ jobs:
           directory: ${{ env.DIST_NEXT }}
           replaceBaseUrl: false
 
-      - name: Run screenshot tests on ${{ env.DIST_NEXT }} (exclude perf)
+      - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
         run: |
           npx nx e2e demo-playwright -- \
             --project=${{ matrix.shard.project }} \
-            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
-            --grep-invert @scrollbar
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
 
       - name: Combine images to get diff reports
         run: |
@@ -191,35 +189,6 @@ jobs:
           name: ${{ env.PLAYWRIGHT_BLOB_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
           compression-level: 0
           retention-days: 1
-
-  # playwright-perf:
-  #   if: ${{ !contains(github.head_ref , 'release/') }}
-  #   needs: [build-demo]
-  #   name: Playwright / Scrollbar Performance (Chromium)
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4.3.0
-  #     - uses: taiga-family/ci/actions/setup/variables@v1.144.0
-  #     - uses: taiga-family/ci/actions/setup/node@v1.144.0
-  #     - uses: taiga-family/ci/actions/setup/playwright@v1.144.0
-  #     - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-  #       uses: actions/cache/restore@v4.2.4
-  #       with:
-  #         path: dist/demo
-  #         key: ${{ env.CACHE_DIST_KEY }}
-  #     - uses: taiga-family/ci/actions/run/serve@v1.144.0
-  #       with:
-  #         port: ${{ env.NG_SERVER_PORT }}
-  #         directory: ${{ env.DIST }}
-  #         replaceBaseUrl: false
-  #     - name: Run scrollbar performance suite (Chromium, logs visible)
-  #       env:
-  #         ITERATIONS_PER_CONFIGURATION: 25
-  #       run: |
-  #         npx nx e2e demo-playwright -- \
-  #           --project=chromium \
-  #           --reporter=list \
-  #           projects/demo-playwright/tests/core/scrollbar/scrollbar-performance.pw.spec.ts
 
   # workaround for status checks -- check this one job instead of each individual E2E job in the matrix
   # see https://github.com/orgs/community/discussions/9141#discussioncomment-2296809

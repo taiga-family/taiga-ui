@@ -1,12 +1,10 @@
-import {expect, type Page, type Response} from '@playwright/test';
+import {expect, type Page} from '@playwright/test';
 
-import {tuiHideElement} from './hide-element';
+import {tuiRemoveElement} from './hide-element';
 import {tuiMockDate} from './mock-date';
 import {tuiWaitForFonts} from './wait-for-fonts';
 import {waitIcons} from './wait-icons';
 import {waitStableState} from './wait-stable-state';
-
-export const TUI_PLAYWRIGHT_DEMO_URL = '/';
 
 interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     date?: Date | null;
@@ -14,12 +12,6 @@ interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     hideHeader?: boolean;
     enableNightMode?: boolean;
     hideVersionManager?: boolean;
-    hideNavigation?: boolean;
-    hideScroll?: boolean;
-    hideLanguageSwitcher?: boolean;
-    hideNightMode?: boolean;
-    hidePages?: boolean;
-    hideDemo?: boolean;
 }
 
 export async function tuiGoto(
@@ -28,21 +20,12 @@ export async function tuiGoto(
     {
         date = new Date(2020, 8, 25, 19, 19),
         hideHeader = true,
-        hideNavigation = true,
-        hideScroll = true,
-        hideVersionManager = true,
-        hideLanguageSwitcher = true,
-        hideNightMode = true,
         enableNightMode = false,
-        hidePages = true,
-        hideDemo = true,
+        hideVersionManager = false,
         language,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
-): Promise<Response | null> {
-    const baseURL = `http://localhost:${process.env.NG_SERVER_PORT || 3333}`;
-    const fullUrl = new URL(url, baseURL).toString();
-
+): ReturnType<Page['goto']> {
     await page.addInitScript(() => {
         globalThis.Math.random = () => 0.42;
     });
@@ -70,53 +53,33 @@ export async function tuiGoto(
     await page.route('https://fonts.gstatic.com/**', async (route) =>
         route.fulfill({path: `${__dirname}/../stubs/manrope-fonts.ttf`}),
     );
-    await page.route('https://*.youtube.com/**', async (route) =>
+
+    await page.route('https://www.youtube.com/**', async (route) =>
         route.fulfill({path: `${__dirname}/../stubs/web-api.svg`}),
     );
-    const response = await page.goto(fullUrl, playwrightGotoOptions);
+
+    const response = await page.goto(url, playwrightGotoOptions);
     const app = page.locator('app');
 
     await page.waitForLoadState('domcontentloaded');
     await page.waitForLoadState('load');
     await expect(app).toBeAttached();
+
     await waitIcons({
         page,
         timeout: 200,
         icons: await page.locator('tui-icon').all(),
     });
+
     await tuiWaitForFonts(page);
     await waitStableState(app);
 
     if (hideHeader) {
-        await tuiHideElement(page.locator('tui-doc-header'));
-    }
-
-    if (hideNavigation) {
-        await tuiHideElement(page.locator('tui-doc-navigation'));
-    }
-
-    if (hideScroll) {
-        await page.addStyleTag({content: 'body {overflow: hidden}'});
+        await tuiRemoveElement(page.locator('[tuiDocHeader]'));
     }
 
     if (hideVersionManager) {
-        await tuiHideElement(page.locator('version-manager'));
-    }
-
-    if (hideLanguageSwitcher) {
-        await tuiHideElement(page.locator('tui-language-switcher'));
-    }
-
-    if (hideNightMode) {
-        await tuiHideElement(page.locator('tui-night-mode'));
-    }
-
-    if (hidePages) {
-        await tuiHideElement(page.locator('tui-doc-pages'));
-    }
-
-    if (hideDemo) {
-        await tuiHideElement(page.locator('tui-doc-demo'));
+        await tuiRemoveElement(page.locator('version-manager'));
     }
 
     expect(
