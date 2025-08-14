@@ -864,7 +864,10 @@ test.describe('TuiScrollbar Performance Analysis @scrollbar', {tag: '@scrollbar'
         test.describe.configure({mode: 'serial'});
     }
 
-    test.setTimeout(120000); // 2 minutes per test
+    // Dynamic timeout: scale with number of runs per variant
+    const PER_RUN_MS = 15000; // 15s per run
+
+    test.setTimeout(CONFIG.runsPerVariant * PER_RUN_MS);
 
     test.beforeEach(async ({page, browserName}) => {
         // eslint-disable-next-line playwright/no-skipped-test
