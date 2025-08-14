@@ -8,7 +8,11 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
 import {TuiNumberFormat, TuiTextfield, TuiTitle} from '@taiga-ui/core';
-import {TuiInputRange, type TuiKeySteps} from '@taiga-ui/kit';
+import {
+    TuiInputRange,
+    type TuiInputRangeComponent,
+    type TuiKeySteps,
+} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
@@ -46,7 +50,7 @@ export default class PageComponent {
         ],
     ];
 
-    protected readonly contentVariants: Array<TuiInputRange['content']> = [
+    protected readonly contentVariants: Array<TuiInputRangeComponent['content']> = [
         ['', ''],
         ['START', 'END'],
         [

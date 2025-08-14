@@ -1,4 +1,8 @@
 <tui-textfield [content]="hideStartContent ? '' : content[0]">
+    <ng-container ngProjectAs="label">
+        <ng-content select="label" />
+    </ng-container>
+
     <input
         tuiInputNumber
         [disabled]="disabled()"

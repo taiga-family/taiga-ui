@@ -41,13 +41,13 @@ import {TUI_INPUT_RANGE_OPTIONS} from './input-range.options';
     styleUrls: ['./input-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiAsControl(TuiInputRange),
+        tuiAsControl(TuiInputRangeComponent),
         tuiSliderOptionsProvider({trackColor: 'transparent'}),
         tuiFallbackValueProvider([0, 0]),
         tuiValueTransformerFrom(TUI_INPUT_RANGE_OPTIONS),
     ],
 })
-export class TuiInputRange
+export class TuiInputRangeComponent
     extends TuiControl<readonly [number, number]>
     implements AfterViewInit
 {
