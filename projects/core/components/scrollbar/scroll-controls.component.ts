@@ -1,10 +1,28 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ElementRef,
+    inject,
+    INJECTOR,
+    Injector,
+} from '@angular/core';
+import {
+    MutationObserverService,
+    provideMutationObserverInit,
+} from '@ng-web-apis/mutation-observer';
+import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {tuiZonefreeScheduler, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {distinctUntilChanged, map, startWith, throttleTime} from 'rxjs';
+import {
+    debounceTime,
+    distinctUntilChanged,
+    map,
+    merge,
+    startWith,
+    throttleTime,
+} from 'rxjs';
 
 import {TuiScrollbarDirective} from './scrollbar.directive';
 import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
@@ -19,12 +37,52 @@ import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
 })
 export class TuiScrollControls {
     private readonly scrollRef = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly injector = inject(INJECTOR);
+
+    private readonly resizeObserverService = Injector.create({
+        providers: [
+            ResizeObserverService,
+            {
+                provide: ElementRef,
+                useFactory: () => new ElementRef(this.scrollRef),
+            },
+        ],
+        parent: this.injector,
+    }).get(ResizeObserverService);
+
+    private readonly mutationObserverService = Injector.create({
+        providers: [
+            MutationObserverService,
+            provideMutationObserverInit({
+                childList: true,
+                characterData: true,
+                subtree: true,
+            }),
+            {
+                provide: ElementRef,
+                useFactory: () => new ElementRef(this.scrollRef),
+            },
+        ],
+        parent: this.injector,
+    }).get(MutationObserverService);
 
     protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
-    protected readonly refresh$ = inject(WA_ANIMATION_FRAME).pipe(
-        throttleTime(300, tuiZonefreeScheduler()),
+    protected readonly refresh$ = merge(
+        this.resizeObserverService.pipe(
+            debounceTime(100),
+            map(() => null),
+        ),
+        this.mutationObserverService.pipe(
+            debounceTime(100),
+            map(() => null),
+        ),
+        tuiTypedFromEvent(this.scrollRef, 'scroll').pipe(
+            throttleTime(100),
+            map(() => null),
+        ),
+    ).pipe(
         map(() => this.scrollbars),
-        startWith([false, false]),
+        startWith([false, false] as [boolean, boolean]),
         distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
         tuiZoneOptimized(),
     );
