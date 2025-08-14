@@ -37,8 +37,7 @@
 .t-items {
     display: flex;
     gap: var(--t-gap);
-    transition: transform var(--tui-duration-fast, 150ms)
-        var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+    transition: transform var(--tui-duration-fast) var(--tui-curve-productive-standard);
 }
 
 .t-item {
@@ -92,7 +91,6 @@
 
     &,
     &::ng-deep > tui-icon {
-        transition: all var(--tui-duration-fast, 150ms)
-            var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
+        transition: all var(--tui-duration-fast) var(--tui-curve-productive-standard);
     }
 }
