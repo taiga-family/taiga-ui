@@ -13,9 +13,13 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
+import {
+    tuiTypedFromEvent,
+    tuiZonefreeScheduler,
+    tuiZoneOptimized,
+} from '@taiga-ui/cdk/observables';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {distinctUntilChanged, map, merge, startWith} from 'rxjs';
+import {distinctUntilChanged, map, merge, startWith, throttleTime} from 'rxjs';
 
 import {TuiScrollbarDirective} from './scrollbar.directive';
 import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
@@ -61,20 +65,21 @@ export class TuiScrollControls {
     }).get(MutationObserverService);
 
     // Event-driven implementation
-    private readonly eventBasedRefresh$ = merge(
+    protected readonly refresh$ = merge(
         this.resizeObserverService.pipe(
-            // debounceTime(this.scDebounceMs),
+            // debounceTime(50),
             map(() => null),
         ),
         this.mutationObserverService.pipe(
-            // debounceTime(this.scDebounceMs),
+            // debounceTime(50),
             map(() => null),
         ),
         tuiTypedFromEvent(this.scrollRef, 'scroll').pipe(
-            // throttleTime(this.scThrottleMs),
+            // throttleTime(16),
             map(() => null),
         ),
     ).pipe(
+        throttleTime(300, tuiZonefreeScheduler()),
         map(() => this.scrollbars),
         startWith([false, false] as [boolean, boolean]),
         distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
@@ -82,8 +87,6 @@ export class TuiScrollControls {
     );
 
     protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
-
-    protected readonly refresh$ = this.eventBasedRefresh$;
 
     private get scrollbars(): [boolean, boolean] {
         const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.scrollRef;

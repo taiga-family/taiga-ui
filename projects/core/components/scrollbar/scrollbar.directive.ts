@@ -5,10 +5,10 @@ import {
     provideMutationObserverInit,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
+import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {map, merge, scan} from 'rxjs';
+import {distinctUntilChanged, map, merge, scan} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -127,22 +127,21 @@ export class TuiScrollbarDirective {
             ),
         )
             .pipe(
-                // map((dimension) => dimension),
                 scan((prev: ComputedDimension, current: Partial<ComputedDimension>) => {
                     const next = {...prev, ...current};
 
                     return next;
                 }, this.initialDimensions),
-                // distinctUntilChanged(
-                //     (a: ComputedDimension, b: ComputedDimension) =>
-                //         a.scrollTop === b.scrollTop &&
-                //         a.scrollLeft === b.scrollLeft &&
-                //         a.clientHeight === b.clientHeight &&
-                //         a.clientWidth === b.clientWidth &&
-                //         a.scrollHeight === b.scrollHeight &&
-                //         a.scrollWidth === b.scrollWidth,
-                // ),
-                // tuiZonefree(),
+                distinctUntilChanged(
+                    (a: ComputedDimension, b: ComputedDimension) =>
+                        a.scrollTop === b.scrollTop &&
+                        a.scrollLeft === b.scrollLeft &&
+                        a.clientHeight === b.clientHeight &&
+                        a.clientWidth === b.clientWidth &&
+                        a.scrollHeight === b.scrollHeight &&
+                        a.scrollWidth === b.scrollWidth,
+                ),
+                tuiZonefree(),
                 takeUntilDestroyed(),
             )
             .subscribe((dimension) => {
