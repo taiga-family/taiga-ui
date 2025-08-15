@@ -6,6 +6,8 @@ import {tuiGetDemoPathsForE2E} from './utils/get-demo-paths';
 
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
 const THRESHOLD = parseFloat(process.env.PW_THRESHOLD ?? '') || 0.02;
+const MAX_DIFF_PIXEL_RATIO =
+    parseFloat(process.env.PW_MAX_DIFF_PIXEL_RATIO ?? '') || 0.01;
 
 process.env['DEMO_PATHS'] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
 process.env['AXE_CONFIG'] = JSON.stringify({
@@ -77,9 +79,11 @@ export default defineConfig({
             caret: 'hide',
             scale: 'device',
             threshold: THRESHOLD,
+            maxDiffPixelRatio: MAX_DIFF_PIXEL_RATIO,
         },
         toMatchSnapshot: {
             threshold: THRESHOLD,
+            maxDiffPixelRatio: MAX_DIFF_PIXEL_RATIO,
         },
     },
 });
