@@ -3,8 +3,7 @@ import {TuiPopoverService} from '@taiga-ui/cdk/services';
 import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
 
 import {TuiDialogComponent} from './dialog.component';
-import type {TuiDialogOptions} from './dialog.options';
-import {TUI_DIALOG_OPTIONS} from './dialog.options';
+import {TUI_DIALOG_OPTIONS, type TuiDialogOptions} from './dialog.options';
 
 @Injectable({
     providedIn: 'root',
