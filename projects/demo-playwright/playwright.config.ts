@@ -5,6 +5,7 @@ import {pages as PUBLIC_PAGES} from '../demo/src/modules/app/pages';
 import {tuiGetDemoPathsForE2E} from './utils/get-demo-paths';
 
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
+const THRESHOLD = parseFloat(process.env.PW_THRESHOLD ?? '') || 0.02;
 
 process.env['DEMO_PATHS'] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
 process.env['AXE_CONFIG'] = JSON.stringify({
@@ -75,10 +76,10 @@ export default defineConfig({
             animations: 'disabled',
             caret: 'hide',
             scale: 'device',
-            threshold: 0.02,
+            threshold: THRESHOLD,
         },
         toMatchSnapshot: {
-            threshold: 0.02,
+            threshold: THRESHOLD,
         },
     },
 });
