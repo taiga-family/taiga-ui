@@ -15,6 +15,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {
+    NavigationStart,
     provideRouter,
     Router,
     type UrlTree,
@@ -52,7 +53,7 @@ import {
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
-import {catchError, map, merge, of} from 'rxjs';
+import {catchError, filter, map, merge, of} from 'rxjs';
 
 import {DEFAULT_LANGUAGE_PAGE, SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
@@ -263,7 +264,13 @@ export const config: ApplicationConfig = {
         },
         {
             provide: TUI_DIALOGS_CLOSE,
-            useFactory: () => merge(inject(AuthService), inject(Router).events),
+            useFactory: () =>
+                merge(
+                    inject(AuthService),
+                    inject(Router).events.pipe(
+                        filter((e) => e instanceof NavigationStart),
+                    ),
+                ),
         },
     ],
 };
