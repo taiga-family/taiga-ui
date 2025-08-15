@@ -38,8 +38,8 @@
         content: '';
         background: currentColor;
         font-size: 1.25rem;
-        mask: var(--t-unchecked-icon) no-repeat center / calc(~'min(1em, 100%)' + var(--tui-stroke-width, 0.125rem))
-            ~'min(1em, 100%)' padding-box;
+        mask: var(--t-unchecked-icon) no-repeat center /
+            calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem)) ~'min(1em, 100%)' padding-box;
     }
 
     &::after {
