@@ -16,6 +16,7 @@ import {expect, test} from '@playwright/test';
 
 // Skip this suite in CI via CLI: `--grep-invert @scrollbar` (avoid in-file skip to satisfy lint)
 
+// eslint-disable-next-line
 test.describe.skip('TuiScrollbar - Functionality Suite @scrollbar', () => {
     test.beforeEach(async ({page}) => {
         await tuiGoto(page, DemoRoute.Scrollbar);
