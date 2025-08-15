@@ -1,28 +1,28 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
-import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import type {TuiPopover} from '@taiga-ui/cdk/services';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
+import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/components/dialog';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import type {Observable} from 'rxjs';
 import {
     exhaustMap,
     filter,
     isObservable,
     map,
     merge,
+    type Observable,
     of,
     Subject,
     switchMap,
     take,
 } from 'rxjs';
 
-import type {TuiDialogOptions} from './dialog.options';
+import {type TuiDialogOptions} from './dialog.options';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
 

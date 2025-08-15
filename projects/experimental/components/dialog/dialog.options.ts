@@ -1,7 +1,7 @@
-import type {TuiPopoverContext} from '@taiga-ui/cdk/services';
+import {type TuiPopoverContext} from '@taiga-ui/cdk/services';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {Observable} from 'rxjs';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type Observable} from 'rxjs';
 
 /**
  * Options for a dialog
