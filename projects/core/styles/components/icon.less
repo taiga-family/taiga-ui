@@ -28,7 +28,8 @@ tui-icon {
     border: 0 solid transparent;
     vertical-align: middle;
     box-sizing: border-box;
-    mask: var(--t-icon-bg) no-repeat center / calc(1em + var(--tui-stroke-width, 0.125rem)) 1em;
+    mask: var(--t-icon-bg) no-repeat center / calc(~'min(1em, 100%)' + var(--tui-stroke-width, 0.125rem))
+        ~'min(1em, 100%)' padding-box;
 
     @media @tui-mouse {
         &[data-appearance='icon']:hover {
@@ -42,7 +43,8 @@ tui-icon {
 
         content: '';
         display: block;
-        mask: var(--t-icon) no-repeat center / calc(1em + var(--tui-stroke-width, 0.125rem)) 1em;
+        mask: var(--t-icon) no-repeat center / calc(~'min(1em, 100%)' + var(--tui-stroke-width, 0.125rem))
+            ~'min(1em, 100%)' padding-box;
         background: currentColor;
     }
 

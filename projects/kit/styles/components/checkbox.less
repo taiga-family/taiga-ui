@@ -38,7 +38,7 @@
         font-size: 1rem;
         background: currentColor;
         mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>') no-repeat center /
-            calc(1em + var(--tui-stroke-width, 0.125rem)) 1em;
+            calc(~'min(1em, 100%)' + var(--tui-stroke-width, 0.125rem)) ~'min(1em, 100%)' padding-box;
         transform: scale(0);
         transition:
             transform var(--tui-duration) ease-in-out,
