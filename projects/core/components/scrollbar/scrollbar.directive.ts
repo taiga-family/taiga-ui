@@ -5,10 +5,10 @@ import {
     provideMutationObserverInit,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {distinctUntilChanged, map, merge, scan} from 'rxjs';
+import {map, merge} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -93,69 +93,71 @@ export class TuiScrollbarDirective {
 
     // Event-driven implementation (default)
     private get eventBasedSubscription(): any {
-        return merge(
-            // Dimension changes (size/content) - moderate debounce for performance
-            this.resizeObserverService.pipe(
-                map(() => ({
-                    clientHeight: this.el.clientHeight,
-                    clientWidth: this.el.clientWidth,
-                    scrollHeight: this.el.scrollHeight,
-                    scrollWidth: this.el.scrollWidth,
-                })),
-                // debounceTime(this.debounceMs),
-            ),
-            this.mutationObserverService.pipe(
-                map(() => ({
-                    scrollHeight: this.el.scrollHeight,
-                    scrollWidth: this.el.scrollWidth,
-                    clientHeight: this.el.clientHeight,
-                    clientWidth: this.el.clientWidth,
-                })),
-                // debounceTime(this.debounceMs),
-            ),
-            // Scroll position changes - immediate response with light throttling
-            tuiScrollFrom(this.el).pipe(
-                // throttleTime(this.throttleMs, undefined, {trailing: true}),
-                map(() => ({
-                    scrollTop: this.el.scrollTop,
-                    scrollLeft: this.el.scrollLeft,
-                    clientHeight: this.el.clientHeight,
-                    clientWidth: this.el.clientWidth,
-                    scrollHeight: this.el.scrollHeight,
-                    scrollWidth: this.el.scrollWidth,
-                })),
-            ),
-        )
-            .pipe(
-                scan((prev: ComputedDimension, current: Partial<ComputedDimension>) => {
-                    const next = {...prev, ...current};
-
-                    return next;
-                }, this.initialDimensions),
-                distinctUntilChanged(
-                    (a: ComputedDimension, b: ComputedDimension) =>
-                        a.scrollTop === b.scrollTop &&
-                        a.scrollLeft === b.scrollLeft &&
-                        a.clientHeight === b.clientHeight &&
-                        a.clientWidth === b.clientWidth &&
-                        a.scrollHeight === b.scrollHeight &&
-                        a.scrollWidth === b.scrollWidth,
+        return (
+            merge(
+                // Dimension changes (size/content) - moderate debounce for performance
+                this.resizeObserverService.pipe(
+                    map(() => ({
+                        clientHeight: this.el.clientHeight,
+                        clientWidth: this.el.clientWidth,
+                        scrollHeight: this.el.scrollHeight,
+                        scrollWidth: this.el.scrollWidth,
+                    })),
+                    // debounceTime(this.debounceMs),
                 ),
-                tuiZonefree(),
-                takeUntilDestroyed(),
+                this.mutationObserverService.pipe(
+                    map(() => ({
+                        scrollHeight: this.el.scrollHeight,
+                        scrollWidth: this.el.scrollWidth,
+                        clientHeight: this.el.clientHeight,
+                        clientWidth: this.el.clientWidth,
+                    })),
+                    // debounceTime(this.debounceMs),
+                ),
+                // Scroll position changes - immediate response with light throttling
+                tuiScrollFrom(this.el).pipe(
+                    // throttleTime(this.throttleMs, undefined, {trailing: true}),
+                    map(() => ({
+                        scrollTop: this.el.scrollTop,
+                        scrollLeft: this.el.scrollLeft,
+                        clientHeight: this.el.clientHeight,
+                        clientWidth: this.el.clientWidth,
+                        scrollHeight: this.el.scrollHeight,
+                        scrollWidth: this.el.scrollWidth,
+                    })),
+                ),
             )
-            .subscribe((dimension) => {
-                // const dimension: ComputedDimension = {
-                //     scrollTop: this.el.scrollTop,
-                //     scrollHeight: this.el.scrollHeight,
-                //     clientHeight: this.el.clientHeight,
-                //     scrollLeft: this.el.scrollLeft,
-                //     scrollWidth: this.el.scrollWidth,
-                //     clientWidth: this.el.clientWidth,
-                // };
+                // .pipe(
+                //     scan((prev: ComputedDimension, current: Partial<ComputedDimension>) => {
+                //         const next = {...prev, ...current};
 
-                this.updateThumbStyles(dimension);
-            });
+                //         return next;
+                //     }, this.initialDimensions),
+                //     distinctUntilChanged(
+                //         (a: ComputedDimension, b: ComputedDimension) =>
+                //             a.scrollTop === b.scrollTop &&
+                //             a.scrollLeft === b.scrollLeft &&
+                //             a.clientHeight === b.clientHeight &&
+                //             a.clientWidth === b.clientWidth &&
+                //             a.scrollHeight === b.scrollHeight &&
+                //             a.scrollWidth === b.scrollWidth,
+                //     ),
+                //     tuiZonefree(),
+                //     takeUntilDestroyed(),
+                // )
+                .subscribe(() => {
+                    const dimension: ComputedDimension = {
+                        scrollTop: this.el.scrollTop,
+                        scrollHeight: this.el.scrollHeight,
+                        clientHeight: this.el.clientHeight,
+                        scrollLeft: this.el.scrollLeft,
+                        scrollWidth: this.el.scrollWidth,
+                        clientWidth: this.el.clientWidth,
+                    };
+
+                    this.updateThumbStyles(dimension);
+                })
+        );
     }
 
     private updateThumbStyles(dimension: ComputedDimension): void {
