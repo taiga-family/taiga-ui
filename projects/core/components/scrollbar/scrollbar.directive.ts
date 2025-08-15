@@ -33,22 +33,13 @@ export class TuiScrollbarDirective {
     private readonly style = tuiInjectElement().style;
     private readonly injector = inject(INJECTOR);
 
-    // private readonly initialDimensions: ComputedDimension = {
-    //     scrollTop: this.el.scrollTop,
-    //     scrollLeft: this.el.scrollLeft,
-    //     clientHeight: this.el.clientHeight,
-    //     clientWidth: this.el.clientWidth,
-    //     scrollHeight: this.el.scrollHeight,
-    //     scrollWidth: this.el.scrollWidth,
-    // };
-
     private readonly initialDimensions: ComputedDimension = {
-        clientHeight: 0,
-        clientWidth: 0,
-        scrollHeight: 0,
-        scrollWidth: 0,
-        scrollTop: 0,
-        scrollLeft: 0,
+        scrollTop: this.el.scrollTop,
+        scrollLeft: this.el.scrollLeft,
+        clientHeight: this.el.clientHeight,
+        clientWidth: this.el.clientWidth,
+        scrollHeight: this.el.scrollHeight,
+        scrollWidth: this.el.scrollWidth,
     };
 
     private readonly transformEnabled = false;
