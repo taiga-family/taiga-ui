@@ -58,7 +58,11 @@
         "run-many:publish:libs": "nx run-many --target publish --all --output-style=stream --nxBail",
         "*** LLMS Generation ***": "",
         "generate:llms": "ts-node ./projects/demo/scripts/llms/llms-generate.ts",
-        "generate:llms-full": "ts-node ./projects/demo/scripts/llms/llms-full-generate.ts"
+        "generate:llms-full": "ts-node ./projects/demo/scripts/llms/llms-full-generate.ts",
+        "*** Dead Code Analysis ***": "",
+        "knip": "node scripts/knip.js",
+        "knip:all": "node scripts/knip.js --include files,dependencies,exports",
+        "knip:fix": "node scripts/knip.js --fix"
     },
     "commitlint": {
         "extends": [
@@ -151,6 +155,7 @@
         "cpy-cli": "5.0.0",
         "husky": "9.1.7",
         "jest-preset-angular": "14.6.1",
+        "knip": "^5.62.0",
         "lint-staged": "15.5.2",
         "ng-morph": "4.8.4",
         "ng-packagr": "16.2.3",

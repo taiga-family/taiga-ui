@@ -24,6 +24,22 @@ Make sure your changes pass current tests and also write new tests for the new b
 - `npm test` to run unit tests
 - `npm run test:e2e` to run screenshot tests
 
+## Dead Code Analysis
+
+To find unused files, dependencies, and exports, use knip:
+
+- `npm run knip` to find unused files and dependencies (production focus)
+- `npm run knip:all` to run comprehensive analysis including all types of issues
+- `npm run knip:fix` to automatically fix some issues (use with caution)
+
+Knip helps maintain a clean codebase by identifying:
+- **Unused files**: Files that are never imported
+- **Unused dependencies**: Dependencies listed in package.json but never used
+- **Unlisted dependencies**: Dependencies used in code but not declared in package.json
+- **Unused exports**: Exports that are never imported elsewhere
+
+The configuration excludes demo projects and test files to focus on library code.
+
 ## Pull Request Process
 
 1. We follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.4/) in our commit messages, i.e.
