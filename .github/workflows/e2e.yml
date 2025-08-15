@@ -190,6 +190,33 @@ jobs:
           compression-level: 0
           retention-days: 1
 
+  playwright-cdp-example:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    needs: [build-demo]
+    name: Playwright / CDP example (Chromium)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.144.0
+      - uses: taiga-family/ci/actions/setup/node@v1.144.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.144.0
+      - name: Download cache / ${{ env.CACHE_DIST_KEY }}
+        uses: actions/cache/restore@v4.2.4
+        with:
+          path: dist/demo
+          key: ${{ env.CACHE_DIST_KEY }}
+      - uses: taiga-family/ci/actions/run/serve@v1.144.0
+        with:
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST }}
+          replaceBaseUrl: false
+      - name: Run CDP example (Chromium, logs visible)
+        run: |
+          npx nx e2e demo-playwright -- \
+            --project=chromium \
+            --reporter=list \
+            projects/demo-playwright/tests/perfomance/cdp.pw.spec.ts
+
   # workaround for status checks -- check this one job instead of each individual E2E job in the matrix
   # see https://github.com/orgs/community/discussions/9141#discussioncomment-2296809
   playwright-composite-result:
