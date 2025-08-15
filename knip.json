@@ -1,0 +1,61 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "exclude": ["unresolved"],
+  "entry": [
+    "projects/cdk/src/index.ts",
+    "projects/core/src/index.ts",
+    "projects/kit/src/index.ts", 
+    "projects/layout/src/index.ts",
+    "projects/legacy/src/index.ts",
+    "projects/i18n/src/index.ts",
+    "projects/icons/src/index.ts",
+    "projects/experimental/src/index.ts",
+    "projects/addon-charts/src/index.ts",
+    "projects/addon-commerce/src/index.ts",
+    "projects/addon-doc/src/index.ts",
+    "projects/addon-mobile/src/index.ts",
+    "projects/addon-table/src/index.ts",
+    "projects/taiga-schematics/src/index.ts",
+    "scripts/**/*.ts"
+  ],
+  "project": [
+    "projects/cdk/src/**/*.ts",
+    "projects/cdk/schematics/**/*.ts",
+    "projects/core/src/**/*.ts",
+    "projects/kit/src/**/*.ts",
+    "projects/layout/src/**/*.ts", 
+    "projects/legacy/src/**/*.ts",
+    "projects/i18n/src/**/*.ts",
+    "projects/icons/src/**/*.ts",
+    "projects/experimental/src/**/*.ts",
+    "projects/addon-charts/src/**/*.ts",
+    "projects/addon-commerce/src/**/*.ts",
+    "projects/addon-doc/src/**/*.ts",
+    "projects/addon-mobile/src/**/*.ts",
+    "projects/addon-table/src/**/*.ts",
+    "projects/taiga-schematics/src/**/*.ts",
+    "scripts/**/*.ts"
+  ],
+  "ignore": [
+    "projects/demo/**/*",
+    "projects/demo-cypress/**/*",
+    "projects/demo-playwright/**/*",
+    "projects/**/test/**/*",
+    "projects/**/*.spec.ts",
+    "projects/**/*.cy.ts",
+    "projects/**/tests/**/*",
+    "**/*.d.ts"
+  ],
+  "ignoreDependencies": [
+    "husky",
+    "lint-staged", 
+    "standard-version",
+    "@nx/*",
+    "@angular-devkit/*",
+    "@schematics/*",
+    "cypress*",
+    "playwright*",
+    "jest-preset-angular",
+    "@types/*"
+  ]
+}
