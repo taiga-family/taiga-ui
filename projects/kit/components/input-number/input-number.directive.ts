@@ -13,6 +13,7 @@ import {CHAR_HYPHEN, CHAR_MINUS, TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/co
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
+import {tuiUntracked} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiTextfieldDirective,
     TuiWithTextfield,
@@ -151,6 +152,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         this.postfix.set(x);
     }
 
+    @tuiUntracked
     public override writeValue(value: number | null): void {
         super.writeValue(value);
         this.setValue(this.value());
