@@ -1,0 +1,35 @@
+<header
+    *ngIf="context.label"
+    [id]="context.id"
+    [innerHTML]="context.label"
+></header>
+
+<button
+    *ngIf="context.closable"
+    appearance="neutral"
+    size="s"
+    tuiIconButton
+    type="button"
+    class="t-close"
+    [iconStart]="icons.close"
+    [style.border-radius.%]="100"
+    (click)="close$.next()"
+    (mousedown.prevent.zoneless)="(0)"
+>
+    {{ close() }}
+</button>
+
+<ng-container *polymorpheusOutlet="context.content as text; context: context">
+    <p [innerHTML]="text"></p>
+    <footer *ngIf="context.closable || context.dismissible">
+        <button
+            size="m"
+            tuiAutoFocus
+            tuiButton
+            type="button"
+            (click)="context.$implicit.complete()"
+        >
+            {{ context.data || 'OK' }}
+        </button>
+    </footer>
+</ng-container>

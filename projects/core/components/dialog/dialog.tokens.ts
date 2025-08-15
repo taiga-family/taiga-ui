@@ -22,6 +22,7 @@ export const TUI_DIALOG_DEFAULT_OPTIONS: TuiDialogOptions<void> = {
 
 /**
  * A stream to close dialogs
+ * TODO: use router.events in v5
  */
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
     ngDevMode ? 'TUI_DIALOGS_CLOSE' : '',

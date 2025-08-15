@@ -18,7 +18,7 @@
     &::before {
         content: '';
         display: block;
-        block-size: 1000%;
+        block-size: 200%;
     }
 }
 
@@ -44,6 +44,12 @@
     position: sticky;
     overscroll-behavior: none;
     filter: brightness(0.25);
+
+    //TODO: Make default in v5
+    &:has(tui-dialog[new]) {
+        display: grid;
+        place-items: center;
+    }
 }
 
 .t-overlay {
