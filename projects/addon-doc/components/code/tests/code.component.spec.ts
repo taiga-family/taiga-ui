@@ -54,7 +54,7 @@ describe('TuiDocCodeComponent', () => {
         expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">5</span>;</code>
     <div class="t-code-actions">
-        <button tuiappearance="" tuiicons="" tuiiconbutton="" type="button" appearance="outline-grayscale" size="s" class="t-copy-button" data-appearance="outline-grayscale" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="s">
+        <button tuiappearance="" tuiicons="" tuiiconbutton="" type="button" appearance="outline-grayscale" size="s" class="t-copy-button" data-appearance="outline-grayscale" data-icon-start="svg" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="s">
             Copy
         </button>
 \t
@@ -71,7 +71,7 @@ describe('TuiDocCodeComponent', () => {
         expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">10</span>;</code>
     <div class="t-code-actions">
-        <button tuiappearance="" tuiicons="" tuiiconbutton="" type="button" appearance="outline-grayscale" size="s" class="t-copy-button" data-appearance="outline-grayscale" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="s">
+        <button tuiappearance="" tuiicons="" tuiiconbutton="" type="button" appearance="outline-grayscale" size="s" class="t-copy-button" data-appearance="outline-grayscale" data-icon-start="svg" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="s">
             Copy
         </button>
 \t
@@ -90,7 +90,7 @@ describe('TuiDocCodeComponent', () => {
         expect(fixture.nativeElement.querySelector('.t-code')?.innerHTML.trim()).toEqual(
             `<code class="hljs"><span class="hljs-keyword">const</span> a = <span class="hljs-number">15</span>;</code>
     <div class="t-code-actions">
-        <button tuiappearance="" tuiicons="" tuiiconbutton="" type="button" appearance="outline-grayscale" size="s" class="t-copy-button" data-appearance="outline-grayscale" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="s">
+        <button tuiappearance="" tuiicons="" tuiiconbutton="" type="button" appearance="outline-grayscale" size="s" class="t-copy-button" data-appearance="outline-grayscale" data-icon-start="svg" style="--t-icon-start: url(assets/taiga-ui/icons/copy.svg);" data-size="s">
             Copy
         </button>
 \t
