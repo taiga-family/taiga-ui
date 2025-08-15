@@ -134,8 +134,12 @@ export class TuiInputTimeDirective
     }
 
     public override writeValue(value: TuiTime | null): void {
-        super.writeValue(value);
-        this.textfield.value.set(this.stringify(this.value()));
+        const reset = this.control.pristine && this.control.untouched && !value;
+
+        if (value !== this.value() || reset) {
+            super.writeValue(value);
+            this.textfield.value.set(this.stringify(this.value()));
+        }
     }
 
     protected onInput(valueWithAffixes: string): void {
