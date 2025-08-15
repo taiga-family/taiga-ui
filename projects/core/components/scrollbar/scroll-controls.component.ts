@@ -40,8 +40,8 @@ export class TuiScrollControls {
 
     private readonly injector = inject(INJECTOR);
 
-    private readonly scDebounceMs = 100;
-    private readonly scThrottleMs = 8;
+    private readonly scDebounceMs = 0;
+    private readonly scThrottleMs = 0;
 
     private readonly resizeObserverService = Injector.create({
         providers: [
