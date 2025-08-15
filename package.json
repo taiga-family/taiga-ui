@@ -146,7 +146,7 @@
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
         "@types/markdown-it": "14.1.2",
-        "@types/node": "22.17.1",
+        "@types/node": "22.17.2",
         "@types/webpack-env": "1.18.8",
         "cpy-cli": "5.0.0",
         "husky": "9.1.7",
