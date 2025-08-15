@@ -15,14 +15,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {
-    debounceTime,
-    distinctUntilChanged,
-    map,
-    merge,
-    startWith,
-    throttleTime,
-} from 'rxjs';
+import {distinctUntilChanged, map, merge, startWith} from 'rxjs';
 
 import {TuiScrollbarDirective} from './scrollbar.directive';
 import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
@@ -39,9 +32,6 @@ export class TuiScrollControls {
     private readonly scrollRef: HTMLElement = inject(TUI_SCROLL_REF).nativeElement;
 
     private readonly injector = inject(INJECTOR);
-
-    private readonly scDebounceMs = 0;
-    private readonly scThrottleMs = 0;
 
     private readonly resizeObserverService = Injector.create({
         providers: [
@@ -73,15 +63,15 @@ export class TuiScrollControls {
     // Event-driven implementation
     private readonly eventBasedRefresh$ = merge(
         this.resizeObserverService.pipe(
-            debounceTime(this.scDebounceMs),
+            // debounceTime(this.scDebounceMs),
             map(() => null),
         ),
         this.mutationObserverService.pipe(
-            debounceTime(this.scDebounceMs),
+            // debounceTime(this.scDebounceMs),
             map(() => null),
         ),
         tuiTypedFromEvent(this.scrollRef, 'scroll').pipe(
-            throttleTime(this.scThrottleMs),
+            // throttleTime(this.scThrottleMs),
             map(() => null),
         ),
     ).pipe(

@@ -5,18 +5,10 @@ import {
     provideMutationObserverInit,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {
-    debounceTime,
-    distinctUntilChanged,
-    map,
-    merge,
-    type Observable,
-    scan,
-    throttleTime,
-} from 'rxjs';
+import {map, merge, scan} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -37,7 +29,20 @@ interface ComputedDimension {
     providers: [TuiScrollbarService],
 })
 export class TuiScrollbarDirective {
-    private static readonly initialDimensions: ComputedDimension = {
+    private readonly el = inject(TUI_SCROLL_REF).nativeElement;
+    private readonly style = tuiInjectElement().style;
+    private readonly injector = inject(INJECTOR);
+
+    // private readonly initialDimensions: ComputedDimension = {
+    //     scrollTop: this.el.scrollTop,
+    //     scrollLeft: this.el.scrollLeft,
+    //     clientHeight: this.el.clientHeight,
+    //     clientWidth: this.el.clientWidth,
+    //     scrollHeight: this.el.scrollHeight,
+    //     scrollWidth: this.el.scrollWidth,
+    // };
+
+    private readonly initialDimensions: ComputedDimension = {
         clientHeight: 0,
         clientWidth: 0,
         scrollHeight: 0,
@@ -46,13 +51,7 @@ export class TuiScrollbarDirective {
         scrollLeft: 0,
     };
 
-    private readonly el = inject(TUI_SCROLL_REF).nativeElement;
-    private readonly style = tuiInjectElement().style;
-    private readonly injector = inject(INJECTOR);
-
-    private readonly transformEnabled = true;
-    private readonly debounceMs = 0;
-    private readonly throttleMs = 0;
+    private readonly transformEnabled = false;
 
     private readonly resizeObserverService = Injector.create({
         providers: [
@@ -103,61 +102,68 @@ export class TuiScrollbarDirective {
 
     // Event-driven implementation (default)
     private get eventBasedSubscription(): any {
-        return (
-            merge(
-                // Dimension changes (size/content) - moderate debounce for performance
-                this.resizeObserverService.pipe(
-                    map(() => ({
-                        clientHeight: this.el.clientHeight,
-                        clientWidth: this.el.clientWidth,
-                        scrollHeight: this.el.scrollHeight,
-                        scrollWidth: this.el.scrollWidth,
-                    })),
-                    debounceTime(this.debounceMs),
-                ),
-                this.mutationObserverService.pipe(
-                    map(() => ({
-                        scrollHeight: this.el.scrollHeight,
-                        scrollWidth: this.el.scrollWidth,
-                        clientHeight: this.el.clientHeight,
-                        clientWidth: this.el.clientWidth,
-                    })),
-                    debounceTime(this.debounceMs),
-                ),
-                // Scroll position changes - immediate response with light throttling
-                tuiScrollFrom(this.el).pipe(
-                    throttleTime(this.throttleMs, undefined, {trailing: true}),
-                    map(() => ({
-                        scrollTop: this.el.scrollTop,
-                        scrollLeft: this.el.scrollLeft,
-                        // Also update dimensions on scroll to ensure freshness
-                        clientHeight: this.el.clientHeight,
-                        clientWidth: this.el.clientWidth,
-                        scrollHeight: this.el.scrollHeight,
-                        scrollWidth: this.el.scrollWidth,
-                    })),
-                ),
-            ) as Observable<Partial<ComputedDimension>>
+        return merge(
+            // Dimension changes (size/content) - moderate debounce for performance
+            this.resizeObserverService.pipe(
+                map(() => ({
+                    clientHeight: this.el.clientHeight,
+                    clientWidth: this.el.clientWidth,
+                    scrollHeight: this.el.scrollHeight,
+                    scrollWidth: this.el.scrollWidth,
+                })),
+                // debounceTime(this.debounceMs),
+            ),
+            this.mutationObserverService.pipe(
+                map(() => ({
+                    scrollHeight: this.el.scrollHeight,
+                    scrollWidth: this.el.scrollWidth,
+                    clientHeight: this.el.clientHeight,
+                    clientWidth: this.el.clientWidth,
+                })),
+                // debounceTime(this.debounceMs),
+            ),
+            // Scroll position changes - immediate response with light throttling
+            tuiScrollFrom(this.el).pipe(
+                // throttleTime(this.throttleMs, undefined, {trailing: true}),
+                map(() => ({
+                    scrollTop: this.el.scrollTop,
+                    scrollLeft: this.el.scrollLeft,
+                    clientHeight: this.el.clientHeight,
+                    clientWidth: this.el.clientWidth,
+                    scrollHeight: this.el.scrollHeight,
+                    scrollWidth: this.el.scrollWidth,
+                })),
+            ),
         )
             .pipe(
+                // map((dimension) => dimension),
                 scan((prev: ComputedDimension, current: Partial<ComputedDimension>) => {
                     const next = {...prev, ...current};
 
                     return next;
-                }, TuiScrollbarDirective.initialDimensions),
-                distinctUntilChanged(
-                    (a: ComputedDimension, b: ComputedDimension) =>
-                        a.scrollTop === b.scrollTop &&
-                        a.scrollLeft === b.scrollLeft &&
-                        a.clientHeight === b.clientHeight &&
-                        a.clientWidth === b.clientWidth &&
-                        a.scrollHeight === b.scrollHeight &&
-                        a.scrollWidth === b.scrollWidth,
-                ),
-                tuiZonefree(),
+                }, this.initialDimensions),
+                // distinctUntilChanged(
+                //     (a: ComputedDimension, b: ComputedDimension) =>
+                //         a.scrollTop === b.scrollTop &&
+                //         a.scrollLeft === b.scrollLeft &&
+                //         a.clientHeight === b.clientHeight &&
+                //         a.clientWidth === b.clientWidth &&
+                //         a.scrollHeight === b.scrollHeight &&
+                //         a.scrollWidth === b.scrollWidth,
+                // ),
+                // tuiZonefree(),
                 takeUntilDestroyed(),
             )
             .subscribe((dimension) => {
+                // const dimension: ComputedDimension = {
+                //     scrollTop: this.el.scrollTop,
+                //     scrollHeight: this.el.scrollHeight,
+                //     clientHeight: this.el.clientHeight,
+                //     scrollLeft: this.el.scrollLeft,
+                //     scrollWidth: this.el.scrollWidth,
+                //     clientWidth: this.el.clientWidth,
+                // };
+
                 this.updateThumbStyles(dimension);
             });
     }
@@ -185,8 +191,9 @@ export class TuiScrollbarDirective {
         } else {
             // Fallback to top/left + size updates
             (this.style as any).willChange = '';
-            const thumb = `${(clampedThumb * 100).toFixed(2)}%`;
-            const view = `${(viewValue * 100).toFixed(2)}%`;
+
+            const thumb = `${this.getThumb(dimension) * 100}%`;
+            const view = `${this.getView(dimension) * 100}%`;
 
             if (this.tuiScrollbar === 'vertical') {
                 this.style.top = thumb;
