@@ -8,8 +8,26 @@
         inline-size: 0.57em;
         block-size: 0.57em;
         transform: translate(50%, 50%);
-        mask: var(--t-icon-badge) no-repeat center/contain;
+    }
+
+    &[data-icon='svg']::before {
         background: currentColor;
+        mask: var(--t-icon-badge) no-repeat center/contain;
+    }
+
+    &[data-icon='image']::before {
+        background: var(--t-icon-badge) no-repeat center/contain;
+    }
+
+    &[data-icon='font']::before {
+        content: var(--t-icon-badge);
+        right: 0.25em;
+        bottom: 0.25em;
+        font: 0.57em/1 var(--tui-font-icon, inherit);
+        text-align: center;
+        text-transform: none;
+        inline-size: 1em;
+        block-size: 1em;
     }
 
     &[style*='--t-icon-badge:']::after {
@@ -17,5 +35,9 @@
             var(--t-icon),
             radial-gradient(circle at bottom 0.1em right 0.1em, transparent calc(0.4em - 0.5px), #000 0.4em);
         mask-composite: intersect;
+    }
+
+    &[data-icon='font'][style*='--t-icon-badge:']::after {
+        mask-image: radial-gradient(circle at bottom 0.1em right 0.1em, transparent calc(0.4em - 0.5px), #000 0.4em);
     }
 }
