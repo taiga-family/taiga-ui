@@ -813,7 +813,6 @@ class ResultsManager {
 // Test Suite
 // ========================================================================================
 
-// eslint-disable-next-line
 test.describe.skip(
     'TuiScrollbar Performance Analysis @scrollbar',
     {tag: '@scrollbar'},
