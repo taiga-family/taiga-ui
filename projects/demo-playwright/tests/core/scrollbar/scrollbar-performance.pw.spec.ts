@@ -813,7 +813,6 @@ class ResultsManager {
 // Test Suite
 // ========================================================================================
 
-// eslint-disable-next-line playwright/no-skipped-test
 test.describe.skip(
     'TuiScrollbar Performance Analysis @scrollbar',
     {tag: '@scrollbar'},
@@ -832,7 +831,6 @@ test.describe.skip(
         test.setTimeout(CONFIG.runsPerVariant * PER_RUN_MS);
 
         test.beforeEach(async ({page, browserName}) => {
-            // eslint-disable-next-line playwright/no-skipped-test
             test.skip(browserName !== 'chromium', 'Perf/CDP suite runs only on Chromium');
             await page.goto(CONFIG.baseUrl);
             await page.waitForLoadState('networkidle');
