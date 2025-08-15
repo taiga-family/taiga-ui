@@ -51,8 +51,8 @@ export class TuiScrollbarDirective {
     private readonly injector = inject(INJECTOR);
 
     private readonly transformEnabled = true;
-    private readonly debounceMs = 100;
-    private readonly throttleMs = 8;
+    private readonly debounceMs = 0;
+    private readonly throttleMs = 0;
 
     private readonly resizeObserverService = Injector.create({
         providers: [
