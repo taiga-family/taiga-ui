@@ -1,10 +1,9 @@
-import type {Signal} from '@angular/core';
-import {computed, Directive, signal} from '@angular/core';
+import {computed, Directive, type Signal, signal} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 
-import type {TuiCheckboxRowDirective} from './checkbox-row.directive';
+import {type TuiCheckboxRowDirective} from './checkbox-row.directive';
 
 @Directive({
     standalone: true,
