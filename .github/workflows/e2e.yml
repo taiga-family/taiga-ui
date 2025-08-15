@@ -72,10 +72,7 @@ jobs:
       - name: Run tests for current state
         run: npx nx component-test demo-cypress
 
-      - name: Prepare diff screenshots
-        run: |
-          npm install canvas --no-save --silent --force
-          npx ts-node -e "import { tuiCombineCypressFailedScreenshots as run } from './projects/testing/visual-testing'; run();";
+      - uses: taiga-family/ci/actions/setup/cypress-combine-failed-screenshot@v1.144.0
 
       - name: Debug output
         continue-on-error: true
@@ -168,10 +165,7 @@ jobs:
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
 
-      - name: Combine images to get diff reports
-        run: |
-          npm install canvas --no-save --silent --force
-          npx ts-node -e "import { tuiCombinePlaywrightFailedScreenshots as run } from './projects/testing/visual-testing'; run();";
+      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.144.0
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v4.6.2
@@ -270,16 +264,9 @@ jobs:
           report-file: ./all-blob-reports/results.json
           report-url: ${{ steps.e2e-report.outputs.details_url }}
 
-      - name: Check if diff-output exists
-        id: diff_checker
-        run: |
-          echo "diff_exist=$(find ./total -iname '*.diff.png' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
-
-      - name: Fall with an error if diff-output exists
-        if: ${{ steps.diff_checker.outputs.diff_exist != '0' }}
-        run: |
-          find ./total -iname '*.diff.png' -exec echo "{}" \;
-          exit 1
+      - uses: taiga-family/ci/actions/setup/playwright-diff-check@v1.144.0
+        with:
+          pw-result: ./total
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
