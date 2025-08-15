@@ -18,6 +18,7 @@
     tuiTable
     [size]="size"
     [style.width.rem]="58"
+    [(ngModel)]="selected"
 >
     <thead>
         <tr>
@@ -25,10 +26,9 @@
                 <div [tuiCell]="size">
                     <input
                         tuiCheckbox
+                        tuiCheckboxTable
                         type="checkbox"
-                        [ngModel]="checked"
                         [size]="size === 'l' ? 'm' : 's'"
-                        (ngModelChange)="onCheck($event)"
                     />
                     <span tuiTitle>Checkbox</span>
                 </div>
@@ -54,7 +54,7 @@
                         tuiCheckbox
                         type="checkbox"
                         [size]="size === 'l' ? 'm' : 's'"
-                        [(ngModel)]="item.selected"
+                        [tuiCheckboxRow]="item"
                     />
                     <span tuiTitle>
                         {{ item.checkbox.title }}
