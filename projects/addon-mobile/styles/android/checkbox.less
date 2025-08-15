@@ -30,9 +30,8 @@ input[tuiCheckbox] {
     }
 
     &::before {
-        inline-size: 1rem;
-        block-size: 1rem;
-        mask-image: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 13L1 8.19231L2.4 6.84615L6 10.3077L13.6 3L15 4.34615L6 13Z" fill="black"/></svg>');
+        mask: url('data:image/svg+xml,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 13L1 8.19231L2.4 6.84615L6 10.3077L13.6 3L15 4.34615L6 13Z" fill="black"/></svg>')
+            no-repeat center / 1rem;
         transition:
             clip-path var(--tui-duration) ease-in-out,
             mask 0s var(--tui-duration) ease-in-out;
