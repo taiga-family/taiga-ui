@@ -99,6 +99,12 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     public readonly start = computed(() => this.toPercent(this.value()[0]));
     public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
 
+    /**
+     * TODO(v5): standardize logic between `TuiSlider` & `TuiInputSlider` & `Range` & `InputRange`
+     * For non-linear slider (with `[keySteps]` property) `step` means percentage
+     */
+    public legacyMode = true;
+
     public ngOnChanges(): void {
         this.changes.update((x) => x + 1);
     }
@@ -113,6 +119,15 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
         this.lastActiveThumb = end ? 'end' : 'start';
     }
 
+    public takeStep(coefficients: readonly [number, number]): readonly [number, number] {
+        return this.value().map((value, i) => {
+            const fraction = this.toPercent(value) / 100;
+            const newFractionValue = fraction + coefficients[i]! * this.fractionStep;
+
+            return this.toValue(newFractionValue);
+        }) as [number, number];
+    }
+
     public toValue(fraction: number): number {
         return tuiPercentageToKeyStepValue(
             tuiClamp(tuiQuantize(fraction, this.fractionStep), 0, 1) * 100,
@@ -121,7 +136,9 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     }
 
     protected get fractionStep(): number {
-        return this.step / (this.max - this.min);
+        return this.legacyMode || !this.keySteps
+            ? this.step / (this.max - this.min)
+            : this.step / 100;
     }
 
     protected get computedKeySteps(): TuiKeySteps {
@@ -138,16 +155,12 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
 
     protected changeByStep(coefficient: number, target: HTMLElement): void {
         const [startThumb, endThumb] = this.slidersRefs.map((x) => x?.nativeElement);
-
         const isEndThumb =
             target === this.el ? this.lastActiveThumb === 'end' : target === endThumb;
         const activeThumbElement = isEndThumb ? endThumb : startThumb;
-        const previousValue = this.value()[isEndThumb ? 1 : 0];
-        /** @bad TODO think about a solution without twice conversion */
-        const previousFraction = this.toPercent(previousValue) / 100;
-        const newFractionValue = previousFraction + coefficient * this.fractionStep;
+        const newValue = this.takeStep(isEndThumb ? [0, coefficient] : [coefficient, 0]);
 
-        this.processValue(this.toValue(newFractionValue), isEndThumb);
+        this.processValue(newValue[isEndThumb ? 1 : 0], isEndThumb);
         activeThumbElement?.focus();
     }
 
