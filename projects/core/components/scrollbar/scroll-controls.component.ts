@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -7,13 +7,14 @@ import {
     INJECTOR,
     Injector,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
     provideMutationObserverInit,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {distinctUntilChanged, map, merge, startWith} from 'rxjs';
 
@@ -23,7 +24,7 @@ import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
 @Component({
     standalone: true,
     selector: 'tui-scroll-controls',
-    imports: [AsyncPipe, NgIf, TuiAnimated, TuiScrollbarDirective],
+    imports: [NgIf, TuiAnimated, TuiScrollbarDirective],
     templateUrl: './scroll-controls.template.html',
     styleUrls: ['./scroll-controls.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -60,27 +61,20 @@ export class TuiScrollControls {
         parent: this.injector,
     }).get(MutationObserverService);
 
-    // Event-driven implementation
     protected readonly refresh$ = merge(
-        this.resizeObserverService.pipe(
-            // debounceTime(50),
-            map(() => null),
-        ),
-        this.mutationObserverService.pipe(
-            // debounceTime(50),
-            map(() => null),
-        ),
-        tuiTypedFromEvent(this.scrollRef, 'scroll').pipe(
-            // throttleTime(16),
-            map(() => null),
-        ),
+        this.resizeObserverService.pipe(map(() => null)),
+        this.mutationObserverService.pipe(map(() => null)),
+        tuiTypedFromEvent(this.scrollRef, 'scroll').pipe(map(() => null)),
     ).pipe(
-        // throttleTime(50, tuiZonefreeScheduler()),
         map(() => this.scrollbars),
         startWith([false, false] as [boolean, boolean]),
         distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
-        // tuiZoneOptimized(),
+        tuiZoneOptimized(),
     );
+
+    protected readonly refresh = toSignal(this.refresh$, {
+        initialValue: [false, false] as [boolean, boolean],
+    });
 
     protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
 

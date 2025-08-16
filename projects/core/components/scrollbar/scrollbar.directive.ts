@@ -71,7 +71,6 @@ export class TuiScrollbarDirective {
         parent: this.injector,
     }).get(MutationObserverService);
 
-    // Subscriptions should be declared before decorated public fields (lint order)
     protected readonly scrollSub = inject(TuiScrollbarService)
         .pipe(takeUntilDestroyed())
         .subscribe(([top, left]) => {
@@ -91,11 +90,9 @@ export class TuiScrollbarDirective {
     @Input()
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
-    // Event-driven implementation (default)
     private get eventBasedSubscription(): any {
         return (
             merge(
-                // Dimension changes (size/content) - moderate debounce for performance
                 this.resizeObserverService.pipe(
                     map(() => ({
                         clientHeight: this.el.clientHeight,
@@ -114,7 +111,6 @@ export class TuiScrollbarDirective {
                     })),
                     // debounceTime(this.debounceMs),
                 ),
-                // Scroll position changes - immediate response with light throttling
                 tuiScrollFrom(this.el).pipe(
                     // throttleTime(this.throttleMs, undefined, {trailing: true}),
                     map(() => ({
