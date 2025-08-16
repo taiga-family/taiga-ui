@@ -79,7 +79,7 @@ export class TuiScrollControls {
             map(() => null),
         ),
     ).pipe(
-        throttleTime(16, tuiZonefreeScheduler()),
+        throttleTime(50, tuiZonefreeScheduler()),
         map(() => this.scrollbars),
         startWith([false, false] as [boolean, boolean]),
         distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
