@@ -176,7 +176,12 @@ export class TuiTextfieldBaseComponent<T>
         }
 
         this.open.update((open) => !open);
-        this.input?.nativeElement.showPicker?.();
+
+        try {
+            this.input?.nativeElement.showPicker?.();
+        } catch {
+            // Ignore showPicker errors (e.g., cross-origin iframe restrictions)
+        }
     }
 
     protected onScroll(element: HTMLElement): void {
