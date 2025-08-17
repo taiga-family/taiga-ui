@@ -16,7 +16,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {distinctUntilChanged, map, merge, startWith} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map, merge, startWith} from 'rxjs';
 
 import {TuiScrollbarDirective} from './scrollbar.directive';
 import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
@@ -62,8 +62,14 @@ export class TuiScrollControls {
     }).get(MutationObserverService);
 
     protected readonly refresh$ = merge(
-        this.resizeObserverService.pipe(map(() => null)),
-        this.mutationObserverService.pipe(map(() => null)),
+        this.resizeObserverService.pipe(
+            map(() => null),
+            debounceTime(100),
+        ),
+        this.mutationObserverService.pipe(
+            map(() => null),
+            debounceTime(100),
+        ),
         tuiTypedFromEvent(this.scrollRef, 'scroll').pipe(map(() => null)),
     ).pipe(
         map(() => this.scrollbars),

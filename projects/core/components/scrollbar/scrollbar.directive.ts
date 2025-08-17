@@ -5,10 +5,10 @@ import {
     provideMutationObserverInit,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
+import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {map, merge} from 'rxjs';
+import {debounceTime, map, merge, throttleTime} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -71,6 +71,19 @@ export class TuiScrollbarDirective {
         parent: this.injector,
     }).get(MutationObserverService);
 
+    private readonly resizeAndMutation$ = merge(
+        this.resizeObserverService,
+        this.mutationObserverService,
+    ).pipe(
+        debounceTime(100),
+        map(() => this.getDimensions()),
+    );
+
+    private readonly scroll$ = tuiScrollFrom(this.el).pipe(
+        throttleTime(16, undefined, {trailing: true}),
+        map(() => this.getDimensions()),
+    );
+
     protected readonly scrollSub = inject(TuiScrollbarService)
         .pipe(takeUntilDestroyed())
         .subscribe(([top, left]) => {
@@ -85,75 +98,36 @@ export class TuiScrollbarDirective {
             this.el.style.scrollBehavior = '';
         });
 
-    protected readonly styleSub = this.eventBasedSubscription;
+    protected readonly styleSub = merge(this.resizeAndMutation$, this.scroll$)
+        .pipe(
+            // scan((prev: ComputedDimension, current: Partial<ComputedDimension>) => ({ ...prev, ...current }), this.initialDimensions),
+            // distinctUntilChanged((a, b) =>
+            //     a.scrollTop === b.scrollTop &&
+            //     a.scrollLeft === b.scrollLeft &&
+            //     a.clientHeight === b.clientHeight &&
+            //     a.clientWidth === b.clientWidth &&
+            //     a.scrollHeight === b.scrollHeight &&
+            //     a.scrollWidth === b.scrollWidth
+            // ),
+            tuiZonefree(),
+            takeUntilDestroyed(),
+        )
+        .subscribe((dimension) => {
+            this.updateThumbStyles(dimension);
+        });
 
     @Input()
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
-    private get eventBasedSubscription(): any {
-        return (
-            merge(
-                this.resizeObserverService.pipe(
-                    map(() => ({
-                        clientHeight: this.el.clientHeight,
-                        clientWidth: this.el.clientWidth,
-                        scrollHeight: this.el.scrollHeight,
-                        scrollWidth: this.el.scrollWidth,
-                    })),
-                    // debounceTime(this.debounceMs),
-                ),
-                this.mutationObserverService.pipe(
-                    map(() => ({
-                        scrollHeight: this.el.scrollHeight,
-                        scrollWidth: this.el.scrollWidth,
-                        clientHeight: this.el.clientHeight,
-                        clientWidth: this.el.clientWidth,
-                    })),
-                    // debounceTime(this.debounceMs),
-                ),
-                tuiScrollFrom(this.el).pipe(
-                    // throttleTime(this.throttleMs, undefined, {trailing: true}),
-                    map(() => ({
-                        scrollTop: this.el.scrollTop,
-                        scrollLeft: this.el.scrollLeft,
-                        clientHeight: this.el.clientHeight,
-                        clientWidth: this.el.clientWidth,
-                        scrollHeight: this.el.scrollHeight,
-                        scrollWidth: this.el.scrollWidth,
-                    })),
-                ),
-            )
-                // .pipe(
-                //     scan((prev: ComputedDimension, current: Partial<ComputedDimension>) => {
-                //         const next = {...prev, ...current};
-
-                //         return next;
-                //     }, this.initialDimensions),
-                //     distinctUntilChanged(
-                //         (a: ComputedDimension, b: ComputedDimension) =>
-                //             a.scrollTop === b.scrollTop &&
-                //             a.scrollLeft === b.scrollLeft &&
-                //             a.clientHeight === b.clientHeight &&
-                //             a.clientWidth === b.clientWidth &&
-                //             a.scrollHeight === b.scrollHeight &&
-                //             a.scrollWidth === b.scrollWidth,
-                //     ),
-                //     tuiZonefree(),
-                //     takeUntilDestroyed(),
-                // )
-                .subscribe(() => {
-                    const dimension: ComputedDimension = {
-                        scrollTop: this.el.scrollTop,
-                        scrollHeight: this.el.scrollHeight,
-                        clientHeight: this.el.clientHeight,
-                        scrollLeft: this.el.scrollLeft,
-                        scrollWidth: this.el.scrollWidth,
-                        clientWidth: this.el.clientWidth,
-                    };
-
-                    this.updateThumbStyles(dimension);
-                })
-        );
+    private getDimensions(): ComputedDimension {
+        return {
+            clientHeight: this.el.clientHeight,
+            clientWidth: this.el.clientWidth,
+            scrollHeight: this.el.scrollHeight,
+            scrollWidth: this.el.scrollWidth,
+            scrollTop: this.el.scrollTop,
+            scrollLeft: this.el.scrollLeft,
+        };
     }
 
     private updateThumbStyles(dimension: ComputedDimension): void {
