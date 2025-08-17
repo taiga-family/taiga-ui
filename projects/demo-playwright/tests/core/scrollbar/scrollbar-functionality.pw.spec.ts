@@ -48,6 +48,7 @@ test.describe('TuiScrollbar - Functionality Suite @scrollbar', () => {
 
             // Check if thumb is visible - it might not be if content doesn't overflow
             const thumbCount = await thumb.count();
+
             if (thumbCount > 0) {
                 await expect(thumb.first()).toBeVisible();
             }
@@ -78,6 +79,7 @@ test.describe('TuiScrollbar - Functionality Suite @scrollbar', () => {
 
             // Check if horizontal thumb exists
             const thumbCount = await horizontalThumb.count();
+
             if (thumbCount > 0) {
                 await expect(horizontalThumb.first()).toBeVisible();
             }
@@ -133,10 +135,13 @@ test.describe('TuiScrollbar - Functionality Suite @scrollbar', () => {
 
             // Check if scrollbar thumb exists
             const thumbCount = await scrollbar.count();
+
             if (thumbCount === 0) {
                 // If no thumb, try to find any scrollbar content to verify scrollbar exists
                 await expect(scrollbarElement).toBeVisible();
+                // eslint-disable-next-line no-console
                 console.log('No thumb visible - content may not overflow');
+
                 return; // Skip this test if no scrollable content
             }
 
@@ -231,7 +236,9 @@ test.describe('TuiScrollbar - Functionality Suite @scrollbar', () => {
 
                 // Check if scrollbar exists
                 const thumbCount = await scrollbarElement.locator('.t-thumb').count();
+
                 if (thumbCount === 0) {
+                    // eslint-disable-next-line no-console
                     console.log(`${name}: No thumb visible - content may not overflow`);
                     continue; // Skip if no scrollable content
                 }
@@ -330,13 +337,17 @@ test.describe('TuiScrollbar - Functionality Suite @scrollbar', () => {
 
             // Verify scrollbar is still functional
             const thumbCount = await scrollbar.count();
+
             if (thumbCount > 0) {
                 await expect(scrollbar.first()).toBeVisible();
                 const finalSize = await scrollbar.first().boundingBox();
+
                 expect(finalSize?.height).toBeGreaterThan(10);
             } else {
                 // If no thumb, just verify scrollbar element exists
                 await expect(scrollbarElement).toBeVisible();
+
+                // eslint-disable-next-line no-console
                 console.log('No thumb visible after resize - content may not overflow');
             }
 

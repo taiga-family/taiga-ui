@@ -42,6 +42,7 @@ export class PerformanceCollector {
      */
     public static async startTestCollection(page: Page, testName: string): Promise<void> {
         try {
+            // eslint-disable-next-line no-console
             console.log(`🎯 Starting CDP tracing for test: ${testName}`);
 
             const client = await page.context().newCDPSession(page);
@@ -74,6 +75,7 @@ export class PerformanceCollector {
                 startTime: Date.now(),
             });
 
+            // eslint-disable-next-line no-console
             console.log(`✅ Performance collection started for test: ${testName}`);
         } catch (error) {
             console.warn(
@@ -96,6 +98,7 @@ export class PerformanceCollector {
                 return;
             }
 
+            // eslint-disable-next-line no-console
             console.log(`🛑 Stopping CDP tracing for test: ${testName}`);
 
             // Stop tracing and wait for completion
@@ -117,6 +120,7 @@ export class PerformanceCollector {
                 collection.startTime,
             );
 
+            // eslint-disable-next-line no-console
             console.log(`📊 Test performance metrics for [${testName}]:`, {
                 layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
                 recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
@@ -138,6 +142,7 @@ export class PerformanceCollector {
      */
     public static async capturePageLoadMetrics(page: Page, url: string): Promise<void> {
         try {
+            // eslint-disable-next-line no-console
             console.log('🎯 Starting CDP tracing for page load metrics...');
 
             const client = await page.context().newCDPSession(page);
@@ -180,6 +185,7 @@ export class PerformanceCollector {
             // Save metrics to file
             await this.saveMetrics(metrics, url);
 
+            // eslint-disable-next-line no-console
             console.log('📊 CDP tracing metrics collected:', {
                 layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
                 recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
@@ -204,6 +210,7 @@ export class PerformanceCollector {
             const scrollbarCount = await scrollbars.count();
 
             if (scrollbarCount > 0) {
+                // eslint-disable-next-line no-console
                 console.log(
                     `🔍 Found ${scrollbarCount} scrollbar elements, testing interactions...`,
                 );
@@ -247,6 +254,7 @@ export class PerformanceCollector {
                 // Trigger style recalc by reading computed styles
                 const computed = window.getComputedStyle(testDiv);
 
+                // eslint-disable-next-line no-console
                 console.log('Test element computed height:', computed.height);
 
                 // Modify styles to trigger recalc
@@ -256,6 +264,7 @@ export class PerformanceCollector {
                 // Force layout by reading dimensions
                 const rect = testDiv.getBoundingClientRect();
 
+                // eslint-disable-next-line no-console
                 console.log('Test element rect:', rect.width, rect.height);
 
                 // Clean up
@@ -345,6 +354,7 @@ export class PerformanceCollector {
         );
 
         await writeFile(outputPath, JSON.stringify(performanceData, null, 2));
+        // eslint-disable-next-line no-console
         console.log(`💾 Test performance data saved to: ${filename}`);
     }
 
@@ -376,6 +386,7 @@ export class PerformanceCollector {
         );
 
         await writeFile(outputPath, JSON.stringify(performanceData, null, 2));
+        // eslint-disable-next-line no-console
         console.log('💾 CDP tracing data saved to:', filename);
     }
 }
