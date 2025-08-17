@@ -8,7 +8,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {debounceTime, map, merge, throttleTime} from 'rxjs';
+import {map, merge, throttleTime} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -74,10 +74,7 @@ export class TuiScrollbarDirective {
     private readonly resizeAndMutation$ = merge(
         this.resizeObserverService,
         this.mutationObserverService,
-    ).pipe(
-        debounceTime(100),
-        map(() => this.getDimensions()),
-    );
+    ).pipe(map(() => this.getDimensions()));
 
     private readonly scroll$ = tuiScrollFrom(this.el).pipe(
         throttleTime(16, undefined, {trailing: true}),

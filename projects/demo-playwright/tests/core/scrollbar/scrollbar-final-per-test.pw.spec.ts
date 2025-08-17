@@ -28,7 +28,7 @@ import {expect, test} from '@playwright/test';
  * - Test-specific performance data with testStartTime, testDuration, etc.
  */
 
-test.skip('TuiScrollbar - Final Per-Test Performance Demo', () => {
+test.describe('TuiScrollbar - Final Per-Test Performance Demo', () => {
     test.beforeEach(async ({page}, testInfo) => {
         await PerformanceCollector.startTestCollection(page, testInfo.title);
 
