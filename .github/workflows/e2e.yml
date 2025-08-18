@@ -68,7 +68,7 @@ jobs:
           npx nx e2e demo-playwright -- \
             --project=chromium \
             --reporter=line \
-            tests/core/scrollbar/scrollbar-final-per-test.pw.spec.ts || echo "⚠️ Some tests may have failed, continuing with performance collection"
+            "projects/demo-playwright/tests/core/scrollbar/scrollbar-final-per-test.pw.spec.ts" || echo "⚠️ Some tests may have failed, continuing with performance collection"
 
           # Move collected performance files to output directory
           if ls ./projects/demo-playwright/performance-*.json 1> /dev/null 2>&1; then
@@ -241,11 +241,11 @@ jobs:
           echo "🚀 Starting current performance collection"
           mkdir -p ./performance-current
 
-          # Run specific test files that use PerformanceCollector
+          # Run tests with performance collection (only those that use PerformanceCollector)
           npx nx e2e demo-playwright -- \
             --project=chromium \
-            --reporter=line \
-            tests/core/scrollbar/scrollbar-final-per-test.pw.spec.ts || echo "⚠️ Some tests may have failed, continuing with performance collection"
+            --grep="Performance" \
+            --reporter=line || echo "⚠️ Some tests may have failed, continuing with performance collection"
 
           # Move collected performance files to output directory
           if ls ./projects/demo-playwright/performance-*.json 1> /dev/null 2>&1; then
