@@ -10,7 +10,7 @@ test.describe('TuiScrollbar - Final Per-Test Performance Demo', () => {
     test.beforeEach(async ({page}, testInfo) => {
         await PerformanceCollector.startTestCollection(
             page,
-            testInfo.title,
+            testInfo.titlePath.join(' › '),
             testInfo.file,
         );
 
@@ -18,7 +18,10 @@ test.describe('TuiScrollbar - Final Per-Test Performance Demo', () => {
     });
 
     test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(page, testInfo.title);
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
     });
 
     test.describe('Basic Functionality with Performance Collection', () => {
