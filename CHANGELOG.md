@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.50.0](https://github.com/taiga-family/taiga-ui/compare/v4.49.0...v4.50.0) (2025-08-18)
+
+### 🚀 Features
+
+- **addon-table:** `TableControl` add new directive ([#11536](https://github.com/taiga-family/taiga-ui/issues/11536))
+  ([3cf004d](https://github.com/taiga-family/taiga-ui/commit/3cf004d17d883d4c6c7e9e41a3dffa390f8a1a79))
+- **core:** `Hint` add hover state event emitter ([#11513](https://github.com/taiga-family/taiga-ui/issues/11513))
+  ([1adf5ad](https://github.com/taiga-family/taiga-ui/commit/1adf5ad81cb0fb8b476690fc0f6be6dc353ede94))
+- **experimental:** `Dialog` add new component ([#11595](https://github.com/taiga-family/taiga-ui/issues/11595))
+  ([8ea68a7](https://github.com/taiga-family/taiga-ui/commit/8ea68a7ea1e78d47109477b4580f6e4c591e1b52))
+- **kit:** `AvatarStack` update offset according to specs
+  ([#11621](https://github.com/taiga-family/taiga-ui/issues/11621))
+  ([e182355](https://github.com/taiga-family/taiga-ui/commit/e18235536fa21b54a84f32228d09d5892d878b13))
+- **kit:** `ThumbnailCard` update icon size according to specs
+  ([#11625](https://github.com/taiga-family/taiga-ui/issues/11625))
+  ([1e942c4](https://github.com/taiga-family/taiga-ui/commit/1e942c44df6ede9689b28584cc7a86bd3b659885))
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** `Notification` fix subtitle color on mobile
+  ([#11672](https://github.com/taiga-family/taiga-ui/issues/11672))
+  ([e139de7](https://github.com/taiga-family/taiga-ui/commit/e139de715ec37cdbc0b58704290052a207ce2861))
+- **addon-table:** properly clear sort ([#11563](https://github.com/taiga-family/taiga-ui/issues/11563))
+  ([ffd6a77](https://github.com/taiga-family/taiga-ui/commit/ffd6a7799b4f4c1ade93746ad7c7089e7d8242df))
+- **core:** fix invalid state of appearances when used on `TextfieldMulti`
+  ([#11623](https://github.com/taiga-family/taiga-ui/issues/11623))
+  ([989fd38](https://github.com/taiga-family/taiga-ui/commit/989fd38a9f781e8072dc7ed9823fefc826cdaadc))
+- **kit:** `formControl.setValue()` inside `effect` should not produce circular dependency
+  ([#11627](https://github.com/taiga-family/taiga-ui/issues/11627))
+  ([c59f438](https://github.com/taiga-family/taiga-ui/commit/c59f43801ed89c4f8c42fd3c6d2c3fe4995acc71))
+- **kit:** `InputFiles` fix `invalid` property ([#11540](https://github.com/taiga-family/taiga-ui/issues/11540))
+  ([0990df7](https://github.com/taiga-family/taiga-ui/commit/0990df7fb70d58cc69bd3f69e2a8462ca228b805))
+- **kit:** `InputNumber` is incompatible with `AbsValueTransformer`
+  ([#11570](https://github.com/taiga-family/taiga-ui/issues/11570))
+  ([5fd8326](https://github.com/taiga-family/taiga-ui/commit/5fd832612725cd05611f70c9121d6dd3d2452bb6))
+- **kit:** `InputNumber` with `[postfix]="value | i18nPlural"` has race condition for `[ngModel]`
+  ([#11608](https://github.com/taiga-family/taiga-ui/issues/11608))
+  ([90dced1](https://github.com/taiga-family/taiga-ui/commit/90dced1ac000ff0fb12fdb4a5a6d08afabd78d5e))
+- **kit:** `Slider` fix thickness in Firefox ([#11616](https://github.com/taiga-family/taiga-ui/issues/11616))
+  ([87ff2d6](https://github.com/taiga-family/taiga-ui/commit/87ff2d6a9866176a356ff176ccfb6b1a876f5da5))
+- **kit:** fixes file container size for prevent overflow extension of file
+  ([#11605](https://github.com/taiga-family/taiga-ui/issues/11605))
+  ([eded1db](https://github.com/taiga-family/taiga-ui/commit/eded1dbda74704bfac7321015d5405aa651298a6))
+
 ## [4.49.0](https://github.com/taiga-family/taiga-ui/compare/v4.48.0...v4.49.0) (2025-08-11)
 
 ### 🐞 Bug Fixes
