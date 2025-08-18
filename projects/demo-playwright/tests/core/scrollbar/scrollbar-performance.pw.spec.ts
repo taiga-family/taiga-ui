@@ -813,188 +813,181 @@ class ResultsManager {
 // Test Suite
 // ========================================================================================
 
-test.describe.skip(
-    'TuiScrollbar Performance Analysis @scrollbar',
-    {tag: '@scrollbar'},
-    () => {
-        // Allow opting into parallel mode for faster local runs
-        if (process.env.TUI_PERF_PARALLEL === '1') {
-            test.describe.configure({mode: 'parallel'});
-        } else {
-            // Default: serial for stable CDP tracing and consistent timings in CI
-            test.describe.configure({mode: 'serial'});
+test.describe.skip('TuiScrollbar', () => {
+    // Allow opting into parallel mode for faster local runs
+    if (process.env.TUI_PERF_PARALLEL === '1') {
+        test.describe.configure({mode: 'parallel'});
+    } else {
+        // Default: serial for stable CDP tracing and consistent timings in CI
+        test.describe.configure({mode: 'serial'});
+    }
+
+    // Dynamic timeout: scale with number of runs per variant
+    const PER_RUN_MS = 15000; // 15s per run
+
+    test.setTimeout(CONFIG.runsPerVariant * PER_RUN_MS);
+
+    test.beforeEach(async ({page, browserName}) => {
+        test.skip(browserName !== 'chromium', 'Perf/CDP suite runs only on Chromium');
+        await page.goto(CONFIG.baseUrl);
+        await page.waitForLoadState('networkidle');
+    });
+
+    // Log planned configurations once before tests start
+    test.beforeAll(() => {
+        console.info('Planned configurations:');
+
+        for (const v of TEST_VARIANTS) {
+            console.info(`  - ${v.name}`);
         }
+    });
 
-        // Dynamic timeout: scale with number of runs per variant
-        const PER_RUN_MS = 15000; // 15s per run
+    for (const variant of TEST_VARIANTS) {
+        test(`Performance: ${variant.name}`, async ({page}) => {
+            console.info(`🧪 Testing variant: ${variant.name}`);
+            console.info(`📝 Description: ${variant.description}`);
 
-        test.setTimeout(CONFIG.runsPerVariant * PER_RUN_MS);
+            await PerformanceMeasurer.applyVariantConfig(page, variant);
 
-        test.beforeEach(async ({page, browserName}) => {
-            test.skip(browserName !== 'chromium', 'Perf/CDP suite runs only on Chromium');
-            await page.goto(CONFIG.baseUrl);
-            await page.waitForLoadState('networkidle');
-        });
+            const runs: PerformanceMetrics[] = [];
 
-        // Log planned configurations once before tests start
-        test.beforeAll(() => {
-            console.info('Planned configurations:');
+            // Multiple runs for statistical significance
+            for (let run = 0; run < CONFIG.runsPerVariant; run++) {
+                console.info(`  📊 Run ${run + 1}/${CONFIG.runsPerVariant}`);
 
-            for (const v of TEST_VARIANTS) {
-                console.info(`  - ${v.name}`);
-            }
-        });
+                try {
+                    const events =
+                        await PerformanceMeasurer.capturePerformanceTrace(page);
+                    const metrics = PerformanceMeasurer.extractMetrics(events);
 
-        for (const variant of TEST_VARIANTS) {
-            test(`Performance: ${variant.name}`, async ({page}) => {
-                console.info(`🧪 Testing variant: ${variant.name}`);
-                console.info(`📝 Description: ${variant.description}`);
+                    runs.push(metrics);
 
-                await PerformanceMeasurer.applyVariantConfig(page, variant);
-
-                const runs: PerformanceMetrics[] = [];
-
-                // Multiple runs for statistical significance
-                for (let run = 0; run < CONFIG.runsPerVariant; run++) {
-                    console.info(`  📊 Run ${run + 1}/${CONFIG.runsPerVariant}`);
-
-                    try {
-                        const events =
-                            await PerformanceMeasurer.capturePerformanceTrace(page);
-                        const metrics = PerformanceMeasurer.extractMetrics(events);
-
-                        runs.push(metrics);
-
-                        // Basic sanity checks
-                        expect(metrics.layoutCount).toBeGreaterThanOrEqual(0);
-                        expect(metrics.layoutDuration).toBeGreaterThanOrEqual(0);
-                        expect(metrics.recalcStyleCount).toBeGreaterThanOrEqual(0);
-                        expect(metrics.recalcStyleDuration).toBeGreaterThanOrEqual(0);
-                    } catch (error) {
-                        console.warn(`❌ Run ${run + 1} failed:`, error);
-                        // Continue with other runs - some variance is expected
-                    }
-
-                    // Brief pause between runs
-                    await page.waitForTimeout(200);
+                    // Basic sanity checks
+                    expect(metrics.layoutCount).toBeGreaterThanOrEqual(0);
+                    expect(metrics.layoutDuration).toBeGreaterThanOrEqual(0);
+                    expect(metrics.recalcStyleCount).toBeGreaterThanOrEqual(0);
+                    expect(metrics.recalcStyleDuration).toBeGreaterThanOrEqual(0);
+                } catch (error) {
+                    console.warn(`❌ Run ${run + 1} failed:`, error);
+                    // Continue with other runs - some variance is expected
                 }
 
-                expect(runs.length).toBeGreaterThan(CONFIG.runsPerVariant * 0.8); // Allow some failures
-
-                const summary = PerformanceMeasurer.calculateStatistics(runs);
-
-                const result: TestResult = {
-                    variant,
-                    runs,
-                    summary,
-                    timestamp: Date.now(),
-                };
-
-                ResultsManager.addResult(result);
-
-                // Threshold-based assertions removed: metrics are reported, not enforced
-
-                console.info(
-                    `    📈 Layout: ${summary.layoutCount.toFixed(1)} ± ${summary.standardDeviation.layoutCount.toFixed(1)} operations`,
-                );
-                console.info(
-                    `    ⏱️  Duration: ${summary.layoutDuration.toFixed(2)} ± ${summary.standardDeviation.layoutDuration.toFixed(2)}ms`,
-                );
-                console.info(
-                    `    🎯 Confidence: [${summary.confidence.layoutCount[0].toFixed(1)}, ${summary.confidence.layoutCount[1].toFixed(1)}] operations`,
-                );
-                // Additional medians and CIs per metric
-                const medianLayoutOps = (summary as any).median?.layoutCount as
-                    | number
-                    | undefined;
-                const medianLayoutMs = (summary as any).median?.layoutDuration as
-                    | number
-                    | undefined;
-                const medianRecalcOps = (summary as any).median?.recalcStyleCount as
-                    | number
-                    | undefined;
-                const medianRecalcMs = (summary as any).median?.recalcStyleDuration as
-                    | number
-                    | undefined;
-
-                console.info(
-                    `    ▫️ Layout ops median: ${(medianLayoutOps ?? summary.layoutCount).toFixed(1)}`,
-                );
-                console.info(
-                    `    ▫️ Layout ms median: ${(medianLayoutMs ?? summary.layoutDuration).toFixed(2)}ms`,
-                );
-                console.info(
-                    `    🎯 Layout ms CI: [${summary.confidence.layoutDuration[0].toFixed(2)}, ${summary.confidence.layoutDuration[1].toFixed(2)}] ms`,
-                );
-                // RecalculateStyles metrics
-                console.info(
-                    `    🧩 Recalc: ${summary.recalcStyleCount.toFixed(1)} ± ${summary.standardDeviation.recalcStyleCount.toFixed(1)} operations`,
-                );
-                console.info(
-                    `    🧮 Recalc Duration: ${summary.recalcStyleDuration.toFixed(2)} ± ${summary.standardDeviation.recalcStyleDuration.toFixed(2)}ms`,
-                );
-                console.info(
-                    `    🎯 Recalc CI: [${summary.confidence.recalcStyleCount[0].toFixed(1)}, ${summary.confidence.recalcStyleCount[1].toFixed(1)}] operations`,
-                );
-                console.info(
-                    `    ▫️ Recalc ops median: ${(medianRecalcOps ?? summary.recalcStyleCount).toFixed(1)}`,
-                );
-                console.info(
-                    `    ▫️ Recalc ms median: ${(medianRecalcMs ?? summary.recalcStyleDuration).toFixed(2)}ms`,
-                );
-                console.info(
-                    `    🎯 Recalc ms CI: [${summary.confidence.recalcStyleDuration[0].toFixed(2)}, ${summary.confidence.recalcStyleDuration[1].toFixed(2)}] ms`,
-                );
-            });
-        }
-
-        test.afterAll(() => {
-            ResultsManager.printReports();
-            const rec = (ResultsManager as any).computeRecommendation?.();
-
-            if (rec) {
-                const baselineName = 'raf-throttling100ms';
-                const baseline = ResultsManager.getResultByName(baselineName);
-                const recResult = ResultsManager.getResultByName(rec.name);
-
-                if (baseline && recResult) {
-                    const pick = (
-                        s: any,
-                        k: 'layoutCount' | 'recalcStyleCount',
-                    ): number =>
-                        s.median && typeof s.median[k] === 'number' ? s.median[k] : s[k];
-
-                    const bLayoutOps = pick(baseline.summary as any, 'layoutCount');
-                    const bRecalcOps = pick(baseline.summary as any, 'recalcStyleCount');
-                    const rLayoutOps = pick(recResult.summary as any, 'layoutCount');
-                    const rRecalcOps = pick(recResult.summary as any, 'recalcStyleCount');
-
-                    const dLayoutOps = bLayoutOps - rLayoutOps;
-                    const dRecalcOps = bRecalcOps - rRecalcOps;
-                    const pLayoutOps = bLayoutOps ? (dLayoutOps / bLayoutOps) * 100 : 0;
-                    const pRecalcOps = bRecalcOps ? (dRecalcOps / bRecalcOps) * 100 : 0;
-
-                    console.info(
-                        `⭐ Recommendation: ${rec.family} → ${rec.name} (debounce=${
-                            rec.debounceMs ?? '-'
-                        }ms, throttling=${rec.throttleMs}ms); vs baseline ${baselineName}: layout ops ${rLayoutOps.toFixed(
-                            1,
-                        )} (${dLayoutOps >= 0 ? '-' : '+'}${Math.abs(dLayoutOps).toFixed(1)}, ${
-                            pLayoutOps >= 0 ? '-' : '+'
-                        }${Math.abs(pLayoutOps).toFixed(1)}%), recalc ops ${rRecalcOps.toFixed(1)} (${dRecalcOps >= 0 ? '-' : '+'}${Math.abs(
-                            dRecalcOps,
-                        ).toFixed(1)}, ${
-                            pRecalcOps >= 0 ? '-' : '+'
-                        }${Math.abs(pRecalcOps).toFixed(1)}%)`,
-                    );
-                } else {
-                    console.info(
-                        `⭐ Recommendation: ${rec.family} → ${rec.name} (debounce=${
-                            rec.debounceMs ?? '-'
-                        }ms, throttling=${rec.throttleMs}ms)`,
-                    );
-                }
+                // Brief pause between runs
+                await page.waitForTimeout(200);
             }
+
+            expect(runs.length).toBeGreaterThan(CONFIG.runsPerVariant * 0.8); // Allow some failures
+
+            const summary = PerformanceMeasurer.calculateStatistics(runs);
+
+            const result: TestResult = {
+                variant,
+                runs,
+                summary,
+                timestamp: Date.now(),
+            };
+
+            ResultsManager.addResult(result);
+
+            // Threshold-based assertions removed: metrics are reported, not enforced
+
+            console.info(
+                `    📈 Layout: ${summary.layoutCount.toFixed(1)} ± ${summary.standardDeviation.layoutCount.toFixed(1)} operations`,
+            );
+            console.info(
+                `    ⏱️  Duration: ${summary.layoutDuration.toFixed(2)} ± ${summary.standardDeviation.layoutDuration.toFixed(2)}ms`,
+            );
+            console.info(
+                `    🎯 Confidence: [${summary.confidence.layoutCount[0].toFixed(1)}, ${summary.confidence.layoutCount[1].toFixed(1)}] operations`,
+            );
+            // Additional medians and CIs per metric
+            const medianLayoutOps = (summary as any).median?.layoutCount as
+                | number
+                | undefined;
+            const medianLayoutMs = (summary as any).median?.layoutDuration as
+                | number
+                | undefined;
+            const medianRecalcOps = (summary as any).median?.recalcStyleCount as
+                | number
+                | undefined;
+            const medianRecalcMs = (summary as any).median?.recalcStyleDuration as
+                | number
+                | undefined;
+
+            console.info(
+                `    ▫️ Layout ops median: ${(medianLayoutOps ?? summary.layoutCount).toFixed(1)}`,
+            );
+            console.info(
+                `    ▫️ Layout ms median: ${(medianLayoutMs ?? summary.layoutDuration).toFixed(2)}ms`,
+            );
+            console.info(
+                `    🎯 Layout ms CI: [${summary.confidence.layoutDuration[0].toFixed(2)}, ${summary.confidence.layoutDuration[1].toFixed(2)}] ms`,
+            );
+            // RecalculateStyles metrics
+            console.info(
+                `    🧩 Recalc: ${summary.recalcStyleCount.toFixed(1)} ± ${summary.standardDeviation.recalcStyleCount.toFixed(1)} operations`,
+            );
+            console.info(
+                `    🧮 Recalc Duration: ${summary.recalcStyleDuration.toFixed(2)} ± ${summary.standardDeviation.recalcStyleDuration.toFixed(2)}ms`,
+            );
+            console.info(
+                `    🎯 Recalc CI: [${summary.confidence.recalcStyleCount[0].toFixed(1)}, ${summary.confidence.recalcStyleCount[1].toFixed(1)}] operations`,
+            );
+            console.info(
+                `    ▫️ Recalc ops median: ${(medianRecalcOps ?? summary.recalcStyleCount).toFixed(1)}`,
+            );
+            console.info(
+                `    ▫️ Recalc ms median: ${(medianRecalcMs ?? summary.recalcStyleDuration).toFixed(2)}ms`,
+            );
+            console.info(
+                `    🎯 Recalc ms CI: [${summary.confidence.recalcStyleDuration[0].toFixed(2)}, ${summary.confidence.recalcStyleDuration[1].toFixed(2)}] ms`,
+            );
         });
-    },
-);
+    }
+
+    test.afterAll(() => {
+        ResultsManager.printReports();
+        const rec = (ResultsManager as any).computeRecommendation?.();
+
+        if (rec) {
+            const baselineName = 'raf-throttling100ms';
+            const baseline = ResultsManager.getResultByName(baselineName);
+            const recResult = ResultsManager.getResultByName(rec.name);
+
+            if (baseline && recResult) {
+                const pick = (s: any, k: 'layoutCount' | 'recalcStyleCount'): number =>
+                    s.median && typeof s.median[k] === 'number' ? s.median[k] : s[k];
+
+                const bLayoutOps = pick(baseline.summary as any, 'layoutCount');
+                const bRecalcOps = pick(baseline.summary as any, 'recalcStyleCount');
+                const rLayoutOps = pick(recResult.summary as any, 'layoutCount');
+                const rRecalcOps = pick(recResult.summary as any, 'recalcStyleCount');
+
+                const dLayoutOps = bLayoutOps - rLayoutOps;
+                const dRecalcOps = bRecalcOps - rRecalcOps;
+                const pLayoutOps = bLayoutOps ? (dLayoutOps / bLayoutOps) * 100 : 0;
+                const pRecalcOps = bRecalcOps ? (dRecalcOps / bRecalcOps) * 100 : 0;
+
+                console.info(
+                    `⭐ Recommendation: ${rec.family} → ${rec.name} (debounce=${
+                        rec.debounceMs ?? '-'
+                    }ms, throttling=${rec.throttleMs}ms); vs baseline ${baselineName}: layout ops ${rLayoutOps.toFixed(
+                        1,
+                    )} (${dLayoutOps >= 0 ? '-' : '+'}${Math.abs(dLayoutOps).toFixed(1)}, ${
+                        pLayoutOps >= 0 ? '-' : '+'
+                    }${Math.abs(pLayoutOps).toFixed(1)}%), recalc ops ${rRecalcOps.toFixed(1)} (${dRecalcOps >= 0 ? '-' : '+'}${Math.abs(
+                        dRecalcOps,
+                    ).toFixed(1)}, ${
+                        pRecalcOps >= 0 ? '-' : '+'
+                    }${Math.abs(pRecalcOps).toFixed(1)}%)`,
+                );
+            } else {
+                console.info(
+                    `⭐ Recommendation: ${rec.family} → ${rec.name} (debounce=${
+                        rec.debounceMs ?? '-'
+                    }ms, throttling=${rec.throttleMs}ms)`,
+                );
+            }
+        }
+    });
+});
