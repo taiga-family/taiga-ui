@@ -108,15 +108,67 @@ export class PerformanceComparison {
             const extractComponentName = (source: string, testName: string): string => {
                 // Handle test-specific metrics where source is not a file path
                 if (source === 'CDP-tracing-per-test' || source === 'CDP-tracing') {
-                    // For scrollbar tests, return 'scrollbar' as the component name
-                    return 'scrollbar';
+                    // Try to extract folder name from test name structure
+                    // Test names typically follow the pattern from their file location
+                    // For example, if test is in "tests/core/scrollbar/", extract "scrollbar"
+                    const words = testName.toLowerCase().split(/[\s\-_]+/);
+
+                    // Look for common component keywords that might indicate the folder
+                    const componentKeywords = [
+                        'scrollbar',
+                        'button',
+                        'input',
+                        'dialog',
+                        'modal',
+                        'table',
+                        'chart',
+                        'calendar',
+                    ];
+
+                    for (const keyword of componentKeywords) {
+                        if (words.some((word) => word.includes(keyword))) {
+                            return keyword;
+                        }
+                    }
+
+                    // Fallback: use the first meaningful word from test name
+                    const meaningfulWords = words.filter(
+                        (word) =>
+                            word.length > 2 &&
+                            ![
+                                'and',
+                                'are',
+                                'but',
+                                'can',
+                                'for',
+                                'has',
+                                'is',
+                                'or',
+                                'should',
+                                'spec',
+                                'test',
+                                'the',
+                                'will',
+                                'with',
+                            ].includes(word),
+                    );
+
+                    return meaningfulWords[0] || 'unknown';
+                }
+
+                // Extract folder name from test file path
+                // For path like "tests/core/scrollbar/scrollbar-functionality.pw.spec.ts", extract "scrollbar"
+                const testFolderMatch = /\/([^/]+)\/[^/]*\.spec\.ts$/.exec(source);
+
+                if (testFolderMatch?.[1]) {
+                    return testFolderMatch[1];
                 }
 
                 // Try to extract the directory just before the test file, e.g. 'mobile-dialog' from '.../components/mobile-dialog/test/mobile-dialog.component.spec.ts'
-                const match = /components\/(.+?)\//.exec(source);
+                const componentMatch = /components\/(.+?)\//.exec(source);
 
-                if (match?.[1]) {
-                    return match[1];
+                if (componentMatch?.[1]) {
+                    return componentMatch[1];
                 }
 
                 // fallback: try to get the file name without extension

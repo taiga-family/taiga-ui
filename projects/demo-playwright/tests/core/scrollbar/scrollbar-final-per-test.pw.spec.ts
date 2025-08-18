@@ -8,7 +8,11 @@ import {expect, test} from '@playwright/test';
 
 test.describe('TuiScrollbar - Final Per-Test Performance Demo', () => {
     test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(page, testInfo.title);
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.title,
+            testInfo.file,
+        );
 
         await tuiGoto(page, DemoRoute.Scrollbar);
     });

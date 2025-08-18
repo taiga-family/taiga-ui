@@ -25,7 +25,11 @@ test.skip('TuiScrollbar - Functionality Suite', () => {
     test.beforeEach(async ({page}, testInfo) => {
         await tuiGoto(page, DemoRoute.Scrollbar);
 
-        await PerformanceCollector.startTestCollection(page, testInfo.title);
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.title,
+            testInfo.file,
+        );
     });
 
     test.afterEach(async ({page}, testInfo) => {
@@ -151,9 +155,6 @@ test.skip('TuiScrollbar - Functionality Suite', () => {
 
             // Wait for initialization
             await page.waitForTimeout(200);
-
-            // Check if scrollbar thumb exists
-            const thumbCount = await scrollbar.count();
 
             await expect(scrollbarElement).toBeVisible();
 
