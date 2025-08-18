@@ -1,15 +1,16 @@
 #!/bin/bash
 
 # Performance collection script for CI integration
-# Usage: ./collect-performance.sh [baseline|current] [output-dir]
+# Usage: ./collect-performance.sh [baseline|current] [output-dir] [grep-pattern] [change-threshold]
 
 set -e
 
 MODE=${1:-current}
 OUTPUT_DIR=${2:-./performance-data}
 GREP_PATTERN=${3:-"performance|Performance"}
+CHANGE_THRESHOLD=${4:-1}
 
-echo "🚀 Starting performance collection (mode: $MODE)"
+echo "🚀 Starting performance collection (mode: $MODE, threshold: $CHANGE_THRESHOLD%)"
 
 # Create output directory
 mkdir -p "$OUTPUT_DIR"
@@ -42,4 +43,4 @@ else
     echo "⚠️ No performance data files found"
 fi
 
-echo "🎯 Performance collection complete for mode: $MODE"
+echo "🎯 Performance collection complete for mode: $MODE (threshold: $CHANGE_THRESHOLD%)"

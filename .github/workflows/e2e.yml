@@ -7,6 +7,7 @@ env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   PERFORMANCE_BASELINE_KEY: 'perf_baseline_${{ github.event.pull_request.head.sha }}'
   PERFORMANCE_CURRENT_KEY: 'perf_current_${{ github.event.pull_request.head.sha }}'
+  PERFORMANCE_CHANGE_THRESHOLD: 1 # Configurable threshold for showing performance changes (%))
 
 jobs:
   build-demo:
@@ -135,13 +136,15 @@ jobs:
               npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
                 ./performance-baseline \
                 ./performance-current \
-                ./performance-report.md
+                ./performance-report.md \
+                ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
             else
               echo "📊 No baseline data available - showing current metrics only"
               npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
                 ./performance-baseline \
                 ./performance-current \
-                ./performance-report.md
+                ./performance-report.md \
+                ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
             fi
           else
             echo "performance_data_exists=false" >> $GITHUB_OUTPUT
@@ -561,13 +564,15 @@ jobs:
               npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
                 ./performance/baseline \
                 ./performance/current \
-                ./performance-report.md
+                ./performance-report.md \
+                ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
             else
               echo "📊 No baseline data available - showing current metrics only"
               npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
                 ./performance/baseline \
                 ./performance/current \
-                ./performance-report.md
+                ./performance-report.md \
+                ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
             fi
           else
             echo "performance_data_exists=false" >> $GITHUB_OUTPUT

@@ -20,6 +20,7 @@ interface PerformanceData {
 
 interface MetricsComparison {
     testName: string;
+    component: string;
     baseline?: PerformanceMetrics;
     current: PerformanceMetrics;
     diff: {
@@ -52,6 +53,7 @@ interface ComparisonReport {
  * Compares performance metrics between baseline (main) and current (PR) branch
  */
 export class PerformanceComparison {
+    public static readonly DEFAULT_CHANGE_THRESHOLD = 1; // Default 1% threshold
     /**
      * Aggregates performance metrics from multiple JSON files
      */
@@ -92,6 +94,7 @@ export class PerformanceComparison {
     public static compareMetrics(
         baseline: Map<string, PerformanceData>,
         current: Map<string, PerformanceData>,
+        changeThreshold: number = this.DEFAULT_CHANGE_THRESHOLD,
     ): ComparisonReport {
         const details: MetricsComparison[] = [];
         let testsWithSignificantChanges = 0;
@@ -103,8 +106,21 @@ export class PerformanceComparison {
             const currentMetrics = currentData.metrics;
             const baselineMetrics = baselineData?.metrics;
 
+            // Extract component name from source path
+            const extractComponentName = (source: string): string => {
+                // Try to extract the directory just before the test file, e.g. 'mobile-dialog' from '.../components/mobile-dialog/test/mobile-dialog.component.spec.ts'
+                const match = source.match(/components\/(.+?)\//);
+                if (match && match[1]) return match[1];
+                // fallback: try to get the file name without extension
+                const fileName = source.split('/').pop() || source;
+                return fileName.replace(/\..*$/, '') || 'unknown';
+            };
+
+            const component = extractComponentName(currentData.source);
+
             const comparison: MetricsComparison = {
                 testName,
+                component,
                 baseline: baselineMetrics,
                 current: currentMetrics,
                 diff: {
@@ -180,7 +196,10 @@ export class PerformanceComparison {
     /**
      * Generates a markdown report for GitHub comments
      */
-    public static generateMarkdownReport(report: ComparisonReport): string {
+    public static generateMarkdownReport(
+        report: ComparisonReport,
+        changeThreshold: number = this.DEFAULT_CHANGE_THRESHOLD,
+    ): string {
         const {summary, details} = report;
 
         let markdown = '## 📊 Performance Metrics Comparison\n\n';
@@ -199,16 +218,31 @@ export class PerformanceComparison {
             markdown += `⚠️ **${summary.testsWithSignificantChanges} test(s) show significant performance changes**\n\n`;
         }
 
-        // Details section
-        if (details.length > 0) {
-            markdown += '### Detailed Results\n\n';
-            markdown +=
-                '| Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
-            markdown +=
-                '|-----------|------------|-----------------|------------|------------------|\n';
+        // Filter details to only show tests with meaningful changes
+        const filteredDetails = details.filter((detail) => {
+            // Show new tests (no baseline)
+            if (!detail.baseline) return true;
 
-            for (const detail of details) {
-                const {testName, baseline, current, changes} = detail;
+            // Show tests with changes above threshold
+            return (
+                Math.abs(detail.changes.layoutDuration) >= changeThreshold ||
+                Math.abs(detail.changes.recalcStyleDuration) >= changeThreshold ||
+                Math.abs(detail.changes.layoutCount) >= changeThreshold ||
+                Math.abs(detail.changes.recalcStyleCount) >= changeThreshold
+            );
+        });
+
+        // Details section
+        if (filteredDetails.length > 0) {
+            markdown += '### Detailed Results\n\n';
+            markdown += `*Showing only tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${details.length} tests)*\n\n`;
+            markdown +=
+                '| Component | Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
+            markdown +=
+                '|-----------|-----------|------------|-----------------|------------|------------------|\n';
+
+            for (const detail of filteredDetails) {
+                const {component, testName, baseline, current, changes} = detail;
 
                 // Format changes with colors
                 const formatChange = (current: number, change: number, unit = '') => {
@@ -222,12 +256,15 @@ export class PerformanceComparison {
                     return `${current.toFixed(1)}${unit} (${sign}${change.toFixed(1)}% ${icon})`;
                 };
 
-                markdown += `| ${testName} `;
+                markdown += `| ${component} | ${testName} `;
                 markdown += `| ${formatChange(current.layoutCount, changes.layoutCount)} `;
                 markdown += `| ${formatChange(current.layoutDuration, changes.layoutDuration, 'ms')} `;
                 markdown += `| ${formatChange(current.recalcStyleCount, changes.recalcStyleCount)} `;
                 markdown += `| ${formatChange(current.recalcStyleDuration, changes.recalcStyleDuration, 'ms')} |\n`;
             }
+        } else if (details.length > 0) {
+            markdown += '### Detailed Results\n\n';
+            markdown += `*No tests found with changes ≥ ${changeThreshold}% (${details.length} tests checked)*\n\n`;
         }
 
         if (summary.totalTests === 0) {
@@ -248,6 +285,7 @@ export class PerformanceComparison {
         baselinePath: string,
         currentPath: string,
         outputPath: string,
+        changeThreshold: number = this.DEFAULT_CHANGE_THRESHOLD,
     ): Promise<ComparisonReport> {
         // eslint-disable-next-line no-console
         console.log('🔍 Aggregating baseline metrics...');
@@ -259,10 +297,10 @@ export class PerformanceComparison {
 
         // eslint-disable-next-line no-console
         console.log('📊 Comparing metrics...');
-        const report = this.compareMetrics(baseline, current);
+        const report = this.compareMetrics(baseline, current, changeThreshold);
 
         // Generate markdown report
-        const markdown = this.generateMarkdownReport(report);
+        const markdown = this.generateMarkdownReport(report, changeThreshold);
 
         // Save report
         await writeFile(outputPath, markdown);
@@ -280,24 +318,31 @@ export class PerformanceComparison {
 
 /**
  * CLI entry point for performance comparison
- * Usage: npx ts-node performance-comparison.ts <baseline-path> <current-path> <output-path>
+ * Usage: npx ts-node performance-comparison.ts <baseline-path> <current-path> <output-path> [change-threshold]
  */
 if (require.main === module) {
-    const [, , baselinePath, currentPath, outputPath] = process.argv;
+    const [, , baselinePath, currentPath, outputPath, thresholdArg] = process.argv;
 
     if (!baselinePath || !currentPath || !outputPath) {
         // eslint-disable-next-line no-console
         console.error(
-            'Usage: npx ts-node performance-comparison.ts <baseline-path> <current-path> <output-path>',
+            'Usage: npx ts-node performance-comparison.ts <baseline-path> <current-path> <output-path> [change-threshold]',
         );
         process.exit(1);
     }
 
-    PerformanceComparison.compareAndReport(baselinePath, currentPath, outputPath).catch(
-        (error) => {
-            // eslint-disable-next-line no-console
-            console.error('Performance comparison failed:', error);
-            process.exit(1);
-        },
-    );
+    const changeThreshold = thresholdArg
+        ? parseFloat(thresholdArg)
+        : PerformanceComparison.DEFAULT_CHANGE_THRESHOLD;
+
+    PerformanceComparison.compareAndReport(
+        baselinePath,
+        currentPath,
+        outputPath,
+        changeThreshold,
+    ).catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('Performance comparison failed:', error);
+        process.exit(1);
+    });
 }
