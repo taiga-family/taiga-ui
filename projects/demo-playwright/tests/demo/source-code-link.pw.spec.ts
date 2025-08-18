@@ -4,6 +4,8 @@ import {expect, test} from '@playwright/test';
 test.describe('Source code button', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
     const proprietary = process.env['PROPRIETARY'] === 'true';
+    const currentBranch =
+        process.env['GITHUB_HEAD_REF'] || process.env['GITHUB_REF_NAME'] || 'main';
 
     (proprietary ? [] : demoPaths).forEach((path) => {
         test(`${path}`, async ({page, request}) => {
@@ -22,7 +24,10 @@ test.describe('Source code button', () => {
             );
 
             const href = await sourceCodeLink.getAttribute('href');
-            const response = await request.get(href ?? '', {maxRetries: 3});
+            // Replace 'main' branch with current branch in the GitHub URL
+            const adjustedHref =
+                href?.replace('/tree/main/', `/tree/${currentBranch}/`) ?? '';
+            const response = await request.get(adjustedHref, {maxRetries: 3});
 
             // eslint-disable-next-line playwright/no-conditional-in-test
             if (!response.ok()) {
@@ -41,7 +46,7 @@ test.describe('Source code button', () => {
         test.skip(proprietary);
 
         const response = await request.get(
-            'https://github.com/taiga-family/taiga-ui/tree/main/projects/kit/components/invalid-component-name',
+            `https://github.com/taiga-family/taiga-ui/tree/${currentBranch}/projects/kit/components/invalid-component-name`,
         );
 
         expect(response.status()).toBe(404);
