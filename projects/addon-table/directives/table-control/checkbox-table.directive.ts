@@ -10,17 +10,9 @@ import {TuiTableControlDirective} from './table-control.directive';
     host: {
         '[checked]': 'parent.checked()',
         '[indeterminate]': 'parent.indeterminate()',
-        '(change)': 'onChange()',
+        '(change)': 'parent.toggleAll()',
     },
 })
 export class TuiCheckboxTableDirective {
     protected readonly parent = inject(TuiTableControlDirective);
-
-    protected onChange(): void {
-        if (this.parent.checked()) {
-            this.parent.onChange([]);
-        } else {
-            this.parent.selectAll();
-        }
-    }
 }
