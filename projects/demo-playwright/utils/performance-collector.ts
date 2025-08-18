@@ -34,13 +34,18 @@ export class PerformanceCollector {
             client: any;
             events: PerformanceEvent[];
             startTime: number;
+            testFile?: string;
         }
     >();
 
     /**
      * Starts performance collection for a specific test
      */
-    public static async startTestCollection(page: Page, testName: string): Promise<void> {
+    public static async startTestCollection(
+        page: Page,
+        testName: string,
+        testFile?: string,
+    ): Promise<void> {
         try {
             // eslint-disable-next-line no-console
             console.log(`🎯 Starting CDP tracing for test: ${testName}`);
@@ -68,11 +73,12 @@ export class PerformanceCollector {
                 },
             });
 
-            // Store the active collection
+            // Store the active collection with test file info
             this.activeCollections.set(testName, {
                 client,
                 events,
                 startTime: Date.now(),
+                testFile,
             });
 
             // eslint-disable-next-line no-console
@@ -118,6 +124,7 @@ export class PerformanceCollector {
                 testName,
                 page.url(),
                 collection.startTime,
+                collection.testFile,
             );
 
             // eslint-disable-next-line no-console
@@ -323,6 +330,7 @@ export class PerformanceCollector {
         testName: string,
         url: string,
         startTime: number,
+        testFile?: string,
     ): Promise<void> {
         const performanceData = {
             timestamp: Date.now(),
@@ -330,7 +338,7 @@ export class PerformanceCollector {
             testDuration: Date.now() - startTime,
             url: url,
             testName: testName,
-            source: 'CDP-tracing-per-test',
+            source: testFile || 'CDP-tracing-per-test',
             metrics: {
                 layoutCount: metrics.layoutCount,
                 layoutDuration: Number(metrics.layoutDuration.toFixed(3)),
