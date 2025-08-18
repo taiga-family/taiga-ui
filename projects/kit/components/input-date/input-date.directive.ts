@@ -1,4 +1,12 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {
+    computed,
+    Directive,
+    effect,
+    inject,
+    Input,
+    signal,
+    untracked,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoDateMode, maskitoDateOptionsGenerator} from '@maskito/kit';
@@ -14,7 +22,6 @@ import {
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiUntracked} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {
@@ -128,11 +135,11 @@ export abstract class TuiInputDateBase<
         this.max.set(max instanceof TuiDay ? max : this.options.max);
     }
 
-    @tuiUntracked
     public override writeValue(value: T | null): void {
         const reset = this.control.pristine && this.control.untouched && !value;
+        const changed = untracked(() => value !== this.value());
 
-        if (value !== this.value() || reset) {
+        if (changed || reset) {
             super.writeValue(value);
             this.textfield.value.set(this.stringify(this.value()));
         }

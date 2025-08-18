@@ -1,4 +1,4 @@
-import {computed, Directive, inject, Input, signal} from '@angular/core';
+import {computed, Directive, inject, Input, signal, untracked} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
@@ -14,7 +14,7 @@ import {
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiDirectiveBinding, tuiUntracked} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsTextfieldAccessor,
@@ -119,12 +119,6 @@ export class TuiInputTimeDirective
         this.postfix.set(x);
     }
 
-    @tuiUntracked
-    public override writeValue(value: TuiTime | null): void {
-        super.writeValue(value);
-        this.textfield.value.set(this.stringify(this.value()));
-    }
-
     public setValue(value: TuiTime | null): void {
         this.onChange(value);
 
@@ -137,6 +131,11 @@ export class TuiInputTimeDirective
         if (!value && this.dropdownEnabled()) {
             this.open.set(true);
         }
+    }
+
+    public override writeValue(value: TuiTime | null): void {
+        super.writeValue(value);
+        untracked(() => this.textfield.value.set(this.stringify(this.value())));
     }
 
     protected onInput(valueWithAffixes: string): void {
