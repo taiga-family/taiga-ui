@@ -65,6 +65,9 @@ jobs:
           echo "🚀 Starting baseline performance collection"
           mkdir -p ./performance-baseline
 
+          # Save current state
+          CURRENT_COMMIT=$(git rev-parse HEAD)
+
           # Check out main branch to collect baseline
           git fetch origin "$BASE_REF"
           git checkout "origin/$BASE_REF"
@@ -88,21 +91,21 @@ jobs:
             echo "ℹ️ Performance test files not found on main branch - this is expected for new features"
             echo "ℹ️ Creating empty baseline directory for comparison"
           fi
+
+          # Switch back to feature branch commit
+          git checkout "$CURRENT_COMMIT"
         continue-on-error: true
 
       # Switch back to feature branch and collect current metrics
       - name: Collect current performance metrics
         env:
           COLLECT_PERFORMANCE: 1
-          HEAD_REF: ${{ github.head_ref }}
         run: |
           echo "🚀 Starting current performance collection"
           mkdir -p ./performance-current
 
-          # Switch back to feature branch
-          git checkout "$HEAD_REF"
-
-          # Run performance tests on current branch
+          # We're already on the feature branch (current commit)
+          echo "📝 Running performance tests on feature branch"
           npx nx e2e demo-playwright -- \
             --project=chromium \
             --reporter=line \
