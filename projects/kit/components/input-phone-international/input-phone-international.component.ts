@@ -11,6 +11,7 @@ import {
     type QueryList,
     signal,
     TemplateRef,
+    untracked,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
@@ -201,11 +202,13 @@ export class TuiInputPhoneInternational extends TuiControl<string> {
     public override writeValue(unmaskedValue: string): void {
         super.writeValue(unmaskedValue);
 
-        const maskOptions = this.mask();
+        const mask = untracked(() => this.mask());
+        const value = untracked(() => this.value());
 
-        this.textfieldValue = maskOptions
-            ? maskitoTransform(this.value(), maskOptions)
-            : this.value(); // it will be calibrated later when mask is ready (by maskitoInitialCalibrationPlugin)
+        this.textfieldValue = mask
+            ? maskitoTransform(value, mask)
+            : // it will be calibrated later when mask is ready (by maskitoInitialCalibrationPlugin)
+              value;
         this.cdr.detectChanges();
     }
 

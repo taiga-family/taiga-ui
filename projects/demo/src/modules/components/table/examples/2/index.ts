@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiTable, TuiTableControl} from '@taiga-ui/addon-table';
 import {
     TuiAutoColorPipe,
     TuiButton,
@@ -47,6 +47,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiRadioList,
         TuiStatus,
         TuiTable,
+        TuiTableControl,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -58,6 +59,7 @@ export default class Example {
     protected readonly sizes = ['l', 'm', 's'] as const;
 
     protected size = this.sizes[0];
+    protected selected = [];
 
     protected readonly data = [
         {
@@ -81,7 +83,6 @@ export default class Example {
             },
             items: ['Some', 'items', 'displayed', 'here', 'and', 'can', 'overflow'],
             progress: 78,
-            selected: false,
         },
         {
             checkbox: {
@@ -103,7 +104,6 @@ export default class Example {
             },
             items: ['One', 'Item'],
             progress: 91,
-            selected: false,
         },
         {
             checkbox: {
@@ -124,20 +124,6 @@ export default class Example {
             },
             items: [],
             progress: 32,
-            selected: false,
         },
     ];
-
-    protected get checked(): boolean | null {
-        const every = this.data.every(({selected}) => selected);
-        const some = this.data.some(({selected}) => selected);
-
-        return every || (some && null);
-    }
-
-    protected onCheck(checked: boolean): void {
-        this.data.forEach((item) => {
-            item.selected = checked;
-        });
-    }
 }

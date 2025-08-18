@@ -1,9 +1,9 @@
-<div
+<p
     *polymorpheusOutlet="context.data?.content as text"
     class="t-content"
     [innerHTML]="text"
-></div>
-<div
+></p>
+<footer
     *ngIf="words$ | async as words"
     class="t-buttons"
 >
@@ -28,4 +28,4 @@
     >
         {{ context.data?.yes || words.yes }}
     </button>
-</div>
+</footer>
