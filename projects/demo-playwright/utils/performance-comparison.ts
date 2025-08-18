@@ -104,8 +104,14 @@ export class PerformanceComparison {
             const currentMetrics = currentData.metrics;
             const baselineMetrics = baselineData?.metrics;
 
-            // Extract component name from source path
-            const extractComponentName = (source: string): string => {
+            // Extract component name from source path or test name
+            const extractComponentName = (source: string, testName: string): string => {
+                // Handle test-specific metrics where source is not a file path
+                if (source === 'CDP-tracing-per-test' || source === 'CDP-tracing') {
+                    // For scrollbar tests, return 'scrollbar' as the component name
+                    return 'scrollbar';
+                }
+
                 // Try to extract the directory just before the test file, e.g. 'mobile-dialog' from '.../components/mobile-dialog/test/mobile-dialog.component.spec.ts'
                 const match = /components\/(.+?)\//.exec(source);
 
@@ -119,7 +125,7 @@ export class PerformanceComparison {
                 return fileName.replace(/\..*$/, '') || 'unknown';
             };
 
-            const component = extractComponentName(currentData.source);
+            const component = extractComponentName(currentData.source, testName);
 
             const comparison: MetricsComparison = {
                 testName,
