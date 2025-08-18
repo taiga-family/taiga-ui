@@ -76,12 +76,10 @@ export class PerformanceComparison {
                     // Use test name as key for comparison
                     metrics.set(data.testName, data);
                 } catch (error) {
-                    // eslint-disable-next-line no-console
                     console.warn(`Failed to parse performance file ${file}:`, error);
                 }
             }
         } catch (error) {
-            // eslint-disable-next-line no-console
             console.warn(`Failed to read metrics from ${metricsPath}:`, error);
         }
 
@@ -94,7 +92,7 @@ export class PerformanceComparison {
     public static compareMetrics(
         baseline: Map<string, PerformanceData>,
         current: Map<string, PerformanceData>,
-        changeThreshold: number = this.DEFAULT_CHANGE_THRESHOLD,
+        _changeThreshold: number = this.DEFAULT_CHANGE_THRESHOLD,
     ): ComparisonReport {
         const details: MetricsComparison[] = [];
         let testsWithSignificantChanges = 0;
@@ -109,10 +107,15 @@ export class PerformanceComparison {
             // Extract component name from source path
             const extractComponentName = (source: string): string => {
                 // Try to extract the directory just before the test file, e.g. 'mobile-dialog' from '.../components/mobile-dialog/test/mobile-dialog.component.spec.ts'
-                const match = source.match(/components\/(.+?)\//);
-                if (match && match[1]) return match[1];
+                const match = /components\/(.+?)\//.exec(source);
+
+                if (match?.[1]) {
+                    return match[1];
+                }
+
                 // fallback: try to get the file name without extension
                 const fileName = source.split('/').pop() || source;
+
                 return fileName.replace(/\..*$/, '') || 'unknown';
             };
 
@@ -221,7 +224,9 @@ export class PerformanceComparison {
         // Filter details to only show tests with meaningful changes
         const filteredDetails = details.filter((detail) => {
             // Show new tests (no baseline)
-            if (!detail.baseline) return true;
+            if (!detail.baseline) {
+                return true;
+            }
 
             // Show tests with changes above threshold
             return (
@@ -245,10 +250,18 @@ export class PerformanceComparison {
                 const {component, testName, baseline, current, changes} = detail;
 
                 // Format changes with colors
-                const formatChange = (current: number, change: number, unit = '') => {
-                    if (!baseline) return `${current.toFixed(1)}${unit} (new)`;
+                const formatChange = (
+                    current: number,
+                    change: number,
+                    unit = '',
+                ): string => {
+                    if (!baseline) {
+                        return `${current.toFixed(1)}${unit} (new)`;
+                    }
 
-                    if (Math.abs(change) < 1) return `${current.toFixed(1)}${unit}`;
+                    if (Math.abs(change) < 1) {
+                        return `${current.toFixed(1)}${unit}`;
+                    }
 
                     const icon = change > 0 ? '📈' : '📉';
                     const sign = change > 0 ? '+' : '';
@@ -324,7 +337,6 @@ if (require.main === module) {
     const [, , baselinePath, currentPath, outputPath, thresholdArg] = process.argv;
 
     if (!baselinePath || !currentPath || !outputPath) {
-        // eslint-disable-next-line no-console
         console.error(
             'Usage: npx ts-node performance-comparison.ts <baseline-path> <current-path> <output-path> [change-threshold]',
         );
@@ -340,8 +352,7 @@ if (require.main === module) {
         currentPath,
         outputPath,
         changeThreshold,
-    ).catch((error) => {
-        // eslint-disable-next-line no-console
+    ).catch((error: unknown) => {
         console.error('Performance comparison failed:', error);
         process.exit(1);
     });

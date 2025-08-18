@@ -10,12 +10,16 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
     const {GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_EVENT_PATH} = process.env;
 
     if (!GITHUB_TOKEN) {
+        // eslint-disable-next-line no-console
         console.log('⏭️ No GITHUB_TOKEN found, skipping comment posting');
+
         return;
     }
 
     if (!GITHUB_REPOSITORY || !GITHUB_EVENT_PATH) {
+        // eslint-disable-next-line no-console
         console.log('⏭️ Not running in GitHub Actions context, skipping comment posting');
+
         return;
     }
 
@@ -25,7 +29,9 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
         const prNumber = eventData.pull_request?.number;
 
         if (!prNumber) {
+            // eslint-disable-next-line no-console
             console.log('⏭️ Not a pull request event, skipping comment posting');
+
             return;
         }
 
@@ -62,6 +68,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
             });
 
             if (updateResponse.ok) {
+                // eslint-disable-next-line no-console
                 console.log('✅ Updated existing performance comment');
             } else {
                 console.error(
@@ -78,6 +85,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
             });
 
             if (createResponse.ok) {
+                // eslint-disable-next-line no-console
                 console.log('✅ Posted new performance comment');
             } else {
                 console.error(
@@ -86,7 +94,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
                 );
             }
         }
-    } catch (error) {
+    } catch (error: unknown) {
         console.error('❌ Error posting performance comment:', error);
     }
 }
@@ -100,7 +108,7 @@ if (require.main === module) {
         process.exit(1);
     }
 
-    postPerformanceComment(reportPath).catch((error) => {
+    postPerformanceComment(reportPath).catch((error: unknown) => {
         console.error('Failed to post performance comment:', error);
         process.exit(1);
     });
