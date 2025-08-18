@@ -1,4 +1,12 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {
+    computed,
+    Directive,
+    effect,
+    inject,
+    Input,
+    signal,
+    untracked,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions, maskitoTransform} from '@maskito/core';
@@ -153,7 +161,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
 
     public override writeValue(value: number | null): void {
         super.writeValue(value);
-        this.setValue(this.value());
+        untracked(() => this.setValue(this.value()));
     }
 
     public setValue(value: number | null): void {

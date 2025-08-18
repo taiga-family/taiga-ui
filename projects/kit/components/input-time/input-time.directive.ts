@@ -1,4 +1,4 @@
-import {computed, Directive, inject, Input, signal} from '@angular/core';
+import {computed, Directive, inject, Input, signal, untracked} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
@@ -135,7 +135,7 @@ export class TuiInputTimeDirective
 
     public override writeValue(value: TuiTime | null): void {
         super.writeValue(value);
-        this.textfield.value.set(this.stringify(this.value()));
+        untracked(() => this.textfield.value.set(this.stringify(this.value())));
     }
 
     protected onInput(valueWithAffixes: string): void {
