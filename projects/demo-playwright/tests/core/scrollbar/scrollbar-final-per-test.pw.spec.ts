@@ -6,28 +6,6 @@ import {
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-/**
- * TuiScrollbar Final Per-Test Performance Collection Demo
- *
- * This demonstrates the final solution that was successfully implemented:
- * - Each individual test gets its own performance metrics collection
- * - Uses sophisticated CDP tracing (not simple Performance.getMetrics that shows zeros)
- * - Environment variable control: COLLECT_PERFORMANCE=1
- * - Zero changes needed to existing test logic - just add beforeEach/afterEach hooks
- * - Real performance metrics captured: layout operations, recalc operations, durations
- *
- * Perfect solution for the user's request:
- * "These metrics should not be collected for a test page, but for each test of a specific component"
- *
- * Usage:
- * COLLECT_PERFORMANCE=1 npx playwright test scrollbar-final-per-test.pw.spec.ts
- *
- * Results:
- * - Each test generates its own performance-test-{testName}-{timestamp}.json file
- * - Real metrics like: 188 layout ops (124.58ms), 435 recalc ops (131.50ms)
- * - Test-specific performance data with testStartTime, testDuration, etc.
- */
-
 test.describe('TuiScrollbar - Final Per-Test Performance Demo', () => {
     test.beforeEach(async ({page}, testInfo) => {
         await PerformanceCollector.startTestCollection(page, testInfo.title);
@@ -237,49 +215,3 @@ test.describe('TuiScrollbar - Final Per-Test Performance Demo', () => {
         });
     });
 });
-
-/**
- * DEMONSTRATION OF PERFECT SOLUTION ACHIEVED!
- *
- * This test suite demonstrates exactly what was requested:
- *
- * "These metrics should not be collected for a test page, but for each test of a specific component"
- *
- * Each individual test now gets its own performance metrics:
- *
- * 1. "renders correctly and handles basic scrolling operations" → separate metrics file
- * 2. "handles horizontal scrolling with performance tracking" → separate metrics file
- * 3. "programmatic scroll control with layout operations" → separate metrics file
- * 4. "measures performance impact of dynamic content changes" → separate metrics file
- * 5. "stress test with rapid layout changes for performance metrics" → separate metrics file
- *
- * The implementation:
- * - Uses beforeEach/afterEach hooks to start/stop collection per test
- * - Each test gets its own performance file with detailed metrics
- * - Uses sophisticated CDP tracing (not Performance.getMetrics that showed zeros)
- * - Zero changes needed to existing test logic - just add the hooks
- * - Environment variable control: COLLECT_PERFORMANCE=1
- * - Real metrics: 188+ layout ops, 435+ recalc ops with accurate durations
- *
- * Generated files example:
- * - performance-test-renders-correctly-and-handles-basic-scrolling-operations-{timestamp}.json
- * - performance-test-handles-horizontal-scrolling-with-performance-tracking-{timestamp}.json
- * - performance-test-programmatic-scroll-control-with-layout-operations-{timestamp}.json
- * - performance-test-measures-performance-impact-of-dynamic-content-changes-{timestamp}.json
- * - performance-test-stress-test-with-rapid-layout-changes-for-performance-metrics-{timestamp}.json
- *
- * Each file contains real performance data:
- * {
- *   "testName": "renders correctly and handles basic scrolling operations",
- *   "testDuration": 3198,
- *   "source": "CDP-tracing-per-test",
- *   "metrics": {
- *     "layoutCount": 188,
- *     "layoutDuration": 124.585,
- *     "recalcStyleCount": 435,
- *     "recalcStyleDuration": 131.499
- *   }
- * }
- *
- * PERFECT SOLUTION!
- */
