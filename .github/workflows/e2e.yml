@@ -60,7 +60,23 @@ jobs:
       - name: Collect baseline performance metrics
         env:
           COLLECT_PERFORMANCE: 1
-        run: ./scripts/collect-performance.sh baseline ./performance-baseline
+        run: |
+          echo "🚀 Starting baseline performance collection"
+          mkdir -p ./performance-baseline
+
+          # Run tests with performance collection (only those that use PerformanceCollector)
+          npx nx e2e demo-playwright -- \
+            --project=chromium \
+            --grep="performance|Performance" \
+            --reporter=line || echo "⚠️ Some tests may have failed, continuing with performance collection"
+
+          # Move collected performance files to output directory
+          if ls ./projects/demo-playwright/performance-*.json 1> /dev/null 2>&1; then
+            mv ./projects/demo-playwright/performance-*.json ./performance-baseline/
+            echo "✅ Baseline performance data collected: $(ls -1 ./performance-baseline/*.json 2>/dev/null | wc -l) files"
+          else
+            echo "⚠️ No baseline performance data files found"
+          fi
         continue-on-error: true
 
       - name: Upload baseline performance metrics
@@ -221,7 +237,23 @@ jobs:
         if: matrix.shard.project == 'chromium' && matrix.shard.index == 1
         env:
           COLLECT_PERFORMANCE: 1
-        run: ./scripts/collect-performance.sh current ./performance-current
+        run: |
+          echo "🚀 Starting current performance collection"
+          mkdir -p ./performance-current
+
+          # Run tests with performance collection (only those that use PerformanceCollector)
+          npx nx e2e demo-playwright -- \
+            --project=chromium \
+            --grep="performance|Performance" \
+            --reporter=line || echo "⚠️ Some tests may have failed, continuing with performance collection"
+
+          # Move collected performance files to output directory
+          if ls ./projects/demo-playwright/performance-*.json 1> /dev/null 2>&1; then
+            mv ./projects/demo-playwright/performance-*.json ./performance-current/
+            echo "✅ Current performance data collected: $(ls -1 ./performance-current/*.json 2>/dev/null | wc -l) files"
+          else
+            echo "⚠️ No current performance data files found"
+          fi
         continue-on-error: true
 
       - name: Upload current performance metrics
