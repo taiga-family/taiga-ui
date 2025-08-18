@@ -190,6 +190,9 @@
     <loc>https://taiga-ui.dev/components/dialog/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/experimental/dialog/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/drawer/</loc>
   </url>
   <url>
@@ -989,6 +992,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/dialog/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/experimental/dialog/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/experimental/dialog/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/drawer/API/</loc>
