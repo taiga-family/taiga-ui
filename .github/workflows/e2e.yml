@@ -79,7 +79,7 @@ jobs:
             npx nx e2e demo-playwright -- \
               --project=chromium \
               --reporter=line \
-              --grep="measures performance impact of dynamic content changes" || echo "⚠️ Some tests may have failed, continuing with performance collection"
+              projects/demo-playwright/tests/core/scrollbar/performance.pw.spec.ts|| echo "⚠️ Some tests may have failed, continuing with performance collection"
 
             # Move collected performance files to output directory
             if ls ./projects/demo-playwright/tests-results/performance-*.json 1> /dev/null 2>&1; then
@@ -110,7 +110,7 @@ jobs:
           npx nx e2e demo-playwright -- \
             --project=chromium \
             --reporter=line \
-            --grep="measures performance impact of dynamic content changes" || echo "⚠️ Some tests may have failed, continuing with performance collection"
+            projects/demo-playwright/tests/core/scrollbar/performance.pw.spec.ts
 
           # Move collected performance files to output directory
           if ls ./projects/demo-playwright/tests-results/performance-*.json 1> /dev/null 2>&1; then
