@@ -179,9 +179,8 @@ export class TuiTextfieldBaseComponent<T>
 
         try {
             this.input?.nativeElement.showPicker?.();
-        } catch (error) {
-            // Ignore showPicker errors (e.g., cross-origin iframe restrictions)
-            console.debug('showPicker failed:', error);
+        } catch {
+            // Empty catch block - silently ignore showPicker errors
         }
     }
 
