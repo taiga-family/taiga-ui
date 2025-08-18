@@ -40,6 +40,18 @@ test.describe('Dialog', () => {
         await expect.soft(page).toHaveScreenshot('03-dialog-2.png');
     });
 
+    test('Confirmation', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DialogExperimental);
+
+        const documentationPagePO = new TuiDocumentationPagePO(page);
+        const example = documentationPagePO.getExample('#confirmation');
+
+        await example.locator('button').first().click();
+        await expect.soft(page).toHaveScreenshot('04-dialog-1.png');
+        await page.locator('tui-dialog button').last().click();
+        await expect.soft(page).toHaveScreenshot('04-dialog-2.png');
+    });
+
     test('Closing', async ({page}) => {
         await tuiGoto(page, DemoRoute.DialogExperimental);
 
@@ -47,9 +59,9 @@ test.describe('Dialog', () => {
         const example = documentationPagePO.getExample('#closing');
 
         await example.locator('button').first().click();
-        await expect.soft(page).toHaveScreenshot('04-dialog-1.png');
+        await expect.soft(page).toHaveScreenshot('05-dialog-1.png');
         await page.locator('tui-dialog button').last().click();
-        await expect.soft(page).toHaveScreenshot('04-dialog-2.png');
+        await expect.soft(page).toHaveScreenshot('05-dialog-2.png');
     });
 
     test('Customization', async ({page}) => {
@@ -59,9 +71,9 @@ test.describe('Dialog', () => {
         const example = documentationPagePO.getExample('#customization');
 
         await example.locator('button').first().click();
-        await expect.soft(page).toHaveScreenshot('05-dialog-1.png');
+        await expect.soft(page).toHaveScreenshot('06-dialog-1.png');
         await page.locator('tui-dialog button').last().click();
         await example.locator('button').last().click();
-        await expect.soft(page).toHaveScreenshot('05-dialog-2.png');
+        await expect.soft(page).toHaveScreenshot('06-dialog-2.png');
     });
 });

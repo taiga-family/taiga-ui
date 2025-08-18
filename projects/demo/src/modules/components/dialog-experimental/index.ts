@@ -29,6 +29,7 @@ export default class Page extends Array {
         'String',
         'Directive',
         'Component',
+        'Confirmation',
         'Closing',
         'Customization',
     ];
@@ -39,10 +40,10 @@ export default class Page extends Array {
         'component.ts': import('./examples/3/component.ts?raw'),
     };
 
-    protected readonly [3] = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
-        'service.ts': import('./examples/4/service.ts?raw'),
+    protected readonly [4] = {
+        TypeScript: import('./examples/5/index.ts?raw'),
+        HTML: import('./examples/5/index.html?raw'),
+        'service.ts': import('./examples/5/service.ts?raw'),
     };
 
     protected data = 'Data';

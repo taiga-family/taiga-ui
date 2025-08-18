@@ -1,34 +1,23 @@
 <button
     tuiButton
     type="button"
-    (click)="augmented = true"
+    (click)="open = true"
 >
-    Show augmented
-</button>
-<br />
-<br />
-<button
-    tuiButton
-    type="button"
-    (click)="custom = true"
->
-    Show custom
+    Show dialog
 </button>
 <ng-template
-    [tuiDialogOptions]="{size: 's', appearance: 'taiga compact'}"
-    [(tuiDialog)]="augmented"
+    [tuiDialogOptions]="{size: 's'}"
+    [(tuiDialog)]="open"
 >
-    <header>Augmented design</header>
-    <p>Using both built-in "taiga" appearance and custom "compact" appearance to alter built-in styles</p>
-</ng-template>
-
-<ng-template
-    [tuiDialogOptions]="{appearance: 'sheet'}"
-    [(tuiDialog)]="custom"
->
-    <header>Custom design</header>
-    <p>
-        Overriding default appearance completely and taking the styles of dialog fully upon oneself, leaving only
-        behavior like focus trap and closable/dismissible interactions to Taiga UI
-    </p>
+    <header>Hello!</header>
+    <p>Welcome to the website</p>
+    <footer>
+        <button
+            tuiButton
+            type="button"
+            (click)="auth.logout()"
+        >
+            Logout
+        </button>
+    </footer>
 </ng-template>

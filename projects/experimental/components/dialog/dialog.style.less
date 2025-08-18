@@ -30,12 +30,16 @@
             }
 
             ::ng-deep > p,
-            ::ng-deep > ng-component > p {
+            ::ng-deep > ng-component > p,
+            /** TODO remove tui-confirm in v5 */
+            ::ng-deep > tui-confirm > p {
                 margin: -0.75rem 0 1.25rem;
             }
 
             ::ng-deep > footer,
-            ::ng-deep > ng-component > footer {
+            ::ng-deep > ng-component > footer,
+            /** TODO remove tui-confirm in v5 */
+            ::ng-deep > tui-confirm > footer {
                 margin-block-start: 1.25rem;
             }
         }
@@ -60,7 +64,9 @@
         }
 
         ::ng-deep > p,
-        ::ng-deep > ng-component > p {
+        ::ng-deep > ng-component > p,
+        /** TODO remove tui-confirm in v5 */
+        ::ng-deep > tui-confirm > p {
             margin: -1rem 0 1.5rem;
 
             &:last-child {
@@ -69,9 +75,12 @@
         }
 
         ::ng-deep > footer,
-        ::ng-deep > ng-component > footer {
+        ::ng-deep > ng-component > footer,
+        /** TODO remove tui-confirm in v5 */
+        ::ng-deep > tui-confirm > footer {
             display: flex;
             justify-content: flex-end;
+            flex-wrap: wrap-reverse;
             gap: 0.75rem;
             margin-block-start: 2rem;
         }
@@ -80,6 +89,16 @@
     &._closable ::ng-deep > header,
     &._closable ::ng-deep > ng-component > header {
         padding-inline-end: 2rem;
+    }
+}
+
+:host-context(tui-root._mobile)[data-appearance~='taiga'] {
+    ::ng-deep > footer > button,
+    ::ng-deep > ng-component > footer > button,
+        /** TODO remove tui-confirm in v5 */
+    ::ng-deep > tui-confirm > footer > button {
+        flex: 1;
+        overflow: visible;
     }
 }
 
