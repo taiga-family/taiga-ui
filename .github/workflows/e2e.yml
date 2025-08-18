@@ -64,18 +64,24 @@ jobs:
           echo "🚀 Starting baseline performance collection"
           mkdir -p ./performance-baseline
 
-          # Run specific test files that use PerformanceCollector
-          npx nx e2e demo-playwright -- \
-            --project=chromium \
-            --reporter=line \
-            "projects/demo-playwright/tests/core/scrollbar/scrollbar-final-per-test.pw.spec.ts" || echo "⚠️ Some tests may have failed, continuing with performance collection"
+          # Check if any performance tests exist on this branch
+          if grep -r "Performance" tests/ --include="*.spec.ts" >/dev/null 2>&1; then
+            echo "📝 Performance test files found, running baseline collection"
+            npx nx e2e demo-playwright -- \
+              --project=chromium \
+              --reporter=line \
+              --grep="Performance" || echo "⚠️ Some tests may have failed, continuing with performance collection"
 
-          # Move collected performance files to output directory
-          if ls ./projects/demo-playwright/performance-*.json 1> /dev/null 2>&1; then
-            mv ./projects/demo-playwright/performance-*.json ./performance-baseline/
-            echo "✅ Baseline performance data collected: $(ls -1 ./performance-baseline/*.json 2>/dev/null | wc -l) files"
+            # Move collected performance files to output directory
+            if ls ./projects/demo-playwright/performance-*.json 1> /dev/null 2>&1; then
+              mv ./projects/demo-playwright/performance-*.json ./performance-baseline/
+              echo "✅ Baseline performance data collected: $(ls -1 ./performance-baseline/*.json 2>/dev/null | wc -l) files"
+            else
+              echo "⚠️ No baseline performance data files found"
+            fi
           else
-            echo "⚠️ No baseline performance data files found"
+            echo "ℹ️ Performance test files not found on baseline branch - this is expected for new features"
+            echo "ℹ️ Creating empty baseline directory for comparison"
           fi
         continue-on-error: true
 
@@ -361,10 +367,20 @@ jobs:
             echo "performance_data_exists=true" >> $GITHUB_OUTPUT
             mkdir -p ./performance/baseline
             
-            npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
-              ./performance/baseline \
-              ./performance/current \
-              ./performance-report.md
+            # Check if we have baseline data
+            if [ -d "./performance/baseline" ] && [ "$(ls -A ./performance/baseline 2>/dev/null)" ]; then
+              echo "📊 Comparing performance metrics with baseline"
+              npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
+                ./performance/baseline \
+                ./performance/current \
+                ./performance-report.md
+            else
+              echo "📊 No baseline data available - showing current metrics only"
+              npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
+                ./performance/baseline \
+                ./performance/current \
+                ./performance-report.md
+            fi
           else
             echo "performance_data_exists=false" >> $GITHUB_OUTPUT
             echo "## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this run._" > ./performance-report.md
