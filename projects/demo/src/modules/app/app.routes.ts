@@ -325,6 +325,11 @@ export const ROUTES: Routes = [
         title: 'Dialog',
     }),
     route({
+        path: DemoRoute.DialogExperimental,
+        loadComponent: async () => import('../components/dialog-experimental'),
+        title: 'Dialog (Experimental)',
+    }),
+    route({
         path: DemoRoute.Drawer,
         loadComponent: async () => import('../components/drawer'),
         title: 'Drawer',
