@@ -68,7 +68,7 @@ jobs:
           npx nx e2e demo-playwright -- \
             --project=chromium \
             --reporter=line \
-            "projects/demo-playwright/tests/core/scrollbar/scrollbar-final-per-test.pw.spec.ts" || echo "⚠️ Some tests may have failed, continuing with performance collection"
+            tests/core/scrollbar/scrollbar-final-per-test.pw.spec.ts || echo "⚠️ Some tests may have failed, continuing with performance collection"
 
           # Move collected performance files to output directory
           if ls ./projects/demo-playwright/performance-*.json 1> /dev/null 2>&1; then
@@ -245,7 +245,7 @@ jobs:
           npx nx e2e demo-playwright -- \
             --project=chromium \
             --reporter=line \
-            "projects/demo-playwright/tests/core/scrollbar/scrollbar-final-per-test.pw.spec.ts" || echo "⚠️ Some tests may have failed, continuing with performance collection"
+            tests/core/scrollbar/scrollbar-final-per-test.pw.spec.ts || echo "⚠️ Some tests may have failed, continuing with performance collection"
 
           # Move collected performance files to output directory
           if ls ./projects/demo-playwright/performance-*.json 1> /dev/null 2>&1; then
