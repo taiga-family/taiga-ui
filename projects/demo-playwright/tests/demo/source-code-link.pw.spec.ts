@@ -38,7 +38,14 @@ test.describe('Source code button', () => {
                 test.skip(page.url() !== docPageRoute, 'New documentation page');
             }
 
-            expect(response.status()).not.toBe(404);
+            expect(
+                response.status(),
+                `Source code link is broken (404). The component at "${adjustedHref}" does not exist on branch "${currentBranch}". ` +
+                    'This usually means the component was renamed, moved, or deleted. ' +
+                    `Please ensure the component exists at the correct path or update the demo route "${path}". ` +
+                    'If the component exists but the path is wrong, add the correct path parameter to tui-doc-page: ' +
+                    '<tui-doc-page path="correct/component/path" ...>',
+            ).not.toBe(404);
         });
     });
 
