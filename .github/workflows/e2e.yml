@@ -62,6 +62,9 @@ jobs:
       - uses: taiga-family/ci/actions/setup/variables@v1.144.0
       - uses: taiga-family/ci/actions/setup/node@v1.144.0
 
+      - name: Ubuntu building all dependencies
+        run: sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
+
       - name: Download Cypress Baseline Snapshots
         uses: actions/download-artifact@v4.3.0
         with:
@@ -127,6 +130,10 @@ jobs:
       - name: Mac OS X building all dependencies
         if: ${{ contains( matrix.shard.os, 'macos') }}
         run: brew install pkg-config cairo pango libpng jpeg-turbo giflib librsvg --force || echo ''
+
+      - name: Ubuntu building all dependencies
+        if: ${{ contains( matrix.shard.os, 'ubuntu') }}
+        run: sudo apt-get install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev
 
       - uses: taiga-family/ci/actions/setup/node@v1.144.0
       - uses: taiga-family/ci/actions/setup/playwright@v1.144.0
