@@ -1,5 +1,9 @@
-import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {chain} from '@angular-devkit/schematics';
+import {
+    chain,
+    type Rule,
+    type SchematicContext,
+    type Tree,
+} from '@angular-devkit/schematics';
 import {
     FINISH_SYMBOL,
     getPackageJsonDependency,
@@ -12,7 +16,7 @@ import {
 } from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants/file-globs';
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {removeModules} from '../../../utils/remove-module';
 import {renameTypes, replaceIdentifiers} from '../../steps';
 import {getFileSystem} from '../../utils/get-file-system';

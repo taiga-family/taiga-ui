@@ -2,8 +2,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TuiDataList} from '@taiga-ui/core';
+import {TuiDataList, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {delay, of} from 'rxjs';
 
 @Component({

@@ -1,4 +1,4 @@
-import type {TuiHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import {type TuiHandler, type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 
 function bothEmpty(item1: unknown, item2: unknown): boolean {
     return Array.isArray(item1) && Array.isArray(item2) && !item1.length && !item2.length;

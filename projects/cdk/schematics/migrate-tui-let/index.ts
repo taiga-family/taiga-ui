@@ -1,9 +1,9 @@
-import type {Rule, Tree} from '@angular-devkit/schematics';
+import {type Rule, type Tree} from '@angular-devkit/schematics';
 import {getWorkspace} from '@schematics/angular/utility/workspace';
 import {createProject, errorLog, saveActiveProject, setActiveProject} from 'ng-morph';
 
 import {ALL_FILES} from '../constants';
-import type {TuiSchema} from '../ng-add/schema';
+import {type TuiSchema} from '../ng-add/schema';
 import {getProjects} from '../utils/get-projects';
 import {removeModule} from '../utils/remove-module';
 import {findElementsWithAttribute} from '../utils/templates/elements';

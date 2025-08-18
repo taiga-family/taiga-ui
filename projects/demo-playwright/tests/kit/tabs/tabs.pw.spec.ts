@@ -1,7 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiTabsPO} from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 const {describe, beforeEach} = test;
 
@@ -24,7 +23,7 @@ describe('Tabs', () => {
 
             test('no extra margin after the last tab', async ({page, browserName}) => {
                 // TODO: why does this test keep failing in safari
-                // eslint-disable-next-line playwright/no-skipped-test
+
                 test.skip(
                     browserName !== 'chromium',
                     'This feature is only relevant in Chrome',
@@ -71,7 +70,6 @@ describe('Tabs', () => {
                 page,
                 browserName,
             }) => {
-                // eslint-disable-next-line playwright/no-skipped-test
                 test.skip(
                     browserName !== 'chromium',
                     // TODO: bug https://github.com/taiga-family/taiga-ui/issues/9836

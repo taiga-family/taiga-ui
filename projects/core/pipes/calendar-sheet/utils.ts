@@ -1,6 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import type {TuiMonth} from '@taiga-ui/cdk/date-time';
-import {DAYS_IN_WEEK, TuiDay} from '@taiga-ui/cdk/date-time';
+import {DAYS_IN_WEEK, TuiDay, type TuiMonth} from '@taiga-ui/cdk/date-time';
 import {tuiInRange} from '@taiga-ui/cdk/utils/math';
 
 /**

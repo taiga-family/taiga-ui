@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({

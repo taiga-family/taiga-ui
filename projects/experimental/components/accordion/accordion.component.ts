@@ -1,18 +1,19 @@
-import type {AfterViewInit, QueryList} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
     DestroyRef,
     inject,
     Input,
+    type QueryList,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiExpand} from '@taiga-ui/experimental/components/expand';
 import {combineLatest, map, merge, ReplaySubject, withLatestFrom} from 'rxjs';
 

@@ -1,16 +1,16 @@
 import {NgForOf} from '@angular/common';
-import type {OnInit} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
     DestroyRef,
     inject,
+    type OnInit,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
-import type {TuiPortalItem} from '@taiga-ui/core/types';
+import {type TuiPortalItem} from '@taiga-ui/core/types';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiHintService} from './hint.service';

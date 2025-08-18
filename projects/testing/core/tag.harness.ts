@@ -1,5 +1,4 @@
-import type {TestElement} from '@angular/cdk/testing';
-import {TestKey} from '@angular/cdk/testing';
+import {type TestElement, TestKey} from '@angular/cdk/testing';
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 export class TuiTagHarness extends TuiComponentHarness {

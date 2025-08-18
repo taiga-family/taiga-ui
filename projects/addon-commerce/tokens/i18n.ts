@@ -1,7 +1,6 @@
 import {InjectionToken} from '@angular/core';
 import {tuiExtractI18n} from '@taiga-ui/i18n/utils';
-import type {Observable} from 'rxjs';
-import {of} from 'rxjs';
+import {type Observable, of} from 'rxjs';
 
 /**
  * Number and card number i18n

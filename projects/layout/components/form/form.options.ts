@@ -1,5 +1,5 @@
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiFormOptions {
     readonly size: TuiSizeL | TuiSizeS;

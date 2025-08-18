@@ -8,8 +8,8 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import type {SafeResourceUrl} from '@angular/platform-browser';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {type SafeResourceUrl} from '@angular/platform-browser';
+import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 

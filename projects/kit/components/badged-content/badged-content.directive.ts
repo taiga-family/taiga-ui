@@ -1,5 +1,5 @@
 import {Directive, Input} from '@angular/core';
-import type {TuiLooseUnion} from '@taiga-ui/cdk/types';
+import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
 
 @Directive({
     standalone: true,

@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import type {TuiContext, TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiButton, TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiButtonSelect, TuiDataListWrapper, TuiPagination} from '@taiga-ui/kit';
 

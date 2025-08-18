@@ -1,18 +1,23 @@
-import type {KeyValue} from '@angular/common';
-import {KeyValuePipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {OnChanges} from '@angular/core';
+import {
+    type KeyValue,
+    KeyValuePipe,
+    NgForOf,
+    NgIf,
+    NgTemplateOutlet,
+} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     ContentChild,
     inject,
     Input,
+    type OnChanges,
     TemplateRef,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';

@@ -3,10 +3,9 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {MaskitoDirective} from '@maskito/angular';
-import type {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk';
-import {TuiDay} from '@taiga-ui/cdk';
+import {type TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
 import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({

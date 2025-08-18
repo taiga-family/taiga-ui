@@ -5,8 +5,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExcludeProperties} from '@taiga-ui/addon-doc';
 import {tuiProvide} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeM} from '@taiga-ui/core';
-import {TuiHint} from '@taiga-ui/core';
+import {TuiHint, type TuiSizeL, type TuiSizeM} from '@taiga-ui/core';
 import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';

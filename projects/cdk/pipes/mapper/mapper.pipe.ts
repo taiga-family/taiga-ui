@@ -1,6 +1,5 @@
-import type {PipeTransform} from '@angular/core';
-import {Pipe} from '@angular/core';
-import type {TuiMapper} from '@taiga-ui/cdk/types';
+import {Pipe, type PipeTransform} from '@angular/core';
+import {type TuiMapper} from '@taiga-ui/cdk/types';
 
 @Pipe({
     standalone: true,

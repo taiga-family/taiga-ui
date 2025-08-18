@@ -6,8 +6,6 @@
 *** Ticks - tick marks along the length of the track.
 */
 
-@track-height: 0.125rem;
-
 @track-color: var(--tui-slider-track-color);
 @thumb-color: currentColor;
 
@@ -21,7 +19,7 @@
 };
 
 .customize-track(@progress-filling, @thumb-width) {
-    block-size: @track-height;
+    block-size: var(--tui-thickness);
     border-radius: inherit;
 
     /*
@@ -88,7 +86,7 @@
 
 /* Vertically centers thumb on the track (webkit only) */
 .vertically-align-thumb() {
-    margin-block-start: (@track-height / 2) - (@hitbox / 2);
+    margin-block-start: calc(var(--tui-thickness) / 2 - (@hitbox / 2));
 }
 
 .thumb-ghost(@size) {
@@ -130,12 +128,13 @@
     color: var(--tui-background-accent-1); /* See currentColor inside this file */
     cursor: pointer;
     appearance: none;
-    block-size: @track-height;
-    padding: ((@hitbox - @track-height) / 2) 0; /* To catch click events nearby THIN input's track */
+    block-size: 1rem;
     background-color: transparent;
     background-clip: content-box; /* To clip filling of paddings */
     outline: none;
     border-radius: var(--tui-radius-m);
+
+    --tui-thickness: 0.125rem;
 
     &:active {
         cursor: ew-resize;
@@ -207,7 +206,7 @@
 
     /* stylelint-disable-next-line no-duplicate-selectors */
     &::-moz-range-progress {
-        block-size: @track-height;
+        block-size: var(--tui-thickness);
         background: @thumb-color;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -218,18 +217,15 @@
     --tui-radius: var(--tui-radius-m);
     @gap: calc(var(--tui-radius) / 2);
 
-    position: absolute;
     top: 100%;
     left: @gap;
     right: @gap;
     inline-size: calc(100% - @gap * 2); // Double check Firefox if you want to set `width: auto`
-    box-sizing: border-box;
     block-size: 1rem;
-    margin: -0.5625rem 0 0;
+    margin: calc(-0.5rem - var(--tui-thickness) / 2) 0 0;
     padding: 0;
     border-top-left-radius: 0;
     border-bottom-left-radius: calc(var(--tui-radius) * 10) calc(var(--tui-radius) * 2);
-    pointer-events: auto;
 }
 
 :host-context(tui-textfield[data-size='l']) :host([type='range']) {

@@ -11,17 +11,20 @@ import {FormsModule} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
-import type {
-    TuiBooleanHandler,
-    TuiHandler,
-    TuiIdentityMatcher,
+import {
+    type TuiBooleanHandler,
+    type TuiHandler,
+    type TuiIdentityMatcher,
 } from '@taiga-ui/cdk/types';
 import {TuiHintOverflow} from '@taiga-ui/core/directives/hint';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TUI_BLOCK_OPTIONS, TuiBlock} from '@taiga-ui/kit/components/block';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+    PolymorpheusTemplate,
+} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

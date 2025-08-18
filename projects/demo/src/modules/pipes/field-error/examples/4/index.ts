@@ -1,11 +1,13 @@
 import {AsyncPipe, NgForOf} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
-import type {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {
+    type AbstractControl,
     FormArray,
     FormControl,
     FormGroup,
     ReactiveFormsModule,
+    type ValidationErrors,
+    type ValidatorFn,
     Validators,
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -14,7 +16,7 @@ import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiButton, TuiError, TuiTextfield} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

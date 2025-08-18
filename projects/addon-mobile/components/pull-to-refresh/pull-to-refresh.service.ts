@@ -1,5 +1,4 @@
-import type {ElementRef} from '@angular/core';
-import {inject, Injectable} from '@angular/core';
+import {type ElementRef, inject, Injectable} from '@angular/core';
 import {
     tuiScrollFrom,
     tuiTypedFromEvent,

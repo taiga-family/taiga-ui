@@ -1,6 +1,6 @@
 import {NgIf} from '@angular/common';
-import type {AfterViewInit} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
@@ -21,8 +21,7 @@ import {
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import type {TuiTextareaOptions} from './textarea.options';
-import {TUI_TEXTAREA_OPTIONS} from './textarea.options';
+import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options';
 
 @Component({
     standalone: true,

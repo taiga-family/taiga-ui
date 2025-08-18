@@ -7,7 +7,7 @@ import {MIN_DAY, MONTHS_IN_YEAR} from './date-time';
 import {TuiDayOfWeek} from './day-of-week';
 import {TuiMonth} from './month';
 import {TuiMonthNumber} from './month-number';
-import type {TuiDateMode, TuiDayLike} from './types';
+import {type TuiDateMode, type TuiDayLike} from './types';
 import {TuiYear} from './year';
 
 /**

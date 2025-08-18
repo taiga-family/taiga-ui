@@ -1,16 +1,21 @@
-import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    type DoCheck,
     inject,
     Input,
     signal,
     ViewContainerRef,
 } from '@angular/core';
-import type {AbstractControl, ValidationErrors, Validator} from '@angular/forms';
-import {NG_VALIDATORS, Validators} from '@angular/forms';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {
+    type AbstractControl,
+    NG_VALIDATORS,
+    type ValidationErrors,
+    type Validator,
+    Validators,
+} from '@angular/forms';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_TEXTFIELD_OPTIONS,

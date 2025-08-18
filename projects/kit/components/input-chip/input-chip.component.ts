@@ -11,18 +11,20 @@ import {
 } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiDirectiveBinding, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import type {TuiTextfieldItem} from '@taiga-ui/core/components/textfield';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldComponent,
+    type TuiTextfieldItem,
 } from '@taiga-ui/core/components/textfield';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiHintDirective, TuiHintOverflow} from '@taiga-ui/core/directives/hint';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChip} from '@taiga-ui/kit/components/chip';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';

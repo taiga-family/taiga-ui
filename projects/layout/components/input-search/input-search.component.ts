@@ -1,10 +1,12 @@
-import type {ElementRef, EmbeddedViewRef, OnChanges} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    type ElementRef,
+    type EmbeddedViewRef,
     EventEmitter,
     inject,
     Input,
+    type OnChanges,
     Output,
     TemplateRef,
     ViewChild,
@@ -26,8 +28,7 @@ import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {tuiCellOptionsProvider} from '@taiga-ui/layout/components/cell';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

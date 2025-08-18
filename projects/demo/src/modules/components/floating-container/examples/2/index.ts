@@ -4,8 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
-import type {TuiMatcher} from '@taiga-ui/cdk';
-import {TUI_DEFAULT_MATCHER, TuiFilterPipe} from '@taiga-ui/cdk';
+import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
 import {
     TuiButton,
     tuiHeightCollapse,

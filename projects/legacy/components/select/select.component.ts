@@ -7,25 +7,24 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
 import {
     tuiAsDataListHost,
     tuiAsOptionContent,
     TuiDataListDirective,
+    type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
 import {TuiDropdownFixed, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
-import type {
-    TuiSizeL,
-    TuiSizeM,
-    TuiSizeS,
-    TuiValueContentContext,
+import {
+    type TuiSizeL,
+    type TuiSizeM,
+    type TuiSizeS,
+    type TuiValueContentContext,
 } from '@taiga-ui/core/types';
-import type {TuiItemsHandlers} from '@taiga-ui/kit/tokens';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/kit/tokens';
+import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from '@taiga-ui/kit/tokens';
 import {
     AbstractTuiNativeSelect,
     AbstractTuiNullableControl,
@@ -35,12 +34,13 @@ import {TUI_ARROW_MODE} from '@taiga-ui/legacy/components/arrow';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
 import {TUI_TEXTFIELD_CLEANER, TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import type {TuiSelectOptions} from './select.options';
-import {TUI_SELECT_OPTIONS} from './select.options';
+import {TUI_SELECT_OPTIONS, type TuiSelectOptions} from './select.options';
 
 /**
  * TODO(v5): delete it

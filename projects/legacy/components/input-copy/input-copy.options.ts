@@ -1,10 +1,9 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {InjectionToken, type Provider} from '@angular/core';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiHintDirection} from '@taiga-ui/core/directives/hint';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type TuiHintDirection} from '@taiga-ui/core/directives/hint';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 /**
  * @deprecated use {@link TuiCopy} with {@link TuiTextfield}

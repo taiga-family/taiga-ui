@@ -6,11 +6,10 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {SafeStyle} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
-import type {TuiGradientDirection} from '@taiga-ui/cdk/utils/color';
+import {DomSanitizer, type SafeStyle} from '@angular/platform-browser';
 import {
     tuiGetGradientData,
+    type TuiGradientDirection,
     tuiParseColor,
     tuiParseGradient,
 } from '@taiga-ui/cdk/utils/color';

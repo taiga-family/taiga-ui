@@ -3,14 +3,14 @@ import {expect, test} from '@playwright/test';
 
 test.describe('Source code button', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
+    const proprietary = process.env['PROPRIETARY'] === 'true';
 
-    demoPaths.forEach((path) => {
+    (proprietary ? [] : demoPaths).forEach((path) => {
         test(`${path}`, async ({page, request}) => {
             const sourceCodeLink = new TuiDocumentationPagePO(page).sourceCodeLink;
 
             await tuiGoto(page, path);
 
-            // eslint-disable-next-line playwright/no-skipped-test
             test.skip(
                 !(await sourceCodeLink.all()).length,
                 'Page does not contain source code button',
@@ -30,7 +30,6 @@ test.describe('Source code button', () => {
 
                 await page.goto(docPageRoute);
 
-                // eslint-disable-next-line playwright/no-skipped-test
                 test.skip(page.url() !== docPageRoute, 'New documentation page');
             }
 
@@ -39,6 +38,8 @@ test.describe('Source code button', () => {
     });
 
     test('ensure GitHub still returns 404 for invalid path', async ({request}) => {
+        test.skip(proprietary);
+
         const response = await request.get(
             'https://github.com/taiga-family/taiga-ui/tree/main/projects/kit/components/invalid-component-name',
         );

@@ -1,4 +1,4 @@
-import type {TuiLanguageLayout} from '@taiga-ui/i18n/types';
+import {type TuiLanguageLayout} from '@taiga-ui/i18n/types';
 
 export const TUI_LITHUANIAN_LANGUAGE_LAYOUT: TuiLanguageLayout = {
     inputSearch: {

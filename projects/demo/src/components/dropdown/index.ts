@@ -3,14 +3,17 @@ import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import type {TuiLooseUnion} from '@taiga-ui/cdk';
-import type {
-    TuiDropdownAlign,
-    TuiDropdownOptions,
-    TuiDropdownWidth,
-    TuiVerticalDirection,
+import {type TuiLooseUnion} from '@taiga-ui/cdk';
+import {
+    TUI_DROPDOWN_OPTIONS,
+    TuiDropdown,
+    type TuiDropdownAlign,
+    type TuiDropdownOptions,
+    type TuiDropdownWidth,
+    TuiLink,
+    TuiTitle,
+    type TuiVerticalDirection,
 } from '@taiga-ui/core';
-import {TUI_DROPDOWN_OPTIONS, TuiDropdown, TuiLink, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

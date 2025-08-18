@@ -4,7 +4,7 @@
     "sourceRoot": "projects/{projectName}",
     "projectType": "application",
     "prefix": "app",
-    "implicitDependencies": ["!testing"],
+    "implicitDependencies": ["!testing", "icons*"],
     "targets": {
         "i18n": {
             "outputs": ["{workspaceRoot}/dist/i18n"],
@@ -22,7 +22,7 @@
                     "params": "ignore"
                 },
                 {
-                    "target": "generate-llms-file",
+                    "target": "generate-llms",
                     "params": "ignore"
                 }
             ],
@@ -240,11 +240,11 @@
                 }
             ]
         },
-        "generate-llms-file": {
+        "generate-llms": {
             "executor": "nx:run-commands",
             "options": {
                 "parallel": false,
-                "command": "ts-node ./projects/demo/scripts/llms.ts"
+                "command": "npm run generate:llms && npm run generate:llms-full"
             }
         },
         "prerender": {
@@ -273,7 +273,7 @@
                     "params": "ignore"
                 },
                 {
-                    "target": "generate-llms-file",
+                    "target": "generate-llms",
                     "params": "ignore"
                 }
             ],

@@ -6,8 +6,7 @@ import {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiComparator} from '@taiga-ui/addon-table';
-import {TuiTable} from '@taiga-ui/addon-table';
+import {type TuiComparator, TuiTable} from '@taiga-ui/addon-table';
 import {TuiDay, tuiToInt} from '@taiga-ui/cdk';
 import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 

@@ -1,10 +1,9 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Provider} from '@angular/core';
 import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {
-    TuiBooleanHandler,
-    TuiIdentityMatcher,
-    TuiStringHandler,
+import {
+    type TuiBooleanHandler,
+    type TuiIdentityMatcher,
+    type TuiStringHandler,
 } from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 

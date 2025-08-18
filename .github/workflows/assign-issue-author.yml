@@ -1,0 +1,86 @@
+name: 🤖 Assign PR Closer to All Linked Issues
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  assign-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if PR was merged (optional)
+        id: check-merge
+        run: |
+          if [ "${{ github.event.pull_request.merged }}" == "true" ]; then
+            echo "PR was merged, proceeding"
+            echo "should_proceed=true" >> $GITHUB_OUTPUT
+          else
+            echo "PR was closed without merging, skipping"
+            echo "should_proceed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Find ALL linked issues
+        if: steps.check-merge.outputs.should_proceed == 'true'
+        id: find-linked-issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body || '';
+            const prNumber = context.payload.pull_request.number;
+            const fromBody = [...body.matchAll(/#(\d+)/g)].map(m => Number(m[1]));
+            const { data: timelineEvents } = await github.rest.issues.listEventsForTimeline({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+
+            const fromTimeline = timelineEvents
+              .filter(event => event.event === 'cross-referenced')
+              .filter(event => event.source?.issue?.number)
+              .map(event => event.source.issue.number);
+
+            const linkedIssues = [...new Set([...fromBody, ...fromTimeline])];
+
+            console.log(
+              linkedIssues.length
+                ? `Found linked issues: ${linkedIssues.join(', ')}`
+                : 'No linked issues found.'
+            );
+
+            return JSON.stringify(linkedIssues);
+
+      - name: Assign PR author to ALL linked issues
+        if: steps.check-merge.outputs.should_proceed == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            let issueNumbers;
+
+            try {
+              issueNumbers = JSON.parse(${{ steps.find-linked-issues.outputs.result }}.trim());
+            } catch (e) {
+              console.warn('Failed to parse result, defaulting to empty array', e);
+              issueNumbers = [];
+            }
+
+            if (!Array.isArray(issueNumbers) || issueNumbers.length === 0) {
+              console.log('No issues to assign.');
+
+              return;
+            }
+
+            const prAuthor = context.payload.pull_request.user.login;
+            console.log(`Assigning @${prAuthor} to issues: ${issueNumbers.join(', ')}`);
+
+            for (const issueNumber of issueNumbers) {
+              try {
+                await github.rest.issues.addAssignees({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issueNumber,
+                  assignees: [prAuthor],
+                });
+                console.log(`✓ Assigned to #${issueNumber}`);
+              } catch (error) {
+                console.error(`Failed to assign to #${issueNumber}: ${error.message}`);
+              }
+            }

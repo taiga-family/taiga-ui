@@ -1,9 +1,7 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken, Optional, SkipSelf} from '@angular/core';
+import {InjectionToken, Optional, type Provider, SkipSelf} from '@angular/core';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
-import type {TuiRounding} from '@taiga-ui/cdk/types';
-import type {Observable} from 'rxjs';
-import {map, of} from 'rxjs';
+import {type TuiRounding} from '@taiga-ui/cdk/types';
+import {map, type Observable, of} from 'rxjs';
 
 export type TuiDecimalMode = 'always' | 'not-zero' | 'pad';
 export type TuiDecimalSymbol = ',' | '.';

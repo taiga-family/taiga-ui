@@ -1,9 +1,14 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiDocAPIItem, TuiDocAPINumberItem} from '@taiga-ui/addon-doc';
-import type {TuiLooseUnion} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS, TuiTextfieldOptions} from '@taiga-ui/core';
-import {TUI_TEXTFIELD_OPTIONS, TuiTitle} from '@taiga-ui/core';
+import {type TuiLooseUnion} from '@taiga-ui/cdk';
+import {
+    TUI_TEXTFIELD_OPTIONS,
+    type TuiSizeL,
+    type TuiSizeS,
+    type TuiTextfieldOptions,
+    TuiTitle,
+} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

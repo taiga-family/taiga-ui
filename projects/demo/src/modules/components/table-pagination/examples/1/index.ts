@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiTablePaginationEvent} from '@taiga-ui/addon-table';
-import {TuiTablePagination} from '@taiga-ui/addon-table';
+import {TuiTablePagination, type TuiTablePaginationEvent} from '@taiga-ui/addon-table';
 
 @Component({
     standalone: true,

@@ -1,11 +1,16 @@
-import type {QueryList} from '@angular/core';
-import {ContentChildren, Directive, inject, Input, Output} from '@angular/core';
-import type {TuiComparator} from '@taiga-ui/addon-table/types';
+import {
+    ContentChildren,
+    Directive,
+    inject,
+    Input,
+    Output,
+    type QueryList,
+} from '@angular/core';
+import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import type {Observable} from 'rxjs';
-import {combineLatest, debounceTime, delay, filter, map} from 'rxjs';
+import {combineLatest, debounceTime, delay, filter, map, type Observable} from 'rxjs';
 
-import type {TuiSortChange} from '../table.options';
+import {type TuiSortChange} from '../table.options';
 import {TuiTableSortable} from './sortable.directive';
 import {TuiTableDirective} from './table.directive';
 

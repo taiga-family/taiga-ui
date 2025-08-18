@@ -1,11 +1,11 @@
 import {getImports, Node, SMALL_TAB_SYMBOL, SUCCESS_SYMBOL, successLog} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants';
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {removeImport} from '../../../utils/import-manipulations';
 import {setupProgressLogger} from '../../../utils/progress';
-import type {ReplacementIdentifier} from '../../interfaces/replacement-identifier';
+import {type ReplacementIdentifier} from '../../interfaces/replacement-identifier';
 
 export function replaceImports(
     replaceable: ReplacementIdentifier[],

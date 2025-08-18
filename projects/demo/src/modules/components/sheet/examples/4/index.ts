@@ -3,8 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiLink} from '@taiga-ui/core';
-import type {TuiSheetOptions} from '@taiga-ui/legacy';
-import {TuiSheetModule} from '@taiga-ui/legacy';
+import {TuiSheetModule, type TuiSheetOptions} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

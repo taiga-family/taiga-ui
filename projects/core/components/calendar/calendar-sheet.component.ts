@@ -13,7 +13,7 @@ import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import type {TuiBooleanHandler, TuiHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendarSheetPipe, TuiOrderWeekDaysPipe} from '@taiga-ui/core/pipes';
 import {TUI_DAY_TYPE_HANDLER, TUI_SHORT_WEEK_DAYS} from '@taiga-ui/core/tokens';

@@ -4,7 +4,7 @@ import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiPositionAccessor} from '@taiga-ui/core/classes';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import {type TuiPoint} from '@taiga-ui/core/types';
 import {finalize, map, Observable, startWith} from 'rxjs';
 
 @Injectable()

@@ -1,6 +1,6 @@
 import {InjectionToken} from '@angular/core';
 import {tuiTryParseMarkdownCodeBlock} from '@taiga-ui/addon-doc/utils';
-import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {identity} from 'rxjs';
 
 /**

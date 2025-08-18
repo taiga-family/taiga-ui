@@ -1,5 +1,4 @@
-import type {Signal} from '@angular/core';
-import {Component, computed, signal} from '@angular/core';
+import {Component, computed, type Signal, signal} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
@@ -8,11 +7,10 @@ import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiContext} from '@taiga-ui/cdk';
+import {type TuiContext} from '@taiga-ui/cdk';
 import {TuiNumberFormat, TuiTextfield, TuiTitle} from '@taiga-ui/core';
-import type {TuiKeySteps} from '@taiga-ui/kit';
-import {TuiInputSlider} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {TuiInputSlider, type TuiKeySteps} from '@taiga-ui/kit';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
@@ -39,6 +37,7 @@ export default class PageComponent {
     protected max = signal(100);
     protected prefix = '';
     protected postfix = '';
+    protected quantum = 0.01;
     protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;

@@ -5,9 +5,8 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {SafeStyle} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
-import type {MaskitoOptions} from '@maskito/core';
+import {DomSanitizer, type SafeStyle} from '@angular/platform-browser';
+import {type MaskitoOptions} from '@maskito/core';
 import {
     tuiGetGradientData,
     tuiParseGradient,
@@ -17,9 +16,9 @@ import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
 import {AbstractTuiControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
-import type {
-    TuiFocusableElementAccessor,
-    TuiNativeFocusableElement,
+import {
+    type TuiFocusableElementAccessor,
+    type TuiNativeFocusableElement,
 } from '@taiga-ui/legacy/tokens';
 
 type MaskMode = 'gradient' | 'hex' | 'rgb';

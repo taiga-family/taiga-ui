@@ -1,9 +1,8 @@
 import {Component, inject} from '@angular/core';
-import type {SafeResourceUrl} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeXS, TuiSizeXXL} from '@taiga-ui/core';
+import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({

@@ -1,12 +1,10 @@
 import {ChangeDetectionStrategy, Component, TemplateRef, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import type {TuiCard} from '@taiga-ui/addon-commerce';
-import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
+import {type TuiCard, TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiIcon} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
-import type {Mock} from 'jest-mock';
+import {type Mock} from 'jest-mock';
 import {firstValueFrom, timer} from 'rxjs';
 
 describe('InputCardGroup', () => {
@@ -30,7 +28,7 @@ describe('InputCardGroup', () => {
         public component!: TuiInputCardGroup;
 
         @ViewChild('customIconTemplate', {read: TemplateRef})
-        public customIconTemplate!: TemplateRef<any>;
+        public customIconTemplate!: TemplateRef<unknown>;
 
         public control = new FormControl<Partial<TuiCard>>({card: ''});
 

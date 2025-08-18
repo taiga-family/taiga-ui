@@ -1,5 +1,4 @@
-import type {Signal} from '@angular/core';
-import {inject, Injectable, NgZone} from '@angular/core';
+import {inject, Injectable, NgZone, type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {tuiTypedFromEvent, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk/observables';

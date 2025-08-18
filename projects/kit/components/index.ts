@@ -33,6 +33,7 @@ export * from '@taiga-ui/kit/components/input-month';
 export * from '@taiga-ui/kit/components/input-month-range';
 export * from '@taiga-ui/kit/components/input-number';
 export * from '@taiga-ui/kit/components/input-password';
+export * from '@taiga-ui/kit/components/input-phone';
 export * from '@taiga-ui/kit/components/input-phone-international';
 export * from '@taiga-ui/kit/components/input-pin';
 export * from '@taiga-ui/kit/components/input-slider';

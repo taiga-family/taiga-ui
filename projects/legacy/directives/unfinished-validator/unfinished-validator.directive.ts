@@ -1,7 +1,6 @@
 import {Directive, inject, INJECTOR, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import type {Validator} from '@angular/forms';
-import {NG_VALIDATORS} from '@angular/forms';
+import {NG_VALIDATORS, type Validator} from '@angular/forms';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DEFAULT_ERROR_MESSAGE} from '@taiga-ui/core/tokens';
 import {TUI_FOCUSABLE_ITEM_ACCESSOR} from '@taiga-ui/legacy/tokens';

@@ -4,8 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiActiveZone} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import type {TuiInputComponent} from '@taiga-ui/legacy';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {type TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     standalone: true,

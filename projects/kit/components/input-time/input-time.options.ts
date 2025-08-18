@@ -1,9 +1,9 @@
-import type {MaskitoTimeParams} from '@maskito/kit';
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import type {TuiTime} from '@taiga-ui/cdk/date-time';
-import type {TuiHandler} from '@taiga-ui/cdk/types';
+import {type MaskitoTimeParams} from '@maskito/kit';
+import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {type TuiTime} from '@taiga-ui/cdk/date-time';
+import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiInputTimeOptions
     extends Required<

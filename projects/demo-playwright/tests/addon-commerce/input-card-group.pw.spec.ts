@@ -5,8 +5,7 @@ import {
     tuiGoto,
     TuiInputCardGroupPO,
 } from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputCardGroup', () => {
     let documentationPage: TuiDocumentationPagePO;
@@ -71,7 +70,7 @@ test.describe('InputCardGroup', () => {
             documentationPage = new TuiDocumentationPagePO(page);
 
             // TODO: why does this test keep failing in safari
-            // eslint-disable-next-line playwright/no-skipped-test
+
             test.skip(
                 browserName !== 'chromium',
                 'This feature is only relevant in Chrome',

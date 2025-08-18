@@ -1,16 +1,16 @@
 import {CommonModule} from '@angular/common';
-import type {Type} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
     inject,
     INJECTOR,
     Injector,
+    type Type,
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
-import type {TuiMapper} from '@taiga-ui/cdk/types';
+import {type TuiMapper} from '@taiga-ui/cdk/types';
 // eslint-disable-next-line no-restricted-imports
 import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
 import {identity} from 'rxjs';

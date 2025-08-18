@@ -8,11 +8,11 @@ import {
     Output,
     signal,
 } from '@angular/core';
-import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {
     MAX_YEAR,
     MIN_YEAR,
     TuiDay,
+    type TuiDayRange,
     TuiMonth,
     TuiMonthRange,
     TuiYear,
@@ -20,7 +20,7 @@ import {
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives';

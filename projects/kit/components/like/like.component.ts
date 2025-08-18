@@ -5,17 +5,16 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import type {TuiStringHandler} from '@taiga-ui/cdk/types';
+import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 
-import type {TuiLikeOptions} from './like.options';
-import {TUI_LIKE_OPTIONS} from './like.options';
+import {TUI_LIKE_OPTIONS, type TuiLikeOptions} from './like.options';
 
 @Component({
     standalone: true,

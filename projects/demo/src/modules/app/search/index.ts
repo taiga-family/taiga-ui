@@ -38,6 +38,7 @@ export class TuiAlgoliaSearch {
     private enableDocSearch(): void {
         docsearch({
             ...this.config,
+            maxResultsPerGroup: 7,
             transformItems: (items: Array<{url: string}>) =>
                 items.map((item) => ({
                     ...item,

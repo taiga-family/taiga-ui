@@ -1,4 +1,4 @@
-import type {test} from '@playwright/test';
+import {type test} from '@playwright/test';
 
 // cspell:disable
 export const TUI_PLAYWRIGHT_MOBILE_USER_AGENT =

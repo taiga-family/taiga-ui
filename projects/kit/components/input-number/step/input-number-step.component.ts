@@ -19,8 +19,10 @@ import {
 import {expand, fromEvent, map, merge, Subject, switchMap, takeUntil, timer} from 'rxjs';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
-import type {TuiInputNumberOptions} from '../input-number.options';
-import {TUI_INPUT_NUMBER_OPTIONS} from '../input-number.options';
+import {
+    TUI_INPUT_NUMBER_OPTIONS,
+    type TuiInputNumberOptions,
+} from '../input-number.options';
 
 const INITIAL_DELAY = 300;
 const DELAY_DECREMENT = 15;

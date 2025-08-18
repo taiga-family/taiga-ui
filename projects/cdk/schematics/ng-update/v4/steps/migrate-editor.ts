@@ -1,8 +1,8 @@
 /// <reference lib="es2021" />
-import type {DevkitFileSystem} from 'ng-morph';
 import {
     addProviderToComponent,
     addProviderToNgModule,
+    type DevkitFileSystem,
     FINISH_SYMBOL,
     getNgComponents,
     getNgModules,
@@ -17,7 +17,7 @@ import {
 } from 'ng-morph';
 
 import {ALL_TS_FILES} from '../../../constants/file-globs';
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {addUniqueImport} from '../../../utils/add-unique-import';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {replaceIdentifiers} from '../../steps/replace-identifier';

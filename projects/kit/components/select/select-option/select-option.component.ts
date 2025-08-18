@@ -5,8 +5,10 @@ import {
     TuiOptionWithValue,
 } from '@taiga-ui/core/components/data-list';
 import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 

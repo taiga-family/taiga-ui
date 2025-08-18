@@ -1,7 +1,7 @@
-import type {DoCheck} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    type DoCheck,
     ElementRef,
     inject,
     ViewChild,
@@ -9,7 +9,7 @@ import {
 import {TUI_FOCUSABLE_ITEM_ACCESSOR, TUI_FONTS_READY} from '@taiga-ui/legacy/tokens';
 import {BehaviorSubject, delay, distinctUntilChanged, filter, map, merge} from 'rxjs';
 
-import type {TuiPrimitiveTextfield} from '../primitive-textfield-types';
+import {type TuiPrimitiveTextfield} from '../primitive-textfield-types';
 
 @Component({
     standalone: false,

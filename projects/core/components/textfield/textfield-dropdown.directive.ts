@@ -1,6 +1,5 @@
 import {isPlatformBrowser} from '@angular/common';
-import type {OnDestroy} from '@angular/core';
-import {Directive, inject, PLATFORM_ID, TemplateRef} from '@angular/core';
+import {Directive, inject, type OnDestroy, PLATFORM_ID, TemplateRef} from '@angular/core';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 
 // TODO: Change selector to tuiDropdown in v5 and move to TuiDropdown

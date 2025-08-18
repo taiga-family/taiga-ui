@@ -1,6 +1,12 @@
 import {inject, NgZone} from '@angular/core';
-import type {MonoTypeOperatorFunction, SchedulerLike, Subscription} from 'rxjs';
-import {asyncScheduler, Observable, pipe} from 'rxjs';
+import {
+    asyncScheduler,
+    type MonoTypeOperatorFunction,
+    Observable,
+    pipe,
+    type SchedulerLike,
+    type Subscription,
+} from 'rxjs';
 
 export function tuiZonefull<T>(zone = inject(NgZone)): MonoTypeOperatorFunction<T> {
     return (source) =>

@@ -2,7 +2,7 @@ import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
-import type {MountResponse} from 'cypress/angular';
+import {type MountResponse} from 'cypress/angular';
 
 describe('TuiHint', () => {
     let component: Test;

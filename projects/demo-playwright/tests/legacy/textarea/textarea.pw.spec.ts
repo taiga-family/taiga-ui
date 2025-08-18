@@ -37,7 +37,6 @@ test.describe('Textarea', () => {
     });
 
     test('line break text', async ({page, browserName}) => {
-        // eslint-disable-next-line playwright/no-skipped-test
         test.skip(browserName !== 'chromium', 'Font flaky');
 
         await tuiGoto(page, `${DemoRoute.TextareaLegacy}/API`);

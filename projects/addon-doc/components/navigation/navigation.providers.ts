@@ -1,16 +1,13 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Provider} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {Event} from '@angular/router';
-import {ActivatedRoute, NavigationEnd, Router, Scroll} from '@angular/router';
+import {ActivatedRoute, type Event, NavigationEnd, Router, Scroll} from '@angular/router';
 import {TUI_DOC_PAGES, TUI_DOC_TITLE} from '@taiga-ui/addon-doc/tokens';
-import type {TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
+import {type TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiAutoFocusOptionsProvider} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
-import type {Observable} from 'rxjs';
-import {filter, map, mergeMap} from 'rxjs';
+import {filter, map, mergeMap, type Observable} from 'rxjs';
 
 function labelsProviderFactory(pages: TuiDocRoutePages): readonly string[] {
     return pages

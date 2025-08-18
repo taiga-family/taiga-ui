@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import type {TuiCard} from '@taiga-ui/addon-commerce';
-import {TuiInputCardGroup} from '@taiga-ui/addon-commerce';
+import {type TuiCard, TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiInputChip, TuiTextarea} from '@taiga-ui/kit';

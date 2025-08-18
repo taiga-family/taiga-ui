@@ -1,6 +1,5 @@
-import type {UpdateRecorder} from '@angular-devkit/schematics';
-import type {DevkitFileSystem} from 'ng-morph';
-import {getPackageJsonDependency} from 'ng-morph';
+import {type UpdateRecorder} from '@angular-devkit/schematics';
+import {type DevkitFileSystem, getPackageJsonDependency} from 'ng-morph';
 
 import {addImportToClosestModule} from '../../../../utils/add-import-to-closest-module';
 import {
@@ -12,7 +11,7 @@ import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
 } from '../../../../utils/templates/template-resource';
-import type {TemplateResource} from '../../../interfaces';
+import {type TemplateResource} from '../../../interfaces';
 
 export function migrateNotification({
     resource,

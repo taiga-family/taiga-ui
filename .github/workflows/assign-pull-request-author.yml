@@ -1,0 +1,17 @@
+name: 🤖 PR author as an assignee
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  assign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.144.0
+      - uses: toshimaru/auto-author-assign@v2.1.1
+        continue-on-error: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true

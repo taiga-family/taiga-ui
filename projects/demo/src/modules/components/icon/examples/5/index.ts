@@ -1,7 +1,7 @@
 import {Component, SkipSelf} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiStringHandler} from '@taiga-ui/cdk';
+import {type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
 
 @Component({

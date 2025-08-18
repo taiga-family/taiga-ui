@@ -1,8 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiSliderPO} from '@demo-playwright/utils';
 import {maskitoParseNumber} from '@maskito/kit';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('Slider', () => {
     test.use({viewport: {width: 500, height: 500}});
@@ -92,7 +91,7 @@ test.describe('Slider', () => {
 
             test.beforeEach(async ({page, browserName}) => {
                 // TODO: why does this test keep failing in safari
-                // eslint-disable-next-line playwright/no-skipped-test
+
                 test.skip(
                     browserName !== 'chromium',
                     'This feature is only relevant in Chrome',

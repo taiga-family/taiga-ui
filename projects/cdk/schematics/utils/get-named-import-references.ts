@@ -1,5 +1,4 @@
-import type {Node} from 'ng-morph';
-import {arrayFlat, getImports} from 'ng-morph';
+import {arrayFlat, getImports, type Node} from 'ng-morph';
 
 import {ALL_TS_FILES} from '../constants';
 

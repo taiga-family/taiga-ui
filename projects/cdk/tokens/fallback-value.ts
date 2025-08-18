@@ -1,5 +1,4 @@
-import type {ValueProvider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type ValueProvider} from '@angular/core';
 
 export const TUI_FALLBACK_VALUE = new InjectionToken<any>(
     ngDevMode ? 'TUI_FALLBACK_VALUE' : '',

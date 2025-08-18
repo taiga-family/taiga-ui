@@ -1,5 +1,4 @@
-import type {OnDestroy} from '@angular/core';
-import {Component, inject} from '@angular/core';
+import {Component, inject, type OnDestroy} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';

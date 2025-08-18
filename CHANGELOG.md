@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.49.0](https://github.com/taiga-family/taiga-ui/compare/v4.48.0...v4.49.0) (2025-08-11)
+
+### 🐞 Bug Fixes
+
+- **cdk:** `NativeValidator` fix premature validation ([#11559](https://github.com/taiga-family/taiga-ui/issues/11559))
+  ([f9ea7b2](https://github.com/taiga-family/taiga-ui/commit/f9ea7b28e994db383ee0a6192459b9963c18eff3))
+- **core:** `Appearance` update `outline` according to the specs
+  ([#11530](https://github.com/taiga-family/taiga-ui/issues/11530))
+  ([653ff65](https://github.com/taiga-family/taiga-ui/commit/653ff658d1bd442fc02b323adbd9ec604a69e5ca))
+- **core:** `DropdownSelection` fix position inside new textarea
+  ([#11560](https://github.com/taiga-family/taiga-ui/issues/11560))
+  ([366a3fe](https://github.com/taiga-family/taiga-ui/commit/366a3feac2d36f86ed4f05b3c209ac045a054ec1))
+- **core:** `DropdownSided` change position depending on height instead of min-height
+  ([#11539](https://github.com/taiga-family/taiga-ui/issues/11539))
+  ([b720596](https://github.com/taiga-family/taiga-ui/commit/b720596ab5587e1956f5a9e780a994e2ba139273))
+- **core:** `Textfield` with `[content]` has CD problems on form control value patch
+  ([#11531](https://github.com/taiga-family/taiga-ui/issues/11531))
+  ([93e01aa](https://github.com/taiga-family/taiga-ui/commit/93e01aa61fd41250d05246fd41f403d67db62866))
+
+### 🚀 Features
+
+- **addon-mobile:** `DropdownMobile` safe-area top/bottom support
+  ([#11497](https://github.com/taiga-family/taiga-ui/issues/11497))
+  ([3cb228f](https://github.com/taiga-family/taiga-ui/commit/3cb228ff7c4ad9374cb407a72994d231fd41e065))
+- **cdk:** detect webdriver by default in e2e token ([#11523](https://github.com/taiga-family/taiga-ui/issues/11523))
+  ([a30d3e0](https://github.com/taiga-family/taiga-ui/commit/a30d3e0fbb908e7f9babb636fe76438fb284cef3))
+- **kit:** `InputNumber` & `InputSlider` support `quantum` property
+  ([#11567](https://github.com/taiga-family/taiga-ui/issues/11567))
+  ([19aef91](https://github.com/taiga-family/taiga-ui/commit/19aef91d49c0c7a4f5fbc5377f1e0acb5d118851))
+- **kit:** `InputPhone` add new component ([#11498](https://github.com/taiga-family/taiga-ui/issues/11498))
+  ([0b5890f](https://github.com/taiga-family/taiga-ui/commit/0b5890f30509654f0650fd54c87a8bd00202f2fd))
+- **kit:** `Slider`/`Range` allow track thickness customization
+  ([#11528](https://github.com/taiga-family/taiga-ui/issues/11528))
+  ([f3799af](https://github.com/taiga-family/taiga-ui/commit/f3799afca4e270ed55d14c163b73940550f3f806))
+
+## [4.48.0](https://github.com/taiga-family/taiga-ui/compare/v4.47.0...v4.48.0) (2025-08-04)
+
+### 🚀 Features
+
+- **kit:** `Copy` add component ([#11510](https://github.com/taiga-family/taiga-ui/issues/11510))
+  ([72f54ab](https://github.com/taiga-family/taiga-ui/commit/72f54ab17d366ac9663afd9f7ac52dc690f46e70))
+- **kit:** `InputNumber` supports continuous stepping on mouse hold over buttons
+  ([#10923](https://github.com/taiga-family/taiga-ui/issues/10923))
+  ([2bcb326](https://github.com/taiga-family/taiga-ui/commit/2bcb326e3d9145f8e09ae78776fde120d3fe5507))
+- **kit:** `Range` supports RTL ([#11474](https://github.com/taiga-family/taiga-ui/issues/11474))
+  ([0534bde](https://github.com/taiga-family/taiga-ui/commit/0534bde7266f66fd6fd48934b3f73d35bdf0deae))
+- **testing:** configure env variables ([#11487](https://github.com/taiga-family/taiga-ui/issues/11487))
+  ([b304a4a](https://github.com/taiga-family/taiga-ui/commit/b304a4a76cb3871fd0bf549f742c54cbb7a8b07d))
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** ignore padding when header is not defined
+  ([#11483](https://github.com/taiga-family/taiga-ui/issues/11483))
+  ([2bea4d0](https://github.com/taiga-family/taiga-ui/commit/2bea4d00eb3d441d63e29c80f0538c81f60b487a))
+- **kit:** `ComboBox` should recompute stringified textfield value on new value of `stringify` handler
+  ([#11501](https://github.com/taiga-family/taiga-ui/issues/11501))
+  ([582230f](https://github.com/taiga-family/taiga-ui/commit/582230f5be27fc457fd64e19bac9c090a5e50c88))
+- **kit:** `FluidTypography` update default values according to the spec
+  ([#11476](https://github.com/taiga-family/taiga-ui/issues/11476))
+  ([fa64a58](https://github.com/taiga-family/taiga-ui/commit/fa64a586c52678b857d4cb6f71f97b0b56ee18e6))
+- **kit:** `InputDate` & `InputDateRange` fail to clear value on `formControl.reset()`
+  ([#11406](https://github.com/taiga-family/taiga-ui/issues/11406))
+  ([e2835bb](https://github.com/taiga-family/taiga-ui/commit/e2835bbbfb4b3eafb02255d13e9cb3572fc860ff))
+- **kit:** `InputDateMulti` fix `TuiNativeValidator matches multiple times` error
+  ([#11500](https://github.com/taiga-family/taiga-ui/issues/11500))
+  ([775599e](https://github.com/taiga-family/taiga-ui/commit/775599e4392255a48fd41778bf5c983b21c6b58b))
+- **kit:** `InputTime`, `InputDate`, `InputMonth` with native picker ignore initial form control value
+  ([#11460](https://github.com/taiga-family/taiga-ui/issues/11460))
+  ([0c189f3](https://github.com/taiga-family/taiga-ui/commit/0c189f3d8811cad3cdc49ffff147bca60fca6435))
+- **legacy:** broken backward compatibility for `TUI_OPTION_CONTENT` of legacy `Option` component
+  ([#11521](https://github.com/taiga-family/taiga-ui/issues/11521))
+  ([abc1f54](https://github.com/taiga-family/taiga-ui/commit/abc1f541bf6efd9c8dc4f5e7ac9014695189b511))
+- **styles:** revert wrong replacing ([#11499](https://github.com/taiga-family/taiga-ui/issues/11499))
+  ([373d9ea](https://github.com/taiga-family/taiga-ui/commit/373d9ea86f558c32c5881c932725b1cc699fe1ee))
+
 ## [4.47.0](https://github.com/taiga-family/taiga-ui/compare/v4.46.0...v4.47.0) (2025-07-29)
 
 ### 🚀 Features

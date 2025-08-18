@@ -3,8 +3,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService, TuiButton} from '@taiga-ui/core';
-import type {Observable} from 'rxjs';
-import {mergeAll, Subject} from 'rxjs';
+import {mergeAll, type Observable, Subject} from 'rxjs';
 
 const MAX_CONCURRENT = 3;
 

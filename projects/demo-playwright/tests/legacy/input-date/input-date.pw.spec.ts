@@ -5,8 +5,7 @@ import {
     tuiGoto,
     TuiInputDatePO,
 } from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 

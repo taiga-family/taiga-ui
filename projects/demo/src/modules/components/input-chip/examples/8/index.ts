@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
-import type {TuiIdentityMatcher} from '@taiga-ui/cdk';
+import {type TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TuiButton, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,

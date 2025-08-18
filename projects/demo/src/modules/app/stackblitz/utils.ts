@@ -1,4 +1,4 @@
-import type {Project} from '@stackblitz/sdk';
+import {type Project} from '@stackblitz/sdk';
 
 import {isLess, isPrimaryComponentFile} from '../utils';
 

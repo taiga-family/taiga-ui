@@ -1,13 +1,11 @@
-import type {AnimationOptions} from '@angular/animations';
-import type {DoCheck} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {type AnimationOptions} from '@angular/animations';
+import {ChangeDetectionStrategy, Component, type DoCheck, inject} from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiSlideIn} from '@taiga-ui/core/animations';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
-import type {TuiHorizontalDirection} from '@taiga-ui/core/types';
+import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiSidebarDirective} from './sidebar.directive';
 

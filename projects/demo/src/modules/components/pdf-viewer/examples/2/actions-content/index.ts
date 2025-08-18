@@ -1,11 +1,11 @@
 import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {TuiPopover} from '@taiga-ui/cdk';
+import {type TuiPopover} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import type {TuiPdfViewerOptions} from '@taiga-ui/kit';
+import {type TuiPdfViewerOptions} from '@taiga-ui/kit';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
-import type {Buttons} from '..';
+import {type Buttons} from '..';
 
 @Component({
     standalone: true,

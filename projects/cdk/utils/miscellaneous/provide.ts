@@ -1,4 +1,4 @@
-import type {ExistingProvider, ProviderToken} from '@angular/core';
+import {type ExistingProvider, type ProviderToken} from '@angular/core';
 
 export function tuiProvide<T>(
     provide: ProviderToken<T>,

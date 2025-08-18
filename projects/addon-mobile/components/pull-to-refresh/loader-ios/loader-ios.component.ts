@@ -1,7 +1,7 @@
 import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
-import type {TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiContext} from '@taiga-ui/cdk/types';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TUI_PULL_TO_REFRESH_THRESHOLD} from '../pull-to-refresh.providers';

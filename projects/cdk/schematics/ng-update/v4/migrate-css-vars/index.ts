@@ -1,5 +1,9 @@
-import type {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import {chain} from '@angular-devkit/schematics';
+import {
+    chain,
+    type Rule,
+    type SchematicContext,
+    type Tree,
+} from '@angular-devkit/schematics';
 import {
     FINISH_SYMBOL,
     infoLog,
@@ -9,7 +13,7 @@ import {
     titleLog,
 } from 'ng-morph';
 
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {getFileSystem} from '../../utils/get-file-system';
 import {renameCssVars} from './rename-css-vars';
 

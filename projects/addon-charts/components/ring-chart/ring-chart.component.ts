@@ -6,7 +6,7 @@ import {
     Output,
 } from '@angular/core';
 import {TuiPieChart} from '@taiga-ui/addon-charts/components/pie-chart';
-import type {TuiSizeXL, TuiSizeXS} from '@taiga-ui/core/types';
+import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core/types';
 
 @Component({
     standalone: true,

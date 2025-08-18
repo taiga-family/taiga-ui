@@ -13,7 +13,7 @@ import {
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
-import type {TuiSizeXXS} from '@taiga-ui/core/types';
+import {type TuiSizeXXS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
 import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';

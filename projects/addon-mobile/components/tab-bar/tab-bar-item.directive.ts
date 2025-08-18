@@ -3,8 +3,7 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import type {Observable} from 'rxjs';
-import {EMPTY, filter} from 'rxjs';
+import {EMPTY, filter, type Observable} from 'rxjs';
 
 import {TuiTabBarComponent} from './tab-bar.component';
 

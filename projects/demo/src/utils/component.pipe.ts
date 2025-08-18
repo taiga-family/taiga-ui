@@ -1,5 +1,4 @@
-import type {PipeTransform, Type} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
+import {inject, Pipe, type PipeTransform, type Type} from '@angular/core';
 import {TuiDocPage} from '@taiga-ui/addon-doc';
 
 import {toKebab} from './kebab.pipe';

@@ -1,6 +1,5 @@
-import type {PipeTransform} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
-import type {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';

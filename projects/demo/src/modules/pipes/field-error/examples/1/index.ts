@@ -1,7 +1,12 @@
 import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
-import type {AbstractControl} from '@angular/forms';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {
+    type AbstractControl,
+    FormControl,
+    FormGroup,
+    ReactiveFormsModule,
+    Validators,
+} from '@angular/forms';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';

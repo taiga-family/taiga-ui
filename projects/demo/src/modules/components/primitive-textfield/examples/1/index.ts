@@ -2,9 +2,9 @@ import {Component, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiHintDirective} from '@taiga-ui/core';
-import type {TuiNativeFocusableElement} from '@taiga-ui/legacy';
 import {
     AbstractTuiControl,
+    type TuiNativeFocusableElement,
     TuiPrimitiveTextfieldComponent,
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,

@@ -1,11 +1,10 @@
 import {NgForOf} from '@angular/common';
-import type {OnInit} from '@angular/core';
-import {Component} from '@angular/core';
+import {Component, type OnInit} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import type {TuiSizeS} from '@taiga-ui/core';
+import {type TuiSizeS} from '@taiga-ui/core';
 import {TuiRadio} from '@taiga-ui/kit';
 
 @Component({

@@ -5,16 +5,17 @@ import {
     ViewportScroller,
 } from '@angular/common';
 import {HttpClient, provideHttpClient} from '@angular/common/http';
-import type {ApplicationConfig} from '@angular/core';
-import {inject, PLATFORM_ID, provideZoneChangeDetection} from '@angular/core';
+import {
+    type ApplicationConfig,
+    inject,
+    PLATFORM_ID,
+    provideZoneChangeDetection,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import type {UrlTree} from '@angular/router';
-import {provideRouter, withInMemoryScrolling} from '@angular/router';
+import {provideRouter, type UrlTree, withInMemoryScrolling} from '@angular/router';
 import {environment} from '@demo/environments/environment';
-import {WA_SESSION_STORAGE} from '@ng-web-apis/common';
-import type {TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc';
 import {
     TUI_DOC_CODE_EDITOR,
     TUI_DOC_DEFAULT_TABS,
@@ -30,14 +31,10 @@ import {
     TUI_DOC_TYPE_REFERENCE_HANDLER,
     TUI_DOC_URL_STATE_HANDLER,
     tuiDocExampleOptionsProvider,
+    type TuiDocSourceCodePathOptions,
     tuiSortPages,
 } from '@taiga-ui/addon-doc';
-import {
-    TUI_FALSE_HANDLER,
-    TUI_IS_E2E,
-    TUI_IS_PLAYWRIGHT,
-    TUI_PLATFORM,
-} from '@taiga-ui/cdk';
+import {TUI_FALSE_HANDLER, TUI_IS_E2E, TUI_PLATFORM} from '@taiga-ui/cdk';
 import {
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
@@ -47,8 +44,7 @@ import {
     tuiNotificationOptionsProvider,
 } from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import type {TuiLanguageName} from '@taiga-ui/i18n';
-import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
+import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {catchError, map, of} from 'rxjs';
 
@@ -83,10 +79,6 @@ export const config: ApplicationConfig = {
         {
             provide: TUI_PLATFORM,
             useValue: 'web',
-        },
-        {
-            provide: TUI_IS_PLAYWRIGHT,
-            useFactory: () => Boolean(inject(WA_SESSION_STORAGE).getItem('playwright')),
         },
         {
             provide: HIGHLIGHT_OPTIONS,

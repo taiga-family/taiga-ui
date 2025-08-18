@@ -6,12 +6,11 @@ import {
     Input,
     Output,
 } from '@angular/core';
-import type {SafeStyle} from '@angular/platform-browser';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, type SafeStyle} from '@angular/platform-browser';
 import {tuiHsvToRgb, tuiRgbToHsv} from '@taiga-ui/cdk/utils/color';
 import {tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiPoint} from '@taiga-ui/core/types';
+import {type TuiPoint} from '@taiga-ui/core/types';
 
 @Component({
     standalone: false,

@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiDayRange} from '@taiga-ui/cdk';
+import {type TuiDayRange} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {tuiCreateDefaultDayRangePeriods, TuiInputDateRange} from '@taiga-ui/kit';
 

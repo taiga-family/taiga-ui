@@ -2,12 +2,11 @@ import {DOCUMENT} from '@angular/common';
 import {inject, Injectable} from '@angular/core';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {BehaviorSubject, EMPTY, Observable} from 'rxjs';
 
-import type {TuiSheet} from './sheet';
-import type {TuiSheetOptions} from './sheet-options';
-import {TUI_SHEET_OPTIONS} from './sheet-options';
+import {type TuiSheet} from './sheet';
+import {TUI_SHEET_OPTIONS, type TuiSheetOptions} from './sheet-options';
 
 /**
  * @deprecated: use {@link TuiSheetDialogService}

@@ -1,25 +1,24 @@
-import type {DebugElement} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     Component,
+    type DebugElement,
     Optional,
     Self,
     ViewChild,
 } from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, NgControl} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import type {TuiDayLike} from '@taiga-ui/cdk';
 import {
     TUI_LAST_DAY,
     tuiControlValue,
     TuiDay,
+    type TuiDayLike,
     TuiDayRange,
     TuiMonth,
     TuiYear,
 } from '@taiga-ui/cdk';
-import type {TuiMarkerHandler} from '@taiga-ui/core';
+import {type TuiMarkerHandler} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TUI_CALENDAR_DATE_STREAM,
@@ -28,8 +27,7 @@ import {
     TuiDayRangePeriod,
 } from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
-import type {Observable} from 'rxjs';
-import {of} from 'rxjs';
+import {type Observable, of} from 'rxjs';
 
 describe('rangeCalendarComponent', () => {
     @Component({

@@ -55,7 +55,7 @@ class TuiRippleStyles {}
     },
 })
 export class TuiRipple {
-    private readonly document = inject(DOCUMENT);
+    private readonly doc = inject(DOCUMENT);
     private readonly destroyRef = inject(DestroyRef);
     private readonly animationOptions = {
         duration: tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)),
@@ -111,7 +111,7 @@ export class TuiRipple {
         clientY: number,
         {width, height, top, left}: DOMRect,
     ): HTMLElement {
-        const ripple: HTMLElement = this.document.createElement('div');
+        const ripple: HTMLElement = this.doc.createElement('div');
         const radius = Math.sqrt(width * width + height * height);
         const dimension = radius * 2;
         const x = clientX - left - radius;

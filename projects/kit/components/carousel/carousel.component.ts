@@ -1,5 +1,4 @@
 import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {QueryList} from '@angular/core';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -9,14 +8,18 @@ import {
     inject,
     Input,
     Output,
+    type QueryList,
     TemplateRef,
 } from '@angular/core';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiPan} from '@taiga-ui/cdk/directives/pan';
-import type {TuiSwipeDirection} from '@taiga-ui/cdk/directives/swipe';
-import {TUI_SWIPE_OPTIONS, TuiSwipe} from '@taiga-ui/cdk/directives/swipe';
+import {
+    TUI_SWIPE_OPTIONS,
+    TuiSwipe,
+    type TuiSwipeDirection,
+} from '@taiga-ui/cdk/directives/swipe';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';

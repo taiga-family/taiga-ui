@@ -1,4 +1,4 @@
-import type {TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import {type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 
 import {tuiArrayRemove} from './array-remove';
 

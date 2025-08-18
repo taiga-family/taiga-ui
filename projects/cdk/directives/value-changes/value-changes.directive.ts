@@ -1,8 +1,6 @@
-import type {DoCheck} from '@angular/core';
-import {Directive, inject, Output} from '@angular/core';
+import {Directive, type DoCheck, inject, Output} from '@angular/core';
 import {ControlContainer, NgControl} from '@angular/forms';
-import type {Observable} from 'rxjs';
-import {distinctUntilChanged, EMPTY, Subject, switchAll} from 'rxjs';
+import {distinctUntilChanged, EMPTY, type Observable, Subject, switchAll} from 'rxjs';
 
 @Directive({
     standalone: true,

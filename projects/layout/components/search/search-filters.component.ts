@@ -1,6 +1,6 @@
 import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
-import type {AfterContentInit, QueryList} from '@angular/core';
 import {
+    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -8,6 +8,7 @@ import {
     ElementRef,
     inject,
     Input,
+    type QueryList,
     signal,
     TemplateRef,
     ViewChild,
@@ -25,7 +26,7 @@ import {
 import {tuiIsControlEmpty} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiTextfieldOptionsDirective} from '@taiga-ui/core/components/textfield';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 import {distinctUntilChanged, map, merge, switchMap} from 'rxjs';
 
 import {TuiSearchFilterComponent} from './search-filter.component';

@@ -1,5 +1,8 @@
-import type {BaseHarnessFilters} from '@angular/cdk/testing';
-import {ComponentHarness, HarnessPredicate} from '@angular/cdk/testing';
+import {
+    type BaseHarnessFilters,
+    ComponentHarness,
+    HarnessPredicate,
+} from '@angular/cdk/testing';
 import {TuiComponentHarness} from '@taiga-ui/testing/utils';
 
 interface TuiYearCellHarnessFilters extends BaseHarnessFilters {

@@ -1,9 +1,7 @@
-import type {TemplateRef} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import {Component, type TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeS} from '@taiga-ui/core';
-import {TuiIcon} from '@taiga-ui/core';
+import {TuiIcon, type TuiSizeS} from '@taiga-ui/core';
 import {TuiPager} from '@taiga-ui/kit';
 
 @Component({

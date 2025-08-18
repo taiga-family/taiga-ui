@@ -1,15 +1,20 @@
 import {AsyncPipe} from '@angular/common';
-import type {OnInit} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
-import type {AbstractControl, ValidationErrors} from '@angular/forms';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Component, type OnInit, ViewChild} from '@angular/core';
+import {
+    type AbstractControl,
+    FormControl,
+    FormGroup,
+    ReactiveFormsModule,
+    type ValidationErrors,
+    Validators,
+} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate, TuiValidationError} from '@taiga-ui/cdk';
 import {TuiButton, TuiError, TuiLabel} from '@taiga-ui/core';
 import {TuiCheckbox, TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 const secretRegexTen = /^\d{10}$/;
 const secretRegexTwelve = /^\d{12}$/;

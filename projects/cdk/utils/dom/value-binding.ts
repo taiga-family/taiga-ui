@@ -1,5 +1,4 @@
-import type {Signal, WritableSignal} from '@angular/core';
-import {effect, signal} from '@angular/core';
+import {effect, type Signal, signal, type WritableSignal} from '@angular/core';
 
 import {tuiInjectElement} from './inject-element';
 

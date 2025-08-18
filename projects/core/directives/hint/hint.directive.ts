@@ -1,20 +1,23 @@
-import type {OnDestroy} from '@angular/core';
 import {
     Directive,
     EventEmitter,
     inject,
     INJECTOR,
     Input,
+    type OnDestroy,
     Output,
     signal,
 } from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import type {TuiRectAccessor, TuiVehicle} from '@taiga-ui/core/classes';
-import {tuiAsRectAccessor, tuiAsVehicle} from '@taiga-ui/core/classes';
-import type {TuiPortalItem} from '@taiga-ui/core/types';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {
+    tuiAsRectAccessor,
+    tuiAsVehicle,
+    type TuiRectAccessor,
+    type TuiVehicle,
+} from '@taiga-ui/core/classes';
+import {type TuiPortalItem} from '@taiga-ui/core/types';
+import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
 import {TuiHintService} from './hint.service';

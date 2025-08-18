@@ -1,4 +1,4 @@
-import type {TuiDocRoutePage, TuiDocRoutePageBase} from '@taiga-ui/addon-doc';
+import {type TuiDocRoutePage, type TuiDocRoutePageBase} from '@taiga-ui/addon-doc';
 
 import {DemoRoute} from './demo-routes';
 
@@ -196,11 +196,11 @@ export const pages: DocRoutePages = [
             },
             {
                 name: 'tui-avatar-labelled',
-                figmaVersion: '1.0.1',
+                figmaVersion: '1.3.0',
             },
             {
                 name: 'tui-avatar-stack',
-                figmaVersion: '1.0.3',
+                figmaVersion: '1.3.0',
             },
             {
                 name: 'tui-avatar-subscription',
@@ -217,14 +217,14 @@ export const pages: DocRoutePages = [
                 title: 'Badge',
                 keywords: 'бэдж, овал, badge',
                 route: DemoRoute.Badge,
-                meta: {},
+                meta: {figmaVersion: '1.4.1'},
             },
             {
                 section: 'Components',
                 title: 'BadgedContent',
                 keywords: 'бэдж, бейдж, circle, овал, круг, badge, нотификация',
                 route: DemoRoute.BadgedContent,
-                meta: {},
+                meta: {figmaVersion: '1.4.1'},
             },
             {
                 section: 'Components',
@@ -240,7 +240,10 @@ export const pages: DocRoutePages = [
         title: 'Block',
         keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
         route: DemoRoute.Block,
-        meta: [{name: 'tui-checkbox-block'}, {name: 'tui-radio-block'}],
+        meta: [
+            {name: 'tui-checkbox-block', figmaVersion: '1.2.0'},
+            {name: 'tui-radio-block', figmaVersion: '1.2.0'},
+        ],
     },
     {
         section: 'Layout',
@@ -258,7 +261,10 @@ export const pages: DocRoutePages = [
                 title: 'Button',
                 keywords: 'кнопка, button, icon-button, иконка',
                 route: DemoRoute.Button,
-                meta: [{name: 'tui-button'}, {name: 'tui-button-vertical'}],
+                meta: [
+                    {name: 'tui-button', figmaVersion: '1.9.1'},
+                    {name: 'tui-button-vertical', figmaVersion: '1.0.1'},
+                ],
             },
             {
                 section: 'Components',
@@ -311,7 +317,9 @@ export const pages: DocRoutePages = [
         keywords:
             'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
         route: DemoRoute.ThumbnailCard,
-        meta: {},
+        meta: {
+            figmaVersion: '1.8.0',
+        },
     },
     {
         section: 'Components',
@@ -461,6 +469,13 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Copy',
+        keywords: 'копировать, copy, clipboard, буфер обмена, share',
+        route: DemoRoute.Copy,
+        meta: {},
+    },
+    {
+        section: 'Components',
         title: 'Hint',
         subPages: [
             {
@@ -584,6 +599,12 @@ export const pages: DocRoutePages = [
                 title: 'InputNumber',
                 keywords: 'textfield, input, number, count, digit, money, число',
                 route: DemoRoute.InputNumber,
+            },
+            {
+                section: 'Components',
+                title: 'InputPhone',
+                keywords: 'поле, инпут, форма, ввод, input, phone, телефон, номера',
+                route: DemoRoute.InputPhone,
             },
             {
                 section: 'Components',
@@ -717,9 +738,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputPhone',
+                title: 'InputPhone ⛔',
                 keywords: 'поле, инпут, форма, ввод, input, phone, телефон, номера',
-                route: DemoRoute.InputPhone,
+                route: DemoRoute.InputPhoneLegacy,
             },
             {
                 section: 'Components',
@@ -831,9 +852,12 @@ export const pages: DocRoutePages = [
         title: 'Link',
         keywords: 'href, anchor, ссылка, псевдо, pseudo, link',
         route: DemoRoute.Link,
-        meta: {
-            name: 'tui-button-link',
-        },
+        meta: [
+            {
+                name: 'tui-button-link',
+            },
+            {name: 'tui-link', figmaVersion: '1.0.1'},
+        ],
     },
     {
         section: 'Components',
@@ -841,7 +865,9 @@ export const pages: DocRoutePages = [
         keywords:
             'загрузка, крутилка, лоадер, спиннер, спинер, крутится, мутится, spinner, loader',
         route: DemoRoute.Loader,
-        meta: {},
+        meta: {
+            figmaVersion: '1.0.0',
+        },
     },
     {
         section: 'Components',
@@ -1109,9 +1135,9 @@ export const pages: DocRoutePages = [
         keywords: 'cell, feed, item, tuiaccessories, accessories',
         route: DemoRoute.Cell,
         meta: [
-            {name: 'tui-cell'},
-            {name: 'tui-cell-connected'},
-            {name: 'tui-button-cell'},
+            {name: 'tui-cell', figmaVersion: '1.3.1'},
+            {name: 'tui-cell-connected', figmaVersion: '1.3.1'},
+            {name: 'tui-button-cell', figmaVersion: '1.0.1'},
             {name: 'list-item', scheme: 'beaver'},
         ],
     },
@@ -1176,7 +1202,9 @@ export const pages: DocRoutePages = [
         title: 'SwipeActions',
         keywords: 'swipe, action, свайп, card, действие',
         route: DemoRoute.SwipeActions,
-        meta: {},
+        meta: {
+            version: '1.1.0',
+        },
     },
     {
         section: 'Components',
@@ -1612,7 +1640,9 @@ export const pages: DocRoutePages = [
                 keywords:
                     'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
                 route: DemoRoute.Skeleton,
-                meta: {},
+                meta: {
+                    figmaVersion: '1.2.0',
+                },
             },
         ],
     },
@@ -1703,7 +1733,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
                 route: DemoRoute.Amount,
-                meta: {scheme: 'taiga'},
+                meta: {scheme: 'taiga', version: '1.1.1'},
             },
             {
                 section: 'Tools',

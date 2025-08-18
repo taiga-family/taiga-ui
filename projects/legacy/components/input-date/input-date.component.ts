@@ -8,32 +8,30 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {MaskitoOptions} from '@maskito/core';
-import {MASKITO_DEFAULT_OPTIONS} from '@maskito/core';
+import {MASKITO_DEFAULT_OPTIONS, type MaskitoOptions} from '@maskito/core';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiDateMode} from '@taiga-ui/cdk/date-time';
 import {
     DATE_FILLER_LENGTH,
     TUI_LAST_DISPLAYED_DAY,
     tuiDateClamp,
+    type TuiDateMode,
     TuiDay,
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
-import type {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler, TuiContext} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
 import {
     changeDateSeparator,
     tuiNullableSame,
     tuiPure,
 } from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
+import {type TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {
     TUI_DATE_TEXTS,
     TUI_DATE_VALUE_TRANSFORMER,
@@ -41,19 +39,21 @@ import {
     TUI_MOBILE_CALENDAR,
     TUI_MOBILE_CALENDAR_PROVIDER,
     tuiDateStreamWithTransformer,
+    type TuiInputDateOptions,
 } from '@taiga-ui/kit/tokens';
-import type {TuiNamedDay} from '@taiga-ui/legacy/classes';
 import {
     AbstractTuiNullableControl,
     tuiAsControl as tuiAsLegacyControl,
+    type TuiNamedDay,
 } from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
 import {TUI_DATE_MODE_MASKITO_ADAPTER} from '@taiga-ui/legacy/utils';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {map, type Observable} from 'rxjs';
 
 /**
  * TODO(v5): delete it

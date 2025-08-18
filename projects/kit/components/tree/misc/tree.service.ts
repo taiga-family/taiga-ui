@@ -1,7 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {map, mergeMap, startWith, Subject, tap} from 'rxjs';
 
-import type {TuiTreeLoader} from './tree.interfaces';
+import {type TuiTreeLoader} from './tree.interfaces';
 import {TUI_TREE_LOADER, TUI_TREE_LOADING, TUI_TREE_START} from './tree.tokens';
 
 @Injectable()

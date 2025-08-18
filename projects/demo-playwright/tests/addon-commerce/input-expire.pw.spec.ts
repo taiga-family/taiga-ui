@@ -1,7 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {tuiGoto, TuiInputCardPO} from '@demo-playwright/utils';
-import type {Locator} from '@playwright/test';
-import {expect, test} from '@playwright/test';
+import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputExpire', () => {
     let expiryTextfield: Locator;

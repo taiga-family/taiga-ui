@@ -1,5 +1,10 @@
-import type {QueryList, TemplateRef} from '@angular/core';
-import {ContentChildren, Directive, signal} from '@angular/core';
+import {
+    ContentChildren,
+    Directive,
+    type QueryList,
+    signal,
+    type TemplateRef,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
     WaIntersectionObserverDirective,

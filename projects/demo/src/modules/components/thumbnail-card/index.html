@@ -18,8 +18,8 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <tui-thumbnail-card
-                [iconEnd]="iconEnd"
-                [iconStart]="iconStart"
+                [iconEnd]="controlIcons.iconEnd"
+                [iconStart]="controlIcons.iconStart"
                 [monoHandler]="monoHandler"
                 [paymentSystem]="paymentSystem"
                 [size]="size"
@@ -28,71 +28,64 @@
                 {{ contentProjection }}
             </tui-thumbnail-card>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="iconStart"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="iconStart"
-            >
-                Icon on the left
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="iconEnd"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="iconEnd"
-            >
-                Icon on the right
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="monoHandler"
-                documentationPropertyType="TuiBooleanHandler<TuiPaymentSystem>"
-                [documentationPropertyValues]="monoHandlerVariants"
-                [(documentationPropertyValue)]="monoHandler"
+        <table tuiDocAPI>
+            <tbody
+                #controlIcons
+                tuiDocIcons
+            ></tbody>
+            <tr
+                name="[monoHandler]"
+                tuiDocAPIItem
+                type="TuiBooleanHandler<TuiPaymentSystem>"
+                [items]="monoHandlerVariants"
+                [(value)]="monoHandler"
             >
                 Whether to use colored icon for particular payment system
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="paymentSystem"
-                documentationPropertyType="TuiPaymentSystem | null"
-                [documentationPropertyValues]="paymentSystemVariants"
-                [(documentationPropertyValue)]="paymentSystem"
+            </tr>
+            <tr
+                name="[paymentSystem]"
+                tuiDocAPIItem
+                type="TuiPaymentSystem | null"
+                [items]="paymentSystemVariants"
+                [(value)]="paymentSystem"
             >
                 Payment system
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeXS | TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeXS | TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-        </tui-doc-documentation>
-        <tui-doc-documentation heading="CSS customization">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="style.background"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="background"
-            />
-        </tui-doc-documentation>
+            </tr>
+        </table>
 
-        <tui-doc-documentation heading="Content projection">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="ng-content"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="contentProjection"
-            />
-            <tui-doc-code [code]="'<tui-thumbnail-card>' + contentProjection + '</tui-thumbnail-card>'" />
-        </tui-doc-documentation>
+        <h3>CSS customization</h3>
+        <table tuiDocAPI>
+            <tr
+                name="[style.background]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="background"
+            >
+                Background style
+            </tr>
+        </table>
+
+        <h3>Content projection</h3>
+        <table tuiDocAPI>
+            <tr
+                name="[ng-content]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="contentProjection"
+            >
+                Content projection
+            </tr>
+        </table>
+        <tui-doc-code [code]="'<tui-thumbnail-card>{{ contentProjection }}</tui-thumbnail-card>'" />
     </ng-template>
 
     <tui-setup *pageTab />

@@ -1,9 +1,7 @@
-import type {HarnessLoader} from '@angular/cdk/testing';
-import {TestKey} from '@angular/cdk/testing';
+import {type HarnessLoader, TestKey} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
-import type {ComponentFixture} from '@angular/core/testing';
-import {TestBed} from '@angular/core/testing';
+import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiTagComponent, TuiTagModule} from '@taiga-ui/legacy';
 import {TuiTagHarness} from '@taiga-ui/testing';

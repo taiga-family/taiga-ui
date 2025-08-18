@@ -1,5 +1,4 @@
-import type {OnChanges} from '@angular/core';
-import {Directive, Input} from '@angular/core';
+import {Directive, Input, type OnChanges} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {Subject} from 'rxjs';
 

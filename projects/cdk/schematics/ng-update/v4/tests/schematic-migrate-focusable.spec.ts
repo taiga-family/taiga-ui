@@ -1,9 +1,8 @@
 import {join} from 'node:path';
 
-import type {Tree} from '@angular-devkit/schematics';
-import {HostTree} from '@angular-devkit/schematics';
+import {HostTree, type Tree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-import type {TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
+import {type TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
     createProject,
     createSourceFile,

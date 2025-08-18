@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
-import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
+import {TuiSheetDialog, type TuiSheetDialogOptions} from '@taiga-ui/addon-mobile';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiRoot} from '@taiga-ui/core';
 

@@ -1,4 +1,4 @@
-import type {Routes} from '@angular/router';
+import {type Routes} from '@angular/router';
 import {tuiProvideRoutePageTab as route} from '@taiga-ui/addon-doc';
 
 import {DemoRoute} from './demo-routes';
@@ -500,6 +500,11 @@ export const ROUTES: Routes = [
         title: 'InputPhone',
     }),
     route({
+        path: DemoRoute.InputPhoneLegacy,
+        loadComponent: async () => import('../components/input-phone-legacy'),
+        title: 'InputPhone ⛔',
+    }),
+    route({
         path: DemoRoute.InputPin,
         loadComponent: async () => import('../components/input-pin'),
         title: 'InputPin',
@@ -856,6 +861,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.RingChart,
         loadComponent: async () => import('../components/ring-chart'),
         title: 'RingChart',
+    }),
+    route({
+        path: DemoRoute.Copy,
+        loadComponent: async () => import('../components/copy'),
+        title: 'Copy',
     }),
     // STYLES
     route({

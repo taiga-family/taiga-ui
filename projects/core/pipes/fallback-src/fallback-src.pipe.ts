@@ -1,8 +1,6 @@
-import type {PipeTransform} from '@angular/core';
-import {Pipe} from '@angular/core';
+import {Pipe, type PipeTransform} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import type {Observable} from 'rxjs';
-import {fromEvent, map, startWith} from 'rxjs';
+import {fromEvent, map, type Observable, startWith} from 'rxjs';
 
 @Pipe({
     standalone: true,

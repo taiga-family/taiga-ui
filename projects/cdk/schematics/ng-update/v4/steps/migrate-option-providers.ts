@@ -1,14 +1,14 @@
-import type {ObjectLiteralElementLike} from 'ng-morph';
 import {
     FINISH_SYMBOL,
     infoLog,
     Node,
+    type ObjectLiteralElementLike,
     REPLACE_SYMBOL,
     SMALL_TAB_SYMBOL,
     titleLog,
 } from 'ng-morph';
 
-import type {TuiSchema} from '../../../ng-add/schema';
+import {type TuiSchema} from '../../../ng-add/schema';
 import {getNamedImportReferences} from '../../../utils/get-named-import-references';
 import {insertTodo} from '../../../utils/insert-todo';
 

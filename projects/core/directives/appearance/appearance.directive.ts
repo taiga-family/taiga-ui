@@ -14,10 +14,9 @@ import {
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiInteractiveState} from '@taiga-ui/core/types';
+import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
-import type {TuiAppearanceOptions} from './appearance.options';
-import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
+import {TUI_APPEARANCE_OPTIONS, type TuiAppearanceOptions} from './appearance.options';
 
 @Component({
     standalone: true,
@@ -52,8 +51,14 @@ export class TuiAppearance {
         !mode || tuiIsString(mode) ? mode : mode.join(' '),
     );
 
+    // TODO: refactor to signal inputs after Angular update
+    public readonly appearance = signal(inject(TUI_APPEARANCE_OPTIONS).appearance);
+    public readonly state = signal<TuiInteractiveState | null>(null);
+    public readonly focus = signal<boolean | null>(null);
+    public readonly mode = signal<string | readonly string[] | null>(null);
+
     // TODO: Remove when Angular is updated
-    protected readonly update = effect(() => {
+    public readonly update = effect(() => {
         this.mode();
         this.state();
         this.focus();
@@ -62,12 +67,6 @@ export class TuiAppearance {
             this.cdr.detectChanges();
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
-
-    // TODO: refactor to signal inputs after Angular update
-    public readonly appearance = signal(inject(TUI_APPEARANCE_OPTIONS).appearance);
-    public readonly state = signal<TuiInteractiveState | null>(null);
-    public readonly focus = signal<boolean | null>(null);
-    public readonly mode = signal<string | readonly string[] | null>(null);
 
     constructor() {
         afterNextRender(() => {

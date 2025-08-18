@@ -36,9 +36,9 @@ const DATA: Record<string, readonly Result[]> = {
             icon: '@tui.github',
         },
         {
-            title: 'Taiga UI Proprietary',
-            href: 'https://super-secret-evil.org/taiga-ui',
-            icon: '@tui.gitlab',
+            title: 'Web APIs with Angular',
+            href: 'https://github.com/taiga-family/ng-web-apis',
+            icon: '@tui.github',
         },
     ],
     Links: [

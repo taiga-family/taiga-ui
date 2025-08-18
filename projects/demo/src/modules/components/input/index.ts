@@ -1,5 +1,4 @@
-import type {TemplateRef} from '@angular/core';
-import {Component, ViewChild} from '@angular/core';
+import {Component, type TemplateRef, ViewChild} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
@@ -8,7 +7,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiHint, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';

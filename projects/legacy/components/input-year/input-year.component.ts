@@ -5,20 +5,21 @@ import {
     Input,
     ViewChild,
 } from '@angular/core';
-import type {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {MAX_YEAR, MIN_YEAR} from '@taiga-ui/cdk/date-time';
-import type {TuiBooleanHandler} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
-import type {TuiInputDateOptions} from '@taiga-ui/kit/tokens';
-import {TUI_INPUT_DATE_OPTIONS} from '@taiga-ui/kit/tokens';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {TUI_INPUT_DATE_OPTIONS, type TuiInputDateOptions} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
 
 const UP_TO_4_DIGITS_REG = /^\d{0,4}$/;
 

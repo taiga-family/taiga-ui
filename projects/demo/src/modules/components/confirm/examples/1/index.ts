@@ -3,8 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
 import {TuiAlertService, TuiButton} from '@taiga-ui/core';
-import type {TuiConfirmData} from '@taiga-ui/kit';
-import {TUI_CONFIRM} from '@taiga-ui/kit';
+import {TUI_CONFIRM, type TuiConfirmData} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({

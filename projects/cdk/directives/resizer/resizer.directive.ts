@@ -1,5 +1,11 @@
-import type {ElementRef} from '@angular/core';
-import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
+import {
+    Directive,
+    type ElementRef,
+    EventEmitter,
+    inject,
+    Input,
+    Output,
+} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiResizable} from './resizable.directive';

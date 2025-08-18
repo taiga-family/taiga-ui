@@ -1,4 +1,4 @@
-import type {ExistingProvider, Type} from '@angular/core';
+import {type ExistingProvider, type Type} from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export abstract class TuiVehicle {

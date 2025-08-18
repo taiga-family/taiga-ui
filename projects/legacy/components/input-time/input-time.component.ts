@@ -6,32 +6,34 @@ import {
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import type {MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions} from '@maskito/core';
 import {maskitoSelectionChangeHandler, maskitoTimeOptionsGenerator} from '@maskito/kit';
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
+import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import type {TuiTimeMode} from '@taiga-ui/cdk/date-time';
-import {TuiTime} from '@taiga-ui/cdk/date-time';
+import {TuiTime, type TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import type {TuiBooleanHandler, TuiIdentityMatcher} from '@taiga-ui/cdk/types';
+import {type TuiBooleanHandler, type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost, tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import {
+    tuiAsDataListHost,
+    tuiAsOptionContent,
+    type TuiDataListHost,
+} from '@taiga-ui/core/components/data-list';
 import {TuiDropdownFixed} from '@taiga-ui/core/directives/dropdown';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TUI_TIME_TEXTS, TUI_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit/tokens';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
 import {TuiPrimitiveTextfieldComponent} from '@taiga-ui/legacy/components/primitive-textfield';
 import {TUI_SELECT_OPTION} from '@taiga-ui/legacy/components/select-option';
 import {TUI_TEXTFIELD_SIZE} from '@taiga-ui/legacy/directives';
-import type {TuiFocusableElementAccessor} from '@taiga-ui/legacy/tokens';
-import {tuiAsFocusableItemAccessor} from '@taiga-ui/legacy/tokens';
-import type {Observable} from 'rxjs';
-import {map, timer} from 'rxjs';
+import {
+    tuiAsFocusableItemAccessor,
+    type TuiFocusableElementAccessor,
+} from '@taiga-ui/legacy/tokens';
+import {map, type Observable, timer} from 'rxjs';
 
-import type {TuiInputTimeOptions} from './input-time.options';
-import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
+import {TUI_INPUT_TIME_OPTIONS, type TuiInputTimeOptions} from './input-time.options';
 
 /**
  * TODO(v5): delete it

@@ -13,8 +13,11 @@ import {
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiDataListHost} from '@taiga-ui/core/components/data-list';
-import {tuiAsDataListHost, TuiDataList} from '@taiga-ui/core/components/data-list';
+import {
+    tuiAsDataListHost,
+    TuiDataList,
+    type TuiDataListHost,
+} from '@taiga-ui/core/components/data-list';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {
     TuiDropdownDirective,
@@ -23,8 +26,7 @@ import {
     TuiDropdownPositionSided,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {skip} from 'rxjs';
 
 import {TuiAsideComponent} from './aside.component';

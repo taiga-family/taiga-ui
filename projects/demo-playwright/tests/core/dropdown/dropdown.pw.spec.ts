@@ -65,7 +65,7 @@ test.describe('Dropdown', () => {
     // however if you open nested dropdown and click somewhere inside of it
     // so that nothing is focused for some reason second Esc press
     // has no effect but third one works, seems like some CloseWatcher issue
-    // eslint-disable-next-line playwright/no-skipped-test
+
     test.skip('Esc -> Hosted Dropdown', async ({page}) => {
         await tuiGoto(page, DemoRoute.DropdownOpen);
         const example = new TuiDocumentationPagePO(page).getExample('#tui-dropdown-host');
@@ -194,5 +194,16 @@ test.describe('Dropdown', () => {
         await example.locator('button').click();
 
         await expect.soft(page).toHaveScreenshot('18-dropdown-open-again.png');
+    });
+
+    test('Nested sided dropdown', async ({page}) => {
+        await page.setViewportSize({width: 750, height: 400});
+        await tuiGoto(page, DemoRoute.DataList);
+        const example = new TuiDocumentationPagePO(page).getExample('#complex');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('button').click();
+
+        await expect.soft(page).toHaveScreenshot('19-dropdown-sided-nested.png');
     });
 });

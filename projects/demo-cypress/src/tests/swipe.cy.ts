@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import type {TuiSwipeEvent} from '@taiga-ui/cdk';
-import {TuiSwipe} from '@taiga-ui/cdk';
+import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
 
 describe('TuiSwipe', () => {
     let component: Test;

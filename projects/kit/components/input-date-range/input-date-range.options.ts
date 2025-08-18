@@ -1,13 +1,14 @@
-import type {FactoryProvider} from '@angular/core';
-import {inject, InjectionToken} from '@angular/core';
-import type {TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {TUI_IDENTITY_VALUE_TRANSFORMER} from '@taiga-ui/cdk/classes';
-import type {TuiDayRange} from '@taiga-ui/cdk/date-time';
+import {type FactoryProvider, inject, InjectionToken} from '@angular/core';
+import {
+    TUI_IDENTITY_VALUE_TRANSFORMER,
+    type TuiValueTransformer,
+} from '@taiga-ui/cdk/classes';
+import {type TuiDayRange} from '@taiga-ui/cdk/date-time';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiInputDateOptionsNew} from '@taiga-ui/kit/components/input-date';
 import {
     TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
     TUI_INPUT_DATE_OPTIONS_NEW,
+    type TuiInputDateOptionsNew,
 } from '@taiga-ui/kit/components/input-date';
 
 export interface TuiInputDateRangeOptions

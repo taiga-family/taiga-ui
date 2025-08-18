@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import type {TuiKeySteps} from '@taiga-ui/kit';
+import {type TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({

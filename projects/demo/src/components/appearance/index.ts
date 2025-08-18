@@ -3,9 +3,13 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import type {TuiLooseUnion} from '@taiga-ui/cdk';
-import type {TuiAppearanceOptions, TuiInteractiveState} from '@taiga-ui/core';
-import {TuiLink, TuiTitle} from '@taiga-ui/core';
+import {type TuiLooseUnion} from '@taiga-ui/cdk';
+import {
+    type TuiAppearanceOptions,
+    type TuiInteractiveState,
+    TuiLink,
+    TuiTitle,
+} from '@taiga-ui/core';
 
 @Component({
     standalone: true,

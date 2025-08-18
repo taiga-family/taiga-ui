@@ -3,8 +3,7 @@ import {TuiDocAppearance} from '@demo/components/appearance';
 import {TuiDocIcons} from '@demo/components/icons';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 import {TuiButtonLoading} from '@taiga-ui/kit';
 
 @Component({

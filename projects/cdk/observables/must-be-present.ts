@@ -1,8 +1,7 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {OperatorFunction} from 'rxjs';
-import {map} from 'rxjs';
+import {map, type OperatorFunction} from 'rxjs';
 
 export function tuiMustBePresent<T>(): OperatorFunction<T | null | undefined, T> {
     return map((value) => {

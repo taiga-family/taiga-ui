@@ -1,17 +1,15 @@
 import {NgTemplateOutlet} from '@angular/common';
-import type {
-    AfterViewInit,
-    ElementRef,
-    OnChanges,
-    QueryList,
-    TemplateRef,
-} from '@angular/core';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
+    type ElementRef,
     inject,
     Input,
+    type OnChanges,
+    type QueryList,
     signal,
+    type TemplateRef,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -22,7 +20,7 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
-import type {TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiSizeS} from '@taiga-ui/core/types';
 import {delay, map} from 'rxjs';
 
 @Component({

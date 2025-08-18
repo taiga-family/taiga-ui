@@ -1,6 +1,5 @@
 import {AsyncPipe, NgIf} from '@angular/common';
-import type {TemplateRef} from '@angular/core';
-import {Component, inject} from '@angular/core';
+import {Component, inject, type TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
@@ -13,7 +12,7 @@ import {
     TuiNumberFormat,
 } from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,

@@ -1,5 +1,9 @@
-import type {AfterViewInit} from '@angular/core';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {
+    type AfterViewInit,
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+} from '@angular/core';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';

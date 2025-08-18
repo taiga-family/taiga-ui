@@ -1,5 +1,4 @@
-import type {PipeTransform} from '@angular/core';
-import {inject, Pipe} from '@angular/core';
+import {inject, Pipe, type PipeTransform} from '@angular/core';
 
 import {TUI_EMAIL_PIPE_OPTIONS} from './emails.options';
 

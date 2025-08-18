@@ -10,6 +10,27 @@ app {
     gap: 1.25rem;
 }
 
+.app-stackblitz {
+    .transition(background);
+
+    background: var(--tui-text-tertiary);
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+
+    a:hover & {
+        background: var(--tui-text-secondary);
+    }
+
+    a:active & {
+        background: var(--tui-text-primary);
+    }
+
+    &::after {
+        color: var(--tui-background-base);
+        transform: scale(0.6);
+    }
+}
+
 .app-links-dropdown {
     display: none !important;
 }

@@ -15,7 +15,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiOrientation} from '@taiga-ui/core/types';
+import {type TuiOrientation} from '@taiga-ui/core/types';
 import {filter, fromEvent, merge} from 'rxjs';
 
 const BUFFER = 1; // buffer for rounding issues

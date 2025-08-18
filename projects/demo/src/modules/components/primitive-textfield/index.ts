@@ -3,16 +3,20 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import type {TuiContext} from '@taiga-ui/cdk';
-import {tuiProvide} from '@taiga-ui/cdk';
-import type {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
-import {TUI_HINT_DIRECTIONS, TuiHint, TuiIcon} from '@taiga-ui/core';
+import {type TuiContext, tuiProvide} from '@taiga-ui/cdk';
+import {
+    TUI_HINT_DIRECTIONS,
+    TuiHint,
+    TuiIcon,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {
     TuiPrimitiveTextfieldModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
-import type {PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {HintControllerDocumentation} from '../abstract/hint-controller-documentation';

@@ -11,14 +11,16 @@ import {
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import type {TuiTextfieldAccessor} from '@taiga-ui/core/components/textfield';
 import {
     tuiAsTextfieldAccessor,
+    type TuiTextfieldAccessor,
     TuiTextfieldDirective,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import type {TuiItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
-import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
+import {
+    TUI_ITEMS_HANDLERS,
+    type TuiItemsHandlers,
+} from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 @Component({
