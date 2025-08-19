@@ -290,14 +290,9 @@ jobs:
       - name: Combine performance diff reports
         id: performance-comparison
         continue-on-error: true
-        run: |
-          if find ./performance/diff -maxdepth 2 -type f -name '*.md' -print -quit | grep -q .; then
-            echo "performance_data_exists=true" >> $GITHUB_OUTPUT
-            find ./performance/diff -maxdepth 2 -type f -name '*.md' -exec cat {} + > ./performance-report.md
-          else
-            echo "performance_data_exists=false" >> $GITHUB_OUTPUT
-            echo "## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this run._" > ./performance-report.md
-          fi
+        run:
+          npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts aggregate-md ./performance/diff
+          ./performance-report.md
 
       - name: Merge into HTML Report
         run: npx playwright merge-reports --config=projects/demo-playwright/merge.config.ts ./all-blob-reports
