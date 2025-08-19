@@ -1,9 +1,7 @@
 name: 🤖 Assign PR Closer to All Linked Issues
 on:
-  workflow_run:
-    workflows: ['🤖 Collect Linked Issues on PR Close']
-    types:
-      - completed
+  repository_dispatch:
+    types: [assign-issues]
 
 jobs:
   assign-issue:
@@ -11,22 +9,17 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: pr-data
-
-      - name: Parse data
-        id: parse
+      - name: Extract payload
+        id: payload
         run: |
-          echo "linked_issues=$(cat linked-issues.json)" >> $GITHUB_OUTPUT
-          echo "pr_author=$(cat pr-author.txt)" >> $GITHUB_OUTPUT
-          echo "pr_number=$(cat pr-number.txt)" >> $GITHUB_OUTPUT
+          echo "linked_issues=${{ github.event.client_payload.linkedIssues }}" >> $GITHUB_OUTPUT
+          echo "pr_author=${{ github.event.client_payload.prAuthor }}" >> $GITHUB_OUTPUT
+          echo "pr_number=${{ github.event.client_payload.prNumber }}" >> $GITHUB_OUTPUT
 
       - name: Check if PR author is a bot
         id: check-bot
         run: |
-          AUTHOR="${{ steps.parse.outputs.pr_author }}"
+          AUTHOR="${{ steps.payload.outputs.pr_author }}"
 
           if [[ "$AUTHOR" == *bot* ]]; then
             echo "skip=true" >> $GITHUB_OUTPUT
@@ -40,10 +33,11 @@ jobs:
         if: steps.check-bot.outputs.skip == 'false'
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
           script: |
             let issueNumbers;
             try {
-              issueNumbers = JSON.parse(`${{ steps.parse.outputs.linked_issues }}`);
+              issueNumbers = JSON.parse(`${{ steps.payload.outputs.linked_issues }}`);
             } catch (e) {
               console.warn('Failed to parse linked issues:', e);
               issueNumbers = [];
@@ -54,7 +48,7 @@ jobs:
               return;
             }
 
-            const prAuthor = "${{ steps.parse.outputs.pr_author }}";
+            const prAuthor = "${{ steps.payload.outputs.pr_author }}";
             console.log(`Assigning @${prAuthor} to issues: ${issueNumbers.join(', ')}`);
 
             for (const issueNumber of issueNumbers) {
