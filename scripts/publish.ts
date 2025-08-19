@@ -50,7 +50,7 @@ function makeTag(version: string): string {
     }
 
     const currentMajor = parseVersion(version).major;
-    const latestMajor = parseVersion(getAllTags('@taiga-ui/core')?.latest ?? '').major;
+    const latestMajor = parseVersion(getAllTags('@taiga-ui/core').latest ?? '').major;
     const latestOrLTS = currentMajor >= latestMajor ? 'latest' : `v${currentMajor}-lts`;
 
     return `--tag ${latestOrLTS}`;
