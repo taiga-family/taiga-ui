@@ -23,11 +23,11 @@ test.describe('Source code button', () => {
                 /^https:\/\/github.com\/taiga-family\/taiga-ui/,
             );
 
-            const href = await sourceCodeLink.getAttribute('href');
-            // Replace 'main' branch with current branch in the GitHub URL
-            const adjustedHref =
-                href?.replace('/tree/main/', `/tree/${currentBranch}/`) ?? '';
-            const response = await request.get(adjustedHref, {maxRetries: 3});
+            const href = await sourceCodeLink
+                .getAttribute('href')
+                .then((href) => href?.replace('/tree/main/', `/tree/${currentBranch}/`));
+
+            const response = await request.get(href ?? '', {maxRetries: 3});
 
             // eslint-disable-next-line playwright/no-conditional-in-test
             if (!response.ok()) {
@@ -40,7 +40,7 @@ test.describe('Source code button', () => {
 
             expect(
                 response.status(),
-                `Source code link is broken (404). The component at "${adjustedHref}" does not exist on branch "${currentBranch}". ` +
+                `Source code link is broken (404). The component at "${href}" does not exist on branch "${currentBranch}". ` +
                     'This usually means the component was renamed, moved, or deleted. ' +
                     `Please ensure the component exists at the correct path or update the demo route "${path}". ` +
                     'If the component exists but the path is wrong, add the correct path parameter to tui-doc-page: ' +
@@ -53,7 +53,7 @@ test.describe('Source code button', () => {
         test.skip(proprietary);
 
         const response = await request.get(
-            `https://github.com/taiga-family/taiga-ui/tree/${currentBranch}/projects/kit/components/invalid-component-name`,
+            'https://github.com/taiga-family/taiga-ui/tree/main/projects/kit/components/invalid-component-name',
         );
 
         expect(response.status()).toBe(404);
