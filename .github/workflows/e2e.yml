@@ -33,132 +33,6 @@ jobs:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-  # Standalone Performance Testing Job - Fast execution without waiting for full E2E suite
-  performance-testing:
-    if: ${{ !contains(github.head_ref , 'release/') }}
-    needs: [build-demo]
-    name: Performance Testing
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4.3.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.144.0
-      - uses: taiga-family/ci/actions/setup/node@v1.144.0
-      - uses: taiga-family/ci/actions/setup/playwright@v1.144.0
-
-      - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v4.2.4
-        with:
-          path: dist/demo
-          key: ${{ env.CACHE_DIST_KEY }}
-
-      - uses: taiga-family/ci/actions/run/serve@v1.144.0
-        with:
-          port: ${{ env.NG_SERVER_PORT }}
-          directory: ${{ env.DIST }}
-          replaceBaseUrl: false
-
-      # Collect baseline performance from main branch
-      - name: Collect baseline performance metrics
-        env:
-          COLLECT_PERFORMANCE: 1
-          BASE_REF: ${{ github.base_ref }}
-        run: |
-          echo "🚀 Starting baseline performance collection"
-          mkdir -p ./performance-baseline
-
-          # Save current state
-          CURRENT_COMMIT=$(git rev-parse HEAD)
-
-          # Check out main branch to collect baseline
-          git fetch origin "$BASE_REF"
-          git checkout "origin/$BASE_REF"
-
-          # Check if performance test file exists on main branch
-          if [ -f projects/demo-playwright/tests/core/scrollbar/performance.pw.spec.ts ]; then
-            echo "📝 Performance test file found on main branch, running baseline collection"
-            npx nx e2e demo-playwright -- \
-              --project=chromium \
-              --reporter=line \
-              projects/demo-playwright/tests/core/scrollbar/performance.pw.spec.ts || echo "⚠️ Some tests may have failed, continuing with performance collection"
-
-            # Move collected performance files to output directory
-            if ls ./projects/demo-playwright/tests-results/performance-*.json 1> /dev/null 2>&1; then
-              mv ./projects/demo-playwright/tests-results/performance-*.json ./performance-baseline/
-              echo "✅ Baseline performance data collected: $(ls -1 ./performance-baseline/*.json 2>/dev/null | wc -l) files"
-            else
-              echo "⚠️ No baseline performance data files found"
-            fi
-          else
-            echo "ℹ️ Performance test file not found on main branch - this is expected for new features"
-            echo "ℹ️ Creating empty baseline directory for comparison"
-          fi
-
-          # Switch back to feature branch commit
-          git checkout "$CURRENT_COMMIT"
-        continue-on-error: true
-
-      # Switch back to feature branch and collect current metrics
-      - name: Collect current performance metrics
-        env:
-          COLLECT_PERFORMANCE: 1
-        run: |
-          echo "🚀 Starting current performance collection"
-          mkdir -p ./performance-current
-
-          # We're already on the feature branch (current commit)
-          echo "📝 Running performance tests on feature branch"
-          npx nx e2e demo-playwright -- \
-            --project=chromium \
-            --reporter=line \
-            projects/demo-playwright/tests/core/scrollbar/performance.pw.spec.ts
-
-          # Move collected performance files to output directory
-          if ls ./projects/demo-playwright/tests-results/performance-*.json 1> /dev/null 2>&1; then
-            mv ./projects/demo-playwright/tests-results/performance-*.json ./performance-current/
-            echo "✅ Current performance data collected: $(ls -1 ./performance-current/*.json 2>/dev/null | wc -l) files"
-          else
-            echo "⚠️ No current performance data files found"
-          fi
-        continue-on-error: true
-
-      # Compare and generate report
-      - name: Compare performance metrics
-        id: performance-comparison
-        continue-on-error: true
-        run: |
-          if [ -d "./performance-current" ] && [ "$(ls -A ./performance-current 2>/dev/null)" ]; then
-            echo "performance_data_exists=true" >> $GITHUB_OUTPUT
-            mkdir -p ./performance-baseline
-            
-            # Check if we have baseline data
-            if [ -d "./performance-baseline" ] && [ "$(ls -A ./performance-baseline 2>/dev/null)" ]; then
-              echo "📊 Comparing performance metrics with baseline"
-              npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
-                ./performance-baseline \
-                ./performance-current \
-                ./performance-report.md \
-                ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
-            else
-              echo "📊 No baseline data available - showing current metrics only"
-              npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
-                ./performance-baseline \
-                ./performance-current \
-                ./performance-report.md \
-                ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
-            fi
-          else
-            echo "performance_data_exists=false" >> $GITHUB_OUTPUT
-            echo "## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this run._" > ./performance-report.md
-          fi
-
-      # Post GitHub comment with results
-      - name: Post performance comparison comment
-        if: steps.performance-comparison.outputs.performance_data_exists == 'true'
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx ts-node ./scripts/post-performance-comment.ts ./performance-report.md
-
   cypress:
     if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
@@ -294,6 +168,8 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
+        env:
+          COLLECT_PERFORMANCE: ${{ matrix.shard.project == 'chromium' && '1' || '0' }}
         run: |
           npx nx e2e demo-playwright -- \
             --project=${{ matrix.shard.project }} \
@@ -304,39 +180,25 @@ jobs:
           npm install canvas --no-save --silent --force
           npx ts-node -e "import { tuiCombinePlaywrightFailedScreenshots as run } from './projects/testing/visual-testing'; run();";
 
-      # Commented out for faster standalone performance testing
-      # - name: Collect current performance metrics
-      #   if: matrix.shard.project == 'chromium' && matrix.shard.index == 1
-      #   env:
-      #     COLLECT_PERFORMANCE: 1
-      #   run: |
-      #     echo "🚀 Starting current performance collection"
-      #     mkdir -p ./performance-current
+      - name: Upload baseline performance metrics
+        if: matrix.shard.project == 'chromium'
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          path: ./projects/demo-playwright/tests-results/performance-*.json
+          name: ${{ env.PERFORMANCE_BASELINE_KEY }}_${{ matrix.shard.index }}
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
 
-      #     # Run tests with performance collection (only those that use PerformanceCollector)
-      #     npx nx e2e demo-playwright -- \
-      #       --project=chromium \
-      #       --grep="measures performance impact of dynamic content changes" \
-      #       --reporter=line || echo "⚠️ Some tests may have failed, continuing with performance collection"
-
-      #     # Move collected performance files to output directory
-      #     if ls ./projects/demo-playwright/tests-results/performance-*.json 1> /dev/null 2>&1; then
-      #       mv ./projects/demo-playwright/tests-results/performance-*.json ./performance-current/
-      #       echo "✅ Current performance data collected: $(ls -1 ./performance-current/*.json 2>/dev/null | wc -l) files"
-      #     else
-      #       echo "⚠️ No current performance data files found"
-      #     fi
-      #   continue-on-error: true
-
-      # - name: Upload current performance metrics
-      #   if: matrix.shard.project == 'chromium' && matrix.shard.index == 1
-      #   uses: actions/upload-artifact@v4.6.2
-      #   with:
-      #     path: ./performance-current/*.json
-      #     name: ${{ env.PERFORMANCE_CURRENT_KEY }}
-      #     if-no-files-found: ignore
-      #     compression-level: 0
-      #     retention-days: 1
+      - name: Upload current performance metrics
+        if: matrix.shard.project == 'chromium'
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          path: ./projects/demo-playwright/tests-results/performance-*.json
+          name: ${{ env.PERFORMANCE_CURRENT_KEY }}_${{ matrix.shard.index }}
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 1
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v4.6.2
@@ -414,7 +276,7 @@ jobs:
         uses: actions/download-artifact@v4.3.0
         with:
           path: ./performance/baseline
-          pattern: ${{ env.PERFORMANCE_BASELINE_KEY }}
+          pattern: ${{ env.PERFORMANCE_BASELINE_KEY }}_*
           merge-multiple: true
 
       - name: Download current performance metrics
@@ -422,7 +284,7 @@ jobs:
         uses: actions/download-artifact@v4.3.0
         with:
           path: ./performance/current
-          pattern: ${{ env.PERFORMANCE_CURRENT_KEY }}
+          pattern: ${{ env.PERFORMANCE_CURRENT_KEY }}_*
           merge-multiple: true
 
       - name: Compare performance metrics
