@@ -23,7 +23,7 @@ export default class Page {
             return null;
         }
 
-        const element = this.doc.getElementsByClassName(className)?.item(0);
+        const element = this.doc.querySelector(`.${className}`);
 
         return element ? getComputedStyle(element).fontSize : null;
     }
