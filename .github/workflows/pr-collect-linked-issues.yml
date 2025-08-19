@@ -1,0 +1,70 @@
+name: 🤖 Collect Linked Issues on PR Close
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  collect-linked-issues:
+    runs-on: ubuntu-latest
+    outputs:
+      linked-issues: ${{ steps.find-linked-issues.outputs.result }}
+      should-proceed: ${{ steps.check-merge.outputs.should_proceed }}
+      pr-author: ${{ github.event.pull_request.user.login }}
+      pr-number: ${{ github.event.pull_request.number }}
+    steps:
+      - name: Check if PR was merged
+        id: check-merge
+        run: |
+          if [ "${{ github.event.pull_request.merged }}" == "true" ]; then
+            echo "should_proceed=true" >> $GITHUB_OUTPUT
+          else
+            echo "should_proceed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Find ALL linked issues
+        if: steps.check-merge.outputs.should_proceed == 'true'
+        id: find-linked-issues
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body || '';
+            const prNumber = context.payload.pull_request.number;
+
+            const fromBody = [...body.matchAll(/#(\d+)/g)].map(m => Number(m[1]));
+
+            const { data: timelineEvents } = await github.rest.issues.listEventsForTimeline({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+            });
+
+            const fromTimeline = timelineEvents
+              .filter(event => event.event === 'cross-referenced')
+              .filter(event => event.source?.issue?.number)
+              .map(event => event.source.issue.number);
+
+            const linkedIssues = [...new Set([...fromBody, ...fromTimeline])];
+
+            console.log(linkedIssues.length
+              ? `Found linked issues: ${linkedIssues.join(', ')}`
+              : 'No linked issues found.');
+
+            return JSON.stringify(linkedIssues);
+
+      - name: Save data for next workflow
+        if: steps.check-merge.outputs.should_proceed == 'true'
+        run: |
+          echo '${{ steps.find-linked-issues.outputs.result }}' > linked-issues.json
+          echo '${{ github.event.pull_request.user.login }}' > pr-author.txt
+          echo '${{ github.event.pull_request.number }}' > pr-number.txt
+        shell: bash
+
+      - name: Upload artifact
+        if: steps.check-merge.outputs.should_proceed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-data
+          path: |
+            linked-issues.json
+            pr-author.txt
+            pr-number.txt
