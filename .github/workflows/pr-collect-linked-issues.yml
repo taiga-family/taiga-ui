@@ -1,16 +1,11 @@
-name: 🤖 Collect Linked Issues on PR Close
+name: 🗂 Collect Linked Issues on PR Close
 on:
   pull_request:
     types: [closed]
 
 jobs:
-  collect-linked-issues:
+  collect:
     runs-on: ubuntu-latest
-    outputs:
-      linked-issues: ${{ steps.find-linked-issues.outputs.result }}
-      should-proceed: ${{ steps.check-merge.outputs.should_proceed }}
-      pr-author: ${{ github.event.pull_request.user.login }}
-      pr-number: ${{ github.event.pull_request.number }}
     steps:
       - name: Check if PR was merged
         id: check-merge
@@ -51,20 +46,15 @@ jobs:
 
             return JSON.stringify(linkedIssues);
 
-      - name: Save data for next workflow
+      - name: Dispatch to Assign workflow
         if: steps.check-merge.outputs.should_proceed == 'true'
-        run: |
-          echo '${{ steps.find-linked-issues.outputs.result }}' > linked-issues.json
-          echo '${{ github.event.pull_request.user.login }}' > pr-author.txt
-          echo '${{ github.event.pull_request.number }}' > pr-number.txt
-        shell: bash
-
-      - name: Upload artifact
-        if: steps.check-merge.outputs.should_proceed == 'true'
-        uses: actions/upload-artifact@v4
+        uses: peter-evans/repository-dispatch@v3
         with:
-          name: pr-data
-          path: |
-            linked-issues.json
-            pr-author.txt
-            pr-number.txt
+          token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+          event-type: assign-issues
+          client-payload: |
+            {
+              "linkedIssues": ${{ steps.find-linked-issues.outputs.result }},
+              "prAuthor": "${{ github.event.pull_request.user.login }}",
+              "prNumber": "${{ github.event.pull_request.number }}"
+            }
