@@ -2,6 +2,7 @@ import {join} from 'node:path';
 
 import {DemoRoute} from '@demo/routes';
 import {
+    PerformanceCollector,
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -10,6 +11,21 @@ import {
 import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputFiles with no-extension file', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     const stubPath = join(__dirname, '../../../stubs/no-extension-file');
 
     test('Displays name without leading dot and no type', async ({page}) => {

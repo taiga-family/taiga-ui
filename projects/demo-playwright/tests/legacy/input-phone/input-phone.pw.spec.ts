@@ -1,6 +1,7 @@
 import {DemoRoute} from '@demo/routes';
 import {
     CMD,
+    PerformanceCollector,
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -9,6 +10,21 @@ import {
 import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputPhone', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     test.describe('API page', () => {
         let example: Locator;
         let inputPhone: TuiInputPhonePO;

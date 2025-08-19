@@ -1,5 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {
+    PerformanceCollector,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiTablePaginationPO,
@@ -7,6 +8,21 @@ import {
 import {expect, test} from '@playwright/test';
 
 test.describe('TablePagination', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     test.describe('Dropdown with [size]-options (amount items per page)', () => {
         test.use({viewport: {width: 600, height: 250}});
 
