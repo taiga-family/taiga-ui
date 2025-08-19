@@ -13,13 +13,18 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly routes = DemoRoute;
     private readonly doc = inject(DOCUMENT);
     private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
 
+    protected readonly routes = DemoRoute;
+
     protected computedFontSize(className: string): string | null {
-        if (this.isServer) return null;
+        if (this.isServer) {
+            return null;
+        }
+
         const element = this.doc.getElementsByClassName(className)?.item(0);
+
         return element ? getComputedStyle(element).fontSize : null;
     }
 }
