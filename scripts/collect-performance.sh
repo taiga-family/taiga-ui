@@ -7,7 +7,7 @@ set -e
 
 MODE=${1:-current}
 OUTPUT_DIR=${2:-./performance-data}
-GREP_PATTERN=${3:-"performance|Performance"}
+GREP_PATTERN=${3:-"Performance"}
 CHANGE_THRESHOLD=${4:-1}
 
 echo "🚀 Starting performance collection (mode: $MODE, threshold: $CHANGE_THRESHOLD%)"

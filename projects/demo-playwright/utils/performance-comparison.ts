@@ -307,31 +307,36 @@ export class PerformanceComparison {
             for (const detail of filteredDetails) {
                 const {component, testName, baseline, current, changes} = detail;
 
-                // Format changes with colors
+                // Format changes with before/after style like screenshot diffs
                 const formatChange = (
-                    current: number,
+                    baselineValue: number | undefined,
+                    currentValue: number,
                     change: number,
                     unit = '',
                 ): string => {
-                    if (!baseline) {
-                        return `${current.toFixed(1)}${unit} (new)`;
+                    if (!baselineValue) {
+                        return `${currentValue.toFixed(1)}${unit} (new)`;
                     }
 
-                    if (Math.abs(change) < 1) {
-                        return `${current.toFixed(1)}${unit}`;
+                    if (Math.abs(change) < changeThreshold) {
+                        return `${currentValue.toFixed(1)}${unit}`;
                     }
 
-                    const icon = change > 0 ? '📈' : '📉';
+                    // Determine if change is significant for bolding
+                    const isSignificant = Math.abs(change) >= 10; // Bold for changes >= 10%
                     const sign = change > 0 ? '+' : '';
 
-                    return `${current.toFixed(1)}${unit} (${sign}${change.toFixed(1)}% ${icon})`;
+                    // Format: Before (main) ← Diff → After (local)
+                    const beforeAfter = `${baselineValue.toFixed(1)}${unit} ← **${sign}${change.toFixed(1)}%** → ${currentValue.toFixed(1)}${unit}`;
+
+                    return isSignificant ? `**${beforeAfter}**` : beforeAfter;
                 };
 
                 markdown += `| ${component} | ${testName} `;
-                markdown += `| ${formatChange(current.layoutCount, changes.layoutCount)} `;
-                markdown += `| ${formatChange(current.layoutDuration, changes.layoutDuration, 'ms')} `;
-                markdown += `| ${formatChange(current.recalcStyleCount, changes.recalcStyleCount)} `;
-                markdown += `| ${formatChange(current.recalcStyleDuration, changes.recalcStyleDuration, 'ms')} |\n`;
+                markdown += `| ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} `;
+                markdown += `| ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, 'ms')} `;
+                markdown += `| ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} `;
+                markdown += `| ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, 'ms')} |\n`;
             }
         } else if (details.length > 0) {
             markdown += '### Detailed Results\n\n';
