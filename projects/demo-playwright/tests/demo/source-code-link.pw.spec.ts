@@ -4,6 +4,8 @@ import {expect, test} from '@playwright/test';
 test.describe('Source code button', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
     const proprietary = process.env['PROPRIETARY'] === 'true';
+    const currentBranch =
+        process.env['GITHUB_HEAD_REF'] || process.env['GITHUB_REF_NAME'] || 'main';
 
     (proprietary ? [] : demoPaths).forEach((path) => {
         test(`${path}`, async ({page, request}) => {
@@ -21,7 +23,10 @@ test.describe('Source code button', () => {
                 /^https:\/\/github.com\/taiga-family\/taiga-ui/,
             );
 
-            const href = await sourceCodeLink.getAttribute('href');
+            const href = await sourceCodeLink
+                .getAttribute('href')
+                .then((href) => href?.replace('/tree/main/', `/tree/${currentBranch}/`));
+
             const response = await request.get(href ?? '', {maxRetries: 3});
 
             // eslint-disable-next-line playwright/no-conditional-in-test
@@ -33,7 +38,14 @@ test.describe('Source code button', () => {
                 test.skip(page.url() !== docPageRoute, 'New documentation page');
             }
 
-            expect(response.status()).not.toBe(404);
+            expect(
+                response.status(),
+                `Source code link is broken (404). The component at "${href}" does not exist on branch "${currentBranch}". ` +
+                    'This usually means the component was renamed, moved, or deleted. ' +
+                    `Please ensure the component exists at the correct path or update the demo route "${path}". ` +
+                    'If the component exists but the path is wrong, add the correct path parameter to tui-doc-page: ' +
+                    '<tui-doc-page path="correct/component/path" ...>',
+            ).not.toBe(404);
         });
     });
 
