@@ -37,8 +37,10 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
 
         // Read performance report
         const reportContent = await readFile(reportPath, 'utf8');
+
         if (!reportContent || reportContent.trim().length === 0) {
             console.error('❌ Performance report is empty, aborting comment posting');
+
             return;
         }
 
@@ -54,15 +56,19 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
 
         // Get existing comments
         const commentsResponse = await fetch(commentsUrl, {headers});
+
         if (!commentsResponse.ok) {
             const body = await commentsResponse.text().catch(() => '');
+
             console.error(
                 '❌ Failed to fetch existing comments:',
                 commentsResponse.status,
                 body,
             );
+
             return;
         }
+
         const comments = await commentsResponse.json();
 
         // Find existing performance comment
@@ -85,6 +91,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
                 console.log('✅ Updated existing performance comment');
             } else {
                 const body = await updateResponse.text().catch(() => '');
+
                 console.error(
                     '❌ Failed to update performance comment:',
                     updateResponse.status,
@@ -104,6 +111,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
                 console.log('✅ Posted new performance comment');
             } else {
                 const body = await createResponse.text().catch(() => '');
+
                 console.error(
                     '❌ Failed to post performance comment:',
                     createResponse.status,

@@ -291,9 +291,9 @@ jobs:
         id: performance-comparison
         continue-on-error: true
         run: |
-          if [ -d "./performance/diff" ] && [ "$(ls -A ./performance/diff 2>/dev/null)" ]; then
+          if find ./performance/diff -maxdepth 2 -type f -name '*.md' -print -quit | grep -q .; then
             echo "performance_data_exists=true" >> $GITHUB_OUTPUT
-            cat ./performance/diff/**/*.md > ./performance-report.md || find ./performance/diff -name '*.md' -maxdepth 2 -exec cat {} + > ./performance-report.md
+            find ./performance/diff -maxdepth 2 -type f -name '*.md' -exec cat {} + > ./performance-report.md
           else
             echo "performance_data_exists=false" >> $GITHUB_OUTPUT
             echo "## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this run._" > ./performance-report.md
