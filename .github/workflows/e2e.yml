@@ -73,13 +73,13 @@ jobs:
           git fetch origin "$BASE_REF"
           git checkout "origin/$BASE_REF"
 
-          # Check if performance tests exist on main branch
-          if grep -r "measures performance impact of dynamic content changes" tests/ --include="*.spec.ts" >/dev/null 2>&1; then
-            echo "📝 Performance test files found on main branch, running baseline collection"
+          # Check if performance test file exists on main branch
+          if [ -f projects/demo-playwright/tests/core/scrollbar/performance.pw.spec.ts ]; then
+            echo "📝 Performance test file found on main branch, running baseline collection"
             npx nx e2e demo-playwright -- \
               --project=chromium \
               --reporter=line \
-              projects/demo-playwright/tests/core/scrollbar/performance.pw.spec.ts|| echo "⚠️ Some tests may have failed, continuing with performance collection"
+              projects/demo-playwright/tests/core/scrollbar/performance.pw.spec.ts || echo "⚠️ Some tests may have failed, continuing with performance collection"
 
             # Move collected performance files to output directory
             if ls ./projects/demo-playwright/tests-results/performance-*.json 1> /dev/null 2>&1; then
@@ -89,7 +89,7 @@ jobs:
               echo "⚠️ No baseline performance data files found"
             fi
           else
-            echo "ℹ️ Performance test files not found on main branch - this is expected for new features"
+            echo "ℹ️ Performance test file not found on main branch - this is expected for new features"
             echo "ℹ️ Creating empty baseline directory for comparison"
           fi
 
