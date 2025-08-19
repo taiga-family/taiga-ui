@@ -991,6 +991,9 @@ export const pages: DocRoutePages = [
         title: 'Pulse',
         keywords: 'сигнал, пульс, pulse, signal',
         route: DemoRoute.Pulse,
+        meta: {
+            name: 'tui-badge-t-client',
+        },
     },
     {
         section: 'Components',
