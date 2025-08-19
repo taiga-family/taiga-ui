@@ -6,7 +6,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('TuiScrollbar - Final Per-Test Performance Demo', () => {
+
+test.describe('Performance', () => {
     test.beforeEach(async ({page}, testInfo) => {
         await PerformanceCollector.startTestCollection(
             page,
