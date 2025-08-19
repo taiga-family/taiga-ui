@@ -1,23 +1,32 @@
-import {CommonModule} from '@angular/common';
+import {JsonPipe, NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiInputRange} from '@taiga-ui/kit';
+import {TuiInputRange, type TuiKeySteps} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, FormsModule, TuiInputRange],
+    imports: [FormsModule, JsonPipe, NgForOf, TuiInputRange],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected value = [0, 7];
+    protected value = [100_000, 500_000];
+    protected readonly min = 0;
+    protected readonly max = 1_000_000;
+    protected readonly step = 5;
+    protected readonly ticksLabels = ['0', '10K', '100K', '500k', '1000K'];
+    protected readonly segments = this.ticksLabels.length - 1;
 
-    // See https://angular.dev/api/common/I18nPluralPipe#example
-    protected readonly pluralize = {
-        '=1': ' day later',
-        other: ' days later',
-    };
+    protected readonly keySteps: TuiKeySteps = [
+        // [percent, value]
+        [0, this.min],
+        [25, 10_000],
+        [50, 100_000],
+        [75, 500_000],
+        [100, this.max],
+    ];
 }

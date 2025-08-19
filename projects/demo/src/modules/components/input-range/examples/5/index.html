@@ -1,21 +1,21 @@
 <tui-input-range
-    [content]="[content, content]"
-    [max]="10"
-    [min]="0"
-    [postfix]="[value[0] | i18nPlural: pluralize, value[1] | i18nPlural: pluralize]"
+    [keySteps]="keySteps"
+    [max]="max"
+    [min]="min"
+    [segments]="segments"
+    [step]="step"
     [(ngModel)]="value"
 >
-    <label tuiLabel>Desired departure day</label>
+    <label tuiLabel>Not linear growing sliders</label>
 </tui-input-range>
 
-<ng-template
-    #content
-    let-value
->
-    <ng-container [ngSwitch]="value">
-        <span *ngSwitchCase="0">Today</span>
-        <span *ngSwitchCase="1">Tomorrow</span>
-        <span *ngSwitchCase="7">In a week</span>
-        <span *ngSwitchDefault>{{ value }}{{ value | i18nPlural: pluralize }}</span>
-    </ng-container>
-</ng-template>
+<div class="ticks-labels">
+    <span *ngFor="let label of ticksLabels">{{ label }}</span>
+</div>
+
+<p>
+    <strong>Control value:</strong>
+    <output>
+        <code>{{ value | json }}</code>
+    </output>
+</p>
