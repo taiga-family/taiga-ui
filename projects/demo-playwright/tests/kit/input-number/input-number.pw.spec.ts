@@ -6,6 +6,7 @@ import {
     CHAR_MINUS,
     CMD,
     InputNumberPO,
+    PerformanceCollector,
     TuiDocumentationApiPagePO,
     tuiGoto,
 } from '@demo-playwright/utils';
@@ -14,6 +15,21 @@ import {expect, type Locator, test} from '@playwright/test';
 const {describe, beforeEach} = test;
 
 describe('InputNumber', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     let example: Locator;
     let inputNumber: InputNumberPO;
 

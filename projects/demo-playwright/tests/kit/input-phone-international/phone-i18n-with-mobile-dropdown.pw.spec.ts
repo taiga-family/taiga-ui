@@ -1,5 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {
+    PerformanceCollector,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputPhoneInternationalPO,
@@ -13,6 +14,21 @@ const {describe, beforeEach} = test;
 describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
     let example: Locator;
     let inputPhoneInternational: TuiInputPhoneInternationalPO;
+
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
 
     test.use(TUI_PLAYWRIGHT_MOBILE);
 

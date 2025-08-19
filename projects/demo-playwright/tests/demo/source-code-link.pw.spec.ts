@@ -1,7 +1,26 @@
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {
+    PerformanceCollector,
+    TuiDocumentationPagePO,
+    tuiGoto,
+} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Source code button', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
     const proprietary = process.env['PROPRIETARY'] === 'true';
     const currentBranch =

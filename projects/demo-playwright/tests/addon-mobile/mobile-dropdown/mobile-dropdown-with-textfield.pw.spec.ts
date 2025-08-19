@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO} from '@demo-playwright/utils';
+import {PerformanceCollector, TuiDocumentationPagePO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
@@ -8,6 +8,21 @@ const {describe} = test;
 
 describe('DropdownMobile for textfields', () => {
     test.use(TUI_PLAYWRIGHT_MOBILE);
+
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
 
     test('with select', async ({page}) => {
         await page.goto(DemoRoute.Dropdown);

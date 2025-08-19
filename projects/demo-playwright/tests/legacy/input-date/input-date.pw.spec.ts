@@ -1,5 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {
+    PerformanceCollector,
     TuiCalendarPO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -10,6 +11,21 @@ import {expect, type Locator, test} from '@playwright/test';
 import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 
 test.describe('InputDate', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     test.describe('Examples', () => {
         let documentationPage!: TuiDocumentationPagePO;
 
