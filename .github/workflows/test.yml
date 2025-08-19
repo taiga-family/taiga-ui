@@ -4,13 +4,14 @@ on:
   push:
     branches:
       - main
+    branches-ignore:
+      - 'release/**'
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:
   test:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Tests result
     runs-on: ubuntu-latest
     steps:

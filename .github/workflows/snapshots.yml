@@ -25,13 +25,6 @@ jobs:
       - run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
       - run: tree ${{ env.DIST }} -P '*.html'
 
-      - uses: s0/git-publish-subdir-action@v2.6.0
-        env:
-          REPO: self
-          FOLDER: ${{ env.DIST }}
-          BRANCH: snapshots/demo/next/${{ github.head_ref || github.ref_name }}
-          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
-
   production-snapshot:
     name: Push production snapshot
     if: ${{ contains(github.head_ref || github.ref_name, 'release/') || github.event.inputs.updateMain == 'true' }}
@@ -44,13 +37,6 @@ jobs:
 
       - run: npx nx prerender demo
       - run: tree ${{ env.DIST }} -P '*.html'
-
-      - uses: s0/git-publish-subdir-action@v2.6.0
-        env:
-          REPO: self
-          FOLDER: ${{ env.DIST }}
-          BRANCH: snapshots/demo/v${{ steps.nodejs-workspace.outputs.root-package-major-version }}.x
-          GITHUB_TOKEN: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

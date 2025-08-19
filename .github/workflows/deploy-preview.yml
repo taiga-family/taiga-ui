@@ -1,11 +1,12 @@
 name: 🚀 Deploy / preview
 on:
   pull_request:
+    branches-ignore:
+      - 'release/**'
   workflow_dispatch:
 
 jobs:
   build_and_preview:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Firebase
     runs-on: ubuntu-latest
     steps:

@@ -1,6 +1,8 @@
 name: ⚙️ Lint
 on:
   pull_request:
+    branches-ignore:
+      - 'release/**'
   push:
     branches: [main]
 
@@ -10,7 +12,6 @@ env:
 jobs:
   lint:
     name: Lint
-    if: ${{ !contains(github.head_ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.0

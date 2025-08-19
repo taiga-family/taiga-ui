@@ -1,11 +1,12 @@
 name: 🤖 Auto update bundled & used icons
 on:
   pull_request:
+    branches-ignore:
+      - 'release/**'
   workflow_dispatch:
 
 jobs:
   bundling:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.0

@@ -21,29 +21,6 @@ jobs:
         with:
           token: ${{ secrets.TAIGA_UI_SCOPE_NPM_TOKEN }}
 
-      - run: npx nx run-many -t publish
-
-      - uses: taiga-family/ci/actions/run/read-package-json@v1.144.0
-        id: info
-
-      - name: Announce to Time messenger
-        uses: taiga-family/ci/actions/messenger/time/announce@v1.144.0
-        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
-        with:
-          url: ${{ secrets.ANNOUNCE_WEBHOOK }}
-          channel: ${{ secrets.ANNOUNCE_TARGET }}
-          version: v${{ steps.info.outputs.version }}
-
-      - name: Announce to Telegram messenger
-        uses: taiga-family/ci/actions/messenger/telegram/announce@v1.144.0
-        if: ${{ !contains(steps.info.outputs.version, 'rc') }}
-        with:
-          chatId: ${{ secrets.TAIGA_TELEGRAM_CHAT_ID }}
-          topicId: ${{ secrets.TAIGA_TELEGRAM_CHAT_THREAD_ID }}
-          token: ${{ secrets.TAIGA_TELEGRAM_BOT_TOKEN }}
-          version: v${{ steps.info.outputs.version }}
-          textLink: '@taiga-ui/cdk'
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true

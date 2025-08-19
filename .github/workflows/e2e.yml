@@ -1,6 +1,11 @@
 name: ⚙️ E2E testing
 on:
   pull_request:
+    branches-ignore:
+      - 'release/**'
+  push:
+    branches-ignore:
+      - 'release/**'
 
 env:
   RETRY_COUNT: 2
@@ -8,7 +13,6 @@ env:
 
 jobs:
   build-demo:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     name: Build demo
     runs-on: ubuntu-latest
     steps:
@@ -31,7 +35,6 @@ jobs:
           key: ${{ env.CACHE_DIST_KEY }}
 
   cypress:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     runs-on: ubuntu-latest
     name: Cypress / Component Testing
     env:
@@ -91,7 +94,6 @@ jobs:
           retention-days: 1
 
   playwright:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     needs: [build-demo]
     strategy:
       fail-fast: false
@@ -208,7 +210,6 @@ jobs:
           fi
 
   result:
-    if: ${{ !contains(github.head_ref , 'release/') }}
     name: E2E result
     needs: [playwright, cypress]
     runs-on: ubuntu-latest

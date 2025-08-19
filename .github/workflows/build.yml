@@ -1,15 +1,18 @@
 name: ⚙️ Build
 on:
   pull_request:
+    branches-ignore:
+      - 'release/**'
   push:
     branches: [main]
+    branches-ignore:
+      - 'release/**'
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
 jobs:
   libs:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Build packages
     runs-on: ubuntu-latest
     steps:
@@ -20,7 +23,6 @@ jobs:
       - run: npx ts-node ./scripts/check-dist.ts
 
   demo:
-    if: ${{ !contains(github.head_ref, 'release/') }}
     name: Prerender of demo application
     runs-on: ubuntu-latest
     steps:

@@ -2,6 +2,8 @@ name: 🚀 Deploy to Github Pages (taiga-ui.dev)
 on:
   workflow_run:
     workflows: ['🚀 Snapshots']
+    branches-ignore:
+      - 'release/**'
     types:
       - completed
   workflow_dispatch:
@@ -13,7 +15,6 @@ on:
 
 jobs:
   deploy-gh-pages:
-    if: ${{ !contains(github.event.workflow_run.head_branch, 'release/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.0
