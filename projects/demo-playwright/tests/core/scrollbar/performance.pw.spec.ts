@@ -6,7 +6,6 @@ import {
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-
 test.describe('Performance', () => {
     test.beforeEach(async ({page}, testInfo) => {
         await PerformanceCollector.startTestCollection(
