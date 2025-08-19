@@ -252,7 +252,7 @@ export class PerformanceCollector {
                 document.body.appendChild(testDiv);
 
                 // Trigger style recalc by reading computed styles
-                const computed = window.getComputedStyle(testDiv);
+                // const computed = window.getComputedStyle(testDiv);
 
                 // console.log('Test element computed height:', computed.height);
 
@@ -261,7 +261,7 @@ export class PerformanceCollector {
                 testDiv.style.margin = '5px';
 
                 // Force layout by reading dimensions
-                const rect = testDiv.getBoundingClientRect();
+                // const rect = testDiv.getBoundingClientRect();
 
                 // console.log('Test element rect:', rect.width, rect.height);
 
