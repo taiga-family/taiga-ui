@@ -1,6 +1,7 @@
 import {type Page} from '@playwright/test';
+import {mkdirSync} from 'fs';
 import {writeFile} from 'fs/promises';
-import {resolve} from 'path';
+import {join, resolve} from 'path';
 
 /**
  * Performance event from CDP tracing
@@ -37,6 +38,14 @@ export class PerformanceCollector {
             testFile?: string;
         }
     >();
+
+    private static readonly OUTPUT_DIR = resolve(
+        process.cwd(),
+        'projects/demo-playwright/tests-results',
+        'performance',
+    );
+
+    private static dirReady = false;
 
     /**
      * Starts performance collection for a specific test
@@ -345,12 +354,10 @@ export class PerformanceCollector {
             .replaceAll(/-+/g, '-')
             .replaceAll(/^-|-$/g, '');
 
-        const filename = `performance-test-${safeTestName}-${Date.now()}.json`;
-        const outputPath = resolve(
-            process.cwd(),
-            'projects/demo-playwright/tests-results',
-            filename,
-        );
+        const filename = `test-${safeTestName}-${Date.now()}.json`;
+
+        this.ensureDirOnce();
+        const outputPath = join(this.OUTPUT_DIR, filename);
 
         await writeFile(outputPath, JSON.stringify(performanceData, null, 2));
         // console.log(`💾 Test performance data saved to: ${filename}`);
@@ -376,14 +383,23 @@ export class PerformanceCollector {
             },
         };
 
-        const filename = `performance-trace-${Date.now()}.json`;
-        const outputPath = resolve(
-            process.cwd(),
-            'projects/demo-playwright/tests-results',
-            filename,
-        );
+        const filename = `trace-${Date.now()}.json`;
+
+        this.ensureDirOnce();
+        const outputPath = join(this.OUTPUT_DIR, filename);
 
         await writeFile(outputPath, JSON.stringify(performanceData, null, 2));
         // console.log('💾 CDP tracing data saved to:', filename);
+    }
+
+    private static ensureDirOnce(): void {
+        if (this.dirReady) {
+            return;
+        }
+
+        try {
+            mkdirSync(this.OUTPUT_DIR, {recursive: true});
+            this.dirReady = true;
+        } catch {}
     }
 }

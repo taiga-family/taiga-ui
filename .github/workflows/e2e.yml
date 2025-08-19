@@ -7,7 +7,7 @@ env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   PERFORMANCE_BASELINE_KEY: 'perf_baseline_${{ github.event.pull_request.head.sha }}'
   PERFORMANCE_CURRENT_KEY: 'perf_current_${{ github.event.pull_request.head.sha }}'
-  PERFORMANCE_CHANGE_THRESHOLD: 5 # Configurable threshold for showing performance changes (%)
+  PERFORMANCE_CHANGE_THRESHOLD: 10 # Configurable threshold for showing performance changes (%)
 
 jobs:
   build-demo:
@@ -155,19 +155,11 @@ jobs:
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
 
-      - name: Upload baseline performance metrics
+      - name: Stash baseline performance metrics
         if: matrix.shard.project == 'chromium'
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          path: ./projects/demo-playwright/tests-results/performance-*.json
-          name: ${{ env.PERFORMANCE_BASELINE_KEY }}_${{ matrix.shard.index }}
-          if-no-files-found: ignore
-          compression-level: 0
-          retention-days: 1
-
-      - name: Clean performance metrics before second run
-        if: matrix.shard.project == 'chromium'
-        run: rm -f ./projects/demo-playwright/tests-results/performance-*.json
+        run: |
+          mkdir -p ./performance/baseline
+          find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} ./performance/baseline/ \; || true
 
       - uses: taiga-family/ci/actions/run/clone@v1.144.0
         with:
@@ -189,12 +181,22 @@ jobs:
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
 
-      - name: Upload current performance metrics
+      - name: Generate per-shard performance diff
+        if: matrix.shard.project == 'chromium'
+        run: |
+          mkdir -p ./projects/demo-playwright/tests-results/performance/diff
+          npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
+            ./performance/baseline \
+            ./projects/demo-playwright/tests-results/performance \
+            ./projects/demo-playwright/tests-results/performance/diff/report-${{ matrix.shard.index }}.md \
+            ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
+
+      - name: Upload performance diff report
         if: matrix.shard.project == 'chromium'
         uses: actions/upload-artifact@v4.6.2
         with:
-          path: ./projects/demo-playwright/tests-results/performance-*.json
-          name: ${{ env.PERFORMANCE_CURRENT_KEY }}_${{ matrix.shard.index }}
+          path: ./projects/demo-playwright/tests-results/performance/diff/**
+          name: ${{ env.PERFORMANCE_CURRENT_KEY }}_diff_${{ matrix.shard.index }}
           if-no-files-found: ignore
           compression-level: 0
           retention-days: 1
@@ -275,46 +277,23 @@ jobs:
           merge-multiple: true
       - run: ls -R ./all-blob-reports || echo "not found"
 
-      - name: Download baseline performance metrics
+      # Skip downloading raw metrics; we upload per-shard diff reports instead
+
+      - name: Download per-shard performance diff reports
         continue-on-error: true
         uses: actions/download-artifact@v4.3.0
         with:
-          path: ./performance/baseline
-          pattern: ${{ env.PERFORMANCE_BASELINE_KEY }}_*
+          path: ./performance/diff
+          pattern: ${{ env.PERFORMANCE_CURRENT_KEY }}_diff_*
           merge-multiple: true
 
-      - name: Download current performance metrics
-        continue-on-error: true
-        uses: actions/download-artifact@v4.3.0
-        with:
-          path: ./performance/current
-          pattern: ${{ env.PERFORMANCE_CURRENT_KEY }}_*
-          merge-multiple: true
-
-      - name: Compare performance metrics
+      - name: Combine performance diff reports
         id: performance-comparison
         continue-on-error: true
         run: |
-          if [ -d "./performance/current" ] && [ "$(ls -A ./performance/current 2>/dev/null)" ]; then
+          if [ -d "./performance/diff" ] && [ "$(ls -A ./performance/diff 2>/dev/null)" ]; then
             echo "performance_data_exists=true" >> $GITHUB_OUTPUT
-            mkdir -p ./performance/baseline
-            
-            # Check if we have baseline data
-            if [ -d "./performance/baseline" ] && [ "$(ls -A ./performance/baseline 2>/dev/null)" ]; then
-              echo "📊 Comparing performance metrics with baseline"
-              npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
-                ./performance/baseline \
-                ./performance/current \
-                ./performance-report.md \
-                ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
-            else
-              echo "📊 No baseline data available - showing current metrics only"
-              npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
-                ./performance/baseline \
-                ./performance/current \
-                ./performance-report.md \
-                ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
-            fi
+            cat ./performance/diff/**/*.md > ./performance-report.md || find ./performance/diff -name '*.md' -maxdepth 2 -exec cat {} + > ./performance-report.md
           else
             echo "performance_data_exists=false" >> $GITHUB_OUTPUT
             echo "## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this run._" > ./performance-report.md

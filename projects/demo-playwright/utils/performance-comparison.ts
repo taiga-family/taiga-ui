@@ -64,9 +64,18 @@ export class PerformanceComparison {
 
         try {
             const files = await readdir(metricsPath);
-            const performanceFiles = files.filter(
-                (file) => file.startsWith('performance-test-') && file.endsWith('.json'),
-            );
+            const performanceFiles = files.filter((file) => {
+                if (!file.endsWith('.json')) {
+                    return false;
+                }
+
+                return (
+                    file.startsWith('test-') ||
+                    file.startsWith('trace-') ||
+                    file.startsWith('performance-test-') ||
+                    file.startsWith('performance-trace-')
+                );
+            });
 
             for (const file of performanceFiles) {
                 try {
@@ -281,15 +290,11 @@ export class PerformanceComparison {
 
         // Filter details to only show tests with meaningful changes
         const filteredDetails = details.filter((detail) => {
-            // Show new tests (no baseline)
             if (!detail.baseline) {
                 return true;
             }
 
-            // Show tests with changes above threshold
             return (
-                Math.abs(detail.changes.layoutDuration) >= changeThreshold ||
-                Math.abs(detail.changes.recalcStyleDuration) >= changeThreshold ||
                 Math.abs(detail.changes.layoutCount) >= changeThreshold ||
                 Math.abs(detail.changes.recalcStyleCount) >= changeThreshold
             );
