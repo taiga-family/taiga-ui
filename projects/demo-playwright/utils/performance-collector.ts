@@ -47,8 +47,7 @@ export class PerformanceCollector {
         testFile?: string,
     ): Promise<void> {
         try {
-            // eslint-disable-next-line no-console
-            console.log(`🎯 Starting CDP tracing for test: ${testName}`);
+            // console.log(`🎯 Starting CDP tracing for test: ${testName}`);
 
             const client = await page.context().newCDPSession(page);
             const events: PerformanceEvent[] = [];
@@ -81,8 +80,7 @@ export class PerformanceCollector {
                 testFile,
             });
 
-            // eslint-disable-next-line no-console
-            console.log(`✅ Performance collection started for test: ${testName}`);
+            // console.log(`✅ Performance collection started for test: ${testName}`);
         } catch (error) {
             console.warn(
                 `Failed to start performance collection for test ${testName}:`,
@@ -104,8 +102,7 @@ export class PerformanceCollector {
                 return;
             }
 
-            // eslint-disable-next-line no-console
-            console.log(`🛑 Stopping CDP tracing for test: ${testName}`);
+            // console.log(`🛑 Stopping CDP tracing for test: ${testName}`);
 
             // Stop tracing and wait for completion
             await new Promise<void>((resolve) => {
@@ -127,11 +124,10 @@ export class PerformanceCollector {
                 collection.testFile,
             );
 
-            // eslint-disable-next-line no-console
-            console.log(`📊 Test performance metrics for [${testName}]:`, {
-                layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
-                recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
-            });
+            // console.log(`📊 Test performance metrics for [${testName}]:`, {
+            //     layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
+            //     recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
+            // });
 
             // Clean up
             this.activeCollections.delete(testName);
@@ -149,8 +145,7 @@ export class PerformanceCollector {
      */
     public static async capturePageLoadMetrics(page: Page, url: string): Promise<void> {
         try {
-            // eslint-disable-next-line no-console
-            console.log('🎯 Starting CDP tracing for page load metrics...');
+            // console.log('🎯 Starting CDP tracing for page load metrics...');
 
             const client = await page.context().newCDPSession(page);
             const events: PerformanceEvent[] = [];
@@ -192,11 +187,10 @@ export class PerformanceCollector {
             // Save metrics to file
             await this.saveMetrics(metrics, url);
 
-            // eslint-disable-next-line no-console
-            console.log('📊 CDP tracing metrics collected:', {
-                layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
-                recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
-            });
+            // console.log('📊 CDP tracing metrics collected:', {
+            //     layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
+            //     recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
+            // });
         } catch (error) {
             console.warn('CDP tracing performance collection failed:', error);
         }
@@ -217,10 +211,9 @@ export class PerformanceCollector {
             const scrollbarCount = await scrollbars.count();
 
             if (scrollbarCount > 0) {
-                // eslint-disable-next-line no-console
-                console.log(
-                    `🔍 Found ${scrollbarCount} scrollbar elements, testing interactions...`,
-                );
+                // console.log(
+                //     `🔍 Found ${scrollbarCount} scrollbar elements, testing interactions...`,
+                // );
 
                 for (let i = 0; i < Math.min(3, scrollbarCount); i++) {
                     const scrollbar = scrollbars.nth(i);
@@ -261,8 +254,7 @@ export class PerformanceCollector {
                 // Trigger style recalc by reading computed styles
                 const computed = window.getComputedStyle(testDiv);
 
-                // eslint-disable-next-line no-console
-                console.log('Test element computed height:', computed.height);
+                // console.log('Test element computed height:', computed.height);
 
                 // Modify styles to trigger recalc
                 testDiv.style.padding = '10px';
@@ -271,8 +263,7 @@ export class PerformanceCollector {
                 // Force layout by reading dimensions
                 const rect = testDiv.getBoundingClientRect();
 
-                // eslint-disable-next-line no-console
-                console.log('Test element rect:', rect.width, rect.height);
+                // console.log('Test element rect:', rect.width, rect.height);
 
                 // Clean up
                 testDiv.remove();
@@ -362,8 +353,7 @@ export class PerformanceCollector {
         );
 
         await writeFile(outputPath, JSON.stringify(performanceData, null, 2));
-        // eslint-disable-next-line no-console
-        console.log(`💾 Test performance data saved to: ${filename}`);
+        // console.log(`💾 Test performance data saved to: ${filename}`);
     }
 
     /**
@@ -394,7 +384,6 @@ export class PerformanceCollector {
         );
 
         await writeFile(outputPath, JSON.stringify(performanceData, null, 2));
-        // eslint-disable-next-line no-console
-        console.log('💾 CDP tracing data saved to:', filename);
+        // console.log('💾 CDP tracing data saved to:', filename);
     }
 }
