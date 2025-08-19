@@ -157,7 +157,7 @@ jobs:
 
       - uses: taiga-family/ci/actions/run/clone@v1.144.0
         with:
-          branch: snapshots/demo/next/${{ github.base_ref }}
+          branch: perfomance-collector-all
           destination: ${{ env.DIST_NEXT }}
 
       - uses: taiga-family/ci/actions/run/serve@v1.144.0
