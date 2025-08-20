@@ -68,3 +68,30 @@
 tui-sheet-dialog [tuiFloatingContainer] {
     margin-block-end: ~'calc(-1* max(1.5rem, env(safe-area-inset-bottom)))';
 }
+
+tui-dialog[data-appearance~='fullscreen'] [tuiFloatingContainer] {
+    gap: 0.75rem;
+}
+
+tui-root._mobile tui-dialog[data-appearance~='fullscreen'] [tuiFloatingContainer] {
+    margin-block-end: ~'calc(-1* max(1rem, env(safe-area-inset-bottom)))';
+}
+
+tui-root:not(._mobile) tui-dialog[data-appearance~='fullscreen'] [tuiFloatingContainer] {
+    padding: 2rem calc(50vw - var(--tui-width) / 2);
+    margin: 0 calc(var(--tui-width) / 2 - 50vw) ~'calc(-1* max(2rem, env(safe-area-inset-bottom)))';
+
+    flex-direction: row;
+    background: var(--tui-background-base);
+    background: color-mix(in hsl, var(--tui-background-base) 80%, transparent);
+    backdrop-filter: blur(2rem);
+
+    &::before {
+        display: none;
+    }
+
+    > button,
+    > a {
+        inline-size: auto;
+    }
+}

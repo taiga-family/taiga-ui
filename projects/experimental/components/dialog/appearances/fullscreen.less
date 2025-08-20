@@ -3,7 +3,8 @@
     flex-direction: column;
     block-size: 100%;
     inline-size: 100%;
-    padding: 0 ~'max(calc(50vw - var(--tui-width) / 2), 1rem)' 2rem;
+    padding: env(safe-area-inset-top) ~'max(calc(50vw - var(--tui-width) / 2), 1rem)' 2rem;
+    box-sizing: border-box;
     background: var(--tui-background-base);
     box-shadow: none;
 
@@ -63,35 +64,8 @@
         }
     }
 
-    ::ng-deep > footer,
-    ::ng-deep > ng-component > footer {
-        display: flex;
-        gap: 0.75rem;
-        padding: 2rem calc(50vw - var(--tui-width) / 2);
-        margin: 0 calc(var(--tui-width) / 2 - 50vw) calc(-2rem - env(safe-area-inset-top));
-    }
-
-    :host-context(tui-root:not(._mobile)) & {
-        ::ng-deep > footer,
-        ::ng-deep > ng-component > footer {
-            flex-direction: row;
-            background: var(--tui-background-base);
-            background: color-mix(in hsl, var(--tui-background-base) 80%, transparent);
-            backdrop-filter: blur(2rem);
-
-            &::before {
-                display: none;
-            }
-
-            > button,
-            > a {
-                inline-size: auto;
-            }
-        }
-    }
-
     :host-context(tui-root._mobile) & {
-        padding-block-end: calc(1rem + env(safe-area-inset-top));
+        padding-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
 
         --tui-from: translateY(4rem);
 
@@ -117,17 +91,6 @@
 
             + footer {
                 margin-block-start: 0;
-            }
-        }
-
-        ::ng-deep > footer,
-        ::ng-deep > ng-component > footer {
-            padding: 0 1rem calc(1rem + env(safe-area-inset-top));
-            margin: 1.5rem -1rem calc(-1rem - env(safe-area-inset-top));
-
-            &::before {
-                left: 0;
-                right: 0;
             }
         }
     }
