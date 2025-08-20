@@ -11,6 +11,11 @@ tui-textfield {
     --t-end: ~'0rem';
     --t-start: ~'0rem';
 
+    &:not(._initialized),
+    &:not(._initialized) * {
+        transition: none !important;
+    }
+
     position: relative;
     display: flex;
     flex-wrap: wrap;

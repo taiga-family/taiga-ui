@@ -1,6 +1,7 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {
     type AfterContentInit,
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -11,6 +12,7 @@ import {
     forwardRef,
     inject,
     Input,
+    NgZone,
     type QueryList,
     signal,
     ViewChild,
@@ -59,6 +61,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 export class TuiTextfieldBaseComponent<T>
     implements TuiDataListHost<T>, AfterContentInit
 {
+    private readonly ngZone = inject(NgZone);
     // TODO: refactor to signal inputs after Angular update
     private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
@@ -83,6 +86,12 @@ export class TuiTextfieldBaseComponent<T>
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
+
+    protected readonly initialized = afterNextRender(() =>
+        this.ngZone.runOutsideAngular(() =>
+            setTimeout(() => this.el.classList.add('_initialized')),
+        ),
+    );
 
     protected readonly computedFiller = computed((value = this.value()) => {
         const filler = value + this.filler().slice(value.length);
