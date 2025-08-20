@@ -9,16 +9,13 @@ const {describe} = test;
 describe('DropdownMobile for textfields', () => {
     test.use(TUI_PLAYWRIGHT_MOBILE);
 
-    test('with legacy select', async ({page, browserName}) => {
-        // eslint-disable-next-line playwright/no-skipped-test
-        test.skip(browserName === 'chromium', 'Font flaky');
-
+    test('with select', async ({page}) => {
         await page.goto(DemoRoute.Dropdown);
 
         const documentation = new TuiDocumentationPagePO(page);
         const example = documentation.getExample('#mobile');
 
-        await example.locator('tui-select').click();
+        await example.locator('[tuiSelect]').click();
         await page.locator('tui-dropdown-mobile [tuiOption]').first().hover();
 
         await documentation.hideContent();

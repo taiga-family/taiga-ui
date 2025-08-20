@@ -80,6 +80,8 @@
             <ng-template>
                 <tui-textfield
                     multi
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
                     [rows]="textfieldDoc.rows"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
@@ -122,6 +124,11 @@
                 #textfieldDoc
                 tuiDocTextfield
                 [hiddenOptions]="[]"
+            ></tbody>
+
+            <tbody
+                #icons
+                tuiDocIcons
             ></tbody>
 
             <tbody

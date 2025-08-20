@@ -19,6 +19,7 @@ export interface TuiConfirmData {
     readonly appearance?: string;
 }
 
+// TODO: Remove selector in v5
 @Component({
     standalone: true,
     selector: 'tui-confirm',

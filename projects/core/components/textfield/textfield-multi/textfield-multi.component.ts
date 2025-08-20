@@ -177,6 +177,11 @@ export class TuiTextfieldMultiComponent<T>
         }
 
         this.open.update((open) => !open);
-        this.input?.nativeElement.showPicker?.();
+
+        try {
+            this.input?.nativeElement.showPicker?.();
+        } catch {
+            // Empty catch block - silently ignore showPicker errors
+        }
     }
 }
