@@ -31,7 +31,7 @@ import {TuiTableTd} from '../td/td.component';
         '[style.--t-row-height.px]': 'height()',
     },
 })
-export class TuiTableTr<T extends Partial<Record<keyof T, any>>>
+export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>>
     implements AfterContentInit
 {
     @ContentChildren(forwardRef(() => TuiTableCell))
@@ -70,7 +70,7 @@ export class TuiTableTr<T extends Partial<Record<keyof T, any>>>
             (rows) =>
                 this.body.data[rows.findIndex((row) => row === this)] as Record<
                     string | keyof T,
-                    any
+                    unknown
                 >,
         ),
     );
