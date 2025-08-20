@@ -153,21 +153,23 @@ describe('TuiActiveZone', () => {
     });
 
     it('should have tuiActiveZoneParent as a public property accessible getter', () => {
-        const childZoneElement = el.querySelector('.active-zone + div + .active-zone');
-        expect(childZoneElement).toBeTruthy();
+        // This test verifies that tuiActiveZoneParent can be accessed as a public property
+        // which is required for Angular 17's strict template checking
+        const childDiv = el.querySelectorAll('.active-zone')[1]; // Second active zone is the child
+        expect(childDiv).toBeTruthy();
         
-        // Get the TuiActiveZone directive instance from the child zone element
+        // Get the directive instance that has [tuiActiveZoneParent]="parent"
         const childZoneDirective = fixture.debugElement.children
-            .find(child => child.nativeElement === childZoneElement)
+            .find(child => child.nativeElement === childDiv)
             ?.injector.get(TuiActiveZone);
         
         expect(childZoneDirective).toBeDefined();
         
-        // This should work - accessing tuiActiveZoneParent as a property
-        // Currently this might fail because there's only a setter, no getter
-        expect(() => {
-            const parent = (childZoneDirective as any).tuiActiveZoneParent;
-            return parent;
-        }).not.toThrow();
+        // Verify that tuiActiveZoneParent is accessible as a property (getter/setter)
+        expect(childZoneDirective!.tuiActiveZoneParent).toBeDefined();
+        
+        // Should be able to set it to null without errors
+        childZoneDirective!.tuiActiveZoneParent = null;
+        expect(childZoneDirective!.tuiActiveZoneParent).toBeNull();
     });
 });

@@ -28,7 +28,7 @@ export class TuiActiveZone implements OnDestroy {
     private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
     private readonly zone = inject(NgZone);
     private readonly el = tuiInjectElement();
-    private tuiActiveZoneParent: TuiActiveZone | null = null;
+    private tuiActiveZoneParentValue: TuiActiveZone | null = null;
     private subActiveZones: readonly TuiActiveZone[] = [];
     private readonly directParentActiveZone = inject(TuiActiveZone, {
         skipSelf: true,
@@ -55,13 +55,17 @@ export class TuiActiveZone implements OnDestroy {
     }
 
     @Input('tuiActiveZoneParent')
-    public set tuiActiveZoneParentSetter(zone: TuiActiveZone | null) {
+    public set tuiActiveZoneParent(zone: TuiActiveZone | null) {
         this.setZone(zone);
+    }
+
+    public get tuiActiveZoneParent(): TuiActiveZone | null {
+        return this.tuiActiveZoneParentValue;
     }
 
     public ngOnDestroy(): void {
         this.directParentActiveZone?.removeSubActiveZone(this);
-        this.tuiActiveZoneParent?.removeSubActiveZone(this);
+        this.tuiActiveZoneParentValue?.removeSubActiveZone(this);
     }
 
     public contains(node: Node): boolean {
@@ -76,9 +80,9 @@ export class TuiActiveZone implements OnDestroy {
 
     @tuiPure
     private setZone(zone: TuiActiveZone | null): void {
-        this.tuiActiveZoneParent?.removeSubActiveZone(this);
+        this.tuiActiveZoneParentValue?.removeSubActiveZone(this);
         zone?.addSubActiveZone(this);
-        this.tuiActiveZoneParent = zone;
+        this.tuiActiveZoneParentValue = zone;
     }
 
     private addSubActiveZone(activeZone: TuiActiveZone): void {
