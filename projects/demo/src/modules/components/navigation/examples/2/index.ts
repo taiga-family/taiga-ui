@@ -8,18 +8,10 @@ import {
     TuiButton,
     TuiDataList,
     TuiDropdown,
-    TuiIcon,
     TuiLink,
     TuiTitle,
 } from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiBadge,
-    TuiChevron,
-    TuiFade,
-    TuiSwitch,
-    TuiTabs,
-} from '@taiga-ui/kit';
+import {TuiAvatar, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
@@ -28,7 +20,6 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         FormsModule,
         TuiAppearance,
         TuiAvatar,
-        TuiBadge,
         TuiButton,
         TuiCardLarge,
         TuiChevron,
@@ -36,7 +27,6 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiDropdown,
         TuiFade,
         TuiHeader,
-        TuiIcon,
         TuiLink,
         TuiNavigation,
         TuiRepeatTimes,
