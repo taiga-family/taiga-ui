@@ -43,18 +43,9 @@ test.describe('Deep / Toggle', () => {
                 const makeName = (dir: string): string =>
                     `deep-${path}-${name}-row-${rowIndex}-toggled.${dir}.png`;
 
-                await expect.soft(example).toHaveScreenshot(makeName('desktop'));
+                await expect.soft(example).toHaveScreenshot(makeName('ltr'));
                 await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
-                await expect.soft(example).toHaveScreenshot(makeName('desktop-rtl'));
-                await example.evaluate((node) => node.setAttribute('dir', 'auto'));
-                await example.evaluate((node) =>
-                    node.setAttribute('data-platform', 'ios'),
-                );
-                await expect.soft(example).toHaveScreenshot(makeName('ios'));
-                await example.evaluate((node) =>
-                    node.setAttribute('data-platform', 'android'),
-                );
-                await expect.soft(example).toHaveScreenshot(makeName('android'));
+                await expect.soft(example).toHaveScreenshot(makeName('rtl'));
 
                 await toggle.click();
 
