@@ -1,23 +1,23 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiDialog} from '@taiga-ui/experimental';
 import {TuiAvatar, TuiFloatingContainer, TuiProgress} from '@taiga-ui/kit';
 import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
-import {TuiRepeatTimes} from '@taiga-ui/cdk';
 
 @Component({
     standalone: true,
     imports: [
+        TuiAppBar,
+        TuiAvatar,
         TuiButton,
+        TuiCell,
         TuiDialog,
         TuiFloatingContainer,
-        TuiCell,
-        TuiRepeatTimes,
-        TuiAvatar,
-        TuiTitle,
-        TuiAppBar,
         TuiProgress,
+        TuiRepeatTimes,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     encapsulation: ViewEncapsulation.None,
