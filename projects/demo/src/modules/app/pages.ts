@@ -18,6 +18,7 @@ export interface DocMeta {
 
 export type DocRoutePage = TuiDocRoutePage & {
     readonly meta?: DocMeta | readonly DocMeta[];
+    readonly published?: string;
 };
 
 export type DocRoutePageGroup = TuiDocRoutePageBase & {
@@ -637,6 +638,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
                 route: DemoRoute.InputTime,
+                published: '4.43.0',
             },
             {
                 section: 'Components',
@@ -1837,3 +1839,23 @@ export const pages: DocRoutePages = [
         ],
     },
 ] as const;
+
+const cache = new Map<string, DocRoutePage>();
+
+export function lookupPublishedVersion(route: string): string {
+    if (!cache.size) {
+        buildCache(pages, cache);
+    }
+
+    return cache.get(route)?.published ?? '';
+}
+
+function buildCache(pages: DocRoutePages, cache: Map<string, DocRoutePage>): void {
+    for (const page of pages) {
+        if ('subPages' in page) {
+            buildCache(page.subPages, cache);
+        } else if (page.route) {
+            cache.set(page.route, page);
+        }
+    }
+}

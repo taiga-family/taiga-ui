@@ -3,6 +3,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {lookupPublishedVersion} from '@demo/pages';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type MaskitoTimeMode} from '@maskito/kit';
@@ -26,6 +27,7 @@ import {TuiInputTime} from '@taiga-ui/kit';
 export default class PageComponent {
     protected readonly routes = DemoRoute;
     protected readonly control = new FormControl(null);
+    protected readonly version = lookupPublishedVersion(DemoRoute.InputTime);
 
     protected readonly modeVariants = [
         'HH:MM',
