@@ -1,0 +1,24 @@
+<tui-notification class="tui-space_bottom-3">
+    Note that you need to bypass sanitizer in order to use the URL so make sure you trust it
+</tui-notification>
+<button
+    tuiButton
+    type="button"
+    (click)="show(actions)"
+>
+    Taiga
+</button>
+<ng-template
+    #actions
+    let-content="content"
+>
+    <a
+        download
+        size="s"
+        tuiButton
+        [href]="content"
+        [style.border-radius.rem]="100"
+    >
+        Download
+    </a>
+</ng-template>
