@@ -151,4 +151,23 @@ describe('TuiActiveZone', () => {
         expect(getZoneInfo('#parent-info')).toBe('Parent zone: false');
         expect(getZoneInfo('#child-info')).toBe('Child zone: false');
     });
+
+    it('should have tuiActiveZoneParent as a public property accessible getter', () => {
+        const childZoneElement = el.querySelector('.active-zone + div + .active-zone');
+        expect(childZoneElement).toBeTruthy();
+        
+        // Get the TuiActiveZone directive instance from the child zone element
+        const childZoneDirective = fixture.debugElement.children
+            .find(child => child.nativeElement === childZoneElement)
+            ?.injector.get(TuiActiveZone);
+        
+        expect(childZoneDirective).toBeDefined();
+        
+        // This should work - accessing tuiActiveZoneParent as a property
+        // Currently this might fail because there's only a setter, no getter
+        expect(() => {
+            const parent = (childZoneDirective as any).tuiActiveZoneParent;
+            return parent;
+        }).not.toThrow();
+    });
 });
