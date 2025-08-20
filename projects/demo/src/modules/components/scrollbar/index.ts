@@ -18,12 +18,6 @@ export default class Page {
         'Virtual scroll',
         'Show scroll bars on hover',
         'Native scrollbar',
-        'List',
-        'Table',
-        'Image',
-        'CSS',
-        'Flexbox',
-        'Positioning',
     ];
 
     constructor() {
