@@ -31,6 +31,7 @@ export default class Page extends Array {
         'Component',
         'Confirmation',
         'Closing',
+        'Fullscreen',
         'Customization',
     ];
 

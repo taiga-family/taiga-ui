@@ -1,16 +1,10 @@
-<header
-    *ngIf="context.label"
-    [id]="context.id"
-    [innerHTML]="context.label"
-></header>
-
 <button
     *ngIf="context.closable"
-    appearance="neutral"
     size="s"
     tuiIconButton
     type="button"
     class="t-close"
+    [appearance]="context.appearance === 'fullscreen' ? 'action' : 'neutral'"
     [iconStart]="icons.close"
     [style.border-radius.%]="100"
     (click)="close$.next()"
@@ -18,6 +12,12 @@
 >
     {{ close() }}
 </button>
+
+<header
+    *ngIf="context.label"
+    [id]="context.id"
+    [innerHTML]="context.label"
+></header>
 
 <ng-container *polymorpheusOutlet="context.content as text; context: context">
     <p [innerHTML]="text"></p>
