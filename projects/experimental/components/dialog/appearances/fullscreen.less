@@ -3,9 +3,11 @@
     flex-direction: column;
     block-size: 100%;
     inline-size: 100%;
-    padding: 0 ~'max(calc(50vw - 22.5rem), 1rem)' 2rem;
+    padding: 0 ~'max(calc(50vw - var(--tui-width) / 2), 1rem)' 2rem;
     background: var(--tui-background-base);
+    box-shadow: none;
 
+    --tui-width: 45rem;
     --tui-from: translateY(2rem);
 
     &.tui-enter,
@@ -37,9 +39,9 @@
         top: 0;
         z-index: 1;
         flex: 0 1 auto;
-        border-inline-end: calc(50vw - 22.5rem) solid transparent;
-        border-inline-start: calc(50vw - 22.5rem) solid transparent;
-        margin: 0 calc(22.5rem - 50vw) 2rem;
+        border-inline-end: calc(50vw - var(--tui-width) / 2) solid transparent;
+        border-inline-start: calc(50vw - var(--tui-width) / 2) solid transparent;
+        margin: 0 calc(var(--tui-width) / 2 - 50vw) 2rem;
     }
 
     ::ng-deep > header,
@@ -65,8 +67,8 @@
     ::ng-deep > ng-component > footer {
         display: flex;
         gap: 0.75rem;
-        padding: 2rem calc(50vw - 22.5rem);
-        margin: 0 calc(22.5rem - 50vw) calc(-2rem - env(safe-area-inset-top));
+        padding: 2rem calc(50vw - var(--tui-width) / 2);
+        margin: 0 calc(var(--tui-width) / 2 - 50vw) calc(-2rem - env(safe-area-inset-top));
     }
 
     :host-context(tui-root:not(._mobile)) & {
