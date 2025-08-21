@@ -1,5 +1,6 @@
+import {mkdirSync} from 'fs';
 import {appendFile, readdir, readFile, stat, writeFile} from 'fs/promises';
-import {join, resolve} from 'path';
+import {dirname, join, resolve} from 'path';
 
 /**
  * Core performance metrics collected via CDP
@@ -78,6 +79,17 @@ export class PerformanceComparison {
             const files = await readdir(metricsPath);
             const performanceFiles = this.filterPerformanceFiles(files);
 
+            if (performanceFiles.length === 0) {
+                console.warn(`No performance files found in ${metricsPath}`);
+
+                return metrics;
+            }
+
+            // eslint-disable-next-line no-console
+            console.log(
+                `Found ${performanceFiles.length} performance files in ${metricsPath}`,
+            );
+
             for (const file of performanceFiles) {
                 try {
                     const content = await readFile(resolve(metricsPath, file), 'utf8');
@@ -85,11 +97,21 @@ export class PerformanceComparison {
 
                     metrics.set(data.testName, data);
                 } catch (error) {
-                    console.warn(`Failed to parse performance file ${file}:`, error);
+                    console.warn(
+                        `Failed to parse performance file ${file}: ${error instanceof Error ? error.message : String(error)}`,
+                    );
                 }
             }
         } catch (error) {
-            console.warn(`Failed to read metrics from ${metricsPath}:`, error);
+            if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
+                throw new Error(
+                    `Metrics directory not found: ${metricsPath}. Make sure performance tests have been run.`,
+                );
+            }
+
+            throw new Error(
+                `Failed to read metrics from ${metricsPath}: ${error instanceof Error ? error.message : String(error)}`,
+            );
         }
 
         return metrics;
@@ -178,12 +200,34 @@ export class PerformanceComparison {
         // eslint-disable-next-line no-console
         console.log('🔍 Aggregating baseline metrics...');
 
-        const baseline = await this.aggregateMetrics(baselinePath);
+        let baseline: Map<string, PerformanceData>;
+
+        try {
+            baseline = await this.aggregateMetrics(baselinePath);
+        } catch (error) {
+            throw new Error(
+                `Failed to load baseline metrics: ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
 
         // eslint-disable-next-line no-console
         console.log('🔍 Aggregating current metrics...');
 
-        const current = await this.aggregateMetrics(currentPath);
+        let current: Map<string, PerformanceData>;
+
+        try {
+            current = await this.aggregateMetrics(currentPath);
+        } catch (error) {
+            throw new Error(
+                `Failed to load current metrics: ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
+
+        if (current.size === 0) {
+            throw new Error(
+                `No performance data found in current metrics path: ${currentPath}. Make sure performance tests have been run successfully.`,
+            );
+        }
 
         // eslint-disable-next-line no-console
         console.log('📊 Comparing metrics...');
@@ -193,8 +237,25 @@ export class PerformanceComparison {
         // Generate markdown report
         const markdown = this.generateMarkdownReport(report, changeThreshold);
 
+        // Ensure output directory exists
+        const outputDir = dirname(outputPath);
+
+        try {
+            mkdirSync(outputDir, {recursive: true});
+        } catch (error) {
+            throw new Error(
+                `Failed to create output directory '${outputDir}': ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
+
         // Save report
-        await writeFile(outputPath, markdown);
+        try {
+            await writeFile(outputPath, markdown);
+        } catch (error) {
+            throw new Error(
+                `Failed to write performance report to '${outputPath}': ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
 
         // eslint-disable-next-line no-console
         console.log(`✅ Performance comparison report saved to: ${outputPath}`);
@@ -516,22 +577,49 @@ export class PerformanceReportAggregator {
         const threshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '30');
         const githubOutputPath = process.env.GITHUB_OUTPUT;
 
-        const mdFiles = await this.findMarkdownFiles(inputDir);
+        let mdFiles: string[];
+
+        try {
+            mdFiles = await this.findMarkdownFiles(inputDir);
+        } catch (error) {
+            throw new Error(
+                `Failed to search for markdown files in '${inputDir}': ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
 
         if (mdFiles.length === 0) {
+            // eslint-disable-next-line no-console
+            console.log(`No markdown files found in '${inputDir}', writing empty report`);
             await this.writeEmptyReport(outputFile, githubOutputPath);
 
             return;
         }
 
-        const tableRows = await this.extractTableRows(mdFiles);
+        // eslint-disable-next-line no-console
+        console.log(`Found ${mdFiles.length} markdown files to aggregate`);
+
+        let tableRows: Set<string>;
+
+        try {
+            tableRows = await this.extractTableRows(mdFiles);
+        } catch (error) {
+            throw new Error(
+                `Failed to extract table rows from markdown files: ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
 
         if (tableRows.size === 0) {
+            // eslint-disable-next-line no-console
+            console.log(
+                `No significant changes found (threshold: ${threshold}%), writing no-changes report`,
+            );
             await this.writeNoChangesReport(outputFile, threshold, githubOutputPath);
 
             return;
         }
 
+        // eslint-disable-next-line no-console
+        console.log(`Aggregating ${tableRows.size} table rows into final report`);
         await this.writeAggregatedReport(outputFile, tableRows, githubOutputPath);
     }
 
@@ -578,21 +666,40 @@ export class PerformanceReportAggregator {
      */
     private static async extractTableRows(files: string[]): Promise<Set<string>> {
         const rowSet = new Set<string>();
+        let processedFiles = 0;
+        let skippedFiles = 0;
 
         for (const file of files) {
             try {
                 const content = await readFile(file, 'utf8');
                 const lines = content.split(/\r?\n/);
+                let rowsFromFile = 0;
 
                 for (const line of lines) {
                     if (this.isTableDataRow(line)) {
                         rowSet.add(line);
+                        rowsFromFile++;
                     }
                 }
-            } catch {
-                // Ignore unreadable files
+
+                processedFiles++;
+
+                if (rowsFromFile > 0) {
+                    // eslint-disable-next-line no-console
+                    console.log(`Extracted ${rowsFromFile} table rows from ${file}`);
+                }
+            } catch (error) {
+                skippedFiles++;
+                console.warn(
+                    `Skipped unreadable file ${file}: ${error instanceof Error ? error.message : String(error)}`,
+                );
             }
         }
+
+        // eslint-disable-next-line no-console
+        console.log(
+            `Processed ${processedFiles} files, skipped ${skippedFiles} files, found ${rowSet.size} unique table rows`,
+        );
 
         return rowSet;
     }
@@ -680,10 +787,33 @@ export class PerformanceReportAggregator {
         const content =
             '## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this run._\n';
 
-        await writeFile(outputFile, content);
+        // Ensure output directory exists
+        const outputDir = dirname(outputFile);
+
+        try {
+            mkdirSync(outputDir, {recursive: true});
+        } catch (error) {
+            throw new Error(
+                `Failed to create output directory '${outputDir}': ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
+
+        try {
+            await writeFile(outputFile, content);
+        } catch (error) {
+            throw new Error(
+                `Failed to write empty report to '${outputFile}': ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
 
         if (githubOutputPath) {
-            await appendFile(githubOutputPath, 'performance_data_exists=false\n');
+            try {
+                await appendFile(githubOutputPath, 'performance_data_exists=false\n');
+            } catch (error) {
+                console.warn(
+                    `Failed to write to GitHub output: ${error instanceof Error ? error.message : String(error)}`,
+                );
+            }
         }
     }
 
@@ -697,10 +827,33 @@ export class PerformanceReportAggregator {
     ): Promise<void> {
         const content = `## 📊 Performance Metrics Comparison\n\n*No tests found with changes ≥ ${threshold}%*\n`;
 
-        await writeFile(outputFile, content);
+        // Ensure output directory exists
+        const outputDir = dirname(outputFile);
+
+        try {
+            mkdirSync(outputDir, {recursive: true});
+        } catch (error) {
+            throw new Error(
+                `Failed to create output directory '${outputDir}': ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
+
+        try {
+            await writeFile(outputFile, content);
+        } catch (error) {
+            throw new Error(
+                `Failed to write no-changes report to '${outputFile}': ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
 
         if (githubOutputPath) {
-            await appendFile(githubOutputPath, 'performance_data_exists=true\n');
+            try {
+                await appendFile(githubOutputPath, 'performance_data_exists=true\n');
+            } catch (error) {
+                console.warn(
+                    `Failed to write to GitHub output: ${error instanceof Error ? error.message : String(error)}`,
+                );
+            }
         }
     }
 
@@ -729,10 +882,33 @@ export class PerformanceReportAggregator {
         content +=
             '\n---\n*Performance metrics collected using PerformanceCollector with CDP tracing*\n';
 
-        await writeFile(outputFile, content);
+        // Ensure output directory exists
+        const outputDir = dirname(outputFile);
+
+        try {
+            mkdirSync(outputDir, {recursive: true});
+        } catch (error) {
+            throw new Error(
+                `Failed to create output directory '${outputDir}': ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
+
+        try {
+            await writeFile(outputFile, content);
+        } catch (error) {
+            throw new Error(
+                `Failed to write aggregated report to '${outputFile}': ${error instanceof Error ? error.message : String(error)}`,
+            );
+        }
 
         if (githubOutputPath) {
-            await appendFile(githubOutputPath, 'performance_data_exists=true\n');
+            try {
+                await appendFile(githubOutputPath, 'performance_data_exists=true\n');
+            } catch (error) {
+                console.warn(
+                    `Failed to write to GitHub output: ${error instanceof Error ? error.message : String(error)}`,
+                );
+            }
         }
     }
 }
@@ -753,8 +929,13 @@ async function main(): Promise<void> {
                 inputDir,
                 outputFile,
             );
+            // eslint-disable-next-line no-console
+            console.log(`✅ Markdown reports aggregated successfully to: ${outputFile}`);
         } catch (error) {
-            console.error('Failed to aggregate markdown reports:', error);
+            console.error(
+                '❌ Failed to aggregate markdown reports:',
+                error instanceof Error ? error.message : String(error),
+            );
             process.exit(1);
         }
     } else {
@@ -785,7 +966,17 @@ async function main(): Promise<void> {
                 changeThreshold,
             );
         } catch (error) {
-            console.error('Performance comparison failed:', error);
+            console.error(
+                '❌ Performance comparison failed:',
+                error instanceof Error ? error.message : String(error),
+            );
+            console.error('\n💡 Common issues:');
+            console.error(
+                '  - Make sure both baseline and current performance data directories exist',
+            );
+            console.error('  - Verify that performance tests have been run successfully');
+            console.error('  - Check that the output directory is writable');
+            console.error('  - Ensure JSON files in the metrics directories are valid');
             process.exit(1);
         }
     }
