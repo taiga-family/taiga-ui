@@ -12,9 +12,9 @@ import {
 } from '@angular/core';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiInjectElement} from '@taiga-ui/cdk';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {map, merge} from 'rxjs';
