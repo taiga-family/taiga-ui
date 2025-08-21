@@ -156,7 +156,12 @@ jobs:
         if: matrix.shard.project == 'chromium'
         run: |
           mkdir -p ./performance/baseline
-          find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} ./performance/baseline/ \; || true
+          if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
+            find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} ./performance/baseline/ \; || true
+            echo "Moved performance files from baseline run"
+          else
+            echo "No performance directory found for baseline run - this is normal if no performance tests ran in this shard"
+          fi
 
       - uses: taiga-family/ci/actions/run/clone@v1.146.0
         with:
@@ -181,6 +186,16 @@ jobs:
       - name: Generate per-shard performance diff
         if: matrix.shard.project == 'chromium'
         run: |
+          # Check if we have performance data to compare
+          if [ ! -d "./projects/demo-playwright/tests-results/performance" ] || [ -z "$(find ./projects/demo-playwright/tests-results/performance -name '*.json' 2>/dev/null)" ]; then
+            echo "No performance data found for current run in shard ${{ matrix.shard.index }} - skipping performance comparison"
+            mkdir -p ./projects/demo-playwright/tests-results/performance/diff
+            echo "# Performance Comparison Skipped" > ./projects/demo-playwright/tests-results/performance/diff/report-${{ matrix.shard.index }}.md
+            echo "" >> ./projects/demo-playwright/tests-results/performance/diff/report-${{ matrix.shard.index }}.md
+            echo "No performance data was collected for this shard." >> ./projects/demo-playwright/tests-results/performance/diff/report-${{ matrix.shard.index }}.md
+            exit 0
+          fi
+
           npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
             ./performance/baseline \
             ./projects/demo-playwright/tests-results/performance \

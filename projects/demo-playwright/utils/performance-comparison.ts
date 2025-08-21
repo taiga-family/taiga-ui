@@ -189,6 +189,13 @@ export class PerformanceComparison {
     }
 
     /**
+     * Generates a markdown report when no performance data is available
+     */
+    public static generateEmptyMarkdownReport(): string {
+        return '## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this shard._';
+    }
+
+    /**
      * Main comparison function for CI integration
      */
     public static async compareAndReport(
@@ -205,9 +212,10 @@ export class PerformanceComparison {
         try {
             baseline = await this.aggregateMetrics(baselinePath);
         } catch (error) {
-            throw new Error(
-                `Failed to load baseline metrics: ${error instanceof Error ? error.message : String(error)}`,
+            console.warn(
+                `⚠️ Could not load baseline metrics: ${error instanceof Error ? error.message : String(error)}`,
             );
+            baseline = new Map();
         }
 
         // eslint-disable-next-line no-console
@@ -224,9 +232,48 @@ export class PerformanceComparison {
         }
 
         if (current.size === 0) {
-            throw new Error(
-                `No performance data found in current metrics path: ${currentPath}. Make sure performance tests have been run successfully.`,
+            console.info(
+                `ℹ️ No performance data found in current metrics path: ${currentPath}. Creating empty report.`,
             );
+
+            // Create an empty report
+            const emptyReport: ComparisonReport = {
+                summary: {
+                    totalTests: 0,
+                    testsWithBaseline: 0,
+                    testsWithSignificantChanges: 0,
+                    averageLayoutChange: 0,
+                    averageRecalcChange: 0,
+                },
+                details: [],
+            };
+
+            // Generate markdown report for empty case
+            const markdown = this.generateEmptyMarkdownReport();
+
+            // Ensure output directory exists
+            const outputDir = dirname(outputPath);
+
+            try {
+                mkdirSync(outputDir, {recursive: true});
+            } catch (error) {
+                throw new Error(
+                    `Failed to create output directory '${outputDir}': ${error instanceof Error ? error.message : String(error)}`,
+                );
+            }
+
+            // Save report
+            try {
+                await writeFile(outputPath, markdown);
+            } catch (error) {
+                throw new Error(
+                    `Failed to write performance report to '${outputPath}': ${error instanceof Error ? error.message : String(error)}`,
+                );
+            }
+
+            console.info(`✅ Empty performance report saved to: ${outputPath}`);
+
+            return emptyReport;
         }
 
         // eslint-disable-next-line no-console
@@ -599,16 +646,20 @@ export class PerformanceReportAggregator {
         console.log(`Found ${mdFiles.length} markdown files to aggregate`);
 
         let tableRows: Set<string>;
+        let emptyShardCount: number;
 
         try {
-            tableRows = await this.extractTableRows(mdFiles);
+            const result = await this.extractTableRowsAndEmptyShards(mdFiles);
+
+            tableRows = result.tableRows;
+            emptyShardCount = result.emptyShardCount;
         } catch (error) {
             throw new Error(
                 `Failed to extract table rows from markdown files: ${error instanceof Error ? error.message : String(error)}`,
             );
         }
 
-        if (tableRows.size === 0) {
+        if (tableRows.size === 0 && emptyShardCount === 0) {
             // eslint-disable-next-line no-console
             console.log(
                 `No significant changes found (threshold: ${threshold}%), writing no-changes report`,
@@ -620,7 +671,18 @@ export class PerformanceReportAggregator {
 
         // eslint-disable-next-line no-console
         console.log(`Aggregating ${tableRows.size} table rows into final report`);
-        await this.writeAggregatedReport(outputFile, tableRows, githubOutputPath);
+
+        if (emptyShardCount > 0) {
+            // eslint-disable-next-line no-console
+            console.log(`Note: ${emptyShardCount} shard(s) had no performance data`);
+        }
+
+        await this.writeAggregatedReport(
+            outputFile,
+            tableRows,
+            emptyShardCount,
+            githubOutputPath,
+        );
     }
 
     /**
@@ -702,6 +764,56 @@ export class PerformanceReportAggregator {
         );
 
         return rowSet;
+    }
+
+    /**
+     * Extracts table data rows from markdown files and counts empty shards
+     */
+    private static async extractTableRowsAndEmptyShards(files: string[]): Promise<{
+        tableRows: Set<string>;
+        emptyShardCount: number;
+    }> {
+        const rowSet = new Set<string>();
+        let processedFiles = 0;
+        let skippedFiles = 0;
+        let emptyShardCount = 0;
+
+        for (const file of files) {
+            try {
+                const content = await readFile(file, 'utf8');
+                const lines = content.split(/\r?\n/);
+                let hasTableData = false;
+
+                for (const line of lines) {
+                    if (this.isTableDataRow(line)) {
+                        rowSet.add(line);
+                        hasTableData = true;
+                    }
+                }
+
+                // Check if this was an empty shard report
+                if (
+                    !hasTableData &&
+                    content.includes('No performance metrics collected in this shard')
+                ) {
+                    emptyShardCount++;
+                }
+
+                processedFiles++;
+            } catch (error) {
+                skippedFiles++;
+                console.warn(
+                    `Skipped unreadable file ${file}: ${error instanceof Error ? error.message : String(error)}`,
+                );
+            }
+        }
+
+        // eslint-disable-next-line no-console
+        console.log(
+            `Processed ${processedFiles} files, skipped ${skippedFiles} files, found ${rowSet.size} unique table rows, ${emptyShardCount} empty shards`,
+        );
+
+        return {tableRows: rowSet, emptyShardCount};
     }
 
     /**
@@ -863,24 +975,32 @@ export class PerformanceReportAggregator {
     private static async writeAggregatedReport(
         outputFile: string,
         tableRows: Set<string>,
+        emptyShardCount: number,
         githubOutputPath?: string,
     ): Promise<void> {
         const groupedRows = this.sortAndGroupRows(tableRows);
 
         let content = '## 📊 Performance Metrics Comparison\n\n';
 
-        content += '### Detailed Results (aggregated)\n\n';
-        content +=
-            '| Component | Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
-        content +=
-            '|-----------|-----------|------------|-----------------|------------|------------------|\n';
-
-        for (const row of groupedRows) {
-            content += `${row}\n`;
+        if (emptyShardCount > 0) {
+            content += '### Summary\n\n';
+            content += `- **Performance data found:** ${tableRows.size > 0 ? 'Yes' : 'No'}\n`;
+            content += `- **Shards with no performance data:** ${emptyShardCount}\n\n`;
         }
 
-        content +=
-            '\n---\n*Performance metrics collected using PerformanceCollector with CDP tracing*\n';
+        if (tableRows.size > 0) {
+            content += '### Detailed Results (aggregated)\n\n';
+            content +=
+                '| Component | Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
+            content +=
+                '|-----------|-----------|------------|-----------------|------------|------------------|\n';
+
+            for (const row of groupedRows) {
+                content += `${row}\n`;
+            }
+        } else {
+            content += '_No performance changes detected across all shards._\n\n';
+        }
 
         // Ensure output directory exists
         const outputDir = dirname(outputFile);
