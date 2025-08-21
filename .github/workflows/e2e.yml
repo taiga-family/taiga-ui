@@ -7,7 +7,7 @@ env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   PERFORMANCE_BASELINE_KEY: 'perf_baseline_${{ github.event.pull_request.head.sha }}'
   PERFORMANCE_CURRENT_KEY: 'perf_current_${{ github.event.pull_request.head.sha }}'
-  PERFORMANCE_CHANGE_THRESHOLD: 30 # Configurable threshold for showing performance changes (%)
+  PERFORMANCE_CHANGE_THRESHOLD: 20 # Configurable threshold for showing performance changes (%)
 
 jobs:
   build-demo:

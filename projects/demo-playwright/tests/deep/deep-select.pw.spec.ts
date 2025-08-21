@@ -11,21 +11,6 @@ import {expect, test} from '@playwright/test';
 const DEEP_SELECT_FLAKY = new Set<string>([DemoRoute.Avatar]);
 
 test.describe('Deep / Select', () => {
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
-
     const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!).filter(
         (path: string) => !DEEP_SELECT_FLAKY.has(path),
     );
