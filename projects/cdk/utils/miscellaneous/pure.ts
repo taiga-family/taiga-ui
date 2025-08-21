@@ -47,7 +47,6 @@ function decorateGetter(
  * @throws error if used not on getter or function
  *
  * CAUTION: they must be pure.
- * @deprecated use "experimentalDecorators": false
  * TODO(v5): drop compatibility for legacy "experimentalDecorators": true
  */
 export function tuiPure<T>(
