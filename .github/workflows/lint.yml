@@ -21,6 +21,7 @@ jobs:
       - run: echo "$(git log -1 --pretty=format:"%s")" | npx commitlint --verbose
         if: github.event_name == 'pull_request'
       - run: npm run typecheck
+      - run: npm run knip
       - run: npm run cspell
       - run: |
           if [[ "${{ env.SUPPORT_AUTO_PUSH }}" == "true" ]]; then
