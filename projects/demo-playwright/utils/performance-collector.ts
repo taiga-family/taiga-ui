@@ -140,25 +140,35 @@ export class PerformanceCollector {
             // Allow any pending events to be collected
             await page.waitForTimeout(10);
 
-            // Stop tracing and wait for completion with timeout protection
-            await Promise.race([
-                new Promise<void>((resolve) => {
-                    collection.client.once('Tracing.tracingComplete', () => resolve());
-                    collection.client.send('Tracing.end');
-                }),
-                // Timeout after 5 seconds to prevent hanging
-                new Promise<void>((resolve) => {
-                    setTimeout(() => {
-                        console.warn(`Tracing completion timeout for test: ${testName}`);
-                        resolve();
-                    }, 5000);
-                }),
-            ]);
+            // Stop tracing with graceful fallback: avoid noisy warnings if completion event not emitted
+            let tracingCompleted = false;
+
+            await new Promise<void>((resolve) => {
+                const timeoutMs = 2000;
+                const timer = setTimeout(() => resolve(), timeoutMs);
+
+                collection.client.once('Tracing.tracingComplete', () => {
+                    tracingCompleted = true;
+                    clearTimeout(timer);
+                    resolve();
+                });
+
+                collection.client.send('Tracing.end').catch(() => {
+                    clearTimeout(timer);
+                    resolve();
+                });
+            });
 
             await collection.client.detach();
 
             // Extract metrics using filtered events for more stable results
             const metrics = this.extractStableMetrics(collection.events);
+
+            if (!tracingCompleted && collection.events.length === 0) {
+                console.warn(
+                    `Tracing finished without completion event and no events captured for test: ${testName}`,
+                );
+            }
 
             // Save metrics to file
             await this.saveTestMetrics(
@@ -190,114 +200,70 @@ export class PerformanceCollector {
     private static extractStableMetrics(
         events: readonly PerformanceEvent[],
     ): PerformanceMetrics {
-        const metrics = {
+        const metrics: PerformanceMetrics = {
             layoutCount: 0,
             recalcStyleCount: 0,
             layoutDuration: 0,
             recalcStyleDuration: 0,
         };
 
-        // Filter events by time window to avoid capturing pre-test activity
-        const relevantEvents = events.filter((event) => {
-            // Only process events from devtools.timeline for main measurements
+        const MIN_EVENT_DURATION_MS = 0.02;
+        let rawLayout = 0;
+        let rawRecalc = 0;
+
+        for (const event of events) {
             if (!event.cat?.includes('devtools.timeline')) {
-                return false;
-            }
-
-            // Filter out extremely short events that might be noise
-            const durationMs = event.dur ? event.dur / 1000 : 0;
-
-            // Increased minimum threshold to filter out GC-related micro-events
-            return durationMs >= 0.5; // Minimum 0.5ms to filter noise and GC artifacts
-        });
-
-        // Group events by time to detect and filter potential GC interference
-        const timeWindows = this.groupEventsByTimeWindows(relevantEvents, 10); // 10ms windows
-
-        for (const window of timeWindows) {
-            // Skip time windows with suspiciously high event density (likely GC interference)
-            if (window.length > 20) {
                 continue;
             }
 
-            for (const event of window) {
-                const durationMs = event.dur ? event.dur / 1000 : 0;
+            const durationMs = event.dur ? event.dur / 1000 : 0;
 
-                // Filter out abnormally long events that might be GC-affected
-                if (durationMs > 100) {
-                    continue;
+            if (event.name === 'Layout') {
+                rawLayout++;
+
+                if (durationMs >= MIN_EVENT_DURATION_MS) {
+                    metrics.layoutCount++;
+                    metrics.layoutDuration += durationMs;
                 }
+            } else if (
+                event.name === 'RecalculateStyles' ||
+                event.name === 'UpdateLayoutTree'
+            ) {
+                rawRecalc++;
 
-                switch (event.name) {
-                    case 'Layout':
-                        metrics.layoutCount++;
-                        metrics.layoutDuration += durationMs;
-                        break;
-                    case 'RecalculateStyles':
-                    case 'UpdateLayoutTree':
-                        metrics.recalcStyleCount++;
-                        metrics.recalcStyleDuration += durationMs;
-                        break;
+                if (durationMs >= MIN_EVENT_DURATION_MS) {
+                    metrics.recalcStyleCount++;
+                    metrics.recalcStyleDuration += durationMs;
                 }
             }
         }
 
-        // Round to reduce floating point variance
+        if (metrics.layoutCount === 0 && rawLayout > 0) {
+            metrics.layoutCount = rawLayout;
+        }
+
+        if (metrics.recalcStyleCount === 0 && rawRecalc > 0) {
+            metrics.recalcStyleCount = rawRecalc;
+        }
+
         metrics.layoutDuration = Math.round(metrics.layoutDuration * 1000) / 1000;
         metrics.recalcStyleDuration =
             Math.round(metrics.recalcStyleDuration * 1000) / 1000;
 
+        if (process.env.PERF_COLLECTOR_DEBUG === '1') {
+            console.info('[PerformanceCollector][debug] events', {
+                total: events.length,
+                rawLayout,
+                rawRecalc,
+                countedLayout: metrics.layoutCount,
+                countedRecalc: metrics.recalcStyleCount,
+            });
+        }
+
         return metrics;
     }
 
-    /**
-     * Groups events into time windows to detect patterns and filter noise
-     */
-    private static groupEventsByTimeWindows(
-        events: readonly PerformanceEvent[],
-        windowSizeMs: number,
-    ): PerformanceEvent[][] {
-        if (events.length === 0) {
-            return [];
-        }
-
-        const windows: PerformanceEvent[][] = [];
-        const windowSizeMicroseconds = windowSizeMs * 1000;
-
-        // Sort events by timestamp
-        const sortedEvents = [...events].sort((a, b) => a.ts - b.ts);
-
-        if (sortedEvents.length === 0) {
-            return [];
-        }
-
-        const startTime = sortedEvents[0]!.ts;
-
-        let currentWindow: PerformanceEvent[] = [];
-        let currentWindowStart = startTime;
-
-        for (const event of sortedEvents) {
-            // Check if event belongs to current window
-            if (event.ts < currentWindowStart + windowSizeMicroseconds) {
-                currentWindow.push(event);
-            } else {
-                // Start new window
-                if (currentWindow.length > 0) {
-                    windows.push(currentWindow);
-                }
-
-                currentWindow = [event];
-                currentWindowStart = event.ts;
-            }
-        }
-
-        // Add final window
-        if (currentWindow.length > 0) {
-            windows.push(currentWindow);
-        }
-
-        return windows;
-    }
+    // groupEventsByTimeWindows removed as unused (previous implementation deleted)
 
     /**
      * Saves test-specific metrics to file
