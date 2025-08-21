@@ -1,10 +1,5 @@
 /* eslint-disable playwright/no-conditional-in-test */
-import {
-    PerformanceCollector,
-    TuiDocumentationApiPagePO,
-    tuiGoto,
-    tuiMockImages,
-} from '@demo-playwright/utils';
+import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Deep / Toggle', () => {

@@ -1,9 +1,4 @@
-import {
-    PerformanceCollector,
-    TuiDocumentationPagePO,
-    tuiGoto,
-    tuiMockImages,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import {checkA11y, configureAxe, injectAxe} from 'axe-playwright';
 

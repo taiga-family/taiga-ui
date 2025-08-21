@@ -1,11 +1,6 @@
 /* eslint-disable playwright/no-conditional-in-test */
 import {DemoRoute} from '@demo/routes';
-import {
-    PerformanceCollector,
-    TuiDocumentationApiPagePO,
-    tuiGoto,
-    tuiMockImages,
-} from '@demo-playwright/utils';
+import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 const DEEP_SELECT_FLAKY = new Set<string>([DemoRoute.Avatar]);
