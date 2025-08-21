@@ -6,6 +6,7 @@ test.describe('Source code button', () => {
     const proprietary = process.env['PROPRIETARY'] === 'true';
     const currentBranch =
         process.env['GITHUB_HEAD_REF'] || process.env['GITHUB_REF_NAME'] || 'main';
+    const repository = process.env['GITHUB_REPOSITORY'] || 'taiga-family/taiga-ui';
 
     (proprietary ? [] : demoPaths).forEach((path) => {
         test(`${path}`, async ({page, request}) => {
@@ -25,7 +26,14 @@ test.describe('Source code button', () => {
 
             const href = await sourceCodeLink
                 .getAttribute('href')
-                .then((href) => href?.replace('/tree/main/', `/tree/${currentBranch}/`));
+                .then((href) =>
+                    href
+                        ?.replace('/tree/main/', `/tree/${currentBranch}/`)
+                        .replace(
+                            'https://github.com/taiga-family/taiga-ui',
+                            `https://github.com/${repository}`,
+                        ),
+                );
 
             const response = await request.get(href ?? '', {maxRetries: 3});
 
