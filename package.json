@@ -152,7 +152,7 @@
         "cpy-cli": "5.0.0",
         "husky": "9.1.7",
         "jest-preset-angular": "14.6.1",
-        "knip": "5.62.0",
+        "knip": "5.63.0",
         "lint-staged": "15.5.2",
         "ng-morph": "4.8.4",
         "ng-packagr": "16.2.3",
