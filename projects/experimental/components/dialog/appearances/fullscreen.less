@@ -52,19 +52,16 @@
         margin-block-end: 2rem;
         font: var(--tui-font-heading-3);
 
+        + p {
+            margin: -1.5rem 0 2rem;
+
+            + footer {
+                margin-block-start: -2rem;
+            }
+        }
+
         &:empty {
             display: none;
-        }
-    }
-
-    > p,
-    > [tuiSlides] > * > p,
-    > ng-component > p,
-    > ng-component > [tuiSlides] > * > p {
-        margin: -1.5rem 0 2rem;
-
-        + footer {
-            margin-block-start: -2rem;
         }
     }
 
@@ -102,7 +99,7 @@
 
         .t-close {
             align-self: flex-start;
-            block-size: 2.75rem;
+            block-size: 3.5rem;
             margin-block-end: 1rem;
         }
 
@@ -117,17 +114,14 @@
         > [tuiSlides] > * > header,
         > ng-component > header,
         > ng-component > [tuiSlides] > * > header {
-            margin-block-start: -0.25rem;
-        }
+            margin-block-start: -0.5rem;
 
-        > p,
-        > [tuiSlides] > * > p,
-        > ng-component > p,
-        > ng-component > [tuiSlides] > * > p {
-            margin-block-end: 1.5rem;
+            + p {
+                margin-block-end: 1.5rem;
 
-            + footer {
-                margin-block-start: 0;
+                + footer {
+                    margin-block-start: 0;
+                }
             }
         }
 
