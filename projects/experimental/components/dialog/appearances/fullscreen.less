@@ -1,4 +1,4 @@
-:host[data-appearance~='fullscreen'] {
+&[data-appearance~='fullscreen'] {
     display: flex;
     flex-direction: column;
     block-size: 100%;
@@ -15,12 +15,12 @@
         animation-name: tuiFade, tuiSlide;
     }
 
-    .t-close {
+    > .t-close {
         position: static;
         block-size: 4rem;
         inline-size: auto;
         align-self: flex-end;
-        margin-block-end: 2rem;
+        margin: env(safe-area-inset-top) 0 2rem;
         border-radius: 0 !important;
         font: var(--tui-font-text-m) !important;
 
@@ -29,23 +29,26 @@
         }
     }
 
-    &:has(.tui-app-bar) .t-close {
+    // Replace with :has when it's supported
+    //&:has(tui-app-bar) .t-close {
+    &.tui-app-bar .t-close {
         display: none;
     }
 
-    ::ng-deep > tui-app-bar,
-    ::ng-deep > ng-component > tui-app-bar {
+    > tui-app-bar,
+    > ng-component > tui-app-bar {
         position: sticky;
         top: env(safe-area-inset-top);
         z-index: 1;
-        flex: 0 1 auto;
         border-inline-end: calc(50vw - var(--tui-width) / 2) solid transparent;
         border-inline-start: calc(50vw - var(--tui-width) / 2) solid transparent;
         margin: 0 calc(var(--tui-width) / 2 - 50vw) 2rem;
     }
 
-    ::ng-deep > header,
-    ::ng-deep > ng-component > header {
+    > header,
+    > [tuiSlides] > * > header,
+    > ng-component > header,
+    > ng-component > [tuiSlides] > * > header {
         margin-block-end: 2rem;
         font: var(--tui-font-heading-3);
 
@@ -54,8 +57,10 @@
         }
     }
 
-    ::ng-deep > p,
-    ::ng-deep > ng-component > p {
+    > p,
+    > [tuiSlides] > * > p,
+    > ng-component > p,
+    > ng-component > [tuiSlides] > * > p {
         margin: -1.5rem 0 2rem;
 
         + footer {
@@ -63,17 +68,17 @@
         }
     }
 
-    ::ng-deep > footer,
-    ::ng-deep > ng-component > footer {
+    > footer,
+    > ng-component > footer {
         display: flex;
-        gap: 0.75rem;
+        gap: 0.5rem 0.75rem;
         padding: 2rem calc(50vw - var(--tui-width) / 2);
         margin: 0 calc(var(--tui-width) / 2 - 50vw) calc(-2rem - env(safe-area-inset-top));
     }
 
-    :host-context(tui-root:not(._mobile)) & {
-        ::ng-deep > footer,
-        ::ng-deep > ng-component > footer {
+    tui-root:not(._mobile) & {
+        > footer,
+        > ng-component > footer {
             flex-direction: row;
             background: var(--tui-background-base);
             background: color-mix(in hsl, var(--tui-background-base) 80%, transparent);
@@ -90,7 +95,7 @@
         }
     }
 
-    :host-context(tui-root._mobile) & {
+    tui-root._mobile & {
         padding-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
 
         --tui-from: translateY(4rem);
@@ -101,18 +106,24 @@
             margin-block-end: 1rem;
         }
 
-        ::ng-deep > tui-app-bar,
-        ::ng-deep > ng-component > tui-app-bar {
-            margin: 0 -1rem 1rem;
+        > tui-app-bar,
+        > ng-component > tui-app-bar {
+            margin: calc(-1 * env(safe-area-inset-top)) -1rem 1rem;
+            padding-block-start: env(safe-area-inset-top);
+            box-sizing: content-box;
         }
 
-        ::ng-deep > header,
-        ::ng-deep > ng-component > header {
+        > header,
+        > [tuiSlides] > * > header,
+        > ng-component > header,
+        > ng-component > [tuiSlides] > * > header {
             margin-block-start: -0.25rem;
         }
 
-        ::ng-deep > p,
-        ::ng-deep > ng-component > p {
+        > p,
+        > [tuiSlides] > * > p,
+        > ng-component > p,
+        > ng-component > [tuiSlides] > * > p {
             margin-block-end: 1.5rem;
 
             + footer {
@@ -120,8 +131,8 @@
             }
         }
 
-        ::ng-deep > footer,
-        ::ng-deep > ng-component > footer {
+        > footer,
+        > ng-component > footer {
             padding: 0 1rem ~'max(1rem, env(safe-area-inset-bottom))';
             margin: 1.5rem -1rem ~'calc(-1* max(1rem, env(safe-area-inset-bottom)))';
 

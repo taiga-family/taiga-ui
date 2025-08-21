@@ -1,5 +1,4 @@
-// TODO: Disable encapsulation in v5
-:host {
+tui-dialog[new] {
     position: relative;
     box-sizing: border-box;
     font: var(--tui-font-text-m);
@@ -10,13 +9,13 @@
     &._closable ::ng-deep > ng-component > header {
         padding-inline-end: 2rem;
     }
-}
 
-.t-close {
-    position: absolute;
-    top: 1rem;
-    inset-inline-end: 1rem;
-}
+    > .t-close {
+        position: absolute;
+        top: 1rem;
+        inset-inline-end: 1rem;
+    }
 
-@import './appearances/default.less';
-@import './appearances/fullscreen.less';
+    @import './appearances/default.less';
+    @import './appearances/fullscreen.less';
+}

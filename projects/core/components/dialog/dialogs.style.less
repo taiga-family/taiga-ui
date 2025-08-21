@@ -16,7 +16,7 @@
     }
 
     //TODO: Remove [new] in v5
-    &:has(tui-dialog[new][data-appearance='fullscreen']) .t-overlay {
+    &:has(tui-dialog[new][data-appearance~='fullscreen']) .t-overlay {
         opacity: 0;
     }
 
@@ -85,4 +85,8 @@
 
     margin: 0;
     color: #747474;
+
+    ::ng-deep .t-bar_horizontal {
+        display: none;
+    }
 }

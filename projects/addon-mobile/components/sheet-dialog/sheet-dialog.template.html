@@ -8,7 +8,7 @@
 </div>
 <div class="t-sheet">
     <div
-        *ngIf="context.bar"
+        *ngIf="context.bar && !context.appearance.includes('fullscreen')"
         class="t-top"
     ></div>
     <h2

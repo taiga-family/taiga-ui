@@ -1,4 +1,4 @@
-:host[data-appearance~='taiga'] {
+&[data-appearance~='taiga'] {
     max-inline-size: calc(100vw - 5rem);
     margin: 2.5rem;
     padding: 1.75rem;
@@ -15,23 +15,23 @@
         inline-size: 25rem;
         padding: 1.5rem;
 
-        ::ng-deep > header,
-        ::ng-deep > ng-component > header {
+        > header,
+        > ng-component > header {
             font: var(--tui-font-heading-5);
             margin-block-end: 1.25rem;
         }
 
-        ::ng-deep > p,
-        ::ng-deep > ng-component > p,
+        > p,
+        > ng-component > p,
         /** TODO remove tui-confirm in v5 */
-        ::ng-deep > tui-confirm > p {
+ > tui-confirm > p {
             margin: -0.75rem 0 1.25rem;
         }
 
-        ::ng-deep > footer,
-        ::ng-deep > ng-component > footer,
+        > footer,
+        > ng-component > footer,
         /** TODO remove tui-confirm in v5 */
-        ::ng-deep > tui-confirm > footer {
+ > tui-confirm > footer {
             margin-block-start: 1.25rem;
         }
     }
@@ -44,8 +44,8 @@
         inline-size: 50rem;
     }
 
-    ::ng-deep > header,
-    ::ng-deep > ng-component > header {
+    > header,
+    > ng-component > header {
         margin-block-end: 1.5rem;
         overflow-wrap: break-word;
         font: var(--tui-font-heading-4);
@@ -55,10 +55,10 @@
         }
     }
 
-    ::ng-deep > p,
-    ::ng-deep > ng-component > p,
+    > p,
+    > ng-component > p,
     /** TODO remove tui-confirm in v5 */
-    ::ng-deep > tui-confirm > p {
+ > tui-confirm > p {
         margin: -1rem 0 1.5rem;
 
         &:last-child {
@@ -66,10 +66,10 @@
         }
     }
 
-    ::ng-deep > footer,
-    ::ng-deep > ng-component > footer,
+    > footer,
+    > ng-component > footer,
     /** TODO remove tui-confirm in v5 */
-    ::ng-deep > tui-confirm > footer {
+ > tui-confirm > footer {
         display: flex;
         justify-content: flex-end;
         flex-wrap: wrap-reverse;
