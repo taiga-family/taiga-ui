@@ -192,7 +192,7 @@ export class PerformanceComparison {
      * Generates a markdown report when no performance data is available
      */
     public static generateEmptyMarkdownReport(): string {
-        return '## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this shard._';
+        return '## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this shard._\n\n# Tests completed successfully :white_check_mark:\n\nGood job :fire:';
     }
 
     /**
@@ -1000,6 +1000,8 @@ export class PerformanceReportAggregator {
             }
         } else {
             content += '_No performance changes detected across all shards._\n\n';
+            content += '# Tests completed successfully :white_check_mark:\n\n';
+            content += 'Good job :fire:\n\n';
         }
 
         // Ensure output directory exists
