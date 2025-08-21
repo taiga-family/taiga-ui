@@ -263,48 +263,47 @@
                 <span>{{ data.balance | tuiAmount: 'RUB' | async }}</span>
             </div>
         </ng-template>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
+        <table tuiDocAPI>
+            <tr
+                name="[disabled]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
             >
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiTextfieldIcon"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="icon"
+            </tr>
+            <tr
+                name="[tuiTextfieldIcon]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="iconVariants"
+                [(value)]="icon"
             >
                 Icon content. If content is a string, it is used as stringified svg or a name of an icon
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="placeholder"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="placeholder"
+            </tr>
+            <tr
+                name="[placeholder]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="placeholder"
             >
                 Placeholder (use external
                 <code [textContent]="'<input tuiTextfieldLegacy />'"></code>
                 to set it)
-            </ng-template>
-        </tui-doc-documentation>
-        <inherited-documentation [dropdown]="true" />
-        <tui-doc-documentation heading="CSS customization">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="style.text-align"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="textAlignVariants"
-                [(documentationPropertyValue)]="textAlign"
+            </tr>
+            <tr
+                name="[style.text-align]"
+                tuiDocAPIItem
+                type="string"
+                [items]="textAlignVariants"
+                [(value)]="textAlign"
             >
                 Custom align content by text-align
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
+        <inherited-documentation [dropdown]="true" />
     </ng-template>
 
     <tui-setup *pageTab />

@@ -41,36 +41,35 @@
                 <ng-template tuiAccordionItemContent>
                     <h2>table[tuiTable]</h2>
                     <p>Parent directive that sets the table up.</p>
-                    <tui-doc-documentation [showValues]="false">
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="columns"
-                            documentationPropertyType="readonly string[]"
+                    <table tuiDocAPI>
+                        <tr
+                            name="[columns]"
+                            tuiDocAPIItem
+                            type="readonly string[]"
                         >
                             An array of keys to set up columns order
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="size"
-                            documentationPropertyType="TuiSizeS | TuiSizeL"
+                        </tr>
+                        <tr
+                            name="[size]"
+                            tuiDocAPIItem
+                            type="TuiSizeS | TuiSizeL"
                         >
                             Cells size
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input-output"
-                            documentationPropertyName="sorter"
-                            documentationPropertyType="TuiComparator<T>"
+                        </tr>
+                        <tr
+                            name="(sorter)"
+                            tuiDocAPIItem
                         >
-                            Sort function (basic JavaScript array sort API)
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input-output"
-                            documentationPropertyName="direction"
-                            documentationPropertyType="-1 | 1"
+                            " > Sort function (basic JavaScript array sort API)
+                        </tr>
+                        <tr
+                            name="(direction)"
+                            tuiDocAPIItem
+                            type="-1 | 1"
                         >
                             Direction for sorting
-                        </ng-template>
-                    </tui-doc-documentation>
+                        </tr>
+                    </table>
 
                     <hr />
 
@@ -102,29 +101,29 @@
                         <code>tr[tuiThGroup]</code>
                         to style heading cells.
                     </p>
-                    <tui-doc-documentation [showValues]="false">
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="resizable"
-                            documentationPropertyType="boolean"
+                    <table tuiDocAPI>
+                        <tr
+                            name="[resizable]"
+                            tuiDocAPIItem
+                            type="boolean"
                         >
                             Makes this column resizable
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="sorter"
-                            documentationPropertyType="TuiComparator<T> | null"
+                        </tr>
+                        <tr
+                            name="(sorter)"
+                            tuiDocAPIItem
+                            type="TuiComparator<T> | null"
                         >
                             Sorter function for this column
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="sticky"
-                            documentationPropertyType="boolean"
+                        </tr>
+                        <tr
+                            name="[sticky]"
+                            tuiDocAPIItem
+                            type="boolean"
                         >
                             Makes heading cell horizontally sticky
-                        </ng-template>
-                    </tui-doc-documentation>
+                        </tr>
+                    </table>
 
                     <hr />
 
@@ -134,29 +133,29 @@
                         <code>tbody</code>
                         inside your table.
                     </p>
-                    <tui-doc-documentation [showValues]="false">
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="data"
-                            documentationPropertyType="readonly T[]"
+                    <table tuiDocAPI>
+                        <tr
+                            name="[data]"
+                            tuiDocAPIItem
+                            type="readonly T[]"
                         >
                             Data to display
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input"
-                            documentationPropertyName="heading"
-                            documentationPropertyType="PolymorpheusContent"
+                        </tr>
+                        <tr
+                            name="[heading]"
+                            tuiDocAPIItem
+                            type="PolymorpheusContent"
                         >
                             Optional heading content for the group that makes it collapsable
-                        </ng-template>
-                        <ng-template
-                            documentationPropertyMode="input-output"
-                            documentationPropertyName="open"
-                            documentationPropertyType="boolean"
+                        </tr>
+                        <tr
+                            name="(open)"
+                            tuiDocAPIItem
+                            type="boolean"
                         >
                             Open/collapsed state of the group
-                        </ng-template>
-                    </tui-doc-documentation>
+                        </tr>
+                    </table>
 
                     <hr />
 

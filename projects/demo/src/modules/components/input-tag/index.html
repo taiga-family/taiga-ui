@@ -144,135 +144,132 @@
                 </tui-input-tag>
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
+        <table tuiDocAPI>
+            <tr
+                name="(disabled)"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
             >
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="search"
-                documentationPropertyType="string | null"
-                [(documentationPropertyValue)]="search"
+            </tr>
+            <tr
+                name="(search)"
+                tuiDocAPIItem
+                type="string | null"
+                [(value)]="search"
             >
                 Textfield value to subscribe on input or setting it from the outside (emits
                 <code>null</code>
                 when item from list selected)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="maxLength"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="maxLength"
+            </tr>
+            <tr
+                name="[maxLength]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="maxLength"
             >
                 Max length of tag
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabledItemHandler"
-                documentationPropertyType="TuiBooleanHandler<string>"
-                [documentationPropertyValues]="disabledItemHandlerVariants"
-                [(documentationPropertyValue)]="disabledItemHandler"
+            </tr>
+            <tr
+                name="[disabledItemHandler]"
+                tuiDocAPIItem
+                [items]="disabledItemHandlerVariants"
+                [(value)]="disabledItemHandler"
             >
                 Handler for deactivation some tags
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="placeholder"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="exampleText"
+            </tr>
+            <tr
+                name="[placeholder]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="exampleText"
             >
                 Placeholder
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="uniqueTags"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="uniqueTags"
+            </tr>
+            <tr
+                name="[uniqueTags]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="uniqueTags"
             >
                 Ability to enter unique or non-unique tags
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="editable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="editable"
+            </tr>
+            <tr
+                name="[editable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="editable"
             >
                 Tags are editable
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="separator"
-                documentationPropertyType="string | RegExp"
-                [documentationPropertyValues]="separatorVariants"
-                [(documentationPropertyValue)]="separator"
+            </tr>
+            <tr
+                name="[separator]"
+                tuiDocAPIItem
+                type="string | RegExp"
+                [items]="separatorVariants"
+                [(value)]="separator"
             >
                 String or RegExp to separate tags
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="rows"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="rows"
+            </tr>
+            <tr
+                name="[rows]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="rows"
             >
                 A number of visible rows
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="inputHidden"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="inputHidden"
+            </tr>
+            <tr
+                name="[inputHidden]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="inputHidden"
             >
                 Hide input field. For example, to prevent adding new tags
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tagValidator"
-                documentationPropertyType="TuiBooleanHandler<string>"
-                [documentationPropertyValues]="tagValidatorVariants"
-                [(documentationPropertyValue)]="tagValidator"
+            </tr>
+            <tr
+                name="[tagValidator]"
+                tuiDocAPIItem
+                [items]="tagValidatorVariants"
+                [(value)]="tagValidator"
             >
                 A function that checks that tag is valid
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="autoColor"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="autoColor"
+            </tr>
+            <tr
+                name="[autoColor]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="autoColor"
             >
                 Auto color for tags (
                 <code>autoColor = true</code>
                 does not work together with
                 <code>labelOutside ==== false</code>
                 : use only outside labels)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiTextfieldIcon"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="icon"
+            </tr>
+            <tr
+                name="[tuiTextfieldIcon]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="iconVariants"
+                [(value)]="icon"
             >
                 Icon content. If content is a string, it is used as stringified svg.
-            </ng-template>
-        </tui-doc-documentation>
-        <inherited-documentation [dropdown]="true" />
-        <tui-doc-documentation heading="CSS customization">
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="style.text-align"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="textAlignVariants"
-                [(documentationPropertyValue)]="textAlign"
+            </tr>
+            <tr
+                name="[style.text-align]"
+                tuiDocAPIItem
+                type="string"
+                [items]="textAlignVariants"
+                [(value)]="textAlign"
             >
                 Custom align content by text-align
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
+        <inherited-documentation [dropdown]="true" />
     </ng-template>
 
     <tui-setup *pageTab />

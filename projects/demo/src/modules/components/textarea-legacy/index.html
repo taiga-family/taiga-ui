@@ -105,77 +105,66 @@
                 ></textarea>
             </tui-textarea>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabled"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="disabled"
+        <table tuiDocAPI>
+            <tr
+                name="[disabled]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="disabled"
             >
                 Disabled state (formControl.disable())
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="expandable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="expandable"
+            </tr>
+            <tr
+                name="[expandable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="expandable"
             >
                 Control height can be expanded to show all content
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="maxLength"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="maxLengthVariants"
-                [(documentationPropertyValue)]="maxLength"
+            </tr>
+            <tr
+                name="[maxLength]"
+                tuiDocAPIItem
+                type="number"
+                [items]="maxLengthVariants"
+                [(value)]="maxLength"
             >
                 Use maxLength for highlighting extra characters. If you want to limit the number of characters, add
                 <code [textContent]="'<textarea tuiTextfieldLegacy />'"></code>
                 with native maxlength attribute.
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="rows"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="rowsVariants"
-                [(documentationPropertyValue)]="rows"
+            </tr>
+            <tr
+                name="[rows]"
+                tuiDocAPIItem
+                type="number"
+                [items]="rowsVariants"
+                [(value)]="rows"
             >
                 A number of visible rows in
                 <code>expandable</code>
                 mode
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiTextfieldIcon"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="iconVariants"
-                [(documentationPropertyValue)]="icon"
+            </tr>
+            <tr
+                name="[tuiTextfieldIcon]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="iconVariants"
+                [(value)]="icon"
             >
                 Icon content. If content is a string, it is used as stringified svg or a name of an icon
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
         <inherited-documentation />
-        <tui-doc-documentation heading="Native <textarea> inside TuiTextarea">
-            <p>
-                Learn more how to set some attributes or listen to events on native textarea in this
-                <a
-                    fragment="native"
-                    tuiLink
-                    [routerLink]="routes.Textarea"
-                >
-                    example
-                </a>
-            </p>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="placeholder"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="placeholder"
+        <table tuiDocAPI>
+            <tr
+                name="[placeholder]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="placeholder"
             >
                 Text displayed in a text field when the it has no value
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

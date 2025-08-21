@@ -14,29 +14,29 @@
     <code>TuiTextfieldControllerModule</code>
 </p>
 
-<tui-doc-documentation>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiTextfieldCleaner"
-        documentationPropertyType="boolean"
-        [(documentationPropertyValue)]="documentedComponent.cleaner"
+<table tuiDocAPI>
+    <tr
+        name="[tuiTextfieldCleaner]"
+        tuiDocAPIItem
+        type="boolean"
+        [(value)]="documentedComponent.cleaner"
     >
         Shows a cross to reset a value
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiTextfieldCustomContent"
-        documentationPropertyType="PolymorpheusContent"
-        [documentationPropertyValues]="documentedComponent.customContentVariants"
-        [(documentationPropertyValue)]="documentedComponent.customContentSelected"
+    </tr>
+    <tr
+        name="[tuiTextfieldCustomContent]"
+        tuiDocAPIItem
+        type="PolymorpheusContent"
+        [items]="documentedComponent.customContentVariants"
+        [(value)]="documentedComponent.customContentSelected"
     >
         Right content (e.g. avatar with maximum size 32x32px)
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiTextfieldLabelOutside"
-        documentationPropertyType="boolean"
-        [(documentationPropertyValue)]="documentedComponent.labelOutside"
+    </tr>
+    <tr
+        name="[tuiTextfieldLabelOutside]"
+        tuiDocAPIItem
+        type="boolean"
+        [(value)]="documentedComponent.labelOutside"
     >
         Label is outside a component and made with
         <a
@@ -52,49 +52,49 @@
             <code>size === 's'</code>
             : for s-size inputs use only outside labels)
         </p>
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiTextfieldSize"
-        documentationPropertyType="TuiSizeS | TuiSizeL"
-        [documentationPropertyValues]="documentedComponent.sizeVariants"
-        [(documentationPropertyValue)]="documentedComponent.size"
+    </tr>
+    <tr
+        name="[tuiTextfieldSize]"
+        tuiDocAPIItem
+        type="TuiSizeS | TuiSizeL"
+        [items]="documentedComponent.sizeVariants"
+        [(value)]="documentedComponent.size"
     >
         Size
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiTextfieldIconLeft"
-        documentationPropertyType="string"
-        [documentationPropertyValues]="documentedComponent.iconLeftVariants"
-        [(documentationPropertyValue)]="documentedComponent.iconStart"
+    </tr>
+    <tr
+        name="[tuiTextfieldIconLeft]"
+        tuiDocAPIItem
+        type="string"
+        [items]="documentedComponent.iconLeftVariants"
+        [(value)]="documentedComponent.iconStart"
     >
         A left icon. It can be stringified svg.
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiTextfieldFiller"
-        documentationPropertyType="string"
-        [(documentationPropertyValue)]="documentedComponent.filler"
+    </tr>
+    <tr
+        name="[tuiTextfieldFiller]"
+        tuiDocAPIItem
+        type="string"
+        [(value)]="documentedComponent.filler"
     >
         Pale text suggestion for input (e.g. HH:MM:SS for time)
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiTextfieldPrefix"
-        documentationPropertyType="string"
-        [documentationPropertyValues]="documentedComponent.prefixVariants"
-        [(documentationPropertyValue)]="documentedComponent.prefix"
+    </tr>
+    <tr
+        name="[tuiTextfieldPrefix]"
+        tuiDocAPIItem
+        type="string"
+        [items]="documentedComponent.prefixVariants"
+        [(value)]="documentedComponent.prefix"
     >
         Uneditable text before value
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiTextfieldPostfix"
-        documentationPropertyType="string"
-        [documentationPropertyValues]="documentedComponent.prefixVariants"
-        [(documentationPropertyValue)]="documentedComponent.postfix"
+    </tr>
+    <tr
+        name="[tuiTextfieldPostfix]"
+        tuiDocAPIItem
+        type="string"
+        [items]="documentedComponent.prefixVariants"
+        [(value)]="documentedComponent.postfix"
     >
         Uneditable text after value
-    </ng-template>
-</tui-doc-documentation>
+    </tr>
+</table>

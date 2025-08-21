@@ -56,29 +56,29 @@
                 </tui-input>
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiTextfieldCleaner"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="cleaner"
+        <table tuiDocAPI>
+            <tr
+                name="[tuiTextfieldCleaner]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="cleaner"
             >
                 Shows a cross to reset a value
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiTextfieldCustomContent"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="customContentVariants"
-                [(documentationPropertyValue)]="customContentSelected"
+            </tr>
+            <tr
+                name="[tuiTextfieldCustomContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="customContentVariants"
+                [(value)]="customContentSelected"
             >
                 Right content (e.g. avatar with maximum size 32x32px)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiTextfieldLabelOutside"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="labelOutside"
+            </tr>
+            <tr
+                name="[tuiTextfieldLabelOutside]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="labelOutside"
             >
                 Label is outside a component and made with
                 <a
@@ -87,17 +87,17 @@
                 >
                     <code>Label</code>
                 </a>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiTextfieldSize"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[tuiTextfieldSize]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
