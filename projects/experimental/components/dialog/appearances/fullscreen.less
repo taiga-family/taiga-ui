@@ -4,7 +4,6 @@
     block-size: 100%;
     inline-size: 100%;
     padding: env(safe-area-inset-top) ~'max(calc(50vw - var(--tui-width) / 2), 1rem)' 2rem;
-    box-sizing: border-box;
     background: var(--tui-background-base);
     box-shadow: none;
 
@@ -37,7 +36,7 @@
     ::ng-deep > tui-app-bar,
     ::ng-deep > ng-component > tui-app-bar {
         position: sticky;
-        top: 0;
+        top: env(safe-area-inset-top);
         z-index: 1;
         flex: 0 1 auto;
         border-inline-end: calc(50vw - var(--tui-width) / 2) solid transparent;
@@ -61,6 +60,33 @@
 
         + footer {
             margin-block-start: -2rem;
+        }
+    }
+
+    ::ng-deep > footer,
+    ::ng-deep > ng-component > footer {
+        display: flex;
+        gap: 0.75rem;
+        padding: 2rem calc(50vw - var(--tui-width) / 2);
+        margin: 0 calc(var(--tui-width) / 2 - 50vw) calc(-2rem - env(safe-area-inset-top));
+    }
+
+    :host-context(tui-root:not(._mobile)) & {
+        ::ng-deep > footer,
+        ::ng-deep > ng-component > footer {
+            flex-direction: row;
+            background: var(--tui-background-base);
+            background: color-mix(in hsl, var(--tui-background-base) 80%, transparent);
+            backdrop-filter: blur(2rem);
+
+            &::before {
+                display: none;
+            }
+
+            > button,
+            > a {
+                inline-size: auto;
+            }
         }
     }
 
@@ -91,6 +117,17 @@
 
             + footer {
                 margin-block-start: 0;
+            }
+        }
+
+        ::ng-deep > footer,
+        ::ng-deep > ng-component > footer {
+            padding: 0 1rem ~'max(1rem, env(safe-area-inset-bottom))';
+            margin: 1.5rem -1rem ~'calc(-1* max(1rem, env(safe-area-inset-bottom)))';
+
+            &::before {
+                left: 0;
+                right: 0;
             }
         }
     }
