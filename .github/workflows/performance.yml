@@ -1,0 +1,131 @@
+name: 📈 Performance Stress Testing (reusable)
+on:
+  workflow_call:
+
+env:
+  PERFORMANCE_CHANGE_THRESHOLD: 20
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+
+jobs:
+  performance-stress:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    name: Playwright / Performance Stress
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4.3.0
+        with:
+          fetch-depth: 10
+      - uses: taiga-family/ci/actions/setup/variables@v1.146.0
+      - uses: taiga-family/ci/actions/setup/node@v1.146.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.146.0
+      - name: Restore dist cache from parent workflow build
+        uses: actions/cache/restore@v4.2.4
+        with:
+          path: dist/demo
+          key: ${{ env.CACHE_DIST_KEY }}
+      - name: Verify dist availability
+        id: dist-check
+        run: |
+          if [ ! -f dist/demo/index.html ]; then
+            echo "dist not found – skipping performance stress (no rebuild to avoid duplicate work)";
+            echo "skip=true" >> $GITHUB_OUTPUT;
+          else
+            echo "dist present";
+            echo "skip=false" >> $GITHUB_OUTPUT;
+          fi
+      - name: Stop early (no dist)
+        if: steps.dist-check.outputs.skip == 'true'
+        run: echo 'Skipping performance stress due to missing dist'
+      - name: Serve feature build
+        if: steps.dist-check.outputs.skip == 'false'
+        uses: taiga-family/ci/actions/run/serve@v1.146.0
+        with:
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST }}
+          replaceBaseUrl: false
+      - name: Run performance stress tests (current)
+        if: steps.dist-check.outputs.skip == 'false'
+        env:
+          COLLECT_PERFORMANCE: 1
+        run: |
+          npx nx e2e demo-playwright -- \
+            --project=chromium \
+            projects/demo-playwright/tests/core/scrollbar/scrollbar.stress.pw.spec.ts
+      - name: Stash current performance metrics
+        if: steps.dist-check.outputs.skip == 'false'
+        run: |
+          mkdir -p ./performance-stress/current
+          if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
+            find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} ./performance-stress/current/ \; || true
+            echo "Moved current performance files"
+          else
+            echo "No performance metrics collected for current run"
+          fi
+      - name: Clone baseline snapshot build
+        if: steps.dist-check.outputs.skip == 'false'
+        uses: taiga-family/ci/actions/run/clone@v1.146.0
+        with:
+          branch: snapshots/demo/next/${{ github.base_ref }}
+          destination: ${{ env.DIST_NEXT }}
+      - name: Serve baseline build
+        if: steps.dist-check.outputs.skip == 'false'
+        uses: taiga-family/ci/actions/run/serve@v1.146.0
+        with:
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST_NEXT }}
+          replaceBaseUrl: false
+      - name: Run performance stress tests (baseline)
+        if: steps.dist-check.outputs.skip == 'false'
+        env:
+          COLLECT_PERFORMANCE: 1
+        run: |
+          npx nx e2e demo-playwright -- \
+            --project=chromium \
+            projects/demo-playwright/tests/core/scrollbar/scrollbar.stress.pw.spec.ts
+      - name: Stash baseline performance metrics
+        if: steps.dist-check.outputs.skip == 'false'
+        run: |
+          mkdir -p ./performance-stress/baseline
+          if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
+            find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} ./performance-stress/baseline/ \; || true
+            echo "Moved baseline performance files"
+          else
+            echo "No performance metrics collected for baseline run"
+          fi
+      - name: Generate performance stress diff report
+        run: |
+          mkdir -p ./performance-stress/diff
+          if [ "${{ steps.dist-check.outputs.skip }}" = 'true' ]; then
+            echo '# Performance Stress Skipped' > ./performance-stress/diff/report.md
+            echo 'dist not available (upstream build not finished yet).' >> ./performance-stress/diff/report.md
+          elif [ -d ./performance-stress/baseline ] && [ -n "$(ls -A ./performance-stress/baseline 2>/dev/null)" ] && [ -d ./performance-stress/current ] && [ -n "$(ls -A ./performance-stress/current 2>/dev/null)" ]; then
+            npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
+              ./performance-stress/baseline \
+              ./performance-stress/current \
+              ./performance-stress/diff/report.md \
+              ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
+          else
+            echo '# Performance Stress Comparison Skipped' > ./performance-stress/diff/report.md
+            echo 'Missing baseline or current metrics.' >> ./performance-stress/diff/report.md
+          fi
+      - name: Upload performance stress artifacts
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          path: ./performance-stress/**
+          name: performance-stress-artifacts_${{ github.sha }}
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Post performance stress comment
+        if: env.IS_OWNER_MODE == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f ./performance-stress/diff/report.md ]; then
+            npx ts-node ./scripts/post-performance-comment.ts ./performance-stress/diff/report.md || true
+          fi

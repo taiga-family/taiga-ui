@@ -5,9 +5,6 @@ on:
 env:
   RETRY_COUNT: 2
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  PERFORMANCE_BASELINE_KEY: 'perf_baseline_${{ github.event.pull_request.head.sha }}'
-  PERFORMANCE_CURRENT_KEY: 'perf_current_${{ github.event.pull_request.head.sha }}'
-  PERFORMANCE_CHANGE_THRESHOLD: 20 # Configurable threshold for showing performance changes (%)
 
 jobs:
   build-demo:
@@ -32,6 +29,14 @@ jobs:
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
+
+      - name: Upload demo dist artifact (for performance workflow reuse)
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: demo-dist-${{ github.sha }}
+          path: dist/demo
+          if-no-files-found: error
+          compression-level: 0
 
   cypress:
     if: ${{ !contains(github.head_ref , 'release/') }}
@@ -144,24 +149,11 @@ jobs:
           replaceBaseUrl: false
 
       - name: Run screenshot tests on ${{ env.DIST }}
-        env:
-          COLLECT_PERFORMANCE: ${{ matrix.shard.project == 'chromium' && '1' || '0' }}
         run: |
           npx nx e2e demo-playwright -- \
             --update-snapshots \
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
-
-      - name: Stash baseline performance metrics
-        if: matrix.shard.project == 'chromium'
-        run: |
-          mkdir -p ./performance/baseline
-          if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
-            find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} ./performance/baseline/ \; || true
-            echo "Moved performance files from baseline run"
-          else
-            echo "No performance directory found for baseline run - this is normal if no performance tests ran in this shard"
-          fi
 
       - uses: taiga-family/ci/actions/run/clone@v1.146.0
         with:
@@ -176,41 +168,10 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
         continue-on-error: true
-        env:
-          COLLECT_PERFORMANCE: ${{ matrix.shard.project == 'chromium' && '1' || '0' }}
         run: |
           npx nx e2e demo-playwright -- \
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
-
-      - name: Generate per-shard performance diff
-        if: matrix.shard.project == 'chromium'
-        run: |
-          # Check if we have performance data to compare
-          if [ ! -d "./projects/demo-playwright/tests-results/performance" ] || [ -z "$(find ./projects/demo-playwright/tests-results/performance -name '*.json' 2>/dev/null)" ]; then
-            echo "No performance data found for current run in shard ${{ matrix.shard.index }} - skipping performance comparison"
-            mkdir -p ./projects/demo-playwright/tests-results/performance/diff
-            echo "# Performance Comparison Skipped" > ./projects/demo-playwright/tests-results/performance/diff/report-${{ matrix.shard.index }}.md
-            echo "" >> ./projects/demo-playwright/tests-results/performance/diff/report-${{ matrix.shard.index }}.md
-            echo "No performance data was collected for this shard." >> ./projects/demo-playwright/tests-results/performance/diff/report-${{ matrix.shard.index }}.md
-            exit 0
-          fi
-
-          npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
-            ./performance/baseline \
-            ./projects/demo-playwright/tests-results/performance \
-            ./projects/demo-playwright/tests-results/performance/diff/report-${{ matrix.shard.index }}.md \
-            ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
-
-      - name: Upload performance diff report
-        if: matrix.shard.project == 'chromium'
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          path: ./projects/demo-playwright/tests-results/performance/diff/**
-          name: ${{ env.PERFORMANCE_CURRENT_KEY }}_diff_${{ matrix.shard.index }}
-          if-no-files-found: ignore
-          compression-level: 0
-          retention-days: 1
 
       - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.146.0
 
@@ -287,21 +248,6 @@ jobs:
 
       # Skip downloading raw metrics; we upload per-shard diff reports instead
 
-      - name: Download per-shard performance diff reports
-        continue-on-error: true
-        uses: actions/download-artifact@v4.3.0
-        with:
-          path: ./performance/diff
-          pattern: ${{ env.PERFORMANCE_CURRENT_KEY }}_diff_*
-          merge-multiple: true
-
-      - name: Combine performance diff reports
-        id: performance-comparison
-        continue-on-error: true
-        run:
-          npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts aggregate-md ./performance/diff
-          ./performance-report.md
-
       - name: Merge into HTML Report
         run: npx playwright merge-reports --config=projects/demo-playwright/merge.config.ts ./all-blob-reports
 
@@ -328,16 +274,19 @@ jobs:
           report-file: ./all-blob-reports/results.json
           report-url: ${{ steps.e2e-report.outputs.details_url }}
 
-      - name: Post performance comparison comment
-        if: steps.performance-comparison.outputs.performance_data_exists == 'true'
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx ts-node ./scripts/post-performance-comment.ts ./performance-report.md
+      - name: Post performance comparison comment (disabled)
+        if: false
+        run: echo 'Performance comment disabled (moved to reusable workflow)'
 
       - uses: taiga-family/ci/actions/setup/playwright-diff-check@v1.146.0
         with:
           pw-result: ./total
+
+  performance-stress:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    needs: [build-demo]
+    uses: ./.github/workflows/performance.yml
+    secrets: inherit
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
