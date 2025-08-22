@@ -10,6 +10,8 @@ interface PerformanceMetrics {
     layoutDuration: number;
     recalcStyleCount: number;
     recalcStyleDuration: number;
+    layoutDurationPerOp?: number;
+    recalcStyleDurationPerOp?: number;
 }
 
 /**
@@ -44,6 +46,8 @@ interface MetricsComparison {
         layoutDuration: number;
         recalcStyleCount: number;
         recalcStyleDuration: number;
+        layoutDurationPerOp?: number;
+        recalcStyleDurationPerOp?: number;
     };
 }
 
@@ -74,6 +78,8 @@ export class PerformanceComparison {
         metricsPath: string,
     ): Promise<Map<string, PerformanceData>> {
         const metrics = new Map<string, PerformanceData>();
+        // Multi-run aggregation: collect all files per test name
+        const group: Record<string, PerformanceData[]> = {};
 
         try {
             const files = await readdir(metricsPath);
@@ -94,13 +100,52 @@ export class PerformanceComparison {
                 try {
                     const content = await readFile(resolve(metricsPath, file), 'utf8');
                     const data: PerformanceData = JSON.parse(content);
+                    const key = data.testName;
 
-                    metrics.set(data.testName, data);
+                    if (!group[key]) {
+                        group[key] = [];
+                    }
+
+                    group[key]!.push(data);
                 } catch (error) {
                     console.warn(
                         `Failed to parse performance file ${file}: ${error instanceof Error ? error.message : String(error)}`,
                     );
                 }
+            }
+
+            // Aggregate groups using median with outlier filtering
+            for (const [testName, runs] of Object.entries(group)) {
+                const rs = runs.filter((r) => !!r);
+
+                if (rs.length === 0) {
+                    continue;
+                }
+
+                if (rs.length === 1) {
+                    metrics.set(testName, rs[0]!);
+                    continue;
+                }
+
+                const warmupSkip = Number(process.env.PERFORMANCE_WARMUP_SKIP || '1');
+                const sortedByStart = rs
+                    .slice()
+                    .sort((a, b) => (a.testStartTime || 0) - (b.testStartTime || 0));
+                const usable = sortedByStart.slice(
+                    Math.min(warmupSkip, sortedByStart.length - 1),
+                );
+                const agg = this.aggregateRuns(usable.map((r) => r.metrics));
+                const last = usable[usable.length - 1]!;
+
+                metrics.set(testName, {
+                    timestamp: Date.now(),
+                    testStartTime: last.testStartTime,
+                    testDuration: last.testDuration,
+                    url: last.url,
+                    testName: last.testName,
+                    source: usable[0]!.source,
+                    metrics: agg,
+                });
             }
         } catch (error) {
             if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
@@ -433,6 +478,23 @@ export class PerformanceComparison {
         const currentMetrics = currentData.metrics;
         const baselineMetrics = baselineData?.metrics;
         const component = this.extractComponentName(currentData.source, testName);
+        // Normalized per operation durations (guard divide by zero)
+        const currentLayoutPerOp =
+            currentMetrics.layoutCount > 0
+                ? currentMetrics.layoutDuration / currentMetrics.layoutCount
+                : 0;
+        const currentRecalcPerOp =
+            currentMetrics.recalcStyleCount > 0
+                ? currentMetrics.recalcStyleDuration / currentMetrics.recalcStyleCount
+                : 0;
+        const baselineLayoutPerOp =
+            baselineMetrics && baselineMetrics.layoutCount > 0
+                ? baselineMetrics.layoutDuration / baselineMetrics.layoutCount
+                : 0;
+        const baselineRecalcPerOp =
+            baselineMetrics && baselineMetrics.recalcStyleCount > 0
+                ? baselineMetrics.recalcStyleDuration / baselineMetrics.recalcStyleCount
+                : 0;
 
         return {
             testName,
@@ -472,6 +534,14 @@ export class PerformanceComparison {
                     baselineMetrics?.recalcStyleDuration || 0,
                     currentMetrics.recalcStyleDuration,
                 ),
+                layoutDurationPerOp: this.calculatePercentageChange(
+                    baselineLayoutPerOp || 0,
+                    currentLayoutPerOp || 0,
+                ),
+                recalcStyleDurationPerOp: this.calculatePercentageChange(
+                    baselineRecalcPerOp || 0,
+                    currentRecalcPerOp || 0,
+                ),
             },
         };
     }
@@ -499,11 +569,17 @@ export class PerformanceComparison {
                 return true;
             }
 
-            // Include tests with significant operation count changes
-            return (
+            // Include when raw counts OR normalized per-op durations both move
+            const countChange =
                 Math.abs(detail.changes.layoutCount) >= changeThreshold ||
-                Math.abs(detail.changes.recalcStyleCount) >= changeThreshold
-            );
+                Math.abs(detail.changes.recalcStyleCount) >= changeThreshold;
+            const perOpChange =
+                (detail.changes.layoutDurationPerOp &&
+                    Math.abs(detail.changes.layoutDurationPerOp) >= changeThreshold) ||
+                (detail.changes.recalcStyleDurationPerOp &&
+                    Math.abs(detail.changes.recalcStyleDurationPerOp) >= changeThreshold);
+
+            return countChange && perOpChange;
         });
     }
 
@@ -596,6 +672,85 @@ export class PerformanceComparison {
             `| ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} ` +
             `| ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, 'ms')} |\n`
         );
+    }
+
+    // Aggregate multiple run metrics into robust median with outlier filtering
+    private static aggregateRuns(runs: PerformanceMetrics[]): PerformanceMetrics {
+        const values = <K extends keyof PerformanceMetrics>(k: K): number[] =>
+            runs
+                .map((r) => r[k]!)
+                .filter((v) => typeof v === 'number' && !Number.isNaN(v));
+        const median = (arr: number[]): number => {
+            if (arr.length === 0) {
+                return 0;
+            }
+
+            const sorted = [...arr].sort((a, b) => a - b);
+            const mid = Math.floor(sorted.length / 2);
+
+            if (sorted.length % 2) {
+                return sorted[mid]!;
+            }
+
+            const a = sorted[mid - 1]!;
+            const b = sorted[mid]!;
+
+            return (a + b) / 2;
+        };
+        const mad = (arr: number[], med: number): number => {
+            const deviations = arr.map((v) => Math.abs(v - med));
+
+            return median(deviations);
+        };
+        const filterOutliers = (arr: number[]): number[] => {
+            if (arr.length < 4) {
+                return arr;
+            } // not enough data to filter
+
+            const sorted = [...arr].sort((a, b) => a - b);
+            const q1 = sorted[Math.floor((sorted.length - 1) * 0.25)]!;
+            const q3 = sorted[Math.floor((sorted.length - 1) * 0.75)]!;
+            const iqr = q3 - q1;
+            const med = median(sorted);
+            const m = mad(sorted, med) || 1e-9;
+            const lowerIQR = q1 - 1.5 * iqr;
+            const upperIQR = q3 + 1.5 * iqr;
+
+            return sorted.filter(
+                (v) => v >= lowerIQR && v <= upperIQR && Math.abs(v - med) <= 3 * m,
+            );
+        };
+        const aggValue = (arr: number[]): number => {
+            const filtered = filterOutliers(arr);
+
+            return median(filtered);
+        };
+        const layoutCount = Math.round(aggValue(values('layoutCount')));
+        const recalcStyleCount = Math.round(aggValue(values('recalcStyleCount')));
+        const layoutDuration = Number(aggValue(values('layoutDuration')).toFixed(3));
+        const recalcStyleDuration = Number(
+            aggValue(values('recalcStyleDuration')).toFixed(3),
+        );
+        const result: PerformanceMetrics = {
+            layoutCount,
+            recalcStyleCount,
+            layoutDuration,
+            recalcStyleDuration,
+        };
+
+        if (layoutCount > 0) {
+            result.layoutDurationPerOp = Number(
+                (layoutDuration / layoutCount).toFixed(5),
+            );
+        }
+
+        if (recalcStyleCount > 0) {
+            result.recalcStyleDurationPerOp = Number(
+                (recalcStyleDuration / recalcStyleCount).toFixed(5),
+            );
+        }
+
+        return result;
     }
 
     /**

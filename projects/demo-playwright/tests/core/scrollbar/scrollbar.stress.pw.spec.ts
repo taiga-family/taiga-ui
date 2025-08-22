@@ -44,7 +44,10 @@ test.describe('TuiScrollbar Stress Tests', () => {
             );
 
             // Stress test: rapid scrolling with forced layout recalculations
-            for (let i = 0; i < 100; i++) {
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsRapid = Math.round(100 * factor);
+
+            for (let i = 0; i < iterationsRapid; i++) {
                 // Use scrollTop changes instead of scrollTo to force layout
                 await scrollbar.evaluate(
                     (el, amount) => {
@@ -120,7 +123,10 @@ test.describe('TuiScrollbar Stress Tests', () => {
             const operations = [];
 
             // Add many items rapidly while scrolling
-            for (let i = 0; i < 30; i++) {
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsContent = Math.round(30 * factor);
+
+            for (let i = 0; i < iterationsContent; i++) {
                 // Add new content
                 operations.push(addButton.click());
 
@@ -180,7 +186,10 @@ test.describe('TuiScrollbar Stress Tests', () => {
             const programmaticOperations = [];
 
             // Rapidly trigger programmatic scrolling
-            for (let i = 0; i < 40; i++) {
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsProg = Math.round(40 * factor);
+
+            for (let i = 0; i < iterationsProg; i++) {
                 programmaticOperations.push(scrollButton.click());
 
                 // Add some manual scroll operations between programmatic ones
@@ -234,7 +243,10 @@ test.describe('TuiScrollbar Stress Tests', () => {
             // This tests both horizontal and vertical scroll handling under load
             const scrollPatterns = [];
 
-            for (let i = 0; i < 60; i++) {
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsMulti = Math.round(60 * factor);
+
+            for (let i = 0; i < iterationsMulti; i++) {
                 const angle = (i * Math.PI) / 10;
                 const scrollLeft = Math.abs(Math.cos(angle)) * 200;
                 const scrollTop = Math.abs(Math.sin(angle)) * 200;
@@ -299,7 +311,10 @@ test.describe('TuiScrollbar Stress Tests', () => {
             );
 
             // Stress test: create memory pressure while forcing layout recalculations
-            for (let i = 0; i < 80; i++) {
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsMemory = Math.round(80 * factor);
+
+            for (let i = 0; i < iterationsMemory; i++) {
                 // Create memory pressure by allocating large objects
                 await page.evaluate(() => {
                     // Create temporary large objects to pressure memory
@@ -388,7 +403,10 @@ test.describe('TuiScrollbar Stress Tests', () => {
             );
 
             // Stress test: rapid theme changes during scrolling with forced recalculations
-            for (let i = 0; i < 60; i++) {
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsTheme = Math.round(60 * factor);
+
+            for (let i = 0; i < iterationsTheme; i++) {
                 // Scroll operation with forced layout reads
                 await scrollbar.evaluate(
                     (el, scrollAmount) => {
@@ -481,7 +499,10 @@ test.describe('TuiScrollbar Stress Tests', () => {
             );
 
             // Stress test: container resize during active scrolling with forced layout
-            for (let i = 0; i < 50; i++) {
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsResize = Math.round(50 * factor);
+
+            for (let i = 0; i < iterationsResize; i++) {
                 // Scroll operation with forced layout reads
                 await scrollbar.evaluate(
                     (el, scrollAmount) => {
@@ -575,11 +596,16 @@ test.describe('TuiScrollbar Stress Tests', () => {
             const concurrentBatches = [];
 
             // Create multiple batches of concurrent operations
-            for (let batch = 0; batch < 8; batch++) {
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const batches = Math.round(8 * factor);
+
+            for (let batch = 0; batch < batches; batch++) {
                 const batchOperations = [];
 
                 // Multiple simultaneous scroll operations within each batch
-                for (let j = 0; j < 15; j++) {
+                const innerOps = Math.round(15 * factor);
+
+                for (let j = 0; j < innerOps; j++) {
                     const scrollTop = (batch * 50 + j * 10) % 500;
 
                     batchOperations.push(

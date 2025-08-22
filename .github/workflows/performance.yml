@@ -5,6 +5,9 @@ on:
 env:
   PERFORMANCE_CHANGE_THRESHOLD: 20
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  PERFORMANCE_RUNS: 6 # total runs including warmup
+  PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
+  PERF_STRESS_FACTOR: 2 # amplify in-test iteration counts
 
 jobs:
   performance-stress:
@@ -53,24 +56,29 @@ jobs:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
           replaceBaseUrl: false
-      - name: Run performance stress tests (current)
+      - name: Run performance stress tests (current, multi-run)
         if: steps.dist-check.outputs.skip == 'false'
         env:
           COLLECT_PERFORMANCE: 1
         run: |
-          npx nx e2e demo-playwright -- \
-            --project=chromium \
-            projects/demo-playwright/tests/core/scrollbar/scrollbar.stress.pw.spec.ts
-      - name: Stash current performance metrics
-        if: steps.dist-check.outputs.skip == 'false'
-        run: |
           mkdir -p ./performance-stress/current
-          if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
-            find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} ./performance-stress/current/ \; || true
-            echo "Moved current performance files"
-          else
-            echo "No performance metrics collected for current run"
-          fi
+          RUNS=${PERFORMANCE_RUNS:-6}
+          WARMUP_SKIP=${PERFORMANCE_WARMUP_SKIP:-1}
+          echo "Executing $RUNS runs (skipping first $WARMUP_SKIP for warmup)"
+          for i in $(seq 1 $RUNS); do
+            echo "--- Current build run $i/$RUNS ---"
+            npx nx e2e demo-playwright -- \
+              --project=chromium \
+              projects/demo-playwright/tests/core/scrollbar/scrollbar.stress.pw.spec.ts || true
+            if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
+              dest=./performance-stress/current/run-$i
+              mkdir -p "$dest"
+              find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} "$dest"/ \; || true
+            fi
+          done
+          # Flatten copied files (keeping unique filenames) for aggregator simplicity
+          find ./performance-stress/current -type f -name '*.json' -maxdepth 3 -exec cp {} ./performance-stress/current/ \; || true
+          echo "Completed multi-run current collection"
       - name: Clone baseline snapshot build
         if: steps.dist-check.outputs.skip == 'false'
         uses: taiga-family/ci/actions/run/clone@v1.146.0
@@ -84,24 +92,28 @@ jobs:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
           replaceBaseUrl: false
-      - name: Run performance stress tests (baseline)
+      - name: Run performance stress tests (baseline, multi-run)
         if: steps.dist-check.outputs.skip == 'false'
         env:
           COLLECT_PERFORMANCE: 1
         run: |
-          npx nx e2e demo-playwright -- \
-            --project=chromium \
-            projects/demo-playwright/tests/core/scrollbar/scrollbar.stress.pw.spec.ts
-      - name: Stash baseline performance metrics
-        if: steps.dist-check.outputs.skip == 'false'
-        run: |
           mkdir -p ./performance-stress/baseline
-          if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
-            find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} ./performance-stress/baseline/ \; || true
-            echo "Moved baseline performance files"
-          else
-            echo "No performance metrics collected for baseline run"
-          fi
+          RUNS=${PERFORMANCE_RUNS:-6}
+          WARMUP_SKIP=${PERFORMANCE_WARMUP_SKIP:-1}
+          echo "Executing $RUNS runs (skipping first $WARMUP_SKIP for warmup)"
+          for i in $(seq 1 $RUNS); do
+            echo "--- Baseline build run $i/$RUNS ---"
+            npx nx e2e demo-playwright -- \
+              --project=chromium \
+              projects/demo-playwright/tests/core/scrollbar/scrollbar.stress.pw.spec.ts || true
+            if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
+              dest=./performance-stress/baseline/run-$i
+              mkdir -p "$dest"
+              find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} "$dest"/ \; || true
+            fi
+          done
+          find ./performance-stress/baseline -type f -name '*.json' -maxdepth 3 -exec cp {} ./performance-stress/baseline/ \; || true
+          echo "Completed multi-run baseline collection"
       - name: Generate performance stress diff report
         run: |
           mkdir -p ./performance-stress/diff
