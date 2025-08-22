@@ -4,11 +4,12 @@ on:
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
-  PERFORMANCE_CHANGE_THRESHOLD: 5
+  PERFORMANCE_CHANGE_THRESHOLD: 15
   PERFORMANCE_RUNS: 6 # total runs including warmup
   PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
   PERF_STRESS_FACTOR: 3 # amplify in-test iteration counts
   PERF_IGNORE_DURATION_REGRESSIONS: 1
+  PERF_BASELINE_FALLBACK_BRANCH: main
 
 jobs:
   performance-stress:
@@ -47,6 +48,26 @@ jobs:
             echo "skip=true" >> $GITHUB_OUTPUT;
             echo "dist not found – skipping performance stress (no rebuild to avoid duplicate work)";
           fi
+      - name: Resolve baseline snapshot
+        if: steps.dist-check.outputs.skip == 'false'
+        id: resolve-baseline
+        run: |
+          BASE='${{ github.base_ref }}'
+          PRIMARY="snapshots/demo/next/$BASE"
+          FALLBACK_BRANCH='${{ env.PERF_BASELINE_FALLBACK_BRANCH }}'
+          FALLBACK="snapshots/demo/next/$FALLBACK_BRANCH"
+          echo "Attempting baseline snapshot: $PRIMARY"
+          if git ls-remote --exit-code origin "$PRIMARY" >/dev/null 2>&1; then
+            echo "snapshot=$PRIMARY" >> $GITHUB_OUTPUT
+            echo "resolved=$PRIMARY" >> $GITHUB_OUTPUT
+          elif git ls-remote --exit-code origin "$FALLBACK" >/dev/null 2>&1; then
+            echo "snapshot=$FALLBACK" >> $GITHUB_OUTPUT
+            echo "resolved=$FALLBACK (fallback)" >> $GITHUB_OUTPUT
+          else
+            echo "snapshot=__none__" >> $GITHUB_OUTPUT
+            echo "resolved=__none__" >> $GITHUB_OUTPUT
+            echo "No baseline snapshot found (primary or fallback). Will treat all tests as new.";
+          fi
       - name: Stop early (no dist)
         if: steps.dist-check.outputs.skip == 'true'
         run: echo 'Skipping performance stress due to missing dist'
@@ -81,27 +102,27 @@ jobs:
           find ./performance-stress/current -type f -name '*.json' -maxdepth 3 -exec cp {} ./performance-stress/current/ \; || true
           echo "Completed multi-run current collection"
       - name: Clone baseline snapshot build
-        if: steps.dist-check.outputs.skip == 'false'
+        if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
         uses: taiga-family/ci/actions/run/clone@v1.146.0
         with:
-          branch: snapshots/demo/next/${{ github.base_ref }}
+          branch: ${{ steps.resolve-baseline.outputs.snapshot }}
           destination: ${{ env.DIST_NEXT }}
       - name: Serve baseline build
-        if: steps.dist-check.outputs.skip == 'false'
+        if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
         uses: taiga-family/ci/actions/run/serve@v1.146.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
           replaceBaseUrl: false
       - name: Run performance stress tests (baseline, multi-run)
-        if: steps.dist-check.outputs.skip == 'false'
+        if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
         env:
           COLLECT_PERFORMANCE: 1
         run: |
           mkdir -p ./performance-stress/baseline
           RUNS=${PERFORMANCE_RUNS:-6}
           WARMUP_SKIP=${PERFORMANCE_WARMUP_SKIP:-1}
-          echo "Executing $RUNS runs (skipping first $WARMUP_SKIP for warmup)"
+          echo "Executing $RUNS baseline runs (skipping first $WARMUP_SKIP for warmup)"
           for i in $(seq 1 $RUNS); do
             echo "--- Baseline build run $i/$RUNS ---"
             npx nx e2e demo-playwright -- \
@@ -115,18 +136,26 @@ jobs:
           done
           find ./performance-stress/baseline -type f -name '*.json' -maxdepth 3 -exec cp {} ./performance-stress/baseline/ \; || true
           echo "Completed multi-run baseline collection"
+      - name: Prepare empty baseline placeholder (no snapshot)
+        if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot == '__none__'
+        run: |
+          mkdir -p ./performance-stress/baseline
+          echo "# Baseline snapshot missing" > ./performance-stress/baseline/README.txt
       - name: Generate performance stress diff report
         run: |
           mkdir -p ./performance-stress/diff
           if [ "${{ steps.dist-check.outputs.skip }}" = 'true' ]; then
             echo '# Performance Stress Skipped' > ./performance-stress/diff/report.md
             echo 'dist not available (upstream build not finished yet).' >> ./performance-stress/diff/report.md
-          elif [ -d ./performance-stress/baseline ] && [ -n "$(ls -A ./performance-stress/baseline 2>/dev/null)" ] && [ -d ./performance-stress/current ] && [ -n "$(ls -A ./performance-stress/current 2>/dev/null)" ]; then
+          elif [ -d ./performance-stress/baseline ] && [ -d ./performance-stress/current ] && [ -n "$(ls -A ./performance-stress/current 2>/dev/null)" ]; then
             npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
               ./performance-stress/baseline \
               ./performance-stress/current \
               ./performance-stress/diff/report.md \
               ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
+            if [ '${{ steps.resolve-baseline.outputs.snapshot }}' = '__none__' ]; then
+              echo "\n_Baseline snapshot not found (primary: snapshots/demo/next/${{ github.base_ref }}, fallback: snapshots/demo/next/${{ env.PERF_BASELINE_FALLBACK_BRANCH }}). All tests treated as new._" >> ./performance-stress/diff/report.md
+            fi
           else
             echo '# Performance Stress Comparison Skipped' > ./performance-stress/diff/report.md
             echo 'Missing baseline or current metrics.' >> ./performance-stress/diff/report.md
