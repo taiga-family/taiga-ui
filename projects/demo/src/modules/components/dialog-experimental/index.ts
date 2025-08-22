@@ -31,6 +31,7 @@ export default class Page extends Array {
         'Component',
         'Confirmation',
         'Closing',
+        'Fullscreen',
         'Customization',
     ];
 
@@ -50,8 +51,10 @@ export default class Page extends Array {
     protected label = 'Label';
     protected closable = this.options.closable;
     protected required = this.options.required;
-    protected appearance = this.options.appearance;
     protected dismissible = this.options.dismissible;
+
+    protected readonly appearances = ['taiga', 'fullscreen'] as const;
+    protected appearance = this.options.appearance;
 
     protected readonly sizes = ['s', 'm', 'l'] as const;
     protected size = this.options.size;
