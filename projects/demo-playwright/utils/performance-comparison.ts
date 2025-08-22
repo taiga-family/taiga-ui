@@ -41,6 +41,7 @@ interface MetricsComparison {
     component: string;
     baseline?: PerformanceMetrics;
     current: PerformanceMetrics;
+    pattern?: string; // classification of change pattern
     diff: {
         layoutCount: number;
         layoutDuration: number;
@@ -758,11 +759,9 @@ export class PerformanceComparison {
         const perOpIncreaseLayout = lp > perOpPct;
         const perOpIncreaseRecalc = rp > perOpPct;
 
-        const ignoreDurations = process.env.PERF_IGNORE_DURATION_REGRESSIONS === '1';
         const maxCov = Number(process.env.PERF_MAX_COV || '0.15');
         const isStable = (cov?: number): boolean => cov === undefined || cov <= maxCov;
-
-        // Eligibility when we still consider duration changes
+        // Eligibility
         const layoutEligible =
             !isThemeSwitchTest &&
             !ignoreLayoutTiny &&
@@ -772,45 +771,21 @@ export class PerformanceComparison {
             baseline.recalcStyleDuration >= MIN_BASELINE_DURATION &&
             recalcAbsDelta >= ABS_DELTA_FLOOR;
 
-        if (ignoreDurations) {
-            const layoutEligibleCounts =
-                !isThemeSwitchTest && baseline.layoutCount >= MIN_BASELINE_LAYOUT_COUNT;
-            const recalcEligibleCounts =
-                baseline.recalcStyleCount >= MIN_BASELINE_LAYOUT_COUNT;
-            const layoutDelta = diff.layoutDuration;
-            const recalcDelta = diff.recalcStyleDuration;
-            const netCost = layoutDelta + recalcDelta; // recalc improvement reduces net cost
-
-            const layoutCountGate =
-                layoutEligibleCounts &&
-                lc > countPct &&
-                absLayoutCountDelta >= MIN_ABSOLUTE_COUNT_DELTA &&
-                layoutDelta >= ABS_DELTA_FLOOR;
-            const recalcCountGate =
-                recalcEligibleCounts &&
-                rc > countPct &&
-                absRecalcCountDelta >= MIN_ABSOLUTE_COUNT_DELTA &&
-                recalcDelta >= ABS_DELTA_FLOOR;
-
-            const varianceOk =
-                isStable(baseline.layoutCountCoV) &&
-                isStable(baseline.recalcStyleCountCoV);
-
-            return (
-                (layoutCountGate || recalcCountGate) &&
-                netCost > 0 &&
-                netCost >= NET_COST_FLOOR &&
-                varianceOk
-            );
-        }
-
         const layoutCountDriven =
             layoutEligible && layoutCountIncrease && layoutPerOpNotImproved;
         const recalcCountDriven =
             recalcEligible && recalcCountIncrease && recalcPerOpNotImproved;
         const perOpOnlyLayout = layoutEligible && countsStable && perOpIncreaseLayout;
         const perOpOnlyRecalc = recalcEligible && countsStable && perOpIncreaseRecalc;
-        const netCost = diff.layoutDuration + diff.recalcStyleDuration;
+        const netCost = diff.layoutDuration + diff.recalcStyleDuration; // ms delta (approx)
+        const netBaseTotal = baseline.layoutDuration + baseline.recalcStyleDuration;
+        const netCostPct = netBaseTotal > 0 ? (netCost / netBaseTotal) * 100 : 0;
+
+        // Unified net gating thresholds
+        const NET_PCT_THRESHOLD = Number(process.env.PERF_NET_PERCENT_THRESHOLD || '8');
+        const NET_ABS_MS_THRESHOLD = Number(
+            process.env.PERF_NET_ABS_MS_THRESHOLD || '15',
+        );
 
         const varianceOk =
             isStable(baseline.layoutCountCoV) &&
@@ -823,7 +798,26 @@ export class PerformanceComparison {
         const gated =
             layoutCountDriven || recalcCountDriven || perOpOnlyLayout || perOpOnlyRecalc;
 
-        return gated && netCost > 0 && netCost >= NET_COST_FLOOR && varianceOk;
+        const passesNet =
+            netCost > 0 &&
+            netCost >= NET_COST_FLOOR &&
+            netCost >= NET_ABS_MS_THRESHOLD &&
+            netCostPct >= NET_PCT_THRESHOLD;
+
+        // Classify pattern (stored for later reporting if needed)
+        if (gated) {
+            if (layoutCountDriven || recalcCountDriven) {
+                detail.pattern = 'count-driven';
+            } else if (perOpOnlyLayout || perOpOnlyRecalc) {
+                detail.pattern = 'per-op-increase';
+            }
+        } else if (netCost > 0 && netCostPct >= NET_PCT_THRESHOLD) {
+            detail.pattern = 'net-increase-non-gated';
+        } else if (netCost <= 0) {
+            detail.pattern = 'improvement';
+        }
+
+        return gated && passesNet && varianceOk;
     }
 
     /**
@@ -924,9 +918,9 @@ export class PerformanceComparison {
         section += '<details open>\n';
         section += `<summary>Tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length})</summary>\n\n`;
         section +=
-            '| Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
+            '| Test Name | Pattern | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
         section +=
-            '|-----------|------------|----------------|-----------|-----------------|\n';
+            '|-----------|---------|------------|----------------|-----------|-----------------|\n';
         // Removed extra blank line to keep markdown table intact
 
         for (const detail of filteredDetails) {
@@ -979,6 +973,7 @@ export class PerformanceComparison {
         changeThreshold: number,
     ): string {
         const {testName, baseline, current, changes} = detail;
+        const pattern = detail.pattern || this.classifyPattern(detail);
 
         const trim = (v: string): string => (v.endsWith('.0') ? v.slice(0, -2) : v);
         const fmtVal = (v: number, decimals = 1): string => {
@@ -1012,7 +1007,29 @@ export class PerformanceComparison {
             return isSignificant ? `**${beforeAfterCore}**` : beforeAfterCore;
         };
 
-        return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} |\n`;
+        return `| ${testName} | ${pattern} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} |\n`;
+    }
+
+    private static classifyPattern(detail: MetricsComparison): string {
+        if (!detail.baseline) {
+            return 'new';
+        }
+
+        if (detail.pattern) {
+            return detail.pattern;
+        }
+
+        const netMs = detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
+        const baselineTotal =
+            (detail.baseline.layoutDuration || 0) +
+            (detail.baseline.recalcStyleDuration || 0);
+        const netPct = baselineTotal > 0 ? (netMs / baselineTotal) * 100 : 0;
+
+        if (netMs <= 0) {
+            return 'improvement';
+        }
+
+        return netPct > 0 ? 'net-increase' : 'neutral';
     }
 
     // Aggregate multiple run metrics into robust median with outlier filtering

@@ -13,7 +13,9 @@ env:
   PERFORMANCE_RUNS: 6 # total runs including warmup
   PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
   PERF_STRESS_FACTOR: 3 # amplify in-test iteration counts
-  PERF_IGNORE_DURATION_REGRESSIONS: 1
+  # Unified net gating thresholds
+  PERF_NET_PERCENT_THRESHOLD: 8
+  PERF_NET_ABS_MS_THRESHOLD: 15
   PERF_BASELINE_FALLBACK_BRANCH: main
 
 jobs:
