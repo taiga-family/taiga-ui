@@ -278,6 +278,8 @@ export class PerformanceComparison {
 
         let markdown = '## 📊 Performance Metrics Comparison\n\n';
 
+        // Put final verdict before summary as requested
+        markdown += this.generateFinalVerdictSection(summary, changeThreshold);
         markdown += this.generateSummarySection(summary);
 
         if (summary.testsWithSignificantChanges > 0) {
@@ -288,7 +290,6 @@ export class PerformanceComparison {
             );
         }
 
-        markdown += this.generateFinalVerdictSection(summary, changeThreshold);
         markdown += this.generateFooter(summary.totalTests);
 
         return markdown;
@@ -856,13 +857,13 @@ export class PerformanceComparison {
             return '';
         }
 
-        let section = '### Detailed Results\n\n';
+        let section = '\n### Detailed Results\n\n';
 
         section += '<details open>\n';
         section += `<summary>Tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length})</summary>\n\n`;
-        section += '| Component | Test Name | Layout Ops | Recalc Ops |\n';
-        section += '|-----------|-----------|------------|-----------|\n';
-        section += '\n';
+        section += '| Test Name | Layout Ops | Recalc Ops |\n';
+        section += '|-----------|------------|-----------|\n';
+        // Removed extra blank line to keep markdown table intact
 
         for (const detail of filteredDetails) {
             section += this.generateTableRow(detail, changeThreshold);
@@ -894,15 +895,17 @@ export class PerformanceComparison {
         const recalcLine = `Recalc ops: ${recalcOps > 0 ? '+' : ''}${recalcOps.toFixed(1)}% ${recalcIndicator}`;
 
         const netDur = summary.overallNetDurationChange;
-        let netTendency = 'no change';
+        let netIcon: string;
 
         if (netDur > 0) {
-            netTendency = 'worse';
+            netIcon = '❌';
         } else if (netDur < 0) {
-            netTendency = 'better';
+            netIcon = '✅';
+        } else {
+            netIcon = '✅';
         }
 
-        const netLine = `Net rendering cost: ${netDur > 0 ? '+' : ''}${netDur.toFixed(1)}% ${netTendency}`;
+        const netLine = `Net rendering cost: ${netDur > 0 ? '+' : ''}${netDur.toFixed(1)}% ${netIcon}`;
         const verdictFail = summary.testsWithSignificantChanges > 0;
         const verdict = verdictFail ? '❌' : '✅';
         const reason = verdictFail
@@ -911,7 +914,7 @@ export class PerformanceComparison {
 
         return [
             '',
-            '### Final Result',
+            'Final Result',
             '',
             `- ${layoutLine}`,
             `- ${recalcLine}`,
@@ -928,7 +931,7 @@ export class PerformanceComparison {
         detail: MetricsComparison,
         changeThreshold: number,
     ): string {
-        const {component, testName, baseline, current, changes} = detail;
+        const {testName, baseline, current, changes} = detail;
 
         const formatChange = (
             baselineValue: number | undefined,
@@ -956,29 +959,7 @@ export class PerformanceComparison {
             return beforeAfter;
         };
 
-        const threshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '10');
-        const regression = this.isRegressionCandidate(detail, threshold);
-        let nameCell = testName;
-
-        if (regression) {
-            nameCell += ' ⚠️';
-        } else if (baseline) {
-            const ignoreLayoutTiny =
-                baseline.layoutDuration <
-                    Number(process.env.PERF_MIN_BASELINE_DURATION_MS || '10') &&
-                baseline.layoutCount <
-                    Number(process.env.PERF_MIN_BASELINE_LAYOUT_COUNT || '10');
-
-            if (ignoreLayoutTiny) {
-                nameCell += ' ℹ️';
-            }
-        }
-
-        return (
-            `| ${component} | ${nameCell} ` +
-            `| ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} ` +
-            `| ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} |\n`
-        );
+        return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} |\n`;
     }
 
     // Aggregate multiple run metrics into robust median with outlier filtering
