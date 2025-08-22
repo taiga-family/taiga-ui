@@ -123,7 +123,7 @@ test.describe('LineClamp', () => {
         const handle = await page.evaluateHandle(async () =>
             navigator.clipboard.readText(),
         );
-        const content = await handle.jsonValue();
+        const content = await page.evaluate(() => navigator.clipboard.readText());
 
         expect(content).toContain('Daenerys of the House Targaryen');
     });
