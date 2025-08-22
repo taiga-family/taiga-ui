@@ -327,6 +327,7 @@ export class PerformanceComparison {
 
         // Show final verdict early, then summary, then per-test details
         markdown += this.generateFinalVerdictSection(summary, changeThreshold);
+        markdown += this.generatePatternSummary(details);
         markdown += this.generateSummarySection(summary);
 
         if (summary.testsWithSignificantChanges > 0) {
@@ -390,7 +391,6 @@ export class PerformanceComparison {
                 `ℹ️ No performance data found in current metrics path: ${currentPath}. Creating empty report.`,
             );
 
-            // Create an empty report
             const emptyReport: ComparisonReport = {
                 summary: {
                     totalTests: 0,
@@ -411,10 +411,7 @@ export class PerformanceComparison {
                 details: [],
             };
 
-            // Generate markdown report for empty case
             const markdown = this.generateEmptyMarkdownReport();
-
-            // Ensure output directory exists
             const outputDir = dirname(outputPath);
 
             try {
@@ -425,7 +422,6 @@ export class PerformanceComparison {
                 );
             }
 
-            // Save report
             try {
                 await writeFile(outputPath, markdown);
             } catch (error) {
@@ -443,11 +439,7 @@ export class PerformanceComparison {
         console.log('📊 Comparing metrics...');
 
         const report = this.compareMetrics(baseline, current, changeThreshold);
-
-        // Generate markdown report
         const markdown = this.generateMarkdownReport(report, changeThreshold);
-
-        // Ensure output directory exists
         const outputDir = dirname(outputPath);
 
         try {
@@ -458,7 +450,6 @@ export class PerformanceComparison {
             );
         }
 
-        // Save report
         try {
             await writeFile(outputPath, markdown);
         } catch (error) {
@@ -469,13 +460,64 @@ export class PerformanceComparison {
 
         // eslint-disable-next-line no-console
         console.log(`✅ Performance comparison report saved to: ${outputPath}`);
-
         // eslint-disable-next-line no-console
         console.log(
             `📈 Summary: ${report.summary.totalTests} tests, ${report.summary.testsWithBaseline} with baseline, ${report.summary.testsWithSignificantChanges} with significant changes`,
         );
 
         return report;
+    }
+
+    private static generatePatternSummary(details: MetricsComparison[]): string {
+        if (!details.length) {
+            return '';
+        }
+
+        let improvement = 0;
+        let countDriven = 0;
+        let perOpIncrease = 0;
+        let netIncreaseNonGated = 0;
+
+        for (const d of details) {
+            if (!d.pattern) {
+                d.pattern = this.classifyPattern(d);
+            }
+
+            switch (d.pattern) {
+                case 'count-driven':
+                    countDriven++;
+                    break;
+                case 'improvement':
+                    improvement++;
+                    break;
+                case 'net-increase-non-gated':
+                    netIncreaseNonGated++;
+                    break;
+                case 'per-op-increase':
+                    perOpIncrease++;
+                    break;
+            }
+        }
+
+        const total = improvement + countDriven + perOpIncrease + netIncreaseNonGated;
+
+        if (!total) {
+            return '';
+        }
+
+        return [
+            '',
+            '<details>',
+            '<summary>Pattern distribution</summary>',
+            '',
+            `- Improvements: ${improvement}`,
+            `- Count-driven regressions: ${countDriven}`,
+            `- Per-op increases: ${perOpIncrease}`,
+            `- Net increases (non-gated): ${netIncreaseNonGated}`,
+            '',
+            '</details>',
+            '',
+        ].join('\n');
     }
 
     /**
