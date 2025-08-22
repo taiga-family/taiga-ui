@@ -322,7 +322,8 @@ export class PerformanceComparison {
             markdown += `${statusLine}\n\n`;
         }
 
-        // Output summary (with potential warning line) before final verdict
+        // Show final verdict early, then summary, then per-test details
+        markdown += this.generateFinalVerdictSection(summary, changeThreshold);
         markdown += this.generateSummarySection(summary);
 
         if (summary.testsWithSignificantChanges > 0) {
@@ -333,7 +334,6 @@ export class PerformanceComparison {
             );
         }
 
-        markdown += this.generateFinalVerdictSection(summary, changeThreshold);
         markdown += this.generateFooter(summary.totalTests);
 
         return markdown;
@@ -835,27 +835,20 @@ export class PerformanceComparison {
             return `- ${label}: ${sign}${v.toFixed(1)}% ${icon}`;
         };
 
-        lines.push(formatAvg('Max layout ops change', summary.maxLayoutCountChange));
-        lines.push(formatAvg('Max recalc ops change', summary.maxRecalcCountChange));
-        lines.push(
-            formatAvg('Max layout duration change', summary.maxLayoutDurationChange),
-        );
-        lines.push(
-            formatAvg('Max recalc duration change', summary.maxRecalcDurationChange),
-        );
-
+        // Order of importance (excluding Net which is in Final Result):
+        // 1. Overall layout duration
+        // 2. Overall recalc duration
+        // 3. Max layout duration change
+        // 4. Max recalc duration change
+        // 5. Max layout ops change
+        // 6. Max recalc ops change
         if (summary.testsWithBaseline > 0) {
-            const net = summary.overallNetDurationChange;
             const layoutTotal = summary.overallLayoutDurationChange;
             const recalcTotal = summary.overallRecalcDurationChange;
-            const noiseFloor = Number(process.env.PERF_NET_NOISE_FLOOR || '0.5');
-            const absNet = Math.abs(net);
             const layoutPrefix = layoutTotal > 0 ? '+' : '';
             const recalcPrefix = recalcTotal > 0 ? '+' : '';
             const layoutIcon = layoutTotal <= 0 ? '✅' : '❌';
             const recalcIcon = recalcTotal <= 0 ? '✅' : '❌';
-            const netIcon = net <= 0 ? '✅' : '❌';
-            const netNoise = absNet < noiseFloor ? ' ≈' : '';
 
             lines.push(
                 `- Overall layout duration: ${layoutPrefix}${layoutTotal.toFixed(1)}% ${layoutIcon}`,
@@ -863,10 +856,16 @@ export class PerformanceComparison {
             lines.push(
                 `- Overall recalc duration: ${recalcPrefix}${recalcTotal.toFixed(1)}% ${recalcIcon}`,
             );
-            lines.push(
-                `- Overall net rendering cost (layout+recalc): ${net > 0 ? '+' : ''}${net.toFixed(1)}% ${netIcon}${netNoise}`,
-            );
         }
+
+        lines.push(
+            formatAvg('Max layout duration change', summary.maxLayoutDurationChange),
+        );
+        lines.push(
+            formatAvg('Max recalc duration change', summary.maxRecalcDurationChange),
+        );
+        lines.push(formatAvg('Max layout ops change', summary.maxLayoutCountChange));
+        lines.push(formatAvg('Max recalc ops change', summary.maxRecalcCountChange));
 
         const body = lines.join('\n');
 
@@ -909,8 +908,10 @@ export class PerformanceComparison {
 
         section += '<details open>\n';
         section += `<summary>Tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length})</summary>\n\n`;
-        section += '| Test Name | Layout Ops | Recalc Ops |\n';
-        section += '|-----------|------------|-----------|\n';
+        section +=
+            '| Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
+        section +=
+            '|-----------|------------|----------------|-----------|-----------------|\n';
         // Removed extra blank line to keep markdown table intact
 
         for (const detail of filteredDetails) {
@@ -933,40 +934,23 @@ export class PerformanceComparison {
             return '';
         }
 
-        // Show only operation count changes with improvement/deterioration indicator
-        const layoutOps = summary.averageLayoutCountChange;
-        const layoutIndicator = layoutOps <= 0 ? '✅' : '❌';
-        const layoutLine = `Layout ops: ${layoutOps > 0 ? '+' : ''}${layoutOps.toFixed(1)}% ${layoutIndicator}`;
-
-        const recalcOps = summary.averageRecalcCountChange;
-        const recalcIndicator = recalcOps <= 0 ? '✅' : '❌';
-        const recalcLine = `Recalc ops: ${recalcOps > 0 ? '+' : ''}${recalcOps.toFixed(1)}% ${recalcIndicator}`;
-
         const netDur = summary.overallNetDurationChange;
-        let netIcon: string;
-
-        if (netDur > 0) {
-            netIcon = '❌';
-        } else if (netDur < 0) {
-            netIcon = '✅';
-        } else {
-            netIcon = '✅';
-        }
-
-        const netLine = `Net rendering cost: ${netDur > 0 ? '+' : ''}${netDur.toFixed(1)}% ${netIcon}`;
-        const verdictFail = summary.testsWithSignificantChanges > 0;
+        const netIcon = netDur > 0 ? '❌' : '✅';
+        const verdictFail = summary.testsWithSignificantChanges > 0 && netDur > 0;
         const verdict = verdictFail ? '❌' : '✅';
         const reason = verdictFail
-            ? `${summary.testsWithSignificantChanges} test(s) exceeded the ${changeThreshold}% threshold`
-            : `No tests exceeded the ${changeThreshold}% threshold`;
+            ? `${summary.testsWithSignificantChanges} test(s) exceeded the ${changeThreshold}% gating criteria`
+            : 'No significant net regression';
+
+        const explanation =
+            'Net rendering cost = combined layout + style recalculation duration change (positive = slower, negative = faster).';
 
         return [
             '',
             'Final Result',
             '',
-            `- ${layoutLine}`,
-            `- ${recalcLine}`,
-            `- ${netLine}`,
+            `- Net rendering cost: ${netDur > 0 ? '+' : ''}${netDur.toFixed(1)}% ${netIcon}`,
+            `- ${explanation}`,
             `- Verdict: ${verdict} (${reason})`,
             '',
         ].join('\n');
@@ -981,33 +965,39 @@ export class PerformanceComparison {
     ): string {
         const {testName, baseline, current, changes} = detail;
 
+        const trim = (v: string): string => (v.endsWith('.0') ? v.slice(0, -2) : v);
+        const fmtVal = (v: number, decimals = 1): string => {
+            if (Number.isInteger(v)) {
+                return String(v);
+            }
+
+            return trim(v.toFixed(decimals));
+        };
         const formatChange = (
             baselineValue: number | undefined,
             currentValue: number,
             change: number,
             unit = '',
         ): string => {
-            if (!baselineValue) {
-                return `${currentValue.toFixed(1)}${unit} (new)`;
+            if (baselineValue === undefined) {
+                return `${fmtVal(currentValue)}${unit} (new)`;
             }
 
             if (Math.abs(change) < changeThreshold) {
-                return `${currentValue.toFixed(1)}${unit}`;
+                return `${fmtVal(currentValue)}${unit}`;
             }
 
-            const isSignificant = Math.abs(change) >= 10; // Bold for changes >= 10%
+            const isSignificant = Math.abs(change) >= 10;
             const sign = change > 0 ? '+' : '';
+            const changeStr = trim(change.toFixed(1));
             const indicator = change > 0 ? '❌' : '✅';
-            const percentWithIndicator = `${sign}${change.toFixed(1)}% ${indicator}`;
-            const beforeAfterCore = `${baselineValue.toFixed(1)}${unit} ← ${percentWithIndicator} → ${currentValue.toFixed(1)}${unit}`;
-            const beforeAfter = isSignificant
-                ? `**${beforeAfterCore}**`
-                : beforeAfterCore;
+            const percentWithIndicator = `${sign}${changeStr}% ${indicator}`;
+            const beforeAfterCore = `${fmtVal(baselineValue)}${unit} ← ${percentWithIndicator} → ${fmtVal(currentValue)}${unit}`;
 
-            return beforeAfter;
+            return isSignificant ? `**${beforeAfterCore}**` : beforeAfterCore;
         };
 
-        return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} |\n`;
+        return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} |\n`;
     }
 
     // Aggregate multiple run metrics into robust median with outlier filtering
