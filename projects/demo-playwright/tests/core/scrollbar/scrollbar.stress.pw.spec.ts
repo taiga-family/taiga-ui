@@ -435,7 +435,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
             );
 
             // Stress test: rapid theme changes during scrolling with forced recalculations
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '2');
             const iterationsTheme = Math.round(60 * factor);
 
             for (let i = 0; i < iterationsTheme; i++) {
@@ -627,7 +627,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
             const concurrentBatches = [];
 
             // Create multiple batches of concurrent operations
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '5');
             const batches = Math.round(8 * factor);
             const rand = createPRNG(987);
 

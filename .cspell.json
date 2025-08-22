@@ -44,7 +44,8 @@
         "flexbox",
         "Flexbox",
         "xscale",
-        "yscale"
+        "yscale",
+        "backgrounding"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
