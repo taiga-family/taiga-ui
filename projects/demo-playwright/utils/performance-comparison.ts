@@ -67,6 +67,9 @@ interface ComparisonReport {
         testsWithSignificantChanges: number;
         averageLayoutChange: number;
         averageRecalcChange: number;
+        averageLayoutCountChange: number;
+        averageRecalcCountChange: number;
+        overallNetDurationChange: number; // signed percent change (layout+recalc durations combined)
     };
     details: MetricsComparison[];
 }
@@ -179,6 +182,10 @@ export class PerformanceComparison {
         const details: MetricsComparison[] = [];
         let totalLayoutChange = 0;
         let totalRecalcChange = 0;
+        let totalLayoutCountChange = 0;
+        let totalRecalcCountChange = 0;
+        let baselineNetDurationTotal = 0; // sum of (layout+recalc) baseline durations
+        let currentNetDurationTotal = 0; // sum of (layout+recalc) current durations
 
         for (const [testName, currentData] of current) {
             const baselineData = baseline.get(testName);
@@ -192,6 +199,18 @@ export class PerformanceComparison {
 
             totalLayoutChange += Math.abs(comparison.changes.layoutDuration);
             totalRecalcChange += Math.abs(comparison.changes.recalcStyleDuration);
+            totalLayoutCountChange += Math.abs(comparison.changes.layoutCount);
+            totalRecalcCountChange += Math.abs(comparison.changes.recalcStyleCount);
+
+            if (baselineData) {
+                baselineNetDurationTotal +=
+                    (baselineData.metrics.layoutDuration || 0) +
+                    (baselineData.metrics.recalcStyleDuration || 0);
+            }
+
+            currentNetDurationTotal +=
+                (currentData.metrics.layoutDuration || 0) +
+                (currentData.metrics.recalcStyleDuration || 0);
         }
 
         const testsWithBaseline = details.filter((d) => d.baseline).length;
@@ -209,6 +228,16 @@ export class PerformanceComparison {
                     details.length > 0 ? totalLayoutChange / details.length : 0,
                 averageRecalcChange:
                     details.length > 0 ? totalRecalcChange / details.length : 0,
+                averageLayoutCountChange:
+                    details.length > 0 ? totalLayoutCountChange / details.length : 0,
+                averageRecalcCountChange:
+                    details.length > 0 ? totalRecalcCountChange / details.length : 0,
+                overallNetDurationChange:
+                    baselineNetDurationTotal > 0
+                        ? ((currentNetDurationTotal - baselineNetDurationTotal) /
+                              baselineNetDurationTotal) *
+                          100
+                        : 0,
             },
             details: details.sort((a, b) => a.testName.localeCompare(b.testName)),
         };
@@ -293,6 +322,9 @@ export class PerformanceComparison {
                     testsWithSignificantChanges: 0,
                     averageLayoutChange: 0,
                     averageRecalcChange: 0,
+                    averageLayoutCountChange: 0,
+                    averageRecalcCountChange: 0,
+                    overallNetDurationChange: 0,
                 },
                 details: [],
             };
@@ -712,7 +744,44 @@ export class PerformanceComparison {
 
         section += `- **Tests with significant changes (>${sigThreshold}%):** ${summary.testsWithSignificantChanges}\n`;
         section += `- **Average layout duration change:** ${summary.averageLayoutChange.toFixed(1)}%\n`;
-        section += `- **Average recalc duration change:** ${summary.averageRecalcChange.toFixed(1)}%\n\n`;
+        section += `- **Average recalc duration change:** ${summary.averageRecalcChange.toFixed(1)}%\n`;
+        section += `- **Average layout count change:** ${summary.averageLayoutCountChange.toFixed(1)}%\n`;
+        section += `- **Average recalc count change:** ${summary.averageRecalcCountChange.toFixed(1)}%\n`;
+
+        if (summary.testsWithBaseline > 0) {
+            const net = summary.overallNetDurationChange;
+            const threshold = Number(sigThreshold);
+            const noiseFloor = Number(process.env.PERF_NET_NOISE_FLOOR || '0.5');
+            const absNet = Math.abs(net);
+            let label: string;
+
+            if (absNet < noiseFloor) {
+                label = `${net > 0 ? '+' : ''}${net.toFixed(1)}% ${net > 0 ? 'worse' : 'better'} (noise < ${noiseFloor}%) ≈`;
+            } else if (absNet < threshold) {
+                label = `${net > 0 ? '+' : ''}${net.toFixed(1)}% ${net > 0 ? 'worse' : 'better'} (informational, below ${threshold}% threshold) ⚖️`;
+            } else if (net > 0) {
+                label = `${net.toFixed(1)}% worse ❌`;
+            } else {
+                label = `${net.toFixed(1)}% better ✅`;
+            }
+
+            section += `- **Overall net rendering cost (layout+recalc):** ${label}\n`;
+
+            const verdict = summary.testsWithSignificantChanges > 0 ? '❌' : '✅';
+            let netTendency = 'no change';
+
+            if (net > 0) {
+                netTendency = 'worse';
+            } else if (net < 0) {
+                netTendency = 'better';
+            }
+
+            const oneLine = `Average changes: layout ${summary.averageLayoutChange.toFixed(1)}% duration / ${summary.averageLayoutCountChange.toFixed(1)}% ops; recalc ${summary.averageRecalcChange.toFixed(1)}% duration / ${summary.averageRecalcCountChange.toFixed(1)}% ops; net ${net > 0 ? '+' : ''}${net.toFixed(1)}% ${netTendency}. Final result: ${verdict}`;
+
+            section += `\n${oneLine}\n\n`;
+        } else {
+            section += '\n';
+        }
 
         if (summary.testsWithSignificantChanges === 0 && summary.testsWithBaseline > 0) {
             section += '✅ **No significant performance regressions detected!**\n\n';
@@ -741,7 +810,8 @@ export class PerformanceComparison {
 
         let section = '### Detailed Results\n\n';
 
-        section += `*Showing only tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length} tests)*\n\n`;
+        section += '<details open>\n';
+        section += `<summary>Tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length})</summary>\n\n`;
         section +=
             '| Component | Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
         section +=
@@ -750,6 +820,8 @@ export class PerformanceComparison {
         for (const detail of filteredDetails) {
             section += this.generateTableRow(detail, changeThreshold);
         }
+
+        section += '</details>\n\n';
 
         return section;
     }
@@ -779,9 +851,14 @@ export class PerformanceComparison {
 
             const isSignificant = Math.abs(change) >= 10; // Bold for changes >= 10%
             const sign = change > 0 ? '+' : '';
-            const beforeAfter = `${baselineValue.toFixed(1)}${unit} ← **${sign}${change.toFixed(1)}%** → ${currentValue.toFixed(1)}${unit}`;
+            const indicator = change > 0 ? '❌' : '✅';
+            const percentWithIndicator = `${sign}${change.toFixed(1)}% ${indicator}`;
+            const beforeAfterCore = `${baselineValue.toFixed(1)}${unit} ← ${percentWithIndicator} → ${currentValue.toFixed(1)}${unit}`;
+            const beforeAfter = isSignificant
+                ? `**${beforeAfterCore}**`
+                : beforeAfterCore;
 
-            return isSignificant ? `**${beforeAfter}**` : beforeAfter;
+            return beforeAfter;
         };
 
         const threshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '10');
