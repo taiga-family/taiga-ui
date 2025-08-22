@@ -38,6 +38,11 @@
         display: none;
     }
 
+    &:not(._closable):not(.tui-app-bar)::before {
+        content: '';
+        block-size: 2rem;
+    }
+
     > tui-app-bar,
     > ng-component > tui-app-bar {
         position: sticky;
@@ -77,7 +82,8 @@
         margin: 0 calc(var(--tui-width) / 2 - 50vw) calc(-2rem - env(safe-area-inset-top));
 
         &::before {
-            display: none;
+            left: 0;
+            right: 0;
         }
     }
 
@@ -85,9 +91,12 @@
         > footer,
         > ng-component > footer {
             flex-direction: row;
-            background: var(--tui-background-base);
             background: color-mix(in hsl, var(--tui-background-base) 80%, transparent);
             backdrop-filter: blur(2rem);
+
+            &::before {
+                display: none;
+            }
 
             > button,
             > a {
