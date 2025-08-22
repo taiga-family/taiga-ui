@@ -120,7 +120,7 @@ test.describe('LineClamp', () => {
         await expect(hintElement).toBeInViewport();
         await page.keyboard.press(`${CMD}+KeyC`);
 
-        const content = await page.evaluate(() => navigator.clipboard.readText());
+        const content = await page.evaluate(async () => navigator.clipboard.readText());
 
         expect(content).toContain('Daenerys of the House Targaryen');
     });
