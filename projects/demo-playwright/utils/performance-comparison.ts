@@ -279,11 +279,13 @@ export class PerformanceComparison {
         let markdown = '## 📊 Performance Metrics Comparison\n\n';
 
         markdown += this.generateSummarySection(summary);
-        markdown += this.generateDetailsSection(
-            filteredDetails,
-            details,
-            changeThreshold,
-        );
+        if (summary.testsWithSignificantChanges > 0) {
+            markdown += this.generateDetailsSection(
+                filteredDetails,
+                details,
+                changeThreshold,
+            );
+        }
         markdown += this.generateFinalVerdictSection(summary, changeThreshold);
         markdown += this.generateFooter(summary.totalTests);
 
@@ -765,31 +767,45 @@ export class PerformanceComparison {
         let section = '### Summary\n';
 
         const sigThreshold = process.env.PERFORMANCE_CHANGE_THRESHOLD || '10';
+        const formatAvg = (label: string, value: number): string => {
+            const v = Number(value.toFixed(1));
+            const direction = v > 0 ? 'increased' : v < 0 ? 'decreased' : 'no change';
+            const sign = v > 0 ? '+' : v < 0 ? '' : '';
+            const good = v < 0; // decrease is good for time & operation counts
+            const indicator = direction === 'no change' ? '✅' : good ? '✅' : '❌';
+            return `- **${label}:** ${sign}${v.toFixed(1)}% ${indicator} (${direction})`;
+        };
 
-        section += `- **Average layout duration change:** ${summary.averageLayoutChange.toFixed(1)}%\n`;
-        section += `- **Average recalc duration change:** ${summary.averageRecalcChange.toFixed(1)}%\n`;
-        section += `- **Average layout count change:** ${summary.averageLayoutCountChange.toFixed(1)}%\n`;
-        section += `- **Average recalc count change:** ${summary.averageRecalcCountChange.toFixed(1)}%\n`;
+        section +=
+            formatAvg('Average layout duration change', summary.averageLayoutChange) +
+            '\n';
+        section +=
+            formatAvg('Average recalc duration change', summary.averageRecalcChange) +
+            '\n';
+        section +=
+            formatAvg('Average layout count change', summary.averageLayoutCountChange) +
+            '\n';
+        section +=
+            formatAvg('Average recalc count change', summary.averageRecalcCountChange) +
+            '\n';
 
         if (summary.testsWithBaseline > 0) {
             const net = summary.overallNetDurationChange;
             const layoutTotal = summary.overallLayoutDurationChange;
             const recalcTotal = summary.overallRecalcDurationChange;
-            const threshold = Number(sigThreshold);
             const noiseFloor = Number(process.env.PERF_NET_NOISE_FLOOR || '0.5');
             const absNet = Math.abs(net);
             let label: string;
-
+            const sigThreshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '10');
             if (absNet < noiseFloor) {
                 label = `${net > 0 ? '+' : ''}${net.toFixed(1)}% ${net > 0 ? 'worse' : 'better'} (noise < ${noiseFloor}%) ≈`;
-            } else if (absNet < threshold) {
-                label = `${net > 0 ? '+' : ''}${net.toFixed(1)}% ${net > 0 ? 'worse' : 'better'} (informational, below ${threshold}% threshold) ⚖️`;
+            } else if (absNet < sigThreshold) {
+                label = `${net > 0 ? '+' : ''}${net.toFixed(1)}% ${net > 0 ? 'worse' : 'better'} (informational, below ${sigThreshold}% threshold) ⚖️`;
             } else if (net > 0) {
                 label = `${net.toFixed(1)}% worse ❌`;
             } else {
                 label = `${net.toFixed(1)}% better ✅`;
             }
-
             const layoutPrefix = layoutTotal > 0 ? '+' : '';
             let layoutTendency = 'no change';
 
@@ -839,13 +855,7 @@ export class PerformanceComparison {
         allDetails: MetricsComparison[],
         changeThreshold: number,
     ): string {
-        if (filteredDetails.length === 0) {
-            if (allDetails.length > 0) {
-                return `### Detailed Results\n\n*No tests found with changes ≥ ${changeThreshold}% (${allDetails.length} tests checked)*\n\n# Tests completed successfully :white_check_mark:\n\nGood job :fire:\n\n`;
-            }
-
-            return '';
-        }
+        if (filteredDetails.length === 0) return '';
 
         let section = '### Detailed Results\n\n';
 
@@ -875,27 +885,14 @@ export class PerformanceComparison {
             return '';
         }
 
-        const layoutDur = summary.overallLayoutDurationChange;
-        let layoutTendency = 'no change';
+        // Show only operation count changes with improvement/deterioration indicator
+        const layoutOps = summary.averageLayoutCountChange;
+        const layoutIndicator = layoutOps <= 0 ? '✅' : '❌';
+        const layoutLine = `Layout ops: ${layoutOps > 0 ? '+' : ''}${layoutOps.toFixed(1)}% ${layoutIndicator}`;
 
-        if (layoutDur > 0) {
-            layoutTendency = 'worse';
-        } else if (layoutDur < 0) {
-            layoutTendency = 'better';
-        }
-
-        const layoutLine = `Layout: ${layoutDur > 0 ? '+' : ''}${layoutDur.toFixed(1)}% duration / ${summary.averageLayoutCountChange.toFixed(1)}% ops (${layoutTendency})`;
-
-        const recalcDur = summary.overallRecalcDurationChange;
-        let recalcTendency = 'no change';
-
-        if (recalcDur > 0) {
-            recalcTendency = 'worse';
-        } else if (recalcDur < 0) {
-            recalcTendency = 'better';
-        }
-
-        const recalcLine = `Recalc: ${recalcDur > 0 ? '+' : ''}${recalcDur.toFixed(1)}% duration / ${summary.averageRecalcCountChange.toFixed(1)}% ops (${recalcTendency})`;
+        const recalcOps = summary.averageRecalcCountChange;
+        const recalcIndicator = recalcOps <= 0 ? '✅' : '❌';
+        const recalcLine = `Recalc ops: ${recalcOps > 0 ? '+' : ''}${recalcOps.toFixed(1)}% ${recalcIndicator}`;
 
         const netDur = summary.overallNetDurationChange;
         let netTendency = 'no change';
