@@ -547,12 +547,14 @@ export class PerformanceComparison {
     }
 
     /**
-     * Checks if a comparison has significant duration changes (>10%)
+     * Checks if a comparison has significant duration changes using threshold (env or default)
      */
     private static hasSignificantDurationChanges(comparison: MetricsComparison): boolean {
+        const threshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '10');
+
         return (
-            Math.abs(comparison.changes.layoutDuration) > 10 ||
-            Math.abs(comparison.changes.recalcStyleDuration) > 10
+            Math.abs(comparison.changes.layoutDuration) > threshold ||
+            Math.abs(comparison.changes.recalcStyleDuration) > threshold
         );
     }
 
@@ -564,23 +566,43 @@ export class PerformanceComparison {
         changeThreshold: number,
     ): MetricsComparison[] {
         return details.filter((detail) => {
-            // Always include tests without baseline data
             if (!detail.baseline) {
                 return true;
-            }
+            } // show new tests
 
-            // Include when raw counts OR normalized per-op durations both move
-            const countChange =
-                Math.abs(detail.changes.layoutCount) >= changeThreshold ||
-                Math.abs(detail.changes.recalcStyleCount) >= changeThreshold;
-            const perOpChange =
-                (detail.changes.layoutDurationPerOp &&
-                    Math.abs(detail.changes.layoutDurationPerOp) >= changeThreshold) ||
-                (detail.changes.recalcStyleDurationPerOp &&
-                    Math.abs(detail.changes.recalcStyleDurationPerOp) >= changeThreshold);
-
-            return countChange && perOpChange;
+            return this.isRegressionCandidate(detail, changeThreshold);
         });
+    }
+
+    /**
+     * Determines if a test comparison is a regression candidate based on practical gating:
+     * 1) Operation count increased beyond threshold AND per-op duration did not decrease enough to offset
+     * 2) Per-op duration increased beyond threshold while counts stayed roughly stable (< threshold)
+     */
+    private static isRegressionCandidate(
+        detail: MetricsComparison,
+        threshold: number,
+    ): boolean {
+        if (!detail.baseline) {
+            return true;
+        }
+
+        const lc = detail.changes.layoutCount; // %
+        const rc = detail.changes.recalcStyleCount; // %
+        const lp = detail.changes.layoutDurationPerOp ?? 0; // %
+        const rp = detail.changes.recalcStyleDurationPerOp ?? 0; // %
+        const layoutCountIncrease = lc > threshold;
+        const recalcCountIncrease = rc > threshold;
+        const layoutPerOpNotImproved = lp >= -threshold; // not decreased enough
+        const recalcPerOpNotImproved = rp >= -threshold;
+        const countsStable = Math.abs(lc) < threshold && Math.abs(rc) < threshold;
+        const perOpIncrease = lp > threshold || rp > threshold;
+        const countDrivenRegression =
+            (layoutCountIncrease && layoutPerOpNotImproved) ||
+            (recalcCountIncrease && recalcPerOpNotImproved);
+        const perOpOnlyRegression = countsStable && perOpIncrease;
+
+        return countDrivenRegression || perOpOnlyRegression;
     }
 
     /**
@@ -591,7 +613,9 @@ export class PerformanceComparison {
 
         section += `- **Total tests with performance data:** ${summary.totalTests}\n`;
         section += `- **Tests with baseline comparison:** ${summary.testsWithBaseline}\n`;
-        section += `- **Tests with significant changes (>10%):** ${summary.testsWithSignificantChanges}\n`;
+        const sigThreshold = process.env.PERFORMANCE_CHANGE_THRESHOLD || '10';
+
+        section += `- **Tests with significant changes (>${sigThreshold}%):** ${summary.testsWithSignificantChanges}\n`;
         section += `- **Average layout duration change:** ${summary.averageLayoutChange.toFixed(1)}%\n`;
         section += `- **Average recalc duration change:** ${summary.averageRecalcChange.toFixed(1)}%\n\n`;
 
@@ -614,7 +638,7 @@ export class PerformanceComparison {
     ): string {
         if (filteredDetails.length === 0) {
             if (allDetails.length > 0) {
-                return `### Detailed Results\n\n*No tests found with changes ≥ ${changeThreshold}% (${allDetails.length} tests checked)*\n\n`;
+                return `### Detailed Results\n\n*No tests found with changes ≥ ${changeThreshold}% (${allDetails.length} tests checked)*\n\n# Tests completed successfully :white_check_mark:\n\nGood job :fire:\n\n`;
             }
 
             return '';
@@ -665,8 +689,12 @@ export class PerformanceComparison {
             return isSignificant ? `**${beforeAfter}**` : beforeAfter;
         };
 
+        const threshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '10');
+        const regression = this.isRegressionCandidate(detail, threshold);
+        const nameCell = regression ? `${testName} ⚠️` : testName;
+
         return (
-            `| ${component} | ${testName} ` +
+            `| ${component} | ${nameCell} ` +
             `| ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} ` +
             `| ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, 'ms')} ` +
             `| ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} ` +
@@ -758,10 +786,10 @@ export class PerformanceComparison {
      */
     private static generateFooter(totalTests: number): string {
         if (totalTests === 0) {
-            return '_No performance metrics collected in this run._\n\n---\n*Performance metrics collected using PerformanceCollector with CDP tracing*';
+            return '_No performance metrics collected in this run._';
         }
 
-        return '\n---\n*Performance metrics collected using PerformanceCollector with CDP tracing*';
+        return '';
     }
 }
 
