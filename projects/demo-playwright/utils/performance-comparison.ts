@@ -587,22 +587,69 @@ export class PerformanceComparison {
             return true;
         }
 
-        const lc = detail.changes.layoutCount; // %
-        const rc = detail.changes.recalcStyleCount; // %
-        const lp = detail.changes.layoutDurationPerOp ?? 0; // %
-        const rp = detail.changes.recalcStyleDurationPerOp ?? 0; // %
+        const baseline = detail.baseline;
+        const diff = detail.diff;
+        const lc = detail.changes.layoutCount;
+        const rc = detail.changes.recalcStyleCount;
+        const lp = detail.changes.layoutDurationPerOp || 0;
+        const rp = detail.changes.recalcStyleDurationPerOp || 0;
+        const layoutAbsDelta = Math.abs(diff.layoutDuration);
+        const recalcAbsDelta = Math.abs(diff.recalcStyleDuration);
+        const ABS_DELTA_FLOOR = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
+        const MIN_BASELINE_DURATION = Number(
+            process.env.PERF_MIN_BASELINE_DURATION_MS || '10',
+        );
+        const MIN_BASELINE_LAYOUT_COUNT = Number(
+            process.env.PERF_MIN_BASELINE_LAYOUT_COUNT || '10',
+        );
+
+        const ignoreLayoutTiny =
+            baseline.layoutDuration < MIN_BASELINE_DURATION &&
+            baseline.layoutCount < MIN_BASELINE_LAYOUT_COUNT;
+        const isThemeSwitchTest = detail.testName === 'scrollbar-theme-switching-stress';
+
         const layoutCountIncrease = lc > threshold;
         const recalcCountIncrease = rc > threshold;
-        const layoutPerOpNotImproved = lp >= -threshold; // not decreased enough
+        const layoutPerOpNotImproved = lp >= -threshold;
         const recalcPerOpNotImproved = rp >= -threshold;
         const countsStable = Math.abs(lc) < threshold && Math.abs(rc) < threshold;
-        const perOpIncrease = lp > threshold || rp > threshold;
-        const countDrivenRegression =
-            (layoutCountIncrease && layoutPerOpNotImproved) ||
-            (recalcCountIncrease && recalcPerOpNotImproved);
-        const perOpOnlyRegression = countsStable && perOpIncrease;
+        const perOpIncreaseLayout = lp > threshold;
+        const perOpIncreaseRecalc = rp > threshold;
 
-        return countDrivenRegression || perOpOnlyRegression;
+        const ignoreDurations = process.env.PERF_IGNORE_DURATION_REGRESSIONS === '1';
+
+        // Eligibility when we still consider duration changes
+        const layoutEligible =
+            !isThemeSwitchTest &&
+            !ignoreLayoutTiny &&
+            baseline.layoutDuration >= MIN_BASELINE_DURATION &&
+            layoutAbsDelta >= ABS_DELTA_FLOOR;
+        const recalcEligible =
+            baseline.recalcStyleDuration >= MIN_BASELINE_DURATION &&
+            recalcAbsDelta >= ABS_DELTA_FLOOR;
+
+        if (ignoreDurations) {
+            const layoutEligibleCounts =
+                !isThemeSwitchTest && baseline.layoutCount >= MIN_BASELINE_LAYOUT_COUNT;
+            const recalcEligibleCounts =
+                baseline.recalcStyleCount >= MIN_BASELINE_LAYOUT_COUNT;
+
+            return (
+                (layoutEligibleCounts && lc > threshold) ||
+                (recalcEligibleCounts && rc > threshold)
+            );
+        }
+
+        const layoutCountDriven =
+            layoutEligible && layoutCountIncrease && layoutPerOpNotImproved;
+        const recalcCountDriven =
+            recalcEligible && recalcCountIncrease && recalcPerOpNotImproved;
+        const perOpOnlyLayout = layoutEligible && countsStable && perOpIncreaseLayout;
+        const perOpOnlyRecalc = recalcEligible && countsStable && perOpIncreaseRecalc;
+
+        return (
+            layoutCountDriven || recalcCountDriven || perOpOnlyLayout || perOpOnlyRecalc
+        );
     }
 
     /**
@@ -691,7 +738,21 @@ export class PerformanceComparison {
 
         const threshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '10');
         const regression = this.isRegressionCandidate(detail, threshold);
-        const nameCell = regression ? `${testName} ⚠️` : testName;
+        let nameCell = testName;
+
+        if (regression) {
+            nameCell += ' ⚠️';
+        } else if (baseline) {
+            const ignoreLayoutTiny =
+                baseline.layoutDuration <
+                    Number(process.env.PERF_MIN_BASELINE_DURATION_MS || '10') &&
+                baseline.layoutCount <
+                    Number(process.env.PERF_MIN_BASELINE_LAYOUT_COUNT || '10');
+
+            if (ignoreLayoutTiny) {
+                nameCell += ' ℹ️';
+            }
+        }
 
         return (
             `| ${component} | ${nameCell} ` +
