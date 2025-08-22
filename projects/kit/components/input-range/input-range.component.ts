@@ -36,8 +36,6 @@ import {
 } from '@taiga-ui/kit/components/slider';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
-import {TUI_INPUT_RANGE_OPTIONS} from './input-range.options';
-
 @Component({
     standalone: true,
     selector: 'tui-input-range',
@@ -56,7 +54,6 @@ import {TUI_INPUT_RANGE_OPTIONS} from './input-range.options';
         tuiAsControl(TuiInputRangeComponent),
         tuiSliderOptionsProvider({trackColor: 'transparent'}),
         tuiFallbackValueProvider([0, 0]),
-        tuiValueTransformerFrom(TUI_INPUT_RANGE_OPTIONS),
     ],
     host: {
         new: '', // TODO(v5): remove after deletion of legacy control
@@ -79,7 +76,6 @@ export class TuiInputRangeComponent
     private readonly range?: TuiRange;
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly options = inject(TUI_INPUT_RANGE_OPTIONS);
     private readonly quantum = signal(0);
     private readonly quantumTransformer = computed((quantum = this.quantum()) =>
         quantum
@@ -93,31 +89,31 @@ export class TuiInputRangeComponent
     protected lastActiveSide: 'end' | 'start' = 'start';
 
     @Input()
-    public min = this.options.min;
+    public min = 0;
 
     @Input()
-    public max = this.options.max;
+    public max = 100;
 
     @Input()
-    public step = this.options.step;
+    public step = 1;
 
     @Input()
-    public segments = this.options.segments;
+    public segments = 1;
 
     @Input()
-    public keySteps: TuiKeySteps | null = this.options.keySteps;
+    public keySteps: TuiKeySteps | null = null;
 
     @Input()
     public content: readonly [
         PolymorpheusContent<TuiContext<number>>,
         PolymorpheusContent<TuiContext<number>>,
-    ] = this.options.content;
+    ] = ['', ''];
 
     @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
-    public prefix: readonly [string, string] = this.options.prefix;
+    public prefix: readonly [string, string] = ['', ''];
 
     @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
-    public postfix: readonly [string, string] = this.options.postfix;
+    public postfix: readonly [string, string] = ['', ''];
 
     // TODO(v5): use signal inputs
     @Input('quantum')
