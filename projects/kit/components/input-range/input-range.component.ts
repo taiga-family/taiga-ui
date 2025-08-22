@@ -21,7 +21,7 @@ import {
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumber,
@@ -132,21 +132,11 @@ export class TuiInputRangeComponent
     }
 
     protected get hideStartContent(): boolean {
-        return (
-            !this.content[0] ||
-            tuiIsNativeFocused(this.textfieldStart) ||
-            (tuiIsNativeFocusedIn(this.rangeRef?.nativeElement) &&
-                this.lastActiveSide === 'start')
-        );
+        return !this.content[0] || tuiIsNativeFocused(this.textfieldStart);
     }
 
     protected get hideEndContent(): boolean {
-        return (
-            !this.content[1] ||
-            tuiIsNativeFocused(this.textfieldEnd) ||
-            (tuiIsNativeFocusedIn(this.rangeRef?.nativeElement) &&
-                this.lastActiveSide === 'end')
-        );
+        return !this.content[1] || tuiIsNativeFocused(this.textfieldEnd);
     }
 
     protected takeStep(
