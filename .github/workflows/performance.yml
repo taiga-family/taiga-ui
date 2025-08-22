@@ -38,8 +38,8 @@ jobs:
         id: dist-check
         run: |
           if [ -d dist/demo ] && [ -n "$(ls -A dist/demo 2>/dev/null)" ]; then
-            # optionally show a few files
-            find dist/demo -maxdepth 2 -type f | head -n 5 || true
+            # optionally show a few files (suppress SIGPIPE noise)
+            find dist/demo -maxdepth 2 -type f 2>/dev/null | head -n 5 || true
             echo "skip=false" >> $GITHUB_OUTPUT;
             echo "dist present";
           else
