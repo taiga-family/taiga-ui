@@ -5,6 +5,7 @@ on:
 env:
   RETRY_COUNT: 2
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  PERF_BASELINE_FALLBACK_BRANCH: main
 
 jobs:
   build-demo:
@@ -157,23 +158,50 @@ jobs:
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
 
+      - name: Resolve baseline snapshot
+        id: resolve-baseline
+        run: |
+          BASE='${{ github.base_ref }}'
+          PRIMARY="snapshots/demo/next/$BASE"
+          FALLBACK_BRANCH='${{ env.PERF_BASELINE_FALLBACK_BRANCH }}'
+          FALLBACK="snapshots/demo/next/$FALLBACK_BRANCH"
+          echo "Attempting baseline snapshot: $PRIMARY"
+          if git ls-remote --exit-code origin "$PRIMARY" >/dev/null 2>&1; then
+            echo "snapshot=$PRIMARY" >> $GITHUB_OUTPUT
+            echo "resolved=$PRIMARY" >> $GITHUB_OUTPUT
+          elif git ls-remote --exit-code origin "$FALLBACK" >/dev/null 2>&1; then
+            echo "snapshot=$FALLBACK" >> $GITHUB_OUTPUT
+            echo "resolved=$FALLBACK (fallback)" >> $GITHUB_OUTPUT
+          else
+            echo "snapshot=__none__" >> $GITHUB_OUTPUT
+            echo "resolved=__none__" >> $GITHUB_OUTPUT
+            echo "No baseline snapshot found (primary or fallback). Skipping baseline Playwright run.";
+          fi
+
       - uses: taiga-family/ci/actions/run/clone@v1.152.0
+        if: steps.resolve-baseline.outputs.snapshot != '__none__'
         with:
-          branch: snapshots/demo/next/${{ github.base_ref }}
+          branch: ${{ steps.resolve-baseline.outputs.snapshot }}
           destination: ${{ env.DIST_NEXT }}
 
       - uses: taiga-family/ci/actions/run/serve@v1.152.0
+        if: steps.resolve-baseline.outputs.snapshot != '__none__'
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
           replaceBaseUrl: false
 
       - name: Run screenshot tests on ${{ env.DIST_NEXT }}
+        if: steps.resolve-baseline.outputs.snapshot != '__none__'
         continue-on-error: true
         run: |
           npx nx e2e demo-playwright -- \
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+
+      - name: Skip baseline (no snapshot found)
+        if: steps.resolve-baseline.outputs.snapshot == '__none__'
+        run: echo 'Baseline snapshot branch not found (primary or fallback).'
 
       - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.152.0
 
