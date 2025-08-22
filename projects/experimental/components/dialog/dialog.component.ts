@@ -1,5 +1,10 @@
 import {NgIf} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    inject,
+    ViewEncapsulation,
+} from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
@@ -36,6 +41,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     imports: [NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './dialog.template.html',
     styleUrls: ['./dialog.style.less'],
+    encapsulation: ViewEncapsulation.None,
     // So we don't force OnPush on dialog content
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
