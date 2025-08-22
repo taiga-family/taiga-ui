@@ -12,6 +12,12 @@ interface PerformanceMetrics {
     recalcStyleDuration: number;
     layoutDurationPerOp?: number;
     recalcStyleDurationPerOp?: number;
+    layoutCountCoV?: number;
+    layoutDurationCoV?: number;
+    recalcStyleCountCoV?: number;
+    recalcStyleDurationCoV?: number;
+    layoutDurationPerOpCoV?: number;
+    recalcStyleDurationPerOpCoV?: number;
 }
 
 /**
@@ -593,6 +599,8 @@ export class PerformanceComparison {
         const rc = detail.changes.recalcStyleCount;
         const lp = detail.changes.layoutDurationPerOp || 0;
         const rp = detail.changes.recalcStyleDurationPerOp || 0;
+        const absLayoutCountDelta = Math.abs(diff.layoutCount || 0);
+        const absRecalcCountDelta = Math.abs(diff.recalcStyleCount || 0);
         const layoutAbsDelta = Math.abs(diff.layoutDuration);
         const recalcAbsDelta = Math.abs(diff.recalcStyleDuration);
         const ABS_DELTA_FLOOR = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
@@ -602,14 +610,24 @@ export class PerformanceComparison {
         const MIN_BASELINE_LAYOUT_COUNT = Number(
             process.env.PERF_MIN_BASELINE_LAYOUT_COUNT || '10',
         );
+        const MIN_ABSOLUTE_COUNT_DELTA = Number(
+            process.env.PERF_MIN_ABSOLUTE_COUNT_DELTA || '4',
+        );
+        const NET_COST_FLOOR = Number(
+            process.env.PERF_MIN_NET_DURATION_DELTA_MS ||
+                process.env.PERF_ABS_DELTA_FLOOR_MS ||
+                '5',
+        );
 
         const ignoreLayoutTiny =
             baseline.layoutDuration < MIN_BASELINE_DURATION &&
             baseline.layoutCount < MIN_BASELINE_LAYOUT_COUNT;
         const isThemeSwitchTest = detail.testName === 'scrollbar-theme-switching-stress';
 
-        const layoutCountIncrease = lc > threshold;
-        const recalcCountIncrease = rc > threshold;
+        const layoutCountIncrease =
+            lc > threshold && absLayoutCountDelta >= MIN_ABSOLUTE_COUNT_DELTA;
+        const recalcCountIncrease =
+            rc > threshold && absRecalcCountDelta >= MIN_ABSOLUTE_COUNT_DELTA;
         const layoutPerOpNotImproved = lp >= -threshold;
         const recalcPerOpNotImproved = rp >= -threshold;
         const countsStable = Math.abs(lc) < threshold && Math.abs(rc) < threshold;
@@ -617,6 +635,8 @@ export class PerformanceComparison {
         const perOpIncreaseRecalc = rp > threshold;
 
         const ignoreDurations = process.env.PERF_IGNORE_DURATION_REGRESSIONS === '1';
+        const maxCov = Number(process.env.PERF_MAX_COV || '0.15');
+        const isStable = (cov?: number): boolean => cov === undefined || cov <= maxCov;
 
         // Eligibility when we still consider duration changes
         const layoutEligible =
@@ -633,10 +653,30 @@ export class PerformanceComparison {
                 !isThemeSwitchTest && baseline.layoutCount >= MIN_BASELINE_LAYOUT_COUNT;
             const recalcEligibleCounts =
                 baseline.recalcStyleCount >= MIN_BASELINE_LAYOUT_COUNT;
+            const layoutDelta = diff.layoutDuration;
+            const recalcDelta = diff.recalcStyleDuration;
+            const netCost = layoutDelta + recalcDelta; // recalc improvement reduces net cost
+
+            const layoutCountGate =
+                layoutEligibleCounts &&
+                lc > threshold &&
+                absLayoutCountDelta >= MIN_ABSOLUTE_COUNT_DELTA &&
+                layoutDelta >= ABS_DELTA_FLOOR;
+            const recalcCountGate =
+                recalcEligibleCounts &&
+                rc > threshold &&
+                absRecalcCountDelta >= MIN_ABSOLUTE_COUNT_DELTA &&
+                recalcDelta >= ABS_DELTA_FLOOR;
+
+            const varianceOk =
+                isStable(baseline.layoutCountCoV) &&
+                isStable(baseline.recalcStyleCountCoV);
 
             return (
-                (layoutEligibleCounts && lc > threshold) ||
-                (recalcEligibleCounts && rc > threshold)
+                (layoutCountGate || recalcCountGate) &&
+                netCost > 0 &&
+                netCost >= NET_COST_FLOOR &&
+                varianceOk
             );
         }
 
@@ -646,10 +686,20 @@ export class PerformanceComparison {
             recalcEligible && recalcCountIncrease && recalcPerOpNotImproved;
         const perOpOnlyLayout = layoutEligible && countsStable && perOpIncreaseLayout;
         const perOpOnlyRecalc = recalcEligible && countsStable && perOpIncreaseRecalc;
+        const netCost = diff.layoutDuration + diff.recalcStyleDuration;
 
-        return (
-            layoutCountDriven || recalcCountDriven || perOpOnlyLayout || perOpOnlyRecalc
-        );
+        const varianceOk =
+            isStable(baseline.layoutCountCoV) &&
+            isStable(baseline.recalcStyleCountCoV) &&
+            isStable(baseline.layoutDurationCoV) &&
+            isStable(baseline.recalcStyleDurationCoV) &&
+            isStable(baseline.layoutDurationPerOpCoV) &&
+            isStable(baseline.recalcStyleDurationPerOpCoV);
+
+        const gated =
+            layoutCountDriven || recalcCountDriven || perOpOnlyLayout || perOpOnlyRecalc;
+
+        return gated && netCost > 0 && netCost >= NET_COST_FLOOR && varianceOk;
     }
 
     /**
@@ -837,6 +887,51 @@ export class PerformanceComparison {
             result.recalcStyleDurationPerOp = Number(
                 (recalcStyleDuration / recalcStyleCount).toFixed(5),
             );
+        }
+
+        // Compute CoV for variance gating
+        const mean = (arr: number[]): number =>
+            arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
+        const std = (arr: number[]): number => {
+            if (arr.length < 2) {
+                return 0;
+            }
+
+            const m = mean(arr);
+            const variance =
+                arr.reduce((acc, v) => acc + (v - m) * (v - m), 0) / arr.length;
+
+            return Math.sqrt(variance);
+        };
+        const cov = (arr: number[]): number => {
+            const m = mean(arr);
+
+            if (m === 0) {
+                return 0;
+            }
+
+            return std(arr) / m;
+        };
+
+        result.layoutCountCoV = cov(values('layoutCount'));
+        result.layoutDurationCoV = cov(values('layoutDuration'));
+        result.recalcStyleCountCoV = cov(values('recalcStyleCount'));
+        result.recalcStyleDurationCoV = cov(values('recalcStyleDuration'));
+
+        if (result.layoutDurationPerOp !== undefined) {
+            const perOpLayoutArray = runs.map((r) =>
+                r.layoutCount > 0 ? r.layoutDuration / r.layoutCount : 0,
+            );
+
+            result.layoutDurationPerOpCoV = cov(perOpLayoutArray);
+        }
+
+        if (result.recalcStyleDurationPerOp !== undefined) {
+            const perOpRecalcArray = runs.map((r) =>
+                r.recalcStyleCount > 0 ? r.recalcStyleDuration / r.recalcStyleCount : 0,
+            );
+
+            result.recalcStyleDurationPerOpCoV = cov(perOpRecalcArray);
         }
 
         return result;
