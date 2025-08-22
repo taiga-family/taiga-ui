@@ -5,14 +5,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TUI_DIALOGS_CLOSE, TuiButton, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiDialog} from '@taiga-ui/experimental';
+import {TuiHeader} from '@taiga-ui/layout';
 import {merge} from 'rxjs';
 
 import {AuthService} from './service';
-import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [TuiAutoFocus, TuiButton, TuiDialog, TuiTextfield, TuiHeader, TuiTitle],
+    imports: [TuiAutoFocus, TuiButton, TuiDialog, TuiHeader, TuiTextfield, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
