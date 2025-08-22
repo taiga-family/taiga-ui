@@ -1,6 +1,6 @@
 <ng-container *ngIf="nativeScrollbar; else custom" />
 <ng-template #custom>
-    <ng-container *ngIf="refresh$ | async as bars">
+    <ng-container *ngIf="refresh() as bars">
         <div
             *ngIf="bars[0]"
             tuiAnimated
