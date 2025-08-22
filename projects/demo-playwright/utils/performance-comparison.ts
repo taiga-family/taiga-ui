@@ -834,7 +834,7 @@ export class PerformanceComparison {
         const body = lines.join('\n');
 
         return [
-            '<details open>',
+            '<details>',
             '<summary>Summary</summary>',
             '',
             body,
@@ -910,6 +910,7 @@ export class PerformanceComparison {
             : `No tests exceeded the ${changeThreshold}% threshold`;
 
         return [
+            '',
             '### Final Result',
             '',
             `- ${layoutLine}`,
