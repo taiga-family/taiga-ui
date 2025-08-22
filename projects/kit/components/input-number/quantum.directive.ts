@@ -1,4 +1,4 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {tuiIsSafeToRound, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -14,6 +14,7 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
 > {
     protected parent: TuiValueTransformer<number | null, any> | null = null;
 
+    // eslint-disable-next-line @typescript-eslint/parameter-properties
     constructor(public quantum = 1) {
         super();
     }
@@ -38,8 +39,8 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
 @Directive({
     standalone: true,
     selector: '[tuiInputNumber][quantum], [tuiInputSlider][quantum]',
-    providers: [tuiProvide(TuiValueTransformer, TuiQuantumValueTransformer)],
     inputs: ['quantum'],
+    providers: [tuiProvide(TuiValueTransformer, TuiQuantumValueTransformer)],
 })
 export class TuiQuantumValueTransformer extends TuiQuantumValueTransformerBase {
     protected override parent = inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer;

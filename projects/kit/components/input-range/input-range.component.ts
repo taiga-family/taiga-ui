@@ -17,7 +17,6 @@ import {
     TUI_IDENTITY_VALUE_TRANSFORMER,
     tuiAsControl,
     TuiControl,
-    tuiValueTransformerFrom,
 } from '@taiga-ui/cdk/classes';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
