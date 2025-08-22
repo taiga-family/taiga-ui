@@ -25,7 +25,7 @@
         margin-block-end: 2rem;
         border-radius: 0 !important;
         font: var(--tui-font-text-m) !important;
-        border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0/0/0 100vw;
+        border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0 / 0 / env(safe-area-inset-top) 100vw 0;
 
         &::before {
             display: none;
@@ -75,6 +75,10 @@
         gap: 0.5rem 0.75rem;
         padding: 2rem calc(50vw - var(--tui-width) / 2);
         margin: 0 calc(var(--tui-width) / 2 - 50vw) calc(-2rem - env(safe-area-inset-top));
+
+        &::before {
+            display: none;
+        }
     }
 
     tui-root:not(._mobile) & {
