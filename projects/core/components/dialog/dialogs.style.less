@@ -38,11 +38,6 @@
     align-items: flex-start;
     outline: none;
     overflow: auto;
-
-    &:has(> .tui-enter),
-    &:has(> .tui-leave) {
-        overflow: clip;
-    }
 }
 
 .t-dialog {
@@ -54,6 +49,11 @@
     &:has(tui-dialog[new]) {
         display: grid;
         place-items: center;
+    }
+
+    ::ng-deep > .tui-enter + .t-scrollbars .t-bar_vertical,
+    ::ng-deep > .tui-leave + .t-scrollbars .t-bar_vertical {
+        display: none;
     }
 }
 
@@ -86,7 +86,8 @@
     margin: 0;
     color: #747474;
 
-    ::ng-deep .t-bar_horizontal {
+    ::ng-deep .t-bar_horizontal,
+    ::ng-deep .t-bar_vertical .t-thumb[style*='height: 100%'] {
         display: none;
     }
 }

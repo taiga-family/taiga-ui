@@ -87,6 +87,15 @@
         </ng-template>
         <table tuiDocAPI>
             <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="string"
+                [items]="appearances"
+                [(value)]="appearance"
+            >
+                Appearance of dialog
+            </tr>
+            <tr
                 name="[closable]"
                 tuiDocAPIItem
                 type="boolean"
@@ -149,14 +158,6 @@
                 [(value)]="size"
             >
                 Size
-            </tr>
-            <tr
-                name="[appearance]"
-                tuiDocAPIItem
-                type="string"
-                [(value)]="appearance"
-            >
-                Appearance of dialog
             </tr>
         </table>
     </ng-template>
