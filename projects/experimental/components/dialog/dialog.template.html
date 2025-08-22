@@ -13,14 +13,25 @@
     {{ close() }}
 </button>
 
-<header
-    *ngIf="context.label"
-    [id]="context.id"
-    [innerHTML]="context.label"
-></header>
+<header tuiHeader>
+    <hgroup tuiTitle>
+        <h2
+            [id]="context.id"
+            [innerHTML]="context.label"
+        ></h2>
+    </hgroup>
+</header>
 
 <ng-container *polymorpheusOutlet="context.content as text; context: context">
-    <p [innerHTML]="text"></p>
+    <header tuiHeader>
+        <hgroup tuiTitle>
+            <h2
+                *ngIf="context.label"
+                [innerHTML]="context.label"
+            ></h2>
+            <p [innerHTML]="text"></p>
+        </hgroup>
+    </header>
     <footer *ngIf="context.closable || context.dismissible">
         <button
             size="m"

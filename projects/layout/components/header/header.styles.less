@@ -8,6 +8,12 @@
     color: var(--tui-text-primary);
     margin: 0;
     text-align: start;
+    overflow-wrap: break-word;
+
+    p:not([tuiTitle], [tuiSubtitle]) {
+        margin: 0.25rem 0 0;
+        font: var(--tui-font-text-m);
+    }
 
     [tuiTitle] {
         flex-grow: 2;

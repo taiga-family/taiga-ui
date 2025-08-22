@@ -10,9 +10,12 @@ import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/components/dialog';
+import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {TUI_HEADER_OPTIONS, TuiHeader} from '@taiga-ui/layout/components/header';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     exhaustMap,
@@ -38,20 +41,27 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 @Component({
     standalone: true,
     selector: 'tui-dialog',
-    imports: [NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
+    imports: [NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './dialog.template.html',
     styleUrls: ['./dialog.style.less'],
     encapsulation: ViewEncapsulation.None,
     // So we don't force OnPush on dialog content
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [TuiDialogCloseService],
+    providers: [
+        TuiDialogCloseService,
+        {
+            provide: TUI_HEADER_OPTIONS,
+            useFactory: (): {size: string} => ({size: getSize(injectContext())}),
+        },
+    ],
     hostDirectives: [TuiAnimated],
     host: {
         new: '',
         '[attr.data-appearance]': 'context.appearance',
         '[attr.data-size]': 'context.size',
         '[class._closable]': 'context.closable',
+        '[class._custom]': 'customLabel',
     },
 })
 export class TuiDialogComponent<O, I> {
@@ -75,4 +85,16 @@ export class TuiDialogComponent<O, I> {
                 this.context.$implicit.complete();
             }
         });
+
+    protected get customLabel(): boolean {
+        return !this.context.label || tuiIsString(this.context.content);
+    }
+}
+
+function getSize({appearance, size}: TuiDialogOptions<unknown>): 'h3' | 'h4' | 'h5' {
+    if (appearance.includes('fullscreen')) {
+        return 'h3';
+    }
+
+    return size === 's' ? 'h5' : 'h4';
 }

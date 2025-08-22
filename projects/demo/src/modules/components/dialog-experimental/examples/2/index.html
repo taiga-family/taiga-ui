@@ -9,7 +9,9 @@
     let-observer
     [(tuiDialog)]="open"
 >
-    <header>Let us know</header>
+    <header tuiHeader>
+        <h2 tuiTitle>Let us know</h2>
+    </header>
     <form
         tuiForm
         (submit.prevent)="observer.complete()"
