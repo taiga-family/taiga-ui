@@ -3,7 +3,7 @@ on:
   workflow_call:
 
 env:
-  PERFORMANCE_CHANGE_THRESHOLD: 20
+  PERFORMANCE_CHANGE_THRESHOLD: 5
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
   PERFORMANCE_RUNS: 6 # total runs including warmup
   PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
