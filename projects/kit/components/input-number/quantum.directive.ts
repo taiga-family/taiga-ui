@@ -13,11 +13,9 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
     number | null
 > {
     protected parent: TuiValueTransformer<number | null, any> | null = null;
-    public quantum = 1;
 
-    constructor(quantum = 1) {
+    constructor(public quantum = 1) {
         super();
-        this.quantum = quantum;
     }
 
     public override fromControlValue(controlValue: number | null): number | null {
@@ -41,12 +39,10 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
     standalone: true,
     selector: '[tuiInputNumber][quantum], [tuiInputSlider][quantum]',
     providers: [tuiProvide(TuiValueTransformer, TuiQuantumValueTransformer)],
+    inputs: ['quantum'],
 })
 export class TuiQuantumValueTransformer extends TuiQuantumValueTransformerBase {
     protected override parent = inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer;
-
-    @Input()
-    public override quantum = 1;
 
     constructor() {
         super(1);
