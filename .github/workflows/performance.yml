@@ -11,10 +11,6 @@ jobs:
     if: ${{ !contains(github.head_ref , 'release/') }}
     name: Playwright / Performance Stress
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      actions: read
-      pull-requests: read
     steps:
       - name: Checkout feature branch
         uses: actions/checkout@v4.3.0
