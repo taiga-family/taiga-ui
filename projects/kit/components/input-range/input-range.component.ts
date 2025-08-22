@@ -68,9 +68,6 @@ export class TuiInputRangeComponent
     private readonly inputNumberRefs: QueryList<ElementRef<HTMLInputElement>> =
         EMPTY_QUERY;
 
-    @ViewChild(TuiRange, {read: ElementRef})
-    private readonly rangeRef?: ElementRef<HTMLElement>;
-
     @ViewChild(TuiRange)
     private readonly range?: TuiRange;
 
