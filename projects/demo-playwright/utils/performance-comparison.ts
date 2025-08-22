@@ -72,10 +72,13 @@ interface ComparisonReport {
         overallLayoutDurationChange: number; // signed percent change (layout duration total)
         overallRecalcDurationChange: number; // signed percent change (recalc style duration total)
         overallNetDurationChange: number; // signed percent change (layout+recalc durations combined)
+        maxLayoutCountChange: number; // max absolute per-test layout op count change (%), signed value with largest magnitude
+        maxRecalcCountChange: number; // max absolute per-test recalc op count change (%), signed
+        maxLayoutDurationChange: number; // max absolute per-test layout duration change (%), signed
+        maxRecalcDurationChange: number; // max absolute per-test recalc duration change (%), signed
     };
     details: MetricsComparison[];
 }
-
 /**
  * Utility class for analyzing and comparing performance metrics between baseline and current runs
  */
@@ -192,6 +195,10 @@ export class PerformanceComparison {
         let currentLayoutDurationTotal = 0;
         let baselineRecalcDurationTotal = 0;
         let currentRecalcDurationTotal = 0;
+        let maxLayoutCountChange = 0;
+        let maxRecalcCountChange = 0;
+        let maxLayoutDurationChange = 0;
+        let maxRecalcDurationChange = 0;
 
         for (const [testName, currentData] of current) {
             const baselineData = baseline.get(testName);
@@ -222,6 +229,33 @@ export class PerformanceComparison {
                 (currentData.metrics.recalcStyleDuration || 0);
             currentLayoutDurationTotal += currentData.metrics.layoutDuration || 0;
             currentRecalcDurationTotal += currentData.metrics.recalcStyleDuration || 0;
+
+            if (
+                Math.abs(comparison.changes.layoutCount) > Math.abs(maxLayoutCountChange)
+            ) {
+                maxLayoutCountChange = comparison.changes.layoutCount;
+            }
+
+            if (
+                Math.abs(comparison.changes.recalcStyleCount) >
+                Math.abs(maxRecalcCountChange)
+            ) {
+                maxRecalcCountChange = comparison.changes.recalcStyleCount;
+            }
+
+            if (
+                Math.abs(comparison.changes.layoutDuration) >
+                Math.abs(maxLayoutDurationChange)
+            ) {
+                maxLayoutDurationChange = comparison.changes.layoutDuration;
+            }
+
+            if (
+                Math.abs(comparison.changes.recalcStyleDuration) >
+                Math.abs(maxRecalcDurationChange)
+            ) {
+                maxRecalcDurationChange = comparison.changes.recalcStyleDuration;
+            }
         }
 
         const testsWithBaseline = details.filter((d) => d.baseline).length;
@@ -261,6 +295,10 @@ export class PerformanceComparison {
                               baselineNetDurationTotal) *
                           100
                         : 0,
+                maxLayoutCountChange,
+                maxRecalcCountChange,
+                maxLayoutDurationChange,
+                maxRecalcDurationChange,
             },
             details: details.sort((a, b) => a.testName.localeCompare(b.testName)),
         };
@@ -278,8 +316,13 @@ export class PerformanceComparison {
 
         let markdown = '## 📊 Performance Metrics Comparison\n\n';
 
-        // Put final verdict before summary as requested
-        markdown += this.generateFinalVerdictSection(summary, changeThreshold);
+        const statusLine = this.generateStatusLine(summary);
+
+        if (statusLine) {
+            markdown += `${statusLine}\n\n`;
+        }
+
+        // Output summary (with potential warning line) before final verdict
         markdown += this.generateSummarySection(summary);
 
         if (summary.testsWithSignificantChanges > 0) {
@@ -290,6 +333,7 @@ export class PerformanceComparison {
             );
         }
 
+        markdown += this.generateFinalVerdictSection(summary, changeThreshold);
         markdown += this.generateFooter(summary.totalTests);
 
         return markdown;
@@ -356,6 +400,10 @@ export class PerformanceComparison {
                     overallLayoutDurationChange: 0,
                     overallRecalcDurationChange: 0,
                     overallNetDurationChange: 0,
+                    maxLayoutCountChange: 0,
+                    maxRecalcCountChange: 0,
+                    maxLayoutDurationChange: 0,
+                    maxRecalcDurationChange: 0,
                 },
                 details: [],
             };
@@ -787,17 +835,13 @@ export class PerformanceComparison {
             return `- ${label}: ${sign}${v.toFixed(1)}% ${icon}`;
         };
 
+        lines.push(formatAvg('Max layout ops change', summary.maxLayoutCountChange));
+        lines.push(formatAvg('Max recalc ops change', summary.maxRecalcCountChange));
         lines.push(
-            formatAvg('Average layout duration change', summary.averageLayoutChange),
+            formatAvg('Max layout duration change', summary.maxLayoutDurationChange),
         );
         lines.push(
-            formatAvg('Average recalc duration change', summary.averageRecalcChange),
-        );
-        lines.push(
-            formatAvg('Average layout count change', summary.averageLayoutCountChange),
-        );
-        lines.push(
-            formatAvg('Average recalc count change', summary.averageRecalcCountChange),
+            formatAvg('Max recalc duration change', summary.maxRecalcDurationChange),
         );
 
         if (summary.testsWithBaseline > 0) {
@@ -824,14 +868,6 @@ export class PerformanceComparison {
             );
         }
 
-        if (summary.testsWithSignificantChanges === 0 && summary.testsWithBaseline > 0) {
-            lines.push('✅ No significant performance regressions detected!');
-        } else if (summary.testsWithSignificantChanges > 0) {
-            lines.push(
-                `⚠️ ${summary.testsWithSignificantChanges} test(s) show significant performance changes`,
-            );
-        }
-
         const body = lines.join('\n');
 
         return [
@@ -843,6 +879,18 @@ export class PerformanceComparison {
             '</details>',
             '',
         ].join('\n');
+    }
+
+    private static generateStatusLine(summary: ComparisonReport['summary']): string {
+        if (summary.testsWithSignificantChanges === 0 && summary.testsWithBaseline > 0) {
+            return '✅ No significant performance regressions detected!';
+        }
+
+        if (summary.testsWithSignificantChanges > 0) {
+            return `⚠️ ${summary.testsWithSignificantChanges} test(s) show significant performance changes`;
+        }
+
+        return '';
     }
 
     /**
@@ -857,7 +905,7 @@ export class PerformanceComparison {
             return '';
         }
 
-        let section = '\n### Detailed Results\n\n';
+        let section = '\n';
 
         section += '<details open>\n';
         section += `<summary>Tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length})</summary>\n\n`;
@@ -1478,7 +1526,7 @@ export class PerformanceReportAggregator {
         }
 
         if (tableRows.size > 0) {
-            content += '### Detailed Results (aggregated)\n\n';
+            content += '### Aggregated Results\n\n';
             content +=
                 '| Component | Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
             content +=
