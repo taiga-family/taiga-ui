@@ -10,12 +10,13 @@ import {
     signal,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {
     MutationObserverService,
     provideMutationObserverInit,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
+import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {map, merge} from 'rxjs';
@@ -107,7 +108,33 @@ export class TuiScrollbarDirective {
             this.el.style.scrollBehavior = '';
         });
 
-    protected readonly styleSub = this.eventBasedSubscription;
+    protected readonly styleSub = merge(
+        inject(WA_ANIMATION_FRAME),
+        tuiScrollFrom(this.el),
+    )
+        .pipe(tuiZonefree(), takeUntilDestroyed())
+        .subscribe(() => {
+            const dimension: ComputedDimension = {
+                scrollTop: this.el.scrollTop,
+                scrollHeight: this.el.scrollHeight,
+                clientHeight: this.el.clientHeight,
+                scrollLeft: this.el.scrollLeft,
+                scrollWidth: this.el.scrollWidth,
+                clientWidth: this.el.clientWidth,
+            };
+
+            const thumb = `${this.getThumb(dimension) * 100}%`;
+            const view = `${this.getView(dimension) * 100}%`;
+
+            if (this.tuiScrollbar === 'vertical') {
+                this.style.top = thumb;
+                this.style.height = view;
+            } else {
+                this.style.left = thumb;
+                this.style.insetInlineStart = thumb;
+                this.style.width = view;
+            }
+        });
 
     @Input()
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
