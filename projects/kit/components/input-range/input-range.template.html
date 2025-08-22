@@ -6,6 +6,7 @@
     <input
         tuiInputNumber
         [disabled]="disabled()"
+        [invalid]="invalid()"
         [max]="value()[1]"
         [min]="min"
         [postfix]="postfix[0]"
@@ -24,6 +25,7 @@
         class="t-end"
         [class._hidden]="!hideEndContent"
         [disabled]="disabled()"
+        [invalid]="invalid()"
         [max]="max"
         [min]="value()[0]"
         [postfix]="postfix[1]"
