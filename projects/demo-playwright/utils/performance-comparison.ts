@@ -177,7 +177,6 @@ export class PerformanceComparison {
         _changeThreshold: number = this.DEFAULT_CHANGE_THRESHOLD,
     ): ComparisonReport {
         const details: MetricsComparison[] = [];
-        let testsWithSignificantChanges = 0;
         let totalLayoutChange = 0;
         let totalRecalcChange = 0;
 
@@ -191,16 +190,15 @@ export class PerformanceComparison {
 
             details.push(comparison);
 
-            // Track significant changes (>10% change in duration metrics)
-            if (this.hasSignificantDurationChanges(comparison)) {
-                testsWithSignificantChanges++;
-            }
-
             totalLayoutChange += Math.abs(comparison.changes.layoutDuration);
             totalRecalcChange += Math.abs(comparison.changes.recalcStyleDuration);
         }
 
         const testsWithBaseline = details.filter((d) => d.baseline).length;
+        const gatingThreshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '10');
+        const testsWithSignificantChanges = details.filter((d) =>
+            this.isRegressionCandidate(d, gatingThreshold),
+        ).length;
 
         return {
             summary: {
