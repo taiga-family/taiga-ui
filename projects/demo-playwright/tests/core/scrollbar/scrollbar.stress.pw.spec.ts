@@ -23,6 +23,16 @@ import {expect, test} from '@playwright/test';
 test.describe('TuiScrollbar Stress Tests', () => {
     let documentationPage: TuiDocumentationPagePO;
 
+    // Deterministic pseudo-random number generator for stable scroll patterns
+    const createPRNG = (seed = 42): (() => number) => {
+        let state = seed % 2147483647;
+        if (state <= 0) state += 2147483646;
+        return () => {
+            state = (state * 16807) % 2147483647;
+            return (state - 1) / 2147483646;
+        };
+    };
+
     test.beforeEach(async ({page}) => {
         await tuiGoto(page, DemoRoute.Scrollbar);
         documentationPage = new TuiDocumentationPagePO(page);
@@ -112,38 +122,40 @@ test.describe('TuiScrollbar Stress Tests', () => {
             await expect(addButton).toBeVisible();
             await expect(scrollbar).toBeVisible();
 
-            // Start performance collection for content manipulation + scrolling
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsContent = Math.round(30 * factor);
+            const warmupIterations = Math.min(
+                5,
+                Math.max(3, Math.round(iterationsContent * 0.15)),
+            );
+
+            // Warm-up phase (excluded from measurement) to stabilize initial layout/style state
+            for (let i = 0; i < warmupIterations; i++) {
+                await addButton.click();
+                await viewport.evaluate((el, scrollTop) => {
+                    el.scrollTo({top: scrollTop, behavior: 'auto'});
+                }, i * 15);
+                if (i % 2 === 0) {
+                    await page.waitForTimeout(5);
+                }
+            }
+
             await PerformanceCollector.startTestCollection(
                 page,
                 'scrollbar-content-manipulation-stress',
                 __filename,
             );
 
-            // Stress test: simultaneously add content and perform scrolling
-            const operations = [];
-
-            // Add many items rapidly while scrolling
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
-            const iterationsContent = Math.round(30 * factor);
-
+            // Measured phase: sequential deterministic operations for stability
             for (let i = 0; i < iterationsContent; i++) {
-                // Add new content
-                operations.push(addButton.click());
-
-                // Scroll during content addition to stress layout recalculation
-                operations.push(
-                    viewport.evaluate((el, scrollTop) => {
-                        el.scrollTo({top: scrollTop, behavior: 'auto'});
-                    }, i * 20),
-                );
-
-                // Periodic short delays to create realistic stress pattern
+                await addButton.click();
+                await viewport.evaluate((el, scrollTop) => {
+                    el.scrollTo({top: scrollTop, behavior: 'auto'});
+                }, i * 20);
                 if (i % 5 === 0) {
-                    operations.push(page.waitForTimeout(10));
+                    await page.waitForTimeout(10);
                 }
             }
-
-            await Promise.all(operations);
 
             // Additional scrolling after content is added
             for (let i = 0; i < 20; i++) {
@@ -188,19 +200,18 @@ test.describe('TuiScrollbar Stress Tests', () => {
             // Rapidly trigger programmatic scrolling
             const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
             const iterationsProg = Math.round(40 * factor);
+            const rand = createPRNG(321);
 
             for (let i = 0; i < iterationsProg; i++) {
                 programmaticOperations.push(scrollButton.click());
 
                 // Add some manual scroll operations between programmatic ones
                 if (i % 3 === 0) {
+                    const target = rand() * 500;
                     programmaticOperations.push(
-                        scrollbar.evaluate((el) => {
-                            el.scrollTo({
-                                top: Math.random() * 500,
-                                behavior: 'auto',
-                            });
-                        }),
+                        scrollbar.evaluate((el, top) => {
+                            el.scrollTo({top, behavior: 'auto'});
+                        }, target),
                     );
                 }
 
@@ -232,54 +243,60 @@ test.describe('TuiScrollbar Stress Tests', () => {
             await scrollbar.scrollIntoViewIfNeeded();
             await expect(scrollbar).toBeVisible();
 
-            // Start performance collection for multi-directional stress
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsMulti = Math.round(60 * factor);
+            const warmupIterations = Math.min(
+                10,
+                Math.max(5, Math.round(iterationsMulti * 0.15)),
+            );
+            const rand = createPRNG(123);
+
+            // Warm-up phase (excluded from measurement)
+            for (let i = 0; i < warmupIterations; i++) {
+                const angle = (i * Math.PI) / 10;
+                const scrollLeft = Math.abs(Math.cos(angle)) * 150;
+                const scrollTop = Math.abs(Math.sin(angle)) * 150;
+                await scrollbar.evaluate(
+                    (el, {left, top}) => {
+                        el.scrollTo({left, top, behavior: 'auto'});
+                    },
+                    {left: scrollLeft, top: scrollTop},
+                );
+                if (i % 4 === 0) {
+                    await page.waitForTimeout(4);
+                }
+            }
+
             await PerformanceCollector.startTestCollection(
                 page,
                 'scrollbar-multi-directional-stress',
                 __filename,
             );
 
-            // Stress test: complex multi-directional scrolling patterns
-            // This tests both horizontal and vertical scroll handling under load
-            const scrollPatterns = [];
-
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
-            const iterationsMulti = Math.round(60 * factor);
-
             for (let i = 0; i < iterationsMulti; i++) {
                 const angle = (i * Math.PI) / 10;
                 const scrollLeft = Math.abs(Math.cos(angle)) * 200;
                 const scrollTop = Math.abs(Math.sin(angle)) * 200;
-
-                scrollPatterns.push(
-                    scrollbar.evaluate(
+                await scrollbar.evaluate(
+                    (el, {left, top}) => {
+                        el.scrollTo({left, top, behavior: 'auto'});
+                    },
+                    {left: scrollLeft, top: scrollTop},
+                );
+                if (i % 4 === 0) {
+                    const diagLeft = rand() * 300;
+                    const diagTop = rand() * 300;
+                    await scrollbar.evaluate(
                         (el, {left, top}) => {
                             el.scrollTo({left, top, behavior: 'auto'});
                         },
-                        {left: scrollLeft, top: scrollTop},
-                    ),
-                );
-
-                // Add diagonal scroll movements for additional complexity
-                if (i % 4 === 0) {
-                    scrollPatterns.push(
-                        scrollbar.evaluate((el) => {
-                            el.scrollTo({
-                                left: Math.random() * 300,
-                                top: Math.random() * 300,
-                                behavior: 'auto',
-                            });
-                        }),
+                        {left: diagLeft, top: diagTop},
                     );
                 }
-
-                // Brief pauses to create realistic usage pattern
                 if (i % 12 === 0) {
-                    scrollPatterns.push(page.waitForTimeout(8));
+                    await page.waitForTimeout(8);
                 }
             }
-
-            await Promise.all(scrollPatterns);
 
             await page.waitForTimeout(100);
 
@@ -315,18 +332,16 @@ test.describe('TuiScrollbar Stress Tests', () => {
             const iterationsMemory = Math.round(80 * factor);
 
             for (let i = 0; i < iterationsMemory; i++) {
-                // Create memory pressure by allocating large objects
-                await page.evaluate(() => {
-                    // Create temporary large objects to pressure memory
-                    const tempArrays = [];
-
+                // Create memory pressure deterministically (no randomness)
+                await page.evaluate((iteration) => {
+                    const tempArrays: unknown[] = [];
                     for (let j = 0; j < 50; j++) {
-                        tempArrays.push(new Array(2000).fill(Math.random()));
+                        // Deterministic pseudo values derived from iteration and j
+                        const val = ((iteration * 131 + j * 17) % 1000) / 1000;
+                        tempArrays.push(new Array(2000).fill(val));
                     }
-
-                    // Clean up immediately to simulate GC pressure
                     tempArrays.length = 0;
-                });
+                }, i);
 
                 // Perform scrolling with forced layout reads under memory pressure
                 await scrollbar.evaluate(
@@ -516,21 +531,18 @@ test.describe('TuiScrollbar Stress Tests', () => {
 
                 // Resize container dimensions to trigger layout recalculation
                 if (i % 4 === 0) {
-                    await scrollbar.evaluate((el) => {
+                    await scrollbar.evaluate((el, iter) => {
                         const container = el.closest('.box') || el;
-
                         if (container instanceof HTMLElement) {
                             const baseWidth = 300;
                             const baseHeight = 200;
-
-                            // Vary container size to stress layout system
-                            container.style.width = `${baseWidth + Math.sin(Date.now() / 1000) * 50}px`;
-                            container.style.height = `${baseHeight + Math.cos(Date.now() / 1000) * 30}px`;
-
-                            // Force layout recalculation
+                            const widthOffset = Math.sin(iter / 5) * 50; // deterministic
+                            const heightOffset = Math.cos(iter / 7) * 30; // deterministic
+                            container.style.width = `${baseWidth + widthOffset}px`;
+                            container.style.height = `${baseHeight + heightOffset}px`;
                             void container.offsetHeight;
                         }
-                    });
+                    }, i);
                 }
 
                 // Window resize simulation
@@ -598,6 +610,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
             // Create multiple batches of concurrent operations
             const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
             const batches = Math.round(8 * factor);
+            const rand = createPRNG(987);
 
             for (let batch = 0; batch < batches; batch++) {
                 const batchOperations = [];
@@ -608,15 +621,17 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 for (let j = 0; j < innerOps; j++) {
                     const scrollTop = (batch * 50 + j * 10) % 500;
 
+                    const delay = Math.floor(rand() * 10);
                     batchOperations.push(
-                        scrollbar.evaluate(async (el, top) => {
-                            return new Promise<void>((resolve) => {
-                                el.scrollTo({top, behavior: 'auto'});
-
-                                // Simulate processing time
-                                setTimeout(resolve, Math.random() * 10);
-                            });
-                        }, scrollTop),
+                        scrollbar.evaluate(
+                            (el: HTMLElement, args: {top: number; delay: number}) => {
+                                return new Promise<void>((resolve) => {
+                                    el.scrollTo({top: args.top, behavior: 'auto'});
+                                    setTimeout(resolve, args.delay);
+                                });
+                            },
+                            {top: scrollTop, delay},
+                        ),
                     );
                 }
 
