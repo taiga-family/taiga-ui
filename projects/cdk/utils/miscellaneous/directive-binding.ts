@@ -1,8 +1,10 @@
 import {
     effect,
+    type EventEmitter,
     inject,
     type InjectOptions,
     isSignal,
+    type OnChanges,
     type ProviderToken,
     type Signal,
     signal,
@@ -14,6 +16,16 @@ type SignalLikeTypeOf<T> = T extends Signal<infer R> ? R : T;
 
 type SignalLike<T> = Signal<T> | T;
 
+type Result<I> = I extends Signal<unknown> ? I : WritableSignal<I>;
+
+type Directive<T, G extends keyof T> = Record<
+    'ngOnChanges',
+    OnChanges['ngOnChanges'] | undefined
+> &
+    Record<G, WritableSignal<unknown>> &
+    Record<string, {emit?: EventEmitter<unknown>['emit']}> &
+    T;
+
 export function tuiDirectiveBinding<
     T,
     G extends keyof T,
@@ -23,16 +35,16 @@ export function tuiDirectiveBinding<
     key: G,
     initial: I,
     options: InjectOptions = {self: true},
-): I extends Signal<any> ? I : WritableSignal<I> {
-    const result: any = isSignal(initial) ? initial : signal(initial);
-    const directive: any = inject(token, options);
-    const output = directive[`${key.toString()}Change`];
+): Result<I> {
+    const result: Signal<unknown> = isSignal(initial) ? initial : signal(initial);
+    const directive = inject(token, options) as Directive<T, G>;
+    const output = directive?.[`${key.toString()}Change`];
 
     // TODO: Figure out why effects are executed all the time and not just when result changes (check with Angular 18)
-    let previous: any;
+    let previous: unknown;
 
     effect(() => {
-        const value: any = result();
+        const value = result();
 
         if (previous === value) {
             return;
@@ -41,7 +53,7 @@ export function tuiDirectiveBinding<
         if (isSignal(directive[key])) {
             directive[key].set(value);
         } else {
-            directive[key] = value;
+            (directive as Record<G, unknown>)[key] = value;
         }
 
         directive.ngOnChanges?.({});
@@ -49,5 +61,5 @@ export function tuiDirectiveBinding<
         previous = value;
     }, TUI_ALLOW_SIGNAL_WRITES);
 
-    return result;
+    return result as Result<I>;
 }
