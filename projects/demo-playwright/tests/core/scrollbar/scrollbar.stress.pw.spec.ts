@@ -26,9 +26,14 @@ test.describe('TuiScrollbar Stress Tests', () => {
     // Deterministic pseudo-random number generator for stable scroll patterns
     const createPRNG = (seed = 42): (() => number) => {
         let state = seed % 2147483647;
-        if (state <= 0) state += 2147483646;
+
+        if (state <= 0) {
+            state += 2147483646;
+        }
+
         return () => {
             state = (state * 16807) % 2147483647;
+
             return (state - 1) / 2147483646;
         };
     };
@@ -135,6 +140,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 await viewport.evaluate((el, scrollTop) => {
                     el.scrollTo({top: scrollTop, behavior: 'auto'});
                 }, i * 15);
+
                 if (i % 2 === 0) {
                     await page.waitForTimeout(5);
                 }
@@ -152,6 +158,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 await viewport.evaluate((el, scrollTop) => {
                     el.scrollTo({top: scrollTop, behavior: 'auto'});
                 }, i * 20);
+
                 if (i % 5 === 0) {
                     await page.waitForTimeout(10);
                 }
@@ -208,6 +215,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 // Add some manual scroll operations between programmatic ones
                 if (i % 3 === 0) {
                     const target = rand() * 500;
+
                     programmaticOperations.push(
                         scrollbar.evaluate((el, top) => {
                             el.scrollTo({top, behavior: 'auto'});
@@ -256,12 +264,14 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 const angle = (i * Math.PI) / 10;
                 const scrollLeft = Math.abs(Math.cos(angle)) * 150;
                 const scrollTop = Math.abs(Math.sin(angle)) * 150;
+
                 await scrollbar.evaluate(
                     (el, {left, top}) => {
                         el.scrollTo({left, top, behavior: 'auto'});
                     },
                     {left: scrollLeft, top: scrollTop},
                 );
+
                 if (i % 4 === 0) {
                     await page.waitForTimeout(4);
                 }
@@ -277,15 +287,18 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 const angle = (i * Math.PI) / 10;
                 const scrollLeft = Math.abs(Math.cos(angle)) * 200;
                 const scrollTop = Math.abs(Math.sin(angle)) * 200;
+
                 await scrollbar.evaluate(
                     (el, {left, top}) => {
                         el.scrollTo({left, top, behavior: 'auto'});
                     },
                     {left: scrollLeft, top: scrollTop},
                 );
+
                 if (i % 4 === 0) {
                     const diagLeft = rand() * 300;
                     const diagTop = rand() * 300;
+
                     await scrollbar.evaluate(
                         (el, {left, top}) => {
                             el.scrollTo({left, top, behavior: 'auto'});
@@ -293,6 +306,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
                         {left: diagLeft, top: diagTop},
                     );
                 }
+
                 if (i % 12 === 0) {
                     await page.waitForTimeout(8);
                 }
@@ -335,11 +349,14 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 // Create memory pressure deterministically (no randomness)
                 await page.evaluate((iteration) => {
                     const tempArrays: unknown[] = [];
+
                     for (let j = 0; j < 50; j++) {
                         // Deterministic pseudo values derived from iteration and j
                         const val = ((iteration * 131 + j * 17) % 1000) / 1000;
+
                         tempArrays.push(new Array(2000).fill(val));
                     }
+
                     tempArrays.length = 0;
                 }, i);
 
@@ -533,11 +550,13 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 if (i % 4 === 0) {
                     await scrollbar.evaluate((el, iter) => {
                         const container = el.closest('.box') || el;
+
                         if (container instanceof HTMLElement) {
                             const baseWidth = 300;
                             const baseHeight = 200;
                             const widthOffset = Math.sin(iter / 5) * 50; // deterministic
                             const heightOffset = Math.cos(iter / 7) * 30; // deterministic
+
                             container.style.width = `${baseWidth + widthOffset}px`;
                             container.style.height = `${baseHeight + heightOffset}px`;
                             void container.offsetHeight;
@@ -622,9 +641,13 @@ test.describe('TuiScrollbar Stress Tests', () => {
                     const scrollTop = (batch * 50 + j * 10) % 500;
 
                     const delay = Math.floor(rand() * 10);
+
                     batchOperations.push(
                         scrollbar.evaluate(
-                            (el: HTMLElement, args: {top: number; delay: number}) => {
+                            async (
+                                el: HTMLElement,
+                                args: {top: number; delay: number},
+                            ) => {
                                 return new Promise<void>((resolve) => {
                                     el.scrollTo({top: args.top, behavior: 'auto'});
                                     setTimeout(resolve, args.delay);
