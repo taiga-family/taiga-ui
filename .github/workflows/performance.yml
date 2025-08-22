@@ -28,15 +28,24 @@ jobs:
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
+      - name: Attempt download of demo dist artifact (fallback)
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        uses: actions/download-artifact@v4.3.0
+        with:
+          name: demo-dist-${{ github.sha }}
+          path: dist/demo
       - name: Verify dist availability
         id: dist-check
         run: |
-          if [ ! -f dist/demo/index.html ]; then
-            echo "dist not found – skipping performance stress (no rebuild to avoid duplicate work)";
-            echo "skip=true" >> $GITHUB_OUTPUT;
-          else
-            echo "dist present";
+          if [ -d dist/demo ] && [ -n "$(ls -A dist/demo 2>/dev/null)" ]; then
+            # optionally show a few files
+            find dist/demo -maxdepth 2 -type f | head -n 5 || true
             echo "skip=false" >> $GITHUB_OUTPUT;
+            echo "dist present";
+          else
+            echo "skip=true" >> $GITHUB_OUTPUT;
+            echo "dist not found – skipping performance stress (no rebuild to avoid duplicate work)";
           fi
       - name: Stop early (no dist)
         if: steps.dist-check.outputs.skip == 'true'
