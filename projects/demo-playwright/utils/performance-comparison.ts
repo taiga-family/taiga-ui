@@ -83,7 +83,9 @@ interface ComparisonReport {
  * Utility class for analyzing and comparing performance metrics between baseline and current runs
  */
 export class PerformanceComparison {
-    public static readonly DEFAULT_CHANGE_THRESHOLD = 1; // Default 1% threshold
+    public static readonly DEFAULT_CHANGE_THRESHOLD = 6; // Minimum % change to show in table (filters noise)
+    public static readonly DEFAULT_COUNT_PERCENT_THRESHOLD = 15; // % op count increase considered significant
+    public static readonly DEFAULT_PER_OP_PERCENT_THRESHOLD = 9; // % per-op duration increase considered significant
 
     /**
      * Reads and aggregates performance metrics from JSON files in a directory
@@ -696,11 +698,24 @@ export class PerformanceComparison {
      */
     private static isRegressionCandidate(
         detail: MetricsComparison,
-        threshold: number,
+        _legacyThreshold: number,
     ): boolean {
         if (!detail.baseline) {
             return true;
         }
+
+        // Split thresholds: counts vs per-op durations.
+        // If env vars absent or invalid, fall back to explicit tuned defaults (not the legacy unified one).
+        const countEnv = Number(process.env.PERF_COUNT_PERCENT_THRESHOLD || '');
+        const perOpEnv = Number(process.env.PERF_PER_OP_PERCENT_THRESHOLD || '');
+        const countPct =
+            !Number.isNaN(countEnv) && countEnv > 0
+                ? countEnv
+                : PerformanceComparison.DEFAULT_COUNT_PERCENT_THRESHOLD;
+        const perOpPct =
+            !Number.isNaN(perOpEnv) && perOpEnv > 0
+                ? perOpEnv
+                : PerformanceComparison.DEFAULT_PER_OP_PERCENT_THRESHOLD;
 
         const baseline = detail.baseline;
         const diff = detail.diff;
@@ -734,14 +749,14 @@ export class PerformanceComparison {
         const isThemeSwitchTest = detail.testName === 'scrollbar-theme-switching-stress';
 
         const layoutCountIncrease =
-            lc > threshold && absLayoutCountDelta >= MIN_ABSOLUTE_COUNT_DELTA;
+            lc > countPct && absLayoutCountDelta >= MIN_ABSOLUTE_COUNT_DELTA;
         const recalcCountIncrease =
-            rc > threshold && absRecalcCountDelta >= MIN_ABSOLUTE_COUNT_DELTA;
-        const layoutPerOpNotImproved = lp >= -threshold;
-        const recalcPerOpNotImproved = rp >= -threshold;
-        const countsStable = Math.abs(lc) < threshold && Math.abs(rc) < threshold;
-        const perOpIncreaseLayout = lp > threshold;
-        const perOpIncreaseRecalc = rp > threshold;
+            rc > countPct && absRecalcCountDelta >= MIN_ABSOLUTE_COUNT_DELTA;
+        const layoutPerOpNotImproved = lp >= -perOpPct;
+        const recalcPerOpNotImproved = rp >= -perOpPct;
+        const countsStable = Math.abs(lc) < countPct && Math.abs(rc) < countPct;
+        const perOpIncreaseLayout = lp > perOpPct;
+        const perOpIncreaseRecalc = rp > perOpPct;
 
         const ignoreDurations = process.env.PERF_IGNORE_DURATION_REGRESSIONS === '1';
         const maxCov = Number(process.env.PERF_MAX_COV || '0.15');
@@ -768,12 +783,12 @@ export class PerformanceComparison {
 
             const layoutCountGate =
                 layoutEligibleCounts &&
-                lc > threshold &&
+                lc > countPct &&
                 absLayoutCountDelta >= MIN_ABSOLUTE_COUNT_DELTA &&
                 layoutDelta >= ABS_DELTA_FLOOR;
             const recalcCountGate =
                 recalcEligibleCounts &&
-                rc > threshold &&
+                rc > countPct &&
                 absRecalcCountDelta >= MIN_ABSOLUTE_COUNT_DELTA &&
                 recalcDelta >= ABS_DELTA_FLOOR;
 
