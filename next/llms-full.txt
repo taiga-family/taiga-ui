@@ -3805,13 +3805,13 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
+| [appearance] | `string` | Appearance of dialog |
 | [closable] | `boolean` |  |
 | [dismissible] | `boolean` | if you want prevent closing, for example, with a confirmation prompt. |
 | [data] | `string` |  |
 | [label] | `string` | Heading of dialog |
 | [required] | `boolean` | (you can catch it with "catch" operator or onError handler) |
 | [size] | `TuiSizeS | TuiSizeL` | Size |
-| [appearance] | `string` | Appearance of dialog |
 
 ### TypeScript
 
@@ -3849,6 +3849,7 @@ export default class Page extends Array {
         'Component',
         'Confirmation',
         'Closing',
+        'Fullscreen',
         'Customization',
     ];
 
@@ -3868,8 +3869,10 @@ export default class Page extends Array {
     protected label = 'Label';
     protected closable = this.options.closable;
     protected required = this.options.required;
-    protected appearance = this.options.appearance;
     protected dismissible = this.options.dismissible;
+
+    protected readonly appearances = ['taiga', 'fullscreen'] as const;
+    protected appearance = this.options.appearance;
 
     protected readonly sizes = ['s', 'm', 'l'] as const;
     protected size = this.options.size;
