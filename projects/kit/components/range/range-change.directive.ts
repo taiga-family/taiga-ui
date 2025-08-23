@@ -33,7 +33,7 @@ export class TuiRangeChange {
                     activeThumb = this.detectActiveThumb(clientX, target);
                     this.range.slidersRefs
                         .get(activeThumb === 'start' ? 0 : 1)
-                        ?.nativeElement.setPointerCapture(pointerId);
+                        ?.nativeElement.setPointerCapture?.(pointerId);
                     // TODO(v5): remove backward compatibility
                     this.activeThumbChange.emit(
                         activeThumb === 'start' ? 'left' : 'right',
@@ -43,9 +43,23 @@ export class TuiRangeChange {
                         this.el.focus();
                     }
                 }),
-                switchMap((event) =>
-                    tuiTypedFromEvent(this.doc, 'pointermove').pipe(startWith(event)),
-                ),
+                switchMap((event) => {
+                    const {target} = event;
+                    const [startSliderRef, endSliderRef] = this.range.slidersRefs;
+                    const isThumbClick =
+                        target === startSliderRef?.nativeElement ||
+                        target === endSliderRef?.nativeElement;
+
+                    if (isThumbClick) {
+                        // If clicking directly on a thumb, only start processing after actual movement
+                        return tuiTypedFromEvent(this.doc, 'pointermove');
+                    } else {
+                        // If clicking on track, process immediately to move thumb to click position
+                        return tuiTypedFromEvent(this.doc, 'pointermove').pipe(
+                            startWith(event),
+                        );
+                    }
+                }),
                 map(({clientX}) => this.getFractionFromEvents(clientX ?? 0)),
                 takeUntil(tuiTypedFromEvent(this.doc, 'pointerup', {passive: true})),
                 repeat(),
