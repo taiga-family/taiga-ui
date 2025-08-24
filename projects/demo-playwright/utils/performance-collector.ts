@@ -85,9 +85,12 @@ export class PerformanceCollector {
 
             // Start tracing with enhanced parameters for stability
             await client.send('Tracing.start', {
+                transferMode: 'ReportEvents',
                 traceConfig: {
+                    recordMode: 'recordContinuously',
                     includedCategories: [
                         'devtools.timeline',
+                        'toplevel',
                         'blink.user_timing',
                         'blink_style',
                         'blink',
@@ -101,6 +104,9 @@ export class PerformanceCollector {
                     ],
                 },
             });
+
+            // Give tracing a brief moment to initialize before we start generating work
+            await page.waitForTimeout(30);
 
             // Barrier: ensure at least one frame tick after tracing starts so we don't miss very early events
             await page.evaluate(async () => {
@@ -184,7 +190,32 @@ export class PerformanceCollector {
                         requestAnimationFrame(() => resolve()),
                     );
                 });
-                await page.waitForTimeout(30);
+                await page.waitForTimeout(40);
+
+                // If still empty after first synthetic batch, run a stronger fallback
+                if (collection.events.length === 0) {
+                    await page.evaluate(() => {
+                        const host = document.body;
+
+                        for (let i = 0; i < 5; i++) {
+                            const el = document.createElement('div');
+
+                            el.style.cssText =
+                                'position:absolute;left:-9999px;top:-9999px;width:2px;height:2px;';
+                            host.appendChild(el);
+                            void el.offsetHeight;
+                            el.style.transform = 'scale(1.01)';
+                            void el.clientTop;
+                            el.remove();
+                        }
+                    });
+                    await page.evaluate(async () => {
+                        await new Promise<void>((resolve) =>
+                            requestAnimationFrame(() => resolve()),
+                        );
+                    });
+                    await page.waitForTimeout(40);
+                }
             }
 
             await new Promise<void>((resolve) => {
@@ -422,7 +453,10 @@ export class PerformanceCollector {
         const relevantEvents = [
             'Layout',
             'RecalculateStyles',
+            'ScheduleStyleRecalculation',
             'UpdateLayoutTree',
+            'InvalidateLayout',
+            'LayoutShift',
             'Paint',
             'CompositeLayers',
         ];
