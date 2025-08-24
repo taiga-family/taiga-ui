@@ -51,10 +51,8 @@ export class TuiRangeChange {
                         target === endSliderRef?.nativeElement;
 
                     if (isThumbClick) {
-                        // If clicking directly on a thumb, only start processing after actual movement
                         return tuiTypedFromEvent(this.doc, 'pointermove');
                     } else {
-                        // If clicking on track, process immediately to move thumb to click position
                         return tuiTypedFromEvent(this.doc, 'pointermove').pipe(
                             startWith(event),
                         );
