@@ -45,106 +45,76 @@ export class PerformanceCollector {
         'performance',
     );
 
+    private static startStopLock: Promise<void> = Promise.resolve();
     private static dirReady = false;
 
-    /**
-     * Starts performance collection for a specific test
-     */
     public static async startTestCollection(
         page: Page,
         testName: string,
         testFile?: string,
     ): Promise<void> {
         try {
-            // console.log(`🎯 Starting CDP tracing for test: ${testName}`);
+            await this.withLock(async () => {
+                await this.stabilizePage(page);
+                const client = await page.context().newCDPSession(page);
+                const events: PerformanceEvent[] = [];
 
-            // Safety: if a previous collection didn't stop correctly, end it to avoid concurrent tracing conflicts
-            if (this.activeCollections.size > 0) {
-                for (const [key, pending] of this.activeCollections.entries()) {
-                    try {
-                        await pending.client.send('Tracing.end').catch(() => {});
-                        await pending.client.detach().catch(() => {});
-                    } catch {}
-
-                    this.activeCollections.delete(key);
-                }
-            }
-
-            // Stabilize page state before starting measurements
-            await this.stabilizePage(page);
-
-            const client = await page.context().newCDPSession(page);
-            const events: PerformanceEvent[] = [];
-
-            // Set up event collection with better error handling
-            client.on('Tracing.dataCollected', (data: any) => {
-                if (data.value && Array.isArray(data.value)) {
-                    // Capture all events; filtering is deferred to extractStableMetrics
-                    events.push(...(data.value as PerformanceEvent[]));
-                }
-            });
-
-            // Ensure runtime is optimized before starting measurement
-            await client.send('Runtime.enable');
-            await client.send('Runtime.runIfWaitingForDebugger');
-
-            // Force garbage collection to stabilize memory state
-            await this.stabilizeGarbageCollection(client);
-
-            // Start tracing with enhanced parameters for stability
-            await client.send('Tracing.start', {
-                transferMode: 'ReportEvents',
-                traceConfig: {
-                    recordMode: 'recordContinuously',
-                    includedCategories: [
-                        'devtools.timeline',
-                        'toplevel',
-                        'blink.user_timing',
-                        'blink_style',
-                        'blink',
-                    ],
-                    excludedCategories: [
-                        'disabled-by-default*',
-                        'devtools.screenshot',
-                        'v8.execute',
-                        'v8.compile',
-                        'v8.gc',
-                    ],
-                },
-            });
-
-            // Give tracing a brief moment to initialize before we start generating work
-            await page.waitForTimeout(30);
-
-            // Barrier: ensure at least one frame tick after tracing starts so we don't miss very early events
-            await page.evaluate(async () => {
-                await new Promise<void>((resolve) =>
-                    requestAnimationFrame(() => resolve()),
-                );
-            });
-
-            // Warm up the measurement system with a small operation
-            await this.warmUpMeasurement(page);
-
-            // Additional deterministic activity burst to guarantee at least a couple of style/layout events
-            await this.ensureActivityBurst(page);
-
-            if (process.env.PERF_COLLECTOR_DEBUG === '1') {
-                console.info('[PerformanceCollector][debug] start collected (pre-loop)', {
-                    events: events.length,
-                    test: testName,
+                client.on('Tracing.dataCollected', (data: any) => {
+                    if (data.value && Array.isArray(data.value)) {
+                        for (const ev of data.value as PerformanceEvent[]) {
+                            if (this.isRelevantEvent(ev)) {
+                                events.push(ev);
+                            }
+                        }
+                    }
                 });
-            }
+                await client.send('Runtime.enable');
+                await client.send('Runtime.runIfWaitingForDebugger');
+                await this.stabilizeGarbageCollection(client);
+                await client.send('Tracing.start', {
+                    transferMode: 'ReportEvents',
+                    traceConfig: {
+                        recordMode: 'recordContinuously',
+                        includedCategories: [
+                            'devtools.timeline',
+                            'toplevel',
+                            'blink.user_timing',
+                        ],
+                        excludedCategories: [
+                            'disabled-by-default*',
+                            'devtools.screenshot',
+                            'v8.execute',
+                            'v8.compile',
+                            'v8.gc',
+                        ],
+                    },
+                });
+                await page.waitForTimeout(25);
+                await page.evaluate(async () => {
+                    await new Promise<void>((resolve) =>
+                        requestAnimationFrame(() => resolve()),
+                    );
+                });
+                await this.warmUpMeasurement(page);
+                await this.ensureActivityBurst(page);
 
-            // Store the active collection with test file info
-            this.activeCollections.set(testName, {
-                client,
-                events,
-                startTime: Date.now(),
-                testFile,
+                this.activeCollections.set(testName, {
+                    client,
+                    events,
+                    startTime: Date.now(),
+                    testFile,
+                });
+
+                if (process.env.PERF_COLLECTOR_DEBUG === '1') {
+                    console.info(
+                        '[PerformanceCollector][debug] start collected (pre-loop)',
+                        {
+                            events: events.length,
+                            test: testName,
+                        },
+                    );
+                }
             });
-
-            // console.log(`✅ Performance collection started for test: ${testName}`);
         } catch (error) {
             console.warn(
                 `Failed to start performance collection for test ${testName}:`,
@@ -236,23 +206,24 @@ export class PerformanceCollector {
                 }
             }
 
-            await new Promise<void>((resolve) => {
-                const timeoutMs = 2000;
-                const timer = setTimeout(() => resolve(), timeoutMs);
+            await this.withLock(async () => {
+                await new Promise<void>((resolve) => {
+                    const timeoutMs = 2000;
+                    const timer = setTimeout(() => resolve(), timeoutMs);
 
-                collection.client.once('Tracing.tracingComplete', () => {
-                    tracingCompleted = true;
-                    clearTimeout(timer);
-                    resolve();
-                });
+                    collection.client.once('Tracing.tracingComplete', () => {
+                        tracingCompleted = true;
+                        clearTimeout(timer);
+                        resolve();
+                    });
 
-                collection.client.send('Tracing.end').catch(() => {
-                    clearTimeout(timer);
-                    resolve();
+                    collection.client.send('Tracing.end').catch(() => {
+                        clearTimeout(timer);
+                        resolve();
+                    });
                 });
+                await collection.client.detach();
             });
-
-            await collection.client.detach();
 
             // Extract metrics using filtered events for more stable results
             let metrics = this.extractStableMetrics(collection.events);
@@ -296,19 +267,25 @@ export class PerformanceCollector {
                 );
             }
 
+            const rawEvents = collection.events.length;
+            const totalOps = metrics.layoutCount + metrics.recalcStyleCount;
+            const opsPerKEvents = rawEvents > 0 ? (totalOps / rawEvents) * 1000 : 0;
+
             // Save metrics to file
-            await this.saveTestMetrics(
+            await this.saveTestMetrics({
                 metrics,
                 testName,
-                page.url(),
-                collection.startTime,
-                collection.testFile,
-            );
+                url: page.url(),
+                startTime: collection.startTime,
+                testFile: collection.testFile,
+                extras: {rawEvents, opsPerKEvents},
+            });
 
             console.info(`📊 Test performance metrics for [${testName}]:`, {
-                rawEvents: collection.events.length,
+                rawEvents,
                 layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
                 recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
+                opsPerKEvents: Number(opsPerKEvents.toFixed(2)),
             });
 
             // Clean up
@@ -319,6 +296,17 @@ export class PerformanceCollector {
                 error,
             );
         }
+    }
+
+    private static async withLock<T>(fn: () => Promise<T>): Promise<T> {
+        const run = this.startStopLock.then(fn, fn);
+
+        this.startStopLock = run.then(
+            () => undefined,
+            () => undefined,
+        );
+
+        return run;
     }
 
     /**
@@ -390,13 +378,15 @@ export class PerformanceCollector {
     /**
      * Saves test-specific metrics to file
      */
-    private static async saveTestMetrics(
-        metrics: PerformanceMetrics,
-        testName: string,
-        url: string,
-        startTime: number,
-        testFile?: string,
-    ): Promise<void> {
+    private static async saveTestMetrics(params: {
+        metrics: PerformanceMetrics;
+        testName: string;
+        url: string;
+        startTime: number;
+        testFile: string | undefined;
+        extras?: {rawEvents: number; opsPerKEvents: number};
+    }): Promise<void> {
+        const {metrics, testName, url, startTime, testFile, extras} = params;
         const performanceData = {
             timestamp: Date.now(),
             testStartTime: startTime,
@@ -409,6 +399,8 @@ export class PerformanceCollector {
                 layoutDuration: Number(metrics.layoutDuration.toFixed(3)),
                 recalcStyleCount: metrics.recalcStyleCount,
                 recalcStyleDuration: Number(metrics.recalcStyleDuration.toFixed(3)),
+                rawEvents: extras?.rawEvents ?? 0,
+                opsPerKEvents: Number((extras?.opsPerKEvents ?? 0).toFixed(2)),
             },
         };
 
