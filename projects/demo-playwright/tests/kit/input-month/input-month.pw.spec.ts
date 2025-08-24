@@ -1,5 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {
+    PerformanceCollector,
     TuiCalendarMonthPO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -14,6 +15,21 @@ const {describe, beforeEach} = test;
 describe('InputMonth', () => {
     let example: Locator;
     let inputMonth: TuiInputMonthPO;
+
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
 
     describe('API', () => {
         beforeEach(({page}) => {

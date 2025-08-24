@@ -1,9 +1,29 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto, TuiSliderPO} from '@demo-playwright/utils';
+import {
+    PerformanceCollector,
+    TuiDocumentationPagePO,
+    tuiGoto,
+    TuiSliderPO,
+} from '@demo-playwright/utils';
 import {maskitoParseNumber} from '@maskito/kit';
 import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('Slider', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     test.use({viewport: {width: 500, height: 500}});
 
     test.describe('correctly displays values with float percentage progress', () => {

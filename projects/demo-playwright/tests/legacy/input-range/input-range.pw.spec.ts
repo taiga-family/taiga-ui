@@ -1,5 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {
+    PerformanceCollector,
     TuiDocumentationApiPagePO,
     tuiGoto,
     TuiInputRangePO,
@@ -10,6 +11,21 @@ import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 import {CHAR_MINUS} from '../../../utils/common';
 
 test.describe('InputRange', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     let example: Locator;
     let inputRange: TuiInputRangePO;
 

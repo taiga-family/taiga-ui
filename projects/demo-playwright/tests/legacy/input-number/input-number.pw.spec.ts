@@ -4,6 +4,7 @@ import {
     CHAR_EN_DASH,
     CHAR_HYPHEN,
     CHAR_MINUS,
+    PerformanceCollector,
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -11,6 +12,21 @@ import {
 import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputNumber', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     let example: Locator;
     let input: Locator;
 

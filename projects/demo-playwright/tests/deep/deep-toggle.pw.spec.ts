@@ -1,8 +1,28 @@
 /* eslint-disable playwright/no-conditional-in-test */
-import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
+import {
+    PerformanceCollector,
+    TuiDocumentationApiPagePO,
+    tuiGoto,
+    tuiMockImages,
+} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Deep / Toggle', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
     deepPaths.forEach((path) =>

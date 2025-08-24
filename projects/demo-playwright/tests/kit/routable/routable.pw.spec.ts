@@ -1,8 +1,27 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {
+    PerformanceCollector,
+    TuiDocumentationPagePO,
+    tuiGoto,
+} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Routable', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     test('should open lazy loaded dialog by click and then close by outside click', async ({
         page,
     }) => {

@@ -1,10 +1,30 @@
-import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
+import {
+    PerformanceCollector,
+    TuiDocumentationPagePO,
+    tuiGoto,
+    tuiMockImages,
+} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import {checkA11y, configureAxe, injectAxe} from 'axe-playwright';
 
 import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
 test.describe('Demo', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
     const axeConfig = JSON.parse(process.env['AXE_CONFIG']!);
 

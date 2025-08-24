@@ -1,5 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {
+    PerformanceCollector,
     TuiCalendarRangePO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -9,6 +10,21 @@ import {expect, type Locator, test} from '@playwright/test';
 const {describe, beforeEach} = test;
 
 describe('CalendarRange', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     const today = new Date(2020, 8, 25);
     let example!: Locator;
     let calendarRange!: TuiCalendarRangePO;

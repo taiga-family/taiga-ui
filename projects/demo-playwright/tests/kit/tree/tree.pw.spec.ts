@@ -1,8 +1,27 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {
+    PerformanceCollector,
+    TuiDocumentationPagePO,
+    tuiGoto,
+} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Tree', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     test('Programmatic control', async ({page}) => {
         await tuiGoto(page, DemoRoute.Tree);
 

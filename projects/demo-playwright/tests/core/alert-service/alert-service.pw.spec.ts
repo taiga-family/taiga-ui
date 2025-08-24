@@ -1,10 +1,25 @@
 import {DemoRoute} from '@demo/routes';
-import {tuiGoto} from '@demo-playwright/utils';
+import {PerformanceCollector, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('AlertService', () => {
     test.use({
         viewport: {width: 720, height: 720},
+    });
+
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
     });
 
     test('is shown correctly', async ({page}) => {

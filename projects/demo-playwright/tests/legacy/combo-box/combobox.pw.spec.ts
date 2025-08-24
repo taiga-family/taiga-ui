@@ -1,5 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {
+    PerformanceCollector,
     TuiComboBoxPO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -8,6 +9,21 @@ import {
 import {expect, test} from '@playwright/test';
 
 test.describe('ComboBox', () => {
+    test.beforeEach(async ({page}, testInfo) => {
+        await PerformanceCollector.startTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+            testInfo.file,
+        );
+    });
+
+    test.afterEach(async ({page}, testInfo) => {
+        await PerformanceCollector.stopTestCollection(
+            page,
+            testInfo.titlePath.join(' › '),
+        );
+    });
+
     test.use({viewport: {width: 500, height: 500}});
 
     test("Don't allow disabled options to be selected by typing them", async ({page}) => {
