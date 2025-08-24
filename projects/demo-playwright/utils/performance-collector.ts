@@ -58,6 +58,18 @@ export class PerformanceCollector {
         try {
             // console.log(`🎯 Starting CDP tracing for test: ${testName}`);
 
+            // Safety: if a previous collection didn't stop correctly, end it to avoid concurrent tracing conflicts
+            if (this.activeCollections.size > 0) {
+                for (const [key, pending] of this.activeCollections.entries()) {
+                    try {
+                        await pending.client.send('Tracing.end').catch(() => {});
+                        await pending.client.detach().catch(() => {});
+                    } catch {}
+
+                    this.activeCollections.delete(key);
+                }
+            }
+
             // Stabilize page state before starting measurements
             await this.stabilizePage(page);
 

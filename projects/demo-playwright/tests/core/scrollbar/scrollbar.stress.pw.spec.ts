@@ -21,6 +21,7 @@ import {expect, test} from '@playwright/test';
  */
 
 test.describe('TuiScrollbar Stress Tests', () => {
+    test.describe.configure({mode: 'serial'});
     let documentationPage: TuiDocumentationPagePO;
 
     // Deterministic pseudo-random number generator for stable scroll patterns
