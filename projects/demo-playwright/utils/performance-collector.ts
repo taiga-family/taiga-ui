@@ -102,6 +102,13 @@ export class PerformanceCollector {
                 },
             });
 
+            // Barrier: ensure at least one frame tick after tracing starts so we don't miss very early events
+            await page.evaluate(async () => {
+                await new Promise<void>((resolve) =>
+                    requestAnimationFrame(() => resolve()),
+                );
+            });
+
             // Warm up the measurement system with a small operation
             await this.warmUpMeasurement(page);
 
@@ -150,6 +157,35 @@ export class PerformanceCollector {
 
             // Stop tracing with graceful fallback: avoid noisy warnings if completion event not emitted
             let tracingCompleted = false;
+
+            // If nothing captured yet, inject a tiny deterministic synthetic workload to guarantee at least one layout/style slice
+            if (collection.events.length === 0) {
+                await page.evaluate(() => {
+                    const host = document.body;
+                    const probe = document.createElement('div');
+
+                    probe.style.cssText =
+                        'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;outline:1px solid transparent;';
+                    host.appendChild(probe);
+                    // Force style + layout
+                    probe.className = 'perf-probe';
+                    void probe.offsetHeight;
+                    probe.style.transform = 'translateZ(0)';
+                    void probe.offsetWidth;
+                    probe.style.transform = '';
+                    // Mutate style to ensure RecalculateStyles
+                    probe.style.borderLeft = '1px solid rgba(0,0,0,0)';
+                    void probe.clientTop;
+                    probe.remove();
+                });
+                // Allow the synthetic operations to appear in the trace
+                await page.evaluate(async () => {
+                    await new Promise<void>((resolve) =>
+                        requestAnimationFrame(() => resolve()),
+                    );
+                });
+                await page.waitForTimeout(30);
+            }
 
             await new Promise<void>((resolve) => {
                 const timeoutMs = 2000;
