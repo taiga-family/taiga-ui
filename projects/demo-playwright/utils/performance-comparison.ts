@@ -20,9 +20,6 @@ interface PerformanceMetrics {
     recalcStyleDurationPerOpCoV?: number;
 }
 
-/**
- * Performance data structure saved to JSON files
- */
 interface PerformanceData {
     timestamp: number;
     testStartTime?: number;
@@ -33,9 +30,6 @@ interface PerformanceData {
     metrics: PerformanceMetrics;
 }
 
-/**
- * Comparison between baseline and current metrics for a single test
- */
 interface MetricsComparison {
     testName: string;
     component: string;
@@ -315,7 +309,13 @@ export class PerformanceComparison {
         changeThreshold: number = this.DEFAULT_CHANGE_THRESHOLD,
     ): string {
         const {summary, details} = report;
-        const filteredDetails = this.filterDetailsByThreshold(details, changeThreshold);
+        const netPctThreshold = Number(process.env.PERF_NET_PERCENT_THRESHOLD || '10');
+        const overallNetRegressed = summary.overallNetDurationChange >= netPctThreshold;
+        const filteredDetails = this.filterDetailsByThreshold(
+            details,
+            changeThreshold,
+            overallNetRegressed,
+        );
 
         let markdown = '## 📊 Performance Metrics Comparison\n\n';
 
@@ -330,7 +330,7 @@ export class PerformanceComparison {
         markdown += this.generatePatternSummary(details);
         markdown += this.generateSummarySection(summary);
 
-        if (summary.testsWithSignificantChanges > 0) {
+        if (summary.testsWithSignificantChanges > 0 || overallNetRegressed) {
             markdown += this.generateDetailsSection(
                 filteredDetails,
                 details,
@@ -724,11 +724,24 @@ export class PerformanceComparison {
     private static filterDetailsByThreshold(
         details: MetricsComparison[],
         changeThreshold: number,
+        overallNetRegressed = false,
     ): MetricsComparison[] {
+        const minNetMs = Number(process.env.PERF_NET_CONTRIBUTOR_ABS_MS_FLOOR || '3');
+
         return details.filter((detail) => {
             if (!detail.baseline) {
-                return true;
-            } // show new tests
+                return true; // always include new tests
+            }
+
+            if (overallNetRegressed) {
+                const netMs =
+                    (detail.diff.layoutDuration || 0) +
+                    (detail.diff.recalcStyleDuration || 0);
+
+                if (netMs >= minNetMs && netMs > 0) {
+                    return true; // surface contributors when global net regressed
+                }
+            }
 
             return this.isRegressionCandidate(detail, changeThreshold);
         });
@@ -824,7 +837,7 @@ export class PerformanceComparison {
         const netCostPct = netBaseTotal > 0 ? (netCost / netBaseTotal) * 100 : 0;
 
         // Unified net gating thresholds
-        const NET_PCT_THRESHOLD = Number(process.env.PERF_NET_PERCENT_THRESHOLD || '8');
+        const NET_PCT_THRESHOLD = Number(process.env.PERF_NET_PERCENT_THRESHOLD || '10');
         const NET_ABS_MS_THRESHOLD = Number(
             process.env.PERF_NET_ABS_MS_THRESHOLD || '15',
         );
@@ -853,7 +866,7 @@ export class PerformanceComparison {
             } else if (perOpOnlyLayout || perOpOnlyRecalc) {
                 detail.pattern = 'per-op-increase';
             }
-        } else if (netCost > 0 && netCostPct >= NET_PCT_THRESHOLD) {
+        } else if (netCost > 0) {
             detail.pattern = 'net-increase-non-gated';
         } else if (netCost <= 0) {
             detail.pattern = 'improvement';
@@ -932,15 +945,26 @@ export class PerformanceComparison {
     }
 
     private static generateStatusLine(summary: ComparisonReport['summary']): string {
-        if (summary.testsWithSignificantChanges === 0 && summary.testsWithBaseline > 0) {
-            return '✅ No significant performance regressions detected!';
+        if (summary.testsWithBaseline === 0) {
+            return '';
         }
+
+        const net = summary.overallNetDurationChange;
+        const NET_PCT_THRESHOLD = Number(process.env.PERF_NET_PERCENT_THRESHOLD || '10');
 
         if (summary.testsWithSignificantChanges > 0) {
             return `⚠️ ${summary.testsWithSignificantChanges} test(s) show significant performance changes`;
         }
 
-        return '';
+        if (net > NET_PCT_THRESHOLD) {
+            return `⚠️ Aggregate net rendering cost increased ${net > 0 ? '+' : ''}${net.toFixed(1)}% (distributed across many tests)`;
+        }
+
+        if (net > 0) {
+            return `ℹ️ Small net rendering cost increase: +${net.toFixed(1)}% (below gating thresholds)`;
+        }
+
+        return '✅ No significant performance regressions detected!';
     }
 
     /**
@@ -1072,6 +1096,53 @@ export class PerformanceComparison {
         }
 
         return netPct > 0 ? 'net-increase' : 'neutral';
+    }
+
+    private static generateNetIncreaseFallbackSection(
+        details: MetricsComparison[],
+    ): string {
+        const rows = details
+            .filter((d) => d.baseline)
+            .map((d) => {
+                const netMs = d.diff.layoutDuration + d.diff.recalcStyleDuration;
+                const baseNet =
+                    (d.baseline?.layoutDuration || 0) +
+                    (d.baseline?.recalcStyleDuration || 0);
+                const netPct = baseNet > 0 ? (netMs / baseNet) * 100 : 0;
+
+                return {d, netMs, netPct};
+            })
+            .filter((x) => x.netMs > 0)
+            .sort((a, b) => b.netPct - a.netPct);
+
+        if (!rows.length) {
+            return '';
+        }
+
+        const limit = Number(process.env.PERF_NET_FALLBACK_LIMIT || '10');
+        const slice = rows.slice(0, limit);
+        let section = '\n';
+
+        section += '<details open>\n';
+        section += `<summary>Net increase contributors (top ${slice.length} by percent)</summary>\n\n`;
+        section +=
+            '| Test Name | Pattern | Net Δ (ms) | Net Δ (%) | Layout Δ (ms) | Recalc Δ (ms) |\n';
+        section +=
+            '|-----------|---------|-----------:|----------:|--------------:|--------------:|\n';
+
+        for (const {d, netMs, netPct} of slice) {
+            const pattern = d.pattern || this.classifyPattern(d);
+            const layoutMs = d.diff.layoutDuration;
+            const recalcMs = d.diff.recalcStyleDuration;
+            const fmt = (v: number): string =>
+                v >= 0 ? `+${v.toFixed(2)}` : v.toFixed(2);
+
+            section += `| ${d.testName} | ${pattern} | ${fmt(netMs)} | ${fmt(netPct)}% | ${fmt(layoutMs)} | ${fmt(recalcMs)} |\n`;
+        }
+
+        section += '</details>\n\n';
+
+        return section;
     }
 
     // Aggregate multiple run metrics into robust median with outlier filtering
