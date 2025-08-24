@@ -33,7 +33,7 @@ export class TuiRangeChange {
                     activeThumb = this.detectActiveThumb(clientX, target);
                     this.range.slidersRefs
                         .get(activeThumb === 'start' ? 0 : 1)
-                        ?.nativeElement.setPointerCapture?.(pointerId);
+                        ?.nativeElement.setPointerCapture(pointerId);
                     // TODO(v5): remove backward compatibility
                     this.activeThumbChange.emit(
                         activeThumb === 'start' ? 'left' : 'right',
