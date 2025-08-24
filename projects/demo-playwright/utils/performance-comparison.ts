@@ -330,7 +330,7 @@ export class PerformanceComparison {
         markdown += this.generatePatternSummary(details);
         markdown += this.generateSummarySection(summary);
 
-        if (summary.testsWithSignificantChanges > 0 || overallNetRegressed) {
+        if (filteredDetails.length > 0) {
             markdown += this.generateDetailsSection(
                 filteredDetails,
                 details,
@@ -726,25 +726,58 @@ export class PerformanceComparison {
         changeThreshold: number,
         overallNetRegressed = false,
     ): MetricsComparison[] {
-        const minNetMs = Number(process.env.PERF_NET_CONTRIBUTOR_ABS_MS_FLOOR || '3');
+        return details.filter((d) =>
+            this.shouldDisplayRow(d, changeThreshold, overallNetRegressed),
+        );
+    }
 
-        return details.filter((detail) => {
-            if (!detail.baseline) {
-                return true; // always include new tests
+    /**
+     * Decide if a test row should be visible (looser than regression gating).
+     */
+    private static shouldDisplayRow(
+        detail: MetricsComparison,
+        changeThreshold: number,
+        overallNetRegressed: boolean,
+    ): boolean {
+        if (!detail.baseline) {
+            return true; // new test
+        }
+
+        // Strict gated regression always visible
+        if (this.isRegressionCandidate(detail, changeThreshold)) {
+            return true;
+        }
+
+        const pctChanges = [
+            Math.abs(detail.changes.layoutDuration),
+            Math.abs(detail.changes.recalcStyleDuration),
+            Math.abs(detail.changes.layoutCount),
+            Math.abs(detail.changes.recalcStyleCount),
+        ];
+
+        if (pctChanges.some((v) => v >= changeThreshold)) {
+            return true;
+        }
+
+        const ABS_DELTA_FLOOR = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
+
+        if (
+            Math.abs(detail.diff.layoutDuration) >= ABS_DELTA_FLOOR ||
+            Math.abs(detail.diff.recalcStyleDuration) >= ABS_DELTA_FLOOR
+        ) {
+            return true;
+        }
+
+        if (overallNetRegressed) {
+            const minNetMs = Number(process.env.PERF_NET_CONTRIBUTOR_ABS_MS_FLOOR || '3');
+            const netMs = detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
+
+            if (netMs > 0 && netMs >= minNetMs) {
+                return true;
             }
+        }
 
-            if (overallNetRegressed) {
-                const netMs =
-                    (detail.diff.layoutDuration || 0) +
-                    (detail.diff.recalcStyleDuration || 0);
-
-                if (netMs >= minNetMs && netMs > 0) {
-                    return true; // surface contributors when global net regressed
-                }
-            }
-
-            return this.isRegressionCandidate(detail, changeThreshold);
-        });
+        return false;
     }
 
     /**
