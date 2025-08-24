@@ -114,6 +114,16 @@ export class PerformanceCollector {
             // Warm up the measurement system with a small operation
             await this.warmUpMeasurement(page);
 
+            // Additional deterministic activity burst to guarantee at least a couple of style/layout events
+            await this.ensureActivityBurst(page);
+
+            if (process.env.PERF_COLLECTOR_DEBUG === '1') {
+                console.info('[PerformanceCollector][debug] start collected (pre-loop)', {
+                    events: events.length,
+                    test: testName,
+                });
+            }
+
             // Store the active collection with test file info
             this.activeCollections.set(testName, {
                 client,
@@ -581,6 +591,40 @@ export class PerformanceCollector {
             });
         } catch {
             // Ignore warmup errors to avoid disrupting the main test
+        }
+    }
+
+    private static async ensureActivityBurst(page: Page): Promise<void> {
+        try {
+            await page.evaluate(async () => {
+                const host = document.body;
+                const container = document.createElement('div');
+
+                container.style.cssText =
+                    'position:absolute;left:-9999px;top:-9999px;width:10px;height:10px;';
+                host.appendChild(container);
+
+                for (let i = 0; i < 6; i++) {
+                    const el = document.createElement('div');
+
+                    el.textContent = `burst-${i}`;
+                    el.style.cssText =
+                        'display:block;width:100%;height:4px;transform:translateZ(0);';
+                    container.appendChild(el);
+                    void el.offsetHeight;
+                    el.style.transform = `scale(${1 + i * 0.002})`;
+                    void el.clientTop;
+                    el.style.transform = '';
+                }
+
+                // Force two animation frames to flush timeline events
+                await new Promise<void>((resolve) =>
+                    requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+                );
+                container.remove();
+            });
+        } catch {
+            // Silent
         }
     }
 }
