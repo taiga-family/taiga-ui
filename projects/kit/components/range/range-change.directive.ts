@@ -50,13 +50,11 @@ export class TuiRangeChange {
                         target === startSliderRef?.nativeElement ||
                         target === endSliderRef?.nativeElement;
 
-                    if (isThumbClick) {
-                        return tuiTypedFromEvent(this.doc, 'pointermove');
-                    } else {
-                        return tuiTypedFromEvent(this.doc, 'pointermove').pipe(
-                            startWith(event),
-                        );
-                    }
+                    return isThumbClick
+                        ? tuiTypedFromEvent(this.doc, 'pointermove')
+                        : tuiTypedFromEvent(this.doc, 'pointermove').pipe(
+                              startWith(event),
+                          );
                 }),
                 map(({clientX}) => this.getFractionFromEvents(clientX ?? 0)),
                 takeUntil(tuiTypedFromEvent(this.doc, 'pointerup', {passive: true})),
