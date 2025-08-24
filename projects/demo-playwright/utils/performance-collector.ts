@@ -214,10 +214,8 @@ export class PerformanceCollector {
             layoutDuration: 0,
             recalcStyleDuration: 0,
         };
-
-        const MIN_EVENT_DURATION_MS = 0.02;
-        let rawLayout = 0;
-        let rawRecalc = 0;
+        // Optional per-event duration floor; defaults to 0 so we don't lose micro work
+        const perEventMin = Number(process.env.PERF_EVENT_MIN_DURATION_MS || '0');
 
         for (const event of events) {
             if (!event.cat?.includes('devtools.timeline')) {
@@ -227,31 +225,21 @@ export class PerformanceCollector {
             const durationMs = event.dur ? event.dur / 1000 : 0;
 
             if (event.name === 'Layout') {
-                rawLayout++;
+                metrics.layoutCount++;
 
-                if (durationMs >= MIN_EVENT_DURATION_MS) {
-                    metrics.layoutCount++;
+                if (durationMs >= perEventMin) {
                     metrics.layoutDuration += durationMs;
                 }
             } else if (
                 event.name === 'RecalculateStyles' ||
                 event.name === 'UpdateLayoutTree'
             ) {
-                rawRecalc++;
+                metrics.recalcStyleCount++;
 
-                if (durationMs >= MIN_EVENT_DURATION_MS) {
-                    metrics.recalcStyleCount++;
+                if (durationMs >= perEventMin) {
                     metrics.recalcStyleDuration += durationMs;
                 }
             }
-        }
-
-        if (metrics.layoutCount === 0 && rawLayout > 0) {
-            metrics.layoutCount = rawLayout;
-        }
-
-        if (metrics.recalcStyleCount === 0 && rawRecalc > 0) {
-            metrics.recalcStyleCount = rawRecalc;
         }
 
         metrics.layoutDuration = Math.round(metrics.layoutDuration * 1000) / 1000;
@@ -261,10 +249,11 @@ export class PerformanceCollector {
         if (process.env.PERF_COLLECTOR_DEBUG === '1') {
             console.info('[PerformanceCollector][debug] events', {
                 total: events.length,
-                rawLayout,
-                rawRecalc,
-                countedLayout: metrics.layoutCount,
-                countedRecalc: metrics.recalcStyleCount,
+                layoutCount: metrics.layoutCount,
+                recalcStyleCount: metrics.recalcStyleCount,
+                layoutDuration: metrics.layoutDuration,
+                recalcStyleDuration: metrics.recalcStyleDuration,
+                perEventMin,
             });
         }
 
