@@ -2,8 +2,7 @@ import {ChangeDetectionStrategy, Component, TemplateRef, ViewChild} from '@angul
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiCard, TuiInputCardGroup} from '@taiga-ui/addon-commerce';
-import {TuiIcon} from '@taiga-ui/core';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {TuiIcon, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import {type Mock} from 'jest-mock';
 import {firstValueFrom, timer} from 'rxjs';
