@@ -359,14 +359,14 @@ describe('TuiRange', () => {
 
             cy.get('@startThumb').then(($thumb) => {
                 const thumbRect = $thumb[0].getBoundingClientRect();
-                
+
                 cy.get('@startThumb')
                     .trigger('pointerdown', {
                         clientX: thumbRect.left + thumbRect.width / 2,
                         clientY: thumbRect.top + thumbRect.height / 2,
                         pointerId: 1,
                     })
-                    .trigger('pointerup', { pointerId: 1 })
+                    .trigger('pointerup', {pointerId: 1})
                     .then(() => {
                         expect(component.control.value?.[0]).to.equal(initialValue[0]);
                         expect(component.control.value?.[1]).to.equal(initialValue[1]);
@@ -382,14 +382,14 @@ describe('TuiRange', () => {
 
             cy.get('@endThumb').then(($thumb) => {
                 const thumbRect = $thumb[0].getBoundingClientRect();
-                
+
                 cy.get('@endThumb')
                     .trigger('pointerdown', {
                         clientX: thumbRect.left + thumbRect.width / 2,
                         clientY: thumbRect.top + thumbRect.height / 2,
                         pointerId: 1,
                     })
-                    .trigger('pointerup', { pointerId: 1 })
+                    .trigger('pointerup', {pointerId: 1})
                     .then(() => {
                         expect(component.control.value?.[0]).to.equal(initialValue[0]);
                         expect(component.control.value?.[1]).to.equal(initialValue[1]);
@@ -406,16 +406,18 @@ describe('TuiRange', () => {
             cy.get('tui-range').then(($range) => {
                 const rangeRect = $range[0].getBoundingClientRect();
                 const clickX = rangeRect.left + rangeRect.width * 0.7;
-                
+
                 cy.get('tui-range')
                     .trigger('pointerdown', {
                         clientX: clickX,
                         clientY: rangeRect.top + rangeRect.height / 2,
                         pointerId: 1,
                     })
-                    .trigger('pointerup', { pointerId: 1 })
+                    .trigger('pointerup', {pointerId: 1})
                     .then(() => {
-                        expect(component.control.value?.[1]).to.be.greaterThan(initialValue[1]);
+                        expect(component.control.value?.[1]).to.be.greaterThan(
+                            initialValue[1],
+                        );
                     });
             });
         });
