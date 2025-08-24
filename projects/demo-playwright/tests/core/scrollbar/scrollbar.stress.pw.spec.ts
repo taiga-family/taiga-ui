@@ -177,9 +177,12 @@ test.describe('TuiScrollbar Stress Tests', () => {
                     if (!(el instanceof HTMLElement)) {
                         return;
                     }
+
                     const host = el;
+
                     for (let i = 0; i < 10; i++) {
                         const probe = document.createElement('div');
+
                         probe.textContent = `probe-${i}`;
                         probe.style.cssText =
                             'position:relative;display:block;width:100%;height:6px;padding:1px;';
