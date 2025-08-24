@@ -171,6 +171,36 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 }, i * 50);
             }
 
+            // Optional forced layout/style burst to guarantee measurable activity if prior loop produced no trace events
+            if (process.env.PERF_FORCE_LAYOUT_BURST !== '0') {
+                await viewport.evaluate((el) => {
+                    if (!(el instanceof HTMLElement)) {
+                        return;
+                    }
+                    const host = el;
+                    for (let i = 0; i < 10; i++) {
+                        const probe = document.createElement('div');
+                        probe.textContent = `probe-${i}`;
+                        probe.style.cssText =
+                            'position:relative;display:block;width:100%;height:6px;padding:1px;';
+                        host.appendChild(probe);
+                        // Force layout & style
+                        void probe.offsetHeight;
+                        probe.style.transform = 'translateZ(0) scale(1.01)';
+                        void probe.clientTop;
+                        probe.style.transform = '';
+                        probe.remove();
+                    }
+                });
+                // Allow frame to process the burst
+                await page.evaluate(async () => {
+                    await new Promise<void>((resolve) =>
+                        requestAnimationFrame(() => resolve()),
+                    );
+                });
+                await page.waitForTimeout(30);
+            }
+
             await page.waitForTimeout(100);
 
             await PerformanceCollector.stopTestCollection(

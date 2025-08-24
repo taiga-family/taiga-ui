@@ -285,27 +285,33 @@ export class PerformanceCollector {
         const perEventMin = Number(process.env.PERF_EVENT_MIN_DURATION_MS || '0');
 
         for (const event of events) {
-            if (!event.cat?.includes('devtools.timeline')) {
+            if (!this.isRelevantEvent(event)) {
                 continue;
             }
 
             const durationMs = event.dur ? event.dur / 1000 : 0;
 
-            if (event.name === 'Layout') {
-                metrics.layoutCount++;
+            switch (event.name) {
+                case 'Layout':
+                    metrics.layoutCount++;
 
-                if (durationMs >= perEventMin) {
-                    metrics.layoutDuration += durationMs;
-                }
-            } else if (
-                event.name === 'RecalculateStyles' ||
-                event.name === 'UpdateLayoutTree'
-            ) {
-                metrics.recalcStyleCount++;
+                    if (durationMs >= perEventMin) {
+                        metrics.layoutDuration += durationMs;
+                    }
 
-                if (durationMs >= perEventMin) {
-                    metrics.recalcStyleDuration += durationMs;
-                }
+                    break;
+                case 'RecalculateStyles':
+                case 'ScheduleStyleRecalculation':
+                case 'UpdateLayoutTree':
+                    metrics.recalcStyleCount++;
+
+                    if (durationMs >= perEventMin) {
+                        metrics.recalcStyleDuration += durationMs;
+                    }
+
+                    break;
+                default:
+                    break;
             }
         }
 
