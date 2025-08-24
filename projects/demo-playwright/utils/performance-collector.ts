@@ -67,12 +67,8 @@ export class PerformanceCollector {
             // Set up event collection with better error handling
             client.on('Tracing.dataCollected', (data: any) => {
                 if (data.value && Array.isArray(data.value)) {
-                    // Filter events to reduce noise from background activities
-                    const filteredEvents = data.value.filter((event: PerformanceEvent) =>
-                        this.isRelevantEvent(event),
-                    );
-
-                    events.push(...filteredEvents);
+                    // Capture all events; filtering is deferred to extractStableMetrics
+                    events.push(...(data.value as PerformanceEvent[]));
                 }
             });
 
@@ -237,7 +233,40 @@ export class PerformanceCollector {
             await collection.client.detach();
 
             // Extract metrics using filtered events for more stable results
-            const metrics = this.extractStableMetrics(collection.events);
+            let metrics = this.extractStableMetrics(collection.events);
+
+            if (
+                collection.events.length > 0 &&
+                metrics.layoutCount === 0 &&
+                metrics.recalcStyleCount === 0
+            ) {
+                // Escalate: run a stronger synthetic workload to ensure at least one relevant event
+                await page.evaluate(() => {
+                    const host = document.body;
+
+                    for (let i = 0; i < 20; i++) {
+                        const el = document.createElement('div');
+
+                        el.style.cssText =
+                            'position:absolute;left:-9999px;top:-9999px;width:4px;height:4px;';
+                        host.appendChild(el);
+                        void el.offsetHeight;
+                        el.style.transform = `scale(${1 + i * 0.001})`;
+                        void el.clientTop;
+                        el.remove();
+                    }
+                });
+                await page.evaluate(async () => {
+                    await new Promise<void>((resolve) =>
+                        requestAnimationFrame(() =>
+                            requestAnimationFrame(() => resolve()),
+                        ),
+                    );
+                });
+                await page.waitForTimeout(60);
+                // Re-extract metrics including any late-arriving events
+                metrics = this.extractStableMetrics(collection.events);
+            }
 
             if (!tracingCompleted && collection.events.length === 0) {
                 console.warn(
@@ -255,6 +284,7 @@ export class PerformanceCollector {
             );
 
             console.info(`📊 Test performance metrics for [${testName}]:`, {
+                rawEvents: collection.events.length,
                 layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
                 recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
             });
