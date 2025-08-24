@@ -414,8 +414,9 @@ describe('TuiRange', () => {
                         clientX: clickX,
                         clientY: rangeRect.top + rangeRect.height / 2,
                         pointerId: 1,
+                        force: true,
                     })
-                    .trigger('pointerup', {pointerId: 1})
+                    .trigger('pointerup', {pointerId: 1, force: true})
                     .then(() => {
                         expect(component.control.value?.[1]).to.be.greaterThan(
                             initialValue[1],
