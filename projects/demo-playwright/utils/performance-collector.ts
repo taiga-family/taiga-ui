@@ -1,4 +1,4 @@
-import {type Page} from '@playwright/test';
+import {type CDPSession, type Page} from '@playwright/test';
 import {mkdirSync} from 'fs';
 import {writeFile} from 'fs/promises';
 import {join, resolve} from 'path';
@@ -32,7 +32,7 @@ export class PerformanceCollector {
     private static readonly activeCollections = new Map<
         string,
         {
-            client: any;
+            client: CDPSession;
             events: PerformanceEvent[];
             startTime: number;
             testFile?: string;
@@ -70,7 +70,6 @@ export class PerformanceCollector {
                 });
                 await client.send('Runtime.enable');
                 await client.send('Runtime.runIfWaitingForDebugger');
-                await this.stabilizeGarbageCollection(client);
                 await client.send('Tracing.start', {
                     transferMode: 'ReportEvents',
                     traceConfig: {
@@ -180,30 +179,7 @@ export class PerformanceCollector {
                 });
                 await page.waitForTimeout(40);
 
-                // If still empty after first synthetic batch, run a stronger fallback
-                if (collection.events.length === 0) {
-                    await page.evaluate(() => {
-                        const host = document.body;
-
-                        for (let i = 0; i < 5; i++) {
-                            const el = document.createElement('div');
-
-                            el.style.cssText =
-                                'position:absolute;left:-9999px;top:-9999px;width:2px;height:2px;';
-                            host.appendChild(el);
-                            void el.offsetHeight;
-                            el.style.transform = 'scale(1.01)';
-                            void el.clientTop;
-                            el.remove();
-                        }
-                    });
-                    await page.evaluate(async () => {
-                        await new Promise<void>((resolve) =>
-                            requestAnimationFrame(() => resolve()),
-                        );
-                    });
-                    await page.waitForTimeout(40);
-                }
+                // Single lightweight fallback only; escalation removed as unnecessary
             }
 
             await this.withLock(async () => {
@@ -226,40 +202,7 @@ export class PerformanceCollector {
             });
 
             // Extract metrics using filtered events for more stable results
-            let metrics = this.extractStableMetrics(collection.events);
-
-            if (
-                collection.events.length > 0 &&
-                metrics.layoutCount === 0 &&
-                metrics.recalcStyleCount === 0
-            ) {
-                // Escalate: run a stronger synthetic workload to ensure at least one relevant event
-                await page.evaluate(() => {
-                    const host = document.body;
-
-                    for (let i = 0; i < 20; i++) {
-                        const el = document.createElement('div');
-
-                        el.style.cssText =
-                            'position:absolute;left:-9999px;top:-9999px;width:4px;height:4px;';
-                        host.appendChild(el);
-                        void el.offsetHeight;
-                        el.style.transform = `scale(${1 + i * 0.001})`;
-                        void el.clientTop;
-                        el.remove();
-                    }
-                });
-                await page.evaluate(async () => {
-                    await new Promise<void>((resolve) =>
-                        requestAnimationFrame(() =>
-                            requestAnimationFrame(() => resolve()),
-                        ),
-                    );
-                });
-                await page.waitForTimeout(60);
-                // Re-extract metrics including any late-arriving events
-                metrics = this.extractStableMetrics(collection.events);
-            }
+            const metrics = this.extractStableMetrics(collection.events);
 
             if (!tracingCompleted && collection.events.length === 0) {
                 console.warn(
@@ -436,41 +379,13 @@ export class PerformanceCollector {
      */
     private static async stabilizePage(page: Page): Promise<void> {
         try {
-            // Wait for any pending animations or transitions to complete
             await page.waitForLoadState('networkidle');
-
-            // Force garbage collection to stabilize memory state
-            await page.evaluate(() => {
-                // Force GC if available (in --expose-gc environments)
-                if (typeof (globalThis as any).gc === 'function') {
-                    (globalThis as any).gc();
-                } else {
-                    // Alternative: create memory pressure to encourage GC
-                    const tempArrays = [];
-
-                    for (let i = 0; i < 50; i++) {
-                        tempArrays.push(new Array(5000).fill(0));
-                    }
-
-                    tempArrays.length = 0;
-                }
-            });
-
-            // Wait for any pending layout operations
             await page.evaluate(async () => {
-                return new Promise<void>((resolve) => {
-                    // Force any pending layout calculations
-                    void document.body.offsetHeight;
-
-                    // Wait for next frame to ensure all rendering is complete
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => resolve());
-                    });
-                });
+                await new Promise<void>((resolve) =>
+                    requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+                );
             });
-
-            // Additional stabilization wait for GC to complete
-            await page.waitForTimeout(100);
+            await page.waitForTimeout(20);
         } catch (error) {
             console.warn('Page stabilization failed:', error);
         }
@@ -522,53 +437,6 @@ export class PerformanceCollector {
         }
 
         return false;
-    }
-
-    /**
-     * Stabilizes garbage collection state before performance measurement
-     */
-    private static async stabilizeGarbageCollection(client: any): Promise<void> {
-        try {
-            // Force a major garbage collection to clear memory and stabilize heap
-            await client.send('Runtime.evaluate', {
-                expression: `
-                    // Force garbage collection if available
-                    if (typeof gc === 'function') {
-                        gc();
-                    } else {
-                        // Alternative approach: create memory pressure to trigger GC
-                        const arrays = [];
-                        for (let i = 0; i < 100; i++) {
-                            arrays.push(new Array(10000).fill(0));
-                        }
-                        arrays.length = 0;
-                    }
-                `,
-                awaitPromise: false,
-                returnByValue: false,
-            });
-
-            // Wait for GC to complete
-            await new Promise((resolve) => setTimeout(resolve, 100));
-
-            // Get heap usage to ensure GC has completed (for monitoring)
-            try {
-                await client.send('Runtime.evaluate', {
-                    expression:
-                        'performance.memory ? performance.memory.usedJSHeapSize : 0',
-                    returnByValue: true,
-                });
-            } catch {
-                // Ignore heap monitoring errors
-            }
-
-            // Additional small delay for GC stabilization
-            await new Promise((resolve) => setTimeout(resolve, 50));
-
-            // console.log(`🧹 GC stabilization completed, heap usage: ${heapUsage.result?.value || 'unknown'}`);
-        } catch (error) {
-            console.warn('GC stabilization failed, continuing with measurement:', error);
-        }
     }
 
     /**
