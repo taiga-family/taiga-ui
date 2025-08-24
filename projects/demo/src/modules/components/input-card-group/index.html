@@ -30,6 +30,7 @@
                     [invalid]="control.invalid"
                     [placeholder]="placeholder"
                     [readOnly]="control.readonly"
+                    [size]="size"
                     [tuiDisabled]="control.disabled"
                 />
             </ng-template>
@@ -109,6 +110,15 @@
                 [(value)]="placeholder"
             >
                 Placeholder
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeL | TuiSizeS"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size of the input card group
             </tr>
             <tr
                 name="(binChange)"

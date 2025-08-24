@@ -11,6 +11,7 @@ import {
     TuiThumbnailCard,
 } from '@taiga-ui/addon-commerce';
 import {tuiIsString} from '@taiga-ui/cdk';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -35,6 +36,7 @@ export default class PageComponent {
         'With custom card template',
         'Custom form state',
         'Custom labels',
+        'Different sizes',
     ];
 
     protected readonly cards: Record<string, PolymorpheusContent | string> = {
@@ -61,6 +63,9 @@ export default class PageComponent {
     ];
 
     protected inputs = this.options.inputs;
+
+    protected readonly sizeVariants: readonly (TuiSizeL | TuiSizeS)[] = ['m', 'l'];
+    protected size: TuiSizeL | TuiSizeS = 'l';
 
     protected formControl = new FormControl<TuiCard | null>(null);
 

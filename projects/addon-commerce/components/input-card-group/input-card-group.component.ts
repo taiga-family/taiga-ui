@@ -60,6 +60,7 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, map, merge, Subject, switchMap, timer} from 'rxjs';
@@ -106,7 +107,7 @@ export interface TuiCard {
         TuiWithDropdownOpen,
     ],
     host: {
-        'data-size': 'l',
+        '[attr.data-size]': 'size',
         '[style.--tui-duration.s]': '0',
         '(pointerdown)': 'onPointerDown($event)',
         '(scroll.zoneless)': '$event.target.scrollLeft = 0',
@@ -207,6 +208,9 @@ export class TuiInputCardGroup
     /** @deprecated apparently "off" doesn't disable autocomplete */
     @Input()
     public autocomplete = this.options.autocomplete;
+
+    @Input()
+    public size: TuiSizeL | TuiSizeS = 'l';
 
     @Output()
     public readonly binChange = new EventEmitter<string | null>();
