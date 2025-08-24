@@ -100,7 +100,7 @@
 - [Input Date Multi](https://taiga-ui.dev/components/input-date-multi) — InputDateMulti uses specifically modified Textfield to represent array of dates.
 - [Input Date Range](https://taiga-ui.dev/components/input-date-range) — InputDateRange = Textfield + CalendarRange + ❤️
 - [Input Date Time](https://taiga-ui.dev/components/input-date-time) — InputDateTime = Textfield + Calendar + ❤️
-- [Input Files](https://taiga-ui.dev/components/input-files) — An input for uploading one or several files using native input file capabilities
+- [Input Files](https://taiga-ui.dev/components/input-files) — An input for upload one or several files. It uses native input file abilities.
 - [Input Inline](https://taiga-ui.dev/components/input-inline) — Inline input field
 - [Input Month](https://taiga-ui.dev/components/input-month) — InputMonth = Textfield + CalendarMonth + ❤️
 - [Input Number](https://taiga-ui.dev/components/input-number) — InputNumber is a form field to provide numerical input.
@@ -210,10 +210,6 @@
 - [Validator](https://taiga-ui.dev/directives/validator) — tuiValidator allows set validators for form control on the fly
 - [Value Changes](https://taiga-ui.dev/directives/value-changes) — This directive allows you to access reactive control or container value changes as an output
 - [Zoom](https://taiga-ui.dev/directives/zoom) — tuiZoom directive emits delta between wheel events or between pinch on mobile devices. It emits coordinates of the zoom center as well. You can use it to change the scale of an element as in example below
-
-### Experimental
-
-- [Dialog](https://taiga-ui.dev/experimental/dialog)
 
 ### Icons
 
