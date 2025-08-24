@@ -137,8 +137,16 @@ export class PerformanceCollector {
 
             // console.log(`🛑 Stopping CDP tracing for test: ${testName}`);
 
-            // Allow any pending events to be collected
-            await page.waitForTimeout(10);
+            // Allow pending layout/style events to flush: two RAFs + configurable idle wait
+            await page.evaluate(async () => {
+                await new Promise<void>((resolve) =>
+                    requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+                );
+            });
+
+            const flushWait = Number(process.env.PERF_TRACE_FLUSH_WAIT_MS || '70');
+
+            await page.waitForTimeout(flushWait);
 
             // Stop tracing with graceful fallback: avoid noisy warnings if completion event not emitted
             let tracingCompleted = false;
