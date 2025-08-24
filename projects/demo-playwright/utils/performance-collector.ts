@@ -151,37 +151,6 @@ export class PerformanceCollector {
             // Stop tracing with graceful fallback: avoid noisy warnings if completion event not emitted
             let tracingCompleted = false;
 
-            // If nothing captured yet, inject a tiny deterministic synthetic workload to guarantee at least one layout/style slice
-            if (collection.events.length === 0) {
-                await page.evaluate(() => {
-                    const host = document.body;
-                    const probe = document.createElement('div');
-
-                    probe.style.cssText =
-                        'position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;outline:1px solid transparent;';
-                    host.appendChild(probe);
-                    // Force style + layout
-                    probe.className = 'perf-probe';
-                    void probe.offsetHeight;
-                    probe.style.transform = 'translateZ(0)';
-                    void probe.offsetWidth;
-                    probe.style.transform = '';
-                    // Mutate style to ensure RecalculateStyles
-                    probe.style.borderLeft = '1px solid rgba(0,0,0,0)';
-                    void probe.clientTop;
-                    probe.remove();
-                });
-                // Allow the synthetic operations to appear in the trace
-                await page.evaluate(async () => {
-                    await new Promise<void>((resolve) =>
-                        requestAnimationFrame(() => resolve()),
-                    );
-                });
-                await page.waitForTimeout(40);
-
-                // Single lightweight fallback only; escalation removed as unnecessary
-            }
-
             await this.withLock(async () => {
                 await new Promise<void>((resolve) => {
                     const timeoutMs = 2000;
@@ -268,10 +237,6 @@ export class PerformanceCollector {
         const perEventMin = Number(process.env.PERF_EVENT_MIN_DURATION_MS || '0');
 
         for (const event of events) {
-            if (!this.isRelevantEvent(event)) {
-                continue;
-            }
-
             const durationMs = event.dur ? event.dur / 1000 : 0;
 
             switch (event.name) {
