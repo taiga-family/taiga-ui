@@ -2,6 +2,7 @@
     <tui-scroll-controls
         *ngIf="!isMobile"
         class="t-scroll"
+        (click.prevent)="(0)"
     />
     <span
         #text
