@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
+    TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -12,8 +13,14 @@ import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/components/dialog';
+import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {TUI_HEADER_OPTIONS, TuiHeader} from '@taiga-ui/layout/components/header';
+import {
+    injectContext,
+    PolymorpheusComponent,
+    PolymorpheusOutlet,
+} from '@taiga-ui/polymorpheus';
 import {
     exhaustMap,
     filter,
@@ -38,14 +45,20 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 @Component({
     standalone: true,
     selector: 'tui-dialog',
-    imports: [NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
+    imports: [NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './dialog.template.html',
     styleUrls: ['./dialog.style.less'],
     encapsulation: ViewEncapsulation.None,
     // So we don't force OnPush on dialog content
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [TuiDialogCloseService],
+    providers: [
+        TuiDialogCloseService,
+        {
+            provide: TUI_HEADER_OPTIONS,
+            useFactory: (): {size: string} => ({size: getSize(injectContext())}),
+        },
+    ],
     hostDirectives: [TuiAnimated],
     host: {
         new: '',
@@ -75,4 +88,20 @@ export class TuiDialogComponent<O, I> {
                 this.context.$implicit.complete();
             }
         });
+
+    protected get primitive(): boolean {
+        return (
+            !(this.context.content instanceof TemplateRef) &&
+            !(this.context.content instanceof PolymorpheusOutlet) &&
+            !(this.context.content instanceof PolymorpheusComponent)
+        );
+    }
+}
+
+function getSize({appearance, size}: TuiDialogOptions<unknown>): 'h3' | 'h4' | 'h5' {
+    if (appearance.includes('fullscreen')) {
+        return 'h3';
+    }
+
+    return size === 's' ? 'h5' : 'h4';
 }

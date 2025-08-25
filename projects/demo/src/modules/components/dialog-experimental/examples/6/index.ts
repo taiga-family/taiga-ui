@@ -4,7 +4,7 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiDialog} from '@taiga-ui/experimental';
 import {TuiAvatar, TuiFloatingContainer, TuiProgress} from '@taiga-ui/kit';
-import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
+import {TuiAppBar, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
@@ -15,6 +15,7 @@ import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
         TuiCell,
         TuiDialog,
         TuiFloatingContainer,
+        TuiHeader,
         TuiProgress,
         TuiRepeatTimes,
         TuiTitle,
