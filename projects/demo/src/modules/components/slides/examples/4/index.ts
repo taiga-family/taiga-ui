@@ -40,11 +40,11 @@ export default class Example {
         ? inject(TuiSheetDialogService)
         : inject(TuiDialogService);
 
-    protected step = 0;
+    protected step = 1;
     protected direction = 0;
 
     protected onClick(): void {
-        this.step = 0;
+        this.step = 1;
         this.direction = 0;
         this.dialogs.open(this.template, {appearance: 'fullscreen'}).subscribe();
     }

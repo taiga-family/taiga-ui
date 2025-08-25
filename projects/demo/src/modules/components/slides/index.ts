@@ -1,10 +1,14 @@
 import {ViewportScroller} from '@angular/common';
 import {Component, inject, ViewEncapsulation} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Router, Scroll} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber, TuiSlides} from '@taiga-ui/kit';
 import {filter, map} from 'rxjs';
 
 import {Home} from './examples/3/home';
@@ -13,7 +17,15 @@ import {Settings} from './examples/3/settings';
 
 @Component({
     standalone: true,
-    imports: [TuiDemo],
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiInputNumber,
+        TuiRepeatTimes,
+        TuiSlides,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
@@ -23,6 +35,10 @@ import {Settings} from './examples/3/settings';
 export default class Page {
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Crossfade', 'Stepper', 'Routing', 'Dialog'];
+    protected readonly directions = [-1, 0, 1];
+
+    protected direction = 0;
+    protected current = 0;
 
     constructor() {
         const scroller = inject(ViewportScroller);

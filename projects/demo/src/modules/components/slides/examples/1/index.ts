@@ -22,7 +22,7 @@ import {TuiElasticContainer, TuiSlides} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    protected readonly items = ['First slide ', 'Second fsf sdf slide ', 'Third slide '];
+    protected readonly items = ['First slide ', 'Second slide ', 'Third slide '];
 
     protected index = 0;
 }

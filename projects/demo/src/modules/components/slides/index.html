@@ -50,5 +50,36 @@
         </tui-doc-example>
     </ng-template>
 
-    <tui-setup *pageTab="'Setup'" />
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <tui-textfield [style.width.rem]="15">
+                <label tuiLabel>Current slide</label>
+                <input
+                    tuiInputNumber
+                    [max]="0"
+                    [min]="2"
+                    [step]="1"
+                    [(ngModel)]="current"
+                />
+            </tui-textfield>
+            <p [tuiSlides]="direction">
+                <ng-container *tuiRepeatTimes="let index of 3">
+                    <div *ngIf="index === current">Slide #{{ index }}</div>
+                </ng-container>
+            </p>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[tuiSlides]"
+                tuiDocAPIItem
+                type="number"
+                [items]="directions"
+                [(value)]="direction"
+            >
+                Transition direction
+            </tr>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab />
 </tui-doc-page>

@@ -8,7 +8,7 @@
 <ng-template let-observer>
     <tui-app-bar tuiAppBarSize>
         <button
-            *ngIf="step"
+            *ngIf="step > 1"
             tuiButton
             tuiSlot="left"
             type="button"
@@ -19,7 +19,7 @@
         <progress
             size="s"
             tuiProgressBar
-            [max]="2"
+            [max]="3"
             [style.width.rem]="10"
             [value]="step"
         ></progress>
@@ -36,14 +36,14 @@
         [ngSwitch]="step"
         [tuiSlides]="direction"
     >
-        <div *ngSwitchCase="0">
+        <div *ngSwitchCase="1">
             <header>Welcome to the slides demo</header>
             <p>
                 These wrapping components will be animated upon navigating this modal dialog. This works well on both
                 desktop and mobile. In your own layouts watch out for unwanted scrollbars.
             </p>
         </div>
-        <div *ngSwitchCase="1">
+        <div *ngSwitchCase="2">
             <header>Header is optional</header>
             <section [style.margin]="'0 -1rem'">
                 <div
@@ -62,7 +62,7 @@
             </section>
         </div>
         <div
-            *ngSwitchCase="2"
+            *ngSwitchCase="3"
             tuiAppearance="floating"
             tuiCardLarge
         >
@@ -99,9 +99,9 @@
         <button
             tuiButton
             type="button"
-            (click)="step < 2 ? onStep(1) : observer.complete()"
+            (click)="step < 3 ? onStep(1) : observer.complete()"
         >
-            {{ step < 2 ? 'Next' : 'OK' }}
+            {{ step < 3 ? 'Next' : 'OK' }}
         </button>
     </footer>
 </ng-template>
