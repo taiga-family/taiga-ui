@@ -1,4 +1,5 @@
-import {TuiDocumentationPagePO, TuiRangePO} from '@demo-playwright/utils';
+import {DemoRoute} from '@demo/routes';
+import {TuiDocumentationPagePO, tuiGoto, TuiRangePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('TuiRange', () => {
