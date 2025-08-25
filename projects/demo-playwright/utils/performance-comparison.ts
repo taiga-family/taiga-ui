@@ -334,6 +334,12 @@ export class PerformanceComparison {
             markdown += `${statusLine}\n\n`;
         }
 
+        const headline = this.generateHeadlineOverallDelta(summary);
+
+        if (headline) {
+            markdown += `${headline}\n\n`;
+        }
+
         markdown += this.generateSummarySection(summary);
 
         if (filteredDetails.length > 0) {
@@ -986,6 +992,39 @@ export class PerformanceComparison {
         }
 
         return '✅ No significant performance regressions detected!';
+    }
+
+    private static generateHeadlineOverallDelta(
+        summary: ComparisonReport['summary'],
+    ): string {
+        if (summary.testsWithBaseline === 0) {
+            return '';
+        }
+
+        const delta = summary.overallNetDurationChange;
+        const neutralBand = Number(process.env.PERF_HEADLINE_NEUTRAL_PCT || '1');
+        const sign = delta > 0 ? '+' : '';
+        const abs = Math.abs(delta);
+
+        let verdict: string;
+
+        if (abs <= neutralBand) {
+            verdict = 'neutral';
+        } else if (delta < 0) {
+            verdict = 'optimization';
+        } else {
+            verdict = 'regression';
+        }
+
+        let icon = 'ℹ️';
+
+        if (verdict === 'optimization') {
+            icon = '✅';
+        } else if (verdict === 'regression') {
+            icon = '❌';
+        }
+
+        return `Overall Rendering Cost Δ: ${sign}${delta.toFixed(2)}% ${icon} (neutral ±${neutralBand}%) – ${verdict}`;
     }
 
     /**
