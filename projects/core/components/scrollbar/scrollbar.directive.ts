@@ -1,4 +1,14 @@
-import {Directive, ElementRef, inject, INJECTOR, Injector, Input} from '@angular/core';
+import {
+    computed,
+    Directive,
+    effect,
+    ElementRef,
+    inject,
+    INJECTOR,
+    Injector,
+    Input,
+    signal,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
@@ -8,7 +18,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {merge} from 'rxjs';
+import {map, merge} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -34,8 +44,27 @@ export class TuiScrollbarDirective {
     private readonly injector = inject(INJECTOR);
 
     private readonly transformEnabled = false;
-    private lastDim?: ComputedDimension;
-    private pending = false;
+    private readonly dimension = signal<ComputedDimension>({
+        scrollTop: 0,
+        scrollHeight: 0,
+        clientHeight: 0,
+        scrollLeft: 0,
+        scrollWidth: 0,
+        clientWidth: 0,
+    });
+
+    private readonly view = computed(() => this.getView(this.dimension()));
+
+    private readonly comp = computed(
+        () => this.getCompensation(this.dimension()) || this.view(),
+    );
+
+    private readonly thumb = computed(() => {
+        const dim = this.dimension();
+        const raw = Math.abs(this.getScrolled(dim) * (1 - this.comp()));
+
+        return Math.max(0, Math.min(raw, 1 - this.view()));
+    });
 
     private readonly resizeObserverService = Injector.create({
         providers: [
@@ -83,88 +112,94 @@ export class TuiScrollbarDirective {
     @Input()
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
-    private get eventBasedSubscription(): any {
-        return merge(
-            this.resizeObserverService,
-            this.mutationObserverService,
-            tuiScrollFrom(this.el),
-        )
-            .pipe(takeUntilDestroyed())
-            .subscribe(() => this.requestUpdate());
-    }
+    constructor() {
+        effect(() => {
+            const thumb = this.thumb();
+            const view = this.view();
 
-    private requestUpdate(): void {
-        if (this.pending) {
-            return;
-        }
-
-        this.pending = true;
-        queueMicrotask(() => {
-            this.pending = false;
-            const dim: ComputedDimension = {
-                scrollTop: this.el.scrollTop,
-                scrollHeight: this.el.scrollHeight,
-                clientHeight: this.el.clientHeight,
-                scrollLeft: this.el.scrollLeft,
-                scrollWidth: this.el.scrollWidth,
-                clientWidth: this.el.clientWidth,
-            };
-
-            if (this.lastDim && !this.dimChanged(this.lastDim, dim)) {
-                return;
-            }
-
-            this.lastDim = dim;
-
-            this.updateThumbStyles(dim);
+            this.applyStylesFromSignals(thumb, view);
         });
     }
 
-    private dimChanged(a: ComputedDimension, b: ComputedDimension): boolean {
-        return (
-            a.scrollTop !== b.scrollTop ||
-            a.scrollLeft !== b.scrollLeft ||
-            a.scrollHeight !== b.scrollHeight ||
-            a.scrollWidth !== b.scrollWidth ||
-            a.clientHeight !== b.clientHeight ||
-            a.clientWidth !== b.clientWidth
+    private get eventBasedSubscription(): any {
+        // Merge streams producing partial patches with minimal property reads per source
+        const patches$ = merge(
+            this.resizeObserverService.pipe(
+                map(() => ({
+                    clientHeight: this.el.clientHeight,
+                    clientWidth: this.el.clientWidth,
+                    scrollHeight: this.el.scrollHeight,
+                    scrollWidth: this.el.scrollWidth,
+                })),
+            ),
+            this.mutationObserverService.pipe(
+                map(() => ({
+                    scrollHeight: this.el.scrollHeight,
+                    scrollWidth: this.el.scrollWidth,
+                })),
+            ),
+            tuiScrollFrom(this.el).pipe(
+                map(() => ({
+                    scrollTop: this.el.scrollTop,
+                    scrollLeft: this.el.scrollLeft,
+                })),
+            ),
         );
+
+        return patches$
+            .pipe(takeUntilDestroyed())
+            .subscribe((patch) => this.patchDimension(patch));
     }
 
-    private updateThumbStyles(dimension: ComputedDimension): void {
-        const thumbValue = this.getThumb(dimension);
-        const viewValue = this.getView(dimension);
-        const clampedThumb = Math.max(0, Math.min(thumbValue, 1 - viewValue));
+    private patchDimension(patch: Partial<ComputedDimension>): void {
+        const prev = this.dimension();
+        const next: ComputedDimension = {...prev, ...patch};
 
+        if (
+            prev.scrollTop === next.scrollTop &&
+            prev.scrollLeft === next.scrollLeft &&
+            prev.scrollHeight === next.scrollHeight &&
+            prev.scrollWidth === next.scrollWidth &&
+            prev.clientHeight === next.clientHeight &&
+            prev.clientWidth === next.clientWidth
+        ) {
+            return;
+        }
+
+        this.dimension.set(next);
+    }
+
+    private applyStylesFromSignals(thumb: number, view: number): void {
         if (this.transformEnabled) {
             (this.style as any).willChange = 'transform';
 
             if (this.tuiScrollbar === 'vertical') {
-                this.style.transform = `translateY(${clampedThumb * 100}%) scaleY(${viewValue})`;
+                this.style.transform = `translateY(${thumb * 100}%) scaleY(${view})`;
                 this.style.top = '';
                 this.style.height = '';
             } else {
-                this.style.transform = `translateX(${clampedThumb * 100}%) scaleX(${viewValue})`;
+                this.style.transform = `translateX(${thumb * 100}%) scaleX(${view})`;
                 this.style.left = '';
                 (this.style as any).insetInlineStart = '';
                 this.style.width = '';
             }
+
+            return;
+        }
+
+        (this.style as any).willChange = '';
+        const thumbPct = `${thumb * 100}%`;
+        const viewPct = `${view * 100}%`;
+
+        if (this.tuiScrollbar === 'vertical') {
+            this.style.top = thumbPct;
+            this.style.height = viewPct;
+            this.style.transform = '';
         } else {
-            (this.style as any).willChange = '';
-
-            const thumb = `${this.getThumb(dimension) * 100}%`;
-            const view = `${this.getView(dimension) * 100}%`;
-
-            if (this.tuiScrollbar === 'vertical') {
-                this.style.top = thumb;
-                this.style.height = view;
-                this.style.transform = '';
-            } else {
-                this.style.left = thumb;
-                (this.style as any).insetInlineStart = thumb;
-                this.style.width = view;
-                this.style.transform = '';
-            }
+            this.style.left = thumbPct;
+            (this.style as any).insetInlineStart = thumbPct;
+            this.style.width = viewPct;
+            this.style.transform = '';
         }
     }
 
@@ -189,12 +224,6 @@ export class TuiScrollbarDirective {
         return this.tuiScrollbar === 'vertical'
             ? MIN_WIDTH / dimension.clientHeight
             : MIN_WIDTH / dimension.clientWidth;
-    }
-
-    private getThumb(dimension: ComputedDimension): number {
-        const compensation = this.getCompensation(dimension) || this.getView(dimension);
-
-        return Math.abs(this.getScrolled(dimension) * (1 - compensation));
     }
 
     private getView(dimension: ComputedDimension): number {
