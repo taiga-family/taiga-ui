@@ -1,9 +1,4 @@
-import {DemoRoute} from '@demo/routes';
-import {
-    PerformanceCollector,
-    TuiDocumentationPagePO,
-    tuiGoto,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 /**
@@ -21,20 +16,6 @@ import {expect, test} from '@playwright/test';
 // Skip this suite in CI via CLI: `--grep-invert @scrollbar` (avoid in-file skip to satisfy lint)
 
 test.skip('TuiScrollbar - Functionality Suite', () => {
-    test.beforeEach(async ({page}, testInfo) => {
-        await tuiGoto(page, DemoRoute.Scrollbar);
-
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.title,
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(page, testInfo.title);
-    });
-
     test.describe('Basic Functionality', () => {
         test('renders correctly and handles basic scrolling', async ({page}) => {
             const doc = new TuiDocumentationPagePO(page);

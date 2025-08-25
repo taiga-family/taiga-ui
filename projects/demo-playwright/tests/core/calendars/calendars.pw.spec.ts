@@ -1,28 +1,9 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    PerformanceCollector,
-    TuiDocumentationPagePO,
-    tuiGoto,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('Calendars', () => {
     test.use({viewport: {width: 720, height: 700}});
-
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
 
     test('Calendar', async ({page}) => {
         await tuiGoto(

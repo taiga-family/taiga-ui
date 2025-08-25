@@ -1,25 +1,10 @@
 import {DemoRoute} from '@demo/routes';
-import {PerformanceCollector, tuiGoto} from '@demo-playwright/utils';
+import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
 test.describe('Select', () => {
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
-
     test.use(TUI_PLAYWRIGHT_MOBILE);
 
     test('native select value', async ({page}) => {

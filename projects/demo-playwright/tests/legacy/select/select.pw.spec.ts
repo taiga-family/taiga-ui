@@ -1,30 +1,10 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    PerformanceCollector,
-    TuiDocumentationPagePO,
-    tuiGoto,
-    waitIcons,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, waitIcons} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 import {TuiSelectPO} from '../../../utils/page-objects/select.po';
 
 test.describe('Select', () => {
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
-
     test.describe('Examples', () => {
         let documentationPage: TuiDocumentationPagePO;
 

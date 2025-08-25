@@ -1,29 +1,10 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    PerformanceCollector,
-    TuiDocumentationPagePO,
-    tuiGoto,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 import {tuiGetPseudoElement} from '../../../utils/get-pseudo-element';
 
 test.describe('Textfield', () => {
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
-
     test.describe('interactivity on hover', () => {
         let example!: Locator;
 

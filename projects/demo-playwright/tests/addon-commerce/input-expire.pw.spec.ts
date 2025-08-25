@@ -1,29 +1,16 @@
 import {DemoRoute} from '@demo/routes';
-import {PerformanceCollector, tuiGoto, TuiInputCardPO} from '@demo-playwright/utils';
+import {tuiGoto, TuiInputCardPO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputExpire', () => {
     let expiryTextfield: Locator;
 
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-
+    test.beforeEach(async ({page}) => {
         await tuiGoto(page, DemoRoute.InputCard);
 
         expiryTextfield = new TuiInputCardPO(page).expiryTextfield;
 
         await expect(expiryTextfield).toBeEmpty();
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
     });
 
     test('should add 0 as prefix to single digit month entry', async () => {

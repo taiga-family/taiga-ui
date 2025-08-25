@@ -1,29 +1,10 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    PerformanceCollector,
-    TuiDocumentationPagePO,
-    tuiGoto,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 
 test.describe('InputDate and mobile user agent', () => {
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
-
     const date = new Date(2023, 10, 1);
     const november = '.t-month-wrapper:nth-child(2) .t-cell:not(.t-cell_empty)';
 

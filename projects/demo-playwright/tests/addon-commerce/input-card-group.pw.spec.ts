@@ -1,7 +1,6 @@
 import {DemoRoute} from '@demo/routes';
 import {
     CHAR_NO_BREAK_SPACE,
-    PerformanceCollector,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiInputCardGroupPO,
@@ -10,21 +9,6 @@ import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('InputCardGroup', () => {
     let documentationPage: TuiDocumentationPagePO;
-
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
 
     test.describe('API', () => {
         test.use({viewport: {width: 700, height: 800}});

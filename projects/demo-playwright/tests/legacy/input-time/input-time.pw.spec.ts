@@ -1,30 +1,10 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    PerformanceCollector,
-    TuiDocumentationPagePO,
-    tuiGoto,
-    TuiInputTimePO,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiInputTimePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 const MOCK_DATE = new Date(2021, 10, 10, 15, 30, 42, 300);
 
 test.describe('InputTime', () => {
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
-
     test.use({viewport: {width: 400, height: 400}});
 
     test.describe('Examples', () => {

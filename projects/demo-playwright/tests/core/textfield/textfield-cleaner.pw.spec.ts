@@ -1,6 +1,5 @@
 import {DemoRoute} from '@demo/routes';
 import {
-    PerformanceCollector,
     TuiCalendarMonthPO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -11,21 +10,6 @@ import {expect, type Locator, test} from '@playwright/test';
 const {beforeEach, describe} = test;
 
 describe('Textfield cleaner', () => {
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
-
     test.describe('clears textfield value on click', () => {
         let example!: Locator;
         let input!: Locator;

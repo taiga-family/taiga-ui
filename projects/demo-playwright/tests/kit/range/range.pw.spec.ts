@@ -1,31 +1,14 @@
 import {DemoRoute} from '@demo/routes';
-import {
-    PerformanceCollector,
-    TuiDocumentationPagePO,
-    tuiGoto,
-    TuiRangePO,
-} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, tuiGoto, TuiRangePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 test.describe('TuiRange', () => {
-    test.beforeEach(async ({page, browserName}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
+    test.beforeEach(async ({page, browserName}) => {
         await tuiGoto(page, DemoRoute.Range);
 
         // TODO: why does this test keep failing in safari
 
         test.skip(browserName !== 'chromium', 'This feature is only relevant in Chrome');
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
     });
 
     test.describe('examples page', () => {

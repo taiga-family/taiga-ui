@@ -10,8 +10,13 @@ interface PerformanceMetrics {
     layoutDuration: number;
     recalcStyleCount: number;
     recalcStyleDuration: number;
-    layoutDurationPerOp?: number;
-    recalcStyleDurationPerOp?: number;
+    // Newly added richer per-operation metrics (produced directly by collector)
+    layoutAvgPerOp?: number; // arithmetic mean layout duration per operation (ms)
+    recalcAvgPerOp?: number; // arithmetic mean recalc style duration per operation (ms)
+    layoutMedianPerOp?: number; // median layout duration per op (ms) – robust against outliers
+    recalcMedianPerOp?: number; // median recalc style duration per op (ms)
+    layoutDurationPerOp?: number; // legacy derived avg (kept for backward compat)
+    recalcStyleDurationPerOp?: number; // legacy derived avg
     layoutCountCoV?: number;
     layoutDurationCoV?: number;
     recalcStyleCountCoV?: number;
@@ -49,6 +54,10 @@ interface MetricsComparison {
         recalcStyleDuration: number;
         layoutDurationPerOp?: number;
         recalcStyleDurationPerOp?: number;
+        layoutMedianPerOp?: number;
+        recalcMedianPerOp?: number;
+        layoutAvgPerOp?: number;
+        recalcAvgPerOp?: number;
     };
 }
 
@@ -638,23 +647,37 @@ export class PerformanceComparison {
         const currentMetrics = currentData.metrics;
         const baselineMetrics = baselineData?.metrics;
         const component = this.extractComponentName(currentData.source, testName);
-        // Normalized per operation durations (guard divide by zero)
-        const currentLayoutPerOp =
-            currentMetrics.layoutCount > 0
-                ? currentMetrics.layoutDuration / currentMetrics.layoutCount
-                : 0;
-        const currentRecalcPerOp =
-            currentMetrics.recalcStyleCount > 0
-                ? currentMetrics.recalcStyleDuration / currentMetrics.recalcStyleCount
-                : 0;
-        const baselineLayoutPerOp =
-            baselineMetrics && baselineMetrics.layoutCount > 0
-                ? baselineMetrics.layoutDuration / baselineMetrics.layoutCount
-                : 0;
-        const baselineRecalcPerOp =
-            baselineMetrics && baselineMetrics.recalcStyleCount > 0
-                ? baselineMetrics.recalcStyleDuration / baselineMetrics.recalcStyleCount
-                : 0;
+        // Prefer collector-provided per-op metrics; fall back to on-the-fly division
+        const derivePerOp = (tot: number, count: number): number =>
+            count > 0 ? tot / count : 0;
+        const currentLayoutAvg =
+            currentMetrics.layoutAvgPerOp ??
+            derivePerOp(currentMetrics.layoutDuration, currentMetrics.layoutCount);
+        const currentRecalcAvg =
+            currentMetrics.recalcAvgPerOp ??
+            derivePerOp(
+                currentMetrics.recalcStyleDuration,
+                currentMetrics.recalcStyleCount,
+            );
+        const baselineLayoutAvg =
+            baselineMetrics?.layoutAvgPerOp ??
+            (baselineMetrics
+                ? derivePerOp(baselineMetrics.layoutDuration, baselineMetrics.layoutCount)
+                : 0);
+        const baselineRecalcAvg =
+            baselineMetrics?.recalcAvgPerOp ??
+            (baselineMetrics
+                ? derivePerOp(
+                      baselineMetrics.recalcStyleDuration,
+                      baselineMetrics.recalcStyleCount,
+                  )
+                : 0);
+        const currentLayoutMedian = currentMetrics.layoutMedianPerOp ?? currentLayoutAvg;
+        const currentRecalcMedian = currentMetrics.recalcMedianPerOp ?? currentRecalcAvg;
+        const baselineLayoutMedian =
+            baselineMetrics?.layoutMedianPerOp ?? baselineLayoutAvg;
+        const baselineRecalcMedian =
+            baselineMetrics?.recalcMedianPerOp ?? baselineRecalcAvg;
 
         return {
             testName,
@@ -695,12 +718,28 @@ export class PerformanceComparison {
                     currentMetrics.recalcStyleDuration,
                 ),
                 layoutDurationPerOp: this.calculatePercentageChange(
-                    baselineLayoutPerOp || 0,
-                    currentLayoutPerOp || 0,
+                    baselineLayoutAvg || 0,
+                    currentLayoutAvg || 0,
                 ),
                 recalcStyleDurationPerOp: this.calculatePercentageChange(
-                    baselineRecalcPerOp || 0,
-                    currentRecalcPerOp || 0,
+                    baselineRecalcAvg || 0,
+                    currentRecalcAvg || 0,
+                ),
+                layoutMedianPerOp: this.calculatePercentageChange(
+                    baselineLayoutMedian || 0,
+                    currentLayoutMedian || 0,
+                ),
+                recalcMedianPerOp: this.calculatePercentageChange(
+                    baselineRecalcMedian || 0,
+                    currentRecalcMedian || 0,
+                ),
+                layoutAvgPerOp: this.calculatePercentageChange(
+                    baselineLayoutAvg || 0,
+                    currentLayoutAvg || 0,
+                ),
+                recalcAvgPerOp: this.calculatePercentageChange(
+                    baselineRecalcAvg || 0,
+                    currentRecalcAvg || 0,
                 ),
             },
         };
@@ -812,6 +851,8 @@ export class PerformanceComparison {
         const rc = detail.changes.recalcStyleCount;
         const lp = detail.changes.layoutDurationPerOp || 0;
         const rp = detail.changes.recalcStyleDurationPerOp || 0;
+        const lpm = detail.changes.layoutMedianPerOp || 0;
+        const rpm = detail.changes.recalcMedianPerOp || 0;
         const absLayoutCountDelta = Math.abs(diff.layoutCount || 0);
         const absRecalcCountDelta = Math.abs(diff.recalcStyleCount || 0);
         const layoutAbsDelta = Math.abs(diff.layoutDuration);
@@ -841,11 +882,11 @@ export class PerformanceComparison {
             lc > countPct && absLayoutCountDelta >= MIN_ABSOLUTE_COUNT_DELTA;
         const recalcCountIncrease =
             rc > countPct && absRecalcCountDelta >= MIN_ABSOLUTE_COUNT_DELTA;
-        const layoutPerOpNotImproved = lp >= -perOpPct;
-        const recalcPerOpNotImproved = rp >= -perOpPct;
+        const layoutPerOpNotImproved = lp >= -perOpPct || lpm >= -perOpPct;
+        const recalcPerOpNotImproved = rp >= -perOpPct || rpm >= -perOpPct;
         const countsStable = Math.abs(lc) < countPct && Math.abs(rc) < countPct;
-        const perOpIncreaseLayout = lp > perOpPct;
-        const perOpIncreaseRecalc = rp > perOpPct;
+        const perOpIncreaseLayout = lp > perOpPct || lpm > perOpPct;
+        const perOpIncreaseRecalc = rp > perOpPct || rpm > perOpPct;
 
         const maxCov = Number(process.env.PERF_MAX_COV || '0.15');
         const isStable = (cov?: number): boolean => cov === undefined || cov <= maxCov;
@@ -1017,9 +1058,9 @@ export class PerformanceComparison {
         section += '<details open>\n';
         section += `<summary>Tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length})</summary>\n\n`;
         section +=
-            '| Test Name | Pattern | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
+            '| Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration | Layout ms/op (median) | Recalc ms/op (median) |\n';
         section +=
-            '|-----------|---------|------------|----------------|-----------|-----------------|\n';
+            '|-----------|------------|----------------|-----------|-----------------|------------------------|-------------------------|\n';
         // Removed extra blank line to keep markdown table intact
 
         for (const detail of filteredDetails) {
@@ -1072,7 +1113,6 @@ export class PerformanceComparison {
         changeThreshold: number,
     ): string {
         const {testName, baseline, current, changes} = detail;
-        const pattern = detail.pattern || this.classifyPattern(detail);
 
         const trim = (v: string): string => (v.endsWith('.0') ? v.slice(0, -2) : v);
         const fmtVal = (v: number, decimals = 1): string => {
@@ -1092,8 +1132,16 @@ export class PerformanceComparison {
                 return `${fmtVal(currentValue)}${unit} (new)`;
             }
 
+            const baselineDisp = fmtVal(baselineValue);
+            const currentDisp = fmtVal(currentValue);
+
+            // If the displayed numbers are identical after rounding, suppress change noise
+            if (baselineDisp === currentDisp) {
+                return `${currentDisp}${unit}`;
+            }
+
             if (Math.abs(change) < changeThreshold) {
-                return `${fmtVal(currentValue)}${unit}`;
+                return `${currentDisp}${unit}`;
             }
 
             const isSignificant = Math.abs(change) >= 10;
@@ -1101,12 +1149,34 @@ export class PerformanceComparison {
             const changeStr = trim(change.toFixed(1));
             const indicator = change > 0 ? '❌' : '✅';
             const percentWithIndicator = `${sign}${changeStr}% ${indicator}`;
-            const beforeAfterCore = `${fmtVal(baselineValue)}${unit} ← ${percentWithIndicator} → ${fmtVal(currentValue)}${unit}`;
+            const beforeAfterCore = `${baselineDisp}${unit} ← ${percentWithIndicator} → ${currentDisp}${unit}`;
 
             return isSignificant ? `**${beforeAfterCore}**` : beforeAfterCore;
         };
+        const currentLayoutAvg =
+            current.layoutAvgPerOp ??
+            (current.layoutCount > 0 ? current.layoutDuration / current.layoutCount : 0);
+        const baselineLayoutAvg =
+            baseline?.layoutAvgPerOp ??
+            (baseline?.layoutCount
+                ? baseline.layoutDuration / baseline.layoutCount
+                : undefined);
+        const currentRecalcAvg =
+            current.recalcAvgPerOp ??
+            (current.recalcStyleCount > 0
+                ? current.recalcStyleDuration / current.recalcStyleCount
+                : 0);
+        const baselineRecalcAvg =
+            baseline?.recalcAvgPerOp ??
+            (baseline?.recalcStyleCount
+                ? baseline.recalcStyleDuration / baseline.recalcStyleCount
+                : undefined);
+        const currentLayoutMedian = current.layoutMedianPerOp ?? currentLayoutAvg;
+        const baselineLayoutMedian = baseline?.layoutMedianPerOp ?? baselineLayoutAvg;
+        const currentRecalcMedian = current.recalcMedianPerOp ?? currentRecalcAvg;
+        const baselineRecalcMedian = baseline?.recalcMedianPerOp ?? baselineRecalcAvg;
 
-        return `| ${testName} | ${pattern} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} |\n`;
+        return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} | ${formatChange(baselineLayoutMedian, currentLayoutMedian, changes.layoutMedianPerOp || 0, '')} | ${formatChange(baselineRecalcMedian, currentRecalcMedian, changes.recalcMedianPerOp || 0, '')} |\n`;
     }
 
     private static classifyPattern(detail: MetricsComparison): string {

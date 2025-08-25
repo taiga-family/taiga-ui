@@ -22,6 +22,10 @@ interface PerformanceMetrics {
     recalcStyleCount: number;
     layoutDuration: number;
     recalcStyleDuration: number;
+    layoutAvgPerOp: number;
+    recalcAvgPerOp: number;
+    layoutMedianPerOp: number;
+    recalcMedianPerOp: number;
 }
 
 /**
@@ -232,9 +236,15 @@ export class PerformanceCollector {
             recalcStyleCount: 0,
             layoutDuration: 0,
             recalcStyleDuration: 0,
+            layoutAvgPerOp: 0,
+            recalcAvgPerOp: 0,
+            layoutMedianPerOp: 0,
+            recalcMedianPerOp: 0,
         };
         // Optional per-event duration floor; defaults to 0 so we don't lose micro work
         const perEventMin = Number(process.env.PERF_EVENT_MIN_DURATION_MS || '0');
+        const layoutDurations: number[] = [];
+        const recalcDurations: number[] = [];
 
         for (const event of events) {
             const durationMs = event.dur ? event.dur / 1000 : 0;
@@ -245,6 +255,7 @@ export class PerformanceCollector {
 
                     if (durationMs >= perEventMin) {
                         metrics.layoutDuration += durationMs;
+                        layoutDurations.push(durationMs);
                     }
 
                     break;
@@ -255,6 +266,7 @@ export class PerformanceCollector {
 
                     if (durationMs >= perEventMin) {
                         metrics.recalcStyleDuration += durationMs;
+                        recalcDurations.push(durationMs);
                     }
 
                     break;
@@ -267,6 +279,19 @@ export class PerformanceCollector {
         metrics.recalcStyleDuration =
             Math.round(metrics.recalcStyleDuration * 1000) / 1000;
 
+        metrics.layoutAvgPerOp = metrics.layoutCount
+            ? Math.round((metrics.layoutDuration / metrics.layoutCount) * 1000) / 1000
+            : 0;
+
+        metrics.recalcAvgPerOp = metrics.recalcStyleCount
+            ? Math.round(
+                  (metrics.recalcStyleDuration / metrics.recalcStyleCount) * 1000,
+              ) / 1000
+            : 0;
+
+        metrics.layoutMedianPerOp = this.median(layoutDurations);
+        metrics.recalcMedianPerOp = this.median(recalcDurations);
+
         if (process.env.PERF_COLLECTOR_DEBUG === '1') {
             console.info('[PerformanceCollector][debug] events', {
                 total: events.length,
@@ -274,6 +299,10 @@ export class PerformanceCollector {
                 recalcStyleCount: metrics.recalcStyleCount,
                 layoutDuration: metrics.layoutDuration,
                 recalcStyleDuration: metrics.recalcStyleDuration,
+                layoutAvgPerOp: metrics.layoutAvgPerOp,
+                recalcAvgPerOp: metrics.recalcAvgPerOp,
+                layoutMedianPerOp: metrics.layoutMedianPerOp,
+                recalcMedianPerOp: metrics.recalcMedianPerOp,
                 perEventMin,
             });
         }
@@ -282,6 +311,21 @@ export class PerformanceCollector {
     }
 
     // groupEventsByTimeWindows removed as unused (previous implementation deleted)
+
+    private static median(arr: readonly number[]): number {
+        const len = arr.length;
+
+        if (len === 0) {
+            return 0;
+        }
+
+        const sorted = [...arr].sort((a, b) => a - b);
+        const mid = Math.floor(len / 2);
+        const value =
+            len % 2 === 0 ? (sorted[mid - 1]! + sorted[mid]!) / 2 : sorted[mid]!;
+
+        return Math.round(value * 1000) / 1000;
+    }
 
     /**
      * Saves test-specific metrics to file
@@ -307,6 +351,10 @@ export class PerformanceCollector {
                 layoutDuration: Number(metrics.layoutDuration.toFixed(3)),
                 recalcStyleCount: metrics.recalcStyleCount,
                 recalcStyleDuration: Number(metrics.recalcStyleDuration.toFixed(3)),
+                layoutAvgPerOp: Number(metrics.layoutAvgPerOp.toFixed(3)),
+                recalcAvgPerOp: Number(metrics.recalcAvgPerOp.toFixed(3)),
+                layoutMedianPerOp: Number(metrics.layoutMedianPerOp.toFixed(3)),
+                recalcMedianPerOp: Number(metrics.recalcMedianPerOp.toFixed(3)),
                 rawEvents: extras?.rawEvents ?? 0,
                 opsPerKEvents: Number((extras?.opsPerKEvents ?? 0).toFixed(2)),
             },

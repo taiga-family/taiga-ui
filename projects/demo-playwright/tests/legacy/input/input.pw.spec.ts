@@ -1,6 +1,5 @@
 import {DemoRoute} from '@demo/routes';
 import {
-    PerformanceCollector,
     TuiDocumentationPagePO,
     tuiGoto,
     TuiTextfieldWithDataListPO,
@@ -8,21 +7,6 @@ import {
 import {expect, test} from '@playwright/test';
 
 test.describe('Input', () => {
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
-
     test("has custom content (text) + cleaner + hint which don't overlapping each others", async ({
         page,
     }) => {

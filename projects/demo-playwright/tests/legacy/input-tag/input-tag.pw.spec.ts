@@ -1,6 +1,5 @@
 import {DemoRoute} from '@demo/routes';
 import {
-    PerformanceCollector,
     TuiDocumentationApiPagePO,
     TuiDocumentationPagePO,
     tuiGoto,
@@ -8,21 +7,6 @@ import {
 import {expect, test} from '@playwright/test';
 
 test.describe('InputTag', () => {
-    test.beforeEach(async ({page}, testInfo) => {
-        await PerformanceCollector.startTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-            testInfo.file,
-        );
-    });
-
-    test.afterEach(async ({page}, testInfo) => {
-        await PerformanceCollector.stopTestCollection(
-            page,
-            testInfo.titlePath.join(' › '),
-        );
-    });
-
     test.describe('Examples', () => {
         test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.InputTag));
 
