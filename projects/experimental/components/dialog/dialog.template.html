@@ -13,7 +13,10 @@
     {{ close() }}
 </button>
 
-<header tuiHeader>
+<header
+    *ngIf="!primitive"
+    tuiHeader
+>
     <hgroup tuiTitle>
         <h2
             [id]="context.id"
@@ -26,7 +29,7 @@
     <header tuiHeader>
         <hgroup tuiTitle>
             <h2
-                *ngIf="context.label"
+                [id]="context.id"
                 [innerHTML]="context.label"
             ></h2>
             <p [innerHTML]="text"></p>

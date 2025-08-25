@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
+    TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -10,13 +11,16 @@ import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/components/dialog';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TUI_HEADER_OPTIONS, TuiHeader} from '@taiga-ui/layout/components/header';
-import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {
+    injectContext,
+    PolymorpheusComponent,
+    PolymorpheusOutlet,
+} from '@taiga-ui/polymorpheus';
 import {
     exhaustMap,
     filter,
@@ -61,7 +65,6 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
         '[attr.data-appearance]': 'context.appearance',
         '[attr.data-size]': 'context.size',
         '[class._closable]': 'context.closable',
-        '[class._custom]': 'customLabel',
     },
 })
 export class TuiDialogComponent<O, I> {
@@ -86,8 +89,12 @@ export class TuiDialogComponent<O, I> {
             }
         });
 
-    protected get customLabel(): boolean {
-        return !this.context.label || tuiIsString(this.context.content);
+    protected get primitive(): boolean {
+        return (
+            !(this.context.content instanceof TemplateRef) &&
+            !(this.context.content instanceof PolymorpheusOutlet) &&
+            !(this.context.content instanceof PolymorpheusComponent)
+        );
     }
 }
 
