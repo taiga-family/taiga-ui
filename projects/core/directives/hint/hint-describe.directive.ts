@@ -67,7 +67,9 @@ export class TuiHintDescribe extends TuiDriver {
 
     @tuiPure
     private get element(): HTMLElement {
-        return this.doc.getElementById(this.id$.value || '') || this.el;
+        const id = this.id$.value;
+
+        return id ? this.doc.querySelector(`#${id}`) || this.el : this.el;
     }
 
     private get focused(): boolean {
