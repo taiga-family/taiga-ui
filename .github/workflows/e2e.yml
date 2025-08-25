@@ -153,10 +153,19 @@ jobs:
 
       - name: Run screenshot tests on ${{ env.DIST }}
         run: |
+          # Exclude stress tests (run only in performance workflow)
+          STRESS_FILE='projects/demo-playwright/tests/core/scrollbar/scrollbar.stress.pw.spec.ts'
+          if [ -f "$STRESS_FILE" ]; then
+            echo "Temporarily moving stress test out of test tree"
+            mv "$STRESS_FILE" "$STRESS_FILE.skip"
+          fi
           npx nx e2e demo-playwright -- \
             --update-snapshots \
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+          if [ -f "$STRESS_FILE.skip" ]; then
+            mv "$STRESS_FILE.skip" "$STRESS_FILE"
+          fi
 
       - name: Resolve baseline snapshot
         id: resolve-baseline
@@ -195,9 +204,16 @@ jobs:
         if: steps.resolve-baseline.outputs.snapshot != '__none__'
         continue-on-error: true
         run: |
+          STRESS_FILE='projects/demo-playwright/tests/core/scrollbar/scrollbar.stress.pw.spec.ts'
+          if [ -f "$STRESS_FILE" ]; then
+            mv "$STRESS_FILE" "$STRESS_FILE.skip"
+          fi
           npx nx e2e demo-playwright -- \
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+          if [ -f "$STRESS_FILE.skip" ]; then
+            mv "$STRESS_FILE.skip" "$STRESS_FILE"
+          fi
 
       - name: Skip baseline (no snapshot found)
         if: steps.resolve-baseline.outputs.snapshot == '__none__'
