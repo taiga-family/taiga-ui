@@ -6,6 +6,17 @@
     type="components"
 >
     <ng-template pageTab>
+        <tui-notification appearance="negative">
+            This version of the component is deprecated and will be removed in the next major version. Use
+            <a
+                tuiLink
+                [routerLink]="routes.InputRange"
+            >
+                <strong>new version of InputRange</strong>
+            </a>
+            instead!
+        </tui-notification>
+
         <p>Component to input a range of values</p>
 
         <p>

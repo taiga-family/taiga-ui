@@ -515,9 +515,14 @@ export const ROUTES: Routes = [
         title: 'InputPin',
     }),
     route({
+        path: DemoRoute.InputRange,
+        loadComponent: async () => import('../components/input-range'),
+        title: 'InputRange',
+    }),
+    route({
         path: DemoRoute.InputRangeLegacy,
         loadComponent: async () => import('../components/input-range-legacy'),
-        title: 'InputRange',
+        title: 'InputRange ⛔',
     }),
     route({
         path: DemoRoute.InputDateRange,

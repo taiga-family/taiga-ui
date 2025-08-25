@@ -1,0 +1,63 @@
+<tui-textfield [content]="hideStartContent ? '' : content[0]">
+    <ng-container ngProjectAs="label">
+        <ng-content select="label" />
+    </ng-container>
+
+    <input
+        tuiInputNumber
+        [disabled]="disabled()"
+        [invalid]="invalid()"
+        [max]="value()[1]"
+        [min]="min"
+        [postfix]="postfix[0]"
+        [prefix]="prefix[0]"
+        [readOnly]="readOnly()"
+        [(ngModel)]="textfieldValueStart"
+        (blur)="textfieldValueStart = value()[0]"
+        (keydown.arrowDown)="takeStep($event, [-1, 0])"
+        (keydown.arrowUp)="takeStep($event, [1, 0])"
+        (ngModelChange)="onInput([$event, null])"
+    />
+
+    <input
+        tuiInputNumber
+        tuiTextfieldAppearance="none"
+        class="t-end"
+        [class._hidden]="!hideEndContent"
+        [disabled]="disabled()"
+        [invalid]="invalid()"
+        [max]="max"
+        [min]="value()[0]"
+        [postfix]="postfix[1]"
+        [prefix]="prefix[1]"
+        [readOnly]="readOnly()"
+        [(ngModel)]="textfieldValueEnd"
+        (blur)="textfieldValueEnd = value()[1]"
+        (keydown.arrowDown)="takeStep($event, [0, -1])"
+        (keydown.arrowUp)="takeStep($event, [0, 1])"
+        (ngModelChange)="onInput([null, $event])"
+    />
+
+    <div
+        class="t-content-end"
+        [class._hidden]="hideEndContent"
+    >
+        <ng-container *polymorpheusOutlet="content[1] as text; context: {$implicit: value()[1]}">
+            {{ text }}
+        </ng-container>
+    </div>
+</tui-textfield>
+
+<tui-range
+    *ngIf="interactive()"
+    [focusable]="false"
+    [keySteps]="keySteps"
+    [max]="max"
+    [min]="min"
+    [ngModel]="value()"
+    [segments]="segments"
+    [step]="step"
+    (activeThumbChange)="onActiveThumbChange($event)"
+    (mousedown.prevent)="focusToTextfield()"
+    (ngModelChange)="onExternalValueUpdate($event)"
+/>

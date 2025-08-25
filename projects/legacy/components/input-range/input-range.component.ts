@@ -35,6 +35,10 @@ import {
 } from '@taiga-ui/legacy/tokens';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-range TuiInputRange} (from @taiga-ui/kit) instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-input-range',

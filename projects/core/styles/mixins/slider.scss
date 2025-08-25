@@ -4,6 +4,12 @@ $thumb-diameters: (
     'l': 0.75rem,
 );
 
+$track-inset: (
+    's': 0.625rem,
+    'm': 0.75rem,
+    'l': 1rem,
+);
+
 // TODO(v5): use `l` by default (default size for new textfields)
 @mixin tui-slider-ticks-labels($input-size: m) {
     $thumb: map-get($thumb-diameters, $input-size);
@@ -54,8 +60,12 @@ $thumb-diameters: (
         --t-offset: calc(var(--tui-radius-l) / 2 + $thumb / 2);
     }
 
-    tui-input-range + &,
+    tui-input-range:not([new]) + &, /* TODO(v5): delete */
     tui-range + & {
         --t-offset: $thumb;
+    }
+
+    tui-input-range[new] + & {
+        --t-offset: calc(map-get($track-inset, $input-size) + $thumb);
     }
 }
