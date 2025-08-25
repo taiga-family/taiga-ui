@@ -16,7 +16,14 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {distinctUntilChanged, map, merge, startWith} from 'rxjs';
+import {
+    animationFrameScheduler,
+    auditTime,
+    distinctUntilChanged,
+    map,
+    merge,
+    startWith,
+} from 'rxjs';
 
 import {TuiScrollbarDirective} from './scrollbar.directive';
 import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
@@ -62,10 +69,11 @@ export class TuiScrollControls {
     }).get(MutationObserverService);
 
     protected readonly refresh$ = merge(
-        this.resizeObserverService.pipe(map(() => null)),
-        this.mutationObserverService.pipe(map(() => null)),
-        tuiTypedFromEvent(this.scrollRef, 'scroll').pipe(map(() => null)),
+        this.resizeObserverService,
+        this.mutationObserverService,
+        tuiTypedFromEvent(this.scrollRef, 'scroll'),
     ).pipe(
+        auditTime(0, animationFrameScheduler),
         map(() => this.scrollbars),
         startWith([false, false] as [boolean, boolean]),
         distinctUntilChanged((a, b) => a[0] === b[0] && a[1] === b[1]),
@@ -81,9 +89,6 @@ export class TuiScrollControls {
     private get scrollbars(): [boolean, boolean] {
         const {clientHeight, scrollHeight, clientWidth, scrollWidth} = this.scrollRef;
 
-        return [
-            Math.ceil((clientHeight / scrollHeight) * 100) < 100,
-            Math.ceil((clientWidth / scrollWidth) * 100) < 100,
-        ];
+        return [scrollHeight > clientHeight + 1, scrollWidth > clientWidth + 1];
     }
 }
