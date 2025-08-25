@@ -19,18 +19,4 @@ export default class Page {
         'Show scroll bars on hover',
         'Native scrollbar',
     ];
-
-    constructor() {
-        if (typeof document !== 'undefined') {
-            const enabled =
-                typeof window !== 'undefined' &&
-                sessionStorage.getItem('tui-reflow-demo') === '1';
-
-            if (enabled) {
-                document.documentElement.setAttribute('data-tui-reflow-demo', '1');
-            } else {
-                document.documentElement.removeAttribute('data-tui-reflow-demo');
-            }
-        }
-    }
 }

@@ -334,9 +334,6 @@ export class PerformanceComparison {
             markdown += `${statusLine}\n\n`;
         }
 
-        // Show final verdict early, then summary, then per-test details
-        markdown += this.generateFinalVerdictSection(summary, changeThreshold);
-        markdown += this.generatePatternSummary(details);
         markdown += this.generateSummarySection(summary);
 
         if (filteredDetails.length > 0) {
@@ -477,57 +474,7 @@ export class PerformanceComparison {
         return report;
     }
 
-    private static generatePatternSummary(details: MetricsComparison[]): string {
-        if (!details.length) {
-            return '';
-        }
-
-        let improvement = 0;
-        let countDriven = 0;
-        let perOpIncrease = 0;
-        let netIncreaseNonGated = 0;
-
-        for (const d of details) {
-            if (!d.pattern) {
-                d.pattern = this.classifyPattern(d);
-            }
-
-            switch (d.pattern) {
-                case 'count-driven':
-                    countDriven++;
-                    break;
-                case 'improvement':
-                    improvement++;
-                    break;
-                case 'net-increase-non-gated':
-                    netIncreaseNonGated++;
-                    break;
-                case 'per-op-increase':
-                    perOpIncrease++;
-                    break;
-            }
-        }
-
-        const total = improvement + countDriven + perOpIncrease + netIncreaseNonGated;
-
-        if (!total) {
-            return '';
-        }
-
-        return [
-            '',
-            '<details>',
-            '<summary>Pattern distribution</summary>',
-            '',
-            `- Improvements: ${improvement}`,
-            `- Count-driven regressions: ${countDriven}`,
-            `- Per-op increases: ${perOpIncrease}`,
-            `- Net increases (non-gated): ${netIncreaseNonGated}`,
-            '',
-            '</details>',
-            '',
-        ].join('\n');
-    }
+    // generatePatternSummary removed
 
     /**
      * Filters files to include only performance JSON files
@@ -1075,35 +1022,7 @@ export class PerformanceComparison {
     /**
      * Final multi-line verdict appended after the details table
      */
-    private static generateFinalVerdictSection(
-        summary: ComparisonReport['summary'],
-        changeThreshold: number,
-    ): string {
-        if (summary.testsWithBaseline === 0) {
-            return '';
-        }
-
-        const netDur = summary.overallNetDurationChange;
-        const netIcon = netDur > 0 ? '❌' : '✅';
-        const verdictFail = summary.testsWithSignificantChanges > 0 && netDur > 0;
-        const verdict = verdictFail ? '❌' : '✅';
-        const reason = verdictFail
-            ? `${summary.testsWithSignificantChanges} test(s) exceeded the ${changeThreshold}% gating criteria`
-            : 'No significant net regression';
-
-        const explanation =
-            'Net rendering cost = combined layout + style recalculation duration change (positive = slower, negative = faster).';
-
-        return [
-            '',
-            'Final Result',
-            '',
-            `- Net rendering cost: ${netDur > 0 ? '+' : ''}${netDur.toFixed(1)}% ${netIcon}`,
-            `- ${explanation}`,
-            `- Verdict: ${verdict} (${reason})`,
-            '',
-        ].join('\n');
-    }
+    // generateFinalVerdictSection removed
 
     /**
      * Generates a single table row for a test comparison
