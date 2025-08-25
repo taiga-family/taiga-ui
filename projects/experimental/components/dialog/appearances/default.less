@@ -15,8 +15,8 @@
         inline-size: 25rem;
         padding: 1.5rem;
 
-        > header,
-        > ng-component > header {
+        > header:not(:last-child),
+        > ng-component > header:not(:last-child) {
             margin-block-end: 1.25rem;
         }
 
@@ -36,8 +36,8 @@
         inline-size: 50rem;
     }
 
-    > header,
-    > ng-component > header {
+    > header:not(:last-child),
+    > ng-component > header:not(:last-child) {
         margin-block-end: 1.5rem;
     }
 
