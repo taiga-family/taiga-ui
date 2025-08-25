@@ -163,14 +163,17 @@ export class TuiInputRangeComponent
     protected onExternalValueUpdate(value: readonly [number, number]): void {
         this.setValue(value);
         this.setTextfieldValues(this.value());
+
+        setTimeout((end = Number.MAX_SAFE_INTEGER) => {
+            if (tuiIsNativeFocused(this.activeTextfield)) {
+                this.activeTextfield?.setSelectionRange(end, end);
+            }
+        });
     }
 
-    protected focusToTextInput(): void {
-        const element =
-            this.lastActiveSide === 'start' ? this.textfieldStart : this.textfieldEnd;
-
-        if (!this.isMobile && element) {
-            element.focus();
+    protected focusToTextfield(): void {
+        if (!this.isMobile) {
+            this.activeTextfield?.focus();
         }
     }
 
@@ -190,6 +193,10 @@ export class TuiInputRangeComponent
 
     private get textfieldEnd(): HTMLInputElement | null {
         return this.inputNumberRefs.last?.nativeElement || null;
+    }
+
+    private get activeTextfield(): HTMLInputElement | null {
+        return this.lastActiveSide === 'start' ? this.textfieldStart : this.textfieldEnd;
     }
 
     private setValue(value: readonly [number, number]): void {
