@@ -61,6 +61,7 @@ export * from '@taiga-ui/kit/components/routable-dialog';
 export * from '@taiga-ui/kit/components/segmented';
 export * from '@taiga-ui/kit/components/select';
 export * from '@taiga-ui/kit/components/slider';
+export * from '@taiga-ui/kit/components/slides';
 export * from '@taiga-ui/kit/components/status';
 export * from '@taiga-ui/kit/components/stepper';
 export * from '@taiga-ui/kit/components/switch';

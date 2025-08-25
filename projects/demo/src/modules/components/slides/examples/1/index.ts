@@ -1,0 +1,28 @@
+import {NgForOf, NgIf} from '@angular/common';
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiGroup, TuiTitle} from '@taiga-ui/core';
+import {TuiElasticContainer, TuiSlides} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [
+        NgForOf,
+        NgIf,
+        TuiButton,
+        TuiSlides,
+        TuiTitle,
+        TuiGroup,
+        TuiElasticContainer,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly items = ['First slide ', 'Second fsf sdf slide ', 'Third slide '];
+
+    protected index = 0;
+}

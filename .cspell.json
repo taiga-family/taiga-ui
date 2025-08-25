@@ -39,7 +39,9 @@
         "шиммер",
         "фейд",
         "Lebowski",
-        "recalc"
+        "recalc",
+        "crossfade",
+        "crossfading"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
