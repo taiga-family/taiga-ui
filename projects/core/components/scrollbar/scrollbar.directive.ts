@@ -8,7 +8,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {animationFrameScheduler, auditTime, merge} from 'rxjs';
+import {animationFrameScheduler, auditTime, filter, map, merge, scan} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -23,12 +23,24 @@ interface ComputedDimension {
     clientWidth: number;
 }
 
+interface ScrollbarState {
+    dim: ComputedDimension;
+    view: number; // proportion of track occupied by thumb
+    compensation: number; // min thumb size compensation
+    thumb: number; // 0..1 start position
+    sizeChanged: boolean;
+    scrollChanged: boolean;
+    visualChanged: boolean;
+}
+
 @Directive({
     standalone: true,
     selector: '[tuiScrollbar]',
     providers: [TuiScrollbarService],
 })
 export class TuiScrollbarDirective {
+    private static readonly eps = 0.0005;
+
     private readonly el = inject(TUI_SCROLL_REF).nativeElement;
     private readonly style = tuiInjectElement().style;
     private readonly injector = inject(INJECTOR);
@@ -89,43 +101,118 @@ export class TuiScrollbarDirective {
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     private get eventBasedSubscription(): any {
-        return merge(
+        const el = this.el;
+        const source$ = merge(
             this.resizeObserverService,
             this.mutationObserverService,
-            tuiScrollFrom(this.el),
-        )
-            .pipe(auditTime(0, animationFrameScheduler))
-            .subscribe(() => {
-                const el = this.el;
-                const dimension: ComputedDimension = {
-                    scrollTop: el.scrollTop,
-                    scrollHeight: el.scrollHeight,
-                    clientHeight: el.clientHeight,
-                    scrollLeft: el.scrollLeft,
-                    scrollWidth: el.scrollWidth,
-                    clientWidth: el.clientWidth,
-                };
+            tuiScrollFrom(el),
+        ).pipe(auditTime(0, animationFrameScheduler));
 
-                this.updateThumbStyles(dimension);
-            });
+        return source$
+            .pipe(
+                map(
+                    (): ComputedDimension => ({
+                        scrollTop: el.scrollTop,
+                        scrollHeight: el.scrollHeight,
+                        clientHeight: el.clientHeight,
+                        scrollLeft: el.scrollLeft,
+                        scrollWidth: el.scrollWidth,
+                        clientWidth: el.clientWidth,
+                    }),
+                ),
+                scan<ComputedDimension, ScrollbarState | null>(
+                    (
+                        prev: ScrollbarState | null,
+                        dim: ComputedDimension,
+                    ): ScrollbarState | null => {
+                        if (!prev) {
+                            const view = this.getView(dim);
+                            const compensation = this.getCompensation(dim) || view;
+                            const thumb = this.clampThumb(dim, view, compensation);
+
+                            return {
+                                dim,
+                                view,
+                                compensation,
+                                thumb,
+                                sizeChanged: true,
+                                scrollChanged: true,
+                                visualChanged: true,
+                            };
+                        }
+
+                        const sizeChanged =
+                            prev.dim.clientHeight !== dim.clientHeight ||
+                            prev.dim.clientWidth !== dim.clientWidth ||
+                            prev.dim.scrollHeight !== dim.scrollHeight ||
+                            prev.dim.scrollWidth !== dim.scrollWidth;
+                        const scrollChanged =
+                            prev.dim.scrollTop !== dim.scrollTop ||
+                            prev.dim.scrollLeft !== dim.scrollLeft;
+
+                        if (!sizeChanged && !scrollChanged) {
+                            return {
+                                ...prev,
+                                dim,
+                                sizeChanged,
+                                scrollChanged,
+                                visualChanged: false,
+                            };
+                        }
+
+                        const view = sizeChanged ? this.getView(dim) : prev.view;
+                        const compensation = sizeChanged
+                            ? this.getCompensation(dim) || view
+                            : prev.compensation;
+                        const thumb = this.clampThumb(dim, view, compensation);
+                        const visualChanged =
+                            sizeChanged ||
+                            Math.abs(thumb - prev.thumb) > TuiScrollbarDirective.eps;
+
+                        return {
+                            dim,
+                            view,
+                            compensation,
+                            thumb,
+                            sizeChanged,
+                            scrollChanged,
+                            visualChanged,
+                        };
+                    },
+                    null,
+                ),
+                filter(
+                    (state): state is ScrollbarState => !!state && state.visualChanged,
+                ),
+            )
+            .subscribe((state: ScrollbarState) =>
+                this.applyStyles(state.thumb, state.view),
+            );
     }
 
-    private updateThumbStyles(dimension: ComputedDimension): void {
-        const viewValue = this.getView(dimension);
-        const thumbValue = this.getThumb(dimension, viewValue);
-        const clampedThumb = Math.max(0, Math.min(thumbValue, 1 - viewValue));
-        const thumb = `${clampedThumb * 100}%`;
-        const view = `${viewValue * 100}%`;
+    private clampThumb(
+        dim: ComputedDimension,
+        view: number,
+        compensation: number,
+    ): number {
+        const raw = Math.abs(this.getScrolled(dim) * (1 - compensation));
+
+        return Math.max(0, Math.min(raw, 1 - view));
+    }
+
+    private applyStyles(thumb: number, view: number): void {
+        const thumbPct = `${thumb * 100}%`;
+        const viewPct = `${view * 100}%`;
 
         (this.style as any).willChange = '';
 
         if (this.tuiScrollbar === 'vertical') {
-            this.style.top = thumb;
-            this.style.height = view;
+            this.style.top = thumbPct;
+            this.style.height = viewPct;
         } else {
-            this.style.left = thumb;
-            (this.style as any).insetInlineStart = thumb;
-            this.style.width = view;
+            this.style.left = thumbPct;
+            (this.style as any).insetInlineStart = thumbPct;
+            this.style.width = viewPct;
         }
     }
 
