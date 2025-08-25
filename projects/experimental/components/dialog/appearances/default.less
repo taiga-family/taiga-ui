@@ -15,17 +15,9 @@
         inline-size: 25rem;
         padding: 1.5rem;
 
-        > header,
-        > ng-component > header {
-            font: var(--tui-font-heading-5);
+        > header:not(:last-child),
+        > ng-component > header:not(:last-child) {
             margin-block-end: 1.25rem;
-        }
-
-        /** TODO remove tui-confirm in v5 */
-        > p,
-        > ng-component > p,
-        > tui-confirm > p {
-            margin: -0.75rem 0 1.25rem;
         }
 
         /** TODO remove tui-confirm in v5 */
@@ -44,26 +36,9 @@
         inline-size: 50rem;
     }
 
-    > header,
-    > ng-component > header {
+    > header:not(:last-child),
+    > ng-component > header:not(:last-child) {
         margin-block-end: 1.5rem;
-        overflow-wrap: break-word;
-        font: var(--tui-font-heading-4);
-
-        &:empty {
-            display: none;
-        }
-    }
-
-    /** TODO remove tui-confirm in v5 */
-    > p,
-    > ng-component > p,
-    > tui-confirm > p {
-        margin: -1rem 0 1.5rem;
-
-        &:last-child {
-            margin-block-end: 0;
-        }
     }
 
     /** TODO remove tui-confirm in v5 */

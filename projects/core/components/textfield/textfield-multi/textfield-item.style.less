@@ -1,7 +1,7 @@
 :host {
     max-inline-size: 100%;
     flex-shrink: 0;
-    white-space: pre-wrap;
+    white-space: nowrap;
     text-overflow: ellipsis;
 
     &._string {
@@ -12,7 +12,7 @@
         }
 
         &::after {
-            content: ', ';
+            content: ',\00a0';
         }
     }
 

@@ -77,6 +77,7 @@ export const TUI_USED_ICONS = [
     '@tui.pencil',
     '@tui.circle-alert',
     '@tui.volume-x',
+    '@tui.volume-2',
     '@tui.volume',
     '@tui.circle-check',
     '@tui.circle-x',

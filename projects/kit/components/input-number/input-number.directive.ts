@@ -64,8 +64,8 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         maskitoParseNumber(this.textfield.value(), this.numberFormat()),
     );
 
-    private readonly precision = computed(() =>
-        Number.isNaN(this.numberFormat().precision) ? 2 : this.numberFormat().precision,
+    private readonly precision = computed((precision = this.numberFormat().precision) =>
+        Number.isNaN(precision) ? 2 : precision,
     );
 
     private readonly unfinished = computed((value = this.formatted()) =>

@@ -15,14 +15,19 @@
     Show scrollable
 </button>
 <ng-template
-    [tuiDialogOptions]="{appearance: 'fullscreen', label: 'Fullscreen heading'}"
+    [tuiDialogOptions]="{appearance: 'fullscreen'}"
     [(tuiDialog)]="fullscreen"
 >
-    <p>
-        This is shown fullscreen regardless of content height, you can use
-        <code>margin-top: auto</code>
-        to make sure footer is at the bottom of the page.
-    </p>
+    <header tuiHeader>
+        <hgroup tuiTitle>
+            <h2>Fullscreen heading</h2>
+            <p>
+                This is shown fullscreen regardless of content height, you can use
+                <code>margin-top: auto</code>
+                to make sure footer is at the bottom of the page.
+            </p>
+        </hgroup>
+    </header>
     <footer
         tuiFloatingContainer
         [style.margin-top]="'auto'"
@@ -46,7 +51,7 @@
 </ng-template>
 
 <ng-template
-    [tuiDialogOptions]="{appearance: 'fullscreen', closable: false}"
+    [tuiDialogOptions]="{appearance: 'fullscreen'}"
     [(tuiDialog)]="scrollable"
 >
     <tui-app-bar tuiAppBarSize>

@@ -8,9 +8,24 @@
     color: var(--tui-text-primary);
     margin: 0;
     text-align: start;
+    overflow-wrap: break-word;
+
+    p {
+        margin: 0.25rem 0 0;
+        font: var(--tui-font-text-m);
+
+        &:empty {
+            display: none;
+        }
+    }
 
     [tuiTitle] {
         flex-grow: 2;
+        margin: 0;
+
+        &:empty {
+            display: none;
+        }
     }
 
     [tuiAccessories] {
@@ -33,6 +48,7 @@
     [tuiSubtitle] {
         font: var(--tui-font-text-m);
         color: var(--tui-text-secondary);
+        margin: 0;
     }
 
     [tuiLink] {
