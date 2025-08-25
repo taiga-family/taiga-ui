@@ -107,6 +107,7 @@
 - [Input Phone](https://taiga-ui.dev/components/input-phone) — InputPhone allows to input a phone number
 - [Input Phone International](https://taiga-ui.dev/components/input-phone-international) — Allows to input phone number in international format InputPhoneInternational is based on &#64;maskito/phone and libphonenumber-js libraries. libphonenumber is an ultimate phone number formatting and parsing library developed by Google . This library collects the latest phone number rules from ITU documents, user bug reports, telecom company home pages and government telecommunication authorities. It is always up-to-date (for more than 10 years), and releases are published almost every month. It means that InputPhoneInternational has the robust source of truth!
 - [Input Pin](https://taiga-ui.dev/components/input-pin)
+- [Input Range](https://taiga-ui.dev/components/input-range) — InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
 - [Input Slider](https://taiga-ui.dev/components/input-slider) — InputSlider = Textfield + InputNumber + Slider + ❤️
 - [Input Tag](https://taiga-ui.dev/components/input-tag) — This version of the component is deprecated and will be removed in the next major version. Use InputChip instead! InputTag allows to input several tags with autocomplete and list in dropdown.
 - [Input Time](https://taiga-ui.dev/components/input-time) — InputTime allows users to enter and edit time values using a keyboard, dropdown or even browser native picker.
