@@ -14,6 +14,7 @@ import {expect, test} from '@playwright/test';
  */
 
 // Skip this suite in CI via CLI: `--grep-invert @scrollbar` (avoid in-file skip to satisfy lint)
+// Skip this suite in CI via CLI: `--grep-invert @scrollbar` (avoid in-file skip to satisfy lint)
 
 test.skip('TuiScrollbar - Functionality Suite', () => {
     test.describe('Basic Functionality', () => {
