@@ -8,33 +8,19 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {
-    animationFrameScheduler,
-    auditTime,
-    combineLatest,
-    distinctUntilChanged,
-    map,
-    merge,
-    startWith,
-} from 'rxjs';
+import {map, merge} from 'rxjs';
 
-import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
 import {TuiScrollbarService} from './scrollbar.service';
 
 const MIN_WIDTH = 24;
 
-interface SizeMetrics {
+interface ComputedDimension {
+    scrollTop: number;
     scrollHeight: number;
     clientHeight: number;
+    scrollLeft: number;
     scrollWidth: number;
     clientWidth: number;
-    view: number; // normalized visible fraction 0..1 (rounded to 2 decimals)
-    comp: number; // compensation ratio used for minimum thumb size
-}
-
-interface ScrollMetrics {
-    scrollTop: number;
-    scrollLeft: number;
 }
 
 @Directive({
@@ -43,21 +29,11 @@ interface ScrollMetrics {
     providers: [TuiScrollbarService],
 })
 export class TuiScrollbarDirective {
-    private static readonly eps = 0.0005;
-
     private readonly el = inject(TUI_SCROLL_REF).nativeElement;
     private readonly style = tuiInjectElement().style;
     private readonly injector = inject(INJECTOR);
-    private readonly options = inject(TUI_SCROLLBAR_OPTIONS);
 
-    // private readonly initialDimensions: ComputedDimension = {
-    //     scrollTop: this.el.scrollTop,
-    //     scrollLeft: this.el.scrollLeft,
-    //     clientHeight: this.el.clientHeight,
-    //     clientWidth: this.el.clientWidth,
-    //     scrollHeight: this.el.scrollHeight,
-    //     scrollWidth: this.el.scrollWidth,
-    // };
+    private readonly transformEnabled = false;
 
     private readonly resizeObserverService = Injector.create({
         providers: [
@@ -70,23 +46,21 @@ export class TuiScrollbarDirective {
         parent: this.injector,
     }).get(ResizeObserverService);
 
-    private readonly mutationObserverService = this.options.observeMutations
-        ? Injector.create({
-              providers: [
-                  MutationObserverService,
-                  provideMutationObserverInit({
-                      childList: true,
-                      characterData: true,
-                      subtree: true,
-                  }),
-                  {
-                      provide: ElementRef,
-                      useFactory: () => new ElementRef(this.el),
-                  },
-              ],
-              parent: this.injector,
-          }).get(MutationObserverService)
-        : null;
+    private readonly mutationObserverService = Injector.create({
+        providers: [
+            MutationObserverService,
+            provideMutationObserverInit({
+                childList: true,
+                characterData: true,
+                subtree: true,
+            }),
+            {
+                provide: ElementRef,
+                useFactory: () => new ElementRef(this.el),
+            },
+        ],
+        parent: this.injector,
+    }).get(MutationObserverService);
 
     protected readonly scrollSub = inject(TuiScrollbarService)
         .pipe(takeUntilDestroyed())
@@ -102,115 +76,97 @@ export class TuiScrollbarDirective {
             this.el.style.scrollBehavior = '';
         });
 
-    protected readonly styleSub = this.subscribeStyles();
+    protected readonly styleSub = this.eventBasedSubscription;
 
     @Input()
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
-    private subscribeStyles(): any {
-        const el = this.el;
-        const mutation$ = this.mutationObserverService;
-
-        const size$ = merge(this.resizeObserverService, mutation$ || []).pipe(
-            startWith(null),
-            auditTime(0, animationFrameScheduler),
-            map<unknown, SizeMetrics>(() => {
-                const scrollHeight = el.scrollHeight;
-                const clientHeight = el.clientHeight;
-                const scrollWidth = el.scrollWidth;
-                const clientWidth = el.clientWidth;
-                const view = this.getView({
-                    scrollHeight,
-                    clientHeight,
-                    scrollWidth,
-                    clientWidth,
-                } as any);
-                const comp =
-                    this.getCompensation({
-                        scrollHeight,
-                        clientHeight,
-                        scrollWidth,
-                        clientWidth,
-                    } as any) || view;
-
-                return {scrollHeight, clientHeight, scrollWidth, clientWidth, view, comp};
-            }),
-            distinctUntilChanged(
-                (a, b) =>
-                    a.clientHeight === b.clientHeight &&
-                    a.clientWidth === b.clientWidth &&
-                    a.scrollHeight === b.scrollHeight &&
-                    a.scrollWidth === b.scrollWidth &&
-                    a.view === b.view &&
-                    a.comp === b.comp,
+    private get eventBasedSubscription(): any {
+        return merge(
+            this.resizeObserverService.pipe(
+                map(() => ({
+                    clientHeight: this.el.clientHeight,
+                    clientWidth: this.el.clientWidth,
+                    scrollHeight: this.el.scrollHeight,
+                    scrollWidth: this.el.scrollWidth,
+                })),
             ),
-        );
-
-        const scroll$ = (tuiScrollFrom(el) as any).pipe(
-            startWith(null),
-            auditTime(0, animationFrameScheduler),
-            map<any, ScrollMetrics>(() => ({
-                scrollTop: el.scrollTop,
-                scrollLeft: el.scrollLeft,
-            })),
-            distinctUntilChanged(
-                (a: ScrollMetrics, b: ScrollMetrics) =>
-                    a.scrollTop === b.scrollTop && a.scrollLeft === b.scrollLeft,
+            this.mutationObserverService.pipe(
+                map(() => ({
+                    scrollHeight: this.el.scrollHeight,
+                    scrollWidth: this.el.scrollWidth,
+                    clientHeight: this.el.clientHeight,
+                    clientWidth: this.el.clientWidth,
+                })),
             ),
-        );
+            tuiScrollFrom(this.el).pipe(
+                map(() => ({
+                    scrollTop: this.el.scrollTop,
+                    scrollLeft: this.el.scrollLeft,
+                    clientHeight: this.el.clientHeight,
+                    clientWidth: this.el.clientWidth,
+                    scrollHeight: this.el.scrollHeight,
+                    scrollWidth: this.el.scrollWidth,
+                })),
+            ),
+        ).subscribe(() => {
+            const dimension: ComputedDimension = {
+                scrollTop: this.el.scrollTop,
+                scrollHeight: this.el.scrollHeight,
+                clientHeight: this.el.clientHeight,
+                scrollLeft: this.el.scrollLeft,
+                scrollWidth: this.el.scrollWidth,
+                clientWidth: this.el.clientWidth,
+            };
 
-        return combineLatest([size$, scroll$])
-            .pipe(
-                map(([size, scrolled]: any[]) => {
-                    const dim = {
-                        scrollTop: scrolled.scrollTop,
-                        scrollLeft: scrolled.scrollLeft,
-                        scrollHeight: size.scrollHeight,
-                        clientHeight: size.clientHeight,
-                        scrollWidth: size.scrollWidth,
-                        clientWidth: size.clientWidth,
-                    } as any;
-                    const thumb = this.clampThumb(dim, size.view, size.comp);
-
-                    return {thumb, view: size.view};
-                }),
-                distinctUntilChanged(
-                    (a, b) =>
-                        Math.abs(a.thumb - b.thumb) <= TuiScrollbarDirective.eps &&
-                        a.view === b.view,
-                ),
-            )
-            .subscribe(({thumb, view}) => this.applyStyles(thumb, view));
+            this.updateThumbStyles(dimension);
+        });
     }
 
-    private clampThumb(dim: any, view: number, comp: number): number {
-        const raw = Math.abs(this.getScrolled(dim) * (1 - comp));
+    private updateThumbStyles(dimension: ComputedDimension): void {
+        const thumbValue = this.getThumb(dimension);
+        const viewValue = this.getView(dimension);
+        const clampedThumb = Math.max(0, Math.min(thumbValue, 1 - viewValue));
 
-        return Math.max(0, Math.min(raw, 1 - view));
-    }
+        if (this.transformEnabled) {
+            (this.style as any).willChange = 'transform';
 
-    private applyStyles(thumb: number, view: number): void {
-        const axis = this.tuiScrollbar;
-        const translate =
-            axis === 'vertical' ? `0, ${thumb * 100}%` : `${thumb * 100}%, 0`;
-        const sizePct = `${view * 100}%`;
-
-        this.style.transform = `translate(${translate})`;
-
-        if (axis === 'vertical') {
-            this.style.height = sizePct;
+            if (this.tuiScrollbar === 'vertical') {
+                this.style.transform = `translateY(${clampedThumb * 100}%) scaleY(${viewValue})`;
+                this.style.top = '';
+                this.style.height = '';
+            } else {
+                this.style.transform = `translateX(${clampedThumb * 100}%) scaleX(${viewValue})`;
+                this.style.left = '';
+                (this.style as any).insetInlineStart = '';
+                this.style.width = '';
+            }
         } else {
-            this.style.width = sizePct;
+            (this.style as any).willChange = '';
+
+            const thumb = `${this.getThumb(dimension) * 100}%`;
+            const view = `${this.getView(dimension) * 100}%`;
+
+            if (this.tuiScrollbar === 'vertical') {
+                this.style.top = thumb;
+                this.style.height = view;
+                this.style.transform = '';
+            } else {
+                this.style.left = thumb;
+                (this.style as any).insetInlineStart = thumb;
+                this.style.width = view;
+                this.style.transform = '';
+            }
         }
     }
 
-    private getScrolled(dimension: any): number {
+    private getScrolled(dimension: ComputedDimension): number {
         return this.tuiScrollbar === 'vertical'
             ? dimension.scrollTop / (dimension.scrollHeight - dimension.clientHeight)
             : dimension.scrollLeft / (dimension.scrollWidth - dimension.clientWidth);
     }
 
-    private getCompensation(dimension: any): number {
+    private getCompensation(dimension: ComputedDimension): number {
         if (
             ((dimension.clientHeight * dimension.clientHeight) / dimension.scrollHeight >
                 MIN_WIDTH &&
@@ -227,14 +183,13 @@ export class TuiScrollbarDirective {
             : MIN_WIDTH / dimension.clientWidth;
     }
 
-    // private getThumb(dimension: ComputedDimension, viewValue?: number): number {
-    //     const view = viewValue ?? this.getView(dimension);
-    //     const comp = this.getCompensation(dimension) || view;
+    private getThumb(dimension: ComputedDimension): number {
+        const compensation = this.getCompensation(dimension) || this.getView(dimension);
 
-    //     return Math.abs(this.getScrolled(dimension) * (1 - comp));
-    // }
+        return Math.abs(this.getScrolled(dimension) * (1 - compensation));
+    }
 
-    private getView(dimension: any): number {
+    private getView(dimension: ComputedDimension): number {
         return this.tuiScrollbar === 'vertical'
             ? Math.ceil((dimension.clientHeight / dimension.scrollHeight) * 100) / 100
             : Math.ceil((dimension.clientWidth / dimension.scrollWidth) * 100) / 100;
