@@ -8,7 +8,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {map, merge} from 'rxjs';
+import {distinctUntilChanged, map, merge, scan} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -82,6 +82,15 @@ export class TuiScrollbarDirective {
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     private get eventBasedSubscription(): any {
+        const initial: ComputedDimension = {
+            scrollTop: this.el.scrollTop,
+            scrollLeft: this.el.scrollLeft,
+            clientHeight: this.el.clientHeight,
+            clientWidth: this.el.clientWidth,
+            scrollHeight: this.el.scrollHeight,
+            scrollWidth: this.el.scrollWidth,
+        };
+
         return merge(
             this.resizeObserverService.pipe(
                 map(() => ({
@@ -109,18 +118,26 @@ export class TuiScrollbarDirective {
                     scrollWidth: this.el.scrollWidth,
                 })),
             ),
-        ).subscribe(() => {
-            const dimension: ComputedDimension = {
-                scrollTop: this.el.scrollTop,
-                scrollHeight: this.el.scrollHeight,
-                clientHeight: this.el.clientHeight,
-                scrollLeft: this.el.scrollLeft,
-                scrollWidth: this.el.scrollWidth,
-                clientWidth: this.el.clientWidth,
-            };
-
-            this.updateThumbStyles(dimension);
-        });
+        )
+            .pipe(
+                scan(
+                    (prev: ComputedDimension, patch: Partial<ComputedDimension>) => ({
+                        ...prev,
+                        ...patch,
+                    }),
+                    initial,
+                ),
+                distinctUntilChanged(
+                    (a, b) =>
+                        a.scrollTop === b.scrollTop &&
+                        a.scrollLeft === b.scrollLeft &&
+                        a.clientHeight === b.clientHeight &&
+                        a.clientWidth === b.clientWidth &&
+                        a.scrollHeight === b.scrollHeight &&
+                        a.scrollWidth === b.scrollWidth,
+                ),
+            )
+            .subscribe((dimension) => this.updateThumbStyles(dimension));
     }
 
     private updateThumbStyles(dimension: ComputedDimension): void {
