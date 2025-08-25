@@ -146,28 +146,31 @@ export class TuiScrollbarDirective {
             ),
         );
 
-        const scroll$ = tuiScrollFrom(el).pipe(
+        const scroll$ = (tuiScrollFrom(el) as any).pipe(
+            startWith(null),
             auditTime(0, animationFrameScheduler),
-            map<unknown, ScrollMetrics>(() => ({
+            map<any, ScrollMetrics>(() => ({
                 scrollTop: el.scrollTop,
                 scrollLeft: el.scrollLeft,
             })),
             distinctUntilChanged(
-                (a, b) => a.scrollTop === b.scrollTop && a.scrollLeft === b.scrollLeft,
+                (a: ScrollMetrics, b: ScrollMetrics) =>
+                    a.scrollTop === b.scrollTop && a.scrollLeft === b.scrollLeft,
             ),
         );
 
         return combineLatest([size$, scroll$])
             .pipe(
-                map(([size, scrolled]) => {
-                    const thumb = this.clampThumb(
-                        {
-                            ...scrolled,
-                            ...size,
-                        } as any,
-                        size.view,
-                        size.comp,
-                    );
+                map(([size, scrolled]: any[]) => {
+                    const dim = {
+                        scrollTop: scrolled.scrollTop,
+                        scrollLeft: scrolled.scrollLeft,
+                        scrollHeight: size.scrollHeight,
+                        clientHeight: size.clientHeight,
+                        scrollWidth: size.scrollWidth,
+                        clientWidth: size.clientWidth,
+                    } as any;
+                    const thumb = this.clampThumb(dim, size.view, size.comp);
 
                     return {thumb, view: size.view};
                 }),
