@@ -45,12 +45,12 @@ export class TuiScrollbarDirective {
 
     private readonly transformEnabled = false;
     private readonly dimension = signal<ComputedDimension>({
-        scrollTop: 0,
-        scrollHeight: 0,
-        clientHeight: 0,
-        scrollLeft: 0,
-        scrollWidth: 0,
-        clientWidth: 0,
+        scrollTop: this.el.scrollTop,
+        scrollHeight: this.el.scrollHeight,
+        clientHeight: this.el.clientHeight,
+        scrollLeft: this.el.scrollLeft,
+        scrollWidth: this.el.scrollWidth,
+        clientWidth: this.el.clientWidth,
     });
 
     private readonly view = computed(() => this.getView(this.dimension()));
@@ -122,7 +122,6 @@ export class TuiScrollbarDirective {
     }
 
     private get eventBasedSubscription(): any {
-        // Merge streams producing partial patches with minimal property reads per source
         const patches$ = merge(
             this.resizeObserverService.pipe(
                 map(() => ({
