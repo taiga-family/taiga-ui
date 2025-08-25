@@ -8,7 +8,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {distinctUntilChanged, map, merge, scan} from 'rxjs';
+import {merge} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -34,6 +34,8 @@ export class TuiScrollbarDirective {
     private readonly injector = inject(INJECTOR);
 
     private readonly transformEnabled = false;
+    private lastDim?: ComputedDimension;
+    private pending = false;
 
     private readonly resizeObserverService = Injector.create({
         providers: [
@@ -82,62 +84,51 @@ export class TuiScrollbarDirective {
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     private get eventBasedSubscription(): any {
-        const initial: ComputedDimension = {
-            scrollTop: this.el.scrollTop,
-            scrollLeft: this.el.scrollLeft,
-            clientHeight: this.el.clientHeight,
-            clientWidth: this.el.clientWidth,
-            scrollHeight: this.el.scrollHeight,
-            scrollWidth: this.el.scrollWidth,
-        };
-
         return merge(
-            this.resizeObserverService.pipe(
-                map(() => ({
-                    clientHeight: this.el.clientHeight,
-                    clientWidth: this.el.clientWidth,
-                    scrollHeight: this.el.scrollHeight,
-                    scrollWidth: this.el.scrollWidth,
-                })),
-            ),
-            this.mutationObserverService.pipe(
-                map(() => ({
-                    scrollHeight: this.el.scrollHeight,
-                    scrollWidth: this.el.scrollWidth,
-                    clientHeight: this.el.clientHeight,
-                    clientWidth: this.el.clientWidth,
-                })),
-            ),
-            tuiScrollFrom(this.el).pipe(
-                map(() => ({
-                    scrollTop: this.el.scrollTop,
-                    scrollLeft: this.el.scrollLeft,
-                    clientHeight: this.el.clientHeight,
-                    clientWidth: this.el.clientWidth,
-                    scrollHeight: this.el.scrollHeight,
-                    scrollWidth: this.el.scrollWidth,
-                })),
-            ),
+            this.resizeObserverService,
+            this.mutationObserverService,
+            tuiScrollFrom(this.el),
         )
-            .pipe(
-                scan(
-                    (prev: ComputedDimension, patch: Partial<ComputedDimension>) => ({
-                        ...prev,
-                        ...patch,
-                    }),
-                    initial,
-                ),
-                distinctUntilChanged(
-                    (a, b) =>
-                        a.scrollTop === b.scrollTop &&
-                        a.scrollLeft === b.scrollLeft &&
-                        a.clientHeight === b.clientHeight &&
-                        a.clientWidth === b.clientWidth &&
-                        a.scrollHeight === b.scrollHeight &&
-                        a.scrollWidth === b.scrollWidth,
-                ),
-            )
-            .subscribe((dimension) => this.updateThumbStyles(dimension));
+            .pipe(takeUntilDestroyed())
+            .subscribe(() => this.requestUpdate());
+    }
+
+    private requestUpdate(): void {
+        if (this.pending) {
+            return;
+        }
+
+        this.pending = true;
+        queueMicrotask(() => {
+            this.pending = false;
+            const dim: ComputedDimension = {
+                scrollTop: this.el.scrollTop,
+                scrollHeight: this.el.scrollHeight,
+                clientHeight: this.el.clientHeight,
+                scrollLeft: this.el.scrollLeft,
+                scrollWidth: this.el.scrollWidth,
+                clientWidth: this.el.clientWidth,
+            };
+
+            if (this.lastDim && !this.dimChanged(this.lastDim, dim)) {
+                return;
+            }
+
+            this.lastDim = dim;
+
+            this.updateThumbStyles(dim);
+        });
+    }
+
+    private dimChanged(a: ComputedDimension, b: ComputedDimension): boolean {
+        return (
+            a.scrollTop !== b.scrollTop ||
+            a.scrollLeft !== b.scrollLeft ||
+            a.scrollHeight !== b.scrollHeight ||
+            a.scrollWidth !== b.scrollWidth ||
+            a.clientHeight !== b.clientHeight ||
+            a.clientWidth !== b.clientWidth
+        );
     }
 
     private updateThumbStyles(dimension: ComputedDimension): void {
