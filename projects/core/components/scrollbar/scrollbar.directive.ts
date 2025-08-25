@@ -8,7 +8,7 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {tuiScrollFrom} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
-import {map, merge} from 'rxjs';
+import {animationFrameScheduler, auditTime, merge} from 'rxjs';
 
 import {TuiScrollbarService} from './scrollbar.service';
 
@@ -41,8 +41,6 @@ export class TuiScrollbarDirective {
     //     scrollHeight: this.el.scrollHeight,
     //     scrollWidth: this.el.scrollWidth,
     // };
-
-    private readonly transformEnabled = false;
 
     private readonly resizeObserverService = Injector.create({
         providers: [
@@ -91,108 +89,43 @@ export class TuiScrollbarDirective {
     public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
 
     private get eventBasedSubscription(): any {
-        return (
-            merge(
-                this.resizeObserverService.pipe(
-                    map(() => ({
-                        clientHeight: this.el.clientHeight,
-                        clientWidth: this.el.clientWidth,
-                        scrollHeight: this.el.scrollHeight,
-                        scrollWidth: this.el.scrollWidth,
-                    })),
-                    // debounceTime(this.debounceMs),
-                ),
-                this.mutationObserverService.pipe(
-                    map(() => ({
-                        scrollHeight: this.el.scrollHeight,
-                        scrollWidth: this.el.scrollWidth,
-                        clientHeight: this.el.clientHeight,
-                        clientWidth: this.el.clientWidth,
-                    })),
-                    // debounceTime(this.debounceMs),
-                ),
-                tuiScrollFrom(this.el).pipe(
-                    // throttleTime(this.throttleMs, undefined, {trailing: true}),
-                    map(() => ({
-                        scrollTop: this.el.scrollTop,
-                        scrollLeft: this.el.scrollLeft,
-                        clientHeight: this.el.clientHeight,
-                        clientWidth: this.el.clientWidth,
-                        scrollHeight: this.el.scrollHeight,
-                        scrollWidth: this.el.scrollWidth,
-                    })),
-                ),
-            )
-                // .pipe(
-                //     scan((prev: ComputedDimension, current: Partial<ComputedDimension>) => {
-                //         const next = {...prev, ...current};
+        return merge(
+            this.resizeObserverService,
+            this.mutationObserverService,
+            tuiScrollFrom(this.el),
+        )
+            .pipe(auditTime(0, animationFrameScheduler))
+            .subscribe(() => {
+                const el = this.el;
+                const dimension: ComputedDimension = {
+                    scrollTop: el.scrollTop,
+                    scrollHeight: el.scrollHeight,
+                    clientHeight: el.clientHeight,
+                    scrollLeft: el.scrollLeft,
+                    scrollWidth: el.scrollWidth,
+                    clientWidth: el.clientWidth,
+                };
 
-                //         return next;
-                //     }, this.initialDimensions),
-                //     distinctUntilChanged(
-                //         (a: ComputedDimension, b: ComputedDimension) =>
-                //             a.scrollTop === b.scrollTop &&
-                //             a.scrollLeft === b.scrollLeft &&
-                //             a.clientHeight === b.clientHeight &&
-                //             a.clientWidth === b.clientWidth &&
-                //             a.scrollHeight === b.scrollHeight &&
-                //             a.scrollWidth === b.scrollWidth,
-                //     ),
-                //     tuiZonefree(),
-                //     takeUntilDestroyed(),
-                // )
-                .subscribe(() => {
-                    const dimension: ComputedDimension = {
-                        scrollTop: this.el.scrollTop,
-                        scrollHeight: this.el.scrollHeight,
-                        clientHeight: this.el.clientHeight,
-                        scrollLeft: this.el.scrollLeft,
-                        scrollWidth: this.el.scrollWidth,
-                        clientWidth: this.el.clientWidth,
-                    };
-
-                    this.updateThumbStyles(dimension);
-                })
-        );
+                this.updateThumbStyles(dimension);
+            });
     }
 
     private updateThumbStyles(dimension: ComputedDimension): void {
-        const thumbValue = this.getThumb(dimension);
         const viewValue = this.getView(dimension);
-        // Clamp to avoid overflow beyond the track due to rounding
+        const thumbValue = this.getThumb(dimension, viewValue);
         const clampedThumb = Math.max(0, Math.min(thumbValue, 1 - viewValue));
+        const thumb = `${clampedThumb * 100}%`;
+        const view = `${viewValue * 100}%`;
 
-        if (this.transformEnabled) {
-            // Prefer GPU-friendly transforms to avoid layout writes on scroll
-            (this.style as any).willChange = 'transform';
+        (this.style as any).willChange = '';
 
-            if (this.tuiScrollbar === 'vertical') {
-                this.style.transform = `translateY(${clampedThumb * 100}%) scaleY(${viewValue})`;
-                this.style.top = '';
-                this.style.height = '';
-            } else {
-                this.style.transform = `translateX(${clampedThumb * 100}%) scaleX(${viewValue})`;
-                this.style.left = '';
-                (this.style as any).insetInlineStart = '';
-                this.style.width = '';
-            }
+        if (this.tuiScrollbar === 'vertical') {
+            this.style.top = thumb;
+            this.style.height = view;
         } else {
-            // Fallback to top/left + size updates
-            (this.style as any).willChange = '';
-
-            const thumb = `${this.getThumb(dimension) * 100}%`;
-            const view = `${this.getView(dimension) * 100}%`;
-
-            if (this.tuiScrollbar === 'vertical') {
-                this.style.top = thumb;
-                this.style.height = view;
-                this.style.transform = '';
-            } else {
-                this.style.left = thumb;
-                (this.style as any).insetInlineStart = thumb;
-                this.style.width = view;
-                this.style.transform = '';
-            }
+            this.style.left = thumb;
+            (this.style as any).insetInlineStart = thumb;
+            this.style.width = view;
         }
     }
 
@@ -219,8 +152,9 @@ export class TuiScrollbarDirective {
             : MIN_WIDTH / dimension.clientWidth;
     }
 
-    private getThumb(dimension: ComputedDimension): number {
-        const compensation = this.getCompensation(dimension) || this.getView(dimension);
+    private getThumb(dimension: ComputedDimension, viewValue?: number): number {
+        const view = viewValue ?? this.getView(dimension);
+        const compensation = this.getCompensation(dimension) || view;
 
         return Math.abs(this.getScrolled(dimension) * (1 - compensation));
     }
