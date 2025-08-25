@@ -1,4 +1,4 @@
-import {NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {
     type AfterContentInit,
     ChangeDetectionStrategy,
@@ -55,6 +55,7 @@ import {
     standalone: true,
     selector: 'tui-textfield[multi]',
     imports: [
+        AsyncPipe,
         NgForOf,
         NgIf,
         PolymorpheusOutlet,

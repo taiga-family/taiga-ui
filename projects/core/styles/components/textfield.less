@@ -41,6 +41,7 @@ tui-textfield {
         border-inline-start: var(--t-padding) solid transparent;
         border-inline-end: var(--t-padding) solid transparent;
         margin: 0 calc(-1 * var(--t-padding));
+        color: var(--tui-text-tertiary);
     }
 
     &::-webkit-resizer {
@@ -175,7 +176,9 @@ tui-textfield {
         color: var(--tui-text-secondary);
     }
     */
-    &:hover {
+    &:hover,
+    &[tuiIcons]:hover::before,
+    &[tuiIcons]:hover::after {
         color: var(--tui-text-secondary);
 
         &:has(input:read-only):not([multi]),
