@@ -185,13 +185,13 @@ jobs:
             echo "No baseline snapshot found (primary or fallback). Skipping baseline Playwright run.";
           fi
 
-      - uses: taiga-family/ci/actions/run/clone@v1.148.0
+      - uses: taiga-family/ci/actions/run/clone@v1.150.0
         if: steps.resolve-baseline.outputs.snapshot != '__none__'
         with:
           branch: ${{ steps.resolve-baseline.outputs.snapshot }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.148.0
+      - uses: taiga-family/ci/actions/run/serve@v1.150.0
         if: steps.resolve-baseline.outputs.snapshot != '__none__'
         with:
           port: ${{ env.NG_SERVER_PORT }}
