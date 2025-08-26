@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
@@ -44,6 +46,8 @@ import {TuiInputNumber} from '@taiga-ui/kit';
             </button>
         </form>
     `,
+    encapsulation,
+    changeDetection,
 })
 export class Example {
     public readonly form = new FormGroup({
