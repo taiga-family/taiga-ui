@@ -1,5 +1,4 @@
 import {
-    afterNextRender,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -34,6 +33,7 @@ class TuiAppearanceStyles {}
 @Directive({
     standalone: true,
     selector: '[tuiAppearance]',
+    hostDirectives: [TuiTransitioned],
     host: {
         tuiAppearance: '',
         '[attr.data-appearance]': 'appearance()',
@@ -41,7 +41,6 @@ class TuiAppearanceStyles {}
         '[attr.data-focus]': 'focus()',
         '[attr.data-mode]': 'modes()',
     },
-    hostDirectives: [TuiTransitioned],
 })
 export class TuiAppearance {
     private readonly cdr = inject(ChangeDetectorRef, {skipSelf: true});
