@@ -1,15 +1,11 @@
-interface Metadata {
-    width: number;
-    height: number;
-}
+import sharp from 'sharp';
 
 // noinspection JSUnusedGlobalSymbols
 export async function tuiCombineSnapshots(
     inputs: string[],
     output: string,
 ): Promise<void> {
-    const sharp = require('sharp');
-    const data: readonly Metadata[] = await Promise.all(
+    const data: readonly sharp.Metadata[] = await Promise.all(
         inputs.map((img) => sharp(img).metadata()),
     );
 
