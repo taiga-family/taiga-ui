@@ -90,6 +90,24 @@
     Dropdown offset
 </tr>
 <tr
+    *ngIf="!hiddenOptions.includes('dropdownSided')"
+    name="[tuiDropdownSided]"
+    tuiDocAPIItem
+    type="boolean"
+    [(value)]="dropdownSided"
+>
+    Enables side positioning of dropdown
+</tr>
+<tr
+    *ngIf="!hiddenOptions.includes('dropdownSidedOffset')"
+    name="[tuiDropdownSidedOffset]"
+    tuiDocAPIItem
+    type="number"
+    [(value)]="dropdownSidedOffset"
+>
+    Determines the offset of the side positioned dropdown
+</tr>
+<tr
     *ngIf="!hiddenOptions.includes('direction')"
     name="(tuiDropdownDirectionChange)"
     tuiDocAPIItem
