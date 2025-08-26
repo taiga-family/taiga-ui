@@ -6498,12 +6498,10 @@ import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legac
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
     imports: [
-        InheritedDocumentation,
         ReactiveFormsModule,
         TuiDemo,
         TuiDocControl,
@@ -9490,15 +9488,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiScrollbar} from '@taiga-ui/core';
-import {
-    PolymorpheusComponent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiDemo, TuiScrollbar],
+    imports: [PolymorpheusOutlet, TuiDemo, TuiScrollbar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
@@ -13010,7 +13004,7 @@ export class Example {}
 
 ```html
 <span (tuiActiveZoneChange)="onActiveZone($event)">
-<button tuiButton type="button" [tuiDropdown]="dropdownContent" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownManual]="open" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" (click)="onClick()" (tuiObscured)="onObscured($event)" > PRESS! <i>* There is also a pretty long text to check its width limitations</i>
+<button tuiButton type="button" [tuiDropdown]="dropdownContent" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownManual]="open" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiDropdownSided]="dropdown.dropdownSided" [tuiDropdownSidedOffset]="dropdown.dropdownSidedOffset" (click)="onClick()" (tuiObscured)="onObscured($event)" > PRESS! <i>* There is also a pretty long text to check its width limitations</i>
 </button>
 <ng-template #dropdownContent>
 <div [style.padding.rem]="1"> Here can be any content <p>You can even insert other components:</p>
@@ -13157,7 +13151,7 @@ export class Example {}
 ### Example
 
 ```html
-<p tuiDropdownContext [tuiDropdown]="dropdownContent" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" > Right click on me to <strong>see a dropdown</strong>
+<p tuiDropdownContext [tuiDropdown]="dropdownContent" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiDropdownSided]="dropdown.dropdownSided" [tuiDropdownSidedOffset]="dropdown.dropdownSidedOffset" > Right click on me to <strong>see a dropdown</strong>
 <ng-template #dropdownContent>Hello there!</ng-template>
 </p>
 ```
@@ -13235,7 +13229,7 @@ export class Example {}
 ### Example
 
 ```html
-<p tuiDropdownHover [tuiDropdown]="dropdownContent" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownHideDelay]="hideDelay" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiDropdownShowDelay]="showDelay" > Hover pointer over <strong>to see a dropdown</strong>
+<p tuiDropdownHover [tuiDropdown]="dropdownContent" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownHideDelay]="hideDelay" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiDropdownShowDelay]="showDelay" [tuiDropdownSided]="dropdown.dropdownSided" [tuiDropdownSidedOffset]="dropdown.dropdownSidedOffset" > Hover pointer over <strong>to see a dropdown</strong>
 </p>
 <ng-template #dropdownContent>
 <div [style.padding.rem]="1"> Here you can have any content <p>You can select a text inside a dropdown and it will not close a dropdown</p>
@@ -13349,7 +13343,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-input class="input" [ngModel]="input" [tuiDropdown]="template ? dropdownContent : content" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownEnabled]="enabled" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [(tuiDropdownOpen)]="open" (ngModelChange)="onInput($event)" > Start typing </tui-input>
+<tui-input class="input" [ngModel]="input" [tuiDropdown]="template ? dropdownContent : content" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownEnabled]="enabled" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiDropdownSided]="dropdown.dropdownSided" [tuiDropdownSidedOffset]="dropdown.dropdownSidedOffset" [(tuiDropdownOpen)]="open" (ngModelChange)="onInput($event)" > Start typing </tui-input>
 ```
 
 ### API
@@ -13490,7 +13484,7 @@ export class Example {}
 ### Example
 
 ```html
-<p tuiDropdownSelection [tuiDropdown]="dropdownContent" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiDropdownSelectionPosition]="position" > Select a text to <strong>see a dropdown</strong>
+<p tuiDropdownSelection [tuiDropdown]="dropdownContent" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiDropdownSelectionPosition]="position" [tuiDropdownSided]="dropdown.dropdownSided" [tuiDropdownSidedOffset]="dropdown.dropdownSidedOffset" > Select a text to <strong>see a dropdown</strong>
 </p>
 <ng-template #dropdownContent>
 <div class="dropdown"> Here you can have any content <p>You can select a text inside a dropdown and it will not close a dropdown</p>
