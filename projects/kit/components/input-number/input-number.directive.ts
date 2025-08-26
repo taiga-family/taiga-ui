@@ -180,8 +180,6 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     }
 
     protected onBlur(): void {
-        // Don't reset input value if form control is configured with updateOn: 'blur'
-        // This allows Angular's form control update mechanism to work properly
         if (this.control.control?.updateOn === 'blur') {
             this.onTouched();
             return;
