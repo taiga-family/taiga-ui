@@ -1,11 +1,9 @@
 /// <reference types="jest" />
 import {TestBed} from '@angular/core/testing';
-import {
-    TUI_DATA_LIST_HOST,
-    TUI_ITEMS_HANDLERS,
-    type TuiDataListHost,
-} from '@taiga-ui/core';
+import type {TuiDataListHost} from '@taiga-ui/core';
+import {TUI_DATA_LIST_HOST, TUI_ITEMS_HANDLERS} from '@taiga-ui/core';
 import {TUI_ONLY_MATCHING_ITEMS} from '@taiga-ui/kit';
+
 import {TuiFilterByInputPipe} from './filter-by-input.pipe';
 
 interface TestDataListHost<T> extends TuiDataListHost<T> {
