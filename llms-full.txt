@@ -10734,6 +10734,149 @@ export default class Page {
 ```
 
 ---
+# components/Slides
+- **Package**: `KIT`
+- **Type**: components
+A component for displaying dynamic content animated between states. Use negative value for
+        tuiSlides
+        to indicate backward direction, positive for forward direction and 0 for static crossfade.
+        
+            Important:
+            each child must be exactly one DOM element.
+
+### How to Use (Import)
+
+```ts
+import {TuiSlides} from '@taiga-ui/kit';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiSlides,
+  ],
+  // ...
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<section [tuiSlides]="direction">// Content</section>
+```
+
+### Example
+
+```html
+<tui-textfield [style.width.rem]="15">
+<label tuiLabel>Current slide</label>
+<input tuiInputNumber [max]="0" [min]="2" [step]="1" [(ngModel)]="current" />
+</tui-textfield>
+<p [tuiSlides]="direction">
+<ng-container *tuiRepeatTimes="let index of 3">
+<div *ngIf="index === current">Slide #{{ index }}</div>
+</ng-container>
+</p>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [tuiSlides] | `number` | Transition direction |
+
+### TypeScript
+
+```ts
+import {ViewportScroller} from '@angular/common';
+import {Component, inject, ViewEncapsulation} from '@angular/core';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Router, Scroll} from '@angular/router';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber, TuiSlides} from '@taiga-ui/kit';
+import {filter, map} from 'rxjs';
+
+import {Home} from './examples/3/home';
+import {Notifications} from './examples/3/notifications';
+import {Settings} from './examples/3/settings';
+
+@Component({
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TuiDemo,
+        TuiInputNumber,
+        TuiRepeatTimes,
+        TuiSlides,
+        TuiTextfield,
+    ],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection,
+    host: {class: 'tui-slides'},
+})
+export default class Page {
+    protected readonly routes = DemoRoute;
+    protected readonly examples = ['Crossfade', 'Stepper', 'Routing', 'Dialog'];
+    protected readonly directions = [-1, 0, 1];
+
+    protected direction = 0;
+    protected current = 0;
+
+    constructor() {
+        const scroller = inject(ViewportScroller);
+        const router = inject(Router);
+        const route = router.config.find(
+            ({path}) => path === this.routes.Slides.replace('/', ''),
+        );
+        const length = route?.children?.length ?? 0;
+
+        router.events
+            .pipe(
+                filter((event) => event instanceof Scroll),
+                map(() => scroller.getScrollPosition()),
+                takeUntilDestroyed(),
+            )
+            .subscribe((position) => {
+                setTimeout(() => scroller.scrollToPosition(position));
+            });
+
+        if (length > 1) {
+            return;
+        }
+
+        route?.children?.unshift({path: '1', component: Home});
+        route?.children?.unshift({path: '2', component: Notifications});
+        route?.children?.unshift({path: '3', component: Settings});
+
+        router.resetConfig(router.config);
+    }
+}
+```
+
+### LESS
+
+```less
+[tuiSlides] ng-component {
+    display: block;
+
+    &.tui-slides {
+        display: none;
+    }
+}
+```
+
+---
 # components/Status
 - **Package**: `KIT`
 - **Type**: components
@@ -10832,11 +10975,11 @@ export class Example {}
 
 ```html
 <tui-stepper [orientation]="orientation" [(activeItemIndex)]="activeItemIndex" >
-<button tuiStep type="button" > Simple step </button>
-<button tuiStep type="button" > Simple step </button>
-<button tuiStep type="button" [icon]="icon" [stepState]="state" > Simple step </button>
-<button tuiStep type="button" > Simple step </button>
-<button tuiStep type="button" > Simple step </button>
+<button tuiStep>Simple step</button>
+<button tuiStep>Simple step</button>
+<button tuiStep [icon]="icon" [stepState]="state" > Simple step </button>
+<button tuiStep>Simple step</button>
+<button tuiStep>Simple step</button>
 </tui-stepper>
 ```
 
