@@ -46,7 +46,7 @@ const DEFAULT_MAX_LENGTH = 18;
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]':
             'element.maxLength > 0 ? element.maxLength : defaultMaxLength()',
-        '(blur)': 'setValue(transformer.fromControlValue(control.value))',
+        '(blur)': 'onBlur()',
         '(focus)': 'onFocus()',
     },
 })
@@ -177,6 +177,17 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         if (Number.isNaN(this.formatted()) && !this.readOnly()) {
             this.textfield.value.set(this.prefix() + this.postfix());
         }
+    }
+
+    protected onBlur(): void {
+        // Don't reset input value if form control is configured with updateOn: 'blur'
+        // This allows Angular's form control update mechanism to work properly
+        if (this.control.control?.updateOn === 'blur') {
+            this.onTouched();
+            return;
+        }
+
+        this.setValue(this.transformer.fromControlValue(this.control.value));
     }
 
     private get maskParams(): MaskitoNumberParams {
