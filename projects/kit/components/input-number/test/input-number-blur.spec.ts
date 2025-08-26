@@ -60,18 +60,14 @@ describe('TuiInputNumberDirective updateOn behavior', () => {
         });
 
         it('should not reset input value on blur when updateOn is blur', () => {
-            // Manually set input value
             inputElement.value = '456';
             inputElement.dispatchEvent(new Event('input', {bubbles: true}));
 
-            // Value should not be updated in form control yet
             expect(component.form.controls.control.value).toBe(321);
 
-            // Simulate blur
             inputElement.dispatchEvent(new Event('blur', {bubbles: true}));
             fixture.detectChanges();
 
-            // After fix, input value should be preserved
             expect(inputElement.value).toBe('456');
         });
     });
@@ -101,7 +97,7 @@ describe('TuiInputNumberDirective updateOn behavior', () => {
         })
         class DefaultTestComponent {
             public form = new FormGroup({
-                control: new FormControl(100), // default updateOn: 'change'
+                control: new FormControl(100),
             });
         }
 
@@ -115,18 +111,14 @@ describe('TuiInputNumberDirective updateOn behavior', () => {
                 'input[tuiInputNumber]',
             );
 
-            // Verify default behavior works
             expect(defaultComponent.form.controls.control.updateOn).toBe('change');
 
-            // Change input value
             defaultInputElement.value = '200';
             defaultInputElement.dispatchEvent(new Event('input', {bubbles: true}));
             defaultFixture.detectChanges();
 
-            // Value should be updated immediately for default updateOn
             expect(defaultComponent.form.controls.control.value).toBe(200);
 
-            // On blur, input should be formatted but keep the same value
             defaultInputElement.dispatchEvent(new Event('blur', {bubbles: true}));
             defaultFixture.detectChanges();
 
