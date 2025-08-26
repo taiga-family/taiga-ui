@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import {TuiRoot} from '@taiga-ui/core';
-import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 import {TuiInputNumberDirective} from '../input-number.directive';
@@ -10,7 +9,7 @@ import {TuiInputNumberDirective} from '../input-number.directive';
 describe('TuiInputNumberDirective updateOn behavior', () => {
     @Component({
         standalone: true,
-        imports: [ReactiveFormsModule, TuiRoot, TuiTextfield, TuiInputNumberDirective],
+        imports: [ReactiveFormsModule, TuiInputNumberDirective, TuiRoot, TuiTextfield],
         template: `
             <tui-root>
                 <form [formGroup]="form">
@@ -77,9 +76,9 @@ describe('TuiInputNumberDirective updateOn behavior', () => {
             standalone: true,
             imports: [
                 ReactiveFormsModule,
+                TuiInputNumberDirective,
                 TuiRoot,
                 TuiTextfield,
-                TuiInputNumberDirective,
             ],
             template: `
                 <tui-root>
