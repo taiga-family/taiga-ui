@@ -65,6 +65,7 @@ export default defineConfig({
             viewport: DEFAULT_VIEWPORT,
             screen: DEFAULT_VIEWPORT,
             hasTouch: true,
+            permissions: ['clipboard-read'],
         },
     },
     projects: process.env.CI
