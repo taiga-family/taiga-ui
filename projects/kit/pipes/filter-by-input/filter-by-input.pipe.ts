@@ -9,6 +9,7 @@ import {
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
+
 import {TUI_ONLY_MATCHING_ITEMS} from './filter-option.token';
 
 // TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields
