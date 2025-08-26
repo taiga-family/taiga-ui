@@ -13,8 +13,7 @@ import {
     TuiComboBox,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import type {Observable} from 'rxjs';
-import {map} from 'rxjs';
+import {type Observable, map} from 'rxjs';
 
 @Component({
     standalone: true,
