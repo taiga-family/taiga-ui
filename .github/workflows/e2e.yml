@@ -167,11 +167,7 @@ jobs:
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
 
-      #      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.150.0
-
-      - name: Combine images to get diff reports
-        run: |
-          npx ts-node -e "import { tuiCombinePlaywrightFailedScreenshots as run } from './projects/testing/visual-testing'; run();";
+      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.150.0
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v4.6.2
