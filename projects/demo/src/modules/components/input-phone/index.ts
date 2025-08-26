@@ -12,12 +12,10 @@ import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legac
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
-import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 @Component({
     standalone: true,
     imports: [
-        InheritedDocumentation,
         ReactiveFormsModule,
         TuiDemo,
         TuiDocControl,

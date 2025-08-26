@@ -240,10 +240,7 @@ export const pages: DocRoutePages = [
         title: 'Block',
         keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
         route: DemoRoute.Block,
-        meta: [
-            {name: 'tui-checkbox-block', figmaVersion: '1.2.0'},
-            {name: 'tui-radio-block', figmaVersion: '1.2.0'},
-        ],
+        meta: [{name: 'tui-toggle-block', figmaVersion: '1.2.0'}],
     },
     {
         section: 'Layout',
@@ -886,7 +883,10 @@ export const pages: DocRoutePages = [
         title: 'Notification',
         keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: DemoRoute.Notification,
-        meta: {},
+        meta: {
+            name: 'tui-notification-banner',
+            figmaVersion: '1.1.1',
+        },
     },
     {
         section: 'Components',
@@ -997,6 +997,9 @@ export const pages: DocRoutePages = [
         title: 'Pulse',
         keywords: 'сигнал, пульс, pulse, signal',
         route: DemoRoute.Pulse,
+        meta: {
+            name: 'tui-badge-t-client',
+        },
     },
     {
         section: 'Components',
@@ -1055,6 +1058,12 @@ export const pages: DocRoutePages = [
                 route: DemoRoute.Range,
             },
         ],
+    },
+    {
+        section: 'Components',
+        title: 'Slides',
+        keywords: 'слайды, слайдер, slider, carousel, карусель, слайд, slide, swiper',
+        route: DemoRoute.Slides,
     },
     {
         section: 'Components',

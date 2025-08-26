@@ -1,4 +1,3 @@
-import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
@@ -10,7 +9,6 @@ import {
     PolymorpheusComponent,
     type PolymorpheusContent,
     PolymorpheusOutlet,
-    PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
 import {of} from 'rxjs';
 
@@ -22,7 +20,7 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
 @Component({
     standalone: true,
     selector: 'tui-arrow',
-    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, PolymorpheusTemplate, TuiIcon],
+    imports: [PolymorpheusOutlet, TuiIcon],
     templateUrl: './arrow.template.html',
     styleUrls: ['./arrow.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

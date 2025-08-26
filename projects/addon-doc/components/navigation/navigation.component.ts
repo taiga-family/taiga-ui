@@ -33,7 +33,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
 import {TuiInputModule} from '@taiga-ui/legacy/components/input';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, fromEvent, map, of, switchMap, take} from 'rxjs';
 
 import {
@@ -52,7 +52,6 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
         NgIf,
         NgTemplateOutlet,
         PolymorpheusOutlet,
-        PolymorpheusTemplate,
         ReactiveFormsModule,
         RouterLink,
         RouterLinkActive,

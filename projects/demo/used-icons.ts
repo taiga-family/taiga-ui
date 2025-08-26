@@ -103,6 +103,7 @@ export const TUI_USED_ICONS = [
     '@tui.phone-forwarded',
     '@tui.music',
     '@tui.minus',
+    '@tui.bell-off',
     '@tui.pencil-line',
     '@tui.share',
     '@tui.briefcase',

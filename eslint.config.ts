@@ -8,11 +8,11 @@ export default process.env.HTML_ESLINT
           globalIgnores(['**/*.{ts,js,css,less,scss}']),
           {
               files: ['**/demo/**/pipes/format-date/index.html'],
-              rules: {'@html-eslint/require-li-container': 'off'},
+              rules: {'html/require-li-container': 'off'},
           },
           {
               files: ['**/demo/**/components/input-inline/examples/4/index.html'],
-              rules: {'@html-eslint/element-newline': 'off'},
+              rules: {'html/element-newline': 'off'},
           },
       ]
     : [
