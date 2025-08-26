@@ -21,13 +21,18 @@ import {TuiTableControlDirective} from './table-control.directive';
     },
 })
 export class TuiCheckboxRowDirective<T> implements OnInit, OnDestroy {
+    private readonly control = inject(NgControl);
     private readonly parent: TuiTableControlDirective<T> = inject(
         TuiTableControlDirective,
     );
 
-    protected readonly checked = computed(() =>
-        this.parent.value().includes(this.tuiCheckboxRow),
-    );
+    protected readonly checked = computed((checked = this.parent
+        .value()
+        .includes(this.tuiCheckboxRow)) => {
+        setTimeout(() => this.control.control?.setValue(checked));
+
+        return checked;
+    });
 
     @Input()
     public tuiCheckboxRow!: T;

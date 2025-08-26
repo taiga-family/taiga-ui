@@ -32,6 +32,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
     hostDirectives: [TuiAnimated],
     host: {
+        '[attr.data-appearance]': 'context.appearance',
         '[style.--tui-offset.px]': 'context.offset',
         '[class._closeable]': 'context.closeable',
         '[class._fullscreen]': 'context.fullscreen === true',

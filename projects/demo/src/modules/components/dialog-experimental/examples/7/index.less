@@ -6,7 +6,7 @@
 [data-appearance='sheet'] {
     inline-size: 100vw;
     align-self: flex-end;
-    padding: 1.25rem 1rem;
+    padding: 1.25rem 1rem ~'max(1.25rem, env(safe-area-inset-bottom))';
 
     --tui-from: translate3d(0, 100vh, 0);
 

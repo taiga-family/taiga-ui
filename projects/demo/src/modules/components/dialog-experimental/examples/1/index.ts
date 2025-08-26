@@ -17,7 +17,7 @@ export default class Example {
     protected default(): void {
         this.dialogs
             .open(
-                '<div>This is a plain string dialog.</div>It supports basic <strong>HTML</strong>',
+                'This is a plain string dialog.<br />It supports basic <strong>HTML</strong>',
                 {label: 'Heading', size: 's'},
             )
             .subscribe();

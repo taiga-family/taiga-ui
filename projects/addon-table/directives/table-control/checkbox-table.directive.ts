@@ -1,4 +1,4 @@
-import {Directive, inject} from '@angular/core';
+import {computed, Directive, inject} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
 
 import {TuiTableControlDirective} from './table-control.directive';
@@ -14,5 +14,12 @@ import {TuiTableControlDirective} from './table-control.directive';
     },
 })
 export class TuiCheckboxTableDirective {
+    private readonly control = inject(NgControl);
+
     protected readonly parent = inject(TuiTableControlDirective);
+    protected readonly update = computed(() => {
+        this.control.control?.setValue(
+            this.parent.indeterminate() ? null : this.parent.checked(),
+        );
+    });
 }
