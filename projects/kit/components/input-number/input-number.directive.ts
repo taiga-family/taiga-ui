@@ -182,6 +182,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     protected onBlur(): void {
         if (this.control.control?.updateOn === 'blur') {
             this.onTouched();
+
             return;
         }
 

@@ -7,7 +7,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, TuiTextfield, TuiInputNumber, TuiButton],
+    imports: [ReactiveFormsModule, TuiButton, TuiInputNumber, TuiTextfield],
     template: `
         <form [formGroup]="form">
             <h3>updateOn: 'blur' Test</h3>
