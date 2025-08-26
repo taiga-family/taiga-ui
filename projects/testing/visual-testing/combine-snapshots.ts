@@ -3,6 +3,7 @@ interface Metadata {
     height: number;
 }
 
+// noinspection JSUnusedGlobalSymbols
 export async function tuiCombineSnapshots(
     inputs: string[],
     output: string,
