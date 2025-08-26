@@ -11,6 +11,7 @@
     block-size: var(--t-size);
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     white-space: nowrap;
     border-radius: var(--t-radius);
     border: none;
@@ -118,12 +119,12 @@
     }
 
     &[data-type='icon']::before {
-        .center-all();
+        .fullsize();
 
         content: '';
         display: block;
-        inline-size: 60%;
-        block-size: 60%;
+        font-size: calc(var(--t-size) * 0.6);
+        mask-size: 1em;
     }
 
     &._round {

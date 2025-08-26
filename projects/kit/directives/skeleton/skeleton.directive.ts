@@ -51,7 +51,7 @@ export class TuiSkeleton implements OnChanges {
         this.animation?.cancel();
 
         if (!tuiSkeleton?.currentValue && !tuiSkeleton?.firstChange) {
-            this.animation = this.el.animate(FADE, this.duration);
+            this.animation = this.el.animate?.(FADE, this.duration);
         }
     }
 

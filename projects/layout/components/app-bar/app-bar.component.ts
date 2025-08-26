@@ -1,5 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {
+    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     type ElementRef,
@@ -13,6 +14,7 @@ import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiZonefull} from '@taiga-ui/cdk/observables';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 import {map, merge} from 'rxjs';
@@ -32,9 +34,11 @@ import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
         '[attr.data-size]': 'size',
     },
 })
-export class TuiAppBarComponent {
+export class TuiAppBarComponent implements AfterViewInit {
     @ViewChildren('side')
     private readonly side: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
+    private readonly el = tuiInjectElement();
 
     protected readonly width$ = merge(
         inject(ResizeObserverService, {self: true}),
@@ -53,4 +57,9 @@ export class TuiAppBarComponent {
 
     @Input()
     public size: TuiSizeL = 'm';
+
+    // TODO: Remove after :has support
+    public ngAfterViewInit(): void {
+        this.el.closest('tui-dialog')?.classList.add('tui-app-bar');
+    }
 }

@@ -3,10 +3,9 @@
 tui-app-bar {
     position: relative;
     display: flex;
-    block-size: 3rem;
+    block-size: 2.75rem;
     align-items: center;
     justify-content: space-between;
-    flex: 1;
     box-sizing: border-box;
     font: var(--tui-font-text-m);
     font-weight: bold;
@@ -94,6 +93,11 @@ tui-dialog tui-app-bar[data-size='m'] {
 
 tui-sheet-dialog tui-app-bar {
     margin: -0.75rem -1rem;
+    block-size: 3.5rem;
     background: none;
     backdrop-filter: none;
+}
+
+tui-sheet-dialog[data-appearance='fullscreen'] tui-app-bar {
+    margin: 0 -1rem;
 }

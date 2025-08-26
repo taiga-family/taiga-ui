@@ -21,6 +21,7 @@ describe('Hint', () => {
                     tuiHintDirection="top"
                     class="host"
                     [tuiHint]="hint"
+                    (tuiHintVisible)="hoverStateChanged($event)"
                 >
                     Tooltip host
                 </div>
@@ -41,6 +42,11 @@ describe('Hint', () => {
     })
     class Test {
         public hint: Hint = 'Tooltip text';
+        public hoverState = false;
+
+        public hoverStateChanged(hoverState: boolean): void {
+            this.hoverState = hoverState;
+        }
     }
 
     let fixture: ComponentFixture<Test>;
@@ -79,6 +85,21 @@ describe('Hint', () => {
 
             expect(getTooltip()?.textContent?.trim()).toBe('Tooltip text');
         });
+
+        it('should emit tuiHintVisible on mouseenter/mouseout', fakeAsync(async () => {
+            await fixture.whenStable();
+            fixture.detectChanges();
+
+            expect(component.hoverState).toBeTruthy();
+
+            getHost().dispatchEvent(new Event('mouseout'));
+            fixture.detectChanges();
+            tick(200);
+            fixture.detectChanges();
+            discardPeriodicTasks();
+
+            expect(component.hoverState).toBeFalsy();
+        }));
 
         it('is hidden immediately if null is passed as content', async () => {
             setHint(null);

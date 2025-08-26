@@ -15,10 +15,15 @@
         overflow: auto;
     }
 
+    //TODO: Remove [new] in v5
+    &:has(tui-dialog[new][data-appearance~='fullscreen']) .t-overlay {
+        opacity: 0;
+    }
+
     &::before {
         content: '';
         display: block;
-        block-size: 1000%;
+        block-size: 200%;
     }
 }
 
@@ -33,17 +38,23 @@
     align-items: flex-start;
     outline: none;
     overflow: auto;
-
-    &:has(> .tui-enter),
-    &:has(> .tui-leave) {
-        overflow: clip;
-    }
 }
 
 .t-dialog {
     position: sticky;
     overscroll-behavior: none;
     filter: brightness(0.25);
+
+    //TODO: Make default in v5
+    &:has(tui-dialog[new]) {
+        display: grid;
+        place-items: center;
+    }
+
+    ::ng-deep > .tui-enter + .t-scrollbars .t-bar_vertical,
+    ::ng-deep > .tui-leave + .t-scrollbars .t-bar_vertical {
+        display: none;
+    }
 }
 
 .t-overlay {
@@ -74,4 +85,9 @@
 
     margin: 0;
     color: #747474;
+
+    ::ng-deep .t-bar_horizontal,
+    ::ng-deep .t-bar_vertical .t-thumb[style*='height: 100%'] {
+        display: none;
+    }
 }

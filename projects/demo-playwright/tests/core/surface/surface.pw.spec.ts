@@ -4,7 +4,6 @@ import {expect, test} from '@playwright/test';
 
 test.describe('Surface', () => {
     test('Layers', async ({page, browserName}) => {
-        // eslint-disable-next-line playwright/no-skipped-test
         test.skip(
             browserName !== 'chromium',
             // TODO: why does this test keep failing in safari

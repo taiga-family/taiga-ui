@@ -12,6 +12,7 @@ interface TuiGotoOptions extends NonNullable<Parameters<Page['goto']>[1]> {
     hideHeader?: boolean;
     enableNightMode?: boolean;
     hideVersionManager?: boolean;
+    hideText?: boolean;
 }
 
 export async function tuiGoto(
@@ -22,6 +23,7 @@ export async function tuiGoto(
         hideHeader = true,
         enableNightMode = false,
         hideVersionManager = false,
+        hideText = !!process.env.PW_HIDE_TEXT,
         language,
         ...playwrightGotoOptions
     }: TuiGotoOptions = {},
@@ -52,6 +54,10 @@ export async function tuiGoto(
 
     await page.route('https://fonts.gstatic.com/**', async (route) =>
         route.fulfill({path: `${__dirname}/../stubs/manrope-fonts.ttf`}),
+    );
+
+    await page.route('blank.ttf', async (route) =>
+        route.fulfill({path: `${__dirname}/../stubs/blank.ttf`}),
     );
 
     await page.route('https://www.youtube.com/**', async (route) =>
@@ -85,6 +91,21 @@ export async function tuiGoto(
     expect(
         await page.evaluate("matchMedia('(prefers-reduced-motion)').matches"),
     ).toBeTruthy();
+
+    if (hideText) {
+        await page.addStyleTag({
+            content: `
+            @font-face {
+              font-family: 'IgnoreTextFont';
+              src: url('blank.ttf') format('truetype');
+            }
+
+            * {
+              font-family: 'IgnoreTextFont', sans-serif !important;
+            }
+        `,
+        });
+    }
 
     return response;
 }

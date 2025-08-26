@@ -31,7 +31,8 @@
         });
 
         &:invalid:not([data-mode]),
-        &[data-mode~='invalid'] {
+        &[data-mode~='invalid'],
+        &.tui-invalid:not([data-mode]) {
             background: var(--tui-status-negative);
             color: #fff;
 
@@ -48,7 +49,8 @@
     }
 
     &:invalid:not([data-mode]),
-    &[data-mode~='invalid'] {
+    &[data-mode~='invalid'],
+    &.tui-invalid:not([data-mode]) {
         color: var(--tui-text-negative);
         background: var(--tui-status-negative-pale);
 

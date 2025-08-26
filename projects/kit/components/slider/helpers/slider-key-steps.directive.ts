@@ -48,7 +48,8 @@ export class TuiSliderKeyStepsBase {
     }
 
     /**
-     * TODO(v5): standardize logic between `TuiSlider` & `TuiInputSlider` (for non-linear slider `step` means percentage)
+     * TODO(v5): standardize logic between `TuiSlider` & `TuiInputSlider` & `Range` & `InputRange`
+     * For non-linear slider (with `[keySteps]` property) `step` means percentage
      * Add these host-bindings to `TuiSliderKeyStepsBase`:
      * ```
      * host: {

@@ -325,6 +325,11 @@ export const ROUTES: Routes = [
         title: 'Dialog',
     }),
     route({
+        path: DemoRoute.DialogExperimental,
+        loadComponent: async () => import('../components/dialog-experimental'),
+        title: 'Dialog (Experimental)',
+    }),
+    route({
         path: DemoRoute.Drawer,
         loadComponent: async () => import('../components/drawer'),
         title: 'Drawer',
@@ -510,9 +515,14 @@ export const ROUTES: Routes = [
         title: 'InputPin',
     }),
     route({
+        path: DemoRoute.InputRange,
+        loadComponent: async () => import('../components/input-range'),
+        title: 'InputRange',
+    }),
+    route({
         path: DemoRoute.InputRangeLegacy,
         loadComponent: async () => import('../components/input-range-legacy'),
-        title: 'InputRange',
+        title: 'InputRange ⛔',
     }),
     route({
         path: DemoRoute.InputDateRange,
@@ -693,6 +703,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.Slider,
         loadComponent: async () => import('../components/slider'),
         title: 'Slider',
+    }),
+    route({
+        path: DemoRoute.Slides,
+        loadComponent: async () => import('../components/slides'),
+        title: 'Slides',
     }),
     route({
         path: DemoRoute.Status,
