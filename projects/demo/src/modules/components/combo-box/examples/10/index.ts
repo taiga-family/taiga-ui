@@ -7,13 +7,14 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiScrollable, TuiTextfield} from '@taiga-ui/core';
 import {
-    TUI_ONLY_MATCHING_ITEMS,
     TUI_COUNTRIES,
+    TUI_ONLY_MATCHING_ITEMS,
     TuiChevron,
     TuiComboBox,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import {map, type Observable} from 'rxjs';
+import type {Observable} from 'rxjs';
+import {map} from 'rxjs';
 
 @Component({
     standalone: true,
