@@ -32,6 +32,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
         ngSkipHydration: 'true',
         inputmode: 'numeric',
         spellcheck: 'false',
+        '(pointerdown.prevent)': 'onClick(0)',
         '(selectionchange)': 'onSelection()',
         '(keydown.arrowLeft)': 'onArrow()',
     },

@@ -43,6 +43,10 @@
     pointer-events: auto;
     cursor: text;
 
+    &:first-child {
+        pointer-events: none;
+    }
+
     &[data-focus='true'] .t-value {
         &_filled {
             background: var(--tui-service-selection-background);
