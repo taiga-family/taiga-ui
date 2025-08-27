@@ -107,6 +107,7 @@
 - [Input Phone](https://taiga-ui.dev/components/input-phone) — InputPhone allows to input a phone number
 - [Input Phone International](https://taiga-ui.dev/components/input-phone-international) — Allows to input phone number in international format InputPhoneInternational is based on &#64;maskito/phone and libphonenumber-js libraries. libphonenumber is an ultimate phone number formatting and parsing library developed by Google . This library collects the latest phone number rules from ITU documents, user bug reports, telecom company home pages and government telecommunication authorities. It is always up-to-date (for more than 10 years), and releases are published almost every month. It means that InputPhoneInternational has the robust source of truth!
 - [Input Pin](https://taiga-ui.dev/components/input-pin)
+- [Input Range](https://taiga-ui.dev/components/input-range) — InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
 - [Input Slider](https://taiga-ui.dev/components/input-slider) — InputSlider = Textfield + InputNumber + Slider + ❤️
 - [Input Tag](https://taiga-ui.dev/components/input-tag) — This version of the component is deprecated and will be removed in the next major version. Use InputChip instead! InputTag allows to input several tags with autocomplete and list in dropdown.
 - [Input Time](https://taiga-ui.dev/components/input-time) — InputTime allows users to enter and edit time values using a keyboard, dropdown or even browser native picker.
@@ -146,6 +147,7 @@
 - [Sheet](https://taiga-ui.dev/components/sheet) — If you need overlay and do not need image related functionality, it is recommended to use SheetDialog . Sheet component is on track to be deprecated. This component only works on mobile devices. Enable emulation in DevTools
 - [Sheet Dialog](https://taiga-ui.dev/components/sheet-dialog) — A mobile draggable sheet dialog
 - [Slider](https://taiga-ui.dev/components/slider) — Taiga UI styling of native html tag '"> to choose a value from a limited range Read more about this input type in MDN Docs
+- [Slides](https://taiga-ui.dev/components/slides) — A component for displaying dynamic content animated between states. Use negative value for tuiSlides to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element.
 - [Status](https://taiga-ui.dev/components/status)
 - [Surface](https://taiga-ui.dev/components/surface) — General purpose container used in Taiga UI interfaces. Often used in conjunction with Card component.
 - [Swipe Actions](https://taiga-ui.dev/components/swipe-actions)
