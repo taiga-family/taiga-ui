@@ -75,7 +75,7 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly label?: ElementRef<HTMLElement>;
 
     @ContentChildren(TUI_AUXILIARY, {descendants: true})
-    protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
+    protected readonly auxiliaryQuery: QueryList<Record<string, unknown>> = EMPTY_QUERY;
 
     protected readonly open = tuiDropdownOpen();
     protected readonly dropdown = inject(TuiDropdownDirective);
@@ -125,7 +125,7 @@ export class TuiTextfieldBaseComponent<T>
     public readonly value = tuiValue(this.inputQuery);
 
     // TODO: Refactor to signal queries when Angular is updated
-    public readonly auxiliaries = toSignal<readonly object[]>(
+    public readonly auxiliaries = toSignal<ReadonlyArray<Record<string, unknown>>>(
         this.contentReady$.pipe(
             switchMap(() => tuiQueryListChanges(this.auxiliaryQuery)),
             startWith([]),
