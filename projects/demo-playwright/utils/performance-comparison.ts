@@ -265,9 +265,8 @@ export class PerformanceComparison {
         }
 
         const testsWithBaseline = details.filter((d) => d.baseline).length;
-        const gatingThreshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '10');
         const testsWithSignificantChanges = details.filter((d) =>
-            this.isRegressionCandidate(d, gatingThreshold),
+            this.isRegressionCandidate(d, 0),
         ).length;
 
         return {
@@ -702,14 +701,7 @@ export class PerformanceComparison {
     /**
      * Checks if a comparison has significant duration changes using threshold (env or default)
      */
-    private static hasSignificantDurationChanges(comparison: MetricsComparison): boolean {
-        const threshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '10');
-
-        return (
-            Math.abs(comparison.changes.layoutDuration) > threshold ||
-            Math.abs(comparison.changes.recalcStyleDuration) > threshold
-        );
-    }
+    // Legacy duration change helper removed (obsolete unified threshold)
 
     /**
      * Filters test details to only show meaningful changes
@@ -930,11 +922,18 @@ export class PerformanceComparison {
             const v = Number(value.toFixed(1));
             const sign = v > 0 ? '+' : '';
             let icon: string;
-            if (v < 0) icon = '✅';
-            else if (v > 0) icon = '❌';
-            else icon = '✅';
+
+            if (v < 0) {
+                icon = '✅';
+            } else if (v > 0) {
+                icon = '❌';
+            } else {
+                icon = '✅';
+            }
+
             return `- ${label}: ${sign}${v.toFixed(1)}% ${icon}`;
         };
+
         if (summary.testsWithBaseline > 0) {
             const layoutTotal = summary.overallLayoutDurationChange;
             const recalcTotal = summary.overallRecalcDurationChange;
@@ -942,6 +941,7 @@ export class PerformanceComparison {
             const recalcPrefix = recalcTotal > 0 ? '+' : '';
             const layoutIcon = layoutTotal <= 0 ? '✅' : '❌';
             const recalcIcon = recalcTotal <= 0 ? '✅' : '❌';
+
             lines.push(
                 `- Overall layout duration: ${layoutPrefix}${layoutTotal.toFixed(1)}% ${layoutIcon}`,
             );
@@ -949,6 +949,7 @@ export class PerformanceComparison {
                 `- Overall recalc duration: ${recalcPrefix}${recalcTotal.toFixed(1)}% ${recalcIcon}`,
             );
         }
+
         lines.push(
             formatAvg('Max layout duration change', summary.maxLayoutDurationChange),
         );
@@ -958,6 +959,7 @@ export class PerformanceComparison {
         lines.push(formatAvg('Max layout ops change', summary.maxLayoutCountChange));
         lines.push(formatAvg('Max recalc ops change', summary.maxRecalcCountChange));
         const body = lines.join('\n');
+
         return [
             '<details>',
             '<summary>Summary</summary>',
@@ -1043,9 +1045,9 @@ export class PerformanceComparison {
         section += '<details open>\n';
         section += `<summary>Tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length})</summary>\n\n`;
         section +=
-            '| Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration | Layout ms/op (median) | Recalc ms/op (median) | Reason |\n';
+            '| Test Name | Layout Ops | Layout ms | Recalc Ops | Recalc ms | Layout ms/op (median) | Recalc ms/op (median) | Net Δ ms | Net Δ % |\n';
         section +=
-            '|-----------|------------|----------------|-----------|-----------------|------------------------|-------------------------|--------|\n';
+            '|-----------|------------|-----------|-----------|-----------|------------------------|-------------------------|---------|---------|\n';
         // Removed extra blank line to keep markdown table intact
 
         for (const detail of filteredDetails) {
@@ -1056,8 +1058,6 @@ export class PerformanceComparison {
             );
         }
 
-        section +=
-            '\nReason legend: ΔDur≥T duration % ≥ threshold; ΔMed/op≥T median per-op % ≥ threshold; ΔOps≥T op count % ≥ threshold; gated regression gating triggered; new new test.\n\n';
         section += '</details>\n\n';
 
         return section;
@@ -1074,47 +1074,20 @@ export class PerformanceComparison {
     private static generateTableRow(
         detail: MetricsComparison,
         changeThreshold: number,
-        overallNetRegressed: boolean,
+        _overallNetRegressed: boolean,
     ): string {
-        const {testName, baseline, current, changes} = detail;
+        const {testName, baseline, current} = detail;
+
         const trim = (v: string): string => (v.endsWith('.0') ? v.slice(0, -2) : v);
-        const fmtVal = (v: number, decimals = 1): string => {
+
+        const fmt = (v: number, decimals = 1): string => {
             if (Number.isInteger(v)) {
                 return String(v);
             }
 
             return trim(v.toFixed(decimals));
         };
-        const formatChange = (
-            baselineValue: number | undefined,
-            currentValue: number,
-            change: number,
-            unit = '',
-        ): string => {
-            if (baselineValue === undefined) {
-                return `${fmtVal(currentValue)}${unit} (new)`;
-            }
 
-            const baselineDisp = fmtVal(baselineValue);
-            const currentDisp = fmtVal(currentValue);
-
-            if (baselineDisp === currentDisp) {
-                return `${currentDisp}${unit}`;
-            } // rounding hides
-
-            if (Math.abs(change) < changeThreshold) {
-                return `${currentDisp}${unit}`;
-            }
-
-            const isSignificant = Math.abs(change) >= 10;
-            const sign = change > 0 ? '+' : '';
-            const changeStr = trim(change.toFixed(1));
-            const indicator = change > 0 ? '❌' : '✅';
-            const percentWithIndicator = `${sign}${changeStr}% ${indicator}`;
-            const beforeAfterCore = `${baselineDisp}${unit} ← ${percentWithIndicator} → ${currentDisp}${unit}`;
-
-            return isSignificant ? `**${beforeAfterCore}**` : beforeAfterCore;
-        };
         const currentLayoutAvg =
             current.layoutAvgPerOp ??
             (current.layoutCount > 0 ? current.layoutDuration / current.layoutCount : 0);
@@ -1133,45 +1106,75 @@ export class PerformanceComparison {
             (baseline?.recalcStyleCount
                 ? baseline.recalcStyleDuration / baseline.recalcStyleCount
                 : undefined);
+
         const currentLayoutMedian = current.layoutMedianPerOp ?? currentLayoutAvg;
         const baselineLayoutMedian = baseline?.layoutMedianPerOp ?? baselineLayoutAvg;
         const currentRecalcMedian = current.recalcMedianPerOp ?? currentRecalcAvg;
         const baselineRecalcMedian = baseline?.recalcMedianPerOp ?? baselineRecalcAvg;
-        const reasons: string[] = [];
 
-        if (!baseline) {
-            reasons.push('new');
-        } else {
-            if (
-                Math.abs(changes.layoutDuration) >= changeThreshold ||
-                Math.abs(changes.recalcStyleDuration) >= changeThreshold
-            ) {
-                reasons.push('ΔDur≥T');
+        const formatCell = (base: number | undefined, cur: number, unit = ''): string => {
+            if (base === undefined) {
+                return `${fmt(cur)}${unit} (new)`;
             }
 
-            if (
-                Math.abs(changes.layoutMedianPerOp || 0) >= changeThreshold ||
-                Math.abs(changes.recalcMedianPerOp || 0) >= changeThreshold
-            ) {
-                reasons.push('ΔMed/op≥T');
+            const diff = cur - base;
+            const pct = base !== 0 ? (diff / base) * 100 : 0;
+            const pctSign = pct > 0 ? '+' : '';
+            const pctStr = `${pctSign}${pct.toFixed(1)}%`;
+            const diffAbs = Math.abs(diff);
+            let diffStr = '0';
+
+            if (diffAbs !== 0) {
+                diffStr = `${diff > 0 ? '+' : '-'}${fmt(diffAbs, unit ? 2 : 1)}`;
             }
 
-            if (
-                Math.abs(changes.layoutCount) >= changeThreshold ||
-                Math.abs(changes.recalcStyleCount) >= changeThreshold
-            ) {
-                reasons.push('ΔOps≥T');
+            const severe = Math.abs(pct) >= changeThreshold;
+            let emoji = '';
+
+            if (pct > 0) {
+                emoji = severe ? '❌' : '';
+            } else if (pct < 0 && Math.abs(pct) >= changeThreshold) {
+                emoji = '✅';
             }
 
-            if (
-                detail.pattern === 'count-driven' ||
-                detail.pattern === 'per-op-increase'
-            ) {
-                reasons.push('gated');
+            const core = `${fmt(cur)}${unit} (${diffStr}${unit}, ${pctStr})`;
+
+            if (severe) {
+                return `**${core}**${emoji ? ` ${emoji}` : ''}`;
+            }
+
+            return `${core}${emoji ? ` ${emoji}` : ''}`;
+        };
+
+        const netMs =
+            current.layoutDuration +
+            current.recalcStyleDuration -
+            ((baseline?.layoutDuration || 0) + (baseline?.recalcStyleDuration || 0));
+        const baseNet =
+            (baseline?.layoutDuration || 0) + (baseline?.recalcStyleDuration || 0);
+        const netPct = baseNet > 0 ? (netMs / baseNet) * 100 : 0;
+        let netEmoji = '';
+
+        if (baseline) {
+            if (netMs > 0) {
+                const netThreshold = Number(
+                    process.env.PERF_NET_PERCENT_THRESHOLD || '10',
+                );
+
+                netEmoji = Math.abs(netPct) >= netThreshold ? '❌' : '';
+            } else if (netMs < 0 && Math.abs(netPct) >= changeThreshold) {
+                netEmoji = '✅';
             }
         }
 
-        return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} | ${formatChange(baselineLayoutMedian, currentLayoutMedian, changes.layoutMedianPerOp || 0, '')} | ${formatChange(baselineRecalcMedian, currentRecalcMedian, changes.recalcMedianPerOp || 0, '')} | ${reasons.join(', ')} |\n`;
+        const netCell = baseline ? `${netMs > 0 ? '+' : ''}${netMs.toFixed(2)}ms` : 'new';
+        const netPctCell = baseline
+            ? `${netPct > 0 ? '+' : ''}${netPct.toFixed(1)}%${
+                  netEmoji ? ` ${netEmoji}` : ''
+              }`
+            : 'new';
+
+        return `| ${testName} | ${formatCell(baseline?.layoutCount, current.layoutCount)} | ${formatCell(baseline?.layoutDuration, current.layoutDuration, 'ms')} | ${formatCell(baseline?.recalcStyleCount, current.recalcStyleCount)} | ${formatCell(baseline?.recalcStyleDuration, current.recalcStyleDuration, 'ms')} | ${formatCell(baselineLayoutMedian, currentLayoutMedian, 'ms')} | ${formatCell(baselineRecalcMedian, currentRecalcMedian, 'ms')} | ${netCell} | ${netPctCell} |`;
     }
 
     private static classifyPattern(detail: MetricsComparison): string {
@@ -1320,40 +1323,54 @@ export class PerformanceComparison {
         }
 
         // Compute CoV for variance gating
-        const mean = (arr: number[]): number =>
-            arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
-        const std = (arr: number[]): number => {
+        const mean = (arr: number[]): number => {
+            if (!arr.length) {
+                return 0;
+            }
+
+            return arr.reduce((a, b) => a + b, 0) / arr.length;
+        };
+        const sdev = (arr: number[]): number => {
             if (arr.length < 2) {
                 return 0;
             }
 
-            const m = mean(arr);
-            const variance =
-                arr.reduce((acc, v) => acc + (v - m) * (v - m), 0) / arr.length;
-
-            return Math.sqrt(variance);
-        };
-        const cov = (arr: number[]): number => {
             const m = mean(arr);
 
             if (m === 0) {
                 return 0;
             }
 
-            return std(arr) / m;
+            const variance =
+                arr.reduce((acc, v) => acc + (v - m) * (v - m), 0) / (arr.length - 1);
+
+            return Math.sqrt(variance);
+        };
+        const coeffVar = (arr: number[]): number => {
+            if (!arr.length) {
+                return 0;
+            }
+
+            const m = mean(arr);
+
+            if (m === 0) {
+                return 0;
+            }
+
+            return sdev(arr) / m;
         };
 
-        result.layoutCountCoV = cov(values('layoutCount'));
-        result.layoutDurationCoV = cov(values('layoutDuration'));
-        result.recalcStyleCountCoV = cov(values('recalcStyleCount'));
-        result.recalcStyleDurationCoV = cov(values('recalcStyleDuration'));
+        result.layoutCountCoV = coeffVar(values('layoutCount'));
+        result.layoutDurationCoV = coeffVar(values('layoutDuration'));
+        result.recalcStyleCountCoV = coeffVar(values('recalcStyleCount'));
+        result.recalcStyleDurationCoV = coeffVar(values('recalcStyleDuration'));
 
         if (result.layoutDurationPerOp !== undefined) {
             const perOpLayoutArray = runs.map((r) =>
                 r.layoutCount > 0 ? r.layoutDuration / r.layoutCount : 0,
             );
 
-            result.layoutDurationPerOpCoV = cov(perOpLayoutArray);
+            result.layoutDurationPerOpCoV = coeffVar(perOpLayoutArray);
         }
 
         if (result.recalcStyleDurationPerOp !== undefined) {
@@ -1361,7 +1378,7 @@ export class PerformanceComparison {
                 r.recalcStyleCount > 0 ? r.recalcStyleDuration / r.recalcStyleCount : 0,
             );
 
-            result.recalcStyleDurationPerOpCoV = cov(perOpRecalcArray);
+            result.recalcStyleDurationPerOpCoV = coeffVar(perOpRecalcArray);
         }
 
         return result;
@@ -1390,7 +1407,7 @@ export class PerformanceReportAggregator {
         inputDir: string,
         outputFile: string,
     ): Promise<void> {
-        const threshold = Number(process.env.PERFORMANCE_CHANGE_THRESHOLD || '30');
+        const threshold = Number(process.env.PERF_AGGREGATE_VISIBILITY_THRESHOLD || '30');
         const githubOutputPath = process.env.GITHUB_OUTPUT;
 
         let mdFiles: string[];
@@ -1809,7 +1826,7 @@ export class PerformanceReportAggregator {
  * CLI entry point for performance comparison and markdown aggregation
  */
 async function main(): Promise<void> {
-    const [, , arg1, arg2, arg3, arg4] = process.argv;
+    const [, , arg1, arg2, arg3] = process.argv; // legacy change-threshold arg deprecated
 
     if (arg1 === 'aggregate-md' || arg1 === '--aggregate-md') {
         // Aggregate markdown mode
@@ -1835,20 +1852,21 @@ async function main(): Promise<void> {
         const baselinePath = arg1;
         const currentPath = arg2;
         const outputPath = arg3;
-        const thresholdArg = arg4;
 
         if (!baselinePath || !currentPath || !outputPath) {
             console.error(
                 'Usage:\n' +
-                    '  npx ts-node performance-comparison.ts <baseline-path> <current-path> <output-path> [change-threshold]\n' +
+                    '  npx ts-node performance-comparison.ts <baseline-path> <current-path> <output-path>\n' +
                     '  npx ts-node performance-comparison.ts aggregate-md [input-dir] [output-file]',
             );
             process.exit(1);
         }
 
-        const changeThreshold = thresholdArg
-            ? parseFloat(thresholdArg)
-            : PerformanceComparison.DEFAULT_CHANGE_THRESHOLD;
+        const envVis = Number(process.env.PERF_VISIBILITY_THRESHOLD || '');
+        const changeThreshold =
+            !Number.isNaN(envVis) && envVis > 0
+                ? envVis
+                : PerformanceComparison.DEFAULT_CHANGE_THRESHOLD;
 
         try {
             await PerformanceComparison.compareAndReport(

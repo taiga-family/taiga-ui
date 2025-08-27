@@ -10,7 +10,7 @@ env:
   PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
   PERF_STRESS_FACTOR: 3 # amplify in-test iteration counts
   PERF_STRESS_PATTERN: '*.stress.pw.spec.ts' # glob for stress specs
-  PERFORMANCE_CHANGE_THRESHOLD: 12 # row visibility threshold
+  PERF_VISIBILITY_THRESHOLD: 6 # row visibility threshold (was PERFORMANCE_CHANGE_THRESHOLD)
   # Split performance regression thresholds
   # Percentage increase in operation counts (layout/recalc) considered significant
   PERF_COUNT_PERCENT_THRESHOLD: 15
@@ -174,8 +174,7 @@ jobs:
             npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
               ./performance-stress/baseline \
               ./performance-stress/current \
-              ./performance-stress/diff/report.md \
-              ${{ env.PERFORMANCE_CHANGE_THRESHOLD }}
+              ./performance-stress/diff/report.md
             if [ '${{ steps.resolve-baseline.outputs.snapshot }}' = '__none__' ]; then
               echo "\n_Baseline snapshot not found (primary: snapshots/demo/next/${{ github.base_ref }}, fallback: snapshots/demo/next/${{ env.PERF_BASELINE_FALLBACK_BRANCH }}). All tests treated as new._" >> ./performance-stress/diff/report.md
             fi
