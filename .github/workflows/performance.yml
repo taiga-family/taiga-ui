@@ -9,6 +9,7 @@ env:
   PERFORMANCE_RUNS: 6 # total runs including warmup
   PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
   PERF_STRESS_FACTOR: 3 # amplify in-test iteration counts
+  PERF_STRESS_PATTERN: '*.stress.pw.spec.ts' # glob for stress specs
   PERFORMANCE_CHANGE_THRESHOLD: 12 # row visibility threshold
   # Split performance regression thresholds
   # Percentage increase in operation counts (layout/recalc) considered significant
@@ -94,12 +95,19 @@ jobs:
           mkdir -p ./performance-stress/current
           RUNS=${PERFORMANCE_RUNS:-6}
           WARMUP_SKIP=${PERFORMANCE_WARMUP_SKIP:-1}
+          PATTERN=${PERF_STRESS_PATTERN:-'*.stress.pw.spec.ts'}
+          # Collect all stress spec files
+          mapfile -t SPEC_FILES < <(find projects/demo-playwright/tests -type f -name "$PATTERN" | sort)
+          if [ ${#SPEC_FILES[@]} -eq 0 ]; then
+            echo "No stress spec files found for pattern $PATTERN"
+            exit 0
+          fi
+          echo "Discovered ${#SPEC_FILES[@]} stress spec(s):";
+          for f in "${SPEC_FILES[@]}"; do echo " - $f"; done
           echo "Executing $RUNS runs (skipping first $WARMUP_SKIP for warmup)"
           for i in $(seq 1 $RUNS); do
             echo "--- Current build run $i/$RUNS ---"
-            npx nx e2e demo-playwright -- \
-              --project=chromium \
-              projects/demo-playwright/tests/core/scrollbar/scrollbar.stress.pw.spec.ts || true
+            npx nx e2e demo-playwright -- --project=chromium "${SPEC_FILES[@]}" || true
             if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
               dest=./performance-stress/current/run-$i
               mkdir -p "$dest"
@@ -130,12 +138,19 @@ jobs:
           mkdir -p ./performance-stress/baseline
           RUNS=${PERFORMANCE_RUNS:-6}
           WARMUP_SKIP=${PERFORMANCE_WARMUP_SKIP:-1}
+          PATTERN=${PERF_STRESS_PATTERN:-'*.stress.pw.spec.ts'}
+            # Collect all stress spec files
+          mapfile -t SPEC_FILES < <(find projects/demo-playwright/tests -type f -name "$PATTERN" | sort)
+          if [ ${#SPEC_FILES[@]} -eq 0 ]; then
+            echo "No stress spec files found for pattern $PATTERN"
+            exit 0
+          fi
+          echo "Discovered ${#SPEC_FILES[@]} stress spec(s) for baseline:"
+          for f in "${SPEC_FILES[@]}"; do echo " - $f"; done
           echo "Executing $RUNS baseline runs (skipping first $WARMUP_SKIP for warmup)"
           for i in $(seq 1 $RUNS); do
             echo "--- Baseline build run $i/$RUNS ---"
-            npx nx e2e demo-playwright -- \
-              --project=chromium \
-              projects/demo-playwright/tests/core/scrollbar/scrollbar.stress.pw.spec.ts || true
+            npx nx e2e demo-playwright -- --project=chromium "${SPEC_FILES[@]}" || true
             if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
               dest=./performance-stress/baseline/run-$i
               mkdir -p "$dest"
