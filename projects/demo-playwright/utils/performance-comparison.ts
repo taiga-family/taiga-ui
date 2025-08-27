@@ -347,6 +347,7 @@ export class PerformanceComparison {
                 filteredDetails,
                 details,
                 changeThreshold,
+                overallNetRegressed,
             );
         }
 
@@ -1034,6 +1035,7 @@ export class PerformanceComparison {
         filteredDetails: MetricsComparison[],
         allDetails: MetricsComparison[],
         changeThreshold: number,
+        overallNetRegressed: boolean,
     ): string {
         if (filteredDetails.length === 0) {
             return '';
@@ -1044,15 +1046,21 @@ export class PerformanceComparison {
         section += '<details open>\n';
         section += `<summary>Tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length})</summary>\n\n`;
         section +=
-            '| Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration | Layout ms/op (median) | Recalc ms/op (median) |\n';
+            '| Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration | Layout ms/op (median) | Recalc ms/op (median) | Reason |\n';
         section +=
-            '|-----------|------------|----------------|-----------|-----------------|------------------------|-------------------------|\n';
+            '|-----------|------------|----------------|-----------|-----------------|------------------------|-------------------------|--------|\n';
         // Removed extra blank line to keep markdown table intact
 
         for (const detail of filteredDetails) {
-            section += this.generateTableRow(detail, changeThreshold);
+            section += this.generateTableRow(
+                detail,
+                changeThreshold,
+                overallNetRegressed,
+            );
         }
 
+        section +=
+            '\nReason legend: ΔOps≥T count change ≥ threshold; ΔDur≥T duration change ≥ threshold; abs≥F absolute ms delta ≥ floor; net+ net contributor when overall net regressed; gated regression gating triggered; new new test (no baseline).\n\n';
         section += '</details>\n\n';
 
         return section;
@@ -1069,6 +1077,7 @@ export class PerformanceComparison {
     private static generateTableRow(
         detail: MetricsComparison,
         changeThreshold: number,
+        overallNetRegressed: boolean,
     ): string {
         const {testName, baseline, current, changes} = detail;
 
@@ -1134,7 +1143,50 @@ export class PerformanceComparison {
         const currentRecalcMedian = current.recalcMedianPerOp ?? currentRecalcAvg;
         const baselineRecalcMedian = baseline?.recalcMedianPerOp ?? baselineRecalcAvg;
 
-        return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} | ${formatChange(baselineLayoutMedian, currentLayoutMedian, changes.layoutMedianPerOp || 0, '')} | ${formatChange(baselineRecalcMedian, currentRecalcMedian, changes.recalcMedianPerOp || 0, '')} |\n`;
+        const reasons: string[] = [];
+
+        if (!baseline) {
+            reasons.push('new');
+        } else {
+            if (
+                Math.abs(changes.layoutCount) >= changeThreshold ||
+                Math.abs(changes.recalcStyleCount) >= changeThreshold
+            ) {
+                reasons.push('ΔOps≥T');
+            }
+
+            if (
+                Math.abs(changes.layoutDuration) >= changeThreshold ||
+                Math.abs(changes.recalcStyleDuration) >= changeThreshold
+            ) {
+                reasons.push('ΔDur≥T');
+            }
+
+            const absDeltaFloor = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
+
+            if (
+                Math.abs(detail.diff.layoutDuration) >= absDeltaFloor ||
+                Math.abs(detail.diff.recalcStyleDuration) >= absDeltaFloor
+            ) {
+                reasons.push('abs≥F');
+            }
+
+            const netMs = detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
+            const minNetMs = Number(process.env.PERF_NET_CONTRIBUTOR_ABS_MS_FLOOR || '3');
+
+            if (overallNetRegressed && netMs > 0 && netMs >= minNetMs) {
+                reasons.push('net+');
+            }
+
+            if (
+                detail.pattern === 'count-driven' ||
+                detail.pattern === 'per-op-increase'
+            ) {
+                reasons.push('gated');
+            }
+        }
+
+        return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} | ${formatChange(baselineLayoutMedian, currentLayoutMedian, changes.layoutMedianPerOp || 0, '')} | ${formatChange(baselineRecalcMedian, currentRecalcMedian, changes.recalcMedianPerOp || 0, '')} | ${reasons.join(', ')} |\n`;
     }
 
     private static classifyPattern(detail: MetricsComparison): string {
