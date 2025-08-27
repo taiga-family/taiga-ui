@@ -97,11 +97,9 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
 
         if (value == null) {
             this.el.ownerDocument.execCommand('delete');
-            /**
-             * @note:
-             * ensure non-erasable prefix actually deleted
-             * https://github.com/taiga-family/taiga-ui/issues/11634
-             */
+
+            // see https://github.com/taiga-family/taiga-ui/issues/11634
+            // ensure non-erasable affixes actually deleted
             this.el.value = '';
         } else {
             this.el.ownerDocument.execCommand(
