@@ -1,4 +1,4 @@
-import {JsonPipe, NgForOf, NgIf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,15 +8,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        FormsModule,
-        JsonPipe,
-        NgForOf,
-        NgIf,
-        ReactiveFormsModule,
-        TuiButton,
-        TuiCheckbox,
-    ],
+    imports: [FormsModule, NgForOf, NgIf, ReactiveFormsModule, TuiButton, TuiCheckbox],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

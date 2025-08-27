@@ -4,7 +4,6 @@ import {MaskitoDirective} from '@maskito/angular';
 import {TuiIcon} from '@taiga-ui/core';
 import {
     TuiInputModule,
-    TuiSvgComponent,
     TuiTextfieldControllerModule,
     TuiWrapperModule,
 } from '@taiga-ui/legacy';
@@ -16,7 +15,6 @@ import {
         MaskitoDirective,
         TuiIcon,
         TuiInputModule,
-        TuiSvgComponent,
         TuiTextfieldControllerModule,
         TuiWrapperModule,
     ],

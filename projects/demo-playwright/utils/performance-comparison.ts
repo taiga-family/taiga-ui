@@ -347,6 +347,7 @@ export class PerformanceComparison {
                 filteredDetails,
                 details,
                 changeThreshold,
+                overallNetRegressed,
             );
         }
 
@@ -735,32 +736,53 @@ export class PerformanceComparison {
             return true; // new test
         }
 
-        // Strict gated regression always visible
+        // Regression candidate gating (count-driven or per-op increase) always visible
         if (this.isRegressionCandidate(detail, changeThreshold)) {
             return true;
         }
 
-        const pctChanges = [
-            Math.abs(detail.changes.layoutDuration),
-            Math.abs(detail.changes.recalcStyleDuration),
-            Math.abs(detail.changes.layoutCount),
-            Math.abs(detail.changes.recalcStyleCount),
-        ];
+        // Primary visible signals: duration % or per-op median % exceed threshold
+        const durationPctExceeded =
+            Math.abs(detail.changes.layoutDuration) >= changeThreshold ||
+            Math.abs(detail.changes.recalcStyleDuration) >= changeThreshold;
+        const medianPerOpExceeded =
+            Math.abs(detail.changes.layoutMedianPerOp || 0) >= changeThreshold ||
+            Math.abs(detail.changes.recalcMedianPerOp || 0) >= changeThreshold;
 
-        if (pctChanges.some((v) => v >= changeThreshold)) {
+        if (durationPctExceeded || medianPerOpExceeded) {
             return true;
         }
 
-        const ABS_DELTA_FLOOR = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
+        // Include counts only if large and not offset by per-op improvement
+        const countPctExceeded =
+            Math.abs(detail.changes.layoutCount) >= changeThreshold ||
+            Math.abs(detail.changes.recalcStyleCount) >= changeThreshold;
 
-        if (
-            Math.abs(detail.diff.layoutDuration) >= ABS_DELTA_FLOOR ||
-            Math.abs(detail.diff.recalcStyleDuration) >= ABS_DELTA_FLOOR
-        ) {
+        if (countPctExceeded) {
             return true;
         }
 
-        if (overallNetRegressed) {
+        // Optional absolute delta inclusion (disabled by default)
+        const absFloorEnabled =
+            (process.env.PERF_ENABLE_ABS_FLOOR || 'false').toLowerCase() === 'true';
+
+        if (absFloorEnabled) {
+            const ABS_DELTA_FLOOR = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
+
+            if (
+                Math.abs(detail.diff.layoutDuration) >= ABS_DELTA_FLOOR ||
+                Math.abs(detail.diff.recalcStyleDuration) >= ABS_DELTA_FLOOR
+            ) {
+                return true;
+            }
+        }
+
+        // Optional net contributor path (disabled unless BOTH overall net regressed and explicitly enabled)
+        const contributorsEnabled =
+            (process.env.PERF_ENABLE_NET_CONTRIBUTORS || 'false').toLowerCase() ===
+            'true';
+
+        if (contributorsEnabled && overallNetRegressed) {
             const minNetMs = Number(process.env.PERF_NET_CONTRIBUTOR_ABS_MS_FLOOR || '3');
             const netMs = detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
 
@@ -769,7 +791,7 @@ export class PerformanceComparison {
             }
         }
 
-        return false;
+        return false; // filtered as noise
     }
 
     /**
@@ -902,37 +924,17 @@ export class PerformanceComparison {
         return gated && passesNet && varianceOk;
     }
 
-    /**
-     * Generates the summary section of the markdown report
-     */
     private static generateSummarySection(summary: ComparisonReport['summary']): string {
-        // Build bullet lines then wrap in a collapsible details block
         const lines: string[] = [];
-        // Keep old bullet formatting logic (only icons & percentages)
         const formatAvg = (label: string, value: number): string => {
             const v = Number(value.toFixed(1));
             const sign = v > 0 ? '+' : '';
-
             let icon: string;
-
-            if (v < 0) {
-                icon = '✅';
-            } else if (v > 0) {
-                icon = '❌';
-            } else {
-                icon = '✅';
-            }
-
+            if (v < 0) icon = '✅';
+            else if (v > 0) icon = '❌';
+            else icon = '✅';
             return `- ${label}: ${sign}${v.toFixed(1)}% ${icon}`;
         };
-
-        // Order of importance (excluding Net which is in Final Result):
-        // 1. Overall layout duration
-        // 2. Overall recalc duration
-        // 3. Max layout duration change
-        // 4. Max recalc duration change
-        // 5. Max layout ops change
-        // 6. Max recalc ops change
         if (summary.testsWithBaseline > 0) {
             const layoutTotal = summary.overallLayoutDurationChange;
             const recalcTotal = summary.overallRecalcDurationChange;
@@ -940,7 +942,6 @@ export class PerformanceComparison {
             const recalcPrefix = recalcTotal > 0 ? '+' : '';
             const layoutIcon = layoutTotal <= 0 ? '✅' : '❌';
             const recalcIcon = recalcTotal <= 0 ? '✅' : '❌';
-
             lines.push(
                 `- Overall layout duration: ${layoutPrefix}${layoutTotal.toFixed(1)}% ${layoutIcon}`,
             );
@@ -948,7 +949,6 @@ export class PerformanceComparison {
                 `- Overall recalc duration: ${recalcPrefix}${recalcTotal.toFixed(1)}% ${recalcIcon}`,
             );
         }
-
         lines.push(
             formatAvg('Max layout duration change', summary.maxLayoutDurationChange),
         );
@@ -957,9 +957,7 @@ export class PerformanceComparison {
         );
         lines.push(formatAvg('Max layout ops change', summary.maxLayoutCountChange));
         lines.push(formatAvg('Max recalc ops change', summary.maxRecalcCountChange));
-
         const body = lines.join('\n');
-
         return [
             '<details>',
             '<summary>Summary</summary>',
@@ -1034,6 +1032,7 @@ export class PerformanceComparison {
         filteredDetails: MetricsComparison[],
         allDetails: MetricsComparison[],
         changeThreshold: number,
+        overallNetRegressed: boolean,
     ): string {
         if (filteredDetails.length === 0) {
             return '';
@@ -1044,15 +1043,21 @@ export class PerformanceComparison {
         section += '<details open>\n';
         section += `<summary>Tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length})</summary>\n\n`;
         section +=
-            '| Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration | Layout ms/op (median) | Recalc ms/op (median) |\n';
+            '| Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration | Layout ms/op (median) | Recalc ms/op (median) | Reason |\n';
         section +=
-            '|-----------|------------|----------------|-----------|-----------------|------------------------|-------------------------|\n';
+            '|-----------|------------|----------------|-----------|-----------------|------------------------|-------------------------|--------|\n';
         // Removed extra blank line to keep markdown table intact
 
         for (const detail of filteredDetails) {
-            section += this.generateTableRow(detail, changeThreshold);
+            section += this.generateTableRow(
+                detail,
+                changeThreshold,
+                overallNetRegressed,
+            );
         }
 
+        section +=
+            '\nReason legend: ΔDur≥T duration % ≥ threshold; ΔMed/op≥T median per-op % ≥ threshold; ΔOps≥T op count % ≥ threshold; gated regression gating triggered; new new test.\n\n';
         section += '</details>\n\n';
 
         return section;
@@ -1069,9 +1074,9 @@ export class PerformanceComparison {
     private static generateTableRow(
         detail: MetricsComparison,
         changeThreshold: number,
+        overallNetRegressed: boolean,
     ): string {
         const {testName, baseline, current, changes} = detail;
-
         const trim = (v: string): string => (v.endsWith('.0') ? v.slice(0, -2) : v);
         const fmtVal = (v: number, decimals = 1): string => {
             if (Number.isInteger(v)) {
@@ -1093,10 +1098,9 @@ export class PerformanceComparison {
             const baselineDisp = fmtVal(baselineValue);
             const currentDisp = fmtVal(currentValue);
 
-            // If the displayed numbers are identical after rounding, suppress change noise
             if (baselineDisp === currentDisp) {
                 return `${currentDisp}${unit}`;
-            }
+            } // rounding hides
 
             if (Math.abs(change) < changeThreshold) {
                 return `${currentDisp}${unit}`;
@@ -1133,8 +1137,41 @@ export class PerformanceComparison {
         const baselineLayoutMedian = baseline?.layoutMedianPerOp ?? baselineLayoutAvg;
         const currentRecalcMedian = current.recalcMedianPerOp ?? currentRecalcAvg;
         const baselineRecalcMedian = baseline?.recalcMedianPerOp ?? baselineRecalcAvg;
+        const reasons: string[] = [];
 
-        return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} | ${formatChange(baselineLayoutMedian, currentLayoutMedian, changes.layoutMedianPerOp || 0, '')} | ${formatChange(baselineRecalcMedian, currentRecalcMedian, changes.recalcMedianPerOp || 0, '')} |\n`;
+        if (!baseline) {
+            reasons.push('new');
+        } else {
+            if (
+                Math.abs(changes.layoutDuration) >= changeThreshold ||
+                Math.abs(changes.recalcStyleDuration) >= changeThreshold
+            ) {
+                reasons.push('ΔDur≥T');
+            }
+
+            if (
+                Math.abs(changes.layoutMedianPerOp || 0) >= changeThreshold ||
+                Math.abs(changes.recalcMedianPerOp || 0) >= changeThreshold
+            ) {
+                reasons.push('ΔMed/op≥T');
+            }
+
+            if (
+                Math.abs(changes.layoutCount) >= changeThreshold ||
+                Math.abs(changes.recalcStyleCount) >= changeThreshold
+            ) {
+                reasons.push('ΔOps≥T');
+            }
+
+            if (
+                detail.pattern === 'count-driven' ||
+                detail.pattern === 'per-op-increase'
+            ) {
+                reasons.push('gated');
+            }
+        }
+
+        return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} | ${formatChange(baselineLayoutMedian, currentLayoutMedian, changes.layoutMedianPerOp || 0, '')} | ${formatChange(baselineRecalcMedian, currentRecalcMedian, changes.recalcMedianPerOp || 0, '')} | ${reasons.join(', ')} |\n`;
     }
 
     private static classifyPattern(detail: MetricsComparison): string {

@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,7 +8,7 @@ import {map} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [NgIf, TuiActionBar, TuiButton],
+    imports: [TuiActionBar, TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

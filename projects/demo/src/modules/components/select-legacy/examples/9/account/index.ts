@@ -2,11 +2,7 @@ import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {TuiAmountPipe, type TuiCurrencyVariants} from '@taiga-ui/addon-commerce';
 import {TuiIconPipe, TuiNumberFormat} from '@taiga-ui/core';
-import {
-    type PolymorpheusContent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 export interface MyAccount {
     amount: number;
@@ -18,14 +14,7 @@ export interface MyAccount {
 @Component({
     standalone: true,
     selector: 'my-account',
-    imports: [
-        AsyncPipe,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiAmountPipe,
-        TuiIconPipe,
-        TuiNumberFormat,
-    ],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiAmountPipe, TuiIconPipe, TuiNumberFormat],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -22,6 +22,7 @@ export * from '@taiga-ui/cdk/directives/popover';
 export * from '@taiga-ui/cdk/directives/repeat-times';
 export * from '@taiga-ui/cdk/directives/resizer';
 export * from '@taiga-ui/cdk/directives/swipe';
+export * from '@taiga-ui/cdk/directives/transitioned';
 export * from '@taiga-ui/cdk/directives/validator';
 export * from '@taiga-ui/cdk/directives/value-changes';
 export * from '@taiga-ui/cdk/directives/visual-viewport';

@@ -13,14 +13,12 @@
         <tui-stepper [activeItemIndex]="index()">
             <button
                 tuiStep
-                type="button"
                 [disabled]="true"
             >
                 Common
             </button>
             <button
                 tuiStep
-                type="button"
                 [disabled]="true"
             >
                 Network access
@@ -34,18 +32,8 @@
             [activeItemIndex]="index()"
             (activeItemIndexChange)="index.set($event)"
         >
-            <button
-                tuiTab
-                type="button"
-            >
-                Common
-            </button>
-            <button
-                tuiTab
-                type="button"
-            >
-                Network access
-            </button>
+            <button tuiTab>Common</button>
+            <button tuiTab>Network access</button>
         </tui-tabs>
     </ng-container>
 </ng-container>

@@ -1,26 +1,35 @@
-// @ts-nocheck It is used in CI only!
-/**
- * Canvas has difficult installation guide for ARM CPU, including an Apple M1 or M2
- * (not friendly for our external contributors).
- * https://github.com/Automattic/node-canvas/issues/1511
- */
-import {createCanvas, loadImage} from 'canvas';
+import sharp from 'sharp';
 
+// noinspection JSUnusedGlobalSymbols
 export async function tuiCombineSnapshots(
-    imagesPaths: string[],
-): Promise<NodeJS.ArrayBufferView> {
-    const images = await Promise.all(imagesPaths.map(loadImage));
-    const totalWidth = images.reduce((acc: number, {width}) => acc + width, 0);
-    const maxHeight = Math.max(...images.map(({height}) => height));
-    const canvas = createCanvas(totalWidth, maxHeight);
-    const ctx = canvas.getContext('2d');
+    inputs: string[],
+    output: string,
+): Promise<void> {
+    const data: readonly sharp.Metadata[] = await Promise.all(
+        inputs.map(async (img) => sharp(img).metadata()),
+    );
 
-    let prevWidth = 0;
+    const totalWidth = data.reduce((sum, metadata) => sum + (metadata.width || 0), 0);
+    const maxHeight = Math.max(...data.map((metadata) => metadata.height || 0));
 
-    images.forEach((image) => {
-        ctx.drawImage(image, prevWidth, 0);
-        prevWidth += image.width;
+    let currentX = 0;
+
+    const composites = inputs.map((img, i) => {
+        const left = currentX;
+
+        currentX += data[i]?.width ?? 0;
+
+        return {input: img, top: 0, left};
     });
 
-    return canvas.toBuffer('image/png');
+    await sharp({
+        create: {
+            width: totalWidth,
+            height: maxHeight,
+            channels: 4,
+            background: {r: 255, g: 255, b: 255, alpha: 1},
+        },
+    })
+        .composite(composites)
+        .toFile(output);
 }

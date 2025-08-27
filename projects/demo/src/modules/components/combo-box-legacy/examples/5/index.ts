@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet} from '@taiga-ui/cdk';
-import {TuiDataList, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiDataList, TuiScrollable} from '@taiga-ui/core';
 import {TuiFilterByInputPipe} from '@taiga-ui/kit';
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
@@ -22,7 +22,6 @@ import {IndexChange} from './index-change.directive';
         TuiFilterByInputPipe,
         TuiLet,
         TuiScrollable,
-        TuiScrollbar,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

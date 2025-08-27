@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -23,7 +23,6 @@ class Account {
     standalone: true,
     imports: [
         AsyncPipe,
-        NgIf,
         ReactiveFormsModule,
         TuiAccordion,
         TuiAmountPipe,

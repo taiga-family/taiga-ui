@@ -3,7 +3,6 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -14,7 +13,7 @@ import {
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiAlertService, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
@@ -23,8 +22,6 @@ import {Subject} from 'rxjs';
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
-        NgForOf,
-        TuiButton,
         TuiPullToRefresh,
         TuiScrollable,
         TuiScrollbar,

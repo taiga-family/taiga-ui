@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrency} from '@taiga-ui/addon-commerce';
-import {TuiButton, TuiDataList} from '@taiga-ui/core';
+import {TuiDataList} from '@taiga-ui/core';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ExampleMyAccount, type MyAccount} from './account';
@@ -15,7 +15,6 @@ import {ExampleMyAccount, type MyAccount} from './account';
         ExampleMyAccount,
         NgForOf,
         ReactiveFormsModule,
-        TuiButton,
         TuiDataList,
         TuiSelectModule,
         TuiTextfieldControllerModule,

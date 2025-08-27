@@ -10,13 +10,12 @@ import {
 } from '@taiga-ui/addon-commerce';
 import {TuiError} from '@taiga-ui/core';
 import {TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
     imports: [
         AsyncPipe,
-        PolymorpheusOutlet,
         PolymorpheusTemplate,
         ReactiveFormsModule,
         TuiError,

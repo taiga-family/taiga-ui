@@ -1,0 +1,25 @@
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {TuiAnimated} from '@taiga-ui/cdk';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiBlockDetails} from '@taiga-ui/layout';
+
+@Component({
+    standalone: true,
+    imports: [TuiAvatar, TuiBlockDetails, TuiTitle],
+    template: `
+        <div tuiBlockDetails>
+            <tui-avatar src="@tui.bell-off" />
+            <h2
+                tuiTitle
+                [style.align-items]="'center'"
+            >
+                No new notifications
+                <div tuiSubtitle>Come back later</div>
+            </h2>
+        </div>
+    `,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [TuiAnimated],
+})
+export class Notifications {}

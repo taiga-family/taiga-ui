@@ -18,6 +18,7 @@ import {TuiStepperComponent} from './stepper.component';
     styleUrls: ['./step.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        type: 'button',
         '[attr.data-state]': 'stepState',
         '[class._vertical]': 'isVertical',
         '[class._focus-visible]': 'focusVisible',

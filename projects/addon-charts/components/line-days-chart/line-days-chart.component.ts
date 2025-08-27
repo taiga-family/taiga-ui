@@ -25,11 +25,7 @@ import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiIsNumber, tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiHint} from '@taiga-ui/core/directives/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
-import {
-    type PolymorpheusContent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter} from 'rxjs';
 
 import {TuiLineDaysChartHint} from './line-days-chart-hint.directive';
@@ -39,7 +35,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
 @Component({
     standalone: true,
     selector: 'tui-line-days-chart',
-    imports: [NgForOf, PolymorpheusOutlet, PolymorpheusTemplate, TuiHint, TuiLineChart],
+    imports: [NgForOf, PolymorpheusOutlet, TuiHint, TuiLineChart],
     templateUrl: './line-days-chart.template.html',
     styleUrls: ['./line-days-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

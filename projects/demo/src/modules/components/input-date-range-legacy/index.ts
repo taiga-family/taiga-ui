@@ -3,7 +3,7 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiMobileCalendar, tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
+import {tuiProvideMobileCalendar} from '@taiga-ui/addon-mobile';
 import {
     TUI_FALSE_HANDLER,
     TUI_FIRST_DAY,
@@ -37,7 +37,6 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
         TuiDemo,
         TuiHint,
         TuiInputDateRangeModule,
-        TuiMobileCalendar,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',

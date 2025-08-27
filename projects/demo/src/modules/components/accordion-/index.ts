@@ -4,13 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiDocAPI, TuiDocAPIItem} from '@taiga-ui/addon-doc';
-import {TUI_EXPAND_LOADED, type TuiSizeS, TuiTitle} from '@taiga-ui/core';
+import {TUI_EXPAND_LOADED, type TuiSizeS} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [TuiAccordion, TuiDemo, TuiDocAPI, TuiDocAPIItem, TuiTitle],
+    imports: [TuiAccordion, TuiDemo, TuiDocAPI, TuiDocAPIItem],
     templateUrl: './index.html',
     changeDetection,
 })

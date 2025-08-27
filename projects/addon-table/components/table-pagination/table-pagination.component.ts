@@ -14,7 +14,7 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiDropdownDirective, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {TUI_COMMON_ICONS, TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {
     TUI_TABLE_PAGINATION_OPTIONS,
@@ -34,7 +34,6 @@ export interface TuiTablePaginationEvent {
         NgForOf,
         NgIf,
         PolymorpheusOutlet,
-        PolymorpheusTemplate,
         TuiButton,
         TuiDataList,
         TuiDropdownDirective,

@@ -46,6 +46,7 @@ export class TuiDocDropdown {
     public appearance = this.options.appearance;
     public limitWidth: TuiDropdownWidth = 'fixed';
     public tuiDropdownEnabled = false;
-
+    public dropdownSided = false;
+    public dropdownSidedOffset = 4;
     public open = false;
 }

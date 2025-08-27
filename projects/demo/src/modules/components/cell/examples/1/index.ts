@@ -2,13 +2,13 @@ import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [NgFor, TuiAvatar, TuiCell, TuiSurface, TuiTitle],
+    imports: [NgFor, TuiAvatar, TuiCell, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

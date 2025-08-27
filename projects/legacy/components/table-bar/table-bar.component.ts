@@ -9,11 +9,7 @@ import {
     TUI_COMMON_ICONS,
 } from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
-import {
-    injectContext,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {type TuiTableBarOptions} from './table-bar.options';
 
@@ -24,7 +20,7 @@ import {type TuiTableBarOptions} from './table-bar.options';
 @Component({
     standalone: true,
     selector: 'tui-table-bar',
-    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, PolymorpheusTemplate, TuiButton],
+    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiButton],
     templateUrl: './table-bar.template.html',
     styleUrls: ['./table-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

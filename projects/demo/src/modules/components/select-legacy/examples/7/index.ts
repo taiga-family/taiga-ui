@@ -4,12 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {EMPTY_ARRAY, type TuiStringHandler} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiDataList,
-    TuiTitle,
-    type TuiValueContentContext,
-} from '@taiga-ui/core';
+import {TuiDataList, TuiTitle, type TuiValueContentContext} from '@taiga-ui/core';
 import {TuiMultiSelectModule, TuiSelectModule} from '@taiga-ui/legacy';
 
 interface Account {
@@ -53,7 +48,6 @@ const CASH: Account = {
     imports: [
         FormsModule,
         NgForOf,
-        TuiButton,
         TuiDataList,
         TuiMultiSelectModule,
         TuiSelectModule,

@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiElement, TuiScrollService} from '@taiga-ui/cdk';
 import {
     TuiButton,
-    TuiNumberFormat,
     tuiNumberFormatProvider,
     TuiScrollbar,
     TuiTextfield,
@@ -21,7 +20,6 @@ import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
         TuiButton,
         TuiElement,
         TuiInputNumber,
-        TuiNumberFormat,
         TuiScrollbar,
         TuiTextfield,
     ],

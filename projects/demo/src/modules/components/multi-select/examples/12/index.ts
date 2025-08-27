@@ -3,7 +3,7 @@ import {Component, Directive} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAsOptionContent, TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
+import {tuiAsOptionContent, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -20,7 +20,6 @@ export class MoreOption {}
         FormsModule,
         MoreOption,
         NgForOf,
-        TuiButton,
         TuiDataList,
         TuiDataListDropdownManager,
         TuiDropdown,

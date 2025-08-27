@@ -73,7 +73,13 @@ test.describe('Demo', () => {
                 await expect.soft(example).toHaveScreenshot(makeName('android'));
             }
 
-            await checkA11y(page, 'tui-doc-example > .t-example', {detailedReport: true});
+            await checkA11y(
+                page,
+                'tui-doc-example > .t-example',
+                {detailedReport: true},
+                false,
+                'v2',
+            );
         });
     });
 });

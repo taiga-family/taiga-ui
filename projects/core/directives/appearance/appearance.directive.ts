@@ -1,5 +1,4 @@
 import {
-    afterNextRender,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
@@ -12,6 +11,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
+import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
@@ -33,8 +33,8 @@ class TuiAppearanceStyles {}
 @Directive({
     standalone: true,
     selector: '[tuiAppearance]',
+    hostDirectives: [TuiTransitioned],
     host: {
-        class: 'tui-appearance-initializing',
         tuiAppearance: '',
         '[attr.data-appearance]': 'appearance()',
         '[attr.data-state]': 'state()',
@@ -67,16 +67,6 @@ export class TuiAppearance {
             this.cdr.detectChanges();
         }
     }, TUI_ALLOW_SIGNAL_WRITES);
-
-    constructor() {
-        afterNextRender(() => {
-            this.el.classList.toggle(
-                'tui-appearance-initializing',
-                // Triggering reflow so there's no transition
-                !!this.el.offsetWidth && false,
-            );
-        });
-    }
 
     @Input()
     public set tuiAppearance(appearance: TuiAppearanceOptions['appearance']) {
