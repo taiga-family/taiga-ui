@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.51.0](https://github.com/taiga-family/taiga-ui/compare/v4.50.0...v4.51.0) (2025-08-27)
+
+### 🚀 Features
+
+- **experimental:** `Dialog` add fullscreen appearance ([#11707](https://github.com/taiga-family/taiga-ui/issues/11707))
+  ([9760d44](https://github.com/taiga-family/taiga-ui/commit/9760d44aff79be6e82c13ebcc91178e4e7c34339))
+- **kit:** `Slides` add new component ([#11761](https://github.com/taiga-family/taiga-ui/issues/11761))
+  ([8f4781b](https://github.com/taiga-family/taiga-ui/commit/8f4781b9bca8504f7ba8371f2289528c1744c733))
+- **kit:** new version of `InputRange` ([#11645](https://github.com/taiga-family/taiga-ui/issues/11645))
+  ([6f08601](https://github.com/taiga-family/taiga-ui/commit/6f08601d2cb673bc50458f38566306619afadfa3))
+- **testing:** supports merging large images ([#11768](https://github.com/taiga-family/taiga-ui/issues/11768))
+  ([c39bc82](https://github.com/taiga-family/taiga-ui/commit/c39bc82d411806a56328f67de0d099ab72b057ea))
+
+### 🐞 Bug Fixes
+
+- **addon-table:** `TableControl` fix change detection ([#11691](https://github.com/taiga-family/taiga-ui/issues/11691))
+  ([f46a6e2](https://github.com/taiga-family/taiga-ui/commit/f46a6e2745f55f1def73ba2a00b9a857193c5ce9))
+- **cdk:** `Transitioned` add directive to hide initial transitions
+  ([#11770](https://github.com/taiga-family/taiga-ui/issues/11770))
+  ([e0c3047](https://github.com/taiga-family/taiga-ui/commit/e0c304709740f9456fd44b770e21353e4157151e))
+- **core:** `Scrollbar` fix bars overflowing container ([#11712](https://github.com/taiga-family/taiga-ui/issues/11712))
+  ([e2fca23](https://github.com/taiga-family/taiga-ui/commit/e2fca237d9baebb644edcba79100fc6a1ff39dd0))
+- **core:** add `try/catch` around `showPicker()` to handle cross-origin iframe errors
+  ([#11669](https://github.com/taiga-family/taiga-ui/issues/11669))
+  ([e7e62a1](https://github.com/taiga-family/taiga-ui/commit/e7e62a12704b82d6deea87f3953d80f924258609))
+- **kit:** `Avatar` hide overflowing content ([#11703](https://github.com/taiga-family/taiga-ui/issues/11703))
+  ([8bacb20](https://github.com/taiga-family/taiga-ui/commit/8bacb20521766172f961aaccb4de8d7b5c1ad30d))
+- **kit:** `InputChip` fix long items in string view ([#11708](https://github.com/taiga-family/taiga-ui/issues/11708))
+  ([5b4ec51](https://github.com/taiga-family/taiga-ui/commit/5b4ec51dc525e711da6e434563cf1e05da8fc096))
+- **kit:** `InputChip` fix multiple style issues ([#11765](https://github.com/taiga-family/taiga-ui/issues/11765))
+  ([28b4bd9](https://github.com/taiga-family/taiga-ui/commit/28b4bd90066cba9a45a1d80c7669e8d9d4f33790))
+- **kit:** `InputSlider` has broken alignment for slider ticks
+  ([#11688](https://github.com/taiga-family/taiga-ui/issues/11688))
+  ([2c9ec95](https://github.com/taiga-family/taiga-ui/commit/2c9ec950f6b93dd7cd35dd6f95842a18763fb3f6))
+- **kit:** `Switch` fix icon position ([#11677](https://github.com/taiga-family/taiga-ui/issues/11677))
+  ([e7a7616](https://github.com/taiga-family/taiga-ui/commit/e7a7616a28e058bb44c5394e5a70d440211670af))
+- **kit:** `Textarea` fix focusing when scrollbar is dragged
+  ([#11758](https://github.com/taiga-family/taiga-ui/issues/11758))
+  ([12f4172](https://github.com/taiga-family/taiga-ui/commit/12f4172c3c352361be5a2aa2dfd5a2f8f44e0584))
+- **kit:** `Textarea` increase style specificity for safari 15
+  ([#11733](https://github.com/taiga-family/taiga-ui/issues/11733))
+  ([ed0b5c7](https://github.com/taiga-family/taiga-ui/commit/ed0b5c7b42766e511dda33bac48dab5a152aefb6))
+
 ## [4.50.0](https://github.com/taiga-family/taiga-ui/compare/v4.49.0...v4.50.0) (2025-08-18)
 
 ### 🚀 Features
