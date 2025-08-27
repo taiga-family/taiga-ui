@@ -147,10 +147,7 @@ function repositionOps(host: Locator, total: number): Op[] {
 function resolveTrigger(
     example: ReturnType<TuiDocumentationPagePO['getExample']>,
 ): Locator {
-    const input = example.locator('input').first();
-    const button = example.locator('button').first();
-
-    return input; // in #appearance example input is the host
+    return example.locator('input').first(); // #appearance example host
 }
 
 async function ensureDropdownOpen(trigger: Locator, page: Page): Promise<boolean> {
@@ -160,6 +157,7 @@ async function ensureDropdownOpen(trigger: Locator, page: Page): Promise<boolean
         const visible = await dropdown
             .first()
             .isVisible()
+            // eslint-disable-next-line
             .catch(() => false);
 
         if (visible) {
@@ -175,10 +173,13 @@ async function ensureDropdownOpen(trigger: Locator, page: Page): Promise<boolean
         await page.waitForTimeout(40).catch(() => {});
     }
 
-    return dropdown
-        .first()
-        .isVisible()
-        .catch(() => false);
+    return (
+        dropdown
+            .first()
+            .isVisible()
+            // eslint-disable-next-line
+            .catch(() => false)
+    );
 }
 
 function nestedOps(total: number, host: Locator, menuRoot: () => Locator): Op[] {
@@ -191,6 +192,7 @@ function nestedOps(total: number, host: Locator, menuRoot: () => Locator): Op[] 
             // ensure dropdown stays open
             const open = await menuRoot()
                 .isVisible()
+                // eslint-disable-next-line
                 .catch(() => false);
 
             if (!open) {
@@ -345,9 +347,10 @@ test.describe('Dropdown Stress Tests', () => {
 
         await host.waitFor({state: 'visible', timeout: 3000}).catch(() => {});
         await host.click({timeout: 1500}).catch(() => {});
-        const dropdownRoot = () => page.locator('tui-dropdown').first();
+        const dropdownRoot = (): Locator => page.locator('tui-dropdown').first();
         const opened = await dropdownRoot()
             .isVisible()
+            // eslint-disable-next-line
             .catch(() => false);
 
         if (!opened) {
