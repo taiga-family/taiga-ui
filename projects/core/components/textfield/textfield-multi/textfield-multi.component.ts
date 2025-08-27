@@ -1,6 +1,5 @@
 import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {
-    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChild,
@@ -21,7 +20,6 @@ import {tuiArrayToggle, tuiProvide, tuiPx} from '@taiga-ui/cdk/utils/miscellaneo
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     tuiAsDataListHost,
-    type TuiDataListHost,
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
@@ -101,10 +99,7 @@ import {
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
     },
 })
-export class TuiTextfieldMultiComponent<T>
-    extends TuiTextfieldBaseComponent<T>
-    implements TuiDataListHost<T>, AfterContentInit
-{
+export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> {
     protected readonly height = signal<number | null>(null);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component: PolymorpheusContent<TuiContext<TuiTextfieldItem<T>>> =
