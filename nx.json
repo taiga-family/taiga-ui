@@ -12,8 +12,7 @@
             "{workspaceRoot}/projects/testing/**/*.ts",
             "{workspaceRoot}/nx.json",
             "{workspaceRoot}/package-lock.json",
-            "{workspaceRoot}/tsconfig.*.json",
-            "{workspaceRoot}/tsconfig.json",
+            "{workspaceRoot}/tsconfig*.json",
             "{workspaceRoot}/scripts/**/*",
             "{workspaceRoot}/*.yml",
             "{workspaceRoot}/*.md"
