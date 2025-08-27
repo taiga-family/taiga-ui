@@ -295,6 +295,9 @@
     <loc>https://taiga-ui.dev/components/input-phone/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/input-range/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/legacy/input-range/</loc>
   </url>
   <url>
@@ -413,6 +416,9 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/slider/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/slides/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/status/</loc>
@@ -1204,6 +1210,12 @@
     <loc>https://taiga-ui.dev/components/input-phone/Setup/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/input-range/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/input-range/Setup/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/legacy/input-range/API/</loc>
   </url>
   <url>
@@ -1436,6 +1448,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/slider/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/slides/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/slides/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/status/API/</loc>
