@@ -20,11 +20,7 @@ import {TuiHintOverflow} from '@taiga-ui/core/directives/hint';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TUI_BLOCK_OPTIONS, TuiBlock} from '@taiga-ui/kit/components/block';
-import {
-    type PolymorpheusContent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
@@ -34,7 +30,6 @@ import {
         NgForOf,
         NgIf,
         PolymorpheusOutlet,
-        PolymorpheusTemplate,
         TuiBadge,
         TuiBlock,
         TuiHintOverflow,
