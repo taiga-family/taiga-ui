@@ -292,6 +292,7 @@ export class TuiInputCardGroup
             e?.nativeElement.focus();
             e?.nativeElement.select();
             e?.nativeElement.ownerDocument.execCommand('delete');
+
             /**
              * @note:
              * ensure non-erasable prefix actually deleted
