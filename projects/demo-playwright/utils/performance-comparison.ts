@@ -748,6 +748,7 @@ export class PerformanceComparison {
         const medianPerOpExceeded =
             Math.abs(detail.changes.layoutMedianPerOp || 0) >= changeThreshold ||
             Math.abs(detail.changes.recalcMedianPerOp || 0) >= changeThreshold;
+
         if (durationPctExceeded || medianPerOpExceeded) {
             return true;
         }
@@ -756,6 +757,7 @@ export class PerformanceComparison {
         const countPctExceeded =
             Math.abs(detail.changes.layoutCount) >= changeThreshold ||
             Math.abs(detail.changes.recalcStyleCount) >= changeThreshold;
+
         if (countPctExceeded) {
             return true;
         }
@@ -763,8 +765,10 @@ export class PerformanceComparison {
         // Optional absolute delta inclusion (disabled by default)
         const absFloorEnabled =
             (process.env.PERF_ENABLE_ABS_FLOOR || 'false').toLowerCase() === 'true';
+
         if (absFloorEnabled) {
             const ABS_DELTA_FLOOR = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
+
             if (
                 Math.abs(detail.diff.layoutDuration) >= ABS_DELTA_FLOOR ||
                 Math.abs(detail.diff.recalcStyleDuration) >= ABS_DELTA_FLOOR
@@ -777,9 +781,11 @@ export class PerformanceComparison {
         const contributorsEnabled =
             (process.env.PERF_ENABLE_NET_CONTRIBUTORS || 'false').toLowerCase() ===
             'true';
+
         if (contributorsEnabled && overallNetRegressed) {
             const minNetMs = Number(process.env.PERF_NET_CONTRIBUTOR_ABS_MS_FLOOR || '3');
             const netMs = detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
+
             if (netMs > 0 && netMs >= minNetMs) {
                 return true;
             }
@@ -1097,7 +1103,10 @@ export class PerformanceComparison {
         const {testName, baseline, current, changes} = detail;
         const trim = (v: string): string => (v.endsWith('.0') ? v.slice(0, -2) : v);
         const fmtVal = (v: number, decimals = 1): string => {
-            if (Number.isInteger(v)) return String(v);
+            if (Number.isInteger(v)) {
+                return String(v);
+            }
+
             return trim(v.toFixed(decimals));
         };
         const formatChange = (
@@ -1106,18 +1115,28 @@ export class PerformanceComparison {
             change: number,
             unit = '',
         ): string => {
-            if (baselineValue === undefined)
+            if (baselineValue === undefined) {
                 return `${fmtVal(currentValue)}${unit} (new)`;
+            }
+
             const baselineDisp = fmtVal(baselineValue);
             const currentDisp = fmtVal(currentValue);
-            if (baselineDisp === currentDisp) return `${currentDisp}${unit}`; // rounding hides
-            if (Math.abs(change) < changeThreshold) return `${currentDisp}${unit}`;
+
+            if (baselineDisp === currentDisp) {
+                return `${currentDisp}${unit}`;
+            } // rounding hides
+
+            if (Math.abs(change) < changeThreshold) {
+                return `${currentDisp}${unit}`;
+            }
+
             const isSignificant = Math.abs(change) >= 10;
             const sign = change > 0 ? '+' : '';
             const changeStr = trim(change.toFixed(1));
             const indicator = change > 0 ? '❌' : '✅';
             const percentWithIndicator = `${sign}${changeStr}% ${indicator}`;
             const beforeAfterCore = `${baselineDisp}${unit} ← ${percentWithIndicator} → ${currentDisp}${unit}`;
+
             return isSignificant ? `**${beforeAfterCore}**` : beforeAfterCore;
         };
         const currentLayoutAvg =
@@ -1143,48 +1162,69 @@ export class PerformanceComparison {
         const currentRecalcMedian = current.recalcMedianPerOp ?? currentRecalcAvg;
         const baselineRecalcMedian = baseline?.recalcMedianPerOp ?? baselineRecalcAvg;
         const reasons: string[] = [];
+
         if (!baseline) {
             reasons.push('new');
         } else {
             if (
                 Math.abs(changes.layoutDuration) >= changeThreshold ||
                 Math.abs(changes.recalcStyleDuration) >= changeThreshold
-            )
+            ) {
                 reasons.push('ΔDur≥T');
+            }
+
             if (
                 Math.abs(changes.layoutMedianPerOp || 0) >= changeThreshold ||
                 Math.abs(changes.recalcMedianPerOp || 0) >= changeThreshold
-            )
+            ) {
                 reasons.push('ΔMed/op≥T');
+            }
+
             if (
                 Math.abs(changes.layoutCount) >= changeThreshold ||
                 Math.abs(changes.recalcStyleCount) >= changeThreshold
-            )
+            ) {
                 reasons.push('ΔOps≥T');
+            }
+
             const absFloorEnabled =
                 (process.env.PERF_ENABLE_ABS_FLOOR || 'false').toLowerCase() === 'true';
+
             if (absFloorEnabled) {
                 const absDeltaFloor = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
+
                 if (
                     Math.abs(detail.diff.layoutDuration) >= absDeltaFloor ||
                     Math.abs(detail.diff.recalcStyleDuration) >= absDeltaFloor
-                )
+                ) {
                     reasons.push('abs≥F');
+                }
             }
+
             const contributorsEnabled =
                 (process.env.PERF_ENABLE_NET_CONTRIBUTORS || 'false').toLowerCase() ===
                 'true';
+
             if (contributorsEnabled && overallNetRegressed) {
                 const netMs =
                     detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
                 const minNetMs = Number(
                     process.env.PERF_NET_CONTRIBUTOR_ABS_MS_FLOOR || '3',
                 );
-                if (netMs > 0 && netMs >= minNetMs) reasons.push('net+');
+
+                if (netMs > 0 && netMs >= minNetMs) {
+                    reasons.push('net+');
+                }
             }
-            if (detail.pattern === 'count-driven' || detail.pattern === 'per-op-increase')
+
+            if (
+                detail.pattern === 'count-driven' ||
+                detail.pattern === 'per-op-increase'
+            ) {
                 reasons.push('gated');
+            }
         }
+
         return `| ${testName} | ${formatChange(baseline?.layoutCount, current.layoutCount, changes.layoutCount)} | ${formatChange(baseline?.layoutDuration, current.layoutDuration, changes.layoutDuration, '')} | ${formatChange(baseline?.recalcStyleCount, current.recalcStyleCount, changes.recalcStyleCount)} | ${formatChange(baseline?.recalcStyleDuration, current.recalcStyleDuration, changes.recalcStyleDuration, '')} | ${formatChange(baselineLayoutMedian, currentLayoutMedian, changes.layoutMedianPerOp || 0, '')} | ${formatChange(baselineRecalcMedian, currentRecalcMedian, changes.recalcMedianPerOp || 0, '')} | ${reasons.join(', ')} |\n`;
     }
 
@@ -1221,29 +1261,39 @@ export class PerformanceComparison {
                     (d.baseline?.layoutDuration || 0) +
                     (d.baseline?.recalcStyleDuration || 0);
                 const netPct = baseNet > 0 ? (netMs / baseNet) * 100 : 0;
+
                 return {d, netMs, netPct};
             })
             .filter((x) => x.netMs > 0)
             .sort((a, b) => b.netPct - a.netPct);
-        if (!rows.length) return '';
+
+        if (!rows.length) {
+            return '';
+        }
+
         const limit = Number(process.env.PERF_NET_FALLBACK_LIMIT || '10');
         const slice = rows.slice(0, limit);
         let section = '\n';
+
         section += '<details open>\n';
         section += `<summary>Net increase contributors (top ${slice.length} by percent)</summary>\n\n`;
         section +=
             '| Test Name | Pattern | Net Δ (ms) | Net Δ (%) | Layout Δ (ms) | Recalc Δ (ms) |\n';
         section +=
             '|-----------|---------|-----------:|----------:|--------------:|--------------:|\n';
+
         for (const {d, netMs, netPct} of slice) {
             const pattern = d.pattern || this.classifyPattern(d);
             const layoutMs = d.diff.layoutDuration;
             const recalcMs = d.diff.recalcStyleDuration;
             const fmt = (v: number): string =>
                 v >= 0 ? `+${v.toFixed(2)}` : v.toFixed(2);
+
             section += `| ${d.testName} | ${pattern} | ${fmt(netMs)} | ${fmt(netPct)}% | ${fmt(layoutMs)} | ${fmt(recalcMs)} |\n`;
         }
+
         section += '</details>\n\n';
+
         return section;
     }
 
