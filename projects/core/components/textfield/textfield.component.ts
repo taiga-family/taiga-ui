@@ -75,7 +75,7 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly label?: ElementRef<HTMLElement>;
 
     @ContentChildren(TUI_AUXILIARY, {descendants: true})
-    protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
+    protected readonly auxiliaryQuery: QueryList<unknown> = EMPTY_QUERY;
 
     // TODO: Added just to avoid breaking anything until we refactor to signal queries
     @ContentChild(forwardRef(() => TuiTextfieldBase), {read: ElementRef})
@@ -130,7 +130,7 @@ export class TuiTextfieldBaseComponent<T>
     public readonly value = tuiValue(this.inputQuery);
 
     // TODO: Refactor to signal queries when Angular is updated
-    public readonly auxiliaries = toSignal<readonly object[]>(
+    public readonly auxiliaries = toSignal<readonly unknown[]>(
         this.contentReady$.pipe(
             take(1),
             switchMap(() => tuiQueryListChanges(this.auxiliaryQuery)),

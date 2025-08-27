@@ -1,7 +1,7 @@
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 
 export type TuiDeepPartial<T> = {
-    [K in keyof T]?: T[K] extends object ? TuiDeepPartial<T[K]> : T[K];
+    [K in keyof T]?: T[K] extends unknown ? TuiDeepPartial<T[K]> : T[K];
 };
 
 type EmptyValue = '' | null | undefined;

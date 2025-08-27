@@ -84,6 +84,6 @@ function removeMobileTabsAttribute(
     removeAttrs([mobileTabsAttr], sourceCodeLocation, recorder, templateOffset);
 }
 
-function isElement(node: object): node is Element {
+function isElement(node: unknown): node is Element {
     return Boolean((node as Element).attrs);
 }
