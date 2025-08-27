@@ -924,37 +924,17 @@ export class PerformanceComparison {
         return gated && passesNet && varianceOk;
     }
 
-    /**
-     * Generates the summary section of the markdown report
-     */
     private static generateSummarySection(summary: ComparisonReport['summary']): string {
-        // Build bullet lines then wrap in a collapsible details block
         const lines: string[] = [];
-        // Keep old bullet formatting logic (only icons & percentages)
         const formatAvg = (label: string, value: number): string => {
             const v = Number(value.toFixed(1));
             const sign = v > 0 ? '+' : '';
-
             let icon: string;
-
-            if (v < 0) {
-                icon = '✅';
-            } else if (v > 0) {
-                icon = '❌';
-            } else {
-                icon = '✅';
-            }
-
+            if (v < 0) icon = '✅';
+            else if (v > 0) icon = '❌';
+            else icon = '✅';
             return `- ${label}: ${sign}${v.toFixed(1)}% ${icon}`;
         };
-
-        // Order of importance (excluding Net which is in Final Result):
-        // 1. Overall layout duration
-        // 2. Overall recalc duration
-        // 3. Max layout duration change
-        // 4. Max recalc duration change
-        // 5. Max layout ops change
-        // 6. Max recalc ops change
         if (summary.testsWithBaseline > 0) {
             const layoutTotal = summary.overallLayoutDurationChange;
             const recalcTotal = summary.overallRecalcDurationChange;
@@ -962,7 +942,6 @@ export class PerformanceComparison {
             const recalcPrefix = recalcTotal > 0 ? '+' : '';
             const layoutIcon = layoutTotal <= 0 ? '✅' : '❌';
             const recalcIcon = recalcTotal <= 0 ? '✅' : '❌';
-
             lines.push(
                 `- Overall layout duration: ${layoutPrefix}${layoutTotal.toFixed(1)}% ${layoutIcon}`,
             );
@@ -970,7 +949,6 @@ export class PerformanceComparison {
                 `- Overall recalc duration: ${recalcPrefix}${recalcTotal.toFixed(1)}% ${recalcIcon}`,
             );
         }
-
         lines.push(
             formatAvg('Max layout duration change', summary.maxLayoutDurationChange),
         );
@@ -979,9 +957,7 @@ export class PerformanceComparison {
         );
         lines.push(formatAvg('Max layout ops change', summary.maxLayoutCountChange));
         lines.push(formatAvg('Max recalc ops change', summary.maxRecalcCountChange));
-
         const body = lines.join('\n');
-
         return [
             '<details>',
             '<summary>Summary</summary>',
@@ -1081,7 +1057,7 @@ export class PerformanceComparison {
         }
 
         section +=
-            '\nReason legend: ΔDur≥T duration % ≥ threshold; ΔMed/op≥T median per-op % ≥ threshold; ΔOps≥T op count % ≥ threshold; abs≥F absolute ms delta ≥ floor (if enabled); net+ net contributor (if enabled & overall net regressed); gated regression gating triggered; new new test.\n\n';
+            '\nReason legend: ΔDur≥T duration % ≥ threshold; ΔMed/op≥T median per-op % ≥ threshold; ΔOps≥T op count % ≥ threshold; gated regression gating triggered; new new test.\n\n';
         section += '</details>\n\n';
 
         return section;
@@ -1185,36 +1161,6 @@ export class PerformanceComparison {
                 Math.abs(changes.recalcStyleCount) >= changeThreshold
             ) {
                 reasons.push('ΔOps≥T');
-            }
-
-            const absFloorEnabled =
-                (process.env.PERF_ENABLE_ABS_FLOOR || 'false').toLowerCase() === 'true';
-
-            if (absFloorEnabled) {
-                const absDeltaFloor = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
-
-                if (
-                    Math.abs(detail.diff.layoutDuration) >= absDeltaFloor ||
-                    Math.abs(detail.diff.recalcStyleDuration) >= absDeltaFloor
-                ) {
-                    reasons.push('abs≥F');
-                }
-            }
-
-            const contributorsEnabled =
-                (process.env.PERF_ENABLE_NET_CONTRIBUTORS || 'false').toLowerCase() ===
-                'true';
-
-            if (contributorsEnabled && overallNetRegressed) {
-                const netMs =
-                    detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
-                const minNetMs = Number(
-                    process.env.PERF_NET_CONTRIBUTOR_ABS_MS_FLOOR || '3',
-                );
-
-                if (netMs > 0 && netMs >= minNetMs) {
-                    reasons.push('net+');
-                }
             }
 
             if (
