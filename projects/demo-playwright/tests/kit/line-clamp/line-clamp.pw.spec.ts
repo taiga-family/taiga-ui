@@ -1,5 +1,5 @@
 import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
+import {CMD, TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('LineClamp', () => {
@@ -116,10 +116,12 @@ test.describe('LineClamp', () => {
         await expect.soft(example).toHaveScreenshot('06-1-line-clamp-basic.png');
 
         await hintElement.click();
-        await page.waitForTimeout(100);
         await hintElement.selectText();
         await expect(hintElement).toBeInViewport();
+        await page.keyboard.press(`${CMD}+KeyC`);
 
-        await expect.soft(example).toHaveScreenshot('06-2-line-clamp-basic.png');
+        const content = await page.evaluate(async () => navigator.clipboard.readText());
+
+        expect(content).toContain('Daenerys of the House Targaryen');
     });
 });

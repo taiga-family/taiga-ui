@@ -6,7 +6,7 @@ import {TuiSidebar} from '@taiga-ui/addon-mobile/directives/sidebar';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, merge, startWith, Subject} from 'rxjs';
 
 import {TuiDocNavigation} from '../../navigation/navigation.component';
@@ -14,14 +14,7 @@ import {TuiDocNavigation} from '../../navigation/navigation.component';
 @Component({
     standalone: true,
     selector: 'header[tuiDocHeader]',
-    imports: [
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiActiveZone,
-        TuiButton,
-        TuiDocNavigation,
-        TuiSidebar,
-    ],
+    imports: [PolymorpheusOutlet, TuiActiveZone, TuiButton, TuiDocNavigation, TuiSidebar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

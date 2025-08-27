@@ -1,4 +1,4 @@
-import {NgForOf, NgIf} from '@angular/common';
+import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -19,7 +19,6 @@ import {map} from 'rxjs';
 @Component({
     standalone: true,
     imports: [
-        NgForOf,
         NgIf,
         ReactiveFormsModule,
         TuiActionBar,

@@ -12,6 +12,7 @@ import {
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
+import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -43,6 +44,7 @@ class TuiFadeStyles {}
             useValue: {characterData: true, subtree: true},
         },
     ],
+    hostDirectives: [TuiTransitioned],
     host: {
         '[style.line-height]': 'lineHeight',
         '[style.--t-line-height]': 'lineHeight',
