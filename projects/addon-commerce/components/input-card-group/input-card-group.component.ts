@@ -7,6 +7,7 @@ import {
     type ElementRef,
     EventEmitter,
     inject,
+    INJECTOR,
     Input,
     Output,
     PLATFORM_ID,
@@ -60,6 +61,7 @@ import {
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
+import {tuiSafetyDelete, tuiSafetyInsertText} from '@taiga-ui/core/utils/miscellaneous';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, map, merge, Subject, switchMap, timer} from 'rxjs';
@@ -125,6 +127,7 @@ export class TuiInputCardGroup
     @ViewChild('inputCVC', {static: true})
     private readonly inputCVC?: ElementRef<HTMLInputElement>;
 
+    private readonly injector = inject(INJECTOR);
     private readonly doc = inject(DOCUMENT);
     private readonly isServer = isPlatformServer(inject(PLATFORM_ID));
     private readonly focus$ = new Subject<void>();
@@ -245,9 +248,8 @@ export class TuiInputCardGroup
             return;
         }
 
-        this.inputExpire.nativeElement.focus({preventScroll: true});
-        this.inputExpire.nativeElement.select();
-        this.doc.execCommand('insertText', false, this.expire);
+        tuiSafetyInsertText(this.injector, this.expire, this.inputExpire?.nativeElement);
+
         this.inputExpire.nativeElement.blur();
         (activeElement as HTMLElement | null)?.focus({preventScroll: true});
     }
@@ -288,11 +290,9 @@ export class TuiInputCardGroup
     public clear(): void {
         this.expirePrefilled = false;
 
-        [this.inputCVC, this.inputExpire, this.inputCard].forEach((e) => {
-            e?.nativeElement.focus();
-            e?.nativeElement.select();
-            e?.nativeElement.ownerDocument.execCommand('delete');
-        });
+        [this.inputCVC, this.inputExpire, this.inputCard].forEach((e) =>
+            tuiSafetyDelete(this.injector, e?.nativeElement),
+        );
 
         this.onChange(null);
     }

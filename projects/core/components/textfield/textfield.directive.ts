@@ -1,4 +1,12 @@
-import {computed, Directive, inject, Input, type OnChanges, signal} from '@angular/core';
+import {
+    computed,
+    Directive,
+    inject,
+    INJECTOR,
+    Input,
+    type OnChanges,
+    signal,
+} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
@@ -15,6 +23,7 @@ import {
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
+import {tuiSafetyDelete, tuiSafetyInsertText} from '@taiga-ui/core/utils';
 
 import {TuiTextfieldComponent} from './textfield.component';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -38,6 +47,7 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     // TODO: refactor to signal inputs after Angular update
     private readonly focused = signal<boolean | null>(null);
 
+    protected readonly injector = inject(INJECTOR);
     protected readonly control = inject(NgControl, {optional: true});
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance, {});
     protected readonly s = tuiAppearanceState(null, {});
@@ -92,17 +102,12 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     }
 
     public setValue(value: T | null): void {
-        this.el.focus();
-        this.el.select();
-
         if (value == null) {
-            this.el.ownerDocument.execCommand('delete');
+            tuiSafetyDelete(this.injector);
         } else {
-            this.el.ownerDocument.execCommand(
-                'insertText',
-                false,
-                this.handlers.stringify()(value),
-            );
+            const text = this.handlers.stringify()(value);
+
+            tuiSafetyInsertText(this.injector, text);
         }
     }
 }
