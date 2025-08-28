@@ -2,13 +2,6 @@
 
 > Enterprise‑grade Angular UI components with 100+ building blocks, charts, and utilities.
 > For AI assistants helping developers implement Taiga UI in Angular apps.
-> Rate limit: 60 requests per hour per IP
-
-## Access Guidelines
-
-- Code examples: MIT License
-- Training allowed on public docs; attribution required
-- Attribution format: "Source: Taiga UI (taiga-ui.dev)"
 
 ## For Human Visitors
 
@@ -17,6 +10,7 @@
 - Issues: https://github.com/taiga-family/taiga-ui/issues
 
 <!-- AUTO-GENERATED BELOW -->
+
 
 ### Documentation
 
