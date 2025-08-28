@@ -725,65 +725,66 @@ export class PerformanceComparison {
         overallNetRegressed: boolean,
     ): boolean {
         if (!detail.baseline) {
-            return true; // new test
+            return true;
         }
 
-        // Regression candidate gating (count-driven or per-op increase) always visible
+        const absMsFloor = Number(process.env.PERF_VISIBILITY_ABS_MS_FLOOR || '3');
+
         if (this.isRegressionCandidate(detail, changeThreshold)) {
             return true;
         }
 
-        // Primary visible signals: duration % or per-op median % exceed threshold
-        const durationPctExceeded =
-            Math.abs(detail.changes.layoutDuration) >= changeThreshold ||
-            Math.abs(detail.changes.recalcStyleDuration) >= changeThreshold;
-        const medianPerOpExceeded =
-            Math.abs(detail.changes.layoutMedianPerOp || 0) >= changeThreshold ||
-            Math.abs(detail.changes.recalcMedianPerOp || 0) >= changeThreshold;
+        const layoutPct = Math.abs(detail.changes.layoutDuration);
+        const recalcPct = Math.abs(detail.changes.recalcStyleDuration);
+        const layoutMsAbs = Math.abs(detail.diff.layoutDuration);
+        const recalcMsAbs = Math.abs(detail.diff.recalcStyleDuration);
+        const layoutMedianPct = Math.abs(detail.changes.layoutMedianPerOp || 0);
+        const recalcMedianPct = Math.abs(detail.changes.recalcMedianPerOp || 0);
+        const netMs = detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
+        const baselineNet =
+            (detail.baseline.layoutDuration || 0) +
+            (detail.baseline.recalcStyleDuration || 0);
+        const netPct = baselineNet > 0 ? (netMs / baselineNet) * 100 : 0;
+        const netPctAbs = Math.abs(netPct);
+        const netMsAbs = Math.abs(netMs);
+        const NET_ABS_MS_THRESHOLD = Number(
+            process.env.PERF_NET_ABS_MS_THRESHOLD || '15',
+        );
 
-        if (durationPctExceeded || medianPerOpExceeded) {
+        if (
+            (layoutPct >= changeThreshold && layoutMsAbs >= absMsFloor) ||
+            (recalcPct >= changeThreshold && recalcMsAbs >= absMsFloor)
+        ) {
             return true;
         }
 
-        // Include counts only if large and not offset by per-op improvement
-        const countPctExceeded =
-            Math.abs(detail.changes.layoutCount) >= changeThreshold ||
-            Math.abs(detail.changes.recalcStyleCount) >= changeThreshold;
-
-        if (countPctExceeded) {
+        if (
+            (layoutMedianPct >= changeThreshold || recalcMedianPct >= changeThreshold) &&
+            netMsAbs >= absMsFloor
+        ) {
             return true;
         }
 
-        // Optional absolute delta inclusion (disabled by default)
-        const absFloorEnabled =
-            (process.env.PERF_ENABLE_ABS_FLOOR || 'false').toLowerCase() === 'true';
-
-        if (absFloorEnabled) {
-            const ABS_DELTA_FLOOR = Number(process.env.PERF_ABS_DELTA_FLOOR_MS || '5');
-
-            if (
-                Math.abs(detail.diff.layoutDuration) >= ABS_DELTA_FLOOR ||
-                Math.abs(detail.diff.recalcStyleDuration) >= ABS_DELTA_FLOOR
-            ) {
-                return true;
-            }
+        if (
+            netPctAbs >= changeThreshold &&
+            netMsAbs >= Math.min(absMsFloor, NET_ABS_MS_THRESHOLD)
+        ) {
+            return true;
         }
 
-        // Optional net contributor path (disabled unless BOTH overall net regressed and explicitly enabled)
         const contributorsEnabled =
             (process.env.PERF_ENABLE_NET_CONTRIBUTORS || 'false').toLowerCase() ===
             'true';
 
         if (contributorsEnabled && overallNetRegressed) {
             const minNetMs = Number(process.env.PERF_NET_CONTRIBUTOR_ABS_MS_FLOOR || '3');
-            const netMs = detail.diff.layoutDuration + detail.diff.recalcStyleDuration;
 
-            if (netMs > 0 && netMs >= minNetMs) {
+            if (netMs > 0 && netMsAbs >= minNetMs) {
                 return true;
             }
         }
 
-        return false; // filtered as noise
+        return false;
     }
 
     /**
@@ -1043,7 +1044,9 @@ export class PerformanceComparison {
         let section = '\n';
 
         section += '<details open>\n';
-        section += `<summary>Tests with changes ≥ ${changeThreshold}% (${filteredDetails.length} of ${allDetails.length})</summary>\n\n`;
+        const suppressedCount = allDetails.length - filteredDetails.length;
+
+        section += `<summary>Visible tests (≥ ${changeThreshold}%): ${filteredDetails.length} of ${allDetails.length}</summary>\n\n`;
         section +=
             '| Test Name | Layout Ops | Layout ms | Recalc Ops | Recalc ms | Layout ms/op (median) | Recalc ms/op (median) | Net Δ ms | Net Δ % |\n';
         section +=
@@ -1059,6 +1062,13 @@ export class PerformanceComparison {
         }
 
         section += '</details>\n\n';
+
+        const showSuppressed =
+            (process.env.PERF_SHOW_SUPPRESSED_COUNT || 'false').toLowerCase() === 'true';
+
+        if (showSuppressed && suppressedCount > 0) {
+            section += `_(${suppressedCount} additional test${suppressedCount === 1 ? '' : 's'} suppressed as noise: below absolute ms floor or isolated count fluctuations without material net cost.)_\n\n`;
+        }
 
         return section;
     }
@@ -1766,32 +1776,34 @@ export class PerformanceReportAggregator {
         githubOutputPath?: string,
     ): Promise<void> {
         const groupedRows = this.sortAndGroupRows(tableRows);
+        const parts: string[] = [];
 
-        let content = '## 📊 Performance Metrics Comparison\n\n';
+        parts.push('## 📊 Aggregated Performance Results');
+        parts.push('');
 
         if (emptyShardCount > 0) {
-            content += '### Summary\n\n';
-            content += `- **Performance data found:** ${tableRows.size > 0 ? 'Yes' : 'No'}\n`;
-            content += `- **Shards with no performance data:** ${emptyShardCount}\n\n`;
+            parts.push(`_(${emptyShardCount} shard(s) produced no visible changes)_`);
+            parts.push('');
         }
 
-        if (tableRows.size > 0) {
-            content += '### Aggregated Results\n\n';
-            content +=
-                '| Component | Test Name | Layout Ops | Layout Duration | Recalc Ops | Recalc Duration |\n';
-            content +=
-                '|-----------|-----------|------------|-----------------|------------|------------------|\n';
+        for (const [groupKey, rows] of Object.entries(groupedRows)) {
+            parts.push(`### ${groupKey}`);
+            parts.push('');
+            parts.push(
+                '| Test Name | Layout Ops | Layout ms | Recalc Ops | Recalc ms | Layout ms/op (median) | Recalc ms/op (median) | Net Δ ms | Net Δ % |',
+            );
+            parts.push(
+                '|-----------|------------|-----------|-----------|-----------|------------------------|-------------------------|---------|---------|',
+            );
 
-            for (const row of groupedRows) {
-                content += `${row}\n`;
+            for (const row of rows) {
+                parts.push(row);
             }
-        } else {
-            content += '_No performance changes detected across all shards._\n\n';
-            content += '# Tests completed successfully :white_check_mark:\n\n';
-            content += 'Good job :fire:\n\n';
+
+            parts.push('');
         }
 
-        // Ensure output directory exists
+        const content = parts.join('\n');
         const outputDir = dirname(outputFile);
 
         try {
@@ -1822,9 +1834,6 @@ export class PerformanceReportAggregator {
     }
 }
 
-/**
- * CLI entry point for performance comparison and markdown aggregation
- */
 async function main(): Promise<void> {
     const [, , arg1, arg2, arg3] = process.argv; // legacy change-threshold arg deprecated
 

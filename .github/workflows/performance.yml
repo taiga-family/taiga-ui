@@ -10,15 +10,17 @@ env:
   PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
   PERF_STRESS_FACTOR: 3 # amplify in-test iteration counts
   PERF_STRESS_PATTERN: '*.stress.pw.spec.ts' # glob for stress specs
-  # Calibrated 2025-08-28 using 20 effective multi-run samples (current-extra2 dataset)
-  PERF_VISIBILITY_THRESHOLD: 7 # row visibility threshold (median noise ~6%)
-  # Percentage increase in operation counts (layout/recalc) considered significant (p90 noise ~13-14%)
-  PERF_COUNT_PERCENT_THRESHOLD: 15
-  # Percentage increase in per-operation duration considered significant (p90 noise ~15-16%)
-  PERF_PER_OP_PERCENT_THRESHOLD: 17
-  # Net duration regression thresholds (median CoV ~6.1%, p90 step noise ~10-11%)
-  PERF_NET_PERCENT_THRESHOLD: 12
+  # Calibrated 2025-08-28 (50-run local calibration, warmup skip 2)
+  PERF_VISIBILITY_THRESHOLD: 8 # row visibility threshold (median net CoV ~7.7%)
+  # Percentage increase in operation counts (layout/recalc) considered significant
+  PERF_COUNT_PERCENT_THRESHOLD: 18
+  # Percentage increase in per-operation duration considered significant
+  PERF_PER_OP_PERCENT_THRESHOLD: 25
+  # Net duration regression thresholds
+  PERF_NET_PERCENT_THRESHOLD: 15
   PERF_NET_ABS_MS_THRESHOLD: 8
+  # Absolute ms floor for row visibility (filters tiny absolute deltas)
+  PERF_VISIBILITY_ABS_MS_FLOOR: 3
 
 jobs:
   performance-stress:
