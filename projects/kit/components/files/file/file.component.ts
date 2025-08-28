@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -34,7 +34,8 @@ import {TUI_FILE_OPTIONS} from './file.options';
     standalone: true,
     selector: 'tui-file,a[tuiFile],button[tuiFile]',
     imports: [
-        CommonModule,
+        AsyncPipe,
+        NgIf,
         PolymorpheusOutlet,
         TuiButton,
         TuiHintOverflow,

@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -23,7 +23,7 @@ export interface TuiConfirmData {
 @Component({
     standalone: true,
     selector: 'tui-confirm',
-    imports: [CommonModule, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
+    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './confirm.template.html',
     styleUrls: ['./confirm.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

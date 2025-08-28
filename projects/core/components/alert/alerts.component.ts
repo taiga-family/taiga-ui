@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, NgComponentOutlet, NgFor} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -20,7 +20,7 @@ import {TUI_ALERTS_GROUPED} from './alert.tokens';
 @Component({
     standalone: true,
     selector: 'tui-alerts',
-    imports: [CommonModule, TuiAnimatedParent, TuiMapperPipe],
+    imports: [AsyncPipe, NgComponentOutlet, NgFor, TuiAnimatedParent, TuiMapperPipe],
     templateUrl: './alerts.template.html',
     styleUrls: ['./alerts.style.less'],
     encapsulation: ViewEncapsulation.None,

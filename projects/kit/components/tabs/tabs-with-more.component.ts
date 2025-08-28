@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
 import {
     type AfterViewChecked,
     type AfterViewInit,
@@ -39,7 +39,10 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
     standalone: true,
     selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
     imports: [
-        CommonModule,
+        AsyncPipe,
+        NgFor,
+        NgIf,
+        NgTemplateOutlet,
         PolymorpheusOutlet,
         TuiChevron,
         TuiDropdown,

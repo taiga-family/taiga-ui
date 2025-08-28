@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
@@ -13,7 +12,7 @@ import {TUI_RATING_OPTIONS, type TuiRatingOptions} from './rating.options';
 @Component({
     standalone: true,
     selector: 'tui-rating',
-    imports: [CommonModule, FormsModule, PolymorpheusOutlet, TuiIcon, TuiRepeatTimes],
+    imports: [FormsModule, PolymorpheusOutlet, TuiIcon, TuiRepeatTimes],
     templateUrl: './rating.template.html',
     styleUrls: ['./rating.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
