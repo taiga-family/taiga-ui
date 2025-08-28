@@ -8,10 +8,14 @@
 
 :host {
     color: transparent;
-    caret-color: transparent;
     background: transparent;
     border: none;
     outline: none;
+
+    // Hack for IOS Safari
+    --caret-color: hsl(from var(--tui-background-elevation-3) h s l / 0.01);
+
+    caret-color: var(--caret-color, transparent);
 
     &::selection {
         background: transparent;
