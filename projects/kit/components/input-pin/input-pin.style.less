@@ -13,9 +13,13 @@
     outline: none;
 
     // Hack for IOS Safari
-    --caret-color: hsl(from var(--tui-background-elevation-3) h s l / 0.01);
+    --t-caret-color: rgba(255, 255, 255, 0.01);
 
-    caret-color: var(--caret-color, transparent);
+    :host-context([tuiTheme='dark']) {
+        --t-caret-color: rgba(50, 50, 50, 0.01);
+    }
+
+    caret-color: var(--t-caret-color);
 
     &::selection {
         background: transparent;
