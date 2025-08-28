@@ -1,6 +1,6 @@
 import {AsyncPipe, NgIf} from '@angular/common';
 import {
-    type AfterContentInit,
+    type AfterContentChecked,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -47,7 +47,7 @@ import {TuiWithItemsHandlers} from '@taiga-ui/core/directives/items-handlers';
 import {TUI_AUXILIARY, TUI_CLEAR_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {ReplaySubject, startWith, switchMap} from 'rxjs';
+import {ReplaySubject, startWith, switchMap, take} from 'rxjs';
 
 import {TuiTextfieldBase} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
@@ -57,7 +57,7 @@ import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 // TODO: Remove base class in v5
 @Directive()
 export class TuiTextfieldBaseComponent<T>
-    implements TuiDataListHost<T>, AfterContentInit
+    implements TuiDataListHost<T>, AfterContentChecked
 {
     // TODO: refactor to signal inputs after Angular update
     private readonly filler = signal('');
@@ -76,6 +76,11 @@ export class TuiTextfieldBaseComponent<T>
 
     @ContentChildren(TUI_AUXILIARY, {descendants: true})
     protected readonly auxiliaryQuery: QueryList<object> = EMPTY_QUERY;
+
+    // TODO: Added just to avoid breaking anything until we refactor to signal queries
+    @ContentChild(forwardRef(() => TuiTextfieldBase), {read: ElementRef})
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    protected readonly _input?: ElementRef<HTMLInputElement>;
 
     protected readonly open = tuiDropdownOpen();
     protected readonly dropdown = inject(TuiDropdownDirective);
@@ -127,6 +132,7 @@ export class TuiTextfieldBaseComponent<T>
     // TODO: Refactor to signal queries when Angular is updated
     public readonly auxiliaries = toSignal<readonly object[]>(
         this.contentReady$.pipe(
+            take(1),
             switchMap(() => tuiQueryListChanges(this.auxiliaryQuery)),
             startWith([]),
         ),
@@ -146,9 +152,9 @@ export class TuiTextfieldBaseComponent<T>
         return this.options.size();
     }
 
-    public ngAfterContentInit(): void {
+    public ngAfterContentChecked(): void {
         this.contentReady$.next(true);
-        this.inputQuery.set(this.input);
+        this.inputQuery.set(this._input);
     }
 
     public handleOption(option: T): void {
