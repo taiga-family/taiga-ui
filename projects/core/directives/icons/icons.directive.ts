@@ -11,7 +11,12 @@ import {
 import {type SafeResourceUrl} from '@angular/platform-browser';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
+import {
+    TUI_ICON_END,
+    TUI_ICON_START,
+    tuiGetIconMode,
+    tuiInjectIconResolver,
+} from '@taiga-ui/core/tokens';
 
 /**
  * Workaround for {@link TuiAvatar} to properly handle icon color in {@link TuiAppearance}
@@ -34,16 +39,23 @@ class TuiIconsStyles {}
     standalone: true,
     host: {
         tuiIcons: '',
-        '[style.--t-icon-start]': 'iconStartUrl()',
-        '[style.--t-icon-end]': 'iconEndUrl()',
+        '[style.--t-icon-start]': 'startResource()',
+        '[style.--t-icon-end]': 'endResource()',
+        '[attr.data-icon-start]': 'startMode()',
+        '[attr.data-icon-end]': 'endMode()',
     },
 })
 export class TuiIcons {
     private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
     protected readonly nothing = tuiWithStyles(TuiIconsStyles);
-    protected readonly iconStartUrl = computed(() => this.resolve(this.iconStart()));
-    protected readonly iconEndUrl = computed(() => this.resolve(this.iconEnd()));
+    protected readonly startResource = computed(() => this.resolve(this.iconStart()));
+    protected readonly endResource = computed(() => this.resolve(this.iconEnd()));
+    protected readonly startMode = computed(() =>
+        tuiGetIconMode(this.iconStart()?.toString()),
+    );
+
+    protected readonly endMode = computed(() => tuiGetIconMode(this.iconEnd()));
 
     public readonly iconStart = signal<Icon>(
         inject(TUI_ICON_START, {self: true, optional: true}) || '',
@@ -66,6 +78,14 @@ export class TuiIcons {
     }
 
     protected resolve(icon: Icon): string | null {
-        return icon ? `url(${this.resolver(icon.toString())})` : null;
+        if (!icon) {
+            return null;
+        }
+
+        const iconStr = icon.toString();
+
+        return tuiGetIconMode(iconStr) === 'font'
+            ? `'${this.resolver(iconStr)}'`
+            : `url(${this.resolver(iconStr)})`;
     }
 }
