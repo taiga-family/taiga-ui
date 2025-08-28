@@ -289,5 +289,56 @@ describe('ComboBox', () => {
                 await expect(comboBox.textfield).toHaveValue('Afghanistan');
             });
         });
+
+        describe('Exact Match (TUI_ONLY_MATCHING_ITEMS)', () => {
+            describe('Token enabled', () => {
+                let example!: Locator;
+                let comboBox!: TuiComboBoxPO;
+
+                beforeEach(async ({page}) => {
+                    await tuiGoto(page, DemoRoute.ComboBox);
+                    const documentationPage = new TuiDocumentationPagePO(page);
+
+                    example = documentationPage.getExample('#virtual-scroll');
+                    comboBox = new TuiComboBoxPO(
+                        example.locator('tui-textfield:has([tuiComboBox])'),
+                    );
+                });
+
+                test('show only exact match', async () => {
+                    await comboBox.textfield.click();
+                    await comboBox.textfield.fill('Andorra');
+
+                    await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(1);
+
+                    await expect(
+                        comboBox.dropdown.locator('[tuiOption]', {
+                            hasText: 'Andorra',
+                        }),
+                    ).toBeVisible();
+
+                    await expect(comboBox.textfield).toHaveValue('Andorra');
+                });
+
+                test('shows filtered results for partial matches', async () => {
+                    await comboBox.textfield.click();
+                    await comboBox.textfield.fill('And');
+
+                    const optionCount = await comboBox.dropdown
+                        .locator('[tuiOption]')
+                        .count();
+
+                    expect(optionCount).toBeGreaterThan(1);
+
+                    const options = await comboBox.dropdown
+                        .locator('[tuiOption]')
+                        .allTextContents();
+
+                    for (const option of options) {
+                        expect(option.toLowerCase()).toContain('and');
+                    }
+                });
+            });
+        });
     });
 });
