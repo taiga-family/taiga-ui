@@ -772,21 +772,63 @@ export class PerformanceComparison {
             return false;
         }
 
-        // Regression / neutral direction: keep original multi-signal logic
-        if (
-            (layoutPct >= changeThreshold && layoutMsAbs >= absMsFloor) ||
-            (recalcPct >= changeThreshold && recalcMsAbs >= absMsFloor)
-        ) {
-            return true;
+        // Regression / neutral direction: refined multi-signal logic with extra gating to cut noise
+        const componentAbsMsFloor = Number(
+            process.env.PERF_COMPONENT_ABS_MS_FLOOR || absMsFloor.toString(),
+        );
+        const componentMinNetPct = Number(
+            process.env.PERF_COMPONENT_MIN_NET_PCT || String(changeThreshold / 2),
+        );
+
+        const componentTriggered =
+            (layoutPct >= changeThreshold && layoutMsAbs >= componentAbsMsFloor) ||
+            (recalcPct >= changeThreshold && recalcMsAbs >= componentAbsMsFloor);
+
+        if (componentTriggered) {
+            // Show if overall net also reaches main threshold
+            if (
+                netPctAbs >= changeThreshold &&
+                netMsAbs >= Math.min(absMsFloor, NET_ABS_MS_THRESHOLD)
+            ) {
+                return true;
+            }
+
+            // Otherwise require a minimum (lower) net percent plus absolute net ms guard
+            if (netMs > 0) {
+                if (
+                    netPct >= componentMinNetPct &&
+                    netMsAbs >= NET_ABS_MS_THRESHOLD &&
+                    netMsAbs >= absMsFloor
+                ) {
+                    return true;
+                }
+
+                return false; // suppress partial component-only increase with weak net effect
+            }
+            // Net non-positive handled earlier (improvements path) so treat as noise
+
+            return false;
         }
 
-        if (
+        // Per-op median increases must also satisfy a meaningful net contribution
+        const perOpTriggered =
             (layoutMedianPct >= changeThreshold || recalcMedianPct >= changeThreshold) &&
-            netMsAbs >= absMsFloor
-        ) {
-            return true;
+            netMsAbs >= absMsFloor;
+
+        if (perOpTriggered) {
+            if (
+                netPctAbs >= changeThreshold ||
+                (netMs > 0 &&
+                    netPct >= componentMinNetPct &&
+                    netMsAbs >= NET_ABS_MS_THRESHOLD)
+            ) {
+                return true;
+            }
+
+            return false;
         }
 
+        // Pure net change path (no individual component signals)
         if (
             netPctAbs >= changeThreshold &&
             netMsAbs >= Math.min(absMsFloor, NET_ABS_MS_THRESHOLD)
