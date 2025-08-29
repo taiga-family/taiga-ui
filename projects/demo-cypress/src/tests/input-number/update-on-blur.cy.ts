@@ -46,17 +46,12 @@ describe('InputNumber | updateOn behavior', () => {
     });
 
     it('should preserve user input during typing before blur', () => {
-        cy.get('@input')
-            .clear()
-            .type('123')
-            .should('have.value', '123');
+        cy.get('@input').clear().type('123').should('have.value', '123');
 
         // Value should stay as typed until blur
         cy.get('@input').should('have.value', '123');
 
-        cy.get('@input')
-            .blur()
-            .should('have.value', '123');
+        cy.get('@input').blur().should('have.value', '123');
     });
 });
 
