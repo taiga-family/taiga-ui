@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, TemplateRef, ViewChild} from '@angul
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiCard, TuiInputCardGroup} from '@taiga-ui/addon-commerce';
-import {TuiIcon} from '@taiga-ui/core';
+import {TuiIcon, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import {type Mock} from 'jest-mock';
 import {firstValueFrom, timer} from 'rxjs';
@@ -14,6 +14,7 @@ describe('InputCardGroup', () => {
         template: `
             <tui-input-card-group
                 [formControl]="control"
+                [size]="size"
                 (binChange)="onBinChange($event)"
             />
 
@@ -31,6 +32,8 @@ describe('InputCardGroup', () => {
         public customIconTemplate!: TemplateRef<unknown>;
 
         public control = new FormControl<Partial<TuiCard>>({card: ''});
+
+        public size: TuiSizeL | TuiSizeS = 'l';
 
         public onBinChange: (event: string | null) => void = jest.fn();
     }
@@ -206,6 +209,22 @@ describe('InputCardGroup', () => {
             expect(testComponent.component['content']).toBeInstanceOf(TemplateRef);
             expect(testComponent.control.value?.card).toBe('4111111111111111');
             expect(expectCardOutlet()).toBeTruthy();
+        });
+    });
+
+    describe('Size', () => {
+        it('should have default size as large', () => {
+            expect(testComponent.component.size).toBe('l');
+        });
+
+        it('should allow setting medium size', () => {
+            testComponent.component.size = 'm';
+            expect(testComponent.component.size).toBe('m');
+        });
+
+        it('should allow setting large size', () => {
+            testComponent.component.size = 'l';
+            expect(testComponent.component.size).toBe('l');
         });
     });
 
