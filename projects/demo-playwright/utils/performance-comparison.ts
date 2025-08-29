@@ -853,8 +853,24 @@ export class PerformanceComparison {
         const layoutPerOpNotImproved = lp >= -perOpPct || lpm >= -perOpPct;
         const recalcPerOpNotImproved = rp >= -perOpPct || rpm >= -perOpPct;
         const countsStable = Math.abs(lc) < countPct && Math.abs(rc) < countPct;
-        const perOpIncreaseLayout = lp > perOpPct || lpm > perOpPct;
-        const perOpIncreaseRecalc = rp > perOpPct || rpm > perOpPct;
+        // Absolute per-op median delta floors to suppress large percent swings on tiny baselines
+        const perOpAbsFloor = Number(process.env.PERF_PER_OP_ABS_MS_FLOOR || '0.2');
+        const currentLayoutMedian = detail.current?.layoutMedianPerOp;
+        const baselineLayoutMedian = baseline.layoutMedianPerOp;
+        const currentRecalcMedian = detail.current?.recalcMedianPerOp;
+        const baselineRecalcMedian = baseline.recalcStyleDurationPerOp;
+        const layoutMedianAbsDelta =
+            baselineLayoutMedian !== undefined && currentLayoutMedian !== undefined
+                ? Math.abs(currentLayoutMedian - baselineLayoutMedian)
+                : 0;
+        const recalcMedianAbsDelta =
+            baselineRecalcMedian !== undefined && currentRecalcMedian !== undefined
+                ? Math.abs(currentRecalcMedian - baselineRecalcMedian)
+                : 0;
+        const perOpIncreaseLayout =
+            (lp > perOpPct || lpm > perOpPct) && layoutMedianAbsDelta >= perOpAbsFloor;
+        const perOpIncreaseRecalc =
+            (rp > perOpPct || rpm > perOpPct) && recalcMedianAbsDelta >= perOpAbsFloor;
 
         const maxCov = Number(process.env.PERF_MAX_COV || '0.15');
         const isStable = (cov?: number): boolean => cov === undefined || cov <= maxCov;
@@ -883,6 +899,22 @@ export class PerformanceComparison {
         const NET_ABS_MS_THRESHOLD = Number(
             process.env.PERF_NET_ABS_MS_THRESHOLD || '15',
         );
+        // Dynamic net threshold scaling based on observed baseline duration variability (optional)
+        let effectiveNetPctThreshold = NET_PCT_THRESHOLD;
+
+        if ((process.env.PERF_ENABLE_DYNAMIC_NET || 'false').toLowerCase() === 'true') {
+            const covMultiplier = Number(process.env.PERF_NET_COV_MULTIPLIER || '2');
+            const covMargin = Number(process.env.PERF_NET_COV_MARGIN_PCT || '2');
+            const baselineDurationCov = Math.max(
+                baseline.layoutDurationCoV ?? 0,
+                baseline.recalcStyleDurationCoV ?? 0,
+            );
+            const dynamicPct = baselineDurationCov * covMultiplier * 100 + covMargin;
+
+            if (dynamicPct > effectiveNetPctThreshold) {
+                effectiveNetPctThreshold = Math.round(dynamicPct);
+            }
+        }
 
         const varianceOk =
             isStable(baseline.layoutCountCoV) &&
@@ -899,7 +931,7 @@ export class PerformanceComparison {
             netCost > 0 &&
             netCost >= NET_COST_FLOOR &&
             netCost >= NET_ABS_MS_THRESHOLD &&
-            netCostPct >= NET_PCT_THRESHOLD;
+            netCostPct >= effectiveNetPctThreshold;
 
         // Classify pattern (stored for later reporting if needed)
         if (gated) {
@@ -1054,11 +1086,7 @@ export class PerformanceComparison {
         // Removed extra blank line to keep markdown table intact
 
         for (const detail of filteredDetails) {
-            section += this.generateTableRow(
-                detail,
-                changeThreshold,
-                overallNetRegressed,
-            );
+            section += `${this.generateTableRow(detail, changeThreshold, overallNetRegressed)}\n`;
         }
 
         section += '</details>\n\n';

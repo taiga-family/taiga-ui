@@ -21,6 +21,10 @@ env:
   PERF_NET_ABS_MS_THRESHOLD: 8
   # Absolute ms floor for row visibility (filters tiny absolute deltas)
   PERF_VISIBILITY_ABS_MS_FLOOR: 3
+  # Enable dynamic net threshold scaling based on baseline variability
+  PERF_ENABLE_DYNAMIC_NET: true
+  # Absolute per-op median delta (ms) required to treat a per-op % increase as material
+  PERF_PER_OP_ABS_MS_FLOOR: 0.4
 
 jobs:
   performance-stress:
