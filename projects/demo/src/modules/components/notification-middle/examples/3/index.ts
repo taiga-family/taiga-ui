@@ -10,7 +10,7 @@ import {filter, map, startWith, switchMap, take, tap, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [NgIf, TuiAvatar, TuiButton, TuiLoader, TuiNotificationMiddle, TuiAnimated],
+    imports: [NgIf, TuiAnimated, TuiAvatar, TuiButton, TuiLoader, TuiNotificationMiddle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

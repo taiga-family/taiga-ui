@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {TuiPopoverService} from '@taiga-ui/cdk/services';
-import {TUI_DIALOGS} from '@taiga-ui/core';
+import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
 
 import {
     TuiNotificationMiddleComponent,
