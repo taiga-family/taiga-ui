@@ -1,10 +1,7 @@
 import {NgIf} from '@angular/common';
 import {Component, inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    TuiDocDocumentation,
-    TuiDocDocumentationPropertyConnector,
-} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TUI_HINT_DIRECTIONS, type TuiHintDirection} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
@@ -24,8 +21,7 @@ import {TextfieldControllerDocumentation} from '../textfield-controller-document
         HintControllerDocumentation,
         NgIf,
         TextfieldControllerDocumentation,
-        TuiDocDocumentation,
-        TuiDocDocumentationPropertyConnector,
+        TuiAddonDoc,
     ],
     templateUrl: './index.html',
     changeDetection,

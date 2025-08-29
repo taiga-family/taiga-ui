@@ -122,60 +122,66 @@
                 </div>
             </ng-template>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName="closeable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="closeable"
+        <table tuiDocAPI>
+            <tr
+                name="closeable"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="closeable"
             >
                 Whether or not a sheet can be closed by user.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="data"
-                documentationPropertyType="I"
+            </tr>
+            <tr
+                name="data"
+                tuiDocAPIItem
+                type="I"
             >
                 Optional data to be passed to the sheet.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="image"
-                documentationPropertyType="PolymorpheusContent<TuiSheetOptions<I>>"
-                [documentationPropertyValues]="imageVariants"
-                [(documentationPropertyValue)]="image"
+            </tr>
+            <tr
+                name="image"
+                tuiDocAPIItem
+                [items]="imageVariants"
+                [(value)]="image"
             >
                 A content to show above the sheet.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="imageSlide"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="imageSlide"
+            </tr>
+            <tr
+                name="imageSlide"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="imageSlide"
             >
                 Should image slide as the sheet is dragged.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="stops"
-                documentationPropertyType="string[]"
-                [documentationPropertyValues]="stopsVariants"
-                [(documentationPropertyValue)]="stops"
+            </tr>
+            <tr
+                name="stops"
+                tuiDocAPIItem
+                type="string[]"
+                [items]="stopsVariants"
+                [(value)]="stops"
             >
                 An array of stop points in any units for the sheet.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="initial"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="initial"
+            </tr>
+            <tr
+                name="initial"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="initial"
             >
                 Initial stop index to open on. Indices exceeding
                 <code>stops</code>
                 are treated as stop on image then stop on top of the sheet's content.
-            </ng-template>
-            <ng-template
-                documentationPropertyName="overlay"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="overlay"
+            </tr>
+            <tr
+                name="overlay"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="overlay"
             >
                 Show overlay under the sheet.
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

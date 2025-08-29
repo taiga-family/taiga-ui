@@ -1,12 +1,8 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
-import {
-    TuiDocDocumentation,
-    TuiDocDocumentationPropertyConnector,
-} from '@taiga-ui/addon-doc';
+import {TuiAddonDoc} from '@taiga-ui/addon-doc';
 import {TuiLink} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
@@ -15,13 +11,7 @@ import {type AbstractExampleTuiDropdown} from '../dropdown';
 @Component({
     standalone: true,
     selector: 'dropdown-documentation',
-    imports: [
-        AsyncPipe,
-        RouterLink,
-        TuiDocDocumentation,
-        TuiDocDocumentationPropertyConnector,
-        TuiLink,
-    ],
+    imports: [RouterLink, TuiAddonDoc, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

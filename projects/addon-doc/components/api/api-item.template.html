@@ -34,7 +34,7 @@
 </td>
 <td class="t-td">
     <tui-textfield
-        *ngIf="items.length; else noItems"
+        *ngIf="items?.length; else noItems"
         tuiChevron
         tuiTextfieldSize="m"
         class="t-input"

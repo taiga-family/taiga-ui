@@ -60,4 +60,12 @@ export default class Page {
 
     protected stream = tuiControlValue<TuiDay>(this.control);
     protected readonly routes = DemoRoute;
+
+    protected onCancel(event: unknown): void {
+        console.info('Cancel event:', event);
+    }
+
+    protected onConfirm(event: unknown): void {
+        console.info('Confirm event:', event);
+    }
 }
