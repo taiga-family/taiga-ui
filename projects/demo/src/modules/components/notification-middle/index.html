@@ -1,0 +1,38 @@
+<tui-doc-page
+    header="NotificationMiddle"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        A modal component to indicate an ongoing blocking action
+
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [description]="description"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        >
+            <ng-template
+                #description
+                [ngSwitch]="index"
+            >
+                <ng-container *ngSwitchCase="0">Basic empty loader</ng-container>
+                <ng-container *ngSwitchCase="1">Changing content and adding text to the card</ng-container>
+                <ng-container *ngSwitchCase="2">
+                    Dynamically updating content and closing with timeout. Don't forget
+                    <a
+                        tuiLink
+                        [routerLink]="routes.Animated"
+                    >
+                        Animated
+                    </a>
+                    directive!
+                </ng-container>
+            </ng-template>
+        </tui-doc-example>
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>
