@@ -88,7 +88,7 @@ const tuiDialogMock: typeof tuiDialog = jest.fn(() => jest.fn(() => EMPTY));
     // component with context with union
     class TestComponent {
         public readonly someContextProp!: TuiDialogContext<
-            boolean | object,
+            Record<string, unknown> | boolean,
             number | string
         >;
     }
