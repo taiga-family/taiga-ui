@@ -751,6 +751,28 @@ export class PerformanceComparison {
             process.env.PERF_NET_ABS_MS_THRESHOLD || '15',
         );
 
+        // Improvements can create noise; apply stricter visibility gating for negative net changes
+        if (netMs < 0) {
+            const improvementPctThreshold = Number(
+                process.env.PERF_IMPROVEMENT_VISIBILITY_PCT ||
+                    String(changeThreshold + 4),
+            );
+            const improvementAbsMsFloor = Number(
+                process.env.PERF_IMPROVEMENT_ABS_MS_FLOOR || '10',
+            );
+
+            if (
+                netPctAbs >= improvementPctThreshold &&
+                netMsAbs >= improvementAbsMsFloor
+            ) {
+                return true; // material improvement
+            }
+
+            // Suppress minor improvements even if individual sub-metrics exceeded raw threshold
+            return false;
+        }
+
+        // Regression / neutral direction: keep original multi-signal logic
         if (
             (layoutPct >= changeThreshold && layoutMsAbs >= absMsFloor) ||
             (recalcPct >= changeThreshold && recalcMsAbs >= absMsFloor)
