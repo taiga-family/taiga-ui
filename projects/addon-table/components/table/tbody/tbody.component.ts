@@ -29,7 +29,7 @@ import {TuiTableTr} from '../tr/tr.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABLE_PROVIDER,
 })
-export class TuiTableTbody<T extends Partial<Record<keyof T, any>>> {
+export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
     protected readonly table = inject<TuiTableDirective<T>>(

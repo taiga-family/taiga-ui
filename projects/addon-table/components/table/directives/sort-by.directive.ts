@@ -18,7 +18,7 @@ import {TuiTableDirective} from './table.directive';
     standalone: true,
     selector: 'table[tuiTable][tuiSortBy]',
 })
-export class TuiTableSortBy<T extends Partial<Record<keyof T, any>>> {
+export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
     @ContentChildren(TuiTableSortable, {descendants: true})
     private readonly sortables: QueryList<TuiTableSortable<T>> = EMPTY_QUERY;
 
