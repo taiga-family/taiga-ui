@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {NgFor, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -71,9 +71,10 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     standalone: true,
     selector: 'tui-input-phone-international',
     imports: [
-        CommonModule,
         FormsModule,
         MaskitoDirective,
+        NgFor,
+        NgIf,
         TuiAutoFocus,
         TuiChevron,
         TuiDataList,

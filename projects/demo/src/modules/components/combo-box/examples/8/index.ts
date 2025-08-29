@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {KeyValuePipe, NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,8 +9,9 @@ import {TuiChevron, TuiChip, TuiComboBox, TuiFilterByInputPipe} from '@taiga-ui/
 @Component({
     standalone: true,
     imports: [
-        CommonModule,
         FormsModule,
+        KeyValuePipe,
+        NgFor,
         TuiChevron,
         TuiChip,
         TuiComboBox,
