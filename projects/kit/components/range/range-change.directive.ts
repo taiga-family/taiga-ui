@@ -43,9 +43,19 @@ export class TuiRangeChange {
                         this.el.focus();
                     }
                 }),
-                switchMap((event) =>
-                    tuiTypedFromEvent(this.doc, 'pointermove').pipe(startWith(event)),
-                ),
+                switchMap((event) => {
+                    const {target} = event;
+                    const [startSliderRef, endSliderRef] = this.range.slidersRefs;
+                    const isThumbClick =
+                        target === startSliderRef?.nativeElement ||
+                        target === endSliderRef?.nativeElement;
+
+                    return isThumbClick
+                        ? tuiTypedFromEvent(this.doc, 'pointermove')
+                        : tuiTypedFromEvent(this.doc, 'pointermove').pipe(
+                              startWith(event),
+                          );
+                }),
                 map(({clientX}) => this.getFractionFromEvents(clientX ?? 0)),
                 takeUntil(tuiTypedFromEvent(this.doc, 'pointerup', {passive: true})),
                 repeat(),
