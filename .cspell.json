@@ -40,8 +40,16 @@
         "фейд",
         "Lebowski",
         "recalc",
+        "Recalc",
+        "flexbox",
+        "Flexbox",
+        "xscale",
+        "yscale",
+        "backgrounding",
         "crossfade",
-        "crossfading"
+        "crossfading",
+        "sdev",
+        "coeff"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
