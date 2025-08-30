@@ -47,6 +47,32 @@ function repeat<T>(count: number, builder: (i: number) => T[]): T[] {
 }
 
 function buildOpenCloseOps(count: number): Op[] {
+    if (process.env.PERF_DETERMINISTIC_MODE === '1') {
+        const cycles = Math.max(1, count);
+
+        return repeat(cycles, () => [
+            async (page, {example}) => {
+                if (page.isClosed()) {
+                    return;
+                }
+
+                const btn = example.locator('button').first();
+
+                await btn.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
+                await btn.click({timeout: 800}).catch(() => {});
+                const dd = page.locator('tui-dropdown');
+
+                await dd
+                    .first()
+                    .waitFor({state: 'visible', timeout: 1200})
+                    .catch(() => {});
+                await page.waitForTimeout(10).catch(() => {});
+                await page.keyboard.press('Escape').catch(() => {});
+                await page.waitForTimeout(6).catch(() => {});
+            },
+        ]);
+    }
+
     return repeat(count, (i) => [
         async (page, {example}) => {
             if (page.isClosed()) {
@@ -103,6 +129,29 @@ async function runOps(
 }
 
 function filterOps(total: number): Op[] {
+    if (process.env.PERF_DETERMINISTIC_MODE === '1') {
+        const seq = 'abcd';
+
+        return repeat(total, (i) => [
+            async (_page, {example}) => {
+                const input = example.locator('input').first();
+
+                await input.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
+                await input.fill('');
+                const ch = seq[i % seq.length] || 'a';
+
+                await input.type(ch, {delay: 2}).catch(() => {});
+
+                if (i % 3 === 0) {
+                    await input.press('Backspace').catch(() => {});
+                }
+
+                await input.blur().catch(() => {});
+                await input.focus().catch(() => {});
+            },
+        ]);
+    }
+
     return repeat(total, (i) => [
         async (_page, {example}) => {
             const input = example.locator('input').first();
@@ -122,6 +171,29 @@ function filterOps(total: number): Op[] {
 }
 
 function repositionOps(host: Locator, total: number): Op[] {
+    if (process.env.PERF_DETERMINISTIC_MODE === '1') {
+        return repeat(total, (i) => [
+            async () => {
+                await host.evaluate((el, iter) => {
+                    if (!(el instanceof HTMLElement)) {
+                        return;
+                    }
+
+                    el.style.width = `${200 + (iter % 6) * 5}px`;
+                    el.style.marginLeft = `${(iter % 3) * 6}px`;
+                    void el.offsetWidth;
+                }, i);
+
+                if (i % 10 === 0) {
+                    await host
+                        .page()
+                        .waitForTimeout(4)
+                        .catch(() => {});
+                }
+            },
+        ]);
+    }
+
     return repeat(total, (i) => [
         async () => {
             await host.evaluate((el, iter) => {
@@ -183,6 +255,28 @@ async function ensureDropdownOpen(trigger: Locator, page: Page): Promise<boolean
 }
 
 function nestedOps(total: number, host: Locator, menuRoot: () => Locator): Op[] {
+    if (process.env.PERF_DETERMINISTIC_MODE === '1') {
+        return repeat(total, () => [
+            async (page) => {
+                if (page.isClosed()) {
+                    return;
+                }
+
+                const root = menuRoot();
+                const open = await root.isVisible().catch(() => false);
+
+                if (!open) {
+                    await host.click({timeout: 1200}).catch(() => {});
+                    await page.waitForTimeout(12).catch(() => {});
+                }
+
+                await page.keyboard.press('Escape').catch(() => {});
+                await page.waitForTimeout(8).catch(() => {});
+                await host.click({timeout: 1200}).catch(() => {});
+            },
+        ]);
+    }
+
     return repeat(total, (i) => [
         async (page) => {
             if (page.isClosed()) {
