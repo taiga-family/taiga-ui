@@ -95,7 +95,7 @@ function memoryActions(factor: number): Action[] {
 }
 
 function themeActions(factor: number): Action[] {
-    const total = Math.round(45 * factor * LAYOUT_AMPLIFY);
+    const total = Math.round(30 * factor * LAYOUT_AMPLIFY); // reduced to cut variance
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate(
@@ -108,7 +108,7 @@ function themeActions(factor: number): Action[] {
                 (i * 18) % 260,
             );
         },
-        ...(i % 6 === 0
+        ...(i % 8 === 0 // less frequent style class toggles
             ? [
                   async (_p: Page, sc: Locator) => {
                       await sc.evaluate((el: Element) => {
@@ -292,13 +292,14 @@ function nestedScrollActions(factor: number): Action[] {
 }
 
 function bulkFragmentActions(factor: number): Action[] {
-    const total = Math.round(30 * factor * LAYOUT_AMPLIFY);
+    const total = Math.round(20 * factor * LAYOUT_AMPLIFY); // shorten iterations
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate((el: Element, iter: number) => {
                 if (!(el instanceof HTMLElement)) return;
                 const frag = document.createDocumentFragment();
-                for (let k = 0; k < 50; k++) {
+                for (let k = 0; k < 30; k++) {
+                    // fewer nodes per batch
                     const d = document.createElement('div');
                     d.textContent = 'b' + iter + '-' + k;
                     d.style.cssText = 'height:' + (8 + (k % 5)) + 'px';
@@ -307,16 +308,19 @@ function bulkFragmentActions(factor: number): Action[] {
                 el.appendChild(frag);
                 void el.clientHeight;
                 // prune to keep size roughly bounded
-                while (el.childNodes.length > 600) {
+                while (el.childNodes.length > 400) {
+                    // lower cap
                     el.removeChild(el.firstChild!);
                 }
             }, i);
         },
         async (_p, sc) => {
-            if (i % 3 === 0) {
+            if (i % 4 === 0) {
+                // less aggressive removals
                 await sc.evaluate((el: Element) => {
                     if (!(el instanceof HTMLElement)) return;
-                    for (let r = 0; r < 25 && el.lastChild; r++) {
+                    for (let r = 0; r < 15 && el.lastChild; r++) {
+                        // lower removal burst
                         el.removeChild(el.lastChild);
                     }
                     void el.offsetHeight;

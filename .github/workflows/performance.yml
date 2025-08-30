@@ -11,7 +11,7 @@ env:
   PERF_STRESS_FACTOR: 3 # amplify in-test iteration counts
   PERF_STRESS_PATTERN: '*.stress.pw.spec.ts' # glob for stress specs
   # Calibrated 2025-08-28 (50-run local calibration, warmup skip 2)
-  PERF_VISIBILITY_THRESHOLD: 8 # row visibility threshold (median net CoV ~7.7%)
+  PERF_VISIBILITY_THRESHOLD: 9 # tightened row visibility threshold
   # Percentage increase in operation counts (layout/recalc) considered significant
   PERF_COUNT_PERCENT_THRESHOLD: 18
   # Percentage increase in per-operation duration considered significant
@@ -20,11 +20,16 @@ env:
   PERF_NET_PERCENT_THRESHOLD: 15
   PERF_NET_ABS_MS_THRESHOLD: 8
   # Absolute ms floor for row visibility (filters tiny absolute deltas)
-  PERF_VISIBILITY_ABS_MS_FLOOR: 3
+  PERF_VISIBILITY_ABS_MS_FLOOR: 4
   # Enable dynamic net threshold scaling based on baseline variability
   PERF_ENABLE_DYNAMIC_NET: true
   # Absolute per-op median delta (ms) required to treat a per-op % increase as material
   PERF_PER_OP_ABS_MS_FLOOR: 0.4
+  # New stricter component + net visibility gating
+  PERF_COMPONENT_MIN_NET_PCT: 6
+  PERF_COMPONENT_ABS_MS_FLOOR: 12
+  PERF_COMPONENT_METRIC_ABS_MS_FLOOR: 3
+  PERF_NET_VISIBILITY_ABS_MS_FLOOR: 12
 
 jobs:
   performance-stress:

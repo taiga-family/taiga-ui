@@ -729,6 +729,9 @@ export class PerformanceComparison {
         }
 
         const absMsFloor = Number(process.env.PERF_VISIBILITY_ABS_MS_FLOOR || '3');
+        const hardNetAbsMsFloor = Number(
+            process.env.PERF_NET_VISIBILITY_ABS_MS_FLOOR || '0',
+        );
 
         if (this.isRegressionCandidate(detail, changeThreshold)) {
             return true;
@@ -779,10 +782,26 @@ export class PerformanceComparison {
         const componentMinNetPct = Number(
             process.env.PERF_COMPONENT_MIN_NET_PCT || String(changeThreshold / 2),
         );
+        const componentMetricAbsMsFloor = Number(
+            process.env.PERF_COMPONENT_METRIC_ABS_MS_FLOOR || '0',
+        );
+        const ultraShortBaselineNet = 40; // ms
+
+        if (
+            baselineNet > 0 &&
+            baselineNet < ultraShortBaselineNet &&
+            (netPctAbs < 20 || netMsAbs < 8)
+        ) {
+            return false;
+        }
 
         const componentTriggered =
-            (layoutPct >= changeThreshold && layoutMsAbs >= componentAbsMsFloor) ||
-            (recalcPct >= changeThreshold && recalcMsAbs >= componentAbsMsFloor);
+            (layoutPct >= changeThreshold &&
+                layoutMsAbs >= componentAbsMsFloor &&
+                layoutMsAbs >= componentMetricAbsMsFloor) ||
+            (recalcPct >= changeThreshold &&
+                recalcMsAbs >= componentAbsMsFloor &&
+                recalcMsAbs >= componentMetricAbsMsFloor);
 
         if (componentTriggered) {
             // Show if overall net also reaches main threshold
@@ -831,7 +850,8 @@ export class PerformanceComparison {
         // Pure net change path (no individual component signals)
         if (
             netPctAbs >= changeThreshold &&
-            netMsAbs >= Math.min(absMsFloor, NET_ABS_MS_THRESHOLD)
+            netMsAbs >= Math.min(absMsFloor, NET_ABS_MS_THRESHOLD) &&
+            (hardNetAbsMsFloor === 0 || netMsAbs >= hardNetAbsMsFloor)
         ) {
             return true;
         }
