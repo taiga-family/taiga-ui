@@ -20,6 +20,7 @@ export const TUI_REMOVED_ELEMENT = new InjectionToken(
             };
 
             return element$.pipe(
+                startWith(null),
                 switchMap((element) =>
                     timer(0).pipe(
                         map(() => null),
