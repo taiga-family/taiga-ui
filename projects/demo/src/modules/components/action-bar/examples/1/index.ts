@@ -36,7 +36,7 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected items = ['one', 'two', 'three'];
+    protected items = ['one', 'two', 'three', 'four'];
     protected control = new FormControl<string[]>([]);
     protected expanded = false;
 
