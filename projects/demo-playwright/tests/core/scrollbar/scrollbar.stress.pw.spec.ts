@@ -14,6 +14,7 @@ const LAYOUT_AMPLIFY = Math.min(
     8,
     Math.max(1, Number(process.env.PERF_LAYOUT_AMPLIFY || '1')),
 );
+const DETERMINISTIC = process.env.PERF_DETERMINISTIC_MODE === '1';
 
 function buildActions(count: number, builder: (i: number) => Action[]): Action[] {
     const all: Action[] = [];
@@ -292,14 +293,45 @@ function nestedScrollActions(factor: number): Action[] {
 }
 
 function bulkFragmentActions(factor: number): Action[] {
-    const total = Math.round(20 * factor * LAYOUT_AMPLIFY); // shorten iterations
+    const total = Math.round(20 * factor * LAYOUT_AMPLIFY); // base iterations
+    if (DETERMINISTIC) {
+        return buildActions(total, () => [
+            async (_p, sc) => {
+                await sc.evaluate((el: Element) => {
+                    if (!(el instanceof HTMLElement)) return;
+                    const targetSize = 320; // keep near stable
+                    const batchAdd = 10;
+                    const batchRemove = 10;
+                    // add fixed batch
+                    const frag = document.createDocumentFragment();
+                    for (let k = 0; k < batchAdd; k++) {
+                        const d = document.createElement('div');
+                        d.textContent = 'd';
+                        d.style.cssText = 'height:10px';
+                        frag.appendChild(d);
+                    }
+                    el.appendChild(frag);
+                    // remove fixed batch from start to bound size
+                    let removed = 0;
+                    while (
+                        removed < batchRemove &&
+                        el.firstChild &&
+                        el.childNodes.length > targetSize
+                    ) {
+                        el.removeChild(el.firstChild);
+                        removed++;
+                    }
+                    void (el as HTMLElement).offsetHeight;
+                });
+            },
+        ]);
+    }
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate((el: Element, iter: number) => {
                 if (!(el instanceof HTMLElement)) return;
                 const frag = document.createDocumentFragment();
                 for (let k = 0; k < 30; k++) {
-                    // fewer nodes per batch
                     const d = document.createElement('div');
                     d.textContent = 'b' + iter + '-' + k;
                     d.style.cssText = 'height:' + (8 + (k % 5)) + 'px';
@@ -307,20 +339,16 @@ function bulkFragmentActions(factor: number): Action[] {
                 }
                 el.appendChild(frag);
                 void el.clientHeight;
-                // prune to keep size roughly bounded
                 while (el.childNodes.length > 400) {
-                    // lower cap
                     el.removeChild(el.firstChild!);
                 }
             }, i);
         },
         async (_p, sc) => {
             if (i % 4 === 0) {
-                // less aggressive removals
                 await sc.evaluate((el: Element) => {
                     if (!(el instanceof HTMLElement)) return;
                     for (let r = 0; r < 15 && el.lastChild; r++) {
-                        // lower removal burst
                         el.removeChild(el.lastChild);
                     }
                     void el.offsetHeight;

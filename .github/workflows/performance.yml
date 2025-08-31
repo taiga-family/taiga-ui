@@ -30,6 +30,8 @@ env:
   PERF_COMPONENT_ABS_MS_FLOOR: 12
   PERF_COMPONENT_METRIC_ABS_MS_FLOOR: 3
   PERF_NET_VISIBILITY_ABS_MS_FLOOR: 12
+  # Default deterministic stress sequences to reduce variance; set to 0 locally to explore randomness
+  PERF_DETERMINISTIC_MODE: 1
 
 jobs:
   performance-stress:
