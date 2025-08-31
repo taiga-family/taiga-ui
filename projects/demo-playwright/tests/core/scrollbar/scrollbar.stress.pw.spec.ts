@@ -16,6 +16,14 @@ const LAYOUT_AMPLIFY = Math.min(
 );
 const DETERMINISTIC = process.env.PERF_DETERMINISTIC_MODE === '1';
 
+function repeat<T>(count: number, builder: (i: number) => T[]): T[] {
+    const out: T[] = [];
+    for (let i = 0; i < count; i++) {
+        out.push(...builder(i));
+    }
+    return out;
+}
+
 function buildActions(count: number, builder: (i: number) => Action[]): Action[] {
     const all: Action[] = [];
     for (let i = 0; i < count; i++) {
@@ -26,6 +34,22 @@ function buildActions(count: number, builder: (i: number) => Action[]): Action[]
 
 function scrollMutationActions(factor: number): Action[] {
     const total = Math.round(90 * factor * LAYOUT_AMPLIFY);
+    if (DETERMINISTIC) {
+        const stepHeights = [40, 80, 120, 160, 200, 240, 280, 320];
+        return buildActions(total, (i) => [
+            async (_p, sc) => {
+                await sc.evaluate(
+                    (el: Element, params: {top: number}) => {
+                        if (!(el instanceof HTMLElement)) return;
+                        el.scrollTop = params.top;
+                        void el.scrollHeight;
+                        void el.clientHeight;
+                    },
+                    {top: stepHeights[i % stepHeights.length]!},
+                );
+            },
+        ]);
+    }
     return buildActions(total, (i) => {
         const ops: Action[] = [];
         ops.push(async (_p, sc) => {
@@ -69,6 +93,24 @@ function scrollMutationActions(factor: number): Action[] {
 
 function memoryActions(factor: number): Action[] {
     const total = Math.round(60 * factor * LAYOUT_AMPLIFY);
+    if (DETERMINISTIC) {
+        return buildActions(total, () => [
+            async (page, sc) => {
+                await page.evaluate(() => {
+                    const mem = new Array(10)
+                        .fill(0)
+                        .map((_, idx) => new Array(300).fill(idx));
+                    void mem.length;
+                });
+                await sc.evaluate((el: Element) => {
+                    if (!(el instanceof HTMLElement)) return;
+                    el.scrollTop = (el.scrollTop + 24) % (el.scrollHeight || 1);
+                    el.style.padding = '2px';
+                    void el.offsetHeight;
+                });
+            },
+        ]);
+    }
     return buildActions(total, (i) => [
         async (page) => {
             await page.evaluate((iteration) => {
@@ -182,6 +224,26 @@ function resizeActions(factor: number): Action[] {
 function layoutAmplifierActions(factor: number): Action[] {
     // Intentionally higher base to create dense layout/style ops
     const total = Math.round(120 * factor * LAYOUT_AMPLIFY);
+    if (DETERMINISTIC) {
+        const widths = [320, 326, 332, 338];
+        const heights = [240, 244, 248];
+        return buildActions(total, (i) => [
+            async (_p, sc) => {
+                await sc.evaluate(
+                    (el: Element, params: {w: number; h: number}) => {
+                        if (!(el instanceof HTMLElement)) return;
+                        const host = el.closest('.box') || el;
+                        if (host instanceof HTMLElement) {
+                            host.style.width = params.w + 'px';
+                            host.style.height = params.h + 'px';
+                            void host.offsetHeight;
+                        }
+                    },
+                    {w: widths[i % widths.length]!, h: heights[i % heights.length]!},
+                );
+            },
+        ]);
+    }
     return buildActions(total, (i) => {
         const ops: Action[] = [];
         // Width/height oscillation + forced layout read
@@ -244,6 +306,31 @@ function layoutAmplifierActions(factor: number): Action[] {
 
 function horizontalRtlActions(factor: number): Action[] {
     const total = Math.round(70 * factor * LAYOUT_AMPLIFY);
+    if (DETERMINISTIC) {
+        const dirs = ['ltr', 'rtl'];
+        const widths = [800, 850, 900, 950];
+        return buildActions(total, (i) => [
+            async (_p, sc) => {
+                await sc.evaluate(
+                    (el: Element, params: {dir: string; w: number}) => {
+                        if (!(el instanceof HTMLElement)) return;
+                        el.dir = params.dir;
+                        let wide = el.querySelector('.wide-track') as HTMLElement | null;
+                        if (!wide) {
+                            wide = document.createElement('div');
+                            wide.className = 'wide-track';
+                            el.appendChild(wide);
+                        }
+                        wide.style.width = params.w + 'px';
+                        wide.style.height = '12px';
+                        el.scrollLeft = (el.scrollLeft + 60) % (wide.scrollWidth || 1);
+                        void el.offsetWidth;
+                    },
+                    {dir: dirs[i % dirs.length]!, w: widths[i % widths.length]!},
+                );
+            },
+        ]);
+    }
     return buildActions(total, (i) => {
         const ops: Action[] = [];
         ops.push(async (page, sc) => {
@@ -280,6 +367,44 @@ function horizontalRtlActions(factor: number): Action[] {
 
 function nestedScrollActions(factor: number): Action[] {
     const total = Math.round(60 * factor * LAYOUT_AMPLIFY);
+    if (DETERMINISTIC) {
+        const outerStep = 17;
+        const innerStep = 29;
+        const borders = [0, 1, 2];
+        const paddings = [4, 5, 6, 7];
+        return buildActions(total, (i) => [
+            async (_p, sc) => {
+                await sc.evaluate(
+                    (el: Element, params: {i: number}) => {
+                        if (!(el instanceof HTMLElement)) return;
+                        let inner = el.querySelector(
+                            '.inner-scroll',
+                        ) as HTMLElement | null;
+                        if (!inner) {
+                            inner = document.createElement('div');
+                            inner.className = 'inner-scroll';
+                            inner.style.cssText = 'height:160px;overflow:auto;';
+                            const filler = document.createElement('div');
+                            filler.style.height = '900px';
+                            filler.textContent = 'inner';
+                            inner.appendChild(filler);
+                            el.appendChild(inner);
+                        }
+                        inner.scrollTop =
+                            (inner.scrollTop + innerStep) %
+                            (inner.scrollHeight - inner.clientHeight || 1);
+                        el.scrollTop =
+                            (el.scrollTop + outerStep) %
+                            (el.scrollHeight - el.clientHeight || 1);
+                        el.style.borderWidth = borders[params.i % borders.length] + 'px';
+                        el.style.padding = paddings[params.i % paddings.length] + 'px';
+                        void el.offsetHeight;
+                    },
+                    {i},
+                );
+            },
+        ]);
+    }
     return buildActions(total, (i) => {
         const ops: Action[] = [];
         ops.push(async (_p, sc) => {

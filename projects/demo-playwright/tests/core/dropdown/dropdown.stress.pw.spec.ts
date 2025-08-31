@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {DemoRoute} from '@demo/routes';
 import {
     PerformanceCollector,
@@ -5,6 +6,17 @@ import {
     tuiGoto,
 } from '@demo-playwright/utils';
 import {expect, type Locator, type Page, test} from '@playwright/test';
+import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
+
+const DETERMINISTIC = process.env.PERF_DETERMINISTIC_MODE === '1';
+
+function repeat<T>(count: number, builder: (i: number) => T[]): T[] {
+    const out: T[] = [];
+    for (let i = 0; i < count; i++) {
+        out.push(...builder(i));
+    }
+    return out;
+}
 
 type Op = (
     page: Page,
@@ -36,33 +48,20 @@ const NESTED_MEASURE = Math.max(
     Number(process.env.PERF_DROPDOWN_NESTED_MEASURE || '24'),
 );
 
-function repeat<T>(count: number, builder: (i: number) => T[]): T[] {
-    const out: T[] = [];
-
-    for (let i = 0; i < count; i++) {
-        out.push(...builder(i));
-    }
-
-    return out;
-}
+// repeat imported from shared helper
 
 function buildOpenCloseOps(count: number): Op[] {
-    if (process.env.PERF_DETERMINISTIC_MODE === '1') {
-        const cycles = Math.max(1, count);
-
-        return repeat(cycles, () => [
+    if (DETERMINISTIC) {
+        return repeat(Math.max(1, count), () => [
             async (page, {example}) => {
                 if (page.isClosed()) {
                     return;
                 }
-
                 const btn = example.locator('button').first();
-
                 await btn.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
                 await btn.click({timeout: 800}).catch(() => {});
-                const dd = page.locator('tui-dropdown');
-
-                await dd
+                await page
+                    .locator('tui-dropdown')
                     .first()
                     .waitFor({state: 'visible', timeout: 1200})
                     .catch(() => {});
@@ -72,29 +71,20 @@ function buildOpenCloseOps(count: number): Op[] {
             },
         ]);
     }
-
     return repeat(count, (i) => [
         async (page, {example}) => {
             if (page.isClosed()) {
                 return;
             }
-
             const btn = example.locator('button').first();
-
             await btn.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
-
             if (page.isClosed()) {
                 return;
             }
-
             await btn.click({timeout: 1200}).catch(() => {});
-
-            // minimal yield to event loop every few iterations
             if (i % 6 === 0) {
                 await page.waitForTimeout(4).catch(() => {});
             }
-
-            // occasionally interact with option to exercise layout without every loop
             if (i % 4 === 0) {
                 await page
                     .locator('tui-dropdown [tuiOption]')
@@ -102,7 +92,6 @@ function buildOpenCloseOps(count: number): Op[] {
                     .click({timeout: 400})
                     .catch(() => {});
             }
-
             if (i % 8 === 0) {
                 await page.keyboard.press('Escape').catch(() => {});
             }
@@ -129,40 +118,31 @@ async function runOps(
 }
 
 function filterOps(total: number): Op[] {
-    if (process.env.PERF_DETERMINISTIC_MODE === '1') {
+    if (DETERMINISTIC) {
         const seq = 'abcd';
-
         return repeat(total, (i) => [
             async (_page, {example}) => {
                 const input = example.locator('input').first();
-
                 await input.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
                 await input.fill('');
                 const ch = seq[i % seq.length] || 'a';
-
                 await input.type(ch, {delay: 2}).catch(() => {});
-
                 if (i % 3 === 0) {
                     await input.press('Backspace').catch(() => {});
                 }
-
                 await input.blur().catch(() => {});
                 await input.focus().catch(() => {});
             },
         ]);
     }
-
     return repeat(total, (i) => [
         async (_page, {example}) => {
             const input = example.locator('input').first();
-
             await input.waitFor({state: 'visible', timeout: 2000}).catch(() => {});
             await input.click({timeout: 800}).catch(() => {});
             const seq = ['a', 'b', 'c', 'd'];
             const ch = seq[i % seq.length] || 'a';
-
             await input.type(ch, {delay: 4}).catch(() => {});
-
             if (i % 4 === 0) {
                 await input.press('Backspace').catch(() => {});
             }
@@ -171,19 +151,17 @@ function filterOps(total: number): Op[] {
 }
 
 function repositionOps(host: Locator, total: number): Op[] {
-    if (process.env.PERF_DETERMINISTIC_MODE === '1') {
+    if (DETERMINISTIC) {
         return repeat(total, (i) => [
             async () => {
                 await host.evaluate((el, iter) => {
                     if (!(el instanceof HTMLElement)) {
                         return;
                     }
-
                     el.style.width = `${200 + (iter % 6) * 5}px`;
                     el.style.marginLeft = `${(iter % 3) * 6}px`;
                     void el.offsetWidth;
                 }, i);
-
                 if (i % 10 === 0) {
                     await host
                         .page()
@@ -193,19 +171,16 @@ function repositionOps(host: Locator, total: number): Op[] {
             },
         ]);
     }
-
     return repeat(total, (i) => [
         async () => {
             await host.evaluate((el, iter) => {
                 if (!(el instanceof HTMLElement)) {
                     return;
                 }
-
                 el.style.width = `${180 + (iter % 10) * 8}px`;
                 el.style.marginLeft = `${(iter % 5) * 4}px`;
                 void el.offsetWidth;
             }, i);
-
             if (i % 20 === 0) {
                 await host
                     .page()
@@ -229,7 +204,6 @@ async function ensureDropdownOpen(trigger: Locator, page: Page): Promise<boolean
         const visible = await dropdown
             .first()
             .isVisible()
-            // eslint-disable-next-line
             .catch(() => false);
 
         if (visible) {
@@ -245,55 +219,41 @@ async function ensureDropdownOpen(trigger: Locator, page: Page): Promise<boolean
         await page.waitForTimeout(40).catch(() => {});
     }
 
-    return (
-        dropdown
-            .first()
-            .isVisible()
-            // eslint-disable-next-line
-            .catch(() => false)
-    );
+    return dropdown
+        .first()
+        .isVisible()
+        .catch(() => false);
 }
 
 function nestedOps(total: number, host: Locator, menuRoot: () => Locator): Op[] {
-    if (process.env.PERF_DETERMINISTIC_MODE === '1') {
+    if (DETERMINISTIC) {
         return repeat(total, () => [
             async (page) => {
                 if (page.isClosed()) {
                     return;
                 }
-
                 const root = menuRoot();
-                const open = await root.isVisible().catch(() => false);
-
+                const open = await root.isVisible().catch(TUI_FALSE_HANDLER);
                 if (!open) {
                     await host.click({timeout: 1200}).catch(() => {});
                     await page.waitForTimeout(12).catch(() => {});
                 }
-
                 await page.keyboard.press('Escape').catch(() => {});
                 await page.waitForTimeout(8).catch(() => {});
                 await host.click({timeout: 1200}).catch(() => {});
             },
         ]);
     }
-
     return repeat(total, (i) => [
         async (page) => {
             if (page.isClosed()) {
                 return;
             }
-
-            // ensure dropdown stays open
-            const open = await menuRoot()
-                .isVisible()
-                // eslint-disable-next-line
-                .catch(() => false);
-
+            const open = await menuRoot().isVisible().catch(TUI_FALSE_HANDLER);
             if (!open) {
                 await host.click({timeout: 1500}).catch(() => {});
                 await page.waitForTimeout(20).catch(() => {});
             }
-
             if (i % 4 === 0) {
                 await menuRoot()
                     .locator('tui-data-list button')
@@ -301,7 +261,6 @@ function nestedOps(total: number, host: Locator, menuRoot: () => Locator): Op[] 
                     .click({timeout: 800})
                     .catch(() => {});
             }
-
             if (i % 12 === 0) {
                 await page.keyboard.press('Escape').catch(() => {});
                 await page.waitForTimeout(15).catch(() => {});
@@ -335,7 +294,6 @@ test.describe('Dropdown Stress Tests', () => {
 
         const measureOps = buildOpenCloseOps(Math.round(MEASURE_LOOPS * FACTOR));
         const skipCollector = process.env.PERF_SKIP_COLLECTOR === '1';
-
         if (!skipCollector) {
             await PerformanceCollector.startTestCollection(
                 page,
@@ -343,9 +301,7 @@ test.describe('Dropdown Stress Tests', () => {
                 __filename,
             );
         }
-
         await runOps(page, measureOps, example);
-
         if (!skipCollector && !page.isClosed()) {
             await page.waitForTimeout(30).catch(() => {});
             await PerformanceCollector.stopTestCollection(
@@ -353,7 +309,6 @@ test.describe('Dropdown Stress Tests', () => {
                 'dropdown-open-close-stress',
             );
         }
-
         if (!page.isClosed()) {
             await expect(example.locator('button').first()).toBeVisible();
         }
@@ -368,7 +323,6 @@ test.describe('Dropdown Stress Tests', () => {
         await runOps(page, warmup, example);
         const measure = filterOps(Math.round(FILTER_MEASURE * FACTOR));
         const skipCollector = process.env.PERF_SKIP_COLLECTOR === '1';
-
         if (!skipCollector) {
             await PerformanceCollector.startTestCollection(
                 page,
@@ -376,14 +330,11 @@ test.describe('Dropdown Stress Tests', () => {
                 __filename,
             );
         }
-
         await runOps(page, measure, example);
-
         if (!skipCollector && !page.isClosed()) {
             await page.waitForTimeout(25).catch(() => {});
             await PerformanceCollector.stopTestCollection(page, 'dropdown-filter-stress');
         }
-
         if (!page.isClosed()) {
             await expect(example.locator('input').first()).toBeVisible();
         }
@@ -408,7 +359,6 @@ test.describe('Dropdown Stress Tests', () => {
             Math.round(Math.min(REPOSITION_MEASURE, 16) * FACTOR),
         );
         const skipCollector = process.env.PERF_SKIP_COLLECTOR === '1';
-
         if (!skipCollector) {
             await PerformanceCollector.startTestCollection(
                 page,
@@ -416,9 +366,7 @@ test.describe('Dropdown Stress Tests', () => {
                 __filename,
             );
         }
-
         await runOps(page, measure, example);
-
         if (!skipCollector && !page.isClosed()) {
             await page.waitForTimeout(25).catch(() => {});
             await PerformanceCollector.stopTestCollection(
@@ -426,7 +374,6 @@ test.describe('Dropdown Stress Tests', () => {
                 'dropdown-reposition-stress',
             );
         }
-
         if (!page.isClosed()) {
             await expect(trigger).toBeVisible();
         }
@@ -444,7 +391,6 @@ test.describe('Dropdown Stress Tests', () => {
         const dropdownRoot = (): Locator => page.locator('tui-dropdown').first();
         const opened = await dropdownRoot()
             .isVisible()
-            // eslint-disable-next-line
             .catch(() => false);
 
         if (!opened) {
