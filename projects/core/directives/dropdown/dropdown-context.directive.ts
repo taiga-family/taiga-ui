@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {computed, DestroyRef, Directive, inject, NgZone} from '@angular/core';
+import {computed, Directive, inject} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -44,14 +44,12 @@ export class TuiDropdownContext extends TuiRectAccessor {
     protected readonly activeZone = inject(TuiActiveZone);
     protected readonly driver = inject(TuiDropdownDriver);
     protected readonly doc = inject(DOCUMENT);
-    protected readonly zone = inject(NgZone);
-    protected readonly destroyRef = inject(DestroyRef);
 
     protected readonly sub = merge(
         tuiTypedFromEvent(this.doc, 'pointerdown'),
         tuiTypedFromEvent(this.doc, 'contextmenu', {capture: true}),
     )
-        .pipe(tuiZonefree(this.zone), takeUntilDestroyed(this.destroyRef))
+        .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe((event: Event) => this.closeDropdown(event));
 
     public readonly type = 'dropdown';
