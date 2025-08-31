@@ -127,6 +127,29 @@ function themeActions(factor: number): Action[] {
 
 function resizeActions(factor: number): Action[] {
     const total = Math.round(40 * factor * LAYOUT_AMPLIFY);
+    if (DETERMINISTIC) {
+        const widths = [300, 308, 316, 324, 332, 340];
+        const heights = [220, 224, 228, 232, 236];
+        return buildActions(total, (i) => [
+            async (_p, sc) => {
+                await sc.evaluate(
+                    (el: Element, params: {w: number; h: number; s: number}) => {
+                        if (!(el instanceof HTMLElement)) return;
+                        const host = (el.closest('.box') as HTMLElement) || el;
+                        host.style.width = params.w + 'px';
+                        host.style.height = params.h + 'px';
+                        el.scrollTop = (el.scrollTop + params.s) % (el.scrollHeight || 1);
+                        void host.offsetHeight;
+                    },
+                    {
+                        w: widths[i % widths.length]!,
+                        h: heights[i % heights.length]!,
+                        s: 18,
+                    },
+                );
+            },
+        ]);
+    }
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate(
