@@ -8,8 +8,6 @@ import {
 import {expect, type Locator, type Page, test} from '@playwright/test';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
-const DETERMINISTIC = process.env.PERF_DETERMINISTIC_MODE === '1';
-
 function repeat<T>(count: number, builder: (i: number) => T[]): T[] {
     const out: T[] = [];
     for (let i = 0; i < count; i++) {
@@ -51,50 +49,22 @@ const NESTED_MEASURE = Math.max(
 // repeat imported from shared helper
 
 function buildOpenCloseOps(count: number): Op[] {
-    if (DETERMINISTIC) {
-        return repeat(Math.max(1, count), () => [
-            async (page, {example}) => {
-                if (page.isClosed()) {
-                    return;
-                }
-                const btn = example.locator('button').first();
-                await btn.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
-                await btn.click({timeout: 800}).catch(() => {});
-                await page
-                    .locator('tui-dropdown')
-                    .first()
-                    .waitFor({state: 'visible', timeout: 1200})
-                    .catch(() => {});
-                await page.waitForTimeout(10).catch(() => {});
-                await page.keyboard.press('Escape').catch(() => {});
-                await page.waitForTimeout(6).catch(() => {});
-            },
-        ]);
-    }
-    return repeat(count, (i) => [
+    return repeat(Math.max(1, count), () => [
         async (page, {example}) => {
             if (page.isClosed()) {
                 return;
             }
             const btn = example.locator('button').first();
             await btn.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
-            if (page.isClosed()) {
-                return;
-            }
-            await btn.click({timeout: 1200}).catch(() => {});
-            if (i % 6 === 0) {
-                await page.waitForTimeout(4).catch(() => {});
-            }
-            if (i % 4 === 0) {
-                await page
-                    .locator('tui-dropdown [tuiOption]')
-                    .first()
-                    .click({timeout: 400})
-                    .catch(() => {});
-            }
-            if (i % 8 === 0) {
-                await page.keyboard.press('Escape').catch(() => {});
-            }
+            await btn.click({timeout: 800}).catch(() => {});
+            await page
+                .locator('tui-dropdown')
+                .first()
+                .waitFor({state: 'visible', timeout: 1200})
+                .catch(() => {});
+            await page.waitForTimeout(10).catch(() => {});
+            await page.keyboard.press('Escape').catch(() => {});
+            await page.waitForTimeout(6).catch(() => {});
         },
     ]);
 }
@@ -118,70 +88,35 @@ async function runOps(
 }
 
 function filterOps(total: number): Op[] {
-    if (DETERMINISTIC) {
-        const seq = 'abcd';
-        return repeat(total, (i) => [
-            async (_page, {example}) => {
-                const input = example.locator('input').first();
-                await input.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
-                await input.fill('');
-                const ch = seq[i % seq.length] || 'a';
-                await input.type(ch, {delay: 2}).catch(() => {});
-                if (i % 3 === 0) {
-                    await input.press('Backspace').catch(() => {});
-                }
-                await input.blur().catch(() => {});
-                await input.focus().catch(() => {});
-            },
-        ]);
-    }
+    const seq = 'abcd';
     return repeat(total, (i) => [
         async (_page, {example}) => {
             const input = example.locator('input').first();
-            await input.waitFor({state: 'visible', timeout: 2000}).catch(() => {});
-            await input.click({timeout: 800}).catch(() => {});
-            const seq = ['a', 'b', 'c', 'd'];
+            await input.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
+            await input.fill('');
             const ch = seq[i % seq.length] || 'a';
-            await input.type(ch, {delay: 4}).catch(() => {});
-            if (i % 4 === 0) {
+            await input.type(ch, {delay: 2}).catch(() => {});
+            if (i % 3 === 0) {
                 await input.press('Backspace').catch(() => {});
             }
+            await input.blur().catch(() => {});
+            await input.focus().catch(() => {});
         },
     ]);
 }
 
 function repositionOps(host: Locator, total: number): Op[] {
-    if (DETERMINISTIC) {
-        return repeat(total, (i) => [
-            async () => {
-                await host.evaluate((el, iter) => {
-                    if (!(el instanceof HTMLElement)) {
-                        return;
-                    }
-                    el.style.width = `${200 + (iter % 6) * 5}px`;
-                    el.style.marginLeft = `${(iter % 3) * 6}px`;
-                    void el.offsetWidth;
-                }, i);
-                if (i % 10 === 0) {
-                    await host
-                        .page()
-                        .waitForTimeout(4)
-                        .catch(() => {});
-                }
-            },
-        ]);
-    }
     return repeat(total, (i) => [
         async () => {
             await host.evaluate((el, iter) => {
                 if (!(el instanceof HTMLElement)) {
                     return;
                 }
-                el.style.width = `${180 + (iter % 10) * 8}px`;
-                el.style.marginLeft = `${(iter % 5) * 4}px`;
+                el.style.width = `${200 + (iter % 6) * 5}px`;
+                el.style.marginLeft = `${(iter % 3) * 6}px`;
                 void el.offsetWidth;
             }, i);
-            if (i % 20 === 0) {
+            if (i % 10 === 0) {
                 await host
                     .page()
                     .waitForTimeout(4)
@@ -226,46 +161,20 @@ async function ensureDropdownOpen(trigger: Locator, page: Page): Promise<boolean
 }
 
 function nestedOps(total: number, host: Locator, menuRoot: () => Locator): Op[] {
-    if (DETERMINISTIC) {
-        return repeat(total, () => [
-            async (page) => {
-                if (page.isClosed()) {
-                    return;
-                }
-                const root = menuRoot();
-                const open = await root.isVisible().catch(TUI_FALSE_HANDLER);
-                if (!open) {
-                    await host.click({timeout: 1200}).catch(() => {});
-                    await page.waitForTimeout(12).catch(() => {});
-                }
-                await page.keyboard.press('Escape').catch(() => {});
-                await page.waitForTimeout(8).catch(() => {});
-                await host.click({timeout: 1200}).catch(() => {});
-            },
-        ]);
-    }
-    return repeat(total, (i) => [
+    return repeat(total, () => [
         async (page) => {
             if (page.isClosed()) {
                 return;
             }
-            const open = await menuRoot().isVisible().catch(TUI_FALSE_HANDLER);
+            const root = menuRoot();
+            const open = await root.isVisible().catch(TUI_FALSE_HANDLER);
             if (!open) {
-                await host.click({timeout: 1500}).catch(() => {});
-                await page.waitForTimeout(20).catch(() => {});
-            }
-            if (i % 4 === 0) {
-                await menuRoot()
-                    .locator('tui-data-list button')
-                    .nth(i % 3)
-                    .click({timeout: 800})
-                    .catch(() => {});
-            }
-            if (i % 12 === 0) {
-                await page.keyboard.press('Escape').catch(() => {});
-                await page.waitForTimeout(15).catch(() => {});
                 await host.click({timeout: 1200}).catch(() => {});
+                await page.waitForTimeout(12).catch(() => {});
             }
+            await page.keyboard.press('Escape').catch(() => {});
+            await page.waitForTimeout(8).catch(() => {});
+            await host.click({timeout: 1200}).catch(() => {});
         },
     ]);
 }

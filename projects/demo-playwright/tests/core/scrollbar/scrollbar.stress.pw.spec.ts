@@ -14,7 +14,6 @@ const LAYOUT_AMPLIFY = Math.min(
     8,
     Math.max(1, Number(process.env.PERF_LAYOUT_AMPLIFY || '1')),
 );
-const DETERMINISTIC = process.env.PERF_DETERMINISTIC_MODE === '1';
 
 function repeat<T>(count: number, builder: (i: number) => T[]): T[] {
     const out: T[] = [];
@@ -34,105 +33,38 @@ function buildActions(count: number, builder: (i: number) => Action[]): Action[]
 
 function scrollMutationActions(factor: number): Action[] {
     const total = Math.round(90 * factor * LAYOUT_AMPLIFY);
-    if (DETERMINISTIC) {
-        const stepHeights = [40, 80, 120, 160, 200, 240, 280, 320];
-        return buildActions(total, (i) => [
-            async (_p, sc) => {
-                await sc.evaluate(
-                    (el: Element, params: {top: number}) => {
-                        if (!(el instanceof HTMLElement)) return;
-                        el.scrollTop = params.top;
-                        void el.scrollHeight;
-                        void el.clientHeight;
-                    },
-                    {top: stepHeights[i % stepHeights.length]!},
-                );
-            },
-        ]);
-    }
-    return buildActions(total, (i) => {
-        const ops: Action[] = [];
-        ops.push(async (_p, sc) => {
+    const stepHeights = [40, 80, 120, 160, 200, 240, 280, 320];
+    return buildActions(total, (i) => [
+        async (_p, sc) => {
             await sc.evaluate(
-                (el: Element, top: number) => {
-                    if (el instanceof HTMLElement) {
-                        el.scrollTop = top;
-                        void el.scrollHeight;
-                        void el.clientHeight;
-                    }
+                (el: Element, params: {top: number}) => {
+                    if (!(el instanceof HTMLElement)) return;
+                    el.scrollTop = params.top;
+                    void el.scrollHeight;
+                    void el.clientHeight;
                 },
-                Math.round((Math.sin(i * 0.15) + 1) * 250),
+                {top: stepHeights[i % stepHeights.length]!},
             );
-        });
-        if (i % 10 === 0) {
-            ops.push(async (page) => {
-                await page.evaluate(() => {
-                    const sc = document.querySelector('tui-scrollbar');
-                    if (!sc) return;
-                    const d = document.createElement('div');
-                    d.textContent = 'm';
-                    d.style.height = '12px';
-                    sc.appendChild(d);
-                });
-            });
-        }
-        if (i % 14 === 0) {
-            ops.push(async (_p, sc) => {
-                await sc.evaluate((el: Element) => {
-                    if (el instanceof HTMLElement) {
-                        el.style.transform = 'translateZ(0)';
-                        void el.offsetHeight;
-                        el.style.transform = '';
-                    }
-                });
-            });
-        }
-        return ops;
-    });
+        },
+    ]);
 }
 
 function memoryActions(factor: number): Action[] {
     const total = Math.round(60 * factor * LAYOUT_AMPLIFY);
-    if (DETERMINISTIC) {
-        return buildActions(total, () => [
-            async (page, sc) => {
-                await page.evaluate(() => {
-                    const mem = new Array(10)
-                        .fill(0)
-                        .map((_, idx) => new Array(300).fill(idx));
-                    void mem.length;
-                });
-                await sc.evaluate((el: Element) => {
-                    if (!(el instanceof HTMLElement)) return;
-                    el.scrollTop = (el.scrollTop + 24) % (el.scrollHeight || 1);
-                    el.style.padding = '2px';
-                    void el.offsetHeight;
-                });
-            },
-        ]);
-    }
-    return buildActions(total, (i) => [
-        async (page) => {
-            await page.evaluate((iteration) => {
-                const arr: unknown[] = [];
-                for (let j = 0; j < 30; j++) {
-                    const v = ((iteration * 73 + j * 11) % 1000) / 1000;
-                    arr.push(new Array(600).fill(v));
-                }
-            }, i);
-        },
-        async (_p, sc) => {
-            await sc.evaluate(
-                (el: Element, params: {amt: number; iter: number}) => {
-                    if (el instanceof HTMLElement) {
-                        el.scrollTop += params.amt;
-                        const mod = (params.iter % 4) + 1;
-                        el.style.padding = mod + 'px';
-                        void el.offsetHeight;
-                    }
-                },
-                {amt: (i * 12) % 320, iter: i},
-            );
+    return buildActions(total, () => [
+        async (page, sc) => {
+            await page.evaluate(() => {
+                const mem = new Array(10)
+                    .fill(0)
+                    .map((_, idx) => new Array(300).fill(idx));
+                void mem.length;
+            });
+            await sc.evaluate((el: Element) => {
+                if (!(el instanceof HTMLElement)) return;
+                el.scrollTop = (el.scrollTop + 24) % (el.scrollHeight || 1);
+                el.style.padding = '2px';
+                void el.offsetHeight;
+            });
         },
     ]);
 }
@@ -169,339 +101,144 @@ function themeActions(factor: number): Action[] {
 
 function resizeActions(factor: number): Action[] {
     const total = Math.round(40 * factor * LAYOUT_AMPLIFY);
-    if (DETERMINISTIC) {
-        const widths = [300, 308, 316, 324, 332, 340];
-        const heights = [220, 224, 228, 232, 236];
-        return buildActions(total, (i) => [
-            async (_p, sc) => {
-                await sc.evaluate(
-                    (el: Element, params: {w: number; h: number; s: number}) => {
-                        if (!(el instanceof HTMLElement)) return;
-                        const host = (el.closest('.box') as HTMLElement) || el;
-                        host.style.width = params.w + 'px';
-                        host.style.height = params.h + 'px';
-                        el.scrollTop = (el.scrollTop + params.s) % (el.scrollHeight || 1);
-                        void host.offsetHeight;
-                    },
-                    {
-                        w: widths[i % widths.length]!,
-                        h: heights[i % heights.length]!,
-                        s: 18,
-                    },
-                );
-            },
-        ]);
-    }
+    const widths = [300, 308, 316, 324, 332, 340];
+    const heights = [220, 224, 228, 232, 236];
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate(
-                (el: Element, amt: number) => {
-                    if (el instanceof HTMLElement) {
-                        el.scrollTop += amt;
-                        void el.scrollHeight;
-                    }
+                (el: Element, params: {w: number; h: number; s: number}) => {
+                    if (!(el instanceof HTMLElement)) return;
+                    const host = (el.closest('.box') as HTMLElement) || el;
+                    host.style.width = params.w + 'px';
+                    host.style.height = params.h + 'px';
+                    el.scrollTop = (el.scrollTop + params.s) % (el.scrollHeight || 1);
+                    void host.offsetHeight;
                 },
-                (i * 22) % 340,
+                {
+                    w: widths[i % widths.length]!,
+                    h: heights[i % heights.length]!,
+                    s: 18,
+                },
             );
         },
-        ...(i % 7 === 0
-            ? [
-                  async (_p: Page, sc: Locator) => {
-                      await sc.evaluate((el: Element, iter: number) => {
-                          const c = el.closest('.box') || el;
-                          if (c instanceof HTMLElement) {
-                              c.style.width = `${300 + Math.sin(iter / 5) * 30}px`;
-                              c.style.height = `${220 + Math.cos(iter / 6) * 20}px`;
-                              void c.offsetHeight;
-                          }
-                      }, i);
-                  },
-              ]
-            : []),
     ]);
 }
 
 function layoutAmplifierActions(factor: number): Action[] {
-    // Intentionally higher base to create dense layout/style ops
     const total = Math.round(120 * factor * LAYOUT_AMPLIFY);
-    if (DETERMINISTIC) {
-        const widths = [320, 326, 332, 338];
-        const heights = [240, 244, 248];
-        return buildActions(total, (i) => [
-            async (_p, sc) => {
-                await sc.evaluate(
-                    (el: Element, params: {w: number; h: number}) => {
-                        if (!(el instanceof HTMLElement)) return;
-                        const host = el.closest('.box') || el;
-                        if (host instanceof HTMLElement) {
-                            host.style.width = params.w + 'px';
-                            host.style.height = params.h + 'px';
-                            void host.offsetHeight;
-                        }
-                    },
-                    {w: widths[i % widths.length]!, h: heights[i % heights.length]!},
-                );
-            },
-        ]);
-    }
-    return buildActions(total, (i) => {
-        const ops: Action[] = [];
-        // Width/height oscillation + forced layout read
-        ops.push(async (_p, sc) => {
-            await sc.evaluate((el: Element, iter: number) => {
-                if (!(el instanceof HTMLElement)) return;
-                const host = el.closest('.box') || el;
-                if (host instanceof HTMLElement) {
-                    const w = 320 + (iter % 8) * 3; // 320..341
-                    const h = 240 + (iter % 6) * 2; // 240..250
-                    host.style.width = w + 'px';
-                    host.style.height = h + 'px';
-                    void host.offsetHeight; // layout flush
-                }
-            }, i);
-        });
-        // Batch structural add/remove every 5 iterations to trigger tree + style work
-        if (i % 5 === 0) {
-            ops.push(async (_p, sc) => {
-                await sc.evaluate((el: Element, iter: number) => {
+    const widths = [320, 326, 332, 338];
+    const heights = [240, 244, 248];
+    return buildActions(total, (i) => [
+        async (_p, sc) => {
+            await sc.evaluate(
+                (el: Element, params: {w: number; h: number}) => {
                     if (!(el instanceof HTMLElement)) return;
-                    const target = el.querySelector('.amplifier-batch') || el;
-                    const frag = document.createDocumentFragment();
-                    for (let k = 0; k < 6; k++) {
-                        const d = document.createElement('div');
-                        d.textContent = 'x' + (iter % 100) + '-' + k;
-                        d.style.cssText =
-                            'display:block;width:100%;height:' + (8 + (k % 3)) + 'px';
-                        frag.appendChild(d);
+                    const host = el.closest('.box') || el;
+                    if (host instanceof HTMLElement) {
+                        host.style.width = params.w + 'px';
+                        host.style.height = params.h + 'px';
+                        void host.offsetHeight;
                     }
-                    target.appendChild(frag);
-                    void (target as HTMLElement).offsetHeight;
-                    // Prune oldest children to keep DOM size stable
-                    let removed = 0;
-                    while (
-                        removed < 6 &&
-                        target.firstChild &&
-                        target.childNodes.length > 200
-                    ) {
-                        target.removeChild(target.firstChild);
-                        removed++;
-                    }
-                }, i);
-            });
-        }
-        // Class toggle to force style recalculation every 7 iterations
-        if (i % 7 === 0) {
-            ops.push(async (_p, sc) => {
-                await sc.evaluate((el: Element) => {
-                    if (!(el instanceof HTMLElement)) return;
-                    el.classList.add('layout-amplifier-flag');
-                    void el.clientTop;
-                    el.classList.remove('layout-amplifier-flag');
-                });
-            });
-        }
-        return ops;
-    });
+                },
+                {w: widths[i % widths.length]!, h: heights[i % heights.length]!},
+            );
+        },
+    ]);
 }
 
 function horizontalRtlActions(factor: number): Action[] {
     const total = Math.round(70 * factor * LAYOUT_AMPLIFY);
-    if (DETERMINISTIC) {
-        const dirs = ['ltr', 'rtl'];
-        const widths = [800, 850, 900, 950];
-        return buildActions(total, (i) => [
-            async (_p, sc) => {
-                await sc.evaluate(
-                    (el: Element, params: {dir: string; w: number}) => {
-                        if (!(el instanceof HTMLElement)) return;
-                        el.dir = params.dir;
-                        let wide = el.querySelector('.wide-track') as HTMLElement | null;
-                        if (!wide) {
-                            wide = document.createElement('div');
-                            wide.className = 'wide-track';
-                            el.appendChild(wide);
-                        }
-                        wide.style.width = params.w + 'px';
-                        wide.style.height = '12px';
-                        el.scrollLeft = (el.scrollLeft + 60) % (wide.scrollWidth || 1);
-                        void el.offsetWidth;
-                    },
-                    {dir: dirs[i % dirs.length]!, w: widths[i % widths.length]!},
-                );
-            },
-        ]);
-    }
-    return buildActions(total, (i) => {
-        const ops: Action[] = [];
-        ops.push(async (page, sc) => {
-            await sc.evaluate((el: Element, iter: number) => {
-                if (!(el instanceof HTMLElement)) return;
-                const host = el;
-                host.dir = iter % 8 === 0 ? 'rtl' : 'ltr';
-                // widen content to force horizontal scroll
-                let wide = host.querySelector('.wide-track') as HTMLElement | null;
-                if (!wide) {
-                    wide = document.createElement('div');
-                    wide.className = 'wide-track';
-                    host.appendChild(wide);
-                }
-                wide.style.width = 800 + (iter % 10) * 25 + 'px';
-                wide.style.height = '12px';
-                wide.textContent = 'w';
-                host.scrollLeft = (iter * 37) % (wide.scrollWidth || 1);
-                void host.offsetWidth;
-            }, i);
-        });
-        if (i % 9 === 0) {
-            ops.push(async (_p, sc) => {
-                await sc.evaluate((el: Element) => {
+    const dirs = ['ltr', 'rtl'];
+    const widths = [800, 850, 900, 950];
+    return buildActions(total, (i) => [
+        async (_p, sc) => {
+            await sc.evaluate(
+                (el: Element, params: {dir: string; w: number}) => {
                     if (!(el instanceof HTMLElement)) return;
-                    el.classList.toggle('rtl-variant');
-                    void el.clientWidth;
-                });
-            });
-        }
-        return ops;
-    });
+                    el.dir = params.dir;
+                    let wide = el.querySelector('.wide-track') as HTMLElement | null;
+                    if (!wide) {
+                        wide = document.createElement('div');
+                        wide.className = 'wide-track';
+                        el.appendChild(wide);
+                    }
+                    wide.style.width = params.w + 'px';
+                    wide.style.height = '12px';
+                    el.scrollLeft = (el.scrollLeft + 60) % (wide.scrollWidth || 1);
+                    void el.offsetWidth;
+                },
+                {dir: dirs[i % dirs.length]!, w: widths[i % widths.length]!},
+            );
+        },
+    ]);
 }
 
 function nestedScrollActions(factor: number): Action[] {
     const total = Math.round(60 * factor * LAYOUT_AMPLIFY);
-    if (DETERMINISTIC) {
-        const outerStep = 17;
-        const innerStep = 29;
-        const borders = [0, 1, 2];
-        const paddings = [4, 5, 6, 7];
-        return buildActions(total, (i) => [
-            async (_p, sc) => {
-                await sc.evaluate(
-                    (el: Element, params: {i: number}) => {
-                        if (!(el instanceof HTMLElement)) return;
-                        let inner = el.querySelector(
-                            '.inner-scroll',
-                        ) as HTMLElement | null;
-                        if (!inner) {
-                            inner = document.createElement('div');
-                            inner.className = 'inner-scroll';
-                            inner.style.cssText = 'height:160px;overflow:auto;';
-                            const filler = document.createElement('div');
-                            filler.style.height = '900px';
-                            filler.textContent = 'inner';
-                            inner.appendChild(filler);
-                            el.appendChild(inner);
-                        }
-                        inner.scrollTop =
-                            (inner.scrollTop + innerStep) %
-                            (inner.scrollHeight - inner.clientHeight || 1);
-                        el.scrollTop =
-                            (el.scrollTop + outerStep) %
-                            (el.scrollHeight - el.clientHeight || 1);
-                        el.style.borderWidth = borders[params.i % borders.length] + 'px';
-                        el.style.padding = paddings[params.i % paddings.length] + 'px';
-                        void el.offsetHeight;
-                    },
-                    {i},
-                );
-            },
-        ]);
-    }
-    return buildActions(total, (i) => {
-        const ops: Action[] = [];
-        ops.push(async (_p, sc) => {
-            await sc.evaluate((el: Element, iter: number) => {
-                if (!(el instanceof HTMLElement)) return;
-                let inner = el.querySelector('.inner-scroll') as HTMLElement | null;
-                if (!inner) {
-                    inner = document.createElement('div');
-                    inner.className = 'inner-scroll';
-                    inner.style.cssText = 'height:160px;overflow:auto;';
-                    const filler = document.createElement('div');
-                    filler.style.height = '900px';
-                    filler.textContent = 'inner';
-                    inner.appendChild(filler);
-                    el.appendChild(inner);
-                }
-                inner.scrollTop = (iter * 29) % (inner.scrollHeight - inner.clientHeight);
-                el.scrollTop = (iter * 17) % (el.scrollHeight - el.clientHeight);
-                el.style.borderWidth = (iter % 3) + 'px';
-                void el.offsetHeight; // flush
-            }, i);
-        });
-        if (i % 8 === 0) {
-            ops.push(async (_p, sc) => {
-                await sc.evaluate((el: Element) => {
+    const outerStep = 17;
+    const innerStep = 29;
+    const borders = [0, 1, 2];
+    const paddings = [4, 5, 6, 7];
+    return buildActions(total, (i) => [
+        async (_p, sc) => {
+            await sc.evaluate(
+                (el: Element, params: {i: number}) => {
                     if (!(el instanceof HTMLElement)) return;
-                    el.style.padding = 4 + (el.scrollTop % 4) + 'px';
+                    let inner = el.querySelector('.inner-scroll') as HTMLElement | null;
+                    if (!inner) {
+                        inner = document.createElement('div');
+                        inner.className = 'inner-scroll';
+                        inner.style.cssText = 'height:160px;overflow:auto;';
+                        const filler = document.createElement('div');
+                        filler.style.height = '900px';
+                        filler.textContent = 'inner';
+                        inner.appendChild(filler);
+                        el.appendChild(inner);
+                    }
+                    inner.scrollTop =
+                        (inner.scrollTop + innerStep) %
+                        (inner.scrollHeight - inner.clientHeight || 1);
+                    el.scrollTop =
+                        (el.scrollTop + outerStep) %
+                        (el.scrollHeight - el.clientHeight || 1);
+                    el.style.borderWidth = borders[params.i % borders.length] + 'px';
+                    el.style.padding = paddings[params.i % paddings.length] + 'px';
                     void el.offsetHeight;
-                });
-            });
-        }
-        return ops;
-    });
+                },
+                {i},
+            );
+        },
+    ]);
 }
 
 function bulkFragmentActions(factor: number): Action[] {
-    const total = Math.round(20 * factor * LAYOUT_AMPLIFY); // base iterations
-    if (DETERMINISTIC) {
-        return buildActions(total, () => [
-            async (_p, sc) => {
-                await sc.evaluate((el: Element) => {
-                    if (!(el instanceof HTMLElement)) return;
-                    const targetSize = 320; // keep near stable
-                    const batchAdd = 10;
-                    const batchRemove = 10;
-                    // add fixed batch
-                    const frag = document.createDocumentFragment();
-                    for (let k = 0; k < batchAdd; k++) {
-                        const d = document.createElement('div');
-                        d.textContent = 'd';
-                        d.style.cssText = 'height:10px';
-                        frag.appendChild(d);
-                    }
-                    el.appendChild(frag);
-                    // remove fixed batch from start to bound size
-                    let removed = 0;
-                    while (
-                        removed < batchRemove &&
-                        el.firstChild &&
-                        el.childNodes.length > targetSize
-                    ) {
-                        el.removeChild(el.firstChild);
-                        removed++;
-                    }
-                    void (el as HTMLElement).offsetHeight;
-                });
-            },
-        ]);
-    }
-    return buildActions(total, (i) => [
+    const total = Math.round(20 * factor * LAYOUT_AMPLIFY);
+    return buildActions(total, () => [
         async (_p, sc) => {
-            await sc.evaluate((el: Element, iter: number) => {
+            await sc.evaluate((el: Element) => {
                 if (!(el instanceof HTMLElement)) return;
+                const targetSize = 320;
+                const batchAdd = 10;
+                const batchRemove = 10;
                 const frag = document.createDocumentFragment();
-                for (let k = 0; k < 30; k++) {
+                for (let k = 0; k < batchAdd; k++) {
                     const d = document.createElement('div');
-                    d.textContent = 'b' + iter + '-' + k;
-                    d.style.cssText = 'height:' + (8 + (k % 5)) + 'px';
+                    d.textContent = 'd';
+                    d.style.cssText = 'height:10px';
                     frag.appendChild(d);
                 }
                 el.appendChild(frag);
-                void el.clientHeight;
-                while (el.childNodes.length > 400) {
-                    el.removeChild(el.firstChild!);
+                let removed = 0;
+                while (
+                    removed < batchRemove &&
+                    el.firstChild &&
+                    el.childNodes.length > targetSize
+                ) {
+                    el.removeChild(el.firstChild);
+                    removed++;
                 }
-            }, i);
-        },
-        async (_p, sc) => {
-            if (i % 4 === 0) {
-                await sc.evaluate((el: Element) => {
-                    if (!(el instanceof HTMLElement)) return;
-                    for (let r = 0; r < 15 && el.lastChild; r++) {
-                        el.removeChild(el.lastChild);
-                    }
-                    void el.offsetHeight;
-                });
-            }
+                void (el as HTMLElement).offsetHeight;
+            });
         },
     ]);
 }
