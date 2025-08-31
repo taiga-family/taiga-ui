@@ -33,6 +33,7 @@ export interface TuiNotificationMiddleOptions {
     ],
     host: {
         '(document:click.capture)': 'onClick($event.target)',
+        '(document:keydown.esc)': 'onClick($event.currentTarget)',
         '(waResizeObserver)': 'el.style.setProperty("--t-width", el.clientWidth + "px")',
     },
 })
