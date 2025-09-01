@@ -101,7 +101,7 @@ export class PerformanceCollector {
                     );
                 });
                 await this.warmUpMeasurement(page);
-                // await this.ensureActivityBurst(page);
+                await this.ensureActivityBurst(page);
 
                 this.activeCollections.set(testName, {
                     client,
