@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -18,7 +18,8 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 @Component({
     standalone: true,
     imports: [
-        CommonModule,
+        AsyncPipe,
+        NgFor,
         TuiAmountPipe,
         TuiAppearance,
         TuiAvatar,

@@ -83,7 +83,7 @@ export class PayModal implements OnInit {
     protected paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
     protected loading$ = new BehaviorSubject(false);
     protected payProcessing$ = new BehaviorSubject(false);
-    protected readonly PAYMENT_MODE = PaymentMode;
+    protected readonly paymentModeTypes = PaymentMode;
 
     public readonly context =
         injectContext<TuiDialogContext<void, DataForPayCardModal>>();

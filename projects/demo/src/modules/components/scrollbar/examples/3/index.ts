@@ -17,7 +17,7 @@ export default class Example {
     @ViewChild(TuiScrollbar, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
 
-    protected SOME_OFFSET_CONST = SOME_OFFSET_CONST;
+    protected someOffsetConst = SOME_OFFSET_CONST;
 
     protected get scrollTop(): number {
         return this.scrollBar ? this.scrollBar.nativeElement.scrollTop : 0;

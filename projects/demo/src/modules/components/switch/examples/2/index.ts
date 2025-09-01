@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,7 +6,7 @@ import {TuiSwitch, tuiSwitchOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, FormsModule, TuiSwitch],
+    imports: [FormsModule, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
