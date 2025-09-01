@@ -2,12 +2,15 @@
 
 function decorateMethod(
     originalMethod: (...args: unknown[]) => unknown,
-): (this: unknown, ...args: unknown[]) => unknown {
+): (this: Record<string, unknown>, ...args: unknown[]) => unknown {
     let previousArgs: readonly unknown[] = [];
     let originalFnWasCalledLeastAtOnce = false;
     let pureValue: unknown;
 
-    return function tuiPureMethodPatched(this: unknown, ...args: unknown[]): unknown {
+    return function tuiPureMethodPatched(
+        this: Record<string, unknown>,
+        ...args: unknown[]
+    ): unknown {
         const isPure =
             originalFnWasCalledLeastAtOnce &&
             previousArgs.length === args.length &&
@@ -29,8 +32,8 @@ function decorateGetter(
     originalGetter: () => unknown,
     propertyKey: string | symbol,
     enumerable = true,
-): (this: unknown) => unknown {
-    return function tuiPureGetterPatched(this: unknown): unknown {
+): (this: Record<string, unknown>) => unknown {
+    return function tuiPureGetterPatched(this: Record<string, unknown>): unknown {
         const value = originalGetter.call(this);
 
         Object.defineProperty(this, propertyKey, {enumerable, value});
@@ -50,7 +53,7 @@ function decorateGetter(
  * TODO(v5): drop compatibility for legacy "experimentalDecorators": true
  */
 export function tuiPure<T>(
-    target: unknown,
+    target: Record<string, unknown>,
     propertyKey: string,
     {get, enumerable, value}: TypedPropertyDescriptor<T>,
 ): TypedPropertyDescriptor<T>;
@@ -68,7 +71,7 @@ export function tuiPure<A extends unknown[], R>(
 ): (...args: A) => R;
 
 export function tuiPure(
-    target: unknown,
+    target: Record<string, unknown> | ((...args: unknown[]) => unknown),
     propertyKeyOrContext:
         | ClassGetterDecoratorContext
         | ClassMethodDecoratorContext
