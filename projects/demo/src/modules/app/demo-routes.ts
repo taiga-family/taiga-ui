@@ -120,6 +120,7 @@ export const DemoRoute = {
     Loader: '/components/loader',
     Mobile: '/mobile-themes',
     Notification: '/components/notification',
+    NotificationMiddle: '/components/notification-middle',
     Push: '/components/push',
     MobileDialog: '/components/mobile-dialog',
     MobileCalendar: '/components/mobile-calendar',

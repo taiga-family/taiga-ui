@@ -610,6 +610,11 @@ export const ROUTES: Routes = [
         title: 'Notification',
     }),
     route({
+        path: DemoRoute.NotificationMiddle,
+        loadComponent: async () => import('../components/notification-middle'),
+        title: 'NotificationMiddle',
+    }),
+    route({
         path: DemoRoute.Push,
         loadComponent: async () => import('../components/push'),
         title: 'Push',

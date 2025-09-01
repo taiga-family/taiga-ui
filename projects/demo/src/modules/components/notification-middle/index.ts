@@ -1,0 +1,21 @@
+import {Component, signal, ViewEncapsulation} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+import {TuiButton} from '@taiga-ui/core';
+import {TuiNotificationMiddle} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [TuiButton, TuiDemo, TuiNotificationMiddle],
+    templateUrl: './index.html',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection,
+})
+export default class Page {
+    protected routes = DemoRoute;
+    protected readonly examples = ['Default', 'Content', 'Transition', 'Service'];
+    protected readonly open = signal(false);
+
+    protected closable = false;
+}

@@ -890,6 +890,15 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'NotificationMiddle',
+        keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
+        route: DemoRoute.NotificationMiddle,
+        meta: {
+            figmaVersion: '1.1.0',
+        },
+    },
+    {
+        section: 'Components',
         title: 'Push',
         keywords: 'push, пуш, нотификация, notification, alert',
         route: DemoRoute.Push,
