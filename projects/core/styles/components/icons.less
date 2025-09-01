@@ -3,14 +3,16 @@
  * @selector [tuiIcons]
  *
  * @description
- * Icons directive applies CSS mask to ::before and ::after pseudo elements
+ * Icons directive applies styles to ::before and ::after pseudo elements
  *
  * @vars
- * --t-icon-start — mask for ::before element
- * --t-icon-end — mask for ::after element
+ * --t-icon-start — depending on the data-icon-start, it can serve as either a mask (`svg`),
+  a background (`image`), or content (`font`) for the ::before element
+ * --t-icon-end — depending on the data-icon-end, it can serve as either a mask (`svg`),
+  a background (`image`), or content (`font`) for the ::after element
  *
  * @example
- * <button tuiIcons style="--t-icon-start: url('icon.svg')"></button>
+ * <button tuiIcons data-icon-start="svg" style="--t-icon-start: url('icon.svg')"></button>
  *
  * @see-also
  * Button, Icon, Link
@@ -22,7 +24,6 @@
     &::before,
     &::after {
         content: '';
-        display: var(--t-icon-start);
         inline-size: 1em;
         block-size: 1em;
         line-height: 1em;
@@ -30,11 +31,44 @@
         flex-shrink: 0;
         box-sizing: content-box;
         background: currentColor;
+    }
+
+    &::before {
+        display: var(--t-icon-start, none);
         mask: var(--t-icon-start) no-repeat center/contain padding-box;
     }
 
     &::after {
-        display: var(--t-icon-end);
+        display: var(--t-icon-end, none);
         mask: var(--t-icon-end) no-repeat center/contain padding-box;
+    }
+
+    &[data-icon-start='image']::before {
+        mask: none;
+        background: var(--t-icon-start) no-repeat center/contain padding-box;
+    }
+
+    &[data-icon-end='image']::after {
+        mask: none;
+        background: var(--t-icon-end) no-repeat center/contain padding-box;
+    }
+
+    &[data-icon-start='font']::before,
+    &[data-icon-end='font']::after {
+        display: grid;
+        mask: none;
+        background: none;
+        font: 1.3em/1 var(--tui-font-icon, inherit);
+        text-align: center;
+        place-content: center;
+        text-transform: none;
+    }
+
+    &[data-icon-start='font']::before {
+        content: var(--t-icon-start);
+    }
+
+    &[data-icon-end='font']::after {
+        content: var(--t-icon-end);
     }
 }

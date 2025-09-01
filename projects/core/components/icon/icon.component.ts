@@ -1,13 +1,19 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     Input,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
+import {
+    TUI_ICON_END,
+    TUI_ICON_START,
+    tuiGetIconMode,
+    tuiInjectIconResolver,
+} from '@taiga-ui/core/tokens';
 
 @Component({
     standalone: true,
@@ -17,31 +23,40 @@ import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/cor
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.--t-icon]': 'iconSrc() || "url()"',
-        '[style.--t-icon-bg]': 'backgroundSrc()',
+        '[style.--t-icon]': 'resource() || "url()"',
+        '[style.--t-icon-bg]': 'bgResource()',
+        '[attr.data-icon]': 'mode()',
     },
 })
 export class TuiIcon {
     protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
-    protected readonly backgroundSrc = signal<string | null>(null);
-    protected readonly iconSrc = signal(
-        this.resolve(
-            inject(TUI_ICON_START, {self: true, optional: true}) ||
-                inject(TUI_ICON_END, {self: true, optional: true}),
-        ),
+    protected readonly src = signal(
+        inject(TUI_ICON_START, {self: true, optional: true}) ||
+            inject(TUI_ICON_END, {self: true, optional: true}),
     );
+
+    protected readonly bg = signal<string | null>(null);
+    protected readonly resource = computed(() => this.resolve(this.src()));
+    protected readonly mode = computed(() => tuiGetIconMode(this.src()));
+    protected readonly bgResource = computed(() => this.resolve(this.bg()));
 
     @Input()
     public set icon(icon: string) {
-        this.iconSrc.set(this.resolve(icon));
+        this.src.set(icon);
     }
 
     @Input()
     public set background(background: string) {
-        this.backgroundSrc.set(this.resolve(background));
+        this.bg.set(background);
     }
 
     public resolve(value?: string | null): string | null {
-        return value ? `url(${this.resolver(value)})` : null;
+        if (!value) {
+            return null;
+        }
+
+        return tuiGetIconMode(value) === 'font'
+            ? `'${this.resolver(value)}'`
+            : `url(${this.resolver(value)})`;
     }
 }
