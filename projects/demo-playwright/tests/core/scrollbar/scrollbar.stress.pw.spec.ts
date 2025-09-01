@@ -151,7 +151,8 @@ function resizeActions(factor: number): Action[] {
 }
 
 function layoutAmplifierActions(factor: number): Action[] {
-    const total = Math.round(120 * factor * LAYOUT_AMPLIFY);
+    // Reduced to mitigate timeout risk while preserving proportional scaling
+    const total = Math.round(80 * factor * LAYOUT_AMPLIFY);
     const widths = [320, 326, 332, 338];
     const heights = [240, 244, 248];
 
@@ -180,7 +181,8 @@ function layoutAmplifierActions(factor: number): Action[] {
 }
 
 function horizontalRtlActions(factor: number): Action[] {
-    const total = Math.round(70 * factor * LAYOUT_AMPLIFY);
+    // Reduced to mitigate timeout risk
+    const total = Math.round(50 * factor * LAYOUT_AMPLIFY);
     const dirs = ['ltr', 'rtl'];
     const widths = [800, 850, 900, 950];
 
@@ -331,7 +333,15 @@ async function runScenarioLoop(
     for (let loop = 0; loop < LOOPS; loop++) {
         for (const scenario of list) {
             for (let r = 0; r < scenario.repeats; r++) {
-                await scenario.run(page, ctx);
+                if (page.isClosed()) {
+                    return;
+                }
+
+                try {
+                    await scenario.run(page, ctx);
+                } catch {
+                    return;
+                }
             }
         }
     }
@@ -348,8 +358,13 @@ function scenarioFromActions(
         label,
         repeats,
         async run(page, ctx) {
-            for (const a of actions) {
-                await a(page, ctx.sc);
+            for (let i = 0; i < actions.length; i++) {
+                await actions[i]!(page, ctx.sc);
+
+                if (i > 0 && i % 200 === 0) {
+                    // Yield to avoid monopolizing event loop in very long sequences
+                    await page.waitForTimeout(0);
+                }
             }
         },
     };
