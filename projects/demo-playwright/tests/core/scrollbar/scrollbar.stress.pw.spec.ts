@@ -182,7 +182,16 @@ function nestedScrollActions(factor: number): Action[] {
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate(
-                (el: Element, params: {i: number}) => {
+                (
+                    el: Element,
+                    params: {
+                        i: number;
+                        innerStep: number;
+                        outerStep: number;
+                        borders: number[];
+                        paddings: number[];
+                    },
+                ) => {
                     if (!(el instanceof HTMLElement)) return;
                     let inner = el.querySelector('.inner-scroll') as HTMLElement | null;
                     if (!inner) {
@@ -196,16 +205,18 @@ function nestedScrollActions(factor: number): Action[] {
                         el.appendChild(inner);
                     }
                     inner.scrollTop =
-                        (inner.scrollTop + innerStep) %
+                        (inner.scrollTop + params.innerStep) %
                         (inner.scrollHeight - inner.clientHeight || 1);
                     el.scrollTop =
-                        (el.scrollTop + outerStep) %
+                        (el.scrollTop + params.outerStep) %
                         (el.scrollHeight - el.clientHeight || 1);
-                    el.style.borderWidth = borders[params.i % borders.length] + 'px';
-                    el.style.padding = paddings[params.i % paddings.length] + 'px';
+                    el.style.borderWidth =
+                        params.borders[params.i % params.borders.length] + 'px';
+                    el.style.padding =
+                        params.paddings[params.i % params.paddings.length] + 'px';
                     void el.offsetHeight;
                 },
-                {i},
+                {i, innerStep, outerStep, borders, paddings},
             );
         },
     ]);

@@ -53,7 +53,11 @@ function buildOpenCloseOps(count: number): Op[] {
             if (page.isClosed()) {
                 return;
             }
-            const btn = example.locator('button').first();
+            const btn = example
+                .locator(
+                    'button[tuiButton], button[tuiIconButton], button[data-automation-id], button:not([type="submit"])',
+                )
+                .first();
             await btn.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
             await btn.click({timeout: 800}).catch(() => {});
             await page
@@ -90,7 +94,9 @@ function filterOps(total: number): Op[] {
     const seq = 'abcd';
     return repeat(total, (i) => [
         async (_page, {example}) => {
-            const input = example.locator('input').first();
+            const input = example
+                .locator('input[tuiTextfield], input[type="text"], input[placeholder]')
+                .first();
             await input.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
             await input.fill('');
             const ch = seq[i % seq.length] || 'a';
