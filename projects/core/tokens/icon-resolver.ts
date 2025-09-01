@@ -7,9 +7,7 @@ import {TUI_ICON_REGISTRY} from './icons';
 const ICON_MODE_PREFIXES = {
     font: '@font.',
     image: '@img.',
-};
-
-type TUI_ICON_MODE = 'font' | 'image' | 'svg';
+} as const;
 
 export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
     ngDevMode ? 'TUI_ICON_RESOLVER' : '',
@@ -32,7 +30,7 @@ export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
  */
 export const TUI_ICON_START_RESOLVER = TUI_ICON_RESOLVER;
 
-export function tuiGetIconMode(icon?: string | null): TUI_ICON_MODE | null {
+export function tuiGetIconMode(icon?: string | null): 'font' | 'image' | 'svg' | null {
     if (!icon) {
         return null;
     }
@@ -41,11 +39,9 @@ export function tuiGetIconMode(icon?: string | null): TUI_ICON_MODE | null {
         return 'image';
     }
 
-    if (icon.startsWith(ICON_MODE_PREFIXES.font)) {
-        return 'font';
-    }
-
-    return 'svg';
+    return icon.startsWith(ICON_MODE_PREFIXES.font)
+        ? 'font'
+        : 'svg';
 }
 
 export function tuiInjectIconResolver(): TuiStringHandler<string> {
