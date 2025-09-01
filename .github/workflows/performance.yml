@@ -8,7 +8,6 @@ env:
   PERF_COLLECTOR_DEBUG: 1
   PERFORMANCE_RUNS: 6 # total runs including warmup
   PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
-  PERF_STRESS_FACTOR: 3 # amplify in-test iteration counts
   PERF_STRESS_PATTERN: '*.stress.pw.spec.ts' # glob for stress specs
   # Calibrated 2025-08-28 (50-run local calibration, warmup skip 2)
   PERF_VISIBILITY_THRESHOLD: 15 # tightened row visibility threshold

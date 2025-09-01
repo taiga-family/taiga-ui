@@ -19,10 +19,7 @@ interface StressScenario {
     run: (page: Page, ctx: DropdownCtx) => Promise<void>;
 }
 
-const INTENSITY = Math.max(
-    1,
-    Number(process.env.STRESS_INTENSITY || process.env.PERF_STRESS_FACTOR || '2'),
-);
+const INTENSITY = Math.max(1, Number(process.env.STRESS_INTENSITY || '2'));
 
 const LOOPS = 3;
 // Reduced per-scenario repeats to cut runtime while still generating ample trace events

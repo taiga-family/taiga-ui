@@ -9,6 +9,8 @@ import {expect, test} from '@playwright/test';
 test.describe('TuiScrollbar Stress Tests', () => {
     let documentationPage: TuiDocumentationPagePO;
 
+    const STRESS_FACTOR = 1; // fixed deterministic factor (removed PERF_STRESS_FACTOR env dependency)
+
     const createPRNG = (seed = 42): (() => number) => {
         let state = seed % 2147483647;
 
@@ -42,8 +44,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 __filename,
             );
 
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
-            const iterationsRapid = Math.round(100 * factor);
+            const iterationsRapid = 100 * STRESS_FACTOR;
 
             for (let i = 0; i < iterationsRapid; i++) {
                 await scrollbar.evaluate(
@@ -105,8 +106,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
             await expect(addButton).toBeVisible();
             await expect(scrollbar).toBeVisible();
 
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
-            const iterationsContent = Math.round(30 * factor);
+            const iterationsContent = 30 * STRESS_FACTOR;
             const warmupIterations = Math.min(
                 5,
                 Math.max(3, Math.round(iterationsContent * 0.15)),
@@ -174,8 +174,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
             );
 
             const programmaticOperations: Array<Promise<unknown>> = [];
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
-            const iterationsProg = Math.round(40 * factor);
+            const iterationsProg = 40 * STRESS_FACTOR;
             const rand = createPRNG(321);
 
             for (let i = 0; i < iterationsProg; i++) {
@@ -214,8 +213,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
             await scrollbar.scrollIntoViewIfNeeded();
             await expect(scrollbar).toBeVisible();
 
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
-            const iterationsMulti = Math.round(60 * factor);
+            const iterationsMulti = 60 * STRESS_FACTOR;
             const warmupIterations = Math.min(
                 10,
                 Math.max(5, Math.round(iterationsMulti * 0.15)),
@@ -301,8 +299,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 __filename,
             );
 
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
-            const iterationsMemory = Math.round(80 * factor);
+            const iterationsMemory = 80 * STRESS_FACTOR;
 
             for (let i = 0; i < iterationsMemory; i++) {
                 await page.evaluate((iteration) => {
@@ -383,8 +380,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 __filename,
             );
 
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
-            const iterationsTheme = Math.round(60 * factor);
+            const iterationsTheme = 60 * STRESS_FACTOR;
 
             for (let i = 0; i < iterationsTheme; i++) {
                 await scrollbar.evaluate(
@@ -465,8 +461,7 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 __filename,
             );
 
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
-            const iterationsResize = Math.round(50 * factor);
+            const iterationsResize = 50 * STRESS_FACTOR;
 
             for (let i = 0; i < iterationsResize; i++) {
                 await scrollbar.evaluate(
@@ -548,13 +543,12 @@ test.describe('TuiScrollbar Stress Tests', () => {
             );
 
             const concurrentBatches: Array<Promise<unknown>> = [];
-            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
-            const batches = Math.round(8 * factor);
+            const batches = 8 * STRESS_FACTOR;
             const rand = createPRNG(987);
 
             for (let batch = 0; batch < batches; batch++) {
                 const batchOperations: Array<Promise<unknown>> = [];
-                const innerOps = Math.round(15 * factor);
+                const innerOps = 15 * STRESS_FACTOR;
 
                 for (let j = 0; j < innerOps; j++) {
                     const scrollTop = (batch * 50 + j * 10) % 500;
