@@ -2,13 +2,6 @@
 
 > Enterprise‑grade Angular UI components with 100+ building blocks, charts, and utilities.
 > For AI assistants helping developers implement Taiga UI in Angular apps.
-> Rate limit: 60 requests per hour per IP
-
-## Access Guidelines
-
-- Code examples: MIT License
-- Training allowed on public docs; attribution required
-- Attribution format: "Source: Taiga UI (taiga-ui.dev)"
 
 ## For Human Visitors
 
@@ -17,6 +10,7 @@
 - Issues: https://github.com/taiga-family/taiga-ui/issues
 
 <!-- AUTO-GENERATED BELOW -->
+
 
 ### Documentation
 
@@ -126,6 +120,7 @@
 - [Multi Select](https://taiga-ui.dev/components/multi-select) — This version of the component is deprecated and will be removed in the next major version. Use InputChip instead! MultiSelect is a textfield with a dropdown for choosing several items
 - [Navigation](https://taiga-ui.dev/components/navigation) — A set of basic layout components for global navigation
 - [Notification](https://taiga-ui.dev/components/notification) — An inline message with a type (info, positive, warning, negative or neutral) that does not interrupt user actions
+- [Notification Middle](https://taiga-ui.dev/components/notification-middle) — A modal component to indicate an ongoing blocking action
 - [Pager](https://taiga-ui.dev/components/pager)
 - [Pdf Viewer](https://taiga-ui.dev/components/pdf-viewer) — Custom dialog to preview PDF PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on TUI_IS_MOBILE token to provide suitable alternative behavior. For example, you can use third-party service https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF or your own service to render PDF by pdf.js.
 - [Pin](https://taiga-ui.dev/components/pin) — Pins are used to show a location on a 2D plane. Use color , background , border and box-shadow to customize the pin Pins are designed to be absolutely positioned on map or similar medium, therefore specifically their center is placed where you put them.
