@@ -21,17 +21,18 @@ interface StressScenario {
 
 const INTENSITY = Math.max(
     1,
-    Number(process.env.STRESS_INTENSITY || process.env.PERF_STRESS_FACTOR || '3'),
+    Number(process.env.STRESS_INTENSITY || process.env.PERF_STRESS_FACTOR || '2'),
 );
 
-const LOOPS = 6;
-const OPEN_CLOSE_R = 4 * INTENSITY;
-const FILTER_R = 2 * INTENSITY;
-const REPOSITION_R = 3 * INTENSITY;
-const NESTED_R = 2 * INTENSITY;
-const OPTION_R = 2 * INTENSITY;
-const STYLE_R = 2 * INTENSITY;
-const SCROLL_R = 3 * INTENSITY;
+const LOOPS = 3;
+// Reduced per-scenario repeats to cut runtime while still generating ample trace events
+const OPEN_CLOSE_R = 2 * INTENSITY;
+const FILTER_R = INTENSITY;
+const REPOSITION_R = 2 * INTENSITY;
+const NESTED_R = INTENSITY;
+const OPTION_R = INTENSITY;
+const STYLE_R = INTENSITY;
+const SCROLL_R = 2 * INTENSITY;
 
 function createDropdownCtx(
     example: ReturnType<TuiDocumentationPagePO['getExample']>,

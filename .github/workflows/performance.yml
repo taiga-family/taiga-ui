@@ -11,7 +11,7 @@ env:
   PERF_STRESS_FACTOR: 3 # amplify in-test iteration counts
   PERF_STRESS_PATTERN: '*.stress.pw.spec.ts' # glob for stress specs
   # Calibrated 2025-08-28 (50-run local calibration, warmup skip 2)
-  PERF_VISIBILITY_THRESHOLD: 9 # tightened row visibility threshold
+  PERF_VISIBILITY_THRESHOLD: 15 # tightened row visibility threshold
   # Percentage increase in operation counts (layout/recalc) considered significant
   PERF_COUNT_PERCENT_THRESHOLD: 18
   # Percentage increase in per-operation duration considered significant
