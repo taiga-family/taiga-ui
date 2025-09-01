@@ -16,8 +16,8 @@ import {filter, map, startWith, switchMap, take, tap, timer} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected open = signal(false);
-    protected loading = toSignal(
+    protected readonly open = signal(false);
+    protected readonly loading = toSignal(
         toObservable(this.open).pipe(
             filter(Boolean),
             switchMap(() =>

@@ -1,3 +1,3 @@
 ```html
-<ng-template [(tuiNotificationMiddle)]="text">Loader with text</ng-template>
+<ng-template [(tuiNotificationMiddle)]="open">Loader with text</ng-template>
 ```
