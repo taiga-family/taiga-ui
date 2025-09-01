@@ -53,9 +53,10 @@ function buildOpenCloseOps(count: number): Op[] {
             if (page.isClosed()) {
                 return;
             }
+            // Prefer an element explicitly acting as a dropdown trigger
             const btn = example
                 .locator(
-                    'button[tuiButton], button[tuiIconButton], button[data-automation-id], button:not([type="submit"])',
+                    '[tuiDropdown][tuiButton], [tuiDropdown][tuiLink], [tuiDropdown][tuiChevron], [tuiDropdown]:not(tui-data-list-wrapper)',
                 )
                 .first();
             await btn.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
@@ -94,16 +95,33 @@ function filterOps(total: number): Op[] {
     const seq = 'abcd';
     return repeat(total, (i) => [
         async (_page, {example}) => {
-            const input = example
-                .locator('input[tuiTextfield], input[type="text"], input[placeholder]')
-                .first();
-            await input.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
-            await input.fill('');
+            // Target known dropdown-related textfield patterns from directive examples
+            const candidates = example.locator(
+                [
+                    'tui-textfield input',
+                    'tui-combo-box input',
+                    'tui-multi-select input',
+                    'input[tuiSelect]',
+                    'input[tuiInputNumber]',
+                    'tui-input input',
+                ].join(', '),
+            );
+            const input = candidates.first();
+            if (!(await input.isVisible().catch(() => false))) {
+                return;
+            }
+            // Ensure potential dropdown panel opens (click/focus pattern)
+            await input.click({timeout: 1000}).catch(() => {});
+            await input.focus().catch(() => {});
             const ch = seq[i % seq.length] || 'a';
+            // Clear via select-all/backspace sequence (more universal than fill for some masked fields)
+            await input.press('Control+A').catch(() => {});
+            await input.press('Backspace').catch(() => {});
             await input.type(ch, {delay: 2}).catch(() => {});
             if (i % 3 === 0) {
                 await input.press('Backspace').catch(() => {});
             }
+            // Light blur/focus cycle to mimic user moving away and returning
             await input.blur().catch(() => {});
             await input.focus().catch(() => {});
         },
