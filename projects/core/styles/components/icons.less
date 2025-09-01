@@ -30,40 +30,34 @@
         font-size: 1.5rem;
         flex-shrink: 0;
         box-sizing: content-box;
+        background: currentColor;
     }
 
     &::before {
         display: var(--t-icon-start, none);
+        mask: var(--t-icon-start) no-repeat center/contain padding-box;
     }
 
     &::after {
         display: var(--t-icon-end, none);
-    }
-
-    &[data-icon-start='svg']::before,
-    &[data-icon-end='svg']::after {
-        background: currentColor;
-    }
-
-    &[data-icon-start='svg']::before {
-        mask: var(--t-icon-start) no-repeat center/contain padding-box;
-    }
-
-    &[data-icon-end='svg']::after {
         mask: var(--t-icon-end) no-repeat center/contain padding-box;
     }
 
     &[data-icon-start='image']::before {
+        mask: none;
         background: var(--t-icon-start) no-repeat center/contain padding-box;
     }
 
     &[data-icon-end='image']::after {
+        mask: none;
         background: var(--t-icon-end) no-repeat center/contain padding-box;
     }
 
     &[data-icon-start='font']::before,
     &[data-icon-end='font']::after {
         display: grid;
+        mask: none;
+        background: none;
         font: 1.3em/1 var(--tui-font-icon, inherit);
         text-align: center;
         place-content: center;

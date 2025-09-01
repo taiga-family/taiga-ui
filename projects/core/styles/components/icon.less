@@ -42,19 +42,19 @@ tui-icon {
 
         content: '';
         display: block;
-    }
-
-    &[data-icon='svg']::after {
         mask: var(--t-icon) no-repeat center/contain;
         background: currentColor;
     }
 
     &[data-icon='image']::after {
+        mask: none;
         background: var(--t-icon) no-repeat center/contain;
     }
 
     &[data-icon='font']::after {
         content: var(--t-icon);
+        mask: none;
+        background: none;
         font: 1em/1 var(--tui-font-icon, inherit);
         text-align: center;
         text-transform: none;
