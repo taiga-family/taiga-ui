@@ -1,44 +1,58 @@
-/* eslint-disable */
 import {DemoRoute} from '@demo/routes';
 import {
     PerformanceCollector,
     TuiDocumentationPagePO,
     tuiGoto,
 } from '@demo-playwright/utils';
-import {expect, test, type Locator, type Page} from '@playwright/test';
+import {expect, type Locator, type Page, test} from '@playwright/test';
+
+interface ScrollCtx {
+    sc: Locator;
+}
+
+interface ScrollScenario {
+    label: string;
+    repeats: number;
+    run: (page: Page, ctx: ScrollCtx) => Promise<void>;
+}
 
 type Action = (page: Page, scrollbar: Locator) => Promise<void>;
 
-// Deterministic amplification factor (caps to avoid runaway CI time)
-const LAYOUT_AMPLIFY = Math.min(
-    8,
-    Math.max(1, Number(process.env.PERF_LAYOUT_AMPLIFY || '1')),
+const INTENSITY = Math.max(
+    1,
+    Number(
+        process.env.STRESS_INTENSITY ||
+            process.env.PERF_STRESS_FACTOR ||
+            process.env.PERF_LAYOUT_AMPLIFY ||
+            '1',
+    ),
 );
 
-function repeat<T>(count: number, builder: (i: number) => T[]): T[] {
-    const out: T[] = [];
-    for (let i = 0; i < count; i++) {
-        out.push(...builder(i));
-    }
-    return out;
-}
+const LAYOUT_AMPLIFY = Math.min(8, INTENSITY);
+const LOOPS = 1; // keep parity with original per-test single run
 
 function buildActions(count: number, builder: (i: number) => Action[]): Action[] {
     const all: Action[] = [];
+
     for (let i = 0; i < count; i++) {
         all.push(...builder(i));
     }
+
     return all;
 }
 
 function scrollMutationActions(factor: number): Action[] {
     const total = Math.round(90 * factor * LAYOUT_AMPLIFY);
     const stepHeights = [40, 80, 120, 160, 200, 240, 280, 320];
+
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate(
                 (el: Element, params: {top: number}) => {
-                    if (!(el instanceof HTMLElement)) return;
+                    if (!(el instanceof HTMLElement)) {
+                        return;
+                    }
+
                     el.scrollTop = params.top;
                     void el.scrollHeight;
                     void el.clientHeight;
@@ -51,16 +65,21 @@ function scrollMutationActions(factor: number): Action[] {
 
 function memoryActions(factor: number): Action[] {
     const total = Math.round(60 * factor * LAYOUT_AMPLIFY);
+
     return buildActions(total, () => [
         async (page, sc) => {
             await page.evaluate(() => {
                 const mem = new Array(10)
                     .fill(0)
                     .map((_, idx) => new Array(300).fill(idx));
+
                 void mem.length;
             });
             await sc.evaluate((el: Element) => {
-                if (!(el instanceof HTMLElement)) return;
+                if (!(el instanceof HTMLElement)) {
+                    return;
+                }
+
                 el.scrollTop = (el.scrollTop + 24) % (el.scrollHeight || 1);
                 el.style.padding = '2px';
                 void el.offsetHeight;
@@ -71,6 +90,7 @@ function memoryActions(factor: number): Action[] {
 
 function themeActions(factor: number): Action[] {
     const total = Math.round(30 * factor * LAYOUT_AMPLIFY); // reduced to cut variance
+
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate(
@@ -103,14 +123,20 @@ function resizeActions(factor: number): Action[] {
     const total = Math.round(40 * factor * LAYOUT_AMPLIFY);
     const widths = [300, 308, 316, 324, 332, 340];
     const heights = [220, 224, 228, 232, 236];
+
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate(
                 (el: Element, params: {w: number; h: number; s: number}) => {
-                    if (!(el instanceof HTMLElement)) return;
-                    const host = (el.closest('.box') as HTMLElement) || el;
-                    host.style.width = params.w + 'px';
-                    host.style.height = params.h + 'px';
+                    if (!(el instanceof HTMLElement)) {
+                        return;
+                    }
+
+                    const found = el.closest('.box') || el;
+                    const host = found as HTMLElement;
+
+                    host.style.width = `${params.w}px`;
+                    host.style.height = `${params.h}px`;
                     el.scrollTop = (el.scrollTop + params.s) % (el.scrollHeight || 1);
                     void host.offsetHeight;
                 },
@@ -128,17 +154,24 @@ function layoutAmplifierActions(factor: number): Action[] {
     const total = Math.round(120 * factor * LAYOUT_AMPLIFY);
     const widths = [320, 326, 332, 338];
     const heights = [240, 244, 248];
+
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate(
                 (el: Element, params: {w: number; h: number}) => {
-                    if (!(el instanceof HTMLElement)) return;
-                    const host = el.closest('.box') || el;
-                    if (host instanceof HTMLElement) {
-                        host.style.width = params.w + 'px';
-                        host.style.height = params.h + 'px';
-                        void host.offsetHeight;
+                    if (!(el instanceof HTMLElement)) {
+                        return;
                     }
+
+                    const host = el.closest('.box') || el;
+
+                    if (!(host instanceof HTMLElement)) {
+                        return;
+                    }
+
+                    host.style.width = `${params.w}px`;
+                    host.style.height = `${params.h}px`;
+                    void host.offsetHeight;
                 },
                 {w: widths[i % widths.length]!, h: heights[i % heights.length]!},
             );
@@ -150,21 +183,35 @@ function horizontalRtlActions(factor: number): Action[] {
     const total = Math.round(70 * factor * LAYOUT_AMPLIFY);
     const dirs = ['ltr', 'rtl'];
     const widths = [800, 850, 900, 950];
+
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate(
                 (el: Element, params: {dir: string; w: number}) => {
-                    if (!(el instanceof HTMLElement)) return;
+                    if (!(el instanceof HTMLElement)) {
+                        return;
+                    }
+
                     el.dir = params.dir;
-                    let wide = el.querySelector('.wide-track') as HTMLElement | null;
+                    const wideEl = el.querySelector('.wide-track');
+                    let wide: HTMLElement | null = null;
+
+                    if (wideEl instanceof HTMLElement) {
+                        wide = wideEl;
+                    }
+
                     if (!wide) {
                         wide = document.createElement('div');
                         wide.className = 'wide-track';
                         el.appendChild(wide);
                     }
-                    wide.style.width = params.w + 'px';
-                    wide.style.height = '12px';
-                    el.scrollLeft = (el.scrollLeft + 60) % (wide.scrollWidth || 1);
+
+                    if (wide) {
+                        wide.style.width = `${params.w}px`;
+                        wide.style.height = '12px';
+                        el.scrollLeft = (el.scrollLeft + 60) % (wide.scrollWidth || 1);
+                    }
+
                     void el.offsetWidth;
                 },
                 {dir: dirs[i % dirs.length]!, w: widths[i % widths.length]!},
@@ -179,6 +226,7 @@ function nestedScrollActions(factor: number): Action[] {
     const innerStep = 29;
     const borders = [0, 1, 2];
     const paddings = [4, 5, 6, 7];
+
     return buildActions(total, (i) => [
         async (_p, sc) => {
             await sc.evaluate(
@@ -192,28 +240,37 @@ function nestedScrollActions(factor: number): Action[] {
                         paddings: number[];
                     },
                 ) => {
-                    if (!(el instanceof HTMLElement)) return;
-                    let inner = el.querySelector('.inner-scroll') as HTMLElement | null;
+                    if (!(el instanceof HTMLElement)) {
+                        return;
+                    }
+
+                    const innerEl = el.querySelector('.inner-scroll');
+                    let inner: HTMLElement | null = null;
+
+                    if (innerEl instanceof HTMLElement) {
+                        inner = innerEl;
+                    }
+
                     if (!inner) {
                         inner = document.createElement('div');
                         inner.className = 'inner-scroll';
                         inner.style.cssText = 'height:160px;overflow:auto;';
                         const filler = document.createElement('div');
+
                         filler.style.height = '900px';
                         filler.textContent = 'inner';
                         inner.appendChild(filler);
                         el.appendChild(inner);
                     }
+
                     inner.scrollTop =
                         (inner.scrollTop + params.innerStep) %
                         (inner.scrollHeight - inner.clientHeight || 1);
                     el.scrollTop =
                         (el.scrollTop + params.outerStep) %
                         (el.scrollHeight - el.clientHeight || 1);
-                    el.style.borderWidth =
-                        params.borders[params.i % params.borders.length] + 'px';
-                    el.style.padding =
-                        params.paddings[params.i % params.paddings.length] + 'px';
+                    el.style.borderWidth = `${params.borders[params.i % params.borders.length]}px`;
+                    el.style.padding = `${params.paddings[params.i % params.paddings.length]}px`;
                     void el.offsetHeight;
                 },
                 {i, innerStep, outerStep, borders, paddings},
@@ -224,22 +281,30 @@ function nestedScrollActions(factor: number): Action[] {
 
 function bulkFragmentActions(factor: number): Action[] {
     const total = Math.round(20 * factor * LAYOUT_AMPLIFY);
+
     return buildActions(total, () => [
         async (_p, sc) => {
             await sc.evaluate((el: Element) => {
-                if (!(el instanceof HTMLElement)) return;
+                if (!(el instanceof HTMLElement)) {
+                    return;
+                }
+
                 const targetSize = 320;
                 const batchAdd = 10;
                 const batchRemove = 10;
                 const frag = document.createDocumentFragment();
+
                 for (let k = 0; k < batchAdd; k++) {
                     const d = document.createElement('div');
+
                     d.textContent = 'd';
                     d.style.cssText = 'height:10px';
                     frag.appendChild(d);
                 }
+
                 el.appendChild(frag);
                 let removed = 0;
+
                 while (
                     removed < batchRemove &&
                     el.firstChild &&
@@ -248,10 +313,46 @@ function bulkFragmentActions(factor: number): Action[] {
                     el.removeChild(el.firstChild);
                     removed++;
                 }
-                void (el as HTMLElement).offsetHeight;
+
+                void el.offsetHeight;
             });
         },
     ]);
+}
+
+async function runScenarioLoop(
+    page: Page,
+    name: string,
+    list: ScrollScenario[],
+    ctx: ScrollCtx,
+): Promise<void> {
+    await PerformanceCollector.startTestCollection(page, name, __filename);
+
+    for (let loop = 0; loop < LOOPS; loop++) {
+        for (const scenario of list) {
+            for (let r = 0; r < scenario.repeats; r++) {
+                await scenario.run(page, ctx);
+            }
+        }
+    }
+
+    await PerformanceCollector.stopTestCollection(page, name);
+}
+
+function scenarioFromActions(
+    label: string,
+    actions: Action[],
+    repeats = 1,
+): ScrollScenario {
+    return {
+        label,
+        repeats,
+        async run(page, ctx) {
+            for (const a of actions) {
+                await a(page, ctx.sc);
+            }
+        },
+    };
 }
 
 test.describe('TuiScrollbar Stress Tests', () => {
@@ -265,186 +366,148 @@ test.describe('TuiScrollbar Stress Tests', () => {
     test('scroll + mutation deterministic stress test', async ({page}) => {
         const ex = docPage.getExample('#vertical');
         const sc = ex.locator('tui-scrollbar');
+
         await sc.scrollIntoViewIfNeeded();
         await expect(sc).toBeVisible();
-        const actions = scrollMutationActions(
-            Number(process.env.PERF_STRESS_FACTOR || '1'),
-        );
-        await PerformanceCollector.startTestCollection(
-            page,
-            'scrollbar-scroll-mutation-stress',
-            __filename,
-        );
-        for (const a of actions) await a(page, sc);
-        await page.waitForTimeout(50);
-        await PerformanceCollector.stopTestCollection(
-            page,
-            'scrollbar-scroll-mutation-stress',
-        );
+        const ctx: ScrollCtx = {sc};
+        const scenarios: ScrollScenario[] = [
+            scenarioFromActions('scroll-mutation', scrollMutationActions(INTENSITY), 1),
+        ];
+
+        await runScenarioLoop(page, 'scrollbar-scroll-mutation-stress', scenarios, ctx);
         const top = await sc.evaluate((el) => (el as HTMLElement).scrollTop);
+
         expect(top).toBeGreaterThan(0);
     });
 
     test('memory pressure during scrolling stress test', async ({page}) => {
         const ex = docPage.getExample('#vertical');
         const sc = ex.locator('tui-scrollbar');
+
         await sc.scrollIntoViewIfNeeded();
         await expect(sc).toBeVisible();
-        const actions = memoryActions(Number(process.env.PERF_STRESS_FACTOR || '1'));
-        await PerformanceCollector.startTestCollection(
-            page,
-            'scrollbar-memory-pressure-stress',
-            __filename,
-        );
-        for (const a of actions) await a(page, sc);
-        await page.waitForTimeout(70);
-        await PerformanceCollector.stopTestCollection(
-            page,
-            'scrollbar-memory-pressure-stress',
-        );
+        const ctx: ScrollCtx = {sc};
+        const scenarios: ScrollScenario[] = [
+            scenarioFromActions('memory', memoryActions(INTENSITY), 1),
+        ];
+
+        await runScenarioLoop(page, 'scrollbar-memory-pressure-stress', scenarios, ctx);
         const ok = await sc.evaluate(
             (el) => (el as HTMLElement).scrollHeight > (el as HTMLElement).clientHeight,
         );
+
         expect(ok).toBe(true);
     });
 
     test('theme switching during scroll stress test', async ({page}) => {
         const ex = docPage.getExample('#light-scrollbar');
         const sc = ex.locator('tui-scrollbar');
+
         await sc.scrollIntoViewIfNeeded();
         await expect(sc).toBeVisible();
-        const actions = themeActions(Number(process.env.PERF_STRESS_FACTOR || '2'));
-        await PerformanceCollector.startTestCollection(
-            page,
-            'scrollbar-theme-switching-stress',
-            __filename,
-        );
-        for (const a of actions) await a(page, sc);
-        await page.waitForTimeout(70);
-        await PerformanceCollector.stopTestCollection(
-            page,
-            'scrollbar-theme-switching-stress',
-        );
+        const ctx: ScrollCtx = {sc};
+        const scenarios: ScrollScenario[] = [
+            scenarioFromActions('theme', themeActions(INTENSITY * 2), 1),
+        ];
+
+        await runScenarioLoop(page, 'scrollbar-theme-switching-stress', scenarios, ctx);
         const display = await sc.evaluate(
             (el) => getComputedStyle(el as HTMLElement).display,
         );
+
         expect(display).not.toBe('none');
     });
 
     test('rapid resize during scroll stress test', async ({page}) => {
         const ex = docPage.getExample('#vertical');
         const sc = ex.locator('tui-scrollbar');
+
         await sc.scrollIntoViewIfNeeded();
         await expect(sc).toBeVisible();
-        const actions = resizeActions(Number(process.env.PERF_STRESS_FACTOR || '1'));
-        await PerformanceCollector.startTestCollection(
-            page,
-            'scrollbar-resize-stress',
-            __filename,
-        );
-        for (const a of actions) await a(page, sc);
-        await page.waitForTimeout(70);
-        await PerformanceCollector.stopTestCollection(page, 'scrollbar-resize-stress');
+        const ctx: ScrollCtx = {sc};
+        const scenarios: ScrollScenario[] = [
+            scenarioFromActions('resize', resizeActions(INTENSITY), 1),
+        ];
+
+        await runScenarioLoop(page, 'scrollbar-resize-stress', scenarios, ctx);
         const hasScroll = await sc.evaluate(
             (el) => (el as HTMLElement).scrollHeight > (el as HTMLElement).clientHeight,
         );
+
         expect(hasScroll).toBe(true);
     });
 
     test('layout amplifier stress test', async ({page}) => {
         const ex = docPage.getExample('#vertical');
         const sc = ex.locator('tui-scrollbar');
+
         await sc.scrollIntoViewIfNeeded();
         await expect(sc).toBeVisible();
-        const factor = Number(process.env.PERF_STRESS_FACTOR || '1') * 1.5;
-        const actions = layoutAmplifierActions(factor);
-        await PerformanceCollector.startTestCollection(
-            page,
-            'scrollbar-layout-amplifier-stress',
-            __filename,
-        );
-        for (const a of actions) await a(page, sc);
-        await page.waitForTimeout(60);
-        await PerformanceCollector.stopTestCollection(
-            page,
-            'scrollbar-layout-amplifier-stress',
-        );
+        const ctx: ScrollCtx = {sc};
+        const scenarios: ScrollScenario[] = [
+            scenarioFromActions('layout', layoutAmplifierActions(INTENSITY * 1.5), 1),
+        ];
+
+        await runScenarioLoop(page, 'scrollbar-layout-amplifier-stress', scenarios, ctx);
         const width = await sc.evaluate(
             (el) => (el as HTMLElement).getBoundingClientRect().width,
         );
+
         expect(width).toBeGreaterThan(0);
     });
 
     test('horizontal + rtl scrolling stress test', async ({page}) => {
         const ex = docPage.getExample('#vertical');
         const sc = ex.locator('tui-scrollbar');
+
         await sc.scrollIntoViewIfNeeded();
         await expect(sc).toBeVisible();
-        const actions = horizontalRtlActions(
-            Number(process.env.PERF_STRESS_FACTOR || '1'),
-        );
-        await PerformanceCollector.startTestCollection(
-            page,
-            'scrollbar-horizontal-rtl-stress',
-            __filename,
-        );
-        for (const a of actions) await a(page, sc);
-        await page.waitForTimeout(50);
-        await PerformanceCollector.stopTestCollection(
-            page,
-            'scrollbar-horizontal-rtl-stress',
-        );
+        const ctx: ScrollCtx = {sc};
+        const scenarios: ScrollScenario[] = [
+            scenarioFromActions('horizontal-rtl', horizontalRtlActions(INTENSITY), 1),
+        ];
+
+        await runScenarioLoop(page, 'scrollbar-horizontal-rtl-stress', scenarios, ctx);
         const dir = await sc.evaluate((el) => (el as HTMLElement).dir || 'ltr');
+
         expect(['ltr', 'rtl']).toContain(dir);
     });
 
     test('nested scroll containers stress test', async ({page}) => {
         const ex = docPage.getExample('#vertical');
         const sc = ex.locator('tui-scrollbar');
+
         await sc.scrollIntoViewIfNeeded();
         await expect(sc).toBeVisible();
-        const actions = nestedScrollActions(
-            Number(process.env.PERF_STRESS_FACTOR || '1'),
-        );
-        await PerformanceCollector.startTestCollection(
-            page,
-            'scrollbar-nested-scroll-stress',
-            __filename,
-        );
-        for (const a of actions) await a(page, sc);
-        await page.waitForTimeout(60);
-        await PerformanceCollector.stopTestCollection(
-            page,
-            'scrollbar-nested-scroll-stress',
-        );
+        const ctx: ScrollCtx = {sc};
+        const scenarios: ScrollScenario[] = [
+            scenarioFromActions('nested', nestedScrollActions(INTENSITY), 1),
+        ];
+
+        await runScenarioLoop(page, 'scrollbar-nested-scroll-stress', scenarios, ctx);
         const innerCount = await sc.evaluate(
             (el) => (el as HTMLElement).querySelectorAll('.inner-scroll').length,
         );
+
         expect(innerCount).toBeGreaterThanOrEqual(1);
     });
 
     test('bulk fragment insert/remove stress test', async ({page}) => {
         const ex = docPage.getExample('#vertical');
         const sc = ex.locator('tui-scrollbar');
+
         await sc.scrollIntoViewIfNeeded();
         await expect(sc).toBeVisible();
-        const actions = bulkFragmentActions(
-            Number(process.env.PERF_STRESS_FACTOR || '1'),
-        );
-        await PerformanceCollector.startTestCollection(
-            page,
-            'scrollbar-bulk-fragment-stress',
-            __filename,
-        );
-        for (const a of actions) await a(page, sc);
-        await page.waitForTimeout(70);
-        await PerformanceCollector.stopTestCollection(
-            page,
-            'scrollbar-bulk-fragment-stress',
-        );
+        const ctx: ScrollCtx = {sc};
+        const scenarios: ScrollScenario[] = [
+            scenarioFromActions('fragment', bulkFragmentActions(INTENSITY), 1),
+        ];
+
+        await runScenarioLoop(page, 'scrollbar-bulk-fragment-stress', scenarios, ctx);
         const childCount = await sc.evaluate(
             (el) => (el as HTMLElement).childNodes.length,
         );
+
         expect(childCount).toBeGreaterThan(0);
     });
 });

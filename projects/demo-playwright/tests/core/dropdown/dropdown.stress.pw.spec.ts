@@ -259,11 +259,7 @@ async function runScenarioLoop(
     list: StressScenario[],
     ctx: DropdownCtx,
 ): Promise<void> {
-    const skipCollector = process.env.PERF_SKIP_COLLECTOR === '1';
-
-    if (!skipCollector) {
-        await PerformanceCollector.startTestCollection(page, name, __filename);
-    }
+    await PerformanceCollector.startTestCollection(page, name, __filename);
 
     for (let loop = 0; loop < LOOPS; loop++) {
         for (const scenario of list) {
@@ -284,9 +280,7 @@ async function runScenarioLoop(
             .catch(() => {});
     }
 
-    if (!skipCollector) {
-        await PerformanceCollector.stopTestCollection(page, name);
-    }
+    await PerformanceCollector.stopTestCollection(page, name);
 }
 
 test.describe('Dropdown Stress Tests', () => {
