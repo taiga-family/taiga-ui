@@ -391,16 +391,43 @@ export class PerformanceCollector {
      * Stabilizes page state before performance measurement to reduce variance
      */
     private static async stabilizePage(page: Page): Promise<void> {
+        const start = Date.now();
+        const timeoutMs = 3000;
+        let networkIdleReached = false;
+
         try {
-            await page.waitForLoadState('networkidle');
+            await Promise.race([
+                (async () => {
+                    await page.waitForLoadState('domcontentloaded');
+                    await page.waitForLoadState('networkidle');
+                    networkIdleReached = true;
+                })(),
+                page.waitForTimeout(timeoutMs),
+            ]);
+        } catch {}
+
+        try {
             await page.evaluate(async () => {
                 await new Promise<void>((resolve) =>
-                    requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+                    requestAnimationFrame(() =>
+                        requestAnimationFrame(() =>
+                            requestAnimationFrame(() => {
+                                resolve();
+                            }),
+                        ),
+                    ),
                 );
             });
-            await page.waitForTimeout(20);
-        } catch (error) {
-            console.warn('Page stabilization failed:', error);
+        } catch {}
+
+        try {
+            await page.waitForTimeout(40);
+        } catch {}
+
+        if (!networkIdleReached) {
+            console.warn(
+                `Page stabilization bounded: networkidle not reached within ${Date.now() - start}ms; proceeding`,
+            );
         }
     }
 
