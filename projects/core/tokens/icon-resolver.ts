@@ -4,10 +4,7 @@ import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {TUI_ASSETS_PATH} from './assets-path';
 import {TUI_ICON_REGISTRY} from './icons';
 
-const ICON_MODE_PREFIXES = {
-    font: '@font.',
-    image: '@img.',
-} as const;
+const ICON_MODE_PREFIXES = {font: '@font.', image: '@img.'} as const;
 
 export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
     ngDevMode ? 'TUI_ICON_RESOLVER' : '',
@@ -39,9 +36,7 @@ export function tuiGetIconMode(icon?: string | null): 'font' | 'image' | 'svg' |
         return 'image';
     }
 
-    return icon.startsWith(ICON_MODE_PREFIXES.font)
-        ? 'font'
-        : 'svg';
+    return icon.startsWith(ICON_MODE_PREFIXES.font) ? 'font' : 'svg';
 }
 
 export function tuiInjectIconResolver(): TuiStringHandler<string> {
