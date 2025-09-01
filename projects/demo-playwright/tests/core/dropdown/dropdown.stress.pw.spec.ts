@@ -54,21 +54,24 @@ function buildOpenCloseOps(count: number): Op[] {
                 return;
             }
             // Prefer an element explicitly acting as a dropdown trigger
-            const btn = example
+            const trigger = example
                 .locator(
-                    '[tuiDropdown][tuiButton], [tuiDropdown][tuiLink], [tuiDropdown][tuiChevron], [tuiDropdown]:not(tui-data-list-wrapper)',
+                    '[tuiDropdown][tuiDropdownManual][tuiButton], [tuiDropdown][tuiDropdownManual][tuiLink], [tuiDropdown][tuiDropdownManual][tuiChevron], button[tuiButton][tuiDropdown][tuiDropdownManual]',
                 )
                 .first();
-            await btn.waitFor({state: 'visible', timeout: 1500}).catch(() => {});
-            await btn.click({timeout: 800}).catch(() => {});
-            await page
-                .locator('tui-dropdown')
-                .first()
-                .waitFor({state: 'visible', timeout: 1200})
-                .catch(() => {});
-            await page.waitForTimeout(10).catch(() => {});
-            await page.keyboard.press('Escape').catch(() => {});
+            const visible = await trigger.isVisible().catch(() => false);
+            if (!visible) {
+                return;
+            }
+            await trigger.click({timeout: 800}).catch(() => {});
+            const panel = page.locator('tui-dropdown').first();
+            await panel.waitFor({state: 'visible', timeout: 600}).catch(() => {});
             await page.waitForTimeout(6).catch(() => {});
+            await page.keyboard.press('Escape').catch(() => {});
+            await page.waitForTimeout(4).catch(() => {});
+            if (await panel.isVisible().catch(() => false)) {
+                await trigger.click({timeout: 600}).catch(() => {});
+            }
         },
     ]);
 }
