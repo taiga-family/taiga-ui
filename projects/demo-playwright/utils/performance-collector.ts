@@ -62,10 +62,13 @@ export class PerformanceCollector {
                 await this.stabilizePage(page);
                 const client = await page.context().newCDPSession(page);
                 const events: PerformanceEvent[] = [];
+                const rawEvents: PerformanceEvent[] = [];
 
                 client.on('Tracing.dataCollected', (data: any) => {
                     if (data.value && Array.isArray(data.value)) {
                         for (const ev of data.value as PerformanceEvent[]) {
+                            rawEvents.push(ev);
+
                             if (this.isRelevantEvent(ev)) {
                                 events.push(ev);
                             }
@@ -80,12 +83,10 @@ export class PerformanceCollector {
                         recordMode: 'recordContinuously',
                         includedCategories: [
                             'devtools.timeline',
-                            'disabled-by-default-devtools.timeline',
                             'toplevel',
                             'blink.user_timing',
                         ],
                         excludedCategories: [
-                            'disabled-by-default*',
                             'devtools.screenshot',
                             'v8.execute',
                             'v8.compile',
@@ -93,7 +94,7 @@ export class PerformanceCollector {
                         ],
                     },
                 });
-                await page.waitForTimeout(50);
+                await page.waitForTimeout(80);
                 await page.evaluate(async () => {
                     await new Promise<void>((resolve) =>
                         requestAnimationFrame(() => resolve()),
@@ -184,22 +185,23 @@ export class PerformanceCollector {
                 );
             }
 
-            const rawEvents = collection.events.length;
+            const rawEventsCount = collection.events.length;
             const totalOps = metrics.layoutCount + metrics.recalcStyleCount;
-            const opsPerKEvents = rawEvents > 0 ? (totalOps / rawEvents) * 1000 : 0;
-
+            const opsPerKEvents =
+                rawEventsCount > 0 ? (totalOps / rawEventsCount) * 1000 : 0;
             // Save metrics to file
+
             await this.saveTestMetrics({
                 metrics,
                 testName,
                 url: page.url(),
                 startTime: collection.startTime,
                 testFile: collection.testFile,
-                extras: {rawEvents, opsPerKEvents},
+                extras: {rawEvents: rawEventsCount, opsPerKEvents},
             });
 
             console.info(`📊 Test performance metrics for [${testName}]:`, {
-                rawEvents,
+                rawEvents: rawEventsCount,
                 layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
                 recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
                 opsPerKEvents: Number(opsPerKEvents.toFixed(2)),
@@ -450,25 +452,16 @@ export class PerformanceCollector {
         }
 
         // Focus on layout and style events that are relevant to our measurements
-        const relevantEvents = [
-            'Layout',
-            'RecalculateStyles',
-            'ScheduleStyleRecalculation',
-            'UpdateLayoutTree',
-            'InvalidateLayout',
-            'LayoutShift',
-            'Paint',
-            'CompositeLayers',
-        ];
+        const name = event.name;
+        const cat = event.cat || '';
 
-        // Include devtools.timeline events for main measurements
-        if (event.cat?.includes('devtools.timeline')) {
-            return relevantEvents.includes(event.name);
-        }
+        const timeline = cat.includes('devtools.timeline');
+        const blink = cat.includes('blink');
 
-        // Include blink events that are style-related
-        if (event.cat?.includes('blink')) {
-            return event.name.includes('Style') || event.name.includes('Layout');
+        if (timeline || blink) {
+            if (/Layout|Style|Paint|Composite|UpdateLayerTree|Frame/i.test(name)) {
+                return true;
+            }
         }
 
         return false;
