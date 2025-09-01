@@ -364,6 +364,9 @@
     <loc>https://taiga-ui.dev/components/notification/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/notification-middle/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/push/</loc>
   </url>
   <url>
@@ -1340,6 +1343,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/notification/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/notification-middle/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/notification-middle/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/push/API/</loc>
