@@ -8705,6 +8705,76 @@ export default class Page {
 ```
 
 ---
+# components/NotificationMiddle
+- **Package**: `KIT`
+- **Type**: components
+A modal component to indicate an ongoing blocking action
+
+### How to Use (Import)
+
+```ts
+import {TuiNotificationMiddle} from '@taiga-ui/kit';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiNotificationMiddle,
+  ],
+  // ...
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<ng-template [(tuiNotificationMiddle)]="open">Loader with text</ng-template>
+```
+
+### Example
+
+```html
+<button tuiButton type="button" (click)="open.set(true)" > Show </button>
+<ng-template [tuiNotificationMiddle]="open()" [tuiNotificationMiddleOptions]="{closable: closable}" (tuiNotificationMiddleChange)="open.set($event)" > Notification example <button size="s" tuiButton type="button" (click)="open.set(false)" > Close </button>
+</ng-template>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| [closable] | `boolean` | Whether the notification can be closed by the user taping outside or pressing Escape |
+
+### TypeScript
+
+```ts
+import {Component, signal, ViewEncapsulation} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+import {TuiButton} from '@taiga-ui/core';
+import {TuiNotificationMiddle} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [TuiButton, TuiDemo, TuiNotificationMiddle],
+    templateUrl: './index.html',
+    encapsulation: ViewEncapsulation.None,
+    changeDetection,
+})
+export default class Page {
+    protected routes = DemoRoute;
+    protected readonly examples = ['Default', 'Content', 'Transition', 'Service'];
+    protected readonly open = signal(false);
+
+    protected closable = false;
+}
+```
+
+---
 # components/Pager
 - **Package**: `KIT`
 - **Type**: components
