@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[46371],{46371:e=>{e.exports='```html\n<ng-template [(tuiNotificationMiddle)]="open">Loader with text</ng-template>\n```\n'}}]);
