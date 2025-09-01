@@ -409,13 +409,7 @@ export class PerformanceCollector {
         try {
             await page.evaluate(async () => {
                 await new Promise<void>((resolve) =>
-                    requestAnimationFrame(() =>
-                        requestAnimationFrame(() =>
-                            requestAnimationFrame(() => {
-                                resolve();
-                            }),
-                        ),
-                    ),
+                    requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
                 );
             });
         } catch {}
