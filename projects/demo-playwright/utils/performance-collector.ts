@@ -80,6 +80,7 @@ export class PerformanceCollector {
                         recordMode: 'recordContinuously',
                         includedCategories: [
                             'devtools.timeline',
+                            'disabled-by-default-devtools.timeline',
                             'toplevel',
                             'blink.user_timing',
                         ],
@@ -92,7 +93,7 @@ export class PerformanceCollector {
                         ],
                     },
                 });
-                await page.waitForTimeout(25);
+                await page.waitForTimeout(50);
                 await page.evaluate(async () => {
                     await new Promise<void>((resolve) =>
                         requestAnimationFrame(() => resolve()),

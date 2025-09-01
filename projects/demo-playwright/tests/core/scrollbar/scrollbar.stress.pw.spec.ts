@@ -4,525 +4,597 @@ import {
     TuiDocumentationPagePO,
     tuiGoto,
 } from '@demo-playwright/utils';
-import {expect, type Locator, type Page, test} from '@playwright/test';
-
-interface ScrollCtx {
-    sc: Locator;
-}
-
-interface ScrollScenario {
-    label: string;
-    repeats: number;
-    run: (page: Page, ctx: ScrollCtx) => Promise<void>;
-}
-
-type Action = (page: Page, scrollbar: Locator) => Promise<void>;
-
-const INTENSITY = Math.max(
-    1,
-    Number(
-        process.env.STRESS_INTENSITY ||
-            process.env.PERF_STRESS_FACTOR ||
-            process.env.PERF_LAYOUT_AMPLIFY ||
-            '1',
-    ),
-);
-
-const LAYOUT_AMPLIFY = Math.min(8, INTENSITY);
-const LOOPS = 1; // keep parity with original per-test single run
-
-function buildActions(count: number, builder: (i: number) => Action[]): Action[] {
-    const all: Action[] = [];
-
-    for (let i = 0; i < count; i++) {
-        all.push(...builder(i));
-    }
-
-    return all;
-}
-
-function scrollMutationActions(factor: number): Action[] {
-    const total = Math.round(90 * factor * LAYOUT_AMPLIFY);
-    const stepHeights = [40, 80, 120, 160, 200, 240, 280, 320];
-
-    return buildActions(total, (i) => [
-        async (_p, sc) => {
-            await sc.evaluate(
-                (el: Element, params: {top: number}) => {
-                    if (!(el instanceof HTMLElement)) {
-                        return;
-                    }
-
-                    el.scrollTop = params.top;
-                    void el.scrollHeight;
-                    void el.clientHeight;
-                },
-                {top: stepHeights[i % stepHeights.length]!},
-            );
-        },
-    ]);
-}
-
-function memoryActions(factor: number): Action[] {
-    const total = Math.round(60 * factor * LAYOUT_AMPLIFY);
-
-    return buildActions(total, () => [
-        async (page, sc) => {
-            await page.evaluate(() => {
-                const mem = new Array(10)
-                    .fill(0)
-                    .map((_, idx) => new Array(300).fill(idx));
-
-                void mem.length;
-            });
-            await sc.evaluate((el: Element) => {
-                if (!(el instanceof HTMLElement)) {
-                    return;
-                }
-
-                el.scrollTop = (el.scrollTop + 24) % (el.scrollHeight || 1);
-                el.style.padding = '2px';
-                void el.offsetHeight;
-            });
-        },
-    ]);
-}
-
-function themeActions(factor: number): Action[] {
-    const total = Math.round(30 * factor * LAYOUT_AMPLIFY); // reduced to cut variance
-
-    return buildActions(total, (i) => [
-        async (_p, sc) => {
-            await sc.evaluate(
-                (el: Element, amt: number) => {
-                    if (el instanceof HTMLElement) {
-                        el.scrollTop += amt;
-                        void el.scrollHeight;
-                    }
-                },
-                (i * 18) % 260,
-            );
-        },
-        ...(i % 8 === 0 // less frequent style class toggles
-            ? [
-                  async (_p: Page, sc: Locator) => {
-                      await sc.evaluate((el: Element) => {
-                          if (el instanceof HTMLElement) {
-                              el.classList.add('stress-t');
-                              void el.offsetHeight;
-                              el.classList.remove('stress-t');
-                          }
-                      });
-                  },
-              ]
-            : []),
-    ]);
-}
-
-function resizeActions(factor: number): Action[] {
-    const total = Math.round(40 * factor * LAYOUT_AMPLIFY);
-    const widths = [300, 308, 316, 324, 332, 340];
-    const heights = [220, 224, 228, 232, 236];
-
-    return buildActions(total, (i) => [
-        async (_p, sc) => {
-            await sc.evaluate(
-                (el: Element, params: {w: number; h: number; s: number}) => {
-                    if (!(el instanceof HTMLElement)) {
-                        return;
-                    }
-
-                    const found = el.closest('.box') || el;
-                    const host = found as HTMLElement;
-
-                    host.style.width = `${params.w}px`;
-                    host.style.height = `${params.h}px`;
-                    el.scrollTop = (el.scrollTop + params.s) % (el.scrollHeight || 1);
-                    void host.offsetHeight;
-                },
-                {
-                    w: widths[i % widths.length]!,
-                    h: heights[i % heights.length]!,
-                    s: 18,
-                },
-            );
-        },
-    ]);
-}
-
-function layoutAmplifierActions(factor: number): Action[] {
-    // Reduced to mitigate timeout risk while preserving proportional scaling
-    const total = Math.round(80 * factor * LAYOUT_AMPLIFY);
-    const widths = [320, 326, 332, 338];
-    const heights = [240, 244, 248];
-
-    return buildActions(total, (i) => [
-        async (_p, sc) => {
-            await sc.evaluate(
-                (el: Element, params: {w: number; h: number}) => {
-                    if (!(el instanceof HTMLElement)) {
-                        return;
-                    }
-
-                    const host = el.closest('.box') || el;
-
-                    if (!(host instanceof HTMLElement)) {
-                        return;
-                    }
-
-                    host.style.width = `${params.w}px`;
-                    host.style.height = `${params.h}px`;
-                    void host.offsetHeight;
-                },
-                {w: widths[i % widths.length]!, h: heights[i % heights.length]!},
-            );
-        },
-    ]);
-}
-
-function horizontalRtlActions(factor: number): Action[] {
-    // Reduced to mitigate timeout risk
-    const total = Math.round(50 * factor * LAYOUT_AMPLIFY);
-    const dirs = ['ltr', 'rtl'];
-    const widths = [800, 850, 900, 950];
-
-    return buildActions(total, (i) => [
-        async (_p, sc) => {
-            await sc.evaluate(
-                (el: Element, params: {dir: string; w: number}) => {
-                    if (!(el instanceof HTMLElement)) {
-                        return;
-                    }
-
-                    el.dir = params.dir;
-                    const wideEl = el.querySelector('.wide-track');
-                    let wide: HTMLElement | null = null;
-
-                    if (wideEl instanceof HTMLElement) {
-                        wide = wideEl;
-                    }
-
-                    if (!wide) {
-                        wide = document.createElement('div');
-                        wide.className = 'wide-track';
-                        el.appendChild(wide);
-                    }
-
-                    if (wide) {
-                        wide.style.width = `${params.w}px`;
-                        wide.style.height = '12px';
-                        el.scrollLeft = (el.scrollLeft + 60) % (wide.scrollWidth || 1);
-                    }
-
-                    void el.offsetWidth;
-                },
-                {dir: dirs[i % dirs.length]!, w: widths[i % widths.length]!},
-            );
-        },
-    ]);
-}
-
-function nestedScrollActions(factor: number): Action[] {
-    const total = Math.round(60 * factor * LAYOUT_AMPLIFY);
-    const outerStep = 17;
-    const innerStep = 29;
-    const borders = [0, 1, 2];
-    const paddings = [4, 5, 6, 7];
-
-    return buildActions(total, (i) => [
-        async (_p, sc) => {
-            await sc.evaluate(
-                (
-                    el: Element,
-                    params: {
-                        i: number;
-                        innerStep: number;
-                        outerStep: number;
-                        borders: number[];
-                        paddings: number[];
-                    },
-                ) => {
-                    if (!(el instanceof HTMLElement)) {
-                        return;
-                    }
-
-                    const innerEl = el.querySelector('.inner-scroll');
-                    let inner: HTMLElement | null = null;
-
-                    if (innerEl instanceof HTMLElement) {
-                        inner = innerEl;
-                    }
-
-                    if (!inner) {
-                        inner = document.createElement('div');
-                        inner.className = 'inner-scroll';
-                        inner.style.cssText = 'height:160px;overflow:auto;';
-                        const filler = document.createElement('div');
-
-                        filler.style.height = '900px';
-                        filler.textContent = 'inner';
-                        inner.appendChild(filler);
-                        el.appendChild(inner);
-                    }
-
-                    inner.scrollTop =
-                        (inner.scrollTop + params.innerStep) %
-                        (inner.scrollHeight - inner.clientHeight || 1);
-                    el.scrollTop =
-                        (el.scrollTop + params.outerStep) %
-                        (el.scrollHeight - el.clientHeight || 1);
-                    el.style.borderWidth = `${params.borders[params.i % params.borders.length]}px`;
-                    el.style.padding = `${params.paddings[params.i % params.paddings.length]}px`;
-                    void el.offsetHeight;
-                },
-                {i, innerStep, outerStep, borders, paddings},
-            );
-        },
-    ]);
-}
-
-function bulkFragmentActions(factor: number): Action[] {
-    const total = Math.round(20 * factor * LAYOUT_AMPLIFY);
-
-    return buildActions(total, () => [
-        async (_p, sc) => {
-            await sc.evaluate((el: Element) => {
-                if (!(el instanceof HTMLElement)) {
-                    return;
-                }
-
-                const targetSize = 320;
-                const batchAdd = 10;
-                const batchRemove = 10;
-                const frag = document.createDocumentFragment();
-
-                for (let k = 0; k < batchAdd; k++) {
-                    const d = document.createElement('div');
-
-                    d.textContent = 'd';
-                    d.style.cssText = 'height:10px';
-                    frag.appendChild(d);
-                }
-
-                el.appendChild(frag);
-                let removed = 0;
-
-                while (
-                    removed < batchRemove &&
-                    el.firstChild &&
-                    el.childNodes.length > targetSize
-                ) {
-                    el.removeChild(el.firstChild);
-                    removed++;
-                }
-
-                void el.offsetHeight;
-            });
-        },
-    ]);
-}
-
-async function runScenarioLoop(
-    page: Page,
-    name: string,
-    list: ScrollScenario[],
-    ctx: ScrollCtx,
-): Promise<void> {
-    await PerformanceCollector.startTestCollection(page, name, __filename);
-
-    for (let loop = 0; loop < LOOPS; loop++) {
-        for (const scenario of list) {
-            for (let r = 0; r < scenario.repeats; r++) {
-                if (page.isClosed()) {
-                    return;
-                }
-
-                try {
-                    await scenario.run(page, ctx);
-                } catch {
-                    return;
-                }
-            }
-        }
-    }
-
-    await PerformanceCollector.stopTestCollection(page, name);
-}
-
-function scenarioFromActions(
-    label: string,
-    actions: Action[],
-    repeats = 1,
-): ScrollScenario {
-    return {
-        label,
-        repeats,
-        async run(page, ctx) {
-            for (let i = 0; i < actions.length; i++) {
-                await actions[i]!(page, ctx.sc);
-
-                if (i > 0 && i % 200 === 0) {
-                    // Yield to avoid monopolizing event loop in very long sequences
-                    await page.waitForTimeout(0);
-                }
-            }
-        },
-    };
-}
+import {expect, test} from '@playwright/test';
 
 test.describe('TuiScrollbar Stress Tests', () => {
-    let docPage: TuiDocumentationPagePO;
+    let documentationPage: TuiDocumentationPagePO;
+
+    const createPRNG = (seed = 42): (() => number) => {
+        let state = seed % 2147483647;
+
+        if (state <= 0) {
+            state += 2147483646;
+        }
+
+        return () => {
+            state = (state * 16807) % 2147483647;
+
+            return (state - 1) / 2147483646;
+        };
+    };
 
     test.beforeEach(async ({page}) => {
         await tuiGoto(page, DemoRoute.Scrollbar);
-        docPage = new TuiDocumentationPagePO(page);
+        documentationPage = new TuiDocumentationPagePO(page);
     });
 
-    test('scroll + mutation deterministic stress test', async ({page}) => {
-        const ex = docPage.getExample('#vertical');
-        const sc = ex.locator('tui-scrollbar');
+    test.describe('High-Load Scrolling Scenarios', () => {
+        test('rapid continuous scrolling stress test', async ({page}) => {
+            const verticalExample = documentationPage.getExample('#vertical');
+            const scrollbar = verticalExample.locator('tui-scrollbar');
 
-        await sc.scrollIntoViewIfNeeded();
-        await expect(sc).toBeVisible();
-        const ctx: ScrollCtx = {sc};
-        const scenarios: ScrollScenario[] = [
-            scenarioFromActions('scroll-mutation', scrollMutationActions(INTENSITY), 1),
-        ];
+            await scrollbar.scrollIntoViewIfNeeded();
+            await expect(scrollbar).toBeVisible();
 
-        await runScenarioLoop(page, 'scrollbar-scroll-mutation-stress', scenarios, ctx);
-        const top = await sc.evaluate((el) => (el as HTMLElement).scrollTop);
+            await PerformanceCollector.startTestCollection(
+                page,
+                'scrollbar-rapid-scrolling-stress',
+                __filename,
+            );
 
-        expect(top).toBeGreaterThan(0);
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsRapid = Math.round(100 * factor);
+
+            for (let i = 0; i < iterationsRapid; i++) {
+                await scrollbar.evaluate(
+                    (el, amount) => {
+                        el.scrollTop += amount;
+                        void el.scrollHeight;
+                        void el.clientHeight;
+                    },
+                    Math.sin(i * 0.2) * 20,
+                );
+
+                if (i % 8 === 0) {
+                    await page.evaluate((iteration) => {
+                        const s = document.querySelector('tui-scrollbar');
+
+                        if (s) {
+                            const div = document.createElement('div');
+
+                            div.innerHTML = `Stress content ${iteration}`;
+                            div.style.height = '15px';
+                            div.style.padding = '2px';
+                            s.appendChild(div);
+                        }
+                    }, i);
+                }
+
+                if (i % 12 === 0) {
+                    await scrollbar.evaluate((el) => {
+                        if (el instanceof HTMLElement) {
+                            el.style.transform = 'translateZ(0)';
+                            void el.offsetHeight;
+                            el.style.transform = '';
+                        }
+                    });
+                }
+            }
+
+            await page.waitForTimeout(50);
+
+            await PerformanceCollector.stopTestCollection(
+                page,
+                'scrollbar-rapid-scrolling-stress',
+            );
+
+            const finalScrollTop = await scrollbar.evaluate((el) => el.scrollTop);
+
+            expect(finalScrollTop).toBeGreaterThan(0);
+        });
+
+        test('bulk content manipulation during scroll stress test', async ({page}) => {
+            const dynamicExample = documentationPage.getExample('#virtual-scroll');
+
+            await dynamicExample.scrollIntoViewIfNeeded();
+
+            const addButton = dynamicExample.locator('button:has-text("Add")');
+            const scrollbar = dynamicExample.locator('tui-scrollbar');
+            const viewport = dynamicExample.locator('cdk-virtual-scroll-viewport');
+
+            await expect(addButton).toBeVisible();
+            await expect(scrollbar).toBeVisible();
+
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsContent = Math.round(30 * factor);
+            const warmupIterations = Math.min(
+                5,
+                Math.max(3, Math.round(iterationsContent * 0.15)),
+            );
+
+            for (let i = 0; i < warmupIterations; i++) {
+                await addButton.click();
+                await viewport.evaluate((el, scrollTop) => {
+                    el.scrollTo({top: scrollTop, behavior: 'auto'});
+                }, i * 15);
+
+                if (i % 2 === 0) {
+                    await page.waitForTimeout(5);
+                }
+            }
+
+            await PerformanceCollector.startTestCollection(
+                page,
+                'scrollbar-content-manipulation-stress',
+                __filename,
+            );
+
+            for (let i = 0; i < iterationsContent; i++) {
+                await addButton.click();
+                await viewport.evaluate((el, scrollTop) => {
+                    el.scrollTo({top: scrollTop, behavior: 'auto'});
+                }, i * 20);
+
+                if (i % 5 === 0) {
+                    await page.waitForTimeout(10);
+                }
+            }
+
+            for (let i = 0; i < 20; i++) {
+                await viewport.evaluate((el, scrollTop) => {
+                    el.scrollTo({top: scrollTop, behavior: 'auto'});
+                }, i * 50);
+            }
+
+            await page.waitForTimeout(100);
+
+            await PerformanceCollector.stopTestCollection(
+                page,
+                'scrollbar-content-manipulation-stress',
+            );
+
+            const itemCount = await dynamicExample.locator('.example-item').count();
+
+            expect(itemCount).toBeGreaterThan(25);
+        });
+
+        test('programmatic scroll barrage stress test', async ({page}) => {
+            const allExample = documentationPage.getExample('#all');
+            const scrollbar = allExample.locator('tui-scrollbar');
+            const scrollButton = allExample.locator('button');
+
+            await scrollbar.scrollIntoViewIfNeeded();
+            await expect(scrollbar).toBeVisible();
+            await expect(scrollButton).toBeVisible();
+
+            await PerformanceCollector.startTestCollection(
+                page,
+                'scrollbar-programmatic-barrage-stress',
+                __filename,
+            );
+
+            const programmaticOperations: Array<Promise<unknown>> = [];
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsProg = Math.round(40 * factor);
+            const rand = createPRNG(321);
+
+            for (let i = 0; i < iterationsProg; i++) {
+                programmaticOperations.push(scrollButton.click());
+
+                if (i % 3 === 0) {
+                    const target = rand() * 500;
+
+                    programmaticOperations.push(
+                        scrollbar.evaluate((el, top) => {
+                            el.scrollTo({top, behavior: 'auto'});
+                        }, target),
+                    );
+                }
+
+                if (i % 8 === 0) {
+                    programmaticOperations.push(page.waitForTimeout(5));
+                }
+            }
+
+            await Promise.all(programmaticOperations);
+            await page.waitForTimeout(50);
+
+            await PerformanceCollector.stopTestCollection(
+                page,
+                'scrollbar-programmatic-barrage-stress',
+            );
+
+            await expect(scrollbar).toBeVisible();
+        });
+
+        test('multi-directional scrolling stress test', async ({page}) => {
+            const horizontalExample = documentationPage.getExample('#horizontal');
+            const scrollbar = horizontalExample.locator('tui-scrollbar');
+
+            await scrollbar.scrollIntoViewIfNeeded();
+            await expect(scrollbar).toBeVisible();
+
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsMulti = Math.round(60 * factor);
+            const warmupIterations = Math.min(
+                10,
+                Math.max(5, Math.round(iterationsMulti * 0.15)),
+            );
+            const rand = createPRNG(123);
+
+            for (let i = 0; i < warmupIterations; i++) {
+                const angle = (i * Math.PI) / 10;
+                const scrollLeft = Math.abs(Math.cos(angle)) * 150;
+                const scrollTop = Math.abs(Math.sin(angle)) * 150;
+
+                await scrollbar.evaluate(
+                    (el, {left, top}) => {
+                        el.scrollTo({left, top, behavior: 'auto'});
+                    },
+                    {left: scrollLeft, top: scrollTop},
+                );
+
+                if (i % 4 === 0) {
+                    await page.waitForTimeout(4);
+                }
+            }
+
+            await PerformanceCollector.startTestCollection(
+                page,
+                'scrollbar-multi-directional-stress',
+                __filename,
+            );
+
+            for (let i = 0; i < iterationsMulti; i++) {
+                const angle = (i * Math.PI) / 10;
+                const scrollLeft = Math.abs(Math.cos(angle)) * 200;
+                const scrollTop = Math.abs(Math.sin(angle)) * 200;
+
+                await scrollbar.evaluate(
+                    (el, {left, top}) => {
+                        el.scrollTo({left, top, behavior: 'auto'});
+                    },
+                    {left: scrollLeft, top: scrollTop},
+                );
+
+                if (i % 4 === 0) {
+                    const diagLeft = rand() * 300;
+                    const diagTop = rand() * 300;
+
+                    await scrollbar.evaluate(
+                        (el, {left, top}) => {
+                            el.scrollTo({left, top, behavior: 'auto'});
+                        },
+                        {left: diagLeft, top: diagTop},
+                    );
+                }
+
+                if (i % 12 === 0) {
+                    await page.waitForTimeout(8);
+                }
+            }
+
+            await page.waitForTimeout(100);
+
+            await PerformanceCollector.stopTestCollection(
+                page,
+                'scrollbar-multi-directional-stress',
+            );
+
+            const finalScrollLeft = await scrollbar.evaluate((el) => el.scrollLeft);
+            const finalScrollTop = await scrollbar.evaluate((el) => el.scrollTop);
+
+            expect(finalScrollLeft).toBeGreaterThanOrEqual(0);
+            expect(finalScrollTop).toBeGreaterThanOrEqual(0);
+        });
+
+        test('memory pressure during scrolling stress test', async ({page}) => {
+            const verticalExample = documentationPage.getExample('#vertical');
+            const scrollbar = verticalExample.locator('tui-scrollbar');
+
+            await scrollbar.scrollIntoViewIfNeeded();
+            await expect(scrollbar).toBeVisible();
+
+            await PerformanceCollector.startTestCollection(
+                page,
+                'scrollbar-memory-pressure-stress',
+                __filename,
+            );
+
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsMemory = Math.round(80 * factor);
+
+            for (let i = 0; i < iterationsMemory; i++) {
+                await page.evaluate((iteration) => {
+                    const tempArrays: unknown[] = [];
+
+                    for (let j = 0; j < 50; j++) {
+                        const val = ((iteration * 131 + j * 17) % 1000) / 1000;
+
+                        tempArrays.push(new Array(2000).fill(val));
+                    }
+
+                    tempArrays.length = 0;
+                }, i);
+
+                await scrollbar.evaluate(
+                    (el, scrollAmount) => {
+                        el.scrollTop += scrollAmount;
+                        void el.scrollHeight;
+                        void el.clientHeight;
+                        void el.scrollWidth;
+                    },
+                    (i * 15) % 400,
+                );
+
+                if (i % 6 === 0) {
+                    await scrollbar.evaluate((el) => {
+                        if (el instanceof HTMLElement) {
+                            const height = el.scrollHeight;
+
+                            el.style.transform = `translateZ(${height}px)`;
+                            void el.offsetHeight;
+                            el.style.transform = '';
+                        }
+                    });
+                }
+
+                if (i % 10 === 0) {
+                    await page.evaluate((iteration) => {
+                        const s = document.querySelector('tui-scrollbar');
+
+                        if (s) {
+                            const div = document.createElement('div');
+
+                            div.innerHTML = `Memory pressure content ${iteration}`;
+                            div.style.height = '12px';
+                            div.style.borderTop = '1px solid #ccc';
+                            s.appendChild(div);
+                        }
+                    }, i);
+                }
+            }
+
+            await page.waitForTimeout(100);
+
+            await PerformanceCollector.stopTestCollection(
+                page,
+                'scrollbar-memory-pressure-stress',
+            );
+
+            const isScrollable = await scrollbar.evaluate((el) => {
+                return el.scrollHeight > el.clientHeight;
+            });
+
+            expect(isScrollable).toBe(true);
+        });
+
+        test('theme switching during scroll stress test', async ({page}) => {
+            const lightScrollbarExample =
+                documentationPage.getExample('#light-scrollbar');
+            const scrollbar = lightScrollbarExample.locator('tui-scrollbar');
+
+            await scrollbar.scrollIntoViewIfNeeded();
+            await expect(scrollbar).toBeVisible();
+
+            await PerformanceCollector.startTestCollection(
+                page,
+                'scrollbar-theme-switching-stress',
+                __filename,
+            );
+
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsTheme = Math.round(60 * factor);
+
+            for (let i = 0; i < iterationsTheme; i++) {
+                await scrollbar.evaluate(
+                    (el, scrollAmount) => {
+                        el.scrollTop += scrollAmount;
+                        void el.scrollHeight;
+                        void el.clientHeight;
+                    },
+                    (i * 20) % 300,
+                );
+
+                if (i % 3 === 0) {
+                    await scrollbar.evaluate((el) => {
+                        if (el instanceof HTMLElement) {
+                            el.classList.add('stress-theme-test');
+                            el.classList.toggle('dark-theme-sim');
+                            void el.offsetHeight;
+                            el.classList.remove('stress-theme-test');
+                        }
+                    });
+                }
+
+                if (i % 5 === 0) {
+                    await scrollbar.evaluate((el) => {
+                        if (el instanceof HTMLElement) {
+                            const originalOpacity = el.style.opacity;
+
+                            el.style.opacity = '0.9';
+                            void el.offsetHeight;
+                            el.style.opacity = originalOpacity || '';
+                        }
+                    });
+                }
+
+                if (i % 8 === 0) {
+                    await page.evaluate((iteration) => {
+                        const s = document.querySelector('tui-scrollbar');
+
+                        if (s) {
+                            const div = document.createElement('div');
+
+                            div.innerHTML = `Theme test ${iteration}`;
+                            div.style.height = '10px';
+                            div.style.backgroundColor =
+                                iteration % 2 ? '#f0f0f0' : '#e0e0e0';
+                            s.appendChild(div);
+                        }
+                    }, i);
+                }
+            }
+
+            await page.waitForTimeout(100);
+
+            await PerformanceCollector.stopTestCollection(
+                page,
+                'scrollbar-theme-switching-stress',
+            );
+
+            const computedStyle = await scrollbar.evaluate((el) => {
+                return getComputedStyle(el).display;
+            });
+
+            expect(computedStyle).not.toBe('none');
+        });
     });
 
-    test('memory pressure during scrolling stress test', async ({page}) => {
-        const ex = docPage.getExample('#vertical');
-        const sc = ex.locator('tui-scrollbar');
+    test.describe('Edge Case Stress Scenarios', () => {
+        test('rapid resize during scroll stress test', async ({page}) => {
+            const verticalExample = documentationPage.getExample('#vertical');
+            const scrollbar = verticalExample.locator('tui-scrollbar');
 
-        await sc.scrollIntoViewIfNeeded();
-        await expect(sc).toBeVisible();
-        const ctx: ScrollCtx = {sc};
-        const scenarios: ScrollScenario[] = [
-            scenarioFromActions('memory', memoryActions(INTENSITY), 1),
-        ];
+            await scrollbar.scrollIntoViewIfNeeded();
+            await expect(scrollbar).toBeVisible();
 
-        await runScenarioLoop(page, 'scrollbar-memory-pressure-stress', scenarios, ctx);
-        const ok = await sc.evaluate(
-            (el) => (el as HTMLElement).scrollHeight > (el as HTMLElement).clientHeight,
-        );
+            await PerformanceCollector.startTestCollection(
+                page,
+                'scrollbar-resize-stress',
+                __filename,
+            );
 
-        expect(ok).toBe(true);
-    });
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const iterationsResize = Math.round(50 * factor);
 
-    test('theme switching during scroll stress test', async ({page}) => {
-        const ex = docPage.getExample('#light-scrollbar');
-        const sc = ex.locator('tui-scrollbar');
+            for (let i = 0; i < iterationsResize; i++) {
+                await scrollbar.evaluate(
+                    (el, scrollAmount) => {
+                        el.scrollTop += scrollAmount;
+                        void el.scrollHeight;
+                        void el.clientHeight;
+                    },
+                    (i * 25) % 400,
+                );
 
-        await sc.scrollIntoViewIfNeeded();
-        await expect(sc).toBeVisible();
-        const ctx: ScrollCtx = {sc};
-        const scenarios: ScrollScenario[] = [
-            scenarioFromActions('theme', themeActions(INTENSITY * 2), 1),
-        ];
+                if (i % 4 === 0) {
+                    await scrollbar.evaluate((el, iter) => {
+                        const container = el.closest('.box') || el;
 
-        await runScenarioLoop(page, 'scrollbar-theme-switching-stress', scenarios, ctx);
-        const display = await sc.evaluate(
-            (el) => getComputedStyle(el as HTMLElement).display,
-        );
+                        if (container instanceof HTMLElement) {
+                            const baseWidth = 300;
+                            const baseHeight = 200;
+                            const widthOffset = Math.sin(iter / 5) * 50;
+                            const heightOffset = Math.cos(iter / 7) * 30;
 
-        expect(display).not.toBe('none');
-    });
+                            container.style.width = `${baseWidth + widthOffset}px`;
+                            container.style.height = `${baseHeight + heightOffset}px`;
+                            void container.offsetHeight;
+                        }
+                    }, i);
+                }
 
-    test('rapid resize during scroll stress test', async ({page}) => {
-        const ex = docPage.getExample('#vertical');
-        const sc = ex.locator('tui-scrollbar');
+                if (i % 6 === 0) {
+                    await page.evaluate(() => {
+                        window.dispatchEvent(new Event('resize'));
+                    });
+                }
 
-        await sc.scrollIntoViewIfNeeded();
-        await expect(sc).toBeVisible();
-        const ctx: ScrollCtx = {sc};
-        const scenarios: ScrollScenario[] = [
-            scenarioFromActions('resize', resizeActions(INTENSITY), 1),
-        ];
+                if (i % 8 === 0) {
+                    await page.evaluate((iteration) => {
+                        const s = document.querySelector('tui-scrollbar');
 
-        await runScenarioLoop(page, 'scrollbar-resize-stress', scenarios, ctx);
-        const hasScroll = await sc.evaluate(
-            (el) => (el as HTMLElement).scrollHeight > (el as HTMLElement).clientHeight,
-        );
+                        if (s) {
+                            const div = document.createElement('div');
 
-        expect(hasScroll).toBe(true);
-    });
+                            div.innerHTML = `Resize content ${iteration}`;
+                            div.style.height = `${15 + (iteration % 10)}px`;
+                            div.style.width = '100%';
+                            div.style.border = '1px solid #ddd';
+                            s.appendChild(div);
+                        }
+                    }, i);
+                }
+            }
 
-    test('layout amplifier stress test', async ({page}) => {
-        const ex = docPage.getExample('#vertical');
-        const sc = ex.locator('tui-scrollbar');
+            await page.waitForTimeout(100);
 
-        await sc.scrollIntoViewIfNeeded();
-        await expect(sc).toBeVisible();
-        const ctx: ScrollCtx = {sc};
-        const scenarios: ScrollScenario[] = [
-            scenarioFromActions('layout', layoutAmplifierActions(INTENSITY * 1.5), 1),
-        ];
+            await PerformanceCollector.stopTestCollection(
+                page,
+                'scrollbar-resize-stress',
+            );
 
-        await runScenarioLoop(page, 'scrollbar-layout-amplifier-stress', scenarios, ctx);
-        const width = await sc.evaluate(
-            (el) => (el as HTMLElement).getBoundingClientRect().width,
-        );
+            const isVisible = scrollbar;
+            const hasScroll = await scrollbar.evaluate((el) => {
+                return el.scrollHeight > el.clientHeight;
+            });
 
-        expect(width).toBeGreaterThan(0);
-    });
+            await expect(isVisible).toBeVisible();
+            expect(hasScroll).toBe(true);
+        });
 
-    test('horizontal + rtl scrolling stress test', async ({page}) => {
-        const ex = docPage.getExample('#vertical');
-        const sc = ex.locator('tui-scrollbar');
+        test('concurrent scroll operations stress test', async ({page}) => {
+            const verticalExample = documentationPage.getExample('#vertical');
+            const scrollbar = verticalExample.locator('tui-scrollbar');
 
-        await sc.scrollIntoViewIfNeeded();
-        await expect(sc).toBeVisible();
-        const ctx: ScrollCtx = {sc};
-        const scenarios: ScrollScenario[] = [
-            scenarioFromActions('horizontal-rtl', horizontalRtlActions(INTENSITY), 1),
-        ];
+            await scrollbar.scrollIntoViewIfNeeded();
+            await expect(scrollbar).toBeVisible();
 
-        await runScenarioLoop(page, 'scrollbar-horizontal-rtl-stress', scenarios, ctx);
-        const dir = await sc.evaluate((el) => (el as HTMLElement).dir || 'ltr');
+            await PerformanceCollector.startTestCollection(
+                page,
+                'scrollbar-concurrent-operations-stress',
+                __filename,
+            );
 
-        expect(['ltr', 'rtl']).toContain(dir);
-    });
+            const concurrentBatches: Array<Promise<unknown>> = [];
+            const factor = Number(process.env.PERF_STRESS_FACTOR || '1');
+            const batches = Math.round(8 * factor);
+            const rand = createPRNG(987);
 
-    test('nested scroll containers stress test', async ({page}) => {
-        const ex = docPage.getExample('#vertical');
-        const sc = ex.locator('tui-scrollbar');
+            for (let batch = 0; batch < batches; batch++) {
+                const batchOperations: Array<Promise<unknown>> = [];
+                const innerOps = Math.round(15 * factor);
 
-        await sc.scrollIntoViewIfNeeded();
-        await expect(sc).toBeVisible();
-        const ctx: ScrollCtx = {sc};
-        const scenarios: ScrollScenario[] = [
-            scenarioFromActions('nested', nestedScrollActions(INTENSITY), 1),
-        ];
+                for (let j = 0; j < innerOps; j++) {
+                    const scrollTop = (batch * 50 + j * 10) % 500;
+                    const delay = Math.floor(rand() * 10);
 
-        await runScenarioLoop(page, 'scrollbar-nested-scroll-stress', scenarios, ctx);
-        const innerCount = await sc.evaluate(
-            (el) => (el as HTMLElement).querySelectorAll('.inner-scroll').length,
-        );
+                    batchOperations.push(
+                        scrollbar.evaluate(
+                            async (
+                                el: HTMLElement,
+                                args: {top: number; delay: number},
+                            ) => {
+                                return new Promise<void>((resolve) => {
+                                    el.scrollTo({top: args.top, behavior: 'auto'});
+                                    setTimeout(resolve, args.delay);
+                                });
+                            },
+                            {top: scrollTop, delay},
+                        ),
+                    );
+                }
 
-        expect(innerCount).toBeGreaterThanOrEqual(1);
-    });
+                concurrentBatches.push(
+                    Promise.all(batchOperations).then(async () =>
+                        page.waitForTimeout(20),
+                    ),
+                );
+            }
 
-    test('bulk fragment insert/remove stress test', async ({page}) => {
-        const ex = docPage.getExample('#vertical');
-        const sc = ex.locator('tui-scrollbar');
+            await Promise.all(concurrentBatches);
+            await page.waitForTimeout(150);
 
-        await sc.scrollIntoViewIfNeeded();
-        await expect(sc).toBeVisible();
-        const ctx: ScrollCtx = {sc};
-        const scenarios: ScrollScenario[] = [
-            scenarioFromActions('fragment', bulkFragmentActions(INTENSITY), 1),
-        ];
+            await PerformanceCollector.stopTestCollection(
+                page,
+                'scrollbar-concurrent-operations-stress',
+            );
 
-        await runScenarioLoop(page, 'scrollbar-bulk-fragment-stress', scenarios, ctx);
-        const childCount = await sc.evaluate(
-            (el) => (el as HTMLElement).childNodes.length,
-        );
+            const finalScrollTop = await scrollbar.evaluate((el) => el.scrollTop);
 
-        expect(childCount).toBeGreaterThan(0);
+            expect(finalScrollTop).toBeGreaterThanOrEqual(0);
+            expect(finalScrollTop).toBeLessThanOrEqual(500);
+        });
     });
 });
