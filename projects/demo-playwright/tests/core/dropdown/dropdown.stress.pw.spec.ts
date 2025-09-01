@@ -1,4 +1,3 @@
-/* eslint-disable */
 import {DemoRoute} from '@demo/routes';
 import {
     PerformanceCollector,
@@ -7,22 +6,24 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, type Page, test} from '@playwright/test';
 
-type Ctx = {
+interface DropdownCtx {
     example: ReturnType<TuiDocumentationPagePO['getExample']>;
-    trigger: Locator | null;
-    input: Locator | null;
-    host: Locator | null;
-};
-type Scenario = {
+    dropdownTrigger: Locator | null;
+    filterInput: Locator | null;
+    exampleHost: Locator | null;
+}
+
+interface StressScenario {
     label: string;
     repeats: number;
-    run: (page: Page, ctx: Ctx) => Promise<void>;
-};
+    run: (page: Page, ctx: DropdownCtx) => Promise<void>;
+}
 
 const INTENSITY = Math.max(
     1,
     Number(process.env.STRESS_INTENSITY || process.env.PERF_STRESS_FACTOR || '3'),
 );
+
 const LOOPS = 6;
 const OPEN_CLOSE_R = 4 * INTENSITY;
 const FILTER_R = 2 * INTENSITY;
@@ -32,11 +33,11 @@ const OPTION_R = 2 * INTENSITY;
 const STYLE_R = 2 * INTENSITY;
 const SCROLL_R = 3 * INTENSITY;
 
-async function buildCtx(
+function createDropdownCtx(
     example: ReturnType<TuiDocumentationPagePO['getExample']>,
-): Promise<Ctx> {
-    const trigger = example.locator('[tuiDropdown]').first();
-    const input = example
+): DropdownCtx {
+    const dropdownTrigger = example.locator('[tuiDropdown]').first();
+    const filterInput = example
         .locator(
             [
                 'tui-textfield input',
@@ -48,82 +49,172 @@ async function buildCtx(
             ].join(', '),
         )
         .first();
-    return {example, trigger, input, host: example.first()};
+    const exampleHost = example.first();
+
+    return {example, dropdownTrigger, filterInput, exampleHost};
 }
 
-async function sOpenClose(page: Page, {trigger}: Ctx): Promise<void> {
-    if (!(await trigger?.isVisible().catch(() => false))) return;
-    await trigger!.click().catch(() => {});
+async function sOpenClose(page: Page, {dropdownTrigger}: DropdownCtx): Promise<void> {
+    if (!dropdownTrigger) {
+        return;
+    }
+
+    try {
+        if (!(await dropdownTrigger.isVisible())) {
+            return;
+        }
+    } catch {
+        return;
+    }
+
+    await dropdownTrigger.click().catch(() => {});
     await page.keyboard.press('Escape').catch(() => {});
 }
 
-async function sOption(page: Page, ctx: Ctx): Promise<void> {
-    if (!(await ctx.trigger?.isVisible().catch(() => false))) return;
-    await ctx.trigger!.click().catch(() => {});
-    for (let i = 0; i < 4; i++) await page.keyboard.press('ArrowDown').catch(() => {});
+async function sOption(page: Page, ctx: DropdownCtx): Promise<void> {
+    if (!ctx.dropdownTrigger) {
+        return;
+    }
+
+    try {
+        if (!(await ctx.dropdownTrigger.isVisible())) {
+            return;
+        }
+    } catch {
+        return;
+    }
+
+    await ctx.dropdownTrigger.click().catch(() => {});
+
+    for (let i = 0; i < 4; i++) {
+        await page.keyboard.press('ArrowDown').catch(() => {});
+    }
+
     await page.keyboard.press('Enter').catch(() => {});
     await page.keyboard.press('Escape').catch(() => {});
 }
 
-async function sFilter(page: Page, ctx: Ctx): Promise<void> {
-    if (!(await ctx.input?.isVisible().catch(() => false))) return;
-    await ctx.input!.click().catch(() => {});
-    await ctx.input!.press('Control+A').catch(() => {});
-    await ctx.input!.press('Backspace').catch(() => {});
-    const seq = 'abcdefghi';
-    for (let i = 0; i < 3; i++)
-        await ctx.input!.type(seq[i]!, {delay: 1}).catch(() => {});
+async function sFilter(page: Page, ctx: DropdownCtx): Promise<void> {
+    if (!ctx.filterInput) {
+        return;
+    }
+
+    try {
+        if (!(await ctx.filterInput.isVisible())) {
+            return;
+        }
+    } catch {
+        return;
+    }
+
+    await ctx.filterInput.click().catch(() => {});
+    await ctx.filterInput.press('Control+A').catch(() => {});
+    await ctx.filterInput.press('Backspace').catch(() => {});
+    const sequence = 'abcdefghi';
+
+    for (let i = 0; i < 3; i++) {
+        await ctx.filterInput.type(sequence.charAt(i), {delay: 1}).catch(() => {});
+    }
+
     await page.keyboard.press('Escape').catch(() => {});
 }
 
-async function sReposition(_page: Page, ctx: Ctx): Promise<void> {
-    if (!(await ctx.host?.isVisible().catch(() => false))) return;
-    await ctx
-        .host!.evaluate((el: Element) => {
-            const h = el as HTMLElement;
-            const w = h.style.width === '640px' ? '520px' : '640px';
-            h.style.width = w;
-            h.style.height = w === '640px' ? '420px' : '360px';
+async function sReposition(_page: Page, ctx: DropdownCtx): Promise<void> {
+    if (!ctx.exampleHost) {
+        return;
+    }
+
+    try {
+        if (!(await ctx.exampleHost.isVisible())) {
+            return;
+        }
+    } catch {
+        return;
+    }
+
+    await ctx.exampleHost
+        .evaluate((el: Element) => {
+            const host = el as HTMLElement;
+            const width = host.style.width === '640px' ? '520px' : '640px';
+
+            host.style.width = width;
+            host.style.height = width === '640px' ? '420px' : '360px';
         })
         .catch(() => {});
 }
 
-async function sNested(page: Page, ctx: Ctx): Promise<void> {
-    if (!(await ctx.trigger?.isVisible().catch(() => false))) return;
-    await ctx.trigger!.click().catch(() => {});
+async function sNested(page: Page, ctx: DropdownCtx): Promise<void> {
+    if (!ctx.dropdownTrigger) {
+        return;
+    }
+
+    try {
+        if (!(await ctx.dropdownTrigger.isVisible())) {
+            return;
+        }
+    } catch {
+        return;
+    }
+
+    await ctx.dropdownTrigger.click().catch(() => {});
     await page.keyboard.press('ArrowDown').catch(() => {});
     await page.keyboard.press('ArrowRight').catch(() => {});
     await page.keyboard.press('ArrowDown').catch(() => {});
     await page.keyboard.press('Escape').catch(() => {});
 }
 
-async function sStyle(_page: Page, ctx: Ctx): Promise<void> {
-    if (!(await ctx.host?.isVisible().catch(() => false))) return;
-    await ctx
-        .host!.evaluate((el: Element) => {
-            const h = el as HTMLElement;
+async function sStyle(_page: Page, ctx: DropdownCtx): Promise<void> {
+    if (!ctx.exampleHost) {
+        return;
+    }
+
+    try {
+        if (!(await ctx.exampleHost.isVisible())) {
+            return;
+        }
+    } catch {
+        return;
+    }
+
+    await ctx.exampleHost
+        .evaluate((el: Element) => {
+            const host = el as HTMLElement;
+
             for (let i = 0; i < 3; i++) {
-                h.style.padding = (i % 4) + 'px';
-                h.style.borderWidth = (i % 2) + 'px';
-                h.style.marginLeft = (i % 6) + 'px';
+                host.style.padding = `${i % 4}px`;
+                host.style.borderWidth = `${i % 2}px`;
+                host.style.marginLeft = `${i % 6}px`;
             }
-            void h.offsetWidth;
+
+            void host.offsetWidth;
         })
         .catch(() => {});
 }
 
-async function sScroll(_page: Page, ctx: Ctx): Promise<void> {
-    if (!(await ctx.host?.isVisible().catch(() => false))) return;
-    await ctx
-        .host!.evaluate((el: Element) => {
-            const h = el as HTMLElement;
-            h.scrollTop = (h.scrollTop + 160) % 480;
-            void h.offsetHeight;
+async function sScroll(_page: Page, ctx: DropdownCtx): Promise<void> {
+    if (!ctx.exampleHost) {
+        return;
+    }
+
+    try {
+        if (!(await ctx.exampleHost.isVisible())) {
+            return;
+        }
+    } catch {
+        return;
+    }
+
+    await ctx.exampleHost
+        .evaluate((el: Element) => {
+            const host = el as HTMLElement;
+
+            host.scrollTop = (host.scrollTop + 160) % 480;
+            void host.offsetHeight;
         })
         .catch(() => {});
 }
 
-function scenariosOpenClose(): Scenario[] {
+function scenariosOpenClose(): StressScenario[] {
     return [
         {label: 'openClose', repeats: OPEN_CLOSE_R, run: sOpenClose},
         {label: 'option', repeats: OPTION_R, run: sOption},
@@ -133,7 +224,7 @@ function scenariosOpenClose(): Scenario[] {
     ];
 }
 
-function scenariosFilter(): Scenario[] {
+function scenariosFilter(): StressScenario[] {
     return [
         {label: 'filter', repeats: FILTER_R, run: sFilter},
         {label: 'option', repeats: OPTION_R, run: sOption},
@@ -143,7 +234,7 @@ function scenariosFilter(): Scenario[] {
     ];
 }
 
-function scenariosReposition(): Scenario[] {
+function scenariosReposition(): StressScenario[] {
     return [
         {label: 'reposition', repeats: REPOSITION_R * 2, run: sReposition},
         {label: 'openClose', repeats: OPEN_CLOSE_R, run: sOpenClose},
@@ -152,7 +243,7 @@ function scenariosReposition(): Scenario[] {
     ];
 }
 
-function scenariosNested(): Scenario[] {
+function scenariosNested(): StressScenario[] {
     return [
         {label: 'nested', repeats: NESTED_R, run: sNested},
         {label: 'option', repeats: OPTION_R, run: sOption},
@@ -165,28 +256,37 @@ function scenariosNested(): Scenario[] {
 async function runScenarioLoop(
     page: Page,
     name: string,
-    list: Scenario[],
-    ctx: Ctx,
+    list: StressScenario[],
+    ctx: DropdownCtx,
 ): Promise<void> {
-    const skip = process.env.PERF_SKIP_COLLECTOR === '1';
-    if (!skip) await PerformanceCollector.startTestCollection(page, name, __filename);
-    for (let i = 0; i < LOOPS; i++) {
-        for (const s of list) {
-            for (let r = 0; r < s.repeats; r++) await s.run(page, ctx);
+    const skipCollector = process.env.PERF_SKIP_COLLECTOR === '1';
+
+    if (!skipCollector) {
+        await PerformanceCollector.startTestCollection(page, name, __filename);
+    }
+
+    for (let loop = 0; loop < LOOPS; loop++) {
+        for (const scenario of list) {
+            for (let r = 0; r < scenario.repeats; r++) {
+                await scenario.run(page, ctx);
+            }
         }
+
         await page
             .evaluate(() => {
-                const host = document.querySelector(
-                    '[tuiDropdown]',
-                ) as HTMLElement | null;
+                const host = document.querySelector('[tuiDropdown]');
+
                 if (host) {
-                    void host.offsetWidth;
-                    void host.offsetHeight;
+                    void (host as HTMLElement).offsetWidth;
+                    void (host as HTMLElement).offsetHeight;
                 }
             })
             .catch(() => {});
     }
-    if (!skip) await PerformanceCollector.stopTestCollection(page, name);
+
+    if (!skipCollector) {
+        await PerformanceCollector.stopTestCollection(page, name);
+    }
 }
 
 test.describe('Dropdown Stress Tests', () => {
@@ -198,45 +298,53 @@ test.describe('Dropdown Stress Tests', () => {
     });
 
     test('dropdown-open-close-stress', async ({page}) => {
-        const ex = po.getExample('#basic');
-        await ex.scrollIntoViewIfNeeded().catch(() => {});
-        const ctx = await buildCtx(ex);
+        const example = po.getExample('#basic');
+
+        await example.scrollIntoViewIfNeeded().catch(() => {});
+        const ctx = createDropdownCtx(example);
+
         await runScenarioLoop(
             page,
             'dropdown-open-close-stress',
             scenariosOpenClose(),
             ctx,
         );
-        await expect(ex.first()).toBeVisible();
+        await expect(example.first()).toBeVisible();
     });
 
     test('dropdown-filter-stress', async ({page}) => {
-        const ex = po.getExample('#interesting');
-        await ex.scrollIntoViewIfNeeded().catch(() => {});
-        const ctx = await buildCtx(ex);
+        const example = po.getExample('#interesting');
+
+        await example.scrollIntoViewIfNeeded().catch(() => {});
+        const ctx = createDropdownCtx(example);
+
         await runScenarioLoop(page, 'dropdown-filter-stress', scenariosFilter(), ctx);
-        await expect(ex.first()).toBeVisible();
+        await expect(example.first()).toBeVisible();
     });
 
     test('dropdown-reposition-stress', async ({page}) => {
-        const ex = po.getExample('#appearance');
-        await ex.scrollIntoViewIfNeeded().catch(() => {});
-        const ctx = await buildCtx(ex);
+        const example = po.getExample('#appearance');
+
+        await example.scrollIntoViewIfNeeded().catch(() => {});
+        const ctx = createDropdownCtx(example);
+
         await runScenarioLoop(
             page,
             'dropdown-reposition-stress',
             scenariosReposition(),
             ctx,
         );
-        await expect(ex.first()).toBeVisible();
+        await expect(example.first()).toBeVisible();
     });
 
     test('dropdown-nested-stress', async ({page}) => {
         await tuiGoto(page, DemoRoute.DropdownOpen);
-        const ex = new TuiDocumentationPagePO(page).getExample('#complex');
-        await ex.scrollIntoViewIfNeeded().catch(() => {});
-        const ctx = await buildCtx(ex);
+        const example = new TuiDocumentationPagePO(page).getExample('#complex');
+
+        await example.scrollIntoViewIfNeeded().catch(() => {});
+        const ctx = createDropdownCtx(example);
+
         await runScenarioLoop(page, 'dropdown-nested-stress', scenariosNested(), ctx);
-        await expect(ex.first()).toBeVisible();
+        await expect(example.first()).toBeVisible();
     });
 });
