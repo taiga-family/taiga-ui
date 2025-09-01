@@ -6,7 +6,6 @@ import {
     tuiGoto,
 } from '@demo-playwright/utils';
 import {expect, type Locator, type Page, test} from '@playwright/test';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk';
 
 function repeat<T>(count: number, builder: (i: number) => T[]): T[] {
     const out: T[] = [];
@@ -167,7 +166,7 @@ function nestedOps(total: number, host: Locator, menuRoot: () => Locator): Op[] 
                 return;
             }
             const root = menuRoot();
-            const open = await root.isVisible().catch(TUI_FALSE_HANDLER);
+            const open = await root.isVisible().catch(() => false);
             if (!open) {
                 await host.click({timeout: 1200}).catch(() => {});
                 await page.waitForTimeout(12).catch(() => {});
