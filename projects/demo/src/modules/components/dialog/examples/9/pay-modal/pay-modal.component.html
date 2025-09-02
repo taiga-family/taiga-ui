@@ -65,14 +65,14 @@
                         #cardGroupedInput
                         formControlName="card"
                         [cardValidator]="cardValidator"
-                        [class.without-date]="paymentMode === PAYMENT_MODE.BySavedCard"
-                        [tuiTextfieldCleaner]="paymentMode === PAYMENT_MODE.ByNewCard"
+                        [class.without-date]="paymentMode === paymentModeTypes.BySavedCard"
+                        [tuiTextfieldCleaner]="paymentMode === paymentModeTypes.ByNewCard"
                     />
                 </tui-loader>
             </ng-container>
         </div>
 
-        <ng-container *ngIf="paymentMode === PAYMENT_MODE.ByNewCard">
+        <ng-container *ngIf="paymentMode === paymentModeTypes.ByNewCard">
             <div class="form-block">
                 <label tuiLabel>
                     <input
@@ -86,7 +86,7 @@
         </ng-container>
 
         <div
-            *ngIf="paymentMode === PAYMENT_MODE.BySavedCard"
+            *ngIf="paymentMode === paymentModeTypes.BySavedCard"
             class="form-block is--links"
         >
             <button

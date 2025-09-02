@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.52.0](https://github.com/taiga-family/taiga-ui/compare/v4.51.0...v4.52.0) (2025-09-01)
+
+### 🐞 Bug Fixes
+
+- **core:** `Textfield` ensure non-erasable affixes actually deleted
+  ([#11779](https://github.com/taiga-family/taiga-ui/issues/11779))
+  ([9405526](https://github.com/taiga-family/taiga-ui/commit/940552608c6aa6d30198d269cdb9863e3bd0e892))
+- **core:** `Textfield` fix conditionally adding input tag
+  ([#11784](https://github.com/taiga-family/taiga-ui/issues/11784))
+  ([70d0b5b](https://github.com/taiga-family/taiga-ui/commit/70d0b5b66017fcc734520e51e61f27e18f3e0736))
+- **kit:** `InputPin` fix longtap ([#11771](https://github.com/taiga-family/taiga-ui/issues/11771))
+  ([5f6a9a9](https://github.com/taiga-family/taiga-ui/commit/5f6a9a98cc38bb051afd933e9cf3aa595d4851b8))
+
+### 🚀 Features
+
+- **addon-table:** respect min-width and max-width constraints
+  ([#11704](https://github.com/taiga-family/taiga-ui/issues/11704))
+  ([2ba2a99](https://github.com/taiga-family/taiga-ui/commit/2ba2a995161e6e5869c43e2e1fd596feb86c8e4b))
+- **cdk:** `provideOptions` allow functions to extract options from DI
+  ([#11805](https://github.com/taiga-family/taiga-ui/issues/11805))
+  ([bc5a778](https://github.com/taiga-family/taiga-ui/commit/bc5a7786faf7e3e6bf97ed72ac26d64095682e5a))
+- **core:** implement icon mode resolution system ([#10938](https://github.com/taiga-family/taiga-ui/issues/10938))
+  ([#11592](https://github.com/taiga-family/taiga-ui/issues/11592))
+  ([64a0022](https://github.com/taiga-family/taiga-ui/commit/64a00225cb5b99b5ec4127f921a212a191415866))
+- **kit:** `NotificationMiddle` add new component ([#11797](https://github.com/taiga-family/taiga-ui/issues/11797))
+  ([9a91b83](https://github.com/taiga-family/taiga-ui/commit/9a91b8375d6c9eced538dc8eb34b4593456f9af1))
+- **kit:** improved UX for input chip element ([#11807](https://github.com/taiga-family/taiga-ui/issues/11807))
+  ([1c3b201](https://github.com/taiga-family/taiga-ui/commit/1c3b20172c3b3acbed80fd88a393282b58ab2c37))
+- **schematics:** update parse5 ([#11736](https://github.com/taiga-family/taiga-ui/issues/11736))
+  ([d411dfa](https://github.com/taiga-family/taiga-ui/commit/d411dfa82a381006220d00d8e700b822058dece2))
+
 ## [4.51.0](https://github.com/taiga-family/taiga-ui/compare/v4.50.0...v4.51.0) (2025-08-27)
 
 ### 🚀 Features

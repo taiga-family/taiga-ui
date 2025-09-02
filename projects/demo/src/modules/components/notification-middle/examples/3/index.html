@@ -1,0 +1,24 @@
+<ng-template
+    [tuiNotificationMiddle]="open()"
+    (tuiNotificationMiddleChange)="open.set($event)"
+>
+    <ng-container *ngIf="loading(); else done">
+        <tui-loader tuiAnimated />
+        <div tuiAnimated>Please wait...</div>
+    </ng-container>
+    <ng-template #done>
+        <tui-avatar
+            appearance="positive"
+            src="@tui.check"
+            tuiAnimated
+        />
+        <div tuiAnimated>Operation successful!</div>
+    </ng-template>
+</ng-template>
+<button
+    tuiButton
+    type="button"
+    (click)="onClick()"
+>
+    Show
+</button>

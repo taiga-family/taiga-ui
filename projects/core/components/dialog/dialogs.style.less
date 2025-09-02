@@ -16,7 +16,8 @@
     }
 
     //TODO: Remove [new] in v5
-    &:has(tui-dialog[new][data-appearance~='fullscreen']) .t-overlay {
+    &:has(section:only-of-type ::ng-deep tui-dialog[new][data-appearance~='fullscreen']) > .t-overlay,
+    &:has(section:only-of-type ::ng-deep tui-notification-middle) > .t-overlay {
         opacity: 0;
     }
 

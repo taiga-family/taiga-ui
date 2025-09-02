@@ -45,6 +45,7 @@ export * from '@taiga-ui/kit/components/like';
 export * from '@taiga-ui/kit/components/line-clamp';
 export * from '@taiga-ui/kit/components/message';
 export * from '@taiga-ui/kit/components/multi-select';
+export * from '@taiga-ui/kit/components/notification-middle';
 export * from '@taiga-ui/kit/components/pager';
 export * from '@taiga-ui/kit/components/pagination';
 export * from '@taiga-ui/kit/components/pdf-viewer';

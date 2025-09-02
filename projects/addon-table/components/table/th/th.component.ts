@@ -24,9 +24,9 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
     styleUrls: ['./th.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.min-width.px]': 'width',
-        '[style.width.px]': 'width',
-        '[style.max-width.px]': 'width',
+        '[style.min-width.px]': 'width || minWidth',
+        '[style.width.px]': 'width || minWidth',
+        '[style.max-width.px]': 'width || maxWidth',
         '[class._sticky]': 'sticky',
     },
 })
@@ -43,6 +43,12 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
         forwardRef(() => TuiTableDirective),
         {optional: true},
     );
+
+    @Input()
+    public minWidth = -Infinity;
+
+    @Input()
+    public maxWidth = Infinity;
 
     @Input()
     public sorter: TuiComparator<T> | null = this.head
@@ -89,7 +95,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     }
 
     protected onResized(width: number): void {
-        this.width = width;
+        this.width = Math.min(Math.max(width, this.minWidth), this.maxWidth);
     }
 
     private get isCurrentAndDescDirection(): boolean {
