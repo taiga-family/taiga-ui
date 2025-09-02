@@ -201,39 +201,39 @@
             </button>
         </div>
 
-        <table tuiDocAPI>
-            <tr
-                name="[disabled]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="disabled"
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
             >
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </tr>
-            <tr
-                name="[identityMatcher]"
-                tuiDocAPIItem
-                type="TuiIdentityMatcher"
-                [items]="identityMatcherVariants"
-                [(value)]="identityMatcher"
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="identityMatcher"
+                documentationPropertyType="TuiIdentityMatcher"
+                [documentationPropertyValues]="identityMatcherVariants"
+                [(documentationPropertyValue)]="identityMatcher"
             >
                 Function that matches value and items, e.g. if objects are copied. Uses
                 <code>===</code>
                 by default.
 
                 <strong>Must be a pure function</strong>
-            </tr>
-            <tr
-                name="[valueContent]"
-                tuiDocAPIItem
-                [items]="valueTemplateVariants"
-                [(value)]="selectedValueTemplate"
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="valueContent"
+                documentationPropertyType="PolymorpheusContent<TuiValueContentContext<T>>"
+                [documentationPropertyValues]="valueTemplateVariants"
+                [(documentationPropertyValue)]="selectedValueTemplate"
             >
                 A template for custom view of selected value
-            </tr>
-        </table>
+            </ng-template>
+        </tui-doc-documentation>
         <inherited-documentation [dropdown]="true" />
     </ng-template>
 

@@ -85,57 +85,58 @@
                 </tui-input-phone>
             </ng-template>
         </tui-doc-demo>
-        <table tuiDocAPI>
-            <tr
-                name="[disabled]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="disabled"
+        <tui-doc-documentation>
+            <ng-template
+                documentationPropertyName="disabled"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
             >
                 Disabled state (use
                 <code>formControl.disable()</code>
                 )
-            </tr>
-            <tr
-                name="[countryCode]"
-                tuiDocAPIItem
-                type="string"
-                [items]="countryCodes"
-                [(value)]="countryCode"
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="countryCode"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="countryCodes"
+                [(documentationPropertyValue)]="countryCode"
             >
                 Country code
-            </tr>
-            <tr
-                name="[phoneMaskAfterCountryCode]"
-                tuiDocAPIItem
-                type="string"
-                [items]="phoneMasksAfterCountryCode"
-                [(value)]="phoneMaskAfterCountryCode"
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="phoneMaskAfterCountryCode"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="phoneMasksAfterCountryCode"
+                [(documentationPropertyValue)]="phoneMaskAfterCountryCode"
             >
                 Text mask after country code. You can use
                 <code>#</code>
                 ,
                 <code>-</code>
                 and spaces as a template symbol
-            </tr>
-            <tr
-                name="(search)"
-                tuiDocAPIItem
-                type="string"
+            </ng-template>
+            <ng-template
+                documentationPropertyMode="input-output"
+                documentationPropertyName="search"
+                documentationPropertyType="string"
             >
                 Textfield value to subscribe on input or setting it from the outside
-            </tr>
-            <tr
-                name="[style.text-align]"
-                tuiDocAPIItem
-                type="string"
-                [items]="textAlignVariants"
-                [(value)]="textAlign"
+            </ng-template>
+        </tui-doc-documentation>
+        <inherited-documentation [dropdown]="true" />
+        <tui-doc-documentation heading="CSS customization">
+            <ng-template
+                documentationPropertyMode="input"
+                documentationPropertyName="style.text-align"
+                documentationPropertyType="string"
+                [documentationPropertyValues]="textAlignVariants"
+                [(documentationPropertyValue)]="textAlign"
             >
                 Custom align content by text-align
-            </tr>
-        </table>
-        <inherited-documentation [dropdown]="true" />
+            </ng-template>
+        </tui-doc-documentation>
     </ng-template>
 
     <tui-setup *pageTab />
