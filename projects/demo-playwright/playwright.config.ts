@@ -24,10 +24,7 @@ process.env['AXE_CONFIG'] = JSON.stringify({
 
 const chromium = {
     name: 'chromium',
-    use: {
-        ...devices['Desktop Chrome HiDPI'],
-        viewport: DEFAULT_VIEWPORT,
-    },
+    use: {...devices['Desktop Chrome HiDPI'], viewport: DEFAULT_VIEWPORT},
 };
 
 const options = Object.fromEntries(
