@@ -18,6 +18,7 @@ import {TuiCell} from '@taiga-ui/layout';
     imports: [
         AsyncPipe,
         FormsModule,
+        NgIf,
         TuiAvatar,
         TuiCell,
         TuiChevron,
@@ -27,7 +28,6 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiSelect,
         TuiTextfield,
         TuiTitle,
-        NgIf,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
