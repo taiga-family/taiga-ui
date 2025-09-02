@@ -27,14 +27,6 @@ const chromium = {
     use: {
         ...devices['Desktop Chrome HiDPI'],
         viewport: DEFAULT_VIEWPORT,
-        launchOptions: process.env.COLLECT_PERFORMANCE
-            ? {
-                  args: [
-                      '--disable-background-timer-throttling',
-                      '--disable-renderer-backgrounding',
-                  ],
-              }
-            : undefined,
     },
 };
 
