@@ -24,7 +24,18 @@ process.env['AXE_CONFIG'] = JSON.stringify({
 
 const chromium = {
     name: 'chromium',
-    use: {...devices['Desktop Chrome HiDPI'], viewport: DEFAULT_VIEWPORT},
+    use: {
+        ...devices['Desktop Chrome HiDPI'],
+        viewport: DEFAULT_VIEWPORT,
+        launchOptions: process.env.COLLECT_PERFORMANCE
+            ? {
+                  args: [
+                      '--disable-background-timer-throttling',
+                      '--disable-renderer-backgrounding',
+                  ],
+              }
+            : undefined,
+    },
 };
 
 const options = Object.fromEntries(
