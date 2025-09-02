@@ -248,8 +248,6 @@ jobs:
           merge-multiple: true
       - run: ls -R ./all-blob-reports || echo "not found"
 
-      # Skip downloading raw metrics; we upload per-shard diff reports instead
-
       - name: Merge into HTML Report
         run: npx playwright merge-reports --config=projects/demo-playwright/merge.config.ts ./all-blob-reports
 

@@ -10,15 +10,15 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
     const {GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_EVENT_PATH} = process.env;
 
     if (!GITHUB_TOKEN) {
-        // eslint-disable-next-line no-console
-        console.log('⏭️ No GITHUB_TOKEN found, skipping comment posting');
+        console.warn('⏭️ No GITHUB_TOKEN found, skipping comment posting');
 
         return;
     }
 
     if (!GITHUB_REPOSITORY || !GITHUB_EVENT_PATH) {
-        // eslint-disable-next-line no-console
-        console.log('⏭️ Not running in GitHub Actions context, skipping comment posting');
+        console.warn(
+            '⏭️ Not running in GitHub Actions context, skipping comment posting',
+        );
 
         return;
     }
@@ -29,8 +29,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
         const prNumber = eventData.pull_request?.number;
 
         if (!prNumber) {
-            // eslint-disable-next-line no-console
-            console.log('⏭️ Not a pull request event, skipping comment posting');
+            console.warn('⏭️ Not a pull request event, skipping comment posting');
 
             return;
         }
@@ -87,8 +86,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
             });
 
             if (updateResponse.ok) {
-                // eslint-disable-next-line no-console
-                console.log('✅ Updated existing performance comment');
+                console.warn('✅ Updated existing performance comment');
             } else {
                 const body = await updateResponse.text().catch(() => '');
 
@@ -107,8 +105,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
             });
 
             if (createResponse.ok) {
-                // eslint-disable-next-line no-console
-                console.log('✅ Posted new performance comment');
+                console.warn('✅ Posted new performance comment');
             } else {
                 const body = await createResponse.text().catch(() => '');
 

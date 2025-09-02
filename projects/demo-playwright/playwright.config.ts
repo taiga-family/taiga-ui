@@ -22,27 +22,9 @@ process.env['AXE_CONFIG'] = JSON.stringify({
     ],
 });
 
-const PERF_STABLE_ARGS =
-    process.env.PERF_DISABLE_STABLE_FLAGS === '1'
-        ? []
-        : [
-              '--disable-background-timer-throttling',
-              '--disable-renderer-backgrounding',
-              '--disable-backgrounding-occluded-windows',
-              '--disable-features=CalculateNativeWinOcclusion',
-              '--no-sandbox',
-              '--disable-dev-shm-usage',
-          ];
-
 const chromium = {
     name: 'chromium',
-    use: {
-        ...devices['Desktop Chrome HiDPI'],
-        viewport: DEFAULT_VIEWPORT,
-        launchOptions: {
-            args: PERF_STABLE_ARGS,
-        },
-    },
+    use: {...devices['Desktop Chrome HiDPI'], viewport: DEFAULT_VIEWPORT},
 };
 
 const options = Object.fromEntries(
