@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
 
@@ -10,6 +11,7 @@ import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
+    protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic', 'Dropdown', 'Side', 'Multiline', 'Cell'];
     protected readonly items = inject<readonly string[]>('Pythons' as any);
     protected readonly requiredVariants = [-1, 2, 4];

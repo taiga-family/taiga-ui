@@ -21,7 +21,20 @@
                 #description
                 [ngSwitch]="index"
             >
-                <ng-container *ngSwitchCase="0">Basic empty loader.</ng-container>
+                <ng-container *ngSwitchCase="0">Hiding excessive items and showing text.</ng-container>
+                <ng-container *ngSwitchCase="1">Putting extra items in a dropdown.</ng-container>
+                <ng-container *ngSwitchCase="2">Handling excessive items at the beginning of the list.</ng-container>
+                <ng-container *ngSwitchCase="3">Hiding extra items in a multi line container.</ng-container>
+                <ng-container *ngSwitchCase="4">
+                    Showing compact version of text in a
+                    <a
+                        tuiLink
+                        [routerLink]="routes.Cell"
+                    >
+                        Cell
+                    </a>
+                    in limited space.
+                </ng-container>
             </ng-template>
         </tui-doc-example>
     </ng-template>
