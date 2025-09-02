@@ -12,10 +12,15 @@ section {
     gap: 2rem;
 }
 
-tui-icon {
+[tuiToast]::before {
     color: var(--tui-background-accent-1);
 }
 
 tui-avatar {
     border: 1px solid var(--tui-border-normal);
+}
+
+[iconStart='@tui.star']::before {
+    inline-size: 2rem;
+    block-size: 2rem;
 }
