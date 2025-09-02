@@ -43,7 +43,7 @@ export class PerformanceCollector {
         }
     >();
 
-    private static readonly OUTPUT_DIR = resolve(
+    private static readonly outputDir = resolve(
         process.cwd(),
         'projects/demo-playwright/tests-results',
         'performance',
@@ -373,7 +373,7 @@ export class PerformanceCollector {
         const filename = `test-${safeTestName}-${Date.now()}.json`;
 
         this.ensureDirOnce();
-        const outputPath = join(this.OUTPUT_DIR, filename);
+        const outputPath = join(this.outputDir, filename);
 
         await writeFile(outputPath, JSON.stringify(performanceData, null, 2));
         // console.log(`💾 Test performance data saved to: ${filename}`);
@@ -385,7 +385,7 @@ export class PerformanceCollector {
         }
 
         try {
-            mkdirSync(this.OUTPUT_DIR, {recursive: true});
+            mkdirSync(this.outputDir, {recursive: true});
             this.dirReady = true;
         } catch {}
     }

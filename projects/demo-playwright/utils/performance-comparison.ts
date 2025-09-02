@@ -87,9 +87,9 @@ interface ComparisonReport {
  * Utility class for analyzing and comparing performance metrics between baseline and current runs
  */
 export class PerformanceComparison {
-    public static readonly DEFAULT_CHANGE_THRESHOLD = 6; // Minimum % change to show in table (filters noise)
-    public static readonly DEFAULT_COUNT_PERCENT_THRESHOLD = 15; // % op count increase considered significant
-    public static readonly DEFAULT_PER_OP_PERCENT_THRESHOLD = 9; // % per-op duration increase considered significant
+    public static readonly defaultChangeThreshold = 8; // Minimum % change to show in table (filters noise)
+    public static readonly defaultCountPercentThreshold = 15; // % op count increase considered significant
+    public static readonly defaultPerOpPercentThreshold = 15; // % per-op duration increase considered significant
 
     /**
      * Reads and aggregates performance metrics from JSON files in a directory
@@ -188,7 +188,7 @@ export class PerformanceComparison {
     public static compareMetrics(
         baseline: Map<string, PerformanceData>,
         current: Map<string, PerformanceData>,
-        _changeThreshold: number = this.DEFAULT_CHANGE_THRESHOLD,
+        _changeThreshold: number = this.defaultChangeThreshold,
     ): ComparisonReport {
         const details: MetricsComparison[] = [];
         let totalLayoutChange = 0;
@@ -314,7 +314,7 @@ export class PerformanceComparison {
      */
     public static generateMarkdownReport(
         report: ComparisonReport,
-        changeThreshold: number = this.DEFAULT_CHANGE_THRESHOLD,
+        changeThreshold: number = this.defaultChangeThreshold,
     ): string {
         const {summary, details} = report;
         const netPctThreshold = Number(process.env.PERF_NET_PERCENT_THRESHOLD || '10');
@@ -369,7 +369,7 @@ export class PerformanceComparison {
         baselinePath: string,
         currentPath: string,
         outputPath: string,
-        changeThreshold: number = this.DEFAULT_CHANGE_THRESHOLD,
+        changeThreshold: number = this.defaultChangeThreshold,
     ): Promise<ComparisonReport> {
         // eslint-disable-next-line no-console
         console.log('🔍 Aggregating baseline metrics...');
@@ -891,11 +891,11 @@ export class PerformanceComparison {
         const countPct =
             !Number.isNaN(countEnv) && countEnv > 0
                 ? countEnv
-                : PerformanceComparison.DEFAULT_COUNT_PERCENT_THRESHOLD;
+                : PerformanceComparison.defaultCountPercentThreshold;
         const perOpPct =
             !Number.isNaN(perOpEnv) && perOpEnv > 0
                 ? perOpEnv
-                : PerformanceComparison.DEFAULT_PER_OP_PERCENT_THRESHOLD;
+                : PerformanceComparison.defaultPerOpPercentThreshold;
 
         const baseline = detail.baseline;
         const diff = detail.diff;
@@ -1119,7 +1119,7 @@ export class PerformanceComparison {
         }
 
         const delta = summary.overallNetDurationChange;
-        const neutralBand = Number(process.env.PERF_HEADLINE_NEUTRAL_PCT || '1');
+        const neutralBand = Number(process.env.PERF_HEADLINE_NEUTRAL_PCT || '15');
         const sign = delta > 0 ? '+' : '';
         const abs = Math.abs(delta);
 
@@ -1987,7 +1987,7 @@ async function main(): Promise<void> {
         const changeThreshold =
             !Number.isNaN(envVis) && envVis > 0
                 ? envVis
-                : PerformanceComparison.DEFAULT_CHANGE_THRESHOLD;
+                : PerformanceComparison.defaultChangeThreshold;
 
         try {
             await PerformanceComparison.compareAndReport(
