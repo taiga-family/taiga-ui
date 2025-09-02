@@ -66,7 +66,7 @@ class TuiTableStyles {}
         '[attr.data-size]': 'size()',
     },
 })
-export class TuiTableDirective<T extends Partial<Record<keyof T, any>>>
+export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     implements AfterViewInit, TuiTextfieldOptions, OnChanges
 {
     private readonly options = inject(TUI_TABLE_OPTIONS);

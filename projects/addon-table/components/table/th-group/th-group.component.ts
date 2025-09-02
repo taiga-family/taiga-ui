@@ -25,7 +25,7 @@ import {TuiTableTh} from '../th/th.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiTableThGroup<T extends Partial<Record<keyof T, any>>>
+export class TuiTableThGroup<T extends Partial<Record<keyof T, unknown>>>
     implements AfterContentInit
 {
     @ContentChild(forwardRef(() => TuiTableTh))
@@ -34,7 +34,7 @@ export class TuiTableThGroup<T extends Partial<Record<keyof T, any>>>
     @ContentChildren(forwardRef(() => TuiTableHead))
     protected readonly heads: QueryList<TuiTableHead<T>> = EMPTY_QUERY;
 
-    protected heads$: Observable<Record<any, TuiTableHead<T>>> | null = null;
+    protected heads$: Observable<Record<string | keyof T, TuiTableHead<T>>> | null = null;
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
@@ -46,7 +46,7 @@ export class TuiTableThGroup<T extends Partial<Record<keyof T, any>>>
             map(() =>
                 this.heads.reduce(
                     (record, item) => ({...record, [item.tuiHead]: item}),
-                    {} as Record<keyof T, TuiTableHead<T>>,
+                    {} as Record<string | keyof T, TuiTableHead<T>>,
                 ),
             ),
         );

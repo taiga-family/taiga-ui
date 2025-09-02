@@ -30,7 +30,7 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
         '[class._sticky]': 'sticky',
     },
 })
-export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
+export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
     private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {
