@@ -1,0 +1,35 @@
+<tui-textfield
+    tuiChevron
+    [content]="content"
+    [tuiTextfieldCleaner]="false"
+>
+    <input
+        tuiSelect
+        [(ngModel)]="value"
+    />
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [itemContent]="content"
+        [items]="items"
+    />
+    <ng-template
+        #content
+        let-item
+    >
+        <span tuiCell>
+            <tui-avatar src="@tui.circle-dollar-sign" />
+            <span tuiTitle>
+                <tui-items-with-more tuiSubtitle>
+                    <span *tuiItem>{{ item.name }}</span>
+                    <span *tuiItem>&nbsp;• {{ item.number }}</span>
+                    <div *tuiMore="let index">
+                        <span *ngIf="index < 0">{{ item.name }}</span>
+                        <span>&nbsp;*{{ item.number.slice(-4) }}</span>
+                    </div>
+                </tui-items-with-more>
+                ${{ item.value | tuiFormatNumber | async }}
+            </span>
+        </span>
+    </ng-template>
+</tui-textfield>
