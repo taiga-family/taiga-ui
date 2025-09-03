@@ -2,6 +2,7 @@
     "extends": "@taiga-ui/tsconfig",
     "compilerOptions": {
         "baseUrl": "./",
+        "esModuleInterop": true,
         "outDir": "./dist",
         "typeRoots": ["node_modules/@types", "node_modules/@taiga-ui/tsconfig"],
         "types": ["node", "ng-dev-mode"],

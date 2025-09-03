@@ -1,5 +1,5 @@
 import {isPlatformServer} from '@angular/common';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {
     Component,
     DestroyRef,
@@ -36,7 +36,6 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
     selector: 'app',
     imports: [
         CustomHost,
-        HttpClientModule,
         TuiAlgoliaSearch,
         TuiBadgedContent,
         TuiButton,
