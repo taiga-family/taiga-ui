@@ -16,7 +16,7 @@ const appearanceInputName = 'appearance';
 const appearanceInputNameDict = {
     [appearanceInputName]: true,
     [`[${appearanceInputName}]`]: true,
-} as const;
+} as any;
 
 export function migrateButtonAppearance({
     resource,

@@ -21,10 +21,10 @@
         "tslib": "2.8.1"
     },
     "devDependencies": {
-        "@angular-devkit/core": "16.2.16",
-        "@angular-devkit/schematics": "16.2.16",
-        "@angular-devkit/schematics-cli": "16.2.16",
-        "@schematics/angular": "16.2.16"
+        "@angular-devkit/core": "17.3.9",
+        "@angular-devkit/schematics": "17.3.9",
+        "@angular-devkit/schematics-cli": "17.3.9",
+        "@schematics/angular": "17.3.9"
     },
     "peerDependencies": {
         "@angular/animations": ">=16.0.0",
@@ -42,9 +42,9 @@
         "rxjs": ">=7.0.0"
     },
     "optionalDependencies": {
-        "@angular-devkit/core": ">=16.0.0",
-        "@angular-devkit/schematics": ">=16.0.0",
-        "@schematics/angular": ">=16.0.0",
+        "@angular-devkit/core": ">=17.0.0",
+        "@angular-devkit/schematics": ">=17.0.0",
+        "@schematics/angular": ">=17.0.0",
         "ng-morph": "^4.8.4",
         "parse5": "^8.0.0"
     },
