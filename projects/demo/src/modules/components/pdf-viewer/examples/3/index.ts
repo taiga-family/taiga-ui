@@ -30,9 +30,7 @@ export default class Example {
     protected open = false;
 
     protected readonly url = this.sanitizer.bypassSecurityTrustResourceUrl(
-        this.isMobile
-            ? `https://drive.google.com/viewerng/viewer?embedded=true&url=https://taiga-ui.dev/${this.pdf}`
-            : this.pdf,
+        'https://app.embedpdf.com/',
     );
 
     protected readonly loading = signal(true);

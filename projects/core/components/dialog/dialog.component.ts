@@ -5,7 +5,6 @@ import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -56,7 +55,6 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     },
 })
 export class TuiDialogComponent<O, I> {
-    private readonly el = tuiInjectElement();
     protected readonly close$ = new Subject<void>();
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
     protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
@@ -91,10 +89,6 @@ export class TuiDialogComponent<O, I> {
 
     protected get header(): PolymorpheusContent<TuiPopover<TuiDialogOptions<I>, O>> {
         return this.context.header;
-    }
-
-    protected get darkTheme(): boolean {
-        return !!this.el.closest('[tuiTheme="dark"]');
     }
 
     private close(): void {

@@ -27,6 +27,16 @@
         </span>
         <div class="t-actions">
             <ng-container [ngTemplateOutlet]="actions" />
+            <button
+                *ngIf="$any(context).closable || context.closeable"
+                appearance="glass"
+                tuiButtonClose
+                tuiIconButton
+                type="button"
+                (click)="context.$implicit.complete()"
+            >
+                {{ close() }}
+            </button>
         </div>
     </header>
 </ng-template>
