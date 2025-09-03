@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
 import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
 
 @Component({
     standalone: true,
@@ -25,5 +25,6 @@ export default class Page {
         'pdf-content.component.html': import('./examples/2/pdf-content/index.html?raw'),
         'pdf-content.component.less': import('./examples/2/pdf-content/index.less?raw'),
     };
+
     protected readonly routes = DemoRoute;
 }
