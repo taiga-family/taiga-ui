@@ -39,6 +39,7 @@ export function tuiDirectiveBinding<
         }
 
         if (isSignal(directive[key])) {
+            // @ts-ignore
             directive[key].set(value);
         } else {
             directive[key] = value;
