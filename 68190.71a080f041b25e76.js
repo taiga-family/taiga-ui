@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[68190],{68190:e=>{e.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\ndiv {\n    .text-overflow();\n\n    resize: horizontal;\n}\n"}}]);

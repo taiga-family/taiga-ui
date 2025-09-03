@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[76493],{76493:n=>{n.exports=":host {\n    display: block;\n}\n\n.more {\n    color: var(--tui-text-action);\n\n    &:focus {\n        color: var(--tui-text-action-hover);\n    }\n}\n"}}]);

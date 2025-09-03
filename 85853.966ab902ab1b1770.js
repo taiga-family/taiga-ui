@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85853],{85853:e=>{e.exports='<input\n    checked\n    tuiSwitch\n    type="checkbox"\n/>\n\n<tui-icon\n    icon="@tui.material.filled.favorite"\n    [style.color]="\'var(--tui-status-negative)\'"\n/>\n\n<img\n    alt=""\n    [src]="\'@tui.material.filled.delete\' | tuiIcon"\n/>\n'}}]);

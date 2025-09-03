@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[91150],{91150:e=>{e.exports='```html\n<div\n  class="wrapper"\n  [tuiTextfieldCleaner]="true"\n>\n  <tui-input>...</tui-input>\n</div>\n```\n'}}]);

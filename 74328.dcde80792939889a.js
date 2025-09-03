@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[74328],{74328:e=>{e.exports='```html\n<tui-textfield>\n  <label tuiLabel>Type a sum</label>\n\n  <input\n    formControlName="testValue"\n    tuiInputNumber\n    [prefix]="\'USD\' | tuiCurrency"\n  />\n</tui-textfield>\n```\n'}}]);

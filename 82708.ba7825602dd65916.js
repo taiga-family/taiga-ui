@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[82708],{82708:n=>{n.exports=":host {\n    ::ng-deep .width {\n        background: var(--tui-status-info-pale);\n    }\n\n    ::ng-deep .height {\n        background: var(--tui-status-positive-pale);\n    }\n}\n"}}]);

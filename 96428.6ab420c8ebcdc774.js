@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[96428],{96428:n=>{n.exports='Dropdown will be shown text selection:\n<p\n    tuiDropdown="&nbsp;&nbsp;Dropdown text&nbsp;&nbsp;"\n    tuiDropdownSelection\n    tuiDropdownSelectionPosition="selection"\n>\n    Select a text to see dropdown\n</p>\n'}}]);
