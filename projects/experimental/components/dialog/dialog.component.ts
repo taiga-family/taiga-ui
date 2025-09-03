@@ -11,6 +11,7 @@ import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/components/dialog';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
@@ -71,6 +72,7 @@ export class TuiDialogComponent<O, I> {
     protected readonly close$ = new Subject<void>();
     protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly el = tuiInjectElement();
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
 
     protected readonly sub = merge(
@@ -95,6 +97,10 @@ export class TuiDialogComponent<O, I> {
             !(this.context.content instanceof PolymorpheusOutlet) &&
             !(this.context.content instanceof PolymorpheusComponent)
         );
+    }
+
+    protected get darkTheme(): boolean {
+        return !!this.el.closest('[tuiTheme="dark"]');
     }
 }
 

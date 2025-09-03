@@ -1,10 +1,10 @@
 <tui-doc-page
     header="PdfViewer"
-    package="KIT"
+    package="EXPERIMENTAL"
     type="components"
 >
     <ng-template pageTab>
-        <p>Custom dialog to preview PDF</p>
+        <p>Wrapper component for viewing PDF files in an iframe</p>
 
         <tui-notification
             appearance="warning"
@@ -38,36 +38,52 @@
 
         <tui-doc-example
             id="base"
+            description="Note that you need to bypass sanitizer in order to use the URL so make sure you trust it"
             heading="Basic"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
         />
 
         <tui-doc-example
-            id="component"
-            heading="Component"
+            id="responsive"
+            heading="With responsive dialog"
             [component]="2 | tuiComponent"
-            [content]="example2"
+            [content]="2 | tuiExample"
+            [description]="responsive"
         />
+
+        <ng-template #responsive>
+            Use
+            <code>ResponsiveDialog</code>
+            to display iframe in a
+            <code>BottomSheet</code>
+            on mobile devices
+        </ng-template>
+
+        <ng-template #states>
+            Use
+            <code>tui-loader</code>
+            and
+            <code>tui-block-status</code>
+            to display additional states
+        </ng-template>
 
         <tui-doc-example
-            id="directive"
-            heading="Directive"
+            id="states"
+            heading="Loading and error states"
             [component]="3 | tuiComponent"
             [content]="3 | tuiExample"
+            [description]="states"
         />
+
+        <ng-template #states>
+            Use
+            <code>tui-loader</code>
+            and
+            <code>tui-block-status</code>
+            to display additional states
+        </ng-template>
     </ng-template>
 
-    <ng-template pageTab="Setup">
-        <ol class="tui-list tui-list_ordered">
-            <li class="tui-list__item">
-                Inject service and show dialog:
-
-                <tui-doc-code
-                    filename="my.component.ts"
-                    [code]="exampleService"
-                />
-            </li>
-        </ol>
-    </ng-template>
+    <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>

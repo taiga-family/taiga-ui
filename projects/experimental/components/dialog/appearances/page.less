@@ -1,0 +1,31 @@
+&[data-appearance~='page'] {
+    block-size: 100%;
+    inline-size: 100%;
+    background: var(--tui-background-base);
+    box-shadow: none;
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+
+    // Replace with :has when it's supported
+    //&:has(tui-app-bar) .t-close {
+    &.tui-app-bar .t-close {
+        display: none;
+    }
+
+    &:not(._closable):not(.tui-app-bar)::before {
+        content: '';
+        block-size: 1.5rem;
+    }
+
+    tui-root._mobile & {
+        > tui-app-bar,
+        > ng-component > tui-app-bar {
+            margin: calc(-1 * env(safe-area-inset-top)) 0 1rem;
+            padding-block-start: env(safe-area-inset-top);
+            box-sizing: content-box;
+        }
+    }
+}
