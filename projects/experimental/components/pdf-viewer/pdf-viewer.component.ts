@@ -11,7 +11,7 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {type TuiDialogOptions} from '@taiga-ui/core/components/dialog';
-import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
+import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiButtonClose} from '@taiga-ui/kit/directives/button-close';
 import {TuiAppBar} from '@taiga-ui/layout/components/app-bar';
 import {injectContext} from '@taiga-ui/polymorpheus';
@@ -25,14 +25,10 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiButtonOptionsProvider(() => {
-            const mobile = inject(TUI_IS_MOBILE);
-
-            return {
-                appearance: mobile ? 'action' : 'glass',
-                size: 's',
-            };
-        }),
+        tuiButtonOptionsProvider(() => ({
+            appearance: inject(TUI_IS_MOBILE) ? 'action' : 'glass',
+            size: 's',
+        })),
     ],
     host: {
         '[attr.tuiTheme]': 'isMobile ? "" : "dark"',
@@ -42,6 +38,6 @@ export class TuiPdfViewerComponent<O, I> {
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly el = tuiInjectElement();
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
-
     protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
+    protected readonly icons = inject(TUI_COMMON_ICONS);
 }

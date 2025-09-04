@@ -25,19 +25,19 @@
         <span class="t-title">
             <ng-container [ngTemplateOutlet]="content" />
         </span>
-        <div class="t-actions">
-            <ng-container [ngTemplateOutlet]="actions" />
-            <button
-                *ngIf="$any(context).closable || context.closeable"
-                appearance="glass"
-                tuiButtonClose
-                tuiIconButton
-                type="button"
-                (click)="context.$implicit.complete()"
-            >
-                {{ close() }}
-            </button>
-        </div>
+        <ng-container [ngTemplateOutlet]="actions" />
+        <button
+            *ngIf="$any(context).closable || context.closeable"
+            appearance="glass"
+            size="s"
+            tuiIconButton
+            type="button"
+            [iconStart]="icons.close"
+            [style.border-radius.%]="100"
+            (click)="context.$implicit.complete()"
+        >
+            {{ close() }}
+        </button>
     </header>
 </ng-template>
 

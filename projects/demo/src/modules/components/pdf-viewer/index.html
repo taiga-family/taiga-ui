@@ -54,18 +54,21 @@
 
         <ng-template #responsive>
             Use
-            <code>ResponsiveDialog</code>
+            <a
+                fragment="responsive"
+                tuiLink
+                [routerLink]="routes.SheetDialog"
+            >
+                ResponsiveDialog
+            </a>
             to display iframe in a
-            <code>BottomSheet</code>
+            <a
+                tuiLink
+                [routerLink]="routes.SheetDialog"
+            >
+                SheetDialog
+            </a>
             on mobile devices
-        </ng-template>
-
-        <ng-template #states>
-            Use
-            <code>tui-loader</code>
-            and
-            <code>tui-block-status</code>
-            to display additional states
         </ng-template>
 
         <tui-doc-example
@@ -78,9 +81,19 @@
 
         <ng-template #states>
             Use
-            <code>tui-loader</code>
+            <a
+                tuiLink
+                [routerLink]="routes.Loader"
+            >
+                Loader
+            </a>
             and
-            <code>tui-block-status</code>
+            <a
+                tuiLink
+                [routerLink]="routes.BlockStatus"
+            >
+                BlockStatus
+            </a>
             to display additional states
         </ng-template>
     </ng-template>

@@ -1,24 +1,36 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 tui-pdf-viewer {
-    display: block;
-    inline-size: 100%;
-    block-size: 100vh;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    inline-size: 100vw;
+    block-size: 100%;
+    flex: 1;
     box-sizing: border-box;
     color: var(--tui-text-primary);
-    padding-block-start: env(safe-area-inset-top);
-    padding-block-end: env(safe-area-inset-bottom);
 
-    --t-header: 4rem;
+    --t-header: 3.5rem;
 
     tui-root:not(._mobile) & {
-        background: var(--tui-background-accent-on-light, rgba(0, 0, 0, 1));
+        background: #000;
+    }
+
+    tui-root:not(._mobile) tui-dialog:not([new]) & {
+        block-size: 100vh;
+    }
+
+    tui-root:not(._mobile) tui-dialog[new] & {
+        margin: -6rem calc(-1 * calc(50vw - var(--tui-width) / 2)) -2rem;
     }
 
     tui-root._mobile tui-dialog & {
         --t-header: 2.5rem;
 
-        tui-app-bar[data-size] {
+        margin: 0 -1rem -1rem;
+
+        tui-app-bar {
             margin: calc(-1 * env(safe-area-inset-top)) 0 0;
         }
     }
@@ -26,23 +38,19 @@ tui-pdf-viewer {
     tui-sheet-dialog & {
         --t-header: 4.5rem;
 
-        tui-app-bar {
-            margin: -1rem -1rem 0;
-        }
+        margin: 0 -1rem -1.5rem;
 
-        .t-content {
-            margin: 0 -1rem;
-            inline-size: 100vw;
+        tui-app-bar {
+            margin: -1rem 0 0;
         }
     }
 
     .t-header {
-        position: relative;
-        z-index: 1;
         display: flex;
+        gap: 0.5rem;
         align-items: center;
-        block-size: 4rem;
-        padding: 0 0.5rem 0 1rem;
+        block-size: var(--t-header);
+        padding: 0 0.75rem 0 1rem;
     }
 
     .t-title {
@@ -50,19 +58,12 @@ tui-pdf-viewer {
         font: var(--tui-font-text-m);
         white-space: nowrap;
         text-overflow: ellipsis;
-        overflow: hidden;
-    }
-
-    .t-actions {
-        display: flex;
-        gap: 0.5rem;
-        margin-inline-start: auto;
-        margin-inline-end: 0.5rem;
+        margin-inline-end: auto;
     }
 
     .t-content {
         display: flex;
-        block-size: calc(100% - var(--t-header));
+        flex: 1;
         overflow: hidden;
         justify-content: center;
     }
@@ -75,6 +76,6 @@ tui-pdf-viewer {
 
     iframe {
         inline-size: 100%;
-        block-size: 100%;
+        border: none;
     }
 }
