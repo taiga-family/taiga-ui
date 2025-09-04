@@ -28,6 +28,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {TUI_INPUT_COLOR_OPTIONS, type TuiInputColorOptions} from './input-color.options';
 
 const REGEX = /[0-9a-fA-F]/;
+const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></svg>"';
 
 @Component({
     standalone: true,
@@ -59,15 +60,12 @@ export class TuiInputColor extends TuiControl<string> {
     protected readonly list = this.el.getAttribute('list');
     protected readonly format = signal(this.options.format);
     protected readonly align = signal<TuiHorizontalDirection>(this.options.align);
+    protected readonly left = inject(TuiIcons).iconStart();
 
     protected readonly icon = tuiDirectiveBinding(
         TuiIcons,
         'iconStart',
-        computed(() =>
-            this.align() === 'left'
-                ? '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></svg>"'
-                : '',
-        ),
+        computed(() => (this.align() === 'left' ? EMPTY : this.left)),
         {},
     );
 
