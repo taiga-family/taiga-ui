@@ -3,7 +3,9 @@ import 'zone.js/node';
 import {existsSync} from 'node:fs';
 import {join} from 'node:path';
 
+import {APP_BASE_HREF} from '@angular/common';
 import {CommonEngine} from '@angular/ssr';
+import {provideLocation, provideUserAgent} from '@ng-web-apis/universal';
 import express from 'express';
 
 import bootstrap from './src/main.server';
@@ -32,6 +34,11 @@ if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
                 bootstrap,
                 documentFilePath: join(dist, indexHtml),
                 url: req.originalUrl,
+                providers: [
+                    {provide: APP_BASE_HREF, useValue: req.baseUrl || '/'},
+                    provideLocation(req),
+                    provideUserAgent(req),
+                ],
             });
 
             res.status(200).send(html);
