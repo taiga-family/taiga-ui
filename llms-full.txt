@@ -3298,9 +3298,9 @@ Confirm is a ready to use
 | Property | Type | Description |
 |----------|-----|----------|
 | content | `PolymorpheusContent` | Content of the confirm |
-| appearance | `string` | Appearance of the confirming button |
-| no | `string` | Text on false button |
-| yes | `string` | Text on true button |
+| [appearance] | `string` | Appearance of the confirming button |
+| [no] | `string` | button |
+| [yes] | `string` | button |
 
 ### TypeScript
 
@@ -3452,8 +3452,8 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| emptyContent | `PolymorpheusContent` | Content to display when there are no options inside |
-| size | `TuiSizeS | TuiSizeL` | Size of items |
+| [emptyContent] | `PolymorpheusContent` | Content to display when there are no options inside |
+| [size] | `TuiSizeS | TuiSizeL` | Size of items |
 
 ### TypeScript
 
@@ -4123,7 +4123,7 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| error | `TuiValidationError | string | null` | Active state for routerLinkActive , for example |
+| [error] | `TuiValidationError | string | null` | Error value (string, HTML via TemplateRef or TuiValidationError) |
 
 ### TypeScript
 
@@ -8418,21 +8418,21 @@ export class Example {}
 ### Example
 
 ```html
-<tui-mobile-calendar class="calendar" [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [multi]="multi" [single]="single" (cancel)="documentationPropertyCancel.emitEvent($event)" (confirm)="documentationPropertyConfirm.emitEvent($event)" />
+<tui-mobile-calendar class="calendar" [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [multi]="multi" [single]="single" />
 ```
 
 ### API
 
 | Property | Type | Description |
 |----------|-----|----------|
-| value | `TuiDay | TuiDayRange | readonly TuiDay[] | null` | Value |
-| disabledItemHandler | `TuiBooleanHandler<TuiDay>` | " [documentationPropertyValues]="disabledItemHandlerVariants" [(documentationPropertyValue)]="disabledItemHandler" > A handler that gets a date and returns true if it is disabled. Must be a pure function |
-| max | `TuiDay` | Max date |
-| min | `TuiDay` | Min date |
-| multi | `boolean` | Array of single dates |
-| cancel | `void` | "Cancel" clicked |
-| confirm | `TuiDayRange | TuiDay` | "Confirm" button clicked |
-| single | `boolean` | Single date or a range Use tuiCalendarSheetOptionsProvider(&#123;rangeMode: boolean"&#125;) instead |
+| [(value)] | `TuiDay | TuiDayRange | readonly TuiDay[] | null` | Value |
+| [disabledItemHandler] | `TuiBooleanHandler<TuiDay>` |  |
+| [max] | `TuiDay` | Max date |
+| [min] | `TuiDay` | Min date |
+| [multi] | `boolean` | Array of single dates |
+| (cancel) | `void` | Output when user clicks Cancel |
+| (confirm) | `TuiDayRange | TuiDay` | Output when user clicks Confirm (range or single day) |
+| [single] | `boolean` |  |
 
 ### TypeScript
 
@@ -8912,12 +8912,12 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| focusable | `boolean` | Accepts focus with keyboard |
-| index | `number` | Active page index |
-| length | `number` | Total pages count |
-| size | `TuiSizeS | TuiSizeL` | Size |
-| activePadding | `number` | Amount of visible pages around active page |
-| sidePadding | `number` | Amount of visible pages at the edges |
+| [focusable] | `boolean` | Accepts focus with keyboard |
+| [(index)] | `number` | Active page index |
+| [length] | `number` | Total pages count |
+| [size] | `TuiSizeS | TuiSizeL` | Size |
+| [activePadding] | `number` | Amount of visible pages around active page |
+| [sidePadding] | `number` | Amount of visible pages at the edges |
 
 ### TypeScript
 
@@ -9325,10 +9325,10 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| value | `number` | Native attribute value of '"> |
-| max | `number` | Native attribute max of '"> |
-| size | `TuiSizeXS | TuiSizeXXL` | Size of the progress element |
-| color | `string` | Color of the progress indicator We recommend set solid color via '"> 's CSS-property color (especially, if you support old not-chromium based Edge) |
+| [value] | `number` |  |
+| [max] | `number` |  |
+| [size] | `TuiSizeXS | TuiSizeXXL` | Size of the progress element |
+| [color] | `string` |  |
 
 ### TypeScript
 
@@ -11414,10 +11414,10 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| columns | `readonly string[]` | An array of keys to set up columns order |
-| size | `TuiSizeS | TuiSizeL` | Cells size |
-| sorter | `TuiComparator<T>` | " > Sort function (basic JavaScript array sort API) |
-| direction | `-1 | 1` | Direction for sorting |
+| [columns] | `readonly string[]` | An array of keys to set up columns order |
+| [size] | `TuiSizeS | TuiSizeL` | Cells size |
+| [(sorter)] | `TuiComparator<T>` | Sort function (basic JavaScript array sort API) |
+| [(direction)] | `-1 | 1` | Direction for sorting |
 
 ### TypeScript
 
@@ -12709,9 +12709,9 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiAppearance | `string` | Appearance (use appearance selector instead of tuiAppearance when used on a component that has such input due to hostDirectives ) |
-| tuiAppearanceFocus | `boolean | null` | Manual override of focused state |
-| tuiAppearanceState | `TuiInteractiveState | null` | Manual override of interactive state |
+| [tuiAppearance] | `string` | when host component already exposes it via hostDirectives) |
+| [tuiAppearanceFocus] | `boolean | null` | Manual override of focused state |
+| [tuiAppearanceState] | `TuiInteractiveState | null` | Manual override of interactive state |
 
 ### TypeScript
 
@@ -13704,10 +13704,10 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiFade | `TuiOrientation` | Orientation of the fade |
-| tuiFadeHeight | `string` | Line height (required for multiline text fade) |
-| tuiFadeOffset | `string` | Offset from the edge for the fade to start |
-| tuiFadeSize | `string` | Size of the fade |
+| [tuiFade] | `TuiOrientation` | Orientation of the fade |
+| [tuiFadeHeight] | `string` | Line height (required for multiline text fade) |
+| [tuiFadeOffset] | `string` | Offset from the edge for the fade to start |
+| [tuiFadeSize] | `string` | Size of the fade |
 
 ### TypeScript
 
@@ -13929,9 +13929,9 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiHint | `PolymorpheusContent` | Content |
-| tuiHintShowDelay | `number` | Show Delay |
-| tuiHintHideDelay | `number` | Hide Delay |
+| [tuiHint] | `PolymorpheusContent` | Content |
+| [tuiHintShowDelay] | `number` | Show delay (ms) |
+| [tuiHintHideDelay] | `number` | Hide delay (ms) |
 
 ### TypeScript
 
@@ -14009,8 +14009,8 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiHint | `PolymorpheusContent` | Content |
-| tuiHintDescribe | `string` | Id of the element |
+| [tuiHint] | `PolymorpheusContent` | Content |
+| [tuiHintDescribe] | `string` | Id of the element |
 
 ### TypeScript
 
@@ -14095,8 +14095,8 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiHint | `PolymorpheusContent` | Content |
-| tuiHintManual | `boolean` | Show/hide hint |
+| [tuiHint] | `PolymorpheusContent` | Content |
+| [tuiHintManual] | `boolean` | Show/hide hint |
 
 ### TypeScript
 
@@ -14302,10 +14302,10 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| currentTime | `number` | Current time |
-| paused | `boolean` | Paused state |
-| playbackRate | `number` | Playback speed |
-| volume | `number` | Volume |
+| [(currentTime)] | `number` | Current time (seconds) |
+| [(paused)] | `boolean` | Paused state |
+| [playbackRate] | `number` | Playback speed |
+| [(volume)] | `number` | Volume |
 
 ### TypeScript
 
@@ -14746,7 +14746,7 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiSensitive | `boolean` | Sensitive mode |
+| [tuiSensitive] | `boolean` | Sensitive mode |
 
 ### TypeScript
 
