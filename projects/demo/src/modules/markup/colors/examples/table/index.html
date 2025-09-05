@@ -7,7 +7,7 @@
             <h3 class="name">
                 <tui-doc-copy
                     class="copy"
-                    [cdkCopyToClipboard]="'var(' + color + ')'"
+                    [cdkCopyToClipboard]="`var(${color})`"
                 >
                     Copy
                 </tui-doc-copy>
@@ -17,7 +17,7 @@
         <td class="circle">
             <div
                 class="demo"
-                [style.background]="'var(' + color + ')'"
+                [style.background]="`var(${color})`"
             ></div>
         </td>
         <td>

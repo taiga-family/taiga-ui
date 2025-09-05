@@ -249,7 +249,7 @@
                             *ngFor="let item of customContentData"
                             size="s"
                             [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
-                            [tuiHint]="'Balance: ' + item.balance + '. Role: ' + item.role"
+                            [tuiHint]="`Balance: ${item.balance}. Role: ${item.role}`"
                         >
                             {{ item.firstName }}
                             {{ item.lastName }}

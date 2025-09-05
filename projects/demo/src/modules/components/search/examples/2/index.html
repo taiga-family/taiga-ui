@@ -62,7 +62,7 @@
                 type="reset"
                 [disabled]="!count()"
             >
-                Clear {{ count() ? '(' + count() + ')' : '' }}
+                Clear {{ count() ? `(${count()})` : '' }}
             </button>
             <button
                 iconStart="@tui.cloud-download"

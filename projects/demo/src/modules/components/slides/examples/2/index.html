@@ -14,7 +14,7 @@
             tuiCardLarge
             tuiForm
             [formGroup]="form"
-            [id]="'form_' + i"
+            [id]="`form_${i}`"
             (ngSubmit)="onSubmit()"
         >
             <header tuiHeader>
@@ -48,7 +48,7 @@
     <button
         tuiButton
         type="submit"
-        [attr.form]="'form_' + index"
+        [attr.form]="`form_${index}`"
     >
         Next
     </button>
