@@ -66,20 +66,21 @@ export class TuiTreeItem implements DoCheck {
         forwardRef(() => TUI_TREE_CONTENT),
     );
 
-    protected readonly expanded = toSignal(
-        this.change$.pipe(
-            startWith(null),
-            map(() => this.isExpanded),
-        ),
-        {initialValue: this.isExpanded},
-    );
-
     protected readonly attached = toSignal(
         this.change$.pipe(
             map(() => this.el.isConnected),
             distinctUntilChanged(),
         ),
         {initialValue: this.el.isConnected},
+    );
+
+    public readonly expanded = toSignal(
+        this.change$.pipe(
+            startWith(null),
+            map(() => this.isExpanded),
+            distinctUntilChanged(),
+        ),
+        {initialValue: this.isExpanded},
     );
 
     public get isExpandable(): boolean {
