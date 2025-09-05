@@ -14172,9 +14172,9 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| tuiHint | `PolymorpheusContent` | Hint content |
-| tuiHintShowDelay | `number` | Show Delay |
-| tuiHintHideDelay | `number` | Hide Delay |
+| [tuiHint] | `PolymorpheusContent` | Hint content |
+| [tuiHintShowDelay] | `number` | Show delay (ms) |
+| [tuiHintHideDelay] | `number` | Hide delay (ms) |
 
 ### TypeScript
 
@@ -14553,11 +14553,11 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| segments | `number` | A number of visual segments. It must be a valid integer number between 0 and max . |
-| value | `number` | This property specifies how much of the task that has been completed. It must be a valid integer number between 0 and max . |
-| max | `number` | This property describes how much work the task indicated by the progress element requires. It must be a valid positive integer number. The default value is 1 . |
-| size | `TuiSizeXS | TuiSizeXXL` | Height of the progress. |
-| tuiProgressColorSegments | `string[]` | Colors of the progress segments. Use CSS-property color to set single solid color of progress indicator. |
+| [segments] | `number` |  |
+| [value] | `number` |  |
+| [max] | `number` |  |
+| [size] | `TuiSizeXS | TuiSizeXXL` | Height of the progress |
+| [tuiProgressColorSegments] | `string[]` |  |
 
 ### TypeScript
 
