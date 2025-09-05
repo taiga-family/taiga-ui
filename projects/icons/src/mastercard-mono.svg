@@ -3,7 +3,6 @@
     overflow="visible"
     viewBox="0 0 32 32"
     style="width: inherit; height: inherit; max-width: 2rem; max-height: 2rem"
-    preserveAspectRatio="xMidYMid meet"
 >
     <path
         clip-rule="evenodd"
