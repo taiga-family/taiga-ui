@@ -4,7 +4,6 @@ import {
     Component,
     computed,
     inject,
-    untracked,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
@@ -74,7 +73,7 @@ export class TuiDropdownComponent implements AfterViewInit {
     protected readonly options = inject(TUI_DROPDOWN_OPTIONS);
     protected readonly directive = inject(TuiDropdownDirective);
     protected readonly context = inject(TUI_DROPDOWN_CONTEXT, {optional: true});
-    protected readonly darkMode = untracked(() => inject(TUI_DARK_MODE));
+    protected readonly darkMode = inject(TUI_DARK_MODE);
     protected readonly position = this.directive.position;
     protected readonly theme = computed((_ = this.darkMode()) =>
         this.directive.el.closest('[tuiTheme]')?.getAttribute('tuiTheme'),
