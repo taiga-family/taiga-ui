@@ -14,9 +14,9 @@
     "repository": "https://github.com/taiga-family/taiga-ui",
     "license": "Apache-2.0",
     "peerDependencies": {
-        "@angular/common": ">=18.0.0",
-        "@angular/core": ">=18.0.0",
-        "@angular/forms": ">=18.0.0",
+        "@angular/common": ">=19.0.0",
+        "@angular/core": ">=19.0.0",
+        "@angular/forms": ">=19.0.0",
         "@maskito/angular": "^3.10.3",
         "@maskito/core": "^3.10.3",
         "@maskito/kit": "^3.10.3",
