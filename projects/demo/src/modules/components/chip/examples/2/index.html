@@ -85,3 +85,28 @@
         </button>
     </tui-chip>
 </section>
+
+<section>
+    <tui-chip
+        *ngFor="let size of sizes"
+        [size]="size"
+    >
+        Badge
+
+        <tui-badge
+            *ngIf="size !== 'xxs'"
+            appearance="primary"
+            [size]="size === 'm' ? 'm' : 's'"
+        >
+            1
+        </tui-badge>
+
+        <button
+            iconStart="@tui.x"
+            tuiIconButton
+            type="button"
+        >
+            Remove
+        </button>
+    </tui-chip>
+</section>
