@@ -22,9 +22,7 @@
         tuiTheme="dark"
         class="t-header"
     >
-        <span class="t-title">
-            <ng-container [ngTemplateOutlet]="content" />
-        </span>
+        <ng-container [ngTemplateOutlet]="content" />
         <ng-container [ngTemplateOutlet]="actions" />
         <button
             *ngIf="$any(context).closable || context.closeable"
