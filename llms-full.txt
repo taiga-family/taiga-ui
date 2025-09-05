@@ -11577,18 +11577,18 @@ export class Example {}
 ### Example
 
 ```html
-<tui-table-pagination [items]="items" [page]="page" [size]="size" [total]="total" (paginationChange)="documentationPropertyPaginationChange.emitEvent($event); update($event)" />
+<tui-table-pagination [items]="items" [page]="page" [size]="size" [total]="total" (paginationChange)="paginationChange.emitEvent($event); update($event)" />
 ```
 
 ### API
 
 | Property | Type | Description |
 |----------|-----|----------|
-| total | `number` | Total amount of items/lines in the table. |
-| size | `number` | Items/Lines per page. Uses the first element inside items by default. |
-| page | `number` | Current page. Indexing starts at zero. |
-| items | `readonly number[]` | Options to select amount of lines per page. |
-| paginationChange | `TuiTablePagination` | Event emits when page or size changes. |
+| [total] | `number` | Total amount of items/lines in the table. |
+| [size] | `number` |  |
+| [page] | `number` |  |
+| [items] | `readonly number[]` | Options to select amount of lines per page. |
+| (paginationChange) | `TuiTablePagination` | changes. |
 
 ### TypeScript
 
