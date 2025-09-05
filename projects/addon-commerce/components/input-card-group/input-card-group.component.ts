@@ -29,13 +29,12 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_NO_BREAK_SPACE, TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
 import {tuiHovered, TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE, TUI_IS_WEBKIT} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiFocusedIn, tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
@@ -62,7 +61,7 @@ import {
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {EMPTY, map, merge, Subject, switchMap, timer} from 'rxjs';
+import {EMPTY, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_INPUT_CARD_GROUP_OPTIONS} from './input-card-group.options';
 import {TUI_INPUT_CARD_GROUP_TEXTS} from './input-card-group.providers';
@@ -133,13 +132,7 @@ export class TuiInputCardGroup
     private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly hover = tuiHovered();
-    private readonly focusedIn = toSignal(
-        merge(
-            tuiTypedFromEvent(this.el, 'focusin'),
-            tuiTypedFromEvent(this.el, 'focusout'),
-        ).pipe(map(() => tuiIsNativeFocusedIn(this.el))),
-        {initialValue: false},
-    );
+    private readonly focusedIn = tuiFocusedIn(this.el);
 
     protected exampleTextCVC = this.options.exampleTextCVC;
     protected cvcHidden = this.options.cvcHidden;
