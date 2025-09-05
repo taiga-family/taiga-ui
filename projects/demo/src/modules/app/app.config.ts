@@ -251,7 +251,7 @@ export const config: ApplicationConfig = {
                 import(
                     /* webpackMode: "lazy" */
                     /* webpackChunkName: "i18n-lazy-" */
-                    `dist/i18n/esm2022/languages/${language}`
+                    `dist/i18n/fesm2022/taiga-ui-i18n-languages-${language}.mjs`
                 ),
         ),
         provideZoneChangeDetection({

@@ -14,9 +14,9 @@
         "./styles/*": "./styles/*"
     },
     "peerDependencies": {
-        "@angular/cdk": ">=18.0.0",
-        "@angular/common": ">=18.0.0",
-        "@angular/core": ">=18.0.0",
+        "@angular/cdk": ">=19.0.0",
+        "@angular/common": ">=19.0.0",
+        "@angular/core": ">=19.0.0",
         "@ng-web-apis/common": "^4.12.0",
         "@taiga-ui/cdk": "^4.52.0",
         "@taiga-ui/core": "^4.52.0",
