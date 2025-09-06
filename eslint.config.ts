@@ -34,6 +34,17 @@ export default process.env.HTML_ESLINT
                       'error',
                       {countVoidThis: true, max: 5},
                   ],
+                  // TODO enable after fixing all issues
+                  '@angular-eslint/prefer-signals': 'off',
+                  '@angular-eslint/template/prefer-control-flow': 'off',
+                  '@angular-eslint/consistent-component-styles': 'off',
+              },
+          },
+          {
+              files: ['**/*.html'],
+              rules: {
+                  // TODO enable after fixing all issues
+                  '@angular-eslint/template/prefer-control-flow': 'off',
               },
           },
       ];

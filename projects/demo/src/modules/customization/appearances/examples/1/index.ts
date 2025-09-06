@@ -11,12 +11,12 @@ import {
     TuiTextfield,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
-import {TuiCheckbox, tuiCheckboxOptionsProvider, TuiStep} from '@taiga-ui/kit';
+import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
     selector: 'tui-wrapper-example-1',
-    imports: [FormsModule, TuiButton, TuiCheckbox, TuiStep, TuiTextfield],
+    imports: [FormsModule, TuiButton, TuiCheckbox, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation: ViewEncapsulation.None,
