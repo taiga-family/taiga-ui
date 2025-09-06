@@ -4,7 +4,7 @@ import {existsSync} from 'node:fs';
 import {join} from 'node:path';
 
 import {APP_BASE_HREF} from '@angular/common';
-import {CommonEngine} from '@angular/ssr';
+import {CommonEngine} from '@angular/ssr/node';
 import {provideLocation, provideUserAgent} from '@ng-web-apis/universal';
 import express from 'express';
 
