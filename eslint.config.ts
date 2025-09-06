@@ -38,7 +38,6 @@ export default process.env.HTML_ESLINT
                   '@angular-eslint/prefer-signals': 'off',
                   '@angular-eslint/template/prefer-control-flow': 'off',
                   '@angular-eslint/consistent-component-styles': 'off',
-                  '@angular-eslint/template/prefer-template-literal': 'off',
               },
           },
           {
