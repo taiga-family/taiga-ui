@@ -4,7 +4,7 @@ import {
     PathLocationStrategy,
     ViewportScroller,
 } from '@angular/common';
-import {HttpClient, provideHttpClient} from '@angular/common/http';
+import {HttpClient, provideHttpClient, withFetch} from '@angular/common/http';
 import {
     type ApplicationConfig,
     inject,
@@ -79,7 +79,7 @@ export const config: ApplicationConfig = {
         NG_EVENT_PLUGINS,
         tuiEnableFontScaling(),
         tuiNotificationOptionsProvider({size: 'm'}),
-        provideHttpClient(),
+        provideHttpClient(withFetch()),
         {
             provide: ViewportScroller,
             useClass: TuiViewportScroller,
