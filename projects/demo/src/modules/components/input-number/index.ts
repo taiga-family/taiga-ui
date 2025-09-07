@@ -1,13 +1,14 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiHint, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
@@ -19,14 +20,12 @@ import {TuiInputNumber} from '@taiga-ui/kit';
         TuiDocIcons,
         TuiDocNumberFormat,
         TuiDocTextfield,
-        TuiHint,
         TuiInputNumber,
         TuiNumberFormat,
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
-    encapsulation: ViewEncapsulation.None,
+    encapsulation,
     changeDetection,
 })
 export default class PageComponent {

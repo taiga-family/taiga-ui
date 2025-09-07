@@ -1,5 +1,6 @@
-import {Component, signal, ViewEncapsulation} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton} from '@taiga-ui/core';
@@ -9,7 +10,7 @@ import {TuiNotificationMiddle} from '@taiga-ui/kit';
     standalone: true,
     imports: [TuiButton, TuiDemo, TuiNotificationMiddle],
     templateUrl: './index.html',
-    encapsulation: ViewEncapsulation.None,
+    encapsulation,
     changeDetection,
 })
 export default class Page {

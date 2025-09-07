@@ -4,6 +4,8 @@ import {TuiButton, TuiDialogService} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
+    // TODO: Drop selector after exportAs loader is fixed
+    selector: 'dialog-10',
     imports: [TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
