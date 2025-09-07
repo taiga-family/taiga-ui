@@ -21,8 +21,9 @@
         </ng-container>
     </h2>
     <div class="t-content">
-        <ng-container *polymorpheusOutlet="context.content as text; context: context">
-            {{ text }}
-        </ng-container>
+        <div
+            *polymorpheusOutlet="context.content as text; context: context"
+            [innerHTML]="text"
+        ></div>
     </div>
 </div>
