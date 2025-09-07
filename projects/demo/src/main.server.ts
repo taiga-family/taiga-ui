@@ -5,13 +5,13 @@ import {
     mergeApplicationConfig,
 } from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
+import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideServerRendering, ServerModule} from '@angular/platform-server';
 import {UNIVERSAL_PROVIDERS} from '@ng-web-apis/universal';
 
 import {App} from './modules/app/app.component';
 import {config} from './modules/app/app.config';
 import {ServerErrorHandler} from './modules/app/server-error-handler';
-import {provideAnimations} from '@angular/platform-browser/animations';
 
 const serverConfig = mergeApplicationConfig(config, {
     providers: [
