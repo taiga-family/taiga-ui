@@ -22,7 +22,7 @@ interface StressScenario {
 const INTENSITY = Math.max(1, Number(process.env.STRESS_INTENSITY || '2'));
 
 const LOOPS = 3;
-// Reduced per-scenario repeats to cut runtime while still generating ample trace events
+
 const OPEN_CLOSE_R = 2 * INTENSITY;
 const FILTER_R = INTENSITY;
 const REPOSITION_R = 2 * INTENSITY;

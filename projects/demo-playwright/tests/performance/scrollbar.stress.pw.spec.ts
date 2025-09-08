@@ -9,7 +9,7 @@ import {expect, test} from '@playwright/test';
 test.describe('TuiScrollbar Stress Tests', () => {
     let documentationPage: TuiDocumentationPagePO;
 
-    const STRESS_FACTOR = 3; // fixed deterministic factor (removed PERF_STRESS_FACTOR env dependency)
+    const STRESS_FACTOR = 3;
 
     const createPRNG = (seed = 42): (() => number) => {
         let state = seed % 2147483647;
