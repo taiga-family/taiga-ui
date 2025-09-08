@@ -1,6 +1,7 @@
-import {type Page} from '@playwright/test';
+import {type CDPSession, type Page} from '@playwright/test';
+import {mkdirSync} from 'fs';
 import {writeFile} from 'fs/promises';
-import {resolve} from 'path';
+import {join, resolve} from 'path';
 
 /**
  * Performance event from CDP tracing
@@ -21,6 +22,10 @@ interface PerformanceMetrics {
     recalcStyleCount: number;
     layoutDuration: number;
     recalcStyleDuration: number;
+    layoutAvgPerOp: number;
+    recalcAvgPerOp: number;
+    layoutMedianPerOp: number;
+    recalcMedianPerOp: number;
 }
 
 /**
@@ -31,58 +36,90 @@ export class PerformanceCollector {
     private static readonly activeCollections = new Map<
         string,
         {
-            client: any;
+            client: CDPSession;
             events: PerformanceEvent[];
             startTime: number;
             testFile?: string;
         }
     >();
 
-    /**
-     * Starts performance collection for a specific test
-     */
+    private static readonly outputDir = resolve(
+        process.cwd(),
+        'projects/demo-playwright/tests-results',
+        'performance',
+    );
+
+    private static startStopLock: Promise<void> = Promise.resolve();
+    private static dirReady = false;
+
     public static async startTestCollection(
         page: Page,
         testName: string,
         testFile?: string,
     ): Promise<void> {
         try {
-            // eslint-disable-next-line no-console
-            console.log(`🎯 Starting CDP tracing for test: ${testName}`);
+            await this.withLock(async () => {
+                await this.stabilizePage(page);
+                const client = await page.context().newCDPSession(page);
+                const events: PerformanceEvent[] = [];
+                const rawEvents: PerformanceEvent[] = [];
 
-            const client = await page.context().newCDPSession(page);
-            const events: PerformanceEvent[] = [];
+                client.on('Tracing.dataCollected', (data: any) => {
+                    if (data.value && Array.isArray(data.value)) {
+                        for (const ev of data.value as PerformanceEvent[]) {
+                            rawEvents.push(ev);
 
-            // Set up event collection (same as scrollbar-performance.pw.spec.ts)
-            client.on('Tracing.dataCollected', (data: any) => {
-                if (data.value && Array.isArray(data.value)) {
-                    events.push(...data.value);
+                            if (this.isRelevantEvent(ev)) {
+                                events.push(ev);
+                            }
+                        }
+                    }
+                });
+                await client.send('Runtime.enable');
+                await client.send('Runtime.runIfWaitingForDebugger');
+                await client.send('Tracing.start', {
+                    transferMode: 'ReportEvents',
+                    traceConfig: {
+                        recordMode: 'recordContinuously',
+                        includedCategories: [
+                            'devtools.timeline',
+                            'toplevel',
+                            'blink.user_timing',
+                        ],
+                        excludedCategories: [
+                            'devtools.screenshot',
+                            'v8.execute',
+                            'v8.compile',
+                            'v8.gc',
+                        ],
+                    },
+                });
+                await page.waitForTimeout(80);
+                await page.evaluate(async () => {
+                    await new Promise<void>((resolve) =>
+                        requestAnimationFrame(() => resolve()),
+                    );
+                });
+
+                await this.warmUpMeasurement(page);
+
+                this.activeCollections.set(testName, {
+                    client,
+                    events,
+                    startTime: Date.now(),
+                    testFile,
+                });
+
+                if (process.env.PERF_COLLECTOR_DEBUG === '1') {
+                    console.info(
+                        '[PerformanceCollector][debug] start collected (pre-loop)',
+                        {
+                            events: events.length,
+                            test: testName,
+                        },
+                    );
                 }
             });
-
-            // Start tracing with the same parameters as scrollbar-performance.pw.spec.ts
-            await client.send('Tracing.start', {
-                traceConfig: {
-                    includedCategories: [
-                        'devtools.timeline',
-                        'blink.user_timing',
-                        'blink_style',
-                        'blink',
-                    ],
-                    excludedCategories: ['disabled-by-default*'],
-                },
-            });
-
-            // Store the active collection with test file info
-            this.activeCollections.set(testName, {
-                client,
-                events,
-                startTime: Date.now(),
-                testFile,
-            });
-
-            // eslint-disable-next-line no-console
-            console.log(`✅ Performance collection started for test: ${testName}`);
         } catch (error) {
             console.warn(
                 `Failed to start performance collection for test ${testName}:`,
@@ -104,33 +141,70 @@ export class PerformanceCollector {
                 return;
             }
 
-            // eslint-disable-next-line no-console
-            console.log(`🛑 Stopping CDP tracing for test: ${testName}`);
+            // console.log(`🛑 Stopping CDP tracing for test: ${testName}`);
 
-            // Stop tracing and wait for completion
-            await new Promise<void>((resolve) => {
-                collection.client.once('Tracing.tracingComplete', () => resolve());
-                collection.client.send('Tracing.end');
+            // Allow pending layout/style events to flush: two RAFs + configurable idle wait
+            await page.evaluate(async () => {
+                await new Promise<void>((resolve) =>
+                    requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+                );
             });
 
-            await collection.client.detach();
+            const flushWait = Number(process.env.PERF_TRACE_FLUSH_WAIT_MS || '70');
 
-            // Extract metrics using the same logic as scrollbar-performance.pw.spec.ts
-            const metrics = this.extractMetrics(collection.events);
+            await page.waitForTimeout(flushWait);
 
+            // Stop tracing with graceful fallback: avoid noisy warnings if completion event not emitted
+            let tracingCompleted = false;
+
+            await this.withLock(async () => {
+                await new Promise<void>((resolve) => {
+                    const timeoutMs = 2000;
+                    const timer = setTimeout(() => resolve(), timeoutMs);
+
+                    collection.client.once('Tracing.tracingComplete', () => {
+                        tracingCompleted = true;
+                        clearTimeout(timer);
+                        resolve();
+                    });
+
+                    collection.client.send('Tracing.end').catch(() => {
+                        clearTimeout(timer);
+                        resolve();
+                    });
+                });
+                await collection.client.detach();
+            });
+
+            // Extract metrics using filtered events for more stable results
+            const metrics = this.extractStableMetrics(collection.events);
+
+            if (!tracingCompleted && collection.events.length === 0) {
+                console.warn(
+                    `Tracing finished without completion event and no events captured for test: ${testName}`,
+                );
+            }
+
+            const rawEventsCount = collection.events.length;
+            const totalOps = metrics.layoutCount + metrics.recalcStyleCount;
+            const opsPerKEvents =
+                rawEventsCount > 0 ? (totalOps / rawEventsCount) * 1000 : 0;
             // Save metrics to file
-            await this.saveTestMetrics(
+
+            await this.saveTestMetrics({
                 metrics,
                 testName,
-                page.url(),
-                collection.startTime,
-                collection.testFile,
-            );
+                url: page.url(),
+                startTime: collection.startTime,
+                testFile: collection.testFile,
+                extras: {rawEvents: rawEventsCount, opsPerKEvents},
+            });
 
-            // eslint-disable-next-line no-console
-            console.log(`📊 Test performance metrics for [${testName}]:`, {
+            console.info(`📊 Test performance metrics for [${testName}]:`, {
+                rawEvents: rawEventsCount,
                 layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
                 recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
+                opsPerKEvents: Number(opsPerKEvents.toFixed(2)),
             });
 
             // Clean up
@@ -143,195 +217,131 @@ export class PerformanceCollector {
         }
     }
 
-    /**
-     * Captures performance metrics during basic page operations
-     * This is a simplified version of the PerformanceMeasurer from scrollbar-performance.pw.spec.ts
-     */
-    public static async capturePageLoadMetrics(page: Page, url: string): Promise<void> {
-        try {
-            // eslint-disable-next-line no-console
-            console.log('🎯 Starting CDP tracing for page load metrics...');
+    private static async withLock<T>(fn: () => Promise<T>): Promise<T> {
+        const run = this.startStopLock.then(fn, fn);
 
-            const client = await page.context().newCDPSession(page);
-            const events: PerformanceEvent[] = [];
+        this.startStopLock = run.then(
+            () => undefined,
+            () => undefined,
+        );
 
-            // Set up event collection (same as scrollbar-performance.pw.spec.ts)
-            client.on('Tracing.dataCollected', (data: any) => {
-                if (data.value && Array.isArray(data.value)) {
-                    events.push(...data.value);
-                }
-            });
-
-            // Start tracing with the same parameters as scrollbar-performance.pw.spec.ts
-            await client.send('Tracing.start', {
-                traceConfig: {
-                    includedCategories: [
-                        'devtools.timeline',
-                        'blink.user_timing',
-                        'blink_style',
-                        'blink',
-                    ],
-                    excludedCategories: ['disabled-by-default*'],
-                },
-            });
-
-            // Perform some basic operations to generate layout/recalc events
-            await this.executeBasicPageOperations(page);
-
-            // Stop tracing and wait for completion
-            await new Promise<void>((resolve) => {
-                client.once('Tracing.tracingComplete', () => resolve());
-                client.send('Tracing.end');
-            });
-
-            await client.detach();
-
-            // Extract metrics using the same logic as scrollbar-performance.pw.spec.ts
-            const metrics = this.extractMetrics(events);
-
-            // Save metrics to file
-            await this.saveMetrics(metrics, url);
-
-            // eslint-disable-next-line no-console
-            console.log('📊 CDP tracing metrics collected:', {
-                layout: `${metrics.layoutCount} ops (${metrics.layoutDuration.toFixed(2)}ms)`,
-                recalc: `${metrics.recalcStyleCount} ops (${metrics.recalcStyleDuration.toFixed(2)}ms)`,
-            });
-        } catch (error) {
-            console.warn('CDP tracing performance collection failed:', error);
-        }
+        return run;
     }
 
     /**
-     * Executes basic page operations to trigger layout/recalc events
-     * Simplified version of executeScrollScenario from scrollbar-performance.pw.spec.ts
+     * Extracts performance metrics from CDP trace events with stability improvements
      */
-    private static async executeBasicPageOperations(page: Page): Promise<void> {
-        // Wait for page to be stable
-        await page.waitForTimeout(100);
-
-        // Try to find and interact with common elements that might trigger layout/recalc
-        try {
-            // Look for tui-scrollbar elements (if any)
-            const scrollbars = page.locator('tui-scrollbar');
-            const scrollbarCount = await scrollbars.count();
-
-            if (scrollbarCount > 0) {
-                // eslint-disable-next-line no-console
-                console.log(
-                    `🔍 Found ${scrollbarCount} scrollbar elements, testing interactions...`,
-                );
-
-                for (let i = 0; i < Math.min(3, scrollbarCount); i++) {
-                    const scrollbar = scrollbars.nth(i);
-
-                    // Scroll operations that should trigger layout
-                    await scrollbar.evaluate((el: HTMLElement) => {
-                        if (el) {
-                            el.scrollTop = 50;
-                            el.scrollTop = 100;
-                            el.scrollTop = 0;
-                        }
-                    });
-
-                    // Style changes that should trigger recalc
-                    await scrollbar.evaluate((el: HTMLElement) => {
-                        if (el) {
-                            const originalHeight = el.style.height;
-
-                            el.style.height = '300px';
-                            el.style.height = '350px';
-                            el.style.height = originalHeight;
-                        }
-                    });
-                }
-            }
-
-            // General DOM operations to trigger layout/recalc
-            await page.evaluate(() => {
-                // Add some dynamic content
-                const testDiv = document.createElement('div');
-
-                testDiv.innerHTML = 'Performance test content';
-                testDiv.style.height = '50px';
-                testDiv.style.width = '100px';
-                testDiv.style.backgroundColor = '#f0f0f0';
-                document.body.appendChild(testDiv);
-
-                // Trigger style recalc by reading computed styles
-                const computed = window.getComputedStyle(testDiv);
-
-                // eslint-disable-next-line no-console
-                console.log('Test element computed height:', computed.height);
-
-                // Modify styles to trigger recalc
-                testDiv.style.padding = '10px';
-                testDiv.style.margin = '5px';
-
-                // Force layout by reading dimensions
-                const rect = testDiv.getBoundingClientRect();
-
-                // eslint-disable-next-line no-console
-                console.log('Test element rect:', rect.width, rect.height);
-
-                // Clean up
-                testDiv.remove();
-            });
-
-            await page.waitForTimeout(50);
-        } catch (error) {
-            console.warn('Basic page operations failed:', error);
-        }
-    }
-
-    /**
-     * Extracts performance metrics from CDP trace events
-     * Same logic as scrollbar-performance.pw.spec.ts extractMetrics method
-     */
-    private static extractMetrics(
+    private static extractStableMetrics(
         events: readonly PerformanceEvent[],
     ): PerformanceMetrics {
-        const metrics = {
+        const metrics: PerformanceMetrics = {
             layoutCount: 0,
             recalcStyleCount: 0,
             layoutDuration: 0,
             recalcStyleDuration: 0,
+            layoutAvgPerOp: 0,
+            recalcAvgPerOp: 0,
+            layoutMedianPerOp: 0,
+            recalcMedianPerOp: 0,
         };
+        // Optional per-event duration floor; defaults to 0 so we don't lose micro work
+        const perEventMin = Number(process.env.PERF_EVENT_MIN_DURATION_MS || '0');
+        const layoutDurations: number[] = [];
+        const recalcDurations: number[] = [];
 
         for (const event of events) {
-            // Focus on main thread timeline events (same filter as scrollbar-performance.pw.spec.ts)
-            if (!event.cat?.includes('devtools.timeline')) {
-                continue;
-            }
-
             const durationMs = event.dur ? event.dur / 1000 : 0;
 
             switch (event.name) {
                 case 'Layout':
                     metrics.layoutCount++;
-                    metrics.layoutDuration += durationMs;
+
+                    if (durationMs >= perEventMin) {
+                        metrics.layoutDuration += durationMs;
+                        layoutDurations.push(durationMs);
+                    }
+
                     break;
                 case 'RecalculateStyles':
+                case 'ScheduleStyleRecalculation':
                 case 'UpdateLayoutTree':
                     metrics.recalcStyleCount++;
-                    metrics.recalcStyleDuration += durationMs;
+
+                    if (durationMs >= perEventMin) {
+                        metrics.recalcStyleDuration += durationMs;
+                        recalcDurations.push(durationMs);
+                    }
+
+                    break;
+                default:
                     break;
             }
+        }
+
+        metrics.layoutDuration = Math.round(metrics.layoutDuration * 1000) / 1000;
+        metrics.recalcStyleDuration =
+            Math.round(metrics.recalcStyleDuration * 1000) / 1000;
+
+        metrics.layoutAvgPerOp = metrics.layoutCount
+            ? Math.round((metrics.layoutDuration / metrics.layoutCount) * 1000) / 1000
+            : 0;
+
+        metrics.recalcAvgPerOp = metrics.recalcStyleCount
+            ? Math.round(
+                  (metrics.recalcStyleDuration / metrics.recalcStyleCount) * 1000,
+              ) / 1000
+            : 0;
+
+        metrics.layoutMedianPerOp = this.median(layoutDurations);
+        metrics.recalcMedianPerOp = this.median(recalcDurations);
+
+        if (process.env.PERF_COLLECTOR_DEBUG === '1') {
+            console.info('[PerformanceCollector][debug] events', {
+                total: events.length,
+                layoutCount: metrics.layoutCount,
+                recalcStyleCount: metrics.recalcStyleCount,
+                layoutDuration: metrics.layoutDuration,
+                recalcStyleDuration: metrics.recalcStyleDuration,
+                layoutAvgPerOp: metrics.layoutAvgPerOp,
+                recalcAvgPerOp: metrics.recalcAvgPerOp,
+                layoutMedianPerOp: metrics.layoutMedianPerOp,
+                recalcMedianPerOp: metrics.recalcMedianPerOp,
+                perEventMin,
+            });
         }
 
         return metrics;
     }
 
+    // groupEventsByTimeWindows removed as unused (previous implementation deleted)
+
+    private static median(arr: readonly number[]): number {
+        const len = arr.length;
+
+        if (len === 0) {
+            return 0;
+        }
+
+        const sorted = [...arr].sort((a, b) => a - b);
+        const mid = Math.floor(len / 2);
+        const value =
+            len % 2 === 0 ? (sorted[mid - 1]! + sorted[mid]!) / 2 : sorted[mid]!;
+
+        return Math.round(value * 1000) / 1000;
+    }
+
     /**
      * Saves test-specific metrics to file
      */
-    private static async saveTestMetrics(
-        metrics: PerformanceMetrics,
-        testName: string,
-        url: string,
-        startTime: number,
-        testFile?: string,
-    ): Promise<void> {
+    private static async saveTestMetrics(params: {
+        metrics: PerformanceMetrics;
+        testName: string;
+        url: string;
+        startTime: number;
+        testFile: string | undefined;
+        extras?: {rawEvents: number; opsPerKEvents: number};
+    }): Promise<void> {
+        const {metrics, testName, url, startTime, testFile, extras} = params;
         const performanceData = {
             timestamp: Date.now(),
             testStartTime: startTime,
@@ -344,6 +354,12 @@ export class PerformanceCollector {
                 layoutDuration: Number(metrics.layoutDuration.toFixed(3)),
                 recalcStyleCount: metrics.recalcStyleCount,
                 recalcStyleDuration: Number(metrics.recalcStyleDuration.toFixed(3)),
+                layoutAvgPerOp: Number(metrics.layoutAvgPerOp.toFixed(3)),
+                recalcAvgPerOp: Number(metrics.recalcAvgPerOp.toFixed(3)),
+                layoutMedianPerOp: Number(metrics.layoutMedianPerOp.toFixed(3)),
+                recalcMedianPerOp: Number(metrics.recalcMedianPerOp.toFixed(3)),
+                rawEvents: extras?.rawEvents ?? 0,
+                opsPerKEvents: Number((extras?.opsPerKEvents ?? 0).toFixed(2)),
             },
         };
 
@@ -354,47 +370,127 @@ export class PerformanceCollector {
             .replaceAll(/-+/g, '-')
             .replaceAll(/^-|-$/g, '');
 
-        const filename = `performance-test-${safeTestName}-${Date.now()}.json`;
-        const outputPath = resolve(
-            process.cwd(),
-            'projects/demo-playwright/tests-results',
-            filename,
-        );
+        const filename = `test-${safeTestName}-${Date.now()}.json`;
+
+        this.ensureDirOnce();
+        const outputPath = join(this.outputDir, filename);
 
         await writeFile(outputPath, JSON.stringify(performanceData, null, 2));
-        // eslint-disable-next-line no-console
-        console.log(`💾 Test performance data saved to: ${filename}`);
+        // console.log(`💾 Test performance data saved to: ${filename}`);
+    }
+
+    private static ensureDirOnce(): void {
+        if (this.dirReady) {
+            return;
+        }
+
+        try {
+            mkdirSync(this.outputDir, {recursive: true});
+            this.dirReady = true;
+        } catch {}
     }
 
     /**
-     * Saves metrics to file in the same format as other performance tests
+     * Stabilizes page state before performance measurement to reduce variance
      */
-    private static async saveMetrics(
-        metrics: PerformanceMetrics,
-        url: string,
-    ): Promise<void> {
-        const performanceData = {
-            timestamp: Date.now(),
-            url: url,
-            testName: 'cdp-trace',
-            source: 'CDP-tracing',
-            metrics: {
-                layoutCount: metrics.layoutCount,
-                layoutDuration: Number(metrics.layoutDuration.toFixed(3)),
-                recalcStyleCount: metrics.recalcStyleCount,
-                recalcStyleDuration: Number(metrics.recalcStyleDuration.toFixed(3)),
-            },
-        };
+    private static async stabilizePage(page: Page): Promise<void> {
+        const start = Date.now();
+        const timeoutMs = 3000;
+        let networkIdleReached = false;
 
-        const filename = `performance-trace-${Date.now()}.json`;
-        const outputPath = resolve(
-            process.cwd(),
-            'projects/demo-playwright/tests-results',
-            filename,
-        );
+        try {
+            await Promise.race([
+                (async () => {
+                    await page.waitForLoadState('domcontentloaded');
+                    await page.waitForLoadState('networkidle');
+                    networkIdleReached = true;
+                })(),
+                page.waitForTimeout(timeoutMs),
+            ]);
+        } catch {}
 
-        await writeFile(outputPath, JSON.stringify(performanceData, null, 2));
-        // eslint-disable-next-line no-console
-        console.log('💾 CDP tracing data saved to:', filename);
+        try {
+            await page.evaluate(async () => {
+                await new Promise<void>((resolve) =>
+                    requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+                );
+            });
+        } catch {}
+
+        try {
+            await page.waitForTimeout(40);
+        } catch {}
+
+        if (!networkIdleReached) {
+            console.warn(
+                `Page stabilization bounded: networkidle not reached within ${Date.now() - start}ms; proceeding`,
+            );
+        }
+    }
+
+    /**
+     * Filters events to reduce noise from background activities
+     */
+    private static isRelevantEvent(event: PerformanceEvent): boolean {
+        // Skip events that are likely noise
+        if (!event.name || !event.ts) {
+            return false;
+        }
+
+        // Filter out GC-related events that can cause measurement variance
+        const gcEvents = [
+            'V8.GCScavenger',
+            'V8.GCIncrementalMarking',
+            'V8.GCCompactor',
+            'V8.GCMarkAndSweep',
+            'MinorGC',
+            'MajorGC',
+        ];
+
+        if (gcEvents.includes(event.name)) {
+            return false;
+        }
+
+        // Focus on layout and style events that are relevant to our measurements
+        const name = event.name;
+        const cat = event.cat || '';
+
+        const timeline = cat.includes('devtools.timeline');
+        const blink = cat.includes('blink');
+
+        if (timeline || blink) {
+            if (/Layout|Style|Paint|Composite|UpdateLayerTree|Frame/i.test(name)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Performs a small warm-up operation to stabilize V8 optimization
+     */
+    private static async warmUpMeasurement(page: Page): Promise<void> {
+        try {
+            // Perform a minimal DOM operation to warm up the measurement system
+            await page.evaluate(() => {
+                // Create a small test element
+                const warmupDiv = document.createElement('div');
+
+                warmupDiv.style.position = 'absolute';
+                warmupDiv.style.left = '-9999px';
+                warmupDiv.style.width = '1px';
+                warmupDiv.style.height = '1px';
+                document.body.appendChild(warmupDiv);
+
+                // Force a layout calculation
+                void warmupDiv.offsetHeight;
+
+                // Clean up immediately
+                warmupDiv.remove();
+            });
+        } catch {
+            // Ignore warmup errors to avoid disrupting the main test
+        }
     }
 }
