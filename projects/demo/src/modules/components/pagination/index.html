@@ -46,57 +46,57 @@
                 [(index)]="index"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="focusable"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="focusable"
+        <table tuiDocAPI>
+            <tr
+                name="[focusable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="focusable"
             >
                 Accepts focus with keyboard
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="index"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="index"
+            </tr>
+            <tr
+                name="[(index)]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="index"
             >
                 Active page index
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="length"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="length"
+            </tr>
+            <tr
+                name="[length]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="length"
             >
                 Total pages count
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="activePadding"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="activePadding"
+            </tr>
+            <tr
+                name="[activePadding]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="activePadding"
             >
                 Amount of visible pages around active page
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="sidePadding"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="sidePadding"
+            </tr>
+            <tr
+                name="[sidePadding]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="sidePadding"
             >
                 Amount of visible pages at the edges
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

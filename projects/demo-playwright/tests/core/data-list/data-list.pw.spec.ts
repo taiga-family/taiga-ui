@@ -166,6 +166,10 @@ test.describe('DataList', () => {
 
         await expect.soft(page).toHaveScreenshot('08-data-list.png');
 
+        // prevent calendar items from overlapping
+        await range.hover();
+        await range.blur();
+
         await page.locator('[automation-id="tui-data-list-calendar-option"]').click();
         await page.locator('[automation-id="tui-calendar-sheet__cell"]').nth(4).click();
 
