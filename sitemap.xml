@@ -457,6 +457,9 @@
     <loc>https://taiga-ui.dev/components/primitive-textfield/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/pdf-viewer-old/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/pdf-viewer/</loc>
   </url>
   <url>
@@ -1529,6 +1532,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/primitive-textfield/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/pdf-viewer-old/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/pdf-viewer-old/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/pdf-viewer/API/</loc>

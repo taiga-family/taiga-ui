@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[97362],{97362:e=>{e.exports=".iframe {\n    inline-size: 100%;\n    block-size: 100%;\n}\n"}}]);
