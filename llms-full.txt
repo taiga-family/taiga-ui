@@ -7525,6 +7525,7 @@ export class Example {}
 ```ts
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
 
@@ -7535,7 +7536,8 @@ import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Basic', 'Dropdown', 'Side', 'Multiline'];
+    protected readonly routes = DemoRoute;
+    protected readonly examples = ['Basic', 'Dropdown', 'Side', 'Multiline', 'Cell'];
     protected readonly items = inject<readonly string[]>('Pythons' as any);
     protected readonly requiredVariants = [-1, 2, 4];
     protected readonly itemsLimitVariants = [Infinity, 4, 2];
@@ -8945,9 +8947,9 @@ export default class Page {
 
 ---
 # components/PdfViewer
-- **Package**: `KIT`
+- **Package**: `EXPERIMENTAL`
 - **Type**: components
-Custom dialog to preview PDF
+Wrapper component for viewing PDF files in an iframe
 
         
             PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party
@@ -8966,11 +8968,73 @@ Custom dialog to preview PDF
             
                 pdf.js.
 
+### How to Use (Import)
+
+```ts
+import {TuiPdfViewer} from '@taiga-ui/experimental';
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiPdfViewer,
+  ],
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<tui-pdf-viewer>
+  <h2 tuiTitle>title</h2>
+  <button tuiButton>Action</button>
+
+  <iframe [src]="src"></iframe>
+</tui-pdf-viewer>
+```
+
 ### TypeScript
 
 ```ts
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    standalone: true,
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {
+    protected readonly routes = DemoRoute;
+
+    protected examples = ['Basic', 'With responsive dialog', 'Loading and error states'];
+}
+```
+
+---
+# components/PdfViewer
+- **Package**: `KIT`
+- **Type**: components
+Custom dialog to preview PDF
+
+        
+            This version of the component is deprecated and will be removed in the next major version. Use
+            
+                new version of PdfViewer
+            
+            instead!
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
@@ -8995,6 +9059,8 @@ export default class Page {
         'pdf-content.component.html': import('./examples/2/pdf-content/index.html?raw'),
         'pdf-content.component.less': import('./examples/2/pdf-content/index.less?raw'),
     };
+
+    protected readonly routes = DemoRoute;
 }
 ```
 
