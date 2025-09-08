@@ -50,64 +50,62 @@
                 [page]="page"
                 [size]="size"
                 [total]="total"
-                (paginationChange)="documentationPropertyPaginationChange.emitEvent($event); update($event)"
+                (paginationChange)="paginationChange.emitEvent($event); update($event)"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="total"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="total"
-                (documentationPropertyValueChange)="totalChange($event)"
+        <table tuiDocAPI>
+            <tr
+                name="[total]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="total"
             >
                 Total amount of items/lines in the table.
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="size"
             >
                 Items/Lines per page.
-
                 <p>
                     Uses the first element inside
                     <code>items</code>
                     by default.
                 </p>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="page"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="page"
+            </tr>
+            <tr
+                name="[page]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="page"
             >
                 Current page.
                 <p>Indexing starts at zero.</p>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="items"
-                documentationPropertyType="readonly number[]"
-                [documentationPropertyValues]="itemsVariants"
-                [(documentationPropertyValue)]="items"
+            </tr>
+            <tr
+                name="[items]"
+                tuiDocAPIItem
+                type="readonly number[]"
+                [items]="itemsVariants"
+                [(value)]="items"
             >
                 Options to select amount of lines per page.
-            </ng-template>
-            <ng-template
-                #documentationPropertyPaginationChange="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="paginationChange"
-                documentationPropertyType="TuiTablePagination"
+            </tr>
+            <tr
+                #paginationChange
+                name="(paginationChange)"
+                tuiDocAPIItem
+                type="TuiTablePagination"
             >
-                Event emits when
+                Emits when
                 <code>page</code>
                 or
                 <code>size</code>
                 changes.
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

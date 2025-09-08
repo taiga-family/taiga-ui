@@ -145,7 +145,7 @@ export abstract class TuiInputDateBase<
         }
     }
 
-    public setDate(value: TuiDay | TuiDayRange): void {
+    public setDate(value: TuiDay | TuiDayRange | readonly TuiDay[]): void {
         this.onChange(value as T);
         this.open.set(false);
 

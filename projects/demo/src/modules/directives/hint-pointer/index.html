@@ -28,31 +28,31 @@
                 It is followed inside the block
             </div>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiHint"
-                documentationPropertyType="PolymorpheusContent"
+        <table tuiDocAPI>
+            <tr
+                name="[tuiHint]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
             >
                 Hint content
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiHintShowDelay"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="showDelay"
+            </tr>
+            <tr
+                name="[tuiHintShowDelay]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="showDelay"
             >
-                Show Delay
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiHintHideDelay"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="hideDelay"
+                Show delay (ms)
+            </tr>
+            <tr
+                name="[tuiHintHideDelay]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="hideDelay"
             >
-                Hide Delay
-            </ng-template>
-        </tui-doc-documentation>
+                Hide delay (ms)
+            </tr>
+        </table>
         <inherited-documentation />
     </ng-template>
 
