@@ -932,6 +932,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'PdfViewer ⛔',
+        keywords: 'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
+        route: DemoRoute.PdfViewerOld,
+    },
+    {
+        section: 'Components',
         title: 'PdfViewer',
         keywords: 'попап, модал, popup, pdf, preview, dialog, диалог, modal, окно',
         route: DemoRoute.PdfViewer,
