@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.53.0](https://github.com/taiga-family/taiga-ui/compare/v4.52.0...v4.53.0) (2025-09-08)
+
+### 🚀 Features
+
+- **addon-mobile:** `SheetDialog` add basic HTML support
+  ([#11858](https://github.com/taiga-family/taiga-ui/issues/11858))
+  ([b9bbe71](https://github.com/taiga-family/taiga-ui/commit/b9bbe7173be4b6505e50f6be75f6c43a0d10de6a))
+- **experimental:** `PdfViewer` add new component ([#11823](https://github.com/taiga-family/taiga-ui/issues/11823))
+  ([5ebadc7](https://github.com/taiga-family/taiga-ui/commit/5ebadc7be0fe48ad40adb019edac181b4c68d6ad))
+- **kit:** update the badge margin inside the chip according to the specs
+  ([#11827](https://github.com/taiga-family/taiga-ui/issues/11827))
+  ([20c92dd](https://github.com/taiga-family/taiga-ui/commit/20c92dd2963de871af3e683ff00da041405be64d))
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCardGroup` label raised on first focus
+  ([#11832](https://github.com/taiga-family/taiga-ui/issues/11832))
+  ([8d87d6a](https://github.com/taiga-family/taiga-ui/commit/8d87d6afc75201148c6694daddc65aa4f7479a03))
+- **core:** `Fullscreen` add scroll ([#11855](https://github.com/taiga-family/taiga-ui/issues/11855))
+  ([#11861](https://github.com/taiga-family/taiga-ui/issues/11861))
+  ([20b7b6a](https://github.com/taiga-family/taiga-ui/commit/20b7b6a22ea55d486c6805319ae8bbe82265ea2a))
+- **core:** `TUI_DARK_MODE` factory effect in reactive context
+  ([#11864](https://github.com/taiga-family/taiga-ui/issues/11864))
+  ([61c6c79](https://github.com/taiga-family/taiga-ui/commit/61c6c792b15bfd42bb02c013ca56154acb2be681))
+
 ## [4.52.0](https://github.com/taiga-family/taiga-ui/compare/v4.51.0...v4.52.0) (2025-09-01)
 
 ### 🐞 Bug Fixes
