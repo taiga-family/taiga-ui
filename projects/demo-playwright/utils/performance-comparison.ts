@@ -126,7 +126,7 @@ export class PerformanceComparison {
                         group[key] = [];
                     }
 
-                    group[key]!.push(data);
+                    group[key].push(data);
                 } catch (error) {
                     console.warn(
                         `Failed to parse performance file ${file}: ${error instanceof Error ? error.message : String(error)}`,
