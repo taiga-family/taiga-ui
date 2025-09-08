@@ -1,24 +1,30 @@
-<tui-notification class="tui-space_bottom-3">
-    Note that you need to bypass sanitizer in order to use the URL so make sure you trust it
-</tui-notification>
 <button
     tuiButton
     type="button"
-    (click)="show(actions)"
+    (click)="open = true"
 >
-    Taiga
+    Open
 </button>
+
 <ng-template
-    #actions
-    let-content="content"
+    let-observer
+    [tuiDialogOptions]="{appearance: 'fullscreen'}"
+    [(tuiDialog)]="open"
 >
-    <a
-        download
-        size="s"
-        tuiButton
-        [href]="content"
-        [style.border-radius.rem]="100"
-    >
-        Download
-    </a>
+    <tui-pdf-viewer>
+        <h2 tuiTitle>file.pdf</h2>
+
+        <button
+            iconStart="@tui.download"
+            title="download"
+            tuiButton
+            type="button"
+            [style.border-radius.rem]="5"
+            (click)="observer.complete()"
+        >
+            {{ isMobile ? '' : 'Download' }}
+        </button>
+
+        <iframe [src]="url"></iframe>
+    </tui-pdf-viewer>
 </ng-template>
