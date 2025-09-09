@@ -35,12 +35,14 @@
 
     &::before {
         display: var(--t-icon-start, none);
-        mask: var(--t-icon-start) no-repeat center/contain padding-box;
+        mask: var(--t-icon-start) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
+            ~'min(1em, 100%)' padding-box;
     }
 
     &::after {
         display: var(--t-icon-end, none);
-        mask: var(--t-icon-end) no-repeat center/contain padding-box;
+        mask: var(--t-icon-end) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
+            ~'min(1em, 100%)' padding-box;
     }
 
     &[data-icon-start='image']::before {

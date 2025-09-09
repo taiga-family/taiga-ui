@@ -127,8 +127,11 @@
     .transition(color);
 
     margin-inline-start: auto;
-    border-width: 0.25rem;
     color: var(--tui-text-tertiary);
+
+    &::after {
+        font-size: 1rem;
+    }
 
     :host:hover & {
         color: var(--tui-text-secondary);
