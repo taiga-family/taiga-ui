@@ -33,6 +33,8 @@
         "start:shadow": "nx serve demo -c shadow",
         "start:host": "nx serve demo --open --host 0.0.0.0 --disable-host-check",
         "start:ssr": "nx serve-ssr demo",
+        "build:ssr": "nx build demo && nx run demo:server:production",
+        "prerender": "nx run demo:prerender",
         "pretest": "npx tsc --project tsconfig.spec.json",
         "test": "nx run-many --target test --all --output-style=stream",
         "test:e2e": "nx e2e-ui demo-playwright",
