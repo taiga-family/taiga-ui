@@ -205,7 +205,7 @@ export class TuiTextfieldBaseComponent<T>
     selector: 'tui-textfield:not([multi])',
     imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
     templateUrl: './textfield.template.html',
-    styles: '@import "@taiga-ui/core/styles/components/textfield.less";',
+    styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
