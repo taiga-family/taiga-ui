@@ -36,11 +36,11 @@
     &::before,
     &::after {
         .fullsize();
-        .transition(~'transform, opacity');
 
         content: '';
         background: currentColor;
         mask: var(--t-unchecked-icon) no-repeat center/contain;
+        transition-property: transform, opacity;
     }
 
     &::after {
