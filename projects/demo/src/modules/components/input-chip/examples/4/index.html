@@ -23,7 +23,7 @@
     <tui-textfield
         #input
         multi
-        [content]="!input.focused() && pythons.length ? 'Selected ' + pythons.length + ' out of ' + items.length : ''"
+        [content]="!input.focused() && pythons.length ? `Selected ${pythons.length} out of ${items.length}` : ''"
         [disabledItemHandler]="disabled"
     >
         <label tuiLabel>Select Pythons</label>

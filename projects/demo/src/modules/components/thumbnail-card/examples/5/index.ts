@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputCard, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
@@ -13,7 +13,6 @@ import {TuiSegmented} from '@taiga-ui/kit';
         FormsModule,
         NgForOf,
         NgIf,
-        TuiButton,
         TuiInputCard,
         TuiSegmented,
         TuiTextfield,

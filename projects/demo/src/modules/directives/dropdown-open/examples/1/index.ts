@@ -3,11 +3,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
-import {TuiStep} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [NgForOf, TuiButton, TuiDataList, TuiDropdown, TuiStep],
+    imports: [NgForOf, TuiButton, TuiDataList, TuiDropdown],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -8,7 +8,6 @@ import {
     injectContext,
     PolymorpheusComponent,
     PolymorpheusOutlet,
-    PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
 import {takeUntil} from 'rxjs';
 
@@ -27,7 +26,7 @@ class CustomLabel {}
 
 @Component({
     standalone: true,
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [PolymorpheusOutlet],
     template: `
         <h4>Start content</h4>
         <ng-container *polymorpheusOutlet="context.label as text; context: context">

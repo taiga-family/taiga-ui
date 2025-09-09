@@ -35,7 +35,7 @@
                     <input
                         tuiInputNumber
                         [formControl]="control"
-                        [postfix]="' ' + (currency || '' | tuiCurrency)"
+                        [postfix]="` ${(currency || '' | tuiCurrency)}`"
                     />
                 </tui-textfield>
             </ng-template>

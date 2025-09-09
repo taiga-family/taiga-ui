@@ -19,7 +19,7 @@ export default class Example {
     private readonly alerts = inject(TuiAlertService);
     private readonly dialogs = inject(TuiDialogService);
 
-    protected onClick(): void {
+    protected click(): void {
         this.dialogs
             .open<string>(new PolymorpheusComponent(DialogComponent), {
                 label: 'Edit info',

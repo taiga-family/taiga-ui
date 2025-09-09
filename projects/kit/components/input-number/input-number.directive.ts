@@ -104,7 +104,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     protected readonly onChangeEffect = effect(() => {
         const value = this.formatted();
 
-        if (Number.isNaN(value)) {
+        if (Number.isNaN(value) && !Number.isNaN(this.value())) {
             this.onChange(null);
 
             return;
@@ -114,7 +114,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
             this.unfinished() ||
             value < this.min() ||
             value > this.max() ||
-            this.value() === value
+            Object.is(this.value(), value)
         ) {
             return;
         }

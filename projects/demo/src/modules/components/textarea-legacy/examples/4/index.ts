@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
-import {TuiError, TuiHint, TuiLabel} from '@taiga-ui/core';
+import {TuiError, TuiHint} from '@taiga-ui/core';
 import {TuiFieldErrorPipe, tuiValidationErrorsProvider} from '@taiga-ui/kit';
 import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
@@ -26,7 +26,6 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
         TuiError,
         TuiFieldErrorPipe,
         TuiHint,
-        TuiLabel,
         TuiTextareaModule,
         TuiTextfieldControllerModule,
     ],

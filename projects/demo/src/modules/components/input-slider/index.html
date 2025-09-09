@@ -196,7 +196,7 @@
                 >
                     <input
                         tuiInputSlider
-                        [attr.placeholder]="'Form control value is still ' + control.value"
+                        [attr.placeholder]="`Form control value is still ${control.value}`"
                         [formControl]="control"
                         [invalid]="controlDoc.invalid"
                         [max]="max()"

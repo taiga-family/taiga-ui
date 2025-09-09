@@ -5,6 +5,7 @@ import {
     mergeApplicationConfig,
 } from '@angular/core';
 import {bootstrapApplication} from '@angular/platform-browser';
+import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideServerRendering, ServerModule} from '@angular/platform-server';
 import {UNIVERSAL_PROVIDERS} from '@ng-web-apis/universal';
 
@@ -16,6 +17,7 @@ const serverConfig = mergeApplicationConfig(config, {
     providers: [
         importProvidersFrom(ServerModule),
         provideServerRendering(),
+        provideAnimations(),
         UNIVERSAL_PROVIDERS,
         {
             provide: ErrorHandler,

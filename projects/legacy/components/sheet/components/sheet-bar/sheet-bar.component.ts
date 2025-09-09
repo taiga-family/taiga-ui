@@ -23,6 +23,10 @@ export class TuiSheetBarComponent {
         tuiZonefull(this.zone),
     );
 
+    protected getTransform(rotate: number): string {
+        return `rotate(${rotate}deg)`;
+    }
+
     private get stop(): number {
         return this.sheet.stops[0] || 0;
     }

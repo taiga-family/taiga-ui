@@ -109,9 +109,7 @@
                 [style.display]="activeItemIndex === index && index === defaultTabIndex ? 'block' : 'none'"
             >
                 <ng-content />
-                <ng-container *polymorpheusOutlet="lazyComponent() as text">
-                    {{ text }}
-                </ng-container>
+                <ng-container *ngComponentOutlet="component | async" />
             </section>
 
             <tui-doc-code
