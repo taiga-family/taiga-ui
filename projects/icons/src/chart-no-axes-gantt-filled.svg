@@ -9,7 +9,7 @@
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path vector-effect="non-scaling-stroke" d="M8 6h10" />
-    <path vector-effect="non-scaling-stroke" d="M6 12h9" />
-    <path vector-effect="non-scaling-stroke" d="M11 18h7" />
+    <path vector-effect="non-scaling-stroke" d="M6 5h12" />
+    <path vector-effect="non-scaling-stroke" d="M4 12h10" />
+    <path vector-effect="non-scaling-stroke" d="M12 19h8" />
 </svg>
