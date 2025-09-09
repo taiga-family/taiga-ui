@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[54769],{772:(e,o,l)=>{l.r(o),l.d(o,{TUI_POLISH_LANGUAGE_LAYOUT:()=>p});const p={inputSearch:{popular:"Popular",history:"Recent",placeholder:"Type query",hotkey:"to search",all:"All",empty:"Nothing found"}}}}]);

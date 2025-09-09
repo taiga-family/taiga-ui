@@ -5303,12 +5303,13 @@ export class Example {
 ### TypeScript
 
 ```ts
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiTextfield} from '@taiga-ui/core';
@@ -5326,7 +5327,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    encapsulation: ViewEncapsulation.None,
+    encapsulation,
     changeDetection,
 })
 export default class PageComponent {
@@ -6220,11 +6221,12 @@ export class Example {
 ### TypeScript
 
 ```ts
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {
@@ -6253,8 +6255,7 @@ const TAIGA_V4 = new TuiDay(2024, 7, 9);
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
-    encapsulation: ViewEncapsulation.None,
+    encapsulation,
     changeDetection,
 })
 export default class PageComponent {
@@ -6287,18 +6288,6 @@ export default class PageComponent {
     protected year: TuiYear = this.yearVariants[0];
     protected disabledItemHandler: TuiBooleanHandler<TuiMonth> =
         this.disabledItemHandlerVariants[0];
-}
-```
-
-### LESS
-
-```less
-tui-doc-example tui-textfield:has([tuiInputMonth]) {
-    min-inline-size: 18.5rem;
-}
-
-tui-doc-example tui-textfield:has([tuiInputMonthRange]) {
-    inline-size: min(24rem, 100%);
 }
 ```
 
@@ -6374,16 +6363,17 @@ export class Example {
 ### TypeScript
 
 ```ts
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocIcons} from '@demo/components/icons';
 import {TuiDocNumberFormat} from '@demo/components/number-format';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiHint, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
@@ -6395,14 +6385,12 @@ import {TuiInputNumber} from '@taiga-ui/kit';
         TuiDocIcons,
         TuiDocNumberFormat,
         TuiDocTextfield,
-        TuiHint,
         TuiInputNumber,
         TuiNumberFormat,
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
-    encapsulation: ViewEncapsulation.None,
+    encapsulation,
     changeDetection,
 })
 export default class PageComponent {
@@ -6417,14 +6405,6 @@ export default class PageComponent {
     protected prefix = '';
     protected postfix = '';
     protected quantum = 0.01;
-}
-```
-
-### LESS
-
-```less
-tui-doc-example tui-textfield:has([tuiInputNumber]) {
-    max-inline-size: 22rem;
 }
 ```
 
@@ -7051,7 +7031,7 @@ export class Example {
 ```html
 <ng-template>
 <tui-textfield #textfield [content]="textfield.focused() ? '' : textfieldContent" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<input tuiInputSlider [attr.placeholder]="'Form control value is still ' + control.value" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }" />
+<input tuiInputSlider [attr.placeholder]="`Form control value is still ${control.value}`" [formControl]="control" [invalid]="controlDoc.invalid" [max]="max()" [min]="min()" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }" />
 <input tuiSlider type="range" [keySteps]="keySteps" [segments]="segments" [step]="step" />
 </tui-textfield>
 </ng-template>
@@ -8753,8 +8733,9 @@ export class Example {}
 ### TypeScript
 
 ```ts
-import {Component, signal, ViewEncapsulation} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiButton} from '@taiga-ui/core';
@@ -8764,7 +8745,7 @@ import {TuiNotificationMiddle} from '@taiga-ui/kit';
     standalone: true,
     imports: [TuiButton, TuiDemo, TuiNotificationMiddle],
     templateUrl: './index.html',
-    encapsulation: ViewEncapsulation.None,
+    encapsulation,
     changeDetection,
 })
 export default class Page {
@@ -13046,12 +13027,10 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
-import {DropdownDocumentation} from '../../components/abstract/dropdown-documentation';
 
 @Component({
     standalone: true,
     imports: [
-        DropdownDocumentation,
         TuiActiveZone,
         TuiButton,
         TuiDemo,
@@ -15718,7 +15697,7 @@ export class Example {}
 <ng-template>
 <tui-textfield>
 <label tuiLabel>Type a sum</label>
-<input tuiInputNumber [formControl]="control" [postfix]="' ' + (currency || '' | tuiCurrency)" />
+<input tuiInputNumber [formControl]="control" [postfix]="` ${(currency || '' | tuiCurrency)}`" />
 </tui-textfield>
 </ng-template>
 ```

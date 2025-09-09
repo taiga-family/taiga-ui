@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[3529],{69969:(e,p,h)=>{h.r(p),h.d(p,{TUI_ARABIC_LANGUAGE_LAYOUT:()=>l});const l={inputSearch:{popular:"الأكثر شيوعًا",history:"مؤخراً",placeholder:"اكتب الاستعلام",hotkey:"للبحث",all:"الكل",empty:"لا يوجد"}}}}]);
