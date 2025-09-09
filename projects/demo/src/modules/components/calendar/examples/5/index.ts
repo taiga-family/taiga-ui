@@ -13,8 +13,6 @@ const useValue: TuiHandler<TuiDay, string> = (day) => {
 
 @Component({
     standalone: true,
-    // TODO: Drop selector after exportAs loader is fixed
-    selector: 'calendar-5',
     imports: [TuiCalendar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
