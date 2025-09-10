@@ -96,25 +96,26 @@
     :host[data-size='m'] & {
         font-size: 0.875rem;
 
-        &::after {
+        &::before {
             transform: scale(0.5);
         }
     }
 
-    :host[data-size='l'] &::after {
+    :host[data-size='l'] &::before {
         transform: scale(0.625);
     }
 
-    &::before {
-        content: '';
+    &::after {
         .fullsize();
 
+        content: '';
+        z-index: -1;
         border-radius: 100%;
         background: currentColor;
         opacity: 0.35;
     }
 
-    &::after {
+    &::before {
         color: #fff;
     }
 }
@@ -135,7 +136,7 @@
         bottom: 0.0625rem;
     }
 
-    &::after {
+    &::before {
         mask-position: right;
         mask-size: contain;
     }

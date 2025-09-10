@@ -37,8 +37,8 @@ tui-icon {
         }
     }
 
-    &::after,
-    &[tuiIcons]::after {
+    &::before,
+    &[tuiIcons]::before {
         .fullsize();
 
         content: '';
@@ -50,12 +50,12 @@ tui-icon {
         background: currentColor;
     }
 
-    &[data-icon='image']::after {
+    &[data-icon='image']::before {
         mask: none;
         background: var(--t-icon) no-repeat center/contain;
     }
 
-    &[data-icon='font']::after {
+    &[data-icon='font']::before {
         content: var(--t-icon);
         mask: none;
         background: none;
