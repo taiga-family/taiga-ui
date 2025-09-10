@@ -76,6 +76,11 @@
                         "glob": "llms-full.txt",
                         "input": "{projectRoot}/src/",
                         "output": "./"
+                    },
+                    {
+                        "glob": "llms-full.html",
+                        "input": "{projectRoot}/src/",
+                        "output": "./"
                     }
                 ],
                 "baseHref": "/",
