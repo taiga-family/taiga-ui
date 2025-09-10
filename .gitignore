@@ -40,6 +40,7 @@ RELEASE_BODY.md
 projects/demo/routes.txt
 projects/demo/src/llms.txt
 projects/demo/src/llms-full.txt
+projects/demo/src/llms-full.html
 migrations.json
 sitemap.xml
 blob-report

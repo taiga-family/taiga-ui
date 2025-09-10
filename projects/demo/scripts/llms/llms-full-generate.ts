@@ -18,9 +18,11 @@ import {
     readIndexHtml,
     shouldIncludeSection,
 } from './utils';
+import {escapeHTML} from './utils/escaped-html';
 
 const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
 const OUTPUT_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms-full.txt');
+const OUTPUT_FILE_HTML = path.resolve(process.cwd(), 'projects/demo/src/llms-full.html');
 
 function shouldIncludeComponent(headerData: any, excludeSections: string[]): boolean {
     // Check if component is deprecated and deprecated sections are excluded
@@ -221,6 +223,24 @@ async function main(): Promise<void> {
     console.info('========================================');
 
     await fs.writeFile(OUTPUT_FILE, output.join('\n'), 'utf-8');
+    await fs.writeFile(
+        OUTPUT_FILE_HTML,
+        `
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>llm-full</title>
+</head>
+<body>
+  <main>
+   <pre> ${output.map(escapeHTML).join('\n')} </pre>
+  </main>
+</body>
+</html>`,
+        'utf-8',
+    );
 
     console.info(`Successfully file saved: ${OUTPUT_FILE}`);
     console.info(`Total components in output: ${includedCount}`);
