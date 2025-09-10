@@ -8,7 +8,7 @@
     *ngFor="let content of processor()"
     class="t-code"
 >
-    <code [lineNumbers]="true" [highlight]="content"></code>
+    <code [highlightAuto]="content" lineNumbers></code>
     <div class="t-code-actions">
         <button
             tuiIconButton

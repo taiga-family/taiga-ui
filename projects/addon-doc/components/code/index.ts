@@ -17,13 +17,21 @@ import {tuiRawLoad} from '@taiga-ui/addon-doc/utils';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
-import {Highlight} from 'ngx-highlightjs';
+import {HighlightAuto} from 'ngx-highlightjs';
+import {HighlightLineNumbers} from 'ngx-highlightjs/line-numbers';
 import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
     standalone: true,
     selector: 'tui-doc-code',
-    imports: [ClipboardModule, Highlight, NgForOf, NgIf, TuiButton],
+    imports: [
+        ClipboardModule,
+        HighlightAuto,
+        HighlightLineNumbers,
+        NgForOf,
+        NgIf,
+        TuiButton,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
