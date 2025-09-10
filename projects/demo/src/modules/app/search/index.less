@@ -63,8 +63,9 @@ html[data-theme='dark'] {
     --docsearch-muted-color: rgb(127, 132, 151);
 }
 
-.DocSearch-Form {
+.DocSearch-Modal {
     border-radius: var(--tui-radius-l);
+    overflow: hidden;
 }
 
 .DocSearch.DocSearch-Button-Placeholder {
@@ -76,6 +77,7 @@ html[data-theme='dark'] {
 
     position: relative;
     block-size: var(--tui-height-s);
+    border: none;
     margin: 0;
     border-radius: var(--tui-radius-m);
     background: transparent;
@@ -87,6 +89,7 @@ html[data-theme='dark'] {
 
     &::after {
         .fullsize(absolute, inset);
+        .transition(color);
 
         content: '';
         border-radius: inherit;
@@ -98,6 +101,11 @@ html[data-theme='dark'] {
     &:active,
     &:hover {
         color: var(--docsearch-muted-color);
+
+        &::after {
+            color: var(--tui-background-accent-1);
+            border-width: 2px;
+        }
     }
 }
 
