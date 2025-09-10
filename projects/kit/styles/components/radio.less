@@ -35,13 +35,13 @@
 
     &::before {
         .fullsize(absolute, inset);
-        .transition(transform);
 
         content: '';
         margin: auto;
         border-radius: 100%;
         background: currentColor;
         transform: scale(0);
+        transition-property: transform;
     }
 
     &:checked::before {

@@ -28,6 +28,12 @@
     outline-offset: -0.125rem;
     transition-property: color, background-color, opacity, box-shadow, border-color, border-radius, filter;
 
+    &::before,
+    &::after {
+        transition-duration: inherit;
+        transition-timing-function: ease-in-out;
+    }
+
     .appearance-focus({
         outline-color: var(--tui-border-focus);
     });
