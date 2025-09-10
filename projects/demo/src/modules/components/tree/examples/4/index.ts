@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -12,13 +13,13 @@ interface TreeNode {
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiTree],
+    imports: [NgIf, TuiButton, TuiTree],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly data: TreeNode = {
+    protected data: TreeNode = {
         text: 'Topmost',
         children: [
             {
@@ -44,6 +45,10 @@ export default class Example {
 
     protected readonly map = new Map<TreeNode, boolean>();
 
+    protected get childrenLength(): number {
+        return this.data.children?.length ?? 0;
+    }
+
     protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = (item) =>
         item.children || EMPTY_ARRAY;
 
@@ -52,11 +57,22 @@ export default class Example {
     }
 
     protected toggleLevel(index: number): void {
+        this.map.set(this.data, true);
+
         const nodes: readonly TreeNode[] = this.data.children || [];
         const key = nodes[index];
 
         if (key) {
             this.map.set(key, !this.map.get(key));
         }
+    }
+
+    protected dropLevel(index: number): void {
+        this.data = {
+            ...this.data,
+            children: this.data.children?.filter((_, i) => index !== i),
+        };
+
+        this.toggleTopmost();
     }
 }

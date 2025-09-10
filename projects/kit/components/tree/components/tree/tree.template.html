@@ -14,4 +14,7 @@
         [trackBy]="trackBy"
         [value]="child"
     />
+    <tui-tree-item-empty *ngIf="children?.length === 0">
+        <ng-content />
+    </tui-tree-item-empty>
 </tui-tree-item>

@@ -83,7 +83,7 @@ export class TuiTreeItem implements DoCheck {
     );
 
     public get isExpandable(): boolean {
-        return !!this.nested.length;
+        return this.level === 0 || !!this.nested.length;
     }
 
     public get isExpanded(): boolean {

@@ -20,6 +20,7 @@ import {TuiTreeNode} from '../../directives/tree-node.directive';
 import {type TuiTreeContext} from '../../misc/tree.interfaces';
 import {TUI_TREE_NODE} from '../../misc/tree.tokens';
 import {TuiTreeItem} from '../tree-item/tree-item.component';
+import {TuiTreeItemEmpty} from '../tree-item-empty/tree-item-empty.component';
 
 @Component({
     standalone: true,
@@ -31,6 +32,7 @@ import {TuiTreeItem} from '../tree-item/tree-item.component';
         PolymorpheusOutlet,
         TuiLet,
         TuiTreeItem,
+        TuiTreeItemEmpty,
         TuiTreeNode,
     ],
     templateUrl: './tree.template.html',
