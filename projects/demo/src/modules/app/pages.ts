@@ -960,7 +960,7 @@ export const pages: DocRoutePages = [
         title: 'Pager',
         keywords: 'pager, точка, dot',
         route: DemoRoute.Pager,
-        meta: {},
+        meta: {figmaVersion: '1.1.0'},
     },
     {
         section: 'Components',
