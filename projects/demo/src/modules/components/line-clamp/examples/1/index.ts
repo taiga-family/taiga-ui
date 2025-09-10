@@ -9,7 +9,7 @@ import {map, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, NgIf, TuiLineClamp, TuiNotification, TuiChip],
+    imports: [AsyncPipe, NgIf, TuiChip, TuiLineClamp, TuiNotification],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
