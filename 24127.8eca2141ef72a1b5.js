@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[24127],{24127:e=>{e.exports="tui-icon::after {\n    font-size: 1rem;\n}\n"}}]);
