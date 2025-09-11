@@ -4,10 +4,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiDialog, TuiPdfViewerComponent} from '@taiga-ui/experimental';
+import {TuiDialog} from '@taiga-ui/experimental';
+import {TuiPdfViewer} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiButton, TuiDialog, TuiPdfViewerComponent, TuiTitle],
+    imports: [TuiButton, TuiDialog, TuiPdfViewer, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

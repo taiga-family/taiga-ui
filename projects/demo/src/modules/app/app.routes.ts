@@ -771,11 +771,6 @@ export const ROUTES: Routes = [
         title: 'PdfViewer',
     }),
     route({
-        path: DemoRoute.PdfViewerOld,
-        loadComponent: async () => import('../components/pdf-viewer-'),
-        title: 'PdfViewer ⛔',
-    }),
-    route({
         path: DemoRoute.Pin,
         title: 'Pin',
         loadComponent: async () => import('../components/pin'),

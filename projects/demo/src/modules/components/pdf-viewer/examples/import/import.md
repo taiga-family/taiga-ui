@@ -1,5 +1,5 @@
 ```ts
-import {TuiPdfViewer} from '@taiga-ui/experimental';
+import {TuiPdfViewer} from '@taiga-ui/layout';
 // ...
 
 @Component({

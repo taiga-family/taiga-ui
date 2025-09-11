@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,10 +5,10 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiResponsiveDialog} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiPdfViewerComponent} from '@taiga-ui/experimental';
+import {TuiPdfViewer} from '@taiga-ui/layout';
 
 @Component({
-    imports: [NgIf, TuiButton, TuiPdfViewerComponent, TuiResponsiveDialog, TuiTitle],
+    imports: [TuiButton, TuiPdfViewer, TuiResponsiveDialog, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
