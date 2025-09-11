@@ -106,7 +106,9 @@
     }
 
     &::after {
-        .fullsize();
+        --tui-icon-size: 100%;
+
+        .fullsize(absolute, inset);
 
         content: '';
         z-index: -1;
