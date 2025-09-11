@@ -8,11 +8,12 @@ import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiScrollable, TuiTextfield} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
+    TUI_ONLY_MATCHING_ITEMS,
     TuiChevron,
     TuiComboBox,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import {map, type Observable} from 'rxjs';
+import {type Observable, map} from 'rxjs';
 
 @Component({
     imports: [
@@ -31,6 +32,12 @@ import {map, type Observable} from 'rxjs';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
+    providers: [
+        {
+            provide: TUI_ONLY_MATCHING_ITEMS,
+            useValue: true,
+        },
+    ],
 })
 export default class Example {
     protected readonly countries$: Observable<string[]> = inject(TUI_COUNTRIES).pipe(
