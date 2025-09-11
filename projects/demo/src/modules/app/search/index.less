@@ -68,11 +68,15 @@ html[data-theme='dark'] {
     overflow: hidden;
 }
 
-.DocSearch.DocSearch-Button-Placeholder {
+.DocSearch-Button-Placeholder {
     font: var(--tui-font-text-s);
 }
 
-.DocSearch.DocSearch-Button {
+.DocSearch-Button-Keys {
+    transform: scale(0.75);
+}
+
+.DocSearch-Button {
     .transition(~'box-shadow, color');
 
     position: relative;
@@ -101,11 +105,11 @@ html[data-theme='dark'] {
     &:active,
     &:hover {
         color: var(--docsearch-muted-color);
-
-        &::after {
-            color: var(--tui-background-accent-1);
-            border-width: 2px;
-        }
+        //
+        //&::after {
+        //    color: var(--tui-background-accent-1);
+        //    border-width: 2px;
+        //}
     }
 }
 
