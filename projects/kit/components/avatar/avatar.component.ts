@@ -12,7 +12,6 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
 @Component({
     // TODO: Remove `tui-avatar` selector leaving only [tuiAvatar] in v5
     selector: 'tui-avatar,button[tuiAvatar],a[tuiAvatar]',
-    imports: [],
     templateUrl: './avatar.template.html',
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

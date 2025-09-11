@@ -5,7 +5,6 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
     selector: 'tui-bar',
-    imports: [],
     templateUrl: './bar.template.html',
     styleUrls: ['./bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -19,7 +19,6 @@ const OPTIONS = {
 
 @Component({
     selector: 'tui-bottom-sheet',
-    imports: [],
     templateUrl: './bottom-sheet.template.html',
     styleUrls: ['./bottom-sheet.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

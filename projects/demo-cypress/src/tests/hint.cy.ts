@@ -9,7 +9,6 @@ describe('TuiHint', () => {
 
     @Component({
         selector: 'my-host',
-        imports: [],
         template: `
             @if (!hideElement) {
                 <ng-content />

@@ -12,7 +12,6 @@ import {tuiAsTextfieldAccessor} from './textfield-accessor';
  */
 @Component({
     selector: 'select[tuiTextfield]',
-    imports: [],
     templateUrl: './select.template.html',
     // We want this template to follow change detection to parent textfield.
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
