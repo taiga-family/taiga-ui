@@ -1,5 +1,5 @@
 [tuiIconBadge] {
-    &::before {
+    &::after {
         content: '';
         position: absolute;
         right: 0.143em;
@@ -8,11 +8,11 @@
         inline-size: 0.57em;
         block-size: 0.57em;
         transform: translate(50%, 50%);
-        mask: var(--t-icon-badge) no-repeat center/contain;
+        mask: var(--t-icon-badge) no-repeat center / calc(100% + 10 * var(--tui-stroke-width, 0.125rem)) 100%;
         background: currentColor;
     }
 
-    &[style*='--t-icon-badge:']::after {
+    &[style*='--t-icon-badge:']::before {
         mask-image:
             var(--t-icon),
             radial-gradient(circle at bottom 0.1em right 0.1em, transparent calc(0.4em - 0.5px), #000 0.4em);
