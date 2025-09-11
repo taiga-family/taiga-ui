@@ -110,6 +110,8 @@
 
         content: '';
         z-index: -1;
+        display: block;
+        transform: none;
         border-radius: 100%;
         background: currentColor;
         opacity: 0.35;
@@ -137,6 +139,7 @@
     }
 
     &::before {
+        block-size: 100%;
         mask-position: right;
         mask-size: contain;
     }

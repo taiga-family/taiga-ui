@@ -7,12 +7,12 @@
  *
  * @vars
  * --t-icon-start — depending on the data-icon-start, it can serve as either a mask (`svg`),
-  a background (`image`), or content (`font`) for the ::before element
+  a background (`img`), or content (`font`) for the ::before element
  * --t-icon-end — depending on the data-icon-end, it can serve as either a mask (`svg`),
-  a background (`image`), or content (`font`) for the ::after element
+  a background (`img`), or content (`font`) for the ::after element
  *
  * @example
- * <button tuiIcons data-icon-start="svg" style="--t-icon-start: url('icon.svg')"></button>
+ * <button tuiIcons style="--t-icon-start: url('icon.svg')"></button>
  *
  * @see-also
  * Button, Icon, Link
@@ -27,7 +27,7 @@
         inline-size: 1em;
         block-size: 1em;
         line-height: 1em;
-        font-size: 1.5rem;
+        font-size: var(--tui-icon-size, 1.5rem);
         flex-shrink: 0;
         box-sizing: content-box;
         background: currentColor;
@@ -35,8 +35,10 @@
 
     &::before {
         display: var(--t-icon-start, none);
-        mask: var(--t-icon-start) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
-            ~'min(1em, 100%)' padding-box;
+        mask:
+            var(--t-icon-start) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
+                ~'min(1em, 100%)',
+            100% padding-box;
     }
 
     &::after {
@@ -45,12 +47,12 @@
             ~'min(1em, 100%)' padding-box;
     }
 
-    &[data-icon-start='image']::before {
+    &[data-icon-start='img']::before {
         mask: none;
         background: var(--t-icon-start) no-repeat center/contain padding-box;
     }
 
-    &[data-icon-end='image']::after {
+    &[data-icon-end='img']::after {
         mask: none;
         background: var(--t-icon-end) no-repeat center/contain padding-box;
     }

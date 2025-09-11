@@ -3,60 +3,32 @@ import {
     Component,
     computed,
     inject,
-    Input,
-    signal,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {
-    TUI_ICON_END,
-    TUI_ICON_START,
-    tuiGetIconMode,
-    tuiInjectIconResolver,
-} from '@taiga-ui/core/tokens';
+import {TuiIcons} from '@taiga-ui/core/directives';
 
 @Component({
     standalone: true,
-    selector: 'tui-icon',
+    // :not([tuiBadge]) is required to avoid double matching of TuiIcons
+    selector: 'tui-icon:not([tuiBadge])',
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/icon.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/icon.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        {
+            directive: TuiIcons,
+            inputs: ['iconStart: icon', 'iconEnd: badge'],
+        },
+    ],
     host: {
-        '[style.--t-icon]': 'resource() || "url()"',
-        '[style.--t-icon-bg]': 'bgResource()',
-        '[attr.data-icon]': 'mode()',
+        '[style.--t-icon-bg]': 'mask()',
     },
 })
 export class TuiIcon {
-    protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
-    protected readonly src = signal(
-        inject(TUI_ICON_START, {self: true, optional: true}) ||
-            inject(TUI_ICON_END, {self: true, optional: true}),
-    );
+    protected readonly icons = inject(TuiIcons);
 
-    protected readonly bg = signal<string | null>(null);
-    protected readonly resource = computed(() => this.resolve(this.src()));
-    protected readonly mode = computed(() => tuiGetIconMode(this.src()));
-    protected readonly bgResource = computed(() => this.resolve(this.bg()));
-
-    @Input()
-    public set icon(icon: string) {
-        this.src.set(icon);
-    }
-
-    @Input()
-    public set background(background: string) {
-        this.bg.set(background);
-    }
-
-    public resolve(value?: string | null): string | null {
-        if (!value) {
-            return null;
-        }
-
-        return tuiGetIconMode(value) === 'font'
-            ? `'${this.resolver(value)}'`
-            : `url(${this.resolver(value)})`;
-    }
+    public readonly background = input('');
+    public readonly mask = computed(() => this.icons.resolve(this.background()));
 }

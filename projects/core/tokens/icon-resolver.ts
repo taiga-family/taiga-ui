@@ -4,8 +4,6 @@ import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {TUI_ASSETS_PATH} from './assets-path';
 import {TUI_ICON_REGISTRY} from './icons';
 
-const ICON_MODE_PREFIXES = {font: '@font.', image: '@img.'} as const;
-
 export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
     ngDevMode ? 'TUI_ICON_RESOLVER' : '',
     {
@@ -14,10 +12,7 @@ export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
 
             // regex for @{any text}. used as a default fallback, returns path to svg from icon pack
             return (icon) =>
-                `${path}/${icon
-                    .replace(/@[a-zA-Z]+\./, '')
-                    .split('.')
-                    .join('/')}.svg`;
+                `${path}/${icon.replace(/@[a-zA-Z]+\./, '').replaceAll('.', '/')}.svg`;
         },
     },
 );
@@ -27,16 +22,8 @@ export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
  */
 export const TUI_ICON_START_RESOLVER = TUI_ICON_RESOLVER;
 
-export function tuiGetIconMode(icon?: string | null): 'font' | 'image' | 'svg' | null {
-    if (!icon) {
-        return null;
-    }
-
-    if (icon.startsWith(ICON_MODE_PREFIXES.image)) {
-        return 'image';
-    }
-
-    return icon.startsWith(ICON_MODE_PREFIXES.font) ? 'font' : 'svg';
+export function tuiGetIconMode(icon?: string | null): string | undefined {
+    return icon?.slice(icon.indexOf('@') + 1, icon.indexOf('.')) || undefined;
 }
 
 export function tuiInjectIconResolver(): TuiStringHandler<string> {
@@ -48,11 +35,9 @@ export function tuiInjectIconResolver(): TuiStringHandler<string> {
             return icon;
         }
 
-        if (tuiGetIconMode(icon) === 'font') {
-            return icon.slice(ICON_MODE_PREFIXES.font.length);
-        }
-
-        return icons[icon] ?? resolver(icon);
+        return icon.startsWith('@font.')
+            ? icon.replace('@font.', '')
+            : (icons[icon] ?? resolver(icon));
     };
 }
 
