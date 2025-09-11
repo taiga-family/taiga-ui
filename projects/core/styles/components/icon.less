@@ -38,21 +38,6 @@ tui-icon {
         }
     }
 
-    &[data-icon-start] {
-        &::before {
-            .fullsize();
-        }
-
-        &::after {
-            position: absolute;
-            right: 0.25em;
-            bottom: 0.25em;
-            transform: translate(50%, 50%);
-
-            --tui-icon-size: 0.5715em;
-        }
-    }
-
     &[data-icon-end] {
         &::before {
             mask-image:
@@ -66,6 +51,25 @@ tui-icon {
             &::before {
                 mask: radial-gradient(circle at bottom 0.1em right 0.1em, transparent calc(0.4em - 0.5px), #000 0.4em);
             }
+        }
+
+        &::after {
+            .fullsize();
+        }
+    }
+
+    &[data-icon-start] {
+        &::before {
+            .fullsize();
+        }
+
+        &::after {
+            position: absolute;
+            right: 0.25em;
+            bottom: 0.25em;
+            transform: translate(50%, 50%);
+
+            --tui-icon-size: 0.5715em;
         }
     }
 }
