@@ -15,4 +15,14 @@
 </tui-textfield>
 
 <p><strong>Control value:</strong></p>
+
+<button
+    size="xs"
+    tuiButton
+    type="button"
+    (click)="value = 0.75"
+>
+    Set 0.75
+</button>
+
 <code>{{ value | json }}</code>
