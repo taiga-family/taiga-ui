@@ -69,12 +69,11 @@
 
     &::before,
     &::after {
-        .transition(transform);
-
         content: '';
         position: absolute;
         block-size: 100%;
         inline-size: 1.5rem;
+        transition-property: transform;
     }
 
     &::before {
