@@ -1,4 +1,4 @@
-import {NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -17,7 +17,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
     selector: 'tui-pdf-viewer',
-    imports: [NgIf, NgTemplateOutlet, TuiAppBar, TuiButton],
+    imports: [NgTemplateOutlet, TuiAppBar, TuiButton],
     templateUrl: './pdf-viewer.template.html',
     styleUrls: ['./pdf-viewer.style.less'],
     encapsulation: ViewEncapsulation.None,
