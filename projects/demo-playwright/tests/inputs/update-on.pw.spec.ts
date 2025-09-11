@@ -1,4 +1,4 @@
-import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
+import {TuiDocumentationApiPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
 import {type DocRoutePageGroup, pages} from '../../../demo/src/modules/app/pages';
