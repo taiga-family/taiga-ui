@@ -42,7 +42,8 @@
         "Lebowski",
         "recalc",
         "crossfade",
-        "crossfading"
+        "crossfading",
+        "UTDL"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
