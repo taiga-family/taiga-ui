@@ -7,7 +7,6 @@ import {tuiCreateTimePeriods} from '@taiga-ui/kit';
 import {TuiInputTimeModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputTimeModule],
     templateUrl: './index.html',
     encapsulation,

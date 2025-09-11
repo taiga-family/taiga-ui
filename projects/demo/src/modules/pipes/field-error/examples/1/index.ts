@@ -35,7 +35,6 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

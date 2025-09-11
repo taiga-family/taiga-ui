@@ -14,7 +14,6 @@ import {
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgFor,

@@ -18,7 +18,6 @@ import {type TuiTableBarOptions} from './table-bar.options';
  * https://taiga-ui.dev/components/actions-bar
  */
 @Component({
-    standalone: true,
     selector: 'tui-table-bar',
     imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiButton],
     templateUrl: './table-bar.template.html',

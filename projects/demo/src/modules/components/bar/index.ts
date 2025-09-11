@@ -5,7 +5,6 @@ import {TuiBar} from '@taiga-ui/addon-charts';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiBar, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

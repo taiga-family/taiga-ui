@@ -12,7 +12,6 @@ interface Item {
 }
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiHint,

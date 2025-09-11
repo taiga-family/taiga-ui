@@ -7,7 +7,6 @@ import {TuiAccordion} from '@taiga-ui/kit';
 import {OpenOnRouteFragment} from './open-accordion-on-route-fragment';
 
 @Component({
-    standalone: true,
     imports: [OpenOnRouteFragment, TuiAccordion, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

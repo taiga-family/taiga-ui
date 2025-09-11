@@ -13,7 +13,6 @@ interface TreeNode {
 }
 
 @Component({
-    standalone: true,
     imports: [NgIf, TuiIcon, TuiTree],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -6,7 +6,6 @@ import {type TuiMonth} from '@taiga-ui/cdk';
 import {TuiInputMonthModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputMonthModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,

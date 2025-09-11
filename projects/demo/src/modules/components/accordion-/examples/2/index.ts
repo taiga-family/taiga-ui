@@ -20,7 +20,6 @@ class Account {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

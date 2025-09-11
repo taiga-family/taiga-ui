@@ -14,7 +14,6 @@ import {
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         TuiButton,

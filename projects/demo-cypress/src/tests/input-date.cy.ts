@@ -5,7 +5,6 @@ import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, TuiInputDate, TuiRoot, TuiTextfield],
     template: `
         <tui-root>

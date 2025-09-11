@@ -44,7 +44,6 @@ const CASH: Account = {
 };
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgForOf,

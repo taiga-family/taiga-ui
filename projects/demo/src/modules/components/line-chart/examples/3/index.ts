@@ -5,7 +5,6 @@ import {TuiAxes, TuiLineChart} from '@taiga-ui/addon-charts';
 import {type TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiAxes, TuiLineChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

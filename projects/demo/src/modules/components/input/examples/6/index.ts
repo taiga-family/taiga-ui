@@ -12,7 +12,6 @@ import {
 } from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiChevron,

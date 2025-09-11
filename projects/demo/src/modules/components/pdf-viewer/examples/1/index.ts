@@ -8,7 +8,6 @@ import {type TuiPdfViewerOptions, TuiPdfViewerService} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiNotification],
     templateUrl: './index.html',
     encapsulation,

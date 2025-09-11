@@ -7,7 +7,6 @@ import {TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,

@@ -13,7 +13,6 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Component({
-    standalone: true,
     selector: 'tui-expand',
     imports: [NgIf, NgTemplateOutlet],
     template: `

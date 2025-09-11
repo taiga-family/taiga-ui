@@ -12,7 +12,6 @@ import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputYear} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

@@ -8,7 +8,6 @@ import {TuiButtonLoading} from '@taiga-ui/kit';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiButton, TuiButtonLoading],
     templateUrl: './index.html',
     encapsulation,

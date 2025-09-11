@@ -5,7 +5,6 @@ import {TuiLink, type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider, TuiProgress} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

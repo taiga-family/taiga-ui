@@ -7,7 +7,6 @@ import {TuiButton, TuiLabel} from '@taiga-ui/core';
 import {TuiSheetModule, type TuiSheetOptions} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiButton, TuiLabel, TuiSheetModule, WaIntersectionObserver],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

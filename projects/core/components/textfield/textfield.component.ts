@@ -201,7 +201,6 @@ export class TuiTextfieldBaseComponent<T>
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-textfield:not([multi])',
     imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
     templateUrl: './textfield.template.html',

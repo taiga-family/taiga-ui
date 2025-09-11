@@ -6,7 +6,6 @@ import {tuiNumberFormatProvider} from '@taiga-ui/core';
 import {TuiInputRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputRangeModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     styles: [

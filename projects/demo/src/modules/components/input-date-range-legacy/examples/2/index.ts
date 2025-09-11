@@ -6,7 +6,6 @@ import {TuiDay, TuiDayRange} from '@taiga-ui/cdk';
 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputDateRangeModule],
     templateUrl: './index.html',
     encapsulation,

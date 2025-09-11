@@ -18,7 +18,6 @@ import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 import {map, type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

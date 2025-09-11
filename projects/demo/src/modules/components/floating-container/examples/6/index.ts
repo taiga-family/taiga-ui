@@ -16,7 +16,6 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgIf,

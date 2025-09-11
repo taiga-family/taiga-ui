@@ -9,7 +9,6 @@ import {tuiInputPhoneInternationalOptionsProvider, TuiTooltip} from '@taiga-ui/k
 import {defer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiIcon, TuiInputPhoneInternational, TuiTextfield, TuiTooltip],
     templateUrl: './index.html',
     encapsulation,

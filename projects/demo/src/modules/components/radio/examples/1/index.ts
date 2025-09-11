@@ -8,7 +8,6 @@ import {type TuiSizeS} from '@taiga-ui/core';
 import {TuiRadio} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, NgForOf, ReactiveFormsModule, TuiPlatform, TuiRadio],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

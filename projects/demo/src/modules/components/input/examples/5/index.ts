@@ -6,7 +6,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputModule, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

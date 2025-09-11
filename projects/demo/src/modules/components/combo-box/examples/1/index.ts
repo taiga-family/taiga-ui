@@ -11,7 +11,6 @@ import {
 } from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiChevron,

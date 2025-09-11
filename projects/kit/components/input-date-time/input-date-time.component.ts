@@ -16,7 +16,6 @@ import {TuiNativeTimePicker} from '@taiga-ui/kit/components/input-time';
 import {TuiInputDateTimeDirective} from './input-date-time.directive';
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputDateTime][type="datetime-local"]',
     imports: [NgIf, TuiTextfieldContent],
     templateUrl: './input-date-time.template.html',

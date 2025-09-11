@@ -7,7 +7,6 @@ import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCell, type TuiCellOptions} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiCell, TuiDemo, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

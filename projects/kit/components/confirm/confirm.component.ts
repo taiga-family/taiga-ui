@@ -21,7 +21,6 @@ export interface TuiConfirmData {
 
 // TODO: Remove selector in v5
 @Component({
-    standalone: true,
     selector: 'tui-confirm',
     imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './confirm.template.html',

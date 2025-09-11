@@ -12,7 +12,6 @@ const ROTATE_X_MAX = 500;
 const ROTATE_X_MULTIPLIER = 2.3;
 
 @Component({
-    standalone: true,
     selector: 'tui-mobile-android-loader',
     imports: [NgIf, TuiLoader],
     templateUrl: './loader-android.template.html',

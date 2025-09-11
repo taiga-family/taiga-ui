@@ -9,7 +9,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiVariablesExample1} from './examples/1';
 
 @Component({
-    standalone: true,
     imports: [ClipboardModule, KeyValuePipe, TuiDemo, TuiLink, TuiVariablesExample1],
     templateUrl: './index.html',
     changeDetection,

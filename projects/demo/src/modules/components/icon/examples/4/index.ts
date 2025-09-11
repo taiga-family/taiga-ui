@@ -6,7 +6,6 @@ import heart from '@taiga-ui/icons/src/heart.svg?raw';
 import search from '@taiga-ui/icons/src/search.svg?raw';
 
 @Component({
-    standalone: true,
     imports: [TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

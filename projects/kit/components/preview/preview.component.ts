@@ -27,7 +27,6 @@ const EMPTY_COORDINATES: [number, number] = [0, 0];
 const ROTATION_ANGLE = 90;
 
 @Component({
-    standalone: true,
     selector: 'tui-preview',
     imports: [
         AsyncPipe,

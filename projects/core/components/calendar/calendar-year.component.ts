@@ -31,7 +31,6 @@ const ITEMS_IN_ROW = 4;
 const CURRENT_YEAR = TuiMonth.currentLocal().year;
 
 @Component({
-    standalone: true,
     selector: 'tui-calendar-year',
     imports: [TuiHovered, TuiLet, TuiRepeatTimes, TuiScrollIntoView],
     templateUrl: './calendar-year.template.html',

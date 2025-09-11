@@ -5,7 +5,6 @@ import {TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiCell, TuiIcon, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

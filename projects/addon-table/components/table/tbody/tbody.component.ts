@@ -21,7 +21,6 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiTableTr} from '../tr/tr.component';
 
 @Component({
-    standalone: true,
     selector: 'tbody[tuiTbody]',
     imports: [NgIf, PolymorpheusOutlet, TuiChevron, TuiIcon],
     templateUrl: './tbody.template.html',

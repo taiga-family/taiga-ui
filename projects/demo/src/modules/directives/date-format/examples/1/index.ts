@@ -6,7 +6,6 @@ import {TuiDateFormat} from '@taiga-ui/core';
 import {TuiInputDateModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDateFormat, TuiInputDateModule],
     templateUrl: './index.html',
     encapsulation,

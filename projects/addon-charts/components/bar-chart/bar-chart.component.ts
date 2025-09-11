@@ -27,7 +27,6 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-bar-chart',
     imports: [AsyncPipe, NgForOf, TuiBarSet, TuiHint, TuiMapperPipe],
     templateUrl: './bar-chart.template.html',

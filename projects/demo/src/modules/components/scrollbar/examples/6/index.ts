@@ -9,7 +9,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,

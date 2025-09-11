@@ -9,7 +9,6 @@ import {TuiButton, TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiButtonSelect, TuiDataListWrapper, TuiPagination} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

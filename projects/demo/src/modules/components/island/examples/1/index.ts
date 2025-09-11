@@ -5,7 +5,6 @@ import {TuiButton, TuiLink} from '@taiga-ui/core';
 import {TuiIslandDirective} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiIslandDirective, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

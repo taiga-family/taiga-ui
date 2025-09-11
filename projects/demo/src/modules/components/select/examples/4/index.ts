@@ -7,7 +7,6 @@ import {TuiDataList, TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListDropdownManager, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgForOf,

@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocCopy} from '@taiga-ui/addon-doc';
 
 @Component({
-    standalone: true,
     imports: [ClipboardModule, TuiDocCopy],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

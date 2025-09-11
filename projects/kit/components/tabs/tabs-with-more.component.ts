@@ -36,7 +36,6 @@ import {TUI_TABS_PROVIDERS, TUI_TABS_REFRESH} from './tabs.providers';
 import {TuiTabsHorizontal} from './tabs-horizontal.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
     imports: [
         AsyncPipe,

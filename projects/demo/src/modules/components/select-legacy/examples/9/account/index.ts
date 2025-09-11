@@ -12,7 +12,6 @@ export interface MyAccount {
 }
 
 @Component({
-    standalone: true,
     selector: 'my-account',
     imports: [AsyncPipe, PolymorpheusOutlet, TuiAmountPipe, TuiIconPipe, TuiNumberFormat],
     templateUrl: './index.html',

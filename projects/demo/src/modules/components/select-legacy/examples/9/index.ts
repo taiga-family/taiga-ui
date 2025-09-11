@@ -10,7 +10,6 @@ import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {ExampleMyAccount, type MyAccount} from './account';
 
 @Component({
-    standalone: true,
     imports: [
         ExampleMyAccount,
         NgForOf,

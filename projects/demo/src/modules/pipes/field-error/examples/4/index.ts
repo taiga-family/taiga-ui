@@ -19,7 +19,6 @@ import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legac
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         NgForOf,

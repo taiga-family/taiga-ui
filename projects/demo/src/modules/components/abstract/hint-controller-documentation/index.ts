@@ -12,7 +12,6 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
 import {type AbstractExampleTuiControl} from '../control';
 
 @Component({
-    standalone: true,
     selector: 'hint-controller-documentation',
     imports: [
         RouterLink,

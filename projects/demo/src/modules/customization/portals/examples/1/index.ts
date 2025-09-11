@@ -5,7 +5,6 @@ import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {CustomPortalService} from './service';
 
 @Component({
-    standalone: true,
     selector: 'tui-portals-example-1',
     imports: [TuiButton, TuiIcon],
     templateUrl: './index.html',

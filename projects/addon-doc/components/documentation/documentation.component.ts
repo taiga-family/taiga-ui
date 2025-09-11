@@ -44,7 +44,6 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
 // @bad TODO subscribe propertiesConnectors changes
 // @bad TODO refactor to make more flexible
 @Component({
-    standalone: true,
     selector: 'tui-doc-documentation',
     imports: [
         FormsModule,

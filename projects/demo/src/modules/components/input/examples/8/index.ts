@@ -30,7 +30,6 @@ const DATA: readonly User[] = [
 ];
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         NgForOf,

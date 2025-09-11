@@ -11,7 +11,6 @@ import {TUI_SELECTED_VERSION_META} from './version-manager.providers';
 import {TUI_VERSIONS_META_OPTIONS, type TuiVersionMeta} from './versions.constants';
 
 @Component({
-    standalone: true,
     selector: 'version-manager',
     imports: [FormsModule, NgForOf, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
     templateUrl: './version-manager.template.html',

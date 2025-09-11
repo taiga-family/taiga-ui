@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputRangeModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputRangeModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     styles: [

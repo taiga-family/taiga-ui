@@ -8,7 +8,6 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {type PromptOptions} from './prompt-options';
 
 @Component({
-    standalone: true,
     selector: 'prompt',
     imports: [PolymorpheusOutlet, TuiButton],
     templateUrl: './prompt.template.html',

@@ -9,7 +9,6 @@ import {TuiSlides, TuiStepper} from '@taiga-ui/kit';
 import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         KeyValuePipe,
         NgForOf,

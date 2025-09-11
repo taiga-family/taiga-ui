@@ -5,7 +5,6 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/experimental';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion, TuiDemo],
     templateUrl: './index.html',
     changeDetection,

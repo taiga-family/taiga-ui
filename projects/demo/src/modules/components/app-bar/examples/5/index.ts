@@ -7,7 +7,6 @@ import {TuiAvatar, TuiSegmented} from '@taiga-ui/kit';
 import {TuiAppBar, TuiCell, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         TuiAppBar,
         TuiAvatar,

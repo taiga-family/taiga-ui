@@ -6,7 +6,6 @@ import {TuiLink, TuiNotification} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputModule, TuiLink, TuiNotification],
     templateUrl: './index.html',
     encapsulation,

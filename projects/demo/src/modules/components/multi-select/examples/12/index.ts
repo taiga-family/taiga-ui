@@ -15,7 +15,6 @@ import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 export class MoreOption {}
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         MoreOption,

@@ -20,7 +20,6 @@ import {
 import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     selector: 'tbody[tuiDocNumberFormat]',
     imports: [NgIf, RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
     templateUrl: './index.html',

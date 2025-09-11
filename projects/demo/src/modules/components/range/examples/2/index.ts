@@ -7,7 +7,6 @@ import {TuiIcon} from '@taiga-ui/core';
 import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, I18nPluralPipe, JsonPipe, NgForOf, NgIf, TuiIcon, TuiRange],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

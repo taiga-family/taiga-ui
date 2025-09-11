@@ -55,7 +55,6 @@ const MASK_SYMBOLS = /[ \-_()]/g;
  * https://taiga-ui.dev/components/input-phone-international
  */
 @Component({
-    standalone: true,
     selector: 'tui-input-phone-international',
     imports: [
         CommonModule,

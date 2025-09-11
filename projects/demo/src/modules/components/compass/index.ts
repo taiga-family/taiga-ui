@@ -4,7 +4,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiCompass} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiCompass, TuiDemo],
     templateUrl: './index.html',
     changeDetection,

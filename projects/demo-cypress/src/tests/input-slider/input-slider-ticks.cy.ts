@@ -5,7 +5,6 @@ import {TuiInputSlider} from '@taiga-ui/kit';
 
 describe('InputSlider | With segments + tick labels', () => {
     @Component({
-        standalone: true,
         imports: [FormsModule, TuiInputSlider, TuiRoot, TuiTextfield],
         template: `
             <tui-root>

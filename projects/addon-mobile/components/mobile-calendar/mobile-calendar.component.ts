@@ -85,7 +85,6 @@ import {
 } from './mobile-calendar.providers';
 
 @Component({
-    standalone: true,
     selector: 'tui-mobile-calendar',
     imports: [
         AsyncPipe,

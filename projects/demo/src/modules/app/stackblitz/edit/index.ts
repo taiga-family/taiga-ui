@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiButton, TuiIcon} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiIcon],
     template: `
         <button

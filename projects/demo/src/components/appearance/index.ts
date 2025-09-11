@@ -12,7 +12,6 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'tbody[tuiDocAppearance]',
     imports: [NgIf, RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
     templateUrl: './index.html',

@@ -31,7 +31,6 @@ class ExampleDateTimeTransformer extends TuiValueTransformer<
 }
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputDateTimeModule],
     templateUrl: './index.html',
     encapsulation,

@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwitch, tuiSwitchOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

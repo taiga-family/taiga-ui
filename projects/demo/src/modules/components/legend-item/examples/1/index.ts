@@ -7,7 +7,6 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, NgForOf, TuiAmountPipe, TuiHovered, TuiLegendItem, TuiRingChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

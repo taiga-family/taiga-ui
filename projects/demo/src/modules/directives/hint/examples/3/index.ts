@@ -5,7 +5,6 @@ import {TuiHint} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiBadge, TuiHint],
     templateUrl: './index.html',
     encapsulation,

@@ -6,7 +6,6 @@ import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiDemo],
     templateUrl: './index.html',
     changeDetection,

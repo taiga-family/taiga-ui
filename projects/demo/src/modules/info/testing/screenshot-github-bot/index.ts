@@ -5,7 +5,6 @@ export const SCREENSHOT_BOT_NAME = 'Lumberjack';
 export const SCREENSHOT_BOT_LINK = 'https://github.com/apps/lumberjack-bot';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

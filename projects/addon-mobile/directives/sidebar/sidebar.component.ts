@@ -13,7 +13,6 @@ import {TuiSidebarDirective} from './sidebar.directive';
  * @deprecated use {@link TuiDrawer} instead
  */
 @Component({
-    standalone: true,
     selector: 'aside[tuiSidebar]',
     imports: [PolymorpheusOutlet, TuiActiveZone],
     templateUrl: './sidebar.template.html',

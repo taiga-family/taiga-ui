@@ -7,7 +7,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {delayWhen, of, Subject} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, JsonPipe, NgIf, TuiButton, TuiIsPresentPipe, TuiLet],
     templateUrl: './index.html',
     encapsulation,

@@ -31,7 +31,6 @@ const REGEX = /[0-9a-fA-F]/;
 const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></svg>"';
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputColor]',
     imports: [FormsModule, NgIf, TuiSlider, TuiTextfieldContent],
     templateUrl: './input-color.template.html',

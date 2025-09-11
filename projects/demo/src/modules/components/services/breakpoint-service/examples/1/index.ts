@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBreakpointService} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, NgIf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

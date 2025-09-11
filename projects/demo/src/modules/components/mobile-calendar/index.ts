@@ -17,7 +17,6 @@ import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiMobileCalendar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

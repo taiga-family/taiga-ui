@@ -5,7 +5,6 @@ import {WA_LOCAL_STORAGE, WA_WINDOW} from '@ng-web-apis/common';
 import {TUI_DARK_MODE, TUI_DARK_MODE_KEY, TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

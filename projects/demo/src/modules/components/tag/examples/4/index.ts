@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTagModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiTagModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

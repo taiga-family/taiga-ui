@@ -38,7 +38,6 @@ const EXPENSES = {
 };
 
 @Component({
-    standalone: true,
     imports: [CustomListComponent, FormsModule, TuiDataList, TuiSelectModule],
     templateUrl: './index.html',
     styles: [

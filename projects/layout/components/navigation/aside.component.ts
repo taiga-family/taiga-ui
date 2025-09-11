@@ -11,7 +11,6 @@ import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 
 @Component({
-    standalone: true,
     selector: 'aside[tuiNavigationAside]',
     imports: [TuiFade, TuiScrollable, TuiScrollbar],
     template: `

@@ -49,7 +49,6 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
 
 // TODO: Consider aria-activedescendant for proper accessibility implementation
 @Component({
-    standalone: true,
     selector: 'tui-data-list',
     imports: [NgIf, PolymorpheusOutlet],
     templateUrl: './data-list.template.html',

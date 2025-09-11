@@ -11,7 +11,6 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-spin-button',
     imports: [AsyncPipe, NgIf, TuiButton],
     templateUrl: './spin-button.template.html',

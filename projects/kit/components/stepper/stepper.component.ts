@@ -33,7 +33,6 @@ import {delay, type Observable} from 'rxjs';
 import {TuiStep} from './step.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-stepper, nav[tuiStepper]',
     imports: [AsyncPipe, NgIf],
     templateUrl: './stepper.template.html',

@@ -20,7 +20,6 @@ interface Country {
 }
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiChevron,

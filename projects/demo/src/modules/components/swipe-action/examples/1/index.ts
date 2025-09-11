@@ -9,7 +9,6 @@ import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         TuiAmountPipe,

@@ -10,7 +10,6 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
 
 @Component({
-    standalone: true,
     imports: [
         TuiActiveZone,
         TuiButton,

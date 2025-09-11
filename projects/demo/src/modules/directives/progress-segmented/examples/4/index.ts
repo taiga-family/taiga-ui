@@ -7,7 +7,6 @@ import {TuiTitle} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiProgress, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

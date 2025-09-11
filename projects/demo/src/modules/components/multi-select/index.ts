@@ -42,7 +42,6 @@ class Account {
 }
 
 @Component({
-    standalone: true,
     imports: [
         InheritedDocumentation,
         ReactiveFormsModule,

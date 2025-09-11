@@ -5,7 +5,6 @@ import {type TuiDialogContext, TuiTextfield} from '@taiga-ui/core';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiAutoFocus, TuiTextfield],
     templateUrl: './search-dialog-example.template.html',
     styleUrls: ['./search-dialog-example.component.less'],

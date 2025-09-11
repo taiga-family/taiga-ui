@@ -30,7 +30,6 @@ import {TuiCarouselAutoscroll} from './carousel-autoscroll.directive';
 import {TuiCarouselScroll} from './carousel-scroll.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-carousel',
     imports: [
         AsyncPipe,

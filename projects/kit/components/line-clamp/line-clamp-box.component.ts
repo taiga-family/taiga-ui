@@ -4,7 +4,6 @@ import {TUI_HINT_PROVIDERS, TuiHintBaseComponent} from '@taiga-ui/core/directive
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'tui-line-clamp-box',
     imports: [PolymorpheusOutlet],
     template: `

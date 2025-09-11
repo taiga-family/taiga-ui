@@ -8,7 +8,6 @@ import {TuiInputDateModule} from '@taiga-ui/legacy';
 import {ExampleNativeDateTransformer} from './native-date-transformer.directive';
 
 @Component({
-    standalone: true,
     imports: [ExampleNativeDateTransformer, ReactiveFormsModule, TuiInputDateModule],
     templateUrl: './index.html',
     encapsulation,

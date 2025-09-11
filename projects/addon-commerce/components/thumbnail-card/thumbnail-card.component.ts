@@ -8,7 +8,6 @@ import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core/types';
 import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-thumbnail-card',
     imports: [NgIf, TuiIcon, TuiIconPipe],
     templateUrl: './thumbnail-card.template.html',

@@ -5,7 +5,6 @@ import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
-    standalone: true,
     selector: 'tui-bar',
     imports: [NgForOf],
     templateUrl: './bar.template.html',

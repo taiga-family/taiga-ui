@@ -7,7 +7,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, NgForOf, TuiButton, TuiTabBar],
     templateUrl: './index.html',
     encapsulation,

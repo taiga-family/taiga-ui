@@ -13,7 +13,6 @@ import {TuiAccordion} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion, TuiButton, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -18,7 +18,6 @@ import {
 import {TuiInputMonthDirective} from './input-month.directive';
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputMonth][type="month"]',
     imports: [NgIf, TuiTextfieldContent],
     templateUrl: './input-month.template.html',

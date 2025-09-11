@@ -16,7 +16,6 @@ import {TuiInputNumber, TuiTooltip} from '@taiga-ui/kit';
 import {PayModal} from './pay-modal/pay-modal.component';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,

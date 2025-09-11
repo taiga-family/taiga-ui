@@ -6,7 +6,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiLike} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, TuiButton, TuiLike],
     templateUrl: './index.html',
     styles: [

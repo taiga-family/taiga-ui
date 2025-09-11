@@ -7,7 +7,6 @@ import {TuiBadge, TuiDrawer, TuiTabs} from '@taiga-ui/kit';
 import {TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         TuiBadge,
         TuiButton,

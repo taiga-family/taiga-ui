@@ -6,7 +6,6 @@ import {type TuiContext} from '@taiga-ui/cdk';
 import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputSliderModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

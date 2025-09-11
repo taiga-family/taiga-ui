@@ -5,7 +5,6 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiPagination} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiPagination],
     templateUrl: './index.html',
     changeDetection,

@@ -7,7 +7,6 @@ import {TuiSheetService} from '@taiga-ui/legacy';
 import {Subject, switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

@@ -11,7 +11,6 @@ import {TuiCheckbox} from '@taiga-ui/kit/components/checkbox';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 
 @Component({
-    standalone: true,
     imports: [NgIf, TuiCheckbox],
     template: `
         <input

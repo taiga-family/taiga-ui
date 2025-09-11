@@ -8,7 +8,6 @@ import {TuiInputDateRange} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDropdownMobile,

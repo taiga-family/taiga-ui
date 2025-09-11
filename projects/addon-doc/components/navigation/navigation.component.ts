@@ -45,7 +45,6 @@ import {
 import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-navigation',
     imports: [
         NgForOf,

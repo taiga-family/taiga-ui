@@ -8,7 +8,6 @@ import {TuiBadge, TuiChevron} from '@taiga-ui/kit';
 import {TuiCard, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         TuiBadge,
         TuiButton,

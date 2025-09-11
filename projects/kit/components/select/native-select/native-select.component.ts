@@ -24,7 +24,6 @@ import {
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 @Component({
-    standalone: true,
     selector: 'select[tuiSelect]',
     imports: [NgForOf, NgIf, NgTemplateOutlet],
     templateUrl: './native-select.template.html',

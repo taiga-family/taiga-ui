@@ -13,7 +13,6 @@ import {TuiDrawer} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,

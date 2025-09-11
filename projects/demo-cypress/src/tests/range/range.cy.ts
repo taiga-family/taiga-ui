@@ -8,7 +8,6 @@ describe('TuiRange', () => {
     let fixture: ComponentFixture<Test>;
 
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiRange],
         template: `
             <tui-range

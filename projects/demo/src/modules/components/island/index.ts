@@ -8,7 +8,6 @@ import {TuiIslandDirective} from '@taiga-ui/legacy';
 import {StylesInfo} from '../../app/styles-info';
 
 @Component({
-    standalone: true,
     imports: [StylesInfo, TuiButton, TuiDemo, TuiIslandDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -57,7 +57,6 @@ const DATA: Record<string, readonly Result[]> = {
 };
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

@@ -4,7 +4,6 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiColorSelectorModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiColorSelectorModule, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

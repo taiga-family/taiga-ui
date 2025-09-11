@@ -14,7 +14,6 @@ import {TUI_PAGINATION_TEXTS, TUI_PREVIEW_ICONS} from '@taiga-ui/kit/tokens';
 import {TuiPreviewAction} from '../action/preview-action.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-preview-pagination',
     imports: [AsyncPipe, NgIf, TuiButton, TuiPreviewAction],
     templateUrl: './preview-pagination.template.html',

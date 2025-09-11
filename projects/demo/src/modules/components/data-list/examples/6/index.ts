@@ -9,7 +9,6 @@ import {TuiChevron} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         NgForOf,

@@ -24,7 +24,6 @@ import {TUI_INPUT_PASSWORD_OPTIONS} from './input-password.options';
  * @deprecated use {@link TuiPassword} with {@link TuiTextfield}
  */
 @Component({
-    standalone: true,
     selector: 'input[tuiInputPassword]',
     imports: [TuiIcon, TuiTextfieldContent, TuiTooltip],
     template: `

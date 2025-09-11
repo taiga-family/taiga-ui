@@ -6,7 +6,6 @@ import {TuiHovered} from '@taiga-ui/cdk';
 import {TuiBadge, TuiPresent} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgIf, TuiBadge, TuiHovered, TuiPresent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

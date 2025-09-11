@@ -17,7 +17,6 @@ import {
 } from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, NgIf, TuiButton, TuiIcon, TuiLoader, TuiPreview],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

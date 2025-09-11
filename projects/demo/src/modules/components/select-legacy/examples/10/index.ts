@@ -16,7 +16,6 @@ interface Employee {
 }
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDataList,

@@ -5,7 +5,6 @@ import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

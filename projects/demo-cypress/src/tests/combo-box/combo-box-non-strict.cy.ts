@@ -19,7 +19,6 @@ interface Country {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

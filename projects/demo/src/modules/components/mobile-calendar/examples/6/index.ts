@@ -6,7 +6,6 @@ import {TuiDay} from '@taiga-ui/cdk';
 import {TUI_CHOOSE_DAY_OR_RANGE_TEXTS} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiMobileCalendar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

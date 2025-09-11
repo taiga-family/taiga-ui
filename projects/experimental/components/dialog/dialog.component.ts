@@ -43,7 +43,6 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-dialog',
     imports: [NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './dialog.template.html',
@@ -56,7 +55,9 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
         TuiDialogCloseService,
         {
             provide: TUI_HEADER_OPTIONS,
-            useFactory: (): {size: string} => ({size: getSize(injectContext())}),
+            useFactory: (): {
+                size: string;
+            } => ({size: getSize(injectContext())}),
         },
     ],
     hostDirectives: [TuiAnimated],

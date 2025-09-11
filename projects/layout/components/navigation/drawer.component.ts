@@ -29,7 +29,6 @@ import {TUI_LAYOUT_ICONS} from '@taiga-ui/layout/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [PolymorpheusOutlet, TuiScrollbar],
     template: `
         <tui-scrollbar [style.height.%]="100">

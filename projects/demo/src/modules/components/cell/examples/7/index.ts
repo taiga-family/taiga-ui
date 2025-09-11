@@ -8,7 +8,6 @@ import {TuiAvatar, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/ki
 import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgFor,

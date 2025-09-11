@@ -5,7 +5,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'logo',
     imports: [RouterLink, TuiLink],
     templateUrl: './logo.template.html',

@@ -15,7 +15,6 @@ import {filter, map} from 'rxjs';
 import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-search-history',
     imports: [NgForOf, NgIf, TuiAvatar, TuiButton, TuiCell, TuiTitle],
     templateUrl: './search-history.component.html',

@@ -10,7 +10,6 @@ import {TUI_TABLE_BARS} from './table-bar.options';
  * https://taiga-ui.dev/components/actions-bar
  */
 @Component({
-    standalone: true,
     selector: 'tui-table-bars-host',
     imports: [AsyncPipe, NgForOf, PolymorpheusOutlet],
     template: `

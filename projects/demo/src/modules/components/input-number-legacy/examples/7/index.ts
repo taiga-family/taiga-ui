@@ -8,7 +8,6 @@ import {TuiInputNumberModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputNumberModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,

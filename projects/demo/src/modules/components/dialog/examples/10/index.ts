@@ -3,7 +3,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiButton, TuiDialogService} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

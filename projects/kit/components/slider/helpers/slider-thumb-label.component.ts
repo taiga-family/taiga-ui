@@ -13,7 +13,6 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiSliderComponent} from '../slider.component';
 
 @Component({
-    standalone: true,
     selector: '[tuiSliderThumbLabel]',
     imports: [AsyncPipe, NgIf],
     templateUrl: './slider-thumb-label.template.html',

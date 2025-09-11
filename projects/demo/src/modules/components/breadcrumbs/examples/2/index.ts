@@ -9,7 +9,6 @@ import {TuiHint, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider, TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         RouterLink,

@@ -8,7 +8,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDate, tuiInputDateOptionsProviderNew} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, JsonPipe, TuiInputDate, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

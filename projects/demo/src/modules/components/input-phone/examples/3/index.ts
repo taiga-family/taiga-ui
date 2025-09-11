@@ -12,7 +12,6 @@ const VALUE_TRANSFORMER: TuiValueTransformer<string, string> = {
 };
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputPhone, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

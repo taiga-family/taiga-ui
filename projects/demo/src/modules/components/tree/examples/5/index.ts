@@ -14,7 +14,6 @@ interface TreeNode {
 }
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiTree],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

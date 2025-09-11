@@ -10,7 +10,6 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TUI_RATING_OPTIONS, type TuiRatingOptions} from './rating.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-rating',
     imports: [FormsModule, PolymorpheusOutlet, TuiIcon, TuiRepeatTimes],
     templateUrl: './rating.template.html',

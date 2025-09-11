@@ -11,7 +11,6 @@ import {
 import {defer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputPhoneInternational, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

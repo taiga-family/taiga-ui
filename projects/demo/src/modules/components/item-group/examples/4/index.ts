@@ -7,7 +7,6 @@ import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
 import {TuiItemGroup} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, NgForOf, TuiChip, TuiItemGroup, TuiItemsWithMore],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

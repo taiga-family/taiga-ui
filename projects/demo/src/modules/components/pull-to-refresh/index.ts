@@ -5,7 +5,6 @@ import {TuiScrollbar} from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [PolymorpheusOutlet, TuiDemo, TuiScrollbar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

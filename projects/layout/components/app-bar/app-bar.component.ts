@@ -22,7 +22,6 @@ import {map, merge} from 'rxjs';
 import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
 
 @Component({
-    standalone: true,
     selector: 'tui-app-bar',
     imports: [AsyncPipe, TuiFade],
     templateUrl: './app-bar.template.html',

@@ -5,7 +5,6 @@ describe('TuiZoom', () => {
     let component: Test;
 
     @Component({
-        standalone: true,
         imports: [TuiZoom],
         template: `
             <section

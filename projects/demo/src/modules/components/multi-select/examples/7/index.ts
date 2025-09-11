@@ -11,7 +11,6 @@ import {TuiDataList, TuiScrollable} from '@taiga-ui/core';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,

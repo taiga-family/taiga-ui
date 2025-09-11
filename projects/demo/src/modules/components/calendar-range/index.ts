@@ -25,7 +25,6 @@ const TWO_DOTS: [string, string] = [
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
-    standalone: true,
     imports: [TuiCalendarRange, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,

@@ -17,7 +17,6 @@ const ITEMS: readonly string[] = [
 ];
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDataList,

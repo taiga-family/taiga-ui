@@ -8,7 +8,6 @@ import {TuiCalendarSheet} from '@taiga-ui/core/components/calendar';
 import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes/calendar-sheet';
 
 @Component({
-    standalone: true,
     selector: 'tui-mobile-calendar-sheet',
     imports: [NgIf, TuiCalendarSheetPipe, TuiLet, TuiRepeatTimes, TuiRipple],
     templateUrl: './mobile-calendar-sheet.template.html',

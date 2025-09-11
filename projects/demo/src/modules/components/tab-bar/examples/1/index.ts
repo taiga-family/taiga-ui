@@ -12,7 +12,6 @@ interface Item {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-tab-bar-example',
     imports: [NgForOf, TuiTabBar],
     templateUrl: './index.html',

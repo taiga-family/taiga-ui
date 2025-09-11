@@ -7,7 +7,6 @@ import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         NgFor,
         TuiButton,

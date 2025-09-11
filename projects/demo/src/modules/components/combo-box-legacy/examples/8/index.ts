@@ -25,7 +25,6 @@ const DICTIONARY: Dictionary[] = [
 ];
 
 @Component({
-    standalone: true,
     imports: [
         JsonPipe,
         ReactiveFormsModule,

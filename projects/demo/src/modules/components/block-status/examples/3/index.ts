@@ -7,7 +7,6 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
 import {map, type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, NgIf, TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

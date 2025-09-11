@@ -8,7 +8,6 @@ import {TuiTooltip} from '@taiga-ui/kit';
 import {interval, map, startWith} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiIcon, TuiLet, TuiLoader, TuiTooltip],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

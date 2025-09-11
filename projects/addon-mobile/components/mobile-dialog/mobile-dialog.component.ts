@@ -9,7 +9,6 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {type TuiMobileDialogOptions} from './mobile-dialog.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-mobile-dialog',
     imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiButton, TuiRipple],
     templateUrl: './mobile-dialog.template.html',

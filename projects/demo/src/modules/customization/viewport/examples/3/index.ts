@@ -32,7 +32,6 @@ class PortalHost implements TuiRectAccessor {
 }
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgForOf,

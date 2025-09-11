@@ -29,7 +29,6 @@ import {
 } from '../../misc/tree.tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-tree-item',
     imports: [NgIf, PolymorpheusOutlet, TuiExpandComponent],
     templateUrl: './tree-item.template.html',

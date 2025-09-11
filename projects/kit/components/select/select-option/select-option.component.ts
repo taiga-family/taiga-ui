@@ -13,7 +13,6 @@ import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiCheckbox],
     template: `
         <input

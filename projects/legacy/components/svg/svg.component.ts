@@ -52,7 +52,6 @@ export interface TuiIconError {
  * https://taiga-ui.dev/components/icon
  */
 @Component({
-    standalone: true,
     selector: 'tui-svg',
     imports: [AsyncPipe],
     templateUrl: './svg.template.html',

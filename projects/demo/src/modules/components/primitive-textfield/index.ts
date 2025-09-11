@@ -27,7 +27,6 @@ import Example1 from './examples/1';
 import Example2 from './examples/2';
 
 @Component({
-    standalone: true,
     imports: [
         Example1,
         Example2,

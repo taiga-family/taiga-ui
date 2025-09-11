@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiTabs],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

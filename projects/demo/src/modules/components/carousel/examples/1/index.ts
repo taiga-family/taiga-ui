@@ -6,7 +6,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgFor, TuiButton, TuiCarousel, TuiPagination],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

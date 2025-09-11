@@ -10,7 +10,6 @@ import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
-    standalone: true,
     selector: 'tui-action-bar',
     imports: [TuiExpandComponent],
     templateUrl: './action-bar.template.html',

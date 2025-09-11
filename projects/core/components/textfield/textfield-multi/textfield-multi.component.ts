@@ -50,7 +50,6 @@ import {
 } from './textfield-item.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-textfield[multi]',
     imports: [
         AsyncPipe,

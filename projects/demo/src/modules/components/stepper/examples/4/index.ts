@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiConnected, TuiStepper} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiConnected, TuiStepper],
     templateUrl: './index.html',
     encapsulation,

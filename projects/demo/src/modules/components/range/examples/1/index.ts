@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, TuiRange],
     templateUrl: './index.html',
     styles: [':host {display: flex; flex-direction: column;}'],

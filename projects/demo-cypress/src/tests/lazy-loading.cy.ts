@@ -3,7 +3,6 @@ import {TuiImgLazyLoading} from '@taiga-ui/kit';
 
 describe('LazyLoading', () => {
     @Component({
-        standalone: true,
         imports: [TuiImgLazyLoading],
         template: `
             <img

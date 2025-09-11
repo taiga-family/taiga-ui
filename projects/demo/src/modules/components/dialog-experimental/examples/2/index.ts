@@ -7,7 +7,6 @@ import {TuiDialog} from '@taiga-ui/experimental';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         TuiAutoFocus,
         TuiButton,
