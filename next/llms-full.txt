@@ -274,7 +274,6 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/experimental';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -334,7 +333,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -404,7 +402,6 @@ import {switchMap} from 'rxjs';
 import {AlertExampleWithData} from './examples/4';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -557,7 +554,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -629,7 +625,6 @@ import {TuiArcChart} from '@taiga-ui/addon-charts';
 import {type TuiSizeXL} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiArcChart, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -723,7 +718,6 @@ import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -837,7 +831,6 @@ import {
 } from '@taiga-ui/addon-charts';
 
 @Component({
-    standalone: true,
     imports: [TuiAxes, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -968,7 +961,6 @@ import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
 import {TuiBadge, TuiFade, TuiRadioList} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList],
     templateUrl: './index.html',
     changeDetection,
@@ -1054,7 +1046,6 @@ import {TuiLabel, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 import {TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiBadgeNotification, TuiDemo, TuiLabel],
     templateUrl: './index.html',
     changeDetection,
@@ -1130,7 +1121,6 @@ import {TuiFallbackSrcPipe} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         TuiAvatar,
@@ -1208,7 +1198,6 @@ import {TuiBar} from '@taiga-ui/addon-charts';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiBar, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -1299,7 +1288,6 @@ import {TuiBarChart} from '@taiga-ui/addon-charts';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiBarChart, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -1393,7 +1381,6 @@ import {TuiBarSet} from '@taiga-ui/addon-charts';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiBarSet, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -1514,7 +1501,6 @@ import {type TuiSizeL, type TuiSizeS, TuiTitle} from '@taiga-ui/core';
 import {TuiBlock, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiBlock,
@@ -1585,7 +1571,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -1662,7 +1647,6 @@ import {TuiButton, type TuiSizeL} from '@taiga-ui/core';
 import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiBlockStatus, TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -1731,7 +1715,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -1811,7 +1794,6 @@ import {TuiLink, type TuiSizeL} from '@taiga-ui/core';
 import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiBreadcrumbs, TuiDemo, TuiItem, TuiLink],
     templateUrl: './index.html',
     changeDetection,
@@ -1891,7 +1873,6 @@ import {TuiButton, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 import {TuiButtonLoading} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiButtonLoading, TuiDemo, TuiDocAppearance, TuiDocIcons],
     templateUrl: './index.html',
     changeDetection,
@@ -1958,7 +1939,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -2012,7 +1992,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -2106,7 +2085,6 @@ const TWO_DOTS: [string, string] = [
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
-    standalone: true,
     imports: [RouterModule, TuiCalendar, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -2257,7 +2235,6 @@ import {TuiCalendarMonth} from '@taiga-ui/kit';
 import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [RouterModule, TuiCalendarMonth, TuiDemo, TuiInputMonthRangeModule, TuiLink],
     templateUrl: './index.html',
     changeDetection,
@@ -2390,7 +2367,6 @@ const TWO_DOTS: [string, string] = [
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
-    standalone: true,
     imports: [TuiCalendarRange, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
@@ -2520,7 +2496,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -2575,7 +2550,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -2653,7 +2627,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -2738,7 +2711,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiCarousel, TuiDemo, TuiRepeatTimes],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -2855,7 +2827,6 @@ import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCell, type TuiCellOptions} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiCell, TuiDemo, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -2943,7 +2914,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -3003,7 +2973,6 @@ import {type TuiSizeXXS} from '@taiga-ui/core';
 import {TuiChip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     selector: 'example-chip',
     imports: [TuiChip, TuiDemo, TuiDocAppearance, TuiDocIcons],
     templateUrl: './index.html',
@@ -3135,7 +3104,6 @@ interface Country {
 }
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiChevron,
@@ -3250,7 +3218,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiCompass} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiCompass, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -3314,7 +3281,6 @@ import {TUI_CONFIRM, type TuiConfirmData} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -3385,7 +3351,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -3466,7 +3431,6 @@ import {TuiDataList, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {delay, of} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiDataList, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -3552,7 +3516,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -3624,7 +3587,6 @@ import {TuiAccordion} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion, TuiButton, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -3837,7 +3799,6 @@ import {TuiForm} from '@taiga-ui/layout';
 import {switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiAutoFocus, TuiButton, TuiDemo, TuiForm, TuiTextfield],
     templateUrl: './index.html',
     changeDetection,
@@ -3995,7 +3956,6 @@ import {TuiDrawer} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,
@@ -4068,7 +4028,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -4135,7 +4094,6 @@ import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiError} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiError],
     templateUrl: './index.html',
     changeDetection,
@@ -4202,7 +4160,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -4339,7 +4296,6 @@ class ItemWithBadge {
 }
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDemo, TuiFilter],
     templateUrl: './index.html',
     changeDetection,
@@ -4483,7 +4439,6 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgFor,
@@ -4596,7 +4551,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -4737,7 +4691,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiGroup, type TuiOrientation, type TuiSizeL} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo, TuiGroup],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -4814,7 +4767,6 @@ import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -4888,7 +4840,6 @@ import {
 } from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion, TuiDemo, TuiIcon],
     templateUrl: './index.html',
     changeDetection,
@@ -5040,7 +4991,6 @@ import {TuiInputCard} from '@taiga-ui/addon-commerce';
 import {TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -5143,7 +5093,6 @@ import {tuiIsString} from '@taiga-ui/cdk';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -5316,7 +5265,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -5441,7 +5389,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TUI_INPUT_COLOR_OPTIONS, TuiInputColor} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -5546,7 +5493,6 @@ import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -5665,7 +5611,6 @@ import {
 } from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -5784,7 +5729,6 @@ import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -5904,7 +5848,6 @@ import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -6028,7 +5971,6 @@ import {TuiFiles, tuiFilesAccepted} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDemo, TuiDocControl, TuiFiles],
     templateUrl: './index.html',
     changeDetection,
@@ -6137,7 +6079,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -6244,7 +6185,6 @@ const TAIGA_V3 = new TuiDay(2022, 7, 30);
 const TAIGA_V4 = new TuiDay(2024, 7, 9);
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -6377,7 +6317,6 @@ import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -6480,7 +6419,6 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -6650,7 +6588,6 @@ import {tuiInputPhoneInternationalOptionsProvider, TuiTooltip} from '@taiga-ui/k
 import {getCountries} from 'libphonenumber-js';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -6748,7 +6685,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -6841,7 +6777,6 @@ import {
 } from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -6956,7 +6891,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -7069,7 +7003,6 @@ import {TuiInputSlider, type TuiKeySteps} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -7198,7 +7131,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -7312,7 +7244,6 @@ import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputYear} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -7399,7 +7330,6 @@ import {TuiChip} from '@taiga-ui/kit';
 import {TuiItemGroup} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     selector: 'example-chip',
     imports: [FormsModule, TuiChip, TuiDemo, TuiItemGroup],
     templateUrl: './index.html',
@@ -7510,7 +7440,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiChip, TuiDemo, TuiItemsWithMore],
     templateUrl: './index.html',
     changeDetection,
@@ -7580,7 +7509,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -7651,7 +7579,6 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiAmountPipe, TuiDemo, TuiLegendItem],
     templateUrl: './index.html',
     changeDetection,
@@ -7719,7 +7646,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -7804,7 +7730,6 @@ import {type TuiStringHandler} from '@taiga-ui/cdk';
 import {type TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiAxes, TuiDemo, TuiLineChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -7937,7 +7862,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLineClamp],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -8027,7 +7951,6 @@ import {TUI_MONTHS} from '@taiga-ui/core';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiAxes, TuiDemo, TuiLineDaysChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -8153,7 +8076,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -8234,7 +8156,6 @@ import {TuiLoader, type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLoader],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -8336,7 +8257,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiMessage} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiDocAppearance, TuiMessage],
     templateUrl: './index.html',
     changeDetection,
@@ -8436,7 +8356,6 @@ import {TUI_CALENDAR_DATE_STREAM} from '@taiga-ui/kit';
 import {type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiMobileCalendar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -8527,7 +8446,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -8582,7 +8500,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiThemeColorService} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -8671,7 +8588,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -8742,7 +8658,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiNotificationMiddle} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo, TuiNotificationMiddle],
     templateUrl: './index.html',
     encapsulation,
@@ -8817,7 +8732,6 @@ import {TuiIcon, type TuiSizeS} from '@taiga-ui/core';
 import {TuiPager} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiIcon, TuiPager],
     templateUrl: './index.html',
     changeDetection,
@@ -8910,7 +8824,6 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {TuiPagination} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiPagination],
     templateUrl: './index.html',
     changeDetection,
@@ -8957,7 +8870,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -9038,7 +8950,6 @@ import {tuiFormatNumber, type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiPieChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -9148,7 +9059,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -9237,7 +9147,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -9321,7 +9230,6 @@ import {TuiLink, type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -9437,7 +9345,6 @@ import {TuiLink, type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider, TuiProgress} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -9544,7 +9451,6 @@ import {TuiScrollbar} from '@taiga-ui/core';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [PolymorpheusOutlet, TuiDemo, TuiScrollbar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -9605,7 +9511,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -9681,7 +9586,6 @@ import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiPush} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo, TuiIcon, TuiPush],
     templateUrl: './index.html',
     encapsulation,
@@ -9754,7 +9658,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -9841,7 +9744,6 @@ import {type TuiSizeS} from '@taiga-ui/core';
 import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDemo, TuiRange],
     templateUrl: './index.html',
     changeDetection,
@@ -9929,7 +9831,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -9980,7 +9881,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -10041,7 +9941,6 @@ import {TuiRingChart} from '@taiga-ui/addon-charts';
 import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiRingChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -10133,7 +10032,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -10205,7 +10103,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     encapsulation,
@@ -10258,7 +10155,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -10361,7 +10257,6 @@ interface Country {
 }
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiChevron,
@@ -10424,7 +10319,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -10451,7 +10345,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -10529,7 +10422,6 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiLet, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -10670,7 +10562,6 @@ import {type TuiSizeS} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDemo, TuiSlider],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10794,7 +10685,6 @@ import {Notifications} from './examples/3/notifications';
 import {Settings} from './examples/3/settings';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -10897,7 +10787,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -10985,7 +10874,6 @@ import {type TuiOrientation} from '@taiga-ui/core';
 import {TuiStepper} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiStepper],
     templateUrl: './index.html',
     changeDetection,
@@ -11061,7 +10949,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -11132,7 +11019,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -11186,7 +11072,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -11259,7 +11144,6 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 import TuiTabBarExample from './examples/1';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiCheckbox, TuiDemo, TuiDropdown, TuiLabel, TuiTabBarExample],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -11410,7 +11294,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
@@ -11514,7 +11397,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -11581,7 +11463,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiTablePagination, type TuiTablePaginationEvent} from '@taiga-ui/addon-table';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiTablePagination],
     templateUrl: './index.html',
     encapsulation,
@@ -11710,7 +11591,6 @@ import {type TuiSizeL} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiTabs],
     templateUrl: './index.html',
     changeDetection,
@@ -11823,7 +11703,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TUI_TEXTAREA_OPTIONS, TuiTextarea} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -11915,7 +11794,6 @@ import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiDemo,
@@ -12008,7 +11886,6 @@ import {
 import {TUI_TRUE_HANDLER, type TuiBooleanHandler} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiDocIcons, TuiThumbnailCard],
     templateUrl: './index.html',
     changeDetection,
@@ -12124,7 +12001,6 @@ import {TuiTitle} from '@taiga-ui/core';
 import {TuiTiles} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiDemo, TuiTiles, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -12220,7 +12096,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12276,7 +12151,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12323,7 +12197,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12357,7 +12230,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -12395,7 +12267,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12417,7 +12288,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12441,7 +12311,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12474,7 +12343,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12498,7 +12366,6 @@ import {TuiDemo} from '@demo/utils';
 import {TUI_DOC_CODE_EDITOR} from '@taiga-ui/addon-doc';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12570,7 +12437,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -12632,7 +12498,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12703,7 +12568,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiButton, type TuiInteractiveState} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12780,7 +12644,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -12833,7 +12696,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -12881,7 +12743,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo, TuiDocSetup} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiDocSetup],
     templateUrl: './index.html',
     changeDetection,
@@ -12935,7 +12796,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -13029,7 +12889,6 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-
 import {AbstractExampleTuiDropdown} from '../../components/abstract/dropdown';
 
 @Component({
-    standalone: true,
     imports: [
         TuiActiveZone,
         TuiButton,
@@ -13163,7 +13022,6 @@ import {TuiDropdown} from '@taiga-ui/core';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     changeDetection,
@@ -13247,7 +13105,6 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     changeDetection,
@@ -13356,7 +13213,6 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiButton,
@@ -13501,7 +13357,6 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -13581,7 +13436,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -13634,7 +13488,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -13697,7 +13550,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiFade],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -13765,7 +13617,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -13840,7 +13691,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -13927,7 +13777,6 @@ import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
 
 @Component({
-    standalone: true,
     imports: [InheritedDocumentation, TuiDemo, TuiHint],
     templateUrl: './index.html',
     changeDetection,
@@ -14005,7 +13854,6 @@ import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
 
 @Component({
-    standalone: true,
     imports: [InheritedDocumentation, TuiDemo, TuiHint],
     templateUrl: './index.html',
     changeDetection,
@@ -14091,7 +13939,6 @@ import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
 
 @Component({
-    standalone: true,
     imports: [InheritedDocumentation, TuiButton, TuiDemo, TuiHint],
     templateUrl: './index.html',
     changeDetection,
@@ -14169,7 +14016,6 @@ import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
 
 @Component({
-    standalone: true,
     imports: [InheritedDocumentation, TuiDemo, TuiHint, TuiHintDirective],
     templateUrl: './index.html',
     changeDetection,
@@ -14226,7 +14072,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -14295,7 +14140,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiMedia} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiMedia],
     templateUrl: './index.html',
     changeDetection,
@@ -14359,7 +14203,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -14407,7 +14250,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -14466,7 +14308,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -14549,7 +14390,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiProgress, type TuiProgressBar} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [RouterLink, TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14630,7 +14470,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -14676,7 +14515,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -14736,7 +14574,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiSensitive} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiSensitive],
     templateUrl: './index.html',
     changeDetection,
@@ -14838,7 +14675,6 @@ import {TuiAvatar, TuiAvatarStack, TuiShimmer} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiAppearance,
@@ -14913,7 +14749,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -14979,7 +14814,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15008,7 +14842,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15060,7 +14893,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15114,7 +14946,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15164,7 +14995,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15213,7 +15043,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15265,7 +15094,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15291,7 +15119,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiWrapperExample1} from './examples/1';
 
 @Component({
-    standalone: true,
     imports: [ClipboardModule, TuiDemo, TuiLink, TuiWrapperExample1],
     templateUrl: './index.html',
     encapsulation: ViewEncapsulation.None,
@@ -15331,7 +15158,6 @@ import {TuiDialogsExample1} from './examples/1';
 import {TuiDialogsExample2} from './examples/2';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiDialogsExample1, TuiDialogsExample2],
     templateUrl: './index.html',
     changeDetection,
@@ -15388,7 +15214,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion, TuiDemo, TuiDocLanguageSwitcher, TuiLink, TuiTablePagination],
     templateUrl: './index.html',
     changeDetection,
@@ -15432,7 +15257,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiPortalsExample1} from './examples/1';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiPortalsExample1],
     templateUrl: './index.html',
     changeDetection,
@@ -15465,7 +15289,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15500,7 +15323,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15534,7 +15356,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiVariablesExample1} from './examples/1';
 
 @Component({
-    standalone: true,
     imports: [ClipboardModule, KeyValuePipe, TuiDemo, TuiLink, TuiVariablesExample1],
     templateUrl: './index.html',
     changeDetection,
@@ -15583,7 +15404,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15640,7 +15460,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15721,7 +15540,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiCurrencyPipe,
@@ -15799,7 +15617,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
@@ -15889,7 +15706,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15935,7 +15751,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -15987,7 +15802,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -16047,7 +15861,6 @@ import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {getCountries} from 'libphonenumber-js';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiFlagPipe],
     templateUrl: './index.html',
     changeDetection,
@@ -16103,7 +15916,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -16161,7 +15973,6 @@ import {TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -16222,7 +16033,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -16270,7 +16080,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -16334,7 +16143,6 @@ import {tuiObfuscateOptionsProvider} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDemo, TuiTextfield],
     templateUrl: './index.html',
     changeDetection,
@@ -16391,7 +16199,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -16445,7 +16252,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
@@ -16507,7 +16313,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,
