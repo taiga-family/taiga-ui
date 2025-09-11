@@ -14,17 +14,18 @@
     <tui-pdf-viewer>
         <h2 tuiTitle>file.pdf</h2>
 
-        <button
-            *ngIf="!isMobile"
-            iconStart="@tui.pen"
-            title="download"
-            tuiButton
-            type="button"
-            [style.border-radius.rem]="5"
-            (click)="observer.complete(); alerts.open('Document signed').subscribe()"
-        >
-            Sign
-        </button>
+        @if (!isMobile) {
+            <button
+                iconStart="@tui.pen"
+                title="download"
+                tuiButton
+                type="button"
+                [style.border-radius.rem]="5"
+                (click)="observer.complete(); alerts.open('Document signed').subscribe()"
+            >
+                Sign
+            </button>
+        }
 
         <button
             iconStart="@tui.download"

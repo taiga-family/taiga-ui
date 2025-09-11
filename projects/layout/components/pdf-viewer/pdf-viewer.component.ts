@@ -12,14 +12,12 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {type TuiDialogOptions} from '@taiga-ui/core/components/dialog';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {TuiButtonClose} from '@taiga-ui/kit/directives/button-close';
 import {TuiAppBar} from '@taiga-ui/layout/components/app-bar';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'tui-pdf-viewer',
-    imports: [NgIf, NgTemplateOutlet, TuiAppBar, TuiButton, TuiButtonClose],
+    imports: [NgIf, NgTemplateOutlet, TuiAppBar, TuiButton],
     templateUrl: './pdf-viewer.template.html',
     styleUrls: ['./pdf-viewer.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -34,7 +32,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
         '[attr.tuiTheme]': 'isMobile ? "" : "dark"',
     },
 })
-export class TuiPdfViewerComponent<O, I> {
+export class TuiPdfViewer<O, I> {
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly el = tuiInjectElement();
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();

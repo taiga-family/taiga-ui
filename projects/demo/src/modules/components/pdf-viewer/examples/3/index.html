@@ -13,20 +13,14 @@
     <tui-pdf-viewer>
         <h2 tuiTitle>file.pdf</h2>
 
-        <tui-loader
-            *ngIf="loading(); else content"
-            size="xl"
-            [showLoader]="true"
-        />
-
-        <ng-template #content>
-            <iframe
-                *ngIf="!error(); else errorContent"
-                [src]="url"
-            ></iframe>
-        </ng-template>
-
-        <ng-template #errorContent>
+        @if (loading()) {
+            <tui-loader
+                size="xl"
+                [showLoader]="true"
+            />
+        } @else if (!error()) {
+            <iframe [src]="url"></iframe>
+        } @else {
             <tui-block-status>
                 <img
                     alt="not found"
@@ -49,6 +43,6 @@
                     Retry
                 </button>
             </tui-block-status>
-        </ng-template>
+        }
     </tui-pdf-viewer>
 </ng-template>

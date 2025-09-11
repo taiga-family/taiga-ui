@@ -146,7 +146,6 @@ export const DemoRoute = {
     Textarea: '/components/textarea',
     TextareaLegacy: '/legacy/textarea',
     PrimitiveTextfield: '/components/primitive-textfield',
-    PdfViewerOld: '/components/pdf-viewer-old',
     PdfViewer: '/components/pdf-viewer',
     Pin: '/components/pin',
     Pager: '/components/pager',

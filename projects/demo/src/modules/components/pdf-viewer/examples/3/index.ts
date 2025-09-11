@@ -1,23 +1,15 @@
-import {NgIf} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiLoader, TuiTitle} from '@taiga-ui/core';
-import {TuiDialog, TuiPdfViewerComponent} from '@taiga-ui/experimental';
+import {TuiDialog} from '@taiga-ui/experimental';
+import {TuiPdfViewer} from '@taiga-ui/layout';
 import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        NgIf,
-        TuiBlockStatus,
-        TuiButton,
-        TuiDialog,
-        TuiLoader,
-        TuiPdfViewerComponent,
-        TuiTitle,
-    ],
+    imports: [TuiBlockStatus, TuiButton, TuiDialog, TuiLoader, TuiPdfViewer, TuiTitle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
