@@ -36,58 +36,64 @@
             </a>
         </tui-notification>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="description"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template
-                #description
-                [ngSwitch]="index"
+        @for (example of examples; track example; let index = $index) {
+            <tui-doc-example
+                [component]="index + 1 | tuiComponent"
+                [content]="index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                <span *ngSwitchCase="0">
-                    Note that you need to bypass sanitizer in order to use the URL so make sure you trust it
-                </span>
-                <span *ngSwitchCase="1">
-                    Use
-                    <a
-                        fragment="responsive"
-                        tuiLink
-                        [routerLink]="routes.SheetDialog"
-                    >
-                        ResponsiveDialog
-                    </a>
-                    to display iframe in a
-                    <a
-                        tuiLink
-                        [routerLink]="routes.SheetDialog"
-                    >
-                        SheetDialog
-                    </a>
-                    on mobile devices
-                </span>
-                <span *ngSwitchCase="2">
-                    Use
-                    <a
-                        tuiLink
-                        [routerLink]="routes.Loader"
-                    >
-                        Loader
-                    </a>
-                    and
-                    <a
-                        tuiLink
-                        [routerLink]="routes.BlockStatus"
-                    >
-                        BlockStatus
-                    </a>
-                    to display additional states
-                </span>
-            </ng-template>
-        </tui-doc-example>
+                <ng-template #description>
+                    @switch (index) {
+                        @case (0) {
+                            <span>
+                                Note that you need to bypass sanitizer in order to use the URL so make sure you trust it
+                            </span>
+                        }
+                        @case (1) {
+                            <span>
+                                Use
+                                <a
+                                    fragment="responsive"
+                                    tuiLink
+                                    [routerLink]="routes.SheetDialog"
+                                >
+                                    ResponsiveDialog
+                                </a>
+                                to display iframe in a
+                                <a
+                                    tuiLink
+                                    [routerLink]="routes.SheetDialog"
+                                >
+                                    SheetDialog
+                                </a>
+                                on mobile devices
+                            </span>
+                        }
+                        @case (2) {
+                            <span>
+                                Use
+                                <a
+                                    tuiLink
+                                    [routerLink]="routes.Loader"
+                                >
+                                    Loader
+                                </a>
+                                and
+                                <a
+                                    tuiLink
+                                    [routerLink]="routes.BlockStatus"
+                                >
+                                    BlockStatus
+                                </a>
+                                to display additional states
+                            </span>
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />

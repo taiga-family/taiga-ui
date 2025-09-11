@@ -5,8 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {TuiButton, TuiLoader, TuiTitle} from '@taiga-ui/core';
 import {TuiDialog} from '@taiga-ui/experimental';
-import {TuiPdfViewer} from '@taiga-ui/layout';
-import {TuiBlockStatus} from '@taiga-ui/layout';
+import {TuiBlockStatus, TuiPdfViewer} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiBlockStatus, TuiButton, TuiDialog, TuiLoader, TuiPdfViewer, TuiTitle],
