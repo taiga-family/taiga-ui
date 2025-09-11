@@ -133,7 +133,7 @@
         "@nx/angular": "20.8.2",
         "@nx/jest": "20.8.2",
         "@nx/workspace": "20.8.2",
-        "@schematics/angular": "18.2.9",
+        "@schematics/angular": "19.2.9",
         "@taiga-ui/browserslist-config": "0.321.0",
         "@taiga-ui/commitlint-config": "0.321.0",
         "@taiga-ui/cspell-config": "0.321.0",
