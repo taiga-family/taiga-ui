@@ -22,6 +22,7 @@ import {TuiInputDateTime, tuiInputDateTimeOptionsProvider} from '@taiga-ui/kit';
                     ],
                 toControlValue: (value: [TuiDay, TuiTime | null] | null): Date | null => {
                     const {hours = 0, minutes = 0} = value?.[1] ?? {};
+
                     return (
                         value &&
                         new Date(value[0].toUtcNativeDate().setUTCHours(hours, minutes))

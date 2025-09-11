@@ -20,10 +20,10 @@ import {
 import {TuiInputTimeDirective} from './input-time.directive';
 
 @Directive({
+    standalone: false,
     host: {
         '[attr.list]': 'null',
     },
-    standalone: false,
 })
 export abstract class TuiNativeTimePicker {
     protected readonly list = tuiInjectElement().getAttribute('list');

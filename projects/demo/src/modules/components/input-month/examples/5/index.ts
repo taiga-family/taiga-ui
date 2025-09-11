@@ -20,6 +20,7 @@ import {of} from 'rxjs';
                     year: '2-digit',
                     month: 'short',
                 });
+
                 return of(
                     (x: TuiMonth | null) =>
                         (x && formatter.format(x.toLocalNativeDate())) ?? '',
