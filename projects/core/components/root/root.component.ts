@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {DOCUMENT, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -35,7 +35,6 @@ import {map} from 'rxjs';
 @Component({
     selector: 'tui-root',
     imports: [
-        NgIf,
         TuiAlerts,
         TuiDialogs,
         TuiDropdowns,

@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSliderComponent} from '@taiga-ui/kit';
 
 @Component({
-    imports: [NgForOf, ReactiveFormsModule, TuiSliderComponent],
+    imports: [ReactiveFormsModule, TuiSliderComponent],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

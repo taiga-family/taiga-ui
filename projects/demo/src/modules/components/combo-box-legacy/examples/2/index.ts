@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -14,8 +14,6 @@ import {RequestService} from './request.service';
     selector: 'tui-combo-box-example-2',
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiAvatar,
         TuiComboBoxModule,

@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -96,8 +96,6 @@ const USERS = [
 @Component({
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiAmountPipe,
         TuiAvatar,

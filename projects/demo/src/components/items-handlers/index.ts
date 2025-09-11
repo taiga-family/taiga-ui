@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input, signal} from '@angular/core';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import {
@@ -17,7 +16,7 @@ import {
 
 @Component({
     selector: 'tbody[tuiDocItemsHandlers]',
-    imports: [NgIf, TuiDocAPIItem, TuiTitle],
+    imports: [TuiDocAPIItem, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithItemsHandlers],

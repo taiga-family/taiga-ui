@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -14,8 +13,6 @@ import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        NgForOf,
-        NgIf,
         TuiBadge,
         TuiButtonGroup,
         TuiCardMedium,

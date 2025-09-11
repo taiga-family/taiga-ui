@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -32,7 +31,6 @@ import {TuiCalendarYear} from './calendar-year.component';
 @Component({
     selector: 'tui-calendar',
     imports: [
-        NgIf,
         TuiCalendarSheet,
         TuiCalendarSpin,
         TuiCalendarYear,

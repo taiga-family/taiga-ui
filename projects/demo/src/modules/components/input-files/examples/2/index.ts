@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {
     type AbstractControl,
@@ -14,14 +14,7 @@ import {TuiFieldErrorPipe, TuiFiles, tuiFilesAccepted} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    imports: [
-        AsyncPipe,
-        NgForOf,
-        ReactiveFormsModule,
-        TuiError,
-        TuiFieldErrorPipe,
-        TuiFiles,
-    ],
+    imports: [AsyncPipe, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, TuiFiles],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

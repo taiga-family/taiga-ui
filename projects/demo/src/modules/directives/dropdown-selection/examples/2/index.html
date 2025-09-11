@@ -15,20 +15,21 @@
     ></textarea>
 
     <tui-data-list *tuiTextfieldDropdown>
-        <button
-            *ngFor="let item of items | tuiMapper: filter : search.replace('@', '')"
-            new
-            tuiOption
-            type="button"
-            (click)="onClick(item.login)"
-        >
-            <tui-avatar
-                size="s"
-                [src]="item.avatar"
+        @for (item of items | tuiMapper: filter : search.replace('@', ''); track item) {
+            <button
+                new
+                tuiOption
+                type="button"
+                (click)="onClick(item.login)"
             >
-                {{ item.name | tuiInitials }}
-            </tui-avatar>
-            {{ item.name }}
-        </button>
+                <tui-avatar
+                    size="s"
+                    [src]="item.avatar"
+                >
+                    {{ item.name | tuiInitials }}
+                </tui-avatar>
+                {{ item.name }}
+            </button>
+        }
     </tui-data-list>
 </tui-textfield>

@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -34,7 +33,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
 
 @Component({
     selector: 'tui-line-days-chart',
-    imports: [NgForOf, PolymorpheusOutlet, TuiHint, TuiLineChart],
+    imports: [PolymorpheusOutlet, TuiHint, TuiLineChart],
     templateUrl: './line-days-chart.template.html',
     styleUrls: ['./line-days-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

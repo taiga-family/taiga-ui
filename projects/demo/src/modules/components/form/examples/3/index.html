@@ -8,8 +8,8 @@
     <button type="button">Tabs</button>
 </tui-segmented>
 
-<ng-container [ngSwitch]="segmentedIndex">
-    <ng-container *ngSwitchCase="0">
+@switch (segmentedIndex) {
+    @case (0) {
         <tui-stepper [activeItemIndex]="index()">
             <button
                 tuiStep
@@ -24,8 +24,8 @@
                 Network access
             </button>
         </tui-stepper>
-    </ng-container>
-    <ng-container *ngSwitchCase="1">
+    }
+    @case (1) {
         <tui-tabs
             size="m"
             underline="var(--tui-background-accent-opposite-pressed)"
@@ -35,11 +35,11 @@
             <button tuiTab>Common</button>
             <button tuiTab>Network access</button>
         </tui-tabs>
-    </ng-container>
-</ng-container>
+    }
+}
 
-<ng-container [ngSwitch]="index()">
-    <ng-container *ngSwitchCase="0">
+@switch (index()) {
+    @case (0) {
         <form
             tuiAppearance="floating"
             tuiCardLarge
@@ -61,7 +61,6 @@
                 />
             </tui-textfield>
         </form>
-
         <footer>
             <button
                 appearance="secondary"
@@ -80,9 +79,8 @@
                 Next
             </button>
         </footer>
-    </ng-container>
-
-    <ng-container *ngSwitchCase="1">
+    }
+    @case (1) {
         <form
             tuiAppearance="floating"
             tuiCardLarge
@@ -104,7 +102,6 @@
                 />
             </tui-textfield>
         </form>
-
         <footer>
             <button
                 appearance="secondary"
@@ -123,5 +120,5 @@
                 Save
             </button>
         </footer>
-    </ng-container>
-</ng-container>
+    }
+}

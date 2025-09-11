@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -13,7 +13,6 @@ import {interval, map} from 'rxjs';
     imports: [
         AsyncPipe,
         FormsModule,
-        NgIf,
         PolymorpheusTemplate,
         TuiDropdown,
         TuiInputModule,

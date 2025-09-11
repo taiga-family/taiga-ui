@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {
     type AbstractControl,
@@ -40,8 +40,6 @@ function tagValidator(tag: string): boolean {
 @Component({
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiDataList,
         TuiError,

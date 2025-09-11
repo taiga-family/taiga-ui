@@ -7,18 +7,19 @@
     [(search)]="search"
 >
     Try it
-    <ng-container *ngIf="filtered.length">
+    @if (filtered.length) {
         <tui-data-list *tuiDataList>
-            <button
-                *ngFor="let item of filtered"
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                {{ item }}
-            </button>
+            @for (item of filtered; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-data-list>
-    </ng-container>
+    }
 </tui-input-tag>
 
 <tui-error

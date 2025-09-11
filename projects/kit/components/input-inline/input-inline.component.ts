@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -12,7 +12,7 @@ import {defer} from 'rxjs';
 
 @Component({
     selector: 'tui-input-inline',
-    imports: [AsyncPipe, NgIf, TuiLet],
+    imports: [AsyncPipe, TuiLet],
     templateUrl: './input-inline.template.html',
     styleUrls: ['./input-inline.style.less'],
     encapsulation: ViewEncapsulation.None,

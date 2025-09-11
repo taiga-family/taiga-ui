@@ -54,25 +54,27 @@
         </div>
     </div>
 
-    <footer
-        *ngIf="floating"
-        @tuiSlideInTop
-        [tuiFloatingContainer]="background ? color : 'transparent'"
-    >
-        <button
-            tuiButton
-            type="button"
+    @if (floating) {
+        <footer
+            @tuiSlideInTop
+            [tuiFloatingContainer]="background ? color : 'transparent'"
         >
-            Main action
-        </button>
-        <button
-            *ngIf="secondAction"
-            appearance="flat"
-            tuiButton
-            type="button"
-            @tuiHeightCollapse
-        >
-            Secondary action
-        </button>
-    </footer>
+            <button
+                tuiButton
+                type="button"
+            >
+                Main action
+            </button>
+            @if (secondAction) {
+                <button
+                    appearance="flat"
+                    tuiButton
+                    type="button"
+                    @tuiHeightCollapse
+                >
+                    Secondary action
+                </button>
+            }
+        </footer>
+    }
 </div>

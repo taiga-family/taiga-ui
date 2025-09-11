@@ -7,7 +7,7 @@
     </span>
 </h3>
 <tui-breadcrumbs>
-    <ng-container *ngFor="let item of items; let last = last">
+    @for (item of items; track item; let last = $last) {
         <button
             *tuiItem
             tuiHintOverflow
@@ -18,7 +18,7 @@
         >
             {{ item }}
         </button>
-    </ng-container>
+    }
 </tui-breadcrumbs>
 <hr />
 <h3 tuiTitle>
@@ -39,7 +39,7 @@
     </span>
 </h3>
 <tui-breadcrumbs>
-    <ng-container *ngFor="let item of items; let last = last">
+    @for (item of items; track item; let last = $last) {
         <button
             *tuiItem
             tuiFade
@@ -51,7 +51,7 @@
         >
             {{ item }}
         </button>
-    </ng-container>
+    }
 </tui-breadcrumbs>
 <hr />
 <h3 tuiTitle>
@@ -70,7 +70,7 @@
     </span>
 </h3>
 <tui-breadcrumbs tuiFade>
-    <ng-container *ngFor="let item of items; let last = last">
+    @for (item of items; track item; let last = $last) {
         <button
             *tuiItem
             tuiLink
@@ -79,7 +79,7 @@
         >
             {{ item }}
         </button>
-    </ng-container>
+    }
 </tui-breadcrumbs>
 <hr />
 <h3 tuiTitle>
@@ -90,7 +90,7 @@
     </span>
 </h3>
 <tui-breadcrumbs [itemsLimit]="10">
-    <ng-container *ngFor="let item of items; let last = last">
+    @for (item of items; track item; let last = $last) {
         <button
             *tuiItem
             tuiLink
@@ -99,5 +99,5 @@
         >
             {{ item }}
         </button>
-    </ng-container>
+    }
 </tui-breadcrumbs>

@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -20,7 +19,7 @@ import {TuiAccordionItemEagerContent} from './accordion-item-eager-content.direc
 
 @Component({
     selector: 'tui-accordion-item',
-    imports: [NgIf, PolymorpheusOutlet, TuiChevron, TuiExpand, TuiIcon],
+    imports: [PolymorpheusOutlet, TuiChevron, TuiExpand, TuiIcon],
     templateUrl: './accordion-item.template.html',
     styleUrls: ['./accordion-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

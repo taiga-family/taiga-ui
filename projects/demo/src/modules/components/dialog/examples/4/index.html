@@ -10,16 +10,17 @@
 </button>
 
 <ng-template #button>
-    <button
-        *ngIf="!filters"
-        tuiButton
-        type="button"
-        class="portal"
-        (click)="onFilterClick()"
-        (touchmove.prevent.zoneless)="(0)"
-    >
-        Filters
-    </button>
+    @if (!filters) {
+        <button
+            tuiButton
+            type="button"
+            class="portal"
+            (click)="onFilterClick()"
+            (touchmove.prevent.zoneless)="(0)"
+        >
+            Filters
+        </button>
+    }
 </ng-template>
 
 <ng-template #long>

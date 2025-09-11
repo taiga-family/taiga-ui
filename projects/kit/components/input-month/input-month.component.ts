@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -19,7 +18,7 @@ import {TuiInputMonthDirective} from './input-month.directive';
 
 @Component({
     selector: 'input[tuiInputMonth][type="month"]',
-    imports: [NgIf, TuiTextfieldContent],
+    imports: [TuiTextfieldContent],
     templateUrl: './input-month.template.html',
     styleUrls: ['./input-month.style.less'],
     encapsulation: ViewEncapsulation.None,

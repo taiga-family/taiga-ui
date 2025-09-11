@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -24,7 +23,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
 
 @Component({
     selector: 'tui-sheet-dialog',
-    imports: [NgForOf, NgIf, PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet],
     templateUrl: './sheet-dialog.template.html',
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

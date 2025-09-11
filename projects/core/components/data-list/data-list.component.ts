@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     type AfterContentChecked,
     type AfterContentInit,
@@ -50,7 +49,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
 // TODO: Consider aria-activedescendant for proper accessibility implementation
 @Component({
     selector: 'tui-data-list',
-    imports: [NgIf, PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet],
     templateUrl: './data-list.template.html',
     styleUrls: ['./data-list.style.less'],
     encapsulation: ViewEncapsulation.None,

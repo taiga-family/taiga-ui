@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,7 +6,7 @@ import {TuiInputCard, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [FormsModule, NgIf, TuiInputCard, TuiTextfield, TuiThumbnailCard],
+    imports: [FormsModule, TuiInputCard, TuiTextfield, TuiThumbnailCard],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

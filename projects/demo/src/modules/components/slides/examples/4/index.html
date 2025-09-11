@@ -7,15 +7,16 @@
 </button>
 <ng-template let-observer>
     <tui-app-bar tuiAppBarSize>
-        <button
-            *ngIf="step > 1"
-            tuiButton
-            tuiSlot="left"
-            type="button"
-            (click)="onStep(-1)"
-        >
-            Back
-        </button>
+        @if (step > 1) {
+            <button
+                tuiButton
+                tuiSlot="left"
+                type="button"
+                (click)="onStep(-1)"
+            >
+                Back
+            </button>
+        }
         <progress
             size="s"
             tuiProgressBar
@@ -32,65 +33,67 @@
             Close
         </button>
     </tui-app-bar>
-    <section
-        [ngSwitch]="step"
-        [tuiSlides]="direction"
-    >
-        <div *ngSwitchCase="1">
-            <header>Welcome to the slides demo</header>
-            <p>
-                These wrapping components will be animated upon navigating this modal dialog. This works well on both
-                desktop and mobile. In your own layouts watch out for unwanted scrollbars.
-            </p>
-        </div>
-        <div *ngSwitchCase="2">
-            <header>Header is optional</header>
-            <section [style.margin]="'0 -1rem'">
-                <div
-                    *tuiRepeatTimes="let _ of 5"
-                    tuiCell
-                >
-                    <tui-avatar
-                        appearance="primary"
-                        src="@tui.star"
-                    />
-                    <div tuiTitle>
-                        Title
-                        <div tuiSubtitle>Description</div>
-                    </div>
+    <section [tuiSlides]="direction">
+        @switch (step) {
+            @case (1) {
+                <div>
+                    <header>Welcome to the slides demo</header>
+                    <p>
+                        These wrapping components will be animated upon navigating this modal dialog. This works well on
+                        both desktop and mobile. In your own layouts watch out for unwanted scrollbars.
+                    </p>
                 </div>
-            </section>
-        </div>
-        <div
-            *ngSwitchCase="3"
-            tuiAppearance="floating"
-            tuiCardLarge
-        >
-            <header tuiHeader>
-                <h1 tuiTitle>
-                    Title
-                    <span tuiSubtitle>Subtitle</span>
-                </h1>
-
-                <aside tuiAccessories>
-                    <tui-avatar
-                        appearance="primary"
-                        src="@tui.star"
-                    />
-                </aside>
-            </header>
-
-            <footer>
-                <button
-                    appearance="secondary"
-                    size="m"
-                    tuiButton
-                    type="button"
+            }
+            @case (2) {
+                <div>
+                    <header>Header is optional</header>
+                    <section [style.margin]="'0 -1rem'">
+                        <div
+                            *tuiRepeatTimes="let _ of 5"
+                            tuiCell
+                        >
+                            <tui-avatar
+                                appearance="primary"
+                                src="@tui.star"
+                            />
+                            <div tuiTitle>
+                                Title
+                                <div tuiSubtitle>Description</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            }
+            @case (3) {
+                <div
+                    tuiAppearance="floating"
+                    tuiCardLarge
                 >
-                    Label
-                </button>
-            </footer>
-        </div>
+                    <header tuiHeader>
+                        <h1 tuiTitle>
+                            Title
+                            <span tuiSubtitle>Subtitle</span>
+                        </h1>
+                        <aside tuiAccessories>
+                            <tui-avatar
+                                appearance="primary"
+                                src="@tui.star"
+                            />
+                        </aside>
+                    </header>
+                    <footer>
+                        <button
+                            appearance="secondary"
+                            size="m"
+                            tuiButton
+                            type="button"
+                        >
+                            Label
+                        </button>
+                    </footer>
+                </div>
+            }
+        }
     </section>
     <footer
         tuiFloatingContainer

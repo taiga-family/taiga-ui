@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -17,7 +16,7 @@ import {TuiInputDateTimeDirective} from './input-date-time.directive';
 
 @Component({
     selector: 'input[tuiInputDateTime][type="datetime-local"]',
-    imports: [NgIf, TuiTextfieldContent],
+    imports: [TuiTextfieldContent],
     templateUrl: './input-date-time.template.html',
     styleUrls: ['./input-date-time.style.less'],
     encapsulation: ViewEncapsulation.None,

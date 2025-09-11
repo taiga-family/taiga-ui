@@ -2,7 +2,7 @@
     [itemsCount]="3"
     [(index)]="index"
 >
-    <ng-container *ngFor="let item of items">
+    @for (item of items; track item) {
         <div
             *tuiItem
             class="item"
@@ -10,7 +10,7 @@
             <h2 class="title">{{ item.title }}</h2>
             {{ item.content }}
         </div>
-    </ng-container>
+    }
 </tui-carousel>
 <tui-pagination
     size="s"

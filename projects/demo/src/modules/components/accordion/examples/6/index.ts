@@ -1,4 +1,4 @@
-import {KeyValuePipe, NgForOf} from '@angular/common';
+import {KeyValuePipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -13,7 +13,6 @@ import {TuiCell} from '@taiga-ui/layout';
     imports: [
         FormsModule,
         KeyValuePipe,
-        NgForOf,
         TuiAccordion,
         TuiAvatar,
         TuiCell,

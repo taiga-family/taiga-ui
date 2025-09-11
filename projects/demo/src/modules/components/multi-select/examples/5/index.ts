@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,7 +8,6 @@ import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
 @Component({
     imports: [
         FormsModule,
-        NgForOf,
         TuiDataList,
         TuiMultiSelectModule,
         TuiTextfieldControllerModule,

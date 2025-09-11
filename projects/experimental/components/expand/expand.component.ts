@@ -1,4 +1,4 @@
-import {NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -14,13 +14,12 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Component({
     selector: 'tui-expand',
-    imports: [NgIf, NgTemplateOutlet],
+    imports: [NgTemplateOutlet],
     template: `
         <div class="t-wrapper">
-            <ng-container
-                *ngIf="signal() || animating()"
-                [ngTemplateOutlet]="content || null"
-            />
+            @if (signal() || animating()) {
+                <ng-container [ngTemplateOutlet]="content || null" />
+            }
             <ng-content />
         </div>
     `,

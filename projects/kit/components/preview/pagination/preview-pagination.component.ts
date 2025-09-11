@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -15,7 +15,7 @@ import {TuiPreviewAction} from '../action/preview-action.directive';
 
 @Component({
     selector: 'tui-preview-pagination',
-    imports: [AsyncPipe, NgIf, TuiButton, TuiPreviewAction],
+    imports: [AsyncPipe, TuiButton, TuiPreviewAction],
     templateUrl: './preview-pagination.template.html',
     styleUrls: ['./preview-pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

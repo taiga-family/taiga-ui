@@ -5,14 +5,15 @@
     Select user
     <tui-data-list *tuiDataList>
         <tui-opt-group label="Monty Python">
-            <button
-                *ngFor="let python of pythons"
-                tuiOption
-                type="button"
-                [value]="python"
-            >
-                {{ python }}
-            </button>
+            @for (python of pythons; track python) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="python"
+                >
+                    {{ python }}
+                </button>
+            }
         </tui-opt-group>
         <tui-opt-group label="Open-source squad">
             <button

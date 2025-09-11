@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiParentAnimation, tuiSlideInTop} from '@taiga-ui/core/animations';
@@ -19,7 +19,7 @@ import {type TuiTableBarOptions} from './table-bar.options';
  */
 @Component({
     selector: 'tui-table-bar',
-    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiButton],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButton],
     templateUrl: './table-bar.template.html',
     styleUrls: ['./table-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

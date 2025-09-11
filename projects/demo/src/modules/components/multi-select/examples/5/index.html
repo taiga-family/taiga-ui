@@ -9,25 +9,27 @@
             label="Jedi, may the force be with them blah blah blah"
             tuiMultiSelectGroup
         >
-            <button
-                *ngFor="let item of jedi"
-                tuiOption
-                type="button"
-                [style.flex-direction]="'row-reverse'"
-                [value]="item"
-            >
-                <span [style.flex]="1">{{ item }}</span>
-            </button>
+            @for (item of jedi; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [style.flex-direction]="'row-reverse'"
+                    [value]="item"
+                >
+                    <span [style.flex]="1">{{ item }}</span>
+                </button>
+            }
         </tui-opt-group>
         <tui-opt-group label="Sith">
-            <button
-                *ngFor="let item of sith | tuiHideSelected"
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                {{ item }}
-            </button>
+            @for (item of sith | tuiHideSelected; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-opt-group>
     </tui-data-list>
 </tui-multi-select>
@@ -44,24 +46,26 @@
             label="Jedi, may the force be with them blah blah blah"
             tuiMultiSelectGroup
         >
-            <button
-                *ngFor="let item of jedi"
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                {{ item }}
-            </button>
+            @for (item of jedi; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-opt-group>
         <tui-opt-group tuiMultiSelectGroup>
-            <button
-                *ngFor="let item of sith"
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                {{ item }}
-            </button>
+            @for (item of sith; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-opt-group>
     </tui-data-list>
 </tui-multi-select>
@@ -78,27 +82,29 @@
             label="Jedi, may the force be with them blah blah blah"
             tuiMultiSelectGroup
         >
-            <button
-                *ngFor="let item of jedi"
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                {{ item }}
-            </button>
+            @for (item of jedi; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-opt-group>
         <tui-opt-group
             label="Jedi, may the force be with them blah blah blah (second time)"
             tuiMultiSelectGroup
         >
-            <button
-                *ngFor="let item of sith"
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                {{ item }}
-            </button>
+            @for (item of sith; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-opt-group>
     </tui-data-list>
 </tui-multi-select>

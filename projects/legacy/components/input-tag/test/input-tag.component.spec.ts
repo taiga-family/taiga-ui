@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -29,7 +28,6 @@ describe('InputTag', () => {
     @Component({
         standalone: true,
         imports: [
-            NgIf,
             ReactiveFormsModule,
             TuiHint,
             TuiInputTagModule,
@@ -39,24 +37,24 @@ describe('InputTag', () => {
         template: `
             <tui-root>
                 <button type="button">Focus stealer</button>
-                <tui-input-tag
-                    *ngIf="defaultInputs"
-                    [formControl]="control"
-                />
-                <tui-input-tag
-                    *ngIf="!defaultInputs"
-                    [formControl]="control"
-                    [placeholder]="placeholder"
-                    [readOnly]="readOnly"
-                    [separator]="separator"
-                    [tagValidator]="tagValidator"
-                    [tuiHintContent]="hintContent"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                >
-                    Placeholder
-                </tui-input-tag>
+                @if (defaultInputs) {
+                    <tui-input-tag [formControl]="control" />
+                }
+                @if (!defaultInputs) {
+                    <tui-input-tag
+                        [formControl]="control"
+                        [placeholder]="placeholder"
+                        [readOnly]="readOnly"
+                        [separator]="separator"
+                        [tagValidator]="tagValidator"
+                        [tuiHintContent]="hintContent"
+                        [tuiTextfieldCleaner]="cleaner"
+                        [tuiTextfieldLabelOutside]="labelOutside"
+                        [tuiTextfieldSize]="size"
+                    >
+                        Placeholder
+                    </tui-input-tag>
+                }
             </tui-root>
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection

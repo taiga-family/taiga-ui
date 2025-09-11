@@ -16,7 +16,9 @@
 </tui-expand>
 
 <tui-expand [expanded]="expanded">
-    <div *ngFor="let page of subpages">
-        <div>{{ page }}</div>
-    </div>
+    @for (page of subpages; track page) {
+        <div>
+            <div>{{ page }}</div>
+        </div>
+    }
 </tui-expand>

@@ -36,16 +36,17 @@
         automation-id="tui-input-time__dropdown"
         [size]="itemSize"
     >
-        <button
-            *ngFor="let item of filtered"
-            automation-id="tui-input-time__item"
-            tuiOption
-            type="button"
-            [disabled]="disabledItemHandler(item)"
-            [value]="item"
-        >
-            {{ item }}
-        </button>
+        @for (item of filtered; track item) {
+            <button
+                automation-id="tui-input-time__item"
+                tuiOption
+                type="button"
+                [disabled]="disabledItemHandler(item)"
+                [value]="item"
+            >
+                {{ item }}
+            </button>
+        }
     </tui-data-list>
 </ng-template>
 
@@ -56,8 +57,7 @@
         [class.t-icon_small]="size === 's'"
         [icon]="src.toString()"
     />
-    <input
-        *ngIf="showNativePicker"
-        tuiTime
-    />
+    @if (showNativePicker) {
+        <input tuiTime />
+    }
 </ng-template>

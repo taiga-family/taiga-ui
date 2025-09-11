@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -8,8 +7,6 @@ import {TuiChevron, TuiDataListDropdownManager, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        NgForOf,
-        NgIf,
         TuiChevron,
         TuiDataList,
         TuiDataListDropdownManager,

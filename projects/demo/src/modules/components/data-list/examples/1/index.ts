@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,8 +7,6 @@ import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        NgForOf,
-        NgIf,
         RouterLink,
         RouterLinkActive,
         TuiButton,

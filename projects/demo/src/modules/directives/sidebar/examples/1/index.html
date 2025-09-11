@@ -11,31 +11,33 @@
             <tui-accordion-item borders="top-bottom">
                 Web APIs for Angular
                 <ng-template tuiAccordionItemContent>
-                    <a
-                        *ngFor="let link of webApis"
-                        rel="noreferrer"
-                        target="_blank"
-                        tuiLink
-                        class="link"
-                        [attr.href]="`https://github.com/taiga-family/ng-web-apis/tree/main/libs/${link}/README.md`"
-                    >
-                        {{ link }}
-                    </a>
+                    @for (link of webApis; track link) {
+                        <a
+                            rel="noreferrer"
+                            target="_blank"
+                            tuiLink
+                            class="link"
+                            [attr.href]="`https://github.com/taiga-family/ng-web-apis/tree/main/libs/${link}/README.md`"
+                        >
+                            {{ link }}
+                        </a>
+                    }
                 </ng-template>
             </tui-accordion-item>
             <tui-accordion-item borders="top-bottom">
                 Other libraries
                 <ng-template tuiAccordionItemContent>
-                    <a
-                        *ngFor="let link of taigaFamilyProducts"
-                        rel="noreferrer"
-                        target="_blank"
-                        tuiLink
-                        class="link"
-                        [attr.href]="`https://github.com/taiga-family/${link}`"
-                    >
-                        {{ link }}
-                    </a>
+                    @for (link of taigaFamilyProducts; track link) {
+                        <a
+                            rel="noreferrer"
+                            target="_blank"
+                            tuiLink
+                            class="link"
+                            [attr.href]="`https://github.com/taiga-family/${link}`"
+                        >
+                            {{ link }}
+                        </a>
+                    }
                 </ng-template>
             </tui-accordion-item>
         </tui-accordion>

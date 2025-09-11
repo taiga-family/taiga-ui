@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {type SafeResourceUrl} from '@angular/platform-browser';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -13,7 +12,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
 @Component({
     // TODO: Remove `tui-avatar` selector leaving only [tuiAvatar] in v5
     selector: 'tui-avatar,button[tuiAvatar],a[tuiAvatar]',
-    imports: [NgIf],
+    imports: [],
     templateUrl: './avatar.template.html',
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

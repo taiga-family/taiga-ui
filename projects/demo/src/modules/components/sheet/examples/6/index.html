@@ -13,13 +13,14 @@
         <h2 tuiSheetHeading>
             <label tuiLabel="Monty Python">And the Holy Grail</label>
         </h2>
-        <img
-            *ngFor="let image of images"
-            #img
-            alt=""
-            class="image"
-            [src]="image"
-            (waIntersectionObservee)="$event[0] && onIntersection($event[0], img)"
-        />
+        @for (image of images; track image) {
+            <img
+                #img
+                alt=""
+                class="image"
+                [src]="image"
+                (waIntersectionObservee)="$event[0] && onIntersection($event[0], img)"
+            />
+        }
     </ng-container>
 </ng-template>

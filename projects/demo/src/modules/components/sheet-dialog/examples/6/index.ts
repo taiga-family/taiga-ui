@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, SlicePipe} from '@angular/common';
+import {AsyncPipe, SlicePipe} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -13,7 +13,6 @@ import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
         SlicePipe,
         TuiAppBar,
         TuiAvatar,

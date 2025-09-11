@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -28,8 +28,6 @@ import {map, type Observable, of} from 'rxjs';
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiAxes,
         TuiFilterPipe,
         TuiInputDateRangeModule,

@@ -4,21 +4,19 @@
         [formControl]="control"
     />
     <ng-template let-dragged>
-        <div
-            *ngIf="dragged; else base"
-            class="content"
-        >
-            <tui-avatar
-                appearance="secondary"
-                src="@tui.droplet"
-            />
-            <div>
-                Drop it like it's hot!
-                <br />
-                <br />
+        @if (dragged) {
+            <div class="content">
+                <tui-avatar
+                    appearance="secondary"
+                    src="@tui.droplet"
+                />
+                <div>
+                    Drop it like it's hot!
+                    <br />
+                    <br />
+                </div>
             </div>
-        </div>
-        <ng-template #base>
+        } @else {
             <div class="content">
                 <tui-avatar
                     appearance="secondary"
@@ -29,7 +27,7 @@
                     <a tuiLink>click to upload</a>
                 </div>
             </div>
-        </ng-template>
+        }
     </ng-template>
 </label>
 

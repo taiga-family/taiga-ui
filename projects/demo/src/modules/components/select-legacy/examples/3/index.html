@@ -12,31 +12,33 @@
         >
             Choose an address
             <tui-data-list *tuiDataList>
-                <button
-                    *ngIf="!signatureVisible"
-                    tuiOption
-                    type="button"
-                    class="link"
-                    (click)="toggle()"
-                >
-                    <tui-icon
-                        icon="@tui.circle-plus"
-                        class="icon"
-                    />
-                    Add signature
-                </button>
-                <button
-                    *ngFor="let item of items"
-                    tuiOption
-                    type="button"
-                    [value]="item"
-                >
-                    {{ item }}
-                </button>
+                @if (!signatureVisible) {
+                    <button
+                        tuiOption
+                        type="button"
+                        class="link"
+                        (click)="toggle()"
+                    >
+                        <tui-icon
+                            icon="@tui.circle-plus"
+                            class="icon"
+                        />
+                        Add signature
+                    </button>
+                }
+                @for (item of items; track item) {
+                    <button
+                        tuiOption
+                        type="button"
+                        [value]="item"
+                    >
+                        {{ item }}
+                    </button>
+                }
             </tui-data-list>
         </tui-select>
     </label>
-    <ng-container *ngIf="signatureVisible">
+    @if (signatureVisible) {
         <tui-textarea
             formControlName="signature"
             tuiAutoFocus
@@ -53,5 +55,5 @@
         >
             Hide signature
         </button>
-    </ng-container>
+    }
 </form>

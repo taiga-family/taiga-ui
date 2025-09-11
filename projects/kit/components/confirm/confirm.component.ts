@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -22,7 +22,7 @@ export interface TuiConfirmData {
 // TODO: Remove selector in v5
 @Component({
     selector: 'tui-confirm',
-    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './confirm.template.html',
     styleUrls: ['./confirm.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

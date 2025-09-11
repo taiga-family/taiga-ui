@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -23,7 +22,6 @@ interface Item {
 
 @Component({
     imports: [
-        NgForOf,
         ReactiveFormsModule,
         TuiChevron,
         TuiComboBox,
@@ -45,15 +43,16 @@ interface Item {
                 />
 
                 <tui-data-list *tuiTextfieldDropdown>
-                    <button
-                        *ngFor="let item of items()"
-                        new
-                        tuiOption
-                        type="button"
-                        [value]="item.id"
-                    >
-                        {{ item.name }}
-                    </button>
+                    @for (item of items(); track item) {
+                        <button
+                            new
+                            tuiOption
+                            type="button"
+                            [value]="item.id"
+                        >
+                            {{ item.name }}
+                        </button>
+                    }
                 </tui-data-list>
             </tui-textfield>
         </tui-root>

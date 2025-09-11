@@ -26,27 +26,28 @@
                 />
                 <span class="label">New card</span>
             </button>
-            <button
-                *ngFor="let item of items; let index = index"
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                <tui-thumbnail-card
-                    size="s"
-                    class="card"
+            @for (item of items; track item; let index = $index) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item"
                 >
-                    {{ item.card.slice(-4) }}
-                </tui-thumbnail-card>
-                <span
-                    tuiTitle
-                    class="label"
-                >
-                    {{ item.bank }}
-                    <span tuiSubtitle>{{ item.name }}</span>
-                </span>
-                <span>{{ item.card.slice(-5) }}</span>
-            </button>
+                    <tui-thumbnail-card
+                        size="s"
+                        class="card"
+                    >
+                        {{ item.card.slice(-4) }}
+                    </tui-thumbnail-card>
+                    <span
+                        tuiTitle
+                        class="label"
+                    >
+                        {{ item.bank }}
+                        <span tuiSubtitle>{{ item.name }}</span>
+                    </span>
+                    <span>{{ item.card.slice(-5) }}</span>
+                </button>
+            }
         </tui-data-list>
     </tui-input-card-group>
 </form>

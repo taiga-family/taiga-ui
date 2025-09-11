@@ -8,34 +8,35 @@
     <ng-content />
 </fieldset>
 
-<div
-    *ngIf="loading"
-    class="t-loader"
-    [class.t-loader_horizontal]="isHorizontal"
-    [class.t-loader_inherit-color]="inheritColor"
->
-    <svg
-        automation-id="tui-loader__loader"
-        focusable="false"
-        height="100%"
-        width="100%"
-        class="t-icon"
-    >
-        <circle
-            cx="50%"
-            cy="50%"
-            class="t-circle"
-        />
-    </svg>
-
+@if (loading) {
     <div
-        *ngIf="textContent"
-        automation-id="tui-loader__text"
-        class="t-text"
-        [class.t-text_horizontal]="isHorizontal"
+        class="t-loader"
+        [class.t-loader_horizontal]="isHorizontal"
+        [class.t-loader_inherit-color]="inheritColor"
     >
-        <ng-container *polymorpheusOutlet="textContent as text">
-            {{ text }}
-        </ng-container>
+        <svg
+            automation-id="tui-loader__loader"
+            focusable="false"
+            height="100%"
+            width="100%"
+            class="t-icon"
+        >
+            <circle
+                cx="50%"
+                cy="50%"
+                class="t-circle"
+            />
+        </svg>
+        @if (textContent) {
+            <div
+                automation-id="tui-loader__text"
+                class="t-text"
+                [class.t-text_horizontal]="isHorizontal"
+            >
+                <ng-container *polymorpheusOutlet="textContent as text">
+                    {{ text }}
+                </ng-container>
+            </div>
+        }
     </div>
-</div>
+}

@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -42,8 +42,6 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
     selector: 'pay-modal',
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiAutoFocus,
         TuiButton,

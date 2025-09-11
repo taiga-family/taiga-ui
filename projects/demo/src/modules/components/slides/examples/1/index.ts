@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -6,15 +5,7 @@ import {TuiButton, TuiGroup, TuiTitle} from '@taiga-ui/core';
 import {TuiElasticContainer, TuiSlides} from '@taiga-ui/kit';
 
 @Component({
-    imports: [
-        NgForOf,
-        NgIf,
-        TuiButton,
-        TuiElasticContainer,
-        TuiGroup,
-        TuiSlides,
-        TuiTitle,
-    ],
+    imports: [TuiButton, TuiElasticContainer, TuiGroup, TuiSlides, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

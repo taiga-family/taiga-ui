@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -19,7 +18,7 @@ function flatten(item: TreeNode): readonly TreeNode[] {
 }
 
 @Component({
-    imports: [FormsModule, NgForOf, TuiCheckbox, TuiLabel, TuiMapperPipe, TuiTree],
+    imports: [FormsModule, TuiCheckbox, TuiLabel, TuiMapperPipe, TuiTree],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

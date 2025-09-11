@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {
     FormControl,
@@ -17,7 +16,6 @@ import {TuiInputModule, TuiInputPhoneModule} from '@taiga-ui/legacy';
 @Component({
     imports: [
         FormsModule,
-        NgIf,
         ReactiveFormsModule,
         TuiChevron,
         TuiDataListWrapper,

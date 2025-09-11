@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiDocAPIItem, TuiDocAPINumberItem} from '@taiga-ui/addon-doc';
 import {type TuiLooseUnion} from '@taiga-ui/cdk';
@@ -12,7 +11,7 @@ import {
 
 @Component({
     selector: 'tbody[tuiDocTextfield]',
-    imports: [NgIf, TuiDocAPIItem, TuiDocAPINumberItem, TuiTitle],
+    imports: [TuiDocAPIItem, TuiDocAPINumberItem, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

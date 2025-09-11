@@ -6,50 +6,52 @@
         </span>
     </td>
 </tr>
-<tr
-    *ngIf="!hiddenOptions.includes('cleaner')"
-    name="[tuiTextfieldCleaner]"
-    tuiDocAPIItem
-    type="boolean"
-    [(value)]="cleaner"
->
-    Shows a cross to reset a value
-</tr>
-<tr
-    *ngIf="!hiddenOptions.includes('size')"
-    name="[tuiTextfieldSize]"
-    tuiDocAPIItem
-    type="TuiSizeS | TuiSizeL"
-    [items]="sizeVariants"
-    [(value)]="size"
->
-    Size
+@if (!hiddenOptions.includes('cleaner')) {
+    <tr
+        name="[tuiTextfieldCleaner]"
+        tuiDocAPIItem
+        type="boolean"
+        [(value)]="cleaner"
+    >
+        Shows a cross to reset a value
+    </tr>
+}
+@if (!hiddenOptions.includes('size')) {
+    <tr
+        name="[tuiTextfieldSize]"
+        tuiDocAPIItem
+        type="TuiSizeS | TuiSizeL"
+        [items]="sizeVariants"
+        [(value)]="size"
+    >
+        Size
+        <p>
+            <strong>
+                Don't use
+                <code>label[tuiLabel]</code>
+                inside
+                <code>s</code>
+                - size
+                <code>&lt;tui-textfield /&gt;</code>
+                !
+            </strong>
+            <br />
+            Use outside label or
+            <code>&lt;input placeholder="..." /&gt;</code>
+            instead.
+        </p>
+    </tr>
+}
 
-    <p>
-        <strong>
-            Don't use
-            <code>label[tuiLabel]</code>
-            inside
-            <code>s</code>
-            - size
-            <code>&lt;tui-textfield /&gt;</code>
-            !
-        </strong>
-        <br />
-        Use outside label or
-        <code>&lt;input placeholder="..." /&gt;</code>
-        instead.
-    </p>
-</tr>
-
-<tr
-    *ngIf="!hiddenOptions.includes('rows')"
-    name="[rows]"
-    tuiDocAPIItem
-    type="number"
-    [(value)]="rows"
->
-    Maximum number of rows
-</tr>
+@if (!hiddenOptions.includes('rows')) {
+    <tr
+        name="[rows]"
+        tuiDocAPIItem
+        type="number"
+        [(value)]="rows"
+    >
+        Maximum number of rows
+    </tr>
+}
 
 <ng-content />

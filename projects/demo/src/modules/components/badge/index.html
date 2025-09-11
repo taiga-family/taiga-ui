@@ -52,31 +52,34 @@
     <ng-template pageTab>
         <tui-doc-demo>
             <p>
-                <tui-badge
-                    *ngIf="contentType === 'with icon'"
-                    iconStart="@tui.check"
-                    [appearance]="appearance"
-                    [size]="size"
-                >
-                    <div tuiFade>Taiga UI</div>
-                </tui-badge>
+                @if (contentType === 'with icon') {
+                    <tui-badge
+                        iconStart="@tui.check"
+                        [appearance]="appearance"
+                        [size]="size"
+                    >
+                        <div tuiFade>Taiga UI</div>
+                    </tui-badge>
+                }
 
-                <tui-badge
-                    *ngIf="contentType === 'text'"
-                    [appearance]="appearance"
-                    [size]="size"
-                >
-                    Taiga UI
-                </tui-badge>
+                @if (contentType === 'text') {
+                    <tui-badge
+                        [appearance]="appearance"
+                        [size]="size"
+                    >
+                        Taiga UI
+                    </tui-badge>
+                }
 
-                <img
-                    *ngIf="contentType === 'image'"
-                    alt="market"
-                    src="assets/images/avatar.jpg"
-                    tuiBadge
-                    [appearance]="appearance"
-                    [size]="size"
-                />
+                @if (contentType === 'image') {
+                    <img
+                        alt="market"
+                        src="assets/images/avatar.jpg"
+                        tuiBadge
+                        [appearance]="appearance"
+                        [size]="size"
+                    />
+                }
             </p>
         </tui-doc-demo>
         <div>

@@ -16,32 +16,34 @@
             </tui-opt-group>
             <tui-opt-group label="Best bank">
                 <tui-opt-group tuiMultiSelectGroup>
-                    <button
-                        *ngFor="let item of bank"
-                        tuiOption
-                        type="button"
-                        [value]="item"
-                    >
-                        <span tuiTitle>
-                            {{ item.name }}
-                            <span tuiSubtitle>{{ item.account }}</span>
-                        </span>
-                    </button>
+                    @for (item of bank; track item) {
+                        <button
+                            tuiOption
+                            type="button"
+                            [value]="item"
+                        >
+                            <span tuiTitle>
+                                {{ item.name }}
+                                <span tuiSubtitle>{{ item.account }}</span>
+                            </span>
+                        </button>
+                    }
                 </tui-opt-group>
             </tui-opt-group>
             <tui-opt-group label="Other banks">
                 <tui-opt-group tuiMultiSelectGroup>
-                    <button
-                        *ngFor="let item of others"
-                        tuiOption
-                        type="button"
-                        [value]="item"
-                    >
-                        <span tuiTitle>
-                            {{ item.name }}
-                            <span tuiSubtitle>{{ item.account }}</span>
-                        </span>
-                    </button>
+                    @for (item of others; track item) {
+                        <button
+                            tuiOption
+                            type="button"
+                            [value]="item"
+                        >
+                            <span tuiTitle>
+                                {{ item.name }}
+                                <span tuiSubtitle>{{ item.account }}</span>
+                            </span>
+                        </button>
+                    }
                 </tui-opt-group>
             </tui-opt-group>
             <tui-opt-group tuiMultiSelectGroup>

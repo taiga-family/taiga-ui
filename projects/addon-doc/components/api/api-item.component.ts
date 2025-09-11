@@ -1,4 +1,4 @@
-import {Location, NgForOf, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
+import {Location} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -31,10 +31,6 @@ const SERIALIZED_SUFFIX = '$';
     selector: 'tr[tuiDocAPIItem]',
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
-        NgSwitch,
-        NgSwitchCase,
         TuiChevron,
         TuiDataListWrapper,
         TuiDocTypeReferencePipe,

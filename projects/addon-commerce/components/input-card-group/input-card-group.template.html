@@ -126,31 +126,32 @@
     </label>
 </div>
 <div class="t-icons">
-    <div
-        *ngIf="content"
-        class="t-icon-outlet"
-    >
-        <img
-            *polymorpheusOutlet="content as src"
-            alt=""
-            automation-id="tui-input-card-group__icon"
-            class="t-card"
-            [src]="src | tuiIcon"
+    @if (content) {
+        <div class="t-icon-outlet">
+            <img
+                *polymorpheusOutlet="content as src"
+                alt=""
+                automation-id="tui-input-card-group__icon"
+                class="t-card"
+                [src]="src | tuiIcon"
+            />
+        </div>
+    }
+    @if (hasCleaner()) {
+        <tui-icon
+            automation-id="tui-input-card-group__cleaner"
+            tuiAppearance="icon"
+            class="t-icon"
+            [icon]="icons.close"
+            (click)="clear()"
         />
-    </div>
-    <tui-icon
-        *ngIf="hasCleaner()"
-        automation-id="tui-input-card-group__cleaner"
-        tuiAppearance="icon"
-        class="t-icon"
-        [icon]="icons.close"
-        (click)="clear()"
-    />
-    <tui-icon
-        *ngIf="dropdown._content()"
-        automation-id="tui-input-card-group__dropdown"
-        tuiAppearance="icon"
-        tuiChevron
-        (click)="toggle()"
-    />
+    }
+    @if (dropdown._content()) {
+        <tui-icon
+            automation-id="tui-input-card-group__dropdown"
+            tuiAppearance="icon"
+            tuiChevron
+            (click)="toggle()"
+        />
+    }
 </div>

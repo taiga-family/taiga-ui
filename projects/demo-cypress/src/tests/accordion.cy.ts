@@ -1,11 +1,11 @@
-import {KeyValuePipe, NgForOf} from '@angular/common';
+import {KeyValuePipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiButton, TuiRoot} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/experimental';
 
 @Component({
-    imports: [FormsModule, KeyValuePipe, NgForOf, TuiAccordion, TuiButton, TuiRoot],
+    imports: [FormsModule, KeyValuePipe, TuiAccordion, TuiButton, TuiRoot],
     template: `
         <tui-root>
             <button
@@ -17,10 +17,10 @@ import {TuiAccordion} from '@taiga-ui/experimental';
             </button>
 
             <tui-accordion>
-                <ng-container *ngFor="let item of data | keyvalue; let index = index">
+                @for (item of data | keyvalue; track item; let index = $index) {
                     <button [tuiAccordion]="index === 1">{{ item.key }}</button>
                     <tui-expand>{{ item.value }}</tui-expand>
-                </ng-container>
+                }
             </tui-accordion>
         </tui-root>
     `,

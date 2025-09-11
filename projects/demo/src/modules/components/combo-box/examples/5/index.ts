@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -14,7 +14,6 @@ import {DatabaseServer} from './database';
     imports: [
         AsyncPipe,
         FormsModule,
-        NgIf,
         TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,

@@ -4,15 +4,18 @@
     @tuiParentAnimation
     [@.disabled]="overflow"
 >
-    <ng-container *ngIf="contentVisible">
+    @if (contentVisible) {
         <ng-content />
-        <tui-loader
-            *ngIf="async; else content"
-            size="l"
-            [overlay]="true"
-            [showLoader]="loading"
-        >
-            <ng-container [ngTemplateOutlet]="content" />
-        </tui-loader>
-    </ng-container>
+        @if (async) {
+            <tui-loader
+                size="l"
+                [overlay]="true"
+                [showLoader]="loading"
+            >
+                <ng-container [ngTemplateOutlet]="content" />
+            </tui-loader>
+        } @else {
+            <ng-template [ngTemplateOutlet]="content"></ng-template>
+        }
+    }
 </div>

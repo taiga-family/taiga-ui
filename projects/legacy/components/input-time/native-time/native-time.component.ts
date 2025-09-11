@@ -7,15 +7,13 @@ import {TuiInputTimeDirective} from '../input-time.directive';
     standalone: false,
     selector: 'input[tuiTime]',
     template: `
-        <datalist
-            *ngIf="items.length"
-            [id]="autoId"
-        >
-            <option
-                *ngFor="let item of items"
-                [value]="item"
-            ></option>
-        </datalist>
+        @if (items.length) {
+            <datalist [id]="autoId">
+                @for (item of items; track item) {
+                    <option [value]="item"></option>
+                }
+            </datalist>
+        }
     `,
     styleUrls: ['./native-time.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

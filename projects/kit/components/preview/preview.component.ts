@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -30,7 +30,6 @@ const ROTATION_ANGLE = 90;
     selector: 'tui-preview',
     imports: [
         AsyncPipe,
-        NgIf,
         TuiButton,
         TuiHint,
         TuiPan,

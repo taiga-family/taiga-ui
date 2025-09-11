@@ -9,12 +9,13 @@
     </button>
 </p>
 <nav tuiTabBar>
-    <button
-        *ngFor="let item of items$ | async"
-        tuiTabBarItem
-        type="button"
-        [icon]="item.icon"
-    >
-        {{ item.text }}
-    </button>
+    @for (item of items$ | async; track item) {
+        <button
+            tuiTabBarItem
+            type="button"
+            [icon]="item.icon"
+        >
+            {{ item.text }}
+        </button>
+    }
 </nav>

@@ -1,4 +1,4 @@
-import {JsonPipe, NgForOf} from '@angular/common';
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormArray, FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -11,7 +11,6 @@ import {TuiSearch} from '@taiga-ui/layout';
 @Component({
     imports: [
         JsonPipe,
-        NgForOf,
         ReactiveFormsModule,
         TuiButton,
         TuiItemsWithMore,

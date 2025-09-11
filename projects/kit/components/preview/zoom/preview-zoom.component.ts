@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf, PercentPipe} from '@angular/common';
+import {AsyncPipe, PercentPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -25,7 +25,6 @@ const STEP = 0.5;
     imports: [
         AsyncPipe,
         FormsModule,
-        NgIf,
         PercentPipe,
         TuiButton,
         TuiHint,

@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,7 +6,7 @@ import {tuiProvideExperimentalHint} from '@taiga-ui/experimental';
 import {TuiAvatar, TuiPulse} from '@taiga-ui/kit';
 
 @Component({
-    imports: [NgIf, TuiAvatar, TuiButton, TuiHint, TuiPulse, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiHint, TuiPulse, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

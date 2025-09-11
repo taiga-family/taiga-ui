@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -44,7 +43,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 
 @Component({
     selector: 'tui-dialog',
-    imports: [NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton, TuiHeader, TuiTitle],
+    imports: [PolymorpheusOutlet, TuiAutoFocus, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './dialog.template.html',
     styleUrls: ['./dialog.style.less'],
     encapsulation: ViewEncapsulation.None,

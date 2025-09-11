@@ -1,5 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {AsyncPipe, DOCUMENT, NgComponentOutlet, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgComponentOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -42,8 +42,6 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     imports: [
         AsyncPipe,
         NgComponentOutlet,
-        NgForOf,
-        NgIf,
         PolymorpheusOutlet,
         RouterLink,
         RouterLinkActive,

@@ -70,14 +70,15 @@
                 [emptyContent]="emptyContent"
                 [size]="size"
             >
-                <button
-                    *ngFor="let item of items$ | async"
-                    tuiOption
-                    type="button"
-                    [value]="[item]"
-                >
-                    {{ item }}
-                </button>
+                @for (item of items$ | async; track item) {
+                    <button
+                        tuiOption
+                        type="button"
+                        [value]="[item]"
+                    >
+                        {{ item }}
+                    </button>
+                }
             </tui-data-list>
         </tui-doc-demo>
         <h2>DataList</h2>

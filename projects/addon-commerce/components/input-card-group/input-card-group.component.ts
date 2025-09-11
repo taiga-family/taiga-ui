@@ -1,4 +1,4 @@
-import {DOCUMENT, isPlatformServer, NgIf} from '@angular/common';
+import {DOCUMENT, isPlatformServer} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -77,7 +77,6 @@ export interface TuiCard {
     imports: [
         FormsModule,
         MaskitoDirective,
-        NgIf,
         PolymorpheusOutlet,
         TuiAppearance,
         TuiChevron,

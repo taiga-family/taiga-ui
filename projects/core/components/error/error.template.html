@@ -1,10 +1,11 @@
-<div
-    *ngIf="error"
-    automation-id="tui-error__text"
-    tuiAnimated
-    class="t-message-text"
->
-    <ng-container *polymorpheusOutlet="error.message || default() as text; context: error.context || {}">
-        {{ text }}
-    </ng-container>
-</div>
+@if (error) {
+    <div
+        automation-id="tui-error__text"
+        tuiAnimated
+        class="t-message-text"
+    >
+        <ng-container *polymorpheusOutlet="error.message || default() as text; context: error.context || {}">
+            {{ text }}
+        </ng-container>
+    </div>
+}

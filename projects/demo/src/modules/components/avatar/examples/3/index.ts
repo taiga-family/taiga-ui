@@ -1,11 +1,11 @@
-import {NgForOf, UpperCasePipe} from '@angular/common';
+import {UpperCasePipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
-    imports: [NgForOf, TuiAvatar, UpperCasePipe],
+    imports: [TuiAvatar, UpperCasePipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

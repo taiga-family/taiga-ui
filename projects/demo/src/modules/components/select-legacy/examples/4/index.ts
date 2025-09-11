@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,7 +6,7 @@ import {TuiAlertService, TuiDataList, TuiIcon} from '@taiga-ui/core';
 import {type TuiSelectComponent, TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [FormsModule, NgForOf, TuiDataList, TuiIcon, TuiSelectModule],
+    imports: [FormsModule, TuiDataList, TuiIcon, TuiSelectModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

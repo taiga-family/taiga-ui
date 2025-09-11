@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -33,7 +33,7 @@ const ACTIVE_ITEM_LENGTH = 1;
 
 @Component({
     selector: 'tui-pagination',
-    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiButton, TuiLet, TuiRepeatTimes],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButton, TuiLet, TuiRepeatTimes],
     templateUrl: './pagination.template.html',
     styleUrls: ['./pagination.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

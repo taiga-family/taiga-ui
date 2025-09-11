@@ -51,12 +51,9 @@
                 [tuiTextfieldCleaner]="textfield.cleaner"
                 [tuiTextfieldSize]="textfield.size"
             >
-                <label
-                    *ngIf="textfield.size !== 's'"
-                    tuiLabel
-                >
-                    Card number
-                </label>
+                @if (textfield.size !== 's') {
+                    <label tuiLabel>Card number</label>
+                }
 
                 <input
                     tuiInputCard

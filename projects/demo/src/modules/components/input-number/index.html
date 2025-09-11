@@ -241,12 +241,9 @@
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
-                    <label
-                        *ngIf="textfieldDoc.size !== 's'"
-                        tuiLabel
-                    >
-                        Enter a number
-                    </label>
+                    @if (textfieldDoc.size !== 's') {
+                        <label tuiLabel>Enter a number</label>
+                    }
 
                     <input
                         tuiInputNumber

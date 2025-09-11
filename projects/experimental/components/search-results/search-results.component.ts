@@ -1,10 +1,4 @@
-import {
-    type KeyValue,
-    KeyValuePipe,
-    NgForOf,
-    NgIf,
-    NgTemplateOutlet,
-} from '@angular/common';
+import {type KeyValue, KeyValuePipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -36,8 +30,6 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
     selector: 'tui-search-results',
     imports: [
         KeyValuePipe,
-        NgForOf,
-        NgIf,
         NgTemplateOutlet,
         TuiBlockStatus,
         TuiFilterPipe,

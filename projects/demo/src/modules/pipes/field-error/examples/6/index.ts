@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -14,7 +13,6 @@ import {
 
 @Component({
     imports: [
-        NgForOf,
         ReactiveFormsModule,
         TuiCurrencyPipe,
         TuiFieldErrorContentPipe,

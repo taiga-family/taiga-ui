@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -21,7 +20,7 @@ import {tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
     selector: 'tbody[tuiDocNumberFormat]',
-    imports: [NgIf, RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
+    imports: [RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

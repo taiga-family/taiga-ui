@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -12,7 +11,7 @@ const startOfMonth = today.append({day: 1 - today.day});
 const startOfQuarter = startOfMonth.append({month: -(startOfMonth.month % 3)});
 
 @Component({
-    imports: [NgIf, TuiCalendarRange, TuiLink],
+    imports: [TuiCalendarRange, TuiLink],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

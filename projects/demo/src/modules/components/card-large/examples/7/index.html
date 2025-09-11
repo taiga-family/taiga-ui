@@ -48,13 +48,14 @@
 >
     <tui-data-list>
         <tui-opt-group>
-            <button
-                *ngFor="let item of ['Edit', 'Download', 'Rename', 'Delete']"
-                tuiOption
-                type="button"
-            >
-                {{ item }}
-            </button>
+            @for (item of ['Edit', 'Download', 'Rename', 'Delete']; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-opt-group>
         <tui-opt-group>
             <button

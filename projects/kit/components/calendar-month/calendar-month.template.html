@@ -1,17 +1,15 @@
-<tui-scrollbar
-    *ngIf="isYearPickerShown; else monthSelect"
-    class="t-scrollbar"
->
-    <tui-calendar-year
-        [initialItem]="year.year"
-        [max]="max().year"
-        [min]="min().year"
-        [rangeMode]="options.rangeMode"
-        [value]="value()"
-        (yearClick)="onPickerYearClick($event)"
-    />
-</tui-scrollbar>
-<ng-template #monthSelect>
+@if (isYearPickerShown) {
+    <tui-scrollbar class="t-scrollbar">
+        <tui-calendar-year
+            [initialItem]="year.year"
+            [max]="max().year"
+            [min]="min().year"
+            [rangeMode]="options.rangeMode"
+            [value]="value()"
+            (yearClick)="onPickerYearClick($event)"
+        />
+    </tui-scrollbar>
+} @else {
     <tui-spin-button
         class="t-spin"
         [focusable]="false"
@@ -48,4 +46,4 @@
             </div>
         </ng-container>
     </div>
-</ng-template>
+}

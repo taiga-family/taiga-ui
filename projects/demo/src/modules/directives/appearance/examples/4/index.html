@@ -1,16 +1,17 @@
-<ng-container *ngFor="let group of appearances | keyvalue: asIs">
+@for (group of appearances | keyvalue: asIs; track group) {
     <h3>{{ group.key }}</h3>
     <section class="section">
-        <button
-            *ngFor="let appearance of group.value"
-            iconStart="@tui.star"
-            tuiButton
-            type="button"
-            [appearance]="appearance"
-            [cdkCopyToClipboard]="appearance"
-            (cdkCopyToClipboardCopied)="$event && onCopy(appearance)"
-        >
-            {{ appearance }}
-        </button>
+        @for (appearance of group.value; track appearance) {
+            <button
+                iconStart="@tui.star"
+                tuiButton
+                type="button"
+                [appearance]="appearance"
+                [cdkCopyToClipboard]="appearance"
+                (cdkCopyToClipboardCopied)="$event && onCopy(appearance)"
+            >
+                {{ appearance }}
+            </button>
+        }
     </section>
-</ng-container>
+}

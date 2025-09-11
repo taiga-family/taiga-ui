@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
@@ -13,7 +12,7 @@ import {
 
 @Component({
     selector: 'tbody[tuiDocAppearance]',
-    imports: [NgIf, RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
+    imports: [RouterLink, TuiDocAPIItem, TuiLink, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

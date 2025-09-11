@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, computed, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -63,7 +62,6 @@ const DATA: readonly User[] = [
 @Component({
     imports: [
         FormsModule,
-        NgIf,
         TuiAvatar,
         TuiCell,
         TuiDataListWrapper,

@@ -1,4 +1,4 @@
-import {AsyncPipe, NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     type AfterViewChecked,
     type AfterViewInit,
@@ -39,8 +39,6 @@ import {TuiTabsHorizontal} from './tabs-horizontal.directive';
     selector: 'tui-tabs-with-more, nav[tuiTabsWithMore]',
     imports: [
         AsyncPipe,
-        NgFor,
-        NgIf,
         NgTemplateOutlet,
         PolymorpheusOutlet,
         TuiChevron,

@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -32,7 +31,7 @@ export function tuiDocThemeProvider(): FactoryProvider {
 
 @Component({
     selector: 'tui-doc-theme-switcher',
-    imports: [FormsModule, NgForOf, TuiDataList, TuiSelectModule],
+    imports: [FormsModule, TuiDataList, TuiSelectModule],
     templateUrl: './theme-switcher.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

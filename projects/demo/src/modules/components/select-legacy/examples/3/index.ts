@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -13,8 +12,6 @@ import {
 
 @Component({
     imports: [
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiAutoFocus,
         TuiButton,

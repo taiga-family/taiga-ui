@@ -11,8 +11,8 @@
         (ngModelChange)="value.set($event)"
     />
 
-    <ng-container *ngIf="items | tuiFilterByInput: matcher as filtered">
-        <ng-container *ngIf="!user() && input.value && filtered.length">
+    @if (items | tuiFilterByInput: matcher; as filtered) {
+        @if (!user() && input.value && filtered.length) {
             <tui-data-list-wrapper
                 *tuiTextfieldDropdown
                 new
@@ -20,8 +20,8 @@
                 [items]="filtered"
                 (itemClick)="selectUser($event)"
             />
-        </ng-container>
-    </ng-container>
+        }
+    }
 </tui-textfield>
 
 <ng-template

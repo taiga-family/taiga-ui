@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -66,8 +65,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     selector: 'input[tuiInputPhoneInternational]',
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiAutoFocus,
         TuiButton,
         TuiCell,

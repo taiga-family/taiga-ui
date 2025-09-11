@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -6,7 +5,7 @@ import {TuiItem} from '@taiga-ui/cdk';
 import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 
 @Component({
-    imports: [NgForOf, TuiFiles, TuiItem],
+    imports: [TuiFiles, TuiItem],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

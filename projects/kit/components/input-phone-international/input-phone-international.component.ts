@@ -1,4 +1,3 @@
-import {NgFor, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -72,8 +71,6 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
     imports: [
         FormsModule,
         MaskitoDirective,
-        NgFor,
-        NgIf,
         TuiAutoFocus,
         TuiChevron,
         TuiDataList,

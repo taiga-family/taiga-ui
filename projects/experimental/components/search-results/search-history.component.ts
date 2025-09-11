@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
@@ -16,7 +15,7 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
 
 @Component({
     selector: 'tui-search-history',
-    imports: [NgForOf, NgIf, TuiAvatar, TuiButton, TuiCell, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiCell, TuiTitle],
     templateUrl: './search-history.component.html',
     styles: [
         `

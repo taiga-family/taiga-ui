@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -34,7 +34,7 @@ import {TuiStep} from './step.component';
 
 @Component({
     selector: 'tui-stepper, nav[tuiStepper]',
-    imports: [AsyncPipe, NgIf],
+    imports: [AsyncPipe],
     templateUrl: './stepper.template.html',
     styleUrls: ['./stepper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -17,5 +17,7 @@
         [items]="inputRef.value.length < 2 ? [] : items"
     />
 
-    <tui-loader *ngIf="items && showLoader()" />
+    @if (items && showLoader()) {
+        <tui-loader />
+    }
 </tui-textfield>

@@ -11,14 +11,15 @@
             *tuiDataList
             tuiMultiSelectGroup
         >
-            <button
-                *ngFor="let item of items"
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                {{ item.name }}
-            </button>
+            @for (item of items; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item"
+                >
+                    {{ item.name }}
+                </button>
+            }
         </tui-data-list>
     </tui-multi-select>
     <tui-multi-select
@@ -36,14 +37,15 @@
             *tuiDataList
             tuiMultiSelectGroup
         >
-            <button
-                *ngFor="let item of items"
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                {{ item.name }}
-            </button>
+            @for (item of items; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item"
+                >
+                    {{ item.name }}
+                </button>
+            }
         </tui-data-list>
     </tui-multi-select>
     <tui-multi-select

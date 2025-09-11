@@ -3,71 +3,69 @@
 <table tuiTable>
     <thead tuiTHead>
         <tr tuiThGroup>
-            <th
-                *ngFor="let column of tableColumns"
-                tuiTh
-            >
-                {{ column }}
-            </th>
+            @for (column of tableColumns; track column) {
+                <th tuiTh>
+                    {{ column }}
+                </th>
+            }
         </tr>
     </thead>
     <tbody tuiTbody>
-        <tr
-            *ngFor="let rowInfo of tableData"
-            #dropdown="tuiDropdown"
-            tuiDropdownContext
-            [tuiDropdown]="contextMenu"
-        >
-            <td
-                *ngFor="let value of getObjectValues(rowInfo)"
-                tuiTd
+        @for (rowInfo of tableData; track rowInfo) {
+            <tr
+                #dropdown="tuiDropdown"
+                tuiDropdownContext
+                [tuiDropdown]="contextMenu"
             >
-                {{ value }}
-            </td>
-
-            <ng-template #contextMenu>
-                <tui-data-list
-                    role="menu"
-                    tuiDataListDropdownManager
-                    class="context-menu"
-                >
-                    <button
-                        *ngFor="let item of menuItems"
-                        tuiOption
-                        type="button"
-                        (click)="printToConsole(item.title, rowInfo); dropdown.toggle(false)"
+                @for (value of getObjectValues(rowInfo); track value) {
+                    <td tuiTd>
+                        {{ value }}
+                    </td>
+                }
+                <ng-template #contextMenu>
+                    <tui-data-list
+                        role="menu"
+                        tuiDataListDropdownManager
+                        class="context-menu"
                     >
-                        {{ item.title }}
-                        <tui-icon
-                            class="icon"
-                            [icon]="item.iconName"
-                        />
-                    </button>
-
-                    <button
-                        iconEnd="@tui.chevron-right"
-                        tuiDropdownAlign="right"
-                        tuiDropdownSided
-                        tuiOption
-                        type="button"
-                        [tuiDropdown]="nestedMenu"
-                    >
-                        More
-                    </button>
-                </tui-data-list>
-
-                <ng-template #nestedMenu>
-                    <tui-data-list>
+                        @for (item of menuItems; track item) {
+                            <button
+                                tuiOption
+                                type="button"
+                                (click)="printToConsole(item.title, rowInfo); dropdown.toggle(false)"
+                            >
+                                {{ item.title }}
+                                <tui-icon
+                                    class="icon"
+                                    [icon]="item.iconName"
+                                />
+                            </button>
+                        }
                         <button
-                            *ngFor="let option of moreOptions"
+                            iconEnd="@tui.chevron-right"
+                            tuiDropdownAlign="right"
+                            tuiDropdownSided
                             tuiOption
                             type="button"
+                            [tuiDropdown]="nestedMenu"
                         >
-                            {{ option }}
+                            More
                         </button>
                     </tui-data-list>
+                    <ng-template #nestedMenu>
+                        <tui-data-list>
+                            @for (option of moreOptions; track option) {
+                                <button
+                                    tuiOption
+                                    type="button"
+                                >
+                                    {{ option }}
+                                </button>
+                            }
+                        </tui-data-list>
+                    </ng-template>
                 </ng-template>
-            </ng-template>
-        </tr>
+            </tr>
+        }
     </tbody>
 </table>
