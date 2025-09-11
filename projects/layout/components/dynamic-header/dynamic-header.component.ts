@@ -6,7 +6,6 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.directive';
 
 @Component({
-    standalone: true,
     selector: '[tuiDynamicHeader]',
     imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiAnimated],
     template: `

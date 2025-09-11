@@ -6,7 +6,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiBlockStatus, TuiButton, TuiPlatform],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

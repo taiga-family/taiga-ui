@@ -6,7 +6,6 @@ import {type TuiDecimalSymbol, tuiFormatNumber} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

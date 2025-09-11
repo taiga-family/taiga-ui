@@ -39,7 +39,6 @@ import {PayService} from '../helpers/pay.service';
 import {inputCardGroupedCVCValidator} from '../helpers/validator';
 
 @Component({
-    standalone: true,
     selector: 'pay-modal',
     imports: [
         AsyncPipe,

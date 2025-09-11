@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 
 @Component({
-    standalone: true,
     imports: [NgFor, TuiThumbnailCard],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

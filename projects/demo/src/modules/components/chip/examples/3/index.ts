@@ -7,7 +7,6 @@ import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {TuiCheckbox, TuiChip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiButton, TuiCheckbox, TuiChip, TuiRepeatTimes],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

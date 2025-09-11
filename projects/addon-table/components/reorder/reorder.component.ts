@@ -17,7 +17,6 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 import {TUI_REORDER_OPTIONS} from './reorder.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-reorder',
     imports: [AsyncPipe, NgForOf, PolymorpheusOutlet, TuiButton, TuiIcon, TuiTiles],
     templateUrl: './reorder.template.html',

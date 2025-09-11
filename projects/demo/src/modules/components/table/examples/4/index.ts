@@ -107,7 +107,6 @@ function getAge(dob: TuiDay): number {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

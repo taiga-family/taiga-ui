@@ -6,7 +6,6 @@ import {TuiAvatar, TuiBadge, TuiBadgeNotification, TuiFade} from '@taiga-ui/kit'
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         TuiAvatar,
         TuiBadge,

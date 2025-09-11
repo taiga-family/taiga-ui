@@ -9,7 +9,6 @@ import {TuiFade} from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiCardMedium,

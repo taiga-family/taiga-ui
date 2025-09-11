@@ -33,7 +33,6 @@ interface User {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgFor, TuiCarousel],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -9,7 +9,6 @@ import {TuiItemsWithMore} from '@taiga-ui/kit';
 import {TuiSearch} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         JsonPipe,
         NgForOf,

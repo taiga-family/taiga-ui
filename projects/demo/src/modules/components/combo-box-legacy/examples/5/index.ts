@@ -11,7 +11,6 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
 import {IndexChange} from './index-change.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-combo-box-example-5',
     imports: [
         FormsModule,

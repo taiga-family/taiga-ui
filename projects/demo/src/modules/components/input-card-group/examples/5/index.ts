@@ -10,7 +10,6 @@ import {
 import {of} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [NgIf, ReactiveFormsModule, TuiInputCardGroup],
     templateUrl: './index.html',
     changeDetection,

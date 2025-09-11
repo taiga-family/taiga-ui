@@ -17,7 +17,6 @@ import {TuiActionBar, TuiFilter, TuiItemsWithMore} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         NgIf,
         ReactiveFormsModule,

@@ -10,7 +10,6 @@ import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {interval, map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

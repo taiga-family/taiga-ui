@@ -8,7 +8,6 @@ import {
 import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiAppBarBack], a[tuiAppBarBack]',
     imports: [TuiIcon],
     templateUrl: './app-bar-back.template.html',

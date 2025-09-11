@@ -22,7 +22,6 @@ const numberOptions = maskitoNumberOptionsGenerator({
 });
 
 @Component({
-    standalone: true,
     imports: [FormsModule, MaskitoDirective, NgIf, TuiButton, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

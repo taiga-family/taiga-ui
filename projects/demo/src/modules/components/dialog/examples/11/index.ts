@@ -5,7 +5,6 @@ import {TuiThemeColorService} from '@taiga-ui/cdk';
 import {TuiButton, TuiDialogService} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

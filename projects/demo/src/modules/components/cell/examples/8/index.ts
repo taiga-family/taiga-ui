@@ -16,7 +16,6 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 import {TuiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgFor,

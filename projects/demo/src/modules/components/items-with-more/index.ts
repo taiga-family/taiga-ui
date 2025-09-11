@@ -5,7 +5,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiChip, TuiDemo, TuiItemsWithMore],
     templateUrl: './index.html',
     changeDetection,

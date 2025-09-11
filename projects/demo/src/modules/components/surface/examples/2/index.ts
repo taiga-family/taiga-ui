@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSurface} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiSurface],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

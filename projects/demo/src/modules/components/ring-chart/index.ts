@@ -5,7 +5,6 @@ import {TuiRingChart} from '@taiga-ui/addon-charts';
 import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiRingChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

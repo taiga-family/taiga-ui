@@ -18,7 +18,6 @@ export type Buttons = ReadonlyArray<
 >;
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

@@ -5,7 +5,6 @@ import {TuiDialog} from '@taiga-ui/experimental';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDialog, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

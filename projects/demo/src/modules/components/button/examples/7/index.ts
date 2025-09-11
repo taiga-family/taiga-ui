@@ -5,7 +5,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiFade],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

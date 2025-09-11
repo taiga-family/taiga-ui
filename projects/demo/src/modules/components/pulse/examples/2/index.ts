@@ -7,7 +7,6 @@ import {tuiProvideExperimentalHint} from '@taiga-ui/experimental';
 import {TuiAvatar, TuiPulse} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgIf, TuiAvatar, TuiButton, TuiHint, TuiPulse, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

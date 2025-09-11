@@ -10,7 +10,6 @@ import {TuiAvatar, TuiCheckbox, TuiConnected} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         KeyValuePipe,

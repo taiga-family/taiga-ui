@@ -8,7 +8,6 @@ import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputTime, tuiInputTimeOptionsProvider, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, NgIf, TuiIcon, TuiInputTime, TuiTextfield, TuiTooltip],
     templateUrl: './index.html',
     encapsulation,

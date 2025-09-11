@@ -9,7 +9,6 @@ import {TuiAvatar, TuiNotificationMiddle} from '@taiga-ui/kit';
 import {filter, map, startWith, switchMap, take, tap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [NgIf, TuiAnimated, TuiAvatar, TuiButton, TuiLoader, TuiNotificationMiddle],
     templateUrl: './index.html',
     encapsulation,

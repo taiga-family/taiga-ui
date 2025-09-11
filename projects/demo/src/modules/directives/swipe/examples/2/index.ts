@@ -7,7 +7,6 @@ import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
 import {Subject} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiSidebar, TuiSwipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

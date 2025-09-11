@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFiles} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, FormsModule, NgForOf, TuiFiles],
     templateUrl: './index.html',
     encapsulation,

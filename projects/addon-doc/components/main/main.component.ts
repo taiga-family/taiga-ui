@@ -17,7 +17,6 @@ import {TuiDocHeader} from '../internal/header';
 import {TuiDocNavigation} from '../navigation/navigation.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-main',
     imports: [
         NgIf,

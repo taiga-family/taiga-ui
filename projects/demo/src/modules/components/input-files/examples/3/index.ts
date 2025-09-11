@@ -8,7 +8,6 @@ import {TuiIcon, TuiLink} from '@taiga-ui/core';
 import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, NgIf, TuiFiles, TuiIcon, TuiItem, TuiLink],
     templateUrl: './index.html',
     encapsulation,

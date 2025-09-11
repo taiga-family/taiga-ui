@@ -73,7 +73,6 @@ export interface TuiCard {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-input-card-group',
     imports: [
         FormsModule,

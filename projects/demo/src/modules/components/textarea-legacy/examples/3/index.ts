@@ -6,7 +6,6 @@ import {TuiLabel} from '@taiga-ui/core';
 import {TuiTextareaModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiLabel,

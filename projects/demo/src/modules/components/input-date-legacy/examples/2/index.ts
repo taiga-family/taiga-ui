@@ -7,7 +7,6 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiInputDateModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,

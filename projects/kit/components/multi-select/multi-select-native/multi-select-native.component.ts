@@ -20,7 +20,6 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
 import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.component';
 
 @Component({
-    standalone: true,
     selector: 'select[tuiMultiSelect]',
     imports: [NgForOf, NgIf, NgTemplateOutlet, TuiDataListWrapper, TuiTextfield],
     templateUrl: './multi-select-native.template.html',

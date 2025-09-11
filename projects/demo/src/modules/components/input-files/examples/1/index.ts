@@ -7,7 +7,6 @@ import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 import {finalize, map, type Observable, of, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, NgIf, ReactiveFormsModule, TuiFiles],
     templateUrl: './index.html',
     encapsulation,

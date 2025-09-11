@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiImgLazyLoading} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiImgLazyLoading],
     templateUrl: './index.html',
     encapsulation,

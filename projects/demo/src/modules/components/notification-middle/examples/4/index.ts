@@ -6,7 +6,6 @@ import {TuiNotificationMiddleService} from '@taiga-ui/kit';
 import {bufferTime, first, startWith, switchMap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

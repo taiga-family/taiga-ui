@@ -13,7 +13,6 @@ import {TuiFormatDatePipe} from '@taiga-ui/core/pipes/format-date';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-push',
     imports: [AsyncPipe, NgIf, TuiButton, TuiFormatDatePipe],
     templateUrl: './push.template.html',

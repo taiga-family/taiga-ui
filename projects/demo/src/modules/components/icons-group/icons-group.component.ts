@@ -26,7 +26,6 @@ import {debounceTime, distinctUntilChanged, filter, map, type Observable} from '
 import {IconsGroupTemplate} from './icons-group.directive';
 
 @Component({
-    standalone: true,
     selector: 'icons-group',
     imports: [
         AsyncPipe,

@@ -20,7 +20,6 @@ interface User {
 }
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgForOf,

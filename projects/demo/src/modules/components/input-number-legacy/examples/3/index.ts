@@ -6,7 +6,6 @@ import {TuiNumberFormat} from '@taiga-ui/core';
 import {TuiInputNumberModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputNumberModule, TuiNumberFormat],
     templateUrl: './index.html',
     encapsulation,

@@ -29,7 +29,6 @@ function asyncValidatorFn(isE2E: boolean): AsyncValidatorFn {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

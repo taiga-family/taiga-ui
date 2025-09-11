@@ -14,7 +14,6 @@ import {BehaviorSubject, map, startWith, switchMap, timer} from 'rxjs';
 import {TUI_COPY_OPTIONS} from './copy.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-copy',
     imports: [ClipboardModule, TuiButton, TuiHint, TuiIcon],
     templateUrl: './copy.template.html',

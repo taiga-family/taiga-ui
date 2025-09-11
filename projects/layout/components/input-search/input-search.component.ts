@@ -31,7 +31,6 @@ import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputSearch]',
     imports: [PolymorpheusOutlet],
     templateUrl: './input-search.component.html',

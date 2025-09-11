@@ -13,7 +13,6 @@ import {
 import {TuiRoot} from '@taiga-ui/core/components/root';
 
 @Component({
-    standalone: true,
     selector: '[tuiFullscreen]',
     imports: [TuiRoot],
     template: '<tui-root><ng-content /></tui-root>',

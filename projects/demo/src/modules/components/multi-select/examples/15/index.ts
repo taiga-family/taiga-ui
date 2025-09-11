@@ -11,7 +11,6 @@ interface Status {
 }
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,
@@ -24,8 +23,14 @@ interface Status {
     changeDetection,
     providers: [
         tuiItemsHandlersProvider({
-            identityMatcher: (controlValue: {name: string}, item: {name: string}) =>
-                controlValue.name === item.name,
+            identityMatcher: (
+                controlValue: {
+                    name: string;
+                },
+                item: {
+                    name: string;
+                },
+            ) => controlValue.name === item.name,
             stringify: (item: {name: string}): string => `${item.name}`,
         }),
     ],

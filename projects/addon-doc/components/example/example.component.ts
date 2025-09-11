@@ -38,7 +38,6 @@ import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
 import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-example',
     imports: [
         AsyncPipe,

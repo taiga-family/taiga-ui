@@ -4,7 +4,6 @@ import {shouldCall} from '@taiga-ui/event-plugins';
 import {TuiElasticContainerDirective} from './elastic-container.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-elastic-container',
     imports: [TuiElasticContainerDirective],
     templateUrl: './elastic-container.component.html',

@@ -6,7 +6,6 @@ import {TuiAutoColorPipe} from '@taiga-ui/core';
 import {TuiChip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiAutoColorPipe, TuiChip],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -8,7 +8,6 @@ import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         KeyValuePipe,

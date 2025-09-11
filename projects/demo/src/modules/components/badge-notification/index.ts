@@ -5,7 +5,6 @@ import {TuiLabel, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 import {TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiBadgeNotification, TuiDemo, TuiLabel],
     templateUrl: './index.html',
     changeDetection,

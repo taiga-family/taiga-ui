@@ -24,7 +24,6 @@ export function minLengthValidator(minLength: number): ValidatorFn {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

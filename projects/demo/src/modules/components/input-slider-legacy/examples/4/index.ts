@@ -6,7 +6,6 @@ import {TuiHint, TuiIcon} from '@taiga-ui/core';
 import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiHint,

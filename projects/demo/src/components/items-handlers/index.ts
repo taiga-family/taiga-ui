@@ -16,7 +16,6 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'tbody[tuiDocItemsHandlers]',
     imports: [NgIf, TuiDocAPIItem, TuiTitle],
     templateUrl: './index.html',

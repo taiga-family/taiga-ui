@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiAmountOptionsProvider, TuiAmountPipe} from '@taiga-ui/addon-commerce';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe],
     templateUrl: './index.html',
     encapsulation,

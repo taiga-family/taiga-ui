@@ -10,7 +10,6 @@ import {
 import {TuiNumberFormat} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiDecimalPipe, TuiNumberFormat],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

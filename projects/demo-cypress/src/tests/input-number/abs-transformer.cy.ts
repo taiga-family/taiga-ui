@@ -5,7 +5,6 @@ import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [I18nPluralPipe, ReactiveFormsModule, TuiInputNumber, TuiRoot, TuiTextfield],
     template: `
         <tui-root>

@@ -9,7 +9,6 @@ import {switchMap} from 'rxjs';
 import {DialogComponent} from './component';
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

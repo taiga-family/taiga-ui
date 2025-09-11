@@ -38,7 +38,6 @@ function tagValidator(tag: string): boolean {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         NgForOf,

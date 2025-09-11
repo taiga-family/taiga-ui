@@ -7,7 +7,6 @@ import {TuiDataList, TuiDialogService, TuiDropdown, TuiIcon} from '@taiga-ui/cor
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         TuiDataList,

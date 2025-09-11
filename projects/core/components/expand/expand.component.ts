@@ -38,7 +38,6 @@ export const TUI_EXPAND_LOADED = 'tui-expand-loaded';
  * @deprecated use {@link TuiExpand} from @taiga-ui/experimental
  */
 @Component({
-    standalone: true,
     selector: 'tui-expand',
     imports: [NgIf, NgTemplateOutlet, TuiLoader],
     templateUrl: './expand.template.html',

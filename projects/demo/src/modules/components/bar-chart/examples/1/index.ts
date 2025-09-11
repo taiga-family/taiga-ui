@@ -5,7 +5,6 @@ import {TuiAxes, TuiBarChart} from '@taiga-ui/addon-charts';
 import {tuiCeil} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiAxes, TuiBarChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

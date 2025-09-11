@@ -14,7 +14,6 @@ import {tuiIsString} from '@taiga-ui/cdk';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,

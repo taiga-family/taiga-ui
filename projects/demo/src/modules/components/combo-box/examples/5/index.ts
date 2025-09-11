@@ -11,7 +11,6 @@ import {debounceTime, filter, of, Subject, switchMap, tap} from 'rxjs';
 import {DatabaseServer} from './database';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

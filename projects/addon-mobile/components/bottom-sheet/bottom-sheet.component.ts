@@ -19,7 +19,6 @@ const OPTIONS = {
 } as const;
 
 @Component({
-    standalone: true,
     selector: 'tui-bottom-sheet',
     imports: [NgForOf],
     templateUrl: './bottom-sheet.template.html',

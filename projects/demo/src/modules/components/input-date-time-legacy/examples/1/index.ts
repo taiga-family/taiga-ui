@@ -7,7 +7,6 @@ import {TuiDay} from '@taiga-ui/cdk';
 import {TuiInputDateTimeModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [JsonPipe, ReactiveFormsModule, TuiInputDateTimeModule],
     templateUrl: './index.html',
     encapsulation,

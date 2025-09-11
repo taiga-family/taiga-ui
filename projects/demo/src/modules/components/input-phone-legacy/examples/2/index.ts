@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputPhoneModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [JsonPipe, ReactiveFormsModule, TuiInputPhoneModule],
     templateUrl: './index.html',
     encapsulation,

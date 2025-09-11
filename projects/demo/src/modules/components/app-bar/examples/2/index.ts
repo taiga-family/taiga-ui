@@ -6,7 +6,6 @@ import {TuiProgress} from '@taiga-ui/kit';
 import {TuiAppBar} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiAppBar, TuiButton, TuiProgress, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

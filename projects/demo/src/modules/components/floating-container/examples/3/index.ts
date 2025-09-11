@@ -21,7 +21,6 @@ import {
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgFor,

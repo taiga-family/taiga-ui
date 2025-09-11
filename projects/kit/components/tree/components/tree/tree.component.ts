@@ -22,7 +22,6 @@ import {TUI_TREE_NODE} from '../../misc/tree.tokens';
 import {TuiTreeItem} from '../tree-item/tree-item.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-tree',
     imports: [
         AsyncPipe,

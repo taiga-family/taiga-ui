@@ -34,7 +34,6 @@ import {map, takeWhile} from 'rxjs';
 const GAP = 8;
 
 @Component({
-    standalone: true,
     selector: 'tui-hint',
     imports: [PolymorpheusOutlet],
     template: `

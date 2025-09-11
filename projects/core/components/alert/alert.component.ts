@@ -15,7 +15,6 @@ import {type TuiAlertOptions} from './alert.interfaces';
 import {TUI_ALERT_POSITION} from './alert.tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-alert',
     imports: [NgIf, PolymorpheusOutlet, TuiButton, TuiNotification, TuiTitle],
     templateUrl: './alert.template.html',

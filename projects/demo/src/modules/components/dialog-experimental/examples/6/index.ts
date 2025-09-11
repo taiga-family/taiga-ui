@@ -8,7 +8,6 @@ import {TuiAvatar, TuiFloatingContainer, TuiProgress} from '@taiga-ui/kit';
 import {TuiAppBar, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         TuiAppBar,
         TuiAvatar,

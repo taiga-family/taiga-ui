@@ -4,7 +4,6 @@ import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import {TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'tbody[tuiDocControl]',
     imports: [NgIf, TuiDocAPIItem, TuiTitle],
     templateUrl: './index.html',

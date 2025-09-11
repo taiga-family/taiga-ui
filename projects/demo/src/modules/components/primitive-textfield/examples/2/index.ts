@@ -12,7 +12,6 @@ import {
 } from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     selector: 'tui-primitive-textfield-example-2',
     imports: [TuiHint, TuiPrimitiveTextfieldModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',

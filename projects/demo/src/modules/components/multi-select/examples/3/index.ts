@@ -18,7 +18,6 @@ interface Hero {
 }
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         ReactiveFormsModule,

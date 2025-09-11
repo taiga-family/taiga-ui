@@ -12,7 +12,6 @@ const useValue: TuiHandler<TuiDay, string> = (day) => {
 };
 
 @Component({
-    standalone: true,
     imports: [TuiCalendar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

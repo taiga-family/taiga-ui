@@ -17,7 +17,6 @@ import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
 
 @Component({
-    standalone: true,
     selector: 'th[tuiTh]',
     imports: [AsyncPipe, NgIf, NgTemplateOutlet, TuiIcon, TuiTableResized],
     templateUrl: './th.template.html',

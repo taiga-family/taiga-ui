@@ -9,7 +9,6 @@ import {TuiInputDateModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputDateModule],
     templateUrl: './index.html',
     encapsulation,

@@ -15,7 +15,6 @@ import {
 import {TuiInputDateDirective} from './input-date.directive';
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputDate][type="date"]',
     imports: [NgIf, TuiTextfieldContent],
     templateUrl: './input-date.template.html',

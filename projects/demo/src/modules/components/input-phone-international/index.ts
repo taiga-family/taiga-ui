@@ -13,7 +13,6 @@ import {tuiInputPhoneInternationalOptionsProvider, TuiTooltip} from '@taiga-ui/k
 import {getCountries} from 'libphonenumber-js';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,

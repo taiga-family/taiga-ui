@@ -6,7 +6,6 @@ import {type TuiMonthRange} from '@taiga-ui/cdk';
 import {TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputMonthRangeModule],
     templateUrl: './index.html',
     encapsulation,

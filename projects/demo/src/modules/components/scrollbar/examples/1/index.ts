@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiScrollbar} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiScrollbar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

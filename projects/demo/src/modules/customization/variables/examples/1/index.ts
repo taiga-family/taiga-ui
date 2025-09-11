@@ -8,7 +8,6 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     selector: 'tui-variables-example-1',
     imports: [
         FormsModule,

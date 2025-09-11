@@ -21,7 +21,6 @@ import {Highlight} from 'ngx-highlightjs';
 import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-code',
     imports: [ClipboardModule, Highlight, NgForOf, NgIf, TuiButton],
     templateUrl: './index.html',

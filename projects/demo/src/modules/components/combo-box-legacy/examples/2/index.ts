@@ -11,7 +11,6 @@ import {databaseMockData} from './database-mock-data';
 import {RequestService} from './request.service';
 
 @Component({
-    standalone: true,
     selector: 'tui-combo-box-example-2',
     imports: [
         AsyncPipe,

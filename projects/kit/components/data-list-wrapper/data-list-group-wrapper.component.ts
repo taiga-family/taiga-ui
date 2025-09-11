@@ -8,7 +8,6 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-data-list-wrapper[labels]',
     imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiDataList, TuiElement, TuiLoader],
     templateUrl: './data-list-group-wrapper.template.html',

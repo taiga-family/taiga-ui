@@ -73,7 +73,6 @@ export const routes: Routes = [
 ];
 
 @Component({
-    standalone: true,
     imports: [NgForOf, RouterLink, RouterLinkActive, RouterOutlet, TuiTabs],
     templateUrl: './index.html',
     encapsulation,

@@ -8,7 +8,6 @@ import {TuiButton, TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiAccordion, TuiActiveZone, TuiButton, TuiLink, TuiSidebar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

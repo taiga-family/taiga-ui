@@ -5,7 +5,6 @@ import {TUI_DOC_MAP_PAGES, TUI_DOC_SEE_ALSO_TEXT} from '@taiga-ui/addon-doc/toke
 import {TuiLink} from '@taiga-ui/core/components/link';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-see-also',
     imports: [NgForOf, NgIf, RouterLink, TuiLink],
     templateUrl: './index.html',

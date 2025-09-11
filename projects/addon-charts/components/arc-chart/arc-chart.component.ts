@@ -38,7 +38,6 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-arc-chart',
     imports: [TuiRepeatTimes],
     templateUrl: './arc-chart.template.html',

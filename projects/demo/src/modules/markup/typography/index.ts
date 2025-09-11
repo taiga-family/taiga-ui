@@ -6,7 +6,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [ClipboardModule, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

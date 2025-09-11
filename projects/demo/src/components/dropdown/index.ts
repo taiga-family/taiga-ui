@@ -16,7 +16,6 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'tbody[tuiDocDropdown]',
     imports: [NgIf, RouterLink, TuiDocAPIItem, TuiDropdown, TuiLink, TuiTitle],
     templateUrl: './index.html',

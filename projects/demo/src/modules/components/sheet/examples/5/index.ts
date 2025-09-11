@@ -8,7 +8,6 @@ import {TuiSheetModule, type TuiSheetOptions} from '@taiga-ui/legacy';
 const FRAMES = 166;
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiButton, TuiSheetModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

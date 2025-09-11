@@ -8,7 +8,6 @@ import {TUI_MONTH_FORMATTER, TuiInputMonth} from '@taiga-ui/kit';
 import {of} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputMonth, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
@@ -21,7 +20,6 @@ import {of} from 'rxjs';
                     year: '2-digit',
                     month: 'short',
                 });
-
                 return of(
                     (x: TuiMonth | null) =>
                         (x && formatter.format(x.toLocalNativeDate())) ?? '',

@@ -17,7 +17,6 @@ interface Character {
 }
 
 @Component({
-    standalone: true,
     imports: [
         NgIf,
         ReactiveFormsModule,

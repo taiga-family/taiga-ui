@@ -12,7 +12,6 @@ export interface TuiNotificationMiddleOptions {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-notification-middle',
     imports: [PolymorpheusOutlet, TuiLoader],
     template: `

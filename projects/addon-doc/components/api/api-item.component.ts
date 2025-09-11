@@ -28,7 +28,6 @@ import {TuiDocAPINumberItem} from './api-item-number.directive';
 const SERIALIZED_SUFFIX = '$';
 
 @Component({
-    standalone: true,
     selector: 'tr[tuiDocAPIItem]',
     imports: [
         FormsModule,

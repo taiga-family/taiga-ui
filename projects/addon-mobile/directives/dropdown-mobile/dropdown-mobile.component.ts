@@ -23,7 +23,6 @@ import {TuiDropdownMobile} from './dropdown-mobile.directive';
 const GAP = 16;
 
 @Component({
-    standalone: true,
     selector: 'tui-dropdown-mobile',
     imports: [NgIf, PolymorpheusOutlet, TuiSwipe, WaIntersectionObserver],
     templateUrl: './dropdown-mobile.template.html',

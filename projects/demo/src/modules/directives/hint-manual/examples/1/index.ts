@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiButton, TuiHint, TuiHintDirective, TuiLink} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [RouterLink, TuiButton, TuiHint, TuiHintDirective, TuiLink],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

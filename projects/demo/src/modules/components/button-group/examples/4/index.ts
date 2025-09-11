@@ -13,7 +13,6 @@ import {
 import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         NgIf,

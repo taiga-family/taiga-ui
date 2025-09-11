@@ -7,7 +7,6 @@ import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiChip, TuiComboBox, TuiFilterByInputPipe} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         KeyValuePipe,

@@ -8,7 +8,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, NgIf, TuiAutoFocus, TuiButton, TuiInputModule],
     templateUrl: './index.html',
     encapsulation,

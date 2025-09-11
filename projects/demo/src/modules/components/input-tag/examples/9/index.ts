@@ -9,7 +9,6 @@ import {type TuiBooleanHandler, TuiDay} from '@taiga-ui/cdk';
 import {TuiInputTagModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         MaskitoDirective,
         ReactiveFormsModule,

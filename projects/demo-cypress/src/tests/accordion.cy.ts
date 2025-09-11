@@ -5,7 +5,6 @@ import {TuiButton, TuiRoot} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/experimental';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, KeyValuePipe, NgForOf, TuiAccordion, TuiButton, TuiRoot],
     template: `
         <tui-root>

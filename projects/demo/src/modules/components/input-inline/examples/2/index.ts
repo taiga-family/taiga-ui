@@ -8,7 +8,6 @@ import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, NgIf, TuiAutoFocus, TuiButton, TuiInputInline],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

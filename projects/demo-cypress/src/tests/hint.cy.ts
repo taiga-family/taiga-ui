@@ -9,7 +9,6 @@ describe('TuiHint', () => {
     let wrapper: MountResponse<Test>;
 
     @Component({
-        standalone: true,
         selector: 'my-host',
         imports: [NgIf],
         template: `
@@ -25,7 +24,6 @@ describe('TuiHint', () => {
     }
 
     @Component({
-        standalone: true,
         imports: [Host, TuiHintDirective, TuiRoot],
         template: `
             <tui-root>

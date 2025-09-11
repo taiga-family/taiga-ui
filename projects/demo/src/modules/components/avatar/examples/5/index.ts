@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAvatar, tuiAvatarOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar],
     templateUrl: './index.html',
     encapsulation,

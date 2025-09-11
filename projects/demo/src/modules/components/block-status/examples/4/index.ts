@@ -7,7 +7,6 @@ import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         NgFor,
         TuiAutoColorPipe,

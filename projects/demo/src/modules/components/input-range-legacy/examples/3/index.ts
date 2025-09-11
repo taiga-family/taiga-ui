@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         I18nPluralPipe,
         NgSwitch,

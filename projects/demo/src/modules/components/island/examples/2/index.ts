@@ -7,7 +7,6 @@ import {TuiSwitch} from '@taiga-ui/kit';
 import {TuiIslandDirective} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiButton, TuiIslandDirective, TuiLink, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

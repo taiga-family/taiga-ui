@@ -7,7 +7,6 @@ import {type TuiAlertContext, TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, PolymorpheusTemplate, TuiAmountPipe, TuiButton],
     templateUrl: './index.html',
     encapsulation,

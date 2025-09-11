@@ -24,7 +24,6 @@ import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-breadcrumbs',
     imports: [
         AsyncPipe,

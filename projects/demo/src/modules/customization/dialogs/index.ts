@@ -6,7 +6,6 @@ import {TuiDialogsExample1} from './examples/1';
 import {TuiDialogsExample2} from './examples/2';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiDialogsExample1, TuiDialogsExample2],
     templateUrl: './index.html',
     changeDetection,

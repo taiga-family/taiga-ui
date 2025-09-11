@@ -8,7 +8,6 @@ import {type TuiSizeS} from '@taiga-ui/core';
 import {TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, NgFor, ReactiveFormsModule, TuiPlatform, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

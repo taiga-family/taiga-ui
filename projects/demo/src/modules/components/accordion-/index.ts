@@ -9,7 +9,6 @@ import {TuiAccordion} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion, TuiDemo, TuiDocAPI, TuiDocAPIItem],
     templateUrl: './index.html',
     changeDetection,

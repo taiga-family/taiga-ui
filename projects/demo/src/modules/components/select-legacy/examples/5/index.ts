@@ -23,7 +23,6 @@ const ITEMS: readonly Python[] = [
 ];
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

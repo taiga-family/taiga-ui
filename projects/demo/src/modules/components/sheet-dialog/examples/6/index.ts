@@ -10,7 +10,6 @@ import {TuiAvatar, TuiAvatarLabeled, TuiFade, TuiFloatingContainer} from '@taiga
 import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

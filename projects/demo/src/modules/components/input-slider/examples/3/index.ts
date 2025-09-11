@@ -6,7 +6,6 @@ import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiButton, TuiInputSlider, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

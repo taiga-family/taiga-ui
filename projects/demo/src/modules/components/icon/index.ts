@@ -10,7 +10,6 @@ import {
 } from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion, TuiDemo, TuiIcon],
     templateUrl: './index.html',
     changeDetection,

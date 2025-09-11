@@ -10,7 +10,6 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TUI_DIALOGS} from './dialog.tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-dialogs',
     imports: [
         NgForOf,

@@ -7,7 +7,6 @@ import {TuiAnimated} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, NgIf, TuiAnimated, TuiAppearance, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

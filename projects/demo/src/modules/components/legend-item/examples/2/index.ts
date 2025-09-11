@@ -9,7 +9,6 @@ import {TuiAlertService, tuiFormatNumber, TuiIcon, TuiNotification} from '@taiga
 import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         NgForOf,

@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiMapperPipe],
     templateUrl: './index.html',
     encapsulation,

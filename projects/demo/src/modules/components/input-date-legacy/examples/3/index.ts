@@ -6,7 +6,6 @@ import {TuiDay} from '@taiga-ui/cdk';
 import {TuiInputDateModule, TuiNamedDay} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputDateModule],
     templateUrl: './index.html',
     encapsulation,

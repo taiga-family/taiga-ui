@@ -16,7 +16,6 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TuiHintService} from './hint.service';
 
 @Component({
-    standalone: true,
     selector: 'tui-hints',
     imports: [NgForOf, PolymorpheusOutlet, TuiActiveZone, TuiAnimatedParent],
     templateUrl: './hints.template.html',

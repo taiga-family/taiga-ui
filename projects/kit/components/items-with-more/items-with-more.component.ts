@@ -24,7 +24,6 @@ import {TuiItemsWithMoreService} from './items-with-more.service';
 import {TuiMore} from './more.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-items-with-more',
     imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet],
     templateUrl: './items-with-more.template.html',

@@ -10,7 +10,6 @@ import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,

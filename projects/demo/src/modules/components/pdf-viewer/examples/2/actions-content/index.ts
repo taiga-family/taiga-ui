@@ -8,7 +8,6 @@ import {injectContext} from '@taiga-ui/polymorpheus';
 import {type Buttons} from '..';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiButton],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

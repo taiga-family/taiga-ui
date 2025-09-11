@@ -26,7 +26,6 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 const ERROR: ValidatorFn = () => ({error: 'Invalid'});
 
 @Component({
-    standalone: true,
     selector: 'tui-radio-list',
     imports: [FormsModule, NgForOf, PolymorpheusOutlet, TuiRadio, TuiValidator],
     templateUrl: './radio-list.template.html',

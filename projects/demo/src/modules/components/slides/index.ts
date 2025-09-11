@@ -16,7 +16,6 @@ import {Notifications} from './examples/3/notifications';
 import {Settings} from './examples/3/settings';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

@@ -17,7 +17,6 @@ import {TuiBadge, TuiBlock, TuiBreadcrumbs, TuiFade, TuiTabs} from '@taiga-ui/ki
 import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgIf,

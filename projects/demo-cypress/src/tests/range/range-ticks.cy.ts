@@ -5,7 +5,6 @@ import {TuiRange} from '@taiga-ui/kit';
 
 describe('Range | With segments + tick labels', () => {
     @Component({
-        standalone: true,
         imports: [FormsModule, TuiRange, TuiRoot],
         template: `
             <tui-root>

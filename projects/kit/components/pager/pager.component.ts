@@ -24,7 +24,6 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
 import {delay, map} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-pager',
     imports: [FormsModule, NgTemplateOutlet, TuiRepeatTimes],
     templateUrl: './pager.component.html',

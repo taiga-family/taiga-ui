@@ -6,7 +6,6 @@ import {TuiLoader} from '@taiga-ui/core';
 import {map, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, NgIf, TuiLoader],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

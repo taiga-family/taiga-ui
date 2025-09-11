@@ -16,7 +16,6 @@ interface Operation {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         KeyValuePipe,

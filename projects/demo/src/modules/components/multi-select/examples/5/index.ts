@@ -7,7 +7,6 @@ import {TuiDataList} from '@taiga-ui/core';
 import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgForOf,

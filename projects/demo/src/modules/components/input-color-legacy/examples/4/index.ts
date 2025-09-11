@@ -9,7 +9,6 @@ import {
 } from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         MaskitoDirective,

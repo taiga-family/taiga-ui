@@ -61,7 +61,6 @@ const DATA: readonly User[] = [
 ];
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgIf,

@@ -8,7 +8,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgForOf,

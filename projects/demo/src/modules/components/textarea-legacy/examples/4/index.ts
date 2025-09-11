@@ -19,7 +19,6 @@ export function maxLengthMessageFactory(context: {requiredLength: string}): stri
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

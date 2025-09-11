@@ -6,7 +6,6 @@ import {TuiPagination} from '@taiga-ui/kit';
 import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiInputSliderModule,

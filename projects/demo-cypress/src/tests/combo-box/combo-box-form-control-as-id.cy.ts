@@ -22,7 +22,6 @@ interface Item {
 }
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         ReactiveFormsModule,

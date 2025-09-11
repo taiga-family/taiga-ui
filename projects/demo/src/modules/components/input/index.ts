@@ -16,7 +16,6 @@ import {InheritedDocumentation} from '../abstract/inherited-documentation';
 const LONG_TEXT_TEMPLATE = '<span>LongTextContent</span>';
 
 @Component({
-    standalone: true,
     imports: [
         InheritedDocumentation,
         ReactiveFormsModule,

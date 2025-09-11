@@ -11,7 +11,6 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'tbody[tuiDocTextfield]',
     imports: [NgIf, TuiDocAPIItem, TuiDocAPINumberItem, TuiTitle],
     templateUrl: './index.html',

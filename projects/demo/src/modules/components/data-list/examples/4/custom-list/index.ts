@@ -23,7 +23,6 @@ interface Items<T> {
 }
 
 @Component({
-    standalone: true,
     selector: 'custom-list',
     imports: [
         FormsModule,

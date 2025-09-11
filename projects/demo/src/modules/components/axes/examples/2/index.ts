@@ -15,7 +15,6 @@ import {TuiHint} from '@taiga-ui/core';
 const BENJI = 100;
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, NgForOf, TuiAmountPipe, TuiAxes, TuiBarChart, TuiHint],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

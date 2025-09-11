@@ -7,7 +7,6 @@ import {TuiBadgeNotification, TuiCheckbox, TuiTooltip} from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiAppearance,

@@ -5,7 +5,6 @@ import {TuiDataList, TuiRoot} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, NgIf, ReactiveFormsModule, TuiDataList, TuiInputModule, TuiRoot],
     template: `
         <tui-root>

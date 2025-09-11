@@ -7,7 +7,6 @@ import {tuiClamp} from '@taiga-ui/cdk';
 import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [NgIf, TuiButton, TuiElasticSticky, TuiScrollbar],
     templateUrl: './index.html',
     styleUrls: ['../1/index.less'],

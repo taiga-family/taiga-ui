@@ -31,7 +31,6 @@ import {type TuiFileLike, type TuiFileState} from '../files.types';
 import {TUI_FILE_OPTIONS} from './file.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-file,a[tuiFile],button[tuiFile]',
     imports: [
         AsyncPipe,

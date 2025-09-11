@@ -20,7 +20,6 @@ function randomString(len: number): string {
 }
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         TuiChevron,

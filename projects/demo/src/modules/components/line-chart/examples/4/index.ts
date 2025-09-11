@@ -6,7 +6,6 @@ import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TuiHint, type TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiAxes, TuiHint, TuiLineChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

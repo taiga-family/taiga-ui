@@ -23,6 +23,7 @@ import {TuiInputTimeDirective} from './input-time.directive';
     host: {
         '[attr.list]': 'null',
     },
+    standalone: false,
 })
 export abstract class TuiNativeTimePicker {
     protected readonly list = tuiInjectElement().getAttribute('list');
@@ -52,7 +53,6 @@ export abstract class TuiNativeTimePicker {
 }
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputTime][type="time"]',
     imports: [NgIf, TuiTextfieldContent],
     templateUrl: './input-time.template.html',

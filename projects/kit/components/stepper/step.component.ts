@@ -10,7 +10,6 @@ import {EMPTY, filter} from 'rxjs';
 import {TuiStepperComponent} from './stepper.component';
 
 @Component({
-    standalone: true,
     selector:
         'button[tuiStep], a[tuiStep]:not([routerLink]), a[tuiStep][routerLink][routerLinkActive]',
     imports: [NgIf, TuiIcon],

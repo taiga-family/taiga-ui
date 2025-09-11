@@ -12,7 +12,6 @@ import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         NgForOf,

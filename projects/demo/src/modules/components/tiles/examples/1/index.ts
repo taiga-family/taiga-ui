@@ -6,7 +6,6 @@ import {TuiIcon} from '@taiga-ui/core';
 import {TuiTiles} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, NgIf, TuiIcon, TuiTiles],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

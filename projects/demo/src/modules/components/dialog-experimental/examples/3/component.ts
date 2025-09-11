@@ -7,7 +7,6 @@ import {TuiForm} from '@taiga-ui/layout';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiAutoFocus, TuiButton, TuiForm, TuiTextfield],
     template: `
         <form tuiForm>

@@ -6,7 +6,6 @@ import {TuiPreview, TuiPreviewDialogDirective} from '@taiga-ui/kit';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [PolymorpheusOutlet, TuiButton, TuiPreview, TuiPreviewDialogDirective],
     templateUrl: './index.html',
     encapsulation,

@@ -12,7 +12,6 @@ import {
 } from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         TuiAppearance,
         TuiButton,
