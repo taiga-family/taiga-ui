@@ -1,0 +1,31 @@
+[tuiToast] {
+    min-block-size: 3rem;
+    border-radius: 1.5rem;
+    padding: 0.5rem 1rem;
+    font: var(--tui-font-text-m);
+    line-height: 100%;
+
+    &::after,
+    [tuiIconButton]::after,
+    [tuiIconButton]::before,
+    [tuiIconButton]:last-child {
+        font-size: 1rem;
+        inline-size: 1rem;
+    }
+
+    [tuiButton]:last-child {
+        margin-inline-end: -0.375rem;
+    }
+
+    tui-avatar:first-child {
+        margin: 0.25rem 0 0.25rem -0.25rem;
+    }
+
+    tui-avatar:first-child + * + [tuiButton]:last-child {
+        margin-inline-end: 0;
+    }
+
+    &:has(tui-avatar) {
+        gap: 0.75rem;
+    }
+}

@@ -1,0 +1,26 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    inline-size: 32rem;
+    background: var(--tui-background-base-alt);
+    box-shadow: 0 0 0 100rem var(--tui-background-base-alt);
+}
+
+section {
+    display: flex;
+    gap: 2rem;
+}
+
+[tuiToast]::before {
+    color: var(--tui-background-accent-1);
+}
+
+tui-avatar {
+    border: 1px solid var(--tui-border-normal);
+}
+
+[iconStart='@tui.star']::before {
+    inline-size: 2rem;
+    block-size: 2rem;
+}
