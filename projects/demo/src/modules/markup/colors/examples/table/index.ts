@@ -1,5 +1,4 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-
 import {Component, inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {WA_WINDOW} from '@ng-web-apis/common';

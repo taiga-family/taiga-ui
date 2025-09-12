@@ -45,6 +45,7 @@ export default process.env.HTML_ESLINT
               rules: {
                   // TODO enable after fixing all issues
                   '@angular-eslint/template/prefer-control-flow': 'off',
+                  '@angular-eslint/template/prefer-contextual-for-variables': 'off',
               },
           },
       ];

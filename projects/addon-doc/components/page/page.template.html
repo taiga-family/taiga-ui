@@ -38,14 +38,14 @@
             class="t-tabs"
             [(activeItemIndex)]="activeItemIndex"
         >
-            @for (tab of tabConnectors; track tab; let first = $first; let index = $index) {
-                @if (tab.pageTab || defaultTabs[index]; as tabName) {
+            @for (tab of tabConnectors; track tab) {
+                @if (tab.pageTab || defaultTabs[$index]; as tabName) {
                     <a
                         *tuiItem
                         routerLinkActive
                         tuiTab
-                        [routerLink]="first ? './' : (tabName | tuiReplace: from : to)"
-                        [routerLinkActiveOptions]="{exact: first}"
+                        [routerLink]="$first ? './' : (tabName | tuiReplace: from : to)"
+                        [routerLinkActiveOptions]="{exact: $first}"
                     >
                         {{ tabName }}
                     </a>

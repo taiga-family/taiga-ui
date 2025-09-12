@@ -7,14 +7,14 @@
     </span>
 </h3>
 <tui-breadcrumbs>
-    @for (item of items; track item; let last = $last) {
+    @for (item of items; track item) {
         <button
             *tuiItem
             tuiHintOverflow
             tuiLink
             type="button"
             class="link"
-            [class.link_last]="last"
+            [class.link_last]="$last"
         >
             {{ item }}
         </button>
@@ -39,7 +39,7 @@
     </span>
 </h3>
 <tui-breadcrumbs>
-    @for (item of items; track item; let last = $last) {
+    @for (item of items; track item) {
         <button
             *tuiItem
             tuiFade
@@ -47,7 +47,7 @@
             tuiLink
             type="button"
             class="link"
-            [class.link_last]="last"
+            [class.link_last]="$last"
         >
             {{ item }}
         </button>
@@ -70,12 +70,12 @@
     </span>
 </h3>
 <tui-breadcrumbs tuiFade>
-    @for (item of items; track item; let last = $last) {
+    @for (item of items; track item) {
         <button
             *tuiItem
             tuiLink
             type="button"
-            [class.link_last]="last"
+            [class.link_last]="$last"
         >
             {{ item }}
         </button>
@@ -90,12 +90,12 @@
     </span>
 </h3>
 <tui-breadcrumbs [itemsLimit]="10">
-    @for (item of items; track item; let last = $last) {
+    @for (item of items; track item) {
         <button
             *tuiItem
             tuiLink
             type="button"
-            [class.link_last]="last"
+            [class.link_last]="$last"
         >
             {{ item }}
         </button>

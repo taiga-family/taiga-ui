@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -12,7 +13,6 @@ import {
     TuiInputChip,
     TuiMultiSelect,
 } from '@taiga-ui/kit';
-import {NgIf} from '@angular/common';
 
 interface User {
     readonly name: string;

@@ -8,18 +8,16 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
     selector: '[tuiDynamicHeader]',
     imports: [PolymorpheusOutlet, TuiAnimated],
     template: `
-        @if (!container.hiddenHeaders().length) {
+        @for (header of container.hiddenHeaders(); track header; let last = $last) {
+            @if (last) {
+                <div tuiAnimated>
+                    <div *polymorpheusOutlet="header as text">{{ text }}</div>
+                </div>
+            }
+        } @empty {
             <div tuiAnimated>
                 <ng-content />
             </div>
-        } @else {
-            @for (header of container.hiddenHeaders(); track header; let last = $last) {
-                @if (last) {
-                    <div tuiAnimated>
-                        <div *polymorpheusOutlet="header as text">{{ text }}</div>
-                    </div>
-                }
-            }
         }
     `,
     styleUrls: ['./dynamic-header.style.less'],
