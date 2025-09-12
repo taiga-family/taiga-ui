@@ -1,0 +1,30 @@
+name: ⚙️ NPM Security Scan
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.153.0
+      - uses: taiga-family/ci/actions/setup/node@v1.153.0
+      - id: audit
+        run: |
+          set +e
+          npm audit --audit-level=high > audit.txt 2>&1
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+          set -e
+
+          echo "audit_log=$(cat audit.txt | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')" >> $GITHUB_OUTPUT
+
+      - uses: marocchino/sticky-pull-request-comment@v2
+        if: steps.audit.outputs.exit_code != '0'
+        with:
+          header: ⚠️ NPM Audit Log
+          message: ${{ steps.audit.outputs.audit_log }}
+
+      - name: Fail if audit failed
+        if: steps.audit.outputs.exit_code != '0'
+        run: exit 1
