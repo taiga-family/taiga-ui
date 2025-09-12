@@ -21,7 +21,6 @@
             <tui-thumbnail-card
                 [iconEnd]="controlIcons.iconEnd"
                 [iconStart]="controlIcons.iconStart"
-                [monoHandler]="monoHandler"
                 [paymentSystem]="paymentSystem"
                 [size]="size"
                 [style.background]="background"
@@ -34,15 +33,6 @@
                 #controlIcons
                 tuiDocIcons
             ></tbody>
-            <tr
-                name="[monoHandler]"
-                tuiDocAPIItem
-                type="TuiBooleanHandler<TuiPaymentSystem>"
-                [items]="monoHandlerVariants"
-                [(value)]="monoHandler"
-            >
-                Whether to use colored icon for particular payment system
-            </tr>
             <tr
                 name="[paymentSystem]"
                 tuiDocAPIItem
