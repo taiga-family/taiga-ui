@@ -1,34 +1,42 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiPdfViewerDirective} from '@taiga-ui/kit';
+import {TuiButton, TuiLoader, TuiTitle} from '@taiga-ui/core';
+import {TuiDialog} from '@taiga-ui/experimental';
+import {TuiBlockStatus, TuiPdfViewer} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiButton, TuiPdfViewerDirective],
+    imports: [TuiBlockStatus, TuiButton, TuiDialog, TuiLoader, TuiPdfViewer, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly sanitizer = inject(DomSanitizer);
-    private readonly pdf = 'assets/media/taiga.pdf';
-
+    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly pdf = 'assets/media/taiga.pdf';
     protected open = false;
 
-    /**
-     * @description:
-     * Embedded PDFs in mobile doesn't work,
-     * so you can use third-party services
-     * or your own service to render PDF in mobile iframe
-     */
-    protected readonly src = this.sanitizer.bypassSecurityTrustResourceUrl(
-        this.isMobile
-            ? `https://drive.google.com/viewerng/viewer?embedded=true&url=https://taiga-ui.dev/${this.pdf}`
-            : this.pdf,
+    protected readonly url = this.sanitizer.bypassSecurityTrustResourceUrl(
+        'https://app.embedpdf.com/',
     );
+
+    protected readonly loading = signal(true);
+    protected readonly error = signal(false);
+
+    protected openPdf(): void {
+        this.open = true;
+        this.load();
+    }
+
+    protected load(): void {
+        this.loading.set(true);
+
+        setTimeout(() => {
+            this.loading.set(false);
+            this.error.set(Math.random() <= 0.5);
+        }, 1000);
+    }
 }
