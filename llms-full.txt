@@ -700,13 +700,13 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-avatar>Batman</tui-avatar>
+<div tuiAvatar>Batman</div>
 ```
 
 ### Example
 
 ```html
-<tui-avatar [round]="round" [size]="size" [src]="src" />
+<div [round]="round" [size]="size" [tuiAvatar]="src" ></div>
 ```
 
 ### API
@@ -1100,7 +1100,7 @@ export class Example {}
 ```html
 <tui-badged-content>
   <tui-badge-notification tuiSlot="top">1</tui-badge-notification>
-  <tui-avatar src="@tui.user"></tui-avatar>
+  <div tuiAvatar="@tui.user"></div>
   <tui-badge-notification tuiSlot="bottom">1</tui-badge-notification>
 </tui-badged-content>
 ```
@@ -1110,7 +1110,7 @@ export class Example {}
 ```html
 <tui-badged-content [style.--tui-radius]="radius">
 <tui-badge-notification tuiSlot="top">1</tui-badge-notification>
-<tui-avatar size="l" [round]="radius === '50%'" [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async" />
+<div size="l" [round]="radius === '50%'" [tuiAvatar]=" 'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async " ></div>
 </tui-badged-content>
 ```
 
@@ -1129,6 +1129,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiFallbackSrcPipe} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -1138,6 +1139,7 @@ import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
         TuiBadgeNotification,
         TuiDemo,
         TuiFallbackSrcPipe,
+        TuiHeader,
     ],
     templateUrl: './index.html',
     changeDetection,
@@ -1567,7 +1569,7 @@ export class Example {}
 
 ```html
 <div tuiBlockDetails>
-  <tui-avatar></tui-avatar>
+  <div [tuiAvatar]="avatar"></div>
   <h2 tuiTitle>
     Title
     <div tuiSubtitle>Subtitle</div>
@@ -2641,11 +2643,7 @@ export class Example {}
 
 ```html
 <div tuiCardMedium>
-  <tui-avatar
-    class="star"
-    src="@tui.star"
-  ></tui-avatar>
-
+  <div tuiAvatar="@tui.star"></div>
   <h2 tuiTitle>
     Title
     <span tuiSubtitle>Subtitle</span>
@@ -2825,7 +2823,7 @@ export class Example {}
 
 ```html
 <div tuiCell>
-  <tui-avatar src="..."></tui-avatar>
+  <div tuiAvatar="..."></div>
   <div tuiTitle>
     Title
     <div tuiSubtitle>Subtitle</div>
@@ -2837,7 +2835,7 @@ export class Example {}
 ### Example
 
 ```html
-<div [tuiCell]="size" [tuiCellHeight]="height" > @if (height !== 'compact') { <tui-avatar appearance="primary" src="@tui.star" /> } <div tuiTitle> Title @if (height !== 'compact') { <div tuiSubtitle>Description</div> } </div>
+<div [tuiCell]="size" [tuiCellHeight]="height" > @if (height !== 'compact') { <div appearance="primary" tuiAvatar="@tui.star" ></div> } <div tuiTitle> Title @if (height !== 'compact') { <div tuiSubtitle>Description</div> } </div>
 <div tuiTitle> Secondary title @if (height !== 'compact') { <div tuiSubtitle>Another description</div> } </div>
 </div>
 ```
@@ -4450,7 +4448,7 @@ export class Example {}
 <input tuiSwitch type="checkbox" [(ngModel)]="secondAction" /> Second action visibility </label>
 </p>
 <div class="content"> @for (i of 30 | tuiRepeatTimes; track i) { <div tuiCell>
-<tui-avatar appearance="primary" src="@tui.star" />
+<div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
 </div> } @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="color" >
@@ -10445,7 +10443,7 @@ A mobile draggable sheet dialog
 </ng-container>
 <ng-template #labelTemplate>
 <div class="label">
-<tui-avatar size="m">KG</tui-avatar>
+<div size="m" tuiAvatar > KG </div>
 <label tuiTitle>
 <span tuiSubtitle>Terry Jones</span>
 <b>Karl Gambolputty</b>
@@ -14745,16 +14743,16 @@ export class Example {
 <p tuiSubtitle>Where's the money, Lebowski?</p>
 </hgroup>
 <aside tuiAccessories>
-<tui-avatar appearance="primary" src="@tui.star" />
+<div appearance="primary" tuiAvatar="@tui.star" ></div>
 </aside>
 </header>
 <tui-avatar-stack [tuiShimmer]="shimmer">
-<tui-avatar src="https://avatars.githubusercontent.com/u/87331898" />
-<tui-avatar src="https://avatars.githubusercontent.com/u/12021443" />
-<tui-avatar src="https://avatars.githubusercontent.com/u/35179038" />
-<tui-avatar src="https://avatars.githubusercontent.com/u/46284632" />
-<tui-avatar src="https://avatars.githubusercontent.com/u/10106368" />
-<tui-avatar src="https://avatars.githubusercontent.com/u/11832552" />
+<div tuiAvatar="https://avatars.githubusercontent.com/u/87331898"></div>
+<div tuiAvatar="https://avatars.githubusercontent.com/u/12021443"></div>
+<div tuiAvatar="https://avatars.githubusercontent.com/u/35179038"></div>
+<div tuiAvatar="https://avatars.githubusercontent.com/u/46284632"></div>
+<div tuiAvatar="https://avatars.githubusercontent.com/u/10106368"></div>
+<div tuiAvatar="https://avatars.githubusercontent.com/u/11832552"></div>
 </tui-avatar-stack>
 <footer>
 <button appearance="secondary" size="m" tuiButton type="button" > It's down there </button>
