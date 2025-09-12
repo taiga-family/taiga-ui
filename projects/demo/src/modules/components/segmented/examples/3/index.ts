@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgFor, TuiSegmented],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

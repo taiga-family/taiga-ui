@@ -32,7 +32,6 @@ import {skip} from 'rxjs';
 import {TuiAsideComponent} from './aside.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-aside-group',
     imports: [PolymorpheusOutlet, TuiDataList, TuiExpand],
     templateUrl: './aside-group.template.html',

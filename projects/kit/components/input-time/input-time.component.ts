@@ -20,6 +20,7 @@ import {
 import {TuiInputTimeDirective} from './input-time.directive';
 
 @Directive({
+    standalone: false,
     host: {
         '[attr.list]': 'null',
     },
@@ -52,7 +53,6 @@ export abstract class TuiNativeTimePicker {
 }
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputTime][type="time"]',
     imports: [NgIf, TuiTextfieldContent],
     templateUrl: './input-time.template.html',

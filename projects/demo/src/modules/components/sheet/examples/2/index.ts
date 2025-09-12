@@ -5,7 +5,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiSheetModule, type TuiSheetOptions} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiSheetModule],
     templateUrl: './index.html',
     encapsulation,

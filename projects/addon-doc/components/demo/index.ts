@@ -41,7 +41,6 @@ import {skip} from 'rxjs';
 const MIN_WIDTH = 160;
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-demo',
     imports: [
         FormsModule,

@@ -20,7 +20,6 @@ const completeDateTimeValidator: ValidatorFn = (
     control.value?.every(Boolean) ? null : {incompleteDateTime: true};
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         JsonPipe,

@@ -27,7 +27,6 @@ export interface TuiTablePaginationEvent {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-table-pagination',
     imports: [
         AsyncPipe,

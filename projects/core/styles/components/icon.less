@@ -28,7 +28,8 @@ tui-icon {
     border: 0 solid transparent;
     vertical-align: middle;
     box-sizing: border-box;
-    mask: var(--t-icon-bg) no-repeat center/contain;
+    mask: var(--t-icon-bg) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
+        ~'min(1em, 100%)' padding-box;
 
     @media @tui-mouse {
         &[data-appearance='icon']:hover {
@@ -36,22 +37,25 @@ tui-icon {
         }
     }
 
-    &::after,
-    &[tuiIcons]::after {
+    &::before,
+    &[tuiIcons]::before {
         .fullsize();
 
         content: '';
         display: block;
-        mask: var(--t-icon) no-repeat center/contain;
+        mask:
+            var(--t-icon) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
+                ~'min(1em, 100%)',
+            100% padding-box;
         background: currentColor;
     }
 
-    &[data-icon='image']::after {
+    &[data-icon='image']::before {
         mask: none;
         background: var(--t-icon) no-repeat center/contain;
     }
 
-    &[data-icon='font']::after {
+    &[data-icon='font']::before {
         content: var(--t-icon);
         mask: none;
         background: none;

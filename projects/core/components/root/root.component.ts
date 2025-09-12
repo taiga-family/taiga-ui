@@ -33,7 +33,6 @@ import {PreventEventPlugin} from '@taiga-ui/event-plugins';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-root',
     imports: [
         NgIf,

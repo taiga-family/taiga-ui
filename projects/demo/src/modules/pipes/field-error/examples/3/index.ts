@@ -20,7 +20,6 @@ const secretRegexTen = /^\d{10}$/;
 const secretRegexTwelve = /^\d{12}$/;
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

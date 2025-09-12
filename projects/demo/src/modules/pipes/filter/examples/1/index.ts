@@ -11,7 +11,6 @@ export interface Item {
 }
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiFilterPipe, TuiTable],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

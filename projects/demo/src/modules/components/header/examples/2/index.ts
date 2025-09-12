@@ -12,7 +12,6 @@ import {
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         TuiAvatar,
         TuiBadge,

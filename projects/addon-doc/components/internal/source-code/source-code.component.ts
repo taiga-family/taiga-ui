@@ -10,7 +10,6 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-source-code',
     imports: [PolymorpheusOutlet, TuiButton],
     templateUrl: './source-code.template.html',

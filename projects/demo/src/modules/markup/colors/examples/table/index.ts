@@ -8,7 +8,6 @@ import {tuiInjectElement, TuiPlatform, tuiPure} from '@taiga-ui/cdk';
 import {TUI_DARK_MODE} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'table[colors]',
     imports: [ClipboardModule, NgForOf, NgIf, TuiDocCopy],
     templateUrl: './index.html',

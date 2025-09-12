@@ -30,7 +30,6 @@ class PortalHost extends TuiPortals implements TuiRectAccessor {
 }
 
 @Component({
-    standalone: true,
     imports: [PortalHost, TuiDropdown],
     templateUrl: './index.html',
     styleUrls: ['../1/index.less'],

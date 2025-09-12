@@ -7,7 +7,6 @@ import {TuiSegmented, TuiStepper, TuiTabs} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         NgSwitch,
         NgSwitchCase,

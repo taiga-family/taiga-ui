@@ -5,7 +5,6 @@ import {TuiButton, type TuiDialogContext} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiPreview],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -13,7 +13,6 @@ interface Python {
 }
 
 @Component({
-    standalone: true,
     imports: [
         JsonPipe,
         NgForOf,

@@ -25,7 +25,6 @@ import {
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [
         NgIf,
         RouterLink,

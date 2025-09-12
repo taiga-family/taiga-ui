@@ -63,7 +63,6 @@ import {filter, from, skip} from 'rxjs';
 const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputPhoneInternational]',
     imports: [
         FormsModule,

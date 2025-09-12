@@ -18,7 +18,6 @@ import {identity} from 'rxjs';
 import {TUI_ALERTS_GROUPED} from './alert.tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-alerts',
     imports: [AsyncPipe, NgComponentOutlet, NgFor, TuiAnimatedParent, TuiMapperPipe],
     templateUrl: './alerts.template.html',

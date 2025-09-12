@@ -7,7 +7,6 @@ import {TuiInputCard, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, NgIf, TuiInputCard, TuiTextfield, TuiThumbnailCard],
     templateUrl: './index.html',
     encapsulation,

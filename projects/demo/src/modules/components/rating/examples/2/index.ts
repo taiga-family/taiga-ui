@@ -9,7 +9,6 @@ import {TuiRating} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, NgIf, TuiButton, TuiRating],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

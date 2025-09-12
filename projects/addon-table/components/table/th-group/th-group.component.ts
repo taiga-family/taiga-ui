@@ -18,7 +18,6 @@ import {TUI_TABLE_PROVIDER} from '../providers/table.provider';
 import {TuiTableTh} from '../th/th.component';
 
 @Component({
-    standalone: true,
     selector: 'tr[tuiThGroup]',
     imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet, TuiTableTh],
     templateUrl: './th-group.template.html',

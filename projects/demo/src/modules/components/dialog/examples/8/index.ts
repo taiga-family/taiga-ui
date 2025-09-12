@@ -9,7 +9,6 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiButton, TuiInputModule],
     templateUrl: './index.html',
     encapsulation,

@@ -8,7 +8,6 @@ import {TuiButton, TuiDataList, TuiDropdown, TuiGroup, TuiIcon} from '@taiga-ui/
 import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgForOf,

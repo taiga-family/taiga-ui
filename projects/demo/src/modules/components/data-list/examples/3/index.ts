@@ -8,7 +8,6 @@ import {TuiCheckbox, TuiChevron, TuiSwitch} from '@taiga-ui/kit';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgForOf,

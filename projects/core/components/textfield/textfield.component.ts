@@ -22,6 +22,7 @@ import {NgControl} from '@angular/forms';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -200,11 +201,10 @@ export class TuiTextfieldBaseComponent<T>
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-textfield:not([multi])',
     imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiButton, WaResizeObserver],
     templateUrl: './textfield.template.html',
-    styles: ['@import "@taiga-ui/core/styles/components/textfield.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/textfield.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -214,6 +214,7 @@ export class TuiTextfieldBaseComponent<T>
     hostDirectives: [
         TuiDropdownDirective,
         TuiDropdownFixed,
+        TuiTransitioned,
         TuiWithDropdownOpen,
         TuiWithIcons,
         TuiWithItemsHandlers,

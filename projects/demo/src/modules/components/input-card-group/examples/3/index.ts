@@ -13,7 +13,6 @@ import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         PolymorpheusTemplate,

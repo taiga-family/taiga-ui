@@ -15,7 +15,6 @@ import {getCountries} from 'libphonenumber-js';
 import {defer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

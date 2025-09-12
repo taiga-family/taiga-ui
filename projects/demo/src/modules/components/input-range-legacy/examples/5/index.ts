@@ -7,7 +7,6 @@ import {type TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [JsonPipe, NgForOf, ReactiveFormsModule, TuiInputRangeModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

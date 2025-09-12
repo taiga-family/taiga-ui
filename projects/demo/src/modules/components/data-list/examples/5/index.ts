@@ -10,7 +10,6 @@ import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 import {TuiInputDateRangeModule, TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

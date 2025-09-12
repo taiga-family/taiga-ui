@@ -6,7 +6,6 @@ import {TuiItem} from '@taiga-ui/cdk';
 import {TuiChip, TuiItemsWithMore} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiChip, TuiItem, TuiItemsWithMore],
     templateUrl: './index.html',
     encapsulation,

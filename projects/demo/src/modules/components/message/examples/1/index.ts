@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiMessage} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiMessage],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

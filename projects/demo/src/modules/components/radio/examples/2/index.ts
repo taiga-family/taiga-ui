@@ -10,7 +10,6 @@ interface TestValue {
 }
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiButton, TuiLabel, TuiRadio],
     templateUrl: './index.html',
     encapsulation,

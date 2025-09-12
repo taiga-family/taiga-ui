@@ -19,7 +19,6 @@ const STRINGIFY_EMPLOYEE: TuiStringHandler<Employee> = (item: Employee) =>
     `${item.name} (${item.dept.title})`;
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiComboBoxModule,

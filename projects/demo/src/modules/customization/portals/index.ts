@@ -5,7 +5,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiPortalsExample1} from './examples/1';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiPortalsExample1],
     templateUrl: './index.html',
     changeDetection,

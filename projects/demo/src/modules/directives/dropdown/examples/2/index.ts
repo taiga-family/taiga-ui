@@ -7,7 +7,6 @@ import {TuiDropdown, TuiLink} from '@taiga-ui/core';
 import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiAvatar, TuiDropdown, TuiLink, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

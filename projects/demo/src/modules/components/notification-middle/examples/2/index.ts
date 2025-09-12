@@ -6,7 +6,6 @@ import {TuiButton, TuiIconPipe} from '@taiga-ui/core';
 import {TuiNotificationMiddle} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiButton, TuiIconPipe, TuiNotificationMiddle],
     templateUrl: './index.html',
     encapsulation,

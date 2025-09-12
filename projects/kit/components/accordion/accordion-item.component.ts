@@ -19,7 +19,6 @@ import {TuiAccordionItemContent} from './accordion-item-content.directive';
 import {TuiAccordionItemEagerContent} from './accordion-item-eager-content.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-accordion-item',
     imports: [NgIf, PolymorpheusOutlet, TuiChevron, TuiExpand, TuiIcon],
     templateUrl: './accordion-item.template.html',

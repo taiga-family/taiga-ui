@@ -4,7 +4,6 @@ import {TuiDialogCloseService, TuiDialogComponent} from '@taiga-ui/core';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'custom-dialog',
     imports: [PolymorpheusOutlet],
     template: `

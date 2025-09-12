@@ -12,7 +12,6 @@ import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiPullToRefresh],
     templateUrl: './index.html',
     encapsulation,

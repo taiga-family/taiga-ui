@@ -60,7 +60,6 @@ export function getExampleDateRangeTransformer(
 }
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputDateRangeModule],
     templateUrl: './index.html',
     encapsulation,

@@ -15,7 +15,6 @@ import {TuiAvatar} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         NgIf,

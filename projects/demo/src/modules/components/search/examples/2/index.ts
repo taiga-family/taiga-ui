@@ -17,7 +17,6 @@ import {TuiSearch} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         ReactiveFormsModule,

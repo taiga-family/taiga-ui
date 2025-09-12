@@ -41,7 +41,6 @@ export interface TuiMobileCalendarData {
 
 // TODO: Rename to TuiMobileCalendarDropdownComponent in v5, this component is terrible and needs a complete rewrite
 @Component({
-    standalone: true,
     selector: 'tui-mobile-calendar-dropdown',
     imports: [TuiMobileCalendar],
     templateUrl: './mobile-calendar-dropdown.template.html',

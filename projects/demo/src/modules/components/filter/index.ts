@@ -22,7 +22,6 @@ class ItemWithBadge {
 }
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDemo, TuiFilter],
     templateUrl: './index.html',
     changeDetection,

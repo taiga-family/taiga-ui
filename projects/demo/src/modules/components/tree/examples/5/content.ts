@@ -4,7 +4,6 @@ import {TuiIcon} from '@taiga-ui/core';
 import {TuiTreeItemContent} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgTemplateOutlet, TuiIcon],
     template: `
         <tui-icon

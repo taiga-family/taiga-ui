@@ -5,7 +5,6 @@ import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiError} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiError],
     templateUrl: './index.html',
     changeDetection,

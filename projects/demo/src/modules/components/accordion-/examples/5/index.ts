@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion],
     templateUrl: './index.html',
     encapsulation,

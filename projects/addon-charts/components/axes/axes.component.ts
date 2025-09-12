@@ -10,7 +10,6 @@ export const TUI_ALWAYS_SOLID: TuiLineHandler = () => 'solid';
 export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
 
 @Component({
-    standalone: true,
     selector: 'tui-axes',
     imports: [NgForOf, NgIf, TuiRepeatTimes],
     templateUrl: './axes.template.html',

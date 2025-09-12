@@ -21,7 +21,6 @@ import {TuiTableTbody} from '../tbody/tbody.component';
 import {TuiTableTd} from '../td/td.component';
 
 @Component({
-    standalone: true,
     selector: 'tr[tuiTr]',
     imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet, TuiTableTd],
     templateUrl: './tr.template.html',

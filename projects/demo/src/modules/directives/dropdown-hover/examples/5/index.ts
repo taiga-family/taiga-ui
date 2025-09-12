@@ -5,7 +5,6 @@ import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDataList, TuiDropdown, TuiDropdownMobile],
     templateUrl: './index.html',
     encapsulation,

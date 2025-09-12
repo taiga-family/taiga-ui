@@ -32,7 +32,6 @@ import {VersionManager} from './version-manager/version-manager.component';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
 
 @Component({
-    standalone: true,
     selector: 'app',
     imports: [
         CustomHost,

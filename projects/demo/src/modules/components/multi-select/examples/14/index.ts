@@ -12,7 +12,6 @@ interface Category {
 }
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         NgIf,

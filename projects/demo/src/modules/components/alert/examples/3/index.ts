@@ -9,7 +9,6 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiButton],
     template: `
         <p>Yes?</p>
@@ -33,7 +32,6 @@ export class AlertExample {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

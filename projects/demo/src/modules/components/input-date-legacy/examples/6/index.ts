@@ -7,7 +7,6 @@ import {tuiInputDateOptionsProvider} from '@taiga-ui/kit';
 import {TuiInputDateModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputDateModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,

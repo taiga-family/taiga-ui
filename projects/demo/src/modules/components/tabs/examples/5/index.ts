@@ -7,7 +7,6 @@ import {TuiButton, TuiIcon, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core'
 import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgForOf,

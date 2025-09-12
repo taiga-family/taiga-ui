@@ -11,7 +11,6 @@ interface TreeNode {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiTree],
     templateUrl: './index.html',
     encapsulation,

@@ -21,7 +21,6 @@ const TAIGA_V3 = new TuiDay(2022, 7, 30);
 const TAIGA_V4 = new TuiDay(2024, 7, 9);
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,

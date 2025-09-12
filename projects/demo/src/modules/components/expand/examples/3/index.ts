@@ -9,7 +9,6 @@ import {TuiElasticContainer} from '@taiga-ui/kit';
 import {map, startWith, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         NgIf,

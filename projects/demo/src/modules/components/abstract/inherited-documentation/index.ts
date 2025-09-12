@@ -17,7 +17,6 @@ import {type TuiSupportingDocumentationComponent} from '../supporting-documentat
 import {TextfieldControllerDocumentation} from '../textfield-controller-documentation';
 
 @Component({
-    standalone: true,
     selector: 'inherited-documentation',
     imports: [
         DropdownDocumentation,

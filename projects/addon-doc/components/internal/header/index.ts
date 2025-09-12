@@ -12,7 +12,6 @@ import {distinctUntilChanged, map, merge, startWith, Subject} from 'rxjs';
 import {TuiDocNavigation} from '../../navigation/navigation.component';
 
 @Component({
-    standalone: true,
     selector: 'header[tuiDocHeader]',
     imports: [PolymorpheusOutlet, TuiActiveZone, TuiButton, TuiDocNavigation, TuiSidebar],
     templateUrl: './index.html',

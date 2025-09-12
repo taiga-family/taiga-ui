@@ -14,7 +14,6 @@ import {TuiBadgedContent} from '@taiga-ui/kit/components/badged-content';
 import {TuiButtonSelect} from '@taiga-ui/kit/directives/button-select';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-language-switcher',
     imports: [
         NgForOf,

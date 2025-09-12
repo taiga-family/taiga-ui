@@ -15,7 +15,6 @@ import {TuiInputInline} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputInline],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

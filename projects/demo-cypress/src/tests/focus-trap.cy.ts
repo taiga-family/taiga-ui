@@ -6,7 +6,6 @@ const TOUCHED = '_touched';
 
 describe('FocusTrap', () => {
     @Component({
-        standalone: true,
         imports: [NgIf, TuiFocusTrap],
         template: `
             <button

@@ -32,7 +32,6 @@ const DICTIONARY = [
 ];
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

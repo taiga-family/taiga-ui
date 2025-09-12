@@ -5,7 +5,6 @@ import {type TuiLooseUnion} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'tbody[tuiDocIcons]',
     imports: [NgIf, TuiDocAPIItem, TuiTitle],
     templateUrl: './index.html',

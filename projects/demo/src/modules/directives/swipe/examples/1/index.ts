@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiSwipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

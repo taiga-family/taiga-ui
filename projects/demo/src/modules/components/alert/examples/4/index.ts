@@ -10,7 +10,6 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiButton, TuiLink],
     template: `
         <span tuiSubtitle>
@@ -48,7 +47,6 @@ export class AlertExampleWithData {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

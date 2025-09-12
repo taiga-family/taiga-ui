@@ -21,7 +21,6 @@ import {TuiPreviewAction} from '../action/preview-action.directive';
 const STEP = 0.5;
 
 @Component({
-    standalone: true,
     selector: 'tui-preview-zoom',
     imports: [
         AsyncPipe,

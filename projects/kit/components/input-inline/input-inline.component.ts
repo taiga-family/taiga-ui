@@ -11,7 +11,6 @@ import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {defer} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-input-inline',
     imports: [AsyncPipe, NgIf, TuiLet],
     templateUrl: './input-inline.template.html',

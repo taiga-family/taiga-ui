@@ -21,7 +21,6 @@ import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputPin]',
     imports: [TuiAppearance, TuiRepeatTimes, TuiTextfieldContent],
     templateUrl: './input-pin.template.html',

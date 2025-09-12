@@ -5,7 +5,6 @@ import {tuiPure} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [NgIf, TuiButton],
     templateUrl: './index.html',
     changeDetection,

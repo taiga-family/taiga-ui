@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFade, TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiFade, TuiSegmented],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -35,7 +35,6 @@ import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
 import {TuiLineChartHint} from './line-chart-hint.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-line-chart',
     imports: [AsyncPipe, NgForOf, NgIf, TuiHint, TuiLet],
     templateUrl: './line-chart.template.html',

@@ -38,7 +38,6 @@ import {TuiLineClampBox} from './line-clamp-box.component';
 import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-line-clamp',
     imports: [PolymorpheusOutlet, TuiHint, TuiLineClampPositionDirective],
     templateUrl: './line-clamp.template.html',

@@ -30,7 +30,6 @@ import {TuiCalendarSpin} from './calendar-spin.component';
 import {TuiCalendarYear} from './calendar-year.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-calendar',
     imports: [
         NgIf,

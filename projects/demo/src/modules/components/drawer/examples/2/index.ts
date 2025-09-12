@@ -15,7 +15,6 @@ import {TuiHeader} from '@taiga-ui/layout';
 import {filter} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,

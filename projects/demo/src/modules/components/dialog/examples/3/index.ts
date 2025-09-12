@@ -7,7 +7,6 @@ import {TuiButton, type TuiDialogContext, TuiDialogService} from '@taiga-ui/core
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiButton],
     templateUrl: './index.html',
     encapsulation,

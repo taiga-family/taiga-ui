@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    standalone: true,
     imports: [NgForOf],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

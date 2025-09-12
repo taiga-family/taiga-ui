@@ -7,7 +7,6 @@ import {TuiFluidTypography} from '@taiga-ui/kit';
 const WORDS = ['Rock', 'Paper', 'Scissor'];
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiFluidTypography],
     templateUrl: './index.html',
     encapsulation,

@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiAvatar, UpperCasePipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

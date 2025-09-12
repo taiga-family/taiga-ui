@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [TuiTagModule],
     templateUrl: './index.html',
     encapsulation,

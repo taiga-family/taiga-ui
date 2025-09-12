@@ -11,7 +11,6 @@ import {tuiAsTextfieldAccessor} from './textfield-accessor';
  * @deprecated use {@link TuiSelect} from @taiga-ui/kit instead, drop in v5
  */
 @Component({
-    standalone: true,
     selector: 'select[tuiTextfield]',
     imports: [NgFor, NgIf],
     templateUrl: './select.template.html',

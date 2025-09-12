@@ -22,12 +22,9 @@
  * Checkbox, Switch, Radio, Appearance
  */
 [tuiLike] {
-    --t-size: var(--tui-height-m);
-    --t-border-width: 0.75rem;
-
-    inline-size: var(--t-size);
-    block-size: var(--t-size);
-    border: var(--t-border-width) transparent solid;
+    inline-size: 1em;
+    block-size: 1em;
+    font-size: var(--tui-height-m);
     border-radius: 100%;
     cursor: pointer;
     margin: 0;
@@ -36,11 +33,13 @@
     &::before,
     &::after {
         .fullsize();
-        .transition(~'transform, opacity');
 
         content: '';
         background: currentColor;
-        mask: var(--t-unchecked-icon) no-repeat center/contain;
+        font-size: 1.25rem;
+        mask: var(--t-unchecked-icon) no-repeat center /
+            calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem)) ~'min(1em, 100%)' padding-box;
+        transition-property: transform, opacity;
     }
 
     &::after {
@@ -63,7 +62,11 @@
     }
 
     &[data-size='s'] {
-        --t-size: var(--tui-height-s);
-        --t-border-width: 0.5rem;
+        font-size: var(--tui-height-s);
+
+        &::before,
+        &::after {
+            font-size: 1rem;
+        }
     }
 }

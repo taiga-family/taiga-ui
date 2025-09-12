@@ -94,7 +94,6 @@ const USERS = [
 ];
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         NgForOf,

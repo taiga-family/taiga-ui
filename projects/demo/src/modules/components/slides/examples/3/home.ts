@@ -5,7 +5,6 @@ import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiCard, TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiAppearance, TuiAvatar, TuiCard, TuiCell, TuiTitle],
     template: `
         <div

@@ -34,7 +34,6 @@ import {TuiSearchFilterComponent} from './search-filter.component';
 const WIDTH = 12;
 
 @Component({
-    standalone: true,
     selector: 'tui-search-filters',
     imports: [NgForOf, NgIf, NgTemplateOutlet, TuiButton, TuiSearchFilterComponent],
     templateUrl: './search-filters.template.html',

@@ -5,7 +5,6 @@ import {TuiButton, TuiRoot} from '@taiga-ui/core';
 
 describe('TuiSheetDialog', () => {
     @Component({
-        standalone: true,
         imports: [TuiButton, TuiRepeatTimes, TuiRoot, TuiSheetDialog],
         template: `
             <tui-root>

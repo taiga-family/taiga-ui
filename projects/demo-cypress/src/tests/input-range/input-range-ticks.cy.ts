@@ -5,7 +5,6 @@ import {TuiInputRange} from '@taiga-ui/kit';
 
 describe('InputRange | With segments + tick labels', () => {
     @Component({
-        standalone: true,
         imports: [FormsModule, TuiInputRange, TuiRoot],
         template: `
             <tui-root>

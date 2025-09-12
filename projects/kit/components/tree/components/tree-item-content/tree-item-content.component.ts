@@ -14,7 +14,6 @@ import {
 import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
 
 @Component({
-    standalone: true,
     imports: [NgIf, NgTemplateOutlet, TuiButton],
     templateUrl: './tree-item-content.template.html',
     styleUrls: ['./tree-item-content.style.less'],

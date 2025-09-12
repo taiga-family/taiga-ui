@@ -7,7 +7,6 @@ import {TuiAlertService, TuiDataList, TuiIcon} from '@taiga-ui/core';
 import {type TuiSelectComponent, TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, NgForOf, TuiDataList, TuiIcon, TuiSelectModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

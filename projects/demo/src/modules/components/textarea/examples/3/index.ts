@@ -6,7 +6,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiTextarea, tuiTextareaOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiTextarea, TuiTextfield],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

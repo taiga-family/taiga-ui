@@ -7,7 +7,6 @@ import {tuiDateFormatProvider} from '@taiga-ui/core';
 import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputDateRangeModule],
     templateUrl: './index.html',
     encapsulation,

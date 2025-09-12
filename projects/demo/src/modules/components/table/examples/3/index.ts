@@ -25,7 +25,6 @@ interface Item {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

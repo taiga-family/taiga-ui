@@ -6,7 +6,6 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiSurface} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiRepeatTimes, TuiSurface],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

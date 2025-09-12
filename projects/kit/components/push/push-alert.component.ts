@@ -12,7 +12,6 @@ import {TuiPushDirective} from './push.directive';
 import {type TuiPushOptions} from './push.options';
 
 @Component({
-    standalone: true,
     imports: [NgIf, PolymorpheusOutlet, TuiButton, TuiIcon, TuiLink, TuiPushComponent],
     templateUrl: './push-alert.template.html',
     styleUrls: ['./push-alert.style.less'],

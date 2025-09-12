@@ -7,7 +7,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiNotificationMiddle} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo, TuiNotificationMiddle],
     templateUrl: './index.html',
     encapsulation,

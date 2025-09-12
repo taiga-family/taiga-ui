@@ -8,7 +8,6 @@ import {TuiHeader} from '@taiga-ui/layout';
 import {TuiSheetModule, type TuiSheetOptions} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiButton, TuiHeader, TuiSheetModule, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

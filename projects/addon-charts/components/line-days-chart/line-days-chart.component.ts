@@ -33,7 +33,6 @@ import {TuiLineDaysChartHint} from './line-days-chart-hint.directive';
 const DUMMY: TuiPoint = [NaN, NaN];
 
 @Component({
-    standalone: true,
     selector: 'tui-line-days-chart',
     imports: [NgForOf, PolymorpheusOutlet, TuiHint, TuiLineChart],
     templateUrl: './line-days-chart.template.html',

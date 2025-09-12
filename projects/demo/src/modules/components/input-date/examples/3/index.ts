@@ -13,7 +13,6 @@ import {
 import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

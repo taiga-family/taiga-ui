@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiRepeatTimesPipe],
     templateUrl: './index.html',
     encapsulation,

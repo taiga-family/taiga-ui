@@ -5,7 +5,6 @@ import {TuiIcon, TuiIconPipe} from '@taiga-ui/core';
 import {TuiSwitch, tuiSwitchOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiIcon, TuiIconPipe, TuiSwitch],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

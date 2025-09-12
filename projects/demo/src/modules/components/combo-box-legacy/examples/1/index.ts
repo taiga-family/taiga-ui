@@ -28,7 +28,6 @@ const databaseMockData: readonly User[] = [
 ];
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

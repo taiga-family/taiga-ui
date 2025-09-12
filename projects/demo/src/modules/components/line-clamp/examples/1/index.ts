@@ -8,7 +8,6 @@ import {TuiChip, TuiLineClamp} from '@taiga-ui/kit';
 import {map, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, NgIf, TuiChip, TuiLineClamp, TuiNotification],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

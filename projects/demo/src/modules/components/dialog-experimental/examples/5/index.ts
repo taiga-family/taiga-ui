@@ -10,7 +10,6 @@ import {merge} from 'rxjs';
 import {AuthService} from './service';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDialog, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     encapsulation,

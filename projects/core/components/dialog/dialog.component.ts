@@ -37,7 +37,6 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-dialog',
     imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './dialog.template.html',

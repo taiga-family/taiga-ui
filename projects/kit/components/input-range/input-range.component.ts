@@ -36,7 +36,6 @@ import {
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'tui-input-range',
     imports: [
         FormsModule,

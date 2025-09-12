@@ -24,7 +24,6 @@ import {TUI_OPTION_CONTENT} from './option-content';
  * @deprecated use `<button tuiOption new />` / `<a tuiOption new /> / `<label tuiOption new /> instead
  */
 @Component({
-    standalone: true,
     selector:
         'button[tuiOption]:not([new]), a[tuiOption]:not([new]), label[tuiOption]:not([new])',
     imports: [PolymorpheusOutlet],

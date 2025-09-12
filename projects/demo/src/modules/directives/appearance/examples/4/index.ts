@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [ClipboardModule, KeyValuePipe, NgForOf, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

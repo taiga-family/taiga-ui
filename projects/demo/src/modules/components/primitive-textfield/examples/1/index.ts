@@ -11,7 +11,6 @@ import {
 } from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     selector: 'tui-primitive-textfield-example-1',
     imports: [
         TuiButton,

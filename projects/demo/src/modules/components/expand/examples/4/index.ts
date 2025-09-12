@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiExpand} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiButton, TuiExpand],
     templateUrl: './index.html',
     encapsulation,

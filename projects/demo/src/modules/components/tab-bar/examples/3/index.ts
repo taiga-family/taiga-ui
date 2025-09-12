@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTabBar} from '@taiga-ui/addon-mobile';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, TuiTabBar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

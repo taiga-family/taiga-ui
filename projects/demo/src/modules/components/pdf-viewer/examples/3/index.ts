@@ -7,7 +7,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiPdfViewerDirective} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiPdfViewerDirective],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

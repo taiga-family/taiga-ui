@@ -14,7 +14,6 @@ interface Card {
 }
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiChevron,

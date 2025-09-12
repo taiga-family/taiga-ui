@@ -8,7 +8,6 @@ import {TuiDayOfWeek} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK, TuiLink} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, RouterLink, TuiDocCode, TuiLink],
     templateUrl: './index.html',
     encapsulation,

@@ -12,7 +12,6 @@ const startOfMonth = today.append({day: 1 - today.day});
 const startOfQuarter = startOfMonth.append({month: -(startOfMonth.month % 3)});
 
 @Component({
-    standalone: true,
     imports: [NgIf, TuiCalendarRange, TuiLink],
     templateUrl: './index.html',
     encapsulation,

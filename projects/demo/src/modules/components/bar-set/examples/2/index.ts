@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBarSet} from '@taiga-ui/addon-charts';
 
 @Component({
-    standalone: true,
     imports: [TuiBarSet],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -4,7 +4,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TUI_DEFAULT_INPUT_COLORS, TuiInputColorModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputColorModule, TuiTextfield],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

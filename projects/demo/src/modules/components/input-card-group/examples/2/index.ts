@@ -6,7 +6,6 @@ import {TuiInputCardGroup, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiButton, TuiDataList, TuiIcon, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         ReactiveFormsModule,

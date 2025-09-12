@@ -24,7 +24,6 @@ import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs
 import {TUI_INPUT_CARD_OPTIONS} from './input-card.options';
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputCard]',
     imports: [TuiTextfieldContent],
     template: `

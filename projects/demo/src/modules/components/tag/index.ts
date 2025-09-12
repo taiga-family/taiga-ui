@@ -7,7 +7,6 @@ import {type TuiStatus, TuiTagModule} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiIcon, TuiTagModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

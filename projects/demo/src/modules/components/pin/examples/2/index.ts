@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPin} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiPin],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

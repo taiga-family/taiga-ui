@@ -9,7 +9,6 @@ import {tuiToAnimationOptions} from '@taiga-ui/core/utils';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'tui-error',
     imports: [NgIf, PolymorpheusOutlet, TuiAnimated],
     templateUrl: './error.template.html',

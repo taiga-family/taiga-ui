@@ -10,7 +10,6 @@ import {TuiAccordion} from '@taiga-ui/experimental';
 import {TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         NgIf,

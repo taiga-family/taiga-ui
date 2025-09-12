@@ -11,7 +11,6 @@ interface Item {
 }
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiSelectModule, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     encapsulation,

@@ -19,7 +19,6 @@ import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-files',
     imports: [
         AsyncPipe,

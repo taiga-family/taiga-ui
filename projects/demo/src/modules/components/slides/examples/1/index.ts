@@ -6,7 +6,6 @@ import {TuiButton, TuiGroup, TuiTitle} from '@taiga-ui/core';
 import {TuiElasticContainer, TuiSlides} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         NgForOf,
         NgIf,

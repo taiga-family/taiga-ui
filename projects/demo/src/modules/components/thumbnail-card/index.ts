@@ -10,7 +10,6 @@ import {
 import {TUI_TRUE_HANDLER, type TuiBooleanHandler} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiDocIcons, TuiThumbnailCard],
     templateUrl: './index.html',
     changeDetection,

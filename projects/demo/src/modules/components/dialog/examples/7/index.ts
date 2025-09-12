@@ -6,7 +6,6 @@ import {TuiButton, tuiDialog} from '@taiga-ui/core';
 import {SearchDialogExample} from './search-example/search-dialog-example.component';
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

@@ -13,7 +13,6 @@ import {
 import {interval, map, startWith} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

@@ -23,7 +23,6 @@ import {TUI_CALENDAR_SHEET_OPTIONS} from './calendar-sheet.options';
 export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [string]>;
 
 @Component({
-    standalone: true,
     selector: 'tui-calendar-sheet',
     imports: [
         AsyncPipe,

@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiKeySteps, TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [DecimalPipe, NgForOf, ReactiveFormsModule, TuiSlider],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

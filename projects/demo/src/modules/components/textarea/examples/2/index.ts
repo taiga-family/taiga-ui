@@ -6,7 +6,6 @@ import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiTextarea, TuiTextareaLimit} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,

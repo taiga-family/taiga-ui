@@ -26,7 +26,6 @@ import {AbstractExampleTuiControl} from '../abstract/control';
 import {InheritedDocumentation} from '../abstract/inherited-documentation';
 
 @Component({
-    standalone: true,
     imports: [
         InheritedDocumentation,
         ReactiveFormsModule,

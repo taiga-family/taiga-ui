@@ -6,7 +6,6 @@ import {TuiButtonClose} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         TuiAppearance,
         TuiButton,

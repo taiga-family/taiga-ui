@@ -135,7 +135,6 @@ export class TuiHintBaseComponent<C = any> {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-hint',
     imports: [PolymorpheusOutlet],
     template: `

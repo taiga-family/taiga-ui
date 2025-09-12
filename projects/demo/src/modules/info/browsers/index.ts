@@ -3,7 +3,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiTable} from '@taiga-ui/addon-table';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiTable],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

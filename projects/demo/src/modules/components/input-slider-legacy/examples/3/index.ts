@@ -7,7 +7,6 @@ import {type TuiKeySteps} from '@taiga-ui/kit';
 import {TuiInputSliderModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [NgForOf, ReactiveFormsModule, TuiInputSliderModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

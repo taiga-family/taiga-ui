@@ -9,7 +9,6 @@ import {TuiPieChart} from '@taiga-ui/addon-charts/components/pie-chart';
 import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core/types';
 
 @Component({
-    standalone: true,
     selector: 'tui-ring-chart',
     imports: [TuiPieChart],
     templateUrl: './ring-chart.template.html',

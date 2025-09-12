@@ -23,7 +23,6 @@ import {type TuiSheetDialogOptions} from './sheet-dialog.options';
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
 
 @Component({
-    standalone: true,
     selector: 'tui-sheet-dialog',
     imports: [NgForOf, NgIf, PolymorpheusOutlet],
     templateUrl: './sheet-dialog.template.html',

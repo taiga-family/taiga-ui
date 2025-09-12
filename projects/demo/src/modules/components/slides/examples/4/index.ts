@@ -10,7 +10,6 @@ import {TuiAvatar, TuiFloatingContainer, TuiProgressBar, TuiSlides} from '@taiga
 import {TuiAppBar, TuiCard, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         NgIf,
         NgSwitch,

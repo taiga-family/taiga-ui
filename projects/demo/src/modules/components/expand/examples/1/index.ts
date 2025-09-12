@@ -6,7 +6,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiExpand} from '@taiga-ui/experimental';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiExpand, TuiItem],
     templateUrl: './index.html',
     encapsulation,

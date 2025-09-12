@@ -6,7 +6,6 @@ import {type TuiSizeL} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiTabs],
     templateUrl: './index.html',
     changeDetection,

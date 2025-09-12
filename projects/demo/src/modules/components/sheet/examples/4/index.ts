@@ -6,7 +6,6 @@ import {TuiButton, TuiLink} from '@taiga-ui/core';
 import {TuiSheetModule, type TuiSheetOptions} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiElasticSticky, TuiLink, TuiSheetModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

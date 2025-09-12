@@ -7,7 +7,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiInputPhoneModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [JsonPipe, ReactiveFormsModule, TuiButton, TuiInputPhoneModule],
     templateUrl: './index.html',
     encapsulation,

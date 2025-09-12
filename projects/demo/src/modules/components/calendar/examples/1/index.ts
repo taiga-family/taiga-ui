@@ -6,7 +6,6 @@ import {type TuiDay} from '@taiga-ui/cdk';
 import {TuiCalendar} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [NgIf, TuiCalendar],
     templateUrl: './index.html',
     encapsulation,
