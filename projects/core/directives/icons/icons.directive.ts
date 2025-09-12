@@ -77,7 +77,7 @@ export class TuiIcons {
         this.iconEnd.set(x);
     }
 
-    protected resolve(icon: Icon): string | null {
+    public resolve(icon: Icon): string | null {
         if (!icon) {
             return null;
         }
