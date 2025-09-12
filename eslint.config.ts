@@ -34,6 +34,7 @@ export default process.env.HTML_ESLINT
                       'error',
                       {countVoidThis: true, max: 5},
                   ],
+                  '@angular-eslint/no-uncalled-signals': 'off',
                   // TODO enable after fixing all issues
                   '@angular-eslint/prefer-signals': 'off',
                   '@angular-eslint/template/prefer-control-flow': 'off',
