@@ -30,6 +30,21 @@
     <div class="hint no-wrap">Jorah Mormont of House Mormont, Lord of Bear Island</div>
 </ng-template>
 
+<div class="island">
+    <tui-line-clamp [content]="content" />
+
+    <ng-template #content>
+        <tui-chip
+            appearance="negative"
+            size="xxs"
+        >
+            DRAFT
+        </tui-chip>
+
+        Davis, Julia
+    </ng-template>
+</div>
+
 <div
     *ngIf="value$ | async as value; else loading"
     class="wrapper"
