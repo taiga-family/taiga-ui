@@ -6,11 +6,11 @@
         <tui-loader tuiAnimated />
         <div tuiAnimated>Please wait...</div>
     } @else {
-        <tui-avatar
+        <div
             appearance="positive"
-            src="@tui.check"
             tuiAnimated
-        />
+            tuiAvatar="@tui.check"
+        ></div>
         <div tuiAnimated>Operation successful!</div>
     }
 </ng-template>

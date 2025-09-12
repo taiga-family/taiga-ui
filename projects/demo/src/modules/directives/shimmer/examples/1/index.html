@@ -23,15 +23,15 @@
         </hgroup>
 
         <aside tuiAccessories>
-            <tui-avatar
+            <div
                 appearance="primary"
-                src="@tui.star"
-            />
+                tuiAvatar="@tui.star"
+            ></div>
         </aside>
     </header>
     <tui-avatar-stack [tuiShimmer]="loading">
         @for (avatar of avatars; track avatar) {
-            <tui-avatar [src]="avatar" />
+            <div [tuiAvatar]="avatar"></div>
         }
     </tui-avatar-stack>
     <footer>
@@ -73,19 +73,19 @@
         </hgroup>
 
         <aside tuiAccessories>
-            <tui-avatar
+            <div
                 appearance="primary"
-                src="@tui.star"
+                tuiAvatar="@tui.star"
                 [tuiSkeleton]="loading"
-            />
+            ></div>
         </aside>
     </header>
     <tui-avatar-stack>
         @for (avatar of avatars; track avatar) {
-            <tui-avatar
-                [src]="avatar"
+            <div
+                [tuiAvatar]="avatar"
                 [tuiSkeleton]="loading"
-            />
+            ></div>
         }
     </tui-avatar-stack>
     <footer>

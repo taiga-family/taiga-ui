@@ -5,7 +5,7 @@
         <code>&#64;tui.</code>
     </span>
 </h3>
-<tui-avatar src="@tui.user" />
+<div tuiAvatar="@tui.user"></div>
 
 <h3 tuiTitle>
     Colored icon
@@ -15,20 +15,23 @@
         pipe to resolve name
     </span>
 </h3>
-<tui-avatar [src]="'@tui.mastercard' | tuiIcon" />
+<div [tuiAvatar]="'@tui.mastercard' | tuiIcon"></div>
 
-<tui-avatar [src]="'/assets/icons/nx.svg'" />
+<div [tuiAvatar]="'/assets/icons/nx.svg'"></div>
 
 <h3 tuiTitle>Image</h3>
-<tui-avatar [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async" />
+<div [tuiAvatar]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async"></div>
 
 <h3 tuiTitle>Initials</h3>
-<tui-avatar src="AI" />
+<div tuiAvatar="AI"></div>
 
 <h3 tuiTitle>Content</h3>
 <div>
-    <tui-avatar>99+</tui-avatar>
-    <tui-avatar class="tui-space_horizontal-4">
+    <div tuiAvatar>99+</div>
+    <div
+        tuiAvatar
+        class="tui-space_horizontal-4"
+    >
         <picture>
             <source
                 media="(min-width: 600px)"
@@ -39,8 +42,8 @@
                 src="/assets/images/avatar.jpg"
             />
         </picture>
-    </tui-avatar>
-    <tui-avatar>
+    </div>
+    <div tuiAvatar>
         <video
             autoplay
             loop
@@ -52,5 +55,5 @@
                 type="video/mp4"
             />
         </video>
-    </tui-avatar>
+    </div>
 </div>

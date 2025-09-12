@@ -53,10 +53,10 @@
         <section class="items">
             @for (item of items | tuiFilter: filter : search; track item) {
                 <div tuiCell>
-                    <tui-avatar
+                    <div
                         appearance="primary"
-                        src="@tui.star"
-                    />
+                        tuiAvatar="@tui.star"
+                    ></div>
                     <div tuiTitle>
                         {{ item.title }}
                         <div tuiSubtitle>{{ item.description }}</div>

@@ -22,12 +22,12 @@
                 type="button"
                 (click)="onClick(item.login)"
             >
-                <tui-avatar
+                <div
                     size="s"
-                    [src]="item.avatar"
+                    [tuiAvatar]="item.avatar"
                 >
                     {{ item.name | tuiInitials }}
-                </tui-avatar>
+                </div>
                 {{ item.name }}
             </button>
         }

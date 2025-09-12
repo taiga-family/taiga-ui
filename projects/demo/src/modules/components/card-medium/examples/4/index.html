@@ -4,11 +4,11 @@
 >
     <tui-avatar-stack direction="left">
         @for (url of urls; track url) {
-            <tui-avatar
+            <div
                 size="s"
-                [src]="url | tuiFallbackSrc: '@tui.user' | async"
                 [style.background]="url | tuiAutoColor"
-            />
+                [tuiAvatar]="url | tuiFallbackSrc: '@tui.user' | async"
+            ></div>
         }
     </tui-avatar-stack>
 
@@ -29,11 +29,11 @@
 
     <tui-avatar-stack direction="left">
         @for (url of urls; track url) {
-            <tui-avatar
+            <div
                 size="s"
-                [src]="url | tuiFallbackSrc: '@tui.user' | async"
                 [style.background]="url | tuiAutoColor"
-            />
+                [tuiAvatar]="url | tuiFallbackSrc: '@tui.user' | async"
+            ></div>
         }
     </tui-avatar-stack>
 </div>

@@ -6,10 +6,10 @@
     <ng-template let-dragged>
         @if (dragged) {
             <div class="content">
-                <tui-avatar
+                <div
                     appearance="secondary"
-                    src="@tui.droplet"
-                />
+                    tuiAvatar="@tui.droplet"
+                ></div>
                 <div>
                     Drop it like it's hot!
                     <br />
@@ -18,10 +18,10 @@
             </div>
         } @else {
             <div class="content">
-                <tui-avatar
+                <div
                     appearance="secondary"
-                    src="@tui.cloud-upload"
-                />
+                    tuiAvatar="@tui.cloud-upload"
+                ></div>
                 <div>
                     Drag and drop file here or
                     <a tuiLink>click to upload</a>

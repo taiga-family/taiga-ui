@@ -22,12 +22,12 @@
                         (click)="onSelected(user)"
                     >
                         {{ user }}
-                        <tui-avatar
+                        <span
                             size="xs"
-                            [src]="user.avatarUrl"
+                            [tuiAvatar]="user.avatarUrl"
                         >
                             {{ user.toString() | tuiInitials }}
-                        </tui-avatar>
+                        </span>
                     </button>
                 }
             </tui-data-list>
@@ -35,12 +35,12 @@
     </tui-input>
     <ng-template #avatar>
         @if (lastUser) {
-            <tui-avatar
+            <span
                 size="s"
-                [src]="lastUser.avatarUrl"
+                [tuiAvatar]="lastUser.avatarUrl"
             >
                 {{ lastUser.toString() | tuiInitials }}
-            </tui-avatar>
+            </span>
         }
     </ng-template>
     <tui-input

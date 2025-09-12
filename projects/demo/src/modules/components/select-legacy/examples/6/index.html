@@ -17,11 +17,11 @@
     let-data
 >
     <div class="template">
-        <tui-avatar
+        <div
             size="xs"
             class="avatar"
-            [src]="data.avatarUrl || (data.toString() | tuiInitials)"
-        />
+            [tuiAvatar]="data.avatarUrl || (data.toString() | tuiInitials)"
+        ></div>
         <div class="name">{{ data }}</div>
     </div>
 </ng-template>

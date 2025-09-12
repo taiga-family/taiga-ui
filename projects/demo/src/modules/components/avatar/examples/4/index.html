@@ -4,18 +4,19 @@
         [direction]="odd ? 'left' : 'right'"
     >
         @for (name of names; track name) {
-            <tui-avatar
+            <div
                 [round]="odd"
                 [size]="size"
-                [src]="name | tuiInitials"
                 [style.background]="name | tuiAutoColor"
-            />
+                [tuiAvatar]="name | tuiInitials"
+            ></div>
         }
-        <tui-avatar
+        <div
+            tuiAvatar
             [round]="odd"
             [size]="size"
         >
             99+
-        </tui-avatar>
+        </div>
     </tui-avatar-stack>
 }

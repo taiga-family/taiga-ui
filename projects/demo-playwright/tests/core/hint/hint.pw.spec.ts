@@ -8,7 +8,7 @@ test.describe('TuiHint', () => {
         await tuiGoto(page, DemoRoute.Hint);
         const example = new TuiDocumentationPagePO(page).getExample('#basic');
 
-        await example.locator('tui-avatar').hover();
+        await example.locator('[tuiAvatar]').hover();
 
         await expect.soft(example).toHaveScreenshot('01-hint.png');
     });
@@ -150,7 +150,7 @@ test.describe('TuiHint', () => {
         await tuiGoto(page, DemoRoute.Hint);
         const example = new TuiDocumentationPagePO(page).getExample('#customizing');
 
-        await example.locator('tui-avatar').hover();
+        await example.locator('[tuiAvatar]').hover();
         await page.waitForTimeout(300);
 
         await expect.soft(example).toHaveScreenshot('07-hint.png');

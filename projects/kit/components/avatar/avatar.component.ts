@@ -10,8 +10,7 @@ import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_AVATAR_OPTIONS} from './avatar.options';
 
 @Component({
-    // TODO: Remove `tui-avatar` selector leaving only [tuiAvatar] in v5
-    selector: 'tui-avatar,button[tuiAvatar],a[tuiAvatar]',
+    selector: '[tuiAvatar]',
     templateUrl: './avatar.template.html',
     styleUrls: ['./avatar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,10 +19,11 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
         TuiWithAppearance,
         {
             directive: TuiIcons,
-            inputs: ['iconStart: src'],
+            inputs: ['iconStart: tuiAvatar'],
         },
     ],
     host: {
+        tuiAvatar: '',
         '[attr.data-size]': 'size',
         '[attr.data-type]': 'type',
         '[class._round]': 'round',
@@ -39,7 +39,7 @@ export class TuiAvatar {
     @Input()
     public round = this.options.round;
 
-    @Input()
+    @Input('tuiAvatar')
     public src?: SafeResourceUrl | string | null;
 
     protected get value(): SafeResourceUrl | string {

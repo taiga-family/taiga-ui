@@ -1,3 +1,3 @@
 ```html
-<tui-avatar>Batman</tui-avatar>
+<div tuiAvatar>Batman</div>
 ```

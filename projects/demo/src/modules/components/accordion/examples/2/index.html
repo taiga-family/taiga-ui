@@ -21,10 +21,10 @@
         <tui-expand [style.display]="group.value.length ? null : 'none'">
             @for (operation of group.value; track operation) {
                 <div tuiCell>
-                    <tui-avatar
+                    <div
                         [appearance]="operation.sum && operation.sum > 0 ? '' : 'negative'"
-                        [src]="getIcon(operation)"
-                    />
+                        [tuiAvatar]="getIcon(operation)"
+                    ></div>
                     <span tuiTitle>
                         <strong>{{ operation.title }}</strong>
                         @if (operation.subtitle) {

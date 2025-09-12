@@ -108,7 +108,7 @@ interface User {
                 let-user
             >
                 <span tuiCell>
-                    <tui-avatar [src]="user.url" />
+                    <div [tuiAvatar]="user.url"></div>
                     <span tuiTitle>
                         {{ user.name }}
                         <span tuiSubtitle>
