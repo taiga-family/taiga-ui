@@ -46,7 +46,7 @@ const DEFAULT_MAX_LENGTH = 18;
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]':
             'element.maxLength > 0 ? element.maxLength : defaultMaxLength()',
-        '(blur)': 'setValue(transformer.fromControlValue(control.value))',
+        '(focusout)': 'setValue(transformer.fromControlValue(control.value))',
         '(focus)': 'onFocus()',
     },
 })
