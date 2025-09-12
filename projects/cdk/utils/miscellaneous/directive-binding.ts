@@ -10,6 +10,8 @@ import {
 } from '@angular/core';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 
+import {tuiSetSignal} from './set-signal';
+
 type SignalLikeTypeOf<T> = T extends Signal<infer R> ? R : T;
 
 type SignalLike<T> = Signal<T> | T;
@@ -39,8 +41,7 @@ export function tuiDirectiveBinding<
         }
 
         if (isSignal(directive[key])) {
-            // @ts-ignore
-            directive[key].set(value);
+            tuiSetSignal(directive[key] as any, value);
         } else {
             directive[key] = value;
         }
