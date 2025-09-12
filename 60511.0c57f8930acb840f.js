@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[60511],{60511:i=>{i.exports='<div tuiItemGroup>\n    <tui-chip *ngFor="let chip of chips">{{ chip }}</tui-chip>\n</div>\n'}}]);

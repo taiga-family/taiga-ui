@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[89807],{89807:e=>{e.exports='<tui-progress-circle\n    *ngFor="let size of sizes"\n    arc\n    [size]="size"\n    [value]="0.5"\n/>\n'}}]);

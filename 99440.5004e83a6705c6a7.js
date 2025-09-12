@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99440],{99440:n=>{n.exports='<tui-accordion>\n    <ng-container *ngFor="let item of data | keyvalue; let index = index">\n        <button [tuiAccordion]="index === 1">{{ item.key }}</button>\n        <tui-expand>{{ item.value }}</tui-expand>\n    </ng-container>\n</tui-accordion>\n'}}]);

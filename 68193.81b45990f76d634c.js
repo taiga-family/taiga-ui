@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[68193],{68193:e=>{e.exports='@if (src$ | async; as src) {\n    <iframe\n        title="pdf"\n        [src]="src"\n    ></iframe>\n} @else {\n    <tui-loader size="xl" />\n}\n'}}]);
