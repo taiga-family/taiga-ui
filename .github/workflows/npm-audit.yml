@@ -1,0 +1,30 @@
+name: ⚙️ NPM Security Scan
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.153.0
+      - uses: taiga-family/ci/actions/setup/node@v1.153.0
+      - id: audit
+        run: |
+          set +e
+          npm audit --audit-level=high > audit.txt 2>&1
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+          set -e
+
+      - name: Comment PR if issues found
+        if: steps.audit.outputs.exit_code != '0'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-identifier: npm-audit
+          body-file: audit.txt
+
+      - name: Fail if audit failed
+        if: steps.audit.outputs.exit_code != '0'
+        run: exit 1
