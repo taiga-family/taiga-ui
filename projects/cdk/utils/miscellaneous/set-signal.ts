@@ -10,6 +10,6 @@ export function tuiSetSignal<T>(
     } else if ('applyValueToInputSignal' in signal[SIGNAL]) {
         signal[SIGNAL].applyValueToInputSignal(signal[SIGNAL], value);
     } else {
-        ngDevMode && console.assert('tuiSetSignal was called on read-only signal');
+        ngDevMode && console.assert(false, 'tuiSetSignal was called on read-only signal');
     }
 }
