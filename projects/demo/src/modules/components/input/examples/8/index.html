@@ -13,13 +13,13 @@
                     [value]="item"
                     (click)="onClick(item)"
                 >
-                    <tui-avatar
+                    <span
                         size="xs"
                         class="avatar"
-                        [src]="item.avatarUrl"
+                        [tuiAvatar]="item.avatarUrl"
                     >
                         {{ item.toString() | tuiInitials }}
-                    </tui-avatar>
+                    </span>
                     <span class="name">{{ item }}</span>
                 </button>
             }

@@ -5,11 +5,11 @@
     >
         <tui-avatar-stack tuiSlot="top">
             @for (user of users; track user) {
-                <tui-avatar
+                <div
                     size="l"
-                    [src]="user | tuiInitials"
                     [style.background]="user | tuiAutoColor"
-                />
+                    [tuiAvatar]="user | tuiInitials"
+                ></div>
             }
         </tui-avatar-stack>
 

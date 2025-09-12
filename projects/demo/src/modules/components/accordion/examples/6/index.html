@@ -7,10 +7,10 @@
             appearance="icon"
             [tuiAccordion]="index === 1"
         >
-            <tui-avatar
+            <div
                 [appearance]="isChecked(item.value.steps) ? 'info' : ''"
-                [src]="isChecked(item.value.steps) ? '@tui.check' : ''"
-            />
+                [tuiAvatar]="isChecked(item.value.steps) ? '@tui.check' : ''"
+            ></div>
             {{ item.key }}
         </button>
         <tui-expand>

@@ -82,7 +82,7 @@
     tuiTheme="dark"
     class="blur"
 >
-    <tui-avatar src="/assets/images/avatar.jpg" />
+    <div tuiAvatar="/assets/images/avatar.jpg"></div>
     <label tuiLabel="Taiga UI">Alex Inkin</label>
     <button
         appearance="glass"
@@ -123,10 +123,10 @@
                 >
                     {{ review.body }}
                     <footer class="footer">
-                        <tui-avatar
+                        <div
                             size="m"
-                            src="/assets/images/avatar.jpg"
-                        />
+                            tuiAvatar="/assets/images/avatar.jpg"
+                        ></div>
                         <label tuiTitle>
                             {{ review.name }}
                             <span tuiSubtitle>{{ review.time }}</span>

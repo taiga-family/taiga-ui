@@ -1,6 +1,6 @@
 ```html
 <div tuiBlockDetails>
-  <tui-avatar></tui-avatar>
+  <div [tuiAvatar]="avatar"></div>
   <h2 tuiTitle>
     Title
     <div tuiSubtitle>Subtitle</div>

@@ -13,10 +13,10 @@
             tuiCell
             type="button"
         >
-            <tui-avatar
+            <div
                 appearance="accent"
-                [src]="item.icon"
-            />
+                [tuiAvatar]="item.icon"
+            ></div>
             <span tuiTitle>
                 {{ item.title }}
                 <span tuiSubtitle>{{ item.subtitle }}</span>
@@ -48,10 +48,10 @@
             let-item
         >
             <span tuiCell>
-                <tui-avatar
+                <div
                     appearance="primary"
-                    [src]="item.icon"
-                />
+                    [tuiAvatar]="item.icon"
+                ></div>
                 <span tuiTitle>
                     {{ item.title }}
                     <span tuiSubtitle>{{ item.subtitle }}</span>

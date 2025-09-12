@@ -21,15 +21,15 @@
         </hgroup>
 
         <aside tuiAccessories>
-            <tui-avatar
+            <div
                 appearance="primary"
-                src="@tui.star"
-            />
+                tuiAvatar="@tui.star"
+            ></div>
         </aside>
     </header>
     <tui-avatar-stack [tuiShimmer]="loading">
         @for (avatar of avatars; track avatar; let index = $index) {
-            <tui-avatar [src]="avatar" />
+            <div [tuiAvatar]="avatar"></div>
         }
     </tui-avatar-stack>
     <footer>

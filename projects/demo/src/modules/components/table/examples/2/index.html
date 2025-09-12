@@ -87,10 +87,10 @@
                 </td>
                 <td tuiTd>
                     <div [tuiCell]="size">
-                        <tui-avatar
-                            [src]="item.cell.name | tuiInitials"
+                        <div
                             [style.background]="item.cell.name | tuiAutoColor"
-                        />
+                            [tuiAvatar]="item.cell.name | tuiInitials"
+                        ></div>
                         <span tuiTitle>
                             {{ item.cell.name }}
                             <span tuiSubtitle>{{ item.cell.email }}</span>

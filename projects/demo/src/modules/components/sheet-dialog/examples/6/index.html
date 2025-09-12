@@ -40,7 +40,7 @@
     <div class="favorites">
         @for (item of items | slice: 0 : 6; track item) {
             <tui-avatar-labeled [label]="item.name">
-                <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
+                <div [tuiAvatar]="item.avatar | tuiFallbackSrc: '@tui.user' | async"></div>
             </tui-avatar-labeled>
         }
     </div>
@@ -52,7 +52,7 @@
                 class="cell"
                 (click)="open.set(false)"
             >
-                <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
+                <div [tuiAvatar]="item.avatar | tuiFallbackSrc: '@tui.user' | async"></div>
                 <span tuiTitle>
                     <span tuiFade>{{ item.name }}</span>
                     <span tuiSubtitle>{{ item.email }}</span>

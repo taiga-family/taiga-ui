@@ -12,7 +12,7 @@
         (keydown.delete)="remove(item)"
         (mousedown.prevent)="(0)"
     >
-        <tui-avatar [src]="options.history" />
+        <div [tuiAvatar]="options.history"></div>
         <span tuiTitle>{{ item }}</span>
         <button
             appearance="icon"
@@ -39,7 +39,7 @@
         (click)="select(item)"
         (mousedown.prevent)="(0)"
     >
-        <tui-avatar [src]="options.popular" />
+        <span [tuiAvatar]="options.popular"></span>
         <span tuiTitle>{{ item }}</span>
     </button>
 }

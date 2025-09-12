@@ -14,10 +14,10 @@
             tuiCell
             type="button"
         >
-            <tui-avatar
+            <div
                 appearance="accent"
-                [src]="item.icon"
-            />
+                [tuiAvatar]="item.icon"
+            ></div>
             <span tuiTitle>
                 {{ item.title }}
                 <span tuiSubtitle>{{ item.subtitle }}</span>
@@ -36,7 +36,7 @@
                 tuiBadge
                 tuiSlot="top"
             />
-            <tui-avatar src="@tui.phone" />
+            <div tuiAvatar="@tui.phone"></div>
         </tui-badged-content>
         <div
             tuiTitle
@@ -60,7 +60,7 @@
                 tuiBadge
                 tuiSlot="top"
             />
-            <tui-avatar src="@tui.phone" />
+            <div tuiAvatar="@tui.phone"></div>
         </tui-badged-content>
         <div tuiTitle>Allow outgoing unusual call that can change your life in an unusual way</div>
         <div tuiAccessories>
@@ -80,7 +80,7 @@
                 tuiBadge
                 tuiSlot="top"
             />
-            <tui-avatar src="@tui.phone" />
+            <div tuiAvatar="@tui.phone"></div>
         </tui-badged-content>
         <div
             tuiTitle

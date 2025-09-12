@@ -26,11 +26,11 @@
                 class="item"
                 (click)="toggle(false)"
             >
-                <tui-avatar
+                <div
                     size="s"
-                    [src]="user | tuiInitials"
                     [style.background]="user | tuiAutoColor"
-                />
+                    [tuiAvatar]="user | tuiInitials"
+                ></div>
                 {{ user }}
             </button>
         }
