@@ -211,6 +211,7 @@ npm install css-vars-ponyfill
 # components/Accordion
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -302,6 +303,8 @@ export default class Page {
 It is an element on the bottom of screen to show actions by multiselect of some items. It works with custom
         content.
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -363,6 +366,9 @@ Built-in implementation of notifications
             token. Default value is
             2rem 3rem 0 auto
             .
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### Example
 
@@ -506,6 +512,8 @@ export default class Page {
 - **Type**: components
 Component for the main app header
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -573,6 +581,7 @@ export default class Page {
 # components/ArcChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -669,6 +678,7 @@ export default class Page {
 # components/Avatar
 - **Package**: `KIT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -767,6 +777,8 @@ export default class Page {
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
 Just axes for charts
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -934,13 +946,9 @@ export class Example {}
 ### Example
 
 ```html
-<p>
-<tui-badge *ngIf="contentType === 'with icon'" iconStart="@tui.check" [appearance]="appearance" [size]="size" >
+<p> @if (contentType === 'with icon') { <tui-badge iconStart="@tui.check" [appearance]="appearance" [size]="size" >
 <div tuiFade>Taiga UI</div>
-</tui-badge>
-<tui-badge *ngIf="contentType === 'text'" [appearance]="appearance" [size]="size" > Taiga UI </tui-badge>
-<img *ngIf="contentType === 'image'" alt="market" src="assets/images/avatar.jpg" tuiBadge [appearance]="appearance" [size]="size" />
-</p>
+</tui-badge> } @if (contentType === 'text') { <tui-badge [appearance]="appearance" [size]="size" > Taiga UI </tui-badge> } @if (contentType === 'image') { <img alt="market" src="assets/images/avatar.jpg" tuiBadge [appearance]="appearance" [size]="size" /> } </p>
 ```
 
 ### API
@@ -1068,6 +1076,8 @@ export default class Example {
 - **Type**: components
 BadgedContent is a wrapper for other components to add badges and notifications to them.
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -1150,6 +1160,8 @@ export default class Example {
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
 A bar for bar chart
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -1333,6 +1345,8 @@ export default class Page {
 - **Type**: components
 A group of bars for bar chart
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -1426,6 +1440,9 @@ export default class Page {
 - **Type**: components
 Block
             is a special presentation of a checkbox/radiobutton which can display actual control or be a control itself
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -1584,6 +1601,8 @@ export default class Page {}
 - **Type**: components
 Component for status screens, result screens and zero screens
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -1677,6 +1696,8 @@ export default class Example {
 - **Type**: components
 A non-modal draggable sheet
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -1730,6 +1751,8 @@ export default class Page {
 - **Type**: components
 Navigation element that shows a path from root page to the current
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -1769,11 +1792,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-breadcrumbs [itemsLimit]="itemsLimit" [size]="size" >
-<ng-container *ngFor="let item of items">
-<button *tuiItem tuiLink type="button" > {{ item }} </button>
-</ng-container>
-</tui-breadcrumbs>
+<tui-breadcrumbs [itemsLimit]="itemsLimit" [size]="size" > @for (item of items; track item) { <button *tuiItem tuiLink type="button" > {{ item }} </button> } </tui-breadcrumbs>
 ```
 
 ### API
@@ -1823,6 +1842,7 @@ export default class Example {
 # components/Button
 - **Package**: `CORE`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -1950,6 +1970,7 @@ export default class Page {}
 # components/ButtonGroup
 - **Package**: `KIT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -2012,6 +2033,10 @@ A simple calendar. If you want a textfield with date, see
             and
             
                 InputDateRange
+            
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -2168,6 +2193,10 @@ export default class Example {
 Month picker component. If you want a textfield, see
             
                 InputMonth
+            
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -2292,6 +2321,8 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 Component for choosing date range in calendar
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -2438,6 +2469,7 @@ export default class Example {
 # components/CardCollapsed
 - **Package**: `LAYOUT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -2509,6 +2541,7 @@ export default class Example {
 # components/CardLarge
 - **Package**: `LAYOUT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -2584,6 +2617,8 @@ A layout component used to create various cards for the interface. Define visual
                 Surface
             
             for visual presets.
+        
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -2651,6 +2686,8 @@ export default class Example {
 - **Package**: `KIT`
 - **Type**: components
 Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -2766,6 +2803,7 @@ export default class Example {
 # components/Cell
 - **Package**: `LAYOUT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -2799,12 +2837,8 @@ export class Example {}
 ### Example
 
 ```html
-<div [tuiCell]="size" [tuiCellHeight]="height" >
-<tui-avatar *ngIf="height !== 'compact'" appearance="primary" src="@tui.star" />
-<div tuiTitle> Title <div *ngIf="height !== 'compact'" tuiSubtitle > Description </div>
-</div>
-<div tuiTitle> Secondary title <div *ngIf="height !== 'compact'" tuiSubtitle > Another description </div>
-</div>
+<div [tuiCell]="size" [tuiCellHeight]="height" > @if (height !== 'compact') { <tui-avatar appearance="primary" src="@tui.star" /> } <div tuiTitle> Title @if (height !== 'compact') { <div tuiSubtitle>Description</div> } </div>
+<div tuiTitle> Secondary title @if (height !== 'compact') { <div tuiSubtitle>Another description</div> } </div>
 </div>
 ```
 
@@ -2926,6 +2960,8 @@ export default class Page {}
 - **Package**: `KIT`
 - **Type**: components
 Chip component is used to display array data and can also be interactive depending on the tag used.
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -3253,6 +3289,9 @@ Confirm is a ready to use
                 this example
             
             to learn how to use confirm to prevent data loss on forms inside other modals
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### Example
 
@@ -3320,6 +3359,8 @@ export default class Example implements TuiConfirmData {
 - **Type**: components
 This component provides an easy way to copy text content to the clipboard. It displays the content normally and
         shows a copy button on hover, with visual feedback when content is copied.
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -3408,9 +3449,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-data-list [emptyContent]="emptyContent" [size]="size" >
-<button *ngFor="let item of items$ | async" tuiOption type="button" [value]="[item]" > {{ item }} </button>
-</tui-data-list>
+<tui-data-list [emptyContent]="emptyContent" [size]="size" > @for (item of items$ | async; track item) { <button tuiOption type="button" [value]="[item]" > {{ item }} </button> } </tui-data-list>
 ```
 
 ### API
@@ -3464,6 +3503,9 @@ DataListWrapper
             is an abstraction over
             DataList
             to simplify usage in common cases where precise control is not necessary.
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -3716,6 +3758,8 @@ export default class Page {
 - **Type**: components
 Customizable modal dialogs
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -3866,6 +3910,7 @@ export default class Page extends Array {
 # components/Drawer
 - **Package**: `KIT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -4127,6 +4172,7 @@ export default class Page {
 # components/Expand
 - **Package**: `EXPERIMENTAL`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -4346,6 +4392,9 @@ export default class Page {
 - **Type**: components
 FloatingContainer
             is a special container for creating different animated sticky footers
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -4400,17 +4449,12 @@ export class Example {}
 <label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="secondAction" /> Second action visibility </label>
 </p>
-<div class="content">
-<div *ngFor="let i of 30 | tuiRepeatTimes" tuiCell >
+<div class="content"> @for (i of 30 | tuiRepeatTimes; track i) { <div tuiCell>
 <tui-avatar appearance="primary" src="@tui.star" />
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div>
-<footer *ngIf="floating" @tuiSlideInTop [tuiFloatingContainer]="color" >
-<button tuiButton type="button" > Main action </button>
-<button *ngIf="secondAction" appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button>
-</footer>
-</div>
+</div> } @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="color" >
+<button tuiButton type="button" > Main action </button> @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
 ```
 
 ### API
@@ -4422,7 +4466,6 @@ export class Example {}
 ### TypeScript
 
 ```ts
-import {NgFor, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -4441,8 +4484,6 @@ import {TuiCell} from '@taiga-ui/layout';
 @Component({
     imports: [
         FormsModule,
-        NgFor,
-        NgIf,
         TuiAvatar,
         TuiButton,
         TuiCell,
@@ -4509,6 +4550,7 @@ footer {
 # components/Form
 - **Package**: `LAYOUT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -4787,6 +4829,9 @@ A component to use icons and color them with CSS. By default,
             
             To associate a name with icon you should use that pattern
             &#64;tui.[name]
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -4963,9 +5008,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" >
-<label *ngIf="textfield.size !== 's'" tuiLabel > Card number </label>
-<input tuiInputCard [disabled]="control.disabled" [icon]="icon" [invalid]="control.invalid" [placeholder]="textfield.size === 's' ? 'Card number' : ''" [readOnly]="control.readonly" [(ngModel)]="card" (binChange)="binChange.emitEvent($event)" />
+<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>Card number</label> } <input tuiInputCard [disabled]="control.disabled" [icon]="icon" [invalid]="control.invalid" [placeholder]="textfield.size === 's' ? 'Card number' : ''" [readOnly]="control.readonly" [(ngModel)]="card" (binChange)="binChange.emitEvent($event)" />
 </tui-textfield>
 ```
 
@@ -5029,6 +5072,9 @@ export default class Page {
 - **Type**: components
 InputCardGroup
             is used to input a card as a separated control
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -5199,6 +5245,8 @@ InputChip
         
         to represent array of selectable items.
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -5315,6 +5363,8 @@ InputColor
         
         + ❤️
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -5356,9 +5406,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-textfield [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<label *ngIf="textfieldDoc.size !== 's'" tuiLabel > Choose color </label>
-<input list="colors" tuiInputColor [align]="align" [format]="format" [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="textfieldDoc.size === 's' ? 'Choose color' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose color</label> } <input list="colors" tuiInputColor [align]="align" [format]="format" [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="textfieldDoc.size === 's' ? 'Choose color' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <datalist id="colors">
 <option value="#800000"></option>
 <option value="#8B0000"></option>
@@ -5461,9 +5509,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
-<label *ngIf="textfieldDoc.size !== 's'" tuiLabel > Choose date </label>
-<input tuiInputDate [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDate [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-calendar *tuiTextfieldDropdown />
 </tui-textfield>
 </ng-template>
@@ -5695,9 +5741,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
-<label *ngIf="textfieldDoc.size !== 's'" tuiLabel > Choose range </label>
-<input tuiInputDateRange [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" [placeholder]="textfieldDoc.size === 's' ? 'Choose range' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose range</label> } <input tuiInputDateRange [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" [placeholder]="textfieldDoc.size === 's' ? 'Choose range' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-calendar-range *tuiTextfieldDropdown />
 </tui-textfield>
 </ng-template>
@@ -5814,9 +5858,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-textfield [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
-<label *ngIf="textfieldDoc.size !== 's'" tuiLabel > Choose date </label>
-<input tuiInputDateTime [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readOnly]="controlDoc.readonly" [timeMode]="timeMode" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDateTime [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readOnly]="controlDoc.readonly" [timeMode]="timeMode" [tuiDisabled]="controlDoc.disabled" />
 <tui-calendar *tuiTextfieldDropdown />
 </tui-textfield>
 </ng-template>
@@ -5897,6 +5939,8 @@ export default class Example {
 - **Type**: components
 An input for uploading one or several files using native input file capabilities
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -5939,14 +5983,7 @@ export class Example {}
 <label tuiInputFiles>
 <input #validator="tuiInputFilesValidator" tuiInputFiles [accept]="accept" [formControl]="control" [invalid]="controlDoc.invalid" [maxFileSize]="maxFileSize" [multiple]="multiple" [tuiDisabled]="controlDoc.disabled" (reject)="updateRejected($event); reject.emitEvent($event)" />
 </label>
-<tui-files class="tui-space_top-2" [max]="maxFilesCount" [(expanded)]="expanded" >
-<ng-container *ngFor="let file of files$ | async">
-<tui-file *tuiItem [file]="file" [showDelete]="showDelete" [showSize]="showSize" [size]="size" (remove)="removeFile(file); remove.emitEvent($event)" />
-</ng-container>
-<ng-container *ngFor="let file of rejected">
-<tui-file *tuiItem state="error" [file]="(file | tuiFileRejected: validator | async) || file" [showDelete]="showDelete" [showSize]="showSize" [size]="size" (remove)="removeFile(file); remove.emitEvent($event)" />
-</ng-container>
-</tui-files>
+<tui-files class="tui-space_top-2" [max]="maxFilesCount" [(expanded)]="expanded" > @for (file of files$ | async; track file) { <tui-file *tuiItem [file]="file" [showDelete]="showDelete" [showSize]="showSize" [size]="size" (remove)="removeFile(file); remove.emitEvent($event)" /> } @for (file of rejected; track file) { <tui-file *tuiItem state="error" [file]="(file | tuiFileRejected: validator | async) || file" [showDelete]="showDelete" [showSize]="showSize" [size]="size" (remove)="removeFile(file); remove.emitEvent($event)" /> } </tui-files>
 ```
 
 ### API
@@ -6041,6 +6078,8 @@ export default class PageComponent {
 - **Package**: `KIT`
 - **Type**: components
 Inline input field
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -6282,9 +6321,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<label *ngIf="textfieldDoc.size !== 's'" tuiLabel > Enter a number </label>
-<input tuiInputNumber [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }" />
+<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Enter a number</label> } <input tuiInputNumber [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Enter a number' : ''" [postfix]="postfix" [prefix]="prefix" [quantum]="quantum" [readOnly]="controlDoc.readonly" [step]="step" [tuiDisabled]="controlDoc.disabled" [tuiNumberFormat]="{ thousandSeparator: numberFormatDoc.thousandSeparator(), decimalSeparator: numberFormatDoc.decimalSeparator(), precision: numberFormatDoc.precision(), decimalMode: numberFormatDoc.decimalMode(), rounding: numberFormatDoc.rounding(), }" />
 </tui-textfield>
 </ng-template>
 ```
@@ -6555,9 +6592,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-textfield [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" >
-<label *ngIf="textfield.size !== 's'" tuiLabel > Type a phone number </label>
-<input tuiInputPhoneInternational [countries]="countries" [countrySearch]="countrySearch" [formControl]="formControl" [invalid]="control.invalid" [placeholder]="textfield.size === 's' ? 'Type a phone number' : ''" [readOnly]="control.readonly" [tuiDisabled]="control.disabled" [(countryIsoCode)]="countryIsoCode" />
+<tui-textfield [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>Type a phone number</label> } <input tuiInputPhoneInternational [countries]="countries" [countrySearch]="countrySearch" [formControl]="formControl" [invalid]="control.invalid" [placeholder]="textfield.size === 's' ? 'Type a phone number' : ''" [readOnly]="control.readonly" [tuiDisabled]="control.disabled" [(countryIsoCode)]="countryIsoCode" />
 </tui-textfield>
 </ng-template>
 ```
@@ -6638,6 +6673,7 @@ export default class PageComponent {
 # components/InputPin
 - **Package**: `KIT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -6848,6 +6884,7 @@ export default class PageComponent {
 # components/InputSearch
 - **Package**: `LAYOUT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -7174,6 +7211,8 @@ export default class PageComponent {
 - **Type**: components
 Component to input a single year
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -7278,6 +7317,7 @@ export default class PageComponent {
 # components/ItemGroup
 - **Package**: `LAYOUT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -7306,10 +7346,8 @@ export class Example {}
 ### Example
 
 ```html
-<div tuiItemGroup [autoscroll]="autoscroll" [horizontal]="horizontal" >
-<label *ngFor="let chip of chips" tuiChip [appearance]="chip === selected ? 'accent' : 'neutral'" > {{ chip }} <input appearance="" name="radio" tuiChip type="radio" [value]="chip" [(ngModel)]="selected" />
-</label>
-</div>
+<div tuiItemGroup [autoscroll]="autoscroll" [horizontal]="horizontal" > @for (chip of chips; track chip) { <label tuiChip [appearance]="chip === selected ? 'accent' : 'neutral'" > {{ chip }} <input appearance="" name="radio" tuiChip type="radio" [value]="chip" [(ngModel)]="selected" />
+</label> } </div>
 ```
 
 ### API
@@ -7374,6 +7412,8 @@ Component to hide overflown items behind custom content.
 
         Resize the screen to see extra items disappear
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -7411,11 +7451,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-items-with-more [itemsLimit]="itemsLimit" [linesLimit]="linesLimit" [required]="required" [side]="side" >
-<ng-container *ngFor="let item of items">
-<tui-chip *tuiItem class="tui-space_right-2 tui-space_vertical-1" > {{ item }} </tui-chip>
-</ng-container>
-<span *tuiMore class="tui-space_right-2 tui-space_vertical-1" >
+<tui-items-with-more [itemsLimit]="itemsLimit" [linesLimit]="linesLimit" [required]="required" [side]="side" > @for (item of items; track item) { <tui-chip *tuiItem class="tui-space_right-2 tui-space_vertical-1" > {{ item }} </tui-chip> } <span *tuiMore class="tui-space_right-2 tui-space_vertical-1" >
 <tui-chip appearance="secondary">and now!</tui-chip>
 </span>
 </tui-items-with-more>
@@ -7464,6 +7500,8 @@ export default class Page {
 - **Package**: `CORE`
 - **Type**: components
 Label is used to show text related to textfields, checkboxes, toggles and radio buttons
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -7611,6 +7649,9 @@ export default class Page {
 A like component based on native checkbox with icons and custom color for icon when
             :checked
             state.
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -7665,6 +7706,7 @@ export default class Page {
 # components/LineChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -8031,6 +8073,8 @@ export default class Page {
 - **Type**: components
 Link component. It has focus highlight and can be customized with an icon
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -8218,6 +8262,8 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 Message component is used to display message block.
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -8461,6 +8507,8 @@ export default class Page {
 - **Type**: components
 A set of basic layout components for global navigation
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -8556,6 +8604,8 @@ export default class Page implements OnDestroy {
 An inline message with a type (info, positive, warning, negative or neutral) that does not interrupt user
         actions
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -8607,6 +8657,8 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 A modal component to indicate an ongoing blocking action
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -8676,6 +8728,7 @@ export default class Page {
 # components/Pager
 - **Package**: `KIT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -9027,6 +9080,9 @@ Pins are used to show a location on a 2D plane. Use
         
             Pins are designed to be absolutely positioned on map or similar medium, therefore specifically their center
             is placed where you put them.
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -9080,6 +9136,9 @@ Preview component allows to open modal for viewing some document and to work wit
 
         
             The component automatically adjusts to the mobile device
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -9480,6 +9539,7 @@ export default class Page {
 # components/Pulse
 - **Package**: `KIT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -9525,6 +9585,8 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 Notifications in style of native browser push
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -9622,6 +9684,9 @@ A radio component that is able to imitate native control on mobile platforms.
             input
             tag, unless you are using
             formControlName
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -9672,6 +9737,8 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: components
 A two-thumb slider for selecting a range of values
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -9799,6 +9866,7 @@ export default class Page {
 # components/Rating
 - **Package**: `KIT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -9992,6 +10060,9 @@ Scrollbar
             Use
             TUI_SCROLL_REF
             token to get a scrollable container. For example, when working with virtual scroll.
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -10056,6 +10127,8 @@ export default class Page {
 - **Type**: components
 A wrapping component for search or filtering the table
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -10119,6 +10192,9 @@ export default class Page {
 - **Type**: components
 Segmented is used for links and buttons to navigate within the application. It can also work as a radio
             button to toggle between different states.
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -10218,9 +10294,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-textfield *tuiLet="textfieldDoc.size === 's' || !control.value as showPlaceholder" tuiChevron [content]="control.value && textfieldContent" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
-<label *ngIf="!showPlaceholder" tuiLabel > Choose country </label>
-<input tuiSelect [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
+<tui-textfield *tuiLet="textfieldDoc.size === 's' || !control.value as showPlaceholder" tuiChevron [content]="control.value && textfieldContent" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (!showPlaceholder) { <label tuiLabel>Choose country</label> } <input tuiSelect [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-data-list-wrapper *tuiTextfieldDropdown new [items]="countries$ | async" />
 </tui-textfield>
 </ng-template>
@@ -10359,6 +10433,8 @@ export default class Page {
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
 A mobile draggable sheet dialog
+
+        @for (example of examples; track example; let index = $index) {
 
 ### Example
 
@@ -10499,6 +10575,10 @@ Taiga UI styling of native html tag
             Read more about this input type in
             
                 MDN Docs
+            
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -10619,6 +10699,9 @@ A component for displaying dynamic content animated between states. Use negative
         
             Important:
             each child must be exactly one DOM element.
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -10652,9 +10735,7 @@ export class Example {}
 <input tuiInputNumber [max]="0" [min]="2" [step]="1" [(ngModel)]="current" />
 </tui-textfield>
 <p [tuiSlides]="direction">
-<ng-container *tuiRepeatTimes="let index of 3">
-<div *ngIf="index === current">Slide #{{ index }}</div>
-</ng-container>
+<ng-container *tuiRepeatTimes="let index of 3"> @if (index === current) { <div>Slide #{{ index }}</div> } </ng-container>
 </p>
 ```
 
@@ -10798,6 +10879,7 @@ export default class Page {}
 # components/Stepper
 - **Package**: `KIT`
 - **Type**: components
+@for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -10914,6 +10996,9 @@ General purpose container used in Taiga UI interfaces. Often used in conjunction
                 Card
             
             component.
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -11036,6 +11121,9 @@ A switch component that is able to imitate native control on mobile platforms.
             Use
             --tui-background-accent-2
             CSS variable to customize color of native control emulation
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -11173,6 +11261,8 @@ export default class Page {
 - **Package**: `ADDON-TABLE`
 - **Type**: components
 This module allows you to create various tables, both static and editable.
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -11503,6 +11593,9 @@ Component for creating tabs.
             you must also add
             routerLinkActive
             directive.
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -11563,11 +11656,7 @@ Buttons:
 ### Example
 
 ```html
-<tui-tabs-with-more [itemsLimit]="itemsLimit" [moreContent]="moreContent" [size]="size" [underline]="underline" [(activeItemIndex)]="activeItemIndex" >
-<ng-container *ngFor="let button of buttons">
-<button *tuiItem tuiTab type="button" > {{ button }} </button>
-</ng-container>
-</tui-tabs-with-more>
+<tui-tabs-with-more [itemsLimit]="itemsLimit" [moreContent]="moreContent" [size]="size" [underline]="underline" [(activeItemIndex)]="activeItemIndex" > @for (button of buttons; track button) { <button *tuiItem tuiTab type="button" > {{ button }} </button> } </tui-tabs-with-more>
 ```
 
 ### API
@@ -11636,6 +11725,8 @@ Textarea
         
         to create a multi-line string input.
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -11673,9 +11764,7 @@ export class Example {
 
 ```html
 <ng-template>
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
-<label *ngIf="textfieldDoc.size !== 's'" tuiLabel > Label </label>
-<textarea placeholder="Placeholder" tuiTextarea [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" ></textarea>
+<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Label</label> } <textarea placeholder="Placeholder" tuiTextarea [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" ></textarea>
 </tui-textfield>
 </ng-template>
 ```
@@ -11734,6 +11823,8 @@ export default class PageComponent {
 Textfield
         is a low level component that other more complex controls are based upon.
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -11765,9 +11856,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-textfield [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" >
-<label *ngIf="textfield.size !== 's'" tuiLabel > I am a label </label>
-<input placeholder="I am placeholder" tuiTextfield [disabled]="control.disabled" [invalid]="control.invalid" [readOnly]="control.readonly" [(ngModel)]="value" />
+<tui-textfield [filler]="filler" [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>I am a label</label> } <input placeholder="I am placeholder" tuiTextfield [disabled]="control.disabled" [invalid]="control.invalid" [readOnly]="control.readonly" [(ngModel)]="value" />
 <tui-icon tuiTooltip="I am a hint" />
 </tui-textfield>
 ```
@@ -11827,6 +11916,8 @@ export default class Page {
 - **Package**: `ADDON-COMMERCE`
 - **Type**: components
 Customizable credit card thumbnail
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -11972,11 +12063,9 @@ export class Example {}
 ### Example
 
 ```html
-<tui-tiles class="tiles" [(order)]="order" >
-<tui-tile *ngFor="let item of items; let index = index" tuiTileHandle [style.order]="order.get(index)" >
+<tui-tiles class="tiles" [(order)]="order" > @for (item of items; track item; let index = $index) { <tui-tile tuiTileHandle [style.order]="order.get(index)" >
 <div class="content">{{ item.name }}</div>
-</tui-tile>
-</tui-tiles>
+</tui-tile> } </tui-tiles>
 ```
 
 ### API
@@ -11993,7 +12082,6 @@ export class Example {}
 ### TypeScript
 
 ```ts
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
@@ -12001,7 +12089,7 @@ import {TuiTitle} from '@taiga-ui/core';
 import {TuiTiles} from '@taiga-ui/kit';
 
 @Component({
-    imports: [NgForOf, TuiDemo, TuiTiles, TuiTitle],
+    imports: [TuiDemo, TuiTiles, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
@@ -12517,6 +12605,8 @@ export default class Page {
 - **Type**: directives
 A directive for visual presets of interactive components
 
+        @for (example of examples; track example; let index = $index; let last = $last) {
+
 ### How to Use (Import)
 
 ```ts
@@ -12819,6 +12909,10 @@ tuiDropdown
             See also
             
                 DropdownOpen
+            
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -13501,6 +13595,8 @@ export default class Page {}
 - **Type**: directives
 Directive that uses masking to fade out overflown content
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -13578,6 +13674,8 @@ export default class Page {
 - **Package**: `KIT`
 - **Type**: directives
 A directive that adjusts font size for the text to fit in the container
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -13703,6 +13801,8 @@ export default class Page {}
 - **Package**: `CORE`
 - **Type**: directives
 Directive to show a hint by hover of an element
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -14333,6 +14433,9 @@ ProgressSegmented
                 mask
             
             .
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -14602,6 +14705,10 @@ tuiShimmer
             cached data that is currently being refreshed and if you have no data at all — a better choice would be
             
                 Skeleton
+            
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -14781,6 +14888,9 @@ tuiSwipe
                 :
             
             min distance between touchstart and touchend.
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -14834,6 +14944,8 @@ tuiTheme
         light
         are included. Importing is not required.
 
+        @for (example of examples; track example; let index = $index) {
+
 ### TypeScript
 
 ```ts
@@ -14856,6 +14968,8 @@ export default class Page {
 - **Package**: `CORE`
 - **Type**: directives
 A directive for title with optional subtitle
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -15007,6 +15121,8 @@ export default class Page {}
 - **Package**: `CDK`
 - **Type**: directives
 This directive allows you to access reactive control or container value changes as an output
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -15395,6 +15511,9 @@ TUI_VIEWPORT
             - define the area relative to which the position constraints will be calculated. Also you can use
             tuiAsViewport
             helper instead of token.
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### TypeScript
 
@@ -15425,6 +15544,10 @@ Pipe to format number values to show money sums
             Number formatting can be customized by using
             
                 TUI_NUMBER_FORMAT
+            
+        
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
@@ -15764,6 +15887,8 @@ export default class Page {}
 - **Type**: pipes
 Pipe for filtering an array by value entered in a textfield
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -16048,6 +16173,8 @@ export default class Page {
 - **Type**: pipes
 Pipe to transform a value with a function
 
+        @for (example of examples; track example; let index = $index) {
+
 ### How to Use (Import)
 
 ```ts
@@ -16094,6 +16221,8 @@ export default class Page {
 - **Package**: `CDK`
 - **Type**: pipes
 Pipe for obfuscating sensitive data
+
+        @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
