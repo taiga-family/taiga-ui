@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
@@ -18,7 +17,6 @@ import {map} from 'rxjs';
 
 @Component({
     imports: [
-        NgForOf,
         ReactiveFormsModule,
         TuiButton,
         TuiChevron,

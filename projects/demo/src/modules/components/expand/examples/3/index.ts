@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -9,15 +9,7 @@ import {TuiElasticContainer} from '@taiga-ui/kit';
 import {map, startWith, timer} from 'rxjs';
 
 @Component({
-    imports: [
-        AsyncPipe,
-        NgIf,
-        TuiButton,
-        TuiElasticContainer,
-        TuiExpand,
-        TuiItem,
-        TuiLoader,
-    ],
+    imports: [AsyncPipe, TuiButton, TuiElasticContainer, TuiExpand, TuiItem, TuiLoader],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

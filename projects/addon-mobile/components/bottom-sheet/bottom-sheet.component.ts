@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -20,7 +19,6 @@ const OPTIONS = {
 
 @Component({
     selector: 'tui-bottom-sheet',
-    imports: [NgForOf],
     templateUrl: './bottom-sheet.template.html',
     styleUrls: ['./bottom-sheet.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

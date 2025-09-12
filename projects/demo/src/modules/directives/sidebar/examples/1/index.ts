@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -8,7 +7,7 @@ import {TuiButton, TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
-    imports: [NgForOf, TuiAccordion, TuiActiveZone, TuiButton, TuiLink, TuiSidebar],
+    imports: [TuiAccordion, TuiActiveZone, TuiButton, TuiLink, TuiSidebar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

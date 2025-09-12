@@ -42,11 +42,12 @@
             [icon]="src.toString()"
             (click)="onIconClick()"
         />
-        <input
-            *ngIf="nativePicker"
-            tuiDate
-            class="t-native-input"
-        />
+        @if (nativePicker) {
+            <input
+                tuiDate
+                class="t-native-input"
+            />
+        }
     </ng-template>
 
     <ng-template
@@ -65,18 +66,19 @@
             (monthChange)="onMonthChange($event)"
             (mousedown.prevent.zoneless)="(0)"
         />
-        <div
-            *ngIf="items.length === 1"
-            class="t-button"
-            (mousedown.prevent.zoneless)="(0)"
-        >
-            <button
-                tuiLink
-                type="button"
-                (click)="items[0] && onDayClick(items[0].day)"
+        @if (items.length === 1) {
+            <div
+                class="t-button"
+                (mousedown.prevent.zoneless)="(0)"
             >
-                {{ items[0] }}
-            </button>
-        </div>
+                <button
+                    tuiLink
+                    type="button"
+                    (click)="items[0] && onDayClick(items[0].day)"
+                >
+                    {{ items[0] }}
+                </button>
+            </div>
+        }
     </ng-template>
 </div>

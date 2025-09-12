@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiValidationError} from '@taiga-ui/cdk/classes';
@@ -10,7 +9,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     selector: 'tui-error',
-    imports: [NgIf, PolymorpheusOutlet, TuiAnimated],
+    imports: [PolymorpheusOutlet, TuiAnimated],
     templateUrl: './error.template.html',
     styleUrls: ['./error.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

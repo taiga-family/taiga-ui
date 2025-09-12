@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -26,7 +25,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
 
 @Component({
     selector: 'tui-scrollbar',
-    imports: [NgIf, TuiScrollControls],
+    imports: [TuiScrollControls],
     templateUrl: './scrollbar.template.html',
     styleUrls: ['./scrollbar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

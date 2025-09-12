@@ -19,7 +19,7 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 @Component({
     imports: [
         FormsModule,
-        NgIf,
+        NgIf, // TODO: use control flow syntax
         TuiAppearance,
         TuiBadge,
         TuiBlock,

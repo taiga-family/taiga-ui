@@ -27,14 +27,15 @@
             to learn how to use confirm to prevent data loss on forms inside other modals
         </tui-notification>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="null"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example; let index = $index) {
+            <tui-doc-example
+                [component]="index + 1 | tuiComponent"
+                [content]="index + 1 | tuiExample"
+                [description]="null"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>

@@ -3,7 +3,9 @@
         class="t-bar"
         [style]="{transform: getTransform(-deg!)}"
     ></div>
-    <ng-content *ngIf="deg" />
+    @if (deg) {
+        <ng-content />
+    }
     <div
         class="t-bar"
         [style]="{transform: getTransform(deg!)}"

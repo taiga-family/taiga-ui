@@ -11,18 +11,19 @@
             </ng-container>
         </div>
 
-        <button
-            *ngIf="context.hasCloseButton"
-            appearance="icon"
-            automation-id="tui-table-bar__close-button"
-            size="xs"
-            tuiIconButton
-            type="button"
-            class="t-close-button"
-            [iconStart]="icons.close"
-            (click)="close()"
-        >
-            {{ closeWord$ | async }}
-        </button>
+        @if (context.hasCloseButton) {
+            <button
+                appearance="icon"
+                automation-id="tui-table-bar__close-button"
+                size="xs"
+                tuiIconButton
+                type="button"
+                class="t-close-button"
+                [iconStart]="icons.close"
+                (click)="close()"
+            >
+                {{ closeWord$ | async }}
+            </button>
+        }
     </div>
 </div>

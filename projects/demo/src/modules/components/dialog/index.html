@@ -135,7 +135,9 @@
             let-observer
             let-size="size"
         >
-            <h2 *ngIf="size === 'xl'">Template can be customized</h2>
+            @if (size === 'xl') {
+                <h2>Template can be customized</h2>
+            }
             <p>
                 Dialog has
                 <code>Observer</code>

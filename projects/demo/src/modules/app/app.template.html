@@ -1,21 +1,22 @@
-<router-outlet *ngIf="isLanding(); else portal" />
-<ng-template #portal>
+@if (isLanding()) {
+    <router-outlet />
+} @else {
     <tui-doc-main #main>
         <div
             ngProjectAs="tuiDocHeader"
             class="app-links"
         >
-            <img
-                *ngIf="isChristmas"
-                alt="Santa hat"
-                src="/assets/images/hat.svg"
-                class="app-christmas"
-            />
-
+            @if (isChristmas) {
+                <img
+                    alt="Santa hat"
+                    src="/assets/images/hat.svg"
+                    class="app-christmas"
+                />
+            }
             <version-manager />
-
-            <tui-algolia-search *ngIf="!defaultSearchEnabled()" />
-
+            @if (!defaultSearchEnabled()) {
+                <tui-algolia-search />
+            }
             <button
                 appearance="outline-grayscale"
                 iconStart="@tui.ellipsis"
@@ -83,7 +84,6 @@
                     </tui-data-list>
                 </ng-template>
             </button>
-
             <tui-badged-content class="app-link">
                 <tui-icon
                     icon="@tui.star"
@@ -92,7 +92,6 @@
                     [style.color]="'orange'"
                     [style.font-size.rem]="1"
                 />
-
                 <a
                     appearance="outline-grayscale"
                     href="https://github.com/taiga-family/taiga-ui"
@@ -110,7 +109,6 @@
                     {{ stars() }}
                 </a>
             </tui-badged-content>
-
             <a
                 appearance="icon"
                 href="https://t.me/taiga_ui"
@@ -122,7 +120,6 @@
                 tuiIconButton
                 class="app-link"
             ></a>
-
             <a
                 appearance="icon"
                 href="https://discord.gg/zrB2EdJjEy"
@@ -134,7 +131,6 @@
                 tuiIconButton
                 class="app-link"
             ></a>
-
             <a
                 appearance="icon"
                 size="xs"
@@ -153,4 +149,4 @@
         <tui-sheets-host ngProjectAs="tuiOverContent" />
         <custom-host ngProjectAs="tuiOverContent" />
     </tui-doc-main>
-</ng-template>
+}

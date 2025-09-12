@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -54,7 +53,7 @@ export abstract class TuiNativeTimePicker {
 
 @Component({
     selector: 'input[tuiInputTime][type="time"]',
-    imports: [NgIf, TuiTextfieldContent],
+    imports: [TuiTextfieldContent],
     templateUrl: './input-time.template.html',
     styleUrls: ['./input-time.style.less'],
     encapsulation: ViewEncapsulation.None,

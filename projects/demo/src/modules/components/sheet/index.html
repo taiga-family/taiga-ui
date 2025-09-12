@@ -18,12 +18,11 @@
             component is on track to be deprecated.
         </tui-notification>
 
-        <tui-notification
-            *ngIf="!isMobile"
-            class="tui-space_top-4"
-        >
-            This component only works on mobile devices. Enable emulation in DevTools
-        </tui-notification>
+        @if (!isMobile) {
+            <tui-notification class="tui-space_top-4">
+                This component only works on mobile devices. Enable emulation in DevTools
+            </tui-notification>
+        }
 
         <tui-doc-example
             id="string"

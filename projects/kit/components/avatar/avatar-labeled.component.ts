@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,17 +9,16 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
 
 @Component({
     selector: 'tui-avatar-labeled',
-    imports: [NgForOf, NgIf, TuiFade],
+    imports: [TuiFade],
     template: `
         <ng-content />
-        <ng-container *ngIf="label.length">
-            <span
-                *ngFor="let item of split(label)"
-                tuiFade
-            >
-                {{ item }}
-            </span>
-        </ng-container>
+        @if (label.length) {
+            @for (item of split(label); track item) {
+                <span tuiFade>
+                    {{ item }}
+                </span>
+            }
+        }
     `,
     styleUrls: ['./avatar-labeled.styles.less'],
     encapsulation: ViewEncapsulation.None,

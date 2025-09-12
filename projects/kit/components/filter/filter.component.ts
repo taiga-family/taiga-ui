@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -24,15 +23,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 
 @Component({
     selector: 'tui-filter',
-    imports: [
-        FormsModule,
-        NgForOf,
-        NgIf,
-        PolymorpheusOutlet,
-        TuiBadge,
-        TuiBlock,
-        TuiHintOverflow,
-    ],
+    imports: [FormsModule, PolymorpheusOutlet, TuiBadge, TuiBlock, TuiHintOverflow],
     templateUrl: './filter.template.html',
     styleUrls: ['./filter.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

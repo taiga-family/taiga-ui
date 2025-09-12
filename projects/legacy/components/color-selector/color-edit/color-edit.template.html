@@ -12,25 +12,26 @@
         *tuiDataList
         size="s"
     >
-        <button
-            *ngFor="let item of modes"
-            tuiOption
-            type="button"
-            [value]="item"
-        >
-            {{ item }}
-        </button>
+        @for (item of modes; track item) {
+            <button
+                tuiOption
+                type="button"
+                [value]="item"
+            >
+                {{ item }}
+            </button>
+        }
     </tui-data-list>
 </tui-select>
-<tui-primitive-textfield
-    *ngIf="isHex; else rgb"
-    tuiTextfieldSize="m"
-    [maskito]="hexMask"
-    [tuiTextfieldLabelOutside]="true"
-    [value]="hex"
-    (valueChange)="onHexChange($event)"
-/>
-<ng-template #rgb>
+@if (isHex) {
+    <tui-primitive-textfield
+        tuiTextfieldSize="m"
+        [maskito]="hexMask"
+        [tuiTextfieldLabelOutside]="true"
+        [value]="hex"
+        (valueChange)="onHexChange($event)"
+    />
+} @else {
     <tui-input-number
         tuiTextfieldSize="m"
         class="t-rgb"
@@ -61,7 +62,7 @@
         [tuiTextfieldLabelOutside]="true"
         (ngModelChange)="onRgbChange(color[0], color[1], $event, color[3])"
     />
-</ng-template>
+}
 <tui-input-number
     tuiTextfieldPostfix="%"
     tuiTextfieldSize="m"

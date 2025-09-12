@@ -1,5 +1,5 @@
 import {animate, style, transition, trigger} from '@angular/animations';
-import {NgForOf, NgIf, NgSwitch, NgSwitchCase, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     type AfterContentInit,
     ChangeDetectionStrategy,
@@ -47,10 +47,6 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
     selector: 'tui-doc-documentation',
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
-        NgSwitch,
-        NgSwitchCase,
         NgTemplateOutlet,
         TuiBadge,
         TuiDataListWrapper,

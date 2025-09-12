@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -32,7 +31,7 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
 
 @Component({
     selector: 'input[tuiInputColor]',
-    imports: [FormsModule, NgIf, TuiSlider, TuiTextfieldContent],
+    imports: [FormsModule, TuiSlider, TuiTextfieldContent],
     templateUrl: './input-color.template.html',
     styleUrls: ['./input-color.style.less'],
     encapsulation: ViewEncapsulation.None,

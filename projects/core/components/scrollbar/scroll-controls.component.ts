@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
@@ -11,7 +11,7 @@ import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
 
 @Component({
     selector: 'tui-scroll-controls',
-    imports: [AsyncPipe, NgIf, TuiAnimated, TuiScrollbarDirective],
+    imports: [AsyncPipe, TuiAnimated, TuiScrollbarDirective],
     templateUrl: './scroll-controls.template.html',
     styleUrls: ['./scroll-controls.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

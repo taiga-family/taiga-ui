@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -26,7 +25,6 @@ import {TuiButton} from '@taiga-ui/core';
 
 @Component({
     imports: [
-        NgIf,
         RouterLink,
         TuiAnimated,
         TuiAutoFocus,

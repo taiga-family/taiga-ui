@@ -28,7 +28,7 @@
     let-list
 >
     <div class="t-wrapper">
-        <ng-container *ngFor="let item of list">
+        @for (item of list; track item) {
             <tui-tag
                 size="l"
                 class="t-tag"
@@ -36,6 +36,6 @@
                 [value]="item"
                 (edited)="remove(item)"
             />
-        </ng-container>
+        }
     </div>
 </ng-template>

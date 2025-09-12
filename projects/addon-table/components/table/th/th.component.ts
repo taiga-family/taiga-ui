@@ -18,7 +18,7 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
 
 @Component({
     selector: 'th[tuiTh]',
-    imports: [AsyncPipe, NgIf, NgTemplateOutlet, TuiIcon, TuiTableResized],
+    imports: [AsyncPipe, NgIf, NgTemplateOutlet, TuiIcon, TuiTableResized], // TODO: use control flow syntax
     templateUrl: './th.template.html',
     styleUrls: ['./th.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

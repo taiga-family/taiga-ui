@@ -5,24 +5,29 @@
     (valueChange)="onValue($event)"
 />
 
-<p *ngIf="isLastVisible">
-    <button
-        tuiLink
-        type="button"
-        (click)="reset()"
-    >
-        Reset
-    </button>
-</p>
+@if (isLastVisible) {
+    <p>
+        <button
+            tuiLink
+            type="button"
+            (click)="reset()"
+        >
+            Reset
+        </button>
+    </p>
+}
 
-<p *ngIf="isSelected && !isDefault">
-    You are seeing {{ selected }}.
-    <button
-        *ngIf="!isLastVisible"
-        tuiLink
-        type="button"
-        (click)="toggle()"
-    >
-        Switch to {{ opposite }}
-    </button>
-</p>
+@if (isSelected && !isDefault) {
+    <p>
+        You are seeing {{ selected }}.
+        @if (!isLastVisible) {
+            <button
+                tuiLink
+                type="button"
+                (click)="toggle()"
+            >
+                Switch to {{ opposite }}
+            </button>
+        }
+    </p>
+}

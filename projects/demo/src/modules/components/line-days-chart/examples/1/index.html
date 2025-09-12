@@ -6,18 +6,19 @@
         Range
     </tui-input-date-range>
 </p>
-<tui-axes
-    *ngIf="computeLabels$(range) | async as labels"
-    class="axes"
-    [axisXLabels]="labels"
-    [horizontalLines]="4"
-    [verticalLines]="labels.length - 1"
->
-    <tui-line-days-chart
-        class="chart"
-        [height]="200"
-        [value]="value"
-        [xStringify]="xStringify$ | async"
-        [yStringify]="yStringify"
-    />
-</tui-axes>
+@if (computeLabels$(range) | async; as labels) {
+    <tui-axes
+        class="axes"
+        [axisXLabels]="labels"
+        [horizontalLines]="4"
+        [verticalLines]="labels.length - 1"
+    >
+        <tui-line-days-chart
+            class="chart"
+            [height]="200"
+            [value]="value"
+            [xStringify]="xStringify$ | async"
+            [yStringify]="yStringify"
+        />
+    </tui-axes>
+}

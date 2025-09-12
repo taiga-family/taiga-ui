@@ -1,4 +1,4 @@
-import {NgIf, type NgIfContext, NgTemplateOutlet} from '@angular/common';
+import {type NgIfContext, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -39,7 +39,7 @@ export const TUI_EXPAND_LOADED = 'tui-expand-loaded';
  */
 @Component({
     selector: 'tui-expand',
-    imports: [NgIf, NgTemplateOutlet, TuiLoader],
+    imports: [NgTemplateOutlet, TuiLoader],
     templateUrl: './expand.template.html',
     styleUrls: ['./expand.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

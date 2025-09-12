@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -28,7 +27,6 @@ describe('InputNumber', () => {
     @Component({
         standalone: true,
         imports: [
-            NgIf,
             ReactiveFormsModule,
             TuiHint,
             TuiInputNumberModule,
@@ -37,21 +35,21 @@ describe('InputNumber', () => {
         ],
         template: `
             <ng-container [formGroup]="form">
-                <tui-input-number
-                    *ngIf="!defaultValues"
-                    formControlName="control"
-                    [readOnly]="readOnly"
-                    [tuiHintContent]="hintContent"
-                    [tuiNumberFormat]="{decimalMode: decimalMode, precision}"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldSize]="size"
-                >
-                    Enter the amount
-                </tui-input-number>
-                <tui-input-number
-                    *ngIf="defaultValues"
-                    formControlName="control"
-                />
+                @if (!defaultValues) {
+                    <tui-input-number
+                        formControlName="control"
+                        [readOnly]="readOnly"
+                        [tuiHintContent]="hintContent"
+                        [tuiNumberFormat]="{decimalMode: decimalMode, precision}"
+                        [tuiTextfieldCleaner]="cleaner"
+                        [tuiTextfieldSize]="size"
+                    >
+                        Enter the amount
+                    </tui-input-number>
+                }
+                @if (defaultValues) {
+                    <tui-input-number formControlName="control" />
+                }
             </ng-container>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,

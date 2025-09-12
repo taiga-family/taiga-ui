@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {tuiParentAnimation} from '@taiga-ui/core/animations';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -11,15 +11,16 @@ import {TUI_TABLE_BARS} from './table-bar.options';
  */
 @Component({
     selector: 'tui-table-bars-host',
-    imports: [AsyncPipe, NgForOf, PolymorpheusOutlet],
+    imports: [AsyncPipe, PolymorpheusOutlet],
     template: `
-        <div
-            *ngFor="let item of bars$ | async"
-            class="t-wrapper"
-            @tuiParentAnimation
-        >
-            <ng-container *polymorpheusOutlet="item.component; context: item" />
-        </div>
+        @for (item of bars$ | async; track item) {
+            <div
+                class="t-wrapper"
+                @tuiParentAnimation
+            >
+                <ng-container *polymorpheusOutlet="item.component; context: item" />
+            </div>
+        }
     `,
     styleUrls: ['./table-bars-host.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

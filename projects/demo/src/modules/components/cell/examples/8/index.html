@@ -9,20 +9,21 @@
     tuiConnected
 >
     <h3 tuiTitle="m">Inside a block</h3>
-    <button
-        *ngFor="let item of items"
-        tuiCell
-        type="button"
-    >
-        <tui-avatar
-            appearance="accent"
-            [src]="item.icon"
-        />
-        <span tuiTitle>
-            {{ item.title }}
-            <span tuiSubtitle>{{ item.subtitle }}</span>
-        </span>
-    </button>
+    @for (item of items; track item) {
+        <button
+            tuiCell
+            type="button"
+        >
+            <tui-avatar
+                appearance="accent"
+                [src]="item.icon"
+            />
+            <span tuiTitle>
+                {{ item.title }}
+                <span tuiSubtitle>{{ item.subtitle }}</span>
+            </span>
+        </button>
+    }
 </div>
 
 <div tuiConnected>

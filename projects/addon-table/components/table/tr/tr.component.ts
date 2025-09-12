@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     type AfterContentInit,
     ChangeDetectionStrategy,
@@ -22,7 +22,7 @@ import {TuiTableTd} from '../td/td.component';
 
 @Component({
     selector: 'tr[tuiTr]',
-    imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet, TuiTableTd],
+    imports: [AsyncPipe, NgTemplateOutlet, TuiTableTd],
     templateUrl: './tr.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER, ResizeObserverService],

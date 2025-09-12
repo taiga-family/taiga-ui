@@ -18,10 +18,12 @@
     #categoryNames
     let-categories
 >
-    <ng-container *ngFor="let category of categories; let last = last">
+    @for (category of categories; track category; let last = $last) {
         {{ category.name }}
-        <ng-container *ngIf="!last">&nbsp;•&nbsp;</ng-container>
-    </ng-container>
+        @if (!last) {
+            &nbsp;•&nbsp;
+        }
+    }
 </ng-template>
 
 <ng-template

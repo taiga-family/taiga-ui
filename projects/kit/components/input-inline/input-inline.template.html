@@ -4,12 +4,13 @@
         [textContent]="value"
     ></span>
 
-    <span
-        *ngIf="!value"
-        automation-id="tui-input-inline__placeholder"
-        class="t-placeholder"
-    >
-        <ng-content />
-    </span>
+    @if (!value) {
+        <span
+            automation-id="tui-input-inline__placeholder"
+            class="t-placeholder"
+        >
+            <ng-content />
+        </span>
+    }
 </ng-container>
 <ng-content select="input" />

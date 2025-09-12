@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -12,7 +12,7 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-spin-button',
-    imports: [AsyncPipe, NgIf, TuiButton],
+    imports: [AsyncPipe, TuiButton],
     templateUrl: './spin-button.template.html',
     styleUrls: ['./spin-button.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

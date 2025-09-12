@@ -107,8 +107,11 @@
                         (click)="expandText()"
                     >
                         Show
-                        <ng-container *ngIf="expanded; else more">less</ng-container>
-                        <ng-template #more>more</ng-template>
+                        @if (expanded) {
+                            less
+                        } @else {
+                            more
+                        }
                     </button>
                 </p>
             </tui-island>

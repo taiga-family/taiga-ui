@@ -1,4 +1,4 @@
-import {JsonPipe, NgFor} from '@angular/common';
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -11,7 +11,6 @@ import {TuiComboBoxModule} from '@taiga-ui/legacy';
     imports: [
         FormsModule,
         JsonPipe,
-        NgFor,
         TuiComboBoxModule,
         TuiDataList,
         TuiFilterByInputPipe,

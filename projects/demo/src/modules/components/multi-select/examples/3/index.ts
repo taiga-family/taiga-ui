@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -19,7 +18,6 @@ interface Hero {
 
 @Component({
     imports: [
-        NgForOf,
         ReactiveFormsModule,
         TuiDataList,
         TuiDataListWrapper,

@@ -1,4 +1,4 @@
-import {I18nPluralPipe, NgSwitch, NgSwitchCase, NgSwitchDefault} from '@angular/common';
+import {I18nPluralPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,14 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [
-        I18nPluralPipe,
-        NgSwitch,
-        NgSwitchCase,
-        NgSwitchDefault,
-        ReactiveFormsModule,
-        TuiInputRangeModule,
-    ],
+    imports: [I18nPluralPipe, ReactiveFormsModule, TuiInputRangeModule],
     templateUrl: './index.html',
     styles: [
         `

@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -16,7 +15,7 @@ import {TuiInputDateDirective} from './input-date.directive';
 
 @Component({
     selector: 'input[tuiInputDate][type="date"]',
-    imports: [NgIf, TuiTextfieldContent],
+    imports: [TuiTextfieldContent],
     templateUrl: './input-date.template.html',
     styleUrls: ['./input-date.style.less'],
     encapsulation: ViewEncapsulation.None,

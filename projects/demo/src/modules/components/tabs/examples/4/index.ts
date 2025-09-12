@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,8 +8,6 @@ import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
 @Component({
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiIcon,
         TuiInputNumber,
         TuiNumberFormat,

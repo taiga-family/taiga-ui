@@ -3,7 +3,7 @@
     tuiGroup
     [collapsed]="true"
 >
-    <ng-container *ngFor="let item of items; let index = index">
+    @for (item of items; track item; let index = $index) {
         <label
             *tuiItem
             appearance=""
@@ -17,7 +17,7 @@
                 [(ngModel)]="value[index]"
             />
         </label>
-    </ng-container>
+    }
     <ng-template
         let-lastIndex
         tuiMore
@@ -37,21 +37,22 @@
         </button>
         <ng-template #dropdown>
             <tui-data-list size="l">
-                <ng-container *ngFor="let item of items; let index = index">
-                    <button
-                        *ngIf="index > lastIndex"
-                        tuiOption
-                        type="button"
-                        (click)="value[index] = !value[index]"
-                    >
-                        {{ item }}
-                        <tui-icon
-                            icon="@tui.check"
-                            class="tui-space_left-2"
-                            [class._hidden]="!value[index]"
-                        />
-                    </button>
-                </ng-container>
+                @for (item of items; track item; let index = $index) {
+                    @if (index > lastIndex) {
+                        <button
+                            tuiOption
+                            type="button"
+                            (click)="value[index] = !value[index]"
+                        >
+                            {{ item }}
+                            <tui-icon
+                                icon="@tui.check"
+                                class="tui-space_left-2"
+                                [class._hidden]="!value[index]"
+                            />
+                        </button>
+                    }
+                }
             </tui-data-list>
         </ng-template>
     </ng-template>

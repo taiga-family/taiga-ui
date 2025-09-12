@@ -8,14 +8,15 @@
         tuiDataListDropdownManager
         tuiMultiSelectGroup
     >
-        <button
-            *ngFor="let item of mainOptions"
-            tuiOption
-            type="button"
-            [value]="item"
-        >
-            {{ item }}
-        </button>
+        @for (item of mainOptions; track item) {
+            <button
+                tuiOption
+                type="button"
+                [value]="item"
+            >
+                {{ item }}
+            </button>
+        }
 
         <button
             iconEnd="@tui.chevron-right"
@@ -36,14 +37,15 @@
             tuiDataListDropdownManager
             tuiMultiSelectGroup
         >
-            <button
-                *ngFor="let option of moreOptions"
-                tuiOption
-                type="button"
-                [value]="option"
-            >
-                {{ option }}
-            </button>
+            @for (option of moreOptions; track option) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="option"
+                >
+                    {{ option }}
+                </button>
+            }
         </tui-data-list>
     </ng-template>
 </tui-multi-select>

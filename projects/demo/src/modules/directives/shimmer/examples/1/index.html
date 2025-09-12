@@ -30,10 +30,9 @@
         </aside>
     </header>
     <tui-avatar-stack [tuiShimmer]="loading">
-        <tui-avatar
-            *ngFor="let avatar of avatars"
-            [src]="avatar"
-        />
+        @for (avatar of avatars; track avatar) {
+            <tui-avatar [src]="avatar" />
+        }
     </tui-avatar-stack>
     <footer>
         <button
@@ -82,11 +81,12 @@
         </aside>
     </header>
     <tui-avatar-stack>
-        <tui-avatar
-            *ngFor="let avatar of avatars"
-            [src]="avatar"
-            [tuiSkeleton]="loading"
-        />
+        @for (avatar of avatars; track avatar) {
+            <tui-avatar
+                [src]="avatar"
+                [tuiSkeleton]="loading"
+            />
+        }
     </tui-avatar-stack>
     <footer>
         <button

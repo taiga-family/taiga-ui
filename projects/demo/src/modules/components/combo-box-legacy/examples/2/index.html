@@ -27,27 +27,29 @@
             <span class="name">{{ item }}</span>
         </ng-template>
         <ng-template tuiDataList>
-            <tui-data-list *ngIf="filtered; else loading">
-                <button
-                    *ngFor="let item of filtered"
-                    tuiOption
-                    type="button"
-                    [disabled]="item.disabled"
-                    [value]="item"
-                >
-                    <tui-avatar
-                        size="xs"
-                        class="avatar"
-                        [src]="item.avatarUrl"
-                    >
-                        {{ item.toString() | tuiInitials }}
-                    </tui-avatar>
-                    <span class="name">{{ item }}</span>
-                </button>
-            </tui-data-list>
-            <ng-template #loading>
+            @if (filtered) {
+                <tui-data-list>
+                    @for (item of filtered; track item) {
+                        <button
+                            tuiOption
+                            type="button"
+                            [disabled]="item.disabled"
+                            [value]="item"
+                        >
+                            <tui-avatar
+                                size="xs"
+                                class="avatar"
+                                [src]="item.avatarUrl"
+                            >
+                                {{ item.toString() | tuiInitials }}
+                            </tui-avatar>
+                            <span class="name">{{ item }}</span>
+                        </button>
+                    }
+                </tui-data-list>
+            } @else {
                 <tui-loader class="tui-space_vertical-4" />
-            </ng-template>
+            }
         </ng-template>
     </tui-combo-box>
 </label>

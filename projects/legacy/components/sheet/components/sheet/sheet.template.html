@@ -2,30 +2,32 @@
     class="t-bumpers"
     (click)="close()"
 >
-    <div
-        *ngFor="let stop of item.stops"
-        #stops
-        class="t-bumper"
-        [style.marginTop]="stop"
-    ></div>
+    @for (stop of item.stops; track stop) {
+        <div
+            #stops
+            class="t-bumper"
+            [style.marginTop]="stop"
+        ></div>
+    }
 </div>
 <div
     #sheet
     class="t-wrapper"
     [class.t-wrapper_shadow]="!item.image"
 >
-    <header
-        *ngIf="item.image"
-        class="t-top"
-        [tuiSheetTop]="imageStop"
-    >
-        <img
-            *polymorpheusOutlet="item.image as src; context: context"
-            alt=""
-            class="t-image"
-            [src]="src"
-        />
-    </header>
+    @if (item.image) {
+        <header
+            class="t-top"
+            [tuiSheetTop]="imageStop"
+        >
+            <img
+                *polymorpheusOutlet="item.image as src; context: context"
+                alt=""
+                class="t-image"
+                [src]="src"
+            />
+        </header>
+    }
     <section
         #content
         tuiSheetStop

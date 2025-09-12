@@ -10,19 +10,20 @@
     <header tuiDocHeader>
         <ng-content select="tuiDocHeader" />
 
-        <button
-            *ngIf="dir && icons.ltr"
-            appearance="outline"
-            aria-label="Switch directionality of the element's text"
-            size="s"
-            tuiButton
-            type="button"
-            class="tui-doc-switch-direction"
-            [iconEnd]="icons.ltr.preview"
-            (click)="changeTextDirection()"
-        >
-            <tui-icon [icon]="icons.ltr.direction" />
-        </button>
+        @if (dir && icons.ltr) {
+            <button
+                appearance="outline"
+                aria-label="Switch directionality of the element's text"
+                size="s"
+                tuiButton
+                type="button"
+                class="tui-doc-switch-direction"
+                [iconEnd]="icons.ltr.preview"
+                (click)="changeTextDirection()"
+            >
+                <tui-icon [icon]="icons.ltr.direction" />
+            </button>
+        }
 
         <button
             appearance="secondary"

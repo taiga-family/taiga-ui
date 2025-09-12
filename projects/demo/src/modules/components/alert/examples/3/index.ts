@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,20 +8,21 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
-    imports: [NgForOf, TuiButton],
+    imports: [TuiButton],
     template: `
         <p>Yes?</p>
-        <button
-            *ngFor="let response of [true, false]"
-            appearance="outline-grayscale"
-            size="s"
-            tuiButton
-            type="button"
-            class="tui-space_right-1"
-            (click)="context.completeWith(response)"
-        >
-            {{ response ? 'Yes' : 'No' }}
-        </button>
+        @for (response of [true, false]; track response) {
+            <button
+                appearance="outline-grayscale"
+                size="s"
+                tuiButton
+                type="button"
+                class="tui-space_right-1"
+                (click)="context.completeWith(response)"
+            >
+                {{ response ? 'Yes' : 'No' }}
+            </button>
+        }
     `,
     changeDetection,
 })

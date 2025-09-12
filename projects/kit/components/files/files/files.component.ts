@@ -1,4 +1,4 @@
-import {AsyncPipe, NgFor, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -20,15 +20,7 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 
 @Component({
     selector: 'tui-files',
-    imports: [
-        AsyncPipe,
-        NgFor,
-        NgIf,
-        NgTemplateOutlet,
-        TuiButton,
-        TuiExpandComponent,
-        TuiGroup,
-    ],
+    imports: [AsyncPipe, NgTemplateOutlet, TuiButton, TuiExpandComponent, TuiGroup],
     templateUrl: './files.template.html',
     styleUrls: ['./files.styles.less'],
     encapsulation: ViewEncapsulation.None,

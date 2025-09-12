@@ -3,27 +3,28 @@
     [formControl]="control"
 >
     Enter your name
-    <ng-container *ngIf="items?.length">
+    @if (items?.length) {
         <tui-data-list *tuiDataList>
-            <button
-                *ngFor="let item of items"
-                tuiOption
-                type="button"
-                [disabled]="item.disabled"
-                [value]="item"
-                (click)="onClick(item)"
-            >
-                <tui-avatar
-                    size="xs"
-                    class="avatar"
-                    [src]="item.avatarUrl"
+            @for (item of items; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [disabled]="item.disabled"
+                    [value]="item"
+                    (click)="onClick(item)"
                 >
-                    {{ item.toString() | tuiInitials }}
-                </tui-avatar>
-                <span class="name">{{ item }}</span>
-            </button>
+                    <tui-avatar
+                        size="xs"
+                        class="avatar"
+                        [src]="item.avatarUrl"
+                    >
+                        {{ item.toString() | tuiInitials }}
+                    </tui-avatar>
+                    <span class="name">{{ item }}</span>
+                </button>
+            }
         </tui-data-list>
-    </ng-container>
+    }
 </tui-input>
 <p>Parsed on complete match:</p>
 {{ firstName }} {{ lastName }}

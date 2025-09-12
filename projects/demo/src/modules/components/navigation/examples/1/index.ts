@@ -1,4 +1,4 @@
-import {KeyValuePipe, NgForOf, NgIf} from '@angular/common';
+import {KeyValuePipe} from '@angular/common';
 import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {RouterLink, RouterLinkActive} from '@angular/router';
@@ -37,8 +37,6 @@ const ICON =
     imports: [
         FormsModule,
         KeyValuePipe,
-        NgForOf,
-        NgIf,
         RouterLink,
         RouterLinkActive,
         TuiAppearance,

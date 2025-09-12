@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -8,7 +8,7 @@ import {TuiChip, TuiLineClamp} from '@taiga-ui/kit';
 import {map, timer} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, NgIf, TuiChip, TuiLineClamp, TuiNotification],
+    imports: [AsyncPipe, TuiChip, TuiLineClamp, TuiNotification],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

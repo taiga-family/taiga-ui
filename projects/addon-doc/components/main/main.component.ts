@@ -1,4 +1,4 @@
-import {DOCUMENT, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -18,15 +18,7 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
 
 @Component({
     selector: 'tui-doc-main',
-    imports: [
-        NgIf,
-        RouterOutlet,
-        TuiButton,
-        TuiDocHeader,
-        TuiDocNavigation,
-        TuiIcon,
-        TuiRoot,
-    ],
+    imports: [RouterOutlet, TuiButton, TuiDocHeader, TuiDocNavigation, TuiIcon, TuiRoot],
     templateUrl: './main.template.html',
     styleUrls: ['./main.style.less'],
     encapsulation: ViewEncapsulation.None,

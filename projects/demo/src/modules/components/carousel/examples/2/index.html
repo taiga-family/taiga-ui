@@ -3,7 +3,7 @@
     [itemsCount]="3"
     [(index)]="index"
 >
-    <ng-container *ngFor="let item of items; let i = index">
+    @for (item of items; track item; let i = $index) {
         <img
             *tuiItem
             alt=""
@@ -12,5 +12,5 @@
             [class.item_active]="i === index + 1"
             [src]="`assets/images/${item}`"
         />
-    </ng-container>
+    }
 </tui-carousel>

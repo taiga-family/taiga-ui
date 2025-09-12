@@ -283,12 +283,11 @@
             [description]="dropdownMobileDescription"
         >
             <ng-template #dropdownMobileDescription>
-                <tui-notification
-                    *ngIf="!isMobile"
-                    class="tui-space_bottom-2"
-                >
-                    Use real mobile device or enable mobile emulation in DevTools to explore this example!
-                </tui-notification>
+                @if (!isMobile) {
+                    <tui-notification class="tui-space_bottom-2">
+                        Use real mobile device or enable mobile emulation in DevTools to explore this example!
+                    </tui-notification>
+                }
 
                 <p class="tui-space_top-0">
                     Put

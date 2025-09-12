@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -27,8 +27,6 @@ import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs
     selector: 'tui-breadcrumbs',
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         NgTemplateOutlet,
         TuiButton,
         TuiDataList,

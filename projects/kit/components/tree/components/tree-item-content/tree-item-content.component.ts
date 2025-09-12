@@ -1,4 +1,4 @@
-import {NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -14,7 +14,7 @@ import {
 import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
 
 @Component({
-    imports: [NgIf, NgTemplateOutlet, TuiButton],
+    imports: [NgTemplateOutlet, TuiButton],
     templateUrl: './tree-item-content.template.html',
     styleUrls: ['./tree-item-content.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

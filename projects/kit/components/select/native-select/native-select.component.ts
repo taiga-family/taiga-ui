@@ -1,4 +1,4 @@
-import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -25,7 +25,7 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 @Component({
     selector: 'select[tuiSelect]',
-    imports: [NgForOf, NgIf, NgTemplateOutlet],
+    imports: [NgTemplateOutlet],
     templateUrl: './native-select.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsTextfieldAccessor(TuiNativeSelect), tuiAsControl(TuiNativeSelect)],

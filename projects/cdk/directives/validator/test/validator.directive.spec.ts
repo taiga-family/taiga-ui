@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -8,13 +7,14 @@ import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 describe('TuiValidator directive', () => {
     @Component({
         standalone: true,
-        imports: [NgIf, ReactiveFormsModule, TuiValidator],
+        imports: [ReactiveFormsModule, TuiValidator],
         template: `
-            <input
-                *ngIf="show"
-                [formControl]="control"
-                [tuiValidator]="validator"
-            />
+            @if (show) {
+                <input
+                    [formControl]="control"
+                    [tuiValidator]="validator"
+                />
+            }
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,

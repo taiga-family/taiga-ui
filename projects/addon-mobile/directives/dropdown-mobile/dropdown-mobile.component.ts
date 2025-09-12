@@ -1,4 +1,4 @@
-import {DOCUMENT, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -24,7 +24,7 @@ const GAP = 16;
 
 @Component({
     selector: 'tui-dropdown-mobile',
-    imports: [NgIf, PolymorpheusOutlet, TuiSwipe, WaIntersectionObserver],
+    imports: [PolymorpheusOutlet, TuiSwipe, WaIntersectionObserver],
     templateUrl: './dropdown-mobile.template.html',
     styleUrls: ['./dropdown-mobile.style.less'],
     encapsulation: ViewEncapsulation.None,

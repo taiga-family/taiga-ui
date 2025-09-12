@@ -10,7 +10,9 @@
 </tui-input-slider>
 
 <div class="slider-ticks-labels">
-    <span *ngFor="let label of ticksLabels">{{ label }}</span>
+    @for (label of ticksLabels; track label) {
+        <span>{{ label }}</span>
+    }
 </div>
 
 <p>

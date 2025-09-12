@@ -116,23 +116,24 @@
         [hidden]="true"
     >
         <div class="wrapper">
-            <div
-                *ngFor="let review of reviews"
-                tuiSurface="neutral"
-                class="review"
-            >
-                {{ review.body }}
-                <footer class="footer">
-                    <tui-avatar
-                        size="m"
-                        src="/assets/images/avatar.jpg"
-                    />
-                    <label tuiTitle>
-                        {{ review.name }}
-                        <span tuiSubtitle>{{ review.time }}</span>
-                    </label>
-                </footer>
-            </div>
+            @for (review of reviews; track review) {
+                <div
+                    tuiSurface="neutral"
+                    class="review"
+                >
+                    {{ review.body }}
+                    <footer class="footer">
+                        <tui-avatar
+                            size="m"
+                            src="/assets/images/avatar.jpg"
+                        />
+                        <label tuiTitle>
+                            {{ review.name }}
+                            <span tuiSubtitle>{{ review.time }}</span>
+                        </label>
+                    </footer>
+                </div>
+            }
         </div>
     </tui-scrollbar>
     <button

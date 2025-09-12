@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, ViewChild} from '@angular/core';
 import {
     type AbstractControl,
@@ -21,7 +21,6 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     imports: [
         AsyncPipe,
-        NgForOf,
         ReactiveFormsModule,
         TuiButton,
         TuiError,

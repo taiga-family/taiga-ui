@@ -28,10 +28,9 @@
         </aside>
     </header>
     <tui-avatar-stack [tuiShimmer]="loading">
-        <tui-avatar
-            *ngFor="let avatar of avatars; let index = index"
-            [src]="avatar"
-        />
+        @for (avatar of avatars; track avatar; let index = $index) {
+            <tui-avatar [src]="avatar" />
+        }
     </tui-avatar-stack>
     <footer>
         <button

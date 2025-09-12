@@ -43,7 +43,7 @@
             Close
         </button>
 
-        <ng-container *ngIf="contentUnavailable$ | async">
+        @if (contentUnavailable$ | async) {
             <div
                 tuiTheme="dark"
                 class="t-container"
@@ -54,20 +54,22 @@
                 />
                 <div>Preview unavailable</div>
             </div>
-        </ng-container>
+        }
 
-        <img
-            *ngIf="imageSrc$ | async as src"
-            alt="img source"
-            height="512"
-            width="512"
-            [src]="src"
-        />
+        @if (imageSrc$ | async; as src) {
+            <img
+                alt="img source"
+                height="512"
+                width="512"
+                [src]="src"
+            />
+        }
 
-        <tui-loader
-            *ngIf="loading$ | async"
-            size="xl"
-            class="t-loader"
-        />
+        @if (loading$ | async) {
+            <tui-loader
+                size="xl"
+                class="t-loader"
+            />
+        }
     </tui-preview>
 </ng-template>

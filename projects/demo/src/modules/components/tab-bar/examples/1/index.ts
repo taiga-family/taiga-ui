@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -13,7 +12,7 @@ interface Item {
 
 @Component({
     selector: 'tui-tab-bar-example',
-    imports: [NgForOf, TuiTabBar],
+    imports: [TuiTabBar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

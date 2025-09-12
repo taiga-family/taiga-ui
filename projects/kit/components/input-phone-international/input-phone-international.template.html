@@ -40,13 +40,13 @@
     />
 
     <!--
-    TODO: get rid of built-in input and label and just externalize everything in 5.0
-    <tui-input-phone-international>
-      <label tuiLabel>My label</label>
-      <input tuiTextfield placeholder="My placeholder" [(ngModel)]="value" />
-      <tui-icon icon="@tui.phone" />
-    </tui-input-phone-international>
-    -->
+  TODO: get rid of built-in input and label and just externalize everything in 5.0
+  <tui-input-phone-international>
+    <label tuiLabel>My label</label>
+    <input tuiTextfield placeholder="My placeholder" [(ngModel)]="value" />
+    <tui-icon icon="@tui.phone" />
+  </tui-input-phone-international>
+  -->
     <ng-content select="tui-icon, img" />
 
     <label tuiLabel>
@@ -55,37 +55,39 @@
 </tui-textfield>
 
 <ng-container *tuiTextfieldDropdown>
-    <tui-textfield
-        *ngIf="countrySearch"
-        tuiTextfieldSize="m"
-        class="t-search"
-        [iconStart]="icons.search"
-    >
-        <input
-            tuiTextfield
-            [focused]="true"
-            [ngModel]="search()"
-            [placeholder]="label()"
-            [tuiAutoFocus]="!isIos"
-            (keydown.arrowDown)="focusFirstItem()"
-            (ngModelChange)="search.set($event)"
-        />
-    </tui-textfield>
+    @if (countrySearch) {
+        <tui-textfield
+            tuiTextfieldSize="m"
+            class="t-search"
+            [iconStart]="icons.search"
+        >
+            <input
+                tuiTextfield
+                [focused]="true"
+                [ngModel]="search()"
+                [placeholder]="label()"
+                [tuiAutoFocus]="!isIos"
+                (keydown.arrowDown)="focusFirstItem()"
+                (ngModelChange)="search.set($event)"
+            />
+        </tui-textfield>
+    }
 
     <tui-data-list (keydown)="onKeyDown($event)">
-        <button
-            *ngFor="let item of filtered()"
-            tuiOption
-            type="button"
-            (click)="onItemClick(item.iso)"
-        >
-            <img
-                alt=""
-                class="t-flag"
-                [src]="item.iso | tuiFlag"
-            />
-            <span class="t-name">{{ item.name }}</span>
-            <span class="t-code">{{ item.code }}</span>
-        </button>
+        @for (item of filtered(); track item) {
+            <button
+                tuiOption
+                type="button"
+                (click)="onItemClick(item.iso)"
+            >
+                <img
+                    alt=""
+                    class="t-flag"
+                    [src]="item.iso | tuiFlag"
+                />
+                <span class="t-name">{{ item.name }}</span>
+                <span class="t-code">{{ item.code }}</span>
+            </button>
+        }
     </tui-data-list>
 </ng-container>

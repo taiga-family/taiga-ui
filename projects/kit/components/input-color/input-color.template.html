@@ -11,14 +11,15 @@
         [value]="value().length > 6 ? value().slice(0, 7) : ''"
         (input)="onInput(input.value)"
     />
-    <input
-        *ngIf="format() === 'hexa' && interactive()"
-        max="255"
-        tuiSlider
-        type="range"
-        [ngModel]="opacity()"
-        [ngModelOptions]="{standalone: true}"
-        (ngModelChange)="onOpacity($event)"
-        (pointerdown.stop)="el.focus()"
-    />
+    @if (format() === 'hexa' && interactive()) {
+        <input
+            max="255"
+            tuiSlider
+            type="range"
+            [ngModel]="opacity()"
+            [ngModelOptions]="{standalone: true}"
+            (ngModelChange)="onOpacity($event)"
+            (pointerdown.stop)="el.focus()"
+        />
+    }
 </ng-container>

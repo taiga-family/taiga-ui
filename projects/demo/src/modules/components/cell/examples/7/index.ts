@@ -1,4 +1,3 @@
-import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -10,7 +9,6 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
 @Component({
     imports: [
         FormsModule,
-        NgFor,
         TuiAppearance,
         TuiAvatar,
         TuiCardLarge,

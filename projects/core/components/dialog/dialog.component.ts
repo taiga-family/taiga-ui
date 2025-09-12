@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -38,7 +38,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 
 @Component({
     selector: 'tui-dialog',
-    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './dialog.template.html',
     styleUrls: ['./dialog.style.less'],
     // So we don't force OnPush on dialog content

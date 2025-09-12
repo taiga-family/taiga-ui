@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {TuiElement} from '@taiga-ui/cdk/directives/element';
 import {tuiAsDataListAccessor, TuiDataList} from '@taiga-ui/core/components/data-list';
@@ -9,7 +8,7 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 
 @Component({
     selector: 'tui-data-list-wrapper[labels]',
-    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiDataList, TuiElement, TuiLoader],
+    imports: [PolymorpheusOutlet, TuiDataList, TuiElement, TuiLoader],
     templateUrl: './data-list-group-wrapper.template.html',
     styleUrls: ['./data-list-wrapper.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

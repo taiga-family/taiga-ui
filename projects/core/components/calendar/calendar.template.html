@@ -1,19 +1,19 @@
-<tui-scrollbar
-    *ngIf="isInYearView; else calendar"
-    automation-id="tui-calendar__scrollbar"
-    class="t-scrollbar"
->
-    <tui-calendar-year
-        automation-id="tui-calendar__year"
-        [initialItem]="month.year"
-        [max]="computedMax.year"
-        [min]="computedMin.year"
-        [rangeMode]="options.rangeMode"
-        [value]="value"
-        (yearClick)="onPickerYearClick($event)"
-    />
-</tui-scrollbar>
-<ng-template #calendar>
+@if (isInYearView) {
+    <tui-scrollbar
+        automation-id="tui-calendar__scrollbar"
+        class="t-scrollbar"
+    >
+        <tui-calendar-year
+            automation-id="tui-calendar__year"
+            [initialItem]="month.year"
+            [max]="computedMax.year"
+            [min]="computedMin.year"
+            [rangeMode]="options.rangeMode"
+            [value]="value"
+            (yearClick)="onPickerYearClick($event)"
+        />
+    </tui-scrollbar>
+} @else {
     <tui-calendar-spin
         automation-id="tui-calendar__pagination"
         class="t-pagination"
@@ -34,4 +34,4 @@
         (dayClick)="onDayClick($event)"
         (hoveredItemChange)="onHoveredItemChange($event)"
     />
-</ng-template>
+}

@@ -1,17 +1,18 @@
-<option
-    *ngIf="placeholder && !stringified; else selected"
-    disabled
-    selected
-    value=""
->
-    {{ placeholder }}
-</option>
-<ng-template #selected>
+@if (placeholder && !stringified) {
     <option
-        *ngFor="let item of [stringified]"
+        disabled
         selected
-        [value]="item"
+        value=""
     >
-        {{ item }}
+        {{ placeholder }}
     </option>
-</ng-template>
+} @else {
+    @for (item of [stringified]; track item) {
+        <option
+            selected
+            [value]="item"
+        >
+            {{ item }}
+        </option>
+    }
+}

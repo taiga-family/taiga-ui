@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -18,14 +18,7 @@ import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
 import {map, type Observable} from 'rxjs';
 
 @Component({
-    imports: [
-        AsyncPipe,
-        FormsModule,
-        NgIf,
-        TuiAxes,
-        TuiInputDateRangeModule,
-        TuiLineDaysChart,
-    ],
+    imports: [AsyncPipe, FormsModule, TuiAxes, TuiInputDateRangeModule, TuiLineDaysChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

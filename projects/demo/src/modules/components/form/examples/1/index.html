@@ -49,7 +49,7 @@
         formControlName="name"
         [error]="[] | tuiFieldError | async"
     />
-    <ng-container *ngIf="!form.controls.basic.value">
+    @if (!form.controls.basic.value) {
         <tui-textfield>
             <label tuiLabel>Email</label>
             <input
@@ -68,7 +68,7 @@
             Subscribe for newsletter
             <tui-icon tuiTooltip="We will not send you spam, pinky promise!" />
         </label>
-    </ng-container>
+    }
     <footer>
         <button
             appearance="secondary"

@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -37,14 +36,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 
 @Component({
     selector: 'tui-input-range',
-    imports: [
-        FormsModule,
-        NgIf,
-        PolymorpheusOutlet,
-        TuiInputNumber,
-        TuiRange,
-        TuiTextfield,
-    ],
+    imports: [FormsModule, PolymorpheusOutlet, TuiInputNumber, TuiRange, TuiTextfield],
     templateUrl: './input-range.template.html',
     styleUrls: ['./input-range.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

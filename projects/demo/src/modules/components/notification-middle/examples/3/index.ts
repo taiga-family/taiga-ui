@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, signal} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,7 +8,7 @@ import {TuiAvatar, TuiNotificationMiddle} from '@taiga-ui/kit';
 import {filter, map, startWith, switchMap, take, tap, timer} from 'rxjs';
 
 @Component({
-    imports: [NgIf, TuiAnimated, TuiAvatar, TuiButton, TuiLoader, TuiNotificationMiddle],
+    imports: [TuiAnimated, TuiAvatar, TuiButton, TuiLoader, TuiNotificationMiddle],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

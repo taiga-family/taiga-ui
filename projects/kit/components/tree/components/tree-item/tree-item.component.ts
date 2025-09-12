@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -30,7 +29,7 @@ import {
 
 @Component({
     selector: 'tui-tree-item',
-    imports: [NgIf, PolymorpheusOutlet, TuiExpandComponent],
+    imports: [PolymorpheusOutlet, TuiExpandComponent],
     templateUrl: './tree-item.template.html',
     styleUrls: ['./tree-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -14,27 +14,29 @@
         </div>
     </div>
 
-    <button
-        *ngIf="editButton"
-        iconStart="@tui.pencil-line"
-        size="m"
-        tuiIconButton
-        tuiSwipeAction
-        type="button"
-    >
-        Edit
-    </button>
-    <button
-        *ngIf="shareButton"
-        appearance="secondary"
-        iconStart="@tui.share"
-        size="m"
-        tuiIconButton
-        tuiSwipeAction
-        type="button"
-    >
-        Share
-    </button>
+    @if (editButton) {
+        <button
+            iconStart="@tui.pencil-line"
+            size="m"
+            tuiIconButton
+            tuiSwipeAction
+            type="button"
+        >
+            Edit
+        </button>
+    }
+    @if (shareButton) {
+        <button
+            appearance="secondary"
+            iconStart="@tui.share"
+            size="m"
+            tuiIconButton
+            tuiSwipeAction
+            type="button"
+        >
+            Share
+        </button>
+    }
 </tui-swipe-actions>
 
 <label>

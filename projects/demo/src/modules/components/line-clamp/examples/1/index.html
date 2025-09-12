@@ -45,19 +45,18 @@
     </ng-template>
 </div>
 
-<div
-    *ngIf="value$ | async as value; else loading"
-    class="wrapper"
->
-    <div class="result">
-        <div class="content">
-            <tui-line-clamp
-                [content]="value"
-                [lineHeight]="20"
-                [linesLimit]="1"
-            />
+@if (value$ | async; as value) {
+    <div class="wrapper">
+        <div class="result">
+            <div class="content">
+                <tui-line-clamp
+                    [content]="value"
+                    [lineHeight]="20"
+                    [linesLimit]="1"
+                />
+            </div>
         </div>
     </div>
-</div>
-
-<ng-template #loading>Loading...</ng-template>
+} @else {
+    Loading...
+}

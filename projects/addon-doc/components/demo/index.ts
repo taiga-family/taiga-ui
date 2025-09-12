@@ -1,4 +1,4 @@
-import {JsonPipe, Location, NgIf, NgTemplateOutlet} from '@angular/common';
+import {JsonPipe, Location, NgTemplateOutlet} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -45,7 +45,6 @@ const MIN_WIDTH = 160;
     imports: [
         FormsModule,
         JsonPipe,
-        NgIf,
         NgTemplateOutlet,
         ReactiveFormsModule,
         TuiButton,

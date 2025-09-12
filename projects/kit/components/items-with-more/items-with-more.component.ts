@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -25,7 +25,7 @@ import {TuiMore} from './more.directive';
 
 @Component({
     selector: 'tui-items-with-more',
-    imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet],
+    imports: [AsyncPipe, NgTemplateOutlet],
     templateUrl: './items-with-more.template.html',
     styleUrls: ['./items-with-more.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

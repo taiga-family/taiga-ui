@@ -1,11 +1,10 @@
-import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
 
 @Component({
-    imports: [NgFor, TuiCarousel, TuiPagination],
+    imports: [TuiCarousel, TuiPagination],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

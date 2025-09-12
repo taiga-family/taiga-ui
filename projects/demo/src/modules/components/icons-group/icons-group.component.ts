@@ -1,5 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     Component,
     ContentChild,
@@ -29,8 +29,6 @@ import {IconsGroupTemplate} from './icons-group.directive';
     selector: 'icons-group',
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         NgTemplateOutlet,
         ReactiveFormsModule,
         TuiAutoFocus,

@@ -1,6 +1,5 @@
 import {type HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiLoader} from '@taiga-ui/core';
@@ -11,13 +10,16 @@ import {TuiLoaderHarness} from '@taiga-ui/testing';
 describe('Loader', () => {
     @Component({
         standalone: true,
-        imports: [NgIf, TuiLoader],
+        imports: [TuiLoader],
         template: `
-            <tui-loader
-                *ngIf="custom; else def"
-                [showLoader]="showLoader"
-                [textContent]="content"
-            />
+            @if (custom) {
+                <tui-loader
+                    [showLoader]="showLoader"
+                    [textContent]="content"
+                />
+            } @else {
+                <tui-loader />
+            }
             <ng-template #def>
                 <tui-loader />
             </ng-template>

@@ -18,15 +18,16 @@
     (ngModelChange)="safelyUpdateValue($event)"
 >
     <ng-content />
-    <div
-        *ngIf="showValueContent"
-        automation-id="tui-input-slider__value-content"
-        ngProjectAs="tuiContent"
-    >
-        <ng-container *polymorpheusOutlet="valueContent as text; context: {$implicit: value}">
-            {{ text }}
-        </ng-container>
-    </div>
+    @if (showValueContent) {
+        <div
+            automation-id="tui-input-slider__value-content"
+            ngProjectAs="tuiContent"
+        >
+            <ng-container *polymorpheusOutlet="valueContent as text; context: {$implicit: value}">
+                {{ text }}
+            </ng-container>
+        </div>
+    }
 </tui-input-number>
 
 <input

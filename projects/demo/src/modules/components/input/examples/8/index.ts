@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -32,8 +32,6 @@ const DATA: readonly User[] = [
 @Component({
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiAvatar,
         TuiDataList,

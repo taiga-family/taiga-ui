@@ -1,4 +1,4 @@
-<ng-container *ngIf="hintOptions?.change$ | async" />
+@if (hintOptions?.change$ | async) {}
 <div
     automation-id="tui-text-area__wrapper"
     tuiWrapper
@@ -10,27 +10,29 @@
     [invalid]="computedInvalid"
     [readOnly]="readOnly"
 >
-    <div
-        *ngIf="hasCounter"
-        automation-id="tui-text-area__counter"
-        class="t-counter"
-    >
-        {{ value.length }}/{{ maxLength }}
-    </div>
+    @if (hasCounter) {
+        <div
+            automation-id="tui-text-area__counter"
+            class="t-counter"
+        >
+            {{ value.length }}/{{ maxLength }}
+        </div>
+    }
 
     <label
         class="t-content"
         (mousedown)="onMouseDown($event)"
     >
         <div class="t-wrapper">
-            <div
-                *ngIf="hasPlaceholder"
-                automation-id="tui-text-area__placeholder"
-                class="t-placeholder"
-                [class.t-placeholder_raised]="placeholderRaised"
-            >
-                <ng-content />
-            </div>
+            @if (hasPlaceholder) {
+                <div
+                    automation-id="tui-text-area__placeholder"
+                    class="t-placeholder"
+                    [class.t-placeholder_raised]="placeholderRaised"
+                >
+                    <ng-content />
+                </div>
+            }
             <tui-scrollbar
                 automation-id="tui-text-area__scrollbar"
                 class="t-box"
@@ -66,23 +68,22 @@
             </tui-scrollbar>
         </div>
         <div class="t-icons">
-            <div
-                *ngIf="iconLeftContent"
-                class="t-icon t-icon_left t-textfield-icon"
-            >
-                <tui-icon
-                    *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
-                    tuiAppearance="icon"
-                    [icon]="src.toString()"
-                />
-            </div>
-            <ng-container *ngIf="hasCustomContent">
+            @if (iconLeftContent) {
+                <div class="t-icon t-icon_left t-textfield-icon">
+                    <tui-icon
+                        *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
+                        tuiAppearance="icon"
+                        [icon]="src.toString()"
+                    />
+                </div>
+            }
+            @if (hasCustomContent) {
                 <tui-icon
                     *polymorpheusOutlet="controller.customContent as src"
                     [icon]="src"
                 />
-            </ng-container>
-            <ng-container *ngIf="hasCleaner">
+            }
+            @if (hasCleaner) {
                 <tui-icon
                     *polymorpheusOutlet="iconCleaner as src; context: {$implicit: size}"
                     tuiAppearance="icon"
@@ -90,23 +91,23 @@
                     [icon]="src.toString()"
                     (click.stop)="onValueChange('')"
                 />
-            </ng-container>
-            <tui-tooltip
-                *ngIf="hasTooltip"
-                automation-id="tui-text-area__tooltip"
-                [content]="hintOptions?.content"
-                [describeId]="id"
-            />
-            <div
-                *ngIf="iconContent"
-                class="t-icon t-textfield-icon"
-            >
-                <tui-icon
-                    *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
-                    tuiAppearance="icon"
-                    [icon]="src.toString()"
+            }
+            @if (hasTooltip) {
+                <tui-tooltip
+                    automation-id="tui-text-area__tooltip"
+                    [content]="hintOptions?.content"
+                    [describeId]="id"
                 />
-            </div>
+            }
+            @if (iconContent) {
+                <div class="t-icon t-textfield-icon">
+                    <tui-icon
+                        *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
+                        tuiAppearance="icon"
+                        [icon]="src.toString()"
+                    />
+                </div>
+            }
         </div>
     </label>
 </div>

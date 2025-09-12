@@ -3,7 +3,7 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {AsyncPipe, DOCUMENT, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, DOCUMENT} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -91,8 +91,6 @@ import {
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
-        NgForOf,
-        NgIf,
         TuiButton,
         TuiLink,
         TuiMapperPipe,

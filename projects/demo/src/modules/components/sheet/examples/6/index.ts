@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,7 +6,7 @@ import {TuiButton, TuiLabel} from '@taiga-ui/core';
 import {TuiSheetModule, type TuiSheetOptions} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [NgForOf, TuiButton, TuiLabel, TuiSheetModule, WaIntersectionObserver],
+    imports: [TuiButton, TuiLabel, TuiSheetModule, WaIntersectionObserver],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

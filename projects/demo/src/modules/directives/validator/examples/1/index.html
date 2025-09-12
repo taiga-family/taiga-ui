@@ -17,14 +17,14 @@
             [items]="items"
         />
     </tui-textfield>
-    <tui-input
-        *ngIf="type === items[0]!; else phone"
-        formControlName="contact"
-        [tuiValidator]="validator"
-    >
-        Contact
-    </tui-input>
-    <ng-template #phone>
+    @if (type === items[0]!) {
+        <tui-input
+            formControlName="contact"
+            [tuiValidator]="validator"
+        >
+            Contact
+        </tui-input>
+    } @else {
         <tui-input-phone formControlName="contact">Contact</tui-input-phone>
-    </ng-template>
+    }
 </form>

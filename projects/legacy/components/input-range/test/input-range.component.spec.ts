@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -16,22 +15,22 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 describe('InputRange', () => {
     @Component({
         standalone: true,
-        imports: [NgIf, ReactiveFormsModule, TuiInputRangeModule],
+        imports: [ReactiveFormsModule, TuiInputRangeModule],
         template: `
-            <tui-input-range
-                *ngIf="default"
-                [formControl]="control"
-            />
-            <tui-input-range
-                *ngIf="!default"
-                [formControl]="control"
-                [max]="max"
-                [min]="min"
-                [pluralize]="pluralize"
-                [quantum]="quantum"
-                [readOnly]="readOnly"
-                [steps]="steps"
-            />
+            @if (default) {
+                <tui-input-range [formControl]="control" />
+            }
+            @if (!default) {
+                <tui-input-range
+                    [formControl]="control"
+                    [max]="max"
+                    [min]="min"
+                    [pluralize]="pluralize"
+                    [quantum]="quantum"
+                    [readOnly]="readOnly"
+                    [steps]="steps"
+                />
+            }
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,

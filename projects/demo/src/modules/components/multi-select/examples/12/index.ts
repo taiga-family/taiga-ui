@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component, Directive} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -18,7 +17,6 @@ export class MoreOption {}
     imports: [
         FormsModule,
         MoreOption,
-        NgForOf,
         TuiDataList,
         TuiDataListDropdownManager,
         TuiDropdown,

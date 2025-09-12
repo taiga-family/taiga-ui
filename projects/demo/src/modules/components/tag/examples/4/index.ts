@@ -1,11 +1,10 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTagModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [NgForOf, TuiTagModule],
+    imports: [TuiTagModule],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

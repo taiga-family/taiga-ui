@@ -22,7 +22,7 @@ interface User {
 @Component({
     imports: [
         FormsModule,
-        NgIf,
+        NgIf, // TODO: use control flow syntax
         TuiButton,
         TuiChevron,
         TuiDataListWrapper,

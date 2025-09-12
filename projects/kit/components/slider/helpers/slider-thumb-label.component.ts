@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     type AfterContentInit,
     ChangeDetectionStrategy,
@@ -14,7 +14,7 @@ import {TuiSliderComponent} from '../slider.component';
 
 @Component({
     selector: '[tuiSliderThumbLabel]',
-    imports: [AsyncPipe, NgIf],
+    imports: [AsyncPipe],
     templateUrl: './slider-thumb-label.template.html',
     styleUrls: ['./slider-thumb-label.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

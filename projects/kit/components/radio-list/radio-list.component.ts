@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -27,7 +26,7 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
 
 @Component({
     selector: 'tui-radio-list',
-    imports: [FormsModule, NgForOf, PolymorpheusOutlet, TuiRadio, TuiValidator],
+    imports: [FormsModule, PolymorpheusOutlet, TuiRadio, TuiValidator],
     templateUrl: './radio-list.template.html',
     styleUrls: ['./radio-list.style.less'],
     encapsulation: ViewEncapsulation.None,

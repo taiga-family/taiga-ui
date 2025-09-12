@@ -1,11 +1,10 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiExpand} from '@taiga-ui/core';
 
 @Component({
-    imports: [NgForOf, TuiButton, TuiExpand],
+    imports: [TuiButton, TuiExpand],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

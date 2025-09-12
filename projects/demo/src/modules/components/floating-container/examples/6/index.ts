@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -18,7 +17,6 @@ import {TuiCell} from '@taiga-ui/layout';
 @Component({
     imports: [
         FormsModule,
-        NgIf,
         TuiAnimationPipe,
         TuiAvatar,
         TuiButton,

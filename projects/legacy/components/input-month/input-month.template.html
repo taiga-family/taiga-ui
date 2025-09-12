@@ -25,18 +25,19 @@
             ngProjectAs="input"
             select="input"
         />
-        <input
-            *ngIf="nativePicker"
-            type="month"
-            class="t-mobile"
-            [max]="nativePickerMax"
-            [min]="nativePickerMin"
-            [ngModel]="nativeValue"
-            [ngModelOptions]="{standalone: true}"
-            (click.stop.zoneless)="(0)"
-            (mousedown.stop.zoneless)="(0)"
-            (ngModelChange)="onNativeChange($event)"
-        />
+        @if (nativePicker) {
+            <input
+                type="month"
+                class="t-mobile"
+                [max]="nativePickerMax"
+                [min]="nativePickerMin"
+                [ngModel]="nativeValue"
+                [ngModelOptions]="{standalone: true}"
+                (click.stop.zoneless)="(0)"
+                (mousedown.stop.zoneless)="(0)"
+                (ngModelChange)="onNativeChange($event)"
+            />
+        }
     </tui-primitive-textfield>
 
     <ng-template #dropdown>

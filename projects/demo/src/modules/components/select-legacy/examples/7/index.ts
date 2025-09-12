@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -44,14 +43,7 @@ const CASH: Account = {
 };
 
 @Component({
-    imports: [
-        FormsModule,
-        NgForOf,
-        TuiDataList,
-        TuiMultiSelectModule,
-        TuiSelectModule,
-        TuiTitle,
-    ],
+    imports: [FormsModule, TuiDataList, TuiMultiSelectModule, TuiSelectModule, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

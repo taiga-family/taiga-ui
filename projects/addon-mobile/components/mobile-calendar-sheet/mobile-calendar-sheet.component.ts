@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiRipple} from '@taiga-ui/addon-mobile/directives';
 import {TuiLet} from '@taiga-ui/cdk/directives/let';
@@ -9,7 +8,7 @@ import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes/calendar-sheet';
 
 @Component({
     selector: 'tui-mobile-calendar-sheet',
-    imports: [NgIf, TuiCalendarSheetPipe, TuiLet, TuiRepeatTimes, TuiRipple],
+    imports: [TuiCalendarSheetPipe, TuiLet, TuiRepeatTimes, TuiRipple],
     templateUrl: './mobile-calendar-sheet.template.html',
     styleUrls: ['./mobile-calendar-sheet.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

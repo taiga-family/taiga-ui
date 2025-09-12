@@ -3,12 +3,13 @@
     tuiCardMedium
 >
     <tui-avatar-stack direction="left">
-        <tui-avatar
-            *ngFor="let url of urls"
-            size="s"
-            [src]="url | tuiFallbackSrc: '@tui.user' | async"
-            [style.background]="url | tuiAutoColor"
-        />
+        @for (url of urls; track url) {
+            <tui-avatar
+                size="s"
+                [src]="url | tuiFallbackSrc: '@tui.user' | async"
+                [style.background]="url | tuiAutoColor"
+            />
+        }
     </tui-avatar-stack>
 
     <h2 tuiTitle>
@@ -27,11 +28,12 @@
     </h2>
 
     <tui-avatar-stack direction="left">
-        <tui-avatar
-            *ngFor="let url of urls"
-            size="s"
-            [src]="url | tuiFallbackSrc: '@tui.user' | async"
-            [style.background]="url | tuiAutoColor"
-        />
+        @for (url of urls; track url) {
+            <tui-avatar
+                size="s"
+                [src]="url | tuiFallbackSrc: '@tui.user' | async"
+                [style.background]="url | tuiAutoColor"
+            />
+        }
     </tui-avatar-stack>
 </div>

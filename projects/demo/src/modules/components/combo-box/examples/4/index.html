@@ -18,11 +18,12 @@
         [items]="cities | tuiFilterByInput"
     />
 
-    <tui-icon
-        *ngIf="value"
-        icon="@tui.check"
-        style="color: var(--tui-status-positive); pointer-events: none"
-    />
+    @if (value) {
+        <tui-icon
+            icon="@tui.check"
+            style="color: var(--tui-status-positive); pointer-events: none"
+        />
+    }
 
     <tui-icon tuiTooltip="I am a hint" />
 </tui-textfield>

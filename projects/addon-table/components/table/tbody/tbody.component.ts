@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -22,7 +21,7 @@ import {TuiTableTr} from '../tr/tr.component';
 
 @Component({
     selector: 'tbody[tuiTbody]',
-    imports: [NgIf, PolymorpheusOutlet, TuiChevron, TuiIcon],
+    imports: [PolymorpheusOutlet, TuiChevron, TuiIcon],
     templateUrl: './tbody.template.html',
     styleUrls: ['./tbody.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

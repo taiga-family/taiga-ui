@@ -1,4 +1,4 @@
-import {AsyncPipe, NgFor, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -26,8 +26,6 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
     selector: 'tui-calendar-sheet',
     imports: [
         AsyncPipe,
-        NgFor,
-        NgIf,
         TuiCalendarSheetPipe,
         TuiHovered,
         TuiLet,

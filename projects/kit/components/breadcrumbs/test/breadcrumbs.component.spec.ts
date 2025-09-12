@@ -1,4 +1,3 @@
-import {NgFor} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -32,13 +31,13 @@ const ITEMS = [
 describe('Breadcrumbs Wrapper', () => {
     @Component({
         standalone: true,
-        imports: [NgFor, RouterTestingModule, TuiBreadcrumbs, TuiItem, TuiLink],
+        imports: [RouterTestingModule, TuiBreadcrumbs, TuiItem, TuiLink],
         template: `
             <tui-breadcrumbs
                 automation-id="tui-breadcrumbs-wrapper__component"
                 [size]="size"
             >
-                <ng-container *ngFor="let item of items">
+                @for (item of items; track item) {
                     <a
                         *tuiItem
                         tuiLink
@@ -46,7 +45,7 @@ describe('Breadcrumbs Wrapper', () => {
                     >
                         {{ item.caption }}
                     </a>
-                </ng-container>
+                }
             </tui-breadcrumbs>
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection

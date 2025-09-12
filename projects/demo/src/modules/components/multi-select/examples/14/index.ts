@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -13,8 +12,6 @@ interface Category {
 
 @Component({
     imports: [
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiDataListWrapper,
         TuiMultiSelectModule,

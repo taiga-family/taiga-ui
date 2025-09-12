@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -23,15 +23,7 @@ import {TuiTreeItem} from '../tree-item/tree-item.component';
 
 @Component({
     selector: 'tui-tree',
-    imports: [
-        AsyncPipe,
-        NgForOf,
-        NgIf,
-        PolymorpheusOutlet,
-        TuiLet,
-        TuiTreeItem,
-        TuiTreeNode,
-    ],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiLet, TuiTreeItem, TuiTreeNode],
     templateUrl: './tree.template.html',
     styleUrls: ['./tree.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

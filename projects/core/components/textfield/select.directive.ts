@@ -1,4 +1,4 @@
-import {DOCUMENT, NgFor, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
@@ -12,7 +12,6 @@ import {tuiAsTextfieldAccessor} from './textfield-accessor';
  */
 @Component({
     selector: 'select[tuiTextfield]',
-    imports: [NgFor, NgIf],
     templateUrl: './select.template.html',
     // We want this template to follow change detection to parent textfield.
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection

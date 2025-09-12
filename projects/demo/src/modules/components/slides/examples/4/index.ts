@@ -1,4 +1,3 @@
-import {NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
 import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -11,9 +10,6 @@ import {TuiAppBar, TuiCard, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        NgIf,
-        NgSwitch,
-        NgSwitchCase,
         TuiAppBar,
         TuiAppearance,
         TuiAvatar,

@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -12,7 +11,6 @@ import {ExampleMyAccount, type MyAccount} from './account';
 @Component({
     imports: [
         ExampleMyAccount,
-        NgForOf,
         ReactiveFormsModule,
         TuiDataList,
         TuiSelectModule,

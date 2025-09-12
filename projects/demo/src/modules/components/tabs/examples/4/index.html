@@ -1,5 +1,5 @@
 <tui-tabs [(activeItemIndex)]="activeItemIndex">
-    <ng-container *ngFor="let step of steps; let last = last">
+    @for (step of steps; track step; let last = $last) {
         <button
             tuiTab
             type="button"
@@ -9,12 +9,13 @@
         >
             {{ step }}
         </button>
-        <tui-icon
-            *ngIf="!last"
-            icon="@tui.chevron-right"
-            class="separator"
-        />
-    </ng-container>
+        @if (!last) {
+            <tui-icon
+                icon="@tui.chevron-right"
+                class="separator"
+            />
+        }
+    }
 </tui-tabs>
 
 <tui-textfield class="tui-space_top-4">

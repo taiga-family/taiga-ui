@@ -1,28 +1,27 @@
-<ng-container *ngIf="texts$ | async as texts">
+@if (texts$ | async; as texts) {
     <span class="t-pages">
-        <ng-container *ngIf="showPages">
+        @if (showPages) {
             {{ texts.pages }}
             <strong class="t-strong">{{ pages }}</strong>
-        </ng-container>
+        }
     </span>
     <span automation-id="tui-table-pagination__lines-per-page-wrapper">
         {{ texts.linesPerPage }}
-
-        <button
-            *ngIf="total !== 0; else zeroTotal"
-            tuiLink
-            type="button"
-            [tuiDropdown]="content"
-            [(tuiDropdownOpen)]="open"
-        >
-            <strong>{{ start + 1 }}–{{ end }}</strong>
-        </button>
-        <ng-template #zeroTotal>
+        @if (total !== 0) {
+            <button
+                tuiLink
+                type="button"
+                [tuiDropdown]="content"
+                [(tuiDropdownOpen)]="open"
+            >
+                <strong>{{ start + 1 }}–{{ end }}</strong>
+            </button>
+        } @else {
             <strong>0 - 0</strong>
-        </ng-template>
+        }
         <ng-template #content>
             <tui-data-list size="s">
-                <ng-container *ngFor="let item of items">
+                @for (item of items; track item) {
                     <button
                         tuiOption
                         type="button"
@@ -34,23 +33,22 @@
                         >
                             {{ text }}
                         </ng-container>
-                        <tui-icon
-                            *ngIf="item === size; else fakeIcon"
-                            class="t-checkmark"
-                            [icon]="commonIcons.check"
-                        />
-
-                        <ng-template #fakeIcon>
+                        @if (item === size) {
+                            <tui-icon
+                                class="t-checkmark"
+                                [icon]="commonIcons.check"
+                            />
+                        } @else {
                             <span class="t-checkmark"></span>
-                        </ng-template>
+                        }
                     </button>
-                </ng-container>
+                }
             </tui-data-list>
         </ng-template>
         {{ texts.of }}
         <strong class="t-strong">{{ total }}</strong>
     </span>
-    <ng-container *ngIf="spinTexts$ | async as spinTexts">
+    @if (spinTexts$ | async; as spinTexts) {
         <button
             appearance="icon"
             size="xs"
@@ -75,5 +73,5 @@
         >
             {{ spinTexts[1] }}
         </button>
-    </ng-container>
-</ng-container>
+    }
+}

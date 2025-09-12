@@ -18,14 +18,15 @@
 >
     <tui-data-list>
         <tui-opt-group>
-            <button
-                *ngFor="let item of items"
-                tuiOption
-                type="button"
-                (click)="onClick()"
-            >
-                {{ item }}
-            </button>
+            @for (item of items; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    (click)="onClick()"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-opt-group>
         <tui-opt-group>
             <button

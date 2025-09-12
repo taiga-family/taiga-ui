@@ -9,15 +9,16 @@
     />
     <ng-container *tuiDataList>
         <tui-data-list>
-            <button
-                *ngFor="let item of items | tuiFilterByInput"
-                tuiOption
-                type="button"
-                [disabled]="item.disabled"
-                [value]="item"
-            >
-                {{ stringify(item) }}
-            </button>
+            @for (item of items | tuiFilterByInput; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [disabled]="item.disabled"
+                    [value]="item"
+                >
+                    {{ stringify(item) }}
+                </button>
+            }
         </tui-data-list>
     </ng-container>
 </tui-combo-box>

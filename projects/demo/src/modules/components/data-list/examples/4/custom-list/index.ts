@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -26,8 +25,6 @@ interface Items<T> {
     selector: 'custom-list',
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiAutoFocus,
         TuiDataList,
         TuiFilterPipe,

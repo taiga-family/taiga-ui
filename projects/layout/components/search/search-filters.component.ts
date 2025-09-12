@@ -1,4 +1,4 @@
-import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     type AfterContentInit,
     ChangeDetectionStrategy,
@@ -35,7 +35,7 @@ const WIDTH = 12;
 
 @Component({
     selector: 'tui-search-filters',
-    imports: [NgForOf, NgIf, NgTemplateOutlet, TuiButton, TuiSearchFilterComponent],
+    imports: [NgTemplateOutlet, TuiButton, TuiSearchFilterComponent],
     templateUrl: './search-filters.template.html',
     styleUrls: ['./search-filters.styles.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

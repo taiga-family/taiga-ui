@@ -1,4 +1,4 @@
-import {KeyValuePipe, NgForOf, NgIf} from '@angular/common';
+import {KeyValuePipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -11,8 +11,6 @@ import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [
         KeyValuePipe,
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiAppearance,
         TuiAutoFocus,

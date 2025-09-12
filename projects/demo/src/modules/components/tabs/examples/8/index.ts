@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet, type Routes} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -73,7 +72,7 @@ export const routes: Routes = [
 ];
 
 @Component({
-    imports: [NgForOf, RouterLink, RouterLinkActive, RouterOutlet, TuiTabs],
+    imports: [RouterLink, RouterLinkActive, RouterOutlet, TuiTabs],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

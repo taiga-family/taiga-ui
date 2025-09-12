@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -18,7 +18,6 @@ import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
 @Component({
     imports: [
         AsyncPipe,
-        NgIf,
         ReactiveFormsModule,
         TuiAppearance,
         TuiButton,

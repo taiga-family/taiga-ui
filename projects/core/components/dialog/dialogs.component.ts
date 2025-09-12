@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
@@ -12,7 +11,6 @@ import {TUI_DIALOGS} from './dialog.tokens';
 @Component({
     selector: 'tui-dialogs',
     imports: [
-        NgForOf,
         PolymorpheusOutlet,
         TuiAnimatedParent,
         TuiFocusTrap,
