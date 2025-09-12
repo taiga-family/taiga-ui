@@ -1,4 +1,4 @@
-<tui-combo-box
+<!-- <tui-combo-box
     tuiDropdownMobile
     [tuiTextfieldCleaner]="true"
     [(ngModel)]="country"
@@ -8,7 +8,21 @@
         *tuiDataList
         [items]="countries$ | async | tuiFilterByInput"
     />
-</tui-combo-box>
+</tui-combo-box> -->
+
+<tui-textfield
+    tuiChevron
+    tuiDropdownMobile
+    [(ngModel)]="country"
+>
+    <label tuiLabel>Country</label>
+
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [items]="countries$ | async | tuiFilterByInput"
+    />
+</tui-textfield>
 
 <tui-textfield
     tuiChevron
@@ -29,7 +43,7 @@
     />
 </tui-textfield>
 
-<tui-multi-select
+<!-- <tui-multi-select
     tuiDropdownMobile
     class="tui-space_vertical-4"
     [stringify]="stringify"
@@ -57,7 +71,51 @@
             Done
         </button>
     </ng-container>
-</tui-multi-select>
+</tui-multi-select> -->
+
+<tui-textfield
+    multi
+    tuiChevron
+    [stringify]="stringify"
+>
+    <label tuiLabel>Pick more users</label>
+
+    <input
+        tuiInputChip
+        [(ngModel)]="selected"
+    />
+    <tui-input-chip *tuiItem />
+    <tui-data-list-wrapper
+        tuiMultiSelectGroup
+        [itemContent]="template"
+        [items]="users | tuiFilterByInput"
+    />
+    <button
+        appearance="accent"
+        size="m"
+        tuiButton
+        tuiDropdownButton
+        type="button"
+        (click)="open.set(false)"
+    >
+        Done
+    </button>
+    <!-- <tui-data-list *tuiTextfieldDropdown>
+            <tui-opt-group
+                label="Pythons"
+                tuiMultiSelectGroup
+            >
+                <button
+                    *ngFor="let user of users | tuiFilterByInput"
+                    new
+                    tuiOption
+                    [value]="user"
+                >
+                    {{ user.name }}
+                </button>
+            </tui-opt-group>
+        </tui-data-list> -->
+</tui-textfield>
 
 <tui-textfield class="tui-space_vertical-4">
     <label tuiLabel>Sum</label>

@@ -6,23 +6,27 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiDropdown, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiButton,
+    TuiDataList,
+    TuiDropdown,
+    TuiTextfield,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiAvatar,
     TuiChevron,
+    TuiComboBox,
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
+    TuiInputChip,
     TuiInputNumber,
     TuiSelect,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
-import {
-    TuiComboBoxModule,
-    TuiMultiSelectModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 interface User {
@@ -40,18 +44,19 @@ interface User {
         TuiButton,
         TuiCell,
         TuiChevron,
-        TuiComboBoxModule,
+        TuiComboBox,
+        TuiDataList,
         TuiDataListWrapper,
         TuiDropdown,
         TuiDropdownMobile,
         TuiFade,
         TuiFilterByInputPipe,
         TuiInputNumber,
-        TuiMultiSelectModule,
         TuiSelect,
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
+        TuiInputChip,
     ],
     templateUrl: './index.html',
     encapsulation,

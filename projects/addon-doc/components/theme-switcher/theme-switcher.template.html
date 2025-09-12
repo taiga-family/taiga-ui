@@ -1,7 +1,9 @@
-<tui-select
-    [ngModel]="theme"
-    (ngModelChange)="onTheme($event)"
->
+<label tuiTextfield>
+    <input
+        tuiSelect
+        [ngModel]="theme"
+        (ngModelChange)="onTheme($event)"
+    />
     <ng-content />
     <tui-data-list *tuiDataList>
         <button
@@ -19,4 +21,4 @@
             {{ key }}
         </button>
     </tui-data-list>
-</tui-select>
+</label>

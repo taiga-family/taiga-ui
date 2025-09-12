@@ -1,13 +1,31 @@
 <form [formGroup]="form">
-    <tui-combo-box formControlName="user">
+    <!-- <tui-combo-box formControlName="user">
         Search by last name
         <tui-data-list-wrapper
             *tuiDataList
             [items]="items | tuiFilterByInput: matcherString"
         />
-    </tui-combo-box>
+    </tui-combo-box> -->
 
-    <tui-combo-box
+    <tui-textfield
+        tuiChevron
+        [tuiTextfieldCleaner]="false"
+    >
+        <label tuiLabel>Search by last name</label>
+
+        <input
+            formControlName="user"
+            tuiComboBox
+        />
+
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            [items]="items | tuiFilterByInput: matcherString"
+        />
+    </tui-textfield>
+
+    <!-- <tui-combo-box
         formControlName="user2"
         class="tui-space_top-5"
         [stringify]="stringify"
@@ -18,5 +36,24 @@
             [itemContent]="stringify | tuiStringifyContent"
             [items]="users | tuiFilterByInput: matcherUser"
         />
-    </tui-combo-box>
+    </tui-combo-box> -->
+
+    <tui-textfield
+        tuiChevron
+        [tuiTextfieldCleaner]="false"
+    >
+        <label tuiLabel>With ids</label>
+
+        <input
+            formControlName="user"
+            tuiComboBox
+        />
+
+        <tui-data-list-wrapper
+            *tuiTextfieldDropdown
+            new
+            [itemContent]="stringify | tuiStringifyContent"
+            [items]="users | tuiFilterByInput: matcherUser"
+        />
+    </tui-textfield>
 </form>

@@ -15,7 +15,7 @@ import {
     TuiTextfield,
     TuiTextfieldDirective,
 } from '@taiga-ui/core';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiMultiSelect} from '@taiga-ui/kit';
 
 interface Items<T> {
     readonly items: readonly T[];
@@ -31,8 +31,8 @@ interface Items<T> {
         TuiAutoFocus,
         TuiDataList,
         TuiFilterPipe,
+        TuiMultiSelect,
         TuiLet,
-        TuiMultiSelectModule,
         TuiTextfield,
     ],
     templateUrl: './index.html',

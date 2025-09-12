@@ -2,22 +2,24 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfield} from '@taiga-ui/core';
 import {
+    TuiComboBox,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
     TuiStringifyContentPipe,
     TuiStringifyPipe,
 } from '@taiga-ui/kit';
-import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         FormsModule,
-        TuiComboBoxModule,
+        TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
         TuiStringifyPipe,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

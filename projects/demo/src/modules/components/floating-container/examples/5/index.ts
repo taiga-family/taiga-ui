@@ -12,13 +12,14 @@ import {
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 import {
-    TUI_DEFAULT_INPUT_COLORS,
-    tuiColorSelectorOptionsProvider,
-    TuiInputColorModule,
-} from '@taiga-ui/legacy';
+    TuiAvatar,
+    TuiFloatingContainer,
+    TuiInputColor,
+    tuiInputColorOptionsProvider,
+    TuiSwitch,
+} from '@taiga-ui/kit';
+import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -28,7 +29,7 @@ import {
         TuiButton,
         TuiCell,
         TuiFloatingContainer,
-        TuiInputColorModule,
+        TuiInputColor,
         TuiLabel,
         TuiRepeatTimes,
         TuiSwitch,
@@ -39,7 +40,7 @@ import {
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [tuiColorSelectorOptionsProvider({selectorMode: false})],
+    providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'right'})],
     animations: [tuiSlideInTop, tuiHeightCollapse],
 })
 export default class Example {
@@ -48,6 +49,5 @@ export default class Example {
 
     protected background = true;
 
-    protected readonly palette = TUI_DEFAULT_INPUT_COLORS;
     protected color = 'rgba(255, 221, 45, 0.8)';
 }

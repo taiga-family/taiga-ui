@@ -10,3 +10,35 @@
         [items]="items | tuiFilterByInput"
     />
 </tui-multi-select>
+
+<tui-textfield
+    multi
+    tuiChevron
+>
+    <input
+        tuiInputChip
+        tuiSelectLike
+        [formControl]="control"
+    />
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        tuiMultiSelectGroup
+        [items]="items"
+    />
+    <!-- <tui-data-list *tuiTextfieldDropdown>
+        <tui-opt-group
+            label="Pythons"
+            tuiMultiSelectGroup
+        >
+            <button
+                *ngFor="let user of users | tuiFilterByInput"
+                new
+                tuiOption
+                [value]="user"
+            >
+                {{ user.name }}
+            </button>
+        </tui-opt-group>
+    </tui-data-list> -->
+</tui-textfield>

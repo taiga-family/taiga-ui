@@ -24,7 +24,24 @@
             />
         </div>
         <div>
-            <tui-multi-select
+            <tui-textfield
+                multi
+                tuiChevron
+                [tuiTextfieldLabelOutside]="true"
+            >
+                <input
+                    formControlName="multiSelectControl"
+                    tuiInputChip
+                />
+                <tui-input-chip *tuiItem />
+                <tui-data-list-wrapper
+                    *tuiTextfieldDropdown
+                    tuiMultiSelectGroup
+                    [items]="items"
+                />
+                >
+            </tui-textfield>
+            <!-- <tui-multi-select
                 formControlName="multiSelectControl"
                 tuiHintContent="Write house building"
                 [editable]="false"
@@ -38,7 +55,7 @@
                     tuiMultiSelectGroup
                     [items]="items"
                 />
-            </tui-multi-select>
+            </tui-multi-select> -->
             <tui-error
                 formControlName="multiSelectControl"
                 [error]="[] | tuiFieldError | async"

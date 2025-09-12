@@ -84,17 +84,19 @@
                 class="t-cell t-cell_value"
             >
                 <ng-container *ngIf="propertyConnector.shouldShowValues; else elseEmitter">
-                    <tui-select
+                    <label
                         *ngIf="propertyConnector.hasItems; else noItems"
                         tuiDropdownLimitWidth="min"
+                        tuiTextfield
                         tuiTextfieldSize="m"
-                        [nativeId]="propertyConnector.attrName"
-                        [ngModel]="propertyConnector.documentationPropertyValue"
-                        [tuiTextfieldCleaner]="propertyConnector.documentationPropertyType | tuiShowCleanerPipe"
-                        [tuiTextfieldLabelOutside]="true"
-                        [valueContent]="selectContent"
-                        (ngModelChange)="propertyConnector.onValueChange($event)"
                     >
+                        <input
+                            tuiSelect
+                            [attr.id]="propertyConnector.attrName"
+                            [ngModel]="propertyConnector.documentationPropertyValue"
+                            [tuiTextfieldCleaner]="propertyConnector.documentationPropertyType | tuiShowCleanerPipe"
+                            (ngModelChange)="propertyConnector.onValueChange($event)"
+                        />
                         <code class="t-exception">null</code>
                         <tui-data-list-wrapper
                             *tuiDataList
@@ -102,7 +104,7 @@
                             [itemContent]="selectContent"
                             [items]="propertyConnector.documentationPropertyValues"
                         />
-                    </tui-select>
+                    </label>
                     <ng-template
                         #selectContent
                         let-data
