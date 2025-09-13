@@ -83,18 +83,21 @@
                         <td class="t-cell t-cell_value">
                             @if (propertyConnector.shouldShowValues) {
                                 @if (propertyConnector.hasItems) {
-                                    <tui-select
+                                    <label
+                                        *ngIf="propertyConnector.hasItems; else noItems"
                                         tuiDropdownLimitWidth="min"
+                                        tuiTextfield
                                         tuiTextfieldSize="m"
-                                        [nativeId]="propertyConnector.attrName"
-                                        [ngModel]="propertyConnector.documentationPropertyValue"
-                                        [tuiTextfieldCleaner]="
-                                            propertyConnector.documentationPropertyType | tuiShowCleanerPipe
-                                        "
-                                        [tuiTextfieldLabelOutside]="true"
-                                        [valueContent]="selectContent"
-                                        (ngModelChange)="propertyConnector.onValueChange($event)"
                                     >
+                                        <input
+                                            tuiSelect
+                                            [attr.id]="propertyConnector.attrName"
+                                            [ngModel]="propertyConnector.documentationPropertyValue"
+                                            [tuiTextfieldCleaner]="
+                                                propertyConnector.documentationPropertyType | tuiShowCleanerPipe
+                                            "
+                                            (ngModelChange)="propertyConnector.onValueChange($event)"
+                                        />
                                         <code class="t-exception">null</code>
                                         <tui-data-list-wrapper
                                             *tuiDataList
@@ -102,7 +105,7 @@
                                             [itemContent]="selectContent"
                                             [items]="propertyConnector.documentationPropertyValues"
                                         />
-                                    </tui-select>
+                                    </label>
                                 } @else {
                                     @switch (propertyConnector.documentationPropertyType) {
                                         @case ('boolean') {

@@ -61,20 +61,24 @@
                                 tuiGroup
                                 class="t-form-controls"
                             >
-                                <tui-select
-                                    automation-id="tui-demo-select__expand-update-on"
+                                <label
+                                    tuiTextfield
                                     tuiTextfieldSize="s"
                                     class="t-select"
-                                    [ngModel]="updateOn"
-                                    [ngModelOptions]="{standalone: true}"
-                                    (ngModelChange)="updateOnChange($event)"
                                 >
                                     updateOn
+                                    <input
+                                        automation-id="tui-demo-select__expand-update-on"
+                                        tuiSelect
+                                        [ngModel]="updateOn"
+                                        [ngModelOptions]="{standalone: true}"
+                                        (ngModelChange)="updateOnChange($event)"
+                                    />
                                     <tui-data-list-wrapper
                                         *tuiDataList
                                         [items]="updateOnVariants"
                                     />
-                                </tui-select>
+                                </label>
                                 <button
                                     automation-id="tui-demo-button__reset-state"
                                     size="s"

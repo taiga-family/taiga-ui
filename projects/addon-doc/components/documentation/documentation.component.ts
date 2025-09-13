@@ -29,8 +29,8 @@ import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TuiBadge} from '@taiga-ui/kit/components/badge';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
+import {TuiSelect} from '@taiga-ui/kit/components/select';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
-import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {merge, switchMap} from 'rxjs';
 
@@ -57,7 +57,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiInspectPipe,
         TuiIsOptionalPipe,
         TuiNotification,
-        TuiSelectModule,
+        TuiSelect,
         TuiShowCleanerPipe,
         TuiStripOptionalPipe,
         TuiSwitch,

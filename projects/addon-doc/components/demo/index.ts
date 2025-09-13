@@ -32,9 +32,9 @@ import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
+import {TuiSelect} from '@taiga-ui/kit/components/select';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
-import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {skip} from 'rxjs';
 
@@ -54,7 +54,7 @@ const MIN_WIDTH = 160;
         TuiGroup,
         TuiResizable,
         TuiResizer,
-        TuiSelectModule,
+        TuiSelect,
         TuiSwitch,
         TuiTextfieldControllerModule,
     ],

@@ -1,7 +1,14 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiButton, TuiDialog, TuiHint, TuiRoot} from '@taiga-ui/core';
-import {TuiSelectModule} from '@taiga-ui/legacy';
+import {
+    TuiButton,
+    TuiDataList,
+    TuiDialog,
+    TuiHint,
+    TuiRoot,
+    TuiTextfield,
+} from '@taiga-ui/core';
+import {TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -10,21 +17,26 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
         TuiDialog,
         TuiHint,
         TuiRoot,
-        TuiSelectModule,
+        TuiSelect,
+        TuiTextfield,
+        TuiDataListWrapper,
+        TuiDataList,
     ],
     template: `
         <tui-root>
             <form class="b-form">
-                <tui-select
-                    tuiHintContent="test"
-                    [formControl]="testValue"
-                >
+                <label tuiTextfield>
                     Character
+                    <input
+                        tuiHintContent="test"
+                        tuiSelect
+                        [formControl]="testValue"
+                    />
                     <tui-data-list-wrapper
                         *tuiDataList
                         [items]="items"
                     />
-                </tui-select>
+                </label>
                 <br />
                 <button
                     tuiButton
@@ -37,17 +49,18 @@ import {TuiSelectModule} from '@taiga-ui/legacy';
                 <br />
                 <br />
                 <tui-root>
-                    <tui-select
-                        tuiHintContent="test"
-                        [formControl]="testValue"
-                    >
+                    <label tuiTextfield>
                         Nested character
-
+                        <input
+                            tuiHintContent="test"
+                            tuiSelect
+                            [formControl]="testValue"
+                        />
                         <tui-data-list-wrapper
                             *tuiDataList
                             [items]="items"
                         />
-                    </tui-select>
+                    </label>
                     <br />
                     <button
                         tuiButton
@@ -93,7 +106,7 @@ describe('Nested root', () => {
         cy.get('body').compareSnapshot('tui-nested-root__2');
         cy.get('body').click();
 
-        cy.get('tui-select').eq(1).click();
+        cy.get('input[tuiSelect]').eq(1).click();
         cy.get('body').compareSnapshot('tui-nested-root__3');
 
         cy.get('tui-data-list button').eq(1).click();

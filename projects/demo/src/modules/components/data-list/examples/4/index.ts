@@ -2,13 +2,9 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    type TuiContext,
-    type TuiIdentityMatcher,
-    type TuiStringHandler,
-} from '@taiga-ui/cdk';
-import {TuiDataList} from '@taiga-ui/core';
-import {TuiSelectModule} from '@taiga-ui/legacy';
+import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
+import {TuiSelect} from '@taiga-ui/kit';
 
 import {CustomListComponent} from './custom-list';
 
@@ -38,7 +34,7 @@ const EXPENSES = {
 };
 
 @Component({
-    imports: [CustomListComponent, FormsModule, TuiDataList, TuiSelectModule],
+    imports: [CustomListComponent, FormsModule, TuiDataList, TuiTextfield, TuiSelect],
     templateUrl: './index.html',
     styles: [
         `
@@ -55,22 +51,7 @@ export default class Example {
 
     protected readonly items = [INCOME, EXPENSES];
 
-    protected readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (
-        items1,
-        items2,
-    ) => items1.length === items2.length && items1.every((item) => items2.includes(item));
-
     protected readonly valueContent: TuiStringHandler<TuiContext<readonly string[]>> = ({
         $implicit,
-    }) => {
-        if (!$implicit.length) {
-            return 'All';
-        }
-
-        const selected = this.items.find(({items}) =>
-            this.identityMatcher($implicit, items),
-        );
-
-        return selected ? `${selected.name} only` : `Selected: ${$implicit.length}`;
-    };
+    }) => (!$implicit.length ? 'All' : `Selected: ${$implicit.length}`);
 }

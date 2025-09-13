@@ -1,16 +1,20 @@
-<label>
-    Type a name:
-    <tui-combo-box
-        [formControl]="control"
-        [stringify]="stringify"
-        [tuiTextfieldLabelOutside]="true"
-    >
-        Account
+<tui-textfield
+    tuiChevron
+    [stringify]="stringify"
+    [tuiTextfieldCleaner]="false"
+    [tuiTextfieldLabelOutside]="true"
+>
+    <label tuiLabel>Type a name:</label>
 
-        <tui-data-list-wrapper
-            *tuiDataList
-            [itemContent]="stringify | tuiStringifyContent"
-            [items]="items | tuiFilterByInput"
-        />
-    </tui-combo-box>
-</label>
+    <input
+        tuiComboBox
+        [formControl]="control"
+    />
+
+    <tui-data-list-wrapper
+        *tuiTextfieldDropdown
+        new
+        [itemContent]="stringify | tuiStringifyContent"
+        [items]="items | tuiFilterByInput"
+    />
+</tui-textfield>
