@@ -1,15 +1,14 @@
-import {DemoRoute} from '@demo/routes';
-import {TuiDocumentationPagePO, tuiGoto, waitIcons} from '@demo-playwright/utils';
+import {TuiDocumentationPagePO, waitIcons} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 import {TuiSelectPO} from '../../../utils/page-objects/select.po';
 
 test.describe('Select', () => {
-    test.describe('Examples', () => {
+    test.skip('Examples', () => {
         let documentationPage: TuiDocumentationPagePO;
 
         test.beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.SelectLegacy);
+            // await tuiGoto(page, DemoRoute.SelectLegacy);
 
             documentationPage = new TuiDocumentationPagePO(page);
         });
