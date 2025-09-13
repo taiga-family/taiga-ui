@@ -64,12 +64,4 @@ export const TUI_USED_ICONS = [
     '@tui.minimize',
     '@tui.filter',
     '@tui.layout-grid',
-    '@tui.move-up-right',
-    '@tui.move-right',
-    '@tui.move-down-right',
-    '@tui.move-down',
-    '@tui.move-down-left',
-    '@tui.move-left',
-    '@tui.move-up-left',
-    '@tui.move-up',
 ] as const;
