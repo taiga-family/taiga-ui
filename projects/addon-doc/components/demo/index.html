@@ -61,8 +61,8 @@
                                 tuiGroup
                                 class="t-form-controls"
                             >
-                                <label
-                                    tuiTextfield
+                                <tui-textfield
+                                    tuiChevron
                                     tuiTextfieldSize="s"
                                     class="t-select"
                                 >
@@ -75,10 +75,11 @@
                                         (ngModelChange)="updateOnChange($event)"
                                     />
                                     <tui-data-list-wrapper
-                                        *tuiDataList
+                                        *tuiTextfieldDropdown
+                                        new
                                         [items]="updateOnVariants"
                                     />
-                                </label>
+                                </tui-textfield>
                                 <button
                                     automation-id="tui-demo-button__reset-state"
                                     size="s"
