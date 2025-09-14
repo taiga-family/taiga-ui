@@ -1,6 +1,9 @@
 <tui-textfield
+    tuiChevron
     class="control"
+    [content]="valueContent"
     [identityMatcher]="identityMatcher"
+    [tuiTextfieldCleaner]="false"
 >
     <label tuiLabel>Open-source budget</label>
 
@@ -10,7 +13,8 @@
     />
 
     <custom-list
-        *tuiDataList
+        *tuiTextfieldDropdown
+        new
         [items]="items"
     />
 </tui-textfield>

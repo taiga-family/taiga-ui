@@ -8,7 +8,7 @@ import {
     type TuiStringHandler,
 } from '@taiga-ui/cdk';
 import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
-import {TuiSelect} from '@taiga-ui/kit';
+import {TuiChevron, TuiSelect} from '@taiga-ui/kit';
 
 import {CustomListComponent} from './custom-list';
 
@@ -38,7 +38,14 @@ const EXPENSES = {
 };
 
 @Component({
-    imports: [CustomListComponent, FormsModule, TuiDataList, TuiTextfield, TuiSelect],
+    imports: [
+        CustomListComponent,
+        FormsModule,
+        TuiDataList,
+        TuiTextfield,
+        TuiSelect,
+        TuiChevron,
+    ],
     templateUrl: './index.html',
     styles: [
         `
