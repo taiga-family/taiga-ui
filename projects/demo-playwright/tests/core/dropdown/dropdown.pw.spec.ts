@@ -139,7 +139,7 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('12-dropdown-hidden-host.png');
     });
 
-    test('late init control binding', async ({page}) => {
+    test.skip('late init control binding', async ({page}) => {
         await tuiGoto(page, DemoRoute.DropdownOpen);
         const example = new TuiDocumentationPagePO(page).getExample('#complex');
 

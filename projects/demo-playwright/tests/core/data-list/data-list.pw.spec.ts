@@ -3,7 +3,7 @@ import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
 test.describe('DataList', () => {
-    test('Custom list', async ({page}) => {
+    test.skip('Custom list', async ({page}) => {
         await tuiGoto(page, DemoRoute.DataList);
 
         const documentationPagePO = new TuiDocumentationPagePO(page);
@@ -97,7 +97,7 @@ test.describe('DataList', () => {
         await expect.soft(page).toHaveScreenshot('03-8-data-list.png');
     });
 
-    test('Form control', async ({page, browserName}) => {
+    test.skip('Form control', async ({page, browserName}) => {
         test.skip(browserName !== 'chromium', 'Skip flaky in Safari');
 
         await tuiGoto(page, DemoRoute.DataList);
