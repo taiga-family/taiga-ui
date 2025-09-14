@@ -29,6 +29,7 @@
                 tuiChevron
                 [rows]="1"
                 [style.border-radius]="'inherit'"
+                [tuiTextfieldCleaner]="false"
             >
                 <input
                     formControlName="multiSelectControl"
@@ -42,7 +43,6 @@
                     tuiMultiSelectGroup
                     [items]="items"
                 />
-                >
                 <tui-icon tuiTooltip="Write house building" />
             </tui-textfield>
             <tui-error

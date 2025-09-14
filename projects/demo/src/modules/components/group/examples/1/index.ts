@@ -12,6 +12,7 @@ import {
     TuiTextfield,
 } from '@taiga-ui/core';
 import {
+    TuiChevron,
     TuiDataListWrapper,
     TuiFieldErrorPipe,
     TuiInputChip,
@@ -35,6 +36,7 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiTextfieldControllerModule,
         TuiTextfield,
         TuiIcon,
+        TuiChevron,
         TuiSelectLike,
         TuiMultiSelect,
     ],

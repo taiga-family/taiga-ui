@@ -15,7 +15,7 @@ describe('DropdownMobile for textfields', () => {
         const documentation = new TuiDocumentationPagePO(page);
         const example = documentation.getExample('#mobile');
 
-        await example.locator('[tuiSelect]').first().click();
+        await example.locator('[tuiSelect]').nth(1).click();
         await page.locator('tui-dropdown-mobile [tuiOption]').first().hover();
 
         await documentation.hideContent();
