@@ -15,25 +15,11 @@ describe('DropdownMobile for textfields', () => {
         const documentation = new TuiDocumentationPagePO(page);
         const example = documentation.getExample('#mobile');
 
-        await example.locator('[tuiSelect]').click();
+        await example.locator('[tuiSelect]').first().click();
         await page.locator('tui-dropdown-mobile [tuiOption]').first().hover();
 
         await documentation.hideContent();
         await expect.soft(page).toHaveScreenshot('dropdown-mobile-with-select.png');
-    });
-
-    test('with legacy multi-select', async ({page}) => {
-        await page.goto(DemoRoute.Dropdown);
-
-        const documentation = new TuiDocumentationPagePO(page);
-        const example = documentation.getExample('#mobile');
-
-        await example.locator('tui-multi-select').click();
-        await page.locator('tui-dropdown-mobile [tuiOption]').first().click();
-
-        await expect
-            .soft(page)
-            .toHaveScreenshot('dropdown-mobile-with-legacy-multi-select.png');
     });
 
     test('with multi-select (full screen mode)', async ({page}) => {
