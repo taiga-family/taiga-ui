@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.54.0](https://github.com/taiga-family/taiga-ui/compare/v4.53.0...v4.54.0) (2025-09-15)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** update button's spec ([#11929](https://github.com/taiga-family/taiga-ui/issues/11929))
+  ([d2e28b9](https://github.com/taiga-family/taiga-ui/commit/d2e28b9a4df03e923339eb5746e1abf0e5da838d))
+- **cdk:** `Transitioned` fix for `Textfield` and `Switch`
+  ([#11874](https://github.com/taiga-family/taiga-ui/issues/11874))
+  ([0b2e480](https://github.com/taiga-family/taiga-ui/commit/0b2e4801a394c3bfaca5673e01485ab966b64547))
+- **kit:** `InputNumber` updateOn: "blur" ([#11901](https://github.com/taiga-family/taiga-ui/issues/11901))
+  ([2cc325f](https://github.com/taiga-family/taiga-ui/commit/2cc325f63c200e381ad22cc45fd00130229a0eb8))
+- **kit:** Safari bug where line clamp ellipsis doesn't hide properly
+  ([#11872](https://github.com/taiga-family/taiga-ui/issues/11872))
+  ([17aca0e](https://github.com/taiga-family/taiga-ui/commit/17aca0e4b71394f31c90ddb3b021618e4f9e2dd6))
+- **kit:** update pager by new specification ([#11881](https://github.com/taiga-family/taiga-ui/issues/11881))
+  ([bb53f4d](https://github.com/taiga-family/taiga-ui/commit/bb53f4d6f6a24b08aa0e58988c674a46c3d03e06))
+- **kit:** update switch by correct specification ([#11891](https://github.com/taiga-family/taiga-ui/issues/11891))
+  ([80f0139](https://github.com/taiga-family/taiga-ui/commit/80f0139fdb629afad1a202e8fb9ca6b29ce14ee7))
+
 ## [4.53.0](https://github.com/taiga-family/taiga-ui/compare/v4.52.0...v4.53.0) (2025-09-08)
 
 ### 🚀 Features
