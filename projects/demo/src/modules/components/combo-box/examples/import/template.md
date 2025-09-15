@@ -7,6 +7,7 @@
 
   <tui-data-list-wrapper
     *tuiTextfieldDropdown
+    new
     [items]="items"
   />
 </tui-textfield>
