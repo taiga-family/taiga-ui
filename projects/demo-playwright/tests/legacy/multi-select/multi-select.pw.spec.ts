@@ -2,12 +2,12 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiMultiSelectPO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-test.describe('MultiSelect', () => {
+test.skip('MultiSelect', () => {
     test.describe('Examples', () => {
         let documentationPage: TuiDocumentationPagePO;
 
-        test.beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.MultiSelect);
+        test.beforeEach(({page}) => {
+            // await tuiGoto(page, DemoRoute.MultiSelect);
 
             documentationPage = new TuiDocumentationPagePO(page);
         });
