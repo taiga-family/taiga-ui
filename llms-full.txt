@@ -11949,14 +11949,13 @@ export class Example {}
 ### Example
 
 ```html
-<tui-thumbnail-card [iconEnd]="controlIcons.iconEnd" [iconStart]="controlIcons.iconStart" [monoHandler]="monoHandler" [paymentSystem]="paymentSystem" [size]="size" [style.background]="background" > {{ contentProjection }} </tui-thumbnail-card>
+<tui-thumbnail-card [iconEnd]="controlIcons.iconEnd" [iconStart]="controlIcons.iconStart" [paymentSystem]="paymentSystem" [size]="size" [style.background]="background" > {{ contentProjection }} </tui-thumbnail-card>
 ```
 
 ### API
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [monoHandler] | `TuiBooleanHandler<TuiPaymentSystem>` | Whether to use colored icon for particular payment system |
 | [paymentSystem] | `TuiPaymentSystem | null` | Payment system |
 | [size] | `TuiSizeXS | TuiSizeL` | Size |
 
@@ -11972,7 +11971,6 @@ import {
     type TuiPaymentSystem,
     TuiThumbnailCard,
 } from '@taiga-ui/addon-commerce';
-import {TUI_TRUE_HANDLER, type TuiBooleanHandler} from '@taiga-ui/cdk';
 
 @Component({
     imports: [TuiDemo, TuiDocIcons, TuiThumbnailCard],
@@ -12000,15 +11998,7 @@ export default class Example {
     ];
 
     protected size = this.sizeVariants[0]!;
-
-    protected readonly monoHandlerVariants: ReadonlyArray<
-        TuiBooleanHandler<TuiPaymentSystem>
-    > = [(ps) => ps === 'mir' || ps === 'visa' || ps === 'electron', TUI_TRUE_HANDLER];
-
-    protected monoHandler = this.monoHandlerVariants[0]!;
-
     protected paymentSystem = this.paymentSystemVariants[0]!;
-
     protected contentProjection = '1234';
     protected background =
         '#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)';
