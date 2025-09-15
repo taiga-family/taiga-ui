@@ -7,7 +7,6 @@ import {
     type TuiPaymentSystem,
     TuiThumbnailCard,
 } from '@taiga-ui/addon-commerce';
-import {TUI_TRUE_HANDLER, type TuiBooleanHandler} from '@taiga-ui/cdk';
 
 @Component({
     imports: [TuiDemo, TuiDocIcons, TuiThumbnailCard],
@@ -35,15 +34,7 @@ export default class Example {
     ];
 
     protected size = this.sizeVariants[0]!;
-
-    protected readonly monoHandlerVariants: ReadonlyArray<
-        TuiBooleanHandler<TuiPaymentSystem>
-    > = [(ps) => ps === 'mir' || ps === 'visa' || ps === 'electron', TUI_TRUE_HANDLER];
-
-    protected monoHandler = this.monoHandlerVariants[0]!;
-
     protected paymentSystem = this.paymentSystemVariants[0]!;
-
     protected contentProjection = '1234';
     protected background =
         '#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)';
