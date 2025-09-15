@@ -8,6 +8,9 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 
+/**
+ * @deprecated use modern control flow (`@for`) syntax instead
+ */
 @Directive({
     standalone: true,
     selector: '[ngFor][ngForOf][ngForElse],[ngFor][ngForOf][ngForEmpty]',
