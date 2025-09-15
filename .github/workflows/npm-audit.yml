@@ -10,20 +10,51 @@ jobs:
       - uses: actions/checkout@v4.3.0
       - uses: taiga-family/ci/actions/setup/variables@v1.153.0
       - uses: taiga-family/ci/actions/setup/node@v1.153.0
-      - id: audit
-        run: |
-          set +e
-          npm audit --audit-level=high > audit.txt 2>&1
-          echo "exit_code=$?" >> $GITHUB_OUTPUT
-          set -e
 
-          echo "audit_log=$(cat audit.txt | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')" >> $GITHUB_OUTPUT
-
-      - uses: marocchino/sticky-pull-request-comment@v2
-        if: steps.audit.outputs.exit_code != '0'
+      - name: Restore 1
+        uses: actions/cache@v4.2.4
         with:
-          header: ⚠️ NPM Audit Log
-          message: ${{ steps.audit.outputs.audit_log }}
+          path: |
+            node_modules/
+            **/node_modules/
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Restore 2
+        uses: actions/cache@v4.2.4
+        with:
+          path: |
+            node_modules/
+            **/node_modules/
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+
+      - id: audit
+        continue-on-error: true
+        run: |
+          npm audit --audit-level=high > audit.txt
+          exit_code=$(echo $?)
+          echo "exit_code=$exit_code" >> $GITHUB_OUTPUT
+
+          cat audit.txt
+          echo "Exit code: $exit_code"
+
+      - name: Delete previous comment
+        uses: actions/github-script@v6
+        continue-on-error: true
+        with:
+          script: |
+            github.rest.issues.deleteComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: 'npm-audit'
+            });
+
+      - name: Comment PR if issues found
+        if: steps.audit.outputs.exit_code != '0'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-identifier: npm-audit
+          body-file: audit.txt
 
       - name: Fail if audit failed
         if: steps.audit.outputs.exit_code != '0'
