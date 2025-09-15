@@ -31,6 +31,7 @@ import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {merge, switchMap} from 'rxjs';
 
@@ -64,6 +65,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiToArrayPipe,
+        TuiChevron,
     ],
     templateUrl: './documentation.template.html',
     styleUrls: ['./documentation.style.less'],

@@ -83,29 +83,29 @@
                         <td class="t-cell t-cell_value">
                             @if (propertyConnector.shouldShowValues) {
                                 @if (propertyConnector.hasItems) {
-                                    <label
-                                        *ngIf="propertyConnector.hasItems; else noItems"
+                                    <tui-textfield
+                                        tuiChevron
                                         tuiDropdownLimitWidth="min"
-                                        tuiTextfield
                                         tuiTextfieldSize="m"
+                                        [tuiTextfieldCleaner]="
+                                            propertyConnector.documentationPropertyType | tuiShowCleanerPipe
+                                        "
                                     >
                                         <input
                                             tuiSelect
                                             [attr.id]="propertyConnector.attrName"
                                             [ngModel]="propertyConnector.documentationPropertyValue"
-                                            [tuiTextfieldCleaner]="
-                                                propertyConnector.documentationPropertyType | tuiShowCleanerPipe
-                                            "
+                                            [placeholder]="null"
                                             (ngModelChange)="propertyConnector.onValueChange($event)"
                                         />
-                                        <code class="t-exception">null</code>
                                         <tui-data-list-wrapper
-                                            *tuiDataList
+                                            *tuiTextfieldDropdown
+                                            new
                                             class="t-data-list"
                                             [itemContent]="selectContent"
                                             [items]="propertyConnector.documentationPropertyValues"
                                         />
-                                    </label>
+                                    </tui-textfield>
                                 } @else {
                                     @switch (propertyConnector.documentationPropertyType) {
                                         @case ('boolean') {
