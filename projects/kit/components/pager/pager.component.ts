@@ -62,6 +62,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
             tuiWatch(),
             takeUntilDestroyed(),
         ),
+        {initialValue: 0},
     );
 
     @Input()
