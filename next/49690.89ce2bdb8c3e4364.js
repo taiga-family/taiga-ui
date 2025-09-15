@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[49690],{27309:e=>{e.exports=".drawer {\n    top: 0;\n    border-radius: 0;\n    inline-size: 20rem;\n}\n\n.header {\n    position: sticky;\n}\n"}}]);
