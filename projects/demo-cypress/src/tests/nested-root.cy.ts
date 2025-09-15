@@ -8,7 +8,7 @@ import {
     TuiRoot,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
+import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -19,24 +19,26 @@ import {TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
         TuiRoot,
         TuiSelect,
         TuiTextfield,
+        TuiChevron,
         TuiDataListWrapper,
         TuiDataList,
     ],
     template: `
         <tui-root>
             <form class="b-form">
-                <label tuiTextfield>
-                    Character
+                <tui-textfield tuiChevron>
+                    <label tuiLabel>Character</label>
                     <input
                         tuiHintContent="test"
                         tuiSelect
                         [formControl]="testValue"
                     />
                     <tui-data-list-wrapper
-                        *tuiDataList
+                        *tuiTextfieldDropdown
+                        new
                         [items]="items"
                     />
-                </label>
+                </tui-textfield>
                 <br />
                 <button
                     tuiButton
@@ -49,18 +51,19 @@ import {TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
                 <br />
                 <br />
                 <tui-root>
-                    <label tuiTextfield>
-                        Nested character
+                    <tui-textfield tuiChevron>
+                        <label tuiLabel>Nested character</label>
                         <input
                             tuiHintContent="test"
                             tuiSelect
                             [formControl]="testValue"
                         />
                         <tui-data-list-wrapper
-                            *tuiDataList
+                            *tuiTextfieldDropdown
+                            new
                             [items]="items"
                         />
-                    </label>
+                    </tui-textfield>
                     <br />
                     <button
                         tuiButton
