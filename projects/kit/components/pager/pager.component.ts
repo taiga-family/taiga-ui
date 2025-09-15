@@ -14,14 +14,12 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
-import {WA_WINDOW} from '@ng-web-apis/common';
 import {
     MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
 } from '@ng-web-apis/mutation-observer';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 import {delay, map} from 'rxjs';
 
@@ -51,13 +49,6 @@ import {delay, map} from 'rxjs';
     },
 })
 export class TuiPager implements OnChanges, AfterViewInit {
-    private readonly duration =
-        parseFloat(
-            inject(WA_WINDOW)
-                .getComputedStyle(tuiInjectElement())
-                .getPropertyValue('--tui-duration-fast'),
-        ) || 150;
-
     @ViewChildren('item')
     protected items?: QueryList<ElementRef<HTMLElement>>;
 
@@ -66,7 +57,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
     protected left = signal(0);
     protected readonly maxWidth = toSignal(
         inject(MutationObserverService, {self: true}).pipe(
-            delay(this.duration),
+            delay(0),
             map(() => this.visibleWidth),
             tuiWatch(),
             takeUntilDestroyed(),
