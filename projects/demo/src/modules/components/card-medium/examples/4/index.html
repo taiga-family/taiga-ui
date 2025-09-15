@@ -6,9 +6,14 @@
         @for (url of urls; track url) {
             <div
                 size="s"
+                tuiAvatar="@tui.user"
                 [style.background]="url | tuiAutoColor"
-                [tuiAvatar]="url | tuiFallbackSrc: '@tui.user' | async"
-            ></div>
+            >
+                <img
+                    alt=""
+                    [src]="url"
+                />
+            </div>
         }
     </tui-avatar-stack>
 
@@ -31,9 +36,14 @@
         @for (url of urls; track url) {
             <div
                 size="s"
+                tuiAvatar="@tui.user"
                 [style.background]="url | tuiAutoColor"
-                [tuiAvatar]="url | tuiFallbackSrc: '@tui.user' | async"
-            ></div>
+            >
+                <img
+                    alt=""
+                    [src]="url"
+                />
+            </div>
         }
     </tui-avatar-stack>
 </div>

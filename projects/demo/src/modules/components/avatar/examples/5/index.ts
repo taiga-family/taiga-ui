@@ -8,6 +8,8 @@ import {TuiAvatar, tuiAvatarOptionsProvider} from '@taiga-ui/kit';
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
-    providers: [tuiAvatarOptionsProvider({size: 'l'})],
+    providers: [
+        tuiAvatarOptionsProvider({size: 'l', appearance: 'secondary', round: false}),
+    ],
 })
 export default class Example {}

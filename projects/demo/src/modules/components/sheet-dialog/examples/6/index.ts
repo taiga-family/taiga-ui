@@ -1,17 +1,16 @@
-import {AsyncPipe, SlicePipe} from '@angular/common';
+import {SlicePipe} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
-import {TuiButton, TuiFallbackSrcPipe, TuiNotification, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiNotification, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarLabeled, TuiFade, TuiFloatingContainer} from '@taiga-ui/kit';
 import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         SlicePipe,
         TuiAppBar,
@@ -20,7 +19,6 @@ import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
         TuiButton,
         TuiCell,
         TuiFade,
-        TuiFallbackSrcPipe,
         TuiFilterPipe,
         TuiFloatingContainer,
         TuiNotification,

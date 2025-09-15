@@ -9,7 +9,11 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    tuiIsString,
+    tuiSetSignal,
+    tuiWithStyles,
+} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {
@@ -75,7 +79,9 @@ export class TuiNotification implements OnChanges, OnInit {
     }
 
     private refresh(): void {
-        this.icons.iconStart.set(
+        // TODO: Refactor to tuiDirectiveBinding
+        tuiSetSignal(
+            this.icons.iconStart,
             tuiIsString(this.icon) ? this.icon : this.icon(this.appearance),
         );
     }

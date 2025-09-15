@@ -27,6 +27,7 @@ import {
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {TUI_LAYOUT_ICONS} from '@taiga-ui/layout/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {tuiSetSignal} from '@taiga-ui/cdk';
 
 @Component({
     imports: [PolymorpheusOutlet, TuiScrollbar],
@@ -83,7 +84,8 @@ export class TuiDrawerDirective implements DoCheck {
     private readonly open = inject(TuiDropdownOpen);
 
     public ngDoCheck(): void {
-        this.icons.iconStart.set(this.open.tuiDropdownOpen ? this.x : '');
+        // TODO: Refactor to tuiDirectiveBinding
+        tuiSetSignal(this.icons.iconStart, this.open.tuiDropdownOpen ? this.x : '');
     }
 
     @ViewChild(TemplateRef)
