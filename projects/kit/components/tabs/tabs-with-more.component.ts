@@ -1,5 +1,6 @@
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
+    afterNextRender,
     type AfterViewChecked,
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -9,6 +10,7 @@ import {
     ElementRef,
     EventEmitter,
     inject,
+    INJECTOR,
     Input,
     Output,
     type QueryList,
@@ -21,7 +23,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable, tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiClamp, tuiToInt} from '@taiga-ui/cdk/utils/math';
+import {tuiToInt} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {type TuiSizeL} from '@taiga-ui/core/types';
@@ -62,6 +64,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     private readonly dir?: ElementRef<HTMLButtonElement>;
 
     private readonly options = inject(TUI_TABS_OPTIONS);
+    private readonly injector = inject(INJECTOR);
     private readonly refresh$ = inject(TUI_TABS_REFRESH);
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
@@ -127,7 +130,12 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     public ngAfterViewChecked(): void {
-        this.refresh();
+        afterNextRender(
+            () => {
+                this.refresh();
+            },
+            {injector: this.injector},
+        );
     }
 
     // TODO: Improve performance
@@ -137,11 +145,9 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
 
     protected get activeElement(): HTMLElement | null {
         const {tabs} = this;
-        const safeActiveIndex = tuiClamp(this.activeItemIndex || 0, 0, tabs.length - 2);
+        const activeElement = tabs.find((tab) => tab.classList.contains('_active'));
 
-        return this.options.exposeActive || this.lastVisibleIndex >= safeActiveIndex
-            ? tabs[safeActiveIndex] || null
-            : this.moreButton?.nativeElement || null;
+        return activeElement || null;
     }
 
     protected get isMoreAlone(): boolean {
@@ -270,7 +276,12 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         this.activeItemIndexChange.emit(activeItemIndex);
     }
 
+    // TODO: Remove when anchor positioning will be available in all modern browsers: https://caniuse.com/css-anchor-positioning
     private refresh(): void {
+        if ('anchorName' in this.el.style) {
+            return;
+        }
+
         const {offsetLeft = 0, offsetWidth = 0} = this.activeElement || {};
 
         this.dir?.nativeElement.style.setProperty('--t-left', tuiPx(offsetLeft));
