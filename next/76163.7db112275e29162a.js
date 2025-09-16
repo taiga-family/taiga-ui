@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[76163],{76163:n=>{n.exports=".container {\n    max-inline-size: 62.5rem;\n}\n\n.some-figure {\n    border-radius: 100%;\n    inline-size: 3rem;\n    block-size: 3rem;\n    background-color: var(--tui-background-neutral-1);\n}\n"}}]);

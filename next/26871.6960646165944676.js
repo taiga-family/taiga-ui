@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[26871],{26871:e=>{e.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.fade {\n    white-space: nowrap;\n}\n\n.ellipsis {\n    .text-overflow();\n}\n"}}]);
