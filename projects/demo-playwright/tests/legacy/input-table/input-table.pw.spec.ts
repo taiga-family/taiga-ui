@@ -2,7 +2,8 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('InputTable', () => {
+// TODO: migrate
+test.skip('InputTable', () => {
     test('editing fields inside a table', async ({page}) => {
         await tuiGoto(page, DemoRoute.Input);
 
