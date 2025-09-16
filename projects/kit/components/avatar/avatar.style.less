@@ -23,10 +23,13 @@
     opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
 
     &::before {
-        position: absolute;
-        inset: 0;
         inline-size: auto;
         block-size: auto;
+    }
+
+    &:not(._initials)::before {
+        position: absolute;
+        inset: 0;
         font-size: calc(var(--t-size) * 0.6);
     }
 
@@ -121,8 +124,6 @@
     &._initials {
         &::before {
             content: attr(data-icon-start);
-            inline-size: auto;
-            block-size: auto;
             mask: none;
             background: none;
         }
