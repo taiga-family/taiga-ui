@@ -4,7 +4,8 @@ import {expect, type Locator, test} from '@playwright/test';
 
 const MOCK_DATE = new Date(2021, 10, 10, 15, 30, 42, 300);
 
-test.describe('InputTime', () => {
+// TODO migrate
+test.skip('InputTime', () => {
     test.use({viewport: {width: 400, height: 400}});
 
     test.describe('Examples', () => {

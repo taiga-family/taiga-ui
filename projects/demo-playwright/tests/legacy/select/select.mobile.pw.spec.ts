@@ -4,7 +4,8 @@ import {expect, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
-test.describe('Select', () => {
+// TODO migrate
+test.skip('Select', () => {
     test.use(TUI_PLAYWRIGHT_MOBILE);
 
     test('native select value', async ({page}) => {

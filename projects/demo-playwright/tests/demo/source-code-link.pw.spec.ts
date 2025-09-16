@@ -1,5 +1,8 @@
+import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
+
+const LEGACY: string[] = [DemoRoute.Island, DemoRoute.Sheet, DemoRoute.Tag];
 
 interface GitHubEvent {
     pull_request?: {
@@ -41,7 +44,10 @@ function getRepositoryInfo(): {repositoryUrl: string; targetBranch: string} {
 }
 
 test.describe('Source code button', () => {
-    const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
+    const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!)
+        // TODO migrate
+        .filter((path: string) => !LEGACY.includes(path));
+
     const proprietary = process.env['PROPRIETARY'] === 'true';
     const {repositoryUrl, targetBranch} = getRepositoryInfo();
 

@@ -1,7 +1,8 @@
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('TuiPrimitiveTextfield', () => {
+// TODO migrate
+test.skip('TuiPrimitiveTextfield', () => {
     test.use({viewport: {width: 400, height: 500}});
 
     test('Tooltip in primitive-textfield works', async ({page}) => {

@@ -2,7 +2,8 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-test.describe('InputYear', () => {
+// TODO migrate
+test.skip('InputYear', () => {
     let input: Locator;
     let documentationPO: TuiDocumentationPagePO;
 
