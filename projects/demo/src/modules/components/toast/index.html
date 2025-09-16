@@ -1,0 +1,84 @@
+<tui-doc-page
+    header="Toast"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-doc-example
+            *ngFor="let example of examples; let index = index"
+            [component]="index + 1 | tuiComponent"
+            [content]="index + 1 | tuiExample"
+            [fullsize]="true"
+            [heading]="example"
+            [id]="example | tuiKebab"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <a
+                tuiToast
+                [iconEnd]="icons.iconEnd"
+                [iconStart]="icons.iconStart"
+            >
+                {{ content }}
+            </a>
+
+            <br />
+
+            <button
+                tuiToast
+                type="button"
+                [iconEnd]="icons.iconEnd"
+            >
+                <tui-icon
+                    appearance="accent"
+                    icon="@tui.box"
+                    size="l"
+                    tuiBadge
+                />
+
+                {{ content }}
+            </button>
+
+            <br />
+
+            <div
+                tuiToast
+                [iconEnd]="icons.iconEnd"
+            >
+                <tui-avatar
+                    [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async"
+                />
+
+                {{ content }}
+
+                <button
+                    appearance="neutral"
+                    size="s"
+                    tuiButton
+                    type="button"
+                >
+                    Label
+                </button>
+            </div>
+        </tui-doc-demo>
+
+        <table tuiDocAPI>
+            <tr
+                name="<ng-content />"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="content"
+            >
+                Text of notification toast
+            </tr>
+            <tbody
+                #icons
+                tuiDocIcons
+            ></tbody>
+        </table>
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>
