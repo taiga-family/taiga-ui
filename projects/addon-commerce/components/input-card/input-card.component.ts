@@ -14,20 +14,23 @@ import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
-import {TuiIcon} from '@taiga-ui/core/components/icon';
+import {TuiIconPipe} from '@taiga-ui/core/components/icon';
 import {TuiTextfieldContent, TuiWithTextfield} from '@taiga-ui/core/components/textfield';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs';
 
 @Component({
     selector: 'input[tuiInputCard]',
-    imports: [TuiTextfieldContent, TuiIcon],
+    imports: [TuiTextfieldContent, TuiIconPipe],
     template: `
-        <tui-icon
-            *tuiTextfieldContent
-            class="t-payment-system"
-            [icon]="image()"
-        />
+        @if (image()) {
+            <img
+                *tuiTextfieldContent
+                alt=""
+                class="t-payment-system"
+                [src]="image() | tuiIcon"
+            />
+        }
     `,
     styleUrls: ['./input-card.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -54,12 +57,9 @@ export class TuiInputCard implements OnInit {
     });
 
     protected readonly mask = tuiMaskito(TUI_MASK_CARD);
-    protected readonly image = computed(() => {
-        const system = tuiGetPaymentSystem(this.value());
-        const icon = system && this.icons[system];
-
-        return icon ? `@img.${icon}` : null;
-    });
+    protected readonly image = computed(
+        (s = tuiGetPaymentSystem(this.value())) => (s && this.icons[s]) || '',
+    );
 
     public readonly binChange = outputFromObservable(
         toObservable(this.value).pipe(
