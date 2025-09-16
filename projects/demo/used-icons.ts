@@ -93,7 +93,6 @@ export const TUI_USED_ICONS = [
     '@tui.cloud-download',
     '@tui.user-round',
     '@tui.badge-check',
-    '@tui.mastercard',
     '@tui.phone-forwarded',
     '@tui.music',
     '@tui.minus',
