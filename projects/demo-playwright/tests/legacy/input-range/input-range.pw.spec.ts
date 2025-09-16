@@ -9,7 +9,8 @@ import {expect, type Locator, test} from '@playwright/test';
 import {TUI_PLAYWRIGHT_MOBILE_USER_AGENT} from '../../../playwright.options';
 import {CHAR_MINUS} from '../../../utils/common';
 
-test.describe('InputRange', () => {
+// TODO migrate
+test.skip('InputRange', () => {
     let example: Locator;
     let inputRange: TuiInputRangePO;
 

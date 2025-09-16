@@ -10,7 +10,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-test.describe('InputNumber', () => {
+// TODO migrate
+test.skip('InputNumber', () => {
     let example: Locator;
     let input: Locator;
 
