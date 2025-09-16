@@ -5006,7 +5006,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>Card number</label> } <input tuiInputCard [disabled]="control.disabled" [icon]="icon" [invalid]="control.invalid" [placeholder]="textfield.size === 's' ? 'Card number' : ''" [readOnly]="control.readonly" [(ngModel)]="card" (binChange)="binChange.emitEvent($event)" />
+<tui-textfield [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" [tuiTextfieldCleaner]="textfield.cleaner" [tuiTextfieldSize]="textfield.size" > @if (textfield.size !== 's') { <label tuiLabel>Card number</label> } <input tuiInputCard [disabled]="control.disabled" [invalid]="control.invalid" [placeholder]="textfield.size === 's' ? 'Card number' : ''" [readOnly]="control.readonly" [(ngModel)]="card" (binChange)="binChange.emitEvent($event)" />
 </tui-textfield>
 ```
 
@@ -5015,7 +5015,6 @@ export class Example {}
 | Property | Type | Description |
 |----------|-----|----------|
 | [(ngModel)] | `string` | Card number (also works with a reactive control) |
-| [icon] | `string | null` | Card icon |
 | (binChange) | `string | null` | BIN value (card first 6 symbols) |
 
 ### TypeScript
@@ -5047,20 +5046,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 })
 export default class Page {
     protected card = '';
-    protected iconSelected: string | null = null;
-
-    protected readonly cards: Record<string, string> = {
-        common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
-        universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
-        mutation:
-            'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
-    };
-
-    protected readonly iconVariants: readonly string[] = Object.keys(this.cards);
-
-    protected get icon(): string | null {
-        return (this.iconSelected && this.cards[this.iconSelected]) || null;
-    }
 }
 ```
 
