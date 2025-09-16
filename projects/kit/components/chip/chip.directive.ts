@@ -6,6 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
+import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
@@ -39,7 +40,10 @@ class TuiChipStyles {}
         tuiAppearanceOptionsProvider(TUI_CHIP_OPTIONS),
         tuiSwitchOptionsProvider({size: 's'}),
         tuiCheckboxOptionsProvider({size: 's'}),
-        tuiAvatarOptionsProvider({size: 'xs'}),
+        tuiAvatarOptionsProvider(() => ({
+            size: 'xs',
+            round: inject(TUI_PLATFORM) !== 'web',
+        })),
         tuiButtonOptionsProvider({
             size: 'xs',
             appearance: 'icon',

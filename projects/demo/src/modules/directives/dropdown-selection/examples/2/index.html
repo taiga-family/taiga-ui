@@ -24,8 +24,9 @@
             >
                 <div
                     size="s"
-                    [tuiAvatar]="item.name | tuiInitials"
+                    tuiAvatar
                 >
+                    {{ item.name | tuiInitials }}
                     <img
                         alt=""
                         [src]="item.avatar"

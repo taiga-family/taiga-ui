@@ -111,7 +111,7 @@ interface User {
             >
                 <span tuiCell>
                     <div [tuiAvatar]="user.name | tuiInitials">
-                        @if (user.avatar) {
+                        @if (user.url) {
                             <img
                                 alt=""
                                 [src]="user.url"
