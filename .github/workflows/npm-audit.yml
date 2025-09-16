@@ -1,6 +1,7 @@
 name: ⚙️ NPM Security Scan
 on:
   pull_request:
+  push:
     branches: [main]
 
 jobs:
@@ -8,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.153.0
-      - uses: taiga-family/ci/actions/setup/node@v1.153.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.155.0
+      - uses: taiga-family/ci/actions/setup/node@v1.155.0
 
       - name: Restore 1
         uses: actions/cache@v4.2.4
@@ -51,6 +52,7 @@ jobs:
       - name: Comment PR if issues found
         if: steps.audit.outputs.exit_code != '0'
         uses: peter-evans/create-or-update-comment@v4
+        continue-on-error: true
         with:
           issue-number: ${{ github.event.pull_request.number }}
           comment-identifier: npm-audit
