@@ -12264,6 +12264,86 @@ export default class Page {
 ```
 
 ---
+# components/Toast
+- **Package**: `KIT`
+- **Type**: components
+
+### How to Use (Import)
+
+```ts
+import {TuiToast} from '@taiga-ui/kit';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiToast,
+  ],
+  // ...
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<div tuiToast>Notification</div>
+```
+
+### Example
+
+```html
+<a tuiToast [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" > {{ content }} </a>
+<br />
+<button tuiToast type="button" [iconEnd]="icons.iconEnd" >
+<tui-icon appearance="accent" icon="@tui.box" size="l" tuiBadge /> {{ content }} </button>
+<br />
+<div tuiToast [iconEnd]="icons.iconEnd" >
+<tui-avatar [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async" /> {{ content }} <button appearance="neutral" size="s" tuiButton type="button" > Label </button>
+</div>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| <ng-content /> | `string` | Text of notification toast |
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {TuiDocIcons} from '@demo/components/icons';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {TuiButton, TuiFallbackSrcPipe, TuiIcon} from '@taiga-ui/core';
+import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [
+        TuiAvatar,
+        TuiBadge,
+        TuiButton,
+        TuiDemo,
+        TuiDocIcons,
+        TuiFallbackSrcPipe,
+        TuiIcon,
+        TuiToast,
+    ],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Example {
+    protected readonly examples = ['Basic', 'Customization'];
+
+    protected content = 'Notification';
+}
+```
+
+---
 # components/Tooltip
 - **Package**: `KIT`
 - **Type**: components

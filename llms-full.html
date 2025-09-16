@@ -12274,6 +12274,86 @@ export default class Page {
 ```
 
 ---
+# components/Toast
+- **Package**: `KIT`
+- **Type**: components
+
+### How to Use (Import)
+
+```ts
+import {TuiToast} from &#039;@taiga-ui/kit&#039;;
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiToast,
+  ],
+  // ...
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+&lt;div tuiToast&gt;Notification&lt;/div&gt;
+```
+
+### Example
+
+```html
+&lt;a tuiToast [iconEnd]=&quot;icons.iconEnd&quot; [iconStart]=&quot;icons.iconStart&quot; &gt; {{ content }} &lt;/a&gt;
+&lt;br /&gt;
+&lt;button tuiToast type=&quot;button&quot; [iconEnd]=&quot;icons.iconEnd&quot; &gt;
+&lt;tui-icon appearance=&quot;accent&quot; icon=&quot;@tui.box&quot; size=&quot;l&quot; tuiBadge /&gt; {{ content }} &lt;/button&gt;
+&lt;br /&gt;
+&lt;div tuiToast [iconEnd]=&quot;icons.iconEnd&quot; &gt;
+&lt;tui-avatar [src]=&quot;&#039;https://avatars.githubusercontent.com/u/11832552&#039; | tuiFallbackSrc: &#039;@tui.user&#039; | async&quot; /&gt; {{ content }} &lt;button appearance=&quot;neutral&quot; size=&quot;s&quot; tuiButton type=&quot;button&quot; &gt; Label &lt;/button&gt;
+&lt;/div&gt;
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| &lt;ng-content /&gt; | `string` | Text of notification toast |
+
+### TypeScript
+
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {TuiDocIcons} from &#039;@demo/components/icons&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {TuiDemo} from &#039;@demo/utils&#039;;
+import {TuiButton, TuiFallbackSrcPipe, TuiIcon} from &#039;@taiga-ui/core&#039;;
+import {TuiAvatar, TuiBadge, TuiToast} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [
+        TuiAvatar,
+        TuiBadge,
+        TuiButton,
+        TuiDemo,
+        TuiDocIcons,
+        TuiFallbackSrcPipe,
+        TuiIcon,
+        TuiToast,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    changeDetection,
+})
+export default class Example {
+    protected readonly examples = [&#039;Basic&#039;, &#039;Customization&#039;];
+
+    protected content = &#039;Notification&#039;;
+}
+```
+
+---
 # components/Tooltip
 - **Package**: `KIT`
 - **Type**: components
