@@ -29,10 +29,12 @@
     let-user
 >
     <div tuiCell>
-        <div
-            size="s"
-            [tuiAvatar]="user.avatarUrl"
-        ></div>
+        <div tuiAvatar="@tui.user">
+            <img
+                alt=""
+                [src]="user.avatarUrl"
+            />
+        </div>
         <div tuiTitle>
             {{ user }}
             <span tuiSubtitle>{{ user.phone }}</span>

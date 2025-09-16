@@ -23,6 +23,10 @@
     opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
 
     &::before {
+        position: absolute;
+        inset: 0;
+        inline-size: auto;
+        block-size: auto;
         font-size: calc(var(--t-size) * 0.6);
     }
 

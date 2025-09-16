@@ -15,5 +15,4 @@ import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
 })
 export default class Example {
     protected open = false;
-    protected avatarUrl = assets`/images/avatar.jpg`;
 }

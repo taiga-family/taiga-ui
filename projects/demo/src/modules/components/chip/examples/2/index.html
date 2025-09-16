@@ -55,7 +55,12 @@
             [style.border-radius.rem]="5"
         >
             @if (size === 'm' || size === 's') {
-                <div tuiAvatar="/assets/images/avatar.jpg"></div>
+                <div tuiAvatar="@tui.user">
+                    <img
+                        alt=""
+                        src="/assets/images/avatar.jpg"
+                    />
+                </div>
             }
             Avatar
         </tui-chip>

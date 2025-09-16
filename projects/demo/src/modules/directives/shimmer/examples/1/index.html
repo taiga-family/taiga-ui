@@ -30,8 +30,13 @@
         </aside>
     </header>
     <tui-avatar-stack [tuiShimmer]="loading">
-        @for (avatar of avatars; track avatar) {
-            <div [tuiAvatar]="avatar"></div>
+        @for (avatar of avatars; track $index) {
+            <div tuiAvatar="@tui.user">
+                <img
+                    alt=""
+                    [src]="avatar"
+                />
+            </div>
         }
     </tui-avatar-stack>
     <footer>
