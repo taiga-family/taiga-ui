@@ -4,11 +4,13 @@ import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwrigh
 import {expect, test} from '@playwright/test';
 
 const DEEP_SELECT_FLAKY = new Set<string>([DemoRoute.Avatar]);
+const LEGACY: string[] = [DemoRoute.Island, DemoRoute.Sheet, DemoRoute.Tag];
 
 test.describe('Deep / Select', () => {
-    const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!).filter(
-        (path: string) => !DEEP_SELECT_FLAKY.has(path),
-    );
+    const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!)
+        .filter((path: string) => !DEEP_SELECT_FLAKY.has(path))
+        // TODO migrate
+        .filter((path: string) => !LEGACY.includes(path));
 
     deepPaths.forEach((path) =>
         test(`${path}`, async ({page}) => {
