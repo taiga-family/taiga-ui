@@ -12,7 +12,7 @@ export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
 
             // regex for @{any text}. used as a default fallback, returns path to svg from icon pack
             return (icon) =>
-                `${path}/${icon.replace(/@[a-zA-Z]+\./, '').replaceAll('.', '/')}.svg`;
+                `${path}/${icon.replace(/^(@[a-zA-Z]+\.)+/, '').replaceAll('.', '/')}.svg`;
         },
     },
 );
@@ -32,7 +32,7 @@ export function tuiInjectIconResolver(): TuiStringHandler<string> {
 
     return (icon) => {
         if (!icon || icon.includes('/')) {
-            return icon;
+            return icon.replace(/^(@[a-zA-Z]+\.)+/, '');
         }
 
         return icon.startsWith('@font.')

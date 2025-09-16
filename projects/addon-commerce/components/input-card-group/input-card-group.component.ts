@@ -25,6 +25,7 @@ import {
 import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_NO_BREAK_SPACE, TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
 import {tuiHovered, TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
@@ -190,14 +191,10 @@ export class TuiInputCardGroup
     public cardValidator: TuiBooleanHandler<string> = this.options.cardValidator;
 
     @Input()
-    public icon: PolymorpheusContent = this.options.icon;
+    public icon: PolymorpheusContent = '';
 
     @Input()
     public id = tuiInjectId();
-
-    /** @deprecated apparently "off" doesn't disable autocomplete */
-    @Input()
-    public autocomplete = this.options.autocomplete;
 
     @Output()
     public readonly binChange = new EventEmitter<string | null>();
@@ -402,7 +399,7 @@ export class TuiInputCardGroup
 
     @tuiPure
     private getPaymentSystem(value: string): TuiPaymentSystem | null {
-        return this.options.paymentSystemHandler(value);
+        return tuiGetPaymentSystem(value);
     }
 
     private updateBin(oldBin: string | null): void {
