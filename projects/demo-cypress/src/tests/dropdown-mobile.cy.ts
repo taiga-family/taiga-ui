@@ -1,4 +1,4 @@
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
@@ -7,6 +7,7 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButton,
+    TuiDropdown,
     TuiRoot,
     TuiTextfield,
     TuiTitle,
@@ -16,10 +17,11 @@ import {
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
+    TuiInputChip,
+    TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
 import {TuiCell} from '@taiga-ui/layout';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 // Note: webpack compilation error
 // Do not change to @demo/utils
@@ -34,6 +36,7 @@ interface User {
 
 @Component({
     imports: [
+        NgIf,
         AsyncPipe,
         FormsModule,
         TuiAmountPipe,
@@ -43,12 +46,14 @@ interface User {
         TuiChevron,
         TuiDataListWrapper,
         TuiDropdownMobile,
+        TuiDropdown,
         TuiFilterByInputPipe,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
         TuiResponsiveDialog,
         TuiRoot,
         TuiSelect,
         TuiTextfield,
+        TuiInputChip,
         TuiTitle,
     ],
     template: `
@@ -73,21 +78,31 @@ interface User {
                     />
                 </tui-textfield>
 
-                <tui-multi-select
+                <tui-textfield
+                    multi
+                    tuiChevron
                     tuiDropdownMobile
-                    class="tui-space_vertical-4"
                     [stringify]="stringify"
                     [tuiDropdownOpen]="open()"
-                    [tuiTextfieldCleaner]="true"
-                    [(ngModel)]="selected"
                     (tuiDropdownOpenChange)="open.set($event)"
                 >
-                    Pick more users
-                    <ng-container *tuiDataList>
+                    <label tuiLabel>Pick more users</label>
+
+                    <input
+                        tuiInputChip
+                        [(ngModel)]="selected"
+                    />
+                    <tui-input-chip *tuiItem />
+                    <ng-template
+                        *ngIf="users | tuiFilterByInput as items"
+                        let-close
+                        tuiTextfieldDropdown
+                    >
                         <tui-data-list-wrapper
+                            new
                             tuiMultiSelectGroup
                             [itemContent]="template"
-                            [items]="users | tuiFilterByInput"
+                            [items]="items"
                         />
                         <button
                             appearance="accent"
@@ -95,12 +110,12 @@ interface User {
                             tuiButton
                             tuiDropdownButton
                             type="button"
-                            (click)="open.set(false)"
+                            (click)="close()"
                         >
                             Done
                         </button>
-                    </ng-container>
-                </tui-multi-select>
+                    </ng-template>
+                </tui-textfield>
             </ng-template>
 
             <ng-template
@@ -168,24 +183,22 @@ describe('DropdownMobile', () => {
 
     describe('Type view', () => {
         it('Opens properly inside dialog', () => {
-            cy.get('tui-multi-select input').focus();
-            cy.get('tui-multi-select input').click();
+            cy.get('tui-textfield input[tuiSelect]').focus();
+            cy.get('tui-textfield input[tuiSelect]').click();
 
             cy.compareSnapshot('type-view-opened');
         });
 
         it('Filters items as you type', () => {
-            cy.get('tui-multi-select input').focus();
-            cy.get('tui-multi-select input').click();
-            cy.get('tui-multi-select input').type('Alex');
+            cy.get('tui-textfield[multi]').click();
+            cy.get('tui-textfield[multi]').type('Alex');
 
             cy.compareSnapshot('type-view-filtered');
         });
 
         it('Closes with selected values', () => {
-            cy.get('tui-multi-select input').focus();
-            cy.get('tui-multi-select input').click();
-            cy.get('tui-multi-select input').type('Alex');
+            cy.get('tui-textfield[multi]').click();
+            cy.get('tui-textfield[multi]').type('Alex');
             cy.get('[tuiOption]').first().click();
             cy.get('button[tuiDropdownButton]').click();
 

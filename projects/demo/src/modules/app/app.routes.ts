@@ -305,11 +305,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/combo-box'),
     }),
     route({
-        path: DemoRoute.ComboBoxLegacy,
-        title: 'ComboBox ⛔',
-        loadComponent: async () => import('../components/combo-box-legacy'),
-    }),
-    route({
         path: DemoRoute.DataList,
         loadComponent: async () => import('../components/data-list'),
         title: 'DataList',
@@ -363,11 +358,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.InputColor,
         loadComponent: async () => import('../components/input-color'),
         title: 'InputColor',
-    }),
-    route({
-        path: DemoRoute.InputColorLegacy,
-        loadComponent: async () => import('../components/input-color-legacy'),
-        title: 'InputColor ⛔',
     }),
     route({
         path: DemoRoute.Form,
@@ -640,11 +630,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/calendar-month'),
     }),
     route({
-        path: DemoRoute.MultiSelect,
-        loadComponent: async () => import('../components/multi-select'),
-        title: 'MultiSelect ⛔',
-    }),
-    route({
         path: DemoRoute.Pagination,
         loadComponent: async () => import('../components/pagination'),
         title: 'Pagination',
@@ -678,11 +663,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Select,
         loadComponent: async () => import('../components/select'),
         title: 'Select',
-    }),
-    route({
-        path: DemoRoute.SelectLegacy,
-        loadComponent: async () => import('../components/select-legacy'),
-        title: 'Select ⛔',
     }),
     route({
         path: DemoRoute.Scrollbar,

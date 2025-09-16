@@ -2,15 +2,25 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
-import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiDataList, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiDataListWrapper,
+    TuiFilterByInputPipe,
+    TuiInputChip,
+    TuiMultiSelect,
+} from '@taiga-ui/kit';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiDataList,
         TuiDataListWrapper,
+        TuiSelectLike,
+        TuiMultiSelect,
         TuiFilterByInputPipe,
-        TuiMultiSelectModule,
+        TuiInputChip,
+        TuiTextfield,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',

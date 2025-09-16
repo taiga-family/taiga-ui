@@ -551,12 +551,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputColor',
-                keywords: 'input-color, picker, color, цвет, выбор, палитра',
-                route: DemoRoute.InputColor,
-            },
-            {
-                section: 'Components',
                 title: 'InputDate',
                 keywords:
                     'поле, инпут, форма, ввод, input, календарь, день, ' +
@@ -790,36 +784,9 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Components',
-                title: 'InputColor ⛔',
-                keywords:
-                    'input-color, picker, color, цвет, выбор, градиент, gradient, палитра',
-                route: DemoRoute.InputColorLegacy,
-            },
-            {
-                section: 'Components',
                 title: 'Textarea ⛔',
                 keywords: 'поле, инпут, форма, ввод, textarea, area',
                 route: DemoRoute.TextareaLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'ComboBox ⛔',
-                keywords:
-                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
-                route: DemoRoute.ComboBoxLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'Select ⛔',
-                keywords: 'инпут, форма, ввод, select, селект, выбор',
-                route: DemoRoute.SelectLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'MultiSelect ⛔',
-                keywords:
-                    'инпут, форма, ввод, select, селект, выбор, multiselect, мультиселект',
-                route: DemoRoute.MultiSelect,
             },
         ],
     },
