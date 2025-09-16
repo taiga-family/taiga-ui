@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7481],{7481:e=>{e.exports='<tui-input-tag\n    [formControl]="control"\n    [style.max-width.rem]="20"\n    [tuiTextfieldLabelOutside]="true"\n>\n    I\'m a\n    <i>placeholder</i>\n</tui-input-tag>\n'}}]);

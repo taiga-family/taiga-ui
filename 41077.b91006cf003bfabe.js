@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[41077],{41077:n=>{n.exports="```ts\nimport {TuiColorPickerModule} from '@taiga-ui/legacy';\n\n// ...\n\n@NgModule({\n  standalone: true,\n  imports: [\n    // ...\n    TuiColorPickerModule,\n  ],\n  // ...\n})\nexport class Example {}\n```\n"}}]);

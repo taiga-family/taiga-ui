@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[51018],{51018:e=>{e.exports='```html\n<section [tuiSlides]="direction">// Content</section>\n```\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[56585],{56585:e=>{e.exports=".input {\n    color: #ffa500;\n}\n"}}]);
