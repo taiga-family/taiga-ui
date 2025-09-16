@@ -11,23 +11,6 @@ jobs:
       - uses: actions/checkout@v4.3.0
       - uses: taiga-family/ci/actions/setup/variables@v1.155.0
       - uses: taiga-family/ci/actions/setup/node@v1.155.0
-
-      - name: Restore 1
-        uses: actions/cache@v4.2.4
-        with:
-          path: |
-            node_modules/
-            **/node_modules/
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Restore 2
-        uses: actions/cache@v4.2.4
-        with:
-          path: |
-            node_modules/
-            **/node_modules/
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-
       - id: audit
         continue-on-error: true
         run: |
