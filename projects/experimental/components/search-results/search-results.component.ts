@@ -16,7 +16,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiIcon} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
