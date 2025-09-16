@@ -1,8 +1,4 @@
 import {InjectionToken, type Provider} from '@angular/core';
-import {
-    TUI_INPUT_CARD_DEFAULT_OPTIONS,
-    type TuiInputCardOptions,
-} from '@taiga-ui/addon-commerce/components/input-card';
 import {tuiDefaultCardValidator} from '@taiga-ui/addon-commerce/constants';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -12,7 +8,7 @@ export interface TuiCardInputs {
     expire: boolean;
 }
 
-export interface TuiInputCardGroupOptions extends TuiInputCardOptions {
+export interface TuiInputCardGroupOptions {
     readonly cardValidator: TuiBooleanHandler<string>;
     readonly exampleText: string;
     readonly exampleTextCVC: string;
@@ -21,7 +17,6 @@ export interface TuiInputCardGroupOptions extends TuiInputCardOptions {
 }
 
 export const TUI_INPUT_CARD_GROUP_DEFAULT_OPTIONS: TuiInputCardGroupOptions = {
-    ...TUI_INPUT_CARD_DEFAULT_OPTIONS,
     cardValidator: tuiDefaultCardValidator,
     exampleText: '0000 0000 0000 0000',
     exampleTextCVC: '000',
