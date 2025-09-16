@@ -41,10 +41,7 @@ import {
     type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiWithTextfieldDropdown,
-} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {
     TuiAppearance,
     tuiAppearance,
@@ -98,14 +95,9 @@ export interface TuiCard {
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
         TuiHoveredService,
     ],
-    hostDirectives: [
-        TuiAppearance,
-        TuiDropdownDirective,
-        TuiWithTextfieldDropdown,
-        TuiWithDropdownOpen,
-    ],
+    hostDirectives: [TuiAppearance, TuiDropdownDirective, TuiWithDropdownOpen],
     host: {
-        'data-size': 'l',
+        '[attr.data-size]': 'textfield.size()',
         '[style.--tui-duration.s]': '0',
         '(pointerdown)': 'onPointerDown($event)',
         '(scroll.zoneless)': '$event.target.scrollLeft = 0',
@@ -143,6 +135,7 @@ export class TuiInputCardGroup
     protected readonly maskCard = TUI_MASK_CARD;
     protected readonly maskExpire = TUI_MASK_EXPIRE;
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly textfield = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
     protected readonly open = tuiDropdownOpen();
     protected readonly $ = this.isWebkit
