@@ -1,25 +1,17 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiAppearance,
-    TuiAutoColorPipe,
-    TuiFallbackSrcPipe,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiAppearance, TuiAutoColorPipe, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAppearance,
         TuiAutoColorPipe,
         TuiAvatar,
         TuiAvatarStack,
         TuiCardMedium,
-        TuiFallbackSrcPipe,
         TuiTitle,
     ],
     templateUrl: './index.html',

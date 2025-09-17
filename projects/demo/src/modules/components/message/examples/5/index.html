@@ -1,8 +1,13 @@
 <div tuiCell>
     <div
         tuiAccessories
-        tuiAvatar="/assets/images/avatar.jpg"
-    ></div>
+        tuiAvatar="@tui.user"
+    >
+        <img
+            alt=""
+            src="/assets/images/avatar.jpg"
+        />
+    </div>
     <div tuiTitle>
         Alexander I.
         <div tuiSubtitle>USD</div>
@@ -22,8 +27,13 @@
 <div tuiCell>
     <div
         tuiAccessories
-        [tuiAvatar]="'https://avatars.githubusercontent.com/u/87331898' | tuiFallbackSrc: '@tui.user' | async"
-    ></div>
+        tuiAvatar="@tui.user"
+    >
+        <img
+            alt=""
+            src="https://avatars.githubusercontent.com/u/87331898"
+        />
+    </div>
     <div
         tuiAccessories
         tuiTitle

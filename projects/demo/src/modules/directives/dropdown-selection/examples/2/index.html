@@ -24,9 +24,13 @@
             >
                 <div
                     size="s"
-                    [tuiAvatar]="item.avatar"
+                    tuiAvatar
                 >
                     {{ item.name | tuiInitials }}
+                    <img
+                        alt=""
+                        [src]="item.avatar"
+                    />
                 </div>
                 {{ item.name }}
             </button>

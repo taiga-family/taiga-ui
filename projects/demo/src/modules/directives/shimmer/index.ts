@@ -29,5 +29,14 @@ export default class Page {
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic', 'Disabled animations'];
 
+    protected readonly avatars = [
+        'https://avatars.githubusercontent.com/mdlufy',
+        'https://avatars.githubusercontent.com/splincode',
+        'https://avatars.githubusercontent.com/nsbarsukov',
+        'https://avatars.githubusercontent.com/vladimirpotekhin',
+        'https://avatars.githubusercontent.com/marsibarsi',
+        'https://avatars.githubusercontent.com/waterplea',
+    ];
+
     protected shimmer = true;
 }

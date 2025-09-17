@@ -12,7 +12,12 @@ import {TuiCard, TuiCell} from '@taiga-ui/layout';
             tuiCardLarge
             tuiCell
         >
-            <div tuiAvatar="/assets/images/avatar.jpg"></div>
+            <div tuiAvatar="@tui.user">
+                <img
+                    alt=""
+                    src="/assets/images/avatar.jpg"
+                />
+            </div>
             <div tuiTitle>
                 <div tuiSubtitle>Welcome home</div>
                 Alex Inkin

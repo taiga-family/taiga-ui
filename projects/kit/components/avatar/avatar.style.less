@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-:host {
+[tuiAvatar] {
     --t-size: 3.5rem;
     --t-radius: 0.75rem;
 
@@ -22,16 +22,27 @@
     padding: 0.25rem;
     opacity: 0.999; // Kick in hardware rendering layer to avoid artifacts on the edges
 
+    &::before {
+        inline-size: auto;
+        block-size: auto;
+    }
+
+    &:not(._initials)::before {
+        position: absolute;
+        inset: 0;
+        font-size: calc(var(--t-size) * 0.6);
+    }
+
     &[data-size='xs'] {
         --t-size: var(--tui-height-xs);
         --t-radius: 0.5rem;
 
-        font: var(--tui-font-text-xs);
-        font-weight: bold;
+        font: var(--tui-font-text-ui-xs);
+        font-size: 0.5625rem;
 
-        &[data-type='content'] {
-            font: var(--tui-font-text-m);
-            font-size: 0.5625rem;
+        &._initials::before {
+            font: var(--tui-font-text-ui-xs);
+            font-weight: bold;
         }
     }
 
@@ -39,11 +50,11 @@
         --t-size: var(--tui-height-s);
         --t-radius: 0.5rem;
 
-        font: var(--tui-font-text-s);
+        font: var(--tui-font-text-ui-xs);
         font-weight: bold;
 
-        &[data-type='content'] {
-            font: var(--tui-font-text-xs);
+        &._initials::before {
+            font: var(--tui-font-text-s);
             font-weight: bold;
         }
     }
@@ -52,10 +63,10 @@
         --t-size: calc(var(--tui-height-m) - 0.25rem);
         --t-radius: 0.75rem;
 
-        font: var(--tui-font-text-l);
+        font: var(--tui-font-text-ui-m);
         font-weight: bold;
 
-        &[data-type='content'] {
+        &._initials::before {
             font: var(--tui-font-text-m);
             font-weight: bold;
         }
@@ -65,11 +76,11 @@
         --t-size: var(--tui-height-l);
         --t-radius: 0.75rem;
 
-        font: var(--tui-font-heading-5);
+        font: var(--tui-font-text-l);
+        font-weight: bold;
 
-        &[data-type='content'] {
-            font: var(--tui-font-text-l);
-            font-weight: bold;
+        &._initials::before {
+            font: var(--tui-font-heading-6);
         }
     }
 
@@ -77,10 +88,10 @@
         --t-size: 5rem;
         --t-radius: 0.75rem;
 
-        font: var(--tui-font-heading-3);
+        font: var(--tui-font-heading-4);
 
-        &[data-type='content'] {
-            font: var(--tui-font-heading-4);
+        &._initials::before {
+            font: var(--tui-font-heading-3);
         }
     }
 
@@ -90,7 +101,7 @@
 
         font: var(--tui-font-heading-3);
 
-        &[data-type='content'] {
+        &._initials::before {
             font: var(--tui-font-heading-3);
         }
     }
@@ -99,40 +110,34 @@
         --t-size: 8rem;
         --t-radius: 1.25rem;
 
-        font: var(--tui-font-heading-2);
+        font: var(--tui-font-heading-3);
 
-        &[data-type='content'] {
-            font: var(--tui-font-heading-3);
+        &._initials::before {
+            font: var(--tui-font-heading-2);
         }
-    }
-
-    &[data-type]::before {
-        display: none;
-    }
-
-    &:not([data-type='icon'])::before {
-        mask: none;
-    }
-
-    &[data-type='img']:not(._svg) {
-        background: transparent;
-    }
-
-    &[data-type='icon']::before {
-        .fullsize();
-
-        content: '';
-        display: block;
-        font-size: calc(var(--t-size) * 0.6);
     }
 
     &._round {
         --t-radius: calc(var(--t-size) / 2);
     }
 
-    ::ng-deep img,
-    ::ng-deep picture,
-    ::ng-deep video {
+    &._initials {
+        &::before {
+            content: attr(data-icon-start);
+            mask: none;
+            background: none;
+        }
+    }
+
+    &._fallback {
+        img,
+        video {
+            display: none;
+        }
+    }
+
+    img,
+    video {
         .fullsize();
 
         object-fit: cover;
@@ -140,9 +145,7 @@
         border-radius: inherit;
     }
 
-    &._svg img {
-        padding: 20%;
-        object-fit: contain;
-        border-radius: unset;
+    &:has(img, video):not(._fallback) {
+        background: none;
     }
 }

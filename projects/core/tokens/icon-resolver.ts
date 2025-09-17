@@ -23,7 +23,7 @@ export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
 export const TUI_ICON_START_RESOLVER = TUI_ICON_RESOLVER;
 
 export function tuiGetIconMode(icon?: string | null): string | undefined {
-    return icon?.slice(icon.indexOf('@') + 1, icon.indexOf('.')) || undefined;
+    return icon?.match(/@([^.]*)\./)?.[1] || icon || undefined;
 }
 
 export function tuiInjectIconResolver(): TuiStringHandler<string> {

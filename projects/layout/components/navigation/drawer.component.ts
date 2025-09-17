@@ -9,6 +9,7 @@ import {
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {
@@ -83,7 +84,8 @@ export class TuiDrawerDirective implements DoCheck {
     private readonly open = inject(TuiDropdownOpen);
 
     public ngDoCheck(): void {
-        this.icons.iconStart.set(this.open.tuiDropdownOpen ? this.x : '');
+        // TODO: Refactor to tuiDirectiveBinding
+        tuiSetSignal(this.icons.iconStart, this.open.tuiDropdownOpen ? this.x : '');
     }
 
     @ViewChild(TemplateRef)

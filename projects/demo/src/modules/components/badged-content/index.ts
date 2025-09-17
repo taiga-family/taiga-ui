@@ -1,21 +1,11 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiFallbackSrcPipe} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        AsyncPipe,
-        TuiAvatar,
-        TuiBadgedContent,
-        TuiBadgeNotification,
-        TuiDemo,
-        TuiFallbackSrcPipe,
-        TuiHeader,
-    ],
+    imports: [TuiAvatar, TuiBadgedContent, TuiBadgeNotification, TuiDemo, TuiHeader],
     templateUrl: './index.html',
     changeDetection,
 })

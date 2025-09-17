@@ -59,12 +59,14 @@
                     </aside>
                 </header>
                 <tui-avatar-stack [tuiShimmer]="shimmer">
-                    <div tuiAvatar="https://avatars.githubusercontent.com/u/87331898"></div>
-                    <div tuiAvatar="https://avatars.githubusercontent.com/u/12021443"></div>
-                    <div tuiAvatar="https://avatars.githubusercontent.com/u/35179038"></div>
-                    <div tuiAvatar="https://avatars.githubusercontent.com/u/46284632"></div>
-                    <div tuiAvatar="https://avatars.githubusercontent.com/u/10106368"></div>
-                    <div tuiAvatar="https://avatars.githubusercontent.com/u/11832552"></div>
+                    @for (avatar of avatars; track $index) {
+                        <div tuiAvatar="@tui.user">
+                            <img
+                                alt=""
+                                [src]="avatar"
+                            />
+                        </div>
+                    }
                 </tui-avatar-stack>
                 <footer>
                     <button

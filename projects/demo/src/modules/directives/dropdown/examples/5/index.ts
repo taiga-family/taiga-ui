@@ -6,7 +6,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiDropdown, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {
+    TuiButton,
+    TuiDropdown,
+    TuiInitialsPipe,
+    TuiTextfield,
+    TuiTitle,
+} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiAvatar,
@@ -26,7 +32,7 @@ import {
 import {map} from 'rxjs';
 
 interface User {
-    readonly url: string;
+    readonly url?: string;
     readonly name: string;
     readonly balance: number;
 }
@@ -52,6 +58,7 @@ interface User {
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
+        TuiInitialsPipe,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -69,10 +76,10 @@ export default class Example {
 
     protected readonly users: readonly User[] = [
         {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},
-        {name: 'Roman Sedov', balance: 523242, url: 'RS'},
-        {name: 'Vladimir Potekhin', balance: 645465, url: 'VP'},
-        {name: 'Nikita Barsukov', balance: 468468, url: 'NB'},
-        {name: 'Maxim Ivanov', balance: 498654, url: 'MI'},
+        {name: 'Roman Sedov', balance: 523242},
+        {name: 'Vladimir Potekhin', balance: 645465},
+        {name: 'Nikita Barsukov', balance: 468468},
+        {name: 'Maxim Ivanov', balance: 498654},
     ];
 
     protected readonly stringify = ({name}: User): string => name;

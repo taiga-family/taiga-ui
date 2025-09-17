@@ -31,11 +31,14 @@
                 <tui-badge-notification tuiSlot="top">1</tui-badge-notification>
                 <div
                     size="l"
+                    tuiAvatar="@tui.user"
                     [round]="radius === '50%'"
-                    [tuiAvatar]="
-                        'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async
-                    "
-                ></div>
+                >
+                    <img
+                        alt=""
+                        src="https://avatars.githubusercontent.com/u/11832552"
+                    />
+                </div>
             </tui-badged-content>
         </tui-doc-demo>
         <h3 tuiHeader="xxl">CSS customization</h3>
