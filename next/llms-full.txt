@@ -700,41 +700,43 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<div tuiAvatar>Batman</div>
+<div tuiAvatar="@tui.user">
+  <img src="avatar.jpg" />
+</div>
 ```
 
 ### Example
 
 ```html
-<div [round]="round" [size]="size" [tuiAvatar]="src" ></div>
+<div [appearance]="appearance.appearance" [round]="round" [size]="size" [tuiAvatar]="src === '@tui.star' || src === 'MW' ? src : '@tui.user'" >
+<img alt="" [src]="src" />
+</div>
 ```
 
 ### API
 
 | Property | Type | Description |
 |----------|-----|----------|
-| round | `boolean` | Use round shape |
-| size | `TuiSizeS | TuiSizeL` | Size |
-| src | `SafeResourceUrl | string | null` | which would be styled differently from initials and fade if overflown |
+| [tuiAvatar] | `string` |  |
+| [round] | `boolean` | Use round shape |
+| [size] | `TuiSizeS | TuiSizeL` | Size |
 
 ### TypeScript
 
 ```ts
-import {Component, inject} from '@angular/core';
-import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
+import {Component} from '@angular/core';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiDemo],
+    imports: [TuiAvatar, TuiDemo, TuiDocAppearance],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
-    private readonly sanitizer = inject(DomSanitizer);
-
     protected readonly examples = [
         'Content types',
         'Colors',
@@ -756,14 +758,11 @@ export default class Page {
 
     protected size = this.sizes[3]!;
 
-    protected readonly srcVariants: ReadonlyArray<SafeResourceUrl | string> = [
+    protected readonly srcVariants: readonly string[] = [
         'MW',
+        '@tui.star',
         'https://avatars.githubusercontent.com/u/11832552',
         'https://taiga-ui.dev/assets/images/test-not-found.png',
-        '@tui.user',
-        this.sanitizer.bypassSecurityTrustResourceUrl(
-            'https://avatars.githubusercontent.com/u/10106368',
-        ),
     ];
 
     protected src = this.srcVariants[0]!;
@@ -1110,7 +1109,9 @@ export class Example {}
 ```html
 <tui-badged-content [style.--tui-radius]="radius">
 <tui-badge-notification tuiSlot="top">1</tui-badge-notification>
-<div size="l" [round]="radius === '50%'" [tuiAvatar]=" 'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async " ></div>
+<div size="l" tuiAvatar="@tui.user" [round]="radius === '50%'" >
+<img alt="" src="https://avatars.githubusercontent.com/u/11832552" />
+</div>
 </tui-badged-content>
 ```
 
@@ -1123,24 +1124,14 @@ export class Example {}
 ### TypeScript
 
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiFallbackSrcPipe} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    imports: [
-        AsyncPipe,
-        TuiAvatar,
-        TuiBadgedContent,
-        TuiBadgeNotification,
-        TuiDemo,
-        TuiFallbackSrcPipe,
-        TuiHeader,
-    ],
+    imports: [TuiAvatar, TuiBadgedContent, TuiBadgeNotification, TuiDemo, TuiHeader],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -1569,7 +1560,7 @@ export class Example {}
 
 ```html
 <div tuiBlockDetails>
-  <div [tuiAvatar]="avatar"></div>
+  <div tuiAvatar="..."></div>
   <h2 tuiTitle>
     Title
     <div tuiSubtitle>Subtitle</div>
@@ -14721,14 +14712,9 @@ export class Example {
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 </aside>
 </header>
-<tui-avatar-stack [tuiShimmer]="shimmer">
-<div tuiAvatar="https://avatars.githubusercontent.com/u/87331898"></div>
-<div tuiAvatar="https://avatars.githubusercontent.com/u/12021443"></div>
-<div tuiAvatar="https://avatars.githubusercontent.com/u/35179038"></div>
-<div tuiAvatar="https://avatars.githubusercontent.com/u/46284632"></div>
-<div tuiAvatar="https://avatars.githubusercontent.com/u/10106368"></div>
-<div tuiAvatar="https://avatars.githubusercontent.com/u/11832552"></div>
-</tui-avatar-stack>
+<tui-avatar-stack [tuiShimmer]="shimmer"> @for (avatar of avatars; track $index) { <div tuiAvatar="@tui.user">
+<img alt="" [src]="avatar" />
+</div> } </tui-avatar-stack>
 <footer>
 <button appearance="secondary" size="m" tuiButton type="button" > It's down there </button>
 <button size="m" tuiButton type="button" > Take another look </button>
@@ -14775,6 +14761,15 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 export default class Page {
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic', 'Disabled animations'];
+
+    protected readonly avatars = [
+        'https://avatars.githubusercontent.com/mdlufy',
+        'https://avatars.githubusercontent.com/splincode',
+        'https://avatars.githubusercontent.com/nsbarsukov',
+        'https://avatars.githubusercontent.com/vladimirpotekhin',
+        'https://avatars.githubusercontent.com/marsibarsi',
+        'https://avatars.githubusercontent.com/waterplea',
+    ];
 
     protected shimmer = true;
 }
