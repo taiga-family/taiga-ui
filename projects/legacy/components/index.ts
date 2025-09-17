@@ -11,7 +11,6 @@ export * from '@taiga-ui/legacy/components/input-date-time';
 export * from '@taiga-ui/legacy/components/input-month';
 export * from '@taiga-ui/legacy/components/input-month-range';
 export * from '@taiga-ui/legacy/components/input-number';
-export * from '@taiga-ui/legacy/components/input-password';
 export * from '@taiga-ui/legacy/components/input-phone';
 export * from '@taiga-ui/legacy/components/input-phone-international';
 export * from '@taiga-ui/legacy/components/input-range';
