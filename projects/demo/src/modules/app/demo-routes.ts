@@ -112,7 +112,6 @@ export const DemoRoute = {
     InputPin: '/components/input-pin',
     InputYear: '/components/input-year',
     InputYearLegacy: '/legacy/input-year',
-    Island: '/components/island',
     ItemsWithMore: '/components/items-with-more',
     Label: '/components/label',
     LineClamp: '/components/line-clamp',

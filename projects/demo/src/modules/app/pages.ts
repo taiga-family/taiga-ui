@@ -687,12 +687,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Island',
-        keywords: 'Island, остров, плашка',
-        route: DemoRoute.Island,
-    },
-    {
-        section: 'Components',
         title: 'ItemsWithMore',
         keywords: 'список, list, items, элементы, more, больше, overflow',
         route: DemoRoute.ItemsWithMore,
