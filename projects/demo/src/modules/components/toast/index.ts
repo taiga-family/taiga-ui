@@ -1,27 +1,23 @@
-import {Component} from '@angular/core';
-import {TuiDocIcons} from '@demo/components/icons';
+import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiButton, TuiFallbackSrcPipe, TuiIcon} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
+import {TuiButton} from '@taiga-ui/core';
+import {TUI_TOAST_OPTIONS, TuiToast} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAvatar,
-        TuiBadge,
-        TuiButton,
-        TuiDemo,
-        TuiDocIcons,
-        TuiFallbackSrcPipe,
-        TuiIcon,
-        TuiToast,
-    ],
+    imports: [TuiButton, TuiDemo, TuiToast],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = ['Basic', 'Customization'];
+    private readonly options = inject(TUI_TOAST_OPTIONS);
 
+    protected readonly examples = ['Basic', 'Customization', 'Service'];
+    protected readonly toast = signal(false);
+    protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
+    protected autoClose = this.options.autoClose;
     protected content = 'Notification';
+    protected appearance = '';
+    protected closable = this.options.closable;
 }

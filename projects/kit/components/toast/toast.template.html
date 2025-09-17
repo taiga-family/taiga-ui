@@ -1,0 +1,23 @@
+<div
+    class="t-wrapper"
+    (tuiSwipe)="onSwipe()"
+>
+    <div
+        *polymorpheusOutlet="context.content as text; context: context"
+        tuiToast
+        [iconStart]="context.data?.toString() || ''"
+    >
+        {{ text }}
+    </div>
+    <button
+        *ngIf="context.closable && !isMobile"
+        appearance="icon"
+        size="xs"
+        tuiIconButton
+        type="button"
+        [iconStart]="icons.close"
+        (click.stop.prevent)="context.$implicit.complete()"
+    >
+        Close
+    </button>
+</div>

@@ -28,7 +28,7 @@ class TuiToastStyles {}
 
 @Directive({
     standalone: true,
-    selector: '[tuiToast]',
+    selector: '[tuiToast]:not(ng-template)',
     providers: [
         tuiBadgeOptionsProvider({size: 'l'}),
         tuiAvatarOptionsProvider(() => ({
@@ -49,6 +49,6 @@ class TuiToastStyles {}
     ],
     hostDirectives: [TuiWithIcons],
 })
-export class TuiToast {
+export class TuiToastDirective {
     protected readonly nothing = tuiWithStyles(TuiToastStyles);
 }
