@@ -14,7 +14,7 @@ import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 
@@ -59,8 +59,11 @@ export class TuiRadioComponent implements DoCheck, OnInit {
     }
 
     public ngDoCheck(): void {
-        this.appearance.tuiAppearance = tuiIsString(this.options.appearance)
-            ? this.options.appearance
-            : this.options.appearance(this.el);
+        tuiSetSignal(
+            this.appearance.tuiAppearance,
+            tuiIsString(this.options.appearance)
+                ? this.options.appearance
+                : this.options.appearance(this.el),
+        );
     }
 }
