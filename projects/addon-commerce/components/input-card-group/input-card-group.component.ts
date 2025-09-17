@@ -1,6 +1,5 @@
 import {DOCUMENT, isPlatformServer} from '@angular/common';
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -29,7 +28,7 @@ import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_NO_BREAK_SPACE, TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
 import {tuiHovered, TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE, TUI_IS_WEBKIT} from '@taiga-ui/cdk/tokens';
@@ -42,10 +41,7 @@ import {
     type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiWithTextfieldDropdown,
-} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {
     TuiAppearance,
     tuiAppearance,
@@ -84,8 +80,8 @@ export interface TuiCard {
         TuiFormatCardPipe,
         TuiIcon,
         TuiIconPipe,
-        TuiLet,
         TuiMapperPipe,
+        TuiTransitioned,
         WaResizeObserver,
     ],
     templateUrl: './input-card-group.template.html',
@@ -97,22 +93,16 @@ export interface TuiCard {
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
         TuiHoveredService,
     ],
-    hostDirectives: [
-        TuiAppearance,
-        TuiDropdownDirective,
-        TuiWithTextfieldDropdown,
-        TuiWithDropdownOpen,
-    ],
+    hostDirectives: [TuiAppearance, TuiDropdownDirective, TuiWithDropdownOpen],
     host: {
-        'data-size': 'l',
-        '[style.--tui-duration.s]': '0',
+        '[attr.data-size]': 'textfield.size()',
         '(pointerdown)': 'onPointerDown($event)',
         '(scroll.zoneless)': '$event.target.scrollLeft = 0',
     },
 })
 export class TuiInputCardGroup
     extends TuiControl<TuiCard | null>
-    implements TuiDataListHost<Partial<TuiCard>>, AfterViewInit
+    implements TuiDataListHost<Partial<TuiCard>>
 {
     @ViewChild('inputCard', {static: true})
     private readonly inputCard?: ElementRef<HTMLInputElement>;
@@ -142,6 +132,7 @@ export class TuiInputCardGroup
     protected readonly maskCard = TUI_MASK_CARD;
     protected readonly maskExpire = TUI_MASK_EXPIRE;
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly textfield = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
     protected readonly open = tuiDropdownOpen();
     protected readonly $ = this.isWebkit
@@ -207,11 +198,6 @@ export class TuiInputCardGroup
 
     public get bin(): string | null {
         return this.card.length < 6 ? null : this.card.slice(0, 6);
-    }
-
-    public ngAfterViewInit(): void {
-        // Enabling transitions
-        setTimeout(() => this.el.style.removeProperty('--tui-duration'), 500);
     }
 
     public override writeValue(value: TuiCard | null): void {
