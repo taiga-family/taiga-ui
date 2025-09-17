@@ -1,6 +1,5 @@
 import {DOCUMENT, isPlatformServer} from '@angular/common';
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -28,7 +27,7 @@ import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_NO_BREAK_SPACE, TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
 import {tuiHovered, TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
+import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE, TUI_IS_WEBKIT} from '@taiga-ui/cdk/tokens';
@@ -80,8 +79,8 @@ export interface TuiCard {
         TuiFormatCardPipe,
         TuiIcon,
         TuiIconPipe,
-        TuiLet,
         TuiMapperPipe,
+        TuiTransitioned,
         WaResizeObserver,
     ],
     templateUrl: './input-card-group.template.html',
@@ -96,14 +95,13 @@ export interface TuiCard {
     hostDirectives: [TuiAppearance, TuiDropdownDirective, TuiWithDropdownOpen],
     host: {
         '[attr.data-size]': 'textfield.size()',
-        '[style.--tui-duration.s]': '0',
         '(pointerdown)': 'onPointerDown($event)',
         '(scroll.zoneless)': '$event.target.scrollLeft = 0',
     },
 })
 export class TuiInputCardGroup
     extends TuiControl<TuiCard | null>
-    implements TuiDataListHost<Partial<TuiCard>>, AfterViewInit
+    implements TuiDataListHost<Partial<TuiCard>>
 {
     @ViewChild('inputCard', {static: true})
     private readonly inputCard?: ElementRef<HTMLInputElement>;
@@ -203,11 +201,6 @@ export class TuiInputCardGroup
 
     public get bin(): string | null {
         return this.card.length < 6 ? null : this.card.slice(0, 6);
-    }
-
-    public ngAfterViewInit(): void {
-        // Enabling transitions
-        setTimeout(() => this.el.style.removeProperty('--tui-duration'), 500);
     }
 
     public override writeValue(value: TuiCard | null): void {
