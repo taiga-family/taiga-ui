@@ -13,7 +13,7 @@ export function tuiIconStart(
 ): Signal<string>;
 export function tuiIconStart(
     value: Signal<string> | string,
-    options?: InjectOptions,
+    options: InjectOptions = {},
 ): Signal<string> {
     return tuiDirectiveBinding(TuiIcons, 'iconStart', value, options);
 }
@@ -28,7 +28,7 @@ export function tuiIconEnd(
 ): Signal<string>;
 export function tuiIconEnd(
     value: Signal<string> | string,
-    options?: InjectOptions,
+    options: InjectOptions = {},
 ): Signal<string> {
     return tuiDirectiveBinding(TuiIcons, 'iconEnd', value, options);
 }

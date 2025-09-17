@@ -14,6 +14,7 @@ import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {distinctUntilChanged} from 'rxjs';
 
 import {TUI_RADIO_OPTIONS, type TuiRadioOptions} from './radio.options';
 
@@ -49,15 +50,15 @@ export class TuiRadioComponent<T extends TuiRadioOptions> implements DoCheck, On
 
     public ngOnInit(): void {
         tuiControlValue(this.control)
-            .pipe(takeUntilDestroyed(this.destroyRef))
+            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
             .subscribe((value) => {
                 // https://github.com/angular/angular/issues/14988
                 const fix =
-                    this.control instanceof NgModel && value === null
+                    this.control instanceof NgModel && value == null
                         ? this.control.model
                         : value;
 
-                this.el.indeterminate = fix === null;
+                this.el.indeterminate = fix == null;
                 this.ngDoCheck();
             });
     }
