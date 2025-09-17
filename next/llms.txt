@@ -106,7 +106,6 @@
 - [Input Tag](https://taiga-ui.dev/components/input-tag)
 - [Input Time](https://taiga-ui.dev/components/input-time) — InputTime allows users to enter and edit time values using a keyboard, dropdown or even browser native picker.
 - [Input Year](https://taiga-ui.dev/components/input-year) — Component to input a single year @for (example of examples; track example; let index = $index) {
-- [Island](https://taiga-ui.dev/components/island)
 - [Item Group](https://taiga-ui.dev/components/item-group) — @for (example of examples; track example; let index = $index) {
 - [Items With More](https://taiga-ui.dev/components/items-with-more) — Component to hide overflown items behind custom content. Resize the screen to see extra items disappear @for (example of examples; track example; let index = $index) {
 - [Label](https://taiga-ui.dev/components/label) — Label is used to show text related to textfields, checkboxes, toggles and radio buttons @for (example of examples; track example; let index = $index) {
@@ -139,7 +138,6 @@
 - [Scrollbar](https://taiga-ui.dev/components/scrollbar) — Scrollbar implements a custom scrollbar in Taiga UI style. Native scrollbar is hidden to keep native platform scroll experience Use TUI_SCROLL_REF token to get a scrollable container. For example, when working with virtual scroll. @for (example of examples; track example; let index = $index) {
 - [Search](https://taiga-ui.dev/components/search) — A wrapping component for search or filtering the table @for (example of examples; track example; let index = $index) {
 - [Select](https://taiga-ui.dev/components/select) — Select is a form control for selecting a single value from a set of options, similar to the native &lt;select&gt; element.
-- [Sheet](https://taiga-ui.dev/components/sheet)
 - [Sheet Dialog](https://taiga-ui.dev/components/sheet-dialog) — A mobile draggable sheet dialog @for (example of examples; track example; let index = $index) {
 - [Slider](https://taiga-ui.dev/components/slider) — Taiga UI styling of native html tag '"> to choose a value from a limited range Read more about this input type in MDN Docs @for (example of examples; track example; let index = $index) {
 - [Slides](https://taiga-ui.dev/components/slides) — A component for displaying dynamic content animated between states. Use negative value for tuiSlides to indicate backward direction, positive for forward direction and 0 for static crossfade. Important: each child must be exactly one DOM element. @for (example of examples; track example; let index = $index) {
@@ -150,7 +148,6 @@
 - [Table](https://taiga-ui.dev/components/table) — This module allows you to create various tables, both static and editable. @for (example of examples; track example; let index = $index) {
 - [Table Filters](https://taiga-ui.dev/components/table-filters) — This module allows you to filter table data in a flexible way.
 - [Table Pagination](https://taiga-ui.dev/components/table-pagination) — Component to show pagination in table footer
-- [Tag](https://taiga-ui.dev/components/tag)
 - [Textarea](https://taiga-ui.dev/components/textarea) — Textarea uses Textfield to create a multi-line string input. @for (example of examples; track example; let index = $index) {
 - [Textfield](https://taiga-ui.dev/components/textfield) — Textfield is a low level component that other more complex controls are based upon. @for (example of examples; track example; let index = $index) {
 - [Thumbnail Card](https://taiga-ui.dev/components/thumbnail-card) — Customizable credit card thumbnail @for (example of examples; track example; let index = $index) {
