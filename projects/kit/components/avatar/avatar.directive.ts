@@ -3,7 +3,7 @@ import {
     Component,
     Directive,
     inject,
-    Input,
+    input,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
@@ -19,7 +19,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
 @Component({
     standalone: true,
     template: '',
-    styleUrl: './avatar.style.less',
+    styles: ['@import "@taiga-ui/kit/styles/components/avatar.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
@@ -40,10 +40,12 @@ class TuiAvatarStyles {}
     ],
     host: {
         tuiAvatar: '',
-        '[attr.data-size]': 'size',
-        '[class._round]': 'round',
+        '[attr.data-size]': 'size()',
+        '[attr.data-shape]': 'round() ? "round" : "square"',
         '[class._initials]': 'icons.iconStart()?.length < 3',
         '[class._fallback]': 'fallback()',
+        '[class._badge]': 'badge()',
+        '[style.--t-badge]': 'badge()',
         '(error.capture)': 'fallback.set(true)',
         '(load.capture)': 'fallback.set(false)',
     },
@@ -55,9 +57,7 @@ export class TuiAvatar {
     protected readonly icons = inject(TuiIcons);
     protected readonly fallback = signal(false);
 
-    @Input()
-    public size = this.options.size;
-
-    @Input()
-    public round = this.options.round;
+    public readonly size = input(this.options.size);
+    public readonly round = input(this.options.round);
+    public readonly badge = input('');
 }

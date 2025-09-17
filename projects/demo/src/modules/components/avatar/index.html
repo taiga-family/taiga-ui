@@ -18,6 +18,7 @@
         <tui-doc-demo>
             <div
                 [appearance]="appearance.appearance"
+                [badge]="badge"
                 [round]="round"
                 [size]="size"
                 [tuiAvatar]="src === '@tui.star' || src === 'MW' ? src : '@tui.user'"
@@ -39,6 +40,16 @@
             >
                 Icon or initials. For images and videos and longer text use
                 <code>ng-content</code>
+            </tr>
+
+            <tr
+                name="[badge]"
+                tuiDocAPIItem
+                type="string"
+                [items]="badgeVariants"
+                [(value)]="badge"
+            >
+                Color of the dot badge indicator
             </tr>
 
             <tr
