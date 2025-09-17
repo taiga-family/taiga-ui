@@ -1,22 +1,17 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     computed,
     Directive,
-    effect,
     inject,
-    Input,
-    signal,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
-import {TUI_APPEARANCE_OPTIONS, type TuiAppearanceOptions} from './appearance.options';
+import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
 
 @Component({
     standalone: true,
@@ -36,55 +31,20 @@ class TuiAppearanceStyles {}
     hostDirectives: [TuiTransitioned],
     host: {
         tuiAppearance: '',
-        '[attr.data-appearance]': 'appearance()',
-        '[attr.data-state]': 'state()',
-        '[attr.data-focus]': 'focus()',
+        '[attr.data-appearance]': 'tuiAppearance()',
+        '[attr.data-state]': 'tuiAppearanceState()',
+        '[attr.data-focus]': 'tuiAppearanceFocus()',
         '[attr.data-mode]': 'modes()',
     },
 })
 export class TuiAppearance {
-    private readonly cdr = inject(ChangeDetectorRef, {skipSelf: true});
-    private readonly el = tuiInjectElement();
-
     protected readonly nothing = tuiWithStyles(TuiAppearanceStyles);
-    protected readonly modes = computed((mode = this.mode()) =>
+    protected readonly modes = computed((mode = this.tuiAppearanceMode()) =>
         !mode || tuiIsString(mode) ? mode : mode.join(' '),
     );
 
-    // TODO: refactor to signal inputs after Angular update
-    public readonly appearance = signal(inject(TUI_APPEARANCE_OPTIONS).appearance);
-    public readonly state = signal<TuiInteractiveState | null>(null);
-    public readonly focus = signal<boolean | null>(null);
-    public readonly mode = signal<string | readonly string[] | null>(null);
-
-    // TODO: Remove when Angular is updated
-    public readonly update = effect(() => {
-        this.mode();
-        this.state();
-        this.focus();
-
-        if (this.el.matches('tui-textfield[multi]')) {
-            this.cdr.detectChanges();
-        }
-    }, TUI_ALLOW_SIGNAL_WRITES);
-
-    @Input()
-    public set tuiAppearance(appearance: TuiAppearanceOptions['appearance']) {
-        this.appearance.set(appearance);
-    }
-
-    @Input()
-    public set tuiAppearanceState(state: TuiInteractiveState | null) {
-        this.state.set(state);
-    }
-
-    @Input()
-    public set tuiAppearanceFocus(focus: boolean | null) {
-        this.focus.set(focus);
-    }
-
-    @Input()
-    public set tuiAppearanceMode(mode: string | readonly string[] | null) {
-        this.mode.set(mode);
-    }
+    public readonly tuiAppearance = input(inject(TUI_APPEARANCE_OPTIONS).appearance);
+    public readonly tuiAppearanceState = input<TuiInteractiveState | null>(null);
+    public readonly tuiAppearanceFocus = input<boolean | null>(null);
+    public readonly tuiAppearanceMode = input<string | readonly string[] | null>(null);
 }

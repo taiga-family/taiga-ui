@@ -14,7 +14,7 @@ import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
 import {type TuiSizeS} from '@taiga-ui/core/types';
@@ -66,7 +66,7 @@ export class TuiSwitch implements DoCheck, OnInit {
     }
 
     public ngDoCheck(): void {
-        this.appearance.tuiAppearance = this.options.appearance(this.el);
+        tuiSetSignal(this.appearance.tuiAppearance, this.options.appearance(this.el));
     }
 
     protected get icon(): string | null {
