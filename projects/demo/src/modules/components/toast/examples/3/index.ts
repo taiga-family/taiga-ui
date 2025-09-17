@@ -47,9 +47,10 @@ export class Toast {
 })
 export default class Example {
     private readonly toast = inject(TuiToastService);
+    private index = 0;
 
     public showSimple(): void {
-        this.toast.hideAll().show('Notification');
+        this.toast.show(`Copied #${this.index++}`, {iconStart: '@tui.copy-check'});
     }
 
     public show(): void {

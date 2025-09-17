@@ -1,9 +1,13 @@
-<ng-container *ngIf="isString; else custom">
-    <div tuiToast>
-        {{ item.content }}
-
+<div (tuiSwipe)="swipe($event)">
+    <div
+        *polymorpheusOutlet="item.content as text; context: item"
+        tuiToast
+        [iconEnd]="item.iconEnd"
+        [iconStart]="item.iconStart"
+    >
+        {{ text }}
         <button
-            *ngIf="item.closable"
+            *ngIf="item.closable && !isMobile"
             appearance="icon"
             size="xs"
             tuiIconButton
@@ -14,10 +18,4 @@
             Close
         </button>
     </div>
-</ng-container>
-
-<ng-template #custom>
-    <ng-container *polymorpheusOutlet="item.content as text; context: item">
-        {{ text }}
-    </ng-container>
-</ng-template>
+</div>
