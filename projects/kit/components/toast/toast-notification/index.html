@@ -1,0 +1,23 @@
+<ng-container *ngIf="isString; else custom">
+    <div tuiToast>
+        {{ item.content }}
+
+        <button
+            *ngIf="item.closable"
+            appearance="icon"
+            size="xs"
+            tuiIconButton
+            type="button"
+            [iconStart]="icons.close"
+            (click)="item.$implicit.complete()"
+        >
+            Close
+        </button>
+    </div>
+</ng-container>
+
+<ng-template #custom>
+    <ng-container *polymorpheusOutlet="item.content as text; context: item">
+        {{ text }}
+    </ng-container>
+</ng-template>

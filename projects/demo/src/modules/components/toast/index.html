@@ -62,6 +62,17 @@
                     Label
                 </button>
             </div>
+
+            <br />
+
+            <button
+                size="s"
+                tuiButton
+                type="button"
+                (click)="show()"
+            >
+                Show notification toast
+            </button>
         </tui-doc-demo>
 
         <table tuiDocAPI>
@@ -77,8 +88,65 @@
                 #icons
                 tuiDocIcons
             ></tbody>
+            <tbody>
+                <tr>
+                    <td colspan="3">
+                        <span tuiTitle>
+                            <strong>TuiToastService</strong>
+                            <span tuiSubtitle>
+                                Open
+                                <code>tui-notification-toast</code>
+                                inside alert area
+                            </span>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+            <tr
+                name="[position]"
+                tuiDocAPIItem
+                type="string"
+                [items]="positionVariants"
+                [(value)]="position"
+            >
+                Position on screen can be configured by providing margins
+            </tr>
+            <tr
+                name="[autoClose]"
+                tuiDocAPIItem
+                type="TuiHandler | number"
+                [items]="autoCloseVariants"
+                [(value)]="autoClose"
+            >
+                Auto close timeout, 0 for no auto close
+            </tr>
+            <tr
+                name="[closable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="closable"
+            >
+                Show close button
+            </tr>
+            <tr
+                name="appearance"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="appearance"
+            >
+                Appearance
+            </tr>
         </table>
     </ng-template>
 
-    <tui-setup *pageTab="'Setup'" />
+    <tui-setup *pageTab="'Setup'">
+        <li class="tui-list__item">
+            <p>
+                If you want to show toast as an alert content, use
+                <code>TuiToastService</code>
+            </p>
+
+            <tui-doc-code [code]="exampleAlert" />
+        </li>
+    </tui-setup>
 </tui-doc-page>

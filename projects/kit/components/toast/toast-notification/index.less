@@ -1,0 +1,39 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+@keyframes tuiToastIn {
+    from {
+        transform: translate(0, -200%);
+    }
+
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes tuiToastOut {
+    from {
+        transform: translate(0, -200%);
+    }
+
+    to {
+        transform: translate(0, 0);
+    }
+}
+
+:host {
+    animation-duration: var(--tui-duration-moderate, 300ms);
+    animation-timing-function: var(--tui-curve-productive-entrance, cubic-bezier(0, 0, 0.4, 0.9));
+
+    &:has(a[tuiToast]),
+    &:has(button[tuiToast]) {
+        animation-duration: var(--tui-duration-fast, 150ms);
+    }
+
+    &.tui-enter {
+        animation-name: tuiToastIn;
+    }
+
+    &.tui-leave {
+        animation-name: tuiToastOut;
+    }
+}
