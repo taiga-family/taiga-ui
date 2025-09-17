@@ -113,9 +113,7 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
 
 @Directive({
     standalone: true,
-    // TODO: Remove :not in v.5
-    selector:
-        'input[tuiTextfield]:not([tuiInputCard]):not([tuiInputExpire]):not([tuiInputCVC])',
+    selector: 'input[tuiTextfield]',
     providers: [
         tuiAsTextfieldAccessor(TuiTextfieldDirective),
         tuiProvide(TuiTextfieldBase, TuiTextfieldDirective),

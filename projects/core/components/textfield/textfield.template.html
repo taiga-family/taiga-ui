@@ -9,6 +9,7 @@
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
+    <ng-container #vcr />
     @if (options.cleaner()) {
         <button
             appearance="icon"
@@ -24,7 +25,6 @@
             {{ clear() }}
         </button>
     }
-    <ng-container #vcr />
     <ng-content select="tui-icon" />
 </span>
 @if (control?.value != null) {

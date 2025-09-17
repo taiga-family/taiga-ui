@@ -3,8 +3,7 @@ import {Directive, inject, Input, TemplateRef, ViewContainerRef} from '@angular/
 import {TuiLetContext} from './let-context';
 
 /**
- * Works like *ngIf but does not have a condition — use it to declare
- * the result of pipes calculation (i.e. async pipe)
+ * @deprecated use @let instead
  */
 @Directive({
     standalone: true,
