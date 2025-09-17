@@ -103,15 +103,6 @@
                 </tr>
             </tbody>
             <tr
-                name="[position]"
-                tuiDocAPIItem
-                type="string"
-                [items]="positionVariants"
-                [(value)]="position"
-            >
-                Position on screen can be configured by providing margins
-            </tr>
-            <tr
                 name="[autoClose]"
                 tuiDocAPIItem
                 type="TuiHandler | number"
@@ -123,10 +114,11 @@
             <tr
                 name="[closable]"
                 tuiDocAPIItem
-                type="boolean"
+                type="TuiHandler<TuiSwipeEvent, boolean> | boolean"
+                [items]="closeVariants"
                 [(value)]="closable"
             >
-                Show close button
+                Show close button on desktop and swipe on mobile
             </tr>
             <tr
                 name="appearance"

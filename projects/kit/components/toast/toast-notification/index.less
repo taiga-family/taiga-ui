@@ -20,20 +20,41 @@
     }
 }
 
+@keyframes tuiFadeOut {
+    from {
+        opacity: 0;
+    }
+}
+
 :host {
+    margin: 0.25rem auto 0;
     animation-duration: var(--tui-duration-moderate, 300ms);
     animation-timing-function: var(--tui-curve-productive-entrance, cubic-bezier(0, 0, 0.4, 0.9));
 
-    &:has(a[tuiToast]),
-    &:has(button[tuiToast]) {
+    &:first-child:not(._mobile) {
+        margin-block-start: 2rem;
+    }
+
+    &._mobile:has(a[tuiToast]),
+    &._mobile:has(button[tuiToast]) {
         animation-duration: var(--tui-duration-fast, 150ms);
+        animation-timing-function: var(--tui-curve-productive-standard, cubic-bezier(0.2, 0, 0.4, 0.9));
     }
 
     &.tui-enter {
+        animation-name: tuiFadeIn;
+    }
+
+    &:first-child.tui-enter {
         animation-name: tuiToastIn;
     }
 
     &.tui-leave {
+        animation-name: tuiFadeOut;
+    }
+
+    &.tui-leave._mobile {
         animation-name: tuiToastOut;
+        animation-timing-function: var(--tui-curve-productive-exit, cubic-bezier(0.2, 0, 1, 1));
     }
 }
