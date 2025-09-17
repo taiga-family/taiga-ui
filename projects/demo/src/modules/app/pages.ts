@@ -687,12 +687,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Island',
-        keywords: 'Island, остров, плашка',
-        route: DemoRoute.Island,
-    },
-    {
-        section: 'Components',
         title: 'ItemsWithMore',
         keywords: 'список, list, items, элементы, more, больше, overflow',
         route: DemoRoute.ItemsWithMore,
@@ -880,12 +874,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Sheet',
-        keywords: 'mobile, dialog, popup, map, details, шторка',
-        route: DemoRoute.Sheet,
-    },
-    {
-        section: 'Components',
         title: 'BottomSheet',
         keywords: 'mobile, dialog, popup, map, details, шторка, sheet',
         route: DemoRoute.BottomSheet,
@@ -995,12 +983,6 @@ export const pages: DocRoutePages = [
         keywords:
             'молекула, уведомление, нотификация, бабл, облачко, actions, beaver, alert, table, bar',
         route: DemoRoute.ActionBar,
-    },
-    {
-        section: 'Components',
-        title: 'Tag',
-        keywords: 'tag, тэг',
-        route: DemoRoute.Tag,
     },
     {
         section: 'Components',

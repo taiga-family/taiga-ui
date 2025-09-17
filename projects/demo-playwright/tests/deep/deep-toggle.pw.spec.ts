@@ -1,14 +1,9 @@
 /* eslint-disable playwright/no-conditional-in-test */
-import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationApiPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-const LEGACY: string[] = [DemoRoute.Island, DemoRoute.Sheet, DemoRoute.Tag];
-
 test.describe('Deep / Toggle', () => {
-    const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!)
-        // TODO migrate
-        .filter((path: string) => !LEGACY.includes(path));
+    const deepPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
     deepPaths.forEach((path) =>
         test(`${path}`, async ({page, browserName}) => {
