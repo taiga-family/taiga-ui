@@ -22,7 +22,7 @@ import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiButtonOptionsProvider({appearance: 'material-button', size: 's'}),
-        tuiCheckboxOptionsProvider({appearance: 'material-checkbox'}),
+        tuiCheckboxOptionsProvider({appearance: () => 'material-checkbox'}),
         tuiTextfieldOptionsProvider({
             appearance: signal('material-textfield'),
             cleaner: signal(false),

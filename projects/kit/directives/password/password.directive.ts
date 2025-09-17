@@ -7,7 +7,7 @@ import {
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 
 import {TUI_PASSWORD_OPTIONS} from './password.options';
@@ -43,9 +43,7 @@ export class TuiPassword {
 
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly hidden = signal(true);
-    protected readonly icon = tuiDirectiveBinding(
-        TuiIcons,
-        'iconStart',
+    protected readonly icon = tuiIconStart(
         computed((size = this.textfield.options.size()) => {
             const icon = this.hidden()
                 ? this.options.icons.show

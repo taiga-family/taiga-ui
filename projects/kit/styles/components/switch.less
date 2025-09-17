@@ -11,7 +11,7 @@
  * data-size — size (default: 'm') ('s' | 'm')
  *
  * @vars
- * --t-checked-icon — checkmark icon
+ * --t-icon-start — checkmark icon
  *
  * @example
  * <input type="checkbox" tuiSwitch />
@@ -69,7 +69,6 @@
 
     &::before,
     &::after {
-        content: '';
         position: absolute;
         block-size: 100%;
         inline-size: 1.5rem;
@@ -77,10 +76,6 @@
     }
 
     &::before {
-        display: var(--t-checked-icon, none);
-        background: currentColor;
-        mask: var(--t-checked-icon) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
-            ~'min(1em, 100%)' padding-box;
         font-size: 1rem;
         inline-size: 1.375rem;
         transform: translateX(-1.5rem);
@@ -88,11 +83,13 @@
 
     &::after {
         right: 0;
+        display: block;
         border-radius: 100%;
+        background: none;
         transform: scale(0.33333);
         box-shadow: -4.5rem 0 0 0.75rem var(--tui-background-base);
         outline: 0.375rem solid var(--tui-background-neutral-2-pressed);
-        outline-offset: var(--t-checked-icon, 20rem);
+        outline-offset: var(--t-icon-start, 20rem);
     }
 
     &:invalid:not([data-mode]),

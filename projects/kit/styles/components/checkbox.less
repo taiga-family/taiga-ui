@@ -11,11 +11,11 @@
  * data-size — size (default: 'm') ('s' | 'm')
  *
  * @vars
- * --t-checked-icon — checkmark icon
- * --t-indeterminate-icon — indeterminate state icon
+ * --t-icon-start — checkmark icon
+ * --t-icon-end — indeterminate state icon
  *
  * @example
- * <input type="checkbox" tuiCheckbox />
+ * <input type="checkbox" tuiCheckbox tuiIcons tuiAppearance data-appearance='secondary' />
  *
  * @see-also
  * Switch, Radio, Appearance
@@ -32,17 +32,19 @@
     flex-shrink: 0;
 
     &::before {
-        .fullsize(absolute, inset);
-
-        content: '';
+        position: absolute;
+        block-size: 100%;
+        inline-size: 100%;
         font-size: 1rem;
-        background: currentColor;
-        mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>') no-repeat center /
-            calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem)) ~'min(1em, 100%)' padding-box;
+        mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>');
         transform: scale(0);
         transition:
             transform var(--tui-duration) ease-in-out,
             mask 0s var(--tui-duration) ease-in-out;
+    }
+
+    &::after {
+        display: none;
     }
 
     &:disabled._readonly {
@@ -53,7 +55,7 @@
     &:checked,
     &:indeterminate {
         &::before {
-            mask-image: var(--t-checked-icon);
+            mask-image: var(--t-icon-start);
             transform: scale(1);
             transition:
                 transform var(--tui-duration) ease-in-out,
@@ -63,7 +65,7 @@
     }
 
     &:indeterminate::before {
-        mask-image: var(--t-indeterminate-icon);
+        mask-image: var(--t-icon-end);
     }
 
     &[data-size='s'] {

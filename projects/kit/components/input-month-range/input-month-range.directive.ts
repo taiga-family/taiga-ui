@@ -11,7 +11,7 @@ import {
     tuiInjectAuxiliary,
     TuiSelectLike,
     TuiTextfieldDirective,
-    tuiTextfieldIconBinding,
+    tuiTextfieldIcon,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
@@ -47,7 +47,7 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
         (x) => x instanceof TuiCalendarMonth,
     );
 
-    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_MONTH_RANGE_OPTIONS);
+    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_MONTH_RANGE_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
 
     protected readonly valueEffect = effect(() => {
