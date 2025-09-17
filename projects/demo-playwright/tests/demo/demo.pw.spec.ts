@@ -1,16 +1,11 @@
-import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, tuiMockImages} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 import {checkA11y, configureAxe, injectAxe} from 'axe-playwright';
 
 import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
-const LEGACY: string[] = [DemoRoute.Island, DemoRoute.Sheet, DemoRoute.Tag];
-
 test.describe('Demo', () => {
-    const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!)
-        // TODO migrate
-        .filter((path: string) => !LEGACY.includes(path));
+    const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
 
     const axeConfig = JSON.parse(process.env['AXE_CONFIG']!);
 
