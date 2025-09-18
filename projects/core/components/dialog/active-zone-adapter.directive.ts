@@ -27,8 +27,6 @@ export class TuiActiveZoneAdapter implements OnDestroy, OnInit {
 function findActive(zone: TuiActiveZone, element: Element | null): TuiActiveZone | null {
     if (!element || !zone.contains(element)) {
         return null;
-    } else if (!zone['subActiveZones'].length) {
-        return zone;
     }
 
     const active = zone['subActiveZones'].find((child) => child.contains(element));
