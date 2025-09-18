@@ -8,10 +8,10 @@ import {
 } from '@taiga-ui/addon-mobile';
 import {TuiLet} from '@taiga-ui/cdk';
 import {
+    TUI_DIALOGS_CLOSE,
     TuiAlertService,
     TuiButton,
     type TuiDialogContext,
-    TUI_DIALOGS_CLOSE,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
@@ -28,8 +28,10 @@ import {Subject, switchMap} from 'rxjs';
             provide: TUI_DIALOGS_CLOSE,
             useFactory: () => {
                 const subject = new Subject<void>();
+
                 // Expose the subject globally for testing
                 (window as any).__TUI_DIALOGS_CLOSE__ = subject;
+
                 return subject.asObservable();
             },
         },
@@ -87,6 +89,7 @@ export default class Page {
 
     protected triggerDialogsClose(): void {
         const subject = (window as any).__TUI_DIALOGS_CLOSE__;
+
         if (subject) {
             subject.next();
         }

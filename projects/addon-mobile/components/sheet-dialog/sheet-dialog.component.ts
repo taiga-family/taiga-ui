@@ -8,8 +8,7 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {EMPTY_QUERY, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
@@ -56,7 +55,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
 
     protected readonly close$ = new Subject<void>();
     protected readonly $ = merge(
-        this.close$, 
+        this.close$,
         tuiCloseWatcher(),
         inject(TUI_DIALOGS_CLOSE).pipe(map(TUI_TRUE_HANDLER)),
     )
