@@ -41,5 +41,14 @@ export default class Page {
 
     protected src = this.srcVariants[0]!;
 
+    protected readonly badgeVariants: readonly string[] = [
+        '',
+        'var(--tui-background-accent-1)',
+        'var(--tui-text-positive)',
+        '#C86DD7',
+    ];
+
+    protected badge = this.badgeVariants[0]!;
+
     protected round = true;
 }

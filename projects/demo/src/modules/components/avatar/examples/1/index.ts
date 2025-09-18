@@ -7,7 +7,6 @@ import {TuiCell} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAvatar, TuiCell],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
