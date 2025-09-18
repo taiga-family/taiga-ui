@@ -45,6 +45,7 @@
                     *tuiHead="'date'"
                     rowspan="2"
                     tuiTh
+                    [minWidth]="155"
                 >
                     Date
                 </th>
@@ -155,11 +156,15 @@
                         *tuiCell="'date'"
                         tuiTd
                     >
-                        <tui-input-date
-                            [ngModel]="item.date"
-                            [ngModelOptions]="options"
-                            (ngModelChange)="onValueChange($event, 'date', item, pythons)"
-                        />
+                        <tui-textfield>
+                            <input
+                                tuiInputDate
+                                [ngModel]="item.date"
+                                [ngModelOptions]="options"
+                                (ngModelChange)="onValueChange($event, 'date', item, pythons)"
+                            />
+                            <tui-calendar *tuiTextfieldDropdown />
+                        </tui-textfield>
                     </td>
                     <td
                         *tuiCell="'total'"
@@ -247,11 +252,15 @@
                         *tuiCell="'date'"
                         tuiTd
                     >
-                        <tui-input-date
-                            [ngModel]="item.date"
-                            [ngModelOptions]="options"
-                            (ngModelChange)="onValueChange($event, 'date', item, starwars)"
-                        />
+                        <tui-textfield>
+                            <input
+                                tuiInputDate
+                                [ngModel]="item.date"
+                                [ngModelOptions]="options"
+                                (ngModelChange)="onValueChange($event, 'date', item, starwars)"
+                            />
+                            <tui-calendar *tuiTextfieldDropdown />
+                        </tui-textfield>
                     </td>
                     <td
                         *tuiCell="'total'"

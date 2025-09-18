@@ -1,3 +1,9 @@
 ```html
-<tui-input-date [tuiDateFormat]="{mode, separator}"></tui-input-date>
+<tui-textfield>
+  <input
+    tuiInputDate
+    [tuiDateFormat]="{mode, separator}"
+  />
+  <tui-calendar *tuiTextfieldDropdown />
+</tui-textfield>
 ```
