@@ -45,19 +45,11 @@ export class TuiFocusTrap implements OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        tuiBlurNativeFocused(this.doc);
+        this.initialized = false;
 
-        /**
-         * HostListeners are triggered even after ngOnDestroy
-         * {@link https://github.com/angular/angular/issues/38100}
-         * so we need to delay it but stay in the same sync cycle,
-         * therefore using Promise instead of setTimeout
-         */
-        Promise.resolve().then(() => {
-            if (tuiIsHTMLElement(this.activeElement)) {
-                this.activeElement.focus();
-            }
-        });
+        if (tuiIsHTMLElement(this.activeElement)) {
+            this.activeElement.focus();
+        }
     }
 
     protected onFocusIn(node: Node): void {
