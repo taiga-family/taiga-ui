@@ -83,6 +83,13 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     @Input()
     public sorter: TuiComparator<T> = EMPTY_COMPARATOR;
 
+    // Track the actively selected sorter (can be null)
+    private activeSorter: TuiComparator<T> | null = null;
+
+    public get currentSorter(): TuiComparator<T> | null {
+        return this.activeSorter;
+    }
+
     /**
      * @deprecated: use sortChange
      */
@@ -122,14 +129,19 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     }
 
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
-        if (this.sorter === sorter) {
+        if (this.activeSorter === sorter && sorter !== null) {
+            // Same sorter clicked: toggle between Asc and Desc
             this.updateSorter(
-                this.sorter,
+                this.activeSorter,
                 this.direction === TuiSortDirection.Asc
                     ? TuiSortDirection.Desc
                     : TuiSortDirection.Asc,
             );
+        } else if (this.activeSorter !== null && sorter === null) {
+            // Reset to no sort (requiredSort = false case)
+            this.updateSorter(null);
         } else {
+            // Different sorter or initial click
             this.updateSorter(sorter);
         }
     }
@@ -146,6 +158,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
         sorter: TuiComparator<T> | null,
         direction: TuiSortDirection = TuiSortDirection.Asc,
     ): void {
+        this.activeSorter = sorter;
         this.sorter = sorter || EMPTY_COMPARATOR;
         this.direction = direction;
         this.sorterChange.emit(sorter);

@@ -72,7 +72,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected get isCurrent(): boolean {
-        return !!this.sorter && !!this.table && this.sorter === this.table.sorter;
+        return !!this.sorter && !!this.table && this.sorter === this.table.currentSorter;
     }
 
     protected get icon(): string {
@@ -99,7 +99,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
 
     private get isCurrentAndDescDirection(): boolean {
         return (
-            this.sorter === this.table?.sorter &&
+            this.sorter === this.table?.currentSorter &&
             this.table?.direction === TuiSortDirection.Desc
         );
     }

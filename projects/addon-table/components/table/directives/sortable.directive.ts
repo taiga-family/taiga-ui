@@ -39,7 +39,7 @@ export class TuiTableSortable<T extends Partial<Record<keyof T, unknown>>>
     }
 
     public check(): void {
-        if (this.match && this.table.sorter !== this.sorter) {
+        if (this.match && this.table.currentSorter !== this.sorter) {
             this.table.updateSorter(this.sorter);
         }
     }
