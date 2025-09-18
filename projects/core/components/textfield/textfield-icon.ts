@@ -8,8 +8,11 @@ import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 export function tuiTextfieldIcon(
     token: ProviderToken<{icon: TuiStringHandler<TuiSizeL | TuiSizeS>}>,
 ): Signal<string> {
-    const textfield = inject(TUI_TEXTFIELD_OPTIONS);
-    const options = inject(token);
+    const {size} = inject(TUI_TEXTFIELD_OPTIONS);
+    const {icon} = inject(token);
 
-    return tuiIconEnd(computed(() => options.icon(textfield.size())));
+    return tuiIconEnd(
+        computed(() => icon(size())),
+        {},
+    );
 }

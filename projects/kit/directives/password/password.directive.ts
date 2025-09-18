@@ -50,7 +50,7 @@ export class TuiPassword {
                 : this.options.icons.hide;
 
             return tuiIsString(icon) ? icon : icon(size);
-        }),
+        }, {}),
     );
 
     protected readonly hint = tuiDirectiveBinding(

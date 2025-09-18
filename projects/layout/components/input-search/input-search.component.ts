@@ -60,7 +60,7 @@ export class TuiInputSearch implements OnChanges {
     private placeholder = '';
     private ref?: EmbeddedViewRef<unknown>;
 
-    protected readonly icon = tuiIconStart(inject(TUI_COMMON_ICONS).search);
+    protected readonly icon = tuiIconStart(inject(TUI_COMMON_ICONS).search, {});
 
     @Input()
     public tuiInputSearch: PolymorpheusContent;

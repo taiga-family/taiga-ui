@@ -60,6 +60,7 @@ export class TuiInputColor extends TuiControl<string> {
     protected readonly left = inject(TuiIcons).iconStart() || '';
     protected readonly icon = tuiIconStart(
         computed(() => (this.align() === 'left' ? EMPTY : this.left)),
+        {},
     );
 
     protected readonly maskito = tuiMaskito(
