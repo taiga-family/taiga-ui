@@ -708,7 +708,7 @@ export class Example {}
 ### Example
 
 ```html
-<div [appearance]="appearance.appearance" [round]="round" [size]="size" [tuiAvatar]="src === '@tui.star' || src === 'MW' ? src : '@tui.user'" >
+<div [appearance]="appearance.appearance" [badge]="badge" [round]="round" [size]="size" [tuiAvatar]="src === '@tui.star' || src === 'MW' ? src : '@tui.user'" >
 <img alt="" [src]="src" />
 </div>
 ```
@@ -718,6 +718,7 @@ export class Example {}
 | Property | Type | Description |
 |----------|-----|----------|
 | [tuiAvatar] | `string` |  |
+| [badge] | `string` | Color of the dot badge indicator |
 | [round] | `boolean` | Use round shape |
 | [size] | `TuiSizeS | TuiSizeL` | Size |
 
@@ -766,6 +767,15 @@ export default class Page {
     ];
 
     protected src = this.srcVariants[0]!;
+
+    protected readonly badgeVariants: readonly string[] = [
+        '',
+        'var(--tui-background-accent-1)',
+        'var(--tui-text-positive)',
+        '#C86DD7',
+    ];
+
+    protected badge = this.badgeVariants[0]!;
 
     protected round = true;
 }
