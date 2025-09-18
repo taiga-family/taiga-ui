@@ -1,12 +1,18 @@
 import {InjectionToken, type Provider} from '@angular/core';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 
+/**
+ * @deprecated use {@link https://taiga-ui.dev/components/input-phone TuiInputPhone} with {@link https://taiga-ui.dev/components/textfield TuiTextfield}
+ */
 export interface TuiInputPhoneOptions {
     readonly allowText: boolean;
     readonly countryCode: string;
     readonly phoneMaskAfterCountryCode: string;
 }
 
+/**
+ * @deprecated use {@link https://taiga-ui.dev/components/input-phone TuiInputPhone} with {@link https://taiga-ui.dev/components/textfield TuiTextfield}
+ */
 export const TUI_INPUT_PHONE_DEFAULT_OPTIONS: TuiInputPhoneOptions = {
     phoneMaskAfterCountryCode: '### ###-##-##',
     allowText: false,
@@ -14,8 +20,8 @@ export const TUI_INPUT_PHONE_DEFAULT_OPTIONS: TuiInputPhoneOptions = {
 };
 
 /**
- * @deprecated: drop in v5.0
  * Default parameters for input phone component
+ * @deprecated drop in v5.0, use {@link https://taiga-ui.dev/components/input-phone TuiInputPhone} with {@link https://taiga-ui.dev/components/textfield TuiTextfield}
  */
 export const TUI_INPUT_PHONE_OPTIONS = new InjectionToken(
     ngDevMode ? 'TUI_INPUT_PHONE_OPTIONS' : '',
@@ -24,6 +30,9 @@ export const TUI_INPUT_PHONE_OPTIONS = new InjectionToken(
     },
 );
 
+/**
+ * @deprecated use {@link https://taiga-ui.dev/components/input-phone TuiInputPhone} with {@link https://taiga-ui.dev/components/textfield TuiTextfield}
+ */
 export function tuiInputPhoneOptionsProvider(
     options: Partial<TuiInputPhoneOptions>,
 ): Provider {
