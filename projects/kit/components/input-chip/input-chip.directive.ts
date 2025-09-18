@@ -76,6 +76,7 @@ export class TuiInputChipBaseDirective<T>
 
     public setValue(value: T[]): void {
         this.textfield.value.set('');
+        new KeyboardEvent('keydown', {});
         this.onChange(
             this.unique ? Array.from(new Set(value.reverse())).reverse() : value,
         );

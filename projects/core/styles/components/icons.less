@@ -18,6 +18,9 @@
  * Button, Icon, Link
  */
 [tuiIcons] {
+    --t-icon-start: none;
+    --t-icon-end: none;
+
     &::before,
     &::after {
         content: '';
@@ -31,7 +34,7 @@
     }
 
     &::before {
-        display: var(--t-icon-start, none);
+        display: var(--t-icon-start);
         mask:
             var(--t-icon-start) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
                 ~'min(1em, 100%)',
@@ -39,7 +42,7 @@
     }
 
     &::after {
-        display: var(--t-icon-end, none);
+        display: var(--t-icon-end);
         mask: var(--t-icon-end) no-repeat center / calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem))
             ~'min(1em, 100%)' padding-box;
     }

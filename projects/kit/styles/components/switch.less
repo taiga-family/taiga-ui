@@ -14,7 +14,7 @@
  * --t-icon-start — checkmark icon
  *
  * @example
- * <input type="checkbox" tuiSwitch />
+ * <input type="checkbox" tuiSwitch tuiAppearance data-appearance="primary" />
  *
  * @see-also
  * Checkbox, Radio
@@ -89,7 +89,10 @@
         transform: scale(0.33333);
         box-shadow: -4.5rem 0 0 0.75rem var(--tui-background-base);
         outline: 0.375rem solid var(--tui-background-neutral-2-pressed);
-        outline-offset: var(--t-icon-start, 20rem);
+    }
+
+    &:not([data-icon-start])::after {
+        outline-offset: 20rem;
     }
 
     &:invalid:not([data-mode]),
