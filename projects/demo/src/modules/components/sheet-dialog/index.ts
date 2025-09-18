@@ -11,17 +11,29 @@ import {
     TuiAlertService,
     TuiButton,
     type TuiDialogContext,
+    TUI_DIALOGS_CLOSE,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {switchMap} from 'rxjs';
+import {Subject, switchMap} from 'rxjs';
 
 @Component({
     imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiLet, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
+    providers: [
+        {
+            provide: TUI_DIALOGS_CLOSE,
+            useFactory: () => {
+                const subject = new Subject<void>();
+                // Expose the subject globally for testing
+                (window as any).__TUI_DIALOGS_CLOSE__ = subject;
+                return subject.asObservable();
+            },
+        },
+    ],
 })
 export default class Page {
     private readonly sheetDialogs = inject(TuiSheetDialogService);
@@ -71,5 +83,12 @@ export default class Page {
             })
             .pipe(switchMap((response) => this.alerts.open(String(response))))
             .subscribe();
+    }
+
+    protected triggerDialogsClose(): void {
+        const subject = (window as any).__TUI_DIALOGS_CLOSE__;
+        if (subject) {
+            subject.next();
+        }
     }
 }
