@@ -7,7 +7,6 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TuiHint} from '@taiga-ui/core/directives/hint';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
-import {TuiSvgComponent} from '@taiga-ui/legacy/components/svg';
 
 import {TuiColorEditModule} from './color-edit/color-edit.module';
 import {TuiColorPickerModule} from './color-picker/color-picker.module';
@@ -23,7 +22,6 @@ import {TuiPaletteModule} from './palette/palette.module';
     imports: [
         CommonModule,
         TuiButton,
-        TuiSvgComponent,
         TuiColorPickerModule,
         TuiLinearMultiPickerModule,
         TuiActiveZone,
