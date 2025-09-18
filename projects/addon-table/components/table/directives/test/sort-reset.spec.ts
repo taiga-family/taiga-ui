@@ -23,7 +23,6 @@ describe('TuiTable sort reset issue', () => {
                             *tuiHead="'name'"
                             tuiSortable
                             tuiTh
-                            (click)="onNameClick()"
                         >
                             Name
                         </th>
@@ -31,7 +30,6 @@ describe('TuiTable sort reset issue', () => {
                             *tuiHead="'age'"
                             tuiSortable
                             tuiTh
-                            (click)="onAgeClick()"
                         >
                             Age
                         </th>
@@ -45,21 +43,11 @@ describe('TuiTable sort reset issue', () => {
         @ViewChild(TuiTableDirective)
         public readonly table!: TuiTableDirective<TestData>;
 
-        public sortBy: keyof TestData | null = 'name'; // Initially sorted by name
+        public sortBy: keyof TestData | null = null;
         public sortChangeEvents: any[] = [];
 
         public onSortChange(event: any): void {
             this.sortChangeEvents.push(event);
-        }
-
-        public onNameClick(): void {
-            // Simulate clicking on the name column header
-            const nameHeader = this.table; // We'll need to get the specific th element
-            // This would typically trigger updateSorterAndDirection
-        }
-
-        public onAgeClick(): void {
-            // Simulate clicking on the age column header
         }
     }
 
