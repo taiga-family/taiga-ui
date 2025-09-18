@@ -46,6 +46,9 @@ function isText(value: string): boolean {
     return Number.isNaN(parseInt(value.replaceAll(MASK_SYMBOLS, ''), 10));
 }
 
+/**
+ * @deprecated use {@link https://taiga-ui.dev/components/input-phone TuiInputPhone} with {@link https://taiga-ui.dev/components/textfield TuiTextfield}
+ */
 @Component({
     standalone: false,
     selector: 'tui-input-phone',
