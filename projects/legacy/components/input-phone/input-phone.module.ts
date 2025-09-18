@@ -14,6 +14,9 @@ import {
 import {TuiInputPhoneComponent} from './input-phone.component';
 import {TuiInputPhoneDirective} from './input-phone.directive';
 
+/**
+ * @deprecated use {@link https://taiga-ui.dev/components/input-phone TuiInputPhone} with {@link https://taiga-ui.dev/components/textfield TuiTextfield}
+ */
 @NgModule({
     imports: [
         MaskitoDirective,
