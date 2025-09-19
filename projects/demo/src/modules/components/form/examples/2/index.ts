@@ -20,6 +20,7 @@ import {
     TuiDataListWrapper,
     TuiFieldErrorPipe,
     TuiInputNumber,
+    TuiInputPhone,
     TuiPassword,
     TuiRadio,
     TuiSelect,
@@ -29,7 +30,6 @@ import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 import {
     TuiInputDateModule,
     TuiInputModule,
-    TuiInputPhoneModule,
     TuiInputSliderModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
@@ -74,7 +74,7 @@ class Account {
         TuiInputDateModule,
         TuiInputModule,
         TuiInputNumber,
-        TuiInputPhoneModule,
+        TuiInputPhone,
         TuiInputSliderModule,
         TuiLabel,
         TuiPassword,
