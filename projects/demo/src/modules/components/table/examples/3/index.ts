@@ -13,8 +13,13 @@ import {
     TuiScrollbar,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiInputNumber, TuiTextarea} from '@taiga-ui/kit';
-import {TuiInputDateModule} from '@taiga-ui/legacy';
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiInputDate,
+    TuiInputNumber,
+    TuiTextarea,
+} from '@taiga-ui/kit';
 
 interface Item {
     readonly date: TuiDay;
@@ -32,7 +37,7 @@ interface Item {
         TuiDataListWrapper,
         TuiFormatNumberPipe,
         TuiIcon,
-        TuiInputDateModule,
+        TuiInputDate,
         TuiInputNumber,
         TuiLet,
         TuiNumberFormat,
@@ -101,7 +106,14 @@ export default class Example {
         },
     ];
 
-    protected readonly columns = ['name', 'price', 'quantity', 'unit', 'total'] as const;
+    protected readonly columns = [
+        'name',
+        'price',
+        'quantity',
+        'unit',
+        'date',
+        'total',
+    ] as const;
 
     protected readonly minPrice: ValidatorFn = ({value}) =>
         value > 400 ? null : {minPrice: 'Price must be above $400'};
