@@ -1,8 +1,8 @@
 import {Directive, effect, inject} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiTableControlDirective} from './table-control.directive';
-import {tuiInjectElement} from '@taiga-ui/cdk';
 
 @Directive({
     standalone: true,
