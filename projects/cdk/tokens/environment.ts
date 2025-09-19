@@ -15,14 +15,17 @@ export const TUI_IS_MOBILE = new InjectionToken(ngDevMode ? 'TUI_IS_MOBILE' : ''
     factory: () =>
         firstRegex.test(inject(WA_USER_AGENT).toLowerCase()) ||
         secondRegex.test(inject(WA_USER_AGENT).slice(0, 4).toLowerCase()),
+    providedIn: 'platform',
 });
 
 export const TUI_IS_IOS = new InjectionToken(ngDevMode ? 'TUI_IS_IOS' : '', {
     factory: () => isIos(inject(WA_NAVIGATOR)),
+    providedIn: 'platform',
 });
 
 export const TUI_IS_ANDROID = new InjectionToken(ngDevMode ? 'TUI_IS_ANDROID' : '', {
     factory: () => inject(TUI_IS_MOBILE) && !inject(TUI_IS_IOS),
+    providedIn: 'platform',
 });
 
 export const TUI_IS_WEBKIT = new InjectionToken(ngDevMode ? 'TUI_IS_WEBKIT' : '', {
@@ -39,6 +42,7 @@ export const TUI_PLATFORM = new InjectionToken<'android' | 'ios' | 'web'>(
 
             return inject(TUI_IS_ANDROID) ? 'android' : 'web';
         },
+        providedIn: 'platform',
     },
 );
 
@@ -50,6 +54,7 @@ export const TUI_IS_TOUCH = new InjectionToken(ngDevMode ? 'TUI_IS_TOUCH' : '', 
             initialValue: media.matches,
         });
     },
+    providedIn: 'platform',
 });
 
 /**
@@ -60,6 +65,7 @@ export const TUI_IS_TOUCH = new InjectionToken(ngDevMode ? 'TUI_IS_TOUCH' : '', 
  */
 export const TUI_IS_CYPRESS = new InjectionToken(ngDevMode ? 'TUI_IS_CYPRESS' : '', {
     factory: () => !!inject<any>(WA_WINDOW).Cypress,
+    providedIn: 'platform',
 });
 
 /**
@@ -71,6 +77,7 @@ export const TUI_IS_PLAYWRIGHT = new InjectionToken<boolean>(
     ngDevMode ? 'TUI_IS_PLAYWRIGHT' : '',
     {
         factory: TUI_FALSE_HANDLER,
+        providedIn: 'platform',
     },
 );
 
@@ -82,4 +89,5 @@ export const TUI_IS_E2E = new InjectionToken(ngDevMode ? 'TUI_IS_E2E' : '', {
         inject(TUI_IS_CYPRESS) ||
         inject(TUI_IS_PLAYWRIGHT) ||
         inject(WA_NAVIGATOR).webdriver,
+    providedIn: 'platform',
 });
