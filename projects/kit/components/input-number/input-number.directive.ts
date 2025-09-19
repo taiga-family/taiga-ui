@@ -85,7 +85,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         }
 
         /**
-         * Samsung Keyboard does not minus sign for `inputmode=decimal`
+         * Samsung Keyboard does not have minus sign for `inputmode=decimal`
          * @see https://github.com/taiga-family/taiga-ui/issues/11061#issuecomment-2939103792
          */
         return 'numeric';
