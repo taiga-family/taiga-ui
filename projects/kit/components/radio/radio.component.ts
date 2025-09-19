@@ -58,7 +58,7 @@ export class TuiRadioComponent<T extends TuiRadioOptions> implements DoCheck, On
                         ? this.control.model
                         : value;
 
-                this.el.indeterminate = fix == null;
+                this.el.indeterminate = fix == null && this.el.matches('[tuiCheckbox]');
                 this.ngDoCheck();
             });
     }
