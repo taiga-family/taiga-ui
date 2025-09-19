@@ -65,6 +65,7 @@ describe('Dialogs', () => {
 
             button.nativeElement.focus();
             button.nativeElement.click();
+            fixture.detectChanges();
             fixture.debugElement.query(By.css('tui-dialog button')).nativeElement.focus();
 
             expect(fixture.componentInstance.onActive).toHaveBeenCalledWith([true]);
