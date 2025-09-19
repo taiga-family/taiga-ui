@@ -1,4 +1,4 @@
-import {tuiGetNativeFocused} from '@taiga-ui/cdk';
+import {tuiGetFocused} from '@taiga-ui/cdk';
 
 describe('getNativeFocused', () => {
     it('returns active focused element in document', () => {
@@ -7,7 +7,7 @@ describe('getNativeFocused', () => {
         document.body.appendChild(buttonElement);
         buttonElement.focus();
 
-        expect(tuiGetNativeFocused(document)).toBe(buttonElement);
+        expect(tuiGetFocused(document)).toBe(buttonElement);
 
         document.body.removeChild(buttonElement);
     });
@@ -23,7 +23,7 @@ describe('getNativeFocused', () => {
         root.appendChild(buttonElement);
         buttonElement.focus();
 
-        expect(tuiGetNativeFocused(document)).toBe(buttonElement);
+        expect(tuiGetFocused(document)).toBe(buttonElement);
 
         document.body.removeChild(div);
     });

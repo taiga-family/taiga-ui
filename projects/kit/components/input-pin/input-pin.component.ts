@@ -11,7 +11,7 @@ import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoMask} from '@maskito/core';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -76,7 +76,7 @@ export class TuiInputPin {
 
     public isFocused(index: number): boolean {
         return (
-            tuiIsNativeFocused(this.el) &&
+            tuiIsFocused(this.el) &&
             (this.el.selectionStart === index ||
                 (this.el.selectionStart === this.el.maxLength &&
                     index === this.el.maxLength - 1))

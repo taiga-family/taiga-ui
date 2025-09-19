@@ -18,7 +18,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiElement} from '@taiga-ui/cdk/directives/element';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListAccessor,
@@ -97,7 +97,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
         $implicit: T,
         {nativeElement}: ElementRef<HTMLElement>,
     ): TuiValueContentContext<T> {
-        return {$implicit, active: tuiIsNativeFocused(nativeElement)};
+        return {$implicit, active: tuiIsFocused(nativeElement)};
     }
 
     // TODO(v5): delete

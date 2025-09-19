@@ -34,7 +34,7 @@ import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE, TUI_IS_WEBKIT} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
-import {tuiFocusedIn, tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiFocusedIn, tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
@@ -295,8 +295,7 @@ export class TuiInputCardGroup
 
     protected get cardCollapsed(): boolean {
         return (
-            this.isFocusable(this.card) &&
-            !tuiIsNativeFocused(this.inputCard?.nativeElement)
+            this.isFocusable(this.card) && !tuiIsFocused(this.inputCard?.nativeElement)
         );
     }
 

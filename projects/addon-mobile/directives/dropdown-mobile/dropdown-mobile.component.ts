@@ -13,7 +13,7 @@ import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk/directives/swipe';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -130,6 +130,6 @@ export class TuiDropdownMobileComponent implements OnDestroy, AfterViewInit {
     }
 
     private get focused(): boolean {
-        return this.dropdown.el.contains(tuiGetNativeFocused(this.doc));
+        return this.dropdown.el.contains(tuiGetFocused(this.doc));
     }
 }

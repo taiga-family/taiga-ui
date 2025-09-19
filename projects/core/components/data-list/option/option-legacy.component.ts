@@ -10,7 +10,7 @@ import {
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -87,7 +87,7 @@ export class TuiOption<T = unknown> implements OnDestroy {
     protected onMouseMove(): void {
         if (
             !this.isMobile &&
-            !tuiIsNativeFocused(this.el) &&
+            !tuiIsFocused(this.el) &&
             this.dataList &&
             this.el.closest('[tuiDataListDropdownManager]')
         ) {

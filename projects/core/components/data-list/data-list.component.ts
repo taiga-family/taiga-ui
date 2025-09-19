@@ -23,7 +23,7 @@ import {
     tuiZonefree,
 } from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
@@ -135,7 +135,7 @@ export class TuiDataListComponent<T>
     }
 
     public handleFocusLossIfNecessary(element: Element = this.el): void {
-        if (tuiIsNativeFocusedIn(element)) {
+        if (tuiIsFocusedIn(element)) {
             this.origin?.focus({preventScroll: true});
         }
     }

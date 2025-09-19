@@ -12,7 +12,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused, tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
@@ -108,7 +108,7 @@ export class TuiInputRangeComponent
     }
 
     public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
+        return tuiIsFocusedIn(this.el);
     }
 
     public override writeValue(value: [number, number]): void {
@@ -131,8 +131,8 @@ export class TuiInputRangeComponent
     protected get showLeftValueContent(): boolean {
         return Boolean(
             this.leftValueContent &&
-                !tuiIsNativeFocused(this.leftFocusableElement) &&
-                (!tuiIsNativeFocusedIn(this.range?.nativeElement) ||
+                !tuiIsFocused(this.leftFocusableElement) &&
+                (!tuiIsFocusedIn(this.range?.nativeElement) ||
                     this.lastActiveSide !== 'left'),
         );
     }
@@ -140,8 +140,8 @@ export class TuiInputRangeComponent
     protected get showRightValueContent(): boolean {
         return Boolean(
             this.rightValueContent &&
-                !tuiIsNativeFocused(this.rightFocusableElement) &&
-                (!tuiIsNativeFocusedIn(this.range?.nativeElement) ||
+                !tuiIsFocused(this.rightFocusableElement) &&
+                (!tuiIsFocusedIn(this.range?.nativeElement) ||
                     this.lastActiveSide !== 'right'),
         );
     }

@@ -20,7 +20,7 @@ import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiGetClosestFocusable, tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiGetClosestFocusable, tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp, tuiToInt} from '@taiga-ui/cdk/utils/math';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
@@ -153,7 +153,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected get isMoreFocusable(): boolean {
-        return !!this.moreButton && tuiIsNativeFocused(this.moreButton.nativeElement);
+        return !!this.moreButton && tuiIsFocused(this.moreButton.nativeElement);
     }
 
     protected get isMoreActive(): boolean {
@@ -174,7 +174,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     }
 
     protected onArrowRight(event: Event): void {
-        if (tuiIsElement(event.target) && tuiIsNativeFocused(event.target)) {
+        if (tuiIsElement(event.target) && tuiIsFocused(event.target)) {
             this.focusMore();
         }
     }
@@ -186,7 +186,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
         while (index >= 0) {
             tabs[index]?.focus();
 
-            if (tuiIsNativeFocused(tabs[index])) {
+            if (tuiIsFocused(tabs[index])) {
                 return;
             }
 

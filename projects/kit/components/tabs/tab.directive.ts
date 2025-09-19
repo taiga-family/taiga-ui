@@ -4,7 +4,7 @@ import {RouterLinkActive} from '@angular/router';
 import {MutationObserverService} from '@ng-web-apis/mutation-observer';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {EMPTY, filter, merge, switchMap, take} from 'rxjs';
 
@@ -46,7 +46,7 @@ export class TuiTab implements OnDestroy {
         );
 
     public ngOnDestroy(): void {
-        if (tuiIsNativeFocused(this.el)) {
+        if (tuiIsFocused(this.el)) {
             this.el.blur();
         }
     }
