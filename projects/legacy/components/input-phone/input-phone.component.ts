@@ -17,7 +17,7 @@ import {
 import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/kit';
 import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
@@ -118,8 +118,7 @@ export class TuiInputPhoneComponent
 
     public get focused(): boolean {
         return (
-            tuiIsNativeFocused(this.nativeFocusableElement) ||
-            !!this.dropdown?.tuiDropdownOpen
+            tuiIsFocused(this.nativeFocusableElement) || !!this.dropdown?.tuiDropdownOpen
         );
     }
 

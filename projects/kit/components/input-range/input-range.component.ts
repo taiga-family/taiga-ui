@@ -20,7 +20,7 @@ import {
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumber,
@@ -120,11 +120,11 @@ export class TuiInputRangeComponent
     }
 
     protected get hideStartContent(): boolean {
-        return !this.content[0] || tuiIsNativeFocused(this.textfieldStart);
+        return !this.content[0] || tuiIsFocused(this.textfieldStart);
     }
 
     protected get hideEndContent(): boolean {
-        return !this.content[1] || tuiIsNativeFocused(this.textfieldEnd);
+        return !this.content[1] || tuiIsFocused(this.textfieldEnd);
     }
 
     protected takeStep(
@@ -156,7 +156,7 @@ export class TuiInputRangeComponent
         this.setTextfieldValues(this.value());
 
         setTimeout((end = Number.MAX_SAFE_INTEGER) => {
-            if (tuiIsNativeFocused(this.activeTextfield)) {
+            if (tuiIsFocused(this.activeTextfield)) {
                 this.activeTextfield?.setSelectionRange(end, end);
             }
         });

@@ -14,7 +14,7 @@ import {
     tuiIsTextfield,
     tuiIsTextNode,
 } from '@taiga-ui/cdk/utils/dom';
-import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsString, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDriver,
@@ -123,7 +123,7 @@ export class TuiDropdownSelection
     }
 
     private getRange(): Range {
-        const active = tuiGetNativeFocused(this.doc);
+        const active = tuiGetFocused(this.doc);
         const selection = this.doc.getSelection();
         const range =
             active && tuiIsTextfield(active) && this.el.contains(active)

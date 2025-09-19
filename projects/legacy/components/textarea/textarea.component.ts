@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
@@ -98,7 +98,7 @@ export class TuiTextareaComponent
     }
 
     public get focused(): boolean {
-        return tuiIsNativeFocused(this.nativeFocusableElement);
+        return tuiIsFocused(this.nativeFocusableElement);
     }
 
     public get computeMaxHeight(): number | null {

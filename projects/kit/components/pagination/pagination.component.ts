@@ -15,7 +15,7 @@ import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
@@ -113,7 +113,7 @@ export class TuiPagination {
     }
 
     public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
+        return tuiIsFocusedIn(this.el);
     }
 
     public get arrowIsDisabledLeft(): boolean {

@@ -1,7 +1,7 @@
 import {Node} from 'ng-morph';
 
-import {getNamedImportReferences} from '../../../utils/get-named-import-references';
-import {type ReplacementType} from '../../interfaces/replacement-type';
+import {getNamedImportReferences} from '../../utils/get-named-import-references';
+import {type ReplacementType} from '../interfaces/replacement-type';
 
 export function replaceFunctions(functions: readonly ReplacementType[]): void {
     functions.forEach(({from, to, moduleSpecifier}) => {
