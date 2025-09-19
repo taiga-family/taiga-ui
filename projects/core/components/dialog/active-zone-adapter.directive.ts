@@ -29,7 +29,7 @@ function findActive(zone: TuiActiveZone, element: Element | null): TuiActiveZone
         return null;
     }
 
-    const active = zone['subActiveZones'].find((child) => child.contains(element));
+    const active = zone.children.find((child) => child.contains(element));
 
     return active ? findActive(active, element) : zone;
 }
