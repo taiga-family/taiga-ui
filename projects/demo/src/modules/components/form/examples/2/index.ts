@@ -31,7 +31,6 @@ import {
     TuiInputModule,
     TuiInputPhoneModule,
     TuiInputSliderModule,
-    TuiInputTimeModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 
@@ -77,7 +76,6 @@ class Account {
         TuiInputNumber,
         TuiInputPhoneModule,
         TuiInputSliderModule,
-        TuiInputTimeModule,
         TuiLabel,
         TuiPassword,
         TuiRadio,
