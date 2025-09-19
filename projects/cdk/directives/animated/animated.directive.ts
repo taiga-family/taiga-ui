@@ -61,11 +61,11 @@ export class TuiAnimated implements OnDestroy {
     }
 }
 
-function wrap(renderer: Renderer2): any {
+function wrap(renderer: Renderer2): Renderer2['removeChild'] {
     const {removeChild} = renderer;
     const app = inject(ApplicationRef);
 
-    return (parent: Node, el: Node, host?: boolean) => {
+    return (parent: Node, el: Node, host?: boolean): void => {
         const remove = (): void => removeChild.call(renderer, parent, el, host);
         const elements: Element[] = renderer.data[TUI_LEAVE];
         const element = elements.find((leave) => el.contains(leave));
