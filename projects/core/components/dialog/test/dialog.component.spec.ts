@@ -68,7 +68,8 @@ describe('Dialogs', () => {
             fixture.detectChanges();
             fixture.debugElement.query(By.css('tui-dialog button')).nativeElement.focus();
 
-            expect(fixture.componentInstance.onActive).toHaveBeenCalledWith([true]);
+            expect(fixture.componentInstance.onActive).toHaveBeenCalledTimes(1);
+            expect(fixture.componentInstance.onActive).toHaveBeenCalledWith(true);
         });
     });
 });
