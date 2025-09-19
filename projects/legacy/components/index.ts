@@ -7,7 +7,6 @@ export * from '@taiga-ui/legacy/components/input-date';
 export * from '@taiga-ui/legacy/components/input-date-multi';
 export * from '@taiga-ui/legacy/components/input-date-range';
 export * from '@taiga-ui/legacy/components/input-date-time';
-export * from '@taiga-ui/legacy/components/input-month';
 export * from '@taiga-ui/legacy/components/input-month-range';
 export * from '@taiga-ui/legacy/components/input-number';
 export * from '@taiga-ui/legacy/components/input-phone';
