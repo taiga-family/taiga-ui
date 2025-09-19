@@ -18,7 +18,7 @@ export default class Example {
     protected active = false;
 
     protected onZone(active: boolean): void {
-        console.log(active);
+        console.info(active);
         this.active = active;
     }
 

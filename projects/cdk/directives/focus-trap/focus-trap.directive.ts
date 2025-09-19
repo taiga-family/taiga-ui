@@ -5,11 +5,7 @@ import {
     tuiInjectElement,
     tuiIsHTMLElement,
 } from '@taiga-ui/cdk/utils/dom';
-import {
-    tuiBlurNativeFocused,
-    tuiGetClosestFocusable,
-    tuiGetNativeFocused,
-} from '@taiga-ui/cdk/utils/focus';
+import {tuiGetClosestFocusable, tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
 
 @Directive({
     standalone: true,
