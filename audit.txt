@@ -1,0 +1,29 @@
+# npm audit report
+
+dompurify  <3.2.4
+Severity: moderate
+DOMPurify allows Cross-site Scripting (XSS) - https://github.com/advisories/GHSA-vhxf-7vqr-mrjg
+fix available via `npm audit fix --force`
+Will install @taiga-ui/dompurify@4.1.7, which is a breaking change
+node_modules/dompurify
+  @taiga-ui/dompurify  >=4.1.10
+  Depends on vulnerable versions of dompurify
+  node_modules/@taiga-ui/dompurify
+
+vite  6.0.0 - 6.3.5
+Vite middleware may serve files starting with the same name with the public directory - https://github.com/advisories/GHSA-g4jq-h2w9-997c
+Vite's `server.fs` settings were not applied to HTML files - https://github.com/advisories/GHSA-jqfw-vq24-v9c3
+fix available via `npm audit fix --force`
+Will install @angular-devkit/build-angular@19.2.17, which is outside the stated dependency range
+node_modules/@angular/build/node_modules/vite
+  @angular/build  19.1.0-next.0 - 19.2.16 || 20.0.0-next.0 - 20.1.0-rc.0
+  Depends on vulnerable versions of vite
+  node_modules/@angular/build
+    @angular-devkit/build-angular  19.1.0-next.0 - 19.2.16 || 20.0.0-next.0 - 20.1.0-rc.0
+    Depends on vulnerable versions of @angular/build
+    node_modules/@angular-devkit/build-angular
+
+5 vulnerabilities (3 low, 2 moderate)
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
