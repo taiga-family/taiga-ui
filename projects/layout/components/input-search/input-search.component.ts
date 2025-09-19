@@ -18,12 +18,11 @@ import {
     tuiIsElement,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiTextfieldComponent,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {tuiCellOptionsProvider} from '@taiga-ui/layout/components/cell';
@@ -61,12 +60,7 @@ export class TuiInputSearch implements OnChanges {
     private placeholder = '';
     private ref?: EmbeddedViewRef<unknown>;
 
-    protected readonly icon = tuiDirectiveBinding(
-        TuiIcons,
-        'iconStart',
-        inject(TUI_COMMON_ICONS).search,
-        {},
-    );
+    protected readonly icon = tuiIconStart(inject(TUI_COMMON_ICONS).search, {});
 
     @Input()
     public tuiInputSearch: PolymorpheusContent;

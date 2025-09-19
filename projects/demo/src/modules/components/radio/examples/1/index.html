@@ -1,4 +1,4 @@
-@for (platform of platforms; track platform; let first = $first) {
+@for (platform of platforms; track $index) {
     <div
         class="wrapper"
         [class.wrapper_web]="platform === 'web'"
@@ -10,7 +10,7 @@
             tuiRadio
             type="radio"
             value="checked"
-            [size]="getSize(first)"
+            [size]="getSize($first)"
         />
         <input
             ngModel="checked"
@@ -18,32 +18,32 @@
             type="radio"
             value="checked"
             [disabled]="true"
-            [size]="getSize(first)"
+            [size]="getSize($first)"
         />
         <input
             tuiRadio
             type="radio"
-            [size]="getSize(first)"
+            [size]="getSize($first)"
         />
         <input
             ngModel="checked"
             tuiRadio
             type="radio"
             [disabled]="true"
-            [size]="getSize(first)"
+            [size]="getSize($first)"
         />
         <input
             tuiRadio
             type="radio"
             [formControl]="invalidTrue"
-            [size]="getSize(first)"
+            [size]="getSize($first)"
             [value]="true"
         />
         <input
             tuiRadio
             type="radio"
             [formControl]="invalidFalse"
-            [size]="getSize(first)"
+            [size]="getSize($first)"
             [value]="true"
         />
     </div>

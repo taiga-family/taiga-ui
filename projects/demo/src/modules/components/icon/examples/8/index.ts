@@ -10,6 +10,6 @@ import {TuiSwitch, tuiSwitchOptionsProvider} from '@taiga-ui/kit';
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [tuiSwitchOptionsProvider({icon: '@tui.fa.solid.check'})],
+    providers: [tuiSwitchOptionsProvider({icon: () => '@tui.fa.solid.check'})],
 })
 export default class Example {}

@@ -1,5 +1,6 @@
-import {computed, Directive, inject} from '@angular/core';
+import {Directive, effect, inject} from '@angular/core';
 import {NgControl, NgModel} from '@angular/forms';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 import {TuiTableControlDirective} from './table-control.directive';
 
@@ -7,19 +8,19 @@ import {TuiTableControlDirective} from './table-control.directive';
     standalone: true,
     selector: '[tuiCheckbox][tuiCheckboxTable]',
     providers: [{provide: NgControl, useClass: NgModel}],
-    host: {
-        '[checked]': 'parent.checked()',
-        '[indeterminate]': 'parent.indeterminate()',
-        '(change)': 'parent.toggleAll()',
-    },
+    host: {'(change)': 'parent.toggleAll()'},
 })
 export class TuiCheckboxTableDirective {
+    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly control = inject(NgControl);
 
     protected readonly parent = inject(TuiTableControlDirective);
-    protected readonly update = computed(() => {
-        this.control.control?.setValue(
-            this.parent.indeterminate() ? null : this.parent.checked(),
-        );
+    protected readonly update = effect(() => {
+        const indeterminate = this.parent.indeterminate();
+        const checked = this.parent.checked();
+
+        this.el.indeterminate = indeterminate;
+        this.el.checked = checked;
+        this.control.control?.setValue(indeterminate ? null : checked);
     });
 }

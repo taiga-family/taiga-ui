@@ -17,9 +17,8 @@ import {
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldContent, TuiWithTextfield} from '@taiga-ui/core/components/textfield';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {TuiSlider, tuiSliderOptionsProvider} from '@taiga-ui/kit/components/slider';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -58,11 +57,8 @@ export class TuiInputColor extends TuiControl<string> {
     protected readonly list = this.el.getAttribute('list');
     protected readonly format = signal(this.options.format);
     protected readonly align = signal<TuiHorizontalDirection>(this.options.align);
-    protected readonly left = inject(TuiIcons).iconStart();
-
-    protected readonly icon = tuiDirectiveBinding(
-        TuiIcons,
-        'iconStart',
+    protected readonly left = inject(TuiIcons).iconStart() || '';
+    protected readonly icon = tuiIconStart(
         computed(() => (this.align() === 'left' ? EMPTY : this.left)),
         {},
     );
