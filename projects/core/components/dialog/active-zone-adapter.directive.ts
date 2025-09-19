@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, inject, type OnDestroy, type OnInit} from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 
 @Directive({
     standalone: true,
@@ -12,7 +12,7 @@ export class TuiActiveZoneAdapter implements OnDestroy, OnInit {
     private readonly current = inject(TuiActiveZone);
     private readonly parent = findActive(
         inject(TuiActiveZone, {skipSelf: true}),
-        tuiGetNativeFocused(inject(DOCUMENT)),
+        tuiGetFocused(inject(DOCUMENT)),
     );
 
     public ngOnInit(): void {
