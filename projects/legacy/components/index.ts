@@ -3,7 +3,6 @@ export * from '@taiga-ui/legacy/components/color-selector';
 export * from '@taiga-ui/legacy/components/combo-box';
 export * from '@taiga-ui/legacy/components/input';
 export * from '@taiga-ui/legacy/components/input-color';
-export * from '@taiga-ui/legacy/components/input-copy';
 export * from '@taiga-ui/legacy/components/input-date';
 export * from '@taiga-ui/legacy/components/input-date-multi';
 export * from '@taiga-ui/legacy/components/input-date-range';
