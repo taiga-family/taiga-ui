@@ -4,6 +4,9 @@ import {tuiAsTextfieldHost} from '@taiga-ui/legacy/tokens';
 
 import {type TuiInputPhoneComponent} from './input-phone.component';
 
+/**
+ * @deprecated use {@link https://taiga-ui.dev/components/input-phone TuiInputPhone} with {@link https://taiga-ui.dev/components/textfield TuiTextfield}
+ */
 @Directive({
     standalone: false,
     selector: 'tui-input-phone',
