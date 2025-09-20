@@ -3,7 +3,6 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {Router} from '@angular/router';
 import {TUI_DOC_ICONS, TUI_DOC_LOGO, TUI_DOC_MENU_TEXT} from '@taiga-ui/addon-doc/tokens';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiPopup} from '@taiga-ui/core/directives/popup';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
@@ -14,14 +13,7 @@ import {TuiDocNavigation} from '../../navigation/navigation.component';
 
 @Component({
     selector: 'header[tuiDocHeader]',
-    imports: [
-        PolymorpheusOutlet,
-        TuiActiveZone,
-        TuiButton,
-        TuiDocNavigation,
-        TuiDrawer,
-        TuiPopup,
-    ],
+    imports: [PolymorpheusOutlet, TuiButton, TuiDocNavigation, TuiDrawer, TuiPopup],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
