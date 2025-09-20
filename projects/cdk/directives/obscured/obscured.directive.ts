@@ -17,7 +17,13 @@ export class TuiObscured {
     private readonly activeZone = inject(TuiActiveZone, {optional: true});
     private readonly enabled$ = new BehaviorSubject(false);
     private readonly obscured$ = inject(TuiObscuredService, {self: true}).pipe(
-        map((by) => !!by?.every((el) => !this.activeZone?.contains(el))),
+        // TODO: Refactor so that dropdowns and dialogs work properly without hacks
+        map(
+            (by) =>
+                !!by?.every(
+                    (el) => el.closest('tui-dialogs') || !this.activeZone?.contains(el),
+                ),
+        ),
     );
 
     @Output()

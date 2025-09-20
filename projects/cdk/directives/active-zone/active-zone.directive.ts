@@ -29,7 +29,6 @@ export class TuiActiveZone implements OnDestroy {
     private readonly zone = inject(NgZone);
     private readonly el = tuiInjectElement();
     private tuiActiveZoneParent: TuiActiveZone | null = null;
-    private subActiveZones: readonly TuiActiveZone[] = [];
     private readonly directParentActiveZone = inject(TuiActiveZone, {
         skipSelf: true,
         optional: true,
@@ -50,6 +49,8 @@ export class TuiActiveZone implements OnDestroy {
         share(),
     );
 
+    public children: readonly TuiActiveZone[] = [];
+
     constructor() {
         this.directParentActiveZone?.addSubActiveZone(this);
     }
@@ -66,11 +67,7 @@ export class TuiActiveZone implements OnDestroy {
 
     public contains(node: Node): boolean {
         return (
-            this.el.contains(node) ||
-            this.subActiveZones.some(
-                (item, index, array) =>
-                    array.indexOf(item) === index && item.contains(node),
-            )
+            this.el.contains(node) || this.children.some((item) => item.contains(node))
         );
     }
 
@@ -82,13 +79,10 @@ export class TuiActiveZone implements OnDestroy {
     }
 
     private addSubActiveZone(activeZone: TuiActiveZone): void {
-        this.subActiveZones = [...this.subActiveZones, activeZone];
+        this.children = [...this.children, activeZone];
     }
 
     private removeSubActiveZone(activeZone: TuiActiveZone): void {
-        this.subActiveZones = tuiArrayRemove(
-            this.subActiveZones,
-            this.subActiveZones.indexOf(activeZone),
-        );
+        this.children = tuiArrayRemove(this.children, this.children.indexOf(activeZone));
     }
 }
