@@ -3,11 +3,15 @@
     (tuiSwipe)="onSwipe($event)"
 >
     Swipe left to open
-    <div
-        *tuiSidebar="!!(open$ | async); direction: 'right'"
-        class="sidebar tui-text_body-l"
+
+    <tui-drawer
+        *tuiPopup="open()"
+        direction="right"
+        class="drawer tui-text_body-l"
+        [overlay]="true"
+        (click.self)="open.set(false)"
         (tuiSwipe)="onSwipe($event)"
     >
         Swipe right to close
-    </div>
+    </tui-drawer>
 </div>
