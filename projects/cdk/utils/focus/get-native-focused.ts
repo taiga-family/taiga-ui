@@ -3,7 +3,7 @@
  *
  * @return element or null
  */
-export function tuiGetNativeFocused({activeElement}: Document): Element | null {
+export function tuiGetFocused({activeElement}: Document): Element | null {
     if (!activeElement?.shadowRoot) {
         return activeElement;
     }
@@ -16,3 +16,10 @@ export function tuiGetNativeFocused({activeElement}: Document): Element | null {
 
     return element;
 }
+
+export {
+    /**
+     * @deprecated use {@link tuiGetFocused}
+     */
+    tuiGetFocused as tuiGetNativeFocused,
+};
