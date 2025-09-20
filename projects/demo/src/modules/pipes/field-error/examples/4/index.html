@@ -7,17 +7,18 @@
         >
             Phone number {{ i + 1 }}
             <span class="row">
-                <tui-input-phone
+                <tui-textfield
                     tuiTextfieldSize="m"
                     class="input"
-                    [formControlName]="i"
-                    [tuiTextfieldLabelOutside]="true"
                 >
                     <input
                         autocomplete="new-password"
-                        tuiTextfieldLegacy
+                        mask="+7 ### ###-##-##"
+                        placeholder="+7 999 999-99-99"
+                        tuiInputPhone
+                        [formControlName]="i"
                     />
-                </tui-input-phone>
+                </tui-textfield>
                 <button
                     appearance="icon"
                     iconStart="@tui.trash"
