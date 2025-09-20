@@ -23,7 +23,7 @@ export default class Example {
             .open<string>(new PolymorpheusComponent(DialogComponent), {
                 label: 'Edit info',
                 size: 's',
-                data: 'Alex Inkin',
+                data: 'Alice',
             })
             .pipe(switchMap((name) => this.alerts.open(name)))
             .subscribe();

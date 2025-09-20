@@ -22,6 +22,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
     // So that we do not force OnPush on custom dialogs
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
+    host: {'[class._open]': 'dialogs().length'},
 })
 export class TuiDialogs {
     protected readonly dialogs: Signal<ReadonlyArray<TuiPopover<any, any>>> = toSignal(
