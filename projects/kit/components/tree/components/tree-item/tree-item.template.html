@@ -11,6 +11,7 @@
     [expanded]="expanded()"
 >
     <div>
+        <ng-content select="tui-tree-item-empty" />
         <ng-content select="tui-tree-item" />
         <ng-content select="tui-tree" />
     </div>

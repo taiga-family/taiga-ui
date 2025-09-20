@@ -18,7 +18,7 @@ import {
     type TuiTreeController,
     type TuiTreeItemContext,
 } from '../../misc/tree.interfaces';
-import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
+import {TUI_TREE_CONTROLLER, TUI_TREE_LEVEL} from '../../misc/tree.tokens';
 
 @Component({
     standalone: true,
@@ -40,6 +40,7 @@ export class TuiTreeItemContent implements DoCheck {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly more = toSignal(inject(TUI_MORE_WORD));
     protected readonly context = injectContext<TuiTreeItemContext>();
+    protected readonly level = inject<number>(forwardRef(() => TUI_TREE_LEVEL));
 
     protected readonly expanded = toSignal(
         this.change$.pipe(
@@ -56,8 +57,9 @@ export class TuiTreeItemContent implements DoCheck {
 
     protected get isExpandable(): boolean {
         return (
-            this.context.$implicit.isExpandable &&
-            this.controller !== TUI_DEFAULT_TREE_CONTROLLER
+            this.level === 0 ||
+            (this.context.$implicit.isExpandable &&
+                this.controller !== TUI_DEFAULT_TREE_CONTROLLER)
         );
     }
 

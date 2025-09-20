@@ -4,7 +4,9 @@
     [map]="map"
     [tuiTreeController]="false"
     [value]="data"
-/>
+>
+    Nothing found
+</tui-tree>
 
 <ng-template
     #content
@@ -24,7 +26,7 @@
         Toggle Topmost
     </button>
 </p>
-<p>
+<p *ngIf="childrenLength > 1">
     <button
         size="s"
         tuiButton
@@ -35,12 +37,50 @@
         Toggle Top level 1
     </button>
 </p>
-<button
-    size="s"
-    tuiButton
-    type="button"
-    class="programmatic"
-    (click)="toggleLevel(2)"
->
-    Toggle Top level 3
-</button>
+<p *ngIf="childrenLength > 2">
+    <button
+        size="s"
+        tuiButton
+        type="button"
+        class="programmatic"
+        (click)="toggleLevel(2)"
+    >
+        Toggle Top level 3
+    </button>
+</p>
+<p *ngIf="childrenLength > 0">
+    <button
+        appearance="negative"
+        size="s"
+        tuiButton
+        type="button"
+        class="programmatic"
+        (click)="dropLevel(0)"
+    >
+        Drop Top level 1
+    </button>
+</p>
+<p *ngIf="childrenLength > 1">
+    <button
+        appearance="negative"
+        size="s"
+        tuiButton
+        type="button"
+        class="programmatic"
+        (click)="dropLevel(1)"
+    >
+        Drop Top level 2
+    </button>
+</p>
+<p *ngIf="childrenLength > 2">
+    <button
+        appearance="negative"
+        size="s"
+        tuiButton
+        type="button"
+        class="programmatic"
+        (click)="dropLevel(2)"
+    >
+        Drop Top level 3
+    </button>
+</p>
