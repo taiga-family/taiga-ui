@@ -10,8 +10,9 @@ import {
 import {REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
-import {tuiEnableFontScaling} from '@taiga-ui/core/utils/miscellaneous';
 import {provideEventPlugins} from '@taiga-ui/event-plugins';
+
+import {tuiEnableFontScaling} from './font-scaling';
 
 interface ExperimentalAPIs {
     readonly all: boolean;
