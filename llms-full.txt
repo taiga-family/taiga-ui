@@ -3073,6 +3073,7 @@ export class Example {
 
   <tui-data-list-wrapper
     *tuiTextfieldDropdown
+    new
     [items]="items"
   />
 </tui-textfield>
@@ -10571,6 +10572,7 @@ A mobile draggable sheet dialog
 <footer tuiFloatingContainer>
 <button tuiButton type="button" class="tui-space_right-1" (click)="observer.next('Hi')" > Say "Hi" </button>
 <button tuiButton type="button" class="tui-space_right-1" (click)="completeWith('Hi and bye!')" > Say "Hi and bye!" </button>
+<button tuiButton type="button" (click)="navigate()" > Navigate to Examples </button>
 </footer>
 </ng-template>
 ```
@@ -10593,6 +10595,7 @@ A mobile draggable sheet dialog
 
 ```ts
 import {Component, inject, type TemplateRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
@@ -10619,6 +10622,8 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Page {
+    private readonly router = inject(Router);
+    private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiAlertService);
 
@@ -10666,6 +10671,10 @@ export default class Page {
             })
             .pipe(switchMap((response) => this.alerts.open(String(response))))
             .subscribe();
+    }
+
+    protected navigate(): void {
+        void this.router.navigate(['./'], {relativeTo: this.route});
     }
 }
 ```
@@ -12260,6 +12269,86 @@ export default class Page {
     tui-tile._dragged & {
         box-shadow: var(--tui-shadow-small-hover);
     }
+}
+```
+
+---
+# components/Toast
+- **Package**: `KIT`
+- **Type**: components
+
+### How to Use (Import)
+
+```ts
+import {TuiToast} from '@taiga-ui/kit';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiToast,
+  ],
+  // ...
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<div tuiToast>Notification</div>
+```
+
+### Example
+
+```html
+<a tuiToast [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" > {{ content }} </a>
+<br />
+<button tuiToast type="button" [iconEnd]="icons.iconEnd" >
+<tui-icon appearance="accent" icon="@tui.box" size="l" tuiBadge /> {{ content }} </button>
+<br />
+<div tuiToast [iconEnd]="icons.iconEnd" >
+<tui-avatar [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async" /> {{ content }} <button appearance="neutral" size="s" tuiButton type="button" > Label </button>
+</div>
+```
+
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| <ng-content /> | `string` | Text of notification toast |
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {TuiDocIcons} from '@demo/components/icons';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+import {TuiButton, TuiFallbackSrcPipe, TuiIcon} from '@taiga-ui/core';
+import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
+
+@Component({
+    standalone: true,
+    imports: [
+        TuiAvatar,
+        TuiBadge,
+        TuiButton,
+        TuiDemo,
+        TuiDocIcons,
+        TuiFallbackSrcPipe,
+        TuiIcon,
+        TuiToast,
+    ],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Example {
+    protected readonly examples = ['Basic', 'Customization'];
+
+    protected content = 'Notification';
 }
 ```
 

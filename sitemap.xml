@@ -484,6 +484,9 @@
     <loc>https://taiga-ui.dev/components/confirm/</loc>
   </url>
   <url>
+    <loc>https://taiga-ui.dev/components/toast/</loc>
+  </url>
+  <url>
     <loc>https://taiga-ui.dev/components/copy/</loc>
   </url>
   <url>
@@ -1586,6 +1589,12 @@
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/confirm/Setup/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/toast/API/</loc>
+  </url>
+  <url>
+    <loc>https://taiga-ui.dev/components/toast/Setup/</loc>
   </url>
   <url>
     <loc>https://taiga-ui.dev/components/copy/API/</loc>
