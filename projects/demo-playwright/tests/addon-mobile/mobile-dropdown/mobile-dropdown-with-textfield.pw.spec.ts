@@ -29,7 +29,7 @@ describe('DropdownMobile for textfields', () => {
         const example = documentation.getExample('#mobile');
 
         await example.locator('tui-multi-select').click();
-        await page.locator('tui-sheet-dialog [tuiOption]').first().click();
+        await page.locator('tui-dropdown-mobile [tuiOption]').first().click();
 
         await expect
             .soft(page)
