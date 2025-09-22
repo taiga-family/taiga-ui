@@ -45,7 +45,8 @@
         "crossfade",
         "crossfading",
         "sdev",
-        "coeff"
+        "coeff",
+        "Dalvik"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
