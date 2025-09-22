@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[32443],{32443:n=>{n.exports=".container {\n    inline-size: 12.5rem;\n    block-size: 12.5rem;\n}\n\n.sidebar {\n    inline-size: 100%;\n    block-size: 100%;\n}\n\n.container,\n.sidebar {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n"}}]);
