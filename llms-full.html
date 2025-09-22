@@ -10582,6 +10582,7 @@ A mobile draggable sheet dialog
 &lt;footer tuiFloatingContainer&gt;
 &lt;button tuiButton type=&quot;button&quot; class=&quot;tui-space_right-1&quot; (click)=&quot;observer.next(&#039;Hi&#039;)&quot; &gt; Say &quot;Hi&quot; &lt;/button&gt;
 &lt;button tuiButton type=&quot;button&quot; class=&quot;tui-space_right-1&quot; (click)=&quot;completeWith(&#039;Hi and bye!&#039;)&quot; &gt; Say &quot;Hi and bye!&quot; &lt;/button&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;navigate()&quot; &gt; Navigate to Examples &lt;/button&gt;
 &lt;/footer&gt;
 &lt;/ng-template&gt;
 ```
@@ -10604,6 +10605,7 @@ A mobile draggable sheet dialog
 
 ```ts
 import {Component, inject, type TemplateRef} from &#039;@angular/core&#039;;
+import {ActivatedRoute, Router} from &#039;@angular/router&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 import {
@@ -10630,6 +10632,8 @@ import {switchMap} from &#039;rxjs&#039;;
     changeDetection,
 })
 export default class Page {
+    private readonly router = inject(Router);
+    private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiAlertService);
 
@@ -10677,6 +10681,10 @@ export default class Page {
             })
             .pipe(switchMap((response) =&gt; this.alerts.open(String(response))))
             .subscribe();
+    }
+
+    protected navigate(): void {
+        void this.router.navigate([&#039;./&#039;], {relativeTo: this.route});
     }
 }
 ```

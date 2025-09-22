@@ -10572,6 +10572,7 @@ A mobile draggable sheet dialog
 <footer tuiFloatingContainer>
 <button tuiButton type="button" class="tui-space_right-1" (click)="observer.next('Hi')" > Say "Hi" </button>
 <button tuiButton type="button" class="tui-space_right-1" (click)="completeWith('Hi and bye!')" > Say "Hi and bye!" </button>
+<button tuiButton type="button" (click)="navigate()" > Navigate to Examples </button>
 </footer>
 </ng-template>
 ```
@@ -10594,6 +10595,7 @@ A mobile draggable sheet dialog
 
 ```ts
 import {Component, inject, type TemplateRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
@@ -10620,6 +10622,8 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Page {
+    private readonly router = inject(Router);
+    private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiAlertService);
 
@@ -10667,6 +10671,10 @@ export default class Page {
             })
             .pipe(switchMap((response) => this.alerts.open(String(response))))
             .subscribe();
+    }
+
+    protected navigate(): void {
+        void this.router.navigate(['./'], {relativeTo: this.route});
     }
 }
 ```
