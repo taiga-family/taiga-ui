@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.55.0](https://github.com/taiga-family/taiga-ui/compare/v4.54.0...v4.55.0) (2025-09-22)
+
+### 🐞 Bug Fixes
+
+- **addon-mobile:** close sheet dialog when navigating to a new route
+  ([#11991](https://github.com/taiga-family/taiga-ui/issues/11991))
+  ([947c94b](https://github.com/taiga-family/taiga-ui/commit/947c94b1100a0f9f7d3643fbdd1bac5da66f8483))
+- **cdk:** `Animated` fix memory leak ([#11986](https://github.com/taiga-family/taiga-ui/issues/11986))
+  ([04b4e2e](https://github.com/taiga-family/taiga-ui/commit/04b4e2ea9104a56f720b0779ad453033a51da556))
+- **experimental:** `Dialog` fix `label` ([#12019](https://github.com/taiga-family/taiga-ui/issues/12019))
+  ([b2d3c42](https://github.com/taiga-family/taiga-ui/commit/b2d3c424cfb55a03b7335873b0eddd2b3ba8af74))
+
+### 🚀 Features
+
+- **addon-commerce:** `InputCardGroup` add 'm' size ([#11949](https://github.com/taiga-family/taiga-ui/issues/11949))
+  ([55c0265](https://github.com/taiga-family/taiga-ui/commit/55c0265bd146efd978855f1a6a76fc07310bf3ba))
+- **core:** `Dialogs` auto attach to current active zone
+  ([#11995](https://github.com/taiga-family/taiga-ui/issues/11995))
+  ([f8911f5](https://github.com/taiga-family/taiga-ui/commit/f8911f5343c9cb3cb19e5b7b6d3f9178e3f70c17))
+- **kit:** add toast component ([#11556](https://github.com/taiga-family/taiga-ui/issues/11556))
+  ([c867cb8](https://github.com/taiga-family/taiga-ui/commit/c867cb8cec34fe0660d34a9c89285d04f97c4e0b))
+- **kit:** more intuitive way for users to remove input chips by backspace
+  ([#11980](https://github.com/taiga-family/taiga-ui/issues/11980))
+  ([8a6613f](https://github.com/taiga-family/taiga-ui/commit/8a6613fa7733f32b0b71d444be47a62649fc1b98))
+
 ## [4.54.0](https://github.com/taiga-family/taiga-ui/compare/v4.53.0...v4.54.0) (2025-09-15)
 
 ### 🐞 Bug Fixes
