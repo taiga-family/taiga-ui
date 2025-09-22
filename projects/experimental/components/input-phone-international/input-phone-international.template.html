@@ -11,7 +11,7 @@
         [disabled]="disabled()"
         [size]="size()"
         [tuiAppearanceFocus]="open()"
-        (pointerdown.prevent)="interactive() && open.set(!open())"
+        (click.prevent)="interactive() && open.set(!open())"
     >
         <img
             class="t-ipi-flag"
@@ -39,7 +39,7 @@
                 [ngModel]="search()"
                 [ngModelOptions]="{standalone: true}"
                 [placeholder]="label()"
-                [tuiAutoFocus]="!!element.closest('tui-dropdown-mobile')"
+                [tuiAutoFocus]="!!element.closest('tui-dropdown-mobile, tui-sheet-dialog')"
                 (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
                 (ngModelChange)="search.set($event)"
             />

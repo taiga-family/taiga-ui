@@ -6,10 +6,6 @@
     border-bottom-left-radius: 0;
     inline-size: calc(100% - var(--t-offset));
 
-    tui-root:has(tui-dropdown-mobile) & {
-        caret-color: transparent;
-    }
-
     & + label {
         padding-inline-start: var(--t-offset);
     }
@@ -78,12 +74,20 @@ tui-textfield .t-ipi-select {
     }
 }
 
-tui-dropdown-mobile {
+tui-dropdown-mobile,
+tui-sheet-dialog {
     .t-ipi-search {
         background: var(--tui-background-elevation-1);
     }
 
     .t-ipi-options:not(:first-child) {
         min-block-size: calc(100 * var(--tui-viewport-vh) - 8.75rem);
+    }
+}
+
+tui-sheet-dialog {
+    .t-ipi-search {
+        padding-inline-start: 0;
+        padding-inline-end: 0;
     }
 }
