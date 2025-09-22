@@ -24,12 +24,14 @@ export class TuiActiveZoneAdapter implements OnDestroy, OnInit {
     }
 }
 
-function findActive(zone: TuiActiveZone, element: Element | null): TuiActiveZone | null {
-    if (!element || !zone.contains(element)) {
+function findActive(zone: TuiActiveZone, el: Element | null): TuiActiveZone | null {
+    if (!el || !zone.contains(el)) {
         return null;
     }
 
-    const active = zone.children.find((child) => child.contains(element));
+    const active = zone.children.find(
+        (child) => !child['el'].matches('[tuiActiveZoneAdapter]') && child.contains(el),
+    );
 
-    return active ? findActive(active, element) : zone;
+    return active ? findActive(active, el) : zone;
 }
