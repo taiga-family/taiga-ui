@@ -1,3 +1,4 @@
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -64,6 +65,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
 @Component({
     selector: 'input[tuiInputPhoneInternational]',
     imports: [
+        NgTemplateOutlet,
         FormsModule,
         TuiAutoFocus,
         TuiButton,

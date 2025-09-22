@@ -11,7 +11,8 @@
         [disabled]="disabled()"
         [size]="size()"
         [tuiAppearanceFocus]="open()"
-        (pointerdown.prevent)="interactive() && open.set(!open())"
+        (click.prevent)="interactive() && open.set(!open())"
+        (pointerdown.stop)="(0)"
     >
         <img
             class="t-ipi-flag"
@@ -21,34 +22,33 @@
         />
     </button>
 </ng-container>
-<ng-container *tuiTextfieldDropdown>
-    @if (countrySearch) {
-        <div
-            #element
-            class="t-ipi-search"
+<ng-template #filter>
+    <div class="t-ipi-search">
+        <tui-textfield
+            [iconStart]="icons.search"
+            [tuiTextfieldSize]="size() === 's' ? 's' : 'm'"
         >
-            <tui-textfield
-                [iconStart]="icons.search"
-                [tuiTextfieldSize]="size() === 's' ? 's' : 'm'"
-            >
-                <input
-                    autocomplete="off"
-                    tuiTextfield
-                    type="text"
-                    [focused]="true"
-                    [ngModel]="search()"
-                    [ngModelOptions]="{standalone: true}"
-                    [placeholder]="label()"
-                    [tuiAutoFocus]="!!element.closest('tui-dropdown-mobile')"
-                    (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
-                    (ngModelChange)="search.set($event)"
-                />
-            </tui-textfield>
-        </div>
+            <input
+                autocomplete="off"
+                tuiTextfield
+                type="text"
+                [ngModel]="search()"
+                [ngModelOptions]="{standalone: true}"
+                [placeholder]="label()"
+                [tuiAutoFocus]="!ios"
+                (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
+                (ngModelChange)="search.set($event)"
+            />
+        </tui-textfield>
+    </div>
+</ng-template>
+<ng-container *tuiTextfieldDropdown>
+    <!-- To keep it under local injector -->
+    @if (countrySearch) {
+        <ng-container *ngTemplateOutlet="filter" />
     }
-
     <tui-data-list class="t-ipi-options">
-        @for (item of filtered(); track item) {
+        @for (item of filtered(); track $index) {
             <button
                 new
                 tuiOption
