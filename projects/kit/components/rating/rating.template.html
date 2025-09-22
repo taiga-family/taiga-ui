@@ -20,14 +20,14 @@
         <tui-icon
             *polymorpheusOutlet="icon as src; context: {$implicit: max - index, value: value()}"
             class="t-icon t-icon_blank"
+            [background]="src.toString()"
             [class.t-icon_fraction]="isFraction(index)"
-            [icon]="src.toString()"
             [style.--t-cut.%]="100 - getCut(index)"
         />
         <tui-icon
             *polymorpheusOutlet="icon as src; context: {$implicit: max - index, value: value()}"
             class="t-icon"
-            [icon]="src.toString()"
+            [background]="src.toString()"
             [style.--t-cut.%]="getCut(index)"
         />
     </div>
