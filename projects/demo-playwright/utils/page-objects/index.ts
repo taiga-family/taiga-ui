@@ -20,7 +20,6 @@ export * from './input-slider.po';
 export * from './input-tag.po';
 export * from './input-time.po';
 export * from './mobile-calendar.po';
-export * from './mobile-dropdown.po';
 export * from './multi-select.po';
 export * from './range.po';
 export * from './select.po';
