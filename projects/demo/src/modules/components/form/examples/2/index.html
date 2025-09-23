@@ -109,7 +109,16 @@
             />
         </div>
         <div class="stack">
-            <tui-input-phone formControlName="phoneValue">Input phone</tui-input-phone>
+            <tui-textfield>
+                <label tuiLabel>Input phone</label>
+
+                <input
+                    autocomplete="tel"
+                    formControlName="phoneValue"
+                    mask="+7 ### ###-##-##"
+                    tuiInputPhone
+                />
+            </tui-textfield>
             <tui-error
                 formControlName="phoneValue"
                 [error]="[] | tuiFieldError | async"

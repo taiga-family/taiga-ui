@@ -14,8 +14,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiButton, TuiError, TuiTextfield} from '@taiga-ui/core';
-import {TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiFieldErrorPipe, TuiInputPhone} from '@taiga-ui/kit';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -25,7 +25,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiButton,
         TuiError,
         TuiFieldErrorPipe,
-        TuiInputPhoneModule,
+        TuiInputPhone,
         TuiTextfield,
         TuiTextfieldControllerModule,
     ],
