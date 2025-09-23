@@ -16,8 +16,8 @@ import {
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {provideTaiga} from '@taiga-ui/core';
+import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TuiAutoFocus directive', () => {
     describe('works for focusable HTML element', () => {

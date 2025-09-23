@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiTagComponent, TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/legacy';
 import {provideTaiga} from '@taiga-ui/core';
+import {TuiTagComponent, TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/legacy';
 
 describe('Tag component options', () => {
     let fixture: ComponentFixture<Test>;
