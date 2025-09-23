@@ -1,7 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('TUI_IS_MOBILE', () => {
     describe('MacOS / iOS', () => {
@@ -9,7 +8,6 @@ describe('TUI_IS_MOBILE', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
-                        NG_EVENT_PLUGINS,
                         {
                             provide: WA_NAVIGATOR,
                             useValue: {
@@ -32,7 +30,6 @@ describe('TUI_IS_MOBILE', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
-                        NG_EVENT_PLUGINS,
                         {
                             provide: WA_NAVIGATOR,
                             useValue: {
@@ -54,7 +51,6 @@ describe('TUI_IS_MOBILE', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
-                        NG_EVENT_PLUGINS,
                         {
                             provide: WA_NAVIGATOR,
                             useValue: {
@@ -76,7 +72,6 @@ describe('TUI_IS_MOBILE', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
-                        NG_EVENT_PLUGINS,
                         {
                             provide: WA_NAVIGATOR,
                             useValue: {
@@ -103,7 +98,6 @@ describe('TUI_IS_MOBILE', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
-                        NG_EVENT_PLUGINS,
                         {
                             provide: WA_NAVIGATOR,
                             useValue: {
@@ -125,7 +119,6 @@ describe('TUI_IS_MOBILE', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
-                        NG_EVENT_PLUGINS,
                         {
                             provide: WA_NAVIGATOR,
                             useValue: {
@@ -152,7 +145,6 @@ describe('TUI_IS_MOBILE', () => {
             beforeEach(async () => {
                 TestBed.configureTestingModule({
                     providers: [
-                        NG_EVENT_PLUGINS,
                         {
                             provide: WA_NAVIGATOR,
                             useValue: {

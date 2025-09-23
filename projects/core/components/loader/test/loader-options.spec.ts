@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 describe('Loader component options', () => {
     let fixture: ComponentFixture<Test>;
@@ -24,7 +23,6 @@ describe('Loader component options', () => {
         TestBed.configureTestingModule({
             imports: [Test],
             providers: [
-                NG_EVENT_PLUGINS,
                 tuiLoaderOptionsProvider({
                     size: 'xxl',
                     inheritColor: true,

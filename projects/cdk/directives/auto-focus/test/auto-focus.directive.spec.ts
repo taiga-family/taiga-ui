@@ -16,7 +16,7 @@ import {
     TuiIosAutofocusHandler,
     tuiIsNativeFocused,
 } from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga} from '@taiga-ui/core';
 
 describe('TuiAutoFocus directive', () => {
     describe('works for focusable HTML element', () => {
@@ -42,7 +42,7 @@ describe('TuiAutoFocus directive', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [TestWithDiv],
-                providers: [NG_EVENT_PLUGINS],
+                providers: [provideTaiga()],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(TestWithDiv);
@@ -78,7 +78,7 @@ describe('TuiAutoFocus directive', () => {
             TestBed.configureTestingModule({
                 imports: [TestIos],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     {
                         provide: TUI_AUTOFOCUS_HANDLER,
                         useClass: TuiIosAutofocusHandler,
@@ -137,7 +137,7 @@ describe('TuiAutoFocus directive', () => {
         beforeEach(() => {
             TestBed.configureTestingModule({
                 imports: [TestWithFocusFlag],
-                providers: [NG_EVENT_PLUGINS],
+                providers: [provideTaiga()],
             });
 
             fixture = TestBed.createComponent(TestWithFocusFlag);

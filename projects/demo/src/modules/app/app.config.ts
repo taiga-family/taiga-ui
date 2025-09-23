@@ -12,7 +12,6 @@ import {
     provideZoneChangeDetection,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {
     NavigationStart,
@@ -42,15 +41,14 @@ import {
 } from '@taiga-ui/addon-doc';
 import {TUI_FALSE_HANDLER, TUI_IS_E2E, TUI_PLATFORM} from '@taiga-ui/cdk';
 import {
+    provideTaiga,
     TUI_DIALOGS_CLOSE,
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
-    tuiEnableFontScaling,
     tuiNotificationOptionsProvider,
 } from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
 import {catchError, filter, map, merge, of} from 'rxjs';
@@ -76,8 +74,7 @@ export const config: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
-        NG_EVENT_PLUGINS,
-        tuiEnableFontScaling(),
+        provideTaiga(),
         tuiNotificationOptionsProvider({size: 'm'}),
         provideHttpClient(withFetch()),
         {
@@ -258,10 +255,6 @@ export const config: ApplicationConfig = {
             eventCoalescing: false,
             runCoalescing: false,
         }),
-        {
-            provide: REMOVE_STYLES_ON_COMPONENT_DESTROY,
-            useValue: true,
-        },
         {
             provide: TUI_DIALOGS_CLOSE,
             useFactory: () =>

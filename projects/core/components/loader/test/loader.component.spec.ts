@@ -3,7 +3,6 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiLoader} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {TuiLoaderHarness} from '@taiga-ui/testing';
 
@@ -47,7 +46,6 @@ describe('Loader', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
