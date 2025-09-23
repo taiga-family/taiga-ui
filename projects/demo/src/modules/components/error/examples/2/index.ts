@@ -1,13 +1,13 @@
 import {Component, signal} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsFalsy} from '@taiga-ui/cdk';
 import {TuiError, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber, tuiValidationErrorsProvider} from '@taiga-ui/kit';
-import {interval, map, of, scan, startWith} from 'rxjs';
 import {TuiForm} from '@taiga-ui/layout';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {interval, map, scan, startWith} from 'rxjs';
 
 @Component({
     imports: [ReactiveFormsModule, TuiError, TuiInputNumber, TuiTextfield, TuiForm],

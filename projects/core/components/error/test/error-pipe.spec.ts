@@ -8,7 +8,6 @@ import {
 } from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {provideTaiga, TuiError, TuiHint, TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {tuiValidationErrorsProvider} from '@taiga-ui/kit';
 
 describe('TuiErrorPipe', () => {
