@@ -4,6 +4,53 @@
         type="checkbox"
         [(ngModel)]="enabled"
     />
-    Show
+    Show standalone error
 </label>
-<tui-error [error]="computedError" />
+<p>
+    <tui-error [error]="error" />
+</p>
+<form
+    tuiForm="m"
+    [formGroup]="form"
+>
+    <label tuiLabel>
+        Type the ultimate answer to the Question of Life, the Universe
+        <tui-textfield>
+            <input
+                formControlName="answer"
+                placeholder="and Everything"
+                tuiTextfield
+            />
+        </tui-textfield>
+    </label>
+    <tui-error formControlName="answer" />
+
+    <label tuiLabel>
+        Set a password
+        <tui-textfield>
+            <input
+                formControlName="password"
+                placeholder="Latin letters only"
+                tuiTextfield
+            />
+        </tui-textfield>
+    </label>
+    <tui-error formControlName="password" />
+
+    <p>
+        If you want to show a validation message as soon as a user starts typing, subscribe on form value changes and
+        call markAsTouched on control on first value change. You can also use
+        <a
+            fragment="mark-control-as-touched-and-validate"
+            href="/utils/miscellaneous#mark-control-as-touched-and-validate"
+            tuiLink
+            [routerLink]="routes.Miscellaneous"
+        >
+            <code>tuiMarkControlAsTouchedAndValidate</code>
+        </a>
+    </p>
+
+    <p>Below is an error for the entire form:</p>
+
+    <tui-error [formGroup]="form" />
+</form>

@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {
     FormControl,
@@ -11,7 +10,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiError, TuiTextfield} from '@taiga-ui/core';
 import {
-    TuiFieldErrorPipe,
     TuiInputDateTime,
     TuiUnfinishedValidator,
     tuiValidationErrorsProvider,
@@ -25,11 +23,9 @@ export function minLengthValidator(minLength: number): ValidatorFn {
 
 @Component({
     imports: [
-        AsyncPipe,
         ReactiveFormsModule,
         TuiButton,
         TuiError,
-        TuiFieldErrorPipe,
         TuiForm,
         TuiInputDateTime,
         TuiTextfield,

@@ -1,11 +1,9 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiError, TuiTextfield} from '@taiga-ui/core';
 import {
-    TuiFieldErrorPipe,
     TuiInputDate,
     TuiUnfinishedValidator,
     tuiValidationErrorsProvider,
@@ -14,11 +12,9 @@ import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         ReactiveFormsModule,
         TuiButton,
         TuiError,
-        TuiFieldErrorPipe,
         TuiForm,
         TuiInputDate,
         TuiTextfield,

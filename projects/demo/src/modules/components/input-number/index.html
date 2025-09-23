@@ -15,33 +15,11 @@
             [description]="formControlDescription"
         >
             <ng-template #formControlDescription>
-                <tui-notification style="display: inline-block">
-                    Form control value is of
-                    <code>null</code>
-                    (for empty textfield only) and
-                    <code>number</code>
-                    (all other cases) types.
-                </tui-notification>
-
-                <p>
-                    Use
-                    <a
-                        href="https://angular.dev/api/forms/Validators#required"
-                        target="_blank"
-                        tuiLink
-                    >
-                        <strong>Validators.required</strong>
-                    </a>
-                    (built-in validator provided by Angular team) with our
-                    <a
-                        target="_blank"
-                        tuiLink
-                        [routerLink]="routes.FieldError"
-                    >
-                        <strong>FieldError</strong>
-                    </a>
-                    pipe to notify your users about required field.
-                </p>
+                Form control value is
+                <code>number</code>
+                or
+                <code>null</code>
+                when empty
             </ng-template>
         </tui-doc-example>
 

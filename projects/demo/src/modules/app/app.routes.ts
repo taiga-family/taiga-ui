@@ -345,11 +345,6 @@ export const ROUTES: Routes = [
         title: 'ElasticContainer',
     }),
     route({
-        path: DemoRoute.FieldError,
-        loadComponent: async () => import('../pipes/field-error'),
-        title: 'FieldError',
-    }),
-    route({
         path: DemoRoute.InputFiles,
         loadComponent: async () => import('../components/input-files'),
         title: 'InputFiles',

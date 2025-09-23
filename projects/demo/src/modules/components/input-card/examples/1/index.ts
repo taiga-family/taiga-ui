@@ -1,4 +1,4 @@
-import {AsyncPipe, JsonPipe} from '@angular/common';
+import {JsonPipe} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -15,15 +15,12 @@ import {
     TuiTextfield,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
-import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        AsyncPipe,
         JsonPipe,
         ReactiveFormsModule,
         TuiError,
-        TuiFieldErrorPipe,
         TuiInputCard,
         TuiInputCVC,
         TuiInputExpire,

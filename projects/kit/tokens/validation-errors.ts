@@ -1,9 +1,9 @@
-import {InjectionToken, type Provider} from '@angular/core';
+import {InjectionToken, type Provider, type Signal} from '@angular/core';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 
 export const TUI_VALIDATION_ERRORS = new InjectionToken<
-    Record<string, Observable<PolymorpheusContent> | PolymorpheusContent>
+    Record<string, PolymorpheusContent | Signal<PolymorpheusContent>>
 >(ngDevMode ? 'TUI_VALIDATION_ERRORS' : '', {
     factory: () => ({}),
 });

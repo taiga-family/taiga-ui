@@ -1,25 +1,13 @@
-import {AsyncPipe, JsonPipe} from '@angular/common';
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiError, TuiTextfield} from '@taiga-ui/core';
-import {
-    TuiFieldErrorPipe,
-    TuiInputNumber,
-    tuiValidationErrorsProvider,
-} from '@taiga-ui/kit';
+import {TuiInputNumber, tuiValidationErrorsProvider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [
-        AsyncPipe,
-        JsonPipe,
-        ReactiveFormsModule,
-        TuiError,
-        TuiFieldErrorPipe,
-        TuiInputNumber,
-        TuiTextfield,
-    ],
+    imports: [JsonPipe, ReactiveFormsModule, TuiError, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
