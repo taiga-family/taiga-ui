@@ -2,8 +2,12 @@ import {type HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {tuiDialogOptionsProvider, TuiDialogService, TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {
+    provideTaiga,
+    tuiDialogOptionsProvider,
+    TuiDialogService,
+    TuiRoot,
+} from '@taiga-ui/core';
 import {TuiDialogHarness} from '@taiga-ui/testing';
 
 describe('Dialog with TUI_DIALOG_OPTIONS', () => {
@@ -24,7 +28,7 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [tuiDialogOptionsProvider({closeable}), NG_EVENT_PLUGINS],
+            providers: [tuiDialogOptionsProvider({closeable}), provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

@@ -10,6 +10,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_LAST_DAY, TuiDay, TuiValueTransformer} from '@taiga-ui/cdk';
 import {
+    provideTaiga,
     TUI_DATE_FORMAT,
     TuiHint,
     TuiRoot,
@@ -116,7 +117,10 @@ describe('InputDate', () => {
 
     describe('InputDate (base cases when TUI_DATE_FORMAT = DMY)', () => {
         beforeEach(async () => {
-            TestBed.configureTestingModule({imports: [Test]});
+            TestBed.configureTestingModule({
+                imports: [Test],
+                providers: [provideTaiga()],
+            });
             await TestBed.compileComponents();
             await initializeEnvironment();
         });
@@ -459,7 +463,7 @@ describe('InputDate', () => {
             TestBed.configureTestingModule({
                 imports: [Test, TransformerTest],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     {
                         provide: TUI_DATE_VALUE_TRANSFORMER,
                         useClass: TestTransformer,

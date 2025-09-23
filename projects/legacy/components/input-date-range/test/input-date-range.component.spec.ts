@@ -16,7 +16,7 @@ import {
     TuiDayRange,
     TuiValueTransformer,
 } from '@taiga-ui/cdk';
-import {TUI_DATE_FORMAT, TuiRoot} from '@taiga-ui/core';
+import {provideTaiga, TUI_DATE_FORMAT, TuiRoot} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
@@ -103,7 +103,10 @@ describe('InputDateRangeComponent', () => {
 
     describe('Default', () => {
         beforeEach(async () => {
-            TestBed.configureTestingModule({imports: [Test]});
+            TestBed.configureTestingModule({
+                imports: [Test],
+                providers: [provideTaiga()],
+            });
             await TestBed.compileComponents();
             initializeEnvironment();
         });

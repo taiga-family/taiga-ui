@@ -6,7 +6,13 @@ import {
     TUI_TRUE_HANDLER,
     type TuiBooleanHandler,
 } from '@taiga-ui/cdk';
-import {TuiHint, TuiRoot, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
+import {
+    provideTaiga,
+    TuiHint,
+    TuiRoot,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core';
 import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputTagComponent,
@@ -104,7 +110,7 @@ describe('InputTag', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

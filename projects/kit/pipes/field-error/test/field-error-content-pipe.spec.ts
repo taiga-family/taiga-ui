@@ -7,8 +7,7 @@ import {
     tick,
 } from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiHintDirective, TuiRoot} from '@taiga-ui/core';
 import {TuiFieldErrorContentPipe} from '@taiga-ui/kit/pipes';
 import {tuiValidationErrorsProvider} from '@taiga-ui/kit/tokens';
 
@@ -64,7 +63,7 @@ describe('TuiFieldErrorContentPipe', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         document.body.style.margin = '0';

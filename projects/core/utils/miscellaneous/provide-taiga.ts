@@ -31,7 +31,7 @@ const DEFAULT: TuiOptions = {
     scrollbars: 'custom',
 };
 
-export const TUI_OPTIONS = new InjectionToken<TuiOptions>('[TUI_OPTIONS]');
+export const TUI_OPTIONS = new InjectionToken<TuiOptions>(ngDevMode ? 'TUI_OPTIONS' : '');
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function provideTaiga(
