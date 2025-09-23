@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth, TuiMonthRange, TuiYear} from '@taiga-ui/cdk';
-import {TuiCalendarMonth} from '@taiga-ui/kit';
 import {provideTaiga} from '@taiga-ui/core';
+import {TuiCalendarMonth} from '@taiga-ui/kit';
 
 const TODAY = TuiDay.currentLocal();
 

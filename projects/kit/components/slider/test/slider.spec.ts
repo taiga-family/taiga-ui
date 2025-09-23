@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiSliderComponent} from '@taiga-ui/kit';
 import {provideTaiga} from '@taiga-ui/core';
+import {TuiSliderComponent} from '@taiga-ui/kit';
 
 describe('Slider', () => {
     @Component({

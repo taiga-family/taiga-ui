@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
-import {TuiInputMonthRangeComponent, TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 import {provideTaiga} from '@taiga-ui/core';
+import {TuiInputMonthRangeComponent, TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 describe('InputMonthRange', () => {
     @Component({

@@ -6,10 +6,10 @@ import {
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {provideTaiga} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 import {TuiInputInline} from '../input-inline.component';
-import {provideTaiga} from '@taiga-ui/core';
 
 describe('InputInline', () => {
     @Component({

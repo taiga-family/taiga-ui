@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiDroppable} from '@taiga-ui/cdk';
-import {TuiMockEvent} from '@taiga-ui/testing';
 import {provideTaiga} from '@taiga-ui/core';
+import {TuiMockEvent} from '@taiga-ui/testing';
 
 describe('TuiDroppable Directive', () => {
     @Component({

@@ -2,9 +2,9 @@ import {type HarnessLoader, TestKey} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
+import {provideTaiga} from '@taiga-ui/core';
 import {TuiTagComponent, TuiTagModule} from '@taiga-ui/legacy';
 import {TuiTagHarness} from '@taiga-ui/testing';
-import {provideTaiga} from '@taiga-ui/core';
 
 describe('Tag', () => {
     @Component({

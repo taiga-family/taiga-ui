@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-import {TuiHighlight} from '@taiga-ui/kit';
 import {provideTaiga} from '@taiga-ui/core';
+import {TuiHighlight} from '@taiga-ui/kit';
 
 describe('TuiHighlight directive', () => {
     @Component({

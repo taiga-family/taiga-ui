@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
+import {provideTaiga} from '@taiga-ui/core';
 import {TuiPagination} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
-import {provideTaiga} from '@taiga-ui/core';
 
 interface TuiPaginationParams {
     readonly activePadding?: number;
