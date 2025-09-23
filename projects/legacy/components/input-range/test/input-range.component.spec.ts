@@ -7,8 +7,7 @@ import {
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
-import {tuiNumberFormatProvider} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, tuiNumberFormatProvider} from '@taiga-ui/core';
 import {TuiInputRangeComponent, TuiInputRangeModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
@@ -77,10 +76,7 @@ describe('InputRange', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [
-                NG_EVENT_PLUGINS,
-                tuiNumberFormatProvider({decimalSeparator: ','}),
-            ],
+            providers: [provideTaiga(), tuiNumberFormatProvider({decimalSeparator: ','})],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

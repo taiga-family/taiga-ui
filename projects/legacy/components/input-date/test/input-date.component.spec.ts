@@ -17,7 +17,6 @@ import {
     type TuiSizeL,
     type TuiSizeS,
 } from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TUI_DATE_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {
     TuiInputDateComponent,
@@ -284,7 +283,7 @@ describe('InputDate', () => {
             TestBed.configureTestingModule({
                 imports: [Test],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     {provide: TUI_DATE_FORMAT, useValue: of({mode: 'YMD'})},
                 ],
             });
@@ -334,7 +333,7 @@ describe('InputDate', () => {
             TestBed.configureTestingModule({
                 imports: [Test],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     {provide: TUI_DATE_FORMAT, useValue: of({mode: 'MDY'})},
                 ],
             });
@@ -384,7 +383,7 @@ describe('InputDate', () => {
             TestBed.configureTestingModule({
                 imports: [Test],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     {
                         provide: TUI_DATE_FORMAT,
                         useValue: of({mode: 'MDY', separator: '/'}),

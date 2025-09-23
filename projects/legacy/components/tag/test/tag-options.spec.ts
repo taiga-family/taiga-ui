@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiTagComponent, TuiTagModule, tuiTagOptionsProvider} from '@taiga-ui/legacy';
+import {provideTaiga} from '@taiga-ui/core';
 
 describe('Tag component options', () => {
     let fixture: ComponentFixture<Test>;
@@ -24,7 +24,7 @@ describe('Tag component options', () => {
         TestBed.configureTestingModule({
             imports: [TuiTagModule, Test],
             providers: [
-                NG_EVENT_PLUGINS,
+                provideTaiga(),
                 tuiTagOptionsProvider({
                     size: 'l',
                     status: 'error',
