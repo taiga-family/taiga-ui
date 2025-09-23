@@ -2,7 +2,8 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiRating} from '@taiga-ui/kit';
+import {TuiRating, type TuiRatingContext} from '@taiga-ui/kit';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
@@ -11,4 +12,7 @@ import {TuiRating} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly icon: PolymorpheusContent<TuiRatingContext> = ({filled}) =>
+        filled ? '@tui.star-filled' : '@tui.star';
+}
