@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TestBed} from '@angular/core/testing';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiHighlight} from '@taiga-ui/kit';
+import {provideTaiga} from '@taiga-ui/core';
 
 describe('TuiHighlight directive', () => {
     @Component({
@@ -35,7 +35,7 @@ describe('TuiHighlight directive', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         const fixture = TestBed.createComponent(Test);

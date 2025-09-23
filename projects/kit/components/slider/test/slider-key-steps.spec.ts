@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {type TuiKeySteps, TuiSlider} from '@taiga-ui/kit';
+import {provideTaiga} from '@taiga-ui/core';
 
 describe('TuiSliderKeyStepsDirective', () => {
     @Component({
@@ -45,7 +45,7 @@ describe('TuiSliderKeyStepsDirective', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
