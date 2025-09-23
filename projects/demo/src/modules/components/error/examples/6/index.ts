@@ -4,8 +4,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiError, TuiHint, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber, tuiValidationErrorsProvider} from '@taiga-ui/kit';
+import {
+    TuiError,
+    TuiHint,
+    TuiTextfield,
+    tuiValidationErrorsProvider,
+} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     imports: [

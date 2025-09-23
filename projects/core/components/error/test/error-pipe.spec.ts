@@ -7,8 +7,13 @@ import {
     tick,
 } from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
-import {provideTaiga, TuiError, TuiHint, TuiRoot} from '@taiga-ui/core';
-import {tuiValidationErrorsProvider} from '@taiga-ui/kit';
+import {
+    provideTaiga,
+    TuiError,
+    TuiHint,
+    TuiRoot,
+    tuiValidationErrorsProvider,
+} from '@taiga-ui/core';
 
 describe('TuiErrorPipe', () => {
     const testError = 'testError';

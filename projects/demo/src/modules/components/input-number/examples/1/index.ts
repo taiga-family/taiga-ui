@@ -3,8 +3,8 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiError, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber, tuiValidationErrorsProvider} from '@taiga-ui/kit';
+import {TuiError, TuiTextfield, tuiValidationErrorsProvider} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     imports: [JsonPipe, ReactiveFormsModule, TuiError, TuiInputNumber, TuiTextfield],

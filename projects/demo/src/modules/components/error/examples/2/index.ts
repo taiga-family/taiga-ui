@@ -4,8 +4,8 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsFalsy} from '@taiga-ui/cdk';
-import {TuiError, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputNumber, tuiValidationErrorsProvider} from '@taiga-ui/kit';
+import {TuiError, TuiTextfield, tuiValidationErrorsProvider} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 import {interval, map, scan, startWith} from 'rxjs';
 

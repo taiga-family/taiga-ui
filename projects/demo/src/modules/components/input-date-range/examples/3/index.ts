@@ -2,12 +2,13 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiError, TuiTextfield} from '@taiga-ui/core';
 import {
-    TuiInputDateRange,
-    TuiUnfinishedValidator,
+    TuiButton,
+    TuiError,
+    TuiTextfield,
     tuiValidationErrorsProvider,
-} from '@taiga-ui/kit';
+} from '@taiga-ui/core';
+import {TuiInputDateRange, TuiUnfinishedValidator} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
 @Component({

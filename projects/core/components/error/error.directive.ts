@@ -22,7 +22,7 @@ import {
     tuiIsString,
     tuiProvide,
 } from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_VALIDATION_ERRORS} from '@taiga-ui/kit/tokens';
+import {TUI_VALIDATION_ERRORS} from '@taiga-ui/core/tokens';
 import {
     PolymorpheusComponent,
     type PolymorpheusContent,

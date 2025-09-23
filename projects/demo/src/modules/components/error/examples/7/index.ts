@@ -3,8 +3,7 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {TuiError, TuiTextfield} from '@taiga-ui/core';
-import {tuiValidationErrorsProvider} from '@taiga-ui/kit';
+import {TuiError, TuiTextfield, tuiValidationErrorsProvider} from '@taiga-ui/core';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Component({
