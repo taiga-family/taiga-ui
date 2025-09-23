@@ -13,7 +13,6 @@ import {
     type TuiSizeL,
     type TuiSizeS,
 } from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputTagComponent,
     TuiInputTagModule,

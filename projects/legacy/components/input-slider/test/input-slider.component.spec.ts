@@ -8,7 +8,6 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_MINUS, type TuiContext} from '@taiga-ui/cdk';
 import {provideTaiga, tuiNumberFormatProvider, TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputSliderComponent,
     TuiInputSliderModule,

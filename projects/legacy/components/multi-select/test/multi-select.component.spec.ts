@@ -7,7 +7,6 @@ import {
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {provideTaiga, TuiDataListDirective, TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {
     TUI_ARROW_MODE,
