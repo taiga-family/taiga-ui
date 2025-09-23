@@ -25,13 +25,15 @@
         [error]="[] | tuiFieldError | async"
     />
 
-    <tui-input-date formControlName="periodValue">
-        Input date
+    <tui-textfield>
+        <label tuiLabel>Input date</label>
         <input
+            formControlName="periodValue"
             placeholder="Placeholder"
-            tuiTextfieldLegacy
+            tuiInputDate
         />
-    </tui-input-date>
+        <tui-calendar *tuiTextfieldDropdown />
+    </tui-textfield>
     <tui-error
         formControlName="periodValue"
         [error]="[] | tuiFieldError | async"

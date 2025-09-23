@@ -1,5 +1,6 @@
 ```ts
-import {TuiDateFormat} from '@taiga-ui/core';
+import {TuiDateFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputDate} from '@taiga-ui/kit';
 
 // ...
 
@@ -8,6 +9,8 @@ import {TuiDateFormat} from '@taiga-ui/core';
   imports: [
     // ...
     TuiDateFormat,
+    TuiInputDate,
+    TuiTextfield,
   ],
   // ...
 })
