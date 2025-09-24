@@ -40,5 +40,6 @@ export default class PageComponent {
         'Direction',
         'Mobile',
         'Table',
+        'Virtual scroll',
     ];
 }
