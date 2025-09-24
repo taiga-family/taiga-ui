@@ -43,7 +43,6 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
     hostDirectives: [MaskitoDirective, TuiWithTextfield],
     host: {
         ngSkipHydration: 'true',
-        inputmode: 'numeric',
         spellcheck: 'false',
         '[disabled]': 'disabled()',
         '[value]': 'value()',
