@@ -26,6 +26,7 @@ const GAP = 16;
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        '(pointerdown.prevent)': '0',
         '(document:click.zoneless.capture)': 'onClick($event)',
         '(window>scroll.zoneless.capture)': 'refresh()',
         '(visualViewport>resize.zoneless)': 'refresh()',
