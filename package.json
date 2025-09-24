@@ -135,7 +135,7 @@
         "@taiga-ui/design-tokens": "0.254.0",
         "@taiga-ui/eslint-plugin-experience-next": "0.326.0",
         "@taiga-ui/event-plugins": "4.7.0",
-        "@taiga-ui/jest-config": "0.326.0",
+        "@taiga-ui/jest-config": "0.327.0",
         "@taiga-ui/prettier-config": "0.326.0",
         "@taiga-ui/stylelint-config": "0.326.0",
         "@taiga-ui/tsconfig": "0.326.0",
