@@ -44,7 +44,7 @@ test.describe('TuiError', () => {
         const example = new TuiDocumentationPagePO(page).getExample('#template');
 
         await tuiGoto(page, DemoRoute.Error);
-        await example.locator('button').click();
+        await example.locator('button').last().click();
 
         await page.waitForTimeout(500);
 
