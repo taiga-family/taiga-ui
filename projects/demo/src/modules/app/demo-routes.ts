@@ -67,7 +67,6 @@ export const DemoRoute = {
     Error: '/components/error',
     Expand: '/components/expand',
     ElasticContainer: '/components/elastic-container',
-    FieldError: '/pipes/field-error',
     Form: '/layout/form',
     InputFiles: '/components/input-files',
     InputColor: '/components/input-color',

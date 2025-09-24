@@ -1585,12 +1585,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'FieldError',
-                keywords: 'error, field, hint, ошибка, преобразование, пайп, pipe',
-                route: DemoRoute.FieldError,
-            },
-            {
-                section: 'Tools',
                 title: 'Stringify',
                 keywords: 'string, tostring, мап, преобразование, пайп, pipe',
                 route: DemoRoute.Stringify,
