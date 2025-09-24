@@ -5,7 +5,7 @@ import {
     tuiInjectElement,
     tuiIsHTMLElement,
 } from '@taiga-ui/cdk/utils/dom';
-import {tuiGetClosestFocusable, tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiGetClosestFocusable, tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 
 @Directive({
     standalone: true,
@@ -35,7 +35,7 @@ export class TuiFocusTrap implements OnDestroy {
              * Don't enable any new event listeners before `initialized` equals to `true`!
              */
             this.initialized = true;
-            this.activeElement = tuiGetNativeFocused(this.doc);
+            this.activeElement = tuiGetFocused(this.doc);
             this.el.focus();
         });
     }

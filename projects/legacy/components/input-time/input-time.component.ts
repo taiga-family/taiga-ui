@@ -13,7 +13,7 @@ import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiTime, type TuiTimeMode} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_IOS, TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler, type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
@@ -106,7 +106,7 @@ export class TuiInputTimeComponent
     }
 
     public get focused(): boolean {
-        return tuiIsNativeFocused(this.nativeFocusableElement);
+        return tuiIsFocused(this.nativeFocusableElement);
     }
 
     public get computedValue(): string {
