@@ -13,8 +13,8 @@ export default class Page {
     protected readonly errorContent = viewChild<TemplateRef<unknown>>('errorContent');
     protected readonly examples = [
         'Basic',
-        'Messages from DI',
-        'With template',
+        'DI',
+        'Template',
         'Array',
         'Asynchronous',
         'Pipe',

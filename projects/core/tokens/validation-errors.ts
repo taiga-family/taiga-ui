@@ -1,6 +1,5 @@
 import {InjectionToken, type Provider, type Signal} from '@angular/core';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {type Observable} from 'rxjs';
 
 export const TUI_VALIDATION_ERRORS = new InjectionToken<
     Record<string, PolymorpheusContent | Signal<PolymorpheusContent>>
@@ -9,5 +8,5 @@ export const TUI_VALIDATION_ERRORS = new InjectionToken<
 });
 
 export const tuiValidationErrorsProvider = (
-    useValue: Record<string, Observable<PolymorpheusContent> | PolymorpheusContent>,
+    useValue: Record<string, PolymorpheusContent | Signal<PolymorpheusContent>>,
 ): Provider => ({provide: TUI_VALIDATION_ERRORS, useValue});

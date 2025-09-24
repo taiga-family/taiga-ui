@@ -41,7 +41,7 @@ test.describe('TuiError', () => {
     });
 
     test('Submit invalid form', async ({page}) => {
-        const example = new TuiDocumentationPagePO(page).getExample('#patterns');
+        const example = new TuiDocumentationPagePO(page).getExample('#template');
 
         await tuiGoto(page, DemoRoute.Error);
         await example.locator('button').click();
