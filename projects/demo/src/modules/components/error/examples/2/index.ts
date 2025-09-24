@@ -1,3 +1,4 @@
+import {isPlatformBrowser} from '@angular/common';
 import {Component, inject, PLATFORM_ID, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -7,7 +8,6 @@ import {TUI_VALIDATION_ERRORS, TuiError, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 import {map, timer} from 'rxjs';
-import {isPlatformBrowser} from '@angular/common';
 
 @Component({
     imports: [ReactiveFormsModule, TuiError, TuiInputNumber, TuiTextfield, TuiForm],
