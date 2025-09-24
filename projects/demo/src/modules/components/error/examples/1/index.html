@@ -37,19 +37,14 @@
     </label>
     <tui-error formControlName="password" />
 
-    <p>
+    <div>
         If you want to show a validation message as soon as a user starts typing, subscribe on form value changes and
-        call markAsTouched on control on first value change. You can also use
-        <a
-            fragment="mark-control-as-touched-and-validate"
-            tuiLink
-            [routerLink]="routes.Miscellaneous"
-        >
-            <code>tuiMarkControlAsTouchedAndValidate</code>
-        </a>
-    </p>
+        call
+        <code>markAsTouched</code>
+        on control on first value change.
+    </div>
 
-    <p>Below is an error for the entire form:</p>
+    <div>Below is an error for the entire form:</div>
 
     <tui-error [formGroup]="form" />
 </form>

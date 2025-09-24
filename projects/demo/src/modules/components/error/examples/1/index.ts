@@ -7,11 +7,9 @@ import {
     ReactiveFormsModule,
     Validators,
 } from '@angular/forms';
-import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {DemoRoute} from '@demo/routes';
-import {TuiError, TuiLink, TuiTextfield} from '@taiga-ui/core';
+import {TuiError, TuiTextfield} from '@taiga-ui/core';
 import {TuiSwitch} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 
@@ -29,9 +27,7 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
     imports: [
         FormsModule,
         ReactiveFormsModule,
-        RouterLink,
         TuiError,
-        TuiLink,
         TuiSwitch,
         TuiForm,
         TuiTextfield,
@@ -42,7 +38,6 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
 })
 export default class Example {
     protected enabled = false;
-    protected readonly routes = DemoRoute;
     protected readonly form = new FormGroup(
         {
             answer: new FormControl('', [Validators.required, superComputerValidator]),
