@@ -27,7 +27,7 @@ import {
 } from '@taiga-ui/cdk/utils/dom';
 import {
     tuiGetClosestFocusable,
-    tuiIsNativeFocusedIn,
+    tuiIsFocusedIn,
     tuiIsNativeKeyboardFocusable,
 } from '@taiga-ui/cdk/utils/focus';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
@@ -192,7 +192,7 @@ export class TuiDropdownOpen implements OnChanges {
     }
 
     private get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.host) || tuiIsNativeFocusedIn(this.dropdown());
+        return tuiIsFocusedIn(this.host) || tuiIsFocusedIn(this.dropdown());
     }
 
     private update(open: boolean): void {

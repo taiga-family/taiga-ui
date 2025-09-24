@@ -14,7 +14,7 @@ import {
     TuiAutoFocus,
     type TuiAutofocusOptions,
     TuiIosAutofocusHandler,
-    tuiIsNativeFocused,
+    tuiIsFocused,
 } from '@taiga-ui/cdk';
 import {provideTaiga} from '@taiga-ui/core';
 
@@ -53,7 +53,7 @@ describe('TuiAutoFocus directive', () => {
             fixture.detectChanges();
             tick(100);
 
-            expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(true);
+            expect(tuiIsFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
 
@@ -108,7 +108,7 @@ describe('TuiAutoFocus directive', () => {
             fixture.detectChanges();
             tick(100);
 
-            expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(true);
+            expect(tuiIsFocused(testComponent.element.nativeElement)).toBe(true);
         }));
     });
 
@@ -148,7 +148,7 @@ describe('TuiAutoFocus directive', () => {
             fixture.detectChanges();
             tick(100);
 
-            expect(tuiIsNativeFocused(testComponent.element.nativeElement)).toBe(false);
+            expect(tuiIsFocused(testComponent.element.nativeElement)).toBe(false);
         }));
     });
 });

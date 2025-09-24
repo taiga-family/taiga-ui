@@ -7,7 +7,7 @@ import {
     tuiZoneOptimized,
 } from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDriver, TuiDriver} from '@taiga-ui/core/classes';
 import {
@@ -73,6 +73,6 @@ export class TuiHintDescribe extends TuiDriver {
     }
 
     private get focused(): boolean {
-        return tuiIsNativeFocused(this.element);
+        return tuiIsFocused(this.element);
     }
 }

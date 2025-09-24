@@ -7,7 +7,7 @@ import {
     ViewChild,
 } from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
@@ -93,8 +93,8 @@ export class TuiInputSliderComponent
 
     public get focused(): boolean {
         return (
-            tuiIsNativeFocused(this.nativeFocusableElement) ||
-            tuiIsNativeFocused(this.sliderRef?.nativeElement || null)
+            tuiIsFocused(this.nativeFocusableElement) ||
+            tuiIsFocused(this.sliderRef?.nativeElement || null)
         );
     }
 
