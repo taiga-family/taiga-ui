@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, inject, PLATFORM_ID, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,6 +7,7 @@ import {TUI_VALIDATION_ERRORS, TuiError, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 import {map, timer} from 'rxjs';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
     imports: [ReactiveFormsModule, TuiError, TuiInputNumber, TuiTextfield, TuiForm],
@@ -23,11 +24,13 @@ import {map, timer} from 'rxjs';
                     `Maximum length — <b>${requiredLength}</b>`,
                 minlength: ({requiredLength}: {requiredLength: string}) =>
                     signal(`Minimum length — <b>${requiredLength}</b>`),
-                min: toSignal(
-                    timer(0, 2000).pipe(
-                        map((index) => (index % 2 ? 'Fix please' : 'Min number 3')),
-                    ),
-                ),
+                min: isPlatformBrowser(inject(PLATFORM_ID))
+                    ? toSignal(
+                          timer(0, 2000).pipe(
+                              map((index) => (index % 2 ? 'Fix please' : 'Min number 3')),
+                          ),
+                      )
+                    : 'Min number 3',
             }),
         },
     ],
