@@ -29,7 +29,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        value: ${{ fromJSON(needs.setup.outputs.matrix) }}
+        value: ${{ fromJSON(needs.setup.outputs.matrix || '[]') }}
     steps:
       - uses: taiga-family/ci/actions/run/wait-job@v1.161.0
         with:
