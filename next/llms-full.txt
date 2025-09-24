@@ -4083,14 +4083,10 @@ export default class Page {}
 # components/Error
 - **Package**: `CORE`
 - **Type**: components
-Error
-            allows to show an error. If you work with a form, see
-            
-                tuiFieldError
-            
-            . The idea of
-            tui-error
-            is to show arbitrary messages styled as errors, with height or fade transition.
+Component for showing arbitrary messages styled as errors, with height and fade transition, as well as
+        displaying form validation errors from controls
+
+        @for (example of examples; track $index) {
 
 ### How to Use (Import)
 
@@ -4113,7 +4109,7 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-error [error]="error"></tui-error>
+<tui-error [error]="error" />
 ```
 
 ### Example
@@ -4126,12 +4122,12 @@ export class Example {}
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [error] | `TuiValidationError | string | null` | Error value (string, HTML via TemplateRef or TuiValidationError) |
+| [error] | `TuiValidationError | string | null` | Error value (string or TuiValidationError) |
 
 ### TypeScript
 
 ```ts
-import {Component, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiValidationError} from '@taiga-ui/cdk';
@@ -4143,8 +4139,16 @@ import {TuiError} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Page {
-    @ViewChild('errorContent')
-    protected errorContent?: TemplateRef<Record<string, unknown>>;
+    protected readonly errorContent = viewChild<TemplateRef<unknown>>('errorContent');
+    protected readonly examples = [
+        'Basic',
+        'DI',
+        'Template',
+        'Array',
+        'Asynchronous',
+        'Pipe',
+        'Component',
+    ];
 
     protected readonly errorVariants: readonly string[] = [
         'Error as string',
@@ -4154,15 +4158,9 @@ export default class Page {
     protected selectedError = this.errorVariants[0]!;
 
     protected get error(): TuiValidationError | string | null {
-        if (this.selectedError === null) {
-            return null;
-        }
-
-        if (this.selectedError === this.errorVariants[0]) {
-            return this.selectedError;
-        }
-
-        return new TuiValidationError(this.errorContent || '');
+        return this.selectedError === this.errorVariants[1]
+            ? new TuiValidationError(this.errorContent())
+            : this.selectedError;
     }
 }
 ```
@@ -4661,10 +4659,7 @@ export class Example {}
         placeholder="House"
       />
     </tui-input>
-    <tui-error
-      formControlName="testValue"
-      [error]="[] | tuiFieldError | async"
-    ></tui-error>
+    <tui-error formControlName="testValue" />
   </div>
   <div>
     <tui-input
@@ -4678,10 +4673,7 @@ export class Example {}
         placeholder="House building"
       />
     </tui-input>
-    <tui-error
-      formControlName="testValue2"
-      [error]="[] | tuiFieldError | async"
-    ></tui-error>
+    <tui-error formControlName="testValue2" />
   </div>
   <div>
     <tui-input
@@ -4695,10 +4687,7 @@ export class Example {}
         placeholder="Apartment number"
       />
     </tui-input>
-    <tui-error
-      formControlName="testValue3"
-      [error]="[] | tuiFieldError | async"
-    ></tui-error>
+    <tui-error formControlName="testValue3" />
   </div>
 </div>
 ```
@@ -15751,76 +15740,6 @@ export default class Page {}
     inline-size: 31.25rem;
     border: 1px solid var(--tui-border-normal);
 }
-```
-
----
-# pipes/FieldError
-- **Package**: `KIT`
-- **Type**: pipes
-FieldErrorPipe takes order of errors as array and transform it to
-            TuiValidationError
-            . Can be used with TuiError component. You can also use
-            tuiFieldErrorContentPipe
-            with
-            TuiHint
-            (see
-            
-                tuiFieldErrorContentPipe example
-            
-            ). It returns a content of the TuiValidationError. The idea of
-            tuiFieldError
-            is to link
-            tui-error
-            with form controls. Also you can use
-            tuiValidationErrorsProvider
-            which provided
-            TUI_VALIDATION_ERRORS
-            . The idea of
-            TUI_VALIDATION_ERRORS
-            is to provide presentation for arbitrary error objects stored inside controls
-
-### How to Use (Import)
-
-```ts
-import {TuiFieldErrorPipe} from '@taiga-ui/kit';
-
-// ...
-
-@Component({
-  standalone: true,
-  imports: [
-    // ...
-    TuiFieldErrorPipe,
-  ],
-})
-export class Example {}
-```
-
-### How to Use (Template)
-
-```html
-// ...
-<tui-input [formControl]="user">User</tui-input>
-<tui-error
-  [formControl]="user"
-  [error]="[] | tuiFieldError | async"
-></tui-error>
-// ...
-```
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {}
 ```
 
 ---
