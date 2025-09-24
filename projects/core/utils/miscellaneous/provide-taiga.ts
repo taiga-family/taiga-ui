@@ -33,7 +33,6 @@ const DEFAULT: TuiOptions = {
 
 export const TUI_OPTIONS = new InjectionToken<TuiOptions>(ngDevMode ? 'TUI_OPTIONS' : '');
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export function provideTaiga(
     config: Partial<TuiOptions> = {},
 ): Array<EnvironmentProviders | Provider> {
