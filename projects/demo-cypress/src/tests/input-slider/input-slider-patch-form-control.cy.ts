@@ -1,19 +1,19 @@
+import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider, TuiInputSlider} from '@taiga-ui/kit';
-import {NgIf} from '@angular/common';
 
 describe('InputSlider | Patch form control value', () => {
     @Component({
         standalone: true,
         imports: [
             FormsModule,
+            NgIf,
+            ReactiveFormsModule,
             TuiInputSlider,
             TuiRoot,
             TuiTextfield,
-            ReactiveFormsModule,
-            NgIf,
         ],
         template: `
             <tui-root>
