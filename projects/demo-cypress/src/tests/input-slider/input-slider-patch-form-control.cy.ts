@@ -2,15 +2,18 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider, TuiInputSlider} from '@taiga-ui/kit';
+import {NgIf} from '@angular/common';
 
 describe('InputSlider | Patch form control value', () => {
     @Component({
+        standalone: true,
         imports: [
             FormsModule,
             TuiInputSlider,
             TuiRoot,
             TuiTextfield,
             ReactiveFormsModule,
+            NgIf,
         ],
         template: `
             <tui-root>
@@ -23,17 +26,18 @@ describe('InputSlider | Patch form control value', () => {
                 </button>
 
                 <tui-textfield>
-                    @if (formApproach === 'ngModel') {
-                        <input
-                            tuiInputSlider
-                            [(ngModel)]="value"
-                        />
-                    } @else {
+                    <input
+                        *ngIf="formApproach === 'ngModel'; else formControlApproach"
+                        tuiInputSlider
+                        [(ngModel)]="value"
+                    />
+
+                    <ng-template #formControlApproach>
                         <input
                             tuiInputSlider
                             [formControl]="control"
                         />
-                    }
+                    </ng-template>
 
                     <input
                         tuiSlider
