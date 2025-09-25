@@ -1,11 +1,22 @@
-<tui-select
-    [ngModel]="theme"
-    (ngModelChange)="onTheme($event)"
+<tui-textfield
+    tuiChevron
+    [tuiTextfieldCleaner]="false"
 >
-    <ng-content />
-    <tui-data-list *tuiDataList>
+    <label tuiLabel>
+        <ng-content />
+    </label>
+    <input
+        tuiSelect
+        [ngModel]="theme"
+        (ngModelChange)="onTheme($event)"
+    />
+    <tui-data-list
+        *tuiTextfieldDropdown
+        new
+    >
         @for (key of keys; track key) {
             <button
+                new
                 tuiOption
                 type="button"
                 [value]="key"
@@ -20,4 +31,4 @@
             </button>
         }
     </tui-data-list>
-</tui-select>
+</tui-textfield>
