@@ -1,20 +1,20 @@
 import {Component} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {
-    TuiInputModule,
-    TuiInputTagModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputChip} from '@taiga-ui/kit';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         FormsModule,
+        ReactiveFormsModule,
         TuiInputModule,
-        TuiInputTagModule,
         TuiTable,
+        TuiInputChip,
+        TuiTextfield,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',

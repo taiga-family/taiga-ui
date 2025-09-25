@@ -9,6 +9,7 @@
             </th>
             <th
                 tuiTh
+                [minWidth]="100"
                 [resizable]="true"
             >
                 Items
@@ -27,7 +28,12 @@
             <tr>
                 <td tuiTd>{{ item.name }}</td>
                 <td tuiTd>
-                    <tui-input-tag [(ngModel)]="item.items">Items</tui-input-tag>
+                    <tui-textfield multi>
+                        <input
+                            tuiInputChip
+                            [(ngModel)]="item.items"
+                        />
+                    </tui-textfield>
                 </td>
                 <td tuiTd>
                     <tui-input
