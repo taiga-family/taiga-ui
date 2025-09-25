@@ -6,6 +6,17 @@ import {
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
+/**
+ * Performance stress tests intentionally use conditional branches inside test bodies
+ * to emulate realistic, bursty interaction patterns and layout thrashing scenarios.
+ * All randomness is deterministic (seeded PRNG) and branching is purely data-driven
+ * from iteration counters. We disable the Playwright rule that forbids conditionals
+ * in tests because enforcing a strictly linear sequence would drastically reduce
+ * the coverage realism of these scenarios.
+ */
+// TODO: fix lint
+/* eslint-disable playwright/no-conditional-in-test */
+
 test.describe('TuiScrollbar Stress Tests', () => {
     let documentationPage: TuiDocumentationPagePO;
 
@@ -520,12 +531,11 @@ test.describe('TuiScrollbar Stress Tests', () => {
                 'scrollbar-resize-stress',
             );
 
-            const isVisible = scrollbar;
             const hasScroll = await scrollbar.evaluate((el) => {
                 return el.scrollHeight > el.clientHeight;
             });
 
-            await expect(isVisible).toBeVisible();
+            await expect(scrollbar).toBeVisible();
             expect(hasScroll).toBe(true);
         });
 
