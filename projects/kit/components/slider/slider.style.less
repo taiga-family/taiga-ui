@@ -214,21 +214,22 @@
 }
 
 :host-context(tui-textfield) :host([type='range']) {
-    --tui-radius: var(--tui-radius-m);
-    @gap: calc(var(--tui-radius) / 2);
+    --t-gap: 1rem;
 
     top: 100%;
-    left: @gap;
-    right: @gap;
-    inline-size: calc(100% - @gap * 2); // Double check Firefox if you want to set `width: auto`
+    left: var(--t-gap);
+    right: var(--t-gap);
+    inline-size: calc(100% - var(--t-gap) * 2); // Double check Firefox if you want to set `width: auto`
     block-size: 1rem;
     margin: calc(-0.5rem - var(--tui-thickness) / 2) 0 0;
     padding: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: calc(var(--tui-radius) * 10) calc(var(--tui-radius) * 2);
     pointer-events: auto;
 }
 
-:host-context(tui-textfield[data-size='l']) :host([type='range']) {
-    --tui-radius: var(--tui-radius-l);
+:host-context(tui-textfield[data-size='m']) :host([type='range']) {
+    --t-gap: 0.75rem;
+}
+
+:host-context(tui-textfield[data-size='s']) :host([type='range']) {
+    --t-gap: 0.625rem;
 }
