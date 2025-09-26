@@ -174,12 +174,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Accordion ⛔',
-        keywords: 'open, аккордеон, expand, раскрывашка, spoiler, cut',
-        route: DemoRoute.AccordionOld,
-    },
-    {
-        section: 'Components',
         title: 'Alert',
         keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: DemoRoute.Alert,
