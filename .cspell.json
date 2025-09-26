@@ -11,7 +11,8 @@
         "projects/demo/src/llms.txt",
         "projects/demo/src/llms-full.txt",
         "projects/demo/src/llms-full.html",
-        "projects/demo-cypress/src/tests/combo-box/*.cy.ts"
+        "projects/demo-cypress/src/tests/combo-box/*.cy.ts",
+        "projects/cdk/tokens/environment.ts"
     ],
     "ignoreWords": [
         "programmaticinput",
@@ -42,7 +43,10 @@
         "Lebowski",
         "recalc",
         "crossfade",
-        "crossfading"
+        "crossfading",
+        "sdev",
+        "coeff",
+        "Dalvik"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [
