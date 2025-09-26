@@ -1,244 +1,85 @@
-<h2>Desktop</h2>
-
-<section tuiPlatform="web">
-    <div tuiToast>Notification</div>
-
-    <div tuiToast>
-        Notification
-
+<ng-container *ngFor="let platform of platforms">
+    <h2>{{ platform === 'web' ? 'Desktop' : 'Mobile' }}</h2>
+    <section [tuiPlatform]="platform">
         <button
-            tuiButton
+            tuiToast
             type="button"
         >
-            Label
+            Plain text interactive
         </button>
-
-        <button
-            appearance="icon"
-            iconStart="@tui.x"
-            size="xs"
-            tuiIconButton
-            type="button"
+        <div tuiToast>
+            With action
+            <button
+                tuiButton
+                type="button"
+            >
+                Action
+            </button>
+        </div>
+    </section>
+    <section [tuiPlatform]="platform">
+        <div
+            iconStart="@tui.info"
+            tuiToast
         >
-            Close
-        </button>
-    </div>
-</section>
-
-<section tuiPlatform="web">
-    <div
-        iconStart="@tui.info"
-        tuiToast
-    >
-        Notification
-    </div>
-
-    <div
-        iconStart="@tui.star"
-        tuiToast
-    >
-        Notification
-
-        <button
-            appearance="icon"
-            iconStart="@tui.x"
-            size="xs"
-            tuiIconButton
-            type="button"
+            With icon
+        </div>
+        <div tuiToast>
+            <tui-icon
+                appearance="accent"
+                icon="@tui.box"
+                tuiBadge
+            />
+            With badge
+            <button
+                appearance="icon"
+                iconStart="@tui.x"
+                size="xs"
+                tuiIconButton
+                type="button"
+            >
+                Close
+            </button>
+        </div>
+    </section>
+    <section [tuiPlatform]="platform">
+        <div tuiToast>
+            <tui-avatar [src]="'https://github.com/waterplea.png' | tuiFallbackSrc: '@tui.user' | async" />
+            Avatar
+        </div>
+        <div tuiToast>
+            <tui-avatar [src]="'https://github.com/marsibarsi.png' | tuiFallbackSrc: '@tui.user' | async" />
+            Everything
+            <button
+                tuiButton
+                type="button"
+            >
+                Action
+            </button>
+            <button
+                *ngIf="platform === 'web'"
+                appearance="icon"
+                iconStart="@tui.x"
+                size="xs"
+                tuiIconButton
+                type="button"
+            >
+                Close
+            </button>
+        </div>
+    </section>
+    <section [tuiPlatform]="platform">
+        <div
+            iconStart="@tui.alarm-clock"
+            tuiToast
         >
-            Close
-        </button>
-    </div>
-</section>
-
-<section tuiPlatform="web">
-    <div tuiToast>
-        <tui-icon
-            appearance="accent"
-            icon="@tui.box"
-            tuiBadge
-        />
-
-        Notification
-
-        <button
-            tuiButton
-            type="button"
-        >
-            Label
-        </button>
-    </div>
-
-    <div tuiToast>
-        <tui-icon
-            appearance="accent"
-            icon="@tui.bell"
-            tuiBadge
-        />
-
-        Notification
-
-        <button
-            tuiButton
-            type="button"
-        >
-            Label
-        </button>
-
-        <button
-            appearance="icon"
-            iconStart="@tui.x"
-            size="xs"
-            tuiIconButton
-            type="button"
-        >
-            Close
-        </button>
-    </div>
-</section>
-
-<section tuiPlatform="web">
-    <div tuiToast>
-        <tui-avatar [src]="'https://github.com/waterplea.png' | tuiFallbackSrc: '@tui.user' | async" />
-
-        Notification
-    </div>
-
-    <div tuiToast>
-        <tui-avatar [src]="'https://github.com/marsibarsi.png' | tuiFallbackSrc: '@tui.user' | async" />
-
-        Notification
-
-        <button
-            tuiButton
-            type="button"
-        >
-            Label
-        </button>
-    </div>
-</section>
-
-<section tuiPlatform="web">
-    <div
-        iconStart="@tui.info"
-        tuiToast
-    >
-        The text of the notification telling what happened is in two lines because there is a lot of information.
-
-        <button
-            tuiButton
-            type="button"
-        >
-            Label
-        </button>
-    </div>
-</section>
-
-<h2>iOS/Android</h2>
-
-<section tuiPlatform="ios">
-    <a tuiToast>Notification</a>
-
-    <button
-        iconEnd="@tui.circle-help"
-        iconStart="@tui.circle-check"
-        tuiToast
-        type="button"
-    >
-        Notification
-    </button>
-</section>
-
-<section tuiPlatform="ios">
-    <div tuiToast>
-        <tui-icon
-            appearance="accent"
-            icon="@tui.cloud-upload"
-            tuiBadge
-        />
-
-        Notification
-
-        <button
-            tuiButton
-            type="button"
-        >
-            Label
-        </button>
-    </div>
-
-    <button
-        tuiToast
-        type="button"
-    >
-        <tui-icon
-            appearance="accent"
-            icon="@tui.video"
-            tuiBadge
-        />
-
-        Notification
-    </button>
-</section>
-
-<section tuiPlatform="ios">
-    <button
-        tuiToast
-        type="button"
-    >
-        <tui-avatar [src]="'https://github.com/vladimirpotekhin.png' | tuiFallbackSrc: '@tui.user' | async" />
-
-        Notification
-    </button>
-
-    <div tuiToast>
-        <tui-avatar [src]="'https://github.com/nsbarsukov.png' | tuiFallbackSrc: '@tui.user' | async" />
-
-        Notification
-
-        <button
-            tuiButton
-            type="button"
-        >
-            Label
-        </button>
-    </div>
-</section>
-
-<section tuiPlatform="ios">
-    <div
-        iconStart="@tui.circle-check"
-        tuiToast
-    >
-        Notification with two lines of text data
-    </div>
-
-    <div tuiToast>
-        Notification with two lines of text data
-
-        <button
-            tuiButton
-            type="button"
-        >
-            Label
-        </button>
-    </div>
-</section>
-
-<section tuiPlatform="ios">
-    <div tuiToast>
-        <tui-avatar [src]="'https://avatars.githubusercontent.com/u/8158578' | tuiFallbackSrc: '@tui.user' | async" />
-
-        Mobile notification
-    </div>
-
-    <div tuiToast>
-        <tui-avatar [src]="'https://github.com/mdlufy.png' | tuiFallbackSrc: '@tui.user' | async" />
-
-        Notification with
-        <br />
-        two lines of text data
-        <br />
-        or even three
-    </div>
-</section>
+            The text of the notification telling what happened is in three lines because there is a lot of information
+            <button
+                tuiButton
+                type="button"
+            >
+                Action
+            </button>
+        </div>
+    </section>
+</ng-container>

@@ -1,0 +1,59 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+::ng-deep *:has(> tui-toast) {
+    flex-direction: column-reverse !important;
+    justify-content: flex-end;
+}
+
+:host {
+    .transition(grid-template-rows);
+
+    position: relative;
+    top: 1.25rem;
+    display: grid;
+    margin: 0 auto;
+    touch-action: none;
+    animation-fill-mode: both;
+
+    --tui-from: translate3d(0, -2rem, 0);
+
+    &.tui-enter {
+        place-items: end;
+        animation-name: tuiSlide, tuiCollapse;
+    }
+
+    &.tui-leave {
+        animation-name: tuiFade, tuiCollapse;
+
+        &:first-child {
+            animation-name: tuiFade;
+        }
+    }
+
+    &._mobile {
+        top: env(safe-area-inset-top);
+
+        &.tui-enter {
+            animation-delay: var(--tui-duration);
+        }
+
+        &.tui-leave {
+            place-items: end;
+            animation-name: tuiSlide, tuiCollapse;
+        }
+    }
+}
+
+.t-wrapper {
+    grid-row: 1 / span 2;
+
+    &::before {
+        content: '';
+        display: block;
+        block-size: 0.75rem;
+
+        :host._mobile & {
+            block-size: 0.25rem;
+        }
+    }
+}

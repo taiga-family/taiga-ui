@@ -1,33 +1,23 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiPopover} from '@taiga-ui/cdk';
-import {type TuiAlertOptions, TuiButton} from '@taiga-ui/core';
+import {type TuiAlertOptions, TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiToast, TuiToastService} from '@taiga-ui/kit';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
-    imports: [TuiButton, TuiToast],
+    imports: [TuiIcon, TuiToast],
     template: `
-        <div
-            iconStart="@tui.triangle-alert"
-            tuiToast
-        >
-            Lost connection. Restore
+        <div tuiToast>
+            <tui-icon
+                icon="@tui.triangle-alert"
+                [style.color]="'var(--tui-status-negative)'"
+            />
+            Lost connection.
             <br />
-            your internet connection to continue
-
-            <button
-                appearance="icon"
-                iconStart="@tui.x"
-                size="xs"
-                tuiIconButton
-                type="button"
-                (click)="context.$implicit.complete()"
-            >
-                Close
-            </button>
+            Restore your internet to continue
         </div>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39,23 +29,23 @@ export class Toast {
 
 @Component({
     standalone: true,
-    imports: [TuiButton],
+    imports: [TuiButton, TuiToast],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    private readonly toast = inject(TuiToastService);
-    private index = 0;
+    protected readonly toast = inject(TuiToastService);
+    protected readonly template = signal(false);
 
-    public showSimple(): void {
-        this.toast.show(`Copied #${this.index++}`, {iconStart: '@tui.copy-check'});
+    protected primitive(): void {
+        this.toast
+            .open('Alarm saved', {autoClose: 0, data: '@tui.alarm-clock'})
+            .subscribe();
     }
 
-    public show(): void {
-        this.toast.show(new PolymorpheusComponent(Toast), {
-            autoClose: 0,
-        });
+    protected component(): void {
+        this.toast.open(new PolymorpheusComponent(Toast), {closable: false}).subscribe();
     }
 }

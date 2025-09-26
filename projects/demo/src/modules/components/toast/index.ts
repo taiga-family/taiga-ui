@@ -1,60 +1,23 @@
-import {Component, inject, ViewChild} from '@angular/core';
-import {TuiDocIcons} from '@demo/components/icons';
+import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiButton, TuiFallbackSrcPipe, TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiToast, TuiToastService} from '@taiga-ui/kit';
+import {TuiButton} from '@taiga-ui/core';
+import {TUI_TOAST_OPTIONS, TuiToast} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAvatar,
-        TuiBadge,
-        TuiButton,
-        TuiDemo,
-        TuiDocIcons,
-        TuiFallbackSrcPipe,
-        TuiIcon,
-        TuiTitle,
-        TuiToast,
-    ],
+    imports: [TuiButton, TuiDemo, TuiToast],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Example {
-    @ViewChild('icons')
-    private readonly icons!: TuiDocIcons;
+    private readonly options = inject(TUI_TOAST_OPTIONS);
 
-    private readonly toast = inject(TuiToastService);
-
-    protected readonly examples = [
-        'Basic',
-        'Customization',
-        'Notification',
-        'Mobile notification',
-    ];
-
-    protected content = 'Notification';
-
-    protected readonly exampleAlert = import('./examples/import/alert.md?raw');
-
+    protected readonly examples = ['Basic', 'Customization', 'Service'];
+    protected readonly toast = signal(false);
     protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
-
-    protected autoClose = this.autoCloseVariants[1]!;
-
+    protected autoClose = this.options.autoClose;
+    protected content = 'Notification';
     protected appearance = '';
-
-    protected closeVariants = [true, false];
-
-    protected closable = this.closeVariants[0]!;
-
-    public show(): void {
-        this.toast.show(this.content, {
-            autoClose: this.autoClose,
-            closable: this.closable,
-            appearance: this.appearance,
-            iconStart: this.icons.iconStart,
-            iconEnd: this.icons.iconEnd,
-        });
-    }
+    protected closable = this.options.closable;
 }

@@ -1,7 +1,13 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
+
 [tuiToast] {
+    .transition(transform);
+
     display: flex;
+    grid-row: 1 / span 2;
     box-sizing: border-box;
     gap: 0.75rem;
+    color: var(--tui-text-primary);
     background: var(--tui-background-elevation-3);
     min-block-size: 3.5rem;
     border-radius: 1rem;
@@ -13,6 +19,12 @@
     font: var(--tui-font-text-ui-s);
     max-inline-size: ~'min(calc(100vw - 2rem), 25rem)';
     border: inherit;
+    text-decoration: none;
+    overflow: hidden;
+
+    .interactive({
+        cursor: pointer;
+    });
 
     > *,
     &::after,
