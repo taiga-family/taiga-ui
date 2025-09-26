@@ -113,7 +113,6 @@ export const TUI_USED_ICONS = [
     '@tui.image',
     '@tui.cloud',
     '@tui.grip-vertical',
-    '@tui.copy-check',
     '@tui.camera',
     '@tui.folder',
     '@tui.chevron-up',
