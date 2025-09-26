@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[64480],{64480:e=>{e.exports=".link {\n    display: block;\n    margin: 0.75rem 0;\n}\n"}}]);
