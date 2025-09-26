@@ -199,7 +199,6 @@ export const DemoRoute = {
     TableFilters: '/components/table-filters',
     TablePagination: '/components/table-pagination',
     Ripple: '/directives/ripple',
-    Sidebar: '/directives/sidebar',
     Touchable: '/directives/touchable',
     Validator: '/directives/validator',
     ValueChanges: '/directives/value-changes',

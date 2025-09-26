@@ -905,11 +905,6 @@ export const ROUTES: Routes = [
         title: 'Ripple',
     }),
     route({
-        path: DemoRoute.Sidebar,
-        loadComponent: async () => import('../directives/sidebar'),
-        title: 'Sidebar ⛔',
-    }),
-    route({
         path: DemoRoute.Touchable,
         loadComponent: async () => import('../directives/touchable'),
         title: 'Touchable',

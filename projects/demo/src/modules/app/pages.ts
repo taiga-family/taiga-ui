@@ -1432,13 +1432,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'Sidebar ⛔',
-                keywords:
-                    'sidebar, hamburger, drawer menu, mobile, смартфон, pwa, native, hybrid, сайдбар, меню',
-                route: DemoRoute.Sidebar,
-            },
-            {
-                section: 'Tools',
                 title: 'Swipe',
                 keywords: 'swipe, свайп',
                 route: DemoRoute.Swipe,
