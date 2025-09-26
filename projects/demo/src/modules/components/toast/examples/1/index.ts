@@ -1,4 +1,4 @@
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -10,6 +10,8 @@ import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
     standalone: true,
     imports: [
         AsyncPipe,
+        NgForOf,
+        NgIf,
         TuiAvatar,
         TuiBadge,
         TuiButton,
@@ -23,4 +25,6 @@ import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
     encapsulation,
     changeDetection,
 })
-export default class Example {}
+export default class Example {
+    protected readonly platforms = ['web', 'ios'] as const;
+}

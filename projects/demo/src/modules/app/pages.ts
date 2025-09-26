@@ -1149,6 +1149,12 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'Toast',
+        keywords: 'toast, тост, нотификация',
+        route: DemoRoute.Toast,
+    },
+    {
+        section: 'Components',
         title: 'Tiles',
         keywords: 'tile, grid, грид, widgets, drag, drop',
         route: DemoRoute.Tiles,

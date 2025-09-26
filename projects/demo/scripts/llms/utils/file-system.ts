@@ -118,9 +118,9 @@ export function getComponentExample(content: string): string {
 
     // Clean up the HTML formatting for better LLM consumption
     const cleanHtml = html
-        ?.replace(/\s+/g, ' ') // Replace multiple spaces with single space
-        ?.replace(/>\s+</g, '>\n<') // Add line breaks between tags
-        ?.replace(/\n\s+/g, '\n') // Remove leading spaces
+        ?.replaceAll(/\s+/g, ' ') // Replace multiple spaces with single space
+        ?.replaceAll(/>\s+</g, '>\n<') // Add line breaks between tags
+        ?.replaceAll(/\n\s+/g, '\n') // Remove leading spaces
         ?.trim();
 
     return `\n### Example\n\n\`\`\`html\n${cleanHtml}\n\`\`\``;
