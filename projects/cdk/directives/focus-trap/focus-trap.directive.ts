@@ -32,7 +32,7 @@ export class TuiFocusTrap implements OnDestroy {
              * The same event can synchronously close already opened focus trap and open another one.
              * All focus traps have microtask inside its `ngOnDestroy` –
              * they should be resolved before enabling of new focus trap.
-             * Don't enable any new event listeners before `initialized` equals to `true`!
+             * Don't enable any new event listeners before `initialized` is equal to `true`!
              */
             this.initialized = true;
             this.activeElement = tuiGetFocused(this.doc);
