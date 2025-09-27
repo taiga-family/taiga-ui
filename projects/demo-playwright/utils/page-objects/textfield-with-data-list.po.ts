@@ -4,7 +4,7 @@ export class TuiTextfieldWithDataListPO {
     public readonly textfield: Locator = this.host.getByRole('textbox');
     public readonly dropdown = this.host
         .page()
-        .locator('tui-dropdown,tui-dropdown-mobile');
+        .locator('tui-dropdown,tui-dropdown-mobile,tui-sheet-dialog');
 
     constructor(protected readonly host: Locator) {}
 

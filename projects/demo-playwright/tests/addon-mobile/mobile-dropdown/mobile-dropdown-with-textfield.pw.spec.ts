@@ -16,7 +16,7 @@ describe('DropdownMobile for textfields', () => {
         const example = documentation.getExample('#mobile');
 
         await example.locator('[tuiSelect]').click();
-        await page.locator('tui-dropdown-mobile [tuiOption]').first().hover();
+        await page.locator('tui-sheet-dialog [tuiOption]').first().hover();
 
         await documentation.hideContent();
         await expect.soft(page).toHaveScreenshot('dropdown-mobile-with-select.png');
@@ -58,7 +58,7 @@ describe('DropdownMobile for textfields', () => {
         await example
             .locator('tui-textfield[multi][tuiDropdownMobile="Select Pythons"]')
             .click();
-        await page.locator('tui-dropdown-mobile [tuiOption]').last().click();
+        await page.locator('tui-sheet-dialog [tuiOption]').last().click();
 
         await documentation.hideContent();
         await expect
