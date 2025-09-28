@@ -302,11 +302,21 @@ export class TuiDay extends TuiMonth {
         let years = Math.floor(totalMonths / MONTHS_IN_YEAR);
         let months = totalMonths % MONTHS_IN_YEAR;
 
+        const monthDaysCount = TuiMonth.getMonthDaysCount(
+            months,
+            TuiYear.isLeapYear(years),
+        );
+        const currentMonthDaysCount = TuiMonth.getMonthDaysCount(
+            this.month,
+            TuiYear.isLeapYear(years),
+        );
         let days =
-            Math.min(
-                this.day,
-                TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years)),
-            ) + day;
+            (this.day > monthDaysCount
+                ? this.day - (currentMonthDaysCount - monthDaysCount)
+                : currentMonthDaysCount < monthDaysCount &&
+                    this.day === currentMonthDaysCount
+                  ? this.day + (monthDaysCount - currentMonthDaysCount)
+                  : this.day) + day;
 
         while (days > TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years))) {
             days -= TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years));
