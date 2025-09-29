@@ -8,6 +8,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_MINUS, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {
+    provideTaiga,
     type TuiDecimalMode,
     TuiHint,
     TuiNumberFormat,
@@ -15,7 +16,6 @@ import {
     type TuiSizeL,
     type TuiSizeS,
 } from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputNumberComponent,
     TuiInputNumberModule,
@@ -81,10 +81,7 @@ describe('InputNumber', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [
-                NG_EVENT_PLUGINS,
-                tuiNumberFormatProvider({decimalSeparator: ','}),
-            ],
+            providers: [provideTaiga(), tuiNumberFormatProvider({decimalSeparator: ','})],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

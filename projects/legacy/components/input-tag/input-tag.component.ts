@@ -24,7 +24,7 @@ import {
     tuiIsElement,
     tuiRetargetedBoundaryCrossing,
 } from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiArrayRemove, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
@@ -233,7 +233,7 @@ export class TuiInputTagComponent
     }
 
     public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el) || !!this.dropdown?.tuiDropdownOpen;
+        return tuiIsFocusedIn(this.el) || !!this.dropdown?.tuiDropdownOpen;
     }
 
     public get tagsEmpty(): boolean {

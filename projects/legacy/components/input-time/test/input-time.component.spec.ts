@@ -9,8 +9,13 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {TuiTime, TuiValueTransformer} from '@taiga-ui/cdk';
-import {TuiHint, TuiRoot, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {
+    provideTaiga,
+    TuiHint,
+    TuiRoot,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core';
 import {TUI_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {
     TuiInputTimeComponent,
@@ -98,7 +103,7 @@ describe('InputTime', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [NG_EVENT_PLUGINS],
+                providers: [provideTaiga()],
             });
             await TestBed.compileComponents();
             await initializeEnvironment();
@@ -119,7 +124,7 @@ describe('InputTime', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [NG_EVENT_PLUGINS],
+                providers: [provideTaiga()],
             });
             await TestBed.compileComponents();
             await initializeEnvironment();
@@ -145,7 +150,7 @@ describe('InputTime', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [NG_EVENT_PLUGINS],
+                providers: [provideTaiga()],
             });
             await TestBed.compileComponents();
             await initializeEnvironment();
@@ -163,7 +168,7 @@ describe('InputTime', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [NG_EVENT_PLUGINS],
+                providers: [provideTaiga()],
             });
             await TestBed.compileComponents();
             await initializeEnvironment();
@@ -236,7 +241,7 @@ describe('InputTime', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [NG_EVENT_PLUGINS],
+                providers: [provideTaiga()],
             });
             await TestBed.compileComponents();
             await initializeEnvironment();
@@ -373,6 +378,7 @@ describe('InputTime', () => {
             TestBed.configureTestingModule({
                 imports: [TransformerTest],
                 providers: [
+                    provideTaiga(),
                     {provide: TUI_TIME_VALUE_TRANSFORMER, useClass: TestTransformer},
                 ],
             });

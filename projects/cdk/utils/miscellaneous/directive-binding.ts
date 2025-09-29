@@ -28,7 +28,11 @@ export function tuiDirectiveBinding<
 ): I extends Signal<any> ? I : WritableSignal<I> {
     const result: any = isSignal(initial) ? initial : signal(initial);
     const directive: any = inject(token, options);
-    const output = directive[`${key.toString()}Change`];
+    const output = directive?.[`${key.toString()}Change`];
+
+    if (!directive) {
+        return result;
+    }
 
     // TODO: Figure out why effects are executed all the time and not just when result changes (check with Angular 18)
     let previous: any;

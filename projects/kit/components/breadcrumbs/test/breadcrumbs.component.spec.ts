@@ -8,8 +8,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TuiItem} from '@taiga-ui/cdk';
-import {TuiLink, type TuiSizeL} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiLink, type TuiSizeL} from '@taiga-ui/core';
 import {TuiBreadcrumbs} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -76,7 +75,7 @@ describe('Breadcrumbs Wrapper', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

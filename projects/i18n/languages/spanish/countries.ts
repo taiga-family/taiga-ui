@@ -121,7 +121,7 @@ export const TUI_SPANISH_LANGUAGE_COUNTRIES: Record<TuiCountryIsoCode, string> =
     LV: 'Letonia',
     LY: 'Libia',
     MA: 'Marruecos',
-    MC: 'M´ónaco',
+    MC: 'Mónaco',
     MD: 'Moldavia',
     ME: 'Montenegro',
     MF: 'San Martín',

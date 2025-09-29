@@ -20,8 +20,8 @@ import {
     TuiMonth,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TUI_MONTHS, TuiNotification, type TuiPoint} from '@taiga-ui/core';
-import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
+import {TUI_MONTHS, TuiNotification, type TuiPoint, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputDateRange} from '@taiga-ui/kit';
 import {map, type Observable, of} from 'rxjs';
 
 @Component({
@@ -30,12 +30,13 @@ import {map, type Observable, of} from 'rxjs';
         FormsModule,
         TuiAxes,
         TuiFilterPipe,
-        TuiInputDateRangeModule,
+        TuiInputDateRange,
         TuiLineChart,
         TuiLineDaysChart,
         TuiLineDaysChartHint,
         TuiMapperPipe,
         TuiNotification,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -22,6 +22,6 @@ export const TUI_HEBREW_LANGUAGE_CORE: TuiLanguageCore = {
     nothingFoundMessage: 'שום דבר לא נמצא',
     defaultErrorMessage: 'הערך לא חוקי',
     spinTexts: ['קודם', 'הַבָּא'],
-    shortWeekDays: ['יום שני', "ג'", 'היינו עושים', "יום ה'", 'שישי', 'ישב', 'שמש'],
+    shortWeekDays: ['יום שני', "ג'", 'רביעי', "יום ה'", 'שישי', 'ישב', 'שמש'],
     countries: TUI_HEBREW_LANGUAGE_COUNTRIES,
 };

@@ -1,14 +1,16 @@
 import {DOCUMENT} from '@angular/common';
-import {computed, Directive, inject, Input} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {tuiDirectiveBinding, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    TuiTextfieldComponent,
+    tuiTextfieldIcon,
+} from '@taiga-ui/core/components/textfield';
 import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
@@ -39,11 +41,11 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     },
 })
 export class TuiCopyDirective {
-    private readonly options = inject(TUI_COPY_OPTIONS);
     private readonly copied$ = new Subject<void>();
     private readonly doc = inject(DOCUMENT);
 
     protected readonly textfield = inject(TuiTextfieldComponent);
+    protected readonly icons = tuiTextfieldIcon(TUI_COPY_OPTIONS);
     protected readonly hint = tuiDirectiveBinding(
         TuiHintDirective,
         'tuiHint',
@@ -62,14 +64,6 @@ export class TuiCopyDirective {
                 ),
             ),
             {initialValue: ''},
-        ),
-    );
-
-    protected readonly icons = tuiDirectiveBinding(
-        TuiIcons,
-        'iconStart',
-        computed((size = this.textfield.options.size()) =>
-            tuiIsString(this.options.icon) ? this.options.icon : this.options.icon(size),
         ),
     );
 

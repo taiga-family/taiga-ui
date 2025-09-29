@@ -1,7 +1,11 @@
 import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
 import {type ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
-import {TUI_EXPAND_LOADED, TuiExpand, type TuiExpandComponent} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {
+    provideTaiga,
+    TUI_EXPAND_LOADED,
+    TuiExpand,
+    type TuiExpandComponent,
+} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 const ANIMATION_DELAY = 900;
@@ -46,7 +50,7 @@ describe('expand', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

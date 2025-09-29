@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -18,7 +17,6 @@ import {
     TuiCheckbox,
     TuiChevron,
     TuiDataListWrapper,
-    TuiFieldErrorPipe,
     TuiInputNumber,
     TuiInputPhone,
     TuiPassword,
@@ -57,7 +55,6 @@ class Account {
 
 @Component({
     imports: [
-        AsyncPipe,
         ReactiveFormsModule,
         TuiBlock,
         TuiButton,
@@ -66,7 +63,6 @@ class Account {
         TuiCurrencyPipe,
         TuiDataListWrapper,
         TuiError,
-        TuiFieldErrorPipe,
         TuiForm,
         TuiGroup,
         TuiHeader,
