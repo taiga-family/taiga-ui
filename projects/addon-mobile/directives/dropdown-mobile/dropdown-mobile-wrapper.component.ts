@@ -43,7 +43,7 @@ export class TuiDropdownMobileWrapperComponent implements OnInit {
             this.dialogs
                 .open(this.content, {label: this.directive.tuiDropdownMobile})
                 .pipe(takeUntilDestroyed(this.destroyRef))
-                .subscribe();
+                .subscribe({complete: () => this.dropdown.toggle(false)});
         }
     }
 }

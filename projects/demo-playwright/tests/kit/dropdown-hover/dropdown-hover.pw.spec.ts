@@ -36,7 +36,7 @@ test.describe('DropdownHover', () => {
             test('Closes dropdown on click on overlay', async ({page}) => {
                 await example.locator('button').click();
                 await expect(page.locator('tui-sheet-dialog')).toBeVisible();
-                await page.locator('tui-sheet-dialog').click();
+                await page.locator('tui-sheet-dialog').click({position: {x: 32, y: 32}});
                 await expect(page.locator('tui-sheet-dialog')).not.toBeAttached();
             });
 
@@ -44,7 +44,7 @@ test.describe('DropdownHover', () => {
                 page,
             }) => {
                 await example.locator('button').click();
-                await page.locator('tui-sheet-dialog').click();
+                await page.locator('tui-sheet-dialog').click({position: {x: 32, y: 32}});
                 await example.locator('button').click();
                 await expect(page.locator('tui-sheet-dialog')).toBeVisible();
                 await expect
