@@ -50,19 +50,14 @@
         margin-inline-start: calc(var(--tui-radius-m) / 2 + var(--t-offset));
     }
 
-    /* TODO: add :has([tuiInputSlider]) */
-    tui-textfield + & {
-        --t-offset: calc(var(--tui-radius-m) / 2 + @thumb / 2);
-    }
-
-    /* TODO: add :has([tuiInputSlider]) */
-    tui-textfield[data-size='l'] + & {
-        --t-offset: calc(var(--tui-radius-l) / 2 + @thumb / 2);
-    }
-
     tui-input-range:not([new]) + &, /* TODO(v5): delete */
     tui-range + & {
         --t-offset: @thumb;
+    }
+
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield + & {
+        --t-offset: calc(@track-inset[@@input-size] + @thumb / 2);
     }
 
     tui-input-range[new] + & {
