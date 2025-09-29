@@ -1,4 +1,7 @@
-<span class="t-wrapper">
+<span
+    *ngIf="values().length"
+    class="t-wrapper"
+>
     <span class="t-label">{{ label }}</span>
     <button
         tuiLink
