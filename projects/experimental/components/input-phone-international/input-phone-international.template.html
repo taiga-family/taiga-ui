@@ -30,12 +30,12 @@
         >
             <input
                 autocomplete="off"
-                tuiAutoFocus
                 tuiTextfield
                 type="text"
                 [ngModel]="search()"
                 [ngModelOptions]="{standalone: true}"
                 [placeholder]="label()"
+                [tuiAutoFocus]="!ios"
                 (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
                 (ngModelChange)="search.set($event)"
             />
