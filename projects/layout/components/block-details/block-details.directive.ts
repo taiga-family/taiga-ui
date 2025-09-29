@@ -4,24 +4,20 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./block-details.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-block-details-styles',
-    },
+    host: {class: 'tui-block-details'},
 })
-class TuiBlockDetailsStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiBlockDetails]',
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
 })
-export class TuiBlockDetails {
-    protected readonly nothing = tuiWithStyles(TuiBlockDetailsStyles);
-}
+export class TuiBlockDetails {}

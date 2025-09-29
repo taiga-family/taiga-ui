@@ -1,15 +1,15 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
+    contentChild,
     Directive,
     inject,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -21,37 +21,32 @@ import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {TUI_BLOCK_OPTIONS} from './block.options';
 
 @Component({
-    standalone: true,
     template: '',
     styles: ['@import "@taiga-ui/kit/styles/components/block.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-block',
-    },
+    host: {class: 'tui-block'},
 })
-class TuiBlockStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'label[tuiBlock],input[tuiBlock]',
     providers: [
+        provideStyles(Styles),
         tuiAppearanceOptionsProvider(TUI_BLOCK_OPTIONS),
         tuiAvatarOptionsProvider({size: 's'}),
     ],
-    hostDirectives: [TuiNativeValidator, TuiWithAppearance, TuiWithIcons],
+    hostDirectives: [TuiNativeValidator, TuiWithAppearance, TuiWithIcons, TuiWithStyles],
     host: {
         tuiBlock: '',
-        '[attr.data-size]': 'size || "l"',
-        '[class._disabled]': '!!this.control?.disabled',
+        '[attr.data-size]': 'tuiBlock() || "l"',
+        '[class._disabled]': '!!this.control()?.disabled',
     },
 })
 export class TuiBlock {
-    @ContentChild(NgControl)
-    protected readonly control?: NgControl;
+    protected readonly control = contentChild(NgControl);
 
-    protected readonly nothing = tuiWithStyles(TuiBlockStyles);
-
-    @Input('tuiBlock')
-    public size: TuiSizeL | TuiSizeS | '' = inject(TUI_BLOCK_OPTIONS).size;
+    public readonly tuiBlock = input<TuiSizeL | TuiSizeS | ''>(
+        inject(TUI_BLOCK_OPTIONS).size,
+    );
 }

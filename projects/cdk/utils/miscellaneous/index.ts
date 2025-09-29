@@ -28,4 +28,3 @@ export * from './pure';
 export * from './px';
 export * from './set-signal';
 export * from './uniq-by';
-export * from './with-styles';

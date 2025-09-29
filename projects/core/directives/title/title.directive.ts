@@ -2,35 +2,30 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
-    standalone: true,
     template: '',
     styles: ['@import "@taiga-ui/core/styles/components/title.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-title',
-    },
+    host: {class: 'tui-title'},
 })
-class TuiTitleStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiTitle]',
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
     host: {
         tuiTitle: '',
-        '[attr.data-size]': 'size || null',
+        '[attr.data-size]': 'tuiTitle() || null',
     },
 })
 export class TuiTitle {
-    protected readonly nothing = tuiWithStyles(TuiTitleStyles);
-
-    @Input('tuiTitle')
-    public size: TuiSizeL | TuiSizeS | '' = '';
+    public readonly tuiTitle = input<TuiSizeL | TuiSizeS | ''>('');
 }

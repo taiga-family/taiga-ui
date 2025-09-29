@@ -6,7 +6,7 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -16,30 +16,24 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_LINK_OPTIONS} from './link.options';
 
 @Component({
-    standalone: true,
     template: '',
     styles: ['@import "@taiga-ui/core/styles/components/link.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-link',
-    },
+    host: {class: 'tui-link'},
 })
-class TuiLinkStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'a[tuiLink], button[tuiLink]',
-    providers: [tuiAppearanceOptionsProvider(TUI_LINK_OPTIONS)],
-    hostDirectives: [TuiWithAppearance, TuiWithIcons],
+    providers: [provideStyles(Styles), tuiAppearanceOptionsProvider(TUI_LINK_OPTIONS)],
+    hostDirectives: [TuiWithAppearance, TuiWithIcons, TuiWithStyles],
     host: {
         tuiLink: '',
         '[style.text-decoration-line]': 'pseudo ? "underline" : null',
     },
 })
 export class TuiLink {
-    protected readonly nothing = tuiWithStyles(TuiLinkStyles);
-
     /**
      * @deprecated: use on host
      * [style.text-decoration-line]="'underline'"

@@ -2,37 +2,32 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {
     type TuiHorizontalDirection,
     type TuiVerticalDirection,
 } from '@taiga-ui/core/types';
 
 @Component({
-    standalone: true,
     template: '',
     styles: ['@import "@taiga-ui/kit/styles/components/comment.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-comment',
-    },
+    host: {class: 'tui-comment'},
 })
-class TuiCommentStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiComment]',
-    host: {
-        '[attr.data-direction]': 'tuiComment',
-    },
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
+    host: {'[attr.data-direction]': 'tuiComment()'},
 })
 export class TuiComment {
-    protected readonly nothing = tuiWithStyles(TuiCommentStyles);
-
-    @Input()
-    public tuiComment: TuiHorizontalDirection | TuiVerticalDirection | '' = 'top';
+    public readonly tuiComment = input<
+        TuiHorizontalDirection | TuiVerticalDirection | ''
+    >('top');
 }

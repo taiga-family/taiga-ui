@@ -3,48 +3,41 @@ import {
     Component,
     Directive,
     inject,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TUI_CELL_OPTIONS, type TuiCellOptions} from './cell.options';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./cell.styles.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-cell',
-    },
+    host: {class: 'tui-cell'},
 })
-class TuiCellStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiCell]:not(ng-template)',
     providers: [
+        provideStyles(Styles),
         tuiAvatarOptionsProvider({size: 'm'}),
         tuiButtonOptionsProvider({size: 's'}),
     ],
+    hostDirectives: [TuiWithStyles],
     host: {
         tuiCell: '',
-        '[attr.data-size]': 'size || options.size',
-        '[attr.data-height]': 'height',
+        '[attr.data-size]': 'tuiCell() || options.size',
+        '[attr.data-height]': 'tuiCellHeight()',
     },
 })
 export class TuiCell {
     protected readonly options = inject(TUI_CELL_OPTIONS);
 
-    protected readonly nothing = tuiWithStyles(TuiCellStyles);
-
-    @Input('tuiCell')
-    public size: TuiCellOptions['size'] | '' = this.options.size;
-
-    @Input('tuiCellHeight')
-    public height: TuiCellOptions['height'] = this.options.height;
+    public readonly tuiCell = input<TuiCellOptions['size'] | ''>(this.options.size);
+    public readonly tuiCellHeight = input(this.options.height);
 }

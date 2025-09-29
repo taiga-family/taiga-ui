@@ -13,26 +13,24 @@ import {
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 
 import {TUI_TAB_ACTIVATE} from './tab.directive';
 import {TUI_TABS_OPTIONS} from './tabs.options';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./tabs.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-tabs',
-    },
+    host: {class: 'tui-tabs'},
 })
-class TuiTabsStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
     host: {
         '[attr.data-size]': 'size',
         [`(${TUI_TAB_ACTIVATE})`]: 'onActivate($event, $event.target)',
@@ -41,8 +39,6 @@ class TuiTabsStyles {}
 export class TuiTabsDirective implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
-
-    protected readonly nothing = tuiWithStyles(TuiTabsStyles);
 
     @Input()
     public size: TuiSizeL = inject(TUI_TABS_OPTIONS).size;

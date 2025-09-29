@@ -4,24 +4,20 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./card.style.less', './medium.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-card-medium',
-    },
+    host: {class: 'tui-card-medium'},
 })
-class TuiCardMediumStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiCardMedium]',
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
 })
-export class TuiCardMedium {
-    protected readonly nothing = tuiWithStyles(TuiCardMediumStyles);
-}
+export class TuiCardMedium {}

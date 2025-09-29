@@ -1,41 +1,35 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     Directive,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./avatar-outline.styles.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-avatar-outline',
-    },
+    host: {class: 'tui-avatar-outline'},
 })
-class TuiAvatarOutlineStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiAvatarOutline]',
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
     host: {
-        '[style.--t-fill]': 'value',
-        '[class._outline]': 'value',
+        '[style.--t-fill]': 'value()',
+        '[class._outline]': 'value()',
     },
 })
 export class TuiAvatarOutline {
-    protected readonly nothing = tuiWithStyles(TuiAvatarOutlineStyles);
+    protected readonly value = computed((value = this.tuiAvatarOutline()) =>
+        value === '' ? 'var(--tui-background-accent-1)' : value,
+    );
 
-    @Input()
-    public tuiAvatarOutline: string | null = '';
-
-    protected get value(): string | null {
-        return this.tuiAvatarOutline === ''
-            ? 'var(--tui-background-accent-1)'
-            : this.tuiAvatarOutline;
-    }
+    public readonly tuiAvatarOutline = input<string | null>('');
 }

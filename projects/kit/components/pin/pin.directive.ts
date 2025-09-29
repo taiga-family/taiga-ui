@@ -2,33 +2,26 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 
 @Component({
-    standalone: true,
     template: '',
     styles: ['@import "@taiga-ui/kit/styles/components/pin.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-pin',
-    },
+    host: {class: 'tui-pin'},
 })
-class TuiPinStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'tui-pin,[tuiPin]',
-    host: {
-        '[class._open]': 'open',
-    },
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
+    host: {'[class._open]': 'open()'},
 })
 export class TuiPin {
-    protected readonly nothing = tuiWithStyles(TuiPinStyles);
-
-    @Input()
-    public open = false;
+    public readonly open = input(false);
 }

@@ -8,7 +8,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {
     TUI_ICON_END,
     TUI_ICON_START,
@@ -19,19 +19,17 @@ import {
 const OPT = {self: true, optional: true} as const;
 
 @Component({
-    standalone: true,
     template: '',
     styles: ['@import "@taiga-ui/core/styles/components/icons.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-icons',
-    },
+    host: {class: 'tui-icons'},
 })
-class TuiIconsStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
     host: {
         tuiIcons: '',
         '[style.--t-icon-start]': 'start()',
@@ -43,7 +41,6 @@ class TuiIconsStyles {}
 export class TuiIcons {
     private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
-    protected readonly nothing = tuiWithStyles(TuiIconsStyles);
     protected readonly start = computed(() => this.resolve(this.iconStart()));
     protected readonly end = computed(() => this.resolve(this.iconEnd()));
     protected readonly startMode = computed(() => tuiGetIconMode(this.iconStart()));

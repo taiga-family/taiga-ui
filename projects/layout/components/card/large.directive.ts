@@ -2,34 +2,29 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./card.style.less', './large.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-card-large',
-    },
+    host: {class: 'tui-card-large'},
 })
-class TuiCardLargeStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiCardLarge]',
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
     host: {
         tuiCardLarge: '',
-        '[attr.data-space]': 'space || "normal"',
+        '[attr.data-space]': 'tuiCardLarge() || "normal"',
     },
 })
 export class TuiCardLarge {
-    protected readonly nothing = tuiWithStyles(TuiCardLargeStyles);
-
-    @Input('tuiCardLarge')
-    public space: '' | 'compact' | 'normal' = 'normal';
+    public readonly tuiCardLarge = input<'' | 'compact' | 'normal'>('normal');
 }

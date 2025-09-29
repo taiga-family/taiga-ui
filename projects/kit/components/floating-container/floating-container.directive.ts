@@ -2,34 +2,29 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./floating-container.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-floating-container',
-    },
+    host: {class: 'tui-floating-container'},
 })
-class TuiFloatingContainerStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiFloatingContainer]',
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
     host: {
         tuiFloatingContainer: '',
-        '[style.--t-background]': 'background',
+        '[style.--t-background]': 'tuiFloatingContainer()',
     },
 })
 export class TuiFloatingContainer {
-    protected readonly nothing = tuiWithStyles(TuiFloatingContainerStyles);
-
-    @Input('tuiFloatingContainer')
-    public background = '';
+    public readonly tuiFloatingContainer = input('');
 }

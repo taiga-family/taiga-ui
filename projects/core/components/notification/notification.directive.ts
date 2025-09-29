@@ -8,12 +8,9 @@ import {
     type OnInit,
     ViewEncapsulation,
 } from '@angular/core';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {
-    tuiIsString,
-    tuiSetSignal,
-    tuiWithStyles,
-} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {
@@ -25,32 +22,23 @@ import {TuiIcons, TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 
 @Component({
-    standalone: true,
     template: '',
     styles: ['@import "@taiga-ui/core/styles/components/notification.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-notification',
-    },
+    host: {class: 'tui-notification'},
 })
-class TuiNotificationStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
     providers: [
+        provideStyles(Styles),
         tuiAppearanceOptionsProvider(TUI_NOTIFICATION_OPTIONS),
-        tuiLinkOptionsProvider({
-            appearance: '',
-            pseudo: true,
-        }),
-        tuiButtonOptionsProvider({
-            appearance: 'outline-grayscale',
-            size: 's',
-        }),
+        tuiLinkOptionsProvider({appearance: '', pseudo: true}),
+        tuiButtonOptionsProvider({appearance: 'outline-grayscale', size: 's'}),
     ],
-    hostDirectives: [TuiWithIcons, TuiWithAppearance],
+    hostDirectives: [TuiWithIcons, TuiWithAppearance, TuiWithStyles],
     host: {
         '[attr.data-size]': 'size',
     },
@@ -58,7 +46,6 @@ class TuiNotificationStyles {}
 export class TuiNotification implements OnChanges, OnInit {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
-    protected readonly nothing = tuiWithStyles(TuiNotificationStyles);
     protected readonly icons = inject(TuiIcons);
 
     @Input()

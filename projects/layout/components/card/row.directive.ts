@@ -4,24 +4,20 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./row.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-card-row',
-    },
+    host: {class: 'tui-card-row'},
 })
-class TuiCardRowStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiCardRow]',
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
 })
-export class TuiCardRow {
-    protected readonly nothing = tuiWithStyles(TuiCardRowStyles);
-}
+export class TuiCardRow {}

@@ -1,47 +1,39 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     Directive,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./slides.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-slides',
-    },
+    host: {class: 'tui-slides'},
 })
-class TuiSlidesStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiSlides]',
-    hostDirectives: [TuiAnimatedParent],
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiAnimatedParent, TuiWithStyles],
     host: {
         tuiSlides: '',
-        '[attr.data-direction]': 'sign',
+        '[attr.data-direction]': 'sign()',
         '(animationend)': 'onAnimation($event.target)',
     },
 })
 export class TuiSlides {
-    private readonly el = tuiInjectElement();
+    protected readonly el = tuiInjectElement();
+    protected readonly sign = computed(() => Math.sign(this.tuiSlides() || 0));
 
-    protected readonly nothing = tuiWithStyles(TuiSlidesStyles);
-
-    @Input('tuiSlides')
-    public direction: number | '' = '';
-
-    protected get sign(): number {
-        return Math.sign(this.direction || 0);
-    }
+    public readonly tuiSlides = input<number | ''>('');
 
     protected onAnimation(target: Element): void {
         Array.from(this.el.children)

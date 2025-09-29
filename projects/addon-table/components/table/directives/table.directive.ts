@@ -14,7 +14,8 @@ import {
 } from '@angular/core';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -36,32 +37,29 @@ import {TuiStuck} from './stuck.directive';
 const EMPTY_COMPARATOR: TuiComparator<unknown> = () => 0;
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./table.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-table',
-    },
+    host: {class: 'tui-table'},
 })
-class TuiTableStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'table[tuiTable]',
     providers: [
         {
             provide: WA_INTERSECTION_ROOT_MARGIN,
             useValue: '10000px 10000px 10000px 0px',
         },
+        provideStyles(Styles),
         tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTableDirective),
         tuiButtonOptionsProvider({size: 's'}),
         tuiBadgeOptionsProvider({size: 'm', appearance: 'neutral'}),
         tuiChipOptionsProvider({size: 'xxs', appearance: 'neutral'}),
         tuiProgressOptionsProvider({size: 's', color: 'var(--tui-text-action)'}),
     ],
-    hostDirectives: [TuiStuck],
+    hostDirectives: [TuiStuck, TuiWithStyles],
     host: {
         '[attr.data-size]': 'size()',
     },
@@ -71,8 +69,6 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
 {
     private readonly options = inject(TUI_TABLE_OPTIONS);
     private readonly cdr = inject(ChangeDetectorRef);
-
-    protected readonly nothing = tuiWithStyles(TuiTableStyles);
 
     @Input()
     public columns: ReadonlyArray<string | keyof T> = [];

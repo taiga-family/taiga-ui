@@ -4,34 +4,34 @@ import {
     Component,
     Directive,
     inject,
-    Input,
+    input,
     type OnChanges,
     PLATFORM_ID,
     ViewEncapsulation,
 } from '@angular/core';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+
+const OPTIONS = {duration: 1500, iterations: Infinity};
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./shimmer.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-shimmer-styles',
-    },
+    host: {class: 'tui-shimmer'},
 })
-class TuiShimmerStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiShimmer]',
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
     host: {
         tuiShimmer: '',
-        '[class._shimmer]': 'shimmer',
-        '[class._disabled]': 'shimmer && disabled',
-        '[attr.inert]': 'shimmer || null',
+        '[class._shimmer]': 'tuiShimmer()',
+        '[class._disabled]': 'tuiShimmer() && disabled',
+        '[attr.inert]': 'tuiShimmer() || null',
     },
 })
 export class TuiShimmer implements OnChanges {
@@ -41,10 +41,7 @@ export class TuiShimmer implements OnChanges {
 
     protected disabled = false;
 
-    protected readonly nothing = tuiWithStyles(TuiShimmerStyles);
-
-    @Input('tuiShimmer')
-    public shimmer = false;
+    public readonly tuiShimmer = input(false);
 
     public ngOnChanges(): void {
         if (!this.isBrowser) {
@@ -61,22 +58,13 @@ export class TuiShimmer implements OnChanges {
 
         this.animation?.commitStyles();
         this.animation?.cancel();
-
-        if (this.shimmer) {
-            this.animation = this.el.animate(
-                {opacity: [0.5, 0.25, 0.5, 0.5]},
-                {duration: 1500, iterations: Infinity},
-            );
-        } else {
-            this.animation = this.el.animate([{opacity: 0, offset: 0.5}, {opacity: 1}], {
-                duration: 800,
-            });
-
-            this.animation.finished
-                .then(() => {
-                    this.el.style.opacity = '';
-                })
-                .catch(() => {});
-        }
+        this.animation = this.tuiShimmer()
+            ? this.el.animate({opacity: [0.5, 0.25, 0.5, 0.5]}, OPTIONS)
+            : this.el.animate([{opacity: 0, offset: 0.5}, {opacity: 1}], 800);
+        this.animation.finished
+            .then(() => {
+                this.el.style.opacity = '';
+            })
+            .catch(() => {});
     }
 }

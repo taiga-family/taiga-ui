@@ -9,46 +9,29 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPx, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {first, merge, race, switchMap, tap} from 'rxjs';
+import {first, fromEvent, merge, race, switchMap, tap} from 'rxjs';
 
-const TO_KEYFRAMES = [
-    {
-        transform: 'scale(0)',
-        opacity: '0.12',
-    },
-    {
-        opacity: '0.12',
-    },
-];
-const FROM_KEYFRAMES = [
-    {
-        opacity: '0.12',
-    },
-    {
-        opacity: '0',
-    },
-];
+const TO = [{transform: 'scale(0)', opacity: '0.12'}, {opacity: '0.12'}];
+const FROM = [{opacity: '0.12'}, {opacity: '0'}];
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./ripple.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-ripple-styles',
-    },
+    host: {class: 'tui-ripple'},
 })
-class TuiRippleStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiRipple]',
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
     host: {
         '(pointerdown.zoneless)':
             'start($event.clientX, $event.clientY, $event.target, $event.currentTarget)',
@@ -57,11 +40,7 @@ class TuiRippleStyles {}
 export class TuiRipple {
     private readonly doc = inject(DOCUMENT);
     private readonly destroyRef = inject(DestroyRef);
-    private readonly animationOptions = {
-        duration: tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)),
-    };
-
-    protected readonly nothing = tuiWithStyles(TuiRippleStyles);
+    private readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
 
     @Input()
     public tuiRipple = '';
@@ -75,30 +54,22 @@ export class TuiRipple {
 
         const ripple = this.createRipple(x, y, element.getBoundingClientRect());
         const touchEnd$ = merge(
-            tuiTypedFromEvent(element, 'pointerup'),
-            tuiTypedFromEvent(element, 'pointercancel'),
-            tuiTypedFromEvent(element, 'pointermove'),
+            fromEvent(element, 'pointerup'),
+            fromEvent(element, 'pointercancel'),
+            fromEvent(element, 'pointermove'),
         );
 
         element.appendChild(ripple);
 
-        const animationEndOn$ = tuiTypedFromEvent(
-            ripple.animate(TO_KEYFRAMES, this.animationOptions),
-            'finish',
-        );
+        const animationEnd$ = fromEvent(ripple.animate(TO, this.duration), 'finish');
 
         race(
-            touchEnd$.pipe(switchMap(() => animationEndOn$)),
-            animationEndOn$.pipe(switchMap(() => touchEnd$)),
+            touchEnd$.pipe(switchMap(() => animationEnd$)),
+            animationEnd$.pipe(switchMap(() => touchEnd$)),
         )
             .pipe(
                 first(),
-                switchMap(() =>
-                    tuiTypedFromEvent(
-                        ripple.animate(FROM_KEYFRAMES, this.animationOptions),
-                        'finish',
-                    ),
-                ),
+                switchMap(() => fromEvent(ripple.animate(FROM, this.duration), 'finish')),
                 first(),
                 tap(() => element.removeChild(ripple)),
                 takeUntilDestroyed(this.destroyRef),

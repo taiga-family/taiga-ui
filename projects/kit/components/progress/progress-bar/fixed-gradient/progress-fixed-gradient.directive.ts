@@ -4,31 +4,26 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./progress-fixed-gradient.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-fixed-gradient',
-    },
+    host: {class: 'tui-fixed-gradient'},
 })
-class TuiProgressFixedGradientStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'progress[tuiProgressBar][tuiProgressFixedGradient]',
-    host: {
-        '[style.--tui-progress-percent.%]': 'progressPercent',
-    },
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
+    host: {'[style.--tui-progress-percent.%]': 'progressPercent'},
 })
 export class TuiProgressFixedGradientDirective {
     private readonly nativeProgress = tuiInjectElement<HTMLProgressElement>();
-    protected readonly nothing = tuiWithStyles(TuiProgressFixedGradientStyles);
 
     protected get progressPercent(): number {
         const {value} = this.nativeProgress;

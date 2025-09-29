@@ -4,13 +4,13 @@ import {
     Directive,
     inject,
     type InjectionToken,
-    Input,
+    input,
     type Provider,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
 import {
@@ -30,21 +30,18 @@ const HEADER_SIZE = {
 } as const;
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./form.styles.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-form',
-    },
+    host: {class: 'tui-form'},
 })
-class TuiFormStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiForm]',
     providers: [
+        provideStyles(Styles),
         projectSize(TUI_BUTTON_OPTIONS, (size) => size),
         projectSize(TUI_NOTIFICATION_OPTIONS, (size) => size),
         projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size]),
@@ -54,11 +51,12 @@ class TuiFormStyles {}
             provide: TUI_TEXTFIELD_OPTIONS,
             useFactory: () => ({
                 ...inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true}),
-                size: signal(inject(TuiForm).size),
+                size: signal(inject(TuiForm).tuiForm() || inject(TUI_FORM_OPTIONS).size),
             }),
         },
     ],
     hostDirectives: [
+        TuiWithStyles,
         {
             directive: TuiTextfieldOptionsDirective,
             inputs: ['tuiTextfieldAppearance', 'tuiTextfieldCleaner'],
@@ -66,20 +64,13 @@ class TuiFormStyles {}
     ],
     host: {
         tuiForm: '',
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'tuiForm() || options.size',
     },
 })
 export class TuiForm {
     protected readonly options = inject(TUI_FORM_OPTIONS);
 
-    protected readonly nothing = tuiWithStyles(TuiFormStyles);
-
-    public size: TuiFormOptions['size'] = this.options.size;
-
-    @Input()
-    public set tuiForm(size: TuiFormOptions['size'] | '') {
-        this.size = size || this.options.size;
-    }
+    public readonly tuiForm = input<TuiFormOptions['size'] | ''>(this.options.size);
 }
 
 function projectSize(
@@ -90,7 +81,7 @@ function projectSize(
         provide,
         useFactory: () => ({
             ...inject(provide, {skipSelf: true}),
-            size: project(inject(TuiForm).size),
+            size: project(inject(TuiForm).tuiForm() || inject(TUI_FORM_OPTIONS).size),
         }),
     };
 }

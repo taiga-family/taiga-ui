@@ -2,33 +2,29 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 
 @Component({
-    standalone: true,
     template: '',
     styles: ['@import "@taiga-ui/kit/styles/components/status.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-status',
-    },
+    host: {class: 'tui-status'},
 })
-class TuiStatusStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiStatus]',
-    inputs: ['tuiStatus'],
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
     host: {
         tuiStatus: '',
-        '[style.--t-status]': 'tuiStatus || null',
+        '[style.--t-status]': 'tuiStatus() || null',
     },
 })
 export class TuiStatus {
-    protected readonly nothing = tuiWithStyles(TuiStatusStyles);
-
-    public tuiStatus = '';
+    public readonly tuiStatus = input('');
 }

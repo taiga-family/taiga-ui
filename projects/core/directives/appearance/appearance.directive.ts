@@ -8,27 +8,25 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
-import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
 import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
 
 @Component({
-    standalone: true,
     template: '',
     styles: ['@import "@taiga-ui/core/styles/components/appearance.less";'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-appearance',
-    },
+    host: {class: 'tui-appearance'},
 })
-class TuiAppearanceStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiAppearance]',
-    hostDirectives: [TuiTransitioned],
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiTransitioned, TuiWithStyles],
     host: {
         tuiAppearance: '',
         '[attr.data-appearance]': 'tuiAppearance()',
@@ -38,7 +36,6 @@ class TuiAppearanceStyles {}
     },
 })
 export class TuiAppearance {
-    protected readonly nothing = tuiWithStyles(TuiAppearanceStyles);
     protected readonly modes = computed((mode = this.tuiAppearanceMode()) =>
         !mode || tuiIsString(mode) ? mode : mode.join(' '),
     );

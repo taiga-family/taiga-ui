@@ -5,12 +5,12 @@ import {
     effect,
     inject,
     InjectionToken,
-    Input,
-    signal,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TUI_ICON_END} from '@taiga-ui/core/tokens';
 
@@ -19,38 +19,30 @@ export const TUI_CHEVRON = new InjectionToken(ngDevMode ? 'TUI_CHEVRON' : '', {
 });
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./chevron.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-chevron'},
 })
-class TuiChevronStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiChevron]',
-    providers: [tuiProvide(TUI_ICON_END, TUI_CHEVRON)],
+    providers: [provideStyles(Styles), tuiProvide(TUI_ICON_END, TUI_CHEVRON)],
+    hostDirectives: [TuiWithStyles],
     host: {tuiChevron: ''},
 })
 export class TuiChevron {
     private readonly el = tuiInjectElement();
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
 
-    protected readonly nothing = tuiWithStyles(TuiChevronStyles);
     protected readonly toggle = effect(() =>
         this.el.classList.toggle(
             '_chevron-rotated',
-            this.chevron() || (this.chevron() === '' && !!this.dropdown?.ref()),
+            this.tuiChevron() || (this.tuiChevron() === '' && !!this.dropdown?.ref()),
         ),
     );
 
-    // TODO: refactor to signal inputs after Angular update
-    public readonly chevron = signal<boolean | ''>('');
-
-    @Input()
-    public set tuiChevron(chevron: boolean | '') {
-        this.chevron.set(chevron);
-    }
+    public readonly tuiChevron = input<boolean | ''>('');
 }

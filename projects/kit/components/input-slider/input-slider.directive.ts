@@ -13,10 +13,10 @@ import {
     TuiValueTransformer,
 } from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumberDirective,
@@ -26,10 +26,24 @@ import {
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
 import {filter, fromEvent} from 'rxjs';
 
+@Component({
+    template: '',
+    styles: [
+        // TODO: tui-textfield:has([tuiInputSlider]) .t-clear
+        'tui-textfield [tuiInputSlider] ~ .t-content .t-clear {display: none !important}',
+        // TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
+        'tui-textfield [tuiInputSlider] ~ [tuiSlider]:disabled {display: none}',
+    ],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {class: 'tui-input-slider'},
+})
+class Styles {}
+
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputSlider]',
     providers: [
+        provideStyles(Styles),
         tuiInputNumberOptionsProvider({
             valueTransformer: new TuiNonNullableValueTransformer(),
         }),
@@ -40,6 +54,7 @@ import {filter, fromEvent} from 'rxjs';
             inputs: ['min', 'max', 'prefix', 'postfix', 'invalid', 'readOnly'],
         },
         TuiWithQuantumValueTransformer,
+        TuiWithStyles,
     ],
     host: {
         '(blur)': 'inputNumber.setValue(value() ?? null)',
@@ -66,8 +81,6 @@ export class TuiInputSliderDirective {
     protected readonly value = computed(() =>
         this.controlTransformer.toControlValue(this.inputNumber.value()),
     );
-
-    protected readonly nothing = tuiWithStyles(TuiInputSliderStyles);
 
     protected readonly textfieldToSliderSync = effect(() => {
         const slider = this.slider();
@@ -136,20 +149,3 @@ export class TuiInputSliderDirective {
         }
     }
 }
-
-@Component({
-    standalone: true,
-    template: '',
-    styles: [
-        // TODO: tui-textfield:has([tuiInputSlider]) .t-clear
-        'tui-textfield [tuiInputSlider] ~ .t-content .t-clear {display: none !important}',
-        // TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
-        'tui-textfield [tuiInputSlider] ~ [tuiSlider]:disabled {display: none}',
-    ],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-input-slider',
-    },
-})
-class TuiInputSliderStyles {}

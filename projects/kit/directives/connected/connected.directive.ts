@@ -4,27 +4,21 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./connected.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-connected-styles',
-    },
+    host: {class: 'tui-connected'},
 })
-class TuiConnectedStyles {}
+class Styles {}
 
 @Directive({
     standalone: true,
     selector: '[tuiConnected]',
-    host: {
-        tuiConnected: '',
-    },
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
 })
-export class TuiConnected {
-    protected readonly nothing = tuiWithStyles(TuiConnectedStyles);
-}
+export class TuiConnected {}

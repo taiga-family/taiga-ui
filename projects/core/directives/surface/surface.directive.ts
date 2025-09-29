@@ -2,41 +2,36 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./surface.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-surface-styles',
-    },
+    host: {class: 'tui-surface'},
 })
-class TuiSurfaceStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiSurface]',
+    providers: [provideStyles(Styles)],
     hostDirectives: [
         {
             directive: TuiAppearance,
             inputs: ['tuiAppearance: tuiSurface'],
         },
+        TuiWithStyles,
     ],
     host: {
         tuiSurface: '',
-        '[attr.data-surface]': 'tuiSurface',
+        '[attr.data-surface]': 'tuiSurface()',
     },
 })
 export class TuiSurface {
-    protected readonly nothing = tuiWithStyles(TuiSurfaceStyles);
-
-    @Input()
-    public tuiSurface = '';
+    public readonly tuiSurface = input('');
 }

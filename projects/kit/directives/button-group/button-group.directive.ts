@@ -4,24 +4,20 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./button-group.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-button-group-styles',
-    },
+    host: {class: 'tui-button-group'},
 })
-class TuiButtonGroupStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiButtonGroup]',
+    providers: [provideStyles(Styles)],
+    hostDirectives: [TuiWithStyles],
 })
-export class TuiButtonGroup {
-    protected readonly nothing = tuiWithStyles(TuiButtonGroupStyles);
-}
+export class TuiButtonGroup {}
