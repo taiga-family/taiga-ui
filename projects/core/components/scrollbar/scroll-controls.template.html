@@ -1,6 +1,6 @@
 @if (nativeScrollbar) {
 } @else {
-    @if (refresh$ | async; as bars) {
+    @if (refresh(); as bars) {
         @if (bars[0]) {
             <div
                 tuiAnimated
