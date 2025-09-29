@@ -17,6 +17,8 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core/components/textfield';
+import {TUI_CHECKBOX_OPTIONS} from '@taiga-ui/kit/components/checkbox';
+import {TUI_RADIO_OPTIONS} from '@taiga-ui/kit/components/radio';
 import {TUI_SEGMENTED_OPTIONS} from '@taiga-ui/kit/components/segmented';
 import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
 import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
@@ -49,6 +51,8 @@ class TuiFormStyles {}
         projectSize(TUI_NOTIFICATION_OPTIONS, (size) => size),
         projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size]),
         projectSize(TUI_SWITCH_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
+        projectSize(TUI_RADIO_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
+        projectSize(TUI_CHECKBOX_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         projectSize(TUI_SEGMENTED_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         {
             provide: TUI_TEXTFIELD_OPTIONS,
