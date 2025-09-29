@@ -2,6 +2,7 @@ import {AsyncPipe, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {type TuiDialogContext} from '@taiga-ui/core/components/dialog';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
@@ -41,3 +42,5 @@ export class TuiConfirm {
 }
 
 export const TUI_CONFIRM = new PolymorpheusComponent(TuiConfirm);
+export const TUI_CONFIRM_DIALOG =
+    tuiCreateToken<PolymorpheusContent<TuiDialogContext<boolean, unknown>>>(TUI_CONFIRM);

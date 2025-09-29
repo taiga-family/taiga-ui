@@ -7,6 +7,7 @@ import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
+import {TuiActiveZoneAdapter} from './active-zone-adapter.directive';
 import {TUI_DIALOGS} from './dialog.tokens';
 
 @Component({
@@ -15,6 +16,7 @@ import {TUI_DIALOGS} from './dialog.tokens';
     imports: [
         NgForOf,
         PolymorpheusOutlet,
+        TuiActiveZoneAdapter,
         TuiAnimatedParent,
         TuiFocusTrap,
         TuiScrollControls,
