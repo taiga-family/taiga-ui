@@ -6304,12 +6304,12 @@ export class Example {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `number | null` | The lowest value in the range of permitted values |
-| [max] | `number | null` | The greatest value in the range of permitted values |
+| [min] | `number | null` | value in the range of permitted values |
+| [max] | `number | null` | value in the range of permitted values |
 | [step] | `number` | Step to increase/decrease value with keyboard and buttons on the side |
 | [prefix] | `string` | number |
 | [postfix] | `string` | number |
-| [quantum] | `number` | Minimum indivisible value |
+| [quantum] | `number` |  |
 
 ### TypeScript
 
@@ -6354,7 +6354,7 @@ export default class PageComponent {
     protected step = 0;
     protected prefix = '';
     protected postfix = '';
-    protected quantum = 0.01;
+    protected quantum = 0;
 }
 ```
 
@@ -6990,7 +6990,7 @@ export class Example {
 | [max] | `number` | value in the range of permitted values |
 | [prefix] | `string` | number |
 | [postfix] | `string` | number |
-| [quantum] | `number` | Minimum indivisible value |
+| [quantum] | `number` |  |
 | [step] | `number` |  |
 | [segments] | `number[] | number` | for no ticks) |
 | [keySteps] | `TuiKeySteps | null` | Anchor points of non-uniform format between value and position |
@@ -7037,7 +7037,7 @@ export default class PageComponent {
     protected max = signal(100);
     protected prefix = '';
     protected postfix = '';
-    protected quantum = 0.01;
+    protected quantum = 0;
     protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
