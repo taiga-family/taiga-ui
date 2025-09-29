@@ -86,7 +86,6 @@ export const TUI_USED_ICONS = [
     '@tui.view',
     '@tui.download',
     '@tui.pen',
-    '@tui.eye-off',
     '@tui.video',
     '@tui.arrow-up',
     '@tui.frown',
