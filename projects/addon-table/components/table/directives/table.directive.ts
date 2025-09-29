@@ -146,7 +146,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
         sorter: TuiComparator<T> | null,
         direction: TuiSortDirection = TuiSortDirection.Asc,
     ): void {
-        this.sorter = sorter || EMPTY_COMPARATOR;
+        this.sorter = sorter || EMPTY_COMPARATOR.bind({});
         this.direction = direction;
         this.sorterChange.emit(sorter);
         this.directionChange.emit(this.direction);
