@@ -62,13 +62,16 @@ export class TuiAlgoliaSearch {
 }
 
 // https://docsearch.algolia.com/docs/api/#transformsearchclient
-function debounce<T extends (...args: any[]) => any>(
+function debounce<T extends (...args: unknown[]) => ReturnType<T>>(
     func: T,
     wait = 100,
 ): (...args: Parameters<T>) => Promise<ReturnType<T>> {
     let lastTimeout: ReturnType<typeof setTimeout> | null = null;
 
-    return async function (this: any, ...args: Parameters<T>): Promise<ReturnType<T>> {
+    return async function (
+        this: unknown,
+        ...args: Parameters<T>
+    ): Promise<ReturnType<T>> {
         // eslint-disable-next-line @typescript-eslint/no-this-alias
         const that = this;
 
