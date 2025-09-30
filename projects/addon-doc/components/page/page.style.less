@@ -21,9 +21,14 @@
 
     @media @tui-mobile {
         font: var(--tui-font-heading-4);
+        margin: 0;
+    }
+}
+
+.t-header:not(:empty) {
+    @media @tui-mobile {
         min-block-size: 4.5rem;
         padding: 0 1.25rem;
-        margin: 0;
     }
 }
 
