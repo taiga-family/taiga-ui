@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.56.0](https://github.com/taiga-family/taiga-ui/compare/v4.55.0...v4.56.0) (2025-09-30)
+
+### 🚀 Features
+
+- **cdk:** ensure `TUI_MOBILE_REGEXP` ([#12040](https://github.com/taiga-family/taiga-ui/issues/12040))
+  ([b4349e1](https://github.com/taiga-family/taiga-ui/commit/b4349e15bf89a45aa1ac681db73b6cb3ef5478c4))
+- **kit:** `ConfirmService` allow component customization
+  ([#12051](https://github.com/taiga-family/taiga-ui/issues/12051))
+  ([492bb8c](https://github.com/taiga-family/taiga-ui/commit/492bb8cea18962ef778019badf34fd48d9882541))
+- **kit:** `InputSlider` has new paddings for slider track
+  ([#12074](https://github.com/taiga-family/taiga-ui/issues/12074))
+  ([f497ad6](https://github.com/taiga-family/taiga-ui/commit/f497ad6df40f5b56597942673e5c033175c9b7ab))
+- **kit:** `InputSlider` hides slider for non-interactive state
+  ([#12072](https://github.com/taiga-family/taiga-ui/issues/12072))
+  ([0f9aab9](https://github.com/taiga-family/taiga-ui/commit/0f9aab9431dff13df378a544a5fb41227f102565))
+- **kit:** `Rating` add `filled` to icon context ([#12035](https://github.com/taiga-family/taiga-ui/issues/12035))
+  ([7dc0d93](https://github.com/taiga-family/taiga-ui/commit/7dc0d93085122c0dd733a31909288f60ed600711))
+- **kit:** `Rating` add background color customization ([#12034](https://github.com/taiga-family/taiga-ui/issues/12034))
+  ([9ced233](https://github.com/taiga-family/taiga-ui/commit/9ced2336798d3a527873836abd7f5a5bdd7dd50c))
+- **kit:** `Toast` add service ([#11959](https://github.com/taiga-family/taiga-ui/issues/11959))
+  ([d8915e6](https://github.com/taiga-family/taiga-ui/commit/d8915e6aacc8f467fd97d7132aaf792e4fe29b68))
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** ignore min-height if header title is not provided
+  ([#12095](https://github.com/taiga-family/taiga-ui/issues/12095))
+  ([161fa01](https://github.com/taiga-family/taiga-ui/commit/161fa01150777ccedcd7f8b09d99639dc7d85fb0))
+- **addon-table:** ensure default sorter always has a unique reference
+  ([#12009](https://github.com/taiga-family/taiga-ui/issues/12009))
+  ([82a743c](https://github.com/taiga-family/taiga-ui/commit/82a743c72bcc9e5d15ecf926e59cd948a698d286))
+- **core:** ensure box-shadow works in Safari 26 for `tuiAppearance`
+  ([#12082](https://github.com/taiga-family/taiga-ui/issues/12082))
+  ([ccc740c](https://github.com/taiga-family/taiga-ui/commit/ccc740cc4ed92647f3b7f1e8fcc6113780af1d49))
+- **kit:** `Checkbox`/`Radio`/`Switch` increase style specificity for disabled state
+  ([#12050](https://github.com/taiga-family/taiga-ui/issues/12050))
+  ([93a99e3](https://github.com/taiga-family/taiga-ui/commit/93a99e39866ecacbd111f360a574379432dc1227))
+- **kit:** `MultiSelectGroup` fix empty view ([#12087](https://github.com/taiga-family/taiga-ui/issues/12087))
+  ([446c2fc](https://github.com/taiga-family/taiga-ui/commit/446c2fc303770494b72332d1446e6a554ecfbcfe))
+- **kit:** `TuiQuantumValueTransformer` has invalid default value
+  ([#12060](https://github.com/taiga-family/taiga-ui/issues/12060))
+  ([a718822](https://github.com/taiga-family/taiga-ui/commit/a718822e3c387e2635baec6f88bca7b2a4244167))
+
 ## [4.55.0](https://github.com/taiga-family/taiga-ui/compare/v4.54.0...v4.55.0) (2025-09-22)
 
 ### 🐞 Bug Fixes
