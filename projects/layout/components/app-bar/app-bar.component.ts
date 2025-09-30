@@ -45,8 +45,8 @@ export class TuiAppBarComponent implements AfterViewInit {
             () =>
                 2 *
                 Math.max(
-                    this.side().at(0)?.nativeElement.clientWidth ?? 0,
-                    this.side().at(-1)?.nativeElement.clientWidth ?? 0,
+                    this.side()[0]?.nativeElement.clientWidth ?? 0,
+                    this.side()[this.side().length - 1]?.nativeElement.clientWidth ?? 0,
                 ),
         ),
     );

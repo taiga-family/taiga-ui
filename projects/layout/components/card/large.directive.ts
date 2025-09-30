@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     Directive,
-    input,
+    Input,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -24,13 +24,12 @@ class TuiCardLargeStyles {}
     selector: '[tuiCardLarge]',
     host: {
         tuiCardLarge: '',
-        '[attr.data-space]': 'space() || "normal"',
+        '[attr.data-space]': 'space || "normal"',
     },
 })
 export class TuiCardLarge {
     protected readonly nothing = tuiWithStyles(TuiCardLargeStyles);
 
-    public readonly space = input<'' | 'compact' | 'normal'>('normal', {
-        alias: 'tuiCardLarge',
-    });
+    @Input('tuiCardLarge')
+    public space: '' | 'compact' | 'normal' = 'normal';
 }

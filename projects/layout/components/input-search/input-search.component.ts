@@ -63,10 +63,10 @@ export class TuiInputSearch implements OnChanges {
 
     public readonly tuiInputSearch = input<PolymorpheusContent>();
 
-    public tuiInputSearchOpen = model(false);
+    public searchOpen = model(false, {alias: 'tuiInputSearchOpen'});
 
     public ngOnChanges(): void {
-        if (this.tuiInputSearchOpen()) {
+        if (this.searchOpen()) {
             this.open();
         } else {
             this.close();
@@ -85,14 +85,14 @@ export class TuiInputSearch implements OnChanges {
         this.ref.rootNodes[0]?.insertAdjacentElement('afterbegin', this.textfield.el);
         this.el.focus({preventScroll: true});
         this.el.placeholder = this.i18n()?.placeholder || this.el.placeholder;
-        this.tuiInputSearchOpen.set(true);
+        this.searchOpen.set(true);
     }
 
     public close(): void {
         this.el.placeholder = this.placeholder || this.el.placeholder;
         this.parent?.insertBefore(this.textfield.el, this.neighbor);
         this.ref?.destroy();
-        this.tuiInputSearchOpen.set(false);
+        this.searchOpen.set(false);
     }
 
     protected onArrow(): void {
