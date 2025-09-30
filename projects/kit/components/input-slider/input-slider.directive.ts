@@ -26,8 +26,21 @@ import {
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
 import {filter, fromEvent} from 'rxjs';
 
+@Component({
+    template: '',
+    styles: [
+        // TODO: tui-textfield:has([tuiInputSlider]) .t-clear
+        'tui-textfield [tuiInputSlider] ~ .t-content .t-clear {display: none !important}',
+        // TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
+        'tui-textfield [tuiInputSlider] ~ [tuiSlider]:disabled {display: none}',
+    ],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {class: 'tui-input-slider'},
+})
+class Styles {}
+
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputSlider]',
     providers: [
         tuiInputNumberOptionsProvider({
@@ -62,12 +75,11 @@ export class TuiInputSliderDirective {
         () => this.slider()?.keySteps?.transformer() ?? TUI_IDENTITY_VALUE_TRANSFORMER,
     );
 
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
     protected readonly value = computed(() =>
         this.controlTransformer.toControlValue(this.inputNumber.value()),
     );
-
-    protected readonly nothing = tuiWithStyles(TuiInputSliderStyles);
 
     protected readonly textfieldToSliderSync = effect(() => {
         const slider = this.slider();
@@ -136,20 +148,3 @@ export class TuiInputSliderDirective {
         }
     }
 }
-
-@Component({
-    standalone: true,
-    template: '',
-    styles: [
-        // TODO: tui-textfield:has([tuiInputSlider]) .t-clear
-        'tui-textfield [tuiInputSlider] ~ .t-content .t-clear {display: none !important}',
-        // TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
-        'tui-textfield [tuiInputSlider] ~ [tuiSlider]:disabled {display: none}',
-    ],
-    encapsulation: ViewEncapsulation.None,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-input-slider',
-    },
-})
-class TuiInputSliderStyles {}

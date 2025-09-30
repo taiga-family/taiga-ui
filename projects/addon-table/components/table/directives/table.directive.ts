@@ -36,19 +36,15 @@ import {TuiStuck} from './stuck.directive';
 const EMPTY_COMPARATOR: TuiComparator<unknown> = () => 0;
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./table.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-table',
-    },
+    host: {class: 'tui-table'},
 })
-class TuiTableStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'table[tuiTable]',
     providers: [
         {
@@ -72,7 +68,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     private readonly options = inject(TUI_TABLE_OPTIONS);
     private readonly cdr = inject(ChangeDetectorRef);
 
-    protected readonly nothing = tuiWithStyles(TuiTableStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 
     @Input()
     public columns: ReadonlyArray<string | keyof T> = [];
