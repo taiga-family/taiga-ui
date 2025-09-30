@@ -40,9 +40,9 @@ export class TuiChevron {
     protected readonly toggle = effect(() =>
         this.el.classList.toggle(
             '_chevron-rotated',
-            this.tuiChevron() || (this.tuiChevron() === '' && !!this.dropdown?.ref()),
+            this.rotated() || (this.rotated() === '' && !!this.dropdown?.ref()),
         ),
     );
 
-    public readonly tuiChevron = input<boolean | ''>('');
+    public readonly rotated = input<boolean | ''>('', {alias: 'tuiChevron'});
 }

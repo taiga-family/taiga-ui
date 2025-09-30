@@ -41,7 +41,7 @@ export class TuiAccordionDirective implements OnChanges {
     @Output()
     public readonly tuiAccordionChange = new EventEmitter<boolean>();
 
-    public readonly open = tuiDirectiveBinding(TuiChevron, 'tuiChevron', signal(false));
+    public readonly open = tuiDirectiveBinding(TuiChevron, 'rotated', signal(false));
 
     public ngOnChanges(): void {
         this.open.set(!!this.tuiAccordion);

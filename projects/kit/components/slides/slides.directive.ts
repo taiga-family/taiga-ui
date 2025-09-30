@@ -31,9 +31,9 @@ class Styles {}
 })
 export class TuiSlides {
     protected readonly el = tuiInjectElement();
-    protected readonly sign = computed(() => Math.sign(this.tuiSlides() || 0));
+    protected readonly sign = computed(() => Math.sign(this.direction() || 0));
 
-    public readonly tuiSlides = input<number | ''>('');
+    public readonly direction = input<number | ''>('', {alias: 'tuiSlides'});
 
     protected onAnimation(target: Element): void {
         Array.from(this.el.children)

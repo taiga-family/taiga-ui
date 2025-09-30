@@ -44,14 +44,16 @@ class Styles {}
         provideStyles(Styles),
         projectSize(TUI_BUTTON_OPTIONS, (size) => size),
         projectSize(TUI_NOTIFICATION_OPTIONS, (size) => size),
-        projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size]),
+        projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size || 'l']),
         projectSize(TUI_SWITCH_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         projectSize(TUI_SEGMENTED_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         {
             provide: TUI_TEXTFIELD_OPTIONS,
             useFactory: () => ({
                 ...inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true}),
-                size: signal(inject(TuiForm).tuiForm() || inject(TUI_FORM_OPTIONS).size),
+                size: signal(
+                    inject(TuiForm).size() || inject(TUI_FORM_OPTIONS).size || 'l',
+                ),
             }),
         },
     ],
@@ -64,13 +66,13 @@ class Styles {}
     ],
     host: {
         tuiForm: '',
-        '[attr.data-size]': 'tuiForm() || options.size',
+        '[attr.data-size]': 'size() || options.size || "l"',
     },
 })
 export class TuiForm {
     protected readonly options = inject(TUI_FORM_OPTIONS);
 
-    public readonly tuiForm = input<TuiFormOptions['size'] | ''>(this.options.size);
+    public readonly size = input(this.options.size, {alias: 'tuiForm'});
 }
 
 function projectSize(
@@ -81,7 +83,7 @@ function projectSize(
         provide,
         useFactory: () => ({
             ...inject(provide, {skipSelf: true}),
-            size: project(inject(TuiForm).tuiForm() || inject(TUI_FORM_OPTIONS).size),
+            size: project(inject(TuiForm).size() || inject(TUI_FORM_OPTIONS).size || 'l'),
         }),
     };
 }

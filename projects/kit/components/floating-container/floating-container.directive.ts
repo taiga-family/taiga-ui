@@ -22,9 +22,9 @@ class Styles {}
     hostDirectives: [TuiWithStyles],
     host: {
         tuiFloatingContainer: '',
-        '[style.--t-background]': 'tuiFloatingContainer()',
+        '[style.--t-background]': 'background()',
     },
 })
 export class TuiFloatingContainer {
-    public readonly tuiFloatingContainer = input('');
+    public readonly background = input('', {alias: 'tuiFloatingContainer'});
 }

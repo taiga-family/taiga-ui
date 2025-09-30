@@ -43,10 +43,10 @@ import {TUI_LIKE_OPTIONS} from './like.options';
         tuiLike: '',
         '[attr.data-size]': 'size()',
         '[attr.data-mode]': '""',
-        '[style.--t-icon-color]': 'tuiLike()',
+        '[style.--t-icon-color]': 'color()',
     },
 })
 export class TuiLike {
-    public readonly tuiLike = input('');
+    public readonly color = input('', {alias: 'tuiLike'});
     public readonly size = input(inject(TUI_LIKE_OPTIONS).size);
 }

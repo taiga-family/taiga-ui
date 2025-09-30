@@ -22,9 +22,11 @@ class Styles {}
     hostDirectives: [TuiWithStyles],
     host: {
         tuiCardLarge: '',
-        '[attr.data-space]': 'tuiCardLarge() || "normal"',
+        '[attr.data-space]': 'space() || "normal"',
     },
 })
 export class TuiCardLarge {
-    public readonly tuiCardLarge = input<'' | 'compact' | 'normal'>('normal');
+    public readonly space = input<'' | 'compact' | 'normal'>('normal', {
+        alias: 'tuiCardLarge',
+    });
 }

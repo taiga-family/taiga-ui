@@ -24,10 +24,11 @@ class Styles {}
     selector: '[tuiComment]',
     providers: [provideStyles(Styles)],
     hostDirectives: [TuiWithStyles],
-    host: {'[attr.data-direction]': 'tuiComment()'},
+    host: {'[attr.data-direction]': 'direction()'},
 })
 export class TuiComment {
-    public readonly tuiComment = input<
-        TuiHorizontalDirection | TuiVerticalDirection | ''
-    >('top');
+    public readonly direction = input<TuiHorizontalDirection | TuiVerticalDirection | ''>(
+        'top',
+        {alias: 'tuiComment'},
+    );
 }

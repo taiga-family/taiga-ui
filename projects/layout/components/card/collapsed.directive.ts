@@ -22,10 +22,10 @@ class Styles {}
     hostDirectives: [TuiWithStyles],
     host: {
         tuiCardCollapsed: '',
-        '[style.margin-block-end.rem]': 'tuiCardCollapsed() ? 0.75 : 0',
-        '[style.clip-path]': 'tuiCardCollapsed() ? "inset(-0.75rem)" : "inset(0)"',
+        '[style.margin-block-end.rem]': 'collapsed() ? 0.75 : 0',
+        '[style.clip-path]': 'collapsed() ? "inset(-0.75rem)" : "inset(0)"',
     },
 })
 export class TuiCardCollapsed {
-    public readonly tuiCardCollapsed = input(false);
+    public readonly collapsed = input(false, {alias: 'tuiCardCollapsed'});
 }

@@ -17,11 +17,11 @@ import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles
 class Styles {}
 
 @Directive({
-    selector: 'tui-pin,[tuiPin]',
+    selector: '[tuiPin]',
     providers: [provideStyles(Styles)],
     hostDirectives: [TuiWithStyles],
     host: {'[class._open]': 'open()'},
 })
 export class TuiPin {
-    public readonly open = input(false);
+    public readonly open = input<boolean | ''>('', {alias: 'tuiPin'});
 }
