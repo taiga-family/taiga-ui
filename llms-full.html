@@ -5356,6 +5356,7 @@ export default class PageComponent {
         &#039;Direction&#039;,
         &#039;Mobile&#039;,
         &#039;Table&#039;,
+        &#039;Virtual scroll&#039;,
     ];
 }
 ```
@@ -6375,12 +6376,12 @@ export class Example {
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [min] | `number | null` | The lowest value in the range of permitted values |
-| [max] | `number | null` | The greatest value in the range of permitted values |
+| [min] | `number | null` | value in the range of permitted values |
+| [max] | `number | null` | value in the range of permitted values |
 | [step] | `number` | Step to increase/decrease value with keyboard and buttons on the side |
 | [prefix] | `string` | number |
 | [postfix] | `string` | number |
-| [quantum] | `number` | Minimum indivisible value |
+| [quantum] | `number` |  |
 
 ### TypeScript
 
@@ -6427,7 +6428,7 @@ export default class PageComponent {
     protected step = 0;
     protected prefix = &#039;&#039;;
     protected postfix = &#039;&#039;;
-    protected quantum = 0.01;
+    protected quantum = 0;
 }
 ```
 
@@ -7076,7 +7077,7 @@ export class Example {
 | [max] | `number` | value in the range of permitted values |
 | [prefix] | `string` | number |
 | [postfix] | `string` | number |
-| [quantum] | `number` | Minimum indivisible value |
+| [quantum] | `number` |  |
 | [step] | `number` |  |
 | [segments] | `number[] | number` | for no ticks) |
 | [keySteps] | `TuiKeySteps | null` | Anchor points of non-uniform format between value and position |
@@ -7124,7 +7125,7 @@ export default class PageComponent {
     protected max = signal(100);
     protected prefix = &#039;&#039;;
     protected postfix = &#039;&#039;;
-    protected quantum = 0.01;
+    protected quantum = 0;
     protected segments: number[] | number = 1;
     protected step = 1;
     protected keySteps: TuiKeySteps | null = null;
@@ -11528,6 +11529,7 @@ export default class Page {
         &#039;Footer&#039;,
         &#039;Resize a large table&#039;,
         &#039;Expandable&#039;,
+        &#039;Manual sorting&#039;,
     ];
 }
 ```
@@ -12308,57 +12310,66 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-&lt;div tuiToast&gt;Notification&lt;/div&gt;
+&lt;!-- Inline --&gt;
+&lt;div tuiToast&gt;
+  Notification
+  &lt;button
+    tuiButton
+    type=&quot;button&quot;
+  &gt;
+    Action
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Portal --&gt;
+&lt;ng-template [(tuiToast)]=&quot;open&quot;&gt;
+  &lt;button tuiToast&gt;Interactive toast&lt;/button&gt;
+&lt;/ng-template&gt;
 ```
 
 ### Example
 
 ```html
-&lt;a tuiToast [iconEnd]=&quot;icons.iconEnd&quot; [iconStart]=&quot;icons.iconStart&quot; &gt; {{ content }} &lt;/a&gt;
-&lt;br /&gt;
-&lt;button tuiToast type=&quot;button&quot; [iconEnd]=&quot;icons.iconEnd&quot; &gt;
-&lt;tui-icon appearance=&quot;accent&quot; icon=&quot;@tui.box&quot; size=&quot;l&quot; tuiBadge /&gt; {{ content }} &lt;/button&gt;
-&lt;br /&gt;
-&lt;div tuiToast [iconEnd]=&quot;icons.iconEnd&quot; &gt;
-&lt;tui-avatar [src]=&quot;&#039;https://avatars.githubusercontent.com/u/11832552&#039; | tuiFallbackSrc: &#039;@tui.user&#039; | async&quot; /&gt; {{ content }} &lt;button appearance=&quot;neutral&quot; size=&quot;s&quot; tuiButton type=&quot;button&quot; &gt; Label &lt;/button&gt;
-&lt;/div&gt;
+&lt;button tuiButton type=&quot;button&quot; (click)=&quot;toast.set(true)&quot; &gt; Show toast &lt;/button&gt;
+&lt;ng-template [tuiToast]=&quot;toast()&quot; [tuiToastOptions]=&quot;{appearance: appearance, autoClose: autoClose, closable: closable}&quot; (tuiToastChange)=&quot;toast.set($event)&quot; &gt;
+&lt;div tuiToast&gt;I am a toast&lt;/div&gt;
+&lt;/ng-template&gt;
 ```
 
 ### API
 
 | Property | Type | Description |
 |----------|-----|----------|
-| &lt;ng-content /&gt; | `string` | Text of notification toast |
+| [appearance] | `string` | Appearance of a toast |
+| [autoClose] | `number` | Automatic close timeout, 0 for a permanent toast |
+| [closable] | `boolean` | Show close button on desktop and close on swipe on mobile |
+| [data] | `I` |  |
 
 ### TypeScript
 
 ```ts
-import {Component} from &#039;@angular/core&#039;;
-import {TuiDocIcons} from &#039;@demo/components/icons&#039;;
+import {Component, inject, signal} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
-import {TuiButton, TuiFallbackSrcPipe, TuiIcon} from &#039;@taiga-ui/core&#039;;
-import {TuiAvatar, TuiBadge, TuiToast} from &#039;@taiga-ui/kit&#039;;
+import {TuiButton} from &#039;@taiga-ui/core&#039;;
+import {TUI_TOAST_OPTIONS, TuiToast} from &#039;@taiga-ui/kit&#039;;
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAvatar,
-        TuiBadge,
-        TuiButton,
-        TuiDemo,
-        TuiDocIcons,
-        TuiFallbackSrcPipe,
-        TuiIcon,
-        TuiToast,
-    ],
+    imports: [TuiButton, TuiDemo, TuiToast],
     templateUrl: &#039;./index.html&#039;,
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = [&#039;Basic&#039;, &#039;Customization&#039;];
+    private readonly options = inject(TUI_TOAST_OPTIONS);
 
+    protected readonly examples = [&#039;Basic&#039;, &#039;Customization&#039;, &#039;Service&#039;];
+    protected readonly toast = signal(false);
+    protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
+    protected autoClose = this.options.autoClose;
     protected content = &#039;Notification&#039;;
+    protected appearance = &#039;&#039;;
+    protected closable = this.options.closable;
 }
 ```
 
