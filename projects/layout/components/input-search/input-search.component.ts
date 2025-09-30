@@ -3,11 +3,10 @@ import {
     Component,
     type ElementRef,
     type EmbeddedViewRef,
-    EventEmitter,
     inject,
-    Input,
+    input,
+    model,
     type OnChanges,
-    Output,
     TemplateRef,
     ViewChild,
 } from '@angular/core';
@@ -62,17 +61,12 @@ export class TuiInputSearch implements OnChanges {
 
     protected readonly icon = tuiIconStart(inject(TUI_COMMON_ICONS).search, {});
 
-    @Input()
-    public tuiInputSearch: PolymorpheusContent;
+    public readonly tuiInputSearch = input<PolymorpheusContent>();
 
-    @Input()
-    public tuiInputSearchOpen = false;
-
-    @Output()
-    public readonly tuiInputSearchOpenChange = new EventEmitter<boolean>();
+    public tuiInputSearchOpen = model(false);
 
     public ngOnChanges(): void {
-        if (this.tuiInputSearchOpen) {
+        if (this.tuiInputSearchOpen()) {
             this.open();
         } else {
             this.close();
@@ -91,16 +85,14 @@ export class TuiInputSearch implements OnChanges {
         this.ref.rootNodes[0]?.insertAdjacentElement('afterbegin', this.textfield.el);
         this.el.focus({preventScroll: true});
         this.el.placeholder = this.i18n()?.placeholder || this.el.placeholder;
-        this.tuiInputSearchOpen = true;
-        this.tuiInputSearchOpenChange.emit(true);
+        this.tuiInputSearchOpen.set(true);
     }
 
     public close(): void {
         this.el.placeholder = this.placeholder || this.el.placeholder;
         this.parent?.insertBefore(this.textfield.el, this.neighbor);
         this.ref?.destroy();
-        this.tuiInputSearchOpen = false;
-        this.tuiInputSearchOpenChange.emit(false);
+        this.tuiInputSearchOpen.set(false);
     }
 
     protected onArrow(): void {
