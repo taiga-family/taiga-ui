@@ -12,7 +12,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
     TuiDataList,
@@ -77,6 +77,9 @@ export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
 
     protected toggle(open = !this.open()): void {
         this.open.set(open && this.aside.expanded());
-        this.chevron?.chevron.set(this.open());
+
+        if (this.chevron) {
+            tuiSetSignal(this.chevron.rotated, this.open());
+        }
     }
 }
