@@ -6,11 +6,11 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TUI_CELL_OPTIONS} from './cell.options';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',

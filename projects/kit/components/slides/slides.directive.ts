@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiWithStyles} from '@taiga-ui/cdk';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',

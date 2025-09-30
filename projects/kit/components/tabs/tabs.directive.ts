@@ -13,11 +13,11 @@ import {
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 
 import {TUI_TAB_ACTIVATE} from './tab.directive';
 import {TUI_TABS_OPTIONS} from './tabs.options';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',

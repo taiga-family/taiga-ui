@@ -11,6 +11,7 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     tuiAppearanceOptionsProvider,
@@ -28,7 +29,6 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
 import {map} from 'rxjs';
 
 import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',

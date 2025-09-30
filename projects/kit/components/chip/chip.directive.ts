@@ -7,6 +7,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     tuiAppearanceOptionsProvider,
@@ -18,7 +19,6 @@ import {tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
 import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
 
 import {TUI_CHIP_OPTIONS} from './chip.options';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',

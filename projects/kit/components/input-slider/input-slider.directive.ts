@@ -16,6 +16,7 @@ import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumberDirective,
@@ -24,7 +25,6 @@ import {
 } from '@taiga-ui/kit/components/input-number';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
 import {filter, fromEvent} from 'rxjs';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',

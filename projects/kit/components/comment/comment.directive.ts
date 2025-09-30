@@ -5,11 +5,11 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     type TuiHorizontalDirection,
     type TuiVerticalDirection,
 } from '@taiga-ui/core/types';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',

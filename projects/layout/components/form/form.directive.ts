@@ -10,6 +10,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
 import {
@@ -21,7 +22,6 @@ import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
 import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 
 import {TUI_FORM_OPTIONS, type TuiFormOptions} from './form.options';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 const HEADER_SIZE = {
     s: 'body-m',

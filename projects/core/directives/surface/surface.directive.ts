@@ -5,8 +5,8 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',

@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -17,7 +18,6 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TUI_BLOCK_OPTIONS} from './block.options';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',

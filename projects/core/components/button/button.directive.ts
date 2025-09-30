@@ -6,6 +6,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -13,7 +14,6 @@ import {
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_BUTTON_OPTIONS} from './button.options';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',

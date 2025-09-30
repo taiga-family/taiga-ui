@@ -7,6 +7,7 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -14,7 +15,6 @@ import {
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_AVATAR_OPTIONS} from './avatar.options';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',

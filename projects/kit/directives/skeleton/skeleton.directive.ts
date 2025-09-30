@@ -11,9 +11,9 @@ import {
 } from '@angular/core';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {tuiWithStyles} from '@taiga-ui/cdk';
 
 const FADE = [{opacity: 0.06}, {opacity: 1}];
 
