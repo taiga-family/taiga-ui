@@ -1,3 +1,4 @@
+import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -24,7 +25,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
 @Component({
     standalone: true,
     selector: 'tui-opt-group[tuiMultiSelectGroup]',
-    imports: [TuiLink],
+    imports: [NgIf, TuiLink],
     templateUrl: './multi-select-group.template.html',
     styleUrls: ['./multi-select-group.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,12 +34,12 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     },
 })
 export class TuiMultiSelectGroupComponent<T> {
-    private readonly values = signal<readonly T[]>([]);
     private readonly handlers = inject<TuiItemsHandlers<T>>(TUI_ITEMS_HANDLERS);
     private readonly control =
         inject(TuiTextfieldComponent, {optional: true})?.control ||
         inject(NgControl, {optional: true});
 
+    protected readonly values = signal<readonly T[]>([]);
     protected readonly texts = toSignal(inject(TUI_MULTI_SELECT_TEXTS));
     protected readonly value = tuiInjectValue<readonly T[]>();
     protected readonly checked = computed(() =>
