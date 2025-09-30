@@ -24,7 +24,7 @@ class Styles {}
     selector: '[tuiItemGroup]',
     host: {
         '(click)': 'onClick($event.target)',
-        '[class._horizontal]': 'horizontal',
+        '[class._horizontal]': 'horizontal()',
     },
 })
 export class TuiItemGroup implements AfterViewInit {

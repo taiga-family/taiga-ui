@@ -18,7 +18,10 @@ class Styles {}
 
 @Directive({
     selector: '[tuiPin]',
-    host: {'[class._open]': 'open()'},
+    host: {
+        tuiPin: '',
+        '[class._open]': 'open()',
+    },
 })
 export class TuiPin {
     protected readonly nothing = tuiWithStyles(Styles);
