@@ -105,11 +105,6 @@
     "jest": {
         "preset": "@taiga-ui/jest-config"
     },
-    "overrides": {
-        "jest-preset-angular": {
-            "@angular/compiler": "$@angular/compiler"
-        }
-    },
     "devDependencies": {
         "@angular-devkit/build-angular": "19.2.16",
         "@angular-devkit/core": "19.2.16",
