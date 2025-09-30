@@ -5,8 +5,8 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -19,13 +19,13 @@ class Styles {}
 
 @Directive({
     selector: '[tuiTitle]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {
         tuiTitle: '',
         '[attr.data-size]': 'tuiTitle() || null',
     },
 })
 export class TuiTitle {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly tuiTitle = input<TuiSizeL | TuiSizeS | ''>('');
 }

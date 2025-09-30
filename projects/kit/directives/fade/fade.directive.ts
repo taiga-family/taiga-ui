@@ -13,11 +13,11 @@ import {
 } from '@ng-web-apis/mutation-observer';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {type TuiOrientation} from '@taiga-ui/core/types';
 import {filter, fromEvent, merge} from 'rxjs';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 const BUFFER = 1; // buffer for rounding issues
 
@@ -35,13 +35,12 @@ class Styles {}
     providers: [
         ResizeObserverService,
         MutationObserverService,
-        provideStyles(Styles),
         {
             provide: WA_MUTATION_OBSERVER_INIT,
             useValue: {characterData: true, subtree: true},
         },
     ],
-    hostDirectives: [TuiTransitioned, TuiWithStyles],
+    hostDirectives: [TuiTransitioned],
     host: {
         '[style.line-height]': 'lineHeight',
         '[style.--t-line-height]': 'lineHeight',
@@ -51,6 +50,8 @@ class Styles {}
     },
 })
 export class TuiFade {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     // TODO: Remove when lh CSS units are supported: https://caniuse.com/mdn-css_types_length_lh
     @Input('tuiFadeHeight')
     public lineHeight: string | null = null;

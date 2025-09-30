@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -18,6 +17,7 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TUI_BLOCK_OPTIONS} from './block.options';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -31,11 +31,10 @@ class Styles {}
 @Directive({
     selector: 'label[tuiBlock],input[tuiBlock]',
     providers: [
-        provideStyles(Styles),
         tuiAppearanceOptionsProvider(TUI_BLOCK_OPTIONS),
         tuiAvatarOptionsProvider({size: 's'}),
     ],
-    hostDirectives: [TuiNativeValidator, TuiWithAppearance, TuiWithIcons, TuiWithStyles],
+    hostDirectives: [TuiNativeValidator, TuiWithAppearance, TuiWithIcons],
     host: {
         tuiBlock: '',
         '[attr.data-size]': 'size() || this.options.size || "l"',
@@ -43,6 +42,7 @@ class Styles {}
     },
 })
 export class TuiBlock {
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_BLOCK_OPTIONS);
     protected readonly control = contentChild(NgControl);
 

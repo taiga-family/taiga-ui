@@ -5,7 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -18,13 +18,13 @@ class Styles {}
 
 @Directive({
     selector: '[tuiFloatingContainer]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {
         tuiFloatingContainer: '',
         '[style.--t-background]': 'background()',
     },
 })
 export class TuiFloatingContainer {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly background = input('', {alias: 'tuiFloatingContainer'});
 }

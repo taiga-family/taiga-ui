@@ -4,11 +4,11 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -23,12 +23,13 @@ class Styles {}
     standalone: true,
     selector: '[tuiMessage]',
     providers: [
-        provideStyles(Styles),
         {
             provide: TUI_APPEARANCE_OPTIONS,
             useValue: {appearance: 'neutral'},
         },
     ],
-    hostDirectives: [TuiWithAppearance, TuiWithStyles],
+    hostDirectives: [TuiWithAppearance],
 })
-export class TuiMessage {}
+export class TuiMessage {
+    protected readonly nothing = tuiWithStyles(Styles);
+}

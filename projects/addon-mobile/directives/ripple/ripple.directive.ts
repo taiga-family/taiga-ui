@@ -9,9 +9,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPx, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {first, fromEvent, merge, race, switchMap, tap} from 'rxjs';
@@ -30,8 +29,6 @@ class Styles {}
 
 @Directive({
     selector: '[tuiRipple]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {
         '(pointerdown.zoneless)':
             'start($event.clientX, $event.clientY, $event.target, $event.currentTarget)',
@@ -41,6 +38,8 @@ export class TuiRipple {
     private readonly doc = inject(DOCUMENT);
     private readonly destroyRef = inject(DestroyRef);
     private readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
+
+    protected readonly nothing = tuiWithStyles(Styles);
 
     @Input()
     public tuiRipple = '';

@@ -8,9 +8,9 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiWatch, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {map} from 'rxjs';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 const rowsInSvg = 3;
 
@@ -25,8 +25,7 @@ class Styles {}
 
 @Directive({
     selector: '[tuiSensitive]',
-    providers: [ResizeObserverService, provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
+    providers: [ResizeObserverService],
     host: {
         '[style.--t-offset.px]': 'offset',
         '[style.--t-mask-height.px]': 'height()',
@@ -34,6 +33,7 @@ class Styles {}
     },
 })
 export class TuiSensitive {
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly offset = Math.round(Math.random() * 10) * 10;
     protected readonly height = toSignal(
         inject(ResizeObserverService, {self: true}).pipe(

@@ -7,7 +7,6 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {
     TUI_ICON_END,
@@ -15,6 +14,7 @@ import {
     tuiGetIconMode,
     tuiInjectIconResolver,
 } from '@taiga-ui/core/tokens';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 const OPT = {self: true, optional: true} as const;
 
@@ -28,8 +28,6 @@ const OPT = {self: true, optional: true} as const;
 class Styles {}
 
 @Directive({
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {
         tuiIcons: '',
         '[style.--t-icon-start]': 'start()',
@@ -41,6 +39,7 @@ class Styles {}
 export class TuiIcons {
     private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly start = computed(() => this.resolve(this.iconStart()));
     protected readonly end = computed(() => this.resolve(this.iconEnd()));
     protected readonly startMode = computed(() => tuiGetIconMode(this.iconStart()));

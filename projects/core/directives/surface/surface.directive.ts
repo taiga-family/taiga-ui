@@ -5,8 +5,8 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -19,13 +19,11 @@ class Styles {}
 
 @Directive({
     selector: '[tuiSurface]',
-    providers: [provideStyles(Styles)],
     hostDirectives: [
         {
             directive: TuiAppearance,
             inputs: ['tuiAppearance: tuiSurface'],
         },
-        TuiWithStyles,
     ],
     host: {
         tuiSurface: '',
@@ -33,5 +31,7 @@ class Styles {}
     },
 })
 export class TuiSurface {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly tuiSurface = input('');
 }

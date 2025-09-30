@@ -5,7 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -18,10 +18,10 @@ class Styles {}
 
 @Directive({
     selector: '[tuiPin]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {'[class._open]': 'open()'},
 })
 export class TuiPin {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly open = input<boolean | ''>('', {alias: 'tuiPin'});
 }

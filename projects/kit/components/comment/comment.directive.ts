@@ -5,11 +5,11 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {
     type TuiHorizontalDirection,
     type TuiVerticalDirection,
 } from '@taiga-ui/core/types';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -22,11 +22,11 @@ class Styles {}
 
 @Directive({
     selector: '[tuiComment]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {'[attr.data-direction]': 'direction()'},
 })
 export class TuiComment {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly direction = input<TuiHorizontalDirection | TuiVerticalDirection | ''>(
         'top',
         {alias: 'tuiComment'},

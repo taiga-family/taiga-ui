@@ -17,6 +17,7 @@ export function provideStyles(useValue: Type<unknown>): ValueProvider {
     return {provide: TUI_STYLES, multi: true, useValue};
 }
 
+// Use it after this is fixed: https://github.com/angular/angular/issues/57846
 @Directive()
 export class TuiWithStyles implements OnDestroy {
     private readonly injector = inject(EnvironmentInjector);

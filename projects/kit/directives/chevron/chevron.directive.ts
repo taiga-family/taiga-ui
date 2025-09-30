@@ -8,9 +8,8 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TUI_ICON_END} from '@taiga-ui/core/tokens';
 
@@ -29,14 +28,14 @@ class Styles {}
 
 @Directive({
     selector: '[tuiChevron]',
-    providers: [provideStyles(Styles), tuiProvide(TUI_ICON_END, TUI_CHEVRON)],
-    hostDirectives: [TuiWithStyles],
+    providers: [tuiProvide(TUI_ICON_END, TUI_CHEVRON)],
     host: {tuiChevron: ''},
 })
 export class TuiChevron {
     private readonly el = tuiInjectElement();
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
 
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly toggle = effect(() =>
         this.el.classList.toggle(
             '_chevron-rotated',

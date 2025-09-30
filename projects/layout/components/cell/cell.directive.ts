@@ -6,11 +6,11 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TUI_CELL_OPTIONS} from './cell.options';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -24,11 +24,9 @@ class Styles {}
 @Directive({
     selector: '[tuiCell]:not(ng-template)',
     providers: [
-        provideStyles(Styles),
         tuiAvatarOptionsProvider({size: 'm'}),
         tuiButtonOptionsProvider({size: 's'}),
     ],
-    hostDirectives: [TuiWithStyles],
     host: {
         tuiCell: '',
         '[attr.data-size]': 'size() || options.size || "l"',
@@ -36,6 +34,7 @@ class Styles {}
     },
 })
 export class TuiCell {
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_CELL_OPTIONS);
 
     public readonly size = input(this.options.size, {alias: 'tuiCell'});

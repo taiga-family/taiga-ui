@@ -13,7 +13,6 @@ import {
     TuiValueTransformer,
 } from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -25,6 +24,7 @@ import {
 } from '@taiga-ui/kit/components/input-number';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
 import {filter, fromEvent} from 'rxjs';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -43,7 +43,6 @@ class Styles {}
 @Directive({
     selector: 'input[tuiInputSlider]',
     providers: [
-        provideStyles(Styles),
         tuiInputNumberOptionsProvider({
             valueTransformer: new TuiNonNullableValueTransformer(),
         }),
@@ -54,7 +53,6 @@ class Styles {}
             inputs: ['min', 'max', 'prefix', 'postfix', 'invalid', 'readOnly'],
         },
         TuiWithQuantumValueTransformer,
-        TuiWithStyles,
     ],
     host: {
         '(blur)': 'inputNumber.setValue(value() ?? null)',
@@ -77,6 +75,7 @@ export class TuiInputSliderDirective {
         () => this.slider()?.keySteps?.transformer() ?? TUI_IDENTITY_VALUE_TRANSFORMER,
     );
 
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
     protected readonly value = computed(() =>
         this.controlTransformer.toControlValue(this.inputNumber.value()),

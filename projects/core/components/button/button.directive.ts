@@ -6,7 +6,6 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -14,6 +13,7 @@ import {
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_BUTTON_OPTIONS} from './button.options';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -26,10 +26,12 @@ class Styles {}
 
 @Directive({
     selector: 'a[tuiButton],button[tuiButton],a[tuiIconButton],button[tuiIconButton]',
-    providers: [provideStyles(Styles), tuiAppearanceOptionsProvider(TUI_BUTTON_OPTIONS)],
-    hostDirectives: [TuiWithAppearance, TuiWithIcons, TuiWithIcons],
+    providers: [tuiAppearanceOptionsProvider(TUI_BUTTON_OPTIONS)],
+    hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {'[attr.data-size]': 'size()'},
 })
 export class TuiButton {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly size = input(inject(TUI_BUTTON_OPTIONS).size);
 }

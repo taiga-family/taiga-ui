@@ -4,7 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -18,7 +18,7 @@ class Styles {}
 @Directive({
     standalone: true,
     selector: '[tuiConnected]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
 })
-export class TuiConnected {}
+export class TuiConnected {
+    protected readonly nothing = tuiWithStyles(Styles);
+}

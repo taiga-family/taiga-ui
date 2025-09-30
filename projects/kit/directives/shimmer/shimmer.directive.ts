@@ -9,8 +9,8 @@ import {
     PLATFORM_ID,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 const OPTIONS = {duration: 1500, iterations: Infinity};
 
@@ -25,8 +25,6 @@ class Styles {}
 
 @Directive({
     selector: '[tuiShimmer]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {
         tuiShimmer: '',
         '[class._shimmer]': 'tuiShimmer()',
@@ -39,6 +37,7 @@ export class TuiShimmer implements OnChanges {
     private readonly el = tuiInjectElement();
     private animation?: Animation;
 
+    protected readonly nothing = tuiWithStyles(Styles);
     protected disabled = false;
 
     public readonly tuiShimmer = input(false);

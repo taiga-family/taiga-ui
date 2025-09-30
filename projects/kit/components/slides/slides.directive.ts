@@ -7,8 +7,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -21,8 +21,7 @@ class Styles {}
 
 @Directive({
     selector: '[tuiSlides]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiAnimatedParent, TuiWithStyles],
+    hostDirectives: [TuiAnimatedParent],
     host: {
         tuiSlides: '',
         '[attr.data-direction]': 'sign()',
@@ -30,6 +29,7 @@ class Styles {}
     },
 })
 export class TuiSlides {
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly el = tuiInjectElement();
     protected readonly sign = computed(() => Math.sign(this.direction() || 0));
 

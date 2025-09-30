@@ -4,7 +4,7 @@ import {
     Directive,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -17,7 +17,7 @@ class Styles {}
 
 @Directive({
     selector: '[tuiButtonGroup]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
 })
-export class TuiButtonGroup {}
+export class TuiButtonGroup {
+    protected readonly nothing = tuiWithStyles(Styles);
+}

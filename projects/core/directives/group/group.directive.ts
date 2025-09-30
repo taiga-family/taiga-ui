@@ -6,10 +6,10 @@ import {
     Input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {type TuiOrientation, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 import {TUI_GROUP_OPTIONS} from './group.options';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -22,8 +22,6 @@ class Styles {}
 
 @Directive({
     selector: '[tuiGroup]:not(ng-container)',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {
         tuiGroup: '',
         '[attr.data-orientation]': 'orientation',
@@ -37,6 +35,8 @@ class Styles {}
 })
 export class TuiGroup {
     private readonly options = inject(TUI_GROUP_OPTIONS);
+
+    protected readonly nothing = tuiWithStyles(Styles);
 
     @Input()
     public orientation: TuiOrientation = this.options.orientation;

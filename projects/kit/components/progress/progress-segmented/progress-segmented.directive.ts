@@ -5,7 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -18,13 +18,13 @@ class Styles {}
 
 @Directive({
     selector: '[tuiProgressBar][segments]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {
         class: '_segmented',
         '[style.--t-segment-width]': '1 / segments()',
     },
 })
 export class TuiProgressSegmented {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly segments = input(1);
 }

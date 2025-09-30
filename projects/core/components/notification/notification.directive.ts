@@ -8,9 +8,12 @@ import {
     type OnInit,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiIsString, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    tuiIsString,
+    tuiSetSignal,
+    tuiWithStyles,
+} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {
@@ -33,12 +36,11 @@ class Styles {}
 @Directive({
     selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
     providers: [
-        provideStyles(Styles),
         tuiAppearanceOptionsProvider(TUI_NOTIFICATION_OPTIONS),
         tuiLinkOptionsProvider({appearance: '', pseudo: true}),
         tuiButtonOptionsProvider({appearance: 'outline-grayscale', size: 's'}),
     ],
-    hostDirectives: [TuiWithIcons, TuiWithAppearance, TuiWithStyles],
+    hostDirectives: [TuiWithIcons, TuiWithAppearance],
     host: {
         '[attr.data-size]': 'size',
     },
@@ -46,6 +48,7 @@ class Styles {}
 export class TuiNotification implements OnChanges, OnInit {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly icons = inject(TuiIcons);
 
     @Input()

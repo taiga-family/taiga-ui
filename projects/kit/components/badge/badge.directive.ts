@@ -6,7 +6,6 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -14,6 +13,7 @@ import {
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_BADGE_OPTIONS} from './badge.options';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -27,10 +27,12 @@ class Styles {}
 @Directive({
     // tui-icon[tuiBadge] is required to avoid double matching of TuiIcons
     selector: 'tui-badge,[tuiBadge],tui-icon[tuiBadge]',
-    providers: [provideStyles(Styles), tuiAppearanceOptionsProvider(TUI_BADGE_OPTIONS)],
-    hostDirectives: [TuiWithAppearance, TuiWithIcons, TuiWithStyles],
+    providers: [tuiAppearanceOptionsProvider(TUI_BADGE_OPTIONS)],
+    hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {'[attr.data-size]': 'size()'},
 })
 export class TuiBadge {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly size = input(inject(TUI_BADGE_OPTIONS).size);
 }

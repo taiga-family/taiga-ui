@@ -6,8 +6,8 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 const OPTIONS = {behavior: 'smooth', block: 'nearest', inline: 'center'} as const;
 
@@ -22,8 +22,6 @@ class Styles {}
 
 @Directive({
     selector: '[tuiItemGroup]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {
         '(click)': 'onClick($event.target)',
         '[class._horizontal]': 'horizontal',
@@ -31,6 +29,8 @@ class Styles {}
 })
 export class TuiItemGroup implements AfterViewInit {
     private readonly el = tuiInjectElement();
+
+    protected readonly nothing = tuiWithStyles(Styles);
 
     public readonly horizontal = input(false);
     public readonly autoscroll = input(false);

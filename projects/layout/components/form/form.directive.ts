@@ -9,7 +9,6 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
@@ -22,11 +21,12 @@ import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
 import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 
 import {TUI_FORM_OPTIONS, type TuiFormOptions} from './form.options';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 const HEADER_SIZE = {
-    s: 'xxxs',
-    m: 'xs',
-    l: 's',
+    s: 'body-m',
+    m: 'h6',
+    l: 'h5',
 } as const;
 
 @Component({
@@ -41,7 +41,6 @@ class Styles {}
 @Directive({
     selector: '[tuiForm]',
     providers: [
-        provideStyles(Styles),
         projectSize(TUI_BUTTON_OPTIONS, (size) => size),
         projectSize(TUI_NOTIFICATION_OPTIONS, (size) => size),
         projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size || 'l']),
@@ -58,7 +57,6 @@ class Styles {}
         },
     ],
     hostDirectives: [
-        TuiWithStyles,
         {
             directive: TuiTextfieldOptionsDirective,
             inputs: ['tuiTextfieldAppearance', 'tuiTextfieldCleaner'],
@@ -70,6 +68,7 @@ class Styles {}
     },
 })
 export class TuiForm {
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_FORM_OPTIONS);
 
     public readonly size = input(this.options.size, {alias: 'tuiForm'});

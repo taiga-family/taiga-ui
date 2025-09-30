@@ -9,7 +9,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
@@ -29,6 +28,7 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
 import {map} from 'rxjs';
 
 import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -42,7 +42,6 @@ class Styles {}
 @Directive({
     selector: 'tui-icon[tuiTooltip]',
     providers: [
-        provideStyles(Styles),
         tuiAppearanceOptionsProvider(TUI_TOOLTIP_OPTIONS),
         {
             provide: TUI_ICON_START,
@@ -52,7 +51,6 @@ class Styles {}
     ],
     hostDirectives: [
         TuiWithAppearance,
-        TuiWithStyles,
         {
             directive: TuiHintDescribe,
             inputs: ['tuiHintDescribe: tuiTooltipDescribe'],
@@ -75,6 +73,7 @@ export class TuiTooltip implements DoCheck {
     private readonly describe = inject(TuiHintDescribe);
     private readonly driver = inject(TuiHintHover);
 
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly state: Signal<unknown> = tuiAppearanceState(
         toSignal(
             inject(TuiHintHover).pipe(

@@ -10,10 +10,10 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 const FADE = [{opacity: 0.06}, {opacity: 1}];
 
@@ -28,8 +28,6 @@ class Styles {}
 
 @Directive({
     selector: '[tuiSkeleton]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {
         tuiSkeleton: '',
         '[class._skeleton]': 'tuiSkeleton()',
@@ -41,6 +39,7 @@ export class TuiSkeleton implements OnChanges {
     private readonly el = tuiInjectElement();
     private readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED)) * 2;
 
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly placeholder = computed((length = this.tuiSkeleton()) => {
         switch (typeof length) {
             case 'number':

@@ -7,7 +7,6 @@ import {
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
@@ -15,6 +14,7 @@ import {
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_AVATAR_OPTIONS} from './avatar.options';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -27,10 +27,9 @@ class Styles {}
 
 @Directive({
     selector: '[tuiAvatar]',
-    providers: [provideStyles(Styles), tuiAppearanceOptionsProvider(TUI_AVATAR_OPTIONS)],
+    providers: [tuiAppearanceOptionsProvider(TUI_AVATAR_OPTIONS)],
     hostDirectives: [
         TuiWithAppearance,
-        TuiWithStyles,
         {
             directive: TuiIcons,
             inputs: ['iconStart: tuiAvatar'],
@@ -51,6 +50,7 @@ class Styles {}
 export class TuiAvatar {
     private readonly options = inject(TUI_AVATAR_OPTIONS);
 
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly icons = inject(TuiIcons);
     protected readonly fallback = signal(false);
 

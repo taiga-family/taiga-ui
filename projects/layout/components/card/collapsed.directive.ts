@@ -5,7 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -18,8 +18,6 @@ class Styles {}
 
 @Directive({
     selector: '[tuiCardCollapsed]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiWithStyles],
     host: {
         tuiCardCollapsed: '',
         '[style.margin-block-end.rem]': 'collapsed() ? 0.75 : 0',
@@ -27,5 +25,7 @@ class Styles {}
     },
 })
 export class TuiCardCollapsed {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly collapsed = input(false, {alias: 'tuiCardCollapsed'});
 }

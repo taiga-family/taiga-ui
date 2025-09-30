@@ -6,7 +6,6 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
@@ -19,6 +18,7 @@ import {tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/checkbox';
 import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
 
 import {TUI_CHIP_OPTIONS} from './chip.options';
+import {tuiWithStyles} from '@taiga-ui/cdk';
 
 @Component({
     template: '',
@@ -32,7 +32,6 @@ class Styles {}
 @Directive({
     selector: 'tui-chip,[tuiChip]',
     providers: [
-        provideStyles(Styles),
         tuiAppearanceOptionsProvider(TUI_CHIP_OPTIONS),
         tuiSwitchOptionsProvider({size: 's'}),
         tuiCheckboxOptionsProvider({size: 's'}),
@@ -40,14 +39,13 @@ class Styles {}
             size: 'xs',
             round: inject(TUI_PLATFORM) !== 'web',
         })),
-        tuiButtonOptionsProvider({
-            size: 'xs',
-            appearance: 'icon',
-        }),
+        tuiButtonOptionsProvider({size: 'xs', appearance: 'icon'}),
     ],
-    hostDirectives: [TuiWithAppearance, TuiWithIcons, TuiWithStyles],
+    hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {'[attr.data-size]': 'size()'},
 })
 export class TuiChip {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     public readonly size = input(inject(TUI_CHIP_OPTIONS).size);
 }

@@ -8,8 +8,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
-import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiInteractiveState} from '@taiga-ui/core/types';
 
 import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
@@ -25,8 +24,7 @@ class Styles {}
 
 @Directive({
     selector: '[tuiAppearance]',
-    providers: [provideStyles(Styles)],
-    hostDirectives: [TuiTransitioned, TuiWithStyles],
+    hostDirectives: [TuiTransitioned],
     host: {
         tuiAppearance: '',
         '[attr.data-appearance]': 'tuiAppearance()',
@@ -36,6 +34,7 @@ class Styles {}
     },
 })
 export class TuiAppearance {
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly modes = computed((mode = this.tuiAppearanceMode()) =>
         !mode || tuiIsString(mode) ? mode : mode.join(' '),
     );
