@@ -8,77 +8,81 @@
             *ngFor="let example of examples; let index = index"
             [component]="index + 1 | tuiComponent"
             [content]="index + 1 | tuiExample"
+            [description]="description"
             [fullsize]="true"
             [heading]="example"
             [id]="example | tuiKebab"
-        />
+        >
+            <ng-template
+                #description
+                [ngSwitch]="index"
+            >
+                <ng-container *ngSwitchCase="0">Using inline with various content</ng-container>
+                <ng-container *ngSwitchCase="1">Custom styles and more component</ng-container>
+                <ng-container *ngSwitchCase="2">
+                    Showing toast as notification on top of the screen. By default 2 toasts can be shown simultaneously
+                    on desktop and 1 on mobile, the rest are queued. This number is controlled by
+                    <code>TUI_TOASTS_CONCURRENCY</code>
+                    token
+                </ng-container>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <a
-                tuiToast
-                [iconEnd]="icons.iconEnd"
-                [iconStart]="icons.iconStart"
-            >
-                {{ content }}
-            </a>
-
-            <br />
-
             <button
-                tuiToast
+                tuiButton
                 type="button"
-                [iconEnd]="icons.iconEnd"
+                (click)="toast.set(true)"
             >
-                <tui-icon
-                    appearance="accent"
-                    icon="@tui.box"
-                    size="l"
-                    tuiBadge
-                />
-
-                {{ content }}
+                Show toast
             </button>
-
-            <br />
-
-            <div
-                tuiToast
-                [iconEnd]="icons.iconEnd"
+            <ng-template
+                [tuiToast]="toast()"
+                [tuiToastOptions]="{appearance: appearance, autoClose: autoClose, closable: closable}"
+                (tuiToastChange)="toast.set($event)"
             >
-                <tui-avatar
-                    [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async"
-                />
-
-                {{ content }}
-
-                <button
-                    appearance="neutral"
-                    size="s"
-                    tuiButton
-                    type="button"
-                >
-                    Label
-                </button>
-            </div>
+                <div tuiToast>I am a toast</div>
+            </ng-template>
         </tui-doc-demo>
 
         <table tuiDocAPI>
             <tr
-                name="<ng-content />"
+                name="[appearance]"
                 tuiDocAPIItem
                 type="string"
-                [(value)]="content"
+                [(value)]="appearance"
             >
-                Text of notification toast
+                Appearance of a toast
             </tr>
-            <tbody
-                #icons
-                tuiDocIcons
-            ></tbody>
+            <tr
+                name="[autoClose]"
+                tuiDocAPIItem
+                type="number"
+                [items]="autoCloseVariants"
+                [(value)]="autoClose"
+            >
+                Automatic close timeout, 0 for a permanent toast
+            </tr>
+            <tr
+                name="[closable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="closable"
+            >
+                Show close button on desktop and close on swipe on mobile
+            </tr>
+            <tr
+                name="[data]"
+                tuiDocAPIItem
+                type="I"
+            >
+                Arbitrary data passed to the toast, used as icon for string content passed to
+                <code>TuiToastService</code>
+            </tr>
         </table>
     </ng-template>
 
-    <tui-setup *pageTab="'Setup'" />
+    <tui-setup *pageTab />
 </tui-doc-page>
