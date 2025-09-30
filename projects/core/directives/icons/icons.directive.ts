@@ -7,8 +7,8 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {provideStyles, TuiWithStyles} from '@taiga-ui/cdk/directives/with-styles';
+import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {
     TUI_ICON_END,
     TUI_ICON_START,
