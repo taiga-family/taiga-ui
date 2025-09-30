@@ -12300,57 +12300,66 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<div tuiToast>Notification</div>
+<!-- Inline -->
+<div tuiToast>
+  Notification
+  <button
+    tuiButton
+    type="button"
+  >
+    Action
+  </button>
+</div>
+
+<!-- Portal -->
+<ng-template [(tuiToast)]="open">
+  <button tuiToast>Interactive toast</button>
+</ng-template>
 ```
 
 ### Example
 
 ```html
-<a tuiToast [iconEnd]="icons.iconEnd" [iconStart]="icons.iconStart" > {{ content }} </a>
-<br />
-<button tuiToast type="button" [iconEnd]="icons.iconEnd" >
-<tui-icon appearance="accent" icon="@tui.box" size="l" tuiBadge /> {{ content }} </button>
-<br />
-<div tuiToast [iconEnd]="icons.iconEnd" >
-<tui-avatar [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async" /> {{ content }} <button appearance="neutral" size="s" tuiButton type="button" > Label </button>
-</div>
+<button tuiButton type="button" (click)="toast.set(true)" > Show toast </button>
+<ng-template [tuiToast]="toast()" [tuiToastOptions]="{appearance: appearance, autoClose: autoClose, closable: closable}" (tuiToastChange)="toast.set($event)" >
+<div tuiToast>I am a toast</div>
+</ng-template>
 ```
 
 ### API
 
 | Property | Type | Description |
 |----------|-----|----------|
-| <ng-content /> | `string` | Text of notification toast |
+| [appearance] | `string` | Appearance of a toast |
+| [autoClose] | `number` | Automatic close timeout, 0 for a permanent toast |
+| [closable] | `boolean` | Show close button on desktop and close on swipe on mobile |
+| [data] | `I` |  |
 
 ### TypeScript
 
 ```ts
-import {Component} from '@angular/core';
-import {TuiDocIcons} from '@demo/components/icons';
+import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiButton, TuiFallbackSrcPipe, TuiIcon} from '@taiga-ui/core';
-import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
+import {TuiButton} from '@taiga-ui/core';
+import {TUI_TOAST_OPTIONS, TuiToast} from '@taiga-ui/kit';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAvatar,
-        TuiBadge,
-        TuiButton,
-        TuiDemo,
-        TuiDocIcons,
-        TuiFallbackSrcPipe,
-        TuiIcon,
-        TuiToast,
-    ],
+    imports: [TuiButton, TuiDemo, TuiToast],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = ['Basic', 'Customization'];
+    private readonly options = inject(TUI_TOAST_OPTIONS);
 
+    protected readonly examples = ['Basic', 'Customization', 'Service'];
+    protected readonly toast = signal(false);
+    protected readonly autoCloseVariants = [0, 3000, 5000, 1000, 500];
+    protected autoClose = this.options.autoClose;
     protected content = 'Notification';
+    protected appearance = '';
+    protected closable = this.options.closable;
 }
 ```
 
