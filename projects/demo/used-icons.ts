@@ -106,6 +106,7 @@ export const TUI_USED_ICONS = [
     '@tui.credit-card',
     '@tui.cloud',
     '@tui.grip-vertical',
+    '@tui.circle-check',
     '@tui.camera',
     '@tui.folder',
     '@tui.chevron-up',
