@@ -52,6 +52,7 @@ export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
     protected readonly expanded = computed(() => this.aside.expanded() && this.open());
     protected readonly chevronEffect = effect(() => {
         const chevron = this.chevron();
+
         if (chevron) {
             tuiSetSignal(chevron.rotated, this.expanded());
         }
