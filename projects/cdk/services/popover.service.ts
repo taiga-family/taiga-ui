@@ -27,8 +27,9 @@ export type TuiPopover<T, O> = T &
 
 @Injectable()
 export abstract class TuiPopoverService<T, K = void> {
-    protected readonly component: PolymorpheusComponent<any>;
-    protected readonly id = inject(TuiIdService);
+    private readonly component: PolymorpheusComponent<any>;
+    private readonly id = inject(TuiIdService);
+
     protected readonly items$: BehaviorSubject<ReadonlyArray<TuiPopover<T, any>>>;
 
     constructor(
