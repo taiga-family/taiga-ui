@@ -48,7 +48,7 @@ export const pages: DocRoutePages = [
         section: 'Documentation',
         title: 'Changelog',
         keywords: 'release, change, changelog, archive, history',
-        route: 'https://github.com/taiga-family/taiga-ui/blob/main/CHANGELOG.md',
+        route: 'https://github.com/taiga-family/taiga-ui/blob/v4.x/CHANGELOG.md',
         target: '_blank',
     },
     {
