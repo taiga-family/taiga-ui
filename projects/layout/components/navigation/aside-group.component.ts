@@ -10,7 +10,7 @@ import {
     viewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
     TuiDataList,
@@ -50,9 +50,12 @@ export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
     protected readonly template = contentChild(TemplateRef);
 
     protected readonly expanded = computed(() => this.aside.expanded() && this.open());
-    protected readonly chevronEffect = effect(() =>
-        this.chevron()?.rotated.set(this.expanded()),
-    );
+    protected readonly chevronEffect = effect(() => {
+        const chevron = this.chevron();
+        if (chevron) {
+            tuiSetSignal(chevron.rotated, this.expanded());
+        }
+    });
 
     protected readonly binding = tuiDirectiveBinding(
         TuiDropdownDirective,
