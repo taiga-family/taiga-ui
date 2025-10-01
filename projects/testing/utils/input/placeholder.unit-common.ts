@@ -1,3 +1,4 @@
+/// <reference types="@types/jest" />
 import {type DebugElement} from '@angular/core';
 import {type ComponentFixture} from '@angular/core/testing';
 import {type FormControl} from '@angular/forms';
