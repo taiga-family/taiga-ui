@@ -180,7 +180,7 @@ jobs:
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v4.6.2
         with:
-          path: ./projects/demo-playwright/tests-results/**/*-retry${{ env.RETRY_COUNT }}/**/*.diff.png
+          path: ./projects/demo-playwright/tests-results/**/*.diff.png
           name: ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}_${{ matrix.shard.index }}
           if-no-files-found: ignore
           compression-level: 0
