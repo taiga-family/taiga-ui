@@ -1,83 +1,57 @@
 import {
-    type AfterContentInit,
-    ContentChildren,
-    DestroyRef,
     Directive,
+    EventEmitter,
     inject,
     Input,
-    type QueryList,
+    type OnChanges,
+    Output,
+    signal,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
-import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiGroup} from '@taiga-ui/core/directives/group';
-import {filter, identity, map, merge, pairwise, switchMap} from 'rxjs';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils';
+import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
-import {TuiAccordionItem} from './accordion-item.component';
+import {TuiAccordionComponent} from './accordion.component';
 
 @Directive({
     standalone: true,
-    selector: 'tui-accordion',
-    hostDirectives: [
-        {
-            directive: TuiGroup,
-            inputs: ['rounded'],
-        },
+    selector: 'button[tuiAccordion]',
+    providers: [
+        tuiAvatarOptionsProvider({size: 's'}),
+        tuiButtonOptionsProvider({appearance: 'outline-grayscale'}),
     ],
+    hostDirectives: [TuiButton, TuiChevron],
+    host: {
+        tuiButton: '',
+        tuiAccordion: '',
+        type: 'button',
+        '[class._open]': 'open()',
+        '(click)': 'toggle()',
+    },
 })
-export class TuiAccordionDirective implements AfterContentInit {
-    private readonly destroyRef = inject(DestroyRef);
+export class TuiAccordionDirective implements OnChanges {
+    private readonly accordion = inject(TuiAccordionComponent);
 
-    @ContentChildren(TuiAccordionItem)
-    protected readonly accordionItems: QueryList<TuiAccordionItem> = EMPTY_QUERY;
+    protected readonly size = tuiDirectiveBinding(TuiButton, 'size', this.accordion.size);
 
     @Input()
-    public closeOthers = true;
+    public tuiAccordion: boolean | string = '';
 
-    constructor() {
-        // Not using DI options to avoid changed defaults spilling to content
-        const group = inject(TuiGroup);
+    @Output()
+    public readonly tuiAccordionChange = new EventEmitter<boolean>();
 
-        group.orientation = 'vertical';
-        group.collapsed = true;
+    public readonly open = tuiDirectiveBinding(TuiChevron, 'rotated', signal(false));
+
+    public ngOnChanges(): void {
+        this.open.set(!!this.tuiAccordion);
+        this.accordion.toggle(this);
     }
 
-    public ngAfterContentInit(): void {
-        const {accordionItems} = this;
-        const rows$ = tuiQueryListChanges(accordionItems);
-        const newOpenRow$ = rows$.pipe(
-            pairwise(),
-            map(([previous, current]) =>
-                current.find((item) => !previous.includes(item) && item.open),
-            ),
-            filter(tuiIsPresent),
-        );
-        const rowsOpen$ = merge(
-            rows$.pipe(
-                switchMap((rows) =>
-                    merge(
-                        ...rows.map((row) =>
-                            row.openChange.pipe(
-                                filter(identity),
-                                map(() => row),
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            newOpenRow$,
-        ).pipe(
-            filter(() => this.closeOthers),
-            takeUntilDestroyed(this.destroyRef),
-        );
-
-        rowsOpen$.subscribe((currentRow) => {
-            accordionItems.forEach((row) => {
-                if (currentRow !== row) {
-                    row.close();
-                }
-            });
-        });
+    public toggle(): void {
+        this.open.set(!this.open());
+        this.tuiAccordion = this.open();
+        this.tuiAccordionChange.emit(this.open());
+        this.accordion.toggle(this);
     }
 }

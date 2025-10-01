@@ -68,30 +68,34 @@
 <nav class="t-navigation">
     <tui-scrollbar class="t-scrollbar">
         <tui-accordion
+            size="m"
             [class.t-accordion-standalone]="!searchEnabled()"
             [closeOthers]="false"
-            [rounded]="false"
         >
-            <tui-accordion-item
-                *ngFor="let label of labels; index as index"
-                size="s"
-                [borders]="null"
-                [open]="!!openPagesArr[index]"
-                (openChange)="openPagesArr[index] = $event"
-            >
-                <span class="t-label">
-                    <strong>{{ label }}</strong>
-                </span>
-                <ng-template tuiAccordionItemContent>
-                    <div class="t-section">
-                        <ng-container
-                            *ngFor="let item of items[index]; index as subIndex"
-                            [ngTemplateOutlet]="pages"
-                            [ngTemplateOutletContext]="{item: item, index: index * 100 + subIndex}"
-                        />
+            @for (label of labels; track $index; let index = $index) {
+                <button
+                    appearance=""
+                    [tuiAccordion]="!!openPagesArr[index]"
+                    (tuiAccordionChange)="openPagesArr[index] = $event"
+                >
+                    <span class="t-label">
+                        <strong>{{ label }}</strong>
+                    </span>
+                </button>
+                <tui-expand [style.padding-block]="0">
+                    <div
+                        *tuiItem
+                        class="t-section"
+                    >
+                        @for (item of items[index]; track $index) {
+                            <ng-container
+                                [ngTemplateOutlet]="pages"
+                                [ngTemplateOutletContext]="{item: item, index: index * 100 + $index}"
+                            />
+                        }
                     </div>
-                </ng-template>
-            </tui-accordion-item>
+                </tui-expand>
+            }
         </tui-accordion>
         <div class="t-items-container">
             <ng-container

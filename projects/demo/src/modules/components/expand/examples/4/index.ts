@@ -2,9 +2,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiExpand} from '@taiga-ui/core';
+import {TuiItem} from '@taiga-ui/cdk';
 
 @Component({
-    imports: [TuiButton, TuiExpand],
+    imports: [TuiButton, TuiExpand, TuiItem],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
