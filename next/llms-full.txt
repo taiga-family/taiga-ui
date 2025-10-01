@@ -4809,17 +4809,18 @@ export default class Page {}
 # components/Icon
 - **Package**: `CORE`
 - **Type**: components
-A component to use icons and color them with CSS. By default,
-            tui-icon
-            expects the
+A component to show icons and color them with CSS. Taiga UI ships with
             
-                Lucide icons.
+                Lucide icons
             
-            To associate a name with icon you should use that pattern
-            &#64;tui.[name]
+            . Same mechanism is used in all
+            iconStart
+            /
+            iconEnd
+            inputs across the library.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track $index) {
 
 ### How to Use (Import)
 
@@ -4841,49 +4842,40 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-icon icon="@tui.check"></tui-icon>
+<tui-icon icon="@tui.check" />
 ```
 
 ### Example
 
 ```html
-<tui-icon [background]="backgroundIcon" [icon]="icon" [style.background]="backgroundColor" [style.color]="color" [style.font-size.px]="size" />
+<tui-icon [background]="background" [badge]="badge" [icon]="icon" [style.background]="background ? 'var(--tui-status-info-pale-hover)' : ''" />
 ```
 
 ### API
 
 | Property | Type | Description |
 |----------|-----|----------|
-| [icon] | `string` | . |
-| [background] | `string` | You can limit the area of your icon by shape which refers to removing part of icon area defined by other
-                icon. |
+| [icon] | `string` | Icon name |
+| [background] | `string` | Icon used as a mask to produce 2-color icons |
+| [badge] | `string` | Second icon used as a smaller badge in bottom right corner |
 
 ### TypeScript
 
 ```ts
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiIcon} from '@taiga-ui/core';
-import {
-    TUI_PREVIEW_ICONS,
-    TuiAccordion,
-    tuiInputNumberOptionsProvider,
-} from '@taiga-ui/kit';
+import {TUI_PREVIEW_ICONS} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAccordion, TuiDemo, TuiIcon],
+    imports: [TuiDemo, TuiIcon],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     changeDetection,
-    providers: [tuiInputNumberOptionsProvider({min: 0})],
 })
 export default class Page {
-    protected readonly lucide = import('./examples/import/lucide.md?raw');
-    protected readonly material = import('./examples/import/material.md?raw');
-    protected readonly fontAwesome = import('./examples/import/font-awesome.md?raw');
     protected readonly used = Object.values(inject(TUI_PREVIEW_ICONS)); // compatibility with proprietary icons
-    protected readonly routes = DemoRoute;
 
     protected readonly iconVariants = [
         '@tui.info',
@@ -4903,30 +4895,30 @@ export default class Page {
         ),
     ];
 
-    protected readonly colorVariants = ['', 'var(--tui-text-primary)', 'red', '#3aa981'];
-
     protected readonly examples = [
         'Basic',
-        'External',
-        'Two colors',
+        'Parameters',
+        'Features',
         'Bundled',
         'Resolver',
-    ];
-
-    protected readonly descriptions = [
-        '',
-        '',
-        '',
-        'You can provide SVG source code in a dictionary to be bundled with the app',
-        'IMPORTANT: Icon names are not allowed to have "/" symbol',
+        'External',
     ];
 
     protected icon = '@tui.heart';
-    protected backgroundIcon = '@tui.heart-filled';
-    protected backgroundColor = 'var(--tui-background-accent-2-hover)';
-    protected color = '';
+    protected background = '';
+    protected badge = '';
+}
+```
 
-    protected size = 48;
+### LESS
+
+```less
+tui-icon {
+    color: var(--tui-status-info);
+
+    &::after {
+        color: var(--tui-status-warning);
+    }
 }
 ```
 

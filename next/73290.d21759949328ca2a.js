@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[73290],{73290:n=>{n.exports='<tui-icon icon="https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg" />\n<tui-icon icon="https://cdn-icons-png.flaticon.com/64/12710/12710759.png" />\n<tui-icon [icon]="icon" />\n'}}]);

@@ -84,7 +84,7 @@
 - [Filter](https://taiga-ui.dev/components/filter) — Components shows separated items that can be used to filter content on the page. There are also an option with badges.
 - [Floating Container](https://taiga-ui.dev/components/floating-container) — FloatingContainer is a special container for creating different animated sticky footers @for (example of examples; track example; let index = $index) {
 - [Group](https://taiga-ui.dev/components/group) — A directive for grouping other components. For example, textfields and buttons .
-- [Icon](https://taiga-ui.dev/components/icon) — A component to use icons and color them with CSS. By default, tui-icon expects the Lucide icons. To associate a name with icon you should use that pattern &#64;tui.[name] @for (example of examples; track example; let index = $index) {
+- [Icon](https://taiga-ui.dev/components/icon) — A component to show icons and color them with CSS. Taiga UI ships with Lucide icons . Same mechanism is used in all iconStart / iconEnd inputs across the library. @for (example of examples; track $index) {
 - [Input](https://taiga-ui.dev/components/input)
 - [Input Card](https://taiga-ui.dev/components/input-card) — InputCard can be used with InputExpire and InputCVC to input a card. Use tuiCreateLuhnValidator(message) to create a Validator that uses Luhn algorithm
 - [Input Card Group](https://taiga-ui.dev/components/input-card-group) — InputCardGroup is used to input a card as a separated control @for (example of examples; track example; let index = $index) {
