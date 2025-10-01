@@ -156,6 +156,8 @@ jobs:
             --update-snapshots \
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+      - run: tree ./projects/demo-playwright/snapshots
+        continue-on-error: true
 
       - uses: taiga-family/ci/actions/run/clone@v1.163.0
         with:
@@ -174,6 +176,8 @@ jobs:
           npx nx e2e demo-playwright -- \
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+      - run: tree ./projects/demo-playwright/tests-results
+        continue-on-error: true
 
       - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.163.0
 
