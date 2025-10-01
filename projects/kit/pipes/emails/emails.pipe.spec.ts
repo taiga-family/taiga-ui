@@ -1,4 +1,4 @@
-/// <reference types="jest" />
+/// <reference types="@types/jest" />
 import {TestBed} from '@angular/core/testing';
 import {TUI_EMAIL_PIPE_OPTIONS, TuiEmailsPipe} from '@taiga-ui/kit';
 

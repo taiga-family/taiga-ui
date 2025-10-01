@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiSizeL} from '@taiga-ui/core/types';
@@ -14,14 +14,12 @@ import {type TuiSizeL} from '@taiga-ui/core/types';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._card]': 'card',
-        '[attr.data-size]': 'size',
+        '[class._card]': 'card()',
+        '[attr.data-size]': 'size()',
     },
 })
 export class TuiBlockStatusComponent {
-    @Input()
-    public card = false;
+    public readonly card = input(false);
 
-    @Input()
-    public size: TuiSizeL = 'l';
+    public readonly size = input<TuiSizeL>('l');
 }

@@ -1,4 +1,5 @@
-/// <reference types="jest" />
+/// <reference types="@types/jest" />
+/// <reference types="@types/node" />
 import {tuiSwitchNgDevMode} from '@taiga-ui/testing/mocks';
 import {setupZoneTestEnv} from 'jest-preset-angular/setup-env/zone';
 import ResizeObserver from 'resize-observer-polyfill';

@@ -19,11 +19,7 @@
         />
         <tui-icon tuiTooltip="A tooltip" />
     </tui-textfield>
-
-    <tui-error
-        formControlName="nameValue"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="nameValue" />
 
     <tui-textfield>
         <label tuiLabel>Input date</label>
@@ -33,11 +29,9 @@
             tuiInputDate
         />
         <tui-calendar *tuiTextfieldDropdown />
+
+        <tui-error formControlName="periodValue" />
     </tui-textfield>
-    <tui-error
-        formControlName="periodValue"
-        [error]="[] | tuiFieldError | async"
-    />
 
     <fieldset>
         <div class="stack">
@@ -50,11 +44,7 @@
                 />
                 <tui-icon tuiPassword />
             </tui-textfield>
-
-            <tui-error
-                formControlName="passwordValue"
-                [error]="[] | tuiFieldError | async"
-            />
+            <tui-error formControlName="passwordValue" />
         </div>
         <div class="stack">
             <tui-textfield>
@@ -65,10 +55,7 @@
                     [postfix]="' RUB' | tuiCurrency"
                 />
             </tui-textfield>
-            <tui-error
-                formControlName="moneyValue"
-                [error]="[] | tuiFieldError | async"
-            />
+            <tui-error formControlName="moneyValue" />
         </div>
     </fieldset>
 
@@ -105,17 +92,20 @@
                     [items]="persons"
                 />
             </tui-textfield>
-            <tui-error
-                formControlName="personValue"
-                [error]="[] | tuiFieldError | async"
-            />
+            <tui-error formControlName="personValue" />
         </div>
         <div class="stack">
-            <tui-input-phone formControlName="phoneValue">Input phone</tui-input-phone>
-            <tui-error
-                formControlName="phoneValue"
-                [error]="[] | tuiFieldError | async"
-            />
+            <tui-textfield>
+                <label tuiLabel>Input phone</label>
+
+                <input
+                    autocomplete="tel"
+                    formControlName="phoneValue"
+                    mask="+7 ### ###-##-##"
+                    tuiInputPhone
+                />
+            </tui-textfield>
+            <tui-error formControlName="phoneValue" />
         </div>
     </fieldset>
     <div

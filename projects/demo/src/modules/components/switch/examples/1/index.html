@@ -1,4 +1,4 @@
-@for (platform of platforms; track platform; let first = $first) {
+@for (platform of platforms; track $index) {
     <div
         class="wrapper"
         [class.wrapper_web]="platform === 'web'"
@@ -8,44 +8,44 @@
             tuiSwitch
             type="checkbox"
             [ngModel]="true"
-            [showIcons]="first"
-            [size]="getSize(first)"
+            [showIcons]="$first"
+            [size]="getSize($first)"
         />
         <input
             tuiSwitch
             type="checkbox"
             [disabled]="true"
             [ngModel]="true"
-            [showIcons]="first"
-            [size]="getSize(first)"
+            [showIcons]="$first"
+            [size]="getSize($first)"
         />
         <input
             tuiSwitch
             type="checkbox"
-            [showIcons]="first"
-            [size]="getSize(first)"
+            [showIcons]="$first"
+            [size]="getSize($first)"
         />
         <input
             tuiSwitch
             type="checkbox"
             [disabled]="true"
             [ngModel]="false"
-            [showIcons]="first"
-            [size]="getSize(first)"
+            [showIcons]="$first"
+            [size]="getSize($first)"
         />
         <input
             tuiSwitch
             type="checkbox"
             [formControl]="invalidTrue"
-            [showIcons]="first"
-            [size]="getSize(first)"
+            [showIcons]="$first"
+            [size]="getSize($first)"
         />
         <input
             tuiSwitch
             type="checkbox"
             [formControl]="invalidFalse"
-            [showIcons]="first"
-            [size]="getSize(first)"
+            [showIcons]="$first"
+            [size]="getSize($first)"
         />
     </div>
 }

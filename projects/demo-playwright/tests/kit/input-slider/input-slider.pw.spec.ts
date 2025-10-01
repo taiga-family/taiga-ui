@@ -227,7 +227,7 @@ describe('InputSlider', () => {
             );
 
             await expect(inputSlider.textfield).toBeDisabled();
-            await expect(inputSlider.slider).toBeDisabled();
+            await expect(inputSlider.slider).toBeHidden();
 
             await expect(
                 new TuiDocumentationPagePO(page).apiPageExample,
@@ -253,13 +253,13 @@ describe('InputSlider', () => {
             await page.keyboard.down('ArrowUp');
 
             await expect(inputSlider.textfield).toHaveValue('0');
-            await expect(inputSlider.slider).toHaveValue('0');
+            await expect(inputSlider.slider).toBeHidden();
 
             await inputSlider.textfield.press('ArrowDown');
             await page.keyboard.down('ArrowDown');
 
             await expect(inputSlider.textfield).toHaveValue('0');
-            await expect(inputSlider.slider).toHaveValue('0');
+            await expect(inputSlider.slider).toBeHidden();
         });
     });
 

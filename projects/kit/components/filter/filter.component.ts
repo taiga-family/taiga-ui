@@ -40,7 +40,7 @@ export class TuiFilter<T> extends TuiControl<readonly T[]> {
     public items: readonly T[] = [];
 
     @Input()
-    public size: TuiSizeL | TuiSizeS = inject(TUI_BLOCK_OPTIONS).size;
+    public size: TuiSizeL | TuiSizeS = inject(TUI_BLOCK_OPTIONS).size || 'l';
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<T> = TUI_FALSE_HANDLER;

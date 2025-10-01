@@ -10,11 +10,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiError} from '@taiga-ui/core';
-import {TuiFieldErrorPipe, TuiFiles, tuiFilesAccepted} from '@taiga-ui/kit';
+import {TuiFiles, tuiFilesAccepted} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, TuiFiles],
+    imports: [AsyncPipe, ReactiveFormsModule, TuiError, TuiFiles],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

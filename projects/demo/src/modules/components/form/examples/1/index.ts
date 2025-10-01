@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -12,18 +11,16 @@ import {
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
-import {TuiFieldErrorPipe, TuiSegmented, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
+import {TuiSegmented, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        AsyncPipe,
         ReactiveFormsModule,
         TuiAppearance,
         TuiButton,
         TuiCardLarge,
         TuiError,
-        TuiFieldErrorPipe,
         TuiForm,
         TuiHeader,
         TuiIcon,

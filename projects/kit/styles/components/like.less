@@ -11,12 +11,12 @@
  * data-size — size (default: 'm') ('s' | 'm')
  *
  * @vars
- * --t-icon-color - custom color for `:checked` state
- * --t-unchecked-icon — default state icon
- * --t-checked-icon — checkmark icon
+ * --t-icon-color — custom color for `:checked` state
+ * --t-icon-start — default state icon
+ * --t-icon-end — checkmark icon
  *
  * @example
- * <input tuiLike />
+ * <input tuiLike tuiIcons tuiAppearance data-appearance="secondary" />
  *
  * @see-also
  * Checkbox, Switch, Radio, Appearance
@@ -34,16 +34,11 @@
     &::after {
         .fullsize();
 
-        content: '';
-        background: currentColor;
         font-size: 1.25rem;
-        mask: var(--t-unchecked-icon) no-repeat center /
-            calc(~'min(1em, 100%)' + 10 * var(--tui-stroke-width, 0.125rem)) ~'min(1em, 100%)' padding-box;
         transition-property: transform, opacity;
     }
 
     &::after {
-        mask-image: var(--t-checked-icon);
         opacity: 0;
         color: var(--t-icon-color, inherit);
         transform: scale(0);

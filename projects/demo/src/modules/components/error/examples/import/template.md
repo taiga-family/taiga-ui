@@ -1,3 +1,3 @@
 ```html
-<tui-error [error]="error"></tui-error>
+<tui-error [error]="error" />
 ```

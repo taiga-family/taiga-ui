@@ -1,11 +1,12 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon} from '@taiga-ui/core';
+import {TuiIcon, TuiIconPipe} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiIcon],
+    imports: [TuiIcon, TuiIconPipe],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

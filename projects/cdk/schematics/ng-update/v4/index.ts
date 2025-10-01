@@ -21,6 +21,7 @@ import {
 } from '../steps';
 import {replaceServices} from '../steps/replace-services';
 import {getFileSystem} from '../utils/get-file-system';
+import {replaceFunctions} from '../utils/replace-functions';
 import {
     migrateAlertService,
     migrateAllCountryIsoCodes,
@@ -51,7 +52,6 @@ import {dropUniversalMock} from './steps/drop-universal-mock';
 import {migrateEditor} from './steps/migrate-editor';
 import {migrateImportProvidersFrom} from './steps/migrate-providers-from';
 import {migrateRoot} from './steps/migrate-root';
-import {replaceFunctions} from './steps/replace-functions';
 import {replaceModulesWithProviders} from './steps/utils/replace-modules-with-providers';
 
 function main(options: TuiSchema): Rule {

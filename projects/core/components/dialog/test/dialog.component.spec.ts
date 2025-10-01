@@ -1,19 +1,39 @@
 import {type HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {tuiDialogOptionsProvider, TuiDialogService, TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {By} from '@angular/platform-browser';
+import {TuiActiveZone} from '@taiga-ui/cdk';
+import {
+    provideTaiga,
+    tuiDialogOptionsProvider,
+    TuiDialogService,
+    TuiRoot,
+} from '@taiga-ui/core';
 import {TuiDialogHarness} from '@taiga-ui/testing';
 
-describe('Dialog with TUI_DIALOG_OPTIONS', () => {
+describe('Dialogs', () => {
     @Component({
         standalone: true,
-        imports: [TuiRoot],
-        template: '<tui-root />',
+        imports: [TuiActiveZone, TuiRoot],
+        template: `
+            <tui-root>
+                <div (tuiActiveZoneChange)="onActive($event)">
+                    <button
+                        type="button"
+                        (click)="dialogs.open('Dialog').subscribe()"
+                    >
+                        Open dialog
+                    </button>
+                </div>
+            </tui-root>
+        `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
-    class Test {}
+    class Test {
+        public dialogs = inject(TuiDialogService);
+        public onActive = jest.fn();
+    }
 
     const closeable = false;
 
@@ -24,7 +44,7 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [tuiDialogOptionsProvider({closeable}), NG_EVENT_PLUGINS],
+            providers: [tuiDialogOptionsProvider({closeable}), provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
@@ -40,6 +60,20 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
             const dialog = await loader.getHarness(TuiDialogHarness);
 
             expect(await dialog.getCloseButton()).toBeNull();
+        });
+    });
+
+    describe('active zone', () => {
+        it('stays true when dialog is activated', () => {
+            const button = fixture.debugElement.query(By.css('button'));
+
+            button.nativeElement.focus();
+            button.nativeElement.click();
+            fixture.detectChanges();
+            fixture.debugElement.query(By.css('tui-dialog button')).nativeElement.focus();
+
+            expect(fixture.componentInstance.onActive).toHaveBeenCalledTimes(1);
+            expect(fixture.componentInstance.onActive).toHaveBeenCalledWith(true);
         });
     });
 });

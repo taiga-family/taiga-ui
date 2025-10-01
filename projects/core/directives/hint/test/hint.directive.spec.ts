@@ -6,7 +6,7 @@ import {
     TestBed,
     tick,
 } from '@angular/core/testing';
-import {TuiHint, TuiRoot} from '@taiga-ui/core';
+import {provideTaiga, TuiHint, TuiRoot} from '@taiga-ui/core';
 
 type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
@@ -55,6 +55,7 @@ describe('Hint', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         document.body.style.margin = '0';

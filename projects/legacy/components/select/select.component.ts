@@ -10,7 +10,7 @@ import {
 import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {
     tuiAsDataListHost,
     tuiAsOptionContent,
@@ -108,8 +108,7 @@ export class TuiSelectComponent<T>
 
     public get focused(): boolean {
         return (
-            tuiIsNativeFocused(this.nativeFocusableElement) ||
-            !!this.dropdown?.tuiDropdownOpen
+            tuiIsFocused(this.nativeFocusableElement) || !!this.dropdown?.tuiDropdownOpen
         );
     }
 
