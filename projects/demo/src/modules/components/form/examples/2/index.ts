@@ -17,6 +17,7 @@ import {
     TuiCheckbox,
     TuiChevron,
     TuiDataListWrapper,
+    TuiInputDate,
     TuiInputNumber,
     TuiInputPhone,
     TuiPassword,
@@ -26,7 +27,6 @@ import {
 } from '@taiga-ui/kit';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 import {
-    TuiInputDateModule,
     TuiInputModule,
     TuiInputSliderModule,
     TuiTextfieldControllerModule,
@@ -67,7 +67,6 @@ class Account {
         TuiGroup,
         TuiHeader,
         TuiIcon,
-        TuiInputDateModule,
         TuiInputModule,
         TuiInputNumber,
         TuiInputPhone,
@@ -80,6 +79,7 @@ class Account {
         TuiTextfieldControllerModule,
         TuiTitle,
         TuiTooltip,
+        TuiInputDate,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
