@@ -1,17 +1,21 @@
 /// <reference types="jest" />
 import {TestBed} from '@angular/core/testing';
+import type {TuiStringMatcher} from '@taiga-ui/cdk';
 import type {TuiDataListHost} from '@taiga-ui/core';
 import {TUI_DATA_LIST_HOST, TUI_ITEMS_HANDLERS} from '@taiga-ui/core';
-import {TUI_ONLY_MATCHING_ITEMS} from '@taiga-ui/kit';
 
 import {TuiFilterByInputPipe} from './filter-by-input.pipe';
+import {
+    TUI_FILTER_BY_INPUT_HANDLER,
+    type TuiFilterByInputHandler,
+} from './filter-option.token';
 
 interface TestDataListHost<T> extends TuiDataListHost<T> {
     nativeFocusableElement: {value: string};
 }
 
 describe('TuiFilterByInputPipe', () => {
-    describe('without only matching items', () => {
+    describe('default behavior (return all items on exact match)', () => {
         let pipe: TuiFilterByInputPipe;
         let host: TestDataListHost<unknown>;
 
@@ -39,40 +43,38 @@ describe('TuiFilterByInputPipe', () => {
             expect(pipe).toBeDefined();
         });
 
-        describe('flat arrays', () => {
-            it('should return all items when exact match exists', () => {
-                host.nativeFocusableElement.value = 'b';
+        it('should return all items when exact match exists', () => {
+            host.nativeFocusableElement.value = 'b';
 
-                const matcher = (
-                    item: unknown,
-                    q: string,
-                    stringify: (v: unknown) => string,
-                ): boolean => stringify(item).toLowerCase().includes(q.toLowerCase());
+            const matcher = (
+                item: unknown,
+                q: string,
+                stringify: (v: unknown) => string,
+            ): boolean => stringify(item).toLowerCase().includes(q.toLowerCase());
 
-                const items = ['a', 'b', 'abc'];
-                const result = pipe.transform(items, matcher);
+            const items = ['a', 'b', 'abc'];
+            const result = pipe.transform(items, matcher);
 
-                expect(result).toEqual(['a', 'b', 'abc']);
-            });
+            expect(result).toEqual(['a', 'b', 'abc']);
+        });
 
-            it('should filter flat array by query using matcher when no exact match', () => {
-                host.nativeFocusableElement.value = 'x';
+        it('should filter flat array by query using matcher when no exact match', () => {
+            host.nativeFocusableElement.value = 'x';
 
-                const matcher = (
-                    item: unknown,
-                    q: string,
-                    stringify: (v: unknown) => string,
-                ): boolean => stringify(item).toLowerCase().includes(q.toLowerCase());
+            const matcher = (
+                item: unknown,
+                q: string,
+                stringify: (v: unknown) => string,
+            ): boolean => stringify(item).toLowerCase().includes(q.toLowerCase());
 
-                const items = ['a', 'b', 'abc', 'xyz'];
-                const result = pipe.transform(items, matcher);
+            const items = ['a', 'b', 'abc', 'xyz'];
+            const result = pipe.transform(items, matcher);
 
-                expect(result).toEqual(['xyz']);
-            });
+            expect(result).toEqual(['xyz']);
         });
     });
 
-    describe('with only matching items', () => {
+    describe('custom handler (only matching items)', () => {
         let pipe: TuiFilterByInputPipe;
         let host: TestDataListHost<unknown>;
 
@@ -80,6 +82,28 @@ describe('TuiFilterByInputPipe', () => {
             host = {
                 stringify: (v: unknown) => String(v),
                 nativeFocusableElement: {value: ''},
+            };
+
+            const onlyMatchingHandler: TuiFilterByInputHandler = <T>(
+                items: ReadonlyArray<readonly T[]> | readonly T[] | null,
+                matcher: (item: T, q: string, stringify: (v: T) => string) => boolean,
+                query: string,
+            ) => {
+                if (!items) {
+                    return null;
+                }
+
+                const stringify = (v: T) => String(v);
+
+                if (Array.isArray(items) && items.every((i) => !Array.isArray(i))) {
+                    return (items as readonly T[]).filter((item) =>
+                        matcher(item, query, stringify),
+                    );
+                }
+
+                return (items as ReadonlyArray<readonly T[]>).map((inner) =>
+                    inner.filter((item) => matcher(item, query, stringify)),
+                );
             };
 
             await TestBed.configureTestingModule({
@@ -90,26 +114,41 @@ describe('TuiFilterByInputPipe', () => {
                         provide: TUI_ITEMS_HANDLERS,
                         useValue: {stringify: () => (v: unknown) => String(v)},
                     },
-                    {provide: TUI_ONLY_MATCHING_ITEMS, useValue: true},
+                    {provide: TUI_FILTER_BY_INPUT_HANDLER, useValue: onlyMatchingHandler},
                 ],
             }).compileComponents();
 
             pipe = TestBed.inject(TuiFilterByInputPipe);
         });
 
-        it('should return only exact match when TUI_ONLY_MATCHING_ITEMS is provided', () => {
+        it('should filter items even when exact match exists', () => {
             host.nativeFocusableElement.value = 'b';
 
             const matcher = (
                 item: unknown,
                 q: string,
                 stringify: (v: unknown) => string,
-            ): boolean => stringify(item).toLowerCase() === q.toLowerCase();
+            ): boolean => stringify(item).toLowerCase().includes(q.toLowerCase());
 
-            const items = ['b', 'abc'];
+            const items = ['a', 'b', 'abc'];
             const result = pipe.transform(items, matcher);
 
-            expect(result).toEqual(['b']);
+            expect(result).toEqual(['b', 'abc']);
+        });
+
+        it('should continue filtering without exact match', () => {
+            host.nativeFocusableElement.value = 'x';
+
+            const matcher = (
+                item: unknown,
+                q: string,
+                stringify: (v: unknown) => string,
+            ): boolean => stringify(item).toLowerCase().includes(q.toLowerCase());
+
+            const items = ['a', 'b', 'abc', 'xyz'];
+            const result = pipe.transform(items, matcher);
+
+            expect(result).toEqual(['xyz']);
         });
     });
 });

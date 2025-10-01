@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
-import {TUI_ONLY_MATCHING_ITEMS} from './filter-option.token';
+import {TUI_FILTER_BY_INPUT_HANDLER} from './filter-option.token';
 
 // TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields
 @Pipe({
@@ -25,7 +25,9 @@ export class TuiFilterByInputPipe implements PipeTransform {
     private readonly itemsHandlers: TuiItemsHandlers<unknown> =
         inject(TUI_ITEMS_HANDLERS);
 
-    private readonly onlyMatchingItems = inject(TUI_ONLY_MATCHING_ITEMS);
+    private readonly customHandler = inject(TUI_FILTER_BY_INPUT_HANDLER, {
+        optional: true,
+    });
 
     public transform<T>(
         items: ReadonlyArray<readonly T[]>,
@@ -44,6 +46,15 @@ export class TuiFilterByInputPipe implements PipeTransform {
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T> = TUI_DEFAULT_MATCHER,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
+        const query =
+            this.textfield?.value() ||
+            (this.host as any).nativeFocusableElement?.value ||
+            '';
+
+        if (this.customHandler) {
+            return this.customHandler(items, matcher, query);
+        }
+
         return this.filter<T>(
             items,
             matcher,
@@ -79,7 +90,9 @@ export class TuiFilterByInputPipe implements PipeTransform {
         stringify: TuiStringHandler<T>,
         query: string,
     ): readonly T[] {
-        return this.shouldReturnAllItems(items, stringify, query)
+        const match = this.getMatch(items, stringify, query);
+
+        return match != null
             ? items
             : items.filter((item) => matcher(item, query, stringify));
     }
@@ -90,27 +103,11 @@ export class TuiFilterByInputPipe implements PipeTransform {
         stringify: TuiStringHandler<T>,
         query: string,
     ): ReadonlyArray<readonly T[]> {
-        if (this.onlyMatchingItems) {
-            return items.map((inner) =>
-                this.filterFlat(inner, matcher, stringify, query),
-            );
-        }
+        const match = items.find((item) => this.getMatch(item, stringify, query) != null);
 
-        const hasExactMatch = items.some(
-            (item) => this.getMatch(item, stringify, query) != null,
-        );
-
-        return hasExactMatch
+        return match != null
             ? items
             : items.map((inner) => this.filterFlat(inner, matcher, stringify, query));
-    }
-
-    private shouldReturnAllItems<T>(
-        items: readonly T[],
-        stringify: TuiStringHandler<T>,
-        query: string,
-    ): boolean {
-        return !this.onlyMatchingItems && this.getMatch(items, stringify, query) != null;
     }
 
     private getMatch<T>(
