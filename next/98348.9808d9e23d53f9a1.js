@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[98348],{98348:t=>{t.exports='```html\n<tui-textfield>\n  <input\n    tuiInputDate\n    [tuiDateFormat]="{mode, separator}"\n  />\n  <tui-calendar *tuiTextfieldDropdown />\n</tui-textfield>\n```\n'}}]);
