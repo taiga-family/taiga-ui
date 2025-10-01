@@ -174,8 +174,10 @@ jobs:
         continue-on-error: true
         run: |
           npx nx e2e demo-playwright -- \
+            --update-snapshots=none \
             --project=${{ matrix.shard.project }} \
-            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
+            --retries=${{ env.RETRY_COUNT }}
       - run: tree ./projects/demo-playwright/tests-results
         continue-on-error: true
 
