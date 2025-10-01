@@ -12821,7 +12821,8 @@ Directive allows to customize
 ### How to Use (Import)
 
 ```ts
-import {TuiDateFormat} from '@taiga-ui/core';
+import {TuiDateFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputDate} from '@taiga-ui/kit';
 
 // ...
 
@@ -12830,6 +12831,8 @@ import {TuiDateFormat} from '@taiga-ui/core';
   imports: [
     // ...
     TuiDateFormat,
+    TuiInputDate,
+    TuiTextfield,
   ],
   // ...
 })
@@ -12839,22 +12842,33 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-input-date [tuiDateFormat]="{mode, separator}"></tui-input-date>
+<tui-textfield>
+  <input
+    tuiInputDate
+    [tuiDateFormat]="{mode, separator}"
+  />
+  <tui-calendar *tuiTextfieldDropdown />
+</tui-textfield>
 ```
 
 ### TypeScript
 
 ```ts
 import {Component} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
+import {TuiLink} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDemo],
+    imports: [TuiDemo, TuiLink, RouterLink],
     templateUrl: './index.html',
     changeDetection,
 })
-export default class Page {}
+export default class Page {
+    protected readonly routes = DemoRoute;
+}
 ```
 
 ---
