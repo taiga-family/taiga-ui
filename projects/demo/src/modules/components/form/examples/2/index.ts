@@ -11,6 +11,7 @@ import {
     TuiLabel,
     TuiTextfield,
     TuiTitle,
+    TuiHeader,
 } from '@taiga-ui/core';
 import {
     TuiBlock,
@@ -24,7 +25,7 @@ import {
     TuiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiForm} from '@taiga-ui/layout';
 import {
     TuiInputDateModule,
     TuiInputModule,

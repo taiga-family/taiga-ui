@@ -9,7 +9,7 @@ import {
     TuiSensitive,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiHeader} from '@taiga-ui/core';
 
 @Component({
     imports: [

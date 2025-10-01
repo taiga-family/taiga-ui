@@ -25,7 +25,7 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiFullscreen} from '@taiga-ui/core/components/fullscreen';
+import {TuiFullscreen} from '@taiga-ui/kit/components/fullscreen';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';

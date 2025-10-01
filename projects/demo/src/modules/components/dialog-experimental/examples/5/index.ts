@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DIALOGS_CLOSE, TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiDialog} from '@taiga-ui/experimental';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiHeader} from '@taiga-ui/core';
 import {merge} from 'rxjs';
 
 import {AuthService} from './service';

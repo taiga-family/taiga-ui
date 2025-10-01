@@ -19,15 +19,8 @@ import {TuiRoot} from '@taiga-ui/core/components/root';
     template: '<tui-root><ng-content /></tui-root>',
     styleUrls: ['./fullscreen.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [
-        {
-            provide: TuiActiveZone,
-            useValue: null,
-        },
-    ],
-    host: {
-        '(document:fullscreenchange)': 'closedByEscape($event)',
-    },
+    viewProviders: [{provide: TuiActiveZone, useValue: null}],
+    host: {'(document:fullscreenchange)': 'closedByEscape($event)'},
 })
 export class TuiFullscreen {
     @ViewChild(TuiRoot, {read: ElementRef})

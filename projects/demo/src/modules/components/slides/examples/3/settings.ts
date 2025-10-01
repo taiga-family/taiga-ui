@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {TuiAnimated} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
 import {TuiSwitch} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/core';
 
 @Component({
     imports: [FormsModule, TuiCell, TuiSwitch, TuiTitle],

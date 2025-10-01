@@ -102,8 +102,9 @@
 </div>
 
 <div
+    appearance="floating"
     tuiCardLarge
-    tuiSurface="floating"
+    tuiSurface
     class="reviews"
 >
     <h3 class="heading">
@@ -123,7 +124,8 @@
         <div class="wrapper">
             @for (review of reviews; track review) {
                 <div
-                    tuiSurface="neutral"
+                    tuiAppearance="neutral"
+                    tuiSurface
                     class="review"
                 >
                     {{ review.body }}

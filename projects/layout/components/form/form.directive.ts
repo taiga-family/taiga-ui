@@ -19,7 +19,7 @@ import {
 } from '@taiga-ui/core/components/textfield';
 import {TUI_SEGMENTED_OPTIONS} from '@taiga-ui/kit/components/segmented';
 import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
-import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
+import {TUI_HEADER_OPTIONS} from '@taiga-ui/core/components/header';
 
 import {TUI_FORM_OPTIONS, type TuiFormOptions} from './form.options';
 

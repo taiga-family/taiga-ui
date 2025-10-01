@@ -3,10 +3,11 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiSurface} from '@taiga-ui/core';
+import {TuiSurface} from '@taiga-ui/layout';
+import {TuiRipple} from '@taiga-ui/addon-mobile';
 
 @Component({
-    imports: [FormsModule, TuiRepeatTimes, TuiSurface],
+    imports: [FormsModule, TuiRepeatTimes, TuiSurface, TuiRipple],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

@@ -14,7 +14,7 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/components/dialog';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {TUI_HEADER_OPTIONS, TuiHeader} from '@taiga-ui/layout/components/header';
+import {TUI_HEADER_OPTIONS, TuiHeader} from '@taiga-ui/core/components/header';
 import {
     injectContext,
     PolymorpheusComponent,

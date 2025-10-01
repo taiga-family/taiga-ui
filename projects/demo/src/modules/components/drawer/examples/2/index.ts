@@ -11,7 +11,7 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TUI_CONFIRM, TuiDrawer} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiHeader} from '@taiga-ui/core';
 import {filter} from 'rxjs';
 
 @Component({

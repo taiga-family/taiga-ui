@@ -54,7 +54,7 @@ import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from '@taiga-ui/kit/components/in
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiGetCallingCode, tuiMaskito} from '@taiga-ui/kit/utils';
-import {TuiCell} from '@taiga-ui/layout/components/cell';
+import {TuiCell} from '@taiga-ui/core/components/cell';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
 import {type MetadataJson} from 'libphonenumber-js/core';
 import {filter, from, skip} from 'rxjs';

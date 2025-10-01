@@ -7,7 +7,7 @@ import {tuiArrayToggle} from '@taiga-ui/cdk';
 import {TuiTitle} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/experimental';
 import {TuiAvatar, TuiCheckbox, TuiConnected} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/core';
 
 @Component({
     imports: [

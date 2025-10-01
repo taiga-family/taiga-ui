@@ -10,7 +10,7 @@ import {
     TuiFilterByInputPipe,
     TuiInputPhone,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/core';
 
 class User {
     constructor(

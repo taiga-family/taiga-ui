@@ -9,10 +9,12 @@ import {
     tuiHeightCollapse,
     TuiLabel,
     tuiSlideInTop,
+    TuiCell,
+    TuiHeader,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiCell, TuiHeader, TuiSearch} from '@taiga-ui/layout';
+import {TuiSearch} from '@taiga-ui/layout';
 
 @Component({
     imports: [

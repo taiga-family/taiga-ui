@@ -6,7 +6,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/experimental';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/core';
 
 interface Operation {
     title: string;

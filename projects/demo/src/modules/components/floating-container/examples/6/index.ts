@@ -12,7 +12,7 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/core';
 
 @Component({
     imports: [

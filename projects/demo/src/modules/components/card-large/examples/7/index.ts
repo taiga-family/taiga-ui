@@ -9,9 +9,11 @@ import {
     TuiIcon,
     TuiLink,
     TuiTitle,
+    TuiCell,
+    TuiHeader,
 } from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     imports: [

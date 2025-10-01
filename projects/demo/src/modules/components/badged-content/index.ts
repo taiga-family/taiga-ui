@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiHeader} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiAvatar, TuiBadgedContent, TuiBadgeNotification, TuiDemo, TuiHeader],

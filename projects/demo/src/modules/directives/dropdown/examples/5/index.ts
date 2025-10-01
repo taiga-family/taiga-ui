@@ -23,7 +23,7 @@ import {
     TuiInputNumber,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/core';
 import {
     TuiComboBoxModule,
     TuiMultiSelectModule,
