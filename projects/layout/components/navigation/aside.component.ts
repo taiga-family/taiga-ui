@@ -8,6 +8,7 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
+import {tuiHintOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     selector: 'aside[tuiNavigationAside]',
@@ -29,6 +30,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        tuiHintOptionsProvider({appearance: 'floating'}),
         tuiButtonOptionsProvider({size: 's', appearance: 'flat-grayscale'}),
         tuiDropdownOptionsProvider({
             appearance: 'dropdown-navigation',
