@@ -1,4 +1,4 @@
-<ng-container *ngFor="let platform of platforms">
+@for (platform of platforms; track $index) {
     <h2>{{ platform === 'web' ? 'Desktop' : 'Mobile' }}</h2>
     <section [tuiPlatform]="platform">
         <button
@@ -66,16 +66,17 @@
             >
                 Action
             </button>
-            <button
-                *ngIf="platform === 'web'"
-                appearance="icon"
-                iconStart="@tui.x"
-                size="xs"
-                tuiIconButton
-                type="button"
-            >
-                Close
-            </button>
+            @if (platform === 'web') {
+                <button
+                    appearance="icon"
+                    iconStart="@tui.x"
+                    size="xs"
+                    tuiIconButton
+                    type="button"
+                >
+                    Close
+                </button>
+            }
         </div>
     </section>
     <section [tuiPlatform]="platform">
@@ -92,4 +93,4 @@
             </button>
         </div>
     </section>
-</ng-container>
+}

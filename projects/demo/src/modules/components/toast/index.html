@@ -4,29 +4,33 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="description"
-            [fullsize]="true"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template
-                #description
-                [ngSwitch]="index"
+        @for (example of examples; track $index) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [fullsize]="true"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                <ng-container *ngSwitchCase="0">Using inline with various content</ng-container>
-                <ng-container *ngSwitchCase="1">Custom styles and more component</ng-container>
-                <ng-container *ngSwitchCase="2">
-                    Showing toast as notification on top of the screen. By default 2 toasts can be shown simultaneously
-                    on desktop and 1 on mobile, the rest are queued. This number is controlled by
-                    <code>TUI_TOASTS_CONCURRENCY</code>
-                    token
-                </ng-container>
-            </ng-template>
-        </tui-doc-example>
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            Using inline with various content
+                        }
+                        @case (1) {
+                            Custom styles and more component
+                        }
+                        @case (2) {
+                            Showing toast as notification on top of the screen. By default 2 toasts can be shown
+                            simultaneously on desktop and 1 on mobile, the rest are queued. This number is controlled by
+                            <code>TUI_TOASTS_CONCURRENCY</code>
+                            token
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
