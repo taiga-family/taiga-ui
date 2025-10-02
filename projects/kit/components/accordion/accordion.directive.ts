@@ -1,12 +1,4 @@
-import {
-    Directive,
-    EventEmitter,
-    inject,
-    Input,
-    type OnChanges,
-    Output,
-    signal,
-} from '@angular/core';
+import {Directive, inject, model, type OnChanges} from '@angular/core';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
@@ -33,25 +25,17 @@ import {TuiAccordionComponent} from './accordion.component';
 export class TuiAccordionDirective implements OnChanges {
     private readonly accordion = inject(TuiAccordionComponent);
 
-    protected readonly size = tuiDirectiveBinding(TuiButton, 'size', this.accordion.size);
+    public readonly open = model<boolean | ''>(false, {alias: 'tuiAccordion'});
 
-    @Input()
-    public tuiAccordion: boolean | string = '';
-
-    @Output()
-    public readonly tuiAccordionChange = new EventEmitter<boolean>();
-
-    public readonly open = tuiDirectiveBinding(TuiChevron, 'rotated', signal(false));
+    public readonly size = tuiDirectiveBinding(TuiButton, 'size', this.accordion.size);
+    public readonly chevron = tuiDirectiveBinding(TuiChevron, 'rotated', this.open);
 
     public ngOnChanges(): void {
-        this.open.set(!!this.tuiAccordion);
         this.accordion.toggle(this);
     }
 
     public toggle(): void {
         this.open.set(!this.open());
-        this.tuiAccordion = this.open();
-        this.tuiAccordionChange.emit(this.open());
         this.accordion.toggle(this);
     }
 }

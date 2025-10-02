@@ -76,7 +76,7 @@
                 <button
                     appearance=""
                     [tuiAccordion]="!!openPagesArr[index]"
-                    (tuiAccordionChange)="openPagesArr[index] = $event"
+                    (tuiAccordionChange)="openPagesArr[index] = !!$event"
                 >
                     <span class="t-label">
                         <strong>{{ label }}</strong>
