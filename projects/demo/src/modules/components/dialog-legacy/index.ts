@@ -3,12 +3,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiAlertService, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiAccordion} from '@taiga-ui/kit';
 import {
     type TuiDialogContext,
     TuiDialogService,
     type TuiDialogSize,
 } from '@taiga-ui/legacy';
-import {TuiAccordion} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({

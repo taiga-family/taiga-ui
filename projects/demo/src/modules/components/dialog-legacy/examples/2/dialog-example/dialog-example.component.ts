@@ -7,10 +7,10 @@ import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect, TuiSlider} from '@taiga-ui/kit';
 import {
-    TuiInputModule,
-    TuiTextfieldControllerModule,
     type TuiDialogContext,
     TuiDialogService,
+    TuiInputModule,
+    TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 import {injectContext} from '@taiga-ui/polymorpheus';
 

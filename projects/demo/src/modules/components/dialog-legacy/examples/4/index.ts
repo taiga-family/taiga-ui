@@ -7,8 +7,8 @@ import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
 import {tuiClamp} from '@taiga-ui/cdk';
 import {TuiButton, TuiDropdownService, TuiNumberFormat} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {TuiDialogService} from '@taiga-ui/legacy';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     imports: [

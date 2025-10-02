@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
-import {type TuiDialogContext} from '@taiga-ui/core';
+import {TuiButton, type TuiDialogContext, TuiTextfield} from '@taiga-ui/core';
 import {TuiForm} from '@taiga-ui/layout';
 import {injectContext} from '@taiga-ui/polymorpheus';
 

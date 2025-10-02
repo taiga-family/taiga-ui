@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {TuiButton, TuiHint} from '@taiga-ui/core';
-import {TuiInputModule, TuiDialog} from '@taiga-ui/legacy';
+import {TuiDialog, TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [

@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
 import {TuiButton} from '@taiga-ui/core';
 import {TuiConfirmService} from '@taiga-ui/kit';
-import {TuiInputModule, TuiDialogService} from '@taiga-ui/legacy';
+import {TuiDialogService, TuiInputModule} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({

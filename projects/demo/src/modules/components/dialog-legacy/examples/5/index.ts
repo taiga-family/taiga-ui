@@ -2,12 +2,12 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {
     type TuiDialogContext,
     TuiDialogService,
     type TuiDialogSize,
 } from '@taiga-ui/legacy';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     imports: [TuiButton],
