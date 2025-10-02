@@ -37,9 +37,7 @@ test.describe('Inputs - updateOn', () => {
                 select = demo.locator('tui-expand tui-textfield:has(input[tuiSelect])');
                 submit = demo.getByTestId('tui-demo-button__submit-state');
                 option = page.locator('button[tuiOption]');
-                input = demo
-                    .locator('input[tuiSelect]:not([readonly]):not(:disabled)')
-                    .first();
+                input = demo.locator('input:not([readonly]):not(:disabled)').first();
             });
 
             async function expectScreenshot(name: string): Promise<void> {
