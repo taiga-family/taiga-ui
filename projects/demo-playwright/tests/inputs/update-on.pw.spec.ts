@@ -36,9 +36,11 @@ test.describe('Inputs - updateOn', () => {
 
                 select = demo.getByTestId('tui-demo-select__expand-update-on');
                 submit = demo.getByTestId('tui-demo-button__submit-state');
-                option = page.getByTestId('tui-data-list-wrapper__option');
+                option = page.locator('button[tuiOption]');
                 input = demo
-                    .locator('input:not([readonly]):not(:disabled)')
+                    .locator(
+                        'input:not([readonly]):not(:disabled):not([automation-id="tui-demo-select__expand-update-on"])',
+                    )
                     .first()
                     .or(demo.locator('textarea'));
             });
