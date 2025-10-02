@@ -354,9 +354,9 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Dialog (Experimental)',
+        title: 'Dialog (Legacy)',
         keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
-        route: DemoRoute.DialogExperimental,
+        route: DemoRoute.DialogLegacy,
     },
     {
         section: 'Components',

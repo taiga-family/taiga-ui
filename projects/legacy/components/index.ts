@@ -1,6 +1,7 @@
 export * from '@taiga-ui/legacy/components/arrow';
 export * from '@taiga-ui/legacy/components/color-selector';
 export * from '@taiga-ui/legacy/components/combo-box';
+export * from '@taiga-ui/legacy/components/dialog';
 export * from '@taiga-ui/legacy/components/input';
 export * from '@taiga-ui/legacy/components/input-color';
 export * from '@taiga-ui/legacy/components/input-date';

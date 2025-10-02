@@ -37,8 +37,8 @@ export default class Example {
             }),
         ),
         {
-            size: 'fullscreen',
-            closeable: false,
+            appearance: 'fullscreen',
+            closable: false,
             data: {
                 min: new TuiDay(2018, 2, 10),
             },
