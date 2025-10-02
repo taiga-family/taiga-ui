@@ -153,6 +153,7 @@
 - [Thumbnail Card](https://taiga-ui.dev/components/thumbnail-card) — Customizable credit card thumbnail @for (example of examples; track example; let index = $index) {
 - [Tiles](https://taiga-ui.dev/components/tiles) — Tiles is a light-weight touch-friendly tiles grid drag and drop component with no predefined styles.
 - [Title](https://taiga-ui.dev/components/title)
+- [Toast](https://taiga-ui.dev/components/toast) — @for (example of examples; track $index) {
 - [Tooltip](https://taiga-ui.dev/components/tooltip) — Component to show icons with a hint by hover
 - [Tree](https://taiga-ui.dev/components/tree) — Component to display tree-like data structure
 
