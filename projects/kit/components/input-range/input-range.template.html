@@ -57,7 +57,7 @@
         [ngModel]="value()"
         [segments]="segments"
         [step]="step"
-        (activeThumbChange)="onActiveThumbChange($event)"
+        (activeThumbChange)="lastActiveSide = $event"
         (mousedown.prevent)="focusToTextfield()"
         (ngModelChange)="onExternalValueUpdate($event)"
     />
