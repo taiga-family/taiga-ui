@@ -3,6 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiAccordion} from '@taiga-ui/kit';
+
 import {TuiAccordionTarget} from './target';
 
 @Component({
