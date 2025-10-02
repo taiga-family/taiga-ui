@@ -12,9 +12,9 @@ import {
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
-import {TuiExpand} from '@taiga-ui/experimental/components/expand';
 import {combineLatest, map, merge, ReplaySubject, withLatestFrom} from 'rxjs';
 
 import {TuiAccordionDirective} from './accordion.directive';
