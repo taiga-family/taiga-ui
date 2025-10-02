@@ -1137,8 +1137,8 @@ export class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
+import {TuiHeader} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiAvatar, TuiBadgedContent, TuiBadgeNotification, TuiDemo, TuiHeader],
@@ -1979,7 +1979,6 @@ export default class Page {}
 
 ```ts
 import {Component} from '@angular/core';
-import {TuiButton} from '@taiga-ui/core';
 import {TuiButtonGroup} from '@taiga-ui/kit';
 // ...
 
@@ -1987,7 +1986,6 @@ import {TuiButtonGroup} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiButton,
     TuiButtonGroup,
   ],
 })
@@ -1999,7 +1997,7 @@ export class Example {}
 ```html
 <div
   tuiButtonGroup
-  tuiSurface="elevated"
+  tuiAppearance="elevated"
 >
   <button>
     <tui-icon icon="@tui.circle-plus"></tui-icon>
@@ -2477,9 +2475,9 @@ export default class Example {
 ### How to Use (Import)
 
 ```ts
-import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
 import {TuiExpand, TuiChevron} from '@taiga-ui/kit';
-import {TuiCard, TuiHeader} from '@taiga-ui/layout';
+import {TuiCard} from '@taiga-ui/layout';
 // ...
 
 @Component({
@@ -2800,7 +2798,7 @@ export default class Example {
 
 ---
 # components/Cell
-- **Package**: `LAYOUT`
+- **Package**: `CORE`
 - **Type**: components
 @for (example of examples; track example; let index = $index) {
 
@@ -2808,7 +2806,7 @@ export default class Example {
 
 ```ts
 import {Component} from '@angular/core';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiCell} from '@taiga-ui/core';
 // ...
 
 @Component({
@@ -2855,9 +2853,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
-import {TuiTitle} from '@taiga-ui/core';
+import {TuiCell, type TuiCellOptions, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCell, type TuiCellOptions} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiAvatar, TuiCell, TuiDemo, TuiTitle],
@@ -3991,13 +3988,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
     TuiButton,
+    TuiHeader,
     type TuiHorizontalDirection,
     TuiPopup,
-    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiDrawer} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -4007,7 +4003,6 @@ import {TuiHeader} from '@taiga-ui/layout';
         TuiDrawer,
         TuiHeader,
         TuiPopup,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -4470,13 +4465,13 @@ import {TuiDemo} from '@demo/utils';
 import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCell,
     tuiHeightCollapse,
     TuiLabel,
     tuiSlideInTop,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -4754,15 +4749,14 @@ export default class Page {
 
 ---
 # components/Header
-- **Package**: `LAYOUT`
+- **Package**: `CORE`
 - **Type**: components
 
 ### How to Use (Import)
 
 ```ts
 import {Component} from '@angular/core';
-import {TuiHeader} from '@taiga-ui/layout';
-import {TuiTitle} from '@taiga-ui/core';
+import {TuiHeader, TuiTitle} from '@taiga-ui/core';
 // ...
 
 @Component({
@@ -10962,7 +10956,7 @@ export default class Page {
 
 ---
 # components/Surface
-- **Package**: `CORE`
+- **Package**: `LAYOUT`
 - **Type**: components
 General purpose container used in Taiga UI interfaces. Often used in conjunction with
             
@@ -10977,7 +10971,7 @@ General purpose container used in Taiga UI interfaces. Often used in conjunction
 
 ```ts
 import {Component} from '@angular/core';
-import {TuiSurface} from '@taiga-ui/core';
+import {TuiSurface} from '@taiga-ui/layout';
 // ...
 
 @Component({
@@ -14806,7 +14800,7 @@ export class Example {
 ### Example
 
 ```html
-<section tuiAppearance="floating" tuiCardLarge >
+<section appearance="floating" tuiCardLarge >
 <header tuiHeader>
 <hgroup tuiTitle [tuiShimmer]="shimmer" >
 <h5>You got $237&nbsp;000,42 left</h5>
@@ -14840,14 +14834,13 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiAppearance, TuiButton, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiHeader, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack, TuiShimmer} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         FormsModule,
-        TuiAppearance,
         TuiAvatar,
         TuiAvatarStack,
         TuiButton,
