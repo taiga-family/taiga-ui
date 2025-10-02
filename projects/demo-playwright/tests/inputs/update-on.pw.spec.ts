@@ -34,7 +34,7 @@ test.describe('Inputs - updateOn', () => {
 
                 await details.click();
 
-                select = demo.getByTestId('tui-demo-select__expand-update-on');
+                select = demo.locator('tui-textfield:has(input[tuiSelect])');
                 submit = demo.getByTestId('tui-demo-button__submit-state');
                 option = page.locator('button[tuiOption]');
                 input = demo
