@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
-import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TUI_CELL_OPTIONS} from './cell.options';
 
@@ -23,10 +22,7 @@ class Styles {}
 
 @Directive({
     selector: '[tuiCell]:not(ng-template)',
-    providers: [
-        tuiAvatarOptionsProvider({size: 'm'}),
-        tuiButtonOptionsProvider({size: 's'}),
-    ],
+    providers: [tuiButtonOptionsProvider({size: 's'})],
     host: {
         tuiCell: '',
         '[attr.data-size]': 'size() || options.size || "l"',

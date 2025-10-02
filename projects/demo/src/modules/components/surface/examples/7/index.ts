@@ -28,7 +28,6 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
         TuiSurface,
         TuiThumbnailCard,
         TuiTitle,
-        TuiSurface,
         TuiAppearance,
     ],
     templateUrl: './index.html',
