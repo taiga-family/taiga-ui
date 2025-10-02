@@ -4,6 +4,7 @@ import {
     Component,
     contentChild,
     input,
+    type OnInit,
     signal,
     TemplateRef,
 } from '@angular/core';
@@ -14,7 +15,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
     imports: [NgTemplateOutlet],
     template: `
         <div class="t-wrapper">
-            @if (expanded() || animating()) {
+            @if (expanded() || open()) {
                 <ng-container [ngTemplateOutlet]="content() || null" />
             }
             <ng-content />
@@ -24,18 +25,23 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._expanded]': 'expanded()',
+        '[class._open]': 'open()',
         '(transitionend.self)': 'onTransitionEnd($event)',
     },
 })
-export class TuiExpand {
+export class TuiExpand implements OnInit {
     protected readonly content = contentChild(TuiItem, {read: TemplateRef});
-    protected readonly animating = signal(false);
+    protected readonly open = signal(false);
 
     public readonly expanded = input(false);
 
+    public ngOnInit(): void {
+        this.open.set(this.expanded());
+    }
+
     protected onTransitionEnd({propertyName}: TransitionEvent): void {
         if (propertyName === 'grid-template-rows') {
-            this.animating.set(this.expanded());
+            this.open.set(this.expanded());
         }
     }
 }
