@@ -681,6 +681,11 @@ export const ROUTES: Routes = [
         title: 'Confirm',
     }),
     route({
+        path: DemoRoute.Toast,
+        loadComponent: async () => import('../components/toast'),
+        title: 'Toast',
+    }),
+    route({
         path: DemoRoute.Tiles,
         loadComponent: async () => import('../components/tiles'),
         title: 'Tiles',

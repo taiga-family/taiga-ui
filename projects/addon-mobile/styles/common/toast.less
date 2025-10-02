@@ -1,0 +1,21 @@
+[tuiToast] {
+    min-block-size: 3rem;
+    border-radius: 1.5rem;
+    font: var(--tui-font-text-m);
+
+    [tuiButton]:last-child {
+        margin: -0.1875rem -0.4375rem -0.1875rem 0;
+    }
+
+    &:has([tuiAvatar]) {
+        gap: 1rem;
+
+        [tuiAvatar] {
+            margin: 0 -0.25rem;
+        }
+
+        [tuiButton]:last-child {
+            margin-inline-end: 0;
+        }
+    }
+}
