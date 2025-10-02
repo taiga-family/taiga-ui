@@ -7,8 +7,8 @@ import {
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
-import {tuiHintOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     selector: 'aside[tuiNavigationAside]',

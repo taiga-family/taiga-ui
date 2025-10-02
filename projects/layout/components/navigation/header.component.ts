@@ -7,10 +7,10 @@ import {
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
-import {tuiHintOptionsProvider} from '@taiga-ui/core';
 
 @Component({
     standalone: true,
