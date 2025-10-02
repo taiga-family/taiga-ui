@@ -1,7 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-// prettier-ignore
-[data-surface] {
+[tuiSurface] {
     .transition();
 
     --tui-gap: 0.25rem;
@@ -31,12 +30,12 @@
     });
 }
 
-button[data-surface] {
+button[tuiSurface] {
     cursor: pointer;
 }
 
-[data-surface]::before,
-[data-surface]::after,
+[tuiSurface]::before,
+[tuiSurface]::after,
 [tuiSurfaceLayer]::before,
 [tuiSurfaceLayer]::after {
     .fullsize();
@@ -78,7 +77,7 @@ button[data-surface] {
     }
 
     @media @tui-mouse {
-        [data-surface]:hover input[tuiSurfaceLayer] + & {
+        [tuiSurface]:hover input[tuiSurfaceLayer] + & {
             padding: var(--tui-gap);
         }
     }
@@ -114,13 +113,13 @@ input[tuiSurfaceLayer] {
     }
 
     @media @tui-mouse {
-        [data-surface]:hover & {
+        [tuiSurface]:hover & {
             box-shadow:
                 inset 0 0,
                 inset 0 0 0 calc(var(--tui-gap) / 2) var(--tui-background-neutral-1);
         }
 
-        [data-surface]:hover &:checked {
+        [tuiSurface]:hover &:checked {
             filter: brightness(0.9);
             box-shadow:
                 inset 0 0 0 calc(var(--tui-gap) / 2),
@@ -130,11 +129,7 @@ input[tuiSurfaceLayer] {
 }
 
 // TODO: Drop elevated and box-shadow/background-color
-[tuiSurface][data-surface='elevated'],
-[tuiSurface][data-surface='floating'] {
-    box-shadow: var(--tui-shadow-small);
-    background-color: var(--tui-background-elevation-2);
-
+[tuiSurface][data-appearance='floating'] {
     .interactive({
         &:active {
             box-shadow: var(--tui-shadow-small);
@@ -151,11 +146,7 @@ input[tuiSurfaceLayer] {
     });
 }
 
-// TODO: Drop flat and background-color
-[tuiSurface][data-surface='flat'],
-[tuiSurface][data-surface='neutral'] {
-    background-color: var(--tui-background-neutral-1);
-
+[tuiSurface][data-appearance='neutral'] {
     .interactive({
         &:active {
             transform: scale(0.95);

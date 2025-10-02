@@ -234,16 +234,16 @@
 }
 
 @media @tui-mouse {
-    a[tuiCell]:not([tuiSurface]):hover,
-    button[tuiCell]:not([tuiSurface]):hover,
-    label[tuiCell]:not([tuiSurface]):hover {
+    a[tuiCell]:hover,
+    button[tuiCell]:hover,
+    label[tuiCell]:hover {
         &:not(:disabled, [data-state='disabled']) {
             background: var(--tui-background-neutral-1);
             cursor: pointer;
         }
     }
 
-    label[tuiCell]:not([tuiSurface]):hover {
+    label[tuiCell]:hover {
         &:not(:has(input:disabled)) {
             background: var(--tui-background-neutral-1);
             cursor: pointer;
