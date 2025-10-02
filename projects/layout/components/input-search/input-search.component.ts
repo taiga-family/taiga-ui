@@ -17,6 +17,7 @@ import {
     tuiIsElement,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
+import {tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
 import {
     TuiTextfieldComponent,
     TuiWithTextfield,
@@ -24,7 +25,6 @@ import {
 import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {tuiCellOptionsProvider} from '@taiga-ui/core/components/cell';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 

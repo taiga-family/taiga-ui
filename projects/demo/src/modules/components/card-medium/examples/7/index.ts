@@ -4,9 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 import {TuiRipple} from '@taiga-ui/addon-mobile';
-import {TuiSurface} from '@taiga-ui/layout';
 import {TuiFade} from '@taiga-ui/kit';
-import {TuiCardMedium} from '@taiga-ui/layout';
+import {TuiCardMedium, TuiSurface} from '@taiga-ui/layout';
 
 @Component({
     imports: [

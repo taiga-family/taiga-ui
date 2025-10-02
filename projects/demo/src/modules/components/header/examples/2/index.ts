@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiHeader, TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiBadge,
@@ -9,7 +9,6 @@ import {
     TuiSensitive,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/core';
 
 @Component({
     imports: [

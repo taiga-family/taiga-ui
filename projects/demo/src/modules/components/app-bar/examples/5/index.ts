@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiTitle, TuiCell, TuiHeader} from '@taiga-ui/core';
+import {TuiCell, TuiHeader, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiSegmented} from '@taiga-ui/kit';
 import {TuiAppBar, TuiDynamicHeader} from '@taiga-ui/layout';
 

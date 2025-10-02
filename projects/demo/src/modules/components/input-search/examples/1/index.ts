@@ -4,7 +4,7 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
-import {TuiCell, TuiButton, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiSearchResults} from '@taiga-ui/experimental';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiInputSearch, TuiNavigation} from '@taiga-ui/layout';

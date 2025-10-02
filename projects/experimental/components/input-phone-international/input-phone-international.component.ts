@@ -38,6 +38,7 @@ import {TUI_IS_IOS, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsInputEvent, tuiValue} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiCell} from '@taiga-ui/core/components/cell';
 import {TuiDataList, TuiOptionNew} from '@taiga-ui/core/components/data-list';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -54,7 +55,6 @@ import {TUI_INPUT_PHONE_INTERNATIONAL_OPTIONS} from '@taiga-ui/kit/components/in
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TUI_COUNTRIES, TUI_INTERNATIONAL_SEARCH} from '@taiga-ui/kit/tokens';
 import {tuiGetCallingCode, tuiMaskito} from '@taiga-ui/kit/utils';
-import {TuiCell} from '@taiga-ui/core/components/cell';
 import {validatePhoneNumberLength} from 'libphonenumber-js';
 import {type MetadataJson} from 'libphonenumber-js/core';
 import {filter, from, skip} from 'rxjs';

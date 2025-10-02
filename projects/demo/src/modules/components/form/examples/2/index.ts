@@ -7,11 +7,11 @@ import {
     TuiButton,
     TuiError,
     TuiGroup,
+    TuiHeader,
     TuiIcon,
     TuiLabel,
     TuiTextfield,
     TuiTitle,
-    TuiHeader,
 } from '@taiga-ui/core';
 import {
     TuiBlock,

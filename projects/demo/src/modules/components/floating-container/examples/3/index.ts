@@ -5,6 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAnimationPipe, TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCell,
     tuiCrossFade,
     TuiIcon,
     TuiLabel,
@@ -17,7 +18,6 @@ import {
     TuiFloatingContainer,
     TuiSwitch,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/core';
 
 @Component({
     imports: [

@@ -6,11 +6,11 @@ import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCell,
+    TuiHeader,
     tuiHeightCollapse,
     TuiLabel,
     tuiSlideInTop,
-    TuiCell,
-    TuiHeader,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';

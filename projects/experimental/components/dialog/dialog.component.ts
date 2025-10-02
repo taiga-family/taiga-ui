@@ -12,9 +12,9 @@ import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/components/dialog';
+import {TUI_HEADER_OPTIONS, TuiHeader} from '@taiga-ui/core/components/header';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {TUI_HEADER_OPTIONS, TuiHeader} from '@taiga-ui/core/components/header';
 import {
     injectContext,
     PolymorpheusComponent,

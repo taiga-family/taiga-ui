@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiHeader, TuiError, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiError, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiInputPhone} from '@taiga-ui/kit';
 import {TuiForm} from '@taiga-ui/layout';
 

@@ -12,11 +12,11 @@ import {
     TuiDataList,
     TuiDropdown,
     TuiDropdownService,
+    TuiHeader,
     TuiIcon,
     TuiLink,
     TuiTextfield,
     TuiTitle,
-    TuiHeader,
 } from '@taiga-ui/core';
 import {
     TuiAvatar,
