@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -39,12 +39,9 @@ import {PayService} from '../helpers/pay.service';
 import {inputCardGroupedCVCValidator} from '../helpers/validator';
 
 @Component({
-    standalone: true,
     selector: 'pay-modal',
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiAutoFocus,
         TuiButton,
@@ -83,7 +80,7 @@ export class PayModal implements OnInit {
     protected paymentMode: TuiValuesOf<typeof PaymentMode> = PaymentMode.ByNewCard;
     protected loading$ = new BehaviorSubject(false);
     protected payProcessing$ = new BehaviorSubject(false);
-    protected readonly PAYMENT_MODE = PaymentMode;
+    protected readonly paymentModeTypes = PaymentMode;
 
     public readonly context =
         injectContext<TuiDialogContext<void, DataForPayCardModal>>();

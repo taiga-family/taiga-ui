@@ -1,5 +1,5 @@
-<ng-container *ngIf="content?.changes | async" />
-<ng-container *ngIf="hintOptions?.change$ | async" />
+@if (content?.changes | async) {}
+@if (hintOptions?.change$ | async) {}
 <div
     automation-id="tui-primitive-textfield__wrapper"
     tuiWrapper
@@ -38,26 +38,26 @@
         <ng-content select="tuiContent" />
     </div>
     <div class="t-content">
-        <div
-            *ngIf="iconLeftContent"
-            class="t-icon t-icon_left t-textfield-icon"
-        >
-            <tui-icon
-                *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
-                tuiAppearance="icon"
-                [icon]="src.toString()"
-            />
-        </div>
+        @if (iconLeftContent) {
+            <div class="t-icon t-icon_left t-textfield-icon">
+                <tui-icon
+                    *polymorpheusOutlet="iconLeftContent as src; context: {$implicit: size}"
+                    tuiAppearance="icon"
+                    [icon]="src.toString()"
+                />
+            </div>
+        }
         <div class="t-wrapper">
-            <label
-                *ngIf="hasPlaceholder"
-                automation-id="tui-primitive-textfield__placeholder"
-                class="t-placeholder"
-                [class.t-placeholder_raised]="placeholderRaised"
-                [for]="computedId"
-            >
-                <ng-content />
-            </label>
+            @if (hasPlaceholder) {
+                <label
+                    automation-id="tui-primitive-textfield__placeholder"
+                    class="t-placeholder"
+                    [class.t-placeholder_raised]="placeholderRaised"
+                    [for]="computedId"
+                >
+                    <ng-content />
+                </label>
+            }
             <div class="t-wrapper-value-decoration">
                 <tui-value-decoration
                     #decor
@@ -70,51 +70,52 @@
             </div>
         </div>
         <div class="t-icons">
-            <div
-                *ngIf="hasCustomContent"
-                automation-id="tui-primitive-textfield__custom-content"
-                class="t-custom-content"
-            >
-                <tui-icon
-                    *polymorpheusOutlet="controller.customContent as src"
-                    class="t-custom-icon"
-                    [icon]="src"
+            @if (hasCustomContent) {
+                <div
+                    automation-id="tui-primitive-textfield__custom-content"
+                    class="t-custom-content"
+                >
+                    <tui-icon
+                        *polymorpheusOutlet="controller.customContent as src"
+                        class="t-custom-icon"
+                        [icon]="src"
+                    />
+                </div>
+            }
+            @if (hasCleaner) {
+                <span
+                    appearance="icon"
+                    automation-id="tui-primitive-textfield__cleaner"
+                    tuiWrapper
+                    class="t-cleaner"
+                    (click.stop)="clear()"
+                >
+                    <tui-icon
+                        *polymorpheusOutlet="
+                            iconCleaner || controller.options.iconCleaner as src;
+                            context: {$implicit: size}
+                        "
+                        [icon]="src.toString()"
+                    />
+                </span>
+            }
+            @if (showHint) {
+                <tui-tooltip
+                    automation-id="tui-primitive-textfield__tooltip"
+                    class="t-tooltip"
+                    [content]="hintOptions?.content"
+                    [describeId]="computedId"
                 />
-            </div>
-            <span
-                *ngIf="hasCleaner"
-                appearance="icon"
-                automation-id="tui-primitive-textfield__cleaner"
-                tuiWrapper
-                class="t-cleaner"
-                (click.stop)="clear()"
-            >
-                <tui-icon
-                    *polymorpheusOutlet="
-                        iconCleaner || controller.options.iconCleaner as src;
-                        context: {$implicit: size}
-                    "
-                    [icon]="src.toString()"
-                    [style.border]="'0.25rem solid transparent'"
-                />
-            </span>
-            <tui-tooltip
-                *ngIf="showHint"
-                automation-id="tui-primitive-textfield__tooltip"
-                class="t-tooltip"
-                [content]="hintOptions?.content"
-                [describeId]="computedId"
-            />
-            <div
-                *ngIf="iconContent"
-                class="t-icon t-textfield-icon"
-            >
-                <tui-icon
-                    *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
-                    tuiAppearance="icon"
-                    [icon]="src.toString()"
-                />
-            </div>
+            }
+            @if (iconContent) {
+                <div class="t-icon t-textfield-icon">
+                    <tui-icon
+                        *polymorpheusOutlet="iconContent as src; context: {$implicit: size}"
+                        tuiAppearance="icon"
+                        [icon]="src.toString()"
+                    />
+                </div>
+            }
         </div>
     </div>
 </div>

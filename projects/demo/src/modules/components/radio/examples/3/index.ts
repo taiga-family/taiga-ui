@@ -13,7 +13,6 @@ import {TuiTitle} from '@taiga-ui/core';
 import {TuiRadioList} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, ReactiveFormsModule, TuiRadioList, TuiTitle],
     templateUrl: './index.html',
     encapsulation,

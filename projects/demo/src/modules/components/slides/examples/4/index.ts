@@ -1,22 +1,16 @@
-import {NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
 import {Component, inject, TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiHeader, TuiTitle} from '@taiga-ui/core';
 import {TuiDialogService} from '@taiga-ui/experimental';
 import {TuiAvatar, TuiFloatingContainer, TuiProgressBar, TuiSlides} from '@taiga-ui/kit';
-import {TuiAppBar, TuiCard, TuiCell, TuiHeader} from '@taiga-ui/layout';
+import {TuiAppBar, TuiCard} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
-        NgIf,
-        NgSwitch,
-        NgSwitchCase,
         TuiAppBar,
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCard,

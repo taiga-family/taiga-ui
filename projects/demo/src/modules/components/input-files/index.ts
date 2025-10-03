@@ -8,7 +8,6 @@ import {TuiFiles, tuiFilesAccepted} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDemo, TuiDocControl, TuiFiles],
     templateUrl: './index.html',
     changeDetection,

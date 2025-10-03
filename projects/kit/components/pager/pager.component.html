@@ -1,6 +1,6 @@
 <div
     class="t-items"
-    [style.transform]="'translateX(calc(var(--tui-inline) * ' + left() + 'px))'"
+    [style.transform]="`translateX(calc(var(--tui-inline) * ${left()}px))`"
 >
     <div
         *tuiRepeatTimes="let i of count"

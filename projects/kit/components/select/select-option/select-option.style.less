@@ -9,11 +9,10 @@
 }
 
 :host:not(._value) > .t-check,
-:host-context(tui-dropdown-mobile:not(._sheet)) > .t-check {
+:host-context(tui-dropdown-mobile) > .t-check {
     display: none;
 }
 
 .t-check::before {
-    inline-size: 100%;
-    block-size: 100%;
+    font-size: var(--t-size);
 }

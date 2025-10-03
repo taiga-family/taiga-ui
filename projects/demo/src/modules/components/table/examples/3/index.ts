@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule, type ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -13,8 +13,13 @@ import {
     TuiScrollbar,
     TuiTextfield,
 } from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiInputNumber, TuiTextarea} from '@taiga-ui/kit';
-import {TuiInputDateModule} from '@taiga-ui/legacy';
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiInputDate,
+    TuiInputNumber,
+    TuiTextarea,
+} from '@taiga-ui/kit';
 
 interface Item {
     readonly date: TuiDay;
@@ -25,17 +30,14 @@ interface Item {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiChevron,
         TuiDataListWrapper,
         TuiFormatNumberPipe,
         TuiIcon,
-        TuiInputDateModule,
+        TuiInputDate,
         TuiInputNumber,
         TuiLet,
         TuiNumberFormat,
@@ -104,7 +106,14 @@ export default class Example {
         },
     ];
 
-    protected readonly columns = ['name', 'price', 'quantity', 'unit', 'total'] as const;
+    protected readonly columns = [
+        'name',
+        'price',
+        'quantity',
+        'unit',
+        'date',
+        'total',
+    ] as const;
 
     protected readonly minPrice: ValidatorFn = ({value}) =>
         value > 400 ? null : {minPrice: 'Price must be above $400'};

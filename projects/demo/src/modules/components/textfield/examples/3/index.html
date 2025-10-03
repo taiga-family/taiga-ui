@@ -7,14 +7,14 @@
         [(ngModel)]="value"
     />
     <tui-icon tuiTooltip="Autocomplete suggestions" />
-    <ng-container *ngIf="items | tuiFilterByInput as filtered">
-        <ng-container *ngIf="input.value && filtered.length">
+    @if (items | tuiFilterByInput; as filtered) {
+        @if (input.value && filtered.length) {
             <tui-data-list-wrapper
                 *tuiTextfieldDropdown
                 [items]="filtered"
             />
-        </ng-container>
-    </ng-container>
+        }
+    }
 </tui-textfield>
 
 <tui-textfield>

@@ -17,9 +17,8 @@ interface Character {
 }
 
 @Component({
-    standalone: true,
     imports: [
-        NgIf,
+        NgIf, // TODO: use control-flow syntax
         ReactiveFormsModule,
         TuiChevron,
         TuiDataListWrapper,

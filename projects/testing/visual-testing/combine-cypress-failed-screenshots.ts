@@ -1,4 +1,4 @@
-import {readFileSync, writeFileSync} from 'node:fs';
+import {readFileSync} from 'node:fs';
 
 import {tuiCombineSnapshots} from './combine-snapshots';
 
@@ -17,7 +17,8 @@ interface Report {
     suites: Array<{tests: TestResult[]}>;
 }
 
-export async function tuiCombineCypressFailedScreenshots(): Promise<void> {
+// noinspection JSUnusedGlobalSymbols
+export function tuiCombineCypressFailedScreenshots(): void {
     const reportSummary = readJSON<Report>(`${TEST_RESULTS_PATH}/report-summary.json`);
 
     if (!reportSummary) {
@@ -30,11 +31,14 @@ export async function tuiCombineCypressFailedScreenshots(): Promise<void> {
         .filter((x) => x.status === 'fail' && x.diffPath);
 
     for (const {baselinePath, diffPath, comparisonPath, name} of failedTestSnapshots) {
-        const buffer = await tuiCombineSnapshots(
-            [baselinePath, diffPath, comparisonPath].map((x) => `${ROOT_PATH}/${x}`),
+        const output = `${TEST_RESULTS_PATH}/${name}.diff.png`;
+        const inputs = [baselinePath, diffPath, comparisonPath].map(
+            (x) => `${ROOT_PATH}/${x}`,
         );
 
-        writeFileSync(`${TEST_RESULTS_PATH}/${name}.diff.png`, buffer);
+        tuiCombineSnapshots(inputs, output).then(() =>
+            console.info(` ✅ Async saved merged image: ${output}`),
+        );
     }
 }
 

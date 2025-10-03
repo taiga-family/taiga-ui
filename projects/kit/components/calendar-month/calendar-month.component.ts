@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -36,10 +35,8 @@ import {TUI_CALENDAR_MONTH_OPTIONS} from './calendar-month.options';
 const TODAY = TuiDay.currentLocal();
 
 @Component({
-    standalone: true,
     selector: 'tui-calendar-month',
     imports: [
-        NgIf,
         TuiCalendarYear,
         TuiHovered,
         TuiLet,

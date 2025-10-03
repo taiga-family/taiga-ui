@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -9,9 +8,8 @@ import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 const COPIED_TIMEOUT = 1500;
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-copy',
-    imports: [NgIf, TuiButton],
+    imports: [TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -8,17 +8,18 @@
         tuiInputChip
         [formControl]="control"
     />
-    <button
-        *ngIf="control.value.length > 2"
-        appearance="icon"
-        iconStart="@tui.x"
-        size="xs"
-        tabindex="-1"
-        tuiIconButton
-        type="button"
-        (click)="control.setValue(this.required)"
-    >
-        Clear
-    </button>
+    @if (control.value.length > 2) {
+        <button
+            appearance="icon"
+            iconStart="@tui.x"
+            size="xs"
+            tabindex="-1"
+            tuiIconButton
+            type="button"
+            (click)="control.setValue(this.required)"
+        >
+            Clear
+        </button>
+    }
     <tui-input-chip *tuiItem />
 </tui-textfield>

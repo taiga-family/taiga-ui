@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,6 +6,7 @@ import {TuiTable, TuiTableControl} from '@taiga-ui/addon-table';
 import {
     TuiAutoColorPipe,
     TuiButton,
+    TuiCell,
     TuiDropdown,
     TuiIcon,
     TuiInitialsPipe,
@@ -23,14 +23,10 @@ import {
     TuiRadioList,
     TuiStatus,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiAutoColorPipe,
         TuiAvatar,
         TuiBadge,

@@ -21,7 +21,20 @@
             heading="Basic"
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
-        />
+            [description]="description"
+        >
+            <ng-template #description>
+                Also available through
+                <a
+                    fragment="format"
+                    target="_blank"
+                    tuiLink
+                    [routerLink]="routes.InputDate"
+                >
+                    <strong>tuiDateFormatProvider</strong>
+                </a>
+            </ng-template>
+        </tui-doc-example>
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />

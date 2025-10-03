@@ -59,7 +59,6 @@ function getAge({dob}: User): number {
 }
 
 @Component({
-    standalone: true,
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,

@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
@@ -11,9 +10,8 @@ import {TUI_SELECTED_VERSION_META} from './version-manager.providers';
 import {TUI_VERSIONS_META_OPTIONS, type TuiVersionMeta} from './versions.constants';
 
 @Component({
-    standalone: true,
     selector: 'version-manager',
-    imports: [FormsModule, NgForOf, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
+    imports: [FormsModule, TuiButton, TuiChevron, TuiDataList, TuiDropdown],
     templateUrl: './version-manager.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -30,25 +30,25 @@
             select="input"
         />
 
-        <ng-container
-            *ngIf="isMobile"
-            ngProjectAs="select"
-        >
-            <ng-content select="select" />
-        </ng-container>
+        @if (isMobile) {
+            <ng-container ngProjectAs="select">
+                <ng-content select="select" />
+            </ng-container>
+        }
 
-        <div
-            *ngIf="value !== null"
-            automation-id="tui-select__value"
-            ngProjectAs="tuiContent"
-            class="t-value"
-        >
+        @if (value !== null) {
             <div
-                *polymorpheusOutlet="computedContent as text; context: {$implicit: value, active: computedFocused}"
-                class="t-primitive-value"
-                [textContent]="text"
-            ></div>
-        </div>
+                automation-id="tui-select__value"
+                ngProjectAs="tuiContent"
+                class="t-value"
+            >
+                <div
+                    *polymorpheusOutlet="computedContent as text; context: {$implicit: value, active: computedFocused}"
+                    class="t-primitive-value"
+                    [textContent]="text"
+                ></div>
+            </div>
+        }
     </tui-primitive-textfield>
 
     <ng-template #icon>

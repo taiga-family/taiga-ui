@@ -1,13 +1,11 @@
-<label
-    *ngIf="value$ | async as value"
-    tuiProgressLabel
->
-    <span class="text">COMPLETED</span>
-    <span class="percent">{{ value }}%</span>
-
-    <tui-progress-circle
-        size="xl"
-        [max]="max"
-        [value]="value"
-    />
-</label>
+@if (value$ | async; as value) {
+    <label tuiProgressLabel>
+        <span class="text">COMPLETED</span>
+        <span class="percent">{{ value }}%</span>
+        <tui-progress-circle
+            size="xl"
+            [max]="max"
+            [value]="value"
+        />
+    </label>
+}

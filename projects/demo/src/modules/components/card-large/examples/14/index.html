@@ -7,19 +7,19 @@
 </button>
 <div
     *tuiPopup="!!step()"
+    appearance="floating"
     tuiAnimated
-    tuiAppearance="floating"
     tuiCardLarge="compact"
     class="popover"
 >
-    <ng-container *ngIf="step() === 1">
+    @if (step() === 1) {
         <h1 tuiTitle>
             Leave your feedback
             <span tuiSubtitle>It will only take 3 minutes</span>
         </h1>
         <tui-rating [(ngModel)]="rating" />
-    </ng-container>
-    <ng-container *ngIf="step() === 2">
+    }
+    @if (step() === 2) {
         <h1 tuiTitle>Why so?</h1>
         <tui-textfield tuiTextfieldSize="m">
             <textarea
@@ -31,7 +31,7 @@
                 [(ngModel)]="comment"
             ></textarea>
         </tui-textfield>
-    </ng-container>
+    }
     <button
         appearance="icon"
         iconStart="@tui.x"
@@ -44,16 +44,17 @@
         Close
     </button>
     <footer class="footer">
-        <button
-            *ngIf="step() === 2"
-            appearance="secondary"
-            size="s"
-            tuiButton
-            type="button"
-            (click)="step.set(1)"
-        >
-            Back
-        </button>
+        @if (step() === 2) {
+            <button
+                appearance="secondary"
+                size="s"
+                tuiButton
+                type="button"
+                (click)="step.set(1)"
+            >
+                Back
+            </button>
+        }
         <button
             appearance="primary"
             size="s"

@@ -5,7 +5,6 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiProgress} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiProgress, TuiRepeatTimes],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -9,7 +9,6 @@ import {switchMap} from 'rxjs';
 import {DialogComponent} from './component';
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,
@@ -19,7 +18,7 @@ export default class Example {
     private readonly alerts = inject(TuiAlertService);
     private readonly dialogs = inject(TuiDialogService);
 
-    protected onClick(): void {
+    protected click(): void {
         this.dialogs
             .open<string>(new PolymorpheusComponent(DialogComponent), {
                 label: 'Edit info',

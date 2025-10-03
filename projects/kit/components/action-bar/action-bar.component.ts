@@ -5,14 +5,13 @@ import {
     TUI_BUTTON_OPTIONS,
     type TuiButtonOptions,
 } from '@taiga-ui/core/components/button';
-import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
+import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
-    standalone: true,
     selector: 'tui-action-bar',
-    imports: [TuiExpandComponent],
+    imports: [TuiExpand],
     templateUrl: './action-bar.template.html',
     styleUrls: ['./action-bar.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

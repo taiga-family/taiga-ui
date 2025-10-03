@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiIsSafari} from '@taiga-ui/cdk/utils/browser';
@@ -9,9 +8,8 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 import {TUI_LOADER_OPTIONS} from './loader.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-loader',
-    imports: [NgIf, PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet],
     templateUrl: './loader.template.html',
     styleUrls: ['./loader.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

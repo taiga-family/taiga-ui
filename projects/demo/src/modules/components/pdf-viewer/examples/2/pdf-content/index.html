@@ -1,9 +1,8 @@
-<iframe
-    *ngIf="src$ | async as src; else loading"
-    title="pdf"
-    [src]="src"
-></iframe>
-
-<ng-template #loading>
+@if (src$ | async; as src) {
+    <iframe
+        title="pdf"
+        [src]="src"
+    ></iframe>
+} @else {
     <tui-loader size="xl" />
-</ng-template>
+}

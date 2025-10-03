@@ -8,13 +8,12 @@ import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputPhone} from '@taiga-ui/kit';
-import {TuiInputPhoneModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../abstract/abstract-props-accessor';
 import {AbstractExampleTuiControl} from '../abstract/control';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -23,7 +22,6 @@ import {AbstractExampleTuiControl} from '../abstract/control';
         TuiDocTextfield,
         TuiDropdown,
         TuiInputPhone,
-        TuiInputPhoneModule,
         TuiTextfield,
         TuiTextfieldControllerModule,
     ],

@@ -5,7 +5,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiCheckbox],
     templateUrl: './index.html',
     encapsulation,

@@ -7,7 +7,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiBadgedContent, TuiBadgeNotification, TuiChip, TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         TuiAmountPipe,

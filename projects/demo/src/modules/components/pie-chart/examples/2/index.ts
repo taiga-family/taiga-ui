@@ -7,7 +7,6 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiHint} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiHint, TuiPieChart],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

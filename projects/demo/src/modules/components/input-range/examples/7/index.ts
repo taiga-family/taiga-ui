@@ -6,7 +6,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiInputNumberOptionsProvider, TuiInputRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, I18nPluralPipe, JsonPipe, TuiInputRange],
     templateUrl: './index.html',
     encapsulation,

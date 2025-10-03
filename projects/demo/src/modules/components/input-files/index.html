@@ -7,27 +7,41 @@
     <ng-template pageTab>
         An input for uploading one or several files using native input file capabilities
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="description"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template
-                #description
-                [ngSwitch]="index"
+        @for (example of examples; track example; let index = $index) {
+            <tui-doc-example
+                [component]="index + 1 | tuiComponent"
+                [content]="index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                <ng-container *ngSwitchCase="0">Selecting one file at a time</ng-container>
-                <ng-container *ngSwitchCase="1">Selecting and processing multiple files at once</ng-container>
-                <ng-container *ngSwitchCase="2">Displaying file-like items without the input</ng-container>
-                <ng-container *ngSwitchCase="3">Collapsing files list when it's too long</ng-container>
-                <ng-container *ngSwitchCase="4">Customizing drop area</ng-container>
-                <ng-container *ngSwitchCase="5">The capture attribute works only on mobile browsers</ng-container>
-                <ng-container *ngSwitchCase="6">Using template driven forms</ng-container>
-            </ng-template>
-        </tui-doc-example>
+                <ng-template #description>
+                    @switch (index) {
+                        @case (0) {
+                            Selecting one file at a time
+                        }
+                        @case (1) {
+                            Selecting and processing multiple files at once
+                        }
+                        @case (2) {
+                            Displaying file-like items without the input
+                        }
+                        @case (3) {
+                            Collapsing files list when it's too long
+                        }
+                        @case (4) {
+                            Customizing drop area
+                        }
+                        @case (5) {
+                            The capture attribute works only on mobile browsers
+                        }
+                        @case (6) {
+                            Using template driven forms
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -50,7 +64,7 @@
                 [max]="maxFilesCount"
                 [(expanded)]="expanded"
             >
-                <ng-container *ngFor="let file of files$ | async">
+                @for (file of files$ | async; track file) {
                     <tui-file
                         *tuiItem
                         [file]="file"
@@ -59,9 +73,9 @@
                         [size]="size"
                         (remove)="removeFile(file); remove.emitEvent($event)"
                     />
-                </ng-container>
+                }
 
-                <ng-container *ngFor="let file of rejected">
+                @for (file of rejected; track file) {
                     <tui-file
                         *tuiItem
                         state="error"
@@ -71,7 +85,7 @@
                         [size]="size"
                         (remove)="removeFile(file); remove.emitEvent($event)"
                     />
-                </ng-container>
+                }
             </tui-files>
         </tui-doc-demo>
         <h3>TuiInputFiles</h3>

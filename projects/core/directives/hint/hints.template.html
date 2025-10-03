@@ -1,8 +1,9 @@
-<div
-    *ngFor="let hint of hints"
-    role="tooltip"
-    tuiAnimatedParent
-    [tuiActiveZoneParent]="hint.activeZone || null"
->
-    <ng-container *polymorpheusOutlet="hint.component; context: {$implicit: hint}" />
-</div>
+@for (hint of hints; track hint) {
+    <div
+        role="tooltip"
+        tuiAnimatedParent
+        [tuiActiveZoneParent]="hint.activeZone || null"
+    >
+        <ng-container *polymorpheusOutlet="hint.component; context: {$implicit: hint}" />
+    </div>
+}

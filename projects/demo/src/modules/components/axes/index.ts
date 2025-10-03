@@ -10,7 +10,6 @@ import {
 } from '@taiga-ui/addon-charts';
 
 @Component({
-    standalone: true,
     imports: [TuiAxes, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

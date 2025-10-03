@@ -3,14 +3,15 @@
     class="tabs"
     [(activeItemIndex)]="activeItemIndex"
 >
-    <button
-        *ngFor="let item of items"
-        tuiTabBarItem
-        type="button"
-        [badge]="item.badge"
-        [icon]="item.icon"
-        (click)="onClick(item)"
-    >
-        {{ item.text }}
-    </button>
+    @for (item of items; track item) {
+        <button
+            tuiTabBarItem
+            type="button"
+            [badge]="item.badge"
+            [icon]="item.icon"
+            (click)="onClick(item)"
+        >
+            {{ item.text }}
+        </button>
+    }
 </nav>

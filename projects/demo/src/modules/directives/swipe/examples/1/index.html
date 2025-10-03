@@ -1,5 +1,5 @@
 <div
-    [class]="'box tui-text_body-l ' + swiped"
+    [class]="`box tui-text_body-l ${swiped}`"
     (tuiSwipe)="onSwipe($event)"
 >
     Swiped {{ swiped }}

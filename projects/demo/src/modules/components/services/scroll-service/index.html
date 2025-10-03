@@ -1,10 +1,17 @@
 <tui-doc-page
+    deprecated
     header="ScrollService"
     package="CDK"
     path="cdk/services/scroll.service.ts"
     type="components/services"
 >
     <ng-template pageTab>
+        <tui-notification appearance="negative">
+            This service will be removed in the next major version. Use native
+            <code>scroll-behavior: smooth</code>
+            instead!
+        </tui-notification>
+
         <p>A service for smooth scroll</p>
 
         <tui-doc-example

@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -7,8 +6,13 @@ import {
     TUI_TRUE_HANDLER,
     type TuiBooleanHandler,
 } from '@taiga-ui/cdk';
-import {TuiHint, TuiRoot, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {
+    provideTaiga,
+    TuiHint,
+    TuiRoot,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core';
 import {
     TuiInputTagComponent,
     TuiInputTagModule,
@@ -29,7 +33,6 @@ describe('InputTag', () => {
     @Component({
         standalone: true,
         imports: [
-            NgIf,
             ReactiveFormsModule,
             TuiHint,
             TuiInputTagModule,
@@ -39,24 +42,24 @@ describe('InputTag', () => {
         template: `
             <tui-root>
                 <button type="button">Focus stealer</button>
-                <tui-input-tag
-                    *ngIf="defaultInputs"
-                    [formControl]="control"
-                />
-                <tui-input-tag
-                    *ngIf="!defaultInputs"
-                    [formControl]="control"
-                    [placeholder]="placeholder"
-                    [readOnly]="readOnly"
-                    [separator]="separator"
-                    [tagValidator]="tagValidator"
-                    [tuiHintContent]="hintContent"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldLabelOutside]="labelOutside"
-                    [tuiTextfieldSize]="size"
-                >
-                    Placeholder
-                </tui-input-tag>
+                @if (defaultInputs) {
+                    <tui-input-tag [formControl]="control" />
+                }
+                @if (!defaultInputs) {
+                    <tui-input-tag
+                        [formControl]="control"
+                        [placeholder]="placeholder"
+                        [readOnly]="readOnly"
+                        [separator]="separator"
+                        [tagValidator]="tagValidator"
+                        [tuiHintContent]="hintContent"
+                        [tuiTextfieldCleaner]="cleaner"
+                        [tuiTextfieldLabelOutside]="labelOutside"
+                        [tuiTextfieldSize]="size"
+                    >
+                        Placeholder
+                    </tui-input-tag>
+                }
             </tui-root>
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
@@ -106,7 +109,7 @@ describe('InputTag', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

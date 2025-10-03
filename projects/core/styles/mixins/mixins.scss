@@ -72,9 +72,8 @@
     gap: calc(var(--t-gap) - 2 * var(--t-margin));
 
     > img,
-    > tui-svg,
     > tui-icon,
-    > tui-avatar,
+    > [tuiAvatar],
     > tui-badge,
     > [tuiBadge],
     > [tuiRadio],

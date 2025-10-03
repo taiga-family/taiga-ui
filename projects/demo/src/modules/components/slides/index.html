@@ -12,42 +12,46 @@
             each child must be exactly one DOM element.
         </p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="description"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template
-                #description
-                [ngSwitch]="index"
+        @for (example of examples; track example; let index = $index) {
+            <tui-doc-example
+                [component]="index + 1 | tuiComponent"
+                [content]="index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                <ng-container *ngSwitchCase="0">Static crossfading of slides.</ng-container>
-                <ng-container *ngSwitchCase="1">
-                    Navigating back and forth using
-                    <a
-                        tuiLink
-                        [routerLink]="routes.Stepper"
-                    >
-                        Stepper
-                    </a>
-                    .
-                </ng-container>
-                <ng-container *ngSwitchCase="2">
-                    Animating nested routes, adding
-                    <a
-                        tuiLink
-                        [routerLink]="routes.Animated"
-                    >
-                        Animated
-                    </a>
-                    to host directives of route component is required.
-                </ng-container>
-                <ng-container *ngSwitchCase="3">Using slides inside a dialog.</ng-container>
-            </ng-template>
-        </tui-doc-example>
+                <ng-template #description>
+                    @switch (index) {
+                        @case (0) {
+                            Static crossfading of slides.
+                        }
+                        @case (1) {
+                            Navigating back and forth using
+                            <a
+                                tuiLink
+                                [routerLink]="routes.Stepper"
+                            >
+                                Stepper
+                            </a>
+                            .
+                        }
+                        @case (2) {
+                            Animating nested routes, adding
+                            <a
+                                tuiLink
+                                [routerLink]="routes.Animated"
+                            >
+                                Animated
+                            </a>
+                            to host directives of route component is required.
+                        }
+                        @case (3) {
+                            Using slides inside a dialog.
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -64,7 +68,9 @@
             </tui-textfield>
             <p [tuiSlides]="direction">
                 <ng-container *tuiRepeatTimes="let index of 3">
-                    <div *ngIf="index === current">Slide #{{ index }}</div>
+                    @if (index === current) {
+                        <div>Slide #{{ index }}</div>
+                    }
                 </ng-container>
             </p>
         </tui-doc-demo>

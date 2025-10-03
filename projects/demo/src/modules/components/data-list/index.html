@@ -70,38 +70,38 @@
                 [emptyContent]="emptyContent"
                 [size]="size"
             >
-                <button
-                    *ngFor="let item of items$ | async"
-                    tuiOption
-                    type="button"
-                    [value]="[item]"
-                >
-                    {{ item }}
-                </button>
+                @for (item of items$ | async; track item) {
+                    <button
+                        tuiOption
+                        type="button"
+                        [value]="[item]"
+                    >
+                        {{ item }}
+                    </button>
+                }
             </tui-data-list>
         </tui-doc-demo>
         <h2>DataList</h2>
-
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="emptyContent"
-                documentationPropertyType="PolymorpheusContent"
-                [documentationPropertyValues]="emptyContentVariants"
-                [(documentationPropertyValue)]="emptyContent"
+        <table tuiDocAPI>
+            <tr
+                name="[emptyContent]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+                [items]="emptyContentVariants"
+                [(value)]="emptyContent"
             >
                 Content to display when there are no options inside
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeS | TuiSizeL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeS | TuiSizeL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size of items
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

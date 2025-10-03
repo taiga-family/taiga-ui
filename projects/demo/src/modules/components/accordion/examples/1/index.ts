@@ -1,12 +1,11 @@
-import {KeyValuePipe, NgForOf} from '@angular/common';
+import {KeyValuePipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAccordion} from '@taiga-ui/experimental';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [KeyValuePipe, NgForOf, TuiAccordion],
+    imports: [KeyValuePipe, TuiAccordion],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -12,7 +12,6 @@ import {TuiInputFilesContent} from './input-files.content';
 import {TuiInputFilesDirective} from './input-files.directive';
 
 @Component({
-    standalone: true,
     selector: 'label[tuiInputFiles]',
     imports: [PolymorpheusOutlet],
     template: `

@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,8 +6,7 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, NgForOf, NgIf, ReactiveFormsModule, TuiButton, TuiCheckbox],
+    imports: [FormsModule, ReactiveFormsModule, TuiButton, TuiCheckbox],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

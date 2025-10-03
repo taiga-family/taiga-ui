@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -6,28 +5,20 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.directive';
 
 @Component({
-    standalone: true,
     selector: '[tuiDynamicHeader]',
-    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiAnimated],
+    imports: [PolymorpheusOutlet, TuiAnimated],
     template: `
-        <div
-            *ngIf="!container.hiddenHeaders().length; else dynamic"
-            tuiAnimated
-        >
-            <ng-content />
-        </div>
-        <ng-template #dynamic>
-            <ng-container
-                *ngFor="let header of container.hiddenHeaders(); let last = last"
-            >
-                <div
-                    *ngIf="last"
-                    tuiAnimated
-                >
+        @for (header of container.hiddenHeaders(); track header; let last = $last) {
+            @if (last) {
+                <div tuiAnimated>
                     <div *polymorpheusOutlet="header as text">{{ text }}</div>
                 </div>
-            </ng-container>
-        </ng-template>
+            }
+        } @empty {
+            <div tuiAnimated>
+                <ng-content />
+            </div>
+        }
     `,
     styleUrls: ['./dynamic-header.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

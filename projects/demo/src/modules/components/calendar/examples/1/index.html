@@ -2,4 +2,6 @@
     [value]="value"
     (dayClick)="onDayClick($event)"
 />
-<div *ngIf="value">Chosen date: {{ value }}</div>
+@if (value) {
+    <div>Chosen date: {{ value }}</div>
+}

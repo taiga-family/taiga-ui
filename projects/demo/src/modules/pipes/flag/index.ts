@@ -6,7 +6,6 @@ import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {getCountries} from 'libphonenumber-js';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiFlagPipe],
     templateUrl: './index.html',
     changeDetection,

@@ -29,14 +29,16 @@
         </fieldset>
         <fieldset>
             <tui-segmented>
-                <label *ngFor="let segment of segments">
-                    <input
-                        formControlName="segmented"
-                        type="radio"
-                        [value]="segment"
-                    />
-                    {{ segment || 'All' }}
-                </label>
+                @for (segment of segments; track segment) {
+                    <label>
+                        <input
+                            formControlName="segmented"
+                            type="radio"
+                            [value]="segment"
+                        />
+                        {{ segment || 'All' }}
+                    </label>
+                }
             </tui-segmented>
             <tui-filter
                 formControlName="filter"
@@ -62,7 +64,7 @@
                 type="reset"
                 [disabled]="!count()"
             >
-                Clear {{ count() ? '(' + count() + ')' : '' }}
+                Clear {{ count() ? `(${count()})` : '' }}
             </button>
             <button
                 iconStart="@tui.cloud-download"

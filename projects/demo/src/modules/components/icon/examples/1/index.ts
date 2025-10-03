@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiIcon, TuiIconPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

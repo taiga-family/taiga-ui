@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,8 +7,7 @@ import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, NgIf, TuiAutoFocus, TuiButton, TuiInputInline],
+    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiInputInline],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

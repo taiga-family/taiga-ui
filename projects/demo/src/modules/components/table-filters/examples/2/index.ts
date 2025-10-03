@@ -11,19 +11,17 @@ import {
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable, TuiTableFilters} from '@taiga-ui/addon-table';
-import {TuiButton, TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
         NgForOf,
         ReactiveFormsModule,
         TuiButton,
-        TuiFormatNumberPipe,
         TuiInputNumber,
         TuiSwitch,
         TuiTable,

@@ -13,36 +13,13 @@
             [component]="1 | tuiComponent"
             [content]="1 | tuiExample"
             [description]="formControlDescription"
-            [fullsize]="true"
         >
             <ng-template #formControlDescription>
-                <tui-notification style="display: inline-block">
-                    Form control value is of
-                    <code>null</code>
-                    (for empty textfield only) and
-                    <code>number</code>
-                    (all other cases) types.
-                </tui-notification>
-
-                <p>
-                    Use
-                    <a
-                        href="https://angular.dev/api/forms/Validators#required"
-                        target="_blank"
-                        tuiLink
-                    >
-                        <strong>Validators.required</strong>
-                    </a>
-                    (built-in validator provided by Angular team) with our
-                    <a
-                        target="_blank"
-                        tuiLink
-                        [routerLink]="routes.FieldError"
-                    >
-                        <strong>FieldError</strong>
-                    </a>
-                    pipe to notify your users about required field.
-                </p>
+                Form control value is
+                <code>number</code>
+                or
+                <code>null</code>
+                when empty
             </ng-template>
         </tui-doc-example>
 
@@ -52,7 +29,6 @@
             [component]="2 | tuiComponent"
             [content]="2 | tuiExample"
             [description]="textfieldBasedDescription"
-            [fullsize]="true"
         >
             <ng-template #textfieldBasedDescription>
                 Use all powers of
@@ -90,7 +66,6 @@
             [component]="3 | tuiComponent"
             [content]="3 | tuiExample"
             [description]="numberFormatDescription"
-            [fullsize]="true"
         >
             <ng-template #numberFormatDescription>
                 <a
@@ -110,7 +85,6 @@
             [component]="4 | tuiComponent"
             [content]="4 | tuiExample"
             [description]="affixesDescription"
-            [fullsize]="true"
         >
             <ng-template #affixesDescription>
                 Use
@@ -137,7 +111,6 @@
             [component]="5 | tuiComponent"
             [content]="5 | tuiExample"
             [description]="stepDescription"
-            [fullsize]="true"
         >
             <ng-template #stepDescription>
                 Positive value of
@@ -156,7 +129,6 @@
             heading="Custom step buttons"
             [component]="6 | tuiComponent"
             [content]="6 | tuiExample"
-            [fullsize]="true"
         />
 
         <tui-doc-example
@@ -247,12 +219,9 @@
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
-                    <label
-                        *ngIf="textfieldDoc.size !== 's'"
-                        tuiLabel
-                    >
-                        Enter a number
-                    </label>
+                    @if (textfieldDoc.size !== 's') {
+                        <label tuiLabel>Enter a number</label>
+                    }
 
                     <input
                         tuiInputNumber
@@ -287,7 +256,9 @@
                     [items]="minVariants"
                     [(value)]="min"
                 >
-                    The lowest value in the range of permitted values
+                    The
+                    <strong>lowest</strong>
+                    value in the range of permitted values
                 </tr>
 
                 <tr
@@ -297,7 +268,9 @@
                     [items]="maxVariants"
                     [(value)]="max"
                 >
-                    The greatest value in the range of permitted values
+                    The
+                    <strong>greatest</strong>
+                    value in the range of permitted values
                 </tr>
 
                 <tr
@@ -338,6 +311,18 @@
                     [(value)]="quantum"
                 >
                     Minimum indivisible value
+
+                    <p>
+                        Use
+                        <code>0</code>
+                        (default value) to disable this feature and allow any value (that satisfies
+                        <code>min</code>
+                        /
+                        <code>max</code>
+                        /
+                        <code>precision</code>
+                        constraints)
+                    </p>
                 </tr>
             </tbody>
 

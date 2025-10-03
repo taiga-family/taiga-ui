@@ -1,4 +1,3 @@
-import {NgFor, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,20 +6,19 @@ import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCell,
+    TuiHeader,
     tuiHeightCollapse,
     TuiLabel,
     tuiSlideInTop,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiCell, TuiHeader, TuiSearch} from '@taiga-ui/layout';
+import {TuiSearch} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgFor,
-        NgIf,
         TuiAvatar,
         TuiButton,
         TuiCell,

@@ -6,7 +6,6 @@ import {TuiNumberFormat, type TuiNumberFormatSettings} from '@taiga-ui/core';
 import {TuiInputRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputRange, TuiNumberFormat],
     templateUrl: './index.html',
     encapsulation,

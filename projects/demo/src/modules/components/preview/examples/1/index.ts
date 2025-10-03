@@ -7,7 +7,6 @@ import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [PolymorpheusOutlet, TuiButton, TuiPreview, TuiSwipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

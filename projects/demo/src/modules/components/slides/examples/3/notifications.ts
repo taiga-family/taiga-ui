@@ -5,11 +5,10 @@ import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiBlockDetails} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiBlockDetails, TuiTitle],
     template: `
         <div tuiBlockDetails>
-            <tui-avatar src="@tui.bell-off" />
+            <div tuiAvatar="@tui.bell-off"></div>
             <h2
                 tuiTitle
                 [style.align-items]="'center'"

@@ -2,16 +2,17 @@
     class="header"
     [class.header_empty]="!heading"
 >
-    <tui-input-inline *ngIf="editing; else text">
-        Type a heading
-        <input
-            tuiAutoFocus
-            [(ngModel)]="heading"
-            (blur)="onBlur()"
-            (keydown.enter.prevent)="toggle()"
-        />
-    </tui-input-inline>
-    <ng-template #text>
+    @if (editing) {
+        <tui-input-inline>
+            Type a heading
+            <input
+                tuiAutoFocus
+                [(ngModel)]="heading"
+                (blur)="onBlur()"
+                (keydown.enter.prevent)="toggle()"
+            />
+        </tui-input-inline>
+    } @else {
         <span>{{ heading }}</span>
         <button
             appearance="icon"
@@ -24,7 +25,7 @@
         >
             Edit heading
         </button>
-    </ng-template>
+    }
 </h2>
 
 <p>

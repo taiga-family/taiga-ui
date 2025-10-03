@@ -6,7 +6,6 @@ import {TuiBarSet} from '@taiga-ui/addon-charts';
 import {TuiFormatNumberPipe} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiBarSet, TuiFormatNumberPipe],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

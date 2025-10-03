@@ -8,7 +8,6 @@ import {mergeAll, type Observable, Subject} from 'rxjs';
 const MAX_CONCURRENT = 3;
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

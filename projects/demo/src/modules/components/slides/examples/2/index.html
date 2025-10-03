@@ -7,32 +7,35 @@
     <button tuiStep>Payment info</button>
 </tui-stepper>
 <section [tuiSlides]="direction">
-    <ng-container *ngFor="let form of forms; let i = index">
-        <form
-            *ngIf="i === index"
-            tuiAppearance="floating"
-            tuiCardLarge
-            tuiForm
-            [formGroup]="form"
-            [id]="'form_' + i"
-            (ngSubmit)="onSubmit()"
-        >
-            <header tuiHeader>
-                <h2 tuiTitle>
-                    Registration form
-                    <span tuiSubtitle>Tell us about yourself</span>
-                </h2>
-            </header>
-            <tui-textfield *ngFor="let control of form.controls | keyvalue; let j = index">
-                <label tuiLabel>{{ control.key }}</label>
-                <input
-                    tuiTextfield
-                    [formControlName]="control.key"
-                    [tuiAutoFocus]="!!index && !j"
-                />
-            </tui-textfield>
-        </form>
-    </ng-container>
+    @for (form of forms; track form; let i = $index) {
+        @if (i === index) {
+            <form
+                appearance="floating"
+                tuiCardLarge
+                tuiForm
+                [formGroup]="form"
+                [id]="`form_${i}`"
+                (ngSubmit)="onSubmit()"
+            >
+                <header tuiHeader>
+                    <h2 tuiTitle>
+                        Registration form
+                        <span tuiSubtitle>Tell us about yourself</span>
+                    </h2>
+                </header>
+                @for (control of form.controls | keyvalue; track control; let j = $index) {
+                    <tui-textfield>
+                        <label tuiLabel>{{ control.key }}</label>
+                        <input
+                            tuiTextfield
+                            [formControlName]="control.key"
+                            [tuiAutoFocus]="!!index && !j"
+                        />
+                    </tui-textfield>
+                }
+            </form>
+        }
+    }
 </section>
 <footer>
     <button
@@ -48,7 +51,7 @@
     <button
         tuiButton
         type="submit"
-        [attr.form]="'form_' + index"
+        [attr.form]="`form_${index}`"
     >
         Next
     </button>

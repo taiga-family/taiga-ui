@@ -1,5 +1,5 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {isPlatformServer, NgForOf, NgIf} from '@angular/common';
+import {isPlatformServer} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -21,9 +21,8 @@ import {Highlight} from 'ngx-highlightjs';
 import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-code',
-    imports: [ClipboardModule, Highlight, NgForOf, NgIf, TuiButton],
+    imports: [ClipboardModule, Highlight, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

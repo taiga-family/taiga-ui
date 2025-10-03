@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -27,12 +27,9 @@ export interface TuiTablePaginationEvent {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-table-pagination',
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         PolymorpheusOutlet,
         TuiButton,
         TuiDataList,

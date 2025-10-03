@@ -13,7 +13,6 @@ import {TuiSlides, TuiTabs} from '@taiga-ui/kit';
 import {filter, map, pairwise} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [RouterLink, RouterLinkActive, RouterOutlet, TuiSlides, TuiTabs],
     templateUrl: './index.html',
     encapsulation,

@@ -27,7 +27,7 @@ import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {
     tuiInjectAuxiliary,
     TuiTextfieldDirective,
-    tuiTextfieldIconBinding,
+    tuiTextfieldIcon,
     TuiWithNativePicker,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
@@ -80,7 +80,7 @@ export abstract class TuiInputDateBase<
     protected readonly filler = tuiWithDateFiller();
     protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly open = tuiDropdownOpen();
-    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS_NEW);
+    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS_NEW);
     protected readonly handlers = inject<TuiItemsHandlers<T>>(TuiItemsHandlersDirective);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(
@@ -145,7 +145,7 @@ export abstract class TuiInputDateBase<
         }
     }
 
-    public setDate(value: TuiDay | TuiDayRange): void {
+    public setDate(value: TuiDay | TuiDayRange | readonly TuiDay[]): void {
         this.onChange(value as T);
         this.open.set(false);
 

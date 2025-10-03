@@ -7,7 +7,6 @@ import {maskitoPhoneOptionsGenerator} from '@maskito/phone';
 import metadata from 'libphonenumber-js/max/metadata';
 
 @Component({
-    standalone: true,
     imports: [MaskitoPipe],
     template: `
         Phone: {{ rawValue | maskito: mask }}

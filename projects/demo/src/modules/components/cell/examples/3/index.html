@@ -26,9 +26,19 @@
 
 <div tuiCell>
     <tui-avatar-stack>
-        <tui-avatar src="/assets/images/avatar.jpg" />
-        <tui-avatar src="/assets/images/poorly.png" />
-        <tui-avatar>+2</tui-avatar>
+        <div tuiAvatar="@tui.user">
+            <img
+                alt=""
+                src="/assets/images/avatar.jpg"
+            />
+        </div>
+        <div tuiAvatar="@tui.user">
+            <img
+                alt=""
+                src="/assets/images/poorly.png"
+            />
+        </div>
+        <div tuiAvatar>+2</div>
     </tui-avatar-stack>
     <div tuiTitle>
         Waterplea
@@ -43,7 +53,7 @@
             Music
             <tui-icon
                 appearance="positive"
-                icon="@tui.bell"
+                iconStart="@tui.bell"
                 size="s"
                 tuiBadge
             />

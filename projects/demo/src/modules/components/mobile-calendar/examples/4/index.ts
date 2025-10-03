@@ -11,7 +11,6 @@ import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {combineLatest, map, type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiButton],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

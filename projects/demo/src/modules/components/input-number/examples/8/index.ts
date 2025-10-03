@@ -17,7 +17,6 @@ class NaNTransformer extends TuiValueTransformer<number | null, number> {
 }
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

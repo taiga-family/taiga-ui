@@ -3,11 +3,11 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {
+    provideTaiga,
     type TuiDecimalMode,
     TuiNumberFormat,
     tuiNumberFormatProvider,
 } from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {TuiInputNumberComponent, TuiInputNumberModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 
@@ -46,7 +46,7 @@ describe('InputNumber - backward compatibility for separators', () => {
             TestBed.configureTestingModule({
                 imports: [Test],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     tuiNumberFormatProvider({decimalSeparator: ','}),
                 ],
             });
@@ -83,7 +83,7 @@ describe('InputNumber - backward compatibility for separators', () => {
             TestBed.configureTestingModule({
                 imports: [Test],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     tuiNumberFormatProvider({
                         decimalSeparator: '.',
                         thousandSeparator: ',',

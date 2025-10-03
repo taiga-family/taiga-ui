@@ -6,7 +6,6 @@ import {TuiGroup} from '@taiga-ui/core';
 import {TuiBlock, TuiRadio} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiBlock, TuiGroup, TuiRadio],
     templateUrl: './index.html',
     encapsulation,

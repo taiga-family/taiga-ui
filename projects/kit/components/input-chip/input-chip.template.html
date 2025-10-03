@@ -21,14 +21,15 @@
 >
     {{ handlers.stringify()(internal()) }}
 </div>
-<button
-    *ngIf="textfield.cva?.interactive() && !editing() && !disabled()"
-    tabIndex="-1"
-    tuiIconButton
-    type="button"
-    [iconStart]="icons.close"
-    (click.stop)="delete()"
-    (pointerdown.prevent.stop.zoneless)="(0)"
->
-    Remove
-</button>
+@if (textfield.cva?.interactive() && !editing() && !disabled()) {
+    <button
+        tabIndex="-1"
+        tuiIconButton
+        type="button"
+        [iconStart]="icons.close"
+        (click.stop)="delete()"
+        (pointerdown.prevent.stop.zoneless)="(0)"
+    >
+        Remove
+    </button>
+}

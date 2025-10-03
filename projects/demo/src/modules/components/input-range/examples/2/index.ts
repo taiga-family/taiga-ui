@@ -7,7 +7,6 @@ import {TuiLet} from '@taiga-ui/cdk';
 import {TuiInputRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiCurrencyPipe, TuiInputRange, TuiLet],
     templateUrl: './index.html',
     encapsulation,

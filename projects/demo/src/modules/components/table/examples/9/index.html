@@ -85,46 +85,45 @@
             #expand
             [expanded]="true"
         >
-            <tr
-                *ngFor="let item of basicData"
-                tuiTr
-            >
-                <td
-                    *tuiCell="'action'"
-                    tuiTd
-                ></td>
-                <td
-                    *tuiCell="'firstName'"
-                    tuiTd
-                >
-                    <div>
-                        <tui-chip
-                            size="s"
-                            [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
-                        >
-                            {{ item.firstName }}
-                        </tui-chip>
-                    </div>
-                </td>
-                <td
-                    *tuiCell="'lastName'"
-                    tuiTd
-                >
-                    {{ item.lastName }}
-                </td>
-                <td
-                    *tuiCell="'role'"
-                    tuiTd
-                >
-                    {{ item.role }}
-                </td>
-                <td
-                    *tuiCell="'balance'"
-                    tuiTd
-                >
-                    {{ item.balance | tuiFormatNumber | async }}
-                </td>
-            </tr>
+            @for (item of basicData; track item) {
+                <tr tuiTr>
+                    <td
+                        *tuiCell="'action'"
+                        tuiTd
+                    ></td>
+                    <td
+                        *tuiCell="'firstName'"
+                        tuiTd
+                    >
+                        <div>
+                            <tui-chip
+                                size="s"
+                                [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
+                            >
+                                {{ item.firstName }}
+                            </tui-chip>
+                        </div>
+                    </td>
+                    <td
+                        *tuiCell="'lastName'"
+                        tuiTd
+                    >
+                        {{ item.lastName }}
+                    </td>
+                    <td
+                        *tuiCell="'role'"
+                        tuiTd
+                    >
+                        {{ item.role }}
+                    </td>
+                    <td
+                        *tuiCell="'balance'"
+                        tuiTd
+                    >
+                        {{ item.balance | tuiFormatNumber | async }}
+                    </td>
+                </tr>
+            }
         </tui-table-expand>
     </tbody>
 
@@ -167,39 +166,38 @@
         </tr>
 
         <tui-table-expand [expanded]="manualOpen">
-            <tr
-                *ngFor="let item of manualOpenData"
-                tuiTr
-            >
-                <td
-                    *tuiCell="'action'"
-                    tuiTd
-                ></td>
-                <td
-                    *tuiCell="'firstName'"
-                    tuiTd
-                >
-                    {{ item.firstName }}
-                </td>
-                <td
-                    *tuiCell="'lastName'"
-                    tuiTd
-                >
-                    {{ item.lastName }}
-                </td>
-                <td
-                    *tuiCell="'role'"
-                    tuiTd
-                >
-                    {{ item.role }}
-                </td>
-                <td
-                    *tuiCell="'balance'"
-                    tuiTd
-                >
-                    {{ item.balance | tuiFormatNumber | async }}
-                </td>
-            </tr>
+            @for (item of manualOpenData; track item) {
+                <tr tuiTr>
+                    <td
+                        *tuiCell="'action'"
+                        tuiTd
+                    ></td>
+                    <td
+                        *tuiCell="'firstName'"
+                        tuiTd
+                    >
+                        {{ item.firstName }}
+                    </td>
+                    <td
+                        *tuiCell="'lastName'"
+                        tuiTd
+                    >
+                        {{ item.lastName }}
+                    </td>
+                    <td
+                        *tuiCell="'role'"
+                        tuiTd
+                    >
+                        {{ item.role }}
+                    </td>
+                    <td
+                        *tuiCell="'balance'"
+                        tuiTd
+                    >
+                        {{ item.balance | tuiFormatNumber | async }}
+                    </td>
+                </tr>
+            }
         </tui-table-expand>
     </tbody>
 
@@ -245,15 +243,16 @@
             <td [colSpan]="columns.length">
                 <tui-expand [expanded]="customOpen">
                     <div class="chips">
-                        <tui-chip
-                            *ngFor="let item of customContentData"
-                            size="s"
-                            [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
-                            [tuiHint]="'Balance: ' + item.balance + '. Role: ' + item.role"
-                        >
-                            {{ item.firstName }}
-                            {{ item.lastName }}
-                        </tui-chip>
+                        @for (item of customContentData; track item) {
+                            <tui-chip
+                                size="s"
+                                [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
+                                [tuiHint]="`Balance: ${item.balance}. Role: ${item.role}`"
+                            >
+                                {{ item.firstName }}
+                                {{ item.lastName }}
+                            </tui-chip>
+                        }
                     </div>
                 </tui-expand>
             </td>

@@ -7,7 +7,6 @@ import {TuiAlertService, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputNumber, TuiTextfield, TuiValueChanges],
     templateUrl: './index.html',
     encapsulation,

@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -24,12 +24,9 @@ import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
 import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-breadcrumbs',
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         NgTemplateOutlet,
         TuiButton,
         TuiDataList,

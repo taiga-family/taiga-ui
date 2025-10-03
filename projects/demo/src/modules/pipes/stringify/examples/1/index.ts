@@ -11,7 +11,6 @@ import {
 import {TuiComboBoxModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiComboBoxModule,

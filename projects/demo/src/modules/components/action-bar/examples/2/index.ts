@@ -7,7 +7,6 @@ import {TuiActionBar} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiActionBar, TuiButton],
     templateUrl: './index.html',
     encapsulation,

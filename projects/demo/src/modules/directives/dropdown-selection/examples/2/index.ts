@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     Component,
     ElementRef,
@@ -36,11 +36,9 @@ export interface User {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
         TuiAvatar,
         TuiDataList,
         TuiDropdown,

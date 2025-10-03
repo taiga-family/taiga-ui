@@ -118,12 +118,9 @@
                     [tuiTextfieldSize]="textfieldDoc.size"
                     [(open)]="dropdown.open"
                 >
-                    <label
-                        *ngIf="textfieldDoc.size !== 's'"
-                        tuiLabel
-                    >
-                        Choose date
-                    </label>
+                    @if (textfieldDoc.size !== 's') {
+                        <label tuiLabel>Choose date</label>
+                    }
 
                     <input
                         tuiInputDate

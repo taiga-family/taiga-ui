@@ -11,9 +11,9 @@
             class="t-initial"
             [attr.data-text]="copied() ? '' : texts()[0]"
         >
-            <ng-container *ngIf="!copied()">
+            @if (!copied()) {
                 <ng-content />
-            </ng-container>
+            }
         </span>
         {{ copied() ? texts()[1] : '' }}
     </span>

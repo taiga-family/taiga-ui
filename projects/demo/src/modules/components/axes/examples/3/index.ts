@@ -1,12 +1,10 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAxes, TuiBar} from '@taiga-ui/addon-charts';
 
 @Component({
-    standalone: true,
-    imports: [NgForOf, TuiAxes, TuiBar],
+    imports: [TuiAxes, TuiBar],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

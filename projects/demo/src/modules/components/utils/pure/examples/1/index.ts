@@ -1,12 +1,10 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {tuiPure} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
-    imports: [NgIf, TuiButton],
+    imports: [TuiButton],
     templateUrl: './index.html',
     changeDetection,
 })

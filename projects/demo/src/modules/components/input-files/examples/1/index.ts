@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,8 +7,7 @@ import {type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 import {finalize, map, type Observable, of, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgIf, ReactiveFormsModule, TuiFiles],
+    imports: [AsyncPipe, ReactiveFormsModule, TuiFiles],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

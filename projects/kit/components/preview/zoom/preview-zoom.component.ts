@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf, PercentPipe} from '@angular/common';
+import {AsyncPipe, PercentPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -21,12 +21,10 @@ import {TuiPreviewAction} from '../action/preview-action.directive';
 const STEP = 0.5;
 
 @Component({
-    standalone: true,
     selector: 'tui-preview-zoom',
     imports: [
         AsyncPipe,
         FormsModule,
-        NgIf,
         PercentPipe,
         TuiButton,
         TuiHint,

@@ -232,7 +232,7 @@ export class TuiDay extends TuiMonth {
     }
 
     /**
-     * Passed date is after or equals to current
+     * Passed date is after or equal to current
      */
     public daySameOrBefore(another: TuiDay): boolean {
         return (

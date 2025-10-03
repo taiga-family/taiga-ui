@@ -1,5 +1,5 @@
 <div
-    tuiAppearance="floating"
+    appearance="floating"
     tuiCardLarge
 >
     <header tuiHeader>
@@ -13,10 +13,10 @@
         *tuiRepeatTimes="let index of 3"
         tuiCell="l"
     >
-        <tui-avatar
+        <div
             appearance="primary"
-            src="@tui.star"
-        />
+            tuiAvatar="@tui.star"
+        ></div>
         <div tuiTitle>
             Title
             <div tuiSubtitle>Description</div>

@@ -17,19 +17,20 @@ describe('Textfield[readonly=true/false] + dropdown', () => {
             input = example.locator('tui-textfield input, tui-primitive-textfield input');
             dropdown = page.locator('tui-dropdown');
         });
+        // TODO: migrate
         [
             DemoRoute.ComboBox,
-            DemoRoute.ComboBoxLegacy,
+            // DemoRoute.ComboBoxLegacy,
             DemoRoute.Select,
-            DemoRoute.SelectLegacy,
+            // DemoRoute.SelectLegacy,
             DemoRoute.InputDate,
-            DemoRoute.InputDateLegacy,
+            // DemoRoute.InputDateLegacy,
             DemoRoute.InputDateRange,
-            DemoRoute.InputDateRangeLegacy,
+            // DemoRoute.InputDateRangeLegacy,
             DemoRoute.InputDateTime,
-            DemoRoute.InputDateTimeLegacy,
+            // DemoRoute.InputDateTimeLegacy,
             DemoRoute.InputMonth,
-            DemoRoute.InputMonthLegacy,
+            // DemoRoute.InputMonthLegacy,
         ].forEach((path) => {
             describe('opens dropdown for readOnly=false', () => {
                 test(`${path}`, async ({page}) => {

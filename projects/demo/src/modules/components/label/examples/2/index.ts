@@ -6,7 +6,6 @@ import {TuiLabel} from '@taiga-ui/core';
 import {TuiRadio} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiLabel, TuiRadio],
     templateUrl: './index.html',
     encapsulation,

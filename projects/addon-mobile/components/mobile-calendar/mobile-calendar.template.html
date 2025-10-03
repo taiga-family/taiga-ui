@@ -1,46 +1,45 @@
-<header
-    *ngIf="chooseDayOrRangeTexts$ | async as texts"
-    class="t-header"
->
-    <button
-        appearance=""
-        automation-id="tui-mobile-calendar__cancel"
-        tuiIconButton
-        tuiRipple
-        type="button"
-        class="t-close"
-        [iconStart]="icons.close"
-        [style.border-radius.%]="100"
-        (click)="onClose()"
-    >
-        {{ closeWord$ | async }}
-    </button>
-    <button
-        tuiLink
-        tuiTouchable="opacity"
-        type="button"
-        class="t-link t-link_close"
-        (click)="onClose()"
-    >
-        {{ cancelWord$ | async }}
-    </button>
-    <h2
-        automation-id="tui-mobile-calendar__label"
-        class="t-label"
-    >
-        {{ single ? texts[0] : multi ? texts[2] : texts[1] }}
-    </h2>
-    <button
-        automation-id="tui-mobile-calendar__confirm"
-        tuiLink
-        tuiTouchable="opacity"
-        type="button"
-        class="t-link"
-        (click)="onConfirm()"
-    >
-        {{ doneWord$ | async }}
-    </button>
-</header>
+@if (chooseDayOrRangeTexts$ | async; as texts) {
+    <header class="t-header">
+        <button
+            appearance=""
+            automation-id="tui-mobile-calendar__cancel"
+            tuiIconButton
+            tuiRipple
+            type="button"
+            class="t-close"
+            [iconStart]="icons.close"
+            [style.border-radius.%]="100"
+            (click)="onClose()"
+        >
+            {{ closeWord$ | async }}
+        </button>
+        <button
+            tuiLink
+            tuiTouchable="opacity"
+            type="button"
+            class="t-link t-link_close"
+            (click)="onClose()"
+        >
+            {{ cancelWord$ | async }}
+        </button>
+        <h2
+            automation-id="tui-mobile-calendar__label"
+            class="t-label"
+        >
+            {{ single ? texts[0] : multi ? texts[2] : texts[1] }}
+        </h2>
+        <button
+            automation-id="tui-mobile-calendar__confirm"
+            tuiLink
+            tuiTouchable="opacity"
+            type="button"
+            class="t-link"
+            (click)="onConfirm()"
+        >
+            {{ doneWord$ | async }}
+        </button>
+    </header>
+}
 <cdk-virtual-scroll-viewport
     #yearsScrollRef
     orientation="horizontal"
@@ -60,12 +59,11 @@
     </div>
 </cdk-virtual-scroll-viewport>
 <div class="t-week">
-    <div
-        *ngFor="let day of unorderedWeekDays$ | tuiOrderWeekDays | async"
-        class="t-day"
-    >
-        {{ day }}
-    </div>
+    @for (day of unorderedWeekDays$ | tuiOrderWeekDays | async; track day) {
+        <div class="t-day">
+            {{ day }}
+        </div>
+    }
 </div>
 <cdk-virtual-scroll-viewport
     #monthsScrollRef

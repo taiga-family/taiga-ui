@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
@@ -12,8 +11,7 @@ import {TuiPushDirective} from './push.directive';
 import {type TuiPushOptions} from './push.options';
 
 @Component({
-    standalone: true,
-    imports: [NgIf, PolymorpheusOutlet, TuiButton, TuiIcon, TuiLink, TuiPushComponent],
+    imports: [PolymorpheusOutlet, TuiButton, TuiIcon, TuiLink, TuiPushComponent],
     templateUrl: './push-alert.template.html',
     styleUrls: ['./push-alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -2,7 +2,7 @@
     [duration]="4000"
     [(index)]="index"
 >
-    <ng-container *ngFor="let item of items">
+    @for (item of items; track item) {
         <div
             *tuiItem
             class="item"
@@ -11,12 +11,12 @@
             <!-- TODO: update documentation here -->
             <a
                 tuiButton
-                [attr.href]="'https://en.wikipedia.org/wiki/' + item"
+                [attr.href]="`https://en.wikipedia.org/wiki/${item}`"
             >
                 Wiki
             </a>
         </div>
-    </ng-container>
+    }
 </tui-carousel>
 <tui-pagination
     size="s"

@@ -1,4 +1,4 @@
-import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {TuiBar} from '@taiga-ui/addon-charts/components/bar';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -9,9 +9,8 @@ const EMPTY_ARRAY: readonly number[] = [];
 const FILLER_ARRAY: readonly number[] = [1];
 
 @Component({
-    standalone: true,
     selector: 'tui-bar-set',
-    imports: [NgForOf, NgIf, NgTemplateOutlet, TuiBar],
+    imports: [NgTemplateOutlet, TuiBar],
     templateUrl: './bar-set.template.html',
     styleUrls: ['./bar-set.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, type Signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiAnimatedParent} from '@taiga-ui/cdk/directives/animated';
@@ -7,14 +6,14 @@ import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollbar';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
+import {TuiActiveZoneAdapter} from './active-zone-adapter.directive';
 import {TUI_DIALOGS} from './dialog.tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-dialogs',
     imports: [
-        NgForOf,
         PolymorpheusOutlet,
+        TuiActiveZoneAdapter,
         TuiAnimatedParent,
         TuiFocusTrap,
         TuiScrollControls,

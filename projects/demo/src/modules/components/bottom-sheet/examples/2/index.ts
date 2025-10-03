@@ -2,11 +2,9 @@ import {Component, type ElementRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiHeader} from '@taiga-ui/layout';
+import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiBottomSheet, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

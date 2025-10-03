@@ -1,4 +1,4 @@
-<ng-container *ngIf="texts$ | async as texts">
+@if (texts$ | async; as texts) {
     <section
         #contentWrapper
         attributeFilter="src"
@@ -17,40 +17,37 @@
     >
         <ng-content />
     </section>
-
     <header class="t-header">
         <div class="t-title">
             <ng-content select="tui-preview-title" />
         </div>
-
         <ng-content select="tui-preview-pagination" />
-
         <div class="t-actions">
             <ng-content select="[tuiPreviewAction]" />
         </div>
     </header>
-
     <footer class="t-footer">
-        <button
-            *ngIf="rotatable"
-            tuiHintAppearance="dark"
-            tuiHintDescribe
-            tuiHintDirection="top-right"
-            tuiIconButton
-            tuiPreviewAction
-            type="button"
-            class="t-rotate-button"
-            [iconStart]="icons.rotate"
-            [tuiHint]="texts.rotate"
-            (click)="rotate()"
-        ></button>
-
-        <tui-preview-zoom
-            *ngIf="zoomable"
-            [min]="minZoom"
-            [value]="(zoom$ | async) || 1"
-            (reset)="reset()"
-            (valueChange)="setZoom($event)"
-        />
+        @if (rotatable) {
+            <button
+                tuiHintAppearance="dark"
+                tuiHintDescribe
+                tuiHintDirection="top-right"
+                tuiIconButton
+                tuiPreviewAction
+                type="button"
+                class="t-rotate-button"
+                [iconStart]="icons.rotate"
+                [tuiHint]="texts.rotate"
+                (click)="rotate()"
+            ></button>
+        }
+        @if (zoomable) {
+            <tui-preview-zoom
+                [min]="minZoom"
+                [value]="(zoom$ | async) || 1"
+                (reset)="reset()"
+                (valueChange)="setZoom($event)"
+            />
+        }
     </footer>
-</ng-container>
+}

@@ -3,29 +3,28 @@
     class="t-content"
     [innerHTML]="text"
 ></p>
-<footer
-    *ngIf="words$ | async as words"
-    class="t-buttons"
->
-    <button
-        size="m"
-        tuiButton
-        type="button"
-        class="t-button"
-        [appearance]="appearance"
-        (click)="context.completeWith(false)"
-    >
-        {{ context.data?.no || words.no }}
-    </button>
-    <button
-        size="m"
-        tuiAutoFocus
-        tuiButton
-        type="button"
-        class="t-button"
-        [appearance]="context.data?.appearance || 'primary'"
-        (click)="context.completeWith(true)"
-    >
-        {{ context.data?.yes || words.yes }}
-    </button>
-</footer>
+@if (words$ | async; as words) {
+    <footer class="t-buttons">
+        <button
+            size="m"
+            tuiButton
+            type="button"
+            class="t-button"
+            [appearance]="appearance"
+            (click)="context.completeWith(false)"
+        >
+            {{ context.data?.no || words.no }}
+        </button>
+        <button
+            size="m"
+            tuiAutoFocus
+            tuiButton
+            type="button"
+            class="t-button"
+            [appearance]="context.data?.appearance || 'primary'"
+            (click)="context.completeWith(true)"
+        >
+            {{ context.data?.yes || words.yes }}
+        </button>
+    </footer>
+}

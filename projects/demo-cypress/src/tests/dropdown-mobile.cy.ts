@@ -7,6 +7,8 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButton,
+    TuiCell,
+    TuiInitialsPipe,
     TuiRoot,
     TuiTextfield,
     TuiTitle,
@@ -18,7 +20,6 @@ import {
     TuiFilterByInputPipe,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 // Note: webpack compilation error
@@ -27,13 +28,12 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 import {assets} from '../../../demo/src/utils/load-assets';
 
 interface User {
-    readonly url: string;
+    readonly url?: string;
     readonly name: string;
     readonly balance: number;
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
@@ -51,6 +51,7 @@ interface User {
         TuiSelect,
         TuiTextfield,
         TuiTitle,
+        TuiInitialsPipe,
     ],
     template: `
         <tui-root>
@@ -109,7 +110,14 @@ interface User {
                 let-user
             >
                 <span tuiCell>
-                    <tui-avatar [src]="user.url" />
+                    <div [tuiAvatar]="user.name | tuiInitials">
+                        @if (user.url) {
+                            <img
+                                alt=""
+                                [src]="user.url"
+                            />
+                        }
+                    </div>
                     <span tuiTitle>
                         {{ user.name }}
                         <span tuiSubtitle>
@@ -130,10 +138,10 @@ export class TestDropdownMobile {
     protected readonly open = signal(false);
     protected readonly users: readonly User[] = [
         {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},
-        {name: 'Roman Sedov', balance: 523242, url: 'RS'},
-        {name: 'Vladimir Potekhin', balance: 645465, url: 'VP'},
-        {name: 'Nikita Barsukov', balance: 468468, url: 'NB'},
-        {name: 'Maxim Ivanov', balance: 498654, url: 'MI'},
+        {name: 'Roman Sedov', balance: 523242},
+        {name: 'Vladimir Potekhin', balance: 645465},
+        {name: 'Nikita Barsukov', balance: 468468},
+        {name: 'Maxim Ivanov', balance: 498654},
     ];
 
     protected readonly stringify = ({name}: User): string => name;

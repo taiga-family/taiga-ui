@@ -6,6 +6,7 @@ import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
 test.describe('Demo', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
+
     const axeConfig = JSON.parse(process.env['AXE_CONFIG']!);
 
     demoPaths.forEach((path) => {
@@ -73,7 +74,13 @@ test.describe('Demo', () => {
                 await expect.soft(example).toHaveScreenshot(makeName('android'));
             }
 
-            await checkA11y(page, 'tui-doc-example > .t-example', {detailedReport: true});
+            await checkA11y(
+                page,
+                'tui-doc-example > .t-example',
+                {detailedReport: true},
+                false,
+                'v2',
+            );
         });
     });
 });

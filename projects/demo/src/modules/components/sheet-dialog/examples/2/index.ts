@@ -6,7 +6,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiFloatingContainer} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiFloatingContainer, TuiSheetDialog],
     templateUrl: './index.html',
     encapsulation,

@@ -1,4 +1,4 @@
-<ng-container *ngIf="control?.control?.valueChanges | async" />
+@if (control?.control?.valueChanges | async) {}
 <ng-content select="input" />
 <ng-content select="select" />
 <ng-content select="textarea" />
@@ -9,36 +9,37 @@
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
-    <button
-        *ngIf="options.cleaner()"
-        appearance="icon"
-        size="xs"
-        tabindex="-1"
-        tuiIconButton
-        type="button"
-        class="t-clear"
-        [iconStart]="icons.close"
-        (click)="accessor?.setValue(null)"
-        (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
-    >
-        {{ clear() }}
-    </button>
     <ng-container #vcr />
+    @if (options.cleaner()) {
+        <button
+            appearance="icon"
+            size="xs"
+            tabindex="-1"
+            tuiIconButton
+            type="button"
+            class="t-clear"
+            [iconStart]="icons.close"
+            (click)="accessor?.setValue(null)"
+            (pointerdown.zoneless.prevent)="input?.nativeElement?.focus()"
+        >
+            {{ clear() }}
+        </button>
+    }
     <ng-content select="tui-icon" />
 </span>
-<span
-    *ngIf="control?.value != null"
-    class="t-template"
->
-    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value}">
-        {{ text }}
-    </ng-container>
-</span>
-<input
-    *ngIf="showFiller()"
-    #ghost
-    aria-hidden="true"
-    disabled
-    class="t-filler"
-    [value]="computedFiller()"
-/>
+@if (control?.value != null) {
+    <span class="t-template">
+        <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value}">
+            {{ text }}
+        </ng-container>
+    </span>
+}
+@if (showFiller()) {
+    <input
+        #ghost
+        aria-hidden="true"
+        disabled
+        class="t-filler"
+        [value]="computedFiller()"
+    />
+}

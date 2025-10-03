@@ -6,7 +6,6 @@ import {TuiIcon} from '@taiga-ui/core';
 import {TuiInputRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiIcon, TuiInputRange],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

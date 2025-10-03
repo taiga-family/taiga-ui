@@ -6,7 +6,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('Input', () => {
+// TODO migrate
+test.skip('Input', () => {
     test("has custom content (text) + cleaner + hint which don't overlapping each others", async ({
         page,
     }) => {

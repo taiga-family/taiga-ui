@@ -18,24 +18,26 @@
             [(ngModel)]="value"
         >
             <tui-opt-group label="Main dishes menu with long label">
-                <button
-                    *ngFor="let burger of burgers"
-                    tuiOption
-                    type="button"
-                    [value]="burger"
-                >
-                    {{ burger }}
-                </button>
+                @for (burger of burgers; track burger) {
+                    <button
+                        tuiOption
+                        type="button"
+                        [value]="burger"
+                    >
+                        {{ burger }}
+                    </button>
+                }
             </tui-opt-group>
             <tui-opt-group label="Drinks">
-                <button
-                    *ngFor="let drink of drinks"
-                    tuiOption
-                    type="button"
-                    [value]="drink"
-                >
-                    {{ drink }}
-                </button>
+                @for (drink of drinks; track drink) {
+                    <button
+                        tuiOption
+                        type="button"
+                        [value]="drink"
+                    >
+                        {{ drink }}
+                    </button>
+                }
             </tui-opt-group>
         </tui-opt-group>
     </tui-data-list>

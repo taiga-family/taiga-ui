@@ -1,4 +1,5 @@
 import {Component, inject, type TemplateRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
@@ -18,13 +19,14 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiLet, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
 })
 export default class Page {
+    private readonly router = inject(Router);
+    private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiAlertService);
 
@@ -72,5 +74,9 @@ export default class Page {
             })
             .pipe(switchMap((response) => this.alerts.open(String(response))))
             .subscribe();
+    }
+
+    protected navigate(): void {
+        void this.router.navigate(['./'], {relativeTo: this.route});
     }
 }

@@ -18,7 +18,6 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
  * @deprecated: drop in v5.0 use {@link TuiChevron}
  */
 @Component({
-    standalone: true,
     selector: 'tui-arrow',
     imports: [PolymorpheusOutlet, TuiIcon],
     templateUrl: './arrow.template.html',

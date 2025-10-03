@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -23,17 +22,8 @@ import {TUI_BLOCK_OPTIONS, TuiBlock} from '@taiga-ui/kit/components/block';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'tui-filter',
-    imports: [
-        FormsModule,
-        NgForOf,
-        NgIf,
-        PolymorpheusOutlet,
-        TuiBadge,
-        TuiBlock,
-        TuiHintOverflow,
-    ],
+    imports: [FormsModule, PolymorpheusOutlet, TuiBadge, TuiBlock, TuiHintOverflow],
     templateUrl: './filter.template.html',
     styleUrls: ['./filter.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -50,7 +40,7 @@ export class TuiFilter<T> extends TuiControl<readonly T[]> {
     public items: readonly T[] = [];
 
     @Input()
-    public size: TuiSizeL | TuiSizeS = inject(TUI_BLOCK_OPTIONS).size;
+    public size: TuiSizeL | TuiSizeS = inject(TUI_BLOCK_OPTIONS).size || 'l';
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<T> = TUI_FALSE_HANDLER;

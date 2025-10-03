@@ -21,7 +21,7 @@ import {
     type TuiTextfieldAccessor,
     TuiTextfieldComponent,
     TuiTextfieldDirective,
-    tuiTextfieldIconBinding,
+    tuiTextfieldIcon,
     TuiWithNativePicker,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
@@ -67,7 +67,7 @@ export class TuiInputTimeDirective
     private readonly prefix = signal('');
     private readonly postfix = signal('');
 
-    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_TIME_OPTIONS);
+    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_TIME_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
     );
