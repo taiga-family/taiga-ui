@@ -39,6 +39,10 @@ export class TuiAlgoliaSearch {
         docsearch({
             ...this.config,
             maxResultsPerGroup: 7,
+            transformSearchClient: (searchClient: {search: () => Promise<unknown>}) => ({
+                ...searchClient,
+                search: debounce(searchClient.search, 400),
+            }),
             transformItems: (items: Array<{url: string}>) =>
                 items.map((item) => ({
                     ...item,
@@ -55,4 +59,31 @@ export class TuiAlgoliaSearch {
             documentElement?.setAttribute('data-theme', darkMode() ? 'dark' : 'light');
         });
     }
+}
+
+// https://docsearch.algolia.com/docs/api/#transformsearchclient
+function debounce<T extends (...args: unknown[]) => ReturnType<T>>(
+    func: T,
+    wait = 100,
+): (...args: Parameters<T>) => Promise<ReturnType<T>> {
+    let lastTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    return async function (
+        this: unknown,
+        ...args: Parameters<T>
+    ): Promise<ReturnType<T>> {
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
+        const that = this;
+
+        return new Promise<ReturnType<T>>((resolve, reject) => {
+            if (lastTimeout) {
+                clearTimeout(lastTimeout);
+            }
+
+            lastTimeout = setTimeout(() => {
+                lastTimeout = null;
+                Promise.resolve(func.apply(that, args)).then(resolve).catch(reject);
+            }, wait);
+        });
+    };
 }
