@@ -34,13 +34,10 @@ test.describe('Inputs - updateOn', () => {
 
                 await details.click();
 
-                select = demo.getByTestId('tui-demo-select__expand-update-on');
+                select = demo.locator('tui-expand tui-textfield:has(input[tuiSelect])');
                 submit = demo.getByTestId('tui-demo-button__submit-state');
-                option = page.getByTestId('tui-data-list-wrapper__option');
-                input = demo
-                    .locator('input:not([readonly]):not(:disabled)')
-                    .first()
-                    .or(demo.locator('textarea'));
+                option = page.locator('button[tuiOption]');
+                input = demo.locator('input:not([readonly]):not(:disabled)').first();
             });
 
             async function expectScreenshot(name: string): Promise<void> {
@@ -53,6 +50,7 @@ test.describe('Inputs - updateOn', () => {
 
                 await input.blur();
                 await expectScreenshot('change-02');
+                await expect(input).toBeVisible();
             });
 
             test('update on blur', async () => {
@@ -64,6 +62,7 @@ test.describe('Inputs - updateOn', () => {
 
                 await input.blur();
                 await expectScreenshot('blur-02');
+                await expect(input).toBeVisible();
             });
 
             test('update on submit', async () => {
@@ -78,6 +77,7 @@ test.describe('Inputs - updateOn', () => {
 
                 await submit.click();
                 await expectScreenshot('submit-03');
+                await expect(submit).toBeEnabled();
             });
         });
     }
