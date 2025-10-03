@@ -7,7 +7,7 @@ import {TuiScrollControls, TuiScrollRef} from '@taiga-ui/core/components/scrollb
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiActiveZoneAdapter} from './active-zone-adapter.directive';
-import {TUI_DIALOGS} from './dialog.tokens';
+import {TUI_DIALOGS} from './dialog.providers';
 
 @Component({
     selector: 'tui-dialogs',

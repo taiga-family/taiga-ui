@@ -6,7 +6,7 @@ import {type Observable} from 'rxjs';
 
 export interface TuiSheetDialogOptions<I = undefined> {
     readonly appearance: string;
-    readonly closeable: Observable<boolean> | boolean;
+    readonly closable: Observable<boolean> | boolean;
     readonly data: I;
     readonly initial: number;
     readonly label: PolymorpheusContent<TuiPopover<TuiSheetDialogOptions<I>, any>>;
@@ -24,7 +24,7 @@ export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
     stops: [],
     initial: 0,
     offset: 16,
-    closeable: true,
+    closable: true,
     data: undefined,
     bar: true,
     fullscreen: false,

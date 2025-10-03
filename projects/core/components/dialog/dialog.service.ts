@@ -2,8 +2,8 @@ import {inject, Injectable} from '@angular/core';
 import {TuiPopoverService} from '@taiga-ui/cdk/services';
 
 import {TuiDialogComponent} from './dialog.component';
-import {type TuiDialogOptions} from './dialog.interfaces';
-import {TUI_DIALOG_OPTIONS, TUI_DIALOGS} from './dialog.tokens';
+import {TUI_DIALOG_OPTIONS, type TuiDialogOptions} from './dialog.options';
+import {TUI_DIALOGS} from './dialog.providers';
 
 @Injectable({
     providedIn: 'root',

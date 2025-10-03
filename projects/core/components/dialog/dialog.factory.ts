@@ -2,7 +2,7 @@ import {assertInInjectionContext, inject, INJECTOR, type Injector} from '@angula
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 
-import {type TuiDialogContext, type TuiDialogOptions} from './dialog.interfaces';
+import {type TuiDialogContext, type TuiDialogOptions} from './dialog.options';
 import {TuiDialogService} from './dialog.service';
 
 type SingleUnionOrNever<T, U = T> = [T] extends [never]

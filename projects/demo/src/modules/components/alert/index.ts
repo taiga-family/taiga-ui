@@ -78,7 +78,7 @@ export default class Page {
 
     protected autoClose = this.autoCloseVariants[1]!;
 
-    protected closeable = true;
+    protected closable = true;
 
     protected readonly component = new PolymorpheusComponent(
         AlertExampleWithData,
@@ -98,7 +98,7 @@ export default class Page {
                 data: this.data,
                 appearance: this.appearance,
                 autoClose: this.autoClose,
-                closeable: this.closeable,
+                closable: this.closable,
                 icon: this.icon === this.iconVariants[0] ? this.defaultIcon : this.icon,
             })
             .pipe(

@@ -1,30 +1,24 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, tuiDialog} from '@taiga-ui/core';
-
-import {DialogExample} from './dialog-example/dialog-example.component';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiButton, TuiDialog, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiButton],
+    imports: [
+        TuiAutoFocus,
+        TuiButton,
+        TuiDialog,
+        TuiForm,
+        TuiHeader,
+        TuiTextfield,
+        TuiTitle,
+    ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    private readonly dialog = tuiDialog(DialogExample, {
-        dismissible: true,
-        label: 'Heading',
-    });
-
-    protected showDialog(): void {
-        this.dialog(237).subscribe({
-            next: (data) => {
-                console.info(`Dialog emitted data = ${data}`);
-            },
-            complete: () => {
-                console.info('Dialog closed');
-            },
-        });
-    }
+    protected open = false;
 }

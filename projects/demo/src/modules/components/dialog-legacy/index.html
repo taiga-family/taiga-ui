@@ -1,0 +1,386 @@
+<tui-doc-page
+    header="DialogLegacy"
+    package="LEGACY"
+    type="components"
+>
+    <ng-template pageTab>
+        <tui-notification appearance="negative">
+            <div tuiTitle>
+                This component is deprecated
+                <div tuiSubtitle>
+                    Use
+                    <a
+                        tuiLink
+                        [routerLink]="routes.Dialog"
+                    >
+                        Dialog
+                    </a>
+                    from Core package instead
+                </div>
+            </div>
+        </tui-notification>
+
+        <p>
+            If you want custom dialogs see
+            <a
+                tuiLink
+                [routerLink]="routes.DialogCustom"
+            >
+                this link
+            </a>
+            on creating your own implementation
+        </p>
+
+        <tui-notification class="tui-space_vertical-4">
+            Use
+            <code>
+                <strong>TUI_DIALOGS_CLOSE</strong>
+            </code>
+            token if you need to close dialog with from a stream. For example, this way you can close dialogs by logout
+        </tui-notification>
+
+        <tui-doc-code [code]="dialogsCloseToken" />
+
+        <tui-doc-example
+            id="string"
+            heading="Dialog from string"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="directive"
+            heading="Dialog with directive"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="data"
+            description="Using two-way data transfer"
+            heading="Component dialog"
+            [component]="2 | tuiComponent"
+            [content]="example2"
+        />
+
+        <tui-doc-example
+            id="template"
+            heading="Dialog from template"
+            [component]="3 | tuiComponent"
+            [content]="3 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="mobile"
+            heading="Mobile dialog"
+            [component]="4 | tuiComponent"
+            [content]="4 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="header"
+            heading="Dialog with header"
+            [component]="5 | tuiComponent"
+            [content]="5 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="mobile-fullscreen"
+            heading="Fullscreen mobile dialog with autofocus"
+            [component]="7 | tuiComponent"
+            [content]="example7"
+        />
+
+        <tui-doc-example
+            id="confirm"
+            description="Confirming closing of the dialog"
+            heading="Confirmation"
+            [component]="8 | tuiComponent"
+            [content]="8 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="pay"
+            description="Example with pay from modal"
+            heading="Pay"
+            [component]="9 | tuiComponent"
+            [content]="example9"
+        />
+
+        <tui-doc-example
+            id="appearance"
+            description="Custom appearance with CSS style"
+            heading="Appearance"
+            [component]="10 | tuiComponent"
+            [content]="10 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="status-bar"
+            description="Change status-bar color when opening dialog"
+            heading="Theme color"
+            [component]="11 | tuiComponent"
+            [content]="11 | tuiExample"
+        >
+            <tui-notification
+                appearance="warning"
+                class="tui-space_bottom-4"
+            >
+                Works only on mobile browsers
+            </tui-notification>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <button
+                size="m"
+                tuiButton
+                type="button"
+                (click)="showDialog(template)"
+            >
+                Show
+            </button>
+        </tui-doc-demo>
+        <ng-template
+            #template
+            let-completeWith="completeWith"
+            let-data="data"
+            let-observer
+            let-size="size"
+        >
+            @if (size === 'xl') {
+                <h2>Template can be customized</h2>
+            }
+            <p>
+                Dialog has
+                <code>Observer</code>
+                in its context to call
+                <code>next</code>
+                ,
+                <code>complete</code>
+                or
+                <code>error</code>
+                of stream. There is also a
+                <code>completeWith</code>
+                method to pass data and close dialog with one action
+            </p>
+            <p>Input data: {{ data }}.</p>
+            <p>
+                <i>
+                    There is no need in input data for template dialog because you can set it in template. But if you
+                    use a component, context is the only way to get data from outside
+                </i>
+            </p>
+            <tui-accordion class="container">
+                <button tuiAccordion>Dynamic height change</button>
+                <tui-expand>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur eligendi esse minima nobis!
+                    Assumenda debitis, delectus dicta dolore eos explicabo fuga id inventore maiores, nihil, nobis
+                    nostrum quasi quo unde! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur
+                    eligendi esse minima nobis! Assumenda debitis, delectus dicta dolore eos explicabo fuga id inventore
+                    maiores, nihil, nobis nostrum quasi quo unde!
+                </tui-expand>
+            </tui-accordion>
+            <button
+                size="m"
+                tuiButton
+                type="button"
+                class="tui-space_top-2 tui-space_right-1"
+                (click)="observer.complete()"
+            >
+                Close
+            </button>
+            <button
+                size="m"
+                tuiButton
+                type="button"
+                class="tui-space_top-2 tui-space_right-1"
+                (click)="observer.next('Hi')"
+            >
+                Say "Hi"
+            </button>
+            <button
+                size="m"
+                tuiButton
+                type="button"
+                class="tui-space_top-2 tui-space_right-1"
+                (click)="completeWith('Hi and bye!')"
+            >
+                Say "Hi and bye!"
+            </button>
+        </ng-template>
+        <table tuiDocAPI>
+            <tr
+                name="[closable]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="closable"
+            >
+                Show a cross to close dialog.
+
+                <p>
+                    Pass
+                    <code [textContent]="'Observable<boolean>'"></code>
+                    if you want prevent closing, for example, with a confirmation prompt. Be careful, passing
+                    <code [textContent]="'Observable<boolean>'"></code>
+                    will always display cross button even if it emits
+                    <code>false</code>
+                    value!
+                </p>
+            </tr>
+            <tr
+                name="[dismissible]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="dismissible"
+            >
+                Dialog can be canceled with Escape key or with a click outside. Pass
+                <code [textContent]="'Observable<boolean>'"></code>
+                if you want prevent closing, for example, with a confirmation prompt.
+            </tr>
+            <tr
+                name="[data]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="data"
+            >
+                Input data for dialog, type:
+                <code [textContent]="'<T>'"></code>
+            </tr>
+            <tr
+                name="[header]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+            >
+                Content above a heading
+            </tr>
+            <tr
+                name="[label]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="label"
+            >
+                Heading of dialog
+            </tr>
+            <tr
+                name="[required]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="required"
+            >
+                Cross click, overlay click or Escape click emits an error into
+                <code>Observable</code>
+                (you can catch it with "catch" operator or onError handler)
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiDialogSize"
+                [items]="sizeVariants"
+                [(value)]="size"
+            >
+                Size
+            </tr>
+            <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="appearance"
+            >
+                Appearance of dialog
+            </tr>
+        </table>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="tui-list tui-list_ordered">
+            <li class="tui-list__item">
+                <p>
+                    Use
+                    <code>open</code>
+                    method to initiate a dialog, subscribe to a returned
+                    <code>Observable</code>
+                    to show it :
+                </p>
+
+                <tui-doc-code
+                    filename="my.component.ts"
+                    [code]="exampleServiceUsage"
+                />
+            </li>
+
+            <li class="tui-list__item">
+                <p>
+                    If you want to use your own component as a dialog content, use
+                    <code>POLYMORPHEUS_CONTEXT</code>
+                    in it. Dialog will provide this token with some useful options:
+                    <code>$implicit</code>
+                    with
+                    <code [textContent]="'Observer<O>'"></code>
+                    and
+                    <code>completeWith</code>
+                    hook to call
+                    <code>next</code>
+                    and
+                    <code>complete</code>
+                    in one action.
+                </p>
+            </li>
+
+            <li class="tui-list__item">
+                You can also use a
+                <a
+                    fragment="template"
+                    tuiLink
+                    [routerLink]="routes.Dialog"
+                >
+                    template
+                </a>
+            </li>
+
+            <li class="tui-list__item">
+                <p>
+                    Use
+                    <code>Observer</code>
+                    from
+                    <code>$implicit</code>
+                    field of context to close a dialog or get some data
+                </p>
+
+                <tui-doc-code
+                    filename="my-dialog.component.ts"
+                    [code]="exampleCustomDialog"
+                />
+
+                <tui-notification class="tui-space_top-3">
+                    <code [innerText]="'TuiDialogContext<Type1 = void, Type2 = undefined>'"></code>
+                    , the first type is the return type of value, for example:
+                    <code [innerText]="'this.dialogs.open(...).subscribe((value: Type1) => ... )'"></code>
+                    . The second type is type of passed data to the dialog:
+                    <code [innerText]="'this.dialogs.open(..., { data: Type2 })'"></code>
+                    . Accordingly, in the dialog component the context will be as follows:
+                    <code [innerText]="'this.context.data: Type2'"></code>
+                    and
+                    <code [innerText]="'this.context.$implicit / completeWith: Type1'"></code>
+                </tui-notification>
+            </li>
+
+            <li class="tui-list__item">
+                <p>
+                    If you use dialog components in lazy loading modules, and want to reach for some local providers,
+                    you can pass
+                    <code>Injector</code>
+                    into
+                    <code>new PolymorpheusComponent</code>
+                    of your dialog component.
+                </p>
+
+                <tui-doc-code
+                    filename="my-dialog.component.ts"
+                    [code]="exampleLazyDialog"
+                />
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

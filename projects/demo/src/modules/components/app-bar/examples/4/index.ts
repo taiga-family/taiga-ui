@@ -20,9 +20,8 @@ export default class Example {
         this.step = 0;
         this.dialogs
             .open(template, {
-                label: '',
-                size: 'fullscreen',
-                closeable: false,
+                appearance: 'fullscreen',
+                closable: false,
                 dismissible: false,
             })
             .subscribe();
