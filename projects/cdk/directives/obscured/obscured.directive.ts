@@ -17,13 +17,7 @@ export class TuiObscured {
     private readonly activeZone = inject(TuiActiveZone, {optional: true});
     private readonly enabled$ = new BehaviorSubject(false);
     private readonly obscured$ = inject(TuiObscuredService, {self: true}).pipe(
-        // TODO: Refactor so that dropdowns and dialogs work properly without hacks
-        map(
-            (by) =>
-                !!by?.every(
-                    (el) => el.closest('tui-dialogs') || !this.activeZone?.contains(el),
-                ),
-        ),
+        map((by) => !!by?.every((el) => check(el) || !this.activeZone?.contains(el))),
     );
 
     @Output()
@@ -33,4 +27,13 @@ export class TuiObscured {
     public set tuiObscuredEnabled(enabled: boolean) {
         this.enabled$.next(enabled);
     }
+}
+
+// TODO: Refactor so that dropdowns and dialogs work properly without hacks
+function check(el: Element): boolean {
+    return (
+        !!el.closest('tui-dialogs') &&
+        // eslint-disable-next-line unicorn/prefer-query-selector
+        !!el.ownerDocument.documentElement.getElementsByTagName('tui-dropdown').length
+    );
 }

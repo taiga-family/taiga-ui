@@ -6,6 +6,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
 
 @Component({
     template: '',
@@ -18,6 +19,7 @@ class Styles {}
 
 @Directive({
     selector: '[tuiCardLarge]',
+    hostDirectives: [TuiWithAppearance],
     host: {
         tuiCardLarge: '',
         '[attr.data-space]': 'space() || "normal"',

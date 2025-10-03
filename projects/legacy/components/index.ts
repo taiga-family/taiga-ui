@@ -1,8 +1,6 @@
 export * from '@taiga-ui/legacy/components/arrow';
-export * from '@taiga-ui/legacy/components/color-selector';
 export * from '@taiga-ui/legacy/components/combo-box';
 export * from '@taiga-ui/legacy/components/input';
-export * from '@taiga-ui/legacy/components/input-color';
 export * from '@taiga-ui/legacy/components/input-date-range';
 export * from '@taiga-ui/legacy/components/input-date-time';
 export * from '@taiga-ui/legacy/components/input-month-range';
@@ -10,7 +8,6 @@ export * from '@taiga-ui/legacy/components/input-number';
 export * from '@taiga-ui/legacy/components/input-range';
 export * from '@taiga-ui/legacy/components/input-slider';
 export * from '@taiga-ui/legacy/components/input-tag';
-export * from '@taiga-ui/legacy/components/input-time';
 export * from '@taiga-ui/legacy/components/multi-select';
 export * from '@taiga-ui/legacy/components/multi-select-option';
 export * from '@taiga-ui/legacy/components/primitive-textfield';

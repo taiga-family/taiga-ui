@@ -244,8 +244,6 @@ describe('InputPhoneInternational', () => {
     }
 
     function clickCountrySelector(): void {
-        return fixture.debugElement
-            .query(By.css('.t-ipi-select'))
-            .nativeElement.dispatchEvent(new Event('pointerdown'));
+        return fixture.debugElement.query(By.css('.t-ipi-select')).nativeElement.click();
     }
 });

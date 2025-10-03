@@ -2,18 +2,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiAsPortal, TuiPortals, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiDropdownService, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDropdownService, TuiHeader, TuiTitle} from '@taiga-ui/core';
 import {TuiChevron, TuiFade} from '@taiga-ui/kit';
-import {
-    TuiCardLarge,
-    TuiHeader,
-    tuiLayoutIconsProvider,
-    TuiNavigation,
-} from '@taiga-ui/layout';
+import {TuiCardLarge, tuiLayoutIconsProvider, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        TuiAppearance,
         TuiButton,
         TuiCardLarge,
         TuiChevron,

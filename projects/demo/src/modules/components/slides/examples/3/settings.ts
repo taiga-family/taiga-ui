@@ -1,9 +1,8 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAnimated} from '@taiga-ui/cdk';
-import {TuiTitle} from '@taiga-ui/core';
+import {TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiSwitch} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     imports: [FormsModule, TuiCell, TuiSwitch, TuiTitle],

@@ -7,6 +7,7 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButton,
+    TuiCell,
     TuiInitialsPipe,
     TuiRoot,
     TuiTextfield,
@@ -19,7 +20,6 @@ import {
     TuiFilterByInputPipe,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 // Note: webpack compilation error

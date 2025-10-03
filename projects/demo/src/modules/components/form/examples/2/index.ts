@@ -7,6 +7,7 @@ import {
     TuiButton,
     TuiError,
     TuiGroup,
+    TuiHeader,
     TuiIcon,
     TuiLabel,
     TuiTextfield,
@@ -25,7 +26,7 @@ import {
     TuiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiForm} from '@taiga-ui/layout';
 import {
     TuiInputModule,
     TuiInputSliderModule,
