@@ -1,37 +1,16 @@
 import {join} from 'node:path';
 
-import {HostTree} from '@angular-devkit/schematics';
-import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-import {
-    createProject,
-    resetActiveProject,
-    saveActiveProject,
-    setActiveProject,
-} from 'ng-morph';
+import {resetActiveProject} from 'ng-morph';
 
-const collectionPath = join(__dirname, '../../../migration.json');
+import {runMigration} from '../../../utils/run-migration';
 
 describe('ng-update', () => {
-    const runMigration = async (component: string): Promise<string> => {
-        const host = new UnitTestTree(new HostTree());
-        const runner = new SchematicTestRunner('schematics', collectionPath);
-
-        setActiveProject(createProject(host));
-
-        host.create('test/app/test.ts', component);
-        host.create('test/app/test.html', '');
-        host.create('package.json', '{}');
-
-        await runner.runSchematic('updateToV5', {'skip-logs': true}, host);
-
-        saveActiveProject();
-
-        return host.readContent('test/app/test.ts');
-    };
+    const collection = join(__dirname, '../../../migration.json');
 
     it('migrate tuiIsNativeFocused to tuiIsFocused', async () => {
-        expect(
-            await runMigration(`
+        const {component} = await runMigration({
+            collection,
+            component: `
 import {tuiIsNativeFocused} from '@taiga-ui/cdk';
 
 @Component({})
@@ -41,9 +20,10 @@ export class Test {
             this.el.blur();
         }
     }
-}
-`),
-        ).toEqual(`
+}`,
+        });
+
+        expect(component).toEqual(`
 import {tuiIsFocused} from '@taiga-ui/cdk';
 
 @Component({})
@@ -53,13 +33,13 @@ export class Test {
             this.el.blur();
         }
     }
-}
-`);
+}`);
     });
 
     it('migrate tuiIsNativeFocusedIn to tuiIsFocusedIn', async () => {
-        expect(
-            await runMigration(`
+        const {component} = await runMigration({
+            collection,
+            component: `
 import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk';
 
 @Component({})
@@ -69,9 +49,10 @@ export class Test {
             this.origin?.focus({preventScroll: true});
         }
     }
-}
-`),
-        ).toEqual(`
+}`,
+        });
+
+        expect(component).toEqual(`
 import {tuiIsFocusedIn} from '@taiga-ui/cdk';
 
 @Component({})
@@ -81,13 +62,13 @@ export class Test {
             this.origin?.focus({preventScroll: true});
         }
     }
-}
-`);
+}`);
     });
 
     it('migrate tuiGetNativeFocused to tuiGetFocused', async () => {
-        expect(
-            await runMigration(`
+        const {component} = await runMigration({
+            collection,
+            component: `
 import {tuiGetNativeFocused} from '@taiga-ui/cdk';
 
 @Component({})
@@ -95,9 +76,10 @@ export class Test {
     private get focused(): boolean {
         return this.dropdown.el.contains(tuiGetNativeFocused(this.doc));
     }
-}
-`),
-        ).toEqual(`
+}`,
+        });
+
+        expect(component).toEqual(`
 import {tuiGetFocused} from '@taiga-ui/cdk';
 
 @Component({})
@@ -105,8 +87,7 @@ export class Test {
     private get focused(): boolean {
         return this.dropdown.el.contains(tuiGetFocused(this.doc));
     }
-}
-`);
+}`);
     });
 
     afterEach(() => resetActiveProject());
