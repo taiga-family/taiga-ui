@@ -209,14 +209,14 @@ npm install css-vars-ponyfill
 
 ---
 # components/Accordion
-- **Package**: `EXPERIMENTAL`
+- **Package**: `KIT`
 - **Type**: components
 @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
 ```ts
-import {TuiAccordion} from '@taiga-ui/experimental';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 // ...
 
@@ -272,7 +272,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
-import {TuiAccordion} from '@taiga-ui/experimental';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
     imports: [TuiAccordion, TuiDemo],
@@ -4162,14 +4162,14 @@ export default class Page {
 
 ---
 # components/Expand
-- **Package**: `EXPERIMENTAL`
+- **Package**: `Core`
 - **Type**: components
 @for (example of examples; track example; let index = $index) {
 
 ### How to Use (Import)
 
 ```ts
-import {TuiExpand} from '@taiga-ui/experimental';
+import {TuiExpand} from '@taiga-ui/core';
 
 // ...
 
@@ -4204,7 +4204,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Lazy', 'Eager', 'Async', 'Old syntax'];
+    protected readonly examples = ['Lazy', 'Eager', 'Async'];
 }
 ```
 
