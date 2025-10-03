@@ -1,12 +1,11 @@
 /// <reference types="jest" />
 import {TestBed} from '@angular/core/testing';
-import type {TuiStringMatcher} from '@taiga-ui/cdk';
 import type {TuiDataListHost} from '@taiga-ui/core';
 import {TUI_DATA_LIST_HOST, TUI_ITEMS_HANDLERS} from '@taiga-ui/core';
 
 import {TuiFilterByInputPipe} from './filter-by-input.pipe';
 import {
-    TUI_FILTER_BY_INPUT_HANDLER,
+    provideTuiFilterHandler,
     type TuiFilterByInputHandler,
 } from './filter-option.token';
 
@@ -93,7 +92,7 @@ describe('TuiFilterByInputPipe', () => {
                     return null;
                 }
 
-                const stringify = (v: T) => String(v);
+                const stringify = (v: T): string => String(v);
 
                 if (Array.isArray(items) && items.every((i) => !Array.isArray(i))) {
                     return (items as readonly T[]).filter((item) =>
@@ -114,7 +113,7 @@ describe('TuiFilterByInputPipe', () => {
                         provide: TUI_ITEMS_HANDLERS,
                         useValue: {stringify: () => (v: unknown) => String(v)},
                     },
-                    {provide: TUI_FILTER_BY_INPUT_HANDLER, useValue: onlyMatchingHandler},
+                    provideTuiFilterHandler(onlyMatchingHandler),
                 ],
             }).compileComponents();
 

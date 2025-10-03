@@ -46,10 +46,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T> = TUI_DEFAULT_MATCHER,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
-        const query =
-            this.textfield?.value() ||
-            (this.host as any).nativeFocusableElement?.value ||
-            '';
+        const query = this.textfield?.value() || this.getHostInputValue();
 
         if (this.customHandler) {
             return this.customHandler(items, matcher, query);
@@ -62,9 +59,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
                 ? this.itemsHandlers.stringify()
                 : // TODO(v5): delete backward compatibility
                   this.host.stringify) || String,
-            this.textfield?.value() ||
-                (this.host as any).nativeFocusableElement?.value ||
-                '',
+            this.textfield?.value() || this.getHostInputValue() || '',
         );
     }
 
@@ -123,5 +118,11 @@ export class TuiFilterByInputPipe implements PipeTransform {
         return items.find(
             (item) => stringify(item).toLocaleLowerCase() === query.toLocaleLowerCase(),
         );
+    }
+
+    private getHostInputValue(): string {
+        const hostWithInput = this.host as {nativeFocusableElement?: {value?: string}};
+
+        return hostWithInput.nativeFocusableElement?.value ?? '';
     }
 }

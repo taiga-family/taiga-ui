@@ -7,8 +7,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLet, type TuiStringMatcher} from '@taiga-ui/cdk';
 import {TuiDataList, TuiScrollable, TuiTextfield} from '@taiga-ui/core';
 import {
+    provideTuiFilterHandler,
     TUI_COUNTRIES,
-    TUI_FILTER_BY_INPUT_HANDLER,
     TuiChevron,
     TuiComboBox,
     type TuiFilterByInputHandler,
@@ -46,12 +46,7 @@ export const TUI_CONTINUE_FILTERING_HANDLER: TuiFilterByInputHandler = <T>(
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
-    providers: [
-        {
-            provide: TUI_FILTER_BY_INPUT_HANDLER,
-            useValue: TUI_CONTINUE_FILTERING_HANDLER,
-        },
-    ],
+    providers: [provideTuiFilterHandler(TUI_CONTINUE_FILTERING_HANDLER)],
 })
 export default class Example {
     protected readonly countries$: Observable<string[]> = inject(TUI_COUNTRIES).pipe(
