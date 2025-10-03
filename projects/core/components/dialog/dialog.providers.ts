@@ -71,11 +71,6 @@ export class TuiDialogCloseService extends Observable<unknown> {
     }
 
     private isOutside(target: EventTarget): boolean {
-        return (
-            tuiIsElement(target) &&
-            (!tuiContainsOrAfter(this.el, target) ||
-                // TODO: Drop 'new' attribute in v5
-                (target === this.el && !this.el.hasAttribute('new')))
-        );
+        return tuiIsElement(target) && !tuiContainsOrAfter(this.el, target);
     }
 }
