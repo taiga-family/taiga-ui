@@ -55,7 +55,9 @@ test.describe('Dialogs', () => {
                     .toHaveScreenshot(`02-dialogs-level-1-${width}x${height}.png`);
 
                 await page
-                    .locator('tui-dialog button', {hasText: 'Show one more dialog'})
+                    .locator('tui-dialog-legacy button', {
+                        hasText: 'Show one more dialog',
+                    })
                     .click();
 
                 await expect
@@ -140,14 +142,14 @@ test.describe('Dialogs', () => {
                 });
 
                 test('Pristine form does not show confirmation', async ({page}) => {
-                    await page.locator('tui-dialog .t-close').click();
+                    await page.locator('tui-dialog-legacy .t-close').click();
 
-                    await expect(page.locator('tui-dialog')).toHaveCount(0);
+                    await expect(page.locator('tui-dialog-legacy')).toHaveCount(0);
                 });
 
                 test('Dirty form shows confirmation', async ({page}) => {
-                    await page.locator('tui-dialog input').fill('Test');
-                    await page.locator('tui-dialog .t-close').click();
+                    await page.locator('tui-dialog-legacy input').fill('Test');
+                    await page.locator('tui-dialog-legacy .t-close').click();
 
                     await expect
                         .soft(page)
@@ -155,11 +157,11 @@ test.describe('Dialogs', () => {
                 });
 
                 test('Form is reset to pristine', async ({page}) => {
-                    await page.locator('tui-dialog input').fill('Test');
-                    await page.locator('tui-dialog .t-close').click();
+                    await page.locator('tui-dialog-legacy input').fill('Test');
+                    await page.locator('tui-dialog-legacy .t-close').click();
                     await page.locator('tui-confirm button').nth(1).click();
 
-                    await expect(page.locator('tui-dialog')).toHaveCount(0);
+                    await expect(page.locator('tui-dialog-legacy')).toHaveCount(0);
                 });
             });
         });
@@ -175,7 +177,7 @@ test.describe('Dialogs', () => {
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);
 
-            const dialog = page.locator('tui-dialog');
+            const dialog = page.locator('tui-dialog-legacy');
 
             await expect(dialog).toHaveCount(1);
 
@@ -194,7 +196,7 @@ test.describe('Dialogs', () => {
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);
 
-            await expect(page.locator('tui-dialog')).toHaveCount(0);
+            await expect(page.locator('tui-dialog-legacy')).toHaveCount(0);
         });
 
         test('closeable = true, dismissible = false and force close', async ({page}) => {
@@ -206,11 +208,11 @@ test.describe('Dialogs', () => {
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);
 
-            await expect(page.locator('tui-dialog')).toHaveCount(1);
+            await expect(page.locator('tui-dialog-legacy')).toHaveCount(1);
 
             await page.locator('[automation-id="tui-dialog__close"]').click();
 
-            await expect(page.locator('tui-dialog')).toHaveCount(0);
+            await expect(page.locator('tui-dialog-legacy')).toHaveCount(0);
         });
 
         test('dismissible = true, fullscreen', async ({page}) => {
@@ -226,7 +228,7 @@ test.describe('Dialogs', () => {
 
             await page.mouse.click(100, 100);
 
-            const dialog = page.locator('tui-dialog');
+            const dialog = page.locator('tui-dialog-legacy');
 
             await expect(dialog).toHaveCount(1);
 
@@ -248,7 +250,7 @@ test.describe('Dialogs', () => {
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
             await page.mouse.click(100, 100);
 
-            const dialog = page.locator('tui-dialog');
+            const dialog = page.locator('tui-dialog-legacy');
 
             await expect(dialog).toHaveCount(1);
 
