@@ -1,7 +1,6 @@
 @thumb-diameters: {
     @s: 0.5rem;
     @m: 0.75rem;
-    @l: 0.75rem;
 };
 
 @track-inset: {
@@ -10,9 +9,8 @@
     @l: 1rem;
 };
 
-// TODO(v5): use `l` by default (default size for new textfields)
-.tui-slider-ticks-labels(@input-size: m) {
-    @thumb: @thumb-diameters[@@input-size];
+.tui-slider-ticks-labels(@thumb-size: m) {
+    @thumb: @thumb-diameters[@@thumb-size];
 
     --t-offset: calc(@thumb / 2);
 
@@ -45,22 +43,34 @@
         }
     }
 
-    /* TODO(v5): delete */
-    tui-input-slider + & {
-        margin-inline-start: calc(var(--tui-radius-m) / 2 + var(--t-offset));
-    }
-
-    tui-input-range:not([new]) + &, /* TODO(v5): delete */
     tui-range + & {
         --t-offset: @thumb;
     }
 
     /* TODO: add :has([tuiInputSlider]) */
-    tui-textfield + & {
-        --t-offset: calc(@track-inset[@@input-size] + @thumb / 2);
+    tui-textfield[data-size='l'] + & {
+        --t-offset: calc(@track-inset[@l] + @thumb / 2);
     }
 
-    tui-input-range[new] + & {
-        --t-offset: calc(@track-inset[@@input-size] + @thumb);
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield[data-size='m'] + & {
+        --t-offset: calc(@track-inset[@m] + @thumb / 2);
+    }
+
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield[data-size='s'] + & {
+        --t-offset: calc(@track-inset[@s] + @thumb / 2);
+    }
+
+    tui-input-range[data-size='l'] + & {
+        --t-offset: calc(@track-inset[@l] + @thumb);
+    }
+
+    tui-input-range[data-size='m'] + & {
+        --t-offset: calc(@track-inset[@m] + @thumb);
+    }
+
+    tui-input-range[data-size='s'] + & {
+        --t-offset: calc(@track-inset[@s] + @thumb);
     }
 }
