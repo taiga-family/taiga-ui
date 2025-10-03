@@ -14,7 +14,7 @@ import {
 } from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiInjectAuxiliary} from '@taiga-ui/core/components/textfield';
@@ -24,7 +24,7 @@ import {
     TuiWithQuantumValueTransformer,
 } from '@taiga-ui/kit/components/input-number';
 import {TuiSliderComponent} from '@taiga-ui/kit/components/slider';
-import {filter, fromEvent} from 'rxjs';
+import {filter, fromEvent, switchMap, tap} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -49,7 +49,7 @@ import {filter, fromEvent} from 'rxjs';
 })
 export class TuiInputSliderDirective {
     private readonly isMobile = inject(TUI_IS_MOBILE);
-    private readonly element = tuiInjectElement<HTMLInputElement>();
+    private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly slider = tuiInjectAuxiliary<TuiSliderComponent>(
         (x) => x instanceof TuiSliderComponent,
     );
@@ -101,14 +101,27 @@ export class TuiInputSliderDirective {
         }
 
         slider.el.style.setProperty('--tui-slider-track-color', 'transparent');
+        slider.el.setAttribute('tabindex', '-1');
 
         if (slider.keySteps) {
             slider.keySteps.value = this.value;
         }
 
-        const subscription = fromEvent(slider.el, 'input', (x) => x.target)
-            .pipe(filter(tuiIsElement), filter(tuiIsInput))
-            .subscribe((x) => this.onSliderInput(x.valueAsNumber));
+        const subscription = fromEvent(slider.el, 'input')
+            .pipe(
+                tap(() =>
+                    this.inputNumber.setValue(
+                        this.keyStepsTransformer().toControlValue(
+                            slider.el.valueAsNumber,
+                        ),
+                    ),
+                ),
+                filter(() => !this.isMobile),
+                switchMap(() =>
+                    fromEvent(this.el.ownerDocument, 'pointerup', {once: true}),
+                ),
+            )
+            .subscribe(() => this.el.focus());
 
         onCleanup(() => subscription.unsubscribe());
     });
@@ -125,14 +138,6 @@ export class TuiInputSliderDirective {
             );
 
             this.inputNumber.setValue(newValue);
-        }
-    }
-
-    private onSliderInput(value: number): void {
-        this.inputNumber.setValue(this.keyStepsTransformer().toControlValue(value));
-
-        if (!this.isMobile) {
-            this.element.focus();
         }
     }
 }
