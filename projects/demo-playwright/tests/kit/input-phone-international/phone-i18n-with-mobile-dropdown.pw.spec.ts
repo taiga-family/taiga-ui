@@ -33,12 +33,12 @@ describe('InputPhoneInternational | With [tuiDropdownMobile]', () => {
             .toHaveScreenshot('input-phone-international-with-mobile-dropdown.png');
     });
 
-    test('textfield inside dropdown is focused on dropdown open', async () => {
+    test('textfield inside dropdown is not focused on dropdown open', async () => {
         await inputPhoneInternational.select.click();
 
         await expect(
             inputPhoneInternational.dropdown.locator('tui-textfield input[tuiTextfield]'),
-        ).toBeFocused();
+        ).not.toBeFocused();
     });
 
     test('items is filtered by textfield inside dropdown', async () => {
