@@ -10,7 +10,6 @@ import {
     signal,
     ViewChild,
 } from '@angular/core';
-import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiRoot} from '@taiga-ui/core/components/root';
 
 @Component({
@@ -19,7 +18,6 @@ import {TuiRoot} from '@taiga-ui/core/components/root';
     template: '<tui-root><ng-content /></tui-root>',
     styleUrls: ['./fullscreen.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [{provide: TuiActiveZone, useValue: null}],
     host: {'(document:fullscreenchange)': 'closedByEscape($event)'},
 })
 export class TuiFullscreen {
@@ -56,10 +54,7 @@ export class TuiFullscreen {
     }
 
     protected closedByEscape(event: Event): void {
-        const escaped =
-            !this.doc.fullscreenElement && event.target === this.root?.nativeElement;
-
-        if (escaped) {
+        if (!this.doc.fullscreenElement && event.target === this.root?.nativeElement) {
             this.fullscreenState(false);
         }
     }
