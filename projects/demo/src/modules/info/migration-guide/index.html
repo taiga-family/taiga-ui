@@ -136,202 +136,192 @@
         <h2>Troubleshooting</h2>
 
         <tui-accordion>
-            <tui-accordion-item
+            <button
                 id="unused-imports"
-                openOnRouteFragment
+                tuiAccordion
+                tuiAccordionTarget
             >
-                <div class="wrap">
+                <div>
                     After running the migration schematics, I have a large amount of TypeScript errors
                     <code>TS6133: &lt;entityName&gt; is declared but its value is never read.</code>
                 </div>
+            </button>
+            <tui-expand>
+                We don't include any code formatting in our schematics on purpose. Otherwise, it will drastically slow
+                down the overall process of schematics execution. So,
+                <strong>use well-optimized prettier/eslint rules and power of your IDEs</strong>
+                .
 
-                <div *tuiAccordionItemContent>
-                    <p>
-                        We don't include any code formatting in our schematics on purpose. Otherwise, it will
-                        drastically slow down the overall process of schematics execution. So,
-                        <strong>use well-optimized prettier/eslint rules and power of your IDEs</strong>
-                        .
-                    </p>
-
-                    <p>
-                        <u>If you are WebStorm user.</u>
-                        Just make right click on the root folder with the codebase of your recently migrated
-                        application. Choose
-                        <a
-                            href="https://blog.jetbrains.com/webstorm/2018/05/optimize-imports-in-webstorm/#optimize-all-imports"
-                            target="_blank"
-                            tuiLink
-                        >
-                            <i>"Optimize imports"</i>
-                        </a>
-                        from the context menu. It will automatically remove all unused imports across all the files in
-                        that folder.
-                    </p>
-
-                    <p>
-                        <u>If you are Visual Studio Code user.</u>
-                        Use an
-                        <a
-                            href="https://marketplace.visualstudio.com/items?itemName=bierner.folder-source-actions"
-                            target="_blank"
-                            tuiLink
-                        >
-                            Folder source actions
-                        </a>
-                        extension to trigger built-in
-                        <a
-                            href="https://code.visualstudio.com/docs/languages/javascript#_organize-imports"
-                            target="_blank"
-                            tuiLink
-                        >
-                            <i>Organize Imports</i>
-                        </a>
-                        action in all files recursively in the root folder with the codebase of your recently migrated
-                        application.
-                    </p>
-                </div>
-            </tui-accordion-item>
-        </tui-accordion>
-
-        <tui-accordion>
-            <tui-accordion-item
-                id="manual-install-transitive-peer-deps"
-                openOnRouteFragment
-            >
-                <div class="wrap">
-                    <p>
-                        I use Yarn or cannot get rid of
-                        <code>legacy-peer-deps</code>
-                        . I need a workaround.
-                    </p>
-
-                    <hr />
-
-                    <p>
-                        I ran
-                        <code>npm install</code>
-                        and got
-                        <code>Could not resolve dependency</code>
-                        (for
-                        <code>ng-web-apis</code>
-                        ,
-                        <code>maskito</code>
-                        ,
-                        <code>ng-polymorpheus</code>
-                        or
-                        <code>ng-event-plugins</code>
-                        packages).
-                    </p>
-                </div>
-
-                <div *tuiAccordionItemContent>
-                    Taiga UI depends on many other
+                <p>
+                    <u>If you are WebStorm user.</u>
+                    Just make right click on the root folder with the codebase of your recently migrated application.
+                    Choose
                     <a
-                        tuiLink
-                        [routerLink]="pages.Related"
-                    >
-                        Taiga Family packages
-                    </a>
-                    .
-
-                    <p>
-                        Yarn and NPM with enabled
-                        <code>legacy-peer-deps</code>
-                        config do not automatically install transitive peer dependencies. It means that you should
-                        manage them
-                        <strong>manually</strong>
-                        . Explore
-                        <code>package.json</code>
-                        of every used Taiga UI package. Find their
-                        <code>peerDependencies</code>
-                        and ensure that they are installed and their versions are compatible with constraints from Taiga
-                        libraries.
-                    </p>
-                </div>
-            </tui-accordion-item>
-        </tui-accordion>
-
-        <tui-accordion>
-            <tui-accordion-item
-                id="nx-legacy-peer-deps-bug"
-                openOnRouteFragment
-            >
-                <div class="wrap">
-                    <p>
-                        I ran
-                        <code>nx migrate --run-migrations</code>
-                        and got
-                        <code>Cannot find module 'ts-morph'</code>
-                        error.
-                    </p>
-
-                    <p>
-                        But my project uses NPM
-                        <strong>without</strong>
-                        <code>legacy-peer-deps</code>
-                        !
-                    </p>
-                </div>
-                <div *tuiAccordionItemContent>
-                    Command
-                    <code>ng migrate</code>
-                    has known
-                    <a
-                        href="https://github.com/nrwl/nx/issues/26675"
+                        href="https://blog.jetbrains.com/webstorm/2018/05/optimize-imports-in-webstorm/#optimize-all-imports"
                         target="_blank"
                         tuiLink
                     >
-                        issue
+                        <i>"Optimize imports"</i>
                     </a>
-                    . Just run
-                    <code>npm install</code>
-                    again and run
+                    from the context menu. It will automatically remove all unused imports across all the files in that
+                    folder.
+                </p>
 
-                    <tui-doc-code
-                        code="npm_config_legacy_peer_deps=false nx migrate --run-migrations"
-                        class="tui-space_top-2"
-                    />
-                </div>
-            </tui-accordion-item>
+                <u>If you are Visual Studio Code user.</u>
+                Use an
+                <a
+                    href="https://marketplace.visualstudio.com/items?itemName=bierner.folder-source-actions"
+                    target="_blank"
+                    tuiLink
+                >
+                    Folder source actions
+                </a>
+                extension to trigger built-in
+                <a
+                    href="https://code.visualstudio.com/docs/languages/javascript#_organize-imports"
+                    target="_blank"
+                    tuiLink
+                >
+                    <i>Organize Imports</i>
+                </a>
+                action in all files recursively in the root folder with the codebase of your recently migrated
+                application.
+            </tui-expand>
         </tui-accordion>
 
         <tui-accordion>
-            <tui-accordion-item
-                id="manual-run-schematics"
-                openOnRouteFragment
+            <button
+                id="manual-install-transitive-peer-deps"
+                tuiAccordion
+                tuiAccordionTarget
             >
-                <p class="wrap">
+                <div>
+                    I use Yarn or cannot get rid of
+                    <code>legacy-peer-deps</code>
+                    . I need a workaround.
+                    <br />
+                    <br />
+                    <hr />
+                    <br />
+                    I ran
+                    <code>npm install</code>
+                    and got
+                    <code>Could not resolve dependency</code>
+                    (for
+                    <code>ng-web-apis</code>
+                    ,
+                    <code>maskito</code>
+                    ,
+                    <code>ng-polymorpheus</code>
+                    or
+                    <code>ng-event-plugins</code>
+                    packages).
+                </div>
+            </button>
+            <tui-expand>
+                Taiga UI depends on many other
+                <a
+                    tuiLink
+                    [routerLink]="pages.Related"
+                >
+                    Taiga Family packages
+                </a>
+                .
+                <br />
+                <br />
+                Yarn and NPM with enabled
+                <code>legacy-peer-deps</code>
+                config do not automatically install transitive peer dependencies. It means that you should manage them
+                <strong>manually</strong>
+                . Explore
+                <code>package.json</code>
+                of every used Taiga UI package. Find their
+                <code>peerDependencies</code>
+                and ensure that they are installed and their versions are compatible with constraints from Taiga
+                libraries.
+            </tui-expand>
+        </tui-accordion>
+
+        <tui-accordion>
+            <button
+                id="nx-legacy-peer-deps-bug"
+                tuiAccordion
+                tuiAccordionTarget
+            >
+                <div>
+                    I ran
+                    <code>nx migrate --run-migrations</code>
+                    and got
+                    <code>Cannot find module 'ts-morph'</code>
+                    error.
+                    <br />
+                    <br />
+                    But my project uses NPM
+                    <strong>without</strong>
+                    <code>legacy-peer-deps</code>
+                    !
+                </div>
+            </button>
+            <tui-expand>
+                Command
+                <code>ng migrate</code>
+                has known
+                <a
+                    href="https://github.com/nrwl/nx/issues/26675"
+                    target="_blank"
+                    tuiLink
+                >
+                    issue
+                </a>
+                . Just run
+                <code>npm install</code>
+                again and run
+
+                <tui-doc-code
+                    code="npm_config_legacy_peer_deps=false nx migrate --run-migrations"
+                    class="tui-space_top-2"
+                />
+            </tui-expand>
+        </tui-accordion>
+
+        <tui-accordion>
+            <button
+                id="manual-run-schematics"
+                tuiAccordion
+                tuiAccordionTarget
+            >
+                <div>
                     I still have some problems with running the basic version of
                     <code>ng update</code>
                     /
                     <code>ng migrate</code>
                     command. I need an approach to execute all schematics manually.
-                </p>
-                <div *tuiAccordionItemContent>
-                    <ol class="tui-list tui-list_ordered">
-                        <li class="tui-list__item">
-                            Manually update all Taiga UI's packages to
-                            <code>v4</code>
-                            (i.e. just change versions inside your
-                            <code>package.json</code>
-                            by yourself without any console commands and then run
-                            <code>npm install</code>
-                            ).
-                        </li>
-                        <li class="tui-list__item">
-                            Check that
-                            <code>node_modules/&#64;taiga-ui/cdk/package.json</code>
-                            contains the 4th major version
-                        </li>
-                        <li class="tui-list__item">
-                            Execute:
-                            <tui-doc-code code="ng update @taiga-ui/cdk --migrate-only --from=3 --to=4" />
-                            or
-                            <tui-doc-code [code]="manuallyTriggerNxMigration" />
-                        </li>
-                    </ol>
                 </div>
-            </tui-accordion-item>
+            </button>
+            <tui-expand>
+                <ol class="tui-list tui-list_ordered">
+                    <li class="tui-list__item">
+                        Manually update all Taiga UI's packages to
+                        <code>v4</code>
+                        (i.e. just change versions inside your
+                        <code>package.json</code>
+                        by yourself without any console commands and then run
+                        <code>npm install</code>
+                        ).
+                    </li>
+                    <li class="tui-list__item">
+                        Check that
+                        <code>node_modules/&#64;taiga-ui/cdk/package.json</code>
+                        contains the 4th major version
+                    </li>
+                    <li class="tui-list__item">
+                        Execute:
+                        <tui-doc-code code="ng update @taiga-ui/cdk --migrate-only --from=3 --to=4" />
+                        or
+                        <tui-doc-code [code]="manuallyTriggerNxMigration" />
+                    </li>
+                </ol>
+            </tui-expand>
         </tui-accordion>
     </section>
 </tui-doc-page>
