@@ -29,7 +29,7 @@ export default class Example {
     private readonly destroyRef = inject(DestroyRef);
     private readonly payModal = tuiDialog(PayModal, {
         size: 'auto',
-        closeable: true,
+        closable: true,
     });
 
     protected readonly amountControl = new FormControl(100, {

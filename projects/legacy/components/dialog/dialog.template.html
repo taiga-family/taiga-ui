@@ -8,14 +8,14 @@
 <div class="t-content">
     <h2
         class="t-heading"
-        [class.t-heading_closable]="context.closeable && !header"
+        [class.t-heading_closable]="context.closable && !header"
         [id]="context.id"
         [textContent]="context.label"
     ></h2>
     <section>
         <ng-container *polymorpheusOutlet="context.content as text; context: context">
             <div [innerHTML]="text"></div>
-            @if (context.closeable || context.dismissible) {
+            @if (context.closable || context.dismissible) {
                 <div class="t-buttons">
                     <button
                         size="m"
@@ -33,8 +33,8 @@
 </div>
 <div class="t-filler"></div>
 
-<!-- Close button is insensitive to `context.closeable === Observable<false>` by design -->
-@if (context.closeable) {
+<!-- Close button is insensitive to `context.closable === Observable<false>` by design -->
+@if (context.closable) {
     <button
         automation-id="tui-dialog__close"
         tuiIconButton

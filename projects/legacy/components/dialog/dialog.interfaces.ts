@@ -11,7 +11,7 @@ export type TuiDialogSize = TuiSizeL | TuiSizeS | 'auto' | 'fullscreen' | 'page'
  * appearance - data-appearance attribute of the dialog ('' by default)
  * size - size of the dialog ('m' by default)
  * required - closing dialog throws (false by default)
- * closeable - show close button (true by default)
+ * closable - show close button (true by default)
  * dismissible - close dialog by Esc button or click on overlay (true by default)
  * label - string title for the dialog ('' by default)
  * header - content above title ('' by default)
@@ -19,10 +19,7 @@ export type TuiDialogSize = TuiSizeL | TuiSizeS | 'auto' | 'fullscreen' | 'page'
  */
 export interface TuiDialogOptions<I> {
     readonly appearance: string;
-    /**
-     * TODO: rename to closable in v5.0
-     */
-    readonly closeable: Observable<boolean> | boolean;
+    readonly closable: Observable<boolean> | boolean;
     readonly data: I extends void ? undefined : I & {button?: string};
     readonly dismissible: Observable<boolean> | boolean;
     readonly header: PolymorpheusContent<TuiPopover<TuiDialogOptions<I>, any>>;

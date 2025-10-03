@@ -69,7 +69,7 @@ export class TuiDialogComponent<O, I> {
 
     constructor() {
         merge(
-            this.close$.pipe(switchMap(() => toObservable(this.context.closeable))),
+            this.close$.pipe(switchMap(() => toObservable(this.context.closable))),
             inject(TuiDialogCloseService).pipe(
                 exhaustMap(() => toObservable(this.context.dismissible).pipe(take(1))),
             ),

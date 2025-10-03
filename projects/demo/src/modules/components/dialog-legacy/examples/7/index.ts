@@ -15,7 +15,7 @@ import {SearchDialogExample} from './search-example/search-dialog-example.compon
 export default class Example {
     private readonly dialog = tuiDialog(SearchDialogExample, {
         size: 'page',
-        closeable: true,
+        closable: true,
         dismissible: true,
     });
 

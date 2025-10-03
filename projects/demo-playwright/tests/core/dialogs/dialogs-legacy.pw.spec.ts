@@ -142,14 +142,14 @@ test.describe('Dialogs', () => {
                 });
 
                 test('Pristine form does not show confirmation', async ({page}) => {
-                    await page.locator('tui-dialog .t-close').click();
+                    await page.locator('tui-dialog button').first().click();
 
                     await expect(page.locator('tui-dialog')).toHaveCount(0);
                 });
 
                 test('Dirty form shows confirmation', async ({page}) => {
                     await page.locator('tui-dialog input').fill('Test');
-                    await page.locator('tui-dialog .t-close').click();
+                    await page.locator('tui-dialog button').first().click();
 
                     await expect
                         .soft(page)
@@ -158,7 +158,7 @@ test.describe('Dialogs', () => {
 
                 test('Form is reset to pristine', async ({page}) => {
                     await page.locator('tui-dialog input').fill('Test');
-                    await page.locator('tui-dialog .t-close').click();
+                    await page.locator('tui-dialog button').first().click();
                     await page.locator('tui-confirm button').nth(1).click();
 
                     await expect(page.locator('tui-dialog')).toHaveCount(0);
@@ -167,11 +167,11 @@ test.describe('Dialogs', () => {
         });
     });
 
-    test.describe('dismissible & closeable', () => {
-        test('closeable = true, dismissible = false', async ({page}) => {
+    test.describe('dismissible & closable', () => {
+        test('closable = true, dismissible = false', async ({page}) => {
             await tuiGoto(
                 page,
-                `${DemoRoute.DialogLegacy}/API?closeable=true&dismissible=false`,
+                `${DemoRoute.DialogLegacy}/API?closable=true&dismissible=false`,
             );
 
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
@@ -187,10 +187,10 @@ test.describe('Dialogs', () => {
             });
         });
 
-        test('closeable = false, dismissible = true', async ({page}) => {
+        test('closable = false, dismissible = true', async ({page}) => {
             await tuiGoto(
                 page,
-                `${DemoRoute.DialogLegacy}/API?closeable=false&dismissible=true`,
+                `${DemoRoute.DialogLegacy}/API?closable=false&dismissible=true`,
             );
 
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();
@@ -199,10 +199,10 @@ test.describe('Dialogs', () => {
             await expect(page.locator('tui-dialog-legacy')).toHaveCount(0);
         });
 
-        test('closeable = true, dismissible = false and force close', async ({page}) => {
+        test('closable = true, dismissible = false and force close', async ({page}) => {
             await tuiGoto(
                 page,
-                `${DemoRoute.DialogLegacy}/API?closeable=true&dismissible=false`,
+                `${DemoRoute.DialogLegacy}/API?closable=true&dismissible=false`,
             );
 
             await page.locator('tui-doc-page button[data-appearance="primary"]').click();

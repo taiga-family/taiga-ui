@@ -87,7 +87,7 @@ export default class Page {
 
     protected data = 100;
 
-    protected closeable = true;
+    protected closable = true;
 
     protected dismissible = true;
 
@@ -109,14 +109,14 @@ export default class Page {
     protected appearance = '';
 
     protected showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
-        const {data, label, required, closeable, dismissible, size, appearance} = this;
+        const {data, label, required, closable, dismissible, size, appearance} = this;
 
         this.dialogs
             .open(content, {
                 data,
                 label,
                 required,
-                closeable,
+                closable,
                 dismissible,
                 size,
                 appearance,
