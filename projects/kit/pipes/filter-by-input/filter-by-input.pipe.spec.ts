@@ -4,10 +4,8 @@ import type {TuiDataListHost} from '@taiga-ui/core';
 import {TUI_DATA_LIST_HOST, TUI_ITEMS_HANDLERS} from '@taiga-ui/core';
 
 import {TuiFilterByInputPipe} from './filter-by-input.pipe';
-import {
-    provideTuiFilterHandler,
-    type TuiFilterByInputHandler,
-} from './filter-option.token';
+import type {TuiFilterByInputHandler} from './filter-option.token';
+import {provideTuiFilterHandler} from './filter-option.token';
 
 interface TestDataListHost<T> extends TuiDataListHost<T> {
     nativeFocusableElement: {value: string};

@@ -1,4 +1,5 @@
-import {InjectionToken, type Provider} from '@angular/core';
+import type {Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import type {TuiStringMatcher} from '@taiga-ui/cdk';
 
 export type TuiFilterByInputHandler = <T>(
