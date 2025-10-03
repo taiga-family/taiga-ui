@@ -18,7 +18,7 @@ import {TuiSliderComponent} from '../slider.component';
     templateUrl: './slider-thumb-label.template.html',
     styleUrls: ['./slider-thumb-label.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiHintOptionsProvider({direction: 'top', appearance: 'dark'})],
+    providers: [tuiHintOptionsProvider({direction: 'top', appearance: 'floating'})],
 })
 export class TuiSliderThumbLabel implements AfterContentInit {
     @ContentChild(TuiSliderComponent)

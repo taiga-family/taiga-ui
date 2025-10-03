@@ -43,7 +43,9 @@ const TRANSFORM = {
     templateUrl: './pie-chart.template.html',
     styleUrls: ['./pie-chart.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [tuiHintOptionsProvider({direction: 'top-right', appearance: 'dark'})],
+    viewProviders: [
+        tuiHintOptionsProvider({direction: 'top-right', appearance: 'floating'}),
+    ],
     host: {
         '[attr.data-size]': 'size',
         '[class._empty]': 'empty',

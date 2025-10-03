@@ -23,6 +23,7 @@ import {type Params, UrlSerializer, type UrlTree} from '@angular/router';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {type TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiResizable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiToInteger} from '@taiga-ui/cdk/utils/math';
@@ -57,6 +58,7 @@ const MIN_WIDTH = 160;
         TuiSelectModule,
         TuiSwitch,
         TuiTextfieldControllerModule,
+        TuiItem,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
