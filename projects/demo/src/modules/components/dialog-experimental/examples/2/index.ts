@@ -2,9 +2,9 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiDialog} from '@taiga-ui/experimental';
-import {TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiForm} from '@taiga-ui/layout';
 
 @Component({
     imports: [

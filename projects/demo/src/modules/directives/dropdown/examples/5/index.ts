@@ -8,6 +8,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
 import {
     TuiButton,
+    TuiCell,
     TuiDropdown,
     TuiInitialsPipe,
     TuiTextfield,
@@ -23,7 +24,6 @@ import {
     TuiInputNumber,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 import {
     TuiComboBoxModule,
     TuiMultiSelectModule,

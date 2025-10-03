@@ -5,6 +5,8 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
+import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 @Component({
     template: '',
@@ -17,6 +19,8 @@ class Styles {}
 
 @Directive({
     selector: '[tuiCardMedium]',
+    providers: [tuiAvatarOptionsProvider({size: 'l'})],
+    hostDirectives: [TuiWithAppearance],
 })
 export class TuiCardMedium {
     protected readonly nothing = tuiWithStyles(Styles);

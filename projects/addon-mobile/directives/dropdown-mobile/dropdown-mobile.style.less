@@ -1,12 +1,10 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-tui-dropdown-mobile:not(._sheet) {
+tui-dropdown-mobile {
     .scrollbar-hidden();
-    .fullsize(fixed);
-    .transition(transform);
+    .fullsize();
 
     visibility: visible !important;
-    transform: translate3d(0, 0, 0);
     background: var(--tui-background-base);
     overscroll-behavior: contain;
     overflow: auto;
@@ -17,11 +15,7 @@ tui-dropdown-mobile:not(._sheet) {
         0 30rem var(--tui-background-base);
     box-sizing: border-box;
     padding-block-end: env(safe-area-inset-bottom);
-
-    &.tui-enter,
-    &.tui-leave {
-        animation-name: tuiFade, tuiSlide;
-    }
+    pointer-events: auto;
 
     &::after {
         content: '';
@@ -45,79 +39,6 @@ tui-dropdown-mobile:not(._sheet) {
         right: 1rem;
         bottom: ~'max(1rem, env(safe-area-inset-bottom))';
         display: inline-flex;
-    }
-}
-
-tui-dropdown-mobile._sheet {
-    .fullsize(fixed, inset);
-    .scrollbar-hidden();
-
-    overflow: auto;
-    background: var(--tui-service-backdrop);
-    /* stylelint-disable-next-line */
-    box-shadow: 0 -80vh 0 5rem var(--tui-service-backdrop);
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    overscroll-behavior: none;
-
-    &.tui-enter,
-    &.tui-leave {
-        animation-name: tuiFade, tuiSlide;
-    }
-
-    tui-root:has(tui-dialogs > :nth-child(2)) & {
-        background: transparent;
-        box-shadow: none;
-    }
-
-    > .t-filler {
-        block-size: 100%;
-        scroll-snap-stop: always;
-        scroll-snap-align: start;
-    }
-
-    > .t-container {
-        display: flex;
-        max-block-size: ~'calc(100% - max(env(safe-area-inset-top), 1rem))';
-        flex-direction: column;
-        border-top-left-radius: 1rem;
-        border-top-right-radius: 1rem;
-        padding: 0 0.5rem env(safe-area-inset-bottom);
-        box-sizing: border-box;
-        scroll-snap-stop: always;
-        scroll-snap-align: start;
-        background: var(--tui-background-elevation-1);
-
-        > .t-heading {
-            position: relative;
-            margin: 0;
-            padding: 2rem 0.5rem 0.75rem;
-            font: var(--tui-font-heading-6);
-
-            &::before {
-                content: '';
-                position: absolute;
-                left: 50%;
-                top: 0.75rem;
-                inline-size: 2rem;
-                block-size: 0.25rem;
-                border-radius: 1rem;
-                background: var(--tui-background-neutral-2);
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        > .t-content {
-            .scrollbar-hidden();
-
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-    }
-
-    tui-data-list [tuiOption] {
-        margin-inline-start: calc(-1 * var(--t-option-padding-inline));
-        margin-inline-end: calc(-1 * var(--t-option-padding-inline));
     }
 }
 

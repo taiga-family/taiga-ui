@@ -6,6 +6,7 @@ import {TuiTable, TuiTableControl} from '@taiga-ui/addon-table';
 import {
     TuiAutoColorPipe,
     TuiButton,
+    TuiCell,
     TuiDropdown,
     TuiIcon,
     TuiInitialsPipe,
@@ -22,7 +23,6 @@ import {
     TuiRadioList,
     TuiStatus,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     imports: [

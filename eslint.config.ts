@@ -7,7 +7,10 @@ export default process.env.HTML_ESLINT
           ...taiga.configs['html-eslint'],
           globalIgnores(['**/*.{ts,js,css,less,scss}']),
           {
-              files: ['**/demo/**/pipes/format-date/index.html'],
+              files: [
+                  '**/demo/**/pipes/format-date/index.html',
+                  '**/demo/**/toast/index.html',
+              ],
               rules: {'html/require-li-container': 'off'},
           },
           {
