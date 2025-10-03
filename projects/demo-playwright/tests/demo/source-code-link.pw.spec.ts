@@ -42,6 +42,7 @@ function getRepositoryInfo(): {repositoryUrl: string; targetBranch: string} {
 
 test.describe('Source code button', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
+
     const proprietary = process.env['PROPRIETARY'] === 'true';
     const {repositoryUrl, targetBranch} = getRepositoryInfo();
 

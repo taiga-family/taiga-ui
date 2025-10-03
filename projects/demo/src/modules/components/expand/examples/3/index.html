@@ -7,11 +7,9 @@
 </button>
 <tui-expand [expanded]="expanded">
     <tui-elastic-container *tuiItem>
-        <tui-loader
-            *ngIf="loading$ | async; else content"
-            [style.margin.rem]="1"
-        />
-        <ng-template #content>
+        @if (loading$ | async) {
+            <tui-loader [style.margin.rem]="1" />
+        } @else {
             <p>
                 You can use
                 <code>ElasticContainer</code>
@@ -19,6 +17,6 @@
             </p>
             <p>Just some more content</p>
             Making this section bigger than loader
-        </ng-template>
+        }
     </tui-elastic-container>
 </tui-expand>

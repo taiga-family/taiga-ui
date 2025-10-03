@@ -3,7 +3,7 @@
     [itemsLimit]="3"
     [(activeItemIndex)]="activeItemIndex"
 >
-    <ng-container *ngFor="let item of items">
+    @for (item of items; track item) {
         <button
             *tuiItem
             tuiTab
@@ -18,7 +18,7 @@
                 (click.stop)="remove(item)"
             />
         </button>
-    </ng-container>
+    }
 </tui-tabs-with-more>
 <p>{{ items[activeItemIndex] }}</p>
 <button

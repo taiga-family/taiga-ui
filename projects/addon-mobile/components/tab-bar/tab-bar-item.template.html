@@ -3,13 +3,14 @@
     [icon]="icon"
 />
 <span class="t-wrapper">
-    <span
-        *ngIf="badge as value"
-        tuiAnimated
-        class="t-badge"
-    >
-        {{ format(value) }}
-    </span>
+    @if (badge; as value) {
+        <span
+            tuiAnimated
+            class="t-badge"
+        >
+            {{ format(value) }}
+        </span>
+    }
 </span>
 <span class="t-text">
     <ng-content />

@@ -46,7 +46,7 @@ const DEFAULT_MAX_LENGTH = 18;
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]':
             'element.maxLength > 0 ? element.maxLength : defaultMaxLength()',
-        '(blur)': 'setValue(transformer.fromControlValue(control.value))',
+        '(focusout)': 'setValue(transformer.fromControlValue(control.value))',
         '(focus)': 'onFocus()',
     },
 })
@@ -80,12 +80,12 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     protected readonly inputMode = computed(() => {
         if (this.isIOS) {
             return this.min() < 0
-                ? 'text' // iPhone does not have minus sign if inputMode equals to 'numeric' / 'decimal'
+                ? 'text' // iPhone does not have minus sign if inputMode is equal to 'numeric' / 'decimal'
                 : 'decimal';
         }
 
         /**
-         * Samsung Keyboard does not minus sign for `inputmode=decimal`
+         * Samsung Keyboard does not have minus sign for `inputmode=decimal`
          * @see https://github.com/taiga-family/taiga-ui/issues/11061#issuecomment-2939103792
          */
         return 'numeric';
@@ -104,7 +104,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     protected readonly onChangeEffect = effect(() => {
         const value = this.formatted();
 
-        if (Number.isNaN(value)) {
+        if (Number.isNaN(value) && !Number.isNaN(this.value())) {
             this.onChange(null);
 
             return;
@@ -114,7 +114,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
             this.unfinished() ||
             value < this.min() ||
             value > this.max() ||
-            this.value() === value
+            Object.is(this.value(), value)
         ) {
             return;
         }

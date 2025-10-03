@@ -9,12 +9,12 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiButton, TuiInputModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
     providers: [
+        // Provide TUI_CONFIRM_DIALOG if you want to override default Confirm dialog
         TuiConfirmService,
         {
             provide: TuiDialogService,

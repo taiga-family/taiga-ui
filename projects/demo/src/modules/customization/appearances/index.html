@@ -51,14 +51,16 @@
         for particular states:
     </p>
     <ul>
-        <li *ngFor="let item of mixins">
-            <tui-doc-copy
-                class="var"
-                [cdkCopyToClipboard]="item"
-            >
-                <code>{{ item }}</code>
-            </tui-doc-copy>
-        </li>
+        @for (item of mixins; track item) {
+            <li>
+                <tui-doc-copy
+                    class="var"
+                    [cdkCopyToClipboard]="item"
+                >
+                    <code>{{ item }}</code>
+                </tui-doc-copy>
+            </li>
+        }
     </ul>
     <p>
         Don't forget to import

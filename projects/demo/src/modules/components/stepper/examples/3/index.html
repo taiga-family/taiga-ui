@@ -3,10 +3,9 @@
     class="stepper"
     [activeItemIndex]="5"
 >
-    <button
-        *ngFor="let step of steps"
-        tuiStep
-    >
-        {{ step }}
-    </button>
+    @for (step of steps; track step) {
+        <button tuiStep>
+            {{ step }}
+        </button>
+    }
 </tui-stepper>

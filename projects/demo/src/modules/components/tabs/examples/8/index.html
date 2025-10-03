@@ -1,5 +1,5 @@
 <tui-tabs-with-more>
-    <ng-container *ngFor="let url of urls; let index = index">
+    @for (url of urls; track url; let index = $index) {
         <a
             *tuiItem
             routerLinkActive="active"
@@ -8,7 +8,7 @@
         >
             Example {{ index + 1 }}
         </a>
-    </ng-container>
+    }
 </tui-tabs-with-more>
 
 <router-outlet />

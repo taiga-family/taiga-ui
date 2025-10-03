@@ -31,4 +31,6 @@
         (monthChange)="onMonthChangeLast($event)"
     />
 </div>
-<div *ngIf="value">Chosen dates: {{ value }}</div>
+@if (value) {
+    <div>Chosen dates: {{ value }}</div>
+}

@@ -5,7 +5,6 @@ import {TuiButton, type TuiSizeL} from '@taiga-ui/core';
 import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiBlockStatus, TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,

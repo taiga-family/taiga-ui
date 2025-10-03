@@ -174,12 +174,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Accordion ⛔',
-        keywords: 'open, аккордеон, expand, раскрывашка, spoiler, cut',
-        route: DemoRoute.AccordionOld,
-    },
-    {
-        section: 'Components',
         title: 'Alert',
         keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: DemoRoute.Alert,
@@ -542,7 +536,8 @@ export const pages: DocRoutePages = [
             {
                 section: 'Components',
                 title: 'InputChip',
-                keywords: 'поле, инпут, форма, ввод, input, chip, tag, тэг',
+                keywords:
+                    'поле, инпут, форма, ввод, input, виртуальный скролл, chip, virtual scroll, tag, тэг',
                 route: DemoRoute.InputChip,
                 meta: [
                     {name: 'tui-input-chip'},
@@ -687,150 +682,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Inputs (Legacy)',
-        subPages: [
-            {
-                section: 'Components',
-                title: 'Input ⛔',
-                keywords: 'поле, инпут, форма, ввод, input, table, таблица',
-                route: DemoRoute.Input,
-            },
-            {
-                section: 'Components',
-                title: 'InputDate ⛔',
-                keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar',
-                route: DemoRoute.InputDateLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputDateMulti ⛔',
-                keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar, multiple',
-                route: DemoRoute.InputDateMultiLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputDateRange ⛔',
-                keywords: 'calendar, календарь, даты, период',
-                route: DemoRoute.InputDateRangeLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputDateTime ⛔',
-                keywords:
-                    'поле, инпут, форма, ввод, input, календарь, день, ' +
-                    'неделя, месяц, год, дата, calendar, время, часы, минуты, секунды, мс',
-                route: DemoRoute.InputDateTimeLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputMonth ⛔',
-                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
-                route: DemoRoute.InputMonthLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputMonthRange ⛔',
-                keywords: 'поле, инпут, форма, ввод, input, month, месяц, год, дата',
-                route: DemoRoute.InputMonthRange,
-            },
-            {
-                section: 'Components',
-                title: 'InputNumber ⛔',
-                keywords:
-                    'поле, инпут, number, число, форма, ввод, input, money, деньги, ' +
-                    'cash, копейки, рубли, доллары, евро, control, контрол',
-                route: DemoRoute.InputNumberLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputPhone ⛔',
-                keywords: 'поле, инпут, форма, ввод, input, phone, телефон, номера',
-                route: DemoRoute.InputPhoneLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputRange ⛔',
-                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputRangeLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputSlider ⛔',
-                keywords: 'поле, инпут, форма, ввод, input, range, slider, диапазон',
-                route: DemoRoute.InputSliderLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputTag ⛔',
-                keywords: 'поле, инпут, форма, ввод, input, tag, тэг',
-                route: DemoRoute.InputTag,
-            },
-            {
-                section: 'Components',
-                title: 'InputTime ⛔',
-                keywords:
-                    'поле, инпут, форма, ввод, input, time, hour, minute, время, час, минута',
-                route: DemoRoute.InputTimeLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'InputYear ⛔',
-                keywords: 'поле, инпут, форма, ввод, input, год, дата',
-                route: DemoRoute.InputYearLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'PrimitiveTextfield ⛔',
-                keywords: 'текст, инпут, база, input',
-                route: DemoRoute.PrimitiveTextfield,
-            },
-            {
-                section: 'Components',
-                title: 'InputColor ⛔',
-                keywords:
-                    'input-color, picker, color, цвет, выбор, градиент, gradient, палитра',
-                route: DemoRoute.InputColorLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'Textarea ⛔',
-                keywords: 'поле, инпут, форма, ввод, textarea, area',
-                route: DemoRoute.TextareaLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'ComboBox ⛔',
-                keywords:
-                    'инпут, форма, ввод, select, селект, выбор, комбобокс, combobox',
-                route: DemoRoute.ComboBoxLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'Select ⛔',
-                keywords: 'инпут, форма, ввод, select, селект, выбор',
-                route: DemoRoute.SelectLegacy,
-            },
-            {
-                section: 'Components',
-                title: 'MultiSelect ⛔',
-                keywords:
-                    'инпут, форма, ввод, select, селект, выбор, multiselect, мультиселект',
-                route: DemoRoute.MultiSelect,
-            },
-        ],
-    },
-    {
-        section: 'Components',
-        title: 'Island',
-        keywords: 'Island, остров, плашка',
-        route: DemoRoute.Island,
-    },
-    {
-        section: 'Components',
         title: 'ItemsWithMore',
         keywords: 'список, list, items, элементы, more, больше, overflow',
         route: DemoRoute.ItemsWithMore,
@@ -890,6 +741,15 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
+        title: 'NotificationMiddle',
+        keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
+        route: DemoRoute.NotificationMiddle,
+        meta: {
+            figmaVersion: '1.1.0',
+        },
+    },
+    {
+        section: 'Components',
         title: 'Push',
         keywords: 'push, пуш, нотификация, notification, alert',
         route: DemoRoute.Push,
@@ -945,7 +805,7 @@ export const pages: DocRoutePages = [
         title: 'Pager',
         keywords: 'pager, точка, dot',
         route: DemoRoute.Pager,
-        meta: {},
+        meta: {figmaVersion: '1.1.0'},
     },
     {
         section: 'Components',
@@ -1006,12 +866,6 @@ export const pages: DocRoutePages = [
         title: 'Scrollbar',
         keywords: 'scroll, scrollbar, скролл, скроллбар',
         route: DemoRoute.Scrollbar,
-    },
-    {
-        section: 'Components',
-        title: 'Sheet',
-        keywords: 'mobile, dialog, popup, map, details, шторка',
-        route: DemoRoute.Sheet,
     },
     {
         section: 'Components',
@@ -1127,9 +981,9 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Tag',
-        keywords: 'tag, тэг',
-        route: DemoRoute.Tag,
+        title: 'Toast',
+        keywords: 'toast, тост, нотификация',
+        route: DemoRoute.Toast,
     },
     {
         section: 'Components',
@@ -1584,13 +1438,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'Sidebar ⛔',
-                keywords:
-                    'sidebar, hamburger, drawer menu, mobile, смартфон, pwa, native, hybrid, сайдбар, меню',
-                route: DemoRoute.Sidebar,
-            },
-            {
-                section: 'Tools',
                 title: 'Swipe',
                 keywords: 'swipe, свайп',
                 route: DemoRoute.Swipe,
@@ -1728,12 +1575,6 @@ export const pages: DocRoutePages = [
                 title: 'RepeatTimes',
                 keywords: 'повторение, repeat, пайп, pipe',
                 route: DemoRoute.RepeatTimes,
-            },
-            {
-                section: 'Tools',
-                title: 'FieldError',
-                keywords: 'error, field, hint, ошибка, преобразование, пайп, pipe',
-                route: DemoRoute.FieldError,
             },
             {
                 section: 'Tools',

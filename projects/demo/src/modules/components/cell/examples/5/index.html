@@ -1,8 +1,8 @@
 <div tuiCell>
-    <tui-avatar
-        src="@tui.eye"
+    <div
         tuiAccessories
-    />
+        tuiAvatar="@tui.eye"
+    ></div>
     <div tuiTitle>
         Long title in a cell will wrap to multiple lines and so will the subtitle
         <div
@@ -40,10 +40,10 @@
     tuiCell
     [style.white-space]="'nowrap'"
 >
-    <tui-avatar
-        src="@tui.smile"
+    <div
+        tuiAvatar="@tui.smile"
         [round]="false"
-    />
+    ></div>
     <div
         tuiFade
         tuiTitle
@@ -62,10 +62,15 @@
 </div>
 
 <div tuiCell>
-    <tui-avatar
-        src="/assets/images/avatar.jpg"
+    <div
         tuiAccessories
-    />
+        tuiAvatar="@tui.user"
+    >
+        <img
+            alt=""
+            src="/assets/images/avatar.jpg"
+        />
+    </div>
     <div
         tuiAccessories
         tuiTitle
@@ -81,10 +86,10 @@
 </div>
 
 <div tuiCell>
-    <tui-avatar
-        src="@tui.home"
+    <div
         tuiAccessories
-    />
+        tuiAvatar="@tui.home"
+    ></div>
     <div tuiTitle>
         <strong>Main account</strong>
         <div tuiSubtitle>USD</div>

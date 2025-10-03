@@ -7,7 +7,6 @@ import {TuiChevron, TuiDataListWrapper, TuiInputChip, TuiTextarea} from '@taiga-
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiTextfield],
     template: `
         <tui-textfield>
@@ -22,7 +21,6 @@ import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus'
 class MyInputTextfield {}
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiTextfield],
     template: `
         <tui-textfield tuiChevron>
@@ -45,7 +43,6 @@ class MySelectTextfield {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiTextarea, TuiTextfield],
     template: `
         <tui-textfield>
@@ -60,7 +57,6 @@ class MySelectTextfield {
 class MyTextarea {}
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputChip, TuiTextfield],
     template: `
         <tui-textfield multi>
@@ -79,7 +75,6 @@ class MyInputChip {
 }
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputCardGroup],
     template: `
         <tui-input-card-group [ngModel]="card">Enter card details</tui-input-card-group>
@@ -95,7 +90,6 @@ class MyInputCardGroup {
 }
 
 @Component({
-    standalone: true,
     imports: [PolymorpheusOutlet, TuiTable, TuiTextfield],
     template: `
         <table

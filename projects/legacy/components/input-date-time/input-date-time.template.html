@@ -38,11 +38,12 @@
             [class.t-icon]="!computedDisabled"
             [icon]="src.toString()"
         />
-        <input
-            *ngIf="showNativePicker"
-            tuiDateTime
-            class="t-native-input"
-        />
+        @if (showNativePicker) {
+            <input
+                tuiDateTime
+                class="t-native-input"
+            />
+        }
     </ng-template>
 
     <ng-template

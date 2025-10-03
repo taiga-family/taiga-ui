@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -6,8 +5,7 @@ import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiPager} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [NgIf, TuiButton, TuiIcon, TuiPager],
+    imports: [TuiButton, TuiIcon, TuiPager],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

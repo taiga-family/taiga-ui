@@ -7,7 +7,6 @@ import {type TuiSizeXXS} from '@taiga-ui/core';
 import {TuiChip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     selector: 'example-chip',
     imports: [TuiChip, TuiDemo, TuiDocAppearance, TuiDocIcons],
     templateUrl: './index.html',

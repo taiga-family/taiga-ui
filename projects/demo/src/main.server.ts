@@ -4,7 +4,8 @@ import {
     importProvidersFrom,
     mergeApplicationConfig,
 } from '@angular/core';
-import {bootstrapApplication} from '@angular/platform-browser';
+import {bootstrapApplication, type BootstrapContext} from '@angular/platform-browser';
+import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideServerRendering, ServerModule} from '@angular/platform-server';
 import {UNIVERSAL_PROVIDERS} from '@ng-web-apis/universal';
 
@@ -16,6 +17,7 @@ const serverConfig = mergeApplicationConfig(config, {
     providers: [
         importProvidersFrom(ServerModule),
         provideServerRendering(),
+        provideAnimations(),
         UNIVERSAL_PROVIDERS,
         {
             provide: ErrorHandler,
@@ -24,5 +26,5 @@ const serverConfig = mergeApplicationConfig(config, {
     ],
 });
 
-export default async (): Promise<ApplicationRef> =>
-    bootstrapApplication(App, serverConfig);
+export default async (context: BootstrapContext): Promise<ApplicationRef> =>
+    bootstrapApplication(App, serverConfig, context);

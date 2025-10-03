@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -30,12 +30,9 @@ import {TuiCarouselAutoscroll} from './carousel-autoscroll.directive';
 import {TuiCarouselScroll} from './carousel-scroll.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-carousel',
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         NgTemplateOutlet,
         TuiCarouselAutoscroll,
         TuiCarouselScroll,

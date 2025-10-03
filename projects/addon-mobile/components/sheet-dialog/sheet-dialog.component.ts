@@ -1,31 +1,31 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    inject,
     type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {EMPTY_QUERY, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/components/dialog';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {exhaustMap, filter, isObservable, merge, of, Subject, take} from 'rxjs';
+import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'rxjs';
 
 import {type TuiSheetDialogOptions} from './sheet-dialog.options';
 
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
 
 @Component({
-    standalone: true,
     selector: 'tui-sheet-dialog',
-    imports: [NgForOf, NgIf, PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet],
     templateUrl: './sheet-dialog.template.html',
     styleUrls: ['./sheet-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -54,7 +54,11 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         injectContext<TuiPopover<TuiSheetDialogOptions<I>, any>>();
 
     protected readonly close$ = new Subject<void>();
-    protected readonly $ = merge(this.close$, tuiCloseWatcher())
+    protected readonly $ = merge(
+        this.close$,
+        tuiCloseWatcher(),
+        inject(TUI_DIALOGS_CLOSE).pipe(map(TUI_TRUE_HANDLER)),
+    )
         .pipe(
             tuiZonefull(),
             exhaustMap(() => {

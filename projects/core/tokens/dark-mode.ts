@@ -1,4 +1,11 @@
-import {effect, inject, InjectionToken, signal, type WritableSignal} from '@angular/core';
+import {
+    effect,
+    inject,
+    InjectionToken,
+    signal,
+    untracked,
+    type WritableSignal,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_LOCAL_STORAGE, WA_WINDOW} from '@ng-web-apis/common';
 import {filter, fromEvent} from 'rxjs';
@@ -32,14 +39,16 @@ export const TUI_DARK_MODE = new InjectionToken<
                 result.set(media.matches);
             });
 
-        effect(() => {
-            const value = String(result());
+        untracked(() => {
+            effect(() => {
+                const value = String(result());
 
-            if (automatic) {
-                automatic = false;
-            } else {
-                storage?.setItem(key, value);
-            }
+                if (automatic) {
+                    automatic = false;
+                } else {
+                    storage?.setItem(key, value);
+                }
+            });
         });
 
         return Object.assign(result, {

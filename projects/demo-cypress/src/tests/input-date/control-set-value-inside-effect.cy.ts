@@ -14,7 +14,6 @@ import {createOutputSpy} from 'cypress/angular';
 
 describe('InputDate | control.setValue is used inside effect', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiInputDate, TuiRoot, TuiTextfield],
         template: `
             <tui-root>

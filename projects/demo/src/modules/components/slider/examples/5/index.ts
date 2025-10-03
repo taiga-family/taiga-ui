@@ -1,4 +1,4 @@
-import {DecimalPipe, NgForOf} from '@angular/common';
+import {DecimalPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,8 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiKeySteps, TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [DecimalPipe, NgForOf, ReactiveFormsModule, TuiSlider],
+    imports: [DecimalPipe, ReactiveFormsModule, TuiSlider],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

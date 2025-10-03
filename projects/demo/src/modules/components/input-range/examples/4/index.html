@@ -12,10 +12,18 @@
     #content
     let-value
 >
-    <ng-container [ngSwitch]="value">
-        <span *ngSwitchCase="0">Today</span>
-        <span *ngSwitchCase="1">Tomorrow</span>
-        <span *ngSwitchCase="7">In a week</span>
-        <span *ngSwitchDefault>{{ value }}{{ value | i18nPlural: pluralize }}</span>
-    </ng-container>
+    @switch (value) {
+        @case (0) {
+            Today
+        }
+        @case (1) {
+            Tomorrow
+        }
+        @case (7) {
+            In a week
+        }
+        @default {
+            {{ value }}{{ value | i18nPlural: pluralize }}
+        }
+    }
 </ng-template>

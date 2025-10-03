@@ -26,11 +26,8 @@ export const TUI_INPUT_CARD_GROUP_TEXTS = new InjectionToken<
         const cardNumberTexts = inject(TUI_CARD_NUMBER_TEXTS);
         const expiryTexts = inject(TUI_CARD_EXPIRY_TEXTS);
         const cvcTexts = inject(TUI_CARD_CVC_TEXTS);
-        const {desktopSmall} = inject(TUI_MEDIA);
-
-        const media = win.matchMedia(
-            `screen and (min-width: ${(desktopSmall - 1) / 16}em)`,
-        );
+        const {mobile} = inject(TUI_MEDIA);
+        const media = win.matchMedia(`screen and (min-width: ${(mobile - 1) / 16}em)`);
 
         return tuiTypedFromEvent(media, 'change').pipe(
             startWith(null),

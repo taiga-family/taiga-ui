@@ -4,7 +4,7 @@ import {
     tuiMobileDialogOptionsProvider,
     TuiMobileDialogService,
 } from '@taiga-ui/addon-mobile';
-import {TuiRoot} from '@taiga-ui/core';
+import {provideTaiga, TuiRoot} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
@@ -31,7 +31,7 @@ describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [tuiMobileDialogOptionsProvider({label})],
+            providers: [tuiMobileDialogOptionsProvider({label}), provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

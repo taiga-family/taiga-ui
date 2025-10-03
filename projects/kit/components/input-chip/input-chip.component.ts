@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -32,11 +31,9 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'tui-input-chip',
     imports: [
         FormsModule,
-        NgIf,
         ReactiveFormsModule,
         TuiButton,
         TuiChip,

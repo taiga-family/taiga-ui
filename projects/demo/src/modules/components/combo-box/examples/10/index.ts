@@ -29,7 +29,6 @@ export const TUI_CONTINUE_FILTERING_HANDLER: TuiFilterByInputHandler = <T>(
 };
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,

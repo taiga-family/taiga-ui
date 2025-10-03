@@ -7,7 +7,6 @@ import {
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 
 @Component({
-    standalone: true,
     selector: 'tui-swipe-actions',
     imports: [WaResizeObserver],
     templateUrl: './swipe-actions.template.html',

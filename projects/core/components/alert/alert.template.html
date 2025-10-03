@@ -16,14 +16,15 @@
                 ></span>
             </span>
         </span>
-        <button
-            *ngIf="item.closeable"
-            tuiIconButton
-            type="button"
-            [iconStart]="icons.close"
-            (click)="item.$implicit.complete()"
-        >
-            {{ close() }}
-        </button>
+        @if (item.closeable) {
+            <button
+                tuiIconButton
+                type="button"
+                [iconStart]="icons.close"
+                (click)="item.$implicit.complete()"
+            >
+                {{ close() }}
+            </button>
+        }
     </tui-notification>
 </div>

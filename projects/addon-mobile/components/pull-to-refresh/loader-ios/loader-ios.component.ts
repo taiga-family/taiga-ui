@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -10,9 +9,8 @@ const LOADED_STEP = 8;
 const ROTATE_X_STEP = 30;
 
 @Component({
-    standalone: true,
     selector: 'tui-mobile-ios-loader',
-    imports: [NgIf, TuiRepeatTimes],
+    imports: [TuiRepeatTimes],
     templateUrl: './loader-ios.template.html',
     styleUrls: ['./loader-ios.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

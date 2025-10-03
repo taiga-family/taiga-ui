@@ -6,4 +6,3 @@ export * from './items-handlers';
 export * from './mobile-calendar';
 export * from './month-formatter';
 export * from './preview-icons';
-export * from './validation-errors';

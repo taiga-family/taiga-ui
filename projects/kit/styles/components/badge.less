@@ -120,23 +120,8 @@ img[tuiBadge] {
     inline-size: var(--t-size);
 }
 
-tui-icon[tuiBadge] {
-    --t-margin: 0 !important;
+tui-icon[tuiBadge]::before {
+    .fullsize();
 
-    mask: none;
-    block-size: var(--t-size);
-    inline-size: var(--t-size);
-
-    &[data-size='s']::after {
-        mask-size: 0.625rem;
-    }
-
-    &[data-size='m']::after {
-        mask-size: 0.75rem;
-    }
-
-    &[data-size='l']::after,
-    &[data-size='xl']::after {
-        mask-size: 1rem;
-    }
+    --t-margin: 0;
 }

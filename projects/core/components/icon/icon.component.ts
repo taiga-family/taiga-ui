@@ -1,47 +1,34 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
-    Input,
-    signal,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
+import {TuiIcons} from '@taiga-ui/core/directives';
 
 @Component({
     standalone: true,
-    selector: 'tui-icon',
+    // :not([tuiBadge]) is required to avoid double matching of TuiIcons
+    selector: 'tui-icon:not([tuiBadge])',
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/icon.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/icon.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [
+        {
+            directive: TuiIcons,
+            inputs: ['iconStart: icon', 'iconEnd: badge'],
+        },
+    ],
     host: {
-        '[style.--t-icon]': 'iconSrc() || "url()"',
-        '[style.--t-icon-bg]': 'backgroundSrc()',
+        '[style.--t-icon-bg]': 'mask()',
     },
 })
 export class TuiIcon {
-    protected readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
-    protected readonly backgroundSrc = signal<string | null>(null);
-    protected readonly iconSrc = signal(
-        this.resolve(
-            inject(TUI_ICON_START, {self: true, optional: true}) ||
-                inject(TUI_ICON_END, {self: true, optional: true}),
-        ),
-    );
+    protected readonly icons = inject(TuiIcons);
+    protected readonly mask = computed(() => this.icons.resolve(this.background()));
 
-    @Input()
-    public set icon(icon: string) {
-        this.iconSrc.set(this.resolve(icon));
-    }
-
-    @Input()
-    public set background(background: string) {
-        this.backgroundSrc.set(this.resolve(background));
-    }
-
-    public resolve(value?: string | null): string | null {
-        return value ? `url(${this.resolver(value)})` : null;
-    }
+    public readonly background = input('');
 }

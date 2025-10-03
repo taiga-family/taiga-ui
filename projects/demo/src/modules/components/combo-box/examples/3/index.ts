@@ -23,7 +23,6 @@ const ROMAN_TO_LATIN: Record<string, string> = {
 };
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiChevron,

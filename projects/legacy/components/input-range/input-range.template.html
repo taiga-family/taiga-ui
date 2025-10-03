@@ -27,14 +27,13 @@
         (ngModelChange)="onInputLeft($event)"
     >
         <ng-content />
-        <div
-            *ngIf="showLeftValueContent"
-            ngProjectAs="tuiContent"
-        >
-            <ng-container *polymorpheusOutlet="leftValueContent as text; context: {$implicit: value[0]}">
-                {{ text }}
-            </ng-container>
-        </div>
+        @if (showLeftValueContent) {
+            <div ngProjectAs="tuiContent">
+                <ng-container *polymorpheusOutlet="leftValueContent as text; context: {$implicit: value[0]}">
+                    {{ text }}
+                </ng-container>
+            </div>
+        }
     </tui-input-number>
 
     <tui-input-number
@@ -54,14 +53,13 @@
         (keydown.arrowUp)="changeByStep($event, [0, 1])"
         (ngModelChange)="onInputRight($event)"
     >
-        <div
-            *ngIf="showRightValueContent"
-            ngProjectAs="tuiContent"
-        >
-            <ng-container *polymorpheusOutlet="rightValueContent as text; context: {$implicit: value[1]}">
-                {{ text }}
-            </ng-container>
-        </div>
+        @if (showRightValueContent) {
+            <div ngProjectAs="tuiContent">
+                <ng-container *polymorpheusOutlet="rightValueContent as text; context: {$implicit: value[1]}">
+                    {{ text }}
+                </ng-container>
+            </div>
+        }
     </tui-input-number>
 
     <tui-range

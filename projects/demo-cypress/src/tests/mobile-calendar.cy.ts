@@ -27,7 +27,6 @@ describe('Mobile calendar', () => {
     });
 
     @Component({
-        standalone: true,
         imports: [TuiMobileCalendar],
         template: `
             <tui-mobile-calendar

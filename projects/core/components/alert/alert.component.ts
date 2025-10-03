@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
@@ -15,9 +14,8 @@ import {type TuiAlertOptions} from './alert.interfaces';
 import {TUI_ALERT_POSITION} from './alert.tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-alert',
-    imports: [NgIf, PolymorpheusOutlet, TuiButton, TuiNotification, TuiTitle],
+    imports: [PolymorpheusOutlet, TuiButton, TuiNotification, TuiTitle],
     templateUrl: './alert.template.html',
     styleUrls: ['./alert.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

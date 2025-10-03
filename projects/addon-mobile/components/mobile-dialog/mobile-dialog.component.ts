@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiRipple} from '@taiga-ui/addon-mobile/directives';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
@@ -9,9 +8,8 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {type TuiMobileDialogOptions} from './mobile-dialog.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-mobile-dialog',
-    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiButton, TuiRipple],
+    imports: [PolymorpheusOutlet, TuiButton, TuiRipple],
     templateUrl: './mobile-dialog.template.html',
     styleUrls: ['./mobile-dialog.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

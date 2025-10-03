@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlert, TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'tui-alerts-example-6',
     imports: [TuiAlert, TuiButton],
     templateUrl: './index.html',

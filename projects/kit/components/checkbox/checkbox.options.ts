@@ -1,36 +1,22 @@
-import {InjectionToken, type Provider} from '@angular/core';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeS} from '@taiga-ui/core/types';
+import {type TuiRadioOptions} from '@taiga-ui/kit/components/radio';
 
-export interface TuiCheckboxOptions {
-    readonly size: TuiSizeS;
-    readonly appearance: TuiStringHandler<HTMLInputElement> | string;
+export interface TuiCheckboxOptions extends TuiRadioOptions {
     readonly icons: Readonly<{
-        checked: TuiStringHandler<TuiSizeS> | string;
-        indeterminate: TuiStringHandler<TuiSizeS> | string;
+        checked: TuiStringHandler<TuiSizeS>;
+        indeterminate: TuiStringHandler<TuiSizeS>;
     }>;
 }
 
-export const TUI_CHECKBOX_DEFAULT_OPTIONS: TuiCheckboxOptions = {
-    size: 'm',
-    appearance: (el) =>
-        el.checked || el.indeterminate ? 'primary' : 'outline-grayscale',
-    icons: {
-        checked: '@tui.check',
-        indeterminate: '@tui.minus',
-    },
-};
-
-export const TUI_CHECKBOX_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_CHECKBOX_OPTIONS' : '',
-    {
-        factory: () => TUI_CHECKBOX_DEFAULT_OPTIONS,
-    },
-);
-
-export function tuiCheckboxOptionsProvider(
-    options: Partial<TuiCheckboxOptions>,
-): Provider {
-    return tuiProvideOptions(TUI_CHECKBOX_OPTIONS, options, TUI_CHECKBOX_DEFAULT_OPTIONS);
-}
+export const [TUI_CHECKBOX_OPTIONS, tuiCheckboxOptionsProvider] =
+    tuiCreateOptions<TuiCheckboxOptions>({
+        size: 'm',
+        appearance: (el) =>
+            el.checked || el.indeterminate ? 'primary' : 'outline-grayscale',
+        icons: {
+            checked: () => '@tui.check',
+            indeterminate: () => '@tui.minus',
+        },
+    });

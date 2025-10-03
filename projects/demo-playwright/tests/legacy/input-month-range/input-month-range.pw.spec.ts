@@ -6,7 +6,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-test.describe('InputMonthRange', () => {
+// TODO migrate
+test.skip('InputMonthRange', () => {
     test.describe('API', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;

@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {AsyncPipe, DOCUMENT, NgIf} from '@angular/common';
+import {AsyncPipe, DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {DomSanitizer, type SafeHtml} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TUI_BASE_HREF} from '@taiga-ui/cdk/tokens';
 import {type TuiSafeHtml} from '@taiga-ui/cdk/types';
 import {tuiGetDocumentOrShadowRoot, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -53,9 +52,8 @@ export interface TuiIconError {
  * https://taiga-ui.dev/components/icon
  */
 @Component({
-    standalone: true,
     selector: 'tui-svg',
-    imports: [AsyncPipe, NgIf, TuiLet],
+    imports: [AsyncPipe],
     templateUrl: './svg.template.html',
     styleUrls: ['./svg.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

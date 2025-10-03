@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,8 +7,7 @@ import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [NgIf, ReactiveFormsModule, TuiButton, TuiInputChip, TuiTextfield],
+    imports: [ReactiveFormsModule, TuiButton, TuiInputChip, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

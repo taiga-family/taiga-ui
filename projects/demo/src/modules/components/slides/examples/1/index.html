@@ -24,14 +24,13 @@
 </div>
 <tui-elastic-container>
     <section tuiSlides>
-        <ng-container *ngFor="let item of items; let i = index">
-            <div
-                *ngIf="i === index"
-                tuiTitle
-            >
-                {{ item }}
-                <div tuiSubtitle>{{ item.repeat(10) }}</div>
-            </div>
-        </ng-container>
+        @for (item of items; track item; let i = $index) {
+            @if (i === index) {
+                <div tuiTitle>
+                    {{ item }}
+                    <div tuiSubtitle>{{ item.repeat(10) }}</div>
+                </div>
+            }
+        }
     </section>
 </tui-elastic-container>

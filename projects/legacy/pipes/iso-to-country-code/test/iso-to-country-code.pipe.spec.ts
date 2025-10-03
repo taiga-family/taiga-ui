@@ -1,5 +1,4 @@
 import {TestBed} from '@angular/core/testing';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 
 import {TuiIsoToCountryCodePipe} from '../iso-to-country-code.pipe';
 
@@ -7,9 +6,7 @@ describe('TuiIsoToCountryCodePipe', () => {
     let pipe: TuiIsoToCountryCodePipe;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            providers: [TuiIsoToCountryCodePipe, NG_EVENT_PLUGINS],
-        });
+        TestBed.configureTestingModule({providers: [TuiIsoToCountryCodePipe]});
 
         pipe = TestBed.inject(TuiIsoToCountryCodePipe);
     });

@@ -17,7 +17,6 @@ import {TuiAlertService, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,

@@ -4,7 +4,6 @@ import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'tui-preview-dialog',
     imports: [PolymorpheusOutlet],
     template: `

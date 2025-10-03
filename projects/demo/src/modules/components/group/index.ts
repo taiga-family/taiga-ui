@@ -5,7 +5,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiButton, TuiGroup, type TuiOrientation, type TuiSizeL} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo, TuiGroup],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

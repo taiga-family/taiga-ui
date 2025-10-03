@@ -8,7 +8,6 @@ import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Component({
-    standalone: true,
     selector: 'tui-badged-content',
     imports: [WaResizeObserver],
     templateUrl: './badged-content.template.html',

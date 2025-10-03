@@ -5,7 +5,6 @@ describe('TuiSwipe', () => {
     let component: Test;
 
     @Component({
-        standalone: true,
         imports: [TuiSwipe],
         template: `
             <section

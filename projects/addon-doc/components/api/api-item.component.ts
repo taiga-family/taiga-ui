@@ -1,11 +1,11 @@
-import {Location, NgForOf, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
+import {Location} from '@angular/common';
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
     inject,
     Input,
+    type OnInit,
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -28,14 +28,9 @@ import {TuiDocAPINumberItem} from './api-item-number.directive';
 const SERIALIZED_SUFFIX = '$';
 
 @Component({
-    standalone: true,
     selector: 'tr[tuiDocAPIItem]',
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
-        NgSwitch,
-        NgSwitchCase,
         TuiChevron,
         TuiDataListWrapper,
         TuiDocTypeReferencePipe,
@@ -49,7 +44,7 @@ const SERIALIZED_SUFFIX = '$';
     styleUrls: ['./api-item.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocAPIItem<T> implements AfterViewInit {
+export class TuiDocAPIItem<T> implements OnInit {
     private readonly locationRef = inject(Location);
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);
@@ -78,7 +73,7 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
     @Output()
     public readonly valueChange = new EventEmitter<T>();
 
-    public ngAfterViewInit(): void {
+    public ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
 

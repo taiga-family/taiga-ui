@@ -11,8 +11,8 @@ import {
 } from './utils';
 
 const OUTPUT_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms.txt');
+const TEMPLATE_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms.template.txt');
 const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
-const MARKER = '<!-- AUTO-GENERATED BELOW -->';
 
 function prettifyTitle(name: string): string {
     return name.replaceAll('-', ' ').replaceAll(/\b\w/g, (c) => c.toUpperCase());
@@ -78,19 +78,8 @@ async function main(): Promise<void> {
 
     const output: string[] = [];
 
-    // Preserve static preface above marker in existing llms.txt
-    const current = await fs.readFile(OUTPUT_FILE, 'utf-8');
-    const markerIndex = current.indexOf(MARKER);
-
-    if (markerIndex === -1) {
-        throw new Error(
-            `Marker not found in llms.txt. Please add a line with "${MARKER}" to indicate where auto-generated content should be appended.`,
-        );
-    }
-
-    const staticPreface = current
-        .slice(0, Math.max(0, markerIndex + MARKER.length))
-        .trimEnd();
+    // Always generate fresh content from template
+    const staticPreface = await fs.readFile(TEMPLATE_FILE, 'utf-8');
 
     output.push(staticPreface, '');
 

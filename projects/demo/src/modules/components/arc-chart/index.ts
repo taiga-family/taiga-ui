@@ -5,7 +5,6 @@ import {TuiArcChart} from '@taiga-ui/addon-charts';
 import {type TuiSizeXL} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiArcChart, TuiDemo],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

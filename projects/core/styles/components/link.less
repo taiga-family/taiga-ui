@@ -14,9 +14,6 @@
  * Icons, Appearance, Button
  */
 [tuiLink] {
-    // TODO: Remove in v5
-    --tui-text-tertiary: var(--tui-text-secondary);
-
     .transition(~'color, text-decoration, opacity');
 
     padding: 0;
@@ -53,6 +50,7 @@
         font-size: 0;
         line-height: 0;
         box-sizing: border-box;
+        mask-size: calc(100% + 10 * var(--tui-stroke-width, 0.125rem)) 100%;
     }
 
     &[tuiChevron]::after {

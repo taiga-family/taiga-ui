@@ -4,7 +4,7 @@
     [linesLimit]="linesLimit"
     (lastIndexChange)="lastIndex = $event"
 >
-    <ng-container *ngFor="let item of items; let i = index">
+    @for (item of items; track item; let i = $index) {
         <tui-chip
             *tuiItem
             appearance="neutral"
@@ -14,7 +14,7 @@
         >
             {{ item }} item
         </tui-chip>
-    </ng-container>
+    }
 
     <ng-template
         let-index

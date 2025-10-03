@@ -1,25 +1,27 @@
-<tr *ngIf="heading">
-    <th
-        class="t-heading"
-        [colSpan]="table.columns.length"
-    >
-        <button
-            type="button"
-            class="t-expand"
-            (click)="onClick()"
+@if (heading) {
+    <tr>
+        <th
+            class="t-heading"
+            [colSpan]="table.columns.length"
         >
-            <span class="t-name">
-                <ng-container *polymorpheusOutlet="heading as text">
-                    {{ text }}
-                </ng-container>
-            </span>
-            <tui-icon
-                class="t-chevron"
-                [tuiChevron]="open"
-            />
-        </button>
-    </th>
-</tr>
-<ng-container *ngIf="open">
+            <button
+                type="button"
+                class="t-expand"
+                (click)="onClick()"
+            >
+                <span class="t-name">
+                    <ng-container *polymorpheusOutlet="heading as text">
+                        {{ text }}
+                    </ng-container>
+                </span>
+                <tui-icon
+                    class="t-chevron"
+                    [tuiChevron]="open"
+                />
+            </button>
+        </th>
+    </tr>
+}
+@if (open) {
     <ng-content />
-</ng-container>
+}

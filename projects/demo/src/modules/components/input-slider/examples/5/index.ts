@@ -7,7 +7,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, JsonPipe, TuiInputSlider, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
@@ -18,6 +17,6 @@ export default class Example {
     // Form control can only contain decimal number which is multiple of this constant
     protected quantum = 0.05;
 
-    // But granularity of each discrete slider step equals to this constant
+    // But granularity of each discrete slider step is equal to this constant
     protected readonly step = 0.25;
 }

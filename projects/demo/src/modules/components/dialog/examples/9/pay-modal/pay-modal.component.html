@@ -2,7 +2,7 @@
     <h1 class="title">Pay by card</h1>
 
     <form [formGroup]="form">
-        <ng-container *ngFor="let card of cards">
+        @for (card of cards; track card) {
             <div class="form-block">
                 <div
                     class="saved-card-preset"
@@ -24,7 +24,6 @@
                                         ) | tuiIcon
                                     "
                                 />
-
                                 <div class="saved-card-preset__item__info__number">
                                     {{ card.firstSix }}****{{ card.lastFour }}
                                 </div>
@@ -33,10 +32,10 @@
                     </div>
                 </div>
             </div>
-        </ng-container>
+        }
 
         <div class="form-block">
-            <ng-container *ngIf="iOS">
+            @if (iOS) {
                 <!-- hack: open keyboard on iOS before focus target card input -->
                 <!-- hack: use autocomplete/inputmode attrs if you want autofill in keyboard  -->
                 <input
@@ -47,15 +46,16 @@
                     class="fake-input"
                 />
                 <!-- required:
-                    You don't need to use this hack for iOS if your input-card elements
-                    already exist in DOM, because you don't need to wait for them asynchronously.
-
-                    In our example we wait loading$ state before focus real card number / card cvc.
-                -->
-            </ng-container>
+        You don't need to use this hack for iOS if your input-card elements
+        already exist in DOM, because you don't need to wait for them asynchronously.
+        In our example we wait loading$ state before focus real card number / card cvc.
+        -->
+            }
 
             <ng-container *tuiLet="(loading$ | async) ?? false as loading">
-                <p *ngIf="loading">Please wait, we are loading fake cards...</p>
+                @if (loading) {
+                    <p>Please wait, we are loading fake cards...</p>
+                }
 
                 <tui-loader
                     [overlay]="true"
@@ -65,14 +65,14 @@
                         #cardGroupedInput
                         formControlName="card"
                         [cardValidator]="cardValidator"
-                        [class.without-date]="paymentMode === PAYMENT_MODE.BySavedCard"
-                        [tuiTextfieldCleaner]="paymentMode === PAYMENT_MODE.ByNewCard"
+                        [class.without-date]="paymentMode === paymentModeTypes.BySavedCard"
+                        [tuiTextfieldCleaner]="paymentMode === paymentModeTypes.ByNewCard"
                     />
                 </tui-loader>
             </ng-container>
         </div>
 
-        <ng-container *ngIf="paymentMode === PAYMENT_MODE.ByNewCard">
+        @if (paymentMode === paymentModeTypes.ByNewCard) {
             <div class="form-block">
                 <label tuiLabel>
                     <input
@@ -83,21 +83,20 @@
                     Remember card
                 </label>
             </div>
-        </ng-container>
+        }
 
-        <div
-            *ngIf="paymentMode === PAYMENT_MODE.BySavedCard"
-            class="form-block is--links"
-        >
-            <button
-                iconStart="@tui.plus"
-                tuiLink
-                type="button"
-                (click)="payByNewCard()"
-            >
-                New card
-            </button>
-        </div>
+        @if (paymentMode === paymentModeTypes.BySavedCard) {
+            <div class="form-block is--links">
+                <button
+                    iconStart="@tui.plus"
+                    tuiLink
+                    type="button"
+                    (click)="payByNewCard()"
+                >
+                    New card
+                </button>
+            </div>
+        }
     </form>
     <button
         appearance="primary"

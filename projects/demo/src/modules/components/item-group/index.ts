@@ -6,7 +6,6 @@ import {TuiChip} from '@taiga-ui/kit';
 import {TuiItemGroup} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     selector: 'example-chip',
     imports: [FormsModule, TuiChip, TuiDemo, TuiItemGroup],
     templateUrl: './index.html',

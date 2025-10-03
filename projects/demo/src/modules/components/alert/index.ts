@@ -15,7 +15,6 @@ import {switchMap} from 'rxjs';
 import {AlertExampleWithData} from './examples/4';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,

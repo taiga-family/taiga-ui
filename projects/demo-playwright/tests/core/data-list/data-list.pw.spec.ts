@@ -154,10 +154,7 @@ test.describe('DataList', () => {
 
         await page.locator('[automation-id="tui-data-list-range-option"]').click();
 
-        const range = page
-            .locator('[automation-id="tui-data-list-range-field"]')
-            .locator('[automation-id="tui-primitive-textfield__native-input"]')
-            .nth(0);
+        const range = page.locator('input[tuiInputDateRange]').nth(0);
 
         await range.focus();
         await range.fill('');
@@ -165,6 +162,10 @@ test.describe('DataList', () => {
         await range.press('Enter');
 
         await expect.soft(page).toHaveScreenshot('08-data-list.png');
+
+        // prevent calendar items from overlapping
+        await range.hover();
+        await range.blur();
 
         await page.locator('[automation-id="tui-data-list-calendar-option"]').click();
         await page.locator('[automation-id="tui-calendar-sheet__cell"]').nth(4).click();

@@ -20,10 +20,9 @@ interface User {
 }
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgIf,
+        NgIf, // TODO: use control flow syntax
         TuiButton,
         TuiChevron,
         TuiDataListWrapper,

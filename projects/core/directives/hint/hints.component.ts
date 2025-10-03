@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -16,9 +15,8 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TuiHintService} from './hint.service';
 
 @Component({
-    standalone: true,
     selector: 'tui-hints',
-    imports: [NgForOf, PolymorpheusOutlet, TuiActiveZone, TuiAnimatedParent],
+    imports: [PolymorpheusOutlet, TuiActiveZone, TuiAnimatedParent],
     templateUrl: './hints.template.html',
     styleUrls: ['./hints.style.less'],
     // So that we do not force OnPush on custom hints

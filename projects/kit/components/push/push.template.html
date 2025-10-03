@@ -1,29 +1,31 @@
 <div class="t-image">
     <ng-content select="img" />
 </div>
-<button
-    *ngIf="close.observed"
-    appearance=""
-    size="xs"
-    tuiIconButton
-    type="button"
-    class="t-close"
-    [iconStart]="icons.close"
-    [style.border-radius.%]="100"
-    (click)="close.emit()"
->
-    {{ closeWord$ | async }}
-</button>
+@if (close.observed) {
+    <button
+        appearance=""
+        size="xs"
+        tuiIconButton
+        type="button"
+        class="t-close"
+        [iconStart]="icons.close"
+        [style.border-radius.%]="100"
+        (click)="close.emit()"
+    >
+        {{ closeWord$ | async }}
+    </button>
+}
 <div class="t-top">
     <span class="t-icon">
-        <ng-content select="tui-svg,tui-icon" />
+        <ng-content select="tui-icon" />
     </span>
     {{ type }}
-    <span
-        *ngIf="timestamp"
-        class="t-time"
-        [textContent]="isString(timestamp) ? timestamp : (timestamp | tuiFormatDate | async)"
-    ></span>
+    @if (timestamp) {
+        <span
+            class="t-time"
+            [textContent]="isString(timestamp) ? timestamp : (timestamp | tuiFormatDate | async)"
+        ></span>
+    }
 </div>
 <h3
     automation-id="tui-push__heading"

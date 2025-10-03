@@ -30,7 +30,6 @@ import {
 import {TuiRangeChange} from './range-change.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-range',
     imports: [FormsModule, TuiSlider],
     templateUrl: './range.template.html',

@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBadge, TuiStatus} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiBadge, TuiStatus],
     templateUrl: './index.html',
     encapsulation,

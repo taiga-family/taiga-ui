@@ -5,7 +5,6 @@ describe('TuiPan', () => {
     let component: Test;
 
     @Component({
-        standalone: true,
         imports: [TuiPan],
         template: `
             <section (tuiPan)="pan($event)"></section>

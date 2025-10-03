@@ -16,7 +16,6 @@ import {
 import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
 
 @Component({
-    standalone: true,
     selector: 'tui-pull-to-refresh',
     imports: [AsyncPipe, PolymorpheusOutlet],
     templateUrl: './pull-to-refresh.template.html',

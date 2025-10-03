@@ -4,7 +4,6 @@ import {TuiButton, TuiDialog, TuiHint, TuiRoot} from '@taiga-ui/core';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,

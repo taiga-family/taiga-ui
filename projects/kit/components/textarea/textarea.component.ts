@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -24,9 +23,8 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options';
 
 @Component({
-    standalone: true,
     selector: 'textarea[tuiTextarea]',
-    imports: [NgIf, PolymorpheusOutlet, TuiScrollControls],
+    imports: [PolymorpheusOutlet, TuiScrollControls],
     templateUrl: './textarea.template.html',
     styleUrls: ['./textarea.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,

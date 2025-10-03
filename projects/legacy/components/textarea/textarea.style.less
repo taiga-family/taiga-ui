@@ -297,7 +297,10 @@
     .icon-button();
 
     pointer-events: auto;
-    border-width: 0.25rem;
+
+    &::before {
+        font-size: 1rem;
+    }
 }
 
 .t-caret {
@@ -325,7 +328,7 @@
     :host:not(._readonly):not(._disabled):hover
         .t-textfield-icon
         ::ng-deep
-        [tuiAppearance][data-appearance='icon']::after {
+        [tuiAppearance][data-appearance='icon']::before {
         color: var(--tui-text-secondary);
     }
 }

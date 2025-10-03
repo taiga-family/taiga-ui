@@ -41,13 +41,14 @@
         />
     </tui-textfield>
     <tui-data-list>
-        <button
-            *ngFor="let item of items"
-            tuiOption
-            type="button"
-            (click)="onClick()"
-        >
-            {{ item }}
-        </button>
+        @for (item of items; track item) {
+            <button
+                tuiOption
+                type="button"
+                (click)="onClick()"
+            >
+                {{ item }}
+            </button>
+        }
     </tui-data-list>
 </ng-template>

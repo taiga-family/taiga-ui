@@ -4,12 +4,13 @@
         [card]="true"
     >
         <tui-avatar-stack tuiSlot="top">
-            <tui-avatar
-                *ngFor="let user of users"
-                size="l"
-                [src]="user | tuiInitials"
-                [style.background]="user | tuiAutoColor"
-            />
+            @for (user of users; track user) {
+                <div
+                    size="l"
+                    [style.background]="user | tuiAutoColor"
+                    [tuiAvatar]="user | tuiInitials"
+                ></div>
+            }
         </tui-avatar-stack>
 
         You can put other content instead of image using

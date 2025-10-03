@@ -1,4 +1,4 @@
-import {DOCUMENT, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -29,9 +29,8 @@ const DELAY_DECREMENT = 15;
 const MIN_DELAY = 100;
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputNumber][step]',
-    imports: [NgIf, TuiButton, TuiTextfieldContent],
+    imports: [TuiButton, TuiTextfieldContent],
     templateUrl: './input-number-step.template.html',
     styleUrls: ['./input-number-step.style.less'],
     encapsulation: ViewEncapsulation.None,

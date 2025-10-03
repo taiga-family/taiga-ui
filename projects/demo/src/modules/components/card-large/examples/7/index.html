@@ -1,5 +1,5 @@
 <div
-    tuiAppearance="floating"
+    appearance="floating"
     tuiCardLarge
 >
     <header tuiHeader>
@@ -18,10 +18,10 @@
         [tuiDropdown]="dropdown"
         [tuiDropdownSided]="true"
     >
-        <tui-avatar
+        <div
             appearance="primary"
-            src="@tui.star"
-        />
+            tuiAvatar="@tui.star"
+        ></div>
 
         <div tuiTitle>
             Title
@@ -48,13 +48,14 @@
 >
     <tui-data-list>
         <tui-opt-group>
-            <button
-                *ngFor="let item of ['Edit', 'Download', 'Rename', 'Delete']"
-                tuiOption
-                type="button"
-            >
-                {{ item }}
-            </button>
+            @for (item of ['Edit', 'Download', 'Rename', 'Delete']; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-opt-group>
         <tui-opt-group>
             <button

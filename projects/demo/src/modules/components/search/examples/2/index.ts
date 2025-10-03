@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
@@ -17,9 +16,7 @@ import {TuiSearch} from '@taiga-ui/layout';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
-        NgForOf,
         ReactiveFormsModule,
         TuiButton,
         TuiChevron,

@@ -23,7 +23,7 @@
             Give us a Star
         </a>
     </header>
-    <ng-container *ngIf="show">
+    @if (show) {
         <img
             alt=""
             src="assets/images/taiga-family.png"
@@ -35,5 +35,5 @@
             <button tuiAccordion>Show more</button>
             <tui-expand>All work and no play makes Jack a dull boy</tui-expand>
         </tui-accordion>
-    </ng-container>
+    }
 </tui-bottom-sheet>

@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,6 +8,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_MINUS, CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 import {
+    provideTaiga,
     type TuiDecimalMode,
     TuiHint,
     TuiNumberFormat,
@@ -16,7 +16,6 @@ import {
     type TuiSizeL,
     type TuiSizeS,
 } from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {
     TuiInputNumberComponent,
     TuiInputNumberModule,
@@ -28,7 +27,6 @@ describe('InputNumber', () => {
     @Component({
         standalone: true,
         imports: [
-            NgIf,
             ReactiveFormsModule,
             TuiHint,
             TuiInputNumberModule,
@@ -37,21 +35,21 @@ describe('InputNumber', () => {
         ],
         template: `
             <ng-container [formGroup]="form">
-                <tui-input-number
-                    *ngIf="!defaultValues"
-                    formControlName="control"
-                    [readOnly]="readOnly"
-                    [tuiHintContent]="hintContent"
-                    [tuiNumberFormat]="{decimalMode: decimalMode, precision}"
-                    [tuiTextfieldCleaner]="cleaner"
-                    [tuiTextfieldSize]="size"
-                >
-                    Enter the amount
-                </tui-input-number>
-                <tui-input-number
-                    *ngIf="defaultValues"
-                    formControlName="control"
-                />
+                @if (!defaultValues) {
+                    <tui-input-number
+                        formControlName="control"
+                        [readOnly]="readOnly"
+                        [tuiHintContent]="hintContent"
+                        [tuiNumberFormat]="{decimalMode: decimalMode, precision}"
+                        [tuiTextfieldCleaner]="cleaner"
+                        [tuiTextfieldSize]="size"
+                    >
+                        Enter the amount
+                    </tui-input-number>
+                }
+                @if (defaultValues) {
+                    <tui-input-number formControlName="control" />
+                }
             </ng-container>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
@@ -83,10 +81,7 @@ describe('InputNumber', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [
-                NG_EVENT_PLUGINS,
-                tuiNumberFormatProvider({decimalSeparator: ','}),
-            ],
+            providers: [provideTaiga(), tuiNumberFormatProvider({decimalSeparator: ','})],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

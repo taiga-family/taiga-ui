@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,8 +8,7 @@ import {TuiRating} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, NgIf, TuiButton, TuiRating],
+    imports: [FormsModule, TuiButton, TuiRating],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

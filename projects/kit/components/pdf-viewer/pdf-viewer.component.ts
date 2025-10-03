@@ -9,7 +9,6 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {type TuiPdfViewerOptions} from './pdf-viewer.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-pdf-viewer',
     imports: [AsyncPipe, PolymorpheusOutlet, TuiButton],
     templateUrl: './pdf-viewer.template.html',

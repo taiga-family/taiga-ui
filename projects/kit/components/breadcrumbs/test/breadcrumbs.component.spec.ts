@@ -1,4 +1,3 @@
-import {NgFor} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -9,8 +8,7 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {RouterTestingModule} from '@angular/router/testing';
 import {TuiItem} from '@taiga-ui/cdk';
-import {TuiLink, type TuiSizeL} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiLink, type TuiSizeL} from '@taiga-ui/core';
 import {TuiBreadcrumbs} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -32,13 +30,13 @@ const ITEMS = [
 describe('Breadcrumbs Wrapper', () => {
     @Component({
         standalone: true,
-        imports: [NgFor, RouterTestingModule, TuiBreadcrumbs, TuiItem, TuiLink],
+        imports: [RouterTestingModule, TuiBreadcrumbs, TuiItem, TuiLink],
         template: `
             <tui-breadcrumbs
                 automation-id="tui-breadcrumbs-wrapper__component"
                 [size]="size"
             >
-                <ng-container *ngFor="let item of items">
+                @for (item of items; track item) {
                     <a
                         *tuiItem
                         tuiLink
@@ -46,7 +44,7 @@ describe('Breadcrumbs Wrapper', () => {
                     >
                         {{ item.caption }}
                     </a>
-                </ng-container>
+                }
             </tui-breadcrumbs>
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
@@ -77,7 +75,7 @@ describe('Breadcrumbs Wrapper', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

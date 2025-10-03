@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
@@ -9,13 +8,11 @@ describe('TuiHint', () => {
     let wrapper: MountResponse<Test>;
 
     @Component({
-        standalone: true,
         selector: 'my-host',
-        imports: [NgIf],
         template: `
-            <ng-container *ngIf="!hideElement">
+            @if (!hideElement) {
                 <ng-content />
-            </ng-container>
+            }
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
@@ -25,7 +22,6 @@ describe('TuiHint', () => {
     }
 
     @Component({
-        standalone: true,
         imports: [Host, TuiHintDirective, TuiRoot],
         template: `
             <tui-root>

@@ -1,22 +1,13 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, type OnInit} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
 import {TuiError} from '@taiga-ui/core';
-import {TuiFieldErrorPipe} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
-    imports: [
-        AsyncPipe,
-        ReactiveFormsModule,
-        TuiError,
-        TuiFieldErrorPipe,
-        TuiInputModule,
-    ],
+    imports: [ReactiveFormsModule, TuiError, TuiInputModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

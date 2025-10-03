@@ -1,4 +1,4 @@
-import {KeyValuePipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {KeyValuePipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -23,12 +23,9 @@ import {PAGE_PROVIDERS, PAGE_SEE_ALSO, TUI_DOC_TABS} from './page.providers';
 import {TuiDocPageTabConnector} from './page-tab.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-page',
     imports: [
         KeyValuePipe,
-        NgForOf,
-        NgIf,
         NgTemplateOutlet,
         PolymorpheusOutlet,
         RouterLink,

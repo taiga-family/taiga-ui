@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,30 +7,29 @@ import {
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk';
-import {tuiNumberFormatProvider} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, tuiNumberFormatProvider} from '@taiga-ui/core';
 import {TuiInputRangeComponent, TuiInputRangeModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe('InputRange', () => {
     @Component({
         standalone: true,
-        imports: [NgIf, ReactiveFormsModule, TuiInputRangeModule],
+        imports: [ReactiveFormsModule, TuiInputRangeModule],
         template: `
-            <tui-input-range
-                *ngIf="default"
-                [formControl]="control"
-            />
-            <tui-input-range
-                *ngIf="!default"
-                [formControl]="control"
-                [max]="max"
-                [min]="min"
-                [pluralize]="pluralize"
-                [quantum]="quantum"
-                [readOnly]="readOnly"
-                [steps]="steps"
-            />
+            @if (default) {
+                <tui-input-range [formControl]="control" />
+            }
+            @if (!default) {
+                <tui-input-range
+                    [formControl]="control"
+                    [max]="max"
+                    [min]="min"
+                    [pluralize]="pluralize"
+                    [quantum]="quantum"
+                    [readOnly]="readOnly"
+                    [steps]="steps"
+                />
+            }
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,
@@ -78,10 +76,7 @@ describe('InputRange', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [
-                NG_EVENT_PLUGINS,
-                tuiNumberFormatProvider({decimalSeparator: ','}),
-            ],
+            providers: [provideTaiga(), tuiNumberFormatProvider({decimalSeparator: ','})],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

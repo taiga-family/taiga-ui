@@ -34,7 +34,6 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
  * using default style of white rounded box with a shadow
  */
 @Component({
-    standalone: true,
     selector: 'tui-dropdown',
     imports: [PolymorpheusOutlet, TuiScrollbar],
     templateUrl: './dropdown.template.html',

@@ -19,7 +19,6 @@ export interface TuiTextfieldItem<T> {
  * Internal wrapper for polymorpheus-context
  */
 @Component({
-    standalone: true,
     selector: 'tui-textfield-item',
     imports: [PolymorpheusOutlet],
     template:

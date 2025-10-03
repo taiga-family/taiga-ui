@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -13,13 +12,14 @@ import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from '@taiga-ui/core/components/dialog';
+import {TUI_HEADER_OPTIONS, TuiHeader} from '@taiga-ui/core/components/header';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {TUI_HEADER_OPTIONS, TuiHeader} from '@taiga-ui/layout/components/header';
 import {
     injectContext,
     PolymorpheusComponent,
     PolymorpheusOutlet,
+    PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
 import {
     exhaustMap,
@@ -43,9 +43,8 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-dialog',
-    imports: [NgIf, PolymorpheusOutlet, TuiAutoFocus, TuiButton, TuiHeader, TuiTitle],
+    imports: [PolymorpheusOutlet, TuiAutoFocus, TuiButton, TuiHeader, TuiTitle],
     templateUrl: './dialog.template.html',
     styleUrls: ['./dialog.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -56,7 +55,9 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
         TuiDialogCloseService,
         {
             provide: TUI_HEADER_OPTIONS,
-            useFactory: (): {size: string} => ({size: getSize(injectContext())}),
+            useFactory: (): {
+                size: string;
+            } => ({size: getSize(injectContext())}),
         },
     ],
     hostDirectives: [TuiAnimated],
@@ -72,6 +73,10 @@ export class TuiDialogComponent<O, I> {
     protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
+    protected readonly primitive =
+        !(this.context.content instanceof TemplateRef) &&
+        !(this.context.content instanceof PolymorpheusTemplate) &&
+        !(this.context.content instanceof PolymorpheusComponent);
 
     protected readonly sub = merge(
         this.close$.pipe(switchMap(() => toObservable(this.context.closable))),
@@ -88,14 +93,6 @@ export class TuiDialogComponent<O, I> {
                 this.context.$implicit.complete();
             }
         });
-
-    protected get primitive(): boolean {
-        return (
-            !(this.context.content instanceof TemplateRef) &&
-            !(this.context.content instanceof PolymorpheusOutlet) &&
-            !(this.context.content instanceof PolymorpheusComponent)
-        );
-    }
 }
 
 function getSize({appearance, size}: TuiDialogOptions<unknown>): 'h3' | 'h4' | 'h5' {

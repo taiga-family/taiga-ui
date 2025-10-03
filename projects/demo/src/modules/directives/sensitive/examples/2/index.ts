@@ -6,7 +6,6 @@ import {TuiButton, TuiLabel} from '@taiga-ui/core';
 import {TuiBadge, TuiSensitive, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiBadge, TuiButton, TuiLabel, TuiSensitive, TuiSwitch],
     templateUrl: './index.html',
     encapsulation,

@@ -7,7 +7,6 @@ import {type TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiFilter} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [JsonPipe, ReactiveFormsModule, TuiFilter],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

@@ -6,7 +6,6 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiAmountPipe, TuiDemo, TuiLegendItem],
     templateUrl: './index.html',
     changeDetection,

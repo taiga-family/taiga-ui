@@ -14,7 +14,6 @@ import {
 import {TuiInputNumber, tuiInputNumberOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiButton,

@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
 
 @Component({
-    standalone: true,
     imports: [TuiCurrencyPipe],
     templateUrl: './index.html',
     encapsulation,

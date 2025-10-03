@@ -1,5 +1,4 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {WA_WINDOW} from '@ng-web-apis/common';
@@ -8,9 +7,8 @@ import {tuiInjectElement, TuiPlatform, tuiPure} from '@taiga-ui/cdk';
 import {TUI_DARK_MODE} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'table[colors]',
-    imports: [ClipboardModule, NgForOf, NgIf, TuiDocCopy],
+    imports: [ClipboardModule, TuiDocCopy],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,

@@ -13,44 +13,47 @@
     (dayClick)="onDayClick($event)"
     (monthChange)="onMonthChange($event)"
 />
-<tui-calendar
-    *ngIf="!items.length && !mobile; else presets"
-    [disabledItemHandler]="calculatedDisabledItemHandler"
-    [markerHandler]="markerHandler"
-    [max]="max | tuiMapper: capsMapper : currentValue : maxLength : false"
-    [min]="min | tuiMapper: capsMapper : currentValue : maxLength : true"
-    [minViewedMonth]="defaultViewedMonth | tuiMapper: monthOffset : 1"
-    [month]="defaultViewedMonth | tuiMapper: monthOffset : 1"
-    [showAdjacent]="false"
-    [value]="currentValue"
-    [(hoveredItem)]="hoveredItem"
-    (dayClick)="onDayClick($event)"
-    (monthChange)="onMonthChange($event.append({month: -1}))"
-/>
-<ng-template #presets>
-    <tui-data-list
-        *ngIf="!mobile"
-        automation-id="tui-calendar-range__menu"
-        role="menu"
-        [style.flex]="1"
-    >
-        <button
-            *ngFor="let item of items | tuiMapper: mapper : min : max : minLength : (otherDateText$ | async)"
-            automation-id="tui-calendar-range__menu__item"
-            role="menuitemradio"
-            tuiOption
-            type="button"
-            [attr.aria-checked]="isItemActive(item)"
-            (click)="onItemSelect(item)"
-            (pointerdown.prevent.zoneless)="(0)"
+@if (!items.length && !mobile) {
+    <tui-calendar
+        [disabledItemHandler]="calculatedDisabledItemHandler"
+        [markerHandler]="markerHandler"
+        [max]="max | tuiMapper: capsMapper : currentValue : maxLength : false"
+        [min]="min | tuiMapper: capsMapper : currentValue : maxLength : true"
+        [minViewedMonth]="defaultViewedMonth | tuiMapper: monthOffset : 1"
+        [month]="defaultViewedMonth | tuiMapper: monthOffset : 1"
+        [showAdjacent]="false"
+        [value]="currentValue"
+        [(hoveredItem)]="hoveredItem"
+        (dayClick)="onDayClick($event)"
+        (monthChange)="onMonthChange($event.append({month: -1}))"
+    />
+} @else {
+    @if (!mobile) {
+        <tui-data-list
+            automation-id="tui-calendar-range__menu"
+            role="menu"
+            [style.flex]="1"
         >
-            {{ item }}
-            <tui-icon
-                *ngIf="isItemActive(item)"
-                automation-id="tui-calendar-range__checkmark"
-                [icon]="icons.check"
-                [style.font-size.rem]="1"
-            />
-        </button>
-    </tui-data-list>
-</ng-template>
+            @for (item of items | tuiMapper: mapper : min : max : minLength : (otherDateText$ | async); track item) {
+                <button
+                    automation-id="tui-calendar-range__menu__item"
+                    role="menuitemradio"
+                    tuiOption
+                    type="button"
+                    [attr.aria-checked]="isItemActive(item)"
+                    (click)="onItemSelect(item)"
+                    (pointerdown.prevent.zoneless)="(0)"
+                >
+                    {{ item }}
+                    @if (isItemActive(item)) {
+                        <tui-icon
+                            automation-id="tui-calendar-range__checkmark"
+                            [icon]="icons.check"
+                            [style.font-size.rem]="1"
+                        />
+                    }
+                </button>
+            }
+        </tui-data-list>
+    }
+}

@@ -5,7 +5,7 @@
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
+    stroke-width="calc((100vw - 100vh) / 10)"
     stroke-linecap="round"
     stroke-linejoin="round"
 >
@@ -18,7 +18,7 @@
     <path vector-effect="non-scaling-stroke" d="m19.53 21.696-.382-.924" />
     <path vector-effect="non-scaling-stroke" d="m20.772 16.852.924-.383" />
     <path vector-effect="non-scaling-stroke" d="m20.772 19.148.924.383" />
-    <path vector-effect="non-scaling-stroke" d="M21 11V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6" />
+    <path vector-effect="non-scaling-stroke" d="M21 10.592V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h6" />
     <path vector-effect="non-scaling-stroke" d="M3 10h18" />
     <path vector-effect="non-scaling-stroke" d="M8 2v4" />
     <circle vector-effect="non-scaling-stroke" cx="18" cy="18" r="3" />

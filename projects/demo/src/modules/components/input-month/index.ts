@@ -1,8 +1,9 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDocControl} from '@demo/components/control';
 import {TuiDocTextfield} from '@demo/components/textfield';
 import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {
@@ -20,7 +21,6 @@ const TAIGA_V3 = new TuiDay(2022, 7, 30);
 const TAIGA_V4 = new TuiDay(2024, 7, 9);
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,
@@ -31,8 +31,7 @@ const TAIGA_V4 = new TuiDay(2024, 7, 9);
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
-    encapsulation: ViewEncapsulation.None,
+    encapsulation,
     changeDetection,
 })
 export default class PageComponent {

@@ -18,7 +18,6 @@ import {tuiInputPhoneInternationalOptionsProvider} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiIcon,

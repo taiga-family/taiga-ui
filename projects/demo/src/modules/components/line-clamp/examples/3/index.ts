@@ -6,7 +6,6 @@ import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiLineClamp, WaResizeObserver],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

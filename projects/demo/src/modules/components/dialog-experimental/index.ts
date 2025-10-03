@@ -14,7 +14,6 @@ import {TuiForm} from '@taiga-ui/layout';
 import {switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiAutoFocus, TuiButton, TuiDemo, TuiForm, TuiTextfield],
     templateUrl: './index.html',
     changeDetection,

@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,16 +6,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdown} from '@taiga-ui/core';
 import {TuiSwitch} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {interval, map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        NgIf,
-        PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiDropdown,
         TuiInputModule,

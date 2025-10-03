@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectorRef, Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -11,8 +10,7 @@ interface TreeNode {
 }
 
 @Component({
-    standalone: true,
-    imports: [NgIf, TuiTiles, TuiTree],
+    imports: [TuiTiles, TuiTree],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,

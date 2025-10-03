@@ -18,8 +18,8 @@
         }
     }
 
-    &[data-size='s'] tui-icon {
-        border-width: 0.25rem;
+    &[data-size='s'] tui-icon::before {
+        font-size: 1rem;
     }
 }
 
@@ -34,7 +34,7 @@
 }
 
 .t-custom-icon {
-    inline-size: 2rem;
+    font-size: 2rem;
     block-size: 100%;
 }
 
@@ -74,7 +74,11 @@
     :host:not(._readonly):not(._disabled):hover
         .t-textfield-icon
         ::ng-deep
-        [tuiAppearance][data-appearance='icon']::after {
+        [tuiAppearance][data-appearance='icon']::before {
         color: var(--tui-text-secondary);
     }
+}
+
+.t-cleaner tui-icon::before {
+    font-size: 1rem;
 }

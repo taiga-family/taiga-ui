@@ -7,7 +7,6 @@ import {TuiBadge} from '@taiga-ui/kit';
 import {interval, NEVER, startWith} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiBadge, TuiLet],
     templateUrl: './index.html',
     encapsulation,

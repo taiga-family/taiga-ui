@@ -10,7 +10,7 @@ import {type TuiSortDirection} from '../table.options';
     name: 'tuiTableSort',
     pure: false,
 })
-export class TuiTableSortPipe<K = Partial<Record<any, any>>> implements PipeTransform {
+export class TuiTableSortPipe<K> implements PipeTransform {
     private readonly table = inject(TuiTableDirective<K>);
 
     public transform<T extends K>(data?: readonly T[] | null): readonly T[] {

@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, type DebugElement} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {DomSanitizer} from '@angular/platform-browser';
-import {TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiRoot} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 import {tuiPdfViewerOptionsProvider} from '../pdf-viewer.options';
@@ -33,7 +32,7 @@ describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [tuiPdfViewerOptionsProvider({label}), NG_EVENT_PLUGINS],
+            providers: [tuiPdfViewerOptionsProvider({label}), provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

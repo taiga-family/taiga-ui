@@ -1,19 +1,22 @@
-<tui-avatar-stack
-    *ngFor="let size of sizes; let odd = odd"
-    class="tui-space_vertical-4"
-    [direction]="odd ? 'left' : 'right'"
->
-    <tui-avatar
-        *ngFor="let name of names"
-        [round]="odd"
-        [size]="size"
-        [src]="name | tuiInitials"
-        [style.background]="name | tuiAutoColor"
-    />
-    <tui-avatar
-        [round]="odd"
-        [size]="size"
+@for (size of sizes; track size; let odd = $odd) {
+    <tui-avatar-stack
+        class="tui-space_vertical-4"
+        [direction]="odd ? 'left' : 'right'"
     >
-        99+
-    </tui-avatar>
-</tui-avatar-stack>
+        @for (name of names; track name) {
+            <div
+                [round]="odd"
+                [size]="size"
+                [style.background]="name | tuiAutoColor"
+                [tuiAvatar]="name | tuiInitials"
+            ></div>
+        }
+        <div
+            tuiAvatar
+            [round]="odd"
+            [size]="size"
+        >
+            99+
+        </div>
+    </tui-avatar-stack>
+}

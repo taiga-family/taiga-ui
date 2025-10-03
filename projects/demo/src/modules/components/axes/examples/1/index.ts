@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAxes, type TuiLineHandler} from '@taiga-ui/addon-charts';
 
 @Component({
-    standalone: true,
     imports: [TuiAxes],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

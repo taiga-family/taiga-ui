@@ -30,7 +30,7 @@ import {tuiTextareaOptionsProvider} from './textarea.options';
     template: `
         <span [textContent]="context.$implicit.slice(0, limit())"></span>
         <span
-            [style.background]="background"
+            style="background: linear-gradient(transparent 0.25rem, var(--tui-status-negative-pale) 0.25rem, var(--tui-status-negative-pale) 100%)"
             [textContent]="context.$implicit.slice(limit())"
         ></span>
     `,
@@ -39,8 +39,6 @@ import {tuiTextareaOptionsProvider} from './textarea.options';
 export class TuiTextareaLimitComponent {
     protected readonly limit = inject(TuiTextareaLimit).limit;
     protected readonly context = injectContext<TuiContext<string>>();
-    protected readonly background =
-        'linear-gradient(transparent 0.125rem, var(--tui-status-negative-pale) 0.125rem, var(--tui-status-negative-pale) calc(100% - 0.125rem), transparent calc(100% - 0.125rem))';
 }
 
 @Component({

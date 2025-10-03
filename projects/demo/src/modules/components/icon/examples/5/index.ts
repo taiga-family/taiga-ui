@@ -5,7 +5,6 @@ import {type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ICON_RESOLVER, TuiIcon} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiIcon],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

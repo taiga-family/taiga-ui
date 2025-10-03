@@ -3,7 +3,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiHint} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiHint],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
