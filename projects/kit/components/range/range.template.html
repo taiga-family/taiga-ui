@@ -6,33 +6,33 @@
     <input
         automation-id="tui-range__left"
         readonly
-        step="any"
         tuiSlider
         type="range"
         class="t-thumb"
         [disabled]="disabled()"
-        [keySteps]="computedKeySteps"
+        [keySteps]="keySteps"
         [max]="max"
         [min]="min"
         [ngModel]="value()[0]"
         [ngModelOptions]="{standalone: true}"
         [size]="size"
+        [step]="step"
         [tabIndex]="focusable ? 0 : -1"
     />
     <input
         automation-id="tui-range__right"
         readonly
-        step="any"
         tuiSlider
         type="range"
         class="t-thumb"
         [disabled]="disabled()"
-        [keySteps]="computedKeySteps"
+        [keySteps]="keySteps"
         [max]="max"
         [min]="min"
         [ngModel]="value()[1]"
         [ngModelOptions]="{standalone: true}"
         [size]="size"
+        [step]="step"
         [tabIndex]="focusable ? 0 : -1"
     />
 </div>

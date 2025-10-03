@@ -88,20 +88,14 @@ export class TuiInputSliderDirective {
             return;
         }
 
-        if (
-            slider.keySteps?.transformer() &&
-            Number.isFinite(slider.keySteps?.totalSteps)
-        ) {
-            // TODO(v5): move all if-condition body inside `TuiSliderKeyStepsBase`
-            slider.min = 0;
-            slider.step = 1;
-            slider.max = slider.keySteps?.totalSteps ?? 100;
-        } else {
+        if (!slider.keySteps?.transformer()) {
             slider.min = this.inputNumber.min();
             slider.max = this.inputNumber.max();
+            slider.value = this.value();
+        } else {
+            slider.keySteps?.setControlValue(this.value());
         }
 
-        slider.value = this.keyStepsTransformer().fromControlValue(this.value());
         slider.el.disabled = !this.inputNumber.interactive();
     }, TUI_ALLOW_SIGNAL_WRITES);
 
@@ -116,16 +110,14 @@ export class TuiInputSliderDirective {
         slider.el.setAttribute('tabindex', '-1');
 
         if (slider.keySteps) {
-            slider.keySteps.value = this.value;
+            slider.keySteps.controlValue = this.value;
         }
 
         const subscription = fromEvent(slider.el, 'input')
             .pipe(
                 tap(() =>
                     this.inputNumber.setValue(
-                        this.keyStepsTransformer().toControlValue(
-                            slider.el.valueAsNumber,
-                        ),
+                        slider.keySteps?.getControlValue() ?? slider.el.valueAsNumber,
                     ),
                 ),
                 filter(() => !this.isMobile),
