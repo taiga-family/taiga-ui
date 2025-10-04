@@ -1,15 +1,16 @@
 <tui-textfield
-    #input
     multi
     tuiChevron
     class="control"
-    [content]="value.length ? `Selected: ${value.length}` : ''"
+    [content]="content"
+    [identityMatcher]="identityMatcher"
     [tuiTextfieldCleaner]="false"
 >
     <label tuiLabel>Open-source budget</label>
 
     <input
         tuiInputChip
+        tuiSelectLike
         [placeholder]="value.length ? '' : 'Type for suggestions'"
         [(ngModel)]="value"
     />

@@ -3,8 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiIdentityMatcher} from '@taiga-ui/cdk';
-import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
+import {TuiDataList, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiInputChip, TuiSelect} from '@taiga-ui/kit';
 
 import {CustomListComponent} from './custom-list';
 
@@ -40,7 +40,8 @@ const EXPENSES = {
         TuiDataList,
         TuiTextfield,
         TuiInputChip,
-        TuiMultiSelect,
+        TuiSelect,
+        TuiSelectLike,
         TuiChevron,
     ],
     templateUrl: './index.html',
@@ -55,12 +56,32 @@ const EXPENSES = {
     changeDetection,
 })
 export default class Example {
-    protected value = [];
+    protected value: string[] = [];
 
     protected readonly items = [INCOME, EXPENSES];
 
-    protected readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (
-        items1,
-        items2,
-    ) => items1.length === items2.length && items1.every((item) => items2.includes(item));
+    protected get content(): string {
+        if (!this.value.length) {
+            return '';
+        }
+
+        const equalsSelection = (list: readonly string[]): boolean =>
+            list.length === this.value.length &&
+            list.every((item) => this.value.includes(item));
+
+        const allItems = this.items.flatMap((group) => group.items);
+
+        if (equalsSelection(allItems)) {
+            return 'All';
+        }
+
+        const category = this.items.find((group) => equalsSelection(group.items));
+
+        return category ? `${category.name} only` : `Selected: ${this.value.length}`;
+    }
+
+    protected readonly identityMatcher: TuiIdentityMatcher<unknown> = (a, b) =>
+        Array.isArray(a) && Array.isArray(b)
+            ? a.length === b.length && a.every((x) => b.includes(x))
+            : a === b;
 }
