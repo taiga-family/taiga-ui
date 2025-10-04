@@ -1,6 +1,5 @@
-import type {Provider} from '@angular/core';
-import {InjectionToken} from '@angular/core';
-import type {TuiStringMatcher} from '@taiga-ui/cdk';
+import {InjectionToken, type Provider} from '@angular/core';
+import type {TuiStringMatcher} from '@taiga-ui/cdk/types';
 
 export type TuiFilterByInputHandler = <T>(
     items: ReadonlyArray<readonly T[]> | readonly T[] | null,

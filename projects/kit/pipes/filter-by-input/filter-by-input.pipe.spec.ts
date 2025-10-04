@@ -1,11 +1,16 @@
 /// <reference types="jest" />
 import {TestBed} from '@angular/core/testing';
-import type {TuiDataListHost} from '@taiga-ui/core';
-import {TUI_DATA_LIST_HOST, TUI_ITEMS_HANDLERS} from '@taiga-ui/core';
+import {
+    TUI_DATA_LIST_HOST,
+    TUI_ITEMS_HANDLERS,
+    type TuiDataListHost,
+} from '@taiga-ui/core';
 
 import {TuiFilterByInputPipe} from './filter-by-input.pipe';
-import type {TuiFilterByInputHandler} from './filter-option.token';
-import {provideTuiFilterHandler} from './filter-option.token';
+import {
+    provideTuiFilterHandler,
+    type TuiFilterByInputHandler,
+} from './filter-option.token';
 
 interface TestDataListHost<T> extends TuiDataListHost<T> {
     nativeFocusableElement: {value: string};
