@@ -1,12 +1,25 @@
-<tui-select
+<tui-textfield
+    multi
+    tuiChevron
     class="control"
+    [content]="content"
     [identityMatcher]="identityMatcher"
-    [valueContent]="valueContent"
-    [(ngModel)]="value"
+    [tuiTextfieldCleaner]="false"
 >
-    Open-source budget
+    <label tuiLabel>Open-source budget</label>
+
+    <input
+        tuiInputChip
+        tuiSelectLike
+        [placeholder]="value.length ? '' : 'Type for suggestions'"
+        [(ngModel)]="value"
+    />
+
+    <ng-template tuiItem />
+
     <custom-list
-        *tuiDataList
+        *tuiTextfieldDropdown
+        new
         [items]="items"
     />
-</tui-select>
+</tui-textfield>
