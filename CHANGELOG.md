@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.57.0](https://github.com/taiga-family/taiga-ui/compare/v4.56.0...v4.57.0) (2025-10-06)
+
+### 🚀 Features
+
+- **kit:** `InputRange` has new appearance for readonly/disabled state
+  ([#12136](https://github.com/taiga-family/taiga-ui/issues/12136))
+  ([8de5832](https://github.com/taiga-family/taiga-ui/commit/8de5832502191a90b53622edffc6a65709146e06))
+
+### 🐞 Bug Fixes
+
+- **cdk:** `Obscured` properly handle offscreen case ([#12135](https://github.com/taiga-family/taiga-ui/issues/12135))
+  ([d6e105e](https://github.com/taiga-family/taiga-ui/commit/d6e105e60fac59d429ca5236564661d4e9034c3c))
+- **core:** `Textfield` fix label size and position ([#12137](https://github.com/taiga-family/taiga-ui/issues/12137))
+  ([b65ad6a](https://github.com/taiga-family/taiga-ui/commit/b65ad6a926bc30581e851491cef11a4f32fa7dd4))
+- **kit:** `InputSlider` has broken drag behavior for slider in Firefox
+  ([#12084](https://github.com/taiga-family/taiga-ui/issues/12084))
+  ([1bba1df](https://github.com/taiga-family/taiga-ui/commit/1bba1dff0e3e680121a2fdaef3896b4c0f92047f))
+
 ## [4.56.0](https://github.com/taiga-family/taiga-ui/compare/v4.55.0...v4.56.0) (2025-09-30)
 
 ### 🚀 Features
