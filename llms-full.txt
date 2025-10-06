@@ -6295,7 +6295,7 @@ export default class PageComponent extends AbstractExampleTuiControl {
 
 ---
 # components/InputPhoneInternational
-- **Package**: `EXPERIMENTAL`
+- **Package**: `KIT`
 - **Type**: components
 Allows to input phone number in international format
 
@@ -6337,7 +6337,7 @@ Allows to input phone number in international format
 import {ReactiveFormsModule} from '@angular/forms';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
+import {TuiInputPhoneInternational} from '@taiga-ui/kit';
 
 @Component({
   standalone: true,
@@ -6396,9 +6396,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiDropdown, TuiIcon, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {tuiInputPhoneInternationalOptionsProvider, TuiTooltip} from '@taiga-ui/kit';
+import {
+    TuiInputPhoneInternational,
+    tuiInputPhoneInternationalOptionsProvider,
+    TuiTooltip,
+} from '@taiga-ui/kit';
 import {getCountries} from 'libphonenumber-js';
 
 @Component({
