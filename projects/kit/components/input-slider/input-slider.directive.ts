@@ -7,11 +7,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {
-    TUI_IDENTITY_VALUE_TRANSFORMER,
-    TuiNonNullableValueTransformer,
-    TuiValueTransformer,
-} from '@taiga-ui/cdk/classes';
+import {TuiNonNullableValueTransformer, TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -70,10 +66,6 @@ export class TuiInputSliderDirective {
     private readonly controlTransformer = inject<
         TuiValueTransformer<number | null, number>
     >(TuiValueTransformer, {self: true});
-
-    private readonly keyStepsTransformer = computed(
-        () => this.slider()?.keySteps?.transformer() ?? TUI_IDENTITY_VALUE_TRANSFORMER,
-    );
 
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly inputNumber = inject(TuiInputNumberDirective, {self: true});
