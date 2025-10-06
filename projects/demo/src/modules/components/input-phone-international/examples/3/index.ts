@@ -7,8 +7,8 @@ import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
 import {TuiTextfield} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
-    tuiInputPhoneInternationalOptionsProvider,
     TuiInputPhoneInternational,
+    tuiInputPhoneInternationalOptionsProvider,
     TuiSortCountriesPipe,
 } from '@taiga-ui/kit';
 import {getCountries} from 'libphonenumber-js';

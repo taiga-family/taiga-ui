@@ -14,8 +14,8 @@ import {provideAnimations} from '@angular/platform-browser/animations';
 import {TUI_ANIMATIONS_SPEED, TuiIcon, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
-    tuiInputPhoneInternationalOptionsProvider,
     TuiInputPhoneInternational,
+    tuiInputPhoneInternationalOptionsProvider,
 } from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
 

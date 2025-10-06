@@ -12,8 +12,8 @@ import {
     type TuiLanguage,
 } from '@taiga-ui/i18n';
 import {
-    tuiInputPhoneInternationalOptionsProvider,
     TuiInputPhoneInternational,
+    tuiInputPhoneInternationalOptionsProvider,
 } from '@taiga-ui/kit';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import metadata from 'libphonenumber-js/max/metadata';

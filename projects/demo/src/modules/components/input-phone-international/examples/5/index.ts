@@ -5,8 +5,8 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
-    tuiInputPhoneInternationalOptionsProvider,
     TuiInputPhoneInternational,
+    tuiInputPhoneInternationalOptionsProvider,
 } from '@taiga-ui/kit';
 import {getCountries} from 'libphonenumber-js';
 import {defer} from 'rxjs';
