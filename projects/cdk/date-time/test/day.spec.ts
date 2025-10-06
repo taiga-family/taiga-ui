@@ -865,7 +865,7 @@ describe('TuiDay', () => {
 
                 it(
                     'TuiDay {year: 2018, month: 1, day: 28} if {month: -1} was passed (when current month has' +
-                        'more days, then final month, but bought has the day)',
+                        'more days, then final month, but both has the day)',
                     () => {
                         const result = new TuiDay(2018, 2, 28).append({
                             month: -1,

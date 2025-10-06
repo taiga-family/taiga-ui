@@ -310,13 +310,18 @@ export class TuiDay extends TuiMonth {
             this.month,
             TuiYear.isLeapYear(years),
         );
-        let days =
-            (this.day > monthDaysCount
-                ? this.day - (currentMonthDaysCount - monthDaysCount)
-                : currentMonthDaysCount < monthDaysCount &&
-                    this.day === currentMonthDaysCount
-                  ? this.day + (monthDaysCount - currentMonthDaysCount)
-                  : this.day) + day;
+        let days = day;
+
+        if (this.day > monthDaysCount) {
+            days += this.day - (currentMonthDaysCount - monthDaysCount);
+        } else if (
+            currentMonthDaysCount < monthDaysCount &&
+            this.day === currentMonthDaysCount
+        ) {
+            days += this.day + (monthDaysCount - currentMonthDaysCount);
+        } else {
+            days += this.day;
+        }
 
         while (days > TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years))) {
             days -= TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years));
