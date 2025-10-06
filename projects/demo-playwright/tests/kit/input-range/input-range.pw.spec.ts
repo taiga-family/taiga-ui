@@ -420,5 +420,76 @@ describe('InputRange', () => {
                 .soft(example)
                 .toHaveScreenshot('28-input-range-start-has-content--end-no-content.png');
         });
+
+        ['readOnly', 'disabled'].forEach((nonInteractiveProp) => {
+            describe(`${nonInteractiveProp}=true`, () => {
+                test('START & END textfields both have no content', async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputRange}/API?content$=2&${nonInteractiveProp}=true`,
+                    );
+                    await expect(inputRange.textfieldStart).toHaveValue('0');
+                    await expect(inputRange.textfieldEnd).toHaveValue('10');
+                    await expect(example).toHaveScreenshot(
+                        `29-input-range-${nonInteractiveProp}-start-no-content--end-no-content.png`,
+                    );
+                });
+
+                test('START & END textfields both have content', async ({page}) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputRange}/API?content$=1&${nonInteractiveProp}=true`,
+                    );
+                    await expect(example.locator('tui-input-range')).toContainText(
+                        'START – END',
+                    );
+                    await expect(example).toHaveScreenshot(
+                        `30-input-range-${nonInteractiveProp}-start-has-content--end-has-content.png`,
+                    );
+                });
+
+                test('START textfield without content + END textfield has content', async ({
+                    page,
+                }) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputRange}/API?content$=2&${nonInteractiveProp}=true&max=10`,
+                    );
+                    await expect(example.locator('tui-input-range')).toContainText(
+                        '0 – MAX',
+                    );
+                    await expect(example).toHaveScreenshot(
+                        `31-input-range-${nonInteractiveProp}-start-no-content--end-has-content.png`,
+                    );
+                });
+
+                test('START textfield has content + END textfield without content', async ({
+                    page,
+                }) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputRange}/API?content$=3&${nonInteractiveProp}=true`,
+                    );
+                    await expect(example.locator('tui-input-range')).toContainText(
+                        'MIN – 10',
+                    );
+                    await expect(example).toHaveScreenshot(
+                        `32-input-range-${nonInteractiveProp}-start-has-content--end-no-content.png`,
+                    );
+                });
+
+                test('START textfield without content + END textfield has non-primitive content', async ({
+                    page,
+                }) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputRange}/API?content$=5&${nonInteractiveProp}=true`,
+                    );
+                    await expect(example).toHaveScreenshot(
+                        `33-input-range-${nonInteractiveProp}-start-no-content--end-non-primitive-content.png`,
+                    );
+                });
+            });
+        });
     });
 });
