@@ -6865,12 +6865,9 @@ import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {DemoRoute} from &#039;@demo/routes&#039;;
 import {TuiDemo} from &#039;@demo/utils&#039;;
 import {type TuiContext} from &#039;@taiga-ui/cdk&#039;;
-import {TuiNumberFormat, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
-import {
-    TuiInputRange,
-    type TuiInputRangeComponent,
-    type TuiKeySteps,
-} from &#039;@taiga-ui/kit&#039;;
+import {TuiLoader, TuiNumberFormat, TuiTextfield, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiInputRange, type TuiKeySteps} from &#039;@taiga-ui/kit&#039;;
+import {PolymorpheusComponent, type PolymorpheusContent} from &#039;@taiga-ui/polymorpheus&#039;;
 
 @Component({
     standalone: true,
@@ -6908,7 +6905,12 @@ export default class PageComponent {
         ],
     ];
 
-    protected readonly contentVariants: Array&lt;TuiInputRangeComponent[&#039;content&#039;]&gt; = [
+    protected readonly contentVariants: Array&lt;
+        readonly [
+            PolymorpheusContent&lt;TuiContext&lt;number&gt;&gt;,
+            PolymorpheusContent&lt;TuiContext&lt;number&gt;&gt;,
+        ]
+    &gt; = [
         [&#039;&#039;, &#039;&#039;],
         [&#039;START&#039;, &#039;END&#039;],
         [
@@ -6927,6 +6929,7 @@ export default class PageComponent {
             ({$implicit: val}: TuiContext&lt;number&gt;) =&gt; (val === 5 ? &#039;FIVE&#039; : `${val}`),
             ({$implicit: val}: TuiContext&lt;number&gt;) =&gt; (val === 5 ? &#039;FIVE&#039; : `${val}`),
         ],
+        [&#039;&#039;, new PolymorpheusComponent(TuiLoader)],
     ];
 
     protected min = 0;
