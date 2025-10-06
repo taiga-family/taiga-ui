@@ -18,7 +18,6 @@ import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, EMPTY_QUERY} from '@taiga-ui/cdk/cons
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
-import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumber,
@@ -245,6 +244,6 @@ export class TuiInputRangeComponent
     }
 
     private isPrimitive(x: PolymorpheusContent): x is PolymorpheusPrimitive {
-        return !x || tuiIsString(x) || tuiIsNumber(x);
+        return Object(x) !== x;
     }
 }
