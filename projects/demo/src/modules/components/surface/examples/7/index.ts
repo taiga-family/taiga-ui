@@ -9,17 +9,15 @@ import {
     TuiLabel,
     TuiLink,
     TuiScrollbar,
-    TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         AsyncPipe,
         TuiAmountPipe,
-        TuiAppearance,
         TuiAvatar,
         TuiBadge,
         TuiButton,
@@ -30,6 +28,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
         TuiSurface,
         TuiThumbnailCard,
         TuiTitle,
+        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less', './surface.less'],

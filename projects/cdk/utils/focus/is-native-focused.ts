@@ -1,4 +1,4 @@
-import {tuiGetNativeFocused} from './get-native-focused';
+import {tuiGetFocused} from './get-native-focused';
 
 /**
  * Checks if element is focused.
@@ -8,10 +8,10 @@ import {tuiGetNativeFocused} from './get-native-focused';
  * @param node or null (as a common return value of DOM nodes walking)
  * @return true if focused
  */
-export function tuiIsNativeFocused(node?: Node | null): boolean {
+export function tuiIsFocused(node?: Node | null): boolean {
     return (
         !!node?.ownerDocument &&
-        tuiGetNativeFocused(node.ownerDocument) === node &&
+        tuiGetFocused(node.ownerDocument) === node &&
         node.ownerDocument.hasFocus()
     );
 }

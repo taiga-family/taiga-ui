@@ -14,6 +14,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     encapsulation,
     changeDetection,
     providers: [
+        // Provide TUI_CONFIRM_DIALOG if you want to override default Confirm dialog
         TuiConfirmService,
         {
             provide: TuiDialogService,

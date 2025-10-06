@@ -21,7 +21,7 @@
     }
 
     &::before {
-        .fullsize();
+        .fullsize(fixed);
 
         content: '';
         z-index: -1;
@@ -66,6 +66,16 @@
                     display: none;
                 }
             }
+        }
+    }
+
+    ::ng-deep tui-data-list {
+        margin-inline-start: calc(-1 * var(--tui-data-list-padding));
+        margin-inline-end: calc(-1 * var(--tui-data-list-padding));
+
+        [tuiOption] {
+            margin-inline-start: calc(-1 * var(--t-option-padding-inline));
+            margin-inline-end: calc(-1 * var(--t-option-padding-inline));
         }
     }
 }

@@ -9,5 +9,5 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Lazy', 'Eager', 'Async', 'Old syntax'];
+    protected readonly examples = ['Lazy', 'Eager', 'Async'];
 }

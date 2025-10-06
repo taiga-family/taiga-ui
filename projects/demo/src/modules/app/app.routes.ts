@@ -100,11 +100,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../components/accordion'),
     }),
     route({
-        path: DemoRoute.AccordionOld,
-        title: 'Accordion ⛔',
-        loadComponent: async () => import('../components/accordion-'),
-    }),
-    route({
         path: DemoRoute.Avatar,
         title: 'Avatar',
         loadComponent: async () => import('../components/avatar'),
@@ -343,11 +338,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.ElasticContainer,
         loadComponent: async () => import('../components/elastic-container'),
         title: 'ElasticContainer',
-    }),
-    route({
-        path: DemoRoute.FieldError,
-        loadComponent: async () => import('../pipes/field-error'),
-        title: 'FieldError',
     }),
     route({
         path: DemoRoute.InputFiles,
@@ -691,6 +681,11 @@ export const ROUTES: Routes = [
         title: 'Confirm',
     }),
     route({
+        path: DemoRoute.Toast,
+        loadComponent: async () => import('../components/toast'),
+        title: 'Toast',
+    }),
+    route({
         path: DemoRoute.Tiles,
         loadComponent: async () => import('../components/tiles'),
         title: 'Tiles',
@@ -913,11 +908,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Ripple,
         loadComponent: async () => import('../directives/ripple'),
         title: 'Ripple',
-    }),
-    route({
-        path: DemoRoute.Sidebar,
-        loadComponent: async () => import('../directives/sidebar'),
-        title: 'Sidebar ⛔',
     }),
     route({
         path: DemoRoute.Touchable,

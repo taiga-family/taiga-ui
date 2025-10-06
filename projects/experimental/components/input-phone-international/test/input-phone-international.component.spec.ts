@@ -2,8 +2,7 @@ import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
 import {
     TUI_ENGLISH_LANGUAGE,
@@ -63,7 +62,7 @@ describe('InputPhoneInternational', () => {
             TestBed.configureTestingModule({
                 imports: [Test],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     {
                         provide: TUI_LANGUAGE,
                         useValue: of(language),
@@ -245,8 +244,6 @@ describe('InputPhoneInternational', () => {
     }
 
     function clickCountrySelector(): void {
-        return fixture.debugElement
-            .query(By.css('.t-ipi-select'))
-            .nativeElement.dispatchEvent(new Event('pointerdown'));
+        return fixture.debugElement.query(By.css('.t-ipi-select')).nativeElement.click();
     }
 });

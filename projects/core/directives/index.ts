@@ -7,5 +7,4 @@ export * from '@taiga-ui/core/directives/icons';
 export * from '@taiga-ui/core/directives/items-handlers';
 export * from '@taiga-ui/core/directives/number-format';
 export * from '@taiga-ui/core/directives/popup';
-export * from '@taiga-ui/core/directives/surface';
 export * from '@taiga-ui/core/directives/title';

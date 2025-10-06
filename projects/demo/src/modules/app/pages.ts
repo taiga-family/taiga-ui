@@ -174,12 +174,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Accordion ⛔',
-        keywords: 'open, аккордеон, expand, раскрывашка, spoiler, cut',
-        route: DemoRoute.AccordionOld,
-    },
-    {
-        section: 'Components',
         title: 'Alert',
         keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: DemoRoute.Alert,
@@ -542,7 +536,8 @@ export const pages: DocRoutePages = [
             {
                 section: 'Components',
                 title: 'InputChip',
-                keywords: 'поле, инпут, форма, ввод, input, chip, tag, тэг',
+                keywords:
+                    'поле, инпут, форма, ввод, input, виртуальный скролл, chip, virtual scroll, tag, тэг',
                 route: DemoRoute.InputChip,
                 meta: [
                     {name: 'tui-input-chip'},
@@ -983,6 +978,12 @@ export const pages: DocRoutePages = [
         keywords:
             'молекула, уведомление, нотификация, бабл, облачко, actions, beaver, alert, table, bar',
         route: DemoRoute.ActionBar,
+    },
+    {
+        section: 'Components',
+        title: 'Toast',
+        keywords: 'toast, тост, нотификация',
+        route: DemoRoute.Toast,
     },
     {
         section: 'Components',
@@ -1437,13 +1438,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'Sidebar ⛔',
-                keywords:
-                    'sidebar, hamburger, drawer menu, mobile, смартфон, pwa, native, hybrid, сайдбар, меню',
-                route: DemoRoute.Sidebar,
-            },
-            {
-                section: 'Tools',
                 title: 'Swipe',
                 keywords: 'swipe, свайп',
                 route: DemoRoute.Swipe,
@@ -1581,12 +1575,6 @@ export const pages: DocRoutePages = [
                 title: 'RepeatTimes',
                 keywords: 'повторение, repeat, пайп, pipe',
                 route: DemoRoute.RepeatTimes,
-            },
-            {
-                section: 'Tools',
-                title: 'FieldError',
-                keywords: 'error, field, hint, ошибка, преобразование, пайп, pipe',
-                route: DemoRoute.FieldError,
             },
             {
                 section: 'Tools',

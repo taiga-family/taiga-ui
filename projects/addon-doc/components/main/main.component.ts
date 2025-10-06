@@ -31,7 +31,6 @@ export class TuiDocMain {
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly dir = inject(TUI_DOC_DIRECTION_ENABLED);
     protected readonly darkMode = inject(TUI_DARK_MODE);
-    protected readonly theme = computed(() => (this.darkMode() ? 'dark' : null));
     protected readonly icon = computed(() =>
         this.darkMode() ? this.icons.light : this.icons.dark,
     );

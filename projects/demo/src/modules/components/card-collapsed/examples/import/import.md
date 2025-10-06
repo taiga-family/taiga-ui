@@ -1,7 +1,7 @@
 ```ts
-import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
 import {TuiExpand, TuiChevron} from '@taiga-ui/kit';
-import {TuiCard, TuiHeader} from '@taiga-ui/layout';
+import {TuiCard} from '@taiga-ui/layout';
 // ...
 
 @Component({

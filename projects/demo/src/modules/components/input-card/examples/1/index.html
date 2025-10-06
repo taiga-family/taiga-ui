@@ -23,9 +23,6 @@
             />
         </tui-textfield>
     </section>
-    <tui-error
-        formControlName="card"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="card" />
 </form>
 <p>{{ form.value | json }}</p>

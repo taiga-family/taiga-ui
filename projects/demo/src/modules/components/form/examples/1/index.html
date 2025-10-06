@@ -1,5 +1,5 @@
 <form
-    tuiAppearance="floating"
+    appearance="floating"
     tuiCardLarge
     tuiForm="m"
     [formGroup]="form"
@@ -45,10 +45,7 @@
             tuiTextfield
         />
     </tui-textfield>
-    <tui-error
-        formControlName="name"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="name" />
     @if (!form.controls.basic.value) {
         <tui-textfield>
             <label tuiLabel>Email</label>

@@ -1,3 +1,5 @@
+/// <reference types="@types/node" />
+
 export function tuiTestingViewport(width: number, height: number): void {
     Object.defineProperty(global, 'innerWidth', {
         writable: true,

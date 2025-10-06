@@ -20,5 +20,6 @@ export default class Page {
         'Footer',
         'Resize a large table',
         'Expandable',
+        'Manual sorting',
     ];
 }

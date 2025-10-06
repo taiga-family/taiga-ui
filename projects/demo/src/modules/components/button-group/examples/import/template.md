@@ -1,7 +1,7 @@
 ```html
 <div
   tuiButtonGroup
-  tuiSurface="elevated"
+  tuiAppearance="elevated"
 >
   <button>
     <tui-icon icon="@tui.circle-plus"></tui-icon>

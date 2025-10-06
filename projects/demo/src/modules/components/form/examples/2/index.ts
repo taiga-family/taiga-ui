@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,6 +7,7 @@ import {
     TuiButton,
     TuiError,
     TuiGroup,
+    TuiHeader,
     TuiIcon,
     TuiLabel,
     TuiTextfield,
@@ -18,18 +18,17 @@ import {
     TuiCheckbox,
     TuiChevron,
     TuiDataListWrapper,
-    TuiFieldErrorPipe,
+    TuiInputDate,
     TuiInputNumber,
+    TuiInputPhone,
     TuiPassword,
     TuiRadio,
     TuiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiForm} from '@taiga-ui/layout';
 import {
-    TuiInputDateModule,
     TuiInputModule,
-    TuiInputPhoneModule,
     TuiInputSliderModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
@@ -57,7 +56,6 @@ class Account {
 
 @Component({
     imports: [
-        AsyncPipe,
         ReactiveFormsModule,
         TuiBlock,
         TuiButton,
@@ -66,15 +64,13 @@ class Account {
         TuiCurrencyPipe,
         TuiDataListWrapper,
         TuiError,
-        TuiFieldErrorPipe,
         TuiForm,
         TuiGroup,
         TuiHeader,
         TuiIcon,
-        TuiInputDateModule,
         TuiInputModule,
         TuiInputNumber,
-        TuiInputPhoneModule,
+        TuiInputPhone,
         TuiInputSliderModule,
         TuiLabel,
         TuiPassword,
@@ -84,6 +80,7 @@ class Account {
         TuiTextfieldControllerModule,
         TuiTitle,
         TuiTooltip,
+        TuiInputDate,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],

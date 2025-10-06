@@ -16,8 +16,7 @@ import {
     TuiDayRange,
     TuiValueTransformer,
 } from '@taiga-ui/cdk';
-import {TUI_DATE_FORMAT, TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TUI_DATE_FORMAT, TuiRoot} from '@taiga-ui/core';
 import {
     TUI_DATE_RANGE_VALUE_TRANSFORMER,
     TUI_DATE_VALUE_TRANSFORMER,
@@ -103,7 +102,10 @@ describe('InputDateRangeComponent', () => {
 
     describe('Default', () => {
         beforeEach(async () => {
-            TestBed.configureTestingModule({imports: [Test]});
+            TestBed.configureTestingModule({
+                imports: [Test],
+                providers: [provideTaiga()],
+            });
             await TestBed.compileComponents();
             initializeEnvironment();
         });
@@ -287,7 +289,7 @@ describe('InputDateRangeComponent', () => {
             TestBed.configureTestingModule({
                 imports: [Test],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     {
                         provide: TUI_DATE_FORMAT,
                         useValue: of({mode: 'MDY', separator: '/'}),
@@ -345,7 +347,7 @@ describe('InputDateRangeComponent', () => {
             TestBed.configureTestingModule({
                 imports: [Test],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     {
                         provide: TUI_DATE_FORMAT,
                         useValue: of({mode: 'YMD', separator: '-'}),
@@ -481,7 +483,7 @@ describe('InputDateRangeComponent', () => {
             TestBed.configureTestingModule({
                 imports: [Test, TransformerTest],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     {
                         provide: TUI_DATE_VALUE_TRANSFORMER,
                         useClass: TestDateTransformer,

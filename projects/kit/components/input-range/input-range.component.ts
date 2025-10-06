@@ -6,21 +6,19 @@ import {
     ElementRef,
     inject,
     Input,
+    input,
     type QueryList,
     signal,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    TUI_IDENTITY_VALUE_TRANSFORMER,
-    tuiAsControl,
-    TuiControl,
-} from '@taiga-ui/cdk/classes';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumber,
@@ -32,7 +30,11 @@ import {
     type TuiKeySteps,
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+    type PolymorpheusPrimitive,
+} from '@taiga-ui/polymorpheus';
 
 @Component({
     selector: 'tui-input-range',
@@ -64,16 +66,31 @@ export class TuiInputRangeComponent
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly quantum = signal(0);
-    private readonly quantumTransformer = computed((quantum = this.quantum()) =>
-        quantum
-            ? new TuiQuantumValueTransformerBase(quantum)
-            : TUI_IDENTITY_VALUE_TRANSFORMER,
+    private readonly quantumTransformer = computed(
+        () => new TuiQuantumValueTransformerBase(this.quantum()),
     );
 
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     protected textfieldValueStart = this.value()[0];
     protected textfieldValueEnd = this.value()[1];
     protected lastActiveSide: 'end' | 'start' = 'start';
+    protected readonly contentStart = computed(() => {
+        const [start, end] = this.content().map((x, i) => {
+            const value = this.value()[i]!;
+
+            return typeof x === 'function' ? x({$implicit: value}) : x || value;
+        });
+
+        if (this.interactive() || !this.isPrimitive(start) || !this.isPrimitive(end)) {
+            return this.content()[0];
+        }
+
+        return `${start}${CHAR_NO_BREAK_SPACE}${CHAR_EN_DASH}${CHAR_NO_BREAK_SPACE}${end}`;
+    });
+
+    protected readonly contentEnd = computed(() =>
+        this.contentStart() === this.content()[0] ? this.content()[1] : '',
+    );
 
     @Input()
     public min = 0;
@@ -90,17 +107,18 @@ export class TuiInputRangeComponent
     @Input()
     public keySteps: TuiKeySteps | null = null;
 
-    @Input()
-    public content: readonly [
-        PolymorpheusContent<TuiContext<number>>,
-        PolymorpheusContent<TuiContext<number>>,
-    ] = ['', ''];
-
     @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
     public prefix: readonly [string, string] = ['', ''];
 
     @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
     public postfix: readonly [string, string] = ['', ''];
+
+    public content = input<
+        readonly [
+            PolymorpheusContent<TuiContext<number>>,
+            PolymorpheusContent<TuiContext<number>>,
+        ]
+    >(['', '']);
 
     // TODO(v5): use signal inputs
     @Input('quantum')
@@ -120,11 +138,13 @@ export class TuiInputRangeComponent
     }
 
     protected get hideStartContent(): boolean {
-        return !this.content[0] || tuiIsNativeFocused(this.textfieldStart);
+        return this.interactive() && tuiIsFocused(this.textfieldStart);
     }
 
     protected get hideEndContent(): boolean {
-        return !this.content[1] || tuiIsNativeFocused(this.textfieldEnd);
+        return (
+            !this.content()[1] || (this.interactive() && tuiIsFocused(this.textfieldEnd))
+        );
     }
 
     protected takeStep(
@@ -156,7 +176,7 @@ export class TuiInputRangeComponent
         this.setTextfieldValues(this.value());
 
         setTimeout((end = Number.MAX_SAFE_INTEGER) => {
-            if (tuiIsNativeFocused(this.activeTextfield)) {
+            if (tuiIsFocused(this.activeTextfield)) {
                 this.activeTextfield?.setSelectionRange(end, end);
             }
         });
@@ -201,5 +221,9 @@ export class TuiInputRangeComponent
         ) as unknown as readonly [number, number];
 
         return [Math.min(start, prevEnd), Math.max(end, prevStart)];
+    }
+
+    private isPrimitive(x: PolymorpheusContent): x is PolymorpheusPrimitive {
+        return !x || tuiIsString(x) || tuiIsNumber(x);
     }
 }
