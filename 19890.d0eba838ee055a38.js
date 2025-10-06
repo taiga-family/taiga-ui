@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[19890],{19890:e=>{e.exports="import {Injectable} from '@angular/core';\nimport {Subject} from 'rxjs';\n\n@Injectable({\n    providedIn: 'root',\n})\nexport class AuthService extends Subject<void> {\n    public logout(): void {\n        this.next();\n    }\n}\n"}}]);
