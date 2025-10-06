@@ -43,7 +43,6 @@ import {
 import {filter, fromEvent} from 'rxjs';
 
 import {TuiTextfieldBaseComponent, TuiTextfieldComponent} from '../textfield.component';
-import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
 import {
     type TuiTextfieldItem,
     TuiTextfieldItemComponent,
@@ -72,7 +71,6 @@ import {
         TuiDropdownFixed,
         TuiDropdownDirective,
         TuiWithDropdownOpen,
-        TuiWithTextfieldDropdown,
         TuiWithIcons,
         TuiWithItemsHandlers,
         TuiWithOptionContent,

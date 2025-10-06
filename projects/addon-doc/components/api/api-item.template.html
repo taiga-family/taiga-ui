@@ -44,14 +44,13 @@
             [content]="content"
             [tuiTextfieldCleaner]="type.includes('null') || type.includes('PolymorpheusContent')"
         >
-            <select
-                placeholder="null"
-                tuiTextfield
+            <input
+                tuiSelect
                 [ngModel]="value ?? null"
                 (ngModelChange)="onValueChange($event)"
-            ></select>
+            />
             <tui-data-list-wrapper
-                *tuiTextfieldDropdown
+                *tuiDropdown
                 [itemContent]="content"
                 [items]="items"
             />

@@ -1,4 +1,5 @@
-import {TuiActionBarComponent} from './action-bar.component';
-import {TuiActionBarDirective} from './action-bar.directive';
+import {TuiPopup} from '@taiga-ui/core/directives/popup';
 
-export const TuiActionBar = [TuiActionBarComponent, TuiActionBarDirective] as const;
+import {TuiActionBarComponent} from './action-bar.component';
+
+export const TuiActionBar = [TuiActionBarComponent, TuiPopup] as const;

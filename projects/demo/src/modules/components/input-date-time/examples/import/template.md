@@ -4,6 +4,6 @@
     tuiInputDateTime
     [(ngModel)]="value"
   />
-  <tui-calendar *tuiTextfieldDropdown />
+  <tui-calendar *tuiDropdown />
 </tui-textfield>
 ```
