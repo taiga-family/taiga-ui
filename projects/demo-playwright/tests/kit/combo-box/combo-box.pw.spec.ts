@@ -186,14 +186,11 @@ describe('ComboBox', () => {
             test('click on item and blur – keeps already matched option', async () => {
                 await comboBox.textfield.click();
 
-                const option = comboBox.dropdown
-                    .locator('[tuiOption]', {hasText: 'Eric Idle'})
-                    .first();
-
-                await expect(option).toBeVisible({timeout: 10000});
-
-                // eslint-disable-next-line playwright/no-force-option
-                await option.click({force: true});
+                await comboBox.dropdown
+                    .locator('[tuiOption]', {
+                        hasText: 'Eric Idle',
+                    })
+                    .click();
 
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');
                 await expect(example).toContainText('Form control:0');
