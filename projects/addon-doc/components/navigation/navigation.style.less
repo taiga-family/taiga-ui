@@ -30,9 +30,13 @@
     }
 }
 
-// tui-drawer already have tui-scrollbar, need pass navigation scrollbar content to outer layer
-:host-context(tui-drawer) .t-navigation > tui-scrollbar.t-scrollbar {
-    display: contents;
+:host-context(tui-drawer) {
+    margin: -1.25rem -1.5rem;
+
+    // tui-drawer already have tui-scrollbar, need pass navigation scrollbar content to outer layer
+    .t-scrollbar {
+        display: contents;
+    }
 }
 
 .t-accordion-standalone {
