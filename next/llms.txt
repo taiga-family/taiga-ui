@@ -76,7 +76,7 @@
 - [Copy](https://taiga-ui.dev/components/copy) — This component provides an easy way to copy text content to the clipboard. It displays the content normally and shows a copy button on hover, with visual feedback when content is copied. @for (example of examples; track example; let index = $index) {
 - [Data List](https://taiga-ui.dev/components/data-list) — DataList allows to make lists or menus
 - [Data List Wrapper](https://taiga-ui.dev/components/data-list-wrapper) — DataListWrapper is an abstraction over DataList to simplify usage in common cases where precise control is not necessary. @for (example of examples; track example; let index = $index) {
-- [Dialog](https://taiga-ui.dev/components/dialog) — Built-in implementation of Taiga UI modals If you want custom dialogs see this link on creating your own implementation Use TUI_DIALOGS_CLOSE token if you need to close dialog with from a stream. For example, this way you can close dialogs by logout
+- [Dialog](https://taiga-ui.dev/components/dialog) — Customizable modal dialogs @for (example of examples; track example; let index = $index) {
 - [Drawer](https://taiga-ui.dev/components/drawer) — @for (example of examples; track example; let index = $index) {
 - [Elastic Container](https://taiga-ui.dev/components/elastic-container) — A wrapper component that changes its height with transition, depending on the content
 - [Error](https://taiga-ui.dev/components/error) — Component for showing arbitrary messages styled as errors, with height and fade transition, as well as displaying form validation errors from controls @for (example of examples; track $index) {
@@ -204,10 +204,6 @@
 - [Validator](https://taiga-ui.dev/directives/validator) — tuiValidator allows set validators for form control on the fly
 - [Value Changes](https://taiga-ui.dev/directives/value-changes) — This directive allows you to access reactive control or container value changes as an output @for (example of examples; track example; let index = $index) {
 - [Zoom](https://taiga-ui.dev/directives/zoom) — tuiZoom directive emits delta between wheel events or between pinch on mobile devices. It emits coordinates of the zoom center as well. You can use it to change the scale of an element as in example below
-
-### Experimental
-
-- [Dialog](https://taiga-ui.dev/experimental/dialog)
 
 ### Icons
 
