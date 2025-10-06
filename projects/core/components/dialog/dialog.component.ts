@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -14,12 +13,7 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiHeader, tuiHeaderOptionsProvider} from '@taiga-ui/core/components/header';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {
-    injectContext,
-    PolymorpheusComponent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     exhaustMap,
     filter,
