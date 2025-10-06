@@ -1,0 +1,16 @@
+name: 🤖 Auto add label version
+on:
+  pull_request:
+
+jobs:
+  label-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.3.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.152.0
+      - uses: taiga-family/ci/actions/run/node-info@v1.152.0
+        id: nodejs-workspace
+      - uses: actions-ecosystem/action-add-labels@v1
+        continue-on-error: true
+        with:
+          labels: v${{ steps.nodejs-workspace.outputs.root-package-major-version }}
