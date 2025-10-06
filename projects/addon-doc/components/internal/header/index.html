@@ -5,7 +5,7 @@
     class="t-menu"
     [iconStart]="icons.menu"
     [title]="menu"
-    (click)="stream$.next(true)"
+    (click)="open.set(true)"
 ></button>
 
 <tui-drawer
@@ -13,7 +13,7 @@
     direction="left"
     class="t-drawer"
     [overlay]="true"
-    (click.self)="stream$.next(false)"
+    (click.self)="open.set(false)"
 >
     <tui-doc-navigation />
 </tui-drawer>
