@@ -2,7 +2,6 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    TemplateRef,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
@@ -14,12 +13,7 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiHeader, tuiHeaderOptionsProvider} from '@taiga-ui/core/components/header';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {
-    injectContext,
-    PolymorpheusComponent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {
     exhaustMap,
     filter,
@@ -68,9 +62,8 @@ export class TuiDialogComponent<O, I> {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
     protected readonly primitive =
-        !(this.context.content instanceof TemplateRef) &&
-        !(this.context.content instanceof PolymorpheusTemplate) &&
-        !(this.context.content instanceof PolymorpheusComponent);
+        typeof this.context.content === 'function' ||
+        Object(this.context.content) !== this.context.content;
 
     protected readonly sub = merge(
         this.close$.pipe(switchMap(() => toObservable(this.context.closable))),
