@@ -5,14 +5,19 @@
     class="t-menu"
     [iconStart]="icons.menu"
     [title]="menu"
-    (click)="onClick()"
-    (tuiActiveZoneChange)="onActiveZone($event)"
+    (click)="open.set(true)"
+></button>
+
+<tui-drawer
+    *tuiPopup="open()"
+    direction="left"
+    class="t-drawer"
+    [overlay]="true"
+    (click.self)="open.set(false)"
 >
-    <tui-doc-navigation
-        *tuiSidebar="open()"
-        class="t-navigation"
-    />
-</button>
+    <tui-doc-navigation />
+</tui-drawer>
+
 <div class="t-logo">
     <img
         *polymorpheusOutlet="logo as src"
