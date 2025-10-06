@@ -2,7 +2,7 @@
     <tui-notification
         size="m"
         [appearance]="item.appearance"
-        [class.t-closeable]="item.closeable"
+        [class.t-closable]="item.closable"
         [icon]="item.icon"
     >
         <span tuiTitle>
@@ -16,7 +16,7 @@
                 ></span>
             </span>
         </span>
-        @if (item.closeable) {
+        @if (item.closable) {
             <button
                 tuiIconButton
                 type="button"

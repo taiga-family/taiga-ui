@@ -1,32 +1,29 @@
 import {Component} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiDialog, TuiHint} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiButton, TuiCell, TuiDialog, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiAvatar, TuiFloatingContainer, TuiProgress} from '@taiga-ui/kit';
+import {TuiAppBar} from '@taiga-ui/layout';
 
 @Component({
     imports: [
-        ReactiveFormsModule,
-        TuiAutoFocus,
+        TuiAppBar,
+        TuiAvatar,
         TuiButton,
+        TuiCell,
         TuiDialog,
-        TuiHint,
-        TuiInputModule,
+        TuiFloatingContainer,
+        TuiHeader,
+        TuiProgress,
+        TuiRepeatTimes,
+        TuiTitle,
     ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected exampleForm = new FormGroup({
-        exampleControl: new FormControl(''),
-    });
-
-    protected open = false;
-
-    protected showDialog(): void {
-        this.open = true;
-    }
+    protected fullscreen = false;
+    protected scrollable = false;
 }

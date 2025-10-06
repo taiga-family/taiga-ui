@@ -1,43 +1,27 @@
 <button
-    size="m"
     tuiButton
     type="button"
-    class="tui-space_right-2"
-    (click)="onClick(content, header, 'm')"
+    (click)="open = true"
 >
-    Show
+    Show dialog
 </button>
-<button
-    size="m"
-    tuiButton
-    type="button"
-    (click)="onClick(content, header, 'fullscreen')"
->
-    Show fullscreen
-</button>
-
 <ng-template
-    #content
-    let-observer
+    [tuiDialogOptions]="{size: 's'}"
+    [(tuiDialog)]="open"
 >
-    Take a look
-    <div class="buttons">
+    <header tuiHeader>
+        <hgroup tuiTitle>
+            <h2>Hello!</h2>
+            <p>Welcome to the website</p>
+        </hgroup>
+    </header>
+    <footer>
         <button
-            size="m"
             tuiButton
             type="button"
-            (click)="observer.complete()"
+            (click)="auth.logout()"
         >
-            Very cool!
+            Logout
         </button>
-    </div>
-</ng-template>
-
-<ng-template #header>
-    <div class="header">
-        <img
-            alt="Cool"
-            src="https://ng-web-apis.github.io/dist/assets/images/web-api.svg"
-        />
-    </div>
+    </footer>
 </ng-template>

@@ -7,7 +7,7 @@ export interface TuiAlertOptions<I = undefined>
     extends Omit<TuiNotificationOptions, 'size'> {
     readonly autoClose: TuiHandler<string, number> | number;
     readonly data: I;
-    readonly closeable: boolean;
+    readonly closable: boolean;
     readonly label: PolymorpheusContent<TuiAlertOptions<I>>;
 }
 

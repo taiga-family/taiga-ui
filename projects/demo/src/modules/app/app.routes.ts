@@ -315,9 +315,9 @@ export const ROUTES: Routes = [
         title: 'Dialog',
     }),
     route({
-        path: DemoRoute.DialogExperimental,
-        loadComponent: async () => import('../components/dialog-experimental'),
-        title: 'Dialog (Experimental)',
+        path: DemoRoute.DialogLegacy,
+        loadComponent: async () => import('../components/dialog-legacy'),
+        title: 'Dialog (Legacy)',
     }),
     route({
         path: DemoRoute.Drawer,
