@@ -329,10 +329,10 @@ describe('CalendarRange', () => {
                         '11-2-min-length-month-1-full-month.png',
                     );
 
-                    await startSheet!.clickOnDay(19);
+                    await startSheet.clickOnDay(19);
                     await expect(alert).not.toBeAttached();
 
-                    await startSheet!.clickOnDay(18);
+                    await startSheet.clickOnDay(18);
                     await expect(alert).toContainText('18.02.2018 – 17.03.2018');
                 });
 
@@ -350,7 +350,7 @@ describe('CalendarRange', () => {
                     await endSheet!.clickOnDay(1);
                     await expect(alert).not.toBeAttached();
 
-                    await startSheet!.clickOnDay(28);
+                    await startSheet.clickOnDay(28);
                     await expect(alert).toContainText('28.02.2018 – 30.03.2018');
                 });
             });
@@ -377,7 +377,7 @@ describe('CalendarRange', () => {
                     await endSheet!.clickOnDay(1);
                     await expect(alert).not.toBeAttached();
 
-                    await startSheet!.clickOnDay(28);
+                    await startSheet.clickOnDay(28);
                     await expect(alert).toContainText('28.02.2018 – 31.03.2018');
                 });
 
@@ -392,10 +392,10 @@ describe('CalendarRange', () => {
                         '12-2-min-length-month-1-full-month-plus-1-day.png',
                     );
 
-                    await startSheet!.clickOnDay(18);
+                    await startSheet.clickOnDay(18);
                     await expect(alert).not.toBeAttached();
 
-                    await startSheet!.clickOnDay(17);
+                    await startSheet.clickOnDay(17);
                     await expect(alert).toContainText('17.02.2018 – 17.03.2018');
                 });
             });
