@@ -845,11 +845,6 @@ export const ROUTES: Routes = [
         title: 'HintPointer',
     }),
     route({
-        path: DemoRoute.LazyLoading,
-        loadComponent: async () => import('../directives/lazy-loading'),
-        title: 'LazyLoading',
-    }),
-    route({
         path: DemoRoute.Pan,
         title: 'Pan',
         loadComponent: async () => import('../directives/pan'),

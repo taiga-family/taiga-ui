@@ -1383,12 +1383,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'LazyLoading',
-                keywords: 'img, skeleton, скелетон, загрузка, картинки',
-                route: DemoRoute.LazyLoading,
-            },
-            {
-                section: 'Tools',
                 title: 'Let',
                 keywords:
                     'let, переменная, шаблон, геттер, getter, pipe, пайп, async, подписка',

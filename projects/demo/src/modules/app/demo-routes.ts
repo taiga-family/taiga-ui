@@ -187,7 +187,6 @@ export const DemoRoute = {
     HintDescribe: '/directives/hint-describe',
     HintManual: '/directives/hint-manual',
     HintPointer: '/directives/hint-pointer',
-    LazyLoading: '/directives/lazy-loading',
     Pan: '/directives/pan',
     Resizer: '/directives/resizer',
     Swipe: '/directives/swipe',
