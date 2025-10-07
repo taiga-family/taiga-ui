@@ -23,7 +23,7 @@ describe('InputDate | control.setValue is used inside effect', () => {
                         [formControl]="control"
                     />
 
-                    <tui-calendar *tuiTextfieldDropdown />
+                    <tui-calendar *tuiDropdown />
                 </tui-textfield>
 
                 <button

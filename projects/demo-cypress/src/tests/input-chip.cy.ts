@@ -74,7 +74,7 @@ interface User {
                         [(ngModel)]="objects"
                     />
                     <tui-input-chip *tuiItem />
-                    <tui-data-list *tuiTextfieldDropdown>
+                    <tui-data-list *tuiDropdown>
                         <tui-opt-group
                             label="Pythons"
                             tuiMultiSelectGroup

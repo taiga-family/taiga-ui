@@ -1,3 +1,3 @@
 ```html
-<tui-action-bar *tuiActionBar="open">content</tui-action-bar>
+<tui-action-bar *tuiPopup="open">content</tui-action-bar>
 ```

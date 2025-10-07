@@ -10,7 +10,7 @@
     @if (items | tuiFilterByInput; as filtered) {
         @if (input.value && filtered.length) {
             <tui-data-list-wrapper
-                *tuiTextfieldDropdown
+                *tuiDropdown
                 [items]="filtered"
             />
         }
@@ -27,7 +27,7 @@
     />
     <tui-icon tuiTooltip="Fixed choice select" />
     <tui-data-list-wrapper
-        *tuiTextfieldDropdown
+        *tuiDropdown
         [items]="items"
     />
 </tui-textfield>
@@ -46,7 +46,7 @@
     />
     <tui-icon tuiTooltip="Fixed choice select" />
     <tui-data-list-wrapper
-        *tuiTextfieldDropdown
+        *tuiDropdown
         [items]="items"
     />
 </tui-textfield>

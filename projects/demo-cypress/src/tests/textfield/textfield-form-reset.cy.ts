@@ -49,7 +49,7 @@ import {
                     />
 
                     <tui-data-list-wrapper
-                        *tuiTextfieldDropdown
+                        *tuiDropdown
                         new
                         [items]="['Option 1', 'Option 2']"
                     />
@@ -82,7 +82,7 @@ import {
                         tuiInputDate
                     />
 
-                    <tui-calendar *tuiTextfieldDropdown />
+                    <tui-calendar *tuiDropdown />
                 </tui-textfield>
 
                 <tui-textfield>
@@ -91,7 +91,7 @@ import {
                         tuiInputDateRange
                     />
 
-                    <tui-calendar-range *tuiTextfieldDropdown />
+                    <tui-calendar-range *tuiDropdown />
                 </tui-textfield>
 
                 <tui-textfield>
@@ -101,7 +101,7 @@ import {
                     />
 
                     <tui-calendar-month
-                        *tuiTextfieldDropdown
+                        *tuiDropdown
                         [year]="year"
                     />
                 </tui-textfield>
@@ -113,7 +113,7 @@ import {
                     />
 
                     <tui-data-list-wrapper
-                        *tuiTextfieldDropdown
+                        *tuiDropdown
                         new
                         [items]="['Taiga UI', 'Maskito']"
                     />

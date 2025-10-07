@@ -53,7 +53,6 @@ import {ReplaySubject, startWith, switchMap, take} from 'rxjs';
 import {TuiTextfieldBase} from './textfield.directive';
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-accessor';
-import {TuiWithTextfieldDropdown} from './textfield-dropdown.directive';
 
 // TODO: Remove base class in v5
 @Directive()
@@ -219,7 +218,6 @@ export class TuiTextfieldBaseComponent<T>
         TuiWithIcons,
         TuiWithItemsHandlers,
         TuiWithOptionContent,
-        TuiWithTextfieldDropdown,
     ],
     host: {
         '[attr.data-size]': 'options.size()',
