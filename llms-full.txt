@@ -308,12 +308,14 @@ It is an element on the bottom of screen to show actions by multiselect of some 
 ### How to Use (Import)
 
 ```ts
+import {TuiPopup} from '@taiga-ui/core';
 import {TuiActionBar} from '@taiga-ui/kit';
 // ...
 
 @Component({
   standalone: true,
   imports: [
+    TuiPopup,
     TuiActionBar,
     // ...
   ],
@@ -325,7 +327,7 @@ export class App {}
 ### How to Use (Template)
 
 ```html
-<tui-action-bar *tuiActionBar="open">content</tui-action-bar>
+<tui-action-bar *tuiPopup="open">content</tui-action-bar>
 ```
 
 ### TypeScript
@@ -3073,7 +3075,7 @@ export class Example {
   />
 
   <tui-data-list-wrapper
-    *tuiTextfieldDropdown
+    *tuiDropdown
     [items]="items"
   />
 </tui-textfield>
@@ -3085,7 +3087,7 @@ export class Example {
 <ng-template>
 <tui-textfield #textfield tuiChevron [content]="!textfield.focused() && control.value ? textfieldContent : ''" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
 <input placeholder="Search country" tuiComboBox [formControl]="control" [invalid]="controlDoc.invalid" [matcher]="matcher" [readOnly]="controlDoc.readonly" [strict]="strict" [tuiDisabled]="controlDoc.disabled" />
-<tui-data-list-wrapper *tuiTextfieldDropdown new [items]="countries$ | async | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown new [items]="countries$ | async | tuiFilterByInput" />
 </tui-textfield>
 </ng-template>
 ```
@@ -5281,7 +5283,7 @@ export class Example {
     tuiInputDate
     [(ngModel)]="value"
   />
-  <tui-calendar *tuiTextfieldDropdown />
+  <tui-calendar *tuiDropdown />
 </tui-textfield>
 ```
 
@@ -5290,7 +5292,7 @@ export class Example {
 ```html
 <ng-template>
 <tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDate [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
-<tui-calendar *tuiTextfieldDropdown />
+<tui-calendar *tuiDropdown />
 </tui-textfield>
 </ng-template>
 ```
@@ -5392,7 +5394,7 @@ export class Example {
     tuiInputDateMulti
     [(ngModel)]="value"
   />
-  <tui-calendar *tuiTextfieldDropdown />
+  <tui-calendar *tuiDropdown />
 </tui-textfield>
 ```
 
@@ -5403,7 +5405,7 @@ export class Example {
 <tui-textfield multi [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
 <input placeholder="Choose date" tuiInputDateMulti [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-input-chip *tuiItem />
-<tui-calendar *tuiTextfieldDropdown />
+<tui-calendar *tuiDropdown />
 </tui-textfield>
 </ng-template>
 ```
@@ -5513,7 +5515,7 @@ export class Example {
     tuiInputDateRange
     [(ngModel)]="value"
   />
-  <tui-calendar-range *tuiTextfieldDropdown />
+  <tui-calendar-range *tuiDropdown />
 </tui-textfield>
 ```
 
@@ -5522,7 +5524,7 @@ export class Example {
 ```html
 <ng-template>
 <tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose range</label> } <input tuiInputDateRange [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [maxLength]="maxLength" [min]="min" [minLength]="minLength" [placeholder]="textfieldDoc.size === 's' ? 'Choose range' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
-<tui-calendar-range *tuiTextfieldDropdown />
+<tui-calendar-range *tuiDropdown />
 </tui-textfield>
 </ng-template>
 ```
@@ -5630,7 +5632,7 @@ export class Example {
     tuiInputDateTime
     [(ngModel)]="value"
   />
-  <tui-calendar *tuiTextfieldDropdown />
+  <tui-calendar *tuiDropdown />
 </tui-textfield>
 ```
 
@@ -5639,7 +5641,7 @@ export class Example {
 ```html
 <ng-template>
 <tui-textfield [iconStart]="icons.iconStart" [tuiDropdownAlign]="dropdown.align" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (textfieldDoc.size !== 's') { <label tuiLabel>Choose date</label> } <input tuiInputDateTime [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [placeholder]="textfieldDoc.size === 's' ? 'Choose date' : ''" [readOnly]="controlDoc.readonly" [timeMode]="timeMode" [tuiDisabled]="controlDoc.disabled" />
-<tui-calendar *tuiTextfieldDropdown />
+<tui-calendar *tuiDropdown />
 </tui-textfield>
 </ng-template>
 ```
@@ -5949,7 +5951,7 @@ export class Example {
   />
 
   <tui-calendar-month
-    *tuiTextfieldDropdown
+    *tuiDropdown
     [min]="min"
     [max]="max"
     [disabledItemHandler]="disabledItemHandler"
@@ -5964,7 +5966,7 @@ export class Example {
 <ng-template>
 <tui-textfield [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
 <input placeholder="Month" tuiInputMonth [formControl]="control" [invalid]="controlDoc.invalid" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
-<tui-calendar-month *tuiTextfieldDropdown [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [(year)]="year" />
+<tui-calendar-month *tuiDropdown [disabledItemHandler]="disabledItemHandler" [max]="max" [min]="min" [(year)]="year" />
 </tui-textfield>
 </ng-template>
 ```
@@ -7028,7 +7030,7 @@ export class Example {
     tuiInputYear
     [(ngModel)]="value"
   />
-  <tui-calendar-year *tuiTextfieldDropdown />
+  <tui-calendar-year *tuiDropdown />
 </tui-textfield>
 ```
 
@@ -7038,7 +7040,7 @@ export class Example {
 <ng-template>
 <tui-textfield [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" >
 <input placeholder="Put your birthday" tuiInputYear [formControl]="control" [invalid]="controlDoc.invalid" [max]="max" [min]="min" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
-<tui-calendar-year *tuiTextfieldDropdown />
+<tui-calendar-year *tuiDropdown />
 </tui-textfield>
 </ng-template>
 ```
@@ -10068,7 +10070,7 @@ export class Example {
   />
 
   <tui-data-list-wrapper
-    *tuiTextfieldDropdown
+    *tuiDropdown
     [items]="items"
   />
 </tui-textfield>
@@ -10079,7 +10081,7 @@ export class Example {
 ```html
 <ng-template>
 <tui-textfield *tuiLet="textfieldDoc.size === 's' || !control.value as showPlaceholder" tuiChevron [content]="control.value && textfieldContent" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (!showPlaceholder) { <label tuiLabel>Choose country</label> } <input tuiSelect [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
-<tui-data-list-wrapper *tuiTextfieldDropdown new [items]="countries$ | async" />
+<tui-data-list-wrapper *tuiDropdown new [items]="countries$ | async" />
 </tui-textfield>
 </ng-template>
 ```
@@ -11018,13 +11020,13 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiDropdown, TuiLabel} from '@taiga-ui/core';
+import {TuiLabel, TuiPopup} from '@taiga-ui/core';
 import {TuiCheckbox} from '@taiga-ui/kit';
 
 import TuiTabBarExample from './examples/1';
 
 @Component({
-    imports: [FormsModule, TuiCheckbox, TuiDemo, TuiDropdown, TuiLabel, TuiTabBarExample],
+    imports: [FormsModule, TuiCheckbox, TuiDemo, TuiLabel, TuiTabBarExample, TuiPopup],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     changeDetection,
@@ -12756,7 +12758,7 @@ export class Example {}
     tuiInputDate
     [tuiDateFormat]="{mode, separator}"
   />
-  <tui-calendar *tuiTextfieldDropdown />
+  <tui-calendar *tuiDropdown />
 </tui-textfield>
 ```
 
