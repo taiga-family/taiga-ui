@@ -89,17 +89,15 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async getRows(): Promise<Locator[]> {
-        return this.page.locator('.t-table .t-row:not(.t-row_header)').all();
+        return this.page.locator('[tuiDocApiItem]').all();
     }
 
     public async getSelect(row: Locator): Promise<Locator | null> {
-        return ((await row.locator('.t-cell_value tui-select').all()) ?? [])?.[0] ?? null;
+        return ((await row.locator('select[tuiTextfield]').all()) ?? [])?.[0] ?? null;
     }
 
     public async getNameProperty(row: Locator): Promise<string> {
-        return decodeURI(
-            (await row.locator('.t-property code').textContent())?.trim() ?? '',
-        );
+        return decodeURI((await row.locator('code.t-name').textContent())?.trim() ?? '');
     }
 
     public async getOptions(): Promise<Locator[]> {
@@ -119,10 +117,7 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async getToggle(row: Locator): Promise<Locator | null> {
-        return (
-            ((await row.locator('.t-cell_value input[tuiSwitch]').all()) ?? [])?.[0] ??
-            null
-        );
+        return ((await row.locator('input[tuiSwitch]').all()) ?? [])?.[0] ?? null;
     }
 
     public async waitTuiIcons(): Promise<void> {
