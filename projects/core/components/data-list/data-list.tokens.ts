@@ -5,9 +5,7 @@ import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiDataListAccessor<T = unknown> {
-    /**
-     * @deprecated Use `options` property instead
-     */
+    // TODO(v5): delete
     getOptions(includeDisabled?: boolean): readonly T[];
     // TODO(v5): remove `undefined` for this property
     options?: Signal<readonly T[]>;
