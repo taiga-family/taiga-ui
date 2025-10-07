@@ -21,16 +21,17 @@
             />
         </tui-doc-demo>
 
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyName=""
-                documentationPropertyType="TuiCountryIsoCode"
-                [documentationPropertyValues]="countryIsoCodeVariants"
-                [(documentationPropertyValue)]="countryIsoCode"
+        <table tuiDocAPI>
+            <tr
+                name="Country code"
+                tuiDocAPIItem
+                type="TuiCountryIsoCode"
+                [items]="countryIsoCodeVariants"
+                [(value)]="countryIsoCode"
             >
                 <tui-doc-code [code]="apiCodeDemo" />
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />
