@@ -17,9 +17,8 @@ export class TuiRangeChange {
     private readonly el = tuiInjectElement();
     private readonly range = inject(TuiRange);
 
-    // TODO(v5): use 'start' | 'end' instead
     @Output()
-    public readonly activeThumbChange = new EventEmitter<'left' | 'right'>();
+    public readonly activeThumbChange = new EventEmitter<'end' | 'start'>();
 
     constructor() {
         let activeThumb: 'end' | 'start';
@@ -34,10 +33,7 @@ export class TuiRangeChange {
                     this.range.slidersRefs
                         .get(activeThumb === 'start' ? 0 : 1)
                         ?.nativeElement.setPointerCapture(pointerId);
-                    // TODO(v5): remove backward compatibility
-                    this.activeThumbChange.emit(
-                        activeThumb === 'start' ? 'left' : 'right',
-                    );
+                    this.activeThumbChange.emit(activeThumb);
 
                     if (this.range.focusable) {
                         this.el.focus();
