@@ -82,7 +82,7 @@ export class TuiSliderKeyStepsBase {
         const fraction =
             this.transformer()?.fromControlValue(controlValue) ?? controlValue;
 
-        this.slider.value = this.toSliderValue(fraction) ?? fraction;
+        this.slider.value = this.toSliderValue(fraction);
     }
 
     public getControlValue(): number {
