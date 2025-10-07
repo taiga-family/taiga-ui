@@ -21,7 +21,7 @@
         [tuiAutoFocus]="!!drawer"
     />
     <ng-container *ngIf="canOpen">
-        <tui-data-list *tuiTextfieldDropdown>
+        <tui-data-list *tuiDropdown>
             <tui-opt-group
                 *ngFor="let group of filtered(); let index = index"
                 [label]="labels[index] || ''"

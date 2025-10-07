@@ -1,13 +1,13 @@
 import {isPlatformBrowser} from '@angular/common';
 import {Directive, inject, type OnDestroy, PLATFORM_ID, TemplateRef} from '@angular/core';
-import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 
-// TODO: Change selector to tuiDropdown in v5 and move to TuiDropdown
+import {TuiDropdownDirective} from './dropdown.directive';
+
 @Directive({
     standalone: true,
-    selector: 'ng-template[tuiTextfieldDropdown]',
+    selector: 'ng-template[tuiDropdown]',
 })
-export class TuiTextfieldDropdownDirective implements OnDestroy {
+export class TuiDropdownContent implements OnDestroy {
     private readonly directive = inject(TuiDropdownDirective);
 
     constructor() {
@@ -25,11 +25,3 @@ export class TuiTextfieldDropdownDirective implements OnDestroy {
         this.directive.tuiDropdown = null;
     }
 }
-
-/**
- * @deprecated remove in v5
- */
-@Directive({
-    standalone: true,
-})
-export class TuiWithTextfieldDropdown {}

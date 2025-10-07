@@ -70,7 +70,7 @@ interface User {
                         [(ngModel)]="user"
                     />
                     <tui-data-list-wrapper
-                        *tuiTextfieldDropdown
+                        *tuiDropdown
                         new
                         [itemContent]="template"
                         [items]="users"

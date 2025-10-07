@@ -28,10 +28,9 @@
             placeholder="Placeholder"
             tuiInputDate
         />
-        <tui-calendar *tuiTextfieldDropdown />
-
-        <tui-error formControlName="periodValue" />
+        <tui-calendar *tuiDropdown />
     </tui-textfield>
+    <tui-error formControlName="periodValue" />
 
     <fieldset>
         <div class="stack">
@@ -87,7 +86,7 @@
                 />
 
                 <tui-data-list-wrapper
-                    *tuiTextfieldDropdown
+                    *tuiDropdown
                     new
                     [items]="persons"
                 />
