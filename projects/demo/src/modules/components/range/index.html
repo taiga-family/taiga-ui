@@ -25,7 +25,16 @@
                             to place labels strictly below ticks
                         }
                         @case (2) {
-                            Using progressive scale across the track
+                            <strong>Key steps</strong>
+                            – anchor points of non-uniform format between control's value and slider's position.
+
+                            <p class="tui-space_bottom-0">
+                                When
+                                <code>[keySteps]</code>
+                                property is enabled,
+                                <code>[step]</code>
+                                means percentage of total track length.
+                            </p>
                         }
                     }
                 </ng-template>
@@ -92,11 +101,14 @@
                 type="number"
                 [(value)]="step"
             >
-                A number that specifies the granularity that the value must adhere.
+                Granularity of each discrete slider step and value of increase/decrease on keyboard arrows.
+
                 <p>
-                    The default is
-                    <code>1</code>
-                    .
+                    For non-linear slider (
+                    <code>[keySteps]</code>
+                    property is enabled)
+                    <code>[step]</code>
+                    means percentage of total track length.
                 </p>
             </tr>
             <tr

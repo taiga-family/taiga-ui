@@ -1,5 +1,4 @@
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -53,10 +52,7 @@ import {
         '[attr.data-size]': 'size()',
     },
 })
-export class TuiInputRangeComponent
-    extends TuiControl<readonly [number, number]>
-    implements AfterViewInit
-{
+export class TuiInputRangeComponent extends TuiControl<readonly [number, number]> {
     @ViewChildren(TuiInputNumberDirective, {read: ElementRef})
     private readonly inputNumberRefs: QueryList<ElementRef<HTMLInputElement>> =
         EMPTY_QUERY;
@@ -129,12 +125,6 @@ export class TuiInputRangeComponent
     public override writeValue(value: [number, number]): void {
         super.writeValue(value);
         this.setTextfieldValues(this.value());
-    }
-
-    public ngAfterViewInit(): void {
-        if (this.range) {
-            this.range.legacyMode = false; // TODO(v5): remove backward compatibility
-        }
     }
 
     protected get hideStartContent(): boolean {
