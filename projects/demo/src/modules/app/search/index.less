@@ -66,6 +66,10 @@ html[data-theme='dark'] {
 .DocSearch-Modal {
     border-radius: var(--tui-radius-l);
     overflow: hidden;
+
+    @media @tui-mobile {
+        border-radius: 0;
+    }
 }
 
 .DocSearch-Button-Placeholder {
