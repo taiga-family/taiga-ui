@@ -18,17 +18,14 @@ import {
     TUI_COUNTRIES,
     TuiAvatar,
     TuiChevron,
+    TuiComboBox,
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
     TuiInputNumber,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {
-    TuiComboBoxModule,
-    TuiMultiSelectModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiMultiSelectModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 interface User {
@@ -46,7 +43,7 @@ interface User {
         TuiButton,
         TuiCell,
         TuiChevron,
-        TuiComboBoxModule,
+        TuiComboBox,
         TuiDataListWrapper,
         TuiDropdown,
         TuiDropdownMobile,
