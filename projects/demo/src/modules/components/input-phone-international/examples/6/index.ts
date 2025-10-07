@@ -8,9 +8,7 @@ import metadata from 'libphonenumber-js/max/metadata';
 
 @Component({
     imports: [MaskitoPipe],
-    template: `
-        Phone: {{ rawValue | maskito: mask }}
-    `,
+    template: 'Phone: {{ rawValue | maskito: mask }}',
     encapsulation,
     changeDetection,
     host: {

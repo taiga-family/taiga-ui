@@ -43,7 +43,6 @@ export const TUI_USED_ICONS = [
     '@tui.file',
     '@tui.calendar',
     '@tui.plus',
-    '@tui.phone',
     '@tui.heart',
     '@tui.heart-filled',
     '@tui.star',

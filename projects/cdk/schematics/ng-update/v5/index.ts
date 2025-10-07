@@ -15,6 +15,7 @@ import {getExecutionTime} from '../../utils/get-execution-time';
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceFunctions} from '../utils/replace-functions';
 import {REPLACE_FUNCTIONS} from './steps/constants/functions';
+import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 
@@ -25,6 +26,7 @@ function main(options: TuiSchema): Rule {
         migrateTokens(tree, options);
         updateTsConfig(tree, options);
         replaceFunctions(REPLACE_FUNCTIONS);
+        migrateTemplates(fileSystem, options);
 
         fileSystem.commitEdits();
         saveActiveProject();
