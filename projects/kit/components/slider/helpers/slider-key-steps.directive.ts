@@ -19,7 +19,7 @@ import {tuiCreateKeyStepsTransformer, type TuiKeySteps} from './key-steps';
     selector: 'input[tuiSlider][keySteps]',
     host: {
         '[attr.min]': 'transformer() ? 0 : slider.min',
-        '[attr.step]': 'transformer() ? 1 : slider.step',
+        '[attr.step]': 'transformer() ? 1 : step()',
         '[attr.max]': 'transformer() ? totalSteps() : slider.max',
         '[attr.aria-valuemin]': 'min()',
         '[attr.aria-valuemax]': 'max()',
