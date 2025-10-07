@@ -1022,11 +1022,6 @@ export const ROUTES: Routes = [
         title: 'Keyboard',
     }),
     route({
-        path: DemoRoute.ScrollService,
-        loadComponent: async () => import('../components/services/scroll-service'),
-        title: 'ScrollService',
-    }),
-    route({
         path: DemoRoute.ActionBar,
         loadComponent: async () => import('../components/action-bar'),
         title: 'ActionBar',

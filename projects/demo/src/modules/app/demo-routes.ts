@@ -222,7 +222,6 @@ export const DemoRoute = {
     Alert: '/components/alert',
     BreakpointService: '/services/breakpoint-service',
     KeyboardService: '/services/keyboard-service',
-    ScrollService: '/services/scroll-service',
     ActionBar: '/components/actions-bar',
     TextfieldController: '/directives/textfield-controller',
     NumberFormat: '/directives/number-format',

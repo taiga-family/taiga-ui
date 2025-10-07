@@ -1629,12 +1629,6 @@ export const pages: DocRoutePages = [
                 keywords: 'сервис, service, keyboard, virtual, screen, ios, android',
                 route: '/services/keyboard-service',
             },
-            {
-                section: 'Tools',
-                title: 'ScrollService',
-                keywords: 'scroll, прокрутка, скролл',
-                route: DemoRoute.ScrollService,
-            },
         ],
     },
     {
