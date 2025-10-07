@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[32549],{32549:e=>{e.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.ticks-labels {\n    // Mixin accepts slider size as the first argument\n    .tui-slider-ticks-labels(m);\n}\n\n.tick-label {\n    .button-clear();\n\n    outline: 0;\n    cursor: pointer;\n}\n"}}]);
