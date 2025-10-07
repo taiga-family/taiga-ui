@@ -187,8 +187,7 @@ describe('DropdownMobile', () => {
 
     describe('Type view', () => {
         it('Opens properly inside dialog', () => {
-            cy.get('tui-textfield input[tuiSelect]').focus();
-            cy.get('tui-textfield input[tuiSelect]').click();
+            cy.get('tui-textfield[multi]').click();
 
             cy.compareSnapshot('type-view-opened');
         });
