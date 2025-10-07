@@ -21,14 +21,12 @@ import {
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
+    TuiInputChip,
     TuiInputNumber,
+    TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {
-    TuiComboBoxModule,
-    TuiMultiSelectModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 interface User {
@@ -53,7 +51,8 @@ interface User {
         TuiFade,
         TuiFilterByInputPipe,
         TuiInputNumber,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
+        TuiInputChip,
         TuiSelect,
         TuiTextfield,
         TuiTextfieldControllerModule,
