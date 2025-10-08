@@ -190,7 +190,6 @@ export const DemoRoute = {
     Pan: '/directives/pan',
     Resizer: '/directives/resizer',
     Swipe: '/directives/swipe',
-    Let: '/directives/let',
     Zoom: '/directives/zoom',
     Present: '/directives/present',
     HoveredChange: '/directives/hovered-change',

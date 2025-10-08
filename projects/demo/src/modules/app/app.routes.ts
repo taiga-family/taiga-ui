@@ -860,11 +860,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../directives/swipe'),
     }),
     route({
-        path: DemoRoute.Let,
-        loadComponent: async () => import('../directives/let'),
-        title: 'Let',
-    }),
-    route({
         path: DemoRoute.Zoom,
         title: 'Zoom',
         loadComponent: async () => import('../directives/zoom'),

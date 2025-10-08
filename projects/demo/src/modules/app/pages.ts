@@ -1383,13 +1383,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'Let',
-                keywords:
-                    'let, переменная, шаблон, геттер, getter, pipe, пайп, async, подписка',
-                route: DemoRoute.Let,
-            },
-            {
-                section: 'Tools',
                 title: 'Media',
                 keywords: 'player, video, audio, mp3, wav, html5, mp4, hd, 4k, dpi',
                 route: DemoRoute.Media,
