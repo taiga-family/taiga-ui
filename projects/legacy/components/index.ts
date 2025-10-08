@@ -11,6 +11,7 @@ export * from '@taiga-ui/legacy/components/input-slider';
 export * from '@taiga-ui/legacy/components/input-tag';
 export * from '@taiga-ui/legacy/components/multi-select';
 export * from '@taiga-ui/legacy/components/multi-select-option';
+export * from '@taiga-ui/legacy/components/pdf-viewer';
 export * from '@taiga-ui/legacy/components/primitive-textfield';
 export * from '@taiga-ui/legacy/components/select';
 export * from '@taiga-ui/legacy/components/select-option';
