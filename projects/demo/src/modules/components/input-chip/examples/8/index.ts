@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -22,7 +21,6 @@ interface User {
 @Component({
     imports: [
         FormsModule,
-        NgIf, // TODO: use control flow syntax
         TuiButton,
         TuiChevron,
         TuiDataListWrapper,
