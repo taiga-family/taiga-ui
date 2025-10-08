@@ -50,12 +50,8 @@ export default class Example {
         content: PolymorpheusContent,
         button: TemplateRef<Record<string, unknown>>,
     ): void {
-        const templateRef = this.dropdowns.addTemplate(button);
+        const ref = this.dropdowns.add(button);
 
-        this.dialogs.open(content).subscribe({
-            complete: () => {
-                this.dropdowns.removeTemplate(templateRef);
-            },
-        });
+        this.dialogs.open(content).subscribe({complete: () => ref.destroy()});
     }
 }

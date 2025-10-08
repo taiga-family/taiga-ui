@@ -8,39 +8,38 @@ import {
     INJECTOR,
     type Provider,
     type TemplateRef,
-    ViewChild,
+    viewChild,
     ViewContainerRef,
-    type ViewRef,
 } from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils';
-import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+// eslint-disable-next-line no-restricted-imports
+import {POLYMORPHEUS_CONTEXT, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 /**
  * Abstract class for host element for dynamically created portals.
  */
 @Directive()
 export abstract class TuiPortals {
-    @ViewChild('viewContainer', {read: ViewContainerRef})
-    private readonly vcr!: ViewContainerRef;
-
+    private readonly vcr = viewChild.required('viewContainer', {read: ViewContainerRef});
     private readonly injector = inject(INJECTOR);
 
-    protected readonly nothing = inject(TuiPortalService).attach(this);
+    constructor() {
+        inject(TuiPortalService).attach(this);
+    }
 
-    public addComponentChild<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
-        const injector = component.createInjector(this.injector);
-        const ref = this.vcr.createComponent(component.component, {injector});
+    public addComponent<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
+        // TODO: Remove after updating to polymorpheus v5
+        const context = component['i'].get(POLYMORPHEUS_CONTEXT, {optional: true});
+        const injector = component.createInjector(this.injector, context || undefined);
+        const ref = this.vcr().createComponent(component.component, {injector});
 
         ref.changeDetectorRef.detectChanges();
 
         return ref;
     }
 
-    public addTemplateChild<C>(
-        templateRef: TemplateRef<C>,
-        context?: C,
-    ): EmbeddedViewRef<C> {
-        return this.vcr.createEmbeddedView(templateRef, context);
+    public addTemplate<C>(templateRef: TemplateRef<C>, context?: C): EmbeddedViewRef<C> {
+        return this.vcr().createEmbeddedView(templateRef, context);
     }
 }
 
@@ -55,30 +54,19 @@ export abstract class TuiPortalService {
         this.host = host;
     }
 
-    public add<C>(component: PolymorpheusComponent<C>): ComponentRef<C> {
-        return this.safeHost.addComponentChild(component);
-    }
-
-    public remove<C>({hostView}: ComponentRef<C>): void {
-        this.removeTemplate(hostView);
-    }
-
-    public addTemplate<C>(templateRef: TemplateRef<C>, context?: C): EmbeddedViewRef<C> {
-        return this.safeHost.addTemplateChild(templateRef, context);
-    }
-
-    public removeTemplate<C>(viewRef: EmbeddedViewRef<C> | ViewRef): void {
-        if (!viewRef.destroyed) {
-            viewRef.destroy();
-        }
-    }
-
-    protected get safeHost(): TuiPortals {
+    public add<C>(content: PolymorpheusComponent<C>): ComponentRef<C>;
+    public add<C>(content: TemplateRef<C>, context?: C): EmbeddedViewRef<C>;
+    public add<C>(
+        content: PolymorpheusComponent<C> | TemplateRef<C>,
+        context?: C,
+    ): ComponentRef<C> | EmbeddedViewRef<C> {
         if (!this.host) {
             throw new TuiNoHostException();
         }
 
-        return this.host;
+        return content instanceof PolymorpheusComponent
+            ? this.host.addComponent(content)
+            : this.host.addTemplate(content, context);
     }
 }
 
