@@ -845,11 +845,6 @@ export const ROUTES: Routes = [
         title: 'HintPointer',
     }),
     route({
-        path: DemoRoute.LazyLoading,
-        loadComponent: async () => import('../directives/lazy-loading'),
-        title: 'LazyLoading',
-    }),
-    route({
         path: DemoRoute.Pan,
         title: 'Pan',
         loadComponent: async () => import('../directives/pan'),
@@ -1015,11 +1010,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.KeyboardService,
         loadComponent: async () => import('../components/services/keyboard-service'),
         title: 'Keyboard',
-    }),
-    route({
-        path: DemoRoute.ScrollService,
-        loadComponent: async () => import('../components/services/scroll-service'),
-        title: 'ScrollService',
     }),
     route({
         path: DemoRoute.ActionBar,

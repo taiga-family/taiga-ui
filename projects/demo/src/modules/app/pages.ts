@@ -1383,12 +1383,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'LazyLoading',
-                keywords: 'img, skeleton, скелетон, загрузка, картинки',
-                route: DemoRoute.LazyLoading,
-            },
-            {
-                section: 'Tools',
                 title: 'Media',
                 keywords: 'player, video, audio, mp3, wav, html5, mp4, hd, 4k, dpi',
                 route: DemoRoute.Media,
@@ -1621,12 +1615,6 @@ export const pages: DocRoutePages = [
                 title: 'KeyboardService',
                 keywords: 'сервис, service, keyboard, virtual, screen, ios, android',
                 route: '/services/keyboard-service',
-            },
-            {
-                section: 'Tools',
-                title: 'ScrollService',
-                keywords: 'scroll, прокрутка, скролл',
-                route: DemoRoute.ScrollService,
             },
         ],
     },
