@@ -15797,6 +15797,12 @@ export class Example {}
 <img alt="" [src]="countryIsoCode | tuiFlag" />
 ```
 
+### API
+
+| Property | Type | Description |
+|----------|-----|----------|
+| Country code | `TuiCountryIsoCode` |  |
+
 ### TypeScript
 
 ```ts
@@ -16186,12 +16192,17 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-combo-box
+<tui-textfield
+  tuiChevron
   [stringify]="'name' | tuiStringify"
-  [(ngModel)]="value"
 >
+  <input
+    tuiComboBox
+    [(ngModel)]="value"
+  />
+
   <!-- ... -->
-</tui-combo-box>
+</tui-textfield>
 ```
 
 ### TypeScript
@@ -16243,16 +16254,22 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-combo-box
+<tui-textfield
+  tuiChevron
   [stringify]="stringify"
-  [(ngModel)]="value"
 >
+  <input
+    tuiComboBox
+    [(ngModel)]="value"
+  />
+
   <tui-data-list-wrapper
-    *tuiDataList
+    *tuiDropdown
+    new
     [items]="items"
     [itemContent]="stringify | tuiStringifyContent"
   ></tui-data-list-wrapper>
-</tui-combo-box>
+</tui-textfield>
 ```
 
 ### TypeScript

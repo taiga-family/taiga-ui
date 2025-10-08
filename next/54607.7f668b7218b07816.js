@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[54607],{54607:n=>{n.exports='@for (src of array; track src) {\n    <p>\n        <img\n            alt="Random image"\n            height="200"\n            tuiLoading="lazy"\n            width="300"\n            [src]="src"\n        />\n    </p>\n}\n'}}]);
