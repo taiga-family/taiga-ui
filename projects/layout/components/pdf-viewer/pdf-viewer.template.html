@@ -24,7 +24,7 @@
     >
         <ng-container [ngTemplateOutlet]="content" />
         <ng-container [ngTemplateOutlet]="actions" />
-        @if ($any(context).closable || context.closeable) {
+        @if ($any(context).closable || context.closable) {
             <button
                 appearance="glass"
                 size="s"

@@ -3,8 +3,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiButton, TuiLoader, TuiTitle} from '@taiga-ui/core';
-import {TuiDialog} from '@taiga-ui/experimental';
+import {TuiButton, TuiDialog, TuiLoader, TuiTitle} from '@taiga-ui/core';
 import {TuiBlockStatus, TuiPdfViewer} from '@taiga-ui/layout';
 
 @Component({
