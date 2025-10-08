@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[75532],{75532:t=>{t.exports='@for (button of context.data; track button) {\n    <button\n        size="s"\n        tuiButton\n        type="button"\n        class="tui-space_left-3"\n        [style.border-radius.rem]="100"\n        (click)="button.onClick(context)"\n    >\n        {{ button.text }}\n    </button>\n}\n'}}]);
