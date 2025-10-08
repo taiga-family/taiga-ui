@@ -94,7 +94,7 @@ interface User {
 
                     <tui-input-chip *tuiItem />
 
-                    <ng-container *tuiTextfieldDropdown>
+                    <ng-container *tuiDropdown>
                         <tui-data-list-wrapper
                             new
                             tuiMultiSelectGroup
