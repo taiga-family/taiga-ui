@@ -1,8 +1,13 @@
 ```html
-<tui-combo-box
+<tui-textfield
+  tuiChevron
   [stringify]="'name' | tuiStringify"
-  [(ngModel)]="value"
 >
+  <input
+    tuiComboBox
+    [(ngModel)]="value"
+  />
+
   <!-- ... -->
-</tui-combo-box>
+</tui-textfield>
 ```

@@ -18,9 +18,10 @@ import {
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
+    TuiInputChip,
+    TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 // Note: webpack compilation error
 // Do not change to @demo/utils
@@ -45,13 +46,14 @@ interface User {
         TuiDataListWrapper,
         TuiDropdownMobile,
         TuiFilterByInputPipe,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
         TuiResponsiveDialog,
         TuiRoot,
         TuiSelect,
         TuiTextfield,
         TuiTitle,
         TuiInitialsPipe,
+        TuiInputChip,
     ],
     template: `
         <tui-root>
@@ -75,18 +77,26 @@ interface User {
                     />
                 </tui-textfield>
 
-                <tui-multi-select
+                <tui-textfield
+                    multi
+                    tuiChevron
                     tuiDropdownMobile
                     class="tui-space_vertical-4"
+                    [open]="open()"
                     [stringify]="stringify"
-                    [tuiDropdownOpen]="open()"
-                    [tuiTextfieldCleaner]="true"
-                    [(ngModel)]="selected"
-                    (tuiDropdownOpenChange)="open.set($event)"
+                    (openChange)="open.set($event)"
                 >
-                    Pick more users
-                    <ng-container *tuiDataList>
+                    <input
+                        placeholder="Pick more users"
+                        tuiInputChip
+                        [(ngModel)]="selected"
+                    />
+
+                    <tui-input-chip *tuiItem />
+
+                    <ng-container *tuiDropdown>
                         <tui-data-list-wrapper
+                            new
                             tuiMultiSelectGroup
                             [itemContent]="template"
                             [items]="users | tuiFilterByInput"
@@ -102,7 +112,7 @@ interface User {
                             Done
                         </button>
                     </ng-container>
-                </tui-multi-select>
+                </tui-textfield>
             </ng-template>
 
             <ng-template
@@ -177,24 +187,22 @@ describe('DropdownMobile', () => {
 
     describe('Type view', () => {
         it('Opens properly inside dialog', () => {
-            cy.get('tui-multi-select input').focus();
-            cy.get('tui-multi-select input').click();
+            cy.get('tui-textfield[multi]').click();
 
             cy.compareSnapshot('type-view-opened');
         });
 
         it('Filters items as you type', () => {
-            cy.get('tui-multi-select input').focus();
-            cy.get('tui-multi-select input').click();
-            cy.get('tui-multi-select input').type('Alex');
+            cy.get('tui-textfield[multi]').click();
+            cy.get('tui-textfield[multi]').type('Alex');
 
             cy.compareSnapshot('type-view-filtered');
         });
 
         it('Closes with selected values', () => {
-            cy.get('tui-multi-select input').focus();
-            cy.get('tui-multi-select input').click();
-            cy.get('tui-multi-select input').type('Alex');
+            cy.get('tui-textfield[multi]').click();
+            cy.get('tui-textfield[multi]').type('Alex');
+
             cy.get('[tuiOption]').first().click();
             cy.get('button[tuiDropdownButton]').click();
 
