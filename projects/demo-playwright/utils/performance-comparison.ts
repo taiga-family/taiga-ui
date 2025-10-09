@@ -41,6 +41,8 @@ interface MetricsComparison {
     component: string;
     baseline?: PerformanceMetrics;
     current: PerformanceMetrics;
+    customExtras?: Record<string, any>;
+    baselineExtras?: Record<string, any>;
     pattern?: string; // classification of change pattern
     diff: {
         layoutCount: number;
@@ -157,6 +159,49 @@ export class PerformanceComparison {
                 );
                 const agg = this.aggregateRuns(usable.map((r) => r.metrics));
                 const last = usable[usable.length - 1]!;
+                // Aggregate custom extras (currently only mobileOpen latency) across usable runs
+                let aggregatedExtras: Record<string, any> | undefined;
+                const mobileRuns = usable
+                    .map((r) => r.customExtras?.mobileOpen)
+                    .filter(
+                        (
+                            m,
+                        ): m is {
+                            runs?: number;
+                            avgFirstOption?: number;
+                            samples?: number[];
+                        } => !!m,
+                    );
+
+                if (mobileRuns.length) {
+                    const samples = mobileRuns.flatMap((m) => m.samples || []);
+                    const runsCount = mobileRuns.reduce(
+                        (a, m) =>
+                            a +
+                            (typeof m.runs === 'number'
+                                ? m.runs
+                                : m.samples?.length || 0),
+                        0,
+                    );
+                    const avgFirstOption = samples.length
+                        ? samples.reduce((a, b) => a + b, 0) / samples.length
+                        : mobileRuns.reduce(
+                              (a, m) =>
+                                  a +
+                                  (typeof m.avgFirstOption === 'number'
+                                      ? m.avgFirstOption
+                                      : 0),
+                              0,
+                          ) / mobileRuns.length;
+
+                    aggregatedExtras = {
+                        mobileOpen: {
+                            runs: runsCount || samples.length,
+                            avgFirstOption,
+                            samples,
+                        },
+                    };
+                }
 
                 metrics.set(testName, {
                     timestamp: Date.now(),
@@ -166,6 +211,7 @@ export class PerformanceComparison {
                     testName: last.testName,
                     source: usable[0]!.source,
                     metrics: agg,
+                    customExtras: aggregatedExtras,
                 });
             }
         } catch (error) {
@@ -494,38 +540,91 @@ export class PerformanceComparison {
     }
 
     private static renderLatencyRows(details: MetricsComparison[]): string {
-        const latency: Array<{testName: string; avg: number; runs: number}> = [];
+        const LAT_PCT_THRESHOLD = Number(
+            process.env.PERF_LATENCY_PERCENT_THRESHOLD || '15',
+        );
+        const rows: string[] = [];
 
         for (const d of details) {
-            const anyD = d as any;
-            const extras = (anyD.currentData?.customExtras ||
-                anyD.__rawPerformanceData?.customExtras) as
-                | Record<string, any>
-                | undefined;
-            const mobile = extras?.mobileOpen;
+            const cur = d.customExtras?.mobileOpen;
 
-            if (mobile && typeof mobile.avgFirstOption === 'number') {
-                latency.push({
-                    testName: d.testName,
-                    avg: mobile.avgFirstOption,
-                    runs: Number(mobile.runs) || mobile.samples?.length || 0,
-                });
+            if (!cur || typeof cur.avgFirstOption !== 'number') {
+                continue;
             }
+
+            const base = d.baselineExtras?.mobileOpen;
+            const baselineAvg =
+                base && typeof base.avgFirstOption === 'number'
+                    ? base.avgFirstOption
+                    : undefined;
+            const currentAvg = cur.avgFirstOption;
+            const deltaMs =
+                baselineAvg !== undefined ? currentAvg - baselineAvg : undefined;
+            const deltaPct =
+                baselineAvg && baselineAvg !== 0
+                    ? (deltaMs! / baselineAvg) * 100
+                    : undefined;
+            let badge = '';
+            let curStr = currentAvg.toFixed(2);
+            const baseStr = baselineAvg !== undefined ? baselineAvg.toFixed(2) : '—';
+            let deltaMsStr =
+                deltaMs !== undefined
+                    ? `${deltaMs >= 0 ? '+' : ''}${deltaMs.toFixed(2)}`
+                    : 'new';
+            let deltaPctStr =
+                deltaPct !== undefined
+                    ? `${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(1)}%`
+                    : 'new';
+
+            if (deltaPct !== undefined) {
+                const absPct = Math.abs(deltaPct);
+
+                if (absPct >= LAT_PCT_THRESHOLD) {
+                    badge = deltaPct > 0 ? '❌' : '✅';
+                }
+            }
+
+            if (badge) {
+                curStr = `**${curStr}**`;
+
+                if (deltaMsStr !== 'new') {
+                    deltaMsStr = `**${deltaMsStr}**`;
+                }
+
+                if (deltaPctStr !== 'new') {
+                    deltaPctStr = `**${deltaPctStr}** ${badge}`;
+                }
+            }
+
+            const runs = Number(cur.runs) || cur.samples?.length || 0;
+
+            rows.push(
+                `| ${d.testName} | ${baseStr} | ${curStr} | ${deltaMsStr} | ${deltaPctStr} | ${runs} |`,
+            );
         }
 
-        if (!latency.length) {
+        if (!rows.length) {
             return '';
         }
 
-        const header = '### ⏱️ Dropdown Mobile Open Latency (ms)\n';
-        const tableHead =
-            '| Test | Avg First Option | Runs |\n|------|----------------:|-----:|';
-        const body = latency
-            .sort((a, b) => a.avg - b.avg)
-            .map((r) => `| ${r.testName} | ${r.avg.toFixed(2)} | ${r.runs} |`)
-            .join('\n');
+        rows.sort((a, b) => {
+            const extract = (line: string): number => {
+                const parts = line.split('|').map((p) => p.trim());
+                const curCol = parts[3];
+                const match = /\d+(?:\.\d+)?/.exec(curCol || '');
 
-        return `${header}\n${tableHead}\n${body}\n`;
+                return match ? parseFloat(match[0]) : Number.POSITIVE_INFINITY;
+            };
+
+            return extract(a) - extract(b);
+        });
+
+        const header = '### ⏱️ Dropdown Mobile Open Latency (ms)';
+        const note = `_Significant changes (±${LAT_PCT_THRESHOLD}%+) are bolded; ❌ regression, ✅ improvement._`;
+        const tableHead =
+            '| Test | Baseline Avg | Current Avg | Δ ms | Δ % | Runs |\n|------|-------------:|------------:|-----:|-----:|-----:|';
+
+        return `${header}\n\n${note}\n\n${tableHead}\n${rows.join('\n')}\n`;
     }
 
     // generatePatternSummary removed

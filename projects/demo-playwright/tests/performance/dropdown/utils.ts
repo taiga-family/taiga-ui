@@ -1,4 +1,4 @@
-import {type TuiDocumentationPagePO} from '@demo-playwright/utils';
+import {PerformanceCollector, type TuiDocumentationPagePO} from '@demo-playwright/utils';
 import {type Locator, type Page} from '@playwright/test';
 
 export interface DropdownCtx {
@@ -346,8 +346,6 @@ export async function runScenarioLoop(
     list: StressScenario[],
     ctx: DropdownCtx,
 ): Promise<void> {
-    const {PerformanceCollector} = await import('@demo-playwright/utils');
-
     await PerformanceCollector.startTestCollection(page, name, __filename);
 
     for (let loop = 0; loop < LOOPS; loop++) {
