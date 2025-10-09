@@ -1,10 +1,14 @@
-<div class="t-root-content"><ng-content /></div>
+<div class="t-root-content">
+<ng-content />
+</div>
 @if (top()) {
     @if (scrollbars) {
         <tui-scroll-controls class="t-root-scrollbar" />
     }
     <tui-dialogs />
-    <tui-popups><ng-content select="tuiOverContent" /></tui-popups>
+    <tui-popups>
+<ng-content select="tuiOverContent" />
+</tui-popups>
     <tui-alerts />
     <tui-hints />
 }
