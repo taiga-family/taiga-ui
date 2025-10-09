@@ -32,7 +32,7 @@ export const stableMount: typeof mount = (component, config) => {
                     'state' in Cypress &&
                     typeof Cypress.state === 'function' &&
                     Cypress.state('clock') && // returns `undefined` if `cy.clock()` was not called
-                    cy.tick(0), // Otherwise `fixture.whenStable()` will never resolved
+                    cy.tick(0), // Otherwise `fixture.whenStable()` will never resolve
             )
             .get('body')
             .find('[data-cy-root]')
