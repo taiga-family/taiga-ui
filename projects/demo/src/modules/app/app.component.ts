@@ -46,7 +46,7 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         VersionManager,
     ],
     templateUrl: './app.template.html',
-    styleUrls: ['./app.style.less'],
+    styleUrl: './app.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
     providers: [

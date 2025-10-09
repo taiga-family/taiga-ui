@@ -12,7 +12,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     imports: [TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

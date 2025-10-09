@@ -8,7 +8,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrls: ['./connected.style.less'],
+    styleUrl: './connected.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-connected'},

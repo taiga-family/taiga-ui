@@ -9,7 +9,7 @@ import {TuiAccordionTarget} from './target';
 @Component({
     imports: [TuiAccordion, TuiDemo, TuiAccordionTarget],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

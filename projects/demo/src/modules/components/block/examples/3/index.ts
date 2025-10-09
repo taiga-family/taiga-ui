@@ -17,7 +17,7 @@ import {TuiAvatar, TuiBlock, TuiCheckbox, TuiSwitch, TuiTooltip} from '@taiga-ui
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

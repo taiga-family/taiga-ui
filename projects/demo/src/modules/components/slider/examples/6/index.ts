@@ -11,7 +11,7 @@ import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from '
 @Component({
     imports: [AsyncPipe, FormsModule, PercentPipe, TuiButton, TuiHint, TuiSlider],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     host: {

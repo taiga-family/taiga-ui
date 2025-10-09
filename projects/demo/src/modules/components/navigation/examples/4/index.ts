@@ -18,7 +18,7 @@ import {TuiCardLarge, tuiLayoutIconsProvider, TuiNavigation} from '@taiga-ui/lay
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [

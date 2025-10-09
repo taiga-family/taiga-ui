@@ -43,7 +43,7 @@ const SERIALIZED_SUFFIX = '$';
         TuiSelect,
     ],
     templateUrl: './api-item.template.html',
-    styleUrls: ['./api-item.style.less'],
+    styleUrl: './api-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocAPIItem<T> implements OnInit {

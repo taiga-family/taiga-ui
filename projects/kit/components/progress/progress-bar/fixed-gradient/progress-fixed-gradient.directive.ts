@@ -9,7 +9,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrls: ['./progress-fixed-gradient.style.less'],
+    styleUrl: './progress-fixed-gradient.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-fixed-gradient'},

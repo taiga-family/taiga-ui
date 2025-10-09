@@ -8,7 +8,7 @@ import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiElasticSticky, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrls: ['../1/index.less'],
+    styleUrl: '../1/index.less',
     encapsulation,
     changeDetection,
 })

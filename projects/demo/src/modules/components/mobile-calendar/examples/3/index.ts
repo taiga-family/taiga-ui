@@ -8,7 +8,7 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 @Component({
     imports: [TuiMobileCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [

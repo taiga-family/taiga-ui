@@ -37,7 +37,7 @@ const EMPTY_COMPARATOR: TuiComparator<unknown> = () => 0;
 
 @Component({
     template: '',
-    styleUrls: ['./table.style.less'],
+    styleUrl: './table.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-table'},

@@ -8,7 +8,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiCell, TuiDemo, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })

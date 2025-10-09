@@ -7,7 +7,7 @@ import {TuiAvatar, TuiBlock} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiButton, TuiIcon, TuiBlock],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

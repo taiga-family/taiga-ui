@@ -21,7 +21,7 @@ import {TUI_ARROW_OPTIONS} from './arrow.options';
     selector: 'tui-arrow',
     imports: [PolymorpheusOutlet, TuiIcon],
     templateUrl: './arrow.template.html',
-    styleUrls: ['./arrow.style.less'],
+    styleUrl: './arrow.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._rotated]': 'rotated()',

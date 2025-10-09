@@ -67,7 +67,7 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
         TuiTextfieldControllerModule,
     ],
     templateUrl: './navigation.template.html',
-    styleUrls: ['./navigation.style.less'],
+    styleUrl: './navigation.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: NAVIGATION_PROVIDERS,
     host: {

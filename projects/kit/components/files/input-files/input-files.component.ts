@@ -25,7 +25,7 @@ import {TuiInputFilesDirective} from './input-files.directive';
             {{ text }}
         </span>
     `,
-    styleUrls: ['./input-files.style.less'],
+    styleUrl: './input-files.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

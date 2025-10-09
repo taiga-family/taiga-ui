@@ -19,7 +19,7 @@ const FADE = [{opacity: 0.06}, {opacity: 1}];
 
 @Component({
     template: '',
-    styleUrls: ['./skeleton.style.less'],
+    styleUrl: './skeleton.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-skeleton'},

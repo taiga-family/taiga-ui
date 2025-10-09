@@ -20,7 +20,7 @@ const OPTIONS = {
 @Component({
     selector: 'tui-bottom-sheet',
     templateUrl: './bottom-sheet.template.html',
-    styleUrls: ['./bottom-sheet.style.less'],
+    styleUrl: './bottom-sheet.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiHeaderOptionsProvider({size: 'h5'})],
     host: {

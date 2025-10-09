@@ -17,7 +17,7 @@ import {TuiButton, TuiIcon} from '@taiga-ui/core';
             Edit
         </button>
     `,
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StackblitzEditButton {}

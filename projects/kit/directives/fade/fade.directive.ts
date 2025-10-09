@@ -23,7 +23,7 @@ const BUFFER = 1; // buffer for rounding issues
 
 @Component({
     template: '',
-    styleUrls: ['./fade.style.less'],
+    styleUrl: './fade.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-fade'},

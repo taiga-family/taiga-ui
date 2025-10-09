@@ -44,7 +44,7 @@ export class TuiTextareaLimitComponent {
 @Component({
     standalone: true,
     template: '{{ length() }} / {{ limit() }}',
-    styleUrls: ['./textarea-limit.style.less'],
+    styleUrl: './textarea-limit.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTextareaCounterComponent {

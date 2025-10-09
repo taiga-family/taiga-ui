@@ -20,7 +20,7 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
             </div>
         }
     `,
-    styleUrls: ['./dynamic-header.style.less'],
+    styleUrl: './dynamic-header.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.--t-dir]': 'container.scrollDir() || -1',

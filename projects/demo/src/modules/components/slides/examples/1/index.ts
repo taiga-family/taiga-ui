@@ -7,7 +7,7 @@ import {TuiElasticContainer, TuiSlides} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiElasticContainer, TuiGroup, TuiSlides, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

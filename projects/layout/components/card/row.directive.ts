@@ -8,7 +8,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrls: ['./row.style.less'],
+    styleUrl: './row.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-card-row'},

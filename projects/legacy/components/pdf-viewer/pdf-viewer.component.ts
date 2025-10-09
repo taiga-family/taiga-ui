@@ -12,7 +12,7 @@ import {type TuiPdfViewerOptions} from './pdf-viewer.options';
     selector: 'tui-pdf-viewer',
     imports: [AsyncPipe, PolymorpheusOutlet, TuiButton],
     templateUrl: './pdf-viewer.template.html',
-    styleUrls: ['./pdf-viewer.style.less'],
+    styleUrl: './pdf-viewer.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
     host: {

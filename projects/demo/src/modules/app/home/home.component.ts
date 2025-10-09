@@ -8,7 +8,7 @@ import {TuiTabs} from '@taiga-ui/kit';
     selector: 'demo-home',
     imports: [TuiDemo, TuiTabs],
     templateUrl: './home.template.html',
-    styleUrls: ['./home.style.less'],
+    styleUrl: './home.style.less',
     encapsulation,
     changeDetection,
 })

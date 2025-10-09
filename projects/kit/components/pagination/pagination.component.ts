@@ -35,7 +35,7 @@ const ACTIVE_ITEM_LENGTH = 1;
     selector: 'tui-pagination',
     imports: [AsyncPipe, PolymorpheusOutlet, TuiButton, TuiLet, TuiRepeatTimes],
     templateUrl: './pagination.template.html',
-    styleUrls: ['./pagination.style.less'],
+    styleUrl: './pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPagination {

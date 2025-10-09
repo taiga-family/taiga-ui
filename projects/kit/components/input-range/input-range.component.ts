@@ -39,7 +39,7 @@ import {
     selector: 'tui-input-range',
     imports: [FormsModule, PolymorpheusOutlet, TuiInputNumber, TuiRange, TuiTextfield],
     templateUrl: './input-range.template.html',
-    styleUrls: ['./input-range.style.less'],
+    styleUrl: './input-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsControl(TuiInputRangeComponent),
