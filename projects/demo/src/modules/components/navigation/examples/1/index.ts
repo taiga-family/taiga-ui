@@ -1,20 +1,19 @@
 import {KeyValuePipe} from '@angular/common';
 import {Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterLink, RouterLinkActive} from '@angular/router';
+import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
 import {tuiAsPortal, TuiPortals, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
-    TuiAppearance,
     TuiButton,
     TuiDataList,
     TuiDropdown,
-    TuiDropdownService,
     TuiHeader,
     TuiIcon,
     TuiLink,
+    TuiPopupService,
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
@@ -39,8 +38,6 @@ const ICON =
         FormsModule,
         KeyValuePipe,
         RouterLink,
-        RouterLinkActive,
-        TuiAppearance,
         TuiAvatar,
         TuiBadge,
         TuiBadgeNotification,
@@ -67,7 +64,7 @@ const ICON =
     encapsulation,
     changeDetection,
     // Ignore portal related code, it is only here to position drawer inside the example block
-    providers: [TuiDropdownService, tuiAsPortal(TuiDropdownService)],
+    providers: [TuiPopupService, tuiAsPortal(TuiPopupService)],
 })
 export default class Example extends TuiPortals {
     protected expanded = signal(false);

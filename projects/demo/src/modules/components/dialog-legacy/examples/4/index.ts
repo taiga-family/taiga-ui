@@ -5,7 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
 import {tuiClamp} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdownService, TuiNumberFormat} from '@taiga-ui/core';
+import {TuiButton, TuiNumberFormat, TuiPopupService} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiDialogService} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -26,7 +26,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
-    private readonly dropdowns = inject(TuiDropdownService);
+    private readonly popups = inject(TuiPopupService);
 
     protected filters = false;
 
@@ -50,7 +50,7 @@ export default class Example {
         content: PolymorpheusContent,
         button: TemplateRef<Record<string, unknown>>,
     ): void {
-        const ref = this.dropdowns.add(button);
+        const ref = this.popups.add(button);
 
         this.dialogs.open(content).subscribe({complete: () => ref.destroy()});
     }

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk/classes';
+import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk/portals';
 
 import {TuiDropdownService} from './dropdown.service';
 
@@ -9,7 +9,7 @@ import {TuiDropdownService} from './dropdown.service';
 @Component({
     standalone: true,
     selector: 'tui-dropdowns',
-    template: '<ng-container #viewContainer />',
+    template: '<ng-container #vcr />',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsPortal(TuiDropdownService)],
     host: {style: 'position: absolute; width: 100%; top: 0'},

@@ -7,7 +7,7 @@ import {CustomPortalService} from './service';
 @Component({
     standalone: true,
     selector: 'custom-host',
-    template: '<ng-container #viewContainer />',
+    template: '<ng-container #vcr />',
     styles: [
         `
             :host {
