@@ -652,11 +652,10 @@ export class PerformanceComparison {
         });
 
         const header = '### ⚡ Interaction to Next Point (INP)';
-        const note = `_Significant changes (±${LAT_PCT_THRESHOLD}%+) are bolded`;
         const tableHead =
             '| Test | Baseline Median | Current Median | Δ ms | Δ % | Runs |\n|------|----------------:|---------------:|-----:|-----:|-----:|';
 
-        return `${header}\n\n${note}\n\n${tableHead}\n${rows.join('\n')}\n`;
+        return `${header}\n\n${tableHead}\n${rows.join('\n')}\n`;
     }
 
     /**
