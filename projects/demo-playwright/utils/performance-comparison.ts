@@ -33,6 +33,7 @@ interface PerformanceData {
     testName: string;
     source: string;
     metrics: PerformanceMetrics;
+    customExtras?: Record<string, any>;
 }
 
 interface MetricsComparison {
@@ -341,6 +342,13 @@ export class PerformanceComparison {
 
         markdown += this.generateSummarySection(summary);
 
+        // Append custom latency section if any test has mobileOpen extras
+        const latencySection = this.generateLatencySection(details);
+
+        if (latencySection) {
+            markdown += `\n${latencySection}\n`;
+        }
+
         if (filteredDetails.length > 0) {
             markdown += this.generateDetailsSection(
                 filteredDetails,
@@ -353,13 +361,6 @@ export class PerformanceComparison {
         markdown += this.generateFooter(summary.totalTests);
 
         return markdown;
-    }
-
-    /**
-     * Generates a markdown report when no performance data is available
-     */
-    public static generateEmptyMarkdownReport(): string {
-        return '## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this shard._\n\n# Tests completed successfully :white_check_mark:\n\nGood job :fire:';
     }
 
     /**
@@ -478,6 +479,53 @@ export class PerformanceComparison {
         );
 
         return report;
+    }
+
+    /**
+     * Generates a markdown report when no performance data is available
+     */
+    public static generateEmptyMarkdownReport(): string {
+        return '## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this shard._\n\n# Tests completed successfully :white_check_mark:\n\nGood job :fire:';
+    }
+
+    // --- Latency (custom extras) section helpers ---
+    private static generateLatencySection(details: MetricsComparison[]): string {
+        return this.renderLatencyRows(details);
+    }
+
+    private static renderLatencyRows(details: MetricsComparison[]): string {
+        const latency: Array<{testName: string; avg: number; runs: number}> = [];
+
+        for (const d of details) {
+            const anyD = d as any;
+            const extras = (anyD.currentData?.customExtras ||
+                anyD.__rawPerformanceData?.customExtras) as
+                | Record<string, any>
+                | undefined;
+            const mobile = extras?.mobileOpen;
+
+            if (mobile && typeof mobile.avgFirstOption === 'number') {
+                latency.push({
+                    testName: d.testName,
+                    avg: mobile.avgFirstOption,
+                    runs: Number(mobile.runs) || mobile.samples?.length || 0,
+                });
+            }
+        }
+
+        if (!latency.length) {
+            return '';
+        }
+
+        const header = '### ⏱️ Dropdown Mobile Open Latency (ms)\n';
+        const tableHead =
+            '| Test | Avg First Option | Runs |\n|------|----------------:|-----:|';
+        const body = latency
+            .sort((a, b) => a.avg - b.avg)
+            .map((r) => `| ${r.testName} | ${r.avg.toFixed(2)} | ${r.runs} |`)
+            .join('\n');
+
+        return `${header}\n${tableHead}\n${body}\n`;
     }
 
     // generatePatternSummary removed
