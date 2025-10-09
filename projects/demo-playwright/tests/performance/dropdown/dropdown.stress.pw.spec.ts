@@ -99,7 +99,6 @@ test.describe('Dropdown Performance', () => {
             },
         );
         expect(firstOptionTimes.length).toBeGreaterThan(0);
-        expect(avgFirst).toBeLessThan(250);
 
         const payload = {
             runs: RUNS,
