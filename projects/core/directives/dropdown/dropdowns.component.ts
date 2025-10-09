@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk/classes';
+import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk/portals';
 
 import {TuiDropdownService} from './dropdown.service';
 
