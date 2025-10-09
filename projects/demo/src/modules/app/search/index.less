@@ -11,7 +11,7 @@
     --docsearch-logo-color: var(--tui-background-accent-1);
 
     /* modal */
-    --docsearch-modal-width: 35rem;
+    --docsearch-modal-width: 45rem;
     --docsearch-modal-height: 37rem;
     --docsearch-modal-background: var(--tui-background-elevation-1);
     --docsearch-modal-shadow:
@@ -63,19 +63,25 @@ html[data-theme='dark'] {
     --docsearch-muted-color: rgb(127, 132, 151);
 }
 
-.DocSearch-Form {
+.DocSearch-Modal {
     border-radius: var(--tui-radius-l);
+    overflow: hidden;
 }
 
-.DocSearch.DocSearch-Button-Placeholder {
+.DocSearch-Button-Placeholder {
     font: var(--tui-font-text-s);
 }
 
-.DocSearch.DocSearch-Button {
+.DocSearch-Button-Keys {
+    transform: scale(0.75);
+}
+
+.DocSearch-Button {
     .transition(~'box-shadow, color');
 
     position: relative;
     block-size: var(--tui-height-s);
+    border: none;
     margin: 0;
     border-radius: var(--tui-radius-m);
     background: transparent;
@@ -87,6 +93,7 @@ html[data-theme='dark'] {
 
     &::after {
         .fullsize(absolute, inset);
+        .transition(color);
 
         content: '';
         border-radius: inherit;
@@ -98,6 +105,11 @@ html[data-theme='dark'] {
     &:active,
     &:hover {
         color: var(--docsearch-muted-color);
+
+        &::after {
+            color: var(--tui-background-accent-1);
+            border-width: 2px;
+        }
     }
 }
 
