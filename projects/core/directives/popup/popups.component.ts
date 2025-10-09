@@ -7,6 +7,7 @@ import {TuiPopupService} from './popup.service';
     standalone: true,
     selector: 'tui-popups',
     template: '<ng-container #viewContainer />',
+    styleUrl: './popups.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsPortal(TuiPopupService)],
 })
