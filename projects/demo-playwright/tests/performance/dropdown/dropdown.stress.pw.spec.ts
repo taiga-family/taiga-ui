@@ -10,6 +10,7 @@ import {
     collectMobileOpenLatency,
     createDropdownCtx,
     formatLatencyTable,
+    median,
     runScenarioLoop,
     scenariosFilter,
     scenariosNested,
@@ -66,7 +67,7 @@ test.describe('Dropdown Performance', () => {
         await expect(example.first()).toBeVisible();
     });
 
-    test('dropdown-mobile-open-latency', async ({page}) => {
+    test('inp-dropdown-open', async ({page}) => {
         await tuiGoto(page, DemoRoute.Dropdown);
         po = new TuiDocumentationPagePO(page);
         const example = po.getExample('#mobile');
@@ -76,33 +77,24 @@ test.describe('Dropdown Performance', () => {
 
         await PerformanceCollector.startTestCollection(
             page,
-            'dropdown-mobile-open-latency',
+            'inp-dropdown-open',
             __filename,
         );
         const {firstOptionTimes} = await collectMobileOpenLatency(page, example, RUNS);
-        const avg = (arr: number[]): number => {
-            const len = Math.max(arr.length, 1);
+        const medianFirst = median(firstOptionTimes);
 
-            return arr.reduce((a, b) => a + b, 0) / len;
-        };
-        const avgFirst = avg(firstOptionTimes);
-
-        await PerformanceCollector.stopTestCollection(
-            page,
-            'dropdown-mobile-open-latency',
-            {
-                mobileOpen: {
-                    runs: RUNS,
-                    avgFirstOption: avgFirst,
-                    samples: firstOptionTimes,
-                },
+        await PerformanceCollector.stopTestCollection(page, 'inp-dropdown-open', {
+            mobileOpen: {
+                runs: RUNS,
+                medianFirstOption: medianFirst,
+                samples: firstOptionTimes,
             },
-        );
+        });
         expect(firstOptionTimes.length).toBeGreaterThan(0);
 
         const payload = {
             runs: RUNS,
-            avgFirstOption: avgFirst,
+            medianFirstOption: medianFirst,
             firstOptionSamples: firstOptionTimes,
         };
 

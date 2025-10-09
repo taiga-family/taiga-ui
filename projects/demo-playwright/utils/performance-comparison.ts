@@ -168,6 +168,7 @@ export class PerformanceComparison {
                             m,
                         ): m is {
                             runs?: number;
+                            medianFirstOption?: number;
                             avgFirstOption?: number;
                             samples?: number[];
                         } => !!m,
@@ -193,10 +194,26 @@ export class PerformanceComparison {
                                       : 0),
                               0,
                           ) / mobileRuns.length;
+                    const medianFirstOption = (() => {
+                        const arr = samples.slice().sort((a, b) => a - b);
+
+                        if (!arr.length) {
+                            return mobileRuns[0]?.medianFirstOption;
+                        }
+
+                        const mid = Math.floor(arr.length / 2);
+
+                        if (arr.length % 2 === 0) {
+                            return (arr[mid - 1]! + arr[mid]!) / 2;
+                        }
+
+                        return arr[mid]!;
+                    })();
 
                     aggregatedExtras = {
                         mobileOpen: {
                             runs: runsCount || samples.length,
+                            medianFirstOption,
                             avgFirstOption,
                             samples,
                         },
@@ -548,25 +565,40 @@ export class PerformanceComparison {
         for (const d of details) {
             const cur = d.customExtras?.mobileOpen;
 
-            if (!cur || typeof cur.avgFirstOption !== 'number') {
+            if (
+                !cur ||
+                (typeof cur.medianFirstOption !== 'number' &&
+                    typeof cur.avgFirstOption !== 'number')
+            ) {
                 continue;
             }
 
             const base = d.baselineExtras?.mobileOpen;
-            const baselineAvg =
-                base && typeof base.avgFirstOption === 'number'
-                    ? base.avgFirstOption
-                    : undefined;
-            const currentAvg = cur.avgFirstOption;
+            let baselineMedian: number | undefined;
+
+            if (base) {
+                if (typeof base.medianFirstOption === 'number') {
+                    baselineMedian = base.medianFirstOption;
+                } else if (typeof base.avgFirstOption === 'number') {
+                    baselineMedian = base.avgFirstOption;
+                }
+            }
+
+            const currentMedian =
+                typeof cur.medianFirstOption === 'number'
+                    ? cur.medianFirstOption
+                    : cur.avgFirstOption;
+
             const deltaMs =
-                baselineAvg !== undefined ? currentAvg - baselineAvg : undefined;
+                baselineMedian !== undefined ? currentMedian - baselineMedian : undefined;
             const deltaPct =
-                baselineAvg && baselineAvg !== 0
-                    ? (deltaMs! / baselineAvg) * 100
+                baselineMedian && baselineMedian !== 0
+                    ? (deltaMs! / baselineMedian) * 100
                     : undefined;
             let badge = '';
-            let curStr = currentAvg.toFixed(2);
-            const baseStr = baselineAvg !== undefined ? baselineAvg.toFixed(2) : '—';
+            let curStr = currentMedian.toFixed(2);
+            const baseStr =
+                baselineMedian !== undefined ? baselineMedian.toFixed(2) : '—';
             let deltaMsStr =
                 deltaMs !== undefined
                     ? `${deltaMs >= 0 ? '+' : ''}${deltaMs.toFixed(2)}`
@@ -619,10 +651,11 @@ export class PerformanceComparison {
             return extract(a) - extract(b);
         });
 
-        const header = '### ⏱️ Dropdown Mobile Open Latency (ms)';
-        const note = `_Significant changes (±${LAT_PCT_THRESHOLD}%+) are bolded; ❌ regression, ✅ improvement._`;
+        // INP category: group interaction-to-next-point (paint) style latency tests here
+        const header = '### ⚡ Interaction to Next Point (INP)';
+        const note = `_Significant changes (±${LAT_PCT_THRESHOLD}%+) are bolded; ❌ regression, ✅ improvement. Values in ms (lower is better). Benchmark: interaction-to-next-point latency subset._`;
         const tableHead =
-            '| Test | Baseline Avg | Current Avg | Δ ms | Δ % | Runs |\n|------|-------------:|------------:|-----:|-----:|-----:|';
+            '| Test | Baseline Median | Current Median | Δ ms | Δ % | Runs |\n|------|----------------:|---------------:|-----:|-----:|-----:|';
 
         return `${header}\n\n${note}\n\n${tableHead}\n${rows.join('\n')}\n`;
     }

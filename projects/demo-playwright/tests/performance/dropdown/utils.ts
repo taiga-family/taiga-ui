@@ -251,16 +251,36 @@ export function scenariosNested(): StressScenario[] {
     ];
 }
 
+export function median(values: number[]): number {
+    if (!values.length) {
+        return 0;
+    }
+
+    const sorted = [...values].sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+
+    if (sorted.length % 2 === 0) {
+        return (sorted[mid - 1]! + sorted[mid]!) / 2;
+    }
+
+    return sorted[mid]!;
+}
+
 export function formatLatencyTable(data: {
     runs: number;
     firstOptionSamples: number[];
-    avgFirstOption: number;
+    medianFirstOption?: number;
 }): string {
     const rows: Array<[string, ...number[]]> = [
         ['Run', ...data.firstOptionSamples.map((_, i) => i + 1)],
         ['FirstOption', ...data.firstOptionSamples],
     ];
-    const footer: Array<[string, number]> = [['Avg First', data.avgFirstOption]];
+    const footer: Array<[string, number]> = [];
+
+    if (typeof data.medianFirstOption === 'number') {
+        footer.push(['Median First', data.medianFirstOption]);
+    }
+
     const colCount = Math.max(...rows.map((r) => r.length));
     const widths: number[] = [];
 
