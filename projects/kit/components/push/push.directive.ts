@@ -1,39 +1,22 @@
-import {
-    ChangeDetectorRef,
-    Directive,
-    forwardRef,
-    inject,
-    Input,
-    TemplateRef,
-} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiIfMap} from '@taiga-ui/cdk/observables';
-import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
-import {Subject} from 'rxjs';
+import {DestroyRef, Directive, inject} from '@angular/core';
+import {tuiAsPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 
 import {TuiPushService} from './push.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiPush]',
+    providers: [tuiAsPortal(TuiPushService)],
+    hostDirectives: [
+        {
+            directive: TuiPortalDirective,
+            inputs: ['open: tuiPush'],
+        },
+    ],
 })
-export class TuiPushDirective extends PolymorpheusTemplate {
-    private readonly push: TuiPushService = inject(forwardRef(() => TuiPushService));
-    private readonly show$ = new Subject<boolean>();
+export class TuiPushDirective {
+    private readonly sub = inject(TuiPortalDirective).openChange.subscribe(() => {});
 
     constructor() {
-        super(inject(TemplateRef), inject(ChangeDetectorRef));
-
-        this.show$
-            .pipe(
-                tuiIfMap(() => this.push.open(this)),
-                takeUntilDestroyed(),
-            )
-            .subscribe();
-    }
-
-    @Input()
-    public set tuiPush(show: boolean) {
-        this.show$.next(show);
+        inject(DestroyRef).onDestroy(() => this.sub.unsubscribe());
     }
 }

@@ -7,7 +7,7 @@ export class TuiIdService {
     private static autoId = 0;
 
     public generate(): string {
-        return `tui_${TuiIdService.autoId++}${Date.now()}`;
+        return `tui_${TuiIdService.autoId++}}`;
     }
 }
 

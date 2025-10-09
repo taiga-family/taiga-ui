@@ -5,12 +5,9 @@
     bottom: 1rem;
     display: grid;
     flex-shrink: 0;
-    order: 1;
     max-inline-size: calc(100% - 2rem);
     margin: 0 1rem 0 auto;
-    border-radius: var(--tui-radius-xl);
-    box-shadow: var(--tui-shadow-small);
-    overflow: hidden;
+    isolation: isolate;
 
     --tui-from: translateX(100%);
 
@@ -38,5 +35,4 @@
 
 .t-wrapper {
     grid-row: 1 / span 2;
-    overflow: hidden;
 }
