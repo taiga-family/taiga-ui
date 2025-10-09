@@ -1,5 +1,5 @@
 <div class="t-root-content">
-<ng-content />
+    <ng-content />
 </div>
 @if (top()) {
     @if (scrollbars) {
@@ -7,8 +7,8 @@
     }
     <tui-dialogs />
     <tui-popups>
-<ng-content select="tuiOverContent" />
-</tui-popups>
+        <ng-content select="tuiOverContent" />
+    </tui-popups>
     <tui-alerts />
     <tui-hints />
 }
