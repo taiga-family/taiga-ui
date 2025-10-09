@@ -651,16 +651,13 @@ export class PerformanceComparison {
             return extract(a) - extract(b);
         });
 
-        // INP category: group interaction-to-next-point (paint) style latency tests here
         const header = '### ⚡ Interaction to Next Point (INP)';
-        const note = `_Significant changes (±${LAT_PCT_THRESHOLD}%+) are bolded; ❌ regression, ✅ improvement. Values in ms (lower is better). Benchmark: interaction-to-next-point latency subset._`;
+        const note = `_Significant changes (±${LAT_PCT_THRESHOLD}%+) are bolded`;
         const tableHead =
             '| Test | Baseline Median | Current Median | Δ ms | Δ % | Runs |\n|------|----------------:|---------------:|-----:|-----:|-----:|';
 
         return `${header}\n\n${note}\n\n${tableHead}\n${rows.join('\n')}\n`;
     }
-
-    // generatePatternSummary removed
 
     /**
      * Filters files to include only performance JSON files

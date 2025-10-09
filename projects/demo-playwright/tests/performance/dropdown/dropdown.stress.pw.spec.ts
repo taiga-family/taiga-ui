@@ -67,7 +67,7 @@ test.describe('Dropdown Performance', () => {
         await expect(example.first()).toBeVisible();
     });
 
-    test('inp-dropdown-open', async ({page}) => {
+    test('dropdown-mobile-datalist-open', async ({page}) => {
         await tuiGoto(page, DemoRoute.Dropdown);
         po = new TuiDocumentationPagePO(page);
         const example = po.getExample('#mobile');
@@ -77,19 +77,23 @@ test.describe('Dropdown Performance', () => {
 
         await PerformanceCollector.startTestCollection(
             page,
-            'inp-dropdown-open',
+            'dropdown-mobile-datalist-open',
             __filename,
         );
         const {firstOptionTimes} = await collectMobileOpenLatency(page, example, RUNS);
         const medianFirst = median(firstOptionTimes);
 
-        await PerformanceCollector.stopTestCollection(page, 'inp-dropdown-open', {
-            mobileOpen: {
-                runs: RUNS,
-                medianFirstOption: medianFirst,
-                samples: firstOptionTimes,
+        await PerformanceCollector.stopTestCollection(
+            page,
+            'dropdown-mobile-datalist-open',
+            {
+                mobileOpen: {
+                    runs: RUNS,
+                    medianFirstOption: medianFirst,
+                    samples: firstOptionTimes,
+                },
             },
-        });
+        );
         expect(firstOptionTimes.length).toBeGreaterThan(0);
 
         const payload = {
