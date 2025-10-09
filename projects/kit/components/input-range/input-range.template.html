@@ -1,4 +1,4 @@
-<tui-textfield [content]="hideStartContent ? '' : contentStart()">
+<tui-textfield [content]="contentStartHidden ? '' : contentStart()">
     <ng-container ngProjectAs="label">
         <ng-content select="label" />
     </ng-container>
@@ -23,7 +23,7 @@
         tuiInputNumber
         tuiTextfieldAppearance="none"
         class="t-end"
-        [class._hidden]="!hideEndContent || !this.interactive()"
+        [class._hidden]="!contentEndHidden || !this.interactive()"
         [disabled]="disabled()"
         [invalid]="invalid()"
         [max]="max"
@@ -38,14 +38,13 @@
         (ngModelChange)="onInput([null, $event])"
     />
 
-    <div
-        class="t-content-end"
-        [class._hidden]="hideEndContent"
-    >
-        <ng-container *polymorpheusOutlet="contentEnd() as text; context: {$implicit: value()[1]}">
-            {{ text }}
-        </ng-container>
-    </div>
+    @if (!contentEndHidden && contentEnd()) {
+        <div class="t-content-end">
+            <ng-container *polymorpheusOutlet="contentEnd() as text; context: {$implicit: value()[1]}">
+                {{ text }}
+            </ng-container>
+        </div>
+    }
 </tui-textfield>
 
 @if (interactive()) {
