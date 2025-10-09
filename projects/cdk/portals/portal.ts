@@ -1,6 +1,14 @@
-import {inject, Injectable, INJECTOR, Injector, type Type} from '@angular/core';
+import {
+    inject,
+    Injectable,
+    INJECTOR,
+    Injector,
+    type Provider,
+    type Type,
+} from '@angular/core';
 import {TuiIdService} from '@taiga-ui/cdk/services';
 import {type TuiContext} from '@taiga-ui/cdk/types';
+import {tuiProvide} from '@taiga-ui/cdk/utils';
 import {
     // eslint-disable-next-line no-restricted-imports
     POLYMORPHEUS_CONTEXT,
@@ -11,7 +19,7 @@ import {Observable, type Observer} from 'rxjs';
 
 import {type TuiPortalService} from './service';
 
-export type TuiPortalContext<T extends object, O> = T &
+export type TuiPortalContext<T, O = void> = T &
     TuiContext<Observer<O>> & {
         readonly content: PolymorpheusContent<TuiPortalContext<T, O>>;
         readonly createdAt: number;
@@ -20,14 +28,14 @@ export type TuiPortalContext<T extends object, O> = T &
     };
 
 @Injectable()
-export abstract class TuiPortal<T extends object, K = void> {
+export abstract class TuiPortal<T, K = void> {
     protected abstract readonly component: Type<any>;
     protected abstract readonly options: T;
 
     private readonly injector = inject(INJECTOR);
     private readonly id = inject(TuiIdService);
 
-    constructor(private readonly popups: TuiPortalService) {}
+    constructor(protected readonly service: TuiPortalService) {}
 
     public open<G = void>(
         content: PolymorpheusContent<TuiPortalContext<T, K extends void ? G : K>>,
@@ -63,8 +71,12 @@ export abstract class TuiPortal<T extends object, K = void> {
     }
 
     protected add(component: PolymorpheusComponent<unknown>): () => void {
-        const ref = this.popups.add(component);
+        const ref = this.service.add(component);
 
         return () => ref.destroy();
     }
+}
+
+export function tuiAsPortal(portal: typeof TuiPortal<any>): Provider {
+    return tuiProvide(TuiPortal, portal);
 }

@@ -1,0 +1,38 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    .transition(filter);
+    .scrollbar-hidden();
+    .fullsize(fixed, inset);
+
+    position: sticky;
+    display: grid;
+    place-items: center;
+    block-size: 100%;
+    outline: none;
+    overflow: auto;
+    overscroll-behavior: none;
+    filter: brightness(0.25);
+
+    ::ng-deep > .tui-enter + .t-scrollbars .t-bar_vertical,
+    ::ng-deep > .tui-leave + .t-scrollbars .t-bar_vertical {
+        display: none;
+    }
+
+    &:last-child {
+        pointer-events: auto;
+        filter: none;
+    }
+}
+
+.t-scrollbars {
+    position: fixed;
+    inset: 0;
+    margin: 0;
+    color: #747474;
+
+    ::ng-deep .t-bar_horizontal,
+    ::ng-deep .t-bar_vertical .t-thumb[style*='height: 100%'] {
+        display: none;
+    }
+}

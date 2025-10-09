@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlert, TuiButton} from '@taiga-ui/core';
@@ -11,5 +11,5 @@ import {TuiAlert, TuiButton} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    protected show = false;
+    protected show = signal(false);
 }
