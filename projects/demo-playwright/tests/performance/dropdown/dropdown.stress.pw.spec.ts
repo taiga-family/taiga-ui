@@ -6,56 +6,66 @@ import {
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-import {collectMobileOpenLatency, formatLatencyTable, median} from './utils';
+import {
+    collectMobileOpenLatency,
+    createDropdownCtx,
+    formatLatencyTable,
+    median,
+    runScenarioLoop,
+    scenariosFilter,
+    scenariosNested,
+    scenariosOpenClose,
+    scenariosReposition,
+} from './utils';
 
 test.describe('Dropdown Performance', () => {
     let po: TuiDocumentationPagePO;
 
-    // test('dropdown-open-close-stress', async ({page}) => {
-    //     await tuiGoto(page, DemoRoute.Dropdown);
-    //     po = new TuiDocumentationPagePO(page);
-    //     const example = po.getExample('#basic');
+    test('dropdown-open-close-stress', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Dropdown);
+        po = new TuiDocumentationPagePO(page);
+        const example = po.getExample('#basic');
 
-    //     await example.scrollIntoViewIfNeeded().catch(() => {});
-    //     const ctx = createDropdownCtx(example);
+        await example.scrollIntoViewIfNeeded().catch(() => {});
+        const ctx = createDropdownCtx(example);
 
-    //     await runScenarioLoop(
-    //         page,
-    //         'dropdown-open-close-stress',
-    //         scenariosOpenClose(),
-    //         ctx,
-    //     );
-    //     await expect(example.first()).toBeVisible();
-    // });
+        await runScenarioLoop(
+            page,
+            'dropdown-open-close-stress',
+            scenariosOpenClose(),
+            ctx,
+        );
+        await expect(example.first()).toBeVisible();
+    });
 
-    // test('dropdown-filter-stress', async ({page}) => {
-    //     await tuiGoto(page, DemoRoute.Dropdown);
-    //     po = new TuiDocumentationPagePO(page);
-    //     const example = po.getExample('#interesting');
+    test('dropdown-filter-stress', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Dropdown);
+        po = new TuiDocumentationPagePO(page);
+        const example = po.getExample('#interesting');
 
-    //     await example.scrollIntoViewIfNeeded().catch(() => {});
-    //     const ctx = createDropdownCtx(example);
+        await example.scrollIntoViewIfNeeded().catch(() => {});
+        const ctx = createDropdownCtx(example);
 
-    //     await runScenarioLoop(page, 'dropdown-filter-stress', scenariosFilter(), ctx);
-    //     await expect(example.first()).toBeVisible();
-    // });
+        await runScenarioLoop(page, 'dropdown-filter-stress', scenariosFilter(), ctx);
+        await expect(example.first()).toBeVisible();
+    });
 
-    // test('dropdown-reposition-stress', async ({page}) => {
-    //     await tuiGoto(page, DemoRoute.Dropdown);
-    //     po = new TuiDocumentationPagePO(page);
-    //     const example = po.getExample('#appearance');
+    test('dropdown-reposition-stress', async ({page}) => {
+        await tuiGoto(page, DemoRoute.Dropdown);
+        po = new TuiDocumentationPagePO(page);
+        const example = po.getExample('#appearance');
 
-    //     await example.scrollIntoViewIfNeeded().catch(() => {});
-    //     const ctx = createDropdownCtx(example);
+        await example.scrollIntoViewIfNeeded().catch(() => {});
+        const ctx = createDropdownCtx(example);
 
-    //     await runScenarioLoop(
-    //         page,
-    //         'dropdown-reposition-stress',
-    //         scenariosReposition(),
-    //         ctx,
-    //     );
-    //     await expect(example.first()).toBeVisible();
-    // });
+        await runScenarioLoop(
+            page,
+            'dropdown-reposition-stress',
+            scenariosReposition(),
+            ctx,
+        );
+        await expect(example.first()).toBeVisible();
+    });
 
     test('dropdown-mobile-datalist-open', async ({page}) => {
         await tuiGoto(page, DemoRoute.Dropdown);
@@ -98,15 +108,15 @@ test.describe('Dropdown Performance', () => {
         console.log(formatLatencyTable(payload));
     });
 
-    // test('dropdown-nested-stress', async ({page}) => {
-    //     await tuiGoto(page, DemoRoute.DropdownOpen);
-    //     po = new TuiDocumentationPagePO(page);
-    //     const example = po.getExample('#complex');
+    test('dropdown-nested-stress', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DropdownOpen);
+        po = new TuiDocumentationPagePO(page);
+        const example = po.getExample('#complex');
 
-    //     await example.scrollIntoViewIfNeeded().catch(() => {});
-    //     const ctx = createDropdownCtx(example);
+        await example.scrollIntoViewIfNeeded().catch(() => {});
+        const ctx = createDropdownCtx(example);
 
-    //     await runScenarioLoop(page, 'dropdown-nested-stress', scenariosNested(), ctx);
-    //     await expect(example.first()).toBeVisible();
-    // });
+        await runScenarioLoop(page, 'dropdown-nested-stress', scenariosNested(), ctx);
+        await expect(example.first()).toBeVisible();
+    });
 });
