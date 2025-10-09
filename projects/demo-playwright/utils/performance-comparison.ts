@@ -630,9 +630,16 @@ export class PerformanceComparison {
 
             const runs = Number(cur.runs) || cur.samples?.length || 0;
 
-            rows.push(
-                `| ${d.testName} | ${baseStr} | ${curStr} | ${deltaMsStr} | ${deltaPctStr} | ${runs} |`,
-            );
+            // Unified format: one metric column showing current (deltaMs, deltaPct) and baseline value in parentheses
+            let combined: string;
+
+            if (baselineMedian !== undefined) {
+                combined = `${curStr} (${baseStr}, ${deltaMsStr}, ${deltaPctStr})`;
+            } else {
+                combined = `${curStr} (new)`;
+            }
+
+            rows.push(`| ${d.testName} | ${combined} | ${runs} |`);
         }
 
         if (!rows.length) {
@@ -653,7 +660,7 @@ export class PerformanceComparison {
 
         const header = '### ⚡ Interaction to Next Point (INP)';
         const tableHead =
-            '| Test | Baseline Median | Current Median | Δ ms | Δ % | Runs |\n|------|----------------:|---------------:|-----:|-----:|-----:|';
+            '| Test | Median (baseline, Δ ms, Δ %) | Runs |\n|------|--------------------------------|-----:|';
 
         return `${header}\n\n${tableHead}\n${rows.join('\n')}\n`;
     }
