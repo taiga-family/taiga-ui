@@ -2,7 +2,7 @@ import {Directive, Input} from '@angular/core';
 import {type AbstractControl, NG_VALIDATORS, type Validator} from '@angular/forms';
 import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiProvide} from '@taiga-ui/cdk/utils';
-import {BehaviorSubject, delay, EMPTY, switchMap} from 'rxjs';
+import {BehaviorSubject, delay, of, switchMap} from 'rxjs';
 
 @Directive({
     standalone: true,
@@ -18,7 +18,7 @@ export class TuiNativeValidator implements Validator {
 
     protected readonly sub = this.control$
         .pipe(
-            switchMap((control: any) => control?.events || EMPTY),
+            switchMap((control: any) => control?.events || of(null)),
             delay(0),
             tuiZonefree(),
             tuiTakeUntilDestroyed(),
