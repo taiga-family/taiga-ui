@@ -11,8 +11,6 @@ import {TUI_DARK_MODE} from '@taiga-ui/core';
 
 import {SEARCH_CONFIG} from './env';
 
-const docsearch = require('@docsearch/js').default;
-
 @Component({
     standalone: true,
     selector: 'tui-algolia-search',
@@ -36,19 +34,21 @@ export class TuiAlgoliaSearch {
     }
 
     private enableDocSearch(): void {
-        docsearch({
-            ...this.config,
-            maxResultsPerGroup: 7,
-            transformSearchClient: (searchClient: {search: () => Promise<unknown>}) => ({
-                ...searchClient,
-                search: debounce(searchClient.search, 400),
+        import('@docsearch/js').then((d) =>
+            d.default({
+                ...this.config,
+                maxResultsPerGroup: 7,
+                transformSearchClient: (searchClient) => ({
+                    ...searchClient,
+                    search: debounce<any>(searchClient.search, 400),
+                }),
+                transformItems: (items) =>
+                    items.map((item) => ({
+                        ...item,
+                        url: item.url.replace('https://taiga-ui.dev/', ''),
+                    })),
             }),
-            transformItems: (items: Array<{url: string}>) =>
-                items.map((item) => ({
-                    ...item,
-                    url: item.url.replace('https://taiga-ui.dev/', ''),
-                })),
-        });
+        );
     }
 
     private setSearchDocDarkMode(): void {
