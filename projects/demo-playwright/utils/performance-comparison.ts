@@ -784,6 +784,8 @@ export class PerformanceComparison {
             component,
             baseline: baselineMetrics,
             current: currentMetrics,
+            customExtras: currentData.customExtras,
+            baselineExtras: baselineData?.customExtras,
             diff: {
                 layoutCount:
                     currentMetrics.layoutCount - (baselineMetrics?.layoutCount || 0),
