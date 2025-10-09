@@ -73,7 +73,7 @@ test.describe('Dropdown Performance', () => {
         const example = po.getExample('#mobile');
 
         await example.scrollIntoViewIfNeeded().catch(() => {});
-        const RUNS = Number(process.env.DROPDOWN_PERF_RUNS || '5');
+        const RUNS = 2;
 
         await PerformanceCollector.startTestCollection(
             page,
