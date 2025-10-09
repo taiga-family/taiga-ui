@@ -53,6 +53,7 @@ import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
         '[disabled]': 'disabled()',
         '(click)': 'toggle()',
         '(input)': 'onInput($event.target.value)',
+        '(blur)': 'onBlur($event.target.value)',
     },
 })
 export class TuiInputTimeDirective
@@ -162,6 +163,27 @@ export class TuiInputTimeDirective
 
     protected toggle(): void {
         this.open.update((x) => !x);
+    }
+
+    protected onBlur(valueWithAffixes: string): void {
+        const value = valueWithAffixes
+            .replace(this.prefix(), '')
+            .replace(this.postfix(), '');
+
+        if (value && !this.value()) {
+            const time = TuiTime.fromString(value);
+
+            const newValue = this.accept.length
+                ? this.findNearestTime(time, this.accept)
+                : time;
+
+            this.control?.control?.updateValueAndValidity({emitEvent: false});
+            this.onChange(newValue);
+
+            if (newValue) {
+                this.textfield.value.set(this.stringify(newValue));
+            }
+        }
     }
 
     private computeMask(params: Required<MaskitoTimeParams>): MaskitoOptions {
