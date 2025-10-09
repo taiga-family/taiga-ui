@@ -15,15 +15,15 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
 @Component({
     imports: [TuiCheckbox],
     template: `
-        @if (selected()) {
-            <input
-                tuiCheckbox
-                type="checkbox"
-                class="t-check"
-                [checked]="selected()"
-                [size]="datalist.size === 'l' ? 'm' : 's'"
-            />
-        }
+        <!-- @if (selected()) { -->
+        <input
+            tuiCheckbox
+            type="checkbox"
+            class="t-check"
+            [checked]="selected()"
+            [size]="datalist.size === 'l' ? 'm' : 's'"
+        />
+        <!-- } -->
     `,
     styleUrls: ['./select-option.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
