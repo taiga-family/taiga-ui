@@ -7,7 +7,7 @@ import {
     type TuiPaymentSystem,
     TuiThumbnailCard,
 } from '@taiga-ui/addon-commerce';
-import type {TuiSizeL, TuiSizeXS} from '@taiga-ui/core';
+import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiDemo, TuiDocIcons, TuiThumbnailCard],
