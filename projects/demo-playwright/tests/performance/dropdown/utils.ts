@@ -295,13 +295,13 @@ export async function measureMobileCountryOpen(
     await page.evaluate(() => {
         (window as any).__tuiPerfStart = performance.now();
     });
-    const textfield = example.locator('tui-textfield[tuiDropdownMobile]').first();
+    const trigger = example.locator(':scope > *').first();
 
-    if (!(await textfield.isVisible().catch(falseHandler))) {
+    if (!(await trigger.isVisible().catch(falseHandler))) {
         return {firstOption: NaN};
     }
 
-    await textfield.click({timeout: 2000}).catch(() => {});
+    await trigger.click({timeout: 2000}).catch(() => {});
     const optionLocator = page.locator('tui-root tui-dropdowns button[tuiOption]');
 
     await optionLocator
