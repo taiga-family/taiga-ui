@@ -1,4 +1,4 @@
-import {Directive, inject, NgZone} from '@angular/core';
+import {afterNextRender, Directive} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
 @Directive({
@@ -9,13 +9,9 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils';
     },
 })
 export class TuiTransitioned {
-    constructor() {
-        const el = tuiInjectElement();
+    private readonly el = tuiInjectElement();
 
-        inject(NgZone).runOutsideAngular(() => {
-            setTimeout(() => {
-                el.style.transition = '';
-            });
-        });
+    constructor() {
+        afterNextRender(() => this.el.style.setProperty('transition', ''));
     }
 }
