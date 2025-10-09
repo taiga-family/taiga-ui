@@ -1,4 +1,4 @@
-import {Directive, Input, type OnChanges} from '@angular/core';
+import {computed, Directive, input} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {TUI_MASK_CVC} from '@taiga-ui/addon-commerce/constants';
 import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
@@ -11,22 +11,15 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     host: {
         inputmode: 'numeric',
         autocomplete: 'cc-csc',
-        '[placeholder]': '"0".repeat(length)',
-        '[style.-webkit-text-security]': 'hidden ? "disc" : null',
+        '[placeholder]': '"0".repeat(length())',
+        '[style.-webkit-text-security]': 'hidden() ? "disc" : null',
         '(copy.prevent)': '(0)',
     },
 })
-export class TuiInputCVC implements OnChanges {
-    private readonly mask = tuiMaskito(TUI_MASK_CVC(3));
+export class TuiInputCVC {
+    protected readonly mask = computed(() => tuiMaskito(TUI_MASK_CVC(this.length())));
 
-    @Input()
-    public hidden = true;
+    public readonly hidden = input(true);
 
-    @Input()
-    public length: 3 | 4 = 3;
-
-    // TODO: refactor to signal inputs after Angular update
-    public ngOnChanges(): void {
-        this.mask.set(TUI_MASK_CVC(this.length));
-    }
+    public readonly length = input<3 | 4>(3);
 }
