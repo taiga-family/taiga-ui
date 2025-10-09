@@ -5,7 +5,7 @@ import {tuiAsPortal, tuiInjectElement, TuiPortals} from '@taiga-ui/cdk';
 import {
     tuiAsViewport,
     TuiDropdown,
-    TuiDropdownService,
+    TuiPopupService,
     type TuiRectAccessor,
 } from '@taiga-ui/core';
 
@@ -14,10 +14,10 @@ import {
     selector: 'portal-host',
     template: `
         <ng-content />
-        <ng-container #viewContainer />
+        <ng-container #vcr />
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsPortal(TuiDropdownService), tuiAsViewport(PortalHost)],
+    providers: [tuiAsPortal(TuiPopupService), tuiAsViewport(PortalHost)],
 })
 class PortalHost extends TuiPortals implements TuiRectAccessor {
     private readonly el = tuiInjectElement();
@@ -35,6 +35,6 @@ class PortalHost extends TuiPortals implements TuiRectAccessor {
     styleUrls: ['../1/index.less'],
     encapsulation,
     changeDetection,
-    providers: [TuiDropdownService],
+    providers: [TuiPopupService],
 })
 export default class Example {}

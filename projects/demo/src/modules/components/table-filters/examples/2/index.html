@@ -35,37 +35,41 @@
             </tr>
         </thead>
         <tbody tuiTbody>
-            <tr
-                *ngFor="let item of items() | tuiTableFilters | async"
-                tuiTr
-                [formGroup]="item"
-            >
-                <td
-                    *tuiCell="'name'"
-                    tuiTd
+            <!-- Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator. -->
+            @let data = $any(items() | tuiTableFilters | async);
+
+            @for (item of data; track item) {
+                <tr
+                    tuiTr
+                    [formGroup]="item"
                 >
-                    <tui-textfield>
-                        <input
-                            autocomplete="name"
-                            formControlName="name"
-                            placeholder="Type an name"
-                            tuiTextfield
-                        />
-                    </tui-textfield>
-                </td>
-                <td
-                    *tuiCell="'balance'"
-                    tuiTd
-                >
-                    <tui-textfield>
-                        <input
-                            formControlName="balance"
-                            placeholder="Type a balance"
-                            tuiInputNumber
-                        />
-                    </tui-textfield>
-                </td>
-            </tr>
+                    <td
+                        *tuiCell="'name'"
+                        tuiTd
+                    >
+                        <tui-textfield>
+                            <input
+                                autocomplete="name"
+                                formControlName="name"
+                                placeholder="Type an name"
+                                tuiTextfield
+                            />
+                        </tui-textfield>
+                    </td>
+                    <td
+                        *tuiCell="'balance'"
+                        tuiTd
+                    >
+                        <tui-textfield>
+                            <input
+                                formControlName="balance"
+                                placeholder="Type a balance"
+                                tuiInputNumber
+                            />
+                        </tui-textfield>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 

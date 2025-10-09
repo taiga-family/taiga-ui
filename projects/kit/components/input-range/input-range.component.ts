@@ -1,5 +1,4 @@
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -51,12 +50,11 @@ import {
         new: '', // TODO(v5): remove after deletion of legacy control
         // TODO: use css :host:has(tui-textfield[data-size]) after browser bump
         '[attr.data-size]': 'size()',
+        // TODO: Delete this line and put `tui-input-range:has(.t-content-end) {--t-icon-lock: none}` to proprietary styles
+        '[style.--t-icon-lock]': 'contentEnd() ? "none" : null',
     },
 })
-export class TuiInputRangeComponent
-    extends TuiControl<readonly [number, number]>
-    implements AfterViewInit
-{
+export class TuiInputRangeComponent extends TuiControl<readonly [number, number]> {
     @ViewChildren(TuiInputNumberDirective, {read: ElementRef})
     private readonly inputNumberRefs: QueryList<ElementRef<HTMLInputElement>> =
         EMPTY_QUERY;
@@ -131,17 +129,11 @@ export class TuiInputRangeComponent
         this.setTextfieldValues(this.value());
     }
 
-    public ngAfterViewInit(): void {
-        if (this.range) {
-            this.range.legacyMode = false; // TODO(v5): remove backward compatibility
-        }
-    }
-
-    protected get hideStartContent(): boolean {
+    protected get contentStartHidden(): boolean {
         return this.interactive() && tuiIsFocused(this.textfieldStart);
     }
 
-    protected get hideEndContent(): boolean {
+    protected get contentEndHidden(): boolean {
         return (
             !this.content()[1] || (this.interactive() && tuiIsFocused(this.textfieldEnd))
         );
@@ -186,11 +178,6 @@ export class TuiInputRangeComponent
         if (!this.isMobile) {
             this.activeTextfield?.focus();
         }
-    }
-
-    protected onActiveThumbChange(activeThumb: 'left' | 'right'): void {
-        // TODO(v5): remove backward compatibility
-        this.lastActiveSide = activeThumb === 'left' ? 'start' : 'end';
     }
 
     protected setTextfieldValues([start, end]: readonly [number, number]): void {

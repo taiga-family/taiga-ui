@@ -41,7 +41,7 @@ export default class Page {
         'Fullscreen',
     ];
 
-    protected closeable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closeable;
+    protected closable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closable;
     protected fullscreen = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.fullscreen;
     protected bar = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.bar;
     protected initial = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.initial;
@@ -59,7 +59,7 @@ export default class Page {
         content: TemplateRef<TuiDialogContext<number, number>>,
         label?: PolymorpheusContent<TuiSheetDialogOptions>,
     ): void {
-        const {required, closeable, fullscreen, stops, initial, bar, offset} = this;
+        const {required, closable, fullscreen, stops, initial, bar, offset} = this;
 
         this.sheetDialogs
             .open(content, {
@@ -70,7 +70,7 @@ export default class Page {
                 bar,
                 offset,
                 required,
-                closeable,
+                closable,
             })
             .pipe(switchMap((response) => this.alerts.open(String(response))))
             .subscribe();

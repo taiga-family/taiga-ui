@@ -6,7 +6,7 @@
   />
 
   <tui-data-list-wrapper
-    *tuiTextfieldDropdown
+    *tuiDropdown
     [items]="items"
   />
 </tui-textfield>

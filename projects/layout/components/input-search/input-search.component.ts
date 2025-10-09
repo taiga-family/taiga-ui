@@ -81,7 +81,7 @@ export class TuiInputSearch implements OnChanges {
         this.placeholder = this.el.placeholder;
         this.parent = this.textfield.el.parentElement;
         this.neighbor = this.textfield.el.nextSibling;
-        this.ref = this.service.addTemplate(this.template);
+        this.ref = this.service.add(this.template);
         this.ref.rootNodes[0]?.insertAdjacentElement('afterbegin', this.textfield.el);
         this.el.focus({preventScroll: true});
         this.el.placeholder = this.i18n()?.placeholder || this.el.placeholder;

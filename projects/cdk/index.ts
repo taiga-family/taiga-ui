@@ -4,6 +4,7 @@ export * from '@taiga-ui/cdk/date-time';
 export * from '@taiga-ui/cdk/directives';
 export * from '@taiga-ui/cdk/observables';
 export * from '@taiga-ui/cdk/pipes';
+export * from '@taiga-ui/cdk/portals';
 export * from '@taiga-ui/cdk/services';
 export * from '@taiga-ui/cdk/tokens';
 export type * from '@taiga-ui/cdk/types';

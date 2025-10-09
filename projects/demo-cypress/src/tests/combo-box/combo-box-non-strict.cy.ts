@@ -42,7 +42,7 @@ interface Country {
                 />
 
                 <tui-data-list-wrapper
-                    *tuiTextfieldDropdown
+                    *tuiDropdown
                     new
                     [items]="countries$ | async"
                 />

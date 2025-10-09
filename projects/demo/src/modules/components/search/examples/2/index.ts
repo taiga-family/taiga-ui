@@ -10,6 +10,7 @@ import {
     TuiDataListWrapper,
     TuiFilter,
     TuiSegmented,
+    TuiSelect,
     TuiSwitch,
 } from '@taiga-ui/kit';
 import {TuiSearch} from '@taiga-ui/layout';
@@ -25,6 +26,7 @@ import {map} from 'rxjs';
         TuiLink,
         TuiSearch,
         TuiSegmented,
+        TuiSelect,
         TuiSwitch,
         TuiTextfield,
     ],

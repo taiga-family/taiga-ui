@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
@@ -19,7 +19,6 @@ import {map} from 'rxjs';
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
         ReactiveFormsModule,
         TuiButton,
         TuiInputNumber,

@@ -4,6 +4,6 @@
     tuiInputDate
     [tuiDateFormat]="{mode, separator}"
   />
-  <tui-calendar *tuiTextfieldDropdown />
+  <tui-calendar *tuiDropdown />
 </tui-textfield>
 ```

@@ -6,7 +6,7 @@
   />
 
   <tui-calendar-month
-    *tuiTextfieldDropdown
+    *tuiDropdown
     [min]="min"
     [max]="max"
     [disabledItemHandler]="disabledItemHandler"

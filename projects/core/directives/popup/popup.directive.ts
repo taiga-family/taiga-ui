@@ -2,7 +2,8 @@ import {
     Directive,
     type EmbeddedViewRef,
     inject,
-    Input,
+    input,
+    type OnChanges,
     type OnDestroy,
     TemplateRef,
 } from '@angular/core';
@@ -13,22 +14,22 @@ import {TuiPopupService} from './popup.service';
     standalone: true,
     selector: 'ng-template[tuiPopup]',
 })
-export class TuiPopup implements OnDestroy {
+export class TuiPopup implements OnChanges, OnDestroy {
     private readonly template = inject(TemplateRef);
     private readonly service = inject(TuiPopupService);
+    private ref?: EmbeddedViewRef<unknown>;
 
-    private viewRef?: EmbeddedViewRef<unknown>;
+    public readonly show = input(false, {alias: 'tuiPopup'});
 
-    @Input()
-    public set tuiPopup(show: boolean) {
-        this.viewRef?.destroy();
+    public ngOnChanges(): void {
+        this.ref?.destroy();
 
-        if (show) {
-            this.viewRef = this.service.addTemplate(this.template);
+        if (this.show()) {
+            this.ref = this.service.add(this.template);
         }
     }
 
     public ngOnDestroy(): void {
-        this.viewRef?.destroy();
+        this.ref?.destroy();
     }
 }

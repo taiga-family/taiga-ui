@@ -1,10 +1,10 @@
 <tui-doc-page
     header="PdfViewer"
-    package="KIT"
+    package="LAYOUT"
     type="components"
 >
     <ng-template pageTab>
-        <p>Custom dialog to preview PDF</p>
+        <p>Wrapper component for viewing PDF files in an iframe</p>
 
         <tui-notification
             appearance="warning"
@@ -36,38 +36,65 @@
             </a>
         </tui-notification>
 
-        <tui-doc-example
-            id="base"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
-
-        <tui-doc-example
-            id="component"
-            heading="Component"
-            [component]="2 | tuiComponent"
-            [content]="example2"
-        />
-
-        <tui-doc-example
-            id="directive"
-            heading="Directive"
-            [component]="3 | tuiComponent"
-            [content]="3 | tuiExample"
-        />
+        @for (example of examples; track example; let index = $index) {
+            <tui-doc-example
+                [component]="index + 1 | tuiComponent"
+                [content]="index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            >
+                <ng-template #description>
+                    @switch (index) {
+                        @case (0) {
+                            <span>
+                                Note that you need to bypass sanitizer in order to use the URL so make sure you trust it
+                            </span>
+                        }
+                        @case (1) {
+                            <span>
+                                Use
+                                <a
+                                    fragment="responsive"
+                                    tuiLink
+                                    [routerLink]="routes.SheetDialog"
+                                >
+                                    ResponsiveDialog
+                                </a>
+                                to display iframe in a
+                                <a
+                                    tuiLink
+                                    [routerLink]="routes.SheetDialog"
+                                >
+                                    SheetDialog
+                                </a>
+                                on mobile devices
+                            </span>
+                        }
+                        @case (2) {
+                            <span>
+                                Use
+                                <a
+                                    tuiLink
+                                    [routerLink]="routes.Loader"
+                                >
+                                    Loader
+                                </a>
+                                and
+                                <a
+                                    tuiLink
+                                    [routerLink]="routes.BlockStatus"
+                                >
+                                    BlockStatus
+                                </a>
+                                to display additional states
+                            </span>
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
-    <ng-template pageTab="Setup">
-        <ol class="tui-list tui-list_ordered">
-            <li class="tui-list__item">
-                Inject service and show dialog:
-
-                <tui-doc-code
-                    filename="my.component.ts"
-                    [code]="exampleService"
-                />
-            </li>
-        </ol>
-    </ng-template>
+    <tui-setup *pageTab="'Setup'" />
 </tui-doc-page>

@@ -37,8 +37,8 @@ export default class Example {
             }),
         ),
         {
-            size: 'fullscreen',
-            closeable: false,
+            appearance: 'fullscreen',
+            closable: false,
             data: {
                 single: true,
                 min: TuiDay.currentLocal(),

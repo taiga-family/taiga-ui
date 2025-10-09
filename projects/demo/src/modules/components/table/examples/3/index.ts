@@ -18,6 +18,7 @@ import {
     TuiDataListWrapper,
     TuiInputDate,
     TuiInputNumber,
+    TuiSelect,
     TuiTextarea,
 } from '@taiga-ui/kit';
 
@@ -42,6 +43,7 @@ interface Item {
         TuiLet,
         TuiNumberFormat,
         TuiScrollbar,
+        TuiSelect,
         TuiTable,
         TuiTextarea,
         TuiTextfield,

@@ -44,7 +44,7 @@ interface User {
                 />
 
                 <tui-data-list-wrapper
-                    *tuiTextfieldDropdown
+                    *tuiDropdown
                     new
                     [itemContent]="content"
                     [items]="options"

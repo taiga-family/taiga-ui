@@ -6,7 +6,7 @@
     }
     @if (!mobile) {
         <tui-data-list-wrapper
-            *tuiTextfieldDropdown
+            *tuiDropdown
             new
             [items]="items"
             [labels]="labels"
@@ -16,7 +16,7 @@
     <ng-container *ngTemplateOutlet="options; context: {$implicit: items}" />
     @if (!mobile) {
         <tui-data-list-wrapper
-            *tuiTextfieldDropdown
+            *tuiDropdown
             new
             [items]="$any(items)"
         />

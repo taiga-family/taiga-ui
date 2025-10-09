@@ -1,13 +1,8 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    type DebugElement,
-    ViewChild,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {provideTaiga, TuiRoot} from '@taiga-ui/core';
+import {provideTaiga, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {
     TUI_ENGLISH_LANGUAGE,
     TUI_FRENCH_LANGUAGE,
@@ -27,15 +22,18 @@ import {of} from 'rxjs';
 describe('InputPhoneInternational', () => {
     @Component({
         standalone: true,
-        imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot],
+        imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot, TuiTextfield],
         template: `
             <tui-root>
-                <tui-input-phone-international
-                    [countries]="countries"
-                    [formControl]="control"
-                    [readOnly]="readOnly"
-                    [(countryIsoCode)]="countryIsoCode"
-                />
+                <tui-textfield>
+                    <input
+                        tuiInputPhoneInternational
+                        [countries]="countries"
+                        [formControl]="control"
+                        [readOnly]="readOnly"
+                        [(countryIsoCode)]="countryIsoCode"
+                    />
+                </tui-textfield>
             </tui-root>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
@@ -93,7 +91,7 @@ describe('InputPhoneInternational', () => {
         initializeTestModule();
 
         it('should switch country calling code and keeps all rest digits', async () => {
-            component.onItemClick('UA');
+            component['onItemClick']('UA');
 
             fixture.detectChanges();
             await fixture.whenStable();
@@ -111,7 +109,7 @@ describe('InputPhoneInternational', () => {
                 data,
             });
 
-            component.onPaste(event);
+            component['onPaste'](event);
             fixture.detectChanges();
 
             inputPO.sendText(data);
@@ -191,7 +189,7 @@ describe('InputPhoneInternational', () => {
             initializeTestModule(TUI_RUSSIAN_LANGUAGE);
 
             it('displays country names in Russian inside dropdown', () => {
-                getCountrySelector().nativeElement.click();
+                clickCountrySelector();
                 fixture.detectChanges();
 
                 expect(getDropdownCountryNames()).toEqual([
@@ -209,7 +207,7 @@ describe('InputPhoneInternational', () => {
             initializeTestModule(TUI_ENGLISH_LANGUAGE);
 
             it('displays country names in English inside dropdown', () => {
-                getCountrySelector().nativeElement.click();
+                clickCountrySelector();
                 fixture.detectChanges();
 
                 expect(getDropdownCountryNames()).toEqual([
@@ -240,14 +238,14 @@ describe('InputPhoneInternational', () => {
 
     function getDropdownCountryNames(): string[] {
         const countryNameContainers =
-            fixture.debugElement.queryAll(By.css('.t-name')) || [];
+            fixture.debugElement.queryAll(By.css('[tuiTitle]')) || [];
 
         return countryNameContainers.map((container) =>
             container.nativeElement.textContent?.trim(),
         );
     }
 
-    function getCountrySelector(): DebugElement {
-        return fixture.debugElement.query(By.css('.t-select select'));
+    function clickCountrySelector(): void {
+        return fixture.debugElement.query(By.css('.t-ipi-select')).nativeElement.click();
     }
 });

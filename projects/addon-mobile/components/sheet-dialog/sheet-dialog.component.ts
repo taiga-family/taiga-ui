@@ -34,7 +34,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
     host: {
         '[attr.data-appearance]': 'context.appearance',
         '[style.--tui-offset.px]': 'context.offset',
-        '[class._closeable]': 'context.closeable',
+        '[class._closeable]': 'context.closable',
         '[class._fullscreen]': 'context.fullscreen === true',
         '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
         '(document:touchend.zoneless)': 'onPointerChange(-1)',
@@ -62,15 +62,15 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         .pipe(
             tuiZonefull(),
             exhaustMap(() => {
-                if (isObservable(this.context.closeable)) {
+                if (isObservable(this.context.closable)) {
                     if (this.el.scrollTop <= 0) {
                         this.el.scrollTo({top: this.initial, behavior: 'smooth'});
                     }
 
-                    return this.context.closeable.pipe(take(1));
+                    return this.context.closable.pipe(take(1));
                 }
 
-                return of(this.context.closeable);
+                return of(this.context.closable);
             }),
             filter(Boolean),
             takeUntilDestroyed(),
@@ -90,7 +90,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     }
 
     private get initial(): number {
-        if (!this.context.closeable) {
+        if (!this.context.closable) {
             return 0;
         }
 

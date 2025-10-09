@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component, computed, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -12,7 +11,7 @@ interface Data {
 
 @Component({
     standalone: true,
-    imports: [NgForOf, TuiTable],
+    imports: [TuiTable],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

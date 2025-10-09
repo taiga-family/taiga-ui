@@ -5,7 +5,7 @@ import {tuiTypedFromEvent, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables
 import {
     tuiGetActualTarget,
     tuiGetDocumentOrShadowRoot,
-    tuiIsNativeMouseFocusable,
+    tuiIsMouseFocusable,
 } from '@taiga-ui/cdk/utils';
 import {
     distinctUntilChanged,
@@ -36,7 +36,7 @@ function isValidFocusout(target: any, removedElement: Element | null = null): bo
         // Not due to element being removed from DOM
         !removedElement?.contains(target) &&
         // Not due to scrollable element became non-scrollable
-        tuiIsNativeMouseFocusable(target)
+        tuiIsMouseFocusable(target)
     );
 }
 
