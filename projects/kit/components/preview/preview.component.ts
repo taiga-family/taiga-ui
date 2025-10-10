@@ -40,7 +40,7 @@ const ROTATION_ANGLE = 90;
         WaResizeObserver,
     ],
     templateUrl: './preview.template.html',
-    styleUrls: ['./preview.style.less'],
+    styleUrl: './preview.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewComponent {

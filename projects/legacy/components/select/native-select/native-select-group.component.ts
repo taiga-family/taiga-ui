@@ -14,7 +14,7 @@ import {type TuiSelectDirective} from '../select.directive';
     standalone: false,
     selector: 'select[tuiSelect][labels]:not([multiple])',
     templateUrl: './native-select-group.template.html',
-    styleUrls: ['./native-select.style.less'],
+    styleUrl: './native-select.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataList(TuiNativeSelectGroupComponent),

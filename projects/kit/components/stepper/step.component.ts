@@ -13,7 +13,7 @@ import {TuiStepperComponent} from './stepper.component';
         'button[tuiStep], a[tuiStep]:not([routerLink]), a[tuiStep][routerLink][routerLinkActive]',
     imports: [TuiIcon],
     templateUrl: './step.template.html',
-    styleUrls: ['./step.style.less'],
+    styleUrl: './step.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         type: 'button',

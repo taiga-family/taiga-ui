@@ -11,7 +11,7 @@ const COPIED_TIMEOUT = 1500;
     selector: 'tui-doc-copy',
     imports: [TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocCopy {

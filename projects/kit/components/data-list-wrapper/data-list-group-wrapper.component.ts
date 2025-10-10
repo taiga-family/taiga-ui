@@ -10,7 +10,7 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
     selector: 'tui-data-list-wrapper[labels]',
     imports: [PolymorpheusOutlet, TuiDataList, TuiElement, TuiLoader],
     templateUrl: './data-list-group-wrapper.template.html',
-    styleUrls: ['./data-list-wrapper.style.less'],
+    styleUrl: './data-list-wrapper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsDataListAccessor(TuiDataListGroupWrapperComponent)],
 })

@@ -6,7 +6,7 @@ import {TuiLike, tuiLikeOptionsProvider} from '@taiga-ui/kit';
 @Component({
     imports: [TuiLike],
     templateUrl: './index.html',
-    styles: [':host { display: flex; gap: 1rem; align-items: center; }'],
+    styles: ':host { display: flex; gap: 1rem; align-items: center; }',
     encapsulation,
     changeDetection,
     providers: [

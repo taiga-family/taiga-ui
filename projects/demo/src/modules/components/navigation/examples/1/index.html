@@ -1,6 +1,6 @@
 <!-- Ignore this part, it is only here to position drawer inside the example block -->
 <div class="custom-portal">
-    <ng-container #viewContainer />
+    <ng-container #vcr />
 </div>
 <header tuiNavigationHeader>
     <button
@@ -284,8 +284,8 @@
             [style.position]="'sticky'"
         >
             <tui-breadcrumbs [itemsLimit]="10">
-                @for (item of breadcrumbs; track item; let last = $last) {
-                    @if (last) {
+                @for (item of breadcrumbs; track item) {
+                    @if ($last) {
                         <strong
                             *tuiItem
                             tuiFade
@@ -293,7 +293,7 @@
                             {{ item }}
                         </strong>
                     }
-                    @if (!last) {
+                    @if (!$last) {
                         <button
                             *tuiItem
                             tuiLink

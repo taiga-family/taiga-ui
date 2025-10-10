@@ -11,10 +11,10 @@
     (waResizeObserver)="$event[0] && onItems($event[0])"
 >
     <ng-content select="label" />
-    @for (item of control?.value; track item; let index = $index) {
+    @for (item of control?.value; track item) {
         <ng-template
             [polymorpheusOutlet]="component"
-            [polymorpheusOutletContext]="{$implicit: {item, index}}"
+            [polymorpheusOutletContext]="{$implicit: {item, index: $index}}"
         />
     }
     <span

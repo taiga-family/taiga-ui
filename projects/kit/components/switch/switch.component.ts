@@ -15,7 +15,7 @@ import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
     standalone: true,
     selector: 'input[type="checkbox"][tuiSwitch]',
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/switch.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/switch.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_RADIO_OPTIONS, TUI_SWITCH_OPTIONS)],

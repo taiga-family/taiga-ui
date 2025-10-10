@@ -33,7 +33,7 @@ class PortalHost implements TuiRectAccessor {
 @Component({
     imports: [FormsModule, PortalHost, TuiButton, TuiHint, TuiLink, TuiSegmented],
     templateUrl: './index.html',
-    styleUrls: ['../1/index.less'],
+    styleUrl: '../1/index.less',
     encapsulation,
     changeDetection,
 })

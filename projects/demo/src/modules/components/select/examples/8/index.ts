@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -18,7 +17,6 @@ interface Character {
 
 @Component({
     imports: [
-        NgIf, // TODO: use control-flow syntax
         ReactiveFormsModule,
         TuiChevron,
         TuiDataListWrapper,

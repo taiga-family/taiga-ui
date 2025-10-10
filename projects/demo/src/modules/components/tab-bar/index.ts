@@ -10,7 +10,7 @@ import TuiTabBarExample from './examples/1';
 @Component({
     imports: [FormsModule, TuiCheckbox, TuiDemo, TuiLabel, TuiTabBarExample, TuiPopup],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

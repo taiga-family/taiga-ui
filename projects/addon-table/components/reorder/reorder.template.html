@@ -2,8 +2,8 @@
     class="t-wrapper"
     [(order)]="order"
 >
-    @for (item of unsortedItems; track item; let index = $index) {
-        <tui-tile [style.order]="order.get(index)">
+    @for (item of unsortedItems; track item) {
+        <tui-tile [style.order]="order.get($index)">
             <div
                 class="t-item"
                 [class.t-item_disabled]="!isEnabled(item)"
@@ -16,7 +16,7 @@
                         class="t-icon"
                         [icon]="options.icons.drag"
                     />
-                    <ng-container *polymorpheusOutlet="content as template; context: {$implicit: item, index: index}">
+                    <ng-container *polymorpheusOutlet="content as template; context: {$implicit: item, index: $index}">
                         {{ template }}
                     </ng-container>
                 </div>
@@ -28,8 +28,8 @@
                     class="t-button"
                     [iconStart]="getIcon(item)"
                     (click)="toggle(item)"
-                    (keydown.arrowDown.prevent)="move(index, 1)"
-                    (keydown.arrowUp.prevent)="move(index, -1)"
+                    (keydown.arrowDown.prevent)="move($index, 1)"
+                    (keydown.arrowUp.prevent)="move($index, -1)"
                 >
                     {{ showHideText$ | async }}
                 </button>

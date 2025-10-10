@@ -13,7 +13,7 @@ import {TuiDocNavigation} from '../../navigation/navigation.component';
     selector: 'header[tuiDocHeader]',
     imports: [PolymorpheusOutlet, TuiButton, TuiDocNavigation, TuiDrawer, TuiPopup],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocHeader {

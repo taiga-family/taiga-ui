@@ -16,7 +16,7 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
     selector: 'tui-push',
     imports: [AsyncPipe, TuiButton, TuiFormatDatePipe],
     templateUrl: './push.template.html',
-    styleUrls: ['./push.style.less'],
+    styleUrl: './push.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiButtonOptionsProvider({size: 's', appearance: 'secondary'})],
     host: {

@@ -59,6 +59,7 @@ export default defineConfig({
         indexHtmlFile: 'src/support/component-index.html',
         specPattern: 'src/tests/**/*.cy.ts',
         experimentalSingleTabRunMode: true,
+        justInTimeCompile: false,
         setupNodeEvents(on, config) {
             getCompareSnapshotsPlugin(on, config);
 

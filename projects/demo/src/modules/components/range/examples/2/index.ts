@@ -9,7 +9,7 @@ import {TuiRange} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, I18nPluralPipe, JsonPipe, TuiIcon, TuiRange],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

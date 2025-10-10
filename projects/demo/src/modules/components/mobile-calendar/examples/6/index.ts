@@ -8,7 +8,7 @@ import {TUI_CHOOSE_DAY_OR_RANGE_TEXTS} from '@taiga-ui/kit';
 @Component({
     imports: [TuiMobileCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [

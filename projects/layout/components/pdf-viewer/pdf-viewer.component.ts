@@ -19,7 +19,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
     selector: 'tui-pdf-viewer',
     imports: [NgTemplateOutlet, TuiAppBar, TuiButton],
     templateUrl: './pdf-viewer.template.html',
-    styleUrls: ['./pdf-viewer.style.less'],
+    styleUrl: './pdf-viewer.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

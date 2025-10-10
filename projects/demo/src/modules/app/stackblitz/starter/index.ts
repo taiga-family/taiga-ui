@@ -16,7 +16,7 @@ import {appPrefix} from '../utils';
 @Component({
     imports: [TuiDemo, TuiLoader],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiStackblitzService],
 })

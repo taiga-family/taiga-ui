@@ -10,7 +10,7 @@ import {SCREENSHOT_BOT_LINK, SCREENSHOT_BOT_NAME} from '../testing/screenshot-gi
     selector: 'related',
     imports: [TuiAppearance, TuiCardLarge, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

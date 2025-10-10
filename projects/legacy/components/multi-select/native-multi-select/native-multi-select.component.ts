@@ -8,7 +8,7 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select';
     standalone: false,
     selector: 'select[multiple][tuiSelect]:not([labels])',
     templateUrl: './native-multi-select.template.html',
-    styleUrls: ['./native-multi-select.style.less'],
+    styleUrl: './native-multi-select.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataList(TuiNativeMultiSelectComponent),

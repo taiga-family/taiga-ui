@@ -16,7 +16,7 @@ import {TuiAccordionDirective} from './accordion.directive';
     standalone: true,
     selector: 'tui-accordion',
     template: '<ng-content />',
-    styleUrls: ['./accordion.style.less'],
+    styleUrl: './accordion.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiGroupOptionsProvider({orientation: 'vertical', collapsed: true})],

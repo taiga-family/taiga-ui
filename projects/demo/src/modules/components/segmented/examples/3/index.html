@@ -3,10 +3,10 @@
         class="colors"
         [(activeItemIndex)]="active"
     >
-        @for (button of buttons; track button; let index = $index) {
+        @for (button of buttons; track button) {
             <button
                 type="button"
-                [class.active]="index === active"
+                [class.active]="$index === active"
             >
                 {{ button }}
             </button>

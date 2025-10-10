@@ -17,7 +17,7 @@ import {TUI_BUTTON_OPTIONS} from './button.options';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/button.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/button.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-button'},

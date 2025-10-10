@@ -43,7 +43,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     standalone: false,
     selector: 'tui-input-range',
     templateUrl: './input-range.template.html',
-    styleUrls: ['./input-range.style.less'],
+    styleUrl: './input-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputRangeComponent),

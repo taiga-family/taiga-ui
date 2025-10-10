@@ -23,7 +23,7 @@ import {TUI_APP_BAR_PROVIDERS} from './app-bar.providers';
     selector: 'tui-app-bar',
     imports: [AsyncPipe, TuiFade],
     templateUrl: './app-bar.template.html',
-    styleUrls: ['./app-bar.style.less'],
+    styleUrl: './app-bar.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_APP_BAR_PROVIDERS,

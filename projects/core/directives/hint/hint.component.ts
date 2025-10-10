@@ -46,7 +46,7 @@ const GAP = 8;
             [innerHTML]="text"
         ></span>
     `,
-    styleUrls: ['./hint.style.less'],
+    styleUrl: './hint.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_HINT_PROVIDERS, tuiButtonOptionsProvider({size: 's'})],
     hostDirectives: [TuiAppearance, TuiAnimated],

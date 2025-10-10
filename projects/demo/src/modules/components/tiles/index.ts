@@ -7,7 +7,7 @@ import {TuiTiles} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiTiles, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

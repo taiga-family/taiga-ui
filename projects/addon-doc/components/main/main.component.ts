@@ -20,7 +20,7 @@ import {TuiDocNavigation} from '../navigation/navigation.component';
     selector: 'tui-doc-main',
     imports: [RouterOutlet, TuiButton, TuiDocHeader, TuiDocNavigation, TuiIcon, TuiRoot],
     templateUrl: './main.template.html',
-    styleUrls: ['./main.style.less'],
+    styleUrl: './main.style.less',
     encapsulation: ViewEncapsulation.None,
     // @note: This one was default on purpose, so we can test demo in default mode.
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection

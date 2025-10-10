@@ -27,10 +27,10 @@
             to learn how to use confirm to prevent data loss on forms inside other modals
         </tui-notification>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
                 [description]="null"
                 [heading]="example"
                 [id]="example | tuiKebab"

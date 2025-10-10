@@ -477,6 +477,18 @@ describe('InputRange', () => {
                         `32-input-range-${nonInteractiveProp}-start-has-content--end-no-content.png`,
                     );
                 });
+
+                test('START textfield without content + END textfield has non-primitive content', async ({
+                    page,
+                }) => {
+                    await tuiGoto(
+                        page,
+                        `${DemoRoute.InputRange}/API?content$=5&${nonInteractiveProp}=true`,
+                    );
+                    await expect(example).toHaveScreenshot(
+                        `33-input-range-${nonInteractiveProp}-start-no-content--end-non-primitive-content.png`,
+                    );
+                });
             });
         });
     });

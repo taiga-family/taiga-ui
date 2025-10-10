@@ -12,7 +12,7 @@ export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
     selector: 'tui-axes',
     imports: [TuiRepeatTimes],
     templateUrl: './axes.template.html',
-    styleUrls: ['./axes.style.less'],
+    styleUrl: './axes.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         dir: 'ltr',

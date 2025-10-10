@@ -10,7 +10,7 @@ import {TUI_DARK_MODE} from '@taiga-ui/core';
     selector: 'table[colors]',
     imports: [ClipboardModule, TuiDocCopy],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export class TableColors {

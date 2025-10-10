@@ -13,7 +13,7 @@ import {TUI_CELL_OPTIONS} from './cell.options';
 
 @Component({
     template: '',
-    styleUrls: ['./cell.styles.less'],
+    styleUrl: './cell.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-cell'},

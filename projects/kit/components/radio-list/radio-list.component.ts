@@ -28,7 +28,7 @@ const ERROR: ValidatorFn = () => ({error: 'Invalid'});
     selector: 'tui-radio-list',
     imports: [FormsModule, PolymorpheusOutlet, TuiRadio, TuiValidator],
     templateUrl: './radio-list.template.html',
-    styleUrls: ['./radio-list.style.less'],
+    styleUrl: './radio-list.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsControl(TuiRadioList)],
