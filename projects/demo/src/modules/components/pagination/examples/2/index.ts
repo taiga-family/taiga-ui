@@ -13,7 +13,7 @@ import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/lega
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

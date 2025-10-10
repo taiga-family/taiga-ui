@@ -8,7 +8,7 @@ import {TuiInputChip} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputChip, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     host: {

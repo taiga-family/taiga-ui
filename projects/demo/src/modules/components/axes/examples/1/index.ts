@@ -6,7 +6,7 @@ import {TuiAxes, type TuiLineHandler} from '@taiga-ui/addon-charts';
 @Component({
     imports: [TuiAxes],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

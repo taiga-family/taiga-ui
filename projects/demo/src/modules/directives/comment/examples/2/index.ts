@@ -6,7 +6,7 @@ import {TuiComment} from '@taiga-ui/kit';
 @Component({
     imports: [TuiComment],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

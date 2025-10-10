@@ -219,7 +219,7 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule, TuiRoot],
   selector: 'standalone-test-root',
   templateUrl: './app.template.html',
-  styleUrls: ['./app.component.less'],
+  styleUrl: './app.component.less',
 })
 export class App {
   title = 'standalone-test';
@@ -350,7 +350,7 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   selector: 'standalone-test-root',
   templateUrl: './app.template.html',
-  styleUrls: ['./app.component.less'],
+  styleUrl: './app.component.less',
 })
 export class App {
   title = 'standalone-test';

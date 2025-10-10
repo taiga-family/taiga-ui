@@ -13,7 +13,7 @@ import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
     standalone: true,
     selector: 'search[tuiSearch]',
     template: '<ng-content/>',
-    styleUrls: ['./search.styles.less'],
+    styleUrl: './search.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

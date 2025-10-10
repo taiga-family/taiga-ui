@@ -9,7 +9,7 @@ import {TuiSurface} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiRepeatTimes, TuiSurface, TuiRipple],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

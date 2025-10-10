@@ -38,7 +38,7 @@ import {TuiCalendarYear} from './calendar-year.component';
         TuiScrollbar,
     ],
     templateUrl: './calendar.template.html',
-    styleUrls: ['./calendar.style.less'],
+    styleUrl: './calendar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendar)],
     host: {

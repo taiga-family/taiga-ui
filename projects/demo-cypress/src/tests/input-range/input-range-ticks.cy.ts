@@ -25,7 +25,7 @@ describe('InputRange | With segments + tick labels', () => {
                 </div>
             </tui-root>
         `,
-        styleUrls: ['./slider-ticks.styles.less'],
+        styleUrl: './slider-ticks.styles.less',
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class SandBox {

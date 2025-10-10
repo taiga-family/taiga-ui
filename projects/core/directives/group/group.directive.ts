@@ -13,7 +13,7 @@ import {TUI_GROUP_OPTIONS} from './group.options';
 
 @Component({
     template: '',
-    styleUrls: ['./group.style.less'],
+    styleUrl: './group.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-group'},

@@ -40,12 +40,17 @@ const config: KnipConfig = {
         '**/app/logo/logo.component.ts',
         '**/app/server-error-handler.ts',
         '**/app/getting-started/index.ts',
-        '**/demo-playwright/utils/**/*.ts',
         '**/testing/visual-testing/**/*.ts',
         '**/projects/testing/setup-jest/index.ts',
         '**/projects/cdk/date-time/test/helpers.ts',
         '**/demo/src/modules/components/icons-group/*.ts',
     ],
+    workspaces: {
+        'projects/demo-playwright': {
+            entry: ['utils/**/*.ts'],
+            ignore: ['**/performance/dropdown/utils.ts'],
+        },
+    },
 };
 
 export default config;

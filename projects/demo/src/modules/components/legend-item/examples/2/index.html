@@ -11,15 +11,15 @@
     />
 
     <div class="legend">
-        @for (label of labels; track label; let index = $index) {
+        @for (label of labels; track label) {
             <tui-legend-item
                 #item
                 class="item"
-                [color]="`var(--tui-chart-categorical-0${index})`"
-                [disabled]="!isEnabled(index)"
+                [color]="`var(--tui-chart-categorical-0${$index})`"
+                [disabled]="!isEnabled($index)"
                 [text]="label"
-                (click)="onClick(index)"
-                (keydown.delete)="toggle(index)"
+                (click)="onClick($index)"
+                (keydown.delete)="toggle($index)"
             >
                 <input
                     size="s"
@@ -27,12 +27,12 @@
                     type="checkbox"
                     [checked]="!item.disabled"
                 />
-                <span>{{ data[index] || 0 | tuiAmount: 'RUB' | async }}</span>
+                <span>{{ data[$index] || 0 | tuiAmount: 'RUB' | async }}</span>
                 <tui-icon
                     icon="@tui.x"
                     class="disable"
                     [class.disable_rotated]="item.disabled"
-                    (click.stop)="toggle(index)"
+                    (click.stop)="toggle($index)"
                 />
             </tui-legend-item>
         }

@@ -18,7 +18,7 @@ import {TuiAccordion, TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
         TuiRepeatTimes,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

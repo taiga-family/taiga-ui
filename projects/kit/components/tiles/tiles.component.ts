@@ -21,7 +21,7 @@ import {TUI_TILES_REORDER} from './tiles.tokens';
     standalone: true,
     selector: 'tui-tiles',
     template: '<ng-content />',
-    styleUrls: ['./tiles.style.less'],
+    styleUrl: './tiles.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

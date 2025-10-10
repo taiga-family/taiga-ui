@@ -10,7 +10,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     selector: 'tui-error',
     imports: [PolymorpheusOutlet, TuiAnimated],
     templateUrl: './error.template.html',
-    styleUrls: ['./error.style.less'],
+    styleUrl: './error.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._error]': 'content()',

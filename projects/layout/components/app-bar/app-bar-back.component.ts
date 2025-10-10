@@ -11,7 +11,7 @@ import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
     selector: 'button[tuiAppBarBack], a[tuiAppBarBack]',
     imports: [TuiIcon],
     templateUrl: './app-bar-back.template.html',
-    styleUrls: ['./app-bar-back.style.less'],
+    styleUrl: './app-bar-back.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TuiAppBarBack)],
     hostDirectives: [TuiWithAppearance],

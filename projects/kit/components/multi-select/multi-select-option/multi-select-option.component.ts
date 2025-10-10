@@ -21,15 +21,13 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
             />
         }
     `,
-    styles: [
-        `
-            :host-context(tui-dropdown-mobile) input,
-            :host-context(tui-sheet-dialog) input {
-                order: 100;
-                margin-inline-start: auto;
-            }
-        `,
-    ],
+    styles: `
+        :host-context(tui-dropdown-mobile) input,
+        :host-context(tui-sheet-dialog) input {
+            order: 100;
+            margin-inline-start: auto;
+        }
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMultiSelectOption<T> {

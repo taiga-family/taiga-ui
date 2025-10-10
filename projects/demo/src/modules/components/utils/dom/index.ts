@@ -6,7 +6,7 @@ import {TuiLink} from '@taiga-ui/core';
 @Component({
     imports: [TuiDemo, TuiLink],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

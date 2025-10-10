@@ -36,7 +36,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     standalone: false,
     selector: 'tui-input',
     templateUrl: './input.template.html',
-    styleUrls: ['./input.style.less'],
+    styleUrl: './input.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TUI_VALUE_ACCESSOR_PROVIDER,

@@ -7,7 +7,7 @@ import {TuiCalendar} from '@taiga-ui/core';
 @Component({
     imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -7,7 +7,7 @@ import {tuiCeil} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiAxes, TuiBarChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

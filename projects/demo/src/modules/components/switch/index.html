@@ -12,11 +12,11 @@
             CSS variable to customize color of native control emulation
         </tui-notification>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
-                [description]="index ? null : platformDescription"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$index ? null : platformDescription"
                 [heading]="example"
                 [id]="example | tuiKebab"
             >

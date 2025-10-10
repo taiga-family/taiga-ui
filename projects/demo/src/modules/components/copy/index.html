@@ -7,16 +7,16 @@
         This component provides an easy way to copy text content to the clipboard. It displays the content normally and
         shows a copy button on hover, with visual feedback when content is copied.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
                 [description]="description"
                 [heading]="example"
                 [id]="example | tuiKebab"
             >
                 <ng-template #description>
-                    @switch (index) {
+                    @switch ($index) {
                         @case (0) {
                             Using component in various scenarios.
                         }

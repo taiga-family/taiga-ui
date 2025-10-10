@@ -15,10 +15,10 @@
             The component automatically adjusts to the mobile device
         </tui-notification>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
                 [heading]="example"
                 [id]="example | tuiKebab"
             />

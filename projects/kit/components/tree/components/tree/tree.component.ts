@@ -25,7 +25,7 @@ import {TuiTreeItem} from '../tree-item/tree-item.component';
     selector: 'tui-tree',
     imports: [AsyncPipe, PolymorpheusOutlet, TuiLet, TuiTreeItem, TuiTreeNode],
     templateUrl: './tree.template.html',
-    styleUrls: ['./tree.style.less'],
+    styleUrl: './tree.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_TREE_NODE, TuiTreeComponent)],
     host: {role: 'tree'},

@@ -17,7 +17,7 @@ import {TuiBadgedContent, TuiBadgeNotification, TuiChip, TuiFade} from '@taiga-u
         TuiFade,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

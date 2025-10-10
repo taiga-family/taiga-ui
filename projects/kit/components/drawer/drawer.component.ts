@@ -8,7 +8,7 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
     selector: 'tui-drawer',
     imports: [TuiScrollbar],
     templateUrl: './drawer.template.html',
-    styleUrls: ['./drawer.style.less'],
+    styleUrl: './drawer.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiButtonOptionsProvider({

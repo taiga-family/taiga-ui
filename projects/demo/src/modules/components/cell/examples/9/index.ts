@@ -26,7 +26,7 @@ import {TuiBadgeNotification, TuiCheckbox, TuiTooltip} from '@taiga-ui/kit';
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

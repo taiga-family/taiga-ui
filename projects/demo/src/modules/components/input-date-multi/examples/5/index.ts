@@ -11,7 +11,7 @@ const DOT: [string] = ['var(--tui-status-positive)'];
 @Component({
     imports: [FormsModule, TuiInputDateMulti, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

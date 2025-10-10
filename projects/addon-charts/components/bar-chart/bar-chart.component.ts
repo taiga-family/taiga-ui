@@ -30,7 +30,7 @@ import {type Observable} from 'rxjs';
     selector: 'tui-bar-chart',
     imports: [AsyncPipe, TuiBarSet, TuiHint, TuiMapperPipe],
     templateUrl: './bar-chart.template.html',
-    styleUrls: ['./bar-chart.style.less'],
+    styleUrl: './bar-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [tuiHintOptionsProvider({direction: 'top'})],
 })

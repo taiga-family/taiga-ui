@@ -21,7 +21,7 @@ import {TUI_BLOCK_OPTIONS} from './block.options';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/block.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/block.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-block'},

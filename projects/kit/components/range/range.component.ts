@@ -33,7 +33,7 @@ import {TuiRangeChange} from './range-change.directive';
     selector: 'tui-range',
     imports: [FormsModule, TuiSlider],
     templateUrl: './range.template.html',
-    styleUrls: ['./range.style.less'],
+    styleUrl: './range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider([0, 0])],
     hostDirectives: [

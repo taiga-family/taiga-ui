@@ -8,17 +8,17 @@
 
         <tui-notification>Resize the screen to see extra items disappear</tui-notification>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
                 [description]="description"
                 [fullsize]="true"
                 [heading]="example"
                 [id]="example | tuiKebab"
             >
                 <ng-template #description>
-                    @switch (index) {
+                    @switch ($index) {
                         @case (0) {
                             Hiding excessive items and showing text.
                         }

@@ -9,7 +9,7 @@ import {TuiAvatar, TuiCarousel} from '@taiga-ui/kit';
 @Component({
     imports: [AsyncPipe, TuiAmountPipe, TuiAvatar, TuiButton, TuiCarousel, TuiLoader],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

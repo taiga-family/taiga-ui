@@ -16,7 +16,7 @@ export const [TUI_HEADER_OPTIONS, tuiHeaderOptionsProvider] = tuiCreateOptions<{
 
 @Component({
     template: '',
-    styleUrls: ['./header.styles.less'],
+    styleUrl: './header.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-header'},

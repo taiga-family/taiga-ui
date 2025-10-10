@@ -8,7 +8,7 @@ import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
     selector: 'logo',
     imports: [RouterLink, TuiLink],
     templateUrl: './logo.template.html',
-    styleUrls: ['./logo.style.less'],
+    styleUrl: './logo.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Logo {

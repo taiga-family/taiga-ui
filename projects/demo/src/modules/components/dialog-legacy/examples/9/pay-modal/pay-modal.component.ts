@@ -56,7 +56,7 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         TuiTextfield,
     ],
     templateUrl: './pay-modal.component.html',
-    styleUrls: ['./pay-modal.component.less'],
+    styleUrl: './pay-modal.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PayModal implements OnInit {

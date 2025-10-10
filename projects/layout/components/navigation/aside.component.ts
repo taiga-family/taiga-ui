@@ -26,7 +26,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
         </tui-scrollbar>
         <ng-content select="footer" />
     `,
-    styleUrls: ['./aside.style.less'],
+    styleUrl: './aside.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

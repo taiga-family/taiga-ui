@@ -13,7 +13,7 @@ import {type TuiPushOptions} from './push.options';
     selector: 'tui-push-alert',
     imports: [PolymorpheusOutlet, TuiButton, TuiIcon, TuiLink, TuiPushComponent],
     templateUrl: './push-alert.template.html',
-    styleUrls: ['./push-alert.style.less'],
+    styleUrl: './push-alert.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
     host: {

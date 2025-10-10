@@ -8,7 +8,7 @@ import {TuiInputSlider} from '@taiga-ui/kit';
 @Component({
     imports: [TuiIcon, TuiTextfield, TuiInputSlider, FormsModule, TuiNumberFormat],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

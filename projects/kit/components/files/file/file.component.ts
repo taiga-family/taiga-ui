@@ -41,7 +41,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
         TuiLoader,
     ],
     templateUrl: './file.template.html',
-    styleUrls: ['./file.style.less'],
+    styleUrl: './file.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TUI_FILE_OPTIONS)],
     hostDirectives: [TuiAppearance],

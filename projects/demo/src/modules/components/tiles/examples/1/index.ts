@@ -7,7 +7,7 @@ import {TuiTiles} from '@taiga-ui/kit';
 @Component({
     imports: [TuiIcon, TuiTiles],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

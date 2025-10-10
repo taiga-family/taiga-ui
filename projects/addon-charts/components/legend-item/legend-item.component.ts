@@ -6,7 +6,7 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
     selector: 'tui-legend-item',
     imports: [TuiButton],
     templateUrl: './legend-item.template.html',
-    styleUrls: ['./legend-item.style.less'],
+    styleUrl: './legend-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size',

@@ -8,7 +8,7 @@ import {type TuiKeySteps, TuiSlider} from '@taiga-ui/kit';
 @Component({
     imports: [DecimalPipe, ReactiveFormsModule, TuiSlider],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

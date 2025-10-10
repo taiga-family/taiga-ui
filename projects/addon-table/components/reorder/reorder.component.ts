@@ -20,7 +20,7 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
     selector: 'tui-reorder',
     imports: [AsyncPipe, PolymorpheusOutlet, TuiButton, TuiIcon, TuiTiles],
     templateUrl: './reorder.template.html',
-    styleUrls: ['./reorder.style.less'],
+    styleUrl: './reorder.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

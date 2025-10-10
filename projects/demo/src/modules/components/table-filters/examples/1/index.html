@@ -36,23 +36,25 @@
             </tr>
         </thead>
         <tbody tuiTbody>
-            <tr
-                *ngFor="let item of data | tuiTableFilters | async"
-                tuiTr
-            >
-                <td
-                    *tuiCell="'name'"
-                    tuiTd
-                >
-                    {{ item.name }}
-                </td>
-                <td
-                    *tuiCell="'balance'"
-                    tuiTd
-                >
-                    {{ item.balance | tuiFormatNumber | async }}
-                </td>
-            </tr>
+            <!-- Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator. -->
+            @let items = $any(data | tuiTableFilters | async);
+
+            @for (item of items; track item) {
+                <tr tuiTr>
+                    <td
+                        *tuiCell="'name'"
+                        tuiTd
+                    >
+                        {{ item.name }}
+                    </td>
+                    <td
+                        *tuiCell="'balance'"
+                        tuiTd
+                    >
+                        {{ item.balance | tuiFormatNumber | async }}
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </ng-container>

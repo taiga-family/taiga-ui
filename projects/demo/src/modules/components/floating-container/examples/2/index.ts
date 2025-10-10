@@ -32,7 +32,7 @@ import {TuiSearch} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     animations: [tuiSlideInTop, tuiHeightCollapse],

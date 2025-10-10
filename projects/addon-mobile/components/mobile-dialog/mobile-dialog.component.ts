@@ -11,7 +11,7 @@ import {type TuiMobileDialogOptions} from './mobile-dialog.options';
     selector: 'tui-mobile-dialog',
     imports: [PolymorpheusOutlet, TuiButton, TuiRipple],
     templateUrl: './mobile-dialog.template.html',
-    styleUrls: ['./mobile-dialog.style.less'],
+    styleUrl: './mobile-dialog.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._ios]': 'isIOS',

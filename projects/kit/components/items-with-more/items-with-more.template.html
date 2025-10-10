@@ -2,10 +2,10 @@
 @if (directive.side === 'start') {
     <ng-container [ngTemplateOutlet]="template" />
 }
-@for (item of items; track item; let index = $index) {
+@for (item of items; track item) {
     <div
         class="t-item"
-        [class.t-item_hidden]="isHidden(index)"
+        [class.t-item_hidden]="isHidden($index)"
     >
         <ng-container *ngTemplateOutlet="item" />
     </div>

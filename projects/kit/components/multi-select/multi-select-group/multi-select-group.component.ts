@@ -26,7 +26,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
     selector: 'tui-opt-group[tuiMultiSelectGroup]',
     imports: [TuiLink],
     templateUrl: './multi-select-group.template.html',
-    styleUrls: ['./multi-select-group.style.less'],
+    styleUrl: './multi-select-group.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._label]': 'label',

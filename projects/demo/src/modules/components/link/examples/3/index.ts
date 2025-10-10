@@ -6,7 +6,7 @@ import {TuiLink, TuiNotification} from '@taiga-ui/core';
 @Component({
     imports: [TuiLink, TuiNotification],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

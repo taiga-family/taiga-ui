@@ -7,7 +7,7 @@ import {TuiTextarea} from '@taiga-ui/kit';
 @Component({
     imports: [TuiTextarea, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

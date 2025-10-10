@@ -8,7 +8,7 @@ import {CustomPortalService} from './service';
     selector: 'tui-portals-example-1',
     imports: [TuiButton, TuiIcon],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export class TuiPortalsExample1 {
