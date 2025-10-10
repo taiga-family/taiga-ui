@@ -9,11 +9,11 @@
         [itemsLimit]="itemsLimit - 2"
         [required]="items.length + offset - 2"
     >
-        @for (item of items; track item; let last = $last) {
+        @for (item of items; track item) {
             @if (item !== items.first || itemsLimit === 2) {
                 <ng-container *tuiItem>
                     <ng-container [ngTemplateOutlet]="item" />
-                    @if (!last) {
+                    @if (!$last) {
                         <ng-container [ngTemplateOutlet]="separator" />
                     }
                 </ng-container>
@@ -39,8 +39,8 @@
             </span>
             <ng-template #dropdown>
                 <tui-data-list size="s">
-                    @for (item of items; track item; let i = $index) {
-                        @if (i + offset && i <= index && item !== items.last) {
+                    @for (item of items; track item) {
+                        @if ($index + offset && $index <= index && item !== items.last) {
                             <span
                                 tuiOption
                                 class="t-option"
@@ -54,9 +54,9 @@
         </ng-template>
     </tui-items-with-more>
 } @else {
-    @for (item of items; track item; let last = $last) {
+    @for (item of items; track item) {
         <ng-container [ngTemplateOutlet]="item" />
-        @if (!last) {
+        @if (!$last) {
             <ng-container [ngTemplateOutlet]="separator" />
         }
     }

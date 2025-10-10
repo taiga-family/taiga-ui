@@ -2,9 +2,9 @@
     side="start"
     [itemsLimit]="3"
 >
-    @for (item of items; track item; let first = $first) {
+    @for (item of items; track item) {
         <ng-container *tuiItem>
-            @if (!first) {
+            @if (!$first) {
                 <tui-icon
                     icon="@tui.chevron-right"
                     [style.font-size.rem]="1"
@@ -39,8 +39,8 @@
         </button>
         <ng-template #dropdown>
             <tui-data-list size="s">
-                @for (item of items; track item; let i = $index) {
-                    @if (i < index) {
+                @for (item of items; track item) {
+                    @if ($index < index) {
                         <button
                             tuiOption
                             type="button"

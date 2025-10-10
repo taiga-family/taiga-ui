@@ -2,10 +2,10 @@
     tuiConnected
     class="accordion"
 >
-    @for (item of steps | keyvalue: orderBy; track item; let index = $index) {
+    @for (item of steps | keyvalue: orderBy; track item) {
         <button
             appearance="icon"
-            [tuiAccordion]="index === 1"
+            [tuiAccordion]="$index === 1"
         >
             <div
                 [appearance]="isChecked(item.value.steps) ? 'info' : ''"
