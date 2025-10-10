@@ -11,6 +11,8 @@ export const TUI_ALERT_DEFAULT_OPTIONS: Omit<TuiAlertOptions, 'appearance' | 'ic
     label: '',
     closable: true,
     data: undefined,
+    position: 'top',
+    orientation: 'end',
 };
 
 export const TUI_ALERT_OPTIONS = new InjectionToken<TuiAlertOptions>(
@@ -26,7 +28,7 @@ export const TUI_ALERT_OPTIONS = new InjectionToken<TuiAlertOptions>(
 export const TUI_ALERT_POSITION = new InjectionToken<string>(
     ngDevMode ? 'TUI_ALERT_POSITION' : '',
     {
-        factory: () => (inject(TUI_IS_MOBILE) ? '1rem 1rem 0 auto' : '2rem 3rem 0 auto'),
+        factory: () => (inject(TUI_IS_MOBILE) ? '0.625rem 1rem' : '1.625rem 3rem'),
     },
 );
 

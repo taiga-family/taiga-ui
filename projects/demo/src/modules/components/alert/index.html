@@ -117,6 +117,26 @@
             >
                 Icon
             </tr>
+
+            <tr
+                name="[orientation]"
+                tuiDocAPIItem
+                type="'start' | 'center' | 'end'"
+                [items]="orientationVariants"
+                [(value)]="orientation"
+            >
+                Orientation
+            </tr>
+
+            <tr
+                name="[position]"
+                tuiDocAPIItem
+                type="'top' | 'bottom'"
+                [items]="positionVariants"
+                [(value)]="position"
+            >
+                Position
+            </tr>
         </table>
     </ng-template>
     <ng-template pageTab>

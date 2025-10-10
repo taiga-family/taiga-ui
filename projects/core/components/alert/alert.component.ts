@@ -22,8 +22,9 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
     hostDirectives: [TuiAnimated],
     host: {
         role: 'alert',
+        '[attr.data-orientation]': 'item.orientation',
+        '[class._bottom]': 'item.position === "bottom"',
         '[style.margin]': 'position',
-        '[style.--tui-from]': 'from',
     },
 })
 export class TuiAlertComponent<O, I> {
@@ -46,8 +47,4 @@ export class TuiAlertComponent<O, I> {
             takeUntilDestroyed(),
         )
         .subscribe(() => this.item.$implicit.complete());
-
-    public get from(): string {
-        return this.position.endsWith('auto') ? 'translateX(100%)' : 'translateX(-100%)';
-    }
 }
