@@ -1,15 +1,20 @@
-import {Directive} from '@angular/core';
-import {TuiPopoverDirective} from '@taiga-ui/cdk/directives/popover';
-import {tuiAsPopover} from '@taiga-ui/cdk/services';
+import {Directive, input} from '@angular/core';
+import {tuiAsPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 
 import {type TuiAlertOptions} from './alert.interfaces';
 import {TuiAlertService} from './alert.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiAlert]',
-    inputs: ['options: tuiAlertOptions', 'open: tuiAlert'],
-    outputs: ['openChange: tuiAlertChange'],
-    providers: [tuiAsPopover(TuiAlertService)],
+    providers: [tuiAsPortal(TuiAlertService)],
+    hostDirectives: [
+        {
+            directive: TuiPortalDirective,
+            inputs: ['options: tuiAlertOptions', 'open: tuiAlert'],
+            outputs: ['openChange: tuiAlertChange'],
+        },
+    ],
 })
-export class TuiAlert<T> extends TuiPopoverDirective<TuiAlertOptions<T>> {}
+export class TuiAlert<T> {
+    public readonly tuiAlertOptions = input<Partial<TuiAlertOptions<T>>>({});
+}
