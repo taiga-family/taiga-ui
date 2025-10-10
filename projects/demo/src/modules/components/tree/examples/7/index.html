@@ -15,5 +15,26 @@
         *ngIf="item === loading; else text"
         class="loader"
     />
-    <ng-template #text>{{ item.text }}</ng-template>
+    <ng-template #text>{{ item?.text }}</ng-template>
 </ng-template>
+
+<p>
+    <button
+        size="s"
+        style="margin-right: 0.5rem"
+        tuiButton
+        type="button"
+        (click)="reset()"
+    >
+        Reset
+    </button>
+
+    <button
+        size="s"
+        tuiButton
+        type="button"
+        (click)="loadNewData()"
+    >
+        Load New Data
+    </button>
+</p>
