@@ -322,12 +322,10 @@ export async function measureMobileCountryOpen(
     }
 
     await trigger.click({timeout: 2000}).catch(() => {});
-    const optionLocator = page.locator('tui-root tui-dropdowns button[tuiOption]');
 
-    await optionLocator
-        .first()
-        .waitFor({timeout: 3000})
-        .catch(() => {});
+    const optionLocator = page.locator('tui-popups tui-dropdown button[tuiOption]');
+
+    await optionLocator.first().waitFor({state: 'visible', timeout: 10000});
 
     return page.evaluate(() => {
         const start = (window as any).__tuiPerfStart as number | undefined;
@@ -348,7 +346,14 @@ export async function collectMobileOpenLatency(
 
     for (const attempt of attemptIndexes) {
         void attempt;
-        const {firstOption} = await measureMobileCountryOpen(page, example);
+        let firstOption = NaN;
+
+        try {
+            ({firstOption} = await measureMobileCountryOpen(page, example));
+        } catch {
+            // Ignore and treat as invalid sample; retry loop will continue
+            firstOption = NaN;
+        }
 
         if (!Number.isNaN(firstOption)) {
             collectedFirst.push(firstOption);
@@ -370,10 +375,14 @@ export async function measureColdOpen(
     maxRetries = 3,
 ): Promise<number> {
     for (let attempt = 0; attempt < maxRetries; attempt++) {
-        const {firstOption} = await measureMobileCountryOpen(page, example);
+        try {
+            const {firstOption} = await measureMobileCountryOpen(page, example);
 
-        if (!Number.isNaN(firstOption)) {
-            return firstOption;
+            if (!Number.isNaN(firstOption)) {
+                return firstOption;
+            }
+        } catch {
+            // swallow and retry
         }
 
         await page.keyboard.press('Escape').catch(falseHandler);
