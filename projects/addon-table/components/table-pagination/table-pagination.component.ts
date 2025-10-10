@@ -39,7 +39,7 @@ export interface TuiTablePaginationEvent {
         TuiLink,
     ],
     templateUrl: './table-pagination.template.html',
-    styleUrls: ['./table-pagination.style.less'],
+    styleUrl: './table-pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTablePagination {

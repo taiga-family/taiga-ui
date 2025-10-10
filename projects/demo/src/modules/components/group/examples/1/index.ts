@@ -37,7 +37,7 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiMultiSelect,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

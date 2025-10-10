@@ -1,12 +1,7 @@
-import {
-    type ApplicationRef,
-    ErrorHandler,
-    importProvidersFrom,
-    mergeApplicationConfig,
-} from '@angular/core';
+import {type ApplicationRef, ErrorHandler, mergeApplicationConfig} from '@angular/core';
 import {bootstrapApplication, type BootstrapContext} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {provideServerRendering, ServerModule} from '@angular/platform-server';
+import {provideServerRendering} from '@angular/platform-server';
 import {UNIVERSAL_PROVIDERS} from '@ng-web-apis/universal';
 
 import {App} from './modules/app/app.component';
@@ -15,7 +10,6 @@ import {ServerErrorHandler} from './modules/app/server-error-handler';
 
 const serverConfig = mergeApplicationConfig(config, {
     providers: [
-        importProvidersFrom(ServerModule),
         provideServerRendering(),
         provideAnimations(),
         UNIVERSAL_PROVIDERS,

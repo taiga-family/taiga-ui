@@ -15,7 +15,7 @@ import {TuiAvatar, TuiBadge, TuiBadgeNotification, TuiFade} from '@taiga-ui/kit'
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

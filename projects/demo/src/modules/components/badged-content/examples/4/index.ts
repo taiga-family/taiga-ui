@@ -6,7 +6,7 @@ import {TuiAvatar, TuiBadgedContent} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiBadgedContent],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -15,7 +15,7 @@ import {TUI_APPEARANCE_OPTIONS} from './appearance.options';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/appearance.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/appearance.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-appearance'},

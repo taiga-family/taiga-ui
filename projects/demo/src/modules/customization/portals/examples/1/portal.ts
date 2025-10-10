@@ -7,20 +7,18 @@ import {CustomPortalService} from './service';
 @Component({
     standalone: true,
     selector: 'custom-host',
-    template: '<ng-container #viewContainer />',
-    styles: [
-        `
-            :host {
-                position: fixed;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                top: env(safe-area-inset-top);
-                height: 0;
-                width: 100%;
-            }
-        `,
-    ],
+    template: '<ng-container #vcr />',
+    styles: `
+        :host {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: env(safe-area-inset-top);
+            height: 0;
+            width: 100%;
+        }
+    `,
     changeDetection,
     providers: [tuiAsPortal(CustomPortalService)],
 })

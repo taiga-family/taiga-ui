@@ -6,7 +6,7 @@ import {TuiDialogService} from '@taiga-ui/legacy';
 @Component({
     imports: [TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

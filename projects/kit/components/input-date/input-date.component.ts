@@ -17,7 +17,7 @@ import {TuiInputDateDirective} from './input-date.directive';
     selector: 'input[tuiInputDate][type="date"]',
     imports: [TuiTextfieldContent],
     templateUrl: './input-date.template.html',
-    styleUrls: ['./input-date.style.less'],
+    styleUrl: './input-date.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],

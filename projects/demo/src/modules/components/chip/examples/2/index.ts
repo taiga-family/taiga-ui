@@ -8,7 +8,7 @@ import {TuiAvatar, TuiChip} from '@taiga-ui/kit';
 @Component({
     imports: [SlicePipe, TuiAvatar, TuiButton, TuiChip],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

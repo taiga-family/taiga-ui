@@ -8,7 +8,7 @@ import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, JsonPipe, TuiRange],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

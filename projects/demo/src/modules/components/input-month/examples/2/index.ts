@@ -10,7 +10,7 @@ import {interval, map, startWith} from 'rxjs';
 @Component({
     imports: [ReactiveFormsModule, TuiError, TuiInputMonth, TuiTextfield],
     templateUrl: './index.html',
-    styles: [':host {display: block; min-height: 4rem}'],
+    styles: ':host {display: block; min-height: 4rem}',
     encapsulation,
     changeDetection,
     providers: [

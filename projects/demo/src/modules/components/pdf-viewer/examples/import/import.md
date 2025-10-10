@@ -1,15 +1,13 @@
 ```ts
-import {TuiImgLazyLoading} from '@taiga-ui/kit';
-
+import {TuiPdfViewer} from '@taiga-ui/layout';
 // ...
 
 @Component({
   standalone: true,
   imports: [
     // ...
-    TuiImgLazyLoading,
+    TuiPdfViewer,
   ],
-  // ...
 })
 export class Example {}
 ```

@@ -5,7 +5,7 @@ import {TuiButton, TuiDialog, TuiHeader, TuiTitle} from '@taiga-ui/core';
 @Component({
     imports: [TuiButton, TuiDialog, TuiHeader, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

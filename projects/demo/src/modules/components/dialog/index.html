@@ -6,16 +6,16 @@
     <ng-template pageTab>
         Customizable modal dialogs
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="this[index] || (index + 1 | tuiExample)"
+                [component]="$index + 1 | tuiComponent"
+                [content]="this[$index] || ($index + 1 | tuiExample)"
                 [description]="description"
                 [heading]="example"
                 [id]="example | tuiKebab"
             >
                 <ng-template #description>
-                    @switch (index) {
+                    @switch ($index) {
                         @case (0) {
                             Basic string dialog with a customizable button.
                         }

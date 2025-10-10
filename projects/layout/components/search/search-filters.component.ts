@@ -29,7 +29,7 @@ const WIDTH = 12;
     selector: 'tui-search-filters',
     imports: [NgTemplateOutlet, TuiButton, TuiSearchFilterComponent],
     templateUrl: './search-filters.template.html',
-    styleUrls: ['./search-filters.styles.less'],
+    styleUrl: './search-filters.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         ResizeObserverService,

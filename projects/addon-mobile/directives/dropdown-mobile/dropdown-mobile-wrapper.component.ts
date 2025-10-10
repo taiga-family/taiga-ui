@@ -22,7 +22,7 @@ import {TuiDropdownMobile} from './dropdown-mobile.directive';
     standalone: true,
     imports: [NgTemplateOutlet, PolymorpheusOutlet, TuiDropdownMobileComponent],
     templateUrl: './dropdown-mobile-wrapper.template.html',
-    styleUrls: ['./dropdown-mobile-wrapper.style.less'],
+    styleUrl: './dropdown-mobile-wrapper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiActiveZone, TuiAnimated],
 })

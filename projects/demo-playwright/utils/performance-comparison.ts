@@ -33,6 +33,7 @@ interface PerformanceData {
     testName: string;
     source: string;
     metrics: PerformanceMetrics;
+    customExtras?: Record<string, any>;
 }
 
 interface MetricsComparison {
@@ -40,6 +41,8 @@ interface MetricsComparison {
     component: string;
     baseline?: PerformanceMetrics;
     current: PerformanceMetrics;
+    customExtras?: Record<string, any>;
+    baselineExtras?: Record<string, any>;
     pattern?: string; // classification of change pattern
     diff: {
         layoutCount: number;
@@ -111,8 +114,7 @@ export class PerformanceComparison {
                 return metrics;
             }
 
-            // eslint-disable-next-line no-console
-            console.log(
+            console.info(
                 `Found ${performanceFiles.length} performance files in ${metricsPath}`,
             );
 
@@ -156,6 +158,66 @@ export class PerformanceComparison {
                 );
                 const agg = this.aggregateRuns(usable.map((r) => r.metrics));
                 const last = usable[usable.length - 1]!;
+                // Aggregate custom extras (currently only mobileOpen latency) across usable runs
+                let aggregatedExtras: Record<string, any> | undefined;
+                const mobileRuns = usable
+                    .map((r) => r.customExtras?.mobileOpen)
+                    .filter(
+                        (
+                            m,
+                        ): m is {
+                            runs?: number;
+                            medianFirstOption?: number;
+                            avgFirstOption?: number;
+                            samples?: number[];
+                        } => !!m,
+                    );
+
+                if (mobileRuns.length) {
+                    const samples = mobileRuns.flatMap((m) => m.samples || []);
+                    const runsCount = mobileRuns.reduce(
+                        (a, m) =>
+                            a +
+                            (typeof m.runs === 'number'
+                                ? m.runs
+                                : m.samples?.length || 0),
+                        0,
+                    );
+                    const avgFirstOption = samples.length
+                        ? samples.reduce((a, b) => a + b, 0) / samples.length
+                        : mobileRuns.reduce(
+                              (a, m) =>
+                                  a +
+                                  (typeof m.avgFirstOption === 'number'
+                                      ? m.avgFirstOption
+                                      : 0),
+                              0,
+                          ) / mobileRuns.length;
+                    const medianFirstOption = (() => {
+                        const arr = samples.slice().sort((a, b) => a - b);
+
+                        if (!arr.length) {
+                            return mobileRuns[0]?.medianFirstOption;
+                        }
+
+                        const mid = Math.floor(arr.length / 2);
+
+                        if (arr.length % 2 === 0) {
+                            return (arr[mid - 1]! + arr[mid]!) / 2;
+                        }
+
+                        return arr[mid]!;
+                    })();
+
+                    aggregatedExtras = {
+                        mobileOpen: {
+                            runs: runsCount || samples.length,
+                            medianFirstOption,
+                            avgFirstOption,
+                            samples,
+                        },
+                    };
+                }
 
                 metrics.set(testName, {
                     timestamp: Date.now(),
@@ -165,6 +227,7 @@ export class PerformanceComparison {
                     testName: last.testName,
                     source: usable[0]!.source,
                     metrics: agg,
+                    customExtras: aggregatedExtras,
                 });
             }
         } catch (error) {
@@ -341,6 +404,13 @@ export class PerformanceComparison {
 
         markdown += this.generateSummarySection(summary);
 
+        // Append custom latency section if any test has mobileOpen extras
+        const latencySection = this.generateLatencySection(details);
+
+        if (latencySection) {
+            markdown += `\n${latencySection}\n`;
+        }
+
         if (filteredDetails.length > 0) {
             markdown += this.generateDetailsSection(
                 filteredDetails,
@@ -356,13 +426,6 @@ export class PerformanceComparison {
     }
 
     /**
-     * Generates a markdown report when no performance data is available
-     */
-    public static generateEmptyMarkdownReport(): string {
-        return '## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this shard._\n\n# Tests completed successfully :white_check_mark:\n\nGood job :fire:';
-    }
-
-    /**
      * Main comparison function for CI integration
      */
     public static async compareAndReport(
@@ -371,8 +434,7 @@ export class PerformanceComparison {
         outputPath: string,
         changeThreshold: number = this.defaultChangeThreshold,
     ): Promise<ComparisonReport> {
-        // eslint-disable-next-line no-console
-        console.log('🔍 Aggregating baseline metrics...');
+        console.info('🔍 Aggregating baseline metrics...');
 
         let baseline: Map<string, PerformanceData>;
 
@@ -385,8 +447,7 @@ export class PerformanceComparison {
             baseline = new Map();
         }
 
-        // eslint-disable-next-line no-console
-        console.log('🔍 Aggregating current metrics...');
+        console.info('🔍 Aggregating current metrics...');
 
         let current: Map<string, PerformanceData>;
 
@@ -447,8 +508,7 @@ export class PerformanceComparison {
             return emptyReport;
         }
 
-        // eslint-disable-next-line no-console
-        console.log('📊 Comparing metrics...');
+        console.info('📊 Comparing metrics...');
 
         const report = this.compareMetrics(baseline, current, changeThreshold);
         const markdown = this.generateMarkdownReport(report, changeThreshold);
@@ -470,17 +530,134 @@ export class PerformanceComparison {
             );
         }
 
-        // eslint-disable-next-line no-console
-        console.log(`✅ Performance comparison report saved to: ${outputPath}`);
-        // eslint-disable-next-line no-console
-        console.log(
+        console.info(`✅ Performance comparison report saved to: ${outputPath}`);
+        console.info(
             `📈 Summary: ${report.summary.totalTests} tests, ${report.summary.testsWithBaseline} with baseline, ${report.summary.testsWithSignificantChanges} with significant changes`,
         );
 
         return report;
     }
 
-    // generatePatternSummary removed
+    /**
+     * Generates a markdown report when no performance data is available
+     */
+    public static generateEmptyMarkdownReport(): string {
+        return '## 📊 Performance Metrics Comparison\n\n_No performance metrics collected in this shard._\n\n# Tests completed successfully :white_check_mark:\n\nGood job :fire:';
+    }
+
+    // --- Latency (custom extras) section helpers ---
+    private static generateLatencySection(details: MetricsComparison[]): string {
+        return this.renderLatencyRows(details);
+    }
+
+    private static renderLatencyRows(details: MetricsComparison[]): string {
+        const LAT_PCT_THRESHOLD = Number(
+            process.env.PERF_LATENCY_PERCENT_THRESHOLD || '15',
+        );
+        const rows: string[] = [];
+
+        for (const d of details) {
+            const cur = d.customExtras?.mobileOpen;
+
+            if (
+                !cur ||
+                (typeof cur.medianFirstOption !== 'number' &&
+                    typeof cur.avgFirstOption !== 'number')
+            ) {
+                continue;
+            }
+
+            const base = d.baselineExtras?.mobileOpen;
+            let baselineMedian: number | undefined;
+
+            if (base) {
+                if (typeof base.medianFirstOption === 'number') {
+                    baselineMedian = base.medianFirstOption;
+                } else if (typeof base.avgFirstOption === 'number') {
+                    baselineMedian = base.avgFirstOption;
+                }
+            }
+
+            const currentMedian =
+                typeof cur.medianFirstOption === 'number'
+                    ? cur.medianFirstOption
+                    : cur.avgFirstOption;
+
+            const deltaMs =
+                baselineMedian !== undefined ? currentMedian - baselineMedian : undefined;
+            const deltaPct =
+                baselineMedian && baselineMedian !== 0
+                    ? (deltaMs! / baselineMedian) * 100
+                    : undefined;
+            let badge = '';
+            let curStr = currentMedian.toFixed(2);
+            const baseStr =
+                baselineMedian !== undefined ? baselineMedian.toFixed(2) : '—';
+            let deltaMsStr =
+                deltaMs !== undefined
+                    ? `${deltaMs >= 0 ? '+' : ''}${deltaMs.toFixed(2)}`
+                    : 'new';
+            let deltaPctStr =
+                deltaPct !== undefined
+                    ? `${deltaPct >= 0 ? '+' : ''}${deltaPct.toFixed(1)}%`
+                    : 'new';
+
+            if (deltaPct !== undefined) {
+                const absPct = Math.abs(deltaPct);
+
+                if (absPct >= LAT_PCT_THRESHOLD) {
+                    badge = deltaPct > 0 ? '❌' : '✅';
+                }
+            }
+
+            if (badge) {
+                curStr = `**${curStr}**`;
+
+                if (deltaMsStr !== 'new') {
+                    deltaMsStr = `**${deltaMsStr}**`;
+                }
+
+                if (deltaPctStr !== 'new') {
+                    deltaPctStr = `**${deltaPctStr}** ${badge}`;
+                }
+            }
+
+            const runs = Number(cur.runs) || cur.samples?.length || 0;
+
+            // Unified format: one metric column showing current (deltaMs, deltaPct) and baseline value in parentheses
+            let combined: string;
+
+            if (baselineMedian !== undefined) {
+                combined = `${curStr} (${baseStr}, ${deltaMsStr}, ${deltaPctStr})`;
+            } else {
+                combined = `${curStr} (new)`;
+            }
+
+            rows.push(`| ${d.testName} | ${combined} | ${runs} |`);
+        }
+
+        if (!rows.length) {
+            return '';
+        }
+
+        rows.sort((a, b) => {
+            const extract = (line: string): number => {
+                const parts = line.split('|').map((p) => p.trim());
+                const curCol = parts[3];
+                const match = /\d+(?:\.\d+)?/.exec(curCol || '');
+
+                return match ? parseFloat(match[0]) : Number.POSITIVE_INFINITY;
+            };
+
+            return extract(a) - extract(b);
+        });
+
+        const header = '### ⚡ Interaction to Next Point (INP)';
+        const tableHead =
+            '| Test | Median (baseline, Δ ms, Δ %) | Runs |\n|------|--------------------------------|-----:|';
+
+        return `${header}\n\n${tableHead}\n${rows.join('\n')}\n`;
+    }
 
     /**
      * Filters files to include only performance JSON files
@@ -637,6 +814,8 @@ export class PerformanceComparison {
             component,
             baseline: baselineMetrics,
             current: currentMetrics,
+            customExtras: currentData.customExtras,
+            baselineExtras: baselineData?.customExtras,
             diff: {
                 layoutCount:
                     currentMetrics.layoutCount - (baselineMetrics?.layoutCount || 0),
@@ -1543,15 +1722,15 @@ export class PerformanceReportAggregator {
         }
 
         if (mdFiles.length === 0) {
-            // eslint-disable-next-line no-console
-            console.log(`No markdown files found in '${inputDir}', writing empty report`);
+            console.info(
+                `No markdown files found in '${inputDir}', writing empty report`,
+            );
             await this.writeEmptyReport(outputFile, githubOutputPath);
 
             return;
         }
 
-        // eslint-disable-next-line no-console
-        console.log(`Found ${mdFiles.length} markdown files to aggregate`);
+        console.info(`Found ${mdFiles.length} markdown files to aggregate`);
 
         let tableRows: Set<string>;
         let emptyShardCount: number;
@@ -1568,8 +1747,7 @@ export class PerformanceReportAggregator {
         }
 
         if (tableRows.size === 0 && emptyShardCount === 0) {
-            // eslint-disable-next-line no-console
-            console.log(
+            console.info(
                 `No significant changes found (threshold: ${threshold}%), writing no-changes report`,
             );
             await this.writeNoChangesReport(outputFile, threshold, githubOutputPath);
@@ -1577,12 +1755,10 @@ export class PerformanceReportAggregator {
             return;
         }
 
-        // eslint-disable-next-line no-console
-        console.log(`Aggregating ${tableRows.size} table rows into final report`);
+        console.info(`Aggregating ${tableRows.size} table rows into final report`);
 
         if (emptyShardCount > 0) {
-            // eslint-disable-next-line no-console
-            console.log(`Note: ${emptyShardCount} shard(s) had no performance data`);
+            console.info(`Note: ${emptyShardCount} shard(s) had no performance data`);
         }
 
         await this.writeAggregatedReport(
@@ -1655,8 +1831,7 @@ export class PerformanceReportAggregator {
                 processedFiles++;
 
                 if (rowsFromFile > 0) {
-                    // eslint-disable-next-line no-console
-                    console.log(`Extracted ${rowsFromFile} table rows from ${file}`);
+                    console.info(`Extracted ${rowsFromFile} table rows from ${file}`);
                 }
             } catch (error) {
                 skippedFiles++;
@@ -1666,8 +1841,7 @@ export class PerformanceReportAggregator {
             }
         }
 
-        // eslint-disable-next-line no-console
-        console.log(
+        console.info(
             `Processed ${processedFiles} files, skipped ${skippedFiles} files, found ${rowSet.size} unique table rows`,
         );
 
@@ -1716,8 +1890,7 @@ export class PerformanceReportAggregator {
             }
         }
 
-        // eslint-disable-next-line no-console
-        console.log(
+        console.info(
             `Processed ${processedFiles} files, skipped ${skippedFiles} files, found ${rowSet.size} unique table rows, ${emptyShardCount} empty shards`,
         );
 
@@ -1959,8 +2132,7 @@ async function main(): Promise<void> {
                 inputDir,
                 outputFile,
             );
-            // eslint-disable-next-line no-console
-            console.log(`✅ Markdown reports aggregated successfully to: ${outputFile}`);
+            console.info(`✅ Markdown reports aggregated successfully to: ${outputFile}`);
         } catch (error) {
             console.error(
                 '❌ Failed to aggregate markdown reports:',

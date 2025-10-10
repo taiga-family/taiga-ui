@@ -9,7 +9,7 @@ import {of, repeat, takeWhile, timer} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

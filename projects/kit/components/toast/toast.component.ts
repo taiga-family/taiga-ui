@@ -24,7 +24,7 @@ import {type TuiToastOptions} from './toast.options';
     selector: 'tui-toast',
     imports: [PolymorpheusOutlet, TuiButton, TuiSwipe, TuiToastDirective],
     templateUrl: './toast.template.html',
-    styleUrls: ['./toast.style.less'],
+    styleUrl: './toast.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
     host: {

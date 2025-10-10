@@ -7,7 +7,7 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

@@ -8,7 +8,7 @@ import {map, scan, startWith, Subject} from 'rxjs';
 @Component({
     imports: [AsyncPipe, DecimalPipe, TuiZoom],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

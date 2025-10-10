@@ -8,7 +8,7 @@ const SOME_OFFSET_CONST = 20;
 @Component({
     imports: [TuiButton, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

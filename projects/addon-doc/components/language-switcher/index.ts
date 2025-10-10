@@ -27,7 +27,7 @@ import {TuiButtonSelect} from '@taiga-ui/kit/directives/button-select';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],
 })

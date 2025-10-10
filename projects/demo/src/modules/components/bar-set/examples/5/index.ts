@@ -8,7 +8,7 @@ import {TuiFormatNumberPipe} from '@taiga-ui/core';
 @Component({
     imports: [AsyncPipe, TuiBarSet, TuiFormatNumberPipe],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

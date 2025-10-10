@@ -19,13 +19,11 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiInputModule,
     ],
     templateUrl: './index.html',
-    styles: [
-        `
-            .option {
-                white-space: normal;
-            }
-        `,
-    ],
+    styles: `
+        .option {
+            white-space: normal;
+        }
+    `,
     encapsulation,
     changeDetection,
 })

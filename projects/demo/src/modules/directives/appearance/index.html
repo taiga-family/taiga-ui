@@ -6,12 +6,12 @@
     <ng-template pageTab>
         <p>A directive for visual presets of interactive components</p>
 
-        @for (example of examples; track example; let index = $index; let last = $last) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
-                [description]="descriptions[index]"
-                [fullsize]="last"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="descriptions[$index]"
+                [fullsize]="$last"
                 [heading]="example"
                 [id]="example | tuiKebab"
             />

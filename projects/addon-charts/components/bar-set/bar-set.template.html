@@ -1,16 +1,16 @@
 @if (size) {
-    @for (item of computedValue; track item; let index = $index) {
+    @for (item of computedValue; track item) {
         <ng-container
             [ngTemplateOutlet]="bar"
-            [ngTemplateOutletContext]="{$implicit: item, index: index, flexible: false}"
+            [ngTemplateOutletContext]="{$implicit: item, index: $index, flexible: false}"
         />
     }
 } @else {
-    @for (item of computedValue; track item; let index = $index) {
+    @for (item of computedValue; track item) {
         <div class="t-wrapper">
             <ng-container
                 [ngTemplateOutlet]="bar"
-                [ngTemplateOutletContext]="{$implicit: item, index: index, flexible: true}"
+                [ngTemplateOutletContext]="{$implicit: item, index: $index, flexible: true}"
             />
         </div>
     }

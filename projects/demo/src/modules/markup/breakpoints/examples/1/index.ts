@@ -4,7 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

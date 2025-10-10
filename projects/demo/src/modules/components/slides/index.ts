@@ -26,7 +26,7 @@ import {Settings} from './examples/3/settings';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
     host: {class: 'tui-slides'},

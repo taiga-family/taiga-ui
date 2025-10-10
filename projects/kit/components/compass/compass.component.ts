@@ -9,7 +9,7 @@ import {
     standalone: true,
     selector: 'tui-compass',
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/compass.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/compass.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

@@ -8,7 +8,7 @@ import {TuiDemo} from '@demo/utils';
 @Component({
     imports: [ClipboardModule, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

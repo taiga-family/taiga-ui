@@ -16,11 +16,11 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
     selector: '[tuiDynamicHeaderAnchor]',
 })
 export class TuiDynamicHeaderAnchorDirective implements AfterViewInit, OnDestroy {
-    private readonly viewContainer = inject(ViewContainerRef);
+    private readonly vcr = inject(ViewContainerRef);
     private readonly observer = inject(WaIntersectionObserverDirective);
     private readonly container = inject(TuiDynamicHeaderContainerDirective);
     public readonly templateRef = inject(TemplateRef<unknown>);
-    public readonly view = this.viewContainer.createEmbeddedView(this.templateRef);
+    public readonly view = this.vcr.createEmbeddedView(this.templateRef);
     public readonly visible = signal(false);
 
     public ngAfterViewInit(): void {

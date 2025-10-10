@@ -17,7 +17,7 @@ import {TuiCardMedium, TuiSurface} from '@taiga-ui/layout';
         TuiThumbnailCard,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

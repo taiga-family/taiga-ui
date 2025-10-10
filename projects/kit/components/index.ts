@@ -49,7 +49,6 @@ export * from '@taiga-ui/kit/components/multi-select';
 export * from '@taiga-ui/kit/components/notification-middle';
 export * from '@taiga-ui/kit/components/pager';
 export * from '@taiga-ui/kit/components/pagination';
-export * from '@taiga-ui/kit/components/pdf-viewer';
 export * from '@taiga-ui/kit/components/pin';
 export * from '@taiga-ui/kit/components/preview';
 export * from '@taiga-ui/kit/components/progress';

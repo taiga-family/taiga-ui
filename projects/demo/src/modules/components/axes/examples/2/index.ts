@@ -17,7 +17,7 @@ const BENJI = 100;
 @Component({
     imports: [AsyncPipe, TuiAmountPipe, TuiAxes, TuiBarChart, TuiHint],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -7,7 +7,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiLineClamp],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

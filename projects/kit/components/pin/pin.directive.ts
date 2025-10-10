@@ -9,7 +9,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/pin.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/pin.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-pin'},

@@ -68,7 +68,7 @@ function getAge({dob}: User): number {
         TuiTable,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
