@@ -13,7 +13,7 @@ import {TUI_DATA_LIST_HOST} from '@taiga-ui/core/components/data-list';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/label.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/label.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-label'},

@@ -12,7 +12,7 @@ import {
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/message.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/message.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-message'},

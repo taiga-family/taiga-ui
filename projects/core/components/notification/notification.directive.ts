@@ -26,7 +26,7 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/notification.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/notification.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-notification'},
