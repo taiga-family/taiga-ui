@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {type TuiPortalContext, TuiPortalDirective} from '@taiga-ui/cdk/portals';
-import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
@@ -19,14 +18,11 @@ import {type TuiPushOptions} from './push.options';
     hostDirectives: [TuiAnimated],
     host: {
         role: 'alert',
-        '[style.grid-row]': 'row',
     },
 })
 export class TuiPushAlert {
     protected readonly context =
         injectContext<TuiPortalContext<TuiPushOptions, string>>();
-
-    protected readonly row = 10000 + Number(tuiInjectId().replaceAll(/\D/g, ''));
 
     protected get isDirective(): boolean {
         return this.context.content instanceof TuiPortalDirective;
