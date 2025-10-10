@@ -322,7 +322,10 @@ export async function measureMobileCountryOpen(
     }
 
     await trigger.click({timeout: 2000}).catch(() => {});
-    const optionLocator = page.locator('tui-root tui-dropdowns button[tuiOption]');
+
+    const optionLocator = page.locator('tui-popups tui-dropdown button[tuiOption]');
+
+    await optionLocator.first().waitFor({state: 'visible', timeout: 10000});
 
     await optionLocator
         .first()
@@ -348,6 +351,7 @@ export async function collectMobileOpenLatency(
 
     for (const attempt of attemptIndexes) {
         void attempt;
+
         const {firstOption} = await measureMobileCountryOpen(page, example);
 
         if (!Number.isNaN(firstOption)) {
