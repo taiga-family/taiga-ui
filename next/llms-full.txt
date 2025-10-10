@@ -211,7 +211,7 @@ npm install css-vars-ponyfill
 # components/Accordion
 - **Package**: `KIT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -303,7 +303,7 @@ export default class Page {
 It is an element on the bottom of screen to show actions by multiselect of some items. It works with custom
         content.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -370,7 +370,7 @@ Built-in implementation of notifications
             .
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### Example
 
@@ -514,7 +514,7 @@ export default class Page {
 - **Type**: components
 Component for the main app header
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -583,7 +583,7 @@ export default class Page {
 # components/ArcChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -680,7 +680,7 @@ export default class Page {
 # components/Avatar
 - **Package**: `KIT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -789,7 +789,7 @@ export default class Page {
 - **Type**: components
 Just axes for charts
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -1087,7 +1087,7 @@ export default class Example {
 - **Type**: components
 BadgedContent is a wrapper for other components to add badges and notifications to them.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -1166,7 +1166,7 @@ export default class Example {
 - **Type**: components
 A bar for bar chart
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -1350,7 +1350,7 @@ export default class Page {
 - **Type**: components
 A group of bars for bar chart
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -1447,7 +1447,7 @@ Block
             is a special presentation of a checkbox/radiobutton which can display actual control or be a control itself
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -1606,7 +1606,7 @@ export default class Page {}
 - **Type**: components
 Component for status screens, result screens and zero screens
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -1701,7 +1701,7 @@ export default class Example {
 - **Type**: components
 A non-modal draggable sheet
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -1756,7 +1756,7 @@ export default class Page {
 - **Type**: components
 Navigation element that shows a path from root page to the current
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -1847,7 +1847,7 @@ export default class Example {
 # components/Button
 - **Package**: `CORE`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -1975,7 +1975,7 @@ export default class Page {}
 # components/ButtonGroup
 - **Package**: `KIT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -2039,7 +2039,7 @@ A simple calendar. If you want a textfield with date, see
             
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -2199,7 +2199,7 @@ Month picker component. If you want a textfield, see
             
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -2325,7 +2325,7 @@ export default class Example {
 - **Type**: components
 Component for choosing date range in calendar
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -2477,7 +2477,7 @@ export default class Example {
 # components/CardCollapsed
 - **Package**: `LAYOUT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -2549,7 +2549,7 @@ export default class Example {
 # components/CardLarge
 - **Package**: `LAYOUT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -2626,7 +2626,7 @@ A layout component used to create various cards for the interface. Define visual
             
             for visual presets.
         
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -2691,7 +2691,7 @@ export default class Example {
 - **Type**: components
 Carousel allows you to rotate through arbitrary items. Multiple items can be shown simultaneously.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -2807,7 +2807,7 @@ export default class Example {
 # components/Cell
 - **Package**: `CORE`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -2964,7 +2964,7 @@ export default class Page {}
 - **Type**: components
 Chip component is used to display array data and can also be interactive depending on the tag used.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -3294,7 +3294,7 @@ Confirm is a ready to use
             to learn how to use confirm to prevent data loss on forms inside other modals
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### Example
 
@@ -3363,7 +3363,7 @@ export default class Example implements TuiConfirmData {
 This component provides an easy way to copy text content to the clipboard. It displays the content normally and
         shows a copy button on hover, with visual feedback when content is copied.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -3508,7 +3508,7 @@ DataListWrapper
             to simplify usage in common cases where precise control is not necessary.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -3580,7 +3580,7 @@ export default class Page {
 - **Type**: components
 Customizable modal dialogs
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -3733,7 +3733,7 @@ export default class Page extends Array {
 # components/Drawer
 - **Package**: `KIT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -3991,7 +3991,7 @@ export default class Page {
 # components/Expand
 - **Package**: `Core`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -4213,7 +4213,7 @@ FloatingContainer
             is a special container for creating different animated sticky footers
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -4369,7 +4369,7 @@ footer {
 # components/Form
 - **Package**: `LAYOUT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -4860,7 +4860,7 @@ InputCardGroup
             is used to input a card as a separated control
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -5031,7 +5031,7 @@ InputChip
         
         to represent array of selectable items.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -5150,7 +5150,7 @@ InputColor
         
         + ❤️
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -5726,7 +5726,7 @@ export default class Example {
 - **Type**: components
 An input for uploading one or several files using native input file capabilities
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -5866,7 +5866,7 @@ export default class PageComponent {
 - **Type**: components
 Inline input field
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -6462,7 +6462,7 @@ export default class PageComponent {
 # components/InputPin
 - **Package**: `KIT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -6676,7 +6676,7 @@ export default class PageComponent {
 # components/InputSearch
 - **Package**: `LAYOUT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -7003,7 +7003,7 @@ export default class PageComponent {
 - **Type**: components
 Component to input a single year
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -7109,7 +7109,7 @@ export default class PageComponent {
 # components/ItemGroup
 - **Package**: `LAYOUT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -7204,7 +7204,7 @@ Component to hide overflown items behind custom content.
 
         Resize the screen to see extra items disappear
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -7293,7 +7293,7 @@ export default class Page {
 - **Type**: components
 Label is used to show text related to textfields, checkboxes, toggles and radio buttons
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -7443,7 +7443,7 @@ A like component based on native checkbox with icons and custom color for icon w
             state.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -7498,7 +7498,7 @@ export default class Page {
 # components/LineChart
 - **Package**: `ADDON-CHARTS`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -7865,7 +7865,7 @@ export default class Page {
 - **Type**: components
 Link component. It has focus highlight and can be customized with an icon
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -8055,7 +8055,7 @@ export default class Page {
 - **Type**: components
 Message component is used to display message block.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -8299,7 +8299,7 @@ export default class Page {
 - **Type**: components
 A set of basic layout components for global navigation
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -8396,7 +8396,7 @@ export default class Page implements OnDestroy {
 An inline message with a type (info, positive, warning, negative or neutral) that does not interrupt user
         actions
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -8450,7 +8450,7 @@ export default class Page {
 - **Type**: components
 A modal component to indicate an ongoing blocking action
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -8520,7 +8520,7 @@ export default class Page {
 # components/Pager
 - **Package**: `KIT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -8709,7 +8709,7 @@ Wrapper component for viewing PDF files in an iframe
             
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -8894,7 +8894,7 @@ Pins are used to show a location on a 2D plane. Use
             is placed where you put them.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -8950,7 +8950,7 @@ Preview component allows to open modal for viewing some document and to work wit
             The component automatically adjusts to the mobile device
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -9351,7 +9351,7 @@ export default class Page {
 # components/Pulse
 - **Package**: `KIT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -9398,7 +9398,7 @@ export default class Page {
 - **Type**: components
 Notifications in style of native browser push
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -9498,7 +9498,7 @@ A radio component that is able to imitate native control on mobile platforms.
             formControlName
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -9550,7 +9550,7 @@ export default class Page {
 - **Type**: components
 A two-thumb slider for selecting a range of values
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -9678,7 +9678,7 @@ export default class Page {
 # components/Rating
 - **Package**: `KIT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -9874,7 +9874,7 @@ Scrollbar
             token to get a scrollable container. For example, when working with virtual scroll.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -9939,7 +9939,7 @@ export default class Page {
 - **Type**: components
 A wrapping component for search or filtering the table
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -10006,7 +10006,7 @@ Segmented is used for links and buttons to navigate within the application. It c
             button to toggle between different states.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -10246,7 +10246,7 @@ export default class Page {
 - **Type**: components
 A mobile draggable sheet dialog
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### Example
 
@@ -10398,7 +10398,7 @@ Taiga UI styling of native html tag
             
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -10521,7 +10521,7 @@ A component for displaying dynamic content animated between states. Use negative
             each child must be exactly one DOM element.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -10699,7 +10699,7 @@ export default class Page {}
 # components/Stepper
 - **Package**: `KIT`
 - **Type**: components
-@for (example of examples; track example; let index = $index) {
+@for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -10818,7 +10818,7 @@ General purpose container used in Taiga UI interfaces. Often used in conjunction
             component.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -10943,7 +10943,7 @@ A switch component that is able to imitate native control on mobile platforms.
             CSS variable to customize color of native control emulation
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -11082,7 +11082,7 @@ export default class Page {
 - **Type**: components
 This module allows you to create various tables, both static and editable.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -11416,7 +11416,7 @@ Component for creating tabs.
             directive.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -11546,7 +11546,7 @@ Textarea
         
         to create a multi-line string input.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -11644,7 +11644,7 @@ export default class PageComponent {
 Textfield
         is a low level component that other more complex controls are based upon.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -11738,7 +11738,7 @@ export default class Page {
 - **Type**: components
 Customizable credit card thumbnail
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -11874,7 +11874,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-tiles class="tiles" [(order)]="order" > @for (item of items; track item; let index = $index) { <tui-tile tuiTileHandle [style.order]="order.get(index)" >
+<tui-tiles class="tiles" [(order)]="order" > @for (item of items; track item) { <tui-tile tuiTileHandle [style.order]="order.get($index)" >
 <div class="content">{{ item.name }}</div>
 </tui-tile> } </tui-tiles>
 ```
@@ -12506,7 +12506,7 @@ export default class Page {
 - **Type**: directives
 A directive for visual presets of interactive components
 
-        @for (example of examples; track example; let index = $index; let last = $last) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -12827,7 +12827,7 @@ tuiDropdown
             
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -13510,7 +13510,7 @@ export default class Page {}
 - **Type**: directives
 Directive that uses masking to fade out overflown content
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -13590,7 +13590,7 @@ export default class Page {
 - **Type**: directives
 A directive that adjusts font size for the text to fit in the container
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -13717,7 +13717,7 @@ export default class Page {}
 - **Type**: directives
 Directive to show a hint by hover of an element
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -14350,7 +14350,7 @@ ProgressSegmented
             .
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -14623,7 +14623,7 @@ tuiShimmer
             
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -14808,7 +14808,7 @@ tuiSwipe
             min distance between touchstart and touchend.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -14862,7 +14862,7 @@ tuiTheme
         light
         are included. Importing is not required.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### TypeScript
 
@@ -14887,7 +14887,7 @@ export default class Page {
 - **Type**: directives
 A directive for title with optional subtitle
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -15040,7 +15040,7 @@ export default class Page {}
 - **Type**: directives
 This directive allows you to access reactive control or container value changes as an output
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -15431,7 +15431,7 @@ TUI_VIEWPORT
             helper instead of token.
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### TypeScript
 
@@ -15465,7 +15465,7 @@ Pipe to format number values to show money sums
             
         
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -15735,7 +15735,7 @@ export default class Page {}
 - **Type**: pipes
 Pipe for filtering an array by value entered in a textfield
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -16027,7 +16027,7 @@ export default class Page {
 - **Type**: pipes
 Pipe to transform a value with a function
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 
@@ -16076,7 +16076,7 @@ export default class Page {
 - **Type**: pipes
 Pipe for obfuscating sensitive data
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
 
 ### How to Use (Import)
 

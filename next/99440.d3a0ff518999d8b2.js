@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99440],{99440:e=>{e.exports='<tui-accordion>\n    @for (item of data | keyvalue; track item; let index = $index) {\n        <button [tuiAccordion]="index === 1">{{ item.key }}</button>\n        <tui-expand>{{ item.value }}</tui-expand>\n    }\n</tui-accordion>\n'}}]);
