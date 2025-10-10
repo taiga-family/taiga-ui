@@ -7,12 +7,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiContext} from '@taiga-ui/cdk';
-import {TuiNumberFormat, TuiTextfield, TuiTitle} from '@taiga-ui/core';
-import {
-    TuiInputRange,
-    type TuiInputRangeComponent,
-    type TuiKeySteps,
-} from '@taiga-ui/kit';
+import {TuiLoader, TuiNumberFormat, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiInputRange, type TuiKeySteps} from '@taiga-ui/kit';
+import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     imports: [
@@ -49,7 +46,12 @@ export default class PageComponent {
         ],
     ];
 
-    protected readonly contentVariants: Array<TuiInputRangeComponent['content']> = [
+    protected readonly contentVariants: Array<
+        readonly [
+            PolymorpheusContent<TuiContext<number>>,
+            PolymorpheusContent<TuiContext<number>>,
+        ]
+    > = [
         ['', ''],
         ['START', 'END'],
         [
@@ -68,6 +70,7 @@ export default class PageComponent {
             ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : `${val}`),
             ({$implicit: val}: TuiContext<number>) => (val === 5 ? 'FIVE' : `${val}`),
         ],
+        ['', new PolymorpheusComponent(TuiLoader)],
     ];
 
     protected min = 0;

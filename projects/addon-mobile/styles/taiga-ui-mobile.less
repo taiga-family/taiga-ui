@@ -1,3 +1,4 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.less';
 @import 'common/search.less';
 
 [data-platform='android'] {
@@ -22,6 +23,12 @@
     tui-segmented > .tui-segmented_active:active {
         opacity: var(--tui-disabled-opacity);
     }
+
+    [tuiToast]:active {
+        .interactive({
+            transform: scale(0.95);
+        });
+    }
 }
 
 [data-platform='android'],
@@ -38,4 +45,5 @@
     @import 'common/header.less';
     @import 'common/message.less';
     @import 'common/notification-middle.less';
+    @import 'common/toast.less';
 }

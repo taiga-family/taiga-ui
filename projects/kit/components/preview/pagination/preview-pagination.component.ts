@@ -17,7 +17,7 @@ import {TuiPreviewAction} from '../action/preview-action.directive';
     selector: 'tui-preview-pagination',
     imports: [AsyncPipe, TuiButton, TuiPreviewAction],
     templateUrl: './preview-pagination.template.html',
-    styleUrls: ['./preview-pagination.style.less'],
+    styleUrl: './preview-pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(document:keydown.arrowRight.prevent)': 'onArrowClick(1)',

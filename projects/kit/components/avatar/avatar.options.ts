@@ -12,5 +12,5 @@ export const [TUI_AVATAR_OPTIONS, tuiAvatarOptionsProvider] =
     tuiCreateOptions<TuiAvatarOptions>({
         appearance: '',
         round: true,
-        size: 'l',
+        size: 'm',
     });

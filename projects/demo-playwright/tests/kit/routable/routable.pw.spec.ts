@@ -27,7 +27,7 @@ test.describe('Routable', () => {
 
         await expect(page).toHaveURL(/\/dialog\/lazy-routable\/path\/to\/dialog$/);
 
-        await page.locator('[automation-id="tui-dialog__close"]').click();
+        await page.locator('tui-dialog button').click();
 
         await expect(page).toHaveURL(/\/dialog\/lazy-routable$/);
     });
@@ -44,7 +44,7 @@ test.describe('Routable', () => {
             '/dialog/routable/NamedOutlet/(myOutlet:path/to/dialog)',
         );
 
-        await page.locator('[automation-id="tui-dialog__close"]').click();
+        await page.locator('tui-dialog button').click();
 
         await expect(page).toHaveURL(/\/dialog\/routable\/NamedOutlet$/);
     });

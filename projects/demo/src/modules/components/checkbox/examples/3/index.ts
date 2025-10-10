@@ -8,7 +8,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiButton, TuiCheckbox],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

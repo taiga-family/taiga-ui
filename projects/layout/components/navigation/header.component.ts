@@ -7,6 +7,7 @@ import {
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
@@ -15,7 +16,7 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
     standalone: true,
     selector: 'header[tuiNavigationHeader]',
     template: '<ng-content />',
-    styleUrls: ['./header.style.less'],
+    styleUrl: './header.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -25,6 +26,7 @@ import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badg
         tuiButtonOptionsProvider({size: 's', appearance: 'flat-grayscale'}),
         tuiDropdownOptionsProvider({appearance: 'dropdown-navigation'}),
         tuiTextfieldOptionsProvider({size: signal('s')}),
+        tuiHintOptionsProvider({appearance: 'floating'}),
     ],
     host: {
         tuiTheme: 'dark',

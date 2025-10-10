@@ -41,7 +41,7 @@ import {IconsGroupTemplate} from './icons-group.directive';
         TuiTextfieldOptionsDirective,
     ],
     templateUrl: './icons-group.template.html',
-    styleUrls: ['./icons-group.style.less'],
+    styleUrl: './icons-group.style.less',
     changeDetection,
 })
 export class IconsGroup implements OnInit {

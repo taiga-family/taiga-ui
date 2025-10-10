@@ -9,9 +9,9 @@
 }
 
 @if (items && !isFlat(items)) {
-    @for (group of labels; track group; let index = $index) {
-        <optgroup [label]="labels[index]">
-            <ng-container *ngTemplateOutlet="options; context: {$implicit: items[index]}" />
+    @for (group of labels; track group) {
+        <optgroup [label]="labels[$index]">
+            <ng-container *ngTemplateOutlet="options; context: {$implicit: items[$index]}" />
         </optgroup>
     }
 } @else {

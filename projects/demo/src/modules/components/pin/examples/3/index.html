@@ -1,7 +1,6 @@
 <button
-    tuiPin
     type="button"
-    [open]="a"
+    [tuiPin]="a"
     (click)="a = !a"
 >
     <img
@@ -12,10 +11,9 @@
 
 <button
     title="dollar"
-    tuiPin
     type="button"
-    [open]="b"
     [style.inset-inline-start.rem]="5"
+    [tuiPin]="b"
     (click)="b = !b"
 >
     <tui-icon icon="@tui.dollar-sign" />
@@ -23,22 +21,20 @@
 
 <button
     title="dollar"
-    tuiPin
     type="button"
     class="link"
-    [open]="c"
     [style.inset-inline-start.rem]="10"
+    [tuiPin]="c"
     (click)="c = !c"
 >
     <tui-icon icon="@tui.dollar-sign" />
 </button>
 
 <button
-    tuiPin
     type="button"
     class="crazy"
-    [open]="d"
     [style.inset-inline-start.rem]="15"
+    [tuiPin]="d"
     (click)="d = !d"
 >
     4.5

@@ -20,7 +20,7 @@ import {TuiInputMonthDirective} from './input-month.directive';
     selector: 'input[tuiInputMonth][type="month"]',
     imports: [TuiTextfieldContent],
     templateUrl: './input-month.template.html',
-    styleUrls: ['./input-month.style.less'],
+    styleUrl: './input-month.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],

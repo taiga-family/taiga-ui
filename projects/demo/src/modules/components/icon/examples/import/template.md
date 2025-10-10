@@ -1,3 +1,3 @@
 ```html
-<tui-icon icon="@tui.check"></tui-icon>
+<tui-icon icon="@tui.check" />
 ```

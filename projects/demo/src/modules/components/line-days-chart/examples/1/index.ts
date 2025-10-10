@@ -13,14 +13,21 @@ import {
     tuiPure,
     type TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TUI_MONTHS} from '@taiga-ui/core';
-import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
+import {TUI_MONTHS, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputDateRange} from '@taiga-ui/kit';
 import {map, type Observable} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, FormsModule, TuiAxes, TuiInputDateRangeModule, TuiLineDaysChart],
+    imports: [
+        AsyncPipe,
+        FormsModule,
+        TuiAxes,
+        TuiInputDateRange,
+        TuiLineDaysChart,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -18,18 +18,6 @@ describe('tuiGetElementObscures', () => {
             })) as unknown as () => DOMRect;
         });
 
-        it('should return null if element does not have ownerDocument', () => {
-            Object.defineProperty(element, 'ownerDocument', {value: undefined});
-
-            expect(tuiGetElementObscures(element)).toBeNull();
-        });
-
-        it('should return null if element does not have defaultView', () => {
-            Object.defineProperty(element, 'ownerDocument', {value: {defaultView: null}});
-
-            expect(tuiGetElementObscures(element)).toBeNull();
-        });
-
         it('should return null if element does not have getBoundingClientRect method', () => {
             element.getBoundingClientRect = undefined as any;
 

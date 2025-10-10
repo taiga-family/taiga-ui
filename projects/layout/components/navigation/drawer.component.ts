@@ -2,9 +2,10 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DoCheck,
+    effect,
     inject,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
@@ -27,7 +28,7 @@ import {
 } from '@taiga-ui/core/tokens';
 import {tuiToAnimationOptions} from '@taiga-ui/core/utils/miscellaneous';
 import {TUI_LAYOUT_ICONS} from '@taiga-ui/layout/tokens';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
     imports: [PolymorpheusOutlet, TuiScrollbar],
@@ -36,7 +37,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
             <ng-container *polymorpheusOutlet="directive._content()" />
         </tui-scrollbar>
     `,
-    styleUrls: ['./drawer.style.less'],
+    styleUrl: './drawer.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiActiveZone, TuiAnimated],
     host: {
@@ -83,13 +84,11 @@ export class TuiDrawerDirective implements DoCheck {
     private readonly dropdown = tuiDropdown(null);
     private readonly open = inject(TuiDropdownOpen);
 
+    protected readonly template = viewChild(TemplateRef);
+    protected readonly ef = effect(() => this.dropdown.set(this.template()));
+
     public ngDoCheck(): void {
         // TODO: Refactor to tuiDirectiveBinding
         tuiSetSignal(this.icons.iconStart, this.open.tuiDropdownOpen ? this.x : '');
-    }
-
-    @ViewChild(TemplateRef)
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
     }
 }

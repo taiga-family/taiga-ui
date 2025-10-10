@@ -3,7 +3,7 @@ import {
     Component,
     Directive,
     inject,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -15,31 +15,26 @@ import {map} from 'rxjs';
 const rowsInSvg = 3;
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./sensitive.style.less'],
+    styleUrl: './sensitive.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-sensitive-styles',
-    },
+    host: {class: 'tui-sensitive'},
 })
-class TuiSensitiveStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiSensitive]',
     providers: [ResizeObserverService],
     host: {
         '[style.--t-offset.px]': 'offset',
         '[style.--t-mask-height.px]': 'height()',
-        '[class.tui-sensitive]': 'tuiSensitive',
+        '[class.tui-sensitive]': 'tuiSensitive()',
     },
 })
 export class TuiSensitive {
-    protected readonly nothing = tuiWithStyles(TuiSensitiveStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly offset = Math.round(Math.random() * 10) * 10;
-
     protected readonly height = toSignal(
         inject(ResizeObserverService, {self: true}).pipe(
             map((entry): [number, number] => {
@@ -53,6 +48,5 @@ export class TuiSensitive {
         ),
     );
 
-    @Input()
-    public tuiSensitive: boolean | null = false;
+    public readonly tuiSensitive = input<boolean | null>(false);
 }

@@ -232,7 +232,7 @@ export class TuiDay extends TuiMonth {
     }
 
     /**
-     * Passed date is after or equals to current
+     * Passed date is after or equal to current
      */
     public daySameOrBefore(another: TuiDay): boolean {
         return (
@@ -302,11 +302,26 @@ export class TuiDay extends TuiMonth {
         let years = Math.floor(totalMonths / MONTHS_IN_YEAR);
         let months = totalMonths % MONTHS_IN_YEAR;
 
-        let days =
-            Math.min(
-                this.day,
-                TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years)),
-            ) + day;
+        const monthDaysCount = TuiMonth.getMonthDaysCount(
+            months,
+            TuiYear.isLeapYear(years),
+        );
+        const currentMonthDaysCount = TuiMonth.getMonthDaysCount(
+            this.month,
+            TuiYear.isLeapYear(years),
+        );
+        let days = day;
+
+        if (this.day > monthDaysCount) {
+            days += this.day - (currentMonthDaysCount - monthDaysCount);
+        } else if (
+            currentMonthDaysCount < monthDaysCount &&
+            this.day === currentMonthDaysCount
+        ) {
+            days += this.day + (monthDaysCount - currentMonthDaysCount);
+        } else {
+            days += this.day;
+        }
 
         while (days > TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years))) {
             days -= TuiMonth.getMonthDaysCount(months, TuiYear.isLeapYear(years));

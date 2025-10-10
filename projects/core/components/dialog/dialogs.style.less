@@ -15,8 +15,7 @@
         overflow: auto;
     }
 
-    //TODO: Remove [new] in v5
-    &:has(section:only-of-type ::ng-deep tui-dialog[new][data-appearance~='fullscreen']) > .t-overlay,
+    &:has(section:only-of-type ::ng-deep tui-dialog[data-appearance~='fullscreen']) > .t-overlay,
     &:has(section:only-of-type ::ng-deep tui-notification-middle) > .t-overlay {
         opacity: 0;
     }
@@ -43,14 +42,10 @@
 
 .t-dialog {
     position: sticky;
+    display: grid;
+    place-items: center;
     overscroll-behavior: none;
     filter: brightness(0.25);
-
-    //TODO: Make default in v5
-    &:has(tui-dialog[new]) {
-        display: grid;
-        place-items: center;
-    }
 
     ::ng-deep > .tui-enter + .t-scrollbars .t-bar_vertical,
     ::ng-deep > .tui-leave + .t-scrollbars .t-bar_vertical {
@@ -75,10 +70,6 @@
 .t-dialog:last-child {
     pointer-events: auto;
     filter: none;
-
-    :host-context(tui-root:has(tui-dropdown-mobile._sheet)) & {
-        filter: brightness(0.5);
-    }
 }
 
 .t-scrollbars {

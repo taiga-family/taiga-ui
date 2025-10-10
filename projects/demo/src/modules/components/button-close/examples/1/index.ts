@@ -7,7 +7,7 @@ import {TuiButtonClose} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiButtonClose],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

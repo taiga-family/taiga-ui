@@ -3,8 +3,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_FALSE_HANDLER, TuiItem} from '@taiga-ui/cdk';
-import {TuiButton, TuiLoader} from '@taiga-ui/core';
-import {TuiExpand} from '@taiga-ui/experimental';
+import {TuiButton, TuiExpand, TuiLoader} from '@taiga-ui/core';
 import {TuiElasticContainer} from '@taiga-ui/kit';
 import {map, startWith, timer} from 'rxjs';
 

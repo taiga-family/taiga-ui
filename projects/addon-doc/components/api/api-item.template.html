@@ -11,7 +11,7 @@
 </td>
 <td class="t-td">
     <code class="t-type">
-        @for (item of type | tuiDocTypeReference; track item; let last = $last) {
+        @for (item of type | tuiDocTypeReference; track item) {
             @if (item.reference) {
                 <a
                     target="_blank"
@@ -29,7 +29,7 @@
             } @else {
                 {{ item.type }}
             }
-            @if (!last) {
+            @if (!$last) {
                 <span>&nbsp;|&nbsp;</span>
             }
         }
@@ -44,14 +44,14 @@
             [content]="content"
             [tuiTextfieldCleaner]="type.includes('null') || type.includes('PolymorpheusContent')"
         >
-            <select
-                placeholder="null"
-                tuiTextfield
+            <input
+                tuiSelect
                 [ngModel]="value ?? null"
                 (ngModelChange)="onValueChange($event)"
-            ></select>
+            />
             <tui-data-list-wrapper
-                *tuiTextfieldDropdown
+                *tuiDropdown
+                new
                 [itemContent]="content"
                 [items]="items"
             />

@@ -1,33 +1,25 @@
 import {NgTemplateOutlet} from '@angular/common';
 import {
-    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     computed,
-    ContentChildren,
+    contentChildren,
     ElementRef,
     inject,
     Input,
-    type QueryList,
-    signal,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
-import {
-    tuiControlValue,
-    tuiQueryListChanges,
-    tuiZonefull,
-} from '@taiga-ui/cdk/observables';
+import {tuiZonefull} from '@taiga-ui/cdk/observables';
 import {tuiIsControlEmpty} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiTextfieldOptionsDirective} from '@taiga-ui/core/components/textfield';
 import {type TuiSizeS} from '@taiga-ui/core/types';
-import {distinctUntilChanged, map, merge, switchMap} from 'rxjs';
+import {distinctUntilChanged, map} from 'rxjs';
 
 import {TuiSearchFilterComponent} from './search-filter.component';
 
@@ -37,7 +29,7 @@ const WIDTH = 12;
     selector: 'tui-search-filters',
     imports: [NgTemplateOutlet, TuiButton, TuiSearchFilterComponent],
     templateUrl: './search-filters.template.html',
-    styleUrls: ['./search-filters.styles.less'],
+    styleUrl: './search-filters.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         ResizeObserverService,
@@ -50,20 +42,17 @@ const WIDTH = 12;
         },
     ],
 })
-export class TuiSearchFiltersComponent implements AfterContentInit {
-    @ViewChild('rem')
-    private readonly rem?: ElementRef<HTMLDivElement>;
+export class TuiSearchFiltersComponent {
+    private readonly rem = viewChild<ElementRef<HTMLDivElement>>('rem');
 
-    @ViewChild(TuiButton, {read: ElementRef})
-    private readonly button?: ElementRef<HTMLDivElement>;
+    private readonly button = viewChild(TuiButton, {read: ElementRef});
 
-    @ContentChildren(NgControl, {descendants: true})
-    private readonly children: QueryList<NgControl> = EMPTY_QUERY;
+    private readonly controls = contentChildren(NgControl, {descendants: true});
 
-    private readonly controls = signal<readonly NgControl[]>([]);
-
-    @ContentChildren(TuiItem, {descendants: true, read: TemplateRef})
-    protected readonly templates: QueryList<TemplateRef<any>> = EMPTY_QUERY;
+    protected readonly templates = contentChildren(TuiItem, {
+        descendants: true,
+        read: TemplateRef,
+    });
 
     protected readonly overflown = toSignal(
         inject(ResizeObserverService, {self: true}).pipe(
@@ -88,18 +77,8 @@ export class TuiSearchFiltersComponent implements AfterContentInit {
     @Input()
     public size: TuiSizeS = 'm';
 
-    // TODO: Refactor to signal queries when Angular is updated
-    public ngAfterContentInit(): void {
-        tuiQueryListChanges(this.children)
-            .pipe(
-                switchMap((all) => merge(...all.map((c) => tuiControlValue(c)))),
-                map(() => this.children.toArray()),
-            )
-            .subscribe((controls) => this.controls.set(controls));
-    }
-
     protected onReset(): void {
-        this.children.forEach(({control}, index) => {
+        this.controls().forEach(({control}, index) => {
             if (control && index >= this.overflown()) {
                 control.setValue(null);
             }
@@ -107,10 +86,10 @@ export class TuiSearchFiltersComponent implements AfterContentInit {
     }
 
     private get unit(): number {
-        return this.rem?.nativeElement.offsetWidth || 16;
+        return this.rem()?.nativeElement.offsetWidth || 16;
     }
 
     private get more(): number {
-        return this.button?.nativeElement.clientWidth || 0;
+        return this.button()?.nativeElement.clientWidth || 0;
     }
 }

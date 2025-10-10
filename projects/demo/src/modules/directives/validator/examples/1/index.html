@@ -12,7 +12,7 @@
             [(ngModel)]="type"
         />
         <tui-data-list-wrapper
-            *tuiTextfieldDropdown
+            *tuiDropdown
             new
             [items]="items"
         />
@@ -25,6 +25,15 @@
             Contact
         </tui-input>
     } @else {
-        <tui-input-phone formControlName="contact">Contact</tui-input-phone>
+        <tui-textfield>
+            <label tuiLabel>Contact</label>
+
+            <input
+                autocomplete="tel"
+                formControlName="contact"
+                mask="+7 ### ###-##-##"
+                tuiInputPhone
+            />
+        </tui-textfield>
     }
 </form>

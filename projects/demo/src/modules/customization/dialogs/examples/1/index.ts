@@ -11,7 +11,7 @@ import {PromptService} from './prompt/prompt.service';
     selector: 'tui-dialogs-example-1',
     imports: [TuiAvatar, TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export class TuiDialogsExample1 {

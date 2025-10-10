@@ -14,7 +14,7 @@ import {TUI_CHECKBOX_OPTIONS, type TuiCheckboxOptions} from './checkbox.options'
     standalone: true,
     selector: 'input[type="checkbox"][tuiCheckbox]',
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/checkbox.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/checkbox.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_RADIO_OPTIONS, TUI_CHECKBOX_OPTIONS)],

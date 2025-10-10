@@ -1,26 +1,23 @@
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     computed,
     ElementRef,
     inject,
     Input,
+    input,
     type QueryList,
     signal,
     ViewChild,
     ViewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {
-    TUI_IDENTITY_VALUE_TRANSFORMER,
-    tuiAsControl,
-    TuiControl,
-} from '@taiga-ui/cdk/classes';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
+import {CHAR_EN_DASH, CHAR_NO_BREAK_SPACE, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsNumber, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_TEXTFIELD_OPTIONS, TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {
     TuiInputNumber,
@@ -32,13 +29,17 @@ import {
     type TuiKeySteps,
     tuiSliderOptionsProvider,
 } from '@taiga-ui/kit/components/slider';
-import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {
+    type PolymorpheusContent,
+    PolymorpheusOutlet,
+    type PolymorpheusPrimitive,
+} from '@taiga-ui/polymorpheus';
 
 @Component({
     selector: 'tui-input-range',
     imports: [FormsModule, PolymorpheusOutlet, TuiInputNumber, TuiRange, TuiTextfield],
     templateUrl: './input-range.template.html',
-    styleUrls: ['./input-range.style.less'],
+    styleUrl: './input-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsControl(TuiInputRangeComponent),
@@ -49,12 +50,11 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
         new: '', // TODO(v5): remove after deletion of legacy control
         // TODO: use css :host:has(tui-textfield[data-size]) after browser bump
         '[attr.data-size]': 'size()',
+        // TODO: Delete this line and put `tui-input-range:has(.t-content-end) {--t-icon-lock: none}` to proprietary styles
+        '[style.--t-icon-lock]': 'contentEnd() ? "none" : null',
     },
 })
-export class TuiInputRangeComponent
-    extends TuiControl<readonly [number, number]>
-    implements AfterViewInit
-{
+export class TuiInputRangeComponent extends TuiControl<readonly [number, number]> {
     @ViewChildren(TuiInputNumberDirective, {read: ElementRef})
     private readonly inputNumberRefs: QueryList<ElementRef<HTMLInputElement>> =
         EMPTY_QUERY;
@@ -64,16 +64,31 @@ export class TuiInputRangeComponent
 
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly quantum = signal(0);
-    private readonly quantumTransformer = computed((quantum = this.quantum()) =>
-        quantum
-            ? new TuiQuantumValueTransformerBase(quantum)
-            : TUI_IDENTITY_VALUE_TRANSFORMER,
+    private readonly quantumTransformer = computed(
+        () => new TuiQuantumValueTransformerBase(this.quantum()),
     );
 
     protected readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
     protected textfieldValueStart = this.value()[0];
     protected textfieldValueEnd = this.value()[1];
     protected lastActiveSide: 'end' | 'start' = 'start';
+    protected readonly contentStart = computed(() => {
+        const [start, end] = this.content().map((x, i) => {
+            const value = this.value()[i]!;
+
+            return typeof x === 'function' ? x({$implicit: value}) : x || value;
+        });
+
+        if (this.interactive() || !this.isPrimitive(start) || !this.isPrimitive(end)) {
+            return this.content()[0];
+        }
+
+        return `${start}${CHAR_NO_BREAK_SPACE}${CHAR_EN_DASH}${CHAR_NO_BREAK_SPACE}${end}`;
+    });
+
+    protected readonly contentEnd = computed(() =>
+        this.contentStart() === this.content()[0] ? this.content()[1] : '',
+    );
 
     @Input()
     public min = 0;
@@ -90,17 +105,18 @@ export class TuiInputRangeComponent
     @Input()
     public keySteps: TuiKeySteps | null = null;
 
-    @Input()
-    public content: readonly [
-        PolymorpheusContent<TuiContext<number>>,
-        PolymorpheusContent<TuiContext<number>>,
-    ] = ['', ''];
-
     @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
     public prefix: readonly [string, string] = ['', ''];
 
     @Input({transform: (x: readonly [string, string] | null) => x ?? ['', '']})
     public postfix: readonly [string, string] = ['', ''];
+
+    public content = input<
+        readonly [
+            PolymorpheusContent<TuiContext<number>>,
+            PolymorpheusContent<TuiContext<number>>,
+        ]
+    >(['', '']);
 
     // TODO(v5): use signal inputs
     @Input('quantum')
@@ -113,18 +129,14 @@ export class TuiInputRangeComponent
         this.setTextfieldValues(this.value());
     }
 
-    public ngAfterViewInit(): void {
-        if (this.range) {
-            this.range.legacyMode = false; // TODO(v5): remove backward compatibility
-        }
+    protected get contentStartHidden(): boolean {
+        return this.interactive() && tuiIsFocused(this.textfieldStart);
     }
 
-    protected get hideStartContent(): boolean {
-        return !this.content[0] || tuiIsFocused(this.textfieldStart);
-    }
-
-    protected get hideEndContent(): boolean {
-        return !this.content[1] || tuiIsFocused(this.textfieldEnd);
+    protected get contentEndHidden(): boolean {
+        return (
+            !this.content()[1] || (this.interactive() && tuiIsFocused(this.textfieldEnd))
+        );
     }
 
     protected takeStep(
@@ -168,11 +180,6 @@ export class TuiInputRangeComponent
         }
     }
 
-    protected onActiveThumbChange(activeThumb: 'left' | 'right'): void {
-        // TODO(v5): remove backward compatibility
-        this.lastActiveSide = activeThumb === 'left' ? 'start' : 'end';
-    }
-
     protected setTextfieldValues([start, end]: readonly [number, number]): void {
         this.textfieldValueStart = start;
         this.textfieldValueEnd = end;
@@ -201,5 +208,9 @@ export class TuiInputRangeComponent
         ) as unknown as readonly [number, number];
 
         return [Math.min(start, prevEnd), Math.max(end, prevStart)];
+    }
+
+    private isPrimitive(x: PolymorpheusContent): x is PolymorpheusPrimitive {
+        return !x || tuiIsString(x) || tuiIsNumber(x);
     }
 }

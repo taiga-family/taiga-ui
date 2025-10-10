@@ -14,16 +14,16 @@
         </a>
         to create a multi-line string input.
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
                 [description]="description"
                 [heading]="example"
                 [id]="example | tuiKebab"
             >
                 <ng-template #description>
-                    @switch (index) {
+                    @switch ($index) {
                         @case (0) {
                             <span>
                                 Component would grow from minimal amount of rows until given maximum number of rows,

@@ -9,7 +9,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 @Component({
     imports: [PolymorpheusOutlet, TuiButton, TuiPreview, TuiSwipe],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

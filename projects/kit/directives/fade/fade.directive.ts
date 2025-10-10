@@ -22,19 +22,15 @@ import {filter, fromEvent, merge} from 'rxjs';
 const BUFFER = 1; // buffer for rounding issues
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./fade.style.less'],
+    styleUrl: './fade.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-fade-styles',
-    },
+    host: {class: 'tui-fade'},
 })
-class TuiFadeStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiFade]',
     providers: [
         ResizeObserverService,
@@ -54,6 +50,8 @@ class TuiFadeStyles {}
     },
 })
 export class TuiFade {
+    protected readonly nothing = tuiWithStyles(Styles);
+
     // TODO: Remove when lh CSS units are supported: https://caniuse.com/mdn-css_types_length_lh
     @Input('tuiFadeHeight')
     public lineHeight: string | null = null;
@@ -70,7 +68,6 @@ export class TuiFade {
     constructor() {
         const el = tuiInjectElement();
 
-        tuiWithStyles(TuiFadeStyles);
         merge(
             inject(ResizeObserverService, {self: true}),
             inject(MutationObserverService, {self: true}),

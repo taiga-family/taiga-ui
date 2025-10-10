@@ -43,7 +43,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     standalone: false,
     selector: 'tui-input-range',
     templateUrl: './input-range.template.html',
-    styleUrls: ['./input-range.style.less'],
+    styleUrl: './input-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputRangeComponent),
@@ -226,8 +226,8 @@ export class TuiInputRangeComponent
         }
     }
 
-    protected onActiveThumbChange(activeThumb: 'left' | 'right'): void {
-        this.lastActiveSide = activeThumb;
+    protected onActiveThumbChange(activeThumb: 'end' | 'start'): void {
+        this.lastActiveSide = activeThumb === 'start' ? 'left' : 'right';
     }
 
     protected getFallbackValue(): [number, number] {

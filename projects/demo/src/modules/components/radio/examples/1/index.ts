@@ -9,7 +9,7 @@ import {TuiRadio} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiPlatform, TuiRadio],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

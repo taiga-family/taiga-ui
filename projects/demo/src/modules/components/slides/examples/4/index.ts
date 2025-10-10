@@ -3,15 +3,13 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiDialogService} from '@taiga-ui/experimental';
+import {TuiButton, TuiCell, TuiDialogService, TuiHeader, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiProgressBar, TuiSlides} from '@taiga-ui/kit';
-import {TuiAppBar, TuiCard, TuiCell, TuiHeader} from '@taiga-ui/layout';
+import {TuiAppBar, TuiCard} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         TuiAppBar,
-        TuiAppearance,
         TuiAvatar,
         TuiButton,
         TuiCard,

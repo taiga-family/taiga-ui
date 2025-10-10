@@ -3,21 +3,20 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiAppearance,
     TuiButton,
     TuiError,
+    TuiHeader,
     TuiIcon,
     TuiNotification,
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiSegmented, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiForm} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         ReactiveFormsModule,
-        TuiAppearance,
         TuiButton,
         TuiCardLarge,
         TuiError,

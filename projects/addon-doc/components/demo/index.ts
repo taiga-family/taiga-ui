@@ -23,18 +23,20 @@ import {type Params, UrlSerializer, type UrlTree} from '@angular/router';
 import {TUI_DOC_DEMO_TEXTS, TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {type TuiDemoParams} from '@taiga-ui/addon-doc/types';
 import {tuiCleanObject, tuiCoerceValueIsTrue} from '@taiga-ui/addon-doc/utils';
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiResizable, TuiResizer} from '@taiga-ui/cdk/directives/resizer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiToInteger} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
+import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiGroup} from '@taiga-ui/core/directives/group';
 import {TUI_DARK_MODE} from '@taiga-ui/core/tokens';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
+import {TuiSelect} from '@taiga-ui/kit/components/select';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
-import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {skip} from 'rxjs';
 
@@ -54,12 +56,14 @@ const MIN_WIDTH = 160;
         TuiGroup,
         TuiResizable,
         TuiResizer,
-        TuiSelectModule,
         TuiSwitch,
         TuiTextfieldControllerModule,
+        TuiTextfield,
+        TuiSelect,
+        TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._sticky]': 'sticky',

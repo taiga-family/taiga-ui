@@ -8,7 +8,7 @@ import {TuiAppBar} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAppBar, TuiButton, TuiProgress, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

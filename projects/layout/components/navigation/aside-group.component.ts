@@ -2,17 +2,15 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    ContentChild,
+    contentChild,
+    effect,
     inject,
-    Input,
-    Output,
-    signal,
+    model,
     TemplateRef,
-    ViewChild,
+    viewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import {toObservable} from '@angular/core/rxjs-interop';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
     TuiDataList,
@@ -27,7 +25,6 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {skip} from 'rxjs';
 
 import {TuiAsideComponent} from './aside.component';
 
@@ -46,37 +43,33 @@ import {TuiAsideComponent} from './aside.component';
     ],
 })
 export class TuiAsideGroupComponent implements TuiDataListHost<unknown> {
-    @ViewChild('datalist', {static: true})
-    private readonly datalist: PolymorpheusContent;
-
-    @ContentChild(TuiChevron, {static: true})
-    private readonly chevron?: TuiChevron;
-
+    private readonly datalist = viewChild<PolymorpheusContent>('datalist');
+    private readonly chevron = contentChild(TuiChevron);
     private readonly aside = inject(TuiAsideComponent);
-    private readonly open = signal(false);
 
-    @ContentChild(TemplateRef)
-    protected readonly template: TemplateRef<any> | null = null;
+    protected readonly template = contentChild(TemplateRef);
 
     protected readonly expanded = computed(() => this.aside.expanded() && this.open());
+    protected readonly chevronEffect = effect(() => {
+        const chevron = this.chevron();
+
+        if (chevron) {
+            tuiSetSignal(chevron.rotated, this.expanded());
+        }
+    });
+
     protected readonly binding = tuiDirectiveBinding(
         TuiDropdownDirective,
         'tuiDropdown',
-        computed(() => (this.aside.expanded() ? null : this.datalist)),
+        computed(() => (this.aside.expanded() ? null : this.datalist())),
     );
 
-    @Output()
-    public readonly openChange = toObservable(this.open).pipe(skip(1));
-
     public readonly size = 's';
+    public readonly open = model(false);
 
-    @Input('open')
-    public set openSetter(open: boolean) {
-        this.toggle(open);
-    }
-
-    protected toggle(open = !this.open()): void {
-        this.open.set(open && this.aside.expanded());
-        this.chevron?.chevron.set(this.open());
+    protected toggle(): void {
+        if (this.aside.expanded()) {
+            this.open.set(!this.open());
+        }
     }
 }

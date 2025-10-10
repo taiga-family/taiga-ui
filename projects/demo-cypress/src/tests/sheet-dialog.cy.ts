@@ -40,7 +40,7 @@ describe('TuiSheetDialog', () => {
         protected open = false;
 
         protected readonly options: Partial<TuiSheetDialogOptions> = {
-            closeable: false,
+            closable: false,
         };
     }
 

@@ -8,6 +8,7 @@
         "**/demo/src/modules/components/select/examples/2/index.ts",
         "projects/demo/src/modules/components/combo-box/examples/{6,8}/index.ts",
         "projects/demo-playwright/tests/kit/combo-box/combo-box.pw.spec.ts",
+        "projects/demo-playwright/tests/kit/input-chip/input-chip.pw.spec.ts",
         "projects/demo/src/llms.txt",
         "projects/demo/src/llms-full.txt",
         "projects/demo-cypress/src/tests/combo-box/*.cy.ts",
@@ -46,7 +47,8 @@
         "crossfading",
         "sdev",
         "coeff",
-        "Dalvik"
+        "Dalvik",
+        "UTDL"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

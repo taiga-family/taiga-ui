@@ -8,7 +8,7 @@ describe('InputSlider | With segments + tick labels', () => {
         imports: [FormsModule, TuiInputSlider, TuiRoot, TuiTextfield],
         template: `
             <tui-root>
-                <tui-textfield>
+                <tui-textfield [tuiTextfieldSize]="size">
                     <input
                         tuiInputSlider
                         [max]="100"
@@ -32,27 +32,35 @@ describe('InputSlider | With segments + tick labels', () => {
                 </div>
             </tui-root>
         `,
-        styleUrls: ['./slider-ticks.styles.less'],
+        styleUrl: './slider-ticks.styles.less',
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class SandBox {
         @Input({required: true})
         public value!: number;
+
+        @Input({required: true})
+        public size!: 'l' | 'm' | 's';
     }
 
     beforeEach(() => {
         cy.viewport(300, 110);
     });
 
-    [0, 25, 50, 75, 100].forEach((value) => {
-        it(`value = ${value}`, () => {
-            cy.mount(SandBox, {
-                componentProperties: {
-                    value,
-                },
-            });
+    (['s', 'm', 'l'] as const).forEach((size) => {
+        describe(`size = ${size}`, () => {
+            [0, 25, 50, 75, 100].forEach((value) => {
+                it(`value = ${value}`, () => {
+                    cy.mount(SandBox, {
+                        componentProperties: {
+                            size,
+                            value,
+                        },
+                    });
 
-            cy.compareSnapshot(`input-slider-ticks-${value}`);
+                    cy.compareSnapshot(`input-slider-ticks-size-${size}-value-${value}`);
+                });
+            });
         });
     });
 });

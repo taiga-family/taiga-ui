@@ -21,13 +21,15 @@
     </tui-textfield>
     <tui-error formControlName="nameValue" />
 
-    <tui-input-date formControlName="periodValue">
-        Input date
+    <tui-textfield>
+        <label tuiLabel>Input date</label>
         <input
+            formControlName="periodValue"
             placeholder="Placeholder"
-            tuiTextfieldLegacy
+            tuiInputDate
         />
-    </tui-input-date>
+        <tui-calendar *tuiDropdown />
+    </tui-textfield>
     <tui-error formControlName="periodValue" />
 
     <fieldset>
@@ -84,7 +86,7 @@
                 />
 
                 <tui-data-list-wrapper
-                    *tuiTextfieldDropdown
+                    *tuiDropdown
                     new
                     [items]="persons"
                 />
@@ -92,7 +94,16 @@
             <tui-error formControlName="personValue" />
         </div>
         <div class="stack">
-            <tui-input-phone formControlName="phoneValue">Input phone</tui-input-phone>
+            <tui-textfield>
+                <label tuiLabel>Input phone</label>
+
+                <input
+                    autocomplete="tel"
+                    formControlName="phoneValue"
+                    mask="+7 ### ###-##-##"
+                    tuiInputPhone
+                />
+            </tui-textfield>
             <tui-error formControlName="phoneValue" />
         </div>
     </fieldset>

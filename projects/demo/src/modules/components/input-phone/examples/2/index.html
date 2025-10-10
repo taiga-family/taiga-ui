@@ -14,7 +14,7 @@
     @if (items | tuiFilterByInput: matcher; as filtered) {
         @if (!user() && input.value && filtered.length) {
             <tui-data-list-wrapper
-                *tuiTextfieldDropdown
+                *tuiDropdown
                 new
                 [itemContent]="template"
                 [items]="filtered"

@@ -12,7 +12,7 @@ const FILLER_ARRAY: readonly number[] = [1];
     selector: 'tui-bar-set',
     imports: [NgTemplateOutlet, TuiBar],
     templateUrl: './bar-set.template.html',
-    styleUrls: ['./bar-set.style.less'],
+    styleUrl: './bar-set.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBarSet {

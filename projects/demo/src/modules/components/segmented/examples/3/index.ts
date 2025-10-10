@@ -6,7 +6,7 @@ import {TuiSegmented} from '@taiga-ui/kit';
 @Component({
     imports: [TuiSegmented],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

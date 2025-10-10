@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
-import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiFontSize} from '@taiga-ui/cdk/directives/font-size';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
@@ -20,7 +19,6 @@ import {
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
 } from '@taiga-ui/core/components/scrollbar';
-import {TuiDropdowns} from '@taiga-ui/core/directives/dropdown';
 import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiPopups} from '@taiga-ui/core/directives/popup';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
@@ -30,20 +28,13 @@ import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-root',
-    imports: [
-        TuiAlerts,
-        TuiDialogs,
-        TuiDropdowns,
-        TuiHints,
-        TuiPopups,
-        TuiScrollControls,
-    ],
+    imports: [TuiAlerts, TuiDialogs, TuiHints, TuiPopups, TuiScrollControls],
     templateUrl: './root.template.html',
     styleUrls: ['./animations.less', './root.style.less'],
     encapsulation: ViewEncapsulation.None,
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize, TuiActiveZone],
+    hostDirectives: [TuiPlatform, TuiVisualViewport, TuiFontSize],
     host: {
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',

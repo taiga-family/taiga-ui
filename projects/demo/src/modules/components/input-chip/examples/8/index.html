@@ -11,27 +11,29 @@
             tuiInputChip
             [(ngModel)]="writable"
         />
-        <ng-template
-            *ngIf="items | tuiFilterByInput as items"
-            let-close
-            tuiTextfieldDropdown
-        >
-            <tui-data-list-wrapper
-                new
-                tuiMultiSelectGroup
-                [items]="items"
-            />
-            <button
-                appearance="accent"
-                size="m"
-                tuiButton
-                tuiDropdownButton
-                type="button"
-                (click)="close()"
+
+        @if (items | tuiFilterByInput; as items) {
+            <ng-template
+                let-close
+                tuiDropdown
             >
-                Done
-            </button>
-        </ng-template>
+                <tui-data-list-wrapper
+                    new
+                    tuiMultiSelectGroup
+                    [items]="items"
+                />
+                <button
+                    appearance="accent"
+                    size="m"
+                    tuiButton
+                    tuiDropdownButton
+                    type="button"
+                    (click)="close()"
+                >
+                    Done
+                </button>
+            </ng-template>
+        }
     </tui-textfield>
 </label>
 
@@ -49,7 +51,7 @@
             [(ngModel)]="sheet"
         />
         <tui-data-list-wrapper
-            *tuiTextfieldDropdown
+            *tuiDropdown
             new
             tuiMultiSelectGroup
             [items]="items"

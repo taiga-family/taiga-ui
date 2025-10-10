@@ -50,7 +50,7 @@
                         [class.t-tags_empty]="tagsEmpty"
                     >
                         @if (labelOutside) {
-                            @for (item of value; track trackByFn(index, item); let index = $index) {
+                            @for (item of value; track trackByFn($index, item)) {
                                 <tui-tag
                                     #tag
                                     automation-id="tui-input-tag__tag"
@@ -67,9 +67,9 @@
                                     [size]="controller.size"
                                     [status]="status"
                                     [value]="item.toString()"
-                                    (edited)="onTagEdited($event, index)"
-                                    (keydown.arrowLeft.prevent)="onTagKeyDownArrowLeft(index)"
-                                    (keydown.arrowRight.prevent)="onTagKeyDownArrowRight(index)"
+                                    (edited)="onTagEdited($event, $index)"
+                                    (keydown.arrowLeft.prevent)="onTagKeyDownArrowLeft($index)"
+                                    (keydown.arrowRight.prevent)="onTagKeyDownArrowRight($index)"
                                 />
                             }
                         } @else {

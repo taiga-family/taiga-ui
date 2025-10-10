@@ -51,7 +51,8 @@
     "angularCompilerOptions": {
         "extendedDiagnostics": {
             "checks": {
-                "unusedStandaloneImports": "suppress"
+                "unusedStandaloneImports": "suppress",
+                "controlFlowPreventingContentProjection": "error"
             }
         }
     }

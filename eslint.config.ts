@@ -7,7 +7,10 @@ export default process.env.HTML_ESLINT
           ...taiga.configs['html-eslint'],
           globalIgnores(['**/*.{ts,js,css,less,scss}']),
           {
-              files: ['**/demo/**/pipes/format-date/index.html'],
+              files: [
+                  '**/demo/**/pipes/format-date/index.html',
+                  '**/demo/**/toast/index.html',
+              ],
               rules: {'html/require-li-container': 'off'},
           },
           {
@@ -37,16 +40,6 @@ export default process.env.HTML_ESLINT
                   '@angular-eslint/no-uncalled-signals': 'off',
                   // TODO enable after fixing all issues
                   '@angular-eslint/prefer-signals': 'off',
-                  '@angular-eslint/template/prefer-control-flow': 'off',
-                  '@angular-eslint/consistent-component-styles': 'off',
-              },
-          },
-          {
-              files: ['**/*.html'],
-              rules: {
-                  // TODO enable after fixing all issues
-                  '@angular-eslint/template/prefer-control-flow': 'off',
-                  '@angular-eslint/template/prefer-contextual-for-variables': 'off',
               },
           },
       ];

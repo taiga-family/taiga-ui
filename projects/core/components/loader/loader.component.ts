@@ -11,7 +11,7 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
     selector: 'tui-loader',
     imports: [PolymorpheusOutlet],
     templateUrl: './loader.template.html',
-    styleUrls: ['./loader.style.less'],
+    styleUrl: './loader.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._loading]': 'loading',

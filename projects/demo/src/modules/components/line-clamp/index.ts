@@ -6,7 +6,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiLineClamp],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

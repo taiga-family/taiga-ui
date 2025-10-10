@@ -18,7 +18,7 @@ import {TuiHintService} from './hint.service';
     selector: 'tui-hints',
     imports: [PolymorpheusOutlet, TuiActiveZone, TuiAnimatedParent],
     templateUrl: './hints.template.html',
-    styleUrls: ['./hints.style.less'],
+    styleUrl: './hints.style.less',
     // So that we do not force OnPush on custom hints
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,

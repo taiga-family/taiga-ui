@@ -31,7 +31,7 @@ describe('tuiGenerateDialogableRoute', () => {
     it('dialog options are passed correctly', () => {
         const dialogOptions = {
             dismissible: true,
-            closeable: true,
+            closable: true,
         };
 
         const result = tuiGenerateDialogableRoute(Dialog, {

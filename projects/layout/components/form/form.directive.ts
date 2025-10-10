@@ -4,7 +4,7 @@ import {
     Directive,
     inject,
     type InjectionToken,
-    Input,
+    input,
     type Provider,
     signal,
     ViewEncapsulation,
@@ -12,49 +12,53 @@ import {
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
+import {TUI_HEADER_OPTIONS} from '@taiga-ui/core/components/header';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core/components/textfield';
+import {TUI_BLOCK_OPTIONS} from '@taiga-ui/kit/components/block';
+import {TUI_CHECKBOX_OPTIONS} from '@taiga-ui/kit/components/checkbox';
+import {TUI_RADIO_OPTIONS} from '@taiga-ui/kit/components/radio';
 import {TUI_SEGMENTED_OPTIONS} from '@taiga-ui/kit/components/segmented';
 import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
-import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 
 import {TUI_FORM_OPTIONS, type TuiFormOptions} from './form.options';
 
 const HEADER_SIZE = {
-    s: 'xxxs',
-    m: 'xs',
-    l: 's',
+    s: 'body-m',
+    m: 'h6',
+    l: 'h5',
 } as const;
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./form.styles.less'],
+    styleUrl: './form.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-form',
-    },
+    host: {class: 'tui-form'},
 })
-class TuiFormStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiForm]',
     providers: [
         projectSize(TUI_BUTTON_OPTIONS, (size) => size),
+        projectSize(TUI_BLOCK_OPTIONS, (size) => size),
         projectSize(TUI_NOTIFICATION_OPTIONS, (size) => size),
-        projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size]),
+        projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size || 'l']),
         projectSize(TUI_SWITCH_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
+        projectSize(TUI_RADIO_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
+        projectSize(TUI_CHECKBOX_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         projectSize(TUI_SEGMENTED_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         {
             provide: TUI_TEXTFIELD_OPTIONS,
             useFactory: () => ({
                 ...inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true}),
-                size: signal(inject(TuiForm).size),
+                size: signal(
+                    inject(TuiForm).size() || inject(TUI_FORM_OPTIONS).size || 'l',
+                ),
             }),
         },
     ],
@@ -66,20 +70,14 @@ class TuiFormStyles {}
     ],
     host: {
         tuiForm: '',
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size() || options.size || "l"',
     },
 })
 export class TuiForm {
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly options = inject(TUI_FORM_OPTIONS);
 
-    protected readonly nothing = tuiWithStyles(TuiFormStyles);
-
-    public size: TuiFormOptions['size'] = this.options.size;
-
-    @Input()
-    public set tuiForm(size: TuiFormOptions['size'] | '') {
-        this.size = size || this.options.size;
-    }
+    public readonly size = input(this.options.size, {alias: 'tuiForm'});
 }
 
 function projectSize(
@@ -90,7 +88,7 @@ function projectSize(
         provide,
         useFactory: () => ({
             ...inject(provide, {skipSelf: true}),
-            size: project(inject(TuiForm).size),
+            size: project(inject(TuiForm).size() || inject(TUI_FORM_OPTIONS).size || 'l'),
         }),
     };
 }

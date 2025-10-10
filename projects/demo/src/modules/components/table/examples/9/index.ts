@@ -28,7 +28,7 @@ interface Item {
         TuiTableExpand,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

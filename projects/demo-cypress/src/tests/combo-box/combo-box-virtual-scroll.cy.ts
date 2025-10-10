@@ -48,7 +48,7 @@ import {map, type Observable} from 'rxjs';
                     [formControl]="control"
                 />
 
-                <ng-container *tuiTextfieldDropdown>
+                <ng-container *tuiDropdown>
                     <cdk-virtual-scroll-viewport
                         *tuiLet="countries$ | async | tuiFilterByInput as items"
                         tuiScrollable

@@ -1,24 +1,11 @@
-@import '@taiga-ui/core/styles/taiga-ui-local';
-
 :host {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
 }
 
-.red {
-    color: var(--tui-text-negative);
-}
-
-.hover {
-    .transition(color);
-
-    color: var(--tui-background-accent-1);
-
-    &:hover {
-        color: var(--tui-background-accent-1-hover);
-    }
-}
-
-.text {
-    color: var(--tui-text-secondary);
+tui-icon {
+    margin: 1rem;
+    align-self: center;
+    box-shadow: 0 0 0 0.125rem var(--tui-border-normal);
 }

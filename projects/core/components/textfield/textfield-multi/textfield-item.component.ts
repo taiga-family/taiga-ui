@@ -23,7 +23,7 @@ export interface TuiTextfieldItem<T> {
     imports: [PolymorpheusOutlet],
     template:
         '<ng-container *polymorpheusOutlet="content as text; context: context">{{ text }}</ng-container>',
-    styleUrls: ['./textfield-item.style.less'],
+    styleUrl: './textfield-item.style.less',
     // TODO: Set to OnPush in v5 when textfield.item becomes a signal
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,

@@ -16,19 +16,15 @@ import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_LINK_OPTIONS} from './link.options';
 
 @Component({
-    standalone: true,
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/link.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/link.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-link',
-    },
+    host: {class: 'tui-link'},
 })
-class TuiLinkStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'a[tuiLink], button[tuiLink]',
     providers: [tuiAppearanceOptionsProvider(TUI_LINK_OPTIONS)],
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
@@ -38,7 +34,7 @@ class TuiLinkStyles {}
     },
 })
 export class TuiLink {
-    protected readonly nothing = tuiWithStyles(TuiLinkStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 
     /**
      * @deprecated: use on host

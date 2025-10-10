@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -18,9 +18,9 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
 
 @Component({
     selector: 'th[tuiTh]',
-    imports: [AsyncPipe, NgIf, NgTemplateOutlet, TuiIcon, TuiTableResized], // TODO: use control flow syntax
+    imports: [AsyncPipe, NgTemplateOutlet, TuiIcon, TuiTableResized],
     templateUrl: './th.template.html',
-    styleUrls: ['./th.style.less'],
+    styleUrl: './th.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.min-width.px]': 'width || minWidth',

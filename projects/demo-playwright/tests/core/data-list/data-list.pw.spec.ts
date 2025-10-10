@@ -154,10 +154,7 @@ test.describe('DataList', () => {
 
         await page.locator('[automation-id="tui-data-list-range-option"]').click();
 
-        const range = page
-            .locator('[automation-id="tui-data-list-range-field"]')
-            .locator('[automation-id="tui-primitive-textfield__native-input"]')
-            .nth(0);
+        const range = page.locator('input[tuiInputDateRange]').nth(0);
 
         await range.focus();
         await range.fill('');

@@ -1,7 +1,6 @@
 <tui-doc-page
     header="Surface"
-    package="CORE"
-    path="core/directives/surface"
+    package="LAYOUT"
     type="components"
 >
     <ng-template pageTab>
@@ -16,14 +15,14 @@
             component.
         </p>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
                 [heading]="example"
                 [id]="example | tuiKebab"
             >
-                @switch (index + 1) {
+                @switch ($index + 1) {
                     @case (1) {
                         <tui-notification class="tui-space_bottom-4">
                             You can enable hover effects only on devices with pointer:

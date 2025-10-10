@@ -65,7 +65,7 @@ export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
     standalone: false,
     selector: 'tui-input-number',
     templateUrl: './input-number.template.html',
-    styleUrls: ['./input-number.style.less'],
+    styleUrl: './input-number.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputNumberComponent),
@@ -127,12 +127,12 @@ export class TuiInputNumberComponent
     public get inputMode(): string {
         if (this.isIOS) {
             return this.isNegativeAllowed
-                ? 'text' // iPhone does not have minus sign if inputMode equals to 'numeric' / 'decimal'
+                ? 'text' // iPhone does not have minus sign if inputMode is equal to 'numeric' / 'decimal'
                 : 'decimal';
         }
 
         /**
-         * Samsung Keyboard does not minus sign for `inputmode=decimal`
+         * Samsung Keyboard does not have minus sign for `inputmode=decimal`
          * @see https://github.com/taiga-family/taiga-ui/issues/11061#issuecomment-2939103792
          */
         return 'numeric';

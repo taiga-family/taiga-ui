@@ -55,26 +55,32 @@
                         class="t-expand"
                         [expanded]="expanded"
                     >
-                        <ng-template tuiExpandContent>
+                        <ng-template tuiItem>
                             <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
                             <div
                                 tuiGroup
                                 class="t-form-controls"
                             >
-                                <tui-select
-                                    automation-id="tui-demo-select__expand-update-on"
+                                <tui-textfield
+                                    tuiChevron
                                     tuiTextfieldSize="s"
                                     class="t-select"
-                                    [ngModel]="updateOn"
-                                    [ngModelOptions]="{standalone: true}"
-                                    (ngModelChange)="updateOnChange($event)"
+                                    [tuiTextfieldCleaner]="false"
                                 >
-                                    updateOn
+                                    <input
+                                        automation-id="tui-demo-select__expand-update-on"
+                                        tuiSelect
+                                        [ngModel]="updateOn"
+                                        [ngModelOptions]="{standalone: true}"
+                                        (ngModelChange)="updateOnChange($event)"
+                                    />
+
                                     <tui-data-list-wrapper
-                                        *tuiDataList
+                                        *tuiDropdown
+                                        new
                                         [items]="updateOnVariants"
                                     />
-                                </tui-select>
+                                </tui-textfield>
                                 <button
                                     automation-id="tui-demo-button__reset-state"
                                     size="s"

@@ -46,7 +46,7 @@ const TODAY = TuiDay.currentLocal();
         TuiSpinButton,
     ],
     templateUrl: './calendar-month.template.html',
-    styleUrls: ['./calendar-month.style.less'],
+    styleUrl: './calendar-month.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendarMonth)],
     host: {

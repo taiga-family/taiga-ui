@@ -4,7 +4,6 @@ import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core/components/loader';
-import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 export interface TuiNotificationMiddleOptions {
@@ -20,12 +19,9 @@ export interface TuiNotificationMiddleOptions {
             {{ text }}
         </ng-container>
     `,
-    styleUrls: ['./notification-middle.style.less'],
+    styleUrl: './notification-middle.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        tuiLoaderOptionsProvider({size: 'l'}),
-        tuiAvatarOptionsProvider({size: 'm'}),
-    ],
+    providers: [tuiLoaderOptionsProvider({size: 'l'})],
     hostDirectives: [
         TuiAnimated,
         {directive: WaResizeObserver, outputs: ['waResizeObserver']},

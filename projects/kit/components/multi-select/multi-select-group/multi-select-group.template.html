@@ -1,12 +1,14 @@
-<span class="t-wrapper">
-    <span class="t-label">{{ label }}</span>
-    <button
-        tuiLink
-        type="button"
-        class="t-button"
-        (click)="toggle()"
-    >
-        {{ texts()?.[checked() ? 'none' : 'all'] }}
-    </button>
-</span>
+@if (values().length) {
+    <span class="t-wrapper">
+        <span class="t-label">{{ label }}</span>
+        <button
+            tuiLink
+            type="button"
+            class="t-button"
+            (click)="toggle()"
+        >
+            {{ texts()?.[checked() ? 'none' : 'all'] }}
+        </button>
+    </span>
+}
 <ng-content />

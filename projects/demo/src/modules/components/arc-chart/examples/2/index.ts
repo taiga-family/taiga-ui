@@ -7,7 +7,7 @@ import {tuiSum} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiArcChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

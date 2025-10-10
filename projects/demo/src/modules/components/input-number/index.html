@@ -256,7 +256,9 @@
                     [items]="minVariants"
                     [(value)]="min"
                 >
-                    The lowest value in the range of permitted values
+                    The
+                    <strong>lowest</strong>
+                    value in the range of permitted values
                 </tr>
 
                 <tr
@@ -266,7 +268,9 @@
                     [items]="maxVariants"
                     [(value)]="max"
                 >
-                    The greatest value in the range of permitted values
+                    The
+                    <strong>greatest</strong>
+                    value in the range of permitted values
                 </tr>
 
                 <tr
@@ -307,6 +311,18 @@
                     [(value)]="quantum"
                 >
                     Minimum indivisible value
+
+                    <p>
+                        Use
+                        <code>0</code>
+                        (default value) to disable this feature and allow any value (that satisfies
+                        <code>min</code>
+                        /
+                        <code>max</code>
+                        /
+                        <code>precision</code>
+                        constraints)
+                    </p>
                 </tr>
             </tbody>
 

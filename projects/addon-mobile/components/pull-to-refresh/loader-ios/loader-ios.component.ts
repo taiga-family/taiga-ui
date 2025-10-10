@@ -12,7 +12,7 @@ const ROTATE_X_STEP = 30;
     selector: 'tui-mobile-ios-loader',
     imports: [TuiRepeatTimes],
     templateUrl: './loader-ios.template.html',
-    styleUrls: ['./loader-ios.style.less'],
+    styleUrl: './loader-ios.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMobileLoaderIOS {

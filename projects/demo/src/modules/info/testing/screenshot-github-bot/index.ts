@@ -7,7 +7,7 @@ export const SCREENSHOT_BOT_LINK = 'https://github.com/apps/lumberjack-bot';
 @Component({
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {

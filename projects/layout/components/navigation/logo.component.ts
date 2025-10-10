@@ -4,7 +4,7 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     standalone: true,
     selector: '[tuiNavigationLogo]',
     template: '<ng-content />',
-    styleUrls: ['./logo.style.less'],
+    styleUrl: './logo.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

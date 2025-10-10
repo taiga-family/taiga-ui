@@ -13,7 +13,7 @@ import {TUI_SCROLLBAR_OPTIONS} from './scrollbar.options';
     selector: 'tui-scroll-controls',
     imports: [AsyncPipe, TuiAnimated, TuiScrollbarDirective],
     templateUrl: './scroll-controls.template.html',
-    styleUrls: ['./scroll-controls.style.less'],
+    styleUrl: './scroll-controls.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiScrollControls {

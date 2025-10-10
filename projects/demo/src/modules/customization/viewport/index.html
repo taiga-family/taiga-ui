@@ -12,10 +12,10 @@
             helper instead of token.
         </p>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
                 [fullsize]="true"
                 [heading]="example"
                 [id]="example | tuiKebab"

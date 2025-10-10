@@ -49,7 +49,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     standalone: false,
     selector: 'tui-combo-box',
     templateUrl: './combo-box.template.html',
-    styleUrls: ['./combo-box.style.less'],
+    styleUrl: './combo-box.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiComboBoxComponent),

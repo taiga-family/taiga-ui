@@ -2,19 +2,19 @@
     size="m"
     tuiButton
     type="button"
-    (click)="show = true"
+    (click)="show.set(true)"
 >
     Show
 </button>
 <ng-template
-    [tuiAlertOptions]="{label: 'Directive', autoClose: 0, closeable: false}"
+    [tuiAlertOptions]="{label: 'Directive', autoClose: 0, closable: false}"
     [(tuiAlert)]="show"
 >
     <span tuiSubtitle>This is a declarative directive alert</span>
     <button
         tuiButton
         type="button"
-        (click)="show = false"
+        (click)="show.set(false)"
     >
         Close
     </button>

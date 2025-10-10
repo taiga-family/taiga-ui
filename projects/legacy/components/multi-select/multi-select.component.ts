@@ -61,7 +61,7 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-s
     standalone: false,
     selector: 'tui-multi-select',
     templateUrl: './multi-select.template.html',
-    styleUrls: ['./multi-select.style.less'],
+    styleUrl: './multi-select.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiMultiSelectComponent),

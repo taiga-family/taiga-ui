@@ -6,7 +6,6 @@ export * from './count-filled-controls';
 export * from './create-token';
 export * from './default-sort';
 export * from './directive-binding';
-export * from './directive-listener';
 export * from './distance-between-touches';
 export * from './ease-in-out-quad';
 export * from './flat-length';

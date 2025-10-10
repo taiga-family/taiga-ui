@@ -42,7 +42,7 @@ interface Item {
                     (input)="inputEvent.emit($any($event.target).value)"
                 />
 
-                <tui-data-list *tuiTextfieldDropdown>
+                <tui-data-list *tuiDropdown>
                     @for (item of items(); track item) {
                         <button
                             new

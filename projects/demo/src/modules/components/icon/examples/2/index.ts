@@ -1,18 +1,19 @@
 import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, tuiIconResolverProvider} from '@taiga-ui/core';
+import {TuiIcon, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiIcon],
+    imports: [TuiIcon, TuiTextfield, TuiInputSlider, FormsModule, TuiNumberFormat],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
-    providers: [
-        tuiIconResolverProvider((icon) =>
-            icon.includes('/') ? icon : `/assets/icons/${icon}.svg`,
-        ),
-    ],
 })
-export default class Example {}
+export default class Example {
+    protected container = 24;
+    protected icon = 24;
+    protected thickness = 2;
+}

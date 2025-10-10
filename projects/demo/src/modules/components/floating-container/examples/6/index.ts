@@ -5,6 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAnimationPipe, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCell,
     tuiCrossFade,
     tuiHeightCollapse,
     TuiLabel,
@@ -12,7 +13,6 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -28,7 +28,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     animations: [tuiSlideInTop, tuiCrossFade, tuiHeightCollapse],

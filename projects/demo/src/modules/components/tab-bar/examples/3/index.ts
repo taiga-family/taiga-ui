@@ -6,7 +6,7 @@ import {TuiTabBar} from '@taiga-ui/addon-mobile';
 @Component({
     imports: [TuiTabBar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

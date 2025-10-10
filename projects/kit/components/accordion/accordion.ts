@@ -1,11 +1,12 @@
+import {TuiItem} from '@taiga-ui/cdk/directives/item';
+import {TuiExpand} from '@taiga-ui/core/components/expand';
+
+import {TuiAccordionComponent} from './accordion.component';
 import {TuiAccordionDirective} from './accordion.directive';
-import {TuiAccordionItem} from './accordion-item.component';
-import {TuiAccordionItemContent} from './accordion-item-content.directive';
-import {TuiAccordionItemEagerContent} from './accordion-item-eager-content.directive';
 
 export const TuiAccordion = [
-    TuiAccordionItem,
+    TuiAccordionComponent,
     TuiAccordionDirective,
-    TuiAccordionItemContent,
-    TuiAccordionItemEagerContent,
+    TuiExpand,
+    TuiItem,
 ] as const;

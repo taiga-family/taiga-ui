@@ -1,15 +1,15 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
+    .portal-loop(10);
+
     position: relative;
     bottom: 1rem;
     display: grid;
     flex-shrink: 0;
     max-inline-size: calc(100% - 2rem);
     margin: 0 1rem 0 auto;
-    border-radius: var(--tui-radius-xl);
-    box-shadow: var(--tui-shadow-small);
-    overflow: hidden;
+    isolation: isolate;
 
     --tui-from: translateX(100%);
 
@@ -18,17 +18,17 @@
         animation-name: tuiFade, tuiSlide, tuiCollapse;
     }
 
-    &.tui-leave:not(:first-child) {
+    &.tui-leave:not(:first-of-type) {
         .transition(margin);
 
         margin-block-start: -1rem !important;
     }
 
-    &:first-child {
+    &:first-of-type {
         margin-block-start: auto;
     }
 
-    &:not(:last-child) {
+    &:not(:last-of-type) {
         .transition(margin);
 
         margin-block-end: 1rem;
@@ -37,5 +37,4 @@
 
 .t-wrapper {
     grid-row: 1 / span 2;
-    overflow: hidden;
 }

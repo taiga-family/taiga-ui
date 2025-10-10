@@ -4,12 +4,12 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiAccordion} from '@taiga-ui/kit';
 
-import {OpenOnRouteFragment} from './open-accordion-on-route-fragment';
+import {TuiAccordionTarget} from './target';
 
 @Component({
-    imports: [OpenOnRouteFragment, TuiAccordion, TuiDemo],
+    imports: [TuiAccordion, TuiDemo, TuiAccordionTarget],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

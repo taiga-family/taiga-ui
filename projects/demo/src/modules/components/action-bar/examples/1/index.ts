@@ -11,6 +11,7 @@ import {
     TuiDropdown,
     TuiIcon,
     TuiLink,
+    TuiPopup,
 } from '@taiga-ui/core';
 import {TuiActionBar, TuiFilter, TuiItemsWithMore} from '@taiga-ui/kit';
 import {map} from 'rxjs';
@@ -27,6 +28,7 @@ import {map} from 'rxjs';
         TuiItemsWithMore,
         TuiLink,
         TuiRepeatTimes,
+        TuiPopup,
     ],
     templateUrl: './index.html',
     encapsulation,
