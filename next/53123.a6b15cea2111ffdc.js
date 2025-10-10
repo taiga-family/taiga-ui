@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[53123],{53123:e=>{e.exports="```ts\nimport {Component} from '@angular/core';\n\n@Component({\n  standalone: true,\n  selector: 'app',\n  templateUrl: './app.template.html',\n  styleUrl: './app.style.less',\n})\nexport class App {}\n```\n"}}]);

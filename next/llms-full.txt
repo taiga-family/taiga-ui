@@ -340,7 +340,7 @@ import {TuiDemo} from '@demo/utils';
 @Component({
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -638,7 +638,7 @@ import {type TuiSizeXL} from '@taiga-ui/core';
 @Component({
     imports: [TuiArcChart, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -856,7 +856,7 @@ import {
 @Component({
     imports: [TuiAxes, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -1217,7 +1217,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 @Component({
     imports: [TuiBar, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -1307,7 +1307,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 @Component({
     imports: [TuiBarChart, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -1402,7 +1402,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 @Component({
     imports: [TuiBarSet, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -2754,7 +2754,7 @@ import {TuiCarousel} from '@taiga-ui/kit';
 @Component({
     imports: [TuiButton, TuiCarousel, TuiDemo, TuiRepeatTimes],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Example {
@@ -2866,7 +2866,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiCell, TuiDemo, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })
@@ -4027,7 +4027,7 @@ import {TuiDemo} from '@demo/utils';
 @Component({
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -4314,7 +4314,7 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     animations: [tuiSlideInTop, tuiHeightCollapse],
 })
@@ -4414,7 +4414,7 @@ import {TuiDemo} from '@demo/utils';
 @Component({
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -4545,7 +4545,7 @@ import {TuiButton, TuiGroup, type TuiOrientation, type TuiSizeL} from '@taiga-ui
 @Component({
     imports: [TuiButton, TuiDemo, TuiGroup],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -4933,7 +4933,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiThumbnailCard,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class PageComponent {
@@ -6255,7 +6255,7 @@ import {AbstractExampleTuiControl} from '../abstract/control';
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })
@@ -7566,7 +7566,7 @@ import {type TuiPoint} from '@taiga-ui/core';
 @Component({
     imports: [TuiAxes, TuiDemo, TuiLineChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -7698,7 +7698,7 @@ import {TuiLineClamp} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiLineClamp],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -7787,7 +7787,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     imports: [TuiAxes, TuiDemo, TuiLineDaysChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -7994,7 +7994,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     imports: [TuiDemo, TuiLoader],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -8196,7 +8196,7 @@ import {type Observable} from 'rxjs';
 @Component({
     imports: [TuiDemo, TuiMobileCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [
         {
@@ -8342,7 +8342,7 @@ import {TuiThemeColorService} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
@@ -8817,7 +8817,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     imports: [TuiDemo, TuiPieChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -9103,7 +9103,7 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -9218,7 +9218,7 @@ import {tuiInputNumberOptionsProvider, TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [tuiInputNumberOptionsProvider({min: 0})],
 })
@@ -9324,7 +9324,7 @@ import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus'
 @Component({
     imports: [PolymorpheusOutlet, TuiDemo, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -9823,7 +9823,7 @@ import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
 @Component({
     imports: [TuiDemo, TuiRingChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -10314,7 +10314,7 @@ import {switchMap} from 'rxjs';
 @Component({
     imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiLet, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -10596,7 +10596,7 @@ import {Settings} from './examples/3/settings';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
     host: {class: 'tui-slides'},
@@ -11054,7 +11054,7 @@ import TuiTabBarExample from './examples/1';
 @Component({
     imports: [FormsModule, TuiCheckbox, TuiDemo, TuiLabel, TuiTabBarExample, TuiPopup],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -11902,7 +11902,7 @@ import {TuiTiles} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiTiles, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -12221,7 +12221,7 @@ import {TuiLink} from '@taiga-ui/core';
 @Component({
     imports: [TuiDemo, TuiLink],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -12428,7 +12428,7 @@ import {TuiDemo} from '@demo/utils';
 @Component({
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {}
@@ -12637,7 +12637,7 @@ import {TuiLink} from '@taiga-ui/core';
 @Component({
     imports: [TuiDemo, TuiLink],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {}
@@ -13231,7 +13231,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-
         TuiInputModule,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [
         {
@@ -13368,7 +13368,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-
 @Component({
     imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [
         {
@@ -13563,7 +13563,7 @@ import {TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiFade],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -14705,7 +14705,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
@@ -15660,7 +15660,7 @@ import {TuiDemo} from '@demo/utils';
 @Component({
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {}
