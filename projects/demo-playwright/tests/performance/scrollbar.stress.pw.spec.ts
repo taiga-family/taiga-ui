@@ -17,7 +17,7 @@ import {expect, test} from '@playwright/test';
 // TODO: fix lint
 /* eslint-disable playwright/no-conditional-in-test */
 
-test.describe.skip('TuiScrollbar Stress Tests', () => {
+test.describe('TuiScrollbar Stress Tests', () => {
     let documentationPage: TuiDocumentationPagePO;
 
     const STRESS_FACTOR = 3;
