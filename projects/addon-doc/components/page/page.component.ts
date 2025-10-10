@@ -8,7 +8,13 @@ import {
     type QueryList,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
-import {TUI_DOC_DEFAULT_TABS, TUI_DOC_SUPPORT_LANGUAGE} from '@taiga-ui/addon-doc/tokens';
+import {
+    TUI_DOC_DEFAULT_TABS,
+    TUI_DOC_ICONS,
+    TUI_DOC_SPECS_HANDLER,
+    TUI_DOC_SPECS_META,
+    TUI_DOC_SUPPORT_LANGUAGE,
+} from '@taiga-ui/addon-doc/tokens';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiReplacePipe} from '@taiga-ui/cdk/pipes/replace';
 import {TuiAutoColorPipe} from '@taiga-ui/core/pipes/auto-color';
@@ -47,6 +53,9 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
     providers: PAGE_PROVIDERS,
 })
 export class TuiDocPage {
+    protected readonly icons = inject(TUI_DOC_ICONS);
+    protected readonly meta = inject(TUI_DOC_SPECS_META, {optional: true});
+    protected readonly specHandler = inject(TUI_DOC_SPECS_HANDLER, {optional: true});
     protected readonly tabs = inject(TUI_DOC_TABS)(inject(ActivatedRoute).snapshot);
     protected readonly supportLanguage = inject(TUI_DOC_SUPPORT_LANGUAGE);
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);

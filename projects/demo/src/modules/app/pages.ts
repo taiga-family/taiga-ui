@@ -1,6 +1,7 @@
 import {type TuiDocRoutePage, type TuiDocRoutePageBase} from '@taiga-ui/addon-doc';
 
 import {DemoRoute} from './demo-routes';
+import {FigmaSpecs} from './specs';
 
 export type DocRoutePages = ReadonlyArray<DocRoutePage | DocRoutePageGroup>;
 
@@ -189,24 +190,7 @@ export const pages: DocRoutePages = [
         title: 'Avatar',
         keywords: 'аватар, image, pic, icon, картинка, изображение, avatar, stack',
         route: DemoRoute.Avatar,
-        meta: [
-            {
-                name: 'tui-avatar',
-                figmaVersion: '1.3.0',
-            },
-            {
-                name: 'tui-avatar-labelled',
-                figmaVersion: '1.3.0',
-            },
-            {
-                name: 'tui-avatar-stack',
-                figmaVersion: '1.3.0',
-            },
-            {
-                name: 'tui-avatar-subscription',
-                figmaVersion: '1.0.0',
-            },
-        ],
+        meta: FigmaSpecs[DemoRoute.Avatar],
     },
     {
         section: 'Components',
@@ -217,14 +201,14 @@ export const pages: DocRoutePages = [
                 title: 'Badge',
                 keywords: 'бэдж, овал, badge',
                 route: DemoRoute.Badge,
-                meta: {figmaVersion: '1.4.1'},
+                meta: FigmaSpecs[DemoRoute.Badge],
             },
             {
                 section: 'Components',
                 title: 'BadgedContent',
                 keywords: 'бэдж, бейдж, circle, овал, круг, badge, нотификация',
                 route: DemoRoute.BadgedContent,
-                meta: {figmaVersion: '1.4.1'},
+                meta: FigmaSpecs[DemoRoute.BadgedContent],
             },
             {
                 section: 'Components',
@@ -240,7 +224,7 @@ export const pages: DocRoutePages = [
         title: 'Block',
         keywords: 'кнопка, чек, форма, form, ввод, checkbox, radio, радио, label',
         route: DemoRoute.Block,
-        meta: [{name: 'tui-toggle-block', figmaVersion: '1.2.0'}],
+        meta: FigmaSpecs[DemoRoute.Block],
     },
     {
         section: 'Layout',
@@ -258,10 +242,7 @@ export const pages: DocRoutePages = [
                 title: 'Button',
                 keywords: 'кнопка, button, icon-button, иконка',
                 route: DemoRoute.Button,
-                meta: [
-                    {name: 'tui-button', figmaVersion: '1.9.1'},
-                    {name: 'tui-button-vertical', figmaVersion: '1.0.1'},
-                ],
+                meta: FigmaSpecs[DemoRoute.Button],
             },
             {
                 section: 'Components',
@@ -314,9 +295,7 @@ export const pages: DocRoutePages = [
         keywords:
             'карта, карточка, card, visa, mastercard, credit, icon, logo, дебетовая, кредитная, иконка, логотип',
         route: DemoRoute.ThumbnailCard,
-        meta: {
-            figmaVersion: '1.8.0',
-        },
+        meta: FigmaSpecs[DemoRoute.ThumbnailCard],
     },
     {
         section: 'Components',
@@ -862,12 +841,7 @@ export const pages: DocRoutePages = [
         title: 'Link',
         keywords: 'href, anchor, ссылка, псевдо, pseudo, link',
         route: DemoRoute.Link,
-        meta: [
-            {
-                name: 'tui-button-link',
-            },
-            {name: 'tui-link', figmaVersion: '1.0.1'},
-        ],
+        meta: FigmaSpecs[DemoRoute.Link],
     },
     {
         section: 'Components',
@@ -875,28 +849,21 @@ export const pages: DocRoutePages = [
         keywords:
             'загрузка, крутилка, лоадер, спиннер, спинер, крутится, мутится, spinner, loader',
         route: DemoRoute.Loader,
-        meta: {
-            figmaVersion: '1.0.0',
-        },
+        meta: FigmaSpecs[DemoRoute.Loader],
     },
     {
         section: 'Components',
         title: 'Notification',
         keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: DemoRoute.Notification,
-        meta: {
-            name: 'tui-notification-banner',
-            figmaVersion: '1.1.1',
-        },
+        meta: FigmaSpecs[DemoRoute.Notification],
     },
     {
         section: 'Components',
         title: 'NotificationMiddle',
         keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
         route: DemoRoute.NotificationMiddle,
-        meta: {
-            figmaVersion: '1.1.0',
-        },
+        meta: FigmaSpecs[DemoRoute.NotificationMiddle],
     },
     {
         section: 'Components',
@@ -961,7 +928,7 @@ export const pages: DocRoutePages = [
         title: 'Pager',
         keywords: 'pager, точка, dot',
         route: DemoRoute.Pager,
-        meta: {figmaVersion: '1.1.0'},
+        meta: FigmaSpecs[DemoRoute.Pager],
     },
     {
         section: 'Components',
@@ -1004,18 +971,14 @@ export const pages: DocRoutePages = [
         title: 'Rating',
         keywords: 'рейтинг, оценка, звезда, rating, star, rate',
         route: DemoRoute.Rating,
-        meta: {
-            figmaVersion: '1.1.1',
-        },
+        meta: FigmaSpecs[DemoRoute.Rating],
     },
     {
         section: 'Components',
         title: 'Pulse',
         keywords: 'сигнал, пульс, pulse, signal',
         route: DemoRoute.Pulse,
-        meta: {
-            name: 'tui-badge-t-client',
-        },
+        meta: FigmaSpecs[DemoRoute.Pulse],
     },
     {
         section: 'Components',
@@ -1177,35 +1140,28 @@ export const pages: DocRoutePages = [
         title: 'Cell',
         keywords: 'cell, feed, item, tuiaccessories, accessories',
         route: DemoRoute.Cell,
-        meta: [
-            {name: 'tui-cell', figmaVersion: '1.3.1'},
-            {name: 'tui-cell-connected', figmaVersion: '1.3.1'},
-            {name: 'tui-button-cell', figmaVersion: '1.0.1'},
-            {name: 'list-item', scheme: 'beaver'},
-        ],
+        meta: FigmaSpecs[DemoRoute.Cell],
     },
     {
         section: 'Components',
         title: 'Chip',
         keywords: 'chip, tag, тэг, badge',
         route: DemoRoute.Chip,
-        meta: {figmaVersion: '1.3.3'},
+        meta: FigmaSpecs[DemoRoute.Chip],
     },
     {
         section: 'Components',
         title: 'ItemGroup',
         keywords: 'item, chip, group, list, tag, тэг, badge',
         route: DemoRoute.ItemGroup,
-        meta: {
-            name: 'tui-chip-group',
-        },
+        meta: FigmaSpecs[DemoRoute.ItemGroup],
     },
     {
         section: 'Components',
         title: 'Message',
         keywords: 'message, sms, сообщение, смс',
         route: DemoRoute.Message,
-        meta: {name: 'tui-message-bubble'},
+        meta: FigmaSpecs[DemoRoute.Message],
     },
     {
         section: 'Components',
@@ -1388,10 +1344,7 @@ export const pages: DocRoutePages = [
         title: 'AppBar',
         keywords: 'mobile, ios, android, header, bar, navigation',
         route: DemoRoute.AppBar,
-        meta: {
-            name: 'tui-appbar',
-            figmaVersion: '1.1.1',
-        },
+        meta: FigmaSpecs[DemoRoute.AppBar],
     },
     {
         section: 'Navigation',
@@ -1673,9 +1626,7 @@ export const pages: DocRoutePages = [
                 title: 'Sensitive',
                 keywords: 'sensitive, pixel, mask, пиксель, маска',
                 route: DemoRoute.Sensitive,
-                meta: {
-                    figmaVersion: '1.1.0',
-                },
+                meta: FigmaSpecs[DemoRoute.Sensitive],
             },
             {
                 section: 'Tools',
@@ -1683,9 +1634,7 @@ export const pages: DocRoutePages = [
                 keywords:
                     'верстка, markup, скелетон, loader, загрузка, skeleton, shimmer',
                 route: DemoRoute.Skeleton,
-                meta: {
-                    figmaVersion: '1.2.0',
-                },
+                meta: FigmaSpecs[DemoRoute.Skeleton],
             },
         ],
     },

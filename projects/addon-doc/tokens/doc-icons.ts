@@ -12,6 +12,7 @@ export interface TuiDocIcons {
     readonly check: string;
     readonly link: string;
     readonly languages: string;
+    readonly figma: string;
     /**
      * TODO: drop optional in v5
      */
@@ -43,6 +44,7 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     languages: '@tui.languages',
     shrink: '@tui.shrink',
     expand: '@tui.expand',
+    figma: '@tui.figma',
     ltr: {
         preview: '@tui.a-large-small',
         direction: '@tui.arrow-right-left',

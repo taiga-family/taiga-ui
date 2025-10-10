@@ -1,4 +1,4 @@
-import {type Type} from '@angular/core';
+import {type EnvironmentProviders, type Provider, type Type} from '@angular/core';
 import {type DefaultExport, type LoadChildren, type Route} from '@angular/router';
 import {type Observable} from 'rxjs';
 
@@ -10,6 +10,7 @@ interface Options {
         | Promise<DefaultExport<Type<unknown>> | Type<unknown>>
         | Type<unknown>;
     loadChildren?: LoadChildren;
+    providers?: Array<EnvironmentProviders | Provider>;
 }
 
 export function tuiProvideRoutePageTab({
@@ -17,9 +18,11 @@ export function tuiProvideRoutePageTab({
     title,
     loadComponent,
     loadChildren,
+    providers,
 }: Options = {}): Route {
     return {
         path: path?.replace(/^\//, ''), // Error: NG04014: Invalid configuration of route: path cannot start with a slash
+        providers,
         loadComponent,
         loadChildren,
         data: {title},

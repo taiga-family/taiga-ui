@@ -30,6 +30,25 @@
         >
             {{ tag }}
         </tui-chip>
+
+        <ng-container *ngIf="specHandler">
+            <ng-container *ngFor="let item of meta">
+                <a
+                    *ngIf="item.figmaVersion"
+                    target="_blank"
+                    [href]="specHandler(item)"
+                    [style.margin-inline-end.rem]="0.5"
+                >
+                    <tui-chip
+                        appearance="neutral"
+                        size="xs"
+                        [iconStart]="icons.figma"
+                    >
+                        {{ item.name }} v{{ item.figmaVersion }}
+                    </tui-chip>
+                </a>
+            </ng-container>
+        </ng-container>
     </h1>
     <tui-tabs-with-more
         *ngIf="tabConnectors.length"

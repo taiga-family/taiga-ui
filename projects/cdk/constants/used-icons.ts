@@ -31,6 +31,7 @@ export const TUI_USED_ICONS = [
     '@tui.languages',
     '@tui.shrink',
     '@tui.expand',
+    '@tui.figma',
     '@tui.a-large-small',
     '@tui.arrow-right-left',
     '@tui.eye-off',

@@ -10,6 +10,7 @@ export * from './page-loaded';
 export * from './pages';
 export * from './see-also';
 export * from './source-code';
+export * from './specs-meta';
 export * from './support-language';
 export * from './title';
 export * from './type-reference-handler';

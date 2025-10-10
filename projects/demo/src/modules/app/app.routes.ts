@@ -1,7 +1,8 @@
 import {type Routes} from '@angular/router';
-import {tuiProvideRoutePageTab as route} from '@taiga-ui/addon-doc';
+import {DemoRoute} from '@demo/routes';
+import {tuiProvideDocMeta, tuiProvideRoutePageTab as route} from '@taiga-ui/addon-doc';
 
-import {DemoRoute} from './demo-routes';
+import {FigmaSpecs} from './specs';
 
 export const ROUTES: Routes = [
     route({
@@ -108,21 +109,25 @@ export const ROUTES: Routes = [
         path: DemoRoute.Avatar,
         title: 'Avatar',
         loadComponent: async () => import('../components/avatar'),
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Avatar])],
     }),
     route({
         path: DemoRoute.Badge,
         loadComponent: async () => import('../components/badge'),
         title: 'Badge',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Badge])],
     }),
     route({
         path: DemoRoute.BadgedContent,
         title: 'BadgedContent',
         loadComponent: async () => import('../components/badged-content'),
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.BadgedContent])],
     }),
     route({
         path: DemoRoute.Block,
         title: 'Block',
         loadComponent: async () => import('../components/block'),
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Block])],
     }),
     route({
         path: DemoRoute.FloatingContainer,
@@ -163,11 +168,13 @@ export const ROUTES: Routes = [
         path: DemoRoute.ItemGroup,
         loadComponent: async () => import('../components/item-group'),
         title: 'ItemGroup',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.ItemGroup])],
     }),
     route({
         path: DemoRoute.Message,
         loadComponent: async () => import('../components/message'),
         title: 'Message',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Message])],
     }),
     route({
         path: DemoRoute.Title,
@@ -203,6 +210,7 @@ export const ROUTES: Routes = [
         path: DemoRoute.Cell,
         loadComponent: async () => import('../components/cell'),
         title: 'Cell',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Cell])],
     }),
     route({
         path: DemoRoute.Comment,
@@ -268,6 +276,7 @@ export const ROUTES: Routes = [
         path: DemoRoute.Button,
         title: 'Button',
         loadComponent: async () => import('../components/button'),
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Button])],
     }),
     route({
         path: DemoRoute.ButtonClose,
@@ -293,6 +302,7 @@ export const ROUTES: Routes = [
         path: DemoRoute.ThumbnailCard,
         title: 'ThumbnailCard',
         loadComponent: async () => import('../components/thumbnail-card'),
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.ThumbnailCard])],
     }),
     route({
         path: DemoRoute.Checkbox,
@@ -413,11 +423,13 @@ export const ROUTES: Routes = [
         path: DemoRoute.Sensitive,
         loadComponent: async () => import('../directives/sensitive'),
         title: 'Sensitive',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Sensitive])],
     }),
     route({
         path: DemoRoute.Skeleton,
         loadComponent: async () => import('../directives/skeleton'),
         title: 'Skeleton',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Skeleton])],
     }),
     route({
         path: DemoRoute.InputInline,
@@ -473,6 +485,7 @@ export const ROUTES: Routes = [
         path: DemoRoute.InputChip,
         loadComponent: async () => import('../components/input-chip'),
         title: 'InputChip',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Chip])],
     }),
     route({
         path: DemoRoute.InputMonth,
@@ -598,21 +611,25 @@ export const ROUTES: Routes = [
         path: DemoRoute.Link,
         loadComponent: async () => import('../components/link'),
         title: 'Link',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Link])],
     }),
     route({
         path: DemoRoute.Loader,
         loadComponent: async () => import('../components/loader'),
         title: 'Loader',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Loader])],
     }),
     route({
         path: DemoRoute.Notification,
         loadComponent: async () => import('../components/notification'),
         title: 'Notification',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Notification])],
     }),
     route({
         path: DemoRoute.NotificationMiddle,
         loadComponent: async () => import('../components/notification-middle'),
         title: 'NotificationMiddle',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.NotificationMiddle])],
     }),
     route({
         path: DemoRoute.Push,
@@ -658,11 +675,13 @@ export const ROUTES: Routes = [
         path: DemoRoute.Rating,
         title: 'Rating',
         loadComponent: async () => import('../components/rating'),
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Rating])],
     }),
     route({
         path: DemoRoute.Pulse,
         title: 'Pulse',
         loadComponent: async () => import('../components/pulse'),
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Pulse])],
     }),
     route({
         path: DemoRoute.Range,
@@ -733,6 +752,7 @@ export const ROUTES: Routes = [
         path: DemoRoute.AppBar,
         loadComponent: async () => import('../components/app-bar'),
         title: 'AppBar',
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.AppBar])],
     }),
     route({
         path: DemoRoute.TabBar,
@@ -784,6 +804,7 @@ export const ROUTES: Routes = [
         path: DemoRoute.Pager,
         title: 'Pager',
         loadComponent: async () => import('../components/pager'),
+        providers: [tuiProvideDocMeta(FigmaSpecs[DemoRoute.Pager])],
     }),
     route({
         path: DemoRoute.Compass,
