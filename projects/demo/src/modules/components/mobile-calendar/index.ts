@@ -19,7 +19,7 @@ import {type Observable} from 'rxjs';
 @Component({
     imports: [TuiDemo, TuiMobileCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [
         {

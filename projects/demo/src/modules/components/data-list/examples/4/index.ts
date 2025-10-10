@@ -45,13 +45,11 @@ const EXPENSES = {
         TuiChevron,
     ],
     templateUrl: './index.html',
-    styles: [
-        `
-            .control {
-                width: 320px;
-            }
-        `,
-    ],
+    styles: `
+        .control {
+            width: 320px;
+        }
+    `,
     encapsulation,
     changeDetection,
 })

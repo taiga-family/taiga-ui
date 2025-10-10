@@ -1,30 +1,36 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    .transition(~'opacity, height, visibility');
+    .transition(~'grid-template-rows, padding');
 
-    display: block;
-    opacity: 0;
-    // To trigger transition event when duration is 0
+    position: relative;
+    display: grid;
+    grid-template-rows: 0fr;
     transition-delay: 1ms;
 
-    &._overflow {
-        overflow: hidden;
+    &:not(._expanded) {
+        padding-block: 0;
     }
 
     &._expanded {
-        opacity: 1;
-    }
+        grid-template-rows: 1fr;
 
-    &._loading {
-        opacity: 0.99;
+        > .t-wrapper {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        &._open > .t-wrapper {
+            overflow: visible;
+        }
     }
 }
 
 .t-wrapper {
-    &::before,
-    &::after {
-        content: '';
-        display: table;
-    }
+    .transition(all);
+
+    grid-row: 1 / span 2;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
 }

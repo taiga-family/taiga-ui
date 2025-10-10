@@ -1,0 +1,52 @@
+@if (header) {
+    <header class="t-header">
+        <ng-container *polymorpheusOutlet="header as text; context: context">
+            {{ text }}
+        </ng-container>
+    </header>
+}
+<div class="t-content">
+    <h2
+        class="t-heading"
+        [class.t-heading_closable]="context.closable && !header"
+        [id]="context.id"
+        [textContent]="context.label"
+    ></h2>
+    <section>
+        <ng-container *polymorpheusOutlet="context.content as text; context: context">
+            <div [innerHTML]="text"></div>
+            @if (context.closable || context.dismissible) {
+                <div class="t-buttons">
+                    <button
+                        size="m"
+                        tuiAutoFocus
+                        tuiButton
+                        type="button"
+                        (click)="context.$implicit.complete()"
+                    >
+                        {{ context.data?.button || 'OK' }}
+                    </button>
+                </div>
+            }
+        </ng-container>
+    </section>
+</div>
+<div class="t-filler"></div>
+
+<!-- Close button is insensitive to `context.closable === Observable<false>` by design -->
+@if (context.closable) {
+    <button
+        automation-id="tui-dialog__close"
+        tuiIconButton
+        type="button"
+        class="t-close"
+        [appearance]="isMobile() ? 'icon' : 'neutral'"
+        [iconStart]="icons.close"
+        [size]="isMobile() ? 'xs' : 's'"
+        [style.border-radius.%]="100"
+        (click)="close$.next()"
+        (mousedown.prevent.zoneless)="(0)"
+    >
+        {{ closeWord$ | async }}
+    </button>
+}

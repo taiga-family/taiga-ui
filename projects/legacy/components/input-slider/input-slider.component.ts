@@ -38,7 +38,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     standalone: false,
     selector: 'tui-input-slider',
     templateUrl: './input-slider.template.html',
-    styleUrls: ['./input-slider.style.less'],
+    styleUrl: './input-slider.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputSliderComponent),

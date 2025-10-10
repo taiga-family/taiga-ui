@@ -16,7 +16,7 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/toast.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/toast.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-toast'},

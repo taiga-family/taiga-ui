@@ -27,7 +27,7 @@ import {combineLatest, map, type Observable} from 'rxjs';
     standalone: false,
     selector: 'tui-opt-group[tuiMultiSelectGroup]',
     templateUrl: './multi-select-group.template.html',
-    styleUrls: ['./multi-select-group.style.less'],
+    styleUrl: './multi-select-group.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._label]': 'label',

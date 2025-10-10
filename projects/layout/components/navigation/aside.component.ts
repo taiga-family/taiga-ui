@@ -7,6 +7,7 @@ import {
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 
 @Component({
@@ -25,10 +26,11 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
         </tui-scrollbar>
         <ng-content select="footer" />
     `,
-    styleUrls: ['./aside.style.less'],
+    styleUrl: './aside.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        tuiHintOptionsProvider({appearance: 'floating'}),
         tuiButtonOptionsProvider({size: 's', appearance: 'flat-grayscale'}),
         tuiDropdownOptionsProvider({
             appearance: 'dropdown-navigation',

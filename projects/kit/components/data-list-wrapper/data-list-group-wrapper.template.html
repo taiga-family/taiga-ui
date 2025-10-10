@@ -3,8 +3,8 @@
         [emptyContent]="emptyContent"
         [size]="size"
     >
-        @for (group of items; track group; let index = $index) {
-            <tui-opt-group [label]="labels[index]">
+        @for (group of items; track group) {
+            <tui-opt-group [label]="labels[$index]">
                 @if (newOptionMode) {
                     @for (item of group; track item) {
                         <button

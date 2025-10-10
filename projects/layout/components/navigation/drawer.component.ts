@@ -37,7 +37,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
             <ng-container *polymorpheusOutlet="directive._content()" />
         </tui-scrollbar>
     `,
-    styleUrls: ['./drawer.style.less'],
+    styleUrl: './drawer.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiActiveZone, TuiAnimated],
     host: {

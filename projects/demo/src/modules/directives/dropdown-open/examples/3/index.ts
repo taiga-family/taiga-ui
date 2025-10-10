@@ -7,7 +7,7 @@ import {TuiChevron} from '@taiga-ui/kit';
 @Component({
     imports: [TuiChevron, TuiDataList, TuiDropdown, TuiIcon, TuiLink],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

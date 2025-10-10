@@ -20,7 +20,7 @@ const FROM = [{opacity: '0.12'}, {opacity: '0'}];
 
 @Component({
     template: '',
-    styleUrls: ['./ripple.style.less'],
+    styleUrl: './ripple.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-ripple'},

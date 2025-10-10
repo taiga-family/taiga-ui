@@ -9,7 +9,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 @Component({
     imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiRepeatTimes, TuiTitle],
     templateUrl: './index.html',
-    styles: [':host { display: flex; flex-direction: column; gap: 2rem}'],
+    styles: ':host { display: flex; flex-direction: column; gap: 2rem}',
     encapsulation,
     changeDetection,
 })

@@ -1,0 +1,10 @@
+@if (!directive.tuiDropdownMobile) {
+    <tui-dropdown-mobile>
+        <ng-container *ngTemplateOutlet="content" />
+    </tui-dropdown-mobile>
+}
+<ng-template #content>
+    <ng-container *polymorpheusOutlet="dropdown._content() as text; context: context">
+        {{ text }}
+    </ng-container>
+</ng-template>

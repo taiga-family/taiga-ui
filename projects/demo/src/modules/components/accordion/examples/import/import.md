@@ -1,5 +1,5 @@
 ```ts
-import {TuiAccordion} from '@taiga-ui/experimental';
+import {TuiAccordion} from '@taiga-ui/kit';
 
 // ...
 

@@ -17,7 +17,7 @@ import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit';
     selector: 'tui-wrapper-example-1',
     imports: [FormsModule, TuiButton, TuiCheckbox, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

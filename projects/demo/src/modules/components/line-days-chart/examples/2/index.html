@@ -11,7 +11,7 @@
             [(ngModel)]="data"
             (ngModelChange)="onDataChange($event)"
         />
-        <tui-calendar-range *tuiTextfieldDropdown />
+        <tui-calendar-range *tuiDropdown />
     </tui-textfield>
     <tui-textfield
         class="tui-space_left-4"
@@ -23,13 +23,13 @@
             [maxLength]="maxLength"
             [(ngModel)]="show"
         />
-        <tui-calendar-range *tuiTextfieldDropdown />
+        <tui-calendar-range *tuiDropdown />
     </tui-textfield>
 </p>
 <p class="legend">
-    @for (chart of days; track chart; let index = $index) {
+    @for (chart of days; track chart) {
         <span class="item">
-            <small class="name">Chart {{ index + 1 }}</small>
+            <small class="name">Chart {{ $index + 1 }}</small>
         </span>
     }
 </p>

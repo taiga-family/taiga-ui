@@ -32,7 +32,7 @@ import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
 
 @Component({
     template: '',
-    styleUrls: ['./tooltip.style.less'],
+    styleUrl: './tooltip.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-tooltip'},

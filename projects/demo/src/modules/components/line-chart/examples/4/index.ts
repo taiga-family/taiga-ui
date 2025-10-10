@@ -8,7 +8,7 @@ import {TuiHint, type TuiPoint} from '@taiga-ui/core';
 @Component({
     imports: [TuiAxes, TuiHint, TuiLineChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

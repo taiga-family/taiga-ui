@@ -17,7 +17,7 @@ import {TUI_BADGE_OPTIONS} from './badge.options';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/badge.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/badge.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-badge'},

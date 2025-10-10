@@ -44,7 +44,7 @@ export const TUI_ICON_START_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
     standalone: false,
     selector: 'tui-primitive-textfield',
     templateUrl: './primitive-textfield.template.html',
-    styleUrls: ['./primitive-textfield.style.less'],
+    styleUrl: './primitive-textfield.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiPrimitiveTextfieldComponent),

@@ -1,4 +1,4 @@
-@for (item of items; track item; let index = $index) {
+@for (item of items; track item) {
     <label
         class="t-item"
         [class.t-item_disabled]="disabled() || disabledItemHandler(item)"

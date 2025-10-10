@@ -6,7 +6,7 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
     selector: 'button[tuiTabBarItem], a[tuiTabBarItem]',
     imports: [TuiAnimated, TuiIcon],
     templateUrl: './tab-bar-item.template.html',
-    styleUrls: ['./tab-bar-item.style.less'],
+    styleUrl: './tab-bar-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTabBarItem {

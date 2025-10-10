@@ -18,7 +18,7 @@ import {TuiInputDateTimeDirective} from './input-date-time.directive';
     selector: 'input[tuiInputDateTime][type="datetime-local"]',
     imports: [TuiTextfieldContent],
     templateUrl: './input-date-time.template.html',
-    styleUrls: ['./input-date-time.style.less'],
+    styleUrl: './input-date-time.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],

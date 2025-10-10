@@ -14,7 +14,7 @@
         [(open)]="open"
     >
         <tui-data-list
-            *tuiTextfieldDropdown
+            *tuiDropdown
             size="l"
         >
             <button
@@ -28,7 +28,7 @@
                 />
                 <span class="label">New card</span>
             </button>
-            @for (item of items; track item; let index = $index) {
+            @for (item of items; track item) {
                 <button
                     tuiOption
                     type="button"

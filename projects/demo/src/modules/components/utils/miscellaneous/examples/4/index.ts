@@ -9,7 +9,7 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiSelect, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

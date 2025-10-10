@@ -16,4 +16,19 @@ export const REPLACE_FUNCTIONS: readonly ReplacementType[] = [
         to: 'tuiGetFocused',
         moduleSpecifier: ['@taiga-ui/cdk'],
     },
+    {
+        from: 'tuiIsNativeMouseFocusable',
+        to: 'tuiIsMouseFocusable',
+        moduleSpecifier: ['@taiga-ui/cdk'],
+    },
+    {
+        from: 'tuiIsNativeKeyboardFocusable',
+        to: 'tuiIsKeyboardFocusable',
+        moduleSpecifier: ['@taiga-ui/cdk'],
+    },
+    {
+        from: 'tuiBlurNativeFocused',
+        to: 'tuiBlurFocused',
+        moduleSpecifier: ['@taiga-ui/cdk'],
+    },
 ];

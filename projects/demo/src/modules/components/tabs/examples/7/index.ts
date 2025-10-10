@@ -6,7 +6,7 @@ import {TuiTabs} from '@taiga-ui/kit';
 @Component({
     imports: [TuiTabs],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

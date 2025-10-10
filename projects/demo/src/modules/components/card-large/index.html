@@ -5,11 +5,11 @@
     type="components"
 >
     <ng-template pageTab>
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
-                [fullsize]="index === 5 || index === 8 || index === 12"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [fullsize]="$index === 5 || $index === 8 || $index === 12"
                 [heading]="example"
                 [id]="example | tuiKebab"
             />

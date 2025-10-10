@@ -27,7 +27,7 @@ import {TuiMore} from './more.directive';
     selector: 'tui-items-with-more',
     imports: [AsyncPipe, NgTemplateOutlet],
     templateUrl: './items-with-more.template.html',
-    styleUrls: ['./items-with-more.style.less'],
+    styleUrl: './items-with-more.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         MutationObserverService,

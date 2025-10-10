@@ -1,7 +1,7 @@
 @if (items.changes | async) {}
 <ng-content />
-@for (item of items; track item; let index = $index) {
-    @if (!max || index < max) {
+@for (item of items; track item) {
+    @if (!max || $index < max) {
         <ng-container [ngTemplateOutlet]="item" />
     }
 }
@@ -11,8 +11,8 @@
             tuiGroup
             class="t-extra-items"
         >
-            @for (item of items; track item; let index = $index) {
-                @if (max && index >= max) {
+            @for (item of items; track item) {
+                @if (max && $index >= max) {
                     <ng-container [ngTemplateOutlet]="item" />
                 }
             }

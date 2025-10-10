@@ -18,6 +18,9 @@ import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core/components/textfield';
+import {TUI_BLOCK_OPTIONS} from '@taiga-ui/kit/components/block';
+import {TUI_CHECKBOX_OPTIONS} from '@taiga-ui/kit/components/checkbox';
+import {TUI_RADIO_OPTIONS} from '@taiga-ui/kit/components/radio';
 import {TUI_SEGMENTED_OPTIONS} from '@taiga-ui/kit/components/segmented';
 import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
 
@@ -31,7 +34,7 @@ const HEADER_SIZE = {
 
 @Component({
     template: '',
-    styleUrls: ['./form.styles.less'],
+    styleUrl: './form.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-form'},
@@ -42,9 +45,12 @@ class Styles {}
     selector: '[tuiForm]',
     providers: [
         projectSize(TUI_BUTTON_OPTIONS, (size) => size),
+        projectSize(TUI_BLOCK_OPTIONS, (size) => size),
         projectSize(TUI_NOTIFICATION_OPTIONS, (size) => size),
         projectSize(TUI_HEADER_OPTIONS, (size) => HEADER_SIZE[size || 'l']),
         projectSize(TUI_SWITCH_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
+        projectSize(TUI_RADIO_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
+        projectSize(TUI_CHECKBOX_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         projectSize(TUI_SEGMENTED_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         {
             provide: TUI_TEXTFIELD_OPTIONS,

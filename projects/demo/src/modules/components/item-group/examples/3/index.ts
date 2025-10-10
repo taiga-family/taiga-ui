@@ -9,7 +9,7 @@ import {TuiItemGroup} from '@taiga-ui/layout';
 @Component({
     imports: [FormsModule, TuiChip, TuiItemGroup],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

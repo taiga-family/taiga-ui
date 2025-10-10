@@ -6,7 +6,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     template: `
         <ng-content />
     `,
-    styleUrls: ['./preview-title.style.less'],
+    styleUrl: './preview-title.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewTitle {}

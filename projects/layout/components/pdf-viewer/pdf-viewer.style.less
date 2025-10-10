@@ -1,0 +1,78 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+tui-pdf-viewer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    inline-size: 100vw;
+    block-size: 100%;
+    flex: 1;
+    box-sizing: border-box;
+    color: var(--tui-text-primary);
+
+    --t-header: 3.5rem;
+
+    tui-root:not(._mobile) & {
+        background: #000;
+    }
+
+    tui-root:not(._mobile) tui-dialog:not([new]) & {
+        block-size: 100vh;
+    }
+
+    tui-root:not(._mobile) tui-dialog[new] & {
+        margin: -6rem calc(-1 * calc(50vw - var(--tui-width) / 2)) -2rem;
+    }
+
+    tui-root._mobile tui-dialog & {
+        --t-header: 2.5rem;
+
+        margin: 0 -1rem -1rem;
+
+        tui-app-bar {
+            margin: calc(-1 * env(safe-area-inset-top)) 0 0;
+        }
+    }
+
+    tui-sheet-dialog & {
+        --t-header: 4.5rem;
+
+        margin: 0 -1rem -1.5rem;
+
+        tui-app-bar {
+            margin: -1rem 0 0;
+        }
+    }
+
+    .t-header {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        block-size: var(--t-header);
+        padding: 0 0.75rem 0 1rem;
+        justify-content: flex-end;
+    }
+
+    [tuiTitle] {
+        margin-inline-end: auto;
+    }
+
+    .t-content {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+        justify-content: center;
+    }
+
+    tui-loader,
+    tui-block-status {
+        inline-size: 100%;
+        margin-block-start: calc(-1 * var(--t-header));
+    }
+
+    iframe {
+        inline-size: 100%;
+        border: none;
+    }
+}

@@ -51,31 +51,31 @@
         }
     }
     @if (hasHints) {
-        @for (point of value; track point; let index = $index) {
+        @for (point of value; track point) {
             <!-- TODO: Fix hint type -->
-            @if (value.length > 1 || dots) {
+            @if ($count > 1 || dots) {
                 <div
                     class="t-column"
-                    [class.t-column_hint_hovered]="drivers.get(index) | async"
-                    [class.t-column_hovered]="hovered === index"
-                    [style.left.%]="getLeft(getX(index))"
-                    [style.width.%]="getWidth(index)"
+                    [class.t-column_hint_hovered]="drivers.get($index) | async"
+                    [class.t-column_hovered]="hovered === $index"
+                    [style.left.%]="getLeft(getX($index))"
+                    [style.width.%]="getWidth($index)"
                     [tuiHint]="$any(hintDirective?.hint || hintContent)"
-                    [tuiHintContext]="{$implicit: getImplicit(point), index: index}"
-                    [tuiHintDescribe]="isFocusable ? getHintId(index) : null"
+                    [tuiHintContext]="{$implicit: getImplicit(point), index: $index}"
+                    [tuiHintDescribe]="isFocusable ? getHintId($index) : null"
                     [tuiHintHost]="hintHost"
-                    (mouseenter)="onMouseEnter(index)"
+                    (mouseenter)="onMouseEnter($index)"
                 >
                     <div
                         class="t-line t-line_vertical"
-                        [style.left.%]="getOffset(index)"
+                        [style.left.%]="getOffset($index)"
                     ></div>
                     <div
                         #hintHost
                         class="t-host"
-                        [id]="getHintId(index)"
+                        [id]="getHintId($index)"
                         [style.bottom.%]="getBottom(point[1])"
-                        [style.left.%]="getOffset(index)"
+                        [style.left.%]="getOffset($index)"
                         [tabIndex]="isFocusable ? 0 : -1"
                     ></div>
                 </div>

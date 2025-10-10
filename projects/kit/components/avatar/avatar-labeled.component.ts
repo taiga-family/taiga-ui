@@ -20,7 +20,7 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
             }
         }
     `,
-    styleUrls: ['./avatar-labeled.styles.less'],
+    styleUrl: './avatar-labeled.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

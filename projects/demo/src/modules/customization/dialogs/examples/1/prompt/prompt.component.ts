@@ -11,7 +11,7 @@ import {type PromptOptions} from './prompt-options';
     selector: 'prompt',
     imports: [PolymorpheusOutlet, TuiButton],
     templateUrl: './prompt.template.html',
-    styleUrls: ['./prompt.style.less'],
+    styleUrl: './prompt.style.less',
     changeDetection,
     providers: [TuiDialogCloseService],
 })

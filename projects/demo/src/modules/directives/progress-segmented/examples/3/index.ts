@@ -6,7 +6,7 @@ import {TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

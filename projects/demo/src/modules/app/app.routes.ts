@@ -315,9 +315,9 @@ export const ROUTES: Routes = [
         title: 'Dialog',
     }),
     route({
-        path: DemoRoute.DialogExperimental,
-        loadComponent: async () => import('../components/dialog-experimental'),
-        title: 'Dialog (Experimental)',
+        path: DemoRoute.DialogLegacy,
+        loadComponent: async () => import('../components/dialog-legacy'),
+        title: 'Dialog (Legacy)',
     }),
     route({
         path: DemoRoute.Drawer,
@@ -845,11 +845,6 @@ export const ROUTES: Routes = [
         title: 'HintPointer',
     }),
     route({
-        path: DemoRoute.LazyLoading,
-        loadComponent: async () => import('../directives/lazy-loading'),
-        title: 'LazyLoading',
-    }),
-    route({
         path: DemoRoute.Pan,
         title: 'Pan',
         loadComponent: async () => import('../directives/pan'),
@@ -863,11 +858,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Swipe,
         title: 'Swipe',
         loadComponent: async () => import('../directives/swipe'),
-    }),
-    route({
-        path: DemoRoute.Let,
-        loadComponent: async () => import('../directives/let'),
-        title: 'Let',
     }),
     route({
         path: DemoRoute.Zoom,
@@ -1020,11 +1010,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.KeyboardService,
         loadComponent: async () => import('../components/services/keyboard-service'),
         title: 'Keyboard',
-    }),
-    route({
-        path: DemoRoute.ScrollService,
-        loadComponent: async () => import('../components/services/scroll-service'),
-        title: 'ScrollService',
     }),
     route({
         path: DemoRoute.ActionBar,

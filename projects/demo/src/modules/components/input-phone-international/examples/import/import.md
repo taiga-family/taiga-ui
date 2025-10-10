@@ -2,7 +2,7 @@
 import {ReactiveFormsModule} from '@angular/forms';
 import type {TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
+import {TuiInputPhoneInternational} from '@taiga-ui/kit';
 
 @Component({
   standalone: true,

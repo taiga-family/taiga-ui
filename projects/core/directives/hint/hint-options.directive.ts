@@ -10,6 +10,7 @@ import {
     SkipSelf,
 } from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {Subject} from 'rxjs';
@@ -43,8 +44,7 @@ export const TUI_HINT_DIRECTIONS: readonly TuiHintDirection[] = [
     'right-bottom',
 ];
 
-export interface TuiHintOptions {
-    readonly appearance: string;
+export interface TuiHintOptions extends TuiAppearanceOptions {
     readonly direction: TuiHintDirection | TuiHintDirection[];
     readonly hideDelay: number;
     readonly icon: string;

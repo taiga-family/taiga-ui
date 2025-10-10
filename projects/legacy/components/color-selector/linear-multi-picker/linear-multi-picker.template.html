@@ -1,8 +1,0 @@
-@for (item of value; track item; let index = $index) {
-    <div
-        class="t-circle"
-        [style.left.%]="item * 100"
-        (dblclick)="onClick(index)"
-        (mousedown)="onMouseDown(index)"
-    ></div>
-}

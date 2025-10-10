@@ -7,7 +7,7 @@ import {TuiThemeColorService} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -4,7 +4,7 @@ import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/co
     standalone: true,
     selector: 'caption[tuiCaption]',
     template: '<ng-content/>',
-    styleUrls: ['./caption.style.less'],
+    styleUrl: './caption.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

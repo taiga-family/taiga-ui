@@ -101,7 +101,7 @@ import {
         TuiTouchable,
     ],
     templateUrl: './mobile-calendar.template.html',
-    styleUrls: ['./mobile-calendar.style.less'],
+    styleUrl: './mobile-calendar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
     host: {

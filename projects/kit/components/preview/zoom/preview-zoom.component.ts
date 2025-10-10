@@ -32,7 +32,7 @@ const STEP = 0.5;
         TuiSlider,
     ],
     templateUrl: './preview-zoom.template.html',
-    styleUrls: ['./preview-zoom.style.less'],
+    styleUrl: './preview-zoom.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPreviewZoom {

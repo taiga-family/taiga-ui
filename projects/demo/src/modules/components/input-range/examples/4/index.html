@@ -14,16 +14,16 @@
 >
     @switch (value) {
         @case (0) {
-            <span>Today</span>
+            Today
         }
         @case (1) {
-            <span>Tomorrow</span>
+            Tomorrow
         }
         @case (7) {
-            <span>In a week</span>
+            In a week
         }
         @default {
-            <span>{{ value }}{{ value | i18nPlural: pluralize }}</span>
+            {{ value }}{{ value | i18nPlural: pluralize }}
         }
     }
 </ng-template>

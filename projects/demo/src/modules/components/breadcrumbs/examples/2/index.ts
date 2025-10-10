@@ -10,7 +10,7 @@ import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider, TuiFade} from '@taiga-ui/
 @Component({
     imports: [RouterLink, TuiBreadcrumbs, TuiFade, TuiHint, TuiItem, TuiLink, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [tuiBreadcrumbsOptionsProvider({icon: '/'})],
