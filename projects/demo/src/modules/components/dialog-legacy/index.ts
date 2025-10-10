@@ -14,7 +14,7 @@ import {switchMap} from 'rxjs';
 @Component({
     imports: [TuiAccordion, TuiButton, TuiDemo, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

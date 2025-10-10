@@ -39,7 +39,7 @@ import {
     selector: 'tui-input-range',
     imports: [FormsModule, PolymorpheusOutlet, TuiInputNumber, TuiRange, TuiTextfield],
     templateUrl: './input-range.template.html',
-    styleUrls: ['./input-range.style.less'],
+    styleUrl: './input-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsControl(TuiInputRangeComponent),
@@ -50,6 +50,8 @@ import {
         new: '', // TODO(v5): remove after deletion of legacy control
         // TODO: use css :host:has(tui-textfield[data-size]) after browser bump
         '[attr.data-size]': 'size()',
+        // TODO: Delete this line and put `tui-input-range:has(.t-content-end) {--t-icon-lock: none}` to proprietary styles
+        '[style.--t-icon-lock]': 'contentEnd() ? "none" : null',
     },
 })
 export class TuiInputRangeComponent extends TuiControl<readonly [number, number]> {
@@ -127,11 +129,11 @@ export class TuiInputRangeComponent extends TuiControl<readonly [number, number]
         this.setTextfieldValues(this.value());
     }
 
-    protected get hideStartContent(): boolean {
+    protected get contentStartHidden(): boolean {
         return this.interactive() && tuiIsFocused(this.textfieldStart);
     }
 
-    protected get hideEndContent(): boolean {
+    protected get contentEndHidden(): boolean {
         return (
             !this.content()[1] || (this.interactive() && tuiIsFocused(this.textfieldEnd))
         );

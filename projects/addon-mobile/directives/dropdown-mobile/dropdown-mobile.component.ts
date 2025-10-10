@@ -22,7 +22,7 @@ const GAP = 16;
             <div class="t-content"><ng-content /></div>
         </div>
     `,
-    styleUrls: ['./dropdown-mobile.style.less'],
+    styleUrl: './dropdown-mobile.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

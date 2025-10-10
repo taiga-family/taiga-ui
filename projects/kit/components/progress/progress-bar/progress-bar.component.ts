@@ -13,7 +13,7 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
     standalone: true,
     selector: 'progress[tuiProgressBar]',
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/progress-bar.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/progress-bar.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

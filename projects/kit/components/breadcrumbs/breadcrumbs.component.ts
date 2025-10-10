@@ -35,7 +35,7 @@ import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs
         TuiItemsWithMore,
     ],
     templateUrl: './breadcrumbs.template.html',
-    styleUrls: ['./breadcrumbs.style.less'],
+    styleUrl: './breadcrumbs.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiLinkOptionsProvider({appearance: 'action-grayscale'}),

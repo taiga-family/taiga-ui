@@ -44,7 +44,7 @@ import {type TuiDayRangePeriod} from './day-range-period';
     selector: 'tui-calendar-range',
     imports: [AsyncPipe, TuiCalendar, TuiDataList, TuiIcon, TuiMapperPipe],
     templateUrl: './calendar-range.template.html',
-    styleUrls: ['./calendar-range.style.less'],
+    styleUrl: './calendar-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsAuxiliary(TuiCalendarRange),

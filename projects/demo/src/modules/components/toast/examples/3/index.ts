@@ -31,7 +31,7 @@ export class Toast {
     standalone: true,
     imports: [TuiButton, TuiToast],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

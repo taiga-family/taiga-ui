@@ -9,7 +9,7 @@ import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
 @Component({
     imports: [AsyncPipe, TuiAmountPipe, TuiHovered, TuiLegendItem, TuiRingChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

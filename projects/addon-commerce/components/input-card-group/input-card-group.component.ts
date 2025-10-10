@@ -85,7 +85,7 @@ export interface TuiCard {
         WaResizeObserver,
     ],
     templateUrl: './input-card-group.template.html',
-    styleUrls: ['./input-card-group.style.less'],
+    styleUrl: './input-card-group.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataListHost(TuiInputCardGroup),

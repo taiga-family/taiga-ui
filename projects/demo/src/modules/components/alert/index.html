@@ -15,11 +15,11 @@
             .
         </p>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
-                [description]="index === 6 ? concurrency : ''"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$index === 6 ? concurrency : ''"
                 [heading]="example"
                 [id]="example | tuiKebab"
             />

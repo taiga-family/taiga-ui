@@ -13,7 +13,7 @@ const OPTIONS = {behavior: 'smooth', block: 'nearest', inline: 'center'} as cons
 
 @Component({
     template: '',
-    styleUrls: ['./item-group.styles.less'],
+    styleUrl: './item-group.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-item-group'},

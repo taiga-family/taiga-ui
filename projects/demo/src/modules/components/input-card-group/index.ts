@@ -22,7 +22,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiThumbnailCard,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class PageComponent {

@@ -9,7 +9,7 @@ import {TuiCarousel, TuiPagination} from '@taiga-ui/kit';
 @Component({
     imports: [RouterLink, TuiButton, TuiCarousel, TuiDialog, TuiLink, TuiPagination],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

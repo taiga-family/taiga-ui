@@ -30,7 +30,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
         TuiTextfieldControllerModule,
     ],
     templateUrl: './dialog-example.template.html',
-    styleUrls: ['./dialog-example.style.less'],
+    styleUrl: './dialog-example.style.less',
     changeDetection,
 })
 export class DialogExample {

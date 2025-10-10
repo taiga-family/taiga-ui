@@ -23,7 +23,7 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
     standalone: true,
     selector: 'tui-table-expand',
     templateUrl: './table-expand.template.html',
-    styleUrls: ['./table-expand.style.less'],
+    styleUrl: './table-expand.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [
         {

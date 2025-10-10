@@ -26,7 +26,7 @@ import {TUI_TAG_OPTIONS} from './tag.options';
     standalone: false,
     selector: 'tui-tag, a[tuiTag], button[tuiTag]',
     templateUrl: './tag.template.html',
-    styleUrls: ['./tag.style.less'],
+    styleUrl: './tag.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size',

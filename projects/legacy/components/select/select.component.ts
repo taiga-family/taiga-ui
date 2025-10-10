@@ -50,7 +50,7 @@ import {TUI_SELECT_OPTIONS, type TuiSelectOptions} from './select.options';
     standalone: false,
     selector: 'tui-select',
     templateUrl: './select.template.html',
-    styleUrls: ['./select.style.less'],
+    styleUrl: './select.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiSelectComponent),

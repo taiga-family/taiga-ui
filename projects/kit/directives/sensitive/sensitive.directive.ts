@@ -16,7 +16,7 @@ const rowsInSvg = 3;
 
 @Component({
     template: '',
-    styleUrls: ['./sensitive.style.less'],
+    styleUrl: './sensitive.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-sensitive'},

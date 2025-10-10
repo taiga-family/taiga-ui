@@ -12,7 +12,7 @@ import {BehaviorSubject, of, switchMap, take, timer} from 'rxjs';
     standalone: true,
     imports: [TuiButton, TuiLoader, TuiPlatform, TuiProgressCircle, TuiToast],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

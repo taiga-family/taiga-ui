@@ -56,7 +56,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiTabs,
     ],
     templateUrl: './example.template.html',
-    styleUrls: ['./example.style.less'],
+    styleUrl: './example.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.id]': 'id',

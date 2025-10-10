@@ -8,7 +8,7 @@ import {TuiAvatar, type TuiFileLike, TuiFiles} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiAvatar, TuiFiles, TuiIcon, TuiLink],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

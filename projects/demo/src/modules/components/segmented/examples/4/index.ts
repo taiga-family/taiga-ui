@@ -17,7 +17,7 @@ import {TuiSegmented} from '@taiga-ui/kit';
         TuiSegmented,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

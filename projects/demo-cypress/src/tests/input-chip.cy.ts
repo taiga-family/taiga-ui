@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {tuiIsString} from '@taiga-ui/cdk';
@@ -22,7 +21,6 @@ interface User {
     standalone: true,
     imports: [
         FormsModule,
-        NgForOf,
         ReactiveFormsModule,
         TuiCheckbox,
         TuiChevron,
@@ -79,14 +77,15 @@ interface User {
                             label="Pythons"
                             tuiMultiSelectGroup
                         >
-                            <button
-                                *ngFor="let user of users | tuiFilterByInput"
-                                new
-                                tuiOption
-                                [value]="user"
-                            >
-                                {{ user.name }}
-                            </button>
+                            @for (user of users | tuiFilterByInput; track user) {
+                                <button
+                                    new
+                                    tuiOption
+                                    [value]="user"
+                                >
+                                    {{ user.name }}
+                                </button>
+                            }
                         </tui-opt-group>
                     </tui-data-list>
                 </tui-textfield>

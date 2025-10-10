@@ -23,7 +23,7 @@ import {TuiTableTr} from '../tr/tr.component';
     selector: 'tbody[tuiTbody]',
     imports: [PolymorpheusOutlet, TuiChevron, TuiIcon],
     templateUrl: './tbody.template.html',
-    styleUrls: ['./tbody.style.less'],
+    styleUrl: './tbody.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABLE_PROVIDER,
 })

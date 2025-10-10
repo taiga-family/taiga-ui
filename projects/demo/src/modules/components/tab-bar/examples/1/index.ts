@@ -14,7 +14,7 @@ interface Item {
     selector: 'tui-tab-bar-example',
     imports: [TuiTabBar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

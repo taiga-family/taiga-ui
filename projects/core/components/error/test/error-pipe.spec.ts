@@ -32,16 +32,14 @@ describe('TuiErrorPipe', () => {
                 />
             </tui-root>
         `,
-        styles: [
-            `
-                .host {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                }
-            `,
-        ],
+        styles: `
+            .host {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+            }
+        `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,
         providers: [

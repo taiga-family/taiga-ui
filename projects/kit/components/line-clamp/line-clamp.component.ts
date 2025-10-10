@@ -41,7 +41,7 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
     selector: 'tui-line-clamp',
     imports: [PolymorpheusOutlet, TuiHint, TuiLineClampPositionDirective],
     templateUrl: './line-clamp.template.html',
-    styleUrls: ['./line-clamp.style.less'],
+    styleUrl: './line-clamp.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

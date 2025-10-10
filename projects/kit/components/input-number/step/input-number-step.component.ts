@@ -32,7 +32,7 @@ const MIN_DELAY = 100;
     selector: 'input[tuiInputNumber][step]',
     imports: [TuiButton, TuiTextfieldContent],
     templateUrl: './input-number-step.template.html',
-    styleUrls: ['./input-number-step.style.less'],
+    styleUrl: './input-number-step.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

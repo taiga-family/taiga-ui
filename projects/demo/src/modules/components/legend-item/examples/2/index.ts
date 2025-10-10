@@ -19,7 +19,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
         TuiRingChart,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

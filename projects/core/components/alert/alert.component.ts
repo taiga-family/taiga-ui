@@ -17,7 +17,7 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
     selector: 'tui-alert',
     imports: [PolymorpheusOutlet, TuiButton, TuiNotification, TuiTitle],
     templateUrl: './alert.template.html',
-    styleUrls: ['./alert.style.less'],
+    styleUrl: './alert.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
     host: {

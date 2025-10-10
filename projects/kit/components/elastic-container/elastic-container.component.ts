@@ -7,7 +7,7 @@ import {TuiElasticContainerDirective} from './elastic-container.directive';
     selector: 'tui-elastic-container',
     imports: [TuiElasticContainerDirective],
     templateUrl: './elastic-container.component.html',
-    styleUrls: ['./elastic-container.component.less'],
+    styleUrl: './elastic-container.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.height.px]': 'height',

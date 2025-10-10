@@ -10,7 +10,7 @@ import {interval, map, startWith} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiIcon, TuiLet, TuiLoader, TuiTooltip],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

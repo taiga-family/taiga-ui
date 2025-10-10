@@ -66,7 +66,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiToArrayPipe,
     ],
     templateUrl: './documentation.template.html',
-    styleUrls: ['./documentation.style.less'],
+    styleUrl: './documentation.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],
     animations: [

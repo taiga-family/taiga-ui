@@ -41,7 +41,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
         TuiHintOverflow,
     ],
     templateUrl: './input-chip.template.html',
-    styleUrls: ['./input-chip.styles.less'],
+    styleUrl: './input-chip.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiChip],
     host: {

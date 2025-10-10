@@ -79,7 +79,7 @@ const NOT_FORM_CONTROL_SYMBOLS = /[^+\d]/g;
         TuiTitle,
     ],
     templateUrl: './input-phone-international.template.html',
-    styleUrls: ['./input-phone-international.style.less'],
+    styleUrl: './input-phone-international.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

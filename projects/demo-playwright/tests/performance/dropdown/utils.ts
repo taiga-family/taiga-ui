@@ -1,37 +1,34 @@
-import {DemoRoute} from '@demo/routes';
-import {
-    PerformanceCollector,
-    TuiDocumentationPagePO,
-    tuiGoto,
-} from '@demo-playwright/utils';
-import {expect, type Locator, type Page, test} from '@playwright/test';
+import {PerformanceCollector, type TuiDocumentationPagePO} from '@demo-playwright/utils';
+import {type Locator, type Page} from '@playwright/test';
 
-interface DropdownCtx {
+export interface DropdownCtx {
     example: ReturnType<TuiDocumentationPagePO['getExample']>;
     dropdownTrigger: Locator | null;
     filterInput: Locator | null;
     exampleHost: Locator | null;
 }
 
-interface StressScenario {
+export interface StressScenario {
     label: string;
     repeats: number;
     run: (page: Page, ctx: DropdownCtx) => Promise<void>;
 }
 
 const INTENSITY = Math.max(1, Number(process.env.STRESS_INTENSITY || '2'));
+export const LOOPS = 3;
+export const OPEN_CLOSE_R = 2 * INTENSITY;
+export const FILTER_R = INTENSITY;
+export const REPOSITION_R = 2 * INTENSITY;
+export const NESTED_R = INTENSITY;
+export const OPTION_R = INTENSITY;
+export const STYLE_R = INTENSITY;
+export const SCROLL_R = 2 * INTENSITY;
 
-const LOOPS = 3;
+export function falseHandler(): false {
+    return false;
+}
 
-const OPEN_CLOSE_R = 2 * INTENSITY;
-const FILTER_R = INTENSITY;
-const REPOSITION_R = 2 * INTENSITY;
-const NESTED_R = INTENSITY;
-const OPTION_R = INTENSITY;
-const STYLE_R = INTENSITY;
-const SCROLL_R = 2 * INTENSITY;
-
-function createDropdownCtx(
+export function createDropdownCtx(
     example: ReturnType<TuiDocumentationPagePO['getExample']>,
 ): DropdownCtx {
     const dropdownTrigger = example.locator('[tuiDropdown]').first();
@@ -52,7 +49,10 @@ function createDropdownCtx(
     return {example, dropdownTrigger, filterInput, exampleHost};
 }
 
-async function sOpenClose(page: Page, {dropdownTrigger}: DropdownCtx): Promise<void> {
+export async function sOpenClose(
+    page: Page,
+    {dropdownTrigger}: DropdownCtx,
+): Promise<void> {
     if (!dropdownTrigger) {
         return;
     }
@@ -69,7 +69,7 @@ async function sOpenClose(page: Page, {dropdownTrigger}: DropdownCtx): Promise<v
     await page.keyboard.press('Escape').catch(() => {});
 }
 
-async function sOption(page: Page, ctx: DropdownCtx): Promise<void> {
+export async function sOption(page: Page, ctx: DropdownCtx): Promise<void> {
     if (!ctx.dropdownTrigger) {
         return;
     }
@@ -92,7 +92,7 @@ async function sOption(page: Page, ctx: DropdownCtx): Promise<void> {
     await page.keyboard.press('Escape').catch(() => {});
 }
 
-async function sFilter(page: Page, ctx: DropdownCtx): Promise<void> {
+export async function sFilter(page: Page, ctx: DropdownCtx): Promise<void> {
     if (!ctx.filterInput) {
         return;
     }
@@ -117,7 +117,7 @@ async function sFilter(page: Page, ctx: DropdownCtx): Promise<void> {
     await page.keyboard.press('Escape').catch(() => {});
 }
 
-async function sReposition(_page: Page, ctx: DropdownCtx): Promise<void> {
+export async function sReposition(_page: Page, ctx: DropdownCtx): Promise<void> {
     if (!ctx.exampleHost) {
         return;
     }
@@ -141,7 +141,7 @@ async function sReposition(_page: Page, ctx: DropdownCtx): Promise<void> {
         .catch(() => {});
 }
 
-async function sNested(page: Page, ctx: DropdownCtx): Promise<void> {
+export async function sNested(page: Page, ctx: DropdownCtx): Promise<void> {
     if (!ctx.dropdownTrigger) {
         return;
     }
@@ -161,7 +161,7 @@ async function sNested(page: Page, ctx: DropdownCtx): Promise<void> {
     await page.keyboard.press('Escape').catch(() => {});
 }
 
-async function sStyle(_page: Page, ctx: DropdownCtx): Promise<void> {
+export async function sStyle(_page: Page, ctx: DropdownCtx): Promise<void> {
     if (!ctx.exampleHost) {
         return;
     }
@@ -189,7 +189,7 @@ async function sStyle(_page: Page, ctx: DropdownCtx): Promise<void> {
         .catch(() => {});
 }
 
-async function sScroll(_page: Page, ctx: DropdownCtx): Promise<void> {
+export async function sScroll(_page: Page, ctx: DropdownCtx): Promise<void> {
     if (!ctx.exampleHost) {
         return;
     }
@@ -212,7 +212,7 @@ async function sScroll(_page: Page, ctx: DropdownCtx): Promise<void> {
         .catch(() => {});
 }
 
-function scenariosOpenClose(): StressScenario[] {
+export function scenariosOpenClose(): StressScenario[] {
     return [
         {label: 'openClose', repeats: OPEN_CLOSE_R, run: sOpenClose},
         {label: 'option', repeats: OPTION_R, run: sOption},
@@ -222,7 +222,7 @@ function scenariosOpenClose(): StressScenario[] {
     ];
 }
 
-function scenariosFilter(): StressScenario[] {
+export function scenariosFilter(): StressScenario[] {
     return [
         {label: 'filter', repeats: FILTER_R, run: sFilter},
         {label: 'option', repeats: OPTION_R, run: sOption},
@@ -232,7 +232,7 @@ function scenariosFilter(): StressScenario[] {
     ];
 }
 
-function scenariosReposition(): StressScenario[] {
+export function scenariosReposition(): StressScenario[] {
     return [
         {label: 'reposition', repeats: REPOSITION_R * 2, run: sReposition},
         {label: 'openClose', repeats: OPEN_CLOSE_R, run: sOpenClose},
@@ -241,7 +241,7 @@ function scenariosReposition(): StressScenario[] {
     ];
 }
 
-function scenariosNested(): StressScenario[] {
+export function scenariosNested(): StressScenario[] {
     return [
         {label: 'nested', repeats: NESTED_R, run: sNested},
         {label: 'option', repeats: OPTION_R, run: sOption},
@@ -251,7 +251,138 @@ function scenariosNested(): StressScenario[] {
     ];
 }
 
-async function runScenarioLoop(
+export function median(values: number[]): number {
+    if (!values.length) {
+        return 0;
+    }
+
+    const sorted = [...values].sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+
+    if (sorted.length % 2 === 0) {
+        return (sorted[mid - 1]! + sorted[mid]!) / 2;
+    }
+
+    return sorted[mid]!;
+}
+
+export function formatLatencyTable(data: {
+    runs: number;
+    firstOptionSamples: number[];
+    medianFirstOption?: number;
+}): string {
+    const rows: Array<[string, ...number[]]> = [
+        ['Run', ...data.firstOptionSamples.map((_, i) => i + 1)],
+        ['FirstOption', ...data.firstOptionSamples],
+    ];
+    const footer: Array<[string, number]> = [];
+
+    if (typeof data.medianFirstOption === 'number') {
+        footer.push(['Median First', data.medianFirstOption]);
+    }
+
+    const colCount = Math.max(...rows.map((r) => r.length));
+    const widths: number[] = [];
+
+    for (let c = 0; c < colCount; c++) {
+        let max = 0;
+
+        for (const r of rows) {
+            if (c < r.length) {
+                const cell = String(r[c]);
+
+                max = Math.max(max, cell.length);
+            }
+        }
+
+        widths[c] = max;
+    }
+
+    const pad = (val: unknown, i: number): string =>
+        String(val).padStart(widths[i] ?? 0, ' ');
+    const body = rows.map((r) => r.map(pad).join('  ')).join('\n');
+    const footerStr = footer
+        .map(([k, v]) => `${k.padEnd(13, ' ')}: ${v.toFixed(2)}`)
+        .join('\n');
+
+    return `\nLatency Metrics (ms)\n${body}\n\n${footerStr}\n`;
+}
+
+export async function measureMobileCountryOpen(
+    page: Page,
+    example: ReturnType<TuiDocumentationPagePO['getExample']>,
+): Promise<{firstOption: number}> {
+    await page.evaluate(() => {
+        (window as any).__tuiPerfStart = performance.now();
+    });
+    const trigger = example.locator(':scope > *').first();
+
+    if (!(await trigger.isVisible().catch(falseHandler))) {
+        return {firstOption: NaN};
+    }
+
+    await trigger.click({timeout: 2000}).catch(() => {});
+    const optionLocator = page.locator('tui-root tui-dropdowns button[tuiOption]');
+
+    await optionLocator
+        .first()
+        .waitFor({timeout: 3000})
+        .catch(() => {});
+
+    return page.evaluate(() => {
+        const start = (window as any).__tuiPerfStart as number | undefined;
+        const now = performance.now();
+
+        return {firstOption: start != null ? now - start : NaN};
+    });
+}
+
+export async function collectMobileOpenLatency(
+    page: Page,
+    example: ReturnType<TuiDocumentationPagePO['getExample']>,
+    runs: number,
+): Promise<{firstOptionTimes: number[]}> {
+    const collectedFirst: number[] = [];
+    const totalAttempts = runs * 3;
+    const attemptIndexes = Array.from({length: totalAttempts}, (__, index) => index);
+
+    for (const attempt of attemptIndexes) {
+        void attempt;
+        const {firstOption} = await measureMobileCountryOpen(page, example);
+
+        if (!Number.isNaN(firstOption)) {
+            collectedFirst.push(firstOption);
+        }
+
+        await page.keyboard.press('Escape').catch(falseHandler);
+    }
+
+    return {firstOptionTimes: collectedFirst.slice(0, runs)};
+}
+
+/**
+ * Measures a single "cold" open latency with limited retries to avoid flakiness.
+ * Returns NaN if all retries fail (caller can decide how to handle).
+ */
+export async function measureColdOpen(
+    page: Page,
+    example: ReturnType<TuiDocumentationPagePO['getExample']>,
+    maxRetries = 3,
+): Promise<number> {
+    for (let attempt = 0; attempt < maxRetries; attempt++) {
+        const {firstOption} = await measureMobileCountryOpen(page, example);
+
+        if (!Number.isNaN(firstOption)) {
+            return firstOption;
+        }
+
+        await page.keyboard.press('Escape').catch(falseHandler);
+    }
+
+    return NaN;
+}
+
+export async function runScenarioLoop(
     page: Page,
     name: string,
     list: StressScenario[],
@@ -280,63 +411,3 @@ async function runScenarioLoop(
 
     await PerformanceCollector.stopTestCollection(page, name);
 }
-
-test.describe('Dropdown Stress Tests', () => {
-    let po: TuiDocumentationPagePO;
-
-    test.beforeEach(async ({page}) => {
-        await tuiGoto(page, DemoRoute.Dropdown);
-        po = new TuiDocumentationPagePO(page);
-    });
-
-    test('dropdown-open-close-stress', async ({page}) => {
-        const example = po.getExample('#basic');
-
-        await example.scrollIntoViewIfNeeded().catch(() => {});
-        const ctx = createDropdownCtx(example);
-
-        await runScenarioLoop(
-            page,
-            'dropdown-open-close-stress',
-            scenariosOpenClose(),
-            ctx,
-        );
-        await expect(example.first()).toBeVisible();
-    });
-
-    test('dropdown-filter-stress', async ({page}) => {
-        const example = po.getExample('#interesting');
-
-        await example.scrollIntoViewIfNeeded().catch(() => {});
-        const ctx = createDropdownCtx(example);
-
-        await runScenarioLoop(page, 'dropdown-filter-stress', scenariosFilter(), ctx);
-        await expect(example.first()).toBeVisible();
-    });
-
-    test('dropdown-reposition-stress', async ({page}) => {
-        const example = po.getExample('#appearance');
-
-        await example.scrollIntoViewIfNeeded().catch(() => {});
-        const ctx = createDropdownCtx(example);
-
-        await runScenarioLoop(
-            page,
-            'dropdown-reposition-stress',
-            scenariosReposition(),
-            ctx,
-        );
-        await expect(example.first()).toBeVisible();
-    });
-
-    test('dropdown-nested-stress', async ({page}) => {
-        await tuiGoto(page, DemoRoute.DropdownOpen);
-        const example = new TuiDocumentationPagePO(page).getExample('#complex');
-
-        await example.scrollIntoViewIfNeeded().catch(() => {});
-        const ctx = createDropdownCtx(example);
-
-        await runScenarioLoop(page, 'dropdown-nested-stress', scenariosNested(), ctx);
-        await expect(example.first()).toBeVisible();
-    });
-});

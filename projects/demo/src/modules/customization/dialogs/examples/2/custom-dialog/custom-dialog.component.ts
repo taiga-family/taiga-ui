@@ -11,7 +11,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
             {{ text }}
         </ng-container>
     `,
-    styleUrls: ['./custom-dialog.style.less'],
+    styleUrl: './custom-dialog.style.less',
     changeDetection,
     providers: [TuiDialogCloseService],
 })

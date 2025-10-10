@@ -7,13 +7,13 @@
     (activeItemIndexChange)="onActiveItemIndexChange($event)"
     (keydown.arrowRight)="onArrowRight($event)"
 >
-    @for (item of items; track item; let index = $index) {
-        @if (index <= lastVisibleIndex) {
+    @for (item of items; track item) {
+        @if ($index <= lastVisibleIndex) {
             <ng-container [ngTemplateOutlet]="item" />
         } @else {
             <div
                 class="t-flex"
-                [class.t-overflown]="isOverflown(index)"
+                [class.t-overflown]="isOverflown($index)"
             >
                 <ng-container [ngTemplateOutlet]="item" />
             </div>
@@ -63,12 +63,12 @@
         (keydown.arrowDown.prevent)="onWrapperArrow($event, element, false)"
         (keydown.arrowUp.prevent)="onWrapperArrow($event, element, true)"
     >
-        @for (item of items; track item; let index = $index) {
+        @for (item of items; track item) {
             <div
                 class="t-dropdown-item"
-                (tui-tab-activate)="onClick(index)"
+                (tui-tab-activate)="onClick($index)"
             >
-                @if (shouldShow(index)) {
+                @if (shouldShow($index)) {
                     <ng-container *polymorpheusOutlet="item" />
                 }
             </div>

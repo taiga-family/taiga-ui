@@ -10,7 +10,7 @@ import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiButton, TuiMapperPipe, TuiPager, TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

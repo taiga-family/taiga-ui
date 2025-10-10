@@ -27,7 +27,7 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
     selector: 'tui-sheet-dialog',
     imports: [PolymorpheusOutlet],
     templateUrl: './sheet-dialog.template.html',
-    styleUrls: ['./sheet-dialog.style.less'],
+    styleUrl: './sheet-dialog.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
     hostDirectives: [TuiAnimated],

@@ -76,7 +76,7 @@ const TAG_VERTICAL_SPACE_REM = 0.125;
     standalone: false,
     selector: 'tui-input-tag',
     templateUrl: './input-tag.template.html',
-    styleUrls: ['./input-tag.style.less'],
+    styleUrl: './input-tag.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputTagComponent),
