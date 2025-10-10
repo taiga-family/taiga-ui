@@ -31,9 +31,7 @@ test.skip('InputMonthRange', () => {
 
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect
-                .soft(page)
-                .toHaveScreenshot('input-month-range-maximum-month.png');
+            await expect(page).toHaveScreenshot('input-month-range-maximum-month.png');
         });
 
         test('Minimum month more than current month', async ({page}) => {

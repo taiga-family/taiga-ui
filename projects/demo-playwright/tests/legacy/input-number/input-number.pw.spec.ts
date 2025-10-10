@@ -26,7 +26,7 @@ test.skip('InputNumber', () => {
             await input.focus();
             await input.fill('1,2345');
 
-            await expect.soft(example).toHaveScreenshot('01-input-number.png');
+            await expect(example).toHaveScreenshot('01-input-number.png');
         });
 
         test('does not mutate already valid too large number on blur', async ({page}) => {

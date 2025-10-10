@@ -20,9 +20,9 @@ test.skip('Input', () => {
 
         await document.waitTuiIcons();
 
-        await expect
-            .soft(document.apiPageExample)
-            .toHaveScreenshot('01-custom-text-content-cleaner-hint.png');
+        await expect(document.apiPageExample).toHaveScreenshot(
+            '01-custom-text-content-cleaner-hint.png',
+        );
     });
 
     test('correctly aligns single custom content (as large icon)', async ({page}) => {

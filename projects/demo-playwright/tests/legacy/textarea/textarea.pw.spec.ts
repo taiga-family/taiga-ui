@@ -18,9 +18,9 @@ test.skip('Textarea', () => {
 
         await textarea.click();
 
-        await expect
-            .soft(apiPageExample)
-            .toHaveScreenshot('01-character-with-descenders-inside-placeholder.png');
+        await expect(apiPageExample).toHaveScreenshot(
+            '01-character-with-descenders-inside-placeholder.png',
+        );
     });
 
     ['m', 'l'].forEach((size) => {
