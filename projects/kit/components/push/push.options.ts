@@ -9,6 +9,8 @@ export interface TuiPushOptions {
     readonly image: string;
     readonly timestamp: number | string;
     readonly type: string;
+    readonly position: 'bottom' | 'top';
+    readonly orientation: 'center' | 'end' | 'start';
 }
 
 export const TUI_PUSH_DEFAULT_OPTIONS: TuiPushOptions = {
@@ -19,6 +21,8 @@ export const TUI_PUSH_DEFAULT_OPTIONS: TuiPushOptions = {
     icon: '',
     iconColor: '',
     buttons: [],
+    position: 'bottom',
+    orientation: 'center',
 };
 
 /**

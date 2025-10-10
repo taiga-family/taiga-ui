@@ -18,6 +18,8 @@ import {type TuiPushOptions} from './push.options';
     hostDirectives: [TuiAnimated],
     host: {
         role: 'alert',
+        '[attr.data-orientation]': 'context.orientation',
+        '[class._bottom]': 'context.position === "bottom"',
     },
 })
 export class TuiPushAlert {
