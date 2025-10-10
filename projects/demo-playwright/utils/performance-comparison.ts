@@ -568,8 +568,6 @@ export class PerformanceComparison {
         if (offenders.length) {
             console.error('❌ Hard performance regression threshold breached.');
 
-            const offenderLines: string[] = [];
-
             for (const o of offenders) {
                 const baseLayout = o.baseline!.layoutDuration || 0;
                 const baseRecalc = o.baseline!.recalcStyleDuration || 0;
@@ -579,18 +577,29 @@ export class PerformanceComparison {
                 const netCur = curLayout + curRecalc;
                 const pct = (cur: number, base: number): string =>
                     base > 0 ? (((cur - base) / base) * 100).toFixed(1) : 'n/a';
-                const line = `  • ${o.testName}: layout ${baseLayout.toFixed(1)}→${curLayout.toFixed(1)} ms (${pct(curLayout, baseLayout)}%), recalc ${baseRecalc.toFixed(1)}→${curRecalc.toFixed(1)} ms (${pct(curRecalc, baseRecalc)}%), net ${netBase.toFixed(1)}→${netCur.toFixed(1)} ms (${pct(netCur, netBase)}%)`;
+                // Keep detailed lines only in console (do not duplicate in markdown)
 
-                offenderLines.push(line);
-                console.error(line);
+                console.error(
+                    `  • ${o.testName}: layout ${baseLayout.toFixed(1)}→${curLayout.toFixed(1)} ms (${pct(curLayout, baseLayout)}%), recalc ${baseRecalc.toFixed(1)}→${curRecalc.toFixed(1)} ms (${pct(curRecalc, baseRecalc)}%), net ${netBase.toFixed(1)}→${netCur.toFixed(1)} ms (${pct(netCur, netBase)}%)`,
+                );
             }
 
             if (DEFER_FAIL) {
-                // Append offenders section to report file so PR comment shows regressions
+                // Insert single-line banner after the main heading; table already contains per-test rows
                 try {
-                    const appendix = `\n\n### ❌ Hard Gate Offenders (threshold ${HARD_FAIL_PCT}% - deferred)\n\n${offenderLines.join('\n')}\n`;
+                    const heading = '## 📊 Performance Metrics Comparison';
+                    let updated = markdown;
 
-                    await writeFile(outputPath, markdown + appendix);
+                    if (updated.includes(heading)) {
+                        updated = updated.replace(
+                            heading,
+                            `${heading}\n\n❌ Hard Gate Offenders (${offenders.length} offender${offenders.length === 1 ? '' : 's'}; threshold ${HARD_FAIL_PCT}% - deferred)`,
+                        );
+                    } else {
+                        updated = `❌ Hard Gate Offenders (${offenders.length} offender${offenders.length === 1 ? '' : 's'}; threshold ${HARD_FAIL_PCT}% - deferred)\n\n${updated}`;
+                    }
+
+                    await writeFile(outputPath, updated);
                     // create sentinel
                     await writeFile(SENTINEL_PATH, `fail (${offenders.length})`);
                     console.error(
