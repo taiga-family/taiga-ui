@@ -1,13 +1,13 @@
 @if (currentQuestion < 2) {
     <p>{{ currentQuestion + 1 }}. {{ questionTitles[currentQuestion] }}</p>
     <form [formGroup]="form">
-        @for (option of questions[currentQuestion]; track option; let index = $index) {
+        @for (option of questions[currentQuestion]; track option) {
             <label>
                 <input
                     size="s"
                     tuiCheckbox
                     type="checkbox"
-                    [formControlName]="index"
+                    [formControlName]="$index"
                 />
                 {{ option }}
             </label>

@@ -1,4 +1,4 @@
-import {DOCUMENT, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {DOCUMENT, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -47,8 +47,6 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
 @Component({
     selector: 'tui-doc-navigation',
     imports: [
-        NgForOf,
-        NgIf,
         NgTemplateOutlet,
         PolymorpheusOutlet,
         ReactiveFormsModule,

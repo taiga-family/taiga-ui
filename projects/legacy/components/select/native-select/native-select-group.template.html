@@ -15,8 +15,8 @@
         {{ placeholder }}
     </option>
 }
-@for (group of items; track group; let index = $index) {
-    <optgroup [label]="labels[index]">
+@for (group of items; track group) {
+    <optgroup [label]="labels[$index]">
         @for (option of group; track option; let i = $index) {
             <option
                 [disabled]="

@@ -17,8 +17,8 @@ import {TuiAccordion} from '@taiga-ui/kit';
             </button>
 
             <tui-accordion>
-                @for (item of data | keyvalue; track item; let index = $index) {
-                    <button [tuiAccordion]="index === 1">{{ item.key }}</button>
+                @for (item of data | keyvalue; track item) {
+                    <button [tuiAccordion]="$index === 1">{{ item.key }}</button>
                     <tui-expand>{{ item.value }}</tui-expand>
                 }
             </tui-accordion>

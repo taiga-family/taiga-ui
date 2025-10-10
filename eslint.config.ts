@@ -40,15 +40,6 @@ export default process.env.HTML_ESLINT
                   '@angular-eslint/no-uncalled-signals': 'off',
                   // TODO enable after fixing all issues
                   '@angular-eslint/prefer-signals': 'off',
-                  '@angular-eslint/template/prefer-control-flow': 'off',
-              },
-          },
-          {
-              files: ['**/*.html'],
-              rules: {
-                  // TODO enable after fixing all issues
-                  '@angular-eslint/template/prefer-control-flow': 'off',
-                  '@angular-eslint/template/prefer-contextual-for-variables': 'off',
               },
           },
       ];

@@ -8,8 +8,8 @@ import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.dir
     selector: '[tuiDynamicHeader]',
     imports: [PolymorpheusOutlet, TuiAnimated],
     template: `
-        @for (header of container.hiddenHeaders(); track header; let last = $last) {
-            @if (last) {
+        @for (header of container.hiddenHeaders(); track header) {
+            @if ($last) {
                 <div tuiAnimated>
                     <div *polymorpheusOutlet="header as text">{{ text }}</div>
                 </div>
