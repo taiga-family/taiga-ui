@@ -2,9 +2,9 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiTitle} from '@taiga-ui/core';
+import {TuiCell, TuiHeader, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiSegmented} from '@taiga-ui/kit';
-import {TuiAppBar, TuiCell, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
+import {TuiAppBar, TuiDynamicHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -19,7 +19,7 @@ import {TuiAppBar, TuiCell, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout'
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

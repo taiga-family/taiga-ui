@@ -7,21 +7,17 @@ import {
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./row.style.less'],
+    styleUrl: './row.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-card-row',
-    },
+    host: {class: 'tui-card-row'},
 })
-class TuiCardRowStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiCardRow]',
 })
 export class TuiCardRow {
-    protected readonly nothing = tuiWithStyles(TuiCardRowStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 }

@@ -15,11 +15,11 @@
             .
         </p>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
-                [description]="index === 6 ? concurrency : ''"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$index === 6 ? concurrency : ''"
                 [heading]="example"
                 [id]="example | tuiKebab"
             />
@@ -100,10 +100,10 @@
             </tr>
 
             <tr
-                name="[closeable]"
+                name="[closable]"
                 tuiDocAPIItem
                 type="boolean"
-                [(value)]="closeable"
+                [(value)]="closable"
             >
                 Has close button
             </tr>
@@ -116,6 +116,26 @@
                 [(value)]="icon"
             >
                 Icon
+            </tr>
+
+            <tr
+                name="[orientation]"
+                tuiDocAPIItem
+                type="'start' | 'center' | 'end'"
+                [items]="orientationVariants"
+                [(value)]="orientation"
+            >
+                Orientation
+            </tr>
+
+            <tr
+                name="[position]"
+                tuiDocAPIItem
+                type="'top' | 'bottom'"
+                [items]="positionVariants"
+                [(value)]="position"
+            >
+                Position
             </tr>
         </table>
     </ng-template>

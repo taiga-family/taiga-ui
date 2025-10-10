@@ -11,16 +11,13 @@ import {
 } from '@taiga-ui/core/directives/appearance';
 
 @Component({
-    standalone: true,
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/message.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/message.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-message',
-    },
+    host: {class: 'tui-message'},
 })
-class TuiMessageStyles {}
+class Styles {}
 
 @Directive({
     standalone: true,
@@ -34,5 +31,5 @@ class TuiMessageStyles {}
     hostDirectives: [TuiWithAppearance],
 })
 export class TuiMessage {
-    protected readonly nothing = tuiWithStyles(TuiMessageStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 }

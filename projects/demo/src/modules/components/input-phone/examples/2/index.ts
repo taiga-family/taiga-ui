@@ -3,14 +3,13 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DEFAULT_MATCHER, type TuiMatcher} from '@taiga-ui/cdk';
-import {TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiCell, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
     TuiInputPhone,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 
 class User {
     constructor(

@@ -19,8 +19,8 @@
         } @else {
             <ng-container *tuiLet="(results | keyvalue: asIs) || [] as items">
                 <tui-scrollbar class="t-scrollbar">
-                    @for (group of items | tuiFilter: notEmpty; track group; let index = $index) {
-                        @if (!active || active === index + 1) {
+                    @for (group of items | tuiFilter: notEmpty; track group) {
+                        @if (!active || active === $index + 1) {
                             @if (!active && items.length > 1) {
                                 <label class="t-sr-label">
                                     {{ group.key }}

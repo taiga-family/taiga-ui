@@ -5,9 +5,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
-import {TuiButton, TuiNotification, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiNotification, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarLabeled, TuiFade, TuiFloatingContainer} from '@taiga-ui/kit';
-import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
+import {TuiAppBar} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -26,7 +26,7 @@ import {TuiAppBar, TuiCell} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

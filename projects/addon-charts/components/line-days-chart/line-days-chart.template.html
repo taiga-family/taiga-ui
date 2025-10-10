@@ -1,4 +1,4 @@
-@for (month of months; track month; let first = $first) {
+@for (month of months; track month) {
     <tui-line-chart
         class="t-chart"
         [dots]="dots"
@@ -7,8 +7,8 @@
         [style.zIndex]="zIndex"
         [tuiHintContent]="hintContent ? hint : ''"
         [value]="month"
-        [width]="first ? firstWidth : getWidth(month[0]?.[0] ?? 0)"
-        [x]="first ? 0 : getX(month[0]?.[0] ?? 0)"
+        [width]="$first ? firstWidth : getWidth(month[0]?.[0] ?? 0)"
+        [x]="$first ? 0 : getX(month[0]?.[0] ?? 0)"
         [xStringify]="xStringify ? daysStringify : null"
         [y]="y"
         [yStringify]="yStringify"

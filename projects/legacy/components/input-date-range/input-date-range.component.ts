@@ -68,7 +68,7 @@ import {map} from 'rxjs';
     standalone: false,
     selector: 'tui-input-date-range',
     templateUrl: './input-date-range.template.html',
-    styleUrls: ['./input-date-range.style.less'],
+    styleUrl: './input-date-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputDateRangeComponent),

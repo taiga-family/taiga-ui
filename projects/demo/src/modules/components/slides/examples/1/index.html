@@ -24,8 +24,8 @@
 </div>
 <tui-elastic-container>
     <section tuiSlides>
-        @for (item of items; track item; let i = $index) {
-            @if (i === index) {
+        @for (item of items; track item) {
+            @if ($index === index) {
                 <div tuiTitle>
                     {{ item }}
                     <div tuiSubtitle>{{ item.repeat(10) }}</div>

@@ -5,23 +5,23 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiWithAppearance} from '@taiga-ui/core/directives/appearance';
+import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 @Component({
-    standalone: true,
     template: '',
     styleUrls: ['./card.style.less', './medium.style.less'],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-card-medium',
-    },
+    host: {class: 'tui-card-medium'},
 })
-class TuiCardMediumStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiCardMedium]',
+    providers: [tuiAvatarOptionsProvider({size: 'l'})],
+    hostDirectives: [TuiWithAppearance],
 })
 export class TuiCardMedium {
-    protected readonly nothing = tuiWithStyles(TuiCardMediumStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 }

@@ -4,10 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiArrayToggle} from '@taiga-ui/cdk';
-import {TuiTitle} from '@taiga-ui/core';
-import {TuiAccordion} from '@taiga-ui/experimental';
-import {TuiAvatar, TuiCheckbox, TuiConnected} from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
+import {TuiCell, TuiTitle} from '@taiga-ui/core';
+import {TuiAccordion, TuiAvatar, TuiCheckbox, TuiConnected} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -21,7 +19,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -7,7 +7,7 @@ import {type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
 @Component({
     imports: [TuiDemo, TuiRingChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

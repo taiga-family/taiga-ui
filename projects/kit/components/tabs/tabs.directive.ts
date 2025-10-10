@@ -20,19 +20,15 @@ import {TUI_TAB_ACTIVATE} from './tab.directive';
 import {TUI_TABS_OPTIONS} from './tabs.options';
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./tabs.style.less'],
+    styleUrl: './tabs.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-tabs',
-    },
+    host: {class: 'tui-tabs'},
 })
-class TuiTabsStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     host: {
         '[attr.data-size]': 'size',
         [`(${TUI_TAB_ACTIVATE})`]: 'onActivate($event, $event.target)',
@@ -42,7 +38,7 @@ export class TuiTabsDirective implements AfterViewChecked {
     private readonly el = tuiInjectElement();
     private readonly injector = inject(INJECTOR);
 
-    protected readonly nothing = tuiWithStyles(TuiTabsStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 
     @Input()
     public size: TuiSizeL = inject(TUI_TABS_OPTIONS).size;

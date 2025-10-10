@@ -5,8 +5,7 @@ import {
     effect,
     inject,
     InjectionToken,
-    Input,
-    signal,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -19,17 +18,15 @@ export const TUI_CHEVRON = new InjectionToken(ngDevMode ? 'TUI_CHEVRON' : '', {
 });
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./chevron.style.less'],
+    styleUrl: './chevron.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-chevron'},
 })
-class TuiChevronStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiChevron]',
     providers: [tuiProvide(TUI_ICON_END, TUI_CHEVRON)],
     host: {tuiChevron: ''},
@@ -38,19 +35,13 @@ export class TuiChevron {
     private readonly el = tuiInjectElement();
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
 
-    protected readonly nothing = tuiWithStyles(TuiChevronStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly toggle = effect(() =>
         this.el.classList.toggle(
             '_chevron-rotated',
-            this.chevron() || (this.chevron() === '' && !!this.dropdown?.ref()),
+            this.rotated() || (this.rotated() === '' && !!this.dropdown?.ref()),
         ),
     );
 
-    // TODO: refactor to signal inputs after Angular update
-    public readonly chevron = signal<boolean | ''>('');
-
-    @Input()
-    public set tuiChevron(chevron: boolean | '') {
-        this.chevron.set(chevron);
-    }
+    public readonly rotated = input<boolean | ''>('', {alias: 'tuiChevron'});
 }

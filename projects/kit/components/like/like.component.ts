@@ -18,7 +18,7 @@ import {TUI_LIKE_OPTIONS} from './like.options';
     standalone: true,
     selector: 'input[tuiLike][type=checkbox]',
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/like.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/like.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -43,10 +43,10 @@ import {TUI_LIKE_OPTIONS} from './like.options';
         tuiLike: '',
         '[attr.data-size]': 'size()',
         '[attr.data-mode]': '""',
-        '[style.--t-icon-color]': 'tuiLike()',
+        '[style.--t-icon-color]': 'color()',
     },
 })
 export class TuiLike {
-    public readonly tuiLike = input('');
+    public readonly color = input('', {alias: 'tuiLike'});
     public readonly size = input(inject(TUI_LIKE_OPTIONS).size);
 }

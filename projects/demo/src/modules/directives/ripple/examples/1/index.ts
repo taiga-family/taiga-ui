@@ -6,7 +6,7 @@ import {TuiRipple} from '@taiga-ui/addon-mobile';
 @Component({
     imports: [TuiRipple],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

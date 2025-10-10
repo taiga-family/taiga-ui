@@ -5,7 +5,7 @@
         [(ngModel)]="value"
     />
     <tui-calendar
-        *tuiTextfieldDropdown
+        *tuiDropdown
         [markerHandler]="markerHandler"
         [month]="value?.[0] ?? defaultActiveMonth()"
         [showAdjacent]="false"

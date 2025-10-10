@@ -19,19 +19,15 @@ import {
 const OPT = {self: true, optional: true} as const;
 
 @Component({
-    standalone: true,
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/icons.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/icons.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-icons',
-    },
+    host: {class: 'tui-icons'},
 })
-class TuiIconsStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     host: {
         tuiIcons: '',
         '[style.--t-icon-start]': 'start()',
@@ -43,7 +39,7 @@ class TuiIconsStyles {}
 export class TuiIcons {
     private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
-    protected readonly nothing = tuiWithStyles(TuiIconsStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly start = computed(() => this.resolve(this.iconStart()));
     protected readonly end = computed(() => this.resolve(this.iconEnd()));
     protected readonly startMode = computed(() => tuiGetIconMode(this.iconStart()));

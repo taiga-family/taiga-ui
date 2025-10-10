@@ -4,7 +4,7 @@ import {
     Directive,
     type DoCheck,
     inject,
-    Input,
+    input,
     type Signal,
     ViewEncapsulation,
 } from '@angular/core';
@@ -31,19 +31,15 @@ import {map} from 'rxjs';
 import {TUI_TOOLTIP_OPTIONS} from './tooltip.options';
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./tooltip.style.less'],
+    styleUrl: './tooltip.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-tooltip',
-    },
+    host: {class: 'tui-tooltip'},
 })
-class TuiTooltipStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'tui-icon[tuiTooltip]',
     providers: [
         tuiAppearanceOptionsProvider(TUI_TOOLTIP_OPTIONS),
@@ -66,7 +62,7 @@ class TuiTooltipStyles {}
     ],
     host: {
         tuiTooltip: '',
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
         '(click.prevent)': '0',
         '(mousedown)': 'onClick($event)',
     },
@@ -77,7 +73,7 @@ export class TuiTooltip implements DoCheck {
     private readonly describe = inject(TuiHintDescribe);
     private readonly driver = inject(TuiHintHover);
 
-    protected readonly nothing = tuiWithStyles(TuiTooltipStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly state: Signal<unknown> = tuiAppearanceState(
         toSignal(
             inject(TuiHintHover).pipe(
@@ -88,8 +84,7 @@ export class TuiTooltip implements DoCheck {
         ),
     );
 
-    @Input()
-    public size: TuiSizeS = 'm';
+    public readonly size = input<TuiSizeS>('m');
 
     public ngDoCheck(): void {
         if (this.textfield?.id) {

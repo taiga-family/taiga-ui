@@ -9,7 +9,7 @@
         <tui-input-chip *tuiItem />
         @if (items | tuiHideSelected | tuiFilterByInput; as items) {
             @if (items.length) {
-                <ng-template tuiTextfieldDropdown>
+                <ng-template tuiDropdown>
                     <tui-data-list-wrapper [items]="items" />
                 </ng-template>
             }
@@ -36,7 +36,7 @@
         }
         @if (items | tuiHideSelected | tuiFilterByInput; as items) {
             @if (items.length) {
-                <ng-template tuiTextfieldDropdown>
+                <ng-template tuiDropdown>
                     <tui-data-list-wrapper [items]="items" />
                 </ng-template>
             }
@@ -58,7 +58,7 @@
             [(ngModel)]="multi"
         />
         <tui-data-list-wrapper
-            *tuiTextfieldDropdown
+            *tuiDropdown
             new
             tuiMultiSelectGroup
             [items]="items"
@@ -80,7 +80,7 @@
             [(ngModel)]="objects"
         />
         <tui-input-chip *tuiItem />
-        <tui-data-list *tuiTextfieldDropdown>
+        <tui-data-list *tuiDropdown>
             <tui-opt-group
                 label="Pythons"
                 tuiMultiSelectGroup

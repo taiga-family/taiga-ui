@@ -17,11 +17,6 @@ export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
     },
 );
 
-/**
- * @deprecated use {@link TUI_ICON_RESOLVER}
- */
-export const TUI_ICON_START_RESOLVER = TUI_ICON_RESOLVER;
-
 export function tuiGetIconMode(icon?: string | null): string | undefined {
     return icon?.match(/@([^.]*)\./)?.[1] || icon || undefined;
 }

@@ -8,7 +8,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiButton, TuiInputInline],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

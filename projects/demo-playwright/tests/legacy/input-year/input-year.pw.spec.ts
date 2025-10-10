@@ -20,7 +20,7 @@ test.skip('InputYear', () => {
         test('12345 => 1234', async ({page}) => {
             await input.pressSequentially('123456789');
 
-            await expect.soft(page).toHaveScreenshot('01-input-year.png');
+            await expect(page).toHaveScreenshot('01-input-year.png');
         });
 
         test('2040 => 2020', async ({page}) => {

@@ -41,7 +41,7 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
         WaIntersectionObserver,
     ],
     templateUrl: './carousel.template.html',
-    styleUrls: ['./carousel.style.less'],
+    styleUrl: './carousel.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{provide: TUI_SWIPE_OPTIONS, useValue: {timeout: 200, threshold: 30}}],
     hostDirectives: [

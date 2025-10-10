@@ -6,7 +6,7 @@ import {TuiResizable, TuiResizer} from '@taiga-ui/cdk';
 @Component({
     imports: [TuiResizable, TuiResizer],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

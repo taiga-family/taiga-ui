@@ -1,10 +1,13 @@
 <p>
-    <tui-input-date-range
-        [maxLength]="maxLength"
-        [(ngModel)]="range"
-    >
-        Range
-    </tui-input-date-range>
+    <tui-textfield [tuiTextfieldCleaner]="false">
+        <label tuiLabel>Range</label>
+        <input
+            tuiInputDateRange
+            [maxLength]="maxLength"
+            [(ngModel)]="range"
+        />
+        <tui-calendar-range *tuiDropdown />
+    </tui-textfield>
 </p>
 @if (computeLabels$(range) | async; as labels) {
     <tui-axes

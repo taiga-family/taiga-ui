@@ -20,14 +20,14 @@ export class TuiRepeatTimesContext implements TuiContext<number> {
     selector: '[tuiRepeatTimes][tuiRepeatTimesOf]',
 })
 export class TuiRepeatTimes {
-    private readonly viewContainer = inject(ViewContainerRef);
-    private readonly templateRef = inject(TemplateRef<TuiRepeatTimesContext>);
+    private readonly vcr = inject(ViewContainerRef);
+    private readonly template = inject(TemplateRef<TuiRepeatTimesContext>);
 
     @Input()
     public set tuiRepeatTimesOf(count: number) {
         const safeCount = Math.floor(tuiClamp(count, 0, MAX_VALUE));
 
-        const {length} = this.viewContainer;
+        const {length} = this.vcr;
 
         if (count < length) {
             this.removeContainers(length - count);
@@ -37,9 +37,9 @@ export class TuiRepeatTimes {
     }
 
     private addContainers(count: number): void {
-        for (let index = this.viewContainer.length; index < count; index++) {
-            this.viewContainer.createEmbeddedView<TuiRepeatTimesContext>(
-                this.templateRef,
+        for (let index = this.vcr.length; index < count; index++) {
+            this.vcr.createEmbeddedView<TuiRepeatTimesContext>(
+                this.template,
                 new TuiRepeatTimesContext(index),
             );
         }
@@ -47,7 +47,7 @@ export class TuiRepeatTimes {
 
     private removeContainers(amount: number): void {
         for (let index = 0; index < amount; index++) {
-            this.viewContainer.remove();
+            this.vcr.remove();
         }
     }
 }

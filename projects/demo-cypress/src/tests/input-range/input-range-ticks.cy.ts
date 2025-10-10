@@ -1,17 +1,18 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiRoot} from '@taiga-ui/core';
+import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputRange} from '@taiga-ui/kit';
 
 describe('InputRange | With segments + tick labels', () => {
     @Component({
-        imports: [FormsModule, TuiInputRange, TuiRoot],
+        imports: [FormsModule, TuiInputRange, TuiRoot, TuiTextfield],
         template: `
             <tui-root>
                 <tui-input-range
                     [max]="100"
                     [min]="0"
                     [segments]="4"
+                    [tuiTextfieldSize]="size"
                     [(ngModel)]="value"
                 />
 
@@ -24,12 +25,15 @@ describe('InputRange | With segments + tick labels', () => {
                 </div>
             </tui-root>
         `,
-        styleUrls: ['./slider-ticks.styles.less'],
+        styleUrl: './slider-ticks.styles.less',
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class SandBox {
         @Input({required: true})
         public value!: [number, number];
+
+        @Input({required: true})
+        public size!: 'l' | 'm' | 's';
     }
 
     beforeEach(() => {
@@ -45,17 +49,24 @@ describe('InputRange | With segments + tick labels', () => {
         [50, 100],
     ];
 
-    cases.forEach((value) => {
-        const stringified = JSON.stringify(value);
+    (['s', 'm', 'l'] as const).forEach((size) => {
+        describe(`size = ${size}`, () => {
+            cases.forEach((value) => {
+                const stringified = JSON.stringify(value);
 
-        it(`value = ${stringified}`, () => {
-            cy.mount(SandBox, {
-                componentProperties: {
-                    value,
-                },
+                it(`value = ${stringified}`, () => {
+                    cy.mount(SandBox, {
+                        componentProperties: {
+                            size,
+                            value,
+                        },
+                    });
+
+                    cy.compareSnapshot(
+                        `input-range-ticks-size-${size}-value-${stringified}`,
+                    );
+                });
             });
-
-            cy.compareSnapshot(`input-range-ticks-${stringified}`);
         });
     });
 });

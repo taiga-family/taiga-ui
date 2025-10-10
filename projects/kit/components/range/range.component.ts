@@ -33,7 +33,7 @@ import {TuiRangeChange} from './range-change.directive';
     selector: 'tui-range',
     imports: [FormsModule, TuiSlider],
     templateUrl: './range.template.html',
-    styleUrls: ['./range.style.less'],
+    styleUrl: './range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider([0, 0])],
     hostDirectives: [
@@ -98,12 +98,6 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     public readonly start = computed(() => this.toPercent(this.value()[0]));
     public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
 
-    /**
-     * TODO(v5): standardize logic between `TuiSlider` & `TuiInputSlider` & `Range` & `InputRange`
-     * For non-linear slider (with `[keySteps]` property) `step` means percentage
-     */
-    public legacyMode = true;
-
     public ngOnChanges(): void {
         this.changes.update((x) => x + 1);
     }
@@ -135,9 +129,7 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     }
 
     protected get fractionStep(): number {
-        return this.legacyMode || !this.keySteps
-            ? this.step / (this.max - this.min)
-            : this.step / 100;
+        return this.keySteps ? this.step / 100 : this.step / (this.max - this.min);
     }
 
     protected get computedKeySteps(): TuiKeySteps {

@@ -12,7 +12,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
+import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
@@ -29,9 +29,9 @@ import {
 
 @Component({
     selector: 'tui-tree-item',
-    imports: [PolymorpheusOutlet, TuiExpandComponent],
+    imports: [PolymorpheusOutlet, TuiExpand],
     templateUrl: './tree-item.template.html',
-    styleUrls: ['./tree-item.style.less'],
+    styleUrl: './tree-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiProvide(TUI_TREE_NODE, TuiTreeItem),

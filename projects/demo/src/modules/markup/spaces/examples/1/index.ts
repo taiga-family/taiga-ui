@@ -7,7 +7,7 @@ import {TuiDocCopy} from '@taiga-ui/addon-doc';
 @Component({
     imports: [ClipboardModule, TuiDocCopy],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

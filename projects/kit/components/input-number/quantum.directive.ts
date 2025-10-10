@@ -15,7 +15,7 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
     protected parent: TuiValueTransformer<number | null, any> | null = null;
 
     // eslint-disable-next-line @typescript-eslint/parameter-properties
-    constructor(public quantum = 1) {
+    constructor(public quantum = 0) {
         super();
     }
 
@@ -27,6 +27,7 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
         const value = this.parent?.toControlValue(internalValue) ?? internalValue;
 
         return value != null &&
+            this.quantum > 0 &&
             tuiIsSafeToRound(value, tuiGetFractionPartPadded(this.quantum).length)
             ? tuiRound(
                   Math.round(value / this.quantum) * this.quantum,
@@ -38,7 +39,7 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
 
 @Directive({
     standalone: true,
-    selector: '[tuiInputNumber][quantum], [tuiInputSlider][quantum]',
+    selector: '[tuiInputNumber][quantum]',
     inputs: ['quantum'],
     providers: [tuiProvide(TuiValueTransformer, TuiQuantumValueTransformer)],
 })
@@ -46,7 +47,7 @@ export class TuiQuantumValueTransformer extends TuiQuantumValueTransformerBase {
     protected override parent = inject(TUI_INPUT_NUMBER_OPTIONS).valueTransformer;
 
     constructor() {
-        super(1);
+        super(0);
     }
 }
 

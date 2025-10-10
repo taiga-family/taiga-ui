@@ -6,13 +6,15 @@ import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCell,
+    TuiHeader,
     tuiHeightCollapse,
     TuiLabel,
     tuiSlideInTop,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiCell, TuiHeader, TuiSearch} from '@taiga-ui/layout';
+import {TuiSearch} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -30,7 +32,7 @@ import {TuiCell, TuiHeader, TuiSearch} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     animations: [tuiSlideInTop, tuiHeightCollapse],

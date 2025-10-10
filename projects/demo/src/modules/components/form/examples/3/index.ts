@@ -1,14 +1,13 @@
 import {Component, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiAppearance, TuiButton, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiSegmented, TuiStepper, TuiTabs} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiForm} from '@taiga-ui/layout';
 
 @Component({
     imports: [
         ReactiveFormsModule,
-        TuiAppearance,
         TuiButton,
         TuiCardLarge,
         TuiForm,
@@ -20,7 +19,7 @@ import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Example {

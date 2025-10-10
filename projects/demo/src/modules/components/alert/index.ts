@@ -78,7 +78,13 @@ export default class Page {
 
     protected autoClose = this.autoCloseVariants[1]!;
 
-    protected closeable = true;
+    protected readonly orientationVariants = ['start', 'center', 'end'] as const;
+    protected orientation = this.orientationVariants[2];
+
+    protected readonly positionVariants = ['top', 'bottom'] as const;
+    protected position = this.positionVariants[0];
+
+    protected closable = true;
 
     protected readonly component = new PolymorpheusComponent(
         AlertExampleWithData,
@@ -98,7 +104,9 @@ export default class Page {
                 data: this.data,
                 appearance: this.appearance,
                 autoClose: this.autoClose,
-                closeable: this.closeable,
+                closable: this.closable,
+                orientation: this.orientation,
+                position: this.position,
                 icon: this.icon === this.iconVariants[0] ? this.defaultIcon : this.icon,
             })
             .pipe(

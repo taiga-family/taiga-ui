@@ -125,8 +125,8 @@
                                     tuiStatus
                                     [style.padding.rem]="1"
                                 >
-                                    @for (chip of item.items; track chip; let index = $index) {
-                                        @if (index > number) {
+                                    @for (chip of item.items; track chip) {
+                                        @if ($index > number) {
                                             <tui-badge>{{ chip }}</tui-badge>
                                         }
                                     }

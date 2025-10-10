@@ -41,7 +41,7 @@ export const LINE_HEIGHT_L = 24;
     standalone: false,
     selector: 'tui-textarea',
     templateUrl: './textarea.template.html',
-    styleUrls: ['./textarea.style.less'],
+    styleUrl: './textarea.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiTextareaComponent),

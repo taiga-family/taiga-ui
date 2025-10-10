@@ -14,7 +14,7 @@
         {{ placeholder }}
     </option>
 }
-@for (option of items; track option; let index = $index) {
+@for (option of items; track option) {
     <option
         [disabled]="disabledItemHandler ? disabledItemHandler(option) : itemsHandlers.disabledItemHandler(option)"
         [selected]="selected(option)"

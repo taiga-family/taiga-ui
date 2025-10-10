@@ -1,12 +1,18 @@
 ```html
-<tui-combo-box
+<tui-textfield
+  tuiChevron
   [stringify]="stringify"
-  [(ngModel)]="value"
 >
+  <input
+    tuiComboBox
+    [(ngModel)]="value"
+  />
+
   <tui-data-list-wrapper
-    *tuiDataList
+    *tuiDropdown
+    new
     [items]="items"
     [itemContent]="stringify | tuiStringifyContent"
   ></tui-data-list-wrapper>
-</tui-combo-box>
+</tui-textfield>
 ```

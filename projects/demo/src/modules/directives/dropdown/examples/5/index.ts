@@ -8,6 +8,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
 import {
     TuiButton,
+    TuiCell,
     TuiDropdown,
     TuiInitialsPipe,
     TuiTextfield,
@@ -20,15 +21,12 @@ import {
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
+    TuiInputChip,
     TuiInputNumber,
+    TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
-import {
-    TuiComboBoxModule,
-    TuiMultiSelectModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 interface User {
@@ -53,7 +51,8 @@ interface User {
         TuiFade,
         TuiFilterByInputPipe,
         TuiInputNumber,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
+        TuiInputChip,
         TuiSelect,
         TuiTextfield,
         TuiTextfieldControllerModule,

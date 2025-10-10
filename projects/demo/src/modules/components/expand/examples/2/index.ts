@@ -2,8 +2,7 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
-import {TuiExpand} from '@taiga-ui/experimental';
+import {TuiButton, TuiExpand} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiButton, TuiExpand, TuiRepeatTimes],

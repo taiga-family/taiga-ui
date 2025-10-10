@@ -28,7 +28,7 @@ function randomString(len: number): string {
         TuiLink,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

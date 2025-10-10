@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiCell, TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiAvatarStack,
@@ -11,7 +11,6 @@ import {
     TuiCheckbox,
     TuiProgress,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -28,7 +27,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

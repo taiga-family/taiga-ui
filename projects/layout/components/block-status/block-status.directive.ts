@@ -1,4 +1,4 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
 import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
 
 @Directive({
@@ -6,6 +6,5 @@ import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
     selector: '[tuiSlot]',
 })
 export class TuiBlockStatusDirective {
-    @Input()
-    public tuiSlot: TuiLooseUnion<'action' | 'top'> = 'top';
+    public readonly tuiSlot = input<TuiLooseUnion<'action' | 'top'>>('top');
 }

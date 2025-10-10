@@ -25,7 +25,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     selector: 'tui-filter',
     imports: [FormsModule, PolymorpheusOutlet, TuiBadge, TuiBlock, TuiHintOverflow],
     templateUrl: './filter.template.html',
-    styleUrls: ['./filter.style.less'],
+    styleUrl: './filter.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider([])],
     host: {
@@ -40,7 +40,7 @@ export class TuiFilter<T> extends TuiControl<readonly T[]> {
     public items: readonly T[] = [];
 
     @Input()
-    public size: TuiSizeL | TuiSizeS = inject(TUI_BLOCK_OPTIONS).size;
+    public size: TuiSizeL | TuiSizeS = inject(TUI_BLOCK_OPTIONS).size || 'l';
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<T> = TUI_FALSE_HANDLER;

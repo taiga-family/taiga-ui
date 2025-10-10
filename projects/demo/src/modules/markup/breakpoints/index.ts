@@ -33,7 +33,7 @@ function parseBreakpoints(file: string): Array<{name: string; value: string}> {
 @Component({
     imports: [ClipboardModule, TuiDemo, TuiTable],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

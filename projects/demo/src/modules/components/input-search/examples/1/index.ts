@@ -4,10 +4,10 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
-import {TuiButton, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiSearchResults} from '@taiga-ui/experimental';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCell, TuiInputSearch, TuiNavigation} from '@taiga-ui/layout';
+import {TuiInputSearch, TuiNavigation} from '@taiga-ui/layout';
 import {filter, map, startWith, switchMap, timer} from 'rxjs';
 
 interface Result {
@@ -70,7 +70,7 @@ const DATA: Record<string, readonly Result[]> = {
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

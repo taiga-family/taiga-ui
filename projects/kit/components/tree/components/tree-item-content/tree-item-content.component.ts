@@ -16,7 +16,7 @@ import {TUI_TREE_CONTROLLER} from '../../misc/tree.tokens';
 @Component({
     imports: [NgTemplateOutlet, TuiButton],
     templateUrl: './tree-item-content.template.html',
-    styleUrls: ['./tree-item-content.style.less'],
+    styleUrl: './tree-item-content.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._expandable]': 'isExpandable',

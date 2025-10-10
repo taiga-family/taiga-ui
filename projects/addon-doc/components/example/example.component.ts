@@ -25,9 +25,9 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiFullscreen} from '@taiga-ui/core/components/fullscreen';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
+import {TuiFullscreen} from '@taiga-ui/kit/components/fullscreen';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -56,7 +56,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiTabs,
     ],
     templateUrl: './example.template.html',
-    styleUrls: ['./example.style.less'],
+    styleUrl: './example.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.id]': 'id',

@@ -7,21 +7,17 @@ import {
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./button-group.style.less'],
+    styleUrl: './button-group.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-button-group-styles',
-    },
+    host: {class: 'tui-button-group'},
 })
-class TuiButtonGroupStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiButtonGroup]',
 })
 export class TuiButtonGroup {
-    protected readonly nothing = tuiWithStyles(TuiButtonGroupStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 }

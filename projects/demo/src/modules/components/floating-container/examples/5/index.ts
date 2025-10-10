@@ -5,6 +5,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
+    TuiCell,
     tuiHeightCollapse,
     TuiLabel,
     tuiSlideInTop,
@@ -18,7 +19,6 @@ import {
     tuiInputColorOptionsProvider,
     TuiSwitch,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -35,7 +35,7 @@ import {TuiCell} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [tuiInputColorOptionsProvider({format: 'hexa', align: 'right'})],

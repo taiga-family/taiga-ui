@@ -1,5 +1,5 @@
-@for (template of templates; track template; let i = $index) {
-    @if (i < overflown()) {
+@for (template of templates(); track template) {
+    @if ($index < overflown()) {
         <ng-container [ngTemplateOutlet]="template" />
     }
 }
@@ -7,7 +7,7 @@
     #rem
     class="t-rem"
 ></div>
-@if (overflown() < templates.length) {
+@if (overflown() < templates().length) {
     <button
         appearance="secondary"
         tuiIconButton
@@ -27,8 +27,8 @@
             >
                 <ng-content />
             </fieldset>
-            @for (template of templates; track template; let i = $index) {
-                @if (i >= overflown()) {
+            @for (template of templates(); track template) {
+                @if ($index >= overflown()) {
                     <ng-container [ngTemplateOutlet]="template" />
                 }
             }

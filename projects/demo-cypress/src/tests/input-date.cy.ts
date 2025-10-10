@@ -14,7 +14,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
                     tuiInputDate
                     [formControl]="control"
                 />
-                <tui-calendar *tuiTextfieldDropdown />
+                <tui-calendar *tuiDropdown />
             </tui-textfield>
 
             <button

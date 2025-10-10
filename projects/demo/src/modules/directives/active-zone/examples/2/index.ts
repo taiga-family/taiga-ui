@@ -8,7 +8,7 @@ import {TuiButton, TuiDialogService, TuiTextfield} from '@taiga-ui/core';
     standalone: true,
     imports: [TuiActiveZone, TuiButton, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

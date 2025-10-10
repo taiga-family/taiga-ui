@@ -55,7 +55,7 @@ export abstract class TuiNativeTimePicker {
     selector: 'input[tuiInputTime][type="time"]',
     imports: [TuiTextfieldContent],
     templateUrl: './input-time.template.html',
-    styleUrls: ['./input-time.style.less'],
+    styleUrl: './input-time.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],

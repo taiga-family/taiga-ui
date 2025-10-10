@@ -6,12 +6,12 @@
     <ng-template pageTab>
         <p>This module allows you to create various tables, both static and editable.</p>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
-                [description]="index === 4 ? cdkVirtualScrollDescription : null"
-                [fullsize]="index === 4 || index === 5"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$index === 4 ? cdkVirtualScrollDescription : null"
+                [fullsize]="$index === 4 || $index === 5"
                 [heading]="example"
                 [id]="example | tuiKebab"
             >
@@ -37,182 +37,178 @@
 
     <ng-template pageTab>
         <tui-accordion>
-            <tui-accordion-item [open]="true">
-                Directives
-                <ng-template tuiAccordionItemContent>
-                    <h2>table[tuiTable]</h2>
-                    <p>Parent directive that sets the table up.</p>
-                    <table tuiDocAPI>
-                        <tr
-                            name="[columns]"
-                            tuiDocAPIItem
-                            type="readonly string[]"
-                        >
-                            An array of keys to set up columns order
-                        </tr>
-                        <tr
-                            name="[size]"
-                            tuiDocAPIItem
-                            type="TuiSizeS | TuiSizeL"
-                        >
-                            Cells size
-                        </tr>
-                        <tr
-                            name="[(sorter)]"
-                            tuiDocAPIItem
-                            type="TuiComparator<T>"
-                        >
-                            Sort function (basic JavaScript array sort API)
-                        </tr>
-                        <tr
-                            name="[(direction)]"
-                            tuiDocAPIItem
-                            type="-1 | 1"
-                        >
-                            Direction for sorting
-                        </tr>
-                    </table>
+            <button [tuiAccordion]="true">Directives</button>
+            <tui-expand>
+                <h2>table[tuiTable]</h2>
+                <p>Parent directive that sets the table up.</p>
+                <table tuiDocAPI>
+                    <tr
+                        name="[columns]"
+                        tuiDocAPIItem
+                        type="readonly string[]"
+                    >
+                        An array of keys to set up columns order
+                    </tr>
+                    <tr
+                        name="[size]"
+                        tuiDocAPIItem
+                        type="TuiSizeS | TuiSizeL"
+                    >
+                        Cells size
+                    </tr>
+                    <tr
+                        name="[(sorter)]"
+                        tuiDocAPIItem
+                        type="TuiComparator<T>"
+                    >
+                        Sort function (basic JavaScript array sort API)
+                    </tr>
+                    <tr
+                        name="[(direction)]"
+                        tuiDocAPIItem
+                        type="-1 | 1"
+                    >
+                        Direction for sorting
+                    </tr>
+                </table>
 
-                    <hr />
+                <hr />
 
-                    <h2>thead[tuiThead]</h2>
-                    <p>
-                        Used on
-                        <code>thead</code>
-                        to make it sticky
-                    </p>
+                <h2>thead[tuiThead]</h2>
+                <p>
+                    Used on
+                    <code>thead</code>
+                    to make it sticky
+                </p>
 
-                    <hr />
+                <hr />
 
-                    <h2>tr[tuiThGroup]</h2>
-                    <p>
-                        Used inside
-                        <code>thead</code>
-                        to layout headings for the columns. You can have multiple rows and use
-                        <code>rowSpan</code>
-                        on
-                        <code>th</code>
-                        elements if you want to create some complex heading for your table.
-                    </p>
+                <h2>tr[tuiThGroup]</h2>
+                <p>
+                    Used inside
+                    <code>thead</code>
+                    to layout headings for the columns. You can have multiple rows and use
+                    <code>rowSpan</code>
+                    on
+                    <code>th</code>
+                    elements if you want to create some complex heading for your table.
+                </p>
 
-                    <hr />
+                <hr />
 
-                    <h2>th[tuiTh]</h2>
-                    <p>
-                        Used inside
-                        <code>tr[tuiThGroup]</code>
-                        to style heading cells.
-                    </p>
-                    <table tuiDocAPI>
-                        <tr
-                            name="[resizable]"
-                            tuiDocAPIItem
-                            type="boolean"
-                        >
-                            Makes this column resizable
-                        </tr>
-                        <tr
-                            name="[sorter]"
-                            tuiDocAPIItem
-                            type="TuiComparator<T> | null"
-                        >
-                            Sorter function for this column
-                        </tr>
-                        <tr
-                            name="[sticky]"
-                            tuiDocAPIItem
-                            type="boolean"
-                        >
-                            Makes heading cell horizontally sticky
-                        </tr>
-                    </table>
+                <h2>th[tuiTh]</h2>
+                <p>
+                    Used inside
+                    <code>tr[tuiThGroup]</code>
+                    to style heading cells.
+                </p>
+                <table tuiDocAPI>
+                    <tr
+                        name="[resizable]"
+                        tuiDocAPIItem
+                        type="boolean"
+                    >
+                        Makes this column resizable
+                    </tr>
+                    <tr
+                        name="[sorter]"
+                        tuiDocAPIItem
+                        type="TuiComparator<T> | null"
+                    >
+                        Sorter function for this column
+                    </tr>
+                    <tr
+                        name="[sticky]"
+                        tuiDocAPIItem
+                        type="boolean"
+                    >
+                        Makes heading cell horizontally sticky
+                    </tr>
+                </table>
 
-                    <hr />
+                <hr />
 
-                    <h2>tbody[tuiTbody]</h2>
-                    <p>
-                        Sets up a group of data. You can have multiple
-                        <code>tbody</code>
-                        inside your table.
-                    </p>
-                    <table tuiDocAPI>
-                        <tr
-                            name="[data]"
-                            tuiDocAPIItem
-                            type="readonly T[]"
-                        >
-                            Data to display
-                        </tr>
-                        <tr
-                            name="[heading]"
-                            tuiDocAPIItem
-                            type="PolymorpheusContent"
-                        >
-                            Optional heading content for the group that makes it collapsable
-                        </tr>
-                        <tr
-                            name="[(open)]"
-                            tuiDocAPIItem
-                            type="boolean"
-                        >
-                            Open/collapsed state of the group
-                        </tr>
-                    </table>
+                <h2>tbody[tuiTbody]</h2>
+                <p>
+                    Sets up a group of data. You can have multiple
+                    <code>tbody</code>
+                    inside your table.
+                </p>
+                <table tuiDocAPI>
+                    <tr
+                        name="[data]"
+                        tuiDocAPIItem
+                        type="readonly T[]"
+                    >
+                        Data to display
+                    </tr>
+                    <tr
+                        name="[heading]"
+                        tuiDocAPIItem
+                        type="PolymorpheusContent"
+                    >
+                        Optional heading content for the group that makes it collapsable
+                    </tr>
+                    <tr
+                        name="[(open)]"
+                        tuiDocAPIItem
+                        type="boolean"
+                    >
+                        Open/collapsed state of the group
+                    </tr>
+                </table>
 
-                    <hr />
+                <hr />
 
-                    <h2>tr[tuiTr]</h2>
-                    <p>
-                        Used inside
-                        <code>tbody</code>
-                        to layout cells.
-                    </p>
+                <h2>tr[tuiTr]</h2>
+                <p>
+                    Used inside
+                    <code>tbody</code>
+                    to layout cells.
+                </p>
 
-                    <hr />
+                <hr />
 
-                    <h2>td[tuiTd] or th[tuiTd]</h2>
-                    <p>
-                        A cell directive to be placed in
-                        <code>tr</code>
-                        of
-                        <code>tbody</code>
-                        . Use it on
-                        <code>th</code>
-                        if you want to make a sticky column
-                    </p>
-                </ng-template>
-            </tui-accordion-item>
-            <tui-accordion-item>
-                Structural directives
-                <ng-template tuiAccordionItemContent>
-                    <h2>*tuiHead="key"</h2>
-                    <p>
-                        Used to define template for
-                        <em>heading</em>
-                        for particular key
-                    </p>
-                    <p>
-                        Goes inside
-                        <code>tr</code>
-                        element inside
-                        <code>thead</code>
-                    </p>
+                <h2>td[tuiTd] or th[tuiTd]</h2>
+                <p>
+                    A cell directive to be placed in
+                    <code>tr</code>
+                    of
+                    <code>tbody</code>
+                    . Use it on
+                    <code>th</code>
+                    if you want to make a sticky column
+                </p>
+            </tui-expand>
+            <button tuiAccordion>Structural directives</button>
+            <tui-expand>
+                <h2>*tuiHead="key"</h2>
+                <p>
+                    Used to define template for
+                    <em>heading</em>
+                    for particular key
+                </p>
+                <p>
+                    Goes inside
+                    <code>tr</code>
+                    element inside
+                    <code>thead</code>
+                </p>
 
-                    <hr />
+                <hr />
 
-                    <h2>*tuiCell="key"</h2>
-                    <p>
-                        Used to define template for
-                        <em>cell</em>
-                        for particular key
-                    </p>
-                    <p>
-                        Goes inside
-                        <code>tr</code>
-                        element
-                    </p>
-                </ng-template>
-            </tui-accordion-item>
+                <h2>*tuiCell="key"</h2>
+                <p>
+                    Used to define template for
+                    <em>cell</em>
+                    for particular key
+                </p>
+                <p>
+                    Goes inside
+                    <code>tr</code>
+                    element
+                </p>
+            </tui-expand>
         </tui-accordion>
     </ng-template>
 

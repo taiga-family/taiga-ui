@@ -35,7 +35,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
     selector: 'tui-line-days-chart',
     imports: [PolymorpheusOutlet, TuiHint, TuiLineChart],
     templateUrl: './line-days-chart.template.html',
-    styleUrls: ['./line-days-chart.style.less'],
+    styleUrl: './line-days-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TuiHoveredService,

@@ -139,13 +139,17 @@
     </ng-template>
 
     <ng-template #range>
-        <tui-input-date-range
-            automation-id="tui-data-list-range-field"
+        <tui-textfield
             class="form"
-            [(ngModel)]="rangeValue"
+            [tuiTextfieldCleaner]="false"
         >
-            Range
-        </tui-input-date-range>
+            <label tuiLabel>Range</label>
+            <input
+                tuiInputDateRange
+                [(ngModel)]="rangeValue"
+            />
+            <tui-calendar-range *tuiDropdown />
+        </tui-textfield>
     </ng-template>
 </ng-template>
 

@@ -1,14 +1,14 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk';
-import {TuiAppearance, TuiTitle} from '@taiga-ui/core';
+import {TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCard, TuiCell} from '@taiga-ui/layout';
+import {TuiCard} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAppearance, TuiAvatar, TuiCard, TuiCell, TuiTitle],
+    imports: [TuiAvatar, TuiCard, TuiCell, TuiTitle],
     template: `
         <div
-            tuiAppearance="floating"
+            appearance="floating"
             tuiCardLarge
             tuiCell
         >

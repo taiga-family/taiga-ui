@@ -1,36 +1,30 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    TUI_BUTTON_OPTIONS,
-    type TuiButtonOptions,
-} from '@taiga-ui/core/components/button';
-import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {type TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
     selector: 'tui-action-bar',
-    imports: [TuiExpandComponent],
+    imports: [TuiExpand],
     templateUrl: './action-bar.template.html',
-    styleUrls: ['./action-bar.style.less'],
+    styleUrl: './action-bar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        tuiProvide(TUI_BUTTON_OPTIONS, TuiActionBarComponent),
         tuiLinkOptionsProvider({appearance: 'action-grayscale', pseudo: true}),
+        tuiButtonOptionsProvider(() => ({
+            appearance: 'secondary-grayscale',
+            size: inject(TuiActionBar).size(),
+        })),
     ],
     hostDirectives: [TuiAnimated],
     host: {
         tuiTheme: 'dark',
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
     },
 })
-export class TuiActionBarComponent implements TuiButtonOptions {
-    @Input()
-    public expanded = false;
-
-    @Input()
-    public size: TuiSizeS = 'm';
-
-    public readonly appearance = 'secondary-grayscale';
+export class TuiActionBar {
+    public readonly expanded = input(false);
+    public readonly size = input<TuiSizeS>('m');
 }

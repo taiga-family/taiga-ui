@@ -6,12 +6,12 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDialogService,
+    TuiHeader,
     TuiPopup,
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TUI_CONFIRM, TuiDrawer} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
 import {filter} from 'rxjs';
 
 @Component({
@@ -26,7 +26,7 @@ import {filter} from 'rxjs';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

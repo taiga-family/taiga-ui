@@ -1,15 +1,15 @@
 <tui-tabs [(activeItemIndex)]="activeItemIndex">
-    @for (step of steps; track step; let last = $last) {
+    @for (step of steps; track step) {
         <button
             tuiTab
             type="button"
             class="step"
-            [disabled]="last"
+            [disabled]="$last"
             (click)="onClick(step)"
         >
             {{ step }}
         </button>
-        @if (!last) {
+        @if (!$last) {
             <tui-icon
                 icon="@tui.chevron-right"
                 class="separator"

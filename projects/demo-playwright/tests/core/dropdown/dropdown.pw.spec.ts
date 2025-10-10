@@ -38,7 +38,7 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('03-dropdown.png');
     });
 
-    test('Hosted dropdown', async ({page}) => {
+    test('DropdownOpen', async ({page}) => {
         await tuiGoto(page, DemoRoute.DropdownOpen);
         const example = new TuiDocumentationPagePO(page).getExample('#menu');
 
@@ -49,7 +49,7 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('04-dropdown.png');
     });
 
-    test('Hosted dropdown and custom position', async ({page}) => {
+    test('DropdownOpen and custom position', async ({page}) => {
         await tuiGoto(page, DemoRoute.DropdownOpen);
         const example = new TuiDocumentationPagePO(page).getExample('#position');
 
@@ -164,7 +164,7 @@ test.describe('Dropdown', () => {
         await expect.soft(page).toHaveScreenshot('16-dropdown.png');
     });
 
-    test('Hosted dropdown initial width', async ({page}) => {
+    test('DropdownOpen initial width', async ({page}) => {
         await tuiGoto(page, DemoRoute.Viewport);
         const example = new TuiDocumentationPagePO(page).getExample(
             '#dropdown-and-custom-portal',
@@ -205,5 +205,22 @@ test.describe('Dropdown', () => {
         await example.locator('button').click();
 
         await expect.soft(page).toHaveScreenshot('19-dropdown-sided-nested.png');
+    });
+
+    test('DropdownOpen closing when moved offscreen', async ({page}) => {
+        await tuiGoto(page, DemoRoute.DropdownOpen);
+
+        const example = new TuiDocumentationPagePO(page).getExample('#menu');
+
+        await example.scrollIntoViewIfNeeded();
+        await example.locator('button').click();
+        await example.evaluate((element) => {
+            element.style.transform = 'translate3d(-12rem, 0, 0)';
+        });
+
+        await expect.soft(page).toHaveScreenshot('20-dropdown-open-obscured.png');
+        await example.evaluate((element) => {
+            element.style.transform = '';
+        });
     });
 });

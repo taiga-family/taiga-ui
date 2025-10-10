@@ -14,7 +14,7 @@
         (keydown.stop.arrowUp)="onArrow($event, 'last')"
     ></textarea>
 
-    <tui-data-list *tuiTextfieldDropdown>
+    <tui-data-list *tuiDropdown>
         @for (item of items | tuiMapper: filter : search.replace('@', ''); track item) {
             <button
                 new

@@ -131,7 +131,11 @@ export class PerformanceCollector {
     /**
      * Stops performance collection for a specific test and saves metrics
      */
-    public static async stopTestCollection(page: Page, testName: string): Promise<void> {
+    public static async stopTestCollection(
+        page: Page,
+        testName: string,
+        customExtras?: Record<string, unknown>,
+    ): Promise<void> {
         try {
             const collection = this.activeCollections.get(testName);
 
@@ -189,7 +193,6 @@ export class PerformanceCollector {
             const totalOps = metrics.layoutCount + metrics.recalcStyleCount;
             const opsPerKEvents =
                 rawEventsCount > 0 ? (totalOps / rawEventsCount) * 1000 : 0;
-            // Save metrics to file
 
             await this.saveTestMetrics({
                 metrics,
@@ -197,7 +200,11 @@ export class PerformanceCollector {
                 url: page.url(),
                 startTime: collection.startTime,
                 testFile: collection.testFile,
-                extras: {rawEvents: rawEventsCount, opsPerKEvents},
+                extras: {
+                    rawEvents: rawEventsCount,
+                    opsPerKEvents,
+                    ...(customExtras || {}),
+                },
             });
 
             console.info(`📊 Test performance metrics for [${testName}]:`, {
@@ -207,7 +214,6 @@ export class PerformanceCollector {
                 opsPerKEvents: Number(opsPerKEvents.toFixed(2)),
             });
 
-            // Clean up
             this.activeCollections.delete(testName);
         } catch (error) {
             console.warn(
@@ -313,8 +319,6 @@ export class PerformanceCollector {
         return metrics;
     }
 
-    // groupEventsByTimeWindows removed as unused (previous implementation deleted)
-
     private static median(arr: readonly number[]): number {
         const len = arr.length;
 
@@ -339,9 +343,10 @@ export class PerformanceCollector {
         url: string;
         startTime: number;
         testFile: string | undefined;
-        extras?: {rawEvents: number; opsPerKEvents: number};
+        extras?: {rawEvents?: number; opsPerKEvents?: number; [k: string]: unknown};
     }): Promise<void> {
         const {metrics, testName, url, startTime, testFile, extras} = params;
+        const {rawEvents = 0, opsPerKEvents = 0, ...customExtras} = extras || {};
         const performanceData = {
             timestamp: Date.now(),
             testStartTime: startTime,
@@ -358,12 +363,12 @@ export class PerformanceCollector {
                 recalcAvgPerOp: Number(metrics.recalcAvgPerOp.toFixed(3)),
                 layoutMedianPerOp: Number(metrics.layoutMedianPerOp.toFixed(3)),
                 recalcMedianPerOp: Number(metrics.recalcMedianPerOp.toFixed(3)),
-                rawEvents: extras?.rawEvents ?? 0,
-                opsPerKEvents: Number((extras?.opsPerKEvents ?? 0).toFixed(2)),
+                rawEvents: rawEvents,
+                opsPerKEvents: Number(opsPerKEvents.toFixed(2)),
             },
+            customExtras: Object.keys(customExtras).length ? customExtras : undefined,
         };
 
-        // Create safe filename from test name
         const safeTestName = testName
             .toLowerCase()
             .replaceAll(/[^a-z0-9]/g, '-')

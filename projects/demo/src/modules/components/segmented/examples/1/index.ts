@@ -7,7 +7,7 @@ import {TuiBadgeNotification, TuiSegmented} from '@taiga-ui/kit';
 @Component({
     imports: [TuiBadgeNotification, TuiIcon, TuiSegmented],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -14,7 +14,7 @@ const useValue: TuiHandler<TuiDay, string> = (day) => {
 @Component({
     imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
     providers: [{provide: TUI_DAY_TYPE_HANDLER, useValue}],

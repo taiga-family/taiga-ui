@@ -1,13 +1,13 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    Input,
-    signal,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 import {TuiFade} from '@taiga-ui/kit/directives/fade';
 
 @Component({
@@ -26,10 +26,11 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
         </tui-scrollbar>
         <ng-content select="footer" />
     `,
-    styleUrls: ['./aside.style.less'],
+    styleUrl: './aside.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        tuiHintOptionsProvider({appearance: 'floating'}),
         tuiButtonOptionsProvider({size: 's', appearance: 'flat-grayscale'}),
         tuiDropdownOptionsProvider({
             appearance: 'dropdown-navigation',
@@ -44,11 +45,5 @@ import {TuiFade} from '@taiga-ui/kit/directives/fade';
     },
 })
 export class TuiAsideComponent {
-    // TODO: refactor to signal inputs after Angular update
-    public readonly expanded = signal(false);
-
-    @Input()
-    public set tuiNavigationAside(expanded: boolean) {
-        this.expanded.set(expanded);
-    }
+    public readonly expanded = input(false, {alias: 'tuiNavigationAside'});
 }

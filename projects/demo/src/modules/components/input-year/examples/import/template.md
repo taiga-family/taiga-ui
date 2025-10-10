@@ -4,6 +4,6 @@
     tuiInputYear
     [(ngModel)]="value"
   />
-  <tui-calendar-year *tuiTextfieldDropdown />
+  <tui-calendar-year *tuiDropdown />
 </tui-textfield>
 ```

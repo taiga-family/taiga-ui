@@ -11,7 +11,7 @@ import {TUI_TEXTFIELD_HOST, type TuiTextfieldHost} from '@taiga-ui/legacy/tokens
     standalone: false,
     selector: 'input[tuiTextfieldLegacy], textarea[tuiTextfieldLegacy]',
     template: '',
-    styleUrls: ['./textfield.style.less'],
+    styleUrl: './textfield.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TEXTFIELD_CONTROLLER_PROVIDER],
     host: {
