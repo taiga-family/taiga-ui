@@ -9,7 +9,7 @@ import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
     standalone: true,
     imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiToast],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

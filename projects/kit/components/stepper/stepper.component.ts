@@ -36,7 +36,7 @@ import {TuiStep} from './step.component';
     selector: 'tui-stepper, nav[tuiStepper]',
     imports: [AsyncPipe],
     templateUrl: './stepper.template.html',
-    styleUrls: ['./stepper.style.less'],
+    styleUrl: './stepper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ResizeObserverService],
     host: {

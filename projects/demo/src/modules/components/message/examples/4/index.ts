@@ -6,7 +6,7 @@ import {TuiFade, TuiMessage} from '@taiga-ui/kit';
 @Component({
     imports: [TuiFade, TuiMessage],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

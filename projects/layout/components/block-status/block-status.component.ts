@@ -10,7 +10,7 @@ import {type TuiSizeL} from '@taiga-ui/core/types';
     standalone: true,
     selector: 'tui-block-status',
     templateUrl: './block-status.template.html',
-    styleUrls: ['./block-status.style.less'],
+    styleUrl: './block-status.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

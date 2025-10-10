@@ -10,7 +10,7 @@ import {TuiCalendarSheetPipe} from '@taiga-ui/core/pipes/calendar-sheet';
     selector: 'tui-mobile-calendar-sheet',
     imports: [TuiCalendarSheetPipe, TuiLet, TuiRepeatTimes, TuiRipple],
     templateUrl: './mobile-calendar-sheet.template.html',
-    styleUrls: ['./mobile-calendar-sheet.style.less'],
+    styleUrl: './mobile-calendar-sheet.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._ios]': 'isIOS',

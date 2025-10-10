@@ -12,7 +12,7 @@
         {{ text }}
     </ng-container>
 </div>
-@for (action of context.actions; track action; let index = $index) {
+@for (action of context.actions; track action) {
     <button
         appearance="flat"
         size="s"
@@ -20,8 +20,8 @@
         tuiRipple
         type="button"
         class="t-button"
-        [class.t-button_column]="context.actions.length > 2"
-        (click)="onAction(index)"
+        [class.t-button_column]="$count > 2"
+        (click)="onAction($index)"
     >
         {{ action }}
     </button>

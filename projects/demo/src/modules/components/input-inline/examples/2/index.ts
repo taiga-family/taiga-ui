@@ -9,7 +9,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiAutoFocus, TuiButton, TuiInputInline],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

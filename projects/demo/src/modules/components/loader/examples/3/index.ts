@@ -6,7 +6,7 @@ import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core';
 @Component({
     imports: [TuiLoader],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [

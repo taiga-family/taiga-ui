@@ -25,7 +25,7 @@ export interface TuiConfirmData {
     selector: 'tui-confirm',
     imports: [AsyncPipe, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './confirm.template.html',
-    styleUrls: ['./confirm.style.less'],
+    styleUrl: './confirm.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiConfirm {

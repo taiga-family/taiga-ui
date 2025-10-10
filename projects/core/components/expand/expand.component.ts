@@ -21,7 +21,7 @@ import {TuiItem} from '@taiga-ui/cdk/directives/item';
             <ng-content />
         </div>
     `,
-    styleUrls: ['./expand.style.less'],
+    styleUrl: './expand.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._expanded]': 'expanded()',

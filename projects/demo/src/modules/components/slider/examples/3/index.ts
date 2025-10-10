@@ -7,7 +7,7 @@ import {TuiSliderComponent} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiSliderComponent],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -24,7 +24,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     selector: 'input[tuiInputPin]',
     imports: [TuiAppearance, TuiRepeatTimes, TuiTextfieldContent],
     templateUrl: './input-pin.template.html',
-    styleUrls: ['./input-pin.style.less'],
+    styleUrl: './input-pin.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [MaskitoDirective],
     host: {

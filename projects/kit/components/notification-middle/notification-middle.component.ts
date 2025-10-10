@@ -19,7 +19,7 @@ export interface TuiNotificationMiddleOptions {
             {{ text }}
         </ng-container>
     `,
-    styleUrls: ['./notification-middle.style.less'],
+    styleUrl: './notification-middle.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiLoaderOptionsProvider({size: 'l'})],
     hostDirectives: [

@@ -11,7 +11,7 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
             {{ text }}
         </ng-container>
     `,
-    styleUrls: ['./preview-dialog.style.less'],
+    styleUrl: './preview-dialog.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],

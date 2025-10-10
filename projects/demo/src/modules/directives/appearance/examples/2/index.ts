@@ -6,7 +6,7 @@ import {TuiAppearance} from '@taiga-ui/core';
 @Component({
     imports: [TuiAppearance],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

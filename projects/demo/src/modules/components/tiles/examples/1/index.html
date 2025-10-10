@@ -3,11 +3,11 @@
     [debounce]="500"
     [(order)]="order"
 >
-    @for (item of items; track item; let index = $index) {
+    @for (item of items; track item) {
         <tui-tile
             class="tile"
             [height]="item.h"
-            [style.order]="order.get(index)"
+            [style.order]="order.get($index)"
             [width]="item.w"
         >
             <div
@@ -25,7 +25,7 @@
                     ></iframe>
                 } @else {
                     <h2 class="title">{{ item.content }}</h2>
-                    Order - {{ order.get(index) ?? index }}
+                    Order - {{ order.get($index) ?? $index }}
                 }
                 <tui-icon
                     icon="@tui.grip-vertical"

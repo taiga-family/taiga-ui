@@ -17,7 +17,7 @@ import {TUI_LINK_OPTIONS} from './link.options';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/link.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/link.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-link'},

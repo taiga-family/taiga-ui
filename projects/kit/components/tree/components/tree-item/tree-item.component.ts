@@ -31,7 +31,7 @@ import {
     selector: 'tui-tree-item',
     imports: [PolymorpheusOutlet, TuiExpand],
     templateUrl: './tree-item.template.html',
-    styleUrls: ['./tree-item.style.less'],
+    styleUrl: './tree-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiProvide(TUI_TREE_NODE, TuiTreeItem),

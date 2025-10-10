@@ -31,7 +31,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     selector: 'tui-data-list-wrapper:not([labels]), tui-data-list-wrapper:not([labels])', // TODO(v5): remove [new]
     imports: [PolymorpheusOutlet, TuiDataList, TuiElement, TuiLoader],
     templateUrl: './data-list-wrapper.template.html',
-    styleUrls: ['./data-list-wrapper.style.less'],
+    styleUrl: './data-list-wrapper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
 })

@@ -49,7 +49,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     selector: 'tui-data-list',
     imports: [PolymorpheusOutlet],
     templateUrl: './data-list.template.html',
-    styleUrls: ['./data-list.style.less'],
+    styleUrl: './data-list.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

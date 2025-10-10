@@ -17,7 +17,7 @@ import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
         TuiScrollbar,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

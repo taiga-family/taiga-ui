@@ -1,7 +1,7 @@
-@for (item of value; track item; let index = $index) {
+@for (item of value; track item) {
     <div
         automation-id="tui-bar__bar"
-        [style.background]="`var(--tui-chart-categorical-${index.toString().padStart(2, '0')})`"
+        [style.background]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
         [style.height.%]="getHeight(item)"
     ></div>
 }

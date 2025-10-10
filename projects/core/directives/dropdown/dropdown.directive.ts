@@ -131,7 +131,7 @@ export class TuiDropdownDirective
             this.ref.set(this.service.add(this.component));
         } else if (!show && ref) {
             this.ref.set(null);
-            this.service.remove(ref);
+            ref.destroy();
         }
 
         this.drivers.forEach((driver) => driver?.next(show));

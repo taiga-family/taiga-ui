@@ -9,7 +9,7 @@ import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
     selector: 'tui-thumbnail-card',
     imports: [TuiIcon],
     templateUrl: './thumbnail-card.template.html',
-    styleUrls: ['./thumbnail-card.style.less'],
+    styleUrl: './thumbnail-card.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size',

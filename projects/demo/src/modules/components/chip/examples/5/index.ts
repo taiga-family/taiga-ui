@@ -7,7 +7,7 @@ import {TuiChip} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAutoColorPipe, TuiChip],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

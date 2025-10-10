@@ -4,7 +4,7 @@
     [(index)]="index"
     (shift)="opacity = $event"
 >
-    @for (item of items; track item; let i = $index) {
+    @for (item of items; track item) {
         <div
             *tuiItem
             tuiCardMedium

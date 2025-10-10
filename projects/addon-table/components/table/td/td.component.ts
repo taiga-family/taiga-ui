@@ -6,7 +6,7 @@ import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
     standalone: true,
     selector: 'th[tuiTd], td[tuiTd]',
     template: '<ng-content />',
-    styleUrls: ['./td.style.less'],
+    styleUrl: './td.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._editable]': 'control || textfield',

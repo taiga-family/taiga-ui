@@ -16,7 +16,7 @@ import {TuiChevron} from '@taiga-ui/kit';
         TuiIcon,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

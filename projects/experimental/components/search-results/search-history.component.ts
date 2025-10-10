@@ -17,14 +17,12 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
     selector: 'tui-search-history',
     imports: [TuiAvatar, TuiButton, TuiCell, TuiTitle],
     templateUrl: './search-history.component.html',
-    styles: [
-        `
-            :host:not(:empty) {
-                display: block;
-                padding: 0.375rem 0;
-            }
-        `,
-    ],
+    styles: `
+        :host:not(:empty) {
+            display: block;
+            padding: 0.375rem 0;
+        }
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSearchHistory {

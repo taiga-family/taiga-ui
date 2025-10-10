@@ -22,7 +22,7 @@ import {TUI_SLIDER_OPTIONS} from './slider.options';
     standalone: true,
     selector: 'input[type=range][tuiSlider]',
     template: '',
-    styleUrls: ['./slider.style.less'],
+    styleUrl: './slider.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiSliderComponent)],
     host: {

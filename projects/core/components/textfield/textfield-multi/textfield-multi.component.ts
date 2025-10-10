@@ -58,7 +58,7 @@ import {
         WaResizeObserver,
     ],
     templateUrl: './textfield-multi.template.html',
-    styleUrls: ['./textfield-multi.style.less'],
+    styleUrl: './textfield-multi.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

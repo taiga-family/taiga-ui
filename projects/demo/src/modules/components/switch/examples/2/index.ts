@@ -7,7 +7,7 @@ import {TuiSwitch, tuiSwitchOptionsProvider} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiSwitch],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [

@@ -27,7 +27,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
     selector: 'tui-scrollbar',
     imports: [TuiScrollControls],
     templateUrl: './scrollbar.template.html',
-    styleUrls: ['./scrollbar.style.less'],
+    styleUrl: './scrollbar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

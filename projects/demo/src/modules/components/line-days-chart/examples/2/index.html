@@ -27,9 +27,9 @@
     </tui-textfield>
 </p>
 <p class="legend">
-    @for (chart of days; track chart; let index = $index) {
+    @for (chart of days; track chart) {
         <span class="item">
-            <small class="name">Chart {{ index + 1 }}</small>
+            <small class="name">Chart {{ $index + 1 }}</small>
         </span>
     }
 </p>

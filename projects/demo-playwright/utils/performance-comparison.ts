@@ -114,8 +114,7 @@ export class PerformanceComparison {
                 return metrics;
             }
 
-            // eslint-disable-next-line no-console
-            console.log(
+            console.info(
                 `Found ${performanceFiles.length} performance files in ${metricsPath}`,
             );
 
@@ -435,8 +434,7 @@ export class PerformanceComparison {
         outputPath: string,
         changeThreshold: number = this.defaultChangeThreshold,
     ): Promise<ComparisonReport> {
-        // eslint-disable-next-line no-console
-        console.log('🔍 Aggregating baseline metrics...');
+        console.info('🔍 Aggregating baseline metrics...');
 
         let baseline: Map<string, PerformanceData>;
 
@@ -449,8 +447,7 @@ export class PerformanceComparison {
             baseline = new Map();
         }
 
-        // eslint-disable-next-line no-console
-        console.log('🔍 Aggregating current metrics...');
+        console.info('🔍 Aggregating current metrics...');
 
         let current: Map<string, PerformanceData>;
 
@@ -511,8 +508,7 @@ export class PerformanceComparison {
             return emptyReport;
         }
 
-        // eslint-disable-next-line no-console
-        console.log('📊 Comparing metrics...');
+        console.info('📊 Comparing metrics...');
 
         const report = this.compareMetrics(baseline, current, changeThreshold);
         const markdown = this.generateMarkdownReport(report, changeThreshold);
@@ -534,10 +530,8 @@ export class PerformanceComparison {
             );
         }
 
-        // eslint-disable-next-line no-console
-        console.log(`✅ Performance comparison report saved to: ${outputPath}`);
-        // eslint-disable-next-line no-console
-        console.log(
+        console.info(`✅ Performance comparison report saved to: ${outputPath}`);
+        console.info(
             `📈 Summary: ${report.summary.totalTests} tests, ${report.summary.testsWithBaseline} with baseline, ${report.summary.testsWithSignificantChanges} with significant changes`,
         );
 
@@ -1728,15 +1722,15 @@ export class PerformanceReportAggregator {
         }
 
         if (mdFiles.length === 0) {
-            // eslint-disable-next-line no-console
-            console.log(`No markdown files found in '${inputDir}', writing empty report`);
+            console.info(
+                `No markdown files found in '${inputDir}', writing empty report`,
+            );
             await this.writeEmptyReport(outputFile, githubOutputPath);
 
             return;
         }
 
-        // eslint-disable-next-line no-console
-        console.log(`Found ${mdFiles.length} markdown files to aggregate`);
+        console.info(`Found ${mdFiles.length} markdown files to aggregate`);
 
         let tableRows: Set<string>;
         let emptyShardCount: number;
@@ -1753,8 +1747,7 @@ export class PerformanceReportAggregator {
         }
 
         if (tableRows.size === 0 && emptyShardCount === 0) {
-            // eslint-disable-next-line no-console
-            console.log(
+            console.info(
                 `No significant changes found (threshold: ${threshold}%), writing no-changes report`,
             );
             await this.writeNoChangesReport(outputFile, threshold, githubOutputPath);
@@ -1762,12 +1755,10 @@ export class PerformanceReportAggregator {
             return;
         }
 
-        // eslint-disable-next-line no-console
-        console.log(`Aggregating ${tableRows.size} table rows into final report`);
+        console.info(`Aggregating ${tableRows.size} table rows into final report`);
 
         if (emptyShardCount > 0) {
-            // eslint-disable-next-line no-console
-            console.log(`Note: ${emptyShardCount} shard(s) had no performance data`);
+            console.info(`Note: ${emptyShardCount} shard(s) had no performance data`);
         }
 
         await this.writeAggregatedReport(
@@ -1840,8 +1831,7 @@ export class PerformanceReportAggregator {
                 processedFiles++;
 
                 if (rowsFromFile > 0) {
-                    // eslint-disable-next-line no-console
-                    console.log(`Extracted ${rowsFromFile} table rows from ${file}`);
+                    console.info(`Extracted ${rowsFromFile} table rows from ${file}`);
                 }
             } catch (error) {
                 skippedFiles++;
@@ -1851,8 +1841,7 @@ export class PerformanceReportAggregator {
             }
         }
 
-        // eslint-disable-next-line no-console
-        console.log(
+        console.info(
             `Processed ${processedFiles} files, skipped ${skippedFiles} files, found ${rowSet.size} unique table rows`,
         );
 
@@ -1901,8 +1890,7 @@ export class PerformanceReportAggregator {
             }
         }
 
-        // eslint-disable-next-line no-console
-        console.log(
+        console.info(
             `Processed ${processedFiles} files, skipped ${skippedFiles} files, found ${rowSet.size} unique table rows, ${emptyShardCount} empty shards`,
         );
 
@@ -2144,8 +2132,7 @@ async function main(): Promise<void> {
                 inputDir,
                 outputFile,
             );
-            // eslint-disable-next-line no-console
-            console.log(`✅ Markdown reports aggregated successfully to: ${outputFile}`);
+            console.info(`✅ Markdown reports aggregated successfully to: ${outputFile}`);
         } catch (error) {
             console.error(
                 '❌ Failed to aggregate markdown reports:',

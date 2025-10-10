@@ -7,7 +7,7 @@
     Add item
 </button>
 <tui-elastic-container class="tui-space_top-4">
-    @for (item of items; track item; let index = $index) {
+    @for (item of items; track item) {
         <div class="wrapper">
             <h3 class="title">
                 <button
@@ -31,7 +31,7 @@
                     type="button"
                     class="remove"
                     [style.border-radius.%]="100"
-                    (click)="remove(index)"
+                    (click)="remove($index)"
                 >
                     Remove
                 </button>

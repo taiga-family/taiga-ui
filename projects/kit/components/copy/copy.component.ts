@@ -17,7 +17,7 @@ import {TUI_COPY_OPTIONS} from './copy.options';
     selector: 'tui-copy',
     imports: [ClipboardModule, TuiButton, TuiHint, TuiIcon],
     templateUrl: './copy.template.html',
-    styleUrls: ['./copy.style.less'],
+    styleUrl: './copy.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size',

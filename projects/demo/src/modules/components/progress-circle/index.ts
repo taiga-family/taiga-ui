@@ -7,7 +7,7 @@ import {tuiInputNumberOptionsProvider, TuiProgress} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [tuiInputNumberOptionsProvider({min: 0})],
 })

@@ -32,7 +32,7 @@ import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs
             />
         }
     `,
-    styleUrls: ['./input-card.style.less'],
+    styleUrl: './input-card.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [MaskitoDirective, TuiWithTextfield],

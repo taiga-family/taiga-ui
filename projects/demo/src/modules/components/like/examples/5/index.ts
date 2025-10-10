@@ -8,9 +8,7 @@ import {TuiLike} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, ReactiveFormsModule, TuiButton, TuiLike],
     templateUrl: './index.html',
-    styles: [
-        ':host { display: flex; column-gap: 3rem; justify-content: space-between; flex-wrap: wrap; }',
-    ],
+    styles: ':host { display: flex; column-gap: 3rem; justify-content: space-between; flex-wrap: wrap; }',
     encapsulation,
     changeDetection,
 })

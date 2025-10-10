@@ -8,7 +8,7 @@ import {TuiInputRange} from '@taiga-ui/kit';
 @Component({
     imports: [ReactiveFormsModule, TuiIcon, TuiInputRange],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

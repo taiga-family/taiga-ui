@@ -61,7 +61,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 @Component({
     selector: 'tui-example',
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export class TuiRatingExample {

@@ -34,7 +34,7 @@ const HEADER_SIZE = {
 
 @Component({
     template: '',
-    styleUrls: ['./form.styles.less'],
+    styleUrl: './form.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-form'},

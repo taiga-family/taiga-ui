@@ -1,6 +1,7 @@
 {
     "explorer.sortOrder": "type",
     "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.experimental.useTsgo": true,
     "git.autofetch": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.cursorBlinking": "solid",

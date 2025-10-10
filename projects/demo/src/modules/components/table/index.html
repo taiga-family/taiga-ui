@@ -6,12 +6,12 @@
     <ng-template pageTab>
         <p>This module allows you to create various tables, both static and editable.</p>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
-                [description]="index === 4 ? cdkVirtualScrollDescription : null"
-                [fullsize]="index === 4 || index === 5"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$index === 4 ? cdkVirtualScrollDescription : null"
+                [fullsize]="$index === 4 || $index === 5"
                 [heading]="example"
                 [id]="example | tuiKebab"
             >

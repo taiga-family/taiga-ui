@@ -8,7 +8,7 @@ import search from '@taiga-ui/icons/src/search.svg?raw';
 @Component({
     imports: [TuiIcon],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [

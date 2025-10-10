@@ -8,7 +8,7 @@ import {CustomPortalService} from './service';
     selector: 'tui-portals-example-1',
     imports: [TuiButton, TuiIcon],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export class TuiPortalsExample1 {
@@ -17,14 +17,10 @@ export class TuiPortalsExample1 {
     protected templates: Array<EmbeddedViewRef<unknown>> = [];
 
     protected addTemplate(template: TemplateRef<unknown>): void {
-        this.templates.push(this.customPortalService.addTemplate(template));
+        this.templates.push(this.customPortalService.add(template));
     }
 
     protected removeTemplate(): void {
-        const viewRef = this.templates.pop();
-
-        if (viewRef) {
-            this.customPortalService.removeTemplate(viewRef);
-        }
+        this.templates.pop()?.destroy();
     }
 }
