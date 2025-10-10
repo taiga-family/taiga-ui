@@ -9,6 +9,7 @@ env:
   PERF_COLLECTOR_DEBUG: 1
   PERFORMANCE_RUNS: 6 # total runs including warmup
   PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
+  PERF_HARD_FAIL_PERCENT: 50
   PERF_VISIBILITY_THRESHOLD: 15 # tightened row visibility threshold
   # Percentage increase in operation counts (layout/recalc) considered significant
   PERF_COUNT_PERCENT_THRESHOLD: 18
