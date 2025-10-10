@@ -10,6 +10,7 @@ import {
     collectMobileOpenLatency,
     createDropdownCtx,
     formatLatencyTable,
+    measureColdOpen,
     median,
     runScenarioLoop,
     scenariosFilter,
@@ -73,39 +74,62 @@ test.describe('Dropdown Performance', () => {
         const example = po.getExample('#mobile');
 
         await example.scrollIntoViewIfNeeded().catch(() => {});
-        const RUNS = 2;
+
+        const WARM_RUNS = 4;
+        const MAX_COLD_RETRIES = 3;
 
         await PerformanceCollector.startTestCollection(
             page,
             'dropdown-mobile-datalist-open',
             __filename,
         );
-        const {firstOptionTimes} = await collectMobileOpenLatency(page, example, RUNS);
-        const medianFirst = median(firstOptionTimes);
+
+        const coldFirst = await measureColdOpen(page, example, MAX_COLD_RETRIES);
+
+        await page.keyboard.press('Escape').catch(() => {});
+
+        const {firstOptionTimes: warmSamples} = await collectMobileOpenLatency(
+            page,
+            example,
+            WARM_RUNS,
+        );
+        const warmMedian = median(warmSamples);
 
         await PerformanceCollector.stopTestCollection(
             page,
             'dropdown-mobile-datalist-open',
             {
                 mobileOpen: {
-                    runs: RUNS,
-                    medianFirstOption: medianFirst,
-                    samples: firstOptionTimes,
+                    coldFirst,
+                    warmSamples,
+                    warmMedian,
+                    runs: warmSamples.length,
+                    medianFirstOption: warmMedian,
+                    samples: warmSamples,
                 },
             },
         );
-        expect(firstOptionTimes.length).toBeGreaterThan(0);
+
+        expect(warmSamples.length).toBeGreaterThan(0);
 
         const payload = {
-            runs: RUNS,
-            medianFirstOption: medianFirst,
-            firstOptionSamples: firstOptionTimes,
+            coldFirst,
+            runs: warmSamples.length,
+            medianFirstOption: warmMedian,
+            warmMedian,
+            firstOptionSamples: warmSamples,
         };
 
         // eslint-disable-next-line no-console
         console.log(JSON.stringify(payload));
         // eslint-disable-next-line no-console
-        console.log(formatLatencyTable(payload));
+        console.log(
+            formatLatencyTable({
+                runs: warmSamples.length,
+                medianFirstOption: warmMedian,
+                firstOptionSamples: warmSamples,
+            }),
+        );
     });
 
     test('dropdown-nested-stress', async ({page}) => {

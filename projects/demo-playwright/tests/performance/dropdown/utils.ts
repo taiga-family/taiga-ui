@@ -360,6 +360,28 @@ export async function collectMobileOpenLatency(
     return {firstOptionTimes: collectedFirst.slice(0, runs)};
 }
 
+/**
+ * Measures a single "cold" open latency with limited retries to avoid flakiness.
+ * Returns NaN if all retries fail (caller can decide how to handle).
+ */
+export async function measureColdOpen(
+    page: Page,
+    example: ReturnType<TuiDocumentationPagePO['getExample']>,
+    maxRetries = 3,
+): Promise<number> {
+    for (let attempt = 0; attempt < maxRetries; attempt++) {
+        const {firstOption} = await measureMobileCountryOpen(page, example);
+
+        if (!Number.isNaN(firstOption)) {
+            return firstOption;
+        }
+
+        await page.keyboard.press('Escape').catch(falseHandler);
+    }
+
+    return NaN;
+}
+
 export async function runScenarioLoop(
     page: Page,
     name: string,
