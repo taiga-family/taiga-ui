@@ -7,7 +7,7 @@ import {TuiLink} from '@taiga-ui/core/components/link';
     selector: 'tui-doc-see-also',
     imports: [RouterLink, TuiLink],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocSeeAlso {

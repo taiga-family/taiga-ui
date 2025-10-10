@@ -32,7 +32,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     selector: 'input[tuiInputSearch]',
     imports: [PolymorpheusOutlet],
     templateUrl: './input-search.component.html',
-    styleUrls: ['./input-search.component.less'],
+    styleUrl: './input-search.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiCellOptionsProvider({size: 'm'})],
     hostDirectives: [TuiWithTextfield],

@@ -27,7 +27,7 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
     standalone: true,
     selector: 'tui-segmented',
     template: '<ng-content />',
-    styleUrls: ['./segmented.style.less'],
+    styleUrl: './segmented.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ResizeObserverService, tuiBadgeNotificationOptionsProvider({size: 's'})],

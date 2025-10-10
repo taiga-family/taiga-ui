@@ -10,7 +10,7 @@ import {TuiInputDate} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, KeyValuePipe, TuiDataList, TuiInputDate, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

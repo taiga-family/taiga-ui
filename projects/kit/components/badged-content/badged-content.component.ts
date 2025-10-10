@@ -11,7 +11,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
     selector: 'tui-badged-content',
     imports: [WaResizeObserver],
     templateUrl: './badged-content.template.html',
-    styleUrls: ['./badged-content.style.less'],
+    styleUrl: './badged-content.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBadgedContentComponent {

@@ -10,7 +10,7 @@ import {TUI_DOC_DOCUMENTATION_TEXTS} from '@taiga-ui/addon-doc/tokens';
     standalone: true,
     selector: 'table[tuiDocAPI]',
     templateUrl: './api.template.html',
-    styleUrls: ['./api.style.less'],
+    styleUrl: './api.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

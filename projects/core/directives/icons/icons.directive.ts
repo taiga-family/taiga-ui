@@ -20,7 +20,7 @@ const OPT = {self: true, optional: true} as const;
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/icons.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/icons.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-icons'},

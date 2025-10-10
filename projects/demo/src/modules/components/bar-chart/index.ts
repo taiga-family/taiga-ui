@@ -8,7 +8,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 @Component({
     imports: [TuiBarChart, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

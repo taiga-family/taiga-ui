@@ -20,7 +20,7 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
     selector: 'th[tuiTh]',
     imports: [AsyncPipe, NgTemplateOutlet, TuiIcon, TuiTableResized],
     templateUrl: './th.template.html',
-    styleUrls: ['./th.style.less'],
+    styleUrl: './th.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.min-width.px]': 'width || minWidth',

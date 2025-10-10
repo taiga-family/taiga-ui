@@ -15,7 +15,7 @@ import {type TuiPrimitiveTextfield} from '../primitive-textfield-types';
     standalone: false,
     selector: 'tui-value-decoration',
     templateUrl: './value-decoration.template.html',
-    styleUrls: ['./value-decoration.style.less'],
+    styleUrl: './value-decoration.style.less',
     // It follows Change Detection of PrimitiveTextfield
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,

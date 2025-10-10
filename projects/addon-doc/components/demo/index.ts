@@ -63,7 +63,7 @@ const MIN_WIDTH = 160;
         TuiItem,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._sticky]': 'sticky',

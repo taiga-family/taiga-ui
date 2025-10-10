@@ -19,7 +19,7 @@ import {MICRO_OFFSET, TuiPullToRefreshService} from './pull-to-refresh.service';
     selector: 'tui-pull-to-refresh',
     imports: [AsyncPipe, PolymorpheusOutlet],
     templateUrl: './pull-to-refresh.template.html',
-    styleUrls: ['./pull-to-refresh.style.less'],
+    styleUrl: './pull-to-refresh.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiPullToRefreshService],
 })

@@ -17,7 +17,7 @@ const docsearch = require('@docsearch/js').default;
     standalone: true,
     selector: 'tui-algolia-search',
     template: '',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

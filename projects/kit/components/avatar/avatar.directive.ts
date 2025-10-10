@@ -18,7 +18,7 @@ import {TUI_AVATAR_OPTIONS} from './avatar.options';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/avatar.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/avatar.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-avatar'},

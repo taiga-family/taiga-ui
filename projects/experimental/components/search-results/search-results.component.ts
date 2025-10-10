@@ -40,7 +40,7 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
         TuiTabs,
     ],
     templateUrl: './search-results.component.html',
-    styleUrls: ['./search-results.component.less'],
+    styleUrl: './search-results.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(keydown.arrowDown.prevent)': 'onArrow($event.target, 1)',

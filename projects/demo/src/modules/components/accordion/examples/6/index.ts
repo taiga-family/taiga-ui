@@ -19,7 +19,7 @@ import {TuiAccordion, TuiAvatar, TuiCheckbox, TuiConnected} from '@taiga-ui/kit'
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

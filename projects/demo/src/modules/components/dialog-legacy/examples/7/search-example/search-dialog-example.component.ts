@@ -8,7 +8,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
 @Component({
     imports: [TuiAutoFocus, TuiTextfield],
     templateUrl: './search-dialog-example.template.html',
-    styleUrls: ['./search-dialog-example.component.less'],
+    styleUrl: './search-dialog-example.component.less',
     changeDetection,
     providers: [tuiAutoFocusOptionsProvider({preventScroll: true})],
 })

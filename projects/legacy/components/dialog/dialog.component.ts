@@ -39,7 +39,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
     selector: 'tui-dialog-legacy',
     imports: [AsyncPipe, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './dialog.template.html',
-    styleUrls: ['./dialog.style.less'],
+    styleUrl: './dialog.style.less',
     // So we don't force OnPush on dialog content
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,

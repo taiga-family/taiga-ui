@@ -20,7 +20,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiNumberFormat,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

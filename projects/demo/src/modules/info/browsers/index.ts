@@ -5,7 +5,7 @@ import {TuiTable} from '@taiga-ui/addon-table';
 @Component({
     imports: [TuiDemo, TuiTable],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {

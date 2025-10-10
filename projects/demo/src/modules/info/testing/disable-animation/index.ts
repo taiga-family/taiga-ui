@@ -6,7 +6,7 @@ import {TuiTabs} from '@taiga-ui/kit';
 @Component({
     imports: [TuiDemo, TuiLink, TuiTabs],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {

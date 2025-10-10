@@ -9,7 +9,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-
 @Component({
     imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [
         {

@@ -20,7 +20,7 @@ import {TUI_DIALOGS} from './dialog.providers';
         TuiScrollRef,
     ],
     templateUrl: './dialogs.template.html',
-    styleUrls: ['./dialogs.style.less'],
+    styleUrl: './dialogs.style.less',
     // So that we do not force OnPush on custom dialogs
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,

@@ -24,7 +24,7 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
     selector: 'tui-doc-code',
     imports: [ClipboardModule, Highlight, TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.visibility]': 'isServer ? "hidden" : "visible"',

@@ -26,7 +26,7 @@ import {AbstractExampleTuiControl} from '../abstract/control';
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
 })

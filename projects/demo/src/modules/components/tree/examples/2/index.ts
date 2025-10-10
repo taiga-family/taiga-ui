@@ -6,7 +6,7 @@ import {TuiTree} from '@taiga-ui/kit';
 @Component({
     imports: [TuiTree],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

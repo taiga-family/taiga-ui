@@ -40,13 +40,11 @@ const EXPENSES = {
 @Component({
     imports: [CustomListComponent, FormsModule, TuiDataList, TuiSelectModule],
     templateUrl: './index.html',
-    styles: [
-        `
-            .control {
-                width: 320px;
-            }
-        `,
-    ],
+    styles: `
+        .control {
+            width: 320px;
+        }
+    `,
     encapsulation,
     changeDetection,
 })

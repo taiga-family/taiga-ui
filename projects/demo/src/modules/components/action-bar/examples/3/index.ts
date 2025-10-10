@@ -9,7 +9,7 @@ import {map} from 'rxjs';
 @Component({
     imports: [TuiActionBar, TuiButton, TuiPopup],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

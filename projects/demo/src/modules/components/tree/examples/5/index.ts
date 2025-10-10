@@ -15,7 +15,7 @@ interface TreeNode {
 @Component({
     imports: [TuiTree],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [

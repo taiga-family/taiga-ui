@@ -19,7 +19,7 @@ import {TUI_RATING_OPTIONS} from './rating.options';
     selector: 'tui-rating',
     imports: [FormsModule, PolymorpheusOutlet, TuiIcon],
     templateUrl: './rating.template.html',
-    styleUrls: ['./rating.style.less'],
+    styleUrl: './rating.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiFallbackValueProvider(0)],
     host: {

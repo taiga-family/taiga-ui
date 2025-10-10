@@ -34,7 +34,7 @@ const CURRENT_YEAR = TuiMonth.currentLocal().year;
     selector: 'tui-calendar-year',
     imports: [TuiHovered, TuiLet, TuiRepeatTimes, TuiScrollIntoView],
     templateUrl: './calendar-year.template.html',
-    styleUrls: ['./calendar-year.style.less'],
+    styleUrl: './calendar-year.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendarYear)],
     host: {

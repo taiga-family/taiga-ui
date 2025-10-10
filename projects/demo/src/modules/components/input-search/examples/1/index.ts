@@ -70,7 +70,7 @@ const DATA: Record<string, readonly Result[]> = {
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

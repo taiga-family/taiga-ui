@@ -9,7 +9,7 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
     selector: 'tui-action-bar',
     imports: [TuiExpand],
     templateUrl: './action-bar.template.html',
-    styleUrls: ['./action-bar.style.less'],
+    styleUrl: './action-bar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiLinkOptionsProvider({appearance: 'action-grayscale', pseudo: true}),

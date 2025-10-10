@@ -27,7 +27,7 @@ import {delay, map} from 'rxjs';
     selector: 'tui-pager',
     imports: [FormsModule, NgTemplateOutlet, TuiRepeatTimes],
     templateUrl: './pager.component.html',
-    styleUrls: ['./pager.styles.less'],
+    styleUrl: './pager.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         MutationObserverService,

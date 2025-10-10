@@ -9,7 +9,7 @@ import {TuiSegmented} from '@taiga-ui/kit';
 @Component({
     imports: [FormsModule, TuiInputCard, TuiSegmented, TuiTextfield, TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

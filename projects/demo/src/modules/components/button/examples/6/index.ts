@@ -7,7 +7,7 @@ import {TuiAvatar, TuiBlock, TuiFade} from '@taiga-ui/kit';
 @Component({
     imports: [TuiAvatar, TuiButton, TuiFade, TuiBlock],
     templateUrl: './index.html',
-    styles: [':host { display: flex; gap: 1rem; align-items: flex-start; }'],
+    styles: ':host { display: flex; gap: 1rem; align-items: flex-start; }',
     encapsulation,
     changeDetection,
 })
