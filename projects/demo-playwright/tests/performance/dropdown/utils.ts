@@ -346,14 +346,8 @@ export async function collectMobileOpenLatency(
 
     for (const attempt of attemptIndexes) {
         void attempt;
-        let firstOption = NaN;
 
-        try {
-            ({firstOption} = await measureMobileCountryOpen(page, example));
-        } catch {
-            // Ignore and treat as invalid sample; retry loop will continue
-            firstOption = NaN;
-        }
+        const {firstOption} = await measureMobileCountryOpen(page, example);
 
         if (!Number.isNaN(firstOption)) {
             collectedFirst.push(firstOption);
@@ -375,14 +369,10 @@ export async function measureColdOpen(
     maxRetries = 3,
 ): Promise<number> {
     for (let attempt = 0; attempt < maxRetries; attempt++) {
-        try {
-            const {firstOption} = await measureMobileCountryOpen(page, example);
+        const {firstOption} = await measureMobileCountryOpen(page, example);
 
-            if (!Number.isNaN(firstOption)) {
-                return firstOption;
-            }
-        } catch {
-            // swallow and retry
+        if (!Number.isNaN(firstOption)) {
+            return firstOption;
         }
 
         await page.keyboard.press('Escape').catch(falseHandler);
