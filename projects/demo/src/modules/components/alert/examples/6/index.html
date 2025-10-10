@@ -2,7 +2,7 @@
     size="m"
     tuiButton
     type="button"
-    (click)="show = true"
+    (click)="show.set(true)"
 >
     Show
 </button>
@@ -14,7 +14,7 @@
     <button
         tuiButton
         type="button"
-        (click)="show = false"
+        (click)="show.set(false)"
     >
         Close
     </button>

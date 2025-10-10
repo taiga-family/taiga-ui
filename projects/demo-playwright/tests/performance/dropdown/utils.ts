@@ -327,11 +327,6 @@ export async function measureMobileCountryOpen(
 
     await optionLocator.first().waitFor({state: 'visible', timeout: 10000});
 
-    await optionLocator
-        .first()
-        .waitFor({timeout: 3000})
-        .catch(() => {});
-
     return page.evaluate(() => {
         const start = (window as any).__tuiPerfStart as number | undefined;
         const now = performance.now();
