@@ -22,7 +22,7 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async hideNotifications(): Promise<void> {
-        const notifications = await this.page.locator('tui-alerts tui-alert').all();
+        const notifications = await this.page.locator('tui-popups tui-alert').all();
 
         for (const notification of notifications) {
             await tuiHideElement(notification);

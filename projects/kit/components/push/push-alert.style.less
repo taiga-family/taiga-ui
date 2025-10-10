@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    .loop(10);
+    .portal-loop(10);
 
     position: relative;
     bottom: 1rem;
@@ -37,11 +37,4 @@
 
 .t-wrapper {
     grid-row: 1 / span 2;
-}
-
-.loop (@i) when (@i > 1) {
-    .loop(@i - 1);
-    &:nth-of-type(@{i}) {
-        grid-row: ~'1000@{i}';
-    }
 }
