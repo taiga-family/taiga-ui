@@ -120,10 +120,8 @@ test.describe('Dropdown Performance', () => {
             firstOptionSamples: warmSamples,
         };
 
-        // eslint-disable-next-line no-console
-        console.log(JSON.stringify(payload));
-        // eslint-disable-next-line no-console
-        console.log(
+        console.info(JSON.stringify(payload));
+        console.info(
             formatLatencyTable({
                 runs: warmSamples.length,
                 medianFirstOption: warmMedian,
