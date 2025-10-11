@@ -30,9 +30,10 @@ export class TuiRangeChange {
             .pipe(
                 tap(({clientX, target, pointerId}) => {
                     activeThumb = this.detectActiveThumb(clientX, target);
-                    this.range.slidersRefs
-                        .get(activeThumb === 'start' ? 0 : 1)
-                        ?.nativeElement.setPointerCapture(pointerId);
+                    const slideElement =
+                        this.range.slidersRefs()[activeThumb === 'start' ? 0 : 1];
+
+                    slideElement?.nativeElement.setPointerCapture(pointerId);
                     this.activeThumbChange.emit(activeThumb);
 
                     if (this.range.focusable()) {
@@ -66,7 +67,7 @@ export class TuiRangeChange {
         clientX: number,
         target: EventTarget | null,
     ): 'end' | 'start' {
-        const [startSliderRef, endSliderRef] = this.range.slidersRefs;
+        const [startSliderRef, endSliderRef] = this.range.slidersRefs();
 
         switch (target) {
             case endSliderRef?.nativeElement:

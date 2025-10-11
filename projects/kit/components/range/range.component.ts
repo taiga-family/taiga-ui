@@ -5,12 +5,10 @@ import {
     ElementRef,
     inject,
     input,
-    type QueryList,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiControl} from '@taiga-ui/cdk/classes';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp, tuiQuantize} from '@taiga-ui/cdk/utils/math';
@@ -79,8 +77,10 @@ export class TuiRange extends TuiControl<[number, number]> {
 
     public limit = input(Infinity);
 
-    @ViewChildren(TuiSliderComponent, {read: ElementRef})
-    public readonly slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
+    public readonly slidersRefs = viewChildren<
+        TuiSliderComponent,
+        ElementRef<HTMLInputElement>
+    >(TuiSliderComponent, {read: ElementRef});
 
     public readonly start = computed(() => this.toPercent(this.value()[0]));
     public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
@@ -128,7 +128,7 @@ export class TuiRange extends TuiControl<[number, number]> {
     }
 
     protected changeByStep(coefficient: number, target: HTMLElement): void {
-        const [startThumb, endThumb] = this.slidersRefs.map((x) => x?.nativeElement);
+        const [startThumb, endThumb] = this.slidersRefs().map((x) => x?.nativeElement);
         const isEndThumb =
             target === this.el ? this.lastActiveThumb === 'end' : target === endThumb;
         const activeThumbElement = isEndThumb ? endThumb : startThumb;
