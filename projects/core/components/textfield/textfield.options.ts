@@ -51,7 +51,7 @@ export function tuiTextfieldOptionsProvider(
     selector: '[tuiTextfieldAppearance],[tuiTextfieldSize],[tuiTextfieldCleaner]',
     providers: [tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective)],
 })
-export class TuiTextfieldOptionsDirective implements TuiTextfieldOptions {
+export class TuiTextfieldOptionsDirective {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
 
     public readonly appearance = input(this.options.appearance(), {
