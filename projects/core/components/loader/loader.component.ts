@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, input, computed} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiIsSafari} from '@taiga-ui/cdk/utils/browser';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -23,6 +23,8 @@ export class TuiLoader {
     private readonly options = inject(TUI_LOADER_OPTIONS);
     protected readonly isApple = tuiIsSafari(tuiInjectElement()) || this.isIOS;
 
+    protected isHorizontal = computed(() => !tuiSizeBigger(this.size()));
+
     public size = input(this.options.size);
 
     public inheritColor = input(this.options.inheritColor);
@@ -33,6 +35,4 @@ export class TuiLoader {
 
     // TODO: Drop alias in v5
     public loading = input(true, {alias: 'showLoader'});
-
-    protected isHorizontal = computed(() => !tuiSizeBigger(this.size()));
 }
