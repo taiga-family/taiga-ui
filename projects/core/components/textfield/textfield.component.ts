@@ -10,7 +10,8 @@ import {
     ElementRef,
     forwardRef,
     inject,
-    Input,
+    input,
+    model,
     type QueryList,
     signal,
     ViewChild,
@@ -59,8 +60,6 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 export class TuiTextfieldBaseComponent<T>
     implements TuiDataListHost<T>, AfterContentChecked
 {
-    // TODO: refactor to signal inputs after Angular update
-    private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
@@ -121,8 +120,7 @@ export class TuiTextfieldBaseComponent<T>
     })
     public readonly input?: ElementRef<HTMLInputElement>;
 
-    @Input()
-    public content: PolymorpheusContent<TuiContext<T>>;
+    public content = input<PolymorpheusContent<TuiContext<T>>>();
 
     public readonly focused = computed(() => this.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
@@ -139,10 +137,7 @@ export class TuiTextfieldBaseComponent<T>
         {requireSync: true},
     );
 
-    @Input('filler')
-    public set fillerSetter(filler: string) {
-        this.filler.set(filler);
-    }
+    public filler = model('');
 
     public get id(): string {
         return this.input?.nativeElement.id || this.autoId;
@@ -222,7 +217,7 @@ export class TuiTextfieldBaseComponent<T>
     host: {
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
-        '[class._with-template]': 'content && control?.value != null',
+        '[class._with-template]': 'content() && control?.value != null',
         '[class._disabled]': 'input?.nativeElement?.disabled',
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',

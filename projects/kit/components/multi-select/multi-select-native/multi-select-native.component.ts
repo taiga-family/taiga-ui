@@ -57,7 +57,7 @@ export class TuiMultiSelectNative<T> {
 
     @Input()
     public set placeholder(placeholder: string) {
-        this.textfield.fillerSetter = placeholder;
+        this.textfield.filler.set(placeholder);
     }
 
     protected onInput(): void {

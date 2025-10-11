@@ -88,7 +88,7 @@ import {
         // TODO: Remove in v5
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
-        '[class._with-template]': 'content && control?.value != null',
+        '[class._with-template]': 'content() && control?.value != null',
         '[class._disabled]': 'input?.nativeElement?.disabled',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
