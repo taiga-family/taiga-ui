@@ -5,7 +5,7 @@ import {
     ContentChild,
     ElementRef,
     inject,
-    Input,
+    input,
     signal,
     TemplateRef,
     ViewEncapsulation,
@@ -81,7 +81,7 @@ import {
         '[attr.data-state]': 'control?.disabled ? "disabled" : null',
         '[class._empty]': '!control?.value?.length',
         '[style.--t-item-height.px]': 'height()',
-        '[style.--t-rows]': 'rows',
+        '[style.--t-rows]': 'rows()',
         '(click.prevent)': 'onClick($event.target)',
         '(tuiActiveZoneChange)':
             '!$event && (el.scrollTo({left: 0}) || cva?.onTouched())',
@@ -102,7 +102,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
 
     protected readonly sub = fromEvent(this.el, 'scroll')
         .pipe(
-            filter(() => this.rows === 1),
+            filter(() => this.rows() === 1),
             tuiZonefree(),
             takeUntilDestroyed(),
         )
@@ -113,8 +113,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
     @ContentChild(TuiItem, {read: TemplateRef, descendants: true})
     public readonly item?: TemplateRef<unknown>;
 
-    @Input()
-    public rows = 100;
+    public rows = input(100);
 
     public override handleOption(option: T): void {
         this.accessor?.setValue(
@@ -138,7 +137,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
 
     protected onItems({target}: ResizeObserverEntry): void {
         const height =
-            this.rows > 1 && this.control?.value?.length
+            this.rows() > 1 && this.control?.value?.length
                 ? (target.querySelector('tui-textfield-item')?.clientHeight ?? 0)
                 : null;
 

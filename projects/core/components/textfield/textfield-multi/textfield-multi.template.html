@@ -1,11 +1,11 @@
 @if (control?.control?.valueChanges | async) {}
-@if (rows > 1) {
+@if (rows() > 1) {
     <tui-scroll-controls class="t-scrollbar" />
 }
 
 <div
     class="t-items"
-    [class.t-items_horizontal]="rows === 1"
+    [class.t-items_horizontal]="rows() === 1"
     (click)="input?.nativeElement?.focus()"
     (pointerdown.self.zoneless.prevent)="(0)"
     (waResizeObserver)="$event[0] && onItems($event[0])"
