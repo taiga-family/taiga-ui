@@ -18,7 +18,6 @@ import {
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
 } from '@taiga-ui/core/components/scrollbar';
-import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiPopups} from '@taiga-ui/core/directives/popup';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
@@ -27,7 +26,7 @@ import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-root',
-    imports: [TuiDialogs, TuiHints, TuiPopups, TuiScrollControls],
+    imports: [TuiDialogs, TuiPopups, TuiScrollControls],
     templateUrl: './root.template.html',
     styleUrls: ['./animations.less', './root.style.less'],
     encapsulation: ViewEncapsulation.None,
