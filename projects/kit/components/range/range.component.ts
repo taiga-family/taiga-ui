@@ -4,10 +4,8 @@ import {
     computed,
     ElementRef,
     inject,
-    Input,
-    type OnChanges,
+    input,
     type QueryList,
-    signal,
     ViewChildren,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -43,7 +41,7 @@ import {TuiRangeChange} from './range-change.directive';
         },
     ],
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
         '[attr.tabindex]': '-1',
         '[attr.aria-disabled]': 'disabled()',
         '[style.--t-start.%]': 'start()',
@@ -57,40 +55,29 @@ import {TuiRangeChange} from './range-change.directive';
         '(keydown.arrowLeft.prevent)': 'changeByStep(rtl ? 1 : -1, $event.target)',
     },
 })
-export class TuiRange extends TuiControl<[number, number]> implements OnChanges {
-    // TODO: refactor to signal inputs after Angular update
-    private readonly changes = signal(1);
+export class TuiRange extends TuiControl<[number, number]> {
     private readonly el = tuiInjectElement();
 
     protected readonly options = inject(TUI_SLIDER_OPTIONS);
     protected lastActiveThumb: 'end' | 'start' = 'end';
 
-    @Input()
-    public min = 0;
+    public min = input(0);
 
-    @Input()
-    public max = 100;
+    public max = input(100);
 
-    @Input()
-    public step = 1;
+    public step = input(1);
 
-    @Input()
-    public size: TuiSizeS = this.options.size;
+    public size = input<TuiSizeS>(this.options.size);
 
-    @Input()
-    public segments = 1;
+    public segments = input(1);
 
-    @Input()
-    public keySteps: TuiKeySteps | null = null;
+    public keySteps = input<TuiKeySteps | null>(null);
 
-    @Input()
-    public focusable = true;
+    public focusable = input(true);
 
-    @Input()
-    public margin = 0;
+    public margin = input(0);
 
-    @Input()
-    public limit = Infinity;
+    public limit = input(Infinity);
 
     @ViewChildren(TuiSliderComponent, {read: ElementRef})
     public readonly slidersRefs: QueryList<ElementRef<HTMLInputElement>> = EMPTY_QUERY;
@@ -98,9 +85,17 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     public readonly start = computed(() => this.toPercent(this.value()[0]));
     public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
 
-    public ngOnChanges(): void {
-        this.changes.update((x) => x + 1);
-    }
+    public readonly fractionStep = computed<number>(() => {
+        return this.keySteps()
+            ? this.step() / 100
+            : this.step() / (this.max() - this.min());
+    });
+
+    public readonly computedKeySteps = computed<TuiKeySteps>(() => {
+        return this.computePureKeySteps(this.keySteps(), this.min(), this.max());
+    });
+
+    public readonly segmentWidthRatio = computed<number>(() => 1 / this.segments());
 
     public processValue(value: number, end: boolean): void {
         if (end) {
@@ -115,7 +110,7 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     public takeStep(coefficients: readonly [number, number]): readonly [number, number] {
         return this.value().map((value, i) => {
             const fraction = this.toPercent(value) / 100;
-            const newFractionValue = fraction + coefficients[i]! * this.fractionStep;
+            const newFractionValue = fraction + coefficients[i]! * this.fractionStep();
 
             return this.toValue(newFractionValue);
         }) as [number, number];
@@ -123,21 +118,9 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
 
     public toValue(fraction: number): number {
         return tuiPercentageToKeyStepValue(
-            tuiClamp(tuiQuantize(fraction, this.fractionStep), 0, 1) * 100,
-            this.computedKeySteps,
+            tuiClamp(tuiQuantize(fraction, this.fractionStep()), 0, 1) * 100,
+            this.computedKeySteps(),
         );
-    }
-
-    protected get fractionStep(): number {
-        return this.keySteps ? this.step / 100 : this.step / (this.max - this.min);
-    }
-
-    protected get computedKeySteps(): TuiKeySteps {
-        return this.computePureKeySteps(this.keySteps, this.min, this.max);
-    }
-
-    protected get segmentWidthRatio(): number {
-        return 1 / this.segments;
     }
 
     protected get rtl(): boolean {
@@ -156,9 +139,7 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     }
 
     protected toPercent(value: number): number {
-        return (
-            this.changes() && tuiKeyStepValueToPercentage(value, this.computedKeySteps)
-        );
+        return tuiKeyStepValueToPercentage(value, this.computedKeySteps());
     }
 
     @tuiPure
@@ -198,6 +179,6 @@ export class TuiRange extends TuiControl<[number, number]> implements OnChanges 
     }
 
     private checkDistance(distance: number): boolean {
-        return tuiClamp(distance, this.margin, this.limit) === distance;
+        return tuiClamp(distance, this.margin(), this.limit()) === distance;
     }
 }

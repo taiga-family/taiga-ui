@@ -35,7 +35,7 @@ export class TuiRangeChange {
                         ?.nativeElement.setPointerCapture(pointerId);
                     this.activeThumbChange.emit(activeThumb);
 
-                    if (this.range.focusable) {
+                    if (this.range.focusable()) {
                         this.el.focus();
                     }
                 }),
