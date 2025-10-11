@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, EventEmitter, inject, Output} from '@angular/core';
+import {Directive, inject, output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -17,8 +17,7 @@ export class TuiRangeChange {
     private readonly el = tuiInjectElement();
     private readonly range = inject(TuiRange);
 
-    @Output()
-    public readonly activeThumbChange = new EventEmitter<'end' | 'start'>();
+    public readonly activeThumbChange = output<'end' | 'start'>();
 
     constructor() {
         let activeThumb: 'end' | 'start';
