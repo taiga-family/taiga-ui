@@ -60,8 +60,7 @@ class TreeLoader implements TuiTreeLoader<Item> {
 }
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgIf, TuiButton, TuiLoader, TuiTree],
+    imports: [AsyncPipe, TuiButton, TuiLoader, TuiTree],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
