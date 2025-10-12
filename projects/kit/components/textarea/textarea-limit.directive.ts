@@ -4,7 +4,7 @@ import {
     Directive,
     type DoCheck,
     inject,
-    Input,
+    input,
     signal,
     ViewContainerRef,
 } from '@angular/core';
@@ -72,13 +72,7 @@ export class TuiTextareaLimit implements Validator, DoCheck {
     );
 
     public readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
-    public readonly limit = signal(0);
-
-    // TODO: Use signal inputs in v5
-    @Input('limit')
-    public set limitSetter(limit: number) {
-        this.limit.set(limit);
-    }
+    public readonly limit = input(0);
 
     public ngDoCheck(): void {
         this.ref.instance.length.set(this.textfield.value().length);
