@@ -8,14 +8,14 @@
     </option>
 }
 
-@if (items && !isFlat(items)) {
-    @for (group of labels; track group) {
-        <optgroup [label]="labels[$index]">
-            <ng-container *ngTemplateOutlet="options; context: {$implicit: items[$index]}" />
+@if (items() && !isFlat(items())) {
+    @for (group of labels(); track group) {
+        <optgroup [label]="labels()[$index]">
+            <ng-container *ngTemplateOutlet="options; context: {$implicit: items()[$index]}" />
         </optgroup>
     }
 } @else {
-    <ng-container *ngTemplateOutlet="options; context: {$implicit: items}" />
+    <ng-container *ngTemplateOutlet="options; context: {$implicit: items()}" />
 }
 
 <ng-template
