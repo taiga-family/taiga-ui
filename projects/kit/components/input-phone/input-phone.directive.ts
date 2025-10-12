@@ -15,7 +15,6 @@ import {
 } from '@maskito/core';
 import {maskitoCaretGuard, maskitoPrefixPostprocessorGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
     TuiTextfieldComponent,
@@ -60,7 +59,7 @@ export class TuiInputPhone extends TuiControl<string | null> {
         if (this.value()) {
             this.textfield.value.set(maskitoTransform(this.value() ?? '', this.mask()));
         }
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly blurEffect = effect(() => {
         const incomplete = untracked(() => !this.value());
@@ -71,7 +70,7 @@ export class TuiInputPhone extends TuiControl<string | null> {
         } else if (this.host.focused() && prefix) {
             this.textfield.value.set(this.nonRemovablePrefix());
         }
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly options = inject(TUI_INPUT_PHONE_OPTIONS);
     protected readonly el = tuiInjectElement<HTMLInputElement>();

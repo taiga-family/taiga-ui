@@ -8,7 +8,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiNonNullableValueTransformer, TuiValueTransformer} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -89,7 +88,7 @@ export class TuiInputSliderDirective {
         }
 
         slider.el.disabled = !this.inputNumber.interactive();
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly sliderInitEffect = effect((onCleanup) => {
         const slider = this.slider();
