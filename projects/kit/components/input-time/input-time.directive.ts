@@ -1,4 +1,4 @@
-import {computed, Directive, inject, Input, signal, untracked} from '@angular/core';
+import {computed, Directive, inject, input, untracked} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {
@@ -64,9 +64,6 @@ export class TuiInputTimeDirective
     private readonly open = tuiDropdownOpen();
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
     private readonly fillers = inject(TUI_TIME_TEXTS);
-    private readonly prefix = signal('');
-    private readonly postfix = signal('');
-
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_TIME_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
@@ -93,31 +90,16 @@ export class TuiInputTimeDirective
         ),
     );
 
-    @Input()
-    public accept: readonly TuiTime[] = [];
+    public accept = input<readonly TuiTime[]>([]);
 
     public readonly native =
         !!inject(TuiWithNativePicker, {optional: true}) && inject(TUI_IS_MOBILE);
 
-    public readonly timeMode = signal(this.options.mode);
+    public timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
 
-    // TODO(v5): use signal inputs
-    @Input('mode')
-    public set modeSetter(x: MaskitoTimeMode) {
-        this.timeMode.set(x);
-    }
+    public prefix = input('');
 
-    // TODO(v5): use signal inputs
-    @Input('prefix')
-    public set prefixSetter(x: string) {
-        this.prefix.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input('postfix')
-    public set postfixSetter(x: string) {
-        this.postfix.set(x);
-    }
+    public postfix = input('');
 
     public setValue(value: TuiTime | null): void {
         this.onChange(value);
@@ -150,7 +132,9 @@ export class TuiInputTimeDirective
         const time =
             value.length === this.timeMode().length ? TuiTime.fromString(value) : null;
         const newValue =
-            this.accept.length && time ? this.findNearestTime(time, this.accept) : time;
+            this.accept().length && time
+                ? this.findNearestTime(time, this.accept())
+                : time;
 
         this.control?.control?.updateValueAndValidity({emitEvent: false});
         this.onChange(newValue);
