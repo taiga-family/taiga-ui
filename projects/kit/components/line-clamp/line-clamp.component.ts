@@ -1,19 +1,18 @@
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     type DoCheck,
     ElementRef,
     inject,
     Input,
     Output,
-    signal,
     ViewChild,
 } from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement, tuiIsCurrentTarget} from '@taiga-ui/cdk/utils/dom';
+import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_HINT_COMPONENT,
     TuiHint,
@@ -39,11 +38,10 @@ import {TuiLineClampBox} from './line-clamp-box.component';
 import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-line-clamp',
     imports: [PolymorpheusOutlet, TuiHint, TuiLineClampPositionDirective],
     templateUrl: './line-clamp.template.html',
-    styleUrls: ['./line-clamp.style.less'],
+    styleUrl: './line-clamp.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {
@@ -51,27 +49,21 @@ import {TuiLineClampPositionDirective} from './line-clamp-position.directive';
             useValue: TuiLineClampBox,
         },
     ],
+    hostDirectives: [TuiTransitioned],
     host: {
-        '[style.height.px]': 'height()',
-        '[style.max-height.px]': 'maxHeight()',
-        '[class._initialized]': 'initialized()',
-        '(transitionend)': 'updateView()',
-        '(mouseenter)': 'updateView()',
-        '(resize)': 'updateView()',
+        '(transitionend)': 'update()',
+        '(mouseenter)': 'update()',
+        '(resize)': 'update()',
     },
 })
-export class TuiLineClamp implements DoCheck, AfterViewInit {
+export class TuiLineClamp implements DoCheck {
     @ViewChild(TuiHintDirective, {read: ElementRef})
     private readonly outlet?: ElementRef<HTMLElement>;
 
     private readonly options = inject(TUI_LINE_CLAMP_OPTIONS);
     private readonly el = tuiInjectElement();
-    private readonly cd = inject(ChangeDetectorRef);
     private readonly linesLimit$ = new BehaviorSubject(1);
     private readonly isOverflown$ = new Subject<boolean>();
-    protected initialized = signal(false);
-    protected maxHeight = signal(0);
-    protected height = signal(0);
 
     protected lineClamp = toSignal(
         this.linesLimit$.pipe(
@@ -112,10 +104,6 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
         this.isOverflown$.next(this.overflown);
     }
 
-    public ngAfterViewInit(): void {
-        this.initialized.set(true);
-    }
-
     protected get overflown(): boolean {
         if (!this.outlet) {
             return false;
@@ -124,22 +112,24 @@ export class TuiLineClamp implements DoCheck, AfterViewInit {
         const {scrollHeight, scrollWidth} = this.outlet.nativeElement;
         const {clientWidth} = this.el;
 
-        return scrollHeight > this.maxHeight() || scrollWidth > clientWidth;
+        return scrollHeight > this.maxHeight || scrollWidth > clientWidth;
     }
 
     protected get computedContent(): PolymorpheusContent {
         return this.options.showHint && this.overflown ? this.content : '';
     }
 
-    protected updateView(): void {
-        this.cd.detectChanges();
-    }
-
-    private update(): void {
-        if (this.outlet) {
-            this.height.set(this.outlet.nativeElement.scrollHeight);
+    protected update(): void {
+        if (!this.outlet) {
+            return;
         }
 
-        this.maxHeight.set(this.lineHeight * this.linesLimit$.value);
+        this.el.style.height = tuiPx(this.outlet.nativeElement.scrollHeight);
+        this.el.style.maxHeight = tuiPx(this.maxHeight);
+        this.el.classList.toggle('_overflown', this.overflown);
+    }
+
+    private get maxHeight(): number {
+        return this.lineHeight * this.linesLimit$.value;
     }
 }

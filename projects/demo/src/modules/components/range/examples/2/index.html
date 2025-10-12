@@ -10,16 +10,16 @@
 />
 
 <div class="ticks-labels">
-    <div *ngFor="let label of labels">
-        <ng-container *ngIf="label !== 75; else labelWithIcon">
-            {{ label | i18nPlural: pluralMap }}
-        </ng-container>
-    </div>
-
-    <ng-template #labelWithIcon>
-        <tui-icon icon="@tui.arrow-up" />
-        <div>3/4</div>
-    </ng-template>
+    @for (label of labels; track label) {
+        <div>
+            @if (label !== 75) {
+                {{ label | i18nPlural: pluralMap }}
+            } @else {
+                <tui-icon icon="@tui.arrow-up" />
+                <div>3/4</div>
+            }
+        </div>
+    }
 </div>
 
 <p class="tui-space_top-12 tui-space_bottom-0">

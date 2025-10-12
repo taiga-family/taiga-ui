@@ -3,7 +3,6 @@ import {FormsModule} from '@angular/forms';
 import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiRoot, TuiTextfield],
     template: `
         <tui-root>

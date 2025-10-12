@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,19 +8,9 @@ import {TuiHint, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiBreadcrumbs, tuiBreadcrumbsOptionsProvider, TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [
-        NgForOf,
-        RouterLink,
-        TuiBreadcrumbs,
-        TuiFade,
-        TuiHint,
-        TuiItem,
-        TuiLink,
-        TuiTitle,
-    ],
+    imports: [RouterLink, TuiBreadcrumbs, TuiFade, TuiHint, TuiItem, TuiLink, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [tuiBreadcrumbsOptionsProvider({icon: '/'})],

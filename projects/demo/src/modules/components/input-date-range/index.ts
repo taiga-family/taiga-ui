@@ -12,7 +12,6 @@ import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,

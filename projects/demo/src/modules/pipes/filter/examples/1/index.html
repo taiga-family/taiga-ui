@@ -9,9 +9,11 @@
         </tr>
     </thead>
     <tbody tuiTbody>
-        <tr *ngFor="let item of items | tuiFilter: matcher : 300">
-            <td tuiTd>{{ item.name }}</td>
-            <td tuiTd>{{ item.price }}</td>
-        </tr>
+        @for (item of items | tuiFilter: matcher : 300; track item) {
+            <tr>
+                <td tuiTd>{{ item.name }}</td>
+                <td tuiTd>{{ item.price }}</td>
+            </tr>
+        }
     </tbody>
 </table>

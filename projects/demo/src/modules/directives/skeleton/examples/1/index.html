@@ -7,26 +7,31 @@
     Show skeleton
 </label>
 <p>
-    <tui-avatar
-        src="AI"
+    <span
+        tuiAvatar="AI"
         [tuiSkeleton]="skeleton"
-    />
-    <tui-avatar
-        src="https://avatars.githubusercontent.com/u/11832552"
+    ></span>
+    <span
+        tuiAvatar="@tui.user"
         [tuiSkeleton]="skeleton"
-    />
-    <tui-avatar
-        src="❤️"
+    >
+        <img
+            alt=""
+            src="https://avatars.githubusercontent.com/u/11832552"
+        />
+    </span>
+    <span
+        tuiAvatar="❤️"
         [tuiSkeleton]="skeleton"
-    />
-    <tui-avatar
+    ></span>
+    <span
         appearance="primary"
-        src="$"
+        tuiAvatar="$"
         [tuiSkeleton]="skeleton"
-    />
+    ></span>
 </p>
 <section
-    tuiAppearance="neutral"
+    appearance="neutral"
     tuiCardLarge
     [tuiSkeleton]="skeleton"
 >
@@ -45,23 +50,23 @@
         [value]="0.33"
     />
     <tui-avatar-stack>
-        <tui-avatar
-            src="AI"
+        <span
+            tuiAvatar="AI"
             [tuiSkeleton]="skeleton"
-        />
-        <tui-avatar
-            src="https://avatars.githubusercontent.com/u/11832552"
+        ></span>
+        <span
+            tuiAvatar="https://avatars.githubusercontent.com/u/11832552"
             [tuiSkeleton]="skeleton"
-        />
-        <tui-avatar
-            src="❤️"
+        ></span>
+        <span
+            tuiAvatar="❤️"
             [tuiSkeleton]="skeleton"
-        />
-        <tui-avatar
+        ></span>
+        <span
             appearance="primary"
-            src="$"
+            tuiAvatar="$"
             [tuiSkeleton]="skeleton"
-        />
+        ></span>
     </tui-avatar-stack>
 </p>
 <p>

@@ -1,10 +1,4 @@
-import {
-    type KeyValue,
-    KeyValuePipe,
-    NgForOf,
-    NgIf,
-    NgTemplateOutlet,
-} from '@angular/common';
+import {type KeyValue, KeyValuePipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -22,7 +16,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiIconPipe} from '@taiga-ui/core/components/icon';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
 import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
@@ -33,23 +27,20 @@ import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-search-results',
     imports: [
         KeyValuePipe,
-        NgForOf,
-        NgIf,
         NgTemplateOutlet,
         TuiBlockStatus,
         TuiFilterPipe,
-        TuiIconPipe,
+        TuiIcon,
         TuiLet,
         TuiLoader,
         TuiScrollbar,
         TuiTabs,
     ],
     templateUrl: './search-results.component.html',
-    styleUrls: ['./search-results.component.less'],
+    styleUrl: './search-results.component.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(keydown.arrowDown.prevent)': 'onArrow($event.target, 1)',

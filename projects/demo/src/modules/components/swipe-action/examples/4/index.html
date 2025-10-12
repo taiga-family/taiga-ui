@@ -1,40 +1,42 @@
 <tui-swipe-actions>
     <div
-        tuiAppearance="floating"
+        appearance="floating"
         tuiCardLarge
         tuiCell
     >
-        <tui-avatar
+        <div
             appearance="primary"
-            src="@tui.dollar-sign"
-        />
+            tuiAvatar="@tui.dollar-sign"
+        ></div>
         <div tuiTitle>
             <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
             <div tuiSubtitle>Dollar account</div>
         </div>
     </div>
 
-    <button
-        *ngIf="editButton"
-        iconStart="@tui.pencil-line"
-        size="m"
-        tuiIconButton
-        tuiSwipeAction
-        type="button"
-    >
-        Edit
-    </button>
-    <button
-        *ngIf="shareButton"
-        appearance="secondary"
-        iconStart="@tui.share"
-        size="m"
-        tuiIconButton
-        tuiSwipeAction
-        type="button"
-    >
-        Share
-    </button>
+    @if (editButton) {
+        <button
+            iconStart="@tui.pencil-line"
+            size="m"
+            tuiIconButton
+            tuiSwipeAction
+            type="button"
+        >
+            Edit
+        </button>
+    }
+    @if (shareButton) {
+        <button
+            appearance="secondary"
+            iconStart="@tui.share"
+            size="m"
+            tuiIconButton
+            tuiSwipeAction
+            type="button"
+        >
+            Share
+        </button>
+    }
 </tui-swipe-actions>
 
 <label>

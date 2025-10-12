@@ -19,34 +19,51 @@
             </a>
         </p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="description"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template
-                #description
-                [ngSwitch]="index"
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                <ng-container *ngSwitchCase="0">Built-in size options and custom thickness</ng-container>
-                <ng-container *ngSwitchCase="1">Customizing colors of the filled track and thumb</ng-container>
-                <ng-container *ngSwitchCase="2">
-                    Use mixin
-                    <code>tui-slider-ticks-labels</code>
-                    to place labels strictly below ticks
-                </ng-container>
-                <ng-container *ngSwitchCase="3">Non interactive state</ng-container>
-                <ng-container *ngSwitchCase="4">Using progressive scale across the track</ng-container>
-                <ng-container *ngSwitchCase="5">
-                    Use
-                    <code>tuiSliderThumbLabel</code>
-                    for positioning any content so it slides alongside the thumb.
-                </ng-container>
-            </ng-template>
-        </tui-doc-example>
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            Built-in size options and custom thickness
+                        }
+                        @case (1) {
+                            Customizing colors of the filled track and thumb
+                        }
+                        @case (2) {
+                            Use mixin
+                            <code>tui-slider-ticks-labels</code>
+                            to place labels strictly below ticks
+                        }
+                        @case (3) {
+                            Non interactive state
+                        }
+                        @case (4) {
+                            <strong>Key steps</strong>
+                            – anchor points of non-uniform format between control's value and slider's position.
+
+                            <p class="tui-space_bottom-0">
+                                When
+                                <code>[keySteps]</code>
+                                property is enabled,
+                                <code>[step]</code>
+                                means percentage of total track length.
+                            </p>
+                        }
+                        @case (5) {
+                            Use
+                            <code>tuiSliderThumbLabel</code>
+                            for positioning any content so it slides alongside the thumb.
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>

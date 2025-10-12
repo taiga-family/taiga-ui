@@ -1,6 +1,6 @@
 <!-- Ignore this part, it is only here to position drawer inside the example block -->
 <div class="custom-portal">
-    <ng-container #viewContainer />
+    <ng-container #vcr />
 </div>
 <header tuiNavigationHeader>
     <button
@@ -11,23 +11,23 @@
         [(open)]="open"
     >
         <tui-data-list>
-            <tui-opt-group
-                *ngFor="let group of drawer | keyvalue"
-                [label]="group.key"
-            >
-                <button
-                    *ngFor="let item of group.value"
-                    tuiOption
-                    type="button"
-                    (click)="open = false"
-                >
-                    <img
-                        alt="icon"
-                        [src]="item.icon"
-                    />
-                    {{ item.name }}
-                </button>
-            </tui-opt-group>
+            @for (group of drawer | keyvalue; track group) {
+                <tui-opt-group [label]="group.key">
+                    @for (item of group.value; track item) {
+                        <button
+                            tuiOption
+                            type="button"
+                            (click)="open = false"
+                        >
+                            <img
+                                alt="icon"
+                                [src]="item.icon"
+                            />
+                            {{ item.name }}
+                        </button>
+                    }
+                </tui-opt-group>
+            }
             <tui-opt-group>
                 <label tuiOption>
                     <input
@@ -122,7 +122,7 @@
     >
         More
     </button>
-    <tui-avatar src="AI" />
+    <div tuiAvatar="AI"></div>
 </header>
 <div [style.display]="'flex'">
     <aside
@@ -145,9 +145,9 @@
         >
             Search
 
-            <ng-container *ngIf="expanded()">
+            @if (expanded()) {
                 <tui-badge appearance="accent">12</tui-badge>
-            </ng-container>
+            }
         </button>
         <a
             iconStart="@tui.users"
@@ -284,16 +284,16 @@
             [style.position]="'sticky'"
         >
             <tui-breadcrumbs [itemsLimit]="10">
-                <ng-container *ngFor="let item of breadcrumbs; let last = last">
-                    <ng-container *ngIf="last">
+                @for (item of breadcrumbs; track item) {
+                    @if ($last) {
                         <strong
                             *tuiItem
                             tuiFade
                         >
                             {{ item }}
                         </strong>
-                    </ng-container>
-                    <ng-container *ngIf="!last">
+                    }
+                    @if (!$last) {
                         <button
                             *tuiItem
                             tuiLink
@@ -301,8 +301,8 @@
                         >
                             {{ item }}
                         </button>
-                    </ng-container>
-                </ng-container>
+                    }
+                }
             </tui-breadcrumbs>
             <tui-tabs tuiFade>
                 <button
@@ -340,7 +340,7 @@
         </nav>
         <ng-container *tuiRepeatTimes="let index of 10">
             <form
-                tuiAppearance="floating"
+                appearance="floating"
                 tuiCardLarge
                 tuiForm="m"
                 [style.grid-column]="'2 / span 7'"
@@ -376,7 +376,7 @@
                 </footer>
             </form>
             <div
-                tuiAppearance="outline-grayscale"
+                appearance="outline-grayscale"
                 tuiCardLarge
                 [style.grid-column]="'span 3'"
                 [style.margin-top.rem]="1"

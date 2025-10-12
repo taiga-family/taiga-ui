@@ -6,13 +6,14 @@
     <ng-template pageTab>
         <p>Customizable credit card thumbnail</p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -20,7 +21,6 @@
             <tui-thumbnail-card
                 [iconEnd]="controlIcons.iconEnd"
                 [iconStart]="controlIcons.iconStart"
-                [monoHandler]="monoHandler"
                 [paymentSystem]="paymentSystem"
                 [size]="size"
                 [style.background]="background"
@@ -33,15 +33,6 @@
                 #controlIcons
                 tuiDocIcons
             ></tbody>
-            <tr
-                name="[monoHandler]"
-                tuiDocAPIItem
-                type="TuiBooleanHandler<TuiPaymentSystem>"
-                [items]="monoHandlerVariants"
-                [(value)]="monoHandler"
-            >
-                Whether to use colored icon for particular payment system
-            </tr>
             <tr
                 name="[paymentSystem]"
                 tuiDocAPIItem

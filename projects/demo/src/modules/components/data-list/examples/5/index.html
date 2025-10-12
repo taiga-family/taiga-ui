@@ -30,6 +30,7 @@
             automation-id="tui-data-list-calendar-option"
             iconEnd="@tui.chevron-right"
             tuiDropdownAlign="right"
+            tuiDropdownLimitWidth="auto"
             tuiDropdownManual
             tuiDropdownSided
             tuiOption
@@ -55,6 +56,7 @@
             iconEnd="@tui.chevron-right"
             tuiDropdownAlign="right"
             tuiDropdownDirection="top"
+            tuiDropdownLimitWidth="auto"
             tuiDropdownManual
             tuiDropdownSided
             tuiOption
@@ -82,6 +84,7 @@
                 iconEnd="@tui.chevron-right"
                 tuiDropdownAlign="right"
                 tuiDropdownDirection="bottom"
+                tuiDropdownLimitWidth="auto"
                 tuiDropdownSided
                 tuiOption
                 type="button"
@@ -136,13 +139,17 @@
     </ng-template>
 
     <ng-template #range>
-        <tui-input-date-range
-            automation-id="tui-data-list-range-field"
+        <tui-textfield
             class="form"
-            [(ngModel)]="rangeValue"
+            [tuiTextfieldCleaner]="false"
         >
-            Range
-        </tui-input-date-range>
+            <label tuiLabel>Range</label>
+            <input
+                tuiInputDateRange
+                [(ngModel)]="rangeValue"
+            />
+            <tui-calendar-range *tuiDropdown />
+        </tui-textfield>
     </ng-template>
 </ng-template>
 

@@ -1,4 +1,4 @@
-import {AsyncPipe, isPlatformServer, NgIf} from '@angular/common';
+import {AsyncPipe, isPlatformServer} from '@angular/common';
 import {Component, inject, PLATFORM_ID} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,10 +7,9 @@ import {TuiProgress} from '@taiga-ui/kit';
 import {map, of, startWith, takeWhile, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgIf, TuiProgress],
+    imports: [AsyncPipe, TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

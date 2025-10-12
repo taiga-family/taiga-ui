@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component, type OnInit} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,10 +7,9 @@ import {type TuiSizeS} from '@taiga-ui/core';
 import {TuiRadio} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, NgForOf, ReactiveFormsModule, TuiPlatform, TuiRadio],
+    imports: [FormsModule, ReactiveFormsModule, TuiPlatform, TuiRadio],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

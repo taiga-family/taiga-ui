@@ -18,8 +18,7 @@ import {
     TuiMonth,
     TuiYear,
 } from '@taiga-ui/cdk';
-import {type TuiMarkerHandler} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, type TuiMarkerHandler} from '@taiga-ui/core';
 import {
     TUI_CALENDAR_DATE_STREAM,
     TuiCalendarRange,
@@ -96,7 +95,7 @@ describe('rangeCalendarComponent', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
 
         await TestBed.compileComponents();

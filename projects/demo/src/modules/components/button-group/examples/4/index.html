@@ -4,7 +4,7 @@
     [(index)]="index"
     (shift)="opacity = $event"
 >
-    <ng-container *ngFor="let item of items; let i = index">
+    @for (item of items; track item) {
         <div
             *tuiItem
             tuiCardMedium
@@ -15,13 +15,12 @@
                 BANK
                 <span tuiSubtitle>{{ item.title }}</span>
             </h2>
-
             <tui-badge class="money">
                 <tui-icon icon="@tui.wallet" />
                 {{ item.content }}
             </tui-badge>
         </div>
-    </ng-container>
+    }
 </tui-carousel>
 
 <tui-pagination
@@ -35,40 +34,37 @@
     [style.background-color]="items[index]?.color"
 >
     <tui-elastic-container [style.opacity]="opacity * 2">
-        <ng-container *ngIf="index === 0">
+        @if (index === 0) {
             <button type="button">
                 <tui-icon icon="@tui.circle-plus" />
                 Create a payment
             </button>
-
             <button type="button">
                 <tui-icon icon="@tui.circle-plus" />
                 Pay the bill
             </button>
-
             <button type="button">
                 <tui-icon icon="@tui.circle-plus" />
                 Remove from favorites
             </button>
-        </ng-container>
+        }
 
-        <ng-container *ngIf="index === 1">
+        @if (index === 1) {
             <button type="button">
                 <tui-icon icon="@tui.circle-plus" />
                 Remove from favorites
             </button>
-        </ng-container>
+        }
 
-        <ng-container *ngIf="index === 2">
+        @if (index === 2) {
             <button type="button">
                 <tui-icon icon="@tui.circle-plus" />
                 Create a payment
             </button>
-
             <button type="button">
                 <tui-icon icon="@tui.circle-plus" />
                 Remove from favorites
             </button>
-        </ng-container>
+        }
     </tui-elastic-container>
 </div>

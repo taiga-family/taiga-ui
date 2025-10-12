@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,10 +6,9 @@ import {tuiClamp} from '@taiga-ui/cdk';
 import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
-    imports: [NgIf, TuiButton, TuiElasticSticky, TuiScrollbar],
+    imports: [TuiButton, TuiElasticSticky, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrls: ['../1/index.less'],
+    styleUrl: '../1/index.less',
     encapsulation,
     changeDetection,
 })

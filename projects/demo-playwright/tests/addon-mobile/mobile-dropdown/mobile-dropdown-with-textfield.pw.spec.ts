@@ -9,17 +9,14 @@ const {describe} = test;
 describe('DropdownMobile for textfields', () => {
     test.use(TUI_PLAYWRIGHT_MOBILE);
 
-    test('with legacy select', async ({page, browserName}) => {
-        // eslint-disable-next-line playwright/no-skipped-test
-        test.skip(browserName === 'chromium', 'Font flaky');
-
+    test('with select', async ({page}) => {
         await page.goto(DemoRoute.Dropdown);
 
         const documentation = new TuiDocumentationPagePO(page);
         const example = documentation.getExample('#mobile');
 
-        await example.locator('tui-select').click();
-        await page.locator('tui-dropdown-mobile [tuiOption]').first().hover();
+        await example.locator('[tuiSelect]').click();
+        await page.locator('tui-sheet-dialog [tuiOption]').first().hover();
 
         await documentation.hideContent();
         await expect.soft(page).toHaveScreenshot('dropdown-mobile-with-select.png');
@@ -31,7 +28,7 @@ describe('DropdownMobile for textfields', () => {
         const documentation = new TuiDocumentationPagePO(page);
         const example = documentation.getExample('#mobile');
 
-        await example.locator('tui-multi-select').click();
+        await example.locator('tui-textfield[multi]').click();
         await page.locator('tui-dropdown-mobile [tuiOption]').first().click();
 
         await expect
@@ -61,7 +58,7 @@ describe('DropdownMobile for textfields', () => {
         await example
             .locator('tui-textfield[multi][tuiDropdownMobile="Select Pythons"]')
             .click();
-        await page.locator('tui-dropdown-mobile [tuiOption]').last().click();
+        await page.locator('tui-sheet-dialog [tuiOption]').last().click();
 
         await documentation.hideContent();
         await expect

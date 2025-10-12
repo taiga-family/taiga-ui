@@ -9,14 +9,15 @@
         Daenerys of the House Targaryen, the First of Her Name, The Unburnt, Queen of the Andals, the Rhoynar and the
         First Men, Queen of Meereen, Khaleesi of the Great Grass Sea, Protector of the Realm, Lady Regent of the Seven
         Kingdoms, Breaker of Chains and Mother of Dragons.
-        <button
-            *ngIf="expanded"
-            tuiLink
-            type="button"
-            (click)="toggle()"
-        >
-            Show less
-        </button>
+        @if (expanded) {
+            <button
+                tuiLink
+                type="button"
+                (click)="toggle()"
+            >
+                Show less
+            </button>
+        }
     </div>
     <button
         tuiLink

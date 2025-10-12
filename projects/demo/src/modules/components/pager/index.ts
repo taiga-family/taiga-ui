@@ -5,7 +5,6 @@ import {TuiIcon, type TuiSizeS} from '@taiga-ui/core';
 import {TuiPager} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiIcon, TuiPager],
     templateUrl: './index.html',
     changeDetection,

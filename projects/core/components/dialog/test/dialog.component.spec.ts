@@ -2,22 +2,24 @@ import {type HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {tuiDialogOptionsProvider, TuiDialogService, TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {
+    provideTaiga,
+    tuiDialogOptionsProvider,
+    TuiDialogService,
+    TuiRoot,
+} from '@taiga-ui/core';
 import {TuiDialogHarness} from '@taiga-ui/testing';
 
 describe('Dialog with TUI_DIALOG_OPTIONS', () => {
     @Component({
         standalone: true,
         imports: [TuiRoot],
-        template: `
-            <tui-root />
-        `,
+        template: '<tui-root />',
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {}
 
-    const closeable = false;
+    const closable = false;
 
     let fixture: ComponentFixture<Test>;
     let tuiDialogService: TuiDialogService;
@@ -26,7 +28,7 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [tuiDialogOptionsProvider({closeable}), NG_EVENT_PLUGINS],
+            providers: [tuiDialogOptionsProvider({closable}), provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
@@ -35,7 +37,7 @@ describe('Dialog with TUI_DIALOG_OPTIONS', () => {
     });
 
     describe('close button', () => {
-        it('when closeable = false is absent', async () => {
+        it('when closable = false is absent', async () => {
             tuiDialogService.open('Test').subscribe();
             fixture.detectChanges();
 

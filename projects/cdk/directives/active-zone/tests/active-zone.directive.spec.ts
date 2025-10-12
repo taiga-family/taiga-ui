@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiActiveZone} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga} from '@taiga-ui/core';
 
 describe('TuiActiveZone', () => {
     @Component({
@@ -103,7 +103,7 @@ describe('TuiActiveZone', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

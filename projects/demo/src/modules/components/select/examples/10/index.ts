@@ -8,7 +8,6 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 import {Option} from './option';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiChevron,

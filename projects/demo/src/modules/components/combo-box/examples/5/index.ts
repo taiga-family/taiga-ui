@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -11,11 +11,9 @@ import {debounceTime, filter, of, Subject, switchMap, tap} from 'rxjs';
 import {DatabaseServer} from './database';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        NgIf,
         TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,

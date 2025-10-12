@@ -6,7 +6,6 @@ describe('Button[loading]', () => {
     let component: Test;
 
     @Component({
-        standalone: true,
         imports: [TuiButton, TuiButtonLoading],
         template: `
             <form (submit)="increase(); $event.preventDefault()">

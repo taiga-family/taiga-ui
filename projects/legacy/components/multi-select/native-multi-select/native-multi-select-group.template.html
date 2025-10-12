@@ -1,4 +1,4 @@
-<ng-container *ngIf="control.control?.valueChanges | async" />
+@if (control.control?.valueChanges | async) {}
 
 <tui-data-list-wrapper
     *tuiDataList
@@ -8,16 +8,16 @@
     [items]="items"
     [labels]="labels"
 />
-<optgroup
-    *ngFor="let group of items; let index = index"
-    [label]="labels[index]"
->
-    <option
-        *ngFor="let option of group"
-        [disabled]="disabledItemHandler ? disabledItemHandler(option) : host.disableItemHandler(option)"
-        [selected]="option | tuiMapper: selectedMapper : control.value"
-        [value]="stringify(option)"
-    >
-        {{ stringify(option) }}
-    </option>
-</optgroup>
+@for (group of items; track group) {
+    <optgroup [label]="labels[$index]">
+        @for (option of group; track option) {
+            <option
+                [disabled]="disabledItemHandler ? disabledItemHandler(option) : host.disableItemHandler(option)"
+                [selected]="option | tuiMapper: selectedMapper : control.value"
+                [value]="stringify(option)"
+            >
+                {{ stringify(option) }}
+            </option>
+        }
+    </optgroup>
+}

@@ -5,10 +5,9 @@ import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiBadgeNotification, TuiPlatform],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

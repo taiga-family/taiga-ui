@@ -3,55 +3,64 @@
     is used to show data of several months to simplify working with different number of days in months
 </tui-notification>
 <p class="controls">
-    <tui-input-date-range
-        [maxLength]="maxLength"
-        [(ngModel)]="data"
-        (ngModelChange)="onDataChange($event)"
-    >
-        Data
-    </tui-input-date-range>
-    <tui-input-date-range
+    <tui-textfield [tuiTextfieldCleaner]="false">
+        <label tuiLabel>Data</label>
+        <input
+            tuiInputDateRange
+            [maxLength]="maxLength"
+            [(ngModel)]="data"
+            (ngModelChange)="onDataChange($event)"
+        />
+        <tui-calendar-range *tuiDropdown />
+    </tui-textfield>
+    <tui-textfield
         class="tui-space_left-4"
-        [maxLength]="maxLength"
-        [(ngModel)]="show"
+        [tuiTextfieldCleaner]="false"
     >
-        Visible range
-    </tui-input-date-range>
+        <label tuiLabel>Visible range</label>
+        <input
+            tuiInputDateRange
+            [maxLength]="maxLength"
+            [(ngModel)]="show"
+        />
+        <tui-calendar-range *tuiDropdown />
+    </tui-textfield>
 </p>
 <p class="legend">
-    <span
-        *ngFor="let chart of days; let index = index"
-        class="item"
-    >
-        <small class="name">Chart {{ index + 1 }}</small>
-    </span>
+    @for (chart of days; track chart) {
+        <span class="item">
+            <small class="name">Chart {{ $index + 1 }}</small>
+        </span>
+    }
 </p>
-<tui-axes
-    *ngIf="labels(show) | async as labels"
-    class="axes"
-    [axisXLabels]="labels"
-    [horizontalLines]="4"
-    [tuiLineChartHint]="hint"
-    [verticalLines]="labels.length - 1"
->
-    <ng-container *ngIf="getWidth(show) > 90; else line">
-        <tui-line-days-chart
-            *ngFor="let chart of days"
-            class="chart"
-            [height]="200"
-            [value]="chart | tuiFilter: filter : range"
-        />
-    </ng-container>
-    <ng-template #line>
-        <tui-line-chart
-            *ngFor="let chart of days"
-            class="chart"
-            [height]="200"
-            [value]="chart | tuiFilter: filter : range | tuiMapper: toNumbers : range"
-            [width]="getWidth(range)"
-        />
-    </ng-template>
-</tui-axes>
+@if (labels(show) | async; as labels) {
+    <tui-axes
+        class="axes"
+        [axisXLabels]="labels"
+        [horizontalLines]="4"
+        [tuiLineChartHint]="hint"
+        [verticalLines]="labels.length - 1"
+    >
+        @if (getWidth(show) > 90) {
+            @for (chart of days; track chart) {
+                <tui-line-days-chart
+                    class="chart"
+                    [height]="200"
+                    [value]="chart | tuiFilter: filter : range"
+                />
+            }
+        } @else {
+            @for (chart of days; track chart) {
+                <tui-line-chart
+                    class="chart"
+                    [height]="200"
+                    [value]="chart | tuiFilter: filter : range | tuiMapper: toNumbers : range"
+                    [width]="getWidth(range)"
+                />
+            }
+        }
+    </tui-axes>
+}
 
 <ng-template
     #hint
@@ -61,11 +70,10 @@
         <strong>{{ getDate(data[0][0], range.from) }}</strong>
     </div>
     <div>
-        <div
-            *ngFor="let point of data"
-            class="item"
-        >
-            <span class="value">${{ point[1].toFixed(0) }}</span>
-        </div>
+        @for (point of data; track point) {
+            <div class="item">
+                <span class="value">${{ point[1].toFixed(0) }}</span>
+            </div>
+        }
     </div>
 </ng-template>

@@ -4,7 +4,6 @@ import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'tui-preview-dialog',
     imports: [PolymorpheusOutlet],
     template: `
@@ -12,7 +11,7 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
             {{ text }}
         </ng-container>
     `,
-    styleUrls: ['./preview-dialog.style.less'],
+    styleUrl: './preview-dialog.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],

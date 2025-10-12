@@ -9,7 +9,6 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiButton,
@@ -19,7 +18,7 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-
         TuiInputModule,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [
         {

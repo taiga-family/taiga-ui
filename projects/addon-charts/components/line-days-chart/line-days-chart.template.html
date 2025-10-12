@@ -1,18 +1,19 @@
-<tui-line-chart
-    *ngFor="let month of months; let first = first"
-    class="t-chart"
-    [dots]="dots"
-    [height]="height"
-    [smoothingFactor]="smoothingFactor"
-    [style.zIndex]="zIndex"
-    [tuiHintContent]="hintContent ? hint : ''"
-    [value]="month"
-    [width]="first ? firstWidth : getWidth(month[0]?.[0] ?? 0)"
-    [x]="first ? 0 : getX(month[0]?.[0] ?? 0)"
-    [xStringify]="xStringify ? daysStringify : null"
-    [y]="y"
-    [yStringify]="yStringify"
-/>
+@for (month of months; track month) {
+    <tui-line-chart
+        class="t-chart"
+        [dots]="dots"
+        [height]="height"
+        [smoothingFactor]="smoothingFactor"
+        [style.zIndex]="zIndex"
+        [tuiHintContent]="hintContent ? hint : ''"
+        [value]="month"
+        [width]="$first ? firstWidth : getWidth(month[0]?.[0] ?? 0)"
+        [x]="$first ? 0 : getX(month[0]?.[0] ?? 0)"
+        [xStringify]="xStringify ? daysStringify : null"
+        [y]="y"
+        [yStringify]="yStringify"
+    />
+}
 <ng-template
     #hint
     let-point

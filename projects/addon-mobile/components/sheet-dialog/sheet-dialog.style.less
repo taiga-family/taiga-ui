@@ -1,5 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+// TODO: Refactor in the same way as dialog in v5
 :host {
     .scrollbar-hidden();
 
@@ -20,7 +21,7 @@
     }
 
     &::before {
-        .fullsize();
+        .fullsize(fixed);
 
         content: '';
         z-index: -1;
@@ -34,7 +35,8 @@
         }
     }
 
-    &._fullscreen {
+    &._fullscreen,
+    &[data-appearance~='fullscreen'] {
         display: block;
 
         .t-sheet {
@@ -48,6 +50,32 @@
             display: flex;
             flex-direction: column;
             flex-grow: 1;
+
+            ::ng-deep > header,
+            ::ng-deep > [tuiSlides] > * > header,
+            ::ng-deep > ng-component > header,
+            ::ng-deep > ng-component > [tuiSlides] > * > header {
+                margin-block-end: 1.5rem;
+                font: var(--tui-font-heading-3);
+
+                + p {
+                    margin: -0.5rem 0 1.5rem;
+                }
+
+                &:empty {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    ::ng-deep tui-data-list {
+        margin-inline-start: calc(-1 * var(--tui-data-list-padding));
+        margin-inline-end: calc(-1 * var(--tui-data-list-padding));
+
+        [tuiOption] {
+            margin-inline-start: calc(-1 * var(--t-option-padding-inline));
+            margin-inline-end: calc(-1 * var(--t-option-padding-inline));
         }
     }
 }

@@ -26,7 +26,6 @@ import {createOutputSpy} from 'cypress/angular';
 import {map, type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
@@ -49,7 +48,7 @@ import {map, type Observable} from 'rxjs';
                     [formControl]="control"
                 />
 
-                <ng-container *tuiTextfieldDropdown>
+                <ng-container *tuiDropdown>
                     <cdk-virtual-scroll-viewport
                         *tuiLet="countries$ | async | tuiFilterByInput as items"
                         tuiScrollable

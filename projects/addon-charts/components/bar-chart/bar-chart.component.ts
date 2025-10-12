@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -27,11 +27,10 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-bar-chart',
-    imports: [AsyncPipe, NgForOf, TuiBarSet, TuiHint, TuiMapperPipe],
+    imports: [AsyncPipe, TuiBarSet, TuiHint, TuiMapperPipe],
     templateUrl: './bar-chart.template.html',
-    styleUrls: ['./bar-chart.style.less'],
+    styleUrl: './bar-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     viewProviders: [tuiHintOptionsProvider({direction: 'top'})],
 })

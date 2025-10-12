@@ -9,7 +9,6 @@ import {TUI_COUNTRIES, TuiChevron, TuiSelect} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
@@ -21,7 +20,7 @@ import {map} from 'rxjs';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

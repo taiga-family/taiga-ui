@@ -27,30 +27,30 @@
     </ng-template>
 
     <ng-template pageTab>
-        <tui-doc-documentation>
-            <tui-doc-demo [control]="control">
-                <ng-template>
-                    <tui-textfield>
-                        <label tuiLabel>Type a sum</label>
+        <tui-doc-demo [control]="control">
+            <ng-template>
+                <tui-textfield>
+                    <label tuiLabel>Type a sum</label>
 
-                        <input
-                            tuiInputNumber
-                            [formControl]="control"
-                            [postfix]="' ' + (currency || '' | tuiCurrency)"
-                        />
-                    </tui-textfield>
-                </ng-template>
-            </tui-doc-demo>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="currency"
-                documentationPropertyType="TuiCurrencyVariants"
-                [documentationPropertyValues]="currencyVariants"
-                [(documentationPropertyValue)]="currency"
+                    <input
+                        tuiInputNumber
+                        [formControl]="control"
+                        [postfix]="` ${(currency || '' | tuiCurrency)}`"
+                    />
+                </tui-textfield>
+            </ng-template>
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="currency"
+                tuiDocAPIItem
+                type="TuiCurrencyVariants"
+                [items]="currencyVariants"
+                [(value)]="currency"
             >
                 Currency symbol
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

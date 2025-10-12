@@ -5,7 +5,6 @@ import {type TuiSizeS} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDemo, TuiSlider],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

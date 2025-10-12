@@ -2,8 +2,7 @@ name: ⚙️ Unit tests
 on:
   pull_request:
   push:
-    branches:
-      - main
+    branches: [main, 'v[0-9]+.x']
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
@@ -15,11 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.139.0
-      - uses: taiga-family/ci/actions/setup/node@v1.139.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.163.0
+      - uses: taiga-family/ci/actions/setup/node@v1.163.0
       - run: npm test
-      - uses: codecov/codecov-action@v5.4.3
-        if: ${{ matrix.os == 'ubuntu-latest' }}
+      - uses: codecov/codecov-action@v5.5.1
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         with:

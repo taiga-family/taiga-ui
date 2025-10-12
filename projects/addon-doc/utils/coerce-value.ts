@@ -24,7 +24,7 @@ function isPossibleObject(value: string): boolean {
 
 export function tuiCoerceValue<T>(
     value?: T,
-): Record<string, any> | T | boolean | number | string | null {
+): Record<string, unknown> | T | boolean | number | string | null {
     const prepared = String(value).trim();
 
     if (isEmptyParamValue(prepared)) {

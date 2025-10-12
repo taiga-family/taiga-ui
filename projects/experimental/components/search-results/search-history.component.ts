@@ -1,32 +1,28 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiCell} from '@taiga-ui/core/components/cell';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD} from '@taiga-ui/core/tokens';
 import {TuiAvatar} from '@taiga-ui/kit/components/avatar';
-import {TuiCell} from '@taiga-ui/layout/components/cell';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 import {filter, map} from 'rxjs';
 
 import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-search-history',
-    imports: [NgForOf, NgIf, TuiAvatar, TuiButton, TuiCell, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiCell, TuiTitle],
     templateUrl: './search-history.component.html',
-    styles: [
-        `
-            :host:not(:empty) {
-                display: block;
-                padding: 0.375rem 0;
-            }
-        `,
-    ],
+    styles: `
+        :host:not(:empty) {
+            display: block;
+            padding: 0.375rem 0;
+        }
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSearchHistory {

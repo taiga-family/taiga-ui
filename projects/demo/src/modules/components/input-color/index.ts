@@ -8,7 +8,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TUI_INPUT_COLOR_OPTIONS, TuiInputColor} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,

@@ -1,12 +1,25 @@
-<tui-avatar
+<div
     appearance="negative"
-    src="@tui.user"
-/>
-<tui-avatar
-    src="AI"
+    tuiAvatar="@tui.user"
+></div>
+<div
+    tuiAvatar="AI"
     class="text"
     [style.background]="'AI' | tuiAutoColor"
-/>
-<tui-avatar class="text">
+></div>
+<div
+    tuiAvatar
+    class="text"
+>
     <div tuiFade>Fading</div>
-</tui-avatar>
+</div>
+<div
+    appearance="negative"
+    badge="var(--tui-text-positive)"
+    tuiAvatar="@tui.user"
+>
+    <img
+        alt=""
+        src="/assets/images/avatar.jpg"
+    />
+</div>

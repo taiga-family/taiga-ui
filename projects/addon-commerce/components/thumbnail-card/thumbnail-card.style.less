@@ -75,7 +75,7 @@
     }
 
     :host[data-size='m'] & {
-        transform: translate(0.1875rem, 0.1875rem) scale(0.875);
+        transform: translate(0.1875rem, 0.1875rem) scale(0.75);
     }
 
     :host[data-size='l'] & {
@@ -94,31 +94,33 @@
     }
 
     :host[data-size='m'] & {
-        inline-size: 0.875rem;
-        block-size: 0.875rem;
+        font-size: 0.875rem;
 
-        &::after {
+        &::before {
             transform: scale(0.5);
         }
     }
 
-    :host[data-size='l'] & {
-        inline-size: 1rem;
-        block-size: 1rem;
-
-        &::after {
-            color: #fff;
-            transform: scale(0.625);
-        }
+    :host[data-size='l'] &::before {
+        transform: scale(0.625);
     }
 
-    &::before {
-        content: '';
-        .fullsize();
+    &::after {
+        --tui-icon-size: 100%;
 
+        .fullsize(absolute, inset);
+
+        content: '';
+        z-index: -1;
+        display: block;
+        transform: none;
         border-radius: 100%;
         background: currentColor;
         opacity: 0.35;
+    }
+
+    &::before {
+        color: #fff;
     }
 }
 
@@ -138,8 +140,12 @@
         bottom: 0.0625rem;
     }
 
-    &::after {
+    &::before {
+        block-size: 100%;
+        background-position: right;
+        background-size: contain;
         mask-position: right;
+        mask-size: contain;
     }
 }
 
@@ -158,6 +164,7 @@
 }
 
 .t-icon {
-    inline-size: 1rem;
-    block-size: 1rem;
+    inline-size: 1em;
+    block-size: 1em;
+    font-size: 1rem;
 }

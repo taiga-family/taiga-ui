@@ -1,9 +1,11 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 [tuiForm] {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    &[tuiForm] {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
 
     &[data-size='s'] {
         gap: 0.75rem;
@@ -11,14 +13,6 @@
 
         tui-error:not(.tui-space-top-none) {
             margin-block-start: -0.75rem;
-        }
-
-        [tuiHeader] {
-            padding-block-end: 0.5rem;
-
-            [tuiSubtitle] {
-                font: var(--tui-font-text-ui-s);
-            }
         }
     }
 
@@ -47,8 +41,7 @@
     > fieldset {
         display: grid;
         gap: inherit;
-        grid-auto-flow: column;
-        grid-auto-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
         border: none;
         padding: 0;
         margin: 0;
@@ -58,6 +51,10 @@
         display: flex;
         gap: 0.75rem;
         margin-block-start: 0.25rem;
+
+        tui-dialog & {
+            justify-content: flex-end;
+        }
     }
 
     > button,

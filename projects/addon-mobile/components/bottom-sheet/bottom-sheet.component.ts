@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -10,7 +9,7 @@ import {
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiHeaderOptionsProvider} from '@taiga-ui/layout/components/header';
+import {tuiHeaderOptionsProvider} from '@taiga-ui/core/components/header';
 
 const OPTIONS = {
     duration: 20,
@@ -19,11 +18,9 @@ const OPTIONS = {
 } as const;
 
 @Component({
-    standalone: true,
     selector: 'tui-bottom-sheet',
-    imports: [NgForOf],
     templateUrl: './bottom-sheet.template.html',
-    styleUrls: ['./bottom-sheet.style.less'],
+    styleUrl: './bottom-sheet.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiHeaderOptionsProvider({size: 'h5'})],
     host: {

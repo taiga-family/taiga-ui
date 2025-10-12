@@ -7,10 +7,9 @@ import {TuiButton, TuiLoader} from '@taiga-ui/core';
 import {TuiAvatar, TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiAvatar, TuiButton, TuiCarousel, TuiLoader],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

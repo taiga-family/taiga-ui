@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -23,12 +22,9 @@ interface Items<T> {
 }
 
 @Component({
-    standalone: true,
     selector: 'custom-list',
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiAutoFocus,
         TuiDataList,
         TuiFilterPipe,
@@ -37,7 +33,7 @@ interface Items<T> {
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export class CustomListComponent<T> {

@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,10 +6,9 @@ import {TuiAnimated} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, NgIf, TuiAnimated, TuiAppearance, TuiButton],
+    imports: [FormsModule, TuiAnimated, TuiAppearance, TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

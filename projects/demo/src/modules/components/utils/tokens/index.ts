@@ -4,7 +4,6 @@ import {TuiDemo} from '@demo/utils';
 import {TUI_DOC_CODE_EDITOR} from '@taiga-ui/addon-doc';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,

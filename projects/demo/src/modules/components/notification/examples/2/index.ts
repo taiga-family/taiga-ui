@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiNotification, tuiNotificationOptionsProvider} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiNotification],
     templateUrl: './index.html',
     encapsulation,

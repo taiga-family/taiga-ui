@@ -2,7 +2,7 @@
     <tui-notification
         size="m"
         [appearance]="item.appearance"
-        [class.t-closeable]="item.closeable"
+        [class.t-closable]="item.closable"
         [icon]="item.icon"
     >
         <span tuiTitle>
@@ -16,14 +16,15 @@
                 ></span>
             </span>
         </span>
-        <button
-            *ngIf="item.closeable"
-            tuiIconButton
-            type="button"
-            [iconStart]="icons.close"
-            (click)="item.$implicit.complete()"
-        >
-            {{ close() }}
-        </button>
+        @if (item.closable) {
+            <button
+                tuiIconButton
+                type="button"
+                [iconStart]="icons.close"
+                (click)="item.$implicit.complete()"
+            >
+                {{ close() }}
+            </button>
+        }
     </tui-notification>
 </div>

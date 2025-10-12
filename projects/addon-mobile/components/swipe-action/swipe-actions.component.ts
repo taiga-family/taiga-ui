@@ -7,11 +7,10 @@ import {
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 
 @Component({
-    standalone: true,
     selector: 'tui-swipe-actions',
     imports: [WaResizeObserver],
     templateUrl: './swipe-actions.template.html',
-    styleUrls: ['./swipe-actions.style.less'],
+    styleUrl: './swipe-actions.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style.--t-actions-width]': 'actionsWidth',

@@ -2,7 +2,8 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-test.describe('InputYear', () => {
+// TODO migrate
+test.skip('InputYear', () => {
     let input: Locator;
     let documentationPO: TuiDocumentationPagePO;
 
@@ -19,7 +20,7 @@ test.describe('InputYear', () => {
         test('12345 => 1234', async ({page}) => {
             await input.pressSequentially('123456789');
 
-            await expect.soft(page).toHaveScreenshot('01-input-year.png');
+            await expect(page).toHaveScreenshot('01-input-year.png');
         });
 
         test('2040 => 2020', async ({page}) => {

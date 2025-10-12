@@ -4,68 +4,57 @@ import {
     computed,
     Directive,
     inject,
-    Input,
-    signal,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {type SafeResourceUrl} from '@angular/platform-browser';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_ICON_END, TUI_ICON_START, tuiInjectIconResolver} from '@taiga-ui/core/tokens';
+import {
+    TUI_ICON_END,
+    TUI_ICON_START,
+    tuiGetIconMode,
+    tuiInjectIconResolver,
+} from '@taiga-ui/core/tokens';
 
-/**
- * Workaround for {@link TuiAvatar} to properly handle icon color in {@link TuiAppearance}
- */
-type Icon = SafeResourceUrl | string | null | undefined;
+const OPT = {self: true, optional: true} as const;
 
 @Component({
-    standalone: true,
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/icons.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/icons.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-icons',
-    },
+    host: {class: 'tui-icons'},
 })
-class TuiIconsStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     host: {
         tuiIcons: '',
-        '[style.--t-icon-start]': 'iconStartUrl()',
-        '[style.--t-icon-end]': 'iconEndUrl()',
+        '[style.--t-icon-start]': 'start()',
+        '[style.--t-icon-end]': 'end()',
+        '[attr.data-icon-start]': 'startMode()',
+        '[attr.data-icon-end]': 'endMode()',
     },
 })
 export class TuiIcons {
     private readonly resolver: TuiStringHandler<string> = tuiInjectIconResolver();
 
-    protected readonly nothing = tuiWithStyles(TuiIconsStyles);
-    protected readonly iconStartUrl = computed(() => this.resolve(this.iconStart()));
-    protected readonly iconEndUrl = computed(() => this.resolve(this.iconEnd()));
+    protected readonly nothing = tuiWithStyles(Styles);
+    protected readonly start = computed(() => this.resolve(this.iconStart()));
+    protected readonly end = computed(() => this.resolve(this.iconEnd()));
+    protected readonly startMode = computed(() => tuiGetIconMode(this.iconStart()));
+    protected readonly endMode = computed(() => tuiGetIconMode(this.iconEnd()));
 
-    public readonly iconStart = signal<Icon>(
-        inject(TUI_ICON_START, {self: true, optional: true}) || '',
-    );
+    public readonly iconEnd = input(inject<string | undefined>(TUI_ICON_END, OPT));
+    public readonly iconStart = input(inject<string | undefined>(TUI_ICON_START, OPT));
 
-    public readonly iconEnd = signal<string>(
-        inject(TUI_ICON_END, {self: true, optional: true}) || '',
-    );
+    public resolve(icon?: string | null): string | null {
+        if (!icon) {
+            return null;
+        }
 
-    // TODO(v5): use signal inputs
-    @Input('iconStart')
-    public set iconStartSetter(x: Icon) {
-        this.iconStart.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input('iconEnd')
-    public set iconEndSetter(x: string) {
-        this.iconEnd.set(x);
-    }
-
-    protected resolve(icon: Icon): string | null {
-        return icon ? `url(${this.resolver(icon.toString())})` : null;
+        return tuiGetIconMode(icon) === 'font'
+            ? `'${this.resolver(icon)}'`
+            : `url(${this.resolver(icon)})`;
     }
 }

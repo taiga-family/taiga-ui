@@ -7,10 +7,9 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiButton, TuiMedia, TuiSlider],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -41,11 +41,10 @@ import {TUI_DAY_CAPS_MAPPER} from './day-caps-mapper';
 import {type TuiDayRangePeriod} from './day-range-period';
 
 @Component({
-    standalone: true,
     selector: 'tui-calendar-range',
-    imports: [AsyncPipe, NgForOf, NgIf, TuiCalendar, TuiDataList, TuiIcon, TuiMapperPipe],
+    imports: [AsyncPipe, TuiCalendar, TuiDataList, TuiIcon, TuiMapperPipe],
     templateUrl: './calendar-range.template.html',
-    styleUrls: ['./calendar-range.style.less'],
+    styleUrl: './calendar-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsAuxiliary(TuiCalendarRange),

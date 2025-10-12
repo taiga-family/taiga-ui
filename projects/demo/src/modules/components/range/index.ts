@@ -6,7 +6,6 @@ import {type TuiSizeS} from '@taiga-ui/core';
 import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDemo, TuiRange],
     templateUrl: './index.html',
     changeDetection,

@@ -6,10 +6,9 @@ import {TuiLoader, type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLoader],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

@@ -7,80 +7,90 @@
         <code>Textfield</code>
         is a low level component that other more complex controls are based upon.
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="description"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template
-                #description
-                [ngSwitch]="index"
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                <span *ngSwitchCase="0">Textfield can be used as-is for string value inputs.</span>
-                <span *ngSwitchCase="1">
-                    You can change states of the component manually or it can follow state of a form control when
-                    Angular form directives are applied to it.
-                </span>
-                <span *ngSwitchCase="2">
-                    For more complex dropdown controls it is recommended to use dedicated components, such as
-                    <a
-                        tuiLink
-                        [routerLink]="routes.Select"
-                    >
-                        Select
-                    </a>
-                    or
-                    <a
-                        tuiLink
-                        [routerLink]="routes.ComboBox"
-                    >
-                        ComboBox
-                    </a>
-                </span>
-                <div *ngSwitchCase="3">
-                    An example of a password textfield with an interactive icon to toggle the input type.
-                </div>
-                <div *ngSwitchCase="4">
-                    We recommends using
-                    <a
-                        href="https://maskito.dev"
-                        target="_blank"
-                        tuiLink
-                    >
-                        Maskito
-                    </a>
-                    for input masking.
-                    <strong>Maskito</strong>
-                    is supported by
-                    <a
-                        tuiLink
-                        [routerLink]="routes.Related"
-                    >
-                        Taiga Family
-                    </a>
-                    team and it is already peer-dependency of
-                    <code>&#64;taiga-ui/kit</code>
-                    library.
-
-                    <p class="tui-space_bottom-0">
-                        This example demonstrates how to use built-in
-                        <a
-                            href="https://maskito.dev/kit/number"
-                            target="_blank"
-                            tuiLink
-                        >
-                            Number
-                        </a>
-                        mask with postfix and augment it by several
-                        <strong>Maskito</strong>
-                        plugins.
-                    </p>
-                </div>
-            </ng-template>
-        </tui-doc-example>
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            <span>Textfield can be used as-is for string value inputs.</span>
+                        }
+                        @case (1) {
+                            <span>
+                                You can change states of the component manually or it can follow state of a form control
+                                when Angular form directives are applied to it.
+                            </span>
+                        }
+                        @case (2) {
+                            <span>
+                                For more complex dropdown controls it is recommended to use dedicated components, such
+                                as
+                                <a
+                                    tuiLink
+                                    [routerLink]="routes.Select"
+                                >
+                                    Select
+                                </a>
+                                or
+                                <a
+                                    tuiLink
+                                    [routerLink]="routes.ComboBox"
+                                >
+                                    ComboBox
+                                </a>
+                            </span>
+                        }
+                        @case (3) {
+                            <div>
+                                An example of a password textfield with an interactive icon to toggle the input type.
+                            </div>
+                        }
+                        @case (4) {
+                            <div>
+                                We recommends using
+                                <a
+                                    href="https://maskito.dev"
+                                    target="_blank"
+                                    tuiLink
+                                >
+                                    Maskito
+                                </a>
+                                for input masking.
+                                <strong>Maskito</strong>
+                                is supported by
+                                <a
+                                    tuiLink
+                                    [routerLink]="routes.Related"
+                                >
+                                    Taiga Family
+                                </a>
+                                team and it is already peer-dependency of
+                                <code>&#64;taiga-ui/kit</code>
+                                library.
+                                <p class="tui-space_bottom-0">
+                                    This example demonstrates how to use built-in
+                                    <a
+                                        href="https://maskito.dev/kit/number"
+                                        target="_blank"
+                                        tuiLink
+                                    >
+                                        Number
+                                    </a>
+                                    mask with postfix and augment it by several
+                                    <strong>Maskito</strong>
+                                    plugins.
+                                </p>
+                            </div>
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -92,12 +102,9 @@
                 [tuiTextfieldCleaner]="textfield.cleaner"
                 [tuiTextfieldSize]="textfield.size"
             >
-                <label
-                    *ngIf="textfield.size !== 's'"
-                    tuiLabel
-                >
-                    I am a label
-                </label>
+                @if (textfield.size !== 's') {
+                    <label tuiLabel>I am a label</label>
+                }
                 <input
                     placeholder="I am placeholder"
                     tuiTextfield

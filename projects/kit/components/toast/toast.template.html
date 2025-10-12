@@ -1,0 +1,24 @@
+<div
+    class="t-wrapper"
+    (tuiSwipe)="onSwipe()"
+>
+    <div
+        *polymorpheusOutlet="context.content as text; context: context"
+        tuiToast
+        [iconStart]="context.data?.toString() || ''"
+    >
+        {{ text }}
+    </div>
+    @if (context.closable && !isMobile) {
+        <button
+            appearance="icon"
+            size="xs"
+            tuiIconButton
+            type="button"
+            [iconStart]="icons.close"
+            (click.stop.prevent)="context.$implicit.complete()"
+        >
+            Close
+        </button>
+    }
+</div>

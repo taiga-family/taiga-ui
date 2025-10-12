@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, ElementRef, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
-import {type TuiKeySteps, TuiSlider} from '@taiga-ui/kit';
+import {provideTaiga} from '@taiga-ui/core';
+import {type TuiKeySteps, TuiSlider, TuiSliderComponent} from '@taiga-ui/kit';
 
 describe('TuiSliderKeyStepsDirective', () => {
     @Component({
@@ -10,20 +10,18 @@ describe('TuiSliderKeyStepsDirective', () => {
         imports: [ReactiveFormsModule, TuiSlider],
         template: `
             <input
-                #slider
                 tuiSlider
                 type="range"
                 [formControl]="control"
                 [keySteps]="keySteps"
-                [max]="max"
-                [min]="min"
+                [step]="step"
             />
         `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
-        @ViewChild('slider', {static: true, read: ElementRef})
+        @ViewChild(TuiSliderComponent, {static: true, read: ElementRef})
         public inputElRef!: ElementRef<HTMLInputElement>;
 
         public control = new FormControl(720_000);
@@ -35,8 +33,7 @@ describe('TuiSliderKeyStepsDirective', () => {
             [100, 1_000_000],
         ];
 
-        public max = 30;
-        public min = 0;
+        public step = 100 / 30;
     }
 
     let fixture: ComponentFixture<Test>;
@@ -45,7 +42,7 @@ describe('TuiSliderKeyStepsDirective', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
@@ -145,7 +142,7 @@ describe('TuiSliderKeyStepsDirective', () => {
                 [75, 0.99],
                 [100, 1],
             ];
-            testComponent.max = 100;
+            testComponent.step = 1;
             fixture.detectChanges();
         });
 
@@ -190,13 +187,11 @@ describe('TuiSliderKeyStepsDirective', () => {
         });
     });
 
-    describe('works even if slider has negative `min`-property', () => {
+    describe('works even if key steps has negative values', () => {
         beforeEach(() => {
-            testComponent.min = -10;
-            testComponent.max = 10;
-
+            testComponent.step = 5;
             testComponent.keySteps = [
-                [0, 0],
+                [0, -10_000],
                 [25, 10_000],
                 [50, 100_000],
                 [75, 500_000],
@@ -205,38 +200,38 @@ describe('TuiSliderKeyStepsDirective', () => {
         });
 
         const testsConditions = [
-            // Q1 (every step increases control's value by 2_000)
-            {controlValue: 0, expectedNativeValue: -10},
-            {controlValue: 2_000, expectedNativeValue: -9},
-            {controlValue: 4_000, expectedNativeValue: -8},
-            {controlValue: 6_000, expectedNativeValue: -7},
-            {controlValue: 8_000, expectedNativeValue: -6},
+            // Q1 (every step increases control's value by 4_000)
+            {controlValue: -10_000, expectedNativeValue: 0},
+            {controlValue: -6_000, expectedNativeValue: 1},
+            {controlValue: -2_000, expectedNativeValue: 2},
+            {controlValue: 2_000, expectedNativeValue: 3},
+            {controlValue: 6_000, expectedNativeValue: 4},
 
             // Q2 (every step increases control's value by 18_000)
-            {controlValue: 10_000, expectedNativeValue: -5},
-            {controlValue: 28_000, expectedNativeValue: -4},
-            {controlValue: 46_000, expectedNativeValue: -3},
-            {controlValue: 64_000, expectedNativeValue: -2},
-            {controlValue: 82_000, expectedNativeValue: -1},
+            {controlValue: 10_000, expectedNativeValue: 5},
+            {controlValue: 28_000, expectedNativeValue: 6},
+            {controlValue: 46_000, expectedNativeValue: 7},
+            {controlValue: 64_000, expectedNativeValue: 8},
+            {controlValue: 82_000, expectedNativeValue: 9},
 
             // Q3 (every step increases control's value by 80_000)
-            {controlValue: 100_000, expectedNativeValue: 0},
-            {controlValue: 180_000, expectedNativeValue: 1},
-            {controlValue: 260_000, expectedNativeValue: 2},
-            {controlValue: 340_000, expectedNativeValue: 3},
-            {controlValue: 420_000, expectedNativeValue: 4},
+            {controlValue: 100_000, expectedNativeValue: 10},
+            {controlValue: 180_000, expectedNativeValue: 11},
+            {controlValue: 260_000, expectedNativeValue: 12},
+            {controlValue: 340_000, expectedNativeValue: 13},
+            {controlValue: 420_000, expectedNativeValue: 14},
 
             // Q4 (every step increases control's value by 100_000)
-            {controlValue: 500_000, expectedNativeValue: 5},
-            {controlValue: 600_000, expectedNativeValue: 6},
-            {controlValue: 700_000, expectedNativeValue: 7},
-            {controlValue: 800_000, expectedNativeValue: 8},
-            {controlValue: 900_000, expectedNativeValue: 9},
-            {controlValue: 1_000_000, expectedNativeValue: 10},
+            {controlValue: 500_000, expectedNativeValue: 15},
+            {controlValue: 600_000, expectedNativeValue: 16},
+            {controlValue: 700_000, expectedNativeValue: 17},
+            {controlValue: 800_000, expectedNativeValue: 18},
+            {controlValue: 900_000, expectedNativeValue: 19},
+            {controlValue: 1_000_000, expectedNativeValue: 20},
         ] as const;
 
         testsConditions.forEach(({controlValue, expectedNativeValue}) => {
-            it(`${controlValue} => ${expectedNativeValue} (min = -10 | max = 10)`, () => {
+            it(`${controlValue} => ${expectedNativeValue}`, () => {
                 testComponent.control = new FormControl(controlValue);
                 fixture.detectChanges();
 
@@ -248,7 +243,7 @@ describe('TuiSliderKeyStepsDirective', () => {
         });
     });
 
-    it('sets the thumb to the `min`-value when the lowest keyStep value equals to the uppermost one', () => {
+    it('sets the thumb to the beginning of slider track when the lowest keyStep value equals to the uppermost one', () => {
         testComponent.keySteps = [
             [0, 25_000],
             [100, 25_000],
@@ -256,6 +251,6 @@ describe('TuiSliderKeyStepsDirective', () => {
         testComponent.control = new FormControl(25_000);
         fixture.detectChanges();
 
-        expect(testComponent.inputElRef.nativeElement.value).toBe(`${testComponent.min}`);
+        expect(testComponent.inputElRef.nativeElement.value).toBe('0');
     });
 });

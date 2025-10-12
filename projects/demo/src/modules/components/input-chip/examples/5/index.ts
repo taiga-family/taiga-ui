@@ -6,7 +6,6 @@ import {TuiHint, TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputChip, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiHint,

@@ -1,13 +1,15 @@
 <tui-segmented class="t-direction">
-    <label *ngFor="let direction of directions">
-        <input
-            name="radio"
-            type="radio"
-            [value]="direction"
-            [(ngModel)]="selected"
-        />
-        {{ direction }}
-    </label>
+    @for (direction of directions; track direction) {
+        <label>
+            <input
+                name="radio"
+                type="radio"
+                [value]="direction"
+                [(ngModel)]="selected"
+            />
+            {{ direction }}
+        </label>
+    }
 </tui-segmented>
 
 <portal-host class="dropdowns">

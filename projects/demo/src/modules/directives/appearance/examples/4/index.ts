@@ -1,15 +1,14 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {KeyValuePipe, NgForOf} from '@angular/common';
+import {KeyValuePipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
-    imports: [ClipboardModule, KeyValuePipe, NgForOf, TuiButton],
+    imports: [ClipboardModule, KeyValuePipe, TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

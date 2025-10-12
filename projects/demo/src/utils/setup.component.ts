@@ -5,7 +5,6 @@ import {tuiPure} from '@taiga-ui/cdk';
 import {toKebab} from './kebab.pipe';
 
 @Component({
-    standalone: true,
     selector: 'tui-setup',
     imports: [TuiDocCode],
     template: `

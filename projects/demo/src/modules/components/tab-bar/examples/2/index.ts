@@ -6,7 +6,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiTabBar} from '@taiga-ui/addon-mobile';
 
 @Component({
-    standalone: true,
     imports: [RouterLink, RouterLinkActive, TuiTabBar],
     templateUrl: './index.html',
     encapsulation,

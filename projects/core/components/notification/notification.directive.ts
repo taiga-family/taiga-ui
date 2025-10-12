@@ -9,7 +9,11 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {
+    tuiIsString,
+    tuiSetSignal,
+    tuiWithStyles,
+} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {
@@ -21,30 +25,20 @@ import {TuiIcons, TuiWithIcons} from '@taiga-ui/core/directives/icons';
 import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 
 @Component({
-    standalone: true,
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/notification.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/notification.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-notification',
-    },
+    host: {class: 'tui-notification'},
 })
-class TuiNotificationStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
     providers: [
         tuiAppearanceOptionsProvider(TUI_NOTIFICATION_OPTIONS),
-        tuiLinkOptionsProvider({
-            appearance: '',
-            pseudo: true,
-        }),
-        tuiButtonOptionsProvider({
-            appearance: 'outline-grayscale',
-            size: 's',
-        }),
+        tuiLinkOptionsProvider({appearance: '', pseudo: true}),
+        tuiButtonOptionsProvider({appearance: 'outline-grayscale', size: 's'}),
     ],
     hostDirectives: [TuiWithIcons, TuiWithAppearance],
     host: {
@@ -54,7 +48,7 @@ class TuiNotificationStyles {}
 export class TuiNotification implements OnChanges, OnInit {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
-    protected readonly nothing = tuiWithStyles(TuiNotificationStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
     protected readonly icons = inject(TuiIcons);
 
     @Input()
@@ -75,7 +69,9 @@ export class TuiNotification implements OnChanges, OnInit {
     }
 
     private refresh(): void {
-        this.icons.iconStart.set(
+        // TODO: Refactor to tuiDirectiveBinding
+        tuiSetSignal(
+            this.icons.iconStart,
             tuiIsString(this.icon) ? this.icon : this.icon(this.appearance),
         );
     }

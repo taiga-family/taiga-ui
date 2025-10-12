@@ -13,6 +13,8 @@ import {
     TuiRectAccessor,
     tuiRectAccessorFor,
 } from '@taiga-ui/core/classes';
+import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
@@ -34,20 +36,28 @@ export const TUI_HINT_PROVIDERS = [
 
 const GAP = 8;
 
-// TODO(v5): remove base component after angular update
 @Component({
-    standalone: true,
-    template: '',
+    selector: 'tui-hint',
+    imports: [PolymorpheusOutlet],
+    template: `
+        <ng-content />
+        <span
+            *polymorpheusOutlet="content() as text; context: hint.context"
+            [innerHTML]="text"
+        ></span>
+    `,
+    styleUrl: './hint.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [TUI_HINT_PROVIDERS, tuiButtonOptionsProvider({size: 's'})],
+    hostDirectives: [TuiAppearance, TuiAnimated],
     host: {
         '[class._untouchable]': 'pointer',
         '[class._mobile]': 'isMobile',
-        '[attr.data-appearance]': 'appearance',
-        '[attr.tuiTheme]': 'appearance === "dark" ? "light" : null',
+        '[attr.tuiTheme]': 'theme',
         '(document:click)': 'onClick($event.target)',
     },
 })
-export class TuiHintBaseComponent<C = any> {
+export class TuiHintComponent<C = any> {
     private readonly el = tuiInjectElement();
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
@@ -63,9 +73,11 @@ export class TuiHintBaseComponent<C = any> {
             ? signal('')
             : this.hint.content;
 
-    protected readonly appearance =
-        this.hint.appearance ||
-        this.hint.el.closest('[tuiTheme]')?.getAttribute('tuiTheme');
+    protected readonly theme = this.hint.el
+        .closest('[tuiTheme]')
+        ?.getAttribute('tuiTheme');
+
+    protected readonly appearance = tuiAppearance(this.hint.appearance);
 
     constructor() {
         inject(TuiPositionService)
@@ -133,21 +145,3 @@ export class TuiHintBaseComponent<C = any> {
         );
     }
 }
-
-@Component({
-    standalone: true,
-    selector: 'tui-hint',
-    imports: [PolymorpheusOutlet],
-    template: `
-        <ng-content />
-        <span
-            *polymorpheusOutlet="content() as text; context: hint.context"
-            [innerHTML]="text"
-        ></span>
-    `,
-    styleUrls: ['./hint.style.less'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: TUI_HINT_PROVIDERS,
-    hostDirectives: [TuiAnimated],
-})
-export class TuiHintComponent<C = any> extends TuiHintBaseComponent<C> {}

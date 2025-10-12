@@ -4,10 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiHint} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiHint],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

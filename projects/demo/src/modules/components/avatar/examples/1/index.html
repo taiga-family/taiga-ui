@@ -1,46 +1,26 @@
-<h3 tuiTitle>
-    Icon
-    <span tuiSubtitle>
-        Starts with
-        <code>&#64;tui.</code>
-    </span>
-</h3>
-<tui-avatar src="@tui.user" />
+<p><b>Icons and initials</b></p>
+<div tuiCell>
+    <div tuiAvatar="@tui.user"></div>
+    <div tuiAvatar="@img.mastercard"></div>
+    <div tuiAvatar="/assets/icons/nx.svg"></div>
+    <div tuiAvatar="UI"></div>
+</div>
 
-<h3 tuiTitle>
-    Colored icon
-    <span tuiSubtitle>
-        Use
-        <code>tuiIcon</code>
-        pipe to resolve name
-    </span>
-</h3>
-<tui-avatar [src]="'@tui.mastercard' | tuiIcon" />
-
-<tui-avatar [src]="'/assets/icons/nx.svg'" />
-
-<h3 tuiTitle>Image</h3>
-<tui-avatar [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async" />
-
-<h3 tuiTitle>Initials</h3>
-<tui-avatar src="AI" />
-
-<h3 tuiTitle>Content</h3>
-<div>
-    <tui-avatar>99+</tui-avatar>
-    <tui-avatar class="tui-space_horizontal-4">
+<p><b>Image, video and content</b></p>
+<div tuiCell>
+    <div tuiAvatar>
         <picture>
             <source
                 media="(min-width: 600px)"
-                srcset="/assets/images/angular.svg"
+                srcset="/assets/images/wisely.png"
             />
             <img
                 alt="Alex Inkin"
                 src="/assets/images/avatar.jpg"
             />
         </picture>
-    </tui-avatar>
-    <tui-avatar>
+    </div>
+    <div tuiAvatar>
         <video
             autoplay
             loop
@@ -52,5 +32,22 @@
                 type="video/mp4"
             />
         </video>
-    </tui-avatar>
+    </div>
+    <div tuiAvatar>99+</div>
+</div>
+
+<p><b>Fallback to initials or icon</b></p>
+<div tuiCell>
+    <div tuiAvatar="AI">
+        <img
+            alt="Alex Inkin"
+            src="https://broken.jpg"
+        />
+    </div>
+    <div tuiAvatar="@tui.user">
+        <img
+            alt="Alex Inkin"
+            src="https://broken.jpg"
+        />
+    </div>
 </div>

@@ -11,7 +11,9 @@ export const TUI_TABLE_PROVIDER: Provider[] = [
     {
         provide: TuiTableDirective,
         deps: [[new SkipSelf(), TuiTableDirective]],
-        useFactory: (controller: TuiTableDirective<any>): TuiTableDirective<any> => {
+        useFactory: (
+            controller: TuiTableDirective<Partial<Record<string, unknown>>>,
+        ): TuiTableDirective<Partial<Record<string, unknown>>> => {
             controller.change$.pipe(tuiWatch(), takeUntilDestroyed()).subscribe();
 
             return controller;

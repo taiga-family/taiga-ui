@@ -1,50 +1,51 @@
-<tui-data-list
-    *ngIf="items; else loading"
-    [emptyContent]="emptyContent"
-    [size]="size"
->
-    <ng-container *ngIf="newOptionMode; else legacyOptionFallback">
-        <button
-            *ngFor="let item of $cast(items)"
-            #elementRef="elementRef"
-            new
-            tuiElement
-            tuiOption
-            type="button"
-            [disabled]="disabledItemHandler(item)"
-            [value]="item"
-            (click.capture)="itemClick.emit(item)"
-        >
-            <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
-                {{ text }}
-            </ng-container>
-        </button>
-    </ng-container>
-
-    <!-- TODO(v5): delete fallback -->
-    <ng-template #legacyOptionFallback>
-        <button
-            *ngFor="let item of $cast(items)"
-            #elementRef="elementRef"
-            automation-id="tui-data-list-wrapper__option"
-            tuiElement
-            tuiOption
-            type="button"
-            [disabled]="disabledItemHandler(item)"
-            [value]="item"
-            (click)="itemClick.emit(item)"
-        >
-            <span class="t-content">
-                <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
-                    {{ text }}
-                </ng-container>
-            </span>
-        </button>
-    </ng-template>
-</tui-data-list>
-<ng-template #loading>
+@if (items) {
+    <tui-data-list
+        [emptyContent]="emptyContent"
+        [size]="size"
+    >
+        @if (newOptionMode) {
+            @for (item of $cast(items); track item) {
+                <button
+                    #elementRef="elementRef"
+                    automation-id="tui-data-list-wrapper__option"
+                    new
+                    tuiElement
+                    tuiOption
+                    type="button"
+                    [disabled]="disabledItemHandler(item)"
+                    [value]="item"
+                    (click.capture)="itemClick.emit(item)"
+                >
+                    <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                        {{ text }}
+                    </ng-container>
+                </button>
+            }
+        } @else {
+            @for (item of $cast(items); track item) {
+                <button
+                    #elementRef="elementRef"
+                    automation-id="tui-data-list-wrapper__option"
+                    tuiElement
+                    tuiOption
+                    type="button"
+                    [disabled]="disabledItemHandler(item)"
+                    [value]="item"
+                    (click)="itemClick.emit(item)"
+                >
+                    <span class="t-content">
+                        <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                            {{ text }}
+                        </ng-container>
+                    </span>
+                </button>
+            }
+        }
+        <!-- TODO(v5): delete fallback -->
+    </tui-data-list>
+} @else {
     <tui-loader
         automation-id="tui-data-list-wrapper__loader"
         class="t-loader"
     />
-</ng-template>
+}

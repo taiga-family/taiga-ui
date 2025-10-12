@@ -2,16 +2,19 @@
     class="t-overlay"
     [class.t-overlay_visible]="dialogs().length"
 ></div>
-<section
-    *ngFor="let item of dialogs()"
-    aria-modal="true"
-    role="dialog"
-    tuiAnimatedParent
-    tuiFocusTrap
-    tuiScrollRef
-    class="t-dialog"
-    [attr.aria-labelledby]="item.id"
->
-    <ng-container *polymorpheusOutlet="item.component; context: item" />
-    <tui-scroll-controls class="t-scrollbars" />
-</section>
+<!--TODO: Rename to <article> in v5-->
+@for (item of dialogs(); track item) {
+    <section
+        aria-modal="true"
+        role="dialog"
+        tuiActiveZoneAdapter
+        tuiAnimatedParent
+        tuiFocusTrap
+        tuiScrollRef
+        class="t-dialog"
+        [attr.aria-labelledby]="item.id"
+    >
+        <ng-container *polymorpheusOutlet="item.component; context: item" />
+        <tui-scroll-controls class="t-scrollbars" />
+    </section>
+}

@@ -1,36 +1,32 @@
 import {Component, inject} from '@angular/core';
+import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
+    TUI_DIALOGS_CLOSE,
     TuiButton,
-    type TuiDialogContext,
-    TuiDialogService,
-    type TuiDialogSize,
+    TuiDialog,
+    TuiHeader,
+    TuiTitle,
 } from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {merge} from 'rxjs';
+
+import {AuthService} from './service';
 
 @Component({
-    standalone: true,
-    imports: [TuiButton],
+    imports: [TuiButton, TuiDialog, TuiHeader, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
+    providers: [
+        // This has to be added to global providers, shown here for demonstration purposes only
+        {
+            provide: TUI_DIALOGS_CLOSE,
+            useFactory: () => merge(inject(AuthService), inject(Router).events),
+        },
+    ],
 })
 export default class Example {
-    private readonly dialogs = inject(TuiDialogService);
-
-    protected onClick(
-        content: PolymorpheusContent<TuiDialogContext>,
-        header: PolymorpheusContent,
-        size: TuiDialogSize,
-    ): void {
-        this.dialogs
-            .open(content, {
-                label: 'What a cool library set',
-                header,
-                size,
-            })
-            .subscribe();
-    }
+    protected readonly auth = inject(AuthService);
+    protected open = false;
 }

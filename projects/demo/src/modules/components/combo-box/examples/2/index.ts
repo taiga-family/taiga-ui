@@ -7,7 +7,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         JsonPipe,
         ReactiveFormsModule,

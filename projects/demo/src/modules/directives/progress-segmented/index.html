@@ -29,13 +29,14 @@
             .
         </p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -49,13 +50,12 @@
                 [value]="value"
             ></progress>
         </tui-doc-demo>
-
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="segments"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="segments"
+        <table tuiDocAPI>
+            <tr
+                name="[segments]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="segments"
             >
                 A number of visual segments.
                 <p>
@@ -65,59 +65,54 @@
                     <code>max</code>
                     .
                 </p>
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="value"
+            </tr>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="value"
             >
-                This property specifies how much of the task that has been completed.
+                This property specifies how much of the task has been completed.
                 <p>
-                    It must be a valid
+                    Must be a valid
                     <strong>integer</strong>
                     number between 0 and
                     <code>max</code>
                     .
                 </p>
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="max"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="max"
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="max"
             >
                 <p>This property describes how much work the task indicated by the progress element requires.</p>
                 <p>
-                    It must be a valid
+                    Must be a valid
                     <strong>positive integer</strong>
-                    number. The default value is
+                    number. Default is
                     <code>1</code>
                     .
                 </p>
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeXS | TuiSizeXXL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeXS | TuiSizeXXL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
-                Height of the progress.
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiProgressColorSegments"
-                documentationPropertyType="string[]"
-                [documentationPropertyValues]="colorsVariants"
-                [(documentationPropertyValue)]="colors"
+                Height of the progress
+            </tr>
+            <tr
+                name="[tuiProgressColorSegments]"
+                tuiDocAPIItem
+                type="string[]"
+                [items]="colorsVariants"
+                [(value)]="colors"
             >
                 Colors of the progress segments.
-
                 <p>
                     Use CSS-property
                     <code>color</code>
@@ -125,8 +120,8 @@
                     <strong>single</strong>
                     solid color of progress indicator.
                 </p>
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

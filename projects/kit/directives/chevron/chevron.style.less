@@ -1,7 +1,7 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 [tuiChevron][tuiIcons]::after,
-tui-icon[tuiChevron]::after {
+tui-icon[tuiChevron]::before {
     .transition(~'transform, color');
 
     cursor: pointer;
@@ -26,7 +26,7 @@ tui-icon[tuiChevron]::after {
 }
 
 [tuiChevron][tuiIcons]._chevron-rotated::after,
-tui-icon[tuiChevron]._chevron-rotated::after {
+tui-icon[tuiChevron]._chevron-rotated::before {
     transform: rotate(180deg);
 }
 

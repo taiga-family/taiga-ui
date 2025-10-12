@@ -19,7 +19,6 @@ interface Country {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         ReactiveFormsModule,
@@ -43,7 +42,7 @@ interface Country {
                 />
 
                 <tui-data-list-wrapper
-                    *tuiTextfieldDropdown
+                    *tuiDropdown
                     new
                     [items]="countries$ | async"
                 />

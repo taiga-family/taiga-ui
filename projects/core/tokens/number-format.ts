@@ -30,7 +30,7 @@ export interface TuiNumberFormatSettings {
      */
     readonly thousandSeparator: string;
     /**
-     * Decimal part display mode. ('not-zero' by default)
+     * Decimal part display mode. ('pad' by default)
      */
     readonly decimalMode: TuiDecimalMode;
 }

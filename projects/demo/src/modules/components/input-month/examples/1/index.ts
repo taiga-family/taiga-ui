@@ -9,7 +9,6 @@ import {TuiInputMonth} from '@taiga-ui/kit';
 const NEXT_YEAR = TuiMonth.currentLocal().year + 1;
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputMonth, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

@@ -7,10 +7,9 @@ import {TuiLink, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputMonth} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputMonth, TuiLink, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -1,4 +1,4 @@
-<ng-container *ngIf="spinTexts$ | async as texts">
+@if (spinTexts$ | async; as texts) {
     <button
         appearance="flat"
         automation-id="tui-spin-button__left"
@@ -30,4 +30,4 @@
     >
         {{ texts[1] }}
     </button>
-</ng-container>
+}

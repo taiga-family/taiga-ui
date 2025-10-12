@@ -58,85 +58,85 @@
         {{ direction$ | async }}
     </p>
 
-    <table
-        *ngIf="data$ | async as data"
-        tuiTable
-        class="table"
-        [columns]="columns"
-        [direction]="(direction$ | async) ?? -1"
-        [tuiSortBy]="sortKey$ | async"
-        (tuiSortChange)="change($event)"
-    >
-        <thead>
-            <tr tuiThGroup>
-                <th
-                    *tuiHead="'name'"
-                    tuiSortable
-                    tuiTh
-                    [requiredSort]="true"
-                >
-                    Name
-                </th>
-                <th
-                    *tuiHead="'dob'"
-                    tuiTh
-                    [tuiSortable]="dob"
-                >
-                    Date of Birth
-                </th>
-                <th
-                    *tuiHead="'age'"
-                    tuiSortable
-                    tuiTh
-                    [requiredSort]="true"
-                >
-                    Age
-                </th>
-            </tr>
-        </thead>
-        <tbody
-            *tuiLet="data | tuiTableSort as sortedData"
-            tuiTbody
-            [data]="sortedData"
+    @if (data$ | async; as data) {
+        <table
+            tuiTable
+            class="table"
+            [columns]="columns"
+            [direction]="(direction$ | async) ?? -1"
+            [tuiSortBy]="sortKey$ | async"
+            (tuiSortChange)="change($event)"
         >
-            <tr
-                *ngFor="let item of sortedData"
-                tuiTr
+            <thead>
+                <tr tuiThGroup>
+                    <th
+                        *tuiHead="'name'"
+                        tuiSortable
+                        tuiTh
+                        [requiredSort]="true"
+                    >
+                        Name
+                    </th>
+                    <th
+                        *tuiHead="'dob'"
+                        tuiTh
+                        [tuiSortable]="dob"
+                    >
+                        Date of Birth
+                    </th>
+                    <th
+                        *tuiHead="'age'"
+                        tuiSortable
+                        tuiTh
+                        [requiredSort]="true"
+                    >
+                        Age
+                    </th>
+                </tr>
+            </thead>
+            <tbody
+                *tuiLet="data | tuiTableSort as sortedData"
+                tuiTbody
+                [data]="sortedData"
             >
-                <td
-                    *tuiCell="'name'"
-                    tuiTd
-                    [class.match]="isMatch(item.name)"
-                >
-                    {{ item.name }}
-                </td>
-                <td
-                    *tuiCell="'dob'"
-                    tuiTd
-                    [class.match]="isMatch(item.dob)"
-                >
-                    {{ item.dob }}
-                </td>
-                <td
-                    *tuiCell="'age'"
-                    tuiTd
-                    [class.match]="isMatch(item.age)"
-                >
-                    {{ item.age }}
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td [colSpan]="columns.length">
-                    <tui-table-pagination
-                        class="tui-space_top-2"
-                        [page]="(page$ | async) || 0"
-                        [total]="(total$ | async) || 0"
-                        (paginationChange)="onPagination($event)"
-                    />
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+                @for (item of sortedData; track item) {
+                    <tr tuiTr>
+                        <td
+                            *tuiCell="'name'"
+                            tuiTd
+                            [class.match]="isMatch(item.name)"
+                        >
+                            {{ item.name }}
+                        </td>
+                        <td
+                            *tuiCell="'dob'"
+                            tuiTd
+                            [class.match]="isMatch(item.dob)"
+                        >
+                            {{ item.dob }}
+                        </td>
+                        <td
+                            *tuiCell="'age'"
+                            tuiTd
+                            [class.match]="isMatch(item.age)"
+                        >
+                            {{ item.age }}
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td [colSpan]="columns.length">
+                        <tui-table-pagination
+                            class="tui-space_top-2"
+                            [page]="(page$ | async) || 0"
+                            [total]="(total$ | async) || 0"
+                            (paginationChange)="onPagination($event)"
+                        />
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    }
 </tui-loader>

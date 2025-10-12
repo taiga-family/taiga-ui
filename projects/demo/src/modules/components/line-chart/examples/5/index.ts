@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,10 +6,9 @@ import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
 import {type TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
-    imports: [NgForOf, TuiAxes, TuiLineChart, TuiLineChartHint],
+    imports: [TuiAxes, TuiLineChart, TuiLineChartHint],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

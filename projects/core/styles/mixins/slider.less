@@ -3,12 +3,21 @@
     @m: 0.75rem;
 };
 
-.tui-slider-ticks-labels(@input-size: m) {
-    @first-tick-center: (@thumb-diameters[@@input-size] / 2);
+@track-inset: {
+    @s: 0.625rem;
+    @m: 0.75rem;
+    @l: 1rem;
+};
+
+.tui-slider-ticks-labels(@thumb-size: m) {
+    @thumb: @thumb-diameters[@@thumb-size];
+
+    --t-offset: calc(@thumb / 2);
 
     display: flex;
-    margin: 0 @first-tick-center;
     font: var(--tui-font-text-s);
+    margin-inline-start: var(--t-offset);
+    margin-inline-end: var(--t-offset);
 
     & > * {
         position: relative;
@@ -16,50 +25,52 @@
         text-align: center;
 
         &:first-child {
-            left: -@first-tick-center;
-            inset-inline-start: -@first-tick-center;
+            left: calc(-1 * var(--t-offset));
+            inset-inline-start: calc(-1 * var(--t-offset));
             flex: 1;
             text-align: start;
         }
 
         &:last-child {
-            right: -@first-tick-center;
+            right: calc(-1 * var(--t-offset));
             flex: 1;
             text-align: end;
 
             @supports (inset-inline-end: 0) {
                 right: unset;
-                inset-inline-end: -@first-tick-center;
+                inset-inline-end: calc(-1 * var(--t-offset));
             }
         }
     }
 
-    tui-textfield + &, /* TODO: add :has([tuiInputSlider]) */
-    tui-input-slider + & {
-        margin-inline-start: calc(var(--tui-radius-m) / 2 + @first-tick-center);
-    }
-
-    tui-input-range + &,
     tui-range + & {
-        @thumb: @thumb-diameters[@@input-size];
+        --t-offset: @thumb;
+    }
 
-        margin-inline-start: @thumb;
-        margin-inline-end: @thumb;
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield[data-size='l'] + & {
+        --t-offset: calc(@track-inset[@l] + @thumb / 2);
+    }
 
-        & > * {
-            &:first-child {
-                left: -@thumb;
-                inset-inline-start: -@thumb;
-            }
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield[data-size='m'] + & {
+        --t-offset: calc(@track-inset[@m] + @thumb / 2);
+    }
 
-            &:last-child {
-                right: -@thumb;
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield[data-size='s'] + & {
+        --t-offset: calc(@track-inset[@s] + @thumb / 2);
+    }
 
-                @supports (inset-inline-end: 0) {
-                    right: unset;
-                    inset-inline-end: -@thumb;
-                }
-            }
-        }
+    tui-input-range[data-size='l'] + & {
+        --t-offset: calc(@track-inset[@l] + @thumb);
+    }
+
+    tui-input-range[data-size='m'] + & {
+        --t-offset: calc(@track-inset[@m] + @thumb);
+    }
+
+    tui-input-range[data-size='s'] + & {
+        --t-offset: calc(@track-inset[@s] + @thumb);
     }
 }

@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,11 +7,8 @@ import {TuiButton, TuiDataList, TuiDropdown, TuiGroup, TuiIcon} from '@taiga-ui/
 import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiBadge,
         TuiBlock,
         TuiButton,
@@ -24,7 +20,7 @@ import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
         TuiItemsWithMore,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -4,14 +4,15 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [fullsize]="true"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [fullsize]="true"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -21,21 +22,22 @@
                 [autoscroll]="autoscroll"
                 [horizontal]="horizontal"
             >
-                <label
-                    *ngFor="let chip of chips"
-                    tuiChip
-                    [appearance]="chip === selected ? 'accent' : 'neutral'"
-                >
-                    {{ chip }}
-                    <input
-                        appearance=""
-                        name="radio"
+                @for (chip of chips; track chip) {
+                    <label
                         tuiChip
-                        type="radio"
-                        [value]="chip"
-                        [(ngModel)]="selected"
-                    />
-                </label>
+                        [appearance]="chip === selected ? 'accent' : 'neutral'"
+                    >
+                        {{ chip }}
+                        <input
+                            appearance=""
+                            name="radio"
+                            tuiChip
+                            type="radio"
+                            [value]="chip"
+                            [(ngModel)]="selected"
+                        />
+                    </label>
+                }
             </div>
         </tui-doc-demo>
         <table tuiDocAPI>

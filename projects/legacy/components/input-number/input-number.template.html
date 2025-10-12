@@ -21,52 +21,52 @@
         ngProjectAs="input"
         select="input"
     />
-    <div
-        *ngIf="polymorpheusValueContent.length"
-        ngProjectAs="tuiContent"
-        class="t-value-content"
-    >
-        <ng-container *polymorpheusOutlet="valueContent as text">
-            {{ text }}
-        </ng-container>
-    </div>
+    @if (polymorpheusValueContent.length) {
+        <div
+            ngProjectAs="tuiContent"
+            class="t-value-content"
+        >
+            <ng-container *polymorpheusOutlet="valueContent as text">
+                {{ text }}
+            </ng-container>
+        </div>
+    }
 </tui-primitive-textfield>
 
-<section
-    *ngIf="step"
-    class="t-buttons"
->
-    <button
-        size="s"
-        tabindex="-1"
-        tuiIconButton
-        type="button"
-        class="t-button"
-        [appearance]="textfield.appearance"
-        [disabled]="!canIncrement"
-        [iconStart]="icons.up"
-        (click.prevent)="onArrow(step)"
-        (mousedown.prevent)="nativeFocusableElement?.focus()"
-    >
-        +
-    </button>
-    <button
-        size="s"
-        tabindex="-1"
-        tuiIconButton
-        type="button"
-        class="t-button"
-        [appearance]="textfield.appearance"
-        [disabled]="!canDecrement"
-        [iconStart]="icons.down"
-        (click.prevent)="onArrow(-step)"
-        (mousedown.prevent)="nativeFocusableElement?.focus()"
-    >
-        -
-    </button>
-</section>
+@if (step) {
+    <section class="t-buttons">
+        <button
+            size="s"
+            tabindex="-1"
+            tuiIconButton
+            type="button"
+            class="t-button"
+            [appearance]="textfield.appearance"
+            [disabled]="!canIncrement"
+            [iconStart]="icons.up"
+            (click.prevent)="onArrow(step)"
+            (mousedown.prevent)="nativeFocusableElement?.focus()"
+        >
+            +
+        </button>
+        <button
+            size="s"
+            tabindex="-1"
+            tuiIconButton
+            type="button"
+            class="t-button"
+            [appearance]="textfield.appearance"
+            [disabled]="!canDecrement"
+            [iconStart]="icons.down"
+            (click.prevent)="onArrow(-step)"
+            (mousedown.prevent)="nativeFocusableElement?.focus()"
+        >
+            -
+        </button>
+    </section>
+}
 
-<ng-container *ngIf="polymorpheusValueContent.changes | async" />
+@if (polymorpheusValueContent.changes | async) {}
 
 <ng-template #valueContent>
     <ng-content select="tuiContent" />

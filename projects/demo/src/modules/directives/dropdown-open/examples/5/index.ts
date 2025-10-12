@@ -29,10 +29,9 @@ class TopRightDirective extends TuiPositionAccessor {
 }
 
 @Component({
-    standalone: true,
     imports: [TopRightDirective, TuiButton, TuiDropdown, TuiDropdownOpen],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

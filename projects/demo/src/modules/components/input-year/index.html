@@ -6,26 +6,26 @@
     <ng-template pageTab>
         <p>Component to input a single year</p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="description"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template
-                #description
-                [ngSwitch]="index + 1"
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                <ng-container *ngSwitchCase="3">
-                    <code>TuiValueTransformer</code>
-                    is a great opportunity to override default form control's value format without breaking component's
-                    internal logic.
-                </ng-container>
-                <ng-container *ngSwitchDefault />
-            </ng-template>
-        </tui-doc-example>
+                <ng-template #description>
+                    @switch ($index + 1) {
+                        @case (3) {
+                            <code>TuiValueTransformer</code>
+                            is a great opportunity to override default form control's value format without breaking
+                            component's internal logic.
+                        }
+                        @default {}
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -52,7 +52,7 @@
                         [readOnly]="controlDoc.readonly"
                         [tuiDisabled]="controlDoc.disabled"
                     />
-                    <tui-calendar-year *tuiTextfieldDropdown />
+                    <tui-calendar-year *tuiDropdown />
                 </tui-textfield>
             </ng-template>
         </tui-doc-demo>
@@ -89,7 +89,7 @@
             <tbody
                 #dropdown
                 tuiDocDropdown
-                [hiddenOptions]="['tuiDropdownEnabled', 'limitWidth']"
+                [hiddenOptions]="['tuiDropdownEnabled', 'limitWidth', 'dropdownSided', 'dropdownSidedOffset']"
             ></tbody>
             <tbody
                 #controlDoc

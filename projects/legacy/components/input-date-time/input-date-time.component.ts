@@ -63,7 +63,7 @@ const DATE_TIME_SEPARATOR = ', ';
     standalone: false,
     selector: 'tui-input-date-time',
     templateUrl: './input-date-time.template.html',
-    styleUrls: ['./input-date-time.style.less'],
+    styleUrl: './input-date-time.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputDateTimeComponent),

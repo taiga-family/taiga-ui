@@ -8,10 +8,18 @@
 
 :host {
     color: transparent;
-    caret-color: transparent;
     background: transparent;
     border: none;
     outline: none;
+
+    // Hack for IOS Safari
+    --t-caret-color: rgba(255, 255, 255, 0.01);
+
+    :host-context([tuiTheme='dark']) {
+        --t-caret-color: rgba(50, 50, 50, 0.01);
+    }
+
+    caret-color: var(--t-caret-color);
 
     &::selection {
         background: transparent;
@@ -42,6 +50,10 @@
     border-radius: inherit;
     pointer-events: auto;
     cursor: text;
+
+    &:first-child {
+        pointer-events: none;
+    }
 
     &[data-focus='true'] .t-value {
         &_filled {

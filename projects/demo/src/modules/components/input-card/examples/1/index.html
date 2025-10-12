@@ -4,7 +4,6 @@
         <input
             formControlName="card"
             tuiInputCard
-            [icon]="card"
             (binChange)="onBinChange($event)"
         />
     </tui-textfield>
@@ -24,9 +23,6 @@
             />
         </tui-textfield>
     </section>
-    <tui-error
-        formControlName="card"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="card" />
 </form>
 <p>{{ form.value | json }}</p>

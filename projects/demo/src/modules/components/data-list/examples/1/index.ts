@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,10 +6,7 @@ import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
-        NgForOf,
-        NgIf,
         RouterLink,
         RouterLinkActive,
         TuiButton,
@@ -20,7 +16,7 @@ import {TuiChevron} from '@taiga-ui/kit';
         TuiIcon,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

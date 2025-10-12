@@ -1,21 +1,20 @@
-<ng-container *ngIf="size; else flexible">
-    <ng-container
-        *ngFor="let item of computedValue; let index = index"
-        [ngTemplateOutlet]="bar"
-        [ngTemplateOutletContext]="{$implicit: item, index: index, flexible: false}"
-    />
-</ng-container>
-<ng-template #flexible>
-    <div
-        *ngFor="let item of computedValue; let index = index"
-        class="t-wrapper"
-    >
+@if (size) {
+    @for (item of computedValue; track item) {
         <ng-container
             [ngTemplateOutlet]="bar"
-            [ngTemplateOutletContext]="{$implicit: item, index: index, flexible: true}"
+            [ngTemplateOutletContext]="{$implicit: item, index: $index, flexible: false}"
         />
-    </div>
-</ng-template>
+    }
+} @else {
+    @for (item of computedValue; track item) {
+        <div class="t-wrapper">
+            <ng-container
+                [ngTemplateOutlet]="bar"
+                [ngTemplateOutletContext]="{$implicit: item, index: $index, flexible: true}"
+            />
+        </div>
+    }
+}
 <ng-template
     #bar
     let-flexible="flexible"
@@ -28,7 +27,7 @@
         [class.t-bar_flexible]="flexible"
         [class.t-bar_negative]="item < 0"
         [size]="computedSize"
-        [style.background]="'var(--tui-chart-categorical-' + index.toString().padStart(2, '0') + ')'"
+        [style.background]="`var(--tui-chart-categorical-${index.toString().padStart(2, '0')})`"
         [style.height.%]="getHeight(item)"
         [value]="computedSegments"
     />

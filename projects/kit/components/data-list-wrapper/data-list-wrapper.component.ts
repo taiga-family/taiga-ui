@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -19,7 +18,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiElement} from '@taiga-ui/cdk/directives/element';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListAccessor,
@@ -43,12 +42,11 @@ import {
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector:
         'tui-data-list-wrapper:not([labels]), tui-data-list-wrapper:not([labels])[new]', // TODO(v5): remove [new]
-    imports: [NgForOf, NgIf, PolymorpheusOutlet, TuiDataList, TuiElement, TuiLoader],
+    imports: [PolymorpheusOutlet, TuiDataList, TuiElement, TuiLoader],
     templateUrl: './data-list-wrapper.template.html',
-    styleUrls: ['./data-list-wrapper.style.less'],
+    styleUrl: './data-list-wrapper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
 })
@@ -99,7 +97,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
         $implicit: T,
         {nativeElement}: ElementRef<HTMLElement>,
     ): TuiValueContentContext<T> {
-        return {$implicit, active: tuiIsNativeFocused(nativeElement)};
+        return {$implicit, active: tuiIsFocused(nativeElement)};
     }
 
     // TODO(v5): delete

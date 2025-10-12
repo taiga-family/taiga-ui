@@ -1,0 +1,65 @@
+:host {
+    position: relative;
+    display: block;
+}
+
+.t-end {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 50%;
+    display: flex;
+    inline-size: 50%;
+    text-align: end;
+    outline: none !important;
+    border: none;
+    padding-inline-end: var(--t-padding);
+    color: var(--tui-text-primary);
+    transition: none;
+
+    &:dir(rtl) {
+        right: unset;
+        inset-inline-end: 0;
+    }
+}
+
+.t-content-end {
+    color: var(--tui-text-primary);
+
+    tui-textfield:has(label:not(:empty)) & {
+        padding-block-start: calc(var(--t-height) / 3);
+    }
+
+    // TODO: Fallback until Chrome 105 & Safari 15.4
+    tui-textfield._with-label & {
+        padding-block-start: calc(var(--t-height) / 3);
+    }
+}
+
+._hidden._hidden {
+    opacity: 0;
+}
+
+tui-range {
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    right: 1rem;
+    z-index: 1;
+    margin: calc(-1 * var(--tui-thickness)) 0 0;
+
+    :host[data-size='m'] & {
+        right: 0.75rem;
+        left: 0.75rem;
+    }
+
+    :host[data-size='s'] & {
+        right: 0.625rem;
+        left: 0.625rem;
+    }
+}
+
+tui-textfield::ng-deep .t-clear {
+    display: none !important;
+}

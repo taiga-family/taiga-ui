@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,12 +6,9 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiLike} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, TuiButton, TuiLike],
+    imports: [FormsModule, ReactiveFormsModule, TuiButton, TuiLike],
     templateUrl: './index.html',
-    styles: [
-        ':host { display: flex; column-gap: 3rem; justify-content: space-between; flex-wrap: wrap; }',
-    ],
+    styles: ':host { display: flex; column-gap: 3rem; justify-content: space-between; flex-wrap: wrap; }',
     encapsulation,
     changeDetection,
 })

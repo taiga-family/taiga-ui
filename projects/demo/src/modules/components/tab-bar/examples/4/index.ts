@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,8 +7,7 @@ import {TuiButton} from '@taiga-ui/core';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgForOf, TuiButton, TuiTabBar],
+    imports: [AsyncPipe, TuiButton, TuiTabBar],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

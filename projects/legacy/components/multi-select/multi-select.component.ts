@@ -19,7 +19,7 @@ import {
     type TuiStringHandler,
 } from '@taiga-ui/cdk/types';
 import {tuiGetClipboardDataText} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiArrayToggle, tuiIsString, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_DATA_LIST_ACCESSOR,
@@ -61,7 +61,7 @@ import {AbstractTuiNativeMultiSelect} from './native-multi-select/native-multi-s
     standalone: false,
     selector: 'tui-multi-select',
     templateUrl: './multi-select.template.html',
-    styleUrls: ['./multi-select.style.less'],
+    styleUrl: './multi-select.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiMultiSelectComponent),
@@ -283,7 +283,7 @@ export class TuiMultiSelectComponent<T>
         if (
             this.interactive &&
             nativeFocusableElement &&
-            tuiIsNativeFocused(nativeFocusableElement)
+            tuiIsFocused(nativeFocusableElement)
         ) {
             this.open = !this.open;
         }

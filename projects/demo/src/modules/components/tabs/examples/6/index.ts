@@ -6,10 +6,9 @@ import {DemoRoute} from '@demo/routes';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [RouterLink, RouterLinkActive, TuiTabs],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

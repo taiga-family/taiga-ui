@@ -6,10 +6,9 @@ import {TuiBarChart} from '@taiga-ui/addon-charts';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiBarChart, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

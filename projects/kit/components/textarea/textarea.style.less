@@ -4,12 +4,12 @@
 @top-l-label: calc(0.625rem + var(--t-height) / 3);
 
 // TODO: Refactor to :has(label) after Safari 15.4
-:host-context(tui-textfield._with-label[data-size='m']) {
+:host-context(tui-textfield._with-label[data-size='m']._with-label[data-size='m']) {
     border-block-start-width: @top-m-label;
     padding-block-start: 0;
 }
 
-:host-context(tui-textfield._with-label[data-size='l']) {
+:host-context(tui-textfield._with-label[data-size='l']._with-label[data-size='l']) {
     border-block-start-width: @top-l-label;
     padding-block-start: 0;
 }

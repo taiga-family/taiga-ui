@@ -5,10 +5,6 @@
         [formControl]="control"
     />
 
-    <tui-calendar-month *tuiTextfieldDropdown />
+    <tui-calendar-month *tuiDropdown />
 </tui-textfield>
-
-<tui-error
-    [error]="[] | tuiFieldError | async"
-    [formControl]="control"
-/>
+<tui-error [formControl]="control" />

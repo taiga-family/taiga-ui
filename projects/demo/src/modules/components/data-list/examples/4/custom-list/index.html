@@ -14,41 +14,44 @@
     emptyContent="No results found"
     (keydown)="onKeyDown($event.key)"
 >
-    <tui-opt-group *ngIf="!value">
-        <button
-            tuiOption
-            type="button"
-            [value]="all"
-        >
-            All
-        </button>
-        <button
-            *ngFor="let item of items"
-            tuiOption
-            type="button"
-            [value]="item.items"
-        >
-            {{ item.name }} only
-        </button>
-    </tui-opt-group>
-    <ng-container *ngFor="let item of items">
+    @if (!value) {
+        <tui-opt-group>
+            <button
+                tuiOption
+                type="button"
+                [value]="all"
+            >
+                All
+            </button>
+            @for (item of items; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item.items"
+                >
+                    {{ item.name }} only
+                </button>
+            }
+        </tui-opt-group>
+    }
+    @for (item of items; track item) {
         <tui-opt-group
             *tuiLet="item.items | tuiFilter: filter : value as filtered"
             [label]="item.name"
         >
-            <tui-opt-group
-                *ngIf="filtered.length"
-                tuiMultiSelectGroup
-            >
-                <button
-                    *ngFor="let item of filtered"
-                    tuiOption
-                    type="button"
-                    [value]="item"
-                >
-                    {{ item }}
-                </button>
-            </tui-opt-group>
+            @if (filtered.length) {
+                <tui-opt-group tuiMultiSelectGroup>
+                    @for (item of filtered; track item) {
+                        <button
+                            tuiOption
+                            type="button"
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
+                    }
+                </tui-opt-group>
+            }
         </tui-opt-group>
-    </ng-container>
+    }
 </tui-data-list>

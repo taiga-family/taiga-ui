@@ -1,0 +1,126 @@
+&[data-appearance~='fullscreen'] {
+    display: flex;
+    flex-direction: column;
+    block-size: 100%;
+    inline-size: 100%;
+    padding: env(safe-area-inset-top) ~'max(calc(50vw - var(--tui-width) / 2), 1rem)'
+        ~'max(2rem, env(safe-area-inset-bottom))';
+    background: var(--tui-background-base);
+    box-shadow: none;
+
+    --tui-width: 45rem;
+    --tui-from: translateY(2rem);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+
+    > .t-close {
+        position: sticky;
+        top: env(safe-area-inset-top);
+        block-size: 4rem;
+        inline-size: auto;
+        align-self: flex-end;
+        margin-block-end: 2rem;
+        border-radius: 0 !important;
+        font: var(--tui-font-text-m) !important;
+        border-image: conic-gradient(var(--tui-background-base) 0 0) fill 0 / 0 / env(safe-area-inset-top) 100vw 0;
+
+        &::before {
+            display: none;
+        }
+    }
+
+    // Replace with :has when it's supported
+    //&:has(tui-app-bar) .t-close {
+    &.tui-app-bar .t-close {
+        display: none;
+    }
+
+    &:not(._closable):not(.tui-app-bar)::before {
+        content: '';
+        block-size: 1.5rem;
+    }
+
+    > tui-app-bar,
+    > ng-component > tui-app-bar {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        order: -1;
+        border-inline-end: calc(50vw - var(--tui-width) / 2) solid transparent;
+        border-inline-start: calc(50vw - var(--tui-width) / 2) solid transparent;
+        margin: 0 calc(var(--tui-width) / 2 - 50vw) 2rem;
+    }
+
+    > header,
+    > [tuiSlides] > * > header,
+    > ng-component > header,
+    > ng-component > [tuiSlides] > * > header {
+        margin-block-end: 2rem;
+    }
+
+    > footer,
+    > ng-component > footer {
+        display: flex;
+        gap: 0.5rem 0.75rem;
+        padding: 2rem calc(50vw - var(--tui-width) / 2);
+        margin: 0 calc(var(--tui-width) / 2 - 50vw) calc(-2rem - env(safe-area-inset-top));
+
+        &::before {
+            left: 0;
+            right: 0;
+        }
+    }
+
+    tui-root:not(._mobile) & {
+        > footer,
+        > ng-component > footer {
+            flex-direction: row;
+            background: color-mix(in hsl, var(--tui-background-base) 80%, transparent);
+            backdrop-filter: blur(2rem);
+
+            &::before {
+                display: none;
+            }
+
+            > button,
+            > a {
+                inline-size: auto;
+            }
+        }
+    }
+
+    tui-root._mobile & {
+        padding-block-end: ~'max(1rem, env(safe-area-inset-bottom))';
+
+        --tui-from: translateY(4rem);
+
+        .t-close {
+            align-self: flex-start;
+            block-size: 3.5rem;
+            margin-block-end: 1rem;
+        }
+
+        > tui-app-bar,
+        > ng-component > tui-app-bar {
+            margin: calc(-1 * env(safe-area-inset-top)) -1rem 1rem;
+            padding-block-start: env(safe-area-inset-top);
+            box-sizing: content-box;
+        }
+
+        > header,
+        > [tuiSlides] > * > header,
+        > ng-component > header,
+        > ng-component > [tuiSlides] > * > header {
+            margin: -0.25rem 0 1.5rem;
+        }
+
+        > footer,
+        > ng-component > footer {
+            padding: 0 1rem ~'max(1rem, env(safe-area-inset-bottom))';
+            margin: 1.5rem -1rem ~'calc(-1* max(1rem, env(safe-area-inset-bottom)))';
+        }
+    }
+}

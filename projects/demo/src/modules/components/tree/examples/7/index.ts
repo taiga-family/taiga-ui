@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject, Injectable} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -63,7 +63,7 @@ class TreeLoader implements TuiTreeLoader<Item> {
     standalone: true,
     imports: [AsyncPipe, NgIf, TuiButton, TuiLoader, TuiTree],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [

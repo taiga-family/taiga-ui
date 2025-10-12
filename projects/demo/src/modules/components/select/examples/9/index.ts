@@ -6,7 +6,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiChevron, TuiSelect, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

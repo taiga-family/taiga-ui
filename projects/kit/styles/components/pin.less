@@ -13,7 +13,6 @@
  * @see-also
  * Compass
  */
-tui-pin,
 [tuiPin] {
     --t-size: 2rem;
 
@@ -64,12 +63,10 @@ tui-pin,
         background: var(--tui-background-base);
     }
 
-    > tui-icon,
-    > tui-svg {
+    > tui-icon {
         .transition(~'width, height');
 
-        inline-size: 1.25rem;
-        block-size: 1.25rem;
+        font-size: 1.25rem;
         align-self: center;
     }
 
@@ -85,10 +82,8 @@ tui-pin,
             padding: 0.125rem;
         }
 
-        > tui-icon,
-        > tui-svg {
-            inline-size: 2.125rem;
-            block-size: 2.125rem;
+        > tui-icon {
+            font-size: 2.125rem;
         }
 
         &::before {
@@ -115,10 +110,8 @@ tui-pin,
             padding: 0.125rem;
         }
 
-        > tui-icon,
-        > tui-svg {
-            inline-size: 2.125rem;
-            block-size: 2.125rem;
+        > tui-icon {
+            font-size: 2.125rem;
         }
 
         &::before {

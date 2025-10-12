@@ -22,7 +22,7 @@
                     "params": "ignore"
                 },
                 {
-                    "target": "generate-llms-file",
+                    "target": "generate-llms",
                     "params": "ignore"
                 }
             ],
@@ -179,7 +179,7 @@
             }
         },
         "serve-ssr": {
-            "executor": "@nguniversal/builders:ssr-dev-server",
+            "executor": "@angular-devkit/build-angular:ssr-dev-server",
             "options": {},
             "configurations": {
                 "production": {
@@ -240,21 +240,21 @@
                 }
             ]
         },
-        "generate-llms-file": {
+        "generate-llms": {
             "executor": "nx:run-commands",
             "options": {
                 "parallel": false,
-                "command": "ts-node ./projects/demo/scripts/llms.ts"
+                "command": "npm run generate:llms && npm run generate:llms-full"
             }
         },
         "prerender": {
-            "executor": "@nguniversal/builders:prerender",
+            "executor": "@angular-devkit/build-angular:prerender",
             "outputs": ["{workspaceRoot}/dist/{projectName}"],
             "options": {
                 "browserTarget": "{projectName}:build:production",
                 "serverTarget": "{projectName}:server:production",
                 "routesFile": "projects/{projectName}/routes.txt",
-                "guessRoutes": false
+                "discoverRoutes": false
             },
             "configurations": {
                 "production": {}
@@ -273,7 +273,7 @@
                     "params": "ignore"
                 },
                 {
-                    "target": "generate-llms-file",
+                    "target": "generate-llms",
                     "params": "ignore"
                 }
             ],

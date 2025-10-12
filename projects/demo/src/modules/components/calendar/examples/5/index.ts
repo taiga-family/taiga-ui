@@ -3,7 +3,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {type TuiDay, type TuiHandler} from '@taiga-ui/cdk';
 import {TUI_DAY_TYPE_HANDLER, TuiCalendar} from '@taiga-ui/core';
 
-const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {
+const useValue: TuiHandler<TuiDay, string> = (day) => {
     if (day.day === 10) {
         return 'holiday';
     }
@@ -12,12 +12,11 @@ const handler: TuiHandler<TuiDay, string> = (day: TuiDay) => {
 };
 
 @Component({
-    standalone: true,
     imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
-    providers: [{provide: TUI_DAY_TYPE_HANDLER, useValue: handler}],
+    providers: [{provide: TUI_DAY_TYPE_HANDLER, useValue}],
 })
 export default class Example {}

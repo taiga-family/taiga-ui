@@ -7,10 +7,9 @@ import {TuiFade, TuiProgress} from '@taiga-ui/kit';
 import {TuiAppBar} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiAppBar, TuiButton, TuiFade, TuiPlatform, TuiProgress, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

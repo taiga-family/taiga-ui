@@ -1,27 +1,25 @@
-<ng-container *ngIf="items.changes | async" />
-<ng-container
-    *ngIf="directive.side === 'start'"
-    [ngTemplateOutlet]="template"
-/>
-<div
-    *ngFor="let item of items; let index = index"
-    class="t-item"
-    [class.t-item_hidden]="isHidden(index)"
->
-    <ng-container *ngTemplateOutlet="item" />
-</div>
-<ng-container
-    *ngIf="directive.side === 'end'"
-    [ngTemplateOutlet]="template"
-/>
-<ng-template #template>
-    <span
-        *ngIf="!isMoreHidden"
-        class="t-item t-item_more"
+@if (items.changes | async) {}
+@if (directive.side === 'start') {
+    <ng-container [ngTemplateOutlet]="template" />
+}
+@for (item of items; track item) {
+    <div
+        class="t-item"
+        [class.t-item_hidden]="isHidden($index)"
     >
-        <ng-container
-            [ngTemplateOutlet]="more || null"
-            [ngTemplateOutletContext]="{$implicit: lastIndex()}"
-        />
-    </span>
+        <ng-container *ngTemplateOutlet="item" />
+    </div>
+}
+@if (directive.side === 'end') {
+    <ng-container [ngTemplateOutlet]="template" />
+}
+<ng-template #template>
+    @if (!isMoreHidden) {
+        <span class="t-item t-item_more">
+            <ng-container
+                [ngTemplateOutlet]="more || null"
+                [ngTemplateOutletContext]="{$implicit: lastIndex()}"
+            />
+        </span>
+    }
 </ng-template>

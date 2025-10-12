@@ -24,14 +24,12 @@
             <tui-doc-tab src="assets/icons/nx.svg">Nx</tui-doc-tab>
         </button>
     </tui-tabs-with-more>
-    <tui-doc-code
-        *ngIf="add.activeItemIndex === 0"
-        code="ng add taiga-ui"
-    />
-    <tui-doc-code
-        *ngIf="add.activeItemIndex === 1"
-        [code]="nxAdd"
-    />
+    @if (add.activeItemIndex === 0) {
+        <tui-doc-code code="ng add taiga-ui" />
+    }
+    @if (add.activeItemIndex === 1) {
+        <tui-doc-code [code]="nxAdd" />
+    }
 
     <tui-notification class="tui-space_top-5">
         <strong>Note:</strong>
@@ -121,14 +119,12 @@
                 <tui-doc-tab src="assets/icons/npm.svg">Addons packages (optional)</tui-doc-tab>
             </button>
         </tui-tabs-with-more>
-        <tui-doc-code
-            *ngIf="install.activeItemIndex === 0"
-            [code]="main"
-        />
-        <tui-doc-code
-            *ngIf="install.activeItemIndex === 1"
-            [code]="addons"
-        />
+        @if (install.activeItemIndex === 0) {
+            <tui-doc-code [code]="main" />
+        }
+        @if (install.activeItemIndex === 1) {
+            <tui-doc-code [code]="addons" />
+        }
 
         <h2
             id="styles"
@@ -170,21 +166,18 @@
                 <tui-doc-tab src="assets/icons/css.svg">my.component.(less,scss)</tui-doc-tab>
             </button>
         </tui-tabs-with-more>
-        <ng-container *ngIf="styles.activeItemIndex === 0">
+        @if (styles.activeItemIndex === 0) {
             <tui-doc-code [code]="angularJsonStyles" />
-        </ng-container>
-        <tui-doc-code
-            *ngIf="styles.activeItemIndex === 1"
-            [code]="projectJsonStyles"
-        />
-        <tui-doc-code
-            *ngIf="styles.activeItemIndex === 2"
-            [code]="componentsStyles"
-        />
-        <tui-doc-code
-            *ngIf="styles.activeItemIndex === 3"
-            [code]="importLocalLess"
-        />
+        }
+        @if (styles.activeItemIndex === 1) {
+            <tui-doc-code [code]="projectJsonStyles" />
+        }
+        @if (styles.activeItemIndex === 2) {
+            <tui-doc-code [code]="componentsStyles" />
+        }
+        @if (styles.activeItemIndex === 3) {
+            <tui-doc-code [code]="importLocalLess" />
+        }
 
         <h2
             id="root"
@@ -212,14 +205,12 @@
                 <tui-doc-tab src="assets/icons/html.svg">app.component.html</tui-doc-tab>
             </button>
         </tui-tabs-with-more>
-        <tui-doc-code
-            *ngIf="ngStandalone.activeItemIndex === 0"
-            [code]="standalone"
-        />
-        <tui-doc-code
-            *ngIf="ngStandalone.activeItemIndex === 1"
-            [code]="appTemplate"
-        />
+        @if (ngStandalone.activeItemIndex === 0) {
+            <tui-doc-code [code]="standalone" />
+        }
+        @if (ngStandalone.activeItemIndex === 1) {
+            <tui-doc-code [code]="appTemplate" />
+        }
 
         <h2
             id="providers"
@@ -264,14 +255,12 @@
                 <tui-doc-tab src="assets/icons/nx.svg">project.json</tui-doc-tab>
             </button>
         </tui-tabs-with-more>
-        <tui-doc-code
-            *ngIf="icons.activeItemIndex === 0"
-            [code]="assets"
-        />
-        <tui-doc-code
-            *ngIf="icons.activeItemIndex === 1"
-            [code]="nxAssets"
-        />
+        @if (icons.activeItemIndex === 0) {
+            <tui-doc-code [code]="assets" />
+        }
+        @if (icons.activeItemIndex === 1) {
+            <tui-doc-code [code]="nxAssets" />
+        }
     </div>
 </section>
 
@@ -298,12 +287,10 @@
             <tui-doc-tab src="assets/icons/nx.svg">Nx</tui-doc-tab>
         </button>
     </tui-tabs-with-more>
-    <tui-doc-code
-        *ngIf="update.activeItemIndex === 0"
-        code="ng update &#64;taiga-ui/cdk"
-    />
-    <tui-doc-code
-        *ngIf="update.activeItemIndex === 1"
-        [code]="nxMigrate"
-    />
+    @if (update.activeItemIndex === 0) {
+        <tui-doc-code code="ng update &#64;taiga-ui/cdk" />
+    }
+    @if (update.activeItemIndex === 1) {
+        <tui-doc-code [code]="nxMigrate" />
+    }
 </section>

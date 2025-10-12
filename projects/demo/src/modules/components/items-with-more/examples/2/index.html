@@ -3,7 +3,7 @@
     tuiGroup
     [collapsed]="true"
 >
-    <ng-container *ngFor="let item of items; let index = index">
+    @for (item of items; track item) {
         <label
             *tuiItem
             appearance=""
@@ -14,10 +14,10 @@
             <input
                 tuiBlock
                 type="checkbox"
-                [(ngModel)]="value[index]"
+                [(ngModel)]="value[$index]"
             />
         </label>
-    </ng-container>
+    }
     <ng-template
         let-lastIndex
         tuiMore
@@ -33,25 +33,26 @@
             [tuiDropdown]="dropdown"
         >
             More
-            <tui-badge class="tui-space_left-2">{{ items.length - lastIndex - 1 }}</tui-badge>
+            <tui-badge>{{ items.length - lastIndex - 1 }}</tui-badge>
         </button>
         <ng-template #dropdown>
             <tui-data-list size="l">
-                <ng-container *ngFor="let item of items; let index = index">
-                    <button
-                        *ngIf="index > lastIndex"
-                        tuiOption
-                        type="button"
-                        (click)="value[index] = !value[index]"
-                    >
-                        {{ item }}
-                        <tui-icon
-                            icon="@tui.check"
-                            class="tui-space_left-2"
-                            [class._hidden]="!value[index]"
-                        />
-                    </button>
-                </ng-container>
+                @for (item of items; track item) {
+                    @if ($index > lastIndex) {
+                        <button
+                            tuiOption
+                            type="button"
+                            (click)="value[$index] = !value[$index]"
+                        >
+                            {{ item }}
+                            <tui-icon
+                                icon="@tui.check"
+                                class="tui-space_left-2"
+                                [class._hidden]="!value[$index]"
+                            />
+                        </button>
+                    }
+                }
             </tui-data-list>
         </ng-template>
     </ng-template>

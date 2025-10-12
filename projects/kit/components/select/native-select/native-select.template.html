@@ -1,35 +1,34 @@
-<option
-    *ngIf="showPlaceholder()"
-    disabled
-    selected
-    value=""
->
-    {{ placeholder() }}
-</option>
-
-<ng-container *ngIf="items && !isFlat(items); else flatItems">
-    <optgroup
-        *ngFor="let group of labels; let index = index"
-        [label]="labels[index]"
+@if (showPlaceholder()) {
+    <option
+        disabled
+        selected
+        value=""
     >
-        <ng-container *ngTemplateOutlet="options; context: {$implicit: items[index]}" />
-    </optgroup>
-</ng-container>
+        {{ placeholder() }}
+    </option>
+}
 
-<ng-template #flatItems>
+@if (items && !isFlat(items)) {
+    @for (group of labels; track group) {
+        <optgroup [label]="labels[$index]">
+            <ng-container *ngTemplateOutlet="options; context: {$implicit: items[$index]}" />
+        </optgroup>
+    }
+} @else {
     <ng-container *ngTemplateOutlet="options; context: {$implicit: items}" />
-</ng-template>
+}
 
 <ng-template
     #options
     let-items
 >
-    <option
-        *ngFor="let option of items"
-        [disabled]="itemsHandlers.disabledItemHandler()(option)"
-        [selected]="isSelected()(option)"
-        [value]="itemsHandlers.stringify()(option)"
-    >
-        {{ itemsHandlers.stringify()(option) }}
-    </option>
+    @for (option of items; track option) {
+        <option
+            [disabled]="itemsHandlers.disabledItemHandler()(option)"
+            [selected]="isSelected()(option)"
+            [value]="itemsHandlers.stringify()(option)"
+        >
+            {{ itemsHandlers.stringify()(option) }}
+        </option>
+    }
 </ng-template>

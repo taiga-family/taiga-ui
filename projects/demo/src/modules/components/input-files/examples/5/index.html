@@ -4,32 +4,32 @@
         [formControl]="control"
     />
     <ng-template let-dragged>
-        <div
-            *ngIf="dragged; else base"
-            class="content"
-        >
-            <tui-avatar
-                appearance="secondary"
-                src="@tui.droplet"
-            />
-            <div>
-                Drop it like it's hot!
-                <br />
-                <br />
-            </div>
-        </div>
-        <ng-template #base>
+        @if (dragged) {
             <div class="content">
-                <tui-avatar
+                <div
                     appearance="secondary"
-                    src="@tui.cloud-upload"
-                />
+                    size="l"
+                    tuiAvatar="@tui.droplet"
+                ></div>
+                <div>
+                    Drop it like it's hot!
+                    <br />
+                    <br />
+                </div>
+            </div>
+        } @else {
+            <div class="content">
+                <div
+                    appearance="secondary"
+                    size="l"
+                    tuiAvatar="@tui.cloud-upload"
+                ></div>
                 <div>
                     Drag and drop file here or
                     <a tuiLink>click to upload</a>
                 </div>
             </div>
-        </ng-template>
+        }
     </ng-template>
 </label>
 

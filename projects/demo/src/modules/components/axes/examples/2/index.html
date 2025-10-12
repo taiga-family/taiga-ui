@@ -20,15 +20,14 @@
     #hint
     let-setIndex
 >
-    <p
-        *ngFor="let item of value; let index = index"
-        class="hint"
-    >
-        <span
-            class="dot"
-            [style.background]="'var(--tui-chart-categorical-0' + index + ')'"
-        ></span>
-        <span class="name">{{ getSetName(index) }}</span>
-        <span>{{ (item[setIndex] || 0) * 1000 | tuiAmount: 'RUB' | async }}</span>
-    </p>
+    @for (item of value; track item) {
+        <p class="hint">
+            <span
+                class="dot"
+                [style.background]="`var(--tui-chart-categorical-0${$index})`"
+            ></span>
+            <span class="name">{{ getSetName($index) }}</span>
+            <span>{{ (item[setIndex] || 0) * 1000 | tuiAmount: 'RUB' | async }}</span>
+        </p>
+    }
 </ng-template>

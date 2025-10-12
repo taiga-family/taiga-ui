@@ -7,14 +7,13 @@
             [(ngModel)]="arbitrary"
         />
         <tui-input-chip *tuiItem />
-        <ng-container *ngIf="items | tuiHideSelected | tuiFilterByInput as items">
-            <ng-template
-                *ngIf="items.length"
-                tuiTextfieldDropdown
-            >
-                <tui-data-list-wrapper [items]="items" />
-            </ng-template>
-        </ng-container>
+        @if (items | tuiHideSelected | tuiFilterByInput; as items) {
+            @if (items.length) {
+                <ng-template tuiDropdown>
+                    <tui-data-list-wrapper [items]="items" />
+                </ng-template>
+            }
+        }
     </tui-textfield>
 </label>
 
@@ -23,7 +22,7 @@
     <tui-textfield
         #input
         multi
-        [content]="!input.focused() && pythons.length ? 'Selected ' + pythons.length + ' out of ' + items.length : ''"
+        [content]="!input.focused() && pythons.length ? `Selected ${pythons.length} out of ${items.length}` : ''"
         [disabledItemHandler]="disabled"
     >
         <label tuiLabel>Select Pythons</label>
@@ -32,18 +31,16 @@
             [placeholder]="pythons.length ? '' : 'Type for suggestions'"
             [(ngModel)]="pythons"
         />
-        <ng-template
-            *ngIf="!input.focused()"
-            tuiItem
-        />
-        <ng-container *ngIf="items | tuiHideSelected | tuiFilterByInput as items">
-            <ng-template
-                *ngIf="items.length"
-                tuiTextfieldDropdown
-            >
-                <tui-data-list-wrapper [items]="items" />
-            </ng-template>
-        </ng-container>
+        @if (!input.focused()) {
+            <ng-template tuiItem />
+        }
+        @if (items | tuiHideSelected | tuiFilterByInput; as items) {
+            @if (items.length) {
+                <ng-template tuiDropdown>
+                    <tui-data-list-wrapper [items]="items" />
+                </ng-template>
+            }
+        }
     </tui-textfield>
 </label>
 
@@ -61,7 +58,7 @@
             [(ngModel)]="multi"
         />
         <tui-data-list-wrapper
-            *tuiTextfieldDropdown
+            *tuiDropdown
             new
             tuiMultiSelectGroup
             [items]="items"
@@ -83,32 +80,34 @@
             [(ngModel)]="objects"
         />
         <tui-input-chip *tuiItem />
-        <tui-data-list *tuiTextfieldDropdown>
+        <tui-data-list *tuiDropdown>
             <tui-opt-group
                 label="Pythons"
                 tuiMultiSelectGroup
             >
-                <button
-                    *ngFor="let user of users | tuiFilterByInput"
-                    new
-                    tuiOption
-                    [value]="user"
-                >
-                    {{ user.name }}
-                </button>
+                @for (user of users | tuiFilterByInput; track user) {
+                    <button
+                        new
+                        tuiOption
+                        [value]="user"
+                    >
+                        {{ user.name }}
+                    </button>
+                }
             </tui-opt-group>
             <tui-opt-group
                 label="Collaborators"
                 tuiMultiSelectGroup
             >
-                <button
-                    *ngFor="let user of more | tuiFilterByInput"
-                    new
-                    tuiOption
-                    [value]="user"
-                >
-                    {{ user.name }}
-                </button>
+                @for (user of more | tuiFilterByInput; track user) {
+                    <button
+                        new
+                        tuiOption
+                        [value]="user"
+                    >
+                        {{ user.name }}
+                    </button>
+                }
             </tui-opt-group>
         </tui-data-list>
     </tui-textfield>

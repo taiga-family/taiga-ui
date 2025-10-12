@@ -7,7 +7,6 @@ import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

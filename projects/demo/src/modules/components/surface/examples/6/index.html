@@ -1,5 +1,6 @@
 <button
-    tuiSurface="floating"
+    tuiAppearance="floating"
+    tuiSurface
     type="button"
     class="button"
 >
@@ -7,15 +8,16 @@
         <span class="title">That looks good!</span>
         Apply manual compensation for a more balanced look.
     </span>
-    <tui-avatar
+    <span
         appearance="accent"
         size="s"
-        src="@tui.thumbs-up"
-    />
+        tuiAvatar="@tui.thumbs-up"
+    ></span>
 </button>
 
 <button
-    tuiSurface="floating"
+    tuiAppearance="floating"
+    tuiSurface
     type="button"
     class="button bad"
 >
@@ -23,9 +25,9 @@
         <span class="title">This looks bad...</span>
         Use negative margin or reduced padding on specific sides to fix it.
     </span>
-    <tui-avatar
+    <span
         appearance="accent"
         size="s"
-        src="@tui.thumbs-down"
-    />
+        tuiAvatar="@tui.thumbs-down"
+    ></span>
 </button>

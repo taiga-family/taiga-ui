@@ -7,7 +7,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputDateRange, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

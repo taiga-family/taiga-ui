@@ -38,27 +38,37 @@
     (tuiSheetDialogChange)="open.set($event)"
 >
     <div class="favorites">
-        <tui-avatar-labeled
-            *ngFor="let item of items | slice: 0 : 6"
-            [label]="item.name"
-        >
-            <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
-        </tui-avatar-labeled>
+        @for (item of items | slice: 0 : 6; track item) {
+            <tui-avatar-labeled [label]="item.name">
+                <div tuiAvatar="@tui.user">
+                    <img
+                        alt=""
+                        [src]="item.avatar"
+                    />
+                </div>
+            </tui-avatar-labeled>
+        }
     </div>
     <div class="items">
-        <button
-            *ngFor="let item of items | tuiFilter: filter : search"
-            tuiCell
-            type="button"
-            class="cell"
-            (click)="open.set(false)"
-        >
-            <tui-avatar [src]="item.avatar | tuiFallbackSrc: '@tui.user' | async" />
-            <span tuiTitle>
-                <span tuiFade>{{ item.name }}</span>
-                <span tuiSubtitle>{{ item.email }}</span>
-            </span>
-        </button>
+        @for (item of items | tuiFilter: filter : search; track item) {
+            <button
+                tuiCell
+                type="button"
+                class="cell"
+                (click)="open.set(false)"
+            >
+                <div tuiAvatar="@tui.user">
+                    <img
+                        alt=""
+                        [src]="item.avatar"
+                    />
+                </div>
+                <span tuiTitle>
+                    <span tuiFade>{{ item.name }}</span>
+                    <span tuiSubtitle>{{ item.email }}</span>
+                </span>
+            </button>
+        }
     </div>
     <footer tuiFloatingContainer>
         <button

@@ -18,7 +18,7 @@ export function tuiAppearance(
 ): WritableSignal<A>;
 export function tuiAppearance(value: Signal<A>, options?: InjectOptions): Signal<A>;
 export function tuiAppearance(value: A | Signal<A>, options?: InjectOptions): Signal<A> {
-    return tuiDirectiveBinding(TuiAppearance, 'appearance', value, options);
+    return tuiDirectiveBinding(TuiAppearance, 'tuiAppearance', value, options);
 }
 
 export function tuiAppearanceState(
@@ -30,7 +30,7 @@ export function tuiAppearanceState(
     value: S | Signal<S>,
     options?: InjectOptions,
 ): Signal<S> {
-    return tuiDirectiveBinding(TuiAppearance, 'state', value, options);
+    return tuiDirectiveBinding(TuiAppearance, 'tuiAppearanceState', value, options);
 }
 
 export function tuiAppearanceFocus(
@@ -42,7 +42,7 @@ export function tuiAppearanceFocus(
     value: F | Signal<F>,
     options?: InjectOptions,
 ): Signal<F> {
-    return tuiDirectiveBinding(TuiAppearance, 'focus', value, options);
+    return tuiDirectiveBinding(TuiAppearance, 'tuiAppearanceFocus', value, options);
 }
 
 export function tuiAppearanceMode(
@@ -54,5 +54,5 @@ export function tuiAppearanceMode(
     value: M | Signal<M>,
     options?: InjectOptions,
 ): Signal<M> {
-    return tuiDirectiveBinding(TuiAppearance, 'mode', value, options);
+    return tuiDirectiveBinding(TuiAppearance, 'tuiAppearanceMode', value, options);
 }

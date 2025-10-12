@@ -36,18 +36,14 @@
     </tui-doc-example>
 
     <tui-accordion class="tui-space_top-5">
-        <tui-accordion-item>
-            CLI's webpack-based build system
-            <ng-template tuiAccordionItemContent>
-                <tui-doc-code [code]="example.dynamic" />
-            </ng-template>
-        </tui-accordion-item>
-        <tui-accordion-item>
-            CLI's esbuild-based build system
-            <ng-template tuiAccordionItemContent>
-                <tui-doc-code [code]="example.esbuild" />
-            </ng-template>
-        </tui-accordion-item>
+        <button tuiAccordion>CLI's webpack-based build system</button>
+        <tui-expand>
+            <tui-doc-code [code]="example.dynamic" />
+        </tui-expand>
+        <button tuiAccordion>CLI's esbuild-based build system</button>
+        <tui-expand>
+            <tui-doc-code [code]="example.esbuild" />
+        </tui-expand>
     </tui-accordion>
 
     <tui-doc-example

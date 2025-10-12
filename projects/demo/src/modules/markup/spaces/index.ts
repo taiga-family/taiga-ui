@@ -5,7 +5,6 @@ import {TuiDemo} from '@demo/utils';
 import {StylesInfo} from '../../app/styles-info';
 
 @Component({
-    standalone: true,
     imports: [StylesInfo, TuiDemo],
     templateUrl: './index.html',
     changeDetection,

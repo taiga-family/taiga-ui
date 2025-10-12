@@ -14,11 +14,12 @@
         class="wrapper"
         [style.opacity]="1 / node.level"
     >
-        <tui-icon
-            *ngIf="value.icon"
-            class="t-icon"
-            [icon]="value.icon"
-        />
+        @if (value.icon) {
+            <tui-icon
+                class="t-icon"
+                [icon]="value.icon"
+            />
+        }
         {{ value.text }}
     </div>
 </ng-template>

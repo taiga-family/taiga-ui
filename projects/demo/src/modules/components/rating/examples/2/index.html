@@ -7,16 +7,17 @@
         [max]="3"
         [(ngModel)]="value"
     />
-    <button
-        *ngIf="value"
-        appearance="icon"
-        iconStart="@tui.x"
-        size="s"
-        tuiIconButton
-        type="button"
-        class="button"
-        (click)="value = 0"
-    >
-        Clear
-    </button>
+    @if (value) {
+        <button
+            appearance="icon"
+            iconStart="@tui.x"
+            size="s"
+            tuiIconButton
+            type="button"
+            class="button"
+            (click)="value = 0"
+        >
+            Clear
+        </button>
+    }
 </label>

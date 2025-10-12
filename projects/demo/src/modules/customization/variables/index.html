@@ -11,15 +11,17 @@
     </p>
     <p>Besides colors there are also following variables that can be adjusted at any level of DOM structure:</p>
     <ul>
-        <li *ngFor="let item of vars | keyvalue">
-            <tui-doc-copy
-                class="var"
-                [cdkCopyToClipboard]="item.key"
-            >
-                <code>{{ item.key }}</code>
-            </tui-doc-copy>
-            — {{ item.value }}
-        </li>
+        @for (item of vars | keyvalue; track item) {
+            <li>
+                <tui-doc-copy
+                    class="var"
+                    [cdkCopyToClipboard]="item.key"
+                >
+                    <code>{{ item.key }}</code>
+                </tui-doc-copy>
+                — {{ item.value }}
+            </li>
+        }
     </ul>
 
     <tui-doc-example

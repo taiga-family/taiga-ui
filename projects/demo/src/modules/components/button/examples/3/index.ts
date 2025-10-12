@@ -2,13 +2,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiIcon} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBlock} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [TuiAvatar, TuiButton, TuiIcon],
+    imports: [TuiAvatar, TuiButton, TuiIcon, TuiBlock],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

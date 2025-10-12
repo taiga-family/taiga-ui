@@ -7,10 +7,9 @@ import {TuiButton} from '@taiga-ui/core';
 import {type TuiInputComponent, TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiActiveZone, TuiButton, TuiInputModule],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -6,40 +6,41 @@
     />
 
     <tui-data-list
-        *tuiTextfieldDropdown
+        *tuiDropdown
         size="s"
     >
         <section class="filters">
-            <label
-                *ngFor="let category of categories"
-                tuiChip
-                [appearance]="filters[category] ? 'accent' : 'neutral'"
-                (pointerdown.prevent)="(0)"
-            >
-                {{ category }}
-                <input
-                    hidden
-                    type="checkbox"
-                    [(ngModel)]="filters[category]"
-                />
-            </label>
+            @for (category of categories; track category) {
+                <label
+                    tuiChip
+                    [appearance]="filters[category] ? 'accent' : 'neutral'"
+                    (pointerdown.prevent)="(0)"
+                >
+                    {{ category }}
+                    <input
+                        hidden
+                        type="checkbox"
+                        [(ngModel)]="filters[category]"
+                    />
+                </label>
+            }
         </section>
 
-        <ng-container *ngFor="let group of filmDatabase | keyvalue">
-            <tui-opt-group
-                *ngIf="filters[group.key]"
-                [label]="group.key"
-            >
-                <button
-                    *ngFor="let film of group.value | tuiFilterByInput"
-                    new
-                    tuiOption
-                    type="button"
-                    [value]="film"
-                >
-                    {{ film }}
-                </button>
-            </tui-opt-group>
-        </ng-container>
+        @for (group of filmDatabase | keyvalue; track group) {
+            @if (filters[group.key]) {
+                <tui-opt-group [label]="group.key">
+                    @for (film of group.value | tuiFilterByInput; track film) {
+                        <button
+                            new
+                            tuiOption
+                            type="button"
+                            [value]="film"
+                        >
+                            {{ film }}
+                        </button>
+                    }
+                </tui-opt-group>
+            }
+        }
     </tui-data-list>
 </tui-textfield>

@@ -4,31 +4,20 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes, TuiThemeColorService} from '@taiga-ui/cdk';
 import {
-    TuiAppearance,
     TuiButton,
     TuiDataList,
     TuiDropdown,
-    TuiIcon,
+    TuiHeader,
     TuiLink,
     TuiTitle,
 } from '@taiga-ui/core';
-import {
-    TuiAvatar,
-    TuiBadge,
-    TuiChevron,
-    TuiFade,
-    TuiSwitch,
-    TuiTabs,
-} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
+import {TuiAvatar, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        TuiAppearance,
         TuiAvatar,
-        TuiBadge,
         TuiButton,
         TuiCardLarge,
         TuiChevron,
@@ -36,7 +25,6 @@ import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
         TuiDropdown,
         TuiFade,
         TuiHeader,
-        TuiIcon,
         TuiLink,
         TuiNavigation,
         TuiRepeatTimes,

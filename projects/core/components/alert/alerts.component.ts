@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, NgComponentOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -18,11 +18,10 @@ import {identity} from 'rxjs';
 import {TUI_ALERTS_GROUPED} from './alert.tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-alerts',
-    imports: [CommonModule, TuiAnimatedParent, TuiMapperPipe],
+    imports: [AsyncPipe, NgComponentOutlet, TuiAnimatedParent, TuiMapperPipe],
     templateUrl: './alerts.template.html',
-    styleUrls: ['./alerts.style.less'],
+    styleUrl: './alerts.style.less',
     encapsulation: ViewEncapsulation.None,
     // So that we do not force OnPush on custom alerts
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection

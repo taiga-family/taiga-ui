@@ -30,13 +30,19 @@
 </p>
 
 <p>
-    <tui-input-color
-        [colors]="palette"
-        [tuiDropdownMaxHeight]="375"
-        [(ngModel)]="color"
-    >
-        Background color
-    </tui-input-color>
+    <tui-textfield [iconStart]="'@tui.paintbrush'">
+        <label tuiLabel>Background color</label>
+        <input
+            placeholder="#00000000"
+            tuiInputColor
+            [(ngModel)]="color"
+        />
+    </tui-textfield>
+    <label class="label">
+        <span>0%</span>
+        <span>Opacity</span>
+        <span>100%</span>
+    </label>
 </p>
 
 <div class="content">
@@ -44,35 +50,37 @@
         *tuiRepeatTimes="let i of 30"
         tuiCell
     >
-        <tui-avatar
+        <div
             appearance="primary"
-            src="@tui.star"
-        />
+            tuiAvatar="@tui.star"
+        ></div>
         <div tuiTitle>
             Title
             <div tuiSubtitle>Description</div>
         </div>
     </div>
 
-    <footer
-        *ngIf="floating"
-        @tuiSlideInTop
-        [tuiFloatingContainer]="background ? color : 'transparent'"
-    >
-        <button
-            tuiButton
-            type="button"
+    @if (floating) {
+        <footer
+            @tuiSlideInTop
+            [tuiFloatingContainer]="background ? color : 'transparent'"
         >
-            Main action
-        </button>
-        <button
-            *ngIf="secondAction"
-            appearance="flat"
-            tuiButton
-            type="button"
-            @tuiHeightCollapse
-        >
-            Secondary action
-        </button>
-    </footer>
+            <button
+                tuiButton
+                type="button"
+            >
+                Main action
+            </button>
+            @if (secondAction) {
+                <button
+                    appearance="flat"
+                    tuiButton
+                    type="button"
+                    @tuiHeightCollapse
+                >
+                    Secondary action
+                </button>
+            }
+        </footer>
+    }
 </div>

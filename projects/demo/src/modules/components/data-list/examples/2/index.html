@@ -55,14 +55,15 @@
     </tui-data-list>
     <ng-template #burgersTmp>
         <tui-data-list tuiDataListDropdownManager>
-            <button
-                *ngFor="let burger of burgers"
-                tuiOption
-                type="button"
-                (click)="selectOption(burger)"
-            >
-                {{ burger }}
-            </button>
+            @for (burger of burgers; track burger) {
+                <button
+                    tuiOption
+                    type="button"
+                    (click)="selectOption(burger)"
+                >
+                    {{ burger }}
+                </button>
+            }
             <button
                 iconEnd="@tui.chevron-right"
                 iconStart="@tui.menu"
@@ -79,14 +80,15 @@
     </ng-template>
     <ng-template #drinksTmp>
         <tui-data-list [size]="size">
-            <button
-                *ngFor="let drink of drinks"
-                tuiOption
-                type="button"
-                (click)="selectOption(drink)"
-            >
-                {{ drink }}
-            </button>
+            @for (drink of drinks; track drink) {
+                <button
+                    tuiOption
+                    type="button"
+                    (click)="selectOption(drink)"
+                >
+                    {{ drink }}
+                </button>
+            }
         </tui-data-list>
     </ng-template>
 </ng-template>

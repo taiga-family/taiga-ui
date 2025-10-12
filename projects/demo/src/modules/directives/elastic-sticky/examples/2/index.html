@@ -36,7 +36,7 @@
     </button>
     <p>I always wanted to be... a lumberjack!</p>
     <p>I always wanted to be... a lumberjack!</p>
-    <ng-container *ngIf="show">
+    @if (show) {
         <p>I always wanted to be... a lumberjack!</p>
         <p>I always wanted to be... a lumberjack!</p>
         <p>I always wanted to be... a lumberjack!</p>
@@ -77,7 +77,7 @@
         <p>I always wanted to be... a lumberjack!</p>
         <p>I always wanted to be... a lumberjack!</p>
         <p>I always wanted to be... a lumberjack!</p>
-    </ng-container>
+    }
     <header
         class="header"
         (tuiElasticSticky)="onElastic2($event)"

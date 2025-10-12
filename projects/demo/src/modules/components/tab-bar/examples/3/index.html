@@ -2,12 +2,13 @@
     tuiTabBar
     class="tabs"
 >
-    <button
-        *ngFor="let item of items"
-        tuiTabBarItem
-        type="button"
-        [icon]="item.icon"
-    >
-        {{ item.text }}
-    </button>
+    @for (item of items; track item) {
+        <button
+            tuiTabBarItem
+            type="button"
+            [icon]="item.icon"
+        >
+            {{ item.text }}
+        </button>
+    }
 </nav>

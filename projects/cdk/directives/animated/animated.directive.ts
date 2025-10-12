@@ -1,9 +1,12 @@
+import {isPlatformServer} from '@angular/common';
 import {
     afterNextRender,
     ApplicationRef,
     Directive,
     inject,
     type OnDestroy,
+    PLATFORM_ID,
+    type Renderer2,
     ViewContainerRef,
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -24,69 +27,30 @@ export class TuiAnimated implements OnDestroy {
     // @ts-ignore https://github.com/angular/angular/blob/main/packages/core/src/render3/interfaces/view.ts#L56
     private readonly renderer = inject(ViewContainerRef)._hostLView?.[11];
     private readonly el = tuiInjectElement();
-    private readonly app = inject(ApplicationRef);
 
     constructor() {
         afterNextRender(() => this.remove());
 
-        if (!this.renderer) {
+        if (!this.renderer || isPlatformServer(inject(PLATFORM_ID))) {
             return;
         }
 
         // delegate is used in Angular Animations renderer
         const renderer = this.renderer.delegate || this.renderer;
-        const {removeChild, data} = renderer;
 
-        if (data[TUI_LEAVE]) {
-            data[TUI_LEAVE].push(this.el);
-
-            return;
+        if (renderer.data[TUI_LEAVE]) {
+            renderer.data[TUI_LEAVE].push(this.el);
+        } else {
+            renderer.data[TUI_LEAVE] = [this.el];
+            renderer.removeChild = wrap(renderer);
         }
-
-        data[TUI_LEAVE] = [this.el];
-
-        afterNextRender(() => {
-            renderer.removeChild = (parent: Node, el: Node, host?: boolean) => {
-                const remove = (): void => removeChild.call(renderer, parent, el, host);
-                const elements: Element[] = data[TUI_LEAVE];
-                const element = elements.find((leave) => el.contains(leave));
-
-                if (!element) {
-                    remove();
-
-                    return;
-                }
-
-                element.classList.remove(TUI_ENTER);
-
-                const {length} = element.getAnimations?.() || [];
-
-                element.classList.add(TUI_LEAVE);
-
-                const animations = element.getAnimations?.() ?? [];
-                const last = animations[animations.length - 1];
-                const finish = (): void => {
-                    if (!parent || parent.contains(el)) {
-                        remove();
-                        this.app.tick();
-                    }
-                };
-
-                if (animations.length > length && last) {
-                    last.onfinish = finish;
-                    last.oncancel = finish;
-                } else {
-                    remove();
-                }
-            };
-        });
     }
 
     public ngOnDestroy(): void {
         const data = this.renderer?.data || {[TUI_LEAVE]: []};
 
         setTimeout(() => {
-            data[TUI_LEAVE] = data[TUI_LEAVE].filter((e: Element) => e !== this.el);
+            data[TUI_LEAVE] = data[TUI_LEAVE]?.filter((e: Element) => e !== this.el);
         });
     }
 
@@ -95,4 +59,43 @@ export class TuiAnimated implements OnDestroy {
             this.el.classList.remove(TUI_ENTER);
         }
     }
+}
+
+function wrap(renderer: Renderer2): Renderer2['removeChild'] {
+    const {removeChild} = renderer;
+    const app = inject(ApplicationRef);
+
+    return (parent: Node, el: Node, host?: boolean): void => {
+        const remove = (): void => removeChild.call(renderer, parent, el, host);
+        const elements: Element[] = renderer.data[TUI_LEAVE];
+        const element = elements.find((leave) => el.contains(leave));
+
+        if (!element) {
+            remove();
+
+            return;
+        }
+
+        element.classList.remove(TUI_ENTER);
+
+        const {length} = element.getAnimations?.() || [];
+
+        element.classList.add(TUI_LEAVE);
+
+        const animations = element.getAnimations?.() ?? [];
+        const last = animations[animations.length - 1];
+        const finish = (): void => {
+            if (!parent || parent.contains(el)) {
+                remove();
+                app.tick();
+            }
+        };
+
+        if (animations.length > length && last) {
+            last.onfinish = finish;
+            last.oncancel = finish;
+        } else {
+            remove();
+        }
+    };
 }

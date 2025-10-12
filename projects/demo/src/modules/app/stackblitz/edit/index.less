@@ -1,8 +1,17 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
+tui-icon {
+    background: currentColor;
+
+    &::before {
+        color: var(--tui-background-base);
+        transform: scale(0.6);
+    }
+}
+
 @media @tui-mobile {
     [tuiButton] {
         font-size: 0;
-        padding: 0 0 0 0.28125rem;
+        gap: 0;
     }
 }

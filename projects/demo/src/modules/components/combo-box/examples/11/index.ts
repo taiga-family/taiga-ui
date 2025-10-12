@@ -14,7 +14,6 @@ import {
 import {map, type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
@@ -26,7 +25,7 @@ import {map, type Observable} from 'rxjs';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
 })

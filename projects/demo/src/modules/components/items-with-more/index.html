@@ -8,14 +8,43 @@
 
         <tui-notification>Resize the screen to see extra items disappear</tui-notification>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [fullsize]="true"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [fullsize]="true"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            >
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            Hiding excessive items and showing text.
+                        }
+                        @case (1) {
+                            Putting extra items in a dropdown.
+                        }
+                        @case (2) {
+                            Handling excessive items at the beginning of the list.
+                        }
+                        @case (3) {
+                            Hiding extra items in a multi line container.
+                        }
+                        @case (4) {
+                            Showing compact version of text in a
+                            <a
+                                tuiLink
+                                [routerLink]="routes.Cell"
+                            >
+                                Cell
+                            </a>
+                            in limited space.
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -26,14 +55,14 @@
                 [required]="required"
                 [side]="side"
             >
-                <ng-container *ngFor="let item of items">
+                @for (item of items; track item) {
                     <tui-chip
                         *tuiItem
                         class="tui-space_right-2 tui-space_vertical-1"
                     >
                         {{ item }}
                     </tui-chip>
-                </ng-container>
+                }
                 <span
                     *tuiMore
                     class="tui-space_right-2 tui-space_vertical-1"

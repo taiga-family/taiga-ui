@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiOptionWithValue} from '@taiga-ui/core/components/data-list';
@@ -11,25 +10,24 @@ import {TuiCheckbox} from '@taiga-ui/kit/components/checkbox';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 
 @Component({
-    standalone: true,
-    imports: [NgIf, TuiCheckbox],
+    imports: [TuiCheckbox],
     template: `
-        <input
-            *ngIf="option"
-            tuiCheckbox
-            type="checkbox"
-            [checked]="selected()"
-            [size]="size() === 'l' ? 'm' : 's'"
-        />
+        @if (option) {
+            <input
+                tuiCheckbox
+                type="checkbox"
+                [checked]="selected()"
+                [size]="size() === 'l' ? 'm' : 's'"
+            />
+        }
     `,
-    styles: [
-        `
-            :host-context(tui-dropdown-mobile) input {
-                order: 100;
-                margin-inline-start: auto;
-            }
-        `,
-    ],
+    styles: `
+        :host-context(tui-dropdown-mobile) input,
+        :host-context(tui-sheet-dialog) input {
+            order: 100;
+            margin-inline-start: auto;
+        }
+    `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMultiSelectOption<T> {

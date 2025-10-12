@@ -47,6 +47,7 @@ function decorateGetter(
  * @throws error if used not on getter or function
  *
  * CAUTION: they must be pure.
+ * TODO(v5): drop compatibility for legacy "experimentalDecorators": true
  */
 export function tuiPure<T>(
     target: object,
@@ -90,6 +91,7 @@ export function tuiPure(
         throw new TuiPureException();
     }
 
+    // TODO(v5): drop compatibility for legacy "experimentalDecorators": true
     const {get, enumerable, value} = descriptor!;
     const propertyKey = propertyKeyOrContext as string;
 

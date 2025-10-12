@@ -5,7 +5,6 @@ describe('Tabs', () => {
     let component: Test;
 
     @Component({
-        standalone: true,
         imports: [TuiTabs],
         template: `
             <tui-tabs [(activeItemIndex)]="activeItemIndex">

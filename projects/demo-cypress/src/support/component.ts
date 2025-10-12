@@ -2,7 +2,7 @@ import 'cypress-plugin-tab';
 import './commands';
 
 import {provideNoopAnimations} from '@angular/platform-browser/animations';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga} from '@taiga-ui/core';
 import {mount} from 'cypress/angular';
 import addCompareSnapshotCommand from 'cypress-image-diff-js/command';
 
@@ -23,10 +23,17 @@ export const stableMount: typeof mount = (component, config) => {
         providers: [
             ...(config?.providers || []),
             provideNoopAnimations(),
-            NG_EVENT_PLUGINS,
+            provideTaiga(),
         ],
     }).then((mountResponse) =>
         cy
+            .then(
+                () =>
+                    'state' in Cypress &&
+                    typeof Cypress.state === 'function' &&
+                    Cypress.state('clock') && // returns `undefined` if `cy.clock()` was not called
+                    cy.tick(0), // Otherwise `fixture.whenStable()` will never resolve
+            )
             .get('body')
             .find('[data-cy-root]')
             .then(async () => {

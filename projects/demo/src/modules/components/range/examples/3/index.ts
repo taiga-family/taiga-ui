@@ -1,4 +1,4 @@
-import {JsonPipe, NgForOf} from '@angular/common';
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,10 +6,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiKeySteps, TuiRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, JsonPipe, NgForOf, TuiRange],
+    imports: [FormsModule, JsonPipe, TuiRange],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

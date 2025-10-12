@@ -7,7 +7,6 @@ import {TUI_FLUID_TYPOGRAPHY_OPTIONS, TuiFluidTypography} from '@taiga-ui/kit';
 import {TuiInputRangeModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiFluidTypography, TuiInputRangeModule, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

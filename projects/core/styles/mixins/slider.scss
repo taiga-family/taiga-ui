@@ -1,14 +1,25 @@
 $thumb-diameters: (
     's': 0.5rem,
-    'm': 1rem,
+    'm': 0.75rem,
+    'l': 0.75rem,
 );
 
+$track-inset: (
+    's': 0.625rem,
+    'm': 0.75rem,
+    'l': 1rem,
+);
+
+// TODO(v5): use `l` by default (default size for new textfields)
 @mixin tui-slider-ticks-labels($input-size: m) {
-    $first-tick-center: map-get($thumb-diameters, $input-size) / 2;
+    $thumb: map-get($thumb-diameters, $input-size);
+
+    --t-offset: calc($thumb / 2);
 
     display: flex;
-    margin: 0 $first-tick-center;
     font: var(--tui-font-text-s);
+    margin-inline-start: var(--t-offset);
+    margin-inline-end: var(--t-offset);
 
     & > * {
         position: relative;
@@ -16,36 +27,45 @@ $thumb-diameters: (
         text-align: center;
 
         &:first-child {
-            left: -$first-tick-center;
+            left: calc(-1 * var(--t-offset));
+            inset-inline-start: calc(-1 * var(--t-offset));
             flex: 1;
             text-align: start;
         }
 
         &:last-child {
-            right: -$first-tick-center;
+            right: calc(-1 * var(--t-offset));
             flex: 1;
             text-align: end;
+
+            @supports (inset-inline-end: 0) {
+                right: unset;
+                inset-inline-end: calc(-1 * var(--t-offset));
+            }
         }
     }
 
+    /* TODO(v5): delete */
     tui-input-slider + & {
-        margin-inline-start: calc(var(--tui-radius-m) / 2 + #{$first-tick-center});
+        margin-inline-start: calc(var(--tui-radius-m) / 2 + var(--t-offset));
     }
 
-    tui-input-range + &,
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield + & {
+        --t-offset: calc(var(--tui-radius-m) / 2 + $thumb / 2);
+    }
+
+    /* TODO: add :has([tuiInputSlider]) */
+    tui-textfield[data-size='l'] + & {
+        --t-offset: calc(var(--tui-radius-l) / 2 + $thumb / 2);
+    }
+
+    tui-input-range:not([new]) + &, /* TODO(v5): delete */
     tui-range + & {
-        $thumb: map-get($thumb-diameters, $input-size);
-        margin-inline-start: $thumb;
-        margin-inline-end: $thumb;
+        --t-offset: $thumb;
+    }
 
-        & > * {
-            &:first-child {
-                left: -$thumb;
-            }
-
-            &:last-child {
-                right: -$thumb;
-            }
-        }
+    tui-input-range[new] + & {
+        --t-offset: calc(map-get($track-inset, $input-size) + $thumb);
     }
 }

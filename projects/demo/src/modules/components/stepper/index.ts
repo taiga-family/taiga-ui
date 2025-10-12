@@ -5,7 +5,6 @@ import {type TuiOrientation} from '@taiga-ui/core';
 import {TuiStepper} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiStepper],
     templateUrl: './index.html',
     changeDetection,

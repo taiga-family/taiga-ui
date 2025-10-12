@@ -13,10 +13,18 @@
             <div class="desktop-small">Desktop small</div>
             <div class="desktop-large">Desktop large</div>
         </td>
-        <td *ngIf="breakpoint$ | async as breakpoint">
-            <div *ngIf="breakpoint === 'mobile'">Mobile</div>
-            <div *ngIf="breakpoint === 'desktopSmall'">Desktop small</div>
-            <div *ngIf="breakpoint === 'desktopLarge'">Desktop large</div>
-        </td>
+        @if (breakpoint$ | async; as breakpoint) {
+            <td>
+                @if (breakpoint === 'mobile') {
+                    <div>Mobile</div>
+                }
+                @if (breakpoint === 'desktopSmall') {
+                    <div>Desktop small</div>
+                }
+                @if (breakpoint === 'desktopLarge') {
+                    <div>Desktop large</div>
+                }
+            </td>
+        }
     </tbody>
 </table>

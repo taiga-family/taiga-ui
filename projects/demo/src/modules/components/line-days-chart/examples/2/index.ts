@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -20,28 +20,26 @@ import {
     TuiMonth,
     tuiPure,
 } from '@taiga-ui/cdk';
-import {TUI_MONTHS, TuiNotification, type TuiPoint} from '@taiga-ui/core';
-import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
+import {TUI_MONTHS, TuiNotification, type TuiPoint, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputDateRange} from '@taiga-ui/kit';
 import {map, type Observable, of} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiAxes,
         TuiFilterPipe,
-        TuiInputDateRangeModule,
+        TuiInputDateRange,
         TuiLineChart,
         TuiLineDaysChart,
         TuiLineDaysChartHint,
         TuiMapperPipe,
         TuiNotification,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Example {

@@ -1,4 +1,4 @@
-import {DOCUMENT, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -17,19 +17,10 @@ import {TuiDocHeader} from '../internal/header';
 import {TuiDocNavigation} from '../navigation/navigation.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-main',
-    imports: [
-        NgIf,
-        RouterOutlet,
-        TuiButton,
-        TuiDocHeader,
-        TuiDocNavigation,
-        TuiIcon,
-        TuiRoot,
-    ],
+    imports: [RouterOutlet, TuiButton, TuiDocHeader, TuiDocNavigation, TuiIcon, TuiRoot],
     templateUrl: './main.template.html',
-    styleUrls: ['./main.style.less'],
+    styleUrl: './main.style.less',
     encapsulation: ViewEncapsulation.None,
     // @note: This one was default on purpose, so we can test demo in default mode.
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
@@ -40,7 +31,6 @@ export class TuiDocMain {
     protected readonly icons = inject(TUI_DOC_ICONS);
     protected readonly dir = inject(TUI_DOC_DIRECTION_ENABLED);
     protected readonly darkMode = inject(TUI_DARK_MODE);
-    protected readonly theme = computed(() => (this.darkMode() ? 'dark' : null));
     protected readonly icon = computed(() =>
         this.darkMode() ? this.icons.light : this.icons.dark,
     );

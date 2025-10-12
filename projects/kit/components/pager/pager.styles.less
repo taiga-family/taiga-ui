@@ -1,20 +1,15 @@
 :host {
-    --t-size: 0.5rem;
-
-    :host-context(tui-root._mobile) {
-        --t-size: 0.375rem;
-    }
-
     display: flex;
     align-items: center;
     overflow: hidden;
 
     &[data-size='m'] {
-        min-block-size: 1.25rem;
-
+        --t-size: 0.5rem;
         --t-small-dot: scale(0.75);
         --t-super-small-dot: scale(0.5);
         --t-icon-size: 1rem;
+
+        min-block-size: 1.25rem;
 
         :host-context(tui-root._mobile) & {
             --t-icon-size: 0.875rem;
@@ -22,11 +17,12 @@
     }
 
     &[data-size='s'] {
-        min-block-size: 1rem;
+        --t-size: 0.375rem;
+        --t-small-dot: scale(0.666);
+        --t-super-small-dot: scale(0.333);
+        --t-icon-size: 0.75rem;
 
-        --t-small-dot: scale(0.5);
-        --t-super-small-dot: scale(0.25);
-        --t-icon-size: 0.875rem;
+        min-block-size: 1rem;
 
         :host-context(tui-root._mobile) & {
             --t-icon-size: 0.6875rem;

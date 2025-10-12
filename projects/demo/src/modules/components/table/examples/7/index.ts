@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,11 +9,9 @@ import {TuiButton, TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiButtonSelect, TuiDataListWrapper, TuiPagination} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
         TuiButton,
         TuiButtonSelect,
         TuiDataListWrapper,

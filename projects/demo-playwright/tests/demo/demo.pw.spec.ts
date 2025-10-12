@@ -6,6 +6,7 @@ import {tuiIsFlakyExample} from '../../utils/is-flaky-examples';
 
 test.describe('Demo', () => {
     const demoPaths: string[] = JSON.parse(process.env['DEMO_PATHS']!);
+
     const axeConfig = JSON.parse(process.env['AXE_CONFIG']!);
 
     demoPaths.forEach((path) => {
@@ -43,17 +44,43 @@ test.describe('Demo', () => {
                 // e2e flaky: wait more time for charts graphics
                 await page.waitForTimeout(path.includes('charts') ? 1000 : 150);
 
-                const makeName = (dir: string): string[] => [
+                const makeName = (mode: string): string[] => [
                     path.replace('/', '').replaceAll('/', '-'),
-                    `${i + 1}.${dir}.png`,
+                    `${i + 1}.${mode}.png`,
                 ];
 
-                await expect.soft(example).toHaveScreenshot(makeName('ltr'));
+                await expect.soft(example).toHaveScreenshot(makeName('desktop'));
                 await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
-                await expect.soft(example).toHaveScreenshot(makeName('rtl'));
+                await expect.soft(example).toHaveScreenshot(makeName('desktop-rtl'));
+                await example.evaluate((node) => node.setAttribute('dir', 'auto'));
+
+                const nestingPlatform = await example.locator('[data-platform]').all();
+
+                // eslint-disable-next-line playwright/no-conditional-in-test
+                if (nestingPlatform.length > 0) {
+                    continue;
+                }
+
+                await example.evaluate((node) =>
+                    node.setAttribute('data-platform', 'ios'),
+                );
+
+                await expect.soft(example).toHaveScreenshot(makeName('ios'));
+
+                await example.evaluate((node) =>
+                    node.setAttribute('data-platform', 'android'),
+                );
+
+                await expect.soft(example).toHaveScreenshot(makeName('android'));
             }
 
-            await checkA11y(page, 'tui-doc-example > .t-example', {detailedReport: true});
+            await checkA11y(
+                page,
+                'tui-doc-example > .t-example',
+                {detailedReport: true},
+                false,
+                'v2',
+            );
         });
     });
 });

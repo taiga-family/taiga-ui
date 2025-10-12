@@ -1,6 +1,6 @@
 <tui-accordion>
-    <ng-container *ngFor="let item of data | keyvalue; let index = index">
-        <button [tuiAccordion]="index === 1">{{ item.key }}</button>
+    @for (item of data | keyvalue; track item) {
+        <button [tuiAccordion]="$index === 1">{{ item.key }}</button>
         <tui-expand>{{ item.value }}</tui-expand>
-    </ng-container>
+    }
 </tui-accordion>

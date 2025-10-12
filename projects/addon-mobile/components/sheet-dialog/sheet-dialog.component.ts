@@ -1,39 +1,40 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     ElementRef,
+    inject,
     type QueryList,
     ViewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {EMPTY_QUERY, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/components/dialog';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {exhaustMap, filter, isObservable, merge, of, Subject, take} from 'rxjs';
+import {exhaustMap, filter, isObservable, map, merge, of, Subject, take} from 'rxjs';
 
 import {type TuiSheetDialogOptions} from './sheet-dialog.options';
 
 const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '');
 
 @Component({
-    standalone: true,
     selector: 'tui-sheet-dialog',
-    imports: [NgForOf, NgIf, PolymorpheusOutlet],
+    imports: [PolymorpheusOutlet],
     templateUrl: './sheet-dialog.template.html',
-    styleUrls: ['./sheet-dialog.style.less'],
+    styleUrl: './sheet-dialog.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
     hostDirectives: [TuiAnimated],
     host: {
+        '[attr.data-appearance]': 'context.appearance',
         '[style.--tui-offset.px]': 'context.offset',
-        '[class._closeable]': 'context.closeable',
+        '[class._closeable]': 'context.closable',
         '[class._fullscreen]': 'context.fullscreen === true',
         '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
         '(document:touchend.zoneless)': 'onPointerChange(-1)',
@@ -53,19 +54,23 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         injectContext<TuiPopover<TuiSheetDialogOptions<I>, any>>();
 
     protected readonly close$ = new Subject<void>();
-    protected readonly $ = merge(this.close$, tuiCloseWatcher())
+    protected readonly $ = merge(
+        this.close$,
+        tuiCloseWatcher(),
+        inject(TUI_DIALOGS_CLOSE).pipe(map(TUI_TRUE_HANDLER)),
+    )
         .pipe(
             tuiZonefull(),
             exhaustMap(() => {
-                if (isObservable(this.context.closeable)) {
+                if (isObservable(this.context.closable)) {
                     if (this.el.scrollTop <= 0) {
                         this.el.scrollTo({top: this.initial, behavior: 'smooth'});
                     }
 
-                    return this.context.closeable.pipe(take(1));
+                    return this.context.closable.pipe(take(1));
                 }
 
-                return of(this.context.closeable);
+                return of(this.context.closable);
             }),
             filter(Boolean),
             takeUntilDestroyed(),
@@ -85,7 +90,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
     }
 
     private get initial(): number {
-        if (!this.context.closeable) {
+        if (!this.context.closable) {
             return 0;
         }
 

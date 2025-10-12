@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -6,10 +5,9 @@ import {type TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk';
 import {TuiCalendar} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
-    imports: [NgIf, TuiCalendar],
+    imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

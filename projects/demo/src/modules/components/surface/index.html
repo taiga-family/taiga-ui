@@ -1,7 +1,6 @@
 <tui-doc-page
     header="Surface"
-    package="CORE"
-    path="core/directives/surface"
+    package="LAYOUT"
     type="components"
 >
     <ng-template pageTab>
@@ -16,59 +15,57 @@
             component.
         </p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-container [ngSwitch]="index + 1">
-                <tui-notification
-                    *ngSwitchCase="1"
-                    class="tui-space_bottom-4"
-                >
-                    You can enable hover effects only on devices with pointer:
-                    <div>
-                        <code>&#64;media (hover: hover)</code>
-                    </div>
-                </tui-notification>
-
-                <tui-notification
-                    *ngSwitchCase="2"
-                    class="tui-space_bottom-4"
-                >
-                    Note that
-                    <code>padding</code>
-                    and
-                    <code>border-radius</code>
-                    are not part of the surface. Take a look at
-                    <a
-                        tuiLink
-                        [routerLink]="routes.CardLarge"
-                    >
-                        Card
-                    </a>
-                    component for that.
-                </tui-notification>
-
-                <tui-notification
-                    *ngSwitchCase="3"
-                    appearance="warning"
-                    class="tui-space_bottom-4"
-                >
-                    Text should have vertical compensation to look properly aligned, either with unequal
-                    <code>padding</code>
-                    or with negative
-                    <code>margin</code>
-                    . Typical value is
-                    <strong>0.25rem</strong>
-                    , smaller line-height might require
-                    <strong>0.125rem</strong>
-                    instead.
-                </tui-notification>
-            </ng-container>
-        </tui-doc-example>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            >
+                @switch ($index + 1) {
+                    @case (1) {
+                        <tui-notification class="tui-space_bottom-4">
+                            You can enable hover effects only on devices with pointer:
+                            <div>
+                                <code>&#64;media (hover: hover)</code>
+                            </div>
+                        </tui-notification>
+                    }
+                    @case (2) {
+                        <tui-notification class="tui-space_bottom-4">
+                            Note that
+                            <code>padding</code>
+                            and
+                            <code>border-radius</code>
+                            are not part of the surface. Take a look at
+                            <a
+                                tuiLink
+                                [routerLink]="routes.CardLarge"
+                            >
+                                Card
+                            </a>
+                            component for that.
+                        </tui-notification>
+                    }
+                    @case (3) {
+                        <tui-notification
+                            appearance="warning"
+                            class="tui-space_bottom-4"
+                        >
+                            Text should have vertical compensation to look properly aligned, either with unequal
+                            <code>padding</code>
+                            or with negative
+                            <code>margin</code>
+                            . Typical value is
+                            <strong>0.25rem</strong>
+                            , smaller line-height might require
+                            <strong>0.125rem</strong>
+                            instead.
+                        </tui-notification>
+                    }
+                }
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab="Layers">

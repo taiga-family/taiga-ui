@@ -5,7 +5,6 @@ import {TuiChevron, TuiSelect} from '@taiga-ui/kit';
 import {delay, of} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

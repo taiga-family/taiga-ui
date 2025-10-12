@@ -5,7 +5,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiLineClamp],
     templateUrl: './index.html',
     encapsulation,

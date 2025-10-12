@@ -1,14 +1,20 @@
 <div
-    tuiAppearance="floating"
+    appearance="floating"
     tuiCardMedium
 >
     <tui-avatar-stack direction="left">
-        <tui-avatar
-            *ngFor="let url of urls"
-            size="s"
-            [src]="url | tuiFallbackSrc: '@tui.user' | async"
-            [style.background]="url | tuiAutoColor"
-        />
+        @for (url of urls; track url) {
+            <div
+                size="s"
+                tuiAvatar="@tui.user"
+                [style.background]="url | tuiAutoColor"
+            >
+                <img
+                    alt=""
+                    [src]="url"
+                />
+            </div>
+        }
     </tui-avatar-stack>
 
     <h2 tuiTitle>
@@ -18,7 +24,7 @@
 </div>
 
 <div
-    tuiAppearance="floating"
+    appearance="floating"
     tuiCardMedium
 >
     <h2 tuiTitle>
@@ -27,11 +33,17 @@
     </h2>
 
     <tui-avatar-stack direction="left">
-        <tui-avatar
-            *ngFor="let url of urls"
-            size="s"
-            [src]="url | tuiFallbackSrc: '@tui.user' | async"
-            [style.background]="url | tuiAutoColor"
-        />
+        @for (url of urls; track url) {
+            <div
+                size="s"
+                tuiAvatar="@tui.user"
+                [style.background]="url | tuiAutoColor"
+            >
+                <img
+                    alt=""
+                    [src]="url"
+                />
+            </div>
+        }
     </tui-avatar-stack>
 </div>

@@ -2,17 +2,18 @@
     tuiItemGroup
     [horizontal]="true"
 >
-    <label
-        *ngFor="let chip of chips; let i = index"
-        tuiChip
-        [appearance]="checked[i] ? 'accent' : 'neutral'"
-    >
-        {{ chip }}
-        <input
-            appearance=""
+    @for (chip of chips; track chip) {
+        <label
             tuiChip
-            type="checkbox"
-            [(ngModel)]="checked[i]"
-        />
-    </label>
+            [appearance]="checked[$index] ? 'accent' : 'neutral'"
+        >
+            {{ chip }}
+            <input
+                appearance=""
+                tuiChip
+                type="checkbox"
+                [(ngModel)]="checked[$index]"
+            />
+        </label>
+    }
 </div>

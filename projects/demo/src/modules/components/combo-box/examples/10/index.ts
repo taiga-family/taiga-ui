@@ -1,5 +1,5 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -15,11 +15,9 @@ import {
 import {map, type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        NgIf,
         ScrollingModule,
         TuiChevron,
         TuiComboBox,
@@ -30,7 +28,7 @@ import {map, type Observable} from 'rxjs';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

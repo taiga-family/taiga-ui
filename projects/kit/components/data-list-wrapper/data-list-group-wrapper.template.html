@@ -1,50 +1,53 @@
-<tui-data-list
-    *ngIf="items; else loading"
-    [emptyContent]="emptyContent"
-    [size]="size"
->
-    <tui-opt-group
-        *ngFor="let group of items; let index = index"
-        [label]="labels[index]"
+@if (items) {
+    <tui-data-list
+        [emptyContent]="emptyContent"
+        [size]="size"
     >
-        <ng-container *ngIf="newOptionMode; else legacyOptionFallback">
-            <button
-                *ngFor="let item of group"
-                #elementRef="elementRef"
-                new
-                tuiElement
-                tuiOption
-                type="button"
-                [disabled]="disabledItemHandler(item)"
-                [value]="item"
-                (click.capture)="itemClick.emit(item)"
-            >
-                <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
-                    {{ text }}
-                </ng-container>
-            </button>
-        </ng-container>
-
-        <!-- TODO(v5): delete fallback -->
-        <ng-template #legacyOptionFallback>
-            <button
-                *ngFor="let item of group"
-                #elementRef="elementRef"
-                automation-id="tui-data-list-wrapper__option"
-                tuiElement
-                tuiOption
-                type="button"
-                [disabled]="disabledItemHandler(item)"
-                [value]="item"
-                (click)="itemClick.emit(item)"
-            >
-                <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
-                    {{ text }}
-                </ng-container>
-            </button>
-        </ng-template>
-    </tui-opt-group>
-</tui-data-list>
-<ng-template #loading>
+        @for (group of items; track group) {
+            <tui-opt-group [label]="labels[$index]">
+                @if (newOptionMode) {
+                    @for (item of group; track item) {
+                        <button
+                            #elementRef="elementRef"
+                            new
+                            tuiElement
+                            tuiOption
+                            type="button"
+                            [disabled]="disabledItemHandler(item)"
+                            [value]="item"
+                            (click.capture)="itemClick.emit(item)"
+                        >
+                            <ng-container
+                                *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)"
+                            >
+                                {{ text }}
+                            </ng-container>
+                        </button>
+                    }
+                } @else {
+                    @for (item of group; track item) {
+                        <button
+                            #elementRef="elementRef"
+                            automation-id="tui-data-list-wrapper__option"
+                            tuiElement
+                            tuiOption
+                            type="button"
+                            [disabled]="disabledItemHandler(item)"
+                            [value]="item"
+                            (click)="itemClick.emit(item)"
+                        >
+                            <ng-container
+                                *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)"
+                            >
+                                {{ text }}
+                            </ng-container>
+                        </button>
+                    }
+                }
+                <!-- TODO(v5): delete fallback -->
+            </tui-opt-group>
+        }
+    </tui-data-list>
+} @else {
     <tui-loader class="t-loader" />
-</ng-template>
+}

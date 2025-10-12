@@ -16,7 +16,6 @@ interface Character {
 }
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiChevron,

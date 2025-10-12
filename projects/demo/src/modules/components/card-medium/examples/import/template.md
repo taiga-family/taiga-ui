@@ -1,10 +1,6 @@
 ```html
 <div tuiCardMedium>
-  <tui-avatar
-    class="star"
-    src="@tui.star"
-  ></tui-avatar>
-
+  <div tuiAvatar="@tui.star"></div>
   <h2 tuiTitle>
     Title
     <span tuiSubtitle>Subtitle</span>

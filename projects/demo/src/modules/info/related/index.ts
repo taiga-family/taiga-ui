@@ -7,11 +7,10 @@ import {TuiCardLarge} from '@taiga-ui/layout';
 import {SCREENSHOT_BOT_LINK, SCREENSHOT_BOT_NAME} from '../testing/screenshot-github-bot';
 
 @Component({
-    standalone: true,
     selector: 'related',
     imports: [TuiAppearance, TuiCardLarge, TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

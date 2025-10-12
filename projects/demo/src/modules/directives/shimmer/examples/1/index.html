@@ -10,7 +10,7 @@
 <span [style.font]="'var(--tui-font-text-xl)'">Shimmer</span>
 
 <section
-    tuiAppearance="floating"
+    appearance="floating"
     tuiCardLarge
 >
     <header tuiHeader>
@@ -23,17 +23,21 @@
         </hgroup>
 
         <aside tuiAccessories>
-            <tui-avatar
+            <div
                 appearance="primary"
-                src="@tui.star"
-            />
+                tuiAvatar="@tui.star"
+            ></div>
         </aside>
     </header>
     <tui-avatar-stack [tuiShimmer]="loading">
-        <tui-avatar
-            *ngFor="let avatar of avatars"
-            [src]="avatar"
-        />
+        @for (avatar of avatars; track $index) {
+            <div tuiAvatar="@tui.user">
+                <img
+                    alt=""
+                    [src]="avatar"
+                />
+            </div>
+        }
     </tui-avatar-stack>
     <footer>
         <button
@@ -57,7 +61,7 @@
 <span [style.font]="'var(--tui-font-text-xl)'">Skeleton</span>
 
 <section
-    tuiAppearance="floating"
+    appearance="floating"
     tuiCardLarge
 >
     <header tuiHeader>
@@ -74,19 +78,20 @@
         </hgroup>
 
         <aside tuiAccessories>
-            <tui-avatar
+            <div
                 appearance="primary"
-                src="@tui.star"
+                tuiAvatar="@tui.star"
                 [tuiSkeleton]="loading"
-            />
+            ></div>
         </aside>
     </header>
     <tui-avatar-stack>
-        <tui-avatar
-            *ngFor="let avatar of avatars"
-            [src]="avatar"
-            [tuiSkeleton]="loading"
-        />
+        @for (avatar of avatars; track avatar) {
+            <div
+                [tuiAvatar]="avatar"
+                [tuiSkeleton]="loading"
+            ></div>
+        }
     </tui-avatar-stack>
     <footer>
         <button

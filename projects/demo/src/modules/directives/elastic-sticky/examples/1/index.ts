@@ -9,10 +9,9 @@ import {TuiScrollbar} from '@taiga-ui/core';
 import {distinctUntilChanged, map, type Observable, startWith} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiElasticSticky, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

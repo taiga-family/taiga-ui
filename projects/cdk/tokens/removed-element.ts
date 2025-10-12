@@ -1,6 +1,6 @@
 import {ɵAnimationEngine as AnimationEngine} from '@angular/animations/browser';
 import {inject, InjectionToken} from '@angular/core';
-import {BehaviorSubject, map, share, startWith, switchMap, timer} from 'rxjs';
+import {map, share, startWith, Subject, switchMap, timer} from 'rxjs';
 
 /**
  * Element currently being removed by AnimationEngine
@@ -10,7 +10,7 @@ export const TUI_REMOVED_ELEMENT = new InjectionToken(
     {
         factory: () => {
             const stub = {onRemovalComplete: () => {}};
-            const element$ = new BehaviorSubject<Element | null>(null);
+            const element$ = new Subject<Element | null>();
             const engine = inject(AnimationEngine, {optional: true}) || stub;
             const {onRemovalComplete = stub.onRemovalComplete} = engine;
 
@@ -20,6 +20,7 @@ export const TUI_REMOVED_ELEMENT = new InjectionToken(
             };
 
             return element$.pipe(
+                startWith(null),
                 switchMap((element) =>
                     timer(0).pipe(
                         map(() => null),

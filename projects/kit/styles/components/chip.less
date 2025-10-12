@@ -32,6 +32,7 @@ tui-chip,
     block-size: var(--t-size);
     inline-size: fit-content;
     isolation: isolate;
+    max-inline-size: stretch;
 
     .interactive({
         cursor: pointer;
@@ -88,7 +89,7 @@ tui-chip,
     }
 
     & > img,
-    tui-avatar {
+    [tuiAvatar] {
         inline-size: 1.5rem;
         margin-inline-start: -0.375rem;
     }
@@ -115,8 +116,6 @@ tui-chip,
         }
     }
 
-    &[tuiAppearance][data-appearance='error'], /* TODO @deprecated remove in v5 */
-    &[tuiAppearance][data-appearance='success'], /* TODO @deprecated remove in v5 */
     &[tuiAppearance][data-appearance='negative'],
     &[tuiAppearance][data-appearance='positive'],
     &[tuiAppearance][data-appearance='warning'],
@@ -124,4 +123,10 @@ tui-chip,
     &[tuiAppearance][data-appearance='neutral'] {
         color: var(--tui-text-primary);
     }
+}
+
+input[tuiChip] {
+    .interactive({
+        cursor: text;
+    });
 }

@@ -4,7 +4,7 @@ import {
     PathLocationStrategy,
     ViewportScroller,
 } from '@angular/common';
-import {HttpClient, provideHttpClient} from '@angular/common/http';
+import {HttpClient, provideHttpClient, withFetch} from '@angular/common/http';
 import {
     type ApplicationConfig,
     inject,
@@ -12,9 +12,14 @@ import {
     provideZoneChangeDetection,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {REMOVE_STYLES_ON_COMPONENT_DESTROY} from '@angular/platform-browser';
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {provideRouter, type UrlTree, withInMemoryScrolling} from '@angular/router';
+import {
+    NavigationStart,
+    provideRouter,
+    Router,
+    type UrlTree,
+    withInMemoryScrolling,
+} from '@angular/router';
 import {environment} from '@demo/environments/environment';
 import {
     TUI_DOC_CODE_EDITOR,
@@ -36,18 +41,19 @@ import {
 } from '@taiga-ui/addon-doc';
 import {TUI_FALSE_HANDLER, TUI_IS_E2E, TUI_PLATFORM} from '@taiga-ui/cdk';
 import {
+    provideTaiga,
+    TUI_DIALOGS_CLOSE,
     TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
     TUI_DROPDOWN_HOVER_OPTIONS,
     TUI_HINT_DEFAULT_OPTIONS,
     TUI_HINT_OPTIONS,
-    tuiEnableFontScaling,
     tuiNotificationOptionsProvider,
 } from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
 import {type TuiLanguageName, tuiLanguageSwitcher} from '@taiga-ui/i18n';
 import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
-import {catchError, map, of} from 'rxjs';
+import {catchError, filter, map, merge, of} from 'rxjs';
 
+import {AuthService} from '../components/dialog/examples/5/service';
 import {DEFAULT_LANGUAGE_PAGE, SEE_ALSO_GROUPS} from './app.const';
 import {ROUTES} from './app.routes';
 import {LOGO_CONTENT} from './logo/logo.component';
@@ -68,10 +74,9 @@ export const config: ApplicationConfig = {
                 anchorScrolling: 'enabled',
             }),
         ),
-        NG_EVENT_PLUGINS,
-        tuiEnableFontScaling(),
+        provideTaiga(),
         tuiNotificationOptionsProvider({size: 'm'}),
-        provideHttpClient(),
+        provideHttpClient(withFetch()),
         {
             provide: ViewportScroller,
             useClass: TuiViewportScroller,
@@ -243,7 +248,7 @@ export const config: ApplicationConfig = {
                 import(
                     /* webpackMode: "lazy" */
                     /* webpackChunkName: "i18n-lazy-" */
-                    `dist/i18n/esm2022/languages/${language}`
+                    `dist/i18n/fesm2022/taiga-ui-i18n-languages-${language}.mjs`
                 ),
         ),
         provideZoneChangeDetection({
@@ -251,8 +256,14 @@ export const config: ApplicationConfig = {
             runCoalescing: false,
         }),
         {
-            provide: REMOVE_STYLES_ON_COMPONENT_DESTROY,
-            useValue: true,
+            provide: TUI_DIALOGS_CLOSE,
+            useFactory: () =>
+                merge(
+                    inject(AuthService),
+                    inject(Router).events.pipe(
+                        filter((e) => e instanceof NavigationStart),
+                    ),
+                ),
         },
     ],
 };

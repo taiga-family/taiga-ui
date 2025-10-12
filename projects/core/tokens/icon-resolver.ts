@@ -10,23 +10,30 @@ export const TUI_ICON_RESOLVER = new InjectionToken<TuiStringHandler<string>>(
         factory: () => {
             const path = inject(TUI_ASSETS_PATH);
 
+            // regex for @{any text}. used as a default fallback, returns path to svg from icon pack
             return (icon) =>
-                `${path}/${icon.replace('@tui.', '').split('.').join('/')}.svg`;
+                `${path}/${icon.replace(/@[a-zA-Z]+\./, '').replaceAll('.', '/')}.svg`;
         },
     },
 );
 
-/**
- * @deprecated use {@link TUI_ICON_RESOLVER}
- */
-export const TUI_ICON_START_RESOLVER = TUI_ICON_RESOLVER;
+export function tuiGetIconMode(icon?: string | null): string | undefined {
+    return icon?.match(/@([^.]*)\./)?.[1] || icon || undefined;
+}
 
 export function tuiInjectIconResolver(): TuiStringHandler<string> {
     const icons = inject(TUI_ICON_REGISTRY);
     const resolver = inject(TUI_ICON_RESOLVER);
 
-    return (icon) =>
-        !icon || icon.includes('/') ? icon : (icons[icon] ?? resolver(icon));
+    return (icon) => {
+        if (!icon || icon.includes('/')) {
+            return icon;
+        }
+
+        return icon.startsWith('@font.')
+            ? icon.replace('@font.', '')
+            : (icons[icon] ?? resolver(icon));
+    };
 }
 
 export function tuiIconResolverProvider(useValue: TuiStringHandler<string>): Provider {

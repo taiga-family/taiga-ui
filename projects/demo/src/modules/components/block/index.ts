@@ -8,7 +8,6 @@ import {type TuiSizeL, type TuiSizeS, TuiTitle} from '@taiga-ui/core';
 import {TuiBlock, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiBlock,

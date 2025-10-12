@@ -721,7 +721,7 @@ describe('InputNumber', () => {
                         browserName,
                     }) => {
                         // TODO
-                        // eslint-disable-next-line playwright/no-skipped-test
+
                         test.skip(
                             browserName !== 'chromium',
                             'Investigate why it fails in Safari',
@@ -768,7 +768,7 @@ describe('InputNumber', () => {
                 });
 
                 // TODO: Remove .skip after release of https://github.com/taiga-family/maskito/pull/2087
-                // eslint-disable-next-line playwright/no-skipped-test
+
                 test.skip('forbids to enter more minuses', async () => {
                     await inputNumber.textfield.focus();
                     await inputNumber.textfield.pressSequentially(

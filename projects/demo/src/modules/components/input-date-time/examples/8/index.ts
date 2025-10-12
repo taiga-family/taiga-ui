@@ -9,7 +9,6 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
 const TODAY = TuiDay.currentLocal();
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputDateTime, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

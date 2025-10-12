@@ -8,7 +8,7 @@
 </label>
 
 <section
-    tuiAppearance="floating"
+    appearance="floating"
     tuiCardLarge
 >
     <header tuiHeader>
@@ -21,17 +21,21 @@
         </hgroup>
 
         <aside tuiAccessories>
-            <tui-avatar
+            <div
                 appearance="primary"
-                src="@tui.star"
-            />
+                tuiAvatar="@tui.star"
+            ></div>
         </aside>
     </header>
     <tui-avatar-stack [tuiShimmer]="loading">
-        <tui-avatar
-            *ngFor="let avatar of avatars; let index = index"
-            [src]="avatar"
-        />
+        @for (avatar of avatars; track $index) {
+            <div tuiAvatar="@tui.user">
+                <img
+                    alt=""
+                    [src]="avatar"
+                />
+            </div>
+        }
     </tui-avatar-stack>
     <footer>
         <button

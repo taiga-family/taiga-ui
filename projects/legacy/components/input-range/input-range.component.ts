@@ -12,7 +12,7 @@ import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused, tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp, tuiRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiGetFractionPartPadded} from '@taiga-ui/core/utils/format';
@@ -35,11 +35,15 @@ import {
 } from '@taiga-ui/legacy/tokens';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+/**
+ * TODO(v5): delete it
+ * @deprecated use new version of {@link https://taiga-ui.dev/components/input-range TuiInputRange} (from @taiga-ui/kit) instead
+ */
 @Component({
     standalone: false,
     selector: 'tui-input-range',
     templateUrl: './input-range.template.html',
-    styleUrls: ['./input-range.style.less'],
+    styleUrl: './input-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputRangeComponent),
@@ -104,7 +108,7 @@ export class TuiInputRangeComponent
     }
 
     public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
+        return tuiIsFocusedIn(this.el);
     }
 
     public override writeValue(value: [number, number]): void {
@@ -127,8 +131,8 @@ export class TuiInputRangeComponent
     protected get showLeftValueContent(): boolean {
         return Boolean(
             this.leftValueContent &&
-                !tuiIsNativeFocused(this.leftFocusableElement) &&
-                (!tuiIsNativeFocusedIn(this.range?.nativeElement) ||
+                !tuiIsFocused(this.leftFocusableElement) &&
+                (!tuiIsFocusedIn(this.range?.nativeElement) ||
                     this.lastActiveSide !== 'left'),
         );
     }
@@ -136,8 +140,8 @@ export class TuiInputRangeComponent
     protected get showRightValueContent(): boolean {
         return Boolean(
             this.rightValueContent &&
-                !tuiIsNativeFocused(this.rightFocusableElement) &&
-                (!tuiIsNativeFocusedIn(this.range?.nativeElement) ||
+                !tuiIsFocused(this.rightFocusableElement) &&
+                (!tuiIsFocusedIn(this.range?.nativeElement) ||
                     this.lastActiveSide !== 'right'),
         );
     }
@@ -222,8 +226,8 @@ export class TuiInputRangeComponent
         }
     }
 
-    protected onActiveThumbChange(activeThumb: 'left' | 'right'): void {
-        this.lastActiveSide = activeThumb;
+    protected onActiveThumbChange(activeThumb: 'end' | 'start'): void {
+        this.lastActiveSide = activeThumb === 'start' ? 'left' : 'right';
     }
 
     protected getFallbackValue(): [number, number] {

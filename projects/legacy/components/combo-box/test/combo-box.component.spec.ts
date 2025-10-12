@@ -11,8 +11,13 @@ import {
     type TuiIdentityMatcher,
     type TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TuiHint, TuiRoot, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {
+    provideTaiga,
+    TuiHint,
+    TuiRoot,
+    type TuiSizeL,
+    type TuiSizeS,
+} from '@taiga-ui/core';
 import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
     TUI_ARROW,
@@ -111,7 +116,7 @@ describe('ComboBox', () => {
         TestBed.configureTestingModule({
             imports: [Test],
             providers: [
-                NG_EVENT_PLUGINS,
+                provideTaiga(),
                 {
                     provide: TUI_ARROW_MODE,
                     useValue: {interactive: TUI_ARROW, disabled: ''},

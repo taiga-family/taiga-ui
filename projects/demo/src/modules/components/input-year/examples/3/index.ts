@@ -7,7 +7,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {tuiInputInputYearOptionsProvider, TuiInputYear} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputYear, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

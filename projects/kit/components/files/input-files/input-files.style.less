@@ -76,7 +76,8 @@ label[tuiInputFiles] {
         border: 0.125rem solid var(--tui-border-focus);
     });
 
-    &:invalid {
+    &:not(:disabled)[data-mode~='invalid'],
+    &:invalid:not(:disabled):not([data-mode]) {
         border-color: var(--tui-status-negative) !important;
     }
 }

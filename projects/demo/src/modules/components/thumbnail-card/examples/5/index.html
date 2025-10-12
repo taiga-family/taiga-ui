@@ -1,11 +1,12 @@
 <tui-segmented>
-    <button
-        *ngFor="let state of statuses"
-        type="button"
-        (click)="status = state"
-    >
-        {{ state }}
-    </button>
+    @for (state of statuses; track state) {
+        <button
+            type="button"
+            (click)="status = state"
+        >
+            {{ state }}
+        </button>
+    }
 </tui-segmented>
 
 <tui-textfield>
@@ -18,11 +19,12 @@
         [readOnly]="status === 'readOnly'"
         [(ngModel)]="card"
     />
-    <tui-thumbnail-card
-        *ngIf="card.startsWith('1234')"
-        iconStart="@tui.dollar-sign"
-        paymentSystem="visa"
-        size="s"
-        [style.background]="background"
-    />
+    @if (card.startsWith('1234')) {
+        <tui-thumbnail-card
+            iconStart="@tui.dollar-sign"
+            paymentSystem="visa"
+            size="s"
+            [style.background]="background"
+        />
+    }
 </tui-textfield>

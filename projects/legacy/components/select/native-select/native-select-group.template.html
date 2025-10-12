@@ -5,25 +5,28 @@
     [items]="items"
     [labels]="labels"
 />
-<ng-container *ngIf="control.control?.valueChanges | async" />
-<option
-    *ngIf="emptyOption"
-    disabled
-    selected
-    value=""
->
-    {{ placeholder }}
-</option>
-<optgroup
-    *ngFor="let group of items; let index = index"
-    [label]="labels[index]"
->
+@if (control.control?.valueChanges | async) {}
+@if (emptyOption) {
     <option
-        *ngFor="let option of group; let i = index"
-        [disabled]="disabledItemHandler ? disabledItemHandler(option) : itemsHandlers.disabledItemHandler(option)"
-        [selected]="selected(option)"
-        [value]="stringify(option)"
+        disabled
+        selected
+        value=""
     >
-        {{ stringify(option) }}
+        {{ placeholder }}
     </option>
-</optgroup>
+}
+@for (group of items; track group) {
+    <optgroup [label]="labels[$index]">
+        @for (option of group; track option; let i = $index) {
+            <option
+                [disabled]="
+                    disabledItemHandler ? disabledItemHandler(option) : itemsHandlers.disabledItemHandler(option)
+                "
+                [selected]="selected(option)"
+                [value]="stringify(option)"
+            >
+                {{ stringify(option) }}
+            </option>
+        }
+    </optgroup>
+}

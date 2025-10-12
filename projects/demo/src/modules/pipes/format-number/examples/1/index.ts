@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFormatNumberPipe} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiFormatNumberPipe],
     templateUrl: './index.html',
     encapsulation,

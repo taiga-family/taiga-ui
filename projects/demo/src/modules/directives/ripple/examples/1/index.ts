@@ -4,10 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRipple} from '@taiga-ui/addon-mobile';
 
 @Component({
-    standalone: true,
     imports: [TuiRipple],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

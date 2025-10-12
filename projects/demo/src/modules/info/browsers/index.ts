@@ -3,17 +3,16 @@ import {TuiDemo} from '@demo/utils';
 import {TuiTable} from '@taiga-ui/addon-table';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiTable],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
     protected readonly desktopBrowsers = [
         {name: 'Google Chrome', version: '88+'},
         {name: 'Mozilla Firefox', version: '120+'},
-        {name: 'Safari', version: '13.1+'},
+        {name: 'Safari', version: '14.1+'},
         {name: 'Opera', version: '74+'},
         {name: 'Edge', version: '88+'},
         {name: 'Yandex Browser', version: '21.2+'},
@@ -23,7 +22,7 @@ export default class Page {
     protected readonly mobileBrowsers = [
         {name: 'Google Chrome', version: '88+'},
         {name: 'Mozilla Firefox', version: '120+'},
-        {name: 'Safari', version: '13.4+'},
+        {name: 'Safari', version: '14.5+'},
         {name: 'Opera', version: '63+'},
         {name: 'Samsung Mobile', version: '15+'},
         {name: 'Yandex Browser', version: '21.2+'},

@@ -26,20 +26,20 @@
             </a>
         </p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <tui-notification
-                *ngIf="index === 3"
-                class="tui-space_bottom-3"
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                Use unencapsulated styles to customize dropdown appearance
-            </tui-notification>
-        </tui-doc-example>
+                @if ($index === 3) {
+                    <tui-notification class="tui-space_bottom-3">
+                        Use unencapsulated styles to customize dropdown appearance
+                    </tui-notification>
+                }
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -56,6 +56,8 @@
                     [tuiDropdownMaxHeight]="dropdown.maxHeight"
                     [tuiDropdownMinHeight]="dropdown.minHeight"
                     [tuiDropdownOffset]="dropdown.offset"
+                    [tuiDropdownSided]="dropdown.dropdownSided"
+                    [tuiDropdownSidedOffset]="dropdown.dropdownSidedOffset"
                     (click)="onClick()"
                     (tuiObscured)="onObscured($event)"
                 >

@@ -14,65 +14,82 @@
         </a>
         to represent array of selectable items.
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="description"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template
-                #description
-                [ngSwitch]="index"
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                <span *ngSwitchCase="0">
-                    <code>Textfield[multi]</code>
-                    is used to display array of items. By default they are presented as plain strings.
-                </span>
-                <span *ngSwitchCase="1">
-                    Use
-                    <code>*tuiItem</code>
-                    directive to provide custom representation. You can use
-                    <code>tui-input-chip</code>
-                    out of the box or implement your own. The context is
-                    <code>TuiContext&lt;&#123; item: T, index: number &#125;&gt;</code>
-                </span>
-                <span *ngSwitchCase="2">
-                    Individual tags can be disabled using
-                    <code>disabledItemHandler</code>
-                    , this would prevent them from being edited, removed or added.
-                    <strong>Note:</strong>
-                    keep in mind cleaner would still empty the control. If you want a different behavior, you can
-                    disable built-in cleaner and provide your own.
-                </span>
-                <span *ngSwitchCase="3">
-                    <code>InputChip</code>
-                    can be used together with dropdown in many variations showcased below, from multiple values input
-                    with suggestions to multi-select without writable input.
-                </span>
-                <span *ngSwitchCase="4">
-                    You can customize many aspects of the component, from standard textfield options like icons and
-                    tooltips to changing the appearance of each individual chip.
-                </span>
-                <span *ngSwitchCase="5">
-                    Component can be used with
-                    <a
-                        href="https://maskito.dev"
-                        rel="noreferrer noopener"
-                        target="_blank"
-                        tuiLink
-                    >
-                        Maskito
-                    </a>
-                    to facilitate input masking.
-                </span>
-                <span *ngSwitchCase="6">Component can be used together with RTL direction.</span>
-                <span *ngSwitchCase="7">
-                    You can improve UX on mobile devices in multiple ways, depending on your case.
-                </span>
-            </ng-template>
-        </tui-doc-example>
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            <span>
+                                <code>Textfield[multi]</code>
+                                is used to display array of items. By default they are presented as plain strings.
+                            </span>
+                        }
+                        @case (1) {
+                            <span>
+                                Use
+                                <code>*tuiItem</code>
+                                directive to provide custom representation. You can use
+                                <code>tui-input-chip</code>
+                                out of the box or implement your own. The context is
+                                <code>TuiContext&lt;&#123; item: T, index: number &#125;&gt;</code>
+                            </span>
+                        }
+                        @case (2) {
+                            <span>
+                                Individual tags can be disabled using
+                                <code>disabledItemHandler</code>
+                                , this would prevent them from being edited, removed or added.
+                                <strong>Note:</strong>
+                                keep in mind cleaner would still empty the control. If you want a different behavior,
+                                you can disable built-in cleaner and provide your own.
+                            </span>
+                        }
+                        @case (3) {
+                            <span>
+                                <code>InputChip</code>
+                                can be used together with dropdown in many variations showcased below, from multiple
+                                values input with suggestions to multi-select without writable input.
+                            </span>
+                        }
+                        @case (4) {
+                            <span>
+                                You can customize many aspects of the component, from standard textfield options like
+                                icons and tooltips to changing the appearance of each individual chip.
+                            </span>
+                        }
+                        @case (5) {
+                            <span>
+                                Component can be used with
+                                <a
+                                    href="https://maskito.dev"
+                                    rel="noreferrer noopener"
+                                    target="_blank"
+                                    tuiLink
+                                >
+                                    Maskito
+                                </a>
+                                to facilitate input masking.
+                            </span>
+                        }
+                        @case (6) {
+                            <span>Component can be used together with RTL direction.</span>
+                        }
+                        @case (7) {
+                            <span>You can improve UX on mobile devices in multiple ways, depending on your case.</span>
+                        }
+                        @case (9) {
+                            <span>Using virtual scroll to improve UX when working with large amount of items.</span>
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -80,6 +97,8 @@
             <ng-template>
                 <tui-textfield
                     multi
+                    [iconEnd]="icons.iconEnd"
+                    [iconStart]="icons.iconStart"
                     [rows]="textfieldDoc.rows"
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
@@ -122,6 +141,11 @@
                 #textfieldDoc
                 tuiDocTextfield
                 [hiddenOptions]="[]"
+            ></tbody>
+
+            <tbody
+                #icons
+                tuiDocIcons
             ></tbody>
 
             <tbody

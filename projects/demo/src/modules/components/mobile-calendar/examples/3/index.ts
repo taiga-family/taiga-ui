@@ -6,10 +6,9 @@ import {TuiDay, TuiDayOfWeek} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiMobileCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [

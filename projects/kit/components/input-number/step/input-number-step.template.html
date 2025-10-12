@@ -1,36 +1,34 @@
 <ng-container *tuiTextfieldContent>
-    <section
-        *ngIf="step()"
-        class="t-input-number-buttons"
-    >
-        <button
-            size="s"
-            tabindex="-1"
-            tuiIconButton
-            type="button"
-            class="t-button"
-            [appearance]="appearance()"
-            [disabled]="!input.interactive() || value() >= input.max()"
-            [iconStart]="options.icons.increase"
-            (click.prevent)="onStep(step())"
-            (pointerdown.prevent)="step$.next(step())"
-        >
-            +
-        </button>
-
-        <button
-            size="s"
-            tabindex="-1"
-            tuiIconButton
-            type="button"
-            class="t-button"
-            [appearance]="appearance()"
-            [disabled]="!input.interactive() || value() <= input.min()"
-            [iconStart]="options.icons.decrease"
-            (click.prevent)="onStep(-step())"
-            (pointerdown.prevent)="step$.next(-step())"
-        >
-            -
-        </button>
-    </section>
+    @if (step()) {
+        <section class="t-input-number-buttons">
+            <button
+                size="s"
+                tabindex="-1"
+                tuiIconButton
+                type="button"
+                class="t-button"
+                [appearance]="appearance()"
+                [disabled]="!input.interactive() || value() >= input.max()"
+                [iconStart]="options.icons.increase"
+                (click.prevent)="onStep(step())"
+                (pointerdown.prevent)="step$.next(step())"
+            >
+                +
+            </button>
+            <button
+                size="s"
+                tabindex="-1"
+                tuiIconButton
+                type="button"
+                class="t-button"
+                [appearance]="appearance()"
+                [disabled]="!input.interactive() || value() <= input.min()"
+                [iconStart]="options.icons.decrease"
+                (click.prevent)="onStep(-step())"
+                (pointerdown.prevent)="step$.next(-step())"
+            >
+                -
+            </button>
+        </section>
+    }
 </ng-container>

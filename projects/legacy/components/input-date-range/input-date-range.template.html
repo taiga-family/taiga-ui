@@ -31,15 +31,16 @@
             select="input"
         />
 
-        <div
-            *ngIf="showValueTemplate"
-            ngProjectAs="tuiContent"
-            class="t-value"
-        >
-            <ng-container *polymorpheusOutlet="computedContent as text; context: {$implicit: value}">
-                {{ text }}
-            </ng-container>
-        </div>
+        @if (showValueTemplate) {
+            <div
+                ngProjectAs="tuiContent"
+                class="t-value"
+            >
+                <ng-container *polymorpheusOutlet="computedContent as text; context: {$implicit: value}">
+                    {{ text }}
+                </ng-container>
+            </div>
+        }
     </tui-primitive-textfield>
 
     <ng-template #iconContent>

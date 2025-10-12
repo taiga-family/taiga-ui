@@ -34,11 +34,10 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
  * using default style of white rounded box with a shadow
  */
 @Component({
-    standalone: true,
     selector: 'tui-dropdown',
     imports: [PolymorpheusOutlet, TuiScrollbar],
     templateUrl: './dropdown.template.html',
-    styleUrls: ['./dropdown.style.less'],
+    styleUrl: './dropdown.style.less',
     // @bad TODO: OnPush
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,

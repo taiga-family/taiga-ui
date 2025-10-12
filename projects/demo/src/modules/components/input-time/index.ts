@@ -11,7 +11,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiDemo,

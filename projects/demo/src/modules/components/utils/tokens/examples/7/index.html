@@ -9,17 +9,16 @@
 <section>
     <h3>This token can customize the following components:</h3>
     <ul class="tui-list tui-list_small">
-        <li
-            *ngFor="let component of customizableComponentsViaThisToken"
-            class="tui-list__item"
-        >
-            <a
-                tuiLink
-                [fragment]="component.fragment"
-                [routerLink]="component.link"
-            >
-                {{ component.name }}
-            </a>
-        </li>
+        @for (component of customizableComponentsViaThisToken; track component) {
+            <li class="tui-list__item">
+                <a
+                    tuiLink
+                    [fragment]="component.fragment"
+                    [routerLink]="component.link"
+                >
+                    {{ component.name }}
+                </a>
+            </li>
+        }
     </ul>
 </section>

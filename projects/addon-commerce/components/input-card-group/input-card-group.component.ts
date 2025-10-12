@@ -1,6 +1,5 @@
-import {DOCUMENT, isPlatformServer, NgIf} from '@angular/common';
+import {DOCUMENT, isPlatformServer} from '@angular/common';
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     computed,
@@ -25,27 +24,24 @@ import {
 import {TuiFormatCardPipe} from '@taiga-ui/addon-commerce/pipes';
 import {TUI_PAYMENT_SYSTEM_ICONS} from '@taiga-ui/addon-commerce/tokens';
 import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
+import {tuiGetPaymentSystem} from '@taiga-ui/addon-commerce/utils';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {CHAR_NO_BREAK_SPACE, TUI_NON_DIGIT_REGEXP} from '@taiga-ui/cdk/constants';
 import {tuiHovered, TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {TuiTransitioned} from '@taiga-ui/cdk/directives/transitioned';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE, TUI_IS_WEBKIT} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiIsElement, tuiIsInput} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocused, tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiFocusedIn, tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
     type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
 import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiWithTextfieldDropdown,
-} from '@taiga-ui/core/components/textfield';
+import {TUI_TEXTFIELD_OPTIONS} from '@taiga-ui/core/components/textfield';
 import {
     TuiAppearance,
     tuiAppearance,
@@ -62,7 +58,7 @@ import {
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {EMPTY, map, merge, Subject, switchMap, timer} from 'rxjs';
+import {EMPTY, Subject, switchMap, timer} from 'rxjs';
 
 import {TUI_INPUT_CARD_GROUP_OPTIONS} from './input-card-group.options';
 import {TUI_INPUT_CARD_GROUP_TEXTS} from './input-card-group.providers';
@@ -74,24 +70,22 @@ export interface TuiCard {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-input-card-group',
     imports: [
         FormsModule,
         MaskitoDirective,
-        NgIf,
         PolymorpheusOutlet,
         TuiAppearance,
         TuiChevron,
         TuiFormatCardPipe,
         TuiIcon,
         TuiIconPipe,
-        TuiLet,
         TuiMapperPipe,
+        TuiTransitioned,
         WaResizeObserver,
     ],
     templateUrl: './input-card-group.template.html',
-    styleUrls: ['./input-card-group.style.less'],
+    styleUrl: './input-card-group.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsDataListHost(TuiInputCardGroup),
@@ -99,22 +93,16 @@ export interface TuiCard {
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
         TuiHoveredService,
     ],
-    hostDirectives: [
-        TuiAppearance,
-        TuiDropdownDirective,
-        TuiWithTextfieldDropdown,
-        TuiWithDropdownOpen,
-    ],
+    hostDirectives: [TuiAppearance, TuiDropdownDirective, TuiWithDropdownOpen],
     host: {
-        'data-size': 'l',
-        '[style.--tui-duration.s]': '0',
+        '[attr.data-size]': 'textfield.size()',
         '(pointerdown)': 'onPointerDown($event)',
         '(scroll.zoneless)': '$event.target.scrollLeft = 0',
     },
 })
 export class TuiInputCardGroup
     extends TuiControl<TuiCard | null>
-    implements TuiDataListHost<Partial<TuiCard>>, AfterViewInit
+    implements TuiDataListHost<Partial<TuiCard>>
 {
     @ViewChild('inputCard', {static: true})
     private readonly inputCard?: ElementRef<HTMLInputElement>;
@@ -133,13 +121,7 @@ export class TuiInputCardGroup
     private readonly options = inject(TUI_INPUT_CARD_GROUP_OPTIONS);
     private readonly el = tuiInjectElement();
     private readonly hover = tuiHovered();
-    private readonly focusedIn = toSignal(
-        merge(
-            tuiTypedFromEvent(this.el, 'focusin'),
-            tuiTypedFromEvent(this.el, 'focusout'),
-        ).pipe(map(() => tuiIsNativeFocusedIn(this.el))),
-        {initialValue: false},
-    );
+    private readonly focusedIn = tuiFocusedIn(this.el);
 
     protected exampleTextCVC = this.options.exampleTextCVC;
     protected cvcHidden = this.options.cvcHidden;
@@ -150,6 +132,7 @@ export class TuiInputCardGroup
     protected readonly maskCard = TUI_MASK_CARD;
     protected readonly maskExpire = TUI_MASK_EXPIRE;
     protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly textfield = inject(TUI_TEXTFIELD_OPTIONS);
     protected readonly texts = toSignal(inject(TUI_INPUT_CARD_GROUP_TEXTS));
     protected readonly open = tuiDropdownOpen();
     protected readonly $ = this.isWebkit
@@ -199,14 +182,10 @@ export class TuiInputCardGroup
     public cardValidator: TuiBooleanHandler<string> = this.options.cardValidator;
 
     @Input()
-    public icon: PolymorpheusContent = this.options.icon;
+    public icon: PolymorpheusContent = '';
 
     @Input()
     public id = tuiInjectId();
-
-    /** @deprecated apparently "off" doesn't disable autocomplete */
-    @Input()
-    public autocomplete = this.options.autocomplete;
 
     @Output()
     public readonly binChange = new EventEmitter<string | null>();
@@ -219,11 +198,6 @@ export class TuiInputCardGroup
 
     public get bin(): string | null {
         return this.card.length < 6 ? null : this.card.slice(0, 6);
-    }
-
-    public ngAfterViewInit(): void {
-        // Enabling transitions
-        setTimeout(() => this.el.style.removeProperty('--tui-duration'), 500);
     }
 
     public override writeValue(value: TuiCard | null): void {
@@ -321,8 +295,7 @@ export class TuiInputCardGroup
 
     protected get cardCollapsed(): boolean {
         return (
-            this.isFocusable(this.card) &&
-            !tuiIsNativeFocused(this.inputCard?.nativeElement)
+            this.isFocusable(this.card) && !tuiIsFocused(this.inputCard?.nativeElement)
         );
     }
 
@@ -411,7 +384,7 @@ export class TuiInputCardGroup
 
     @tuiPure
     private getPaymentSystem(value: string): TuiPaymentSystem | null {
-        return this.options.paymentSystemHandler(value);
+        return tuiGetPaymentSystem(value);
     }
 
     private updateBin(oldBin: string | null): void {

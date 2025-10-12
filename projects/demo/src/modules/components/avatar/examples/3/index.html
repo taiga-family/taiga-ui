@@ -1,7 +1,14 @@
-<section *ngFor="let size of sizes">
-    <tui-avatar [size]="size">{{ size | uppercase }}</tui-avatar>
-    <tui-avatar
-        src="@tui.user"
-        [size]="size"
-    />
-</section>
+@for (size of sizes; track size) {
+    <section>
+        <div
+            tuiAvatar
+            [size]="size"
+        >
+            {{ size | uppercase }}
+        </div>
+        <div
+            tuiAvatar="@tui.user"
+            [size]="size"
+        ></div>
+    </section>
+}

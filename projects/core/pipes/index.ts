@@ -1,6 +1,5 @@
 export * from '@taiga-ui/core/pipes/auto-color';
 export * from '@taiga-ui/core/pipes/calendar-sheet';
-export * from '@taiga-ui/core/pipes/fallback-src';
 export * from '@taiga-ui/core/pipes/flag';
 export * from '@taiga-ui/core/pipes/format-date';
 export * from '@taiga-ui/core/pipes/format-number';

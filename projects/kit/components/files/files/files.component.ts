@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -14,16 +14,15 @@ import {
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
+import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {TuiGroup, tuiGroupOptionsProvider} from '@taiga-ui/core/directives/group';
 import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-files',
-    imports: [CommonModule, TuiButton, TuiExpandComponent, TuiGroup],
+    imports: [AsyncPipe, NgTemplateOutlet, TuiButton, TuiExpand, TuiGroup],
     templateUrl: './files.template.html',
-    styleUrls: ['./files.styles.less'],
+    styleUrl: './files.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

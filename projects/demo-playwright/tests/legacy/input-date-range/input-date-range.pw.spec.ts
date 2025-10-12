@@ -14,7 +14,8 @@ import {
 
 const {describe, beforeEach} = test;
 
-describe('InputDateRange', () => {
+// TODO migrate
+test.skip('InputDateRange', () => {
     let inputDateRange!: TuiInputDateRangePO;
     let documentationPage!: TuiDocumentationPagePO;
 

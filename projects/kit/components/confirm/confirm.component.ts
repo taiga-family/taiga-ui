@@ -1,7 +1,8 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {type TuiDialogContext} from '@taiga-ui/core/components/dialog';
 import {TUI_CONFIRM_WORDS} from '@taiga-ui/kit/tokens';
@@ -19,12 +20,12 @@ export interface TuiConfirmData {
     readonly appearance?: string;
 }
 
+// TODO: Remove selector in v5
 @Component({
-    standalone: true,
     selector: 'tui-confirm',
-    imports: [CommonModule, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './confirm.template.html',
-    styleUrls: ['./confirm.style.less'],
+    styleUrl: './confirm.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiConfirm {
@@ -40,3 +41,5 @@ export class TuiConfirm {
 }
 
 export const TUI_CONFIRM = new PolymorpheusComponent(TuiConfirm);
+export const TUI_CONFIRM_DIALOG =
+    tuiCreateToken<PolymorpheusContent<TuiDialogContext<boolean, unknown>>>(TUI_CONFIRM);

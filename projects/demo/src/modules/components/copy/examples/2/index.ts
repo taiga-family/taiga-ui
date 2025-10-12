@@ -1,12 +1,10 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCopy} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [NgForOf, TuiCopy],
+    imports: [TuiCopy],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

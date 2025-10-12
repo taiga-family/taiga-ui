@@ -7,6 +7,8 @@ import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiButton,
+    TuiCell,
+    TuiInitialsPipe,
     TuiRoot,
     TuiTextfield,
     TuiTitle,
@@ -16,10 +18,10 @@ import {
     TuiChevron,
     TuiDataListWrapper,
     TuiFilterByInputPipe,
+    TuiInputChip,
+    TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiCell} from '@taiga-ui/layout';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 // Note: webpack compilation error
 // Do not change to @demo/utils
@@ -27,13 +29,12 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 import {assets} from '../../../demo/src/utils/load-assets';
 
 interface User {
-    readonly url: string;
+    readonly url?: string;
     readonly name: string;
     readonly balance: number;
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
@@ -45,12 +46,14 @@ interface User {
         TuiDataListWrapper,
         TuiDropdownMobile,
         TuiFilterByInputPipe,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
         TuiResponsiveDialog,
         TuiRoot,
         TuiSelect,
         TuiTextfield,
         TuiTitle,
+        TuiInitialsPipe,
+        TuiInputChip,
     ],
     template: `
         <tui-root>
@@ -67,25 +70,33 @@ interface User {
                         [(ngModel)]="user"
                     />
                     <tui-data-list-wrapper
-                        *tuiTextfieldDropdown
+                        *tuiDropdown
                         new
                         [itemContent]="template"
                         [items]="users"
                     />
                 </tui-textfield>
 
-                <tui-multi-select
+                <tui-textfield
+                    multi
+                    tuiChevron
                     tuiDropdownMobile
                     class="tui-space_vertical-4"
+                    [open]="open()"
                     [stringify]="stringify"
-                    [tuiDropdownOpen]="open()"
-                    [tuiTextfieldCleaner]="true"
-                    [(ngModel)]="selected"
-                    (tuiDropdownOpenChange)="open.set($event)"
+                    (openChange)="open.set($event)"
                 >
-                    Pick more users
-                    <ng-container *tuiDataList>
+                    <input
+                        placeholder="Pick more users"
+                        tuiInputChip
+                        [(ngModel)]="selected"
+                    />
+
+                    <tui-input-chip *tuiItem />
+
+                    <ng-container *tuiDropdown>
                         <tui-data-list-wrapper
+                            new
                             tuiMultiSelectGroup
                             [itemContent]="template"
                             [items]="users | tuiFilterByInput"
@@ -101,7 +112,7 @@ interface User {
                             Done
                         </button>
                     </ng-container>
-                </tui-multi-select>
+                </tui-textfield>
             </ng-template>
 
             <ng-template
@@ -109,7 +120,14 @@ interface User {
                 let-user
             >
                 <span tuiCell>
-                    <tui-avatar [src]="user.url" />
+                    <div [tuiAvatar]="user.name | tuiInitials">
+                        @if (user.url) {
+                            <img
+                                alt=""
+                                [src]="user.url"
+                            />
+                        }
+                    </div>
                     <span tuiTitle>
                         {{ user.name }}
                         <span tuiSubtitle>
@@ -130,10 +148,10 @@ export class TestDropdownMobile {
     protected readonly open = signal(false);
     protected readonly users: readonly User[] = [
         {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},
-        {name: 'Roman Sedov', balance: 523242, url: 'RS'},
-        {name: 'Vladimir Potekhin', balance: 645465, url: 'VP'},
-        {name: 'Nikita Barsukov', balance: 468468, url: 'NB'},
-        {name: 'Maxim Ivanov', balance: 498654, url: 'MI'},
+        {name: 'Roman Sedov', balance: 523242},
+        {name: 'Vladimir Potekhin', balance: 645465},
+        {name: 'Nikita Barsukov', balance: 468468},
+        {name: 'Maxim Ivanov', balance: 498654},
     ];
 
     protected readonly stringify = ({name}: User): string => name;
@@ -169,24 +187,22 @@ describe('DropdownMobile', () => {
 
     describe('Type view', () => {
         it('Opens properly inside dialog', () => {
-            cy.get('tui-multi-select input').focus();
-            cy.get('tui-multi-select input').click();
+            cy.get('tui-textfield[multi]').click();
 
             cy.compareSnapshot('type-view-opened');
         });
 
         it('Filters items as you type', () => {
-            cy.get('tui-multi-select input').focus();
-            cy.get('tui-multi-select input').click();
-            cy.get('tui-multi-select input').type('Alex');
+            cy.get('tui-textfield[multi]').click();
+            cy.get('tui-textfield[multi]').type('Alex');
 
             cy.compareSnapshot('type-view-filtered');
         });
 
         it('Closes with selected values', () => {
-            cy.get('tui-multi-select input').focus();
-            cy.get('tui-multi-select input').click();
-            cy.get('tui-multi-select input').type('Alex');
+            cy.get('tui-textfield[multi]').click();
+            cy.get('tui-textfield[multi]').type('Alex');
+
             cy.get('[tuiOption]').first().click();
             cy.get('button[tuiDropdownButton]').click();
 

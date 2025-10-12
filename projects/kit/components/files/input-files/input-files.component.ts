@@ -6,19 +6,14 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {
-    PolymorpheusComponent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiInputFilesContent} from './input-files.content';
 import {TuiInputFilesDirective} from './input-files.directive';
 
 @Component({
-    standalone: true,
     selector: 'label[tuiInputFiles]',
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [PolymorpheusOutlet],
     template: `
         <ng-content />
         <span
@@ -30,7 +25,7 @@ import {TuiInputFilesDirective} from './input-files.directive';
             {{ text }}
         </span>
     `,
-    styleUrls: ['./input-files.style.less'],
+    styleUrl: './input-files.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {

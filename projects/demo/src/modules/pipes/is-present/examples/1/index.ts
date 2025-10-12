@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe, JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,8 +7,7 @@ import {TuiButton} from '@taiga-ui/core';
 import {delayWhen, of, Subject} from 'rxjs';
 
 @Component({
-    standalone: true,
-    imports: [CommonModule, TuiButton, TuiIsPresentPipe, TuiLet],
+    imports: [AsyncPipe, JsonPipe, TuiButton, TuiIsPresentPipe, TuiLet],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

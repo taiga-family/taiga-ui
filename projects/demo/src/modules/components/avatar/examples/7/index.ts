@@ -4,10 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAvatar, TuiAvatarOutline} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiAvatarOutline],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -19,23 +19,18 @@
         />
         <tui-icon tuiTooltip="A tooltip" />
     </tui-textfield>
+    <tui-error formControlName="nameValue" />
 
-    <tui-error
-        formControlName="nameValue"
-        [error]="[] | tuiFieldError | async"
-    />
-
-    <tui-input-date formControlName="periodValue">
-        Input date
+    <tui-textfield>
+        <label tuiLabel>Input date</label>
         <input
+            formControlName="periodValue"
             placeholder="Placeholder"
-            tuiTextfieldLegacy
+            tuiInputDate
         />
-    </tui-input-date>
-    <tui-error
-        formControlName="periodValue"
-        [error]="[] | tuiFieldError | async"
-    />
+        <tui-calendar *tuiDropdown />
+    </tui-textfield>
+    <tui-error formControlName="periodValue" />
 
     <fieldset>
         <div class="stack">
@@ -48,11 +43,7 @@
                 />
                 <tui-icon tuiPassword />
             </tui-textfield>
-
-            <tui-error
-                formControlName="passwordValue"
-                [error]="[] | tuiFieldError | async"
-            />
+            <tui-error formControlName="passwordValue" />
         </div>
         <div class="stack">
             <tui-textfield>
@@ -60,13 +51,10 @@
                 <input
                     formControlName="moneyValue"
                     tuiInputNumber
-                    [postfix]="' ' + 'RUB' | tuiCurrency"
+                    [postfix]="' RUB' | tuiCurrency"
                 />
             </tui-textfield>
-            <tui-error
-                formControlName="moneyValue"
-                [error]="[] | tuiFieldError | async"
-            />
+            <tui-error formControlName="moneyValue" />
         </div>
     </fieldset>
 
@@ -98,22 +86,25 @@
                 />
 
                 <tui-data-list-wrapper
-                    *tuiTextfieldDropdown
+                    *tuiDropdown
                     new
                     [items]="persons"
                 />
             </tui-textfield>
-            <tui-error
-                formControlName="personValue"
-                [error]="[] | tuiFieldError | async"
-            />
+            <tui-error formControlName="personValue" />
         </div>
         <div class="stack">
-            <tui-input-phone formControlName="phoneValue">Input phone</tui-input-phone>
-            <tui-error
-                formControlName="phoneValue"
-                [error]="[] | tuiFieldError | async"
-            />
+            <tui-textfield>
+                <label tuiLabel>Input phone</label>
+
+                <input
+                    autocomplete="tel"
+                    formControlName="phoneValue"
+                    mask="+7 ### ###-##-##"
+                    tuiInputPhone
+                />
+            </tui-textfield>
+            <tui-error formControlName="phoneValue" />
         </div>
     </fieldset>
     <div

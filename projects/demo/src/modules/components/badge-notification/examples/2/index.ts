@@ -4,10 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiBadgeNotification],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

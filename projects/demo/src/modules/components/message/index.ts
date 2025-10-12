@@ -5,7 +5,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiMessage} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiDocAppearance, TuiMessage],
     templateUrl: './index.html',
     changeDetection,

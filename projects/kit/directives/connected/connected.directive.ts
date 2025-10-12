@@ -7,24 +7,18 @@ import {
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./connected.style.less'],
+    styleUrl: './connected.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-connected-styles',
-    },
+    host: {class: 'tui-connected'},
 })
-class TuiConnectedStyles {}
+class Styles {}
 
 @Directive({
     standalone: true,
     selector: '[tuiConnected]',
-    host: {
-        tuiConnected: '',
-    },
 })
 export class TuiConnected {
-    protected readonly nothing = tuiWithStyles(TuiConnectedStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 }

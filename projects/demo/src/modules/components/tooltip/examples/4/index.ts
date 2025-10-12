@@ -5,7 +5,6 @@ import {tuiHintOptionsProvider, TuiIcon} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiIcon, TuiTooltip],
     templateUrl: './index.html',
     encapsulation,

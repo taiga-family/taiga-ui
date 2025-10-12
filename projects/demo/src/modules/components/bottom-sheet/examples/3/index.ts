@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,14 +5,11 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiAccordion} from '@taiga-ui/experimental';
-import {TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
+import {TuiAccordion, TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgIf,
         TuiAccordion,
         TuiBlock,
         TuiBottomSheet,
@@ -22,7 +18,7 @@ import {TuiBlock, TuiCheckbox} from '@taiga-ui/kit';
         TuiRepeatTimes,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

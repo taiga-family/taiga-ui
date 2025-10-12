@@ -7,10 +7,9 @@ import {TuiPan} from '@taiga-ui/cdk';
 import {BehaviorSubject, map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiPan],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

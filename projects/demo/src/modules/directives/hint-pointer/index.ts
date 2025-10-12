@@ -9,7 +9,6 @@ import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
 
 @Component({
-    standalone: true,
     imports: [InheritedDocumentation, TuiDemo, TuiHint, TuiHintDirective],
     templateUrl: './index.html',
     changeDetection,

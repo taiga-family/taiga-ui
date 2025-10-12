@@ -5,10 +5,9 @@ import {TuiAlertService, TuiButton, TuiIcon, TuiLink} from '@taiga-ui/core';
 import {TuiPush} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiIcon, TuiLink, TuiPush],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,10 +8,8 @@ import {TuiChevron, TuiElasticContainer} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgForOf,
         TuiButton,
         TuiChevron,
         TuiElasticContainer,
@@ -20,7 +17,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiInputModule,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

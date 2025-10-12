@@ -11,11 +11,11 @@
  * data-size — size (default: 'm') ('s' | 'm')
  *
  * @vars
- * --t-checked-icon — checkmark icon
- * --t-indeterminate-icon — indeterminate state icon
+ * --t-icon-start — checkmark icon
+ * --t-icon-end — indeterminate state icon
  *
  * @example
- * <input type="checkbox" tuiCheckbox />
+ * <input type="checkbox" tuiCheckbox tuiIcons tuiAppearance data-appearance='secondary' />
  *
  * @see-also
  * Switch, Radio, Appearance
@@ -32,21 +32,22 @@
     flex-shrink: 0;
 
     &::before {
-        .fullsize(absolute, inset);
-
-        content: '';
-        inline-size: 1rem;
-        block-size: 1rem;
-        margin: auto;
-        background: currentColor;
-        mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>') center/100%;
+        position: absolute;
+        block-size: 100%;
+        inline-size: 100%;
+        font-size: 1rem;
+        mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"></svg>');
         transform: scale(0);
         transition:
             transform var(--tui-duration) ease-in-out,
             mask 0s var(--tui-duration) ease-in-out;
     }
 
-    &:disabled._readonly {
+    &::after {
+        display: none;
+    }
+
+    &:disabled._readonly._readonly {
         opacity: 1;
         pointer-events: none;
     }
@@ -54,16 +55,17 @@
     &:checked,
     &:indeterminate {
         &::before {
-            mask-image: var(--t-checked-icon);
+            mask-image: var(--t-icon-start);
             transform: scale(1);
             transition:
                 transform var(--tui-duration) ease-in-out,
                 mask 0s ease-in-out;
+            transition-duration: inherit;
         }
     }
 
     &:indeterminate::before {
-        mask-image: var(--t-indeterminate-icon);
+        mask-image: var(--t-icon-end);
     }
 
     &[data-size='s'] {
@@ -71,8 +73,7 @@
         --t-radius: var(--tui-radius-xs);
 
         &::before {
-            inline-size: 0.875rem;
-            block-size: 0.875rem;
+            font-size: 0.875rem;
         }
     }
 

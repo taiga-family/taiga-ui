@@ -5,7 +5,6 @@ import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk';
 import {TuiCompass} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiCompass],
     template: '<tui-compass [degrees]="degrees" />',
     encapsulation,

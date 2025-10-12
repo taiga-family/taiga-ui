@@ -1,18 +1,19 @@
 <div class="messages">
     <tui-scrollbar>
         <div tuiMessage>What's up?</div>
-        <div
-            *ngFor="let message of messages"
-            appearance="accent"
-            tuiMessage
-            class="message"
-            [textContent]="message"
-        ></div>
+        @for (message of messages; track message) {
+            <div
+                appearance="accent"
+                tuiMessage
+                class="message"
+                [textContent]="message"
+            ></div>
+        }
     </tui-scrollbar>
     <tui-bottom-sheet>
         <div class="actions">
             <button
-                tuiAppearance="floating"
+                appearance="floating"
                 tuiCardLarge
                 type="button"
                 (click)="onClick('Ok')"
@@ -20,7 +21,7 @@
                 Ok
             </button>
             <button
-                tuiAppearance="floating"
+                appearance="floating"
                 tuiCardLarge
                 type="button"
                 (click)="onClick('Bye!')"
@@ -28,7 +29,7 @@
                 Bye!
             </button>
             <button
-                tuiAppearance="floating"
+                appearance="floating"
                 tuiCardLarge
                 type="button"
                 (click)="onClick('Taiga UI is awesome!')"

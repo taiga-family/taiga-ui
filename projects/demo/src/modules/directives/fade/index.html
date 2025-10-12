@@ -6,13 +6,14 @@
     <ng-template pageTab>
         <p>Directive that uses masking to fade out overflown content</p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -29,39 +30,39 @@
                 that fades
             </div>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiFade"
-                documentationPropertyType="TuiOrientation"
+        <table tuiDocAPI>
+            <tr
+                name="[tuiFade]"
+                tuiDocAPIItem
+                type="TuiOrientation"
             >
                 Orientation of the fade
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiFadeHeight"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="lineHeight"
+            </tr>
+            <tr
+                name="[tuiFadeHeight]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="lineHeight"
             >
                 Line height (required for multiline text fade)
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiFadeOffset"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="offset"
+            </tr>
+            <tr
+                name="[tuiFadeOffset]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="offset"
             >
                 Offset from the edge for the fade to start
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiFadeSize"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[tuiFadeSize]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="size"
             >
                 Size of the fade
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

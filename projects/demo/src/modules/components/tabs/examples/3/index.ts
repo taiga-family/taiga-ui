@@ -1,17 +1,12 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiIsString} from '@taiga-ui/cdk';
-import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
+import {TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListDropdownManager, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
-        NgForOf,
-        NgIf,
-        TuiButton,
         TuiChevron,
         TuiDataList,
         TuiDataListDropdownManager,
@@ -20,7 +15,7 @@ import {TuiChevron, TuiDataListDropdownManager, TuiTabs} from '@taiga-ui/kit';
         TuiTabs,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

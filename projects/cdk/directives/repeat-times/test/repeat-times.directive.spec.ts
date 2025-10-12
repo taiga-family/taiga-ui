@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, type DebugElement} from '@angular/co
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga} from '@taiga-ui/core';
 
 const DEFAULT_TEST_COUNT = 3;
 
@@ -32,7 +32,7 @@ describe('TuiRepeatTimes directive', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

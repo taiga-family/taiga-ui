@@ -3,12 +3,11 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
-    protected readonly examples = ['Lazy', 'Eager', 'Async', 'Old syntax'];
+    protected readonly examples = ['Lazy', 'Eager', 'Async'];
 }

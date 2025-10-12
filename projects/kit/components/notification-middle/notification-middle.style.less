@@ -1,0 +1,75 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    position: relative;
+    display: grid;
+    max-inline-size: 18.75rem;
+    min-inline-size: 7rem;
+    min-block-size: 7rem;
+    justify-items: center;
+    gap: 1rem;
+    margin: auto;
+    padding: 2.25rem 2.25rem 1.75rem;
+    border-radius: 1.25rem;
+    box-sizing: border-box;
+    font: var(--tui-font-text-m);
+
+    &::before {
+        .fullsize();
+        .transition(width);
+        .center-all();
+
+        content: '';
+        z-index: -1;
+        inline-size: var(--t-width);
+        background: var(--tui-background-elevation-3);
+        box-shadow: var(--tui-shadow-popup);
+        border-radius: inherit;
+        contain: strict;
+    }
+
+    --tui-scale: 0.5;
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiScale;
+
+        ::ng-deep > .tui-enter {
+            animation-duration: 0s;
+            animation-delay: 0s;
+        }
+    }
+
+    .t-loader:not(:last-child) {
+        display: none;
+    }
+
+    ::ng-deep > * {
+        grid-area: 2 / 1;
+
+        &.tui-enter,
+        &.tui-leave {
+            animation-delay: var(--tui-duration);
+            animation-name: tuiFade;
+        }
+
+        &.tui-leave {
+            animation-delay: 0s;
+
+            ~ .tui-enter {
+                opacity: 0;
+            }
+        }
+    }
+
+    ::ng-deep > tui-loader,
+    ::ng-deep > [tuiAvatar],
+    ::ng-deep > tui-icon,
+    ::ng-deep > img {
+        block-size: 2.5rem;
+        inline-size: 2.5rem;
+        min-inline-size: 2.5rem;
+        font-size: 2.5rem;
+        grid-area: 1 / 1;
+    }
+}

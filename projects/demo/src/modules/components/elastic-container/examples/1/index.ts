@@ -5,7 +5,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiElasticContainer} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiElasticContainer, TuiLink],
     templateUrl: './index.html',
     encapsulation,

@@ -1,13 +1,15 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {tuiAsPortal, TuiPortals} from '@taiga-ui/cdk/classes';
+import {TuiPortals, TuiPortalService} from '@taiga-ui/cdk/portals';
+import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiPopupService} from './popup.service';
 
 @Component({
     standalone: true,
     selector: 'tui-popups',
-    template: '<ng-container #viewContainer />',
+    template: '<ng-content/><ng-container #vcr />',
+    styleUrl: './popups.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsPortal(TuiPopupService)],
+    providers: [tuiProvide(TuiPortalService, TuiPopupService)],
 })
 export class TuiPopups extends TuiPortals {}

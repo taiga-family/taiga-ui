@@ -13,7 +13,7 @@ import {
     tuiAsTextfieldAccessor,
     tuiInjectAuxiliary,
     TuiTextfieldBase,
-    tuiTextfieldIconBinding,
+    tuiTextfieldIcon,
 } from '@taiga-ui/core/components/textfield';
 import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
 import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
@@ -49,7 +49,7 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay> {
     private readonly dateOptions = inject(TUI_INPUT_DATE_OPTIONS_NEW);
 
-    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS_NEW);
+    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS_NEW);
     protected readonly filler = tuiWithDateFiller();
     protected readonly stringify = this.handlers.stringify.set((item) =>
         item.toString(this.format().mode, this.format().separator),

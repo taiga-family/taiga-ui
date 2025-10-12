@@ -12,19 +12,15 @@ import {type TuiOrientation, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/
 import {TUI_GROUP_OPTIONS} from './group.options';
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./group.style.less'],
+    styleUrl: './group.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-group',
-    },
+    host: {class: 'tui-group'},
 })
-class TuiGroupStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiGroup]:not(ng-container)',
     host: {
         tuiGroup: '',
@@ -40,7 +36,7 @@ class TuiGroupStyles {}
 export class TuiGroup {
     private readonly options = inject(TUI_GROUP_OPTIONS);
 
-    protected readonly nothing = tuiWithStyles(TuiGroupStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 
     @Input()
     public orientation: TuiOrientation = this.options.orientation;

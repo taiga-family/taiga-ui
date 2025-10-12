@@ -2,15 +2,13 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiDocExampleOptionsProvider} from '@taiga-ui/addon-doc';
-import {TuiTitle} from '@taiga-ui/core';
+import {TuiCell, type TuiCellOptions, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCell, type TuiCellOptions} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiCell, TuiDemo, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [tuiDocExampleOptionsProvider({fullsize: true})],
 })

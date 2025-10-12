@@ -5,10 +5,9 @@ import {tuiInjectElement} from '@taiga-ui/cdk';
 import {tuiAsViewport, TuiDropdown, TuiRectAccessor} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiDropdown],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [tuiAsViewport(Example)],

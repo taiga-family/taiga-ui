@@ -128,10 +128,12 @@
             [description]="mobile"
         >
             <ng-template #mobile>
-                <tui-notification *ngIf="!isMobile">
-                    Open this on a mobile device or enable emulation in DevTools and refresh the page to explore this
-                    example!
-                </tui-notification>
+                @if (!isMobile) {
+                    <tui-notification>
+                        Open this on a mobile device or enable emulation in DevTools and refresh the page to explore
+                        this example!
+                    </tui-notification>
+                }
 
                 <p>You can use several different approaches to optimize UX on mobile devices when tapping the icon.</p>
 
@@ -183,12 +185,9 @@
                     [tuiTextfieldSize]="textfieldDoc.size"
                     [(open)]="dropdown.open"
                 >
-                    <label
-                        *ngIf="textfieldDoc.size !== 's'"
-                        tuiLabel
-                    >
-                        Choose date
-                    </label>
+                    @if (textfieldDoc.size !== 's') {
+                        <label tuiLabel>Choose date</label>
+                    }
 
                     <input
                         tuiInputDateTime
@@ -202,7 +201,7 @@
                         [tuiDisabled]="controlDoc.disabled"
                     />
 
-                    <tui-calendar *tuiTextfieldDropdown />
+                    <tui-calendar *tuiDropdown />
                 </tui-textfield>
             </ng-template>
         </tui-doc-demo>
@@ -247,7 +246,15 @@
             <tbody
                 #dropdown
                 tuiDocDropdown
-                [hiddenOptions]="['tuiDropdownEnabled', 'limitWidth', 'appearance', 'maxHeight', 'offset']"
+                [hiddenOptions]="[
+                    'tuiDropdownEnabled',
+                    'limitWidth',
+                    'appearance',
+                    'maxHeight',
+                    'offset',
+                    'dropdownSided',
+                    'dropdownSidedOffset',
+                ]"
             ></tbody>
             <tbody
                 #controlDoc

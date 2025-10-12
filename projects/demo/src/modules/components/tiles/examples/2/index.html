@@ -2,13 +2,14 @@
     class="tiles"
     [(order)]="order"
 >
-    <tui-tile
-        *ngFor="let item of items; let index = index"
-        tuiTileHandle
-        class="tile"
-        [class.tile_tall]="item === 'John Cleese'"
-        [style.order]="order.get(index)"
-    >
-        <div class="content">{{ item }}</div>
-    </tui-tile>
+    @for (item of items; track item) {
+        <tui-tile
+            tuiTileHandle
+            class="tile"
+            [class.tile_tall]="item === 'John Cleese'"
+            [style.order]="order.get($index)"
+        >
+            <div class="content">{{ item }}</div>
+        </tui-tile>
+    }
 </tui-tiles>

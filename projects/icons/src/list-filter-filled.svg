@@ -5,11 +5,11 @@
     viewBox="0 0 24 24"
     fill="currentColor"
     stroke="currentColor"
-    stroke-width="2"
+    stroke-width="calc((100vw - 100vh) / 10)"
     stroke-linecap="round"
     stroke-linejoin="round"
 >
-    <path vector-effect="non-scaling-stroke" d="M3 6h18" />
-    <path vector-effect="non-scaling-stroke" d="M7 12h10" />
-    <path vector-effect="non-scaling-stroke" d="M10 18h4" />
+    <path vector-effect="non-scaling-stroke" d="M2 5h20" />
+    <path vector-effect="non-scaling-stroke" d="M6 12h12" />
+    <path vector-effect="non-scaling-stroke" d="M9 19h6" />
 </svg>

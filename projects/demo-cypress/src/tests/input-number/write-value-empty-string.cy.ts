@@ -5,7 +5,6 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 
 describe('InputNumber | Form control is patched with empty string', () => {
     @Component({
-        standalone: true,
         imports: [FormsModule, TuiInputNumber, TuiRoot, TuiTextfield],
         template: `
             <tui-root>

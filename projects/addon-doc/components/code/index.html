@@ -1,27 +1,25 @@
-<p
-    *ngIf="filename"
-    class="t-header"
->
-    {{ filename }}
-</p>
-<pre
-    *ngFor="let content of processor()"
-    class="t-code"
->
+@if (filename) {
+    <p class="t-header">
+        {{ filename }}
+    </p>
+}
+@for (content of processor(); track content) {
+    <pre class="t-code">
     <code [lineNumbers]="true" [highlight]="content"></code>
     <div class="t-code-actions">
-        <button
-            tuiIconButton
-            type="button"
-            appearance="outline-grayscale"
-            size="s"
-            class="t-copy-button"
-            [iconStart]="icon()"
-            [cdkCopyToClipboard]="content"
-            (click)="copy$.next()"
+      <button
+        tuiIconButton
+        type="button"
+        appearance="outline-grayscale"
+        size="s"
+        class="t-copy-button"
+        [iconStart]="icon()"
+        [cdkCopyToClipboard]="content"
+        (click)="copy$.next()"
         >
-            {{ copyText()}}
-        </button>
-        <ng-content />
+        {{ copyText()}}
+      </button>
+      <ng-content />
     </div>
-</pre>
+  </pre>
+}

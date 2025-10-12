@@ -7,7 +7,7 @@ import {TuiSelectOptionComponent} from '@taiga-ui/legacy/components/select-optio
     standalone: false,
     selector: 'tui-multi-select-option',
     templateUrl: './multi-select-option.template.html',
-    styleUrls: ['./multi-select-option.style.less'],
+    styleUrl: './multi-select-option.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiMultiSelectOptionComponent<

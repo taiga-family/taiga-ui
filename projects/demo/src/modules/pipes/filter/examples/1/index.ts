@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -11,10 +10,9 @@ export interface Item {
 }
 
 @Component({
-    standalone: true,
-    imports: [NgForOf, TuiFilterPipe, TuiTable],
+    imports: [TuiFilterPipe, TuiTable],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

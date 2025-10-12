@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -13,7 +12,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiExpandComponent} from '@taiga-ui/core/components/expand';
+import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
 
@@ -29,11 +28,10 @@ import {
 } from '../../misc/tree.tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-tree-item',
-    imports: [NgIf, PolymorpheusOutlet, TuiExpandComponent],
+    imports: [PolymorpheusOutlet, TuiExpand],
     templateUrl: './tree-item.template.html',
-    styleUrls: ['./tree-item.style.less'],
+    styleUrl: './tree-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiProvide(TUI_TREE_NODE, TuiTreeItem),
@@ -66,20 +64,21 @@ export class TuiTreeItem implements DoCheck {
         forwardRef(() => TUI_TREE_CONTENT),
     );
 
-    protected readonly expanded = toSignal(
-        this.change$.pipe(
-            startWith(null),
-            map(() => this.isExpanded),
-        ),
-        {initialValue: this.isExpanded},
-    );
-
     protected readonly attached = toSignal(
         this.change$.pipe(
             map(() => this.el.isConnected),
             distinctUntilChanged(),
         ),
         {initialValue: this.el.isConnected},
+    );
+
+    public readonly expanded = toSignal(
+        this.change$.pipe(
+            startWith(null),
+            map(() => this.isExpanded),
+            distinctUntilChanged(),
+        ),
+        {initialValue: this.isExpanded},
     );
 
     public get isExpandable(): boolean {

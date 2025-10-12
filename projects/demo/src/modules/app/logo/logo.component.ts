@@ -5,11 +5,10 @@ import {TuiLink} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'logo',
     imports: [RouterLink, TuiLink],
     templateUrl: './logo.template.html',
-    styleUrls: ['./logo.style.less'],
+    styleUrl: './logo.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Logo {

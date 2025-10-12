@@ -8,7 +8,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputChip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [MaskitoDirective, ReactiveFormsModule, TuiInputChip, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

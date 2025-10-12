@@ -5,11 +5,10 @@ import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 
 @Component({
-    standalone: true,
     selector: 'tui-drawer',
     imports: [TuiScrollbar],
     templateUrl: './drawer.template.html',
-    styleUrls: ['./drawer.style.less'],
+    styleUrl: './drawer.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiButtonOptionsProvider({

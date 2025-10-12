@@ -4,13 +4,14 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -19,38 +20,17 @@
                 [orientation]="orientation"
                 [(activeItemIndex)]="activeItemIndex"
             >
+                <button tuiStep>Simple step</button>
+                <button tuiStep>Simple step</button>
                 <button
                     tuiStep
-                    type="button"
-                >
-                    Simple step
-                </button>
-                <button
-                    tuiStep
-                    type="button"
-                >
-                    Simple step
-                </button>
-                <button
-                    tuiStep
-                    type="button"
                     [icon]="icon"
                     [stepState]="state"
                 >
                     Simple step
                 </button>
-                <button
-                    tuiStep
-                    type="button"
-                >
-                    Simple step
-                </button>
-                <button
-                    tuiStep
-                    type="button"
-                >
-                    Simple step
-                </button>
+                <button tuiStep>Simple step</button>
+                <button tuiStep>Simple step</button>
             </tui-stepper>
         </tui-doc-demo>
         <h3>Stepper</h3>

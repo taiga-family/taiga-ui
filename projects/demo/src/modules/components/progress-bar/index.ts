@@ -5,10 +5,9 @@ import {TuiLink, type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

@@ -53,15 +53,16 @@
         tuiTheme="dark"
         [collapsed]="true"
     >
-        <button
-            *ngFor="let item of items"
-            appearance="primary-grayscale"
-            tuiIconButton
-            type="button"
-            [iconStart]="item.icon"
-        >
-            {{ item }}
-        </button>
+        @for (item of items; track item) {
+            <button
+                appearance="primary-grayscale"
+                tuiIconButton
+                type="button"
+                [iconStart]="item.icon"
+            >
+                {{ item }}
+            </button>
+        }
     </div>
     <div tuiTitle>
         Hover over

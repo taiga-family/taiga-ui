@@ -21,52 +21,54 @@
 </p>
 
 <div class="content">
-    <div
-        *ngFor="let i of 30 | tuiRepeatTimes"
-        tuiCell
-    >
-        <tui-avatar
-            appearance="primary"
-            src="@tui.star"
-        />
-        <div tuiTitle>
-            Title
-            <div tuiSubtitle>Description</div>
+    @for (i of 30 | tuiRepeatTimes; track i) {
+        <div tuiCell>
+            <div
+                appearance="primary"
+                tuiAvatar="@tui.star"
+            ></div>
+            <div tuiTitle>
+                Title
+                <div tuiSubtitle>Description</div>
+            </div>
         </div>
-    </div>
+    }
 
-    <footer
-        *ngIf="floating"
-        tuiFloatingContainer
-        @tuiSlideInTop
-    >
-        <tui-elastic-container>
-            <button
-                tuiButton
-                type="button"
-            >
-                Main action
-            </button>
-            <span
-                *ngIf="!additional"
-                class="clamp"
-                [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation"
-            >
-                <tui-icon
-                    icon="@tui.settings"
-                    [style.font-size.rem]="1"
-                />
-                Legal text, max 3 lines
-            </span>
-            <button
-                *ngIf="additional"
-                appearance="flat"
-                tuiButton
-                type="button"
-                [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation"
-            >
-                Secondary action
-            </button>
-        </tui-elastic-container>
-    </footer>
+    @if (floating) {
+        <footer
+            tuiFloatingContainer
+            @tuiSlideInTop
+        >
+            <tui-elastic-container>
+                <button
+                    tuiButton
+                    type="button"
+                >
+                    Main action
+                </button>
+                @if (!additional) {
+                    <span
+                        class="clamp"
+                        [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation"
+                    >
+                        <tui-icon
+                            icon="@tui.settings"
+                            [style.font-size.rem]="1"
+                        />
+                        Legal text, max 3 lines
+                    </span>
+                }
+                @if (additional) {
+                    <button
+                        appearance="flat"
+                        tuiButton
+                        type="button"
+                        [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation"
+                    >
+                        Secondary action
+                    </button>
+                }
+            </tui-elastic-container>
+        </footer>
+    }
 </div>

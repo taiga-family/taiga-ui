@@ -1,6 +1,10 @@
 name: ⚙️ Schematics
 on:
+  workflow_dispatch:
   pull_request:
+    paths:
+      - '**/taiga-schematics/**'
+      - '**/schematics/**'
 
 env:
   NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
@@ -12,8 +16,8 @@ jobs:
     name: Run the latest migration
     steps:
       - uses: actions/checkout@v4.3.0
-      - uses: taiga-family/ci/actions/setup/node@v1.139.0
-      - uses: taiga-family/ci/actions/run/node-info@v1.139.0
+      - uses: taiga-family/ci/actions/setup/node@v1.163.0
+      - uses: taiga-family/ci/actions/run/node-info@v1.163.0
         id: info
       - run: npx nx run cdk:schematics --v=${{ steps.info.outputs.root-package-major-version }}
 

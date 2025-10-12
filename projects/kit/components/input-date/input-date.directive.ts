@@ -1,4 +1,12 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {
+    computed,
+    Directive,
+    effect,
+    inject,
+    Input,
+    signal,
+    untracked,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoDateMode, maskitoDateOptionsGenerator} from '@maskito/kit';
@@ -19,7 +27,7 @@ import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {
     tuiInjectAuxiliary,
     TuiTextfieldDirective,
-    tuiTextfieldIconBinding,
+    tuiTextfieldIcon,
     TuiWithNativePicker,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
@@ -72,7 +80,7 @@ export abstract class TuiInputDateBase<
     protected readonly filler = tuiWithDateFiller();
     protected readonly mobile = inject(TUI_IS_MOBILE);
     protected readonly open = tuiDropdownOpen();
-    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_DATE_OPTIONS_NEW);
+    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS_NEW);
     protected readonly handlers = inject<TuiItemsHandlers<T>>(TuiItemsHandlersDirective);
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(
@@ -129,14 +137,15 @@ export abstract class TuiInputDateBase<
 
     public override writeValue(value: T | null): void {
         const reset = this.control.pristine && this.control.untouched && !value;
+        const changed = untracked(() => value !== this.value());
 
-        if (value !== this.value() || reset) {
+        if (changed || reset) {
             super.writeValue(value);
             this.textfield.value.set(this.stringify(this.value()));
         }
     }
 
-    public setDate(value: TuiDay | TuiDayRange): void {
+    public setDate(value: TuiDay | TuiDayRange | readonly TuiDay[]): void {
         this.onChange(value as T);
         this.open.set(false);
 

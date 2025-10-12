@@ -4,24 +4,25 @@
 </tui-notification>
 
 <div
-    tuiAppearance="floating"
+    appearance="floating"
     tuiCardLarge
 >
     <h3 tuiTitle="m">Inside a block</h3>
-    <button
-        *ngFor="let item of items"
-        tuiCell
-        type="button"
-    >
-        <tui-avatar
-            appearance="accent"
-            [src]="item.icon"
-        />
-        <span tuiTitle>
-            {{ item.title }}
-            <span tuiSubtitle>{{ item.subtitle }}</span>
-        </span>
-    </button>
+    @for (item of items; track item) {
+        <button
+            tuiCell
+            type="button"
+        >
+            <div
+                appearance="accent"
+                [tuiAvatar]="item.icon"
+            ></div>
+            <span tuiTitle>
+                {{ item.title }}
+                <span tuiSubtitle>{{ item.subtitle }}</span>
+            </span>
+        </button>
+    }
 </div>
 
 <label>
@@ -37,7 +38,7 @@
         />
 
         <tui-data-list-wrapper
-            *tuiTextfieldDropdown
+            *tuiDropdown
             new
             [itemContent]="content"
             [items]="items"
@@ -47,10 +48,10 @@
             let-item
         >
             <span tuiCell>
-                <tui-avatar
+                <div
                     appearance="primary"
-                    [src]="item.icon"
-                />
+                    [tuiAvatar]="item.icon"
+                ></div>
                 <span tuiTitle>
                     {{ item.title }}
                     <span tuiSubtitle>{{ item.subtitle }}</span>

@@ -7,8 +7,7 @@ import {
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {tuiPx} from '@taiga-ui/cdk';
-import {TuiHint} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiHint} from '@taiga-ui/core';
 import {
     DEFAULT_ROWS,
     LINE_HEIGHT_L,
@@ -100,7 +99,7 @@ describe('Textarea', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

@@ -1,4 +1,4 @@
-<ng-container *ngIf="host.native">
+@if (host.native) {
     <input
         *tuiTextfieldContent
         type="time"
@@ -7,4 +7,4 @@
         [value]="value()"
         (change)="setValue($any($event.target).value)"
     />
-</ng-container>
+}

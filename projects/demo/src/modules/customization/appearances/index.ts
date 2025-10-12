@@ -8,7 +8,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiWrapperExample1} from './examples/1';
 
 @Component({
-    standalone: true,
     imports: [ClipboardModule, TuiDemo, TuiLink, TuiWrapperExample1],
     templateUrl: './index.html',
     encapsulation: ViewEncapsulation.None,

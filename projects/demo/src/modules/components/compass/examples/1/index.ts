@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCompass} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiCompass],
     template: '<tui-compass />',
     encapsulation,

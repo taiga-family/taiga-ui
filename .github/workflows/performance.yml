@@ -1,0 +1,223 @@
+name: 📈 Performance Stress Testing
+on:
+  workflow_call:
+
+env:
+  NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
+  PERF_BASELINE_FALLBACK_BRANCH: main
+  PERF_STRESS_PATTERN: '*.stress.pw.spec.ts'
+  PERF_COLLECTOR_DEBUG: 1
+  PERFORMANCE_RUNS: 6 # total runs including warmup
+  PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
+  PERF_HARD_FAIL_PERCENT: 50
+  PERF_VISIBILITY_THRESHOLD: 15 # tightened row visibility threshold
+  # Percentage increase in operation counts (layout/recalc) considered significant
+  PERF_COUNT_PERCENT_THRESHOLD: 18
+  # Percentage increase in per-operation duration considered significant
+  PERF_PER_OP_PERCENT_THRESHOLD: 25
+  # Net duration regression thresholds
+  PERF_NET_PERCENT_THRESHOLD: 15
+  PERF_NET_ABS_MS_THRESHOLD: 8
+  # Absolute ms floor for row visibility (filters tiny absolute deltas)
+  PERF_VISIBILITY_ABS_MS_FLOOR: 4
+  # Enable dynamic net threshold scaling based on baseline variability
+  PERF_ENABLE_DYNAMIC_NET: true
+  # Absolute per-op median delta (ms) required to treat a per-op % increase as material
+  PERF_PER_OP_ABS_MS_FLOOR: 0.4
+  # New stricter component + net visibility gating
+  PERF_COMPONENT_MIN_NET_PCT: 6
+  PERF_COMPONENT_ABS_MS_FLOOR: 12
+  PERF_COMPONENT_METRIC_ABS_MS_FLOOR: 3
+  PERF_NET_VISIBILITY_ABS_MS_FLOOR: 12
+
+jobs:
+  performance-stress:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    name: Playwright / Performance Stress
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout feature branch
+        uses: actions/checkout@v4.3.0
+        with:
+          fetch-depth: 10
+      - uses: taiga-family/ci/actions/setup/variables@v1.163.0
+      - uses: taiga-family/ci/actions/setup/node@v1.163.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.163.0
+      - name: Restore dist cache from parent workflow build
+        uses: actions/cache/restore@v4.3.0
+        with:
+          path: dist/demo
+          key: ${{ env.CACHE_DIST_KEY }}
+      - name: Attempt download of demo dist artifact (fallback)
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        uses: actions/download-artifact@v4.3.0
+        with:
+          name: demo-dist-${{ github.sha }}
+          path: dist/demo
+      - name: Verify dist availability
+        id: dist-check
+        run: |
+          if [ -d dist/demo ] && [ -n "$(ls -A dist/demo 2>/dev/null)" ]; then
+            # optionally show a few files (suppress SIGPIPE noise)
+            find dist/demo -maxdepth 2 -type f 2>/dev/null | head -n 5 || true
+            echo "skip=false" >> $GITHUB_OUTPUT;
+            echo "dist present";
+          else
+            echo "skip=true" >> $GITHUB_OUTPUT;
+            echo "dist not found – skipping performance stress (no rebuild to avoid duplicate work)";
+          fi
+      - name: Resolve baseline snapshot
+        if: steps.dist-check.outputs.skip == 'false'
+        id: resolve-baseline
+        run: |
+          BASE='${{ github.base_ref }}'
+          PRIMARY="snapshots/demo/next/$BASE"
+          FALLBACK_BRANCH='${{ env.PERF_BASELINE_FALLBACK_BRANCH }}'
+          FALLBACK="snapshots/demo/next/$FALLBACK_BRANCH"
+          echo "Attempting baseline snapshot: $PRIMARY"
+          if git ls-remote --exit-code origin "$PRIMARY" >/dev/null 2>&1; then
+            echo "snapshot=$PRIMARY" >> $GITHUB_OUTPUT
+            echo "resolved=$PRIMARY" >> $GITHUB_OUTPUT
+          elif git ls-remote --exit-code origin "$FALLBACK" >/dev/null 2>&1; then
+            echo "snapshot=$FALLBACK" >> $GITHUB_OUTPUT
+            echo "resolved=$FALLBACK (fallback)" >> $GITHUB_OUTPUT
+          else
+            echo "snapshot=__none__" >> $GITHUB_OUTPUT
+            echo "resolved=__none__" >> $GITHUB_OUTPUT
+            echo "No baseline snapshot found (primary or fallback). Will treat all tests as new.";
+          fi
+      - name: Stop early (no dist)
+        if: steps.dist-check.outputs.skip == 'true'
+        run: echo 'Skipping performance stress due to missing dist'
+      - name: Serve feature build
+        if: steps.dist-check.outputs.skip == 'false'
+        uses: taiga-family/ci/actions/run/serve@v1.163.0
+        with:
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST }}
+          replaceBaseUrl: false
+      - name: Run performance stress tests (current, multi-run)
+        if: steps.dist-check.outputs.skip == 'false'
+        env:
+          COLLECT_PERFORMANCE: 1
+        run: |
+          mkdir -p ./performance-stress/current
+          RUNS=${PERFORMANCE_RUNS:-6}
+          WARMUP_SKIP=${PERFORMANCE_WARMUP_SKIP:-1}
+          PATTERN=${PERF_STRESS_PATTERN:-'*.stress.pw.spec.ts'}
+          # Collect all stress spec files
+          mapfile -t SPEC_FILES < <(find projects/demo-playwright/tests -type f -name "$PATTERN" | sort)
+          if [ ${#SPEC_FILES[@]} -eq 0 ]; then
+            echo "No stress spec files found for pattern $PATTERN"
+            exit 0
+          fi
+          echo "Discovered ${#SPEC_FILES[@]} stress spec(s):";
+          for f in "${SPEC_FILES[@]}"; do echo " - $f"; done
+          echo "Executing $RUNS runs (skipping first $WARMUP_SKIP for warmup)"
+          for i in $(seq 1 $RUNS); do
+            echo "--- Current build run $i/$RUNS ---"
+            npx nx e2e demo-playwright -- --project=chromium "${SPEC_FILES[@]}" || true
+            if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
+              dest=./performance-stress/current/run-$i
+              mkdir -p "$dest"
+              find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} "$dest"/ \; || true
+            fi
+          done
+          # Flatten copied files (keeping unique filenames) for aggregator simplicity
+          find ./performance-stress/current -type f -name '*.json' -maxdepth 3 -exec cp {} ./performance-stress/current/ \; || true
+          echo "Completed multi-run current collection"
+      - name: Clone baseline snapshot build
+        if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
+        uses: taiga-family/ci/actions/run/clone@v1.163.0
+        with:
+          branch: ${{ steps.resolve-baseline.outputs.snapshot }}
+          destination: ${{ env.DIST_NEXT }}
+      - name: Serve baseline build
+        if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
+        uses: taiga-family/ci/actions/run/serve@v1.163.0
+        with:
+          port: ${{ env.NG_SERVER_PORT }}
+          directory: ${{ env.DIST_NEXT }}
+          replaceBaseUrl: false
+      - name: Run performance stress tests (baseline, multi-run)
+        if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot != '__none__'
+        env:
+          COLLECT_PERFORMANCE: 1
+        run: |
+          mkdir -p ./performance-stress/baseline
+          RUNS=${PERFORMANCE_RUNS:-6}
+          WARMUP_SKIP=${PERFORMANCE_WARMUP_SKIP:-1}
+          PATTERN=${PERF_STRESS_PATTERN:-'*.stress.pw.spec.ts'}
+            # Collect all stress spec files
+          mapfile -t SPEC_FILES < <(find projects/demo-playwright/tests -type f -name "$PATTERN" | sort)
+          if [ ${#SPEC_FILES[@]} -eq 0 ]; then
+            echo "No stress spec files found for pattern $PATTERN"
+            exit 0
+          fi
+          echo "Discovered ${#SPEC_FILES[@]} stress spec(s) for baseline:"
+          for f in "${SPEC_FILES[@]}"; do echo " - $f"; done
+          echo "Executing $RUNS baseline runs (skipping first $WARMUP_SKIP for warmup)"
+          for i in $(seq 1 $RUNS); do
+            echo "--- Baseline build run $i/$RUNS ---"
+            npx nx e2e demo-playwright -- --project=chromium "${SPEC_FILES[@]}" || true
+            if [ -d "./projects/demo-playwright/tests-results/performance" ]; then
+              dest=./performance-stress/baseline/run-$i
+              mkdir -p "$dest"
+              find ./projects/demo-playwright/tests-results/performance -maxdepth 1 -name '*.json' -exec mv {} "$dest"/ \; || true
+            fi
+          done
+          find ./performance-stress/baseline -type f -name '*.json' -maxdepth 3 -exec cp {} ./performance-stress/baseline/ \; || true
+          echo "Completed multi-run baseline collection"
+      - name: Prepare empty baseline placeholder (no snapshot)
+        if: steps.dist-check.outputs.skip == 'false' && steps.resolve-baseline.outputs.snapshot == '__none__'
+        run: |
+          mkdir -p ./performance-stress/baseline
+          echo "# Baseline snapshot missing" > ./performance-stress/baseline/README.txt
+      - name: Generate performance stress diff report
+        env:
+          PERF_HARD_FAIL_DEFER: true
+          PERF_HARD_FAIL_SENTINEL: ./performance-stress/diff/hard-fail.txt
+        run: |
+          mkdir -p ./performance-stress/diff
+          if [ "${{ steps.dist-check.outputs.skip }}" = 'true' ]; then
+            echo '# Performance Stress Skipped' > ./performance-stress/diff/report.md
+            echo 'dist not available (upstream build not finished yet).' >> ./performance-stress/diff/report.md
+          elif [ -d ./performance-stress/baseline ] && [ -d ./performance-stress/current ] && [ -n "$(ls -A ./performance-stress/current 2>/dev/null)" ]; then
+            npx ts-node ./projects/demo-playwright/utils/performance-comparison.ts \
+              ./performance-stress/baseline \
+              ./performance-stress/current \
+              ./performance-stress/diff/report.md
+            if [ '${{ steps.resolve-baseline.outputs.snapshot }}' = '__none__' ]; then
+              echo "\n_Baseline snapshot not found (primary: snapshots/demo/next/${{ github.base_ref }}, fallback: snapshots/demo/next/${{ env.PERF_BASELINE_FALLBACK_BRANCH }}). All tests treated as new._" >> ./performance-stress/diff/report.md
+            fi
+          else
+            echo '# Performance Stress Comparison Skipped' > ./performance-stress/diff/report.md
+            echo 'Missing baseline or current metrics.' >> ./performance-stress/diff/report.md
+          fi
+      - name: Upload performance stress artifacts
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          path: ./performance-stress/**
+          name: performance-stress-artifacts_${{ github.sha }}
+          if-no-files-found: ignore
+          compression-level: 0
+          retention-days: 3
+      - name: Post performance stress comment
+        if: env.IS_OWNER_MODE == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f ./performance-stress/diff/report.md ]; then
+            npx ts-node ./scripts/post-performance-comment.ts ./performance-stress/diff/report.md || true
+          fi
+      - name: Enforce hard performance gate (final)
+        if: ${{ always() }}
+        run: |
+          if [ -f ./performance-stress/diff/hard-fail.txt ]; then
+            echo '❌ Hard performance regressions detected (see offenders in report).' ;
+            cat ./performance-stress/diff/hard-fail.txt || true
+            exit 1
+          else
+            echo '✅ No hard performance regressions above threshold.'
+          fi

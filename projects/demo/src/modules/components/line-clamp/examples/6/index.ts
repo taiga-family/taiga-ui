@@ -3,7 +3,6 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -11,18 +10,16 @@ import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
-        NgIf,
         TuiLineClamp,
         TuiScrollable,
         TuiScrollbar,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

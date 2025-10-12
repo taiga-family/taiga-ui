@@ -1,11 +1,10 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDayOfWeek} from '@taiga-ui/cdk';
+import {TuiDay, TuiDayOfWeek} from '@taiga-ui/cdk';
 import {TUI_FIRST_DAY_OF_WEEK, TuiCalendar} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiCalendar],
     templateUrl: './index.html',
     encapsulation,
@@ -17,4 +16,6 @@ import {TUI_FIRST_DAY_OF_WEEK, TuiCalendar} from '@taiga-ui/core';
         },
     ],
 })
-export default class Example {}
+export default class Example {
+    protected value = new TuiDay(2025, 6, 4);
+}

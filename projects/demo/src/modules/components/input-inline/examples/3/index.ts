@@ -11,15 +11,13 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, tuiWatch, tuiZoneOptimized} from '@taiga-ui/cdk';
-import {TuiButton} from '@taiga-ui/core';
 import {TuiInputInline} from '@taiga-ui/kit';
 import {timer} from 'rxjs';
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, TuiButton, TuiInputInline],
+    imports: [FormsModule, TuiInputInline],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

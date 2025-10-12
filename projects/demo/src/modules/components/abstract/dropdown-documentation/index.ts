@@ -13,7 +13,6 @@ import {ABSTRACT_PROPS_ACCESSOR} from '../abstract-props-accessor';
 import {type AbstractExampleTuiDropdown} from '../dropdown';
 
 @Component({
-    standalone: true,
     selector: 'dropdown-documentation',
     imports: [
         AsyncPipe,

@@ -5,10 +5,9 @@ import {TuiAutoColorPipe, TuiHint} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAutoColorPipe, TuiAvatar, TuiHint],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

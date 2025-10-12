@@ -28,7 +28,7 @@ describe('InputCardGroup', () => {
         public component!: TuiInputCardGroup;
 
         @ViewChild('customIconTemplate', {read: TemplateRef})
-        public customIconTemplate!: TemplateRef<any>;
+        public customIconTemplate!: TemplateRef<unknown>;
 
         public control = new FormControl<Partial<TuiCard>>({card: ''});
 

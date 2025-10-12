@@ -1,4 +1,4 @@
-<tui-root [attr.tuiTheme]="theme()">
+<tui-root>
     <div class="tui-doc-page">
         <tui-doc-navigation class="tui-doc-navigation">
             <ng-content select="tuiDocNavigation" />
@@ -10,19 +10,20 @@
     <header tuiDocHeader>
         <ng-content select="tuiDocHeader" />
 
-        <button
-            *ngIf="dir && icons.ltr"
-            appearance="outline"
-            aria-label="Switch directionality of the element's text"
-            size="s"
-            tuiButton
-            type="button"
-            class="tui-doc-switch-direction"
-            [iconEnd]="icons.ltr.preview"
-            (click)="changeTextDirection()"
-        >
-            <tui-icon [icon]="icons.ltr.direction" />
-        </button>
+        @if (dir && icons.ltr) {
+            <button
+                appearance="outline"
+                aria-label="Switch directionality of the element's text"
+                size="s"
+                tuiButton
+                type="button"
+                class="tui-doc-switch-direction"
+                [iconEnd]="icons.ltr.preview"
+                (click)="changeTextDirection()"
+            >
+                <tui-icon [icon]="icons.ltr.direction" />
+            </button>
+        }
 
         <button
             appearance="secondary"
@@ -38,17 +39,5 @@
     </header>
     <ng-container ngProjectAs="tuiOverContent">
         <ng-content select="tuiOverContent" />
-    </ng-container>
-    <ng-container ngProjectAs="tuiOverDialogs">
-        <ng-content select="tuiOverDialogs" />
-    </ng-container>
-    <ng-container ngProjectAs="tuiOverAlerts">
-        <ng-content select="tuiOverAlerts" />
-    </ng-container>
-    <ng-container ngProjectAs="tuiOverDropdowns">
-        <ng-content select="tuiOverDropdowns" />
-    </ng-container>
-    <ng-container ngProjectAs="tuiOverHints">
-        <ng-content select="tuiOverHints" />
     </ng-container>
 </tui-root>

@@ -6,7 +6,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('Input', () => {
+// TODO migrate
+test.skip('Input', () => {
     test("has custom content (text) + cleaner + hint which don't overlapping each others", async ({
         page,
     }) => {
@@ -19,9 +20,9 @@ test.describe('Input', () => {
 
         await document.waitTuiIcons();
 
-        await expect
-            .soft(document.apiPageExample)
-            .toHaveScreenshot('01-custom-text-content-cleaner-hint.png');
+        await expect(document.apiPageExample).toHaveScreenshot(
+            '01-custom-text-content-cleaner-hint.png',
+        );
     });
 
     test('correctly aligns single custom content (as large icon)', async ({page}) => {

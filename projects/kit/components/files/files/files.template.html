@@ -1,40 +1,38 @@
-<ng-container *ngIf="items?.changes | async" />
+@if (items.changes | async) {}
 <ng-content />
-<ng-container *ngFor="let item of items; let index = index">
-    <ng-container
-        *ngIf="!max || index < max"
-        [ngTemplateOutlet]="item"
-    />
-</ng-container>
-<tui-expand
-    *ngIf="hasExtraItems"
-    [expanded]="expanded"
->
+@for (item of items; track item) {
+    @if (!max || $index < max) {
+        <ng-container [ngTemplateOutlet]="item" />
+    }
+}
+@if (hasExtraItems) {
+    <tui-expand [expanded]="expanded">
+        <div
+            tuiGroup
+            class="t-extra-items"
+        >
+            @for (item of items; track item) {
+                @if (max && $index >= max) {
+                    <ng-container [ngTemplateOutlet]="item" />
+                }
+            }
+        </div>
+    </tui-expand>
+}
+@if (hasExtraItems) {
     <div
-        tuiGroup
-        class="t-extra-items"
+        class="t-bottom"
+        [class.t-bottom_collapsed]="!expanded"
     >
-        <ng-container *ngFor="let item of items; let index = index">
-            <ng-container
-                *ngIf="max && index >= max"
-                [ngTemplateOutlet]="item"
-            />
-        </ng-container>
+        <button
+            appearance="outline"
+            size="m"
+            tuiButton
+            type="button"
+            class="t-button"
+            (click)="toggle()"
+        >
+            {{ (expanded ? hideText$ : showAllText$) | async }}
+        </button>
     </div>
-</tui-expand>
-<div
-    *ngIf="hasExtraItems"
-    class="t-bottom"
-    [class.t-bottom_collapsed]="!expanded"
->
-    <button
-        appearance="outline"
-        size="m"
-        tuiButton
-        type="button"
-        class="t-button"
-        (click)="toggle()"
-    >
-        {{ (expanded ? hideText$ : showAllText$) | async }}
-    </button>
-</div>
+}

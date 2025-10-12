@@ -6,8 +6,7 @@ import {
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {TuiDataListDirective, TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiDataListDirective, TuiRoot} from '@taiga-ui/core';
 import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
 import {
     TUI_ARROW_MODE,
@@ -80,7 +79,7 @@ describe('MultiSelect', () => {
         beforeEach(async () => {
             TestBed.configureTestingModule({
                 imports: [Test],
-                providers: [NG_EVENT_PLUGINS],
+                providers: [provideTaiga()],
             });
             await TestBed.compileComponents();
             fixture = TestBed.createComponent(Test);
@@ -298,7 +297,7 @@ describe('MultiSelect', () => {
             TestBed.configureTestingModule({
                 imports: [Test],
                 providers: [
-                    NG_EVENT_PLUGINS,
+                    provideTaiga(),
                     {
                         provide: TUI_ARROW_MODE,
                         useValue: {interactive: '☆', disabled: '★'},

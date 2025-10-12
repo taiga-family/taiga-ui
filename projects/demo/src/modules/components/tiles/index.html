@@ -40,13 +40,14 @@
                 class="tiles"
                 [(order)]="order"
             >
-                <tui-tile
-                    *ngFor="let item of items; let index = index"
-                    tuiTileHandle
-                    [style.order]="order.get(index)"
-                >
-                    <div class="content">{{ item.name }}</div>
-                </tui-tile>
+                @for (item of items; track item) {
+                    <tui-tile
+                        tuiTileHandle
+                        [style.order]="order.get($index)"
+                    >
+                        <div class="content">{{ item.name }}</div>
+                    </tui-tile>
+                }
             </tui-tiles>
         </tui-doc-demo>
         <table tuiDocAPI>

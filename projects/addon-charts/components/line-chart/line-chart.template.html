@@ -41,64 +41,69 @@
             [attr.d]="d"
         />
     </svg>
-    <ng-container *ngIf="dots">
-        <div
-            *ngFor="let point of value"
-            class="t-dot"
-            [style.bottom.%]="getBottom(point[1])"
-            [style.left.%]="getLeft(point[0])"
-        ></div>
-    </ng-container>
-    <ng-container *ngIf="hasHints">
-        <ng-container *ngFor="let point of value; let index = index">
-            <!-- TODO: Fix hint type -->
+    @if (dots) {
+        @for (point of value; track point) {
             <div
-                *ngIf="value.length > 1 || dots"
-                class="t-column"
-                [class.t-column_hint_hovered]="drivers.get(index) | async"
-                [class.t-column_hovered]="hovered === index"
-                [style.left.%]="getLeft(getX(index))"
-                [style.width.%]="getWidth(index)"
-                [tuiHint]="$any(hintDirective?.hint || hintContent)"
-                [tuiHintContext]="{$implicit: getImplicit(point), index: index}"
-                [tuiHintDescribe]="isFocusable ? getHintId(index) : null"
-                [tuiHintHost]="hintHost"
-                (mouseenter)="onMouseEnter(index)"
-            >
-                <div
-                    class="t-line t-line_vertical"
-                    [style.left.%]="getOffset(index)"
-                ></div>
-                <div
-                    #hintHost
-                    class="t-host"
-                    [id]="getHintId(index)"
-                    [style.bottom.%]="getBottom(point[1])"
-                    [style.left.%]="getOffset(index)"
-                    [tabIndex]="isFocusable ? 0 : -1"
-                ></div>
-            </div>
-            <div
-                *ngIf="isFocusable"
-                class="t-line t-line_horizontal"
+                class="t-dot"
                 [style.bottom.%]="getBottom(point[1])"
+                [style.left.%]="getLeft(point[0])"
             ></div>
-        </ng-container>
-    </ng-container>
-    <ng-container *ngIf="getHovered(hovered) as point">
-        <div
-            *ngIf="xStringify"
-            class="t-hint t-hint_x"
-            [style.left.%]="getLeft(point[0])"
-        >
-            {{ xStringify(point[0]) }}
-        </div>
-        <div
-            *ngIf="yStringify"
-            class="t-hint t-hint_y"
-            [style.bottom.%]="getBottom(point[1])"
-        >
-            {{ yStringify(point[1]) }}
-        </div>
-    </ng-container>
+        }
+    }
+    @if (hasHints) {
+        @for (point of value; track point) {
+            <!-- TODO: Fix hint type -->
+            @if ($count > 1 || dots) {
+                <div
+                    class="t-column"
+                    [class.t-column_hint_hovered]="drivers.get($index) | async"
+                    [class.t-column_hovered]="hovered === $index"
+                    [style.left.%]="getLeft(getX($index))"
+                    [style.width.%]="getWidth($index)"
+                    [tuiHint]="$any(hintDirective?.hint || hintContent)"
+                    [tuiHintContext]="{$implicit: getImplicit(point), index: $index}"
+                    [tuiHintDescribe]="isFocusable ? getHintId($index) : null"
+                    [tuiHintHost]="hintHost"
+                    (mouseenter)="onMouseEnter($index)"
+                >
+                    <div
+                        class="t-line t-line_vertical"
+                        [style.left.%]="getOffset($index)"
+                    ></div>
+                    <div
+                        #hintHost
+                        class="t-host"
+                        [id]="getHintId($index)"
+                        [style.bottom.%]="getBottom(point[1])"
+                        [style.left.%]="getOffset($index)"
+                        [tabIndex]="isFocusable ? 0 : -1"
+                    ></div>
+                </div>
+            }
+            @if (isFocusable) {
+                <div
+                    class="t-line t-line_horizontal"
+                    [style.bottom.%]="getBottom(point[1])"
+                ></div>
+            }
+        }
+    }
+    @if (getHovered(hovered); as point) {
+        @if (xStringify) {
+            <div
+                class="t-hint t-hint_x"
+                [style.left.%]="getLeft(point[0])"
+            >
+                {{ xStringify(point[0]) }}
+            </div>
+        }
+        @if (yStringify) {
+            <div
+                class="t-hint t-hint_y"
+                [style.bottom.%]="getBottom(point[1])"
+            >
+                {{ yStringify(point[1]) }}
+            </div>
+        }
+    }
 </ng-container>

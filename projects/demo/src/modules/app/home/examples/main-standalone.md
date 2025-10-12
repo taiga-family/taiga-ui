@@ -1,12 +1,12 @@
 ```ts
 import {provideAnimations} from '@angular/platform-browser/animations';
-import {provideEventPlugins} from '@taiga-ui/event-plugins';
+import {provideTaiga} from '@taiga-ui/core';
 // ...
 
 bootstrapApplication(App, {
   providers: [
     provideAnimations(),
-    provideEventPlugins(),
+    provideTaiga(),
     //...
   ],
 }).catch((err) => console.error(err));

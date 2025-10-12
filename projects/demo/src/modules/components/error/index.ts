@@ -1,18 +1,25 @@
-import {Component, type TemplateRef, ViewChild} from '@angular/core';
+import {Component, type TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiValidationError} from '@taiga-ui/cdk';
 import {TuiError} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiError],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
-    @ViewChild('errorContent')
-    protected errorContent?: TemplateRef<Record<string, unknown>>;
+    protected readonly errorContent = viewChild<TemplateRef<unknown>>('errorContent');
+    protected readonly examples = [
+        'Basic',
+        'DI',
+        'Template',
+        'Array',
+        'Asynchronous',
+        'Pipe',
+        'Component',
+    ];
 
     protected readonly errorVariants: readonly string[] = [
         'Error as string',
@@ -22,14 +29,8 @@ export default class Page {
     protected selectedError = this.errorVariants[0]!;
 
     protected get error(): TuiValidationError | string | null {
-        if (this.selectedError === null) {
-            return null;
-        }
-
-        if (this.selectedError === this.errorVariants[0]) {
-            return this.selectedError;
-        }
-
-        return new TuiValidationError(this.errorContent || '');
+        return this.selectedError === this.errorVariants[1]
+            ? new TuiValidationError(this.errorContent())
+            : this.selectedError;
     }
 }

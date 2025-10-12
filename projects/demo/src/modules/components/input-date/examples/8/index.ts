@@ -1,4 +1,4 @@
-import {KeyValuePipe, NgForOf} from '@angular/common';
+import {KeyValuePipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,17 +8,9 @@ import {TuiDataList, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [
-        FormsModule,
-        KeyValuePipe,
-        NgForOf,
-        TuiDataList,
-        TuiInputDate,
-        TuiTextfield,
-    ],
+    imports: [FormsModule, KeyValuePipe, TuiDataList, TuiInputDate, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

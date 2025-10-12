@@ -1,5 +1,5 @@
 <tui-items-with-more [required]="required">
-    <ng-container *ngFor="let item of items">
+    @for (item of items; track item) {
         <tui-chip
             *tuiItem
             appearance="neutral"
@@ -8,7 +8,7 @@
         >
             {{ item }}
         </tui-chip>
-    </ng-container>
+    }
     <ng-template
         let-index
         tuiMore

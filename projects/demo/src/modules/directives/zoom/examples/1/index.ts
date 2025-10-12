@@ -6,10 +6,9 @@ import {tuiClamp, TuiZoom, type TuiZoomEvent} from '@taiga-ui/cdk';
 import {map, scan, startWith, Subject} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, DecimalPipe, TuiZoom],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

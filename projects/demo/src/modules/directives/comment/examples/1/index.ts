@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiComment} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiComment],
     templateUrl: './index.html',
     encapsulation,

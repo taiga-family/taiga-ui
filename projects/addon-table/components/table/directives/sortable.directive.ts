@@ -10,7 +10,7 @@ import {TuiTableDirective} from './table.directive';
     standalone: true,
     selector: 'th[tuiTh][tuiSortable]',
 })
-export class TuiTableSortable<T extends Partial<Record<keyof T, any>>>
+export class TuiTableSortable<T extends Partial<Record<keyof T, unknown>>>
     implements OnChanges
 {
     private readonly table: TuiTableDirective<T> = inject(TuiTableDirective<T>);

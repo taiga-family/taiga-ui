@@ -17,21 +17,24 @@
             token to get a scrollable container. For example, when working with virtual scroll.
         </tui-notification>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <p *ngIf="index + 1 === 6">
-                Use
-                <code>tuiScrollable</code>
-                directive as an element for scroll. In this sample, we use virtual scroll from
-                <code>&#64;angular/cdk</code>
-                .
-            </p>
-        </tui-doc-example>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            >
+                @if ($index + 1 === 6) {
+                    <p>
+                        Use
+                        <code>tuiScrollable</code>
+                        directive as an element for scroll. In this sample, we use virtual scroll from
+                        <code>&#64;angular/cdk</code>
+                        .
+                    </p>
+                }
+            </tui-doc-example>
+        }
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />

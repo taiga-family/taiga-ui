@@ -11,7 +11,6 @@ interface Character {
 }
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiSelect, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

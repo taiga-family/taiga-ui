@@ -4,7 +4,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiMedia} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiMedia],
     templateUrl: './index.html',
     changeDetection,

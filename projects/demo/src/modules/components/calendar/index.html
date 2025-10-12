@@ -21,40 +21,38 @@
             </a>
         </p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="description"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template
-                #description
-                [ngSwitch]="index + 1"
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                <ng-container *ngSwitchCase="4">
-                    Use
-                    <a
-                        fragment="first-day-of-week"
-                        tuiLink
-                        [routerLink]="routes.Tokens"
-                    >
-                        TUI_FIRST_DAY_OF_WEEK
-                    </a>
-                    token to change start day of the week (Monday by default)
-                </ng-container>
-
-                <ng-container *ngSwitchCase="5">
-                    Use
-                    <code>TUI_DAY_TYPE_HANDLER</code>
-                    token to change cell's data-type attribute and customize its color. (The default color for Saturday
-                    and Sunday is var(--tui-text-negative))
-                </ng-container>
-
-                <ng-container *ngSwitchDefault />
-            </ng-template>
-        </tui-doc-example>
+                <ng-template #description>
+                    @switch ($index + 1) {
+                        @case (4) {
+                            Use
+                            <a
+                                fragment="first-day-of-week"
+                                tuiLink
+                                [routerLink]="routes.Tokens"
+                            >
+                                TUI_FIRST_DAY_OF_WEEK
+                            </a>
+                            token to change start day of the week (Monday by default)
+                        }
+                        @case (5) {
+                            Use
+                            <code>TUI_DAY_TYPE_HANDLER</code>
+                            token to change cell's data-type attribute and customize its color. (The default color for
+                            Saturday and Sunday is var(--tui-text-negative))
+                        }
+                        @default {}
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>

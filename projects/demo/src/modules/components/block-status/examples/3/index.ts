@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,10 +7,9 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
 import {map, type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgIf, TuiBlockStatus, TuiButton],
+    imports: [AsyncPipe, TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

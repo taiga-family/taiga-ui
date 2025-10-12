@@ -118,12 +118,9 @@
                     [tuiTextfieldSize]="textfieldDoc.size"
                     [(open)]="dropdown.open"
                 >
-                    <label
-                        *ngIf="textfieldDoc.size !== 's'"
-                        tuiLabel
-                    >
-                        Choose date
-                    </label>
+                    @if (textfieldDoc.size !== 's') {
+                        <label tuiLabel>Choose date</label>
+                    }
 
                     <input
                         tuiInputDate
@@ -136,7 +133,7 @@
                         [tuiDisabled]="controlDoc.disabled"
                     />
 
-                    <tui-calendar *tuiTextfieldDropdown />
+                    <tui-calendar *tuiDropdown />
                 </tui-textfield>
             </ng-template>
         </tui-doc-demo>
@@ -185,6 +182,8 @@
                     'minHeight',
                     'offset',
                     'direction',
+                    'dropdownSided',
+                    'dropdownSidedOffset',
                 ]"
             ></tbody>
             <tbody

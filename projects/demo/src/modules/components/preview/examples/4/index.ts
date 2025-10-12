@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -17,10 +17,9 @@ import {
 } from 'rxjs';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgIf, TuiButton, TuiIcon, TuiLoader, TuiPreview],
+    imports: [AsyncPipe, TuiButton, TuiIcon, TuiLoader, TuiPreview],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

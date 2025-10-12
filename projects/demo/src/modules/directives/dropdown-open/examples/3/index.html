@@ -12,20 +12,22 @@
 
 <ng-template #dropdown>
     <tui-data-list>
-        <tui-opt-group *ngFor="let group of items">
-            <button
-                *ngFor="let item of group"
-                tuiOption
-                type="button"
-                class="item"
-                (click)="onClick(item)"
-            >
-                {{ item }}
-                <tui-icon
-                    *ngIf="itemIsActive(item)"
-                    icon="@tui.check"
-                />
-            </button>
-        </tui-opt-group>
+        @for (group of items; track group) {
+            <tui-opt-group>
+                @for (item of group; track item) {
+                    <button
+                        tuiOption
+                        type="button"
+                        class="item"
+                        (click)="onClick(item)"
+                    >
+                        {{ item }}
+                        @if (itemIsActive(item)) {
+                            <tui-icon icon="@tui.check" />
+                        }
+                    </button>
+                }
+            </tui-opt-group>
+        }
     </tui-data-list>
 </ng-template>

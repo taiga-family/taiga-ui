@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -20,9 +19,7 @@ function randomString(len: number): string {
 }
 
 @Component({
-    standalone: true,
     imports: [
-        NgForOf,
         TuiChevron,
         TuiDataList,
         TuiDataListDropdownManager,
@@ -31,7 +28,7 @@ function randomString(len: number): string {
         TuiLink,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

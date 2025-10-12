@@ -16,11 +16,10 @@ import {tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiTabBarItem} from './tab-bar-item.component';
 
 @Component({
-    standalone: true,
     selector: 'nav[tuiTabBar]',
     imports: [TuiRepeatTimes],
     templateUrl: './tab-bar.template.html',
-    styleUrls: ['./tab-bar.style.less'],
+    styleUrl: './tab-bar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style]': 'style',

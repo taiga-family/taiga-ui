@@ -4,10 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiNotification, TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiNotification, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

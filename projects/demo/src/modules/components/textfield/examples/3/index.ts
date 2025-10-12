@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -12,10 +11,8 @@ import {
 } from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgIf,
         TuiChevron,
         TuiDataListWrapper,
         TuiDropdown,
@@ -26,7 +23,7 @@ import {
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

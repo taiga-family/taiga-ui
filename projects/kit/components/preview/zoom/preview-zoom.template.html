@@ -1,4 +1,4 @@
-<ng-container *ngIf="zoomTexts$ | async as texts">
+@if (zoomTexts$ | async; as texts) {
     <section class="t-zoom">
         <button
             tuiIconButton
@@ -16,11 +16,9 @@
                 [tuiHint]="hint"
                 [tuiHintManual]="!!(hintShow$ | async)"
             ></div>
-
             <ng-template #hint>
                 {{ (valueChange | async) || value | percent }}
             </ng-template>
-
             <input
                 step="any"
                 tuiSlider
@@ -46,7 +44,6 @@
             {{ texts.zoomIn }}
         </button>
     </section>
-
     <button
         tuiHintAppearance="dark"
         tuiHintDescribe
@@ -60,4 +57,4 @@
         [tuiHint]="texts.reset"
         (click)="onReset()"
     ></button>
-</ng-container>
+}

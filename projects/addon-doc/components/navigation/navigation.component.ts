@@ -1,4 +1,4 @@
-import {DOCUMENT, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {DOCUMENT, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -19,7 +19,6 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import {type TuiDocRoutePage, type TuiDocRoutePages} from '@taiga-ui/addon-doc/types';
 import {tuiTransliterateKeyboardLayout} from '@taiga-ui/addon-doc/utils';
-import {TuiSidebarDirective} from '@taiga-ui/addon-mobile/directives/sidebar';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {tuiControlValue, tuiWatch} from '@taiga-ui/cdk/observables';
 import {tuiPure, tuiUniqBy} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -31,9 +30,10 @@ import {TuiScrollbar} from '@taiga-ui/core/components/scrollbar';
 import {TuiTextfield, TuiTextfieldDirective} from '@taiga-ui/core/components/textfield';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
+import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
 import {TuiInputModule} from '@taiga-ui/legacy/components/input';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, fromEvent, map, of, switchMap, take} from 'rxjs';
 
 import {
@@ -45,14 +45,10 @@ import {
 import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-navigation',
     imports: [
-        NgForOf,
-        NgIf,
         NgTemplateOutlet,
         PolymorpheusOutlet,
-        PolymorpheusTemplate,
         ReactiveFormsModule,
         RouterLink,
         RouterLinkActive,
@@ -69,7 +65,7 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
         TuiTextfieldControllerModule,
     ],
     templateUrl: './navigation.template.html',
-    styleUrls: ['./navigation.style.less'],
+    styleUrl: './navigation.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: NAVIGATION_PROVIDERS,
     host: {
@@ -87,7 +83,7 @@ export class TuiDocNavigation {
     protected open = signal(false);
     protected menuOpen = false;
 
-    protected readonly sidebar = inject(TuiSidebarDirective, {optional: true});
+    protected readonly drawer = inject(TuiDrawer, {optional: true});
     protected readonly labels = inject(NAVIGATION_LABELS);
     protected readonly items = inject(NAVIGATION_ITEMS);
     protected readonly searchText = inject(TUI_DOC_SEARCH_TEXT);

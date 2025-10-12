@@ -1,28 +1,30 @@
 <div class="t-stops">
-    <div
-        *ngFor="let stop of context.stops"
-        #stops
-        class="t-stop"
-        [style.margin-top]="stop"
-    ></div>
+    @for (stop of context.stops; track stop) {
+        <div
+            #stops
+            class="t-stop"
+            [style.margin-top]="stop"
+        ></div>
+    }
 </div>
 <div class="t-sheet">
-    <div
-        *ngIf="context.bar"
-        class="t-top"
-    ></div>
-    <h2
-        *ngIf="context.label"
-        class="t-heading"
-        [id]="context.id"
-    >
-        <ng-container *polymorpheusOutlet="context.label as label; context: context">
-            {{ label }}
-        </ng-container>
-    </h2>
+    @if (context.bar && !context.appearance.includes('fullscreen')) {
+        <div class="t-top"></div>
+    }
+    @if (context.label) {
+        <h2
+            class="t-heading"
+            [id]="context.id"
+        >
+            <ng-container *polymorpheusOutlet="context.label as label; context: context">
+                {{ label }}
+            </ng-container>
+        </h2>
+    }
     <div class="t-content">
-        <ng-container *polymorpheusOutlet="context.content as text; context: context">
-            {{ text }}
-        </ng-container>
+        <div
+            *polymorpheusOutlet="context.content as text; context: context"
+            [innerHTML]="text"
+        ></div>
     </div>
 </div>

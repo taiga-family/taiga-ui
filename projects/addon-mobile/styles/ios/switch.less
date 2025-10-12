@@ -13,9 +13,8 @@ input[tuiSwitch] {
     }
 
     &::after {
-        .transition(~'transform, width');
-
         right: auto;
+        transition-property: transform, inline-size;
         inline-size: 1.9375rem;
         block-size: 1.9375rem;
         border-radius: 2rem;

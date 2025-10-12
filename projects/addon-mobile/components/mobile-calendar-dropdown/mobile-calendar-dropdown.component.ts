@@ -41,11 +41,10 @@ export interface TuiMobileCalendarData {
 
 // TODO: Rename to TuiMobileCalendarDropdownComponent in v5, this component is terrible and needs a complete rewrite
 @Component({
-    standalone: true,
     selector: 'tui-mobile-calendar-dropdown',
     imports: [TuiMobileCalendar],
     templateUrl: './mobile-calendar-dropdown.template.html',
-    styleUrls: ['./mobile-calendar-dropdown.style.less'],
+    styleUrl: './mobile-calendar-dropdown.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiActiveZone, TuiAnimated],
 })
@@ -53,8 +52,9 @@ export class TuiMobileCalendarDropdown {
     // TODO: Rework to use TuiDropdownOpenDirective so the focus returns to the field on closing
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
     private readonly keyboard = inject(TuiKeyboardService);
+
     private readonly context = injectContext<Record<string, any>>({optional: true});
-    private readonly observer?: Observer<any> = this.context?.$implicit;
+    private readonly observer?: Observer<unknown> = this.context?.$implicit;
     private readonly data: TuiMobileCalendarData = this.context?.data || {};
 
     private selectedPeriod: TuiDayRange | null = null;
@@ -80,40 +80,34 @@ export class TuiMobileCalendarDropdown {
     }
 
     public max(): TuiDay {
-        if (this.directive?.date) {
-            return this.directive.date.max();
-        }
-
         return (
-            this.data.max ||
-            (this.range
-                ? TUI_DAY_CAPS_MAPPER(
-                      this.control.max,
-                      this.selectedPeriod,
-                      this.control.maxLength,
-                      false,
-                  )
-                : this.control?.max) ||
-            TUI_LAST_DAY
+            this.directive?.date?.max() ??
+            (this.data.max ||
+                (this.range
+                    ? TUI_DAY_CAPS_MAPPER(
+                          this.control.max,
+                          this.selectedPeriod,
+                          this.control.maxLength,
+                          false,
+                      )
+                    : this.control?.max) ||
+                TUI_LAST_DAY)
         );
     }
 
     public min(): TuiDay {
-        if (this.directive?.date) {
-            return this.directive.date.min();
-        }
-
         return (
-            this.data.min ||
-            (this.range
-                ? TUI_DAY_CAPS_MAPPER(
-                      this.control.min,
-                      this.selectedPeriod,
-                      this.control.maxLength,
-                      true,
-                  )
-                : this.control?.min) ||
-            TUI_FIRST_DAY
+            this.directive?.date?.min() ??
+            (this.data.min ||
+                (this.range
+                    ? TUI_DAY_CAPS_MAPPER(
+                          this.control.min,
+                          this.selectedPeriod,
+                          this.control.maxLength,
+                          true,
+                      )
+                    : this.control?.min) ||
+                TUI_FIRST_DAY)
         );
     }
 
@@ -146,15 +140,15 @@ export class TuiMobileCalendarDropdown {
         this.keyboard.show();
     }
 
-    protected confirm(value: any): void {
+    protected confirm(value: TuiDay | TuiDayRange | readonly TuiDay[]): void {
         const normalizedValue = this.range ? this.selectedPeriod : value;
 
         if (this.control) {
             this.control.value = normalizedValue;
         }
 
-        if (this.directive?.date) {
-            this.directive.date.setDate(normalizedValue);
+        if (normalizedValue) {
+            this.directive?.date?.setDate(normalizedValue);
         }
 
         this.observer?.next(normalizedValue);

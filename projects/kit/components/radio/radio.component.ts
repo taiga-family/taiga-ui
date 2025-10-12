@@ -1,30 +1,28 @@
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     DestroyRef,
     type DoCheck,
     inject,
-    Input,
+    input,
     type OnInit,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {NgControl} from '@angular/forms';
+import {NgControl, NgModel} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
-import {type TuiSizeS} from '@taiga-ui/core/types';
+import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance';
+import {distinctUntilChanged} from 'rxjs';
 
-import {TUI_RADIO_OPTIONS} from './radio.options';
+import {TUI_RADIO_OPTIONS, type TuiRadioOptions} from './radio.options';
 
 @Component({
     standalone: true,
     selector: 'input[type="radio"][tuiRadio]',
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/radio.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/radio.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [
@@ -36,31 +34,36 @@ import {TUI_RADIO_OPTIONS} from './radio.options';
     ],
     host: {
         '[disabled]': '!control || control.disabled',
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
         '[class._readonly]': '!control',
     },
 })
-export class TuiRadioComponent implements DoCheck, OnInit {
-    private readonly appearance = inject(TuiAppearance);
+export class TuiRadioComponent<T extends TuiRadioOptions> implements DoCheck, OnInit {
     private readonly destroyRef = inject(DestroyRef);
-    private readonly cdr = inject(ChangeDetectorRef);
-    private readonly options = inject(TUI_RADIO_OPTIONS);
     private readonly el = tuiInjectElement<HTMLInputElement>();
 
+    protected readonly options = inject<T>(TUI_RADIO_OPTIONS);
+    protected readonly appearance = tuiAppearance(this.options.appearance(this.el));
     protected readonly control = inject(NgControl, {self: true, optional: true});
 
-    @Input()
-    public size: TuiSizeS = this.options.size;
+    public readonly size = input(this.options.size);
 
     public ngOnInit(): void {
-        this.control?.valueChanges
-            ?.pipe(tuiWatch(this.cdr), takeUntilDestroyed(this.destroyRef))
-            .subscribe();
+        tuiControlValue(this.control)
+            .pipe(distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
+            .subscribe((value) => {
+                // https://github.com/angular/angular/issues/14988
+                const fix =
+                    this.control instanceof NgModel && value == null
+                        ? this.control.model
+                        : value;
+
+                this.el.indeterminate = fix == null && this.el.matches('[tuiCheckbox]');
+                this.ngDoCheck();
+            });
     }
 
     public ngDoCheck(): void {
-        this.appearance.tuiAppearance = tuiIsString(this.options.appearance)
-            ? this.options.appearance
-            : this.options.appearance(this.el);
+        this.appearance.set(this.options.appearance(this.el));
     }
 }

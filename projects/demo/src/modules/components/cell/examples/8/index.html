@@ -4,25 +4,26 @@
 </tui-notification>
 
 <div
-    tuiAppearance="floating"
+    appearance="floating"
     tuiCardLarge
     tuiConnected
 >
     <h3 tuiTitle="m">Inside a block</h3>
-    <button
-        *ngFor="let item of items"
-        tuiCell
-        type="button"
-    >
-        <tui-avatar
-            appearance="accent"
-            [src]="item.icon"
-        />
-        <span tuiTitle>
-            {{ item.title }}
-            <span tuiSubtitle>{{ item.subtitle }}</span>
-        </span>
-    </button>
+    @for (item of items; track item) {
+        <button
+            tuiCell
+            type="button"
+        >
+            <div
+                appearance="accent"
+                [tuiAvatar]="item.icon"
+            ></div>
+            <span tuiTitle>
+                {{ item.title }}
+                <span tuiSubtitle>{{ item.subtitle }}</span>
+            </span>
+        </button>
+    }
 </div>
 
 <div tuiConnected>
@@ -30,12 +31,12 @@
         <tui-badged-content>
             <tui-icon
                 appearance="negative"
-                icon="@tui.arrow-down-left"
+                iconStart="@tui.arrow-down-left"
                 size="s"
                 tuiBadge
                 tuiSlot="top"
             />
-            <tui-avatar src="@tui.phone" />
+            <div tuiAvatar="@tui.phone"></div>
         </tui-badged-content>
         <div
             tuiTitle
@@ -54,12 +55,12 @@
         <tui-badged-content tuiAccessories>
             <tui-icon
                 appearance="positive"
-                icon="@tui.arrow-up-right"
+                iconStart="@tui.arrow-up-right"
                 size="s"
                 tuiBadge
                 tuiSlot="top"
             />
-            <tui-avatar src="@tui.phone" />
+            <div tuiAvatar="@tui.phone"></div>
         </tui-badged-content>
         <div tuiTitle>Allow outgoing unusual call that can change your life in an unusual way</div>
         <div tuiAccessories>
@@ -74,12 +75,12 @@
         <tui-badged-content>
             <tui-icon
                 appearance="negative"
-                icon="@tui.arrow-down-left"
+                iconStart="@tui.arrow-down-left"
                 size="s"
                 tuiBadge
                 tuiSlot="top"
             />
-            <tui-avatar src="@tui.phone" />
+            <div tuiAvatar="@tui.phone"></div>
         </tui-badged-content>
         <div
             tuiTitle

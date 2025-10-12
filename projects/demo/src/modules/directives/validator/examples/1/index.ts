@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {
     FormControl,
@@ -11,19 +10,17 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValidator} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
-import {TuiInputModule, TuiInputPhoneModule} from '@taiga-ui/legacy';
+import {TuiChevron, TuiDataListWrapper, TuiInputPhone, TuiSelect} from '@taiga-ui/kit';
+import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgIf,
         ReactiveFormsModule,
         TuiChevron,
         TuiDataListWrapper,
         TuiInputModule,
-        TuiInputPhoneModule,
+        TuiInputPhone,
         TuiSelect,
         TuiTextfield,
         TuiValidator,

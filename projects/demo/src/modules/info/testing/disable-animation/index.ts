@@ -4,10 +4,9 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLink, TuiTabs],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {

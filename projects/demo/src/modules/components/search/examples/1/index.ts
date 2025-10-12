@@ -1,4 +1,4 @@
-import {JsonPipe, NgForOf, NgIf} from '@angular/common';
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormArray, FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,11 +9,8 @@ import {TuiItemsWithMore} from '@taiga-ui/kit';
 import {TuiSearch} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         JsonPipe,
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiButton,
         TuiItemsWithMore,

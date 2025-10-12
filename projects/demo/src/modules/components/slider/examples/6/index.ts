@@ -9,10 +9,9 @@ import {TuiSlider} from '@taiga-ui/kit';
 import {BehaviorSubject, distinctUntilChanged, map, of, switchMap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, FormsModule, PercentPipe, TuiButton, TuiHint, TuiSlider],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     host: {

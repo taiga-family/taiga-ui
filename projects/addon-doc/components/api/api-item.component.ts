@@ -1,11 +1,11 @@
-import {Location, NgForOf, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
+import {Location} from '@angular/common';
 import {
-    type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
     inject,
     Input,
+    type OnInit,
     Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -18,6 +18,7 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
+import {TuiSelect} from '@taiga-ui/kit/components/select';
 import {TuiSwitch} from '@taiga-ui/kit/components/switch';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
@@ -28,14 +29,9 @@ import {TuiDocAPINumberItem} from './api-item-number.directive';
 const SERIALIZED_SUFFIX = '$';
 
 @Component({
-    standalone: true,
     selector: 'tr[tuiDocAPIItem]',
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
-        NgSwitch,
-        NgSwitchCase,
         TuiChevron,
         TuiDataListWrapper,
         TuiDocTypeReferencePipe,
@@ -44,12 +40,13 @@ const SERIALIZED_SUFFIX = '$';
         TuiInspectPipe,
         TuiSwitch,
         TuiTextfield,
+        TuiSelect,
     ],
     templateUrl: './api-item.template.html',
-    styleUrls: ['./api-item.style.less'],
+    styleUrl: './api-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TuiDocAPIItem<T> implements AfterViewInit {
+export class TuiDocAPIItem<T> implements OnInit {
     private readonly locationRef = inject(Location);
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);
@@ -78,7 +75,7 @@ export class TuiDocAPIItem<T> implements AfterViewInit {
     @Output()
     public readonly valueChange = new EventEmitter<T>();
 
-    public ngAfterViewInit(): void {
+    public ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
 

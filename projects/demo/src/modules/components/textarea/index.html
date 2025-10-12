@@ -14,43 +14,52 @@
         </a>
         to create a multi-line string input.
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="description"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template
-                #description
-                [ngSwitch]="index"
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                <span *ngSwitchCase="0">
-                    Component would grow from minimal amount of rows until given maximum number of rows, after which
-                    scroll will be introduced.
-                </span>
-                <span *ngSwitchCase="1">
-                    You can pass limit to enable counter and extra characters highlight. This would also add validator.
-                    If you want to hard limit the field you can use native
-                    <code>maxLength</code>
-                    attribute.
-                </span>
-                <span *ngSwitchCase="2">
-                    It is possible to override default behavior to introduce your own highlight or other cosmetics.
-                </span>
-                <span *ngSwitchCase="3">
-                    Being built on top of
-                    <a
-                        tuiLink
-                        [routerLink]="routes.Textfield"
-                    >
-                        Textfield
-                    </a>
-                    , Textarea supports most of the same configurations, such as icons on both sides.
-                </span>
-            </ng-template>
-        </tui-doc-example>
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            <span>
+                                Component would grow from minimal amount of rows until given maximum number of rows,
+                                after which scroll will be introduced.
+                            </span>
+                        }
+                        @case (1) {
+                            <span>
+                                You can pass limit to enable counter and extra characters highlight. This would also add
+                                validator. If you want to hard limit the field you can use native
+                                <code>maxLength</code>
+                                attribute.
+                            </span>
+                        }
+                        @case (2) {
+                            <span>
+                                It is possible to override default behavior to introduce your own highlight or other
+                                cosmetics.
+                            </span>
+                        }
+                        @case (3) {
+                            <span>
+                                Being built on top of
+                                <a
+                                    tuiLink
+                                    [routerLink]="routes.Textfield"
+                                >
+                                    Textfield
+                                </a>
+                                , Textarea supports most of the same configurations, such as icons on both sides.
+                            </span>
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -62,12 +71,9 @@
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
-                    <label
-                        *ngIf="textfieldDoc.size !== 's'"
-                        tuiLabel
-                    >
-                        Label
-                    </label>
+                    @if (textfieldDoc.size !== 's') {
+                        <label tuiLabel>Label</label>
+                    }
                     <textarea
                         placeholder="Placeholder"
                         tuiTextarea

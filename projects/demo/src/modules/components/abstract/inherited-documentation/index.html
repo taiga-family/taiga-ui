@@ -1,8 +1,13 @@
-<dropdown-documentation *ngIf="dropdown" />
-<ng-container *ngIf="isTuiReactiveControl(documentedComponent)">
-    <hint-controller-documentation *ngIf="withHint" />
-    <textfield-controller-documentation *ngIf="withTextFieldController" />
-
+@if (dropdown) {
+    <dropdown-documentation />
+}
+@if (isTuiReactiveControl(documentedComponent)) {
+    @if (withHint) {
+        <hint-controller-documentation />
+    }
+    @if (withTextFieldController) {
+        <textfield-controller-documentation />
+    }
     <h6 class="tui-text_h6">
         Inherited from
         <code>TuiReactiveControl</code>
@@ -26,8 +31,8 @@
             Set invalid state regardless of control
         </ng-template>
     </tui-doc-documentation>
-</ng-container>
-<ng-container *ngIf="isTuiInteractive(documentedComponent)">
+}
+@if (isTuiInteractive(documentedComponent)) {
     <h6 class="tui-text_h6">
         Inherited from
         <code>TuiInteractive</code>
@@ -83,32 +88,41 @@
             Emits on focus and blur
         </ng-template>
     </tui-doc-documentation>
-</ng-container>
+}
 <!-- TODO: Do we need this? -->
-<tui-doc-documentation *ngIf="isTuiHint(documentedComponent)">
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiHintDirection"
-        documentationPropertyType="TuiHintDirection | TuiHintDirection[]"
-        [documentationPropertyValues]="directionVariants"
-        [(documentationPropertyValue)]="documentedComponent.direction"
-    >
-        Hint direction
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="input"
-        documentationPropertyName="tuiHintAppearance"
-        documentationPropertyType="string"
-        [documentationPropertyValues]="appearanceVariants"
-        [(documentationPropertyValue)]="documentedComponent.appearance"
-    >
-        Hint mode
-    </ng-template>
-    <ng-template
-        documentationPropertyMode="output"
-        documentationPropertyName="tuiHintDirectionChange"
-        documentationPropertyType="TuiHintDirection"
-    >
-        Hint direction change
-    </ng-template>
-</tui-doc-documentation>
+@if (isTuiHint(documentedComponent)) {
+    <tui-doc-documentation>
+        <ng-template
+            documentationPropertyMode="input"
+            documentationPropertyName="tuiHintDirection"
+            documentationPropertyType="TuiHintDirection | TuiHintDirection[]"
+            [documentationPropertyValues]="directionVariants"
+            [(documentationPropertyValue)]="documentedComponent.direction"
+        >
+            Hint direction
+        </ng-template>
+        <ng-template
+            documentationPropertyMode="input"
+            documentationPropertyName="tuiHintAppearance"
+            documentationPropertyType="string"
+            [documentationPropertyValues]="appearanceVariants"
+            [(documentationPropertyValue)]="documentedComponent.appearance"
+        >
+            Hint mode
+        </ng-template>
+        <ng-template
+            documentationPropertyMode="output"
+            documentationPropertyName="tuiHintDirectionChange"
+            documentationPropertyType="TuiHintDirection"
+        >
+            Hint direction change
+        </ng-template>
+        <ng-template
+            documentationPropertyMode="output"
+            documentationPropertyName="tuiHintVisible"
+            documentationPropertyType="boolean"
+        >
+            Hint visibility state change
+        </ng-template>
+    </tui-doc-documentation>
+}

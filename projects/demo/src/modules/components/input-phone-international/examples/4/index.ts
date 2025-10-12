@@ -3,13 +3,15 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
-import {tuiInputPhoneInternationalOptionsProvider, TuiTooltip} from '@taiga-ui/kit';
+import {
+    TuiInputPhoneInternational,
+    tuiInputPhoneInternationalOptionsProvider,
+    TuiTooltip,
+} from '@taiga-ui/kit';
 import {defer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiIcon, TuiInputPhoneInternational, TuiTextfield, TuiTooltip],
     templateUrl: './index.html',
     encapsulation,

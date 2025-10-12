@@ -1,15 +1,16 @@
-<button
-    *ngIf="isExpandable"
-    appearance="flat"
-    size="xs"
-    tuiIconButton
-    type="button"
-    class="t-button"
-    [class.t-button_expanded]="expanded()"
-    [iconStart]="icons.more"
-    [style.border-radius.%]="100"
-    (click)="onClick()"
->
-    {{ more() }}
-</button>
+@if (isExpandable) {
+    <button
+        appearance="flat"
+        size="xs"
+        tuiIconButton
+        type="button"
+        class="t-button"
+        [class.t-button_expanded]="context.$implicit.expanded()"
+        [iconStart]="icons.more"
+        [style.border-radius.%]="100"
+        (click)="onClick()"
+    >
+        {{ more() }}
+    </button>
+}
 <ng-container [ngTemplateOutlet]="context.template" />

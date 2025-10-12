@@ -1,5 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {DOCUMENT, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, DOCUMENT, NgComponentOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -25,28 +25,23 @@ import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiFullscreen} from '@taiga-ui/core/components/fullscreen';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
+import {TuiFullscreen} from '@taiga-ui/kit/components/fullscreen';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
-import {
-    PolymorpheusComponent,
-    type PolymorpheusContent,
-    PolymorpheusOutlet,
-} from '@taiga-ui/polymorpheus';
-import {BehaviorSubject, map, ReplaySubject, switchAll, switchMap} from 'rxjs';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {BehaviorSubject, map, switchMap} from 'rxjs';
 
 import {TuiDocCode} from '../code';
 import {TUI_DOC_EXAMPLE_OPTIONS} from './example.options';
 import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-example',
     imports: [
-        NgForOf,
-        NgIf,
+        AsyncPipe,
+        NgComponentOutlet,
         PolymorpheusOutlet,
         RouterLink,
         RouterLinkActive,
@@ -61,7 +56,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiTabs,
     ],
     templateUrl: './example.template.html',
-    styleUrls: ['./example.style.less'],
+    styleUrl: './example.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.id]': 'id',
@@ -78,10 +73,6 @@ export class TuiDocExample {
     private readonly rawLoader$$ = new BehaviorSubject<
         Record<string, TuiRawLoaderContent>
     >({});
-
-    private readonly lazyLoader$$ = new ReplaySubject<
-        Promise<{readonly default: Type<unknown>}>
-    >(1);
 
     protected readonly fullscreenEnabled = inject(DOCUMENT).fullscreenEnabled;
     protected readonly icons = inject(TUI_DOC_ICONS);
@@ -114,13 +105,6 @@ export class TuiDocExample {
         {initialValue: {} as unknown as Record<string, string>},
     );
 
-    protected readonly lazyComponent = toSignal(
-        this.lazyLoader$$.pipe(
-            switchAll(),
-            map((module) => new PolymorpheusComponent(module.default)),
-        ),
-    );
-
     @Input()
     public id: string | null = null;
 
@@ -137,13 +121,11 @@ export class TuiDocExample {
     public componentName: string = this.location.pathname.slice(1);
 
     @Input()
-    public set content(content: Record<string, TuiRawLoaderContent>) {
-        this.rawLoader$$.next(content);
-    }
+    public component?: Promise<Type<unknown>>;
 
     @Input()
-    public set component(content: Promise<{readonly default: Type<unknown>}>) {
-        this.lazyLoader$$.next(content);
+    public set content(content: Record<string, TuiRawLoaderContent>) {
+        this.rawLoader$$.next(content);
     }
 
     protected readonly visible = (files: Record<string, string>): boolean =>

@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPagination} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiPagination],
     templateUrl: './index.html',
     encapsulation,

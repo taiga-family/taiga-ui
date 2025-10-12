@@ -9,7 +9,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
@@ -18,7 +17,7 @@ import {TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
         TuiScrollbar,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

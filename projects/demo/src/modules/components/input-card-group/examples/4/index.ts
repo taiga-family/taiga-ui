@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiCard, TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiInputCardGroup],
     templateUrl: './index.html',
     encapsulation,

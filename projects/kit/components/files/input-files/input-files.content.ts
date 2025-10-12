@@ -11,7 +11,6 @@ import {combineLatest, map, type Observable, of} from 'rxjs';
 import {TuiInputFiles} from './input-files.component';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiLink],
     template: `
         <a tuiLink>{{ link$ | async }}</a>

@@ -6,10 +6,9 @@ import {type TuiStringHandler} from '@taiga-ui/cdk';
 import {type TuiPoint} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiAxes, TuiDemo, TuiLineChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

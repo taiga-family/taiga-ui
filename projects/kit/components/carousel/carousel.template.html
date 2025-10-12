@@ -1,4 +1,4 @@
-<ng-container *ngIf="items.changes | async" />
+@if (items.changes | async) {}
 <div
     class="t-scroller"
     (tuiCarouselScroll)="onScroll($event)"
@@ -15,15 +15,16 @@
             (tuiPan)="onPan($event[0])"
             (tuiSwipe)="onSwipe($event.direction)"
         >
-            <fieldset
-                *ngFor="let item of items; let i = index"
-                class="t-item"
-                [disabled]="isDisabled(i)"
-                [style]="getStyle(itemsCount)"
-                (waIntersectionObservee)="$event[0] && onIntersection($event[0], i)"
-            >
-                <ng-container [ngTemplateOutlet]="item" />
-            </fieldset>
+            @for (item of items; track item) {
+                <fieldset
+                    class="t-item"
+                    [disabled]="isDisabled($index)"
+                    [style]="getStyle(itemsCount)"
+                    (waIntersectionObservee)="$event[0] && onIntersection($event[0], $index)"
+                >
+                    <ng-container [ngTemplateOutlet]="item" />
+                </fieldset>
+            }
         </div>
     </div>
 </div>

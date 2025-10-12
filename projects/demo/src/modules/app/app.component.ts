@@ -1,5 +1,5 @@
 import {isPlatformServer} from '@angular/common';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {
     Component,
     DestroyRef,
@@ -21,7 +21,7 @@ import {TUI_DOC_SEARCH_ENABLED} from '@taiga-ui/addon-doc';
 import {TUI_IS_E2E} from '@taiga-ui/cdk';
 import {TuiButton, TuiDataList, TuiDropdown, TuiIcon} from '@taiga-ui/core';
 import {TuiBadgedContent} from '@taiga-ui/kit';
-import {TuiSheetModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {distinctUntilChanged, filter, map, startWith} from 'rxjs';
 
 import {CustomHost} from '../customization/portals/examples/1/portal';
@@ -32,11 +32,9 @@ import {VersionManager} from './version-manager/version-manager.component';
 import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.providers';
 
 @Component({
-    standalone: true,
     selector: 'app',
     imports: [
         CustomHost,
-        HttpClientModule,
         TuiAlgoliaSearch,
         TuiBadgedContent,
         TuiButton,
@@ -44,12 +42,11 @@ import {TUI_VERSION_MANAGER_PROVIDERS} from './version-manager/version-manager.p
         TuiDemo,
         TuiDropdown,
         TuiIcon,
-        TuiSheetModule,
         TuiTextfieldControllerModule,
         VersionManager,
     ],
     templateUrl: './app.template.html',
-    styleUrls: ['./app.style.less'],
+    styleUrl: './app.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection,
     providers: [

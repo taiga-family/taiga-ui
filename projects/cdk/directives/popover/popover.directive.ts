@@ -12,10 +12,10 @@ export abstract class TuiPopoverDirective<T>
     private readonly service = inject(TuiPopoverService<T>);
     private readonly open$ = new Subject<boolean>();
 
-    protected options: Partial<T> = {};
-    protected open = false;
+    public options: Partial<T> = {};
+    public open = false;
 
-    protected readonly openChange = this.open$.pipe(
+    public readonly openChange = this.open$.pipe(
         distinctUntilChanged(),
         tuiIfMap(() =>
             this.service.open(this, this.options).pipe(ignoreElements(), endWith(false)),

@@ -14,36 +14,36 @@
             <caption class="table-caption">Our library includes the following breakpoints:</caption>
             <thead>
                 <tr tuiThGroup>
-                    <th
-                        *ngFor="let column of columnsNames"
-                        tuiTh
-                        class="title"
-                    >
-                        {{ column }}
-                    </th>
+                    @for (column of columnsNames; track column) {
+                        <th
+                            tuiTh
+                            class="title"
+                        >
+                            {{ column }}
+                        </th>
+                    }
                 </tr>
             </thead>
             <tbody
                 tuiTbody
                 [data]="breakpoints"
             >
-                <tr
-                    *ngFor="let breakpoint of breakpoints"
-                    tuiTr
-                >
-                    <td
-                        *tuiCell="'name'"
-                        tuiTd
-                    >
-                        <tui-doc-copy
-                            class="copy"
-                            [cdkCopyToClipboard]="breakpoint.name"
+                @for (breakpoint of breakpoints; track breakpoint) {
+                    <tr tuiTr>
+                        <td
+                            *tuiCell="'name'"
+                            tuiTd
                         >
-                            Copy
-                        </tui-doc-copy>
-                        {{ breakpoint.name }}
-                    </td>
-                </tr>
+                            <tui-doc-copy
+                                class="copy"
+                                [cdkCopyToClipboard]="breakpoint.name"
+                            >
+                                Copy
+                            </tui-doc-copy>
+                            {{ breakpoint.name }}
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
 

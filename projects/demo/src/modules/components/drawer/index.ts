@@ -4,16 +4,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
     TuiButton,
+    TuiHeader,
     type TuiHorizontalDirection,
     TuiPopup,
-    TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiDrawer} from '@taiga-ui/kit';
-import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,
@@ -21,7 +19,6 @@ import {TuiHeader} from '@taiga-ui/layout';
         TuiDrawer,
         TuiHeader,
         TuiPopup,
-        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',

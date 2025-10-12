@@ -1,4 +1,10 @@
-import {Directive, type DoCheck, inject, TemplateRef} from '@angular/core';
+import {
+    Directive,
+    type DoCheck,
+    inject,
+    type OnDestroy,
+    TemplateRef,
+} from '@angular/core';
 
 import {TuiTextfieldComponent} from './textfield.component';
 
@@ -6,12 +12,16 @@ import {TuiTextfieldComponent} from './textfield.component';
     standalone: true,
     selector: 'ng-template[tuiTextfieldContent]',
 })
-export class TuiTextfieldContent implements DoCheck {
+export class TuiTextfieldContent implements DoCheck, OnDestroy {
     private readonly ref = inject(TuiTextfieldComponent).vcr?.createEmbeddedView(
         inject(TemplateRef),
     );
 
     public ngDoCheck(): void {
         this.ref?.detectChanges();
+    }
+
+    public ngOnDestroy(): void {
+        this.ref?.destroy();
     }
 }

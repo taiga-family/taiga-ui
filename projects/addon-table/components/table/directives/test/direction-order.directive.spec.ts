@@ -20,7 +20,7 @@ describe('TuiDirectionOrder directive', () => {
     })
     class Test {
         @ViewChild(TuiTableDirective)
-        public readonly table!: TuiTableDirective<any>;
+        public readonly table!: TuiTableDirective<Partial<Record<string, unknown>>>;
 
         public directionOrder: 'asc' | 'desc' = 'asc';
         public directionOrderChange = jest.fn();

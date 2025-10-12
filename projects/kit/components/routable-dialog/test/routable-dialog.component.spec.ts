@@ -8,8 +8,7 @@ import {
     Router,
     type UrlSegment,
 } from '@angular/router';
-import {TuiDialogService} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {EMPTY, NEVER} from 'rxjs';
 import {anything, deepEqual, instance, mock, verify, when} from 'ts-mockito';
@@ -53,7 +52,7 @@ describe('TuiRoutableDialog', () => {
         void TestBed.configureTestingModule({
             imports: [TuiRoutableDialog],
             providers: [
-                NG_EVENT_PLUGINS,
+                provideTaiga(),
                 providerOf(TuiDialogService, tuiDialogService),
                 providerOf(Router, router),
                 {

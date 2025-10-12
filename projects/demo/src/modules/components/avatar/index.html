@@ -4,27 +4,56 @@
     type="components"
 >
     <ng-template pageTab>
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-avatar
+            <div
+                [appearance]="appearance.appearance"
+                [badge]="badge"
                 [round]="round"
                 [size]="size"
-                [src]="src"
-            />
+                [tuiAvatar]="src === '@tui.star' || src === 'MW' ? src : '@tui.user'"
+            >
+                <img
+                    alt=""
+                    [src]="src"
+                />
+            </div>
         </tui-doc-demo>
 
         <table tuiDocAPI>
             <tr
-                name="round"
+                name="[tuiAvatar]"
+                tuiDocAPIItem
+                type="string"
+                [items]="srcVariants"
+                [(value)]="src"
+            >
+                Icon or initials. For images and videos and longer text use
+                <code>ng-content</code>
+            </tr>
+
+            <tr
+                name="[badge]"
+                tuiDocAPIItem
+                type="string"
+                [items]="badgeVariants"
+                [(value)]="badge"
+            >
+                Color of the dot badge indicator
+            </tr>
+
+            <tr
+                name="[round]"
                 tuiDocAPIItem
                 type="boolean"
                 [(value)]="round"
@@ -33,7 +62,7 @@
             </tr>
 
             <tr
-                name="size"
+                name="[size]"
                 tuiDocAPIItem
                 type="TuiSizeS | TuiSizeL"
                 [items]="sizes"
@@ -42,17 +71,11 @@
                 Size
             </tr>
 
-            <tr
-                name="src"
-                tuiDocAPIItem
-                type="SafeResourceUrl | string | null"
-                [items]="srcVariants"
-                [(value)]="src"
-            >
-                Initials, image URL, or icon name. Alternatively you can pass text as
-                <code>ng-content</code>
-                which would be styled differently from initials and fade if overflown
-            </tr>
+            <tbody
+                #appearance
+                tuiDocAppearance
+                [hiddenOptions]="['focus', 'state', 'mode']"
+            ></tbody>
         </table>
     </ng-template>
 

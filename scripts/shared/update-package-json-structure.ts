@@ -8,7 +8,7 @@ interface UpdatePackageJsonOptions {
     ignores: readonly string[];
     isPackageLockFile: boolean;
     newVersion: string;
-    packageJson: Record<string, Record<string, any> | string>;
+    packageJson: Record<string, Record<string, Record<string, string>> | string>;
     prevVersion: string;
 }
 

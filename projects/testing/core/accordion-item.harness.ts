@@ -23,7 +23,7 @@ export class TuiAccordionItemHarness extends TuiContentContainerComponentHarness
     }
 
     public async hasArrow(): Promise<boolean> {
-        return !!(await this.locatorForOptional('.t-icon')()) ?? false;
+        return !!(await this.locatorForOptional('.t-icon')());
     }
 
     public async focus(): Promise<void> {

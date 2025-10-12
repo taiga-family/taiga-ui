@@ -1,15 +1,13 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {TUI_DOC_MAP_PAGES, TUI_DOC_SEE_ALSO_TEXT} from '@taiga-ui/addon-doc/tokens';
 import {TuiLink} from '@taiga-ui/core/components/link';
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-see-also',
-    imports: [NgForOf, NgIf, RouterLink, TuiLink],
+    imports: [RouterLink, TuiLink],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocSeeAlso {

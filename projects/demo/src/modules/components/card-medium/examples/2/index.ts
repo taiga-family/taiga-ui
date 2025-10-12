@@ -5,10 +5,9 @@ import {TuiAppearance, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiAppearance, TuiCardMedium, TuiIcon, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

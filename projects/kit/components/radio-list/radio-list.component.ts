@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -21,27 +20,15 @@ import {TuiIdService} from '@taiga-ui/cdk/services';
 import {type TuiBooleanHandler, type TuiIdentityMatcher} from '@taiga-ui/cdk/types';
 import {type TuiSizeS, type TuiValueContentContext} from '@taiga-ui/core/types';
 import {TuiRadio} from '@taiga-ui/kit/components/radio';
-import {
-    type PolymorpheusContent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 const ERROR: ValidatorFn = () => ({error: 'Invalid'});
 
 @Component({
-    standalone: true,
     selector: 'tui-radio-list',
-    imports: [
-        FormsModule,
-        NgForOf,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        TuiRadio,
-        TuiValidator,
-    ],
+    imports: [FormsModule, PolymorpheusOutlet, TuiRadio, TuiValidator],
     templateUrl: './radio-list.template.html',
-    styleUrls: ['./radio-list.style.less'],
+    styleUrl: './radio-list.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsControl(TuiRadioList)],

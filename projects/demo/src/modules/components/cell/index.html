@@ -1,16 +1,17 @@
 <tui-doc-page
     header="Cell"
-    package="LAYOUT"
+    package="CORE"
     type="components"
 >
     <ng-template pageTab>
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -19,28 +20,23 @@
                 [tuiCell]="size"
                 [tuiCellHeight]="height"
             >
-                <tui-avatar
-                    *ngIf="height !== 'compact'"
-                    appearance="primary"
-                    src="@tui.star"
-                />
+                @if (height !== 'compact') {
+                    <div
+                        appearance="primary"
+                        tuiAvatar="@tui.star"
+                    ></div>
+                }
                 <div tuiTitle>
                     Title
-                    <div
-                        *ngIf="height !== 'compact'"
-                        tuiSubtitle
-                    >
-                        Description
-                    </div>
+                    @if (height !== 'compact') {
+                        <div tuiSubtitle>Description</div>
+                    }
                 </div>
                 <div tuiTitle>
                     Secondary title
-                    <div
-                        *ngIf="height !== 'compact'"
-                        tuiSubtitle
-                    >
-                        Another description
-                    </div>
+                    @if (height !== 'compact') {
+                        <div tuiSubtitle>Another description</div>
+                    }
                 </div>
             </div>
         </tui-doc-demo>

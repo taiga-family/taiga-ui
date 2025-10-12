@@ -2,14 +2,16 @@
     side="start"
     [itemsLimit]="3"
 >
-    <ng-container *ngFor="let item of items; let first = first">
+    @for (item of items; track item) {
         <ng-container *tuiItem>
-            <tui-icon
-                *ngIf="!first"
-                icon="@tui.chevron-right"
-                [style.border-width.rem]="0.25"
-                [style.opacity]="0.25"
-            />
+            @if (!$first) {
+                <tui-icon
+                    icon="@tui.chevron-right"
+                    [style.font-size.rem]="1"
+                    [style.opacity]="0.25"
+                    [style.width.rem]="1.5"
+                />
+            }
             <button
                 appearance="flat"
                 size="xs"
@@ -19,7 +21,7 @@
                 {{ item }}
             </button>
         </ng-container>
-    </ng-container>
+    }
     <ng-template
         let-index
         tuiMore
@@ -37,15 +39,16 @@
         </button>
         <ng-template #dropdown>
             <tui-data-list size="s">
-                <ng-container *ngFor="let item of items; let i = index">
-                    <button
-                        *ngIf="i < index"
-                        tuiOption
-                        type="button"
-                    >
-                        {{ item }}
-                    </button>
-                </ng-container>
+                @for (item of items; track item) {
+                    @if ($index < index) {
+                        <button
+                            tuiOption
+                            type="button"
+                        >
+                            {{ item }}
+                        </button>
+                    }
+                }
             </tui-data-list>
         </ng-template>
     </ng-template>

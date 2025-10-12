@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -9,29 +9,26 @@ import {
     TuiLabel,
     TuiLink,
     TuiScrollbar,
-    TuiSurface,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
-        CommonModule,
+        AsyncPipe,
         TuiAmountPipe,
-        TuiAppearance,
         TuiAvatar,
         TuiBadge,
         TuiButton,
         TuiCardLarge,
-        TuiCell,
         TuiLabel,
         TuiLink,
         TuiScrollbar,
         TuiSurface,
         TuiThumbnailCard,
         TuiTitle,
+        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less', './surface.less'],

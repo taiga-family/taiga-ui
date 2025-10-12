@@ -7,7 +7,6 @@ import {TuiButton, type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 import {TuiButtonLoading} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiButtonLoading, TuiDemo, TuiDocAppearance, TuiDocIcons],
     templateUrl: './index.html',
     changeDetection,

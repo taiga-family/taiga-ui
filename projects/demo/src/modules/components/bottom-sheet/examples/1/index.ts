@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,10 +8,8 @@ import {TuiMessage, TuiTextarea} from '@taiga-ui/kit';
 import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgForOf,
         TuiAppearance,
         TuiBottomSheet,
         TuiButton,
@@ -23,7 +20,7 @@ import {TuiCardLarge} from '@taiga-ui/layout';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

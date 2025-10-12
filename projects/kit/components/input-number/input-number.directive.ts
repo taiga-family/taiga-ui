@@ -1,7 +1,15 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {
+    computed,
+    Directive,
+    effect,
+    inject,
+    Input,
+    signal,
+    untracked,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
-import {maskitoInitialCalibrationPlugin, type MaskitoOptions} from '@maskito/core';
+import {type MaskitoOptions, maskitoTransform} from '@maskito/core';
 import {
     maskitoCaretGuard,
     maskitoNumberOptionsGenerator,
@@ -38,13 +46,16 @@ const DEFAULT_MAX_LENGTH = 18;
         '[attr.inputMode]': 'inputMode()',
         '[attr.maxLength]':
             'element.maxLength > 0 ? element.maxLength : defaultMaxLength()',
-        '(blur)': 'setValue(transformer.fromControlValue(control.value))',
+        '(focusout)': 'setValue(transformer.fromControlValue(control.value))',
         '(focus)': 'onFocus()',
     },
 })
 export class TuiInputNumberDirective extends TuiControl<number | null> {
+    private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly isIOS = inject(TUI_IS_IOS);
+    private readonly minRaw = signal(this.options.min);
+    private readonly maxRaw = signal(this.options.max);
     private readonly numberFormat = toSignal(inject(TUI_NUMBER_FORMAT), {
         initialValue: TUI_DEFAULT_NUMBER_FORMAT,
     });
@@ -53,47 +64,28 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         maskitoParseNumber(this.textfield.value(), this.numberFormat()),
     );
 
-    private readonly precision = computed(() =>
-        Number.isNaN(this.numberFormat().precision) ? 2 : this.numberFormat().precision,
+    private readonly precision = computed((precision = this.numberFormat().precision) =>
+        Number.isNaN(precision) ? 2 : precision,
     );
 
     private readonly unfinished = computed((value = this.formatted()) =>
         value < 0 ? value > this.max() : value < this.min(),
     );
 
-    protected readonly onChangeEffect = effect(() => {
-        const value = this.formatted();
-
-        if (Number.isNaN(value)) {
-            this.onChange(null);
-
-            return;
-        }
-
-        if (
-            this.unfinished() ||
-            value < this.min() ||
-            value > this.max() ||
-            this.value() === value
-        ) {
-            return;
-        }
-
-        this.onChange(value);
-    }, TUI_ALLOW_SIGNAL_WRITES);
-
-    protected readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly element = tuiInjectElement<HTMLInputElement>();
+    protected readonly mask = tuiMaskito(
+        computed(() => this.computeMask(this.maskParams)),
+    );
 
     protected readonly inputMode = computed(() => {
         if (this.isIOS) {
             return this.min() < 0
-                ? 'text' // iPhone does not have minus sign if inputMode equals to 'numeric' / 'decimal'
+                ? 'text' // iPhone does not have minus sign if inputMode is equal to 'numeric' / 'decimal'
                 : 'decimal';
         }
 
         /**
-         * Samsung Keyboard does not minus sign for `inputmode=decimal`
+         * Samsung Keyboard does not have minus sign for `inputmode=decimal`
          * @see https://github.com/taiga-family/taiga-ui/issues/11061#issuecomment-2939103792
          */
         return 'numeric';
@@ -109,38 +101,50 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         return DEFAULT_MAX_LENGTH + precision + takeThousand;
     });
 
-    protected readonly mask = tuiMaskito(
-        computed(
-            (
-                {decimalMode, ...numberFormat} = this.numberFormat(),
-                maximumFractionDigits = this.precision(),
-            ) =>
-                this.computeMask({
-                    ...numberFormat,
-                    maximumFractionDigits,
-                    min: this.min(),
-                    max: this.max(),
-                    prefix: this.prefix(),
-                    postfix: this.postfix(),
-                    minimumFractionDigits:
-                        decimalMode === 'always' ? maximumFractionDigits : 0,
-                }),
-        ),
-    );
+    protected readonly onChangeEffect = effect(() => {
+        const value = this.formatted();
 
-    public readonly min = signal(this.options.min);
-    public readonly max = signal(this.options.max);
+        if (Number.isNaN(value) && !Number.isNaN(this.value())) {
+            this.onChange(null);
+
+            return;
+        }
+
+        if (
+            this.unfinished() ||
+            value < this.min() ||
+            value > this.max() ||
+            Object.is(this.value(), value)
+        ) {
+            return;
+        }
+
+        this.onChange(value);
+    }, TUI_ALLOW_SIGNAL_WRITES);
+
+    protected maskInitialCalibrationEffect = effect(() => {
+        const options = maskitoNumberOptionsGenerator({
+            ...this.maskParams,
+            min: Number.MIN_SAFE_INTEGER,
+            max: Number.MAX_SAFE_INTEGER,
+        });
+
+        this.textfield.value.update((x) => maskitoTransform(x, options));
+    }, TUI_ALLOW_SIGNAL_WRITES);
+
+    public readonly min = computed(() => Math.min(this.minRaw(), this.maxRaw()));
+    public readonly max = computed(() => Math.max(this.minRaw(), this.maxRaw()));
     public readonly prefix = signal(this.options.prefix);
     public readonly postfix = signal(this.options.postfix);
 
     @Input('min')
     public set minSetter(x: number | null) {
-        this.updateMinMaxLimits(x, this.max());
+        this.minRaw.set(this.transformer.fromControlValue(x ?? this.options.min));
     }
 
     @Input('max')
     public set maxSetter(x: number | null) {
-        this.updateMinMaxLimits(this.min(), x);
+        this.maxRaw.set(this.transformer.fromControlValue(x ?? this.options.max));
     }
 
     // TODO(v5): replace with signal input
@@ -156,8 +160,13 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     }
 
     public override writeValue(value: number | null): void {
-        super.writeValue(value);
-        this.setValue(this.value());
+        const reset = this.control.pristine && this.control.untouched && !value;
+        const changed = untracked(() => value !== this.value());
+
+        if (changed || reset) {
+            super.writeValue(value);
+            untracked(() => this.setValue(this.value()));
+        }
     }
 
     public setValue(value: number | null): void {
@@ -168,6 +177,21 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         if (Number.isNaN(this.formatted()) && !this.readOnly()) {
             this.textfield.value.set(this.prefix() + this.postfix());
         }
+    }
+
+    private get maskParams(): MaskitoNumberParams {
+        const {decimalMode, ...numberFormat} = this.numberFormat();
+        const maximumFractionDigits = this.precision();
+
+        return {
+            ...numberFormat,
+            maximumFractionDigits,
+            min: this.min(),
+            max: this.max(),
+            prefix: this.prefix(),
+            postfix: this.postfix(),
+            minimumFractionDigits: decimalMode === 'always' ? maximumFractionDigits : 0,
+        };
     }
 
     private formatNumber(value: number | null): string {
@@ -193,33 +217,14 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         );
     }
 
-    private updateMinMaxLimits(
-        nullableMin: number | null,
-        nullableMax: number | null,
-    ): void {
-        const min = this.transformer.fromControlValue(nullableMin) ?? this.options.min;
-        const max = this.transformer.fromControlValue(nullableMax) ?? this.options.max;
-
-        this.min.set(Math.min(min, max));
-        this.max.set(Math.max(min, max));
-    }
-
     private computeMask(params: MaskitoNumberParams): MaskitoOptions {
         const {prefix = '', postfix = ''} = params;
         const {plugins, ...options} = maskitoNumberOptionsGenerator(params);
-        const initialCalibrationPlugin = maskitoInitialCalibrationPlugin(
-            maskitoNumberOptionsGenerator({
-                ...params,
-                min: Number.MIN_SAFE_INTEGER,
-                max: Number.MAX_SAFE_INTEGER,
-            }),
-        );
 
         return {
             ...options,
             plugins: [
                 ...plugins,
-                initialCalibrationPlugin,
                 maskitoCaretGuard((value) => [
                     prefix.length,
                     value.length - postfix.length,

@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,20 +8,10 @@ import {
     TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
 import {TuiError} from '@taiga-ui/core';
-import {TuiFieldErrorPipe} from '@taiga-ui/kit';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
-    imports: [
-        AsyncPipe,
-        PolymorpheusOutlet,
-        PolymorpheusTemplate,
-        ReactiveFormsModule,
-        TuiError,
-        TuiFieldErrorPipe,
-        TuiInputCardGroup,
-    ],
+    imports: [PolymorpheusTemplate, ReactiveFormsModule, TuiError, TuiInputCardGroup],
     templateUrl: './index.html',
     changeDetection,
 })

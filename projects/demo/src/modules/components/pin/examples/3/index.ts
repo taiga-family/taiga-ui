@@ -5,10 +5,9 @@ import {TuiIcon} from '@taiga-ui/core';
 import {TuiPin} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiIcon, TuiPin],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

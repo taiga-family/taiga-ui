@@ -11,10 +11,9 @@
         [(ngModel)]="value"
     />
 
-    <tui-icon
-        *ngIf="value"
-        [icon]="value.hours < 8 ? '@tui.moon' : '@tui.sun'"
-    />
+    @if (value) {
+        <tui-icon [icon]="value.hours < 8 ? '@tui.moon' : '@tui.sun'" />
+    }
 
     <tui-icon tuiTooltip="I am a hint" />
 </tui-textfield>

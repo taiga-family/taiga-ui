@@ -6,10 +6,9 @@ import {TuiButton, TuiScrollbar} from '@taiga-ui/core';
 const SOME_OFFSET_CONST = 20;
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
@@ -17,7 +16,7 @@ export default class Example {
     @ViewChild(TuiScrollbar, {read: ElementRef})
     private readonly scrollBar?: ElementRef<HTMLElement>;
 
-    protected SOME_OFFSET_CONST = SOME_OFFSET_CONST;
+    protected someOffsetConst = SOME_OFFSET_CONST;
 
     protected get scrollTop(): number {
         return this.scrollBar ? this.scrollBar.nativeElement.scrollTop : 0;

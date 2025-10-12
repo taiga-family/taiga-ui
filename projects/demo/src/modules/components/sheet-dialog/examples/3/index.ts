@@ -8,7 +8,6 @@ import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiFloatingContainer} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         TuiAmountPipe,
@@ -18,7 +17,7 @@ import {TuiFloatingContainer} from '@taiga-ui/kit';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

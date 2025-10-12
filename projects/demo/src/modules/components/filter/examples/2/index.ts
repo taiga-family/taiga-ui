@@ -28,10 +28,9 @@ const COMPLETED = {
 };
 
 @Component({
-    standalone: true,
     imports: [JsonPipe, ReactiveFormsModule, TuiFilter],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

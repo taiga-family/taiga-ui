@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,10 +7,11 @@ import {
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {WA_LOCAL_STORAGE, WA_LOCATION} from '@ng-web-apis/common';
-import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
+import {TuiTextfield} from '@taiga-ui/core/components/textfield';
 import {TUI_THEME} from '@taiga-ui/core/tokens';
-import {TuiSelectModule} from '@taiga-ui/legacy/components/select';
+import {TuiSelect} from '@taiga-ui/kit/components/select';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
 export const TUI_THEME_KEY = new InjectionToken(ngDevMode ? 'TUI_THEME_KEY' : '', {
     factory: () => 'data-tui-theme',
@@ -32,9 +32,8 @@ export function tuiDocThemeProvider(): FactoryProvider {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-doc-theme-switcher',
-    imports: [FormsModule, NgForOf, TuiButton, TuiDataList, TuiSelectModule],
+    imports: [FormsModule, TuiDataList, TuiSelect, TuiTextfield, TuiChevron],
     templateUrl: './theme-switcher.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

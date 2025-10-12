@@ -10,35 +10,30 @@
         #content
         let-value
     >
-        <ng-template #parent>
+        @if (!value.children) {
+            <div class="wrapper">
+                <div
+                    class="drop"
+                    (pointerup)="onDrop(value)"
+                ></div>
+                <tui-tiles class="tiles">
+                    <tui-tile>
+                        <div
+                            tuiTileHandle
+                            class="content"
+                            (pointerdown)="onDrag(value)"
+                        >
+                            {{ value.text }}
+                        </div>
+                    </tui-tile>
+                </tui-tiles>
+                <div
+                    class="drop"
+                    (pointerup)="onDrop(value, 1)"
+                ></div>
+            </div>
+        } @else {
             {{ value.text }}
-        </ng-template>
-
-        <div
-            *ngIf="!value.children; else parent"
-            class="wrapper"
-        >
-            <div
-                class="drop"
-                (pointerup)="onDrop(value)"
-            ></div>
-
-            <tui-tiles class="tiles">
-                <tui-tile>
-                    <div
-                        tuiTileHandle
-                        class="content"
-                        (pointerdown)="onDrag(value)"
-                    >
-                        {{ value.text }}
-                    </div>
-                </tui-tile>
-            </tui-tiles>
-
-            <div
-                class="drop"
-                (pointerup)="onDrop(value, 1)"
-            ></div>
-        </div>
+        }
     </ng-template>
 </tui-tree>

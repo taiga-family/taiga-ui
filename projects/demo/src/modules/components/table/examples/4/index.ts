@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -107,12 +107,9 @@ function getAge(dob: TuiDay): number {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiButton,
         TuiCheckbox,
@@ -129,7 +126,7 @@ function getAge(dob: TuiDay): number {
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -9,7 +9,6 @@ import {TuiInputCard} from '@taiga-ui/addon-commerce';
 import {TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -25,18 +24,4 @@ import {TuiTextfield} from '@taiga-ui/core';
 })
 export default class Page {
     protected card = '';
-    protected iconSelected: string | null = null;
-
-    protected readonly cards: Record<string, string> = {
-        common: 'https://ng-web-apis.github.io/dist/assets/images/common.svg',
-        universal: 'https://ng-web-apis.github.io/dist/assets/images/universal.svg',
-        mutation:
-            'https://ng-web-apis.github.io/dist/assets/images/mutation-observer.svg',
-    };
-
-    protected readonly iconVariants: readonly string[] = Object.keys(this.cards);
-
-    protected get icon(): string | null {
-        return (this.iconSelected && this.cards[this.iconSelected]) || null;
-    }
 }

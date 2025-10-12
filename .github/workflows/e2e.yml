@@ -15,20 +15,28 @@ jobs:
       - uses: actions/checkout@v4.3.0
         with:
           fetch-depth: 10
-      - uses: taiga-family/ci/actions/setup/variables@v1.139.0
-      - uses: taiga-family/ci/actions/run/rebase@v1.139.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.163.0
+      - uses: taiga-family/ci/actions/run/rebase@v1.163.0
         continue-on-error: true
-      - uses: taiga-family/ci/actions/setup/node@v1.139.0
+      - uses: taiga-family/ci/actions/setup/node@v1.163.0
 
       - run: npx nx type-check demo-playwright
       - name: Building demo-app of git-branch without cache
         run: npx nx build demo # Don't use prerender please, because it's flaky for e2e
 
       - name: Upload cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/save@v4.2.4
+        uses: actions/cache/save@v4.3.0
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
+
+      - name: Upload demo dist artifact (for performance workflow reuse)
+        uses: actions/upload-artifact@v4.6.2
+        with:
+          name: demo-dist-${{ github.sha }}
+          path: dist/demo
+          if-no-files-found: error
+          compression-level: 0
 
   cypress:
     if: ${{ !contains(github.head_ref , 'release/') }}
@@ -43,8 +51,10 @@ jobs:
       - uses: actions/checkout@v4.3.0
         with:
           ref: ${{ github.base_ref }}
-      - uses: taiga-family/ci/actions/setup/variables@v1.139.0
-      - uses: taiga-family/ci/actions/setup/node@v1.139.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.163.0
+      - uses: taiga-family/ci/actions/setup/node@v1.163.0
+        with:
+          validate-peer-deps: false
 
       - name: Run tests for baseline state
         run: npx nx component-test demo-cypress
@@ -59,8 +69,8 @@ jobs:
           retention-days: 1
 
       - uses: actions/checkout@v4.3.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.139.0
-      - uses: taiga-family/ci/actions/setup/node@v1.139.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.163.0
+      - uses: taiga-family/ci/actions/setup/node@v1.163.0
 
       - name: Download Cypress Baseline Snapshots
         uses: actions/download-artifact@v4.3.0
@@ -72,10 +82,7 @@ jobs:
       - name: Run tests for current state
         run: npx nx component-test demo-cypress
 
-      - name: Prepare diff screenshots
-        run: |
-          npm install canvas --no-save --silent --force
-          npx ts-node -e "import { tuiCombineCypressFailedScreenshots as run } from './projects/testing/visual-testing'; run();";
+      - uses: taiga-family/ci/actions/setup/cypress-combine-failed-screenshot@v1.163.0
 
       - name: Debug output
         continue-on-error: true
@@ -122,29 +129,22 @@ jobs:
     runs-on: ${{ matrix.shard.os }}
     steps:
       - uses: actions/checkout@v4.3.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.139.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.163.0
 
       - name: Mac OS X building all dependencies
         if: ${{ contains( matrix.shard.os, 'macos') }}
         run: brew install pkg-config cairo pango libpng jpeg-turbo giflib librsvg --force || echo ''
 
-      - uses: taiga-family/ci/actions/setup/node@v1.139.0
-
-      - name: Get installed Playwright version
-        id: playwright-version
-        run: |
-          echo "PLAYWRIGHT_VERSION=$(node -p 'require("./projects/demo-playwright/package.json").devDependencies["@playwright/test"]')" >> $GITHUB_ENV
-      - uses: taiga-family/ci/actions/setup/playwright@v1.139.0
-        with:
-          playwright-version: ${{ env.PLAYWRIGHT_VERSION }}
+      - uses: taiga-family/ci/actions/setup/node@v1.163.0
+      - uses: taiga-family/ci/actions/setup/playwright@v1.163.0
 
       - name: Download cache / ${{ env.CACHE_DIST_KEY }}
-        uses: actions/cache/restore@v4.2.4
+        uses: actions/cache/restore@v4.3.0
         with:
           path: dist/demo
           key: ${{ env.CACHE_DIST_KEY }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.139.0
+      - uses: taiga-family/ci/actions/run/serve@v1.163.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST }}
@@ -156,13 +156,15 @@ jobs:
             --update-snapshots \
             --project=${{ matrix.shard.project }} \
             --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+      - run: tree ./projects/demo-playwright/snapshots
+        continue-on-error: true
 
-      - uses: taiga-family/ci/actions/run/clone@v1.139.0
+      - uses: taiga-family/ci/actions/run/clone@v1.163.0
         with:
           branch: snapshots/demo/next/${{ github.base_ref }}
           destination: ${{ env.DIST_NEXT }}
 
-      - uses: taiga-family/ci/actions/run/serve@v1.139.0
+      - uses: taiga-family/ci/actions/run/serve@v1.163.0
         with:
           port: ${{ env.NG_SERVER_PORT }}
           directory: ${{ env.DIST_NEXT }}
@@ -172,13 +174,14 @@ jobs:
         continue-on-error: true
         run: |
           npx nx e2e demo-playwright -- \
+            --update-snapshots=none \
             --project=${{ matrix.shard.project }} \
-            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }}
+            --shard=${{ matrix.shard.index }}/${{ matrix.shard.total }} \
+            --retries=${{ env.RETRY_COUNT }}
+      - run: tree ./projects/demo-playwright/tests-results
+        continue-on-error: true
 
-      - name: Combine images to get diff reports
-        run: |
-          npm install canvas --no-save --silent --force
-          npx ts-node -e "import { tuiCombinePlaywrightFailedScreenshots as run } from './projects/testing/visual-testing'; run();";
+      - uses: taiga-family/ci/actions/setup/playwright-combine-failed-screenshot@v1.163.0
 
       - name: Upload artifacts / ${{ env.PLAYWRIGHT_SNAPSHOTS_ARTIFACTS_KEY }}
         uses: actions/upload-artifact@v4.6.2
@@ -221,8 +224,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.0
-      - uses: taiga-family/ci/actions/setup/variables@v1.139.0
-      - uses: taiga-family/ci/actions/setup/node@v1.139.0
+      - uses: taiga-family/ci/actions/setup/variables@v1.163.0
+      - uses: taiga-family/ci/actions/setup/node@v1.163.0
 
       - name: Download artifacts for Playwright
         continue-on-error: true
@@ -256,7 +259,7 @@ jobs:
 
       - name: Deploy e2e report
         id: e2e-report
-        uses: FirebaseExtended/action-hosting-deploy@v0.9.0
+        uses: FirebaseExtended/action-hosting-deploy@v0.10.0
         if: env.IS_OWNER_MODE == 'true'
         continue-on-error: true
         with:
@@ -277,16 +280,15 @@ jobs:
           report-file: ./all-blob-reports/results.json
           report-url: ${{ steps.e2e-report.outputs.details_url }}
 
-      - name: Check if diff-output exists
-        id: diff_checker
-        run: |
-          echo "diff_exist=$(find ./total -iname '*.diff.png' | wc -l | sed -e 's/^[[:space:]]*//')" >> $GITHUB_OUTPUT
+      - uses: taiga-family/ci/actions/setup/playwright-diff-check@v1.163.0
+        with:
+          pw-result: ./total
 
-      - name: Fall with an error if diff-output exists
-        if: ${{ steps.diff_checker.outputs.diff_exist != '0' }}
-        run: |
-          find ./total -iname '*.diff.png' -exec echo "{}" \;
-          exit 1
+  performance-stress:
+    if: ${{ !contains(github.head_ref , 'release/') }}
+    needs: [build-demo]
+    uses: ./.github/workflows/performance.yml
+    secrets: inherit
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

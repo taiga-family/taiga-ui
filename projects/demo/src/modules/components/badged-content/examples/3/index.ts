@@ -6,7 +6,6 @@ import {TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         TuiBadge,
         TuiBadgedContent,
@@ -16,7 +15,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiInputModule,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

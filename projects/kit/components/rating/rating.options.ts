@@ -3,8 +3,13 @@ import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
+export interface TuiRatingContext extends TuiContext<number> {
+    readonly value: number;
+    readonly filled: boolean;
+}
+
 export interface TuiRatingOptions {
-    readonly icon: PolymorpheusContent<TuiContext<number> & {value: number}>;
+    readonly icon: PolymorpheusContent<TuiRatingContext>;
     readonly max: number;
 }
 

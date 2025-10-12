@@ -4,15 +4,16 @@
 <ng-container *polymorpheusOutlet="content as text; context: {$implicit: this, template: template}">
     {{ text }}
 </ng-container>
-<tui-expand
-    *ngIf="isExpandable"
-    role="group"
-    class="t-children"
-    [expanded]="expanded()"
->
-    <div>
-        <ng-content select="tui-tree-item" />
-        <ng-content select="tui-tree" />
-    </div>
-</tui-expand>
-<ng-container *ngIf="attached()" />
+@if (isExpandable) {
+    <tui-expand
+        role="group"
+        class="t-children"
+        [expanded]="expanded()"
+    >
+        <div>
+            <ng-content select="tui-tree-item" />
+            <ng-content select="tui-tree" />
+        </div>
+    </tui-expand>
+}
+@if (attached()) {}

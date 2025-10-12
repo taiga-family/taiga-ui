@@ -7,7 +7,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAccordion, TuiDemo, TuiDocLanguageSwitcher, TuiLink, TuiTablePagination],
     templateUrl: './index.html',
     changeDetection,

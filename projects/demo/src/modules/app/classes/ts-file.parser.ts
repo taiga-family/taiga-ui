@@ -1,11 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
 
-export class TuiTsParserException extends Error {
-    constructor() {
-        super(ngDevMode ? 'TsFileParser: 1 component/module per ts-file' : '');
-    }
-}
-
 export class TsFileParser {
     protected rawFileContent: string;
 
@@ -15,7 +9,9 @@ export class TsFileParser {
         const classesInside = rawFileContent.match(/export class/gi) || [];
 
         if (classesInside.length > 1) {
-            throw new TuiTsParserException();
+            throw new Error(
+                ngDevMode ? 'TsFileParser: 1 component/module per ts-file' : '',
+            );
         }
 
         this.replaceMetaAssets();

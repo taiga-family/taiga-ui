@@ -1,4 +1,4 @@
-<ng-container *ngIf="texts$ | async as texts">
+@if (texts$ | async; as texts) {
     <button
         tuiIconButton
         tuiPreviewAction
@@ -22,4 +22,4 @@
     >
         {{ texts[1] }}
     </button>
-</ng-container>
+}

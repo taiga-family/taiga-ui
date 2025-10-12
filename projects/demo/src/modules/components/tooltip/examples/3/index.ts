@@ -6,7 +6,6 @@ import {TuiTooltip} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         TuiIcon,
         TuiInputModule,
@@ -15,7 +14,7 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

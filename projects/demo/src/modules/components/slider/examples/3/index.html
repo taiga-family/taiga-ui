@@ -9,14 +9,15 @@
 />
 
 <div class="ticks-labels">
-    <button
-        *ngFor="let label of labels"
-        type="button"
-        class="tick-label"
-        (click)="patchValue(label)"
-    >
-        ${{ label }}
-    </button>
+    @for (label of labels; track label) {
+        <button
+            type="button"
+            class="tick-label"
+            (click)="patchValue(label)"
+        >
+            ${{ label }}
+        </button>
+    }
 </div>
 
 <p>

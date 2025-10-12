@@ -6,7 +6,6 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
 
 @Component({
-    standalone: true,
     selector: '[tuiButton][loading],[tuiIconButton][loading]',
     imports: [TuiLoader],
     template: `

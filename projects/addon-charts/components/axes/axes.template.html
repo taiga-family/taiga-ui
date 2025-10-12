@@ -1,28 +1,30 @@
-<div
-    *ngIf="hasYLabels"
-    class="t-side"
-    [class.t-side_padding]="hasXLabels"
->
+@if (hasYLabels) {
     <div
-        *ngIf="axisYName"
-        automation-id="tui-axex__axis-y-name"
-        class="t-name t-name_primary"
+        class="t-side"
+        [class.t-side_padding]="hasXLabels"
     >
-        {{ axisYName }}
+        @if (axisYName) {
+            <div
+                automation-id="tui-axex__axis-y-name"
+                class="t-name t-name_primary"
+            >
+                {{ axisYName }}
+            </div>
+        }
+        @if (!axisYInset) {
+            <div class="t-labels-y t-labels-y_primary">
+                @for (label of axisYLabels; track label) {
+                    <div
+                        automation-id="tui-axex__axis-y-label"
+                        class="t-label-y"
+                    >
+                        {{ fallback(label) }}
+                    </div>
+                }
+            </div>
+        }
     </div>
-    <div
-        *ngIf="!axisYInset"
-        class="t-labels-y t-labels-y_primary"
-    >
-        <div
-            *ngFor="let label of axisYLabels"
-            automation-id="tui-axex__axis-y-label"
-            class="t-label-y"
-        >
-            {{ fallback(label) }}
-        </div>
-    </div>
-</div>
+}
 <div class="t-wrapper">
     <div
         class="t-grid"
@@ -45,70 +47,72 @@
                 [style.borderTopStyle]="horizontalLinesHandler(index, horizontalLines)"
             ></div>
         </div>
-        <div
-            *ngIf="axisYInset"
-            class="t-labels-y t-labels-y_inset"
-        >
-            <div
-                *ngFor="let label of axisYLabels"
-                automation-id="tui-axex__axis-y-label"
-                class="t-label-y"
-            >
-                {{ fallback(label) }}
+        @if (axisYInset) {
+            <div class="t-labels-y t-labels-y_inset">
+                @for (label of axisYLabels; track label) {
+                    <div
+                        automation-id="tui-axex__axis-y-label"
+                        class="t-label-y"
+                    >
+                        {{ fallback(label) }}
+                    </div>
+                }
             </div>
-        </div>
-        <div
-            *ngIf="axisYSecondaryInset"
-            class="t-labels-y t-labels-y_inset t-labels-y_inset_secondary"
-        >
-            <div
-                *ngFor="let label of axisYSecondaryLabels"
-                automation-id="tui-axex__axis-y-secondary-label"
-                class="t-label-y"
-            >
-                {{ fallback(label) }}
+        }
+        @if (axisYSecondaryInset) {
+            <div class="t-labels-y t-labels-y_inset t-labels-y_inset_secondary">
+                @for (label of axisYSecondaryLabels; track label) {
+                    <div
+                        automation-id="tui-axex__axis-y-secondary-label"
+                        class="t-label-y"
+                    >
+                        {{ fallback(label) }}
+                    </div>
+                }
             </div>
-        </div>
+        }
         <div class="t-content">
             <ng-content />
         </div>
     </div>
-    <div
-        *ngIf="hasXLabels"
-        class="t-labels-x"
-    >
-        <div
-            *ngFor="let label of axisXLabels"
-            automation-id="tui-axex__axis-x-label"
-            class="t-label-x"
-            [class.t-label-x_transparent]="label === null"
-        >
-            {{ fallback(label) }}
+    @if (hasXLabels) {
+        <div class="t-labels-x">
+            @for (label of axisXLabels; track label) {
+                <div
+                    automation-id="tui-axex__axis-x-label"
+                    class="t-label-x"
+                    [class.t-label-x_transparent]="label === null"
+                >
+                    {{ fallback(label) }}
+                </div>
+            }
         </div>
-    </div>
+    }
 </div>
-<div
-    *ngIf="hasYSecondaryLabels"
-    class="t-side"
-    [class.t-side_padding]="hasXLabels"
->
+@if (hasYSecondaryLabels) {
     <div
-        *ngIf="!axisYSecondaryInset"
-        class="t-labels-y t-labels-y_secondary"
+        class="t-side"
+        [class.t-side_padding]="hasXLabels"
     >
-        <div
-            *ngFor="let label of axisYSecondaryLabels"
-            automation-id="tui-axex__axis-y-secondary-label"
-            class="t-label-y"
-        >
-            {{ fallback(label) }}
-        </div>
+        @if (!axisYSecondaryInset) {
+            <div class="t-labels-y t-labels-y_secondary">
+                @for (label of axisYSecondaryLabels; track label) {
+                    <div
+                        automation-id="tui-axex__axis-y-secondary-label"
+                        class="t-label-y"
+                    >
+                        {{ fallback(label) }}
+                    </div>
+                }
+            </div>
+        }
+        @if (axisYSecondaryName) {
+            <div
+                automation-id="tui-axex__axis-y-secondary-name"
+                class="t-name"
+            >
+                {{ axisYSecondaryName }}
+            </div>
+        }
     </div>
-    <div
-        *ngIf="axisYSecondaryName"
-        automation-id="tui-axex__axis-y-secondary-name"
-        class="t-name"
-    >
-        {{ axisYSecondaryName }}
-    </div>
-</div>
+}

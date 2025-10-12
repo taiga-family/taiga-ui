@@ -11,17 +11,17 @@
         (ngModelChange)="value.set($event)"
     />
 
-    <ng-container *ngIf="items | tuiFilterByInput: matcher as filtered">
-        <ng-container *ngIf="!user() && input.value && filtered.length">
+    @if (items | tuiFilterByInput: matcher; as filtered) {
+        @if (!user() && input.value && filtered.length) {
             <tui-data-list-wrapper
-                *tuiTextfieldDropdown
+                *tuiDropdown
                 new
                 [itemContent]="template"
                 [items]="filtered"
                 (itemClick)="selectUser($event)"
             />
-        </ng-container>
-    </ng-container>
+        }
+    }
 </tui-textfield>
 
 <ng-template
@@ -29,11 +29,12 @@
     let-user
 >
     <div tuiCell>
-        <tui-avatar
-            size="s"
-            [src]="user.avatarUrl"
-        />
-
+        <div tuiAvatar="@tui.user">
+            <img
+                alt=""
+                [src]="user.avatarUrl"
+            />
+        </div>
         <div tuiTitle>
             {{ user }}
             <span tuiSubtitle>{{ user.phone }}</span>

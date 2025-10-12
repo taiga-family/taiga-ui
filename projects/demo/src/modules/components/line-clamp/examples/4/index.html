@@ -17,7 +17,7 @@
 <ng-template #template>
     <tui-data-list tuiDataListDropdownManager>
         <tui-opt-group>
-            <ng-container *ngFor="let text of texts">
+            @for (text of texts; track text) {
                 <button
                     tuiOption
                     type="button"
@@ -28,7 +28,7 @@
                         [linesLimit]="2"
                     />
                 </button>
-            </ng-container>
+            }
         </tui-opt-group>
     </tui-data-list>
 </ng-template>

@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -15,10 +15,9 @@ import {TuiHint} from '@taiga-ui/core';
 const BENJI = 100;
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgForOf, TuiAmountPipe, TuiAxes, TuiBarChart, TuiHint],
+    imports: [AsyncPipe, TuiAmountPipe, TuiAxes, TuiBarChart, TuiHint],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

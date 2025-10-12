@@ -1,8 +1,16 @@
-import {Directive, inject, Input, NgZone, type OnDestroy, Output} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+import {
+    Directive,
+    ElementRef,
+    inject,
+    Injectable,
+    NgZone,
+    type OnDestroy,
+} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
-import {tuiArrayRemove, tuiInjectElement, tuiPure} from '@taiga-ui/cdk/utils';
+import {tuiArrayRemove, tuiPure} from '@taiga-ui/cdk/utils';
 import {
     distinctUntilChanged,
     map,
@@ -13,29 +21,26 @@ import {
     tap,
 } from 'rxjs';
 
+@Injectable({providedIn: 'root'})
 @Directive({
     standalone: true,
     selector:
         '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',
+    inputs: ['tuiActiveZoneParentSetter: tuiActiveZoneParent'],
+    outputs: ['tuiActiveZoneChange'],
     exportAs: 'tuiActiveZone',
-    host: {
-        '(document:mousedown.zoneless)': '(0)',
-    },
 })
 export class TuiActiveZone implements OnDestroy {
     // TODO: Should we remove in v5? It's no longer used in Taiga UI
     private readonly control: any = inject(NgControl, {self: true, optional: true});
     private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
     private readonly zone = inject(NgZone);
-    private readonly el = tuiInjectElement();
     private tuiActiveZoneParent: TuiActiveZone | null = null;
-    private subActiveZones: readonly TuiActiveZone[] = [];
-    private readonly directParentActiveZone = inject(TuiActiveZone, {
-        skipSelf: true,
-        optional: true,
-    });
+    private readonly parent = inject(TuiActiveZone, {skipSelf: true, optional: true});
+    private readonly el: HTMLElement =
+        inject(ElementRef, {optional: true})?.nativeElement ??
+        inject(DOCUMENT).documentElement;
 
-    @Output()
     public readonly tuiActiveZoneChange = this.active$.pipe(
         map((element) => !!element && this.contains(element)),
         startWith(false),
@@ -50,27 +55,24 @@ export class TuiActiveZone implements OnDestroy {
         share(),
     );
 
+    public children: readonly TuiActiveZone[] = [];
+
     constructor() {
-        this.directParentActiveZone?.addSubActiveZone(this);
+        this.parent?.addSubActiveZone(this);
     }
 
-    @Input('tuiActiveZoneParent')
     public set tuiActiveZoneParentSetter(zone: TuiActiveZone | null) {
         this.setZone(zone);
     }
 
     public ngOnDestroy(): void {
-        this.directParentActiveZone?.removeSubActiveZone(this);
+        this.parent?.removeSubActiveZone(this);
         this.tuiActiveZoneParent?.removeSubActiveZone(this);
     }
 
     public contains(node: Node): boolean {
         return (
-            this.el.contains(node) ||
-            this.subActiveZones.some(
-                (item, index, array) =>
-                    array.indexOf(item) === index && item.contains(node),
-            )
+            this.el.contains(node) || this.children.some((item) => item.contains(node))
         );
     }
 
@@ -82,13 +84,10 @@ export class TuiActiveZone implements OnDestroy {
     }
 
     private addSubActiveZone(activeZone: TuiActiveZone): void {
-        this.subActiveZones = [...this.subActiveZones, activeZone];
+        this.children = [...this.children, activeZone];
     }
 
     private removeSubActiveZone(activeZone: TuiActiveZone): void {
-        this.subActiveZones = tuiArrayRemove(
-            this.subActiveZones,
-            this.subActiveZones.indexOf(activeZone),
-        );
+        this.children = tuiArrayRemove(this.children, this.children.indexOf(activeZone));
     }
 }

@@ -1,97 +1,100 @@
 <header class="t-header">
-    <h1
-        *ngIf="header"
-        class="t-title"
-    >
-        {{ header }}
-        <tui-chip
-            *ngIf="!!deprecated || deprecated === ''"
-            appearance="custom"
-            size="xs"
-            class="t-tag t-tag_deprecated"
+    @if (header) {
+        <h1 class="t-title">
+            {{ header }}
+            @if (!!deprecated || deprecated === '') {
+                <tui-chip
+                    appearance="custom"
+                    size="xs"
+                    class="t-tag t-tag_deprecated"
+                >
+                    deprecated
+                </tui-chip>
+            }
+            @if (package) {
+                <tui-chip
+                    appearance="custom"
+                    size="xs"
+                    class="t-tag t-tag_package"
+                    [style.background]="package | tuiAutoColor"
+                >
+                    {{ package }}
+                </tui-chip>
+            }
+            @for (tag of tags; track tag) {
+                <tui-chip
+                    appearance="custom"
+                    size="xs"
+                    class="t-tag t-tag_package"
+                    [style.background]="tag | tuiAutoColor"
+                >
+                    {{ tag }}
+                </tui-chip>
+            }
+        </h1>
+    }
+    @if (tabConnectors.length) {
+        <tui-tabs-with-more
+            class="t-tabs"
+            [(activeItemIndex)]="activeItemIndex"
         >
-            deprecated
-        </tui-chip>
-        <tui-chip
-            *ngIf="package"
-            appearance="custom"
-            size="xs"
-            class="t-tag t-tag_package"
-            [style.background]="package | tuiAutoColor"
-        >
-            {{ package }}
-        </tui-chip>
-        <tui-chip
-            *ngFor="let tag of tags"
-            appearance="custom"
-            size="xs"
-            class="t-tag t-tag_package"
-            [style.background]="tag | tuiAutoColor"
-        >
-            {{ tag }}
-        </tui-chip>
-    </h1>
-    <tui-tabs-with-more
-        *ngIf="tabConnectors.length"
-        class="t-tabs"
-        [(activeItemIndex)]="activeItemIndex"
-    >
-        <ng-container *ngFor="let tab of tabConnectors; first as first; index as index">
-            <ng-container *ngIf="tab.pageTab || defaultTabs[index] as tabName">
+            @for (tab of tabConnectors; track tab) {
+                @if (tab.pageTab || defaultTabs[$index]; as tabName) {
+                    <a
+                        *tuiItem
+                        routerLinkActive
+                        tuiTab
+                        [routerLink]="$first ? './' : (tabName | tuiReplace: from : to)"
+                        [routerLinkActiveOptions]="{exact: $first}"
+                    >
+                        {{ tabName }}
+                    </a>
+                }
+            }
+            @for (tab of tabs | keyvalue; track tab) {
                 <a
                     *tuiItem
                     routerLinkActive
                     tuiTab
-                    [routerLink]="first ? './' : (tabName | tuiReplace: from : to)"
-                    [routerLinkActiveOptions]="{exact: first}"
+                    [routerLink]="tab.key"
                 >
-                    {{ tabName }}
+                    {{ tab.key }}
                 </a>
-            </ng-container>
-        </ng-container>
-        <ng-container *ngFor="let tab of tabs | keyvalue">
-            <a
-                *tuiItem
-                routerLinkActive
-                tuiTab
-                [routerLink]="tab.key"
-            >
-                {{ tab.key }}
-            </a>
-        </ng-container>
-    </tui-tabs-with-more>
+            }
+        </tui-tabs-with-more>
+    }
 
-    <div
-        *ngIf="package || path || type"
-        class="t-right-side"
-    >
-        <tui-doc-source-code
-            class="t-source-code"
-            [header]="header"
-            [package]="package"
-            [path]="path"
-            [type]="type"
-        />
-
-        <tui-doc-language-switcher *ngIf="supportLanguage.has(header)" />
-    </div>
+    @if (package || path || type) {
+        <div class="t-right-side">
+            <tui-doc-source-code
+                class="t-source-code"
+                [header]="header"
+                [package]="package"
+                [path]="path"
+                [type]="type"
+            />
+            @if (supportLanguage.has(header)) {
+                <tui-doc-language-switcher />
+            }
+        </div>
+    }
 </header>
 <div class="t-content">
     <ng-content />
-    <tui-doc-see-also
-        *ngIf="showSeeAlso"
-        class="t-see-also"
-        [seeAlso]="seeAlso"
-    />
-    <ng-container *ngFor="let tab of tabConnectors; index as index">
-        <ng-container
-            *ngIf="index === activeItemIndex"
-            [ngTemplateOutlet]="tab.template"
+    @if (showSeeAlso) {
+        <tui-doc-see-also
+            class="t-see-also"
+            [seeAlso]="seeAlso"
         />
-    </ng-container>
-    <ng-container *ngFor="let tab of tabs | keyvalue; index as index">
-        <ng-container *ngIf="index + tabConnectors.length === activeItemIndex">
+    }
+    @for (tab of tabConnectors; track tab) {
+        @if ($index === activeItemIndex) {
+            <ng-container [ngTemplateOutlet]="tab.template" />
+        }
+    }
+    @for (tab of tabs | keyvalue; track tab) {
+        @if ($index + tabConnectors.length === activeItemIndex) {
             <ng-container *polymorpheusOutlet="tab.value as text">{{ text }}</ng-container>
-        </ng-container>
-    </ng-container>
+        }
+    }
 </div>

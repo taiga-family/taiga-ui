@@ -4,7 +4,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiButton, type TuiInteractiveState} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo],
     templateUrl: './index.html',
     changeDetection,

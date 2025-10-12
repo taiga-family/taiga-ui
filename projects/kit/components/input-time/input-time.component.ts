@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -20,6 +19,7 @@ import {
 import {TuiInputTimeDirective} from './input-time.directive';
 
 @Directive({
+    standalone: false,
     host: {
         '[attr.list]': 'null',
     },
@@ -52,11 +52,10 @@ export abstract class TuiNativeTimePicker {
 }
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputTime][type="time"]',
-    imports: [NgIf, TuiTextfieldContent],
+    imports: [TuiTextfieldContent],
     templateUrl: './input-time.template.html',
-    styleUrls: ['./input-time.style.less'],
+    styleUrl: './input-time.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiWithNativePicker],

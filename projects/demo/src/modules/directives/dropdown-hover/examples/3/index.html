@@ -21,7 +21,7 @@
                 />
 
                 <tui-data-list-wrapper
-                    *tuiTextfieldDropdown
+                    *tuiDropdown
                     new
                     [items]="selectItems"
                 />
@@ -45,13 +45,14 @@
         </div>
 
         <tui-data-list>
-            <button
-                *ngFor="let item of items"
-                tuiOption
-                type="button"
-            >
-                {{ item }}
-            </button>
+            @for (item of items; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                >
+                    {{ item }}
+                </button>
+            }
         </tui-data-list>
     </ng-template>
 </button>

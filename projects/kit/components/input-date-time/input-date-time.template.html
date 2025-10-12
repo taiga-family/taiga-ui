@@ -1,4 +1,4 @@
-<ng-container *ngIf="host.native">
+@if (host.native) {
     <input
         *tuiTextfieldContent
         type="datetime-local"
@@ -11,4 +11,4 @@
         (input)="onInput($any($event.target).value)"
         (pointerdown.stop.zoneless)="(0)"
     />
-</ng-container>
+}

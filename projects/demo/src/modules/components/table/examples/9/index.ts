@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -15,10 +15,8 @@ interface Item {
 }
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
-        NgForOf,
         TuiChevron,
         TuiChip,
         TuiExpand,
@@ -30,7 +28,7 @@ interface Item {
         TuiTableExpand,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

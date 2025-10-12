@@ -10,10 +10,9 @@ import {
 import {TuiButton, TuiLink} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [RouterLink, TuiButton, TuiLink, TuiResponsiveDialog],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -6,7 +6,7 @@ import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiControlValue, tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
-    type TuiAppearanceOptions,
+    tuiAppearanceMode,
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
@@ -15,6 +15,7 @@ import {filter, map, switchMap, timer} from 'rxjs';
 import {type TuiFileLike} from '../files.types';
 import {tuiFilesRejected} from '../files.utils';
 import {TuiInputFiles} from './input-files.component';
+import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 import {TuiInputFilesValidator} from './input-files-validator.directive';
 
 @Directive({
@@ -22,7 +23,7 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
     selector: 'input[tuiInputFiles]',
     providers: [
         tuiAsControl(TuiInputFilesDirective),
-        tuiAppearanceOptionsProvider(TuiInputFilesDirective),
+        tuiAppearanceOptionsProvider(TUI_INPUT_FILES_OPTIONS),
     ],
     hostDirectives: [
         TuiNativeValidator,
@@ -40,11 +41,11 @@ import {TuiInputFilesValidator} from './input-files-validator.directive';
         '(click)': 'onClick($event)',
     },
 })
-export class TuiInputFilesDirective
-    extends TuiControl<TuiFileLike | readonly TuiFileLike[]>
-    implements TuiAppearanceOptions
-{
+export class TuiInputFilesDirective extends TuiControl<
+    TuiFileLike | readonly TuiFileLike[]
+> {
     protected readonly host = inject(forwardRef(() => TuiInputFiles));
+    protected readonly m = tuiAppearanceMode(this.mode, {});
 
     @Output()
     public readonly reject = timer(0, tuiZonefreeScheduler()).pipe(
@@ -53,7 +54,6 @@ export class TuiInputFilesDirective
         filter(({length}) => !!length),
     );
 
-    public readonly appearance = 'file';
     public readonly input = tuiInjectElement<HTMLInputElement>();
 
     public process(files: FileList): void {

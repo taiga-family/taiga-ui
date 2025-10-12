@@ -18,7 +18,6 @@ export class FormatService extends TuiFormatDateService {
 }
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiFormatDatePipe],
     templateUrl: './index.html',
     encapsulation,

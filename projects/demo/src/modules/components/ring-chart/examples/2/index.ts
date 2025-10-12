@@ -7,10 +7,9 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiSum} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiRingChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

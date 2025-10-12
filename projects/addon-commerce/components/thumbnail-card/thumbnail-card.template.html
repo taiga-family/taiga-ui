@@ -1,35 +1,28 @@
-<!-- TODO: use this icon as a fallback for <ng-content select="img" /> (Angular 18)  -->
-<tui-icon
-    *ngIf="iconStart"
-    class="t-icon t-left"
-    [icon]="iconStart"
-/>
-
 <div class="t-left t-icon">
-    <ng-content select="img" />
+    <ng-content select="img">
+        @if (iconStart) {
+            <tui-icon
+                class="t-icon"
+                [icon]="iconStart"
+            />
+        }
+    </ng-content>
 </div>
 
-<tui-icon
-    *ngIf="iconEnd"
-    class="t-right t-icon"
-    [icon]="iconEnd"
-/>
+@if (iconEnd) {
+    <tui-icon
+        class="t-right t-icon"
+        [icon]="iconEnd"
+    />
+}
 
 <div class="t-content">
     <ng-content />
 </div>
 
-<ng-container *ngIf="paymentSystem">
+@if (paymentSystem) {
     <tui-icon
-        *ngIf="monoHandler(paymentSystem); else colored"
         class="t-logo"
         [icon]="options.icons[paymentSystem]"
     />
-    <ng-template #colored>
-        <img
-            class="t-logo"
-            [alt]="paymentSystem"
-            [src]="options.icons[paymentSystem] | tuiIcon"
-        />
-    </ng-template>
-</ng-container>
+}

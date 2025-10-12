@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {tuiIsPresent} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga} from '@taiga-ui/core';
 import {TuiPagination} from '@taiga-ui/kit';
 import {TuiPageObject} from '@taiga-ui/testing';
 
@@ -91,7 +91,7 @@ describe('TuiPaginationComponent', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

@@ -1,12 +1,5 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@width-full: (472 / 16rem);
-@width-mobile: 18rem;
-@offset-full: 7.1875rem;
-@offset-small: 4.0625rem;
-@wrapper-offset-full: 6.5625rem;
-@wrapper-offset-small: 4.125rem;
-
 @keyframes outside {
     0% {
         transform: translate3d(calc(var(--t-translate) * var(--tui-inline)), 0, 0);
@@ -28,24 +21,58 @@
 }
 
 :host {
+    --t-height: var(--tui-height-l);
+    --t-padding: var(--tui-padding-l);
+    --t-label: -0.7rem;
+    --t-label-size: 0.83em;
+    --t-translate: 6.5rem;
+
     position: relative;
     display: block;
-    block-size: var(--tui-height-l);
-    inline-size: @width-full;
+    block-size: var(--t-height);
+    min-inline-size: 24rem;
     border-radius: var(--tui-radius-l);
     overflow: hidden;
+    font: var(--tui-font-text-ui-m);
 
-    --t-translate: @wrapper-offset-full;
+    &[data-size='m'] {
+        --t-label: -0.7em;
+        --t-height: var(--tui-height-m);
+        --t-padding: var(--tui-padding-m);
+
+        border-radius: var(--tui-radius-m);
+        font: var(--tui-font-text-ui-s);
+
+        .t-card {
+            inline-size: 1.5rem;
+            block-size: 1.5rem;
+        }
+
+        [tuiChevron] {
+            margin-inline-end: -0.875rem;
+            margin-inline-start: 0.125rem;
+        }
+    }
 
     :host-context(tui-root._mobile) {
-        inline-size: @width-mobile;
+        min-inline-size: 19rem;
 
-        --t-translate: @wrapper-offset-small;
+        --t-translate: 4rem;
     }
 
     // Increasing specificity to override dark mode appearance
     &[tuiAppearance][data-appearance]:has(:-webkit-autofill) {
         background: var(--tui-service-autofill-background) !important;
+    }
+
+    [tuiChevron] {
+        block-size: auto;
+        align-self: stretch;
+        border-inline-end: var(--t-padding) solid transparent;
+        margin-inline-end: -0.75rem;
+        box-sizing: content-box;
+        font-size: 1rem;
+        cursor: pointer;
     }
 }
 
@@ -63,10 +90,10 @@
     }
 
     &_cvc {
-        margin-inline-start: @offset-full;
+        margin-inline-start: 7rem;
 
         :host-context(tui-root._mobile) & {
-            margin-inline-start: @offset-small;
+            margin-inline-start: 4rem;
         }
     }
 
@@ -86,10 +113,9 @@
 .t-collapsed {
     .fullsize();
 
-    padding: 1.25rem var(--tui-padding-l) 0;
+    padding: calc(var(--t-height) / 3) var(--t-padding) 0;
     box-sizing: border-box;
-    font: var(--tui-font-text-m);
-    line-height: 2.25rem;
+    line-height: calc(2 * var(--t-height) / 3);
     color: var(--tui-text-primary);
     white-space: nowrap;
     pointer-events: none;
@@ -158,11 +184,11 @@
 
     border: 0;
     margin: 0;
-    padding: 1.25rem var(--tui-padding-l) 0;
+    padding: calc(var(--t-height) / 3) var(--t-padding) 0;
     outline: none;
     background: transparent;
     box-sizing: border-box;
-    font: var(--tui-font-text-m);
+    font: inherit;
     color: var(--tui-text-primary);
     direction: ltr;
 
@@ -243,7 +269,10 @@
 
 .t-icon {
     cursor: pointer;
-    border-width: 0.25rem;
+
+    &::before {
+        font-size: 1rem;
+    }
 }
 
 .t-label {
@@ -251,9 +280,8 @@
     .text-overflow();
 
     position: relative;
-    margin: 1.125rem 1rem;
-    font: var(--tui-font-text-m);
-    line-height: 1.25rem;
+    margin: 0 var(--t-padding);
+    line-height: var(--t-height);
     color: var(--tui-text-secondary);
 
     &:empty::before {
@@ -262,8 +290,8 @@
 
     input:-webkit-autofill ~ &,
     &_raised {
-        font-size: 0.83rem;
-        transform: translateY(-0.7rem);
+        font-size: var(--t-label-size);
+        transform: translateY(var(--t-label));
 
         :host([data-mode~='invalid']) & {
             color: var(--tui-text-negative);

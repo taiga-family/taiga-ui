@@ -13,16 +13,17 @@
         />
 
         <tui-data-list-wrapper
-            *tuiTextfieldDropdown
+            *tuiDropdown
             new
             [items]="users"
         />
 
-        <tui-icon
-            *ngIf="value"
-            icon="@tui.badge-check"
-            style="color: var(--tui-status-info); pointer-events: none"
-        />
+        @if (value) {
+            <tui-icon
+                icon="@tui.badge-check"
+                style="color: var(--tui-status-info); pointer-events: none"
+            />
+        }
 
         <tui-icon tuiTooltip="I am a hint" />
     </tui-textfield>

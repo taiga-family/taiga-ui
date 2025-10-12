@@ -20,19 +20,20 @@
         </tui-input>
     </header>
     <div class="container">
-        <button
-            *ngFor="let user of users$ | async"
-            type="button"
-            class="item"
-            (click)="toggle(false)"
-        >
-            <tui-avatar
-                size="s"
-                [src]="user | tuiInitials"
-                [style.background]="user | tuiAutoColor"
-            />
-            {{ user }}
-        </button>
+        @for (user of users$ | async; track user) {
+            <button
+                type="button"
+                class="item"
+                (click)="toggle(false)"
+            >
+                <div
+                    size="s"
+                    [style.background]="user | tuiAutoColor"
+                    [tuiAvatar]="user | tuiInitials"
+                ></div>
+                {{ user }}
+            </button>
+        }
     </div>
     <footer tuiFloatingContainer>
         <button

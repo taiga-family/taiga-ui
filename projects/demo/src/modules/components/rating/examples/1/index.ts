@@ -5,10 +5,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRating} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiRating],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

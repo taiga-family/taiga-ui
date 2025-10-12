@@ -7,24 +7,24 @@
         [(ngModel)]="value"
     />
     <datalist id="dates">
-        <option
-            *ngFor="let date of dates | keyvalue: asIs"
-            [value]="date.value.toJSON()"
-        >
-            {{ date.key }}
-        </option>
+        @for (date of dates | keyvalue: asIs; track date) {
+            <option [value]="date.value.toJSON()">
+                {{ date.key }}
+            </option>
+        }
     </datalist>
-    <section *tuiTextfieldDropdown>
+    <section *tuiDropdown>
         <tui-calendar />
         <tui-data-list>
-            <button
-                *ngFor="let date of dates | keyvalue: asIs"
-                new
-                tuiOption
-                [value]="date.value"
-            >
-                {{ date.key }}
-            </button>
+            @for (date of dates | keyvalue: asIs; track date) {
+                <button
+                    new
+                    tuiOption
+                    [value]="date.value"
+                >
+                    {{ date.key }}
+                </button>
+            }
         </tui-data-list>
     </section>
 </tui-textfield>

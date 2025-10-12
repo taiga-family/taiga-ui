@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -30,10 +30,8 @@ const USERS = [
 ];
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
-        NgForOf,
         ReactiveFormsModule,
         TuiAutoColorPipe,
         TuiAvatar,
@@ -45,7 +43,7 @@ const USERS = [
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -7,7 +7,6 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiCurrencyPipe, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

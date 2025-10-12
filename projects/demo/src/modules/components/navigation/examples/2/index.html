@@ -30,10 +30,10 @@
         ></a>
         /
         <strong tuiFade>Very long repository name</strong>
-        <tui-avatar
+        <div
             size="xs"
-            src="@tui.lock"
-        />
+            tuiAvatar="@tui.lock"
+        ></div>
         <tui-tabs>
             <a tuiTab>Default view</a>
             <a tuiTab>Contributors</a>
@@ -87,7 +87,7 @@
     </nav>
     <div
         *tuiRepeatTimes="let index of 10"
-        tuiAppearance="floating"
+        appearance="floating"
         tuiCardLarge
         tuiHeader
         [style.grid-column]="'span 6'"

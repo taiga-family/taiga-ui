@@ -1,22 +1,26 @@
-<button
-    *ngIf="sorter && table; else content"
-    type="button"
-    class="t-sort"
-    [class.t-sort_sorted]="isCurrent"
-    (click)="updateSorterAndDirection()"
->
+@if (sorter && table) {
+    <button
+        type="button"
+        class="t-sort"
+        [class.t-sort_sorted]="isCurrent"
+        (click)="updateSorterAndDirection()"
+    >
+        <ng-container [ngTemplateOutlet]="content" />
+        {{ table.change$ | async }}
+        <tui-icon
+            class="t-icon"
+            [icon]="icon"
+        />
+    </button>
+} @else {
     <ng-container [ngTemplateOutlet]="content" />
-    {{ table && table.change$ | async }}
-    <tui-icon
-        class="t-icon"
-        [icon]="icon"
-    />
-</button>
+}
 <ng-template #content>
     <ng-content />
 </ng-template>
-<div
-    *ngIf="resizable"
-    class="t-bar"
-    (tuiResized)="onResized($event)"
-></div>
+@if (resizable) {
+    <div
+        class="t-bar"
+        (tuiResized)="onResized($event)"
+    ></div>
+}

@@ -38,11 +38,10 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-arc-chart',
     imports: [TuiRepeatTimes],
     templateUrl: './arc-chart.template.html',
-    styleUrls: ['./arc-chart.style.less'],
+    styleUrl: './arc-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size',

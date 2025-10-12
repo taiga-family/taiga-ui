@@ -1,4 +1,5 @@
 <button
+    size="m"
     tuiButton
     type="button"
     class="tui-space_bottom-4"
@@ -9,10 +10,11 @@
 <form [formGroup]="card">
     <tui-input-card-group
         formControlName="meta"
+        tuiTextfieldSize="m"
         [(open)]="open"
     >
         <tui-data-list
-            *tuiTextfieldDropdown
+            *tuiDropdown
             size="l"
         >
             <button
@@ -26,27 +28,28 @@
                 />
                 <span class="label">New card</span>
             </button>
-            <button
-                *ngFor="let item of items; let index = index"
-                tuiOption
-                type="button"
-                [value]="item"
-            >
-                <tui-thumbnail-card
-                    size="s"
-                    class="card"
+            @for (item of items; track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item"
                 >
-                    {{ item.card.slice(-4) }}
-                </tui-thumbnail-card>
-                <span
-                    tuiTitle
-                    class="label"
-                >
-                    {{ item.bank }}
-                    <span tuiSubtitle>{{ item.name }}</span>
-                </span>
-                <span>{{ item.card.slice(-5) }}</span>
-            </button>
+                    <tui-thumbnail-card
+                        size="s"
+                        class="card"
+                    >
+                        {{ item.card.slice(-4) }}
+                    </tui-thumbnail-card>
+                    <span
+                        tuiTitle
+                        class="label"
+                    >
+                        {{ item.bank }}
+                        <span tuiSubtitle>{{ item.name }}</span>
+                    </span>
+                    <span>{{ item.card.slice(-5) }}</span>
+                </button>
+            }
         </tui-data-list>
     </tui-input-card-group>
 </form>

@@ -1,26 +1,28 @@
-<h2
-    *ngIf="!!context.label"
-    automation-id="tui-mobile-dialog__label"
-    class="t-heading"
-    [id]="context.id"
->
-    {{ context.label }}
-</h2>
+@if (!!context.label) {
+    <h2
+        automation-id="tui-mobile-dialog__label"
+        class="t-heading"
+        [id]="context.id"
+    >
+        {{ context.label }}
+    </h2>
+}
 <div class="t-content">
     <ng-container *polymorpheusOutlet="context.content as text; context: context">
         {{ text }}
     </ng-container>
 </div>
-<button
-    *ngFor="let action of context.actions; let index = index"
-    appearance="flat"
-    size="s"
-    tuiButton
-    tuiRipple
-    type="button"
-    class="t-button"
-    [class.t-button_column]="context.actions.length > 2"
-    (click)="onAction(index)"
->
-    {{ action }}
-</button>
+@for (action of context.actions; track action) {
+    <button
+        appearance="flat"
+        size="s"
+        tuiButton
+        tuiRipple
+        type="button"
+        class="t-button"
+        [class.t-button_column]="$count > 2"
+        (click)="onAction($index)"
+    >
+        {{ action }}
+    </button>
+}

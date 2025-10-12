@@ -6,7 +6,6 @@ import {TuiLink} from '@taiga-ui/core';
 import {TuiProgress, type TuiProgressBar} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [RouterLink, TuiDemo, TuiLink, TuiProgress],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -20,11 +19,8 @@ interface User {
 }
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
         TuiChevron,
         TuiDataList,
         TuiDataListWrapper,
@@ -36,7 +32,7 @@ interface User {
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

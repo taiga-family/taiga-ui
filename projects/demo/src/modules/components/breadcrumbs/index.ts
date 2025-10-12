@@ -6,7 +6,6 @@ import {TuiLink, type TuiSizeL} from '@taiga-ui/core';
 import {TUI_BREADCRUMBS_OPTIONS, TuiBreadcrumbs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiBreadcrumbs, TuiDemo, TuiItem, TuiLink],
     templateUrl: './index.html',
     changeDetection,

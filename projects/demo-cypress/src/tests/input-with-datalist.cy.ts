@@ -1,20 +1,19 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiDataList, TuiRoot} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgIf, ReactiveFormsModule, TuiDataList, TuiInputModule, TuiRoot],
+    imports: [AsyncPipe, ReactiveFormsModule, TuiDataList, TuiInputModule, TuiRoot],
     template: `
         <tui-root>
             <tui-input [formControl]="control">
                 Enter 3 characters
 
-                <ng-container *ngIf="(control.valueChanges | async)?.length > 2">
+                @if ((control.valueChanges | async)?.length > 2) {
                     <tui-data-list *tuiDataList>Taiga UI</tui-data-list>
-                </ng-container>
+                }
             </tui-input>
         </tui-root>
     `,

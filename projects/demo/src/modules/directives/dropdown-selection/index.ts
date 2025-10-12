@@ -7,10 +7,9 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo, TuiDocDropdown, TuiDropdown],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
     providers: [
         {

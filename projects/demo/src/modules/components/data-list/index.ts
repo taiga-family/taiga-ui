@@ -6,7 +6,6 @@ import {TuiDataList, type TuiSizeL, type TuiSizeS} from '@taiga-ui/core';
 import {delay, of} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiDataList, TuiDemo],
     templateUrl: './index.html',
     changeDetection,

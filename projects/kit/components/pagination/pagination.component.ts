@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -15,7 +15,7 @@ import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_SPIN_ICONS} from '@taiga-ui/core/tokens';
@@ -32,11 +32,10 @@ const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
 
 @Component({
-    standalone: true,
     selector: 'tui-pagination',
-    imports: [AsyncPipe, NgIf, PolymorpheusOutlet, TuiButton, TuiLet, TuiRepeatTimes],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButton, TuiLet, TuiRepeatTimes],
     templateUrl: './pagination.template.html',
-    styleUrls: ['./pagination.style.less'],
+    styleUrl: './pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiPagination {
@@ -114,7 +113,7 @@ export class TuiPagination {
     }
 
     public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
+        return tuiIsFocusedIn(this.el);
     }
 
     public get arrowIsDisabledLeft(): boolean {

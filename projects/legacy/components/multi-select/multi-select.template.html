@@ -39,10 +39,9 @@
     >
         <ng-content />
         <ng-template #select>
-            <ng-content
-                *ngIf="isMobile"
-                select="select"
-            />
+            @if (isMobile) {
+                <ng-content select="select" />
+            }
         </ng-template>
 
         <ng-container
@@ -50,19 +49,20 @@
             ngProjectAs="select"
         />
 
-        <div
-            *ngIf="computedGroup"
-            ngProjectAs="tuiContent"
-            class="t-content"
-            [class.t-content_fullsize]="inputTag.labelOutside"
-        >
-            <span
-                *polymorpheusOutlet="valueContent as text; context: {$implicit: value}"
-                class="t-primitive"
+        @if (computedGroup) {
+            <div
+                ngProjectAs="tuiContent"
+                class="t-content"
+                [class.t-content_fullsize]="inputTag.labelOutside"
             >
-                {{ text }}
-            </span>
-        </div>
+                <span
+                    *polymorpheusOutlet="valueContent as text; context: {$implicit: value}"
+                    class="t-primitive"
+                >
+                    {{ text }}
+                </span>
+            </div>
+        }
     </tui-input-tag>
 
     <ng-template #icon>

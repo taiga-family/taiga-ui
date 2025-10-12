@@ -6,7 +6,6 @@ import {TUI_IS_ANDROID} from '@taiga-ui/cdk';
 import {TuiLink} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [RouterLink, TuiLink],
     templateUrl: './index.html',
     encapsulation,

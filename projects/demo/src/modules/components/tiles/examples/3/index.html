@@ -3,7 +3,7 @@
     [debounce]="500"
     [(order)]="order"
 >
-    <ng-container *ngFor="let item of items; let i = index">
+    @for (item of items; track item; let i = $index) {
         <tui-tile
             class="tile"
             [style.order]="order.get(i)"
@@ -20,7 +20,7 @@
                     class="nested"
                     [(order)]="item.order"
                 >
-                    <ng-container *ngFor="let child of items; let j = index">
+                    @for (child of items; track child; let j = $index) {
                         <tui-tile
                             tuiTileHandle
                             class="tile"
@@ -30,9 +30,9 @@
                                 {{ child.content }}
                             </div>
                         </tui-tile>
-                    </ng-container>
+                    }
                 </tui-tiles>
             </div>
         </tui-tile>
-    </ng-container>
+    }
 </tui-tiles>

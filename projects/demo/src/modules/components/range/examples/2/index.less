@@ -14,9 +14,10 @@
 }
 
 .ticks-labels {
+    // Mixin accepts slider size as the first argument
     .tui-slider-ticks-labels(m);
 }
 
-tui-icon {
-    border-width: 0.25rem;
+tui-icon::before {
+    font-size: 1rem;
 }

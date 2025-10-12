@@ -7,21 +7,17 @@ import {
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
-    standalone: true,
     template: '',
-    styleUrls: ['./block-details.style.less'],
+    styleUrl: './block-details.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-block-details-styles',
-    },
+    host: {class: 'tui-block-details'},
 })
-class TuiBlockDetailsStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiBlockDetails]',
 })
 export class TuiBlockDetails {
-    protected readonly nothing = tuiWithStyles(TuiBlockDetailsStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 }

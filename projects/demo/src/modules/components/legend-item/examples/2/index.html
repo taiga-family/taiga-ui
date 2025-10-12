@@ -11,29 +11,30 @@
     />
 
     <div class="legend">
-        <tui-legend-item
-            *ngFor="let label of labels; let index = index"
-            #item
-            class="item"
-            [color]="'var(--tui-chart-categorical-0' + index + ')'"
-            [disabled]="!isEnabled(index)"
-            [text]="label"
-            (click)="onClick(index)"
-            (keydown.delete)="toggle(index)"
-        >
-            <input
-                size="s"
-                tuiCheckbox
-                type="checkbox"
-                [checked]="!item.disabled"
-            />
-            <span>{{ data[index] || 0 | tuiAmount: 'RUB' | async }}</span>
-            <tui-icon
-                icon="@tui.x"
-                class="disable"
-                [class.disable_rotated]="item.disabled"
-                (click.stop)="toggle(index)"
-            />
-        </tui-legend-item>
+        @for (label of labels; track label) {
+            <tui-legend-item
+                #item
+                class="item"
+                [color]="`var(--tui-chart-categorical-0${$index})`"
+                [disabled]="!isEnabled($index)"
+                [text]="label"
+                (click)="onClick($index)"
+                (keydown.delete)="toggle($index)"
+            >
+                <input
+                    size="s"
+                    tuiCheckbox
+                    type="checkbox"
+                    [checked]="!item.disabled"
+                />
+                <span>{{ data[$index] || 0 | tuiAmount: 'RUB' | async }}</span>
+                <tui-icon
+                    icon="@tui.x"
+                    class="disable"
+                    [class.disable_rotated]="item.disabled"
+                    (click.stop)="toggle($index)"
+                />
+            </tui-legend-item>
+        }
     </div>
 </div>

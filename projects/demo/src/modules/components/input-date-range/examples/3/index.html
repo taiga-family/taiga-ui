@@ -8,12 +8,9 @@
             formControlName="required"
             tuiInputDateRange
         />
-        <tui-calendar-range *tuiTextfieldDropdown />
+        <tui-calendar-range *tuiDropdown />
     </tui-textfield>
-    <tui-error
-        formControlName="required"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="required" />
     <tui-textfield>
         <label tuiLabel>Optional range</label>
         <input
@@ -21,12 +18,9 @@
             tuiInputDateRange
             tuiUnfinishedValidator
         />
-        <tui-calendar-range *tuiTextfieldDropdown />
+        <tui-calendar-range *tuiDropdown />
     </tui-textfield>
-    <tui-error
-        formControlName="optional"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="optional" />
     <footer>
         <button
             tuiButton

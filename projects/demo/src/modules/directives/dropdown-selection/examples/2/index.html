@@ -14,21 +14,26 @@
         (keydown.stop.arrowUp)="onArrow($event, 'last')"
     ></textarea>
 
-    <tui-data-list *tuiTextfieldDropdown>
-        <button
-            *ngFor="let item of items | tuiMapper: filter : search.replace('@', '')"
-            new
-            tuiOption
-            type="button"
-            (click)="onClick(item.login)"
-        >
-            <tui-avatar
-                size="s"
-                [src]="item.avatar"
+    <tui-data-list *tuiDropdown>
+        @for (item of items | tuiMapper: filter : search.replace('@', ''); track item) {
+            <button
+                new
+                tuiOption
+                type="button"
+                (click)="onClick(item.login)"
             >
-                {{ item.name | tuiInitials }}
-            </tui-avatar>
-            {{ item.name }}
-        </button>
+                <div
+                    size="s"
+                    tuiAvatar
+                >
+                    {{ item.name | tuiInitials }}
+                    <img
+                        alt=""
+                        [src]="item.avatar"
+                    />
+                </div>
+                {{ item.name }}
+            </button>
+        }
     </tui-data-list>
 </tui-textfield>

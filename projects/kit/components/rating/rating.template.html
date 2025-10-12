@@ -4,31 +4,36 @@
     class="t-range"
     [attr.aria-disabled]="readOnly()"
     [disabled]="disabled()"
-    [max]="max"
+    [max]="max()"
     [ngModel]="value()"
     [ngModelOptions]="{standalone: true}"
     (blur)="onTouched()"
     (ngModelChange)="onChange($event)"
 />
 <div class="t-items">
-    <div
-        *tuiRepeatTimes="let index of max"
-        class="t-item"
-        [class.t-item_active]="isActive(index)"
-        (pointerup)="onClick(max - index)"
-    >
-        <tui-icon
-            *polymorpheusOutlet="icon as src; context: {$implicit: max - index, value: value()}"
-            class="t-icon t-icon_blank"
-            [class.t-icon_fraction]="isFraction(index)"
-            [icon]="src.toString()"
-            [style.--t-cut.%]="100 - getCut(index)"
-        />
-        <tui-icon
-            *polymorpheusOutlet="icon as src; context: {$implicit: max - index, value: value()}"
-            class="t-icon"
-            [icon]="src.toString()"
-            [style.--t-cut.%]="getCut(index)"
-        />
-    </div>
+    @for (_ of array(); track $index) {
+        @let $implicit = max() - $index;
+        @let filled = $implicit - value() < 1;
+
+        <div
+            class="t-item"
+            [class.t-item_active]="isActive($index)"
+            (pointerup)="onClick($implicit)"
+        >
+            @if (isFraction($index)) {
+                <tui-icon
+                    *polymorpheusOutlet="icon() as src; context: {$implicit, filled: false, value: value()}"
+                    class="t-icon t-icon_blank"
+                    [background]="src.toString()"
+                    [style.--t-cut.%]="100 - getCut($index)"
+                />
+            }
+            <tui-icon
+                *polymorpheusOutlet="icon() as src; context: {$implicit, filled, value: value()}"
+                class="t-icon"
+                [background]="src.toString()"
+                [style.--t-cut.%]="getCut($index)"
+            />
+        </div>
+    }
 </div>

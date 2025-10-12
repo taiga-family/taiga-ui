@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDropdown, TuiGroup} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDropdown, TuiGroup],
     templateUrl: './index.html',
     encapsulation,

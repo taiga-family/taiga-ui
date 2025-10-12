@@ -1,13 +1,13 @@
 <tui-swipe-actions>
     <div
-        tuiAppearance="floating"
+        appearance="floating"
         tuiCardLarge
         tuiCell
     >
-        <tui-avatar
+        <div
             appearance="primary"
-            src="@tui.dollar-sign"
-        />
+            tuiAvatar="@tui.dollar-sign"
+        ></div>
         <div tuiTitle>
             <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
             <div tuiSubtitle>Dollar account</div>

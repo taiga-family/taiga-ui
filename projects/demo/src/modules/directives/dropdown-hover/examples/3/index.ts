@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,9 +6,7 @@ import {TuiButton, TuiDataList, TuiDropdown, TuiTextfield} from '@taiga-ui/core'
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
-        NgForOf,
         ReactiveFormsModule,
         TuiButton,
         TuiChevron,

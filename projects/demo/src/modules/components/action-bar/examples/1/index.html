@@ -5,7 +5,7 @@
 />
 
 <tui-action-bar
-    *tuiActionBar="open"
+    *tuiPopup="open"
     [expanded]="!!isMobile() && expanded"
 >
     <tui-data-list role="menu">
@@ -88,15 +88,16 @@
 
     <div>
         <strong>Selected: {{ selected }} of {{ items.length }}</strong>
-        <button
-            *ngIf="!isMobile()"
-            tuiLink
-            type="button"
-            class="tui-space_left-3"
-            (click)="toggleSelect()"
-        >
-            {{ selected < items.length ? 'Select all' : 'Select none' }}
-        </button>
+        @if (!isMobile()) {
+            <button
+                tuiLink
+                type="button"
+                class="tui-space_left-3"
+                (click)="toggleSelect()"
+            >
+                {{ selected < items.length ? 'Select all' : 'Select none' }}
+            </button>
+        }
     </div>
 
     <tui-items-with-more>
@@ -127,63 +128,69 @@
             <ng-template #dropdown>
                 <tui-data-list size="l">
                     <ng-container *tuiRepeatTimes="let index of 5">
-                        <button
-                            *ngIf="index > lastIndex"
-                            tuiOption
-                            type="button"
-                        >
-                            Action {{ index + 1 }}
-                        </button>
+                        @if (index > lastIndex) {
+                            <button
+                                tuiOption
+                                type="button"
+                            >
+                                Action {{ index + 1 }}
+                            </button>
+                        }
                     </ng-container>
                 </tui-data-list>
             </ng-template>
         </ng-template>
     </tui-items-with-more>
 
-    <button
-        *ngIf="!isMobile()"
-        iconStart="@tui.send"
-        tuiButton
-        type="button"
-    >
-        Send
-    </button>
-    <button
-        *ngIf="!isMobile()"
-        iconStart="@tui.trash"
-        tuiButton
-        type="button"
-        (click)="close()"
-    >
-        Delete
-    </button>
+    @if (!isMobile()) {
+        <button
+            iconStart="@tui.send"
+            tuiButton
+            type="button"
+        >
+            Send
+        </button>
+    }
+    @if (!isMobile()) {
+        <button
+            iconStart="@tui.trash"
+            tuiButton
+            type="button"
+            (click)="close()"
+        >
+            Delete
+        </button>
+    }
 
-    <button
-        *ngIf="isMobile()"
-        iconStart="@tui.send"
-        tuiIconButton
-        type="button"
-    >
-        Send
-    </button>
-    <button
-        *ngIf="isMobile()"
-        iconStart="@tui.ellipsis"
-        tuiIconButton
-        type="button"
-        (click)="expanded = !expanded"
-    >
-        More
-    </button>
+    @if (isMobile()) {
+        <button
+            iconStart="@tui.send"
+            tuiIconButton
+            type="button"
+        >
+            Send
+        </button>
+    }
+    @if (isMobile()) {
+        <button
+            iconStart="@tui.ellipsis"
+            tuiIconButton
+            type="button"
+            (click)="expanded = !expanded"
+        >
+            More
+        </button>
+    }
 
-    <button
-        *ngIf="!isMobile()"
-        appearance="icon"
-        iconStart="@tui.x"
-        tuiIconButton
-        type="button"
-        (click)="close()"
-    >
-        Close
-    </button>
+    @if (!isMobile()) {
+        <button
+            appearance="icon"
+            iconStart="@tui.x"
+            tuiIconButton
+            type="button"
+            (click)="close()"
+        >
+            Close
+        </button>
+    }
 </tui-action-bar>

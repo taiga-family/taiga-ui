@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiFocusTrap} from '@taiga-ui/cdk';
 
@@ -6,8 +5,7 @@ const TOUCHED = '_touched';
 
 describe('FocusTrap', () => {
     @Component({
-        standalone: true,
-        imports: [NgIf, TuiFocusTrap],
+        imports: [TuiFocusTrap],
         template: `
             <button
                 id="increase"
@@ -17,33 +15,35 @@ describe('FocusTrap', () => {
                 Increase counter
             </button>
 
-            <div
-                *ngIf="i % 2 === 0"
-                tuiFocusTrap
-                class="even"
-            >
-                <input />
-                <button
-                    type="button"
-                    (click)="i = -1"
+            @if (i % 2 === 0) {
+                <div
+                    tuiFocusTrap
+                    class="even"
                 >
-                    Close
-                </button>
-            </div>
+                    <input />
+                    <button
+                        type="button"
+                        (click)="i = -1"
+                    >
+                        Close
+                    </button>
+                </div>
+            }
 
-            <div
-                *ngIf="i % 2 === 1"
-                tuiFocusTrap
-                class="odd"
-            >
-                <input (focus)="markTouched($event.target)" />
-                <button
-                    type="button"
-                    (click)="i = -1"
+            @if (i % 2 === 1) {
+                <div
+                    tuiFocusTrap
+                    class="odd"
                 >
-                    Close
-                </button>
-            </div>
+                    <input (focus)="markTouched($event.target)" />
+                    <button
+                        type="button"
+                        (click)="i = -1"
+                    >
+                        Close
+                    </button>
+                </div>
+            }
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })

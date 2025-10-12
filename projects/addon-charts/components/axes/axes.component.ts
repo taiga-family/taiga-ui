@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {type TuiLineHandler, type TuiLineType} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
@@ -10,11 +9,10 @@ export const TUI_ALWAYS_SOLID: TuiLineHandler = () => 'solid';
 export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
 
 @Component({
-    standalone: true,
     selector: 'tui-axes',
-    imports: [NgForOf, NgIf, TuiRepeatTimes],
+    imports: [TuiRepeatTimes],
     templateUrl: './axes.template.html',
-    styleUrls: ['./axes.style.less'],
+    styleUrl: './axes.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         dir: 'ltr',

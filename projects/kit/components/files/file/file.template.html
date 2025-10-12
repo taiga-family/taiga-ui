@@ -15,60 +15,59 @@
             {{ name }}
         </div>
         <div class="t-type">{{ type }}</div>
-        <div
-            *ngIf="showSize && (fileSize$ | async) as fileSize"
-            class="t-size"
-        >
-            {{ fileSize }}
+        @if (showSize && (fileSize$ | async); as fileSize) {
+            <div class="t-size">
+                {{ fileSize }}
+            </div>
+        }
+    </div>
+    @if (content$ | async; as content) {
+        <div class="t-content">
+            <ng-container *polymorpheusOutlet="content as text">
+                {{ text }}
+            </ng-container>
         </div>
-    </div>
-    <div
-        *ngIf="content$ | async as content"
-        class="t-content"
-    >
-        <ng-container *polymorpheusOutlet="content as text">
-            {{ text }}
-        </ng-container>
-    </div>
+    }
     <ng-content />
 </div>
-<ng-container *ngIf="allowDelete">
-    <button
-        *ngIf="fileTexts$ | async as texts"
-        appearance="icon"
-        size="xs"
-        tuiIconButton
-        type="button"
-        class="t-remove"
-        [iconStart]="icons.close"
-        (click.prevent)="remove.emit()"
-        (mousedown.prevent.zoneless)="(0)"
-    >
-        {{ texts.remove }}
-    </button>
-</ng-container>
+@if (allowDelete) {
+    @if (fileTexts$ | async; as texts) {
+        <button
+            appearance="icon"
+            size="xs"
+            tuiIconButton
+            type="button"
+            class="t-remove"
+            [iconStart]="icons.close"
+            (click.prevent)="remove.emit()"
+            (mousedown.prevent.zoneless)="(0)"
+        >
+            {{ texts.remove }}
+        </button>
+    }
+}
 
 <ng-template #defaultLeftContent>
-    <img
-        *ngIf="preview; else loader"
-        alt="file preview"
-        class="t-image"
-        [src]="preview"
-    />
-    <ng-template #loader>
-        <tui-loader
-            *ngIf="isLoading; else svg"
-            class="t-loader"
-            [inheritColor]="isBig"
+    @if (preview) {
+        <img
+            alt="file preview"
+            class="t-image"
+            [src]="preview"
         />
-    </ng-template>
-    <ng-template #svg>
-        <tui-icon
-            *polymorpheusOutlet="icon as src; context: {$implicit: size}"
-            class="t-icon"
-            [class.t-icon_blank]="isBig || isDeleted"
-            [class.t-icon_error]="isError"
-            [icon]="src.toString()"
-        />
-    </ng-template>
+    } @else {
+        @if (isLoading) {
+            <tui-loader
+                class="t-loader"
+                [inheritColor]="isBig"
+            />
+        } @else {
+            <tui-icon
+                *polymorpheusOutlet="icon as src; context: {$implicit: size}"
+                class="t-icon"
+                [class.t-icon_blank]="isBig || isDeleted"
+                [class.t-icon_error]="isError"
+                [icon]="src.toString()"
+            />
+        }
+    }
 </ng-template>

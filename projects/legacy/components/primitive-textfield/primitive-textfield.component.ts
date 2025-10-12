@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement, tuiRetargetedBoundaryCrossing} from '@taiga-ui/cdk/utils/dom';
-import {tuiIsNativeFocusedIn} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocusedIn} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_TEXTFIELD_OPTIONS as OPTIONS} from '@taiga-ui/core/components/textfield';
 import {TuiHintOptionsDirective} from '@taiga-ui/core/directives/hint';
@@ -44,7 +44,7 @@ export const TUI_ICON_START_PADDINGS: Record<TuiSizeL | TuiSizeS, number> = {
     standalone: false,
     selector: 'tui-primitive-textfield',
     templateUrl: './primitive-textfield.template.html',
-    styleUrls: ['./primitive-textfield.style.less'],
+    styleUrl: './primitive-textfield.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiPrimitiveTextfieldComponent),
@@ -131,7 +131,7 @@ export class TuiPrimitiveTextfieldComponent
     }
 
     public get focused(): boolean {
-        return tuiIsNativeFocusedIn(this.el);
+        return tuiIsFocusedIn(this.el);
     }
 
     public get appearance(): string {

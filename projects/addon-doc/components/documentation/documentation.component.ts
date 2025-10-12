@@ -1,5 +1,5 @@
 import {animate, style, transition, trigger} from '@angular/animations';
-import {NgForOf, NgIf, NgSwitch, NgSwitchCase, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     type AfterContentInit,
     ChangeDetectionStrategy,
@@ -44,14 +44,9 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
 // @bad TODO subscribe propertiesConnectors changes
 // @bad TODO refactor to make more flexible
 @Component({
-    standalone: true,
     selector: 'tui-doc-documentation',
     imports: [
         FormsModule,
-        NgForOf,
-        NgIf,
-        NgSwitch,
-        NgSwitchCase,
         NgTemplateOutlet,
         TuiBadge,
         TuiDataListWrapper,
@@ -71,7 +66,7 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiToArrayPipe,
     ],
     templateUrl: './documentation.template.html',
-    styleUrls: ['./documentation.style.less'],
+    styleUrl: './documentation.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiScrollbarOptionsProvider({mode: 'hover'})],
     animations: [

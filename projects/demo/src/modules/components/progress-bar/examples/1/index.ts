@@ -7,7 +7,6 @@ import {TuiProgress} from '@taiga-ui/kit';
 import {map, of, startWith, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiProgress],
     templateUrl: './index.html',
     encapsulation,

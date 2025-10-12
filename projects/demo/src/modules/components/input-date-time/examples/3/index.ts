@@ -9,10 +9,9 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
 type ControlValue = [TuiDay, TuiTime | null] | null;
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiButton, TuiInputDateTime, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

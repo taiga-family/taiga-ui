@@ -6,10 +6,9 @@ import {TuiBadge} from '@taiga-ui/kit';
 import {TuiCardMedium} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiAppearance, TuiBadge, TuiCardMedium, TuiIcon, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

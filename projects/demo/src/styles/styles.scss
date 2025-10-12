@@ -1,2 +1,2 @@
 // This is to test that scss compiles
-@import '@taiga-ui/core/styles/taiga-ui-local';
+@use '@taiga-ui/core/styles/taiga-ui-local' as taiga;

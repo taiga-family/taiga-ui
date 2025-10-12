@@ -6,7 +6,6 @@ import {TuiDataList, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiChevron,
@@ -16,7 +15,7 @@ import {TuiChevron, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
         TuiTabs,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

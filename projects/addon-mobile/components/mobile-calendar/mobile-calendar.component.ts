@@ -3,7 +3,7 @@ import {
     CdkVirtualForOf,
     CdkVirtualScrollViewport,
 } from '@angular/cdk/scrolling';
-import {AsyncPipe, DOCUMENT, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe, DOCUMENT} from '@angular/common';
 import {
     type AfterViewInit,
     ChangeDetectionStrategy,
@@ -85,15 +85,12 @@ import {
 } from './mobile-calendar.providers';
 
 @Component({
-    standalone: true,
     selector: 'tui-mobile-calendar',
     imports: [
         AsyncPipe,
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
         CdkVirtualScrollViewport,
-        NgForOf,
-        NgIf,
         TuiButton,
         TuiLink,
         TuiMapperPipe,
@@ -104,7 +101,7 @@ import {
         TuiTouchable,
     ],
     templateUrl: './mobile-calendar.template.html',
-    styleUrls: ['./mobile-calendar.style.less'],
+    styleUrl: './mobile-calendar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_MOBILE_CALENDAR_PROVIDERS,
     host: {

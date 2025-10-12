@@ -1,15 +1,13 @@
-import {NgIf} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiBreakpointService, TuiButton} from '@taiga-ui/core';
+import {TuiBreakpointService, TuiButton, TuiPopup} from '@taiga-ui/core';
 import {TuiActionBar} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
-    imports: [NgIf, TuiActionBar, TuiButton],
+    imports: [TuiActionBar, TuiButton, TuiPopup],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

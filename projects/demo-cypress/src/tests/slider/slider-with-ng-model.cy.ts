@@ -5,7 +5,6 @@ import {TuiSlider} from '@taiga-ui/kit';
 
 describe('Slider | With [(ngModel)]', () => {
     @Component({
-        standalone: true,
         imports: [FormsModule, TuiRoot, TuiSlider],
         template: `
             <tui-root>

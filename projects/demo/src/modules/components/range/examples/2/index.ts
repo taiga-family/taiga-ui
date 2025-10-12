@@ -1,4 +1,4 @@
-import {I18nPluralPipe, JsonPipe, NgForOf, NgIf} from '@angular/common';
+import {I18nPluralPipe, JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,10 +7,9 @@ import {TuiIcon} from '@taiga-ui/core';
 import {TuiRange} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, I18nPluralPipe, JsonPipe, NgForOf, NgIf, TuiIcon, TuiRange],
+    imports: [FormsModule, I18nPluralPipe, JsonPipe, TuiIcon, TuiRange],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -10,7 +10,6 @@ export const calendarStream$ = of(
 );
 
 @Component({
-    standalone: true,
     imports: [TuiCalendarRange],
     templateUrl: './index.html',
     encapsulation,

@@ -7,14 +7,11 @@ import {
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
-import {TuiBadgedContentDirective} from './badged-content.directive';
-
 @Component({
-    standalone: true,
     selector: 'tui-badged-content',
-    imports: [TuiBadgedContentDirective, WaResizeObserver],
+    imports: [WaResizeObserver],
     templateUrl: './badged-content.template.html',
-    styleUrls: ['./badged-content.style.less'],
+    styleUrl: './badged-content.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiBadgedContentComponent {

@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -17,9 +16,7 @@ interface Character {
 }
 
 @Component({
-    standalone: true,
     imports: [
-        NgIf,
         ReactiveFormsModule,
         TuiChevron,
         TuiDataListWrapper,

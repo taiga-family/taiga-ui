@@ -5,10 +5,9 @@ import {TuiDemo} from '@demo/utils';
 import {TuiThemeColorService} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

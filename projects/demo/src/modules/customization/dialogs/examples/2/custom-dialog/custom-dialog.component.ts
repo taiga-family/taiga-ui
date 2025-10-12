@@ -4,7 +4,6 @@ import {TuiDialogCloseService, TuiDialogComponent} from '@taiga-ui/core';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'custom-dialog',
     imports: [PolymorpheusOutlet],
     template: `
@@ -12,7 +11,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
             {{ text }}
         </ng-container>
     `,
-    styleUrls: ['./custom-dialog.style.less'],
+    styleUrl: './custom-dialog.style.less',
     changeDetection,
     providers: [TuiDialogCloseService],
 })

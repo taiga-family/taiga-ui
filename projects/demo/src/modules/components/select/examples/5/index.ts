@@ -1,4 +1,4 @@
-import {JsonPipe, NgForOf} from '@angular/common';
+import {JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -13,10 +13,8 @@ interface Python {
 }
 
 @Component({
-    standalone: true,
     imports: [
         JsonPipe,
-        NgForOf,
         ReactiveFormsModule,
         TuiChevron,
         TuiDataList,

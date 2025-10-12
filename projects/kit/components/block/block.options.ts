@@ -4,7 +4,7 @@ import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiBlockOptions extends TuiAppearanceOptions {
-    readonly size: TuiSizeL | TuiSizeS;
+    readonly size: TuiSizeL | TuiSizeS | '';
 }
 
 export const TUI_BLOCK_DEFAULT_OPTIONS: TuiBlockOptions = {

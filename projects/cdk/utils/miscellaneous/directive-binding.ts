@@ -10,6 +10,8 @@ import {
 } from '@angular/core';
 import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 
+import {tuiSetSignal} from './set-signal';
+
 type SignalLikeTypeOf<T> = T extends Signal<infer R> ? R : T;
 
 type SignalLike<T> = Signal<T> | T;
@@ -26,7 +28,11 @@ export function tuiDirectiveBinding<
 ): I extends Signal<any> ? I : WritableSignal<I> {
     const result: any = isSignal(initial) ? initial : signal(initial);
     const directive: any = inject(token, options);
-    const output = directive[`${key.toString()}Change`];
+    const output = directive?.[`${key.toString()}Change`];
+
+    if (!directive) {
+        return result;
+    }
 
     // TODO: Figure out why effects are executed all the time and not just when result changes (check with Angular 18)
     let previous: any;
@@ -39,7 +45,7 @@ export function tuiDirectiveBinding<
         }
 
         if (isSignal(directive[key])) {
-            directive[key].set(value);
+            tuiSetSignal(directive[key] as any, value);
         } else {
             directive[key] = value;
         }

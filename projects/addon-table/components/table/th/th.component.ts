@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {AsyncPipe, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -17,20 +17,19 @@ import {TuiTableDirective} from '../directives/table.directive';
 import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
 
 @Component({
-    standalone: true,
     selector: 'th[tuiTh]',
-    imports: [AsyncPipe, NgIf, NgTemplateOutlet, TuiIcon, TuiTableResized],
+    imports: [AsyncPipe, NgTemplateOutlet, TuiIcon, TuiTableResized],
     templateUrl: './th.template.html',
-    styleUrls: ['./th.style.less'],
+    styleUrl: './th.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.min-width.px]': 'width',
-        '[style.width.px]': 'width',
-        '[style.max-width.px]': 'width',
+        '[style.min-width.px]': 'width || minWidth',
+        '[style.width.px]': 'width || minWidth',
+        '[style.max-width.px]': 'width || maxWidth',
         '[class._sticky]': 'sticky',
     },
 })
-export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
+export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
     private readonly head = inject<TuiTableHead<T>>(TuiTableHead, {
@@ -43,6 +42,12 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
         forwardRef(() => TuiTableDirective),
         {optional: true},
     );
+
+    @Input()
+    public minWidth = -Infinity;
+
+    @Input()
+    public maxWidth = Infinity;
 
     @Input()
     public sorter: TuiComparator<T> | null = this.head
@@ -89,7 +94,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, any>>> {
     }
 
     protected onResized(width: number): void {
-        this.width = width;
+        this.width = Math.min(Math.max(width, this.minWidth), this.maxWidth);
     }
 
     private get isCurrentAndDescDirection(): boolean {

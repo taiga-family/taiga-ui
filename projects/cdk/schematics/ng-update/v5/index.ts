@@ -7,18 +7,29 @@ import {
     type Tree,
 } from '@angular-devkit/schematics';
 import {NodePackageInstallTask} from '@angular-devkit/schematics/tasks';
-import {FINISH_SYMBOL, START_SYMBOL, titleLog} from 'ng-morph';
+import {FINISH_SYMBOL, saveActiveProject, START_SYMBOL, titleLog} from 'ng-morph';
 
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import {type TuiSchema} from '../../ng-add/schema';
 import {getExecutionTime} from '../../utils/get-execution-time';
+import {getFileSystem} from '../utils/get-file-system';
+import {replaceFunctions} from '../utils/replace-functions';
+import {REPLACE_FUNCTIONS} from './steps/constants/functions';
+import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
+        const fileSystem = getFileSystem(tree);
+
         migrateTokens(tree, options);
         updateTsConfig(tree, options);
+        replaceFunctions(REPLACE_FUNCTIONS);
+        migrateTemplates(fileSystem, options);
+
+        fileSystem.commitEdits();
+        saveActiveProject();
 
         context.addTask(new NodePackageInstallTask());
     };

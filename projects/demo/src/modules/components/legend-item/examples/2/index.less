@@ -25,13 +25,14 @@
 .disable {
     .transition(~'transform, color');
 
-    margin-inline-start: 0.25rem;
+    margin-inline-start: 0.5rem;
     will-change: transform;
     color: var(--tui-text-secondary);
     pointer-events: auto;
-    inline-size: 1.5rem;
-    block-size: 1.5rem;
-    border-width: 0.25rem;
+
+    &::before {
+        font-size: 1rem;
+    }
 
     &:hover {
         color: var(--tui-text-primary);

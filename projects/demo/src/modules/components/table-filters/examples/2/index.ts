@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {
@@ -11,19 +11,16 @@ import {
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable, TuiTableFilters} from '@taiga-ui/addon-table';
-import {TuiButton, TuiFormatNumberPipe, TuiTextfield} from '@taiga-ui/core';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
         ReactiveFormsModule,
         TuiButton,
-        TuiFormatNumberPipe,
         TuiInputNumber,
         TuiSwitch,
         TuiTable,
@@ -31,7 +28,7 @@ import {map} from 'rxjs';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

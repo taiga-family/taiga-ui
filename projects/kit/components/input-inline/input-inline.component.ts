@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,11 +11,10 @@ import {tuiControlValue} from '@taiga-ui/cdk/observables';
 import {defer} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-input-inline',
-    imports: [AsyncPipe, NgIf, TuiLet],
+    imports: [AsyncPipe, TuiLet],
     templateUrl: './input-inline.template.html',
-    styleUrls: ['./input-inline.style.less'],
+    styleUrl: './input-inline.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

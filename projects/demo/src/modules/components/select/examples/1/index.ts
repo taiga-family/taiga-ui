@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -7,10 +6,8 @@ import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgIf,
         TuiChevron,
         TuiDataListWrapper,
         TuiIcon,

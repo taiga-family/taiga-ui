@@ -12,7 +12,6 @@ import {
 } from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,
@@ -25,7 +24,7 @@ import {
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

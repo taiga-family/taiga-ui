@@ -5,10 +5,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputInline],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

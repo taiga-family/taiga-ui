@@ -8,7 +8,7 @@ export class TuiDialogHarness extends TuiContentContainerComponentHarness {
     public async getCloseButton(): Promise<TuiButtonHarness | null> {
         return this.locatorForOptional(
             TuiButtonHarness.with({
-                selector: '[automation-id=tui-dialog__close]',
+                selector: ':scope > button',
             }),
         )();
     }

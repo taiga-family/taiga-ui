@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -33,11 +33,10 @@ import {delay, type Observable} from 'rxjs';
 import {TuiStep} from './step.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-stepper, nav[tuiStepper]',
-    imports: [AsyncPipe, NgIf],
+    imports: [AsyncPipe],
     templateUrl: './stepper.template.html',
-    styleUrls: ['./stepper.style.less'],
+    styleUrl: './stepper.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ResizeObserverService],
     host: {

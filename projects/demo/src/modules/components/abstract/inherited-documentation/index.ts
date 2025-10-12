@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component, inject, Input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
@@ -17,12 +16,10 @@ import {type TuiSupportingDocumentationComponent} from '../supporting-documentat
 import {TextfieldControllerDocumentation} from '../textfield-controller-documentation';
 
 @Component({
-    standalone: true,
     selector: 'inherited-documentation',
     imports: [
         DropdownDocumentation,
         HintControllerDocumentation,
-        NgIf,
         TextfieldControllerDocumentation,
         TuiDocDocumentation,
         TuiDocDocumentationPropertyConnector,

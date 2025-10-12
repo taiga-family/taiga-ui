@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -21,15 +20,14 @@ import {TUI_TABLE_OPTIONS} from '../table.options';
 import {TuiTableTr} from '../tr/tr.component';
 
 @Component({
-    standalone: true,
     selector: 'tbody[tuiTbody]',
-    imports: [NgIf, PolymorpheusOutlet, TuiChevron, TuiIcon],
+    imports: [PolymorpheusOutlet, TuiChevron, TuiIcon],
     templateUrl: './tbody.template.html',
-    styleUrls: ['./tbody.style.less'],
+    styleUrl: './tbody.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: TUI_TABLE_PROVIDER,
 })
-export class TuiTableTbody<T extends Partial<Record<keyof T, any>>> {
+export class TuiTableTbody<T extends Partial<Record<keyof T, unknown>>> {
     private readonly options = inject(TUI_TABLE_OPTIONS);
 
     protected readonly table = inject<TuiTableDirective<T>>(

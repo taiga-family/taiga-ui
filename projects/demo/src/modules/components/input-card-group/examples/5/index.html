@@ -1,3 +1,5 @@
 <tui-input-card-group [formControl]="control">
-    <ng-container *ngIf="!control.value">Enter card number</ng-container>
+    @if (!control.value) {
+        Enter card number
+    }
 </tui-input-card-group>

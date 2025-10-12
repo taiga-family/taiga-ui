@@ -1,53 +1,51 @@
-<header
-    *ngIf="header"
-    class="t-header"
->
-    <ng-container *polymorpheusOutlet="header as text; context: context">
-        {{ text }}
-    </ng-container>
-</header>
-<div class="t-content">
-    <h2
-        class="t-heading"
-        [class.t-heading_closable]="context.closeable && !header"
-        [id]="context.id"
-        [textContent]="context.label"
-    ></h2>
-    <section>
-        <ng-container *polymorpheusOutlet="context.content as text; context: context">
-            <div [innerHTML]="text"></div>
-            <div
-                *ngIf="context.closeable || context.dismissible"
-                class="t-buttons"
-            >
-                <button
-                    size="m"
-                    tuiAutoFocus
-                    tuiButton
-                    type="button"
-                    (click)="context.$implicit.complete()"
-                >
-                    {{ context.data?.button || 'OK' }}
-                </button>
-            </div>
-        </ng-container>
-    </section>
-</div>
-<div class="t-filler"></div>
+@if (context.closable) {
+    <button
+        size="s"
+        tuiIconButton
+        type="button"
+        class="t-close"
+        [appearance]="context.appearance === 'fullscreen' ? 'action' : 'neutral'"
+        [iconStart]="icons.close"
+        [style.border-radius.%]="100"
+        (click)="close$.next()"
+        (mousedown.prevent.zoneless)="(0)"
+    >
+        {{ close() }}
+    </button>
+}
 
-<!-- Close button is insensitive to `context.closeable === Observable<false>` by design -->
-<button
-    *ngIf="context.closeable"
-    automation-id="tui-dialog__close"
-    tuiIconButton
-    type="button"
-    class="t-close"
-    [appearance]="isMobile() ? 'icon' : 'neutral'"
-    [iconStart]="icons.close"
-    [size]="isMobile() ? 'xs' : 's'"
-    [style.border-radius.%]="100"
-    (click)="close$.next()"
-    (mousedown.prevent.zoneless)="(0)"
->
-    {{ closeWord$ | async }}
-</button>
+@if (!primitive && context.label) {
+    <header tuiHeader>
+        <hgroup tuiTitle>
+            <h2
+                [id]="context.id"
+                [innerHTML]="context.label"
+            ></h2>
+        </hgroup>
+    </header>
+}
+
+<ng-container *polymorpheusOutlet="context.content as text; context: context">
+    <header tuiHeader>
+        <hgroup tuiTitle>
+            <h2
+                [id]="context.id"
+                [innerHTML]="context.label"
+            ></h2>
+            <p [innerHTML]="text"></p>
+        </hgroup>
+    </header>
+    @if (context.closable || context.dismissible) {
+        <footer>
+            <button
+                size="m"
+                tuiAutoFocus
+                tuiButton
+                type="button"
+                (click)="context.$implicit.complete()"
+            >
+                {{ context.data || 'OK' }}
+            </button>
+        </footer>
+    }
+</ng-container>

@@ -1,14 +1,18 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
+    .transition(color);
+
     position: relative;
     display: block;
     inline-size: fit-content;
     min-inline-size: fit-content;
-    font-size: 1rem;
-    color: var(--tui-chart-categorical-12);
+    font-size: 2.5rem;
     cursor: pointer;
     user-select: none;
+    padding-block-start: 1em;
+    color: var(--tui-chart-categorical-12);
+    background: var(--tui-text-tertiary) content-box;
 
     &._readonly {
         pointer-events: none;
@@ -37,6 +41,9 @@
     position: relative;
     display: flex;
     flex-direction: row-reverse;
+    margin-block-start: -1em;
+    padding-block-start: 1em;
+    background: inherit;
 
     &:hover {
         .t-icon {
@@ -50,21 +57,25 @@
 }
 
 .t-item {
+    .transition(transform);
+
     position: relative;
+    display: flex;
     flex: 1 0 0;
-    color: var(--tui-text-tertiary);
-    transition-property: color, transform;
-    transition-duration: var(--tui-duration);
-    transition-timing-function: ease-in-out, cubic-bezier(0.35, 1.5, 0.4, 2.5);
+    background: inherit;
+    background-clip: content-box;
+    margin-block-start: -1em;
+    padding-block-start: 1em;
+    transition-timing-function: cubic-bezier(0.35, 1.5, 0.4, 2.5);
 
     &:first-child {
-        max-inline-size: 2.5em;
+        max-inline-size: 1em;
     }
 
-    &:hover,
-    &:hover ~ &,
-    .t-items:not(:hover) &_active {
-        color: currentColor;
+    &:hover .t-icon,
+    &:hover ~ & .t-icon,
+    .t-items:not(:hover) &_active .t-icon {
+        background-color: currentColor;
     }
 
     .t-items:active &:hover,
@@ -76,11 +87,11 @@
 }
 
 .t-icon {
-    .transition(clip-path);
+    .transition(background);
 
-    inline-size: 2.5em;
-    block-size: 2.5em;
     font-size: inherit;
+    margin-block-start: -1em;
+    background: inherit;
     clip-path: inset(0 var(--t-cut) 0 0);
 
     :host-context([dir='rtl']) & {
@@ -95,17 +106,13 @@
         position: absolute;
         top: 0;
         left: 0;
-        display: none;
-        color: var(--tui-text-tertiary);
+        margin: 0;
+        background: inherit !important;
         clip-path: inset(0 0 0 var(--t-cut));
 
         :host-context([dir='rtl']) & {
             clip-path: inset(0 var(--t-cut) 0 0);
         }
-    }
-
-    &_fraction {
-        display: block;
     }
 }
 

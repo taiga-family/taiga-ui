@@ -1,10 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
+    contentChild,
     Directive,
     inject,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
@@ -15,25 +15,20 @@ import {
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
-import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
 
 import {TUI_BLOCK_OPTIONS} from './block.options';
 
 @Component({
-    standalone: true,
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/block.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/block.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {
-        class: 'tui-block',
-    },
+    host: {class: 'tui-block'},
 })
-class TuiBlockStyles {}
+class Styles {}
 
 @Directive({
-    standalone: true,
     selector: 'label[tuiBlock],input[tuiBlock]',
     providers: [
         tuiAppearanceOptionsProvider(TUI_BLOCK_OPTIONS),
@@ -42,16 +37,14 @@ class TuiBlockStyles {}
     hostDirectives: [TuiNativeValidator, TuiWithAppearance, TuiWithIcons],
     host: {
         tuiBlock: '',
-        '[attr.data-size]': 'size || "l"',
-        '[class._disabled]': '!!this.control?.disabled',
+        '[attr.data-size]': 'size() || this.options.size || "l"',
+        '[class._disabled]': '!!this.control()?.disabled',
     },
 })
 export class TuiBlock {
-    @ContentChild(NgControl)
-    protected readonly control?: NgControl;
+    protected readonly nothing = tuiWithStyles(Styles);
+    protected readonly options = inject(TUI_BLOCK_OPTIONS);
+    protected readonly control = contentChild(NgControl);
 
-    protected readonly nothing = tuiWithStyles(TuiBlockStyles);
-
-    @Input('tuiBlock')
-    public size: TuiSizeL | TuiSizeS | '' = inject(TUI_BLOCK_OPTIONS).size;
+    public readonly size = input(this.options.size, {alias: 'tuiBlock'});
 }

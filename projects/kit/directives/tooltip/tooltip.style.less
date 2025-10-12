@@ -19,19 +19,16 @@
         border: none;
     }
 
-    &::after {
-        .center-all();
-
-        inline-size: 1rem;
-        block-size: 1rem;
+    &::before {
+        font-size: 1rem;
     }
 }
 
 @media @tui-mouse {
-    tui-textfield:hover [tuiTooltip][data-appearance='icon']::after,
-    tui-textarea:hover [tuiTooltip][data-appearance='icon']::after,
-    tui-primitive-textfield:hover [tuiTooltip][data-appearance='icon']::after,
-    tui-input-tag:hover [tuiTooltip][data-appearance='icon']::after {
+    tui-textfield:hover [tuiTooltip][data-appearance='icon']::before,
+    tui-textarea:hover [tuiTooltip][data-appearance='icon']::before,
+    tui-primitive-textfield:hover [tuiTooltip][data-appearance='icon']::before,
+    tui-input-tag:hover [tuiTooltip][data-appearance='icon']::before {
         color: var(--tui-text-secondary);
     }
 }

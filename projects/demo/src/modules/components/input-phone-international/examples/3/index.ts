@@ -4,10 +4,10 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
-import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
+import {TuiTextfield} from '@taiga-ui/core';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
+    TuiInputPhoneInternational,
     tuiInputPhoneInternationalOptionsProvider,
     TuiSortCountriesPipe,
 } from '@taiga-ui/kit';
@@ -15,11 +15,9 @@ import {getCountries} from 'libphonenumber-js';
 import {defer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        TuiButton,
         TuiDropdownMobile,
         TuiInputPhoneInternational,
         TuiSortCountriesPipe,

@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -18,9 +17,8 @@ import {
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldContent, TuiWithTextfield} from '@taiga-ui/core/components/textfield';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {TuiSlider, tuiSliderOptionsProvider} from '@taiga-ui/kit/components/slider';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -28,13 +26,13 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {TUI_INPUT_COLOR_OPTIONS, type TuiInputColorOptions} from './input-color.options';
 
 const REGEX = /[0-9a-fA-F]/;
+const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></svg>"';
 
 @Component({
-    standalone: true,
     selector: 'input[tuiInputColor]',
-    imports: [FormsModule, NgIf, TuiSlider, TuiTextfieldContent],
+    imports: [FormsModule, TuiSlider, TuiTextfieldContent],
     templateUrl: './input-color.template.html',
-    styleUrls: ['./input-color.style.less'],
+    styleUrl: './input-color.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -45,7 +43,6 @@ const REGEX = /[0-9a-fA-F]/;
     hostDirectives: [MaskitoDirective, TuiWithTextfield],
     host: {
         ngSkipHydration: 'true',
-        inputmode: 'numeric',
         spellcheck: 'false',
         '[disabled]': 'disabled()',
         '[value]': 'value()',
@@ -59,15 +56,9 @@ export class TuiInputColor extends TuiControl<string> {
     protected readonly list = this.el.getAttribute('list');
     protected readonly format = signal(this.options.format);
     protected readonly align = signal<TuiHorizontalDirection>(this.options.align);
-
-    protected readonly icon = tuiDirectiveBinding(
-        TuiIcons,
-        'iconStart',
-        computed(() =>
-            this.align() === 'left'
-                ? '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></svg>"'
-                : '',
-        ),
+    protected readonly left = inject(TuiIcons).iconStart() || '';
+    protected readonly icon = tuiIconStart(
+        computed(() => (this.align() === 'left' ? EMPTY : this.left)),
         {},
     );
 

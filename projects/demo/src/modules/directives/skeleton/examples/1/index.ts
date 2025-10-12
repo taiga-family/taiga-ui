@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiButton, TuiLabel, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiHeader, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiAvatarStack,
@@ -12,13 +12,11 @@ import {
     TuiSkeleton,
     TuiSwitch,
 } from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        TuiAppearance,
         TuiAvatar,
         TuiAvatarStack,
         TuiBadge,
@@ -33,7 +31,7 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

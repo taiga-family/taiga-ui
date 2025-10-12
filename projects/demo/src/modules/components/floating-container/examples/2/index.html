@@ -51,43 +51,44 @@
 >
     <div class="content">
         <section class="items">
-            <div
-                *ngFor="let item of items | tuiFilter: filter : search"
-                tuiCell
-            >
-                <tui-avatar
-                    appearance="primary"
-                    src="@tui.star"
-                />
-                <div tuiTitle>
-                    {{ item.title }}
-                    <div tuiSubtitle>{{ item.description }}</div>
+            @for (item of items | tuiFilter: filter : search; track item) {
+                <div tuiCell>
+                    <div
+                        appearance="primary"
+                        tuiAvatar="@tui.star"
+                    ></div>
+                    <div tuiTitle>
+                        {{ item.title }}
+                        <div tuiSubtitle>{{ item.description }}</div>
+                    </div>
                 </div>
-            </div>
+            }
         </section>
 
-        <footer
-            *ngIf="floating"
-            tuiFloatingContainer
-            @tuiSlideInTop
-        >
-            <button
-                tuiButton
-                type="button"
-                (click)="observer.complete()"
+        @if (floating) {
+            <footer
+                tuiFloatingContainer
+                @tuiSlideInTop
             >
-                Main action
-            </button>
-            <button
-                *ngIf="secondAction"
-                appearance="flat"
-                tuiButton
-                type="button"
-                @tuiHeightCollapse
-                (click)="observer.complete()"
-            >
-                Secondary action
-            </button>
-        </footer>
+                <button
+                    tuiButton
+                    type="button"
+                    (click)="observer.complete()"
+                >
+                    Main action
+                </button>
+                @if (secondAction) {
+                    <button
+                        appearance="flat"
+                        tuiButton
+                        type="button"
+                        @tuiHeightCollapse
+                        (click)="observer.complete()"
+                    >
+                        Secondary action
+                    </button>
+                }
+            </footer>
+        }
     </div>
 </ng-template>

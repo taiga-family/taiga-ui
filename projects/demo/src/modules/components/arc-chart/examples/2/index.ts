@@ -5,10 +5,9 @@ import {TuiArcChart} from '@taiga-ui/addon-charts';
 import {tuiSum} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiArcChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

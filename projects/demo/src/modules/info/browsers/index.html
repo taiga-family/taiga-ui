@@ -8,14 +8,18 @@
             </tr>
         </thead>
         <tbody tuiTbody>
-            <tr *ngFor="let browser of desktopBrowsers">
-                <td tuiTd>{{ browser.name }}</td>
-                <td tuiTd>
-                    <ng-container *ngIf="browser.version; else notSupported">
-                        {{ browser.version }}
-                    </ng-container>
-                </td>
-            </tr>
+            @for (browser of desktopBrowsers; track browser) {
+                <tr>
+                    <td tuiTd>{{ browser.name }}</td>
+                    <td tuiTd>
+                        @if (browser.version) {
+                            {{ browser.version }}
+                        } @else {
+                            <strong>Not supported</strong>
+                        }
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
     <h2 class="tui-text_h4 tui-space_top-6 tui-space_bottom-3">Mobile</h2>
@@ -27,10 +31,12 @@
             </tr>
         </thead>
         <tbody tuiTbody>
-            <tr *ngFor="let browser of mobileBrowsers">
-                <td tuiTd>{{ browser.name }}</td>
-                <td tuiTd>{{ browser.version }}</td>
-            </tr>
+            @for (browser of mobileBrowsers; track browser) {
+                <tr>
+                    <td tuiTd>{{ browser.name }}</td>
+                    <td tuiTd>{{ browser.version }}</td>
+                </tr>
+            }
         </tbody>
     </table>
 
@@ -44,7 +50,3 @@
         </a>
     </tui-notification>
 </tui-doc-page>
-
-<ng-template #notSupported>
-    <strong>Not supported</strong>
-</ng-template>

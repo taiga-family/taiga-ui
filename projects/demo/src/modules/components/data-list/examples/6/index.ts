@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,11 +9,8 @@ import {TuiChevron} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiButton,
         TuiChevron,
@@ -22,13 +19,11 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiInputModule,
     ],
     templateUrl: './index.html',
-    styles: [
-        `
-            .option {
-                white-space: normal;
-            }
-        `,
-    ],
+    styles: `
+        .option {
+            white-space: normal;
+        }
+    `,
     encapsulation,
     changeDetection,
 })

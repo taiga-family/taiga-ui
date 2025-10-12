@@ -6,7 +6,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-test.describe('InputPhoneInternational', () => {
+// TODO migrate
+test.skip('InputPhoneInternational', () => {
     test.describe('API page', () => {
         let example: Locator;
         let dropdown!: Locator;

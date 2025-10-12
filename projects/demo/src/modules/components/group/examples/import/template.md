@@ -15,10 +15,7 @@
         placeholder="House"
       />
     </tui-input>
-    <tui-error
-      formControlName="testValue"
-      [error]="[] | tuiFieldError | async"
-    ></tui-error>
+    <tui-error formControlName="testValue" />
   </div>
   <div>
     <tui-input
@@ -32,10 +29,7 @@
         placeholder="House building"
       />
     </tui-input>
-    <tui-error
-      formControlName="testValue2"
-      [error]="[] | tuiFieldError | async"
-    ></tui-error>
+    <tui-error formControlName="testValue2" />
   </div>
   <div>
     <tui-input
@@ -49,10 +43,7 @@
         placeholder="Apartment number"
       />
     </tui-input>
-    <tui-error
-      formControlName="testValue3"
-      [error]="[] | tuiFieldError | async"
-    ></tui-error>
+    <tui-error formControlName="testValue3" />
   </div>
 </div>
 ```

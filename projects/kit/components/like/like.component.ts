@@ -2,59 +2,51 @@ import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {tuiInjectIconResolver} from '@taiga-ui/core/tokens';
-import {type TuiSizeS} from '@taiga-ui/core/types';
+import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {TUI_ICON_END, TUI_ICON_START} from '@taiga-ui/core/tokens';
 
-import {TUI_LIKE_OPTIONS, type TuiLikeOptions} from './like.options';
+import {TUI_LIKE_OPTIONS} from './like.options';
 
 @Component({
     standalone: true,
     selector: 'input[tuiLike][type=checkbox]',
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/like.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/like.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAppearanceOptionsProvider(TUI_LIKE_OPTIONS)],
-    hostDirectives: [TuiWithAppearance],
+    providers: [
+        tuiAppearanceOptionsProvider(TUI_LIKE_OPTIONS),
+        {
+            provide: TUI_ICON_START,
+            useFactory: () => inject(TUI_LIKE_OPTIONS).icons.unchecked,
+        },
+        {
+            provide: TUI_ICON_END,
+            useFactory: () => inject(TUI_LIKE_OPTIONS).icons.checked,
+        },
+    ],
+    hostDirectives: [
+        TuiWithAppearance,
+        {
+            directive: TuiIcons,
+            inputs: ['iconStart: uncheckedIcon', 'iconEnd: checkedIcon'],
+        },
+    ],
     host: {
         tuiLike: '',
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
         '[attr.data-mode]': '""',
-        '[style.--t-icon-color]': 'color',
-        '[style.--t-unchecked-icon]': 'getIcon("unchecked")',
-        '[style.--t-checked-icon]': 'getIcon("checked")',
+        '[style.--t-icon-color]': 'color()',
     },
 })
 export class TuiLike {
-    private readonly options = inject(TUI_LIKE_OPTIONS);
-    private readonly resolver = tuiInjectIconResolver();
-
-    @Input('tuiLike')
-    public color = '';
-
-    @Input()
-    public uncheckedIcon: TuiStringHandler<TuiSizeS> | string =
-        this.options.icons.unchecked;
-
-    @Input()
-    public checkedIcon: TuiStringHandler<TuiSizeS> | string = this.options.icons.checked;
-
-    @Input()
-    public size: TuiSizeS = this.options.size;
-
-    protected getIcon(state: keyof TuiLikeOptions['icons']): string {
-        const option = state === 'checked' ? this.checkedIcon : this.uncheckedIcon;
-        const icon = tuiIsString(option) ? option : option(this.size);
-
-        return icon && `url(${this.resolver(icon)})`;
-    }
+    public readonly color = input('', {alias: 'tuiLike'});
+    public readonly size = input(inject(TUI_LIKE_OPTIONS).size);
 }

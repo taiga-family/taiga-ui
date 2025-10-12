@@ -11,10 +11,9 @@ import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {combineLatest, map, type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
@@ -38,8 +37,8 @@ export default class Example {
             }),
         ),
         {
-            size: 'fullscreen',
-            closeable: false,
+            appearance: 'fullscreen',
+            closable: false,
             data: {
                 min: new TuiDay(2018, 2, 10),
             },

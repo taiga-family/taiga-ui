@@ -1,4 +1,5 @@
 import {Component, inject, type TemplateRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
@@ -18,13 +19,14 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiLet, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {
+    private readonly router = inject(Router);
+    private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiAlertService);
 
@@ -39,7 +41,7 @@ export default class Page {
         'Fullscreen',
     ];
 
-    protected closeable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closeable;
+    protected closable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closable;
     protected fullscreen = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.fullscreen;
     protected bar = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.bar;
     protected initial = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.initial;
@@ -57,7 +59,7 @@ export default class Page {
         content: TemplateRef<TuiDialogContext<number, number>>,
         label?: PolymorpheusContent<TuiSheetDialogOptions>,
     ): void {
-        const {required, closeable, fullscreen, stops, initial, bar, offset} = this;
+        const {required, closable, fullscreen, stops, initial, bar, offset} = this;
 
         this.sheetDialogs
             .open(content, {
@@ -68,9 +70,13 @@ export default class Page {
                 bar,
                 offset,
                 required,
-                closeable,
+                closable,
             })
             .pipe(switchMap((response) => this.alerts.open(String(response))))
             .subscribe();
+    }
+
+    protected navigate(): void {
+        void this.router.navigate(['./'], {relativeTo: this.route});
     }
 }

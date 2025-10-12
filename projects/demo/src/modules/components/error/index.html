@@ -4,26 +4,47 @@
     type="components"
 >
     <ng-template pageTab>
-        <p>
-            <code>Error</code>
-            allows to show an error. If you work with a form, see
-            <a
-                tuiLink
-                [routerLink]="['/pipes/field-error']"
-            >
-                <code>tuiFieldError</code>
-            </a>
-            . The idea of
-            <code>tui-error</code>
-            is to show arbitrary messages styled as errors, with height or fade transition.
-        </p>
+        Component for showing arbitrary messages styled as errors, with height and fade transition, as well as
+        displaying form validation errors from controls
 
-        <tui-doc-example
-            id="base"
-            heading="Basic"
-            [component]="1 | tuiComponent"
-            [content]="1 | tuiExample"
-        />
+        @for (example of examples; track $index) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            >
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            Using as standalone or to display validation errors from form control.
+                        }
+                        @case (1) {
+                            Providing validation error messages for various errors with DI token.
+                        }
+                        @case (2) {
+                            Using
+                            <code>ng-template</code>
+                            to show rich HTML error messages.
+                        }
+                        @case (3) {
+                            Using with dynamic
+                            <code>FormArray</code>
+                        }
+                        @case (4) {
+                            Displaying error message via async validators.
+                        }
+                        @case (5) {
+                            Using pipe to feed error message to the hint directive.
+                        }
+                        @case (6) {
+                            Reusable error messages with a dedicated component.
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -38,19 +59,17 @@
             </em>
         </ng-template>
 
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="error"
-                documentationPropertyType="TuiValidationError | string | null"
-                [documentationPropertyValues]="errorVariants"
-                [(documentationPropertyValue)]="selectedError"
+        <table tuiDocAPI>
+            <tr
+                name="[error]"
+                tuiDocAPIItem
+                type="TuiValidationError | string | null"
+                [items]="errorVariants"
+                [(value)]="selectedError"
             >
-                Active state for
-                <code>routerLinkActive</code>
-                , for example
-            </ng-template>
-        </tui-doc-documentation>
+                Error value (string or TuiValidationError)
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

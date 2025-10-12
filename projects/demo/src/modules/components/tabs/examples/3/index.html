@@ -9,8 +9,8 @@
         [activeItemIndex]="activeItemIndex"
         [moreContent]="more"
     >
-        <ng-container *ngFor="let tab of tabs">
-            <ng-container *ngIf="isString(tab); else submenu">
+        @for (tab of tabs; track tab) {
+            @if (isString(tab)) {
                 <button
                     *tuiItem
                     tuiTab
@@ -19,8 +19,7 @@
                 >
                     {{ tab }}
                 </button>
-            </ng-container>
-            <ng-template #submenu>
+            } @else {
                 <button
                     *tuiItem
                     tuiChevron
@@ -32,8 +31,8 @@
                 >
                     Collaborators
                 </button>
-            </ng-template>
-        </ng-container>
+            }
+        }
     </tui-tabs-with-more>
 </div>
 <section class="content">Currently active: {{ activeElement }}</section>
@@ -42,14 +41,15 @@
     let-close
 >
     <tui-data-list tuiDataListDropdownManager>
-        <button
-            *ngFor="let collaborator of collaborators"
-            tuiOption
-            type="button"
-            (click)="onClick(collaborator); close()"
-        >
-            {{ collaborator }}
-        </button>
+        @for (collaborator of collaborators; track collaborator) {
+            <button
+                tuiOption
+                type="button"
+                (click)="onClick(collaborator); close()"
+            >
+                {{ collaborator }}
+            </button>
+        }
     </tui-data-list>
 </ng-template>
 <ng-template #more>

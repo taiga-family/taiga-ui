@@ -6,14 +6,15 @@
     <ng-template pageTab>
         <p>BadgedContent is a wrapper for other components to add badges and notifications to them.</p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="index === 1 && description"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$index === 1 && description"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
 
         <ng-template #description>
             <p>
@@ -28,14 +29,19 @@
         <tui-doc-demo>
             <tui-badged-content [style.--tui-radius]="radius">
                 <tui-badge-notification tuiSlot="top">1</tui-badge-notification>
-                <tui-avatar
+                <div
                     size="l"
+                    tuiAvatar="@tui.user"
                     [round]="radius === '50%'"
-                    [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async"
-                />
+                >
+                    <img
+                        alt=""
+                        src="https://avatars.githubusercontent.com/u/11832552"
+                    />
+                </div>
             </tui-badged-content>
         </tui-doc-demo>
-        <h3 tuiHeader="xxl">CSS customization</h3>
+        <h3 tuiHeader="h1">CSS customization</h3>
         <table tuiDocAPI>
             <tr
                 name="style.--t-radius"

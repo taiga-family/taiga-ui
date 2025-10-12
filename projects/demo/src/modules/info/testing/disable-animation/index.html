@@ -14,16 +14,18 @@
     <p>
         <code>&#64;taiga-ui/cdk</code>
         used
-        <code *ngFor="let ref of 'TUI_REDUCED_MOTION' | tuiDocTypeReference">
-            <a
-                rel="noreferrer"
-                target="_blank"
-                tuiLink
-                [attr.href]="ref.reference"
-            >
-                {{ ref.type }}
-            </a>
-        </code>
+        @for (ref of 'TUI_REDUCED_MOTION' | tuiDocTypeReference; track ref) {
+            <code>
+                <a
+                    rel="noreferrer"
+                    target="_blank"
+                    tuiLink
+                    [attr.href]="ref.reference"
+                >
+                    {{ ref.type }}
+                </a>
+            </code>
+        }
 
         token which disables all animations for taiga-ui components. That token based on
         <code>prefers-reduced-motion</code>
@@ -51,12 +53,10 @@
             <tui-doc-tab src="assets/icons/playwright.svg">playwright.config.ts</tui-doc-tab>
         </button>
     </tui-tabs-with-more>
-    <tui-doc-code
-        *ngIf="tabs.activeItemIndex === 0"
-        [code]="cypress"
-    />
-    <tui-doc-code
-        *ngIf="tabs.activeItemIndex === 1"
-        [code]="playwright"
-    />
+    @if (tabs.activeItemIndex === 0) {
+        <tui-doc-code [code]="cypress" />
+    }
+    @if (tabs.activeItemIndex === 1) {
+        <tui-doc-code [code]="playwright" />
+    }
 </tui-doc-page>

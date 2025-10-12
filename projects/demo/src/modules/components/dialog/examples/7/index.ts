@@ -1,25 +1,15 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, tuiDialog} from '@taiga-ui/core';
-
-import {SearchDialogExample} from './search-example/search-dialog-example.component';
+import {TuiButton, TuiDialog, TuiHeader, TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
-    imports: [TuiButton],
+    imports: [TuiButton, TuiDialog, TuiHeader, TuiTitle],
     templateUrl: './index.html',
-    encapsulation,
+    styleUrl: './index.less',
+    encapsulation: ViewEncapsulation.None,
     changeDetection,
 })
 export default class Example {
-    private readonly dialog = tuiDialog(SearchDialogExample, {
-        size: 'page',
-        closeable: true,
-        dismissible: true,
-    });
-
-    protected showDialog(): void {
-        this.dialog().subscribe();
-    }
+    protected augmented = false;
+    protected custom = false;
 }

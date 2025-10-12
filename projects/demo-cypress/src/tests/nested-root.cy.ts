@@ -4,7 +4,6 @@ import {TuiButton, TuiDialog, TuiHint, TuiRoot} from '@taiga-ui/core';
 import {TuiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiButton,
@@ -88,11 +87,11 @@ describe('Nested root', () => {
 
         cy.get('button').contains('Root dialog').click();
         cy.get('body').compareSnapshot('tui-nested-root__1');
-        cy.get('body').click();
+        cy.get('body').click(0, 0);
 
         cy.get('button').contains('Nested dialog').click();
         cy.get('body').compareSnapshot('tui-nested-root__2');
-        cy.get('body').click();
+        cy.get('body').click(0, 0);
 
         cy.get('tui-select').eq(1).click();
         cy.get('body').compareSnapshot('tui-nested-root__3');

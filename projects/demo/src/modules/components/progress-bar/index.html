@@ -101,13 +101,12 @@
                 [value]="value"
             ></progress>
         </tui-doc-demo>
-
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="value"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="value"
+        <table tuiDocAPI>
+            <tr
+                name="[value]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="value"
             >
                 Native attribute
                 <a
@@ -120,13 +119,12 @@
                 </a>
                 of
                 <code [textContent]="'<progress />'"></code>
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="max"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="max"
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="max"
             >
                 Native attribute
                 <a
@@ -139,24 +137,22 @@
                 </a>
                 of
                 <code [textContent]="'<progress />'"></code>
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="size"
-                documentationPropertyType="TuiSizeXS | TuiSizeXXL"
-                [documentationPropertyValues]="sizeVariants"
-                [(documentationPropertyValue)]="size"
+            </tr>
+            <tr
+                name="[size]"
+                tuiDocAPIItem
+                type="TuiSizeXS | TuiSizeXXL"
+                [items]="sizeVariants"
+                [(value)]="size"
             >
                 Size of the progress element
-            </ng-template>
-
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="color"
-                documentationPropertyType="string"
-                [documentationPropertyValues]="colorVariants"
-                [(documentationPropertyValue)]="color"
+            </tr>
+            <tr
+                name="[color]"
+                tuiDocAPIItem
+                type="string"
+                [items]="colorVariants"
+                [(value)]="color"
             >
                 Color of the progress indicator
                 <p>
@@ -166,8 +162,8 @@
                     <code>color</code>
                     (especially, if you support old not-chromium based Edge)
                 </p>
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

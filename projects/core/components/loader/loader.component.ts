@@ -1,23 +1,17 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiIsSafari} from '@taiga-ui/cdk/utils/browser';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
-import {
-    type PolymorpheusContent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TUI_LOADER_OPTIONS} from './loader.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-loader',
-    imports: [NgIf, PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [PolymorpheusOutlet],
     templateUrl: './loader.template.html',
-    styleUrls: ['./loader.style.less'],
+    styleUrl: './loader.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._loading]': 'loading',

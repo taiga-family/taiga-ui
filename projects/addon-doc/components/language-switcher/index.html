@@ -17,23 +17,24 @@
         [iconStart]="icons.languages"
     >
         Language
-        <tui-data-list *tuiTextfieldDropdown>
+        <tui-data-list *tuiDropdown>
             <tui-opt-group label="Language of components">
-                <button
-                    *ngFor="let name of names"
-                    new
-                    tuiOption
-                    type="button"
-                    [value]="name | titlecase"
-                    (click)="setLang(name)"
-                >
-                    <img
-                        alt=""
-                        class="t-flag"
-                        [src]="flags.get(name) | tuiFlag"
-                    />
-                    {{ name | titlecase }}
-                </button>
+                @for (name of names; track name) {
+                    <button
+                        new
+                        tuiOption
+                        type="button"
+                        [value]="name | titlecase"
+                        (click)="setLang(name)"
+                    >
+                        <img
+                            alt=""
+                            class="t-flag"
+                            [src]="flags.get(name) | tuiFlag"
+                        />
+                        {{ name | titlecase }}
+                    </button>
+                }
             </tui-opt-group>
         </tui-data-list>
     </button>

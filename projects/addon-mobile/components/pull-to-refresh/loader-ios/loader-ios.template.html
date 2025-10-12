@@ -7,29 +7,29 @@
     xmlns="http://www.w3.org/2000/svg"
 >
     <ng-container *tuiRepeatTimes="let index of steps">
-        <g
-            *ngIf="isShown(index)"
-            [attr.transform]="calculateTransform(index)"
-        >
-            <rect
-                fill="#c7c9cc"
-                height="16"
-                rx="7.05"
-                ry="3.3"
-                width="6"
-                x="47"
-                y="22"
-            >
-                <animate
-                    *ngIf="finished"
-                    attributeName="opacity"
-                    dur="1s"
-                    keyTimes="0;1"
-                    repeatCount="indefinite"
-                    values="1;0"
-                    [attr.begin]="calculateAnimationBegin(index)"
-                />
-            </rect>
-        </g>
+        @if (isShown(index)) {
+            <g [attr.transform]="calculateTransform(index)">
+                <rect
+                    fill="#c7c9cc"
+                    height="16"
+                    rx="7.05"
+                    ry="3.3"
+                    width="6"
+                    x="47"
+                    y="22"
+                >
+                    @if (finished) {
+                        <animate
+                            attributeName="opacity"
+                            dur="1s"
+                            keyTimes="0;1"
+                            repeatCount="indefinite"
+                            values="1;0"
+                            [attr.begin]="calculateAnimationBegin(index)"
+                        />
+                    }
+                </rect>
+            </g>
+        }
     </ng-container>
 </svg>

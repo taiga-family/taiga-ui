@@ -1,6 +1,11 @@
 <form [formGroup]="testForm">
     <label tuiBlock>
-        <tui-avatar src="https://avatars.githubusercontent.com/u/11832552" />
+        <div tuiAvatar="@tui.user">
+            <img
+                alt=""
+                src="https://avatars.githubusercontent.com/u/11832552"
+            />
+        </div>
         Heading
         <input
             formControlName="testValue1"
@@ -12,7 +17,12 @@
         appearance=""
         tuiBlock
     >
-        <tui-avatar src="https://avatars.githubusercontent.com/u/11832552" />
+        <div tuiAvatar="@tui.user">
+            <img
+                alt=""
+                src="https://avatars.githubusercontent.com/u/11832552"
+            />
+        </div>
         <span
             tuiTitle
             [style.margin-block.rem]="-0.5"

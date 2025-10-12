@@ -30,6 +30,9 @@ function getY(elementOrWindow: Element | Window): number {
         : elementOrWindow.scrollTop;
 }
 
+/**
+ * @deprecated: use native scroll
+ */
 @Injectable({
     providedIn: 'root',
 })

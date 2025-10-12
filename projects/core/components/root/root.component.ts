@@ -1,20 +1,16 @@
-/// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {DOCUMENT, NgIf} from '@angular/common';
+import {DOCUMENT} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
     inject,
-    RendererFactory2,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {EVENT_MANAGER_PLUGINS} from '@angular/platform-browser';
 import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TuiFontSize} from '@taiga-ui/cdk/directives/font-size';
 import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiAlerts} from '@taiga-ui/core/components/alert';
@@ -23,27 +19,16 @@ import {
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
 } from '@taiga-ui/core/components/scrollbar';
-import {TuiDropdowns} from '@taiga-ui/core/directives/dropdown';
 import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiPopups} from '@taiga-ui/core/directives/popup';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
-import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
-import {tuiGetDuration} from '@taiga-ui/core/utils';
-import {PreventEventPlugin} from '@taiga-ui/event-plugins';
+import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
+import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-root',
-    imports: [
-        NgIf,
-        TuiAlerts,
-        TuiDialogs,
-        TuiDropdowns,
-        TuiHints,
-        TuiPopups,
-        TuiScrollControls,
-    ],
+    imports: [TuiAlerts, TuiDialogs, TuiHints, TuiPopups, TuiScrollControls],
     templateUrl: './root.template.html',
     styleUrls: ['./animations.less', './root.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -57,66 +42,28 @@ import {map} from 'rxjs';
         '[class._mobile]': 'isMobileRes()',
         // Required for the :active state to work in Safari. https://stackoverflow.com/a/33681490
         '(touchstart.passive.zoneless)': '0',
-        '(document:fullscreenchange)': 'top.set(isTopLayer)',
+        '(document:fullscreenchange)': 'top.set(parent)',
     },
 })
 export class TuiRoot {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
+    private readonly child = !!inject(TuiRoot, {optional: true, skipSelf: true});
+
     protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
-    protected readonly isChildRoot = !!inject(TuiRoot, {optional: true, skipSelf: true});
-    protected readonly top = signal(!this.isChildRoot);
+    protected readonly top = signal(this.parent);
     protected readonly isMobileRes = toSignal(
-        inject(TuiBreakpointService).pipe(
-            map((breakpoint) => breakpoint === 'mobile'),
-            tuiWatch(),
-        ),
-        {initialValue: false},
+        inject(TuiBreakpointService).pipe(map((breakpoint) => breakpoint === 'mobile')),
     );
 
-    protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
-
     protected readonly scrollbars =
-        !this.nativeScrollbar && !inject(TUI_IS_MOBILE) && !this.isChildRoot;
+        !inject(TUI_IS_MOBILE) &&
+        !this.child &&
+        inject(TUI_SCROLLBAR_OPTIONS).mode !== 'native' &&
+        inject(TUI_OPTIONS).scrollbars !== 'native';
 
-    constructor() {
-        // TODO move to provideTaiga in v5
-        const factory = inject<any>(RendererFactory2);
-
-        factory.removeStylesOnCompDestroy = false;
-
-        if (factory.delegate) {
-            factory.delegate.removeStylesOnCompDestroy = false;
-        }
-
-        if (!this.top()) {
-            return;
-        }
-
-        this.doc.documentElement.setAttribute(
-            'data-tui-theme',
-            inject(TUI_THEME).toLowerCase(),
-        );
-
-        if (!this.nativeScrollbar) {
-            this.doc.defaultView?.document.documentElement.classList.add(
-                'tui-zero-scrollbar',
-            );
-        }
-
-        ngDevMode &&
-            console.assert(
-                !!inject<unknown[]>(EVENT_MANAGER_PLUGINS).find(
-                    (plugin) => plugin instanceof PreventEventPlugin,
-                ),
-                'NG_EVENT_PLUGINS is missing from global providers',
-            );
-    }
-
-    protected get isTopLayer(): boolean {
-        return this.doc.fullscreenElement?.matches('tui-root')
-            ? this.doc.fullscreenElement === this.el
-            : !this.isChildRoot;
+    protected get parent(): boolean {
+        return this.doc.fullscreenElement === this.el || !this.child;
     }
 }

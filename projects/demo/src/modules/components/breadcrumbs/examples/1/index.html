@@ -1,5 +1,5 @@
 <tui-breadcrumbs>
-    <ng-container *ngFor="let item of items">
+    @for (item of items; track item) {
         <a
             *tuiItem
             tuiLink
@@ -7,14 +7,14 @@
         >
             {{ item.caption }}
         </a>
-    </ng-container>
+    }
 </tui-breadcrumbs>
 
 <tui-breadcrumbs
     size="l"
     class="tui-space_top-2"
 >
-    <ng-container *ngFor="let item of items">
+    @for (item of items; track item) {
         <a
             *tuiItem
             tuiLink
@@ -22,5 +22,5 @@
         >
             {{ item.caption }}
         </a>
-    </ng-container>
+    }
 </tui-breadcrumbs>

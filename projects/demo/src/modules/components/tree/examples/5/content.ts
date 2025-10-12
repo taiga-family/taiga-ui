@@ -4,7 +4,6 @@ import {TuiIcon} from '@taiga-ui/core';
 import {TuiTreeItemContent} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [NgTemplateOutlet, TuiIcon],
     template: `
         <tui-icon
@@ -13,7 +12,7 @@ import {TuiTreeItemContent} from '@taiga-ui/kit';
         />
         <ng-container [ngTemplateOutlet]="context.template" />
     `,
-    styleUrls: ['./content.less'],
+    styleUrl: './content.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(click)': 'onClick()',

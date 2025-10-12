@@ -7,7 +7,6 @@ import {tuiObfuscateOptionsProvider} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [ReactiveFormsModule, TuiDemo, TuiTextfield],
     templateUrl: './index.html',
     changeDetection,

@@ -1,19 +1,16 @@
-import {Component, inject} from '@angular/core';
-import {DomSanitizer, type SafeResourceUrl} from '@angular/platform-browser';
+import {Component} from '@angular/core';
+import {TuiDocAppearance} from '@demo/components/appearance';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {type TuiSizeXS, type TuiSizeXXL} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [TuiAvatar, TuiDemo],
+    imports: [TuiAvatar, TuiDemo, TuiDocAppearance],
     templateUrl: './index.html',
     changeDetection,
 })
 export default class Page {
-    private readonly sanitizer = inject(DomSanitizer);
-
     protected readonly examples = [
         'Content types',
         'Colors',
@@ -35,17 +32,23 @@ export default class Page {
 
     protected size = this.sizes[3]!;
 
-    protected readonly srcVariants: ReadonlyArray<SafeResourceUrl | string> = [
+    protected readonly srcVariants: readonly string[] = [
         'MW',
+        '@tui.star',
         'https://avatars.githubusercontent.com/u/11832552',
         'https://taiga-ui.dev/assets/images/test-not-found.png',
-        '@tui.user',
-        this.sanitizer.bypassSecurityTrustResourceUrl(
-            'https://avatars.githubusercontent.com/u/10106368',
-        ),
     ];
 
     protected src = this.srcVariants[0]!;
+
+    protected readonly badgeVariants: readonly string[] = [
+        '',
+        'var(--tui-background-accent-1)',
+        'var(--tui-text-positive)',
+        '#C86DD7',
+    ];
+
+    protected badge = this.badgeVariants[0]!;
 
     protected round = true;
 }

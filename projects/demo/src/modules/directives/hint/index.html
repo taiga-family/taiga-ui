@@ -6,24 +6,24 @@
     <ng-template pageTab>
         <p>Directive to show a hint by hover of an element</p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <tui-notification
-                *ngIf="index === 1"
-                class="tui-space_bottom-4"
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
             >
-                Make sure
-                <code>*tuiHint</code>
-                directive is nested inside
-                <code>tuiHint</code>
-                directive so that dependency injection works properly
-            </tui-notification>
-        </tui-doc-example>
+                @if ($index === 1) {
+                    <tui-notification class="tui-space_bottom-4">
+                        Make sure
+                        <code>*tuiHint</code>
+                        directive is nested inside
+                        <code>tuiHint</code>
+                        directive so that dependency injection works properly
+                    </tui-notification>
+                }
+            </tui-doc-example>
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -49,31 +49,31 @@
             </span>
             <input id="qwerty" />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiHint"
-                documentationPropertyType="PolymorpheusContent"
+        <table tuiDocAPI>
+            <tr
+                name="[tuiHint]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
             >
                 Content
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiHintShowDelay"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="showDelay"
+            </tr>
+            <tr
+                name="[tuiHintShowDelay]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="showDelay"
             >
-                Show Delay
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiHintHideDelay"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="hideDelay"
+                Show delay (ms)
+            </tr>
+            <tr
+                name="[tuiHintHideDelay]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="hideDelay"
             >
-                Hide Delay
-            </ng-template>
-        </tui-doc-documentation>
+                Hide delay (ms)
+            </tr>
+        </table>
         <inherited-documentation />
     </ng-template>
 

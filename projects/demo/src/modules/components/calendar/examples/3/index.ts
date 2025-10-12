@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -12,10 +11,9 @@ const TWO_DOTS: [string, string] = [
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
-    standalone: true,
-    imports: [NgIf, TuiCalendar],
+    imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

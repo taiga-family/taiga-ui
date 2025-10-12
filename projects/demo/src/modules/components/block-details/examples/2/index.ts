@@ -9,7 +9,6 @@ import {TuiAvatar, TuiBadge, TuiFade} from '@taiga-ui/kit';
 import {TuiBlockDetails} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         TuiAmountPipe,
@@ -20,7 +19,7 @@ import {TuiBlockDetails} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
     providers: [tuiAmountOptionsProvider({sign: 'always'})],

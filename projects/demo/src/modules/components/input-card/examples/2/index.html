@@ -1,15 +1,15 @@
 <tui-textfield>
     <label tuiLabel>Card number</label>
     <input
-        icon=""
         tuiInputCard
         [(ngModel)]="card"
     />
-    <tui-thumbnail-card
-        *ngIf="card === '1234123412341234'"
-        iconStart="@tui.dollar-sign"
-        paymentSystem="mastercard"
-        size="s"
-        [style.background]="'#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)'"
-    />
+    @if (card === '1234123412341234') {
+        <tui-thumbnail-card
+            iconStart="@tui.dollar-sign"
+            paymentSystem="mastercard"
+            size="s"
+            [style.background]="'#2b9aff linear-gradient(110deg, transparent 70%, #0780ff 71%, #db028b 100%)'"
+        />
+    }
 </tui-textfield>

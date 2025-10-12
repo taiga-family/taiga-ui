@@ -82,7 +82,12 @@
     tuiTheme="dark"
     class="blur"
 >
-    <tui-avatar src="/assets/images/avatar.jpg" />
+    <div tuiAvatar="@tui.user">
+        <img
+            alt=""
+            src="/assets/images/avatar.jpg"
+        />
+    </div>
     <label tuiLabel="Taiga UI">Alex Inkin</label>
     <button
         appearance="glass"
@@ -97,8 +102,9 @@
 </div>
 
 <div
+    appearance="floating"
     tuiCardLarge
-    tuiSurface="floating"
+    tuiSurface
     class="reviews"
 >
     <h3 class="heading">
@@ -116,23 +122,30 @@
         [hidden]="true"
     >
         <div class="wrapper">
-            <div
-                *ngFor="let review of reviews"
-                tuiSurface="neutral"
-                class="review"
-            >
-                {{ review.body }}
-                <footer class="footer">
-                    <tui-avatar
-                        size="m"
-                        src="/assets/images/avatar.jpg"
-                    />
-                    <label tuiTitle>
-                        {{ review.name }}
-                        <span tuiSubtitle>{{ review.time }}</span>
-                    </label>
-                </footer>
-            </div>
+            @for (review of reviews; track review) {
+                <div
+                    tuiAppearance="neutral"
+                    tuiSurface
+                    class="review"
+                >
+                    {{ review.body }}
+                    <footer class="footer">
+                        <div
+                            size="m"
+                            tuiAvatar="@tui.user"
+                        >
+                            <img
+                                alt=""
+                                src="/assets/images/avatar.jpg"
+                            />
+                        </div>
+                        <label tuiTitle>
+                            {{ review.name }}
+                            <span tuiSubtitle>{{ review.time }}</span>
+                        </label>
+                    </footer>
+                </div>
+            }
         </div>
     </tui-scrollbar>
     <button

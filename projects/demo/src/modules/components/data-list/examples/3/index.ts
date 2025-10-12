@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,10 +7,8 @@ import {TuiCheckbox, TuiChevron, TuiSwitch} from '@taiga-ui/kit';
 import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgForOf,
         TuiButton,
         TuiCheckbox,
         TuiChevron,

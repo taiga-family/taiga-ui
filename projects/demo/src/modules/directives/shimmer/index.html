@@ -26,19 +26,20 @@
             </a>
         </p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
             <section
-                tuiAppearance="floating"
+                appearance="floating"
                 tuiCardLarge
             >
                 <header tuiHeader>
@@ -51,19 +52,21 @@
                     </hgroup>
 
                     <aside tuiAccessories>
-                        <tui-avatar
+                        <div
                             appearance="primary"
-                            src="@tui.star"
-                        />
+                            tuiAvatar="@tui.star"
+                        ></div>
                     </aside>
                 </header>
                 <tui-avatar-stack [tuiShimmer]="shimmer">
-                    <tui-avatar src="https://avatars.githubusercontent.com/u/87331898" />
-                    <tui-avatar src="https://avatars.githubusercontent.com/u/12021443" />
-                    <tui-avatar src="https://avatars.githubusercontent.com/u/35179038" />
-                    <tui-avatar src="https://avatars.githubusercontent.com/u/46284632" />
-                    <tui-avatar src="https://avatars.githubusercontent.com/u/10106368" />
-                    <tui-avatar src="https://avatars.githubusercontent.com/u/11832552" />
+                    @for (avatar of avatars; track $index) {
+                        <div tuiAvatar="@tui.user">
+                            <img
+                                alt=""
+                                [src]="avatar"
+                            />
+                        </div>
+                    }
                 </tui-avatar-stack>
                 <footer>
                     <button

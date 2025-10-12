@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -32,11 +31,9 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
 import {injectContext} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     selector: 'tui-input-chip',
     imports: [
         FormsModule,
-        NgIf,
         ReactiveFormsModule,
         TuiButton,
         TuiChip,
@@ -44,7 +41,7 @@ import {injectContext} from '@taiga-ui/polymorpheus';
         TuiHintOverflow,
     ],
     templateUrl: './input-chip.template.html',
-    styleUrls: ['./input-chip.styles.less'],
+    styleUrl: './input-chip.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiChip],
     host: {

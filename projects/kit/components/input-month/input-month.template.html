@@ -1,4 +1,4 @@
-<ng-container *ngIf="host.native">
+@if (host.native) {
     <input
         *tuiTextfieldContent
         type="month"
@@ -9,4 +9,4 @@
         (input)="onInput($any($event.target).value)"
         (pointerdown.stop.zoneless)="(0)"
     />
-</ng-container>
+}

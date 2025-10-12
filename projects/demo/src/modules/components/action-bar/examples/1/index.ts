@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -12,15 +11,13 @@ import {
     TuiDropdown,
     TuiIcon,
     TuiLink,
+    TuiPopup,
 } from '@taiga-ui/core';
 import {TuiActionBar, TuiFilter, TuiItemsWithMore} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
-        NgForOf,
-        NgIf,
         ReactiveFormsModule,
         TuiActionBar,
         TuiButton,
@@ -31,13 +28,14 @@ import {map} from 'rxjs';
         TuiItemsWithMore,
         TuiLink,
         TuiRepeatTimes,
+        TuiPopup,
     ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected items = ['one', 'two', 'three'];
+    protected items = ['one', 'two', 'three', 'four'];
     protected control = new FormControl<string[]>([]);
     protected expanded = false;
 

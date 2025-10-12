@@ -2,39 +2,38 @@
     class="t-wrapper"
     [(order)]="order"
 >
-    <tui-tile
-        *ngFor="let item of unsortedItems; let index = index"
-        [style.order]="order.get(index)"
-    >
-        <div
-            class="t-item"
-            [class.t-item_disabled]="!isEnabled(item)"
-        >
+    @for (item of unsortedItems; track item) {
+        <tui-tile [style.order]="order.get($index)">
             <div
-                tuiTileHandle
-                class="t-draggable"
+                class="t-item"
+                [class.t-item_disabled]="!isEnabled(item)"
             >
-                <tui-icon
-                    class="t-icon"
-                    [icon]="options.icons.drag"
-                />
-                <ng-container *polymorpheusOutlet="content as template; context: {$implicit: item, index: index}">
-                    {{ template }}
-                </ng-container>
+                <div
+                    tuiTileHandle
+                    class="t-draggable"
+                >
+                    <tui-icon
+                        class="t-icon"
+                        [icon]="options.icons.drag"
+                    />
+                    <ng-container *polymorpheusOutlet="content as template; context: {$implicit: item, index: $index}">
+                        {{ template }}
+                    </ng-container>
+                </div>
+                <button
+                    appearance="icon"
+                    size="xs"
+                    tuiIconButton
+                    type="button"
+                    class="t-button"
+                    [iconStart]="getIcon(item)"
+                    (click)="toggle(item)"
+                    (keydown.arrowDown.prevent)="move($index, 1)"
+                    (keydown.arrowUp.prevent)="move($index, -1)"
+                >
+                    {{ showHideText$ | async }}
+                </button>
             </div>
-            <button
-                appearance="icon"
-                size="xs"
-                tuiIconButton
-                type="button"
-                class="t-button"
-                [iconStart]="getIcon(item)"
-                (click)="toggle(item)"
-                (keydown.arrowDown.prevent)="move(index, 1)"
-                (keydown.arrowUp.prevent)="move(index, -1)"
-            >
-                {{ showHideText$ | async }}
-            </button>
-        </div>
-    </tui-tile>
+        </tui-tile>
+    }
 </tui-tiles>

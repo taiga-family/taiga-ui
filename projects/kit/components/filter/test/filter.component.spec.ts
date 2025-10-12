@@ -2,8 +2,7 @@ import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_FALSE_HANDLER, type TuiBooleanHandler, type TuiHandler} from '@taiga-ui/cdk';
-import {type TuiSizeS} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, type TuiSizeS} from '@taiga-ui/core';
 import {TuiFilter} from '@taiga-ui/kit';
 
 const BADGE_VALUE = 10;
@@ -66,7 +65,7 @@ describe('Filter', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

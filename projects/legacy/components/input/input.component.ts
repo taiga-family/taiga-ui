@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {
     tuiAsDataListHost,
     TuiDataListDirective,
@@ -36,7 +36,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     standalone: false,
     selector: 'tui-input',
     templateUrl: './input.template.html',
-    styleUrls: ['./input.style.less'],
+    styleUrl: './input.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         TUI_VALUE_ACCESSOR_PROVIDER,
@@ -78,8 +78,7 @@ export class TuiInputComponent
 
     public get focused(): boolean {
         return (
-            tuiIsNativeFocused(this.nativeFocusableElement) ||
-            !!this.dropdown?.tuiDropdownOpen
+            tuiIsFocused(this.nativeFocusableElement) || !!this.dropdown?.tuiDropdownOpen
         );
     }
 

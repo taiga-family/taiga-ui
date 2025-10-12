@@ -35,7 +35,7 @@ import {
     standalone: false,
     selector: 'tui-input-month-range',
     templateUrl: './input-month-range.template.html',
-    styleUrls: ['./input-month-range.style.less'],
+    styleUrl: './input-month-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputMonthRangeComponent),

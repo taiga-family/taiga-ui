@@ -13,7 +13,7 @@
         >
             {{ index * size + 1 }}-{{ (index + 1) * size }} rows
             <tui-data-list-wrapper
-                *tuiTextfieldDropdown
+                *tuiDropdown
                 new
                 [itemContent]="content"
                 [items]="items"
@@ -32,9 +32,11 @@
         </tr>
     </thead>
     <tbody tuiTbody>
-        <tr *ngFor="let item of data">
-            <td tuiTd>{{ item.name }}</td>
-            <td tuiTd>{{ item.balance | tuiFormatNumber | async }}</td>
-        </tr>
+        @for (item of data; track item) {
+            <tr>
+                <td tuiTd>{{ item.name }}</td>
+                <td tuiTd>{{ item.balance | tuiFormatNumber | async }}</td>
+            </tr>
+        }
     </tbody>
 </table>

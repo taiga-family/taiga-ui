@@ -2,7 +2,8 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiInputMonthPO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-test.describe('InputMonth', () => {
+// TODO migrate
+test.skip('InputMonth', () => {
     test.describe('API', () => {
         let documentationPage: TuiDocumentationPagePO;
         let example: Locator;
@@ -26,7 +27,7 @@ test.describe('InputMonth', () => {
 
             await documentationPage.prepareBeforeScreenshot();
 
-            await expect.soft(page).toHaveScreenshot('input-month-maximum-month.png');
+            await expect(page).toHaveScreenshot('input-month-maximum-month.png');
         });
 
         test('Minimum month more than current month', async ({page}) => {

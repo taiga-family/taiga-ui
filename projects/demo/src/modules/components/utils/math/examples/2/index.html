@@ -2,16 +2,14 @@
 
 <form [formGroup]="parametersForm">
     <div class="parameters">
-        <tui-textfield
-            *ngFor="let parameter of ['value', 'fromInclude', 'toExclude']"
-            class="tui-space_top-2"
-        >
-            <label tuiLabel>{{ parameter }}</label>
-
-            <input
-                tuiInputNumber
-                [formControlName]="parameter"
-            />
-        </tui-textfield>
+        @for (parameter of ['value', 'fromInclude', 'toExclude']; track parameter) {
+            <tui-textfield class="tui-space_top-2">
+                <label tuiLabel>{{ parameter }}</label>
+                <input
+                    tuiInputNumber
+                    [formControlName]="parameter"
+                />
+            </tui-textfield>
+        }
     </div>
 </form>

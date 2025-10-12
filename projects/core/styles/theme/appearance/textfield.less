@@ -15,8 +15,7 @@
     // TODO: Remove tuiWrapper hack in v5
     &:not([tuiWrapper])::before,
     &:not([tuiWrapper])::after {
-        .transition(~'color, transform');
-
+        transition-property: color, transform;
         color: var(--tui-text-tertiary);
     }
 

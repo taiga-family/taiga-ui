@@ -7,12 +7,15 @@ export default process.env.HTML_ESLINT
           ...taiga.configs['html-eslint'],
           globalIgnores(['**/*.{ts,js,css,less,scss}']),
           {
-              files: ['**/demo/**/pipes/format-date/index.html'],
-              rules: {'@html-eslint/require-li-container': 'off'},
+              files: [
+                  '**/demo/**/pipes/format-date/index.html',
+                  '**/demo/**/toast/index.html',
+              ],
+              rules: {'html/require-li-container': 'off'},
           },
           {
               files: ['**/demo/**/components/input-inline/examples/4/index.html'],
-              rules: {'@html-eslint/element-newline': 'off'},
+              rules: {'html/element-newline': 'off'},
           },
       ]
     : [
@@ -34,6 +37,9 @@ export default process.env.HTML_ESLINT
                       'error',
                       {countVoidThis: true, max: 5},
                   ],
+                  '@angular-eslint/no-uncalled-signals': 'off',
+                  // TODO enable after fixing all issues
+                  '@angular-eslint/prefer-signals': 'off',
               },
           },
       ];

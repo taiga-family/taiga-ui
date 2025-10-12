@@ -8,7 +8,6 @@ import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         RouterLink,
@@ -18,7 +17,7 @@ import {TuiSegmented} from '@taiga-ui/kit';
         TuiSegmented,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

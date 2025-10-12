@@ -1,6 +1,7 @@
-<input
-    *ngFor="let appearance of appearances"
-    tuiLike
-    type="checkbox"
-    [appearance]="appearance"
-/>
+@for (appearance of appearances; track appearance) {
+    <input
+        tuiLike
+        type="checkbox"
+        [appearance]="appearance"
+    />
+}

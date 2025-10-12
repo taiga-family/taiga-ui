@@ -1,21 +1,18 @@
 import {computed, inject, type ProviderToken, type Signal} from '@angular/core';
-import {type TuiHandler} from '@taiga-ui/cdk/types';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiIcons} from '@taiga-ui/core/directives/icons';
+import {type TuiStringHandler} from '@taiga-ui/cdk/types';
+import {tuiIconEnd} from '@taiga-ui/core/directives/icons';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 import {TUI_TEXTFIELD_OPTIONS} from './textfield.options';
 
-export function tuiTextfieldIconBinding(
-    token: ProviderToken<{icon: TuiHandler<TuiSizeL | TuiSizeS, string>}>,
+export function tuiTextfieldIcon(
+    token: ProviderToken<{icon: TuiStringHandler<TuiSizeL | TuiSizeS>}>,
 ): Signal<string> {
-    const textfield = inject(TUI_TEXTFIELD_OPTIONS);
-    const options = inject(token);
+    const {size} = inject(TUI_TEXTFIELD_OPTIONS);
+    const {icon} = inject(token);
 
-    return tuiDirectiveBinding(
-        TuiIcons,
-        'iconEnd',
-        computed(() => options.icon(textfield.size())),
+    return tuiIconEnd(
+        computed(() => icon(size())),
         {},
     );
 }

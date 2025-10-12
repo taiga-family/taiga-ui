@@ -4,7 +4,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection,

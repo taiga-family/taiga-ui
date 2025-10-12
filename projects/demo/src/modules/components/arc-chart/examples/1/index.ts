@@ -9,7 +9,6 @@ import {TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
@@ -20,7 +19,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

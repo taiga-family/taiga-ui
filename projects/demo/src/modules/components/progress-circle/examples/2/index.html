@@ -1,6 +1,7 @@
-<tui-progress-circle
-    *ngFor="let size of sizes"
-    [max]="100"
-    [size]="size"
-    [value]="60"
-/>
+@for (size of sizes; track size) {
+    <tui-progress-circle
+        [max]="100"
+        [size]="size"
+        [value]="60"
+    />
+}

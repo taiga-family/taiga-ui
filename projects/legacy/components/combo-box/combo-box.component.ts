@@ -12,7 +12,7 @@ import {
 import {TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {type TuiContext, type TuiStringMatcher} from '@taiga-ui/cdk/types';
-import {tuiIsNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiIsFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TUI_DATA_LIST_ACCESSOR,
@@ -49,7 +49,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     standalone: false,
     selector: 'tui-combo-box',
     templateUrl: './combo-box.template.html',
-    styleUrls: ['./combo-box.style.less'],
+    styleUrl: './combo-box.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiComboBoxComponent),
@@ -116,8 +116,7 @@ export class TuiComboBoxComponent<T>
 
     public get focused(): boolean {
         return (
-            tuiIsNativeFocused(this.nativeFocusableElement) ||
-            !!this.dropdown?.tuiDropdownOpen
+            tuiIsFocused(this.nativeFocusableElement) || !!this.dropdown?.tuiDropdownOpen
         );
     }
 

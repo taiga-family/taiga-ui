@@ -1,28 +1,30 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiButton, type TuiDialogContext, TuiDialogService} from '@taiga-ui/core';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {switchMap} from 'rxjs';
+
+import {DialogComponent} from './component';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, TuiAmountPipe, TuiButton],
+    imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
+    private readonly alerts = inject(TuiAlertService);
     private readonly dialogs = inject(TuiDialogService);
 
-    protected money = 1000;
-
-    protected showDialog(content: PolymorpheusContent<TuiDialogContext>): void {
-        this.dialogs.open(content).subscribe();
-    }
-
-    protected withdraw(): void {
-        this.money -= 100;
+    protected click(): void {
+        this.dialogs
+            .open<string>(new PolymorpheusComponent(DialogComponent), {
+                label: 'Edit info',
+                size: 's',
+                data: 'Alex Inkin',
+            })
+            .pipe(switchMap((name) => this.alerts.open(name)))
+            .subscribe();
     }
 }

@@ -1,3 +1,5 @@
 <div tuiItemGroup>
-    <tui-chip *ngFor="let chip of chips">{{ chip }}</tui-chip>
+    @for (chip of chips; track chip) {
+        <tui-chip>{{ chip }}</tui-chip>
+    }
 </div>

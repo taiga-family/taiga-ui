@@ -5,7 +5,6 @@ import {TuiDemo} from '@demo/utils';
 import {TuiTablePagination, type TuiTablePaginationEvent} from '@taiga-ui/addon-table';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiTablePagination],
     templateUrl: './index.html',
     encapsulation,

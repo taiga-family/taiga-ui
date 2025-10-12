@@ -5,7 +5,6 @@ import {TuiButton, TuiRoot} from '@taiga-ui/core';
 
 describe('TuiSheetDialog', () => {
     @Component({
-        standalone: true,
         imports: [TuiButton, TuiRepeatTimes, TuiRoot, TuiSheetDialog],
         template: `
             <tui-root>
@@ -41,7 +40,7 @@ describe('TuiSheetDialog', () => {
         protected open = false;
 
         protected readonly options: Partial<TuiSheetDialogOptions> = {
-            closeable: false,
+            closable: false,
         };
     }
 

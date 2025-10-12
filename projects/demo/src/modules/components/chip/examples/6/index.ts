@@ -6,10 +6,9 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiAvatar, TuiChip, TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiAvatar, TuiChip, TuiFade],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

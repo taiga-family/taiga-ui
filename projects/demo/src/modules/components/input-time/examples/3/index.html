@@ -9,10 +9,7 @@
             tuiInputTime
         />
     </tui-textfield>
-    <tui-error
-        formControlName="required"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="required" />
 
     <tui-textfield>
         <label tuiLabel>Optional field</label>
@@ -22,10 +19,7 @@
             tuiUnfinishedValidator
         />
     </tui-textfield>
-    <tui-error
-        formControlName="optional"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="optional" />
 
     <footer>
         <button

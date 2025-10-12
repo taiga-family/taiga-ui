@@ -8,6 +8,7 @@ import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {tuiTextfieldOptionsProvider} from '@taiga-ui/core/components/textfield';
 import {tuiDropdownOptionsProvider} from '@taiga-ui/core/directives/dropdown';
+import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiBreadcrumbsOptionsProvider} from '@taiga-ui/kit/components/breadcrumbs';
 import {tuiTabsOptionsProvider} from '@taiga-ui/kit/components/tabs';
 
@@ -17,6 +18,7 @@ const PROVIDERS = [
     tuiLinkOptionsProvider({appearance: 'action-grayscale'}),
     tuiTabsOptionsProvider({size: 'm'}),
     tuiDropdownOptionsProvider({align: 'right'}),
+    tuiBadgeOptionsProvider({size: 'm'}),
 ];
 
 @Component({
@@ -29,7 +31,7 @@ const PROVIDERS = [
         <ng-content />
         <ng-content select="tui-tabs,[tuiTabs]" />
     `,
-    styleUrls: ['./subheader.style.less'],
+    styleUrl: './subheader.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -51,7 +53,7 @@ export class TuiSubheaderComponent {}
             <ng-content select="[tuiButton],[tuiIconButton]" />
         </div>
     `,
-    styleUrls: ['./subheader.style.less'],
+    styleUrl: './subheader.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [PROVIDERS, tuiButtonOptionsProvider({size: 's'})],

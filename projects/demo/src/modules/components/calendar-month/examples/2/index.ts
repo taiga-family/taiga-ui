@@ -5,7 +5,6 @@ import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
 import {TuiCalendarMonth, tuiCalendarMonthOptionsProvider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiCalendarMonth],
     templateUrl: './index.html',
     encapsulation,

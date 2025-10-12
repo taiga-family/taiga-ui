@@ -206,7 +206,7 @@
 
     /* stylelint-disable-next-line no-duplicate-selectors */
     &::-moz-range-progress {
-        block-size: 100%;
+        block-size: var(--tui-thickness);
         background: @thumb-color;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -214,20 +214,12 @@
 }
 
 :host-context(tui-textfield) :host([type='range']) {
-    --tui-radius: var(--tui-radius-m);
-    @gap: calc(var(--tui-radius) / 2);
-
     top: 100%;
-    left: @gap;
-    right: @gap;
-    inline-size: calc(100% - @gap * 2); // Double check Firefox if you want to set `width: auto`
+    left: var(--t-padding);
+    right: var(--t-padding);
+    inline-size: calc(100% - var(--t-padding) * 2); // TODO: Use `auto` after bumping Firefox to 126+
     block-size: 1rem;
     margin: calc(-0.5rem - var(--tui-thickness) / 2) 0 0;
     padding: 0;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: calc(var(--tui-radius) * 10) calc(var(--tui-radius) * 2);
-}
-
-:host-context(tui-textfield[data-size='l']) :host([type='range']) {
-    --tui-radius: var(--tui-radius-l);
+    pointer-events: auto;
 }

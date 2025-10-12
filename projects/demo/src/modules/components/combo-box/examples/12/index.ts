@@ -13,7 +13,6 @@ import {
 import {Option} from './option';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiChevron,

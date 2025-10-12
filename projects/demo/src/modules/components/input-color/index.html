@@ -22,13 +22,14 @@
         </code>
         + ❤️
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
     </ng-template>
 
     <ng-template pageTab>
@@ -38,12 +39,9 @@
                     [tuiTextfieldCleaner]="textfieldDoc.cleaner"
                     [tuiTextfieldSize]="textfieldDoc.size"
                 >
-                    <label
-                        *ngIf="textfieldDoc.size !== 's'"
-                        tuiLabel
-                    >
-                        Choose color
-                    </label>
+                    @if (textfieldDoc.size !== 's') {
+                        <label tuiLabel>Choose color</label>
+                    }
 
                     <input
                         list="colors"

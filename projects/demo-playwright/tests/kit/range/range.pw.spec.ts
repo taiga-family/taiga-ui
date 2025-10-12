@@ -2,21 +2,24 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDocumentationPagePO, tuiGoto, TuiRangePO} from '@demo-playwright/utils';
 import {expect, type Locator, test} from '@playwright/test';
 
-test.describe('TuiRange', () => {
-    test.beforeEach(async ({page, browserName}) => {
-        await tuiGoto(page, DemoRoute.Range);
+const {describe, beforeEach} = test;
 
-        // TODO: why does this test keep failing in safari
-        // eslint-disable-next-line playwright/no-skipped-test
-        test.skip(browserName !== 'chromium', 'This feature is only relevant in Chrome');
-    });
+describe('TuiRange', () => {
+    let example: Locator;
+    let range: TuiRangePO;
 
-    test.describe('examples page', () => {
-        let example: Locator;
-        let range: TuiRangePO;
+    describe('examples page', () => {
+        beforeEach(async ({page, browserName}) => {
+            await tuiGoto(page, DemoRoute.Range);
+            // TODO: why does this test keep failing in safari
+            test.skip(
+                browserName !== 'chromium',
+                'This feature is only relevant in Chrome',
+            );
+        });
 
-        test.describe('change selected range on click', () => {
-            test.beforeEach(({page}) => {
+        describe('change selected range on click', () => {
+            beforeEach(({page}) => {
                 example = new TuiDocumentationPagePO(page).getExample('#sizes');
                 range = new TuiRangePO(example.locator('tui-range').first());
             });
@@ -62,9 +65,9 @@ test.describe('TuiRange', () => {
             });
         });
 
-        test.describe('keyboard interactions', () => {
-            test.describe('basic range (from 0 to 100 with 25 steps). Initial value [0, 25]', () => {
-                test.beforeEach(({page}) => {
+        describe('keyboard interactions', () => {
+            describe('basic range (from 0 to 100 with 25 steps). Initial value [0, 25]', () => {
+                beforeEach(({page}) => {
                     example = new TuiDocumentationPagePO(page).getExample('#segments');
                     range = new TuiRangePO(example.locator('tui-range'));
                 });
@@ -234,10 +237,10 @@ test.describe('TuiRange', () => {
                 });
             });
 
-            test.describe('range with keySteps (from 0 to 1M) with 8 steps. Initial value [0, 100_000]', () => {
+            describe('range with keySteps (from 0 to 1M) with 8 steps. Initial value [0, 100_000]', () => {
                 let output: Locator;
 
-                test.beforeEach(({page}) => {
+                beforeEach(({page}) => {
                     example = new TuiDocumentationPagePO(page).getExample('#key-steps');
                     range = new TuiRangePO(example.locator('tui-range'));
                     output = example.locator('output code');
@@ -387,6 +390,31 @@ test.describe('TuiRange', () => {
                         .toHaveScreenshot('12-3-range-5000-5000.png');
                 });
             });
+        });
+    });
+
+    describe('API page', () => {
+        beforeEach(({page}) => {
+            example = new TuiDocumentationPagePO(page).apiPageExample;
+            range = new TuiRangePO(example.locator('tui-range').first());
+        });
+
+        test('click on the middle of the track | [min]="0" & [max]="1" & [step]="0.05"', async ({
+            page,
+        }) => {
+            const width = 300;
+
+            await tuiGoto(
+                page,
+                `${DemoRoute.Range}/API?sandboxWidth=${width}&min=0&max=1&step=0.05&sandboxExpanded=true`,
+            );
+            await range.host.click({position: {x: width / 2, y: 0}});
+
+            await expect(range.left).toHaveValue('0');
+            await expect(range.right).toHaveValue('0.5');
+            await expect(example).toHaveScreenshot(
+                '13-range--min-0--max-1--step-0.05--click-middle.png',
+            );
         });
     });
 });

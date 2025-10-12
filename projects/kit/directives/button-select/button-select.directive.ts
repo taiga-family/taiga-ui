@@ -6,7 +6,6 @@ import {
     tuiAsOptionContent,
     type TuiDataListHost,
 } from '@taiga-ui/core/components/data-list';
-import {TuiWithTextfieldDropdown} from '@taiga-ui/core/components/textfield';
 import {
     TuiDropdownDirective,
     tuiDropdownOpen,
@@ -23,12 +22,7 @@ import {TuiSelectOption} from '@taiga-ui/kit/components/select';
         tuiAsDataListHost(TuiButtonSelect),
         tuiDropdownOptionsProvider({align: 'right'}),
     ],
-    hostDirectives: [
-        TuiDropdownDirective,
-        TuiNativeValidator,
-        TuiWithDropdownOpen,
-        TuiWithTextfieldDropdown,
-    ],
+    hostDirectives: [TuiDropdownDirective, TuiNativeValidator, TuiWithDropdownOpen],
 })
 export class TuiButtonSelect<T> extends TuiControl<T> implements TuiDataListHost<T> {
     private readonly open = tuiDropdownOpen();

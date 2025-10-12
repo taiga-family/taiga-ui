@@ -6,7 +6,6 @@ import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core';
 import {TuiBadge, TuiFade, TuiRadioList} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiBadge, TuiDemo, TuiFade, TuiRadioList],
     templateUrl: './index.html',
     changeDetection,

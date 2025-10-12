@@ -13,7 +13,6 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['InputNumber', 'InputSlider', 'InputRange', 'Range', 'Slider'],
     ['InputCard', 'InputCardGroup'],
     ['Calendar', 'CalendarRange', 'MobileCalendar', 'CalendarMonth'],
-    ['Error', 'FieldError'],
     ['InputNumber', 'Money'],
     ['InputPhone', 'InputPhoneInternational'],
     ['Button', 'ButtonGroup', 'Link'],

@@ -9,7 +9,6 @@ import {TuiAvatar, TuiBadge, TuiComment} from '@taiga-ui/kit';
 import {TuiBlockDetails} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         TuiAmountPipe,

@@ -13,7 +13,6 @@ export const TUI_HOME_COMPONENT = new InjectionToken(
 );
 
 @Component({
-    standalone: true,
     imports: [NgComponentOutlet, TuiDemo],
     templateUrl: './index.html',
     changeDetection,

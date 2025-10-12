@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TuiMonth, TuiMonthRange} from '@taiga-ui/cdk';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga} from '@taiga-ui/core';
 import {TuiInputMonthRangeComponent, TuiInputMonthRangeModule} from '@taiga-ui/legacy';
 
 describe('InputMonthRange', () => {
@@ -28,7 +28,7 @@ describe('InputMonthRange', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

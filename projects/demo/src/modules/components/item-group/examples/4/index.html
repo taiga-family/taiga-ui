@@ -1,6 +1,6 @@
 <div tuiItemGroup>
     <tui-items-with-more [linesLimit]="linesLimit">
-        <ng-container *ngFor="let chip of chips">
+        @for (chip of chips; track chip) {
             <label
                 *tuiItem
                 tuiChip
@@ -16,7 +16,7 @@
                     [(ngModel)]="selected"
                 />
             </label>
-        </ng-container>
+        }
 
         <ng-template
             let-index

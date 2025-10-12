@@ -1,9 +1,10 @@
-<div
-    *ngFor="let stop of stops"
-    #stops
-    class="t-stop"
-    [style.top]="stop"
-></div>
+@for (stop of stops; track stop) {
+    <div
+        #stops
+        class="t-stop"
+        [style.top]="stop"
+    ></div>
+}
 <div
     #content
     class="t-content"

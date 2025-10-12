@@ -1,25 +1,24 @@
-<ng-container *ngIf="items.changes | async" />
-<ng-container *ngIf="itemsLimit > 1; else plain">
-    <ng-container *ngIf="itemsLimit !== 2">
+@if (items.changes | async) {}
+@if (itemsLimit > 1) {
+    @if (itemsLimit !== 2) {
         <ng-container [ngTemplateOutlet]="items.first" />
         <ng-container [ngTemplateOutlet]="separator" />
-    </ng-container>
+    }
     <tui-items-with-more
         side="start"
         [itemsLimit]="itemsLimit - 2"
         [required]="items.length + offset - 2"
     >
-        <ng-container *ngFor="let item of items; let last = last">
-            <ng-container *ngIf="item !== items.first || itemsLimit === 2">
+        @for (item of items; track item) {
+            @if (item !== items.first || itemsLimit === 2) {
                 <ng-container *tuiItem>
                     <ng-container [ngTemplateOutlet]="item" />
-                    <ng-container
-                        *ngIf="!last"
-                        [ngTemplateOutlet]="separator"
-                    />
+                    @if (!$last) {
+                        <ng-container [ngTemplateOutlet]="separator" />
+                    }
                 </ng-container>
-            </ng-container>
-        </ng-container>
+            }
+        }
         <ng-template
             let-index
             tuiMore
@@ -40,36 +39,35 @@
             </span>
             <ng-template #dropdown>
                 <tui-data-list size="s">
-                    <ng-container *ngFor="let item of items; let i = index">
-                        <span
-                            *ngIf="i + offset && i <= index && item !== items.last"
-                            tuiOption
-                            class="t-option"
-                        >
-                            <ng-container [ngTemplateOutlet]="item" />
-                        </span>
-                    </ng-container>
+                    @for (item of items; track item) {
+                        @if ($index + offset && $index <= index && item !== items.last) {
+                            <span
+                                tuiOption
+                                class="t-option"
+                            >
+                                <ng-container [ngTemplateOutlet]="item" />
+                            </span>
+                        }
+                    }
                 </tui-data-list>
             </ng-template>
         </ng-template>
     </tui-items-with-more>
-</ng-container>
-<ng-template #separator>
-    <tui-icon
-        *ngIf="options.icon.length > 1; else char"
-        class="t-icon"
-        [icon]="options.icon"
-    />
-    <ng-template #char>
-        <span class="t-char">{{ options.icon }}</span>
-    </ng-template>
-</ng-template>
-<ng-template #plain>
-    <ng-container *ngFor="let item of items; let last = last">
+} @else {
+    @for (item of items; track item) {
         <ng-container [ngTemplateOutlet]="item" />
-        <ng-container
-            *ngIf="!last"
-            [ngTemplateOutlet]="separator"
+        @if (!$last) {
+            <ng-container [ngTemplateOutlet]="separator" />
+        }
+    }
+}
+<ng-template #separator>
+    @if (options.icon.length > 1) {
+        <tui-icon
+            class="t-icon"
+            [icon]="options.icon"
         />
-    </ng-container>
+    } @else {
+        <span class="t-char">{{ options.icon }}</span>
+    }
 </ng-template>

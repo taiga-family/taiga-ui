@@ -38,41 +38,41 @@
             [(paused)]="paused"
             [(volume)]="volume"
         ></audio>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="currentTime"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="currentTime"
+        <table tuiDocAPI>
+            <tr
+                name="[(currentTime)]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="currentTime"
             >
-                Current time
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="paused"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="paused"
+                Current time (seconds)
+            </tr>
+            <tr
+                name="[(paused)]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="paused"
             >
                 Paused state
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="playbackRate"
-                documentationPropertyType="number"
-                [(documentationPropertyValue)]="playbackRate"
+            </tr>
+            <tr
+                name="[playbackRate]"
+                tuiDocAPIItem
+                type="number"
+                [(value)]="playbackRate"
             >
                 Playback speed
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="volume"
-                documentationPropertyType="number"
-                [documentationPropertyValues]="volumeVariants"
-                [(documentationPropertyValue)]="volume"
+            </tr>
+            <tr
+                name="[(volume)]"
+                tuiDocAPIItem
+                type="number"
+                [items]="volumeVariants"
+                [(value)]="volume"
             >
                 Volume
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

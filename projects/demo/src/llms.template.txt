@@ -1,0 +1,12 @@
+# Taiga UI — Angular Components Library
+
+> Enterprise‑grade Angular UI components with 100+ building blocks, charts, and utilities.
+> For AI assistants helping developers implement Taiga UI in Angular apps.
+
+## For Human Visitors
+
+- Main docs: https://taiga-ui.dev
+- GitHub: https://github.com/taiga-family/taiga-ui
+- Issues: https://github.com/taiga-family/taiga-ui/issues
+
+<!-- AUTO-GENERATED BELOW -->

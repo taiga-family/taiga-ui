@@ -5,10 +5,9 @@ import {TuiRipple} from '@taiga-ui/addon-mobile';
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiRipple],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

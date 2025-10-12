@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,8 +6,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFiles} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, FormsModule, NgForOf, TuiFiles],
+    imports: [AsyncPipe, FormsModule, TuiFiles],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

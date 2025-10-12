@@ -8,10 +8,11 @@
     {{ isOpen ? 'Hide me' : 'Show opening crawl' }}
 </button>
 
-<div
-    *ngIf="isOpen"
-    tuiAnimated
-    class="container"
->
-    A long time ago in a galaxy far, far away....
-</div>
+@if (isOpen) {
+    <div
+        tuiAnimated
+        class="container"
+    >
+        A long time ago in a galaxy far, far away....
+    </div>
+}

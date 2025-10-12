@@ -29,19 +29,19 @@
     border-radius: 100%;
     color: var(--tui-text-primary-on-accent-1);
 
-    &:disabled._readonly {
+    &:disabled._readonly._readonly {
         opacity: 1;
     }
 
     &::before {
         .fullsize(absolute, inset);
-        .transition(transform);
 
         content: '';
         margin: auto;
         border-radius: 100%;
         background: currentColor;
         transform: scale(0);
+        transition-property: transform;
     }
 
     &:checked::before {

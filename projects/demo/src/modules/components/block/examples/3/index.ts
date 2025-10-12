@@ -6,7 +6,6 @@ import {TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBlock, TuiCheckbox, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiAvatar,
@@ -18,7 +17,7 @@ import {TuiAvatar, TuiBlock, TuiCheckbox, TuiSwitch, TuiTooltip} from '@taiga-ui
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

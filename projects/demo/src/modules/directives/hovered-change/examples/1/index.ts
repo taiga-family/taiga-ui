@@ -5,10 +5,9 @@ import {TuiHovered} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiHovered],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -1,4 +1,3 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -6,10 +5,9 @@ import {TuiIcon} from '@taiga-ui/core';
 import {TuiTiles} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [NgForOf, NgIf, TuiIcon, TuiTiles],
+    imports: [TuiIcon, TuiTiles],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

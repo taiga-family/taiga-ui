@@ -1,21 +1,22 @@
-<router-outlet *ngIf="isLanding(); else portal" />
-<ng-template #portal>
+@if (isLanding()) {
+    <router-outlet />
+} @else {
     <tui-doc-main #main>
         <div
             ngProjectAs="tuiDocHeader"
             class="app-links"
         >
-            <img
-                *ngIf="isChristmas"
-                alt="Santa hat"
-                src="/assets/images/hat.svg"
-                class="app-christmas"
-            />
-
+            @if (isChristmas) {
+                <img
+                    alt="Santa hat"
+                    src="/assets/images/hat.svg"
+                    class="app-christmas"
+                />
+            }
             <version-manager />
-
-            <tui-algolia-search *ngIf="!defaultSearchEnabled()" />
-
+            @if (!defaultSearchEnabled()) {
+                <tui-algolia-search />
+            }
             <button
                 appearance="outline-grayscale"
                 iconStart="@tui.ellipsis"
@@ -40,7 +41,8 @@
                         <hr />
                         <a
                             href="https://github.com/taiga-family/taiga-ui"
-                            iconStart="assets/images/github.svg"
+                            iconStart="@tui.github"
+                            new
                             rel="noreferrer"
                             target="_blank"
                             tuiOption
@@ -50,7 +52,8 @@
                         </a>
                         <a
                             href="https://t.me/taiga_ui"
-                            iconStart="assets/icons/telegram.svg"
+                            iconStart="@tui.send"
+                            new
                             rel="noreferrer"
                             target="_blank"
                             tuiOption
@@ -61,6 +64,7 @@
                         <a
                             href="https://discord.gg/zrB2EdJjEy"
                             iconStart="assets/icons/discord.svg"
+                            new
                             rel="noreferrer"
                             target="_blank"
                             tuiOption
@@ -69,7 +73,8 @@
                             Discord
                         </a>
                         <a
-                            iconStart="assets/icons/stackblitz.svg"
+                            iconStart="@tui.zap"
+                            new
                             tuiOption
                             class="app-link-dropdown"
                             [routerLink]="routes.StackblitzStarter"
@@ -79,7 +84,6 @@
                     </tui-data-list>
                 </ng-template>
             </button>
-
             <tui-badged-content class="app-link">
                 <tui-icon
                     icon="@tui.star"
@@ -88,61 +92,60 @@
                     [style.color]="'orange'"
                     [style.font-size.rem]="1"
                 />
-
                 <a
+                    appearance="outline-grayscale"
                     href="https://github.com/taiga-family/taiga-ui"
                     rel="noreferrer"
+                    size="xs"
                     target="_blank"
                     title="Taiga UI source code on GitHub"
+                    tuiButton
+                    class="app-link"
                 >
-                    <button
-                        appearance="outline-grayscale"
-                        size="s"
-                        tuiButton
-                        type="button"
-                        class="app-link"
-                    >
-                        <tui-icon
-                            icon="@tui.github"
-                            [style.height.rem]="1"
-                        />
-                        {{ stars() }}
-                    </button>
+                    <tui-icon
+                        icon="@tui.github"
+                        [style.height.rem]="1"
+                    />
+                    {{ stars() }}
                 </a>
             </tui-badged-content>
-
             <a
                 appearance="icon"
                 href="https://t.me/taiga_ui"
                 iconStart="assets/icons/telegram.svg"
                 rel="noreferrer"
+                size="xs"
                 target="_blank"
                 title="Get help on Telegram"
-                tuiLink
+                tuiIconButton
                 class="app-link"
             ></a>
-
             <a
                 appearance="icon"
                 href="https://discord.gg/zrB2EdJjEy"
                 iconStart="assets/icons/discord.svg"
                 rel="noreferrer"
+                size="xs"
                 target="_blank"
                 title="Get help on Angular Discord"
-                tuiLink
+                tuiIconButton
                 class="app-link"
             ></a>
-
             <a
                 appearance="icon"
-                iconStart="assets/icons/stackblitz.svg"
+                size="xs"
                 title="Taiga UI StackBlitz Starter"
-                tuiLink
+                tuiIconButton
                 class="app-link"
                 [routerLink]="routes.StackblitzStarter"
-            ></a>
+            >
+                <tui-icon
+                    background="@tui.square-filled"
+                    icon="@tui.zap-filled"
+                    class="app-stackblitz"
+                />
+            </a>
         </div>
-        <tui-sheets-host ngProjectAs="tuiOverContent" />
         <custom-host ngProjectAs="tuiOverContent" />
     </tui-doc-main>
-</ng-template>
+}

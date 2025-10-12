@@ -21,22 +21,23 @@
             <code>formControlName</code>
         </tui-notification>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="index ? null : platformDescription"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        >
-            <ng-template #platformDescription>
-                Add import of
-                <code>&#64;taiga-ui/addon-mobile/styles/taiga-ui-mobile.less</code>
-                to your encapsulated global styles to enable power of
-                <code>TuiPlatform</code>
-                directive.
-            </ng-template>
-        </tui-doc-example>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$index ? null : platformDescription"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            >
+                <ng-template #platformDescription>
+                    Add import of
+                    <code>&#64;taiga-ui/addon-mobile/styles/taiga-ui-mobile.less</code>
+                    to your encapsulated global styles to enable power of
+                    <code>TuiPlatform</code>
+                    directive.
+                </ng-template>
+            </tui-doc-example>
+        }
     </ng-template>
 
     <tui-setup *pageTab="'Setup'" />

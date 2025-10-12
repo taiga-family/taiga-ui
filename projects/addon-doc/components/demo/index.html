@@ -32,71 +32,78 @@
             #content
             id="demo-content"
         >
-            <form
-                *ngIf="testForm"
-                class="t-form"
-                [formGroup]="testForm"
-            >
-                <div class="t-input-wrapper">
-                    <ng-container [ngTemplateOutlet]="template" />
-                </div>
-                <button
-                    automation-id="tui-demo-button__toggle-details"
-                    size="s"
-                    tuiButton
-                    type="button"
-                    class="t-button"
-                    [tuiChevron]="expanded"
-                    (click)="toggleDetails()"
+            @if (testForm) {
+                <form
+                    class="t-form"
+                    [formGroup]="testForm"
                 >
-                    {{ texts[2] }}
-                </button>
-                <tui-expand
-                    class="t-expand"
-                    [expanded]="expanded"
-                >
-                    <ng-template tuiExpandContent>
-                        <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
-                        <div
-                            tuiGroup
-                            class="t-form-controls"
-                        >
-                            <tui-select
-                                automation-id="tui-demo-select__expand-update-on"
-                                tuiTextfieldSize="s"
-                                class="t-select"
-                                [ngModel]="updateOn"
-                                [ngModelOptions]="{standalone: true}"
-                                (ngModelChange)="updateOnChange($event)"
+                    <div class="t-input-wrapper">
+                        <ng-container [ngTemplateOutlet]="template" />
+                    </div>
+                    <button
+                        automation-id="tui-demo-button__toggle-details"
+                        size="s"
+                        tuiButton
+                        type="button"
+                        class="t-button"
+                        [tuiChevron]="expanded"
+                        (click)="toggleDetails()"
+                    >
+                        {{ texts[2] }}
+                    </button>
+                    <tui-expand
+                        class="t-expand"
+                        [expanded]="expanded"
+                    >
+                        <ng-template tuiItem>
+                            <pre class="t-value">Form data: {{ testForm.value | json }}</pre>
+                            <div
+                                tuiGroup
+                                class="t-form-controls"
                             >
-                                updateOn
-                                <tui-data-list-wrapper
-                                    *tuiDataList
-                                    [items]="updateOnVariants"
-                                />
-                            </tui-select>
-                            <button
-                                automation-id="tui-demo-button__reset-state"
-                                size="s"
-                                tuiButton
-                                type="reset"
-                                [style.flex]="'0 0 auto'"
-                            >
-                                Reset
-                            </button>
-                            <button
-                                automation-id="tui-demo-button__submit-state"
-                                size="s"
-                                tuiButton
-                                type="submit"
-                                [style.flex]="'0 0 auto'"
-                            >
-                                Submit
-                            </button>
-                        </div>
-                    </ng-template>
-                </tui-expand>
-            </form>
+                                <tui-textfield
+                                    tuiChevron
+                                    tuiTextfieldSize="s"
+                                    class="t-select"
+                                    [tuiTextfieldCleaner]="false"
+                                >
+                                    <input
+                                        automation-id="tui-demo-select__expand-update-on"
+                                        tuiSelect
+                                        [ngModel]="updateOn"
+                                        [ngModelOptions]="{standalone: true}"
+                                        (ngModelChange)="updateOnChange($event)"
+                                    />
+
+                                    <tui-data-list-wrapper
+                                        *tuiDropdown
+                                        new
+                                        [items]="updateOnVariants"
+                                    />
+                                </tui-textfield>
+                                <button
+                                    automation-id="tui-demo-button__reset-state"
+                                    size="s"
+                                    tuiButton
+                                    type="reset"
+                                    [style.flex]="'0 0 auto'"
+                                >
+                                    Reset
+                                </button>
+                                <button
+                                    automation-id="tui-demo-button__submit-state"
+                                    size="s"
+                                    tuiButton
+                                    type="submit"
+                                    [style.flex]="'0 0 auto'"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+                        </ng-template>
+                    </tui-expand>
+                </form>
+            }
             <ng-content />
         </div>
     </div>

@@ -8,10 +8,9 @@ import {TuiPager, TuiProgress} from '@taiga-ui/kit';
 import {map, type Observable, of, takeWhile, tap, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiButton, TuiMapperPipe, TuiPager, TuiProgress],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

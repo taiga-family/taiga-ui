@@ -6,7 +6,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiFloatingContainer} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiFloatingContainer, TuiSheetDialog],
     templateUrl: './index.html',
     encapsulation,
@@ -17,7 +16,7 @@ export default class Example {
 
     protected readonly options: Partial<TuiSheetDialogOptions> = {
         label: 'Alexander Inkin',
-        closeable: true,
+        closable: true,
         fullscreen: true,
     };
 }

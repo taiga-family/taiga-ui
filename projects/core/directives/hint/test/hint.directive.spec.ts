@@ -6,7 +6,7 @@ import {
     TestBed,
     tick,
 } from '@angular/core/testing';
-import {TuiHint, TuiRoot} from '@taiga-ui/core';
+import {provideTaiga, TuiHint, TuiRoot} from '@taiga-ui/core';
 
 type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
@@ -21,26 +21,30 @@ describe('Hint', () => {
                     tuiHintDirection="top"
                     class="host"
                     [tuiHint]="hint"
+                    (tuiHintVisible)="hoverStateChanged($event)"
                 >
                     Tooltip host
                 </div>
             </tui-root>
         `,
-        styles: [
-            `
-                .host {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                }
-            `,
-        ],
+        styles: `
+            .host {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+            }
+        `,
         // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
         changeDetection: ChangeDetectionStrategy.Default,
     })
     class Test {
         public hint: Hint = 'Tooltip text';
+        public hoverState = false;
+
+        public hoverStateChanged(hoverState: boolean): void {
+            this.hoverState = hoverState;
+        }
     }
 
     let fixture: ComponentFixture<Test>;
@@ -49,6 +53,7 @@ describe('Hint', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         document.body.style.margin = '0';
@@ -79,6 +84,21 @@ describe('Hint', () => {
 
             expect(getTooltip()?.textContent?.trim()).toBe('Tooltip text');
         });
+
+        it('should emit tuiHintVisible on mouseenter/mouseout', fakeAsync(async () => {
+            await fixture.whenStable();
+            fixture.detectChanges();
+
+            expect(component.hoverState).toBeTruthy();
+
+            getHost().dispatchEvent(new Event('mouseout'));
+            fixture.detectChanges();
+            tick(200);
+            fixture.detectChanges();
+            discardPeriodicTasks();
+
+            expect(component.hoverState).toBeFalsy();
+        }));
 
         it('is hidden immediately if null is passed as content', async () => {
             setHint(null);

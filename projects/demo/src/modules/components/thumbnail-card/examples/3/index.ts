@@ -4,10 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 
 @Component({
-    standalone: true,
     imports: [TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, type DebugElement} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiRoot} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 import {tuiPushOptionsProvider} from '../push.options';
@@ -31,12 +30,13 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [tuiPushOptionsProvider({heading}), NG_EVENT_PLUGINS],
+            providers: [tuiPushOptionsProvider({heading}), provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);
         tuiPushService = TestBed.inject(TuiPushService);
         pageObject = new TuiPageObject(fixture);
+        fixture.detectChanges();
     });
 
     describe('heading', () => {

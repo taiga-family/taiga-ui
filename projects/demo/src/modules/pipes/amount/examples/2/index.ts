@@ -6,7 +6,6 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiNumberFormat} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiAmountPipe, TuiNumberFormat],
     templateUrl: './index.html',
     encapsulation,

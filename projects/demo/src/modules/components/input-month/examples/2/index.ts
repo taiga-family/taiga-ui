@@ -1,29 +1,16 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiMonth} from '@taiga-ui/cdk';
-import {TuiError, TuiTextfield} from '@taiga-ui/core';
-import {
-    TuiFieldErrorPipe,
-    TuiInputMonth,
-    tuiValidationErrorsProvider,
-} from '@taiga-ui/kit';
+import {TuiError, TuiTextfield, tuiValidationErrorsProvider} from '@taiga-ui/core';
+import {TuiInputMonth} from '@taiga-ui/kit';
 import {interval, map, startWith} from 'rxjs';
 
 @Component({
-    standalone: true,
-    imports: [
-        AsyncPipe,
-        ReactiveFormsModule,
-        TuiError,
-        TuiFieldErrorPipe,
-        TuiInputMonth,
-        TuiTextfield,
-    ],
+    imports: [ReactiveFormsModule, TuiError, TuiInputMonth, TuiTextfield],
     templateUrl: './index.html',
-    styles: [':host {display: block; min-height: 4rem}'],
+    styles: ':host {display: block; min-height: 4rem}',
     encapsulation,
     changeDetection,
     providers: [

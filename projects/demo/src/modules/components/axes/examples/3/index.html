@@ -4,11 +4,12 @@
     [verticalLines]="4"
 >
     <div class="t-horizontal-bars">
-        <tui-bar
-            *ngFor="let bar of value; let i = index"
-            size="m"
-            [style.background-color]="'var(--tui-chart-categorical-0' + i + ')'"
-            [style.height.%]="getHeight(bar)"
-        />
+        @for (bar of value; track bar) {
+            <tui-bar
+                size="m"
+                [style.background-color]="`var(--tui-chart-categorical-0${$index})`"
+                [style.height.%]="getHeight(bar)"
+            />
+        }
     </div>
 </tui-axes>

@@ -1,83 +1,41 @@
-import {
-    type AfterContentInit,
-    ContentChildren,
-    DestroyRef,
-    Directive,
-    inject,
-    Input,
-    type QueryList,
-} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiQueryListChanges} from '@taiga-ui/cdk/observables';
-import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiGroup} from '@taiga-ui/core/directives/group';
-import {filter, identity, map, merge, pairwise, switchMap} from 'rxjs';
+import {Directive, inject, model, type OnChanges} from '@angular/core';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils';
+import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
+import {tuiAvatarOptionsProvider} from '@taiga-ui/kit/components/avatar';
+import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 
-import {TuiAccordionItem} from './accordion-item.component';
+import {TuiAccordionComponent} from './accordion.component';
 
 @Directive({
     standalone: true,
-    selector: 'tui-accordion',
-    hostDirectives: [
-        {
-            directive: TuiGroup,
-            inputs: ['rounded'],
-        },
+    selector: 'button[tuiAccordion]',
+    providers: [
+        tuiAvatarOptionsProvider({size: 's'}),
+        tuiButtonOptionsProvider({appearance: 'outline-grayscale'}),
     ],
+    hostDirectives: [TuiButton, TuiChevron],
+    host: {
+        tuiButton: '',
+        tuiAccordion: '',
+        type: 'button',
+        '[class._open]': 'open()',
+        '(click)': 'toggle()',
+    },
 })
-export class TuiAccordionDirective implements AfterContentInit {
-    private readonly destroyRef = inject(DestroyRef);
+export class TuiAccordionDirective implements OnChanges {
+    private readonly accordion = inject(TuiAccordionComponent);
 
-    @ContentChildren(TuiAccordionItem)
-    protected readonly accordionItems: QueryList<TuiAccordionItem> = EMPTY_QUERY;
+    public readonly open = model<boolean | ''>(false, {alias: 'tuiAccordion'});
 
-    @Input()
-    public closeOthers = true;
+    public readonly size = tuiDirectiveBinding(TuiButton, 'size', this.accordion.size);
+    public readonly chevron = tuiDirectiveBinding(TuiChevron, 'rotated', this.open);
 
-    constructor() {
-        // Not using DI options to avoid changed defaults spilling to content
-        const group = inject(TuiGroup);
-
-        group.orientation = 'vertical';
-        group.collapsed = true;
+    public ngOnChanges(): void {
+        this.accordion.toggle(this);
     }
 
-    public ngAfterContentInit(): void {
-        const {accordionItems} = this;
-        const rows$ = tuiQueryListChanges(accordionItems);
-        const newOpenRow$ = rows$.pipe(
-            pairwise(),
-            map(([previous, current]) =>
-                current.find((item) => !previous.includes(item) && item.open),
-            ),
-            filter(tuiIsPresent),
-        );
-        const rowsOpen$ = merge(
-            rows$.pipe(
-                switchMap((rows) =>
-                    merge(
-                        ...rows.map((row) =>
-                            row.openChange.pipe(
-                                filter(identity),
-                                map(() => row),
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            newOpenRow$,
-        ).pipe(
-            filter(() => this.closeOthers),
-            takeUntilDestroyed(this.destroyRef),
-        );
-
-        rowsOpen$.subscribe((currentRow) => {
-            accordionItems.forEach((row) => {
-                if (currentRow !== row) {
-                    row.close();
-                }
-            });
-        });
+    public toggle(): void {
+        this.open.set(!this.open());
+        this.accordion.toggle(this);
     }
 }

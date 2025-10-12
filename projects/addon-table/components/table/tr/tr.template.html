@@ -1,18 +1,16 @@
-<ng-container *ngIf="cells$ | async as items; else dummy">
-    <ng-container
-        *ngFor="let key of table.columns"
-        [ngTemplateOutlet]="(items[key] && items[key].template) || plain"
-    >
-        <ng-template #plain>
-            <td
-                *ngIf="item$ | async as item"
-                tuiTd
-            >
-                {{ item[key] }}
-            </td>
-        </ng-template>
-    </ng-container>
-</ng-container>
-<ng-template #dummy>
+@if (cells$ | async; as items) {
+    @for (key of table.columns; track key) {
+        <ng-container [ngTemplateOutlet]="(items[key] && items[key].template) || plain">
+            <ng-template #plain>
+                @if (item$ | async; as item) {
+                    <td tuiTd>
+                        {{ item[key] }}
+                    </td>
+                }
+            </ng-template>
+        </ng-container>
+    }
+} @else {
     <td></td>
-</ng-template>
+}
+<ng-content />

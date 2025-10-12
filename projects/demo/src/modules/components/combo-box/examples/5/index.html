@@ -11,11 +11,13 @@
     />
 
     <tui-data-list-wrapper
-        *tuiTextfieldDropdown
+        *tuiDropdown
         new
         [emptyContent]="inputRef.value.length < 2 ? 'Enter at least 2 characters' : 'Nothing found!'"
         [items]="inputRef.value.length < 2 ? [] : items"
     />
 
-    <tui-loader *ngIf="items && showLoader()" />
+    @if (items && showLoader()) {
+        <tui-loader />
+    }
 </tui-textfield>

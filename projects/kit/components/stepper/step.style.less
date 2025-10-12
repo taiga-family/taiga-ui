@@ -60,8 +60,11 @@
     justify-content: center;
     background: var(--tui-background-neutral-1);
     color: var(--tui-text-action);
-    border: 0.5rem solid transparent;
     box-sizing: border-box;
+
+    &::before {
+        font-size: 1rem;
+    }
 
     :host:disabled & {
         background: var(--tui-background-neutral-1);

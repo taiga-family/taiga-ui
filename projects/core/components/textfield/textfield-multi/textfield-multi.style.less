@@ -48,6 +48,7 @@ tui-textfield[multi][multi] {
         align-items: center;
         flex-wrap: wrap;
         padding: var(--t-vertical) 0;
+        transition-duration: inherit;
 
         &::after {
             content: '';
@@ -86,6 +87,7 @@ tui-textfield[multi][multi] {
             block-size: 1.25em;
             max-block-size: 1.25rem;
             max-inline-size: 100%;
+            pointer-events: none;
             transform: translateX(var(--t-scroll));
 
             input {
@@ -136,7 +138,7 @@ tui-textfield[multi][multi] {
     }
 
     &[data-focus='true']:not([data-mode~='readonly']) > .t-items > [tuiLabel] {
-        color: var(--tui-text-primary);
+        color: var(--tui-text-primary) !important;
     }
 
     &[data-mode~='readonly'] > .t-content,

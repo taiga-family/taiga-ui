@@ -8,12 +8,10 @@ import {
     injectContext,
     PolymorpheusComponent,
     PolymorpheusOutlet,
-    PolymorpheusTemplate,
 } from '@taiga-ui/polymorpheus';
 import {takeUntil} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiIcon],
     template: `
         <label style="display: flex; align-items: center">
@@ -26,8 +24,7 @@ import {takeUntil} from 'rxjs';
 class CustomLabel {}
 
 @Component({
-    standalone: true,
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate],
+    imports: [PolymorpheusOutlet],
     template: `
         <h4>Start content</h4>
         <ng-container *polymorpheusOutlet="context.label as text; context: context">
@@ -43,7 +40,6 @@ class AlertExampleWithCustomLabel {
 }
 
 @Component({
-    standalone: true,
     selector: 'tui-alerts-example-5',
     imports: [TuiButton],
     templateUrl: './index.html',

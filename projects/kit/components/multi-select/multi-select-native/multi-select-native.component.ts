@@ -1,4 +1,4 @@
-import {NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject, Input} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
@@ -20,9 +20,8 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
 import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.component';
 
 @Component({
-    standalone: true,
     selector: 'select[tuiMultiSelect]',
-    imports: [NgForOf, NgIf, NgTemplateOutlet, TuiDataListWrapper, TuiTextfield],
+    imports: [NgTemplateOutlet, TuiDataListWrapper, TuiTextfield],
     templateUrl: './multi-select-native.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsOptionContent(TuiMultiSelectOption)],

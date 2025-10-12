@@ -1,18 +1,15 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {type TuiPaymentSystem} from '@taiga-ui/addon-commerce/types';
-import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
-import {TuiIcon, TuiIconPipe} from '@taiga-ui/core/components/icon';
+import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core/types';
 
 import {TUI_THUMBNAIL_CARD_OPTIONS} from './thumbnail-card.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-thumbnail-card',
-    imports: [NgIf, TuiIcon, TuiIconPipe],
+    imports: [TuiIcon],
     templateUrl: './thumbnail-card.template.html',
-    styleUrls: ['./thumbnail-card.style.less'],
+    styleUrl: './thumbnail-card.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size',
@@ -32,7 +29,4 @@ export class TuiThumbnailCard {
 
     @Input()
     public iconEnd = '';
-
-    @Input()
-    public monoHandler: TuiBooleanHandler<TuiPaymentSystem> = this.options.monoHandler;
 }

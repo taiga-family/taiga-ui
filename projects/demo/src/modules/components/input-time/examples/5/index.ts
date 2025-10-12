@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,8 +7,7 @@ import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputTime, tuiInputTimeOptionsProvider, TuiTooltip} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, NgIf, TuiIcon, TuiInputTime, TuiTextfield, TuiTooltip],
+    imports: [FormsModule, TuiIcon, TuiInputTime, TuiTextfield, TuiTooltip],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

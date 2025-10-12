@@ -1,5 +1,5 @@
 /// <reference types="@taiga-ui/tsconfig/ng-dev-mode" />
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     type AfterContentInit,
     ChangeDetectionStrategy,
@@ -13,13 +13,12 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiSliderComponent} from '../slider.component';
 
 @Component({
-    standalone: true,
     selector: '[tuiSliderThumbLabel]',
-    imports: [AsyncPipe, NgIf],
+    imports: [AsyncPipe],
     templateUrl: './slider-thumb-label.template.html',
-    styleUrls: ['./slider-thumb-label.style.less'],
+    styleUrl: './slider-thumb-label.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiHintOptionsProvider({direction: 'top', appearance: 'dark'})],
+    providers: [tuiHintOptionsProvider({direction: 'top', appearance: 'floating'})],
 })
 export class TuiSliderThumbLabel implements AfterContentInit {
     @ContentChild(TuiSliderComponent)

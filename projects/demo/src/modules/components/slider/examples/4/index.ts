@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSliderComponent} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiSliderComponent],
     templateUrl: './index.html',
     encapsulation,

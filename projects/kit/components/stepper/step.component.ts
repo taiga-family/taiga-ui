@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
@@ -10,14 +9,14 @@ import {EMPTY, filter} from 'rxjs';
 import {TuiStepperComponent} from './stepper.component';
 
 @Component({
-    standalone: true,
     selector:
         'button[tuiStep], a[tuiStep]:not([routerLink]), a[tuiStep][routerLink][routerLinkActive]',
-    imports: [NgIf, TuiIcon],
+    imports: [TuiIcon],
     templateUrl: './step.template.html',
-    styleUrls: ['./step.style.less'],
+    styleUrl: './step.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
+        type: 'button',
         '[attr.data-state]': 'stepState',
         '[class._vertical]': 'isVertical',
         '[class._focus-visible]': 'focusVisible',

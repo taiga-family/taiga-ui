@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -22,8 +21,7 @@ const numberOptions = maskitoNumberOptionsGenerator({
 });
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, MaskitoDirective, NgIf, TuiButton, TuiTextfield],
+    imports: [FormsModule, MaskitoDirective, TuiButton, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

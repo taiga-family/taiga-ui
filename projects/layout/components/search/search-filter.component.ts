@@ -1,9 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    effect,
     inject,
     TemplateRef,
-    ViewChild,
+    viewChild,
 } from '@angular/core';
 import {
     tuiDropdown,
@@ -13,7 +14,6 @@ import {
 } from '@taiga-ui/core/directives/dropdown';
 import {TUI_ICON_START} from '@taiga-ui/core/tokens';
 import {TUI_COMMON_ICONS} from '@taiga-ui/layout/tokens';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
     standalone: true,
@@ -31,9 +31,6 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export class TuiSearchFilterComponent {
     private readonly dropdown = tuiDropdown(null);
-
-    @ViewChild(TemplateRef)
-    protected set template(template: PolymorpheusContent) {
-        this.dropdown.set(template);
-    }
+    protected readonly template = viewChild(TemplateRef);
+    protected readonly ef = effect(() => this.dropdown.set(this.template()));
 }

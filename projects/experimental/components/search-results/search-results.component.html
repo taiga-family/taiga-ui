@@ -1,61 +1,59 @@
-<ng-content *ngIf="!textfield.value(); else a" />
-<ng-template #a>
-    <tui-loader
-        *ngIf="!results; else b"
-        class="t-loader"
-    />
-    <ng-template #b>
-        <tui-block-status
-            *ngIf="results && isEmpty(results); else c"
-            size="m"
-            class="t-status"
-        >
-            <img
-                alt=""
-                tuiSlot="top"
-                class="t-empty"
-                [src]="options.empty | tuiIcon"
-            />
-            {{ i18n()?.empty }}
-        </tui-block-status>
-        <ng-template #c>
+@if (!textfield.value()) {
+    <ng-content />
+} @else {
+    @if (!results) {
+        <tui-loader class="t-loader" />
+    } @else {
+        @if (results && isEmpty(results)) {
+            <tui-block-status
+                size="m"
+                class="t-status"
+            >
+                <tui-icon
+                    tuiSlot="top"
+                    class="t-empty"
+                    [icon]="options.empty"
+                />
+                {{ i18n()?.empty }}
+            </tui-block-status>
+        } @else {
             <ng-container *tuiLet="(results | keyvalue: asIs) || [] as items">
                 <tui-scrollbar class="t-scrollbar">
-                    <ng-container *ngFor="let group of items | tuiFilter: notEmpty; let index = index">
-                        <ng-container *ngIf="!active || active === index + 1">
-                            <label
-                                *ngIf="!active && items.length > 1"
-                                class="t-sr-label"
-                            >
-                                {{ group.key }}
-                            </label>
-                            <ng-container
-                                *ngFor="let item of group.value"
-                                [ngTemplateOutlet]="template || null"
-                                [ngTemplateOutletContext]="{$implicit: item}"
-                            />
-                        </ng-container>
-                    </ng-container>
+                    @for (group of items | tuiFilter: notEmpty; track group) {
+                        @if (!active || active === $index + 1) {
+                            @if (!active && items.length > 1) {
+                                <label class="t-sr-label">
+                                    {{ group.key }}
+                                </label>
+                            }
+                            @for (item of group.value; track item) {
+                                <ng-container
+                                    [ngTemplateOutlet]="template || null"
+                                    [ngTemplateOutletContext]="{$implicit: item}"
+                                />
+                            }
+                        }
+                    }
                 </tui-scrollbar>
-                <tui-tabs
-                    *ngIf="items.length > 1"
-                    size="m"
-                    class="t-tabs"
-                    [(activeItemIndex)]="active"
-                    (document:keydown.shift.tab.prevent)="tab(-1)"
-                    (document:keydown.tab.prevent)="tab(1)"
-                >
-                    <button tuiTab>{{ i18n()?.all }}</button>
-                    <ng-container *ngFor="let group of items">
-                        <button
-                            *ngIf="group.value.length"
-                            tuiTab
-                        >
-                            {{ group.key }}
-                        </button>
-                    </ng-container>
-                </tui-tabs>
+                @if (items.length > 1) {
+                    <tui-tabs
+                        size="m"
+                        class="t-tabs"
+                        [(activeItemIndex)]="active"
+                        (document:keydown.shift.tab.prevent)="tab(-1)"
+                        (document:keydown.tab.prevent)="tab(1)"
+                    >
+                        <button tuiTab>{{ i18n()?.all }}</button>
+                        @for (group of items; track group) {
+                            @if (group.value.length) {
+                                <button tuiTab>
+                                    {{ group.key }}
+                                </button>
+                            }
+                        }
+                    </tui-tabs>
+                }
             </ng-container>
-        </ng-template>
-    </ng-template>
-</ng-template>
+        }
+    }
+}

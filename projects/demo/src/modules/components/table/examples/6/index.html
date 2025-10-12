@@ -23,14 +23,14 @@
 >
     <thead>
         <tr tuiThGroup>
-            <ng-container *ngFor="let col of columns">
+            @for (col of columns; track col) {
                 <th
                     *tuiHead="col"
                     tuiTh
                 >
                     {{ col }}
                 </th>
-            </ng-container>
+            }
         </tr>
     </thead>
     <tbody
@@ -38,18 +38,17 @@
         tuiTbody
         [data]="sortedData"
     >
-        <tr
-            *ngFor="let item of sortedData"
-            tuiTr
-        >
-            <ng-container *ngFor="let col of columns">
-                <td
-                    *tuiCell="col"
-                    tuiTd
-                >
-                    {{ item[col] }}
-                </td>
-            </ng-container>
-        </tr>
+        @for (item of sortedData; track item) {
+            <tr tuiTr>
+                @for (col of columns; track col) {
+                    <td
+                        *tuiCell="col"
+                        tuiTd
+                    >
+                        {{ item[col] }}
+                    </td>
+                }
+            </tr>
+        }
     </tbody>
 </table>

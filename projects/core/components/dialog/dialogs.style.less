@@ -15,10 +15,15 @@
         overflow: auto;
     }
 
+    &:has(section:only-of-type ::ng-deep tui-dialog[data-appearance~='fullscreen']) > .t-overlay,
+    &:has(section:only-of-type ::ng-deep tui-notification-middle) > .t-overlay {
+        opacity: 0;
+    }
+
     &::before {
         content: '';
         display: block;
-        block-size: 1000%;
+        block-size: 200%;
     }
 }
 
@@ -33,17 +38,19 @@
     align-items: flex-start;
     outline: none;
     overflow: auto;
-
-    &:has(> .tui-enter),
-    &:has(> .tui-leave) {
-        overflow: clip;
-    }
 }
 
 .t-dialog {
     position: sticky;
+    display: grid;
+    place-items: center;
     overscroll-behavior: none;
     filter: brightness(0.25);
+
+    ::ng-deep > .tui-enter + .t-scrollbars .t-bar_vertical,
+    ::ng-deep > .tui-leave + .t-scrollbars .t-bar_vertical {
+        display: none;
+    }
 }
 
 .t-overlay {
@@ -63,10 +70,6 @@
 .t-dialog:last-child {
     pointer-events: auto;
     filter: none;
-
-    :host-context(tui-root:has(tui-dropdown-mobile._sheet)) & {
-        filter: brightness(0.5);
-    }
 }
 
 .t-scrollbars {
@@ -74,4 +77,9 @@
 
     margin: 0;
     color: #747474;
+
+    ::ng-deep .t-bar_horizontal,
+    ::ng-deep .t-bar_vertical .t-thumb[style*='height: 100%'] {
+        display: none;
+    }
 }

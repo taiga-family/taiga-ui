@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -36,10 +35,8 @@ import {TUI_CALENDAR_MONTH_OPTIONS} from './calendar-month.options';
 const TODAY = TuiDay.currentLocal();
 
 @Component({
-    standalone: true,
     selector: 'tui-calendar-month',
     imports: [
-        NgIf,
         TuiCalendarYear,
         TuiHovered,
         TuiLet,
@@ -49,7 +46,7 @@ const TODAY = TuiDay.currentLocal();
         TuiSpinButton,
     ],
     templateUrl: './calendar-month.template.html',
-    styleUrls: ['./calendar-month.style.less'],
+    styleUrl: './calendar-month.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendarMonth)],
     host: {

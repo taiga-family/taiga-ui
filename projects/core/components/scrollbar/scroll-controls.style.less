@@ -16,12 +16,17 @@
     max-block-size: calc(100% - 1px);
     margin-inline-end: calc(-100% + 1px);
     pointer-events: none;
+    overflow: hidden;
+    color: var(--tui-text-primary);
+}
+
+::ng-deep [tuiScrollable] {
+    .scrollbar-hidden();
 }
 
 .t-bar {
     position: absolute;
     right: 0;
-    bottom: 0;
     pointer-events: auto;
 
     &.tui-enter,
@@ -30,7 +35,8 @@
     }
 
     &_vertical {
-        top: 0;
+        top: 0.25rem;
+        bottom: 0.25rem;
         inline-size: @scroll-width-large;
 
         @supports (inset-inline-end: 0) {
@@ -40,6 +46,7 @@
     }
 
     &_horizontal {
+        bottom: 0;
         left: 0;
         inset-inline-start: 0;
         block-size: @scroll-width-large;

@@ -1,13 +1,13 @@
 <tui-swipe-actions [autoClose]="true">
     <div
-        tuiAppearance="floating"
+        appearance="floating"
         tuiCardLarge
         tuiCell
     >
-        <tui-avatar
+        <div
             appearance="primary"
-            src="@tui.dollar-sign"
-        />
+            tuiAvatar="@tui.dollar-sign"
+        ></div>
         <div tuiTitle>
             <strong>{{ 10000 | tuiAmount: 'USD' | async }}</strong>
             <div tuiSubtitle>Dollar account</div>
@@ -46,14 +46,14 @@
 
 <tui-swipe-actions [autoClose]="true">
     <div
-        tuiAppearance="floating"
+        appearance="floating"
         tuiCardLarge
         tuiCell
     >
-        <tui-avatar
+        <div
             appearance="primary"
-            src="@tui.gift"
-        />
+            tuiAvatar="@tui.gift"
+        ></div>
         <div tuiTitle>
             <strong>{{ 23000 | tuiAmount: 'EUR' | async }}</strong>
             <div tuiSubtitle>Goal</div>

@@ -3,44 +3,46 @@
     [style.backgroundColor]="backgroundColor"
     (dblclick)="edit($event)"
 >
-    <div
-        *ngIf="leftContent"
-        class="t-content"
-    >
-        <ng-container *polymorpheusOutlet="leftContent as text">
-            {{ text }}
-        </ng-container>
-    </div>
+    @if (leftContent) {
+        <div class="t-content">
+            <ng-container *polymorpheusOutlet="leftContent as text">
+                {{ text }}
+            </ng-container>
+        </div>
+    }
     <span
         automation-id="tui-tag__text"
         class="t-text"
         [textContent]="displayText"
     ></span>
-    <tui-loader
-        *ngIf="showLoader"
-        class="t-content"
-        [inheritColor]="true"
-        [size]="loaderSize"
-    />
-    <tui-icon
-        *ngIf="canRemove"
-        automation-id="tui-tag__remove"
-        class="t-icon"
-        [icon]="icons.close"
-        (click)="remove($event)"
-        (mousedown.stop.prevent.zoneless)="(0)"
-    />
+    @if (showLoader) {
+        <tui-loader
+            class="t-content"
+            [inheritColor]="true"
+            [size]="loaderSize"
+        />
+    }
+    @if (canRemove) {
+        <tui-icon
+            automation-id="tui-tag__remove"
+            class="t-icon"
+            [icon]="icons.close"
+            (click)="remove($event)"
+            (mousedown.stop.prevent.zoneless)="(0)"
+        />
+    }
 </div>
-<input
-    *ngIf="editing"
-    #input
-    automation-id="tui-tag__edit"
-    type="text"
-    class="t-edit"
-    [attr.maxLength]="maxLength"
-    [ngModel]="editedText"
-    [ngModelOptions]="{standalone: true}"
-    (blur)="onBlur()"
-    (keydown)="onKeyDown($event)"
-    (ngModelChange)="onInput($event)"
-/>
+@if (editing) {
+    <input
+        #input
+        automation-id="tui-tag__edit"
+        type="text"
+        class="t-edit"
+        [attr.maxLength]="maxLength"
+        [ngModel]="editedText"
+        [ngModelOptions]="{standalone: true}"
+        (blur)="onBlur()"
+        (keydown)="onKeyDown($event)"
+        (ngModelChange)="onInput($event)"
+    />
+}

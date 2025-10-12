@@ -27,18 +27,19 @@
             ngProjectAs="input"
             select="input"
         />
-        <div
-            *ngIf="showValueTemplate"
-            automation-id="tui-combo-box__template"
-            ngProjectAs="tuiContent"
-            class="t-value"
-        >
-            <ng-container
-                *polymorpheusOutlet="computedContent as text; context: {$implicit: value!, active: computedFocused}"
+        @if (showValueTemplate) {
+            <div
+                automation-id="tui-combo-box__template"
+                ngProjectAs="tuiContent"
+                class="t-value"
             >
-                {{ text }}
-            </ng-container>
-        </div>
+                <ng-container
+                    *polymorpheusOutlet="computedContent as text; context: {$implicit: value!, active: computedFocused}"
+                >
+                    {{ text }}
+                </ng-container>
+            </div>
+        }
     </tui-primitive-textfield>
 
     <ng-template #icon>

@@ -1,35 +1,30 @@
 import {AsyncPipe} from '@angular/common';
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSidebar} from '@taiga-ui/addon-mobile';
 import {TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
-import {Subject} from 'rxjs';
+import {TuiPopup} from '@taiga-ui/core';
+import {TuiDrawer} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, TuiSidebar, TuiSwipe],
+    imports: [AsyncPipe, TuiSwipe, TuiDrawer, TuiPopup],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly open$ = new Subject<boolean>();
-
-    protected toggle(open: boolean): void {
-        this.open$.next(open);
-    }
+    protected readonly open = signal(false);
 
     protected onSwipe(swipe: TuiSwipeEvent): void {
         console.info(swipe.direction);
 
         if (swipe.direction === 'left') {
-            this.toggle(true);
+            this.open.set(true);
         }
 
         if (swipe.direction === 'right') {
-            this.toggle(false);
+            this.open.set(false);
         }
     }
 }

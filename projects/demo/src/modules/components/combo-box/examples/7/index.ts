@@ -19,7 +19,6 @@ interface Card {
 }
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiChevron,
@@ -30,7 +29,7 @@ interface Card {
         TuiThumbnailCard,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

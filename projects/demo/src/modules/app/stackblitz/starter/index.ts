@@ -14,10 +14,9 @@ import {TuiStackblitzService} from '../stackblitz.service';
 import {appPrefix} from '../utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLoader],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TuiStackblitzService],
 })

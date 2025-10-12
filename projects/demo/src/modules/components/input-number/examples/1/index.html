@@ -6,11 +6,7 @@
         [formControl]="control"
     />
 </tui-textfield>
-
-<tui-error
-    [error]="[] | tuiFieldError | async"
-    [formControl]="control"
-/>
+<tui-error [formControl]="control" />
 
 <p><strong>Control value:</strong></p>
 <code>{{ control.value | json }}</code>

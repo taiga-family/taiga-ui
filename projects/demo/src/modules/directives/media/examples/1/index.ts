@@ -4,10 +4,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiHighDpi, TuiMedia} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     imports: [TuiHighDpi, TuiMedia],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

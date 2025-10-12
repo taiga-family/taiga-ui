@@ -29,23 +29,23 @@
                 A strange button
             </button>
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiHint"
-                documentationPropertyType="PolymorpheusContent"
+        <table tuiDocAPI>
+            <tr
+                name="[tuiHint]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
             >
                 Content
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiHintManual"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="show"
+            </tr>
+            <tr
+                name="[tuiHintManual]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="show"
             >
                 Show/hide hint
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
         <inherited-documentation />
     </ng-template>
 

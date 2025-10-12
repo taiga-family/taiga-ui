@@ -4,13 +4,14 @@
     [tuiLineChartHint]="hint"
     [verticalLines]="4"
 >
-    <tui-line-chart
-        *ngFor="let value of values"
-        class="chart"
-        [height]="200"
-        [value]="value"
-        [width]="400"
-        [x]="0"
-        [y]="0"
-    />
+    @for (value of values; track value) {
+        <tui-line-chart
+            class="chart"
+            [height]="200"
+            [value]="value"
+            [width]="400"
+            [x]="0"
+            [y]="0"
+        />
+    }
 </tui-axes>

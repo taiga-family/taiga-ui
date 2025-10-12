@@ -1,4 +1,3 @@
-import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,9 +6,7 @@ import {TuiAvatar, TuiAvatarStack} from '@taiga-ui/kit';
 import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
-        NgFor,
         TuiAutoColorPipe,
         TuiAvatar,
         TuiAvatarStack,
@@ -18,7 +15,7 @@ import {TuiBlockStatus} from '@taiga-ui/layout';
         TuiInitialsPipe,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

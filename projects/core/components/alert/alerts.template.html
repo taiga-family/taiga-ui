@@ -1,11 +1,13 @@
-<div
-    *ngFor="let group of alerts$ | async; trackBy: trackBy"
-    tuiAnimatedParent
-    class="t-wrapper"
->
-    <ng-container
-        *ngFor="let item of group"
-        [ngComponentOutlet]="item.component.component"
-        [ngComponentOutletInjector]="item | tuiMapper: mapper"
-    />
-</div>
+@for (group of alerts$ | async; track trackBy(group)) {
+    <div
+        tuiAnimatedParent
+        class="t-wrapper"
+    >
+        @for (item of group; track item) {
+            <ng-container
+                [ngComponentOutlet]="item.component.component"
+                [ngComponentOutletInjector]="item | tuiMapper: mapper"
+            />
+        }
+    </div>
+}

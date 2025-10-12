@@ -5,10 +5,9 @@ import {TuiIcon} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification, TuiIcon],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

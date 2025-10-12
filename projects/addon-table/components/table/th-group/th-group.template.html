@@ -1,19 +1,19 @@
 <ng-content />
-<ng-container *ngIf="heads$ | async as headings">
-    <ng-container
-        *ngFor="let key of table.columns"
-        [ngTemplateOutlet]="(headings[key] && headings[key].template) || plain"
-        [ngTemplateOutletContext]="{$implicit: key}"
-    />
+@if (heads$ | async; as headings) {
+    @for (key of table.columns; track key) {
+        <ng-container
+            [ngTemplateOutlet]="headings?.[key]?.template || plain"
+            [ngTemplateOutletContext]="{$implicit: key}"
+        />
+    }
     <ng-template
         #plain
         let-key
     >
-        <th
-            *ngIf="!th && !heads.length"
-            tuiTh
-        >
-            {{ key.toString() }}
-        </th>
+        @if (!th && !heads.length) {
+            <th tuiTh>
+                {{ key.toString() }}
+            </th>
+        }
     </ng-template>
-</ng-container>
+}

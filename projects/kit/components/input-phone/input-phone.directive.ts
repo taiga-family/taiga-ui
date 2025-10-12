@@ -57,23 +57,18 @@ export class TuiInputPhone extends TuiControl<string | null> {
     protected inputMode = computed(() => (this.allowText() ? 'text' : 'numeric'));
 
     protected readonly valueEffect = effect(() => {
-        const value = this.value() ?? '';
-
-        if (!value) {
-            return;
+        if (this.value()) {
+            this.textfield.value.set(maskitoTransform(this.value() ?? '', this.mask()));
         }
-
-        this.textfield.value.set(maskitoTransform(value, this.mask()));
     }, TUI_ALLOW_SIGNAL_WRITES);
 
     protected readonly blurEffect = effect(() => {
         const incomplete = untracked(() => !this.value());
+        const prefix = incomplete && this.interactive() && !this.allowText();
 
         if (!this.host.focused() && incomplete) {
             this.textfield.value.set('');
-        }
-
-        if (this.host.focused() && incomplete && !this.allowText()) {
+        } else if (this.host.focused() && prefix) {
             this.textfield.value.set(this.nonRemovablePrefix());
         }
     }, TUI_ALLOW_SIGNAL_WRITES);

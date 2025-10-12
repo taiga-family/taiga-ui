@@ -79,88 +79,81 @@
                 [min]="min"
                 [multi]="multi"
                 [single]="single"
-                (cancel)="documentationPropertyCancel.emitEvent($event)"
-                (confirm)="documentationPropertyConfirm.emitEvent($event)"
             />
         </tui-doc-demo>
-
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input-output"
-                documentationPropertyName="value"
-                documentationPropertyType="TuiDay | TuiDayRange | readonly TuiDay[] | null"
+        <table tuiDocAPI>
+            <tr
+                name="[(value)]"
+                tuiDocAPIItem
+                type="TuiDay | TuiDayRange | readonly TuiDay[] | null"
             >
                 Value
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="disabledItemHandler"
-                documentationPropertyType="TuiBooleanHandler<TuiDay>"
-                [documentationPropertyValues]="disabledItemHandlerVariants"
-                [(documentationPropertyValue)]="disabledItemHandler"
+            </tr>
+            <tr
+                name="[disabledItemHandler]"
+                tuiDocAPIItem
+                type="TuiBooleanHandler<TuiDay>"
+                [items]="disabledItemHandlerVariants"
+                [(value)]="disabledItemHandler"
             >
                 <div>A handler that gets a date and returns true if it is disabled.</div>
-
                 <strong>Must be a pure function</strong>
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="max"
-                documentationPropertyType="TuiDay"
-                [documentationPropertyValues]="maxVariants"
-                [(documentationPropertyValue)]="max"
+            </tr>
+            <tr
+                name="[max]"
+                tuiDocAPIItem
+                type="TuiDay"
+                [items]="maxVariants"
+                [(value)]="max"
             >
                 Max date
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="min"
-                documentationPropertyType="TuiDay"
-                [documentationPropertyValues]="minVariants"
-                [(documentationPropertyValue)]="min"
+            </tr>
+            <tr
+                name="[min]"
+                tuiDocAPIItem
+                type="TuiDay"
+                [items]="minVariants"
+                [(value)]="min"
             >
                 Min date
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="multi"
-                documentationPropertyType="boolean"
-                [(documentationPropertyValue)]="multi"
+            </tr>
+            <tr
+                name="[multi]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="multi"
             >
                 Array of single dates
-            </ng-template>
-            <ng-template
-                #documentationPropertyCancel="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="cancel"
-                documentationPropertyType="void"
+            </tr>
+            <tr
+                name="(cancel)"
+                tuiDocAPIItem
+                type="void"
             >
-                "Cancel" clicked
-            </ng-template>
-            <ng-template
-                #documentationPropertyConfirm="documentationProperty"
-                documentationPropertyMode="output"
-                documentationPropertyName="confirm"
-                documentationPropertyType="TuiDayRange | TuiDay"
+                Output when user clicks Cancel
+            </tr>
+            <tr
+                name="(confirm)"
+                tuiDocAPIItem
+                type="TuiDayRange | TuiDay"
             >
-                "Confirm" button clicked
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="single"
-                documentationPropertyType="boolean"
-                [documentationPropertyDeprecated]="true"
-                [(documentationPropertyValue)]="single"
+                Output when user clicks Confirm (range or single day)
+            </tr>
+            <tr
+                deprecated
+                name="[single]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="single"
             >
                 Single date or a range
-
                 <p>
                     Use
-                    <code>tuiCalendarSheetOptionsProvider(&#123;rangeMode: boolean"&#125;)</code>
+                    <code>tuiCalendarSheetOptionsProvider(&#123;rangeMode: boolean&#125;)</code>
                     instead
                 </p>
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
     </ng-template>
 
     <tui-setup *pageTab />

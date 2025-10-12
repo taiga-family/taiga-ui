@@ -4,7 +4,6 @@ import {TuiPreviewDialogService} from '@taiga-ui/kit';
 
 describe('TuiPreviewDialog Escape Key Behavior', () => {
     @Component({
-        standalone: true,
         imports: [TuiButton, TuiDialog, TuiRoot],
         template: `
             <tui-root>

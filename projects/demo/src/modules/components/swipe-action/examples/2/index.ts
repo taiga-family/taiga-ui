@@ -3,11 +3,11 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiSurface, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
+import {TuiSurface} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         TuiAvatar,
@@ -18,7 +18,7 @@ import {TuiAvatar, TuiSwitch} from '@taiga-ui/kit';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -1,4 +1,4 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -13,22 +13,21 @@ import {
     tuiPure,
     type TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {TUI_MONTHS} from '@taiga-ui/core';
-import {TuiInputDateRangeModule} from '@taiga-ui/legacy';
+import {TUI_MONTHS, TuiTextfield} from '@taiga-ui/core';
+import {TuiInputDateRange} from '@taiga-ui/kit';
 import {map, type Observable} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [
         AsyncPipe,
         FormsModule,
-        NgIf,
         TuiAxes,
-        TuiInputDateRangeModule,
+        TuiInputDateRange,
         TuiLineDaysChart,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

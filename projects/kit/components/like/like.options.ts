@@ -1,4 +1,3 @@
-import {type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiAppearanceOptions} from '@taiga-ui/core/directives';
 import {type TuiSizeS} from '@taiga-ui/core/types';
@@ -6,8 +5,8 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
 export interface TuiLikeOptions extends TuiAppearanceOptions {
     readonly size: TuiSizeS;
     readonly icons: Readonly<{
-        checked: TuiStringHandler<TuiSizeS> | string;
-        unchecked: TuiStringHandler<TuiSizeS> | string;
+        checked: string;
+        unchecked: string;
     }>;
 }
 

@@ -21,7 +21,7 @@ export async function waitIcons(options: Options): Promise<void> {
                         (window
                             .getComputedStyle(element)
                             .getPropertyValue('--t-icon')
-                            ?.replace(/url\(|\)/g, '') ?? ''),
+                            ?.replaceAll(/url\(|\)/g, '') ?? ''),
                 )
                 .replaceAll('\\', '');
         });

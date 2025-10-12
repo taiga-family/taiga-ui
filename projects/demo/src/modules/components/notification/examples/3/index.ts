@@ -6,10 +6,9 @@ import {DemoRoute} from '@demo/routes';
 import {TuiNotification, TuiTitle} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [RouterLink, TuiNotification, TuiTitle],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

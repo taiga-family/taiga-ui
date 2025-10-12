@@ -34,46 +34,50 @@
         *tuiRepeatTimes="let i of 30"
         tuiCell
     >
-        <tui-avatar
+        <div
             appearance="primary"
-            src="@tui.star"
-        />
+            tuiAvatar="@tui.star"
+        ></div>
         <div tuiTitle>
             Title
             <div tuiSubtitle>Description</div>
         </div>
     </div>
 
-    <footer
-        *ngIf="floating"
-        @tuiSlideInTop
-        [tuiFloatingContainer]="secondAction ? '' : 'transparent'"
-    >
-        <button
-            *ngIf="!action"
-            tuiButton
-            type="button"
-            [@tuiCrossFade]="{duration: 0.25} | tuiAnimation"
+    @if (floating) {
+        <footer
+            @tuiSlideInTop
+            [tuiFloatingContainer]="secondAction ? '' : 'transparent'"
         >
-            Main action
-        </button>
-        <button
-            *ngIf="action"
-            appearance="primary-grayscale"
-            tuiButton
-            type="button"
-            [@tuiCrossFade]="{duration: 0.25} | tuiAnimation"
-        >
-            Add to Apple Wallet
-        </button>
-        <button
-            *ngIf="secondAction"
-            appearance="flat"
-            tuiButton
-            type="button"
-            @tuiHeightCollapse
-        >
-            Secondary action
-        </button>
-    </footer>
+            @if (!action) {
+                <button
+                    tuiButton
+                    type="button"
+                    [@tuiCrossFade]="{duration: 0.25} | tuiAnimation"
+                >
+                    Main action
+                </button>
+            }
+            @if (action) {
+                <button
+                    appearance="primary-grayscale"
+                    tuiButton
+                    type="button"
+                    [@tuiCrossFade]="{duration: 0.25} | tuiAnimation"
+                >
+                    Add to Apple Wallet
+                </button>
+            }
+            @if (secondAction) {
+                <button
+                    appearance="flat"
+                    tuiButton
+                    type="button"
+                    @tuiHeightCollapse
+                >
+                    Secondary action
+                </button>
+            }
+        </footer>
+    }
 </div>

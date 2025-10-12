@@ -10,7 +10,10 @@ const dest = process.argv[2] || path.join(process.cwd(), 'projects', 'icons', 's
 
 fs.readdirSync(src).forEach((filename: string) => {
     const filledFilename = renameToFilled(filename);
-    const content = prepareSvg(fs.readFileSync(path.join(src, filename), 'utf-8'));
+    const content = prepareSvg(
+        fs.readFileSync(path.join(src, filename), 'utf-8'),
+    ).replace('stroke-width="2"', 'stroke-width="calc((100vw - 100vh) / 10)"');
+
     const filled = content.replaceAll('fill="none"', 'fill="currentColor"');
     const filePath = path.join(dest, filename);
     const fileFilledPath = path.join(dest, filledFilename);

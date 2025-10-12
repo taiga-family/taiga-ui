@@ -1,18 +1,14 @@
-import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiNotification, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiCell, TuiNotification, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
+import {TuiCardLarge} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
-        NgFor,
-        TuiAppearance,
         TuiAvatar,
         TuiCardLarge,
         TuiCell,
@@ -24,7 +20,7 @@ import {TuiCardLarge, TuiCell} from '@taiga-ui/layout';
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

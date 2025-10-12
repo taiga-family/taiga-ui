@@ -1,5 +1,5 @@
 import {Clipboard} from '@angular/cdk/clipboard';
-import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     Component,
     ContentChild,
@@ -26,12 +26,9 @@ import {debounceTime, distinctUntilChanged, filter, map, type Observable} from '
 import {IconsGroupTemplate} from './icons-group.directive';
 
 @Component({
-    standalone: true,
     selector: 'icons-group',
     imports: [
         AsyncPipe,
-        NgForOf,
-        NgIf,
         NgTemplateOutlet,
         ReactiveFormsModule,
         TuiAutoFocus,
@@ -44,7 +41,7 @@ import {IconsGroupTemplate} from './icons-group.directive';
         TuiTextfieldOptionsDirective,
     ],
     templateUrl: './icons-group.template.html',
-    styleUrls: ['./icons-group.style.less'],
+    styleUrl: './icons-group.style.less',
     changeDetection,
 })
 export class IconsGroup implements OnInit {

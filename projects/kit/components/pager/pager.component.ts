@@ -24,11 +24,10 @@ import {type TuiSizeS} from '@taiga-ui/core/types';
 import {delay, map} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-pager',
     imports: [FormsModule, NgTemplateOutlet, TuiRepeatTimes],
     templateUrl: './pager.component.html',
-    styleUrls: ['./pager.styles.less'],
+    styleUrl: './pager.styles.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         MutationObserverService,
@@ -62,6 +61,7 @@ export class TuiPager implements OnChanges, AfterViewInit {
             tuiWatch(),
             takeUntilDestroyed(),
         ),
+        {initialValue: 0},
     );
 
     @Input()

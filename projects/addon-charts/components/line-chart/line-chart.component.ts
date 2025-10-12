@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -35,11 +35,10 @@ import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
 import {TuiLineChartHint} from './line-chart-hint.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-line-chart',
-    imports: [AsyncPipe, NgForOf, NgIf, TuiHint, TuiLet],
+    imports: [AsyncPipe, TuiHint, TuiLet],
     templateUrl: './line-chart.template.html',
-    styleUrls: ['./line-chart.style.less'],
+    styleUrl: './line-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [ResizeObserverService],
     viewProviders: [tuiHintOptionsProvider({direction: 'top', hideDelay: 0})],

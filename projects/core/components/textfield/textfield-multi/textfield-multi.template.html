@@ -1,8 +1,7 @@
-<ng-container *ngIf="value()" />
-<tui-scroll-controls
-    *ngIf="rows > 1"
-    class="t-scrollbar"
-/>
+@if (control?.control?.valueChanges | async) {}
+@if (rows > 1) {
+    <tui-scroll-controls class="t-scrollbar" />
+}
 
 <div
     class="t-items"
@@ -12,11 +11,12 @@
     (waResizeObserver)="$event[0] && onItems($event[0])"
 >
     <ng-content select="label" />
-    <ng-template
-        *ngFor="let item of control?.value; let index = index"
-        [polymorpheusOutlet]="component"
-        [polymorpheusOutletContext]="{$implicit: {item, index}}"
-    />
+    @for (item of control?.value; track item) {
+        <ng-template
+            [polymorpheusOutlet]="component"
+            [polymorpheusOutletContext]="{$implicit: {item, index: $index}}"
+        />
+    }
     <span
         class="t-input"
         (keydown.arrowLeft)="onLeft($event)"
@@ -41,28 +41,28 @@
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
-    <button
-        *ngIf="options.cleaner()"
-        appearance="icon"
-        size="xs"
-        tabindex="-1"
-        tuiIconButton
-        type="button"
-        class="t-clear"
-        [iconStart]="icons.close"
-        (click)="accessor?.setValue([])"
-    >
-        {{ clear() }}
-    </button>
+    @if (options.cleaner()) {
+        <button
+            appearance="icon"
+            size="xs"
+            tabindex="-1"
+            tuiIconButton
+            type="button"
+            class="t-clear"
+            [iconStart]="icons.close"
+            (click)="accessor?.setValue([])"
+        >
+            {{ clear() }}
+        </button>
+    }
     <ng-container #vcr />
     <ng-content select="tui-icon" />
 </span>
 
-<span
-    *ngIf="control?.value != null"
-    class="t-template"
->
-    <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value}">
-        {{ text }}
-    </ng-container>
-</span>
+@if (control?.value != null) {
+    <span class="t-template">
+        <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value}">
+            {{ text }}
+        </ng-container>
+    </span>
+}

@@ -1,21 +1,21 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
+    .transition(max-height);
+
     position: relative;
     display: block;
     overflow: hidden;
 
-    &._initialized {
-        .transition(max-height);
+    &._overflown .t-wrapper {
+        /* autoprefixer: ignore next */
+        -webkit-box-orient: block-axis;
     }
 }
 
 .t-wrapper {
     /* stylelint-disable-next-line */
     display: -webkit-box;
-
-    /* autoprefixer: ignore next */
-    -webkit-box-orient: block-axis;
     overflow: hidden;
     overflow-wrap: anywhere;
 }

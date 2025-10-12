@@ -1,4 +1,3 @@
-import {NgFor} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -8,10 +7,9 @@ import {TuiTextfield} from '@taiga-ui/core';
 import {TuiInputTime} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [FormsModule, NgFor, TuiInputTime, TuiTextfield],
+    imports: [FormsModule, TuiInputTime, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

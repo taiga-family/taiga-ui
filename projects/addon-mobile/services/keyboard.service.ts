@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {inject, Injectable, type OnDestroy} from '@angular/core';
-import {tuiGetNativeFocused} from '@taiga-ui/cdk/utils/focus';
+import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {filter, fromEvent, merge} from 'rxjs';
 
 @Injectable({
@@ -34,7 +34,7 @@ export class TuiKeyboardService implements OnDestroy {
     }
 
     public hide(): void {
-        const focused = tuiGetNativeFocused(this.doc) as HTMLInputElement;
+        const focused = tuiGetFocused(this.doc) as HTMLInputElement;
 
         if (focused?.inputMode === undefined || this.element) {
             return;

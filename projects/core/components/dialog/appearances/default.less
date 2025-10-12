@@ -1,0 +1,54 @@
+&[data-appearance~='taiga'] {
+    max-inline-size: calc(100vw - 5rem);
+    margin: 2.5rem;
+    padding: 1.75rem;
+    border-radius: 1.5rem;
+
+    --tui-from: translateY(2.5rem);
+
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+
+    &[data-size='s'] {
+        inline-size: 25rem;
+        padding: 1.5rem;
+
+        > header:not(:last-child),
+        > ng-component > header:not(:last-child) {
+            margin-block-end: 1.25rem;
+        }
+
+        /** TODO remove tui-confirm in v5 */
+        > footer,
+        > ng-component > footer,
+        > tui-confirm > footer {
+            margin-block-start: 1.25rem;
+        }
+    }
+
+    &[data-size='m'] {
+        inline-size: 37.5rem;
+    }
+
+    &[data-size='l'] {
+        inline-size: 50rem;
+    }
+
+    > header:not(:last-child),
+    > ng-component > header:not(:last-child) {
+        margin-block-end: 1.5rem;
+    }
+
+    /** TODO remove tui-confirm in v5 */
+    > footer,
+    > ng-component > footer,
+    > tui-confirm > footer {
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap-reverse;
+        gap: 0.75rem;
+        margin-block-start: 2rem;
+    }
+}

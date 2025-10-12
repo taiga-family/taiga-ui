@@ -4,10 +4,9 @@ import {TuiDemo} from '@demo/utils';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiLineClamp],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

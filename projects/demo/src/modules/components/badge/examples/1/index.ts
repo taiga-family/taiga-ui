@@ -5,10 +5,9 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiBadge, TuiStatus} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiBadge, TuiRepeatTimes, TuiStatus],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

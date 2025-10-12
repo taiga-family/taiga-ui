@@ -1,4 +1,3 @@
-import {CommonModule} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -18,18 +17,17 @@ import {
 describe('Tabs', () => {
     @Component({
         standalone: true,
-        imports: [CommonModule, TuiTabs],
+        imports: [TuiTabs],
         template: `
             <tui-tabs
                 [(activeItemIndex)]="activeItemIndex"
                 (${TUI_TAB_ACTIVATE})="onTabActivate()"
             >
-                <button
-                    *ngFor="let tab of tabs"
-                    tuiTab
-                >
-                    {{ tab }}
-                </button>
+                @for (tab of tabs; track tab) {
+                    <button tuiTab>
+                        {{ tab }}
+                    </button>
+                }
             </tui-tabs>
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,

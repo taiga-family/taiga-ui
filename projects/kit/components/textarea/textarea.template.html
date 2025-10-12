@@ -1,8 +1,10 @@
 <ng-template #template>
-    <tui-scroll-controls
-        *ngIf="!isMobile"
-        class="t-scroll"
-    />
+    @if (!isMobile) {
+        <tui-scroll-controls
+            class="t-scroll"
+            (click.prevent)="(0)"
+        />
+    }
     <span
         #text
         aria-hidden="true"

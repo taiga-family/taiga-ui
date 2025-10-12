@@ -1,14 +1,12 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiTabBarItem], a[tuiTabBarItem]',
-    imports: [NgIf, TuiAnimated, TuiIcon],
+    imports: [TuiAnimated, TuiIcon],
     templateUrl: './tab-bar-item.template.html',
-    styleUrls: ['./tab-bar-item.style.less'],
+    styleUrl: './tab-bar-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTabBarItem {

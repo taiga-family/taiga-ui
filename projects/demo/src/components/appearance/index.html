@@ -11,44 +11,48 @@
         </span>
     </td>
 </tr>
-<tr
-    *ngIf="!hiddenOptions.includes('appearance')"
-    name="[appearance]"
-    tuiDocAPIItem
-    type="string"
-    [items]="tuiDocAppearance || appearances"
-    [value]="appearance"
-    (valueChange)="selected = $event"
->
-    Appearance of the element
-</tr>
-<tr
-    *ngIf="!hiddenOptions.includes('state')"
-    name="[tuiAppearanceState]"
-    tuiDocAPIItem
-    type="TuiInteractiveState | null"
-    [items]="states"
-    [(value)]="state"
->
-    Manual interactive state override
-</tr>
-<tr
-    *ngIf="!hiddenOptions.includes('focus')"
-    name="[tuiAppearanceFocus]"
-    tuiDocAPIItem
-    type="boolean | null"
-    [items]="focuses"
-    [(value)]="focus"
->
-    Manual focus state override
-</tr>
-<tr
-    *ngIf="!hiddenOptions.includes('mode')"
-    name="[tuiAppearanceMode]"
-    tuiDocAPIItem
-    type="string | string[] | null"
-    [items]="modes"
-    [(value)]="mode"
->
-    Custom manual mode for the appearance
-</tr>
+@if (!hiddenOptions.includes('appearance')) {
+    <tr
+        name="[appearance]"
+        tuiDocAPIItem
+        type="string"
+        [items]="tuiDocAppearance || appearances"
+        [value]="appearance"
+        (valueChange)="selected = $event"
+    >
+        Appearance of the element
+    </tr>
+}
+@if (!hiddenOptions.includes('state')) {
+    <tr
+        name="[tuiAppearanceState]"
+        tuiDocAPIItem
+        type="TuiInteractiveState | null"
+        [items]="states"
+        [(value)]="state"
+    >
+        Manual interactive state override
+    </tr>
+}
+@if (!hiddenOptions.includes('focus')) {
+    <tr
+        name="[tuiAppearanceFocus]"
+        tuiDocAPIItem
+        type="boolean | null"
+        [items]="focuses"
+        [(value)]="focus"
+    >
+        Manual focus state override
+    </tr>
+}
+@if (!hiddenOptions.includes('mode')) {
+    <tr
+        name="[tuiAppearanceMode]"
+        tuiDocAPIItem
+        type="string | string[] | null"
+        [items]="modes"
+        [(value)]="mode"
+    >
+        Custom manual mode for the appearance
+    </tr>
+}

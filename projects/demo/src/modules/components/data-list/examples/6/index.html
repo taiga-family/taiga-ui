@@ -13,20 +13,20 @@
 
 <ng-template #content>
     <tui-data-list>
-        <tui-opt-group
-            *ngFor="let group of groups"
-            [label]="group.label"
-        >
-            <button
-                *ngFor="let item of group.items"
-                tuiOption
-                type="button"
-                class="option"
-                (click)="open = false"
-            >
-                {{ item }}
-            </button>
-        </tui-opt-group>
+        @for (group of groups; track group) {
+            <tui-opt-group [label]="group.label">
+                @for (item of group.items; track item) {
+                    <button
+                        tuiOption
+                        type="button"
+                        class="option"
+                        (click)="open = false"
+                    >
+                        {{ item }}
+                    </button>
+                }
+            </tui-opt-group>
+        }
     </tui-data-list>
 </ng-template>
 
@@ -36,5 +36,5 @@
 >
     Enter 3 characters
 
-    <tui-data-list *tuiDataList>Taiga UI</tui-data-list>
+    <tui-data-list *tuiDataList />
 </tui-input>

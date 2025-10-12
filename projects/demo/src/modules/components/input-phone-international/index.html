@@ -1,6 +1,6 @@
 <tui-doc-page
     header="InputPhoneInternational"
-    package="EXPERIMENTAL"
+    package="KIT"
     type="components"
 >
     <ng-template pageTab>
@@ -220,22 +220,6 @@
                 Don't hesitate to use it too to manually format any phone number.
             </ng-template>
         </tui-doc-example>
-
-        <tui-doc-example
-            id="old-syntax"
-            heading="Old syntax"
-            [component]="7 | tuiComponent"
-            [content]="7 | tuiExample"
-            [description]="oldSyntaxDescription"
-        >
-            <ng-template #oldSyntaxDescription>
-                This component has been refactored to maintain uniformity across new textfield components. Newest
-                version is in the
-                <code>&#64;taiga-ui/experimental</code>
-                package and will replace previous syntax in the next major release. Old syntax is displayed in the
-                example below:
-            </ng-template>
-        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
@@ -252,12 +236,9 @@
                     [tuiTextfieldCleaner]="textfield.cleaner"
                     [tuiTextfieldSize]="textfield.size"
                 >
-                    <label
-                        *ngIf="textfield.size !== 's'"
-                        tuiLabel
-                    >
-                        Type a phone number
-                    </label>
+                    @if (textfield.size !== 's') {
+                        <label tuiLabel>Type a phone number</label>
+                    }
                     <input
                         tuiInputPhoneInternational
                         [countries]="countries"
@@ -310,7 +291,7 @@
             <tbody
                 #dropdown
                 tuiDocDropdown
-                [hiddenOptions]="['open', 'tuiDropdownEnabled']"
+                [hiddenOptions]="['open', 'tuiDropdownEnabled', 'dropdownSided', 'dropdownSidedOffset']"
             ></tbody>
         </table>
     </ng-template>

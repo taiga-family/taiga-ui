@@ -1,4 +1,13 @@
-import {Directive, inject, INJECTOR, Input, type OnDestroy, signal} from '@angular/core';
+import {
+    Directive,
+    EventEmitter,
+    inject,
+    INJECTOR,
+    Input,
+    type OnDestroy,
+    Output,
+    signal,
+} from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
@@ -53,6 +62,9 @@ export class TuiHintDirective<C>
     @Input('tuiHintAppearance')
     public appearance = inject(TUI_HINT_OPTIONS).appearance;
 
+    @Output('tuiHintVisible')
+    public readonly visible = new EventEmitter<boolean>();
+
     public content = signal<PolymorpheusContent<C>>(null);
     public component = inject(PolymorpheusComponent<unknown>);
     public readonly el = tuiInjectElement();
@@ -82,5 +94,7 @@ export class TuiHintDirective<C>
         } else {
             this.service.remove(this);
         }
+
+        this.visible.emit(show);
     }
 }

@@ -1,6 +1,6 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiSurface} from '@taiga-ui/core';
+import {TuiSurface} from '@taiga-ui/layout';
 // ...
 
 @Component({

@@ -1,4 +1,4 @@
-import {DecimalPipe, NgForOf} from '@angular/common';
+import {DecimalPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -6,10 +6,9 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiKeySteps, TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [DecimalPipe, NgForOf, ReactiveFormsModule, TuiSlider],
+    imports: [DecimalPipe, ReactiveFormsModule, TuiSlider],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
@@ -17,6 +16,7 @@ export default class Example {
     protected readonly labels: string[] = ['5 000', '100 000', '300 000', '1 000 000'];
     protected readonly formControl = new FormControl(720_000);
     protected readonly segments = this.labels.length - 1;
+    protected readonly steps = this.segments * 10;
 
     protected readonly keySteps: TuiKeySteps = [
         [0, 5_000],

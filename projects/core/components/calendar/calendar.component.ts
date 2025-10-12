@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -30,10 +29,8 @@ import {TuiCalendarSpin} from './calendar-spin.component';
 import {TuiCalendarYear} from './calendar-year.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-calendar',
     imports: [
-        NgIf,
         TuiCalendarSheet,
         TuiCalendarSpin,
         TuiCalendarYear,
@@ -41,7 +38,7 @@ import {TuiCalendarYear} from './calendar-year.component';
         TuiScrollbar,
     ],
     templateUrl: './calendar.template.html',
-    styleUrls: ['./calendar.style.less'],
+    styleUrl: './calendar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsAuxiliary(TuiCalendar)],
     host: {

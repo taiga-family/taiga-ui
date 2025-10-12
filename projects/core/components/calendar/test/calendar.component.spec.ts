@@ -3,8 +3,7 @@ import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {TuiDay, TuiMonth} from '@taiga-ui/cdk';
-import {TuiCalendar} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiCalendar} from '@taiga-ui/core';
 import {TuiCalendarHarness} from '@taiga-ui/testing';
 
 describe('Calendar', () => {
@@ -61,7 +60,7 @@ describe('Calendar', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

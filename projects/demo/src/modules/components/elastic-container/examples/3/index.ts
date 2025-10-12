@@ -6,10 +6,9 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiElasticContainer} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiElasticContainer, TuiRepeatTimes],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

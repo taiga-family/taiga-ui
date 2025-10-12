@@ -1,130 +1,122 @@
 <div class="t-title-block">
-    <h2
-        *ngIf="heading"
-        class="t-title"
-    >
-        <span
-            *polymorpheusOutlet="heading as text"
-            [textContent]="text"
-        ></span>
-    </h2>
-    <a
-        *ngIf="id"
-        routerLink="."
-        routerLinkActive="t-link-active"
-        tuiLink
-        type="button"
-        class="t-link"
-        [attr.title]="copy()"
-        [fragment]="id"
-        [relativeTo]="route.firstChild ?? route"
-        [routerLinkActiveOptions]="{matrixParams: 'exact', queryParams: 'exact', paths: 'exact', fragment: 'exact'}"
-        (click)="copyExampleLink($event.currentTarget)"
-    >
-        #
-    </a>
+    @if (heading) {
+        <h2 class="t-title">
+            <span
+                *polymorpheusOutlet="heading as text"
+                [textContent]="text"
+            ></span>
+        </h2>
+    }
+    @if (id) {
+        <a
+            routerLink="."
+            routerLinkActive="t-link-active"
+            tuiLink
+            type="button"
+            class="t-link"
+            [attr.title]="copy()"
+            [fragment]="id"
+            [relativeTo]="route.firstChild ?? route"
+            [routerLinkActiveOptions]="{matrixParams: 'exact', queryParams: 'exact', paths: 'exact', fragment: 'exact'}"
+            (click)="copyExampleLink($event.currentTarget)"
+        >
+            #
+        </a>
+    }
 </div>
-<h3
-    *ngIf="description"
-    class="t-description"
->
-    <ng-container *polymorpheusOutlet="description as text">
-        {{ text }}
-    </ng-container>
-</h3>
+@if (description) {
+    <h3 class="t-description">
+        <ng-container *polymorpheusOutlet="description as text">
+            {{ text }}
+        </ng-container>
+    </h3>
+}
 
 <div
     class="t-example"
     [(tuiFullscreen)]="fullscreen"
 >
-    <ng-container *ngIf="processor() | tuiDocExampleGetTabs: defaultTab as tabs">
-        <div
-            *ngIf="tabs.length > 1"
-            class="t-tabs-wrapper"
-        >
-            <tui-tabs-with-more
-                class="t-tabs"
-                [(activeItemIndex)]="activeItemIndex"
-            >
-                <ng-container *ngFor="let tab of tabs">
-                    <button
-                        *tuiItem
-                        tuiTab
-                        type="button"
+    @if (processor() | tuiDocExampleGetTabs: defaultTab; as tabs) {
+        @if (tabs.length > 1) {
+            <div class="t-tabs-wrapper">
+                <tui-tabs-with-more
+                    class="t-tabs"
+                    [(activeItemIndex)]="activeItemIndex"
+                >
+                    @for (tab of tabs; track tab) {
+                        <button
+                            *tuiItem
+                            tuiTab
+                            type="button"
+                        >
+                            <ng-container *polymorpheusOutlet="getTabTitle(tab) as text">
+                                {{ text }}
+                            </ng-container>
+                        </button>
+                    }
+                </tui-tabs-with-more>
+                @if (processor() | tuiMapper: visible) {
+                    <tui-loader
+                        size="xs"
+                        class="t-code-editor"
+                        [overlay]="true"
+                        [showLoader]="loading()"
+                        (click)="edit(processor())"
                     >
-                        <ng-container *polymorpheusOutlet="getTabTitle(tab) as text">
-                            {{ text }}
-                        </ng-container>
-                    </button>
-                </ng-container>
-            </tui-tabs-with-more>
-
-            <tui-loader
-                *ngIf="processor() | tuiMapper: visible"
-                size="xs"
-                class="t-code-editor"
-                [overlay]="true"
-                [showLoader]="loading()"
-                (click)="edit(processor())"
-            >
-                <ng-container *ngIf="codeEditor?.content as content; else defaultEditContent">
-                    <ng-container *polymorpheusOutlet="content as editContent">
-                        {{ editContent }}
-                    </ng-container>
-                </ng-container>
-
-                <ng-template #defaultEditContent>
+                        @if (codeEditor?.content; as content) {
+                            <ng-container *polymorpheusOutlet="content as editContent">
+                                {{ editContent }}
+                            </ng-container>
+                        } @else {
+                            <button
+                                appearance="flat"
+                                size="s"
+                                tuiButton
+                                type="button"
+                            >
+                                Edit on {{ codeEditor!.name }}
+                            </button>
+                        }
+                    </tui-loader>
+                }
+                @if (fullscreenEnabled) {
                     <button
                         appearance="flat"
-                        size="s"
-                        tuiButton
+                        size="xs"
+                        tuiIconButton
                         type="button"
+                        [iconStart]="fullscreen ? icons.shrink : icons.expand"
+                        (click)="fullscreen = !fullscreen"
                     >
-                        Edit on {{ codeEditor!.name }}
+                        Fullscreen
                     </button>
-                </ng-template>
-            </tui-loader>
-
-            <button
-                *ngIf="fullscreenEnabled"
-                appearance="flat"
-                size="xs"
-                tuiIconButton
-                type="button"
-                [iconStart]="fullscreen ? icons.shrink : icons.expand"
-                (click)="fullscreen = !fullscreen"
-            >
-                Fullscreen
-            </button>
-        </div>
-
-        <div
-            *ngFor="let tab of tabs; let index = index"
-            class="t-content"
-        >
-            <section
-                *ngIf="index === defaultTabIndex"
-                automation-id="tui-doc-example"
-                class="t-demo"
-                [style.display]="activeItemIndex === index && index === defaultTabIndex ? 'block' : 'none'"
-            >
-                <ng-content />
-                <ng-container *polymorpheusOutlet="lazyComponent() as text">
-                    {{ text }}
-                </ng-container>
-            </section>
-
-            <tui-doc-code
-                *tuiLet="processor()[tabs[index] || 0] || '' as code"
-                [code]="code"
-                [style.display]="activeItemIndex === index && index !== defaultTabIndex ? 'block' : 'none'"
-            >
-                <ng-container *ngFor="let action of codeActions">
-                    <ng-container *polymorpheusOutlet="action as text; context: {$implicit: code}">
-                        {{ text }}
-                    </ng-container>
-                </ng-container>
-            </tui-doc-code>
-        </div>
-    </ng-container>
+                }
+            </div>
+        }
+        @for (tab of tabs; track tab) {
+            <div class="t-content">
+                @if ($index === defaultTabIndex) {
+                    <section
+                        automation-id="tui-doc-example"
+                        class="t-demo"
+                        [style.display]="activeItemIndex === $index && $index === defaultTabIndex ? 'block' : 'none'"
+                    >
+                        <ng-content />
+                        <ng-container *ngComponentOutlet="component | async" />
+                    </section>
+                }
+                <tui-doc-code
+                    *tuiLet="processor()[tabs[$index] || 0] || '' as code"
+                    [code]="code"
+                    [style.display]="activeItemIndex === $index && $index !== defaultTabIndex ? 'block' : 'none'"
+                >
+                    @for (action of codeActions; track action) {
+                        <ng-container *polymorpheusOutlet="action as text; context: {$implicit: code}">
+                            {{ text }}
+                        </ng-container>
+                    }
+                </tui-doc-code>
+            </div>
+        }
+    }
 </div>

@@ -1,7 +1,6 @@
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiRoot} from '@taiga-ui/core';
-import {NG_EVENT_PLUGINS} from '@taiga-ui/event-plugins';
+import {provideTaiga, TuiRoot} from '@taiga-ui/core';
 
 describe('root', () => {
     let fixture: ComponentFixture<TuiRoot>;
@@ -10,7 +9,7 @@ describe('root', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [TuiRoot, NoopAnimationsModule],
-            providers: [NG_EVENT_PLUGINS],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(TuiRoot);

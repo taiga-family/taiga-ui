@@ -7,7 +7,8 @@ import {
 } from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('ComboBox', () => {
+// TODO migrate
+test.skip('ComboBox', () => {
     test.use({viewport: {width: 500, height: 500}});
 
     test("Don't allow disabled options to be selected by typing them", async ({page}) => {

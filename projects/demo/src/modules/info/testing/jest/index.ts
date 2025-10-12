@@ -2,7 +2,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiDemo} from '@demo/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

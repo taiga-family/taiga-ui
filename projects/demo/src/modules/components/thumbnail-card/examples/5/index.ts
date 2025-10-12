@@ -1,26 +1,15 @@
-import {NgForOf, NgIf} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiInputCard, TuiThumbnailCard} from '@taiga-ui/addon-commerce';
-import {TuiButton, TuiTextfield} from '@taiga-ui/core';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [
-        FormsModule,
-        NgForOf,
-        NgIf,
-        TuiButton,
-        TuiInputCard,
-        TuiSegmented,
-        TuiTextfield,
-        TuiThumbnailCard,
-    ],
+    imports: [FormsModule, TuiInputCard, TuiSegmented, TuiTextfield, TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

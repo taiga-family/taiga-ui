@@ -1,25 +1,28 @@
 <tui-files>
-    <tui-file
-        *ngFor="let file of files"
-        state="normal"
-        [file]="file"
-        [showDelete]="control.enabled"
-    />
+    @for (file of files; track file) {
+        <tui-file
+            state="normal"
+            [file]="file"
+            [showDelete]="control.enabled"
+        />
+    }
 
-    <tui-file
-        *ngFor="let file of rejectedFiles"
-        state="error"
-        [file]="file"
-        [showDelete]="control.enabled"
-    />
+    @for (file of rejectedFiles; track file) {
+        <tui-file
+            state="error"
+            [file]="file"
+            [showDelete]="control.enabled"
+        />
+    }
 
-    <tui-file
-        *ngIf="loadingFile && !isE2E"
-        state="loading"
-        [file]="loadingFile"
-        [showDelete]="control.enabled"
-        (remove)="removeLoading()"
-    />
+    @if (loadingFile && !isE2E) {
+        <tui-file
+            state="loading"
+            [file]="loadingFile"
+            [showDelete]="control.enabled"
+            (remove)="removeLoading()"
+        />
+    }
 </tui-files>
 
 <h4>With link</h4>
@@ -38,30 +41,32 @@
 
 <h4>With deleted state</h4>
 <tui-files>
-    <tui-file
-        *ngFor="let file of removedFiles"
-        size="l"
-        state="deleted"
-        [file]="file"
-        [showDelete]="control.enabled"
-    >
-        <button
-            tuiLink
-            type="button"
-            (click)="restore(file)"
+    @for (file of removedFiles; track file) {
+        <tui-file
+            size="l"
+            state="deleted"
+            [file]="file"
+            [showDelete]="control.enabled"
         >
-            Restore
-        </button>
-    </tui-file>
-    <tui-file
-        *ngFor="let file of restoredFiles"
-        size="l"
-        state="normal"
-        [file]="file"
-        [leftContent]="icon"
-        [showDelete]="control.enabled"
-        (remove)="remove(file)"
-    />
+            <button
+                tuiLink
+                type="button"
+                (click)="restore(file)"
+            >
+                Restore
+            </button>
+        </tui-file>
+    }
+    @for (file of restoredFiles; track file) {
+        <tui-file
+            size="l"
+            state="normal"
+            [file]="file"
+            [leftContent]="icon"
+            [showDelete]="control.enabled"
+            (remove)="remove(file)"
+        />
+    }
 </tui-files>
 
 <ng-template #icon>

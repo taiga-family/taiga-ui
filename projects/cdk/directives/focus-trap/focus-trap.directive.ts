@@ -5,11 +5,7 @@ import {
     tuiInjectElement,
     tuiIsHTMLElement,
 } from '@taiga-ui/cdk/utils/dom';
-import {
-    tuiBlurNativeFocused,
-    tuiGetClosestFocusable,
-    tuiGetNativeFocused,
-} from '@taiga-ui/cdk/utils/focus';
+import {tuiGetClosestFocusable, tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 
 @Directive({
     standalone: true,
@@ -36,28 +32,20 @@ export class TuiFocusTrap implements OnDestroy {
              * The same event can synchronously close already opened focus trap and open another one.
              * All focus traps have microtask inside its `ngOnDestroy` –
              * they should be resolved before enabling of new focus trap.
-             * Don't enable any new event listeners before `initialized` equals to `true`!
+             * Don't enable any new event listeners before `initialized` is equal to `true`!
              */
             this.initialized = true;
-            this.activeElement = tuiGetNativeFocused(this.doc);
+            this.activeElement = tuiGetFocused(this.doc);
             this.el.focus();
         });
     }
 
     public ngOnDestroy(): void {
-        tuiBlurNativeFocused(this.doc);
+        this.initialized = false;
 
-        /**
-         * HostListeners are triggered even after ngOnDestroy
-         * {@link https://github.com/angular/angular/issues/38100}
-         * so we need to delay it but stay in the same sync cycle,
-         * therefore using Promise instead of setTimeout
-         */
-        Promise.resolve().then(() => {
-            if (tuiIsHTMLElement(this.activeElement)) {
-                this.activeElement.focus();
-            }
-        });
+        if (tuiIsHTMLElement(this.activeElement)) {
+            this.activeElement.focus();
+        }
     }
 
     protected onFocusIn(node: Node): void {

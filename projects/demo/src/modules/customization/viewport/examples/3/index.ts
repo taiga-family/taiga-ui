@@ -1,4 +1,3 @@
-import {NgForOf} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -32,18 +31,9 @@ class PortalHost implements TuiRectAccessor {
 }
 
 @Component({
-    standalone: true,
-    imports: [
-        FormsModule,
-        NgForOf,
-        PortalHost,
-        TuiButton,
-        TuiHint,
-        TuiLink,
-        TuiSegmented,
-    ],
+    imports: [FormsModule, PortalHost, TuiButton, TuiHint, TuiLink, TuiSegmented],
     templateUrl: './index.html',
-    styleUrls: ['../1/index.less'],
+    styleUrl: '../1/index.less',
     encapsulation,
     changeDetection,
 })

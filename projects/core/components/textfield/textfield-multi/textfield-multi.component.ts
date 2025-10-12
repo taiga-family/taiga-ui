@@ -1,6 +1,5 @@
-import {NgForOf, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
-    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
     ContentChild,
@@ -21,7 +20,6 @@ import {tuiArrayToggle, tuiProvide, tuiPx} from '@taiga-ui/cdk/utils/miscellaneo
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     tuiAsDataListHost,
-    type TuiDataListHost,
     TuiWithOptionContent,
 } from '@taiga-ui/core/components/data-list';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
@@ -45,25 +43,22 @@ import {
 import {filter, fromEvent} from 'rxjs';
 
 import {TuiTextfieldBaseComponent, TuiTextfieldComponent} from '../textfield.component';
-import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
 import {
     type TuiTextfieldItem,
     TuiTextfieldItemComponent,
 } from './textfield-item.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-textfield[multi]',
     imports: [
-        NgForOf,
-        NgIf,
+        AsyncPipe,
         PolymorpheusOutlet,
         TuiButton,
         TuiScrollControls,
         WaResizeObserver,
     ],
     templateUrl: './textfield-multi.template.html',
-    styleUrls: ['./textfield-multi.style.less'],
+    styleUrl: './textfield-multi.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -76,7 +71,6 @@ import {
         TuiDropdownFixed,
         TuiDropdownDirective,
         TuiWithDropdownOpen,
-        TuiWithTextfieldDropdown,
         TuiWithIcons,
         TuiWithItemsHandlers,
         TuiWithOptionContent,
@@ -100,10 +94,7 @@ import {
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
     },
 })
-export class TuiTextfieldMultiComponent<T>
-    extends TuiTextfieldBaseComponent<T>
-    implements TuiDataListHost<T>, AfterContentInit
-{
+export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> {
     protected readonly height = signal<number | null>(null);
     protected readonly handlers = inject(TUI_ITEMS_HANDLERS);
     protected readonly component: PolymorpheusContent<TuiContext<TuiTextfieldItem<T>>> =
@@ -177,6 +168,11 @@ export class TuiTextfieldMultiComponent<T>
         }
 
         this.open.update((open) => !open);
-        this.input?.nativeElement.showPicker?.();
+
+        try {
+            this.input?.nativeElement.showPicker?.();
+        } catch {
+            // Empty catch block - silently ignore showPicker errors
+        }
     }
 }

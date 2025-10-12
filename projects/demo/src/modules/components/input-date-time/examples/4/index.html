@@ -8,12 +8,9 @@
             formControlName="timeRequired"
             tuiInputDateTime
         />
-        <tui-calendar *tuiTextfieldDropdown />
+        <tui-calendar *tuiDropdown />
     </tui-textfield>
-    <tui-error
-        formControlName="timeRequired"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="timeRequired" />
 
     <tui-textfield>
         <label tuiLabel>At least day</label>
@@ -21,12 +18,9 @@
             formControlName="dayRequired"
             tuiInputDateTime
         />
-        <tui-calendar *tuiTextfieldDropdown />
+        <tui-calendar *tuiDropdown />
     </tui-textfield>
-    <tui-error
-        formControlName="dayRequired"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="dayRequired" />
 
     <tui-textfield>
         <label tuiLabel>Optional + UnfinishedValidator</label>
@@ -35,12 +29,9 @@
             tuiInputDateTime
             tuiUnfinishedValidator
         />
-        <tui-calendar *tuiTextfieldDropdown />
+        <tui-calendar *tuiDropdown />
     </tui-textfield>
-    <tui-error
-        formControlName="optional"
-        [error]="[] | tuiFieldError | async"
-    />
+    <tui-error formControlName="optional" />
 
     <footer>
         <button

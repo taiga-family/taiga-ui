@@ -29,10 +29,15 @@ will gladly answer!
 
 <ng-template #dropdownContent>
     <div class="dropdown">
-        <tui-avatar
+        <div
             size="l"
-            [src]="avatarUrl"
-        />
+            tuiAvatar="@tui.user"
+        >
+            <img
+                alt=""
+                src="/assets/images/avatar.jpg"
+            />
+        </div>
         <div class="text">
             <div class="label">Taiga UI developer</div>
             <div class="name">Alex Inkin</div>

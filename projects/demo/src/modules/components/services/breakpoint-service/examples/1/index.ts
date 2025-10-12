@@ -1,14 +1,13 @@
-import {AsyncPipe, NgIf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBreakpointService} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgIf],
+    imports: [AsyncPipe],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

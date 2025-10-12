@@ -18,7 +18,6 @@ import {
 import {TuiHintDirective} from './hint.directive';
 
 @Component({
-    standalone: true,
     imports: [PolymorpheusOutlet],
     template: '<ng-container *polymorpheusOutlet="context.$implicit.content()" />',
     changeDetection: ChangeDetectionStrategy.OnPush,

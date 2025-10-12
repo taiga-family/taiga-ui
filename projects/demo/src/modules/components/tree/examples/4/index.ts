@@ -11,7 +11,6 @@ interface TreeNode {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiTree],
     templateUrl: './index.html',
     encapsulation,
@@ -42,13 +41,13 @@ export default class Example {
         ],
     };
 
-    protected readonly map = new Map<TreeNode, boolean>();
+    protected map = new Map<TreeNode, boolean>();
 
     protected readonly handler: TuiHandler<TreeNode, readonly TreeNode[]> = (item) =>
         item.children || EMPTY_ARRAY;
 
     protected toggleTopmost(): void {
-        this.map.set(this.data, !this.map.get(this.data));
+        this.map = new Map(this.map.set(this.data, !this.map.get(this.data)));
     }
 
     protected toggleLevel(index: number): void {
@@ -56,7 +55,7 @@ export default class Example {
         const key = nodes[index];
 
         if (key) {
-            this.map.set(key, !this.map.get(key));
+            this.map = new Map(this.map.set(key, !this.map.get(key)));
         }
     }
 }

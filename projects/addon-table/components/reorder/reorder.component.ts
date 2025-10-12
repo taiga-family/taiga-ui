@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -17,11 +17,10 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 import {TUI_REORDER_OPTIONS} from './reorder.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-reorder',
-    imports: [AsyncPipe, NgForOf, PolymorpheusOutlet, TuiButton, TuiIcon, TuiTiles],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiButton, TuiIcon, TuiTiles],
     templateUrl: './reorder.template.html',
-    styleUrls: ['./reorder.style.less'],
+    styleUrl: './reorder.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         {

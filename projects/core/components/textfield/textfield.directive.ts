@@ -97,6 +97,10 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
 
         if (value == null) {
             this.el.ownerDocument.execCommand('delete');
+
+            // see https://github.com/taiga-family/taiga-ui/issues/11634
+            // ensure non-erasable affixes actually deleted
+            this.el.value = '';
         } else {
             this.el.ownerDocument.execCommand(
                 'insertText',
@@ -109,9 +113,7 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
 
 @Directive({
     standalone: true,
-    // TODO: Remove :not in v.5
-    selector:
-        'input[tuiTextfield]:not([tuiInputCard]):not([tuiInputExpire]):not([tuiInputCVC])',
+    selector: 'input[tuiTextfield]',
     providers: [
         tuiAsTextfieldAccessor(TuiTextfieldDirective),
         tuiProvide(TuiTextfieldBase, TuiTextfieldDirective),

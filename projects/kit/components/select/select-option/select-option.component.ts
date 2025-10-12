@@ -13,7 +13,6 @@ import {TuiCheckbox, tuiCheckboxOptionsProvider} from '@taiga-ui/kit/components/
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 
 @Component({
-    standalone: true,
     imports: [TuiCheckbox],
     template: `
         <input
@@ -24,7 +23,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
             [size]="datalist.size === 'l' ? 'm' : 's'"
         />
     `,
-    styleUrls: ['./select-option.style.less'],
+    styleUrl: './select-option.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiCheckboxOptionsProvider({appearance: () => 'action'})],
     hostDirectives: [TuiScrollIntoView],

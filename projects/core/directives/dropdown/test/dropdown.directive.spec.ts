@@ -1,19 +1,18 @@
 import {ChangeDetectionStrategy, Component, type ElementRef} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {TuiDropdownDirective, TuiDropdownManual, TuiRoot} from '@taiga-ui/core';
-import {PolymorpheusOutlet, PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
+import {
+    provideTaiga,
+    TuiDropdownDirective,
+    TuiDropdownManual,
+    TuiRoot,
+} from '@taiga-ui/core';
+import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('TuiDropdownDirective', () => {
     @Component({
         standalone: true,
-        imports: [
-            PolymorpheusOutlet,
-            PolymorpheusTemplate,
-            TuiDropdownDirective,
-            TuiDropdownManual,
-            TuiRoot,
-        ],
+        imports: [PolymorpheusTemplate, TuiDropdownDirective, TuiDropdownManual, TuiRoot],
         template: `
             <tui-root>
                 <button
@@ -64,6 +63,7 @@ describe('TuiDropdownDirective', () => {
     beforeEach(async () => {
         TestBed.configureTestingModule({
             imports: [Test],
+            providers: [provideTaiga()],
         });
         await TestBed.compileComponents();
         fixture = TestBed.createComponent(Test);

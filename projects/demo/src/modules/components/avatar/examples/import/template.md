@@ -1,3 +1,5 @@
 ```html
-<tui-avatar>Batman</tui-avatar>
+<div tuiAvatar="@tui.user">
+  <img src="avatar.jpg" />
+</div>
 ```

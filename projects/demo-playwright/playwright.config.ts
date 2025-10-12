@@ -5,6 +5,8 @@ import {pages as PUBLIC_PAGES} from '../demo/src/modules/app/pages';
 import {tuiGetDemoPathsForE2E} from './utils/get-demo-paths';
 
 const DEFAULT_VIEWPORT: ViewportSize = {width: 750, height: 700};
+const THRESHOLD = parseFloat(process.env.PW_THRESHOLD ?? '') || 0.02;
+const MAX_DIFF_PIXEL_RATIO = parseFloat(process.env.PW_MAX_DIFF_PIXEL_RATIO ?? '');
 
 process.env['DEMO_PATHS'] = JSON.stringify(tuiGetDemoPathsForE2E(PUBLIC_PAGES));
 process.env['AXE_CONFIG'] = JSON.stringify({
@@ -19,6 +21,18 @@ process.env['AXE_CONFIG'] = JSON.stringify({
         {id: 'empty-table-header', enabled: false},
     ],
 });
+
+const chromium = {
+    name: 'chromium',
+    use: {...devices['Desktop Chrome HiDPI'], viewport: DEFAULT_VIEWPORT},
+};
+
+const options = Object.fromEntries(
+    Object.entries({
+        threshold: THRESHOLD,
+        maxDiffPixelRatio: MAX_DIFF_PIXEL_RATIO,
+    }).filter(([, value]) => !Number.isNaN(value)),
+);
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -36,6 +50,9 @@ export default defineConfig({
     forbidOnly: !!process.env.CI,
     retries: process.env.CI ? Number(process.env.RETRY_COUNT ?? 2) : 0,
     workers: process.env.CI ? '100%' : '50%',
+    snapshotPathTemplate:
+        process.env.SNAPSHOT_PATH_TEMPLATE ??
+        '{testDir}/snapshots/{platform}-{projectName}/{testFilePath}/{arg}{ext}',
     timeout: 5 * 60 * 1000,
     use: {
         baseURL: `http://localhost:${process.env.NG_SERVER_PORT || 3333}`,
@@ -48,35 +65,31 @@ export default defineConfig({
             viewport: DEFAULT_VIEWPORT,
             screen: DEFAULT_VIEWPORT,
             hasTouch: true,
+            permissions: ['clipboard-read'],
         },
     },
-    projects: [
-        {
-            name: 'chromium',
-            use: {
-                ...devices['Desktop Chrome HiDPI'],
-                viewport: DEFAULT_VIEWPORT,
-            },
-        },
-        process.env.CI
-            ? {
+    projects: process.env.CI
+        ? [
+              chromium,
+              {
                   name: 'webkit',
-                  use: {
-                      ...devices['Desktop Safari'],
-                      viewport: DEFAULT_VIEWPORT,
-                  },
-              }
-            : null,
-    ].filter(<T>(x: T | null): x is T => !!x),
+                  use: {...devices['Desktop Safari'], viewport: DEFAULT_VIEWPORT},
+              },
+              {
+                  name: 'firefox',
+                  use: {...devices['Desktop Firefox HiDPI'], viewport: DEFAULT_VIEWPORT},
+              },
+          ]
+        : [chromium],
     expect: {
         toHaveScreenshot: {
             animations: 'disabled',
             caret: 'hide',
             scale: 'device',
-            threshold: 0.02,
+            ...options,
         },
         toMatchSnapshot: {
-            threshold: 0.02,
+            ...options,
         },
     },
 });

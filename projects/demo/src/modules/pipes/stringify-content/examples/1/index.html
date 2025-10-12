@@ -1,11 +1,19 @@
-<tui-combo-box
+<tui-textfield
+    tuiChevron
     [stringify]="stringify"
-    [(ngModel)]="value"
+    [tuiTextfieldCleaner]="false"
 >
-    Pick your guy
+    <label tuiLabel>Pick your guy</label>
+
+    <input
+        tuiComboBox
+        [(ngModel)]="value"
+    />
+
     <tui-data-list-wrapper
-        *tuiDataList
+        *tuiDropdown
+        new
         [itemContent]="stringify | tuiStringifyContent"
         [items]="items | tuiFilterByInput"
     />
-</tui-combo-box>
+</tui-textfield>

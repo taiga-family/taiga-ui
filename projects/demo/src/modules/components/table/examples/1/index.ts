@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -6,10 +6,9 @@ import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiFormatNumberPipe} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgForOf, TuiFormatNumberPipe, TuiTable],
+    imports: [AsyncPipe, TuiFormatNumberPipe, TuiTable],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

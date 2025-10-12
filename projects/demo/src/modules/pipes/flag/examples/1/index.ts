@@ -7,7 +7,6 @@ import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_COUNTRIES} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, TuiFlagPipe],
     templateUrl: './index.html',
     encapsulation,

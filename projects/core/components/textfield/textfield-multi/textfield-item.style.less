@@ -1,8 +1,9 @@
 :host {
     max-inline-size: 100%;
     flex-shrink: 0;
-    white-space: pre-wrap;
+    white-space: nowrap;
     text-overflow: ellipsis;
+    color: var(--tui-text-primary);
 
     &._string {
         overflow: hidden;
@@ -12,7 +13,7 @@
         }
 
         &::after {
-            content: ', ';
+            content: ',\00a0';
         }
     }
 
@@ -27,5 +28,5 @@
 
 :host-context(tui-textfield:has([tuiSelectLike])):last-of-type::after,
 :host-context(tui-textfield[data-mode~='readonly']):last-of-type::after {
-    content: ' ';
+    content: '\00a0';
 }

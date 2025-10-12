@@ -15,14 +15,15 @@
             .
         </p>
 
-        <tui-doc-example
-            *ngFor="let example of examples; let index = index"
-            [component]="index + 1 | tuiComponent"
-            [content]="index + 1 | tuiExample"
-            [description]="index === 6 ? concurrency : ''"
-            [heading]="example"
-            [id]="example | tuiKebab"
-        />
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="$index === 6 ? concurrency : ''"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
 
         <ng-template #concurrency>
             This example demonstrates how to limit maximum number of alert being shown to concurrently (it uses
@@ -99,10 +100,10 @@
             </tr>
 
             <tr
-                name="[closeable]"
+                name="[closable]"
                 tuiDocAPIItem
                 type="boolean"
-                [(value)]="closeable"
+                [(value)]="closable"
             >
                 Has close button
             </tr>
@@ -115,6 +116,26 @@
                 [(value)]="icon"
             >
                 Icon
+            </tr>
+
+            <tr
+                name="[orientation]"
+                tuiDocAPIItem
+                type="'start' | 'center' | 'end'"
+                [items]="orientationVariants"
+                [(value)]="orientation"
+            >
+                Orientation
+            </tr>
+
+            <tr
+                name="[position]"
+                tuiDocAPIItem
+                type="'top' | 'bottom'"
+                [items]="positionVariants"
+                [(value)]="position"
+            >
+                Position
             </tr>
         </table>
     </ng-template>

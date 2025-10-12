@@ -1,4 +1,12 @@
-import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
+import {
+    computed,
+    Directive,
+    effect,
+    inject,
+    Input,
+    signal,
+    untracked,
+} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
@@ -144,8 +152,13 @@ export class TuiInputDateTimeDirective
     }
 
     public override writeValue(value: [TuiDay, TuiTime | null] | null): void {
-        super.writeValue(value);
-        this.textfield.value.set(this.stringify(this.value()));
+        const reset = this.control.pristine && this.control.untouched && !value;
+        const changed = untracked(() => value !== this.value());
+
+        if (changed || reset) {
+            super.writeValue(value);
+            untracked(() => this.textfield.value.set(this.stringify(this.value())));
+        }
     }
 
     protected override processCalendar(calendar: TuiCalendar): void {

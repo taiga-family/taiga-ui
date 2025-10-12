@@ -6,10 +6,9 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiCarousel} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiCarousel, TuiDemo, TuiRepeatTimes],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Example {

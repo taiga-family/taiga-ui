@@ -8,10 +8,9 @@ import {TUI_MONTHS} from '@taiga-ui/core';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiAxes, TuiDemo, TuiLineDaysChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

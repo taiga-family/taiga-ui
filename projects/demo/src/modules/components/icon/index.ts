@@ -1,27 +1,17 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TuiIcon} from '@taiga-ui/core';
-import {
-    TUI_PREVIEW_ICONS,
-    TuiAccordion,
-    tuiInputNumberOptionsProvider,
-} from '@taiga-ui/kit';
+import {TUI_PREVIEW_ICONS} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
-    imports: [TuiAccordion, TuiDemo, TuiIcon],
+    imports: [TuiDemo, TuiIcon],
     templateUrl: './index.html',
+    styleUrl: './index.less',
     changeDetection,
-    providers: [tuiInputNumberOptionsProvider({min: 0})],
 })
 export default class Page {
-    protected readonly lucide = import('./examples/import/lucide.md?raw');
-    protected readonly material = import('./examples/import/material.md?raw');
-    protected readonly fontAwesome = import('./examples/import/font-awesome.md?raw');
     protected readonly used = Object.values(inject(TUI_PREVIEW_ICONS)); // compatibility with proprietary icons
-    protected readonly routes = DemoRoute;
 
     protected readonly iconVariants = [
         '@tui.info',
@@ -41,28 +31,16 @@ export default class Page {
         ),
     ];
 
-    protected readonly colorVariants = ['', 'var(--tui-text-primary)', 'red', '#3aa981'];
-
     protected readonly examples = [
         'Basic',
-        'External',
-        'Two colors',
+        'Parameters',
+        'Features',
         'Bundled',
         'Resolver',
-    ];
-
-    protected readonly descriptions = [
-        '',
-        '',
-        '',
-        'You can provide SVG source code in a dictionary to be bundled with the app',
-        'IMPORTANT: Icon names are not allowed to have "/" symbol',
+        'External',
     ];
 
     protected icon = '@tui.heart';
-    protected backgroundIcon = '@tui.heart-filled';
-    protected backgroundColor = 'var(--tui-background-accent-2-hover)';
-    protected color = '';
-
-    protected size = 48;
+    protected background = '';
+    protected badge = '';
 }

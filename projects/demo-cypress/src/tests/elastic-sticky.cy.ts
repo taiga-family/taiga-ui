@@ -4,7 +4,6 @@ import {createOutputSpy} from 'cypress/angular';
 
 describe('ElasticSticky', () => {
     @Component({
-        standalone: true,
         imports: [TuiElasticSticky],
         template: `
             <div

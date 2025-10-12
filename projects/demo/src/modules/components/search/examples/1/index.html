@@ -9,16 +9,16 @@
                 >
                     Reset
                 </button>
-                <ng-container *ngFor="let control of filters.controls; let i = index">
+                @for (control of filters.controls; track control) {
                     <tui-textfield *tuiItem>
-                        <label tuiLabel>Filter {{ i + 1 }}</label>
+                        <label tuiLabel>Filter {{ $index + 1 }}</label>
                         <input
                             placeholder="Search"
                             tuiTextfield
-                            [formControlName]="i"
+                            [formControlName]="$index"
                         />
                     </tui-textfield>
-                </ng-container>
+                }
             </tui-search-filters>
             <button
                 tuiButton

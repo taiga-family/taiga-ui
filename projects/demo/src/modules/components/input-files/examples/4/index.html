@@ -1,13 +1,13 @@
 <tui-files [max]="3">
-    <ng-container *ngFor="let file of files">
+    @for (file of files; track file) {
         <tui-file
             *tuiItem
             state="normal"
             [file]="file"
         />
-    </ng-container>
+    }
 
-    <ng-container *ngFor="let file of rejectedFiles">
+    @for (file of rejectedFiles; track file) {
         <a
             *tuiItem
             rel="noreferrer"
@@ -16,5 +16,5 @@
             tuiFile
             [file]="file"
         ></a>
-    </ng-container>
+    }
 </tui-files>

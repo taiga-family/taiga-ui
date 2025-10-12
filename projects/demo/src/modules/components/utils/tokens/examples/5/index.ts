@@ -6,7 +6,6 @@ import {DemoRoute} from '@demo/routes';
 import {TuiLink} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [RouterLink, TuiLink],
     templateUrl: './index.html',
     encapsulation,

@@ -1,4 +1,4 @@
-<ng-container *ngIf="items.changes | async" />
+@if (items.changes | async) {}
 <tui-tabs
     class="t-tabs"
     [activeItemIndex]="activeItemIndex"
@@ -7,40 +7,38 @@
     (activeItemIndexChange)="onActiveItemIndexChange($event)"
     (keydown.arrowRight)="onArrowRight($event)"
 >
-    <ng-container *ngFor="let item of items; let index = index">
-        <ng-container
-            *ngIf="index <= lastVisibleIndex; else hidden"
-            [ngTemplateOutlet]="item"
-        />
-        <ng-template #hidden>
+    @for (item of items; track item) {
+        @if ($index <= lastVisibleIndex) {
+            <ng-container [ngTemplateOutlet]="item" />
+        } @else {
             <div
                 class="t-flex"
-                [class.t-overflown]="isOverflown(index)"
+                [class.t-overflown]="isOverflown($index)"
             >
                 <ng-container [ngTemplateOutlet]="item" />
             </div>
-        </ng-template>
-    </ng-container>
+        }
+    }
 </tui-tabs>
 
-<button
-    *ngIf="moreContent; else chevron"
-    tuiTab
-    type="button"
-    class="t-more"
-    [class._active]="isMoreActive"
-    [class.t-no-margin]="isMoreAlone"
-    [class.t-overflown]="!isMoreVisible"
-    [tabIndex]="isMoreFocusable ? 0 : -1"
-    [tuiDropdown]="dropdownContent || dropdown"
-    [(tuiDropdownOpen)]="open"
-    (keydown.arrowLeft.prevent)="onArrowLeft()"
->
-    <ng-container *polymorpheusOutlet="moreContent as text">
-        {{ text }}
-    </ng-container>
-</button>
-<ng-template #chevron>
+@if (moreContent) {
+    <button
+        tuiTab
+        type="button"
+        class="t-more"
+        [class._active]="isMoreActive"
+        [class.t-no-margin]="isMoreAlone"
+        [class.t-overflown]="!isMoreVisible"
+        [tabIndex]="isMoreFocusable ? 0 : -1"
+        [tuiDropdown]="dropdownContent || dropdown"
+        [(tuiDropdownOpen)]="open"
+        (keydown.arrowLeft.prevent)="onArrowLeft()"
+    >
+        <ng-container *polymorpheusOutlet="moreContent as text">
+            {{ text }}
+        </ng-container>
+    </button>
+} @else {
     <button
         tuiChevron
         tuiTab
@@ -56,7 +54,7 @@
     >
         {{ moreWord$ | async }}
     </button>
-</ng-template>
+}
 <ng-template #dropdown>
     <div
         #element
@@ -65,14 +63,15 @@
         (keydown.arrowDown.prevent)="onWrapperArrow($event, element, false)"
         (keydown.arrowUp.prevent)="onWrapperArrow($event, element, true)"
     >
-        <div
-            *ngFor="let item of items; let index = index"
-            class="t-dropdown-item"
-            (tui-tab-activate)="onClick(index)"
-        >
-            <ng-container *ngIf="shouldShow(index)">
-                <ng-container *polymorpheusOutlet="item" />
-            </ng-container>
-        </div>
+        @for (item of items; track item) {
+            <div
+                class="t-dropdown-item"
+                (tui-tab-activate)="onClick($index)"
+            >
+                @if (shouldShow($index)) {
+                    <ng-container *polymorpheusOutlet="item" />
+                }
+            </div>
+        }
     </div>
 </ng-template>

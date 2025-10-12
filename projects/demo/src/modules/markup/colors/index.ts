@@ -7,7 +7,6 @@ import {BACKGROUNDS, CHARTS, OTHERS, STATUSES, TEXT} from './constants';
 import {TableColors} from './examples/table';
 
 @Component({
-    standalone: true,
     imports: [TableColors, TuiDemo],
     templateUrl: './index.html',
     changeDetection,

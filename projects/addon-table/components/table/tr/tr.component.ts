@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf, NgIf, NgTemplateOutlet} from '@angular/common';
+import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     type AfterContentInit,
     ChangeDetectionStrategy,
@@ -21,9 +21,8 @@ import {TuiTableTbody} from '../tbody/tbody.component';
 import {TuiTableTd} from '../td/td.component';
 
 @Component({
-    standalone: true,
     selector: 'tr[tuiTr]',
-    imports: [AsyncPipe, NgForOf, NgIf, NgTemplateOutlet, TuiTableTd],
+    imports: [AsyncPipe, NgTemplateOutlet, TuiTableTd],
     templateUrl: './tr.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER, ResizeObserverService],
@@ -31,7 +30,7 @@ import {TuiTableTd} from '../td/td.component';
         '[style.--t-row-height.px]': 'height()',
     },
 })
-export class TuiTableTr<T extends Partial<Record<keyof T, any>>>
+export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>>
     implements AfterContentInit
 {
     @ContentChildren(forwardRef(() => TuiTableCell))
@@ -70,7 +69,7 @@ export class TuiTableTr<T extends Partial<Record<keyof T, any>>>
             (rows) =>
                 this.body.data[rows.findIndex((row) => row === this)] as Record<
                     string | keyof T,
-                    any
+                    unknown
                 >,
         ),
     );

@@ -25,7 +25,6 @@ const TWO_DOTS: [string, string] = [
 const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 
 @Component({
-    standalone: true,
     imports: [TuiCalendarRange, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
@@ -68,7 +67,12 @@ export default class Example {
         tuiCreateDefaultDayRangePeriods(),
     ];
 
-    protected readonly minLengthVariants: readonly TuiDayLike[] = [{day: 3}, {day: 15}];
+    protected readonly minLengthVariants: readonly TuiDayLike[] = [
+        {day: 3},
+        {day: 15},
+        {month: 1},
+        {month: 1, day: 1},
+    ];
 
     protected readonly maxLengthVariants: readonly TuiDayLike[] = [
         {day: 5},

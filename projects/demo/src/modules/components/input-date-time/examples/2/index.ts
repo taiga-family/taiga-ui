@@ -9,7 +9,6 @@ import {TuiInputDateTime} from '@taiga-ui/kit';
 const CHEAPEST_TICKET: [string] = ['var(--tui-status-positive)'];
 
 @Component({
-    standalone: true,
     imports: [FormsModule, TuiInputDateTime, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

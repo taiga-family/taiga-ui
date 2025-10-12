@@ -7,7 +7,7 @@ import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {
     tuiInjectAuxiliary,
     TuiTextfieldDirective,
-    tuiTextfieldIconBinding,
+    tuiTextfieldIcon,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
 import {
@@ -49,7 +49,7 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
     );
 
     protected readonly dropdownEnabled = tuiDropdownEnabled(this.interactive);
-    protected readonly icon = tuiTextfieldIconBinding(TUI_INPUT_YEAR_OPTIONS);
+    protected readonly icon = tuiTextfieldIcon(TUI_INPUT_YEAR_OPTIONS);
     protected readonly min = signal(this.options.min.year);
     protected readonly max = signal(this.options.max.year);
 

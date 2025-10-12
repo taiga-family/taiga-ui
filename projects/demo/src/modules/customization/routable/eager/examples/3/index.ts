@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDocCode} from '@taiga-ui/addon-doc';
 
 @Component({
-    standalone: true,
     imports: [TuiDocCode],
     templateUrl: './index.html',
     encapsulation,

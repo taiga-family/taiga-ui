@@ -5,7 +5,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiBlockStatus} from '@taiga-ui/layout';
 
 @Component({
-    standalone: true,
     imports: [TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
     encapsulation,

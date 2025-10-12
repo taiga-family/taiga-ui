@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -25,9 +24,7 @@ import {
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [
-        NgIf,
         RouterLink,
         TuiAnimated,
         TuiAutoFocus,
@@ -36,7 +33,7 @@ import {TuiButton} from '@taiga-ui/core';
         WaIntersectionObserver,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(WA_INTERSECTION_ROOT, ElementRef)],
     host: {

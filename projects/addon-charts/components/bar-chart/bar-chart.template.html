@@ -1,32 +1,33 @@
-<div
-    *ngFor="let set of transposed; let index = index"
-    class="t-wrapper"
-    [class.t-wrapper_hoverable]="!!hintContent"
-    [class.t-wrapper_hovered]="drivers.get(index) | async"
-    [tuiHint]="hintContent"
-    [tuiHintAppearance]="hintAppearance"
-    [tuiHintContext]="{$implicit: index}"
-    [tuiHintDescribe]="getHintId(index)"
-    [tuiHintHost]="hintHost"
-    (click)="tapColumn.emit(index)"
-    (keydown.enter)="tapColumn.emit(index)"
-    (mouseenter.once)="(0)"
->
+@for (set of transposed; track set) {
     <div
-        class="t-container"
-        [style.height.%]="set | tuiMapper: percentMapper : collapsed : computedMax"
+        class="t-wrapper"
+        [class.t-wrapper_hoverable]="!!hintContent"
+        [class.t-wrapper_hovered]="drivers.get($index) | async"
+        [tuiHint]="hintContent"
+        [tuiHintAppearance]="hintAppearance"
+        [tuiHintContext]="{$implicit: $index}"
+        [tuiHintDescribe]="getHintId($index)"
+        [tuiHintHost]="hintHost"
+        (click)="tapColumn.emit($index)"
+        (keydown.enter)="tapColumn.emit($index)"
+        (mouseenter.once)="(0)"
     >
         <div
-            #hintHost
-            class="t-host"
-        ></div>
-        <tui-bar-set
-            class="t-set"
-            [collapsed]="collapsed"
-            [id]="getHintId(index)"
-            [size]="size"
-            [tabIndex]="hintContent ? 0 : -1"
-            [value]="set"
-        />
+            class="t-container"
+            [style.height.%]="set | tuiMapper: percentMapper : collapsed : computedMax"
+        >
+            <div
+                #hintHost
+                class="t-host"
+            ></div>
+            <tui-bar-set
+                class="t-set"
+                [collapsed]="collapsed"
+                [id]="getHintId($index)"
+                [size]="size"
+                [tabIndex]="hintContent ? 0 : -1"
+                [value]="set"
+            />
+        </div>
     </div>
-</div>
+}

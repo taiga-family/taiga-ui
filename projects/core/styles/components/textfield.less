@@ -17,7 +17,6 @@ tui-textfield {
     align-items: center;
     cursor: pointer;
     min-block-size: var(--t-height);
-    color: var(--tui-text-tertiary);
     padding: 0 var(--t-padding);
     border-radius: var(--tui-radius-l);
     font: var(--tui-font-text-ui-m);
@@ -25,6 +24,11 @@ tui-textfield {
     box-sizing: border-box;
     gap: 0 0.25rem;
     isolation: isolate;
+
+    // Increasing specificity to override custom appearance
+    &[tuiIcons]:read-only {
+        color: var(--tui-text-tertiary);
+    }
 
     &[style*='--t-icon-start:'] {
         --t-start: 2.25rem;
@@ -78,6 +82,7 @@ tui-textfield {
         outline: none;
         padding-block-start: 1.125rem;
         padding-block-end: 1.125rem;
+        color: var(--tui-text-primary);
 
         &[inputmode='none'] {
             caret-color: transparent;
@@ -175,7 +180,7 @@ tui-textfield {
         color: var(--tui-text-secondary);
     }
     */
-    &:hover {
+    &[tuiIcons]:hover {
         color: var(--tui-text-secondary);
 
         &:has(input:read-only):not([multi]),
@@ -271,7 +276,7 @@ tui-textfield {
         color: var(--tui-text-primary);
     }
 
-    &._with-template input:not([type='range']),
+    &._with-template input:first-of-type,
     &._with-template select,
     &._with-template textarea {
         color: transparent !important;
@@ -351,6 +356,7 @@ tui-textfield {
         align-self: flex-start;
         font-size: inherit;
         line-height: var(--t-height);
+        transition-duration: inherit;
     }
 
     label:defined,

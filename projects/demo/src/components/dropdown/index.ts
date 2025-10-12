@@ -1,4 +1,3 @@
-import {NgIf} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {DemoRoute} from '@demo/routes';
@@ -16,9 +15,8 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'tbody[tuiDocDropdown]',
-    imports: [NgIf, RouterLink, TuiDocAPIItem, TuiDropdown, TuiLink, TuiTitle],
+    imports: [RouterLink, TuiDocAPIItem, TuiDropdown, TuiLink, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -46,6 +44,7 @@ export class TuiDocDropdown {
     public appearance = this.options.appearance;
     public limitWidth: TuiDropdownWidth = 'fixed';
     public tuiDropdownEnabled = false;
-
+    public dropdownSided = false;
+    public dropdownSidedOffset = 4;
     public open = false;
 }

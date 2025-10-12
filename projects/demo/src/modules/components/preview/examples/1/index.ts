@@ -4,17 +4,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiClamp, TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
 import {TuiAlertService, TuiButton, type TuiDialogContext} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
-import {
-    type PolymorpheusContent,
-    PolymorpheusOutlet,
-    PolymorpheusTemplate,
-} from '@taiga-ui/polymorpheus';
+import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
-    imports: [PolymorpheusOutlet, PolymorpheusTemplate, TuiButton, TuiPreview, TuiSwipe],
+    imports: [PolymorpheusOutlet, TuiButton, TuiPreview, TuiSwipe],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

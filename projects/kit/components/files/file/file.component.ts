@@ -1,4 +1,4 @@
-import {CommonModule} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -31,10 +31,9 @@ import {type TuiFileLike, type TuiFileState} from '../files.types';
 import {TUI_FILE_OPTIONS} from './file.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-file,a[tuiFile],button[tuiFile]',
     imports: [
-        CommonModule,
+        AsyncPipe,
         PolymorpheusOutlet,
         TuiButton,
         TuiHintOverflow,
@@ -42,7 +41,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
         TuiLoader,
     ],
     templateUrl: './file.template.html',
-    styleUrls: ['./file.style.less'],
+    styleUrl: './file.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAppearanceOptionsProvider(TUI_FILE_OPTIONS)],
     hostDirectives: [TuiAppearance],

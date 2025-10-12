@@ -9,15 +9,16 @@
         [(ngModel)]="value"
     />
 
-    <button
-        *ngIf="value"
-        iconStart="@tui.x"
-        tabindex="-1"
-        tuiIconButton
-        type="button"
-        (click)="clear()"
-        (pointerdown.zoneless.prevent)="input.focus()"
-    >
-        Clear
-    </button>
+    @if (value) {
+        <button
+            iconStart="@tui.x"
+            tabindex="-1"
+            tuiIconButton
+            type="button"
+            (click)="clear()"
+            (pointerdown.zoneless.prevent)="input.focus()"
+        >
+            Clear
+        </button>
+    }
 </tui-textfield>

@@ -1,6 +1,7 @@
-<div
-    *ngFor="let item of value; let index = index"
-    automation-id="tui-bar__bar"
-    [style.background]="'var(--tui-chart-categorical-' + index.toString().padStart(2, '0') + ')'"
-    [style.height.%]="getHeight(item)"
-></div>
+@for (item of value; track item) {
+    <div
+        automation-id="tui-bar__bar"
+        [style.background]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
+        [style.height.%]="getHeight(item)"
+    ></div>
+}

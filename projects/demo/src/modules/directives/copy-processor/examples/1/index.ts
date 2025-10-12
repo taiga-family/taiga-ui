@@ -9,7 +9,6 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 import {map} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [AsyncPipe, FormsModule, TuiCopyProcessor, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,

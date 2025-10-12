@@ -25,23 +25,23 @@
                 [tuiHintDirection]="direction"
             />
         </tui-doc-demo>
-        <tui-doc-documentation>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiHint"
-                documentationPropertyType="PolymorpheusContent"
+        <table tuiDocAPI>
+            <tr
+                name="[tuiHint]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
             >
                 Content
-            </ng-template>
-            <ng-template
-                documentationPropertyMode="input"
-                documentationPropertyName="tuiHintDescribe"
-                documentationPropertyType="string"
-                [(documentationPropertyValue)]="id"
+            </tr>
+            <tr
+                name="[tuiHintDescribe]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="id"
             >
                 Id of the element
-            </ng-template>
-        </tui-doc-documentation>
+            </tr>
+        </table>
         <inherited-documentation />
     </ng-template>
 

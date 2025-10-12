@@ -1,4 +1,4 @@
-<tui-textfield>
+<tui-textfield [style.width.rem]="24">
     <input
         placeholder="Choose a range of months"
         tuiInputMonthRange
@@ -6,7 +6,7 @@
     />
 
     <tui-calendar-month
-        *tuiTextfieldDropdown
+        *tuiDropdown
         [maxLength]="6"
         [minLength]="3"
     />

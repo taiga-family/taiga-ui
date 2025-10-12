@@ -6,10 +6,9 @@ import {TuiButton, TuiDropdown} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiActiveZone, TuiButton, TuiChevron, TuiDropdown, TuiObscured],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

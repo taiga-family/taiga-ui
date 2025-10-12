@@ -7,7 +7,12 @@
 </tui-chip>
 
 <tui-chip appearance="accent">
-    <tui-avatar src="/assets/images/avatar.jpg" />
+    <span tuiAvatar="@tui.user">
+        <img
+            alt=""
+            src="/assets/images/avatar.jpg"
+        />
+    </span>
     <div tuiFade>AI</div>
     <div tuiFade>{{ 9870043000 | tuiAmount: 'USD' | async }}</div>
 </tui-chip>

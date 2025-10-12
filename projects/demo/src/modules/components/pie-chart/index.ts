@@ -9,10 +9,9 @@ import {tuiFormatNumber, type TuiSizeXL, type TuiSizeXS} from '@taiga-ui/core';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiDemo, TuiPieChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

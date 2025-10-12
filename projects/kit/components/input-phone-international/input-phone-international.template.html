@@ -1,91 +1,70 @@
-<tui-textfield
-    class="t-select"
-    [content]="flag"
-    [tuiChevron]="open()"
->
-    <select
-        aria-label="Country"
-        ngModel=""
-        tuiTextfield
+<ng-container *tuiTextfieldContent>
+    <button
+        appearance="textfield"
+        tabindex="-1"
+        tuiButton
+        tuiChevron
+        type="button"
+        class="t-ipi-select"
         [attr.data-mode]="mode()"
+        [class.t-ipi-select_readonly]="readOnly()"
         [disabled]="disabled()"
-        [focused]="open()"
-        [ngModelOptions]="{standalone: true}"
-    ></select>
-
-    <ng-template #flag>
-        <img
-            class="t-flag"
-            [alt]="names()?.[countryIsoCode()]"
-            [src]="countryIsoCode() | tuiFlag"
-        />
-    </ng-template>
-</tui-textfield>
-
-<tui-textfield>
-    <!--TODO: Replace attribute bindings with inputs after Angular updated and signal bindings properly update-->
-    <input
-        autocomplete="new-password"
-        tuiTextfield
-        [attr.data-mode]="mode()"
-        [attr.readonly]="readOnly() || null"
-        [disabled]="disabled()"
-        [maskito]="mask()"
-        [ngModelOptions]="{standalone: true}"
-        [(ngModel)]="textfieldValue"
-        (beforeinput.capture)="onPaste($event)"
-        (blur)="onTouched()"
-        (focus)="!readOnly() && onFocus()"
-        (ngModelChange)="onValueChange($event)"
-    />
-
-    <!--
-    TODO: get rid of built-in input and label and just externalize everything in 5.0
-    <tui-input-phone-international>
-      <label tuiLabel>My label</label>
-      <input tuiTextfield placeholder="My placeholder" [(ngModel)]="value" />
-      <tui-icon icon="@tui.phone" />
-    </tui-input-phone-international>
-    -->
-    <ng-content select="tui-icon, img" />
-
-    <label tuiLabel>
-        <ng-content />
-    </label>
-</tui-textfield>
-
-<ng-container *tuiTextfieldDropdown>
-    <tui-textfield
-        *ngIf="countrySearch"
-        tuiTextfieldSize="m"
-        class="t-search"
-        [iconStart]="icons.search"
+        [size]="size()"
+        [tuiAppearanceFocus]="open()"
+        (click.prevent)="interactive() && open.set(!open())"
+        (pointerdown.stop)="(0)"
     >
-        <input
-            tuiTextfield
-            [focused]="true"
-            [ngModel]="search()"
-            [placeholder]="label()"
-            [tuiAutoFocus]="!isIos"
-            (keydown.arrowDown)="focusFirstItem()"
-            (ngModelChange)="search.set($event)"
+        <img
+            class="t-ipi-flag"
+            [alt]="names()?.[code()]"
+            [class.t-ipi-flag_small]="size() === 's'"
+            [src]="code() | tuiFlag"
         />
-    </tui-textfield>
-
-    <tui-data-list (keydown)="onKeyDown($event)">
-        <button
-            *ngFor="let item of filtered()"
-            tuiOption
-            type="button"
-            (click)="onItemClick(item.iso)"
+    </button>
+</ng-container>
+<ng-template #filter>
+    <div class="t-ipi-search">
+        <tui-textfield
+            [iconStart]="icons.search"
+            [tuiTextfieldSize]="size() === 's' ? 's' : 'm'"
         >
-            <img
-                alt=""
-                class="t-flag"
-                [src]="item.iso | tuiFlag"
+            <input
+                autocomplete="off"
+                tuiTextfield
+                type="text"
+                [ngModel]="search()"
+                [ngModelOptions]="{standalone: true}"
+                [placeholder]="label()"
+                [tuiAutoFocus]="!ios"
+                (keydown.arrowDown)="list.get(0)?.nativeElement?.focus()"
+                (ngModelChange)="search.set($event)"
             />
-            <span class="t-name">{{ item.name }}</span>
-            <span class="t-code">{{ item.code }}</span>
-        </button>
+        </tui-textfield>
+    </div>
+</ng-template>
+<ng-container *tuiDropdown>
+    <!-- To keep it under local injector -->
+    @if (countrySearch) {
+        <ng-container *ngTemplateOutlet="filter" />
+    }
+    <tui-data-list class="t-ipi-options">
+        @for (item of filtered(); track $index) {
+            <button
+                new
+                tuiOption
+                type="button"
+                [tuiCell]="size()"
+                (click)="onItemClick(item.iso)"
+            >
+                <img
+                    alt=""
+                    class="t-ipi-flag"
+                    [class.t-ipi-flag_small]="size() === 's'"
+                    [src]="item.iso | tuiFlag"
+                />
+                <span tuiTitle>{{ item.name }}</span>
+                <span class="t-ipi-code">{{ item.code }}</span>
+            </button>
+        }
     </tui-data-list>
 </ng-container>

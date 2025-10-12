@@ -11,10 +11,6 @@
 
 .t-input {
     margin: 1.25rem;
-
-    ::ng-deep tui-icon {
-        border-width: 0.25rem;
-    }
 }
 
 .t-slash {
@@ -31,6 +27,15 @@
 
     tui-scrollbar {
         overscroll-behavior: none;
+    }
+}
+
+:host-context(tui-drawer) {
+    margin: -1.25rem -1.5rem;
+
+    // tui-drawer already have tui-scrollbar, need pass navigation scrollbar content to outer layer
+    .t-scrollbar {
+        display: contents;
     }
 }
 
@@ -55,13 +60,13 @@
 
 .t-expand {
     margin-inline-start: 0.25rem;
+    padding-block: 0;
 }
 
 .t-section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: -0.5rem 0 -1rem;
 
     &_bordered {
         margin: 0.5rem 0;
@@ -107,8 +112,7 @@
 .t-chevron {
     .transition(transform);
 
-    inline-size: 1rem;
-    block-size: 1rem;
+    font-size: 1rem;
     margin: -0.25rem 0.25rem 0 -0.1875rem;
 
     &_active {

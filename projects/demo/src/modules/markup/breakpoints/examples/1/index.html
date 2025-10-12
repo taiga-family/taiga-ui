@@ -1,8 +1,5 @@
 <div class="wrapper">
-    <span
-        *ngFor="let breakpoint of breakpoints"
-        [class]="'item ' + breakpoint"
-    >
-        &#64;{{ breakpoint }}
-    </span>
+    @for (breakpoint of breakpoints; track breakpoint) {
+        <span [class]="`item ${breakpoint}`">&#64;{{ breakpoint }}</span>
+    }
 </div>

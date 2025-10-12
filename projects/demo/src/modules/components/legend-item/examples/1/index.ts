@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,10 +7,9 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiHovered, tuiSum} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
-    imports: [AsyncPipe, NgForOf, TuiAmountPipe, TuiHovered, TuiLegendItem, TuiRingChart],
+    imports: [AsyncPipe, TuiAmountPipe, TuiHovered, TuiLegendItem, TuiRingChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

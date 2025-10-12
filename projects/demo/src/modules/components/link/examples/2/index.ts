@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLink} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiLink],
     templateUrl: './index.html',
     encapsulation,
