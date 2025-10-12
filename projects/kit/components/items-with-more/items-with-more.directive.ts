@@ -1,39 +1,36 @@
-import {Directive, Input, type OnChanges} from '@angular/core';
+import {computed, Directive, input} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {Subject} from 'rxjs';
 
 @Directive({
     standalone: true,
     host: {
-        '[class._multiline]': 'linesLimit > 1',
+        '[class._multiline]': 'linesLimit() > 1',
         '[style.--t-min-width.px]': 'maxWidth()',
     },
 })
-export class TuiItemsWithMoreDirective implements OnChanges {
+export class TuiItemsWithMoreDirective {
     private readonly el = tuiInjectElement();
 
-    @Input()
-    public itemsLimit = Infinity;
+    public itemsLimit = input(Infinity);
 
-    @Input()
-    public required = -1;
+    public required = input(-1);
 
-    @Input()
-    public linesLimit = 1;
+    public linesLimit = input(1);
 
-    @Input()
-    public side: 'end' | 'start' = 'end';
+    public side = input<'end' | 'start'>('end');
 
-    // TODO: refactor to signal inputs after Angular update
-    public readonly change$ = new Subject<void>();
+    public readonly change = computed(() => {
+        return {
+            itemsLimit: this.itemsLimit(),
+            required: this.required(),
+            linesLimit: this.linesLimit(),
+            side: this.side(),
+        };
+    });
 
-    public get computedSide(): 'end' | 'start' {
-        return this.linesLimit > 1 ? 'end' : this.side;
-    }
-
-    public ngOnChanges(): void {
-        this.change$.next();
-    }
+    public computedSide = computed<'end' | 'start'>(() =>
+        this.linesLimit() > 1 ? 'end' : this.side(),
+    );
 
     protected maxWidth(): number {
         return Math.max(...Array.from(this.el.children, ({clientWidth}) => clientWidth));
