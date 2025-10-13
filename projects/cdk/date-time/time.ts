@@ -12,7 +12,7 @@ import {
     MINUTES_IN_HOUR,
     SECONDS_IN_MINUTE,
 } from './date-time';
-import {type TuiTimeLike, type TuiTimeMode} from './types';
+import {type TuiTimeLike} from './types';
 
 /**
  * Immutable time object with hours, minutes, seconds and ms
@@ -185,7 +185,18 @@ export class TuiTime implements TuiTimeLike {
      * Converts TuiTime to string
      */
     public toString(
-        mode?: TuiTimeMode, // TODO(v5): remove usage of `TuiTimeMode` and inline all modes as huge union type
+        mode?:
+            | 'HH AA'
+            | 'HH:MM AA'
+            | 'HH:MM:SS AA'
+            | 'HH:MM:SS.MSS AA'
+            | 'HH:MM:SS.MSS'
+            | 'HH:MM:SS'
+            | 'HH:MM'
+            | 'HH'
+            | 'MM:SS.MSS'
+            | 'MM:SS'
+            | 'SS.MSS',
     ): string {
         const needAddMs = mode?.startsWith('HH:MM:SS.MSS') || (!mode && this.ms > 0);
         const needAddSeconds =
