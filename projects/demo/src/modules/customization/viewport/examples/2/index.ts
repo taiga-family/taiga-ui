@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {tuiAsPortal, tuiInjectElement, TuiPortals} from '@taiga-ui/cdk';
+import {tuiInjectElement, TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
 import {
     tuiAsViewport,
     TuiDropdown,
@@ -17,7 +17,7 @@ import {
         <ng-container #vcr />
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [tuiAsPortal(TuiPopupService), tuiAsViewport(PortalHost)],
+    providers: [tuiProvide(TuiPortalService, TuiPopupService), tuiAsViewport(PortalHost)],
 })
 class PortalHost extends TuiPortals implements TuiRectAccessor {
     private readonly el = tuiInjectElement();

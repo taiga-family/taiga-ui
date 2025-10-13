@@ -14,9 +14,6 @@ import {POLYMORPHEUS_CONTEXT, type PolymorpheusComponent} from '@taiga-ui/polymo
 
 import {TuiPortalService} from './service';
 
-/**
- * Abstract class for host element for dynamically created portals.
- */
 @Directive()
 export abstract class TuiPortals {
     private readonly vcr = viewChild.required('vcr', {read: ViewContainerRef});
