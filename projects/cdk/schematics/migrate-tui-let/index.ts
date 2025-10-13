@@ -72,8 +72,8 @@ export default function tuiLetMigrationGenerator(options: TuiSchema): Rule {
 
                 if (tagName === 'ng-container' && attrs.length === 1) {
                     if (childNodes.length) {
-                        const firstNode = childNodes.at(0)!;
-                        const lastNode = childNodes.at(0)!;
+                        const firstNode = childNodes[0]!;
+                        const lastNode = childNodes[0]!;
 
                         recorder.remove(
                             templateOffset + sourceCodeLocation!.startOffset,
