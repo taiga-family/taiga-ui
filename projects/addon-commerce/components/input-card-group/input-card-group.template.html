@@ -144,6 +144,7 @@
         tuiAppearance="icon"
         class="t-icon"
         [icon]="icons.close"
+        [style.border-width.rem]="0.25"
         (click)="clear()"
     />
     <tui-icon
@@ -151,6 +152,7 @@
         automation-id="tui-input-card-group__dropdown"
         tuiAppearance="icon"
         tuiChevron
+        class="t-icon"
         (click)="toggle()"
     />
 </div>
