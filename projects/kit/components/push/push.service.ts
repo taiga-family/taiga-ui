@@ -1,13 +1,16 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiPopoverService} from '@taiga-ui/cdk/services';
-import {TUI_ALERTS} from '@taiga-ui/core/components/alert';
+import {TuiPortal} from '@taiga-ui/cdk/portals';
+import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 
 import {TUI_PUSH_OPTIONS, type TuiPushOptions} from './push.options';
 import {TuiPushAlert} from './push-alert.component';
 
 @Injectable({
     providedIn: 'root',
-    useFactory: () =>
-        new TuiPushService(TUI_ALERTS, TuiPushAlert, inject(TUI_PUSH_OPTIONS)),
+    deps: [TuiPopupService],
+    useClass: TuiPushService,
 })
-export class TuiPushService extends TuiPopoverService<TuiPushOptions, string> {}
+export class TuiPushService extends TuiPortal<TuiPushOptions, string> {
+    protected override readonly options = inject(TUI_PUSH_OPTIONS);
+    protected override readonly component = TuiPushAlert;
+}

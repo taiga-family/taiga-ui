@@ -5,7 +5,7 @@ import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {DemoRoute} from '@demo/routes';
-import {tuiAsPortal, TuiPortals, TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiPortals, TuiPortalService, tuiProvide, TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
@@ -64,7 +64,7 @@ const ICON =
     encapsulation,
     changeDetection,
     // Ignore portal related code, it is only here to position drawer inside the example block
-    providers: [TuiPopupService, tuiAsPortal(TuiPopupService)],
+    providers: [TuiPopupService, tuiProvide(TuiPortalService, TuiPopupService)],
 })
 export default class Example extends TuiPortals {
     protected expanded = signal(false);

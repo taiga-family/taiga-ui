@@ -5,15 +5,7 @@
     type="components"
 >
     <ng-template pageTab>
-        <p>Built-in implementation of notifications</p>
-
-        <p>
-            Position on screen can be configured by providing margins with
-            <code>TUI_ALERT_POSITION</code>
-            token. Default value is
-            <code>2rem 3rem 0 auto</code>
-            .
-        </p>
+        Built-in implementation of notifications
 
         @for (example of examples; track example) {
             <tui-doc-example
@@ -116,6 +108,26 @@
                 [(value)]="icon"
             >
                 Icon
+            </tr>
+
+            <tr
+                name="[orientation]"
+                tuiDocAPIItem
+                type="'start' | 'center' | 'end'"
+                [items]="orientationVariants"
+                [(value)]="orientation"
+            >
+                Orientation
+            </tr>
+
+            <tr
+                name="[position]"
+                tuiDocAPIItem
+                type="'top' | 'bottom'"
+                [items]="positionVariants"
+                [(value)]="position"
+            >
+                Position
             </tr>
         </table>
     </ng-template>

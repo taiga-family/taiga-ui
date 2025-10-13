@@ -4,8 +4,7 @@
     .fullsize(fixed);
     .scrollbar-hidden();
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
     pointer-events: none;
     overflow: hidden;
     overscroll-behavior: none;
@@ -16,5 +15,10 @@
 
     ::ng-deep > * {
         pointer-events: auto;
+    }
+
+    &::after {
+        content: '';
+        grid-row: 10000;
     }
 }

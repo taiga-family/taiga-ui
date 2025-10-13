@@ -535,6 +535,86 @@ export class PerformanceComparison {
             `📈 Summary: ${report.summary.totalTests} tests, ${report.summary.testsWithBaseline} with baseline, ${report.summary.testsWithSignificantChanges} with significant changes`,
         );
 
+        // Hard regression gate: fail build if any test's layout, recalc, or combined (layout+recalc)
+        // duration increased by >= PERF_HARD_FAIL_PERCENT (default 50%). Improvements and new tests are ignored.
+        // If PERF_HARD_FAIL_DEFER === 'true', do not throw immediately: append offenders to report file and
+        // write a sentinel file so a later CI step can still mark the job red after posting the PR comment.
+        const HARD_FAIL_PCT = Number(process.env.PERF_HARD_FAIL_PERCENT || '50');
+        const DEFER_FAIL =
+            (process.env.PERF_HARD_FAIL_DEFER || 'false').toLowerCase() === 'true';
+        const SENTINEL_PATH =
+            process.env.PERF_HARD_FAIL_SENTINEL || `${outputDir}/hard-fail.txt`;
+        const offenders = report.details.filter((d) => {
+            if (!d.baseline) {
+                return false;
+            }
+
+            const baseLayout = d.baseline.layoutDuration || 0;
+            const baseRecalc = d.baseline.recalcStyleDuration || 0;
+            const curLayout = d.current.layoutDuration || 0;
+            const curRecalc = d.current.recalcStyleDuration || 0;
+            const netBase = baseLayout + baseRecalc;
+            const netCur = curLayout + curRecalc;
+
+            return (
+                (baseLayout > 0 &&
+                    ((curLayout - baseLayout) / baseLayout) * 100 >= HARD_FAIL_PCT) ||
+                (baseRecalc > 0 &&
+                    ((curRecalc - baseRecalc) / baseRecalc) * 100 >= HARD_FAIL_PCT) ||
+                (netBase > 0 && ((netCur - netBase) / netBase) * 100 >= HARD_FAIL_PCT)
+            );
+        });
+
+        if (offenders.length) {
+            console.error('❌ Hard performance regression threshold breached.');
+
+            for (const o of offenders) {
+                const baseLayout = o.baseline!.layoutDuration || 0;
+                const baseRecalc = o.baseline!.recalcStyleDuration || 0;
+                const curLayout = o.current.layoutDuration || 0;
+                const curRecalc = o.current.recalcStyleDuration || 0;
+                const netBase = baseLayout + baseRecalc;
+                const netCur = curLayout + curRecalc;
+                const pct = (cur: number, base: number): string =>
+                    base > 0 ? (((cur - base) / base) * 100).toFixed(1) : 'n/a';
+                // Keep detailed lines only in console (do not duplicate in markdown)
+
+                console.error(
+                    `  • ${o.testName}: layout ${baseLayout.toFixed(1)}→${curLayout.toFixed(1)} ms (${pct(curLayout, baseLayout)}%), recalc ${baseRecalc.toFixed(1)}→${curRecalc.toFixed(1)} ms (${pct(curRecalc, baseRecalc)}%), net ${netBase.toFixed(1)}→${netCur.toFixed(1)} ms (${pct(netCur, netBase)}%)`,
+                );
+            }
+
+            if (DEFER_FAIL) {
+                // Insert single-line banner after the main heading; table already contains per-test rows
+                try {
+                    const heading = '## 📊 Performance Metrics Comparison';
+                    let updated = markdown;
+
+                    if (updated.includes(heading)) {
+                        updated = updated.replace(
+                            heading,
+                            `${heading}\n\n❌ Hard Gate Offenders (${offenders.length} offender${offenders.length === 1 ? '' : 's'}; threshold ${HARD_FAIL_PCT}% - deferred)`,
+                        );
+                    } else {
+                        updated = `❌ Hard Gate Offenders (${offenders.length} offender${offenders.length === 1 ? '' : 's'}; threshold ${HARD_FAIL_PCT}% - deferred)\n\n${updated}`;
+                    }
+
+                    await writeFile(outputPath, updated);
+                    // create sentinel
+                    await writeFile(SENTINEL_PATH, `fail (${offenders.length})`);
+                    console.error(
+                        `⚠️ Hard gate deferred (PERF_HARD_FAIL_DEFER=true). Sentinel written to ${SENTINEL_PATH}`,
+                    );
+                } catch (e) {
+                    console.error('Failed to append offenders or write sentinel:', e);
+                }
+            } else {
+                throw new Error(
+                    `Performance hard gate failed: ${offenders.length} test(s) regressed by >= ${HARD_FAIL_PCT}% in layout, recalc, or net duration`,
+                );
+            }
+        }
+
         return report;
     }
 
