@@ -23,6 +23,7 @@
             <ng-template>
                 <tui-input-card-group
                     [codeLength]="codeLength"
+                    [compact]="compact"
                     [formControl]="formControl"
                     [icon]="icon"
                     [id]="id"
@@ -68,6 +69,14 @@
                 [(value)]="codeLength"
             >
                 Code length
+            </tr>
+            <tr
+                name="[compact]"
+                tuiDocAPIItem
+                type="boolean"
+                [(value)]="compact"
+            >
+                Manually set compact mode (forced on mobile resolution)
             </tr>
             <tr
                 name="[icon]"

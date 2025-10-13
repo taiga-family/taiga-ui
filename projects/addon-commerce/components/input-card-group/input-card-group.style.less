@@ -61,7 +61,7 @@
         }
     }
 
-    :host-context(tui-root._mobile) {
+    &._compact {
         inline-size: @width-mobile;
 
         --t-translate: @wrapper-offset-small;
@@ -99,7 +99,7 @@
     &_cvc {
         margin-inline-start: @offset-full;
 
-        :host-context(tui-root._mobile) & {
+        :host._compact & {
             margin-inline-start: @offset-small;
         }
     }

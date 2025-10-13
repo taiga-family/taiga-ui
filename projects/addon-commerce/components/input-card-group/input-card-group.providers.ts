@@ -1,13 +1,12 @@
 import {inject, InjectionToken} from '@angular/core';
-import {WA_WINDOW} from '@ng-web-apis/common';
 import {
     TUI_CARD_CVC_TEXTS,
     TUI_CARD_EXPIRY_TEXTS,
     TUI_CARD_NUMBER_TEXTS,
 } from '@taiga-ui/addon-commerce/tokens';
-import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
-import {TUI_MEDIA} from '@taiga-ui/core/tokens';
-import {combineLatest, map, type Observable, of, startWith, switchMap} from 'rxjs';
+import {combineLatest, map, type Observable} from 'rxjs';
+
+import {TuiInputCardGroupDirective} from './input-card-group.directive';
 
 export interface TuiCardGroupedTexts {
     readonly cardNumberText: string;
@@ -15,38 +14,24 @@ export interface TuiCardGroupedTexts {
     readonly expiryText: string;
 }
 
-/**
- * InputCardGroup texts
- */
 export const TUI_INPUT_CARD_GROUP_TEXTS = new InjectionToken<
     Observable<TuiCardGroupedTexts>
->(ngDevMode ? 'TUI_INPUT_CARD_GROUP_TEXTS' : '', {
-    factory: () => {
-        const win = inject(WA_WINDOW);
-        const cardNumberTexts = inject(TUI_CARD_NUMBER_TEXTS);
-        const expiryTexts = inject(TUI_CARD_EXPIRY_TEXTS);
-        const cvcTexts = inject(TUI_CARD_CVC_TEXTS);
-        const {desktopSmall} = inject(TUI_MEDIA);
+>(ngDevMode ? 'TUI_INPUT_CARD_GROUP_TEXTS' : '');
 
-        const media = win.matchMedia(
-            `screen and (min-width: ${(desktopSmall - 1) / 16}em)`,
-        );
-
-        return tuiTypedFromEvent(media, 'change').pipe(
-            startWith(null),
-            switchMap(() =>
-                combineLatest([
-                    of(Number(media.matches)),
-                    cardNumberTexts,
-                    expiryTexts,
-                    cvcTexts,
-                ]),
-            ),
-            map(([index, cardNumber, expiry, cvcTexts]) => ({
-                cardNumberText: cardNumber[index] ?? '',
-                expiryText: expiry[index] ?? '',
-                cvcText: cvcTexts[index] ?? '',
+export const TUI_INPUT_CARD_GROUP_TEXTS_PROVIDER = {
+    provide: TUI_INPUT_CARD_GROUP_TEXTS,
+    useFactory: () =>
+        inject(TUI_INPUT_CARD_GROUP_TEXTS, {skipSelf: true, optional: true}) ??
+        combineLatest([
+            inject(TuiInputCardGroupDirective).compact$,
+            inject(TUI_CARD_NUMBER_TEXTS),
+            inject(TUI_CARD_EXPIRY_TEXTS),
+            inject(TUI_CARD_CVC_TEXTS),
+        ]).pipe(
+            map(([compact, cardNumber, expiry, cvcTexts]) => ({
+                cardNumberText: cardNumber[Number(!compact)] ?? '',
+                expiryText: expiry[Number(!compact)] ?? '',
+                cvcText: cvcTexts[Number(!compact)] ?? '',
             })),
-        );
-    },
-});
+        ),
+};
