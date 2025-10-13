@@ -1,5 +1,8 @@
+@let v = value();
+@let min = minLabel();
+@let max = maxLabel();
 <svg
-    *tuiRepeatTimes="let index of value.length"
+    *tuiRepeatTimes="let index of v.length"
     focusable="false"
     viewBox="-100 -100 200 200"
     xmlns="http://www.w3.org/2000/svg"
@@ -30,6 +33,6 @@
     </div>
 </div>
 <div class="t-percent">
-    <span>{{ minLabel }}</span>
-    <span>{{ maxLabel }}</span>
+    <span>{{ min }}</span>
+    <span>{{ max }}</span>
 </div>
