@@ -47,9 +47,8 @@ export class TuiArcChart {
 
     private readonly indexChange$ = toObservable(this.arcs).pipe(
         takeUntilDestroyed(),
-        // keep spread to remove readonly constraint
         switchMap((arcs) =>
-            merge(...arcsToIndex([...arcs])).pipe(
+            merge(...arcsToIndex(arcs as Array<ElementRef<SVGElement>>)).pipe(
                 tap((i) => this.activeItemIndex.set(i)),
             ),
         ),
