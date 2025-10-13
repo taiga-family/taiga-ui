@@ -47,7 +47,7 @@ export class Test {
 
 const COMPONENT_AFTER = `import { TuiInputNumberModule } from "@taiga-ui/legacy";
 import { TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
-// TODO: (Taiga UI migration) TuiIllustrationsModule and TuiIllustrationModePipe were deleted. Import TuiIconPipe and use <img [src]="'@tui.illustration.pack.icon-name' | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons
+// TODO: (Taiga UI migration) TuiIllustrationsModule and TuiIllustrationModePipe were deleted. Import TuiIconPipe and use <img [src]="'@tui.illustrations.pack.icon-name' | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons
 import { TuiIllustrationsModule } from '@taiga-ui/proprietary';
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
 import {TuiFeedItemIcon} from '@taiga-ui/proprietary';
