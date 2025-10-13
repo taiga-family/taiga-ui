@@ -5124,7 +5124,7 @@ export class Example {}
 
 ```html
 &lt;ng-template&gt;
-&lt;tui-input-card-group [codeLength]=&quot;codeLength&quot; [formControl]=&quot;formControl&quot; [icon]=&quot;icon&quot; [id]=&quot;id&quot; [inputs]=&quot;inputs&quot; [invalid]=&quot;control.invalid&quot; [placeholder]=&quot;placeholder&quot; [readOnly]=&quot;control.readonly&quot; [tuiDisabled]=&quot;control.disabled&quot; /&gt;
+&lt;tui-input-card-group [codeLength]=&quot;codeLength&quot; [compact]=&quot;compact&quot; [formControl]=&quot;formControl&quot; [icon]=&quot;icon&quot; [id]=&quot;id&quot; [inputs]=&quot;inputs&quot; [invalid]=&quot;control.invalid&quot; [placeholder]=&quot;placeholder&quot; [readOnly]=&quot;control.readonly&quot; [tuiDisabled]=&quot;control.disabled&quot; /&gt;
 &lt;/ng-template&gt;
 ```
 
@@ -5134,6 +5134,7 @@ export class Example {}
 |----------|-----|----------|
 | [cardValidator] | `TuiBooleanHandler&lt;string&gt;` | Custom card validator for moving focus to the next field |
 | [codeLength] | `3 | 4` | Code length |
+| [compact] | `boolean` | Manually set compact mode (forced on mobile resolution) |
 | [icon] | `PolymorpheusContent` | Custom card icon |
 | [id] | `string` | accordingly). Auto-generated when not provided. |
 | [inputs] | `TuiCardInputs` | Toggle availability of inputs |
@@ -5206,6 +5207,7 @@ export default class PageComponent {
     ];
 
     protected inputs = this.options.inputs;
+    protected compact = false;
 
     protected formControl = new FormControl&lt;TuiCard | null&gt;(null);
 
