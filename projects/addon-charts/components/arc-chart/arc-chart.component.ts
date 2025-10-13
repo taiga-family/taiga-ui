@@ -2,22 +2,25 @@ import {
     ChangeDetectionStrategy,
     Component,
     type ElementRef,
-    Input,
-    Output,
-    type QueryList,
-    signal,
-    ViewChildren,
+    input,
+    model,
+    viewChildren,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {
+    outputFromObservable,
+    takeUntilDestroyed,
+    toObservable,
+    toSignal,
+} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiSizeXL} from '@taiga-ui/core/types';
 import {
+    debounceTime,
     map,
     merge,
     type Observable,
-    ReplaySubject,
-    startWith,
     switchMap,
+    take,
     tap,
     timer,
 } from 'rxjs';
@@ -27,7 +30,7 @@ const SIZE = {m: 9, l: 11, xl: 16} as const;
 const WIDTH = {m: 0.25, l: 0.375, xl: 0.5625} as const;
 const GAP = {m: 0.125, l: 0.1875, xl: 0.25} as const;
 
-function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<number>> {
+function arcsToIndex(arcs: Array<ElementRef<SVGElement>>): Array<Observable<number>> {
     return arcs.map(({nativeElement}, index) =>
         merge(
             tuiTypedFromEvent(nativeElement, 'mouseenter').pipe(map(() => index)),
@@ -42,75 +45,74 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
     styleUrl: './arc-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
         '[style.width.rem]': 'width',
         '[style.height.rem]': 'width',
         '[style.strokeWidth.rem]': 'strokeWidth',
     },
 })
 export class TuiArcChart {
-    private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
+    private readonly arcs = viewChildren<ElementRef<SVGElement>>('arc');
 
-    protected initialized = signal(false);
-
-    protected readonly $ = timer(0)
-        .pipe(tuiZonefree(), takeUntilDestroyed())
-        .subscribe(() => this.initialized.set(true));
-
-    @Input()
-    public value: readonly number[] = [];
-
-    @Input()
-    public size: TuiSizeXL = 'm';
-
-    @Input()
-    public max = 100;
-
-    @Input()
-    public minLabel = '0%';
-
-    @Input()
-    public maxLabel = '100%';
-
-    @Input()
-    public activeItemIndex = NaN;
-
-    @Output()
-    public readonly activeItemIndexChange = this.arcs$.pipe(
+    private readonly indexChange$ = toObservable(this.arcs).pipe(
+        takeUntilDestroyed(),
+        // keep spread to remove readonly constraint
         switchMap((arcs) =>
-            arcs.changes.pipe(
-                startWith(null),
-                switchMap(() => merge(...arcsToIndex(arcs))),
+            merge(...arcsToIndex([...arcs])).pipe(
+                tap((i) => this.activeItemIndex.set(i)),
             ),
         ),
-        tap((index) => {
-            this.activeItemIndex = index;
-        }),
     );
 
-    @ViewChildren('arc')
-    protected set arcs(arcs: QueryList<ElementRef<SVGElement>>) {
-        this.arcs$.next(arcs);
-    }
+    protected readonly initialized = toSignal(
+        timer(0).pipe(
+            tuiZonefree(),
+            // adjust debounceTime as much as needed
+            debounceTime(1),
+            take(1),
+            // your rule enforces a handler that exposes type true which is not the same as boolean
+            // eslint-disable-next-line no-restricted-syntax
+            map(() => true),
+        ),
+        {initialValue: false},
+    );
+
+    public readonly value = input<readonly number[]>([]);
+
+    public readonly size = input<TuiSizeXL>('m');
+
+    public readonly max = input(100);
+
+    public readonly minLabel = input('0%');
+
+    public readonly maxLabel = input('100%');
+
+    /**
+     * Set to change the index of the active arc.
+     * Will be overridden by hover state.
+     */
+    public readonly activeItemIndex = model<number>(NaN);
+
+    public readonly activeItemIndexChange = outputFromObservable(this.indexChange$);
 
     protected get width(): number {
-        return SIZE[this.size];
+        return SIZE[this.size()];
     }
 
     protected get strokeWidth(): number {
-        return WIDTH[this.size];
+        return WIDTH[this.size()];
     }
 
     protected isInactive(index: number): boolean {
-        return !Number.isNaN(this.activeItemIndex) && index !== this.activeItemIndex;
+        return !Number.isNaN(this.activeItemIndex()) && index !== this.activeItemIndex();
     }
 
     protected getInset(index: number): number {
-        return this.strokeWidth / 2 + index * (this.strokeWidth + GAP[this.size]);
+        return this.strokeWidth / 2 + index * (this.strokeWidth + GAP[this.size()]);
     }
 
     protected getDiameter(index: number): number {
-        return SIZE[this.size] - 2 * this.getInset(index);
+        return SIZE[this.size()] - 2 * this.getInset(index);
     }
 
     protected getLength(index: number): number {
@@ -119,7 +121,8 @@ export class TuiArcChart {
 
     protected getOffset(index: number): number {
         return (
-            this.getLength(index) * (1 - Math.min((this.value[index] || 0) / this.max, 1))
+            this.getLength(index) *
+            (1 - Math.min((this.value()[index] || 0) / this.max(), 1))
         );
     }
 }
