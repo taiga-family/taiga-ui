@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.58.0](https://github.com/taiga-family/taiga-ui/compare/v4.57.0...v4.58.0) (2025-10-13)
+
+### 🐞 Bug Fixes
+
+- **addon-commerce:** `InputCardGroup` fix stacking order of labels
+  ([#12240](https://github.com/taiga-family/taiga-ui/issues/12240))
+  ([7991362](https://github.com/taiga-family/taiga-ui/commit/7991362ddc1c0b121008e78301885737ba265dd8))
+- **cdk:** `CloseWatcher` add try/catch ([#12237](https://github.com/taiga-family/taiga-ui/issues/12237))
+  ([2abff4b](https://github.com/taiga-family/taiga-ui/commit/2abff4bcbe9cb7b047b0a1e322461ff655ee392a))
+- **cdk:** `TuiDay` incorrectly appends month in backward direction
+  ([#12191](https://github.com/taiga-family/taiga-ui/issues/12191))
+  ([93fea20](https://github.com/taiga-family/taiga-ui/commit/93fea202252961983ea720e0ddd2905d1dfb32e8))
+- **core:** "TuiDataListAccessor.getOptions()" should not be deprecated
+  ([#12159](https://github.com/taiga-family/taiga-ui/issues/12159))
+  ([a1c4659](https://github.com/taiga-family/taiga-ui/commit/a1c4659012d6bb2463323f87267d58c0b32a5d98))
+- **kit:** select does not open when clicking near the border in TuiInputPhoneInternational
+  ([#12241](https://github.com/taiga-family/taiga-ui/issues/12241))
+  ([1bdad78](https://github.com/taiga-family/taiga-ui/commit/1bdad78fb8ab8ae6ff466f9f2d983d99f80a02e8))
+
+### 🚀 Features
+
+- **addon-commerce:** `InputCardGroup` add `compact` mode
+  ([#12236](https://github.com/taiga-family/taiga-ui/issues/12236))
+  ([7ec2847](https://github.com/taiga-family/taiga-ui/commit/7ec284730f120afdc28ea056acafe564fe629299))
+- **core:** support empty appearance ([#12206](https://github.com/taiga-family/taiga-ui/issues/12206))
+  ([da497e8](https://github.com/taiga-family/taiga-ui/commit/da497e812931bd4089c2e3433123b66ba6df0618))
+
 ## [4.57.0](https://github.com/taiga-family/taiga-ui/compare/v4.56.0...v4.57.0) (2025-10-06)
 
 ### 🚀 Features
