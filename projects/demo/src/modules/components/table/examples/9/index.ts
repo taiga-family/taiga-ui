@@ -4,7 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable, TuiTableExpand} from '@taiga-ui/addon-table';
 import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiExpand, TuiFormatNumberPipe, TuiHint, TuiIcon} from '@taiga-ui/core';
+import {TuiButton, TuiFormatNumberPipe, TuiHint} from '@taiga-ui/core';
+import {TuiExpand} from '@taiga-ui/experimental';
 import {TuiChevron, TuiChip} from '@taiga-ui/kit';
 
 interface Item {
@@ -19,12 +20,12 @@ interface Item {
     imports: [
         AsyncPipe,
         NgForOf,
+        TuiButton,
         TuiChevron,
         TuiChip,
         TuiExpand,
         TuiFormatNumberPipe,
         TuiHint,
-        TuiIcon,
         TuiMapperPipe,
         TuiTable,
         TuiTableExpand,
