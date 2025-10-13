@@ -9,6 +9,7 @@ import {
     forwardRef,
     inject,
     Input,
+    isSignal,
     NgZone,
     type QueryList,
     signal,
@@ -27,7 +28,7 @@ import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {map, ReplaySubject, startWith, switchMap, timer} from 'rxjs';
+import {combineLatest, map, ReplaySubject, startWith, switchMap, timer} from 'rxjs';
 
 import {
     TUI_DATA_LIST_HOST,
@@ -36,6 +37,7 @@ import {
 } from './data-list.tokens';
 import {TuiOptionWithValue} from './option/option.directive';
 import {TUI_OPTION_CONTENT, TuiWithOptionContent} from './option/option-content';
+import {TuiOption} from './option/option-legacy.component';
 
 export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     const sizes = ['s', 'm', 'l'] as const;
@@ -58,6 +60,12 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
             provide: TUI_OPTION_CONTENT,
             useFactory: () =>
                 inject(TuiWithOptionContent, {optional: true})?.content ??
+                // TODO(v5): remove when all legacy controls are deleted
+                inject(TUI_OPTION_CONTENT, {
+                    host: true,
+                    skipSelf: true,
+                    optional: true,
+                }) ??
                 inject(TUI_OPTION_CONTENT, {skipSelf: true, optional: true}),
         },
     ],
@@ -77,6 +85,10 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
 export class TuiDataListComponent<T>
     implements TuiDataListAccessor<T>, AfterContentChecked, AfterContentInit
 {
+    // TODO(v5): delete
+    @ContentChildren(forwardRef(() => TuiOption), {descendants: true})
+    private readonly legacyOptionsQuery: QueryList<TuiOption<T>> = EMPTY_QUERY;
+
     @ContentChildren(forwardRef(() => TuiOptionWithValue), {descendants: true})
     private readonly optionsQuery: QueryList<TuiOptionWithValue<T>> = EMPTY_QUERY;
 
@@ -99,8 +111,18 @@ export class TuiDataListComponent<T>
     // TODO(v5): use signal `contentChildren`
     public readonly options = toSignal<readonly T[]>(
         this.contentReady$.pipe(
-            switchMap(() => tuiQueryListChanges(this.optionsQuery)),
-            map((options) => options.map(({value}) => value()).filter(tuiIsPresent)),
+            switchMap(() =>
+                combineLatest([
+                    tuiQueryListChanges(this.legacyOptionsQuery),
+                    tuiQueryListChanges(this.optionsQuery),
+                ]),
+            ),
+            map(([legacyOptions, options]) =>
+                [
+                    ...legacyOptions.map(({value}) => value),
+                    ...options.map(({value}) => value()),
+                ].filter(tuiIsPresent),
+            ),
             startWith([]),
         ),
         {requireSync: true},
@@ -132,10 +154,14 @@ export class TuiDataListComponent<T>
             });
     }
 
+    // TODO(v5): delete
     public getOptions(includeDisabled = false): readonly T[] {
-        return [...this.optionsQuery]
+        return [
+            ...this.legacyOptionsQuery, // TODO(v5): delete
+            ...this.optionsQuery,
+        ]
             .filter(({disabled}) => includeDisabled || !disabled)
-            .map(({value}) => value())
+            .map(({value}) => (isSignal(value) ? value() : value))
             .filter(tuiIsPresent);
     }
 
