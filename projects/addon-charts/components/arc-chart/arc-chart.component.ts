@@ -59,7 +59,8 @@ export class TuiArcChart {
         timer(0).pipe(
             tuiZonefree(),
             take(1),
-            // your rule enforces a handler that exposes type true which is not the same as boolean
+            // The linter rule 'no-restricted-syntax' incorrectly flags 'map(() => true)' here,
+            // because the literal 'true' has type 'true' (not 'boolean'), which is intentional for this signal initialization.
             // eslint-disable-next-line no-restricted-syntax
             map(() => true),
         ),
