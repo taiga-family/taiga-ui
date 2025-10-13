@@ -101,7 +101,7 @@ describe('Select', () => {
             cy.get('[tuiOption]')
                 .contains('User2')
                 .find('input[type="checkbox"]')
-                .should('not.be.checked');
+                .should('not.exist');
 
             cy.compareSnapshot('select-form-control-has-initial-value-option-checked');
         });
@@ -114,7 +114,7 @@ describe('Select', () => {
             cy.get('[tuiOption]')
                 .contains('User0')
                 .find('input[type="checkbox"]')
-                .should('not.be.checked');
+                .should('not.exist');
 
             cy.get('[tuiOption]')
                 .last()
