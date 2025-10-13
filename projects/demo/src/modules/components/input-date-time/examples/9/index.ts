@@ -22,7 +22,7 @@ export default class Example {
         '4.0.0 release': [new TuiDay(2024, 7, 9), new TuiTime(12, 17)],
     };
 
-    protected value: [TuiDay, TuiTime | null] | null = Object.values(this.dates).at(-1)!;
+    protected value: [TuiDay, TuiTime | null] | null = Object.values(this.dates).at(-1);
 
     protected toISOString([day, time]: readonly [TuiDay, TuiTime]): string {
         return `${day.toString('YMD', '-')}T${time.toString()}`;
