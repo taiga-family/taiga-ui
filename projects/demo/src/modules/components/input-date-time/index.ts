@@ -51,6 +51,6 @@ export default class Example {
     ] as const satisfies readonly MaskitoTimeMode[];
 
     protected min: TuiDay | readonly [TuiDay, TuiTime] | null = this.dates[0];
-    protected max: TuiDay | readonly [TuiDay, TuiTime] | null = this.dates.at(-1);
+    protected max: TuiDay | readonly [TuiDay, TuiTime] | null = this.dates.at(-1) ?? null;
     protected timeMode: MaskitoTimeMode = this.timeModeVariants[0];
 }
