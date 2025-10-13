@@ -15,7 +15,7 @@ import {
     type TuiRectAccessor,
     type TuiVehicle,
 } from '@taiga-ui/core/classes';
-import {TuiPopupService} from '@taiga-ui/core/directives';
+import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
