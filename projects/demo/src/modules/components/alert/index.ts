@@ -2,13 +2,7 @@ import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {type TuiPopoverContext} from '@taiga-ui/cdk';
-import {
-    TUI_NOTIFICATION_OPTIONS,
-    type TuiAlertOptions,
-    TuiAlertService,
-    TuiButton,
-} from '@taiga-ui/core';
+import {TUI_NOTIFICATION_OPTIONS, TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
@@ -91,15 +85,13 @@ export default class Page {
         inject(INJECTOR),
     );
 
-    protected get selectedContent(): PolymorpheusContent<
-        TuiAlertOptions<number> & TuiPopoverContext<number>
-    > {
+    protected get selectedContent(): PolymorpheusContent {
         return this.content === 'String' ? this.content : this.component;
     }
 
     protected showNotification(): void {
         this.alerts
-            .open(this.selectedContent, {
+            .open<number>(this.selectedContent, {
                 label: this.label,
                 data: this.data,
                 appearance: this.appearance,
@@ -111,9 +103,7 @@ export default class Page {
             })
             .pipe(
                 switchMap((response) =>
-                    this.alerts.open(response, {
-                        label: 'Notification responded with:',
-                    }),
+                    this.alerts.open(response, {label: 'Notification responded with:'}),
                 ),
             )
             .subscribe();
