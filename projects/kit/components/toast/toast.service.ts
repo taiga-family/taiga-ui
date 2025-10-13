@@ -1,21 +1,12 @@
-import {Directive, inject, Injectable} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TuiPopoverDirective} from '@taiga-ui/cdk/directives/popover';
-import {tuiAsPopover, type TuiPopover, TuiPopoverService} from '@taiga-ui/cdk/services';
+import {type ComponentRef, Directive, inject, Injectable, input} from '@angular/core';
+import {tuiAsPortal, TuiPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {
-    tuiCreateToken,
-    tuiCreateTokenFromFactory,
-} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_ALERTS} from '@taiga-ui/core/components/alert';
-import {BehaviorSubject, pairwise} from 'rxjs';
+import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
+import {TuiPopupService} from '@taiga-ui/core/directives/popup';
+import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TuiToastComponent} from './toast.component';
 import {TUI_TOAST_OPTIONS, type TuiToastOptions} from './toast.options';
-
-const TOASTS = tuiCreateToken(
-    new BehaviorSubject<ReadonlyArray<TuiPopover<TuiToastOptions<unknown>, any>>>([]),
-);
 
 export const TUI_TOASTS_CONCURRENCY = tuiCreateTokenFromFactory<number>(() =>
     inject(TUI_IS_MOBILE) ? 1 : 2,
@@ -23,29 +14,50 @@ export const TUI_TOASTS_CONCURRENCY = tuiCreateTokenFromFactory<number>(() =>
 
 @Injectable({
     providedIn: 'root',
-    useFactory: () =>
-        new TuiToastService(TOASTS, TuiToastComponent, inject(TUI_TOAST_OPTIONS)),
+    deps: [TuiPopupService],
+    useClass: TuiToastService,
 })
-export class TuiToastService extends TuiPopoverService<TuiToastOptions<any>> {
-    private readonly concurrency = inject(TUI_TOASTS_CONCURRENCY);
-    private readonly alerts = inject(TUI_ALERTS);
+export class TuiToastService extends TuiPortal<TuiToastOptions<any>> {
+    private readonly concurrency = Math.min(inject(TUI_TOASTS_CONCURRENCY), 5);
+    private readonly current = new Map<unknown, ComponentRef<unknown>>();
+    private readonly queue = new Set<PolymorpheusComponent<unknown>>();
 
-    protected readonly sub = this.items$
-        .pipe(pairwise(), takeUntilDestroyed())
-        .subscribe(([prev, next]) => {
-            const closed = prev.filter((item) => !next.includes(item));
-            const alerts = this.alerts.value.filter((item) => !closed.includes(item));
-            const toasts = new Set([...alerts, ...next.slice(0, this.concurrency)]);
+    protected override readonly options = inject(TUI_TOAST_OPTIONS);
+    protected override readonly component = TuiToastComponent;
 
-            this.alerts.next(Array.from(toasts));
-        });
+    protected override add(component: PolymorpheusComponent<unknown>): () => void {
+        if (this.current.size < this.concurrency) {
+            this.current.set(component, this.service.add(component));
+        } else {
+            this.queue.add(component);
+        }
+
+        return () => {
+            this.current.get(component)?.destroy();
+            this.current.delete(component);
+            this.queue.delete(component);
+
+            const [next] = this.queue;
+
+            if (this.current.size < this.concurrency && next) {
+                this.current.set(next, this.service.add(next));
+                this.queue.delete(next);
+            }
+        };
+    }
 }
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiToast]',
-    inputs: ['options: tuiToastOptions', 'open: tuiToast'],
-    outputs: ['openChange: tuiToastChange'],
-    providers: [tuiAsPopover(TuiToastService)],
+    providers: [tuiAsPortal(TuiToastService)],
+    hostDirectives: [
+        {
+            directive: TuiPortalDirective,
+            inputs: ['options: tuiToastOptions', 'open: tuiToast'],
+            outputs: ['openChange: tuiToastChange'],
+        },
+    ],
 })
-export class TuiToastTemplate<T> extends TuiPopoverDirective<TuiToastOptions<T>> {}
+export class TuiToastTemplate<T> {
+    public readonly tuiToastOptions = input<Partial<TuiToastOptions<T>>>({});
+}

@@ -11,7 +11,6 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, fromEvent, of, repeat, switchMap, takeUntil, timer} from 'rxjs';
 
 import {type TuiAlertOptions} from './alert.interfaces';
-import {TUI_ALERT_POSITION} from './alert.tokens';
 
 @Component({
     selector: 'tui-alert',
@@ -24,7 +23,6 @@ import {TUI_ALERT_POSITION} from './alert.tokens';
         role: 'alert',
         '[attr.data-orientation]': 'item.orientation',
         '[class._bottom]': 'item.position === "bottom"',
-        '[style.margin]': 'position',
     },
 })
 export class TuiAlertComponent<O, I> {
@@ -32,7 +30,6 @@ export class TuiAlertComponent<O, I> {
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
-    protected readonly position = inject(TUI_ALERT_POSITION);
     protected readonly item = injectContext<TuiPortalContext<TuiAlertOptions<I>, O>>();
 
     protected readonly sub = of(
