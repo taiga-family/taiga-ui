@@ -53,7 +53,7 @@
 
 - [Accordion](https://taiga-ui.dev/components/accordion) — @for (example of examples; track example) {
 - [Actions Bar](https://taiga-ui.dev/components/actions-bar)
-- [Alert](https://taiga-ui.dev/components/alert) — Built-in implementation of notifications Position on screen can be configured by providing margins with TUI_ALERT_POSITION token. Default value is 2rem 3rem 0 auto . @for (example of examples; track example) {
+- [Alert](https://taiga-ui.dev/components/alert) — Built-in implementation of notifications @for (example of examples; track example) {
 - [Avatar](https://taiga-ui.dev/components/avatar) — @for (example of examples; track example) {
 - [Badge](https://taiga-ui.dev/components/badge) — Component for displaying text, pictures and icons.
 - [Badge Notification](https://taiga-ui.dev/components/badge-notification) — Simple non-interactive badge. Used in headers, cells, cards, avatars to indicate notifications, such as new messages
