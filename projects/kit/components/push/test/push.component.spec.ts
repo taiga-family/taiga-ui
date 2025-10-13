@@ -36,6 +36,7 @@ describe('Push with TUI_PUSH_OPTIONS', () => {
         fixture = TestBed.createComponent(Test);
         tuiPushService = TestBed.inject(TuiPushService);
         pageObject = new TuiPageObject(fixture);
+        fixture.detectChanges();
     });
 
     describe('heading', () => {

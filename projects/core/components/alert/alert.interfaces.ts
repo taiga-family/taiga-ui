@@ -9,6 +9,8 @@ export interface TuiAlertOptions<I = undefined>
     readonly data: I;
     readonly closable: boolean;
     readonly label: PolymorpheusContent<TuiAlertOptions<I>>;
+    readonly position: 'bottom' | 'top';
+    readonly orientation: 'center' | 'end' | 'start';
 }
 
 export interface TuiAlertContext<O = void, I = undefined>

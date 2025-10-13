@@ -1,4 +1,5 @@
-:host._value > .t-check {
+:host._value > .t-check,
+:host._value > .t-dummy {
     order: 100;
     margin-inline-start: auto;
     pointer-events: none;
@@ -15,4 +16,8 @@
 
 .t-check::before {
     font-size: var(--t-size);
+}
+
+.t-dummy {
+    inline-size: 1.5rem;
 }

@@ -34,7 +34,7 @@ type Appearance = TuiLooseUnion<
 >;
 
 export interface TuiAppearanceOptions {
-    readonly appearance: Appearance;
+    readonly appearance: Appearance | '';
 }
 
 export const TUI_APPEARANCE_DEFAULT_OPTIONS: TuiAppearanceOptions = {

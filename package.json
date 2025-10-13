@@ -141,8 +141,8 @@
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
         "@types/markdown-it": "14.1.2",
-        "@types/node": "22.18.8",
-        "@typescript/native-preview": "7.0.0-dev.20251009.1",
+        "@types/node": "24.7.2",
+        "@typescript/native-preview": "7.0.0-dev.20251012.1",
         "browser-sync": "3.0.4",
         "cpy-cli": "5.0.0",
         "glob": "11.0.3",
@@ -160,10 +160,10 @@
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",
         "typescript": "5.8.3",
-        "webpack": "5.102.0"
+        "webpack": "5.102.1"
     },
     "engines": {
-        "node": ">= 22",
+        "node": ">= 24",
         "npm": ">= 11",
         "yarn": "Please use npm instead of yarn to install dependencies"
     },

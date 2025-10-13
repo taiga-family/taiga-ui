@@ -154,7 +154,7 @@ describe('CalendarRange', () => {
             let alert!: Locator;
 
             beforeEach(({page}) => {
-                alert = page.locator('tui-alerts tui-notification');
+                alert = page.locator('tui-popups tui-notification');
             });
 
             test('double click on the same day - selects single-day range', async ({
@@ -239,7 +239,7 @@ describe('CalendarRange', () => {
                 await tuiGoto(page, `${DemoRoute.CalendarRange}/API?maxLength$=0`, {
                     date: today,
                 });
-                alert = page.locator('tui-alerts tui-notification');
+                alert = page.locator('tui-popups tui-notification');
             });
 
             test('click on the 1st date (beginning of date range) disables invalid cells for the 2nd date', async () => {
@@ -297,7 +297,7 @@ describe('CalendarRange', () => {
                     await tuiGoto(page, `${DemoRoute.CalendarRange}/API?minLength$=2`, {
                         date: new Date(2018, 1, 28),
                     });
-                    alert = page.locator('tui-alerts tui-notification');
+                    alert = page.locator('tui-popups tui-notification');
                 });
 
                 test('31.03.2018 => {month: 1} => 01.03.2018 // all days of March, a full month', async () => {
@@ -360,7 +360,7 @@ describe('CalendarRange', () => {
                     await tuiGoto(page, `${DemoRoute.CalendarRange}/API?minLength$=3`, {
                         date: new Date(2018, 1, 28),
                     });
-                    alert = page.locator('tui-alerts tui-notification');
+                    alert = page.locator('tui-popups tui-notification');
                 });
 
                 test('31.03.2018 => {month: 1, day: 1} => 28.02.2018 // all days of March plus one day', async () => {

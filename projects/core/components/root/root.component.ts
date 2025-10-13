@@ -13,13 +13,11 @@ import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TuiAlerts} from '@taiga-ui/core/components/alert';
 import {TuiDialogs} from '@taiga-ui/core/components/dialog';
 import {
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
 } from '@taiga-ui/core/components/scrollbar';
-import {TuiDropdowns} from '@taiga-ui/core/directives/dropdown';
 import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiPopups} from '@taiga-ui/core/directives/popup';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
@@ -29,14 +27,7 @@ import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-root',
-    imports: [
-        TuiAlerts,
-        TuiDialogs,
-        TuiDropdowns,
-        TuiHints,
-        TuiPopups,
-        TuiScrollControls,
-    ],
+    imports: [TuiDialogs, TuiHints, TuiPopups, TuiScrollControls],
     templateUrl: './root.template.html',
     styleUrls: ['./animations.less', './root.style.less'],
     encapsulation: ViewEncapsulation.None,

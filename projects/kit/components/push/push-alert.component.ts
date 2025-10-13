@@ -1,16 +1,16 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPortalContext, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiPushComponent} from './push.component';
-import {TuiPushDirective} from './push.directive';
 import {type TuiPushOptions} from './push.options';
 
 @Component({
+    selector: 'tui-push-alert',
     imports: [PolymorpheusOutlet, TuiButton, TuiIcon, TuiLink, TuiPushComponent],
     templateUrl: './push-alert.template.html',
     styleUrl: './push-alert.style.less',
@@ -18,12 +18,15 @@ import {type TuiPushOptions} from './push.options';
     hostDirectives: [TuiAnimated],
     host: {
         role: 'alert',
+        '[attr.data-orientation]': 'context.orientation',
+        '[class._bottom]': 'context.position === "bottom"',
     },
 })
 export class TuiPushAlert {
-    protected readonly context = injectContext<TuiPopover<TuiPushOptions, string>>();
+    protected readonly context =
+        injectContext<TuiPortalContext<TuiPushOptions, string>>();
 
     protected get isDirective(): boolean {
-        return this.context.content instanceof TuiPushDirective;
+        return this.context.content instanceof TuiPortalDirective;
     }
 }

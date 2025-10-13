@@ -21,6 +21,7 @@ import {
     type TuiRectAccessor,
     type TuiVehicle,
 } from '@taiga-ui/core/classes';
+import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {type TuiPortalItem} from '@taiga-ui/core/types';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import {
@@ -32,7 +33,6 @@ import {Subject, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
-import {TuiDropdownService} from './dropdown.service';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
@@ -58,7 +58,7 @@ export class TuiDropdownDirective
     implements AfterViewChecked, OnDestroy, TuiPortalItem, TuiRectAccessor, TuiVehicle
 {
     private readonly refresh$ = new Subject<void>();
-    private readonly service = inject(TuiDropdownService);
+    private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
 
     // TODO: think of a better solution later
