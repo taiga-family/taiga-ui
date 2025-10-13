@@ -15,16 +15,7 @@ import {
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {tuiTypedFromEvent, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiSizeXL} from '@taiga-ui/core/types';
-import {
-    debounceTime,
-    map,
-    merge,
-    type Observable,
-    switchMap,
-    take,
-    tap,
-    timer,
-} from 'rxjs';
+import {map, merge, type Observable, switchMap, take, tap, timer} from 'rxjs';
 
 const ARC = 0.76; // 3/4 with 1% safety offset
 const SIZE = {m: 9, l: 11, xl: 16} as const;
@@ -69,8 +60,6 @@ export class TuiArcChart {
     protected readonly initialized = toSignal(
         timer(0).pipe(
             tuiZonefree(),
-            // adjust debounceTime as much as needed
-            debounceTime(1),
             take(1),
             // your rule enforces a handler that exposes type true which is not the same as boolean
             // eslint-disable-next-line no-restricted-syntax
