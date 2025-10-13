@@ -30,6 +30,8 @@ import {type TuiToastOptions} from './toast.options';
     host: {
         role: 'status',
         '[class._mobile]': 'isMobile',
+        '[class._bottom]': 'context.position === "bottom"',
+        '[attr.data-orientation]': 'context.orientation',
         '[attr.data-appearance]': 'context.appearance',
     },
 })
