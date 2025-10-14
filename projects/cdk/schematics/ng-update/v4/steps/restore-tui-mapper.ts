@@ -29,7 +29,7 @@ function updateTuiMapper(options: TuiSchema): void {
         if (Node.isTypeReference(parent)) {
             const typeArguments = parent.getTypeArguments();
 
-            if (!typeArguments || typeArguments.length !== 2) {
+            if (typeArguments?.length !== 2) {
                 return;
             }
 

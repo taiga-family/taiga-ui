@@ -106,8 +106,8 @@
         "preset": "@taiga-ui/jest-config"
     },
     "overrides": {
-        "jest-preset-angular": {
-            "@angular/compiler": "$@angular/compiler"
+        "@taiga-ui/configs": {
+            "@taiga-ui/browserslist-config": "0.328.0"
         }
     },
     "devDependencies": {
@@ -129,15 +129,7 @@
         "@nx/jest": "21.5.1",
         "@nx/workspace": "21.5.1",
         "@schematics/angular": "19.2.17",
-        "@taiga-ui/browserslist-config": "0.328.0",
-        "@taiga-ui/commitlint-config": "0.328.0",
-        "@taiga-ui/cspell-config": "0.328.0",
-        "@taiga-ui/eslint-plugin-experience-next": "0.328.0",
-        "@taiga-ui/event-plugins": "4.7.0",
-        "@taiga-ui/jest-config": "0.328.0",
-        "@taiga-ui/prettier-config": "0.328.0",
-        "@taiga-ui/stylelint-config": "0.328.0",
-        "@taiga-ui/tsconfig": "0.328.0",
+        "@taiga-ui/configs": "0.339.0",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
         "@types/markdown-it": "14.1.2",

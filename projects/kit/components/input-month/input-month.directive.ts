@@ -1,7 +1,6 @@
 import {computed, Directive, effect, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {type TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {
@@ -47,11 +46,11 @@ export class TuiInputMonthDirective extends TuiControl<TuiMonth | null> {
 
     protected readonly valueEffect = effect(() => {
         this.textfield.value.set(this.formatter()?.(this.value()) || '');
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly calendarIn = effect(() => {
         this.calendar()?.value.set(this.value());
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly calendarOut = effect((onCleanup) => {
         const subscription = this.calendar()?.monthClick.subscribe((month) => {

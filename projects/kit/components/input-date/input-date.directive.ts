@@ -11,7 +11,6 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoDateMode, maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {
     DATE_FILLER_LENGTH,
     type TuiDateMode,
@@ -101,13 +100,13 @@ export abstract class TuiInputDateBase<
             (this.filler().length === this.el.value.length ? '' : this.el.value);
 
         this.textfield.value.set(value);
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly calendarIn = effect(() => {
         if (this.calendar()) {
             this.processCalendar(this.calendar()!);
         }
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly calendarOut = effect((onCleanup) => {
         const subscription = this.calendar()?.valueChange.subscribe((value) =>

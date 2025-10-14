@@ -59,13 +59,11 @@ export class StackblitzDepsService {
     }
 
     private async getCommonPackages(): Promise<Record<string, string>> {
-        const {devDependencies: demoDeps} = await import('@taiga-ui/demo/package.json');
         const {peerDependencies: cdkDeps} = await import('@taiga-ui/cdk/package.json');
         const {peerDependencies: kitDeps} = await import('@taiga-ui/kit/package.json');
         const {devDependencies: rootDevDeps} = await import('@demo/root-package');
 
         return {
-            '@taiga-ui/dompurify': demoDeps['@taiga-ui/dompurify'],
             '@taiga-ui/polymorpheus': cdkDeps['@taiga-ui/polymorpheus'],
             '@ng-web-apis/common': cdkDeps['@ng-web-apis/common'],
             '@taiga-ui/event-plugins': cdkDeps['@taiga-ui/event-plugins'],
@@ -81,8 +79,6 @@ export class StackblitzDepsService {
             '@maskito/phone': kitDeps['@maskito/phone'],
             'libphonenumber-js': (await import('@maskito/phone/package.json'))
                 .peerDependencies['libphonenumber-js'],
-            dompurify: (await import('@taiga-ui/dompurify/package.json')).peerDependencies
-                .dompurify,
             rxjs: rootDevDeps.rxjs,
         };
     }
