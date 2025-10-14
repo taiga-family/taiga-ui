@@ -42,7 +42,7 @@
     <tui-textfield
         multi
         tuiChevron
-        tuiDropdownMobile="Select Pythons"
+        tuiDropdownSheet
     >
         <input
             tuiInputChip
@@ -54,7 +54,8 @@
             *tuiDropdown
             new
             tuiMultiSelectGroup
-            [items]="items"
+            [items]="[items]"
+            [labels]="['Select Pythons']"
         />
     </tui-textfield>
 </label>

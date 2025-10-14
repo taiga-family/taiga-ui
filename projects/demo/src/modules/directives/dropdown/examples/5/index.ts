@@ -6,7 +6,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
 import {
     TuiButton,
     TuiCell,
@@ -60,6 +60,7 @@ interface User {
         TuiTextfieldControllerModule,
         TuiTitle,
         TuiInitialsPipe,
+        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,

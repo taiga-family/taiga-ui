@@ -2,7 +2,11 @@ import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiDropdownMobile, TuiResponsiveDialog} from '@taiga-ui/addon-mobile';
+import {
+    TuiDropdownMobile,
+    TuiDropdownSheet,
+    TuiResponsiveDialog,
+} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
@@ -54,13 +58,14 @@ interface User {
         TuiTitle,
         TuiInitialsPipe,
         TuiInputChip,
+        TuiDropdownSheet,
     ],
     template: `
         <tui-root>
             <ng-template [(tuiResponsiveDialog)]="dialog">
                 <tui-textfield
                     tuiChevron
-                    tuiDropdownMobile="Select user"
+                    tuiDropdownSheet="Select user"
                     class="tui-space_vertical-4"
                     [content]="template"
                 >
