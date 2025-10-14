@@ -1,7 +1,6 @@
 import {Directive, effect, inject, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {
     RANGE_SEPARATOR_CHAR,
     type TuiMonth,
@@ -58,7 +57,7 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
             : '';
 
         this.textfield.value.set(string);
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly calendarInit = effect(() => {
         const calendar = this.calendar();
@@ -70,12 +69,12 @@ export class TuiInputMonthRangeDirective extends TuiControl<TuiMonthRange | null
 
     protected readonly calendarSync = effect(() => {
         this.calendar()?.value.set(this.intermediateValue() ?? this.value());
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     // TODO: use linked signal (Angular 19+)
     protected readonly resetIntermediateValue = effect(() => {
         this.intermediateValue.set(this.value() && null);
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected onMonthClickEffect = effect((onCleanup) => {
         const subscription = this.calendar()?.monthClick.subscribe((month) => {

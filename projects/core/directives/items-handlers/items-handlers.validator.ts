@@ -1,6 +1,5 @@
 import {Directive, effect, inject} from '@angular/core';
 import {NG_VALIDATORS, type ValidatorFn} from '@angular/forms';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -17,7 +16,7 @@ export class TuiItemsHandlersValidator extends TuiValidator {
     protected readonly update = effect(() => {
         this.handlers.disabledItemHandler();
         this.onChange();
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     public disabledItemHandler: TuiBooleanHandler<any> = (value) =>
         Array.isArray(value)

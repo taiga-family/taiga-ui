@@ -1021,7 +1021,7 @@ export const pages: DocRoutePages = [
         title: 'Chip',
         keywords: 'chip, tag, тэг, badge',
         route: DemoRoute.Chip,
-        meta: {},
+        meta: {figmaVersion: '1.3.3'},
     },
     {
         section: 'Components',

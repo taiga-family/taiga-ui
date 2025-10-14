@@ -17,7 +17,7 @@ import {
     maskitoParseNumber,
 } from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {CHAR_HYPHEN, CHAR_MINUS, TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
+import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk/constants';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
@@ -120,7 +120,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         }
 
         this.onChange(value);
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected maskInitialCalibrationEffect = effect(() => {
         const options = maskitoNumberOptionsGenerator({
@@ -130,7 +130,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         });
 
         this.textfield.value.update((x) => maskitoTransform(x, options));
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     public readonly min = computed(() => Math.min(this.minRaw(), this.maxRaw()));
     public readonly max = computed(() => Math.max(this.minRaw(), this.maxRaw()));
