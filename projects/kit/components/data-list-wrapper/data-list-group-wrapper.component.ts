@@ -1,4 +1,3 @@
-import {NgTemplateOutlet} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
 import {TuiElement} from '@taiga-ui/cdk/directives/element';
 import {tuiAsDataListAccessor, TuiDataList} from '@taiga-ui/core/components/data-list';
@@ -14,7 +13,6 @@ import {TuiDataListWrapperComponent} from './data-list-wrapper.component';
 @Component({
     selector: 'tui-data-list-wrapper[labels]',
     imports: [
-        NgTemplateOutlet,
         PolymorpheusOutlet,
         TuiDataList,
         TuiElement,
