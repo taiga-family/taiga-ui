@@ -42,7 +42,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     hostDirectives: [TuiActiveZone, TuiAnimated],
     host: {
         tuiTheme: 'dark',
-        '[style.top.px]': 'top',
+        '[style.inset-block-start.px]': 'top',
     },
 })
 class TuiDrawerComponent {

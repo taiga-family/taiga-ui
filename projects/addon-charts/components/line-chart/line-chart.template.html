@@ -45,8 +45,8 @@
         @for (point of value; track point) {
             <div
                 class="t-dot"
-                [style.bottom.%]="getBottom(point[1])"
-                [style.left.%]="getLeft(point[0])"
+                [style.inset-block-end.%]="getBottom(point[1])"
+                [style.inset-inline-start.%]="getLeft(point[0])"
             ></div>
         }
     }
@@ -58,7 +58,7 @@
                     class="t-column"
                     [class.t-column_hint_hovered]="drivers.get($index) | async"
                     [class.t-column_hovered]="hovered === $index"
-                    [style.left.%]="getLeft(getX($index))"
+                    [style.inset-inline-start.%]="getLeft(getX($index))"
                     [style.width.%]="getWidth($index)"
                     [tuiHint]="$any(hintDirective?.hint || hintContent)"
                     [tuiHintContext]="{$implicit: getImplicit(point), index: $index}"
@@ -68,14 +68,14 @@
                 >
                     <div
                         class="t-line t-line_vertical"
-                        [style.left.%]="getOffset($index)"
+                        [style.inset-inline-start.%]="getOffset($index)"
                     ></div>
                     <div
                         #hintHost
                         class="t-host"
                         [id]="getHintId($index)"
-                        [style.bottom.%]="getBottom(point[1])"
-                        [style.left.%]="getOffset($index)"
+                        [style.inset-block-end.%]="getBottom(point[1])"
+                        [style.inset-inline-start.%]="getOffset($index)"
                         [tabIndex]="isFocusable ? 0 : -1"
                     ></div>
                 </div>
@@ -83,7 +83,7 @@
             @if (isFocusable) {
                 <div
                     class="t-line t-line_horizontal"
-                    [style.bottom.%]="getBottom(point[1])"
+                    [style.inset-block-end.%]="getBottom(point[1])"
                 ></div>
             }
         }
@@ -92,7 +92,7 @@
         @if (xStringify) {
             <div
                 class="t-hint t-hint_x"
-                [style.left.%]="getLeft(point[0])"
+                [style.inset-inline-start.%]="getLeft(point[0])"
             >
                 {{ xStringify(point[0]) }}
             </div>
@@ -100,7 +100,7 @@
         @if (yStringify) {
             <div
                 class="t-hint t-hint_y"
-                [style.bottom.%]="getBottom(point[1])"
+                [style.inset-block-end.%]="getBottom(point[1])"
             >
                 {{ yStringify(point[1]) }}
             </div>
