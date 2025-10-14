@@ -1,7 +1,7 @@
 import {type MigrationWarning} from '../../../interfaces';
 
 const ILLUSTRATION_WARNING_MESSAGE =
-    'TuiIllustrationsModule and TuiIllustrationModePipe were deleted. Import TuiIconPipe and use <img [src]="\'@tui.illustration.pack.icon-name\' | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons';
+    'TuiIllustrationsModule and TuiIllustrationModePipe were deleted. Import TuiIconPipe and use <img [src]="\'@tui.illustrations.pack.icon-name\' | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons';
 
 export const MIGRATION_WARNINGS: MigrationWarning[] = [
     {
