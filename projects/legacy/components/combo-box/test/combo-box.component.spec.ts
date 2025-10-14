@@ -54,7 +54,7 @@ function identityMatcher(item1: Beast, item2: Beast): boolean {
     return item1.id === item2.id;
 }
 
-describe.skip('ComboBox', () => {
+describe('ComboBox', () => {
     @Component({
         standalone: true,
         imports: [
