@@ -18,7 +18,7 @@
                         *tuiHead="'name'"
                         tuiTh
                         [sticky]="true"
-                        [style.top.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                        [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
                     >
                         Name
                     </th>
@@ -26,7 +26,7 @@
                         *tuiHead="'dob'"
                         tuiTh
                         [sticky]="true"
-                        [style.top.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                        [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
                     >
                         Date of Birth
                     </th>
@@ -35,7 +35,7 @@
                         tuiTh
                         [sorter]="ageSorter"
                         [sticky]="true"
-                        [style.top.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                        [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
                     >
                         Age
                     </th>
