@@ -8,7 +8,6 @@ import {
     signal,
     type WritableSignal,
 } from '@angular/core';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 
 import {tuiSetSignal} from './set-signal';
 
@@ -53,7 +52,7 @@ export function tuiDirectiveBinding<
         directive.ngOnChanges?.({});
         output?.emit?.(value);
         previous = value;
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     return result;
 }

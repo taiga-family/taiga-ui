@@ -14,7 +14,6 @@ import {
     type WritableSignal,
 } from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 
 type WithValue = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
@@ -39,7 +38,7 @@ export function tuiValue(
     let element = isSignal(input) ? undefined : coerceElement(input);
     let cleanup = (): void => {};
 
-    const options = {injector, ...TUI_ALLOW_SIGNAL_WRITES};
+    const options = {injector};
     const value = signal(element?.value || '');
     const process = (el: WithValue): (() => void) => {
         const update = (): void => untracked(() => value.set(el.value));

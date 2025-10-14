@@ -1,6 +1,5 @@
 import {Directive, effect, inject} from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {
@@ -46,7 +45,7 @@ export class TuiSelectDirective<T>
         const string = tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '';
 
         this.textfield.value.set(string);
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     public setValue(value: T | null): void {
         this.onChange(value);

@@ -3,7 +3,6 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {DATE_FILLER_LENGTH, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
@@ -74,7 +73,7 @@ export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay
         if (this.calendar()) {
             this.processCalendar(this.calendar()!);
         }
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly calendarOut = effect((onCleanup) => {
         const subscription = this.calendar()?.dayClick.subscribe((day) => {
