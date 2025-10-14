@@ -1,7 +1,7 @@
-@let v = value();
+@let data = value();
 @let min = minLabel();
 @let max = maxLabel();
-@for (_ of '-'.repeat(v.length); track $index) {
+@for (_ of '-'.repeat(data.length); track $index) {
 <svg
     focusable="false"
     viewBox="-100 -100 200 200"
