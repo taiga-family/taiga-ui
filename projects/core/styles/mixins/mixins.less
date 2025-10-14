@@ -171,11 +171,3 @@
 .tui-mask(@x, @y, @r) {
     mask: radial-gradient(circle at @x @y, transparent @r, black @r);
 }
-
-.portal-loop (@i) when (@i > 0) {
-    .portal-loop(@i - 1);
-
-    &:nth-of-type(@{i}) {
-        grid-row: ~'1000@{i}';
-    }
-}
