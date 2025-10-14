@@ -1,14 +1,19 @@
-<tui-combo-box
+<tui-textfield
+    tuiChevron
     tuiDropdownMobile
-    [tuiTextfieldCleaner]="true"
-    [(ngModel)]="country"
 >
-    Country
-    <tui-data-list-wrapper
-        *tuiDataList
-        [items]="countries$ | async | tuiFilterByInput"
+    <input
+        placeholder="Country"
+        tuiComboBox
+        [(ngModel)]="country"
     />
-</tui-combo-box>
+
+    <tui-data-list-wrapper
+        *tuiDropdown
+        new
+        [items]="countries() | tuiFilterByInput"
+    />
+</tui-textfield>
 
 <tui-textfield
     tuiChevron
