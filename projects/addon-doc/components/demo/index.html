@@ -68,6 +68,7 @@
                                     [tuiTextfieldCleaner]="false"
                                 >
                                     <input
+                                        automation-id="tui-demo-select__expand-update-on"
                                         tuiSelect
                                         [ngModel]="updateOn"
                                         [ngModelOptions]="{standalone: true}"
@@ -75,7 +76,7 @@
                                     />
 
                                     <tui-data-list-wrapper
-                                        *tuiTextfieldDropdown
+                                        *tuiDropdown
                                         new
                                         [items]="updateOnVariants"
                                     />

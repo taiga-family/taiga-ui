@@ -10,7 +10,7 @@ import {TUI_PROGRESS_OPTIONS} from '../progress.options';
     standalone: true,
     selector: 'tui-progress-circle',
     templateUrl: './progress-circle.template.html',
-    styleUrls: ['./progress-circle.style.less'],
+    styleUrl: './progress-circle.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[attr.data-size]': 'size',

@@ -9,7 +9,6 @@ import {
     signal,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsTextfieldAccessor,
@@ -62,7 +61,7 @@ export class TuiNativeSelect<T>
 
     protected readonly valueEffect = effect(() => {
         this.textfield.value.set(this.stringified());
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     @Input()
     public items: ReadonlyArray<readonly T[]> | readonly T[] | null = [];

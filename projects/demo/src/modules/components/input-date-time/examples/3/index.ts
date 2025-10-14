@@ -11,7 +11,7 @@ type ControlValue = [TuiDay, TuiTime | null] | null;
 @Component({
     imports: [ReactiveFormsModule, TuiButton, TuiInputDateTime, TuiTextfield],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

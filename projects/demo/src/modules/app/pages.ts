@@ -354,9 +354,9 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Dialog (Experimental)',
+        title: 'Dialog (Legacy)',
         keywords: 'попап, модал, popup, dialog, диалог, modal, окно',
-        route: DemoRoute.DialogExperimental,
+        route: DemoRoute.DialogLegacy,
     },
     {
         section: 'Components',
@@ -1021,7 +1021,7 @@ export const pages: DocRoutePages = [
         title: 'Chip',
         keywords: 'chip, tag, тэг, badge',
         route: DemoRoute.Chip,
-        meta: {},
+        meta: {figmaVersion: '1.3.3'},
     },
     {
         section: 'Components',
@@ -1383,19 +1383,6 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
-                title: 'LazyLoading',
-                keywords: 'img, skeleton, скелетон, загрузка, картинки',
-                route: DemoRoute.LazyLoading,
-            },
-            {
-                section: 'Tools',
-                title: 'Let',
-                keywords:
-                    'let, переменная, шаблон, геттер, getter, pipe, пайп, async, подписка',
-                route: DemoRoute.Let,
-            },
-            {
-                section: 'Tools',
                 title: 'Media',
                 keywords: 'player, video, audio, mp3, wav, html5, mp4, hd, 4k, dpi',
                 route: DemoRoute.Media,
@@ -1628,12 +1615,6 @@ export const pages: DocRoutePages = [
                 title: 'KeyboardService',
                 keywords: 'сервис, service, keyboard, virtual, screen, ios, android',
                 route: '/services/keyboard-service',
-            },
-            {
-                section: 'Tools',
-                title: 'ScrollService',
-                keywords: 'scroll, прокрутка, скролл',
-                route: DemoRoute.ScrollService,
             },
         ],
     },

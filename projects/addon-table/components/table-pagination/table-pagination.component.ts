@@ -12,7 +12,7 @@ import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
-import {TuiDropdownDirective, TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
+import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
 import {TUI_COMMON_ICONS, TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -33,19 +33,17 @@ export interface TuiTablePaginationEvent {
         PolymorpheusOutlet,
         TuiButton,
         TuiDataList,
-        TuiDropdownDirective,
-        TuiDropdownOpen,
+        TuiDropdown,
         TuiIcon,
         TuiLink,
     ],
     templateUrl: './table-pagination.template.html',
-    styleUrls: ['./table-pagination.style.less'],
+    styleUrl: './table-pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTablePagination {
     private readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
 
-    protected open = false;
     protected readonly icons = inject(TUI_SPIN_ICONS);
     protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
     protected readonly texts$ = inject(TUI_TABLE_PAGINATION_TEXTS);
@@ -70,7 +68,6 @@ export class TuiTablePagination {
         const {start} = this;
 
         this.size = size;
-        this.open = false;
         this.page = Math.floor(start / this.size);
         this.paginationChange.emit(this.pagination);
     }

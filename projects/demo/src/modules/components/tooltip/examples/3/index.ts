@@ -14,7 +14,7 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiTooltip,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

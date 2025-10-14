@@ -39,7 +39,7 @@ import {map, type Observable, of} from 'rxjs';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Example {

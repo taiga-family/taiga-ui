@@ -44,7 +44,7 @@ export interface TuiMobileCalendarData {
     selector: 'tui-mobile-calendar-dropdown',
     imports: [TuiMobileCalendar],
     templateUrl: './mobile-calendar-dropdown.template.html',
-    styleUrls: ['./mobile-calendar-dropdown.style.less'],
+    styleUrl: './mobile-calendar-dropdown.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiActiveZone, TuiAnimated],
 })

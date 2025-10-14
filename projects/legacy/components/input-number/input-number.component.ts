@@ -65,7 +65,7 @@ export const TUI_NUMBER_VALUE_TRANSFORMER = new InjectionToken<
     standalone: false,
     selector: 'tui-input-number',
     templateUrl: './input-number.template.html',
-    styleUrls: ['./input-number.style.less'],
+    styleUrl: './input-number.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
         tuiAsFocusableItemAccessor(TuiInputNumberComponent),

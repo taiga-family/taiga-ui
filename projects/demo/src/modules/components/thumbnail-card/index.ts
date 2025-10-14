@@ -7,6 +7,7 @@ import {
     type TuiPaymentSystem,
     TuiThumbnailCard,
 } from '@taiga-ui/addon-commerce';
+import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core';
 
 @Component({
     imports: [TuiDemo, TuiDocIcons, TuiThumbnailCard],
@@ -26,7 +27,7 @@ export default class Example {
         inject(TUI_PAYMENT_SYSTEM_ICONS),
     ) as readonly TuiPaymentSystem[];
 
-    protected readonly sizeVariants: ReadonlyArray<TuiThumbnailCard['size']> = [
+    protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeXS> = [
         'l',
         'm',
         's',

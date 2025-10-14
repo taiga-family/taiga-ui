@@ -3,26 +3,29 @@
     [disabledItemHandler]="disabledItemHandler"
     [stringify]="stringify"
 >
-    <select
-        *ngIf="isMobile; else desktopFallback"
-        aria-label="Choose your side"
-        placeholder="Choose your side"
-        tuiSelect
-        [formControl]="control"
-        [items]="items"
-    ></select>
+    @if (isMobile) {
+        <select
+            aria-label="Choose your side"
+            placeholder="Choose your side"
+            tuiSelect
+            [formControl]="control"
+            [items]="items"
+        ></select>
+    }
 
-    <ng-template #desktopFallback>
+    @if (!isMobile) {
         <input
             placeholder="Choose your side"
             tuiSelect
             [formControl]="control"
         />
+    }
 
+    @if (!isMobile) {
         <tui-data-list-wrapper
-            *tuiTextfieldDropdown
+            *tuiDropdown
             new
             [items]="items"
         />
-    </ng-template>
+    }
 </tui-textfield>

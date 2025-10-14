@@ -13,6 +13,7 @@ import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
+import {TuiNotificationDirective} from '@taiga-ui/core/directives/notification';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, fromEvent, of, repeat, switchMap, takeUntil, timer} from 'rxjs';
@@ -24,9 +25,9 @@ import {type TuiToastOptions} from './toast.options';
     selector: 'tui-toast',
     imports: [PolymorpheusOutlet, TuiButton, TuiSwipe, TuiToastDirective],
     templateUrl: './toast.template.html',
-    styleUrls: ['./toast.style.less'],
+    styleUrl: './toast.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiAnimated],
+    hostDirectives: [TuiAnimated, TuiNotificationDirective],
     host: {
         role: 'status',
         '[class._mobile]': 'isMobile',

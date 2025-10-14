@@ -4,6 +4,6 @@
     tuiInputDateRange
     [(ngModel)]="value"
   />
-  <tui-calendar-range *tuiTextfieldDropdown />
+  <tui-calendar-range *tuiDropdown />
 </tui-textfield>
 ```

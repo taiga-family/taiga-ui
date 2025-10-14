@@ -1,15 +1,15 @@
-@for (set of transposed; track set; let index = $index) {
+@for (set of transposed; track set) {
     <div
         class="t-wrapper"
         [class.t-wrapper_hoverable]="!!hintContent"
-        [class.t-wrapper_hovered]="drivers.get(index) | async"
+        [class.t-wrapper_hovered]="drivers.get($index) | async"
         [tuiHint]="hintContent"
         [tuiHintAppearance]="hintAppearance"
-        [tuiHintContext]="{$implicit: index}"
-        [tuiHintDescribe]="getHintId(index)"
+        [tuiHintContext]="{$implicit: $index}"
+        [tuiHintDescribe]="getHintId($index)"
         [tuiHintHost]="hintHost"
-        (click)="tapColumn.emit(index)"
-        (keydown.enter)="tapColumn.emit(index)"
+        (click)="tapColumn.emit($index)"
+        (keydown.enter)="tapColumn.emit($index)"
         (mouseenter.once)="(0)"
     >
         <div
@@ -23,7 +23,7 @@
             <tui-bar-set
                 class="t-set"
                 [collapsed]="collapsed"
-                [id]="getHintId(index)"
+                [id]="getHintId($index)"
                 [size]="size"
                 [tabIndex]="hintContent ? 0 : -1"
                 [value]="set"

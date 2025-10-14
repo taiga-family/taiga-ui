@@ -109,5 +109,47 @@ export class Test {
 `);
     });
 
+    it('migrate tuiIsNativeMouseFocusable to tuiIsMouseFocusable', async () => {
+        expect(
+            await runMigration(`
+import {tuiIsNativeMouseFocusable} from '@taiga-ui/cdk';
+
+tuiIsNativeMouseFocusable(document.createElement('div'));
+`),
+        ).toEqual(`
+import {tuiIsMouseFocusable} from '@taiga-ui/cdk';
+
+tuiIsMouseFocusable(document.createElement('div'));
+`);
+    });
+
+    it('migrate tuiIsNativeKeyboardFocusable to tuiIsNativeKeyboardFocusable', async () => {
+        expect(
+            await runMigration(`
+import {tuiIsNativeKeyboardFocusable} from '@taiga-ui/cdk';
+
+tuiIsNativeKeyboardFocusable(document.createElement('div'));
+`),
+        ).toEqual(`
+import {tuiIsKeyboardFocusable} from '@taiga-ui/cdk';
+
+tuiIsKeyboardFocusable(document.createElement('div'));
+`);
+    });
+
+    it('migrate tuiBlurNativeFocused to tuiBlurFocused', async () => {
+        expect(
+            await runMigration(`
+import {tuiBlurNativeFocused} from '@taiga-ui/cdk';
+
+tuiBlurNativeFocused(document);
+`),
+        ).toEqual(`
+import {tuiBlurFocused} from '@taiga-ui/cdk';
+
+tuiBlurFocused(document);
+`);
+    });
+
     afterEach(() => resetActiveProject());
 });

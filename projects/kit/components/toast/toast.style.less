@@ -1,21 +1,34 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-::ng-deep *:has(> tui-toast) {
-    flex-direction: column-reverse !important;
-    justify-content: flex-end;
-}
-
 :host {
-    .transition(grid-template-rows);
-
-    position: relative;
-    top: 1.25rem;
-    display: grid;
-    margin: 0 auto;
+    inset: 1.625rem 0;
+    margin: 0 2rem;
     touch-action: none;
     animation-fill-mode: both;
 
-    --tui-from: translate3d(0, -2rem, 0);
+    &:nth-of-type(1) {
+        grid-row: 5;
+    }
+
+    &:nth-of-type(2) {
+        grid-row: 4;
+    }
+
+    &:nth-of-type(3) {
+        grid-row: 3;
+    }
+
+    &:nth-of-type(4) {
+        grid-row: 2;
+    }
+
+    &:nth-of-type(5) {
+        grid-row: 1;
+    }
+
+    &[data-inline='center'] {
+        --tui-from: translateY(-2rem);
+    }
 
     &.tui-enter {
         place-items: end;
@@ -30,8 +43,16 @@
         }
     }
 
+    &[data-block='end'] {
+        inset: -1.625rem 0;
+
+        &[data-inline='center'] {
+            --tui-from: translateY(6rem);
+        }
+    }
+
     &._mobile {
-        top: env(safe-area-inset-top);
+        inset: 0;
 
         &.tui-enter {
             animation-delay: var(--tui-duration);
@@ -40,20 +61,6 @@
         &.tui-leave {
             place-items: end;
             animation-name: tuiSlide, tuiCollapse;
-        }
-    }
-}
-
-.t-wrapper {
-    grid-row: 1 / span 2;
-
-    &::before {
-        content: '';
-        display: block;
-        block-size: 0.75rem;
-
-        :host._mobile & {
-            block-size: 0.25rem;
         }
     }
 }

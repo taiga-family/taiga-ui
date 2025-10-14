@@ -6,7 +6,7 @@ import {TuiElasticContainer} from '@taiga-ui/kit';
 @Component({
     imports: [TuiElasticContainer],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

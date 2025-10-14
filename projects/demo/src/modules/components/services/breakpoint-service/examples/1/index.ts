@@ -7,7 +7,7 @@ import {TuiBreakpointService} from '@taiga-ui/core';
 @Component({
     imports: [AsyncPipe],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

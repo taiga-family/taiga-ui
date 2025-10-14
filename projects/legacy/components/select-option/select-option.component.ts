@@ -27,7 +27,7 @@ import {distinctUntilChanged, EMPTY, map, merge, startWith, Subject} from 'rxjs'
     standalone: false,
     selector: 'tui-select-option',
     templateUrl: './select-option.template.html',
-    styleUrls: ['./select-option.style.less'],
+    styleUrl: './select-option.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiSelectOptionComponent<T> implements OnInit, DoCheck {

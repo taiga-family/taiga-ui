@@ -16,7 +16,7 @@ import {TuiButton, TuiDataList, TuiIcon, TuiTextfield, TuiTitle} from '@taiga-ui
         TuiTitle,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Example {

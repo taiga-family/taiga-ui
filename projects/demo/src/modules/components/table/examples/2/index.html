@@ -1,4 +1,4 @@
-<div [style.margin-bottom.rem]="2">
+<div [style.margin-block-end.rem]="2">
     <tui-radio-list
         [itemContent]="content"
         [items]="sizes"
@@ -125,8 +125,8 @@
                                     tuiStatus
                                     [style.padding.rem]="1"
                                 >
-                                    @for (chip of item.items; track chip; let index = $index) {
-                                        @if (index > number) {
+                                    @for (chip of item.items; track chip) {
+                                        @if ($index > number) {
                                             <tui-badge>{{ chip }}</tui-badge>
                                         }
                                     }

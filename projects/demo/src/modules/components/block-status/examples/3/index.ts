@@ -9,7 +9,7 @@ import {map, type Observable} from 'rxjs';
 @Component({
     imports: [AsyncPipe, TuiBlockStatus, TuiButton],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

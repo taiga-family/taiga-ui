@@ -207,7 +207,7 @@
 
                 <p class="tui-space_top-0">
                     Put
-                    <code>tuiDropdownMobile="..."</code>
+                    <code>tuiDropdownSheet="Label"</code>
                     on
                     <code>&lt;tui-textfield /&gt;</code>
                     to enable sheet dialog (instead of default dropdown) with special appearance of options (similar to
@@ -331,7 +331,7 @@
                     />
 
                     <tui-data-list-wrapper
-                        *tuiTextfieldDropdown
+                        *tuiDropdown
                         new
                         [items]="countries$ | async"
                     />

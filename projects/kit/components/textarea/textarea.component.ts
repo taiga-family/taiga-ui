@@ -26,7 +26,7 @@ import {TUI_TEXTAREA_OPTIONS, type TuiTextareaOptions} from './textarea.options'
     selector: 'textarea[tuiTextarea]',
     imports: [PolymorpheusOutlet, TuiScrollControls],
     templateUrl: './textarea.template.html',
-    styleUrls: ['./textarea.style.less'],
+    styleUrl: './textarea.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiProvide(TUI_SCROLL_REF, ElementRef)],
     hostDirectives: [TuiWithTextfield],

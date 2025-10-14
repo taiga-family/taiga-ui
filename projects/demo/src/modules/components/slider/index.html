@@ -19,16 +19,16 @@
             </a>
         </p>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
                 [description]="description"
                 [heading]="example"
                 [id]="example | tuiKebab"
             >
                 <ng-template #description>
-                    @switch (index) {
+                    @switch ($index) {
                         @case (0) {
                             Built-in size options and custom thickness
                         }
@@ -44,7 +44,16 @@
                             Non interactive state
                         }
                         @case (4) {
-                            Using progressive scale across the track
+                            <strong>Key steps</strong>
+                            – anchor points of non-uniform format between control's value and slider's position.
+
+                            <p class="tui-space_bottom-0">
+                                When
+                                <code>[keySteps]</code>
+                                property is enabled,
+                                <code>[step]</code>
+                                means percentage of total track length.
+                            </p>
                         }
                         @case (5) {
                             Use

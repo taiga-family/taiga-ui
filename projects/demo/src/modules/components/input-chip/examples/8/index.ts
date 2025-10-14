@@ -1,9 +1,8 @@
-import {NgIf} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
 import {type TuiIdentityMatcher} from '@taiga-ui/cdk';
 import {TuiButton, TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
 import {
@@ -22,7 +21,6 @@ interface User {
 @Component({
     imports: [
         FormsModule,
-        NgIf, // TODO: use control flow syntax
         TuiButton,
         TuiChevron,
         TuiDataListWrapper,
@@ -32,9 +30,10 @@ interface User {
         TuiMultiSelect,
         TuiSelectLike,
         TuiTextfield,
+        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

@@ -17,7 +17,7 @@ describe('Slider | With [(ngModel)]', () => {
 
                 <button
                     type="button"
-                    [style.margin-top.rem]="2"
+                    [style.margin-block-start.rem]="2"
                     (click)="value = 37"
                 >
                     Patch

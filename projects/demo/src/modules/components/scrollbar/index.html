@@ -17,14 +17,14 @@
             token to get a scrollable container. For example, when working with virtual scroll.
         </tui-notification>
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
                 [heading]="example"
                 [id]="example | tuiKebab"
             >
-                @if (index + 1 === 6) {
+                @if ($index + 1 === 6) {
                     <p>
                         Use
                         <code>tuiScrollable</code>

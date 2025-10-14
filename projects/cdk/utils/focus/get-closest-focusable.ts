@@ -1,8 +1,8 @@
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 
-import {tuiIsNativeKeyboardFocusable} from './is-native-keyboard-focusable';
-import {tuiIsNativeMouseFocusable} from './is-native-mouse-focusable';
+import {tuiIsKeyboardFocusable} from './is-native-keyboard-focusable';
+import {tuiIsMouseFocusable} from './is-native-mouse-focusable';
 
 export interface TuiGetClosestFocusableOptions {
     /**
@@ -44,7 +44,7 @@ export function tuiGetClosestFocusable({
         return null;
     }
 
-    const check = keyboard ? tuiIsNativeKeyboardFocusable : tuiIsNativeMouseFocusable;
+    const check = keyboard ? tuiIsKeyboardFocusable : tuiIsMouseFocusable;
     const treeWalker = root.ownerDocument.createTreeWalker(
         root,
         NodeFilter.SHOW_ELEMENT,

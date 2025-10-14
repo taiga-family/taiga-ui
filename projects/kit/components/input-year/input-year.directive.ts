@@ -2,7 +2,6 @@ import {computed, Directive, effect, inject, Input, signal} from '@angular/core'
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoNumberOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {TuiCalendarYear} from '@taiga-ui/core/components/calendar';
 import {
     tuiInjectAuxiliary,
@@ -57,9 +56,8 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
      * TODO: move to [value]="value()" after update to Angular 17+
      * something wrong with change detection on host binding
      */
-    protected readonly valueEffect = effect(
-        () => this.textfield.value.set(this.value()?.toString() ?? ''),
-        TUI_ALLOW_SIGNAL_WRITES,
+    protected readonly valueEffect = effect(() =>
+        this.textfield.value.set(this.value()?.toString() ?? ''),
     );
 
     protected readonly mask = tuiMaskito(
@@ -81,7 +79,7 @@ export class TuiInputYearDirective extends TuiControl<number | null> {
             calendar.min.set(this.min());
             calendar.max.set(this.max());
         }
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly calendarOutEffect = effect((onCleanup) => {
         const subscription = this.calendar()?.yearClick.subscribe((year) => {

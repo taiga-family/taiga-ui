@@ -10,7 +10,7 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 @Component({
     template: '',
-    styles: ['@import "@taiga-ui/core/styles/components/title.less";'],
+    styles: '@import "@taiga-ui/core/styles/components/title.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-title'},

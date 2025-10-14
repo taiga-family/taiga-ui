@@ -1,7 +1,8 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
+import {type TuiPositionOptions} from '@taiga-ui/core/directives/notification';
 
-export interface TuiPushOptions {
+export interface TuiPushOptions extends TuiPositionOptions {
     readonly buttons: readonly string[];
     readonly heading: string;
     readonly icon: string;
@@ -11,23 +12,16 @@ export interface TuiPushOptions {
     readonly type: string;
 }
 
-export const TUI_PUSH_DEFAULT_OPTIONS: TuiPushOptions = {
-    heading: '',
-    type: '',
-    timestamp: '',
-    image: '',
-    icon: '',
-    iconColor: '',
-    buttons: [],
-};
-
-/**
- * Default parameters for Push component
- */
-export const TUI_PUSH_OPTIONS = new InjectionToken(ngDevMode ? 'TUI_PUSH_OPTIONS' : '', {
-    factory: () => TUI_PUSH_DEFAULT_OPTIONS,
-});
-
-export function tuiPushOptionsProvider(options: Partial<TuiPushOptions>): Provider {
-    return tuiProvideOptions(TUI_PUSH_OPTIONS, options, TUI_PUSH_DEFAULT_OPTIONS);
-}
+export const TUI_PUSH_CONCURRENCY = tuiCreateToken<number>(5);
+export const [TUI_PUSH_OPTIONS, tuiPushOptionsProvider] =
+    tuiCreateOptions<TuiPushOptions>({
+        heading: '',
+        type: '',
+        timestamp: '',
+        image: '',
+        icon: '',
+        iconColor: '',
+        buttons: [],
+        block: 'end',
+        inline: 'end',
+    });

@@ -18,7 +18,7 @@ import {TUI_LIKE_OPTIONS} from './like.options';
     standalone: true,
     selector: 'input[tuiLike][type=checkbox]',
     template: '',
-    styles: ['@import "@taiga-ui/kit/styles/components/like.less";'],
+    styles: '@import "@taiga-ui/kit/styles/components/like.less";',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

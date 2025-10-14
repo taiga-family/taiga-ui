@@ -8,7 +8,7 @@ import {TUI_BADGE_NOTIFICATION_OPTIONS} from './badge-notification.options';
     standalone: true,
     selector: 'tui-badge-notification',
     template: '<ng-content />',
-    styleUrls: ['./badge-notification.style.less'],
+    styleUrl: './badge-notification.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiAnimated],
     host: {

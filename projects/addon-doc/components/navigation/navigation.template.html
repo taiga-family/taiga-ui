@@ -1,35 +1,119 @@
-<tui-textfield
-    *ngIf="searchEnabled()"
-    tuiTextfieldSize="m"
-    class="t-input"
-    [iconStart]="docIcons.search"
-    [open]="open() && canOpen"
-    (keyup)="open.set(canOpen && $event.code !== 'Escape')"
-    (openChange)="open.set($event)"
->
-    <code
-        *ngIf="!search.value"
-        class="t-slash"
+@if (searchEnabled()) {
+    <tui-textfield
+        tuiTextfieldSize="m"
+        class="t-input"
+        [iconStart]="docIcons.search"
+        [open]="open() && canOpen"
+        (keyup)="open.set(canOpen && $event.code !== 'Escape')"
+        (openChange)="open.set($event)"
     >
-        /
-    </code>
-    <input
-        tuiTextfield
-        class="t-prevent-ios-scroll"
-        [formControl]="search"
-        [placeholder]="searchText"
-        [tuiAutoFocus]="!!sidebar"
-    />
-    <ng-container *ngIf="canOpen">
-        <tui-data-list *tuiTextfieldDropdown>
-            <tui-opt-group
-                *ngFor="let group of filtered(); let index = index"
-                [label]="labels[index] || ''"
-            >
-                <ng-container *ngFor="let item of group">
+        @if (!search.value) {
+            <code class="t-slash">/</code>
+        }
+
+        <input
+            tuiTextfield
+            class="t-prevent-ios-scroll"
+            [formControl]="search"
+            [placeholder]="searchText"
+            [tuiAutoFocus]="!!drawer"
+        />
+
+        @if (canOpen) {
+            <tui-data-list *tuiDropdown>
+                @for (group of filtered(); track group) {
+                    <tui-opt-group [label]="labels[$index] || ''">
+                        @for (item of group; track item) {
+                            @if (item.route.includes('://')) {
+                                <a
+                                    tuiOption
+                                    [attr.rel]="item.rel"
+                                    [href]="item.route"
+                                    [target]="item.target || '_self'"
+                                >
+                                    {{ item.title }}
+                                    <tui-icon
+                                        *polymorpheusOutlet="item.icon as icon"
+                                        class="t-icon"
+                                        [icon]="icon"
+                                    />
+                                </a>
+                            } @else {
+                                <a
+                                    tuiOption
+                                    [attr.rel]="item.rel"
+                                    [fragment]="item.fragment"
+                                    [routerLink]="item.route"
+                                    [target]="item.target || '_self'"
+                                    (click)="onClick()"
+                                >
+                                    {{ item.title }}
+                                    <tui-icon
+                                        *polymorpheusOutlet="item.icon as icon"
+                                        class="t-icon"
+                                        [icon]="icon"
+                                    />
+                                </a>
+                            }
+                        }
+                    </tui-opt-group>
+                }
+            </tui-data-list>
+        }
+    </tui-textfield>
+}
+
+<nav class="t-navigation">
+    <tui-scrollbar class="t-scrollbar">
+        <tui-accordion
+            size="m"
+            [class.t-accordion-standalone]="!searchEnabled()"
+            [closeOthers]="false"
+        >
+            @for (label of labels; track $index) {
+                <button
+                    appearance=""
+                    [tuiAccordion]="!!openPagesArr[$index]"
+                    (tuiAccordionChange)="openPagesArr[$index] = !!$event"
+                >
+                    <span class="t-label">
+                        <strong>{{ label }}</strong>
+                    </span>
+                </button>
+                <tui-expand [style.padding-block]="0">
+                    <div
+                        *tuiItem
+                        class="t-section"
+                    >
+                        @for (item of items[$index]; track $index) {
+                            <ng-container
+                                [ngTemplateOutlet]="pages"
+                                [ngTemplateOutletContext]="{item: item, index: $index * 100 + $index}"
+                            />
+                        }
+                    </div>
+                </tui-expand>
+            }
+        </tui-accordion>
+        <div class="t-items-container">
+            @for (item of itemsWithoutSections; track item) {
+                <ng-container
+                    [ngTemplateOutlet]="pages"
+                    [ngTemplateOutletContext]="{item: item, index: items.length - 1 + $index}"
+                />
+            }
+        </div>
+
+        <ng-template
+            #pages
+            let-index="index"
+            let-item="item"
+        >
+            @if (!item.subPages) {
+                @if (item.route.includes('://')) {
                     <a
-                        *ngIf="item.route.includes('://'); else internal"
-                        tuiOption
+                        tuiLink
+                        class="t-sublink"
                         [attr.rel]="item.rel"
                         [href]="item.route"
                         [target]="item.target || '_self'"
@@ -41,93 +125,7 @@
                             [icon]="icon"
                         />
                     </a>
-
-                    <ng-template #internal>
-                        <a
-                            tuiOption
-                            [attr.rel]="item.rel"
-                            [fragment]="item.fragment"
-                            [routerLink]="item.route"
-                            [target]="item.target || '_self'"
-                            (click)="onClick()"
-                        >
-                            {{ item.title }}
-                            <tui-icon
-                                *polymorpheusOutlet="item.icon as icon"
-                                class="t-icon"
-                                [icon]="icon"
-                            />
-                        </a>
-                    </ng-template>
-                </ng-container>
-            </tui-opt-group>
-        </tui-data-list>
-    </ng-container>
-</tui-textfield>
-
-<nav class="t-navigation">
-    <tui-scrollbar class="t-scrollbar">
-        <tui-accordion
-            size="m"
-            [class.t-accordion-standalone]="!searchEnabled()"
-            [closeOthers]="false"
-        >
-            @for (label of labels; track $index; let index = $index) {
-                <button
-                    appearance=""
-                    [tuiAccordion]="!!openPagesArr[index]"
-                    (tuiAccordionChange)="openPagesArr[index] = !!$event"
-                >
-                    <span class="t-label">
-                        <strong>{{ label }}</strong>
-                    </span>
-                </button>
-                <tui-expand [style.padding-block]="0">
-                    <div
-                        *tuiItem
-                        class="t-section"
-                    >
-                        @for (item of items[index]; track $index) {
-                            <ng-container
-                                [ngTemplateOutlet]="pages"
-                                [ngTemplateOutletContext]="{item: item, index: index * 100 + $index}"
-                            />
-                        }
-                    </div>
-                </tui-expand>
-            }
-        </tui-accordion>
-        <div class="t-items-container">
-            <ng-container
-                *ngFor="let item of itemsWithoutSections; let index = index"
-                [ngTemplateOutlet]="pages"
-                [ngTemplateOutletContext]="{item: item, index: items.length - 1 + index}"
-            />
-        </div>
-
-        <ng-template
-            #pages
-            let-index="index"
-            let-item="item"
-        >
-            <ng-container *ngIf="!item.subPages; else subPagesTemplate">
-                <a
-                    *ngIf="item.route.includes('://'); else internal"
-                    tuiLink
-                    class="t-sublink"
-                    [attr.rel]="item.rel"
-                    [href]="item.route"
-                    [target]="item.target || '_self'"
-                >
-                    {{ item.title }}
-                    <tui-icon
-                        *polymorpheusOutlet="item.icon as icon"
-                        class="t-icon"
-                        [icon]="icon"
-                    />
-                </a>
-
-                <ng-template #internal>
+                } @else {
                     <a
                         routerLinkActive="t-sublink_active"
                         tuiLink
@@ -145,57 +143,56 @@
                             [icon]="icon"
                         />
                     </a>
-                </ng-template>
-            </ng-container>
-
-            <ng-template #subPagesTemplate>
+                }
+            } @else {
                 <div
                     routerLinkActive
                     class="t-subsection"
                     [routerLinkActiveOptions]="{exact: false}"
                 >
-                    <button
-                        *ngIf="item.subPages"
-                        tuiLink
-                        type="button"
-                        class="t-sublink t-sublink_subsection"
-                        (click)="onGroupClick(index)"
-                    >
-                        <tui-icon
-                            class="t-chevron"
-                            [class.t-chevron_active]="!!openPagesGroupsArr[index]"
-                            [icon]="icons.more"
-                        />
-                        {{ item.title }}
-                        <tui-icon
-                            *polymorpheusOutlet="item.icon as icon"
-                            class="t-icon"
-                            [icon]="icon"
-                        />
-                    </button>
+                    @if (item.subPages) {
+                        <button
+                            tuiLink
+                            type="button"
+                            class="t-sublink t-sublink_subsection"
+                            (click)="onGroupClick(index)"
+                        >
+                            <tui-icon
+                                class="t-chevron"
+                                [class.t-chevron_active]="!!openPagesGroupsArr[index]"
+                                [icon]="icons.more"
+                            />
+                            {{ item.title }}
+                            <tui-icon
+                                *polymorpheusOutlet="item.icon as icon"
+                                class="t-icon"
+                                [icon]="icon"
+                            />
+                        </button>
+                    }
+
                     <tui-expand
                         class="t-expand"
                         [expanded]="!!openPagesGroupsArr[index]"
                     >
                         <div class="t-section t-section_bordered">
-                            <ng-container *ngFor="let subPage of $pages(item.subPages)">
-                                <a
-                                    *ngIf="subPage.route.includes('://'); else internal"
-                                    tuiLink
-                                    class="t-sublink t-sublink_small"
-                                    [attr.rel]="subPage.rel"
-                                    [href]="subPage.route"
-                                    [target]="subPage.target || '_self'"
-                                >
-                                    {{ subPage.title }}
-                                    <tui-icon
-                                        *polymorpheusOutlet="subPage.icon as icon"
-                                        class="t-icon"
-                                        [icon]="icon"
-                                    />
-                                </a>
-
-                                <ng-template #internal>
+                            @for (subPage of $pages(item.subPages); track subPage) {
+                                @if (subPage.route.includes('://')) {
+                                    <a
+                                        tuiLink
+                                        class="t-sublink t-sublink_small"
+                                        [attr.rel]="subPage.rel"
+                                        [href]="subPage.route"
+                                        [target]="subPage.target || '_self'"
+                                    >
+                                        {{ subPage.title }}
+                                        <tui-icon
+                                            *polymorpheusOutlet="subPage.icon as icon"
+                                            class="t-icon"
+                                            [icon]="icon"
+                                        />
+                                    </a>
+                                } @else {
                                     <a
                                         routerLinkActive="t-sublink_active"
                                         tuiLink
@@ -214,12 +211,12 @@
                                             [icon]="icon"
                                         />
                                     </a>
-                                </ng-template>
-                            </ng-container>
+                                }
+                            }
                         </div>
                     </tui-expand>
                 </div>
-            </ng-template>
+            }
         </ng-template>
     </tui-scrollbar>
 </nav>

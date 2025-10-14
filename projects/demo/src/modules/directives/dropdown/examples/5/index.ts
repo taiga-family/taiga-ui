@@ -1,11 +1,12 @@
 import {AsyncPipe} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
 import {
     TuiButton,
     TuiCell,
@@ -18,17 +19,16 @@ import {
     TUI_COUNTRIES,
     TuiAvatar,
     TuiChevron,
+    TuiComboBox,
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
+    TuiInputChip,
     TuiInputNumber,
+    TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {
-    TuiComboBoxModule,
-    TuiMultiSelectModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 interface User {
@@ -46,19 +46,21 @@ interface User {
         TuiButton,
         TuiCell,
         TuiChevron,
-        TuiComboBoxModule,
+        TuiComboBox,
         TuiDataListWrapper,
         TuiDropdown,
         TuiDropdownMobile,
         TuiFade,
         TuiFilterByInputPipe,
         TuiInputNumber,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
+        TuiInputChip,
         TuiSelect,
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
         TuiInitialsPipe,
+        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -72,7 +74,12 @@ export default class Example {
 
     protected readonly open = signal(false);
 
-    protected readonly countries$ = inject(TUI_COUNTRIES).pipe(map(Object.values));
+    protected readonly countries = toSignal(
+        inject(TUI_COUNTRIES).pipe(map(Object.values)),
+        {
+            initialValue: [],
+        },
+    );
 
     protected readonly users: readonly User[] = [
         {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},

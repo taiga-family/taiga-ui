@@ -8,7 +8,7 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 
 @Component({
     template: '',
-    styleUrls: ['./block-details.style.less'],
+    styleUrl: './block-details.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-block-details'},

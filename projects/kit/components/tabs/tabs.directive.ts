@@ -21,7 +21,7 @@ import {TUI_TABS_OPTIONS} from './tabs.options';
 
 @Component({
     template: '',
-    styleUrls: ['./tabs.style.less'],
+    styleUrl: './tabs.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-tabs'},

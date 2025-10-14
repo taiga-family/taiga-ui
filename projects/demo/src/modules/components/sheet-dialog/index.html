@@ -6,10 +6,10 @@
     <ng-template pageTab>
         A mobile draggable sheet dialog
 
-        @for (example of examples; track example; let index = $index) {
+        @for (example of examples; track example) {
             <tui-doc-example
-                [component]="index + 1 | tuiComponent"
-                [content]="index + 1 | tuiExample"
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
                 [heading]="example"
                 [id]="example | tuiKebab"
             />
@@ -88,10 +88,10 @@
         </tui-doc-demo>
         <table tuiDocAPI>
             <tr
-                name="[closeable]"
+                name="[closable]"
                 tuiDocAPIItem
                 type="boolean"
-                [(value)]="closeable"
+                [(value)]="closable"
             >
                 Whether or not a sheet can be closed by user.
             </tr>

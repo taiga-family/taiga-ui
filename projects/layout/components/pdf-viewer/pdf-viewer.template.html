@@ -1,0 +1,53 @@
+<ng-container [ngTemplateOutlet]="isMobile ? mobile : desktop" />
+
+<ng-template #mobile>
+    <tui-app-bar>
+        <button
+            tuiButton
+            tuiSlot="left"
+            type="button"
+            (click)="context.$implicit.complete()"
+        >
+            {{ close() }}
+        </button>
+        <ng-container [ngTemplateOutlet]="content" />
+        <ng-container tuiSlot="right">
+            <ng-container [ngTemplateOutlet]="actions" />
+        </ng-container>
+    </tui-app-bar>
+</ng-template>
+
+<ng-template #desktop>
+    <header
+        tuiTheme="dark"
+        class="t-header"
+    >
+        <ng-container [ngTemplateOutlet]="content" />
+        <ng-container [ngTemplateOutlet]="actions" />
+        @if ($any(context).closable || context.closable) {
+            <button
+                appearance="glass"
+                size="s"
+                tuiIconButton
+                type="button"
+                [iconStart]="icons.close"
+                [style.border-radius.%]="100"
+                (click)="context.$implicit.complete()"
+            >
+                {{ close() }}
+            </button>
+        }
+    </header>
+</ng-template>
+
+<ng-template #content>
+    <ng-content select="[tuiTitle]" />
+</ng-template>
+
+<ng-template #actions>
+    <ng-content select="button" />
+</ng-template>
+
+<section class="t-content">
+    <ng-content />
+</section>

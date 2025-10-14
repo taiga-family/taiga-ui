@@ -1,0 +1,43 @@
+<button
+    size="m"
+    tuiButton
+    type="button"
+    class="tui-space_right-2"
+    (click)="onClick(content, header, 'm')"
+>
+    Show
+</button>
+<button
+    size="m"
+    tuiButton
+    type="button"
+    (click)="onClick(content, header, 'fullscreen')"
+>
+    Show fullscreen
+</button>
+
+<ng-template
+    #content
+    let-observer
+>
+    Take a look
+    <div class="buttons">
+        <button
+            size="m"
+            tuiButton
+            type="button"
+            (click)="observer.complete()"
+        >
+            Very cool!
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #header>
+    <div class="header">
+        <img
+            alt="Cool"
+            src="https://ng-web-apis.github.io/dist/assets/images/web-api.svg"
+        />
+    </div>
+</ng-template>

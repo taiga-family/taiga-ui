@@ -39,7 +39,7 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
         TuiTabs,
     ],
     templateUrl: './page.template.html',
-    styleUrls: ['./page.style.less'],
+    styleUrl: './page.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: PAGE_PROVIDERS,
 })

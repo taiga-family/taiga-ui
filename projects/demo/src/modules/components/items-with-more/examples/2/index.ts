@@ -20,7 +20,7 @@ import {TuiBadge, TuiBlock, TuiItemsWithMore} from '@taiga-ui/kit';
         TuiItemsWithMore,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

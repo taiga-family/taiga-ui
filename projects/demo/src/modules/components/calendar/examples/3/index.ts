@@ -13,7 +13,7 @@ const ONE_DOT: [string] = ['var(--tui-status-positive)'];
 @Component({
     imports: [TuiCalendar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

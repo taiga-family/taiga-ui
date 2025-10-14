@@ -11,7 +11,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 @Component({
     imports: [TuiDemo, TuiPieChart],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

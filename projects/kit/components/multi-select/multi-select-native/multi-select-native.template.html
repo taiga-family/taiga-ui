@@ -1,25 +1,47 @@
 @if (items && !isFlat(items)) {
-    @for (group of labels; track group; let index = $index) {
-        <optgroup [label]="labels[index]">
-            <ng-container *ngTemplateOutlet="options; context: {$implicit: items[index]}" />
+    @for (group of labels; track group) {
+        <optgroup [label]="labels[$index]">
+            <ng-container *ngTemplateOutlet="options; context: {$implicit: items[$index]}" />
         </optgroup>
     }
     @if (!mobile) {
-        <tui-data-list-wrapper
-            *tuiTextfieldDropdown
-            new
-            [items]="items"
-            [labels]="labels"
-        />
+        <tui-data-list *tuiDropdown>
+            @for (group of items; track $index) {
+                <tui-opt-group
+                    tuiMultiSelectGroup
+                    [label]="labels[$index] || ''"
+                >
+                    @for (item of group; track $index) {
+                        <button
+                            new
+                            tuiOption
+                            type="button"
+                            [disabled]="handlers.disabledItemHandler()(item)"
+                            [value]="item"
+                        >
+                            {{ handlers.stringify()(item) }}
+                        </button>
+                    }
+                </tui-opt-group>
+            }
+        </tui-data-list>
     }
 } @else {
     <ng-container *ngTemplateOutlet="options; context: {$implicit: items}" />
     @if (!mobile) {
-        <tui-data-list-wrapper
-            *tuiTextfieldDropdown
-            new
-            [items]="$any(items)"
-        />
+        <tui-data-list *tuiDropdown>
+            @for (item of items; track $index) {
+                <button
+                    new
+                    tuiOption
+                    type="button"
+                    [disabled]="handlers.disabledItemHandler()(item)"
+                    [value]="item"
+                >
+                    {{ handlers.stringify()(item) }}
+                </button>
+            }
+        </tui-data-list>
     }
 }
 

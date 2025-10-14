@@ -22,7 +22,7 @@ import {TUI_HIDE_TEXT, TUI_SHOW_ALL_TEXT} from '@taiga-ui/kit/tokens';
     selector: 'tui-files',
     imports: [AsyncPipe, NgTemplateOutlet, TuiButton, TuiExpand, TuiGroup],
     templateUrl: './files.template.html',
-    styleUrls: ['./files.styles.less'],
+    styleUrl: './files.styles.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

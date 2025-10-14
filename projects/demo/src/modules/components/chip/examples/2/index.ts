@@ -3,12 +3,12 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiAvatar, TuiChip} from '@taiga-ui/kit';
+import {TuiAvatar, TuiBadge, TuiChip} from '@taiga-ui/kit';
 
 @Component({
-    imports: [SlicePipe, TuiAvatar, TuiButton, TuiChip],
+    imports: [SlicePipe, TuiAvatar, TuiBadge, TuiButton, TuiChip],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

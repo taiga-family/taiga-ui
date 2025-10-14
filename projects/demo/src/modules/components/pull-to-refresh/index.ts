@@ -7,7 +7,7 @@ import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus'
 @Component({
     imports: [PolymorpheusOutlet, TuiDemo, TuiScrollbar],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class Page {

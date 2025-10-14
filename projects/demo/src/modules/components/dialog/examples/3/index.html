@@ -1,41 +1,7 @@
-<p>
-    Your balance:
-    <span>{{ money | tuiAmount: 'RUB' | async }}</span>
-</p>
 <button
-    size="m"
     tuiButton
     type="button"
-    (click)="showDialog(template)"
+    (click)="click()"
 >
-    Show
+    Show dialog
 </button>
-
-<ng-template
-    #template
-    let-observer
->
-    <p>You can show a dialog with template</p>
-    <p>
-        Your balance:
-        <span>{{ money | tuiAmount: 'RUB' | async }}</span>
-    </p>
-    <button
-        size="m"
-        tuiButton
-        type="button"
-        class="tui-space_right-3"
-        (click)="withdraw()"
-    >
-        Withdraw&nbsp;
-        <span>{{ 100 | tuiAmount: 'RUB' | async }}</span>
-    </button>
-    <button
-        size="m"
-        tuiButton
-        type="button"
-        (click)="observer.complete()"
-    >
-        Cancel
-    </button>
-</ng-template>

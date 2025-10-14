@@ -3,11 +3,11 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiDropdownSheet} from '@taiga-ui/addon-mobile';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiInputPhoneInternational} from '@taiga-ui/experimental';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {
+    TuiInputPhoneInternational,
     tuiInputPhoneInternationalOptionsProvider,
     TuiSortCountriesPipe,
 } from '@taiga-ui/kit';
@@ -18,10 +18,10 @@ import {defer} from 'rxjs';
     imports: [
         AsyncPipe,
         FormsModule,
-        TuiDropdownMobile,
         TuiInputPhoneInternational,
         TuiSortCountriesPipe,
         TuiTextfield,
+        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,

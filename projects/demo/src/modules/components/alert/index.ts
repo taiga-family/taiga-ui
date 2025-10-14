@@ -2,13 +2,7 @@ import {Component, inject, INJECTOR} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {type TuiPopoverContext} from '@taiga-ui/cdk';
-import {
-    TUI_NOTIFICATION_OPTIONS,
-    type TuiAlertOptions,
-    TuiAlertService,
-    TuiButton,
-} from '@taiga-ui/core';
+import {TUI_NOTIFICATION_OPTIONS, TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
@@ -78,34 +72,38 @@ export default class Page {
 
     protected autoClose = this.autoCloseVariants[1]!;
 
-    protected closeable = true;
+    protected readonly inlineVariants = ['start', 'center', 'end'] as const;
+    protected inline = this.inlineVariants[2];
+
+    protected readonly blockVariants = ['start', 'end'] as const;
+    protected block = this.blockVariants[0];
+
+    protected closable = true;
 
     protected readonly component = new PolymorpheusComponent(
         AlertExampleWithData,
         inject(INJECTOR),
     );
 
-    protected get selectedContent(): PolymorpheusContent<
-        TuiAlertOptions<number> & TuiPopoverContext<number>
-    > {
+    protected get selectedContent(): PolymorpheusContent {
         return this.content === 'String' ? this.content : this.component;
     }
 
     protected showNotification(): void {
         this.alerts
-            .open(this.selectedContent, {
+            .open<number>(this.selectedContent, {
                 label: this.label,
                 data: this.data,
                 appearance: this.appearance,
                 autoClose: this.autoClose,
-                closeable: this.closeable,
+                closable: this.closable,
+                block: this.block,
+                inline: this.inline,
                 icon: this.icon === this.iconVariants[0] ? this.defaultIcon : this.icon,
             })
             .pipe(
                 switchMap((response) =>
-                    this.alerts.open(response, {
-                        label: 'Notification responded with:',
-                    }),
+                    this.alerts.open(response, {label: 'Notification responded with:'}),
                 ),
             )
             .subscribe();

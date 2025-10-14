@@ -1,4 +1,4 @@
-import {AsyncPipe, NgForOf} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -11,7 +11,6 @@ import {TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
     imports: [
         AsyncPipe,
         FormsModule,
-        NgForOf,
         ReactiveFormsModule,
         TuiFormatNumberPipe,
         TuiInputNumber,
@@ -21,7 +20,7 @@ import {TuiInputNumber, TuiSwitch} from '@taiga-ui/kit';
         TuiTextfield,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

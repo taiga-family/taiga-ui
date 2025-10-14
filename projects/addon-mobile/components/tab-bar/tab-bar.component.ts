@@ -19,7 +19,7 @@ import {TuiTabBarItem} from './tab-bar-item.component';
     selector: 'nav[tuiTabBar]',
     imports: [TuiRepeatTimes],
     templateUrl: './tab-bar.template.html',
-    styleUrls: ['./tab-bar.style.less'],
+    styleUrl: './tab-bar.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[style]': 'style',

@@ -9,6 +9,7 @@ env:
   PERF_COLLECTOR_DEBUG: 1
   PERFORMANCE_RUNS: 6 # total runs including warmup
   PERFORMANCE_WARMUP_SKIP: 1 # number of initial runs to discard as warmup
+  PERF_HARD_FAIL_PERCENT: 50
   PERF_VISIBILITY_THRESHOLD: 15 # tightened row visibility threshold
   # Percentage increase in operation counts (layout/recalc) considered significant
   PERF_COUNT_PERCENT_THRESHOLD: 18
@@ -174,6 +175,9 @@ jobs:
           mkdir -p ./performance-stress/baseline
           echo "# Baseline snapshot missing" > ./performance-stress/baseline/README.txt
       - name: Generate performance stress diff report
+        env:
+          PERF_HARD_FAIL_DEFER: true
+          PERF_HARD_FAIL_SENTINEL: ./performance-stress/diff/hard-fail.txt
         run: |
           mkdir -p ./performance-stress/diff
           if [ "${{ steps.dist-check.outputs.skip }}" = 'true' ]; then
@@ -206,4 +210,14 @@ jobs:
         run: |
           if [ -f ./performance-stress/diff/report.md ]; then
             npx ts-node ./scripts/post-performance-comment.ts ./performance-stress/diff/report.md || true
+          fi
+      - name: Enforce hard performance gate (final)
+        if: ${{ always() }}
+        run: |
+          if [ -f ./performance-stress/diff/hard-fail.txt ]; then
+            echo '❌ Hard performance regressions detected (see offenders in report).' ;
+            cat ./performance-stress/diff/hard-fail.txt || true
+            exit 0
+          else
+            echo '✅ No hard performance regressions above threshold.'
           fi

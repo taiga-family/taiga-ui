@@ -32,7 +32,7 @@ const EMPTY = '"data:image/svg+xml;utf8,<svg xmlns=http://www.w3.org/2000/svg></
     selector: 'input[tuiInputColor]',
     imports: [FormsModule, TuiSlider, TuiTextfieldContent],
     templateUrl: './input-color.template.html',
-    styleUrls: ['./input-color.style.less'],
+    styleUrl: './input-color.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [

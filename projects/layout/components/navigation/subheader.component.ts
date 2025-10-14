@@ -31,7 +31,7 @@ const PROVIDERS = [
         <ng-content />
         <ng-content select="tui-tabs,[tuiTabs]" />
     `,
-    styleUrls: ['./subheader.style.less'],
+    styleUrl: './subheader.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -53,7 +53,7 @@ export class TuiSubheaderComponent {}
             <ng-content select="[tuiButton],[tuiIconButton]" />
         </div>
     `,
-    styleUrls: ['./subheader.style.less'],
+    styleUrl: './subheader.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [PROVIDERS, tuiButtonOptionsProvider({size: 's'})],

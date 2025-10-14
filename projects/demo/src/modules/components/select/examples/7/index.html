@@ -1,6 +1,6 @@
 <tui-textfield
     tuiChevron
-    tuiDropdownMobile="Select platform"
+    tuiDropdownSheet="Select platform"
     [disabledItemHandler]="disabledItemHandler"
 >
     <label tuiLabel>Platform</label>
@@ -11,7 +11,7 @@
     />
 
     <tui-data-list-wrapper
-        *tuiTextfieldDropdown
+        *tuiDropdown
         new
         [items]="platforms"
         [tuiPlatform]="value ?? 'ios'"

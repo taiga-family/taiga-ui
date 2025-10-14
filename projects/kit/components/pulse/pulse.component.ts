@@ -14,7 +14,7 @@ import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
     standalone: true,
     selector: 'tui-pulse',
     template: '',
-    styleUrls: ['./pulse.style.less'],
+    styleUrl: './pulse.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsRectAccessor(TuiPulse)],
     hostDirectives: [TuiAnimated],

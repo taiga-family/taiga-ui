@@ -21,21 +21,29 @@
             <tui-error formControlName="testValue" />
         </div>
         <div>
-            <tui-multi-select
-                formControlName="multiSelectControl"
-                tuiHintContent="Write house building"
-                [editable]="false"
+            <tui-textfield
+                multi
+                tuiChevron
                 [rows]="1"
                 [style.border-radius]="'inherit'"
-                [tuiTextfieldLabelOutside]="true"
+                [tuiTextfieldCleaner]="false"
             >
-                Building
+                <input
+                    formControlName="multiSelectControl"
+                    placeholder="Building"
+                    tuiInputChip
+                />
+
+                <tui-input-chip *tuiItem />
+
                 <tui-data-list-wrapper
-                    *tuiDataList
+                    *tuiDropdown
+                    new
                     tuiMultiSelectGroup
                     [items]="items"
                 />
-            </tui-multi-select>
+                <tui-icon tuiTooltip="Write house building" />
+            </tui-textfield>
             <tui-error formControlName="multiSelectControl" />
         </div>
         <div>

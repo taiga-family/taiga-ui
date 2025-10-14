@@ -3,7 +3,13 @@ import {FormsModule} from '@angular/forms';
 import {type TuiCard, TuiInputCardGroup} from '@taiga-ui/addon-commerce';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper, TuiInputChip, TuiTextarea} from '@taiga-ui/kit';
+import {
+    TuiChevron,
+    TuiDataListWrapper,
+    TuiInputChip,
+    TuiSelect,
+    TuiTextarea,
+} from '@taiga-ui/kit';
 import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -21,16 +27,16 @@ import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus'
 class MyInputTextfield {}
 
 @Component({
-    imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiTextfield],
+    imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiTextfield, TuiSelect],
     template: `
         <tui-textfield tuiChevron>
-            <select
+            <input
                 tuiTextfield
-                [ngModel]="value"
-            ></select>
-
+                [(ngModel)]="value"
+            />
             <tui-data-list-wrapper
-                *tuiTextfieldDropdown
+                *tuiDropdown
+                new
                 [items]="items"
             />
         </tui-textfield>

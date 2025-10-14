@@ -34,9 +34,9 @@ test.describe('Inputs - updateOn', () => {
 
                 await details.click();
 
-                select = demo.locator('tui-expand tui-textfield:has(input[tuiSelect])');
+                select = demo.getByTestId('tui-demo-select__expand-update-on');
                 submit = demo.getByTestId('tui-demo-button__submit-state');
-                option = page.locator('button[tuiOption]');
+                option = page.getByTestId('tui-data-list-wrapper__option');
                 input = demo.locator('input:not([readonly]):not(:disabled)').first();
             });
 

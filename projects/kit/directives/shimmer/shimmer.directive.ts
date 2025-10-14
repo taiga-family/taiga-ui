@@ -16,7 +16,7 @@ const OPTIONS = {duration: 1500, iterations: Infinity};
 
 @Component({
     template: '',
-    styleUrls: ['./shimmer.style.less'],
+    styleUrl: './shimmer.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-shimmer'},

@@ -7,24 +7,24 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {TuiKeyboardService} from '@taiga-ui/addon-mobile/services';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
+import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiInjectElement, tuiIsElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 const GAP = 16;
 
 @Component({
-    standalone: true,
     selector: 'tui-dropdown-mobile',
-    template: `
-        <div class="t-container">
-            <div class="t-content"><ng-content /></div>
-        </div>
-    `,
-    styleUrls: ['./dropdown-mobile.style.less'],
+    imports: [PolymorpheusOutlet],
+    templateUrl: './dropdown-mobile.template.html',
+    styleUrl: './dropdown-mobile.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
+    hostDirectives: [TuiAnimated, TuiActiveZone],
     host: {
         '(pointerdown.prevent)': '0',
         '(document:click.zoneless.capture)': 'onClick($event)',
@@ -38,8 +38,10 @@ export class TuiDropdownMobileComponent implements OnDestroy {
     private readonly keyboard = inject(TuiKeyboardService);
     private readonly doc = inject(DOCUMENT);
     private readonly scrollTop = this.doc.documentElement.scrollTop;
-    private readonly dropdown = inject(TuiDropdownDirective);
     private readonly observer = new ResizeObserver(() => this.refresh());
+
+    protected readonly dropdown = inject(TuiDropdownDirective);
+    protected readonly context = {$implicit: (): void => this.dropdown.toggle(false)};
 
     constructor() {
         this.observer.observe(this.dropdown.el);

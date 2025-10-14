@@ -11,7 +11,7 @@
  * data-size — size (default: 's') ('xxs' | 'xs' | 's' | 'm')
  *
  * @example
- * <tui-chip>Sale</tui-badge>
+ * <tui-chip>Sale</tui-chip>
  *
  * @see-also
  * Icons, Appearance, Badge, Block
@@ -32,6 +32,7 @@ tui-chip,
     block-size: var(--t-size);
     inline-size: fit-content;
     isolation: isolate;
+    max-inline-size: stretch;
 
     .interactive({
         cursor: pointer;
@@ -45,6 +46,11 @@ tui-chip,
 
     & > [tuiIconButton] {
         margin: -0.375rem;
+    }
+
+    > tui-badge,
+    > [tuiBadge] {
+        margin-inline-end: 0;
     }
 
     &[data-size='xxs'] {
@@ -84,6 +90,11 @@ tui-chip,
 
         & > [tuiIconButton] {
             margin: -0.75rem;
+        }
+
+        & > tui-badge,
+        & > [tuiBadge] {
+            margin-inline-start: -0.375rem;
         }
     }
 

@@ -14,7 +14,7 @@ const ROTATE_X_MULTIPLIER = 2.3;
     selector: 'tui-mobile-android-loader',
     imports: [TuiLoader],
     templateUrl: './loader-android.template.html',
-    styleUrls: ['./loader-android.style.less'],
+    styleUrl: './loader-android.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '[class._visible]': 'percent',

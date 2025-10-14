@@ -22,7 +22,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiThumbnailCard,
     ],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     changeDetection,
 })
 export default class PageComponent {
@@ -60,6 +60,7 @@ export default class PageComponent {
     ];
 
     protected inputs = this.options.inputs;
+    protected compact = false;
 
     protected formControl = new FormControl<TuiCard | null>(null);
 

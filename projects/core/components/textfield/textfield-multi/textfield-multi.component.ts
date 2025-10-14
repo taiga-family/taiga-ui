@@ -43,7 +43,6 @@ import {
 import {filter, fromEvent} from 'rxjs';
 
 import {TuiTextfieldBaseComponent, TuiTextfieldComponent} from '../textfield.component';
-import {TuiWithTextfieldDropdown} from '../textfield-dropdown.directive';
 import {
     type TuiTextfieldItem,
     TuiTextfieldItemComponent,
@@ -59,7 +58,7 @@ import {
         WaResizeObserver,
     ],
     templateUrl: './textfield-multi.template.html',
-    styleUrls: ['./textfield-multi.style.less'],
+    styleUrl: './textfield-multi.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
@@ -72,7 +71,6 @@ import {
         TuiDropdownFixed,
         TuiDropdownDirective,
         TuiWithDropdownOpen,
-        TuiWithTextfieldDropdown,
         TuiWithIcons,
         TuiWithItemsHandlers,
         TuiWithOptionContent,

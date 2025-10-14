@@ -21,7 +21,7 @@ import {
     type TuiRectAccessor,
     type TuiVehicle,
 } from '@taiga-ui/core/classes';
-import {type TuiPortalItem} from '@taiga-ui/core/types';
+import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import {
     PolymorpheusComponent,
@@ -32,7 +32,6 @@ import {Subject, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
-import {TuiDropdownService} from './dropdown.service';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
@@ -55,10 +54,10 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     },
 })
 export class TuiDropdownDirective
-    implements AfterViewChecked, OnDestroy, TuiPortalItem, TuiRectAccessor, TuiVehicle
+    implements AfterViewChecked, OnDestroy, TuiRectAccessor, TuiVehicle
 {
     private readonly refresh$ = new Subject<void>();
-    private readonly service = inject(TuiDropdownService);
+    private readonly service = inject(TuiPopupService);
     private readonly cdr = inject(ChangeDetectorRef);
 
     // TODO: think of a better solution later
@@ -131,7 +130,7 @@ export class TuiDropdownDirective
             this.ref.set(this.service.add(this.component));
         } else if (!show && ref) {
             this.ref.set(null);
-            this.service.remove(ref);
+            ref.destroy();
         }
 
         this.drivers.forEach((driver) => driver?.next(show));

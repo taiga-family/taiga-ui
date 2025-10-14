@@ -9,13 +9,14 @@
                 />
             </tui-textfield>
             <tui-textfield tuiChevron>
-                <select
+                <input
                     formControlName="select"
                     placeholder="User"
-                    tuiTextfield
-                ></select>
+                    tuiSelect
+                />
                 <tui-data-list-wrapper
-                    *tuiTextfieldDropdown
+                    *tuiDropdown
+                    new
                     [items]="items"
                 />
             </tui-textfield>

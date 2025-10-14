@@ -19,7 +19,7 @@ export const TUI_CHEVRON = new InjectionToken(ngDevMode ? 'TUI_CHEVRON' : '', {
 
 @Component({
     template: '',
-    styleUrls: ['./chevron.style.less'],
+    styleUrl: './chevron.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-chevron'},

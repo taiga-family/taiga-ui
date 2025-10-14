@@ -9,13 +9,13 @@
                 >
                     Reset
                 </button>
-                @for (control of filters.controls; track control; let i = $index) {
+                @for (control of filters.controls; track control) {
                     <tui-textfield *tuiItem>
-                        <label tuiLabel>Filter {{ i + 1 }}</label>
+                        <label tuiLabel>Filter {{ $index + 1 }}</label>
                         <input
                             placeholder="Search"
                             tuiTextfield
-                            [formControlName]="i"
+                            [formControlName]="$index"
                         />
                     </tui-textfield>
                 }

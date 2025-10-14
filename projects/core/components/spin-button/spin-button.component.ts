@@ -14,7 +14,7 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
     selector: 'tui-spin-button',
     imports: [AsyncPipe, TuiButton],
     templateUrl: './spin-button.template.html',
-    styleUrls: ['./spin-button.style.less'],
+    styleUrl: './spin-button.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         '(mousedown.zoneless.prevent)': '(0)',

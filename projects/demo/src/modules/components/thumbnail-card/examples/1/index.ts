@@ -6,7 +6,7 @@ import {TuiThumbnailCard} from '@taiga-ui/addon-commerce';
 @Component({
     imports: [TuiThumbnailCard],
     templateUrl: './index.html',
-    styleUrls: ['./index.less'],
+    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

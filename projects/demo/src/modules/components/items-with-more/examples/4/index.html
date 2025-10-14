@@ -4,13 +4,13 @@
     [linesLimit]="linesLimit"
     (lastIndexChange)="lastIndex = $event"
 >
-    @for (item of items; track item; let i = $index) {
+    @for (item of items; track item) {
         <tui-chip
             *tuiItem
             appearance="neutral"
             size="s"
             class="item"
-            [class.item_visible]="i <= lastIndex"
+            [class.item_visible]="$index <= lastIndex"
         >
             {{ item }} item
         </tui-chip>

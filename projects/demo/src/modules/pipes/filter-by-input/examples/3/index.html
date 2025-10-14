@@ -1,12 +1,22 @@
-<tui-multi-select
-    placeholder="Ignored text"
-    [formControl]="control"
-    [tuiTextfieldLabelOutside]="true"
+<tui-textfield
+    multi
+    tuiChevron
+    [tuiTextfieldCleaner]="false"
 >
-    Star Wars persons
+    <label tuiLabel>Star Wars persons</label>
+
+    <input
+        placeholder="Ignored text"
+        tuiInputChip
+        [formControl]="control"
+    />
+
+    <tui-input-chip *tuiItem />
+
     <tui-data-list-wrapper
-        *tuiDataList
+        *tuiDropdown
+        new
         tuiMultiSelectGroup
         [items]="items | tuiFilterByInput"
     />
-</tui-multi-select>
+</tui-textfield>

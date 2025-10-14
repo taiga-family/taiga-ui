@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {TuiPortalService} from '@taiga-ui/cdk/classes';
+import {TuiPortalService} from '@taiga-ui/cdk/portals';
 
 @Injectable({
     providedIn: 'root',
