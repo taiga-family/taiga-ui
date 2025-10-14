@@ -1,43 +1,32 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
 :host {
-    position: relative;
-    display: grid;
     inset: 1.625rem 0;
     margin: 0 2rem;
-    isolation: isolate;
-    grid-column: 1;
-    place-self: start start;
     touch-action: none;
     animation-fill-mode: both;
 
-    --tui-from: translateX(-100%);
+    &:nth-of-type(1) {
+        grid-row: 5;
+    }
 
     &:nth-of-type(2) {
-        grid-row: -1;
+        grid-row: 4;
     }
 
     &:nth-of-type(3) {
-        grid-row: -2;
+        grid-row: 3;
     }
 
     &:nth-of-type(4) {
-        grid-row: -3;
+        grid-row: 2;
     }
 
     &:nth-of-type(5) {
-        grid-row: -4;
+        grid-row: 1;
     }
 
-    &[data-orientation='end'] {
-        justify-self: end;
-
-        --tui-from: translateX(100%);
-    }
-
-    &[data-orientation='center'] {
-        justify-self: center;
-
+    &[data-inline='center'] {
         --tui-from: translateY(-2rem);
     }
 
@@ -54,13 +43,10 @@
         }
     }
 
-    &._bottom {
-        .portal-loop(10);
-
-        align-self: end;
+    &[data-block='end'] {
         inset: -1.625rem 0;
 
-        &[data-orientation='center'] {
+        &[data-inline='center'] {
             --tui-from: translateY(6rem);
         }
     }
@@ -76,16 +62,5 @@
             place-items: end;
             animation-name: tuiSlide, tuiCollapse;
         }
-    }
-}
-
-.t-wrapper {
-    grid-row: 1 / span 2;
-
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        block-size: 0.375rem;
     }
 }

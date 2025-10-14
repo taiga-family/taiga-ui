@@ -164,11 +164,3 @@
 @mixin tui-mask($x, $y, $r) {
     mask: radial-gradient(circle at $x $y, transparent $r, black $r);
 }
-
-@mixin portal-loop($n) {
-    @for $i from 1 through $n {
-        &:nth-of-type(#{$i}) {
-            grid-row: #{$i + 10000};
-        }
-    }
-}

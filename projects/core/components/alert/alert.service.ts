@@ -1,17 +1,18 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiPortal} from '@taiga-ui/cdk/portals';
-import {TuiPopupService} from '@taiga-ui/core/directives/popup';
+import {TuiNotificationService} from '@taiga-ui/core/directives/notification';
 
 import {TuiAlertComponent} from './alert.component';
 import {type TuiAlertOptions} from './alert.interfaces';
-import {TUI_ALERT_OPTIONS} from './alert.tokens';
+import {TUI_ALERT_CONCURRENCY, TUI_ALERT_OPTIONS} from './alert.tokens';
 
 @Injectable({
     providedIn: 'root',
-    deps: [TuiPopupService],
-    useClass: TuiAlertService,
 })
-export class TuiAlertService extends TuiPortal<TuiAlertOptions<any>> {
+export class TuiAlertService extends TuiNotificationService<TuiAlertOptions<any>> {
     protected override readonly options = inject(TUI_ALERT_OPTIONS);
     protected override readonly component = TuiAlertComponent;
+
+    constructor() {
+        super(inject(TUI_ALERT_CONCURRENCY));
+    }
 }
