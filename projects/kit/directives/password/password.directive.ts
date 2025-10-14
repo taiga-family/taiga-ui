@@ -55,7 +55,7 @@ export class TuiPassword {
 
     protected readonly hint = tuiDirectiveBinding(
         TuiHintDirective,
-        'tuiHint',
+        'content',
         computed(() => (this.hidden() ? this.texts()[0] : this.texts()[1])),
     );
 

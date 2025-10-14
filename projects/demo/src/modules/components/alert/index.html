@@ -111,23 +111,23 @@
             </tr>
 
             <tr
-                name="[orientation]"
+                name="[block]"
                 tuiDocAPIItem
-                type="'start' | 'center' | 'end'"
-                [items]="orientationVariants"
-                [(value)]="orientation"
+                type="'start' | 'end'"
+                [items]="blockVariants"
+                [(value)]="block"
             >
-                Orientation
+                Block position
             </tr>
 
             <tr
-                name="[position]"
+                name="[inline]"
                 tuiDocAPIItem
-                type="'top' | 'bottom'"
-                [items]="positionVariants"
-                [(value)]="position"
+                type="'start' | 'center' | 'end'"
+                [items]="inlineVariants"
+                [(value)]="inline"
             >
-                Position
+                Inline position
             </tr>
         </table>
     </ng-template>

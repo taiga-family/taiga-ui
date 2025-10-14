@@ -110,7 +110,7 @@ test.describe('LineClamp', () => {
         await example.scrollIntoViewIfNeeded();
 
         await lineClampElement.hover();
-        const hintElement = page.locator('tui-hints .hint');
+        const hintElement = page.locator('tui-popups .hint');
 
         await expect(hintElement).toBeInViewport();
         await expect.soft(example).toHaveScreenshot('06-1-line-clamp-basic.png');

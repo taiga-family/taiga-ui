@@ -1,4 +1,4 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -17,10 +17,9 @@ import {
     tap,
 } from 'rxjs';
 
-import {TUI_HINT_OPTIONS, type TuiHintOptions} from './hint-options.directive';
+import {TUI_HINT_OPTIONS} from './hint-options.directive';
 
 @Directive({
-    standalone: true,
     providers: [tuiAsDriver(TuiHintHover), TuiHoveredService],
     exportAs: 'tuiHintHover',
 })
@@ -33,21 +32,19 @@ export class TuiHintHover extends TuiDriver {
     private readonly toggle$ = new Subject<boolean>();
     private readonly stream$ = merge(
         this.toggle$.pipe(
-            switchMap((visible) =>
+            switchMap((show) =>
                 this.isMobile
-                    ? of(visible)
-                    : of(visible).pipe(delay(visible ? 0 : this.tuiHintHideDelay)),
+                    ? of(show)
+                    : of(show).pipe(delay(show ? 0 : this.hideDelay())),
             ),
             takeUntil(this.hovered$),
             repeat(),
         ),
         this.hovered$.pipe(
-            switchMap((visible) =>
+            switchMap((show) =>
                 this.isMobile
-                    ? of(visible)
-                    : of(visible).pipe(
-                          delay(visible ? this.tuiHintShowDelay : this.tuiHintHideDelay),
-                      ),
+                    ? of(show)
+                    : of(show).pipe(delay(show ? this.showDelay() : this.hideDelay())),
             ),
             takeUntil(this.toggle$),
             repeat(),
@@ -69,11 +66,13 @@ export class TuiHintHover extends TuiDriver {
         skipSelf: true,
     });
 
-    @Input()
-    public tuiHintShowDelay: TuiHintOptions['showDelay'] = this.options.showDelay;
+    public readonly showDelay = input(this.options.showDelay, {
+        alias: 'tuiHintShowDelay',
+    });
 
-    @Input()
-    public tuiHintHideDelay: TuiHintOptions['hideDelay'] = this.options.hideDelay;
+    public readonly hideDelay = input(this.options.hideDelay, {
+        alias: 'tuiHintHideDelay',
+    });
 
     public readonly type = 'hint';
 

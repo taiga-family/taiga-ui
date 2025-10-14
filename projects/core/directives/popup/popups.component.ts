@@ -5,7 +5,6 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiPopupService} from './popup.service';
 
 @Component({
-    standalone: true,
     selector: 'tui-popups',
     template: '<ng-content/><ng-container #vcr />',
     styleUrl: './popups.style.less',

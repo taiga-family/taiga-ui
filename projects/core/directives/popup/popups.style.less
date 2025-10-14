@@ -5,12 +5,12 @@
     .scrollbar-hidden();
 
     display: grid;
+    grid-template-rows: repeat(9, min-content) 1fr;
     pointer-events: none;
     overflow: hidden;
     overscroll-behavior: none;
     overflow-wrap: break-word;
     box-sizing: border-box;
-    block-size: 100%;
     padding: env(safe-area-inset-top) env(safe-area-inset-left) env(safe-area-inset-bottom) env(safe-area-inset-right);
 
     ::ng-deep > * {
@@ -19,6 +19,6 @@
 
     &::after {
         content: '';
-        grid-row: 10000;
+        grid-row: 10;
     }
 }

@@ -10,7 +10,6 @@ import {
 import {TuiHintHover} from './hint-hover.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiHint][tuiHintPointer]',
     providers: [tuiAsRectAccessor(TuiHintPointer), tuiAsDriver(TuiHintPointer)],
     host: {
