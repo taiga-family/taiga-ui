@@ -48,7 +48,7 @@ export class TuiCopyDirective {
     protected readonly icons = tuiTextfieldIcon(TUI_COPY_OPTIONS);
     protected readonly hint = tuiDirectiveBinding(
         TuiHintDirective,
-        'tuiHint',
+        'content',
         toSignal(
             inject(TUI_COPY_TEXTS).pipe(
                 switchMap(([copy, copied]) =>

@@ -11,7 +11,7 @@ import {
 import {toSignal} from '@angular/core/rxjs-interop';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiSetSignal, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {
     tuiAppearanceOptionsProvider,
@@ -88,7 +88,7 @@ export class TuiTooltip implements DoCheck {
 
     public ngDoCheck(): void {
         if (this.textfield?.id) {
-            this.describe.tuiHintDescribe = this.textfield.id;
+            tuiSetSignal(this.describe.id, this.textfield.id);
         }
     }
 

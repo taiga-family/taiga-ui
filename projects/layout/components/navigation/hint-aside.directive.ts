@@ -19,7 +19,7 @@ export class TuiHintAsideDirective {
 
     protected readonly binding = tuiDirectiveBinding(
         TuiHintDirective,
-        'tuiHint',
+        'content',
         computed(() =>
             this.aside.expanded() || this.dropdown
                 ? ''

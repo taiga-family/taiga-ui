@@ -22,7 +22,6 @@ import {
     type TuiVehicle,
 } from '@taiga-ui/core/classes';
 import {TuiPopupService} from '@taiga-ui/core/directives/popup';
-import {type TuiPortalItem} from '@taiga-ui/core/types';
 import {tuiCheckFixedPosition} from '@taiga-ui/core/utils';
 import {
     PolymorpheusComponent,
@@ -55,7 +54,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     },
 })
 export class TuiDropdownDirective
-    implements AfterViewChecked, OnDestroy, TuiPortalItem, TuiRectAccessor, TuiVehicle
+    implements AfterViewChecked, OnDestroy, TuiRectAccessor, TuiVehicle
 {
     private readonly refresh$ = new Subject<void>();
     private readonly service = inject(TuiPopupService);
