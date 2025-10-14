@@ -34,7 +34,6 @@ export class TuiHintDescribe extends TuiDriver {
     public readonly id = input<string | null | undefined>('', {alias: 'tuiHintDescribe'});
     public readonly type = 'hint';
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     protected readonly stream$ = toObservable(this.id).pipe(
         distinctUntilChanged(),
         tuiIfMap(() => fromEvent(this.doc, 'keydown', {capture: true}), tuiIsPresent),
