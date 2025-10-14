@@ -63,7 +63,6 @@ export class TuiLineClamp implements DoCheck {
         this.isOverflown$.pipe(debounceTime(0), distinctUntilChanged()),
     );
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
     protected readonly lineClamp = toSignal(
         toObservable(this.linesLimit).pipe(
             startWith(1),
