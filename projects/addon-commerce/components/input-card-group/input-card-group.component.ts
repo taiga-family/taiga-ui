@@ -60,8 +60,12 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, Subject, switchMap, timer} from 'rxjs';
 
+import {TuiInputCardGroupDirective} from './input-card-group.directive';
 import {TUI_INPUT_CARD_GROUP_OPTIONS} from './input-card-group.options';
-import {TUI_INPUT_CARD_GROUP_TEXTS} from './input-card-group.providers';
+import {
+    TUI_INPUT_CARD_GROUP_TEXTS,
+    TUI_INPUT_CARD_GROUP_TEXTS_PROVIDER,
+} from './input-card-group.providers';
 
 export interface TuiCard {
     card: string;
@@ -92,8 +96,14 @@ export interface TuiCard {
         tuiAsControl(TuiInputCardGroup),
         tuiDropdownOptionsProvider({limitWidth: 'fixed'}),
         TuiHoveredService,
+        TUI_INPUT_CARD_GROUP_TEXTS_PROVIDER,
     ],
-    hostDirectives: [TuiAppearance, TuiDropdownDirective, TuiWithDropdownOpen],
+    hostDirectives: [
+        TuiAppearance,
+        TuiDropdownDirective,
+        TuiWithDropdownOpen,
+        {directive: TuiInputCardGroupDirective, inputs: ['compact']},
+    ],
     host: {
         '[attr.data-size]': 'textfield.size()',
         '(pointerdown)': 'onPointerDown($event)',

@@ -34,6 +34,7 @@
     border-radius: var(--tui-radius-l);
     overflow: hidden;
     font: var(--tui-font-text-ui-m);
+    isolation: isolate;
 
     &[data-size='m'] {
         --t-label: -0.7em;
@@ -54,7 +55,7 @@
         }
     }
 
-    :host-context(tui-root._mobile) {
+    &._compact {
         min-inline-size: 19rem;
 
         --t-translate: 4rem;
@@ -78,6 +79,7 @@
 
 .t-wrapper {
     position: absolute;
+    z-index: 1;
     inline-size: 100%;
     block-size: 100%;
     transition: opacity 0s var(--tui-duration);
@@ -92,7 +94,7 @@
     &_cvc {
         margin-inline-start: 7rem;
 
-        :host-context(tui-root._mobile) & {
+        :host._compact & {
             margin-inline-start: 4rem;
         }
     }
@@ -182,6 +184,7 @@
 .t-input {
     .fullsize();
 
+    z-index: 1;
     border: 0;
     margin: 0;
     padding: calc(var(--t-height) / 3) var(--t-padding) 0;
@@ -251,10 +254,12 @@
 .t-icons {
     position: absolute;
     right: 1rem;
+    z-index: 1;
     display: flex;
     align-items: center;
     block-size: 100%;
     gap: 0.25rem;
+    pointer-events: none;
 
     @supports (inset-inline-end: 0) {
         right: unset;
@@ -269,6 +274,7 @@
 
 .t-icon {
     cursor: pointer;
+    pointer-events: auto;
 
     &::before {
         font-size: 1rem;
