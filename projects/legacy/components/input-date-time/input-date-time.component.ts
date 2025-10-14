@@ -11,6 +11,7 @@ import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoDateTimeOptionsGenerator,
     maskitoSelectionChangeHandler,
+    type MaskitoTimeMode,
 } from '@maskito/kit';
 import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -21,7 +22,6 @@ import {
     TuiDay,
     TuiMonth,
     TuiTime,
-    type TuiTimeMode,
 } from '@taiga-ui/cdk/date-time';
 import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiWatch} from '@taiga-ui/cdk/observables';
@@ -86,7 +86,7 @@ export class TuiInputDateTimeComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     private month: TuiMonth | null = null;
-    private readonly timeMode$ = new BehaviorSubject<TuiTimeMode>('HH:MM');
+    private readonly timeMode$ = new BehaviorSubject<MaskitoTimeMode>('HH:MM');
     private readonly nativeValue = signal('');
 
     protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
@@ -137,11 +137,11 @@ export class TuiInputDateTimeComponent
     public open = false;
 
     @Input()
-    public set timeMode(value: TuiTimeMode) {
+    public set timeMode(value: MaskitoTimeMode) {
         this.timeMode$.next(value);
     }
 
-    public get timeMode(): TuiTimeMode {
+    public get timeMode(): MaskitoTimeMode {
         return this.timeMode$.value;
     }
 
@@ -369,7 +369,7 @@ export class TuiInputDateTimeComponent
     private calculateMask(
         min: TuiDay | [TuiDay, TuiTime],
         max: TuiDay | [TuiDay, TuiTime],
-        timeMode: TuiTimeMode,
+        timeMode: MaskitoTimeMode,
         dateFormat: TuiDateMode,
         dateSeparator: string,
     ): MaskitoOptions {
@@ -400,7 +400,7 @@ export class TuiInputDateTimeComponent
     private getDateTimeString(
         date: TuiDay | string,
         time: TuiTime | string | null,
-        timeMode: TuiTimeMode = 'HH:MM',
+        timeMode: MaskitoTimeMode = 'HH:MM',
     ): string {
         const dateString =
             date instanceof TuiDay
