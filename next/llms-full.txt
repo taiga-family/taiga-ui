@@ -366,8 +366,8 @@ Built-in implementation of notifications
 | [autoClose] | `TuiHandler | number` | Auto close timeout, 0 for no auto close |
 | [closable] | `boolean` | Has close button |
 | [icon] | `PolymorpheusContent` | Icon |
-| [orientation] | `'start' | 'center' | 'end'` | Orientation |
-| [position] | `'top' | 'bottom'` | Position |
+| [block] | `'start' | 'end'` | Block position |
+| [inline] | `'start' | 'center' | 'end'` | Inline position |
 
 ### TypeScript
 
@@ -446,11 +446,11 @@ export default class Page {
 
     protected autoClose = this.autoCloseVariants[1]!;
 
-    protected readonly orientationVariants = ['start', 'center', 'end'] as const;
-    protected orientation = this.orientationVariants[2];
+    protected readonly inlineVariants = ['start', 'center', 'end'] as const;
+    protected inline = this.inlineVariants[2];
 
-    protected readonly positionVariants = ['top', 'bottom'] as const;
-    protected position = this.positionVariants[0];
+    protected readonly blockVariants = ['start', 'end'] as const;
+    protected block = this.blockVariants[0];
 
     protected closable = true;
 
@@ -471,8 +471,8 @@ export default class Page {
                 appearance: this.appearance,
                 autoClose: this.autoClose,
                 closable: this.closable,
-                orientation: this.orientation,
-                position: this.position,
+                block: this.block,
+                inline: this.inline,
                 icon: this.icon === this.iconVariants[0] ? this.defaultIcon : this.icon,
             })
             .pipe(
@@ -4867,7 +4867,7 @@ export class Example {}
 
 ```html
 <ng-template>
-<tui-input-card-group [codeLength]="codeLength" [formControl]="formControl" [icon]="icon" [id]="id" [inputs]="inputs" [invalid]="control.invalid" [placeholder]="placeholder" [readOnly]="control.readonly" [tuiDisabled]="control.disabled" />
+<tui-input-card-group [codeLength]="codeLength" [compact]="compact" [formControl]="formControl" [icon]="icon" [id]="id" [inputs]="inputs" [invalid]="control.invalid" [placeholder]="placeholder" [readOnly]="control.readonly" [tuiDisabled]="control.disabled" />
 </ng-template>
 ```
 
@@ -4877,6 +4877,7 @@ export class Example {}
 |----------|-----|----------|
 | [cardValidator] | `TuiBooleanHandler<string>` | Custom card validator for moving focus to the next field |
 | [codeLength] | `3 | 4` | Code length |
+| [compact] | `boolean` | Manually set compact mode (forced on mobile resolution) |
 | [icon] | `PolymorpheusContent` | Custom card icon |
 | [id] | `string` | accordingly). Auto-generated when not provided. |
 | [inputs] | `TuiCardInputs` | Toggle availability of inputs |
@@ -4948,6 +4949,7 @@ export default class PageComponent {
     ];
 
     protected inputs = this.options.inputs;
+    protected compact = false;
 
     protected formControl = new FormControl<TuiCard | null>(null);
 
