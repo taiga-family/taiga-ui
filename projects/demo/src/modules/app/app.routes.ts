@@ -1,5 +1,8 @@
 import {type Routes} from '@angular/router';
-import {tuiProvideRoutePageTab as route} from '@taiga-ui/addon-doc';
+import {
+    tuiDocPageOptionsProvider as options,
+    tuiProvideRoutePageTab as route,
+} from '@taiga-ui/addon-doc';
 
 import {DemoRoute} from './demo-routes';
 
@@ -14,6 +17,11 @@ export const ROUTES: Routes = [
         path: DemoRoute.GettingStarted,
         title: 'Getting started',
         loadComponent: async () => import('./getting-started'),
+        providers: [
+            options({
+                header: 'Getting started',
+            }),
+        ],
     }),
     route({
         path: DemoRoute.BrowserSupport,
