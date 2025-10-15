@@ -30,9 +30,11 @@ export class TuiFluidTypography {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_FLUID_TYPOGRAPHY_OPTIONS);
 
-    public tuiFluidTypography = input<readonly [min: number, max: number] | ''>('');
+    public readonly tuiFluidTypography = input<readonly [min: number, max: number] | ''>(
+        '',
+    );
 
-    public readonly sub = merge(
+    protected readonly sub = merge(
         toObservable(this.tuiFluidTypography),
         inject(ResizeObserverService, {self: true}),
         inject(MutationObserverService, {self: true}),
