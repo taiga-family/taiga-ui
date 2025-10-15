@@ -23,16 +23,16 @@ export class TuiLoader {
     private readonly options = inject(TUI_LOADER_OPTIONS);
     protected readonly isApple = tuiIsSafari(tuiInjectElement()) || this.isIOS;
 
-    protected isHorizontal = computed(() => !tuiSizeBigger(this.size()));
+    protected readonly isHorizontal = computed(() => !tuiSizeBigger(this.size()));
 
-    public size = input(this.options.size);
+    public readonly size = input(this.options.size);
 
-    public inheritColor = input(this.options.inheritColor);
+    public readonly inheritColor = input(this.options.inheritColor);
 
-    public overlay = input(this.options.overlay);
+    public readonly overlay = input(this.options.overlay);
 
-    public textContent = input<PolymorpheusContent>();
+    public readonly textContent = input<PolymorpheusContent>();
 
     // TODO: Drop alias in v5
-    public loading = input(true, {alias: 'showLoader'});
+    public readonly loading = input(true, {alias: 'showLoader'});
 }
