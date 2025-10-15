@@ -22,7 +22,6 @@ import {
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
-import {map, type Observable} from 'rxjs';
 
 @Component({
     imports: [

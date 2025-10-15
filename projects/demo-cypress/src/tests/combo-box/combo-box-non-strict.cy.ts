@@ -11,7 +11,6 @@ import {type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
-import {map, type Observable} from 'rxjs';
 
 interface Country {
     id: string;
