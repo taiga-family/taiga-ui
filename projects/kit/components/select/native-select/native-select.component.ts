@@ -61,11 +61,11 @@ export class TuiNativeSelect<T>
         this.textfield.value.set(this.stringified());
     });
 
-    public items = input<ReadonlyArray<readonly T[]> | readonly T[]>([]);
+    public readonly items = input<ReadonlyArray<readonly T[]> | readonly T[] | null>([]);
 
-    public labels = input<readonly string[]>([]);
+    public readonly labels = input<readonly string[]>([]);
 
-    public placeholder = input('');
+    public readonly placeholder = input('');
 
     public setValue(value: T | null): void {
         this.onChange(value);
