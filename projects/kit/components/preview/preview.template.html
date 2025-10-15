@@ -1,53 +1,52 @@
-@if (texts$ | async; as texts) {
-    <section
-        #contentWrapper
-        attributeFilter="src"
-        characterData
-        childList
-        subtree
-        class="t-wrapper"
-        [class.t-not-interactive-content]="zoomable"
-        [class.t-transitive]="transitioned$ | async"
-        [style.cursor]="cursor$ | async"
-        [style.transform]="wrapperTransform$ | async"
-        (tuiPan)="onPan($event)"
-        (tuiZoom)="onZoom($event)"
-        (waMutationObserver)="onMutation(contentWrapper)"
-        (waResizeObserver)="onResize($event)"
-    >
-        <ng-content />
-    </section>
-    <header class="t-header">
-        <div class="t-title">
-            <ng-content select="tui-preview-title" />
-        </div>
-        <ng-content select="tui-preview-pagination" />
-        <div class="t-actions">
-            <ng-content select="[tuiPreviewAction]" />
-        </div>
-    </header>
-    <footer class="t-footer">
-        @if (rotatable) {
-            <button
-                tuiHintAppearance="dark"
-                tuiHintDescribe
-                tuiHintDirection="top-right"
-                tuiIconButton
-                tuiPreviewAction
-                type="button"
-                class="t-rotate-button"
-                [iconStart]="icons.rotate"
-                [tuiHint]="texts.rotate"
-                (click)="rotate()"
-            ></button>
-        }
-        @if (zoomable) {
-            <tui-preview-zoom
-                [min]="minZoom"
-                [value]="(zoom$ | async) || 1"
-                (reset)="reset()"
-                (valueChange)="setZoom($event)"
-            />
-        }
-    </footer>
-}
+@let texts = previewTexts();
+<section
+    #contentWrapper
+    attributeFilter="src"
+    characterData
+    childList
+    subtree
+    class="t-wrapper"
+    [class.t-not-interactive-content]="zoomable"
+    [class.t-transitive]="transitioned$ | async"
+    [style.cursor]="cursor$ | async"
+    [style.transform]="wrapperTransform$ | async"
+    (tuiPan)="onPan($event)"
+    (tuiZoom)="onZoom($event)"
+    (waMutationObserver)="onMutation(contentWrapper)"
+    (waResizeObserver)="onResize($event)"
+>
+    <ng-content />
+</section>
+<header class="t-header">
+    <div class="t-title">
+        <ng-content select="tui-preview-title" />
+    </div>
+    <ng-content select="tui-preview-pagination" />
+    <div class="t-actions">
+        <ng-content select="[tuiPreviewAction]" />
+    </div>
+</header>
+<footer class="t-footer">
+    @if (rotatable) {
+        <button
+            tuiHintAppearance="dark"
+            tuiHintDescribe
+            tuiHintDirection="top-right"
+            tuiIconButton
+            tuiPreviewAction
+            type="button"
+            class="t-rotate-button"
+            [iconStart]="icons.rotate"
+            [tuiHint]="texts.rotate"
+            (click)="rotate()"
+        ></button>
+    }
+    @if (zoomable) {
+        <tui-preview-zoom
+            [min]="minZoom"
+            [value]="(zoom$ | async) || 1"
+            (reset)="reset()"
+            (valueChange)="setZoom($event)"
+        />
+    }
+</footer>

@@ -31,7 +31,7 @@
                     (keydown.arrowDown.prevent)="move($index, 1)"
                     (keydown.arrowUp.prevent)="move($index, -1)"
                 >
-                    {{ showHideText$ | async }}
+                    {{ showHideText() }}
                 </button>
             </div>
         </tui-tile>

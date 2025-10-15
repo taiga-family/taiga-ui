@@ -1,5 +1,4 @@
 import {Component, computed, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiAxes, TuiLineDaysChart} from '@taiga-ui/addon-charts';
@@ -14,7 +13,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection,
 })
 export default class Page {
-    protected readonly months = toSignal(inject(TUI_MONTHS));
+    protected readonly months = inject(TUI_MONTHS);
 
     protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         new Array(91)

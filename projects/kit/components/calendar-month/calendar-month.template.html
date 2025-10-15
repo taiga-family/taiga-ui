@@ -42,7 +42,7 @@
                 (click)="onItemClick(item)"
                 (tuiHoveredChange)="onItemHovered($event, item)"
             >
-                {{ months()?.[row * 4 + column] }}
+                {{ months()[row * 4 + column] }}
             </div>
         </ng-container>
     </div>

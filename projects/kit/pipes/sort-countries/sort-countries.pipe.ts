@@ -1,4 +1,5 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {TUI_COUNTRIES} from '@taiga-ui/kit/tokens';
 import {map, type Observable} from 'rxjs';
@@ -8,7 +9,7 @@ import {map, type Observable} from 'rxjs';
     name: 'tuiSortCountries',
 })
 export class TuiSortCountriesPipe implements PipeTransform {
-    private readonly countriesNames$ = inject(TUI_COUNTRIES);
+    private readonly countriesNames$ = toObservable(inject(TUI_COUNTRIES));
 
     public transform(
         countries: readonly TuiCountryIsoCode[],

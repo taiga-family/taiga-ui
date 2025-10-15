@@ -1,6 +1,5 @@
 import {AsyncPipe} from '@angular/common';
 import {Component, inject, signal} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -29,7 +28,6 @@ import {
     TuiSelect,
 } from '@taiga-ui/kit';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import {map} from 'rxjs';
 
 interface User {
     readonly url?: string;
@@ -74,12 +72,7 @@ export default class Example {
 
     protected readonly open = signal(false);
 
-    protected readonly countries = toSignal(
-        inject(TUI_COUNTRIES).pipe(map(Object.values)),
-        {
-            initialValue: [],
-        },
-    );
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
 
     protected readonly users: readonly User[] = [
         {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},

@@ -16,7 +16,7 @@
     tuiIconButton
     type="button"
     class="t-button"
-    [attr.aria-label]="texts()?.[0]"
+    [attr.aria-label]="texts()[0]"
     [cdkCopyToClipboard]="content.textContent ?? ''"
     [iconStart]="icon"
     (cdkCopyToClipboardCopied)="copied$.next($event)"
@@ -26,5 +26,5 @@
         class="t-icon"
         [icon]="check"
     />
-    {{ texts()?.[1] }}
+    {{ texts()[1] }}
 </ng-template>

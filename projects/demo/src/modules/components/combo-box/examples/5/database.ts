@@ -1,13 +1,14 @@
 import {inject, Injectable} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {TUI_COUNTRIES} from '@taiga-ui/kit';
 import {delay, map, type Observable} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class DatabaseServer {
-    protected readonly countries$: Observable<string[]> = inject(TUI_COUNTRIES).pipe(
-        map(Object.values),
-    );
+    protected readonly countries$: Observable<string[]> = toObservable(
+        inject(TUI_COUNTRIES),
+    ).pipe(map(Object.values));
 
     // Request imitation
     public request$(query: string): Observable<readonly string[]> {

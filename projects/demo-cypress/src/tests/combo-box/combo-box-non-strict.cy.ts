@@ -11,7 +11,6 @@ import {type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
-import {map, type Observable} from 'rxjs';
 
 interface Country {
     id: string;
@@ -44,7 +43,7 @@ interface Country {
                 <tui-data-list-wrapper
                     *tuiDropdown
                     new
-                    [items]="countries$ | async"
+                    [items]="countries"
                 />
             </tui-textfield>
         </tui-root>
@@ -53,8 +52,8 @@ interface Country {
     providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class TestComboBox {
-    protected readonly countries$: Observable<Country[]> = inject(TUI_COUNTRIES).pipe(
-        map((x) => Object.entries(x).map(([id, name]) => ({id, name}))),
+    protected readonly countries = Object.entries(inject(TUI_COUNTRIES)()).map(
+        ([id, name]) => ({id, name}),
     );
 
     protected readonly control = new FormControl<Country | string | null>(null);

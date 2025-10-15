@@ -47,6 +47,6 @@
         (click)="close$.next()"
         (mousedown.prevent.zoneless)="(0)"
     >
-        {{ closeWord$ | async }}
+        {{ closeWord() }}
     </button>
 }

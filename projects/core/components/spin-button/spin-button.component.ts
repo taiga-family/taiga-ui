@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -12,7 +11,7 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-spin-button',
-    imports: [AsyncPipe, TuiButton],
+    imports: [TuiButton],
     templateUrl: './spin-button.template.html',
     styleUrl: './spin-button.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,7 +23,7 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 })
 export class TuiSpinButton {
     protected readonly icons = inject(TUI_SPIN_ICONS);
-    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
+    protected readonly spinTexts = inject(TUI_SPIN_TEXTS);
 
     @Input()
     public focusable = true;

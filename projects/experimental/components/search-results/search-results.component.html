@@ -14,7 +14,7 @@
                     class="t-empty"
                     [icon]="options.empty"
                 />
-                {{ i18n()?.empty }}
+                {{ i18n().empty }}
             </tui-block-status>
         } @else {
             <ng-container *tuiLet="(results | keyvalue: asIs) || [] as items">
@@ -43,7 +43,7 @@
                         (document:keydown.shift.tab.prevent)="tab(-1)"
                         (document:keydown.tab.prevent)="tab(1)"
                     >
-                        <button tuiTab>{{ i18n()?.all }}</button>
+                        <button tuiTab>{{ i18n().all }}</button>
                         @for (group of items; track group) {
                             @if (group.value.length) {
                                 <button tuiTab>
