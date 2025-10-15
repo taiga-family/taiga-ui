@@ -1,6 +1,6 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {AsyncPipe} from '@angular/common';
-import {Component, computed, inject, type Signal} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -32,9 +32,7 @@ import {
     changeDetection,
 })
 export default class Example {
-    protected readonly countries: Signal<string[]> = computed(() =>
-        Object.values(inject(TUI_COUNTRIES)),
-    );
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
 
     protected value = null;
 }

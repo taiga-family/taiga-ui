@@ -144,6 +144,7 @@ describe('ComboBox + form control contains IDs of items from datalist', () => {
 
                 cy.mount(Sandbox, {
                     componentProperties: {
+                        control: new FormControl(null),
                         valueChanges: createOutputSpy('valueChanges'),
                     },
                 }).then((x) => {

@@ -49,7 +49,7 @@ export default class PageComponent {
     protected textfieldContent: PolymorpheusContent = '';
 
     protected readonly countries = computed(() =>
-        Object.entries(this.countriesI18n).map(([id, name]) => ({id, name})),
+        Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
     );
 
     protected readonly textfieldContentVariants = computed(() => [
