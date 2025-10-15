@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 
@@ -17,15 +16,15 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 })
 export class TuiSpinButton {
     protected readonly icons = inject(TUI_SPIN_ICONS);
-    protected readonly spinTexts = toSignal(inject(TUI_SPIN_TEXTS));
+    protected readonly spinTexts = inject(TUI_SPIN_TEXTS);
 
-    public focusable = input(true);
+    public readonly focusable = input(true);
 
-    public disabled = input(false);
+    public readonly disabled = input(false);
 
-    public leftDisabled = input(false);
+    public readonly leftDisabled = input(false);
 
-    public rightDisabled = input(false);
+    public readonly rightDisabled = input(false);
 
     public readonly leftClick = output();
 
