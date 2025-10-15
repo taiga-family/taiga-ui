@@ -59,23 +59,23 @@ export class TuiRange extends TuiControl<[number, number]> {
     protected readonly options = inject(TUI_SLIDER_OPTIONS);
     protected lastActiveThumb: 'end' | 'start' = 'end';
 
-    public min = input(0);
+    public readonly min = input(0);
 
-    public max = input(100);
+    public readonly max = input(100);
 
-    public step = input(1);
+    public readonly step = input(1);
 
-    public size = input<TuiSizeS>(this.options.size);
+    public readonly size = input<TuiSizeS>(this.options.size);
 
-    public segments = input(1);
+    public readonly segments = input(1);
 
-    public keySteps = input<TuiKeySteps | null>(null);
+    public readonly keySteps = input<TuiKeySteps | null>(null);
 
-    public focusable = input(true);
+    public readonly focusable = input(true);
 
-    public margin = input(0);
+    public readonly margin = input(0);
 
-    public limit = input(Infinity);
+    public readonly limit = input(Infinity);
 
     public readonly slidersRefs = viewChildren<
         TuiSliderComponent,
@@ -85,17 +85,15 @@ export class TuiRange extends TuiControl<[number, number]> {
     public readonly start = computed(() => this.toPercent(this.value()[0]));
     public readonly end = computed(() => 100 - this.toPercent(this.value()[1]));
 
-    public readonly fractionStep = computed<number>(() => {
-        return this.keySteps()
-            ? this.step() / 100
-            : this.step() / (this.max() - this.min());
+    protected readonly fractionStep = computed<number>((step = this.step()) => {
+        return this.keySteps() ? step / 100 : step / (this.max() - this.min());
     });
 
-    public readonly computedKeySteps = computed<TuiKeySteps>(() => {
+    protected readonly computedKeySteps = computed<TuiKeySteps>(() => {
         return this.computePureKeySteps(this.keySteps(), this.min(), this.max());
     });
 
-    public readonly segmentWidthRatio = computed<number>(() => 1 / this.segments());
+    protected readonly segmentWidthRatio = computed<number>(() => 1 / this.segments());
 
     public processValue(value: number, end: boolean): void {
         if (end) {
