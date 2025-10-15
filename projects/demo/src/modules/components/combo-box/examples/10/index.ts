@@ -1,6 +1,6 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {AsyncPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject, type Signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -12,7 +12,6 @@ import {
     TuiComboBox,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import {map, type Observable} from 'rxjs';
 
 @Component({
     imports: [
@@ -33,8 +32,8 @@ import {map, type Observable} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected readonly countries$: Observable<string[]> = inject(TUI_COUNTRIES).pipe(
-        map(Object.values),
+    protected readonly countries: Signal<string[]> = computed(() =>
+        Object.values(inject(TUI_COUNTRIES)),
     );
 
     protected value = null;

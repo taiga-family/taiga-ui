@@ -1,6 +1,6 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, inject, Input} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiTextfieldComponent,
@@ -46,11 +46,13 @@ export class TuiCopyDirective {
 
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected readonly icons = tuiTextfieldIcon(TUI_COPY_OPTIONS);
+    protected readonly copyTexts = inject(TUI_COPY_TEXTS);
+
     protected readonly hint = tuiDirectiveBinding(
         TuiHintDirective,
         'content',
         toSignal(
-            inject(TUI_COPY_TEXTS).pipe(
+            toObservable(inject(TUI_COPY_TEXTS)).pipe(
                 switchMap(([copy, copied]) =>
                     this.copied$.pipe(
                         switchMap(() =>

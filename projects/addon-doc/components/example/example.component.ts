@@ -3,6 +3,7 @@ import {AsyncPipe, DOCUMENT, NgComponentOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     Input,
     signal,
@@ -67,7 +68,7 @@ export class TuiDocExample {
     private readonly clipboard = inject(Clipboard);
     private readonly alerts = inject(TuiAlertService);
     private readonly location = inject(WA_LOCATION);
-    private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
+    private readonly copyTexts = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
 
     private readonly rawLoader$$ = new BehaviorSubject<
@@ -91,9 +92,7 @@ export class TuiDocExample {
     protected activeItemIndex = this.defaultTabIndex;
     protected fullscreen = false;
 
-    protected readonly copy = toSignal(this.copyTexts$.pipe(map(([copy]) => copy)), {
-        initialValue: '',
-    });
+    protected readonly copy = computed(() => this.copyTexts()[0]);
 
     protected readonly loading = signal(false);
 

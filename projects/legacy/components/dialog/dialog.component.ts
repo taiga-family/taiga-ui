@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -37,7 +36,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 
 @Component({
     selector: 'tui-dialog-legacy',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
+    imports: [PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './dialog.template.html',
     styleUrl: './dialog.style.less',
     // So we don't force OnPush on dialog content
@@ -55,7 +54,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 export class TuiDialogComponent<O, I> {
     protected readonly close$ = new Subject<void>();
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
-    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly closeWord = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly from = computed(() =>
         this.size === 'fullscreen' || this.size === 'page' || this.isMobile()

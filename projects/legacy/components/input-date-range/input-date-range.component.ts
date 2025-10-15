@@ -6,7 +6,7 @@ import {
     signal,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {MASKITO_DEFAULT_OPTIONS, type MaskitoOptions} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
@@ -96,7 +96,7 @@ export class TuiInputDateRangeComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private readonly nativeValue = signal('');
 
-    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected readonly dateTexts$ = toObservable(inject(TUI_DATE_TEXTS));
     protected override readonly valueTransformer = inject(
         TUI_DATE_RANGE_VALUE_TRANSFORMER,
         {optional: true},

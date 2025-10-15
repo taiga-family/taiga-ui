@@ -1,5 +1,4 @@
 import {computed, Directive, inject, Input, signal, untracked} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {
@@ -64,7 +63,7 @@ export class TuiInputTimeDirective
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly open = tuiDropdownOpen();
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
-    private readonly fillers = toSignal(inject(TUI_TIME_TEXTS));
+    private readonly fillers = inject(TUI_TIME_TEXTS);
     private readonly prefix = signal('');
     private readonly postfix = signal('');
 

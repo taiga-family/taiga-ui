@@ -3,6 +3,7 @@ import {isPlatformServer} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     Input,
     PLATFORM_ID,
@@ -34,6 +35,7 @@ import {BehaviorSubject, map, startWith, Subject, switchMap, timer} from 'rxjs';
 export class TuiDocCode {
     private readonly icons = inject(TUI_DOC_ICONS);
     private readonly rawLoader$$ = new BehaviorSubject<TuiRawLoaderContent>('');
+    private readonly texts = inject(TUI_COPY_TEXTS);
 
     protected readonly isServer = isPlatformServer(inject(PLATFORM_ID));
 
@@ -41,9 +43,7 @@ export class TuiDocCode {
         inject(TUI_DOC_EXAMPLE_MARKDOWN_CODE_PROCESSOR);
 
     protected readonly copy$ = new Subject<void>();
-    protected readonly copyText = toSignal(
-        inject(TUI_COPY_TEXTS).pipe(map(([copy]) => copy)),
-    );
+    protected readonly copyText = computed(() => this.texts()[0]);
 
     protected readonly icon = toSignal(
         this.copy$.pipe(

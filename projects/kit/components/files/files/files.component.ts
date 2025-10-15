@@ -35,8 +35,8 @@ export class TuiFilesComponent {
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
         EMPTY_QUERY;
 
-    protected readonly hideText$ = inject(TUI_HIDE_TEXT);
-    protected readonly showAllText$ = inject(TUI_SHOW_ALL_TEXT);
+    protected readonly hideText = inject(TUI_HIDE_TEXT);
+    protected readonly showAllText = inject(TUI_SHOW_ALL_TEXT);
 
     @Input()
     public max = 0;

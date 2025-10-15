@@ -14,5 +14,5 @@ import {TUI_COUNTRIES} from '@taiga-ui/kit';
 })
 export default class Example {
     protected readonly countryIsoCode: TuiCountryIsoCode = 'AE';
-    protected readonly countriesNames$ = inject(TUI_COUNTRIES);
+    protected readonly countriesNames = inject(TUI_COUNTRIES);
 }

@@ -1,25 +1,24 @@
-@if (texts$ | async; as texts) {
-    <button
-        tuiIconButton
-        tuiPreviewAction
-        type="button"
-        class="t-arrow t-arrow_left"
-        [disabled]="leftButtonDisabled"
-        [iconStart]="icons.prev"
-        (click)="onArrowClick(-1)"
-    >
-        {{ texts[0] }}
-    </button>
-    {{ index + 1 }}/{{ length }}
-    <button
-        tuiIconButton
-        tuiPreviewAction
-        type="button"
-        class="t-arrow t-arrow_right"
-        [disabled]="rightButtonDisabled"
-        [iconStart]="icons.next"
-        (click)="onArrowClick(1)"
-    >
-        {{ texts[1] }}
-    </button>
-}
+@let texts = paginationTexts();
+<button
+    tuiIconButton
+    tuiPreviewAction
+    type="button"
+    class="t-arrow t-arrow_left"
+    [disabled]="leftButtonDisabled"
+    [iconStart]="icons.prev"
+    (click)="onArrowClick(-1)"
+>
+    {{ texts[0] }}
+</button>
+{{ index + 1 }}/{{ length }}
+<button
+    tuiIconButton
+    tuiPreviewAction
+    type="button"
+    class="t-arrow t-arrow_right"
+    [disabled]="rightButtonDisabled"
+    [iconStart]="icons.next"
+    (click)="onArrowClick(1)"
+>
+    {{ texts[1] }}
+</button>

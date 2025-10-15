@@ -1,8 +1,7 @@
-import {InjectionToken} from '@angular/core';
+import {InjectionToken, type Signal} from '@angular/core';
 import {type TuiDateMode} from '@taiga-ui/cdk/date-time';
 import {type TuiCountryIsoCode} from '@taiga-ui/i18n/types';
 import {tuiExtractI18n} from '@taiga-ui/i18n/utils';
-import {type Observable} from 'rxjs';
 
 export const TUI_CONFIRM_WORDS = new InjectionToken(
     ngDevMode ? 'TUI_CONFIRM_WORDS' : '',
@@ -66,7 +65,7 @@ export const TUI_TIME_TEXTS = new InjectionToken(ngDevMode ? 'TUI_TIME_TEXTS' : 
     factory: tuiExtractI18n('time'),
 });
 
-export const TUI_DATE_TEXTS = new InjectionToken<Observable<Record<TuiDateMode, string>>>(
+export const TUI_DATE_TEXTS = new InjectionToken<Signal<Record<TuiDateMode, string>>>(
     ngDevMode ? 'TUI_DATE_TEXTS' : '',
     {
         factory: tuiExtractI18n('dateTexts'),
@@ -124,7 +123,7 @@ export const TUI_MULTI_SELECT_TEXTS = new InjectionToken(
 );
 
 export const TUI_COUNTRIES = new InjectionToken<
-    Observable<Record<TuiCountryIsoCode, string>>
+    Signal<Record<TuiCountryIsoCode, string>>
 >(ngDevMode ? 'TUI_COUNTRIES' : '', {
     factory: tuiExtractI18n('countries'),
 });

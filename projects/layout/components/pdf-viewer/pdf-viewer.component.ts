@@ -5,7 +5,6 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -36,6 +35,6 @@ export class TuiPdfViewer<O, I> {
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly el = tuiInjectElement();
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
-    protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
+    protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
 }

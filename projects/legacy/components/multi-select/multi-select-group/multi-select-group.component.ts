@@ -40,7 +40,7 @@ export class TuiMultiSelectGroupComponent<T> {
     private readonly host = inject<TuiDataListHost<T>>(TUI_DATA_LIST_HOST);
     private readonly control = inject(NgControl);
 
-    protected readonly multiSelectTexts$ = inject(TUI_MULTI_SELECT_TEXTS);
+    protected readonly multiSelectTexts = inject(TUI_MULTI_SELECT_TEXTS);
 
     @Input()
     public label = '';

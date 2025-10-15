@@ -52,7 +52,7 @@
         [(tuiDropdownOpen)]="open"
         (keydown.arrowLeft.prevent)="onArrowLeft()"
     >
-        {{ moreWord$ | async }}
+        {{ moreWord() }}
     </button>
 }
 <ng-template #dropdown>

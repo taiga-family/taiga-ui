@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -18,7 +17,7 @@ import {TUI_REORDER_OPTIONS} from './reorder.options';
 
 @Component({
     selector: 'tui-reorder',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiButton, TuiIcon, TuiTiles],
+    imports: [PolymorpheusOutlet, TuiButton, TuiIcon, TuiTiles],
     templateUrl: './reorder.template.html',
     styleUrl: './reorder.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,7 +39,7 @@ export class TuiReorder<T> {
     protected order = new Map<number, number>();
     protected unsortedItems: readonly T[] = [];
     protected readonly options = inject(TUI_REORDER_OPTIONS);
-    protected readonly showHideText$ = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
+    protected readonly showHideText = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
 
     @Input()
     public enabled: readonly T[] = [];

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, signal, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
@@ -67,7 +67,7 @@ describe('InputPhoneInternational', () => {
                     provideTaiga(),
                     {
                         provide: TUI_LANGUAGE,
-                        useValue: of(language),
+                        useValue: signal(language),
                     },
                     tuiInputPhoneInternationalOptionsProvider({
                         metadata: of(metadata),
