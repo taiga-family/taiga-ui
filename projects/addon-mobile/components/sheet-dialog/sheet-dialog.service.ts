@@ -1,8 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {TuiPopoverService, TuiThemeColorService} from '@taiga-ui/cdk/services';
-import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
-import {pairwise, startWith} from 'rxjs';
+import {TuiThemeColorService} from '@taiga-ui/cdk/services';
+import {TuiModalService} from '@taiga-ui/core/components/modal';
 
 import {TuiSheetDialogComponent} from './sheet-dialog.component';
 import {
@@ -14,27 +12,24 @@ const THEME = '#404040';
 
 @Injectable({
     providedIn: 'root',
-    useFactory: () =>
-        new TuiSheetDialogService(
-            TUI_DIALOGS,
-            TuiSheetDialogComponent,
-            inject(TUI_SHEET_DIALOG_OPTIONS),
-        ),
 })
-export class TuiSheetDialogService extends TuiPopoverService<TuiSheetDialogOptions<any>> {
+export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions<any>> {
     private readonly theme = inject(TuiThemeColorService);
-    private initial = this.theme.color;
+    private readonly initial = this.theme.color;
 
-    protected readonly $ = this.items$
-        .pipe(startWith([]), pairwise(), takeUntilDestroyed())
-        .subscribe(([prev, next]) => {
-            if (!prev.length && next.length) {
-                this.initial = this.theme.color;
-                this.theme.color = THEME;
-            }
+    protected readonly options = inject(TUI_SHEET_DIALOG_OPTIONS);
+    protected readonly content = TuiSheetDialogComponent;
 
-            if (!next.length && prev.length) {
-                this.theme.color = this.initial;
-            }
-        });
+    // protected readonly $ = this.items$
+    //     .pipe(startWith([]), pairwise(), takeUntilDestroyed())
+    //     .subscribe(([prev, next]) => {
+    //         if (!prev.length && next.length) {
+    //             this.initial = this.theme.color;
+    //             this.theme.color = THEME;
+    //         }
+    //
+    //         if (!next.length && prev.length) {
+    //             this.theme.color = this.initial;
+    //         }
+    //     });
 }

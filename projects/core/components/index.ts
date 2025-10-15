@@ -11,6 +11,7 @@ export * from '@taiga-ui/core/components/icon';
 export * from '@taiga-ui/core/components/label';
 export * from '@taiga-ui/core/components/link';
 export * from '@taiga-ui/core/components/loader';
+export * from '@taiga-ui/core/components/modal';
 export * from '@taiga-ui/core/components/notification';
 export * from '@taiga-ui/core/components/root';
 export * from '@taiga-ui/core/components/scrollbar';

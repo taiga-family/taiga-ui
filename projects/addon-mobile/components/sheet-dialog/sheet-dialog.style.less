@@ -4,7 +4,9 @@
 :host {
     .scrollbar-hidden();
 
+    position: sticky;
     display: flex;
+    inset-inline-start: 0;
     inline-size: 100%;
     max-inline-size: 40rem;
     block-size: ~'calc(100% - max(var(--tui-offset), env(safe-area-inset-top)))';
