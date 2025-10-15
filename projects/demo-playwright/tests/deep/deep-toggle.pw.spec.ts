@@ -47,6 +47,9 @@ test.describe('Deep / Toggle', () => {
                 await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
                 await expect.soft(example).toHaveScreenshot(makeName('rtl'));
 
+                // note: revert to default mode after take screenshot
+                await example.evaluate((node) => node.setAttribute('dir', 'auto'));
+
                 await toggle.click();
 
                 // note: hello Safari
