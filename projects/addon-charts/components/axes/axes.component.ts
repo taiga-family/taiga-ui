@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
 import {type TuiLineHandler, type TuiLineType} from '@taiga-ui/addon-charts/types';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 
@@ -14,69 +14,59 @@ export const TUI_ALWAYS_NONE: TuiLineHandler = () => 'none';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         dir: 'ltr',
-        '[class._centered]': 'centeredXLabels',
+        '[class._centered]': 'centeredXLabels()',
     },
 })
 export class TuiAxes {
-    @Input()
-    public axisX: TuiLineType = 'solid';
+    protected readonly centeredXLabels = computed(() => this.axisY() === 'none');
 
-    @Input()
-    public axisXLabels: ReadonlyArray<string | null> = [];
+    public readonly axisX = input<TuiLineType>('solid');
 
-    @Input()
-    public axisY: TuiLineType = 'solid';
+    public readonly axisXLabels = input<ReadonlyArray<string | null>>([]);
 
-    @Input()
-    public axisYInset = false;
+    public readonly axisY = input<TuiLineType>('solid');
 
-    @Input()
-    public axisYLabels: readonly string[] = [];
+    public readonly axisYInset = input(false);
 
-    @Input()
-    public axisYName = '';
+    public readonly axisYLabels = input<readonly string[]>([]);
 
-    @Input()
-    public axisYSecondaryInset = false;
+    public readonly axisYName = input('');
 
-    @Input()
-    public axisYSecondaryLabels: readonly string[] = [];
+    public readonly axisYSecondaryInset = input(false);
 
-    @Input()
-    public axisYSecondaryName = '';
+    public readonly axisYSecondaryLabels = input<readonly string[]>([]);
 
-    @Input()
-    public horizontalLines = 0;
+    public readonly axisYSecondaryName = input('');
 
-    @Input()
-    public horizontalLinesHandler: TuiLineHandler = TUI_ALWAYS_SOLID;
+    public readonly horizontalLines = input(0);
 
-    @Input()
-    public verticalLines = 0;
+    public readonly horizontalLinesHandler = input<TuiLineHandler>(TUI_ALWAYS_SOLID);
 
-    @Input()
-    public verticalLinesHandler: TuiLineHandler = TUI_ALWAYS_DASHED;
+    public readonly verticalLines = input(0);
 
-    public get hasXLabels(): boolean {
-        return !!this.axisXLabels.length;
-    }
+    /**
+     * A function to handle vertical lines style.
+     * Initially set to always dashed.
+     */
+    public readonly verticalLinesHandler = input<TuiLineHandler>(TUI_ALWAYS_DASHED);
 
-    public get hasYLabels(): boolean {
-        return (!!this.axisYLabels.length && !this.axisYInset) || !!this.axisYName;
-    }
+    public readonly fallbackLabel = CHAR_NO_BREAK_SPACE;
 
-    public get hasYSecondaryLabels(): boolean {
+    public readonly hasXLabels = computed(() => !!this.axisXLabels().length);
+
+    public readonly hasYLabels = computed(() => {
+        // keep this to prevent tracking loss on short circuits
+        const yN = this.axisYName();
+
+        return (this.axisYLabels().length && !this.axisYInset()) || !!yN;
+    });
+
+    public readonly hasYSecondaryLabels = computed(() => {
+        // keep this to prevent tracking loss on short circuits
+        const ySN = this.axisYSecondaryName();
+
         return (
-            (!!this.axisYSecondaryLabels.length && !this.axisYSecondaryInset) ||
-            !!this.axisYSecondaryName
+            (this.axisYSecondaryLabels().length && !this.axisYSecondaryInset()) || !!ySN
         );
-    }
-
-    public fallback(label: string | null): string {
-        return label || CHAR_NO_BREAK_SPACE;
-    }
-
-    protected get centeredXLabels(): boolean {
-        return this.axisY === 'none';
-    }
+    });
 }

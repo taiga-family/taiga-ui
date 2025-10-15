@@ -1,24 +1,31 @@
-@if (hasYLabels) {
+@let ySecLabels = axisYSecondaryLabels();
+@let ySecInset = axisYSecondaryInset();
+@let yLabels = axisYLabels();
+@let yInset = axisYInset();
+@let hasXs = hasXLabels();
+
+@if (hasYLabels()) {
     <div
         class="t-side"
-        [class.t-side_padding]="hasXLabels"
+        [class.t-side_padding]="hasXs"
     >
-        @if (axisYName) {
+        @let yName = axisYName();
+        @if (yName) {
             <div
                 automation-id="tui-axex__axis-y-name"
                 class="t-name t-name_primary"
             >
-                {{ axisYName }}
+                {{ yName }}
             </div>
         }
-        @if (!axisYInset) {
+        @if (!yInset) {
             <div class="t-labels-y t-labels-y_primary">
-                @for (label of axisYLabels; track label) {
+                @for (label of yLabels; track label) {
                     <div
                         automation-id="tui-axex__axis-y-label"
                         class="t-label-y"
                     >
-                        {{ fallback(label) }}
+                        {{ label || fallbackLabel }}
                     </div>
                 }
             </div>
@@ -28,47 +35,51 @@
 <div class="t-wrapper">
     <div
         class="t-grid"
-        [style.borderBottomStyle]="axisX"
-        [style.borderLeftStyle]="axisY"
+        [style.borderBottomStyle]="axisX()"
+        [style.borderLeftStyle]="axisY()"
     >
         <div class="t-vertical">
-            @for (_ of '-'.repeat(verticalLines); track $index) {
+            @let vLineFn = verticalLinesHandler();
+            @let vLines = verticalLines();
+            @for (_ of '-'.repeat(vLines); track $index) {
                 <div
-                    automation-id="tui-axex__vertical-line"
-                    class="t-line t-line_vertical"
-                    [style.border-right-style]="verticalLinesHandler($index, verticalLines)"
-                ></div>
+                automation-id="tui-axex__vertical-line"
+                class="t-line t-line_vertical"
+                [style.border-right-style]="vLineFn($index, vLines)"
+            ></div>
             }
         </div>
         <div class="t-horizontal">
-            @for (_ of '-'.repeat(horizontalLines); track $index) {
+            @let hLineFn = horizontalLinesHandler();
+            @let hLines = horizontalLines();
+            @for (_ of '-'.repeat(hLines); track $index) {
                 <div
-                    automation-id="tui-axex__horizontal-line"
-                    class="t-line"
-                    [style.border-top-style]="horizontalLinesHandler($index, horizontalLines)"
-                ></div>
+                automation-id="tui-axex__horizontal-line"
+                class="t-line"
+                [style.border-top-style]="hLineFn($index, hLines)"
+            ></div>
             }
         </div>
-        @if (axisYInset) {
+        @if (yInset) {
             <div class="t-labels-y t-labels-y_inset">
-                @for (label of axisYLabels; track label) {
+                @for (label of yLabels; track label) {
                     <div
                         automation-id="tui-axex__axis-y-label"
                         class="t-label-y"
                     >
-                        {{ fallback(label) }}
+                        {{ label || fallbackLabel }}
                     </div>
                 }
             </div>
         }
-        @if (axisYSecondaryInset) {
+        @if (ySecInset) {
             <div class="t-labels-y t-labels-y_inset t-labels-y_inset_secondary">
-                @for (label of axisYSecondaryLabels; track label) {
+                @for (label of ySecLabels; track label) {
                     <div
                         automation-id="tui-axex__axis-y-secondary-label"
                         class="t-label-y"
                     >
-                        {{ fallback(label) }}
+                        {{ label || fallbackLabel }}
                     </div>
                 }
             </div>
@@ -77,43 +88,44 @@
             <ng-content />
         </div>
     </div>
-    @if (hasXLabels) {
+    @if (hasXs) {
         <div class="t-labels-x">
-            @for (label of axisXLabels; track label) {
+            @for (label of axisXLabels(); track label) {
                 <div
                     automation-id="tui-axex__axis-x-label"
                     class="t-label-x"
                     [class.t-label-x_transparent]="label === null"
                 >
-                    {{ fallback(label) }}
+                    {{ label || fallbackLabel }}
                 </div>
             }
         </div>
     }
 </div>
-@if (hasYSecondaryLabels) {
+@if (hasYSecondaryLabels()) {
     <div
         class="t-side"
-        [class.t-side_padding]="hasXLabels"
+        [class.t-side_padding]="hasXs"
     >
-        @if (!axisYSecondaryInset) {
+        @if (!ySecInset) {
             <div class="t-labels-y t-labels-y_secondary">
-                @for (label of axisYSecondaryLabels; track label) {
+                @for (label of ySecLabels; track label) {
                     <div
                         automation-id="tui-axex__axis-y-secondary-label"
                         class="t-label-y"
                     >
-                        {{ fallback(label) }}
+                        {{ label || fallbackLabel }}
                     </div>
                 }
             </div>
         }
-        @if (axisYSecondaryName) {
+        @let axisYSec = axisYSecondaryName();
+        @if (axisYSec) {
             <div
                 automation-id="tui-axex__axis-y-secondary-name"
                 class="t-name"
             >
-                {{ axisYSecondaryName }}
+                {{ axisYSec }}
             </div>
         }
     </div>
