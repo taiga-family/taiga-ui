@@ -1,5 +1,5 @@
 import {inject, Injectable, type Type} from '@angular/core';
-import {TUI_ENTER, TUI_LEAVE} from '@taiga-ui/cdk/directives/animated';
+import {TUI_LEAVE} from '@taiga-ui/cdk/directives/animated';
 import {TuiPortal} from '@taiga-ui/cdk/portals';
 import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';

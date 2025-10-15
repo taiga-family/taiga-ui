@@ -1,6 +1,7 @@
 import {inject, Injectable} from '@angular/core';
 import {TuiThemeColorService} from '@taiga-ui/cdk/services';
-import {TuiModalService} from '@taiga-ui/core/components/modal';
+import {type TuiModal, TuiModalService} from '@taiga-ui/core/components/modal';
+import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 import {TuiSheetDialogComponent} from './sheet-dialog.component';
 import {
@@ -16,20 +17,26 @@ const THEME = '#404040';
 export class TuiSheetDialogService extends TuiModalService<TuiSheetDialogOptions<any>> {
     private readonly theme = inject(TuiThemeColorService);
     private readonly initial = this.theme.color;
+    private count = 0;
 
     protected readonly options = inject(TUI_SHEET_DIALOG_OPTIONS);
     protected readonly content = TuiSheetDialogComponent;
 
-    // protected readonly $ = this.items$
-    //     .pipe(startWith([]), pairwise(), takeUntilDestroyed())
-    //     .subscribe(([prev, next]) => {
-    //         if (!prev.length && next.length) {
-    //             this.initial = this.theme.color;
-    //             this.theme.color = THEME;
-    //         }
-    //
-    //         if (!next.length && prev.length) {
-    //             this.theme.color = this.initial;
-    //         }
-    //     });
+    protected override add(
+        component: PolymorpheusComponent<TuiModal<TuiSheetDialogOptions>>,
+    ): () => void {
+        this.count++;
+        this.theme.color = THEME;
+
+        const cleanup = super.add(component);
+
+        return () => {
+            cleanup();
+            this.count--;
+
+            if (!this.count) {
+                this.theme.color = this.initial;
+            }
+        };
+    }
 }

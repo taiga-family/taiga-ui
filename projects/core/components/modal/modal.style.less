@@ -27,7 +27,9 @@
     perspective: 10rem;
 
     &:last-of-type {
-        backdrop-filter: brightness(0.25);
+        &:not(.tui-leave) {
+            backdrop-filter: brightness(0.25);
+        }
 
         &.tui-enter,
         &.tui-leave {
