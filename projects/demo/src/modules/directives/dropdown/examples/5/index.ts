@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {Component, computed, inject, signal} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
