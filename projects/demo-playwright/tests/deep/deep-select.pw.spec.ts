@@ -59,6 +59,9 @@ test.describe('Deep / Select', () => {
                     await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
                     await expect.soft(example).toHaveScreenshot(makeName('rtl'));
 
+                    // note: revert to default mode after take screenshot
+                    await example.evaluate((node) => node.setAttribute('dir', 'auto'));
+
                     await select.click();
 
                     // e2e flaky: wait more time for charts graphics

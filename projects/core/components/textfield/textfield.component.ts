@@ -87,7 +87,7 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly dropdownOpen = inject(TuiDropdownOpen);
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
+    protected readonly clear = inject(TUI_CLEAR_WORD);
 
     protected readonly computedFiller = computed((value = this.value()) => {
         const filler = value + this.filler().slice(value.length);

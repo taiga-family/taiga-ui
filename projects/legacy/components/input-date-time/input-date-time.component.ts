@@ -6,7 +6,7 @@ import {
     signal,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoDateTimeOptionsGenerator,
@@ -89,8 +89,8 @@ export class TuiInputDateTimeComponent
     private readonly timeMode$ = new BehaviorSubject<MaskitoTimeMode>('HH:MM');
     private readonly nativeValue = signal('');
 
-    protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
-    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected readonly timeTexts$ = toObservable(inject(TUI_TIME_TEXTS));
+    protected readonly dateTexts$ = toObservable(inject(TUI_DATE_TEXTS));
     protected override readonly valueTransformer: TuiValueTransformer<
         [TuiDay, TuiTime | null]
     > | null = inject(TUI_DATE_TIME_VALUE_TRANSFORMER, {optional: true});

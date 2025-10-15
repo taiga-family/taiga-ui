@@ -16,7 +16,7 @@ import {
     Output,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {TuiMobileCalendarSheet} from '@taiga-ui/addon-mobile/components/mobile-calendar-sheet';
 import {TuiRipple, TuiTouchable} from '@taiga-ui/addon-mobile/directives';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -133,11 +133,11 @@ export class TuiMobileCalendar implements AfterViewInit {
     protected readonly isIOS = inject(TUI_IS_IOS);
     protected readonly isE2E = inject(TUI_IS_E2E);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
-    protected readonly cancelWord$ = inject(TUI_CANCEL_WORD);
-    protected readonly doneWord$ = inject(TUI_DONE_WORD);
-    protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
-    protected readonly chooseDayOrRangeTexts$ = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS, {
+    protected readonly closeWord = inject(TUI_CLOSE_WORD);
+    protected readonly cancelWord = inject(TUI_CANCEL_WORD);
+    protected readonly doneWord = inject(TUI_DONE_WORD);
+    protected readonly unorderedWeekDays$ = toObservable(inject(TUI_SHORT_WEEK_DAYS));
+    protected readonly chooseDayOrRangeTexts = inject(TUI_CHOOSE_DAY_OR_RANGE_TEXTS, {
         optional: true,
     });
 

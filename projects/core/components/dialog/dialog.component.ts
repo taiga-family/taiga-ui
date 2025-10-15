@@ -4,7 +4,7 @@ import {
     inject,
     ViewEncapsulation,
 } from '@angular/core';
-import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
@@ -58,7 +58,7 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 })
 export class TuiDialogComponent<O, I> {
     protected readonly close$ = new Subject<void>();
-    protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
+    protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
     protected readonly primitive =

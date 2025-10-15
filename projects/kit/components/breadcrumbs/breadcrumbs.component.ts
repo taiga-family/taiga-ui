@@ -8,7 +8,6 @@ import {
     type QueryList,
     TemplateRef,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -52,7 +51,7 @@ export class TuiBreadcrumbs {
 
     protected readonly options = inject(TUI_BREADCRUMBS_OPTIONS);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly more = toSignal(inject(TUI_MORE_WORD), {initialValue: ''});
+    protected readonly more = inject(TUI_MORE_WORD);
 
     @Input()
     public size: TuiBreadcrumbsOptions['size'] = this.options.size;

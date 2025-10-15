@@ -99,7 +99,7 @@ export class TuiDataListComponent<T>
     private readonly cdr = inject(ChangeDetectorRef);
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
 
-    protected readonly fallback = toSignal(inject(TUI_NOTHING_FOUND_MESSAGE));
+    protected readonly fallback = inject(TUI_NOTHING_FOUND_MESSAGE);
     protected readonly empty = signal(false);
 
     @Input()

@@ -12,7 +12,7 @@
         [style.border-radius.%]="100"
         (click)="close.emit()"
     >
-        {{ closeWord$ | async }}
+        {{ closeWord() }}
     </button>
 }
 <div class="t-top">

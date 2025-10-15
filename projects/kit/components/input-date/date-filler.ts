@@ -12,7 +12,7 @@ import {identity} from 'rxjs';
 export function tuiWithDateFiller(
     fn: (dateFiller: string) => string = identity,
 ): Signal<string> {
-    const texts = toSignal(inject(TUI_DATE_TEXTS));
+    const texts = inject(TUI_DATE_TEXTS);
     const format = toSignal(inject(TUI_DATE_FORMAT), {
         initialValue: TUI_DEFAULT_DATE_FORMAT,
     });
