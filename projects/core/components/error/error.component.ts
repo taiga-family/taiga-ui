@@ -1,5 +1,4 @@
 import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {TuiValidationError} from '@taiga-ui/cdk/classes';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -17,7 +16,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     },
 })
 export class TuiErrorComponent {
-    protected readonly default = toSignal(inject(TUI_DEFAULT_ERROR_MESSAGE));
+    protected readonly default = inject(TUI_DEFAULT_ERROR_MESSAGE);
     protected readonly content = computed((error = this.error()) =>
         tuiIsString(error) ? new TuiValidationError(error) : error,
     );

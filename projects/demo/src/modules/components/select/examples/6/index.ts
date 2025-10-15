@@ -6,7 +6,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDataList, TuiScrollable, TuiTextfield} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiSelect} from '@taiga-ui/kit';
-import {map} from 'rxjs';
 
 @Component({
     imports: [
@@ -25,6 +24,7 @@ import {map} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected readonly countries = inject(TUI_COUNTRIES).pipe(map(Object.values));
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
+
     protected value = null;
 }

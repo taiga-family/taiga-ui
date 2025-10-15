@@ -1,4 +1,4 @@
-@if (texts$ | async; as texts) {
+@if (texts(); as texts) {
     <span class="t-pages">
         @if (showPages) {
             {{ texts.pages }}
@@ -52,7 +52,7 @@
         {{ texts.of }}
         <strong class="t-strong">{{ total }}</strong>
     </span>
-    @if (spinTexts$ | async; as spinTexts) {
+    @if (spinTexts(); as spinTexts) {
         <button
             appearance="icon"
             size="xs"

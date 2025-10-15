@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -28,15 +27,7 @@ export interface TuiTablePaginationEvent {
 
 @Component({
     selector: 'tui-table-pagination',
-    imports: [
-        AsyncPipe,
-        PolymorpheusOutlet,
-        TuiButton,
-        TuiDataList,
-        TuiDropdown,
-        TuiIcon,
-        TuiLink,
-    ],
+    imports: [PolymorpheusOutlet, TuiButton, TuiDataList, TuiDropdown, TuiIcon, TuiLink],
     templateUrl: './table-pagination.template.html',
     styleUrl: './table-pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,8 +36,8 @@ export class TuiTablePagination {
     private readonly options = inject(TUI_TABLE_PAGINATION_OPTIONS);
 
     protected readonly icons = inject(TUI_SPIN_ICONS);
-    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
-    protected readonly texts$ = inject(TUI_TABLE_PAGINATION_TEXTS);
+    protected readonly spinTexts = inject(TUI_SPIN_TEXTS);
+    protected readonly texts = inject(TUI_TABLE_PAGINATION_TEXTS);
     protected readonly commonIcons = inject(TUI_COMMON_ICONS);
 
     @Input()

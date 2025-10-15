@@ -49,7 +49,7 @@ export class TuiPreviewComponent {
     protected minZoom = 1;
     protected width = 0;
     protected height = 0;
-    protected readonly texts$ = inject(TUI_PREVIEW_TEXTS);
+    protected readonly previewTexts = inject(TUI_PREVIEW_TEXTS);
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
     protected readonly cdr = inject(ChangeDetectorRef);
     protected readonly zoom$ = new BehaviorSubject<number>(this.minZoom);

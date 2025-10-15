@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
@@ -10,7 +9,7 @@ import {type TuiPdfViewerOptions} from './pdf-viewer.options';
 
 @Component({
     selector: 'tui-pdf-viewer',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiButton],
+    imports: [PolymorpheusOutlet, TuiButton],
     templateUrl: './pdf-viewer.template.html',
     styleUrl: './pdf-viewer.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -20,7 +19,7 @@ import {type TuiPdfViewerOptions} from './pdf-viewer.options';
     },
 })
 export class TuiPdfViewerComponent<I, O> {
-    protected readonly closeWord$ = inject(TUI_CLOSE_WORD);
+    protected readonly closeWord = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly context = injectContext<TuiPopover<TuiPdfViewerOptions<I>, O>>();
 

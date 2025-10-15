@@ -1,4 +1,5 @@
 import {inject, LOCALE_ID, Pipe, type PipeTransform} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {FormControl} from '@angular/forms';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {TUI_DIGITAL_INFORMATION_UNITS, TUI_INPUT_FILE_TEXTS} from '@taiga-ui/kit/tokens';
@@ -20,8 +21,8 @@ export class TuiFileRejectedPipe implements PipeTransform {
     private readonly options = inject(TUI_INPUT_FILES_OPTIONS);
     private readonly formatSize = inject(TUI_FILE_OPTIONS).formatSize;
     private readonly locale = inject(LOCALE_ID);
-    private readonly text$ = inject(TUI_INPUT_FILE_TEXTS);
-    private readonly unit$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
+    private readonly text$ = toObservable(inject(TUI_INPUT_FILE_TEXTS));
+    private readonly unit$ = toObservable(inject(TUI_DIGITAL_INFORMATION_UNITS));
 
     public transform(
         file: TuiFileLike | null,

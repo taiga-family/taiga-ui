@@ -12,7 +12,6 @@ import {TUI_IS_MOBILE, type TuiContext, TuiLet} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {map, type Observable} from 'rxjs';
 
 interface Country {
     id: string;
@@ -38,6 +37,7 @@ interface Country {
     changeDetection,
 })
 export default class PageComponent {
+    private readonly countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
 
     protected readonly isMobile = inject(TUI_IS_MOBILE);
@@ -48,8 +48,8 @@ export default class PageComponent {
 
     protected textfieldContent: PolymorpheusContent = '';
 
-    protected readonly countries$: Observable<Country[]> = inject(TUI_COUNTRIES).pipe(
-        map((x) => Object.entries(x).map(([id, name]) => ({id, name}))),
+    protected readonly countries = computed(() =>
+        Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
     );
 
     protected readonly textfieldContentVariants = computed(() => [

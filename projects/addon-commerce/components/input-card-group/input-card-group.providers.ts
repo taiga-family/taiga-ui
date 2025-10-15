@@ -1,4 +1,5 @@
 import {inject, InjectionToken} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {
     TUI_CARD_CVC_TEXTS,
     TUI_CARD_EXPIRY_TEXTS,
@@ -24,8 +25,8 @@ export const TUI_INPUT_CARD_GROUP_TEXTS_PROVIDER = {
         inject(TUI_INPUT_CARD_GROUP_TEXTS, {skipSelf: true, optional: true}) ??
         combineLatest([
             inject(TuiInputCardGroupDirective).compact$,
-            inject(TUI_CARD_NUMBER_TEXTS),
-            inject(TUI_CARD_EXPIRY_TEXTS),
+            toObservable(inject(TUI_CARD_NUMBER_TEXTS)),
+            toObservable(inject(TUI_CARD_EXPIRY_TEXTS)),
             inject(TUI_CARD_CVC_TEXTS),
         ]).pipe(
             map(([compact, cardNumber, expiry, cvcTexts]) => ({

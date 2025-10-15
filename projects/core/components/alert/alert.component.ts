@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -26,7 +26,7 @@ export class TuiAlertComponent<O, I> {
     private readonly el = tuiInjectElement();
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
+    protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly item = injectContext<TuiPortalContext<TuiAlertOptions<I>, O>>();
 
     protected readonly sub = of(

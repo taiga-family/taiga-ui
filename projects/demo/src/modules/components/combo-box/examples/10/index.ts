@@ -12,7 +12,6 @@ import {
     TuiComboBox,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import {map, type Observable} from 'rxjs';
 
 @Component({
     imports: [
@@ -33,9 +32,7 @@ import {map, type Observable} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected readonly countries$: Observable<string[]> = inject(TUI_COUNTRIES).pipe(
-        map(Object.values),
-    );
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
 
     protected value = null;
 }

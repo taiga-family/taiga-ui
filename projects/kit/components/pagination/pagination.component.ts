@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -33,7 +32,7 @@ const ACTIVE_ITEM_LENGTH = 1;
 
 @Component({
     selector: 'tui-pagination',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiButton, TuiLet, TuiRepeatTimes],
+    imports: [PolymorpheusOutlet, TuiButton, TuiLet, TuiRepeatTimes],
     templateUrl: './pagination.template.html',
     styleUrl: './pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -44,7 +43,7 @@ export class TuiPagination {
 
     private readonly el = tuiInjectElement();
 
-    protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
+    protected readonly texts = inject(TUI_PAGINATION_TEXTS);
     protected readonly icons = inject(TUI_SPIN_ICONS);
 
     @Input()

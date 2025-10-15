@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
@@ -42,7 +41,7 @@ import {type TuiDayRangePeriod} from './day-range-period';
 
 @Component({
     selector: 'tui-calendar-range',
-    imports: [AsyncPipe, TuiCalendar, TuiDataList, TuiIcon, TuiMapperPipe],
+    imports: [TuiCalendar, TuiDataList, TuiIcon, TuiMapperPipe],
     templateUrl: './calendar-range.template.html',
     styleUrl: './calendar-range.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -67,7 +66,7 @@ export class TuiCalendarRange implements OnInit, OnChanges {
     protected hoveredItem: TuiDay | null = null;
     protected month: TuiMonth = TuiMonth.currentLocal();
 
-    protected readonly otherDateText$ = inject(TUI_OTHER_DATE_TEXT);
+    protected readonly otherDateText = inject(TUI_OTHER_DATE_TEXT);
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly capsMapper = TUI_DAY_CAPS_MAPPER;
     protected readonly mobile = inject(TUI_IS_MOBILE);

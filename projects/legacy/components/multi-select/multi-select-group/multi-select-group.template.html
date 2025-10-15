@@ -11,7 +11,7 @@
             [disabled]="!!(disabled$ | async)"
             (click)="onClick(value)"
         >
-            {{ (multiSelectTexts$ | async)?.[value ? 'none' : 'all'] }}
+            {{ multiSelectTexts()[value ? 'none' : 'all'] }}
         </button>
     }
 </span>

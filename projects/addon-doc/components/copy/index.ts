@@ -17,9 +17,7 @@ const COPIED_TIMEOUT = 1500;
 export class TuiDocCopy {
     private readonly copy$ = new Subject<void>();
 
-    protected readonly texts = toSignal(inject(TUI_COPY_TEXTS), {
-        initialValue: ['', ''] as const,
-    });
+    protected readonly texts = inject(TUI_COPY_TEXTS);
 
     protected readonly copied = toSignal(
         this.copy$.pipe(

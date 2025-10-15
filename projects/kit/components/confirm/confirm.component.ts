@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
@@ -23,14 +22,14 @@ export interface TuiConfirmData {
 // TODO: Remove selector in v5
 @Component({
     selector: 'tui-confirm',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiAutoFocus, TuiButton],
+    imports: [PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './confirm.template.html',
     styleUrl: './confirm.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiConfirm {
     private readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly words$ = inject(TUI_CONFIRM_WORDS);
+    protected readonly words = inject(TUI_CONFIRM_WORDS);
 
     public readonly context =
         injectContext<TuiDialogContext<boolean, TuiConfirmData | undefined>>();
