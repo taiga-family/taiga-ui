@@ -3069,7 +3069,7 @@ export class Example {
 <ng-template>
 <tui-textfield #textfield tuiChevron [content]="!textfield.focused() && control.value ? textfieldContent : ''" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [iconStart]="icons.iconStart" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" >
 <input placeholder="Search country" tuiComboBox [formControl]="control" [invalid]="controlDoc.invalid" [matcher]="matcher" [readOnly]="controlDoc.readonly" [strict]="strict" [tuiDisabled]="controlDoc.disabled" />
-<tui-data-list-wrapper *tuiDropdown new [items]="countries$ | async | tuiFilterByInput" />
+<tui-data-list-wrapper *tuiDropdown new [items]="countries() | tuiFilterByInput" />
 </tui-textfield>
 </ng-template>
 ```
@@ -3112,7 +3112,6 @@ import {
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {map, type Observable} from 'rxjs';
 
 interface Country {
     id: string;
@@ -3139,6 +3138,7 @@ interface Country {
     changeDetection,
 })
 export default class PageComponent {
+    private readonly countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
 
@@ -3146,8 +3146,8 @@ export default class PageComponent {
 
     protected textfieldContent: PolymorpheusContent = '';
 
-    protected readonly countries$: Observable<Country[]> = inject(TUI_COUNTRIES).pipe(
-        map((x) => Object.entries(x).map(([id, name]) => ({id, name}))),
+    protected readonly countries = computed(() =>
+        Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
     );
 
     protected readonly matcherVariants: ReadonlyArray<TuiStringMatcher<Country>> = [
@@ -7755,7 +7755,6 @@ export class Example {}
 
 ```ts
 import {Component, computed, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {TuiAxes, TuiLineDaysChart} from '@taiga-ui/addon-charts';
@@ -7770,7 +7769,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
     changeDetection,
 })
 export default class Page {
-    protected readonly months = toSignal(inject(TUI_MONTHS));
+    protected readonly months = inject(TUI_MONTHS);
 
     protected readonly valueVariants: ReadonlyArray<ReadonlyArray<[TuiDay, number]>> = [
         new Array(91)
@@ -10086,7 +10085,7 @@ export class Example {
 ```html
 <ng-template>
 <tui-textfield *tuiLet="textfieldDoc.size === 's' || !control.value as showPlaceholder" tuiChevron [content]="control.value && textfieldContent" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (!showPlaceholder) { <label tuiLabel>Choose country</label> } <input tuiSelect [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
-<tui-data-list-wrapper *tuiDropdown new [items]="countries$ | async" />
+<tui-data-list-wrapper *tuiDropdown new [items]="countries()" />
 </tui-textfield>
 </ng-template>
 ```
@@ -10114,7 +10113,6 @@ import {TUI_IS_MOBILE, type TuiContext, TuiLet} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {map, type Observable} from 'rxjs';
 
 interface Country {
     id: string;
@@ -10140,6 +10138,7 @@ interface Country {
     changeDetection,
 })
 export default class PageComponent {
+    private readonly countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
 
     protected readonly isMobile = inject(TUI_IS_MOBILE);
@@ -10150,8 +10149,8 @@ export default class PageComponent {
 
     protected textfieldContent: PolymorpheusContent = '';
 
-    protected readonly countries$: Observable<Country[]> = inject(TUI_COUNTRIES).pipe(
-        map((x) => Object.entries(x).map(([id, name]) => ({id, name}))),
+    protected readonly countries = computed(() =>
+        Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
     );
 
     protected readonly textfieldContentVariants = computed(() => [
