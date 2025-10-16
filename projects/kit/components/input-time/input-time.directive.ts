@@ -90,16 +90,16 @@ export class TuiInputTimeDirective
         ),
     );
 
-    public accept = input<readonly TuiTime[]>([]);
+    public readonly accept = input<readonly TuiTime[]>([]);
 
     public readonly native =
         !!inject(TuiWithNativePicker, {optional: true}) && inject(TUI_IS_MOBILE);
 
-    public timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
+    public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
 
-    public prefix = input('');
+    public readonly prefix = input('');
 
-    public postfix = input('');
+    public readonly postfix = input('');
 
     public setValue(value: TuiTime | null): void {
         this.onChange(value);
@@ -156,8 +156,8 @@ export class TuiInputTimeDirective
         if (value && !this.value()) {
             const time = TuiTime.fromString(value);
 
-            const newValue = this.accept.length
-                ? this.findNearestTime(time, this.accept)
+            const newValue = this.accept().length
+                ? this.findNearestTime(time, this.accept())
                 : time;
 
             this.control?.control?.updateValueAndValidity({emitEvent: false});
