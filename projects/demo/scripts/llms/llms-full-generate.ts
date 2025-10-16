@@ -483,7 +483,20 @@ async function main(): Promise<void> {
     if (cliOptions.outputHtml) {
         await fs.writeFile(
             cliOptions.outputHtml,
-            `\n<!doctype html>\n<html lang="ru">\n<head>\n  <meta charset="utf-8">\n  <meta name="viewport" content="width=device-width,initial-scale=1">\n  <title>llm-full</title>\n</head>\n<body>\n  <main>\n   <pre> ${output.map(escapeHTML).join('\n')} </pre>\n  </main>\n</body>\n</html>`,
+            `
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>llm-full</title>
+</head>
+<body>
+  <main>
+   <pre> ${output.map(escapeHTML).join('\n')} </pre>
+  </main>
+</body>
+</html>`,
             'utf-8',
         );
     }
