@@ -33,6 +33,5 @@ export class TuiLoader {
 
     public readonly textContent = input<PolymorpheusContent>();
 
-    // TODO: Drop alias in v5
-    public readonly loading = input(true, {alias: 'showLoader'});
+    public readonly loading = input(true);
 }
