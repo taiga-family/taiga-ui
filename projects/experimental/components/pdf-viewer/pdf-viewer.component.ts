@@ -15,6 +15,9 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiButtonClose} from '@taiga-ui/kit/directives/button-close';
 import {TuiAppBar} from '@taiga-ui/layout/components/app-bar';
 import {injectContext} from '@taiga-ui/polymorpheus';
+import {TuiBreakpointService} from '@taiga-ui/core/services';
+import {map} from 'rxjs';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
 
 @Component({
     standalone: true,
@@ -31,11 +34,18 @@ import {injectContext} from '@taiga-ui/polymorpheus';
         })),
     ],
     host: {
-        '[attr.tuiTheme]': 'isMobile ? "" : "dark"',
+        '[attr.tuiTheme]': 'isMobileRes() ? "" : "dark"',
     },
 })
 export class TuiPdfViewerComponent<O, I> {
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    protected readonly isMobileRes = toSignal(
+        inject(TuiBreakpointService).pipe(
+            map((breakpoint) => breakpoint === 'mobile'),
+            tuiWatch(),
+        ),
+        {initialValue: false},
+    );
+
     protected readonly el = tuiInjectElement();
     protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
     protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
