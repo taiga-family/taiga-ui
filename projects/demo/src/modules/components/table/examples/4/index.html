@@ -48,8 +48,8 @@
     </ng-template>
 </p>
 <tui-loader
+    [loading]="!!(loading$ | async)"
     [overlay]="true"
-    [showLoader]="!!(loading$ | async)"
 >
     <p>
         <b>Sort key:</b>

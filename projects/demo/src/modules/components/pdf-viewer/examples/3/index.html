@@ -16,7 +16,7 @@
         @if (loading()) {
             <tui-loader
                 size="xl"
-                [showLoader]="true"
+                [loading]="true"
             />
         } @else if (!error()) {
             <iframe [src]="url"></iframe>
