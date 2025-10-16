@@ -148,8 +148,6 @@ interface User {
 export class TestDropdownMobile {
     protected selected: readonly User[] = [];
     protected user: User | null = null;
-    protected dialog = true;
-
     protected readonly open = signal(false);
     protected readonly users: readonly User[] = [
         {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},
@@ -158,6 +156,8 @@ export class TestDropdownMobile {
         {name: 'Nikita Barsukov', balance: 468468},
         {name: 'Maxim Ivanov', balance: 498654},
     ];
+
+    public readonly dialog = signal(false);
 
     protected readonly stringify = ({name}: User): string => name;
 }
@@ -170,6 +170,9 @@ describe('DropdownMobile', () => {
                 {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
                 {provide: TUI_IS_MOBILE, useValue: true},
             ],
+        }).then(({fixture, component}) => {
+            fixture.detectChanges();
+            component.dialog.set(true);
         });
     });
 
@@ -192,21 +195,21 @@ describe('DropdownMobile', () => {
 
     describe('Type view', () => {
         it('Opens properly inside dialog', () => {
-            cy.get('tui-textfield[multi]').click();
+            cy.get('input[tuiInputChip]').click();
 
             cy.compareSnapshot('type-view-opened');
         });
 
         it('Filters items as you type', () => {
-            cy.get('tui-textfield[multi]').click();
-            cy.get('tui-textfield[multi]').type('Alex');
+            cy.get('input[tuiInputChip]').click();
+            cy.get('input[tuiInputChip]').type('Alex');
 
             cy.compareSnapshot('type-view-filtered');
         });
 
         it('Closes with selected values', () => {
-            cy.get('tui-textfield[multi]').click();
-            cy.get('tui-textfield[multi]').type('Alex');
+            cy.get('input[tuiInputChip]').click();
+            cy.get('input[tuiInputChip]').type('Alex');
 
             cy.get('[tuiOption]').first().click();
             cy.get('button[tuiDropdownButton]').click();
