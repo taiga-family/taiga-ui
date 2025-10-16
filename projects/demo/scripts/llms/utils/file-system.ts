@@ -67,11 +67,21 @@ export function getComponentDescription(content: string): string | undefined {
 
     const templateContent = templateMatch[1];
 
-    const cleanContent = templateContent
-        ?.replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    // Remove control flow tags
+    const withoutControlFlow = (templateContent || '')
+        .split(/\n+/)
+        .filter(
+            (line) =>
+                !/^\s*@(?:for|if|switch|else|case|default|defer|empty)\b/.test(line),
+        )
+        .join('\n');
+
+    const cleanContent = withoutControlFlow
+        .replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
         .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '')
         .replaceAll(/<((\/?)(p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
         .replaceAll(/<[^>]+>/g, '')
+        .replaceAll(/\s+/g, ' ')
         .trim();
 
     return cleanContent;
