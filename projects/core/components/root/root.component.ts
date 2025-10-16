@@ -27,11 +27,10 @@ import {
 import {TuiDropdowns} from '@taiga-ui/core/directives/dropdown';
 import {TuiHints} from '@taiga-ui/core/directives/hint';
 import {TuiPopups} from '@taiga-ui/core/directives/popup';
-import {TuiBreakpointService} from '@taiga-ui/core/services';
+import {tuiInjectMobileRes} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION, TUI_THEME} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils';
 import {PreventEventPlugin} from '@taiga-ui/event-plugins';
-import {map} from 'rxjs';
 
 @Component({
     standalone: true,
@@ -68,13 +67,9 @@ export class TuiRoot {
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
     protected readonly isChildRoot = !!inject(TuiRoot, {optional: true, skipSelf: true});
     protected readonly top = signal(!this.isChildRoot);
-    protected readonly isMobileRes = toSignal(
-        inject(TuiBreakpointService).pipe(
-            map((breakpoint) => breakpoint === 'mobile'),
-            tuiWatch(),
-        ),
-        {initialValue: false},
-    );
+    protected readonly isMobileRes = toSignal(tuiInjectMobileRes().pipe(tuiWatch()), {
+        initialValue: false,
+    });
 
     protected readonly nativeScrollbar = inject(TUI_SCROLLBAR_OPTIONS).mode === 'native';
 

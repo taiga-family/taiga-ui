@@ -1,6 +1,6 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, Input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {TuiBreakpointService} from '@taiga-ui/core/services';
+import {tuiInjectMobileRes} from '@taiga-ui/core/services';
 import {BehaviorSubject, combineLatest, map} from 'rxjs';
 
 @Directive({
@@ -9,7 +9,7 @@ import {BehaviorSubject, combineLatest, map} from 'rxjs';
 })
 export class TuiInputCardGroupDirective {
     private readonly c$ = new BehaviorSubject(false);
-    private readonly m$ = inject(TuiBreakpointService).pipe(map((b) => b === 'mobile'));
+    private readonly m$ = tuiInjectMobileRes();
 
     public readonly compact$ = combineLatest([this.c$, this.m$]).pipe(
         map((c) => c.some(Boolean)),

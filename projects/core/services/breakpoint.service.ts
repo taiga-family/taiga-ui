@@ -39,3 +39,9 @@ export class TuiBreakpointService extends Observable<TuiBreakpointMediaKey | nul
         super((subscriber) => this.stream$.subscribe(subscriber));
     }
 }
+
+export function tuiInjectMobileRes(): Observable<boolean> {
+    return inject(TuiBreakpointService).pipe(
+        map((breakpoint) => breakpoint === 'mobile'),
+    );
+}

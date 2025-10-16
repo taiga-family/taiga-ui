@@ -6,7 +6,7 @@ import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiBreakpointService} from '@taiga-ui/core/services';
+import {tuiInjectMobileRes} from '@taiga-ui/core/services';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {
     injectContext,
@@ -65,9 +65,7 @@ export class TuiDialogComponent<O, I> {
             : 'translateY(2.5rem)',
     );
 
-    protected readonly isMobile = toSignal(
-        inject(TuiBreakpointService).pipe(map((breakpoint) => breakpoint === 'mobile')),
-    );
+    protected readonly isMobile = toSignal(tuiInjectMobileRes());
 
     constructor() {
         merge(
