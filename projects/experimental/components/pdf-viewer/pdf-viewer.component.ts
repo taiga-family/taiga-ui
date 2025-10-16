@@ -6,7 +6,6 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -14,7 +13,6 @@ import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/but
 import {type TuiDialogOptions} from '@taiga-ui/core/components/dialog';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
-import {TuiButtonClose} from '@taiga-ui/kit/directives/button-close';
 import {TuiAppBar} from '@taiga-ui/layout/components/app-bar';
 import {injectContext} from '@taiga-ui/polymorpheus';
 import {map} from 'rxjs';
@@ -22,7 +20,7 @@ import {map} from 'rxjs';
 @Component({
     standalone: true,
     selector: 'tui-pdf-viewer',
-    imports: [NgIf, NgTemplateOutlet, TuiAppBar, TuiButton, TuiButtonClose],
+    imports: [NgIf, NgTemplateOutlet, TuiAppBar, TuiButton],
     templateUrl: './pdf-viewer.template.html',
     styleUrls: ['./pdf-viewer.style.less'],
     encapsulation: ViewEncapsulation.None,
@@ -39,10 +37,7 @@ import {map} from 'rxjs';
 })
 export class TuiPdfViewerComponent<O, I> {
     protected readonly isMobileRes = toSignal(
-        inject(TuiBreakpointService).pipe(
-            map((breakpoint) => breakpoint === 'mobile'),
-            tuiWatch(),
-        ),
+        inject(TuiBreakpointService).pipe(map((breakpoint) => breakpoint === 'mobile')),
         {initialValue: false},
     );
 
