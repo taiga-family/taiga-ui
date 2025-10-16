@@ -120,7 +120,7 @@ export class TuiTextfieldBaseComponent<T>
     })
     public readonly input?: ElementRef<HTMLInputElement>;
 
-    public content = input<PolymorpheusContent<TuiContext<T>>>();
+    public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
 
     public readonly focused = computed(() => this.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
@@ -137,7 +137,7 @@ export class TuiTextfieldBaseComponent<T>
         {requireSync: true},
     );
 
-    public filler = model('');
+    public readonly filler = model('');
 
     public get id(): string {
         return this.input?.nativeElement.id || this.autoId;

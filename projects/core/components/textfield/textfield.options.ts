@@ -2,7 +2,7 @@ import {
     Directive,
     inject,
     InjectionToken,
-    Input,
+    input,
     Optional,
     type Provider,
     type Signal,

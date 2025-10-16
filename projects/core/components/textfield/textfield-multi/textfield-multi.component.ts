@@ -113,7 +113,7 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
     @ContentChild(TuiItem, {read: TemplateRef, descendants: true})
     public readonly item?: TemplateRef<unknown>;
 
-    public rows = input(100);
+    public readonly rows = input(100);
 
     public override handleOption(option: T): void {
         this.accessor?.setValue(

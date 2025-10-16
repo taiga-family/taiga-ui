@@ -57,17 +57,17 @@ export class TuiTextfieldBase<T> implements TuiTextfieldAccessor<T> {
     protected readonly textfield: TuiTextfieldComponent<T> =
         inject(TuiTextfieldComponent);
 
-    public readOnly = input(false);
+    public readonly readOnly = input(false);
 
-    public invalid = input<boolean | null>(null);
+    public readonly invalid = input<boolean | null>(null);
 
     public readonly value = tuiValue(this.el);
 
-    public focused = input<boolean | null>(null);
+    public readonly focused = input<boolean | null>(null);
 
-    public state = input<TuiInteractiveState | null>(null);
+    public readonly state = input<TuiInteractiveState | null>(null);
 
-    public mode = computed<string | null>(() => {
+    public readonly mode = computed<string | null>(() => {
         if (this.readOnly()) {
             return 'readonly';
         }
