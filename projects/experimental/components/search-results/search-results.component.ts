@@ -8,7 +8,6 @@ import {
     type OnChanges,
     TemplateRef,
 } from '@angular/core';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -33,7 +32,6 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
         TuiBlockStatus,
         TuiFilterPipe,
         TuiIcon,
-        TuiLet,
         TuiLoader,
         TuiScrollbar,
         TuiTabs,
