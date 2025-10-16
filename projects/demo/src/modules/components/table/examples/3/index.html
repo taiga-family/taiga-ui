@@ -75,9 +75,8 @@
                 </th>
             </tr>
         </thead>
-
+        @let sortedPythons = pythons | tuiTableSort;
         <tbody
-            *tuiLet="pythons | tuiTableSort as sortedPythons"
             heading="Monty Python"
             tuiTbody
             [data]="sortedPythons"
@@ -177,9 +176,8 @@
                 </tr>
             }
         </tbody>
-
+        @let sortedStarwars = starwars | tuiTableSort;
         <tbody
-            *tuiLet="starwars | tuiTableSort as sortedStarwars"
             tuiTbody
             [data]="sortedStarwars"
             [heading]="template"
