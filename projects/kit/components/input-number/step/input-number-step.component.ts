@@ -4,8 +4,7 @@ import {
     Component,
     computed,
     inject,
-    Input,
-    signal,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -47,7 +46,6 @@ export class TuiInputNumberStep {
     protected readonly appearance = inject(TUI_TEXTFIELD_OPTIONS).appearance;
     protected readonly options = inject<TuiInputNumberOptions>(TUI_INPUT_NUMBER_OPTIONS);
     protected readonly input = inject(TuiInputNumberDirective, {self: true});
-    protected readonly step = signal(this.options.step);
     protected readonly value = computed(() => this.input.value() ?? NaN);
     protected readonly step$ = new Subject<number>();
     protected readonly doc = inject(DOCUMENT);
@@ -71,11 +69,7 @@ export class TuiInputNumberStep {
         )
         .subscribe((value) => this.onStep(value));
 
-    // TODO(v5): replace with signal input
-    @Input('step')
-    public set stepSetter(x: number) {
-        this.step.set(x);
-    }
+    public readonly step = input(this.options.step);
 
     protected onStep(step: number): void {
         const current = this.input.value() ?? 0;
