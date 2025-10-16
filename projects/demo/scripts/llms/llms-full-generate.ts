@@ -86,6 +86,7 @@ function parseArgs(argv: string[]): CliOptions {
 
         if (rawArg.startsWith('--markdownDirs=')) {
             const value = rawArg.split('=')[1] || '';
+
             options.markdownDirs = value
                 .split(',')
                 .map((segment) => segment.trim())
@@ -95,6 +96,7 @@ function parseArgs(argv: string[]): CliOptions {
 
         if (rawArg.startsWith('--importMdNames=')) {
             const value = rawArg.split('=')[1] || '';
+
             options.importMdNames = value
                 .split(',')
                 .map((segment) => segment.trim())
@@ -104,6 +106,7 @@ function parseArgs(argv: string[]): CliOptions {
 
         if (rawArg.startsWith('--templateMdNames=')) {
             const value = rawArg.split('=')[1] || '';
+
             options.templateMdNames = value
                 .split(',')
                 .map((segment) => segment.trim())
@@ -160,6 +163,7 @@ async function main(): Promise<void> {
                 const parsed = JSON.parse(raw);
 
                 console.info(`Loaded custom config: ${cliOptions.configFile}`);
+
                 return parsed;
             } catch (e) {
                 console.error(
@@ -167,6 +171,7 @@ async function main(): Promise<void> {
                 );
             }
         }
+
         const fallback = await loadConfig();
 
         console.info(`Loaded default config: ${defaultConfigPath}`);
@@ -177,7 +182,7 @@ async function main(): Promise<void> {
     const overrideKeysApplied: string[] = [];
 
     for (const [key, value] of Object.entries(cliOptions.overrides)) {
-        const target = (config.llmsFull as any)[key];
+        const target = config.llmsFull[key];
 
         if (target && typeof target.value === 'boolean') {
             target.value = value;
@@ -189,6 +194,7 @@ async function main(): Promise<void> {
             );
         }
     }
+
     if (overrideKeysApplied.length) {
         console.info(`Applied overrides: ${overrideKeysApplied.join(', ')}`);
     }
@@ -257,19 +263,19 @@ async function main(): Promise<void> {
 
         const folders: string[] = [];
         const SKIP_FOLDERS = new Set([
-            'examples',
-            'assets',
-            'src',
-            'data',
-            'mocks',
-            'test',
             '__test__',
-            'node_modules',
-            'dist',
-            'lib',
+            'assets',
             'build',
             'coverage',
+            'data',
+            'dist',
             'docs',
+            'examples',
+            'lib',
+            'mocks',
+            'node_modules',
+            'src',
+            'test',
         ]);
         const CHILD_FOLDERS = [
             'components',
@@ -291,16 +297,22 @@ async function main(): Promise<void> {
         }
 
         async function scanDir(currentPath: string, depth = 0): Promise<void> {
-            if (depth > 3) return;
+            if (depth > 3) {
+                return;
+            }
 
             const entries = await fs.readdir(currentPath, {withFileTypes: true});
 
             for (const entry of entries) {
-                if (!entry.isDirectory()) continue;
+                if (!entry.isDirectory()) {
+                    continue;
+                }
 
                 const fullPath = path.join(currentPath, entry.name);
 
-                if (SKIP_FOLDERS.has(entry.name.toLowerCase())) continue;
+                if (SKIP_FOLDERS.has(entry.name.toLowerCase())) {
+                    continue;
+                }
 
                 const indexPath = path.join(fullPath, 'index.html');
 
@@ -354,7 +366,9 @@ async function main(): Promise<void> {
     for (const folderPath of allFolders) {
         const content = await readIndexHtml(folderPath);
 
-        if (!content) continue;
+        if (!content) {
+            continue;
+        }
 
         const headerData = getComponentHeader(content);
 
@@ -370,15 +384,19 @@ async function main(): Promise<void> {
 
                 console.warn(`[SKIPPED] Legacy component: ${path.basename(folderPath)}`);
             }
+
             continue;
         }
 
         const parentFolder = path.basename(path.dirname(folderPath));
 
-        if (!shouldIncludeSection(parentFolder, config.llmsFull.excludeSections))
+        if (!shouldIncludeSection(parentFolder, config.llmsFull.excludeSections)) {
             continue;
+        }
 
-        if (!headerData?.header) continue;
+        if (!headerData?.header) {
+            continue;
+        }
 
         stats.included++;
 
@@ -390,7 +408,9 @@ async function main(): Promise<void> {
 
         const description = getComponentDescription(content);
 
-        if (description) output.push(description);
+        if (description) {
+            output.push(description);
+        }
 
         if (getConfigValue(config.llmsFull.includeImportExamples)) {
             const importExample = await getImportExamples(
@@ -399,21 +419,31 @@ async function main(): Promise<void> {
                 cliOptions.templateMdNames,
             );
 
-            if (importExample) output.push(importExample);
+            if (importExample) {
+                output.push(importExample);
+            }
         }
 
         if (getConfigValue(config.llmsFull.includeExamples)) {
             const example = getComponentExample(content);
 
-            if (example) output.push(example);
+            if (example) {
+                output.push(example);
+            }
         }
 
         if (getConfigValue(config.llmsFull.includeApi)) {
             const apiFromTable = getComponentApiFromTable(content);
-            if (apiFromTable) output.push(apiFromTable);
+
+            if (apiFromTable) {
+                output.push(apiFromTable);
+            }
 
             const apiFromTemplates = getComponentApiFromTemplates(content);
-            if (apiFromTemplates) output.push(apiFromTemplates);
+
+            if (apiFromTemplates) {
+                output.push(apiFromTemplates);
+            }
         }
 
         if (getConfigValue(config.llmsFull.includeUsageExamples)) {
@@ -422,7 +452,9 @@ async function main(): Promise<void> {
                 getConfigValue(config.llmsFull.includeAllExamples),
             );
 
-            if (usageExamples) output.push(usageExamples);
+            if (usageExamples) {
+                output.push(usageExamples);
+            }
         }
 
         if (getConfigValue(config.llmsFull.includeSourceCode)) {
@@ -431,7 +463,9 @@ async function main(): Promise<void> {
                 getConfigValue(config.llmsFull.includeExamples),
             );
 
-            if (sourceFiles) output.push(sourceFiles);
+            if (sourceFiles) {
+                output.push(sourceFiles);
+            }
         }
 
         output.push('\n---');
