@@ -19,7 +19,13 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {TuiDocSeeAlso} from '../internal/see-also';
 import {TuiDocSourceCode} from '../internal/source-code/source-code.component';
 import {TuiDocLanguageSwitcher} from '../language-switcher';
-import {PAGE_PROVIDERS, PAGE_SEE_ALSO, TUI_DOC_TABS} from './page.providers';
+import {
+    PAGE_PROVIDERS,
+    PAGE_SEE_ALSO,
+    TUI_DOC_PAGE_OPTIONS,
+    TUI_DOC_TABS,
+    type TuiDocPageOptions,
+} from './page.providers';
 import {TuiDocPageTabConnector} from './page-tab.directive';
 
 @Component({
@@ -46,7 +52,8 @@ import {TuiDocPageTabConnector} from './page-tab.directive';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: PAGE_PROVIDERS,
 })
-export class TuiDocPage {
+export class TuiDocPage implements TuiDocPageOptions {
+    protected readonly options = inject(TUI_DOC_PAGE_OPTIONS);
     protected readonly tabs = inject(TUI_DOC_TABS)(inject(ActivatedRoute).snapshot);
     protected readonly supportLanguage = inject(TUI_DOC_SUPPORT_LANGUAGE);
     protected readonly defaultTabs = inject(TUI_DOC_DEFAULT_TABS);
@@ -54,22 +61,22 @@ export class TuiDocPage {
     protected readonly to = '_';
 
     @Input()
-    public header = '';
+    public header = this.options.header;
 
     @Input()
-    public package = '';
+    public package = this.options.package;
 
     @Input()
-    public type = '';
+    public type = this.options.type;
 
     @Input()
-    public tags: string[] = [];
+    public tags = this.options.tags;
 
     @Input()
-    public path = '';
+    public path = this.options.path;
 
     @Input()
-    public deprecated: boolean | '' = false;
+    public deprecated = this.options.deprecated;
 
     @ContentChildren(TuiDocPageTabConnector)
     public readonly tabConnectors: QueryList<TuiDocPageTabConnector> = EMPTY_QUERY;

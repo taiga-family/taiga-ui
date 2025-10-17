@@ -2,7 +2,27 @@ import {ElementRef, InjectionToken, type Provider} from '@angular/core';
 import {type ActivatedRouteSnapshot} from '@angular/router';
 import {TUI_DOC_SEE_ALSO} from '@taiga-ui/addon-doc/tokens';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+
+export interface TuiDocPageOptions {
+    header: string;
+    package: string;
+    type: string;
+    tags: string[];
+    path: string;
+    deprecated: boolean | '';
+}
+
+export const [TUI_DOC_PAGE_OPTIONS, tuiDocPageOptionsProvider] =
+    tuiCreateOptions<TuiDocPageOptions>({
+        header: '',
+        package: '',
+        type: '',
+        tags: [],
+        path: '',
+        deprecated: false,
+    });
 
 export const TUI_DOC_TABS = new InjectionToken<
     TuiHandler<ActivatedRouteSnapshot, Record<string, PolymorpheusContent>>
