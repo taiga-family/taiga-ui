@@ -135,7 +135,7 @@ export class TuiInputTimeDirective
 
     public override writeValue(value: TuiTime | null): void {
         const reset = this.control.pristine && this.control.untouched && !value;
-        const changed = untracked(() => value !== this.value());
+        const changed = value !== this.value();
 
         if (changed || reset) {
             super.writeValue(value);
