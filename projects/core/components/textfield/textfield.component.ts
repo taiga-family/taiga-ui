@@ -11,7 +11,6 @@ import {
     forwardRef,
     inject,
     input,
-    model,
     type QueryList,
     signal,
     ViewChild,
@@ -137,7 +136,7 @@ export class TuiTextfieldBaseComponent<T>
         {requireSync: true},
     );
 
-    public readonly filler = model('');
+    public readonly filler = input('');
 
     public get id(): string {
         return this.input?.nativeElement.id || this.autoId;
