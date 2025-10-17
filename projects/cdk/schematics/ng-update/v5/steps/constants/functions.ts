@@ -31,4 +31,40 @@ export const REPLACE_FUNCTIONS: readonly ReplacementType[] = [
         to: 'tuiBlurFocused',
         moduleSpecifier: ['@taiga-ui/cdk'],
     },
+    {
+        from: 'tuiIsApple',
+        moduleSpecifier: ['@taiga-ui/cdk'],
+        to: 'isApple',
+        removeImport: true,
+        newImports: [
+            {
+                name: 'isApple',
+                moduleSpecifier: '@ng-web-apis/platform',
+            },
+        ],
+    },
+    {
+        from: 'tuiIsIos',
+        moduleSpecifier: ['@taiga-ui/cdk'],
+        to: 'isIos',
+        removeImport: true,
+        newImports: [
+            {
+                name: 'isIos',
+                moduleSpecifier: '@ng-web-apis/platform',
+            },
+        ],
+    },
+    {
+        from: 'tuiIsApple',
+        moduleSpecifier: ['@taiga-ui/legacy'],
+        to: 'isApple',
+        removeImport: true,
+        newImports: [
+            {
+                name: 'isApple',
+                moduleSpecifier: '@ng-web-apis/platform',
+            },
+        ],
+    },
 ];
