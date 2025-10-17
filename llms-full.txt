@@ -30233,7 +30233,7 @@ export class Example {}
 ### Example
 
 ```html
-<tui-progress-circle [arc]="arc" [color]="color" [max]="max" [size]="size" [value]="value" />
+<tui-progress-circle [arc]="arc" [color]="color" [max]="max" [size]="size" [style.--tui-thickness.px]="thickness" [value]="value" />
 ```
 
 ### API
@@ -30245,6 +30245,7 @@ export class Example {}
 | [size] | `TuiSizeXXL | TuiSizeXXS` | Size of the circle. |
 | [color] | `string` |  |
 | [arc] | `boolean` | Use arc shape with small bottom open arc sector (instead of default circle). |
+| [style.--tui-thickness.px] | `number` | Width of the circle's stroke |
 
 ### Usage Examples
 
@@ -30531,11 +30532,11 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiLink, type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core';
+import {TuiLink, type TuiSizeXXL, type TuiSizeXXS, TuiTitle} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider, TuiProgress} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDemo, TuiLink, TuiProgress],
+    imports: [TuiDemo, TuiLink, TuiProgress, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -30545,6 +30546,7 @@ export default class Page {
     protected value = 6;
     protected max = 10;
     protected arc = false;
+    protected thickness = 6;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
         'xxs',
