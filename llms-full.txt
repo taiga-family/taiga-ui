@@ -26517,14 +26517,14 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-<tui-loader [showLoader]="loader">Let off some steam, Bennett</tui-loader>
+<tui-loader [loading]="loader">Let off some steam, Bennett</tui-loader>
 ```
 
 ### Example
 
 ```html
 <div class="example">
-<tui-loader [inheritColor]="inheritColor" [overlay]="overlay" [showLoader]="showLoader" [size]="size" [textContent]="template" >
+<tui-loader [inheritColor]="inheritColor" [loading]="showLoader" [overlay]="overlay" [size]="size" [textContent]="template" >
 <div>
 <b>Colonel Trautman:</b> It's over Johnny. It's over! </div>
 <div>
@@ -29104,7 +29104,7 @@ export default class Example {
 <button tuiButton type="button" (click)="openPdf()" > Open </button>
 <ng-template [tuiDialogOptions]="{appearance: 'fullscreen'}" [(tuiDialog)]="open" >
 <tui-pdf-viewer>
-<h2 tuiTitle>file.pdf</h2> @if (loading()) { <tui-loader size="xl" [showLoader]="true" /> } @else if (!error()) { <iframe [src]="url"></iframe> } @else { <tui-block-status>
+<h2 tuiTitle>file.pdf</h2> @if (loading()) { <tui-loader size="xl" [loading]="true" /> } @else if (!error()) { <iframe [src]="url"></iframe> } @else { <tui-block-status>
 <img alt="not found" src="./assets/images/not-found.svg" tuiSlot="top" class="image" />
 <h4>Something went wrong</h4>
 <span>Try again later</span>
@@ -37225,7 +37225,7 @@ export default class Example {
 <tui-reorder class="columns" [enabled]="enabled" [(items)]="initial" (enabledChange)="onEnabled($event)" />
 </ng-template>
 </p>
-<tui-loader [overlay]="true" [showLoader]="!!(loading$ | async)" >
+<tui-loader [loading]="!!(loading$ | async)" [overlay]="true" >
 <p>
 <b>Sort key:</b> {{ sortKey$ | async }}, <b>direction:</b> {{ direction$ | async }} </p> @if (data$ | async; as data) { <table tuiTable class="table" [columns]="columns" [direction]="(direction$ | async) ?? -1" [tuiSortBy]="sortKey$ | async" (tuiSortChange)="change($event)" >
 <thead>
@@ -40411,7 +40411,7 @@ export class Example {}
 <p class="wrapping-tooltip"> Example of wrapping tooltip <tui-icon tuiHintDirection="bottom-right" [tuiTooltip]="tooltip" />
 </p>
 <ng-template #tooltip>
-<tui-loader *tuiLet="(isLoading$ | async)! as isLoading" size="s" class="tooltip" [inheritColor]="true" [showLoader]="isLoading" > {{ isLoading ? '' : 'Error 502: Bad Gateway' }} </tui-loader>
+<tui-loader *tuiLet="(isLoading$ | async)! as isLoading" size="s" class="tooltip" [inheritColor]="true" [loading]="isLoading" > {{ isLoading ? '' : 'Error 502: Bad Gateway' }} </tui-loader>
 </ng-template>
 ```
 **TypeScript:**
