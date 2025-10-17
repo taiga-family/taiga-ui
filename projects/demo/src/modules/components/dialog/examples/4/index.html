@@ -1,7 +1,35 @@
 <button
     tuiButton
     type="button"
-    (click)="onClick()"
+    (click)="onClick(content)"
 >
     Show dialog
 </button>
+
+<ng-template
+    #content
+    let-context
+>
+    <form tuiForm>
+        <tui-textfield>
+            <label tuiLabel>Your name</label>
+            <input
+                name="name"
+                placeholder="John Wick"
+                tuiAutoFocus
+                tuiTextfield
+                [ngModel]="value"
+                (ngModelChange)="onModelChange($event)"
+            />
+        </tui-textfield>
+        <footer>
+            <button
+                tuiButton
+                type="submit"
+                (click.prevent)="context.complete()"
+            >
+                Submit
+            </button>
+        </footer>
+    </form>
+</ng-template>

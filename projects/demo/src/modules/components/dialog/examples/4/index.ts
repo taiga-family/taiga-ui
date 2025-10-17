@@ -1,30 +1,52 @@
 import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
-import {TUI_CONFIRM, type TuiConfirmData} from '@taiga-ui/kit';
-import {switchMap} from 'rxjs';
+import {TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
+import {TuiAutoFocus} from '@taiga-ui/cdk';
+import {TuiButton, TuiDialogService, TuiTextfield} from '@taiga-ui/core';
+import {TuiConfirmService} from '@taiga-ui/kit';
+import {TuiForm} from '@taiga-ui/layout';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [TuiButton],
+    imports: [FormsModule, TuiButton, TuiForm, TuiTextfield, TuiAutoFocus],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
+    providers: [
+        // Provide TUI_CONFIRM_DIALOG if you want to override default Confirm dialog
+        TuiConfirmService,
+        {
+            provide: TuiDialogService,
+            useExisting: TuiResponsiveDialogService,
+        },
+    ],
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly confirm = inject(TuiConfirmService);
     private readonly dialogs = inject(TuiDialogService);
 
-    protected onClick(): void {
-        const data: TuiConfirmData = {
-            content: 'This action cannot be undone',
-            yes: 'Sure!',
-            no: 'No, thanks',
-        };
+    protected value = '';
+
+    protected onModelChange(value: string): void {
+        this.value = value;
+        this.confirm.markAsDirty();
+    }
+
+    protected onClick(content: PolymorpheusContent): void {
+        const closable = this.confirm.withConfirm({
+            label: 'Are you sure?',
+            data: {content: 'Your data will be <strong>lost</strong>'},
+        });
 
         this.dialogs
-            .open<boolean>(TUI_CONFIRM, {size: 's', label: 'Are you sure?', data})
-            .pipe(switchMap((v) => this.alerts.open(v, {label: 'Response'})))
-            .subscribe();
+            .open(content, {label: 'Application form', closable, dismissible: closable})
+            .subscribe({
+                complete: () => {
+                    this.value = '';
+                    this.confirm.markAsPristine();
+                },
+            });
     }
 }
