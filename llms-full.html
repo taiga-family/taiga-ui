@@ -12516,12 +12516,11 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {Component} from &#039;@angular/core&#039;;
+import {Component, inject, INJECTOR} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
 import {TuiButton, tuiDialog} from &#039;@taiga-ui/core&#039;;
-
-import {DialogExample} from &#039;./dialog-example/dialog-example.component&#039;;
+import {type Observable} from &#039;rxjs&#039;;
 
 @Component({
     standalone: true,
@@ -12531,19 +12530,28 @@ import {DialogExample} from &#039;./dialog-example/dialog-example.component&#039
     changeDetection,
 })
 export default class Example {
-    private readonly dialog = tuiDialog(DialogExample, {
-        dismissible: true,
-        label: &#039;Heading&#039;,
-    });
+    private readonly injector = inject(INJECTOR);
 
-    protected showDialog(): void {
-        this.dialog(237).subscribe({
+    protected async showDialog(): Promise&lt;void&gt; {
+        const dialog = await this.lazyLoad();
+
+        dialog(237).subscribe({
             next: (data) =&gt; {
                 console.info(`Dialog emitted data = ${data}`);
             },
             complete: () =&gt; {
                 console.info(&#039;Dialog closed&#039;);
             },
+        });
+    }
+
+    private async lazyLoad(): Promise&lt;(data: number) =&gt; Observable&lt;number&gt;&gt; {
+        const {DialogExample} = await import(&#039;./dialog-example/dialog-example.component&#039;);
+
+        return tuiDialog(DialogExample, {
+            injector: this.injector,
+            dismissible: true,
+            label: &#039;Heading&#039;,
         });
     }
 }
