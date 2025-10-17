@@ -6,7 +6,6 @@ import {
     Input,
     isSignal,
     signal,
-    untracked,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
@@ -96,7 +95,7 @@ export class TuiComboBox<T>
         const selectedOption = options.find((x) =>
             matcher(x, textfieldValue, this.handlers.stringify()),
         );
-        const value = untracked(() => this.value());
+        const value = this.value();
         const unchanged = this.stringify(value) === textfieldValue;
         const fallback = this.strict() || !textfieldValue ? null : textfieldValue;
 
@@ -119,7 +118,7 @@ export class TuiComboBox<T>
     });
 
     protected readonly blurEffect = effect(() => {
-        const incomplete = untracked(() => this.strict() && this.value() === null);
+        const incomplete = this.strict() && this.value() === null;
 
         if (!this.host.focused() && incomplete) {
             this.textfield.value.set('');
@@ -153,7 +152,7 @@ export class TuiComboBox<T>
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.textfield.value.set(this.stringify(value)));
+            this.textfield.value.set(this.stringify(value));
         }
     }
 

@@ -1,4 +1,4 @@
-import {computed, Directive, inject, Input, signal, untracked} from '@angular/core';
+import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {
@@ -139,7 +139,7 @@ export class TuiInputTimeDirective
 
         if (changed || reset) {
             super.writeValue(value);
-            untracked(() => this.textfield.value.set(this.stringify(this.value())));
+            this.textfield.value.set(this.stringify(this.value()));
         }
     }
 

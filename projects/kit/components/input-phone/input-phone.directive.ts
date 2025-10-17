@@ -1,12 +1,4 @@
-import {
-    computed,
-    Directive,
-    effect,
-    inject,
-    Input,
-    signal,
-    untracked,
-} from '@angular/core';
+import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {
     MASKITO_DEFAULT_OPTIONS,
@@ -62,7 +54,7 @@ export class TuiInputPhone extends TuiControl<string | null> {
     });
 
     protected readonly blurEffect = effect(() => {
-        const incomplete = untracked(() => !this.value());
+        const incomplete = !this.value();
         const prefix = incomplete && this.interactive() && !this.allowText();
 
         if (!this.host.focused() && incomplete) {

@@ -66,6 +66,10 @@ describe('InputDateRange | control.setValue is used inside effect', () => {
         private parseRange(value: string): TuiDayRange {
             const [from, to] = value.split('|');
 
+            if (!from || !to) {
+                throw new Error(`Invalid date range string: "${value}"`);
+            }
+
             return new TuiDayRange(TuiDay.jsonParse(from), TuiDay.jsonParse(to));
         }
     }
