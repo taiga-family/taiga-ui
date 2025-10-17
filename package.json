@@ -106,13 +106,10 @@
         "preset": "@taiga-ui/jest-config"
     },
     "overrides": {
-        "@angular-devkit/build-angular": {
-            "jest": "$jest",
-            "jest-environment-jsdom": "$jest-environment-jsdom"
-        },
-        "@taiga-ui/configs": {
-            "@taiga-ui/browserslist-config": "0.328.0"
-        }
+        "@taiga-ui/browserslist-config": "0.328.0",
+        "jest": "$jest",
+        "jest-environment-jsdom": "$jest-environment-jsdom",
+        "source-map": "$source-map"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "19.2.18",
@@ -133,7 +130,7 @@
         "@nx/jest": "21.6.4",
         "@nx/workspace": "21.6.4",
         "@schematics/angular": "19.2.18",
-        "@taiga-ui/configs": "0.345.0",
+        "@taiga-ui/configs": "0.346.0",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
         "@types/markdown-it": "14.1.2",
@@ -153,7 +150,7 @@
         "node-loader": "2.1.0",
         "nx": "21.6.4",
         "rxjs": "7.8.2",
-        "source-map": "0.6.1",
+        "source-map": "0.7.6",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",

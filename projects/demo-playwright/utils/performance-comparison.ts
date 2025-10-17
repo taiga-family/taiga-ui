@@ -1,6 +1,6 @@
-import {mkdirSync} from 'fs';
-import {appendFile, readdir, readFile, stat, writeFile} from 'fs/promises';
-import {dirname, join, resolve} from 'path';
+import {mkdirSync} from 'node:fs';
+import {appendFile, readdir, readFile, stat, writeFile} from 'node:fs/promises';
+import {dirname, join, resolve} from 'node:path';
 
 /**
  * Core performance metrics collected via CDP
