@@ -14,6 +14,7 @@ import {
     getTemplateOffset,
 } from '../utils/templates/template-resource';
 
+// TODO: move to migration in v5
 export default function tuiLetMigrationGenerator(options: TuiSchema): Rule {
     return async (tree: Tree): Promise<void> => {
         const workspace = await getWorkspace(tree);
