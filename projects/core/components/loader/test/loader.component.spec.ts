@@ -13,7 +13,7 @@ describe('Loader', () => {
         template: `
             @if (custom) {
                 <tui-loader
-                    [showLoader]="showLoader"
+                    [loading]="showLoader"
                     [textContent]="content"
                 />
             } @else {

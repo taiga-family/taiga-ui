@@ -59,8 +59,8 @@
                     <tui-loader
                         size="xs"
                         class="t-code-editor"
+                        [loading]="loading()"
                         [overlay]="true"
-                        [showLoader]="loading()"
                         (click)="edit(processor())"
                     >
                         @if (codeEditor?.content; as content) {
