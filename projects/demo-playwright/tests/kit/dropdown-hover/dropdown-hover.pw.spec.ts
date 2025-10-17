@@ -24,8 +24,7 @@ test.describe('DropdownHover', () => {
             test('Opens mobile version of dropdown on the 1st time click', async ({
                 page,
             }) => {
-                await example.locator('button').hover();
-
+                await example.locator('button').click();
                 await expect(page.locator('tui-dropdown')).not.toBeAttached();
                 await expect(page.locator('tui-sheet-dialog')).toBeVisible();
                 await expect

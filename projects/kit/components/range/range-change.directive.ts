@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, EventEmitter, inject, Output} from '@angular/core';
+import {Directive, inject, output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -17,8 +17,7 @@ export class TuiRangeChange {
     private readonly el = tuiInjectElement();
     private readonly range = inject(TuiRange);
 
-    @Output()
-    public readonly activeThumbChange = new EventEmitter<'end' | 'start'>();
+    public readonly activeThumbChange = output<'end' | 'start'>();
 
     constructor() {
         let activeThumb: 'end' | 'start';
@@ -30,12 +29,13 @@ export class TuiRangeChange {
             .pipe(
                 tap(({clientX, target, pointerId}) => {
                     activeThumb = this.detectActiveThumb(clientX, target);
-                    this.range.slidersRefs
-                        .get(activeThumb === 'start' ? 0 : 1)
-                        ?.nativeElement.setPointerCapture(pointerId);
+                    const slideElement =
+                        this.range.slidersRefs()[activeThumb === 'start' ? 0 : 1];
+
+                    slideElement?.nativeElement.setPointerCapture(pointerId);
                     this.activeThumbChange.emit(activeThumb);
 
-                    if (this.range.focusable) {
+                    if (this.range.focusable()) {
                         this.el.focus();
                     }
                 }),
@@ -66,7 +66,7 @@ export class TuiRangeChange {
         clientX: number,
         target: EventTarget | null,
     ): 'end' | 'start' {
-        const [startSliderRef, endSliderRef] = this.range.slidersRefs;
+        const [startSliderRef, endSliderRef] = this.range.slidersRefs();
 
         switch (target) {
             case endSliderRef?.nativeElement:

@@ -1,3 +1,3 @@
 ```html
-<tui-loader [showLoader]="loader">Let off some steam, Bennett</tui-loader>
+<tui-loader [loading]="loader">Let off some steam, Bennett</tui-loader>
 ```

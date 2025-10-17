@@ -110,7 +110,6 @@ export function getInputPropertyOffsets(
     html: string,
     attrName: string,
     tags: string[],
-    // eslint-disable-next-line no-restricted-syntax
     filterFn: (element: Element) => boolean = () => true,
 ): Array<[number, number]> {
     return findElementsWithAttribute(html, attrName)

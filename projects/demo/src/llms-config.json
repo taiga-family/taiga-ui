@@ -27,7 +27,7 @@
             "description": "Include standalone markdown documentation files from examples directory. Adds general documentation content."
         },
         "includeUsageExamples": {
-            "value": false,
+            "value": true,
             "description": "Include detailed usage examples for each component. Extracted from component documentation templates. Disabled to reduce file size."
         },
         "includeAllExamples": {

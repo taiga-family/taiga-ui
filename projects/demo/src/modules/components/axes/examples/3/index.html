@@ -7,7 +7,7 @@
         @for (bar of value; track bar) {
             <tui-bar
                 size="m"
-                [style.background-color]="`var(--tui-chart-categorical-0${$index})`"
+                [style.background-color]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
                 [style.height.%]="getHeight(bar)"
             />
         }
