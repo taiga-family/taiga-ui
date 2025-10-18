@@ -132,7 +132,7 @@ export abstract class TuiControl<T> implements ControlValueAccessor {
         // TODO: https://github.com/angular/angular/issues/14988
         const safe = this.control instanceof NgModel ? this.control.model : value;
 
-        this.internal.set(this.transformer.fromControlValue(safe));
+        this.internal.set(untracked(() => this.transformer.fromControlValue(safe)));
         this.update();
     }
 

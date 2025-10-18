@@ -1,12 +1,4 @@
-import {
-    computed,
-    Directive,
-    effect,
-    inject,
-    Input,
-    signal,
-    untracked,
-} from '@angular/core';
+import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoDateMode, maskitoDateOptionsGenerator} from '@maskito/kit';
@@ -136,7 +128,7 @@ export abstract class TuiInputDateBase<
 
     public override writeValue(value: T | null): void {
         const reset = this.control.pristine && this.control.untouched && !value;
-        const changed = untracked(() => value !== this.value());
+        const changed = value !== this.value();
 
         if (changed || reset) {
             super.writeValue(value);
