@@ -40,5 +40,5 @@ export class TuiLink {
      * @deprecated: use on host
      * [style.text-decoration-line]="'underline'"
      */
-    public pseudo = input(inject(TUI_LINK_OPTIONS).pseudo);
+    public readonly pseudo = input(inject(TUI_LINK_OPTIONS).pseudo);
 }
