@@ -2,6 +2,6 @@
     tuiCheckbox
     type="checkbox"
     [checked]="selected$ | async"
-    [size]="size"
+    [size]="size()"
 />
 <ng-container [ngTemplateOutlet]="context.$implicit" />
