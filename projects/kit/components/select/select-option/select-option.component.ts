@@ -21,7 +21,7 @@ import {tuiInjectValue} from '@taiga-ui/kit/utils';
                 type="checkbox"
                 class="t-check"
                 [checked]="selected()"
-                [size]="datalist.size === 'l' ? 'm' : 's'"
+                [size]="datalist.size() === 'l' ? 'm' : 's'"
             />
         } @else {
             <span class="t-dummy"></span>
