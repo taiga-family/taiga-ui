@@ -4,7 +4,6 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiScrollable, TuiTextfield} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
@@ -22,7 +21,6 @@ import {
         TuiComboBox,
         TuiDataList,
         TuiFilterByInputPipe,
-        TuiLet,
         TuiScrollable,
         TuiTextfield,
     ],

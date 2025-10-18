@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLink} from '@taiga-ui/core/components/link';
@@ -38,7 +37,6 @@ import {TuiNativeMultiSelectGroupComponent} from './native-multi-select/native-m
         PolymorpheusTemplate,
         TuiWrapperModule,
         TuiArrowComponent,
-        TuiLet,
         TuiInputTagModule,
         TuiMultiSelectOptionModule,
         TuiMapperPipe,

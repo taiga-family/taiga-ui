@@ -1,7 +1,5 @@
-<tui-textfield
-    *tuiLet="items$ | async as items"
-    tuiChevron
->
+@let items = items$ | async;
+<tui-textfield tuiChevron>
     <input
         #inputRef
         placeholder="Search country"

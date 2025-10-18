@@ -6,7 +6,6 @@ import {
     TUI_DEFAULT_MATCHER,
     TuiAutoFocus,
     TuiFilterPipe,
-    TuiLet,
 } from '@taiga-ui/cdk';
 import {
     TuiDataList,
@@ -28,7 +27,6 @@ interface Items<T> {
         TuiAutoFocus,
         TuiDataList,
         TuiFilterPipe,
-        TuiLet,
         TuiMultiSelectModule,
         TuiTextfield,
     ],

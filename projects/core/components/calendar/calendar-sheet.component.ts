@@ -11,7 +11,6 @@ import {toObservable} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiHandler} from '@taiga-ui/cdk/types';
@@ -29,7 +28,6 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
         AsyncPipe,
         TuiCalendarSheetPipe,
         TuiHovered,
-        TuiLet,
         TuiMapperPipe,
         TuiOrderWeekDaysPipe,
         TuiRepeatTimes,

@@ -33,8 +33,8 @@
             }
         </tr>
     </thead>
+    @let sortedData = data | tuiTableSort;
     <tbody
-        *tuiLet="data | tuiTableSort as sortedData"
         tuiTbody
         [data]="sortedData"
     >

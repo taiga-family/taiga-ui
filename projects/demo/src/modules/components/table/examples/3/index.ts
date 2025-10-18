@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator, TuiTable} from '@taiga-ui/addon-table';
-import {TuiDay, tuiDefaultSort, TuiLet, TuiValidator} from '@taiga-ui/cdk';
+import {TuiDay, tuiDefaultSort, TuiValidator} from '@taiga-ui/cdk';
 import {
     TuiFormatNumberPipe,
     TuiIcon,
@@ -40,7 +40,6 @@ interface Item {
         TuiIcon,
         TuiInputDate,
         TuiInputNumber,
-        TuiLet,
         TuiNumberFormat,
         TuiScrollbar,
         TuiSelect,

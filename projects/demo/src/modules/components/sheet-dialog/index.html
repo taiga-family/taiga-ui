@@ -18,30 +18,29 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <ng-container *tuiLet="label === 'Template' ? labelTemplate : label as dialogLabel">
-                <button
-                    tuiButton
-                    type="button"
-                    (click)="showDialog(sheetTemplate, dialogLabel)"
-                >
-                    Click
-                </button>
-                <button
-                    tuiButton
-                    type="button"
-                    class="tui-space_left-4"
-                    (longtap)="showDialog(sheetTemplate, dialogLabel)"
-                >
-                    Long tap
-                </button>
-                <button
-                    tuiButton
-                    type="button"
-                    (click)="navigate()"
-                >
-                    Navigate to Examples
-                </button>
-            </ng-container>
+            @let dialogLabel = label === 'Template' ? labelTemplate : label;
+            <button
+                tuiButton
+                type="button"
+                (click)="showDialog(sheetTemplate, dialogLabel)"
+            >
+                Click
+            </button>
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_left-4"
+                (longtap)="showDialog(sheetTemplate, dialogLabel)"
+            >
+                Long tap
+            </button>
+            <button
+                tuiButton
+                type="button"
+                (click)="navigate()"
+            >
+                Navigate to Examples
+            </button>
             <ng-template #labelTemplate>
                 <div class="label">
                     <div

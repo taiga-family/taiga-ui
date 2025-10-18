@@ -21,8 +21,8 @@
 </p>
 
 <ng-template #tooltip>
+    @let isLoading = (isLoading$ | async)!;
     <tui-loader
-        *tuiLet="(isLoading$ | async)! as isLoading"
         size="s"
         class="tooltip"
         [inheritColor]="true"

@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiAppearance} from '@taiga-ui/core/directives/appearance';
 import {TuiDropdown} from '@taiga-ui/core/directives/dropdown';
@@ -28,7 +27,6 @@ import {TuiInputDateRangeDirective} from './input-date-range.directive';
     imports: [
         CommonModule,
         MaskitoDirective,
-        TuiLet,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
         TuiPrimitiveTextfieldModule,

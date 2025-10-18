@@ -7,7 +7,6 @@ import {
     type TuiSheetDialogOptions,
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
-import {TuiLet} from '@taiga-ui/cdk';
 import {
     TuiAlertService,
     TuiButton,
@@ -19,7 +18,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
 @Component({
-    imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiLet, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,

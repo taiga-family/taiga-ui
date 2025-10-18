@@ -14,13 +14,13 @@
         tuiDataListDropdownManager
         [size]="size"
     >
+        @let frenchFries = 'French Fries';
         <button
-            *tuiLet="'French Fries' as item"
             tuiOption
             type="button"
-            (click)="selectOption(item)"
+            (click)="selectOption(frenchFries)"
         >
-            {{ item }}
+            {{ frenchFries }}
         </button>
         <button
             iconEnd="@tui.chevron-right"
@@ -44,8 +44,8 @@
         >
             Drinks
         </button>
+        @let item = 'Ice Cream';
         <button
-            *tuiLet="'Ice Cream' as item"
             tuiOption
             type="button"
             (click)="selectOption(item)"
