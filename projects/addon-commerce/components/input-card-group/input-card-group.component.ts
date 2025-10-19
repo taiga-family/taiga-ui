@@ -5,7 +5,6 @@ import {
     computed,
     type ElementRef,
     inject,
-    Input,
     input,
     output,
     PLATFORM_ID,
@@ -130,9 +129,15 @@ export class TuiInputCardGroup
     private readonly hover = tuiHovered();
     private readonly focusedIn = tuiFocusedIn(this.el);
 
-    protected exampleTextCVC = this.options.exampleTextCVC;
+    protected readonly exampleTextCVC = computed((length = this.codeLength()) =>
+        length ? '0'.repeat(length) : this.options.exampleTextCVC,
+    );
+
+    protected readonly maskCVC = computed((length = this.codeLength()) =>
+        TUI_MASK_CVC(length ?? 3),
+    );
+
     protected cvcHidden = this.options.cvcHidden;
-    protected maskCVC = TUI_MASK_CVC(3);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly isWebkit = inject(TUI_IS_WEBKIT);
     protected readonly dropdown = inject(TuiDropdownDirective);
@@ -190,13 +195,9 @@ export class TuiInputCardGroup
 
     public readonly id = input(tuiInjectId());
 
-    public readonly binChange = output<string | null>();
+    public readonly codeLength = input<3 | 4>();
 
-    @Input()
-    public set codeLength(length: 3 | 4) {
-        this.exampleTextCVC = '0'.repeat(length);
-        this.maskCVC = TUI_MASK_CVC(length);
-    }
+    public readonly binChange = output<string | null>();
 
     public get bin(): string | null {
         return this.card.length < 6 ? null : this.card.slice(0, 6);
