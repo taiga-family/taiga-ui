@@ -6,6 +6,7 @@ import {
     type ElementRef,
     inject,
     Input,
+    input,
     output,
     PLATFORM_ID,
     type Signal,
@@ -175,23 +176,19 @@ export class TuiInputCardGroup
     /**
      * @deprecated use 'placeholder' instead
      */
-    @Input()
-    public exampleText = this.options.exampleText;
+    public readonly exampleText = input(this.options.exampleText);
 
-    @Input()
-    public placeholder = this.options.exampleText;
+    public readonly placeholder = input(this.options.exampleText);
 
-    @Input()
-    public inputs = this.options.inputs;
+    public readonly inputs = input(this.options.inputs);
 
-    @Input()
-    public cardValidator: TuiBooleanHandler<string> = this.options.cardValidator;
+    public readonly cardValidator = input<TuiBooleanHandler<string>>(
+        this.options.cardValidator,
+    );
 
-    @Input()
-    public icon: PolymorpheusContent = '';
+    public readonly icon = input<PolymorpheusContent>('');
 
-    @Input()
-    public id = tuiInjectId();
+    public readonly id = input(tuiInjectId());
 
     public readonly binChange = output<string | null>();
 
@@ -239,7 +236,7 @@ export class TuiInputCardGroup
     }
 
     public focusExpire(): void {
-        if (this.inputs.expire) {
+        if (this.inputs().expire) {
             this.inputExpire()?.nativeElement.focus({preventScroll: true});
         } else {
             this.inputCVC()?.nativeElement.focus({preventScroll: true});
@@ -285,7 +282,7 @@ export class TuiInputCardGroup
     protected get content(): PolymorpheusContent {
         const system = this.getPaymentSystem(this.card);
 
-        return this.icon || (system && this.paymentSystems[system]);
+        return this.icon() || (system && this.paymentSystems[system]);
     }
 
     protected get card(): string {
@@ -315,7 +312,7 @@ export class TuiInputCardGroup
     }
 
     protected get cvcPrefilled(): boolean {
-        return !this.inputs.cvc || !!this.cvc.match(TUI_NON_DIGIT_REGEXP);
+        return !this.inputs().cvc || !!this.cvc.match(TUI_NON_DIGIT_REGEXP);
     }
 
     protected get cardFocusable(): boolean {
@@ -345,7 +342,7 @@ export class TuiInputCardGroup
         this.updateProperty(parsed, 'card');
         this.updateBin(bin);
 
-        if (this.cardValidator(this.card) && !value()?.expire && this.inputExpire()) {
+        if (this.cardValidator()(this.card) && !value()?.expire && this.inputExpire()) {
             this.focusExpire();
             // Safari autofill focus jerk workaround
             this.focus$.next();
@@ -386,7 +383,7 @@ export class TuiInputCardGroup
 
     @tuiPure
     private isFocusable(card: string): boolean {
-        return this.cardValidator(card) || this.cardPrefilled;
+        return this.cardValidator()(card) || this.cardPrefilled;
     }
 
     @tuiPure
