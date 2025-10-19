@@ -4,10 +4,9 @@ import {
     Component,
     computed,
     type ElementRef,
-    EventEmitter,
     inject,
     Input,
-    Output,
+    output,
     PLATFORM_ID,
     type Signal,
     viewChild,
@@ -194,8 +193,7 @@ export class TuiInputCardGroup
     @Input()
     public id = tuiInjectId();
 
-    @Output()
-    public readonly binChange = new EventEmitter<string | null>();
+    public readonly binChange = output<string | null>();
 
     @Input()
     public set codeLength(length: 3 | 4) {
