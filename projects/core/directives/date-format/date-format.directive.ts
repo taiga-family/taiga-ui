@@ -9,12 +9,10 @@ import {Observable} from 'rxjs';
     providers: [tuiProvide(TUI_DATE_FORMAT, TuiDateFormat)],
 })
 export class TuiDateFormat extends Observable<TuiDateFormatSettings> {
-    private readonly parent = toSignal(inject(TUI_DATE_FORMAT, {skipSelf: true}), {
-        requireSync: true,
-    });
+    private readonly parent = toSignal(inject(TUI_DATE_FORMAT, {skipSelf: true}));
 
     private readonly settings = toObservable(
-        computed(() => ({...this.parent(), ...this.tuiDateFormat()})),
+        computed(() => ({...this.parent()!, ...this.tuiDateFormat()})),
     );
 
     public readonly tuiDateFormat = input<Partial<TuiDateFormatSettings>>();
