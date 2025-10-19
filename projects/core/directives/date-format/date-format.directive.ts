@@ -1,27 +1,23 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DATE_FORMAT, type TuiDateFormatSettings} from '@taiga-ui/core/tokens';
-import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
+import {combineLatest, map, Observable} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDateFormat]',
     providers: [tuiProvide(TUI_DATE_FORMAT, TuiDateFormat)],
 })
 export class TuiDateFormat extends Observable<TuiDateFormatSettings> {
-    private readonly settings = new ReplaySubject<Partial<TuiDateFormatSettings>>(1);
     private readonly parent = inject(TUI_DATE_FORMAT, {skipSelf: true});
+
+    public readonly tuiDateFormat = input<Partial<TuiDateFormatSettings>>();
 
     constructor() {
         super((subscriber) =>
-            combineLatest([this.parent, this.settings])
+            combineLatest([this.parent, toObservable(this.tuiDateFormat)])
                 .pipe(map(([parent, settings]) => ({...parent, ...settings})))
                 .subscribe(subscriber),
         );
-    }
-
-    @Input()
-    public set tuiDateFormat(format: Partial<TuiDateFormatSettings>) {
-        this.settings.next(format);
     }
 }
