@@ -59,6 +59,6 @@ export class TuiCopyComponent {
     protected process(value: string | null | undefined): string {
         const source = value ?? '';
 
-        return this.processor ? this.processor.tuiCopyProcessor(source) : source.trim();
+        return this.processor?.tuiCopyProcessor(source) ?? source.trim();
     }
 }
