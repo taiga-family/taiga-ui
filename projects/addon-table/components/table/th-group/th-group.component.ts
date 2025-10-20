@@ -44,7 +44,7 @@ export class TuiTableThGroup<T extends Partial<Record<keyof T, unknown>>>
             startWith(null),
             map(() =>
                 this.heads.reduce(
-                    (record, item) => ({...record, [item.tuiHead]: item}),
+                    (record, item) => ({...record, [item.tuiHead()]: item}),
                     {} as Record<string | keyof T, TuiTableHead<T>>,
                 ),
             ),
