@@ -1,4 +1,4 @@
-import {Directive, inject, Input} from '@angular/core';
+import {computed, Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
@@ -27,9 +27,11 @@ export function tuiFindTouchIndex(touches: TouchList, id: number): number {
 export class TuiTouchable {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly el = tuiInjectElement();
+    protected readonly style = computed<'background' | 'opacity' | 'transform'>(
+        () => this.tuiTouchable() || 'transform',
+    );
 
-    @Input()
-    public tuiTouchable: '' | 'background' | 'opacity' | 'transform' = '';
+    public readonly tuiTouchable = input<'' | 'background' | 'opacity' | 'transform'>('');
 
     constructor() {
         if (!this.isIOS) {
@@ -59,10 +61,6 @@ export class TuiTouchable {
             });
     }
 
-    protected get style(): 'background' | 'opacity' | 'transform' {
-        return this.tuiTouchable || 'transform';
-    }
-
     private hasTouchLeft(
         element: HTMLElement,
         touches: TouchList,
@@ -81,12 +79,12 @@ export class TuiTouchable {
     }
 
     private onTouchStart(): void {
-        if (this.style !== 'transform') {
+        if (this.style() !== 'transform') {
             this.el.style.removeProperty('transition');
         } else {
             this.el.style.setProperty('transition', 'transform 0.2s');
         }
 
-        this.el.style.setProperty(this.style, STYLE[this.style]);
+        this.el.style.setProperty(this.style(), STYLE[this.style()]);
     }
 }
