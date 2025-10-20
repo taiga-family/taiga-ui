@@ -39243,6 +39243,190 @@ export default class Example {
 }
 ```
 
+#### Expandable rows: different ways to toggle rows
+
+**Template:**
+```html
+&lt;table size=&quot;l&quot; tuiTable class=&quot;table&quot; [columns]=&quot;columns&quot; &gt;
+&lt;thead&gt;
+&lt;tr tuiThGroup&gt;
+&lt;th *tuiHead=&quot;&#039;action&#039;&quot; tuiTh [sorter]=&quot;null&quot; &gt;&lt;/th&gt;
+&lt;th *tuiHead=&quot;&#039;firstName&#039;&quot; tuiTh [sorter]=&quot;null&quot; &gt; First name &lt;/th&gt;
+&lt;th *tuiHead=&quot;&#039;lastName&#039;&quot; tuiTh class=&quot;last-name-col&quot; [sorter]=&quot;null&quot; &gt; Last name &lt;/th&gt;
+&lt;th *tuiHead=&quot;&#039;role&#039;&quot; tuiTh [sorter]=&quot;null&quot; &gt; Role &lt;/th&gt;
+&lt;th *tuiHead=&quot;&#039;balance&#039;&quot; tuiTh [sorter]=&quot;null&quot; &gt; Balance &lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody tuiTbody&gt;
+&lt;tr tuiTr class=&quot;expand-heading-row&quot; (click)=&quot;expand.toggle()&quot; &gt;
+&lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;
+&lt;button appearance=&quot;icon&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; [tuiChevron]=&quot;expand.expanded()&quot; &gt; Toggle &lt;/button&gt;
+&lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd [colSpan]=&quot;2&quot; &gt; {{ basicData.length }} Developers (basic usage) &lt;/td&gt;
+&lt;ng-container *tuiCell=&quot;&#039;lastName&#039;&quot; /&gt;
+&lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; dev &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }} &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tui-table-expand #expand [expanded]=&quot;true&quot; &gt;
+&lt;tr *ngFor=&quot;let item of basicData&quot; tuiTr &gt;
+&lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;&lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd &gt;
+&lt;div&gt;
+&lt;tui-chip size=&quot;s&quot; [appearance]=&quot;item.role === &#039;dev&#039; ? &#039;primary&#039; : &#039;secondary&#039;&quot; &gt; {{ item.firstName }} &lt;/tui-chip&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;lastName&#039;&quot; tuiTd &gt; {{ item.lastName }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; {{ item.role }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ item.balance | tuiFormatNumber | async }} &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tui-table-expand&gt;
+&lt;/tbody&gt;
+&lt;tbody tuiTbody&gt;
+&lt;tr tuiTr class=&quot;expand-heading-row&quot; (click)=&quot;manualToggle()&quot; &gt;
+&lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;
+&lt;button appearance=&quot;icon&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; [tuiChevron]=&quot;manualOpen&quot; &gt; Toggle &lt;/button&gt;
+&lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd [colSpan]=&quot;2&quot; &gt; {{ manualOpenData.length }} Designers (manual handling) &lt;/td&gt;
+&lt;ng-container *tuiCell=&quot;&#039;lastName&#039;&quot; /&gt;
+&lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; design &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber | async }} &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tui-table-expand [expanded]=&quot;manualOpen&quot;&gt;
+&lt;tr *ngFor=&quot;let item of manualOpenData&quot; tuiTr &gt;
+&lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;&lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd &gt; {{ item.firstName }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;lastName&#039;&quot; tuiTd &gt; {{ item.lastName }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; {{ item.role }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ item.balance | tuiFormatNumber | async }} &lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tui-table-expand&gt;
+&lt;/tbody&gt;
+&lt;tbody tuiTbody&gt;
+&lt;tr tuiTr&gt;
+&lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;
+&lt;button appearance=&quot;flat-grayscale&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; [style.border-radius]=&quot;&#039;100%&#039;&quot; [tuiChevron]=&quot;customOpen&quot; (click)=&quot;customToggle()&quot; &gt; Toggle &lt;/button&gt;
+&lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd [colSpan]=&quot;2&quot; &gt; Custom content (click on chevron) &lt;/td&gt;
+&lt;ng-container *tuiCell=&quot;&#039;lastName&#039;&quot; /&gt;
+&lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; all &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }} &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td [colSpan]=&quot;columns.length&quot;&gt;
+&lt;tui-expand [expanded]=&quot;customOpen&quot;&gt;
+&lt;div class=&quot;chips&quot;&gt;
+&lt;tui-chip *ngFor=&quot;let item of customContentData&quot; size=&quot;s&quot; [appearance]=&quot;item.role === &#039;dev&#039; ? &#039;primary&#039; : &#039;secondary&#039;&quot; [tuiHint]=&quot;&#039;Balance: &#039; + item.balance + &#039;. Role: &#039; + item.role&quot; &gt; {{ item.firstName }} {{ item.lastName }} &lt;/tui-chip&gt;
+&lt;/div&gt;
+&lt;/tui-expand&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+```
+**TypeScript:**
+```ts
+import {AsyncPipe, NgForOf} from &#039;@angular/common&#039;;
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiTable, TuiTableExpand} from &#039;@taiga-ui/addon-table&#039;;
+import {TuiMapperPipe} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton, TuiFormatNumberPipe, TuiHint} from &#039;@taiga-ui/core&#039;;
+import {TuiExpand} from &#039;@taiga-ui/experimental&#039;;
+import {TuiChevron, TuiChip} from &#039;@taiga-ui/kit&#039;;
+
+interface Item {
+    firstName: string;
+    lastName: string;
+    role: string;
+    balance: number;
+}
+
+@Component({
+    standalone: true,
+    imports: [
+        AsyncPipe,
+        NgForOf,
+        TuiButton,
+        TuiChevron,
+        TuiChip,
+        TuiExpand,
+        TuiFormatNumberPipe,
+        TuiHint,
+        TuiMapperPipe,
+        TuiTable,
+        TuiTableExpand,
+    ],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly basicData: Item[] = [
+        {
+            firstName: &#039;Alex&#039;,
+            lastName: &#039;Inkin&#039;,
+            role: &#039;dev&#039;,
+            balance: 1323525,
+        },
+        {
+            firstName: &#039;Roman&#039;,
+            lastName: &#039;Sedov&#039;,
+            role: &#039;dev&#039;,
+            balance: 423242,
+        },
+        {
+            firstName: &#039;Andrei&#039;,
+            lastName: &#039;Serebrennikov&#039;,
+            role: &#039;dev&#039;,
+            balance: 4223242,
+        },
+    ];
+
+    protected manualOpenData: Item[] = [
+        {
+            firstName: &#039;Joe&#039;,
+            lastName: &#039;Wilson&#039;,
+            role: &#039;design&#039;,
+            balance: 423242,
+        },
+        {
+            firstName: &#039;Julia&#039;,
+            lastName: &#039;Johnson&#039;,
+            role: &#039;design&#039;,
+            balance: 4223242,
+        },
+    ];
+
+    protected readonly customContentData: Item[] = [
+        ...this.basicData,
+        ...this.manualOpenData,
+    ];
+
+    protected readonly columns = [&#039;action&#039;, &#039;firstName&#039;, &#039;lastName&#039;, &#039;role&#039;, &#039;balance&#039;];
+
+    protected manualOpen = false;
+    protected customOpen = false;
+
+    public getSumBalance(people: Item[]): number {
+        return people.reduce((res, item) =&gt; {
+            res += item.balance;
+
+            return res;
+        }, 0);
+    }
+
+    protected manualToggle(): void {
+        this.manualOpen = !this.manualOpen;
+    }
+
+    protected customToggle(): void {
+        this.customOpen = !this.customOpen;
+    }
+}
+```
+
 #### Manual sorting
 
 **Template:**
@@ -40481,119 +40665,132 @@ export default class Example {
 }
 ```
 
-#### Expandable
+#### Expandable rows
 
 **Template:**
 ```html
-&lt;table size=&quot;l&quot; tuiTable class=&quot;table&quot; [columns]=&quot;columns&quot; &gt;
+&lt;table tuiTable class=&quot;table&quot; [columns]=&quot;columns&quot; &gt;
 &lt;thead&gt;
 &lt;tr tuiThGroup&gt;
-&lt;th *tuiHead=&quot;&#039;action&#039;&quot; tuiTh [sorter]=&quot;null&quot; &gt;&lt;/th&gt;
-&lt;th *tuiHead=&quot;&#039;firstName&#039;&quot; tuiTh [sorter]=&quot;null&quot; &gt; First name &lt;/th&gt;
-&lt;th *tuiHead=&quot;&#039;lastName&#039;&quot; tuiTh class=&quot;last-name-col&quot; [sorter]=&quot;null&quot; &gt; Last name &lt;/th&gt;
-&lt;th *tuiHead=&quot;&#039;role&#039;&quot; tuiTh [sorter]=&quot;null&quot; &gt; Role &lt;/th&gt;
-&lt;th *tuiHead=&quot;&#039;balance&#039;&quot; tuiTh [sorter]=&quot;null&quot; &gt; Balance &lt;/th&gt;
+&lt;th tuiTh&gt;&lt;/th&gt;
+&lt;th tuiTh [minWidth]=&quot;50&quot; &gt; # &lt;/th&gt;
+&lt;th tuiTh [minWidth]=&quot;150&quot; &gt; Name &lt;/th&gt;
+&lt;th tuiTh [minWidth]=&quot;150&quot; &gt; Date of Birth &lt;/th&gt;
+&lt;th tuiTh&gt;Age&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
-&lt;tbody tuiTbody&gt;
-&lt;tr tuiTr class=&quot;expand-heading-row&quot; (click)=&quot;expand.toggle()&quot; &gt;
-&lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;
-&lt;button appearance=&quot;icon&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; [tuiChevron]=&quot;expand.expanded()&quot; &gt; Toggle &lt;/button&gt;
-&lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd [colSpan]=&quot;2&quot; &gt; {{ basicData.length }} Developers (basic usage) &lt;/td&gt;
-&lt;ng-container *tuiCell=&quot;&#039;lastName&#039;&quot; /&gt;
-&lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; dev &lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }} &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tui-table-expand #expand [expanded]=&quot;true&quot; &gt;
-&lt;tr *ngFor=&quot;let item of basicData&quot; tuiTr &gt;
-&lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;&lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd &gt;
-&lt;div&gt;
-&lt;tui-chip size=&quot;s&quot; [appearance]=&quot;item.role === &#039;dev&#039; ? &#039;primary&#039; : &#039;secondary&#039;&quot; &gt; {{ item.firstName }} &lt;/tui-chip&gt;
-&lt;/div&gt;
-&lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;lastName&#039;&quot; tuiTd &gt; {{ item.lastName }} &lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; {{ item.role }} &lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ item.balance | tuiFormatNumber | async }} &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tui-table-expand&gt;
-&lt;/tbody&gt;
-&lt;tbody tuiTbody&gt;
-&lt;tr tuiTr class=&quot;expand-heading-row&quot; (click)=&quot;manualToggle()&quot; &gt;
-&lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;
-&lt;button appearance=&quot;icon&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; [tuiChevron]=&quot;manualOpen&quot; &gt; Toggle &lt;/button&gt;
-&lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd [colSpan]=&quot;2&quot; &gt; {{ manualOpenData.length }} Designers (manual handling) &lt;/td&gt;
-&lt;ng-container *tuiCell=&quot;&#039;lastName&#039;&quot; /&gt;
-&lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; design &lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber | async }} &lt;/td&gt;
-&lt;/tr&gt;
-&lt;tui-table-expand [expanded]=&quot;manualOpen&quot;&gt;
-&lt;tr *ngFor=&quot;let item of manualOpenData&quot; tuiTr &gt;
-&lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;&lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd &gt; {{ item.firstName }} &lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;lastName&#039;&quot; tuiTd &gt; {{ item.lastName }} &lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; {{ item.role }} &lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ item.balance | tuiFormatNumber | async }} &lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tui-table-expand&gt;
-&lt;/tbody&gt;
-&lt;tbody tuiTbody&gt;
+&lt;tbody tuiTbody [data]=&quot;data&quot; &gt;
+&lt;ng-container *ngFor=&quot;let item of data; index as i&quot;&gt;
 &lt;tr tuiTr&gt;
-&lt;td *tuiCell=&quot;&#039;action&#039;&quot; tuiTd &gt;
-&lt;button appearance=&quot;flat-grayscale&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; [style.border-radius]=&quot;&#039;100%&#039;&quot; [tuiChevron]=&quot;customOpen&quot; (click)=&quot;customToggle()&quot; &gt; Toggle &lt;/button&gt;
+&lt;td *tuiCell=&quot;&#039;children&#039;&quot; tuiTd &gt;
+&lt;button appearance=&quot;flat-grayscale&quot; size=&quot;xs&quot; tuiIconButton type=&quot;button&quot; class=&quot;chevron-btn&quot; [attr.title]=&quot;item.children?.length ? &#039;&#039; : &#039;No children&#039;&quot; [disabled]=&quot;!item.children?.length&quot; [style.border-radius]=&quot;&#039;100%&#039;&quot; [tuiChevron]=&quot;rowState[i] ?? false&quot; (click)=&quot;toggleRow(i)&quot; &gt; Toggle &lt;/button&gt;
 &lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;firstName&#039;&quot; tuiTd [colSpan]=&quot;2&quot; &gt; Custom content (click on chevron) &lt;/td&gt;
-&lt;ng-container *tuiCell=&quot;&#039;lastName&#039;&quot; /&gt;
-&lt;td *tuiCell=&quot;&#039;role&#039;&quot; tuiTd &gt; all &lt;/td&gt;
-&lt;td *tuiCell=&quot;&#039;balance&#039;&quot; tuiTd &gt; {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;#&#039;&quot; tuiTd &gt; {{ i + 1 }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;name&#039;&quot; tuiTd &gt; {{ item.name }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;dob&#039;&quot; tuiTd &gt; {{ item.dob }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;age&#039;&quot; tuiTd &gt; {{ item.age }} &lt;/td&gt;
 &lt;/tr&gt;
-&lt;tr&gt;
-&lt;td [colSpan]=&quot;columns.length&quot;&gt;
-&lt;tui-expand [expanded]=&quot;customOpen&quot;&gt;
-&lt;div class=&quot;chips&quot;&gt;
-&lt;tui-chip *ngFor=&quot;let item of customContentData&quot; size=&quot;s&quot; [appearance]=&quot;item.role === &#039;dev&#039; ? &#039;primary&#039; : &#039;secondary&#039;&quot; [tuiHint]=&quot;&#039;Balance: &#039; + item.balance + &#039;. Role: &#039; + item.role&quot; &gt; {{ item.firstName }} {{ item.lastName }} &lt;/tui-chip&gt;
-&lt;/div&gt;
-&lt;/tui-expand&gt;
-&lt;/td&gt;
+&lt;tui-table-expand *ngIf=&quot;item.children?.length&quot; [expanded]=&quot;rowState[i] ?? false&quot; &gt;
+&lt;tr *ngFor=&quot;let child of item.children; index as j&quot; tuiTr class=&quot;child&quot; &gt;
+&lt;td *tuiCell=&quot;&#039;children&#039;&quot; tuiTd &gt;&lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;#&#039;&quot; tuiTd &gt; {{ i + 1 }}.{{ j + 1 }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;name&#039;&quot; tuiTd &gt; {{ child.name }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;dob&#039;&quot; tuiTd &gt; {{ child.dob }} &lt;/td&gt;
+&lt;td *tuiCell=&quot;&#039;age&#039;&quot; tuiTd &gt; {{ child.age }} &lt;/td&gt;
 &lt;/tr&gt;
+&lt;/tui-table-expand&gt;
+&lt;/ng-container&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe, NgForOf} from &#039;@angular/common&#039;;
+import {NgForOf, NgIf} from &#039;@angular/common&#039;;
 import {Component} from &#039;@angular/core&#039;;
+import {FormsModule, ReactiveFormsModule} from &#039;@angular/forms&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiTable, TuiTableExpand} from &#039;@taiga-ui/addon-table&#039;;
-import {TuiMapperPipe} from &#039;@taiga-ui/cdk&#039;;
-import {TuiButton, TuiFormatNumberPipe, TuiHint} from &#039;@taiga-ui/core&#039;;
-import {TuiExpand} from &#039;@taiga-ui/experimental&#039;;
-import {TuiChevron, TuiChip} from &#039;@taiga-ui/kit&#039;;
+import {TuiTable} from &#039;@taiga-ui/addon-table&#039;;
+import {TuiDay, tuiToInt} from &#039;@taiga-ui/cdk&#039;;
+import {TuiButton} from &#039;@taiga-ui/core&#039;;
+import {TuiChevron} from &#039;@taiga-ui/kit&#039;;
 
-interface Item {
-    firstName: string;
-    lastName: string;
-    role: string;
-    balance: number;
+interface User {
+    readonly dob: TuiDay;
+    readonly name: string;
+    readonly age: number;
+    children?: User[];
+}
+
+const TODAY = TuiDay.currentLocal();
+
+const FIRST = [
+    &#039;John&#039;,
+    &#039;Jane&#039;,
+    &#039;Jack&#039;,
+    &#039;Jill&#039;,
+    &#039;James&#039;,
+    &#039;Joan&#039;,
+    &#039;Jim&#039;,
+    &#039;Julia&#039;,
+    &#039;Joe&#039;,
+    &#039;Julia&#039;,
+];
+
+const LAST = [
+    &#039;Smith&#039;,
+    &#039;West&#039;,
+    &#039;Brown&#039;,
+    &#039;Jones&#039;,
+    &#039;Davis&#039;,
+    &#039;Miller&#039;,
+    &#039;Johnson&#039;,
+    &#039;Jackson&#039;,
+    &#039;Williams&#039;,
+    &#039;Wilson&#039;,
+];
+
+const DATA: readonly User[] = Array.from({length: 10}, (_, index) =&gt; {
+    // From 5 to 0 children
+    const childrenCount = 5 - (index % 6),
+        user = generateUser();
+
+    user.children = Array.from({length: childrenCount}, () =&gt; generateUser());
+
+    return user;
+});
+
+function getAge(dob: TuiDay): number {
+    const years = TODAY.year - dob.year;
+    const months = TODAY.month - dob.month;
+    const days = TODAY.day - dob.day;
+    const offset = tuiToInt(months &gt; 0 || (!months &amp;&amp; days &gt; 9));
+
+    return years + offset;
+}
+
+function generateUser(): User {
+    const dob = TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
+        age = getAge(dob),
+        name = `${LAST[getRandom(0, 9)]}, ${FIRST[getRandom(0, 9)]}`;
+
+    return {name, dob, age};
+}
+
+function getRandom(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
 @Component({
     standalone: true,
     imports: [
-        AsyncPipe,
+        FormsModule,
         NgForOf,
+        NgIf,
+        ReactiveFormsModule,
         TuiButton,
         TuiChevron,
-        TuiChip,
-        TuiExpand,
-        TuiFormatNumberPipe,
-        TuiHint,
-        TuiMapperPipe,
         TuiTable,
-        TuiTableExpand,
     ],
     templateUrl: &#039;./index.html&#039;,
     styleUrls: [&#039;./index.less&#039;],
@@ -40601,66 +40798,13 @@ interface Item {
     changeDetection,
 })
 export default class Example {
-    protected readonly basicData: Item[] = [
-        {
-            firstName: &#039;Alex&#039;,
-            lastName: &#039;Inkin&#039;,
-            role: &#039;dev&#039;,
-            balance: 1323525,
-        },
-        {
-            firstName: &#039;Roman&#039;,
-            lastName: &#039;Sedov&#039;,
-            role: &#039;dev&#039;,
-            balance: 423242,
-        },
-        {
-            firstName: &#039;Andrei&#039;,
-            lastName: &#039;Serebrennikov&#039;,
-            role: &#039;dev&#039;,
-            balance: 4223242,
-        },
-    ];
+    protected columns = [&#039;children&#039;, &#039;#&#039;, &#039;name&#039;, &#039;dob&#039;, &#039;age&#039;];
+    protected readonly data = DATA;
 
-    protected manualOpenData: Item[] = [
-        {
-            firstName: &#039;Joe&#039;,
-            lastName: &#039;Wilson&#039;,
-            role: &#039;design&#039;,
-            balance: 423242,
-        },
-        {
-            firstName: &#039;Julia&#039;,
-            lastName: &#039;Johnson&#039;,
-            role: &#039;design&#039;,
-            balance: 4223242,
-        },
-    ];
+    protected readonly rowState: Record&lt;number, boolean&gt; = {};
 
-    protected readonly customContentData: Item[] = [
-        ...this.basicData,
-        ...this.manualOpenData,
-    ];
-
-    protected readonly columns = [&#039;action&#039;, &#039;firstName&#039;, &#039;lastName&#039;, &#039;role&#039;, &#039;balance&#039;];
-
-    protected manualOpen = false;
-    protected customOpen = false;
-
-    public getSumBalance(people: Item[]): number {
-        return people.reduce((res, item) =&gt; {
-            res += item.balance;
-
-            return res;
-        }, 0);
-    }
-
-    protected manualToggle(): void {
-        this.manualOpen = !this.manualOpen;
-    }
-
-    protected customToggle(): void {
-        this.customOpen = !this.customOpen;
+    protected toggleRow(index: number): void {
+        this.rowState[index] = !this.rowState[index];
     }
 }
 ```
@@ -40691,7 +40835,8 @@ export default class Page {
         &#039;Dynamic columns&#039;,
         &#039;Footer&#039;,
         &#039;Resize a large table&#039;,
-        &#039;Expandable&#039;,
+        &#039;Expandable rows&#039;,
+        &#039;Expandable rows: different ways to toggle rows&#039;,
         &#039;Manual sorting&#039;,
     ];
 }
