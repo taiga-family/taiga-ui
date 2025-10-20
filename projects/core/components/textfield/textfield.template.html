@@ -5,7 +5,7 @@
 <ng-content select="label" />
 <span
     class="t-content"
-    (pointerdown.prevent)="input?.nativeElement?.focus()"
+    (pointerdown)="input?.nativeElement?.focus()"
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
