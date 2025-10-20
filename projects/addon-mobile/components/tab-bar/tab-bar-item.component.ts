@@ -12,7 +12,7 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
 export class TuiTabBarItem {
     public readonly icon = input('');
 
-    public readonly badge = input<number | null>(null);
+    public readonly badge = input<number>();
 
     protected format(value: number): string {
         return value > 999 ? '999+' : String(value);
