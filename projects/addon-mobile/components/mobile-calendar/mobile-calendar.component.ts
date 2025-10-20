@@ -13,6 +13,7 @@ import {
     inject,
     Input,
     input,
+    model,
     NgZone,
     Output,
     output,
@@ -57,7 +58,6 @@ import {
 } from '@taiga-ui/kit/tokens';
 import {tuiToggleDay} from '@taiga-ui/kit/utils';
 import {
-    BehaviorSubject,
     debounceTime,
     delay,
     distinctUntilChanged,
@@ -119,10 +119,6 @@ export class TuiMobileCalendar implements AfterViewInit {
     private readonly monthsScrollRef =
         viewChild<CdkVirtualScrollViewport>('monthsScrollRef');
 
-    private readonly value$ = new BehaviorSubject<
-        TuiDay | TuiDayRange | readonly TuiDay[] | null
-    >(null);
-
     private readonly today = TuiDay.currentLocal();
     private activeYear = 0;
     private activeMonth = 0;
@@ -178,8 +174,10 @@ export class TuiMobileCalendar implements AfterViewInit {
 
     public readonly confirm = output<TuiDay | TuiDayRange | readonly TuiDay[]>();
 
+    public readonly value$ = model<TuiDay | TuiDayRange | readonly TuiDay[] | null>(null);
+
     @Output()
-    public readonly valueChange = this.value$.pipe(
+    public readonly valueChange = toObservable(this.value$).pipe(
         skip(1),
         distinctUntilChanged((a, b) => a?.toString() === b?.toString()),
         map((x) => (!this.single() && x instanceof TuiDay ? new TuiDayRange(x, x) : x)),
@@ -196,12 +194,12 @@ export class TuiMobileCalendar implements AfterViewInit {
     @Input()
     public set value(value: TuiDay | TuiDayRange | readonly TuiDay[] | null | undefined) {
         if (value !== undefined) {
-            this.value$.next(value);
+            this.value$.set(value);
         }
     }
 
     public get value(): TuiDay | TuiDayRange | readonly TuiDay[] | null {
-        return this.value$.value;
+        return this.value$();
     }
 
     public ngAfterViewInit(): void {
