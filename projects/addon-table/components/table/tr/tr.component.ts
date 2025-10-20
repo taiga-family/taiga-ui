@@ -57,7 +57,7 @@ export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>>
         switchMap(() => tuiQueryListChanges(this.cells)),
         map((cells) =>
             cells.reduce(
-                (record, item) => ({...record, [item.tuiCell]: item}),
+                (record, item) => ({...record, [item.tuiCell()]: item}),
                 {} as Record<string | keyof T, TuiTableCell>,
             ),
         ),
