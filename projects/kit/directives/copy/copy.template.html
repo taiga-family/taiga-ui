@@ -3,7 +3,7 @@
     tuiHintAppearance="dark"
     tuiHintDirection="top"
     class="t-content"
-    [cdkCopyToClipboard]="content.textContent ?? ''"
+    [cdkCopyToClipboard]="content.textContent?.trim() ?? ''"
     [tuiHint]="template"
     [tuiHintManual]="!!hint()"
     (cdkCopyToClipboardCopied)="copied$.next($event)"
@@ -17,7 +17,7 @@
     type="button"
     class="t-button"
     [attr.aria-label]="texts()?.[0]"
-    [cdkCopyToClipboard]="content.textContent ?? ''"
+    [cdkCopyToClipboard]="content.textContent?.trim() ?? ''"
     [iconStart]="icon"
     (cdkCopyToClipboardCopied)="copied$.next($event)"
 ></button>
