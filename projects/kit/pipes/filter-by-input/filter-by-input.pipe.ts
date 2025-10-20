@@ -10,6 +10,8 @@ import {
 } from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
+import {TUI_FILTER_BY_INPUT_HANDLER} from './filter-option.token';
+
 // TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields
 @Pipe({
     standalone: true,
@@ -22,6 +24,10 @@ export class TuiFilterByInputPipe implements PipeTransform {
     private readonly host = inject(TUI_DATA_LIST_HOST);
     private readonly itemsHandlers: TuiItemsHandlers<unknown> =
         inject(TUI_ITEMS_HANDLERS);
+
+    private readonly customHandler = inject(TUI_FILTER_BY_INPUT_HANDLER, {
+        optional: true,
+    });
 
     public transform<T>(
         items: ReadonlyArray<readonly T[]>,
@@ -40,6 +46,12 @@ export class TuiFilterByInputPipe implements PipeTransform {
         items: ReadonlyArray<readonly T[]> | readonly T[] | null,
         matcher: TuiStringMatcher<T> = TUI_DEFAULT_MATCHER,
     ): ReadonlyArray<readonly T[]> | readonly T[] | null {
+        const query = this.textfield?.value() || this.getHostInputValue();
+
+        if (this.customHandler) {
+            return this.customHandler(items, matcher, query);
+        }
+
         return this.filter<T>(
             items,
             matcher,
@@ -47,9 +59,7 @@ export class TuiFilterByInputPipe implements PipeTransform {
                 ? this.itemsHandlers.stringify()
                 : // TODO(v5): delete backward compatibility
                   this.host.stringify) || String,
-            this.textfield?.value() ||
-                (this.host as any).nativeFocusableElement?.value ||
-                '',
+            this.textfield?.value() || this.getHostInputValue() || '',
         );
     }
 
@@ -108,5 +118,11 @@ export class TuiFilterByInputPipe implements PipeTransform {
         return items.find(
             (item) => stringify(item).toLocaleLowerCase() === query.toLocaleLowerCase(),
         );
+    }
+
+    private getHostInputValue(): string {
+        const hostWithInput = this.host as {nativeFocusableElement?: {value?: string}};
+
+        return hostWithInput.nativeFocusableElement?.value ?? '';
     }
 }
