@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 
@@ -10,11 +10,9 @@ import {TuiIcon} from '@taiga-ui/core/components/icon';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiTabBarItem {
-    @Input()
-    public icon = '';
+    public readonly icon = input('');
 
-    @Input()
-    public badge?: number | null = null;
+    public readonly badge = input<number | null>(null);
 
     protected format(value: number): string {
         return value > 999 ? '999+' : String(value);
