@@ -1,4 +1,4 @@
-# app/home/examples/addons.md
+# addons.md
 
 ```bash
 npm i @taiga-ui/addon-charts    // Components for various charts, graphs and visualizations
@@ -10,7 +10,7 @@ npm i @taiga-ui/layout          // Layout components
 ```
 
 ---
-# app/home/examples/angular-json-styles.md
+# angular-json-styles.md
 
 ```json
 {
@@ -33,7 +33,7 @@ npm i @taiga-ui/layout          // Layout components
 ```
 
 ---
-# app/home/examples/app-standalone.md
+# app-standalone.md
 
 ```ts
 import {TuiRoot} from '@taiga-ui/core';
@@ -51,7 +51,7 @@ export class App {}
 ```
 
 ---
-# app/home/examples/app-template.md
+# app-template.md
 
 ```html
 <tui-root>
@@ -63,7 +63,7 @@ export class App {}
 ```
 
 ---
-# app/home/examples/assets.md
+# assets.md
 
 ```json
 {
@@ -87,7 +87,7 @@ export class App {}
 ```
 
 ---
-# app/home/examples/components-styles.md
+# components-styles.md
 
 ```ts
 @Component({
@@ -98,7 +98,7 @@ export class Example {}
 ```
 
 ---
-# app/home/examples/import-local-less.md
+# import-local-less.md
 
 ```less
 @import '@taiga-ui/core/styles/taiga-ui-local.less';
@@ -106,7 +106,7 @@ export class Example {}
 ```
 
 ---
-# app/home/examples/main-standalone.md
+# main-standalone.md
 
 ```ts
 import {provideAnimations} from '@angular/platform-browser/animations';
@@ -122,14 +122,14 @@ bootstrapApplication(App, {
 ```
 
 ---
-# app/home/examples/main.md
+# main.md
 
 ```bash
 npm i @taiga-ui/{cdk,core,kit,icons}
 ```
 
 ---
-# app/home/examples/nx-add.md
+# nx-add.md
 
 ```bash
 npm i taiga-ui
@@ -137,7 +137,7 @@ nx g taiga-ui:ng-add
 ```
 
 ---
-# app/home/examples/nx-assets.md
+# nx-assets.md
 
 ```json
 {
@@ -159,7 +159,7 @@ nx g taiga-ui:ng-add
 ```
 
 ---
-# app/home/examples/nx-migrate.md
+# nx-migrate.md
 
 ```bash
 nx migrate @taiga-ui/cdk
@@ -167,14 +167,14 @@ nx migrate --run-migrations=migrations.json
 ```
 
 ---
-# app/home/examples/ponyfill.md
+# ponyfill.md
 
 ```bash
 npm install css-vars-ponyfill
 ```
 
 ---
-# app/home/examples/project-json-styles.md
+# project-json-styles.md
 
 ```json
 {
@@ -27441,7 +27441,6 @@ export default class Page {
 - **Package**: `ADDON-MOBILE`
 - **Type**: components
 Component for showing a dialog on mobile devices. It emulates appearance of native alerts on iOS and Android
-
 
 ### How to Use (Template)
 
