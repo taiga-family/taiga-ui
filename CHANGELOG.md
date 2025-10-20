@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.59.0](https://github.com/taiga-family/taiga-ui/compare/v4.58.0...v4.59.0) (2025-10-20)
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** `tuiRawLoad` is incompatible with esbuild loaders
+  ([#12270](https://github.com/taiga-family/taiga-ui/issues/12270))
+  ([ee2c23d](https://github.com/taiga-family/taiga-ui/commit/ee2c23d5d2a9b9f3084f00ea173cd22ca279ae91))
+- **cdk:** rename to correct migration warning for illustrations
+  ([#12249](https://github.com/taiga-family/taiga-ui/issues/12249))
+  ([5ac70f0](https://github.com/taiga-family/taiga-ui/commit/5ac70f01bb899db864b3fa6fa4235cbe69bf9ade))
+- **experimental:** `PdfPreview` use `isMobileRes` token for header
+  ([#12293](https://github.com/taiga-family/taiga-ui/issues/12293))
+  ([b815b91](https://github.com/taiga-family/taiga-ui/commit/b815b910bd42b6e752431f3506c51643dad025fc))
+- **kit:** correct tooltip hint inside tui-textfield on iOS
+  ([#12245](https://github.com/taiga-family/taiga-ui/issues/12245))
+  ([d735b7e](https://github.com/taiga-family/taiga-ui/commit/d735b7e004f36ac7f40b6ed145fcd5d8c95aaba7))
+- **schematics:** the path argument must be of type string
+  ([#12292](https://github.com/taiga-family/taiga-ui/issues/12292))
+  ([bd75b60](https://github.com/taiga-family/taiga-ui/commit/bd75b60b39c3d79fdc44f50dbb7e41b384677734))
+
+### 🚀 Features
+
+- **addon-doc:** configurable page by router providers ([#12272](https://github.com/taiga-family/taiga-ui/issues/12272))
+  ([cbbb56e](https://github.com/taiga-family/taiga-ui/commit/cbbb56e2d2cb4e18fad16cd086eec7f85ba398f9))
+- **kit:** `Copy` support `tuiCopyProcessor` and trim content by default
+  ([#12329](https://github.com/taiga-family/taiga-ui/issues/12329))
+  ([8773222](https://github.com/taiga-family/taiga-ui/commit/8773222ce191e14f809c1aa5c59ecc143514074b))
+
 ## [4.58.0](https://github.com/taiga-family/taiga-ui/compare/v4.57.0...v4.58.0) (2025-10-13)
 
 ### 🐞 Bug Fixes
