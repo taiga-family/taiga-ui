@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[67276],{67276:e=>{e.exports='<tui-copy [tuiCopyProcessor]="processor">Taiga UI</tui-copy>\n<p>\n    When you copy, the result will have a space prepended and appended:\n    <code>" Taiga UI "</code>\n    .\n</p>\n'}}]);
