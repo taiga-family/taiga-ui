@@ -11509,6 +11509,33 @@ export default class Example {
 }
 ```
 
+#### With CopyProcessor
+
+**Template:**
+```html
+&lt;tui-copy [tuiCopyProcessor]=&quot;processor&quot;&gt;Taiga UI&lt;/tui-copy&gt;
+&lt;p&gt; When you copy, the result will have a space prepended and appended: &lt;code&gt;&quot; Taiga UI &quot;&lt;/code&gt; . &lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiCopyProcessor} from &#039;@taiga-ui/cdk&#039;;
+import {TuiCopy} from &#039;@taiga-ui/kit&#039;;
+
+@Component({
+    standalone: true,
+    imports: [TuiCopy, TuiCopyProcessor],
+    templateUrl: &#039;./index.html&#039;,
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly processor = (value: string): string =&gt; ` ${value} `;
+}
+```
+
 
 ### TypeScript
 
@@ -11524,7 +11551,7 @@ import {TuiDemo} from &#039;@demo/utils&#039;;
     changeDetection,
 })
 export default class Example {
-    protected readonly examples = [&#039;Basic&#039;, &#039;Sizes&#039;, &#039;InputCopy&#039;];
+    protected readonly examples = [&#039;Basic&#039;, &#039;Sizes&#039;, &#039;InputCopy&#039;, &#039;With CopyProcessor&#039;];
 }
 ```
 
