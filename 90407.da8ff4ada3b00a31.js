@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[90407],{90407:e=>{e.exports='<tui-input-range\n    *tuiLet="\'USD\' | tuiCurrency as currency"\n    [max]="999"\n    [min]="0"\n    [postfix]="[\' per day\', \' per day\']"\n    [prefix]="[currency, currency]"\n    [(ngModel)]="value"\n/>\n'}}]);
