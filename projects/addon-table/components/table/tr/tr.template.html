@@ -1,5 +1,5 @@
 @if (cells$ | async; as items) {
-    @for (key of table.columns; track key) {
+    @for (key of table.columns(); track key) {
         <ng-container [ngTemplateOutlet]="(items[key] && items[key].template) || plain">
             <ng-template #plain>
                 @if (item$ | async; as item) {

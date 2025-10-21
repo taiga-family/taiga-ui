@@ -7,6 +7,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    input,
     type OnChanges,
     Output,
     signal,
@@ -70,8 +71,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
 
     protected readonly nothing = tuiWithStyles(Styles);
 
-    @Input()
-    public columns: ReadonlyArray<string | keyof T> = [];
+    public readonly columns = input<ReadonlyArray<string | keyof T>>([]);
 
     @Input()
     public direction = this.options.direction;
@@ -106,16 +106,11 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     );
 
     public readonly appearance = signal('table');
-    public readonly size = signal(this.options.size);
+    public readonly size = input<TuiSizeL | TuiSizeS>(this.options.size);
     public readonly cleaner = signal(false);
 
     // TODO: refactor to signal inputs after Angular update
     public readonly change$ = new Subject<void>();
-
-    @Input('size')
-    public set sizeSetter(size: TuiSizeL | TuiSizeS) {
-        this.size.set(size);
-    }
 
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
         if (this.sorter === sorter) {
