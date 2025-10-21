@@ -1,6 +1,6 @@
 <ng-content />
 @if (heads$ | async; as headings) {
-    @for (key of table.columns; track key) {
+    @for (key of table.columns(); track key) {
         <ng-container
             [ngTemplateOutlet]="headings?.[key]?.template || plain"
             [ngTemplateOutletContext]="{$implicit: key}"
