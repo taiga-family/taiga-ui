@@ -67,6 +67,21 @@
             [component]="5 | tuiComponent"
             [content]="5 | tuiExample"
         />
+
+        <tui-doc-example
+            id="value-transformer"
+            heading="Value transformer"
+            [component]="6 | tuiComponent"
+            [content]="6 | tuiExample"
+            [description]="transformer"
+        />
+        <ng-template #transformer>
+            By default component works with our internal type called
+            <code>TuiDay</code>
+            . If you prefer to use anything else, like a string or native
+            <code>Date</code>
+            you can provide custom transformer in options to store value in different format in form control
+        </ng-template>
     </ng-template>
 
     <ng-template pageTab>

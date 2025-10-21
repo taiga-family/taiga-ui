@@ -2,10 +2,9 @@ import {computed, Directive, effect, inject, Input, signal} from '@angular/core'
 import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
-import {tuiAsControl} from '@taiga-ui/cdk/classes';
+import {tuiAsControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {DATE_FILLER_LENGTH, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
-import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {
@@ -24,12 +23,14 @@ import {
 } from '@taiga-ui/kit/components/input-date';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
+import {TUI_INPUT_DATE_MULTI_OPTIONS} from './input-date-multi.options';
+
 @Directive({
     standalone: true,
     selector: 'input[tuiInputDateMulti]',
     providers: [
         tuiAsControl(TuiInputDateMultiDirective),
-        tuiFallbackValueProvider([]),
+        tuiValueTransformerFrom(TUI_INPUT_DATE_MULTI_OPTIONS),
         tuiAsTextfieldAccessor(TuiInputDateMultiDirective),
     ],
     hostDirectives: [
@@ -46,12 +47,23 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
     },
 })
 export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay> {
-    private readonly dateOptions = inject(TUI_INPUT_DATE_OPTIONS_NEW);
+    private readonly dateOptions = inject(TUI_INPUT_DATE_MULTI_OPTIONS);
 
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS_NEW);
     protected readonly filler = tuiWithDateFiller();
-    protected readonly stringify = this.handlers.stringify.set((item) =>
-        item.toString(this.format().mode, this.format().separator),
+    protected readonly stringify = this.handlers.stringify.set(
+        (item: TuiDay | Date): string => {
+            if (item instanceof TuiDay) {
+                return item.toString(this.format().mode, this.format().separator);
+            }
+            if (item instanceof Date) {
+                return TuiDay.fromLocalNativeDate(item).toString(
+                    this.format().mode,
+                    this.format().separator,
+                );
+            }
+            return '';
+        },
     );
 
     protected readonly mask = tuiMaskito(
