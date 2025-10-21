@@ -52,16 +52,18 @@ export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_DATE_OPTIONS_NEW);
     protected readonly filler = tuiWithDateFiller();
     protected readonly stringify = this.handlers.stringify.set(
-        (item: TuiDay | Date): string => {
+        (item: Date | TuiDay): string => {
             if (item instanceof TuiDay) {
                 return item.toString(this.format().mode, this.format().separator);
             }
+
             if (item instanceof Date) {
                 return TuiDay.fromLocalNativeDate(item).toString(
                     this.format().mode,
                     this.format().separator,
                 );
             }
+
             return '';
         },
     );
