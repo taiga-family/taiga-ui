@@ -17,7 +17,7 @@
     </td>
 </tr>
 
-@if (!hiddenOptions.includes('thousandSeparator')) {
+@if (!hiddenOptions().includes('thousandSeparator')) {
     <tr
         name="[thousandSeparator]"
         tuiDocAPIItem
@@ -29,7 +29,7 @@
     </tr>
 }
 
-@if (!hiddenOptions.includes('decimalSeparator')) {
+@if (!hiddenOptions().includes('decimalSeparator')) {
     <tr
         name="[decimalSeparator]"
         tuiDocAPIItem
@@ -41,7 +41,7 @@
     </tr>
 }
 
-@if (!hiddenOptions.includes('precision')) {
+@if (!hiddenOptions().includes('precision')) {
     <tr
         name="[precision]"
         tuiDocAPIItem
@@ -57,7 +57,7 @@
     </tr>
 }
 
-@if (!hiddenOptions.includes('decimalMode')) {
+@if (!hiddenOptions().includes('decimalMode')) {
     <tr
         name="[decimalMode]"
         tuiDocAPIItem
@@ -89,7 +89,7 @@
     </tr>
 }
 
-@if (!hiddenOptions.includes('rounding')) {
+@if (!hiddenOptions().includes('rounding')) {
     <tr
         name="[rounding]"
         tuiDocAPIItem

@@ -1,7 +1,7 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    Input,
+    input,
     signal,
     type WritableSignal,
 } from '@angular/core';
@@ -45,8 +45,9 @@ export class TuiDocNumberFormat
         'floor',
     ];
 
-    @Input()
-    public hiddenOptions: Array<TuiLooseUnion<keyof TuiNumberFormatSettings>> = [];
+    public readonly hiddenOptions = input<
+        Array<TuiLooseUnion<keyof TuiNumberFormatSettings>>
+    >([]);
 
     public thousandSeparator = signal(TUI_DEFAULT_NUMBER_FORMAT.thousandSeparator);
     public decimalSeparator = signal(TUI_DEFAULT_NUMBER_FORMAT.decimalSeparator);

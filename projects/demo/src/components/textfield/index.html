@@ -6,7 +6,7 @@
         </span>
     </td>
 </tr>
-@if (!hiddenOptions.includes('cleaner')) {
+@if (!hiddenOptions().includes('cleaner')) {
     <tr
         name="[tuiTextfieldCleaner]"
         tuiDocAPIItem
@@ -16,7 +16,7 @@
         Shows a cross to reset a value
     </tr>
 }
-@if (!hiddenOptions.includes('size')) {
+@if (!hiddenOptions().includes('size')) {
     <tr
         name="[tuiTextfieldSize]"
         tuiDocAPIItem
@@ -43,7 +43,7 @@
     </tr>
 }
 
-@if (!hiddenOptions.includes('rows')) {
+@if (!hiddenOptions().includes('rows')) {
     <tr
         name="[rows]"
         tuiDocAPIItem

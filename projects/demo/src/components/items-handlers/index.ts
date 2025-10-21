@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, signal} from '@angular/core';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import {
     TUI_FALSE_HANDLER,
@@ -36,8 +36,9 @@ export class TuiDocItemsHandlers {
 
     protected readonly falseHandler: TuiBooleanHandler<any> = TUI_FALSE_HANDLER;
 
-    @Input()
-    public hiddenOptions: Array<TuiLooseUnion<keyof TuiItemsHandlers<unknown>>> = [];
+    public readonly hiddenOptions = input<
+        Array<TuiLooseUnion<keyof TuiItemsHandlers<unknown>>>
+    >([]);
 
     public readonly stringify = signal(this.stringifyVariants[0]!);
     public readonly disabledItemHandler = signal(this.falseHandler);
