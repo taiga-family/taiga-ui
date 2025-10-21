@@ -9798,8 +9798,7 @@ You can use ComboBox with virtual scrolling from &#64;angular/cdk/scrolling .
 <ng-container *tuiDropdown>
 <!-- 44 = option height -->
 <!-- 4 = margin between options -->
-<!-- 8 = data list padding -->
-<cdk-virtual-scroll-viewport *tuiLet="countries | tuiFilterByInput as items" tuiScrollable class="scroll" [itemSize]="44" [maxBufferPx]="44 * 10" [minBufferPx]="44 * 5" [style.height.px]="(items?.length || 1) * (44 + 4) + 8" >
+<!-- 8 = data list padding --> @let items = countries | tuiFilterByInput; <cdk-virtual-scroll-viewport tuiScrollable class="scroll" [itemSize]="44" [maxBufferPx]="44 * 10" [minBufferPx]="44 * 5" [style.height.px]="(items?.length || 1) * (44 + 4) + 8" >
 <tui-data-list>
 <button *cdkVirtualFor="let item of items" new tuiOption type="button" [value]="item" > {{ item }} </button>
 </tui-data-list>
@@ -9815,7 +9814,6 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLet} from '@taiga-ui/cdk';
 import {TuiDataList, TuiScrollable, TuiTextfield} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
@@ -9833,7 +9831,6 @@ import {
         TuiComboBox,
         TuiDataList,
         TuiFilterByInputPipe,
-        TuiLet,
         TuiScrollable,
         TuiTextfield,
     ],
@@ -10139,7 +10136,7 @@ Pass null as argument to tui-data-list-wrapper[items] to show loader inside the 
 
 **Template:**
 ```html
-<tui-textfield *tuiLet="items$ | async as items" tuiChevron >
+@let items = items$ | async; <tui-textfield tuiChevron>
 <input #inputRef placeholder="Search country" tuiComboBox [(ngModel)]="value" (input)="search$.next($any($event.target).value)" />
 <tui-data-list-wrapper *tuiDropdown new [emptyContent]="inputRef.value.length < 2 ? 'Enter at least 2 characters' : 'Nothing found!'" [items]="inputRef.value.length < 2 ? [] : items" /> @if (items && showLoader()) { <tui-loader /> } </tui-textfield>
 ```
@@ -10150,7 +10147,6 @@ import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLet} from '@taiga-ui/cdk';
 import {TuiLoader, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 import {debounceTime, filter, of, Subject, switchMap, tap} from 'rxjs';
@@ -10164,7 +10160,6 @@ import {DatabaseServer} from './database';
         TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,
-        TuiLet,
         TuiLoader,
         TuiTextfield,
     ],
@@ -11121,11 +11116,9 @@ export default class Example {
 ```html
 <button appearance="flat" iconStart="@tui.ellipsis-vertical" tuiIconButton type="button" [tuiAppearanceState]="open ? 'hover' : null" [tuiDropdown]="content" [(tuiDropdownOpen)]="open" > Open </button>
 <ng-template #content>
-<tui-data-list tuiDataListDropdownManager [size]="size" >
-<button *tuiLet="'French Fries' as item" tuiOption type="button" (click)="selectOption(item)" > {{ item }} </button>
+<tui-data-list tuiDataListDropdownManager [size]="size" > @let frenchFries = 'French Fries'; <button tuiOption type="button" (click)="selectOption(frenchFries)" > {{ frenchFries }} </button>
 <button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="burgersTmp" > Burgers </button>
-<button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="drinksTmp" > Drinks </button>
-<button *tuiLet="'Ice Cream' as item" tuiOption type="button" (click)="selectOption(item)" > {{ item }} </button>
+<button iconEnd="@tui.chevron-right" tuiDropdownAlign="right" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="drinksTmp" > Drinks </button> @let item = 'Ice Cream'; <button tuiOption type="button" (click)="selectOption(item)" > {{ item }} </button>
 </tui-data-list>
 <ng-template #burgersTmp>
 <tui-data-list tuiDataListDropdownManager> @for (burger of burgers; track burger) { <button tuiOption type="button" (click)="selectOption(burger)" > {{ burger }} </button> } <button iconEnd="@tui.chevron-right" iconStart="@tui.menu" tuiDropdownAlign="right" tuiDropdownManual tuiDropdownSided tuiOption type="button" [tuiDropdown]="drinksTmp" > Nested menu </button>
@@ -11141,7 +11134,6 @@ export default class Example {
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLet} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
@@ -11153,7 +11145,7 @@ import {
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButton, TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiLet],
+    imports: [TuiButton, TuiDataList, TuiDataListDropdownManager, TuiDropdown],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -21888,7 +21880,7 @@ Use prefix / postfix parameters to set non-removable text before / after the num
 
 **Template:**
 ```html
-<tui-input-range *tuiLet="'USD' | tuiCurrency as currency" [max]="999" [min]="0" [postfix]="[' per day', ' per day']" [prefix]="[currency, currency]" [(ngModel)]="value" />
+@let currency = 'USD' | tuiCurrency; <tui-input-range [max]="999" [min]="0" [postfix]="[' per day', ' per day']" [prefix]="[currency, currency]" [(ngModel)]="value" />
 ```
 **TypeScript:**
 ```ts
@@ -21897,11 +21889,10 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCurrencyPipe} from '@taiga-ui/addon-commerce';
-import {TuiLet} from '@taiga-ui/cdk';
 import {TuiInputRange} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiCurrencyPipe, TuiInputRange, TuiLet],
+    imports: [FormsModule, TuiCurrencyPipe, TuiInputRange],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -32928,8 +32919,7 @@ export class Example {
 ### Example
 
 ```html
-<ng-template>
-<tui-textfield *tuiLet="textfieldDoc.size === 's' || !control.value as showPlaceholder" tuiChevron [content]="control.value && textfieldContent" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (!showPlaceholder) { <label tuiLabel>Choose country</label> } <input tuiSelect [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
+<ng-template> @let showPlaceholder = textfieldDoc.size === 's' || !control.value; <tui-textfield tuiChevron [content]="control.value && textfieldContent" [disabledItemHandler]="itemsHandlers.disabledItemHandler()" [identityMatcher]="itemsHandlers.identityMatcher()" [stringify]="itemsHandlers.stringify()" [tuiDropdownAlign]="dropdown.align" [tuiDropdownAppearance]="dropdown.appearance" [tuiDropdownDirection]="dropdown.direction" [tuiDropdownLimitWidth]="dropdown.limitWidth" [tuiDropdownMaxHeight]="dropdown.maxHeight" [tuiDropdownMinHeight]="dropdown.minHeight" [tuiDropdownOffset]="dropdown.offset" [tuiTextfieldCleaner]="textfieldDoc.cleaner" [tuiTextfieldSize]="textfieldDoc.size" [(open)]="dropdown.open" > @if (!showPlaceholder) { <label tuiLabel>Choose country</label> } <input tuiSelect [formControl]="control" [invalid]="controlDoc.invalid" [placeholder]="showPlaceholder ? 'Choose country' : ''" [readOnly]="controlDoc.readonly" [tuiDisabled]="controlDoc.disabled" />
 <tui-data-list-wrapper *tuiDropdown new [items]="countries()" />
 </tui-textfield>
 </ng-template>
@@ -33505,7 +33495,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
-import {TUI_IS_MOBILE, type TuiContext, TuiLet} from '@taiga-ui/cdk';
+import {TUI_IS_MOBILE, type TuiContext} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 import {TUI_COUNTRIES, TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -33526,7 +33516,6 @@ interface Country {
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
-        TuiLet,
         TuiSelect,
         TuiTextfield,
     ],
@@ -33697,11 +33686,9 @@ A mobile draggable sheet dialog
 ### Example
 
 ```html
-<ng-container *tuiLet="label === 'Template' ? labelTemplate : label as dialogLabel">
-<button tuiButton type="button" (click)="showDialog(sheetTemplate, dialogLabel)" > Click </button>
+@let dialogLabel = label === 'Template' ? labelTemplate : label; <button tuiButton type="button" (click)="showDialog(sheetTemplate, dialogLabel)" > Click </button>
 <button tuiButton type="button" class="tui-space_left-4" (longtap)="showDialog(sheetTemplate, dialogLabel)" > Long tap </button>
 <button tuiButton type="button" (click)="navigate()" > Navigate to Examples </button>
-</ng-container>
 <ng-template #labelTemplate>
 <div class="label">
 <div size="m" tuiAvatar > KG </div>
@@ -34200,7 +34187,6 @@ import {
     type TuiSheetDialogOptions,
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
-import {TuiLet} from '@taiga-ui/cdk';
 import {
     TuiAlertService,
     TuiButton,
@@ -34212,7 +34198,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
 @Component({
-    imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiLet, TuiTitle],
+    imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -36481,8 +36467,8 @@ export class Example {}
       </th>
     </tr>
   </thead>
+  @let sortedUsers = users | tuiTableSort;
   <tbody
-    *tuiLet="users | tuiTableSort as sortedUsers"
     tuiTbody
     [data]="sortedUsers"
   >
@@ -36982,8 +36968,7 @@ export default class Example {
 <th *tuiHead="'quantity'" tuiTh class="number border" > Quantity </th>
 <th *tuiHead="'unit'" tuiTh > Units </th>
 </tr>
-</thead>
-<tbody *tuiLet="pythons | tuiTableSort as sortedPythons" heading="Monty Python" tuiTbody [data]="sortedPythons" > @for (item of sortedPythons; track trackByIndex($index)) { <tr tuiTr>
+</thead> @let sortedPythons = pythons | tuiTableSort; <tbody heading="Monty Python" tuiTbody [data]="sortedPythons" > @for (item of sortedPythons; track trackByIndex($index)) { <tr tuiTr>
 <th *tuiCell="'name'" tuiTd [colSpan]="item.price > 1000 ? 2 : 0" >
 <tui-textfield>
 <textarea tuiTextarea [ngModel]="item.name" [ngModelOptions]="options" (ngModelChange)="onValueChange($event, 'name', item, pythons)" ></textarea>
@@ -37012,8 +36997,7 @@ export default class Example {
 </tui-textfield>
 </td>
 <td *tuiCell="'total'" tuiTd class="number text" > {{ getTotal(item) | tuiFormatNumber | async }} </td>
-</tr> } </tbody>
-<tbody *tuiLet="starwars | tuiTableSort as sortedStarwars" tuiTbody [data]="sortedStarwars" [heading]="template" > @for (item of sortedStarwars; track trackByIndex($index)) { <tr tuiTr>
+</tr> } </tbody> @let sortedStarwars = starwars | tuiTableSort; <tbody tuiTbody [data]="sortedStarwars" [heading]="template" > @for (item of sortedStarwars; track trackByIndex($index)) { <tr tuiTr>
 <th *tuiCell="'name'" tuiTd >
 <tui-textfield>
 <textarea tuiTextarea [ngModel]="item.name" [ngModelOptions]="options" (ngModelChange)="onValueChange($event, 'name', item, starwars)" ></textarea>
@@ -37057,7 +37041,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator, TuiTable} from '@taiga-ui/addon-table';
-import {TuiDay, tuiDefaultSort, TuiLet, TuiValidator} from '@taiga-ui/cdk';
+import {TuiDay, tuiDefaultSort, TuiValidator} from '@taiga-ui/cdk';
 import {
     TuiFormatNumberPipe,
     TuiIcon,
@@ -37092,7 +37076,6 @@ interface Item {
         TuiIcon,
         TuiInputDate,
         TuiInputNumber,
-        TuiLet,
         TuiNumberFormat,
         TuiScrollbar,
         TuiSelect,
@@ -37235,8 +37218,7 @@ export default class Example {
 <th *tuiHead="'dob'" tuiTh [tuiSortable]="dob" > Date of Birth </th>
 <th *tuiHead="'age'" tuiSortable tuiTh [requiredSort]="true" > Age </th>
 </tr>
-</thead>
-<tbody *tuiLet="data | tuiTableSort as sortedData" tuiTbody [data]="sortedData" > @for (item of sortedData; track item) { <tr tuiTr>
+</thead> @let sortedData = data | tuiTableSort; <tbody tuiTbody [data]="sortedData" > @for (item of sortedData; track item) { <tr tuiTr>
 <td *tuiCell="'name'" tuiTd [class.match]="isMatch(item.name)" > {{ item.name }} </td>
 <td *tuiCell="'dob'" tuiTd [class.match]="isMatch(item.dob)" > {{ item.dob }} </td>
 <td *tuiCell="'age'" tuiTd [class.match]="isMatch(item.age)" > {{ item.age }} </td>
@@ -37273,7 +37255,6 @@ import {
     tuiDefaultSort,
     tuiIsFalsy,
     tuiIsPresent,
-    TuiLet,
     tuiToInt,
 } from '@taiga-ui/cdk';
 import {
@@ -37371,7 +37352,6 @@ function getAge(dob: TuiDay): number {
         TuiDropdown,
         TuiInputNumber,
         TuiLabel,
-        TuiLet,
         TuiLoader,
         TuiNumberFormat,
         TuiReorder,
@@ -37602,8 +37582,7 @@ export default class Example {
 <table tuiTable class="table tui-space_top-3" [columns]="columns" >
 <thead>
 <tr tuiThGroup> @for (col of columns; track col) { <th *tuiHead="col" tuiTh > {{ col }} </th> } </tr>
-</thead>
-<tbody *tuiLet="data | tuiTableSort as sortedData" tuiTbody [data]="sortedData" > @for (item of sortedData; track item) { <tr tuiTr> @for (col of columns; track col) { <td *tuiCell="col" tuiTd > {{ item[col] }} </td> } </tr> } </tbody>
+</thead> @let sortedData = data | tuiTableSort; <tbody tuiTbody [data]="sortedData" > @for (item of sortedData; track item) { <tr tuiTr> @for (col of columns; track col) { <td *tuiCell="col" tuiTd > {{ item[col] }} </td> } </tr> } </tbody>
 </table>
 ```
 **TypeScript:**
@@ -37612,11 +37591,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {TuiLet} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiButton, TuiLet, TuiTable],
+    imports: [TuiButton, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -40411,8 +40389,7 @@ export class Example {}
 <tui-icon tuiHintDirection="bottom-right" [tuiTooltip]="tooltip" />
 <p class="wrapping-tooltip"> Example of wrapping tooltip <tui-icon tuiHintDirection="bottom-right" [tuiTooltip]="tooltip" />
 </p>
-<ng-template #tooltip>
-<tui-loader *tuiLet="(isLoading$ | async)! as isLoading" size="s" class="tooltip" [inheritColor]="true" [loading]="isLoading" > {{ isLoading ? '' : 'Error 502: Bad Gateway' }} </tui-loader>
+<ng-template #tooltip> @let isLoading = (isLoading$ | async)!; <tui-loader size="s" class="tooltip" [inheritColor]="true" [loading]="isLoading" > {{ isLoading ? '' : 'Error 502: Bad Gateway' }} </tui-loader>
 </ng-template>
 ```
 **TypeScript:**
@@ -40421,13 +40398,12 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLet} from '@taiga-ui/cdk';
 import {TuiIcon, TuiLoader} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
 import {interval, map, startWith} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiIcon, TuiLet, TuiLoader, TuiTooltip],
+    imports: [AsyncPipe, TuiIcon, TuiLoader, TuiTooltip],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -50824,9 +50800,8 @@ export class Example {}
 
 **Template:**
 ```html
-<ng-container *tuiLet="count$ | async as count"> @if (count | tuiIsPresent) { <div> count is <code>{{ count | json }}</code>
-</div> } @else { <div> count is <code>{{ count | json }}</code> while it's loading </div> } </ng-container>
-<button size="m" tuiButton type="button" class="tui-space_top-4" (click)="loadCount()" > Load count </button>
+@let count = count$ | async; @if (count | tuiIsPresent) { <div> count is <code>{{ count | json }}</code>
+</div> } @else { <div> count is <code>{{ count | json }}</code> while it's loading </div> } <button size="m" tuiButton type="button" class="tui-space_top-4" (click)="loadCount()" > Load count </button>
 ```
 **TypeScript:**
 ```ts
@@ -50834,12 +50809,12 @@ import {AsyncPipe, JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIsPresentPipe, TuiLet} from '@taiga-ui/cdk';
+import {TuiIsPresentPipe} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {delayWhen, of, Subject} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, JsonPipe, TuiButton, TuiIsPresentPipe, TuiLet],
+    imports: [AsyncPipe, JsonPipe, TuiButton, TuiIsPresentPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
