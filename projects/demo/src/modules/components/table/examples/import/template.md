@@ -32,8 +32,8 @@
       </th>
     </tr>
   </thead>
+  @let sortedUsers = users | tuiTableSort;
   <tbody
-    *tuiLet="users | tuiTableSort as sortedUsers"
     tuiTbody
     [data]="sortedUsers"
   >
