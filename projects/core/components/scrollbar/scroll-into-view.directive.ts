@@ -17,26 +17,24 @@ export class TuiScrollIntoView {
 
     public readonly tuiScrollIntoView = input<boolean>();
 
-    constructor() {
-        effect(() => {
-            const scroll = this.tuiScrollIntoView();
+    protected readonly dispatchEvent = effect(() => {
+        const scroll = this.tuiScrollIntoView();
 
-            if (!scroll) {
-                return;
-            }
+        if (!scroll) {
+            return;
+        }
 
-            // Timeout is necessary in order to give element render cycle to get into its final spot
-            // (for example if it is inside dropdown box which has to be positioned first)
-            timer(0)
-                .pipe(takeUntilDestroyed(this.destroyRef))
-                .subscribe(() => {
-                    this.el.dispatchEvent(
-                        new CustomEvent<Element>(TUI_SCROLL_INTO_VIEW, {
-                            bubbles: true,
-                            detail: this.el,
-                        }),
-                    );
-                });
-        });
-    }
+        // Timeout is necessary in order to give element render cycle to get into its final spot
+        // (for example if it is inside dropdown box which has to be positioned first)
+        timer(0)
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe(() => {
+                this.el.dispatchEvent(
+                    new CustomEvent<Element>(TUI_SCROLL_INTO_VIEW, {
+                        bubbles: true,
+                        detail: this.el,
+                    }),
+                );
+            });
+    });
 }
