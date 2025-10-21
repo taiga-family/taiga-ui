@@ -2516,7 +2516,7 @@ export default class Example {
 &lt;/tui-axes&gt;
 &lt;ng-template #hint let-setIndex &gt;
 &lt;p *ngFor=&quot;let item of value; let index = index&quot; class=&quot;hint&quot; &gt;
-&lt;span class=&quot;dot&quot; [style.background]=&quot;&#039;var(--tui-chart-categorical-0&#039; + index + &#039;)&#039;&quot; &gt;&lt;/span&gt;
+&lt;span class=&quot;dot&quot; [style.background]=&quot;&#039;var(--tui-chart-categorical-&#039; + index.toString().padStart(2, &#039;0&#039;) + &#039;)&#039;&quot; &gt;&lt;/span&gt;
 &lt;span class=&quot;name&quot;&gt;{{ getSetName(index) }}&lt;/span&gt;
 &lt;span&gt;{{ (item[setIndex] || 0) * 1000 | tuiAmount: &#039;RUB&#039; | async }}&lt;/span&gt;
 &lt;/p&gt;
@@ -2596,7 +2596,7 @@ export default class Example {
 ```html
 &lt;tui-axes class=&quot;axes&quot; [axisXLabels]=&quot;axisXLabels&quot; [verticalLines]=&quot;4&quot; &gt;
 &lt;div class=&quot;t-horizontal-bars&quot;&gt;
-&lt;tui-bar *ngFor=&quot;let bar of value; let i = index&quot; size=&quot;m&quot; [style.background-color]=&quot;&#039;var(--tui-chart-categorical-0&#039; + i + &#039;)&#039;&quot; [style.height.%]=&quot;getHeight(bar)&quot; /&gt;
+&lt;tui-bar *ngFor=&quot;let bar of value; let i = index&quot; size=&quot;m&quot; [style.background-color]=&quot;&#039;var(--tui-chart-categorical-&#039; + i.toString().padStart(2, &#039;0&#039;) + &#039;)&#039;&quot; [style.height.%]=&quot;getHeight(bar)&quot; /&gt;
 &lt;/div&gt;
 &lt;/tui-axes&gt;
 ```
@@ -26356,7 +26356,7 @@ export class Example {}
 &lt;div&gt;Total&lt;/div&gt;
 &lt;/tui-ring-chart&gt;
 &lt;div class=&quot;legend&quot;&gt;
-&lt;tui-legend-item *ngFor=&quot;let label of labels; let index = index&quot; size=&quot;s&quot; class=&quot;item&quot; [active]=&quot;isItemActive(index)&quot; [color]=&quot;&#039;var(--tui-chart-categorical-0&#039; + index + &#039;)&#039;&quot; [text]=&quot;label&quot; (tuiHoveredChange)=&quot;onHover(index, $event)&quot; &gt;
+&lt;tui-legend-item *ngFor=&quot;let label of labels; let index = index&quot; size=&quot;s&quot; class=&quot;item&quot; [active]=&quot;isItemActive(index)&quot; [color]=&quot;&#039;var(--tui-chart-categorical-&#039; + index.toString().padStart(2, &#039;0&#039;) + &#039;)&#039;&quot; [text]=&quot;label&quot; (tuiHoveredChange)=&quot;onHover(index, $event)&quot; &gt;
 &lt;span&gt;{{ value[index] || 0 | tuiAmount: &#039;RUB&#039; | async }}&lt;/span&gt;
 &lt;/tui-legend-item&gt;
 &lt;/div&gt;
@@ -26405,7 +26405,7 @@ export default class Example {
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;tui-ring-chart size=&quot;s&quot; class=&quot;chart&quot; [value]=&quot;value&quot; /&gt;
 &lt;div class=&quot;legend&quot;&gt;
-&lt;tui-legend-item *ngFor=&quot;let label of labels; let index = index&quot; #item class=&quot;item&quot; [color]=&quot;&#039;var(--tui-chart-categorical-0&#039; + index + &#039;)&#039;&quot; [disabled]=&quot;!isEnabled(index)&quot; [text]=&quot;label&quot; (click)=&quot;onClick(index)&quot; (keydown.delete)=&quot;toggle(index)&quot; &gt;
+&lt;tui-legend-item *ngFor=&quot;let label of labels; let index = index&quot; #item class=&quot;item&quot; [color]=&quot;&#039;var(--tui-chart-categorical-&#039; + index.toString().padStart(2, &#039;0&#039;) + &#039;)&#039;&quot; [disabled]=&quot;!isEnabled(index)&quot; [text]=&quot;label&quot; (click)=&quot;onClick(index)&quot; (keydown.delete)=&quot;toggle(index)&quot; &gt;
 &lt;input size=&quot;s&quot; tuiCheckbox type=&quot;checkbox&quot; [checked]=&quot;!item.disabled&quot; /&gt;
 &lt;span&gt;{{ data[index] || 0 | tuiAmount: &#039;RUB&#039; | async }}&lt;/span&gt;
 &lt;tui-icon icon=&quot;@tui.x&quot; class=&quot;disable&quot; [class.disable_rotated]=&quot;item.disabled&quot; (click.stop)=&quot;toggle(index)&quot; /&gt;
