@@ -115,13 +115,17 @@ export class TuiTextfieldMultiComponent<T> extends TuiTextfieldBaseComponent<T> 
 
     public readonly rows = input(100);
 
-    public override handleOption(option: T): void {
+    public override handleOption(option: T | readonly T[]): void {
+        if (Array.isArray(option)) {
+            this.accessor?.setValue([...(option as readonly T[])] as T[]);
+
+            return;
+        }
+
+        const current: readonly T[] = (this.control?.value as readonly T[] | null) ?? [];
+
         this.accessor?.setValue(
-            tuiArrayToggle(
-                this.control?.value ?? [],
-                option,
-                this.handlers.identityMatcher(),
-            ),
+            tuiArrayToggle<T>(current, option as T, this.handlers.identityMatcher()),
         );
     }
 
