@@ -71,7 +71,7 @@ export class TuiInputTimeDirective
 
     protected readonly filler = tuiDirectiveBinding(
         TuiTextfieldComponent,
-        'fillerSetter',
+        'filler',
         computed((filler = this.fillers()?.[this.timeMode()] ?? '') =>
             this.postfix() ? '' : this.prefix() + filler,
         ),

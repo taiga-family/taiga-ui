@@ -9,8 +9,8 @@
         <!-- 44 = option height -->
         <!-- 4 = margin between options -->
         <!-- 8 = data list padding -->
+        @let items = countries | tuiFilterByInput;
         <cdk-virtual-scroll-viewport
-            *tuiLet="countries | tuiFilterByInput as items"
             tuiScrollable
             class="scroll"
             [itemSize]="44"

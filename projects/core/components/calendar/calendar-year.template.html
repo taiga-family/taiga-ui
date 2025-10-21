@@ -4,8 +4,8 @@
     class="t-row"
 >
     <ng-container *tuiRepeatTimes="let colIndex of 4">
+        @let item = getItem(rowIndex, colIndex);
         <div
-            *tuiLet="getItem(rowIndex, colIndex) as item"
             automation-id="tui-calendar-year__cell"
             class="t-cell"
             [attr.data-range]="getItemRange(item)"

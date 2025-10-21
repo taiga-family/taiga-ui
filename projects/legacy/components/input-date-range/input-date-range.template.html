@@ -7,8 +7,8 @@
     (tuiActiveZoneChange)="onActiveZone($event)"
     (tuiDropdownOpenChange)="onOpenChange($event)"
 >
+    @let dateFiller = dateFiller$ | async;
     <tui-primitive-textfield
-        *tuiLet="dateFiller$ | async as dateFiller"
         automation-id="tui-input-date-range__textfield"
         tuiValueAccessor
         class="t-textfield"
