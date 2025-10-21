@@ -1,6 +1,7 @@
 import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
 import {Directive, effect, forwardRef, inject, input} from '@angular/core';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiTableTh} from '../th/th.component';
 import {TuiTableSortBy} from './sort-by.directive';
@@ -22,9 +23,9 @@ export class TuiTableSortable<T extends Partial<Record<keyof T, unknown>>> {
     protected readonly setSorter = effect(() => {
         if (this.sortable()) {
             this.sorter = this.match ? this.table.sorter : this.sorter;
-            this.th.sorter = this.sorter;
+            tuiSetSignal(this.th.sorter, this.sorter);
         } else {
-            this.th.sorter = null;
+            tuiSetSignal(this.th.sorter, null);
         }
     });
 
