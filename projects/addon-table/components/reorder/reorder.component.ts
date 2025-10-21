@@ -1,9 +1,9 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    effect,
     inject,
     input,
+    linkedSignal,
     model,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
@@ -37,7 +37,22 @@ export class TuiReorder<T> {
     private dragging = false;
 
     protected order = new Map<number, number>();
-    protected unsortedItems: readonly T[] = [];
+    protected readonly unsortedItems = linkedSignal<readonly T[], readonly T[]>({
+        source: () => this.items(),
+        computation: (items, previous) => {
+            const previousUnsortedItems = previous?.value ?? [];
+
+            if (
+                items.length !== previousUnsortedItems.length ||
+                !items.every((item) => previousUnsortedItems.includes(item))
+            ) {
+                return items;
+            }
+
+            return previousUnsortedItems;
+        },
+    });
+
     protected readonly options = inject(TUI_REORDER_OPTIONS);
     protected readonly showHideText = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
 
@@ -48,17 +63,6 @@ export class TuiReorder<T> {
     public readonly content = input<PolymorpheusContent<TuiContext<T> & {index: number}>>(
         ({$implicit}) => String($implicit),
     );
-
-    constructor() {
-        effect((_, items = this.items()) => {
-            if (
-                items.length !== this.unsortedItems.length ||
-                !items.every((item) => this.unsortedItems.includes(item))
-            ) {
-                this.unsortedItems = items;
-            }
-        });
-    }
 
     protected onDrag(): void {
         this.dragging = true;
@@ -96,7 +100,7 @@ export class TuiReorder<T> {
 
         if (
             (!oldIndex && direction < 0) ||
-            (oldIndex === this.unsortedItems.length - 1 && direction > 0)
+            (oldIndex === this.unsortedItems().length - 1 && direction > 0)
         ) {
             return;
         }
@@ -114,9 +118,9 @@ export class TuiReorder<T> {
     }
 
     private getSortedItems(): T[] {
-        const items = new Array(this.unsortedItems.length);
+        const items = new Array(this.unsortedItems().length);
 
-        this.unsortedItems.forEach((item, index) => {
+        this.unsortedItems().forEach((item, index) => {
             items[this.order.get(index) ?? index] = item;
         });
 

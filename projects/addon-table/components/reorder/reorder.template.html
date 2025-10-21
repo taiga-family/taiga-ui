@@ -2,7 +2,7 @@
     class="t-wrapper"
     [(order)]="order"
 >
-    @for (item of unsortedItems; track item) {
+    @for (item of unsortedItems(); track item) {
         <tui-tile [style.order]="order.get($index)">
             <div
                 class="t-item"
