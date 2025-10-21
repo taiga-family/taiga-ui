@@ -4,6 +4,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    model,
     Output,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
@@ -41,14 +42,10 @@ export class TuiReorder<T> {
     protected readonly options = inject(TUI_REORDER_OPTIONS);
     protected readonly showHideText = inject(TUI_TABLE_SHOW_HIDE_MESSAGE);
 
-    @Input()
-    public enabled: readonly T[] = [];
+    public readonly enabled = model<readonly T[]>([]);
 
     @Output()
     public readonly itemsChange = new EventEmitter<T[]>();
-
-    @Output()
-    public readonly enabledChange = new EventEmitter<T[]>();
 
     @Input()
     public set items(items: readonly T[]) {
@@ -79,7 +76,7 @@ export class TuiReorder<T> {
     }
 
     protected isEnabled(item: T): boolean {
-        return this.enabled.includes(item);
+        return this.enabled().includes(item);
     }
 
     protected getIcon(item: T): string {
@@ -87,9 +84,11 @@ export class TuiReorder<T> {
     }
 
     protected toggle(toggled: T): void {
-        this.enabled = this.isEnabled(toggled)
-            ? this.enabled.filter((item) => item !== toggled)
-            : this.enabled.concat(toggled);
+        this.enabled.update((enabled) =>
+            this.isEnabled(toggled)
+                ? enabled.filter((item) => item !== toggled)
+                : enabled.concat(toggled),
+        );
 
         this.updateEnabled();
     }
@@ -132,9 +131,6 @@ export class TuiReorder<T> {
     }
 
     private updateEnabled(): void {
-        const enabled = this.getSortedItems().filter((item) => this.isEnabled(item));
-
-        this.enabled = enabled;
-        this.enabledChange.emit(enabled);
+        this.enabled.set(this.getSortedItems().filter((item) => this.isEnabled(item)));
     }
 }
