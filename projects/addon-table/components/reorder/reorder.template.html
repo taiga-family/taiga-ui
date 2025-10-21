@@ -16,7 +16,9 @@
                         class="t-icon"
                         [icon]="options.icons.drag"
                     />
-                    <ng-container *polymorpheusOutlet="content as template; context: {$implicit: item, index: $index}">
+                    <ng-container
+                        *polymorpheusOutlet="content() as template; context: {$implicit: item, index: $index}"
+                    >
                         {{ template }}
                     </ng-container>
                 </div>
