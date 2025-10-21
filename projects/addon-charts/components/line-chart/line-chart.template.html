@@ -1,109 +1,109 @@
-<ng-container *tuiLet="hovered$ | async as hovered">
-    <svg
-        focusable="false"
-        height="100%"
-        preserveAspectRatio="none"
-        width="100%"
-        xmlns="http://www.w3.org/2000/svg"
-        class="t-svg"
-        [attr.viewBox]="viewBox()"
-    >
-        <defs>
-            <linearGradient
-                x1="0"
-                x2="0"
-                y1="1"
-                y2="0"
-                [attr.id]="fillId"
-            >
-                <stop
-                    offset="0%"
-                    stop-color="currentColor"
-                    stop-opacity="0.5"
-                />
-                <stop
-                    offset="100%"
-                    stop-color="currentColor"
-                    stop-opacity="0"
-                />
-            </linearGradient>
-        </defs>
-        <path
-            stroke="none"
-            [attr.d]="fillD"
-            [attr.fill]="fill"
-        />
-        <path
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            vector-effect="non-scaling-stroke"
-            [attr.d]="d"
-        />
-    </svg>
-    @if (dots) {
-        @for (point of value; track point) {
+@let hovered = hovered$ | async;
+
+<svg
+    focusable="false"
+    height="100%"
+    preserveAspectRatio="none"
+    width="100%"
+    xmlns="http://www.w3.org/2000/svg"
+    class="t-svg"
+    [attr.viewBox]="viewBox()"
+>
+    <defs>
+        <linearGradient
+            x1="0"
+            x2="0"
+            y1="1"
+            y2="0"
+            [attr.id]="fillId"
+        >
+            <stop
+                offset="0%"
+                stop-color="currentColor"
+                stop-opacity="0.5"
+            />
+            <stop
+                offset="100%"
+                stop-color="currentColor"
+                stop-opacity="0"
+            />
+        </linearGradient>
+    </defs>
+    <path
+        stroke="none"
+        [attr.d]="fillD"
+        [attr.fill]="fill"
+    />
+    <path
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        vector-effect="non-scaling-stroke"
+        [attr.d]="d"
+    />
+</svg>
+@if (dots) {
+    @for (point of value; track point) {
+        <div
+            class="t-dot"
+            [style.inset-block-end.%]="getBottom(point[1])"
+            [style.inset-inline-start.%]="getLeft(point[0])"
+        ></div>
+    }
+}
+@if (hasHints) {
+    @for (point of value; track point) {
+        <!-- TODO: Fix hint type -->
+        @if ($count > 1 || dots) {
             <div
-                class="t-dot"
+                class="t-column"
+                [class.t-column_hint_hovered]="drivers.get($index) | async"
+                [class.t-column_hovered]="hovered === $index"
+                [style.inset-inline-start.%]="getLeft(getX($index))"
+                [style.width.%]="getWidth($index)"
+                [tuiHint]="$any(hintDirective?.hint || hintContent)"
+                [tuiHintContext]="{$implicit: getImplicit(point), index: $index}"
+                [tuiHintDescribe]="isFocusable ? getHintId($index) : null"
+                [tuiHintHost]="hintHost"
+                (mouseenter)="onMouseEnter($index)"
+            >
+                <div
+                    class="t-line t-line_vertical"
+                    [style.inset-inline-start.%]="getOffset($index)"
+                ></div>
+                <div
+                    #hintHost
+                    class="t-host"
+                    [id]="getHintId($index)"
+                    [style.inset-block-end.%]="getBottom(point[1])"
+                    [style.inset-inline-start.%]="getOffset($index)"
+                    [tabIndex]="isFocusable ? 0 : -1"
+                ></div>
+            </div>
+        }
+        @if (isFocusable) {
+            <div
+                class="t-line t-line_horizontal"
                 [style.inset-block-end.%]="getBottom(point[1])"
-                [style.inset-inline-start.%]="getLeft(point[0])"
             ></div>
         }
     }
-    @if (hasHints) {
-        @for (point of value; track point) {
-            <!-- TODO: Fix hint type -->
-            @if ($count > 1 || dots) {
-                <div
-                    class="t-column"
-                    [class.t-column_hint_hovered]="drivers.get($index) | async"
-                    [class.t-column_hovered]="hovered === $index"
-                    [style.inset-inline-start.%]="getLeft(getX($index))"
-                    [style.width.%]="getWidth($index)"
-                    [tuiHint]="$any(hintDirective?.hint || hintContent)"
-                    [tuiHintContext]="{$implicit: getImplicit(point), index: $index}"
-                    [tuiHintDescribe]="isFocusable ? getHintId($index) : null"
-                    [tuiHintHost]="hintHost"
-                    (mouseenter)="onMouseEnter($index)"
-                >
-                    <div
-                        class="t-line t-line_vertical"
-                        [style.inset-inline-start.%]="getOffset($index)"
-                    ></div>
-                    <div
-                        #hintHost
-                        class="t-host"
-                        [id]="getHintId($index)"
-                        [style.inset-block-end.%]="getBottom(point[1])"
-                        [style.inset-inline-start.%]="getOffset($index)"
-                        [tabIndex]="isFocusable ? 0 : -1"
-                    ></div>
-                </div>
-            }
-            @if (isFocusable) {
-                <div
-                    class="t-line t-line_horizontal"
-                    [style.inset-block-end.%]="getBottom(point[1])"
-                ></div>
-            }
-        }
+}
+@if (getHovered(hovered); as point) {
+    @if (xStringify) {
+        <div
+            class="t-hint t-hint_x"
+            [style.inset-inline-start.%]="getLeft(point[0])"
+        >
+            {{ xStringify(point[0]) }}
+        </div>
     }
-    @if (getHovered(hovered); as point) {
-        @if (xStringify) {
-            <div
-                class="t-hint t-hint_x"
-                [style.inset-inline-start.%]="getLeft(point[0])"
-            >
-                {{ xStringify(point[0]) }}
-            </div>
-        }
-        @if (yStringify) {
-            <div
-                class="t-hint t-hint_y"
-                [style.inset-block-end.%]="getBottom(point[1])"
-            >
-                {{ yStringify(point[1]) }}
-            </div>
-        }
+    @if (yStringify) {
+        <div
+            class="t-hint t-hint_y"
+            [style.inset-block-end.%]="getBottom(point[1])"
+        >
+            {{ yStringify(point[1]) }}
+        </div>
     }
-</ng-container>
+}

@@ -3,7 +3,7 @@ import {
     Component,
     Directive,
     inject,
-    Input,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -30,7 +30,7 @@ class Styles {}
     hostDirectives: [TuiWithAppearance, TuiWithIcons],
     host: {
         tuiLink: '',
-        '[style.text-decoration-line]': 'pseudo ? "underline" : null',
+        '[style.text-decoration-line]': 'pseudo() ? "underline" : null',
     },
 })
 export class TuiLink {
@@ -40,6 +40,5 @@ export class TuiLink {
      * @deprecated: use on host
      * [style.text-decoration-line]="'underline'"
      */
-    @Input()
-    public pseudo = inject(TUI_LINK_OPTIONS).pseudo;
+    public readonly pseudo = input(inject(TUI_LINK_OPTIONS).pseudo);
 }

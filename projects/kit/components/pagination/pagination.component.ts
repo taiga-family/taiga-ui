@@ -10,7 +10,6 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -32,7 +31,7 @@ const ACTIVE_ITEM_LENGTH = 1;
 
 @Component({
     selector: 'tui-pagination',
-    imports: [PolymorpheusOutlet, TuiButton, TuiLet, TuiRepeatTimes],
+    imports: [PolymorpheusOutlet, TuiButton, TuiRepeatTimes],
     templateUrl: './pagination.template.html',
     styleUrl: './pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

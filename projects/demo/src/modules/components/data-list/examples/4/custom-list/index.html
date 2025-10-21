@@ -35,10 +35,8 @@
         </tui-opt-group>
     }
     @for (item of items; track item) {
-        <tui-opt-group
-            *tuiLet="item.items | tuiFilter: filter : value as filtered"
-            [label]="item.name"
-        >
+        @let filtered = item.items | tuiFilter: filter : value;
+        <tui-opt-group [label]="item.name">
             @if (filtered.length) {
                 <tui-opt-group tuiMultiSelectGroup>
                     @for (item of filtered; track item) {

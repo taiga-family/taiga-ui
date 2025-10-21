@@ -3,7 +3,6 @@ import {Component, inject, signal} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLet} from '@taiga-ui/cdk';
 import {TuiLoader, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiComboBox, TuiDataListWrapper} from '@taiga-ui/kit';
 import {debounceTime, filter, of, Subject, switchMap, tap} from 'rxjs';
@@ -17,7 +16,6 @@ import {DatabaseServer} from './database';
         TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,
-        TuiLet,
         TuiLoader,
         TuiTextfield,
     ],
