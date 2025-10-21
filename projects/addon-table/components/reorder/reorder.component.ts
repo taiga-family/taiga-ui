@@ -1,11 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
+    effect,
     inject,
-    Input,
+    input,
     model,
-    Output,
 } from '@angular/core';
 import {TUI_TABLE_SHOW_HIDE_MESSAGE} from '@taiga-ui/addon-table/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -44,23 +43,22 @@ export class TuiReorder<T> {
 
     public readonly enabled = model<readonly T[]>([]);
 
-    @Output()
-    public readonly itemsChange = new EventEmitter<T[]>();
+    public readonly items = model<readonly T[]>([]);
 
-    @Input()
-    public set items(items: readonly T[]) {
-        if (
-            items.length !== this.unsortedItems.length ||
-            !items.every((item) => this.unsortedItems.includes(item))
-        ) {
-            this.unsortedItems = items;
-        }
+    public readonly content = input<PolymorpheusContent<TuiContext<T> & {index: number}>>(
+        ({$implicit}) => String($implicit),
+    );
+
+    constructor() {
+        effect((_, items = this.items()) => {
+            if (
+                items.length !== this.unsortedItems.length ||
+                !items.every((item) => this.unsortedItems.includes(item))
+            ) {
+                this.unsortedItems = items;
+            }
+        });
     }
-
-    @Input()
-    public content: PolymorpheusContent<TuiContext<T> & {index: number}> = ({
-        $implicit,
-    }) => String($implicit);
 
     protected onDrag(): void {
         this.dragging = true;
@@ -126,7 +124,7 @@ export class TuiReorder<T> {
     }
 
     private updateItems(): void {
-        this.itemsChange.emit(this.getSortedItems());
+        this.items.set(this.getSortedItems());
         this.updateEnabled();
     }
 
