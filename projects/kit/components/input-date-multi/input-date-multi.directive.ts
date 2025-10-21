@@ -143,6 +143,6 @@ export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay
     }
 
     private updateValue(day: TuiDay): void {
-        this.setValue(tuiArrayToggle(this.value(), day, (a, b) => a.daySame(b)));
+        this.setValue(tuiArrayToggle(this.value() ?? [], day, (a, b) => a.daySame(b)));
     }
 }
