@@ -40,6 +40,8 @@ export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>>
 
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
 
+    private readonly rows$ = toObservable(this.body.rows);
+
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
     );
@@ -64,7 +66,7 @@ export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>>
     );
 
     protected readonly item$ = this.contentReady$.pipe(
-        switchMap(() => toObservable(this.body.rows)),
+        switchMap(() => this.rows$),
         map(
             (rows) =>
                 this.body.data()[rows.findIndex((row) => row === this)] as Record<
