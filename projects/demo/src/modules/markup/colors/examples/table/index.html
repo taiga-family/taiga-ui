@@ -1,4 +1,4 @@
-@for (color of colors; track color) {
+@for (color of colors(); track color) {
     <tr class="color">
         @if (getValue(color, platform.tuiPlatform, darkMode()); as value) {
             <td>

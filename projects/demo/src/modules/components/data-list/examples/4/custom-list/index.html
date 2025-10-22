@@ -23,7 +23,7 @@
             >
                 All
             </button>
-            @for (item of items; track item) {
+            @for (item of items(); track item) {
                 <button
                     tuiOption
                     type="button"
@@ -34,8 +34,9 @@
             }
         </tui-opt-group>
     }
-    @for (item of items; track item) {
+    @for (item of items(); track item) {
         @let filtered = item.items | tuiFilter: filter : value;
+
         <tui-opt-group [label]="item.name">
             @if (filtered.length) {
                 <tui-opt-group tuiMultiSelectGroup>

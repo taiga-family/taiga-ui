@@ -1,4 +1,4 @@
-import {Component, inject, Input} from '@angular/core';
+import {Component, inject, input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
     TuiDocDocumentation,
@@ -37,14 +37,11 @@ export class InheritedDocumentation {
     protected readonly appearanceVariants = ['', 'error', 'dark'];
     protected readonly documentedComponent = inject(ABSTRACT_PROPS_ACCESSOR);
 
-    @Input()
-    public dropdown = false;
+    public readonly dropdown = input(false);
 
-    @Input()
-    public withHint = true;
+    public readonly withHint = input(true);
 
-    @Input()
-    public withTextFieldController = true;
+    public readonly withTextFieldController = input(true);
 
     protected isTuiReactiveControl(
         documentedComponent: TuiSupportingDocumentationComponent,
