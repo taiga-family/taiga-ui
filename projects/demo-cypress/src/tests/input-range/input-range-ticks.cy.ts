@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputRange} from '@taiga-ui/kit';
@@ -12,7 +12,7 @@ describe('InputRange | With segments + tick labels', () => {
                     [max]="100"
                     [min]="0"
                     [segments]="4"
-                    [tuiTextfieldSize]="size"
+                    [tuiTextfieldSize]="size()"
                     [(ngModel)]="value"
                 />
 
@@ -29,11 +29,9 @@ describe('InputRange | With segments + tick labels', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class SandBox {
-        @Input({required: true})
-        public value!: [number, number];
+        public readonly value = model<[number, number]>();
 
-        @Input({required: true})
-        public size!: 'l' | 'm' | 's';
+        public readonly size = input.required<'l' | 'm' | 's'>();
     }
 
     beforeEach(() => {

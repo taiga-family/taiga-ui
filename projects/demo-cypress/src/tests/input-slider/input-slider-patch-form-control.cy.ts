@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider, TuiInputSlider} from '@taiga-ui/kit';
@@ -23,7 +23,7 @@ describe('InputSlider | Patch form control value', () => {
                 </button>
 
                 <tui-textfield>
-                    @if (formApproach === 'ngModel') {
+                    @if (formApproach() === 'ngModel') {
                         <input
                             tuiInputSlider
                             [(ngModel)]="value"
@@ -50,8 +50,7 @@ describe('InputSlider | Patch form control value', () => {
         protected value = 0;
         protected readonly control = new FormControl(0);
 
-        @Input()
-        public formApproach: 'formControl' | 'ngModel' = 'ngModel';
+        public readonly formApproach = input<'formControl' | 'ngModel'>('ngModel');
     }
 
     beforeEach(() => {

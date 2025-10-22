@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputSlider} from '@taiga-ui/kit';
@@ -8,7 +8,7 @@ describe('InputSlider | With segments + tick labels', () => {
         imports: [FormsModule, TuiInputSlider, TuiRoot, TuiTextfield],
         template: `
             <tui-root>
-                <tui-textfield [tuiTextfieldSize]="size">
+                <tui-textfield [tuiTextfieldSize]="size()">
                     <input
                         tuiInputSlider
                         [max]="100"
@@ -36,11 +36,9 @@ describe('InputSlider | With segments + tick labels', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class SandBox {
-        @Input({required: true})
-        public value!: number;
+        public readonly value = model<number>();
 
-        @Input({required: true})
-        public size!: 'l' | 'm' | 's';
+        public readonly size = input.required<'l' | 'm' | 's'>();
     }
 
     beforeEach(() => {
