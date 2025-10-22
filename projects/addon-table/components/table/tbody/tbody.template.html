@@ -1,4 +1,4 @@
-@if (heading) {
+@if (heading()) {
     <tr>
         <th
             class="t-heading"
@@ -10,18 +10,18 @@
                 (click)="onClick()"
             >
                 <span class="t-name">
-                    <ng-container *polymorpheusOutlet="heading as text">
+                    <ng-container *polymorpheusOutlet="heading() as text">
                         {{ text }}
                     </ng-container>
                 </span>
                 <tui-icon
                     class="t-chevron"
-                    [tuiChevron]="open"
+                    [tuiChevron]="open()"
                 />
             </button>
         </th>
     </tr>
 }
-@if (open) {
+@if (open()) {
     <ng-content />
 }

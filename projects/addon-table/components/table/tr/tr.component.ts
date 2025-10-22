@@ -8,7 +8,7 @@ import {
     inject,
     type QueryList,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiQueryListChanges, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
@@ -64,10 +64,10 @@ export class TuiTableTr<T extends Partial<Record<keyof T, unknown>>>
     );
 
     protected readonly item$ = this.contentReady$.pipe(
-        switchMap(() => tuiQueryListChanges(this.body.rows)),
+        switchMap(() => toObservable(this.body.rows)),
         map(
             (rows) =>
-                this.body.data[rows.findIndex((row) => row === this)] as Record<
+                this.body.data()[rows.findIndex((row) => row === this)] as Record<
                     string | keyof T,
                     unknown
                 >,
