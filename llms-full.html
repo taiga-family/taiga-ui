@@ -7300,7 +7300,14 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiHeader class=&quot;image&quot; &gt;
+&lt;div tuiCardLarge tuiHeader class=&quot;image-1&quot; &gt;
+&lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
+&lt;/h1&gt;
+&lt;aside tuiAccessories&gt;
+&lt;button appearance=&quot;glass&quot; tuiButtonClose tuiIconButton type=&quot;button&quot; &gt; Close &lt;/button&gt;
+&lt;/aside&gt;
+&lt;/div&gt;
+&lt;div tuiCardLarge tuiHeader tuiTheme=&quot;dark&quot; class=&quot;image-2&quot; &gt;
 &lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h1&gt;
 &lt;aside tuiAccessories&gt;
@@ -7313,20 +7320,13 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiButtonClose} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAppearance,
-        TuiButton,
-        TuiButtonClose,
-        TuiCardLarge,
-        TuiHeader,
-        TuiTitle,
-    ],
+    imports: [TuiButton, TuiButtonClose, TuiCardLarge, TuiHeader, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     styleUrls: [&#039;./index.less&#039;],
     encapsulation,
@@ -7335,16 +7335,22 @@ import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 export default class Example {}
 ```
 
-#### Image-dark
+#### Cell with close
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiHeader tuiTheme=&quot;dark&quot; class=&quot;image&quot; &gt;
-&lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
-&lt;/h1&gt;
+&lt;div tuiPlatform=&quot;ios&quot;&gt;
+&lt;h4&gt;iOS/Android&lt;/h4&gt;
+&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge=&quot;compact&quot; tuiCell &gt;
+&lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.star&quot; /&gt;
+&lt;div tuiTitle&gt;
+&lt;div tuiFade tuiFadeHeight=&quot;1.2rem&quot; tuiFadeOffset=&quot;1.5em&quot; tuiFadeSize=&quot;1.5em&quot; [style.block-size.rem]=&quot;2.5&quot; &gt; Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. &lt;/div&gt;
+&lt;div tuiFade tuiFadeHeight=&quot;1rem&quot; tuiFadeOffset=&quot;1.5em&quot; tuiFadeSize=&quot;1.5em&quot; tuiSubtitle [style.align-items]=&quot;&#039;flex-start&#039;&quot; [style.block-size.rem]=&quot;2&quot; &gt; Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. &lt;/div&gt;
+&lt;/div&gt;
 &lt;aside tuiAccessories&gt;
-&lt;button appearance=&quot;glass&quot; tuiButtonClose tuiIconButton type=&quot;button&quot; &gt; Close &lt;/button&gt;
+&lt;button tuiButtonClose tuiIconButton type=&quot;button&quot; &gt; Close &lt;/button&gt;
 &lt;/aside&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 ```
 **TypeScript:**
@@ -7352,18 +7358,23 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
 import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
-import {TuiButtonClose} from &#039;@taiga-ui/kit&#039;;
-import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
+import {TuiAvatar, TuiButtonClose, TuiFade} from &#039;@taiga-ui/kit&#039;;
+import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
     imports: [
         TuiAppearance,
+        TuiAvatar,
         TuiButton,
         TuiButtonClose,
         TuiCardLarge,
+        TuiCell,
+        TuiFade,
         TuiHeader,
+        TuiPlatform,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -8015,7 +8026,7 @@ export default class Example {
         &#039;Cell List (headless)&#039;,
         &#039;Footer alignment&#039;,
         &#039;Image&#039;,
-        &#039;Image-dark&#039;,
+        &#039;Cell with close&#039;,
         &#039;Paddings and radii&#039;,
         &#039;Map&#039;,
         &#039;In portal&#039;,
