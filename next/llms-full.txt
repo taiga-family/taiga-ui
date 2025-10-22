@@ -36575,6 +36575,181 @@ export default class Example {
 }
 ```
 
+#### Expandable rows: different ways to toggle rows
+
+**Template:**
+```html
+<table size="l" tuiTable class="table" [columns]="columns" >
+<thead>
+<tr tuiThGroup>
+<th *tuiHead="'action'" tuiTh [sorter]="null" ></th>
+<th *tuiHead="'firstName'" tuiTh [sorter]="null" > First name </th>
+<th *tuiHead="'lastName'" tuiTh class="last-name-col" [sorter]="null" > Last name </th>
+<th *tuiHead="'role'" tuiTh [sorter]="null" > Role </th>
+<th *tuiHead="'balance'" tuiTh [sorter]="null" > Balance </th>
+</tr>
+</thead>
+<tbody tuiTbody>
+<tr tuiTr class="expand-heading-row" (click)="expand.toggle()" >
+<td *tuiCell="'action'" tuiTd >
+<button appearance="icon" size="xs" tuiIconButton type="button" [tuiChevron]="expand.expanded()" > Toggle </button>
+</td>
+<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > {{ basicData.length }} Developers (basic usage) </td>
+<ng-container *tuiCell="'lastName'" />
+<td *tuiCell="'role'" tuiTd > dev </td>
+<td *tuiCell="'balance'" tuiTd > {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }} </td>
+</tr>
+<tui-table-expand #expand [expanded]="true" > @for (item of basicData; track item) { <tr tuiTr>
+<td *tuiCell="'action'" tuiTd ></td>
+<td *tuiCell="'firstName'" tuiTd >
+<div>
+<tui-chip size="s" [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" > {{ item.firstName }} </tui-chip>
+</div>
+</td>
+<td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
+<td *tuiCell="'role'" tuiTd > {{ item.role }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber | async }} </td>
+</tr> } </tui-table-expand>
+</tbody>
+<tbody tuiTbody>
+<tr tuiTr class="expand-heading-row" (click)="manualToggle()" >
+<td *tuiCell="'action'" tuiTd >
+<button appearance="icon" size="xs" tuiIconButton type="button" [tuiChevron]="manualOpen" > Toggle </button>
+</td>
+<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > {{ manualOpenData.length }} Designers (manual handling) </td>
+<ng-container *tuiCell="'lastName'" />
+<td *tuiCell="'role'" tuiTd > design </td>
+<td *tuiCell="'balance'" tuiTd > {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber | async }} </td>
+</tr>
+<tui-table-expand [expanded]="manualOpen"> @for (item of manualOpenData; track item) { <tr tuiTr>
+<td *tuiCell="'action'" tuiTd ></td>
+<td *tuiCell="'firstName'" tuiTd > {{ item.firstName }} </td>
+<td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
+<td *tuiCell="'role'" tuiTd > {{ item.role }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber | async }} </td>
+</tr> } </tui-table-expand>
+</tbody>
+<tbody tuiTbody>
+<tr tuiTr>
+<td *tuiCell="'action'" tuiTd >
+<button appearance="flat-grayscale" size="xs" tuiIconButton type="button" [style.border-radius.%]="100" [tuiChevron]="customOpen" (click)="customToggle()" > Toggle </button>
+</td>
+<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > Custom content (click on chevron) </td>
+<ng-container *tuiCell="'lastName'" />
+<td *tuiCell="'role'" tuiTd > all </td>
+<td *tuiCell="'balance'" tuiTd > {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }} </td>
+</tr>
+<tr>
+<td [colSpan]="columns.length">
+<tui-expand [expanded]="customOpen">
+<div class="chips"> @for (item of customContentData; track item) { <tui-chip size="s" [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" [tuiHint]="`Balance: ${item.balance}. Role: ${item.role}`" > {{ item.firstName }} {{ item.lastName }} </tui-chip> } </div>
+</tui-expand>
+</td>
+</tr>
+</tbody>
+</table>
+```
+**TypeScript:**
+```ts
+import {AsyncPipe} from '@angular/common';
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTable, TuiTableExpand} from '@taiga-ui/addon-table';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiButton, TuiExpand, TuiFormatNumberPipe, TuiHint} from '@taiga-ui/core';
+import {TuiChevron, TuiChip} from '@taiga-ui/kit';
+
+interface Item {
+    firstName: string;
+    lastName: string;
+    role: string;
+    balance: number;
+}
+
+@Component({
+    imports: [
+        AsyncPipe,
+        TuiChevron,
+        TuiChip,
+        TuiExpand,
+        TuiFormatNumberPipe,
+        TuiHint,
+        TuiMapperPipe,
+        TuiTable,
+        TuiTableExpand,
+        TuiButton,
+    ],
+    templateUrl: './index.html',
+    styleUrl: './index.less',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly basicData: Item[] = [
+        {
+            firstName: 'Alex',
+            lastName: 'Inkin',
+            role: 'dev',
+            balance: 1323525,
+        },
+        {
+            firstName: 'Roman',
+            lastName: 'Sedov',
+            role: 'dev',
+            balance: 423242,
+        },
+        {
+            firstName: 'Andrei',
+            lastName: 'Serebrennikov',
+            role: 'dev',
+            balance: 4223242,
+        },
+    ];
+
+    protected manualOpenData: Item[] = [
+        {
+            firstName: 'Joe',
+            lastName: 'Wilson',
+            role: 'design',
+            balance: 423242,
+        },
+        {
+            firstName: 'Julia',
+            lastName: 'Johnson',
+            role: 'design',
+            balance: 4223242,
+        },
+    ];
+
+    protected readonly customContentData: Item[] = [
+        ...this.basicData,
+        ...this.manualOpenData,
+    ];
+
+    protected readonly columns = ['action', 'firstName', 'lastName', 'role', 'balance'];
+
+    protected manualOpen = false;
+    protected customOpen = false;
+
+    public getSumBalance(people: Item[]): number {
+        return people.reduce((res, item) => {
+            res += item.balance;
+
+            return res;
+        }, 0);
+    }
+
+    protected manualToggle(): void {
+        this.manualOpen = !this.manualOpen;
+    }
+
+    protected customToggle(): void {
+        this.customOpen = !this.customOpen;
+    }
+}
+```
+
 #### Manual sorting
 
 **Template:**
@@ -37766,177 +37941,129 @@ export default class Example {
 }
 ```
 
-#### Expandable
+#### Expandable rows
 
 **Template:**
 ```html
-<table size="l" tuiTable class="table" [columns]="columns" >
+<table tuiTable class="table" [columns]="columns" >
 <thead>
 <tr tuiThGroup>
-<th *tuiHead="'action'" tuiTh [sorter]="null" ></th>
-<th *tuiHead="'firstName'" tuiTh [sorter]="null" > First name </th>
-<th *tuiHead="'lastName'" tuiTh class="last-name-col" [sorter]="null" > Last name </th>
-<th *tuiHead="'role'" tuiTh [sorter]="null" > Role </th>
-<th *tuiHead="'balance'" tuiTh [sorter]="null" > Balance </th>
+<th tuiTh></th>
+<th tuiTh [minWidth]="50" > # </th>
+<th tuiTh [minWidth]="150" > Name </th>
+<th tuiTh [minWidth]="150" > Date of Birth </th>
+<th tuiTh>Age</th>
 </tr>
 </thead>
-<tbody tuiTbody>
-<tr tuiTr class="expand-heading-row" (click)="expand.toggle()" >
-<td *tuiCell="'action'" tuiTd >
-<tui-icon class="t-chevron" [tuiChevron]="expand.expanded()" />
+<tbody tuiTbody [data]="data" > @for (item of data; track $index; let i = $index) { <tr tuiTr>
+<td *tuiCell="'children'" tuiTd >
+<button appearance="flat-grayscale" size="xs" tuiIconButton type="button" class="chevron-btn" [attr.title]="item.children?.length ? '' : 'No children'" [disabled]="!item.children?.length" [style.border-radius.%]="100" [tuiChevron]="rowState[i] ?? false" (click)="toggleRow(i)" > Toggle </button>
 </td>
-<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > {{ basicData.length }} Developers (basic usage) </td>
-<ng-container *tuiCell="'lastName'" />
-<td *tuiCell="'role'" tuiTd > dev </td>
-<td *tuiCell="'balance'" tuiTd > {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }} </td>
-</tr>
-<tui-table-expand #expand [expanded]="true" > @for (item of basicData; track item) { <tr tuiTr>
-<td *tuiCell="'action'" tuiTd ></td>
-<td *tuiCell="'firstName'" tuiTd >
-<div>
-<tui-chip size="s" [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" > {{ item.firstName }} </tui-chip>
-</div>
-</td>
-<td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
-<td *tuiCell="'role'" tuiTd > {{ item.role }} </td>
-<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber | async }} </td>
-</tr> } </tui-table-expand>
-</tbody>
-<tbody tuiTbody>
-<tr tuiTr class="expand-heading-row" (click)="manualToggle()" >
-<td *tuiCell="'action'" tuiTd >
-<tui-icon class="t-chevron" [tuiChevron]="manualOpen" />
-</td>
-<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > {{ manualOpenData.length }} Designers (manual handling) </td>
-<ng-container *tuiCell="'lastName'" />
-<td *tuiCell="'role'" tuiTd > design </td>
-<td *tuiCell="'balance'" tuiTd > {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber | async }} </td>
-</tr>
-<tui-table-expand [expanded]="manualOpen"> @for (item of manualOpenData; track item) { <tr tuiTr>
-<td *tuiCell="'action'" tuiTd ></td>
-<td *tuiCell="'firstName'" tuiTd > {{ item.firstName }} </td>
-<td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
-<td *tuiCell="'role'" tuiTd > {{ item.role }} </td>
-<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber | async }} </td>
-</tr> } </tui-table-expand>
-</tbody>
-<tbody tuiTbody>
-<tr tuiTr class="expand-heading-row-custom" >
-<td *tuiCell="'action'" tuiTd class="expand-heading-row-custom__expand" (click)="customToggle()" >
-<tui-icon class="t-chevron" [tuiChevron]="customOpen" />
-</td>
-<td *tuiCell="'firstName'" tuiTd [colSpan]="2" > Custom content (click on chevron) </td>
-<ng-container *tuiCell="'lastName'" />
-<td *tuiCell="'role'" tuiTd > all </td>
-<td *tuiCell="'balance'" tuiTd > {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }} </td>
-</tr>
-<tr>
-<td [colSpan]="columns.length">
-<tui-expand [expanded]="customOpen">
-<div class="chips"> @for (item of customContentData; track item) { <tui-chip size="s" [appearance]="item.role === 'dev' ? 'primary' : 'secondary'" [tuiHint]="`Balance: ${item.balance}. Role: ${item.role}`" > {{ item.firstName }} {{ item.lastName }} </tui-chip> } </div>
-</tui-expand>
-</td>
-</tr>
-</tbody>
+<td *tuiCell="'#'" tuiTd > {{ i + 1 }} </td>
+<td *tuiCell="'name'" tuiTd > {{ item.name }} </td>
+<td *tuiCell="'dob'" tuiTd > {{ item.dob }} </td>
+<td *tuiCell="'age'" tuiTd > {{ item.age }} </td>
+</tr> @if (item.children?.length) { <tui-table-expand [expanded]="rowState[i] ?? false"> @for (child of item.children; track $index; let j = $index) { <tr tuiTr class="child" >
+<td *tuiCell="'children'" tuiTd ></td>
+<td *tuiCell="'#'" tuiTd > {{ i + 1 }}.{{ j + 1 }} </td>
+<td *tuiCell="'name'" tuiTd > {{ child.name }} </td>
+<td *tuiCell="'dob'" tuiTd > {{ child.dob }} </td>
+<td *tuiCell="'age'" tuiTd > {{ child.age }} </td>
+</tr> } </tui-table-expand> } } </tbody>
 </table>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiTable, TuiTableExpand} from '@taiga-ui/addon-table';
-import {TuiMapperPipe} from '@taiga-ui/cdk';
-import {TuiExpand, TuiFormatNumberPipe, TuiHint, TuiIcon} from '@taiga-ui/core';
-import {TuiChevron, TuiChip} from '@taiga-ui/kit';
+import {TuiTable} from '@taiga-ui/addon-table';
+import {TuiDay, tuiToInt} from '@taiga-ui/cdk';
+import {TuiButton} from '@taiga-ui/core';
+import {TuiChevron} from '@taiga-ui/kit';
 
-interface Item {
-    firstName: string;
-    lastName: string;
-    role: string;
-    balance: number;
+interface User {
+    readonly dob: TuiDay;
+    readonly name: string;
+    readonly age: number;
+    children?: User[];
+}
+
+const TODAY = TuiDay.currentLocal();
+
+const FIRST = [
+    'John',
+    'Jane',
+    'Jack',
+    'Jill',
+    'James',
+    'Joan',
+    'Jim',
+    'Julia',
+    'Joe',
+    'Julia',
+];
+
+const LAST = [
+    'Smith',
+    'West',
+    'Brown',
+    'Jones',
+    'Davis',
+    'Miller',
+    'Johnson',
+    'Jackson',
+    'Williams',
+    'Wilson',
+];
+
+const DATA: readonly User[] = Array.from({length: 10}, (_, index) => {
+    // From 5 to 0 children
+    const childrenCount = 5 - (index % 6),
+        user = generateUser();
+
+    user.children = Array.from({length: childrenCount}, () => generateUser());
+
+    return user;
+});
+
+function getAge(dob: TuiDay): number {
+    const years = TODAY.year - dob.year;
+    const months = TODAY.month - dob.month;
+    const days = TODAY.day - dob.day;
+    const offset = tuiToInt(months > 0 || (!months && days > 9));
+
+    return years + offset;
+}
+
+function generateUser(): User {
+    const dob = TODAY.append({day: -Math.floor(Math.random() * 4000) - 7500}),
+        age = getAge(dob),
+        name = `${LAST[getRandom(0, 9)]}, ${FIRST[getRandom(0, 9)]}`;
+
+    return {name, dob, age};
+}
+
+function getRandom(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min) + min);
 }
 
 @Component({
-    imports: [
-        AsyncPipe,
-        TuiChevron,
-        TuiChip,
-        TuiExpand,
-        TuiFormatNumberPipe,
-        TuiHint,
-        TuiIcon,
-        TuiMapperPipe,
-        TuiTable,
-        TuiTableExpand,
-    ],
+    standalone: true,
+    imports: [TuiButton, TuiChevron, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly basicData: Item[] = [
-        {
-            firstName: 'Alex',
-            lastName: 'Inkin',
-            role: 'dev',
-            balance: 1323525,
-        },
-        {
-            firstName: 'Roman',
-            lastName: 'Sedov',
-            role: 'dev',
-            balance: 423242,
-        },
-        {
-            firstName: 'Andrei',
-            lastName: 'Serebrennikov',
-            role: 'dev',
-            balance: 4223242,
-        },
-    ];
+    protected columns = ['children', '#', 'name', 'dob', 'age'];
+    protected readonly data = DATA;
 
-    protected manualOpenData: Item[] = [
-        {
-            firstName: 'Joe',
-            lastName: 'Wilson',
-            role: 'design',
-            balance: 423242,
-        },
-        {
-            firstName: 'Julia',
-            lastName: 'Johnson',
-            role: 'design',
-            balance: 4223242,
-        },
-    ];
+    protected readonly rowState: Record<number, boolean> = {};
 
-    protected readonly customContentData: Item[] = [
-        ...this.basicData,
-        ...this.manualOpenData,
-    ];
-
-    protected readonly columns = ['action', 'firstName', 'lastName', 'role', 'balance'];
-
-    protected manualOpen = false;
-    protected customOpen = false;
-
-    public getSumBalance(people: Item[]): number {
-        return people.reduce((res, item) => {
-            res += item.balance;
-
-            return res;
-        }, 0);
-    }
-
-    protected manualToggle(): void {
-        this.manualOpen = !this.manualOpen;
-    }
-
-    protected customToggle(): void {
-        this.customOpen = !this.customOpen;
+    protected toggleRow(index: number): void {
+        this.rowState[index] = !this.rowState[index];
     }
 }
 ```
@@ -37966,7 +38093,8 @@ export default class Page {
         'Dynamic columns',
         'Footer',
         'Resize a large table',
-        'Expandable',
+        'Expandable rows',
+        'Expandable rows: different ways to toggle rows',
         'Manual sorting',
     ];
 }
