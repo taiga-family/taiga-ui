@@ -20,7 +20,7 @@ export default class Example {
         'Cell List (headless)',
         'Footer alignment',
         'Image',
-        'Image-dark',
+        'Cell with close',
         'Paddings and radii',
         'Map',
         'In portal',
