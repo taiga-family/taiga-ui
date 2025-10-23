@@ -1,13 +1,5 @@
-import {
-    ContentChildren,
-    Directive,
-    inject,
-    Input,
-    Output,
-    type QueryList,
-} from '@angular/core';
+import {contentChildren, Directive, inject, Input, Output} from '@angular/core';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {combineLatest, debounceTime, delay, filter, map, type Observable} from 'rxjs';
 
 import {type TuiSortChange} from '../table.options';
@@ -18,8 +10,9 @@ import {TuiTableDirective} from './table.directive';
     selector: 'table[tuiTable][tuiSortBy]',
 })
 export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
-    @ContentChildren(TuiTableSortable, {descendants: true})
-    private readonly sortables: QueryList<TuiTableSortable<T>> = EMPTY_QUERY;
+    private readonly sortables = contentChildren<TuiTableSortable<T>>(TuiTableSortable, {
+        descendants: true,
+    });
 
     private readonly table = inject(TuiTableDirective<T>);
 
@@ -30,7 +23,7 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
     public readonly tuiSortByChange = this.table.sorterChange.pipe(
         // delay is for getting actual ContentChildren (sortables) https://github.com/angular/angular/issues/38976
         delay(0),
-        filter(() => !!this.sortables.length),
+        filter(() => !!this.sortables().length),
         map((sorter) => this.getKey(sorter)),
     );
 
@@ -57,10 +50,10 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected checkSortables(): void {
-        this.sortables.forEach((s) => s.check());
+        this.sortables().forEach((s) => s.check());
     }
 
     private getKey(sorter: TuiComparator<T> | null): keyof T | null {
-        return this.sortables.find((s) => s.sorter === sorter)?.key || null;
+        return this.sortables().find((s) => s.sorter === sorter)?.key || null;
     }
 }

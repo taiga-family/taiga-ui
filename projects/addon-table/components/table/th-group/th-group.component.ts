@@ -1,16 +1,13 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
-    type AfterContentInit,
     ChangeDetectionStrategy,
     Component,
-    ContentChild,
-    ContentChildren,
+    computed,
+    contentChild,
+    contentChildren,
     forwardRef,
     inject,
-    type QueryList,
 } from '@angular/core';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {map, type Observable, startWith} from 'rxjs';
 
 import {TuiTableHead} from '../directives/head.directive';
 import {TuiTableDirective} from '../directives/table.directive';
@@ -19,35 +16,28 @@ import {TuiTableTh} from '../th/th.component';
 
 @Component({
     selector: 'tr[tuiThGroup]',
-    imports: [AsyncPipe, NgTemplateOutlet, TuiTableTh],
+    imports: [NgTemplateOutlet, TuiTableTh],
     templateUrl: './th-group.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_TABLE_PROVIDER],
 })
-export class TuiTableThGroup<T extends Partial<Record<keyof T, unknown>>>
-    implements AfterContentInit
-{
-    @ContentChild(forwardRef(() => TuiTableTh))
-    protected readonly th!: TuiTableTh<T>;
+export class TuiTableThGroup<T extends Partial<Record<keyof T, unknown>>> {
+    protected readonly th = contentChild<TuiTableTh<T>>(forwardRef(() => TuiTableTh));
 
-    @ContentChildren(forwardRef(() => TuiTableHead))
-    protected readonly heads: QueryList<TuiTableHead<T>> = EMPTY_QUERY;
+    protected readonly heads = contentChildren<TuiTableHead<T>>(
+        forwardRef(() => TuiTableHead),
+    );
 
-    protected heads$: Observable<Record<string | keyof T, TuiTableHead<T>>> | null = null;
+    protected readonly computedHeads = computed<
+        Record<string | keyof T, TuiTableHead<T>>
+    >(() => {
+        return this.heads().reduce(
+            (record, item) => ({...record, [item.tuiHead()]: item}),
+            {} as Record<string | keyof T, TuiTableHead<T>>,
+        );
+    });
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
     );
-
-    public ngAfterContentInit(): void {
-        this.heads$ = this.heads.changes.pipe(
-            startWith(null),
-            map(() =>
-                this.heads.reduce(
-                    (record, item) => ({...record, [item.tuiHead()]: item}),
-                    {} as Record<string | keyof T, TuiTableHead<T>>,
-                ),
-            ),
-        );
-    }
 }
