@@ -1578,6 +1578,20 @@ export const pages: DocRoutePages = [
             },
             {
                 section: 'Tools',
+                title: 'StringifyValues',
+                keywords:
+                    'stringify, values, key, словарь, ключ, преобразование, пайп, pipe',
+                route: DemoRoute.StringifyValues,
+            },
+            {
+                section: 'Tools',
+                title: 'Values',
+                keywords:
+                    'values, key, content, object, retrieve, get, мап, преобразование, пайп, pipe',
+                route: DemoRoute.Values,
+            },
+            {
+                section: 'Tools',
                 title: 'Amount',
                 keywords:
                     'amount, money, деньги, сумма, количество, cash, копейки, рубли, доллары, евро',
