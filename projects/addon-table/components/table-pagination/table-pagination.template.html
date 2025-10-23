@@ -2,7 +2,7 @@
     <span class="t-pages">
         @if (showPages) {
             {{ texts.pages }}
-            <strong class="t-strong">{{ pages }}</strong>
+            <strong class="t-strong">{{ pages() }}</strong>
         }
     </span>
     <span automation-id="tui-table-pagination__lines-per-page-wrapper">
@@ -14,7 +14,7 @@
                 tuiLink
                 type="button"
             >
-                <strong>{{ start + 1 }}–{{ end }}</strong>
+                <strong>{{ start + 1 }}–{{ end() }}</strong>
                 <tui-data-list
                     *tuiDropdown="let close"
                     size="s"
@@ -71,7 +71,7 @@
             tuiIconButton
             type="button"
             class="t-button"
-            [disabled]="rightDisabled"
+            [disabled]="rightDisabled()"
             [iconStart]="icons.increment"
             (click)="forth()"
         >
