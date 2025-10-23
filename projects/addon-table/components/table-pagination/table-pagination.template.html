@@ -7,7 +7,7 @@
     </span>
     <span automation-id="tui-table-pagination__lines-per-page-wrapper">
         {{ texts.linesPerPage }}
-        @if (total !== 0) {
+        @if (total() !== 0) {
             <button
                 tuiDropdown
                 tuiDropdownOpen
@@ -19,7 +19,7 @@
                     *tuiDropdown="let close"
                     size="s"
                 >
-                    @for (item of items; track item) {
+                    @for (item of items(); track item) {
                         <button
                             tuiOption
                             type="button"
@@ -29,12 +29,12 @@
                             <ng-container
                                 *polymorpheusOutlet="
                                     sizeOptionContent as text;
-                                    context: {$implicit: item, total: total}
+                                    context: {$implicit: item, total: total()}
                                 "
                             >
                                 {{ text }}
                             </ng-container>
-                            @if (item === size) {
+                            @if (item === size()) {
                                 <tui-icon
                                     class="t-checkmark"
                                     [icon]="commonIcons.check"
@@ -50,7 +50,7 @@
             <strong>0 - 0</strong>
         }
         {{ texts.of }}
-        <strong class="t-strong">{{ total }}</strong>
+        <strong class="t-strong">{{ total() }}</strong>
     </span>
     @if (spinTexts(); as spinTexts) {
         <button

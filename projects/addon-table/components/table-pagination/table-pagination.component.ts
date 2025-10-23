@@ -1,12 +1,6 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    Input,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {TUI_TABLE_PAGINATION_TEXTS} from '@taiga-ui/addon-table/tokens';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
@@ -40,31 +34,26 @@ export class TuiTablePagination {
     protected readonly texts = inject(TUI_TABLE_PAGINATION_TEXTS);
     protected readonly commonIcons = inject(TUI_COMMON_ICONS);
 
-    @Input()
-    public items: readonly number[] = this.options.items;
+    public readonly items = input<readonly number[]>(this.options.items);
 
-    @Input()
-    public total = 0;
+    public readonly total = input(0);
 
-    @Input()
-    public page = 0;
+    public readonly page = input(0);
 
-    @Input()
-    public size = this.options.size;
+    public readonly size = input(this.options.size);
 
-    @Output()
-    public readonly paginationChange = new EventEmitter<TuiTablePaginationEvent>();
+    public readonly paginationChange = output<TuiTablePaginationEvent>();
 
     public onItem(size: number): void {
         const {start} = this;
 
-        this.size = size;
-        this.page = Math.floor(start / this.size);
+        tuiSetSignal(this.size, size);
+        tuiSetSignal(this.page, Math.floor(start / this.size()));
         this.paginationChange.emit(this.pagination);
     }
 
     protected get pages(): number {
-        return Math.ceil(this.total / this.size);
+        return Math.ceil(this.total() / this.size());
     }
 
     protected get showPages(): boolean {
@@ -76,11 +65,13 @@ export class TuiTablePagination {
     }
 
     protected get start(): number {
-        return Math.min(this.page, Math.floor(this.total / this.size)) * this.size;
+        return (
+            Math.min(this.page(), Math.floor(this.total() / this.size())) * this.size()
+        );
     }
 
     protected get end(): number {
-        return Math.min(this.start + this.size, this.total);
+        return Math.min(this.start + this.size(), this.total());
     }
 
     protected get leftDisabled(): boolean {
@@ -88,23 +79,23 @@ export class TuiTablePagination {
     }
 
     protected get rightDisabled(): boolean {
-        return this.end === this.total;
+        return this.end === this.total();
     }
 
     protected get pagination(): TuiTablePaginationEvent {
         return {
-            page: this.page,
-            size: this.size,
+            page: this.page(),
+            size: this.size(),
         };
     }
 
     protected back(): void {
-        this.page--;
+        tuiSetSignal(this.page, this.page() - 1);
         this.paginationChange.emit(this.pagination);
     }
 
     protected forth(): void {
-        this.page++;
+        tuiSetSignal(this.page, this.page() + 1);
         this.paginationChange.emit(this.pagination);
     }
 }
