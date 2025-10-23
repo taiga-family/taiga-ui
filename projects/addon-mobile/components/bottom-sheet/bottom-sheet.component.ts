@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     type ElementRef,
-    Input,
+    input,
     type QueryList,
     ViewChild,
     ViewChildren,
@@ -24,8 +24,8 @@ const OPTIONS = {
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiHeaderOptionsProvider({size: 'h5'})],
     host: {
-        '[style.--t-initial]': 'stops[0]',
-        '[style.scroll-snap-type]': 'stops.length > 1 ? "y mandatory" : null',
+        '[style.--t-initial]': 'stops()[0]',
+        '[style.scroll-snap-type]': 'stops().length > 1 ? "y mandatory" : null',
         '(scroll.zoneless)': 'onScroll()',
         '(resize)': 'onScroll()',
     },
@@ -39,8 +39,7 @@ export class TuiBottomSheet {
 
     private readonly el = tuiInjectElement();
 
-    @Input()
-    public stops: readonly string[] = ['1.5rem'];
+    public readonly stops = input<readonly string[]>(['1.5rem']);
 
     protected onScroll(): void {
         const {clientHeight, scrollTop, scrollHeight} = this.el;

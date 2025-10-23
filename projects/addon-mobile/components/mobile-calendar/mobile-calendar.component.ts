@@ -12,6 +12,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    input,
     NgZone,
     Output,
     ViewChild,
@@ -158,20 +159,16 @@ export class TuiMobileCalendar implements AfterViewInit {
      * ```
      * TODO(v5): delete it
      */
-    @Input()
-    public single = !inject(TUI_CALENDAR_SHEET_OPTIONS).rangeMode;
+    public readonly single = input(!inject(TUI_CALENDAR_SHEET_OPTIONS).rangeMode);
 
-    @Input()
-    public multi = false;
+    public readonly multi = input(false);
 
-    @Input()
-    public min = TUI_FIRST_DAY;
+    public readonly min = input(TUI_FIRST_DAY);
 
-    @Input()
-    public max = TUI_LAST_DAY;
+    public readonly max = input(TUI_LAST_DAY);
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<TuiDay> = TUI_FALSE_HANDLER;
+    public readonly disabledItemHandler =
+        input<TuiBooleanHandler<TuiDay>>(TUI_FALSE_HANDLER);
 
     @Output()
     public readonly cancel = new EventEmitter<void>();
@@ -185,7 +182,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     public readonly valueChange = this.value$.pipe(
         skip(1),
         distinctUntilChanged((a, b) => a?.toString() === b?.toString()),
-        map((x) => (!this.single && x instanceof TuiDay ? new TuiDayRange(x, x) : x)),
+        map((x) => (!this.single() && x instanceof TuiDay ? new TuiDayRange(x, x) : x)),
     );
 
     constructor() {
@@ -246,7 +243,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     protected onDayClick(day: TuiDay): void {
-        if (this.single) {
+        if (this.single()) {
             this.value = day;
         } else if (this.isMultiValue(this.value)) {
             this.value = tuiToggleDay(this.value, day);
@@ -336,7 +333,7 @@ export class TuiMobileCalendar implements AfterViewInit {
     }
 
     private isMultiValue(day: unknown): day is readonly TuiDay[] | undefined {
-        return !(day instanceof TuiDay) && !(day instanceof TuiDayRange) && this.multi;
+        return !(day instanceof TuiDay) && !(day instanceof TuiDayRange) && this.multi();
     }
 
     private getYearsViewportSize(): number {

@@ -1,4 +1,4 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
@@ -29,8 +29,7 @@ export class TuiTouchable {
     private readonly isIOS = inject(TUI_IS_IOS);
     private readonly el = tuiInjectElement();
 
-    @Input()
-    public tuiTouchable: '' | 'background' | 'opacity' | 'transform' = '';
+    public readonly tuiTouchable = input<'' | 'background' | 'opacity' | 'transform'>('');
 
     constructor() {
         if (!this.isIOS) {
@@ -61,7 +60,7 @@ export class TuiTouchable {
     }
 
     protected get style(): 'background' | 'opacity' | 'transform' {
-        return this.tuiTouchable || 'transform';
+        return this.tuiTouchable() || 'transform';
     }
 
     private hasTouchLeft(

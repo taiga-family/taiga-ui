@@ -3,10 +3,9 @@ import {
     Component,
     ContentChildren,
     ElementRef,
-    EventEmitter,
     forwardRef,
-    Input,
-    Output,
+    input,
+    model,
     type QueryList,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
@@ -30,16 +29,11 @@ export class TuiTabBarComponent {
     @ContentChildren(forwardRef(() => TuiTabBarItem), {read: ElementRef})
     private readonly tabs: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    @Input()
-    public quantity = 4;
+    public readonly quantity = input(4);
 
-    @Input()
-    public activeItemIndex = NaN;
+    public readonly activeItemIndex = model(NaN);
 
-    @Output()
-    public readonly activeItemIndexChange = new EventEmitter<number>();
-
-    public setActive(tab: EventTarget): void {
+    public setActive(tab: EventTarget | null): void {
         if (tuiIsElement(tab)) {
             this.updateIndex(
                 this.tabs.toArray().findIndex(({nativeElement}) => nativeElement === tab),
@@ -48,11 +42,10 @@ export class TuiTabBarComponent {
     }
 
     protected get style(): string {
-        return `--tui-tab-${this.activeItemIndex + 1}: var(--tui-active-color)`;
+        return `--tui-tab-${this.activeItemIndex() + 1}: var(--tui-active-color)`;
     }
 
     private updateIndex(index: number): void {
-        this.activeItemIndex = index;
-        this.activeItemIndexChange.emit(index);
+        this.activeItemIndex.set(index);
     }
 }

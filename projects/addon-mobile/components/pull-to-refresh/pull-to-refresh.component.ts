@@ -1,5 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {ChangeDetectionStrategy, Component, inject, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, Output} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiScrollFrom, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
@@ -37,10 +37,9 @@ export class TuiPullToRefresh {
         distinctUntilChanged(),
     );
 
-    @Input()
-    public styleHandler: TuiHandler<number, Record<string, unknown> | null> = this.isIOS
-        ? (distance) => ({top: tuiPx(distance / 2)})
-        : () => null;
+    public readonly styleHandler = input<
+        TuiHandler<number, Record<string, unknown> | null>
+    >(this.isIOS ? (distance) => ({top: tuiPx(distance / 2)}) : () => null);
 
     @Output()
     public readonly pulled: Observable<unknown> = inject(TuiPullToRefreshService).pipe(
