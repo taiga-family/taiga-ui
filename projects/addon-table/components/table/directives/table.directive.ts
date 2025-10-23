@@ -4,15 +4,15 @@ import {
     ChangeDetectorRef,
     Component,
     Directive,
-    EventEmitter,
     inject,
     Input,
     input,
     type OnChanges,
-    Output,
+    output,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
+import {outputFromObservable, outputToObservable} from '@angular/core/rxjs-interop';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -82,19 +82,23 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     /**
      * @deprecated: use sortChange
      */
-    @Output()
-    public readonly directionChange = new EventEmitter<TuiSortDirection>();
+    public readonly directionChange = output<TuiSortDirection>();
 
     /**
      * @deprecated: use sortChange
      */
-    @Output()
-    public readonly sorterChange = new EventEmitter<TuiComparator<T> | null>();
+    public readonly directionChange$ = outputToObservable(this.directionChange);
 
-    @Output()
-    public readonly sortChange: Observable<TuiTableSortChange<T>> = combineLatest([
-        this.sorterChange,
-        this.directionChange,
+    /**
+     * @deprecated: use sortChange
+     */
+    public readonly sorterChange = output<TuiComparator<T> | null>();
+
+    public readonly sorterChange$ = outputToObservable(this.sorterChange);
+
+    protected readonly sortChange$: Observable<TuiTableSortChange<T>> = combineLatest([
+        this.sorterChange$,
+        this.directionChange$,
     ]).pipe(
         debounceTime(0),
         map(([sortComparator, sortDirection]) => ({
@@ -104,6 +108,8 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
             sortDirection,
         })),
     );
+
+    public readonly sortChange = outputFromObservable(this.sortChange$);
 
     public readonly appearance = signal('table');
     public readonly size = input<TuiSizeL | TuiSizeS>(this.options.size);
