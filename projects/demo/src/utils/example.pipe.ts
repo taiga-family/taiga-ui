@@ -21,7 +21,7 @@ export class TuiExamplePipe implements PipeTransform {
             | 'ts' = 'html,ts,less',
         additionalFiles?: Record<string, TuiRawLoaderContent>,
     ): Record<string, TuiRawLoaderContent> {
-        const directory = `${this.page.type}/${toKebab(this.page.header)}/examples/${index}`;
+        const directory = `${this.page.type()}/${toKebab(this.page.header())}/examples/${index}`;
         const ts = import(`../modules/${directory}/index.ts`, {
             with: {loader: 'text'},
         }).catch(() => EMPTY);
