@@ -1,4 +1,5 @@
-import {contentChildren, Directive, inject, Input, Output} from '@angular/core';
+import {contentChildren, Directive, inject, Input} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {combineLatest, debounceTime, delay, filter, map, type Observable} from 'rxjs';
 
@@ -17,20 +18,23 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
     private readonly table = inject(TuiTableDirective<T>);
 
     /**
-     * @deprecated: use tuiSortChange
+     * @deprecated
      */
-    @Output()
-    public readonly tuiSortByChange = this.table.sorterChange.pipe(
+    private readonly tuiSortByChange$ = this.table.sorterChange$.pipe(
         // delay is for getting actual ContentChildren (sortables) https://github.com/angular/angular/issues/38976
         delay(0),
         filter(() => !!this.sortables().length),
         map((sorter) => this.getKey(sorter)),
     );
 
-    @Output()
-    public readonly tuiSortChange: Observable<TuiSortChange<T>> = combineLatest([
-        this.tuiSortByChange,
-        this.table.directionChange,
+    /**
+     * @deprecated: use tuiSortChange
+     */
+    public readonly tuiSortByChange = outputFromObservable(this.tuiSortByChange$);
+
+    public readonly tuiSortChange$: Observable<TuiSortChange<T>> = combineLatest([
+        this.tuiSortByChange$,
+        this.table.directionChange$,
     ]).pipe(
         debounceTime(0),
         map(([sortKey, sortDirection]) => ({
@@ -40,6 +44,8 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
             sortDirection,
         })),
     );
+
+    public readonly tuiSortChange = outputFromObservable(this.tuiSortChange$);
 
     public tuiSortBy: string | keyof T | null = null;
 

@@ -1,4 +1,5 @@
-import {Directive, inject, Input, Output} from '@angular/core';
+import {Directive, inject, Input} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {map} from 'rxjs';
 
 import {TuiSortDirection} from '../table.options';
@@ -10,12 +11,15 @@ import {TuiTableDirective} from './table.directive';
 export class TuiTableDirectionOrder<T> {
     private readonly table = inject(TuiTableDirective<T>);
 
+    private readonly directionOrderChange$ = this.table.directionChange$.pipe(
+        map((dir) => (dir === 1 ? 'asc' : 'desc')),
+    );
+
     /**
      * @deprecated: use tuiSortChange
      */
-    @Output()
-    public readonly directionOrderChange = this.table.directionChange.pipe(
-        map((dir) => (dir === 1 ? 'asc' : 'desc')),
+    public readonly directionOrderChange = outputFromObservable(
+        this.directionOrderChange$,
     );
 
     @Input()
