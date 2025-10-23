@@ -17,6 +17,7 @@ interface Item {
 @Component({
     imports: [
         AsyncPipe,
+        TuiButton,
         TuiChevron,
         TuiChip,
         TuiExpand,
@@ -25,7 +26,6 @@ interface Item {
         TuiMapperPipe,
         TuiTable,
         TuiTableExpand,
-        TuiButton,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
