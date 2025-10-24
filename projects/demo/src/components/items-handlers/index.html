@@ -48,7 +48,7 @@
         name="[disabledItemHandler]"
         tuiDocAPIItem
         type="TuiBooleanHandler"
-        [items]="[falseHandler, options.disabledItemHandler()]"
+        [items]="[falseHandler, providedDisabledItemHandler()]"
         [value]="disabledItemHandler()"
         (valueChange)="disabledItemHandler.set($event)"
     >

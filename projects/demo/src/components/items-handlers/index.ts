@@ -7,21 +7,15 @@ import {
     type TuiLooseUnion,
     type TuiStringHandler,
 } from '@taiga-ui/cdk';
-import {
-    TUI_ITEMS_HANDLERS,
-    type TuiItemsHandlers,
-    TuiTitle,
-    TuiWithItemsHandlers,
-} from '@taiga-ui/core';
+import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers, TuiTitle} from '@taiga-ui/core';
 
 @Component({
     selector: 'tbody[tuiDocItemsHandlers]',
     imports: [TuiDocAPIItem, TuiTitle],
     templateUrl: './index.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiWithItemsHandlers],
 })
-export class TuiDocItemsHandlers {
+export class TuiDocItemsHandlers implements TuiItemsHandlers<unknown> {
     protected readonly options = inject(TUI_ITEMS_HANDLERS);
     protected readonly stringifyVariants: Array<TuiStringHandler<any>> = [
         (x) => x.name,
@@ -43,4 +37,9 @@ export class TuiDocItemsHandlers {
     public readonly stringify = signal(this.stringifyVariants[0]!);
     public readonly disabledItemHandler = signal(this.falseHandler);
     public readonly identityMatcher = signal(this.identityMatcherVariants[0]!);
+
+    public readonly providedDisabledItemHandler = input<TuiBooleanHandler<any>>(
+        this.disabledItemHandler(),
+        {alias: 'disabledItemHandler'},
+    );
 }
