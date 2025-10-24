@@ -6,7 +6,7 @@ import {
     signal,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {MASKITO_DEFAULT_OPTIONS, type MaskitoOptions} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
@@ -23,7 +23,6 @@ import {
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {
@@ -34,7 +33,7 @@ import {
 } from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
-import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
+import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
 import {

@@ -24,7 +24,6 @@ import {
     TuiTime,
 } from '@taiga-ui/cdk/date-time';
 import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -33,7 +32,7 @@ import {
     tuiNullableSame,
     tuiPure,
 } from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
+import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {
     TUI_DATE_TEXTS,
