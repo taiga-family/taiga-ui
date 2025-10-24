@@ -2,13 +2,13 @@ import {
     type AfterViewInit,
     ChangeDetectionStrategy,
     Component,
+    computed,
     ElementRef,
     inject,
-    type QueryList,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
 import {type TuiPopover} from '@taiga-ui/cdk/services';
@@ -44,8 +44,18 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
     },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
-    @ViewChildren('stops')
-    private readonly stops: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+    private readonly stops = viewChildren<ElementRef<HTMLElement>>('stops');
+    private readonly initial = computed(() => {
+        if (!this.context.closable) {
+            return 0;
+        }
+
+        return (
+            this.stops()
+                .map((e) => e.nativeElement.offsetTop - this.context.offset)
+                .concat(this.el.clientHeight ?? Infinity)[this.context.initial] ?? 0
+        );
+    });
 
     private readonly el = tuiInjectElement();
     private pointers = 0;
@@ -64,7 +74,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
             exhaustMap(() => {
                 if (isObservable(this.context.closable)) {
                     if (this.el.scrollTop <= 0) {
-                        this.el.scrollTo({top: this.initial, behavior: 'smooth'});
+                        this.el.scrollTo({top: this.initial(), behavior: 'smooth'});
                     }
 
                     return this.context.closable.pipe(take(1));
@@ -78,7 +88,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         .subscribe(() => this.close());
 
     public ngAfterViewInit(): void {
-        this.el.scrollTop = this.initial;
+        this.el.scrollTop = this.initial();
     }
 
     protected onPointerChange(delta: number): void {
@@ -87,18 +97,6 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         if (!this.pointers && this.el.scrollTop <= 0) {
             this.close$.next();
         }
-    }
-
-    private get initial(): number {
-        if (!this.context.closable) {
-            return 0;
-        }
-
-        return (
-            this.stops
-                .map((e) => e.nativeElement.offsetTop - this.context.offset)
-                .concat(this.el.clientHeight ?? Infinity)[this.context.initial] ?? 0
-        );
     }
 
     private close(): void {
