@@ -105,18 +105,13 @@ export class TuiInputDateRangeComponent
     protected readonly dateFiller$ = this.dateTexts$.pipe(
         map((dateTexts) =>
             changeDateSeparator(
-                dateTexts[this.dateFormat.mode],
-                this.dateFormat.separator,
+                dateTexts[this.dateFormat().mode],
+                this.dateFormat().separator,
             ),
         ),
     );
 
-    protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
-    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
-        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe((format) => {
-            this.dateFormat = format;
-        });
+    protected dateFormat = inject(TUI_DATE_FORMAT);
 
     protected selectedActivePeriod: TuiDayRangePeriod | null = null;
 
@@ -168,7 +163,10 @@ export class TuiInputDateRangeComponent
         }
 
         return value
-            ? value.getFormattedDayRange(this.dateFormat.mode, this.dateFormat.separator)
+            ? value.getFormattedDayRange(
+                  this.dateFormat().mode,
+                  this.dateFormat().separator,
+              )
             : nativeValue();
     }
 
@@ -199,7 +197,7 @@ export class TuiInputDateRangeComponent
 
         this.value =
             value.length === DATE_RANGE_FILLER_LENGTH && !this.activePeriod
-                ? TuiDayRange.normalizeParse(value, this.dateFormat.mode)
+                ? TuiDayRange.normalizeParse(value, this.dateFormat().mode)
                 : null;
 
         if (!this.value) {
@@ -240,8 +238,8 @@ export class TuiInputDateRangeComponent
         return this.activePeriod
             ? MASKITO_DEFAULT_OPTIONS
             : this.calculateMask(
-                  this.dateFormat.mode,
-                  this.dateFormat.separator,
+                  this.dateFormat().mode,
+                  this.dateFormat().separator,
                   this.min,
                   this.max,
                   this.minLength,
@@ -299,7 +297,7 @@ export class TuiInputDateRangeComponent
         ) {
             this.value = TuiDayRange.normalizeParse(
                 this.nativeValue(),
-                this.dateFormat.mode,
+                this.dateFormat().mode,
             );
         }
     }
