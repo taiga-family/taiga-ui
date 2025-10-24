@@ -1,5 +1,6 @@
 import {Directive, effect, inject, input} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {map} from 'rxjs';
 
 import {TuiSortDirection} from '../table.options';
@@ -25,7 +26,9 @@ export class TuiTableDirectionOrder<T> {
     public readonly directionOrder = input<'asc' | 'desc'>();
 
     protected readonly setTableDirection = effect((_, order = this.directionOrder()) => {
-        this.table.direction =
-            order === 'asc' ? TuiSortDirection.Asc : TuiSortDirection.Desc;
+        tuiSetSignal(
+            this.table.direction,
+            order === 'asc' ? TuiSortDirection.Asc : TuiSortDirection.Desc,
+        );
     });
 }

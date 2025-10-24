@@ -73,7 +73,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
 
     protected get icon(): string {
         if (this.isCurrent) {
-            return this.table?.direction === TuiSortDirection.Asc
+            return this.table?.direction() === TuiSortDirection.Asc
                 ? this.options.sortIcons.asc
                 : this.options.sortIcons.desc;
         }
@@ -96,7 +96,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     private get isCurrentAndDescDirection(): boolean {
         return (
             this.sorter === this.table?.sorter &&
-            this.table?.direction === TuiSortDirection.Desc
+            this.table?.direction() === TuiSortDirection.Desc
         );
     }
 }
