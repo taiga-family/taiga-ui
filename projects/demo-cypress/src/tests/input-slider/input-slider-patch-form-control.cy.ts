@@ -7,10 +7,10 @@ describe('InputSlider | Patch form control value', () => {
     @Component({
         imports: [
             FormsModule,
+            ReactiveFormsModule,
             TuiInputSlider,
             TuiRoot,
             TuiTextfield,
-            ReactiveFormsModule,
         ],
         template: `
             <tui-root>

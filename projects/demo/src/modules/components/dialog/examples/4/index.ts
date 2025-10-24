@@ -10,7 +10,7 @@ import {TuiForm} from '@taiga-ui/layout';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiForm, TuiTextfield, TuiAutoFocus],
+    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiForm, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

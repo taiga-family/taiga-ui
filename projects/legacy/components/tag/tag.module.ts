@@ -15,10 +15,10 @@ import {TuiTagComponent} from './tag.component';
     imports: [
         CommonModule,
         FormsModule,
-        TuiIcon,
-        TuiLoader,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
+        TuiIcon,
+        TuiLoader,
     ],
     declarations: [TuiTagComponent],
     exports: [TuiTagComponent],

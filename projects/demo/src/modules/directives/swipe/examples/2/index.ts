@@ -7,7 +7,7 @@ import {TuiPopup} from '@taiga-ui/core';
 import {TuiDrawer} from '@taiga-ui/kit';
 
 @Component({
-    imports: [AsyncPipe, TuiSwipe, TuiDrawer, TuiPopup],
+    imports: [AsyncPipe, TuiDrawer, TuiPopup, TuiSwipe],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
