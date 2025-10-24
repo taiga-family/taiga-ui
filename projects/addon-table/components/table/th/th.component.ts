@@ -5,7 +5,6 @@ import {
     Component,
     forwardRef,
     inject,
-    Input,
     input,
 } from '@angular/core';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
@@ -48,10 +47,9 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
 
     public readonly maxWidth = input(Infinity);
 
-    @Input()
-    public sorter: TuiComparator<T> | null = this.head
-        ? (a, b) => tuiDefaultSort(a[this.key], b[this.key])
-        : null;
+    public readonly sorter = input<TuiComparator<T> | null>(
+        this.head ? (a, b) => tuiDefaultSort(a[this.key], b[this.key]) : null,
+    );
 
     public readonly resizable = input(this.options.resizable);
 
@@ -68,12 +66,12 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected get isCurrent(): boolean {
-        return !!this.sorter && !!this.table && this.sorter === this.table.sorter;
+        return !!this.sorter() && !!this.table && this.sorter() === this.table.sorter();
     }
 
     protected get icon(): string {
         if (this.isCurrent) {
-            return this.table?.direction === TuiSortDirection.Asc
+            return this.table?.direction() === TuiSortDirection.Asc
                 ? this.options.sortIcons.asc
                 : this.options.sortIcons.desc;
         }
@@ -82,10 +80,10 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected updateSorterAndDirection(): void {
-        const sorter = this.requiredSort() ? this.sorter : null;
+        const sorter = this.requiredSort() ? this.sorter() : null;
 
         this.table?.updateSorterAndDirection(
-            this.isCurrentAndDescDirection ? sorter : this.sorter,
+            this.isCurrentAndDescDirection ? sorter : this.sorter(),
         );
     }
 
@@ -95,8 +93,8 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
 
     private get isCurrentAndDescDirection(): boolean {
         return (
-            this.sorter === this.table?.sorter &&
-            this.table?.direction === TuiSortDirection.Desc
+            this.sorter() === this.table?.sorter() &&
+            this.table?.direction() === TuiSortDirection.Desc
         );
     }
 }

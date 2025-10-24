@@ -1,4 +1,4 @@
-import {contentChildren, Directive, inject, Input} from '@angular/core';
+import {contentChildren, Directive, effect, inject, input} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {combineLatest, debounceTime, delay, filter, map, type Observable} from 'rxjs';
@@ -47,17 +47,11 @@ export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {
 
     public readonly tuiSortChange = outputFromObservable(this.tuiSortChange$);
 
-    public tuiSortBy: string | keyof T | null = null;
+    public readonly tuiSortBy = input<string | keyof T | null>(null);
 
-    @Input('tuiSortBy')
-    public set sortBy(sortBy: string | keyof T | null) {
-        this.tuiSortBy = sortBy;
-        this.checkSortables();
-    }
-
-    protected checkSortables(): void {
-        this.sortables().forEach((s) => s.check());
-    }
+    protected readonly checkSortables = effect((_, __ = this.tuiSortBy()) =>
+        this.sortables().forEach((s) => s.check()),
+    );
 
     private getKey(sorter: TuiComparator<T> | null): keyof T | null {
         return this.sortables().find((s) => s.sorter === sorter)?.key || null;
