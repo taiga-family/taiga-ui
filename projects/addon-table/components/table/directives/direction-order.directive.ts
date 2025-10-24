@@ -1,4 +1,4 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, effect, inject, input} from '@angular/core';
 import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {map} from 'rxjs';
 
@@ -22,9 +22,10 @@ export class TuiTableDirectionOrder<T> {
         this.directionOrderChange$,
     );
 
-    @Input()
-    public set directionOrder(order: 'asc' | 'desc') {
+    public readonly directionOrder = input<'asc' | 'desc'>();
+
+    protected readonly setTableDirection = effect((_, order = this.directionOrder()) => {
         this.table.direction =
             order === 'asc' ? TuiSortDirection.Asc : TuiSortDirection.Desc;
-    }
+    });
 }
