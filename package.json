@@ -130,7 +130,7 @@
         "@nx/jest": "21.6.4",
         "@nx/workspace": "21.6.4",
         "@schematics/angular": "19.2.18",
-        "@taiga-ui/configs": "0.348.0",
+        "@taiga-ui/configs": "0.350.0",
         "@types/glob": "8.1.0",
         "@types/loader-utils": "2.0.6",
         "@types/markdown-it": "14.1.2",
