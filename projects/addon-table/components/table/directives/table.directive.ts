@@ -5,6 +5,7 @@ import {
     Component,
     Directive,
     inject,
+    Input,
     input,
     type OnChanges,
     output,
@@ -74,9 +75,11 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
 
     public readonly columns = input<ReadonlyArray<string | keyof T>>([]);
 
-    public readonly direction = input(this.options.direction);
+    @Input()
+    public direction = this.options.direction;
 
-    public readonly sorter = input<TuiComparator<T>>(EMPTY_COMPARATOR);
+    @Input()
+    public sorter: TuiComparator<T> = EMPTY_COMPARATOR;
 
     /**
      * @deprecated: use sortChange
@@ -93,9 +96,6 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
      */
     public readonly sorterChange = output<TuiComparator<T> | null>();
 
-    /**
-     * @deprecated: use sortChange
-     */
     public readonly sorterChange$ = outputToObservable(this.sorterChange);
 
     protected readonly sortChange$: Observable<TuiTableSortChange<T>> = combineLatest([
@@ -121,10 +121,10 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     public readonly change$ = new Subject<void>();
 
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
-        if (this.sorter() === sorter) {
+        if (this.sorter === sorter) {
             this.updateSorter(
-                this.sorter(),
-                this.direction() === TuiSortDirection.Asc
+                this.sorter,
+                this.direction === TuiSortDirection.Asc
                     ? TuiSortDirection.Desc
                     : TuiSortDirection.Asc,
             );
@@ -145,10 +145,10 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
         sorter: TuiComparator<T> | null,
         direction: TuiSortDirection = TuiSortDirection.Asc,
     ): void {
-        tuiSetSignal(this.sorter, sorter || EMPTY_COMPARATOR.bind({}));
-        tuiSetSignal(this.direction, direction);
+        this.sorter = sorter || EMPTY_COMPARATOR.bind({});
+        this.direction = direction;
         this.sorterChange.emit(sorter);
-        this.directionChange.emit(this.direction());
+        this.directionChange.emit(this.direction);
         this.change$.next();
     }
 }

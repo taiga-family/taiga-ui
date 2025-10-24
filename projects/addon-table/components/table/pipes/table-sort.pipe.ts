@@ -13,7 +13,7 @@ export class TuiTableSortPipe implements PipeTransform {
     private readonly table = inject(TuiTableDirective<any>);
 
     public transform<T>(data?: readonly T[] | null): readonly T[] {
-        return this.sort<T>(data ?? [], this.table.sorter(), this.table.direction());
+        return this.sort<T>(data ?? [], this.table.sorter, this.table.direction);
     }
 
     @tuiPure
