@@ -22,10 +22,10 @@ import {TuiValueDecorationComponent} from './value-decoration/value-decoration.c
         FormsModule,
         PolymorpheusOutlet,
         PolymorpheusTemplate,
-        TuiWrapperModule,
-        TuiTooltipModule,
-        TuiIcon,
         TuiAppearance,
+        TuiIcon,
+        TuiTooltipModule,
+        TuiWrapperModule,
     ],
     declarations: [
         TuiPrimitiveTextfieldComponent,

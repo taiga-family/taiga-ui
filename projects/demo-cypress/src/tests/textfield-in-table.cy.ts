@@ -27,7 +27,7 @@ import {PolymorpheusComponent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus'
 class MyInputTextfield {}
 
 @Component({
-    imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiTextfield, TuiSelect],
+    imports: [FormsModule, TuiChevron, TuiDataListWrapper, TuiSelect, TuiTextfield],
     template: `
         <tui-textfield tuiChevron>
             <input

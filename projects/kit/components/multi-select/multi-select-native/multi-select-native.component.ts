@@ -22,7 +22,7 @@ import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.c
 
 @Component({
     selector: 'select[tuiMultiSelect]',
-    imports: [NgTemplateOutlet, TuiDataList, TuiTextfield, TuiMultiSelectGroupComponent],
+    imports: [NgTemplateOutlet, TuiDataList, TuiMultiSelectGroupComponent, TuiTextfield],
     templateUrl: './multi-select-native.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsOptionContent(TuiMultiSelectOption)],
