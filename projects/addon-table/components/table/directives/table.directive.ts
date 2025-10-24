@@ -15,7 +15,7 @@ import {
 import {outputFromObservable, outputToObservable} from '@angular/core/rxjs-interop';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide, tuiSetSignal, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -73,8 +73,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
 
     public readonly columns = input<ReadonlyArray<string | keyof T>>([]);
 
-    @Input()
-    public direction = this.options.direction;
+    public readonly direction = input(this.options.direction);
 
     @Input()
     public sorter: TuiComparator<T> = EMPTY_COMPARATOR;
@@ -122,7 +121,7 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
         if (this.sorter === sorter) {
             this.updateSorter(
                 this.sorter,
-                this.direction === TuiSortDirection.Asc
+                this.direction() === TuiSortDirection.Asc
                     ? TuiSortDirection.Desc
                     : TuiSortDirection.Asc,
             );
@@ -144,9 +143,9 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
         direction: TuiSortDirection = TuiSortDirection.Asc,
     ): void {
         this.sorter = sorter || EMPTY_COMPARATOR.bind({});
-        this.direction = direction;
+        tuiSetSignal(this.direction, direction);
         this.sorterChange.emit(sorter);
-        this.directionChange.emit(this.direction);
+        this.directionChange.emit(this.direction());
         this.change$.next();
     }
 }
