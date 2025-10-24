@@ -1,12 +1,11 @@
 import {Location} from '@angular/common';
 import {
     Directive,
-    EventEmitter,
     inject,
-    Input,
+    input,
+    model,
     type OnChanges,
     type OnInit,
-    Output,
     signal,
     TemplateRef,
 } from '@angular/core';
@@ -34,26 +33,17 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
     private readonly alerts = inject(TuiAlertService);
 
-    @Input()
-    public documentationPropertyName = '';
+    public readonly documentationPropertyName = input('');
 
-    @Input()
-    public documentationPropertyMode: TuiDocumentationPropertyType = null;
+    public readonly documentationPropertyMode = input<TuiDocumentationPropertyType>(null);
 
-    @Input()
-    public documentationPropertyType = '';
+    public readonly documentationPropertyType = input('');
 
-    @Input()
-    public documentationPropertyValue!: T;
+    public readonly documentationPropertyValue = model<T>();
 
-    @Input()
-    public documentationPropertyDeprecated = false;
+    public readonly documentationPropertyDeprecated = input(false);
 
-    @Input()
-    public documentationPropertyValues: readonly T[] | null = null;
-
-    @Output()
-    public readonly documentationPropertyValueChange = new EventEmitter<T>();
+    public readonly documentationPropertyValues = input<readonly T[] | null>(null);
 
     public readonly changed$ = new Subject<void>();
 
@@ -62,24 +52,24 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
     public readonly template = inject(TemplateRef);
 
     public get attrName(): string {
-        switch (this.documentationPropertyMode) {
+        switch (this.documentationPropertyMode()) {
             case 'input':
-                return `[${this.documentationPropertyName}]`;
+                return `[${this.documentationPropertyName()}]`;
             case 'input-output':
-                return `[(${this.documentationPropertyName})]`;
+                return `[(${this.documentationPropertyName()})]`;
             case 'output':
-                return `(${this.documentationPropertyName})`;
+                return `(${this.documentationPropertyName()})`;
             default:
-                return this.documentationPropertyName;
+                return this.documentationPropertyName();
         }
     }
 
     public get shouldShowValues(): boolean {
-        return this.documentationPropertyMode !== 'output';
+        return this.documentationPropertyMode() !== 'output';
     }
 
     public get hasItems(): boolean {
-        return !!this.documentationPropertyValues;
+        return !!this.documentationPropertyValues();
     }
 
     public ngOnInit(): void {
@@ -91,8 +81,7 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
     }
 
     public onValueChange(value: T): void {
-        this.documentationPropertyValue = value;
-        this.documentationPropertyValueChange.emit(value);
+        this.documentationPropertyValue.set(value);
         this.setQueryParam(value);
     }
 
@@ -112,20 +101,22 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
     }
 
     private parseParams(params: Params): void {
-        const propertyValue: string | undefined = params[this.documentationPropertyName];
+        const propertyValue: string | undefined =
+            params[this.documentationPropertyName()];
         const propertyValueWithSuffix: number | string | undefined =
-            params[`${this.documentationPropertyName}${SERIALIZED_SUFFIX}`];
+            params[`${this.documentationPropertyName()}${SERIALIZED_SUFFIX}`];
 
         if (!propertyValue && !propertyValueWithSuffix) {
             return;
         }
 
+        const documentationPropertyValues = this.documentationPropertyValues();
         let value =
-            !!propertyValueWithSuffix && this.documentationPropertyValues
-                ? this.documentationPropertyValues[propertyValueWithSuffix as number]
+            !!propertyValueWithSuffix && documentationPropertyValues
+                ? documentationPropertyValues[propertyValueWithSuffix as number]
                 : tuiCoerceValue(propertyValue);
 
-        if (this.documentationPropertyType === 'string' && tuiIsNumber(value)) {
+        if (this.documentationPropertyType() === 'string' && tuiIsNumber(value)) {
             value = value.toString();
         }
 
@@ -135,12 +126,13 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
     private setQueryParam(value: unknown): void {
         const tree = this.urlSerializer.parse(this.locationRef.path());
         const isValueAvailableByKey = value instanceof Object;
-        const name = this.documentationPropertyName;
+        const name = this.documentationPropertyName();
         const nameWithSuffix = `${name}${SERIALIZED_SUFFIX}`;
 
+        const documentationPropertyValues = this.documentationPropertyValues();
         const computedValue =
-            isValueAvailableByKey && this.documentationPropertyValues
-                ? this.documentationPropertyValues.indexOf(value as T)
+            isValueAvailableByKey && documentationPropertyValues
+                ? documentationPropertyValues.indexOf(value as T)
                 : value;
 
         tree.queryParams = tuiCleanObject({

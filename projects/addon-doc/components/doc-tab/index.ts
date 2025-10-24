@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 
 @Component({
     standalone: true,
@@ -8,6 +8,5 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocTab {
-    @Input()
-    public src = '';
+    public readonly src = input('');
 }

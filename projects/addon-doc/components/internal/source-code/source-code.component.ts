@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_SOURCE_CODE,
@@ -20,20 +20,21 @@ export class TuiDocSourceCode {
     protected readonly sourceCode = inject(TUI_DOC_SOURCE_CODE);
     protected readonly text = inject(TUI_DOC_SOURCE_CODE_TEXT);
 
-    @Input()
-    public header = '';
+    public readonly header = input('');
 
-    @Input()
-    public package = '';
+    public readonly package = input('');
 
-    @Input()
-    public type = '';
+    public readonly type = input('');
 
-    @Input()
-    public path = '';
+    public readonly path = input('');
 
     protected get pathOptions(): TuiDocSourceCodePathOptions {
-        return this.getPathOptions(this.header, this.package, this.type, this.path);
+        return this.getPathOptions(
+            this.header(),
+            this.package(),
+            this.type(),
+            this.path(),
+        );
     }
 
     @tuiPure

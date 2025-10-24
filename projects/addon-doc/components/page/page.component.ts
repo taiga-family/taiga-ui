@@ -4,7 +4,8 @@ import {
     Component,
     ContentChildren,
     inject,
-    Input,
+    input,
+    model,
     type QueryList,
 } from '@angular/core';
 import {ActivatedRoute, RouterLink, RouterLinkActive} from '@angular/router';
@@ -50,31 +51,26 @@ export class TuiDocPage {
     protected readonly from = / /g;
     protected readonly to = '_';
 
-    @Input()
-    public header = '';
+    public readonly header = input('');
 
-    @Input()
-    public package = '';
+    public readonly package = input('');
 
-    @Input()
-    public type = '';
+    public readonly type = input('');
 
-    @Input()
-    public tags: string[] = [];
+    public readonly tags = input<string[]>([]);
 
-    @Input()
-    public path = '';
+    public readonly path = input('');
 
-    @Input()
-    public deprecated: boolean | '' = false;
+    public readonly deprecated = input<boolean | ''>(false);
 
     @ContentChildren(TuiDocPageTabConnector)
     public readonly tabConnectors: QueryList<TuiDocPageTabConnector> = EMPTY_QUERY;
 
-    public activeItemIndex = 0;
+    public readonly activeItemIndex = model(0);
+
     public readonly seeAlso = inject(PAGE_SEE_ALSO);
 
     public get showSeeAlso(): boolean {
-        return !!this.seeAlso.length && this.activeItemIndex === 0;
+        return !!this.seeAlso.length && this.activeItemIndex() === 0;
     }
 }

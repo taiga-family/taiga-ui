@@ -18,7 +18,7 @@
         type="string"
         [items]="tuiDocAppearance() || appearances"
         [value]="appearance"
-        (valueChange)="selected = $event"
+        (valueChange)="selected = $event ?? ''"
     >
         Appearance of the element
     </tr>

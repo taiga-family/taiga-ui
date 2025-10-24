@@ -7,7 +7,7 @@ import {
     ContentChild,
     type ElementRef,
     inject,
-    Input,
+    input,
     signal,
     TemplateRef,
     ViewChild,
@@ -66,7 +66,7 @@ const MIN_WIDTH = 160;
     styleUrl: './index.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._sticky]': 'sticky',
+        '[class._sticky]': 'sticky()',
         '(window:resize)': 'onResize()',
         '(document:mouseup.zoneless)': 'onMouseUp()',
     },
@@ -114,11 +114,9 @@ export class TuiDocDemo implements AfterViewInit {
     protected sandboxWidth = tuiToInteger(this.params.sandboxWidth);
     protected readonly texts = inject(TUI_DOC_DEMO_TEXTS);
 
-    @Input()
-    public control: AbstractControl | null = null;
+    public readonly control = input<AbstractControl | null>(null);
 
-    @Input()
-    public sticky = true;
+    public readonly sticky = input(true);
 
     public ngAfterViewInit(): void {
         this.createForm();
@@ -198,7 +196,8 @@ export class TuiDocDemo implements AfterViewInit {
     }
 
     private createForm(): void {
-        const {control, updateOn} = this;
+        const {control: controlInput, updateOn} = this;
+        const control = controlInput();
 
         if (control) {
             this.testForm = new FormGroup({testValue: control}, {updateOn});

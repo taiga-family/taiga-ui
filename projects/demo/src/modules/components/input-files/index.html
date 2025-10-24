@@ -113,7 +113,7 @@
                 tuiDocAPIItem
                 type="boolean"
                 [(value)]="multiple"
-                (valueChange)="multipleChange($event)"
+                (valueChange)="multipleChange($event ?? false)"
             >
                 Allows to upload several files
             </tr>

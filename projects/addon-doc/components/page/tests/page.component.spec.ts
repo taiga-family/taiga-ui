@@ -41,7 +41,7 @@ describe('TuiDocPageComponent', () => {
             value: ['seeAlso1', 'seeAlso2', 'seeAlso3'],
         });
 
-        component.activeItemIndex = 0;
+        component.activeItemIndex.set(0);
 
         expect(component.seeAlso).toEqual(['seeAlso1', 'seeAlso2', 'seeAlso3']);
         expect(component.showSeeAlso).toBe(true);
@@ -50,14 +50,14 @@ describe('TuiDocPageComponent', () => {
     it('should have showSeeAlso set to false when seeAlso array is empty and activeItemIndex is 0', () => {
         Object.defineProperty(component, 'seeAlso', {value: []});
 
-        component.activeItemIndex = 0;
+        component.activeItemIndex.set(0);
 
         expect(component.seeAlso).toEqual([]);
         expect(component.showSeeAlso).toBe(false);
     });
 
     it('should have activeItemIndex set to 0 by default', () => {
-        expect(component.activeItemIndex).toBe(0);
+        expect(component.activeItemIndex()).toBe(0);
     });
 
     it('TuiDocPageTabConnectorDirective', () => {
@@ -66,10 +66,10 @@ describe('TuiDocPageComponent', () => {
     });
 
     it('should have deprecated set to false by default', () => {
-        expect(component.deprecated).toBe(false);
+        expect(component.deprecated()).toBe(false);
     });
 
     it('should have false value when Input deprecated is not supplied', () => {
-        expect(component.deprecated).toBe(false);
+        expect(component.deprecated()).toBe(false);
     });
 });

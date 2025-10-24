@@ -1,8 +1,8 @@
 <header class="t-header">
-    @if (header) {
+    @if (header()) {
         <h1 class="t-title">
-            {{ header }}
-            @if (!!deprecated || deprecated === '') {
+            {{ header() }}
+            @if (!!deprecated() || deprecated() === '') {
                 <tui-chip
                     appearance="custom"
                     size="xs"
@@ -11,17 +11,17 @@
                     deprecated
                 </tui-chip>
             }
-            @if (package) {
+            @if (package()) {
                 <tui-chip
                     appearance="custom"
                     size="xs"
                     class="t-tag t-tag_package"
-                    [style.background]="package | tuiAutoColor"
+                    [style.background]="package() | tuiAutoColor"
                 >
-                    {{ package }}
+                    {{ package() }}
                 </tui-chip>
             }
-            @for (tag of tags; track tag) {
+            @for (tag of tags(); track tag) {
                 <tui-chip
                     appearance="custom"
                     size="xs"
@@ -39,7 +39,7 @@
             [(activeItemIndex)]="activeItemIndex"
         >
             @for (tab of tabConnectors; track tab) {
-                @if (tab.pageTab || defaultTabs[$index]; as tabName) {
+                @if (tab.pageTab() || defaultTabs[$index]; as tabName) {
                     <a
                         *tuiItem
                         routerLinkActive
@@ -64,16 +64,16 @@
         </tui-tabs-with-more>
     }
 
-    @if (package || path || type) {
+    @if (package() || path() || type()) {
         <div class="t-right-side">
             <tui-doc-source-code
                 class="t-source-code"
-                [header]="header"
-                [package]="package"
-                [path]="path"
-                [type]="type"
+                [header]="header()"
+                [package]="package()"
+                [path]="path()"
+                [type]="type()"
             />
-            @if (supportLanguage.has(header)) {
+            @if (supportLanguage.has(header())) {
                 <tui-doc-language-switcher />
             }
         </div>
@@ -88,12 +88,12 @@
         />
     }
     @for (tab of tabConnectors; track tab) {
-        @if ($index === activeItemIndex) {
+        @if ($index === activeItemIndex()) {
             <ng-container [ngTemplateOutlet]="tab.template" />
         }
     }
     @for (tab of tabs | keyvalue; track tab) {
-        @if ($index + tabConnectors.length === activeItemIndex) {
+        @if ($index + tabConnectors.length === activeItemIndex()) {
             <ng-container *polymorpheusOutlet="tab.value as text">{{ text }}</ng-container>
         }
     }

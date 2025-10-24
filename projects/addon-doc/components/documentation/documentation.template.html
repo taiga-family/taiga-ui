@@ -1,6 +1,6 @@
-@if (heading) {
+@if (heading()) {
     <h1 class="t-heading">
-        {{ heading }}
+        {{ heading() }}
     </h1>
 }
 <ng-content />
@@ -10,7 +10,7 @@
             <tr class="t-row t-row_header">
                 <th class="t-th t-cell t-cell_prop">{{ texts[2] }}</th>
                 <th class="t-th">{{ type }}</th>
-                @if (showValues && !isAPI) {
+                @if (showValues() && !isAPI()) {
                     <th class="t-th t-cell t-th_value">
                         {{ texts[3] }}
                     </th>
@@ -19,7 +19,7 @@
             @for (propertyConnector of properties; track propertyConnector) {
                 <tr
                     class="t-row"
-                    [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated"
+                    [class.t-deprecated]="propertyConnector.documentationPropertyDeprecated()"
                 >
                     <td class="t-cell t-no-overflow">
                         <div
@@ -42,7 +42,7 @@
                                     Optional
                                 </tui-badge>
                             }
-                            @if (propertyConnector.documentationPropertyDeprecated) {
+                            @if (propertyConnector.documentationPropertyDeprecated()) {
                                 <tui-badge
                                     appearance="negative"
                                     size="s"
@@ -57,7 +57,7 @@
                         <span class="type">
                             <code class="t-code-type">
                                 @for (
-                                    item of propertyConnector.documentationPropertyType | tuiDocTypeReference;
+                                    item of propertyConnector.documentationPropertyType() | tuiDocTypeReference;
                                     track item;
                                     let last = $last
                                 ) {
@@ -79,7 +79,7 @@
                             </code>
                         </span>
                     </td>
-                    @if (showValues) {
+                    @if (showValues()) {
                         <td class="t-cell t-cell_value">
                             @if (propertyConnector.shouldShowValues) {
                                 @if (propertyConnector.hasItems) {
@@ -87,9 +87,9 @@
                                         tuiDropdownLimitWidth="min"
                                         tuiTextfieldSize="m"
                                         [nativeId]="propertyConnector.attrName"
-                                        [ngModel]="propertyConnector.documentationPropertyValue"
+                                        [ngModel]="propertyConnector.documentationPropertyValue()"
                                         [tuiTextfieldCleaner]="
-                                            propertyConnector.documentationPropertyType | tuiShowCleanerPipe
+                                            propertyConnector.documentationPropertyType() | tuiShowCleanerPipe
                                         "
                                         [tuiTextfieldLabelOutside]="true"
                                         [valueContent]="selectContent"
@@ -100,18 +100,18 @@
                                             *tuiDataList
                                             class="t-data-list"
                                             [itemContent]="selectContent"
-                                            [items]="propertyConnector.documentationPropertyValues"
+                                            [items]="propertyConnector.documentationPropertyValues()"
                                         />
                                     </tui-select>
                                 } @else {
-                                    @switch (propertyConnector.documentationPropertyType) {
+                                    @switch (propertyConnector.documentationPropertyType()) {
                                         @case ('boolean') {
                                             <input
                                                 tuiSwitch
                                                 type="checkbox"
                                                 class="t-switch"
                                                 [id]="propertyConnector.attrName"
-                                                [ngModel]="propertyConnector.documentationPropertyValue"
+                                                [ngModel]="propertyConnector.documentationPropertyValue()"
                                                 [showIcons]="true"
                                                 (ngModelChange)="propertyConnector.onValueChange($event)"
                                             />
@@ -121,7 +121,7 @@
                                                 <input
                                                     tuiTextfield
                                                     [id]="propertyConnector.attrName"
-                                                    [ngModel]="propertyConnector.documentationPropertyValue || ''"
+                                                    [ngModel]="propertyConnector.documentationPropertyValue() || ''"
                                                     (ngModelChange)="propertyConnector.onValueChange($event)"
                                                 />
                                             </tui-textfield>
@@ -131,7 +131,7 @@
                                                 <input
                                                     tuiInputNumber
                                                     [id]="propertyConnector.attrName"
-                                                    [ngModel]="propertyConnector.documentationPropertyValue"
+                                                    [ngModel]="propertyConnector.documentationPropertyValue()"
                                                     [step]="1"
                                                     (ngModelChange)="propertyConnector.onValueChange($event || 0)"
                                                 />
