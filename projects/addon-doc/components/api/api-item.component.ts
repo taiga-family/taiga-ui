@@ -16,6 +16,10 @@ import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiTextfield} from '@taiga-ui/core/components/textfield';
+import {
+    TUI_DEFAULT_ITEMS_HANDLERS,
+    tuiItemsHandlersProvider,
+} from '@taiga-ui/core/directives/items-handlers';
 import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputNumber} from '@taiga-ui/kit/components/input-number';
 import {TuiSelect} from '@taiga-ui/kit/components/select';
@@ -45,6 +49,12 @@ const SERIALIZED_SUFFIX = '$';
     templateUrl: './api-item.template.html',
     styleUrl: './api-item.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        // reset handlers to default, as they might have been overwritten
+        // by the tuiDocItemsHandlers directive
+        // bug issue: https://github.com/taiga-family/taiga-ui/issues/12362
+        tuiItemsHandlersProvider(TUI_DEFAULT_ITEMS_HANDLERS),
+    ],
 })
 export class TuiDocAPIItem<T> implements OnInit {
     private readonly locationRef = inject(Location);
