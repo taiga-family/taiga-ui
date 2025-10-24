@@ -7,6 +7,7 @@ import {
     inject,
     Input,
     input,
+    signal,
 } from '@angular/core';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
 import {tuiDefaultSort} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -24,9 +25,9 @@ import {TUI_TABLE_OPTIONS, TuiSortDirection} from '../table.options';
     styleUrl: './th.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[style.min-width.px]': 'width || minWidth()',
-        '[style.width.px]': 'width || minWidth()',
-        '[style.max-width.px]': 'width || maxWidth()',
+        '[style.min-width.px]': 'width() || minWidth()',
+        '[style.width.px]': 'width() || minWidth()',
+        '[style.max-width.px]': 'width() || maxWidth()',
         '[class._sticky]': 'sticky()',
     },
 })
@@ -37,7 +38,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
         optional: true,
     });
 
-    protected width: number | null = null;
+    protected readonly width = signal<number | null>(null);
 
     protected readonly table = inject<TuiTableDirective<T>>(
         forwardRef(() => TuiTableDirective),
@@ -90,7 +91,7 @@ export class TuiTableTh<T extends Partial<Record<keyof T, unknown>>> {
     }
 
     protected onResized(width: number): void {
-        this.width = Math.min(Math.max(width, this.minWidth()), this.maxWidth());
+        this.width.set(Math.min(Math.max(width, this.minWidth()), this.maxWidth()));
     }
 
     private get isCurrentAndDescDirection(): boolean {
