@@ -42,6 +42,18 @@ test.describe('Deep / Select', () => {
                 const options = await api.getOptions();
 
                 for (const [index, option] of options.entries()) {
+                    const isVisible = await option.isVisible();
+
+                    if (!isVisible) {
+                        test.info().errors.push({
+                            message: `Options for ${name} are not visible on ${path}`,
+                            stack: new Error().stack,
+                        });
+
+                        continue;
+                    }
+
+                    await option.scrollIntoViewIfNeeded();
                     await option.focus();
                     await page.keyboard.down('Enter');
                     await api.focusOnBody();

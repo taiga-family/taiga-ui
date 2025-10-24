@@ -1,12 +1,11 @@
-import {Directive, inject, Input, TemplateRef} from '@angular/core';
+import {Directive, inject, input, TemplateRef} from '@angular/core';
 
 @Directive({
     standalone: true,
     selector: '[iconGroup]',
 })
 export class IconsGroupTemplate {
-    @Input()
-    public iconGroup?: string;
+    public readonly iconGroup = input<string>();
 
     public readonly template = inject(TemplateRef);
 }

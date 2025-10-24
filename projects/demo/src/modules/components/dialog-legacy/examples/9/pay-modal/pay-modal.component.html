@@ -51,25 +51,23 @@
         In our example we wait loading$ state before focus real card number / card cvc.
         -->
             }
+            @let loading = (loading$ | async) ?? false;
+            @if (loading) {
+                <p>Please wait, we are loading fake cards...</p>
+            }
 
-            <ng-container *tuiLet="(loading$ | async) ?? false as loading">
-                @if (loading) {
-                    <p>Please wait, we are loading fake cards...</p>
-                }
-
-                <tui-loader
-                    [loading]="loading"
-                    [overlay]="true"
-                >
-                    <tui-input-card-group
-                        #cardGroupedInput
-                        formControlName="card"
-                        [cardValidator]="cardValidator"
-                        [class.without-date]="paymentMode === paymentModeTypes.BySavedCard"
-                        [tuiTextfieldCleaner]="paymentMode === paymentModeTypes.ByNewCard"
-                    />
-                </tui-loader>
-            </ng-container>
+            <tui-loader
+                [loading]="loading"
+                [overlay]="true"
+            >
+                <tui-input-card-group
+                    #cardGroupedInput
+                    formControlName="card"
+                    [cardValidator]="cardValidator"
+                    [class.without-date]="paymentMode === paymentModeTypes.BySavedCard"
+                    [tuiTextfieldCleaner]="paymentMode === paymentModeTypes.ByNewCard"
+                />
+            </tui-loader>
         </div>
 
         @if (paymentMode === paymentModeTypes.ByNewCard) {

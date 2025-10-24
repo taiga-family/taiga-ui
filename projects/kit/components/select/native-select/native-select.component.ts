@@ -5,8 +5,7 @@ import {
     computed,
     effect,
     inject,
-    Input,
-    signal,
+    input,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -42,7 +41,6 @@ export class TuiNativeSelect<T>
     private readonly textfield = inject(TuiTextfieldDirective);
 
     protected readonly isFlat = tuiIsFlat;
-    protected readonly placeholder = signal('');
     protected readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
 
     protected readonly stringified = computed((value = this.value()) =>
@@ -63,24 +61,18 @@ export class TuiNativeSelect<T>
         this.textfield.value.set(this.stringified());
     });
 
-    @Input()
-    public items: ReadonlyArray<readonly T[]> | readonly T[] | null = [];
+    public readonly items = input<ReadonlyArray<readonly T[]> | readonly T[] | null>([]);
 
-    @Input()
-    public labels: readonly string[] = [];
+    public readonly labels = input<readonly string[]>([]);
 
-    // TODO(v5): use signal inputs
-    @Input('placeholder')
-    public set placeholderSetter(x: string) {
-        this.placeholder.set(x);
-    }
+    public readonly placeholder = input('');
 
     public setValue(value: T | null): void {
         this.onChange(value);
     }
 
     protected selectOption(index: number): void {
-        const items = (this.items?.flat() ?? []) as T[];
+        const items = (this.items()?.flat() ?? []) as T[];
 
         this.onChange(items[index - (this.showPlaceholder() ? 1 : 0)] ?? null);
     }

@@ -6,7 +6,7 @@ import {TuiIcon, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiIcon, TuiTextfield, TuiInputSlider, FormsModule, TuiNumberFormat],
+    imports: [FormsModule, TuiIcon, TuiInputSlider, TuiNumberFormat, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

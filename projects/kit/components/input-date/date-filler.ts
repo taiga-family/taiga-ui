@@ -19,7 +19,7 @@ export function tuiWithDateFiller(
 
     return tuiDirectiveBinding(
         TuiTextfieldComponent,
-        'fillerSetter',
+        'filler',
         computed(() => {
             const {mode, separator} = format();
             const fillersMap = texts() ?? '';

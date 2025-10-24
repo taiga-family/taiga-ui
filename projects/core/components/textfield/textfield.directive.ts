@@ -1,4 +1,4 @@
-import {computed, Directive, inject, Input, type OnChanges, signal} from '@angular/core';
+import {computed, Directive, inject, input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiInjectElement, tuiValue} from '@taiga-ui/cdk/utils/dom';
@@ -27,21 +27,26 @@ import {tuiAsTextfieldAccessor, type TuiTextfieldAccessor} from './textfield-acc
     host: {
         tuiTextfield: '',
         '[id]': 'textfield.id',
-        '[readOnly]': 'readOnly',
+        '[readOnly]': 'readOnly()',
         '[class._empty]': 'value() === ""',
         '(input)': '0',
         '(focusin)': '0',
         '(focusout)': '0',
     },
 })
-export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
-    // TODO: refactor to signal inputs after Angular update
-    private readonly focused = signal<boolean | null>(null);
-
+export class TuiTextfieldBase<T> implements TuiTextfieldAccessor<T> {
     protected readonly control = inject(NgControl, {optional: true});
     protected readonly a = tuiAppearance(inject(TUI_TEXTFIELD_OPTIONS).appearance, {});
-    protected readonly s = tuiAppearanceState(null, {});
-    protected readonly m = tuiAppearanceMode(this.mode, {});
+    protected readonly s = tuiAppearanceState(
+        computed(() => this.state()),
+        {},
+    );
+
+    protected readonly m = tuiAppearanceMode(
+        computed(() => this.mode()),
+        {},
+    );
+
     protected readonly f = tuiAppearanceFocus(
         computed(() => this.focused() ?? this.textfield.focused()),
         {},
@@ -52,44 +57,31 @@ export class TuiTextfieldBase<T> implements OnChanges, TuiTextfieldAccessor<T> {
     protected readonly textfield: TuiTextfieldComponent<T> =
         inject(TuiTextfieldComponent);
 
-    @Input()
-    public readOnly = false;
+    public readonly readOnly = input(false);
 
-    @Input()
-    public invalid: boolean | null = null;
+    public readonly invalid = input<boolean | null>(null);
 
     public readonly value = tuiValue(this.el);
 
-    @Input('focused')
-    public set focusedSetter(focused: boolean | null) {
-        this.focused.set(focused);
-    }
+    public readonly focused = input<boolean | null>(null);
 
-    @Input('state')
-    public set stateSetter(state: TuiInteractiveState | null) {
-        this.s.set(state);
-    }
+    public readonly state = input<TuiInteractiveState | null>(null);
 
-    public get mode(): string | null {
-        if (this.readOnly) {
+    public readonly mode = computed<string | null>(() => {
+        if (this.readOnly()) {
             return 'readonly';
         }
 
-        if (this.invalid === false) {
+        if (this.invalid() === false) {
             return 'valid';
         }
 
-        if (this.invalid) {
+        if (this.invalid()) {
             return 'invalid';
         }
 
         return null;
-    }
-
-    // TODO: refactor to signal inputs after Angular update
-    public ngOnChanges(): void {
-        this.m.set(this.mode);
-    }
+    });
 
     public setValue(value: T | null): void {
         this.el.focus();
