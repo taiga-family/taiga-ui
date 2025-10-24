@@ -4,11 +4,17 @@ import {TUI_DATE_FORMAT, type TuiDateFormatSettings} from '@taiga-ui/core/tokens
 @Directive({
     selector: '[tuiDateFormat]',
     providers: [
-        {provide: TUI_DATE_FORMAT, useFactory: () => inject(TuiDateFormat).format},
+        {
+            provide: TUI_DATE_FORMAT,
+            useFactory: () => {
+                const parent = inject(TUI_DATE_FORMAT, {skipSelf: true});
+                const format = inject(TuiDateFormat).tuiDateFormat;
+
+                return computed(() => ({...parent(), ...format()}));
+            },
+        },
     ],
 })
 export class TuiDateFormat {
-    private readonly parent = inject(TUI_DATE_FORMAT, {skipSelf: true});
-    public tuiDateFormat = input<Partial<TuiDateFormatSettings>>({});
-    public format = computed(() => ({...this.parent(), ...this.tuiDateFormat()}));
+    public readonly tuiDateFormat = input.required<Partial<TuiDateFormatSettings>>();
 }
