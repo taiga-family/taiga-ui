@@ -1,5 +1,13 @@
 import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
-import {Directive, effect, forwardRef, inject, input} from '@angular/core';
+import {
+    computed,
+    Directive,
+    effect,
+    forwardRef,
+    inject,
+    input,
+    untracked,
+} from '@angular/core';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
 
 import {TuiTableTh} from '../th/th.component';
@@ -20,27 +28,24 @@ export class TuiTableSortable<T extends Partial<Record<keyof T, unknown>>> {
     });
 
     protected readonly setSorter = effect(() => {
-        if (this.sortable()) {
-            this.sorter = this.match ? this.table.sorter : this.sorter;
-            this.th.sorter = this.sorter;
-        } else {
-            this.th.sorter = null;
-        }
+        this.th.sorter = this.sortable() ? untracked(this.sorter) : null;
+    });
+
+    public readonly sorter = computed<TuiComparator<T>>(() => {
+        return this.sortable() && this.match ? this.table.sorter : (): number => 0;
     });
 
     public get key(): keyof T {
         return this.th.key;
     }
 
-    public sorter: TuiComparator<T> = (): number => 0;
-
     public check(): void {
-        if (this.match && this.table.sorter !== this.sorter) {
-            this.table.updateSorter(this.sorter);
+        if (this.match && this.table.sorter !== this.sorter()) {
+            this.table.updateSorter(this.sorter());
         }
     }
 
     private get match(): boolean {
-        return this.sortBy.tuiSortBy === this.key;
+        return untracked(this.sortBy.tuiSortBy) === this.key;
     }
 }
