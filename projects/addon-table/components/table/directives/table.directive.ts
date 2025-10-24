@@ -5,7 +5,6 @@ import {
     Component,
     Directive,
     inject,
-    Input,
     input,
     type OnChanges,
     output,
@@ -15,7 +14,7 @@ import {
 import {outputFromObservable, outputToObservable} from '@angular/core/rxjs-interop';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide, tuiSetSignal, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -73,11 +72,9 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
 
     public readonly columns = input<ReadonlyArray<string | keyof T>>([]);
 
-    @Input()
-    public direction = this.options.direction;
+    public readonly direction = input(this.options.direction);
 
-    @Input()
-    public sorter: TuiComparator<T> = EMPTY_COMPARATOR;
+    public readonly sorter = input<TuiComparator<T>>(EMPTY_COMPARATOR);
 
     /**
      * @deprecated: use sortChange
@@ -94,6 +91,9 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
      */
     public readonly sorterChange = output<TuiComparator<T> | null>();
 
+    /**
+     * @deprecated: use sortChange
+     */
     public readonly sorterChange$ = outputToObservable(this.sorterChange);
 
     protected readonly sortChange$: Observable<TuiTableSortChange<T>> = combineLatest([
@@ -119,10 +119,10 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
     public readonly change$ = new Subject<void>();
 
     public updateSorterAndDirection(sorter: TuiComparator<T> | null): void {
-        if (this.sorter === sorter) {
+        if (this.sorter() === sorter) {
             this.updateSorter(
-                this.sorter,
-                this.direction === TuiSortDirection.Asc
+                this.sorter(),
+                this.direction() === TuiSortDirection.Asc
                     ? TuiSortDirection.Desc
                     : TuiSortDirection.Asc,
             );
@@ -143,10 +143,10 @@ export class TuiTableDirective<T extends Partial<Record<keyof T, unknown>>>
         sorter: TuiComparator<T> | null,
         direction: TuiSortDirection = TuiSortDirection.Asc,
     ): void {
-        this.sorter = sorter || EMPTY_COMPARATOR.bind({});
-        this.direction = direction;
+        tuiSetSignal(this.sorter, sorter || EMPTY_COMPARATOR.bind({}));
+        tuiSetSignal(this.direction, direction);
         this.sorterChange.emit(sorter);
-        this.directionChange.emit(this.direction);
+        this.directionChange.emit(this.direction());
         this.change$.next();
     }
 }
