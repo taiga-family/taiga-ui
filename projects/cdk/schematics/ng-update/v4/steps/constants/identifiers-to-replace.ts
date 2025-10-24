@@ -416,6 +416,13 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiBadge', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: [
+            {name: 'TuiSkeletonModule', moduleSpecifier: '@taiga-ui/experimental'},
+            {name: 'TuiSkeletonModule', moduleSpecifier: '@taiga-ui/kit'},
+        ],
+        to: {name: 'TuiSkeleton', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
         from: {name: 'TuiClickOutsideModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiClickOutside', moduleSpecifier: '@taiga-ui/cdk'},
     },
