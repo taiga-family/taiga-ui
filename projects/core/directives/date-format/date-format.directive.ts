@@ -9,6 +9,9 @@ import {TUI_DATE_FORMAT, type TuiDateFormatSettings} from '@taiga-ui/core/tokens
 })
 export class TuiDateFormat {
     private readonly parent = inject(TUI_DATE_FORMAT, {skipSelf: true});
-    public tuiDateFormat = input<Partial<TuiDateFormatSettings>>({});
-    public format = computed(() => ({...this.parent(), ...this.tuiDateFormat()}));
+    public readonly tuiDateFormat = input<Partial<TuiDateFormatSettings>>({});
+    public readonly format = computed(() => ({
+        ...this.parent(),
+        ...this.tuiDateFormat(),
+    }));
 }
