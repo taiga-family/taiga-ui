@@ -1473,6 +1473,17 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
     },
     {
         from: {
+            name: 'TuiResponsiveDialogModule',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiResponsiveDialog',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+            spreadInModule: true,
+        },
+    },
+    {
+        from: {
             name: 'TuiProgressModule',
             moduleSpecifier: '@taiga-ui/kit',
         },
