@@ -694,8 +694,8 @@ import {map} from 'rxjs';
         TuiIcon,
         TuiItemsWithMore,
         TuiLink,
-        TuiRepeatTimes,
         TuiPopup,
+        TuiRepeatTimes,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -5207,7 +5207,7 @@ import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiAvatar, TuiBlock} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiButton, TuiIcon, TuiBlock],
+    imports: [TuiAvatar, TuiBlock, TuiButton, TuiIcon],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -5292,7 +5292,7 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiAvatar, TuiBlock, TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiButton, TuiFade, TuiBlock],
+    imports: [TuiAvatar, TuiBlock, TuiButton, TuiFade],
     templateUrl: './index.html',
     styles: ':host { display: flex; gap: 1rem; align-items: flex-start; }',
     encapsulation,
@@ -11412,8 +11412,8 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiDropdown,
         TuiGroup,
         TuiInputDateRange,
-        TuiTextfield,
         TuiInputModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -11663,13 +11663,13 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
-        TuiTextfieldControllerModule,
         TuiTextfield,
-        TuiChevron,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -11988,7 +11988,7 @@ import {TuiForm} from '@taiga-ui/layout';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiForm, TuiTextfield, TuiAutoFocus],
+    imports: [FormsModule, TuiAutoFocus, TuiButton, TuiForm, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -12880,8 +12880,8 @@ export function superComputerValidator(field: AbstractControl): Validators | nul
         FormsModule,
         ReactiveFormsModule,
         TuiError,
-        TuiSwitch,
         TuiForm,
+        TuiSwitch,
         TuiTextfield,
     ],
     templateUrl: './index.html',
@@ -12946,7 +12946,7 @@ import {TuiForm} from '@taiga-ui/layout';
 import {map, timer} from 'rxjs';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiError, TuiInputNumber, TuiTextfield, TuiForm],
+    imports: [ReactiveFormsModule, TuiError, TuiForm, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -13098,10 +13098,10 @@ function phoneValidator({value}: AbstractControl): ValidationErrors | null {
         ReactiveFormsModule,
         TuiButton,
         TuiError,
-        TuiTextfield,
         TuiForm,
-        TuiInputPhone,
         TuiHeader,
+        TuiInputPhone,
+        TuiTextfield,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -13227,11 +13227,11 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiCurrencyPipe,
+        TuiError,
         TuiHint,
         TuiInputNumber,
         TuiTable,
         TuiTextfield,
-        TuiError,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -14842,6 +14842,7 @@ class Account {
         TuiGroup,
         TuiHeader,
         TuiIcon,
+        TuiInputDate,
         TuiInputModule,
         TuiInputNumber,
         TuiInputPhone,
@@ -14854,7 +14855,6 @@ class Account {
         TuiTextfieldControllerModule,
         TuiTitle,
         TuiTooltip,
-        TuiInputDate,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -15172,19 +15172,19 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiChevron,
         TuiDataListWrapper,
         TuiError,
         TuiGroup,
         TuiHint,
+        TuiIcon,
+        TuiInputChip,
         TuiInputModule,
+        TuiMultiSelect,
+        TuiSelectLike,
+        TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTooltip,
-        TuiInputChip,
-        TuiTextfield,
-        TuiIcon,
-        TuiChevron,
-        TuiSelectLike,
-        TuiMultiSelect,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -15726,7 +15726,7 @@ import {TuiIcon, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiIcon, TuiTextfield, TuiInputSlider, FormsModule, TuiNumberFormat],
+    imports: [FormsModule, TuiIcon, TuiInputSlider, TuiNumberFormat, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -17047,12 +17047,12 @@ interface User {
         TuiChevron,
         TuiDataListWrapper,
         TuiDropdownMobile,
+        TuiDropdownSheet,
         TuiFilterByInputPipe,
         TuiInputChip,
         TuiMultiSelect,
         TuiSelectLike,
         TuiTextfield,
-        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -17686,11 +17686,11 @@ import {TuiForm} from '@taiga-ui/layout';
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiDropdownSheet,
         TuiForm,
         TuiInputDate,
         TuiMobileCalendarDropdownNew,
         TuiTextfield,
-        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -18445,11 +18445,11 @@ import {TuiForm} from '@taiga-ui/layout';
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiDropdownSheet,
         TuiForm,
         TuiInputDateRange,
         TuiMobileCalendarDropdownNew,
         TuiTextfield,
-        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -18944,11 +18944,11 @@ import {TuiForm} from '@taiga-ui/layout';
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiDropdownSheet,
         TuiForm,
         TuiInputDateTime,
         TuiMobileCalendarDropdownNew,
         TuiTextfield,
-        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -21403,10 +21403,10 @@ import {defer} from 'rxjs';
     imports: [
         AsyncPipe,
         FormsModule,
+        TuiDropdownSheet,
         TuiInputPhoneInternational,
         TuiSortCountriesPipe,
         TuiTextfield,
-        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -33373,10 +33373,10 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
         FormsModule,
         TuiChevron,
         TuiDataListWrapper,
+        TuiDropdownSheet,
         TuiPlatform,
         TuiSelect,
         TuiTextfield,
-        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -35343,7 +35343,7 @@ import {TuiAppearance} from '@taiga-ui/core';
 import {TuiSurface} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiSurface, TuiAppearance],
+    imports: [TuiAppearance, TuiSurface],
     templateUrl: './index.html',
     styleUrls: ['./base.less', './index.less'],
     encapsulation,
@@ -35368,7 +35368,7 @@ import {TuiAppearance} from '@taiga-ui/core';
 import {TuiSurface} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiSurface, TuiAppearance],
+    imports: [TuiAppearance, TuiSurface],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -35451,7 +35451,7 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {TuiSurface} from '@taiga-ui/layout';
 
 @Component({
-    imports: [FormsModule, TuiRepeatTimes, TuiSurface, TuiRipple],
+    imports: [FormsModule, TuiRepeatTimes, TuiRipple, TuiSurface],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -35487,7 +35487,7 @@ import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiSurface} from '@taiga-ui/layout';
 
 @Component({
-    imports: [TuiAvatar, TuiSurface, TuiAppearance],
+    imports: [TuiAppearance, TuiAvatar, TuiSurface],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -35575,6 +35575,7 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
     imports: [
         AsyncPipe,
         TuiAmountPipe,
+        TuiAppearance,
         TuiAvatar,
         TuiBadge,
         TuiButton,
@@ -35585,7 +35586,6 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
         TuiSurface,
         TuiThumbnailCard,
         TuiTitle,
-        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less', './surface.less'],
@@ -36385,7 +36385,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 import TuiTabBarExample from './examples/1';
 
 @Component({
-    imports: [FormsModule, TuiCheckbox, TuiDemo, TuiLabel, TuiTabBarExample, TuiPopup],
+    imports: [FormsModule, TuiCheckbox, TuiDemo, TuiLabel, TuiPopup, TuiTabBarExample],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -36670,6 +36670,7 @@ interface Item {
 @Component({
     imports: [
         AsyncPipe,
+        TuiButton,
         TuiChevron,
         TuiChip,
         TuiExpand,
@@ -36678,7 +36679,6 @@ interface Item {
         TuiMapperPipe,
         TuiTable,
         TuiTableExpand,
-        TuiButton,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -37911,9 +37911,9 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
     imports: [
         FormsModule,
         ReactiveFormsModule,
+        TuiInputChip,
         TuiInputModule,
         TuiTable,
-        TuiInputChip,
         TuiTextfield,
         TuiTextfieldControllerModule,
     ],
@@ -43424,7 +43424,7 @@ import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDemo, TuiLink, RouterLink],
+    imports: [RouterLink, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -43745,17 +43745,17 @@ interface User {
         TuiDataListWrapper,
         TuiDropdown,
         TuiDropdownMobile,
+        TuiDropdownSheet,
         TuiFade,
         TuiFilterByInputPipe,
+        TuiInitialsPipe,
+        TuiInputChip,
         TuiInputNumber,
         TuiMultiSelect,
-        TuiInputChip,
         TuiSelect,
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
-        TuiInitialsPipe,
-        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -48156,7 +48156,7 @@ import {TuiPopup} from '@taiga-ui/core';
 import {TuiDrawer} from '@taiga-ui/kit';
 
 @Component({
-    imports: [AsyncPipe, TuiSwipe, TuiDrawer, TuiPopup],
+    imports: [AsyncPipe, TuiDrawer, TuiPopup, TuiSwipe],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -50454,12 +50454,12 @@ interface User {
 @Component({
     imports: [
         ReactiveFormsModule,
-        TuiComboBox,
-        TuiTextfield,
         TuiChevron,
+        TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -50521,13 +50521,13 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiChevron,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiMultiSelect,
-        TuiTextfieldControllerModule,
         TuiInputChip,
+        TuiMultiSelect,
         TuiTextfield,
-        TuiChevron,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -51380,13 +51380,13 @@ import {
 @Component({
     imports: [
         FormsModule,
-        TuiComboBox,
-        TuiTextfield,
         TuiChevron,
+        TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
         TuiStringifyPipe,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -51507,12 +51507,12 @@ interface User {
 @Component({
     imports: [
         FormsModule,
-        TuiComboBox,
-        TuiTextfield,
         TuiChevron,
+        TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,
