@@ -1031,6 +1031,15 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
+        from: [
+            {
+                name: 'TuiOnboardingFlowModule',
+                moduleSpecifier: '@taiga-ui/proprietary-banking',
+            },
+        ],
+        to: {name: 'TuiOnboardingFlow', moduleSpecifier: '@taiga-ui/proprietary'},
+    },
+    {
         from: {
             name: 'TuiPromptDialogComponent',
             moduleSpecifier: '@taiga-ui/proprietary-core',

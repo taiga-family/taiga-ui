@@ -21,6 +21,7 @@ const collectionPath = join(__dirname, '../../../migration.json');
 const COMPONENT_BEFORE = `
 import { TuiBackModule } from '@taiga-ui/proprietary-core';
 import { TuiFeedItemModule } from '@taiga-ui/proprietary-banking';
+import { TuiOnboardingFlowModule } from '@taiga-ui/proprietary-banking';
 import { TuiNavigationModule } from '@taiga-ui/proprietary-navigation';
 import { TuiIllustrationsModule } from '@taiga-ui/proprietary-icons';
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary-tds-icons';
@@ -31,7 +32,7 @@ import { TuiInputNumberModule } from '@taiga-ui/kit';
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBackModule, TuiFeedItemModule, TuiNavigationModule, TuiIllustrationsModule]
+    imports: [TuiBackModule, TuiFeedItemModule, TuiNavigationModule, TuiIllustrationsModule, TuiOnboardingFlowModule]
 })
 export class Test {
     @Input() illustration: TuiIllustrationName | null = null;
@@ -46,7 +47,7 @@ export class Test {
 }`.trim();
 
 const COMPONENT_AFTER = `import { TuiInputNumberModule } from "@taiga-ui/legacy";
-import { TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
+import { TuiBackComponent, TuiFeedItemComponent, TuiOnboardingFlow, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
 // TODO: (Taiga UI migration) TuiIllustrationsModule and TuiIllustrationModePipe were deleted. Import TuiIconPipe and use <img [src]="'@tui.illustrations.pack.icon-name' | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons
 import { TuiIllustrationsModule } from '@taiga-ui/proprietary';
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
@@ -55,7 +56,7 @@ import {TuiFeedItemIcon} from '@taiga-ui/proprietary';
 @Component({
     standalone: true,
     templateUrl: './test.template.html',
-    imports: [TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation, TuiIllustrationsModule]
+    imports: [TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation, TuiIllustrationsModule, TuiOnboardingFlow]
 })
 export class Test {
     @Input() illustration: string | null = null;
