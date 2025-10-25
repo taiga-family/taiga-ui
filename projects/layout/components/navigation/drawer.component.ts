@@ -89,6 +89,6 @@ export class TuiDrawerDirective implements DoCheck {
 
     public ngDoCheck(): void {
         // TODO: Refactor to tuiDirectiveBinding
-        tuiSetSignal(this.icons.iconStart, this.open.tuiDropdownOpen ? this.x : '');
+        tuiSetSignal(this.icons.iconStart, this.open.tuiDropdownOpen() ? this.x : '');
     }
 }

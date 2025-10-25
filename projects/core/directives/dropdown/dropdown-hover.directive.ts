@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {ContentChild, Directive, ElementRef, inject, Input} from '@angular/core';
+import {contentChild, Directive, ElementRef, inject, input} from '@angular/core';
 import {toObservable} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiTypedFromEvent, tuiZoneOptimized} from '@taiga-ui/cdk/observables';
@@ -29,7 +29,6 @@ import {TUI_DROPDOWN_HOVER_OPTIONS} from './dropdown-hover.options';
 import {TuiDropdownOpen} from './dropdown-open.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdownHover]',
     providers: [TuiActiveZone, tuiAsDriver(TuiDropdownHover)],
     host: {
@@ -37,8 +36,10 @@ import {TuiDropdownOpen} from './dropdown-open.directive';
     },
 })
 export class TuiDropdownHover extends TuiDriver {
-    @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
-    private readonly dropdownHost?: ElementRef<HTMLElement>;
+    private readonly dropdownHost = contentChild('tuiDropdownHost', {
+        descendants: true,
+        read: ElementRef,
+    });
 
     private readonly el = tuiInjectElement();
     private readonly doc = inject(DOCUMENT);
@@ -58,7 +59,7 @@ export class TuiDropdownHover extends TuiDriver {
             switchMap(() =>
                 tuiTypedFromEvent(this.doc, 'pointerdown').pipe(
                     map(tuiGetActualTarget),
-                    delay(this.hideDelay),
+                    delay(this.tuiDropdownHideDelay()),
                     startWith(null),
                     takeUntil(fromEvent(this.doc, 'mouseover')),
                 ),
@@ -69,7 +70,11 @@ export class TuiDropdownHover extends TuiDriver {
     ).pipe(
         map((element) => tuiIsElement(element) && this.isHovered(element)),
         distinctUntilChanged(),
-        switchMap((v) => of(v).pipe(delay(v ? this.showDelay : this.hideDelay))),
+        switchMap((v) =>
+            of(v).pipe(
+                delay(v ? this.tuiDropdownShowDelay() : this.tuiDropdownHideDelay()),
+            ),
+        ),
         tuiZoneOptimized(),
         tap((hovered) => {
             this.hovered = hovered;
@@ -78,11 +83,9 @@ export class TuiDropdownHover extends TuiDriver {
         share(),
     );
 
-    @Input('tuiDropdownShowDelay')
-    public showDelay = this.options.showDelay;
+    public readonly tuiDropdownShowDelay = input(this.options.showDelay);
 
-    @Input('tuiDropdownHideDelay')
-    public hideDelay = this.options.hideDelay;
+    public readonly tuiDropdownHideDelay = input(this.options.hideDelay);
 
     public hovered = false;
 
@@ -99,7 +102,7 @@ export class TuiDropdownHover extends TuiDriver {
     }
 
     private isHovered(element: Element): boolean {
-        const host = this.dropdownHost?.nativeElement || this.el;
+        const host = this.dropdownHost()?.nativeElement || this.el;
         const hovered = host.contains(element);
         const child = !this.el.contains(element) && this.activeZone.contains(element);
 

@@ -233,7 +233,7 @@ export class TuiInputTagComponent
     }
 
     public get focused(): boolean {
-        return tuiIsFocusedIn(this.el) || !!this.dropdown?.tuiDropdownOpen;
+        return tuiIsFocusedIn(this.el) || !!this.dropdown?.tuiDropdownOpen();
     }
 
     public get tagsEmpty(): boolean {

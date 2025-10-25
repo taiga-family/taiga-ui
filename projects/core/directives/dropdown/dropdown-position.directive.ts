@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, inject, Output} from '@angular/core';
+import {Directive, inject, output} from '@angular/core';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -13,9 +13,7 @@ import {type TuiPoint, type TuiVerticalDirection} from '@taiga-ui/core/types';
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_OPTIONS, type TuiDropdownAlign} from './dropdown-options.directive';
 
-@Directive({
-    standalone: true,
-})
+@Directive()
 export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
@@ -23,8 +21,9 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
 
     private previous?: TuiVerticalDirection;
 
-    @Output('tuiDropdownDirectionChange')
-    public readonly directionChange = new EventEmitter<TuiVerticalDirection>();
+    public readonly directionChange = output<TuiVerticalDirection>({
+        alias: 'tuiDropdownDirectionChange',
+    });
 
     public readonly type = 'dropdown';
     public readonly accessor: TuiRectAccessor | null =

@@ -1,5 +1,5 @@
 import {inject, type Signal, type WritableSignal} from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {outputToObservable, takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -30,8 +30,8 @@ export function tuiDropdownOpen(): WritableSignal<boolean> {
         {},
     );
 
-    inject(TuiDropdownOpen)
-        .tuiDropdownOpenChange.pipe(takeUntilDestroyed())
+    outputToObservable(inject(TuiDropdownOpen).tuiDropdownOpenChange)
+        .pipe(takeUntilDestroyed())
         .subscribe((value) => open.set(value));
 
     return open;

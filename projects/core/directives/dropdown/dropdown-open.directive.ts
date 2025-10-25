@@ -1,13 +1,12 @@
 import {
     computed,
-    ContentChild,
+    contentChild,
     Directive,
+    effect,
     ElementRef,
-    EventEmitter,
     inject,
-    Input,
-    type OnChanges,
-    Output,
+    input,
+    output,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -30,6 +29,7 @@ import {
     tuiIsFocusedIn,
     tuiIsKeyboardFocusable,
 } from '@taiga-ui/cdk/utils/focus';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@taiga-ui/event-plugins';
@@ -44,14 +44,13 @@ function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
         typeof CloseWatcher === 'undefined' &&
         // ?. for auto fill events
         event.key?.toLowerCase() === 'escape' &&
-        this.tuiDropdownEnabled &&
-        !!this.tuiDropdownOpen &&
+        this.tuiDropdownEnabled() &&
+        !!this.tuiDropdownOpen() &&
         !this['dropdown']()?.nextElementSibling
     );
 }
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdown][tuiDropdownOpen],[tuiDropdown][tuiDropdownOpenChange]',
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
     hostDirectives: [
@@ -72,9 +71,11 @@ function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
         '(tuiActiveZoneChange)': '0',
     },
 })
-export class TuiDropdownOpen implements OnChanges {
-    @ContentChild('tuiDropdownHost', {descendants: true, read: ElementRef})
-    private readonly dropdownHost?: ElementRef<HTMLElement>;
+export class TuiDropdownOpen {
+    private readonly dropdownHost = contentChild('tuiDropdownHost', {
+        descendants: true,
+        read: ElementRef,
+    });
 
     private readonly directive = inject(TuiDropdownDirective);
     private readonly el = tuiInjectElement();
@@ -85,14 +86,11 @@ export class TuiDropdownOpen implements OnChanges {
         () => this.directive.ref()?.location.nativeElement,
     );
 
-    @Input()
-    public tuiDropdownEnabled = true;
+    public readonly tuiDropdownEnabled = input(true);
 
-    @Input()
-    public tuiDropdownOpen: boolean | '' = false;
+    public readonly tuiDropdownOpen = input<boolean | ''>(false);
 
-    @Output()
-    public readonly tuiDropdownOpenChange = new EventEmitter<boolean>();
+    public readonly tuiDropdownOpenChange = output<boolean>();
 
     // TODO: make it private when all legacy controls will be deleted from @taiga-ui/legacy (5.0)
     public readonly driver = inject(TuiDropdownDriver);
@@ -119,15 +117,15 @@ export class TuiDropdownOpen implements OnChanges {
         .subscribe(() => this.toggle(false));
 
     public readonly sync = this.driver.pipe(takeUntilDestroyed()).subscribe((open) => {
-        if (open !== this.tuiDropdownOpen) {
+        if (open !== this.tuiDropdownOpen()) {
             this.update(open);
         }
     });
 
-    public ngOnChanges(): void {
-        this.drive(!!this.tuiDropdownOpen);
-        this.tuiDropdownOpenChange.emit(!!this.tuiDropdownOpen);
-    }
+    protected readonly setDrive = effect(() => {
+        this.drive(!!this.tuiDropdownOpen());
+        this.tuiDropdownOpenChange.emit(!!this.tuiDropdownOpen());
+    });
 
     public toggle(open: boolean): void {
         if (this.focused && !open) {
@@ -145,7 +143,7 @@ export class TuiDropdownOpen implements OnChanges {
 
     protected onClick(target: HTMLElement): void {
         if (!this.editable && this.host.contains(target)) {
-            this.update(!this.tuiDropdownOpen);
+            this.update(!this.tuiDropdownOpen());
         }
     }
 
@@ -153,7 +151,7 @@ export class TuiDropdownOpen implements OnChanges {
         if (
             !tuiIsElement(event.target) ||
             !this.host.contains(event.target) ||
-            !this.tuiDropdownEnabled ||
+            !this.tuiDropdownEnabled() ||
             !this.directive._content()
         ) {
             return;
@@ -179,12 +177,12 @@ export class TuiDropdownOpen implements OnChanges {
     }
 
     private get host(): HTMLElement {
-        const initial = this.dropdownHost?.nativeElement || this.el;
+        const initial = this.dropdownHost()?.nativeElement || this.el;
         const focusable = tuiIsKeyboardFocusable(initial)
             ? initial
             : tuiGetClosestFocusable({initial, root: this.el});
 
-        return this.dropdownHost?.nativeElement || focusable || this.el;
+        return this.dropdownHost()?.nativeElement || focusable || this.el;
     }
 
     private get editable(): boolean {
@@ -196,16 +194,16 @@ export class TuiDropdownOpen implements OnChanges {
     }
 
     private update(open: boolean): void {
-        if (open && !this.tuiDropdownEnabled) {
+        if (open && !this.tuiDropdownEnabled()) {
             return this.drive();
         }
 
-        this.tuiDropdownOpen = open;
+        tuiSetSignal(this.tuiDropdownOpen, open);
         this.tuiDropdownOpenChange.emit(open);
         this.drive();
     }
 
-    private drive(open = !!this.tuiDropdownOpen && this.tuiDropdownEnabled): void {
+    private drive(open = !!this.tuiDropdownOpen() && this.tuiDropdownEnabled()): void {
         this.obscured.tuiObscuredEnabled = open;
         this.driver.next(open);
     }
