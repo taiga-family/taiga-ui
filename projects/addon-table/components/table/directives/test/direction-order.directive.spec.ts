@@ -4,7 +4,6 @@ import {TuiSortDirection, TuiTable, TuiTableDirective} from '@taiga-ui/addon-tab
 
 describe('TuiDirectionOrder directive', () => {
     @Component({
-        standalone: true,
         imports: [TuiTable],
         template: `
             <table
@@ -43,14 +42,14 @@ describe('TuiDirectionOrder directive', () => {
     it('sets the sort direction of table to ascending', () => {
         fixture.detectChanges();
 
-        expect(testComponent.table.direction).toBe(TuiSortDirection.Asc);
+        expect(testComponent.table.direction()).toBe(TuiSortDirection.Asc);
     });
 
     it('sets the sort direction of table to descending', () => {
         testComponent.directionOrder = 'desc';
         fixture.detectChanges();
 
-        expect(testComponent.table.direction).toBe(TuiSortDirection.Desc);
+        expect(testComponent.table.direction()).toBe(TuiSortDirection.Desc);
     });
 
     describe('when table emits direction change', () => {

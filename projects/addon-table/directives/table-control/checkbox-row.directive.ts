@@ -2,7 +2,7 @@ import {
     computed,
     Directive,
     inject,
-    Input,
+    input,
     type OnDestroy,
     type OnInit,
 } from '@angular/core';
@@ -12,7 +12,6 @@ import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTableControlDirective} from './table-control.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiCheckbox][tuiCheckboxRow]',
     providers: [{provide: NgControl, useClass: NgModel}],
     host: {
@@ -28,14 +27,13 @@ export class TuiCheckboxRowDirective<T> implements OnInit, OnDestroy {
 
     protected readonly checked = computed((checked = this.parent
         .value()
-        .includes(this.tuiCheckboxRow)) => {
+        .includes(this.tuiCheckboxRow())) => {
         setTimeout(() => this.control.control?.setValue(checked));
 
         return checked;
     });
 
-    @Input()
-    public tuiCheckboxRow!: T;
+    public readonly tuiCheckboxRow = input.required<T>();
 
     public ngOnInit(): void {
         this.parent.process(this);
@@ -44,11 +42,11 @@ export class TuiCheckboxRowDirective<T> implements OnInit, OnDestroy {
     public ngOnDestroy(): void {
         this.parent.process(this);
         this.parent.onChange(
-            this.parent.value().filter((item) => item !== this.tuiCheckboxRow),
+            this.parent.value().filter((item) => item !== this.tuiCheckboxRow()),
         );
     }
 
     protected onChange(): void {
-        this.parent.onChange(tuiArrayToggle(this.parent.value(), this.tuiCheckboxRow));
+        this.parent.onChange(tuiArrayToggle(this.parent.value(), this.tuiCheckboxRow()));
     }
 }

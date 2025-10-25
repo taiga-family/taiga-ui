@@ -1,21 +1,18 @@
-import {ChangeDetectionStrategy, Component, ContentChild} from '@angular/core';
+import {ChangeDetectionStrategy, Component, contentChild} from '@angular/core';
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 
 @Component({
-    standalone: true,
     selector: 'th[tuiTd], td[tuiTd]',
     template: '<ng-content />',
     styleUrl: './td.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._editable]': 'control || textfield',
+        '[class._editable]': 'control() || textfield()',
     },
 })
 export class TuiTableTd {
-    @ContentChild(TuiControl)
-    protected readonly control: unknown;
+    protected readonly control = contentChild(TuiControl<unknown>);
 
-    @ContentChild(TuiTextfieldComponent)
-    protected readonly textfield?: TuiTextfieldComponent<unknown>;
+    protected readonly textfield = contentChild(TuiTextfieldComponent<unknown>);
 }

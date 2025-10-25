@@ -6,7 +6,6 @@ import {TuiTableDirective} from '../directives/table.directive';
 import {type TuiSortDirection} from '../table.options';
 
 @Pipe({
-    standalone: true,
     name: 'tuiTableSort',
     pure: false,
 })
@@ -14,7 +13,7 @@ export class TuiTableSortPipe<K> implements PipeTransform {
     private readonly table = inject(TuiTableDirective<K>);
 
     public transform<T extends K>(data?: readonly T[] | null): readonly T[] {
-        return this.sort<T>(data ?? [], this.table.sorter, this.table.direction);
+        return this.sort<T>(data ?? [], this.table.sorter, this.table.direction());
     }
 
     @tuiPure

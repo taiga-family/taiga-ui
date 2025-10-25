@@ -18,7 +18,7 @@
 <ng-template #content>
     <ng-content />
 </ng-template>
-@if (resizable) {
+@if (resizable()) {
     <div
         class="t-bar"
         (tuiResized)="onResized($event)"

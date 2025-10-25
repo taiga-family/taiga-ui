@@ -1,20 +1,19 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Output} from '@angular/core';
+import {Directive, inject} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiResized]',
 })
 export class TuiTableResized {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
 
-    @Output()
-    public readonly tuiResized = tuiTypedFromEvent(this.el, 'mousedown').pipe(
+    private readonly tuiResized$ = tuiTypedFromEvent(this.el, 'mousedown').pipe(
         tuiPreventDefault(),
         switchMap(() => {
             const {width, right} =
@@ -27,4 +26,6 @@ export class TuiTableResized {
             );
         }),
     );
+
+    public readonly tuiResized = outputFromObservable(this.tuiResized$);
 }
