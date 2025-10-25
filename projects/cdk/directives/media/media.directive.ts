@@ -1,12 +1,4 @@
-import {
-    Directive,
-    effect,
-    EventEmitter,
-    Input,
-    input,
-    model,
-    Output,
-} from '@angular/core';
+import {Directive, effect, input, model, untracked} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
 @Directive({
@@ -37,32 +29,28 @@ export class TuiMedia {
         this.updatePlaybackRate(this.playbackRate());
     });
 
+    protected readonly setElPaused = effect(() => {
+        const paused = this.paused();
+
+        if (paused) {
+            this.el.pause?.();
+        } else {
+            void this.el.play?.();
+        }
+
+        this.updatePlaybackRate(untracked(this.playbackRate));
+    });
+
     public readonly playbackRate = input<number>(1);
 
     public readonly volume = model<number>(1);
 
     public readonly currentTime = model<number>(this.el.currentTime ?? 0);
 
-    @Output()
-    public readonly pausedChange = new EventEmitter<boolean>();
-
-    @Input()
-    public set paused(paused: boolean) {
-        if (paused) {
-            this.el.pause?.();
-        } else {
-            void this.el.play?.();
-            this.updatePlaybackRate(this.playbackRate());
-        }
-    }
-
-    public get paused(): boolean {
-        return this.el.paused;
-    }
+    public readonly paused = model<boolean>(this.el.paused);
 
     protected onPausedChange(paused: boolean): void {
-        this.pausedChange.emit(paused);
-        this.updatePlaybackRate(this.playbackRate());
+        this.paused.set(paused);
     }
 
     protected onVolumeChange(): void {
