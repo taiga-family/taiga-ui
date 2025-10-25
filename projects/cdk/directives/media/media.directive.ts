@@ -1,11 +1,11 @@
-import {Directive, EventEmitter, Input, Output} from '@angular/core';
+import {Directive, EventEmitter, Input, model, Output} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
 @Directive({
     selector: 'video[tuiMedia], audio[tuiMedia]',
     exportAs: 'tuiMedia',
     host: {
-        '[volume]': 'volume',
+        '[volume]': 'volume()',
         '(durationchange)': '0',
         '(ended)': 'onPausedChange(true)',
         '(pause)': 'onPausedChange(true)',
@@ -21,17 +21,13 @@ export class TuiMedia {
 
     private playbackRate = 1;
 
-    @Input()
-    public volume = 1;
+    public readonly volume = model(1);
 
     @Output()
     public readonly currentTimeChange = new EventEmitter<number>();
 
     @Output()
     public readonly pausedChange = new EventEmitter<boolean>();
-
-    @Output()
-    public readonly volumeChange = new EventEmitter<number>();
 
     @Input('playbackRate')
     public set playbackRateSetter(playbackRate: number) {
@@ -69,8 +65,7 @@ export class TuiMedia {
     }
 
     protected onVolumeChange(): void {
-        this.volume = this.el.volume;
-        this.volumeChange.emit(this.volume);
+        this.volume.set(this.el.volume);
     }
 
     protected onCurrentTimeChange(): void {
