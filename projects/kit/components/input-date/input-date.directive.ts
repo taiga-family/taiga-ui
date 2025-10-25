@@ -7,7 +7,6 @@ import {
     signal,
     untracked,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoDateMode, maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
@@ -41,7 +40,7 @@ import {
     TuiItemsHandlersDirective,
     TuiItemsHandlersValidator,
 } from '@taiga-ui/core/directives/items-handlers';
-import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
+import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TuiCalendarRange} from '@taiga-ui/kit/components/calendar-range';
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
@@ -90,9 +89,7 @@ export abstract class TuiInputDateBase<
         TUI_INPUT_DATE_OPTIONS_NEW,
     );
 
-    protected readonly format = toSignal(inject(TUI_DATE_FORMAT), {
-        initialValue: TUI_DEFAULT_DATE_FORMAT,
-    });
+    protected readonly format = inject(TUI_DATE_FORMAT);
 
     protected readonly valueEffect = effect(() => {
         const value =
