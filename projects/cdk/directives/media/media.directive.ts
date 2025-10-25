@@ -19,13 +19,13 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 export class TuiMedia {
     private readonly el = tuiInjectElement<HTMLMediaElement>();
 
-    private readonly setElCurrentTime = effect(() => {
+    private playbackRate = 1;
+
+    protected readonly setElCurrentTime = effect(() => {
         if (Math.abs(this.currentTime() - this.el.currentTime) > 0.05) {
             this.el.currentTime = this.currentTime();
         }
     });
-
-    private playbackRate = 1;
 
     public readonly volume = model<number>(1);
 
