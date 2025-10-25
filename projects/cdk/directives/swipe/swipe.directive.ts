@@ -1,4 +1,5 @@
-import {Directive, inject, Output} from '@angular/core';
+import {Directive, inject} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 
 import {TuiSwipeService} from './swipe.service';
 
@@ -7,6 +8,5 @@ import {TuiSwipeService} from './swipe.service';
     providers: [TuiSwipeService],
 })
 export class TuiSwipe {
-    @Output()
-    public readonly tuiSwipe = inject(TuiSwipeService);
+    public readonly tuiSwipe = outputFromObservable(inject(TuiSwipeService));
 }
