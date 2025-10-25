@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {outputToObservable, toSignal} from '@angular/core/rxjs-interop';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiDropdownOpen} from '@taiga-ui/core/directives/dropdown';
 import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
@@ -32,12 +32,15 @@ export class TuiArrowComponent {
     private readonly control: any = inject(AbstractTuiControl, {optional: true});
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
     private readonly options = inject(TUI_ARROW_OPTIONS);
+    private readonly dropdown = inject(TuiDropdownOpen, {optional: true});
     protected readonly dropdownOpen = toSignal(
-        inject(TuiDropdownOpen, {optional: true})?.tuiDropdownOpenChange || of(false),
+        this.dropdown
+            ? outputToObservable(this.dropdown.tuiDropdownOpenChange)
+            : of(false),
     );
 
     protected readonly rotated = computed(
-        () => this.dropdownOpen() || this.control.pseudoOpen?.(),
+        () => this.dropdownOpen?.() || this.control.pseudoOpen?.(),
     );
 
     protected get small(): boolean {
