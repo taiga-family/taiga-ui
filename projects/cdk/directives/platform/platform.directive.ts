@@ -1,20 +1,18 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 
 @Directive({
-    standalone: true,
     selector: '[tuiPlatform]',
     providers: [
         {
             provide: TUI_PLATFORM,
-            useFactory: () => inject(TuiPlatform).tuiPlatform,
+            useFactory: () => inject(TuiPlatform).tuiPlatform(),
         },
     ],
     host: {
-        '[attr.data-platform]': 'tuiPlatform',
+        '[attr.data-platform]': 'tuiPlatform()',
     },
 })
 export class TuiPlatform {
-    @Input()
-    public tuiPlatform = inject(TUI_PLATFORM, {skipSelf: true});
+    public readonly tuiPlatform = input(inject(TUI_PLATFORM, {skipSelf: true}));
 }

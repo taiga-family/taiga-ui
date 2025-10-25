@@ -1,6 +1,6 @@
 @for (color of colors(); track color) {
     <tr class="color">
-        @if (getValue(color, platform.tuiPlatform, darkMode()); as value) {
+        @if (getValue(color, platform.tuiPlatform(), darkMode()); as value) {
             <td>
                 <h3 class="name">
                     <tui-doc-copy

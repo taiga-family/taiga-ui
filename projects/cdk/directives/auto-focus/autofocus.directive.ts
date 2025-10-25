@@ -1,5 +1,5 @@
 import {type BooleanInput, coerceBooleanProperty} from '@angular/cdk/coercion';
-import {type AfterViewInit, DestroyRef, Directive, inject, Input} from '@angular/core';
+import {type AfterViewInit, DestroyRef, Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {timer} from 'rxjs';
 
@@ -19,14 +19,13 @@ export class TuiAutoFocus implements AfterViewInit {
     private readonly options = inject(TUI_AUTOFOCUS_OPTIONS);
     private readonly destroyRef = inject(DestroyRef);
 
-    @Input({
+    public readonly autoFocus = input<BooleanInput, any>(undefined, {
         alias: 'tuiAutoFocus',
         transform: coerceBooleanProperty,
-    })
-    public autoFocus: BooleanInput;
+    });
 
     public ngAfterViewInit(): void {
-        if (this.autoFocus) {
+        if (this.autoFocus()) {
             this.focus();
         }
     }

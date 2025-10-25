@@ -1,4 +1,11 @@
-import {Directive, inject, Input, TemplateRef, ViewContainerRef} from '@angular/core';
+import {
+    Directive,
+    effect,
+    inject,
+    input,
+    TemplateRef,
+    ViewContainerRef,
+} from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 
@@ -16,15 +23,17 @@ export class TuiRepeatTimesContext implements TuiContext<number> {
  * {@link TuiRepeatTimesContext.$implicit index} of a template instance.
  */
 @Directive({
-    standalone: true,
     selector: '[tuiRepeatTimes][tuiRepeatTimesOf]',
 })
 export class TuiRepeatTimes {
     private readonly vcr = inject(ViewContainerRef);
     private readonly template = inject(TemplateRef<TuiRepeatTimesContext>);
 
-    @Input()
-    public set tuiRepeatTimesOf(count: number) {
+    public readonly tuiRepeatTimesOf = input.required<number>();
+
+    protected readonly setCount = effect(() => {
+        const count = this.tuiRepeatTimesOf();
+
         const safeCount = Math.floor(tuiClamp(count, 0, MAX_VALUE));
 
         const {length} = this.vcr;
@@ -34,7 +43,7 @@ export class TuiRepeatTimes {
         } else {
             this.addContainers(safeCount);
         }
-    }
+    });
 
     private addContainers(count: number): void {
         for (let index = this.vcr.length; index < count; index++) {

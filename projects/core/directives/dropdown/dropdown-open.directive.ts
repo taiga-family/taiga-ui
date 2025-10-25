@@ -30,6 +30,7 @@ import {
     tuiIsFocusedIn,
     tuiIsKeyboardFocusable,
 } from '@taiga-ui/cdk/utils/focus';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiAsDriver} from '@taiga-ui/core/classes';
 import {tuiIsEditingKey} from '@taiga-ui/core/utils/miscellaneous';
 import {shouldCall} from '@taiga-ui/event-plugins';
@@ -101,7 +102,7 @@ export class TuiDropdownOpen implements OnChanges {
             tuiIfMap(() =>
                 merge(
                     tuiCloseWatcher(),
-                    this.obscured.tuiObscured.pipe(filter(Boolean)),
+                    this.obscured.tuiObscured$.pipe(filter(Boolean)),
                     this.activeZone.tuiActiveZoneChange.pipe(filter((a) => !a)),
                     fromEvent(this.el, 'focusin').pipe(
                         filter(
@@ -206,7 +207,7 @@ export class TuiDropdownOpen implements OnChanges {
     }
 
     private drive(open = !!this.tuiDropdownOpen && this.tuiDropdownEnabled): void {
-        this.obscured.tuiObscuredEnabled = open;
+        tuiSetSignal(this.obscured.tuiObscuredEnabled, open);
         this.driver.next(open);
     }
 
