@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, Input, model, Output} from '@angular/core';
+import {Directive, effect, EventEmitter, Input, model, Output} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
 @Directive({
@@ -19,12 +19,17 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 export class TuiMedia {
     private readonly el = tuiInjectElement<HTMLMediaElement>();
 
+    private readonly setElCurrentTime = effect(() => {
+        if (Math.abs(this.currentTime() - this.el.currentTime) > 0.05) {
+            this.el.currentTime = this.currentTime();
+        }
+    });
+
     private playbackRate = 1;
 
-    public readonly volume = model(1);
+    public readonly volume = model<number>(1);
 
-    @Output()
-    public readonly currentTimeChange = new EventEmitter<number>();
+    public readonly currentTime = model<number>(this.el.currentTime ?? 0);
 
     @Output()
     public readonly pausedChange = new EventEmitter<boolean>();
@@ -35,13 +40,6 @@ export class TuiMedia {
     }
 
     @Input()
-    public set currentTime(currentTime: number) {
-        if (Math.abs(currentTime - this.currentTime) > 0.05) {
-            this.el.currentTime = currentTime;
-        }
-    }
-
-    @Input()
     public set paused(paused: boolean) {
         if (paused) {
             this.el.pause?.();
@@ -49,10 +47,6 @@ export class TuiMedia {
             void this.el.play?.();
             this.updatePlaybackRate(this.playbackRate);
         }
-    }
-
-    public get currentTime(): number {
-        return this.el.currentTime ?? 0;
     }
 
     public get paused(): boolean {
@@ -69,7 +63,7 @@ export class TuiMedia {
     }
 
     protected onCurrentTimeChange(): void {
-        this.currentTimeChange.emit(this.currentTime);
+        this.currentTime.set(this.el.currentTime);
     }
 
     private updatePlaybackRate(playbackRate: number): void {
