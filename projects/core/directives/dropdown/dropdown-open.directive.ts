@@ -152,7 +152,7 @@ export class TuiDropdownOpen {
             !tuiIsElement(event.target) ||
             !this.host.contains(event.target) ||
             !this.tuiDropdownEnabled() ||
-            !this.directive._content()
+            !this.directive.content()
         ) {
             return;
         }
