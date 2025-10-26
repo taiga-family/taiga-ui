@@ -92,7 +92,13 @@ export class TuiDropdownSelection
         TUI_TRUE_HANDLER,
     );
 
-    public readonly getClientRect = computed<DOMRect>(() => {
+    public readonly type = 'dropdown';
+
+    constructor() {
+        super((subscriber) => this.stream$.subscribe(subscriber));
+    }
+
+    public getClientRect(): DOMRect {
         switch (this.position()) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
@@ -109,12 +115,6 @@ export class TuiDropdownSelection
             default:
                 return this.range.getBoundingClientRect();
         }
-    });
-
-    public readonly type = 'dropdown';
-
-    constructor() {
-        super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
     public ngOnDestroy(): void {
