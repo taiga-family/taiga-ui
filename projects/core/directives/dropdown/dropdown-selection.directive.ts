@@ -1,5 +1,13 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Input, type OnDestroy, ViewContainerRef} from '@angular/core';
+import {
+    computed,
+    Directive,
+    inject,
+    input,
+    type OnDestroy,
+    ViewContainerRef,
+} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {
     CHAR_NO_BREAK_SPACE,
     CHAR_ZERO_WIDTH_SPACE,
@@ -24,7 +32,7 @@ import {
 } from '@taiga-ui/core/classes';
 import {TUI_SELECTION_STREAM} from '@taiga-ui/core/tokens';
 import {tuiGetWordRange} from '@taiga-ui/core/utils';
-import {BehaviorSubject, combineLatest, distinctUntilChanged, filter, map} from 'rxjs';
+import {combineLatest, distinctUntilChanged, filter, map} from 'rxjs';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 
@@ -45,12 +53,12 @@ export class TuiDropdownSelection
     protected readonly vcr = inject(ViewContainerRef);
     protected readonly dropdown = inject(TuiDropdownDirective);
     protected readonly el = tuiInjectElement();
-    protected readonly handler$ = new BehaviorSubject<TuiBooleanHandler<Range>>(
-        TUI_TRUE_HANDLER,
+    protected readonly handler = computed((visible = this.tuiDropdownSelection()) =>
+        !tuiIsString(visible) ? visible : undefined,
     );
 
     protected readonly stream$ = combineLatest([
-        this.handler$,
+        toObservable(this.handler).pipe(filter(Boolean)),
         inject(TUI_SELECTION_STREAM).pipe(
             map(() => this.getRange()),
             filter((range) => this.isValid(range)),
@@ -76,24 +84,16 @@ export class TuiDropdownSelection
 
     protected range = inject(TUI_RANGE);
 
-    @Input('tuiDropdownSelectionPosition')
-    public position: 'selection' | 'tag' | 'word' = 'selection';
+    public readonly position = input<'selection' | 'tag' | 'word'>('selection', {
+        alias: 'tuiDropdownSelectionPosition',
+    });
 
-    public readonly type = 'dropdown';
+    public readonly tuiDropdownSelection = input<TuiBooleanHandler<Range> | string>(
+        TUI_TRUE_HANDLER,
+    );
 
-    constructor() {
-        super((subscriber) => this.stream$.subscribe(subscriber));
-    }
-
-    @Input()
-    public set tuiDropdownSelection(visible: TuiBooleanHandler<Range> | string) {
-        if (!tuiIsString(visible)) {
-            this.handler$.next(visible);
-        }
-    }
-
-    public getClientRect(): DOMRect {
-        switch (this.position) {
+    public readonly getClientRect = computed<DOMRect>(() => {
+        switch (this.position()) {
             case 'tag': {
                 const {commonAncestorContainer} = this.range;
                 const element = tuiIsElement(commonAncestorContainer)
@@ -109,6 +109,12 @@ export class TuiDropdownSelection
             default:
                 return this.range.getBoundingClientRect();
         }
+    });
+
+    public readonly type = 'dropdown';
+
+    constructor() {
+        super((subscriber) => this.stream$.subscribe(subscriber));
     }
 
     public ngOnDestroy(): void {
