@@ -9,14 +9,8 @@ import {
     type MaskitoTimeMode,
     maskitoTimeOptionsGenerator,
     type MaskitoTimeParams,
-    MaskitoTimeSegments,
 } from '@maskito/kit';
-import {
-    tuiAsControl,
-    TuiControl,
-    TuiValueTransformer,
-    tuiValueTransformerFrom,
-} from '@taiga-ui/cdk/classes';
+import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
 import {TuiTime} from '@taiga-ui/cdk/date-time';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
@@ -41,8 +35,6 @@ import {TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
-import {TuiHandler} from '@taiga-ui/cdk';
-import {TuiSizeL, TuiSizeS} from '@taiga-ui/core';
 
 @Directive({
     selector: 'input[tuiInputTime]',
