@@ -1,6 +1,6 @@
 <tui-scrollbar class="t-scroll">
     <div
-        *polymorpheusOutlet="directive._content() as text; context: {$implicit: close}"
+        *polymorpheusOutlet="directive.content() as text; context: {$implicit: close}"
         class="t-primitive"
     >
         {{ text }}

@@ -1,5 +1,6 @@
 import {isPlatformBrowser} from '@angular/common';
 import {Directive, inject, type OnDestroy, PLATFORM_ID, TemplateRef} from '@angular/core';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiDropdownDirective} from './dropdown.directive';
 
@@ -10,7 +11,7 @@ export class TuiDropdownContent implements OnDestroy {
     private readonly directive = inject(TuiDropdownDirective);
 
     constructor() {
-        this.directive.tuiDropdown = inject(TemplateRef);
+        tuiSetSignal(this.directive.tuiDropdown, inject(TemplateRef));
 
         if (
             isPlatformBrowser(inject(PLATFORM_ID)) &&
@@ -21,6 +22,6 @@ export class TuiDropdownContent implements OnDestroy {
     }
 
     public ngOnDestroy(): void {
-        this.directive.tuiDropdown = null;
+        tuiSetSignal(this.directive.tuiDropdown, null);
     }
 }
