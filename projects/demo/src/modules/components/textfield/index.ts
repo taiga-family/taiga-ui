@@ -32,6 +32,7 @@ export default class Page {
         'Dropdown',
         'InputPassword',
         'Mask',
+        'Email',
     ];
 
     protected value = '';
