@@ -42562,6 +42562,49 @@ export default class Example {
 }
 ```
 
+#### Email
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Email</label>
+<input placeholder="Enter your email" tuiTextfield type="email" [(ngModel)]="email" />
+<tui-icon icon="@tui.mail" />
+</tui-textfield>
+<tui-textfield>
+<label tuiLabel>Email</label>
+<input inputmode="email" placeholder="Enter your email" tuiTextfield type="text" [(ngModel)]="email" />
+<tui-icon icon="@tui.mail" />
+</tui-textfield>
+<tui-textfield>
+<label tuiLabel>Email</label>
+<input autocomplete="new-password" placeholder="Enter your email" tuiTextfield type="email" [(ngModel)]="email" />
+<tui-icon icon="@tui.mail" />
+</tui-textfield>
+<p> Email: <code>{{ email }}</code>
+</p>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, TuiIcon, TuiTextfield],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected email = '';
+}
+```
+
 
 ### TypeScript
 
@@ -42600,6 +42643,7 @@ export default class Page {
         'Dropdown',
         'InputPassword',
         'Mask',
+        'Email',
     ];
 
     protected value = '';

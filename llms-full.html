@@ -42572,6 +42572,49 @@ export default class Example {
 }
 ```
 
+#### Email
+
+**Template:**
+```html
+&lt;tui-textfield&gt;
+&lt;label tuiLabel&gt;Email&lt;/label&gt;
+&lt;input placeholder=&quot;Enter your email&quot; tuiTextfield type=&quot;email&quot; [(ngModel)]=&quot;email&quot; /&gt;
+&lt;tui-icon icon=&quot;@tui.mail&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;tui-textfield&gt;
+&lt;label tuiLabel&gt;Email&lt;/label&gt;
+&lt;input inputmode=&quot;email&quot; placeholder=&quot;Enter your email&quot; tuiTextfield type=&quot;text&quot; [(ngModel)]=&quot;email&quot; /&gt;
+&lt;tui-icon icon=&quot;@tui.mail&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;tui-textfield&gt;
+&lt;label tuiLabel&gt;Email&lt;/label&gt;
+&lt;input autocomplete=&quot;new-password&quot; placeholder=&quot;Enter your email&quot; tuiTextfield type=&quot;email&quot; [(ngModel)]=&quot;email&quot; /&gt;
+&lt;tui-icon icon=&quot;@tui.mail&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;p&gt; Email: &lt;code&gt;{{ email }}&lt;/code&gt;
+&lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiIcon, TuiTextfield} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, TuiIcon, TuiTextfield],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected email = &#039;&#039;;
+}
+```
+
 
 ### TypeScript
 
@@ -42610,6 +42653,7 @@ export default class Page {
         &#039;Dropdown&#039;,
         &#039;InputPassword&#039;,
         &#039;Mask&#039;,
+        &#039;Email&#039;,
     ];
 
     protected value = &#039;&#039;;
