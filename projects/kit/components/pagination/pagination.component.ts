@@ -180,7 +180,7 @@ export class TuiPagination {
         );
     }
 
-    protected getElementMode(index: number): string {
+    protected getElementMode(index = -1): string {
         return this.appearance({
             isActive: this.index === index,
             size: this.size,
