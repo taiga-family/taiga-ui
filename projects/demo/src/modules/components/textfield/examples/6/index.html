@@ -1,0 +1,39 @@
+<tui-textfield>
+    <label tuiLabel>Email</label>
+    <input
+        placeholder="Enter your email"
+        tuiTextfield
+        type="email"
+        [(ngModel)]="email"
+    />
+    <tui-icon icon="@tui.mail" />
+</tui-textfield>
+
+<tui-textfield>
+    <label tuiLabel>Email</label>
+    <input
+        inputmode="email"
+        placeholder="Enter your email"
+        tuiTextfield
+        type="text"
+        [(ngModel)]="email"
+    />
+    <tui-icon icon="@tui.mail" />
+</tui-textfield>
+
+<tui-textfield>
+    <label tuiLabel>Email</label>
+    <input
+        autocomplete="new-password"
+        placeholder="Enter your email"
+        tuiTextfield
+        type="email"
+        [(ngModel)]="email"
+    />
+    <tui-icon icon="@tui.mail" />
+</tui-textfield>
+
+<p>
+    Email:
+    <code>{{ email }}</code>
+</p>
