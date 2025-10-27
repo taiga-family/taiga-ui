@@ -2516,7 +2516,7 @@ export default class Example {
 &lt;/tui-axes&gt;
 &lt;ng-template #hint let-setIndex &gt;
 &lt;p *ngFor=&quot;let item of value; let index = index&quot; class=&quot;hint&quot; &gt;
-&lt;span class=&quot;dot&quot; [style.background]=&quot;&#039;var(--tui-chart-categorical-0&#039; + index + &#039;)&#039;&quot; &gt;&lt;/span&gt;
+&lt;span class=&quot;dot&quot; [style.background]=&quot;&#039;var(--tui-chart-categorical-&#039; + index.toString().padStart(2, &#039;0&#039;) + &#039;)&#039;&quot; &gt;&lt;/span&gt;
 &lt;span class=&quot;name&quot;&gt;{{ getSetName(index) }}&lt;/span&gt;
 &lt;span&gt;{{ (item[setIndex] || 0) * 1000 | tuiAmount: &#039;RUB&#039; | async }}&lt;/span&gt;
 &lt;/p&gt;
@@ -2596,7 +2596,7 @@ export default class Example {
 ```html
 &lt;tui-axes class=&quot;axes&quot; [axisXLabels]=&quot;axisXLabels&quot; [verticalLines]=&quot;4&quot; &gt;
 &lt;div class=&quot;t-horizontal-bars&quot;&gt;
-&lt;tui-bar *ngFor=&quot;let bar of value; let i = index&quot; size=&quot;m&quot; [style.background-color]=&quot;&#039;var(--tui-chart-categorical-0&#039; + i + &#039;)&#039;&quot; [style.height.%]=&quot;getHeight(bar)&quot; /&gt;
+&lt;tui-bar *ngFor=&quot;let bar of value; let i = index&quot; size=&quot;m&quot; [style.background-color]=&quot;&#039;var(--tui-chart-categorical-&#039; + i.toString().padStart(2, &#039;0&#039;) + &#039;)&#039;&quot; [style.height.%]=&quot;getHeight(bar)&quot; /&gt;
 &lt;/div&gt;
 &lt;/tui-axes&gt;
 ```
@@ -7300,7 +7300,14 @@ export default class Example {}
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiHeader class=&quot;image&quot; &gt;
+&lt;div tuiCardLarge tuiHeader class=&quot;image-1&quot; &gt;
+&lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
+&lt;/h1&gt;
+&lt;aside tuiAccessories&gt;
+&lt;button appearance=&quot;glass&quot; tuiButtonClose tuiIconButton type=&quot;button&quot; &gt; Close &lt;/button&gt;
+&lt;/aside&gt;
+&lt;/div&gt;
+&lt;div tuiCardLarge tuiHeader tuiTheme=&quot;dark&quot; class=&quot;image-2&quot; &gt;
 &lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
 &lt;/h1&gt;
 &lt;aside tuiAccessories&gt;
@@ -7313,20 +7320,13 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
-import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
+import {TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
 import {TuiButtonClose} from &#039;@taiga-ui/kit&#039;;
 import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAppearance,
-        TuiButton,
-        TuiButtonClose,
-        TuiCardLarge,
-        TuiHeader,
-        TuiTitle,
-    ],
+    imports: [TuiButton, TuiButtonClose, TuiCardLarge, TuiHeader, TuiTitle],
     templateUrl: &#039;./index.html&#039;,
     styleUrls: [&#039;./index.less&#039;],
     encapsulation,
@@ -7335,16 +7335,22 @@ import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 export default class Example {}
 ```
 
-#### Image-dark
+#### Cell with close
 
 **Template:**
 ```html
-&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge tuiHeader tuiTheme=&quot;dark&quot; class=&quot;image&quot; &gt;
-&lt;h1 tuiTitle&gt; Title &lt;span tuiSubtitle&gt;Subtitle&lt;/span&gt;
-&lt;/h1&gt;
+&lt;div tuiPlatform=&quot;ios&quot;&gt;
+&lt;h4&gt;iOS/Android&lt;/h4&gt;
+&lt;div tuiAppearance=&quot;floating&quot; tuiCardLarge=&quot;compact&quot; tuiCell &gt;
+&lt;tui-avatar appearance=&quot;primary&quot; src=&quot;@tui.star&quot; /&gt;
+&lt;div tuiTitle&gt;
+&lt;div tuiFade tuiFadeHeight=&quot;1.2rem&quot; tuiFadeOffset=&quot;1.5em&quot; tuiFadeSize=&quot;1.5em&quot; [style.block-size.rem]=&quot;2.5&quot; &gt; Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. &lt;/div&gt;
+&lt;div tuiFade tuiFadeHeight=&quot;1rem&quot; tuiFadeOffset=&quot;1.5em&quot; tuiFadeSize=&quot;1.5em&quot; tuiSubtitle [style.align-items]=&quot;&#039;flex-start&#039;&quot; [style.block-size.rem]=&quot;2&quot; &gt; Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#039;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. &lt;/div&gt;
+&lt;/div&gt;
 &lt;aside tuiAccessories&gt;
-&lt;button appearance=&quot;glass&quot; tuiButtonClose tuiIconButton type=&quot;button&quot; &gt; Close &lt;/button&gt;
+&lt;button tuiButtonClose tuiIconButton type=&quot;button&quot; &gt; Close &lt;/button&gt;
 &lt;/aside&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 ```
 **TypeScript:**
@@ -7352,18 +7358,23 @@ export default class Example {}
 import {Component} from &#039;@angular/core&#039;;
 import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
 import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiPlatform} from &#039;@taiga-ui/cdk&#039;;
 import {TuiAppearance, TuiButton, TuiTitle} from &#039;@taiga-ui/core&#039;;
-import {TuiButtonClose} from &#039;@taiga-ui/kit&#039;;
-import {TuiCardLarge, TuiHeader} from &#039;@taiga-ui/layout&#039;;
+import {TuiAvatar, TuiButtonClose, TuiFade} from &#039;@taiga-ui/kit&#039;;
+import {TuiCardLarge, TuiCell, TuiHeader} from &#039;@taiga-ui/layout&#039;;
 
 @Component({
     standalone: true,
     imports: [
         TuiAppearance,
+        TuiAvatar,
         TuiButton,
         TuiButtonClose,
         TuiCardLarge,
+        TuiCell,
+        TuiFade,
         TuiHeader,
+        TuiPlatform,
         TuiTitle,
     ],
     templateUrl: &#039;./index.html&#039;,
@@ -8015,7 +8026,7 @@ export default class Example {
         &#039;Cell List (headless)&#039;,
         &#039;Footer alignment&#039;,
         &#039;Image&#039;,
-        &#039;Image-dark&#039;,
+        &#039;Cell with close&#039;,
         &#039;Paddings and radii&#039;,
         &#039;Map&#039;,
         &#039;In portal&#039;,
@@ -26356,7 +26367,7 @@ export class Example {}
 &lt;div&gt;Total&lt;/div&gt;
 &lt;/tui-ring-chart&gt;
 &lt;div class=&quot;legend&quot;&gt;
-&lt;tui-legend-item *ngFor=&quot;let label of labels; let index = index&quot; size=&quot;s&quot; class=&quot;item&quot; [active]=&quot;isItemActive(index)&quot; [color]=&quot;&#039;var(--tui-chart-categorical-0&#039; + index + &#039;)&#039;&quot; [text]=&quot;label&quot; (tuiHoveredChange)=&quot;onHover(index, $event)&quot; &gt;
+&lt;tui-legend-item *ngFor=&quot;let label of labels; let index = index&quot; size=&quot;s&quot; class=&quot;item&quot; [active]=&quot;isItemActive(index)&quot; [color]=&quot;&#039;var(--tui-chart-categorical-&#039; + index.toString().padStart(2, &#039;0&#039;) + &#039;)&#039;&quot; [text]=&quot;label&quot; (tuiHoveredChange)=&quot;onHover(index, $event)&quot; &gt;
 &lt;span&gt;{{ value[index] || 0 | tuiAmount: &#039;RUB&#039; | async }}&lt;/span&gt;
 &lt;/tui-legend-item&gt;
 &lt;/div&gt;
@@ -26405,7 +26416,7 @@ export default class Example {
 &lt;div class=&quot;wrapper&quot;&gt;
 &lt;tui-ring-chart size=&quot;s&quot; class=&quot;chart&quot; [value]=&quot;value&quot; /&gt;
 &lt;div class=&quot;legend&quot;&gt;
-&lt;tui-legend-item *ngFor=&quot;let label of labels; let index = index&quot; #item class=&quot;item&quot; [color]=&quot;&#039;var(--tui-chart-categorical-0&#039; + index + &#039;)&#039;&quot; [disabled]=&quot;!isEnabled(index)&quot; [text]=&quot;label&quot; (click)=&quot;onClick(index)&quot; (keydown.delete)=&quot;toggle(index)&quot; &gt;
+&lt;tui-legend-item *ngFor=&quot;let label of labels; let index = index&quot; #item class=&quot;item&quot; [color]=&quot;&#039;var(--tui-chart-categorical-&#039; + index.toString().padStart(2, &#039;0&#039;) + &#039;)&#039;&quot; [disabled]=&quot;!isEnabled(index)&quot; [text]=&quot;label&quot; (click)=&quot;onClick(index)&quot; (keydown.delete)=&quot;toggle(index)&quot; &gt;
 &lt;input size=&quot;s&quot; tuiCheckbox type=&quot;checkbox&quot; [checked]=&quot;!item.disabled&quot; /&gt;
 &lt;span&gt;{{ data[index] || 0 | tuiAmount: &#039;RUB&#039; | async }}&lt;/span&gt;
 &lt;tui-icon icon=&quot;@tui.x&quot; class=&quot;disable&quot; [class.disable_rotated]=&quot;item.disabled&quot; (click.stop)=&quot;toggle(index)&quot; /&gt;
@@ -42561,6 +42572,49 @@ export default class Example {
 }
 ```
 
+#### Email
+
+**Template:**
+```html
+&lt;tui-textfield&gt;
+&lt;label tuiLabel&gt;Email&lt;/label&gt;
+&lt;input placeholder=&quot;Enter your email&quot; tuiTextfield type=&quot;email&quot; [(ngModel)]=&quot;email&quot; /&gt;
+&lt;tui-icon icon=&quot;@tui.mail&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;tui-textfield&gt;
+&lt;label tuiLabel&gt;Email&lt;/label&gt;
+&lt;input inputmode=&quot;email&quot; placeholder=&quot;Enter your email&quot; tuiTextfield type=&quot;text&quot; [(ngModel)]=&quot;email&quot; /&gt;
+&lt;tui-icon icon=&quot;@tui.mail&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;tui-textfield&gt;
+&lt;label tuiLabel&gt;Email&lt;/label&gt;
+&lt;input autocomplete=&quot;new-password&quot; placeholder=&quot;Enter your email&quot; tuiTextfield type=&quot;email&quot; [(ngModel)]=&quot;email&quot; /&gt;
+&lt;tui-icon icon=&quot;@tui.mail&quot; /&gt;
+&lt;/tui-textfield&gt;
+&lt;p&gt; Email: &lt;code&gt;{{ email }}&lt;/code&gt;
+&lt;/p&gt;
+```
+**TypeScript:**
+```ts
+import {Component} from &#039;@angular/core&#039;;
+import {FormsModule, ReactiveFormsModule} from &#039;@angular/forms&#039;;
+import {changeDetection} from &#039;@demo/emulate/change-detection&#039;;
+import {encapsulation} from &#039;@demo/emulate/encapsulation&#039;;
+import {TuiIcon, TuiTextfield} from &#039;@taiga-ui/core&#039;;
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, TuiIcon, TuiTextfield],
+    templateUrl: &#039;./index.html&#039;,
+    styleUrls: [&#039;./index.less&#039;],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected email = &#039;&#039;;
+}
+```
+
 
 ### TypeScript
 
@@ -42599,6 +42653,7 @@ export default class Page {
         &#039;Dropdown&#039;,
         &#039;InputPassword&#039;,
         &#039;Mask&#039;,
+        &#039;Email&#039;,
     ];
 
     protected value = &#039;&#039;;
