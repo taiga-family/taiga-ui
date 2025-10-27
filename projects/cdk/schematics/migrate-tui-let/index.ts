@@ -59,7 +59,7 @@ export default function tuiLetMigrationGenerator(options: TuiSchema): Rule {
 
                 const [expr, key] = value.split(' as ').map((c) => c.trim());
 
-                if (new RegExp(`@let\\s+${key}\\s+=`).test(template)) {
+                if (new RegExp(String.raw`@let\s+${key}\s+=`).test(template)) {
                     !options['skip-logs'] &&
                         errorLog(`The @let with key ${key} is already defined`);
 
