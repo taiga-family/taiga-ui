@@ -1,7 +1,13 @@
-import {InjectionToken, Optional, type Provider, SkipSelf} from '@angular/core';
+import {
+    computed,
+    inject,
+    InjectionToken,
+    type Provider,
+    signal,
+    Signal,
+} from '@angular/core';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {type TuiRounding} from '@taiga-ui/cdk/types';
-import {map, type Observable, of} from 'rxjs';
 
 export type TuiDecimalMode = 'always' | 'not-zero' | 'pad';
 export type TuiDecimalSymbol = ',' | '.';
@@ -46,10 +52,10 @@ export const TUI_DEFAULT_NUMBER_FORMAT: TuiNumberFormatSettings = {
 /**
  * Formatting configuration for displayed numbers
  */
-export const TUI_NUMBER_FORMAT = new InjectionToken<Observable<TuiNumberFormatSettings>>(
+export const TUI_NUMBER_FORMAT = new InjectionToken<Signal<TuiNumberFormatSettings>>(
     ngDevMode ? 'TUI_NUMBER_FORMAT' : '',
     {
-        factory: () => of(TUI_DEFAULT_NUMBER_FORMAT),
+        factory: () => signal(TUI_DEFAULT_NUMBER_FORMAT),
     },
 );
 
@@ -58,12 +64,13 @@ export function tuiNumberFormatProvider(
 ): Provider {
     return {
         provide: TUI_NUMBER_FORMAT,
-        deps: [[new Optional(), new SkipSelf(), TUI_NUMBER_FORMAT]],
-        useFactory: (
-            parent: Observable<TuiNumberFormatSettings> | null,
-        ): Observable<TuiNumberFormatSettings> =>
-            (parent || of(TUI_DEFAULT_NUMBER_FORMAT)).pipe(
-                map((format) => ({...format, ...options})),
-            ),
+        useFactory: (): Signal<TuiNumberFormatSettings> => {
+            const parent = inject(TUI_NUMBER_FORMAT, {optional: true, skipSelf: true});
+
+            return computed(() => ({
+                ...(parent?.() || TUI_DEFAULT_NUMBER_FORMAT),
+                ...options,
+            }));
+        },
     };
 }
