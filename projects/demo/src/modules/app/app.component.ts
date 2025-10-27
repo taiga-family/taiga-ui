@@ -88,7 +88,7 @@ export class App extends AbstractDemo implements OnInit {
         {initialValue: true},
     );
 
-    public ngOnInit(): void {
+    public override ngOnInit(): void {
         this.replaceEnvInURI().then(() => {
             if (this.isServer || this.isE2E || !environment.production) {
                 return;
