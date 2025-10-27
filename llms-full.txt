@@ -2506,7 +2506,7 @@ export default class Example {
 </tui-axes>
 <ng-template #hint let-setIndex >
 <p *ngFor="let item of value; let index = index" class="hint" >
-<span class="dot" [style.background]="'var(--tui-chart-categorical-0' + index + ')'" ></span>
+<span class="dot" [style.background]="'var(--tui-chart-categorical-' + index.toString().padStart(2, '0') + ')'" ></span>
 <span class="name">{{ getSetName(index) }}</span>
 <span>{{ (item[setIndex] || 0) * 1000 | tuiAmount: 'RUB' | async }}</span>
 </p>
@@ -2586,7 +2586,7 @@ export default class Example {
 ```html
 <tui-axes class="axes" [axisXLabels]="axisXLabels" [verticalLines]="4" >
 <div class="t-horizontal-bars">
-<tui-bar *ngFor="let bar of value; let i = index" size="m" [style.background-color]="'var(--tui-chart-categorical-0' + i + ')'" [style.height.%]="getHeight(bar)" />
+<tui-bar *ngFor="let bar of value; let i = index" size="m" [style.background-color]="'var(--tui-chart-categorical-' + i.toString().padStart(2, '0') + ')'" [style.height.%]="getHeight(bar)" />
 </div>
 </tui-axes>
 ```
@@ -7290,7 +7290,14 @@ export default class Example {}
 
 **Template:**
 ```html
-<div tuiAppearance="floating" tuiCardLarge tuiHeader class="image" >
+<div tuiCardLarge tuiHeader class="image-1" >
+<h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
+</h1>
+<aside tuiAccessories>
+<button appearance="glass" tuiButtonClose tuiIconButton type="button" > Close </button>
+</aside>
+</div>
+<div tuiCardLarge tuiHeader tuiTheme="dark" class="image-2" >
 <h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
 </h1>
 <aside tuiAccessories>
@@ -7303,20 +7310,13 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiButtonClose} from '@taiga-ui/kit';
 import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
-    imports: [
-        TuiAppearance,
-        TuiButton,
-        TuiButtonClose,
-        TuiCardLarge,
-        TuiHeader,
-        TuiTitle,
-    ],
+    imports: [TuiButton, TuiButtonClose, TuiCardLarge, TuiHeader, TuiTitle],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
@@ -7325,16 +7325,22 @@ import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 export default class Example {}
 ```
 
-#### Image-dark
+#### Cell with close
 
 **Template:**
 ```html
-<div tuiAppearance="floating" tuiCardLarge tuiHeader tuiTheme="dark" class="image" >
-<h1 tuiTitle> Title <span tuiSubtitle>Subtitle</span>
-</h1>
+<div tuiPlatform="ios">
+<h4>iOS/Android</h4>
+<div tuiAppearance="floating" tuiCardLarge="compact" tuiCell >
+<tui-avatar appearance="primary" src="@tui.star" />
+<div tuiTitle>
+<div tuiFade tuiFadeHeight="1.2rem" tuiFadeOffset="1.5em" tuiFadeSize="1.5em" [style.block-size.rem]="2.5" > Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit. </div>
+<div tuiFade tuiFadeHeight="1rem" tuiFadeOffset="1.5em" tuiFadeSize="1.5em" tuiSubtitle [style.align-items]="'flex-start'" [style.block-size.rem]="2" > Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </div>
+</div>
 <aside tuiAccessories>
-<button appearance="glass" tuiButtonClose tuiIconButton type="button" > Close </button>
+<button tuiButtonClose tuiIconButton type="button" > Close </button>
 </aside>
+</div>
 </div>
 ```
 **TypeScript:**
@@ -7342,18 +7348,23 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiPlatform} from '@taiga-ui/cdk';
 import {TuiAppearance, TuiButton, TuiTitle} from '@taiga-ui/core';
-import {TuiButtonClose} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
+import {TuiAvatar, TuiButtonClose, TuiFade} from '@taiga-ui/kit';
+import {TuiCardLarge, TuiCell, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     standalone: true,
     imports: [
         TuiAppearance,
+        TuiAvatar,
         TuiButton,
         TuiButtonClose,
         TuiCardLarge,
+        TuiCell,
+        TuiFade,
         TuiHeader,
+        TuiPlatform,
         TuiTitle,
     ],
     templateUrl: './index.html',
@@ -8005,7 +8016,7 @@ export default class Example {
         'Cell List (headless)',
         'Footer alignment',
         'Image',
-        'Image-dark',
+        'Cell with close',
         'Paddings and radii',
         'Map',
         'In portal',
@@ -26346,7 +26357,7 @@ export class Example {}
 <div>Total</div>
 </tui-ring-chart>
 <div class="legend">
-<tui-legend-item *ngFor="let label of labels; let index = index" size="s" class="item" [active]="isItemActive(index)" [color]="'var(--tui-chart-categorical-0' + index + ')'" [text]="label" (tuiHoveredChange)="onHover(index, $event)" >
+<tui-legend-item *ngFor="let label of labels; let index = index" size="s" class="item" [active]="isItemActive(index)" [color]="'var(--tui-chart-categorical-' + index.toString().padStart(2, '0') + ')'" [text]="label" (tuiHoveredChange)="onHover(index, $event)" >
 <span>{{ value[index] || 0 | tuiAmount: 'RUB' | async }}</span>
 </tui-legend-item>
 </div>
@@ -26395,7 +26406,7 @@ export default class Example {
 <div class="wrapper">
 <tui-ring-chart size="s" class="chart" [value]="value" />
 <div class="legend">
-<tui-legend-item *ngFor="let label of labels; let index = index" #item class="item" [color]="'var(--tui-chart-categorical-0' + index + ')'" [disabled]="!isEnabled(index)" [text]="label" (click)="onClick(index)" (keydown.delete)="toggle(index)" >
+<tui-legend-item *ngFor="let label of labels; let index = index" #item class="item" [color]="'var(--tui-chart-categorical-' + index.toString().padStart(2, '0') + ')'" [disabled]="!isEnabled(index)" [text]="label" (click)="onClick(index)" (keydown.delete)="toggle(index)" >
 <input size="s" tuiCheckbox type="checkbox" [checked]="!item.disabled" />
 <span>{{ data[index] || 0 | tuiAmount: 'RUB' | async }}</span>
 <tui-icon icon="@tui.x" class="disable" [class.disable_rotated]="item.disabled" (click.stop)="toggle(index)" />
@@ -42551,6 +42562,49 @@ export default class Example {
 }
 ```
 
+#### Email
+
+**Template:**
+```html
+<tui-textfield>
+<label tuiLabel>Email</label>
+<input placeholder="Enter your email" tuiTextfield type="email" [(ngModel)]="email" />
+<tui-icon icon="@tui.mail" />
+</tui-textfield>
+<tui-textfield>
+<label tuiLabel>Email</label>
+<input inputmode="email" placeholder="Enter your email" tuiTextfield type="text" [(ngModel)]="email" />
+<tui-icon icon="@tui.mail" />
+</tui-textfield>
+<tui-textfield>
+<label tuiLabel>Email</label>
+<input autocomplete="new-password" placeholder="Enter your email" tuiTextfield type="email" [(ngModel)]="email" />
+<tui-icon icon="@tui.mail" />
+</tui-textfield>
+<p> Email: <code>{{ email }}</code>
+</p>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiIcon, TuiTextfield} from '@taiga-ui/core';
+
+@Component({
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, TuiIcon, TuiTextfield],
+    templateUrl: './index.html',
+    styleUrls: ['./index.less'],
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected email = '';
+}
+```
+
 
 ### TypeScript
 
@@ -42589,6 +42643,7 @@ export default class Page {
         'Dropdown',
         'InputPassword',
         'Mask',
+        'Email',
     ];
 
     protected value = '';
