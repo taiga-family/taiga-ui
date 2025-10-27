@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[34679],{34679:e=>{e.exports="```html\n<button tuiButtonClose>Close</button>\n```\n"}}]);
