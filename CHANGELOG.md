@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.60.0](https://github.com/taiga-family/taiga-ui/compare/v4.59.0...v4.60.0) (2025-10-27)
+
+### 🚀 Features
+
+- **kit:** align close button to top for closable preset in tuiCell
+  ([#12347](https://github.com/taiga-family/taiga-ui/issues/12347))
+  ([9316d08](https://github.com/taiga-family/taiga-ui/commit/9316d0840e9b140e03d0d24c76d181268561c722))
+- **schematics:** add support for migration app bar ([#12371](https://github.com/taiga-family/taiga-ui/issues/12371))
+  ([cb662b4](https://github.com/taiga-family/taiga-ui/commit/cb662b4309d3ed64973a45cb414ebc94ad8df9ae))
+- **schematics:** add support for migration onboarding flow
+  ([#12372](https://github.com/taiga-family/taiga-ui/issues/12372))
+  ([3410baa](https://github.com/taiga-family/taiga-ui/commit/3410baab60266cca37bd44dafdcc4ff1bac1b36b))
+- **schematics:** add support for migration responsive dialog
+  ([#12374](https://github.com/taiga-family/taiga-ui/issues/12374))
+  ([8c71f9a](https://github.com/taiga-family/taiga-ui/commit/8c71f9a4067bf0c470a508593fd9f98ed22439e5))
+- **schematics:** add support for migration skeleton ([#12368](https://github.com/taiga-family/taiga-ui/issues/12368))
+  ([2ad6783](https://github.com/taiga-family/taiga-ui/commit/2ad678325e71f50497ddcdcb00718f9c36d1969e))
+
+### 🐞 Bug Fixes
+
+- **kit:** `ProgressColorSegments` color misaligned with `ProgressSegmented`
+  ([#12342](https://github.com/taiga-family/taiga-ui/issues/12342))
+  ([a6a30eb](https://github.com/taiga-family/taiga-ui/commit/a6a30eb4f4420bc9243f7404d7285d005d349459))
+- **kit:** failed to execute setSelectionRange on HTMLInputElement
+  ([#12387](https://github.com/taiga-family/taiga-ui/issues/12387))
+  ([9fbaa8e](https://github.com/taiga-family/taiga-ui/commit/9fbaa8ed11a6a61e732d768edcf02b6f70dfccb6))
+
 ## [4.59.0](https://github.com/taiga-family/taiga-ui/compare/v4.58.0...v4.59.0) (2025-10-20)
 
 ### 🐞 Bug Fixes
