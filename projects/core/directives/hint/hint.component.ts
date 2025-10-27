@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    DestroyRef,
+    inject,
+    signal,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
@@ -17,7 +24,7 @@ import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/servi
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {map, takeWhile} from 'rxjs';
+import {filter, fromEvent, map, switchMap, takeUntil, takeWhile} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
 import {TuiHintHover} from './hint-hover.directive';
@@ -52,6 +59,8 @@ export class TuiHintBaseComponent<C = any> {
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
     private readonly viewport = inject(TUI_VIEWPORT);
+    private readonly destroyRef = inject(DestroyRef);
+    private readonly doc = inject(DOCUMENT);
 
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
@@ -66,6 +75,19 @@ export class TuiHintBaseComponent<C = any> {
     protected readonly appearance =
         this.hint.appearance ||
         this.hint.el.closest('[tuiTheme]')?.getAttribute('tuiTheme');
+
+    protected readonly scroll$ = fromEvent(this.doc, 'pointerdown')
+        .pipe(
+            filter((e) => !this.el.contains(e.target as Element | null)),
+            switchMap(() =>
+                fromEvent(this.doc.defaultView ?? this.doc, 'scroll').pipe(
+                    takeUntil(fromEvent(this.doc, 'pointerup')),
+                    takeUntilDestroyed(this.destroyRef),
+                ),
+            ),
+            takeUntilDestroyed(),
+        )
+        .subscribe(() => this.hover.toggle(false));
 
     constructor() {
         inject(TuiPositionService)

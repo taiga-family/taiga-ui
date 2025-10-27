@@ -1,4 +1,5 @@
 import {Directive, inject, Input} from '@angular/core';
+import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -7,6 +8,7 @@ import {tuiIsObscured} from '@taiga-ui/core/utils';
 import {
     delay,
     filter,
+    fromEvent,
     map,
     merge,
     of,
@@ -27,7 +29,11 @@ import {TUI_HINT_OPTIONS, type TuiHintOptions} from './hint-options.directive';
 export class TuiHintHover extends TuiDriver {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly el = tuiInjectElement();
-    private readonly hovered$ = inject(TuiHoveredService);
+    private readonly hovered$ = merge(
+        fromEvent(this.el, 'pointerdown').pipe(map(TUI_TRUE_HANDLER)),
+        inject(TuiHoveredService),
+    );
+
     private readonly options = inject(TUI_HINT_OPTIONS);
     private visible = false;
     private readonly toggle$ = new Subject<boolean>();
