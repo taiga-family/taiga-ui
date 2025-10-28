@@ -4,7 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
 import {TuiTable} from '@taiga-ui/addon-table';
-import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less?raw';
+// eslint-disable-next-line @taiga-ui/experience-next/no-deep-imports
+import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less';
 
 /**
  * Match all code comments.
@@ -42,10 +43,10 @@ export default class Page {
     protected readonly columnsNames = Object.keys(this.breakpoints[0]!);
 
     protected readonly importTaigaUILocalLess = import(
-        './examples/import/import-taiga-ui-local-less.md?raw'
+        './examples/import/import-taiga-ui-local-less.md'
     );
 
     protected readonly exampleBaseUsage = import(
-        './examples/import/base-breakpoint-usage.md?raw'
+        './examples/import/base-breakpoint-usage.md'
     );
 }

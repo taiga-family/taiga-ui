@@ -14,8 +14,8 @@
             }
         },
         "build": {
-            "executor": "@nx/angular:webpack-browser",
-            "outputs": ["{workspaceRoot}/dist/{projectName}"],
+            "executor": "@nx/angular:application",
+            "outputs": ["{options.outputPath}"],
             "dependsOn": [
                 {
                     "target": "i18n",
@@ -27,15 +27,13 @@
                 }
             ],
             "options": {
-                "customWebpackConfig": {
-                    "path": "projects/{projectName}/webpack.config.ts"
-                },
-                "outputPath": "dist/{projectName}/browser",
+                "baseHref": "/",
+                "outputPath": "dist/{projectName}",
                 "index": "{projectRoot}/src/index.html",
-                "main": "{projectRoot}/src/main.ts",
-                "polyfills": "{projectRoot}/src/polyfills.ts",
+                "browser": "{projectRoot}/src/main.ts",
+                "polyfills": ["zone.js"],
                 "inlineStyleLanguage": "less",
-                "tsConfig": "projects/{projectName}/tsconfig.app.json",
+                "tsConfig": "{projectRoot}/tsconfig.app.json",
                 "assets": [
                     {
                         "glob": "**/404.html",
@@ -56,38 +54,21 @@
                         "glob": "**/*",
                         "input": "projects/icons/src",
                         "output": "assets/taiga-ui/icons"
-                    },
-                    {
-                        "glob": "**/*",
-                        "input": "projects/icons-material/src",
-                        "output": "assets/taiga-ui/icons/"
-                    },
-                    {
-                        "glob": "**/*",
-                        "input": "projects/icons-fontawesome/src",
-                        "output": "assets/taiga-ui/icons/"
-                    },
-                    {
-                        "glob": "llms.txt",
-                        "input": "{projectRoot}/src/",
-                        "output": "./"
-                    },
-                    {
-                        "glob": "llms-full.txt",
-                        "input": "{projectRoot}/src/",
-                        "output": "./"
                     }
                 ],
-                "baseHref": "/",
                 "styles": ["{projectRoot}/src/styles/styles.less", "{projectRoot}/src/styles/styles.scss"],
-                "scripts": [],
-                "allowedCommonJsDependencies": ["markdown-it"],
-                "vendorChunk": true,
-                "extractLicenses": false,
-                "buildOptimizer": false,
-                "sourceMap": true,
-                "optimization": false,
-                "namedChunks": true
+                "server": "{projectRoot}/src/main.server.ts",
+                "ssr": {
+                    "entry": "{projectRoot}/src/server.ts"
+                },
+                "outputMode": "server",
+                "loader": {
+                    ".md": "text",
+                    ".html": "text",
+                    ".less": "text",
+                    ".svg": "text"
+                },
+                "externalDependencies": ["ng-morph"]
             },
             "configurations": {
                 "production": {
@@ -97,15 +78,13 @@
                             "with": "{projectRoot}/src/environments/environment.prod.ts"
                         }
                     ],
-                    "optimization": true,
-                    "outputHashing": "all",
-                    "sourceMap": false,
-                    "namedChunks": false,
-                    "buildOptimizer": true,
-                    "statsJson": false,
-                    "progress": false
+                    "outputHashing": "all"
                 },
-                "development": {},
+                "development": {
+                    "optimization": false,
+                    "extractLicenses": false,
+                    "sourceMap": true
+                },
                 "def": {
                     "fileReplacements": [
                         {
@@ -140,13 +119,8 @@
             }
         },
         "serve": {
+            "continuous": true,
             "executor": "@nx/angular:dev-server",
-            "dependsOn": [
-                {
-                    "target": "i18n",
-                    "params": "ignore"
-                }
-            ],
             "options": {
                 "port": 3333,
                 "sslCert": ".ssl/localhost.pem",
@@ -154,11 +128,7 @@
             },
             "configurations": {
                 "production": {
-                    "buildTarget": "{projectName}:build:production",
-                    "aot": true
-                },
-                "ru": {
-                    "buildTarget": "{projectName}:build:ru"
+                    "buildTarget": "{projectName}:build:production"
                 },
                 "development": {
                     "buildTarget": "{projectName}:build:development"
@@ -176,56 +146,6 @@
             "executor": "nx:run-commands",
             "options": {
                 "command": "nx mkcert {projectName} && nx serve {projectName} --ssl --open --host 0.0.0.0 --disable-host-check"
-            }
-        },
-        "serve-ssr": {
-            "executor": "@angular-devkit/build-angular:ssr-dev-server",
-            "options": {},
-            "configurations": {
-                "production": {
-                    "browserTarget": "{projectName}:build:production",
-                    "serverTarget": "{projectName}:server:production"
-                },
-                "development": {
-                    "serverTarget": "{projectName}:server:development",
-                    "browserTarget": "{projectName}:build:development"
-                }
-            },
-            "dependsOn": [
-                {
-                    "target": "i18n",
-                    "params": "ignore"
-                }
-            ],
-            "defaultConfiguration": "development"
-        },
-        "server": {
-            "executor": "@nx/angular:webpack-server",
-            "options": {
-                "customWebpackConfig": {
-                    "path": "{projectRoot}/webpack.server.config.ts"
-                },
-                "outputPath": "dist/{projectName}/server",
-                "main": "{projectRoot}/server.ts",
-                "tsConfig": "{projectRoot}/tsconfig.server.json",
-                "inlineStyleLanguage": "less",
-                "sourceMap": true,
-                "optimization": false
-            },
-            "configurations": {
-                "production": {
-                    "outputHashing": "media",
-                    "sourceMap": false,
-                    "optimization": true
-                },
-                "development": {}
-            },
-            "defaultConfiguration": "production"
-        },
-        "generate-routes-file": {
-            "executor": "nx:run-commands",
-            "options": {
-                "command": "ts-node ./scripts/generate-demo-routes-file.ts"
             }
         },
         "generate-sitemap-file": {
@@ -247,38 +167,6 @@
                 "command": "npm run generate:llms && npm run generate:llms-full"
             }
         },
-        "prerender": {
-            "executor": "@angular-devkit/build-angular:prerender",
-            "outputs": ["{workspaceRoot}/dist/{projectName}"],
-            "options": {
-                "browserTarget": "{projectName}:build:production",
-                "serverTarget": "{projectName}:server:production",
-                "routesFile": "projects/{projectName}/routes.txt",
-                "discoverRoutes": false
-            },
-            "configurations": {
-                "production": {}
-            },
-            "dependsOn": [
-                {
-                    "target": "i18n",
-                    "params": "ignore"
-                },
-                {
-                    "target": "generate-routes-file",
-                    "params": "ignore"
-                },
-                {
-                    "target": "generate-sitemap-file",
-                    "params": "ignore"
-                },
-                {
-                    "target": "generate-llms",
-                    "params": "ignore"
-                }
-            ],
-            "defaultConfiguration": "production"
-        },
         "test": {
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectName}"],
@@ -286,6 +174,16 @@
                 "jestConfig": "package.json",
                 "collectCoverage": false,
                 "testMatch": ["<rootDir>/{projectRoot}/src/**/*.spec.ts"]
+            }
+        },
+        "serve-static": {
+            "continuous": true,
+            "executor": "@nx/web:file-server",
+            "options": {
+                "buildTarget": "{projectName}:build",
+                "port": 3333,
+                "staticFilePath": "dist/{projectName}/browser",
+                "spa": true
             }
         }
     }

@@ -1,7 +1,7 @@
 {
     "extends": "../../tsconfig.json",
-    "files": ["src/main.ts", "src/polyfills.ts"],
-    "include": ["**/*.d.ts", "**/examples/**/index.ts"],
+    "files": ["src/typings.d.ts"],
+    "include": ["src/**/*.ts"],
     "angularCompilerOptions": {
         "strictMetadataEmit": false,
         "compilationMode": "full"
@@ -9,6 +9,8 @@
     "compilerOptions": {
         "target": "ES2022",
         "lib": ["ES2022", "dom"],
-        "useDefineForClassFields": false
+        "useDefineForClassFields": false,
+        "allowJs": false,
+        "checkJs": false
     }
 }

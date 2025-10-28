@@ -22,7 +22,7 @@ export default class Page {
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiAlertService);
 
-    protected readonly exampleComponent = import('./examples/import/component.md?raw');
+    protected readonly exampleComponent = import('./examples/import/component.md');
     protected readonly examples = [
         'String',
         'Basic',

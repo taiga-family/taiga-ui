@@ -10,8 +10,8 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly customContent = {
-        'content.ts': import('./examples/5/content.ts?raw'),
-        'content.less': import('./examples/5/content.less?raw'),
+        'content.ts': import('./examples/5/content.ts?raw', {with: {loader: 'text'}}),
+        'content.less': import('./examples/5/content.less'),
     };
 
     protected readonly routes = DemoRoute;

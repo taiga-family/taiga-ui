@@ -8,5 +8,5 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly example = import('./import/import.md?raw');
+    protected readonly example = import('./import/import.md');
 }

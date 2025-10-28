@@ -17,7 +17,7 @@ export default class Example implements TuiConfirmData {
 
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic'];
-    protected readonly exampleService = import('./examples/import/service.md?raw');
+    protected readonly exampleService = import('./examples/import/service.md');
 
     public readonly appearances = ['primary', 'accent', 'secondary'];
     public appearance = this.appearances[0]!;

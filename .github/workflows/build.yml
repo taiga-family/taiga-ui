@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4.3.0
       - uses: taiga-family/ci/actions/setup/variables@v1.170.0
       - uses: taiga-family/ci/actions/setup/node@v1.170.0
-      - run: npx nx prerender demo
+      - run: npx nx build demo
       - run: npx --yes bundlemon --config .github/.bundlemonrc.json
         continue-on-error: true
         env:
