@@ -3,8 +3,21 @@
 [tuiCardCollapsed] {
     .transition(~'clip-path, margin');
 
-    border-image: radial-gradient(at center, var(--tui-background-neutral-2) 26.5%, transparent 27%) 50% 49% / 0 2rem
-        2rem / 0 0 2rem;
+    overflow: visible;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -0.8125rem;
+        border-radius: 0 0 1rem 1rem;
+        background: var(--tui-background-neutral-2);
+        inline-size: calc(100% - 2.5rem);
+        block-size: 0.8125rem;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+    }
 
     > tui-expand {
         .transition(~'grid-template-rows, padding, margin');
