@@ -3,8 +3,8 @@ import {
     inject,
     InjectionToken,
     type Provider,
+    type Signal,
     signal,
-    Signal,
 } from '@angular/core';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 import {type TuiRounding} from '@taiga-ui/cdk/types';
