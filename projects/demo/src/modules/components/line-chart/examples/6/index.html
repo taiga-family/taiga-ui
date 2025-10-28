@@ -1,0 +1,20 @@
+<tui-axes
+    class="axes"
+    [axisXLabels]="dateLabels"
+    [axisYSecondaryLabels]="chartLabels"
+    [horizontalLines]="0"
+    [tuiLineChartHint]="hintContent"
+    [verticalLines]="0"
+>
+    <tui-line-chart
+        class="chart"
+        [dots]="false"
+        [filled]="true"
+        [height]="height"
+        [smoothingFactor]="50"
+        [value]="value"
+        [width]="width"
+        [x]="0"
+        [y]="yStartingPoint"
+    />
+</tui-axes>

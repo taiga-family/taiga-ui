@@ -19,6 +19,7 @@ export default class Page {
         'Dotted',
         'Hint',
         'Several lines with hints',
+        'Too large coordinates',
     ];
 
     protected readonly value: readonly TuiPoint[] = [

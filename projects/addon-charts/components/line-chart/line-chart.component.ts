@@ -11,7 +11,6 @@ import {
     signal,
     ViewChildren,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
@@ -29,7 +28,7 @@ import {
 } from '@taiga-ui/core/directives/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {distinctUntilChanged, map, type Observable, Subject} from 'rxjs';
+import {distinctUntilChanged, type Observable, Subject} from 'rxjs';
 
 import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
 import {TuiLineChartHint} from './line-chart-hint.directive';
@@ -52,22 +51,25 @@ export class TuiLineChart implements OnChanges {
     private readonly options = inject(TUI_LINE_CHART_OPTIONS);
     private readonly hover$ = new Subject<number>();
     private readonly autoId = tuiInjectId();
-    private readonly resize = toSignal(
-        inject(ResizeObserverService, {self: true}).pipe(
-            map(([e]) => e?.contentRect.height || 0),
-        ),
-        {initialValue: 0},
-    );
 
     private readonly box = signal('');
 
     protected readonly hintDirective = inject(TuiLineChartHint, {optional: true});
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-    protected readonly viewBox = computed(() => {
-        const offset = this.height / Math.max(this.resize(), 1);
-        const [x = 0, y = 0, width = 0, height = 0] = this.box().split(' ').map(Number);
 
-        return `${x} ${y - offset} ${width} ${height + 2 * offset}`;
+    protected readonly viewBox = computed(() => {
+        const xs = this.value.map((p) => p[0]);
+        const ys = this.value.map((p) => p[1]);
+
+        const minX = Math.min(...xs);
+        const maxX = Math.max(...xs);
+        const minY = Math.min(...ys);
+        const maxY = Math.max(...ys);
+
+        const paddingX = (maxX - minX) * 0.1;
+        const paddingY = (maxY - minY) * 0.1;
+
+        return `${minX - paddingX} ${minY - paddingY} ${maxX - minX + 2 * paddingX} ${maxY - minY + 2 * paddingY}`;
     });
 
     @ViewChildren(TuiHintHover)
@@ -104,11 +106,16 @@ export class TuiLineChart implements OnChanges {
 
     @Input('value')
     public set valueSetter(value: readonly TuiPoint[]) {
-        this.value = value.filter((item) => !item.some(Number.isNaN));
+        const filtered = value.filter((item) => !item.some(Number.isNaN));
+
+        this.value = this.normalizePoints(filtered);
     }
 
     public ngOnChanges(): void {
-        this.box.set(`${this.x} ${this.y} ${this.width} ${this.height}`);
+        const safeY = Math.max(this.y, -100000);
+        const safeHeight = Math.min(this.height, 100000);
+
+        this.box.set(`${this.x} ${safeY} ${this.width} ${safeHeight}`);
     }
 
     public onHovered(index: number): void {
@@ -137,9 +144,14 @@ export class TuiLineChart implements OnChanges {
     }
 
     protected get fillD(): string {
-        return this.value.length
-            ? `${this.d}V ${this.y} H ${this.value[0]?.[0]} V ${this.value[0]?.[1]}`
-            : this.d;
+        if (!this.value.length) {
+            return this.d;
+        }
+
+        const ys = this.value.map(([, y]) => y);
+        const minY = Math.min(...ys);
+
+        return `${this.d} V ${minY} H ${this.value[0]?.[0]} Z`;
     }
 
     protected get isFocusable(): boolean {
@@ -172,7 +184,9 @@ export class TuiLineChart implements OnChanges {
     }
 
     protected getWidth(index: number): number {
-        return (100 * this.computeWidth(index)) / this.width;
+        const [, , w = 0] = this.viewBox().split(' ').map(Number);
+
+        return (this.computeWidth(index) / w) * 100;
     }
 
     protected getHintId(index: number): string {
@@ -194,11 +208,15 @@ export class TuiLineChart implements OnChanges {
     }
 
     protected getBottom(y: number): number {
-        return (100 * (y - this.y)) / this.height;
+        const [, minY = 0, , height = 0] = this.viewBox().split(' ').map(Number);
+
+        return 100 * ((y - minY) / height);
     }
 
     protected getLeft(x: number): number {
-        return (100 * (x - this.x)) / this.width;
+        const [minX = 0, , width = 0] = this.viewBox().split(' ').map(Number);
+
+        return 100 * ((x - minX) / width);
     }
 
     protected getOffset(x: number): number {
@@ -230,5 +248,26 @@ export class TuiLineChart implements OnChanges {
         return index === this.value.length - 1
             ? 2 * ((this.value[index]?.[0] || 0) - this.getX(index))
             : this.getX(index + 1) - this.getX(index);
+    }
+
+    private normalizePoints(points: readonly TuiPoint[]): TuiPoint[] {
+        if (points.length === 0) {
+            return [];
+        }
+
+        const allY = points.map((p) => p[1]);
+        const minY = Math.min(...allY);
+        const maxY = Math.max(...allY);
+        const range = maxY - minY || 1;
+
+        const MAX_SAFE_RANGE = 1_000_000;
+
+        if (range > MAX_SAFE_RANGE) {
+            const scaleFactor = MAX_SAFE_RANGE / range;
+
+            return points.map(([x, y]) => [x, (y - minY) * scaleFactor]);
+        }
+
+        return points.map(([x, y]) => [x, y - minY]);
     }
 }
