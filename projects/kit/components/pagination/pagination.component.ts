@@ -46,7 +46,7 @@ export class TuiPagination {
 
     protected readonly texts = inject(TUI_PAGINATION_TEXTS);
     protected readonly icons = inject(TUI_SPIN_ICONS);
-    protected readonly paginationOptions = inject(TUI_PAGINATION_OPTIONS);
+    protected readonly options = inject(TUI_PAGINATION_OPTIONS);
 
     @Input()
     public length = 1;
@@ -55,7 +55,7 @@ export class TuiPagination {
     public focusable = true;
 
     @Input()
-    public size: TuiSizeL | TuiSizeS = this.paginationOptions.defaultSize;
+    public size: TuiSizeL | TuiSizeS = this.options.defaultSize;
 
     @Input()
     public readonly disabled = false;
@@ -181,7 +181,7 @@ export class TuiPagination {
     }
 
     protected getElementMode(index = -1): string {
-        return this.paginationOptions.appearance({
+        return this.options.appearance({
             isActive: this.index === index,
             size: this.size,
         });
