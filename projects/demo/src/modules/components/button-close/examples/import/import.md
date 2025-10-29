@@ -1,6 +1,5 @@
 ```ts
 import {Component} from '@angular/core';
-import {TuiButton} from '@taiga-ui/core';
 import {TuiButtonClose} from '@taiga-ui/kit';
 // ...
 
@@ -8,7 +7,6 @@ import {TuiButtonClose} from '@taiga-ui/kit';
   standalone: true,
   imports: [
     // ...
-    TuiButton,
     TuiButtonClose,
   ],
 })

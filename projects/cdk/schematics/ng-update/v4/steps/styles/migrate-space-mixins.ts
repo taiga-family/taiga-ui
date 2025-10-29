@@ -13,7 +13,7 @@ const SPACE = 0.25;
 // .tui-space(top, 4);
 // @include tui-space(top, 4);
 const MIXIN_RE = new RegExp(
-    `(?:@include\\s|\\.)tui-space\\((?<direction>${Object.keys(DIRECTION_MAPPING).join('|')}),\\s?(?<size>-?\\d+)\\)(\\s?!important)?;`,
+    String.raw`(?:@include\s|\.)tui-space\((?<direction>${Object.keys(DIRECTION_MAPPING).join('|')}),\s?(?<size>-?\d+)\)(\s?!important)?;`,
     'g',
 );
 
