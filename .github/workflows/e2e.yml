@@ -55,7 +55,6 @@ jobs:
       - uses: taiga-family/ci/actions/setup/node@v1.167.0
         with:
           validate-peer-deps: false
-          npm-ci-flags: --force
 
       - name: Run tests for baseline state
         run: npx nx component-test demo-cypress
