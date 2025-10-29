@@ -21,10 +21,10 @@
         "tslib": "2.8.1"
     },
     "devDependencies": {
-        "@angular-devkit/core": "19.2.18",
-        "@angular-devkit/schematics": "19.2.18",
-        "@angular-devkit/schematics-cli": "19.2.18",
-        "@schematics/angular": "19.2.18"
+        "@angular-devkit/core": "19.2.19",
+        "@angular-devkit/schematics": "19.2.19",
+        "@angular-devkit/schematics-cli": "19.2.19",
+        "@schematics/angular": "19.2.19"
     },
     "peerDependencies": {
         "@angular/animations": ">=19.0.0",
