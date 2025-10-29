@@ -7,6 +7,7 @@ export interface TuiPaginationOptions {
         isActive: boolean;
         size: TuiSizeL | TuiSizeS;
     }>;
+    readonly defaultSize: TuiSizeL | TuiSizeS;
 }
 
 export const [TUI_PAGINATION_OPTIONS, tuiPaginationOptionsProvider] =
@@ -16,4 +17,5 @@ export const [TUI_PAGINATION_OPTIONS, tuiPaginationOptionsProvider] =
 
             return isActive ? 'primary' : fallback;
         },
+        defaultSize: 'l',
     });
