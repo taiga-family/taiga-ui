@@ -26,6 +26,7 @@
     --t-label: -0.7rem;
     --t-label-size: 0.83em;
     --t-translate: 6.5rem;
+    --t-collapsed-offset: 1.4375rem;
 
     position: relative;
     display: block;
@@ -40,6 +41,7 @@
         --t-label: -0.7em;
         --t-height: var(--tui-height-m);
         --t-padding: var(--tui-padding-m);
+        --t-collapsed-offset: 1.125rem;
 
         border-radius: var(--tui-radius-m);
         font: var(--tui-font-text-ui-s);
@@ -146,7 +148,7 @@
         }
 
         .t-collapsed-wrapper {
-            left: 1.375rem;
+            left: var(--t-collapsed-offset);
 
             :host-context([dir='rtl']) & {
                 left: unset;
