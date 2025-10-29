@@ -107,6 +107,8 @@
     },
     "overrides": {
         "@taiga-ui/browserslist-config": "0.328.0",
+        "@types/send": "$@types/send",
+        "@types/serve-static": "$@types/serve-static",
         "jest": "$jest",
         "jest-environment-jsdom": "$jest-environment-jsdom",
         "source-map": "$source-map"
@@ -135,6 +137,8 @@
         "@types/loader-utils": "2.0.6",
         "@types/markdown-it": "14.1.2",
         "@types/node": "24.9.2",
+        "@types/send": "0.17.6",
+        "@types/serve-static": "1.15.10",
         "@typescript/native-preview": "7.0.0-dev.20251027.1",
         "browser-sync": "3.0.4",
         "cpy-cli": "5.0.0",
