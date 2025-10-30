@@ -2,11 +2,11 @@
     <ng-container *ngIf="size !== 's'; else smallButtons">
         <ng-container *ngIf="texts$ | async as texts">
             <button
-                appearance="flat"
                 tabIndex="-1"
                 tuiIconButton
                 type="button"
                 class="t-button"
+                [appearance]="getElementMode()"
                 [disabled]="arrowIsDisabledLeft"
                 [iconStart]="icons.decrement"
                 [size]="buttonSize"
@@ -39,11 +39,11 @@
                 </ng-container>
             </ng-container>
             <button
-                appearance="flat"
                 tabIndex="-1"
                 tuiIconButton
                 type="button"
                 class="t-button"
+                [appearance]="getElementMode()"
                 [disabled]="arrowIsDisabledRight"
                 [iconStart]="icons.increment"
                 [size]="buttonSize"
