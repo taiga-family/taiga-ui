@@ -1,11 +1,11 @@
 <div class="t-content">
     @if (size !== 's') {
         <button
-            appearance="flat"
             tabIndex="-1"
             tuiIconButton
             type="button"
             class="t-button"
+            [appearance]="getElementMode()"
             [disabled]="arrowIsDisabledLeft"
             [iconStart]="icons.decrement"
             [size]="buttonSize"
@@ -44,11 +44,11 @@
             }
         </ng-container>
         <button
-            appearance="flat"
             tabIndex="-1"
             tuiIconButton
             type="button"
             class="t-button"
+            [appearance]="getElementMode()"
             [disabled]="arrowIsDisabledRight"
             [iconStart]="icons.increment"
             [size]="buttonSize"
