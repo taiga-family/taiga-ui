@@ -14,7 +14,7 @@ import {TuiLike, tuiLikeOptionsProvider} from '@taiga-ui/kit';
             icons: {
                 unchecked:
                     'https://raw.githubusercontent.com/MarsiBarsi/readme-icons/main/github.svg',
-                checked: '/assets/icons/github.svg',
+                checked: './assets/icons/github.svg',
             },
         }),
     ],
