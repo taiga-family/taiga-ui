@@ -6,7 +6,6 @@ import {TuiPrimitiveTextfieldModule} from '../primitive-textfield.module';
 
 describe('Textfield', () => {
     @Component({
-        standalone: true,
         imports: [TuiPrimitiveTextfieldModule],
         template: `
             <input

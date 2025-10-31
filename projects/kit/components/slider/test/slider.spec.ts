@@ -6,7 +6,6 @@ import {TuiSliderComponent} from '@taiga-ui/kit';
 
 describe('Slider', () => {
     @Component({
-        standalone: true,
         imports: [FormsModule, ReactiveFormsModule, TuiSliderComponent],
         template: `
             <input

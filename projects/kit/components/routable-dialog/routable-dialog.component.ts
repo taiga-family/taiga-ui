@@ -12,7 +12,6 @@ import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {from, of, switchMap} from 'rxjs';
 
 @Component({
-    standalone: true,
     selector: 'tui-routable-dialog',
     template: '',
     changeDetection: ChangeDetectionStrategy.OnPush,

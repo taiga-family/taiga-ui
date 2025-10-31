@@ -8,7 +8,6 @@ const DEFAULT_TEST_COUNT = 3;
 
 describe('TuiRepeatTimes directive', () => {
     @Component({
-        standalone: true,
         imports: [TuiRepeatTimes],
         template: `
             <div

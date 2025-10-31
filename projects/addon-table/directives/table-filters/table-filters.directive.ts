@@ -12,7 +12,6 @@ import {
 import {type TuiTableFilter} from './table-filter';
 
 @Directive({
-    standalone: true,
     selector: '[tuiTableFilters]',
 })
 export class TuiTableFiltersDirective<T> {

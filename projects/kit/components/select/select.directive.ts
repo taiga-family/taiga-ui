@@ -18,7 +18,6 @@ import {
 import {TuiSelectOption} from './select-option/select-option.component';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiSelect]',
     providers: [
         tuiAsOptionContent(TuiSelectOption),

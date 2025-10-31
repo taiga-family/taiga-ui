@@ -16,7 +16,6 @@ import {
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 @Component({
-    standalone: true,
     imports: [
         ReactiveFormsModule,
         TuiInputSliderModule,

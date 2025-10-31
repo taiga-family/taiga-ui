@@ -35,7 +35,6 @@ import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
     providers: [
         tuiAsRectAccessor(TuiDropdownDirective),

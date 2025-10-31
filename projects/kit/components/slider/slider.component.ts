@@ -19,7 +19,6 @@ import {TuiSliderKeyStepsBase} from './helpers/slider-key-steps.directive';
 import {TUI_SLIDER_OPTIONS} from './slider.options';
 
 @Component({
-    standalone: true,
     selector: 'input[type=range][tuiSlider]',
     template: '',
     styleUrl: './slider.style.less',

@@ -5,7 +5,6 @@ import {tuiGetSelectedText} from '@taiga-ui/cdk/utils';
 import {identity} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiCopyProcessor]',
     host: {
         '(copy.prevent)': 'onCopy($event)',

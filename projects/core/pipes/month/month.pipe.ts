@@ -5,7 +5,6 @@ import {TUI_MONTHS} from '@taiga-ui/core/tokens';
 import {map, type Observable} from 'rxjs';
 
 @Pipe({
-    standalone: true,
     name: 'tuiMonth',
 })
 export class TuiMonthPipe implements PipeTransform {

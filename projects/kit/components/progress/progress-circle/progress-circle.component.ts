@@ -7,7 +7,6 @@ import {delay, of} from 'rxjs';
 import {TUI_PROGRESS_OPTIONS} from '../progress.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-progress-circle',
     templateUrl: './progress-circle.template.html',
     styleUrl: './progress-circle.style.less',

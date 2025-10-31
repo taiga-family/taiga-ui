@@ -4,7 +4,6 @@ import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiGetFocused} from '@taiga-ui/cdk/utils/focus';
 
 @Directive({
-    standalone: true,
     selector: '[tuiActiveZoneAdapter]',
     hostDirectives: [TuiActiveZone],
 })

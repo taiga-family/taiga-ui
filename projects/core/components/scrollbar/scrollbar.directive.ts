@@ -24,7 +24,6 @@ interface ComputedDimension {
 }
 
 @Directive({
-    standalone: true,
     selector: '[tuiScrollbar]',
     providers: [TuiScrollbarService],
 })

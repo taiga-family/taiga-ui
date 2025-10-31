@@ -10,7 +10,6 @@ import {
 } from './autofocus.options';
 
 @Directive({
-    standalone: true,
     selector: '[tuiAutoFocus]',
     providers: TUI_AUTOFOCUS_PROVIDERS,
 })

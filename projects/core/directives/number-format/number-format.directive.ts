@@ -4,7 +4,6 @@ import {TUI_NUMBER_FORMAT, type TuiNumberFormatSettings} from '@taiga-ui/core/to
 import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiNumberFormat]',
     providers: [tuiProvide(TUI_NUMBER_FORMAT, TuiNumberFormat)],
 })

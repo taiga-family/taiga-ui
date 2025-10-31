@@ -19,7 +19,6 @@ import {TUI_INPUT_FILES_OPTIONS} from './input-files.options';
 import {TuiInputFilesValidator} from './input-files-validator.directive';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputFiles]',
     providers: [
         tuiAsControl(TuiInputFilesDirective),

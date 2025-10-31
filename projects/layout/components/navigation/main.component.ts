@@ -1,7 +1,6 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    standalone: true,
     selector: 'main[tuiNavigationMain]',
     template: '<ng-content />',
     styleUrl: './main.style.less',

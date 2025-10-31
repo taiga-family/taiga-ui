@@ -12,7 +12,6 @@ import {TUI_DARK_MODE} from '@taiga-ui/core';
 import {SEARCH_CONFIG} from './env';
 
 @Component({
-    standalone: true,
     selector: 'tui-algolia-search',
     template: '',
     styleUrl: './index.less',

@@ -27,7 +27,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {TUI_INPUT_DATE_RANGE_OPTIONS} from './input-date-range.options';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputDateRange]',
     providers: [
         // TODO: Add SelectOption after data-list in calendar-range is refactored

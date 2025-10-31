@@ -1,7 +1,6 @@
 import {Directive, inject, input, TemplateRef} from '@angular/core';
 
 @Directive({
-    standalone: true,
     selector: '[iconGroup]',
 })
 export class IconsGroupTemplate {

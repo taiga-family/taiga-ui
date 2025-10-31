@@ -11,7 +11,6 @@ import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiResizable} from './resizable.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiResizer]',
     host: {
         '[style.cursor]': 'cursor',

@@ -16,7 +16,6 @@ import {
 
 describe('Tabs', () => {
     @Component({
-        standalone: true,
         imports: [TuiTabs],
         template: `
             <tui-tabs
