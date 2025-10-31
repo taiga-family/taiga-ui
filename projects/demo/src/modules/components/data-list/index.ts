@@ -22,9 +22,7 @@ export default class Page {
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected size = this.sizeVariants[0]!;
 
-    protected readonly example4 = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
+    protected readonly customList = {
         'custom-list/index.ts': import('./examples/4/custom-list/index.ts?raw'),
         'custom-list/index.html': import('./examples/4/custom-list/index.html?raw'),
     };
