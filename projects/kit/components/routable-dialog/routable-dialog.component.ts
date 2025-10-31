@@ -1,6 +1,8 @@
 import {
+    afterNextRender,
     ChangeDetectionStrategy,
     Component,
+    DestroyRef,
     inject,
     INJECTOR,
     type Type,
@@ -22,8 +24,13 @@ export default class TuiRoutableDialog {
     private readonly injector = inject(INJECTOR);
     private readonly initialUrl = this.router.url;
     private readonly dialog = inject(TuiDialogService);
+    private readonly destroyRef = inject(DestroyRef);
 
-    constructor() {
+    /**
+     * All portal hosts are created only after the first render
+     * See `@if (top()) {...}` condition in `tui-root`
+     */
+    protected readonly init = afterNextRender(() => {
         const {dialog} = this.route.snapshot.data;
 
         from(isClass(dialog) ? of(dialog) : dialog().then((m: any) => m.default ?? m))
@@ -34,10 +41,10 @@ export default class TuiRoutableDialog {
                         this.route.snapshot.data['dialogOptions'],
                     ),
                 ),
-                takeUntilDestroyed(),
+                takeUntilDestroyed(this.destroyRef),
             )
             .subscribe({complete: () => this.onDialogClosing()});
-    }
+    });
 
     private get lazyLoadedBackUrl(): string {
         return (this.route.parent?.snapshot.url || []).map(() => '..').join('/');
