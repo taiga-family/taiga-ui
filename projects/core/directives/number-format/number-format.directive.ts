@@ -1,27 +1,24 @@
-import {Directive, inject, Input} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {computed, Directive, inject, input} from '@angular/core';
 import {TUI_NUMBER_FORMAT, type TuiNumberFormatSettings} from '@taiga-ui/core/tokens';
-import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
 
 @Directive({
     standalone: true,
     selector: '[tuiNumberFormat]',
-    providers: [tuiProvide(TUI_NUMBER_FORMAT, TuiNumberFormat)],
+    providers: [
+        {
+            provide: TUI_NUMBER_FORMAT,
+            useFactory: () => {
+                const parent = inject(TUI_NUMBER_FORMAT, {skipSelf: true});
+                const format = inject(TuiNumberFormat).tuiNumberFormat;
+
+                return computed(() => ({
+                    ...parent(),
+                    ...format(),
+                }));
+            },
+        },
+    ],
 })
-export class TuiNumberFormat extends Observable<TuiNumberFormatSettings> {
-    private readonly settings = new ReplaySubject<Partial<TuiNumberFormatSettings>>(1);
-    private readonly parent = inject(TUI_NUMBER_FORMAT, {skipSelf: true});
-
-    constructor() {
-        super((subscriber) =>
-            combineLatest([this.parent, this.settings])
-                .pipe(map(([parent, settings]) => ({...parent, ...settings})))
-                .subscribe(subscriber),
-        );
-    }
-
-    @Input()
-    public set tuiNumberFormat(format: Partial<TuiNumberFormatSettings>) {
-        this.settings.next(format);
-    }
+export class TuiNumberFormat {
+    public readonly tuiNumberFormat = input.required<Partial<TuiNumberFormatSettings>>();
 }
