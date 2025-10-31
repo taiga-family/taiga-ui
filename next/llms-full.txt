@@ -2638,7 +2638,7 @@ export class Example {}
 ```html
 <p> @if (contentType === 'with icon') { <tui-badge iconStart="@tui.check" [appearance]="appearance" [size]="size" >
 <div tuiFade>Taiga UI</div>
-</tui-badge> } @if (contentType === 'text') { <tui-badge [appearance]="appearance" [size]="size" > Taiga UI </tui-badge> } @if (contentType === 'image') { <img alt="market" src="assets/images/avatar.jpg" tuiBadge [appearance]="appearance" [size]="size" /> } </p>
+</tui-badge> } @if (contentType === 'text') { <tui-badge [appearance]="appearance" [size]="size" > Taiga UI </tui-badge> } @if (contentType === 'image') { <img alt="market" src="/assets/images/avatar.jpg" tuiBadge [appearance]="appearance" [size]="size" /> } </p>
 ```
 
 ### API
@@ -2736,10 +2736,10 @@ export default class Example {}
 </div>
 <div tuiPlatform="ios">
 <h4 class="tui-space_top-3 tui-space_bottom-1">Image</h4>
-<img alt="market" size="xl" src="assets/images/avatar.jpg" tuiBadge />
-<img alt="market" size="l" src="assets/images/avatar.jpg" tuiBadge class="tui-space_left-1" />
-<img alt="market" size="m" src="assets/images/avatar.jpg" tuiBadge class="tui-space_left-1" />
-<img alt="market" size="s" src="assets/images/avatar.jpg" tuiBadge class="tui-space_left-1" />
+<img alt="market" size="xl" src="/assets/images/avatar.jpg" tuiBadge />
+<img alt="market" size="l" src="/assets/images/avatar.jpg" tuiBadge class="tui-space_left-1" />
+<img alt="market" size="m" src="/assets/images/avatar.jpg" tuiBadge class="tui-space_left-1" />
+<img alt="market" size="s" src="/assets/images/avatar.jpg" tuiBadge class="tui-space_left-1" />
 </div>
 ```
 **TypeScript:**
@@ -4819,7 +4819,7 @@ export default class Example {
 <input tuiCheckbox type="checkbox" [(ngModel)]="show" /> Show more content </label>
 <tui-bottom-sheet [stops]="['9.5rem', '18.5rem', '100%']">
 <header class="header"> Taiga UI <a href="https://github.com/taiga-family/taiga-ui" iconStart="@tui.star" rel="noopener noreferrer" size="m" target="_blank" tuiButton > Give us a Star </a>
-</header> @if (show) { <img alt="" src="assets/images/taiga-family.png" [style.inline-size.%]="100" [style.margin-block-start.rem]="2" />
+</header> @if (show) { <img alt="" src="/assets/images/taiga-family.png" [style.inline-size.%]="100" [style.margin-block-start.rem]="2" />
 <p *tuiRepeatTimes="let index of 20">All work and no play makes Jack a dull boy</p>
 <tui-accordion>
 <button tuiAccordion>Show more</button>
@@ -7951,7 +7951,7 @@ export default class Example {}
 **Template:**
 ```html
 <label tuiCardMedium tuiSurface class="card" >
-<img alt="google-pay" src="assets/taiga-ui/icons/google-pay.svg" />
+<img alt="google-pay" src="/assets/taiga-ui/icons/google-pay.svg" />
 <div tuiFade class="cards" >
 <tui-thumbnail-card iconStart="@tui.lock" paymentSystem="mastercard" size="m" > 4572 </tui-thumbnail-card>
 <tui-thumbnail-card iconStart="@tui.lock" paymentSystem="mir" size="m" class="mir" > 6733 </tui-thumbnail-card>
@@ -7961,7 +7961,7 @@ export default class Example {}
 <div tuiRipple tuiSurfaceLayer [style.background-color]="'#fff6c7'" ></div>
 </label>
 <label tuiCardMedium tuiSurface class="card" >
-<img alt="apple-pay" src="assets/taiga-ui/icons/apple-pay.svg" />
+<img alt="apple-pay" src="/assets/taiga-ui/icons/apple-pay.svg" />
 <div tuiFade class="cards" >
 <tui-thumbnail-card paymentSystem="mir" size="m" class="mir" > 2222 </tui-thumbnail-card>
 </div>
@@ -29401,7 +29401,7 @@ export class Example {}
 **Template:**
 ```html
 <div tuiPin>
-<img alt="avatar" src="assets/images/avatar.jpg" />
+<img alt="avatar" src="/assets/images/avatar.jpg" />
 </div>
 <div tuiPin>
 <tui-icon icon="@tui.dollar-sign" />
@@ -29460,7 +29460,7 @@ export default class Example {}
 **Template:**
 ```html
 <button type="button" [tuiPin]="a" (click)="a = !a" >
-<img alt="avatar" src="assets/images/avatar.jpg" />
+<img alt="avatar" src="/assets/images/avatar.jpg" />
 </button>
 <button title="dollar" type="button" [style.inset-inline-start.rem]="5" [tuiPin]="b" (click)="b = !b" >
 <tui-icon icon="@tui.dollar-sign" />
@@ -31014,7 +31014,7 @@ export class Example {}
 
 ```html
 <tui-push [heading]="heading" [lines]="lines" [timestamp]="timestamp" [type]="type" (close)="close.emitEvent($event)" >
-<img alt="" src="assets/images/roy.jpg" />
+<img alt="" src="/assets/images/roy.jpg" />
 <tui-icon icon="@tui.settings" /> I've seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched C-Beams glitter in the dark near The Tannhauser Gate. All those moments will be lost in time, like tears in rain. <button tuiButton type="button" > I want more life </button>
 <button tuiLink type="button" > Time to die </button>
 </tui-push>
@@ -31045,7 +31045,7 @@ export class Example {}
 <tui-icon icon="@tui.eye" class="human" /> I've had people walk out on me before, but not when I was being so charming. </tui-push>
 </div>
 <tui-push heading="Roy" type="Replicant" (close)="onClose()" >
-<img alt="" src="assets/images/roy.jpg" />
+<img alt="" src="/assets/images/roy.jpg" />
 <tui-icon icon="@tui.settings" /> I’ve seen things you people wouldn't believe. Attack ships on fire off The Shoulder Of Orion. I watched C-Beams glitter in the dark near The Tannhauser Gate. All those moments will be lost in time, like tears in rain. <button tuiLink type="button" > Time to die </button>
 </tui-push>
 ```
@@ -46712,7 +46712,7 @@ export default class Example {
 **Template:**
 ```html
 <div class="tui-player">
-<audio #audio src="assets/media/strays.mp3" tuiMedia [(currentTime)]="currentTime" [(paused)]="paused" ></audio>
+<audio #audio src="/assets/media/strays.mp3" tuiMedia [(currentTime)]="currentTime" [(paused)]="paused" ></audio>
 <button appearance="secondary" title="Play/Pause" tuiIconButton type="button" [iconStart]="icon" [style.border-radius.%]="100" (click)="toggleState()" ></button>
 <div>
 <a href="https://waterplea.bandcamp.com/" tuiLink > Waterplea </a> — Strays <input step="any" tuiSlider type="range" class="slider" [max]="audio.duration" [(ngModel)]="currentTime" />
@@ -49025,18 +49025,18 @@ export default class Page {
 <ng-template #choose>
 <div class="wrapper">
 <div size="l" tuiAvatar="@tui.user" class="tui-space_right-2" >
-<img alt="" src="assets/images/choose.png" />
+<img alt="" src="/assets/images/choose.png" />
 </div> «Choose wisely» </div>
 </ng-template>
 <ng-template #poorly>
 <div class="wrapper">
 <div tuiAvatar="@tui.user" class="tui-space_right-2" >
-<img alt="" src="assets/images/poorly.png" />
+<img alt="" src="/assets/images/poorly.png" />
 </div> «You chose poorly» </div>
 </ng-template>
 <ng-template #wisely>
 <div class="wrapper"> «You have chosen wisely» <div tuiAvatar="@tui.user" class="tui-space_left-1" >
-<img alt="" src="assets/images/wisely.png" />
+<img alt="" src="/assets/images/wisely.png" />
 </div>
 </div>
 </ng-template>
