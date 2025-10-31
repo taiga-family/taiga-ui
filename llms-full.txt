@@ -11551,9 +11551,7 @@ export default class Page {
     protected readonly sizeVariants: ReadonlyArray<TuiSizeL | TuiSizeS> = ['s', 'm', 'l'];
     protected size = this.sizeVariants[0]!;
 
-    protected readonly example4 = {
-        TypeScript: import('./examples/4/index.ts?raw'),
-        HTML: import('./examples/4/index.html?raw'),
+    protected readonly customList = {
         'custom-list/index.ts': import('./examples/4/custom-list/index.ts?raw'),
         'custom-list/index.html': import('./examples/4/custom-list/index.html?raw'),
     };
@@ -12253,14 +12251,10 @@ export default class Page extends Array {
     ];
 
     protected readonly [2] = {
-        TypeScript: import('./examples/3/index.ts?raw'),
-        HTML: import('./examples/3/index.html?raw'),
         'component.ts': import('./examples/3/component.ts?raw'),
     };
 
     protected readonly [4] = {
-        TypeScript: import('./examples/5/index.ts?raw'),
-        HTML: import('./examples/5/index.html?raw'),
         'service.ts': import('./examples/5/service.ts?raw'),
     };
 
@@ -35652,9 +35646,7 @@ export default class Example {
     ];
 
     protected readonly layerExample = {
-        HTML: import('./examples/7/index.html?raw'),
         'surface.less': import('./examples/7/surface.less?raw'),
-        LESS: import('./examples/7/index.less?raw'),
     };
 
     protected readonly routes = DemoRoute;
@@ -41299,10 +41291,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly example5 = {
-        TypeScript: import('./examples/5/index.ts?raw'),
-        HTML: import('./examples/5/index.html?raw'),
-        LESS: import('./examples/5/index.less?raw'),
+    protected readonly customContent = {
         'content.ts': import('./examples/5/content.ts?raw'),
         'content.less': import('./examples/5/content.less?raw'),
     };
