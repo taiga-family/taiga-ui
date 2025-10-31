@@ -112,7 +112,10 @@ export class TuiInputChipBaseDirective<T>
                 ? event.dataTransfer?.getData('text/plain') || ''
                 : tuiGetClipboardDataText(event);
 
-        this.textfield.value.set(value);
+        // eslint-disable-next-line no-control-regex
+        const cleanedValue = value.replaceAll(/[\x00-\x1F\x7F-\x9F]/g, '');
+
+        this.textfield.value.set(cleanedValue);
         this.onEnter();
     }
 
