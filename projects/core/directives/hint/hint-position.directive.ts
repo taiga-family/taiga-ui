@@ -23,7 +23,9 @@ const ARROW_OFFSET = 24;
 const TOP = 0;
 const LEFT = 1;
 
-@Directive()
+@Directive({
+    selector: '[tuiHint]:not(ng-container):not(ng-template)',
+})
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly offset = inject(TUI_IS_MOBILE) ? 16 : 8;
@@ -134,3 +136,14 @@ function adjust(direction: TuiHintDirection, rtl: boolean): TuiHintDirection {
 
     return direction;
 }
+
+@Directive({
+    hostDirectives: [
+        {
+            directive: TuiHintPosition,
+            inputs: ['tuiHintDirection'],
+            outputs: ['tuiHintDirectionChange'],
+        },
+    ],
+})
+export class TuiWithHintPosition {}

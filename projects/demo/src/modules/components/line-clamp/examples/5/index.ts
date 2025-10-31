@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintDirective} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 interface User {
@@ -12,7 +12,7 @@ interface User {
 }
 
 @Component({
-    imports: [TuiHintDirective, TuiLineClamp],
+    imports: [TuiHint, TuiLineClamp],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

@@ -5,7 +5,7 @@ import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
+import {TuiHintDirective, TuiWithHintPosition} from '@taiga-ui/core/directives/hint';
 import {tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 
@@ -25,6 +25,7 @@ import {TUI_PASSWORD_OPTIONS} from './password.options';
             directive: TuiHintDirective,
             inputs: ['tuiHintAppearance', 'tuiHintContext'],
         },
+        TuiWithHintPosition,
     ],
     host: {
         style: 'cursor: pointer',

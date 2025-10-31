@@ -23,6 +23,7 @@ import {
     TuiHintDescribe,
     TuiHintDirective,
     TuiHintHover,
+    TuiWithHintPosition,
 } from '@taiga-ui/core/directives/hint';
 import {TUI_ICON_START} from '@taiga-ui/core/tokens';
 import {type TuiSizeS} from '@taiga-ui/core/types';
@@ -59,6 +60,7 @@ class Styles {}
             directive: TuiHintDirective,
             inputs: ['tuiHint: tuiTooltip', 'tuiHintAppearance', 'tuiHintContext'],
         },
+        TuiWithHintPosition,
     ],
     host: {
         tuiTooltip: '',
