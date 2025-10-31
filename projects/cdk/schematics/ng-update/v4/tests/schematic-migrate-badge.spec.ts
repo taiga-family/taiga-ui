@@ -20,7 +20,6 @@ import { CommonModule } from '@angular/common';
 import { TuiBadgeModule } from "@taiga-ui/experimental";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiBadgeModule, CommonModule]
 })
@@ -33,7 +32,6 @@ const COMPONENT_AFTER = `import { TuiBadge } from "@taiga-ui/kit";
 import { CommonModule } from '@angular/common';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiBadge, CommonModule]
 })

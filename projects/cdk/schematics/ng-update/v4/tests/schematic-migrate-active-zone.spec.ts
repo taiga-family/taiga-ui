@@ -17,7 +17,6 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
 })
 export class Test {

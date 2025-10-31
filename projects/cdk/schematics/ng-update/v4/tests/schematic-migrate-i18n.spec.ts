@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import {tuiDocLanguageSwitcher} from '@taiga-ui/i18n';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     providers: [
         tuiDocLanguageSwitcher(async (language): Promise<unknown> => {})
@@ -32,7 +31,6 @@ const COMPONENT_AFTER = `
 import {tuiLanguageSwitcher} from '@taiga-ui/i18n';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     providers: [
         tuiLanguageSwitcher(async (language): Promise<unknown> => {})

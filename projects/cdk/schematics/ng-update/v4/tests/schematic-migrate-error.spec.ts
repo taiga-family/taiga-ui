@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiInputModule, TuiFieldErrorPipeModule } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [ TuiInputModule, TuiFieldErrorPipeModule]
 })
@@ -31,7 +30,6 @@ const COMPONENT_AFTER = `import { TuiInputModule } from "@taiga-ui/legacy";
 import { TuiFieldErrorPipe, TuiFieldErrorContentPipe } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [ TuiInputModule, TuiFieldErrorPipe, TuiFieldErrorContentPipe]
 })

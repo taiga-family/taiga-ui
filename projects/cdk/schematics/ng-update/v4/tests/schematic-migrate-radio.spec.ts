@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiRadioModule } from "@taiga-ui/experimental";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiRadioModule]
 })
@@ -29,7 +28,6 @@ export class Test {
 const COMPONENT_AFTER = `import { TuiRadio } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiRadio]
 })

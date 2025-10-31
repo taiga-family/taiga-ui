@@ -9,7 +9,6 @@ import {isObservable} from 'rxjs';
 import {tuiCreateUnfinishedValidator} from './unfinished.validator';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiUnfinishedValidator]',
     providers: [tuiProvide(NG_VALIDATORS, TuiUnfinishedValidator, true)],
 })

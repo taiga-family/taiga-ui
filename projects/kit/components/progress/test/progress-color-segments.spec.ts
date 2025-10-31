@@ -13,7 +13,6 @@ describe('TuiProgressColorSegments', () => {
     let mutationObserverServiceMock: MutationObserverServiceMock;
 
     @Component({
-        standalone: true,
         imports: [TuiProgress],
         template: `
             <progress

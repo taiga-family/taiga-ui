@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiInputTagModule, TuiMultiSelectModule } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiInputTagModule, TuiMultiSelectModule]
 })

@@ -4,7 +4,6 @@ import {TUI_DATE_FORMAT, type TuiDateFormatSettings} from '@taiga-ui/core/tokens
 import {combineLatest, map, Observable, ReplaySubject} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDateFormat]',
     providers: [tuiProvide(TUI_DATE_FORMAT, TuiDateFormat)],
 })

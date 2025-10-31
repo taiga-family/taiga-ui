@@ -29,7 +29,6 @@ import {TuiOperationIcon} from '@taiga-ui/proprietary-banking';
 import { TuiInputNumberModule } from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiBackModule, TuiFeedItemModule, TuiNavigationModule, TuiIllustrationsModule]
 })
@@ -53,7 +52,6 @@ import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
 import {TuiFeedItemIcon} from '@taiga-ui/proprietary';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation, TuiIllustrationsModule]
 })

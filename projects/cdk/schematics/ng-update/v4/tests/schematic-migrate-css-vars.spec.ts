@@ -16,7 +16,6 @@ const collectionPath = join(__dirname, '../../../migration.json');
 const COMPONENT_BEFORE = `import { Component } from "@angular/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     host: {
       '[style.--tui-accent-active]': 'red',
@@ -35,7 +34,6 @@ export class Test {
 const COMPONENT_AFTER = `import { Component } from "@angular/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     host: {
       '[style.--tui-background-accent-2-pressed]': 'red',

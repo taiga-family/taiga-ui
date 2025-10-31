@@ -20,7 +20,6 @@ import { TuiDialogModule } from "@taiga-ui/core/components";
 import { TuiStepState } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     imports: [TuiDialogModule]
 })
 export class Test {
@@ -30,7 +29,6 @@ export class Test {
 const COMPONENT_AFTER = `import { TuiDialog } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     imports: [TuiDialog]
 })
 export class Test {

@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiScrollbarModule } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiScrollbarModule]
 })
@@ -29,7 +28,6 @@ export class Test {
 const COMPONENT_AFTER = `import { TuiScrollbar, TuiScrollable } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiScrollbar, TuiScrollable]
 })

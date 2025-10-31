@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiActionModule } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiActionModule]
 })
@@ -30,7 +29,6 @@ const COMPONENT_AFTER = `import { TuiSurface } from "@taiga-ui/core";
 import { TuiCardLarge } from "@taiga-ui/layout";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiCardLarge, TuiSurface]
 })

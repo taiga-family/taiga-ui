@@ -19,7 +19,6 @@ const TUI_MATCHER_COMPONENT = `
 import { TuiFilterPipe, TuiMatcher } from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './tui-matcher.component.html',
     imports: [TuiFilterPipe]
 })
@@ -39,7 +38,6 @@ const TUI_MATCHER_COMPONENT_AFTER = `
 import { TuiFilterPipe, TuiMatcher } from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './tui-matcher.component.html',
     imports: [TuiFilterPipe]
 })
@@ -59,7 +57,6 @@ const TYPED_TUI_MATCHER_COMPONENT = `
 import { TuiFilterPipe, TuiMatcher, TuiTypedMatcher } from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './tui-typed-matcher.component.html',
     imports: [TuiFilterPipe]
 })
@@ -81,7 +78,6 @@ const TYPED_TUI_MATCHER_COMPONENT_AFTER = `
 import { TuiFilterPipe, TuiMatcher } from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './tui-typed-matcher.component.html',
     imports: [TuiFilterPipe]
 })

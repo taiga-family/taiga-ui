@@ -215,7 +215,6 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  standalone: true,
   imports: [RouterModule, TuiRoot],
   selector: 'standalone-test-root',
   templateUrl: './app.template.html',
@@ -346,7 +345,6 @@ bootstrapApplication(App, {
 import { RouterModule } from '@angular/router';
 
 @Component({
-  standalone: true,
   imports: [RouterModule],
   selector: 'standalone-test-root',
   templateUrl: './app.template.html',

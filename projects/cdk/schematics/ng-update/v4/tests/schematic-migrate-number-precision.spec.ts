@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiInputNumberModule } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiInputNumberModule]
 })
@@ -30,7 +29,6 @@ const COMPONENT_AFTER = `import { TuiNumberFormat } from "@taiga-ui/core";
 import { TuiInputNumberModule } from "@taiga-ui/legacy";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiInputNumberModule, TuiNumberFormat]
 })

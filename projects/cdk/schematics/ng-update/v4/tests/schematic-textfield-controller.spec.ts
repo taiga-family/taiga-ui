@@ -20,7 +20,6 @@ import { CommonModule } from "@angular/common";
 import { ArrayElement } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [CommonModule]
 })
@@ -34,7 +33,6 @@ import { TuiArrayElement } from "@taiga-ui/kit";
 import { CommonModule } from "@angular/common";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [CommonModule, TuiTextfieldControllerModule]
 })

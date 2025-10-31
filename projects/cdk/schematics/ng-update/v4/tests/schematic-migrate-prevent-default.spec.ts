@@ -20,7 +20,6 @@ import { Component } from '@angular/core';
 import { TuiPreventDefaultModule } from "@taiga-ui/cdk";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiPreventDefaultModule, CommonModule]
 })
@@ -31,7 +30,6 @@ const COMPONENT_AFTER = `
 import { Component } from '@angular/core';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [CommonModule]
 })

@@ -5,7 +5,6 @@ import {TuiOptionWithValue} from '@taiga-ui/core';
 import {tuiInjectValue} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     template: '<span>{{selected() ? "←" : ""}}</span>',
     styles: ':host {flex-direction: row-reverse; justify-content: start}',
     encapsulation,

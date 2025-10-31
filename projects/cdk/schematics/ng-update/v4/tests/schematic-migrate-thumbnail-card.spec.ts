@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiCardModule, TuiCardComponent } from '@taiga-ui/addon-commerce';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiCardModule]
 })
@@ -32,7 +31,6 @@ const COMPONENT_AFTER = `
 import { TuiThumbnailCard } from '@taiga-ui/addon-commerce';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiThumbnailCard]
 })

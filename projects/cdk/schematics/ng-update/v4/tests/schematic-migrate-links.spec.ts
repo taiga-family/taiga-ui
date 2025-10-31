@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiLinkModule, TuiNotificationModule } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiLinkModule, TuiNotificationModule]
 })
@@ -31,7 +30,6 @@ const COMPONENT_AFTER = `import { TuiChevron } from "@taiga-ui/kit";
 import { TuiNotification, TuiLink } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiLink, TuiNotification, TuiChevron]
 })

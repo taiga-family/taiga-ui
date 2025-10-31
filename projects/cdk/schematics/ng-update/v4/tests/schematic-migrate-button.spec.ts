@@ -18,7 +18,6 @@ import { TuiButtonModule } from "@taiga-ui/core";
 import {tuiButtonOptionsProvider} from '@taiga-ui/experimental';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiButtonModule],
     providers: [
@@ -32,7 +31,6 @@ const COMPONENT_AFTER = `import { TuiButtonLoading } from "@taiga-ui/kit";
 import { TuiButton, tuiButtonOptionsProvider } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiButton, TuiButtonLoading],
     providers: [
@@ -151,7 +149,6 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiButtonModule} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'stackblitz-edit-button',
     imports: [TuiButtonModule],
     template: \`
@@ -175,7 +172,6 @@ import { TuiButton } from "@taiga-ui/core";
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-    standalone: true,
     selector: 'stackblitz-edit-button',
     imports: [TuiButton],
     template: \`

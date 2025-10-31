@@ -20,7 +20,6 @@ import type {TuiDocExample} from '@taiga-ui/addon-doc';
 import {TuiAddonDocModule} from '@taiga-ui/addon-doc';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiAddonDocModule]
 })
@@ -32,7 +31,6 @@ const COMPONENT_AFTER = `
 import { TuiRawLoaderContent, TuiAddonDoc } from '@taiga-ui/addon-doc';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiAddonDoc]
 })

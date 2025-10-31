@@ -24,7 +24,6 @@ const standaloneNumberFormatSettings: TuiNumberFormatSettings = {
 };
 
 @Component({
-    standalone: true,
     selector: 'test',
     template: \`
         <p>
@@ -61,7 +60,6 @@ const standaloneNumberFormatSettings: TuiNumberFormatSettings = {
 };
 
 @Component({
-    standalone: true,
     selector: 'test',
     template: \`<!-- TODO: (Taiga UI migration) tuiFormatNumber pipe API has been changed. Learn how to migrate decimalLimit, decimal, zeroPadding: https://github.com/taiga-family/taiga-ui/issues/8335#migration -->
 

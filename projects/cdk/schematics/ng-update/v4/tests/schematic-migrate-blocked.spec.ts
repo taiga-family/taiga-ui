@@ -18,7 +18,6 @@ import {FormsModule} from '@angular/forms';
 import { TuiCheckboxBlockModule, TuiRadioBlockModule } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [FormsModule, TuiCheckboxBlockModule, TuiRadioBlockModule]
 })
@@ -30,7 +29,6 @@ import {FormsModule} from '@angular/forms';
 import { TuiBlock, TuiCheckbox, TuiRadio } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [FormsModule, TuiBlock, TuiCheckbox, TuiRadio, TuiAppearance]
 })

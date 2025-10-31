@@ -17,7 +17,6 @@ const COMPONENT_BEFORE = `
 import { TuiCheckboxLabeledModule } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiCheckboxLabeledModule]
 })
@@ -28,7 +27,6 @@ const COMPONENT_AFTER = `import { TuiCheckbox, TuiRadio } from "@taiga-ui/kit";
 import { TuiLabel } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiLabel, TuiCheckbox, TuiRadio]
 })

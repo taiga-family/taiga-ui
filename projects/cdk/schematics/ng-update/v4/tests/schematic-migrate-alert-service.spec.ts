@@ -35,7 +35,6 @@ const standaloneAlertOptions2: TuiAlertOptions<unknown> = {
 };
 
 @Component({
-    standalone: true,
     selector: 'test',
     template: '',
 })
@@ -107,7 +106,6 @@ const standaloneAlertOptions2: TuiAlertOptions<unknown> = {
 };
 
 @Component({
-    standalone: true,
     selector: 'test',
     template: '',
 })

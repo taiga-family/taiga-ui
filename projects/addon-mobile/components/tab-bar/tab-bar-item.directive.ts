@@ -8,7 +8,6 @@ import {EMPTY, filter, type Observable} from 'rxjs';
 import {TuiTabBarComponent} from './tab-bar.component';
 
 @Directive({
-    standalone: true,
     selector: '[tuiTabBarItem][routerLinkActive]',
 })
 export class TuiTabBarItemDirective {

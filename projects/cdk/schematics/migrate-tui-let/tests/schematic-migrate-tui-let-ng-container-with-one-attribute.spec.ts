@@ -19,7 +19,6 @@ const COMPONENT = `
 import { TuiLet } from "@taiga-ui/cdk";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiLet],
 })

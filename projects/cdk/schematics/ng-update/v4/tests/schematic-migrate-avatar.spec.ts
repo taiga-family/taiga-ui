@@ -20,7 +20,6 @@ import { TuiAvatarModule } from "@taiga-ui/experimental";
 import { TuiMarkerIconModule } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiAvatarModule, TuiMarkerIconModule]
 })
@@ -32,7 +31,6 @@ const COMPONENT_AFTER = `import { TuiFallbackSrcPipe, TuiInitialsPipe, TuiAutoCo
 import { TuiAvatar } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiAvatar, TuiFallbackSrcPipe, TuiInitialsPipe, TuiAutoColorPipe]
 })

@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `import {ChangeDetectionStrategy, Component} from '@ang
 import {TuiLineHandler} from '@taiga-ui/addon-charts';
  
 @Component({
-    standalone: true,
     selector: 'test-axes',
     templateUrl: './test.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

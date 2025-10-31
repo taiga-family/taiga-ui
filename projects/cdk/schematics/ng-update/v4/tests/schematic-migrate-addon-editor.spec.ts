@@ -32,7 +32,6 @@ import {TUI_EDITOR_DEFAULT_EXTENSIONS, TUI_EDITOR_EXTENSIONS} from '@taiga-ui/ad
 import {TuiEditorModule, TuiEditorTool, TUI_EDITOR_DEFAULT_EDITOR_TOOLS} from '@tinkoff/tui-editor';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiEditorModule],
     providers: [
@@ -68,7 +67,6 @@ import {TUI_EDITOR_EXTENSIONS} from '@taiga-ui/editor';
 import {TuiEditorTool} from '@taiga-ui/editor';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiEditor, TuiEditorSocket],
     providers: [

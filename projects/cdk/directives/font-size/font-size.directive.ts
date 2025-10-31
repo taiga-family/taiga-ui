@@ -8,9 +8,7 @@ export const TUI_FONT_SIZE_HANDLER = new InjectionToken<(size: number) => void>(
     ngDevMode ? 'TUI_FONT_SIZE_HANDLER' : '',
 );
 
-@Directive({
-    standalone: true,
-})
+@Directive()
 export class TuiFontSize {
     private readonly handler = inject(TUI_FONT_SIZE_HANDLER, {optional: true});
     protected readonly nothing = inject(DestroyRef).onDestroy(

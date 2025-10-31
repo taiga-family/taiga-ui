@@ -22,7 +22,6 @@ import { TuiCardModule } from "@taiga-ui/experimental";
 import { TuiNotification } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiCheckboxModule, TuiCardModule]
 })
@@ -34,7 +33,6 @@ const COMPONENT_AFTER = `import { TuiCardLarge, TuiCardMedium } from "@taiga-ui/
 import { TuiCheckbox } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiCheckbox, TuiCardLarge, TuiCardMedium]
 })

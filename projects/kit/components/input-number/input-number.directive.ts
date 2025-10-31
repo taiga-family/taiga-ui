@@ -26,7 +26,6 @@ import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 const DEFAULT_MAX_LENGTH = 18;
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputNumber]',
     providers: [
         tuiAsControl(TuiInputNumberDirective),

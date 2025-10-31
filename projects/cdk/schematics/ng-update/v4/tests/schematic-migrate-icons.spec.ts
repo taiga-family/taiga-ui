@@ -21,7 +21,6 @@ const iconsMap = {
 }
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
 })
 export class Test {
@@ -37,7 +36,6 @@ const iconsMap = {
 }
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
 })
 export class Test {
@@ -52,7 +50,6 @@ const iconsMap = {
 }
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
 })
 export class Test {
@@ -68,7 +65,6 @@ const iconsMap = {
 }
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
 })
 export class Test {

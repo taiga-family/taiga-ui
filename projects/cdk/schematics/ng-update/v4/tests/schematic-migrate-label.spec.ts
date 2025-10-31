@@ -17,7 +17,6 @@ const COMPONENT_BEFORE = `
 import { TuiLabelModule } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiLabelModule]
 })
@@ -27,7 +26,6 @@ export class Test {
 const COMPONENT_AFTER = `import { TuiLabel } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiLabel]
 })

@@ -3,7 +3,6 @@ import {ControlContainer, NgControl} from '@angular/forms';
 import {distinctUntilChanged, EMPTY, type Observable, Subject, switchAll} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiValueChanges]',
 })
 export class TuiValueChanges<T> implements DoCheck {

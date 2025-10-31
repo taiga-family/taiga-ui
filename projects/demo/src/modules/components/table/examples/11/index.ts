@@ -10,7 +10,6 @@ interface Data {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiTable],
     templateUrl: './index.html',
     encapsulation,

@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `import { Component } from "@angular/core";
 import { TuiMobileTabsModule } from "@taiga-ui/addon-mobile";
 
 @Component({
-    standalone: true,
     selector: 'test-mobile-tabs',
     templateUrl: './test.template.html',
     imports: [TuiMobileTabsModule]
@@ -41,7 +40,6 @@ const COMPONENT_AFTER = `import { TuiSegmented } from "@taiga-ui/kit";
 import { Component } from "@angular/core";
 
 @Component({
-    standalone: true,
     selector: 'test-mobile-tabs',
     templateUrl: './test.template.html',
     imports: [TuiSegmented]

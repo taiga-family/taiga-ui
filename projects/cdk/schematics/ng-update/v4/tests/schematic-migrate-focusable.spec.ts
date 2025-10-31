@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import {TuiFocusableModule} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiFocusableModule]
 })
@@ -29,7 +28,6 @@ export class Test {
 
 const COMPONENT_AFTER = `
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: []
 })

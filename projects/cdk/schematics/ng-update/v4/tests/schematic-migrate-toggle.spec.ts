@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiToggleModule } from "@taiga-ui/experimental";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiToggleModule]
 })
@@ -29,7 +28,6 @@ export class Test {
 const COMPONENT_AFTER = `import { TuiSwitch } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiSwitch]
 })

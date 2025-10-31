@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiOverscrollModule } from "@taiga-ui/cdk";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiOverscrollModule]
 })
@@ -28,7 +27,6 @@ export class Test {
 
 const COMPONENT_AFTER = `
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: []
 })

@@ -23,7 +23,6 @@ import {TuiInputYearModule} from '@taiga-ui/legacy';
 export class MyModule {}
 
 @Component({
-  standalone: true,
   imports: [
     // ...
     TuiInputYearModule,
@@ -91,7 +90,6 @@ import { TuiInputYear } from "@taiga-ui/kit";
 export class MyModule {}
 
 @Component({
-  standalone: true,
   imports: [
     // ...
     TuiInputYear, TuiTextfield,

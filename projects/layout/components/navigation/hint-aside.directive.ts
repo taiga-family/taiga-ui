@@ -7,7 +7,6 @@ import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directive
 import {TuiAsideComponent} from './aside.component';
 
 @Directive({
-    standalone: true,
     selector: '[tuiHintAside]',
     providers: [tuiHintOptionsProvider({direction: 'right'})],
     hostDirectives: [TuiHintDirective],

@@ -59,7 +59,6 @@ export const TUI_DATE_ADAPTER: Record<TuiDateMode, MaskitoDateMode> = {
 };
 
 @Directive({
-    standalone: true,
     host: {
         '[attr.inputmode]': 'mobile && open() ? "none" : "numeric"',
         '[disabled]': 'disabled()',
@@ -177,7 +176,6 @@ export abstract class TuiInputDateBase<
 }
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputDate]',
     providers: [
         tuiAsOptionContent(TuiSelectOption),

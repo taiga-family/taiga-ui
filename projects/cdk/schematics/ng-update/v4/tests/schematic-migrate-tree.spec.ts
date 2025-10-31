@@ -25,7 +25,6 @@ import { TuiTreeModule, TuiTreeComponent,
         TuiTreeNodeDirective } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     template: '',
     imports: [TuiTreeModule]
 })
@@ -45,7 +44,6 @@ const COMPONENT_AFTER = `
 import { TuiTreeComponent, TuiTreeControllerDirective, TuiTree, TuiTreeItem, TuiTreeItemContent, TuiTreeChildren, TuiTreeItemController, TuiTreeNode } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     template: '',
     imports: [TuiTree]
 })

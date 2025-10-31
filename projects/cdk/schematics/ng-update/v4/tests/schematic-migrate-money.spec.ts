@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiMoneyModule } from "@taiga-ui/addon-commerce";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiMoneyModule]
 })
@@ -36,7 +35,6 @@ import { AsyncPipe } from "@angular/common";
 import { TuiAmountPipe } from "@taiga-ui/addon-commerce";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiAmountPipe, AsyncPipe, TuiNumberFormat]
 })
@@ -70,7 +68,6 @@ const INLINE_WITH_SELFCLOSE_TAG_BEFORE = `import { AsyncPipe } from "@angular/co
 import { TuiAmountPipe } from "@taiga-ui/addon-commerce";
 
 @Component({
-    standalone: true,
     template: \`
         @let code = currencyCode();
         <tui-money [singleColor]="true" [currency]="currencyCode()" [value]="getValue(activeItemIndex())"/>
@@ -84,7 +81,6 @@ const INLINE_WITH_SELFCLOSE_TAG_AFTER = `import { AsyncPipe } from "@angular/com
 import { TuiAmountPipe } from "@taiga-ui/addon-commerce";
 
 @Component({
-    standalone: true,
     template: \`
         @let code = currencyCode();
         <span  >{{ getValue(activeItemIndex()) | tuiAmount : currencyCode() | async }}</span>

@@ -26,7 +26,6 @@ import {
 import {TuiStatus, TUI_ARROW_MODE, TUI_ARROW, TuiArrowMode, TuiComboBoxComponent, TuiSelectComponent} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiInputModule],
     providers: [
@@ -62,7 +61,6 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiInputModule],
     providers: [

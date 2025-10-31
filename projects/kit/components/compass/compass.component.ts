@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 
 @Component({
-    standalone: true,
     selector: 'tui-compass',
     template: '',
     styles: '@import "@taiga-ui/kit/styles/components/compass.less";',

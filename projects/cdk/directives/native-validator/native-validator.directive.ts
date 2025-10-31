@@ -5,7 +5,6 @@ import {tuiInjectElement, tuiProvide} from '@taiga-ui/cdk/utils';
 import {BehaviorSubject, delay, of, switchMap} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiNativeValidator]',
     providers: [tuiProvide(NG_VALIDATORS, TuiNativeValidator, true)],
     host: {

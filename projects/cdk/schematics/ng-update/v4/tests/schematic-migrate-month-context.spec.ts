@@ -19,7 +19,6 @@ import { TuiMonth } from '@taiga-ui/cdk';
 import { TuiBooleanHandlerWithContext, TuiInputMonthRangeModule, TuiMonthContext } from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     template: '',
     imports: [TuiInputMonthRangeModule],
 })
@@ -45,7 +44,6 @@ import { Component } from '@angular/core';
 import { TuiMonth, TuiBooleanHandler } from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     template: '',
     imports: [TuiInputMonthRangeModule],
 })

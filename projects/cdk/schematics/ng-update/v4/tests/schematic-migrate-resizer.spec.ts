@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiResizerModule, TuiResizeableDirective } from "@taiga-ui/cdk";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiResizerModule]
 })
@@ -32,7 +31,6 @@ const COMPONENT_AFTER = `
 import { TuiResizable, TuiResizer } from "@taiga-ui/cdk";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiResizable, TuiResizer]
 })

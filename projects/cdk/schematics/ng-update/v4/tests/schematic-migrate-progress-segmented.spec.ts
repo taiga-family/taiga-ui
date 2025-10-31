@@ -18,7 +18,6 @@ import { TuiProgressSegmentedModule } from "@taiga-ui/experimental";
 import { TuiProgressModule } from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiProgressModule, TuiProgressSegmentedModule]
 })
@@ -28,7 +27,6 @@ export class Test {
 const COMPONENT_AFTER = `import { TuiProgress } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiProgress]
 })

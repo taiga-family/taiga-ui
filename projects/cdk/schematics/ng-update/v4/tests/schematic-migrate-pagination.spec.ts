@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiTablePaginationModule, TuiTablePaginationComponent, TuiTablePagination } from '@taiga-ui/addon-table';
 
 @Component({
-    standalone: true,
     imports: [TuiTablePaginationModule],
     template: \`
         <tui-table-pagination
@@ -47,7 +46,6 @@ const COMPONENT_AFTER = `
 import { TuiTablePaginationEvent, TuiTablePagination } from '@taiga-ui/addon-table';
 
 @Component({
-    standalone: true,
     imports: [TuiTablePagination],
     template: \`
         <tui-table-pagination

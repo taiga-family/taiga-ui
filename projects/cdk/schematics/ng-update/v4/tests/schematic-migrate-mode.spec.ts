@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import {TuiBrightness, TuiModeModule, TuiRootModule, TuiThemeNightModule} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiModeModule, TuiRootModule, TuiThemeNightModule]
 })
@@ -33,7 +32,6 @@ const COMPONENT_AFTER = `
 import { TuiRoot } from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiRoot]
 })

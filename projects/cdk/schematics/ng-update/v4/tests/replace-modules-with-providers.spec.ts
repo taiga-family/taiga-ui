@@ -67,7 +67,6 @@ import { TuiPreviewModule, TuiPreviewActionModule } from "@taiga-ui/addon-previe
 
 @Component({
     selector: 'app-my-component',
-    standalone: true,
     template: '',
     imports: [
         TuiRootModule,
@@ -104,7 +103,6 @@ import { TuiPush, TuiPreview } from "@taiga-ui/kit";
 
 @Component({
     selector: 'app-my-component',
-    standalone: true,
     template: '',
     imports: [
         TuiRoot,

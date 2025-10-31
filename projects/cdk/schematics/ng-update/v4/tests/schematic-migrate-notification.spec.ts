@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `import {Component} from '@angular/core';
 import {TuiNotificationModule} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiNotificationModule]
 })
@@ -31,7 +30,6 @@ import { TuiNotification } from "@taiga-ui/core";
 import {Component} from '@angular/core';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiNotification]
 })

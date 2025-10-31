@@ -19,7 +19,6 @@ const COMPONENT_BEFORE = `
 import { TuiBadgedContentModule } from "@taiga-ui/experimental";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiBadgedContentModule]
 })
@@ -30,7 +29,6 @@ const COMPONENT_AFTER = `import { TuiInitialsPipe } from "@taiga-ui/core";
 import { TuiBadgedContent, TuiBadgeNotification } from "@taiga-ui/kit";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiBadgedContent, TuiBadgeNotification, TuiInitialsPipe]
 })

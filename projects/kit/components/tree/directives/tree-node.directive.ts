@@ -5,7 +5,6 @@ import {type TuiTreeAccessor} from '../misc/tree.interfaces';
 import {TUI_TREE_ACCESSOR} from '../misc/tree.tokens';
 
 @Directive({
-    standalone: true,
     selector: 'tui-tree-item[tuiTreeNode]',
 })
 export class TuiTreeNode<T> implements OnDestroy {

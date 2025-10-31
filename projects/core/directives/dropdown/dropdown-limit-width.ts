@@ -8,7 +8,6 @@ import {
 } from './dropdown-options.directive';
 
 @Directive({
-    standalone: true,
     providers: [tuiDropdownOptionsProvider({})],
 })
 export class TuiDropdownFixed {
@@ -22,7 +21,7 @@ export class TuiDropdownFixed {
     }
 }
 
-@Directive({standalone: true})
+@Directive()
 export class TuiDropdownAuto {
     constructor() {
         /**

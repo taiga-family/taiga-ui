@@ -5,7 +5,6 @@ import {TuiSortDirection} from '../table.options';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
-    standalone: true,
     selector: 'table[tuiTable][tuiDirectionOrder]',
 })
 export class TuiTableDirectionOrder<T> {

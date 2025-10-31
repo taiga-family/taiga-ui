@@ -8,7 +8,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_ENTER, TUI_LEAVE, TuiAnimated} from './animated.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiAnimatedParent]',
     providers: [provideMutationObserverInit({childList: true})],
     hostDirectives: [

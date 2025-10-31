@@ -2,7 +2,6 @@ import {Directive, EventEmitter, Input, Output} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 
 @Directive({
-    standalone: true,
     selector: 'video[tuiMedia], audio[tuiMedia]',
     exportAs: 'tuiMedia',
     host: {

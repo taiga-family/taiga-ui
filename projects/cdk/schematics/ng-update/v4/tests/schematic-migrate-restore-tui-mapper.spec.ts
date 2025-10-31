@@ -19,7 +19,6 @@ const TUI_MAPPER_COMPONENT = `
 import { TuiMapper, TuiMapperPipeModule } from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './tui-mapper.component.html',
     imports: [TuiMapperPipeModule]
 })
@@ -39,7 +38,6 @@ const TUI_MAPPER_COMPONENT_AFTER = `
 import { TuiMapper, TuiMapperPipe } from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './tui-mapper.component.html',
     imports: [TuiMapperPipe]
 })
@@ -59,7 +57,6 @@ const TYPED_TUI_MAPPER_COMPONENT = `
 import {TuiMapper, TuiTypedMapper, TuiMapperPipeModule} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './tui-typed-mapper.component.html',
     imports: [TuiMapperPipeModule]
 })
@@ -81,7 +78,6 @@ const TYPED_TUI_MAPPER_COMPONENT_AFTER = `
 import { TuiMapper, TuiMapperPipe } from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './tui-typed-mapper.component.html',
     imports: [TuiMapperPipe]
 })

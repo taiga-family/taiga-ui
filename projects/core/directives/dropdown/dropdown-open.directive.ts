@@ -51,7 +51,6 @@ function shouldClose(this: TuiDropdownOpen, event: KeyboardEvent): boolean {
 }
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdown][tuiDropdownOpen],[tuiDropdown][tuiDropdownOpenChange]',
     providers: [TuiDropdownDriver, tuiAsDriver(TuiDropdownDriver)],
     hostDirectives: [

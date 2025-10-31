@@ -49,7 +49,6 @@ const MIN_TIME = new TuiTime(0, 0);
 const MAX_TIME = TuiTime.fromAbsoluteMilliseconds(MILLISECONDS_IN_DAY - 1);
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputDateTime]',
     providers: [
         tuiAsOptionContent(TuiSelectOption),

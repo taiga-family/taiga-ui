@@ -17,7 +17,6 @@ const COMPONENT_BEFORE = `
 import { TuiSvgModule } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiSvgModule],
 })
@@ -27,7 +26,6 @@ export class Test {
 const COMPONENT_AFTER = `import { TuiIcon } from "@taiga-ui/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiIcon],
 })

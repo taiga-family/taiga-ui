@@ -6,7 +6,6 @@ import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('PieChart', () => {
     @Component({
-        standalone: true,
         imports: [TuiPieChart],
         template: `
             <tui-pie-chart [value]="value" />

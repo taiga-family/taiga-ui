@@ -6,7 +6,6 @@ import {type TuiKeySteps, TuiSlider, TuiSliderComponent} from '@taiga-ui/kit';
 
 describe('TuiSliderKeyStepsDirective', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiSlider],
         template: `
             <input

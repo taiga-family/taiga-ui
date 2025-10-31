@@ -23,7 +23,6 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    standalone: true
     template: '',
     imports: [AModule, BModule, CModule],
 })
@@ -49,7 +48,6 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    standalone: true
     template: '',
     imports: [AModule, BModule, CModule],
 })

@@ -5,7 +5,6 @@ import {type TuiSizeL, type TuiSizeXS} from '@taiga-ui/core/types';
 import {TUI_BADGE_NOTIFICATION_OPTIONS} from './badge-notification.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-badge-notification',
     template: '<ng-content />',
     styleUrl: './badge-notification.style.less',

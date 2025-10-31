@@ -4,7 +4,6 @@ import {TuiInputSearch} from '@taiga-ui/layout/components/input-search';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiSearchHotkey]',
     host: {
         '[placeholder]': 'placeholder()',

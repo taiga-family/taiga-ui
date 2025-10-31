@@ -20,7 +20,6 @@ import { TuiInputCountModule } from "@taiga-ui/kit";
 import { Component } from "@angular/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiInputCountModule]
 })
@@ -31,7 +30,6 @@ const COMPONENT_AFTER = `import { TuiInputNumberModule } from "@taiga-ui/legacy"
 import { Component } from "@angular/core";
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiInputNumberModule]
 })

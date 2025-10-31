@@ -19,7 +19,6 @@ const COMPONENT = `
 import {TuiButton} from '@taiga-ui/core/components/button';
 
 @Component({
-    standalone: true,
     templateUrl: './test.template.html',
     imports: [TuiButton]
 })
@@ -30,7 +29,6 @@ const COMPONENT_WITH_CONDITION = `
 import {TuiButton} from '@taiga-ui/core/components/button';
 
 @Component({
-    standalone: true,
     templateUrl: './test-with-condition.template.html',
     imports: [TuiButton]
 })
