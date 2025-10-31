@@ -2,10 +2,9 @@ import {
     ChangeDetectionStrategy,
     Component,
     ElementRef,
-    EventEmitter,
     inject,
     Input,
-    Output,
+    model,
     type QueryList,
     ViewChildren,
 } from '@angular/core';
@@ -55,7 +54,7 @@ export class TuiPagination {
     public focusable = true;
 
     @Input()
-    public size: TuiSizeL | TuiSizeS = this.options.defaultSize;
+    public size: TuiSizeL | TuiSizeS = this.options.size;
 
     @Input()
     public readonly disabled = false;
@@ -78,14 +77,7 @@ export class TuiPagination {
     @Input()
     public content: PolymorpheusContent<TuiContext<number>>;
 
-    /**
-     * Active page index
-     */
-    @Input()
-    public index = 0;
-
-    @Output()
-    public readonly indexChange = new EventEmitter<number>();
+    public readonly index = model(0);
 
     public get nativeFocusableElement(): HTMLElement | null {
         if (this.disabled) {
@@ -102,7 +94,7 @@ export class TuiPagination {
                 activeElementIndex++;
             }
 
-            if (itemIndex === this.index) {
+            if (itemIndex === this.index()) {
                 break;
             }
         }
@@ -118,7 +110,7 @@ export class TuiPagination {
     }
 
     public get arrowIsDisabledLeft(): boolean {
-        return this.index === 0;
+        return this.index() === 0;
     }
 
     public get arrowIsDisabledRight(): boolean {
@@ -137,7 +129,7 @@ export class TuiPagination {
     }
 
     protected elementIsFocusable(index: number): boolean {
-        return this.index === index && !this.focused;
+        return this.index() === index && !this.focused;
     }
 
     /**
@@ -154,7 +146,7 @@ export class TuiPagination {
             return elementIndex;
         }
 
-        if (elementIndex === this.sidePadding && this.hasCollapsedItems(this.index)) {
+        if (elementIndex === this.sidePadding && this.hasCollapsedItems(this.index())) {
             return null;
         }
 
@@ -171,7 +163,7 @@ export class TuiPagination {
             return this.lastIndex - reverseElementIndex;
         }
 
-        const computedIndex = this.index - this.maxHalfLength + elementIndex;
+        const computedIndex = this.index() - this.maxHalfLength + elementIndex;
 
         return tuiClamp(
             computedIndex,
@@ -182,8 +174,7 @@ export class TuiPagination {
 
     protected getElementMode(index = -1): string {
         return this.options.appearance({
-            isActive: this.index === index,
-            size: this.size,
+            isActive: this.index() === index,
         });
     }
 
@@ -224,7 +215,7 @@ export class TuiPagination {
      * Active index from the end
      */
     private get reverseIndex(): number {
-        return this.lastIndex - this.index;
+        return this.lastIndex - this.index();
     }
 
     /**
@@ -267,7 +258,7 @@ export class TuiPagination {
 
     private tryChangeTo(direction: TuiHorizontalDirection): void {
         this.updateIndex(
-            tuiClamp(this.index + (direction === 'right' ? 1 : -1), 0, this.lastIndex),
+            tuiClamp(this.index() + (direction === 'right' ? 1 : -1), 0, this.lastIndex),
         );
     }
 
@@ -280,11 +271,10 @@ export class TuiPagination {
     }
 
     private updateIndex(index: number): void {
-        if (this.index === index) {
+        if (this.index() === index) {
             return;
         }
 
-        this.index = index;
-        this.indexChange.emit(index);
+        this.index.set(index);
     }
 }
