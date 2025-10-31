@@ -32,7 +32,6 @@ import {Subject, throttleTime} from 'rxjs';
 
 import {TuiDropdownDriver, TuiDropdownDriverDirective} from './dropdown.driver';
 import {TUI_DROPDOWN_COMPONENT} from './dropdown.providers';
-import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
     selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
@@ -41,13 +40,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
         tuiAsVehicle(TuiDropdownDirective),
     ],
     exportAs: 'tuiDropdown',
-    hostDirectives: [
-        TuiDropdownDriverDirective,
-        {
-            directive: TuiDropdownPosition,
-            outputs: ['tuiDropdownDirectionChange'],
-        },
-    ],
+    hostDirectives: [TuiDropdownDriverDirective],
     host: {
         '[class.tui-dropdown-open]': 'ref()',
     },

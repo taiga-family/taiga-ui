@@ -13,7 +13,9 @@ import {type TuiPoint, type TuiVerticalDirection} from '@taiga-ui/core/types';
 import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_OPTIONS, type TuiDropdownAlign} from './dropdown-options.directive';
 
-@Directive()
+@Directive({
+    selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
+})
 export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);

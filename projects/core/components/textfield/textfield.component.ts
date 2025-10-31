@@ -41,6 +41,7 @@ import {
     TuiDropdownFixed,
     TuiDropdownOpen,
     tuiDropdownOpen,
+    TuiWithDropdown,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
@@ -205,7 +206,7 @@ export class TuiTextfieldBaseComponent<T>
         tuiAsDataListHost(TuiTextfieldComponent),
     ],
     hostDirectives: [
-        TuiDropdownDirective,
+        TuiWithDropdown,
         TuiDropdownFixed,
         TuiTransitioned,
         TuiWithDropdownOpen,

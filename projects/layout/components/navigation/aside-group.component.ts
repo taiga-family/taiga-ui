@@ -22,6 +22,7 @@ import {
     TuiDropdownHover,
     TuiDropdownOpen,
     TuiDropdownPositionSided,
+    TuiWithDropdown,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -36,7 +37,7 @@ import {TuiAsideComponent} from './aside.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsDataListHost(TuiAsideGroupComponent)],
     hostDirectives: [
-        TuiDropdownDirective,
+        TuiWithDropdown,
         TuiDropdownHover,
         TuiDropdownPositionSided,
         TuiDropdownOpen,

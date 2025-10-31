@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    forwardRef,
     inject,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -44,7 +45,10 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
     providers: [
         TuiPositionService,
         tuiPositionAccessorFor('dropdown', TuiDropdownPosition),
-        tuiRectAccessorFor('dropdown', TuiDropdownDirective),
+        tuiRectAccessorFor(
+            'dropdown',
+            forwardRef(() => TuiDropdownDirective),
+        ),
     ],
     hostDirectives: [TuiActiveZone, TuiAnimated],
     host: {

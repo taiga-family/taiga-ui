@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import {
     tuiDropdown,
-    TuiDropdownDirective,
     tuiDropdownOptionsProvider,
+    TuiWithDropdown,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TUI_ICON_START} from '@taiga-ui/core/tokens';
@@ -26,7 +26,7 @@ import {TUI_COMMON_ICONS} from '@taiga-ui/layout/tokens';
             useFactory: () => inject(TUI_COMMON_ICONS).filter,
         },
     ],
-    hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
+    hostDirectives: [TuiWithDropdown, TuiWithDropdownOpen],
 })
 export class TuiSearchFilterComponent {
     private readonly dropdown = tuiDropdown(null);

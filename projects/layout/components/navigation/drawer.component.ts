@@ -18,6 +18,7 @@ import {
     tuiDropdown,
     TuiDropdownDirective,
     TuiDropdownOpen,
+    TuiWithDropdown,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiIcons} from '@taiga-ui/core/directives/icons';
@@ -75,7 +76,7 @@ class TuiDrawerComponent {
             useValue: TuiDrawerComponent,
         },
     ],
-    hostDirectives: [TuiDropdownDirective, TuiWithDropdownOpen],
+    hostDirectives: [TuiWithDropdown, TuiWithDropdownOpen],
 })
 export class TuiDrawerDirective implements DoCheck {
     private readonly x = inject(TUI_COMMON_ICONS).close;

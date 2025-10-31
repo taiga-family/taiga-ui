@@ -53,6 +53,7 @@ import {
     TuiDropdownDirective,
     tuiDropdownOpen,
     tuiDropdownOptionsProvider,
+    TuiWithDropdown,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
@@ -100,7 +101,7 @@ export interface TuiCard {
     ],
     hostDirectives: [
         TuiAppearance,
-        TuiDropdownDirective,
+        TuiWithDropdown,
         TuiWithDropdownOpen,
         {directive: TuiInputCardGroupDirective, inputs: ['compact']},
     ],
