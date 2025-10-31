@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DebugElement,
+    signal,
     type Type,
     ViewChild,
 } from '@angular/core';
@@ -18,7 +19,6 @@ import {provideTaiga, TUI_DATE_FORMAT, TuiRoot} from '@taiga-ui/core';
 import {TUI_DATE_TIME_VALUE_TRANSFORMER} from '@taiga-ui/kit';
 import {TuiInputDateTimeComponent, TuiInputDateTimeModule} from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-import {of} from 'rxjs';
 
 describe('InputDateTime', () => {
     @Component({
@@ -292,7 +292,7 @@ describe('InputDateTime', () => {
                     provideTaiga(),
                     {
                         provide: TUI_DATE_FORMAT,
-                        useValue: of({mode: 'MDY', separator: '/'}),
+                        useValue: signal({mode: 'MDY', separator: '/'}),
                     },
                 ],
             });
@@ -336,7 +336,7 @@ describe('InputDateTime', () => {
                     provideTaiga(),
                     {
                         provide: TUI_DATE_FORMAT,
-                        useValue: of({mode: 'YMD', separator: '-'}),
+                        useValue: signal({mode: 'YMD', separator: '-'}),
                     },
                 ],
             });
