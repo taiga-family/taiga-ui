@@ -13281,7 +13281,6 @@ import {TuiError, TuiTextfield, tuiValidationErrorsProvider} from '@taiga-ui/cor
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     template: 'Required: {{ context.$implicit }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -16673,7 +16672,6 @@ import {
 import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,
@@ -36787,7 +36785,6 @@ interface Data {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiTable],
     templateUrl: './index.html',
     encapsulation,
@@ -38055,7 +38052,6 @@ function getRandom(min: number, max: number): number {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiChevron, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -39040,7 +39036,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     selector: 'example-1',
     template: 'example-1',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39048,7 +39043,6 @@ import {TuiTabs} from '@taiga-ui/kit';
 class Nav1 {}
 
 @Component({
-    standalone: true,
     selector: 'example-2',
     template: 'example-2',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39056,7 +39050,6 @@ class Nav1 {}
 class Nav2 {}
 
 @Component({
-    standalone: true,
     selector: 'example-3',
     template: 'example-3',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39064,7 +39057,6 @@ class Nav2 {}
 class Nav3 {}
 
 @Component({
-    standalone: true,
     selector: 'example-4',
     template: 'example-4',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -39072,7 +39064,6 @@ class Nav3 {}
 class Nav4 {}
 
 @Component({
-    standalone: true,
     selector: 'example-5',
     template: 'example-5',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40321,7 +40312,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiToast],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -40366,7 +40356,6 @@ import {TuiProgressCircle, TuiToast} from '@taiga-ui/kit';
 import {BehaviorSubject, of, switchMap, take, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiLoader, TuiPlatform, TuiProgressCircle, TuiToast],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -40406,7 +40395,6 @@ import {TuiToast, TuiToastService} from '@taiga-ui/kit';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiIcon, TuiToast],
     template: `
         <div tuiToast>
@@ -40427,7 +40415,6 @@ export class Toast {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiToast],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -40461,7 +40448,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TUI_TOAST_OPTIONS, TuiToast} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo, TuiToast],
     templateUrl: './index.html',
     changeDetection,
@@ -41341,7 +41327,6 @@ import {WA_USER_AGENT} from '@ng-web-apis/common';
 import {tuiInjectElement, tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -41893,7 +41878,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    standalone: true,
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -41926,7 +41910,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiFlatLength} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -42321,7 +42304,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -42694,7 +42676,6 @@ import {TuiActiveZone} from '@taiga-ui/cdk';
 import {TuiButton, TuiDialogService, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiActiveZone, TuiButton, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -44668,7 +44649,6 @@ import {
 } from '@taiga-ui/core';
 
 @Directive({
-    standalone: true,
     selector: '[topRight]',
     providers: [tuiAsPositionAccessor(TopRightDirective)],
 })
@@ -49658,7 +49638,6 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'portal-host',
     template: `
         <ng-content />
@@ -49718,7 +49697,6 @@ import {
 import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     selector: 'portal-host',
     template: '<ng-content />',
     changeDetection: ChangeDetectionStrategy.OnPush,
