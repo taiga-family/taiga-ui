@@ -82,7 +82,7 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber }}
             </td>
         </tr>
 
@@ -125,7 +125,7 @@
                         *tuiCell="'balance'"
                         tuiTd
                     >
-                        {{ item.balance | tuiFormatNumber | async }}
+                        {{ item.balance | tuiFormatNumber }}
                     </td>
                 </tr>
             }
@@ -171,7 +171,7 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+                {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber }}
             </td>
         </tr>
 
@@ -204,7 +204,7 @@
                         *tuiCell="'balance'"
                         tuiTd
                     >
-                        {{ item.balance | tuiFormatNumber | async }}
+                        {{ item.balance | tuiFormatNumber }}
                     </td>
                 </tr>
             }
@@ -247,7 +247,7 @@
                 *tuiCell="'balance'"
                 tuiTd
             >
-                {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
+                {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber }}
             </td>
         </tr>
 

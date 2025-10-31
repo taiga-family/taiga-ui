@@ -1,15 +1,39 @@
-import {inject, Pipe, type PipeTransform} from '@angular/core';
-import {toObservable} from '@angular/core/rxjs-interop';
+import {
+    computed,
+    inject,
+    Pipe,
+    type PipeTransform,
+    signal,
+    untracked,
+} from '@angular/core';
+import {tuiObjectShallowEquals} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_NUMBER_FORMAT, type TuiNumberFormatSettings} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
-import {map, type Observable} from 'rxjs';
 
 @Pipe({
     standalone: true,
     name: 'tuiFormatNumber',
+    pure: false,
 })
 export class TuiFormatNumberPipe implements PipeTransform {
-    private readonly numberFormat = toObservable(inject(TUI_NUMBER_FORMAT));
+    private readonly format = inject(TUI_NUMBER_FORMAT);
+    private readonly value = signal(NaN);
+    private readonly settings = signal<Partial<TuiNumberFormatSettings>>(
+        {},
+        {
+            equal: tuiObjectShallowEquals,
+        },
+    );
+
+    private readonly formatted = computed(() =>
+        tuiFormatNumber(this.value(), {
+            ...this.format(),
+            precision: Number.isNaN(this.format().precision)
+                ? Infinity
+                : this.format().precision,
+            ...this.settings(),
+        }),
+    );
 
     /**
      * Formats number adding thousand separators and correct decimal separator
@@ -20,17 +44,12 @@ export class TuiFormatNumberPipe implements PipeTransform {
     public transform(
         value: number,
         settings: Partial<TuiNumberFormatSettings> = {},
-    ): Observable<string> {
-        return this.numberFormat.pipe(
-            map((format) =>
-                tuiFormatNumber(value, {
-                    ...format,
-                    precision: Number.isNaN(format.precision)
-                        ? Infinity
-                        : format.precision,
-                    ...settings,
-                }),
-            ),
-        );
+    ): string {
+        untracked(() => {
+            this.value.set(value);
+            this.settings.set(settings);
+        });
+
+        return this.formatted();
     }
 }
