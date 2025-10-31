@@ -7,7 +7,6 @@ describe('TablePagination', () => {
     let testComponent: Test;
 
     @Component({
-        standalone: true,
         imports: [TuiTablePagination],
         template: `
             <tui-table-pagination

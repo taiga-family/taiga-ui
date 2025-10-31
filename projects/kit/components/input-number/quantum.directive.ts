@@ -38,7 +38,6 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
 }
 
 @Directive({
-    standalone: true,
     selector: '[tuiInputNumber][quantum]',
     inputs: ['quantum'],
     providers: [tuiProvide(TuiValueTransformer, TuiQuantumValueTransformer)],
@@ -52,7 +51,6 @@ export class TuiQuantumValueTransformer extends TuiQuantumValueTransformerBase {
 }
 
 @Directive({
-    standalone: true,
     hostDirectives: [
         {
             directive: TuiQuantumValueTransformer,

@@ -8,7 +8,6 @@ describe('Tag component options', () => {
     let testComponent: Test;
 
     @Component({
-        standalone: true,
         imports: [TuiTagModule],
         template: `
             <tui-tag />

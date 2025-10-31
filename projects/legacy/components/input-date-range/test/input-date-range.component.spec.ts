@@ -33,7 +33,6 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe('InputDateRangeComponent', () => {
     @Component({
-        standalone: true,
         imports: [
             FormsModule,
             ReactiveFormsModule,
@@ -451,7 +450,6 @@ describe('InputDateRangeComponent', () => {
         }
 
         @Component({
-            standalone: true,
             imports: [
                 ReactiveFormsModule,
                 TuiInputDateRangeModule,

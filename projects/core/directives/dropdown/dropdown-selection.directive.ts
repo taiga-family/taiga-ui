@@ -29,7 +29,6 @@ import {BehaviorSubject, combineLatest, distinctUntilChanged, filter, map} from 
 import {TuiDropdownDirective} from './dropdown.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdownSelection]',
     providers: [
         tuiAsDriver(TuiDropdownSelection),

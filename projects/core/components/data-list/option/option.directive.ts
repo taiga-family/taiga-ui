@@ -24,7 +24,6 @@ import {TUI_OPTION_CONTENT} from './option-content';
 // TODO(v5): rename `TuiOptionNew` => `TuiOption` & remove [new] from selector
 // TODO: Consider all use cases for aria roles
 @Directive({
-    standalone: true,
     selector: 'button[tuiOption][new], a[tuiOption][new], label[tuiOption][new]',
     hostDirectives: [TuiWithIcons],
     host: {
@@ -90,7 +89,6 @@ export class TuiOptionNew<T = unknown> implements OnDestroy {
 
 // TODO(v5): remove [new] from selector
 @Directive({
-    standalone: true,
     selector:
         'button[tuiOption][value][new], a[tuiOption][value][new], label[tuiOption][value][new]',
     host: {

@@ -21,7 +21,6 @@ import {of} from 'rxjs';
 
 describe('InputPhoneInternational', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiInputPhoneInternational, TuiRoot, TuiTextfield],
         template: `
             <tui-root>

@@ -3,7 +3,6 @@ import {EMPTY_ARRAY} from '@taiga-ui/cdk/constants';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 
 @Directive({
-    standalone: true,
     selector: 'tui-tree[childrenHandler]',
 })
 export class TuiTreeChildren<T> {

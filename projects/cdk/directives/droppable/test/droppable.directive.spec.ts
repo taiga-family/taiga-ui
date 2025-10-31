@@ -7,7 +7,6 @@ import {TuiMockEvent} from '@taiga-ui/testing';
 
 describe('TuiDroppable Directive', () => {
     @Component({
-        standalone: true,
         imports: [TuiDroppable],
         template: `
             <div

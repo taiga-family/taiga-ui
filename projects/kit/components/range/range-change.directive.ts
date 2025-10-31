@@ -9,9 +9,7 @@ import {map, repeat, startWith, switchMap, takeUntil, tap} from 'rxjs';
 
 import {TuiRange} from './range.component';
 
-@Directive({
-    standalone: true,
-})
+@Directive()
 export class TuiRangeChange {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();

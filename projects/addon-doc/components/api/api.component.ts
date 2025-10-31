@@ -7,7 +7,6 @@ import {
 import {TUI_DOC_DOCUMENTATION_TEXTS} from '@taiga-ui/addon-doc/tokens';
 
 @Component({
-    standalone: true,
     selector: 'table[tuiDocAPI]',
     templateUrl: './api.template.html',
     styleUrl: './api.style.less',

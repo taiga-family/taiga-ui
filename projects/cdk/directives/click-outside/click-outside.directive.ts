@@ -12,7 +12,6 @@ import {filter, fromEvent, map, type Observable} from 'rxjs';
  * @deprecated use {@link TuiActiveZone} instead
  */
 @Directive({
-    standalone: true,
     selector: '[tuiClickOutside]',
 })
 export class TuiClickOutside {

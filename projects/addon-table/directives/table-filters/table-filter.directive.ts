@@ -9,7 +9,6 @@ import {type TuiTableFilter} from './table-filter';
 import {TuiTableFiltersDirective} from './table-filters.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiTableFilter]',
 })
 export class TuiTableFilterDirective<T> implements OnInit, OnDestroy, TuiTableFilter<T> {

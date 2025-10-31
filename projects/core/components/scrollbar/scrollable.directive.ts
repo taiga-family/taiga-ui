@@ -4,7 +4,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_SCROLLABLE} from './scrollbar.component';
 
 @Directive({
-    standalone: true,
     selector: '[tuiScrollable]',
 })
 export class TuiScrollable implements OnInit {

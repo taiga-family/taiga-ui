@@ -7,7 +7,6 @@ describe('Loader component options', () => {
     let testComponent: Test;
 
     @Component({
-        standalone: true,
         imports: [TuiLoader],
         template: `
             <tui-loader />

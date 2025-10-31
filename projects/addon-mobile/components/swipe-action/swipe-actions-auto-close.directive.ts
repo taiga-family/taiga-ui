@@ -2,7 +2,6 @@ import {Directive, Input} from '@angular/core';
 import {tuiGetActualTarget, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Directive({
-    standalone: true,
     selector: 'tui-swipe-actions[autoClose]',
     host: {
         '(document:pointerdown.zoneless)': 'handleEvent($event)',

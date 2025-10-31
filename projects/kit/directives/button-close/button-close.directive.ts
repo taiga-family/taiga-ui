@@ -3,7 +3,6 @@ import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/but
 import {TUI_COMMON_ICONS, TUI_ICON_START} from '@taiga-ui/core/tokens';
 
 @Directive({
-    standalone: true,
     selector: '[tuiButtonClose]',
     providers: [
         tuiButtonOptionsProvider({appearance: 'neutral', size: 's'}),

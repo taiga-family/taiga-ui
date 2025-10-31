@@ -2,7 +2,6 @@ import {computed, Directive, inject, input} from '@angular/core';
 import {TUI_NUMBER_FORMAT, type TuiNumberFormatSettings} from '@taiga-ui/core/tokens';
 
 @Directive({
-    standalone: true,
     selector: '[tuiNumberFormat]',
     providers: [
         {

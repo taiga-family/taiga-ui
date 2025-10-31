@@ -6,7 +6,6 @@ import {TuiLetContext} from './let-context';
  * @deprecated use @let instead
  */
 @Directive({
-    standalone: true,
     selector: '[tuiLet]',
 })
 export class TuiLet<T> {

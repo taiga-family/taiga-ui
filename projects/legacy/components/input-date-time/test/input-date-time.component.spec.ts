@@ -22,7 +22,6 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe('InputDateTime', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiInputDateTimeModule, TuiRoot],
         template: `
             <tui-root>
@@ -410,7 +409,6 @@ describe('InputDateTime', () => {
         }
 
         @Component({
-            standalone: true,
             imports: [ReactiveFormsModule, TuiInputDateTimeModule, TuiRoot],
             template: `
                 <tui-root>
@@ -544,7 +542,6 @@ describe('InputDateTime', () => {
         }
 
         @Component({
-            standalone: true,
             imports: [ReactiveFormsModule, TuiInputDateTimeModule, TuiRoot],
             template: `
                 <tui-root>

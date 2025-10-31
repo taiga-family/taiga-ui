@@ -4,7 +4,6 @@ import {TuiPopoverDirective, TuiPopoverService} from '@taiga-ui/cdk';
 import {CustomDialogService} from './custom-dialog.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiCustomDialog]',
     inputs: ['open: tuiCustomDialog', 'options: tuiCustomDialogOptions'],
     outputs: ['openChange: tuiCustomDialogChange'],

@@ -14,7 +14,6 @@ import {TUI_FLUID_TYPOGRAPHY_OPTIONS} from './fluid-typography.options';
 const STEP = 1 / 16;
 
 @Directive({
-    standalone: true,
     selector: '[tuiFluidTypography]',
     providers: [
         ResizeObserverService,

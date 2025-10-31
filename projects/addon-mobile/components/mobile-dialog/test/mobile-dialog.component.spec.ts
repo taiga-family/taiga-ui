@@ -9,7 +9,6 @@ import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
     @Component({
-        standalone: true,
         imports: [TuiRoot],
         template: `
             <tui-root />

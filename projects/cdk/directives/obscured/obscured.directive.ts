@@ -9,7 +9,6 @@ import {TuiObscuredService} from './obscured.service';
  * Directive that monitors element visibility
  */
 @Directive({
-    standalone: true,
     selector: '[tuiObscured]',
     providers: [TuiObscuredService],
 })

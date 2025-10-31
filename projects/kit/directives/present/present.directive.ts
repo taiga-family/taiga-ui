@@ -2,7 +2,6 @@ import {Directive, type OnDestroy, Output} from '@angular/core';
 import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiPresentChange]',
     host: {
         '[style.animation]': '"tuiPresent 1s infinite"',

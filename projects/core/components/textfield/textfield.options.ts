@@ -47,7 +47,6 @@ export function tuiTextfieldOptionsProvider(
 }
 
 @Directive({
-    standalone: true,
     selector: '[tuiTextfieldAppearance],[tuiTextfieldSize],[tuiTextfieldCleaner]',
     providers: [tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective)],
 })

@@ -20,7 +20,6 @@ import {map, of, Subject, switchMap, timer} from 'rxjs';
 import {TUI_TABLE_OPTIONS} from '../table.options';
 
 @Component({
-    standalone: true,
     selector: 'tui-table-expand',
     templateUrl: './table-expand.template.html',
     styleUrl: './table-expand.style.less',

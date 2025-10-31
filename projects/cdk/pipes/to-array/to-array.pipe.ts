@@ -1,7 +1,6 @@
 import {Pipe, type PipeTransform, type QueryList} from '@angular/core';
 
 @Pipe({
-    standalone: true,
     name: 'tuiToArray',
 })
 export class TuiToArrayPipe implements PipeTransform {

@@ -5,7 +5,6 @@ import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {map, type Observable} from 'rxjs';
 
 @Pipe({
-    standalone: true,
     name: 'tuiFormatNumber',
 })
 export class TuiFormatNumberPipe implements PipeTransform {

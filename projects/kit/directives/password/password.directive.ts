@@ -12,7 +12,6 @@ import {TUI_PASSWORD_TEXTS} from '@taiga-ui/kit/tokens';
 import {TUI_PASSWORD_OPTIONS} from './password.options';
 
 @Directive({
-    standalone: true,
     selector: 'tui-icon[tuiPassword]',
     providers: [
         {

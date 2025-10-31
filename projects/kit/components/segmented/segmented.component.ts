@@ -24,7 +24,6 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
 });
 
 @Component({
-    standalone: true,
     selector: 'tui-segmented',
     template: '<ng-content />',
     styleUrl: './segmented.style.less',

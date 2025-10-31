@@ -9,7 +9,6 @@ import {TuiPdfViewerService} from '../pdf-viewer.service';
 
 describe('Pdf Viewer with TUI_PDF_VIEWER_OPTIONS', () => {
     @Component({
-        standalone: true,
         imports: [TuiRoot],
         template: `
             <tui-root />

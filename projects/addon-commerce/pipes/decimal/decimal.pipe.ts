@@ -5,7 +5,7 @@ import {type TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {map, type Observable, switchMap} from 'rxjs';
 
-@Pipe({standalone: true, name: 'tuiDecimal'})
+@Pipe({name: 'tuiDecimal'})
 export class TuiDecimalPipe implements PipeTransform {
     private readonly format = toObservable(inject(TUI_NUMBER_FORMAT));
     private readonly amountPipe = Injector.create({

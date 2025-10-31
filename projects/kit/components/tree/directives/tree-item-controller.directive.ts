@@ -6,7 +6,6 @@ import {type TuiTreeController} from '../misc/tree.interfaces';
 import {TUI_TREE_CONTROLLER} from '../misc/tree.tokens';
 
 @Directive({
-    standalone: true,
     selector: '[tuiTreeController]:not([map])',
     providers: [tuiProvide(TUI_TREE_CONTROLLER, TuiTreeItemController)],
     exportAs: 'tuiTreeController',

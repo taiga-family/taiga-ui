@@ -9,7 +9,6 @@ import {firstValueFrom, timer} from 'rxjs';
 
 describe('InputCardGroup', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiIcon, TuiInputCardGroup],
         template: `
             <tui-input-card-group

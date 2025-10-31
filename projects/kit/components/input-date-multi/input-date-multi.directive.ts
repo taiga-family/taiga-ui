@@ -24,7 +24,6 @@ import {
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputDateMulti]',
     providers: [
         tuiAsControl(TuiInputDateMultiDirective),

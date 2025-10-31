@@ -4,7 +4,6 @@ import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 import {TuiTabsDirective} from './tabs.directive';
 
 @Directive({
-    standalone: true,
     selector: 'tui-tabs[vertical], nav[tuiTabs][vertical]',
     hostDirectives: [
         {

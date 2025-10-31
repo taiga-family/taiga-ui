@@ -15,7 +15,6 @@ export const TUI_ENTER = 'tui-enter';
 export const TUI_LEAVE = 'tui-leave';
 
 @Directive({
-    standalone: true,
     selector: '[tuiAnimated]',
     host: {
         class: TUI_ENTER,
