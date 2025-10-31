@@ -23,10 +23,9 @@ export default class Example {
     protected format = inject(TUI_NUMBER_FORMAT);
 
     protected numberProcessor = computed(
-        () => (text: string) =>
-            text
-                .replace(this.format().decimalSeparator, '.')
-                .replaceAll(this.format().thousandSeparator, ''),
+        ({decimalSeparator, thousandSeparator} = this.format()) =>
+            (text: string) =>
+                text.replace(decimalSeparator, '.').replaceAll(thousandSeparator, ''),
     );
 
     protected onCopy(event: ClipboardEvent): void {
