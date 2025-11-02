@@ -8,7 +8,6 @@ import {TuiPushService} from '../push.service';
 
 describe('Push with TUI_PUSH_OPTIONS', () => {
     @Component({
-        standalone: true,
         imports: [TuiRoot],
         template: `
             <tui-root />

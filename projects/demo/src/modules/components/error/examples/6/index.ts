@@ -16,11 +16,11 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiCurrencyPipe,
+        TuiError,
         TuiHint,
         TuiInputNumber,
         TuiTable,
         TuiTextfield,
-        TuiError,
     ],
     templateUrl: './index.html',
     encapsulation,

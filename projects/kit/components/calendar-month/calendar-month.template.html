@@ -33,8 +33,8 @@
         class="t-row"
     >
         <ng-container *tuiRepeatTimes="let column of 4">
+            @let item = getTuiMonth(row * 4 + column, year.year);
             <div
-                *tuiLet="getTuiMonth(row * 4 + column, year.year) as item"
                 class="t-cell"
                 [attr.data-range]="getItemRange(item)"
                 [class.t-cell_disabled]="disabledItemHandlerWithMinMax(item)"

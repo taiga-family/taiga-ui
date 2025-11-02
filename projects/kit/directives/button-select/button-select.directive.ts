@@ -15,7 +15,6 @@ import {
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 
 @Directive({
-    standalone: true,
     selector: 'button[tuiButtonSelect]',
     providers: [
         tuiAsOptionContent(TuiSelectOption),

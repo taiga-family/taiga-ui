@@ -8,7 +8,6 @@ const TODAY = TuiDay.currentLocal();
 
 describe('CalendarMonth', () => {
     @Component({
-        standalone: true,
         imports: [TuiCalendarMonth],
         template: `
             <tui-calendar-month

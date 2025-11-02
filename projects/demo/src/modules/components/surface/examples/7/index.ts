@@ -18,6 +18,7 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
     imports: [
         AsyncPipe,
         TuiAmountPipe,
+        TuiAppearance,
         TuiAvatar,
         TuiBadge,
         TuiButton,
@@ -28,7 +29,6 @@ import {TuiCardLarge, TuiSurface} from '@taiga-ui/layout';
         TuiSurface,
         TuiThumbnailCard,
         TuiTitle,
-        TuiAppearance,
     ],
     templateUrl: './index.html',
     styleUrls: ['./index.less', './surface.less'],

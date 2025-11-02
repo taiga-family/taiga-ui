@@ -2,7 +2,6 @@ import {Pipe, type PipeTransform} from '@angular/core';
 import {type TuiMatcher} from '@taiga-ui/cdk/types';
 
 @Pipe({
-    standalone: true,
     name: 'tuiFilter',
 })
 export class TuiFilterPipe implements PipeTransform {

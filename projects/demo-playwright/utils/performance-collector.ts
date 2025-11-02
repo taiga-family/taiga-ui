@@ -1,7 +1,8 @@
+import {mkdirSync} from 'node:fs';
+import {writeFile} from 'node:fs/promises';
+import {join, resolve} from 'node:path';
+
 import {type CDPSession, type Page} from '@playwright/test';
-import {mkdirSync} from 'fs';
-import {writeFile} from 'fs/promises';
-import {join, resolve} from 'path';
 
 /**
  * Performance event from CDP tracing

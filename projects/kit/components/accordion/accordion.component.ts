@@ -13,7 +13,6 @@ import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {TuiAccordionDirective} from './accordion.directive';
 
 @Component({
-    standalone: true,
     selector: 'tui-accordion',
     template: '<ng-content />',
     styleUrl: './accordion.style.less',

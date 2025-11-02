@@ -2,7 +2,6 @@ import {Pipe, type PipeTransform} from '@angular/core';
 import {tuiClamp} from '@taiga-ui/cdk/utils';
 
 @Pipe({
-    standalone: true,
     name: 'tuiRepeatTimes',
 })
 export class TuiRepeatTimesPipe implements PipeTransform {

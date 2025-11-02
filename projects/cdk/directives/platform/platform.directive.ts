@@ -2,7 +2,6 @@ import {Directive, inject, Input} from '@angular/core';
 import {TUI_PLATFORM} from '@taiga-ui/cdk/tokens';
 
 @Directive({
-    standalone: true,
     selector: '[tuiPlatform]',
     providers: [
         {

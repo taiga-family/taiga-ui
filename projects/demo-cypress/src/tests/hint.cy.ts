@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
 import {type MountResponse} from 'cypress/angular';
@@ -10,15 +10,14 @@ describe('TuiHint', () => {
     @Component({
         selector: 'my-host',
         template: `
-            @if (!hideElement) {
+            @if (!hideElement()) {
                 <ng-content />
             }
         `,
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Host {
-        @Input()
-        public hideElement = false;
+        public readonly hideElement = input(false);
     }
 
     @Component({

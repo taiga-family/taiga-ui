@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 export interface ComponentHeader {
     header: string | null;
@@ -67,38 +67,65 @@ export function getComponentDescription(content: string): string | undefined {
 
     const templateContent = templateMatch[1];
 
-    const cleanContent = templateContent
-        ?.replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+    // Remove control flow tags
+    const withoutControlFlow = (templateContent || '')
+        .split(/\n+/)
+        .filter(
+            (line) =>
+                !/^\s*@(?:for|if|switch|else|case|default|defer|empty)\b/.test(line),
+        )
+        .join('\n');
+
+    const cleanContent = withoutControlFlow
+        .replaceAll(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
         .replaceAll(/<ng-template[^>]*>[\s\S]*?<\/ng-template>/gi, '')
         .replaceAll(/<((\/?)(p|div|ul|ol|li|code|a|button|tui-[^>]+))/gi, '<$1')
         .replaceAll(/<[^>]+>/g, '')
+        .replaceAll(/\s+/g, ' ')
         .trim();
 
     return cleanContent;
 }
 
 // parse example import.md and template.md
-export async function getImportExamples(folderPath: string): Promise<string> {
+export async function getImportExamples(
+    folderPath: string,
+    importCandidates: string[] = ['import.md'],
+    templateCandidates: string[] = ['template.md'],
+): Promise<string> {
     const importFolderPath = path.join(folderPath, 'examples', 'import');
 
     if (!(await fileExists(importFolderPath))) {
         return '';
     }
 
-    let result = '';
-    const importMdPath = path.join(importFolderPath, 'import.md');
-    const templateMdPath = path.join(importFolderPath, 'template.md');
+    async function findFirstExisting(candidates: string[]): Promise<string | null> {
+        for (const name of candidates) {
+            const fullPath = path.join(importFolderPath, name);
 
-    if (await fileExists(importMdPath)) {
-        const content = await fs.readFile(importMdPath, 'utf-8');
+            if (await fileExists(fullPath)) {
+                return fullPath;
+            }
+        }
+
+        return null;
+    }
+
+    const importPath = await findFirstExisting(importCandidates);
+    const templatePath = await findFirstExisting(templateCandidates);
+
+    let result = '';
+
+    if (importPath) {
+        const content = await fs.readFile(importPath, 'utf-8');
 
         result += `\n### How to Use (Import)\n\n${content.trim()}`;
     }
 
-    if (await fileExists(templateMdPath)) {
-        const content = await fs.readFile(templateMdPath, 'utf-8');
+    if (templatePath) {
+        const content = await fs.readFile(templatePath, 'utf-8');
 
-        result += `\n\n### How to Use (Template)\n\n${content.trim()}`;
+        result += `${importPath ? '\n\n' : '\n'}### How to Use (Template)\n\n${content.trim()}`;
     }
 
     return result;
@@ -637,8 +664,7 @@ export async function getMarkdownFiles(startPath: string): Promise<string[]> {
 // parse markdown files content
 export async function processMarkdownFile(filePath: string): Promise<string> {
     const content = await fs.readFile(filePath, 'utf-8');
-    const relativePath = path.relative(MODULES_PATH, filePath);
-    const title = `# ${relativePath}`;
+    const title = `# ${path.basename(filePath)}`;
 
     // Clean up the content for better formatting
     const cleanContent = content

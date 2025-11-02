@@ -7,7 +7,6 @@ import {TuiToast, TuiToastService} from '@taiga-ui/kit';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     imports: [TuiIcon, TuiToast],
     template: `
         <div tuiToast>
@@ -28,7 +27,6 @@ export class Toast {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiToast],
     templateUrl: './index.html',
     styleUrl: './index.less',

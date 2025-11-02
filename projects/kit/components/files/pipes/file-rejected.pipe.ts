@@ -14,7 +14,6 @@ import {
 import {TUI_INPUT_FILES_OPTIONS} from '../input-files/input-files.options';
 
 @Pipe({
-    standalone: true,
     name: 'tuiFileRejected',
 })
 export class TuiFileRejectedPipe implements PipeTransform {

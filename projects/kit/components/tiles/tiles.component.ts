@@ -18,7 +18,6 @@ import {BehaviorSubject, debounce, filter, map, Subject, timer} from 'rxjs';
 import {TUI_TILES_REORDER} from './tiles.tokens';
 
 @Component({
-    standalone: true,
     selector: 'tui-tiles',
     template: '<ng-content />',
     styleUrl: './tiles.style.less',

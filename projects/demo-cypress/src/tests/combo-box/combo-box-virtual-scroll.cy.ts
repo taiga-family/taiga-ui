@@ -7,7 +7,6 @@ import {
     Output,
 } from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiLet} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiDataList,
@@ -32,7 +31,6 @@ import {createOutputSpy} from 'cypress/angular';
         TuiComboBox,
         TuiDataList,
         TuiFilterByInputPipe,
-        TuiLet,
         TuiRoot,
         TuiScrollable,
         TuiTextfield,
@@ -46,8 +44,8 @@ import {createOutputSpy} from 'cypress/angular';
                 />
 
                 <ng-container *tuiDropdown>
+                    @let items = countries | tuiFilterByInput;
                     <cdk-virtual-scroll-viewport
-                        *tuiLet="countries | tuiFilterByInput as items"
                         tuiScrollable
                         class="scroll"
                         [itemSize]="44"

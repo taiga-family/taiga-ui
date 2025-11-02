@@ -5,7 +5,7 @@ import {
     ContentChild,
     DestroyRef,
     inject,
-    Input,
+    input,
     type OnInit,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -63,11 +63,9 @@ export class IconsGroup implements OnInit {
         distinctUntilChanged(),
     );
 
-    @Input()
-    public icons: Record<string, readonly string[]> = {};
+    public readonly icons = input<Record<string, readonly string[]>>({});
 
-    @Input()
-    public color: string | null = null;
+    public readonly color = input<string | null>(null);
 
     public ngOnInit(): void {
         this.control.patchValue(this.route.snapshot.queryParams['search'] ?? '');

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {TuiDocAPIItem} from '@taiga-ui/addon-doc';
 import {TuiTitle} from '@taiga-ui/core';
 
@@ -9,8 +9,9 @@ import {TuiTitle} from '@taiga-ui/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TuiDocControl {
-    @Input()
-    public hiddenOptions: ReadonlyArray<'disabled' | 'invalid' | 'readOnly'> = [];
+    public readonly hiddenOptions = input<
+        ReadonlyArray<'disabled' | 'invalid' | 'readOnly'>
+    >([]);
 
     public readonly = false;
     public disabled = false;

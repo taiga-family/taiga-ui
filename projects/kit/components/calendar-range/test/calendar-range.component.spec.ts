@@ -30,7 +30,6 @@ import {type Observable, of} from 'rxjs';
 
 describe('rangeCalendarComponent', () => {
     @Component({
-        standalone: true,
         imports: [TuiCalendarRange],
         template: `
             <tui-calendar-range

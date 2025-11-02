@@ -6,7 +6,7 @@ import {TuiScrollIntoView} from '@taiga-ui/core/components/scrollbar';
 import {TuiSelectOptionComponent} from './select-option.component';
 
 @NgModule({
-    imports: [CommonModule, TuiScrollIntoView, TuiIcon],
+    imports: [CommonModule, TuiIcon, TuiScrollIntoView],
     declarations: [TuiSelectOptionComponent],
     exports: [TuiSelectOptionComponent],
 })

@@ -2,13 +2,12 @@ import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLet} from '@taiga-ui/cdk';
 import {TuiIcon, TuiLoader} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
 import {interval, map, startWith} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiIcon, TuiLet, TuiLoader, TuiTooltip],
+    imports: [AsyncPipe, TuiIcon, TuiLoader, TuiTooltip],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

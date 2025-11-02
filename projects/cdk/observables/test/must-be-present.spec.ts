@@ -1,5 +1,5 @@
 import {fakeAsync, tick} from '@angular/core/testing';
-import {tuiMustBePresent} from '@taiga-ui/cdk/observables/must-be-present';
+import {tuiMustBePresent} from '@taiga-ui/cdk/observables';
 import {first, Subject} from 'rxjs';
 
 describe('tuiMustBePresent operator function', () => {

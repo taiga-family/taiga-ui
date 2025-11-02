@@ -15,13 +15,13 @@ import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiChevron,
         TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
-        TuiTextfieldControllerModule,
         TuiTextfield,
-        TuiChevron,
+        TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
     encapsulation,

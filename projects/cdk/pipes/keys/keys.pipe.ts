@@ -1,7 +1,6 @@
 import {Pipe, type PipeTransform} from '@angular/core';
 
 @Pipe({
-    standalone: true,
     name: 'tuiKeys',
 })
 export class TuiKeysPipe implements PipeTransform {

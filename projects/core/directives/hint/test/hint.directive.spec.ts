@@ -12,7 +12,6 @@ type Hint = TemplateRef<Record<string, unknown>> | string | null | undefined;
 
 describe('Hint', () => {
     @Component({
-        standalone: true,
         imports: [TuiHint, TuiRoot],
         template: `
             <tui-root>

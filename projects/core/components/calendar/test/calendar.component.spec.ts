@@ -8,7 +8,6 @@ import {TuiCalendarHarness} from '@taiga-ui/testing';
 
 describe('Calendar', () => {
     @Component({
-        standalone: true,
         imports: [TuiCalendar],
         template: `
             <tui-calendar

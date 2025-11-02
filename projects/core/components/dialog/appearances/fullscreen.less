@@ -123,4 +123,9 @@
             margin: 1.5rem -1rem ~'calc(-1* max(1rem, env(safe-area-inset-bottom)))';
         }
     }
+
+    tui-modal:has(&) {
+        backdrop-filter: none !important;
+        animation: none !important;
+    }
 }

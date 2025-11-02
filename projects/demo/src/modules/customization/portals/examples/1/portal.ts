@@ -5,7 +5,6 @@ import {TuiPortals, TuiPortalService, tuiProvide} from '@taiga-ui/cdk';
 import {CustomPortalService} from './service';
 
 @Component({
-    standalone: true,
     selector: 'custom-host',
     template: '<ng-container #vcr />',
     styles: `

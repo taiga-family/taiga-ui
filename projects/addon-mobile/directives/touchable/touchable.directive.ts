@@ -22,7 +22,6 @@ export function tuiFindTouchIndex(touches: TouchList, id: number): number {
 }
 
 @Directive({
-    standalone: true,
     selector: '[tuiTouchable]',
 })
 export class TuiTouchable {

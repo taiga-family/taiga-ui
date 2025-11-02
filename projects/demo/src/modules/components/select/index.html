@@ -299,8 +299,8 @@
     <ng-template pageTab>
         <tui-doc-demo [control]="control">
             <ng-template>
+                @let showPlaceholder = textfieldDoc.size === 's' || !control.value;
                 <tui-textfield
-                    *tuiLet="textfieldDoc.size === 's' || !control.value as showPlaceholder"
                     tuiChevron
                     [content]="control.value && textfieldContent"
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"

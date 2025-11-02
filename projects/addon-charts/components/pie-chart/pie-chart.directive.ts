@@ -11,7 +11,6 @@ import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 import {BehaviorSubject, map, pairwise, switchMap, takeWhile} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: 'path[tuiPieChart]',
 })
 export class TuiPieChartDirective {

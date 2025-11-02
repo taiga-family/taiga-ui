@@ -41,7 +41,6 @@ describe('MultiSelect', () => {
         ];
 
         @Component({
-            standalone: true,
             imports: [
                 ReactiveFormsModule,
                 TuiDataListDirective,
@@ -258,7 +257,6 @@ describe('MultiSelect', () => {
         const items = [new User('Alexander', 'Inkin', '1')];
 
         @Component({
-            standalone: true,
             imports: [
                 ReactiveFormsModule,
                 TuiDataListDirective,

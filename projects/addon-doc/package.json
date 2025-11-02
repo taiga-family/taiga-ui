@@ -20,7 +20,6 @@
         "@angular/forms": ">=19.0.0",
         "@angular/router": ">=19.0.0",
         "@ng-web-apis/common": "^4.12.2",
-        "@taiga-ui/addon-mobile": "^4.52.0",
         "@taiga-ui/cdk": "^4.52.0",
         "@taiga-ui/core": "^4.52.0",
         "@taiga-ui/kit": "^4.52.0",

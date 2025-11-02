@@ -6,7 +6,6 @@ import {provideTaiga} from '@taiga-ui/core';
 
 describe('TuiActiveZone', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiActiveZone],
         template: `
             <p id="parent-info">Parent zone: {{ parentActive }}</p>

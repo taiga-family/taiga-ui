@@ -20,7 +20,6 @@ describe('TuiErrorPipe', () => {
     const max = 15;
 
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiError, TuiHint, TuiRoot],
         template: `
             <tui-root>

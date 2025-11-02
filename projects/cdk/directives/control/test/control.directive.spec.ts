@@ -7,7 +7,6 @@ import {provideTaiga} from '@taiga-ui/core';
 
 describe('TuiNgControl', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiNgControl],
         template: `
             <form [formGroup]="form">

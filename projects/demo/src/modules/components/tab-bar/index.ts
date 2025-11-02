@@ -8,7 +8,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 import TuiTabBarExample from './examples/1';
 
 @Component({
-    imports: [FormsModule, TuiCheckbox, TuiDemo, TuiLabel, TuiTabBarExample, TuiPopup],
+    imports: [FormsModule, TuiCheckbox, TuiDemo, TuiLabel, TuiPopup, TuiTabBarExample],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,

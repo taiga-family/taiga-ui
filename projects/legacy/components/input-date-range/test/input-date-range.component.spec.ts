@@ -3,6 +3,7 @@ import {
     Component,
     type DebugElement,
     Optional,
+    signal,
     type Type,
     ViewChild,
 } from '@angular/core';
@@ -29,11 +30,9 @@ import {
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
-import {of} from 'rxjs';
 
 describe('InputDateRangeComponent', () => {
     @Component({
-        standalone: true,
         imports: [
             FormsModule,
             ReactiveFormsModule,
@@ -292,7 +291,7 @@ describe('InputDateRangeComponent', () => {
                     provideTaiga(),
                     {
                         provide: TUI_DATE_FORMAT,
-                        useValue: of({mode: 'MDY', separator: '/'}),
+                        useValue: signal({mode: 'MDY', separator: '/'}),
                     },
                 ],
             });
@@ -350,7 +349,7 @@ describe('InputDateRangeComponent', () => {
                     provideTaiga(),
                     {
                         provide: TUI_DATE_FORMAT,
-                        useValue: of({mode: 'YMD', separator: '-'}),
+                        useValue: signal({mode: 'YMD', separator: '-'}),
                     },
                 ],
             });
@@ -451,7 +450,6 @@ describe('InputDateRangeComponent', () => {
         }
 
         @Component({
-            standalone: true,
             imports: [
                 ReactiveFormsModule,
                 TuiInputDateRangeModule,

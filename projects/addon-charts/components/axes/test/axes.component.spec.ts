@@ -5,7 +5,6 @@ import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk';
 
 describe('Axes', () => {
     @Component({
-        standalone: true,
         imports: [TuiAxes],
         template: `
             <tui-axes #defaultValues />

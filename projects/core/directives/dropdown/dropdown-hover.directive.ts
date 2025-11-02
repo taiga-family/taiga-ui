@@ -29,7 +29,6 @@ import {TUI_DROPDOWN_HOVER_OPTIONS} from './dropdown-hover.options';
 import {TuiDropdownOpen} from './dropdown-open.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdownHover]',
     providers: [TuiActiveZone, tuiAsDriver(TuiDropdownHover)],
     host: {

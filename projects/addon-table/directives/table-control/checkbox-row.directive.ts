@@ -12,7 +12,6 @@ import {tuiArrayToggle} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTableControlDirective} from './table-control.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiCheckbox][tuiCheckboxRow]',
     providers: [{provide: NgControl, useClass: NgModel}],
     host: {

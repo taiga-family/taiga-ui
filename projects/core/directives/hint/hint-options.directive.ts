@@ -83,7 +83,6 @@ export const tuiHintOptionsProvider: (
  * @deprecated: drop in 5.0
  */
 @Directive({
-    standalone: true,
     selector: '[tuiHintContent]',
     providers: [tuiProvide(TUI_HINT_OPTIONS, TuiHintOptionsDirective)],
 })

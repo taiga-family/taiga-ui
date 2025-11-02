@@ -11,7 +11,6 @@ import {EMPTY, filter, merge, switchMap, take} from 'rxjs';
 export const TUI_TAB_ACTIVATE = 'tui-tab-activate';
 
 @Directive({
-    standalone: true,
     selector:
         'a[tuiTab]:not([routerLink]), a[tuiTab][routerLink][routerLinkActive], button[tuiTab]',
     hostDirectives: [TuiWithIcons],

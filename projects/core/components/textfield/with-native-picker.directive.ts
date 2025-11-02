@@ -9,7 +9,7 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
  * If effects inside `tuiValue` will be called before `<input />` get `type="text"`,
  * it will cause loss of initial value
  */
-@Directive({standalone: true})
+@Directive()
 export class TuiWithNativePicker {
     constructor() {
         tuiInjectElement<HTMLInputElement>().type = 'text';

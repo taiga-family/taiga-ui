@@ -8,7 +8,6 @@ import {
     type QueryList,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {maskitoInitialCalibrationPlugin, type MaskitoOptions} from '@maskito/core';
 import {
     maskitoCaretGuard,
@@ -18,15 +17,10 @@ import {
 } from '@maskito/kit';
 import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {CHAR_HYPHEN, CHAR_MINUS, EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiClamp, tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
-import {
-    TUI_DEFAULT_NUMBER_FORMAT,
-    TUI_NUMBER_FORMAT,
-    type TuiDecimalMode,
-} from '@taiga-ui/core/tokens';
+import {TUI_NUMBER_FORMAT, type TuiDecimalMode} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {AbstractTuiNullableControl, tuiAsControl} from '@taiga-ui/legacy/classes';
@@ -97,13 +91,8 @@ export class TuiInputNumberComponent
         TuiValueTransformer<number | null>
     >(TUI_NUMBER_VALUE_TRANSFORMER, {optional: true});
 
-    protected numberFormat = TUI_DEFAULT_NUMBER_FORMAT;
+    protected numberFormat = inject(TUI_NUMBER_FORMAT);
     protected readonly controller = inject(TUI_TEXTFIELD_WATCHED_CONTROLLER);
-    protected readonly numberFormat$ = inject(TUI_NUMBER_FORMAT)
-        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe((format) => {
-            this.numberFormat = format;
-        });
 
     @Input()
     public min: number | null = this.options.min;
@@ -141,9 +130,9 @@ export class TuiInputNumberComponent
     public get calculatedMaxLength(): number {
         const decimalPart =
             !!this.precision &&
-            this.nativeValue.includes(this.numberFormat.decimalSeparator);
+            this.nativeValue.includes(this.numberFormat().decimalSeparator);
         const precision = decimalPart ? Math.min(this.precision + 1, 20) : 0;
-        const takeThousand = this.numberFormat.thousandSeparator.repeat(5).length;
+        const takeThousand = this.numberFormat().thousandSeparator.repeat(5).length;
 
         return DEFAULT_MAX_LENGTH + precision + takeThousand;
     }
@@ -153,7 +142,7 @@ export class TuiInputNumberComponent
     }
 
     public onValueChange(nativeValue: string): void {
-        const parsedValue = maskitoParseNumber(nativeValue, this.numberFormat);
+        const parsedValue = maskitoParseNumber(nativeValue, this.numberFormat());
 
         this.unfinishedValue = null;
 
@@ -227,9 +216,9 @@ export class TuiInputNumberComponent
     protected get mask(): MaskitoOptions {
         return this.calculateMask(
             this.precision,
-            this.numberFormat.decimalMode,
-            this.numberFormat.decimalSeparator,
-            this.numberFormat.thousandSeparator,
+            this.numberFormat().decimalMode,
+            this.numberFormat().decimalSeparator,
+            this.numberFormat().thousandSeparator,
             this.computedMin,
             this.computedMax,
             this.computedPrefix,
@@ -267,7 +256,7 @@ export class TuiInputNumberComponent
         this.updateFocused(focused);
 
         const nativeNumberValue = this.unfinishedValue
-            ? maskitoParseNumber(this.unfinishedValue, this.numberFormat)
+            ? maskitoParseNumber(this.unfinishedValue, this.numberFormat())
             : this.nativeNumberValue;
 
         this.unfinishedValue = null;
@@ -292,7 +281,7 @@ export class TuiInputNumberComponent
         return (
             this.computedPrefix +
             tuiFormatNumber(value, {
-                ...this.numberFormat,
+                ...this.numberFormat(),
                 /**
                  * Number can satisfy interval [Number.MIN_SAFE_INTEGER; Number.MAX_SAFE_INTEGER]
                  * but its rounding can violate it.
@@ -316,13 +305,13 @@ export class TuiInputNumberComponent
     }
 
     private get nativeNumberValue(): number {
-        return maskitoParseNumber(this.nativeValue, this.numberFormat);
+        return maskitoParseNumber(this.nativeValue, this.numberFormat());
     }
 
     private get precision(): number {
-        return Number.isNaN(this.numberFormat.precision)
+        return Number.isNaN(this.numberFormat().precision)
             ? 2
-            : this.numberFormat.precision;
+            : this.numberFormat().precision;
     }
 
     @tuiPure

@@ -24,7 +24,6 @@ import {TUI_MONTH_FORMATTER} from '@taiga-ui/kit/tokens';
 import {TUI_INPUT_MONTH_RANGE_OPTIONS} from './input-month-range.options';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputMonthRange]',
     providers: [
         tuiAsControl(TuiInputMonthRangeDirective),

@@ -5,7 +5,6 @@ import {WA_USER_AGENT} from '@ng-web-apis/common';
 import {tuiInjectElement, tuiIsEdge, tuiIsFirefox, tuiIsSafari} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -44,6 +44,8 @@ const config: KnipConfig = {
         '**/projects/testing/setup-jest/index.ts',
         '**/projects/cdk/date-time/test/helpers.ts',
         '**/demo/src/modules/components/icons-group/*.ts',
+        '**/demo/src/modules/components/data-list/examples/4/custom-list/index.ts',
+        '**/demo/src/modules/components/dialog-legacy/**/*.ts',
     ],
     workspaces: {
         'projects/demo-playwright': {

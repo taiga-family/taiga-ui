@@ -32,7 +32,8 @@
         },
         "migrateTuiLet": {
             "description": "Migrate TuiLet directive to @let control flow",
-            "factory": "./migrate-tui-let/index"
+            "factory": "./migrate-tui-let/index",
+            "schema": "./migrate-tui-let/schema.json"
         },
         "updateToV5": {
             "private": true,

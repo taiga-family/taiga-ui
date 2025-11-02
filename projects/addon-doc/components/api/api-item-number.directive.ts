@@ -1,7 +1,6 @@
 import {Directive, Input} from '@angular/core';
 
 @Directive({
-    standalone: true,
     selector: 'tr[tuiDocAPIItem][type=number]',
 })
 export class TuiDocAPINumberItem {

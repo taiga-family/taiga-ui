@@ -1,14 +1,14 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {TUI_NUMBER_FORMAT, type TuiNumberFormatSettings} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {map, type Observable} from 'rxjs';
 
 @Pipe({
-    standalone: true,
     name: 'tuiFormatNumber',
 })
 export class TuiFormatNumberPipe implements PipeTransform {
-    private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
+    private readonly numberFormat = toObservable(inject(TUI_NUMBER_FORMAT));
 
     /**
      * Formats number adding thousand separators and correct decimal separator

@@ -6,7 +6,6 @@ import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('TuiCalendarYearComponent', () => {
     @Component({
-        standalone: true,
         imports: [TuiCalendarYear],
         template: `
             <tui-calendar-year

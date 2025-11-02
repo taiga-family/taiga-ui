@@ -17,7 +17,7 @@ const collectionPath = join(__dirname, '../../../migration.json');
 
 const COMPONENT_BEFORE = `import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiLineHandler} from '@taiga-ui/addon-charts';
- 
+
 @Component({
     standalone: true,
     selector: 'test-axes',

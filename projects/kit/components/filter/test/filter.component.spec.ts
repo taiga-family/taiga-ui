@@ -30,7 +30,6 @@ const ARR_OBJECT_WITH_ZERO_BADGE = [new ItemWithBadge('Focused Zone', 0)];
 
 describe('Filter', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiFilter],
         template: `
             <tui-filter

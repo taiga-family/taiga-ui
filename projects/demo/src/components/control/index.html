@@ -7,7 +7,7 @@
     </td>
 </tr>
 
-@if (!hiddenOptions.includes('readOnly')) {
+@if (!hiddenOptions().includes('readOnly')) {
     <tr
         name="[readOnly]"
         tuiDocAPIItem
@@ -17,7 +17,7 @@
         Readonly state
     </tr>
 }
-@if (!hiddenOptions.includes('disabled')) {
+@if (!hiddenOptions().includes('disabled')) {
     <tr
         name="[disabled]"
         tuiDocAPIItem
@@ -29,7 +29,7 @@
         for reactive forms)
     </tr>
 }
-@if (!hiddenOptions.includes('invalid')) {
+@if (!hiddenOptions().includes('invalid')) {
     <tr
         name="[invalid]"
         tuiDocAPIItem

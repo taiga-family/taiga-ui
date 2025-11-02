@@ -93,7 +93,7 @@ export class TuiDocumentationApiPagePO {
     }
 
     public async getSelect(row: Locator): Promise<Locator | null> {
-        return ((await row.locator('select[tuiTextfield]').all()) ?? [])?.[0] ?? null;
+        return ((await row.locator('[tuiSelect]').all()) ?? [])?.[0] ?? null;
     }
 
     public async getNameProperty(row: Locator): Promise<string> {

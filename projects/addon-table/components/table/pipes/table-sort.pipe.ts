@@ -6,7 +6,6 @@ import {TuiTableDirective} from '../directives/table.directive';
 import {type TuiSortDirection} from '../table.options';
 
 @Pipe({
-    standalone: true,
     name: 'tuiTableSort',
     pure: false,
 })

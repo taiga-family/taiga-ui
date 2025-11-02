@@ -1,7 +1,7 @@
 <div
     class="t-track"
-    [style.--t-bg-size-ratio]="1 - segmentWidthRatio"
-    [style.--t-segment-width.%]="segmentWidthRatio * 100"
+    [style.--t-bg-size-ratio]="1 - segmentWidthRatio()"
+    [style.--t-segment-width.%]="segmentWidthRatio() * 100"
 >
     <input
         automation-id="tui-range__left"
@@ -10,14 +10,14 @@
         type="range"
         class="t-thumb"
         [disabled]="disabled()"
-        [keySteps]="keySteps"
-        [max]="max"
-        [min]="min"
+        [keySteps]="keySteps()"
+        [max]="max()"
+        [min]="min()"
         [ngModel]="value()[0]"
         [ngModelOptions]="{standalone: true}"
-        [size]="size"
-        [step]="step"
-        [tabIndex]="focusable ? 0 : -1"
+        [size]="size()"
+        [step]="step()"
+        [tabIndex]="focusable() ? 0 : -1"
     />
     <input
         automation-id="tui-range__right"
@@ -26,13 +26,13 @@
         type="range"
         class="t-thumb"
         [disabled]="disabled()"
-        [keySteps]="keySteps"
-        [max]="max"
-        [min]="min"
+        [keySteps]="keySteps()"
+        [max]="max()"
+        [min]="min()"
         [ngModel]="value()[1]"
         [ngModelOptions]="{standalone: true}"
-        [size]="size"
-        [step]="step"
-        [tabIndex]="focusable ? 0 : -1"
+        [size]="size()"
+        [step]="step()"
+        [tabIndex]="focusable() ? 0 : -1"
     />
 </div>

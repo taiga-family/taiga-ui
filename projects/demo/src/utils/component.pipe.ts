@@ -4,7 +4,6 @@ import {TuiDocPage} from '@taiga-ui/addon-doc';
 import {toKebab} from './kebab.pipe';
 
 @Pipe({
-    standalone: true,
     name: 'tuiComponent',
 })
 export class TuiComponentPipe implements PipeTransform {

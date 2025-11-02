@@ -4,7 +4,7 @@
         tuiIconButton
         type="button"
         class="t-close"
-        [appearance]="context.appearance === 'fullscreen' ? 'action' : 'neutral'"
+        [appearance]="context.appearance.includes('fullscreen') ? 'action' : 'neutral'"
         [iconStart]="icons.close"
         [style.border-radius.%]="100"
         (click)="close$.next()"

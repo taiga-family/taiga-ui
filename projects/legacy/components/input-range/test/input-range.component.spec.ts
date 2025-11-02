@@ -13,7 +13,6 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe('InputRange', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiInputRangeModule],
         template: `
             @if (default) {

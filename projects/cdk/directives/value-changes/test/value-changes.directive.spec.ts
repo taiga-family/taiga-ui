@@ -7,7 +7,6 @@ import {provideTaiga} from '@taiga-ui/core';
 
 describe('TuiValueChangesDirective', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiValueChanges],
         template: `
             <form

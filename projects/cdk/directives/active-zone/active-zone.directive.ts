@@ -23,7 +23,6 @@ import {
 
 @Injectable({providedIn: 'root'})
 @Directive({
-    standalone: true,
     selector:
         '[tuiActiveZone]:not(ng-container), [tuiActiveZoneChange]:not(ng-container), [tuiActiveZoneParent]:not(ng-container)',
     inputs: ['tuiActiveZoneParentSetter: tuiActiveZoneParent'],

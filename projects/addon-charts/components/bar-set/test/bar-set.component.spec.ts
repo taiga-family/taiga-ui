@@ -5,7 +5,6 @@ import {TuiBarSet} from '@taiga-ui/addon-charts';
 
 describe('BarSet', () => {
     @Component({
-        standalone: true,
         imports: [TuiBarSet],
         template: `
             <tui-bar-set

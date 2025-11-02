@@ -22,7 +22,7 @@ function getRepositoryInfo(): {repositoryUrl: string; targetBranch: string} {
 
     if (eventPath) {
         try {
-            const {readFileSync} = require('fs');
+            const {readFileSync} = require('node:fs');
             const event: GitHubEvent = JSON.parse(readFileSync(eventPath, 'utf8'));
             const headRepo = event.pull_request?.head?.repo?.full_name;
             const headBranch = event.pull_request?.head?.ref;

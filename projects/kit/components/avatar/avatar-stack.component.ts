@@ -7,7 +7,6 @@ import {
 import {type TuiHorizontalDirection} from '@taiga-ui/core/types';
 
 @Component({
-    standalone: true,
     selector: 'tui-avatar-stack',
     template: '<ng-content />',
     styleUrl: './avatar-stack.style.less',

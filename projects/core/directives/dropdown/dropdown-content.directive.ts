@@ -4,7 +4,6 @@ import {Directive, inject, type OnDestroy, PLATFORM_ID, TemplateRef} from '@angu
 import {TuiDropdownDirective} from './dropdown.directive';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiDropdown]',
 })
 export class TuiDropdownContent implements OnDestroy {

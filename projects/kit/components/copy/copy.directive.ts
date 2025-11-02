@@ -17,7 +17,6 @@ import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 import {TUI_COPY_OPTIONS} from './copy.options';
 
 @Directive({
-    standalone: true,
     selector: 'tui-icon[tuiCopy]',
     providers: [
         {

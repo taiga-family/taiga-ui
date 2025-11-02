@@ -4,7 +4,6 @@ import {TuiSpinButton} from '@taiga-ui/core';
 
 describe('primitiveSpinButton', () => {
     @Component({
-        standalone: true,
         imports: [TuiSpinButton],
         template: `
             <tui-spin-button>My button</tui-spin-button>

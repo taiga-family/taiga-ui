@@ -3,7 +3,6 @@ import {TUI_IS_ANDROID} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 
 @Directive({
-    standalone: true,
     selector: '[tuiSelectLike]',
     host: {
         tuiSelectLike: '',

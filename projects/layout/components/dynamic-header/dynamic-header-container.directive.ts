@@ -11,7 +11,6 @@ import {distinctUntilChanged, fromEvent, map, pairwise} from 'rxjs';
 import {TuiDynamicHeaderAnchorDirective} from './dynamic-header-anchor.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDynamicHeaderContainer]',
     hostDirectives: [WaIntersectionRoot, WaIntersectionObserverDirective],
     host: {

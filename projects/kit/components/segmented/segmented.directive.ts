@@ -17,7 +17,6 @@ import {map, switchMap} from 'rxjs';
 import {TuiSegmented} from './segmented.component';
 
 @Directive({
-    standalone: true,
     host: {
         '(click)': 'update($event.target)',
     },

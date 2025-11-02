@@ -18,7 +18,6 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -38,7 +37,6 @@ const TODAY = TuiDay.currentLocal();
     imports: [
         TuiCalendarYear,
         TuiHovered,
-        TuiLet,
         TuiLink,
         TuiRepeatTimes,
         TuiScrollbar,

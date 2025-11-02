@@ -6,7 +6,7 @@ import {
     signal,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {MASKITO_DEFAULT_OPTIONS, type MaskitoOptions} from '@maskito/core';
 import {maskitoDateRangeOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
@@ -23,7 +23,6 @@ import {
     TuiDayRange,
     TuiMonth,
 } from '@taiga-ui/cdk/date-time';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {
@@ -34,7 +33,7 @@ import {
 } from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiMarkerHandler} from '@taiga-ui/core/components/calendar';
 import {tuiAsDataListHost} from '@taiga-ui/core/components/data-list';
-import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
+import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type TuiDayRangePeriod} from '@taiga-ui/kit/components/calendar-range';
 import {
@@ -105,18 +104,13 @@ export class TuiInputDateRangeComponent
     protected readonly dateFiller$ = this.dateTexts$.pipe(
         map((dateTexts) =>
             changeDateSeparator(
-                dateTexts[this.dateFormat.mode],
-                this.dateFormat.separator,
+                dateTexts[this.dateFormat().mode],
+                this.dateFormat().separator,
             ),
         ),
     );
 
-    protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
-    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
-        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe((format) => {
-            this.dateFormat = format;
-        });
+    protected dateFormat = inject(TUI_DATE_FORMAT);
 
     protected selectedActivePeriod: TuiDayRangePeriod | null = null;
 
@@ -168,7 +162,10 @@ export class TuiInputDateRangeComponent
         }
 
         return value
-            ? value.getFormattedDayRange(this.dateFormat.mode, this.dateFormat.separator)
+            ? value.getFormattedDayRange(
+                  this.dateFormat().mode,
+                  this.dateFormat().separator,
+              )
             : nativeValue();
     }
 
@@ -199,7 +196,7 @@ export class TuiInputDateRangeComponent
 
         this.value =
             value.length === DATE_RANGE_FILLER_LENGTH && !this.activePeriod
-                ? TuiDayRange.normalizeParse(value, this.dateFormat.mode)
+                ? TuiDayRange.normalizeParse(value, this.dateFormat().mode)
                 : null;
 
         if (!this.value) {
@@ -240,8 +237,8 @@ export class TuiInputDateRangeComponent
         return this.activePeriod
             ? MASKITO_DEFAULT_OPTIONS
             : this.calculateMask(
-                  this.dateFormat.mode,
-                  this.dateFormat.separator,
+                  this.dateFormat().mode,
+                  this.dateFormat().separator,
                   this.min,
                   this.max,
                   this.minLength,
@@ -299,7 +296,7 @@ export class TuiInputDateRangeComponent
         ) {
             this.value = TuiDayRange.normalizeParse(
                 this.nativeValue(),
-                this.dateFormat.mode,
+                this.dateFormat().mode,
             );
         }
     }

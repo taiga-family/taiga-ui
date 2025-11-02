@@ -8,7 +8,6 @@ import {
 } from './responsive-dialog.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiResponsiveDialog]',
     inputs: ['options: tuiResponsiveDialogOptions', 'open: tuiResponsiveDialog'],
     outputs: ['openChange: tuiResponsiveDialogChange'],

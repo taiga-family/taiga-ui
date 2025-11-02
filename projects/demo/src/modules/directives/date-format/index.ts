@@ -6,7 +6,7 @@ import {TuiDemo} from '@demo/utils';
 import {TuiLink} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDemo, TuiLink, RouterLink],
+    imports: [RouterLink, TuiDemo, TuiLink],
     templateUrl: './index.html',
     changeDetection,
 })

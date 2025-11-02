@@ -5,7 +5,6 @@ import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {distinctUntilChanged, filter, map, merge, startWith, switchMap} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDroppableDropped], [tuiDroppableDragOverChange]',
     host: {
         '(dragover.prevent.zoneless)': '0',

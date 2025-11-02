@@ -50,7 +50,6 @@ const ITEMS = [
 
 describe('Input', () => {
     @Component({
-        standalone: true,
         imports: [
             ReactiveFormsModule,
             TuiDataListDirective,

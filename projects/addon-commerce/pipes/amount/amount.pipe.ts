@@ -1,4 +1,5 @@
 import {inject, Pipe, type PipeTransform} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {type TuiCurrencyVariants} from '@taiga-ui/addon-commerce/types';
 import {tuiFormatCurrency} from '@taiga-ui/addon-commerce/utils';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
@@ -12,10 +13,10 @@ import {tuiFormatSignSymbol} from './amount.utils';
 
 const DEFAULT_PRECISION = 2;
 
-@Pipe({standalone: true, name: 'tuiAmount'})
+@Pipe({name: 'tuiAmount'})
 export class TuiAmountPipe implements PipeTransform {
     private readonly options = inject(TUI_AMOUNT_OPTIONS);
-    private readonly format = inject(TUI_NUMBER_FORMAT);
+    private readonly format = toObservable(inject(TUI_NUMBER_FORMAT));
 
     public transform(
         value: number,

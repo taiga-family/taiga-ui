@@ -3,7 +3,7 @@
 
     <input
         tuiInputNumber
-        [tuiCopyProcessor]="(numberProcessor$ | async)!"
+        [tuiCopyProcessor]="numberProcessor()"
         [(ngModel)]="value"
     />
 </tui-textfield>

@@ -5,7 +5,6 @@ import {ViewportService} from '@ng-web-apis/screen-orientation';
 import {tuiInjectElement, tuiPx} from '@taiga-ui/cdk/utils';
 
 @Directive({
-    standalone: true,
     selector: '[tuiVisualViewport]',
 })
 export class TuiVisualViewport {

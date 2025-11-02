@@ -22,7 +22,6 @@ import {TuiTabsDirective} from './tabs.directive';
 import {TUI_TABS_OPTIONS} from './tabs.options';
 
 @Directive({
-    standalone: true,
     selector: 'tui-tabs:not([vertical]), nav[tuiTabs]:not([vertical])',
     providers: [
         MutationObserverService,

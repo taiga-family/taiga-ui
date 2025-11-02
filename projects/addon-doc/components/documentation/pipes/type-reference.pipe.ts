@@ -5,7 +5,6 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 
 @Pipe({
-    standalone: true,
     name: 'tuiDocTypeReference',
 })
 export class TuiDocTypeReferencePipe implements PipeTransform {

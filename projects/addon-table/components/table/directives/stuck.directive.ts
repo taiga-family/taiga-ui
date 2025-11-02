@@ -9,7 +9,6 @@ import {catchError, distinctUntilChanged, EMPTY, map} from 'rxjs';
 
 // TODO: Consider making universal and moving to CDK
 @Directive({
-    standalone: true,
     selector: 'tui-stuck:never',
     providers: [
         IntersectionObserverService,

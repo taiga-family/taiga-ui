@@ -29,7 +29,6 @@ const ITEMS = [
 
 describe('Breadcrumbs Wrapper', () => {
     @Component({
-        standalone: true,
         imports: [RouterTestingModule, TuiBreadcrumbs, TuiItem, TuiLink],
         template: `
             <tui-breadcrumbs

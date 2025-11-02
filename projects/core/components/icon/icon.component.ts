@@ -9,7 +9,6 @@ import {
 import {TuiIcons} from '@taiga-ui/core/directives';
 
 @Component({
-    standalone: true,
     // :not([tuiBadge]) is required to avoid double matching of TuiIcons
     selector: 'tui-icon:not([tuiBadge])',
     template: '',

@@ -8,7 +8,6 @@ describe('PreviewPagination', () => {
     let testComponent: Test;
 
     @Component({
-        standalone: true,
         imports: [TuiPreview],
         template: `
             <tui-preview-pagination

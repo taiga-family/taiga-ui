@@ -4,7 +4,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
 
 @Component({
-    standalone: true,
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

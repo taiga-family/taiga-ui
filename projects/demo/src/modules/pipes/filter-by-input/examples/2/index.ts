@@ -20,12 +20,12 @@ interface User {
 @Component({
     imports: [
         ReactiveFormsModule,
-        TuiComboBox,
-        TuiTextfield,
         TuiChevron,
+        TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

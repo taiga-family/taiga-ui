@@ -8,7 +8,6 @@ import {TuiTagHarness} from '@taiga-ui/testing';
 
 describe('Tag', () => {
     @Component({
-        standalone: true,
         imports: [TuiTagModule],
         template: `
             <tui-tag id="default" />

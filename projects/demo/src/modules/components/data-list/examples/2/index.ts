@@ -1,7 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiLet} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDataList,
@@ -13,7 +12,7 @@ import {
 import {TuiDataListDropdownManager} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiButton, TuiDataList, TuiDataListDropdownManager, TuiDropdown, TuiLet],
+    imports: [TuiButton, TuiDataList, TuiDataListDropdownManager, TuiDropdown],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

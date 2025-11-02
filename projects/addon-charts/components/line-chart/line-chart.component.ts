@@ -16,7 +16,6 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
@@ -36,7 +35,7 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
 
 @Component({
     selector: 'tui-line-chart',
-    imports: [AsyncPipe, TuiHint, TuiLet],
+    imports: [AsyncPipe, TuiHint],
     templateUrl: './line-chart.template.html',
     styleUrl: './line-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

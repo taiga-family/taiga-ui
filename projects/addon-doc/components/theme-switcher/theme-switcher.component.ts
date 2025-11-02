@@ -33,7 +33,7 @@ export function tuiDocThemeProvider(): FactoryProvider {
 
 @Component({
     selector: 'tui-doc-theme-switcher',
-    imports: [FormsModule, TuiDataList, TuiSelect, TuiTextfield, TuiChevron],
+    imports: [FormsModule, TuiChevron, TuiDataList, TuiSelect, TuiTextfield],
     templateUrl: './theme-switcher.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

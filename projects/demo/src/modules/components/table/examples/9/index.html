@@ -1,261 +1,122 @@
 <table
-    size="l"
     tuiTable
     class="table"
     [columns]="columns"
 >
     <thead>
         <tr tuiThGroup>
+            <th tuiTh></th>
             <th
-                *tuiHead="'action'"
                 tuiTh
-                [sorter]="null"
-            ></th>
-            <th
-                *tuiHead="'firstName'"
-                tuiTh
-                [sorter]="null"
+                [minWidth]="50"
             >
-                First name
+                #
             </th>
             <th
-                *tuiHead="'lastName'"
                 tuiTh
-                class="last-name-col"
-                [sorter]="null"
+                [minWidth]="150"
             >
-                Last name
+                Name
             </th>
             <th
-                *tuiHead="'role'"
                 tuiTh
-                [sorter]="null"
+                [minWidth]="150"
             >
-                Role
+                Date of Birth
             </th>
-            <th
-                *tuiHead="'balance'"
-                tuiTh
-                [sorter]="null"
-            >
-                Balance
-            </th>
+            <th tuiTh>Age</th>
         </tr>
     </thead>
-
-    <tbody tuiTbody>
-        <tr
-            tuiTr
-            class="expand-heading-row"
-            (click)="expand.toggle()"
-        >
-            <td
-                *tuiCell="'action'"
-                tuiTd
-            >
-                <tui-icon
-                    class="t-chevron"
-                    [tuiChevron]="expand.expanded()"
-                />
-            </td>
-            <td
-                *tuiCell="'firstName'"
-                tuiTd
-                [colSpan]="2"
-            >
-                {{ basicData.length }}
-                Developers (basic usage)
-            </td>
-            <ng-container *tuiCell="'lastName'" />
-            <td
-                *tuiCell="'role'"
-                tuiTd
-            >
-                dev
-            </td>
-            <td
-                *tuiCell="'balance'"
-                tuiTd
-            >
-                {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
-            </td>
-        </tr>
-
-        <tui-table-expand
-            #expand
-            [expanded]="true"
-        >
-            @for (item of basicData; track item) {
-                <tr tuiTr>
-                    <td
-                        *tuiCell="'action'"
-                        tuiTd
-                    ></td>
-                    <td
-                        *tuiCell="'firstName'"
-                        tuiTd
+    <tbody
+        tuiTbody
+        [data]="data"
+    >
+        @for (item of data; track $index; let i = $index) {
+            <tr tuiTr>
+                <td
+                    *tuiCell="'children'"
+                    tuiTd
+                >
+                    <button
+                        appearance="flat-grayscale"
+                        size="xs"
+                        tuiIconButton
+                        type="button"
+                        class="chevron-btn"
+                        [attr.title]="item.children?.length ? '' : 'No children'"
+                        [disabled]="!item.children?.length"
+                        [style.border-radius.%]="100"
+                        [tuiChevron]="rowState[i] ?? false"
+                        (click)="toggleRow(i)"
                     >
-                        <div>
-                            <tui-chip
-                                size="s"
-                                [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
+                        Toggle
+                    </button>
+                </td>
+                <td
+                    *tuiCell="'#'"
+                    tuiTd
+                >
+                    {{ i + 1 }}
+                </td>
+                <td
+                    *tuiCell="'name'"
+                    tuiTd
+                >
+                    {{ item.name }}
+                </td>
+                <td
+                    *tuiCell="'dob'"
+                    tuiTd
+                >
+                    {{ item.dob }}
+                </td>
+                <td
+                    *tuiCell="'age'"
+                    tuiTd
+                >
+                    {{ item.age }}
+                </td>
+            </tr>
+
+            @if (item.children?.length) {
+                <tui-table-expand [expanded]="rowState[i] ?? false">
+                    @for (child of item.children; track $index; let j = $index) {
+                        <tr
+                            tuiTr
+                            class="child"
+                        >
+                            <td
+                                *tuiCell="'children'"
+                                tuiTd
+                            ></td>
+                            <td
+                                *tuiCell="'#'"
+                                tuiTd
                             >
-                                {{ item.firstName }}
-                            </tui-chip>
-                        </div>
-                    </td>
-                    <td
-                        *tuiCell="'lastName'"
-                        tuiTd
-                    >
-                        {{ item.lastName }}
-                    </td>
-                    <td
-                        *tuiCell="'role'"
-                        tuiTd
-                    >
-                        {{ item.role }}
-                    </td>
-                    <td
-                        *tuiCell="'balance'"
-                        tuiTd
-                    >
-                        {{ item.balance | tuiFormatNumber | async }}
-                    </td>
-                </tr>
-            }
-        </tui-table-expand>
-    </tbody>
-
-    <tbody tuiTbody>
-        <tr
-            tuiTr
-            class="expand-heading-row"
-            (click)="manualToggle()"
-        >
-            <td
-                *tuiCell="'action'"
-                tuiTd
-            >
-                <tui-icon
-                    class="t-chevron"
-                    [tuiChevron]="manualOpen"
-                />
-            </td>
-            <td
-                *tuiCell="'firstName'"
-                tuiTd
-                [colSpan]="2"
-            >
-                {{ manualOpenData.length }}
-                Designers (manual handling)
-            </td>
-            <ng-container *tuiCell="'lastName'" />
-            <td
-                *tuiCell="'role'"
-                tuiTd
-            >
-                design
-            </td>
-            <td
-                *tuiCell="'balance'"
-                tuiTd
-            >
-                {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
-            </td>
-        </tr>
-
-        <tui-table-expand [expanded]="manualOpen">
-            @for (item of manualOpenData; track item) {
-                <tr tuiTr>
-                    <td
-                        *tuiCell="'action'"
-                        tuiTd
-                    ></td>
-                    <td
-                        *tuiCell="'firstName'"
-                        tuiTd
-                    >
-                        {{ item.firstName }}
-                    </td>
-                    <td
-                        *tuiCell="'lastName'"
-                        tuiTd
-                    >
-                        {{ item.lastName }}
-                    </td>
-                    <td
-                        *tuiCell="'role'"
-                        tuiTd
-                    >
-                        {{ item.role }}
-                    </td>
-                    <td
-                        *tuiCell="'balance'"
-                        tuiTd
-                    >
-                        {{ item.balance | tuiFormatNumber | async }}
-                    </td>
-                </tr>
-            }
-        </tui-table-expand>
-    </tbody>
-
-    <tbody tuiTbody>
-        <tr
-            tuiTr
-            class="expand-heading-row-custom"
-        >
-            <td
-                *tuiCell="'action'"
-                tuiTd
-                class="expand-heading-row-custom__expand"
-                (click)="customToggle()"
-            >
-                <tui-icon
-                    class="t-chevron"
-                    [tuiChevron]="customOpen"
-                />
-            </td>
-            <td
-                *tuiCell="'firstName'"
-                tuiTd
-                [colSpan]="2"
-            >
-                Custom content (click on chevron)
-            </td>
-            <ng-container *tuiCell="'lastName'" />
-            <td
-                *tuiCell="'role'"
-                tuiTd
-            >
-                all
-            </td>
-            <td
-                *tuiCell="'balance'"
-                tuiTd
-            >
-                {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }}
-            </td>
-        </tr>
-
-        <tr>
-            <td [colSpan]="columns.length">
-                <tui-expand [expanded]="customOpen">
-                    <div class="chips">
-                        @for (item of customContentData; track item) {
-                            <tui-chip
-                                size="s"
-                                [appearance]="item.role === 'dev' ? 'primary' : 'secondary'"
-                                [tuiHint]="`Balance: ${item.balance}. Role: ${item.role}`"
+                                {{ i + 1 }}.{{ j + 1 }}
+                            </td>
+                            <td
+                                *tuiCell="'name'"
+                                tuiTd
                             >
-                                {{ item.firstName }}
-                                {{ item.lastName }}
-                            </tui-chip>
-                        }
-                    </div>
-                </tui-expand>
-            </td>
-        </tr>
+                                {{ child.name }}
+                            </td>
+                            <td
+                                *tuiCell="'dob'"
+                                tuiTd
+                            >
+                                {{ child.dob }}
+                            </td>
+                            <td
+                                *tuiCell="'age'"
+                                tuiTd
+                            >
+                                {{ child.age }}
+                            </td>
+                        </tr>
+                    }
+                </tui-table-expand>
+            }
+        }
     </tbody>
 </table>

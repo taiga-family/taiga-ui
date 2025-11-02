@@ -43,7 +43,6 @@ export function findElementsInTemplateByFn(
 export function findElementsByTagName(
     html: string,
     tagName: string,
-    // eslint-disable-next-line no-restricted-syntax
     filterFn: (element: Element) => boolean = () => true,
 ): Element[] {
     return findElementsInTemplateByFn(
@@ -94,7 +93,6 @@ export function findElementsWithAttributeOnTag(
     html: string,
     attributeNames: string[],
     tagNames: string[] = [],
-    // eslint-disable-next-line no-restricted-syntax
     filterFn: (element: Element) => boolean = () => true,
 ): Element[] {
     return findElementsInTemplateByFn(
@@ -119,7 +117,6 @@ export function findAttributeOnElementWithTag(
     html: string,
     name: string,
     tagNames: string[],
-    // eslint-disable-next-line no-restricted-syntax
     filterFn: (element: Element) => boolean = () => true,
 ): number[] {
     return findElementsWithAttribute(html, name)
@@ -139,7 +136,6 @@ export function findAttributeOnElementWithAttrs(
     html: string,
     name: string,
     attrs: string[],
-    // eslint-disable-next-line no-restricted-syntax
     filterFn: (element: Element) => boolean = () => true,
 ): number[] {
     return findElementsWithAttribute(html, name)

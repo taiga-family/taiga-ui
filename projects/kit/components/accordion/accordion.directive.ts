@@ -7,7 +7,6 @@ import {TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiAccordionComponent} from './accordion.component';
 
 @Directive({
-    standalone: true,
     selector: 'button[tuiAccordion]',
     providers: [
         tuiAvatarOptionsProvider({size: 's'}),

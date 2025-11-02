@@ -8,7 +8,6 @@ import {TuiButton} from '../button.directive';
 
 describe('ButtonDirective', () => {
     @Component({
-        standalone: true,
         imports: [TuiButton],
         template: `
             <button

@@ -12,7 +12,6 @@ import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 // TODO: Consider replacing TuiTextfieldComponent with proper token once we refactor textfields
 @Pipe({
-    standalone: true,
     name: 'tuiFilterByInput',
     pure: false,
 })

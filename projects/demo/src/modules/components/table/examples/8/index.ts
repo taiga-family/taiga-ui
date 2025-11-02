@@ -11,9 +11,9 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
     imports: [
         FormsModule,
         ReactiveFormsModule,
+        TuiInputChip,
         TuiInputModule,
         TuiTable,
-        TuiInputChip,
         TuiTextfield,
         TuiTextfieldControllerModule,
     ],

@@ -11,7 +11,7 @@
 Install main packages:
 
 ```
-npm i @taiga-ui/{cdk,core,kit,addon-mobile}
+npm i @taiga-ui/{cdk,core,kit}
 ```
 
 Install doc:
@@ -24,24 +24,22 @@ npm i @taiga-ui/addon-doc
 
 > You can also see [community made guide](https://habr.com/ru/company/europlan/blog/559804/) in Russian
 
-1. Include `TuiDocMainModule` in your App module and use in your template:
+1. Include `TuiDocMain` in your App imports and use in your template:
 
    ```html
    <tui-doc-main>You can add content here, it will be shown below navigation in the sidebar</tui-doc-main>
    ```
 
-2. Configure languages to highlight in your main module:
+2. Configure languages to highlight in your root providers:
 
    ```typescript
    import {Component} from '@angular/core';
-   import {TuiDocMainModule} from '@taiga-ui/addon-doc';
-   import {hljsLanguages} from './hljsLanguages';
-   import {HIGHLIGHT_OPTIONS, HighlightLanguage} from 'ngx-highlightjs';
+   import {TuiDocMain} from '@taiga-ui/addon-doc';
+   import {HIGHLIGHT_OPTIONS} from 'ngx-highlightjs';
    import {App} from './app.component';
 
    @Component({
-     standalone: true,
-     imports: [TuiDocMainModule],
+     imports: [TuiDocMain],
      providers: [
        {
          provide: HIGHLIGHT_OPTIONS,
@@ -81,10 +79,10 @@ npm i @taiga-ui/addon-doc
 
    const appRoutes: Routes = [
      {
-       path: 'super-page',
-       loadChildren: async () => (await import('../super-page/super-page.module')).SuperModule,
+       path: 'doc-page-1',
+       loadComponent: async () => (await import('../doc-page-1')).DocPage,
        data: {
-         title: 'Super Page',
+         title: 'Documentation page #1',
        },
      },
      // ...
@@ -96,42 +94,34 @@ npm i @taiga-ui/addon-doc
 
 5. Create pages.
 
-   _Module:_
-
-   ```ts
-   import {TuiAddonDoc} from '@taiga-ui/addon-doc';
-
-   @Component({
-     standalone: true,
-     imports: [TuiAddonDoc, SuperComponent],
-   })
-   export class App {}
-   ```
-
    _Component:_
 
    ```ts
    // ..
 
    @Component({
-     standalone: true,
-     selector: 'super',
+     selector: 'first-doc-page',
      templateUrl: './super.component.html',
+     imports: [TuiAddonDoc],
    })
-   export class Super {
+   export class DocPage {
      // Keys would be used as tabs for code example
      readonly example = {
        // import a file as a string
-       TypeScript: import('./examples/1/index.ts?raw'),
-       HTML: import('./examples/1/index.html?raw'),
+       TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
+       HTML: import('./examples/1/index.html', {with: {loader: 'text'}}),
+       LESS: '.box { color: red }',
      };
 
      readonly inputVariants = ['input 1', 'input 2'];
    }
    ```
 
-   > You can use any tool to import a file as a string. For example, you can use
-   > [Webpack Asset Modules](https://webpack.js.org/guides/asset-modules/).
+   > You can use any tool to import a file as a string. For example, you can use:
+   >
+   > - [Esbuild loaders](https://angular.dev/tools/cli/build-system-migration#file-extension-loader-customization)
+   >   (recommended)
+   > - [Webpack Asset Modules](https://webpack.js.org/guides/asset-modules)
 
    _Template:_
 
@@ -139,7 +129,6 @@ npm i @taiga-ui/addon-doc
    <tui-doc-page
      header="Super"
      package="SUPER-PACKAGE"
-     deprecated
    >
      <ng-template pageTab>
        <!-- default tab name would be used -->
@@ -158,17 +147,18 @@ npm i @taiga-ui/addon-doc
        <tui-doc-demo>
          <super-component [input]="input"></super-component>
        </tui-doc-demo>
-       <tui-doc-documentation>
-         <ng-template
-           documentationPropertyName="input"
-           documentationPropertyMode="input"
-           documentationPropertyType="T"
-           [documentationPropertyValues]="inputVariants"
-           [(documentationPropertyValue)]="input"
+
+       <table tuiDocAPI>
+         <tr
+           name="[input]"
+           tuiDocAPIItem
+           type="T"
+           [items]="inputVariants"
+           [(value)]="input"
          >
-           Some input
-         </ng-template>
-       </tui-doc-documentation>
+           Some input description
+         </tr>
+       </table>
      </ng-template>
    </tui-doc-page>
    ```

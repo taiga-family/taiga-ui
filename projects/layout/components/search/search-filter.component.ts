@@ -16,7 +16,6 @@ import {TUI_ICON_START} from '@taiga-ui/core/tokens';
 import {TUI_COMMON_ICONS} from '@taiga-ui/layout/tokens';
 
 @Component({
-    standalone: true,
     selector: 'button[tuiSearchFilter]',
     template: '<ng-template><ng-content /></ng-template>filters',
     changeDetection: ChangeDetectionStrategy.OnPush,

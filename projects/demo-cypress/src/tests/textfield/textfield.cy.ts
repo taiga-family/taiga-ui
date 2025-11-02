@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 
@@ -8,8 +8,8 @@ import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
         <tui-root>
             <tui-textfield
                 #textfield
-                [content]="textfield.focused() ? '' : content"
-                [filler]="filler"
+                [content]="textfield.focused() ? '' : content()"
+                [filler]="filler()"
             >
                 <input
                     tuiTextfield
@@ -22,14 +22,11 @@ import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
     providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class TestTextfield {
-    @Input()
-    public initialValue = '';
+    public readonly initialValue = model('');
 
-    @Input()
-    public filler = '';
+    public readonly filler = input('');
 
-    @Input()
-    public content = '';
+    public readonly content = input('');
 }
 
 describe('Textfield', () => {

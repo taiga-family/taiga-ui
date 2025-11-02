@@ -21,7 +21,7 @@ import {distinctUntilChanged, map, skip, startWith, switchMap, timer} from 'rxjs
 
 @Component({
     selector: 'input[tuiInputCard]',
-    imports: [TuiTextfieldContent, TuiIconPipe],
+    imports: [TuiIconPipe, TuiTextfieldContent],
     template: `
         @if (image()) {
             <img

@@ -1,5 +1,5 @@
-import fs from 'fs/promises';
-import path from 'path';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 
 const MODULES_PATH = path.resolve(process.cwd(), 'projects/demo/src/modules');
 const OUTPUT_FILE = path.resolve(process.cwd(), 'projects/demo/src/llms-full.txt');

@@ -34,7 +34,6 @@ const MATCHER: TuiIdentityMatcher<Beast> = (item1, item2) => item1.id === item2.
 
 describe('Select', () => {
     @Component({
-        standalone: true,
         imports: [
             ReactiveFormsModule,
             TuiDataListDirective,

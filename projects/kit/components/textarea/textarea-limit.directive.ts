@@ -26,7 +26,6 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {tuiTextareaOptionsProvider} from './textarea.options';
 
 @Component({
-    standalone: true,
     template: `
         <span [textContent]="context.$implicit.slice(0, limit())"></span>
         <span
@@ -42,7 +41,6 @@ export class TuiTextareaLimitComponent {
 }
 
 @Component({
-    standalone: true,
     template: '{{ length() }} / {{ limit() }}',
     styleUrl: './textarea-limit.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -55,7 +53,6 @@ export class TuiTextareaCounterComponent {
 const COMPONENT = new PolymorpheusComponent(TuiTextareaLimitComponent);
 
 @Directive({
-    standalone: true,
     selector: '[tuiTextarea][limit]',
     providers: [
         tuiProvide(NG_VALIDATORS, TuiTextareaLimit, true),

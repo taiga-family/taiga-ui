@@ -6,7 +6,6 @@ import {type TuiNotificationMiddleOptions} from './notification-middle.component
 import {TuiNotificationMiddleService} from './notification-middle.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiNotificationMiddle]',
     inputs: ['options: tuiNotificationMiddleOptions', 'open: tuiNotificationMiddle'],
     outputs: ['openChange: tuiNotificationMiddleChange'],

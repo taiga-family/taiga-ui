@@ -5,7 +5,6 @@ import {TuiActiveZone} from '@taiga-ui/cdk';
 import {TuiButton, TuiDialogService, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     imports: [TuiActiveZone, TuiButton, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',

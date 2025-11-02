@@ -4,7 +4,6 @@ import {TUI_ANIMATIONS_SPEED} from '@taiga-ui/core/tokens';
 import {tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
 
 @Pipe({
-    standalone: true,
     name: 'tuiAnimation',
 })
 export class TuiAnimationPipe implements PipeTransform {
