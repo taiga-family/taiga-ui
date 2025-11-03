@@ -1,9 +1,6 @@
 import {ChangeDetectionStrategy, Component, type DebugElement} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {
-    tuiMobileDialogOptionsProvider,
-    TuiMobileDialogService,
-} from '@taiga-ui/addon-mobile';
+import {tuiMobileDialogOptionsProvider, TuiMobileDialogService} from '@taiga-ui/legacy';
 import {provideTaiga, TuiRoot} from '@taiga-ui/core';
 import {TuiPageObject} from '@taiga-ui/testing';
 

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {TuiRipple} from '@taiga-ui/addon-mobile/directives';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -20,7 +20,7 @@ import {type TuiMobileDialogOptions} from './mobile-dialog.options';
 export class TuiMobileDialog<I> {
     protected readonly isIOS = inject(TUI_IS_IOS);
     protected readonly context =
-        injectContext<TuiPopover<TuiMobileDialogOptions<I>, number>>();
+        injectContext<TuiPortalContext<TuiMobileDialogOptions<I>, number>>();
 
     protected onAction(index: number): void {
         this.context.completeWith(index);

@@ -19,9 +19,7 @@ export interface TuiConfirmData {
     readonly appearance?: string;
 }
 
-// TODO: Remove selector in v5
 @Component({
-    selector: 'tui-confirm',
     imports: [PolymorpheusOutlet, TuiAutoFocus, TuiButton],
     templateUrl: './confirm.template.html',
     styleUrl: './confirm.style.less',

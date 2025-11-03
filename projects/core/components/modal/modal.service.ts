@@ -4,18 +4,20 @@ import {TuiPortal} from '@taiga-ui/cdk/portals';
 import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
-import {TuiModal} from './modal.component';
+import {TuiModalComponent} from './modal.component';
 
 @Injectable()
 export abstract class TuiModalService<T, K = void> extends TuiPortal<T, K> {
     protected abstract readonly content: Type<unknown>;
-    protected readonly component = TuiModal;
+    protected readonly component = TuiModalComponent;
 
     constructor() {
         super(inject(TuiPopupService));
     }
 
-    protected override add(component: PolymorpheusComponent<TuiModal<T>>): () => void {
+    protected override add(
+        component: PolymorpheusComponent<TuiModalComponent<T>>,
+    ): () => void {
         const ref = this.service.add(component);
         const el: HTMLElement = ref.location.nativeElement;
 

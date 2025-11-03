@@ -1,33 +1,34 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, TemplateRef, viewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDialogService} from '@taiga-ui/core';
+import {TuiNotificationMiddleService} from '@taiga-ui/kit';
+import {Subscription} from 'rxjs';
+import {FormsModule} from '@angular/forms';
 
 @Component({
-    imports: [TuiButton],
+    imports: [TuiButton, FormsModule],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
+    private readonly notifications = inject(TuiNotificationMiddleService);
+    private readonly subs: Subscription[] = [];
 
-    protected default(): void {
-        this.dialogs
-            .open(
-                'This is a plain string dialog.<br />It supports basic <strong>HTML</strong>',
-                {label: 'Heading', size: 's'},
-            )
-            .subscribe();
+    protected template = viewChild('template', {read: TemplateRef});
+    protected index = 0;
+
+    protected dialog(): void {
+        this.subs.push(this.dialogs.open(this.template()).subscribe());
     }
 
-    protected custom(): void {
-        this.dialogs
-            .open('Good, Anakin, Good!', {
-                label: 'Star wars. Episode III',
-                size: 's',
-                data: 'Do it!',
-            })
-            .subscribe();
+    protected notification(): void {
+        this.subs.push(this.notifications.open(this.template()).subscribe());
+    }
+
+    protected close(): void {
+        this.subs.splice(Number(String(this.index)), 1)[0]?.unsubscribe();
     }
 }

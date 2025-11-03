@@ -27,19 +27,18 @@
     perspective: 10rem;
     transform: translateY(var(--t-root-top));
 
-    &:last-of-type {
-        &:not(.tui-leave) {
-            backdrop-filter: brightness(0.25);
-        }
+    // Safari < 15.4 and Chromium < 111
+    @supports not (selector(:has(*))) or not (selector(:nth-child(1 of *))) {
+        &:last-of-type {
+            &:not(.tui-leave) {
+                backdrop-filter: brightness(0.25);
+            }
 
-        &.tui-enter,
-        &.tui-leave {
-            animation-name: backdrop;
+            &.tui-enter,
+            &.tui-leave {
+                animation-name: backdrop;
+            }
         }
-    }
-
-    &:not(.tui-leave):has(+ ::ng-deep tui-modal.tui-leave) {
-        backdrop-filter: brightness(0.25);
     }
 
     ::ng-deep > .tui-enter + .t-scrollbars .t-bar_vertical,
@@ -54,9 +53,17 @@
     }
 }
 
-// For Safari until we get :has() support
-::ng-deep tui-modal:nth-last-child(1 of tui-modal:not(.tui-leave)) {
-    backdrop-filter: brightness(0.25);
+@supports (selector(:has(*))) and (selector(:nth-child(1 of *))) {
+    ::ng-deep tui-modal:nth-last-child(1 of tui-modal:not(.tui-leave):not(:has(.tui-backdrop-hidden))) {
+        backdrop-filter: brightness(0.25);
+    }
+
+    ::ng-deep tui-modal:nth-last-child(1 of tui-modal:not(:has(.tui-backdrop-hidden))) {
+        &.tui-enter,
+        &.tui-leave {
+            animation-name: backdrop;
+        }
+    }
 }
 
 .t-scrollbars {

@@ -4,8 +4,7 @@ import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {type TuiPopover} from '@taiga-ui/cdk';
-import {type TuiAlertOptions, TuiAlertService, TuiButton, TuiLink} from '@taiga-ui/core';
+import {type TuiAlertContext, TuiAlertService, TuiButton, TuiLink} from '@taiga-ui/core';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
@@ -36,9 +35,7 @@ import {switchMap, takeUntil} from 'rxjs';
     changeDetection,
 })
 export class AlertExampleWithData {
-    protected readonly context =
-        injectContext<TuiPopover<TuiAlertOptions<number>, number>>();
-
+    protected readonly context = injectContext<TuiAlertContext<number, number>>();
     protected value = this.context.data;
 
     protected increaseBalance(): void {

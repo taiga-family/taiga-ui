@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiPopover} from '@taiga-ui/cdk';
-import {type TuiAlertOptions, TuiButton, TuiIcon} from '@taiga-ui/core';
+import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiToast, TuiToastService} from '@taiga-ui/kit';
-import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Component({
     imports: [TuiIcon, TuiToast],
@@ -21,10 +20,7 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Toast {
-    protected readonly context =
-        injectContext<TuiPopover<TuiAlertOptions<void>, boolean>>();
-}
+export class Toast {}
 
 @Component({
     imports: [TuiButton, TuiToast],

@@ -1,4 +1,4 @@
-import {type TuiPopoverContext} from '@taiga-ui/cdk/services';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {type TuiNotificationOptions} from '@taiga-ui/core/components/notification';
 import {type TuiPositionOptions} from '@taiga-ui/core/directives';
@@ -13,6 +13,7 @@ export interface TuiAlertOptions<I = undefined>
     readonly label: PolymorpheusContent<TuiAlertOptions<I>>;
 }
 
-export interface TuiAlertContext<O = void, I = undefined>
-    extends TuiPopoverContext<O>,
-        TuiAlertOptions<I> {}
+export type TuiAlertContext<O = void, I = undefined> = TuiPortalContext<
+    TuiAlertOptions<I>,
+    O
+>;

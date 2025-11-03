@@ -36,7 +36,7 @@ import {
         '(animationend.self)': '$event.target.classList.remove("tui-enter")',
     },
 })
-export class TuiModal<T> implements OnDestroy, OnInit {
+export class TuiModalComponent<T> implements OnDestroy, OnInit {
     private readonly current = inject(TuiActiveZone);
     private readonly parent = findActive(
         inject(TuiActiveZone, {skipSelf: true}),

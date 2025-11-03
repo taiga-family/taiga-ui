@@ -1,5 +1,5 @@
 import {InjectionToken, type Provider} from '@angular/core';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
@@ -9,7 +9,7 @@ export interface TuiSheetDialogOptions<I = undefined> {
     readonly closable: Observable<boolean> | boolean;
     readonly data: I;
     readonly initial: number;
-    readonly label: PolymorpheusContent<TuiPopover<TuiSheetDialogOptions<I>, any>>;
+    readonly label: PolymorpheusContent<TuiPortalContext<TuiSheetDialogOptions<I>, any>>;
     readonly offset: number;
     readonly stops: readonly string[];
     readonly bar: boolean;
