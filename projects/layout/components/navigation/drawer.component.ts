@@ -60,7 +60,6 @@ class TuiDrawerComponent {
 }
 
 @Component({
-    standalone: true,
     // TODO: move to host directives
     selector: '[tuiIconButton][tuiNavigationDrawer]',
     template: '<ng-template><ng-content /></ng-template>',

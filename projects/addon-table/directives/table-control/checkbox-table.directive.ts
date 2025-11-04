@@ -5,7 +5,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiTableControlDirective} from './table-control.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiCheckbox][tuiCheckboxTable]',
     providers: [{provide: NgControl, useClass: NgModel}],
     host: {'(change)': 'parent.toggleAll()'},

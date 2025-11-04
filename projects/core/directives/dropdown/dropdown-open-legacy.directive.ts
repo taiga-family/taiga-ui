@@ -5,7 +5,6 @@ import {distinctUntilChanged, Subject} from 'rxjs';
  * @deprecated TODO: remove in v.5 when legacy controls are dropped
  */
 @Directive({
-    standalone: true,
     selector:
         '[tuiDropdownOpen]:not([tuiDropdown]),[tuiDropdownOpenChange]:not([tuiDropdown])',
 })

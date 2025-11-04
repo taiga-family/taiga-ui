@@ -26,7 +26,6 @@ function isText(value: string): boolean {
 }
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputPhone]',
     providers: [
         tuiAsControl(TuiInputPhone),

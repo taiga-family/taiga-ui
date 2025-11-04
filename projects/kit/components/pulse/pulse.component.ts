@@ -11,7 +11,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiAsRectAccessor, TuiRectAccessor} from '@taiga-ui/core/classes';
 
 @Component({
-    standalone: true,
     selector: 'tui-pulse',
     template: '',
     styleUrl: './pulse.style.less',

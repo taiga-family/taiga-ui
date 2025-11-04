@@ -37,7 +37,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputTime]',
     providers: [
         tuiAsControl(TuiInputTimeDirective),

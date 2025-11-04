@@ -15,7 +15,6 @@ import {TuiTileService} from './tile.service';
 import {TuiTilesComponent} from './tiles.component';
 
 @Component({
-    standalone: true,
     selector: 'tui-tile',
     templateUrl: './tile.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,

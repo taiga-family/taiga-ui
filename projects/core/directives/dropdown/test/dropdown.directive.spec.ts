@@ -11,7 +11,6 @@ import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('TuiDropdownDirective', () => {
     @Component({
-        standalone: true,
         imports: [PolymorpheusTemplate, TuiDropdownDirective, TuiDropdownManual, TuiRoot],
         template: `
             <tui-root>

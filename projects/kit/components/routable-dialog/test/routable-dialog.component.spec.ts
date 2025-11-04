@@ -23,7 +23,6 @@ function providerOf(serviceToken: any, mockedService: any): Provider {
 }
 
 @Component({
-    standalone: true,
     template: '',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

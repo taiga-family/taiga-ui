@@ -3,7 +3,6 @@ import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 
 @Component({
-    standalone: true,
     selector: 'th[tuiTd], td[tuiTd]',
     template: '<ng-content />',
     styleUrl: './td.style.less',

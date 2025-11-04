@@ -14,11 +14,13 @@ test.describe('DropdownHover', () => {
 
         describe('With DropdownMobile', () => {
             let example!: Locator;
+            let po!: TuiDocumentationPagePO;
 
             test.use(TUI_PLAYWRIGHT_MOBILE);
 
             beforeEach(({page}) => {
-                example = new TuiDocumentationPagePO(page).getExample('#dropdown-mobile');
+                po = new TuiDocumentationPagePO(page);
+                example = po.getExample('#dropdown-mobile');
             });
 
             test('Opens mobile version of dropdown on the 1st time click', async ({
@@ -46,6 +48,7 @@ test.describe('DropdownHover', () => {
                 await page.locator('tui-sheet-dialog').click({position: {x: 32, y: 32}});
                 await example.locator('button').click();
                 await expect(page.locator('tui-sheet-dialog')).toBeVisible();
+                await po.hideContent();
                 await expect
                     .soft(page)
                     .toHaveScreenshot('mobile-dropdown-2nd-time-time-click.png');

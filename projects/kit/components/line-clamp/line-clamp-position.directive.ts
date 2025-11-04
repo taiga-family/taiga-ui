@@ -8,7 +8,6 @@ import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
 @Directive({
-    standalone: true,
     selector: '[tuiLineClampPosition]',
     providers: [tuiAsPositionAccessor(TuiLineClampPositionDirective)],
 })
