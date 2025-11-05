@@ -10,7 +10,7 @@ import {
     TUI_APPEARANCE_OPTIONS,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiHintDirective, TuiWithHintPosition} from '@taiga-ui/core/directives/hint';
+import {TuiHintDirective} from '@taiga-ui/core/directives/hint';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
 import {map, startWith, Subject, switchMap, timer} from 'rxjs';
 
@@ -30,7 +30,6 @@ import {TUI_COPY_OPTIONS} from './copy.options';
             directive: TuiHintDirective,
             inputs: ['tuiHintAppearance', 'tuiHintContext'],
         },
-        TuiWithHintPosition,
     ],
     host: {
         style: 'cursor: pointer',

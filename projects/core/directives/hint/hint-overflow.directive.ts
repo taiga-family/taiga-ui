@@ -2,7 +2,6 @@ import {Directive, inject, input} from '@angular/core';
 import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiHintDirective} from './hint.directive';
-import {TuiWithHintPosition} from './hint-position.directive';
 
 @Directive({
     selector: '[tuiHintOverflow]',
@@ -11,7 +10,6 @@ import {TuiWithHintPosition} from './hint-position.directive';
             directive: TuiHintDirective,
             inputs: ['tuiHintAppearance'],
         },
-        TuiWithHintPosition,
     ],
     host: {
         '(mouseenter)': 'onMouseEnter($event.currentTarget)',

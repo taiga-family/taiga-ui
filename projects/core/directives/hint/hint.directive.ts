@@ -22,6 +22,7 @@ import {TUI_HINT_COMPONENT} from './hint.providers';
 import {TuiHintDriver} from './hint-driver.directive';
 import {TuiHintHover} from './hint-hover.directive';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
+import {TuiHintPosition} from './hint-position.directive';
 
 @Directive({
     selector: '[tuiHint]:not(ng-container):not(ng-template)',
@@ -39,6 +40,11 @@ import {TUI_HINT_OPTIONS} from './hint-options.directive';
         {
             directive: TuiHintHover,
             inputs: ['tuiHintHideDelay', 'tuiHintShowDelay'],
+        },
+        {
+            directive: TuiHintPosition,
+            inputs: ['tuiHintDirection'],
+            outputs: ['tuiHintDirectionChange'],
         },
     ],
 })

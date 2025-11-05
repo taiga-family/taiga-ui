@@ -2,18 +2,14 @@ import {computed, Directive, inject} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
-import {
-    TuiHintDirective,
-    tuiHintOptionsProvider,
-    TuiWithHintPosition,
-} from '@taiga-ui/core/directives/hint';
+import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 
 import {TuiAsideComponent} from './aside.component';
 
 @Directive({
     selector: '[tuiHintAside]',
     providers: [tuiHintOptionsProvider({direction: 'right'})],
-    hostDirectives: [TuiHintDirective, TuiWithHintPosition],
+    hostDirectives: [TuiHintDirective],
 })
 export class TuiHintAsideDirective {
     private readonly el = tuiInjectElement();
