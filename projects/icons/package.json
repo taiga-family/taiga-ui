@@ -9,7 +9,10 @@
         "lucide"
     ],
     "homepage": "https://github.com/taiga-family/taiga-ui",
-    "repository": "https://github.com/taiga-family/taiga-ui",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/taiga-family/taiga-ui"
+    },
     "license": "Apache-2.0",
     "devDependencies": {
         "lucide-static": "0.552.0"
