@@ -1,7 +1,7 @@
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
-import {TuiPortalContext} from '@taiga-ui/cdk';
 
 export type TuiDialogSize = TuiSizeL | TuiSizeS | 'auto' | 'fullscreen' | 'page';
 

@@ -25,7 +25,7 @@ import {
     take,
 } from 'rxjs';
 
-import {TuiDialogContext, type TuiDialogSize} from './dialog.interfaces';
+import {type TuiDialogContext, type TuiDialogSize} from './dialog.interfaces';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
 
