@@ -42,13 +42,13 @@
     }
 
     @supports (selector(:has(*))) and (selector(:nth-child(1 of *))) {
-        &:nth-last-child(1 of *:not(.tui-leave):not(:has(.tui-backdrop-hidden))) {
+        &:nth-last-child(1 of tui-modal:not(.tui-leave):not(:has(.tui-backdrop-hidden))) {
             backdrop-filter: brightness(0.25);
         }
 
-        // For some reason without second dual :not Angular adds [_ngcontent] attribute to selector
+        // For some reason without dual :not Angular adds [_ngcontent] attribute to selector
         // https://github.com/angular/angular/issues/64913
-        &:nth-last-child(1 of *:not(._wtf):not(:has(.tui-backdrop-hidden))):is(.tui-enter, .tui-leave) {
+        &:nth-last-child(1 of tui-modal:not(._wtf):not(:has(.tui-backdrop-hidden))):is(.tui-enter, .tui-leave) {
             animation-name: backdrop;
         }
     }
