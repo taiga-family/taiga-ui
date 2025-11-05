@@ -41,6 +41,18 @@
         }
     }
 
+    @supports (selector(:has(*))) and (selector(:nth-child(1 of *))) {
+        &:nth-last-child(1 of *:not(.tui-leave):not(:has(.tui-backdrop-hidden))) {
+            backdrop-filter: brightness(0.25);
+        }
+
+        // For some reason without second dual :not Angular adds [_ngcontent] attribute to selector
+        // https://github.com/angular/angular/issues/64913
+        &:nth-last-child(1 of *:not(._wtf):not(:has(.tui-backdrop-hidden))):is(.tui-enter, .tui-leave) {
+            animation-name: backdrop;
+        }
+    }
+
     ::ng-deep > .tui-enter + .t-scrollbars .t-bar_vertical,
     ::ng-deep > .tui-leave + .t-scrollbars .t-bar_vertical {
         display: none;
@@ -50,19 +62,6 @@
         content: '';
         block-size: 1px;
         inline-size: calc(100% + 1px);
-    }
-}
-
-@supports (selector(:has(*))) and (selector(:nth-child(1 of *))) {
-    ::ng-deep tui-modal:nth-last-child(1 of tui-modal:not(.tui-leave):not(:has(.tui-backdrop-hidden))) {
-        backdrop-filter: brightness(0.25);
-    }
-
-    ::ng-deep tui-modal:nth-last-child(1 of tui-modal:not(:has(.tui-backdrop-hidden))) {
-        &.tui-enter,
-        &.tui-leave {
-            animation-name: backdrop;
-        }
     }
 }
 
