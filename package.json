@@ -132,7 +132,7 @@
         "@types/glob": "9.0.0",
         "@types/loader-utils": "2.0.6",
         "@types/markdown-it": "14.1.2",
-        "@types/node": "24.9.2",
+        "@types/node": "24.10.0",
         "@typescript/native-preview": "7.0.0-dev.20251105.1",
         "browser-sync": "3.0.4",
         "cpy-cli": "5.0.0",
