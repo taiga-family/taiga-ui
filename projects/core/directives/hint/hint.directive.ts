@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
-    tuiAsRectAccessor,
     tuiAsVehicle,
     type TuiRectAccessor,
     type TuiVehicle,
@@ -27,7 +26,6 @@ import {TuiHintPosition} from './hint-position.directive';
 @Directive({
     selector: '[tuiHint]:not(ng-container):not(ng-template)',
     providers: [
-        tuiAsRectAccessor(TuiHintDirective),
         tuiAsVehicle(TuiHintDirective),
         {
             provide: PolymorpheusComponent,
