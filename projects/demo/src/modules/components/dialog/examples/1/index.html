@@ -1,24 +1,16 @@
 <button
     tuiButton
     type="button"
-    (click)="dialog()"
+    (click)="default()"
 >
-    Dialog
+    Default button
 </button>
 <br />
 <br />
 <button
     tuiButton
     type="button"
-    (click)="notification()"
+    (click)="custom()"
 >
-    Notification
+    Custom button
 </button>
-<ng-template #template>
-    <div>
-        <button (click)="dialog()">Show dialog</button>
-        <button (click)="notification()">Show notification</button>
-        <input [(ngModel)]="index" />
-        <button (click)="close()">Close</button>
-    </div>
-</ng-template>

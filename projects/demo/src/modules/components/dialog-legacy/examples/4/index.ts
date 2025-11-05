@@ -1,11 +1,11 @@
 import {AsyncPipe} from '@angular/common';
-import {Component, inject, type TemplateRef} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
 import {tuiClamp} from '@taiga-ui/cdk';
-import {TuiButton, TuiNumberFormat, TuiPopupService} from '@taiga-ui/core';
+import {TuiButton, TuiNumberFormat, TuiPopup} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 import {TuiDialogService} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
@@ -18,6 +18,7 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
         TuiButton,
         TuiElasticSticky,
         TuiNumberFormat,
+        TuiPopup,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -26,9 +27,8 @@ import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 })
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
-    private readonly popups = inject(TuiPopupService);
 
-    protected filters = false;
+    protected readonly filters = signal(false);
 
     protected onElastic(value: number, {style}: HTMLElement): void {
         const scale = tuiClamp(value, 0.7, 1);
@@ -38,20 +38,13 @@ export default class Example {
     }
 
     protected onFilterClick(): void {
-        this.filters = true;
+        this.filters.set(true);
         this.dialogs.open('Dialog with filters').subscribe({
-            complete: () => {
-                this.filters = false;
-            },
+            complete: () => this.filters.set(false),
         });
     }
 
-    protected showDialog(
-        content: PolymorpheusContent,
-        button: TemplateRef<Record<string, unknown>>,
-    ): void {
-        const ref = this.popups.add(button);
-
-        this.dialogs.open(content).subscribe({complete: () => ref.destroy()});
+    protected showDialog(content: PolymorpheusContent): void {
+        this.dialogs.open(content).subscribe();
     }
 }
