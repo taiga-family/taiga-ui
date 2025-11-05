@@ -1,6 +1,6 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-@keyframes backdrop {
+@keyframes tui-modal-backdrop {
     from {
         backdrop-filter: none;
     }
@@ -10,7 +10,7 @@
     }
 }
 
-:host {
+tui-modal {
     .transition(backdrop-filter);
     .scrollbar-hidden();
 
@@ -36,7 +36,7 @@
 
             &.tui-enter,
             &.tui-leave {
-                animation-name: backdrop;
+                animation-name: tui-modal-backdrop;
             }
         }
     }
@@ -46,16 +46,9 @@
             backdrop-filter: brightness(0.25);
         }
 
-        // For some reason without dual :not Angular adds [_ngcontent] attribute to selector
-        // https://github.com/angular/angular/issues/64913
-        &:nth-last-child(1 of tui-modal:not(._wtf):not(:has(.tui-backdrop-hidden))):is(.tui-enter, .tui-leave) {
-            animation-name: backdrop;
+        &:nth-last-child(1 of tui-modal:not(:has(.tui-backdrop-hidden))):is(.tui-enter, .tui-leave) {
+            animation-name: tui-modal-backdrop;
         }
-    }
-
-    ::ng-deep > .tui-enter + .t-scrollbars .t-bar_vertical,
-    ::ng-deep > .tui-leave + .t-scrollbars .t-bar_vertical {
-        display: none;
     }
 
     &::before {
@@ -63,16 +56,21 @@
         block-size: 1px;
         inline-size: calc(100% + 1px);
     }
-}
 
-.t-scrollbars {
-    position: fixed;
-    inset: 0;
-    margin: 0;
-    color: #747474;
+    > .t-scrollbars {
+        position: fixed;
+        inset: 0;
+        margin: 0;
+        color: #747474;
 
-    ::ng-deep .t-bar_horizontal,
-    ::ng-deep .t-bar_vertical .t-thumb[style*='height: 100%'] {
+        .t-bar_horizontal,
+        .t-bar_vertical .t-thumb[style*='height: 100%'] {
+            display: none;
+        }
+    }
+
+    > .tui-enter + .t-scrollbars .t-bar_vertical,
+    > .tui-leave + .t-scrollbars .t-bar_vertical {
         display: none;
     }
 }

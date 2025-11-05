@@ -6,6 +6,7 @@ import {
     type OnDestroy,
     type OnInit,
     signal,
+    ViewEncapsulation,
 } from '@angular/core';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiFocusTrap} from '@taiga-ui/cdk/directives/focus-trap';
@@ -26,6 +27,7 @@ import {
         <tui-scroll-controls class="t-scrollbars" />
     `,
     styleUrl: './modal.style.less',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
     hostDirectives: [TuiActiveZone, TuiFocusTrap, TuiScrollRef],
     host: {
