@@ -1,12 +1,7 @@
 import {InjectionToken} from '@angular/core';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
-import {TUI_DEFAULT_TREE_CONTROLLER, TUI_TREE_ITEM_CONTENT} from './tree.constants';
-import {
-    type TuiTreeAccessor,
-    type TuiTreeItemContext,
-    type TuiTreeLoader,
-} from './tree.interfaces';
+import {TUI_DEFAULT_TREE_CONTROLLER} from './tree.constants';
+import {type TuiTreeAccessor, type TuiTreeLoader} from './tree.interfaces';
 
 /**
  * Controller for tracking value - TuiTreeItemComponent pairs
@@ -48,15 +43,6 @@ export const TUI_TREE_START = new InjectionToken(ngDevMode ? 'TUI_TREE_START' : 
 export const TUI_TREE_LOADER = new InjectionToken<TuiTreeLoader<unknown>>(
     ngDevMode ? 'TUI_TREE_LOADER' : '',
 );
-
-/**
- * Content for a tree item
- */
-export const TUI_TREE_CONTENT = new InjectionToken<
-    PolymorpheusContent<TuiTreeItemContext>
->(ngDevMode ? 'TUI_TREE_CONTENT' : '', {
-    factory: () => TUI_TREE_ITEM_CONTENT,
-});
 
 /**
  * Nesting level of current TreeView node
