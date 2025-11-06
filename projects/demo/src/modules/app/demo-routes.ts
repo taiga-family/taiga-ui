@@ -15,6 +15,7 @@ export const DemoRoute = {
     DialogLazyRoutable: '/dialog/lazy-routable',
     Portals: '/portals',
     Viewport: '/viewport',
+    Truncate: '/directives/truncate',
     Accordion: '/components/accordion',
     Avatar: '/components/avatar',
     Badge: '/components/badge',
