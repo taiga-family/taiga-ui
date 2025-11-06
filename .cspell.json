@@ -15,6 +15,7 @@
         "msword",
         "openxmlformats",
         "officedocument",
-        "wordprocessingml"
+        "wordprocessingml",
+        "longname"
     ]
 }
