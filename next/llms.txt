@@ -115,7 +115,6 @@
 - [Loader](https://taiga-ui.dev/components/loader)
 - [Message](https://taiga-ui.dev/components/message) — Message component is used to display message block.
 - [Mobile Calendar](https://taiga-ui.dev/components/mobile-calendar) — A calendar for mobile devices. It is used in date picker controls if provided with tuiProvideMobileCalendar() You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)
-- [Mobile Dialog](https://taiga-ui.dev/components/mobile-dialog) — Component for showing a dialog on mobile devices. It emulates appearance of native alerts on iOS and Android
 - [Multi Select](https://taiga-ui.dev/components/multi-select)
 - [Navigation](https://taiga-ui.dev/components/navigation) — A set of basic layout components for global navigation
 - [Notification](https://taiga-ui.dev/components/notification) — An inline message with a type (info, positive, warning, negative or neutral) that does not interrupt user actions
@@ -159,7 +158,6 @@
 
 ### Dialog
 
-- [Custom](https://taiga-ui.dev/dialog/custom)
 - [Lazy Routable](https://taiga-ui.dev/dialog/lazy-routable)
 - [Routable](https://taiga-ui.dev/dialog/routable)
 

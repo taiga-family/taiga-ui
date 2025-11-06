@@ -989,8 +989,7 @@ import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiPopover} from '@taiga-ui/cdk';
-import {type TuiAlertOptions, TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {type TuiAlertContext, TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
@@ -1014,8 +1013,7 @@ import {switchMap, takeUntil} from 'rxjs';
     changeDetection,
 })
 export class AlertExample {
-    protected readonly context =
-        injectContext<TuiPopover<TuiAlertOptions<void>, boolean>>();
+    protected readonly context = injectContext<TuiAlertContext<boolean>>();
 }
 
 @Component({
@@ -1059,8 +1057,7 @@ import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {type TuiPopover} from '@taiga-ui/cdk';
-import {type TuiAlertOptions, TuiAlertService, TuiButton, TuiLink} from '@taiga-ui/core';
+import {type TuiAlertContext, TuiAlertService, TuiButton, TuiLink} from '@taiga-ui/core';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
@@ -1091,9 +1088,7 @@ import {switchMap, takeUntil} from 'rxjs';
     changeDetection,
 })
 export class AlertExampleWithData {
-    protected readonly context =
-        injectContext<TuiPopover<TuiAlertOptions<number>, number>>();
-
+    protected readonly context = injectContext<TuiAlertContext<number, number>>();
     protected value = this.context.data;
 
     protected increaseBalance(): void {
@@ -1144,8 +1139,7 @@ import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiPopover} from '@taiga-ui/cdk';
-import {type TuiAlertOptions, TuiAlertService, TuiButton, TuiIcon} from '@taiga-ui/core';
+import {type TuiAlertContext, TuiAlertService, TuiButton, TuiIcon} from '@taiga-ui/core';
 import {
     injectContext,
     PolymorpheusComponent,
@@ -1177,8 +1171,7 @@ class CustomLabel {}
     changeDetection,
 })
 class AlertExampleWithCustomLabel {
-    protected readonly context =
-        injectContext<TuiPopover<TuiAlertOptions<unknown>, boolean>>();
+    protected readonly context = injectContext<TuiAlertContext>();
 }
 
 @Component({
@@ -27434,104 +27427,6 @@ export default class Page {
 ```
 
 ---
-# components/MobileDialog
-- **Package**: `ADDON-MOBILE`
-- **Type**: components
-Component for showing a dialog on mobile devices. It emulates appearance of native alerts on iOS and Android
-
-### How to Use (Template)
-
-```ts
-constructor(private readonly dialogs: TuiMobileDialogService) {}
-
-// ...
-
-this.dialogs
-    .open(
-        'Text',
-        {
-            label: 'Heading',
-            actions: ['Button 1', 'Button 2'],
-            data: 'Some data'
-        },
-    )
-    .subscribe(index => {
-        // Index of clicked button
-        console.log(index);
-    });
-```
-
-### Usage Examples
-
-#### Basic
-
-**Template:**
-```html
-<p>Choose iPhone into DevTools to see iOS styled dialog.</p>
-<button tuiButton type="button" (click)="show()" > Show dialog </button>
-```
-**TypeScript:**
-```ts
-import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiMobileDialogService} from '@taiga-ui/addon-mobile';
-import {TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
-import {switchMap} from 'rxjs';
-
-@Component({
-    imports: [TuiButton],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-    providers: [
-        {
-            provide: TUI_IS_IOS,
-            useValue: false,
-        },
-    ],
-})
-export default class Example {
-    private readonly dialogs = inject(TuiMobileDialogService);
-    private readonly alerts = inject(TuiAlertService);
-
-    protected show(): void {
-        const actions = ['No thanks', 'Remind me later', 'Rate now'];
-
-        this.dialogs
-            .open(
-                'If you like this app, please take a moment to leave a positive rating.',
-                {
-                    label: 'What do you think?',
-                    actions,
-                },
-            )
-            .pipe(switchMap((index) => this.alerts.open(`Selected: ${actions[index]}`)))
-            .subscribe();
-    }
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-
-@Component({
-    imports: [TuiDemo],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {
-    protected readonly template = import('./examples/import/template.md?raw');
-}
-```
-
----
 # components/Navigation
 - **Package**: `LAYOUT`
 - **Type**: components
@@ -29054,7 +28949,7 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Open </button>
-<ng-template let-observer [tuiResponsiveDialogOptions]="{size: 'page', fullscreen: true}" [(tuiResponsiveDialog)]="open" >
+<ng-template let-observer [tuiResponsiveDialogOptions]="{appearance: 'fullscreen', fullscreen: true}" [(tuiResponsiveDialog)]="open" >
 <tui-pdf-viewer>
 <h2 tuiTitle>file.pdf</h2> @if (!isMobile) { <button iconStart="@tui.pen" title="download" tuiButton type="button" [style.border-radius.rem]="5" (click)="observer.complete(); alerts.open('Document signed').subscribe()" > Sign </button> } <button iconStart="@tui.download" title="download" tuiButton type="button" [style.border-radius.rem]="5" (click)="observer.complete()" > {{ isMobile ? '' : 'Download' }} </button>
 <iframe [src]="url"></iframe>
@@ -40389,10 +40284,9 @@ export default class Example {
 import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiPopover} from '@taiga-ui/cdk';
-import {type TuiAlertOptions, TuiButton, TuiIcon} from '@taiga-ui/core';
+import {TuiButton, TuiIcon} from '@taiga-ui/core';
 import {TuiToast, TuiToastService} from '@taiga-ui/kit';
-import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Component({
     imports: [TuiIcon, TuiToast],
@@ -40409,10 +40303,7 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Toast {
-    protected readonly context =
-        injectContext<TuiPopover<TuiAlertOptions<void>, boolean>>();
-}
+export class Toast {}
 
 @Component({
     imports: [TuiButton, TuiToast],
@@ -42209,34 +42100,6 @@ export default class Page {
 - **Type**: components/utils
 
 ### Usage Examples
-
-#### TUI_DIALOGS
-
-**Template:**
-```html
-<p> A stream of modal dialogs displayed by <a tuiLink [routerLink]="routes.Dialog" > TuiDialogsComponent </a> . </p>
-<p> You can create your own service extending <a tuiLink [routerLink]="routes.DialogCustom" > TuiPopoverService </a> to easily add another modal dialogs behavior to your application. </p>
-```
-**TypeScript:**
-```ts
-import {Component, inject} from '@angular/core';
-import {RouterLink} from '@angular/router';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {encapsulation} from '@demo/emulate/encapsulation';
-import {DemoRoute} from '@demo/routes';
-import {TUI_DIALOGS, TuiLink} from '@taiga-ui/core';
-
-@Component({
-    imports: [RouterLink, TuiLink],
-    templateUrl: './index.html',
-    encapsulation,
-    changeDetection,
-})
-export default class Example {
-    protected readonly dialogs = inject(TUI_DIALOGS);
-    protected readonly routes = DemoRoute;
-}
-```
 
 #### TUI_IS_ANDROID
 
@@ -48974,167 +48837,6 @@ export default class Page {
     ];
 
     protected readonly routes = DemoRoute;
-}
-```
-
----
-# customization/Custom dialogs
-- **Package**: `null`
-- **Type**: null
-
-### Usage Examples
-
-#### Custom dialog
-
-**Template:**
-```html
-<button tuiButton type="button" (click)="onClick(choose, poorly, wisely)" > Show prompt </button>
-<ng-template #choose>
-<div class="wrapper">
-<div size="l" tuiAvatar="@tui.user" class="tui-space_right-2" >
-<img alt="" src="/assets/images/choose.png" />
-</div> «Choose wisely» </div>
-</ng-template>
-<ng-template #poorly>
-<div class="wrapper">
-<div tuiAvatar="@tui.user" class="tui-space_right-2" >
-<img alt="" src="/assets/images/poorly.png" />
-</div> «You chose poorly» </div>
-</ng-template>
-<ng-template #wisely>
-<div class="wrapper"> «You have chosen wisely» <div tuiAvatar="@tui.user" class="tui-space_left-1" >
-<img alt="" src="/assets/images/wisely.png" />
-</div>
-</div>
-</ng-template>
-```
-**TypeScript:**
-```ts
-import {Component, inject} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
-import {TuiAvatar} from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {switchMap} from 'rxjs';
-
-import {PromptService} from './prompt/prompt.service';
-
-@Component({
-    selector: 'tui-dialogs-example-1',
-    imports: [TuiAvatar, TuiButton],
-    templateUrl: './index.html',
-    styleUrl: './index.less',
-    changeDetection,
-})
-export class TuiDialogsExample1 {
-    private readonly alerts = inject(TuiAlertService);
-    private readonly promptService = inject(PromptService);
-
-    protected onClick(
-        choose: PolymorpheusContent,
-        poorly: PolymorpheusContent,
-        wisely: PolymorpheusContent,
-    ): void {
-        this.promptService
-            .open(choose, {
-                heading: 'Taiga UI is the best',
-                buttons: ['Absolutely!', 'No way!'],
-            })
-            .pipe(
-                switchMap((response) =>
-                    response
-                        ? this.alerts.open(wisely, {
-                              appearance: 'positive',
-                          })
-                        : this.alerts.open(poorly, {
-                              appearance: 'negative',
-                          }),
-                ),
-            )
-            .subscribe();
-    }
-}
-```
-
-#### Custom dialog with directive
-
-**Template:**
-```html
-<button size="m" tuiButton type="button" (click)="open = true" > Show </button>
-<ng-template let-observer [tuiCustomDialogOptions]="{size: 's'}" [(tuiCustomDialog)]="open" >
-<p>This abstracts away service and subscription</p>
-<p>
-<button tuiButton type="button" (click)="observer.complete()" > Ok </button>
-</p>
-</ng-template>
-```
-**TypeScript:**
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton} from '@taiga-ui/core';
-
-import {CustomDialogDirective} from './custom-dialog/custom-dialog.directive';
-
-@Component({
-    selector: 'tui-dialogs-example-2',
-    imports: [CustomDialogDirective, TuiButton],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export class TuiDialogsExample2 {
-    protected open = false;
-}
-```
-
-
-### TypeScript
-
-```ts
-import {Component} from '@angular/core';
-import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiDemo} from '@demo/utils';
-
-import {TuiDialogsExample1} from './examples/1';
-import {TuiDialogsExample2} from './examples/2';
-
-@Component({
-    imports: [TuiDemo, TuiDialogsExample1, TuiDialogsExample2],
-    templateUrl: './index.html',
-    changeDetection,
-})
-export default class Page {
-    protected readonly example1 = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-        'prompt/prompt.service.ts': import('./examples/1/prompt/prompt.service.ts?raw'),
-        'prompt/prompt-options.ts': import('./examples/1/prompt/prompt-options.ts?raw'),
-        'prompt/prompt.component.ts': import(
-            './examples/1/prompt/prompt.component.ts?raw'
-        ),
-        'prompt/prompt.template.html': import(
-            './examples/1/prompt/prompt.template.html?raw'
-        ),
-        'prompt/prompt.style.less': import('./examples/1/prompt/prompt.style.less?raw'),
-    };
-
-    protected readonly example2 = {
-        TypeScript: import('./examples/2/index.ts?raw'),
-        HTML: import('./examples/2/index.html?raw'),
-        'custom-dialog/custom-dialog.service.ts': import(
-            './examples/2/custom-dialog/custom-dialog.service.ts?raw'
-        ),
-        'custom-dialog/custom-dialog.directive.ts': import(
-            './examples/2/custom-dialog/custom-dialog.directive.ts?raw'
-        ),
-        'custom-dialog/custom-dialog.component.ts': import(
-            './examples/2/custom-dialog/custom-dialog.component.ts?raw'
-        ),
-        'custom-dialog/custom-dialog.style.less': import(
-            './examples/2/custom-dialog/custom-dialog.style.less?raw'
-        ),
-    };
 }
 ```
 
