@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
     TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
-    type TuiSheetDialogOptions,
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
 import {
@@ -14,7 +13,6 @@ import {
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
 @Component({
@@ -41,7 +39,7 @@ export default class Page {
     ];
 
     protected closable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closable;
-    protected fullscreen = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.fullscreen;
+    protected appearance = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.appearance;
     protected bar = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.bar;
     protected initial = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.initial;
     protected stops = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.stops;
@@ -52,18 +50,15 @@ export default class Page {
     protected open = false;
 
     protected readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
-    protected readonly labelVariants = [this.label, 'String label', 'Template'];
+    protected readonly appearanceVariants = [this.appearance, 'fullscreen'];
 
-    protected showDialog(
-        content: TemplateRef<TuiDialogContext<number, number>>,
-        label?: PolymorpheusContent<TuiSheetDialogOptions>,
-    ): void {
-        const {required, closable, fullscreen, stops, initial, bar, offset} = this;
+    protected showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
+        const {appearance, required, closable, stops, initial, bar, offset, label} = this;
 
         this.sheetDialogs
             .open(content, {
+                appearance,
                 label,
-                fullscreen,
                 stops,
                 initial,
                 bar,
