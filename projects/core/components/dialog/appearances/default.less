@@ -15,9 +15,15 @@
         inline-size: 25rem;
         padding: 1.5rem;
 
-        > header:not(:last-child),
-        > ng-component > header:not(:last-child) {
-            margin-block-end: 1.25rem;
+        > header,
+        > [tuiSlides] > * > header,
+        > ng-component > header,
+        > ng-component > [tuiSlides] > * > header {
+            font: var(--tui-font-heading-5);
+
+            &:not(:last-child) {
+                margin-block-end: 1.25rem;
+            }
         }
 
         > footer,
@@ -26,17 +32,24 @@
         }
     }
 
-    &[data-size='m'] {
+    &[data-size='m'],
+    &[data-size='l'] {
         inline-size: 37.5rem;
+
+        > header,
+        > [tuiSlides] > * > header,
+        > ng-component > header,
+        > ng-component > [tuiSlides] > * > header {
+            font: var(--tui-font-heading-4);
+
+            &:not(:last-child) {
+                margin-block-end: 1.5rem;
+            }
+        }
     }
 
     &[data-size='l'] {
         inline-size: 50rem;
-    }
-
-    > header:not(:last-child),
-    > ng-component > header:not(:last-child) {
-        margin-block-end: 1.5rem;
     }
 
     > footer,

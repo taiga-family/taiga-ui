@@ -9,7 +9,6 @@ import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiHeader, tuiHeaderOptionsProvider} from '@taiga-ui/core/components/header';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -26,7 +25,7 @@ import {
     take,
 } from 'rxjs';
 
-import {type TuiDialogContext, type TuiDialogOptions} from './dialog.options';
+import {type TuiDialogContext} from './dialog.options';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from './dialog.providers';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
@@ -37,17 +36,14 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
 
 @Component({
     selector: 'tui-dialog',
-    imports: [PolymorpheusOutlet, TuiAutoFocus, TuiButton, TuiHeader, TuiTitle],
+    imports: [PolymorpheusOutlet, TuiAutoFocus, TuiButton, TuiTitle],
     templateUrl: './dialog.template.html',
     styleUrl: './dialog.style.less',
     encapsulation: ViewEncapsulation.None,
     // So we don't force OnPush on dialog content
     // eslint-disable-next-line @angular-eslint/prefer-on-push-component-change-detection
     changeDetection: ChangeDetectionStrategy.Default,
-    providers: [
-        TuiDialogCloseService,
-        tuiHeaderOptionsProvider(() => ({size: getSize(injectContext())})),
-    ],
+    providers: [TuiDialogCloseService],
     hostDirectives: [TuiAnimated],
     host: {
         '[attr.data-appearance]': 'context.appearance',
@@ -81,12 +77,4 @@ export class TuiDialogComponent<O, I> {
                 this.context.$implicit.complete();
             }
         });
-}
-
-function getSize({appearance, size}: TuiDialogOptions<unknown>): 'h3' | 'h4' | 'h5' {
-    if (appearance.includes('fullscreen')) {
-        return 'h3';
-    }
-
-    return size === 's' ? 'h5' : 'h4';
 }
