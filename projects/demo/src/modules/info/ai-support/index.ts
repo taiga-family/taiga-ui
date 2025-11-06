@@ -10,15 +10,5 @@ import {TuiLink} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Page {
-    protected readonly installationCode = `{
-  mcpServers: {
-    'taiga-ui': {
-      command: 'npx',
-      args: [
-        '@taiga-ui/mcp@latest',
-        '--source-url=https://taiga-ui.dev/llms-full.txt', // or file from "/next" version, if you want
-      ],
-    },
-  },
-}`;
+    protected readonly installation = import('./snippets/installation.md?raw');
 }
