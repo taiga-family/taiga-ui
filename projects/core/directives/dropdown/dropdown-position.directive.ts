@@ -10,12 +10,9 @@ import {
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint, type TuiVerticalDirection} from '@taiga-ui/core/types';
 
-import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_OPTIONS, type TuiDropdownAlign} from './dropdown-options.directive';
 
-@Directive({
-    selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
-})
+@Directive()
 export class TuiDropdownPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly options = inject(TUI_DROPDOWN_OPTIONS);
@@ -30,7 +27,7 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     public readonly accessor: TuiRectAccessor | null =
         tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
             inject<any>(TuiRectAccessor, {optional: true}),
-            inject(TuiDropdownDirective, {optional: true})!,
+            {getClientRect: () => this.el.getBoundingClientRect()},
         );
 
     @tuiPure

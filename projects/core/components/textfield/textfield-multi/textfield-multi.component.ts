@@ -29,8 +29,8 @@ import {
     TuiWithItemsHandlers,
 } from '@taiga-ui/core/directives';
 import {
+    TuiDropdownDirective,
     TuiDropdownFixed,
-    TuiWithDropdown,
     TuiWithDropdownOpen,
 } from '@taiga-ui/core/directives/dropdown';
 import {TuiWithIcons} from '@taiga-ui/core/directives/icons';
@@ -69,7 +69,7 @@ import {
     ],
     hostDirectives: [
         TuiDropdownFixed,
-        TuiWithDropdown,
+        TuiDropdownDirective,
         TuiWithDropdownOpen,
         TuiWithIcons,
         TuiWithItemsHandlers,

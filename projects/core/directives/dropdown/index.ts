@@ -16,5 +16,4 @@ export * from './dropdown-options.directive';
 export * from './dropdown-position.directive';
 export * from './dropdown-position-sided.directive';
 export * from './dropdown-selection.directive';
-export * from './with-dropdown';
 export * from './with-dropdown-open.directive';
