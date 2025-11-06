@@ -11,7 +11,6 @@ import {
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
-import {TuiHintDirective} from './hint.directive';
 import {
     TUI_HINT_DIRECTIONS,
     TUI_HINT_OPTIONS,
@@ -29,8 +28,8 @@ export class TuiHintPosition extends TuiPositionAccessor {
     private readonly offset = inject(TUI_IS_MOBILE) ? 16 : 8;
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
-        inject<any>(TuiRectAccessor),
-        inject(TuiHintDirective),
+        inject<any>(TuiRectAccessor, {optional: true}),
+        {getClientRect: () => this.el.getBoundingClientRect()},
     );
 
     private readonly points: Record<TuiHintDirection, [number, number]> =

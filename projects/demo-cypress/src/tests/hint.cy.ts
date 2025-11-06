@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {TuiHintDirective, TuiRoot} from '@taiga-ui/core';
+import {TuiHint, TuiRoot} from '@taiga-ui/core';
 import {type MountResponse} from 'cypress/angular';
 
 describe('TuiHint', () => {
@@ -21,7 +21,7 @@ describe('TuiHint', () => {
     }
 
     @Component({
-        imports: [Host, TuiHintDirective, TuiRoot],
+        imports: [Host, TuiHint, TuiRoot],
         template: `
             <tui-root>
                 <my-host [hideElement]="hide">
