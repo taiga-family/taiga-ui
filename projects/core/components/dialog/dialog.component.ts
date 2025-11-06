@@ -8,7 +8,6 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiAutoFocus} from '@taiga-ui/cdk/directives/auto-focus';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiHeader, tuiHeaderOptionsProvider} from '@taiga-ui/core/components/header';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
@@ -27,7 +26,7 @@ import {
     take,
 } from 'rxjs';
 
-import {type TuiDialogOptions} from './dialog.options';
+import {type TuiDialogContext, type TuiDialogOptions} from './dialog.options';
 import {TUI_DIALOGS_CLOSE, TuiDialogCloseService} from './dialog.providers';
 
 const REQUIRED_ERROR = new Error('Required dialog was dismissed');
@@ -54,13 +53,15 @@ function toObservable<T>(valueOrStream: Observable<T> | T): Observable<T> {
         '[attr.data-appearance]': 'context.appearance',
         '[attr.data-size]': 'context.size',
         '[class._closable]': 'context.closable',
+        '[class.tui-backdrop-hidden]': 'context.appearance.includes("fullscreen")',
     },
 })
 export class TuiDialogComponent<O, I> {
     protected readonly close$ = new Subject<void>();
     protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly context = injectContext<TuiPopover<TuiDialogOptions<I>, O>>();
+    protected readonly context = injectContext<TuiDialogContext<I, O>>();
+
     protected readonly primitive =
         typeof this.context.content === 'function' ||
         Object(this.context.content) !== this.context.content;

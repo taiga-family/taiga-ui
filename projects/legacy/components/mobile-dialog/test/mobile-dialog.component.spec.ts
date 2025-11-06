@@ -1,10 +1,7 @@
 import {ChangeDetectionStrategy, Component, type DebugElement} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {
-    tuiMobileDialogOptionsProvider,
-    TuiMobileDialogService,
-} from '@taiga-ui/addon-mobile';
 import {provideTaiga, TuiRoot} from '@taiga-ui/core';
+import {tuiMobileDialogOptionsProvider, TuiMobileDialogService} from '@taiga-ui/legacy';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
@@ -36,6 +33,7 @@ describe('Mobile Dialog with TUI_MOBILE_DIALOG_OPTIONS', () => {
         fixture = TestBed.createComponent(Test);
         tuiMobileDialogService = TestBed.inject(TuiMobileDialogService);
         pageObject = new TuiPageObject(fixture);
+        fixture.detectChanges();
     });
 
     describe('label', () => {

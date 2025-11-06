@@ -161,10 +161,10 @@
 
             <li class="tui-list__item">
                 <p>
-                    You can also customize notification logic with a component. Inject
-                    <code>POLYMORPHEUS_CONTEXT</code>
-                    into the component to get context input data and to output results. It has the following interface:
-                    <code [textContent]="'TuiPopover<TuiAlertOptions<I>, O>'"></code>
+                    You can also customize notification logic with a component. Use
+                    <code>injectContext</code>
+                    in your component to get context input data and to output results. It has the following interface:
+                    <code [textContent]="'TuiAlertContext<I, O>'"></code>
                     , where
                     <code>O</code>
                     is output data type and

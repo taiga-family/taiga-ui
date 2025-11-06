@@ -10,7 +10,6 @@ export function tuiProvideOptions<T>(
         useFactory: (): T => ({
             ...(inject(provide, {optional: true, skipSelf: true}) || fallback),
             ...(inject(options as any, {optional: true}) ||
-                // @ts-ignore
                 (typeof options === 'function' ? options() : options)),
         }),
     };

@@ -2,8 +2,7 @@ import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiPopover} from '@taiga-ui/cdk';
-import {type TuiAlertOptions, TuiAlertService, TuiButton, TuiIcon} from '@taiga-ui/core';
+import {type TuiAlertContext, TuiAlertService, TuiButton, TuiIcon} from '@taiga-ui/core';
 import {
     injectContext,
     PolymorpheusComponent,
@@ -35,8 +34,7 @@ class CustomLabel {}
     changeDetection,
 })
 class AlertExampleWithCustomLabel {
-    protected readonly context =
-        injectContext<TuiPopover<TuiAlertOptions<unknown>, boolean>>();
+    protected readonly context = injectContext<TuiAlertContext>();
 }
 
 @Component({

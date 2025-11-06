@@ -1,12 +1,11 @@
 ```ts
-import {TuiAlertOptions} from '@taiga-ui/core';
-import {TuiPopover} from '@taiga-ui/cdk';
-import {POLYMORPHEUS_CONTEXT} from '@taiga-ui/polymorpheus';
+import {TuiAlertContext} from '@taiga-ui/core';
+import {injectContext} from '@taiga-ui/polymorpheus';
 
 //...
 
 export class NotificationExample {
-  private readonly context: TuiPopover<TuiAlertOptions<boolean>, boolean> = inject(POLYMORPHEUS_CONTEXT);
+  private readonly context = injectContext<TuiAlertContext<boolean, boolean>>();
 
   ok() {
     this.context.completeWith(true);

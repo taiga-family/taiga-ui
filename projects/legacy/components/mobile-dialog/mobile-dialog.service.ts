@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {type TuiPopoverContext, TuiPopoverService} from '@taiga-ui/cdk/services';
-import {TUI_DIALOGS} from '@taiga-ui/core/components/dialog';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
+import {TuiModalService} from '@taiga-ui/core/components/modal';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
 
@@ -12,20 +12,17 @@ import {
 
 @Injectable({
     providedIn: 'root',
-    useFactory: () =>
-        new TuiMobileDialogService(
-            TUI_DIALOGS,
-            TuiMobileDialog,
-            inject(TUI_MOBILE_DIALOG_OPTIONS),
-        ),
 })
-export class TuiMobileDialogService extends TuiPopoverService<
+export class TuiMobileDialogService extends TuiModalService<
     TuiMobileDialogOptions<any>,
     number
 > {
+    protected readonly options = inject(TUI_MOBILE_DIALOG_OPTIONS);
+    protected readonly content = TuiMobileDialog;
+
     public override open(
         content: PolymorpheusContent<
-            TuiMobileDialogOptions<any> & TuiPopoverContext<number>
+            TuiPortalContext<TuiMobileDialogOptions<any>, number>
         >,
         options: Partial<TuiMobileDialogOptions<any>> = {},
     ): Observable<number> {
