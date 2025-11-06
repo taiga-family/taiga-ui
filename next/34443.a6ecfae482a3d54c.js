@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[34443],{34443:n=>{n.exports="```json\n{\n  mcpServers: {\n    taigaUi: {\n      command: 'npx',\n      args: [\n        '@taiga-ui/mcp@latest',\n        '--source-url=https://taiga-ui.dev/llms-full.txt', // or file from \"/next\" version, if you want\n      ],\n    },\n  },\n}`\n```\n"}}]);
