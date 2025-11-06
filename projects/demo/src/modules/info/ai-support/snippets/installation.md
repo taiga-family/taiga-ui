@@ -1,7 +1,7 @@
 ```json
 {
   mcpServers: {
-    taiga-ui: {
+    taigaUi: {
       command: 'npx',
       args: [
         '@taiga-ui/mcp@latest',
