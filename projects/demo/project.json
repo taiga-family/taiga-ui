@@ -54,6 +54,26 @@
                         "glob": "**/*",
                         "input": "projects/icons/src",
                         "output": "assets/taiga-ui/icons"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "projects/icons-material/src",
+                        "output": "assets/taiga-ui/icons/"
+                    },
+                    {
+                        "glob": "**/*",
+                        "input": "projects/icons-fontawesome/src",
+                        "output": "assets/taiga-ui/icons/"
+                    },
+                    {
+                        "glob": "llms.txt",
+                        "input": "{projectRoot}/src/",
+                        "output": "./"
+                    },
+                    {
+                        "glob": "llms-full.txt",
+                        "input": "{projectRoot}/src/",
+                        "output": "./"
                     }
                 ],
                 "styles": ["{projectRoot}/src/styles/styles.less", "{projectRoot}/src/styles/styles.scss"],

@@ -4,7 +4,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDemo} from '@demo/utils';
 import {TuiTable} from '@taiga-ui/addon-table';
-// eslint-disable-next-line @taiga-ui/experience-next/no-deep-imports
 import fileWithBreakpoints from '@taiga-ui/core/styles/variables/media.less';
 
 /**
