@@ -25487,7 +25487,7 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHintDirective} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 import {TuiLineClamp} from '@taiga-ui/kit';
 
 interface User {
@@ -25498,7 +25498,7 @@ interface User {
 }
 
 @Component({
-    imports: [TuiHintDirective, TuiLineClamp],
+    imports: [TuiHint, TuiLineClamp],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -40449,11 +40449,11 @@ import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAutoColorPipe, TuiHintDirective, TuiLink} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiHint, TuiLink} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
-    imports: [RouterLink, TuiAutoColorPipe, TuiAvatar, TuiHintDirective, TuiLink],
+    imports: [RouterLink, TuiAutoColorPipe, TuiAvatar, TuiHint, TuiLink],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -46033,20 +46033,12 @@ export class Example {}
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiHint, TuiHintDirective, TuiIcon} from '@taiga-ui/core';
+import {TuiButton, TuiHint, TuiIcon} from '@taiga-ui/core';
 import {TuiTooltip} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [
-        FormsModule,
-        TuiButton,
-        TuiHint,
-        TuiHintDirective,
-        TuiIcon,
-        TuiInputModule,
-        TuiTooltip,
-    ],
+    imports: [FormsModule, TuiButton, TuiHint, TuiIcon, TuiInputModule, TuiTooltip],
     templateUrl: './index.html',
     changeDetection,
 })
@@ -46156,10 +46148,10 @@ export class Example {}
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiHint, TuiHintDirective, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiHint, TuiLink} from '@taiga-ui/core';
 
 @Component({
-    imports: [RouterLink, TuiButton, TuiHint, TuiHintDirective, TuiLink],
+    imports: [RouterLink, TuiButton, TuiHint, TuiLink],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -46284,14 +46276,14 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {tuiProvide} from '@taiga-ui/cdk';
-import {TuiHint, TuiHintDirective} from '@taiga-ui/core';
+import {TuiHint} from '@taiga-ui/core';
 
 import {ABSTRACT_PROPS_ACCESSOR} from '../../components/abstract/abstract-props-accessor';
 import {AbstractExampleTuiHint} from '../../components/abstract/hint';
 import {InheritedDocumentation} from '../../components/abstract/inherited-documentation';
 
 @Component({
-    imports: [InheritedDocumentation, TuiDemo, TuiHint, TuiHintDirective],
+    imports: [InheritedDocumentation, TuiDemo, TuiHint],
     templateUrl: './index.html',
     changeDetection,
     providers: [tuiProvide(ABSTRACT_PROPS_ACCESSOR, PageComponent)],
