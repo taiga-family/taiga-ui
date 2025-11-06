@@ -1,0 +1,25 @@
+[tuiTruncate][tuiTruncate] {
+    display: flex;
+    flex-direction: row;
+    letter-spacing: -1rem;
+    box-sizing: border-box;
+    inline-size: 100%;
+    word-break: break-all;
+    -webkit-text-fill-color: transparent;
+
+    &[data-line-clamp='1'] {
+        white-space: nowrap;
+    }
+
+    &::before {
+        content: attr(data-text);
+        display: -webkit-box;
+        letter-spacing: initial;
+        -webkit-box-orient: block-axis;
+        -webkit-line-clamp: attr(data-line-clamp number, 1);
+        -webkit-text-fill-color: currentColor;
+        word-break: inherit;
+        inline-size: inherit;
+        overflow: hidden;
+    }
+}
