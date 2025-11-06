@@ -16,7 +16,6 @@ import {tuiZonefreeScheduler} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
-    tuiAsRectAccessor,
     tuiAsVehicle,
     type TuiRectAccessor,
     type TuiVehicle,
@@ -36,10 +35,7 @@ import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
     selector: '[tuiDropdown]:not(ng-container):not(ng-template)',
-    providers: [
-        tuiAsRectAccessor(TuiDropdownDirective),
-        tuiAsVehicle(TuiDropdownDirective),
-    ],
+    providers: [tuiAsVehicle(TuiDropdownDirective)],
     exportAs: 'tuiDropdown',
     hostDirectives: [
         TuiDropdownDriverDirective,

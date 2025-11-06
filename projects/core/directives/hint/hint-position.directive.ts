@@ -1,5 +1,4 @@
 import {Directive, inject, input, output} from '@angular/core';
-import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -57,7 +56,7 @@ export class TuiHintPosition extends TuiPositionAccessor {
         const direction = this.direction();
         const width = el?.clientWidth ?? rect.width;
         const height = el?.clientHeight ?? rect.height;
-        const hostRect = this.accessor.getClientRect() ?? EMPTY_CLIENT_RECT;
+        const hostRect = this.accessor.getClientRect();
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;
         const rtl = this.el.matches('[dir="rtl"] :scope');

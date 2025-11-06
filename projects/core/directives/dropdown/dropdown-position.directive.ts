@@ -1,5 +1,4 @@
 import {Directive, EventEmitter, inject, Output} from '@angular/core';
-import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -10,7 +9,6 @@ import {
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint, type TuiVerticalDirection} from '@taiga-ui/core/types';
 
-import {TuiDropdownDirective} from './dropdown.directive';
 import {TUI_DROPDOWN_OPTIONS, type TuiDropdownAlign} from './dropdown-options.directive';
 
 @Directive()
@@ -25,11 +23,11 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
     public readonly directionChange = new EventEmitter<TuiVerticalDirection>();
 
     public readonly type = 'dropdown';
-    public readonly accessor: TuiRectAccessor | null =
-        tuiFallbackAccessor<TuiRectAccessor>('dropdown')(
-            inject<any>(TuiRectAccessor, {optional: true}),
-            inject(TuiDropdownDirective, {optional: true})!,
-        );
+    public readonly accessor: TuiRectAccessor = tuiFallbackAccessor<TuiRectAccessor>(
+        'dropdown',
+    )(inject<any>(TuiRectAccessor, {optional: true}), {
+        getClientRect: () => this.el.getBoundingClientRect(),
+    });
 
     @tuiPure
     public emitDirection(direction: TuiVerticalDirection): void {
@@ -41,7 +39,7 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
             this.previous = undefined;
         }
 
-        const hostRect = this.accessor?.getClientRect() ?? EMPTY_CLIENT_RECT;
+        const hostRect = this.accessor.getClientRect();
         const viewportRect = this.viewport.getClientRect();
         const {minHeight, direction, offset, limitWidth} = this.options;
         const align = this.getAlign(this.options.align);
