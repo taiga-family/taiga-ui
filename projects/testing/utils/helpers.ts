@@ -12,7 +12,7 @@ import {
  */
 export function tuiWithPredicate<
     T extends ComponentHarnessConstructor<ComponentHarness> & {
-        with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
+        with(options?: BaseHarnessFilters): HarnessPredicate<ComponentHarness>;
     },
 >(original: T): T {
     original.with = (options: BaseHarnessFilters = {}) =>
@@ -29,7 +29,7 @@ export function tuiWithPredicate<
 export function tuiHarnessWith<T>(
     hostSelector: string,
 ): ComponentHarnessConstructor<ComponentHarness> & {
-    with: (options?: BaseHarnessFilters) => HarnessPredicate<ComponentHarness>;
+    with(options?: BaseHarnessFilters): HarnessPredicate<ComponentHarness>;
 } {
     return class extends ComponentHarness {
         public static readonly locator?: T;

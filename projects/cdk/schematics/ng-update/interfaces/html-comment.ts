@@ -5,5 +5,5 @@ export interface HtmlComment {
     readonly withAttrs?: string[];
     readonly pattern?: RegExp;
     readonly comment: string;
-    readonly filterFn?: (element: Element) => boolean;
+    filterFn?(element: Element): boolean;
 }
