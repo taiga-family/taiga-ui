@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[16932],{16932:e=>{e.exports="```html\nFormatted number: {{index | tuiFormatNumber}}\n```\n"}}]);
