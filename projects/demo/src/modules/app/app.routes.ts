@@ -987,11 +987,6 @@ export const ROUTES: Routes = [
     }),
     // SERVICES
     route({
-        path: DemoRoute.Alert,
-        title: 'Alert',
-        loadComponent: async () => import('../components/alert'),
-    }),
-    route({
         path: DemoRoute.BreakpointService,
         loadComponent: async () => import('../components/services/breakpoint-service'),
         title: 'BreakpointService',

@@ -174,12 +174,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Alert',
-        keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
-        route: DemoRoute.Alert,
-    },
-    {
-        section: 'Components',
         title: 'Avatar',
         keywords: 'аватар, image, pic, icon, картинка, изображение, avatar, stack',
         route: DemoRoute.Avatar,
