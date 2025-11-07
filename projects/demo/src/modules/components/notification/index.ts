@@ -10,7 +10,7 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiDemo, TuiTitle, TuiDocAppearance, TuiButton],
+    imports: [TuiButton, TuiDemo, TuiDocAppearance, TuiTitle],
     templateUrl: './index.html',
     changeDetection,
 })
