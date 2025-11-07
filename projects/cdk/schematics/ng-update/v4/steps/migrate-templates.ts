@@ -62,7 +62,7 @@ export function getAction<T>({
     action,
     requiredData,
 }: {
-    action: ({
+    action({
         resource,
         fileSystem,
         recorder,
@@ -72,7 +72,7 @@ export function getAction<T>({
         recorder: UpdateRecorder;
         data: T;
         resource: TemplateResource;
-    }) => void;
+    }): void;
     requiredData: T;
 }) {
     return ({

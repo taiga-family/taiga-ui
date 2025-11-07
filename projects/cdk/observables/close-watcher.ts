@@ -1,9 +1,9 @@
 import {Observable} from 'rxjs';
 
 interface CloseWatcher {
-    destroy: () => void;
-    onclose?: (event: Event) => void;
-    oncancel?: (event: Event) => void;
+    destroy(): void;
+    onclose?(event: Event): void;
+    oncancel?(event: Event): void;
 }
 
 export function tuiCloseWatcher(): Observable<void> {

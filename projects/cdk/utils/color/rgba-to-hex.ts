@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 export function tuiRgbaToHex(color: string): string {
     if (!tuiIsValidRgba(color)) {
         throw new Error('Invalid RGBa');

@@ -5,7 +5,7 @@ import {type Observable} from 'rxjs';
 interface Options {
     path?: string;
     title?: string;
-    loadComponent?: () =>
+    loadComponent?():
         | Observable<DefaultExport<Type<unknown>> | Type<unknown>>
         | Promise<DefaultExport<Type<unknown>> | Type<unknown>>
         | Type<unknown>;

@@ -14,7 +14,7 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
 > {
     protected parent: TuiValueTransformer<number | null, any> | null = null;
 
-    // eslint-disable-next-line @typescript-eslint/parameter-properties
+    // eslint-disable-next-line @typescript-eslint/parameter-properties,@angular-eslint/prefer-inject
     constructor(public quantum = 0) {
         super();
     }
