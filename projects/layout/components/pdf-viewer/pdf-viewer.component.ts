@@ -2,14 +2,17 @@ import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     ViewEncapsulation,
 } from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton, tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {type TuiDialogOptions} from '@taiga-ui/core/components/dialog';
+import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAppBar} from '@taiga-ui/layout/components/app-bar';
 import {injectContext} from '@taiga-ui/polymorpheus';
@@ -28,11 +31,12 @@ import {injectContext} from '@taiga-ui/polymorpheus';
         })),
     ],
     host: {
-        '[attr.tuiTheme]': 'isMobile ? "" : "dark"',
+        '[attr.tuiTheme]': 'isMobile() ? "" : "dark"',
     },
 })
 export class TuiPdfViewer<O, I> {
-    protected readonly isMobile = inject(TUI_IS_MOBILE);
+    private readonly breakpoint = toSignal(inject(TuiBreakpointService));
+    protected readonly isMobile = computed(() => this.breakpoint() === 'mobile');
     protected readonly el = tuiInjectElement();
     protected readonly close = inject(TUI_CLOSE_WORD);
     protected readonly icons = inject(TUI_COMMON_ICONS);
