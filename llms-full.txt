@@ -3731,11 +3731,10 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-bar-set class="bars" [collapsed]="true" [value]="value" > {{ sum | tuiFormatNumber | async }} </tui-bar-set>
+<tui-bar-set class="bars" [collapsed]="true" [value]="value" > {{ sum | tuiFormatNumber }} </tui-bar-set>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -3743,7 +3742,7 @@ import {TuiBarSet} from '@taiga-ui/addon-charts';
 import {TuiFormatNumberPipe} from '@taiga-ui/core';
 
 @Component({
-    imports: [AsyncPipe, TuiBarSet, TuiFormatNumberPipe],
+    imports: [TuiBarSet, TuiFormatNumberPipe],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -24062,14 +24061,13 @@ export default class Page {
 <span *tuiItem>&nbsp;• {{ item.number }}</span>
 <div *tuiMore="let index"> @if (index < 0) { <span>{{ item.name }}</span> } <span>&nbsp;*{{ item.number.slice(-4) }}</span>
 </div>
-</tui-items-with-more> ${{ item.value | tuiFormatNumber | async }} </span>
+</tui-items-with-more> ${{ item.value | tuiFormatNumber }} </span>
 </span>
 </ng-template>
 </tui-textfield>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -24085,7 +24083,6 @@ import {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiAvatar,
         TuiCell,
@@ -36438,13 +36435,12 @@ export class Example {}
 </tr>
 </thead>
 <tbody tuiTbody [data]="data" > @for (item of data; track item) { <tr tuiTr>
-<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber | async }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber }} </td>
 </tr> } </tbody>
 </table>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -36452,7 +36448,7 @@ import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiFormatNumberPipe} from '@taiga-ui/core';
 
 @Component({
-    imports: [AsyncPipe, TuiFormatNumberPipe, TuiTable],
+    imports: [TuiFormatNumberPipe, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -36496,7 +36492,7 @@ export default class Example {
 <td *tuiCell="'firstName'" tuiTd [colSpan]="2" > {{ basicData.length }} Developers (basic usage) </td>
 <ng-container *tuiCell="'lastName'" />
 <td *tuiCell="'role'" tuiTd > dev </td>
-<td *tuiCell="'balance'" tuiTd > {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber | async }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ basicData | tuiMapper: getSumBalance | tuiFormatNumber }} </td>
 </tr>
 <tui-table-expand #expand [expanded]="true" > @for (item of basicData; track item) { <tr tuiTr>
 <td *tuiCell="'action'" tuiTd ></td>
@@ -36507,7 +36503,7 @@ export default class Example {
 </td>
 <td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
 <td *tuiCell="'role'" tuiTd > {{ item.role }} </td>
-<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber | async }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber }} </td>
 </tr> } </tui-table-expand>
 </tbody>
 <tbody tuiTbody>
@@ -36518,14 +36514,14 @@ export default class Example {
 <td *tuiCell="'firstName'" tuiTd [colSpan]="2" > {{ manualOpenData.length }} Designers (manual handling) </td>
 <ng-container *tuiCell="'lastName'" />
 <td *tuiCell="'role'" tuiTd > design </td>
-<td *tuiCell="'balance'" tuiTd > {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber | async }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ manualOpenData | tuiMapper: getSumBalance | tuiFormatNumber }} </td>
 </tr>
 <tui-table-expand [expanded]="manualOpen"> @for (item of manualOpenData; track item) { <tr tuiTr>
 <td *tuiCell="'action'" tuiTd ></td>
 <td *tuiCell="'firstName'" tuiTd > {{ item.firstName }} </td>
 <td *tuiCell="'lastName'" tuiTd > {{ item.lastName }} </td>
 <td *tuiCell="'role'" tuiTd > {{ item.role }} </td>
-<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber | async }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber }} </td>
 </tr> } </tui-table-expand>
 </tbody>
 <tbody tuiTbody>
@@ -36536,7 +36532,7 @@ export default class Example {
 <td *tuiCell="'firstName'" tuiTd [colSpan]="2" > Custom content (click on chevron) </td>
 <ng-container *tuiCell="'lastName'" />
 <td *tuiCell="'role'" tuiTd > all </td>
-<td *tuiCell="'balance'" tuiTd > {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber | async }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ customContentData | tuiMapper: getSumBalance | tuiFormatNumber }} </td>
 </tr>
 <tr>
 <td [colSpan]="columns.length">
@@ -36550,7 +36546,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -36568,7 +36563,6 @@ interface Item {
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiButton,
         TuiChevron,
         TuiChip,
@@ -37069,7 +37063,7 @@ export default class Example {
 <tui-calendar *tuiDropdown />
 </tui-textfield>
 </td>
-<td *tuiCell="'total'" tuiTd class="number text" > {{ getTotal(item) | tuiFormatNumber | async }} </td>
+<td *tuiCell="'total'" tuiTd class="number text" > {{ getTotal(item) | tuiFormatNumber }} </td>
 </tr> } </tbody> @let sortedStarwars = starwars | tuiTableSort; <tbody tuiTbody [data]="sortedStarwars" [heading]="template" > @for (item of sortedStarwars; track trackByIndex($index)) { <tr tuiTr>
 <th *tuiCell="'name'" tuiTd >
 <tui-textfield>
@@ -37098,7 +37092,7 @@ export default class Example {
 <tui-calendar *tuiDropdown />
 </tui-textfield>
 </td>
-<td *tuiCell="'total'" tuiTd class="number text" > {{ getTotal(item) | tuiFormatNumber | async }} </td>
+<td *tuiCell="'total'" tuiTd class="number text" > {{ getTotal(item) | tuiFormatNumber }} </td>
 </tr> } </tbody>
 </table>
 </tui-scrollbar>
@@ -37107,7 +37101,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule, type ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -37141,7 +37134,6 @@ interface Item {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiChevron,
         TuiDataListWrapper,
@@ -37714,13 +37706,12 @@ export default class Example {
 </thead>
 <tbody tuiTbody> @for (item of data; track item) { <tr>
 <td tuiTd>{{ item.name }}</td>
-<td tuiTd>{{ item.balance | tuiFormatNumber | async }}</td>
+<td tuiTd>{{ item.balance | tuiFormatNumber }}</td>
 </tr> } </tbody>
 </table>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -37732,7 +37723,6 @@ import {TuiButtonSelect, TuiDataListWrapper, TuiPagination} from '@taiga-ui/kit'
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiButton,
         TuiButtonSelect,
@@ -38098,7 +38088,7 @@ export class Example {}
 <tbody tuiTbody>
 <!-- Type '{}' must have a '[Symbol.iterator]()' method that returns an iterator. --> @let items = $any(data | tuiTableFilters | async); @for (item of items; track item) { <tr tuiTr>
 <td *tuiCell="'name'" tuiTd > {{ item.name }} </td>
-<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber | async }} </td>
+<td *tuiCell="'balance'" tuiTd > {{ item.balance | tuiFormatNumber }} </td>
 </tr> } </tbody>
 </table>
 </ng-container>
@@ -46638,14 +46628,13 @@ export class Example {}
 ```html
 <!-- Works in several levels-->
 <tui-textfield [tuiNumberFormat]="{precision: 1, thousandSeparator: '_'}">
-<label tuiLabel>Label: {{ value | tuiFormatNumber | async }}</label>
+<label tuiLabel>Label: {{ value | tuiFormatNumber }}</label>
 <!-- You can also put directive directly on [tuiInputNumber] -->
 <input tuiInputNumber [tuiNumberFormat]="{precision: 2}" [(ngModel)]="value" />
 </tui-textfield>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -46655,7 +46644,6 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiFormatNumberPipe,
         TuiInputNumber,
@@ -50504,7 +50492,7 @@ export class Example {}
 ### How to Use (Template)
 
 ```html
-Formatted number: {{index | tuiFormatNumber | async}}
+Formatted number: {{index | tuiFormatNumber}}
 ```
 
 ### Usage Examples
@@ -50513,20 +50501,19 @@ Formatted number: {{index | tuiFormatNumber | async}}
 
 **Template:**
 ```html
-<p>Formatted number by default: {{ 10500.33 | tuiFormatNumber | async }}</p>
-<p> Formatted number with custom params: {{ 10500.33 | tuiFormatNumber: {precision: 4, decimalSeparator: '.'} | async }} </p>
-<p> Formatted number with rounding: {{ 10500.334 | tuiFormatNumber: {precision: 2, decimalSeparator: '.', rounding: 'ceil'} | async }} </p>
+<p>Formatted number by default: {{ 10500.33 | tuiFormatNumber }}</p>
+<p> Formatted number with custom params: {{ 10500.33 | tuiFormatNumber: {precision: 4, decimalSeparator: '.'} }} </p>
+<p> Formatted number with rounding: {{ 10500.334 | tuiFormatNumber: {precision: 2, decimalSeparator: '.', rounding: 'ceil'} }} </p>
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiFormatNumberPipe} from '@taiga-ui/core';
 
 @Component({
-    imports: [AsyncPipe, TuiFormatNumberPipe],
+    imports: [TuiFormatNumberPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
