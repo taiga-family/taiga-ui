@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.61.0](https://github.com/taiga-family/taiga-ui/compare/v4.60.0...v4.61.0) (2025-11-10)
+
+### 🐞 Bug Fixes
+
+- `Present` workaround for ios26 ([#12480](https://github.com/taiga-family/taiga-ui/issues/12480))
+  ([82c9590](https://github.com/taiga-family/taiga-ui/commit/82c959000b5493f8863bd01ba909ca1f616624b7))
+- **addon-charts:** line-chart shouldn't re-render when it goes out of viewport
+  ([#12436](https://github.com/taiga-family/taiga-ui/issues/12436))
+  ([b63e28f](https://github.com/taiga-family/taiga-ui/commit/b63e28f0edc9ac4de674bf86a30e1f9451586820))
+- **addon-commerce:** introduce collapsed offset variables
+  ([#12407](https://github.com/taiga-family/taiga-ui/issues/12407))
+  ([8ab226e](https://github.com/taiga-family/taiga-ui/commit/8ab226e83c8bc255918f289872f1665d252c9275))
+- **addon-mobile:** `BottomSheet` fix reacting to scroll in ios26
+  ([#12483](https://github.com/taiga-family/taiga-ui/issues/12483))
+  ([e052b72](https://github.com/taiga-family/taiga-ui/commit/e052b72c86366baab540167ebff088e3c00cfda7))
+- **layout:** app bar button font weight and style ([#12485](https://github.com/taiga-family/taiga-ui/issues/12485))
+  ([60da7b2](https://github.com/taiga-family/taiga-ui/commit/60da7b206bbbe7bdefb3b06fbd56c7425c071e72))
+
 ## [4.60.0](https://github.com/taiga-family/taiga-ui/compare/v4.59.0...v4.60.0) (2025-10-27)
 
 ### 🚀 Features
