@@ -2741,11 +2741,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiIcon} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiBadge, TuiIcon, TuiPlatform],
+    imports: [TuiBadge, TuiPlatform],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -3093,11 +3092,10 @@ export class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification, TuiIcon],
+    imports: [TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -3132,11 +3130,10 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification, TuiIcon],
+    imports: [TuiAvatar, TuiBadge, TuiBadgedContent, TuiBadgeNotification],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -3163,7 +3160,7 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiIcon} from '@taiga-ui/core';
+import {TuiButton} from '@taiga-ui/core';
 import {TuiBadge, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
@@ -3173,7 +3170,6 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiBadgedContent,
         TuiBadgeNotification,
         TuiButton,
-        TuiIcon,
         TuiInputModule,
     ],
     templateUrl: './index.html',
@@ -5196,10 +5192,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiIcon} from '@taiga-ui/core';
-import {TuiAvatar, TuiBlock} from '@taiga-ui/kit';
+import {TuiAvatar} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiBlock, TuiButton, TuiIcon],
+    imports: [TuiAvatar, TuiButton, TuiIcon],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -5281,10 +5277,10 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiAvatar, TuiBlock, TuiFade} from '@taiga-ui/kit';
+import {TuiAvatar, TuiFade} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiAvatar, TuiBlock, TuiButton, TuiFade],
+    imports: [TuiAvatar, TuiButton, TuiFade],
     templateUrl: './index.html',
     styles: ':host { display: flex; gap: 1rem; align-items: flex-start; }',
     encapsulation,
@@ -8492,7 +8488,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiCell, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiSwitch} from '@taiga-ui/kit';
 
 @Component({
@@ -8502,7 +8498,6 @@ import {TuiAvatar, TuiBadge, TuiBadgedContent, TuiSwitch} from '@taiga-ui/kit';
         TuiBadge,
         TuiBadgedContent,
         TuiCell,
-        TuiIcon,
         TuiSwitch,
         TuiTitle,
     ],
@@ -9815,7 +9810,6 @@ You can use ComboBox with virtual scrolling from &#64;angular/cdk/scrolling .
 **TypeScript:**
 ```ts
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9830,7 +9824,6 @@ import {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         ScrollingModule,
         TuiChevron,
@@ -9865,7 +9858,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component, computed, inject, type Signal, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9881,7 +9873,6 @@ import {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiChevron,
         TuiComboBox,
@@ -15151,14 +15142,7 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TuiError,
-    TuiGroup,
-    TuiHint,
-    TuiIcon,
-    TuiSelectLike,
-    TuiTextfield,
-} from '@taiga-ui/core';
+import {TuiError, TuiGroup, TuiHint, TuiIcon, TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiDataListWrapper,
@@ -15180,7 +15164,6 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiInputChip,
         TuiInputModule,
         TuiMultiSelect,
-        TuiSelectLike,
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTooltip,
@@ -15682,10 +15665,10 @@ export class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIcon, TuiIconPipe} from '@taiga-ui/core';
+import {TuiIcon} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiIcon, TuiIconPipe],
+    imports: [TuiIcon],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -28930,7 +28913,7 @@ import {TuiPdfViewer} from '@taiga-ui/layout';
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly pdf = 'assets/media/taiga.pdf';
+    protected readonly pdf = '/assets/media/taiga.pdf';
     protected open = false;
 
     protected readonly url = this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -28974,7 +28957,7 @@ export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
     protected readonly alerts = inject(TuiAlertService);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly pdf = 'assets/media/taiga.pdf';
+    protected readonly pdf = '/assets/media/taiga.pdf';
     protected open = false;
 
     protected readonly url = this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -29019,7 +29002,7 @@ import {TuiBlockStatus, TuiPdfViewer} from '@taiga-ui/layout';
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly pdf = 'assets/media/taiga.pdf';
+    protected readonly pdf = '/assets/media/taiga.pdf';
     protected open = false;
 
     protected readonly url = this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -33212,7 +33195,6 @@ You can use Select with virtual scrolling from &#64;angular/cdk/scrolling .
 **TypeScript:**
 ```ts
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -33222,7 +33204,6 @@ import {TUI_COUNTRIES, TuiChevron, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         ScrollingModule,
         TuiChevron,
@@ -43115,7 +43096,6 @@ export class Example {}
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component, computed, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -43125,7 +43105,7 @@ import {TUI_NUMBER_FORMAT, TuiAlertService, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
-    imports: [AsyncPipe, FormsModule, TuiCopyProcessor, TuiInputNumber, TuiTextfield],
+    imports: [FormsModule, TuiCopyProcessor, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -44138,9 +44118,9 @@ export default class Example {}
 <button appearance="outline-grayscale" iconStart="@tui.ellipsis" tuiDropdownHover tuiDropdownSheet="Contact Us" tuiIconButton type="button" [tuiDropdown]="dropdown" > More </button>
 <ng-template #dropdown>
 <tui-data-list>
-<a href="https://github.com/taiga-family/taiga-ui" iconStart="assets/icons/github.svg" new rel="noreferrer" target="_blank" tuiOption > GitHub </a>
-<a href="https://t.me/taiga_ui" iconStart="assets/icons/telegram.svg" new rel="noreferrer" target="_blank" tuiOption > Telegram </a>
-<a href="https://discord.gg/zrB2EdJjEy" iconStart="assets/icons/discord.svg" new rel="noreferrer" target="_blank" tuiOption > Discord </a>
+<a href="https://github.com/taiga-family/taiga-ui" iconStart="/assets/icons/github.svg" new rel="noreferrer" target="_blank" tuiOption > GitHub </a>
+<a href="https://t.me/taiga_ui" iconStart="/assets/icons/telegram.svg" new rel="noreferrer" target="_blank" tuiOption > Telegram </a>
+<a href="https://discord.gg/zrB2EdJjEy" iconStart="/assets/icons/discord.svg" new rel="noreferrer" target="_blank" tuiOption > Discord </a>
 </tui-data-list>
 </ng-template>
 ```
@@ -47971,7 +47951,6 @@ export default class Example {
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -47980,7 +47959,7 @@ import {TuiPopup} from '@taiga-ui/core';
 import {TuiDrawer} from '@taiga-ui/kit';
 
 @Component({
-    imports: [AsyncPipe, TuiDrawer, TuiPopup, TuiSwipe],
+    imports: [TuiDrawer, TuiPopup, TuiSwipe],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -50325,7 +50304,6 @@ export class Example {}
 ```
 **TypeScript:**
 ```ts
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -50334,7 +50312,7 @@ import {type TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {TUI_COUNTRIES} from '@taiga-ui/kit';
 
 @Component({
-    imports: [AsyncPipe, TuiFlagPipe],
+    imports: [TuiFlagPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
