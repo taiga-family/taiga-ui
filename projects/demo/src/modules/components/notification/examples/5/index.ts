@@ -34,7 +34,7 @@ import {switchMap, takeUntil} from 'rxjs';
     `,
     changeDetection,
 })
-export class AlertExampleWithData {
+class Alert {
     protected readonly context = injectContext<TuiAlertContext<number, number>>();
     protected value = this.context.data;
 
@@ -51,22 +51,22 @@ export class AlertExampleWithData {
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
-    private readonly notification = this.alerts
-        .open<number>(new PolymorpheusComponent(AlertExampleWithData), {
+    protected readonly notifications = inject(TuiAlertService);
+    protected readonly notification = this.notifications
+        .open<number>(new PolymorpheusComponent(Alert), {
             label: 'Heading is so long that it should be shown in two lines of text',
             data: 237,
             appearance: 'warning',
             autoClose: 0,
         })
         .pipe(
-            switchMap((response) =>
-                this.alerts.open(`Got a value — ${response}`, {label: 'Information'}),
+            switchMap((value) =>
+                this.notifications.open(`Got a value — ${value}`, {label: 'Response'}),
             ),
             takeUntil(inject(Router).events),
         );
 
-    protected showNotification(): void {
+    protected onClick(): void {
         this.notification.subscribe();
     }
 }

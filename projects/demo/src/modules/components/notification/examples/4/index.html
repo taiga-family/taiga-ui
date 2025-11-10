@@ -1,12 +1,21 @@
 <button
-    icon="@tui.heart"
-    iconEnd="@tui.chevron-right"
-    size="l"
-    tuiNotification
+    size="m"
+    tuiButton
     type="button"
+    (click)="show.set(true)"
 >
-    <span tuiTitle>
-        Custom icon color
-        <span tuiSubtitle>Vertically centered</span>
-    </span>
+    Show
 </button>
+<ng-template
+    [tuiAlertOptions]="{label: 'Directive', autoClose: 0, closable: false}"
+    [(tuiAlert)]="show"
+>
+    <span tuiSubtitle>This is a declarative directive alert</span>
+    <button
+        tuiButton
+        type="button"
+        (click)="show.set(false)"
+    >
+        Close
+    </button>
+</ng-template>

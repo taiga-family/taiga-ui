@@ -215,7 +215,6 @@ export const DemoRoute = {
     RepeatTimes: '/pipes/repeat-times',
     Stringify: '/pipes/stringify',
     StringifyContent: '/pipes/stringify-content',
-    Alert: '/components/alert',
     BreakpointService: '/services/breakpoint-service',
     KeyboardService: '/services/keyboard-service',
     ActionBar: '/components/actions-bar',
