@@ -5,7 +5,7 @@ import {TuiDemo} from '@demo/utils';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TUI_DIALOG_OPTIONS,
-    TuiAlertService,
+    TuiNotificationService,
     TuiButton,
     type TuiDialogContext,
     TuiDialogService,
@@ -20,7 +20,7 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Page extends Array {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
     private readonly options = inject(TUI_DIALOG_OPTIONS);
 

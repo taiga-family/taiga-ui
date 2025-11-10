@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
+import {TuiNotificationService, TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
@@ -14,7 +14,7 @@ import {DialogComponent} from './component';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
 
     protected click(): void {

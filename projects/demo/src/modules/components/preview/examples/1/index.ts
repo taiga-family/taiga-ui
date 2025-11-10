@@ -2,7 +2,7 @@ import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiClamp, TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton, type TuiDialogContext} from '@taiga-ui/core';
+import {TuiNotificationService, TuiButton, type TuiDialogContext} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -15,7 +15,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 })
 export default class Example {
     private readonly previewService = inject(TuiPreviewDialogService);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     @ViewChild('preview')
     protected readonly preview?: TemplateRef<TuiDialogContext>;

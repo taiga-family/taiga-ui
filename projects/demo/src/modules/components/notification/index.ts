@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
     TUI_NOTIFICATION_OPTIONS,
-    TuiAlertService,
+    TuiNotificationService,
     TuiButton,
     TuiTitle,
 } from '@taiga-ui/core';
@@ -15,7 +15,7 @@ import {
     changeDetection,
 })
 export default class Page {
-    protected readonly notifications = inject(TuiAlertService);
+    protected readonly notifications = inject(TuiNotificationService);
     protected readonly options = inject(TUI_NOTIFICATION_OPTIONS);
     protected readonly sizes = ['s', 'm', 'l'] as const;
     protected readonly icons = [this.options.icon, '@tui.clock', ''];
