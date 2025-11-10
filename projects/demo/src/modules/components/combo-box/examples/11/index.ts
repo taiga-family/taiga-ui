@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, computed, inject, type Signal, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -14,7 +13,6 @@ import {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiChevron,
         TuiComboBox,

@@ -1,5 +1,4 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -9,7 +8,6 @@ import {TUI_COUNTRIES, TuiChevron, TuiSelect} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         ScrollingModule,
         TuiChevron,
