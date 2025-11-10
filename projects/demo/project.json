@@ -195,16 +195,6 @@
                 "collectCoverage": false,
                 "testMatch": ["<rootDir>/{projectRoot}/src/**/*.spec.ts"]
             }
-        },
-        "serve-static": {
-            "continuous": true,
-            "executor": "@nx/web:file-server",
-            "options": {
-                "buildTarget": "{projectName}:build",
-                "port": 3333,
-                "staticFilePath": "dist/{projectName}/browser",
-                "spa": true
-            }
         }
     }
 }
