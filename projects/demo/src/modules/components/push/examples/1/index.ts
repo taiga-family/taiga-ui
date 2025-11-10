@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiNotificationService, TuiButton, TuiIcon, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiIcon, TuiLink, TuiNotificationService} from '@taiga-ui/core';
 import {TuiPush} from '@taiga-ui/kit';
 
 @Component({

@@ -3,8 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {
-    TuiNotificationService,
     TuiIcon,
+    TuiNotificationService,
     TuiNumberFormat,
     TuiTextfield,
 } from '@taiga-ui/core';

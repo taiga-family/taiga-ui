@@ -6,10 +6,10 @@ import {TuiLegendItem, TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiPure, tuiSum} from '@taiga-ui/cdk';
 import {
-    TuiNotificationService,
     tuiFormatNumber,
     TuiIcon,
     TuiNotification,
+    TuiNotificationService,
 } from '@taiga-ui/core';
 import {TuiCheckbox} from '@taiga-ui/kit';
 

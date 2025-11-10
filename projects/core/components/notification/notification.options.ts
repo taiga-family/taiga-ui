@@ -1,8 +1,8 @@
 import {type TuiNumberHandler, type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
-import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {type TuiPositionOptions} from '@taiga-ui/core/directives/alert';
+import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export interface TuiNotificationOptions<I = undefined>

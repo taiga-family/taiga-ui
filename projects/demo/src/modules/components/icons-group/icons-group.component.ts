@@ -19,8 +19,8 @@ import {
     TuiKeysPipe,
 } from '@taiga-ui/cdk';
 import {
-    TuiNotificationService,
     TuiHint,
+    TuiNotificationService,
     TuiTextfieldOptionsDirective,
 } from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';

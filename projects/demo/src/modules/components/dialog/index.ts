@@ -5,10 +5,10 @@ import {TuiDemo} from '@demo/utils';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TUI_DIALOG_OPTIONS,
-    TuiNotificationService,
     TuiButton,
     type TuiDialogContext,
     TuiDialogService,
+    TuiNotificationService,
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiForm} from '@taiga-ui/layout';

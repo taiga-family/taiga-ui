@@ -4,7 +4,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiResponsiveDialog} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiNotificationService, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService, TuiTitle} from '@taiga-ui/core';
 import {TuiPdfViewer} from '@taiga-ui/layout';
 
 @Component({

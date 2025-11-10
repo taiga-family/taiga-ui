@@ -6,7 +6,7 @@ import {
     TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
-import {TuiNotificationService, TuiButton, type TuiDialogContext} from '@taiga-ui/core';
+import {TuiButton, type TuiDialogContext, TuiNotificationService} from '@taiga-ui/core';
 import {TuiFloatingContainer} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 

@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiNotificationService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({

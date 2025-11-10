@@ -4,8 +4,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
     TUI_NOTIFICATION_OPTIONS,
-    TuiNotificationService,
     TuiButton,
+    TuiNotificationService,
     TuiTitle,
 } from '@taiga-ui/core';
 
