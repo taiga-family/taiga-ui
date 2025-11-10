@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40075],{40075:e=>{e.exports="import {ChangeDetectionStrategy, Component} from '@angular/core';\n\n@Component({\n    template: 'Lazy loaded dialog content',\n    changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport default class LazyDialog {}\n"}}]);

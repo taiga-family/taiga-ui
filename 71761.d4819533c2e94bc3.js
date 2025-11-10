@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[71761],{71761:e=>{e.exports='```html\n<tui-pulse [playing]="value"></tui-pulse>\n```\n'}}]);
