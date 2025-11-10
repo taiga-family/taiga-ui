@@ -2,16 +2,11 @@ import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TUI_DIALOGS_CLOSE,
-    TuiButton,
-    TuiDialog,
-    TuiHeader,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TUI_DIALOGS_CLOSE, TuiButton, TuiDialog, TuiTitle} from '@taiga-ui/core';
 import {merge} from 'rxjs';
 
 import {AuthService} from './service';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiDialog, TuiHeader, TuiTitle],

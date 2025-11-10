@@ -7,13 +7,12 @@ import {
     TuiCell,
     TuiDataList,
     TuiDropdown,
-    TuiHeader,
     TuiIcon,
     TuiLink,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
