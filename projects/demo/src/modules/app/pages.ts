@@ -1486,6 +1486,12 @@ export const pages: DocRoutePages = [
                     figmaVersion: '1.2.0',
                 },
             },
+            {
+                section: 'Tools',
+                title: 'Truncate',
+                keywords: 'truncate, middle, ellipsis, обрезка, по середине',
+                route: DemoRoute.Truncate,
+            },
         ],
     },
     {
