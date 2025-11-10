@@ -51,6 +51,7 @@ export class TuiBottomSheet {
         const transform = `translate3d(0, ${-1 * scrolled}px, 0)`;
 
         this.el.style.setProperty('--t-height', `${scrollHeight}px`);
+        this.el.style.setProperty('overflow', 'scroll');
         this.el.animate([{transform}], OPTIONS);
     }
 }
