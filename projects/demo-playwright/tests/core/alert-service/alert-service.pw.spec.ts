@@ -8,9 +8,9 @@ test.describe('AlertService', () => {
     });
 
     test('is shown correctly', async ({page}) => {
-        await tuiGoto(page, DemoRoute.Alert);
-        const example = page.locator('#text');
-        const showAlertButton = example.locator('button:has-text("Show")').first();
+        await tuiGoto(page, DemoRoute.Notification);
+        const example = page.locator('#service');
+        const showAlertButton = example.locator('button:has-text("Show string")').first();
 
         await showAlertButton.click();
 
