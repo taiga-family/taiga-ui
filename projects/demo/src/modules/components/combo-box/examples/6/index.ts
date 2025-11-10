@@ -16,6 +16,7 @@ interface Character {
 }
 
 @Component({
+    selector: 'example-6',
     imports: [
         FormsModule,
         TuiChevron,
