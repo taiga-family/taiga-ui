@@ -93,6 +93,7 @@ export const TUI_USED_ICONS = [
     '@tui.puzzle',
     '@tui.rocket',
     '@tui.rotate-cw',
+    '@tui.rss',
     '@tui.scaling',
     '@tui.search',
     '@tui.send',
