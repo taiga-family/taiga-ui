@@ -3,6 +3,79 @@
 All notable changes to this project will be documented in this file. See
 [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.61.0](https://github.com/taiga-family/taiga-ui/compare/v4.60.0...v4.61.0) (2025-11-10)
+
+### 🐞 Bug Fixes
+
+- `Present` workaround for ios26 ([#12480](https://github.com/taiga-family/taiga-ui/issues/12480))
+  ([82c9590](https://github.com/taiga-family/taiga-ui/commit/82c959000b5493f8863bd01ba909ca1f616624b7))
+- **addon-charts:** line-chart shouldn't re-render when it goes out of viewport
+  ([#12436](https://github.com/taiga-family/taiga-ui/issues/12436))
+  ([b63e28f](https://github.com/taiga-family/taiga-ui/commit/b63e28f0edc9ac4de674bf86a30e1f9451586820))
+- **addon-commerce:** introduce collapsed offset variables
+  ([#12407](https://github.com/taiga-family/taiga-ui/issues/12407))
+  ([8ab226e](https://github.com/taiga-family/taiga-ui/commit/8ab226e83c8bc255918f289872f1665d252c9275))
+- **addon-mobile:** `BottomSheet` fix reacting to scroll in ios26
+  ([#12483](https://github.com/taiga-family/taiga-ui/issues/12483))
+  ([e052b72](https://github.com/taiga-family/taiga-ui/commit/e052b72c86366baab540167ebff088e3c00cfda7))
+- **layout:** app bar button font weight and style ([#12485](https://github.com/taiga-family/taiga-ui/issues/12485))
+  ([60da7b2](https://github.com/taiga-family/taiga-ui/commit/60da7b206bbbe7bdefb3b06fbd56c7425c071e72))
+
+## [4.60.0](https://github.com/taiga-family/taiga-ui/compare/v4.59.0...v4.60.0) (2025-10-27)
+
+### 🚀 Features
+
+- **kit:** align close button to top for closable preset in tuiCell
+  ([#12347](https://github.com/taiga-family/taiga-ui/issues/12347))
+  ([9316d08](https://github.com/taiga-family/taiga-ui/commit/9316d0840e9b140e03d0d24c76d181268561c722))
+- **schematics:** add support for migration app bar ([#12371](https://github.com/taiga-family/taiga-ui/issues/12371))
+  ([cb662b4](https://github.com/taiga-family/taiga-ui/commit/cb662b4309d3ed64973a45cb414ebc94ad8df9ae))
+- **schematics:** add support for migration onboarding flow
+  ([#12372](https://github.com/taiga-family/taiga-ui/issues/12372))
+  ([3410baa](https://github.com/taiga-family/taiga-ui/commit/3410baab60266cca37bd44dafdcc4ff1bac1b36b))
+- **schematics:** add support for migration responsive dialog
+  ([#12374](https://github.com/taiga-family/taiga-ui/issues/12374))
+  ([8c71f9a](https://github.com/taiga-family/taiga-ui/commit/8c71f9a4067bf0c470a508593fd9f98ed22439e5))
+- **schematics:** add support for migration skeleton ([#12368](https://github.com/taiga-family/taiga-ui/issues/12368))
+  ([2ad6783](https://github.com/taiga-family/taiga-ui/commit/2ad678325e71f50497ddcdcb00718f9c36d1969e))
+
+### 🐞 Bug Fixes
+
+- **kit:** `ProgressColorSegments` color misaligned with `ProgressSegmented`
+  ([#12342](https://github.com/taiga-family/taiga-ui/issues/12342))
+  ([a6a30eb](https://github.com/taiga-family/taiga-ui/commit/a6a30eb4f4420bc9243f7404d7285d005d349459))
+- **kit:** failed to execute setSelectionRange on HTMLInputElement
+  ([#12387](https://github.com/taiga-family/taiga-ui/issues/12387))
+  ([9fbaa8e](https://github.com/taiga-family/taiga-ui/commit/9fbaa8ed11a6a61e732d768edcf02b6f70dfccb6))
+
+## [4.59.0](https://github.com/taiga-family/taiga-ui/compare/v4.58.0...v4.59.0) (2025-10-20)
+
+### 🐞 Bug Fixes
+
+- **addon-doc:** `tuiRawLoad` is incompatible with esbuild loaders
+  ([#12270](https://github.com/taiga-family/taiga-ui/issues/12270))
+  ([ee2c23d](https://github.com/taiga-family/taiga-ui/commit/ee2c23d5d2a9b9f3084f00ea173cd22ca279ae91))
+- **cdk:** rename to correct migration warning for illustrations
+  ([#12249](https://github.com/taiga-family/taiga-ui/issues/12249))
+  ([5ac70f0](https://github.com/taiga-family/taiga-ui/commit/5ac70f01bb899db864b3fa6fa4235cbe69bf9ade))
+- **experimental:** `PdfPreview` use `isMobileRes` token for header
+  ([#12293](https://github.com/taiga-family/taiga-ui/issues/12293))
+  ([b815b91](https://github.com/taiga-family/taiga-ui/commit/b815b910bd42b6e752431f3506c51643dad025fc))
+- **kit:** correct tooltip hint inside tui-textfield on iOS
+  ([#12245](https://github.com/taiga-family/taiga-ui/issues/12245))
+  ([d735b7e](https://github.com/taiga-family/taiga-ui/commit/d735b7e004f36ac7f40b6ed145fcd5d8c95aaba7))
+- **schematics:** the path argument must be of type string
+  ([#12292](https://github.com/taiga-family/taiga-ui/issues/12292))
+  ([bd75b60](https://github.com/taiga-family/taiga-ui/commit/bd75b60b39c3d79fdc44f50dbb7e41b384677734))
+
+### 🚀 Features
+
+- **addon-doc:** configurable page by router providers ([#12272](https://github.com/taiga-family/taiga-ui/issues/12272))
+  ([cbbb56e](https://github.com/taiga-family/taiga-ui/commit/cbbb56e2d2cb4e18fad16cd086eec7f85ba398f9))
+- **kit:** `Copy` support `tuiCopyProcessor` and trim content by default
+  ([#12329](https://github.com/taiga-family/taiga-ui/issues/12329))
+  ([8773222](https://github.com/taiga-family/taiga-ui/commit/8773222ce191e14f809c1aa5c59ecc143514074b))
+
 ## [4.58.0](https://github.com/taiga-family/taiga-ui/compare/v4.57.0...v4.58.0) (2025-10-13)
 
 ### 🐞 Bug Fixes

@@ -79,6 +79,25 @@
                         plugins.
                     </p>
                 </div>
+                <div *ngSwitchCase="5">
+                    <code>type="email"</code>
+                    — validation + keyboard hint.
+                    <br />
+                    <code>inputmode="email"</code>
+                    — keyboard hint only, no validation.
+                    <br />
+                    <code>autocomplete="new-password"</code>
+                    — disables autofill and suggestion pop-ups.
+                    <br />
+                    <br />
+                    Use
+                    <code>type="email"</code>
+                    when you need format validation, or
+                    <code>inputmode="email"</code>
+                    with
+                    <code>type="text"</code>
+                    if you only want a convenient keyboard layout.
+                </div>
             </ng-template>
         </tui-doc-example>
     </ng-template>

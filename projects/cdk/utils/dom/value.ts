@@ -86,9 +86,14 @@ export function tuiValue(
             /**
              * After programmatic updates of input's value, caret is automatically placed at the end –
              * revert to the previous position
+             *
+             * Only the types 'text', 'search', 'password', 'tel', and 'url' support selection
              */
             element.value = v;
-            element.setSelectionRange(selectionStart, selectionEnd);
+
+            try {
+                element.setSelectionRange(selectionStart, selectionEnd);
+            } catch {}
         } else if (element) {
             element.value = v;
         }

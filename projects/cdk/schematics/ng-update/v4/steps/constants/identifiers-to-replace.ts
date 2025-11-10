@@ -416,6 +416,17 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         to: {name: 'TuiBadge', moduleSpecifier: '@taiga-ui/kit'},
     },
     {
+        from: [
+            {name: 'TuiSkeletonModule', moduleSpecifier: '@taiga-ui/experimental'},
+            {name: 'TuiSkeletonModule', moduleSpecifier: '@taiga-ui/kit'},
+        ],
+        to: {name: 'TuiSkeleton', moduleSpecifier: '@taiga-ui/kit'},
+    },
+    {
+        from: [{name: 'TuiAppBarModule', moduleSpecifier: '@taiga-ui/experimental'}],
+        to: {name: 'TuiAppBar', moduleSpecifier: '@taiga-ui/layout'},
+    },
+    {
         from: {name: 'TuiClickOutsideModule', moduleSpecifier: '@taiga-ui/cdk'},
         to: {name: 'TuiClickOutside', moduleSpecifier: '@taiga-ui/cdk'},
     },
@@ -1020,6 +1031,15 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
     },
     {
+        from: [
+            {
+                name: 'TuiOnboardingFlowModule',
+                moduleSpecifier: '@taiga-ui/proprietary-banking',
+            },
+        ],
+        to: {name: 'TuiOnboardingFlow', moduleSpecifier: '@taiga-ui/proprietary'},
+    },
+    {
         from: {
             name: 'TuiPromptDialogComponent',
             moduleSpecifier: '@taiga-ui/proprietary-core',
@@ -1447,6 +1467,17 @@ export const IDENTIFIERS_TO_REPLACE: ReplacementIdentifierMulti[] = [
         },
         to: {
             name: 'TuiSidebar',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+            spreadInModule: true,
+        },
+    },
+    {
+        from: {
+            name: 'TuiResponsiveDialogModule',
+            moduleSpecifier: '@taiga-ui/addon-mobile',
+        },
+        to: {
+            name: 'TuiResponsiveDialog',
             moduleSpecifier: '@taiga-ui/addon-mobile',
             spreadInModule: true,
         },

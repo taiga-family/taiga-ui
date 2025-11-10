@@ -1,153 +1,100 @@
-import {NgForOf} from '@angular/common';
-import {Component, computed, signal} from '@angular/core';
+import {AsyncPipe, NgForOf} from '@angular/common';
+import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiSortChange, TuiTable} from '@taiga-ui/addon-table';
+import {TuiTable, TuiTableExpand} from '@taiga-ui/addon-table';
+import {TuiMapperPipe} from '@taiga-ui/cdk';
+import {TuiButton, TuiFormatNumberPipe, TuiHint} from '@taiga-ui/core';
+import {TuiExpand} from '@taiga-ui/experimental';
+import {TuiChevron, TuiChip} from '@taiga-ui/kit';
 
-interface Data {
-    id: number;
-    name: string;
-    color: string;
+interface Item {
+    firstName: string;
+    lastName: string;
+    role: string;
+    balance: number;
 }
 
 @Component({
     standalone: true,
-    imports: [NgForOf, TuiTable],
+    imports: [
+        AsyncPipe,
+        NgForOf,
+        TuiButton,
+        TuiChevron,
+        TuiChip,
+        TuiExpand,
+        TuiFormatNumberPipe,
+        TuiHint,
+        TuiMapperPipe,
+        TuiTable,
+        TuiTableExpand,
+    ],
     templateUrl: './index.html',
+    styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected readonly initial = [
+    protected readonly basicData: Item[] = [
         {
-            name: 'Apple',
-            id: 1,
-            color: 'red',
+            firstName: 'Alex',
+            lastName: 'Inkin',
+            role: 'dev',
+            balance: 1323525,
         },
         {
-            name: 'Banana',
-            id: 2,
-            color: 'yellow',
+            firstName: 'Roman',
+            lastName: 'Sedov',
+            role: 'dev',
+            balance: 423242,
         },
         {
-            name: 'Kiwi',
-            id: 3,
-            color: 'green',
+            firstName: 'Andrei',
+            lastName: 'Serebrennikov',
+            role: 'dev',
+            balance: 4223242,
         },
-        {
-            name: 'Orange',
-            id: 4,
-            color: 'orange',
-        },
-        {
-            name: 'Grapes',
-            id: 5,
-            color: 'purple',
-        },
-        {
-            name: 'Strawberry',
-            id: 6,
-            color: 'red',
-        },
-        {
-            name: 'Blueberry',
-            id: 7,
-            color: 'blue',
-        },
-        {
-            name: 'Pineapple',
-            id: 8,
-            color: 'yellow',
-        },
-        {
-            name: 'Mango',
-            id: 9,
-            color: 'orange',
-        },
-        {
-            name: 'Watermelon',
-            id: 10,
-            color: 'green',
-        },
-        {
-            name: 'Peach',
-            id: 11,
-            color: 'orange',
-        },
-        {
-            name: 'Pear',
-            id: 12,
-            color: 'green',
-        },
-        {
-            name: 'Cherry',
-            id: 13,
-            color: 'red',
-        },
-        {
-            name: 'Lemon',
-            id: 14,
-            color: 'yellow',
-        },
-        {
-            name: 'Lime',
-            id: 15,
-            color: 'green',
-        },
-        {
-            name: 'Pomegranate',
-            id: 16,
-            color: 'red',
-        },
-        {
-            name: 'Raspberry',
-            id: 17,
-            color: 'red',
-        },
-        {
-            name: 'Blackberry',
-            id: 18,
-            color: 'purple',
-        },
-        {
-            name: 'Cantaloupe',
-            id: 19,
-            color: 'orange',
-        },
-        {
-            name: 'Plum',
-            id: 20,
-            color: 'purple',
-        },
-    ] as const;
+    ];
 
-    protected readonly columns = Object.keys(this.initial[0]);
-    protected readonly direction = signal<-1 | 1>(-1);
-    protected readonly sortBy = signal<keyof Data | null>('color');
-    protected readonly data = computed<readonly Data[]>(() => {
-        const direction = this.direction();
-        const key = this.sortBy();
+    protected manualOpenData: Item[] = [
+        {
+            firstName: 'Joe',
+            lastName: 'Wilson',
+            role: 'design',
+            balance: 423242,
+        },
+        {
+            firstName: 'Julia',
+            lastName: 'Johnson',
+            role: 'design',
+            balance: 4223242,
+        },
+    ];
 
-        return key
-            ? [...this.initial].sort((a, b) => {
-                  const valA = a[key];
-                  const valB = b[key];
+    protected readonly customContentData: Item[] = [
+        ...this.basicData,
+        ...this.manualOpenData,
+    ];
 
-                  if (typeof valA === 'string' && typeof valB === 'string') {
-                      return valA.localeCompare(valB) * direction;
-                  }
+    protected readonly columns = ['action', 'firstName', 'lastName', 'role', 'balance'];
 
-                  if (typeof valA === 'number' && typeof valB === 'number') {
-                      return (valA - valB) * direction;
-                  }
+    protected manualOpen = false;
+    protected customOpen = false;
 
-                  return 0;
-              })
-            : this.initial;
-    });
+    public getSumBalance(people: Item[]): number {
+        return people.reduce((res, item) => {
+            res += item.balance;
 
-    protected sortChange({sortKey, sortDirection}: TuiSortChange<Data>): void {
-        this.sortBy.set(sortKey);
-        this.direction.set(sortDirection);
+            return res;
+        }, 0);
+    }
+
+    protected manualToggle(): void {
+        this.manualOpen = !this.manualOpen;
+    }
+
+    protected customToggle(): void {
+        this.customOpen = !this.customOpen;
     }
 }
