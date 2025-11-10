@@ -8,20 +8,14 @@
     }
 </div>
 <div class="t-sheet">
-    @if (context.bar && !context.appearance.includes('fullscreen')) {
-        <div class="t-top"></div>
-    }
-    @if (context.label) {
-        <h2
-            class="t-heading"
-            [id]="context.id"
-        >
-            <ng-container *polymorpheusOutlet="context.label as label; context: context">
-                {{ label }}
-            </ng-container>
-        </h2>
-    }
+    <div class="t-bar"></div>
     <div class="t-content">
+        @if (context.label) {
+            <header
+                [id]="context.id"
+                [innerHTML]="context.label"
+            ></header>
+        }
         <div
             *polymorpheusOutlet="context.content as text; context: context"
             [innerHTML]="text"

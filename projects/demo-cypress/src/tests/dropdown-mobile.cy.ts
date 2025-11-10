@@ -66,8 +66,8 @@ interface User {
                 <tui-textfield
                     tuiChevron
                     tuiDropdownSheet="Select user"
-                    class="tui-space_vertical-4"
                     [content]="template"
+                    [style.margin-block-end.rem]="1"
                 >
                     <input
                         placeholder="Select user"
@@ -86,7 +86,6 @@ interface User {
                     multi
                     tuiChevron
                     tuiDropdownMobile
-                    class="tui-space_vertical-4"
                     [open]="open()"
                     [stringify]="stringify"
                     (openChange)="open.set($event)"

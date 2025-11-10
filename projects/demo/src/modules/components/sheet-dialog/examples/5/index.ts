@@ -12,7 +12,6 @@ import {TuiButton, TuiLink} from '@taiga-ui/core';
 @Component({
     imports: [RouterLink, TuiButton, TuiLink, TuiResponsiveDialog],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })

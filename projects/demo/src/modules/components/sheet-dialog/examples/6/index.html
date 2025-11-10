@@ -12,31 +12,30 @@
         Show
     </button>
 </p>
-<ng-template #bar>
-    <tui-app-bar>
-        <button
-            tuiButton
-            tuiSlot="left"
-            type="button"
-            (click)="open.set(false)"
-        >
-            Close
-        </button>
-        Search contacts
-    </tui-app-bar>
-    <input
-        placeholder="Search contacts"
-        tuiSearch
-        type="search"
-        class="input"
-        [(ngModel)]="search"
-    />
-</ng-template>
 <ng-template
-    [tuiSheetDialog]="open()"
-    [tuiSheetDialogOptions]="{label: bar, bar: false, fullscreen: true}"
-    (tuiSheetDialogChange)="open.set($event)"
+    [tuiSheetDialogOptions]="{appearance: 'fullscreen', bar: false}"
+    [(tuiSheetDialog)]="open"
 >
+    <header>
+        <tui-app-bar>
+            <button
+                tuiButton
+                tuiSlot="left"
+                type="button"
+                (click)="open.set(false)"
+            >
+                Close
+            </button>
+            Search contacts
+        </tui-app-bar>
+        <input
+            placeholder="Search contacts"
+            tuiSearch
+            type="search"
+            class="input"
+            [(ngModel)]="search"
+        />
+    </header>
     <div class="favorites">
         @for (item of items | slice: 0 : 6; track item) {
             <tui-avatar-labeled [label]="item.name">
