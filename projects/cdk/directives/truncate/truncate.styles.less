@@ -1,0 +1,11 @@
+[tuiTruncate] {
+    letter-spacing: -1rem;
+    word-break: break-all;
+    -webkit-text-fill-color: transparent;
+
+    &::before {
+        content: attr(data-text);
+        letter-spacing: initial;
+        -webkit-text-fill-color: currentColor;
+    }
+}
