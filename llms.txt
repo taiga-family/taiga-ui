@@ -53,7 +53,6 @@
 
 - [Accordion](https://taiga-ui.dev/components/accordion)
 - [Actions Bar](https://taiga-ui.dev/components/actions-bar)
-- [Alert](https://taiga-ui.dev/components/alert) — Built-in implementation of notifications
 - [Avatar](https://taiga-ui.dev/components/avatar)
 - [Badge](https://taiga-ui.dev/components/badge) — Component for displaying text, pictures and icons.
 - [Badge Notification](https://taiga-ui.dev/components/badge-notification) — Simple non-interactive badge. Used in headers, cells, cards, avatars to indicate notifications, such as new messages
@@ -117,7 +116,7 @@
 - [Mobile Calendar](https://taiga-ui.dev/components/mobile-calendar) — A calendar for mobile devices. It is used in date picker controls if provided with tuiProvideMobileCalendar() You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)
 - [Multi Select](https://taiga-ui.dev/components/multi-select)
 - [Navigation](https://taiga-ui.dev/components/navigation) — A set of basic layout components for global navigation
-- [Notification](https://taiga-ui.dev/components/notification) — An inline message with a type (info, positive, warning, negative or neutral) that does not interrupt user actions
+- [Notification](https://taiga-ui.dev/components/notification) — A notification message that can be displayed inline or as an alert
 - [Notification Middle](https://taiga-ui.dev/components/notification-middle) — A modal component to indicate an ongoing blocking action
 - [Pager](https://taiga-ui.dev/components/pager)
 - [Pdf Viewer](https://taiga-ui.dev/components/pdf-viewer) — Wrapper component for viewing PDF files in an iframe PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on TUI_IS_MOBILE token to provide suitable alternative behavior. For example, you can use third-party service https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF or your own service to render PDF by pdf.js.
