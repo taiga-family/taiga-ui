@@ -44,6 +44,7 @@ export class AlertExampleWithData {
 }
 
 @Component({
+    selector: 'example-4',
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,

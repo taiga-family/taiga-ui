@@ -7,6 +7,7 @@ import {
 } from '@taiga-ui/addon-table';
 
 @Component({
+    selector: 'example-2',
     imports: [TuiTablePagination],
     templateUrl: './index.html',
     encapsulation,

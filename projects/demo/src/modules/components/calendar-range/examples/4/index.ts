@@ -6,6 +6,7 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 import {TuiCalendarRange} from '@taiga-ui/kit';
 
 @Component({
+    selector: 'example-4',
     imports: [TuiCalendarRange],
     templateUrl: './index.html',
     encapsulation,
