@@ -13505,18 +13505,24 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Show </button>
-<ng-template #template>
-<div tuiHeader>
-<div tuiTitle> Title <div tuiSubtitle>Subtitle</div>
-</div>
-</div>
-<label tuiLabel [style.margin-block-start.rem]="1" >
+<ng-template let-observer [tuiSheetDialogOptions]="{appearance: 'fullscreen'}" [(tuiSheetDialog)]="open" >
+<header tuiHeader>
+<hgroup tuiTitle>
+<h2>Title</h2>
+<p tuiSubtitle>Subtitle</p>
+<p [style.margin-block]="'0.75rem 0'">
+<label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="floating" /> Floating visibility </label>
-<label tuiLabel [style.margin-block-start.rem]="0.5" >
+</p>
+<p>
+<label tuiLabel>
 <input tuiSwitch type="checkbox" [(ngModel)]="secondAction" /> Second action visibility </label>
+</p>
+<p>
 <input placeholder="Some search" tuiSearch type="search" class="input" [(ngModel)]="search" />
-</ng-template>
-<ng-template let-observer [tuiSheetDialogOptions]="{label: template, fullscreen: true}" [(tuiSheetDialog)]="open" >
+</p>
+</hgroup>
+</header>
 <div class="content">
 <section class="items"> @for (item of items | tuiFilter: filter : search; track item) { <div tuiCell>
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
@@ -33134,18 +33140,9 @@ A mobile draggable sheet dialog
 ### Example
 
 ```html
-@let dialogLabel = label === 'Template' ? labelTemplate : label; <button tuiButton type="button" (click)="showDialog(sheetTemplate, dialogLabel)" > Click </button>
-<button tuiButton type="button" class="tui-space_left-4" (longtap)="showDialog(sheetTemplate, dialogLabel)" > Long tap </button>
+<button tuiButton type="button" (click)="showDialog(sheetTemplate)" > Click </button>
+<button tuiButton type="button" class="tui-space_left-4" (longtap)="showDialog(sheetTemplate)" > Long tap </button>
 <button tuiButton type="button" (click)="navigate()" > Navigate to Examples </button>
-<ng-template #labelTemplate>
-<div class="label">
-<div size="m" tuiAvatar > KG </div>
-<label tuiTitle>
-<span tuiSubtitle>Terry Jones</span>
-<b>Karl Gambolputty</b>
-</label>
-</div>
-</ng-template>
 <ng-template #sheetTemplate let-completeWith="completeWith" let-observer >
 <p [style.flex-grow]="1"> Karl Gambolputty de von Ausfern-schplenden-schlitter-crasscrenbon-fried-digger-dingle-dangle-dongle-dungle-burstein-von-knacker-thrasher-apple-banger-horowitz-ticolensic-grander-knotty-spelltinkle-grandlich-grumblemeyer-spelterwasser-kurstlich-himbleeisen-bahnwagen-gutenabend-bitte-ein-nürnburger-bratwustle-gerspurten-mitzweimache-luber von Hautkopft of Ulm was the last-surviving relative of Johann Gambolputty de von. </p>
 <footer tuiFloatingContainer>
@@ -33159,11 +33156,11 @@ A mobile draggable sheet dialog
 
 | Property | Type | Description |
 |----------|-----|----------|
+| [appearance] | `string` | Custom data-appearance attribute value |
 | [closable] | `boolean` | Whether or not a sheet can be closed by user. |
-| [fullscreen] | `boolean` | Fullscreen |
 | [bar] | `boolean` | Show bar |
 | [data] | `I` | Optional data to be passed to the sheet. |
-| [label] | `PolymorpheusContent` | Sheet label. |
+| [label] | `string` | Sheet label. |
 | [stops] | `string[]` | An array of stop points in any units for the sheet. |
 | [initial] | `number` | means to stop on top of the sheet's content. |
 | [offset] | `number` | ) |
@@ -33208,9 +33205,11 @@ export default class Example {
 ```html
 <button tuiButton type="button" (click)="open = true" > Show </button>
 <ng-template let-observer [tuiSheetDialogOptions]="options" [(tuiSheetDialog)]="open" >
+<div>
 <a appearance="secondary" href="mailto:alexander@inkin.ru" iconStart="@tui.mail" size="m" tuiIconButton class="tui-space_right-2" > Email </a>
 <a appearance="secondary" href="https://t.me/waterplea" iconStart="@tui.phone-forwarded" size="m" tuiIconButton class="tui-space_right-2" > Telegram </a>
 <a appearance="secondary" href="https://waterplea.bandcamp.com/" iconStart="@tui.music" size="m" tuiIconButton > Music </a>
+</div>
 <p>Passionate Angular dev, musician and OSS author.</p>
 <footer tuiFloatingContainer class="footer" >
 <button size="m" tuiButton type="button" (click)="observer.complete()" > Give a raise </button>
@@ -33254,11 +33253,18 @@ export default class Example {
 <b>And the Holy Grail</b>
 </label>
 </ng-template>
-<ng-template [tuiSheetDialogOptions]="{ label: label, stops: ['5.5rem', '13rem'], }" [(tuiSheetDialog)]="open" >
+<ng-template [tuiSheetDialogOptions]="{stops: ['5.75rem', '13.875rem']}" [(tuiSheetDialog)]="open" >
+<header tuiHeader="body-m">
+<hgroup tuiTitle>
+<p tuiSubtitle>Monty Python</p>
+<h2>And the Holy Grail</h2>
+</hgroup>
+</header>
 <p class="buttons">
 <button appearance="secondary" size="m" tuiButton type="button" > Buy {{ 12.99 | tuiAmount: 'USD' | async }} </button>
 <button appearance="secondary" size="m" tuiButton type="button" > Rent {{ 4.99 | tuiAmount: 'USD' | async }} </button>
 </p>
+<div>
 <h3>Cast:</h3>
 <p>John Cleese</p>
 <p>Eric Idle</p>
@@ -33299,6 +33305,7 @@ export default class Example {
 <div tuiFloatingContainer class="floating" >
 <button size="m" tuiButton type="button" > Add to Watch List </button>
 </div>
+</div>
 </ng-template>
 ```
 **TypeScript:**
@@ -33309,7 +33316,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
 import {TuiFloatingContainer} from '@taiga-ui/kit';
 
 @Component({
@@ -33318,6 +33325,7 @@ import {TuiFloatingContainer} from '@taiga-ui/kit';
         TuiAmountPipe,
         TuiButton,
         TuiFloatingContainer,
+        TuiHeader,
         TuiSheetDialog,
         TuiTitle,
     ],
@@ -33336,7 +33344,7 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="toggle(true)" > Show/Hide </button>
-<ng-template [tuiSheetDialog]="open" [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset, fullscreen: true}" (tuiSheetDialogChange)="toggle($event)" >
+<ng-template [tuiSheetDialog]="open" [tuiSheetDialogOptions]="{stops: ['29rem'], offset: offset, appearance: 'fullscreen'}" (tuiSheetDialogChange)="toggle($event)" >
 <header class="header">
 <tui-input tuiTextfieldIconLeft="@tui.search" [formControl]="search" > Find user </tui-input>
 </header>
@@ -33425,9 +33433,11 @@ export default class Example {
 **Template:**
 ```html
 <button tuiButton type="button" (click)="open = true" > Show </button>
-<ng-template let-observer [tuiResponsiveDialogOptions]="options" [(tuiResponsiveDialog)]="open" > This dialog would show up as regular <a tuiLink [routerLink]="routes.Dialog" > Dialog </a> on desktop and as a <code>SheetDialog</code> on a mobile device. <footer class="footer">
-<button size="m" tuiButton type="button" (click)="observer.complete()" > This is really cool </button>
+<ng-template let-observer [tuiResponsiveDialogOptions]="options" [(tuiResponsiveDialog)]="open" >
+<div> This dialog would show up as regular <a tuiLink [routerLink]="routes.Dialog" > Dialog </a> on desktop and as a <code>SheetDialog</code> on a mobile device. </div>
+<footer>
 <button appearance="secondary" size="m" tuiButton type="button" (click)="observer.complete()" > Glad to know that </button>
+<button size="m" tuiButton type="button" (click)="observer.complete()" > Sure </button>
 </footer>
 </ng-template>
 ```
@@ -33447,7 +33457,6 @@ import {TuiButton, TuiLink} from '@taiga-ui/core';
 @Component({
     imports: [RouterLink, TuiButton, TuiLink, TuiResponsiveDialog],
     templateUrl: './index.html',
-    styleUrl: './index.less',
     encapsulation,
     changeDetection,
 })
@@ -33470,12 +33479,12 @@ export default class Example {
 <p>
 <button tuiButton type="button" (click)="open.set(true)" > Show </button>
 </p>
-<ng-template #bar>
+<ng-template [tuiSheetDialogOptions]="{appearance: 'fullscreen', bar: false}" [(tuiSheetDialog)]="open" >
+<header>
 <tui-app-bar>
 <button tuiButton tuiSlot="left" type="button" (click)="open.set(false)" > Close </button> Search contacts </tui-app-bar>
 <input placeholder="Search contacts" tuiSearch type="search" class="input" [(ngModel)]="search" />
-</ng-template>
-<ng-template [tuiSheetDialog]="open()" [tuiSheetDialogOptions]="{label: bar, bar: false, fullscreen: true}" (tuiSheetDialogChange)="open.set($event)" >
+</header>
 <div class="favorites"> @for (item of items | slice: 0 : 6; track item) { <tui-avatar-labeled [label]="item.name">
 <div tuiAvatar="@tui.user">
 <img alt="" [src]="item.avatar" />
@@ -33617,7 +33626,7 @@ export default class Example {
     protected readonly options: Partial<TuiSheetDialogOptions> = {
         label: 'Alexander Inkin',
         closable: true,
-        fullscreen: true,
+        appearance: 'fullscreen',
     };
 }
 ```
@@ -33632,21 +33641,14 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
     TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
-    type TuiSheetDialogOptions,
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
-import {
-    TuiAlertService,
-    TuiButton,
-    type TuiDialogContext,
-    TuiTitle,
-} from '@taiga-ui/core';
-import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
-import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
+import {TuiAlertService, TuiButton, type TuiDialogContext} from '@taiga-ui/core';
+import {TuiFloatingContainer} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
 @Component({
-    imports: [TuiAvatar, TuiButton, TuiDemo, TuiFloatingContainer, TuiTitle],
+    imports: [TuiButton, TuiDemo, TuiFloatingContainer],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -33669,7 +33671,7 @@ export default class Page {
     ];
 
     protected closable = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.closable;
-    protected fullscreen = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.fullscreen;
+    protected appearance = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.appearance;
     protected bar = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.bar;
     protected initial = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.initial;
     protected stops = TUI_SHEET_DIALOG_DEFAULT_OPTIONS.stops;
@@ -33680,18 +33682,15 @@ export default class Page {
     protected open = false;
 
     protected readonly stopsVariants = [this.stops, ['100px'], ['10rem', '20rem']];
-    protected readonly labelVariants = [this.label, 'String label', 'Template'];
+    protected readonly appearanceVariants = [this.appearance, 'fullscreen'];
 
-    protected showDialog(
-        content: TemplateRef<TuiDialogContext<number, number>>,
-        label?: PolymorpheusContent<TuiSheetDialogOptions>,
-    ): void {
-        const {required, closable, fullscreen, stops, initial, bar, offset} = this;
+    protected showDialog(content: TemplateRef<TuiDialogContext<number, number>>): void {
+        const {appearance, required, closable, stops, initial, bar, offset, label} = this;
 
         this.sheetDialogs
             .open(content, {
+                appearance,
                 label,
-                fullscreen,
                 stops,
                 initial,
                 bar,

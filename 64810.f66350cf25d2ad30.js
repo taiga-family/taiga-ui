@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[64810],{64810:n=>{n.exports=".footer {\n    display: flex;\n    justify-content: flex-end;\n    flex-wrap: wrap;\n    gap: 1rem;\n    margin-block-start: 1rem;\n\n    button {\n        flex: 1;\n        overflow: visible;\n    }\n}\n"}}]);
