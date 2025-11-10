@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[47649],{47649:e=>{e.exports='<tui-textfield tuiChevron>\n    <input\n        tuiSelect\n        [(ngModel)]="value"\n    />\n\n    <tui-data-list-wrapper\n        *tuiDropdown\n        new\n        [items]="users"\n    />\n</tui-textfield>\n'}}]);

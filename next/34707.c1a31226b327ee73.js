@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[34707],{34707:e=>{e.exports=".option {\n    border-block-start: 1px solid var(--tui-border-normal);\n    inline-size: 100%;\n    block-size: 3rem;\n}\n"}}]);

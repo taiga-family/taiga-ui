@@ -874,6 +874,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 
 @Component({
+    selector: 'example-1',
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,
@@ -1097,6 +1098,7 @@ export class AlertExampleWithData {
 }
 
 @Component({
+    selector: 'example-4',
     imports: [TuiButton],
     templateUrl: './index.html',
     encapsulation,
@@ -6405,6 +6407,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCalendarRange} from '@taiga-ui/kit';
 
 @Component({
+    selector: 'example-1',
     imports: [TuiCalendarRange],
     templateUrl: './index.html',
     encapsulation,
@@ -6487,6 +6490,7 @@ import {TUI_FIRST_DAY_OF_WEEK} from '@taiga-ui/core';
 import {TuiCalendarRange} from '@taiga-ui/kit';
 
 @Component({
+    selector: 'example-4',
     imports: [TuiCalendarRange],
     templateUrl: './index.html',
     encapsulation,
@@ -10214,6 +10218,7 @@ interface Character {
 }
 
 @Component({
+    selector: 'example-6',
     imports: [
         FormsModule,
         TuiChevron,
@@ -17617,6 +17622,7 @@ import {tuiDateFormatProvider, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDate} from '@taiga-ui/kit';
 
 @Component({
+    selector: 'example-5',
     imports: [FormsModule, ReactiveFormsModule, TuiInputDate, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
@@ -18875,6 +18881,7 @@ import {tuiDateFormatProvider, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputDateTime} from '@taiga-ui/kit';
 
 @Component({
+    selector: 'example-6',
     imports: [FormsModule, ReactiveFormsModule, TuiInputDateTime, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
@@ -30511,6 +30518,7 @@ import {TuiAlertService, TuiButton} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
+    selector: 'example-1',
     imports: [TuiButton, TuiPullToRefresh],
     templateUrl: './index.html',
     encapsulation,
@@ -32230,6 +32238,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiScrollbar, tuiScrollbarOptionsProvider} from '@taiga-ui/core';
 
 @Component({
+    selector: 'example-7',
     imports: [TuiScrollbar],
     templateUrl: './index.html',
     styleUrl: './index.less',
@@ -38372,6 +38381,7 @@ import {
 } from '@taiga-ui/addon-table';
 
 @Component({
+    selector: 'example-2',
     imports: [TuiTablePagination],
     templateUrl: './index.html',
     encapsulation,
@@ -50208,6 +50218,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 import {delay, of, startWith} from 'rxjs';
 
 @Component({
+    selector: 'example-4',
     imports: [
         AsyncPipe,
         ReactiveFormsModule,
@@ -50833,6 +50844,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiObfuscateOptionsProvider, TuiObfuscatePipe} from '@taiga-ui/cdk';
 
 @Component({
+    selector: 'example-3',
     imports: [TuiObfuscatePipe],
     templateUrl: './index.html',
     encapsulation,

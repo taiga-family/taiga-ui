@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99871],{55109:e=>{e.exports="Page refreshed {{ now | tuiFormatDate | async }} ago\n"}}]);
