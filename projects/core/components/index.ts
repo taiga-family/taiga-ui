@@ -1,4 +1,3 @@
-export * from '@taiga-ui/core/components/alert';
 export * from '@taiga-ui/core/components/button';
 export * from '@taiga-ui/core/components/calendar';
 export * from '@taiga-ui/core/components/cell';

@@ -2,7 +2,7 @@ import {Component, inject, type TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiAlertService, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiNotificationService, TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAccordion} from '@taiga-ui/kit';
 import {
     type TuiDialogContext,
@@ -18,7 +18,7 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Page {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
 
     protected readonly routes = DemoRoute;

@@ -6,7 +6,7 @@ import {
     TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
-import {TuiAlertService, TuiButton, type TuiDialogContext} from '@taiga-ui/core';
+import {TuiNotificationService, TuiButton, type TuiDialogContext} from '@taiga-ui/core';
 import {TuiFloatingContainer} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
@@ -20,7 +20,7 @@ export default class Page {
     private readonly router = inject(Router);
     private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly exampleComponent = import('./examples/import/component.md');
     protected readonly examples = [

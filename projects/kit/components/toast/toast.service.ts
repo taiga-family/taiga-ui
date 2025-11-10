@@ -1,6 +1,6 @@
 import {Directive, inject, Injectable, input} from '@angular/core';
 import {tuiAsPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
-import {TuiNotificationService} from '@taiga-ui/core/directives/notification';
+import {TuiAlertService} from '@taiga-ui/core/directives/alert';
 
 import {TuiToastComponent} from './toast.component';
 import {
@@ -12,7 +12,7 @@ import {
 @Injectable({
     providedIn: 'root',
 })
-export class TuiToastService extends TuiNotificationService<TuiToastOptions<any>> {
+export class TuiToastService extends TuiAlertService<TuiToastOptions<any>> {
     protected override readonly options = inject(TUI_TOAST_OPTIONS);
     protected override readonly component = TuiToastComponent;
 

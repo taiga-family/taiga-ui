@@ -5,7 +5,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLegendItem, TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiPure, tuiSum} from '@taiga-ui/cdk';
-import {TuiAlertService, tuiFormatNumber, TuiIcon, TuiNotification} from '@taiga-ui/core';
+import {
+    TuiNotificationService,
+    tuiFormatNumber,
+    TuiIcon,
+    TuiNotification,
+} from '@taiga-ui/core';
 import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
@@ -24,7 +29,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private enabled = new Array(5).fill(true);
 
     protected readonly data = [13769, 12367, 10172, 3018, 2592];

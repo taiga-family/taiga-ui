@@ -24,7 +24,7 @@ import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {TuiAlertService} from '@taiga-ui/core/components/alert';
+import {TuiNotificationService} from '@taiga-ui/core/components/notification';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
@@ -65,7 +65,7 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
 })
 export class TuiDocExample {
     private readonly clipboard = inject(Clipboard);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly location = inject(WA_LOCATION);
     private readonly copyTexts = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);

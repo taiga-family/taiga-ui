@@ -4,7 +4,7 @@ import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Injectable()
-export abstract class TuiNotificationService<T, K = void> extends TuiPortal<T, K> {
+export abstract class TuiAlertService<T, K = void> extends TuiPortal<T, K> {
     private readonly concurrency: number;
     private readonly current = new Map<unknown, ComponentRef<unknown>>();
     private readonly queue = new Set<PolymorpheusComponent<unknown>>();

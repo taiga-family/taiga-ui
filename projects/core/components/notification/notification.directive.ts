@@ -29,7 +29,7 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 class Styles {}
 
 @Directive({
-    selector: 'tui-notification,[tuiNotification]',
+    selector: 'tui-notification,[tuiNotification]:not(ng-template)',
     providers: [
         tuiAppearanceOptionsProvider(TUI_NOTIFICATION_OPTIONS),
         tuiLinkOptionsProvider({appearance: '', pseudo: true}),
@@ -40,7 +40,7 @@ class Styles {}
         '[attr.data-size]': 'size()',
     },
 })
-export class TuiNotification {
+export class TuiNotificationDirective {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
     protected readonly nothing = tuiWithStyles(Styles);

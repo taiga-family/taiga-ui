@@ -4,7 +4,7 @@ import {type TuiPortalContext, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiIcon} from '@taiga-ui/core/components/icon';
 import {TuiLink} from '@taiga-ui/core/components/link';
-import {TuiNotificationDirective} from '@taiga-ui/core/directives/notification';
+import {TuiAlertDirective} from '@taiga-ui/core/directives/alert';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 import {TuiPushComponent} from './push.component';
@@ -16,7 +16,7 @@ import {type TuiPushOptions} from './push.options';
     templateUrl: './push-alert.template.html',
     styleUrl: './push-alert.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiAnimated, TuiNotificationDirective],
+    hostDirectives: [TuiAnimated, TuiAlertDirective],
 })
 export class TuiPushAlert {
     protected readonly context =

@@ -1,6 +1,6 @@
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
-import {type TuiPositionOptions} from '@taiga-ui/core/directives/notification';
+import {type TuiPositionOptions} from '@taiga-ui/core/directives/alert';
 
 export interface TuiPushOptions extends TuiPositionOptions {
     readonly buttons: readonly string[];

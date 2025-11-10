@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
+import {TuiNotificationService, TuiButton, TuiDialogService} from '@taiga-ui/core';
 import {TUI_CONFIRM, type TuiConfirmData} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
@@ -13,7 +13,7 @@ import {switchMap} from 'rxjs';
 })
 export default class Example implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic'];

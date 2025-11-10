@@ -10,7 +10,7 @@ import {
     TuiInputExpire,
 } from '@taiga-ui/addon-commerce';
 import {
-    TuiAlertService,
+    TuiNotificationService,
     TuiError,
     TuiTextfield,
     tuiTextfieldOptionsProvider,
@@ -33,7 +33,7 @@ import {
     providers: [tuiTextfieldOptionsProvider({cleaner: signal(true)})],
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly form = new FormGroup({
         card: new FormControl('', tuiCreateLuhnValidator('Card number is invalid')),
