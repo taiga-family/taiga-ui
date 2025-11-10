@@ -13,7 +13,7 @@
         "@angular/platform-server": "19.2.15",
         "@angular/router": "19.2.15",
         "@angular/ssr": "19.2.19",
-        "@docsearch/css": "4.3.1",
+        "@docsearch/css": "4.3.2",
         "@docsearch/js": "4.3.2",
         "@ng-web-apis/universal": "4.12.2",
         "@stackblitz/sdk": "1.11.0",
