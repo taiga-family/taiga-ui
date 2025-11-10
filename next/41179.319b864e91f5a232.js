@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[41179],{41179:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n:host {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\nbutton[tuiNotification]::before {\n    .center-top();\n\n    color: var(--tui-text-negative);\n}\n"}}]);

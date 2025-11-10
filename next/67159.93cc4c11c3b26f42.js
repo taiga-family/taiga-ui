@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[67159],{67159:n=>{n.exports='<button\n    size="m"\n    tuiButton\n    type="button"\n    (click)="showNotification()"\n>\n    Show\n</button>\n'}}]);
