@@ -985,6 +985,16 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../pipes/stringify-content'),
         title: 'StringifyContent',
     }),
+    route({
+        path: DemoRoute.StringifyValues,
+        loadComponent: async () => import('../pipes/stringify-values'),
+        title: 'StringifyValues',
+    }),
+    route({
+        path: DemoRoute.Values,
+        loadComponent: async () => import('../pipes/values'),
+        title: 'Values',
+    }),
     // SERVICES
     route({
         path: DemoRoute.Alert,
