@@ -73,6 +73,16 @@ export class TuiCarouselComponent {
         () => this.isMobile || this.draggable(),
     );
 
+    protected readonly computedTranslate = computed(
+        () => -this.index() / this.itemsCount(),
+    );
+
+    protected readonly x = computed(() =>
+        this.transitioned() ? this.computedTranslate() : this.translate(),
+    );
+
+    protected readonly transform = computed(() => `translateX(${100 * this.x()}%)`);
+
     public readonly draggable = input(false);
 
     public readonly itemsCount = input(1);
@@ -99,10 +109,6 @@ export class TuiCarouselComponent {
         this.updateIndex(this.index() - 1);
     }
 
-    protected get transform(): string {
-        return `translateX(${100 * this.x}%)`;
-    }
-
     @tuiPure
     protected getStyle(itemsCount: number): Partial<CSSStyleDeclaration> {
         const percent = `${100 / itemsCount}%`;
@@ -118,7 +124,7 @@ export class TuiCarouselComponent {
         this.transitioned.set(transitioned);
 
         if (!transitioned) {
-            this.translate.set(this.computedTranslate);
+            this.translate.set(this.computedTranslate());
         }
 
         this.onShift();
@@ -174,15 +180,7 @@ export class TuiCarouselComponent {
     }
 
     protected onShift(): void {
-        this.shift.emit(Math.abs((this.x % 1) + 0.5) * 2);
-    }
-
-    private get x(): number {
-        return this.transitioned() ? this.computedTranslate : this.translate();
-    }
-
-    private get computedTranslate(): number {
-        return -this.index() / this.itemsCount();
+        this.shift.emit(Math.abs((this.x() % 1) + 0.5) * 2);
     }
 
     private updateIndex(index: number): void {
