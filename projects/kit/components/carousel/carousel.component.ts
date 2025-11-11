@@ -1,7 +1,6 @@
 import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
-    ChangeDetectorRef,
     Component,
     computed,
     contentChildren,
@@ -60,12 +59,11 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
 })
 export class TuiCarouselComponent {
     private readonly el = tuiInjectElement();
-    private readonly cdr = inject(ChangeDetectorRef);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly directive = inject(TuiCarouselDirective);
     private readonly translate = signal(0);
     private readonly transitioned = signal(true);
-    private index = 0;
+    private readonly index = signal(0);
 
     protected readonly items = contentChildren(TuiItem, {
         read: TemplateRef<Record<string, unknown>>,
@@ -85,20 +83,20 @@ export class TuiCarouselComponent {
 
     @Input('index')
     public set indexSetter(index: number) {
-        this.index = index;
+        this.index.set(index);
         tuiSetSignal(this.directive.duration, NaN);
     }
 
     public next(): void {
-        if (this.items() && this.index === this.items().length - this.itemsCount()) {
+        if (this.items() && this.index() === this.items().length - this.itemsCount()) {
             return;
         }
 
-        this.updateIndex(this.index + 1);
+        this.updateIndex(this.index() + 1);
     }
 
     public prev(): void {
-        this.updateIndex(this.index - 1);
+        this.updateIndex(this.index() - 1);
     }
 
     protected get transform(): string {
@@ -127,7 +125,7 @@ export class TuiCarouselComponent {
     }
 
     protected isDisabled(index: number): boolean {
-        return index < this.index || index >= this.index + this.itemsCount();
+        return index < this.index() || index >= this.index() + this.itemsCount();
     }
 
     protected onIntersection(
@@ -135,7 +133,9 @@ export class TuiCarouselComponent {
         index: number,
     ): void {
         if (intersectionRatio && intersectionRatio >= 0.5 && !this.transitioned()) {
-            this.updateIndex(this.index < index ? index - this.itemsCount() + 1 : index);
+            this.updateIndex(
+                this.index() < index ? index - this.itemsCount() + 1 : index,
+            );
         }
     }
 
@@ -170,7 +170,7 @@ export class TuiCarouselComponent {
     }
 
     protected onAutoscroll(): void {
-        this.updateIndex(this.index === this.items().length - 1 ? 0 : this.index + 1);
+        this.updateIndex(this.index() === this.items().length - 1 ? 0 : this.index() + 1);
     }
 
     protected onShift(): void {
@@ -182,12 +182,11 @@ export class TuiCarouselComponent {
     }
 
     private get computedTranslate(): number {
-        return -this.index / this.itemsCount();
+        return -this.index() / this.itemsCount();
     }
 
     private updateIndex(index: number): void {
-        this.index = tuiClamp(index, 0, this.items().length - 1);
-        this.indexChange.emit(this.index);
-        this.cdr.markForCheck();
+        this.index.set(tuiClamp(index, 0, this.items().length - 1));
+        this.indexChange.emit(this.index());
     }
 }
