@@ -17,7 +17,7 @@
                                 tuiElement
                                 tuiOption
                                 type="button"
-                                [disabled]="disabledItemHandler(item)"
+                                [disabled]="disabledItemHandler()(item)"
                                 [value]="item"
                                 (click.capture)="itemClick.emit(item)"
                             >
@@ -37,7 +37,7 @@
                                 tuiElement
                                 tuiOption
                                 type="button"
-                                [disabled]="disabledItemHandler(item)"
+                                [disabled]="disabledItemHandler()(item)"
                                 [value]="item"
                                 (click)="itemClick.emit(item)"
                             >
@@ -60,7 +60,7 @@
                                 tuiElement
                                 tuiOption
                                 type="button"
-                                [disabled]="disabledItemHandler(item)"
+                                [disabled]="disabledItemHandler()(item)"
                                 [value]="item"
                                 (click.capture)="itemClick.emit(item)"
                             >
@@ -80,7 +80,7 @@
                                 tuiElement
                                 tuiOption
                                 type="button"
-                                [disabled]="disabledItemHandler(item)"
+                                [disabled]="disabledItemHandler()(item)"
                                 [value]="item"
                                 (click)="itemClick.emit(item)"
                             >

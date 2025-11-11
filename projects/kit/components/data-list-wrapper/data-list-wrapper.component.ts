@@ -69,10 +69,11 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
 
     public readonly items = input<readonly K[] | null>([]);
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<T> = this.newOptionMode
-        ? this.itemsHandlers?.disabledItemHandler()
-        : this.itemsHandlersLegacy.disabledItemHandler;
+    public readonly disabledItemHandler = input<TuiBooleanHandler<T>>(
+        this.newOptionMode
+            ? this.itemsHandlers?.disabledItemHandler()
+            : this.itemsHandlersLegacy.disabledItemHandler,
+    );
 
     public readonly emptyContent = input<PolymorpheusContent>();
 
