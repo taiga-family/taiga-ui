@@ -83,4 +83,12 @@ export const TUI_LITHUANIAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Atstatyti',
     },
     phoneSearch: 'Ievadiet valsti vai kodu',
+    dayRangePeriods: [
+        'Visą laiką',
+        'Šiandien',
+        'Vakar',
+        'Šią savaitę',
+        'Šį mėnesį',
+        'Praėjusį mėnesį',
+    ],
 };

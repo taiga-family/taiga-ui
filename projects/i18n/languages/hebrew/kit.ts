@@ -79,4 +79,5 @@ export const TUI_HEBREW_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'אִתחוּל',
     },
     phoneSearch: 'הקלד מדינה או קוד',
+    dayRangePeriods: ['כל הזמן', 'היום', 'אתמול', 'השבוע', 'החודש', 'בחודש שעבר'],
 };
