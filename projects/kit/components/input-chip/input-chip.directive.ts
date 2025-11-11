@@ -5,7 +5,7 @@ import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding, tuiSanitizeText} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,
@@ -112,10 +112,7 @@ export class TuiInputChipBaseDirective<T>
                 ? event.dataTransfer?.getData('text/plain') || ''
                 : tuiGetClipboardDataText(event);
 
-        // eslint-disable-next-line no-control-regex
-        const cleanedValue = value.replaceAll(/[\x00-\x1F\x7F-\x9F]/g, '');
-
-        this.textfield.value.set(cleanedValue);
+        this.textfield.value.set(tuiSanitizeText(value));
         this.onEnter();
     }
 
