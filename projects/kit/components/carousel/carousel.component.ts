@@ -63,6 +63,8 @@ export class TuiCarouselComponent {
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly directive = inject(TuiCarouselDirective);
     private translate = 0;
+    private transitioned = true;
+    private index = 0;
 
     protected readonly items = contentChildren(TuiItem, {
         read: TemplateRef<Record<string, unknown>>,
@@ -71,10 +73,6 @@ export class TuiCarouselComponent {
     protected readonly computedDraggable = computed(
         () => this.isMobile || this.draggable(),
     );
-
-    protected transitioned = true;
-
-    protected index = 0;
 
     public readonly draggable = input(false);
 
