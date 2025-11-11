@@ -47,6 +47,11 @@ export class Sandbox {
 
     public readonly placeholder = input('');
 
+    /**
+     * TODO: use `import {output} from '@angular/core'`
+     * after Cypress >=15.0.0 bump
+     * https://github.com/cypress-io/cypress/issues/32137#issuecomment-3207460304
+     */
     @Output()
     public readonly valueChanges = new EventEmitter<Item | null>();
 
