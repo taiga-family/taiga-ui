@@ -5,6 +5,7 @@ import {
     EventEmitter,
     inject,
     Input,
+    input,
     LOCALE_ID,
     Output,
 } from '@angular/core';
@@ -60,8 +61,7 @@ export class TuiFile {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly fileTexts$ = toObservable(inject(TUI_FILE_TEXTS));
 
-    @Input()
-    public file: TuiFileLike = {name: ''};
+    public readonly file = input<TuiFileLike>({name: ''});
 
     @Input()
     public state: TuiFileState = 'normal';
@@ -82,7 +82,7 @@ export class TuiFile {
     public readonly remove = new EventEmitter<void>();
 
     protected get preview(): SafeValue {
-        return this.isBig ? this.createPreview(this.file) : '';
+        return this.isBig ? this.createPreview(this.file()) : '';
     }
 
     protected get isBig(): boolean {
@@ -110,19 +110,19 @@ export class TuiFile {
     }
 
     protected get name(): string {
-        return this.getName(this.file);
+        return this.getName(this.file());
     }
 
     protected get type(): string {
-        return this.getType(this.file);
+        return this.getType(this.file());
     }
 
     protected get content$(): Observable<PolymorpheusContent> {
-        return this.calculateContent$(this.state, this.file, this.fileTexts$);
+        return this.calculateContent$(this.state, this.file(), this.fileTexts$);
     }
 
     protected get fileSize$(): Observable<string | null> {
-        return this.calculateFileSize$(this.file, this.units$);
+        return this.calculateFileSize$(this.file(), this.units$);
     }
 
     @tuiPure
@@ -133,7 +133,7 @@ export class TuiFile {
     ): Observable<PolymorpheusContent> {
         return state === 'error' && !file.content
             ? fileTexts$.pipe(map((texts) => texts.loadingError))
-            : of(this.file.content || '');
+            : of(this.file().content || '');
     }
 
     @tuiPure
