@@ -9,7 +9,7 @@
     >
         <div
             class="t-items"
-            [style.transform]="transform"
+            [style.transform]="transform()"
             (tuiCarouselAutoscroll)="onAutoscroll()"
             (tuiPan)="onPan($event[0])"
             (tuiSwipe)="onSwipe($event.direction)"
