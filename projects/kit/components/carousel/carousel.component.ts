@@ -23,7 +23,7 @@ import {
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiPure, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiCarouselDirective} from './carousel.directive';
 import {TuiCarouselAutoscroll} from './carousel-autoscroll.directive';
@@ -89,7 +89,7 @@ export class TuiCarouselComponent {
     @Input('index')
     public set indexSetter(index: number) {
         this.index = index;
-        this.directive.duration = NaN;
+        tuiSetSignal(this.directive.duration, NaN);
     }
 
     public next(): void {
