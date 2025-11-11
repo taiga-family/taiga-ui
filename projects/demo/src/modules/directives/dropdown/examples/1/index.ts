@@ -1,32 +1,73 @@
-import {Component} from '@angular/core';
+import {NgForOf} from '@angular/common';
+import {Component, computed, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiActiveZone, TuiObscured} from '@taiga-ui/cdk';
-import {TuiButton, TuiDropdown} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiTitle} from '@taiga-ui/core';
 import {TuiChevron} from '@taiga-ui/kit';
+import {TuiCell} from '@taiga-ui/layout';
+
+interface ExampleAction {
+    readonly description: string;
+    readonly title: string;
+}
 
 @Component({
     standalone: true,
-    imports: [TuiActiveZone, TuiButton, TuiChevron, TuiDropdown, TuiObscured],
+    imports: [
+        NgForOf,
+        TuiActiveZone,
+        TuiButton,
+        TuiCell,
+        TuiChevron,
+        TuiDataList,
+        TuiDropdown,
+        TuiObscured,
+        TuiTitle,
+    ],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected open = false;
+    protected readonly actions: readonly ExampleAction[] = [
+        {
+            title: 'Create task',
+            description: 'Draft a follow-up item for the team',
+        },
+        {
+            title: 'Schedule sync',
+            description: 'Find a 30-minute window for everyone',
+        },
+        {
+            title: 'Share update',
+            description: 'Post the latest progress to the channel',
+        },
+    ];
+
+    protected readonly open = signal(false);
+    protected readonly selected = signal<ExampleAction | null>(null);
+    protected readonly buttonLabel = computed(() => this.selected()?.title ?? 'Choose');
 
     protected onClick(): void {
-        this.open = !this.open;
+        this.open.update((open) => !open);
     }
 
     protected onObscured(obscured: boolean): void {
         if (obscured) {
-            this.open = false;
+            this.open.set(false);
         }
     }
 
     protected onActiveZone(active: boolean): void {
-        this.open = active && this.open;
+        if (!active) {
+            this.open.set(false);
+        }
+    }
+
+    protected onSelect(action: ExampleAction): void {
+        this.selected.set(action);
+        this.open.set(false);
     }
 }
