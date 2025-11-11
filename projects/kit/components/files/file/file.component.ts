@@ -6,7 +6,6 @@ import {
     input,
     LOCALE_ID,
     output,
-    signal,
 } from '@angular/core';
 import {DomSanitizer, type SafeValue} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
