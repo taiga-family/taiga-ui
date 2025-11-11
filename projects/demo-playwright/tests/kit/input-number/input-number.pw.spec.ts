@@ -607,6 +607,8 @@ describe('InputNumber', () => {
                     {prefix: '$', postfix: ''},
                     {prefix: '', postfix: 'kg'},
                     {prefix: '$', postfix: 'kg'},
+                    {prefix: '', postfix: 'Even too long postfix changes nothing'},
+                    {prefix: 'Enormous prefix is allowed too', postfix: ''},
                 ] as const
             ).forEach(({prefix, postfix}) => {
                 describe(`[prefix]="${prefix}" & [postfix]="${postfix}"`, () => {
@@ -742,6 +744,15 @@ describe('InputNumber', () => {
                         await inputNumber.textfield.blur();
 
                         await expect(inputNumber.textfield).toHaveValue('');
+                    });
+
+                    test('allows to enter huge number', async () => {
+                        await inputNumber.textfield.focus();
+                        await inputNumber.textfield.pressSequentially('1234567890123456');
+
+                        await expect(inputNumber.textfield).toHaveValue(
+                            `${prefix}1 234 567 890 123 456${postfix}`,
+                        );
                     });
                 });
             });
