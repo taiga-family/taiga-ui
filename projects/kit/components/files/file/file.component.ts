@@ -2,11 +2,11 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
-    EventEmitter,
     inject,
     input,
     LOCALE_ID,
-    Output,
+    output,
+    signal,
 } from '@angular/core';
 import {DomSanitizer, type SafeValue} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
@@ -47,6 +47,7 @@ export class TuiFile {
     private readonly locale = inject(LOCALE_ID);
     private readonly units = inject(TUI_DIGITAL_INFORMATION_UNITS);
     private readonly win = inject(WA_WINDOW) as Window & {File: typeof File};
+    private readonly removeObserved = signal(false);
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly fileTexts = inject(TUI_FILE_TEXTS);
@@ -71,8 +72,11 @@ export class TuiFile {
 
     public readonly leftContent = input<PolymorpheusContent>();
 
-    @Output()
-    public readonly remove = new EventEmitter<void>();
+    public readonly remove = output();
+
+    constructor() {
+        this.remove.subscribe(() => this.removeObserved.set(true));
+    }
 
     protected get preview(): SafeValue {
         return this.isBig ? this.createPreview(this.file()) : '';
@@ -95,7 +99,7 @@ export class TuiFile {
     }
 
     protected get allowDelete(): boolean {
-        return this.showDelete() && this.remove.observed;
+        return this.showDelete() && this.removeObserved();
     }
 
     protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
