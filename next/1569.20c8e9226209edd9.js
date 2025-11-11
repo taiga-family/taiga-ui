@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[1569],{1569:a=>{a.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\ntui-data-list {\n    gap: 0.25rem;\n    padding: 0.5rem;\n}\n"}}]);
