@@ -3,6 +3,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
     contentChildren,
     inject,
     Input,
@@ -66,6 +67,10 @@ export class TuiCarouselComponent {
     protected readonly items = contentChildren(TuiItem, {
         read: TemplateRef<Record<string, unknown>>,
     });
+
+    protected readonly computedDraggable = computed(
+        () => this.isMobile || this.draggable(),
+    );
 
     protected transitioned = true;
 
@@ -146,7 +151,7 @@ export class TuiCarouselComponent {
     }
 
     protected onPan(x: number): void {
-        if (!this.computedDraggable) {
+        if (!this.computedDraggable()) {
             return;
         }
 
@@ -179,10 +184,6 @@ export class TuiCarouselComponent {
 
     private get computedTranslate(): number {
         return -this.index / this.itemsCount();
-    }
-
-    private get computedDraggable(): boolean {
-        return this.isMobile || this.draggable();
     }
 
     private updateIndex(index: number): void {
