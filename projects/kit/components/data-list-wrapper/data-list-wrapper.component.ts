@@ -76,8 +76,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
         ? this.itemsHandlers?.disabledItemHandler()
         : this.itemsHandlersLegacy.disabledItemHandler;
 
-    @Input()
-    public emptyContent: PolymorpheusContent;
+    public readonly emptyContent = input<PolymorpheusContent>();
 
     @Input()
     public size = tuiInjectDataListSize();

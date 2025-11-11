@@ -1,6 +1,6 @@
 @if (items()) {
     <tui-data-list
-        [emptyContent]="emptyContent"
+        [emptyContent]="emptyContent()"
         [size]="size"
     >
         @for (group of items(); track group) {
