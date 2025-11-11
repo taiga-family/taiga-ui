@@ -1,18 +1,16 @@
-import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
+import {NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ContentChildren,
+    contentChildren,
     EventEmitter,
     inject,
     Input,
     Output,
-    type QueryList,
     TemplateRef,
 } from '@angular/core';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiItem} from '@taiga-ui/cdk/directives/item';
 import {TuiPan} from '@taiga-ui/cdk/directives/pan';
 import {
@@ -32,7 +30,6 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
 @Component({
     selector: 'tui-carousel',
     imports: [
-        AsyncPipe,
         NgTemplateOutlet,
         TuiCarouselAutoscroll,
         TuiCarouselScroll,
@@ -66,9 +63,9 @@ export class TuiCarouselComponent {
     private readonly directive = inject(TuiCarouselDirective);
     private translate = 0;
 
-    @ContentChildren(TuiItem, {read: TemplateRef})
-    protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
-        EMPTY_QUERY;
+    protected readonly items = contentChildren(TuiItem, {
+        read: TemplateRef<Record<string, unknown>>,
+    });
 
     protected transitioned = true;
 
@@ -93,7 +90,7 @@ export class TuiCarouselComponent {
     }
 
     public next(): void {
-        if (this.items && this.index === this.items.length - this.itemsCount) {
+        if (this.items() && this.index === this.items().length - this.itemsCount) {
             return;
         }
 
@@ -157,7 +154,7 @@ export class TuiCarouselComponent {
             return;
         }
 
-        const min = 1 - this.items.length / this.itemsCount;
+        const min = 1 - this.items().length / this.itemsCount;
 
         this.translate = tuiClamp(x / this.el.clientWidth + this.translate, min, 0);
 
@@ -173,7 +170,7 @@ export class TuiCarouselComponent {
     }
 
     protected onAutoscroll(): void {
-        this.updateIndex(this.index === this.items.length - 1 ? 0 : this.index + 1);
+        this.updateIndex(this.index === this.items().length - 1 ? 0 : this.index + 1);
     }
 
     protected onShift(): void {
@@ -193,7 +190,7 @@ export class TuiCarouselComponent {
     }
 
     private updateIndex(index: number): void {
-        this.index = tuiClamp(index, 0, this.items.length - 1);
+        this.index = tuiClamp(index, 0, this.items().length - 1);
         this.indexChange.emit(this.index);
         this.cdr.markForCheck();
     }
