@@ -12,7 +12,7 @@ import {TUI_FIRST_DAY_OF_WEEK, TuiCalendar} from '@taiga-ui/core';
     providers: [
         {
             provide: TUI_FIRST_DAY_OF_WEEK,
-            useValue: signal(TuiDayOfWeek.Wednesday),
+            useValue: signal(TuiDayOfWeek.Sunday),
         },
     ],
 })
