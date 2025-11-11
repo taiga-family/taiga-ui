@@ -2,10 +2,11 @@ import {
     ChangeDetectionStrategy,
     Component,
     computed,
+    EventEmitter,
     inject,
     input,
     LOCALE_ID,
-    output,
+    Output,
 } from '@angular/core';
 import {DomSanitizer, type SafeValue} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
@@ -70,7 +71,8 @@ export class TuiFile {
 
     public readonly leftContent = input<PolymorpheusContent>();
 
-    public readonly remove = output();
+    @Output()
+    public readonly remove = new EventEmitter<void>();
 
     protected get preview(): SafeValue {
         return this.isBig ? this.createPreview(this.file()) : '';
@@ -90,6 +92,10 @@ export class TuiFile {
 
     protected get isDeleted(): boolean {
         return this.state() === 'deleted';
+    }
+
+    protected get allowDelete(): boolean {
+        return this.showDelete() && this.remove.observed;
     }
 
     protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
