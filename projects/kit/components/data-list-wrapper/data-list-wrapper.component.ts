@@ -3,13 +3,12 @@ import {
     Component,
     computed,
     type ElementRef,
-    EventEmitter,
     forwardRef,
     inject,
     Input,
     input,
     isSignal,
-    Output,
+    output,
     type QueryList,
     signal,
     ViewChild,
@@ -80,8 +79,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
 
     public readonly size = input(tuiInjectDataListSize());
 
-    @Output()
-    public readonly itemClick = new EventEmitter<T>();
+    public readonly itemClick = output<T>();
 
     public readonly options = computed(() => this.datalist()?.options() ?? []);
 
