@@ -2,7 +2,7 @@
     class="t-preview"
     [class.t-preview_big]="isBig"
 >
-    <ng-container *polymorpheusOutlet="leftContent || defaultLeftContent as text">
+    <ng-container *polymorpheusOutlet="leftContent() || defaultLeftContent as text">
         {{ text }}
     </ng-container>
 </div>
@@ -15,7 +15,7 @@
             {{ name }}
         </div>
         <div class="t-type">{{ type }}</div>
-        @if (showSize && (fileSize$ | async); as fileSize) {
+        @if (showSize() && (fileSize$ | async); as fileSize) {
             <div class="t-size">
                 {{ fileSize }}
             </div>
@@ -62,7 +62,7 @@
             />
         } @else {
             <tui-icon
-                *polymorpheusOutlet="icon as src; context: {$implicit: size}"
+                *polymorpheusOutlet="icon as src; context: {$implicit: size()}"
                 class="t-icon"
                 [class.t-icon_blank]="isBig || isDeleted"
                 [class.t-icon_error]="isError"

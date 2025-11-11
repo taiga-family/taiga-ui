@@ -4,7 +4,6 @@ import {
     Component,
     EventEmitter,
     inject,
-    Input,
     input,
     LOCALE_ID,
     Output,
@@ -48,7 +47,7 @@ import {TUI_FILE_OPTIONS} from './file.options';
     providers: [tuiAppearanceOptionsProvider(TUI_FILE_OPTIONS)],
     hostDirectives: [TuiAppearance],
     host: {
-        '[attr.data-delete]': 'showDelete',
+        '[attr.data-delete]': 'showDelete()',
     },
 })
 export class TuiFile {
@@ -65,17 +64,13 @@ export class TuiFile {
 
     public readonly state = input<TuiFileState>('normal');
 
-    @Input()
-    public size: TuiSizeL = 'm';
+    public readonly size = input<TuiSizeL>('m');
 
-    @Input()
-    public showDelete: boolean | 'always' = true;
+    public readonly showDelete = input<boolean | 'always'>(true);
 
-    @Input()
-    public showSize = true;
+    public readonly showSize = input(true);
 
-    @Input()
-    public leftContent: PolymorpheusContent;
+    public readonly leftContent = input<PolymorpheusContent>();
 
     @Output()
     public readonly remove = new EventEmitter<void>();
@@ -85,7 +80,7 @@ export class TuiFile {
     }
 
     protected get isBig(): boolean {
-        return this.size === 'l';
+        return this.size() === 'l';
     }
 
     protected get isLoading(): boolean {
@@ -101,7 +96,7 @@ export class TuiFile {
     }
 
     protected get allowDelete(): boolean {
-        return this.showDelete && this.remove.observed;
+        return this.showDelete() && this.remove.observed;
     }
 
     protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
