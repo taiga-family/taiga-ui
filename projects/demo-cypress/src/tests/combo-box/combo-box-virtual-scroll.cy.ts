@@ -1,7 +1,7 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {ChangeDetectionStrategy, Component, inject, output} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TUI_ANIMATIONS_SPEED, TuiDataList, TuiRoot, TuiScrollable} from '@taiga-ui/core';
+import {TuiDataList, TuiRoot, TuiScrollable} from '@taiga-ui/core';
 import {
     TUI_COUNTRIES,
     TuiChevron,
@@ -57,7 +57,6 @@ import {createOutputSpy} from 'cypress/angular';
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class Sandbox {
     protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
