@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiMobileDialogOptions<I = undefined> {
     readonly actions: readonly string[];
@@ -16,19 +15,5 @@ export const TUI_MOBILE_DIALOG_DEFAULT_OPTIONS: TuiMobileDialogOptions = {
 /**
  * Default parameters for mobile dialog component
  */
-export const TUI_MOBILE_DIALOG_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_MOBILE_DIALOG_OPTIONS' : '',
-    {
-        factory: () => TUI_MOBILE_DIALOG_DEFAULT_OPTIONS,
-    },
-);
-
-export function tuiMobileDialogOptionsProvider(
-    options: Partial<TuiMobileDialogOptions<unknown>>,
-): Provider {
-    return tuiProvideOptions(
-        TUI_MOBILE_DIALOG_OPTIONS,
-        options,
-        TUI_MOBILE_DIALOG_DEFAULT_OPTIONS,
-    );
-}
+export const [TUI_MOBILE_DIALOG_OPTIONS, tuiMobileDialogOptionsProvider] =
+    tuiCreateOptions(TUI_MOBILE_DIALOG_DEFAULT_OPTIONS);

@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 
 export interface TuiBreadcrumbsOptions {
@@ -14,19 +13,6 @@ export const TUI_BREADCRUMBS_DEFAULT_OPTIONS: TuiBreadcrumbsOptions = {
     itemsLimit: 0,
 };
 
-export const TUI_BREADCRUMBS_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_BREADCRUMBS_OPTIONS' : '',
-    {
-        factory: () => TUI_BREADCRUMBS_DEFAULT_OPTIONS,
-    },
+export const [TUI_BREADCRUMBS_OPTIONS, tuiBreadcrumbsOptionsProvider] = tuiCreateOptions(
+    TUI_BREADCRUMBS_DEFAULT_OPTIONS,
 );
-
-export function tuiBreadcrumbsOptionsProvider(
-    options: Partial<TuiBreadcrumbsOptions>,
-): Provider {
-    return tuiProvideOptions(
-        TUI_BREADCRUMBS_OPTIONS,
-        options,
-        TUI_BREADCRUMBS_DEFAULT_OPTIONS,
-    );
-}

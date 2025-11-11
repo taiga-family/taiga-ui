@@ -1,6 +1,5 @@
-import {InjectionToken, type Provider} from '@angular/core';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 export const TuiSortDirection = {
@@ -65,13 +64,6 @@ export const TUI_TABLE_DEFAULT_OPTIONS: TuiTableOptions = {
     },
 };
 
-export const TUI_TABLE_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_TABLE_OPTIONS' : '',
-    {
-        factory: () => TUI_TABLE_DEFAULT_OPTIONS,
-    },
+export const [TUI_TABLE_OPTIONS, tuiTableOptionsProvider] = tuiCreateOptions(
+    TUI_TABLE_DEFAULT_OPTIONS,
 );
-
-export function tuiTableOptionsProvider(options: Partial<TuiTableOptions>): Provider {
-    return tuiProvideOptions(TUI_TABLE_OPTIONS, options, TUI_TABLE_DEFAULT_OPTIONS);
-}

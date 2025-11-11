@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type Observable} from 'rxjs';
 
 export interface TuiSheetDialogOptions<I = undefined> {
@@ -29,19 +28,6 @@ export const TUI_SHEET_DIALOG_DEFAULT_OPTIONS: TuiSheetDialogOptions = {
 /**
  * Default parameters for mobile dialog component
  */
-export const TUI_SHEET_DIALOG_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_SHEET_DIALOG_OPTIONS' : '',
-    {
-        factory: () => TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
-    },
+export const [TUI_SHEET_DIALOG_OPTIONS, tuiSheetDialogOptionsProvider] = tuiCreateOptions(
+    TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
 );
-
-export function tuiSheetDialogOptionsProvider(
-    options: Partial<TuiSheetDialogOptions>,
-): Provider {
-    return tuiProvideOptions(
-        TUI_SHEET_DIALOG_OPTIONS,
-        options,
-        TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
-    );
-}
