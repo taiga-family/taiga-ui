@@ -6,6 +6,7 @@ import {
     contentChildren,
     inject,
     Input,
+    input,
     output,
     TemplateRef,
 } from '@angular/core';
@@ -73,8 +74,7 @@ export class TuiCarouselComponent {
     @Input()
     public draggable = false;
 
-    @Input()
-    public itemsCount = 1;
+    public readonly itemsCount = input(1);
 
     public readonly indexChange = output<number>();
 
@@ -87,7 +87,7 @@ export class TuiCarouselComponent {
     }
 
     public next(): void {
-        if (this.items() && this.index === this.items().length - this.itemsCount) {
+        if (this.items() && this.index === this.items().length - this.itemsCount()) {
             return;
         }
 
@@ -124,7 +124,7 @@ export class TuiCarouselComponent {
     }
 
     protected isDisabled(index: number): boolean {
-        return index < this.index || index >= this.index + this.itemsCount;
+        return index < this.index || index >= this.index + this.itemsCount();
     }
 
     protected onIntersection(
@@ -132,7 +132,7 @@ export class TuiCarouselComponent {
         index: number,
     ): void {
         if (intersectionRatio && intersectionRatio >= 0.5 && !this.transitioned) {
-            this.updateIndex(this.index < index ? index - this.itemsCount + 1 : index);
+            this.updateIndex(this.index < index ? index - this.itemsCount() + 1 : index);
         }
     }
 
@@ -151,7 +151,7 @@ export class TuiCarouselComponent {
             return;
         }
 
-        const min = 1 - this.items().length / this.itemsCount;
+        const min = 1 - this.items().length / this.itemsCount();
 
         this.translate = tuiClamp(x / this.el.clientWidth + this.translate, min, 0);
 
@@ -179,7 +179,7 @@ export class TuiCarouselComponent {
     }
 
     private get computedTranslate(): number {
-        return -this.index / this.itemsCount;
+        return -this.index / this.itemsCount();
     }
 
     private get computedDraggable(): boolean {
