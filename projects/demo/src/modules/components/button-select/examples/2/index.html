@@ -1,0 +1,29 @@
+<button
+    appearance="secondary-grayscale"
+    iconStart="@tui.user"
+    size="m"
+    tuiButton
+    tuiButtonSelect
+    type="button"
+    [(ngModel)]="item"
+>
+    {{ item.length === 1 ? item[0]?.name : `Selected ${item.length}` }}
+
+    <tui-data-list *tuiDropdown>
+        <tui-opt-group
+            label="Users"
+            tuiMultiSelectGroup
+        >
+            @for (name of items; track name.id) {
+                <button
+                    new
+                    tuiOption
+                    type="button"
+                    [value]="name"
+                >
+                    {{ name.name }}
+                </button>
+            }
+        </tui-opt-group>
+    </tui-data-list>
+</button>
