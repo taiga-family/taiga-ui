@@ -1,6 +1,7 @@
 import {
     type AfterViewInit,
     ContentChildren,
+    contentChildren,
     DestroyRef,
     Directive,
     ElementRef,
@@ -34,11 +35,12 @@ import {
     selector: 'tui-data-list[tuiDataListDropdownManager]',
 })
 export class TuiDataListDropdownManager implements AfterViewInit {
-    @ContentChildren(TuiDropdownDirective, {descendants: true})
-    private readonly dropdowns: QueryList<TuiDropdownDirective> = EMPTY_QUERY;
-
     @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
     private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
+
+    private readonly dropdowns = contentChildren(TuiDropdownDirective, {
+        descendants: true,
+    });
 
     private readonly destroyRef = inject(DestroyRef);
 
@@ -50,12 +52,12 @@ export class TuiDataListDropdownManager implements AfterViewInit {
         merge(this.immediate$, this.debounce$)
             .pipe(
                 switchMap((active) => {
-                    this.dropdowns.forEach((dropdown, index) => {
+                    this.dropdowns().forEach((dropdown, index) => {
                         dropdown.toggle(index === active);
                     });
 
                     const element = this.els.get(active);
-                    const dropdown = this.dropdowns.get(active);
+                    const dropdown = this.dropdowns()[active];
                     const ref = dropdown?.ref();
 
                     if (!element || !dropdown || !ref) {
@@ -149,14 +151,11 @@ export class TuiDataListDropdownManager implements AfterViewInit {
     }
 
     private notInDropdown(element: EventTarget | null, index: number): boolean {
-        return !this.dropdowns
-            .get(index)
-            ?.ref()
-            ?.location.nativeElement.contains(element);
+        return !this.dropdowns()[index]?.ref()?.location.nativeElement.contains(element);
     }
 
     private tryToFocus(index: number): void {
-        const content = this.dropdowns.get(index)?.ref()?.location.nativeElement;
+        const content = this.dropdowns()[index]?.ref()?.location.nativeElement;
 
         if (!content) {
             return;
