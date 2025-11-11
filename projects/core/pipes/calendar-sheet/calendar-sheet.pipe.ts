@@ -33,7 +33,7 @@ export class TuiCalendarSheetPipe implements PipeTransform {
                     month,
                     rowIndex,
                     colIndex,
-                    firstDayOfWeek: this.firstDayOfWeek,
+                    firstDayOfWeek: this.firstDayOfWeek(),
                 });
 
                 const isPrevMonthDay = (day: TuiDay, relativeToMonth = month): boolean =>

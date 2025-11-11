@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -14,7 +14,7 @@ import {TUI_FIRST_DAY_OF_WEEK, TuiLink} from '@taiga-ui/core';
     providers: [
         {
             provide: TUI_FIRST_DAY_OF_WEEK,
-            useValue: TuiDayOfWeek.Sunday,
+            useValue: signal(TuiDayOfWeek.Sunday),
         },
     ],
 })

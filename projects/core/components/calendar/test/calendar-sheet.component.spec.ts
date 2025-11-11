@@ -2,6 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     type DebugElement,
+    signal,
     ViewChild,
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
@@ -233,7 +234,7 @@ describe('CalendarSheet', () => {
                     providers: [
                         {
                             provide: TUI_FIRST_DAY_OF_WEEK,
-                            useValue: TuiDayOfWeek.Sunday,
+                            useValue: signal(TuiDayOfWeek.Sunday),
                         },
                     ],
                 });
@@ -269,7 +270,7 @@ describe('CalendarSheet', () => {
                     providers: [
                         {
                             provide: TUI_FIRST_DAY_OF_WEEK,
-                            useValue: TuiDayOfWeek.Monday,
+                            useValue: signal(TuiDayOfWeek.Monday),
                         },
                     ],
                 });
@@ -305,7 +306,7 @@ describe('CalendarSheet', () => {
                     providers: [
                         {
                             provide: TUI_FIRST_DAY_OF_WEEK,
-                            useValue: TuiDayOfWeek.Wednesday,
+                            useValue: signal(TuiDayOfWeek.Wednesday),
                         },
                     ],
                 });
