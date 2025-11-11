@@ -36,7 +36,7 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
         '(input)': 'onInput()',
         '(paste.prevent)': 'onPaste($event)',
         '(drop.prevent)': 'onPaste($event)',
-        '(focus)': 'onFocus()',
+        '(focus)': 'scrollTo()',
     },
 })
 export class TuiInputChipBaseDirective<T>
@@ -80,10 +80,6 @@ export class TuiInputChipBaseDirective<T>
         this.onChange(
             this.unique ? Array.from(new Set(value.reverse())).reverse() : value,
         );
-    }
-
-    protected onFocus(): void {
-        this.scrollTo();
     }
 
     protected onEnter(): void {
