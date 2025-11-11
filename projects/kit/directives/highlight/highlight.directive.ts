@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Input, type OnChanges, Renderer2} from '@angular/core';
+import {Directive, inject, input, type OnChanges, Renderer2} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {svgNodeFilter} from '@taiga-ui/cdk/constants';
@@ -31,11 +31,11 @@ export class TuiHighlight implements OnChanges {
         svgNodeFilter,
     );
 
-    @Input()
-    public tuiHighlight = '';
+    public readonly tuiHighlight = input('');
 
-    @Input()
-    public tuiHighlightColor = inject(TUI_HIGHLIGHT_OPTIONS).highlightColor;
+    public readonly tuiHighlightColor = input(
+        inject(TUI_HIGHLIGHT_OPTIONS).highlightColor,
+    );
 
     constructor() {
         inject(ResizeObserverService, {self: true})
@@ -70,13 +70,13 @@ export class TuiHighlight implements OnChanges {
             const range = this.doc.createRange();
 
             range.setStart(this.treeWalker.currentNode, index);
-            range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight.length);
+            range.setEnd(this.treeWalker.currentNode, index + this.tuiHighlight().length);
 
             const hostRect = this.el.getBoundingClientRect();
             const {left, top, width, height} = range.getBoundingClientRect();
             const {style} = this.highlight;
 
-            style.background = this.tuiHighlightColor;
+            style.background = this.tuiHighlightColor();
             style.left = tuiPx(left - hostRect.left);
             style.top = tuiPx(top - hostRect.top);
             style.width = tuiPx(width);
@@ -88,16 +88,16 @@ export class TuiHighlight implements OnChanges {
     }
 
     private indexOf(source: string | null): number {
-        return !source || !this.tuiHighlight
+        return !source || !this.tuiHighlight()
             ? -1
-            : source.toLowerCase().indexOf(this.tuiHighlight.toLowerCase());
+            : source.toLowerCase().indexOf(this.tuiHighlight().toLowerCase());
     }
 
     private setUpHighlight(): HTMLElement {
         const highlight = this.renderer.createElement('div');
         const {style} = highlight;
 
-        style.background = this.tuiHighlightColor;
+        style.background = this.tuiHighlightColor();
         style.zIndex = '-1';
         style.position = 'absolute';
         this.renderer.appendChild(this.el, highlight);
