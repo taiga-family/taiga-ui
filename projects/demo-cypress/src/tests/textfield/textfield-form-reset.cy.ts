@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {TuiYear} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
@@ -36,12 +36,12 @@ import {
             <button
                 id="reset"
                 type="button"
-                (mouseenter)="formGroup.reset()"
+                (mouseenter)="formGroup().reset()"
             >
                 Reset
             </button>
 
-            <form [formGroup]="formGroup">
+            <form [formGroup]="formGroup()">
                 <tui-textfield tuiChevron>
                     <input
                         formControlName="comboBox"
@@ -127,8 +127,7 @@ import {
 export class Sandbox {
     protected readonly year = new TuiYear(2020);
 
-    @Input({required: true})
-    public formGroup!: FormGroup;
+    public readonly formGroup = input.required<FormGroup>();
 }
 
 describe('Textfield + form.reset()', () => {

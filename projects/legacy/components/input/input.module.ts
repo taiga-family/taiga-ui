@@ -17,9 +17,9 @@ import {TuiInputDirective} from './input.directive';
 @NgModule({
     imports: [
         CommonModule,
+        TuiLegacyDropdownOpenMonitorDirective,
         TuiPrimitiveTextfieldModule,
         ...TuiDropdown,
-        TuiLegacyDropdownOpenMonitorDirective,
     ],
     declarations: [TuiInputComponent, TuiInputDirective],
     exports: [

@@ -20,10 +20,10 @@ export class TsFileComponentParser extends TsFileParser {
         );
     }
 
-    public set styleUrls(newUrls: string[] | readonly string[]) {
+    public set styleUrl(newUrl: string) {
         this.rawFileContent = this.rawFileContent.replaceAll(
-            /(styleUrls:\s)(\[.*\])/gi,
-            `$1${JSON.stringify(newUrls)}`,
+            /(styleUrl:\s['"`])(.*)(['"`])/gi,
+            `$1${newUrl}$3`,
         );
     }
 

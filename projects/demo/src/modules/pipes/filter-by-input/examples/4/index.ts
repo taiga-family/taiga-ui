@@ -8,6 +8,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
 import {delay, of, startWith} from 'rxjs';
 
 @Component({
+    selector: 'example-4',
     imports: [
         AsyncPipe,
         ReactiveFormsModule,

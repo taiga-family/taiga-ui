@@ -75,9 +75,8 @@
                 </th>
             </tr>
         </thead>
-
+        @let sortedPythons = pythons | tuiTableSort;
         <tbody
-            *tuiLet="pythons | tuiTableSort as sortedPythons"
             heading="Monty Python"
             tuiTbody
             [data]="sortedPythons"
@@ -172,14 +171,13 @@
                         tuiTd
                         class="number text"
                     >
-                        {{ getTotal(item) | tuiFormatNumber | async }}
+                        {{ getTotal(item) | tuiFormatNumber }}
                     </td>
                 </tr>
             }
         </tbody>
-
+        @let sortedStarwars = starwars | tuiTableSort;
         <tbody
-            *tuiLet="starwars | tuiTableSort as sortedStarwars"
             tuiTbody
             [data]="sortedStarwars"
             [heading]="template"
@@ -269,7 +267,7 @@
                         tuiTd
                         class="number text"
                     >
-                        {{ getTotal(item) | tuiFormatNumber | async }}
+                        {{ getTotal(item) | tuiFormatNumber }}
                     </td>
                 </tr>
             }

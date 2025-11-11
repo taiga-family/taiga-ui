@@ -4,7 +4,7 @@ import {
     Directive,
     type DoCheck,
     inject,
-    Input,
+    input,
     signal,
     ViewContainerRef,
 } from '@angular/core';
@@ -26,7 +26,6 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {tuiTextareaOptionsProvider} from './textarea.options';
 
 @Component({
-    standalone: true,
     template: `
         <span [textContent]="context.$implicit.slice(0, limit())"></span>
         <span
@@ -42,7 +41,6 @@ export class TuiTextareaLimitComponent {
 }
 
 @Component({
-    standalone: true,
     template: '{{ length() }} / {{ limit() }}',
     styleUrl: './textarea-limit.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -55,7 +53,6 @@ export class TuiTextareaCounterComponent {
 const COMPONENT = new PolymorpheusComponent(TuiTextareaLimitComponent);
 
 @Directive({
-    standalone: true,
     selector: '[tuiTextarea][limit]',
     providers: [
         tuiProvide(NG_VALIDATORS, TuiTextareaLimit, true),
@@ -72,13 +69,7 @@ export class TuiTextareaLimit implements Validator, DoCheck {
     );
 
     public readonly size = inject(TUI_TEXTFIELD_OPTIONS).size;
-    public readonly limit = signal(0);
-
-    // TODO: Use signal inputs in v5
-    @Input('limit')
-    public set limitSetter(limit: number) {
-        this.limit.set(limit);
-    }
+    public readonly limit = input(0);
 
     public ngDoCheck(): void {
         this.ref.instance.length.set(this.textfield.value().length);

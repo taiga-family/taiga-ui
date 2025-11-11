@@ -4,7 +4,10 @@ import getCompareSnapshotsPlugin from 'cypress-image-diff-js/plugin';
 
 import webpackConfig from '../demo/webpack.config';
 
-const preset = nxPreset();
+const preset = {
+    ...nxPreset(),
+    devServerPublicPathRoute: '/',
+};
 
 export default defineConfig({
     video: false,

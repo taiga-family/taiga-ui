@@ -1,5 +1,4 @@
-import {computed, Directive, inject, Input, signal, untracked} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {computed, Directive, inject, input, untracked} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {
@@ -38,7 +37,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {TUI_INPUT_TIME_OPTIONS} from './input-time.options';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputTime]',
     providers: [
         tuiAsControl(TuiInputTimeDirective),
@@ -64,10 +62,7 @@ export class TuiInputTimeDirective
     private readonly dropdown = inject(TuiDropdownDirective);
     private readonly open = tuiDropdownOpen();
     private readonly options = inject(TUI_INPUT_TIME_OPTIONS);
-    private readonly fillers = toSignal(inject(TUI_TIME_TEXTS));
-    private readonly prefix = signal('');
-    private readonly postfix = signal('');
-
+    private readonly fillers = inject(TUI_TIME_TEXTS);
     protected readonly icon = tuiTextfieldIcon(TUI_INPUT_TIME_OPTIONS);
     protected readonly dropdownEnabled = tuiDropdownEnabled(
         computed(() => !this.native && this.interactive()),
@@ -75,7 +70,7 @@ export class TuiInputTimeDirective
 
     protected readonly filler = tuiDirectiveBinding(
         TuiTextfieldComponent,
-        'fillerSetter',
+        'filler',
         computed((filler = this.fillers()?.[this.timeMode()] ?? '') =>
             this.postfix() ? '' : this.prefix() + filler,
         ),
@@ -94,31 +89,16 @@ export class TuiInputTimeDirective
         ),
     );
 
-    @Input()
-    public accept: readonly TuiTime[] = [];
+    public readonly accept = input<readonly TuiTime[]>([]);
 
     public readonly native =
         !!inject(TuiWithNativePicker, {optional: true}) && inject(TUI_IS_MOBILE);
 
-    public readonly timeMode = signal(this.options.mode);
+    public readonly timeMode = input<MaskitoTimeMode>(this.options.mode, {alias: 'mode'});
 
-    // TODO(v5): use signal inputs
-    @Input('mode')
-    public set modeSetter(x: MaskitoTimeMode) {
-        this.timeMode.set(x);
-    }
+    public readonly prefix = input('');
 
-    // TODO(v5): use signal inputs
-    @Input('prefix')
-    public set prefixSetter(x: string) {
-        this.prefix.set(x);
-    }
-
-    // TODO(v5): use signal inputs
-    @Input('postfix')
-    public set postfixSetter(x: string) {
-        this.postfix.set(x);
-    }
+    public readonly postfix = input('');
 
     public setValue(value: TuiTime | null): void {
         this.onChange(value);
@@ -151,7 +131,9 @@ export class TuiInputTimeDirective
         const time =
             value.length === this.timeMode().length ? TuiTime.fromString(value) : null;
         const newValue =
-            this.accept.length && time ? this.findNearestTime(time, this.accept) : time;
+            this.accept().length && time
+                ? this.findNearestTime(time, this.accept())
+                : time;
 
         this.control?.control?.updateValueAndValidity({emitEvent: false});
         this.onChange(newValue);
@@ -173,8 +155,8 @@ export class TuiInputTimeDirective
         if (value && !this.value()) {
             const time = TuiTime.fromString(value);
 
-            const newValue = this.accept.length
-                ? this.findNearestTime(time, this.accept)
+            const newValue = this.accept().length
+                ? this.findNearestTime(time, this.accept())
                 : time;
 
             this.control?.control?.updateValueAndValidity({emitEvent: false});

@@ -16,7 +16,6 @@ import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
@@ -29,14 +28,14 @@ import {
 } from '@taiga-ui/core/directives/hint';
 import {type TuiPoint} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {distinctUntilChanged, map, type Observable, Subject} from 'rxjs';
+import {distinctUntilChanged, filter, map, type Observable, Subject} from 'rxjs';
 
 import {TUI_LINE_CHART_OPTIONS} from './line-chart.options';
 import {TuiLineChartHint} from './line-chart-hint.directive';
 
 @Component({
     selector: 'tui-line-chart',
-    imports: [AsyncPipe, TuiHint, TuiLet],
+    imports: [AsyncPipe, TuiHint],
     templateUrl: './line-chart.template.html',
     styleUrl: './line-chart.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,9 +52,10 @@ export class TuiLineChart implements OnChanges {
     private readonly autoId = tuiInjectId();
     private readonly resize = toSignal(
         inject(ResizeObserverService, {self: true}).pipe(
-            map(([e]) => e?.contentRect.height || 0),
+            map(([e]) => e?.contentRect.height || NaN),
+            filter((height) => !Number.isNaN(height)),
         ),
-        {initialValue: 0},
+        {initialValue: NaN},
     );
 
     private readonly box = signal('');
@@ -63,6 +63,10 @@ export class TuiLineChart implements OnChanges {
     protected readonly hintDirective = inject(TuiLineChartHint, {optional: true});
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly viewBox = computed(() => {
+        if (Number.isNaN(this.resize())) {
+            return '0 0 0 0';
+        }
+
         const offset = this.height / Math.max(this.resize(), 1);
         const [x = 0, y = 0, width = 0, height = 0] = this.box().split(' ').map(Number);
 

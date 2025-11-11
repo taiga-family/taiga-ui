@@ -1,4 +1,4 @@
-<ng-container [ngTemplateOutlet]="isMobile ? mobile : desktop" />
+<ng-container [ngTemplateOutlet]="isMobile() ? mobile : desktop" />
 
 <ng-template #mobile>
     <tui-app-bar>

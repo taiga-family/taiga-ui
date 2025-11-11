@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiHint, TuiHintDirective, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiHint, TuiLink} from '@taiga-ui/core';
 
 @Component({
-    imports: [RouterLink, TuiButton, TuiHint, TuiHintDirective, TuiLink],
+    imports: [RouterLink, TuiButton, TuiHint, TuiLink],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,

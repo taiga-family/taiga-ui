@@ -20,7 +20,7 @@
         [style.border-radius.%]="100"
         (click)="context.$implicit.complete()"
     >
-        {{ closeWord$ | async }}
+        {{ closeWord() }}
     </button>
 </header>
 <section class="t-content">

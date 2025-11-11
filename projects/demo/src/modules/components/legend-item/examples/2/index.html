@@ -15,7 +15,7 @@
             <tui-legend-item
                 #item
                 class="item"
-                [color]="`var(--tui-chart-categorical-0${$index})`"
+                [color]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
                 [disabled]="!isEnabled($index)"
                 [text]="label"
                 (click)="onClick($index)"

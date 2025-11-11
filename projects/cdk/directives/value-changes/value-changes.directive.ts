@@ -1,9 +1,9 @@
-import {Directive, type DoCheck, inject, Output} from '@angular/core';
+import {Directive, type DoCheck, inject} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {ControlContainer, NgControl} from '@angular/forms';
 import {distinctUntilChanged, EMPTY, type Observable, Subject, switchAll} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiValueChanges]',
 })
 export class TuiValueChanges<T> implements DoCheck {
@@ -11,12 +11,13 @@ export class TuiValueChanges<T> implements DoCheck {
     private readonly control = inject(NgControl, {optional: true});
     private readonly refresh$ = new Subject<Observable<T>>();
 
-    @Output()
-    public readonly tuiValueChanges = this.refresh$.pipe(
+    private readonly tuiValueChanges$ = this.refresh$.pipe(
         distinctUntilChanged(),
         switchAll(),
         distinctUntilChanged(),
     );
+
+    public readonly tuiValueChanges = outputFromObservable(this.tuiValueChanges$);
 
     public ngDoCheck(): void {
         this.refresh$.next(

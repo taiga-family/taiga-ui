@@ -15,7 +15,6 @@ import {TuiTableSortable} from './sortable.directive';
 import {TuiTableDirective} from './table.directive';
 
 @Directive({
-    standalone: true,
     selector: 'table[tuiTable][tuiSortBy]',
 })
 export class TuiTableSortBy<T extends Partial<Record<keyof T, unknown>>> {

@@ -1,6 +1,6 @@
 import '@angular/common/locales/global/ru';
 
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
@@ -12,15 +12,15 @@ import {TuiInputNumber} from '@taiga-ui/kit';
             <tui-textfield>
                 <input
                     tuiInputNumber
-                    [attr.maxlength]="maxLength"
-                    [max]="max"
+                    [attr.maxlength]="maxLength()"
+                    [max]="max()"
                     [(ngModel)]="value"
                 />
             </tui-textfield>
 
             <button
                 type="button"
-                (click)="maxLength = 5; max = 5000"
+                (click)="maxLength.set(5); max.set(5000)"
             >
                 Increase limits
             </button>
@@ -31,11 +31,9 @@ import {TuiInputNumber} from '@taiga-ui/kit';
 class Test {
     protected value: number | null = null;
 
-    @Input()
-    public maxLength: number | null = null;
+    public readonly maxLength = model<number | null>(null);
 
-    @Input()
-    public max: number | null = null;
+    public readonly max = model<number | null>(null);
 }
 
 describe('InputNumber with [attr.maxlength]', () => {

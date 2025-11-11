@@ -24,7 +24,7 @@ export type TuiPortalContext<T, O = void> = T &
         readonly content: PolymorpheusContent<TuiPortalContext<T, O>>;
         readonly createdAt: number;
         readonly id: string;
-        readonly completeWith: (value: O) => void;
+        completeWith(value: O): void;
     };
 
 @Injectable()
@@ -35,6 +35,7 @@ export abstract class TuiPortal<T, K = void> {
     private readonly injector = inject(INJECTOR);
     private readonly id = inject(TuiIdService);
 
+    // eslint-disable-next-line @angular-eslint/prefer-inject
     constructor(protected readonly service: TuiPortalService) {}
 
     public open<G = void>(

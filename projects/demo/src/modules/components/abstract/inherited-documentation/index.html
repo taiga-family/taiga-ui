@@ -1,11 +1,11 @@
-@if (dropdown) {
+@if (dropdown()) {
     <dropdown-documentation />
 }
 @if (isTuiReactiveControl(documentedComponent)) {
-    @if (withHint) {
+    @if (withHint()) {
         <hint-controller-documentation />
     }
-    @if (withTextFieldController) {
+    @if (withTextFieldController()) {
         <textfield-controller-documentation />
     }
     <h6 class="tui-text_h6">

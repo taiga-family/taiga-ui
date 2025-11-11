@@ -1,17 +1,16 @@
-<ng-container *tuiLet="count$ | async as count">
-    @if (count | tuiIsPresent) {
-        <div>
-            count is
-            <code>{{ count | json }}</code>
-        </div>
-    } @else {
-        <div>
-            count is
-            <code>{{ count | json }}</code>
-            while it's loading
-        </div>
-    }
-</ng-container>
+@let count = count$ | async;
+@if (count | tuiIsPresent) {
+    <div>
+        count is
+        <code>{{ count | json }}</code>
+    </div>
+} @else {
+    <div>
+        count is
+        <code>{{ count | json }}</code>
+        while it's loading
+    </div>
+}
 
 <button
     size="m"

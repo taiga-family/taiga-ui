@@ -1,5 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -33,7 +34,7 @@ import {map, type Observable} from 'rxjs';
 })
 export default class Example {
     private readonly isE2E = inject(TUI_IS_E2E);
-    private readonly months$ = inject(TUI_MONTHS);
+    private readonly months$ = toObservable(inject(TUI_MONTHS));
 
     protected range = new TuiDayRange(
         TuiDay.currentLocal(),

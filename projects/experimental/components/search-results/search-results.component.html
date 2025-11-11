@@ -14,46 +14,45 @@
                     class="t-empty"
                     [icon]="options.empty"
                 />
-                {{ i18n()?.empty }}
+                {{ i18n().empty }}
             </tui-block-status>
         } @else {
-            <ng-container *tuiLet="(results | keyvalue: asIs) || [] as items">
-                <tui-scrollbar class="t-scrollbar">
-                    @for (group of items | tuiFilter: notEmpty; track group) {
-                        @if (!active || active === $index + 1) {
-                            @if (!active && items.length > 1) {
-                                <label class="t-sr-label">
-                                    {{ group.key }}
-                                </label>
-                            }
-                            @for (item of group.value; track item) {
-                                <ng-container
-                                    [ngTemplateOutlet]="template || null"
-                                    [ngTemplateOutletContext]="{$implicit: item}"
-                                />
-                            }
+            @let items = (results | keyvalue: asIs) || [];
+            <tui-scrollbar class="t-scrollbar">
+                @for (group of items | tuiFilter: notEmpty; track group) {
+                    @if (!active || active === $index + 1) {
+                        @if (!active && items.length > 1) {
+                            <label class="t-sr-label">
+                                {{ group.key }}
+                            </label>
+                        }
+                        @for (item of group.value; track item) {
+                            <ng-container
+                                [ngTemplateOutlet]="template || null"
+                                [ngTemplateOutletContext]="{$implicit: item}"
+                            />
                         }
                     }
-                </tui-scrollbar>
-                @if (items.length > 1) {
-                    <tui-tabs
-                        size="m"
-                        class="t-tabs"
-                        [(activeItemIndex)]="active"
-                        (document:keydown.shift.tab.prevent)="tab(-1)"
-                        (document:keydown.tab.prevent)="tab(1)"
-                    >
-                        <button tuiTab>{{ i18n()?.all }}</button>
-                        @for (group of items; track group) {
-                            @if (group.value.length) {
-                                <button tuiTab>
-                                    {{ group.key }}
-                                </button>
-                            }
-                        }
-                    </tui-tabs>
                 }
-            </ng-container>
+            </tui-scrollbar>
+            @if (items.length > 1) {
+                <tui-tabs
+                    size="m"
+                    class="t-tabs"
+                    [(activeItemIndex)]="active"
+                    (document:keydown.shift.tab.prevent)="tab(-1)"
+                    (document:keydown.tab.prevent)="tab(1)"
+                >
+                    <button tuiTab>{{ i18n().all }}</button>
+                    @for (group of items; track group) {
+                        @if (group.value.length) {
+                            <button tuiTab>
+                                {{ group.key }}
+                            </button>
+                        }
+                    }
+                </tui-tabs>
+            }
         }
     }
 }

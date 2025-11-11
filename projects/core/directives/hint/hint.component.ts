@@ -1,4 +1,10 @@
-import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    forwardRef,
+    inject,
+    signal,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
@@ -31,7 +37,10 @@ export const TUI_HINT_PROVIDERS = [
     TuiPositionService,
     TuiHoveredService,
     tuiPositionAccessorFor('hint', TuiHintPosition),
-    tuiRectAccessorFor('hint', TuiHintDirective),
+    tuiRectAccessorFor(
+        'hint',
+        forwardRef(() => TuiHintDirective),
+    ),
 ];
 
 const GAP = 8;

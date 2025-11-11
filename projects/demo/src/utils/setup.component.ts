@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {TuiDocCode, TuiDocPage, type TuiRawLoaderContent} from '@taiga-ui/addon-doc';
 import {tuiPure} from '@taiga-ui/cdk';
 
@@ -27,16 +27,14 @@ import {toKebab} from './kebab.pipe';
 export class TuiDocSetup {
     private readonly page = inject(TuiDocPage);
 
-    @Input()
-    public import: TuiRawLoaderContent = '';
+    public readonly import = input<TuiRawLoaderContent>('');
 
-    @Input()
-    public template: TuiRawLoaderContent = '';
+    public readonly template = input<TuiRawLoaderContent>('');
 
     @tuiPure
     protected get computedImport(): TuiRawLoaderContent {
         return (
-            this.import ||
+            this.import() ||
             import(
                 `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/import/import.md?raw`
             )
@@ -46,7 +44,7 @@ export class TuiDocSetup {
     @tuiPure
     protected get computedTemplate(): TuiRawLoaderContent {
         return (
-            this.template ||
+            this.template() ||
             import(
                 `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/import/template.md?raw`
             )

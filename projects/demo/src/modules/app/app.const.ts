@@ -20,7 +20,6 @@ export const SEE_ALSO_GROUPS: ReadonlyArray<readonly string[]> = [
     ['Accordion', 'Expand'],
     ['ComboBox', 'MultiSelect', 'Select'],
     ['Badge', 'BadgedContent', 'Tag'],
-    ['Notification', 'Alert'],
     ['Scrollbar', 'ScrollService'],
     ['Dropdown', 'DropdownSelection', 'DropdownHover', 'DropdownContext', 'DropdownOpen'],
     ['ProgressBar', 'ProgressCircle', 'ProgressSegmented', 'Loader'],

@@ -32,7 +32,7 @@
             class="t-button"
             (click)="toggle()"
         >
-            {{ (expanded ? hideText$ : showAllText$) | async }}
+            {{ expanded ? hideText() : showAllText() }}
         </button>
     </div>
 }

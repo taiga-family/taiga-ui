@@ -35,7 +35,6 @@ import {
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiComboBox]',
     providers: [
         tuiAsOptionContent(TuiSelectOption),

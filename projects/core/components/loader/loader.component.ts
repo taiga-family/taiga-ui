@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiIsSafari} from '@taiga-ui/cdk/utils/browser';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -14,8 +14,8 @@ import {TUI_LOADER_OPTIONS} from './loader.options';
     styleUrl: './loader.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[class._loading]': 'loading',
-        '[attr.data-size]': 'size',
+        '[class._loading]': 'loading()',
+        '[attr.data-size]': 'size()',
     },
 })
 export class TuiLoader {
@@ -23,23 +23,15 @@ export class TuiLoader {
     private readonly options = inject(TUI_LOADER_OPTIONS);
     protected readonly isApple = tuiIsSafari(tuiInjectElement()) || this.isIOS;
 
-    @Input()
-    public size = this.options.size;
+    protected readonly isHorizontal = computed(() => !tuiSizeBigger(this.size()));
 
-    @Input()
-    public inheritColor = this.options.inheritColor;
+    public readonly size = input(this.options.size);
 
-    @Input()
-    public overlay = this.options.overlay;
+    public readonly inheritColor = input(this.options.inheritColor);
 
-    @Input()
-    public textContent: PolymorpheusContent;
+    public readonly overlay = input(this.options.overlay);
 
-    // TODO: Drop alias in v5
-    @Input('showLoader')
-    public loading = true;
+    public readonly textContent = input<PolymorpheusContent>();
 
-    protected get isHorizontal(): boolean {
-        return !tuiSizeBigger(this.size);
-    }
+    public readonly loading = input(true);
 }

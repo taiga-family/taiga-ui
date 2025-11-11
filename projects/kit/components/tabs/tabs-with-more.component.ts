@@ -71,7 +71,7 @@ export class TuiTabsWithMore implements AfterViewChecked, AfterViewInit {
     protected readonly items: QueryList<TemplateRef<Record<string, unknown>>> =
         EMPTY_QUERY;
 
-    protected readonly moreWord$ = inject(TUI_MORE_WORD);
+    protected readonly moreWord = inject(TUI_MORE_WORD);
     protected open = false;
 
     @Input()

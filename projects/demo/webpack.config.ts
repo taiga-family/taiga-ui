@@ -1,6 +1,3 @@
-import path from 'node:path';
-
-import {sync as globSync} from 'glob';
 import TerserPlugin from 'terser-webpack-plugin';
 import {type Configuration, type RuleSetRule} from 'webpack';
 import {merge} from 'webpack-merge';
@@ -98,23 +95,7 @@ export function makeWebpackConfig({server}: Options): WebpackConf {
                 ...ngConfigs,
                 module: {
                     ...ngConfigs.module,
-                    rules: [
-                        {
-                            include: globSync(
-                                path.resolve(
-                                    __dirname,
-                                    'src/modules/**/examples/**/index.ts',
-                                ),
-                            ),
-                            use: {
-                                loader: path.resolve(
-                                    __dirname,
-                                    'scripts/export-as-loader.js',
-                                ),
-                            },
-                        },
-                        ...ngRules,
-                    ],
+                    rules: ngRules,
                 },
             },
             {

@@ -9,7 +9,6 @@ import {
     type TrackByFunction,
     ViewChild,
 } from '@angular/core';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -23,7 +22,7 @@ import {TuiTreeItem} from '../tree-item/tree-item.component';
 
 @Component({
     selector: 'tui-tree',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiLet, TuiTreeItem, TuiTreeNode],
+    imports: [AsyncPipe, PolymorpheusOutlet, TuiTreeItem, TuiTreeNode],
     templateUrl: './tree.template.html',
     styleUrl: './tree.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,

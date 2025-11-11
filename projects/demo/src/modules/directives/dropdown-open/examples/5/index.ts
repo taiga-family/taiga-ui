@@ -12,7 +12,6 @@ import {
 } from '@taiga-ui/core';
 
 @Directive({
-    standalone: true,
     selector: '[topRight]',
     providers: [tuiAsPositionAccessor(TopRightDirective)],
 })

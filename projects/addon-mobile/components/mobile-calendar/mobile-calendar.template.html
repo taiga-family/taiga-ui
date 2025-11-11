@@ -1,4 +1,4 @@
-@if (chooseDayOrRangeTexts$ | async; as texts) {
+@if (chooseDayOrRangeTexts?.(); as texts) {
     <header class="t-header">
         <button
             appearance=""
@@ -11,7 +11,7 @@
             [style.border-radius.%]="100"
             (click)="onClose()"
         >
-            {{ closeWord$ | async }}
+            {{ closeWord() }}
         </button>
         <button
             tuiLink
@@ -20,7 +20,7 @@
             class="t-link t-link_close"
             (click)="onClose()"
         >
-            {{ cancelWord$ | async }}
+            {{ cancelWord() }}
         </button>
         <h2
             automation-id="tui-mobile-calendar__label"
@@ -36,7 +36,7 @@
             class="t-link"
             (click)="onConfirm()"
         >
-            {{ doneWord$ | async }}
+            {{ doneWord() }}
         </button>
     </header>
 }

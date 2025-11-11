@@ -3,7 +3,7 @@ import {
     Component,
     ElementRef,
     inject,
-    Input,
+    input,
 } from '@angular/core';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiGetElementOffset, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -36,7 +36,7 @@ export const TUI_SCROLLABLE = 'tui-scrollable';
         },
     ],
     host: {
-        '[class._native-hidden]': 'options.mode !== "native" && (!isIOS || hidden)',
+        '[class._native-hidden]': 'options.mode !== "native" && (!isIOS || hidden())',
         [`(${TUI_SCROLLABLE}.stop)`]: 'scrollRef = $event.detail',
         [`(${TUI_SCROLL_INTO_VIEW}.stop)`]: 'scrollIntoView($event.detail)',
     },
@@ -51,8 +51,7 @@ export class TuiScrollbar {
     /**
      * @deprecated: use tuiScrollbarOptionsProvider({ mode: 'hidden' })
      */
-    @Input()
-    public hidden = this.options.mode === 'hidden';
+    public readonly hidden = input(this.options.mode === 'hidden');
 
     protected get delegated(): boolean {
         return this.scrollRef !== this.el || this.options.mode === 'native';

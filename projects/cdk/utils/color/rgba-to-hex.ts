@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 export function tuiRgbaToHex(color: string): string {
     if (!tuiIsValidRgba(color)) {
         throw new Error('Invalid RGBa');
@@ -27,6 +28,6 @@ export function tuiIsValidRgba(rgba: string): boolean {
     const alpha = String.raw`([01]|0?\.\d+)`;
 
     return new RegExp(
-        `^(?:rgb\\(\\s*${range}\\s*,\\s*${range}\\s*,\\s*${range}\\s*\\)|rgba\\(\\s*${range}\\s*,\\s*${range}\\s*,\\s*${range}\\s*,\\s*${alpha}\\s*\\))$`,
+        String.raw`^(?:rgb\(\s*${range}\s*,\s*${range}\s*,\s*${range}\s*\)|rgba\(\s*${range}\s*,\s*${range}\s*,\s*${range}\s*,\s*${alpha}\s*\))$`,
     ).test(rgba);
 }

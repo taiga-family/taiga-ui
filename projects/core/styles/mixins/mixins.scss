@@ -1,11 +1,6 @@
 @import 'browsers.scss';
 
 @mixin interactive {
-    // TODO remove after dropping Safari 13 support
-    &:matches(a, button, select, textarea, input, label, .tui-interactive):not(:disabled) {
-        @content;
-    }
-
     &:is(a, button, select, textarea, input, label, .tui-interactive):not(:disabled) {
         @content;
     }

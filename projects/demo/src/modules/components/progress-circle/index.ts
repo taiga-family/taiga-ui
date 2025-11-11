@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiLink, type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core';
+import {TuiLink, type TuiSizeXXL, type TuiSizeXXS, TuiTitle} from '@taiga-ui/core';
 import {tuiInputNumberOptionsProvider, TuiProgress} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiDemo, TuiLink, TuiProgress],
+    imports: [TuiDemo, TuiLink, TuiProgress, TuiTitle],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -15,6 +15,7 @@ export default class Page {
     protected value = 6;
     protected max = 10;
     protected arc = false;
+    protected thickness = 6;
 
     protected readonly sizeVariants: ReadonlyArray<TuiSizeXXL | TuiSizeXXS> = [
         'xxs',

@@ -1,7 +1,5 @@
-<span
-    *tuiLet="value$ | async as value"
-    class="t-wrapper"
->
+@let value = value$ | async;
+<span class="t-wrapper">
     <span class="t-label">{{ label }}</span>
     @if (label && !(empty$ | async)) {
         <button
@@ -11,7 +9,7 @@
             [disabled]="!!(disabled$ | async)"
             (click)="onClick(value)"
         >
-            {{ (multiSelectTexts$ | async)?.[value ? 'none' : 'all'] }}
+            {{ multiSelectTexts()[value ? 'none' : 'all'] }}
         </button>
     }
 </span>

@@ -174,12 +174,6 @@ export const pages: DocRoutePages = [
     },
     {
         section: 'Components',
-        title: 'Alert',
-        keywords: 'уведомление, нотификация, бабл, облачко, alert, notification',
-        route: DemoRoute.Alert,
-    },
-    {
-        section: 'Components',
         title: 'Avatar',
         keywords: 'аватар, image, pic, icon, картинка, изображение, avatar, stack',
         route: DemoRoute.Avatar,
@@ -760,13 +754,6 @@ export const pages: DocRoutePages = [
         subPages: [
             {
                 section: 'Components',
-                title: 'MobileDialog',
-                keywords:
-                    'мобильный, ios, android, alert, сообщение, dialog, modal, popup, попап, диалог',
-                route: DemoRoute.MobileDialog,
-            },
-            {
-                section: 'Components',
                 title: 'MobileCalendar',
                 keywords:
                     'календарь, день, неделя, месяц, год, дата, calendar, datapicker, data, picker',
@@ -1282,12 +1269,6 @@ export const pages: DocRoutePages = [
         section: 'Customization',
         title: 'Dialog',
         subPages: [
-            {
-                section: 'Customization',
-                title: 'Custom',
-                keywords: 'dialog, modal, popup, theme, custom, style',
-                route: DemoRoute.DialogCustom,
-            },
             {
                 section: 'Customization',
                 title: 'Routable',

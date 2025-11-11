@@ -67,11 +67,6 @@ export const ROUTES: Routes = [
         loadComponent: async () => import('../customization/appearances'),
     }),
     route({
-        path: DemoRoute.DialogCustom,
-        title: 'Custom',
-        loadComponent: async () => import('../customization/dialogs'),
-    }),
-    route({
         path: DemoRoute.DialogRoutable,
         title: 'Routable',
         loadComponent: async () => import('../customization/routable/eager'),
@@ -523,11 +518,6 @@ export const ROUTES: Routes = [
         path: DemoRoute.Push,
         loadComponent: async () => import('../components/push'),
         title: 'Push',
-    }),
-    route({
-        path: DemoRoute.MobileDialog,
-        loadComponent: async () => import('../components/mobile-dialog'),
-        title: 'MobileDialog',
     }),
     route({
         path: DemoRoute.MobileCalendar,
@@ -996,11 +986,6 @@ export const ROUTES: Routes = [
         title: 'StringifyContent',
     }),
     // SERVICES
-    route({
-        path: DemoRoute.Alert,
-        title: 'Alert',
-        loadComponent: async () => import('../components/alert'),
-    }),
     route({
         path: DemoRoute.BreakpointService,
         loadComponent: async () => import('../components/services/breakpoint-service'),

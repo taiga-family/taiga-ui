@@ -7,7 +7,6 @@ import {
     signal,
     untracked,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions} from '@maskito/core';
 import {
@@ -50,7 +49,6 @@ const MIN_TIME = new TuiTime(0, 0);
 const MAX_TIME = TuiTime.fromAbsoluteMilliseconds(MILLISECONDS_IN_DAY - 1);
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputDateTime]',
     providers: [
         tuiAsOptionContent(TuiSelectOption),
@@ -69,7 +67,7 @@ export class TuiInputDateTimeDirective
     extends TuiInputDateBase<readonly [TuiDay, TuiTime | null]>
     implements TuiTextfieldAccessor<readonly [TuiDay, TuiTime | null]>
 {
-    private readonly timeFillers = toSignal(inject(TUI_TIME_TEXTS));
+    private readonly timeFillers = inject(TUI_TIME_TEXTS);
 
     protected override readonly options = inject(TUI_INPUT_DATE_TIME_OPTIONS);
 

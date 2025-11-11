@@ -28,7 +28,7 @@ export class TuiCopyComponent {
     protected readonly notification = inject(TUI_NOTIFICATION_OPTIONS);
     protected readonly options = inject(TUI_COPY_OPTIONS);
     protected readonly copied$ = new BehaviorSubject<boolean>(false);
-    protected readonly texts = toSignal(inject(TUI_COPY_TEXTS));
+    protected readonly texts = inject(TUI_COPY_TEXTS);
     protected readonly hint = toSignal(
         this.copied$.pipe(
             switchMap((copied) =>

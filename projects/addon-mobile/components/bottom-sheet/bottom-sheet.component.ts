@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiHeaderOptionsProvider} from '@taiga-ui/core/components/header';
+import {tuiHeaderOptionsProvider} from '@taiga-ui/layout/components/header';
 
 const OPTIONS = {
     duration: 20,
@@ -51,6 +51,7 @@ export class TuiBottomSheet {
         const transform = `translate3d(0, ${-1 * scrolled}px, 0)`;
 
         this.el.style.setProperty('--t-height', `${scrollHeight}px`);
+        this.el.style.setProperty('overflow', 'scroll');
         this.el.animate([{transform}], OPTIONS);
     }
 }

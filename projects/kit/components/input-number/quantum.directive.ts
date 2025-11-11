@@ -14,7 +14,7 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
 > {
     protected parent: TuiValueTransformer<number | null, any> | null = null;
 
-    // eslint-disable-next-line @typescript-eslint/parameter-properties
+    // eslint-disable-next-line @typescript-eslint/parameter-properties,@angular-eslint/prefer-inject
     constructor(public quantum = 0) {
         super();
     }
@@ -38,7 +38,6 @@ export class TuiQuantumValueTransformerBase extends TuiValueTransformer<
 }
 
 @Directive({
-    standalone: true,
     selector: '[tuiInputNumber][quantum]',
     inputs: ['quantum'],
     providers: [tuiProvide(TuiValueTransformer, TuiQuantumValueTransformer)],
@@ -52,7 +51,6 @@ export class TuiQuantumValueTransformer extends TuiQuantumValueTransformerBase {
 }
 
 @Directive({
-    standalone: true,
     hostDirectives: [
         {
             directive: TuiQuantumValueTransformer,

@@ -13,7 +13,6 @@ import {TuiPlatform} from '@taiga-ui/cdk/directives/platform';
 import {TuiVisualViewport} from '@taiga-ui/cdk/directives/visual-viewport';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {TuiDialogs} from '@taiga-ui/core/components/dialog';
 import {
     TUI_SCROLLBAR_OPTIONS,
     TuiScrollControls,
@@ -26,7 +25,7 @@ import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-root',
-    imports: [TuiDialogs, TuiPopups, TuiScrollControls],
+    imports: [TuiPopups, TuiScrollControls],
     templateUrl: './root.template.html',
     styleUrls: ['./animations.less', './root.style.less'],
     encapsulation: ViewEncapsulation.None,

@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
-import {takeUntilDestroyed, toSignal} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {TuiButton} from '@taiga-ui/core/components/button';
@@ -30,8 +30,8 @@ export class TuiSearchHistory {
     private readonly storage = inject(WA_LOCAL_STORAGE);
     private readonly control = inject(NgControl);
 
-    protected readonly close = toSignal(inject(TUI_CLOSE_WORD));
-    protected readonly i18n = toSignal(inject(TUI_INPUT_SEARCH));
+    protected readonly close = inject(TUI_CLOSE_WORD);
+    protected readonly i18n = inject(TUI_INPUT_SEARCH);
     protected readonly options = inject(TUI_SEARCH_RESULTS_OPTIONS);
     protected readonly $ = this.control.valueChanges
         ?.pipe(

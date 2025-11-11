@@ -8,12 +8,11 @@ import {TuiLoaderHarness} from '@taiga-ui/testing';
 
 describe('Loader', () => {
     @Component({
-        standalone: true,
         imports: [TuiLoader],
         template: `
             @if (custom) {
                 <tui-loader
-                    [showLoader]="showLoader"
+                    [loading]="showLoader"
                     [textContent]="content"
                 />
             } @else {

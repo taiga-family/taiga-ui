@@ -22,7 +22,7 @@ export function tuiCreateCompletePhoneInsertionPreprocessor(
         countryCode === '+7'
             ? value.replace(/^(\+?\s*7?\s?8?)\s?/, '')
             : value.replace(
-                  new RegExp(`^(\\+?\\s*${countryCode.replace('+', '')}?)\\s?`),
+                  new RegExp(String.raw`^(\+?\s*${countryCode.replace('+', '')}?)\s?`),
                   '',
               );
 
