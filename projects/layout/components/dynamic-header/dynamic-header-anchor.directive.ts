@@ -12,7 +12,6 @@ import {WaIntersectionObserverDirective} from '@ng-web-apis/intersection-observe
 import {TuiDynamicHeaderContainerDirective} from './dynamic-header-container.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDynamicHeaderAnchor]',
 })
 export class TuiDynamicHeaderAnchorDirective implements AfterViewInit, OnDestroy {

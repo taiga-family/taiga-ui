@@ -1,9 +1,19 @@
 import {NgTemplateOutlet} from '@angular/common';
-import {ChangeDetectionStrategy, Component, forwardRef, inject} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    forwardRef,
+    inject,
+    InjectionToken,
+} from '@angular/core';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TUI_MORE_WORD} from '@taiga-ui/kit/tokens';
-import {injectContext} from '@taiga-ui/polymorpheus';
+import {
+    injectContext,
+    PolymorpheusComponent,
+    type PolymorpheusContent,
+} from '@taiga-ui/polymorpheus';
 
 import {TUI_DEFAULT_TREE_CONTROLLER} from '../../misc/tree.constants';
 import {
@@ -41,3 +51,14 @@ export class TuiTreeItemContent {
         this.controller.toggle(this.context.$implicit);
     }
 }
+
+export const TUI_TREE_ITEM_CONTENT = new PolymorpheusComponent(TuiTreeItemContent);
+
+/**
+ * Content for a tree item
+ */
+export const TUI_TREE_CONTENT = new InjectionToken<
+    PolymorpheusContent<TuiTreeItemContext>
+>(ngDevMode ? 'TUI_TREE_CONTENT' : '', {
+    factory: () => TUI_TREE_ITEM_CONTENT,
+});

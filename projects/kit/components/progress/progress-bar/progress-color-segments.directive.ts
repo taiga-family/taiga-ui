@@ -8,7 +8,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {map} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
     providers: [
         MutationObserverService,

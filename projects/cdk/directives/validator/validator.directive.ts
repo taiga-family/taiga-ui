@@ -4,7 +4,6 @@ import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
 import {tuiProvide} from '@taiga-ui/cdk/utils';
 
 @Directive({
-    standalone: true,
     selector: '[tuiValidator]',
     inputs: ['validate: tuiValidator'],
     providers: [tuiProvide(NG_VALIDATORS, TuiValidator, true)],

@@ -1,13 +1,12 @@
-import {Directive, inject, Output} from '@angular/core';
+import {Directive, inject} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 
 import {TuiHoveredService} from './hovered.service';
 
 @Directive({
-    standalone: true,
     selector: '[tuiHoveredChange]',
     providers: [TuiHoveredService],
 })
 export class TuiHovered {
-    @Output()
-    public readonly tuiHoveredChange = inject(TuiHoveredService);
+    public readonly tuiHoveredChange = outputFromObservable(inject(TuiHoveredService));
 }

@@ -27,7 +27,6 @@ export const EXCLUDED_ROUTES = [
     DemoRoute.Preview, // no need take screenshot of buttons
     DemoRoute.Dialog, // just buttons
     DemoRoute.DialogLegacy, // just buttons
-    DemoRoute.DialogCustom, // just buttons
     DemoRoute.DialogRoutable, // just buttons
     DemoRoute.DialogLazyRoutable, // just buttons
     DemoRoute.SheetDialog, // just buttons

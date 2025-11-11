@@ -25,7 +25,6 @@ import {TuiNativeInputPO, TuiPageObject} from '@taiga-ui/testing';
 
 describe('InputNumber', () => {
     @Component({
-        standalone: true,
         imports: [
             ReactiveFormsModule,
             TuiHint,

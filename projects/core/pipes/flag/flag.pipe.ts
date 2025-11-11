@@ -7,7 +7,6 @@ type IsoCode = TuiLooseUnion<TuiCountryIsoCode>;
 
 // TODO: Move to kit in v5
 @Pipe({
-    standalone: true,
     name: 'tuiFlag',
 })
 export class TuiFlagPipe implements PipeTransform {

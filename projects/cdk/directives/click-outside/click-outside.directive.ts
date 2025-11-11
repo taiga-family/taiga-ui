@@ -1,5 +1,6 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, NgZone, Output} from '@angular/core';
+import {Directive, inject, NgZone} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {
     tuiContainsOrAfter,
@@ -12,7 +13,6 @@ import {filter, fromEvent, map, type Observable} from 'rxjs';
  * @deprecated use {@link TuiActiveZone} instead
  */
 @Directive({
-    standalone: true,
     selector: '[tuiClickOutside]',
 })
 export class TuiClickOutside {
@@ -20,8 +20,7 @@ export class TuiClickOutside {
     private readonly doc = inject(DOCUMENT);
     private readonly el = tuiInjectElement();
 
-    @Output()
-    public readonly tuiClickOutside: Observable<unknown> = fromEvent(
+    private readonly tuiClickOutside$: Observable<unknown> = fromEvent(
         this.doc,
         'mouseup',
     ).pipe(
@@ -29,6 +28,8 @@ export class TuiClickOutside {
         filter((target) => this.isOutside(target)),
         tuiZoneOptimized(this.zone),
     );
+
+    public readonly tuiClickOutside = outputFromObservable(this.tuiClickOutside$);
 
     private isOutside(target: Node): boolean {
         return target === this.el || !tuiContainsOrAfter(this.el, target);

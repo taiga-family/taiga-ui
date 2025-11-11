@@ -12,6 +12,8 @@ export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>
 {
     protected readonly host: T = inject<any>(AbstractTuiControl, {optional: true});
 
+    public readonly inputMode: TuiTextfieldHost['inputMode'] = 'text';
+
     public abstract onValueChange(value: string): void;
 
     public get readOnly(): boolean {
@@ -28,10 +30,6 @@ export abstract class AbstractTuiTextfieldHost<T extends AbstractTuiControl<any>
 
     public get focusable(): boolean {
         return this.host.computedFocusable;
-    }
-
-    public get inputMode(): TuiTextfieldHost['inputMode'] {
-        return 'text';
     }
 
     public get value(): string {

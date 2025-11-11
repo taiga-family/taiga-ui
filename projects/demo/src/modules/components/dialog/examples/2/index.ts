@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiDialog, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
-import {TuiForm} from '@taiga-ui/layout';
+import {TuiButton, TuiDialog, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [

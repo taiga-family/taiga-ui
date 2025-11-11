@@ -5,7 +5,6 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {AbstractTuiTableFilter} from './abstract-table-filter';
 
 @Directive({
-    standalone: true,
     selector: '[tuiGenericFilter]',
     providers: [tuiProvide(AbstractTuiTableFilter, TuiGenericFilter)],
 })

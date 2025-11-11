@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-    standalone: true,
+    selector: 'eager-loaded-dialog',
     template: 'Eager loaded dialog content',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

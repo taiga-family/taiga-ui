@@ -4,7 +4,6 @@ import {TuiSortDirection, TuiTable, TuiTableDirective} from '@taiga-ui/addon-tab
 
 describe('TuiDirectionOrder directive', () => {
     @Component({
-        standalone: true,
         imports: [TuiTable],
         template: `
             <table

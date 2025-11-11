@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {FormsModule, type ValidatorFn} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -32,7 +31,6 @@ interface Item {
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiChevron,
         TuiDataListWrapper,

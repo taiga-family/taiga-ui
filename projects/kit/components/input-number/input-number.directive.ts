@@ -1,5 +1,4 @@
 import {computed, Directive, effect, inject, input, untracked} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions, maskitoTransform} from '@maskito/core';
 import {
@@ -17,7 +16,7 @@ import {
     TuiTextfieldDirective,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
+import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
@@ -26,7 +25,6 @@ import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 const DEFAULT_MAX_LENGTH = 18;
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputNumber]',
     providers: [
         tuiAsControl(TuiInputNumberDirective),
@@ -46,9 +44,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly isIOS = inject(TUI_IS_IOS);
-    private readonly numberFormat = toSignal(inject(TUI_NUMBER_FORMAT), {
-        initialValue: TUI_DEFAULT_NUMBER_FORMAT,
-    });
+    private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
 
     private readonly formatted = computed(() =>
         maskitoParseNumber(this.textfield.value(), this.numberFormat()),
@@ -87,8 +83,9 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
             !!this.precision() && this.textfield.value().includes(decimalSeparator);
         const precision = decimalPart ? Math.min(this.precision() + 1, 20) : 0;
         const takeThousand = thousandSeparator.repeat(5).length;
+        const affixes = this.prefix().length + this.postfix().length;
 
-        return DEFAULT_MAX_LENGTH + precision + takeThousand;
+        return DEFAULT_MAX_LENGTH + precision + takeThousand + affixes;
     });
 
     protected readonly onChangeEffect = effect(() => {

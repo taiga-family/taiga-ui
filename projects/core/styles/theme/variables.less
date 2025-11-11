@@ -1,10 +1,8 @@
-@font-fallback: -apple-system, 'BlinkMacSystemFont', system-ui, 'Roboto', 'Segoe UI', 'Helvetica Neue', sans-serif;
-
 &:root,
 &:host {
     // Fonts
-    --tui-font-heading: 'Manrope', @font-fallback;
-    --tui-font-text: 'Manrope', @font-fallback;
+    --tui-font-heading: 'Manrope', system-ui, sans-serif;
+    --tui-font-text: 'Manrope', system-ui, sans-serif;
     --tui-font-offset: ~'0rem';
     // Heading
     --tui-font-heading-1: bold calc(var(--tui-font-offset) + 3.125rem) / 3.5rem var(--tui-font-heading);

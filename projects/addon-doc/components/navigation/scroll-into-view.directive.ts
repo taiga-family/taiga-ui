@@ -6,7 +6,6 @@ import {tuiGetElementObscures, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounceTime, filter, ReplaySubject, switchMap, take} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDocScrollIntoViewLink]',
 })
 export class TuiDocScrollIntoViewLink {

@@ -73,7 +73,6 @@ function getRandom(min: number, max: number): number {
 }
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiChevron, TuiTable],
     templateUrl: './index.html',
     styleUrl: './index.less',

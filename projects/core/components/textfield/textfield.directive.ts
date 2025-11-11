@@ -22,7 +22,6 @@ import {tuiAsTextfieldAccessor, type TuiTextfieldAccessor} from './textfield-acc
 
 // TODO: Drop in v5 after updated Angular and hostDirectives inherit
 @Directive({
-    standalone: true,
     providers: [tuiAsTextfieldAccessor(TuiTextfieldBase)],
     host: {
         tuiTextfield: '',
@@ -104,7 +103,6 @@ export class TuiTextfieldBase<T> implements TuiTextfieldAccessor<T> {
 }
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiTextfield]',
     providers: [
         tuiAsTextfieldAccessor(TuiTextfieldDirective),
@@ -115,7 +113,6 @@ export class TuiTextfieldBase<T> implements TuiTextfieldAccessor<T> {
 export class TuiTextfieldDirective<T> extends TuiTextfieldBase<T> {}
 
 @Directive({
-    standalone: true,
     hostDirectives: [
         {
             directive: TuiTextfieldDirective,

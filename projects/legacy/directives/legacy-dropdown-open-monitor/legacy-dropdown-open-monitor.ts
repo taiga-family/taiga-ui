@@ -6,7 +6,6 @@ import {TuiDropdownOpen, TuiDropdownOpenLegacy} from '@taiga-ui/core/directives/
 import {distinctUntilChanged} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdownOpenMonitor]',
 })
 export class TuiLegacyDropdownOpenMonitorDirective implements AfterViewInit {

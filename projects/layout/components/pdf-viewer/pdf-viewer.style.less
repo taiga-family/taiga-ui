@@ -17,11 +17,7 @@ tui-pdf-viewer {
         background: #000;
     }
 
-    tui-root:not(._mobile) tui-dialog:not([new]) & {
-        block-size: 100vh;
-    }
-
-    tui-root:not(._mobile) tui-dialog[new] & {
+    tui-root:not(._mobile) tui-dialog & {
         margin: -6rem calc(-1 * calc(50vw - var(--tui-width) / 2)) -2rem;
     }
 
@@ -35,13 +31,13 @@ tui-pdf-viewer {
         }
     }
 
-    tui-sheet-dialog & {
+    tui-sheet-dialog[data-appearance='fullscreen'] & {
         --t-header: 4.5rem;
 
         margin: 0 -1rem -1.5rem;
 
         tui-app-bar {
-            margin: -1rem 0 0;
+            margin: 0;
         }
     }
 

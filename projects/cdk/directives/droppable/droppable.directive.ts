@@ -1,11 +1,11 @@
-import {Directive, Output} from '@angular/core';
+import {Directive} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {distinctUntilChanged, filter, map, merge, startWith, switchMap} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDroppableDropped], [tuiDroppableDragOverChange]',
     host: {
         '(dragover.prevent.zoneless)': '0',
@@ -14,15 +14,13 @@ import {distinctUntilChanged, filter, map, merge, startWith, switchMap} from 'rx
 export class TuiDroppable {
     private readonly el = tuiInjectElement();
 
-    @Output()
-    public readonly tuiDroppableDropped = tuiTypedFromEvent(this.el, 'drop').pipe(
+    private readonly tuiDroppableDropped$ = tuiTypedFromEvent(this.el, 'drop').pipe(
         tuiPreventDefault(),
         map((event) => event.dataTransfer),
         filter(tuiIsPresent),
     );
 
-    @Output()
-    public readonly tuiDroppableDragOverChange = tuiTypedFromEvent(
+    private readonly tuiDroppableDragOverChange$ = tuiTypedFromEvent(
         this.el,
         'dragenter',
     ).pipe(
@@ -38,5 +36,11 @@ export class TuiDroppable {
             ),
         ),
         distinctUntilChanged((a, b) => (!!a && !!b) || (!a && !b)),
+    );
+
+    public readonly tuiDroppableDropped = outputFromObservable(this.tuiDroppableDropped$);
+
+    public readonly tuiDroppableDragOverChange = outputFromObservable(
+        this.tuiDroppableDragOverChange$,
     );
 }

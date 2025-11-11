@@ -4,24 +4,10 @@
     tuiButton
     type="button"
     class="tui-space_right-3 tui-space_bottom-2"
-    (click)="showDialog(long, button)"
+    (click)="showDialog(long)"
 >
     Show
 </button>
-
-<ng-template #button>
-    @if (!filters) {
-        <button
-            tuiButton
-            type="button"
-            class="portal"
-            (click)="onFilterClick()"
-            (touchmove.prevent.zoneless)="(0)"
-        >
-            Filters
-        </button>
-    }
-</ng-template>
 
 <ng-template #long>
     <div class="background"></div>
@@ -72,4 +58,15 @@
             dialog box.
         </p>
     </blockquote>
+
+    <button
+        *tuiPopup="!filters()"
+        tuiButton
+        type="button"
+        class="portal"
+        (click)="onFilterClick()"
+        (touchmove.prevent.zoneless)="(0)"
+    >
+        Filters
+    </button>
 </ng-template>

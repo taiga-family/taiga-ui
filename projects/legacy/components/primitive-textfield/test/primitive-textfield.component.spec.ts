@@ -10,7 +10,6 @@ import {TuiPrimitiveTextfieldHarness} from '@taiga-ui/testing';
 
 describe('PrimitiveTextfield', () => {
     @Component({
-        standalone: true,
         imports: [TuiPrimitiveTextfieldModule, TuiTextfieldControllerModule],
         template: `
             <tui-primitive-textfield id="test1" />

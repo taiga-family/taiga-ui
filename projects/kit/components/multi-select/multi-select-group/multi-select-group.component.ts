@@ -21,7 +21,6 @@ import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 
 @Component({
-    standalone: true,
     selector: 'tui-opt-group[tuiMultiSelectGroup]',
     imports: [TuiLink],
     templateUrl: './multi-select-group.template.html',

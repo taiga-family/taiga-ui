@@ -8,6 +8,10 @@
     padding: 0 1rem 0 0;
     cursor: pointer;
 
+    :host-context([data-platform='web'] tui-dialog) {
+        padding: 0 0.5rem;
+    }
+
     :host-context([data-platform='android']) {
         font-size: 0;
         padding: 0 1rem;

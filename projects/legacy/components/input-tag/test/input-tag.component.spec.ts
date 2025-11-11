@@ -31,7 +31,6 @@ const TAG = 'Tag';
 
 describe('InputTag', () => {
     @Component({
-        standalone: true,
         imports: [
             ReactiveFormsModule,
             TuiHint,

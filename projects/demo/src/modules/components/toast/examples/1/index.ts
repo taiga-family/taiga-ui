@@ -6,7 +6,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadge, TuiToast} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiAvatar, TuiBadge, TuiButton, TuiPlatform, TuiToast],
     templateUrl: './index.html',
     styleUrl: './index.less',
