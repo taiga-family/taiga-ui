@@ -7,7 +7,7 @@
             @if (multi) {
                 <tui-opt-group
                     tuiMultiSelectGroup
-                    [label]="labels[$index] || ''"
+                    [label]="labels()[$index] || ''"
                 >
                     @if (newOptionMode) {
                         @for (item of group; track $index) {
@@ -51,7 +51,7 @@
                     }
                 </tui-opt-group>
             } @else {
-                <tui-opt-group [label]="labels[$index]">
+                <tui-opt-group [label]="labels()[$index]">
                     @if (newOptionMode) {
                         @for (item of group; track item) {
                             <button
