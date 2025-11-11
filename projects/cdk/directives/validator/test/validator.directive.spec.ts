@@ -6,7 +6,6 @@ import {provideTaiga} from '@taiga-ui/core';
 
 describe('TuiValidator directive', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiValidator],
         template: `
             @if (show) {

@@ -2,7 +2,6 @@ import {Directive, inject, Input} from '@angular/core';
 import {NgControl} from '@angular/forms';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDisabled]',
 })
 export class TuiDisabledDirective {

@@ -7,10 +7,10 @@ import {
     Input,
     Output,
 } from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiDay, TuiDayRange, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiBooleanHandler, type TuiHandler} from '@taiga-ui/cdk/types';
@@ -28,7 +28,6 @@ export type TuiMarkerHandler = TuiHandler<TuiDay, [] | [string, string] | [strin
         AsyncPipe,
         TuiCalendarSheetPipe,
         TuiHovered,
-        TuiLet,
         TuiMapperPipe,
         TuiOrderWeekDaysPipe,
         TuiRepeatTimes,
@@ -44,7 +43,7 @@ export class TuiCalendarSheet {
     private readonly options = inject(TUI_CALENDAR_SHEET_OPTIONS);
     private readonly today = TuiDay.currentLocal();
 
-    protected readonly unorderedWeekDays$ = inject(TUI_SHORT_WEEK_DAYS);
+    protected readonly unorderedWeekDays$ = toObservable(inject(TUI_SHORT_WEEK_DAYS));
     protected readonly dayTypeHandler = inject(TUI_DAY_TYPE_HANDLER);
 
     @Input()

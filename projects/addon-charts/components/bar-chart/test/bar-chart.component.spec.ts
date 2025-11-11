@@ -4,7 +4,6 @@ import {TuiBarChart} from '@taiga-ui/addon-charts';
 
 describe('BarChart', () => {
     @Component({
-        standalone: true,
         imports: [TuiBarChart],
         template: `
             <tui-bar-chart

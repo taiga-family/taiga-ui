@@ -7,7 +7,7 @@
             class="t-button"
             (click)="toggle()"
         >
-            {{ texts()?.[checked() ? 'none' : 'all'] }}
+            {{ texts()[checked() ? 'none' : 'all'] }}
         </button>
     </span>
 }

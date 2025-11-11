@@ -159,7 +159,7 @@ test.describe('Dialogs', () => {
                 test('Form is reset to pristine', async ({page}) => {
                     await page.locator('tui-dialog input').fill('Test');
                     await page.locator('tui-dialog button').first().click();
-                    await page.locator('tui-confirm button').nth(1).click();
+                    await page.locator('tui-dialog ng-component button').nth(1).click();
 
                     await expect(page.locator('tui-dialog')).toHaveCount(0);
                 });

@@ -2,6 +2,7 @@
     "name": "@taiga-ui/styles",
     "version": "4.52.0",
     "description": "Global Styles for Taiga UI",
+    "license": "Apache-2.0",
     "peerDependencies": {
         "@taiga-ui/cdk": "^4.52.0",
         "@taiga-ui/core": "^4.52.0",

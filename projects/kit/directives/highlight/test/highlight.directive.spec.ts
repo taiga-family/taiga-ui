@@ -5,7 +5,6 @@ import {TuiHighlight} from '@taiga-ui/kit';
 
 describe('TuiHighlight directive', () => {
     @Component({
-        standalone: true,
         imports: [TuiHighlight],
         template: `
             <div

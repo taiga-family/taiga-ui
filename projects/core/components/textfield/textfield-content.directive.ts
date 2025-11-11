@@ -9,7 +9,6 @@ import {
 import {TuiTextfieldComponent} from './textfield.component';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiTextfieldContent]',
 })
 export class TuiTextfieldContent implements DoCheck, OnDestroy {

@@ -10,11 +10,11 @@ import {TuiForm} from '@taiga-ui/layout';
 @Component({
     imports: [
         ReactiveFormsModule,
+        TuiDropdownSheet,
         TuiForm,
         TuiInputDateRange,
         TuiMobileCalendarDropdownNew,
         TuiTextfield,
-        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,

@@ -37,7 +37,7 @@ const STEP = 0.5;
 })
 export class TuiPreviewZoom {
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
-    protected readonly zoomTexts$ = inject(TUI_PREVIEW_ZOOM_TEXTS);
+    protected readonly zoomTexts = inject(TUI_PREVIEW_ZOOM_TEXTS);
 
     @Input()
     public min = 0.5;

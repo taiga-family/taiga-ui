@@ -2,7 +2,6 @@ import {Pipe, type PipeTransform} from '@angular/core';
 import {CHAR_NO_BREAK_SPACE} from '@taiga-ui/cdk/constants';
 
 @Pipe({
-    standalone: true,
     name: 'tuiFormatCard',
 })
 export class TuiFormatCardPipe implements PipeTransform {

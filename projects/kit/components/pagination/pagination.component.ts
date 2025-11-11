@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -11,7 +10,6 @@ import {
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -28,12 +26,14 @@ import {
 import {TUI_PAGINATION_TEXTS} from '@taiga-ui/kit/tokens';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
+import {TUI_PAGINATION_OPTIONS} from './pagination.options';
+
 const DOTS_LENGTH = 1;
 const ACTIVE_ITEM_LENGTH = 1;
 
 @Component({
     selector: 'tui-pagination',
-    imports: [AsyncPipe, PolymorpheusOutlet, TuiButton, TuiLet, TuiRepeatTimes],
+    imports: [PolymorpheusOutlet, TuiButton, TuiRepeatTimes],
     templateUrl: './pagination.template.html',
     styleUrl: './pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -44,8 +44,9 @@ export class TuiPagination {
 
     private readonly el = tuiInjectElement();
 
-    protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
+    protected readonly texts = inject(TUI_PAGINATION_TEXTS);
     protected readonly icons = inject(TUI_SPIN_ICONS);
+    protected readonly options = inject(TUI_PAGINATION_OPTIONS);
 
     @Input()
     public length = 1;
@@ -54,7 +55,7 @@ export class TuiPagination {
     public focusable = true;
 
     @Input()
-    public size: TuiSizeL | TuiSizeS = 'l';
+    public size: TuiSizeL | TuiSizeS = this.options.defaultSize;
 
     @Input()
     public readonly disabled = false;
@@ -179,10 +180,11 @@ export class TuiPagination {
         );
     }
 
-    protected getElementMode(index: number): string {
-        const fallback = this.size === 's' ? 'secondary' : 'flat';
-
-        return this.index === index ? 'primary' : fallback;
+    protected getElementMode(index = -1): string {
+        return this.options.appearance({
+            isActive: this.index === index,
+            size: this.size,
+        });
     }
 
     protected onElementClick(index: number): void {

@@ -1,4 +1,4 @@
-import {type TuiPopoverContext} from '@taiga-ui/cdk/services';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type Observable} from 'rxjs';
@@ -24,9 +24,10 @@ export interface TuiDialogOptions<I> {
     readonly size: TuiSizeL | TuiSizeS;
 }
 
-export interface TuiDialogContext<O = void, I = undefined>
-    extends TuiPopoverContext<O>,
-        TuiDialogOptions<I> {}
+export type TuiDialogContext<O = void, I = undefined> = TuiPortalContext<
+    TuiDialogOptions<I>,
+    O
+>;
 
 export const [TUI_DIALOG_OPTIONS, tuiDialogOptionsProvider] = tuiCreateOptions<
     TuiDialogOptions<void>

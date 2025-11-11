@@ -3,7 +3,7 @@ import {
     Component,
     computed,
     EventEmitter,
-    Input,
+    input,
     type OnInit,
     Output,
     signal,
@@ -37,7 +37,7 @@ interface Item {
             >
                 <input
                     tuiComboBox
-                    [formControl]="control"
+                    [formControl]="control()"
                     [matcher]="matcher()"
                     (input)="inputEvent.emit($any($event.target).value)"
                 />
@@ -78,8 +78,7 @@ export class Sandbox implements OnInit {
             },
     );
 
-    @Input()
-    public control = new FormControl<number | null>(null);
+    public readonly control = input(new FormControl<number | null>(null));
 
     @Output()
     public readonly valueChanges = new EventEmitter();
@@ -88,7 +87,7 @@ export class Sandbox implements OnInit {
     public readonly inputEvent = new EventEmitter<string>();
 
     public ngOnInit(): void {
-        this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
+        this.control().valueChanges.subscribe((x) => this.valueChanges.emit(x));
 
         // Simulate API request. Don't use rxjs to avoid problems with cy.clock()!
         setTimeout(() => {
@@ -144,6 +143,7 @@ describe('ComboBox + form control contains IDs of items from datalist', () => {
 
                 cy.mount(Sandbox, {
                     componentProperties: {
+                        control: new FormControl(null),
                         valueChanges: createOutputSpy('valueChanges'),
                     },
                 }).then((x) => {

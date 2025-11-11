@@ -1,16 +1,15 @@
-<ng-container *tuiLet="value$ | async as value">
-    <span
-        class="t-before"
-        [textContent]="value"
-    ></span>
+@let value = value$ | async;
+<span
+    class="t-before"
+    [textContent]="value"
+></span>
 
-    @if (!value) {
-        <span
-            automation-id="tui-input-inline__placeholder"
-            class="t-placeholder"
-        >
-            <ng-content />
-        </span>
-    }
-</ng-container>
+@if (!value) {
+    <span
+        automation-id="tui-input-inline__placeholder"
+        class="t-placeholder"
+    >
+        <ng-content />
+    </span>
+}
 <ng-content select="input" />

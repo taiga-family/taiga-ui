@@ -8,11 +8,11 @@ import {type TuiFileState} from '../files.types';
 import {tuiFormatSize} from '../files.utils';
 
 export interface TuiFileOptions extends TuiAppearanceOptions {
-    readonly formatSize: (
+    formatSize(
         units: readonly [string, string, string],
         size?: number,
         locale?: string,
-    ) => string | null;
+    ): string | null;
     readonly icons: Record<
         Exclude<TuiFileState, 'loading'>,
         PolymorpheusContent<TuiContext<TuiSizeL>>

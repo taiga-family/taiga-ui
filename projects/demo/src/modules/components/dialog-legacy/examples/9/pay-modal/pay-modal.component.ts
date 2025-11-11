@@ -15,7 +15,7 @@ import {
     tuiDefaultCardValidator,
     TuiInputCardGroup,
 } from '@taiga-ui/addon-commerce';
-import {TUI_IS_IOS, TuiAutoFocus, TuiLet, type TuiValuesOf} from '@taiga-ui/cdk';
+import {TUI_IS_IOS, TuiAutoFocus, type TuiValuesOf} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiFormatNumberPipe,
@@ -50,7 +50,6 @@ import {inputCardGroupedCVCValidator} from '../helpers/validator';
         TuiFormatNumberPipe,
         TuiIconPipe,
         TuiInputCardGroup,
-        TuiLet,
         TuiLink,
         TuiLoader,
         TuiTextfield,

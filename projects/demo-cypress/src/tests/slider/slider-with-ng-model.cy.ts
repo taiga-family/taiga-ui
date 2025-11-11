@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiRoot} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
@@ -11,14 +11,14 @@ describe('Slider | With [(ngModel)]', () => {
                 <input
                     tuiSlider
                     type="range"
-                    [step]="step"
+                    [step]="step()"
                     [(ngModel)]="value"
                 />
 
                 <button
                     type="button"
                     [style.margin-block-start.rem]="2"
-                    (click)="value = 37"
+                    (click)="value.set(37)"
                 >
                     Patch
                 </button>
@@ -27,11 +27,9 @@ describe('Slider | With [(ngModel)]', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class Test {
-        @Input({required: true})
-        public value!: number;
+        public readonly value = model<number>();
 
-        @Input()
-        public step = 1;
+        public readonly step = input(1);
     }
 
     beforeEach(() => {

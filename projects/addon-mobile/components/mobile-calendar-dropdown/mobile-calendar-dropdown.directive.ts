@@ -14,7 +14,6 @@ import {TuiMobileCalendarDropdown} from './mobile-calendar-dropdown.component';
 
 // TODO: Rename to TuiMobileCalendarDropdown in v5
 @Directive({
-    standalone: true,
     selector: '[tuiMobileCalendar]',
     providers: [
         {

@@ -10,7 +10,6 @@ import {tuiBlockOptionsProvider} from '@taiga-ui/kit/components/block';
 import {tuiSwitchOptionsProvider} from '@taiga-ui/kit/components/switch';
 
 @Component({
-    standalone: true,
     selector: 'search[tuiSearch]',
     template: '<ng-content/>',
     styleUrl: './search.styles.less',

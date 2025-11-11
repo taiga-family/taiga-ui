@@ -1,4 +1,4 @@
-@if (spinTexts$ | async; as texts) {
+@if (spinTexts(); as texts) {
     <button
         appearance="flat"
         automation-id="tui-spin-button__left"
@@ -6,9 +6,9 @@
         tuiIconButton
         type="button"
         class="t-button"
-        [class.t-button_hidden]="disabled || leftDisabled"
+        [class.t-button_hidden]="disabled() || leftDisabled()"
         [iconStart]="icons.decrement"
-        [tabIndex]="focusable ? 0 : -1"
+        [tabIndex]="focusable() ? 0 : -1"
         (click)="onLeftClick()"
     >
         {{ texts[0] }}
@@ -23,9 +23,9 @@
         tuiIconButton
         type="button"
         class="t-button"
-        [class.t-button_hidden]="disabled || rightDisabled"
+        [class.t-button_hidden]="disabled() || rightDisabled()"
         [iconStart]="icons.increment"
-        [tabIndex]="focusable ? 0 : -1"
+        [tabIndex]="focusable() ? 0 : -1"
         (click)="onRightClick()"
     >
         {{ texts[1] }}

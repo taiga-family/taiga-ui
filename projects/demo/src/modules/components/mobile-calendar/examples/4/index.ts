@@ -1,5 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {Component, inject, INJECTOR, Injector} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {FormControl} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -20,7 +21,7 @@ import {combineLatest, map, type Observable} from 'rxjs';
 export default class Example {
     private readonly dialogs = inject(TuiDialogService);
     private readonly injector = inject(INJECTOR);
-    private readonly months$ = inject(TUI_MONTHS);
+    private readonly months$ = toObservable(inject(TUI_MONTHS));
     private readonly control = new FormControl<TuiDayRange | null>(null);
 
     private readonly dialog$: Observable<TuiDayRange> = this.dialogs.open(

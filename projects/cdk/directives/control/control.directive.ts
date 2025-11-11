@@ -2,7 +2,6 @@ import {Directive, inject} from '@angular/core';
 import {type AbstractControl, NgControl} from '@angular/forms';
 
 @Directive({
-    standalone: true,
     selector: '[tuiControl]',
     exportAs: 'ngControl',
 })

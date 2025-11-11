@@ -5,7 +5,6 @@ export * from './get-border';
 export * from './get-max-allowed-phone-length';
 export * from './get-safe-area-size';
 export * from './icons-path-factory';
-export * from './is-apple';
 export * from './is-presumed-html-string';
 export * from './iso-to-country-code';
 export * from './not-kz-region';

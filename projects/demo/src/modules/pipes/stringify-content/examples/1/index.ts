@@ -19,12 +19,12 @@ interface User {
 @Component({
     imports: [
         FormsModule,
-        TuiComboBox,
-        TuiTextfield,
         TuiChevron,
+        TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

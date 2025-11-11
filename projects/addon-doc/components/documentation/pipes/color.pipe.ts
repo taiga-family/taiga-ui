@@ -2,7 +2,6 @@ import {Pipe, type PipeTransform} from '@angular/core';
 import {tuiRgbToHex} from '@taiga-ui/cdk/utils/color';
 
 @Pipe({
-    standalone: true,
     name: 'tuiGetColorPipe',
 })
 export class TuiGetColorPipe implements PipeTransform {

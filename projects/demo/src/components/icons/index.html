@@ -6,7 +6,7 @@
         </span>
     </td>
 </tr>
-@if (!hiddenOptions.includes('iconStart')) {
+@if (!hiddenOptions().includes('iconStart')) {
     <tr
         name="[iconStart]"
         tuiDocAPIItem
@@ -17,7 +17,7 @@
         Icon on the left side
     </tr>
 }
-@if (!hiddenOptions.includes('iconEnd')) {
+@if (!hiddenOptions().includes('iconEnd')) {
     <tr
         name="[iconEnd]"
         tuiDocAPIItem

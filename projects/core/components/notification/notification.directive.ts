@@ -1,26 +1,21 @@
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     Directive,
     inject,
-    Input,
-    type OnChanges,
-    type OnInit,
+    input,
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {
-    tuiIsString,
-    tuiSetSignal,
-    tuiWithStyles,
-} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiIsString, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {tuiLinkOptionsProvider} from '@taiga-ui/core/components/link';
 import {
     tuiAppearanceOptionsProvider,
     TuiWithAppearance,
 } from '@taiga-ui/core/directives/appearance';
-import {TuiIcons, TuiWithIcons} from '@taiga-ui/core/directives/icons';
+import {tuiIconStart, TuiWithIcons} from '@taiga-ui/core/directives/icons';
 
 import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 
@@ -34,7 +29,7 @@ import {TUI_NOTIFICATION_OPTIONS} from './notification.options';
 class Styles {}
 
 @Directive({
-    selector: 'tui-notification,a[tuiNotification],button[tuiNotification]',
+    selector: 'tui-notification,[tuiNotification]',
     providers: [
         tuiAppearanceOptionsProvider(TUI_NOTIFICATION_OPTIONS),
         tuiLinkOptionsProvider({appearance: '', pseudo: true}),
@@ -42,37 +37,20 @@ class Styles {}
     ],
     hostDirectives: [TuiWithIcons, TuiWithAppearance],
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
     },
 })
-export class TuiNotification implements OnChanges, OnInit {
+export class TuiNotification {
     private readonly options = inject(TUI_NOTIFICATION_OPTIONS);
 
     protected readonly nothing = tuiWithStyles(Styles);
-    protected readonly icons = inject(TuiIcons);
+    protected readonly icons = tuiIconStart(
+        computed((icon = this.icon()) =>
+            tuiIsString(icon) ? icon : icon(this.appearance()),
+        ),
+    );
 
-    @Input()
-    public appearance = this.options.appearance;
-
-    @Input()
-    public icon: TuiStringHandler<string> | string = this.options.icon;
-
-    @Input()
-    public size = this.options.size;
-
-    public ngOnInit(): void {
-        this.refresh();
-    }
-
-    public ngOnChanges(): void {
-        this.refresh();
-    }
-
-    private refresh(): void {
-        // TODO: Refactor to tuiDirectiveBinding
-        tuiSetSignal(
-            this.icons.iconStart,
-            tuiIsString(this.icon) ? this.icon : this.icon(this.appearance),
-        );
-    }
+    public readonly appearance = input(this.options.appearance);
+    public readonly size = input(this.options.size);
+    public readonly icon = input<TuiStringHandler<string> | string>(this.options.icon);
 }

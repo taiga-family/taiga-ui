@@ -27,7 +27,6 @@ import {TUI_INPUT_CHIP_OPTIONS} from './input-chip.options';
 
 // TODO(v5): remove base component after angular update
 @Directive({
-    standalone: true,
     host: {
         enterkeyhint: 'enter',
         '[disabled]': 'disabled()',
@@ -80,6 +79,10 @@ export class TuiInputChipBaseDirective<T>
         this.onChange(
             this.unique ? Array.from(new Set(value.reverse())).reverse() : value,
         );
+    }
+
+    protected onFocus(): void {
+        this.scrollTo();
     }
 
     protected onEnter(): void {
@@ -147,7 +150,6 @@ export class TuiInputChipBaseDirective<T>
 }
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputChip]',
     providers: [
         tuiAsControl(TuiInputChipDirective),

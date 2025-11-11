@@ -1,21 +1,25 @@
 <button
     appearance="neutral"
+    icon="@tui.heart"
     iconEnd="@tui.chevron-right"
     size="m"
     tuiNotification
     type="button"
 >
-    Click here to read more
+    <span tuiTitle>
+        Custom icon color
+        <span tuiSubtitle>Vertically centered</span>
+    </span>
 </button>
 
 <a
     iconEnd="@tui.chevron-right"
     size="l"
     tuiNotification
-    [routerLink]="routes.Alert"
+    [routerLink]="routes.Toast"
 >
     <span tuiTitle>
-        Alerts
+        Toasts
         <span tuiSubtitle>A notification as a toast</span>
     </span>
 </a>

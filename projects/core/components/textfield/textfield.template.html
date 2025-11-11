@@ -5,7 +5,7 @@
 <ng-content select="label" />
 <span
     class="t-content"
-    (pointerdown.prevent)="input?.nativeElement?.focus()"
+    (pointerdown)="input?.nativeElement?.focus()"
     (waResizeObserver)="$event[0] && onResize($event[0])"
 >
     <ng-content />
@@ -29,7 +29,7 @@
 </span>
 @if (control?.value != null) {
     <span class="t-template">
-        <ng-container *polymorpheusOutlet="content as text; context: {$implicit: control?.value}">
+        <ng-container *polymorpheusOutlet="content() as text; context: {$implicit: control?.value}">
             {{ text }}
         </ng-container>
     </span>

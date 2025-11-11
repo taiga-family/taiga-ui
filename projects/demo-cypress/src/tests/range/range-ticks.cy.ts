@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiRoot} from '@taiga-ui/core';
 import {TuiRange} from '@taiga-ui/kit';
@@ -28,8 +28,7 @@ describe('Range | With segments + tick labels', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class SandBox {
-        @Input({required: true})
-        public value!: [number, number];
+        public readonly value = model<[number, number]>();
     }
 
     beforeEach(() => {

@@ -4,9 +4,9 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus, tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
-import {TuiButton, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiSlides, TuiStepper} from '@taiga-ui/kit';
-import {TuiCard, TuiForm} from '@taiga-ui/layout';
+import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [

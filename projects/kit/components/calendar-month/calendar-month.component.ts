@@ -8,7 +8,6 @@ import {
     Output,
     signal,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
     TUI_FIRST_DAY,
@@ -19,7 +18,6 @@ import {
     TuiYear,
 } from '@taiga-ui/cdk/date-time';
 import {TuiHovered} from '@taiga-ui/cdk/directives/hovered';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiRepeatTimes} from '@taiga-ui/cdk/directives/repeat-times';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk/types';
 import {tuiNullableSame, tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -39,7 +37,6 @@ const TODAY = TuiDay.currentLocal();
     imports: [
         TuiCalendarYear,
         TuiHovered,
-        TuiLet,
         TuiLink,
         TuiRepeatTimes,
         TuiScrollbar,
@@ -55,7 +52,7 @@ const TODAY = TuiDay.currentLocal();
 })
 export class TuiCalendarMonth {
     protected isYearPickerShown = false;
-    protected readonly months = toSignal(inject(TUI_CALENDAR_MONTHS));
+    protected readonly months = inject(TUI_CALENDAR_MONTHS);
     protected readonly isRangePicking = computed(
         (x = this.value()) =>
             (!this.options.rangeMode && x instanceof TuiMonthRange && x.isSingleMonth) || // TODO(v5): remove this condition

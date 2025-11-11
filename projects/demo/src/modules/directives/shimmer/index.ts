@@ -3,9 +3,9 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiButton, TuiHeader, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack, TuiShimmer} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [

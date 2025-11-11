@@ -10,7 +10,6 @@ import {provideTaiga} from '@taiga-ui/core';
 
 describe('Let', () => {
     @Component({
-        standalone: true,
         imports: [TuiLet],
         template: `
             <div

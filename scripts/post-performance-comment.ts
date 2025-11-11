@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {readFile} from 'fs/promises';
+import {readFile} from 'node:fs/promises';
 
 /**
  * Posts performance comparison report as GitHub comment

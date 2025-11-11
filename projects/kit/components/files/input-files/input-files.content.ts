@@ -1,5 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiLink} from '@taiga-ui/core/components/link';
@@ -21,7 +22,7 @@ import {TuiInputFiles} from './input-files.component';
 })
 export class TuiInputFilesContent {
     private readonly breakpoint$ = inject(TuiBreakpointService);
-    private readonly text$ = inject(TUI_INPUT_FILE_TEXTS);
+    private readonly text$ = toObservable(inject(TUI_INPUT_FILE_TEXTS));
     private readonly context = injectContext<TuiContext<boolean>>();
     private readonly component = inject(TuiInputFiles);
 

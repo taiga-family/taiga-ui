@@ -19,7 +19,6 @@ import {tuiMaskito} from '@taiga-ui/kit/utils';
 import {TUI_INPUT_YEAR_OPTIONS} from './input-year.options';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputYear]',
     providers: [
         tuiAsControl(TuiInputYearDirective),

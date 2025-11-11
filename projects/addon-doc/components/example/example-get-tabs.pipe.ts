@@ -1,7 +1,6 @@
 import {Pipe, type PipeTransform} from '@angular/core';
 
 @Pipe({
-    standalone: true,
     name: 'tuiDocExampleGetTabs',
 })
 export class TuiDocExampleGetTabsPipe implements PipeTransform {

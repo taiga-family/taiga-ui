@@ -4,7 +4,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {filter, map, tap, throttleTime} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiCarouselScroll]',
 })
 export class TuiCarouselScroll {

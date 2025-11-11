@@ -1,5 +1,4 @@
 import {ScrollingModule} from '@angular/cdk/scrolling';
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -8,7 +7,6 @@ import {
     Output,
 } from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TuiLet} from '@taiga-ui/cdk';
 import {
     TUI_ANIMATIONS_SPEED,
     TuiDataList,
@@ -23,11 +21,9 @@ import {
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
 import {createOutputSpy} from 'cypress/angular';
-import {map, type Observable} from 'rxjs';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         ReactiveFormsModule,
         ScrollingModule,
@@ -35,7 +31,6 @@ import {map, type Observable} from 'rxjs';
         TuiComboBox,
         TuiDataList,
         TuiFilterByInputPipe,
-        TuiLet,
         TuiRoot,
         TuiScrollable,
         TuiTextfield,
@@ -49,8 +44,8 @@ import {map, type Observable} from 'rxjs';
                 />
 
                 <ng-container *tuiDropdown>
+                    @let items = countries | tuiFilterByInput;
                     <cdk-virtual-scroll-viewport
-                        *tuiLet="countries$ | async | tuiFilterByInput as items"
                         tuiScrollable
                         class="scroll"
                         [itemSize]="44"
@@ -78,9 +73,7 @@ import {map, type Observable} from 'rxjs';
     providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class Sandbox {
-    protected readonly countries$: Observable<string[]> = inject(TUI_COUNTRIES).pipe(
-        map(Object.values),
-    );
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
 
     protected readonly control = new FormControl<string | null>(null);
 

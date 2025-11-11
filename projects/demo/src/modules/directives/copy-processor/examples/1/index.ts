@@ -1,15 +1,13 @@
-import {AsyncPipe} from '@angular/common';
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCopyProcessor, type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_NUMBER_FORMAT, TuiAlertService, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
-import {map} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, FormsModule, TuiCopyProcessor, TuiInputNumber, TuiTextfield],
+    imports: [FormsModule, TuiCopyProcessor, TuiInputNumber, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -21,13 +19,12 @@ export default class Example {
     private readonly alerts = inject(TuiAlertService);
 
     protected value = 12345.67;
+    protected format = inject(TUI_NUMBER_FORMAT);
 
-    protected numberProcessor$ = inject(TUI_NUMBER_FORMAT).pipe(
-        map(
-            ({decimalSeparator, thousandSeparator}) =>
-                (text: string) =>
-                    text.replace(decimalSeparator, '.').replaceAll(thousandSeparator, ''),
-        ),
+    protected numberProcessor = computed(
+        ({decimalSeparator, thousandSeparator} = this.format()) =>
+            (text: string) =>
+                text.replace(decimalSeparator, '.').replaceAll(thousandSeparator, ''),
     );
 
     protected onCopy(event: ClipboardEvent): void {

@@ -9,7 +9,6 @@ import {TuiProgressCircle, TuiToast} from '@taiga-ui/kit';
 import {BehaviorSubject, of, switchMap, take, timer} from 'rxjs';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiLoader, TuiPlatform, TuiProgressCircle, TuiToast],
     templateUrl: './index.html',
     styleUrl: './index.less',

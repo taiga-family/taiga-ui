@@ -19,7 +19,6 @@ import {
 import {TuiChevron, TuiInputChip, TuiMultiSelect} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [
         CdkFixedSizeVirtualScroll,
         CdkVirtualForOf,

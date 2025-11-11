@@ -7,7 +7,6 @@ import {TuiError, TuiTextfield, tuiValidationErrorsProvider} from '@taiga-ui/cor
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    standalone: true,
     template: 'Required: {{ context.$implicit }}',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

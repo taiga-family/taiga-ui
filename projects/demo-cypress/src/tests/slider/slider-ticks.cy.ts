@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, model} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TuiRoot} from '@taiga-ui/core';
 import {TuiSlider} from '@taiga-ui/kit';
@@ -30,8 +30,7 @@ describe('Slider | With segments + tick labels', () => {
         changeDetection: ChangeDetectionStrategy.OnPush,
     })
     class SandBox {
-        @Input({required: true})
-        public value!: number;
+        public readonly value = model<number>();
     }
 
     beforeEach(() => {

@@ -18,10 +18,10 @@ import {defer} from 'rxjs';
     imports: [
         AsyncPipe,
         FormsModule,
+        TuiDropdownSheet,
         TuiInputPhoneInternational,
         TuiSortCountriesPipe,
         TuiTextfield,
-        TuiDropdownSheet,
     ],
     templateUrl: './index.html',
     encapsulation,

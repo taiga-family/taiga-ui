@@ -1,9 +1,9 @@
 import {Component, inject, type TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDialogService, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDialogService, TuiTitle} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
-import {TuiAppBar, TuiCardLarge} from '@taiga-ui/layout';
+import {TuiAppBar, TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiAppBar, TuiButton, TuiCardLarge, TuiHeader, TuiProgress, TuiTitle],

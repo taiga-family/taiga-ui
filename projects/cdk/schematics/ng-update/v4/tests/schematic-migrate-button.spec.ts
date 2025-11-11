@@ -157,7 +157,7 @@ import {TuiButtonModule} from '@taiga-ui/core';
     template: \`
         <button
             size="s"
-            icon="assets/icons/stackblitz.svg"
+            icon="/assets/icons/stackblitz.svg"
             title="Edit on StackBlitz"
             tuiButton
             type="button"
@@ -181,7 +181,7 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
     template: \`
         <button
             size="s"
-            iconStart="assets/icons/stackblitz.svg"
+            iconStart="/assets/icons/stackblitz.svg"
             title="Edit on StackBlitz"
             tuiButton
             type="button"

@@ -18,44 +18,28 @@
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <ng-container *tuiLet="label === 'Template' ? labelTemplate : label as dialogLabel">
-                <button
-                    tuiButton
-                    type="button"
-                    (click)="showDialog(sheetTemplate, dialogLabel)"
-                >
-                    Click
-                </button>
-                <button
-                    tuiButton
-                    type="button"
-                    class="tui-space_left-4"
-                    (longtap)="showDialog(sheetTemplate, dialogLabel)"
-                >
-                    Long tap
-                </button>
-                <button
-                    tuiButton
-                    type="button"
-                    (click)="navigate()"
-                >
-                    Navigate to Examples
-                </button>
-            </ng-container>
-            <ng-template #labelTemplate>
-                <div class="label">
-                    <div
-                        size="m"
-                        tuiAvatar
-                    >
-                        KG
-                    </div>
-                    <label tuiTitle>
-                        <span tuiSubtitle>Terry Jones</span>
-                        <b>Karl Gambolputty</b>
-                    </label>
-                </div>
-            </ng-template>
+            <button
+                tuiButton
+                type="button"
+                (click)="showDialog(sheetTemplate)"
+            >
+                Click
+            </button>
+            <button
+                tuiButton
+                type="button"
+                class="tui-space_left-4"
+                (longtap)="showDialog(sheetTemplate)"
+            >
+                Long tap
+            </button>
+            <button
+                tuiButton
+                type="button"
+                (click)="navigate()"
+            >
+                Navigate to Examples
+            </button>
             <ng-template
                 #sheetTemplate
                 let-completeWith="completeWith"
@@ -88,20 +72,21 @@
         </tui-doc-demo>
         <table tuiDocAPI>
             <tr
+                name="[appearance]"
+                tuiDocAPIItem
+                type="string"
+                [items]="appearanceVariants"
+                [(value)]="appearance"
+            >
+                Custom data-appearance attribute value
+            </tr>
+            <tr
                 name="[closable]"
                 tuiDocAPIItem
                 type="boolean"
                 [(value)]="closable"
             >
                 Whether or not a sheet can be closed by user.
-            </tr>
-            <tr
-                name="[fullscreen]"
-                tuiDocAPIItem
-                type="boolean"
-                [(value)]="fullscreen"
-            >
-                Fullscreen
             </tr>
             <tr
                 name="[bar]"
@@ -121,8 +106,7 @@
             <tr
                 name="[label]"
                 tuiDocAPIItem
-                type="PolymorpheusContent"
-                [items]="labelVariants"
+                type="string"
                 [(value)]="label"
             >
                 Sheet label.

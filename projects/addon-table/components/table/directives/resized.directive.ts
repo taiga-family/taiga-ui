@@ -6,7 +6,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {distinctUntilChanged, map, switchMap, takeUntil} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiResized]',
 })
 export class TuiTableResized {

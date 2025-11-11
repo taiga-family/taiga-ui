@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, TemplateRef, ViewChild} from '@angul
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiCard, TuiInputCardGroup} from '@taiga-ui/addon-commerce';
+import {tuiSetSignal} from '@taiga-ui/cdk';
 import {TuiIcon} from '@taiga-ui/core';
 import {TuiNativeInputPO} from '@taiga-ui/testing';
 import {type Mock} from 'jest-mock';
@@ -9,7 +10,6 @@ import {firstValueFrom, timer} from 'rxjs';
 
 describe('InputCardGroup', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiIcon, TuiInputCardGroup],
         template: `
             <tui-input-card-group
@@ -191,7 +191,7 @@ describe('InputCardGroup', () => {
         });
 
         it('input-card-group have tuiIconMastercard icon', () => {
-            testComponent.component.icon = 'tuiIconMastercard';
+            tuiSetSignal(testComponent.component.icon, 'tuiIconMastercard');
 
             expect(testComponent.control.valid).toBe(true);
             expect(testComponent.component['content']).toBe('tuiIconMastercard');
@@ -200,7 +200,10 @@ describe('InputCardGroup', () => {
         });
 
         it('input-card-group have TemplateRef', () => {
-            testComponent.component.icon = fixture.componentInstance.customIconTemplate;
+            tuiSetSignal(
+                testComponent.component.icon,
+                fixture.componentInstance.customIconTemplate,
+            );
 
             expect(testComponent.control.valid).toBe(true);
             expect(testComponent.component['content']).toBeInstanceOf(TemplateRef);

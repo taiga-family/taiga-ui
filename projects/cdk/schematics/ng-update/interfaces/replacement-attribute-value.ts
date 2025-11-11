@@ -10,9 +10,9 @@ export interface ReplacementAttributeValue {
           }>
         | ((value: string) => string);
     readonly withTagNames?: string[];
-    readonly filterFn?: (el: Element) => boolean;
     readonly directiveModule?: {
         readonly moduleSpecifier: string;
         readonly name: string;
     };
+    filterFn?(el: Element): boolean;
 }

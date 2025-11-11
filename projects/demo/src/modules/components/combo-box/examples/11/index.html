@@ -11,6 +11,6 @@
     <tui-data-list-wrapper
         *tuiDropdown
         new
-        [items]="countries$ | async | tuiFilterByInput"
+        [items]="countries() | tuiFilterByInput"
     />
 </tui-textfield>

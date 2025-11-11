@@ -47,13 +47,5 @@
             "@taiga-ui/testing": ["projects/testing/index"],
             "@taiga-ui/testing/*": ["projects/testing/*"]
         }
-    },
-    "angularCompilerOptions": {
-        "extendedDiagnostics": {
-            "checks": {
-                "unusedStandaloneImports": "suppress",
-                "controlFlowPreventingContentProjection": "error"
-            }
-        }
     }
 }

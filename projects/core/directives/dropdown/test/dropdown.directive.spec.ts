@@ -1,18 +1,12 @@
 import {ChangeDetectionStrategy, Component, type ElementRef} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
-import {
-    provideTaiga,
-    TuiDropdownDirective,
-    TuiDropdownManual,
-    TuiRoot,
-} from '@taiga-ui/core';
+import {provideTaiga, TuiDropdown, TuiRoot} from '@taiga-ui/core';
 import {PolymorpheusTemplate} from '@taiga-ui/polymorpheus';
 import {TuiPageObject} from '@taiga-ui/testing';
 
 describe('TuiDropdownDirective', () => {
     @Component({
-        standalone: true,
-        imports: [PolymorpheusTemplate, TuiDropdownDirective, TuiDropdownManual, TuiRoot],
+        imports: [PolymorpheusTemplate, TuiDropdown, TuiRoot],
         template: `
             <tui-root>
                 <button

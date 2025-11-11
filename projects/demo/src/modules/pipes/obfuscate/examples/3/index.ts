@@ -4,6 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiObfuscateOptionsProvider, TuiObfuscatePipe} from '@taiga-ui/cdk';
 
 @Component({
+    selector: 'example-3',
     imports: [TuiObfuscatePipe],
     templateUrl: './index.html',
     encapsulation,

@@ -8,7 +8,7 @@ export interface TuiObfuscateOptions {
      * Default function used to obfuscate a string
      * if no recipe was found.
      */
-    readonly default: (value: string, symbol?: string) => string;
+    default(value: string, symbol?: string): string;
 
     /**
      * Collection of named recipes for different obfuscation scenarios.
