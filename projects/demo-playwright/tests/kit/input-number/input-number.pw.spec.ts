@@ -607,6 +607,8 @@ describe('InputNumber', () => {
                     {prefix: '$', postfix: ''},
                     {prefix: '', postfix: 'kg'},
                     {prefix: '$', postfix: 'kg'},
+                    {prefix: '', postfix: 'Even too long postfix changes nothing'},
+                    {prefix: 'Enormous prefix is allowed too', postfix: ''},
                 ] as const
             ).forEach(({prefix, postfix}) => {
                 describe(`[prefix]="${prefix}" & [postfix]="${postfix}"`, () => {
@@ -717,16 +719,7 @@ describe('InputNumber', () => {
                         });
                     });
 
-                    test('textfield does not contain any digit (only suffixes) => clear inputNumber.textfield value on blur', async ({
-                        browserName,
-                    }) => {
-                        // TODO
-
-                        test.skip(
-                            browserName !== 'chromium',
-                            'Investigate why it fails in Safari',
-                        );
-
+                    test('textfield does not contain any digit (only suffixes) => clear inputNumber.textfield value on blur', async () => {
                         await inputNumber.textfield.focus();
 
                         await expect(inputNumber.textfield).toHaveValue(prefix + postfix);
@@ -742,6 +735,15 @@ describe('InputNumber', () => {
                         await inputNumber.textfield.blur();
 
                         await expect(inputNumber.textfield).toHaveValue('');
+                    });
+
+                    test('allows to enter huge number', async () => {
+                        await inputNumber.textfield.focus();
+                        await inputNumber.textfield.pressSequentially('1234567890123456');
+
+                        await expect(inputNumber.textfield).toHaveValue(
+                            `${prefix}1 234 567 890 123 456${postfix}`,
+                        );
                     });
                 });
             });
@@ -767,9 +769,7 @@ describe('InputNumber', () => {
                     await expect(inputNumber.textfield).toHaveValue('');
                 });
 
-                // TODO: Remove .skip after release of https://github.com/taiga-family/maskito/pull/2087
-
-                test.skip('forbids to enter more minuses', async () => {
+                test('forbids to enter more minuses', async () => {
                     await inputNumber.textfield.focus();
                     await inputNumber.textfield.pressSequentially(
                         CHAR_HYPHEN + CHAR_MINUS + CHAR_EN_DASH + CHAR_EM_DASH,
@@ -830,11 +830,7 @@ describe('InputNumber', () => {
             test('.', async ({page}) => {
                 await tuiGoto(
                     page,
-                    /**
-                     * TODO: drop `&decimalSeparator=,` after fixing this issue
-                     * https://github.com/taiga-family/maskito/issues/1907
-                     */
-                    `${DemoRoute.InputNumber}/API?precision=0&thousandSeparator=.&decimalSeparator=,`,
+                    `${DemoRoute.InputNumber}/API?precision=0&thousandSeparator=.`,
                 );
                 await inputNumber.textfield.focus();
                 await inputNumber.textfield.pressSequentially('1234567890');

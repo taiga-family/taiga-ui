@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Input,
+    input,
     Output,
     ViewChild,
 } from '@angular/core';
@@ -34,7 +34,7 @@ describe('Mobile calendar', () => {
                 [disabledItemHandler]="disabledItemHandler"
                 [max]="max"
                 [min]="min"
-                [single]="single"
+                [single]="single()"
                 (cancel)="cancel.emit(true)"
                 (confirm)="confirm.emit($event)"
             />
@@ -55,8 +55,7 @@ describe('Mobile calendar', () => {
         @ViewChild(TuiMobileCalendar, {static: true})
         public calendar!: TuiMobileCalendar;
 
-        @Input()
-        public single = true;
+        public readonly single = input(true);
 
         @Output()
         public readonly cancel = new EventEmitter<boolean>();

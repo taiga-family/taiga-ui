@@ -1,5 +1,4 @@
-import {AsyncPipe} from '@angular/common';
-import {Component, inject, ViewEncapsulation} from '@angular/core';
+import {Component, computed, inject, type Signal, ViewEncapsulation} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
@@ -11,11 +10,9 @@ import {
     TuiDataListWrapper,
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
-import {map, type Observable} from 'rxjs';
 
 @Component({
     imports: [
-        AsyncPipe,
         FormsModule,
         TuiChevron,
         TuiComboBox,
@@ -30,8 +27,8 @@ import {map, type Observable} from 'rxjs';
     changeDetection,
 })
 export default class Example {
-    protected readonly countries$: Observable<string[]> = inject(TUI_COUNTRIES).pipe(
-        map(Object.values),
+    protected readonly countries: Signal<string[]> = computed(() =>
+        Object.values(inject(TUI_COUNTRIES)),
     );
 
     protected value: string | null = null;

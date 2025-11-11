@@ -17,6 +17,6 @@ export default class Example {
     protected readonly options: Partial<TuiSheetDialogOptions> = {
         label: 'Alexander Inkin',
         closable: true,
-        fullscreen: true,
+        appearance: 'fullscreen',
     };
 }

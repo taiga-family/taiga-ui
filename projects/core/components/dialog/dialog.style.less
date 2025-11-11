@@ -10,6 +10,24 @@ tui-dialog {
         padding-inline-end: 2.5rem;
     }
 
+    & > header,
+    & > ng-component > header {
+        font: var(--tui-font-heading-5);
+
+        [tuiTitle] {
+            font: inherit;
+        }
+
+        p {
+            margin: 0.25rem 0 0;
+            font: var(--tui-font-text-m);
+
+            &:empty {
+                display: none;
+            }
+        }
+    }
+
     > .t-close {
         position: absolute;
         top: 1rem;

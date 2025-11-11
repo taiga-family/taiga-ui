@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,7 +6,7 @@ import {TuiPopup} from '@taiga-ui/core';
 import {TuiDrawer} from '@taiga-ui/kit';
 
 @Component({
-    imports: [AsyncPipe, TuiSwipe, TuiDrawer, TuiPopup],
+    imports: [TuiDrawer, TuiPopup, TuiSwipe],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

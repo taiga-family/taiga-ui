@@ -59,8 +59,8 @@
                     <tui-loader
                         size="xs"
                         class="t-code-editor"
+                        [loading]="loading()"
                         [overlay]="true"
-                        [showLoader]="loading()"
                         (click)="edit(processor())"
                     >
                         @if (codeEditor?.content; as content) {
@@ -105,8 +105,8 @@
                         <ng-container *ngComponentOutlet="component | async" />
                     </section>
                 }
+                @let code = processor()[tabs[$index] || 0] || '';
                 <tui-doc-code
-                    *tuiLet="processor()[tabs[$index] || 0] || '' as code"
                     [code]="code"
                     [style.display]="activeItemIndex === $index && $index !== defaultTabIndex ? 'block' : 'none'"
                 >

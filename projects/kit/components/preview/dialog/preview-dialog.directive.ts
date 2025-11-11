@@ -1,14 +1,17 @@
 import {Directive} from '@angular/core';
-import {TuiPopoverDirective} from '@taiga-ui/cdk/directives/popover';
-import {tuiAsPopover} from '@taiga-ui/cdk/services';
+import {tuiAsPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 
 import {TuiPreviewDialogService} from './preview-dialog.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiPreviewDialog]',
-    inputs: ['open: tuiPreviewDialog'],
-    outputs: ['openChange: tuiPreviewDialogChange'],
-    providers: [tuiAsPopover(TuiPreviewDialogService)],
+    providers: [tuiAsPortal(TuiPreviewDialogService)],
+    hostDirectives: [
+        {
+            directive: TuiPortalDirective,
+            inputs: ['open: tuiPreviewDialog'],
+            outputs: ['openChange: tuiPreviewDialogChange'],
+        },
+    ],
 })
-export class TuiPreviewDialogDirective extends TuiPopoverDirective<unknown> {}
+export class TuiPreviewDialogDirective {}

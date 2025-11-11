@@ -19,7 +19,6 @@ import {distinctUntilChanged} from 'rxjs';
 import {TUI_RADIO_OPTIONS, type TuiRadioOptions} from './radio.options';
 
 @Component({
-    standalone: true,
     selector: 'input[type="radio"][tuiRadio]',
     template: '',
     styles: '@import "@taiga-ui/kit/styles/components/radio.less";',

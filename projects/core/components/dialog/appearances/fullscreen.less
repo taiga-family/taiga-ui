@@ -1,4 +1,4 @@
-&[data-appearance~='fullscreen'] {
+&[data-appearance~='fullscreen'][data-size] {
     display: flex;
     flex-direction: column;
     block-size: 100%;
@@ -58,6 +58,7 @@
     > [tuiSlides] > * > header,
     > ng-component > header,
     > ng-component > [tuiSlides] > * > header {
+        font: var(--tui-font-heading-3);
         margin-block-end: 2rem;
     }
 

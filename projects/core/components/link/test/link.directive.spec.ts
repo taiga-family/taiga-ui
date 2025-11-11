@@ -8,7 +8,6 @@ import {TuiLink} from '../link.directive';
 
 describe('LinkDirective', () => {
     @Component({
-        standalone: true,
         imports: [TuiLink],
         template: `
             <a

@@ -4,7 +4,8 @@ import {
     DestroyRef,
     EventEmitter,
     inject,
-    Input,
+    input,
+    model,
     type OnInit,
     Output,
 } from '@angular/core';
@@ -32,8 +33,8 @@ import {createOutputSpy} from 'cypress/angular';
             <tui-textfield>
                 <input
                     tuiInputPhoneInternational
-                    [countries]="countries"
-                    [formControl]="control"
+                    [countries]="countries()"
+                    [formControl]="control()"
                     [(countryIsoCode)]="countryIsoCode"
                     (countryIsoCodeChange)="countryIsoCodeChange.emit($event)"
                 />
@@ -54,14 +55,16 @@ import {createOutputSpy} from 'cypress/angular';
 export class Test implements OnInit {
     private readonly destroyRef = inject(DestroyRef);
 
-    @Input()
-    public control = new FormControl<string>('', {nonNullable: true});
+    public readonly control = input(new FormControl<string>('', {nonNullable: true}));
 
-    @Input()
-    public countryIsoCode: TuiCountryIsoCode = 'RU';
+    public readonly countryIsoCode = model<TuiCountryIsoCode>('RU');
 
-    @Input()
-    public countries: readonly TuiCountryIsoCode[] = ['RU', 'US', 'BY', 'KZ'];
+    public readonly countries = input<readonly TuiCountryIsoCode[]>([
+        'RU',
+        'US',
+        'BY',
+        'KZ',
+    ]);
 
     @Output()
     public readonly valueChange = new EventEmitter<string>();
@@ -70,8 +73,8 @@ export class Test implements OnInit {
     public readonly countryIsoCodeChange = new EventEmitter<string>();
 
     public ngOnInit(): void {
-        this.control.valueChanges
-            .pipe(takeUntilDestroyed(this.destroyRef))
+        this.control()
+            .valueChanges.pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe((value) => {
                 this.valueChange.emit(value);
             });

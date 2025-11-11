@@ -11,7 +11,6 @@ import {TuiLazyLoadingService} from './lazy-loading.service';
  * @deprecated: Drop in v5.0
  */
 @Directive({
-    standalone: true,
     selector: 'img[loading="lazy"],img[tuiLoading="lazy"]',
     providers: [TuiLazyLoadingService, IntersectionObserverService],
     host: {

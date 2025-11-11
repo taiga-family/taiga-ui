@@ -15,7 +15,7 @@ import {tuiSizeBigger} from '@taiga-ui/core/utils/miscellaneous';
             role="status"
             class="t-loader"
             [inheritColor]="true"
-            [showLoader]="!!loading"
+            [loading]="!!loading"
             [size]="loaderSize"
             [textContent]="label"
         />

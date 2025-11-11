@@ -3,7 +3,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {Subject} from 'rxjs';
 
 @Directive({
-    standalone: true,
     host: {
         '[class._multiline]': 'linesLimit > 1',
         '[style.--t-min-width.px]': 'maxWidth()',

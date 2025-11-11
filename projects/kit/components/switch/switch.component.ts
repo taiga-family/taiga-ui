@@ -12,7 +12,6 @@ import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/kit/components/rad
 import {TUI_SWITCH_OPTIONS, type TuiSwitchOptions} from './switch.options';
 
 @Component({
-    standalone: true,
     selector: 'input[type="checkbox"][tuiSwitch]',
     template: '',
     styles: '@import "@taiga-ui/kit/styles/components/switch.less";',

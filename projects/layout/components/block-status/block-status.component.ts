@@ -7,7 +7,6 @@ import {
 import {type TuiSizeL} from '@taiga-ui/core/types';
 
 @Component({
-    standalone: true,
     selector: 'tui-block-status',
     templateUrl: './block-status.template.html',
     styleUrl: './block-status.style.less',

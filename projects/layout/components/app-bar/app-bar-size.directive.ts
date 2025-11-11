@@ -8,7 +8,6 @@ import {TuiAppBarComponent} from './app-bar.component';
 
 // TODO: Make size automatic based on tuiPlatform in v5
 @Directive({
-    standalone: true,
     selector: 'tui-app-bar[tuiAppBarSize]',
 })
 export class TuiAppBarSizeDirective {

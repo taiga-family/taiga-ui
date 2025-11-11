@@ -29,7 +29,6 @@ function find(value: ReadonlyArray<[TuiDay, number]>, current: TuiDay): [TuiDay,
 
 // TODO: Consider extending TuiLineChartHintDirective
 @Directive({
-    standalone: true,
     selector: '[tuiLineChartHint]',
     providers: [TuiHoveredService],
 })

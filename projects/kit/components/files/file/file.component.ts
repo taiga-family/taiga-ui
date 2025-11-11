@@ -8,6 +8,7 @@ import {
     LOCALE_ID,
     Output,
 } from '@angular/core';
+import {toObservable} from '@angular/core/rxjs-interop';
 import {DomSanitizer, type SafeValue} from '@angular/platform-browser';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {type TuiContext} from '@taiga-ui/cdk/types';
@@ -53,11 +54,11 @@ export class TuiFile {
     private readonly sanitizer = inject(DomSanitizer);
     private readonly options = inject(TUI_FILE_OPTIONS);
     private readonly locale = inject(LOCALE_ID);
-    private readonly units$ = inject(TUI_DIGITAL_INFORMATION_UNITS);
+    private readonly units$ = toObservable(inject(TUI_DIGITAL_INFORMATION_UNITS));
     private readonly win = inject(WA_WINDOW) as Window & {File: typeof File};
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly fileTexts$ = inject(TUI_FILE_TEXTS);
+    protected readonly fileTexts$ = toObservable(inject(TUI_FILE_TEXTS));
 
     @Input()
     public file: TuiFileLike = {name: ''};

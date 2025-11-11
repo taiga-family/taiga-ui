@@ -3,7 +3,6 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 
 @Component({
-    standalone: true,
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

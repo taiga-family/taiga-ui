@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
@@ -20,5 +20,5 @@ import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     },
 })
 export class TuiPreviewDialog {
-    protected readonly context = injectContext<TuiPopover<void, void>>();
+    protected readonly context = injectContext<TuiPortalContext<void>>();
 }

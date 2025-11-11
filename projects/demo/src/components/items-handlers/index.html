@@ -7,7 +7,7 @@
     </td>
 </tr>
 
-@if (!hiddenOptions.includes('stringify')) {
+@if (!hiddenOptions().includes('stringify')) {
     <tr
         name="[stringify]"
         tuiDocAPIItem
@@ -25,7 +25,7 @@
     </tr>
 }
 
-@if (!hiddenOptions.includes('identityMatcher')) {
+@if (!hiddenOptions().includes('identityMatcher')) {
     <tr
         name="[identityMatcher]"
         tuiDocAPIItem
@@ -43,12 +43,12 @@
     </tr>
 }
 
-@if (!hiddenOptions.includes('disabledItemHandler')) {
+@if (!hiddenOptions().includes('disabledItemHandler')) {
     <tr
         name="[disabledItemHandler]"
         tuiDocAPIItem
         type="TuiBooleanHandler"
-        [items]="[falseHandler, options.disabledItemHandler()]"
+        [items]="[falseHandler, providedDisabledItemHandler()]"
         [value]="disabledItemHandler()"
         (valueChange)="disabledItemHandler.set($event)"
     >

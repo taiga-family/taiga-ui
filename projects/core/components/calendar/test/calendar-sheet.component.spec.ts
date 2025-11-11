@@ -23,7 +23,6 @@ describe('CalendarSheet', () => {
     const today = 23;
 
     @Component({
-        standalone: true,
         imports: [TuiCalendarSheet],
         template: `
             <tui-calendar-sheet

@@ -17,7 +17,6 @@ interface TuiPaginationParams {
 
 describe('TuiPaginationComponent', () => {
     @Component({
-        standalone: true,
         imports: [TuiPagination],
         template: `
             <tui-pagination

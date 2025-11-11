@@ -8,7 +8,6 @@ import {TUI_DROPDOWN_OPTIONS} from './dropdown-options.directive';
 import {TuiDropdownPosition} from './dropdown-position.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdownSided]',
     providers: [TuiDropdownPosition, tuiAsPositionAccessor(TuiDropdownPositionSided)],
 })

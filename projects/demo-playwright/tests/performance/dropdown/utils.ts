@@ -11,7 +11,7 @@ export interface DropdownCtx {
 export interface StressScenario {
     label: string;
     repeats: number;
-    run: (page: Page, ctx: DropdownCtx) => Promise<void>;
+    run(page: Page, ctx: DropdownCtx): Promise<void>;
 }
 
 const INTENSITY = Math.max(1, Number(process.env.STRESS_INTENSITY || '2'));

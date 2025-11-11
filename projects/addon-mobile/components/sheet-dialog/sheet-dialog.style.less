@@ -1,10 +1,11 @@
 @import '@taiga-ui/core/styles/taiga-ui-local';
 
-// TODO: Refactor in the same way as dialog in v5
 :host {
     .scrollbar-hidden();
 
+    position: sticky;
     display: flex;
+    inset-inline-start: 0;
     inline-size: 100%;
     max-inline-size: 40rem;
     block-size: ~'calc(100% - max(var(--tui-offset), env(safe-area-inset-top)))';
@@ -14,6 +15,8 @@
     scroll-snap-type: y mandatory;
     margin: ~'max(var(--tui-offset), env(safe-area-inset-top))' auto 0;
     border-radius: 0.75rem 0.75rem 0 0;
+
+    --t-top: 0;
 
     &.tui-enter,
     &.tui-leave {
@@ -27,6 +30,14 @@
         z-index: -1;
     }
 
+    &._bar {
+        --t-top: 1.5rem;
+
+        .t-bar {
+            display: block;
+        }
+    }
+
     &._closeable {
         display: block;
 
@@ -35,37 +46,11 @@
         }
     }
 
-    &._fullscreen,
     &[data-appearance~='fullscreen'] {
         display: block;
 
         .t-sheet {
-            display: flex;
-            flex-direction: column;
             min-block-size: 100%;
-        }
-
-        // TODO: make default in v5
-        .t-content {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-
-            ::ng-deep > header,
-            ::ng-deep > [tuiSlides] > * > header,
-            ::ng-deep > ng-component > header,
-            ::ng-deep > ng-component > [tuiSlides] > * > header {
-                margin-block-end: 1.5rem;
-                font: var(--tui-font-heading-3);
-
-                + p {
-                    margin: -0.5rem 0 1.5rem;
-                }
-
-                &:empty {
-                    display: none;
-                }
-            }
         }
     }
 
@@ -98,9 +83,9 @@
 }
 
 .t-sheet {
-    .scrollbar-hidden();
-
+    display: flex;
     inline-size: 100%;
+    flex-direction: column;
     box-shadow: var(--tui-shadow-small);
     border-radius: inherit;
     padding: 0 1rem;
@@ -111,10 +96,11 @@
     scroll-snap-align: start;
 }
 
-.t-top {
+.t-bar {
     position: sticky;
     top: 0;
     z-index: 1;
+    display: none;
     block-size: 1.5rem;
     margin: 0 -1rem;
     border-radius: inherit;
@@ -133,30 +119,14 @@
     }
 }
 
-.t-heading {
-    position: sticky;
-    top: 1.5rem;
-    z-index: 1;
-    margin: 0 -1rem;
-    padding: 0.75rem 1rem;
-    font: var(--tui-font-heading-6);
-    background: var(--tui-background-elevation-1);
-
-    &:first-child {
-        top: 0;
-        border-radius: inherit;
-    }
-
-    &:last-child {
-        padding-block-end: 1.5rem;
-    }
-}
-
 .t-content {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border-radius: inherit;
     isolation: isolate;
     padding-block-end: ~'max(1.5rem, env(safe-area-inset-bottom))';
-    border-radius: inherit;
 
     &::after {
         content: '';
@@ -168,4 +138,28 @@
         scroll-snap-align: end;
         border-image: conic-gradient(var(--tui-background-elevation-1) 0 0) fill 0/0/0 100vh 100vh;
     }
+}
+
+* ::ng-deep > header,
+* ::ng-deep > [tuiSlides] > * > header,
+* ::ng-deep > ng-component > header,
+* ::ng-deep > ng-component > [tuiSlides] > * > header {
+    position: sticky;
+    top: var(--t-top);
+    z-index: 1;
+    margin: 0 -1rem;
+    padding: 0.75rem 1rem;
+    border-radius: inherit;
+    background: var(--tui-background-elevation-1);
+    font: var(--tui-font-heading-6);
+}
+
+* ::ng-deep > footer,
+* ::ng-deep > [tuiSlides] > * > footer,
+* ::ng-deep > ng-component > footer,
+* ::ng-deep > ng-component > [tuiSlides] > * > footer {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.5rem;
+    margin-block-start: 1rem;
 }

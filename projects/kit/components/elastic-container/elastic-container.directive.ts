@@ -8,7 +8,6 @@ import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {debounceTime, distinctUntilChanged, map, merge} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[tuiElasticContainer]',
     providers: [
         ResizeObserverService,

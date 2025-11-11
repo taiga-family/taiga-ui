@@ -1,6 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiDialog, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDialog, TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiDialog, TuiHeader, TuiTitle],

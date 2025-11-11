@@ -2,26 +2,22 @@ import {
     Directive,
     inject,
     InjectionToken,
-    Input,
+    input,
     Optional,
     type Provider,
+    type Signal,
     signal,
     SkipSelf,
-    type WritableSignal,
 } from '@angular/core';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
-const DEFAULT = {
-    appearance: 'textfield',
-    size: 'l',
-    cleaner: true,
-} as const;
+const DEFAULT = {appearance: 'textfield', size: 'l', cleaner: true} as const;
 
 export interface TuiTextfieldOptions {
-    readonly appearance: WritableSignal<string>;
-    readonly size: WritableSignal<TuiSizeL | TuiSizeS>;
-    readonly cleaner: WritableSignal<boolean>;
+    readonly appearance: Signal<string>;
+    readonly size: Signal<TuiSizeL | TuiSizeS>;
+    readonly cleaner: Signal<boolean>;
 }
 
 export const TUI_TEXTFIELD_OPTIONS = new InjectionToken<TuiTextfieldOptions>(
@@ -51,30 +47,23 @@ export function tuiTextfieldOptionsProvider(
 }
 
 @Directive({
-    standalone: true,
     selector: '[tuiTextfieldAppearance],[tuiTextfieldSize],[tuiTextfieldCleaner]',
     providers: [tuiProvide(TUI_TEXTFIELD_OPTIONS, TuiTextfieldOptionsDirective)],
 })
 export class TuiTextfieldOptionsDirective implements TuiTextfieldOptions {
     private readonly options = inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true});
 
-    // TODO: refactor to signal inputs after Angular update
-    public appearance = signal(this.options.appearance());
-    public size = signal(this.options.size());
-    public cleaner = signal(this.options.cleaner());
+    public readonly appearance = input(this.options.appearance(), {
+        alias: 'tuiTextfieldAppearance',
+    });
 
-    @Input()
-    public set tuiTextfieldAppearance(appearance: string) {
-        this.appearance.set(appearance);
-    }
+    public readonly size = input(this.options.size(), {
+        alias: 'tuiTextfieldSize',
+        transform: (size: TuiSizeL | TuiSizeS | ''): TuiSizeL | TuiSizeS =>
+            size || DEFAULT.size,
+    });
 
-    @Input()
-    public set tuiTextfieldSize(size: TuiSizeL | TuiSizeS) {
-        this.size.set(size);
-    }
-
-    @Input()
-    public set tuiTextfieldCleaner(enabled: boolean) {
-        this.cleaner.set(enabled);
-    }
+    public readonly cleaner = input(this.options.cleaner(), {
+        alias: 'tuiTextfieldCleaner',
+    });
 }

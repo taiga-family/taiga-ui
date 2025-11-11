@@ -5,7 +5,6 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTabs} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     selector: 'example-1',
     template: 'example-1',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -13,7 +12,6 @@ import {TuiTabs} from '@taiga-ui/kit';
 class Nav1 {}
 
 @Component({
-    standalone: true,
     selector: 'example-2',
     template: 'example-2',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,7 +19,6 @@ class Nav1 {}
 class Nav2 {}
 
 @Component({
-    standalone: true,
     selector: 'example-3',
     template: 'example-3',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,7 +26,6 @@ class Nav2 {}
 class Nav3 {}
 
 @Component({
-    standalone: true,
     selector: 'example-4',
     template: 'example-4',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -37,7 +33,6 @@ class Nav3 {}
 class Nav4 {}
 
 @Component({
-    standalone: true,
     selector: 'example-5',
     template: 'example-5',
     changeDetection: ChangeDetectionStrategy.OnPush,

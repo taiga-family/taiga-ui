@@ -1,5 +1,5 @@
 <img
-    [alt]="(countriesNames$ | async)?.[countryIsoCode]"
+    [alt]="countriesNames()[countryIsoCode]"
     [src]="countryIsoCode | tuiFlag"
     [style.border-radius.%]="50"
 />

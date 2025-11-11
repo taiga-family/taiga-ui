@@ -1,15 +1,20 @@
-import {Directive} from '@angular/core';
-import {TuiPopoverDirective} from '@taiga-ui/cdk/directives/popover';
-import {tuiAsPopover} from '@taiga-ui/cdk/services';
+import {Directive, input} from '@angular/core';
+import {tuiAsPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 
 import {type TuiDialogOptions} from './dialog.interfaces';
 import {TuiDialogService} from './dialog.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiDialog]',
-    inputs: ['options: tuiDialogOptions', 'open: tuiDialog'],
-    outputs: ['openChange: tuiDialogChange'],
-    providers: [tuiAsPopover(TuiDialogService)],
+    providers: [tuiAsPortal(TuiDialogService)],
+    hostDirectives: [
+        {
+            directive: TuiPortalDirective,
+            inputs: ['options: tuiDialogOptions', 'open: tuiDialog'],
+            outputs: ['openChange: tuiDialogChange'],
+        },
+    ],
 })
-export class TuiDialog<T> extends TuiPopoverDirective<TuiDialogOptions<T>> {}
+export class TuiDialog<T> {
+    public readonly tuiDialogOptions = input<Partial<TuiDialogOptions<T>>>({});
+}

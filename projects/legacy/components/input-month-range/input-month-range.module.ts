@@ -23,10 +23,10 @@ import {TuiInputMonthRangeDirective} from './input-month-range.directive';
     imports: [
         CommonModule,
         TuiCalendarMonth,
-        TuiPrimitiveTextfieldModule,
-        TuiMapperPipe,
-        TuiTextfieldControllerModule,
         TuiLegacyDropdownOpenMonitorDirective,
+        TuiMapperPipe,
+        TuiPrimitiveTextfieldModule,
+        TuiTextfieldControllerModule,
         ...TuiDropdown,
     ],
     declarations: [TuiInputMonthRangeComponent, TuiInputMonthRangeDirective],

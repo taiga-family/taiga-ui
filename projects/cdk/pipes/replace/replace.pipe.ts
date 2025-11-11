@@ -1,7 +1,6 @@
 import {Pipe, type PipeTransform} from '@angular/core';
 
 @Pipe({
-    standalone: true,
     name: 'tuiReplace',
 })
 export class TuiReplacePipe implements PipeTransform {

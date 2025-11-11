@@ -5,7 +5,6 @@ import {TuiButton} from '@taiga-ui/core';
 import {TUI_TOAST_OPTIONS, TuiToast} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     imports: [TuiButton, TuiDemo, TuiToast],
     templateUrl: './index.html',
     changeDetection,

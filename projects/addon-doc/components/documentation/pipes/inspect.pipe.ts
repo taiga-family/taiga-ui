@@ -3,7 +3,6 @@ import {tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {TUI_IS_E2E} from '@taiga-ui/cdk/tokens';
 
 @Pipe({
-    standalone: true,
     name: 'tuiInspectAny',
 })
 export class TuiInspectPipe implements PipeTransform {

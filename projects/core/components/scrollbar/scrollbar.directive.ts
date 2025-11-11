@@ -1,4 +1,4 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {WA_ANIMATION_FRAME} from '@ng-web-apis/common';
 import {
@@ -24,7 +24,6 @@ interface ComputedDimension {
 }
 
 @Directive({
-    standalone: true,
     selector: '[tuiScrollbar]',
     providers: [TuiScrollbarService],
 })
@@ -37,7 +36,7 @@ export class TuiScrollbarDirective {
         .subscribe(([top, left]) => {
             this.el.style.scrollBehavior = 'auto';
 
-            if (this.tuiScrollbar === 'horizontal') {
+            if (this.tuiScrollbar() === 'horizontal') {
                 this.el.scrollLeft = left;
             } else {
                 this.el.scrollTop = top;
@@ -64,7 +63,7 @@ export class TuiScrollbarDirective {
             const thumb = `${this.getThumb(dimension) * 100}%`;
             const view = `${this.getView(dimension) * 100}%`;
 
-            if (this.tuiScrollbar === 'vertical') {
+            if (this.tuiScrollbar() === 'vertical') {
                 this.style.top = thumb;
                 this.style.height = view;
             } else {
@@ -74,11 +73,10 @@ export class TuiScrollbarDirective {
             }
         });
 
-    @Input()
-    public tuiScrollbar: 'horizontal' | 'vertical' = 'vertical';
+    public readonly tuiScrollbar = input<'horizontal' | 'vertical'>('vertical');
 
     private getScrolled(dimension: ComputedDimension): number {
-        return this.tuiScrollbar === 'vertical'
+        return this.tuiScrollbar() === 'vertical'
             ? dimension.scrollTop / (dimension.scrollHeight - dimension.clientHeight)
             : dimension.scrollLeft / (dimension.scrollWidth - dimension.clientWidth);
     }
@@ -87,15 +85,15 @@ export class TuiScrollbarDirective {
         if (
             ((dimension.clientHeight * dimension.clientHeight) / dimension.scrollHeight >
                 MIN_WIDTH &&
-                this.tuiScrollbar === 'vertical') ||
+                this.tuiScrollbar() === 'vertical') ||
             ((dimension.clientWidth * dimension.clientWidth) / dimension.scrollWidth >
                 MIN_WIDTH &&
-                this.tuiScrollbar === 'horizontal')
+                this.tuiScrollbar() === 'horizontal')
         ) {
             return 0;
         }
 
-        return this.tuiScrollbar === 'vertical'
+        return this.tuiScrollbar() === 'vertical'
             ? MIN_WIDTH / dimension.clientHeight
             : MIN_WIDTH / dimension.clientWidth;
     }
@@ -107,7 +105,7 @@ export class TuiScrollbarDirective {
     }
 
     private getView(dimension: ComputedDimension): number {
-        return this.tuiScrollbar === 'vertical'
+        return this.tuiScrollbar() === 'vertical'
             ? Math.ceil((dimension.clientHeight / dimension.scrollHeight) * 100) / 100
             : Math.ceil((dimension.clientWidth / dimension.scrollWidth) * 100) / 100;
     }

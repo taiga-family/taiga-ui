@@ -10,7 +10,7 @@ import {
     ElementRef,
     forwardRef,
     inject,
-    Input,
+    input,
     type QueryList,
     signal,
     ViewChild,
@@ -59,8 +59,6 @@ import {TUI_TEXTFIELD_ACCESSOR, type TuiTextfieldAccessor} from './textfield-acc
 export class TuiTextfieldBaseComponent<T>
     implements TuiDataListHost<T>, AfterContentChecked
 {
-    // TODO: refactor to signal inputs after Angular update
-    private readonly filler = signal('');
     private readonly autoId = tuiInjectId();
     private readonly focusedIn = tuiFocusedIn(tuiInjectElement());
     private readonly contentReady$ = new ReplaySubject<boolean>(1);
@@ -87,7 +85,7 @@ export class TuiTextfieldBaseComponent<T>
     protected readonly dropdownOpen = inject(TuiDropdownOpen);
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
-    protected readonly clear = toSignal(inject(TUI_CLEAR_WORD));
+    protected readonly clear = inject(TUI_CLEAR_WORD);
 
     protected readonly computedFiller = computed((value = this.value()) => {
         const filler = value + this.filler().slice(value.length);
@@ -121,8 +119,7 @@ export class TuiTextfieldBaseComponent<T>
     })
     public readonly input?: ElementRef<HTMLInputElement>;
 
-    @Input()
-    public content: PolymorpheusContent<TuiContext<T>>;
+    public readonly content = input<PolymorpheusContent<TuiContext<T>>>();
 
     public readonly focused = computed(() => this.open() || this.focusedIn());
     public readonly options = inject(TUI_TEXTFIELD_OPTIONS);
@@ -139,10 +136,7 @@ export class TuiTextfieldBaseComponent<T>
         {requireSync: true},
     );
 
-    @Input('filler')
-    public set fillerSetter(filler: string) {
-        this.filler.set(filler);
-    }
+    public readonly filler = input('');
 
     public get id(): string {
         return this.input?.nativeElement.id || this.autoId;
@@ -222,7 +216,7 @@ export class TuiTextfieldBaseComponent<T>
     host: {
         '[attr.data-size]': 'options.size()',
         '[class._with-label]': 'hasLabel',
-        '[class._with-template]': 'content && control?.value != null',
+        '[class._with-template]': 'content() && control?.value != null',
         '[class._disabled]': 'input?.nativeElement?.disabled',
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',

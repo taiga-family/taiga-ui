@@ -4,30 +4,28 @@ import {expect, type Locator, test} from '@playwright/test';
 
 import {TUI_PLAYWRIGHT_MOBILE} from '../../../playwright.options';
 
-const {describe, beforeEach} = test;
-
 test.describe('DropdownHover', () => {
-    describe('Examples', () => {
-        beforeEach(async ({page}) => {
-            await tuiGoto(page, DemoRoute.DropdownHover);
-        });
+    test.describe('Examples', () => {
+        test.beforeEach(async ({page}) => tuiGoto(page, DemoRoute.DropdownHover));
 
-        describe('With DropdownMobile', () => {
+        test.describe('With DropdownMobile', () => {
             let example!: Locator;
+            let po!: TuiDocumentationPagePO;
 
             test.use(TUI_PLAYWRIGHT_MOBILE);
 
-            beforeEach(({page}) => {
-                example = new TuiDocumentationPagePO(page).getExample('#dropdown-mobile');
+            test.beforeEach(({page}) => {
+                po = new TuiDocumentationPagePO(page);
+                example = po.getExample('#dropdown-mobile');
             });
 
             test('Opens mobile version of dropdown on the 1st time click', async ({
                 page,
             }) => {
-                await example.locator('button').hover();
-
+                await example.locator('button').click();
                 await expect(page.locator('tui-dropdown')).not.toBeAttached();
                 await expect(page.locator('tui-sheet-dialog')).toBeVisible();
+                await po.hideContent();
                 await expect
                     .soft(page)
                     .toHaveScreenshot('mobile-dropdown-1st-time-time-click.png');
@@ -37,6 +35,7 @@ test.describe('DropdownHover', () => {
                 await example.locator('button').click();
                 await expect(page.locator('tui-sheet-dialog')).toBeVisible();
                 await page.locator('tui-sheet-dialog').click({position: {x: 32, y: 32}});
+                await po.hideContent();
                 await expect(page.locator('tui-sheet-dialog')).not.toBeAttached();
             });
 
@@ -47,6 +46,7 @@ test.describe('DropdownHover', () => {
                 await page.locator('tui-sheet-dialog').click({position: {x: 32, y: 32}});
                 await example.locator('button').click();
                 await expect(page.locator('tui-sheet-dialog')).toBeVisible();
+                await po.hideContent();
                 await expect
                     .soft(page)
                     .toHaveScreenshot('mobile-dropdown-2nd-time-time-click.png');

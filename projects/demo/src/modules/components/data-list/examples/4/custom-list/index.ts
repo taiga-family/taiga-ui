@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, input, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
@@ -6,7 +6,6 @@ import {
     TUI_DEFAULT_MATCHER,
     TuiAutoFocus,
     TuiFilterPipe,
-    TuiLet,
 } from '@taiga-ui/cdk';
 import {
     TuiDataList,
@@ -28,7 +27,6 @@ interface Items<T> {
         TuiAutoFocus,
         TuiDataList,
         TuiFilterPipe,
-        TuiLet,
         TuiMultiSelectModule,
         TuiTextfield,
     ],
@@ -44,8 +42,7 @@ export class CustomListComponent<T> {
     protected readonly all = EMPTY_ARRAY;
     protected readonly filter: (item: T, value: string) => boolean = TUI_DEFAULT_MATCHER;
 
-    @Input()
-    public items: ReadonlyArray<Items<T>> = [];
+    public readonly items = input<ReadonlyArray<Items<T>>>([]);
 
     protected onKeyDown(key: string): void {
         if (tuiIsEditingKey(key)) {

@@ -1,31 +1,30 @@
-<ng-container *tuiLet="month | tuiCalendarSheet as sheet">
+@let sheet = month | tuiCalendarSheet;
+<div
+    *tuiRepeatTimes="let rowIndex of sheet.length"
+    automation-id="tui-primitive-calendar-mobile__row"
+    class="t-row"
+>
     <div
-        *tuiRepeatTimes="let rowIndex of sheet.length"
-        automation-id="tui-primitive-calendar-mobile__row"
-        class="t-row"
-    >
-        <div
-            *tuiRepeatTimes="let index of 7 - (sheet[rowIndex]?.length ?? 0)"
-            class="t-cell t-cell_empty"
-        ></div>
-        <ng-container *tuiRepeatTimes="let colIndex of sheet[rowIndex]?.length ?? 0">
-            @if (sheet[rowIndex]?.[colIndex]; as item) {
-                <div
-                    automation-id="tui-primitive-calendar-mobile__cell"
-                    tuiRipple
-                    class="t-cell"
-                    [attr.data-range]="getItemRange(item)"
-                    [class.t-cell_disabled]="disabledItemHandler(item)"
-                    [class.t-cell_today]="itemIsToday(item)"
-                    (click)="onItemClick(item)"
-                >
-                    {{ item.day }}
-                </div>
-            }
-        </ng-container>
-        <div
-            *tuiRepeatTimes="let index of 7 - (sheet[rowIndex]?.length ?? 0)"
-            class="t-cell t-cell_empty"
-        ></div>
-    </div>
-</ng-container>
+        *tuiRepeatTimes="let index of 7 - (sheet[rowIndex]?.length ?? 0)"
+        class="t-cell t-cell_empty"
+    ></div>
+    <ng-container *tuiRepeatTimes="let colIndex of sheet[rowIndex]?.length ?? 0">
+        @if (sheet[rowIndex]?.[colIndex]; as item) {
+            <div
+                automation-id="tui-primitive-calendar-mobile__cell"
+                tuiRipple
+                class="t-cell"
+                [attr.data-range]="getItemRange(item)"
+                [class.t-cell_disabled]="disabledItemHandler(item)"
+                [class.t-cell_today]="itemIsToday(item)"
+                (click)="onItemClick(item)"
+            >
+                {{ item.day }}
+            </div>
+        }
+    </ng-container>
+    <div
+        *tuiRepeatTimes="let index of 7 - (sheet[rowIndex]?.length ?? 0)"
+        class="t-cell t-cell_empty"
+    ></div>
+</div>

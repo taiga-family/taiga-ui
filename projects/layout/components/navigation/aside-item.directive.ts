@@ -21,7 +21,6 @@ import {TUI_CHEVRON, TuiChevron} from '@taiga-ui/kit/directives/chevron';
 import {TuiHintAsideDirective} from './hint-aside.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiAsideItem]',
     providers: [
         tuiAsDataListHost(TuiAsideItemDirective),

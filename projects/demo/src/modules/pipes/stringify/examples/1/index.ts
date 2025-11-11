@@ -15,13 +15,13 @@ import {
 @Component({
     imports: [
         FormsModule,
-        TuiComboBox,
-        TuiTextfield,
         TuiChevron,
+        TuiComboBox,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
         TuiStringifyContentPipe,
         TuiStringifyPipe,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

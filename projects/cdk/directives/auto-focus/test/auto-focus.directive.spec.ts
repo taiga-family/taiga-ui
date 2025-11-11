@@ -21,7 +21,6 @@ import {provideTaiga} from '@taiga-ui/core';
 describe('TuiAutoFocus directive', () => {
     describe('works for focusable HTML element', () => {
         @Component({
-            standalone: true,
             imports: [TuiAutoFocus],
             template: `
                 <div
@@ -59,7 +58,6 @@ describe('TuiAutoFocus directive', () => {
 
     describe('works for iOS decoy method', () => {
         @Component({
-            standalone: true,
             imports: [TuiAutoFocus],
             template: `
                 <input tuiAutoFocus />
@@ -114,7 +112,6 @@ describe('TuiAutoFocus directive', () => {
 
     describe('autoFocus flag is false', () => {
         @Component({
-            standalone: true,
             imports: [TuiAutoFocus],
             template: `
                 <div

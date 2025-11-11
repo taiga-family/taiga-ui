@@ -1,6 +1,12 @@
-import {InjectionToken, Optional, type Provider, SkipSelf} from '@angular/core';
+import {
+    computed,
+    inject,
+    InjectionToken,
+    type Provider,
+    type Signal,
+    signal,
+} from '@angular/core';
 import {type TuiDateMode} from '@taiga-ui/cdk/date-time';
-import {map, type Observable, of} from 'rxjs';
 
 /**
  * Formatting configuration for displayed dates
@@ -25,22 +31,23 @@ export const TUI_DEFAULT_DATE_FORMAT: TuiDateFormatSettings = {
 /**
  * Formatting configuration for displayed dates
  */
-export const TUI_DATE_FORMAT = new InjectionToken<Observable<TuiDateFormatSettings>>(
+export const TUI_DATE_FORMAT = new InjectionToken<Signal<TuiDateFormatSettings>>(
     ngDevMode ? 'TUI_DATE_FORMAT' : '',
     {
-        factory: () => of(TUI_DEFAULT_DATE_FORMAT),
+        factory: () => signal(TUI_DEFAULT_DATE_FORMAT),
     },
 );
 
 export function tuiDateFormatProvider(options: Partial<TuiDateFormatSettings>): Provider {
     return {
         provide: TUI_DATE_FORMAT,
-        deps: [[new Optional(), new SkipSelf(), TUI_DATE_FORMAT]],
-        useFactory: (
-            parent: Observable<TuiDateFormatSettings> | null,
-        ): Observable<TuiDateFormatSettings> =>
-            (parent || of(TUI_DEFAULT_DATE_FORMAT)).pipe(
-                map((format) => ({...format, ...options})),
-            ),
+        useFactory: (): Signal<TuiDateFormatSettings> => {
+            const parent = inject(TUI_DATE_FORMAT, {optional: true, skipSelf: true});
+
+            return computed(() => ({
+                ...(parent?.() || TUI_DEFAULT_DATE_FORMAT),
+                ...options,
+            }));
+        },
     };
 }

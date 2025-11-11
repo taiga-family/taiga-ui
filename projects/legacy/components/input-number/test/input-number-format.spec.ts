@@ -13,7 +13,6 @@ import {TuiNativeInputPO} from '@taiga-ui/testing';
 
 describe('InputNumber - backward compatibility for separators', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiInputNumberModule, TuiNumberFormat],
         template: `
             <ng-container [formGroup]="form">

@@ -11,7 +11,7 @@
         </span>
     </td>
 </tr>
-@if (!hiddenOptions.includes('open')) {
+@if (!hiddenOptions().includes('open')) {
     <tr
         name="[(open)]"
         tuiDocAPIItem
@@ -21,7 +21,7 @@
         Manual control/monitor for the dropdown being visible
     </tr>
 }
-@if (!hiddenOptions.includes('tuiDropdownEnabled')) {
+@if (!hiddenOptions().includes('tuiDropdownEnabled')) {
     <tr
         name="[tuiDropdownEnabled]"
         tuiDocAPIItem
@@ -31,7 +31,7 @@
         Enabling built-in open/close mechanics.
     </tr>
 }
-@if (!hiddenOptions.includes('align')) {
+@if (!hiddenOptions().includes('align')) {
     <tr
         name="[tuiDropdownAlign]"
         tuiDocAPIItem
@@ -44,7 +44,7 @@
         )
     </tr>
 }
-@if (!hiddenOptions.includes('direction')) {
+@if (!hiddenOptions().includes('direction')) {
     <tr
         name="[tuiDropdownDirection]"
         tuiDocAPIItem
@@ -55,7 +55,7 @@
         Set a vertical direction of dropdown
     </tr>
 }
-@if (!hiddenOptions.includes('limitWidth')) {
+@if (!hiddenOptions().includes('limitWidth')) {
     <tr
         name="[tuiDropdownLimitWidth]"
         tuiDocAPIItem
@@ -66,7 +66,7 @@
         Limit width of dropdown
     </tr>
 }
-@if (!hiddenOptions.includes('minHeight')) {
+@if (!hiddenOptions().includes('minHeight')) {
     <tr
         name="[tuiDropdownMinHeight]"
         tuiDocAPIItem
@@ -77,7 +77,7 @@
         <code>tuiDropdownDirection</code>
     </tr>
 }
-@if (!hiddenOptions.includes('maxHeight')) {
+@if (!hiddenOptions().includes('maxHeight')) {
     <tr
         name="[tuiDropdownMaxHeight]"
         tuiDocAPIItem
@@ -87,7 +87,7 @@
         Maximum height of dropdown
     </tr>
 }
-@if (!hiddenOptions.includes('offset')) {
+@if (!hiddenOptions().includes('offset')) {
     <tr
         name="[tuiDropdownOffset]"
         tuiDocAPIItem
@@ -97,7 +97,7 @@
         Dropdown offset
     </tr>
 }
-@if (!hiddenOptions.includes('dropdownSided')) {
+@if (!hiddenOptions().includes('dropdownSided')) {
     <tr
         name="[tuiDropdownSided]"
         tuiDocAPIItem
@@ -107,7 +107,7 @@
         Enables side positioning of dropdown
     </tr>
 }
-@if (!hiddenOptions.includes('dropdownSidedOffset')) {
+@if (!hiddenOptions().includes('dropdownSidedOffset')) {
     <tr
         name="[tuiDropdownSidedOffset]"
         tuiDocAPIItem
@@ -117,7 +117,7 @@
         Determines the offset of the side positioned dropdown
     </tr>
 }
-@if (!hiddenOptions.includes('direction')) {
+@if (!hiddenOptions().includes('direction')) {
     <tr
         name="(tuiDropdownDirectionChange)"
         tuiDocAPIItem

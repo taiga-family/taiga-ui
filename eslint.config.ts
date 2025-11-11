@@ -28,7 +28,7 @@ export default process.env.HTML_ESLINT
               },
           },
           {
-              files: ['**/*.ts'],
+              files: ['**/*.{ts,js}'],
               rules: {
                   'import/no-cycle': 'off',
                   '@typescript-eslint/no-unnecessary-condition': 'off',
@@ -37,9 +37,14 @@ export default process.env.HTML_ESLINT
                       'error',
                       {countVoidThis: true, max: 5},
                   ],
-                  '@angular-eslint/no-uncalled-signals': 'off',
                   // TODO enable after fixing all issues
                   '@angular-eslint/prefer-signals': 'off',
+              },
+          },
+          {
+              files: ['**/*.spec.ts', '**/*.cy.ts'],
+              rules: {
+                  'no-irregular-whitespace': 'off',
               },
           },
       ];

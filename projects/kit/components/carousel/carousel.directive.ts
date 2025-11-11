@@ -14,9 +14,7 @@ import {
     Observable,
 } from 'rxjs';
 
-@Directive({
-    standalone: true,
-})
+@Directive()
 export class TuiCarouselDirective extends Observable<unknown> {
     private readonly el = tuiInjectElement();
     private readonly platform = inject(PLATFORM_ID);

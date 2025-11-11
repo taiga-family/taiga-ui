@@ -1,13 +1,12 @@
-import {Directive, inject, Output} from '@angular/core';
+import {Directive, inject} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 
 import {TuiPanService} from './pan.service';
 
 @Directive({
-    standalone: true,
     selector: '[tuiPan]',
     providers: [TuiPanService],
 })
 export class TuiPan {
-    @Output()
-    public readonly tuiPan = inject(TuiPanService);
+    public readonly tuiPan = outputFromObservable(inject(TuiPanService));
 }

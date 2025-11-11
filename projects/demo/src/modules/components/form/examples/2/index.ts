@@ -7,7 +7,6 @@ import {
     TuiButton,
     TuiError,
     TuiGroup,
-    TuiHeader,
     TuiIcon,
     TuiLabel,
     TuiTextfield,
@@ -26,7 +25,7 @@ import {
     TuiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiForm} from '@taiga-ui/layout';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 import {
     TuiInputModule,
     TuiInputSliderModule,
@@ -68,6 +67,7 @@ class Account {
         TuiGroup,
         TuiHeader,
         TuiIcon,
+        TuiInputDate,
         TuiInputModule,
         TuiInputNumber,
         TuiInputPhone,
@@ -80,7 +80,6 @@ class Account {
         TuiTextfieldControllerModule,
         TuiTitle,
         TuiTooltip,
-        TuiInputDate,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

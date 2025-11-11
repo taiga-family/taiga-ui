@@ -6,31 +6,23 @@ import {
     type InjectionToken,
     input,
     type Provider,
-    signal,
     ViewEncapsulation,
 } from '@angular/core';
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
-import {TUI_HEADER_OPTIONS} from '@taiga-ui/core/components/header';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
-import {
-    TUI_TEXTFIELD_OPTIONS,
-    TuiTextfieldOptionsDirective,
-} from '@taiga-ui/core/components/textfield';
+import {TuiTextfieldOptionsDirective} from '@taiga-ui/core/components/textfield';
 import {TUI_BLOCK_OPTIONS} from '@taiga-ui/kit/components/block';
 import {TUI_CHECKBOX_OPTIONS} from '@taiga-ui/kit/components/checkbox';
 import {TUI_RADIO_OPTIONS} from '@taiga-ui/kit/components/radio';
 import {TUI_SEGMENTED_OPTIONS} from '@taiga-ui/kit/components/segmented';
 import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
+import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 
 import {TUI_FORM_OPTIONS, type TuiFormOptions} from './form.options';
 
-const HEADER_SIZE = {
-    s: 'body-m',
-    m: 'h6',
-    l: 'h5',
-} as const;
+const HEADER_SIZE = {s: 'body-m', m: 'h6', l: 'h5'} as const;
 
 @Component({
     template: '',
@@ -52,20 +44,15 @@ class Styles {}
         projectSize(TUI_RADIO_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         projectSize(TUI_CHECKBOX_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
         projectSize(TUI_SEGMENTED_OPTIONS, (size) => (size === 'l' ? 'm' : 's')),
-        {
-            provide: TUI_TEXTFIELD_OPTIONS,
-            useFactory: () => ({
-                ...inject(TUI_TEXTFIELD_OPTIONS, {skipSelf: true}),
-                size: signal(
-                    inject(TuiForm).size() || inject(TUI_FORM_OPTIONS).size || 'l',
-                ),
-            }),
-        },
     ],
     hostDirectives: [
         {
             directive: TuiTextfieldOptionsDirective,
-            inputs: ['tuiTextfieldAppearance', 'tuiTextfieldCleaner'],
+            inputs: [
+                'tuiTextfieldAppearance: textfields',
+                'tuiTextfieldCleaner: cleaner',
+                'tuiTextfieldSize: tuiForm',
+            ],
         },
     ],
     host: {

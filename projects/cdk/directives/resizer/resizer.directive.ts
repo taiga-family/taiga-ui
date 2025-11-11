@@ -1,17 +1,9 @@
-import {
-    Directive,
-    type ElementRef,
-    EventEmitter,
-    inject,
-    Input,
-    Output,
-} from '@angular/core';
+import {Directive, type ElementRef, inject, input, output} from '@angular/core';
 import {tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiResizable} from './resizable.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiResizer]',
     host: {
         '[style.cursor]': 'cursor',
@@ -29,22 +21,22 @@ export class TuiResizer {
     protected width = 0;
     protected height = 0;
 
-    @Input()
-    public tuiResizer: readonly [x: number, y: number] = [0, 0];
+    public readonly tuiResizer = input<readonly [x: number, y: number]>([0, 0]);
 
-    @Output()
-    public readonly tuiSizeChange = new EventEmitter<readonly [x: number, y: number]>();
+    public readonly tuiSizeChange = output<readonly [x: number, y: number]>();
 
     protected get cursor(): string {
-        if (!this.tuiResizer[0]) {
+        const tuiResizer = this.tuiResizer();
+
+        if (!tuiResizer[0]) {
             return 'ns-resize';
         }
 
-        if (!this.tuiResizer[1]) {
+        if (!tuiResizer[1]) {
             return 'ew-resize';
         }
 
-        if (this.tuiResizer[0] * this.tuiResizer[1] > 0) {
+        if (tuiResizer[0] * tuiResizer[1] > 0) {
             return 'nwse-resize';
         }
 
@@ -71,21 +63,23 @@ export class TuiResizer {
     }
 
     protected onMove(x: number, y: number): void {
+        const tuiResizer = this.tuiResizer();
+
         if (Number.isNaN(this.x)) {
             return;
         }
 
         const {style} = this.resizable.nativeElement;
         const size = [
-            this.width + this.tuiResizer[0] * (x - this.x),
-            this.height + this.tuiResizer[1] * (y - this.y),
+            this.width + tuiResizer[0] * (x - this.x),
+            this.height + tuiResizer[1] * (y - this.y),
         ] as const;
 
-        if (this.tuiResizer[0]) {
+        if (tuiResizer[0]) {
             style.width = tuiPx(size[0]);
         }
 
-        if (this.tuiResizer[1]) {
+        if (tuiResizer[1]) {
             style.height = tuiPx(size[1]);
         }
 

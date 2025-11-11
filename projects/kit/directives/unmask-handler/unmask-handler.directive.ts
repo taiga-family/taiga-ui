@@ -10,7 +10,6 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {identity} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: '[maskito][tuiUnmaskHandler]',
     providers: [tuiProvide(TuiValueTransformer, TuiUnmaskHandler)],
 })
