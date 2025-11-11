@@ -6,14 +6,13 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiGroup,
-    TuiHeader,
     TuiIcon,
     TuiLink,
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiBadge, TuiBlock, TuiBreadcrumbs, TuiFade, TuiTabs} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiNavigation} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
     imports: [

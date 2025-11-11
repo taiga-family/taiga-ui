@@ -11,7 +11,6 @@ import {
 import {type TuiHandler} from '@taiga-ui/cdk/types';
 import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_BUTTON_OPTIONS} from '@taiga-ui/core/components/button';
-import {TUI_HEADER_OPTIONS} from '@taiga-ui/core/components/header';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
 import {TuiTextfieldOptionsDirective} from '@taiga-ui/core/components/textfield';
 import {TUI_BLOCK_OPTIONS} from '@taiga-ui/kit/components/block';
@@ -19,6 +18,7 @@ import {TUI_CHECKBOX_OPTIONS} from '@taiga-ui/kit/components/checkbox';
 import {TUI_RADIO_OPTIONS} from '@taiga-ui/kit/components/radio';
 import {TUI_SEGMENTED_OPTIONS} from '@taiga-ui/kit/components/segmented';
 import {TUI_SWITCH_OPTIONS} from '@taiga-ui/kit/components/switch';
+import {TUI_HEADER_OPTIONS} from '@taiga-ui/layout/components/header';
 
 import {TUI_FORM_OPTIONS, type TuiFormOptions} from './form.options';
 

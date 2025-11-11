@@ -10,9 +10,9 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiError, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiError, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiInputPhone} from '@taiga-ui/kit';
-import {TuiForm} from '@taiga-ui/layout';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 function phoneValidator({value}: AbstractControl): ValidationErrors | null {
     return value.length !== 12 ? {length: 'Invalid phone number length'} : null;
