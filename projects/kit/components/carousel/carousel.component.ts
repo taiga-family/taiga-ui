@@ -49,7 +49,7 @@ import {TuiCarouselScroll} from './carousel-scroll.directive';
     ],
     host: {
         '[class._transitioned]': 'transitioned',
-        '[class._draggable]': 'draggable',
+        '[class._draggable]': 'draggable()',
         '(touchstart)': 'onTransitioned(false)',
         '(touchend)': 'onTransitioned(true)',
         '(mousedown)': 'onTransitioned(false)',
@@ -71,8 +71,7 @@ export class TuiCarouselComponent {
 
     protected index = 0;
 
-    @Input()
-    public draggable = false;
+    public readonly draggable = input(false);
 
     public readonly itemsCount = input(1);
 
@@ -183,7 +182,7 @@ export class TuiCarouselComponent {
     }
 
     private get computedDraggable(): boolean {
-        return this.isMobile || this.draggable;
+        return this.isMobile || this.draggable();
     }
 
     private updateIndex(index: number): void {
