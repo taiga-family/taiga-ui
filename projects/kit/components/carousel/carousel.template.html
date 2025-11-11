@@ -1,4 +1,3 @@
-@if (items.changes | async) {}
 <div
     class="t-scroller"
     (tuiCarouselScroll)="onScroll($event)"
@@ -15,7 +14,7 @@
             (tuiPan)="onPan($event[0])"
             (tuiSwipe)="onSwipe($event.direction)"
         >
-            @for (item of items; track item) {
+            @for (item of items(); track item) {
                 <fieldset
                     class="t-item"
                     [disabled]="isDisabled($index)"
