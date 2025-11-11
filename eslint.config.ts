@@ -41,4 +41,10 @@ export default process.env.HTML_ESLINT
                   '@angular-eslint/prefer-signals': 'off',
               },
           },
+          {
+              files: ['**/*.spec.ts', '**/*.cy.ts'],
+              rules: {
+                  'no-irregular-whitespace': 'off',
+              },
+          },
       ];
