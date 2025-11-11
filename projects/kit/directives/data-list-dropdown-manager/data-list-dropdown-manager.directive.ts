@@ -1,13 +1,19 @@
 import {
     type AfterViewInit,
-    contentChildren,
+    ContentChildren,
     DestroyRef,
     Directive,
     ElementRef,
     inject,
+    type QueryList,
 } from '@angular/core';
-import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
-import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
+import {
+    tuiPreventDefault,
+    tuiQueryListChanges,
+    tuiTypedFromEvent,
+} from '@taiga-ui/cdk/observables';
 import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
@@ -28,16 +34,11 @@ import {
     selector: 'tui-data-list[tuiDataListDropdownManager]',
 })
 export class TuiDataListDropdownManager implements AfterViewInit {
-    private readonly dropdowns = contentChildren(TuiDropdownDirective, {
-        descendants: true,
-    });
+    @ContentChildren(TuiDropdownDirective, {descendants: true})
+    private readonly dropdowns: QueryList<TuiDropdownDirective> = EMPTY_QUERY;
 
-    private readonly els = contentChildren(ElementRef<HTMLElement>, {
-        read: ElementRef,
-        descendants: true,
-    });
-
-    private readonly els$ = toObservable(this.els);
+    @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
+    private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
     private readonly destroyRef = inject(DestroyRef);
 
@@ -49,12 +50,12 @@ export class TuiDataListDropdownManager implements AfterViewInit {
         merge(this.immediate$, this.debounce$)
             .pipe(
                 switchMap((active) => {
-                    this.dropdowns().forEach((dropdown, index) => {
+                    this.dropdowns.forEach((dropdown, index) => {
                         dropdown.toggle(index === active);
                     });
 
-                    const element = this.els()[active];
-                    const dropdown = this.dropdowns()[active];
+                    const element = this.els.get(active);
+                    const dropdown = this.dropdowns.get(active);
                     const ref = dropdown?.ref();
 
                     if (!element || !dropdown || !ref) {
@@ -89,7 +90,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
 
     @tuiPure
     private get elements$(): Observable<readonly HTMLElement[]> {
-        return this.els$.pipe(
+        return tuiQueryListChanges(this.els).pipe(
             map((array) => array.map(({nativeElement}) => nativeElement)),
             shareReplay({bufferSize: 1, refCount: true}),
         );
@@ -148,11 +149,14 @@ export class TuiDataListDropdownManager implements AfterViewInit {
     }
 
     private notInDropdown(element: EventTarget | null, index: number): boolean {
-        return !this.dropdowns()[index]?.ref()?.location.nativeElement.contains(element);
+        return !this.dropdowns
+            .get(index)
+            ?.ref()
+            ?.location.nativeElement.contains(element);
     }
 
     private tryToFocus(index: number): void {
-        const content = this.dropdowns()[index]?.ref()?.location.nativeElement;
+        const content = this.dropdowns.get(index)?.ref()?.location.nativeElement;
 
         if (!content) {
             return;
