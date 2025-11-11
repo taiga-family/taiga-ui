@@ -10,8 +10,7 @@ import {
     isSignal,
     output,
     type QueryList,
-    signal,
-    ViewChild,
+    viewChild,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
@@ -51,7 +50,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
 })
 export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccessor<T> {
-    private readonly datalist = signal<TuiDataListComponent<T> | null>(null);
+    private readonly datalist = viewChild(TuiDataListComponent<T>);
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     // TODO(v5): delete
     private readonly itemsHandlersLegacy: TuiItemsHandlersLegacy<T> = inject(
@@ -105,12 +104,6 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
             .filter(({disabled}) => includeDisabled || !disabled)
             .map(({value}) => (isSignal(value) ? value() : value))
             .filter(tuiIsPresent);
-    }
-
-    // TODO(v5): use signal `viewChild`
-    @ViewChild(TuiDataListComponent)
-    protected set datalistSetter(x: TuiDataListComponent<T>) {
-        this.datalist.set(x);
     }
 
     protected $cast(items: readonly K[] | null): readonly T[] {
