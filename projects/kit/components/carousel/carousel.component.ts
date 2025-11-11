@@ -9,6 +9,7 @@ import {
     Input,
     input,
     output,
+    signal,
     TemplateRef,
 } from '@angular/core';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
@@ -62,8 +63,8 @@ export class TuiCarouselComponent {
     private readonly cdr = inject(ChangeDetectorRef);
     private readonly isMobile = inject(TUI_IS_MOBILE);
     private readonly directive = inject(TuiCarouselDirective);
-    private translate = 0;
-    private transitioned = true;
+    private readonly translate = signal(0);
+    private readonly transitioned = signal(true);
     private index = 0;
 
     protected readonly items = contentChildren(TuiItem, {
@@ -116,10 +117,10 @@ export class TuiCarouselComponent {
     }
 
     protected onTransitioned(transitioned: boolean): void {
-        this.transitioned = transitioned;
+        this.transitioned.set(transitioned);
 
         if (!transitioned) {
-            this.translate = this.computedTranslate;
+            this.translate.set(this.computedTranslate);
         }
 
         this.onShift();
@@ -133,7 +134,7 @@ export class TuiCarouselComponent {
         {intersectionRatio}: IntersectionObserverEntry,
         index: number,
     ): void {
-        if (intersectionRatio && intersectionRatio >= 0.5 && !this.transitioned) {
+        if (intersectionRatio && intersectionRatio >= 0.5 && !this.transitioned()) {
             this.updateIndex(this.index < index ? index - this.itemsCount() + 1 : index);
         }
     }
@@ -155,7 +156,7 @@ export class TuiCarouselComponent {
 
         const min = 1 - this.items().length / this.itemsCount();
 
-        this.translate = tuiClamp(x / this.el.clientWidth + this.translate, min, 0);
+        this.translate.set(tuiClamp(x / this.el.clientWidth + this.translate(), min, 0));
 
         this.onShift();
     }
@@ -177,7 +178,7 @@ export class TuiCarouselComponent {
     }
 
     private get x(): number {
-        return this.transitioned ? this.computedTranslate : this.translate;
+        return this.transitioned() ? this.computedTranslate : this.translate();
     }
 
     private get computedTranslate(): number {
