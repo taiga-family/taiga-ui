@@ -63,8 +63,7 @@ export class TuiFile {
 
     public readonly file = input<TuiFileLike>({name: ''});
 
-    @Input()
-    public state: TuiFileState = 'normal';
+    public readonly state = input<TuiFileState>('normal');
 
     @Input()
     public size: TuiSizeL = 'm';
@@ -90,15 +89,15 @@ export class TuiFile {
     }
 
     protected get isLoading(): boolean {
-        return this.state === 'loading';
+        return this.state() === 'loading';
     }
 
     protected get isError(): boolean {
-        return this.state === 'error';
+        return this.state() === 'error';
     }
 
     protected get isDeleted(): boolean {
-        return this.state === 'deleted';
+        return this.state() === 'deleted';
     }
 
     protected get allowDelete(): boolean {
@@ -106,7 +105,9 @@ export class TuiFile {
     }
 
     protected get icon(): PolymorpheusContent<TuiContext<TuiSizeL>> {
-        return this.state === 'loading' ? '' : this.options.icons[this.state];
+        return this.state() === 'loading'
+            ? ''
+            : this.options.icons[this.state() as Exclude<TuiFileState, 'loading'>];
     }
 
     protected get name(): string {
@@ -118,7 +119,7 @@ export class TuiFile {
     }
 
     protected get content$(): Observable<PolymorpheusContent> {
-        return this.calculateContent$(this.state, this.file(), this.fileTexts$);
+        return this.calculateContent$(this.state(), this.file(), this.fileTexts$);
     }
 
     protected get fileSize$(): Observable<string | null> {
