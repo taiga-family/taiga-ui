@@ -1067,9 +1067,9 @@ export default class Example {}
 import {Component, inject, type TemplateRef} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDialogService, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDialogService, TuiTitle} from '@taiga-ui/core';
 import {TuiProgress} from '@taiga-ui/kit';
-import {TuiAppBar, TuiCardLarge} from '@taiga-ui/layout';
+import {TuiAppBar, TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiAppBar, TuiButton, TuiCardLarge, TuiHeader, TuiProgress, TuiTitle],
@@ -1143,9 +1143,9 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiCell, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiSegmented} from '@taiga-ui/kit';
-import {TuiAppBar, TuiDynamicHeader} from '@taiga-ui/layout';
+import {TuiAppBar, TuiDynamicHeader, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -2645,8 +2645,8 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {TuiHeader} from '@taiga-ui/core';
 import {TuiAvatar, TuiBadgedContent, TuiBadgeNotification} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiAvatar, TuiBadgedContent, TuiBadgeNotification, TuiDemo, TuiHeader],
@@ -4202,7 +4202,8 @@ import {Component, type ElementRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiBottomSheet} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiBottomSheet, TuiButton, TuiHeader, TuiTitle],
@@ -6246,16 +6247,9 @@ import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
-import {
-    TuiButton,
-    TuiExpand,
-    TuiHeader,
-    TuiIcon,
-    TuiLink,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiExpand, TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiBadge, TuiChevron} from '@taiga-ui/kit';
-import {TuiCard} from '@taiga-ui/layout';
+import {TuiCard, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -6393,9 +6387,9 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButton, TuiHeader, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -6439,9 +6433,9 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiTitle} from '@taiga-ui/core';
 import {TuiButtonClose} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButtonClose, TuiCardLarge, TuiHeader, TuiTitle],
@@ -6552,8 +6546,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiCardLarge, TuiHeader, TuiPlatform, TuiTitle],
@@ -6586,8 +6580,8 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiCardLarge, TuiHeader, TuiTitle],
@@ -6697,9 +6691,9 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPlatform} from '@taiga-ui/cdk';
-import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiHeader, TuiPlatform, TuiTitle],
@@ -6746,9 +6740,9 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAppearance, TuiCell, TuiHeader, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiAppearance, TuiCell, TuiIcon, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -6795,8 +6789,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiHeader, TuiIcon, TuiTitle} from '@taiga-ui/core';
-import {TuiCardLarge, TuiCardMedium} from '@taiga-ui/layout';
+import {TuiButton, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiCardLarge, TuiCardMedium, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -6841,9 +6835,9 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -6889,9 +6883,9 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -6948,13 +6942,12 @@ import {
     TuiCell,
     TuiDataList,
     TuiDropdown,
-    TuiHeader,
     TuiIcon,
     TuiLink,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -7048,9 +7041,9 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiCell, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiAvatar, TuiButton, TuiCardLarge, TuiCell, TuiHeader, TuiTitle],
@@ -11321,8 +11314,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiDialog, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
-import {TuiForm} from '@taiga-ui/layout';
+import {TuiButton, TuiDialog, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -11479,13 +11472,8 @@ import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    TUI_DIALOGS_CLOSE,
-    TuiButton,
-    TuiDialog,
-    TuiHeader,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TUI_DIALOGS_CLOSE, TuiButton, TuiDialog, TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/layout';
 import {merge} from 'rxjs';
 
 import {AuthService} from './service';
@@ -11556,9 +11544,9 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiDialog, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiDialog, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiProgress} from '@taiga-ui/kit';
-import {TuiAppBar} from '@taiga-ui/layout';
+import {TuiAppBar, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -11608,7 +11596,8 @@ export default class Example {
 ```ts
 import {Component, ViewEncapsulation} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiDialog, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiDialog, TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiButton, TuiDialog, TuiHeader, TuiTitle],
@@ -11831,9 +11820,9 @@ import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiHeader, TuiLink, TuiPopup, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiPopup, TuiTitle} from '@taiga-ui/core';
 import {TuiBadge, TuiDrawer, TuiTabs} from '@taiga-ui/kit';
-import {TuiNavigation} from '@taiga-ui/layout';
+import {TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -11888,12 +11877,12 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiDialogService,
-    TuiHeader,
     TuiPopup,
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TUI_CONFIRM, TuiDrawer} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
 import {filter} from 'rxjs';
 
 @Component({
@@ -11949,14 +11938,9 @@ import {Component, signal} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
-import {
-    TuiButton,
-    TuiHeader,
-    type TuiHorizontalDirection,
-    TuiPopup,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, type TuiHorizontalDirection, TuiPopup, TuiTitle} from '@taiga-ui/core';
 import {TuiDrawer} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -12507,9 +12491,9 @@ import {
 } from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiError, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiError, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiInputPhone} from '@taiga-ui/kit';
-import {TuiForm} from '@taiga-ui/layout';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 function phoneValidator({value}: AbstractControl): ValidationErrors | null {
     return value.length !== 12 ? {length: 'Invalid phone number length'} : null;
@@ -13543,14 +13527,13 @@ import {TUI_DEFAULT_MATCHER, TuiFilterPipe, type TuiMatcher} from '@taiga-ui/cdk
 import {
     TuiButton,
     TuiCell,
-    TuiHeader,
     tuiHeightCollapse,
     TuiLabel,
     tuiSlideInTop,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiSearch} from '@taiga-ui/layout';
+import {TuiHeader, TuiSearch} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -13710,16 +13693,9 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiCell,
-    TuiHeader,
-    TuiLabel,
-    tuiSlideInTop,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiLabel, tuiSlideInTop, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiRadio} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -14074,14 +14050,13 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {
     TuiButton,
     TuiError,
-    TuiHeader,
     TuiIcon,
     TuiNotification,
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiSegmented, TuiSwitch, TuiTooltip} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiForm} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -14208,7 +14183,6 @@ import {
     TuiButton,
     TuiError,
     TuiGroup,
-    TuiHeader,
     TuiIcon,
     TuiLabel,
     TuiTextfield,
@@ -14227,7 +14201,7 @@ import {
     TuiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiForm} from '@taiga-ui/layout';
+import {TuiForm, TuiHeader} from '@taiga-ui/layout';
 import {
     TuiInputModule,
     TuiInputSliderModule,
@@ -14380,9 +14354,9 @@ export default class Example {
 import {Component, signal} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiSegmented, TuiStepper, TuiTabs} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiForm} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -14769,14 +14743,15 @@ export default class Page {
 
 ---
 # components/Header
-- **Package**: `CORE`
+- **Package**: `LAYOUT`
 - **Type**: components
 
 ### How to Use (Import)
 
 ```ts
 import {Component} from '@angular/core';
-import {TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/layout';
 // ...
 
 @Component({
@@ -14904,8 +14879,9 @@ export class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiBadgeNotification} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiBadgeNotification, TuiButton, TuiHeader, TuiTitle],
@@ -14967,7 +14943,7 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiHeader, TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiIcon, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiBadge,
@@ -14975,6 +14951,7 @@ import {
     TuiSensitive,
     TuiTooltip,
 } from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -15014,7 +14991,8 @@ export default class Example {}
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiHeader, TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiIcon, TuiTitle} from '@taiga-ui/core';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [TuiHeader, TuiIcon, TuiTitle],
@@ -27014,7 +26992,6 @@ import {
     TuiButton,
     TuiDataList,
     TuiDropdown,
-    TuiHeader,
     TuiIcon,
     TuiLink,
     TuiPopupService,
@@ -27032,7 +27009,7 @@ import {
     TuiSwitch,
     TuiTabs,
 } from '@taiga-ui/kit';
-import {TuiCardLarge, TuiForm, TuiNavigation} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiForm, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 const ICON =
     "data:image/svg+xml,%0A%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='32' height='32' rx='8' fill='url(%23paint0_linear_2036_35276)'/%3E%3Cmask id='mask0_2036_35276' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='6' y='5' width='20' height='21'%3E%3Cpath d='M18.2399 9.36607C21.1347 10.1198 24.1992 9.8808 26 7.4922C26 7.4922 21.5645 5 16.4267 5C11.2888 5 5.36726 8.69838 6.05472 16.6053C6.38707 20.4279 6.65839 23.7948 6.65839 23.7948C8.53323 22.1406 9.03427 19.4433 8.97983 16.9435C8.93228 14.7598 9.55448 12.1668 12.1847 10.4112C14.376 8.94865 16.4651 8.90397 18.2399 9.36607Z' fill='url(%23paint1_linear_2036_35276)'/%3E%3Cpath d='M11.3171 20.2647C9.8683 17.1579 10.7756 11.0789 16.4267 11.0789C20.4829 11.0789 23.1891 12.8651 22.9447 18.9072C22.9177 19.575 22.9904 20.2455 23.2203 20.873C23.7584 22.3414 24.7159 24.8946 24.7159 24.8946C23.6673 24.5452 22.8325 23.7408 22.4445 22.7058L21.4002 19.921L21.2662 19.3848C21.0202 18.4008 20.136 17.7104 19.1217 17.7104H17.5319L17.6659 18.2466C17.9119 19.2306 18.7961 19.921 19.8104 19.921L22.0258 26H10.4754C10.7774 24.7006 12.0788 23.2368 11.3171 20.2647Z' fill='url(%23paint2_linear_2036_35276)'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_2036_35276)'%3E%3Crect x='4' y='4' width='24' height='24' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear_2036_35276' x1='0' y1='0' x2='32' y2='32' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23A681D4'/%3E%3Cstop offset='1' stop-color='%237D31D4'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint1_linear_2036_35276' x1='6.0545' y1='24.3421' x2='28.8119' y2='3.82775' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0.0001' stop-opacity='0.996458'/%3E%3Cstop offset='0.317708'/%3E%3Cstop offset='1' stop-opacity='0.32'/%3E%3C/linearGradient%3E%3ClinearGradient id='paint2_linear_2036_35276' x1='6.0545' y1='24.3421' x2='28.8119' y2='3.82775' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0.0001' stop-opacity='0.996458'/%3E%3Cstop offset='0.317708'/%3E%3Cstop offset='1' stop-opacity='0.32'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A";
@@ -27145,16 +27122,9 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes, TuiThemeColorService} from '@taiga-ui/cdk';
-import {
-    TuiButton,
-    TuiDataList,
-    TuiDropdown,
-    TuiHeader,
-    TuiLink,
-    TuiTitle,
-} from '@taiga-ui/core';
+import {TuiButton, TuiDataList, TuiDropdown, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiChevron, TuiFade, TuiSwitch, TuiTabs} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiNavigation} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -27270,14 +27240,13 @@ import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiGroup,
-    TuiHeader,
     TuiIcon,
     TuiLink,
     TuiTextfield,
     TuiTitle,
 } from '@taiga-ui/core';
 import {TuiBadge, TuiBlock, TuiBreadcrumbs, TuiFade, TuiTabs} from '@taiga-ui/kit';
-import {TuiCardLarge, TuiNavigation} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader, TuiNavigation} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -27363,9 +27332,14 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiPortals, TuiPortalService, tuiProvide, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiHeader, TuiPopupService, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiPopupService, TuiTitle} from '@taiga-ui/core';
 import {TuiChevron, TuiFade} from '@taiga-ui/kit';
-import {TuiCardLarge, tuiLayoutIconsProvider, TuiNavigation} from '@taiga-ui/layout';
+import {
+    TuiCardLarge,
+    TuiHeader,
+    tuiLayoutIconsProvider,
+    TuiNavigation,
+} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -33316,8 +33290,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
-import {TuiButton, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTitle} from '@taiga-ui/core';
 import {TuiFloatingContainer} from '@taiga-ui/kit';
+import {TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -34159,9 +34134,9 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus, tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
-import {TuiButton, TuiHeader, TuiTextfield, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiTextfield, TuiTitle} from '@taiga-ui/core';
 import {TuiSlides, TuiStepper} from '@taiga-ui/kit';
-import {TuiCard, TuiForm} from '@taiga-ui/layout';
+import {TuiCard, TuiForm, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -34313,9 +34288,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialogService} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE, TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiButton, TuiCell, TuiDialogService, TuiHeader, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiCell, TuiDialogService, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer, TuiProgressBar, TuiSlides} from '@taiga-ui/kit';
-import {TuiAppBar, TuiCard} from '@taiga-ui/layout';
+import {TuiAppBar, TuiCard, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -47120,7 +47095,7 @@ export class Example {
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiHeader, TuiLabel, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiAvatarStack,
@@ -47128,7 +47103,7 @@ import {
     TuiSkeleton,
     TuiSwitch,
 } from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -47192,9 +47167,9 @@ export default class Example {
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {TuiButton, TuiHeader, TuiLabel, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack, TuiShimmer, TuiSwitch} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -47236,9 +47211,9 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiButton, TuiHeader, TuiLink, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiLink, TuiTitle} from '@taiga-ui/core';
 import {TuiAvatar, TuiAvatarStack, TuiShimmer} from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
@@ -47360,7 +47335,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiHeader, TuiLabel, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiLabel, TuiTitle} from '@taiga-ui/core';
 import {
     TuiAvatar,
     TuiAvatarStack,
@@ -47370,7 +47345,7 @@ import {
     TuiSkeleton,
     TuiSwitch,
 } from '@taiga-ui/kit';
-import {TuiCardLarge} from '@taiga-ui/layout';
+import {TuiCardLarge, TuiHeader} from '@taiga-ui/layout';
 
 @Component({
     imports: [
