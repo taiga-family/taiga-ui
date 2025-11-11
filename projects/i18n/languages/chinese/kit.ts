@@ -79,4 +79,5 @@ export const TUI_CHINESE_LANGUAGE_KIT: TuiLanguageKit = {
         reset: '重置',
     },
     phoneSearch: '輸入國家或代碼',
+    dayRangePeriods: ['所有的时间', '今天', '昨天', '本周', '本月', '上个月'],
 };

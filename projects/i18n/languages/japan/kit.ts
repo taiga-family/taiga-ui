@@ -79,4 +79,5 @@ export const TUI_JAPAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'リセット',
     },
     phoneSearch: '国またはコードを入力',
+    dayRangePeriods: ['すべての時間', '今日', '昨日', '今週', '今月', '先月'],
 };

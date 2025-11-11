@@ -79,4 +79,5 @@ export const TUI_KOREAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: '다시 놓기',
     },
     phoneSearch: '국가 또는 코드를 입력하세요',
+    dayRangePeriods: ['모든 시간', '오늘', '어제', '이번 주', '이번 달', '지난 달'],
 };
