@@ -1,4 +1,5 @@
-import {Directive, inject, Output} from '@angular/core';
+import {Directive, inject} from '@angular/core';
+import {outputFromObservable} from '@angular/core/rxjs-interop';
 import {
     MutationObserverService,
     WA_MUTATION_OBSERVER_INIT,
@@ -25,8 +26,7 @@ import {debounceTime, distinctUntilChanged, map, merge} from 'rxjs';
 export class TuiElasticContainerDirective {
     private readonly el = tuiInjectElement();
 
-    @Output()
-    public readonly tuiElasticContainer = merge(
+    private readonly tuiElasticContainer$ = merge(
         inject(ResizeObserverService, {self: true}),
         inject(MutationObserverService, {self: true}),
     ).pipe(
@@ -34,4 +34,6 @@ export class TuiElasticContainerDirective {
         map(() => this.el.clientHeight - 1),
         distinctUntilChanged(),
     );
+
+    public readonly tuiElasticContainer = outputFromObservable(this.tuiElasticContainer$);
 }
