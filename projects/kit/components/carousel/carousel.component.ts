@@ -4,10 +4,9 @@ import {
     ChangeDetectorRef,
     Component,
     contentChildren,
-    EventEmitter,
     inject,
     Input,
-    Output,
+    output,
     TemplateRef,
 } from '@angular/core';
 import {WaIntersectionObserver} from '@ng-web-apis/intersection-observer';
@@ -77,11 +76,9 @@ export class TuiCarouselComponent {
     @Input()
     public itemsCount = 1;
 
-    @Output()
-    public readonly indexChange = new EventEmitter<number>();
+    public readonly indexChange = output<number>();
 
-    @Output()
-    public readonly shift = new EventEmitter<number>();
+    public readonly shift = output<number>();
 
     @Input('index')
     public set indexSetter(index: number) {
