@@ -4,9 +4,10 @@ import {
     Component,
     computed,
     contentChildren,
+    effect,
     inject,
-    Input,
     input,
+    linkedSignal,
     output,
     signal,
     TemplateRef,
@@ -63,7 +64,7 @@ export class TuiCarouselComponent {
     private readonly directive = inject(TuiCarouselDirective);
     private readonly translate = signal(0);
     private readonly transitioned = signal(true);
-    private readonly index = signal(0);
+    private readonly index = linkedSignal(() => this.indexSetter());
 
     protected readonly items = contentChildren(TuiItem, {
         read: TemplateRef<Record<string, unknown>>,
@@ -83,19 +84,19 @@ export class TuiCarouselComponent {
 
     protected readonly transform = computed(() => `translateX(${100 * this.x()}%)`);
 
+    protected readonly resetDuration = effect((_, __ = this.indexSetter()) => {
+        tuiSetSignal(this.directive.duration, NaN);
+    });
+
     public readonly draggable = input(false);
 
     public readonly itemsCount = input(1);
 
+    public readonly indexSetter = input(0, {alias: 'index'});
+
     public readonly indexChange = output<number>();
 
     public readonly shift = output<number>();
-
-    @Input('index')
-    public set indexSetter(index: number) {
-        this.index.set(index);
-        tuiSetSignal(this.directive.duration, NaN);
-    }
 
     public next(): void {
         if (this.items() && this.index() === this.items().length - this.itemsCount()) {
