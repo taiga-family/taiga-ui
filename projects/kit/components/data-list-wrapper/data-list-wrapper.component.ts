@@ -7,6 +7,7 @@ import {
     forwardRef,
     inject,
     Input,
+    input,
     isSignal,
     Output,
     type QueryList,
@@ -68,8 +69,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
 
     protected readonly newOptionMode = tuiInjectElement().hasAttribute('new');
 
-    @Input()
-    public items: readonly K[] | null = [];
+    public readonly items = input<readonly K[] | null>([]);
 
     @Input()
     public disabledItemHandler: TuiBooleanHandler<T> = this.newOptionMode
@@ -117,7 +117,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
         this.datalist.set(x);
     }
 
-    protected $cast(items: readonly K[]): readonly T[] {
+    protected $cast(items: readonly K[] | null): readonly T[] {
         return items as unknown as readonly T[];
     }
 }

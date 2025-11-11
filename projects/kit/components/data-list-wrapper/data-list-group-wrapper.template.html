@@ -1,9 +1,9 @@
-@if (items) {
+@if (items()) {
     <tui-data-list
         [emptyContent]="emptyContent"
         [size]="size"
     >
-        @for (group of items; track group) {
+        @for (group of items(); track group) {
             @if (multi) {
                 <tui-opt-group
                     tuiMultiSelectGroup
