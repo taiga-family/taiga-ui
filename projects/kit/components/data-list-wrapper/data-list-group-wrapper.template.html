@@ -22,7 +22,7 @@
                                 (click.capture)="itemClick.emit(item)"
                             >
                                 <ng-container
-                                    *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)"
+                                    *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)"
                                 >
                                     {{ text }}
                                 </ng-container>
@@ -42,7 +42,7 @@
                                 (click)="itemClick.emit(item)"
                             >
                                 <ng-container
-                                    *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)"
+                                    *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)"
                                 >
                                     {{ text }}
                                 </ng-container>
@@ -65,7 +65,7 @@
                                 (click.capture)="itemClick.emit(item)"
                             >
                                 <ng-container
-                                    *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)"
+                                    *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)"
                                 >
                                     {{ text }}
                                 </ng-container>
@@ -85,7 +85,7 @@
                                 (click)="itemClick.emit(item)"
                             >
                                 <ng-container
-                                    *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)"
+                                    *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)"
                                 >
                                     {{ text }}
                                 </ng-container>

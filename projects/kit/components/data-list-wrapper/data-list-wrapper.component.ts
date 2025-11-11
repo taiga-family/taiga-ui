@@ -5,7 +5,6 @@ import {
     type ElementRef,
     forwardRef,
     inject,
-    Input,
     input,
     isSignal,
     output,
@@ -83,11 +82,12 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
 
     public readonly options = computed(() => this.datalist()?.options() ?? []);
 
-    @Input()
-    public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
-        this.newOptionMode
-            ? this.itemsHandlers.stringify()($implicit)
-            : this.itemsHandlersLegacy.stringify($implicit);
+    public readonly itemContent = input<PolymorpheusContent<TuiValueContentContext<T>>>(
+        ({$implicit}) =>
+            this.newOptionMode
+                ? this.itemsHandlers.stringify()($implicit)
+                : this.itemsHandlersLegacy.stringify($implicit),
+    );
 
     public getContext(
         $implicit: T,

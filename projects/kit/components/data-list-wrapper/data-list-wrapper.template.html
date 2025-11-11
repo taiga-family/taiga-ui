@@ -16,7 +16,7 @@
                     [value]="item"
                     (click.capture)="itemClick.emit(item)"
                 >
-                    <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                    <ng-container *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)">
                         {{ text }}
                     </ng-container>
                 </button>
@@ -34,7 +34,9 @@
                     (click)="itemClick.emit(item)"
                 >
                     <span class="t-content">
-                        <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                        <ng-container
+                            *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)"
+                        >
                             {{ text }}
                         </ng-container>
                     </span>
