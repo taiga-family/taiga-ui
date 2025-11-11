@@ -97,8 +97,9 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
             !!this.precision() && this.textfield.value().includes(decimalSeparator);
         const precision = decimalPart ? Math.min(this.precision() + 1, 20) : 0;
         const takeThousand = thousandSeparator.repeat(5).length;
+        const affixes = this.prefix().length + this.postfix().length;
 
-        return DEFAULT_MAX_LENGTH + precision + takeThousand;
+        return DEFAULT_MAX_LENGTH + precision + takeThousand + affixes;
     });
 
     protected readonly onChangeEffect = effect(() => {
