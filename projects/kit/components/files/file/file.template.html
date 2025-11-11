@@ -30,7 +30,7 @@
     }
     <ng-content />
 </div>
-@if (allowDelete) {
+@if (showDelete()) {
     @if (fileTexts(); as texts) {
         <button
             appearance="icon"
