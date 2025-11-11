@@ -1,7 +1,7 @@
 @if (items()) {
     <tui-data-list
         [emptyContent]="emptyContent()"
-        [size]="size"
+        [size]="size()"
     >
         @for (group of items(); track group) {
             @if (multi) {

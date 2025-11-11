@@ -78,8 +78,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
 
     public readonly emptyContent = input<PolymorpheusContent>();
 
-    @Input()
-    public size = tuiInjectDataListSize();
+    public readonly size = input(tuiInjectDataListSize());
 
     @Output()
     public readonly itemClick = new EventEmitter<T>();

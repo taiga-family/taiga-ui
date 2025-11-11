@@ -1,7 +1,7 @@
 @if (items()) {
     <tui-data-list
         [emptyContent]="emptyContent()"
-        [size]="size"
+        [size]="size()"
     >
         @if (newOptionMode) {
             @for (item of $cast(items()); track item) {
