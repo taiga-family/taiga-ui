@@ -47,10 +47,6 @@ export class TuiNativeSelect<T>
         tuiIsPresent(value) ? this.itemsHandlers.stringify()(value) : '',
     );
 
-    protected readonly showPlaceholder = computed(
-        () => this.placeholder() && !this.stringified(),
-    );
-
     protected readonly isSelected = computed(
         (value = this.value()) =>
             (x: T) =>
@@ -73,7 +69,8 @@ export class TuiNativeSelect<T>
 
     protected selectOption(index: number): void {
         const items = (this.items()?.flat() ?? []) as T[];
+        const placeholderOffset = this.value() ? 0 : 1;
 
-        this.onChange(items[index - (this.showPlaceholder() ? 1 : 0)] ?? null);
+        this.onChange(items[index - placeholderOffset] ?? null);
     }
 }
