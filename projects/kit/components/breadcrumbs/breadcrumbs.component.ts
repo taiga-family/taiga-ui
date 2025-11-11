@@ -2,9 +2,10 @@ import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     ContentChildren,
     inject,
-    Input,
+    input,
     type QueryList,
     TemplateRef,
 } from '@angular/core';
@@ -41,7 +42,7 @@ import {TUI_BREADCRUMBS_OPTIONS, type TuiBreadcrumbsOptions} from './breadcrumbs
         tuiHintOptionsProvider({direction: 'bottom'}),
     ],
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
     },
 })
 export class TuiBreadcrumbs {
@@ -53,17 +54,9 @@ export class TuiBreadcrumbs {
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly more = inject(TUI_MORE_WORD);
 
-    @Input()
-    public size: TuiBreadcrumbsOptions['size'] = this.options.size;
+    public readonly size = input<TuiBreadcrumbsOptions['size']>(this.options.size);
 
-    @Input()
-    public itemsLimit = this.options.itemsLimit;
+    public readonly itemsLimit = input(this.options.itemsLimit);
 
-    protected get limit(): number {
-        return this.itemsLimit ? this.itemsLimit - 2 : Infinity;
-    }
-
-    protected get offset(): number {
-        return this.itemsLimit === 2 ? 1 : 0;
-    }
+    protected readonly offset = computed(() => (this.itemsLimit() === 2 ? 1 : 0));
 }
