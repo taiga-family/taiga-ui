@@ -1,20 +1,13 @@
 import {
     type AfterViewInit,
-    ContentChildren,
     contentChildren,
     DestroyRef,
     Directive,
     ElementRef,
     inject,
-    type QueryList,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {
-    tuiPreventDefault,
-    tuiQueryListChanges,
-    tuiTypedFromEvent,
-} from '@taiga-ui/cdk/observables';
+import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
+import {tuiPreventDefault, tuiTypedFromEvent} from '@taiga-ui/cdk/observables';
 import {tuiGetClosestFocusable} from '@taiga-ui/cdk/utils/focus';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
@@ -35,12 +28,16 @@ import {
     selector: 'tui-data-list[tuiDataListDropdownManager]',
 })
 export class TuiDataListDropdownManager implements AfterViewInit {
-    @ContentChildren(TuiDropdownDirective, {read: ElementRef, descendants: true})
-    private readonly els: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
     private readonly dropdowns = contentChildren(TuiDropdownDirective, {
         descendants: true,
     });
+
+    private readonly els = contentChildren(TuiDropdownDirective, {
+        read: ElementRef,
+        descendants: true,
+    });
+
+    private readonly els$ = toObservable(this.els);
 
     private readonly destroyRef = inject(DestroyRef);
 
@@ -56,7 +53,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
                         dropdown.toggle(index === active);
                     });
 
-                    const element = this.els.get(active);
+                    const element = this.els()[active];
                     const dropdown = this.dropdowns()[active];
                     const ref = dropdown?.ref();
 
@@ -92,7 +89,7 @@ export class TuiDataListDropdownManager implements AfterViewInit {
 
     @tuiPure
     private get elements$(): Observable<readonly HTMLElement[]> {
-        return tuiQueryListChanges(this.els).pipe(
+        return this.els$.pipe(
             map((array) => array.map(({nativeElement}) => nativeElement)),
             shareReplay({bufferSize: 1, refCount: true}),
         );
