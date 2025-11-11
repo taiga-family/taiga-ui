@@ -1,5 +1,5 @@
 import {DOCUMENT} from '@angular/common';
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -68,8 +68,7 @@ export class TuiCopyDirective {
         ),
     );
 
-    @Input()
-    public tuiCopy = '';
+    public readonly tuiCopy = input('');
 
     protected get disabled(): boolean {
         return !this.textfield.input?.nativeElement.value;
