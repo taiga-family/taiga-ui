@@ -15,15 +15,15 @@
             {{ name }}
         </div>
         <div class="t-type">{{ type }}</div>
-        @if (showSize() && (fileSize$ | async); as fileSize) {
+        @if (showSize() && fileSize()) {
             <div class="t-size">
-                {{ fileSize }}
+                {{ fileSize() }}
             </div>
         }
     </div>
-    @if (content$ | async; as content) {
+    @if (content(); as text) {
         <div class="t-content">
-            <ng-container *polymorpheusOutlet="content as text">
+            <ng-container *polymorpheusOutlet="text">
                 {{ text }}
             </ng-container>
         </div>
@@ -31,7 +31,7 @@
     <ng-content />
 </div>
 @if (allowDelete) {
-    @if (fileTexts$ | async; as texts) {
+    @if (fileTexts(); as texts) {
         <button
             appearance="icon"
             size="xs"
