@@ -51,6 +51,7 @@ export const DemoRoute = {
     Button: '/components/button',
     ButtonClose: '/components/button-close',
     ButtonGroup: '/components/button-group',
+    ButtonSelect: '/components/button-select',
     Calendar: '/components/calendar',
     Carousel: '/components/carousel',
     ThumbnailCard: '/components/thumbnail-card',

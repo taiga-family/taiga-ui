@@ -3,39 +3,35 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
-import {
-    TuiButtonSelect,
-    TuiCheckbox,
-    TuiChevron,
-    TuiMultiSelect,
-    TuiSwitch,
-} from '@taiga-ui/kit';
+import {TuiButtonSelect, TuiMultiSelect} from '@taiga-ui/kit';
+
+interface User {
+    readonly id: number;
+    readonly name: string;
+}
 
 @Component({
     imports: [
         FormsModule,
         TuiButton,
         TuiButtonSelect,
-        TuiCheckbox,
-        TuiChevron,
         TuiDataList,
         TuiDropdown,
         TuiMultiSelect,
-        TuiSwitch,
     ],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
 })
 export default class Example {
-    protected first = false;
-    protected second = true;
-    protected open = false;
-    protected label = false;
+    protected readonly items: User[] = [
+        {id: 42, name: 'Tommy Vercetti'},
+        {id: 237, name: 'Carl Johnson'},
+        {id: 666, name: 'Niko Bellic'},
+        {id: 999, name: 'Trevor Philips'},
+        {id: 123, name: 'Michael De Santa'},
+        {id: 777, name: 'Franklin Clinton'},
+    ];
 
-    protected value = [];
-
-    protected readonly burgers = ['Hamburger', 'Cheeseburger'];
-
-    protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
+    protected value = this.items;
 }
