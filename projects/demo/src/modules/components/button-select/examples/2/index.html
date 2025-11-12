@@ -5,9 +5,9 @@
     tuiButton
     tuiButtonSelect
     type="button"
-    [(ngModel)]="item"
+    [(ngModel)]="value"
 >
-    {{ item.length === 1 ? item[0]?.name : `Selected ${item.length}` }}
+    {{ value.length === 1 ? value[0]?.name : `Selected ${value.length}` }}
 
     <tui-data-list *tuiDropdown>
         <tui-opt-group

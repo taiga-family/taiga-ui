@@ -14,5 +14,5 @@ import {TuiButtonSelect, TuiDataListWrapper} from '@taiga-ui/kit';
 export default class Example {
     protected readonly items: string[] = inject('Pythons' as any);
 
-    protected item = this.items[0];
+    protected value = this.items[0];
 }

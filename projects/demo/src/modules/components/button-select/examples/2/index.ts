@@ -33,5 +33,5 @@ export default class Example {
         {id: 777, name: 'Franklin Clinton'},
     ];
 
-    protected item = this.items;
+    protected value = this.items;
 }
