@@ -1,9 +1,9 @@
 <tui-icon
     class="t-icon"
-    [icon]="icon"
+    [icon]="icon()"
 />
 <span class="t-wrapper">
-    @if (badge; as value) {
+    @if (badge(); as value) {
         <span
             tuiAnimated
             class="t-badge"
