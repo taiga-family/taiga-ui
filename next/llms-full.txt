@@ -5121,6 +5121,148 @@ export default class Page {
 ```
 
 ---
+# components/ButtonSelect
+- **Package**: `KIT`
+- **Type**: components
+ButtonSelect is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.
+
+### How to Use (Import)
+
+```ts
+import {Component} from '@angular/core';
+import {TuiButtonSelect} from '@taiga-ui/kit';
+import {TuiButton, TuiDropdown} from '@taiga-ui/core';
+
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiButton,
+    TuiButtonSelect,
+    TuiDropdown,
+  ],
+})
+export class Example {}
+```
+
+### How to Use (Template)
+
+```html
+<button
+  tuiButton
+  tuiButtonSelect
+  type="button"
+  [(ngModel)]="item"
+>
+  {{ item }}
+  <tui-data-list-wrapper
+    *tuiDropdown
+    new
+    [items]="items"
+  />
+</button>
+```
+
+### Usage Examples
+
+#### Basic
+
+**Template:**
+```html
+<button appearance="outline-grayscale" iconStart="@tui.star" size="m" tuiButton tuiButtonSelect type="button" [(ngModel)]="value" > {{ value }} <tui-data-list-wrapper *tuiDropdown new [items]="items" />
+</button>
+```
+**TypeScript:**
+```ts
+import {Component, inject} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiDropdown} from '@taiga-ui/core';
+import {TuiButtonSelect, TuiDataListWrapper} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, TuiButton, TuiButtonSelect, TuiDataListWrapper, TuiDropdown],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly items: string[] = inject('Pythons' as any);
+
+    protected value = this.items[0];
+}
+```
+
+#### Multiselect
+
+**Template:**
+```html
+<button appearance="secondary-grayscale" iconStart="@tui.user" size="m" tuiButton tuiButtonSelect type="button" [(ngModel)]="value" > {{ value.length === 1 ? value[0]?.name : `Selected ${value.length}` }} <tui-data-list *tuiDropdown>
+<tui-opt-group label="Users" tuiMultiSelectGroup > @for (name of items; track name.id) { <button new tuiOption type="button" [value]="name" > {{ name.name }} </button> } </tui-opt-group>
+</tui-data-list>
+</button>
+```
+**TypeScript:**
+```ts
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
+import {TuiButtonSelect, TuiMultiSelect} from '@taiga-ui/kit';
+
+interface User {
+    readonly id: number;
+    readonly name: string;
+}
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiButtonSelect,
+        TuiDataList,
+        TuiDropdown,
+        TuiMultiSelect,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected readonly items: User[] = [
+        {id: 42, name: 'Tommy Vercetti'},
+        {id: 237, name: 'Carl Johnson'},
+        {id: 666, name: 'Niko Bellic'},
+        {id: 999, name: 'Trevor Philips'},
+        {id: 123, name: 'Michael De Santa'},
+        {id: 777, name: 'Franklin Clinton'},
+    ];
+
+    protected value = this.items;
+}
+```
+
+
+### TypeScript
+
+```ts
+import {Component} from '@angular/core';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {TuiDemo} from '@demo/utils';
+
+@Component({
+    imports: [TuiDemo],
+    templateUrl: './index.html',
+    changeDetection,
+})
+export default class Page {}
+```
+
+---
 # components/Calendar
 - **Package**: `CORE`
 - **Type**: components
@@ -10599,15 +10741,13 @@ export default class Example {
 **Template:**
 ```html
 <h3>Multi select control</h3>
-<button appearance="flat" tuiChevron tuiIconButton type="button" [tuiAppearanceState]="control ? 'hover' : null" [tuiDropdown]="content" [tuiDropdownMaxHeight]="500" [(tuiDropdownOpen)]="control" > Open </button>
-<ng-template #content>
-<tui-data-list [style.width.rem]="12">
-<tui-opt-group tuiMultiSelectGroup [(ngModel)]="value" >
-<tui-opt-group label="Main dishes menu with long label"> @for (burger of burgers; track burger) { <button tuiOption type="button" [value]="burger" > {{ burger }} </button> } </tui-opt-group>
-<tui-opt-group label="Drinks"> @for (drink of drinks; track drink) { <button tuiOption type="button" [value]="drink" > {{ drink }} </button> } </tui-opt-group>
+<button appearance="flat" tuiButtonSelect tuiChevron tuiIconButton type="button" [tuiAppearanceState]="open ? 'hover' : null" [(ngModel)]="value" [(open)]="open" > Open <tui-data-list *tuiDropdown size="l" [style.width.rem]="12" >
+<tui-opt-group tuiMultiSelectGroup>
+<tui-opt-group label="Main dishes menu with long label"> @for (burger of burgers; track burger) { <button new tuiOption type="button" [value]="burger" > {{ burger }} </button> } </tui-opt-group>
+<tui-opt-group label="Drinks"> @for (drink of drinks; track drink) { <button new tuiOption type="button" [value]="drink" > {{ drink }} </button> } </tui-opt-group>
 </tui-opt-group>
 </tui-data-list>
-</ng-template>
+</button>
 <p>{{ value }}</p>
 <h3>Separate toggles</h3>
 <button appearance="flat" tuiChevron tuiIconButton type="button" [tuiAppearanceState]="label ? 'hover' : null" [tuiDropdown]="separate" [tuiDropdownMaxHeight]="500" [(tuiDropdownOpen)]="label" > Open </button>
@@ -10627,18 +10767,24 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
-import {TuiCheckbox, TuiChevron, TuiSwitch} from '@taiga-ui/kit';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {
+    TuiButtonSelect,
+    TuiCheckbox,
+    TuiChevron,
+    TuiMultiSelect,
+    TuiSwitch,
+} from '@taiga-ui/kit';
 
 @Component({
     imports: [
         FormsModule,
         TuiButton,
+        TuiButtonSelect,
         TuiCheckbox,
         TuiChevron,
         TuiDataList,
         TuiDropdown,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
         TuiSwitch,
     ],
     templateUrl: './index.html',
@@ -10648,7 +10794,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 export default class Example {
     protected first = false;
     protected second = true;
-    protected control = false;
+    protected open = false;
     protected label = false;
 
     protected value = [];
