@@ -81,10 +81,6 @@ export class TuiInputChipBaseDirective<T>
         );
     }
 
-    protected onFocus(): void {
-        this.scrollTo();
-    }
-
     protected onEnter(): void {
         const value = this.textfield.value().trim();
         const items: any[] = this.separator ? value.split(this.separator) : [value];
