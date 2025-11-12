@@ -62,6 +62,7 @@
 - [Button](https://taiga-ui.dev/components/button)
 - [Button Close](https://taiga-ui.dev/components/button-close)
 - [Button Group](https://taiga-ui.dev/components/button-group)
+- [Button Select](https://taiga-ui.dev/components/button-select) — ButtonSelect is a form control for selecting one or multiple values, similar to a standard select element but with a button-based interface.
 - [Calendar](https://taiga-ui.dev/components/calendar) — A simple calendar. If you want a textfield with date, see InputDate and InputDateRange
 - [Calendar Month](https://taiga-ui.dev/components/calendar-month) — Month picker component. If you want a textfield, see InputMonth
 - [Calendar Range](https://taiga-ui.dev/components/calendar-range) — Component for choosing date range in calendar
