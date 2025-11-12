@@ -16,7 +16,7 @@
     ],
     "groups": [
         {
-            "path": "demo/browser/*-<hash>.js"
+            "path": "demo/browser/*.js"
         }
     ],
     "reportOutput": [
