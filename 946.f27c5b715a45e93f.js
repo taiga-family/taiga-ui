@@ -1,0 +1,1 @@
+(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[946],{946:(e,n,t)=>{t.r(n),t.d(n,{default:()=>c});var a=t(28109);let c=(()=>{var e;class n{}return(e=n).ɵfac=function(n){return new(n||e)},e.ɵcmp=a.VBU({type:e,selectors:[["ng-component"]],decls:1,vars:0,template:function(e,n){1&e&&a.EFF(0,"Lazy loaded dialog content")},encapsulation:2,changeDetection:0}),n})()}}]);
