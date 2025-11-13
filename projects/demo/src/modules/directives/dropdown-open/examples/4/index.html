@@ -1,11 +1,12 @@
 <form [formGroup]="form">
     <button
         appearance="outline-grayscale"
+        formControlName="control"
         tuiButton
+        tuiButtonSelect
         type="button"
         [tuiAppearanceMode]="length ? 'checked' : null"
-        [tuiDropdown]="dropdown"
-        [(tuiDropdownOpen)]="open"
+        [(open)]="open"
         (keydown.delete)="form.reset()"
     >
         {{ text }}
@@ -21,12 +22,20 @@
         >
             Reset
         </button>
+
+        <tui-data-list *tuiDropdown>
+            <tui-opt-group tuiMultiSelectGroup>
+                @for (item of items; track item) {
+                    <button
+                        new
+                        tuiOption
+                        type="button"
+                        [value]="item"
+                    >
+                        {{ item }}
+                    </button>
+                }
+            </tui-opt-group>
+        </tui-data-list>
     </button>
-    <ng-template #dropdown>
-        <tui-data-list-wrapper
-            formControlName="control"
-            tuiMultiSelectGroup
-            [items]="items"
-        />
-    </ng-template>
 </form>

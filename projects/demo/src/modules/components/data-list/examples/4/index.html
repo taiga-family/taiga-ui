@@ -1,12 +1,33 @@
-<tui-select
+<!--<tui-select-->
+<!--    [identityMatcher]="identityMatcher"-->
+<!--    [valueContent]="valueContent"-->
+<!--    [(ngModel)]="value"-->
+<!--&gt;-->
+<!--    Open-source budget-->
+<!--    <custom-list-->
+<!--        *tuiDataList-->
+<!--        [items]="items"-->
+<!--    />-->
+<!--</tui-select>-->
+
+<tui-textfield
+    multi
+    tuiChevron
     class="control"
-    [identityMatcher]="identityMatcher"
-    [valueContent]="valueContent"
-    [(ngModel)]="value"
+    [content]="(value.length && valueContent) || ''"
+    [tuiTextfieldCleaner]="false"
 >
-    Open-source budget
+    <input
+        tuiInputChip
+        tuiSelectLike
+        [placeholder]="!!value.length ? '' : 'Type for suggestions'"
+        [(ngModel)]="value"
+    />
+
+    <ng-template tuiItem />
+
     <custom-list
-        *tuiDataList
+        *tuiDropdown
         [items]="items"
     />
-</tui-select>
+</tui-textfield>

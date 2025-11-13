@@ -17,17 +17,21 @@
     @if (!value) {
         <tui-opt-group>
             <button
+                new
                 tuiOption
                 type="button"
                 [value]="all"
+                (click.stop)="selectPreset(all)"
             >
                 All
             </button>
             @for (item of items(); track item) {
                 <button
+                    new
                     tuiOption
                     type="button"
                     [value]="item.items"
+                    (click.stop)="selectPreset(item.items)"
                 >
                     {{ item.name }} only
                 </button>
@@ -39,17 +43,20 @@
 
         <tui-opt-group [label]="item.name">
             @if (filtered.length) {
-                <tui-opt-group tuiMultiSelectGroup>
-                    @for (item of filtered; track item) {
-                        <button
-                            tuiOption
-                            type="button"
-                            [value]="item"
-                        >
-                            {{ item }}
-                        </button>
-                    }
-                </tui-opt-group>
+                <div tuiMultiSelectGroup>
+                    <tui-opt-group>
+                        @for (item of filtered; track item) {
+                            <button
+                                new
+                                tuiOption
+                                type="button"
+                                [value]="item"
+                            >
+                                {{ item }}
+                            </button>
+                        }
+                    </tui-opt-group>
+                </div>
             }
         </tui-opt-group>
     }
