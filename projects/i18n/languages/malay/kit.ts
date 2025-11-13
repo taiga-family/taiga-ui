@@ -79,4 +79,12 @@ export const TUI_MALAY_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Set semula',
     },
     phoneSearch: 'Taip negara atau kod',
+    dayRangePeriods: [
+        'Sepanjang masa',
+        'Hari ini',
+        'Semalam',
+        'Minggu ini',
+        'Bulan ini',
+        'Bulan lepas',
+    ],
 };

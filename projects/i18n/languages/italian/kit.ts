@@ -79,4 +79,12 @@ export const TUI_ITALIAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Ripristina',
     },
     phoneSearch: 'Digitare il paese o il codice',
+    dayRangePeriods: [
+        'Tutto il tempo',
+        'Oggi',
+        'Ieri',
+        'Questa settimana',
+        'Questo mese',
+        'Il mese scorso',
+    ],
 };

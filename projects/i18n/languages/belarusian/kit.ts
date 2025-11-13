@@ -79,4 +79,12 @@ export const TUI_BELARUSIAN_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Скінуць маштаб',
     },
     phoneSearch: 'Увядзіце краіну або код',
+    dayRangePeriods: [
+        'Пастаянна',
+        'Сёння',
+        'Учора',
+        'На гэтым тыдні',
+        'У гэтым месяцы',
+        'У мінулым месяцы',
+    ],
 };

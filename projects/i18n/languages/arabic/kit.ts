@@ -79,4 +79,12 @@ export const TUI_ARABIC_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'إعادة تعيين',
     },
     phoneSearch: 'اكتب الدولة أو الرمز',
+    dayRangePeriods: [
+        'طوال الوقت',
+        'اليوم',
+        'أمس',
+        'هذا الأسبوع',
+        'هذا الشهر',
+        'الشهر الماضي',
+    ],
 };

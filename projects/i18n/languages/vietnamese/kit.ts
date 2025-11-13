@@ -79,4 +79,12 @@ export const TUI_VIETNAMESE_LANGUAGE_KIT: TuiLanguageKit = {
         reset: 'Đặt lại',
     },
     phoneSearch: 'Nhập quốc gia hoặc mã',
+    dayRangePeriods: [
+        'Cả thời gian',
+        'Hôm nay',
+        'Hôm qua',
+        'Tuần này',
+        'Tháng này',
+        'Tháng trước',
+    ],
 };
