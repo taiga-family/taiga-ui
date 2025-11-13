@@ -2,13 +2,12 @@
     multi
     tuiChevron
     class="control"
-    [content]="(value.length && valueContent) || ''"
+    [content]="valueContent"
     [tuiTextfieldCleaner]="false"
 >
     <input
         tuiInputChip
         tuiSelectLike
-        [placeholder]="!!value.length ? '' : 'Type for suggestions'"
         [(ngModel)]="value"
     />
 

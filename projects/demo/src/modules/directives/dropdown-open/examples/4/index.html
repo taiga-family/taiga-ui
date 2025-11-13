@@ -23,8 +23,11 @@
             Reset
         </button>
 
-        <tui-data-list *tuiDropdown>
-            <tui-opt-group tuiMultiSelectGroup>
+        <tui-data-list
+            *tuiDropdown
+            tuiMultiSelectGroup
+        >
+            <tui-opt-group>
                 @for (item of items; track item) {
                     <button
                         new
