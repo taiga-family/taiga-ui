@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiDropdownHoverOptions {
     readonly hideDelay: number;
@@ -15,19 +14,5 @@ export const TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS: TuiDropdownHoverOptions = {
 /**
  * Default parameters for dropdown hover directive
  */
-export const TUI_DROPDOWN_HOVER_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_DROPDOWN_HOVER_OPTIONS' : '',
-    {
-        factory: () => TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
-    },
-);
-
-export function tuiDropdownHoverOptionsProvider(
-    options: Partial<TuiDropdownHoverOptions>,
-): Provider {
-    return tuiProvideOptions(
-        TUI_DROPDOWN_HOVER_OPTIONS,
-        options,
-        TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS,
-    );
-}
+export const [TUI_DROPDOWN_HOVER_OPTIONS, tuiDropdownHoverOptionsProvider] =
+    tuiCreateOptions(TUI_DROPDOWN_HOVER_DEFAULT_OPTIONS);

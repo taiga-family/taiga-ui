@@ -1,6 +1,5 @@
-import {InjectionToken, type Provider} from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 export interface TuiMultiSelectOptions<T> {
@@ -17,19 +16,6 @@ export const TUI_MULTI_SELECT_DEFAULT_OPTIONS: TuiMultiSelectOptions<unknown> = 
  * @deprecated: drop in v5.0
  * Default parameters for MultiSelect component
  */
-export const TUI_MULTI_SELECT_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_MULTI_SELECT_OPTIONS' : '',
-    {
-        factory: () => TUI_MULTI_SELECT_DEFAULT_OPTIONS,
-    },
+export const [TUI_MULTI_SELECT_OPTIONS, tuiMultiSelectOptionsProvider] = tuiCreateOptions(
+    TUI_MULTI_SELECT_DEFAULT_OPTIONS,
 );
-
-export function tuiMultiSelectOptionsProvider<T>(
-    options: Partial<TuiMultiSelectOptions<T>>,
-): Provider {
-    return tuiProvideOptions(
-        TUI_MULTI_SELECT_OPTIONS,
-        options,
-        TUI_MULTI_SELECT_DEFAULT_OPTIONS,
-    );
-}

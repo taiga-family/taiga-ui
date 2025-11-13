@@ -1,6 +1,5 @@
-import {InjectionToken, type Provider} from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 function defaultSizeOptionContent({$implicit}: TuiContext<number>): string {
@@ -24,19 +23,5 @@ export const TUI_TABLE_PAGINATION_DEFAULT_OPTIONS: TuiTablePaginationOptions = {
 /**
  * Default parameters for TablePagination component
  */
-export const TUI_TABLE_PAGINATION_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_TABLE_PAGINATION_OPTIONS' : '',
-    {
-        factory: () => TUI_TABLE_PAGINATION_DEFAULT_OPTIONS,
-    },
-);
-
-export function tuiTablePaginationOptionsProvider(
-    options: Partial<TuiTablePaginationOptions>,
-): Provider {
-    return tuiProvideOptions(
-        TUI_TABLE_PAGINATION_OPTIONS,
-        options,
-        TUI_TABLE_PAGINATION_DEFAULT_OPTIONS,
-    );
-}
+export const [TUI_TABLE_PAGINATION_OPTIONS, tuiTablePaginationOptionsProvider] =
+    tuiCreateOptions(TUI_TABLE_PAGINATION_DEFAULT_OPTIONS);
