@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSliderComponent} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiSliderComponent],
+    imports: [ReactiveFormsModule, TuiSlider],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
