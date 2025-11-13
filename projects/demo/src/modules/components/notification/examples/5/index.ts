@@ -4,7 +4,13 @@ import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {type TuiAlertContext, TuiAlertService, TuiButton, TuiLink} from '@taiga-ui/core';
+import {type TuiPortalContext} from '@taiga-ui/cdk';
+import {
+    TuiButton,
+    TuiLink,
+    type TuiNotificationOptions,
+    TuiNotificationService,
+} from '@taiga-ui/core';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
@@ -35,7 +41,9 @@ import {switchMap, takeUntil} from 'rxjs';
     changeDetection,
 })
 class Alert {
-    protected readonly context = injectContext<TuiAlertContext<number, number>>();
+    protected readonly context =
+        injectContext<TuiPortalContext<TuiNotificationOptions<number>, number>>();
+
     protected value = this.context.data;
 
     protected increaseBalance(): void {
@@ -51,7 +59,7 @@ class Alert {
     changeDetection,
 })
 export default class Example {
-    protected readonly notifications = inject(TuiAlertService);
+    protected readonly notifications = inject(TuiNotificationService);
     protected readonly notification = this.notifications
         .open<number>(new PolymorpheusComponent(Alert), {
             label: 'Heading is so long that it should be shown in two lines of text',

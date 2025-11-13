@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTabBar} from '@taiga-ui/addon-mobile';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiNotificationService} from '@taiga-ui/core';
 
 interface Item {
     badge?: number;
@@ -19,7 +19,7 @@ interface Item {
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected activeItemIndex = 1;
 

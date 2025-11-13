@@ -14,22 +14,22 @@ export interface TuiPositionOptions {
 
 @Component({
     template: '',
-    styleUrl: './notification.style.less',
+    styleUrl: './alert.style.less',
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    host: {class: 'tui-notification-styles'},
+    host: {class: 'tui-alert-styles'},
 })
 class Styles {}
 
 @Directive({
     host: {
         role: 'alert',
-        tuiPopover: '',
+        tuiAlert: '',
         '[attr.data-block]': 'context.block',
         '[attr.data-inline]': 'context.inline',
     },
 })
-export class TuiNotificationDirective {
+export class TuiAlertDirective {
     protected readonly nothing = tuiWithStyles(Styles);
     protected readonly context = injectContext<TuiPositionOptions>();
 }

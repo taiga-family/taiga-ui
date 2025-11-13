@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCopyProcessor, type TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_NUMBER_FORMAT, TuiAlertService, TuiTextfield} from '@taiga-ui/core';
+import {TUI_NUMBER_FORMAT, TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
@@ -16,7 +16,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     },
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected value = 12345.67;
     protected format = inject(TUI_NUMBER_FORMAT);
