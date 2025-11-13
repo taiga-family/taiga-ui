@@ -9,8 +9,6 @@
     "compilerOptions": {
         "target": "ES2022",
         "lib": ["ES2022", "dom"],
-        "useDefineForClassFields": false,
-        "allowJs": false,
-        "checkJs": false
+        "useDefineForClassFields": false
     }
 }
