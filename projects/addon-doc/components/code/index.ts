@@ -6,6 +6,7 @@ import {
     computed,
     inject,
     Input,
+    input,
     PLATFORM_ID,
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
@@ -65,8 +66,7 @@ export class TuiDocCode {
         {initialValue: []},
     );
 
-    @Input()
-    public filename = '';
+    public readonly filename = input('');
 
     @Input()
     public set code(code: TuiRawLoaderContent) {
@@ -74,6 +74,6 @@ export class TuiDocCode {
     }
 
     public get hasFilename(): boolean {
-        return !!this.filename;
+        return !!this.filename();
     }
 }

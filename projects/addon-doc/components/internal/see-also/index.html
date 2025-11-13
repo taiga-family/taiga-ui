@@ -1,5 +1,5 @@
 <h5 class="t-header">{{ text }}</h5>
-@for (item of seeAlso; track item) {
+@for (item of seeAlso(); track item) {
     <a
         tuiLink
         [innerText]="item"
