@@ -73,7 +73,7 @@ export class CustomListComponent<T> {
         }
     }
 
-    protected selectPreset(value: readonly T[]): void {
+    protected select(value: readonly T[]): void {
         this.control?.control?.setValue(value);
     }
 }
