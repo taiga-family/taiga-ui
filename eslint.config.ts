@@ -47,4 +47,11 @@ export default process.env.HTML_ESLINT
                   'no-irregular-whitespace': 'off',
               },
           },
+          {
+              rules: {'@taiga-ui/experience-next/no-deep-imports': 'off'},
+              files: [
+                  'projects/demo/src/modules/components/icon/examples/4/index.ts',
+                  'projects/demo/src/modules/markup/breakpoints/index.ts',
+              ],
+          },
       ];

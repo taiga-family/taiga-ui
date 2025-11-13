@@ -8,5 +8,5 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected injectService = import('./examples/inject-service.md?raw');
+    protected injectService = import('./examples/inject-service.md');
 }

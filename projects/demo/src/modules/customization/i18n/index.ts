@@ -13,21 +13,22 @@ import {TuiAccordion} from '@taiga-ui/kit';
 })
 export default class Page {
     protected example = {
-        base: import('./base.md?raw'),
-        dynamic: import('./dynamic.md?raw'),
-        esbuild: import('./esbuild.md?raw'),
-        custom: import('./custom.md?raw'),
+        base: import('./base.md'),
+        dynamic: import('./dynamic.md'),
+        esbuild: import('./esbuild.md'),
+        custom: import('./custom.md'),
     };
 
     protected example1 = {
         'language-switcher.html': import(
-            '../../../../../addon-doc/components/language-switcher/index.html?raw'
+            '../../../../../addon-doc/components/language-switcher/index.html'
         ),
         'language-switcher.ts': import(
-            '../../../../../addon-doc/components/language-switcher/index.ts?raw'
+            '../../../../../addon-doc/components/language-switcher/index.ts?raw',
+            {with: {loader: 'text'}}
         ),
         'language-switcher.less': import(
-            '../../../../../addon-doc/components/language-switcher/index.less?raw'
+            '../../../../../addon-doc/components/language-switcher/index.less'
         ),
     };
 }

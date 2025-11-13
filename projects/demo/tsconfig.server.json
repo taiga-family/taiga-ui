@@ -1,7 +1,0 @@
-{
-    "extends": "./tsconfig.app.json",
-    "files": ["src/main.server.ts", "server.ts"],
-    "angularCompilerOptions": {
-        "compilationMode": "full"
-    }
-}

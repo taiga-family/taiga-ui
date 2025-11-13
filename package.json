@@ -39,7 +39,6 @@
         "knip": "knip",
         "lint": "eslint .",
         "prepare": "husky",
-        "prerender": "nx run demo:prerender",
         "prettier": "prettier !package-lock.json . --ignore-path .gitignore",
         "release": "standard-version -a --no-verify",
         "release:major": "ts-node ./scripts/release.ts --release-as major",
@@ -104,7 +103,6 @@
         "preset": "@taiga-ui/jest-config"
     },
     "overrides": {
-        "@taiga-ui/browserslist-config": "0.328.0",
         "jest": "$jest",
         "jest-environment-jsdom": "$jest-environment-jsdom",
         "source-map": "$source-map"
@@ -130,7 +128,6 @@
         "@schematics/angular": "19.2.19",
         "@taiga-ui/configs": "0.360.0",
         "@types/glob": "9.0.0",
-        "@types/loader-utils": "2.0.6",
         "@types/markdown-it": "14.1.2",
         "@types/node": "24.10.1",
         "@typescript/native-preview": "7.0.0-dev.20251113.1",
@@ -145,15 +142,13 @@
         "ng-morph": "4.8.4",
         "ng-packagr": "19.2.2",
         "ngx-highlightjs": "10.0.0",
-        "node-loader": "2.1.0",
         "nx": "21.6.4",
         "rxjs": "7.8.2",
         "source-map": "0.7.6",
         "standard-version": "9.5.0",
         "ts-mockito": "2.6.1",
         "ts-node": "10.9.2",
-        "typescript": "5.8.3",
-        "webpack": "5.102.1"
+        "typescript": "5.8.3"
     },
     "engines": {
         "node": ">= 24",

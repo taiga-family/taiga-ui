@@ -36,7 +36,7 @@ export class TuiDocSetup {
         return (
             this.import() ||
             import(
-                `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/import/import.md?raw`
+                `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/import/import.md`
             )
         );
     }
@@ -46,7 +46,7 @@ export class TuiDocSetup {
         return (
             this.template() ||
             import(
-                `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/import/template.md?raw`
+                `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/import/template.md`
             )
         );
     }
