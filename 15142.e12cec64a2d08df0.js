@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[15142],{15142:e=>{e.exports="tui-calendar-sheet [data-type='holiday']::before {\n    background-color: var(--tui-chart-categorical-09);\n}\n"}}]);

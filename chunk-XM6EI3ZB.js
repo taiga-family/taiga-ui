@@ -1,0 +1,11 @@
+import"./chunk-42JZD6NG.js";var t=`<tui-textfield tuiChevron>
+    <select
+        aria-label="Select food"
+        placeholder="Select food"
+        tuiSelect
+        [formControl]="control"
+        [items]="groupItems"
+        [labels]="labels"
+    ></select>
+</tui-textfield>
+`;export{t as default};

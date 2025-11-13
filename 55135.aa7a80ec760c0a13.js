@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[55135],{55135:e=>{e.exports="[tuiProgressBar] {\n    border-radius: 0;\n}\n"}}]);

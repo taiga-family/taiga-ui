@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[14955],{14955:e=>{e.exports=".dropdown-button {\n    inline-size: 16rem;\n}\n"}}]);

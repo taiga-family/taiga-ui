@@ -1,0 +1,26 @@
+import"./chunk-42JZD6NG.js";var a=`<tui-doc-page header="Routable dialog">
+    <ng-template pageTab>
+        <tui-doc-example
+            id="loading-dialog"
+            heading="Eager loading dialog"
+            [content]="example1"
+        >
+            <router-outlet />
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="NamedOutlet">
+        <tui-doc-example
+            id="named-outlet"
+            heading="Named outlet"
+            [content]="example2"
+        >
+            <router-outlet />
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <router-outlet />
+    </ng-template>
+</tui-doc-page>
+`;export{a as default};

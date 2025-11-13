@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[42243],{42243:e=>{e.exports='<span tuiMessage>Incoming message</span>\n<span\n    appearance="accent"\n    tuiMessage\n>\n    Outgoing message\n</span>\n'}}]);

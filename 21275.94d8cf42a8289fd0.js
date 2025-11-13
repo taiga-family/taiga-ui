@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[21275],{21275:n=>{n.exports='@for (size of sizes; track size) {\n    <tui-thumbnail-card\n        iconEnd="@tui.cloud"\n        iconStart="@tui.lock"\n        paymentSystem="mastercard"\n        [size]="size"\n    >\n        4572\n    </tui-thumbnail-card>\n}\n'}}]);

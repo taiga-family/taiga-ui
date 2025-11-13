@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[22830],{22830:e=>{e.exports='@for (appearance of appearances; track appearance) {\n    <input\n        tuiLike\n        type="checkbox"\n        [appearance]="appearance"\n    />\n}\n'}}]);

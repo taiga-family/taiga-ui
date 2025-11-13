@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[11023],{11023:e=>{e.exports="import {Injectable} from '@angular/core';\nimport {TuiPortalService} from '@taiga-ui/cdk';\n\n@Injectable({providedIn: 'root'})\nexport class CustomPortalService extends TuiPortalService {}\n"}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[10506],{10506:n=>{n.exports="@for (font of fonts; track font) {\n    <p>\n        <tui-copy\n            [size]=\"$index > 5 ? 'm' : 'l'\"\n            [style.font]=\"`var(--tui-${font})`\"\n            [style.white-space]=\"'nowrap'\"\n        >\n            {{ font }}\n        </tui-copy>\n    </p>\n}\n"}}]);

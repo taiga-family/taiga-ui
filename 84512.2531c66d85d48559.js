@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[84512],{84512:n=>{n.exports='```html\n<a\n  tuiLink\n  href="#"\n>\n  Link\n</a>\n\n<a\n  tuiLink\n  iconStart="@tui.settings"\n  href="#"\n>\n  Link with an icon on the left\n</a>\n```\n'}}]);

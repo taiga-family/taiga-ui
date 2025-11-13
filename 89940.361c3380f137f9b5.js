@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[89940],{89940:n=>{n.exports=".box {\n    inline-size: 16rem;\n    block-size: 9.75rem;\n    border: 1px solid;\n}\n\n.content {\n    padding: 0 0.6875rem;\n}\n"}}]);

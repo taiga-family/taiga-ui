@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[2850],{2850:n=>{n.exports='```html\n<tui-input-inline>\n  Placeholder\n  <input [formControl]="control" />\n</tui-input-inline>\n```\n'}}]);

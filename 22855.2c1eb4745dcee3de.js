@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[22855],{22855:e=>{e.exports=".wrapper {\n    display: flex;\n}\n"}}]);

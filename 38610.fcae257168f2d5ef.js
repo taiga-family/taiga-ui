@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[38610],{38610:n=>{n.exports="```ts\nexport const routes = [\n  {\n    path: '',\n    component: MyPage,\n    children: [\n      tuiGenerateDialogableRoute(MyDialog, {\n        path: 'path/to/dialog',\n      }),\n    ],\n  },\n];\n```\n"}}]);

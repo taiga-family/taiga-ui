@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[77608],{77608:n=>{n.exports="```ts\nimport {TUI_LANGUAGE, TUI_RUSSIAN_LANGUAGE} from '@taiga-ui/i18n';\n\nbootstrapApplication(App, {\n  providers: [\n    // ...\n    {\n      provide: TUI_LANGUAGE,\n      useValue: of(TUI_RUSSIAN_LANGUAGE),\n    },\n  ],\n}).catch((err: unknown) => console.error(err));\n```\n"}}]);

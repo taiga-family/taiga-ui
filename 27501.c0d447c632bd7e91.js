@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[27501],{27501:n=>{n.exports='<span tuiMessage>\n    All relevant guides in this&nbsp;\n    <a\n        href="#"\n        tuiLink\n    >\n        project\n    </a>\n    &nbsp;with a lot of examples\n</span>\n'}}]);

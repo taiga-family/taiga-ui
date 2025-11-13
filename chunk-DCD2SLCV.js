@@ -1,0 +1,18 @@
+import"./chunk-42JZD6NG.js";var t=`import {JsonPipe} from '@angular/common';
+import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputNumber} from '@taiga-ui/kit';
+
+@Component({
+    imports: [FormsModule, JsonPipe, TuiInputNumber, TuiTextfield],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected value = 0.5;
+}
+`;export{t as default};

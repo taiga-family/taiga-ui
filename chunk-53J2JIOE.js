@@ -1,0 +1,27 @@
+import"./chunk-42JZD6NG.js";var a=`<tui-doc-page
+    header="IsPresent"
+    package="CDK"
+    type="pipes"
+>
+    <ng-template pageTab>
+        Pipe wrapper for
+        <a
+            fragment="isPresent"
+            tuiLink
+            [routerLink]="routes.Miscellaneous"
+        >
+            <code>IsPresent</code>
+        </a>
+        function
+
+        <tui-doc-example
+            id="usage"
+            heading="Usage"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>
+`;export{a as default};

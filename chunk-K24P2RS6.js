@@ -1,0 +1,1 @@
+import"./chunk-42JZD6NG.js";var u="```html\n<!-- {{ 100000 | tuiAmount : currency : align | async }} -->\n<p>{{ 100000 | tuiAmount : '978' : 'left' | async }}</p>\n<p>{{ 100000 | tuiAmount : 'EUR' : 'right' | async }}</p>\n```\n";export{u as default};

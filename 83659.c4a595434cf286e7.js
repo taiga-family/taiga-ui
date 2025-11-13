@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[83659],{83659:n=>{n.exports="[tuiCell],\n[tuiTitle] {\n    flex: 1;\n}\n\ndiv {\n    display: flex;\n}\n\nspan:first-child {\n    overflow: hidden;\n    text-overflow: ellipsis;\n}\n"}}]);

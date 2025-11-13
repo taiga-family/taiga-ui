@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[42098],{42098:p=>{p.exports="<p>Transform 10 into {{ 10 | tuiMapper: mapper : '₽' }}</p>\n"}}]);

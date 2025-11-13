@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[53282],{53282:e=>{e.exports='```html\n<tui-input-range [(ngModel)]="value">\n  <label tuiLabel>Text above numbers</label>\n</tui-input-range>\n```\n'}}]);

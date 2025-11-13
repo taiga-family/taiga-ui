@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[45913],{45913:e=>{e.exports='<tui-textfield>\n    <label tuiLabel>Type a phone number</label>\n\n    <input\n        autocomplete="tel"\n        mask="+7 ### ###-##-##"\n        tuiInputPhone\n        [attr.pattern]="pattern"\n        [(ngModel)]="value"\n    />\n</tui-textfield>\n'}}]);

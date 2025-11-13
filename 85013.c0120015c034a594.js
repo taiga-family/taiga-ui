@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85013],{85013:n=>{n.exports='<nav\n    tuiTabBar\n    class="tabs"\n>\n    @for (item of items; track item) {\n        <button\n            tuiTabBarItem\n            type="button"\n            [icon]="item.icon"\n        >\n            {{ item.text }}\n        </button>\n    }\n</nav>\n'}}]);

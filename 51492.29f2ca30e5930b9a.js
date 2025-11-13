@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[51492],{51492:n=>{n.exports=":host {\n    display: flex;\n    flex-direction: column;\n    gap: 2rem;\n}\n\n.flex {\n    display: flex;\n    gap: 0.5rem;\n\n    [tuiSubtitle] {\n        color: var(--tui-text-positive);\n    }\n}\n"}}]);

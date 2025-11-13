@@ -1,0 +1,57 @@
+import"./chunk-42JZD6NG.js";var i=`<div class="t-list-search">
+    <tui-textfield iconStart="@tui.search">
+        <input
+            placeholder="Search categories"
+            tuiAutoFocus
+            tuiTextfield
+            [focused]="true"
+            [(ngModel)]="value"
+        />
+    </tui-textfield>
+</div>
+<hr />
+<tui-data-list
+    emptyContent="No results found"
+    (keydown)="onKeyDown($event.key)"
+>
+    @if (!value) {
+        <tui-opt-group>
+            <button
+                tuiOption
+                type="button"
+                [value]="all"
+            >
+                All
+            </button>
+            @for (item of items(); track item) {
+                <button
+                    tuiOption
+                    type="button"
+                    [value]="item.items"
+                >
+                    {{ item.name }} only
+                </button>
+            }
+        </tui-opt-group>
+    }
+    @for (item of items(); track item) {
+        @let filtered = item.items | tuiFilter: filter : value;
+
+        <tui-opt-group [label]="item.name">
+            @if (filtered.length) {
+                <tui-opt-group tuiMultiSelectGroup>
+                    @for (item of filtered; track item) {
+                        <button
+                            tuiOption
+                            type="button"
+                            [value]="item"
+                        >
+                            {{ item }}
+                        </button>
+                    }
+                </tui-opt-group>
+            }
+        </tui-opt-group>
+    }
+</tui-data-list>
+`;export{i as default};

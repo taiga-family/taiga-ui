@@ -10137,11 +10137,13 @@ export default class PageComponent {
     protected strict = true;
 
     protected readonly databaseExample: TuiRawLoaderContent = import(
-        './examples/5/database.ts?raw'
+        './examples/5/database.ts?raw',
+        {with: {loader: 'text'}}
     );
 
     protected readonly selectOptionExample: TuiRawLoaderContent = import(
-        './examples/12/option.ts?raw'
+        './examples/12/option.ts?raw',
+        {with: {loader: 'text'}}
     );
 
     protected readonly handler = (item: Country): boolean =>
@@ -10366,7 +10368,7 @@ export default class Example implements TuiConfirmData {
 
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic'];
-    protected readonly exampleService = import('./examples/import/service.md?raw');
+    protected readonly exampleService = import('./examples/import/service.md');
 
     public readonly appearances = ['primary', 'accent', 'secondary'];
     public appearance = this.appearances[0]!;
@@ -11105,8 +11107,10 @@ export default class Page {
     protected size = this.sizeVariants[0]!;
 
     protected readonly customList = {
-        'custom-list/index.ts': import('./examples/4/custom-list/index.ts?raw'),
-        'custom-list/index.html': import('./examples/4/custom-list/index.html?raw'),
+        'custom-list/index.ts': import('./examples/4/custom-list/index.ts?raw', {
+            with: {loader: 'text'},
+        }),
+        'custom-list/index.html': import('./examples/4/custom-list/index.html'),
     };
 }
 ```
@@ -11800,11 +11804,11 @@ export default class Page extends Array {
     ];
 
     protected readonly [2] = {
-        'component.ts': import('./examples/3/component.ts?raw'),
+        'component.ts': import('./examples/3/component.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly [4] = {
-        'service.ts': import('./examples/5/service.ts?raw'),
+        'service.ts': import('./examples/5/service.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected data = 'Data';
@@ -15320,8 +15324,8 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiIcon, tuiIconsProvider} from '@taiga-ui/core';
-import heart from '@taiga-ui/icons/src/heart.svg?raw';
-import search from '@taiga-ui/icons/src/search.svg?raw';
+import heart from '@taiga-ui/icons/src/heart.svg';
+import search from '@taiga-ui/icons/src/search.svg';
 
 @Component({
     imports: [TuiIcon],
@@ -33120,7 +33124,8 @@ export default class PageComponent {
     ]);
 
     protected selectOptionExample: TuiRawLoaderContent = import(
-        './examples/10/option.ts?raw'
+        './examples/10/option.ts?raw',
+        {with: {loader: 'text'}}
     );
 
     protected readonly handler = (item: Country): boolean =>
@@ -33190,7 +33195,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected injectService = import('./examples/inject-service.md?raw');
+    protected injectService = import('./examples/inject-service.md');
 }
 ```
 
@@ -33247,7 +33252,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly inject = import('./examples/inject.md?raw');
+    protected readonly inject = import('./examples/inject.md');
 }
 ```
 
@@ -33780,7 +33785,7 @@ export default class Page {
     private readonly sheetDialogs = inject(TuiSheetDialogService);
     private readonly alerts = inject(TuiAlertService);
 
-    protected readonly exampleComponent = import('./examples/import/component.md?raw');
+    protected readonly exampleComponent = import('./examples/import/component.md');
     protected readonly examples = [
         'String',
         'Basic',
@@ -35206,7 +35211,7 @@ export default class Example {
     ];
 
     protected readonly layerExample = {
-        'surface.less': import('./examples/7/surface.less?raw'),
+        'surface.less': import('./examples/7/surface.less'),
     };
 
     protected readonly routes = DemoRoute;
@@ -40830,8 +40835,8 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly customContent = {
-        'content.ts': import('./examples/5/content.ts?raw'),
-        'content.less': import('./examples/5/content.less?raw'),
+        'content.ts': import('./examples/5/content.ts?raw', {with: {loader: 'text'}}),
+        'content.less': import('./examples/5/content.less'),
     };
 
     protected readonly routes = DemoRoute;
@@ -40919,7 +40924,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly component = import('./examples/import/import.md?raw');
+    protected readonly component = import('./examples/import/import.md');
 }
 ```
 
@@ -40953,7 +40958,7 @@ import {TuiLink} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Page {
-    protected readonly component = import('./examples/import/import.md?raw');
+    protected readonly component = import('./examples/import/import.md');
 }
 ```
 
@@ -41405,7 +41410,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly component = import('./examples/import/component.md?raw');
+    protected readonly component = import('./examples/import/component.md');
 }
 ```
 
@@ -41651,7 +41656,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly component = import('./examples/import/component.md?raw');
+    protected readonly component = import('./examples/import/component.md');
 }
 ```
 
@@ -41751,7 +41756,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly example = import('./import/import.md?raw');
+    protected readonly example = import('./import/import.md');
 }
 ```
 
@@ -42006,7 +42011,7 @@ import {TUI_FIRST_DAY_OF_WEEK, TuiLink} from '@taiga-ui/core';
 })
 export default class Example {
     protected readonly provideFirstDayOfWeekToken = import(
-        './provide-first-day-of-week-token.md?raw'
+        './provide-first-day-of-week-token.md'
     );
 
     protected readonly customizableComponentsViaThisToken = [
@@ -42331,11 +42336,11 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly exampleImport = import('./examples/import/import.md?raw');
+    protected readonly exampleImport = import('./examples/import/import.md');
 
-    protected readonly exampleTemplate = import('./examples/import/template.md?raw');
+    protected readonly exampleTemplate = import('./examples/import/template.md');
 
-    protected readonly exampleStyle = import('./examples/import/style.md?raw');
+    protected readonly exampleStyle = import('./examples/import/style.md');
 }
 ```
 
@@ -48514,9 +48519,9 @@ import {TuiWrapperExample1} from './examples/1';
 })
 export default class Page {
     protected readonly example1 = {
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html'),
+        LESS: import('./examples/1/index.less'),
+        TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly mixins = [
@@ -48553,21 +48558,22 @@ import {TuiAccordion} from '@taiga-ui/kit';
 })
 export default class Page {
     protected example = {
-        base: import('./base.md?raw'),
-        dynamic: import('./dynamic.md?raw'),
-        esbuild: import('./esbuild.md?raw'),
-        custom: import('./custom.md?raw'),
+        base: import('./base.md'),
+        dynamic: import('./dynamic.md'),
+        esbuild: import('./esbuild.md'),
+        custom: import('./custom.md'),
     };
 
     protected example1 = {
         'language-switcher.html': import(
-            '../../../../../addon-doc/components/language-switcher/index.html?raw'
+            '../../../../../addon-doc/components/language-switcher/index.html'
         ),
         'language-switcher.ts': import(
-            '../../../../../addon-doc/components/language-switcher/index.ts?raw'
+            '../../../../../addon-doc/components/language-switcher/index.ts?raw',
+            {with: {loader: 'text'}}
         ),
         'language-switcher.less': import(
-            '../../../../../addon-doc/components/language-switcher/index.less?raw'
+            '../../../../../addon-doc/components/language-switcher/index.less'
         ),
     };
 }
@@ -48640,16 +48646,16 @@ import {TuiPortalsExample1} from './examples/1';
     changeDetection,
 })
 export default class Page {
-    protected host = import('./examples/setup/create-host.md?raw');
-    protected service = import('./examples/setup/create-service.md?raw');
-    protected insert = import('./examples/setup/insert-host.md?raw');
+    protected host = import('./examples/setup/create-host.md');
+    protected service = import('./examples/setup/create-service.md');
+    protected insert = import('./examples/setup/insert-host.md');
 
     protected readonly example1 = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-        'portal.ts': import('./examples/1/portal.ts?raw'),
-        'service.ts': import('./examples/1/service.ts?raw'),
+        TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
+        HTML: import('./examples/1/index.html'),
+        LESS: import('./examples/1/index.less'),
+        'portal.ts': import('./examples/1/portal.ts?raw', {with: {loader: 'text'}}),
+        'service.ts': import('./examples/1/service.ts?raw', {with: {loader: 'text'}}),
     };
 }
 ```
@@ -48738,8 +48744,8 @@ import {TuiDocCode} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export default class TuiEagerExample3 {
-    protected readonly html = import('../setup/html.md?raw');
-    protected readonly routes = import('../setup/routes.md?raw');
+    protected readonly html = import('../setup/html.md');
+    protected readonly routes = import('../setup/routes.md');
 }
 ```
 
@@ -48758,17 +48764,21 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly example1 = {
-        'page.routes.ts': import('./routes.ts?raw'),
-        'page.template.html': import('./examples/1/index.html?raw'),
-        'page.ts': import('./examples/1/index.ts?raw'),
-        'dialog.component.ts': import('./examples/1/dialog.component.ts?raw'),
+        'page.routes.ts': import('./routes.ts?raw', {with: {loader: 'text'}}),
+        'page.template.html': import('./examples/1/index.html'),
+        'page.ts': import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
+        'dialog.component.ts': import('./examples/1/dialog.component.ts?raw', {
+            with: {loader: 'text'},
+        }),
     };
 
     protected readonly example2 = {
-        'page.routes.ts': import('./routes.ts?raw'),
-        'page.template.html': import('./examples/2/index.html?raw'),
-        'page.ts': import('./examples/2?raw'),
-        'dialog.component.ts': import('./examples/2/dialog.component.ts?raw'),
+        'page.routes.ts': import('./routes.ts?raw', {with: {loader: 'text'}}),
+        'page.template.html': import('./examples/2/index.html'),
+        'page.ts': import('./examples/2/index.ts?raw', {with: {loader: 'text'}}),
+        'dialog.component.ts': import('./examples/2/dialog.component.ts?raw', {
+            with: {loader: 'text'},
+        }),
     };
 }
 ```
@@ -48833,8 +48843,8 @@ import {TuiDocCode} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export default class TuiLazyExample2 {
-    protected readonly html = import('../setup/html.md?raw');
-    protected readonly routes = import('../setup/routes.md?raw');
+    protected readonly html = import('../setup/html.md');
+    protected readonly routes = import('../setup/routes.md');
 }
 ```
 
@@ -48853,10 +48863,12 @@ import {TuiDemo} from '@demo/utils';
 })
 export default class Page {
     protected readonly example1 = {
-        'page.routes.ts': import('./routes.ts?raw'),
-        'page.template.html': import('./examples/1/index.html?raw'),
-        'page.ts': import('./examples/1/index.ts?raw'),
-        'dialog.component.ts': import('./examples/1/dialog.component.ts?raw'),
+        'page.routes.ts': import('./routes.ts?raw', {with: {loader: 'text'}}),
+        'page.template.html': import('./examples/1/index.html'),
+        'page.ts': import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
+        'dialog.component.ts': import('./examples/1/dialog.component.ts?raw', {
+            with: {loader: 'text'},
+        }),
     };
 }
 ```
@@ -48931,8 +48943,8 @@ import {TuiVariablesExample1} from './examples/1';
 })
 export default class Page {
     protected readonly example1 = {
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
+        HTML: import('./examples/1/index.html'),
+        LESS: import('./examples/1/index.less'),
     };
 
     protected readonly vars: Record<string, string> = {
@@ -49138,7 +49150,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly providers = import('./examples/import/providers.md?raw');
+    protected readonly providers = import('./examples/import/providers.md');
 
     protected examples = ['Dropdown', 'Dropdown and custom portal', 'Hint'];
 }
@@ -50171,7 +50183,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly provide = import('./examples/import/provide.md?raw');
+    protected readonly provide = import('./examples/import/provide.md');
 }
 ```
 

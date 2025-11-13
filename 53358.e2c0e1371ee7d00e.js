@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[53358],{30977:n=>{n.exports='```html\n<tui-textfield\n  tuiChevron\n  [stringify]="\'name\' | tuiStringify"\n>\n  <input\n    tuiComboBox\n    [(ngModel)]="value"\n  />\n\n  \x3c!-- ... --\x3e\n</tui-textfield>\n```\n'}}]);

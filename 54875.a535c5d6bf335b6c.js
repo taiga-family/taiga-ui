@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[54875],{54875:e=>{e.exports='```html\n<div *ngFor="let item of items | tuiFilter: matcher: someArg">{{item}}</div>\n```\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[94803],{94803:e=>{e.exports="```html\n<div tuiSurface>\n  \x3c!-- Content --\x3e\n</div>\n```\n"}}]);

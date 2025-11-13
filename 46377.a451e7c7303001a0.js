@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[46377],{46377:e=>{e.exports='```html\n<input\n  tuiLike\n  type="checkbox"\n/>\n```\n'}}]);

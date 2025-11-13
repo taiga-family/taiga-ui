@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[3121],{3121:e=>{e.exports="```less\n.image {\n  width: 300px;\n\n  @media @tui-mobile {\n    width: 100%;\n  }\n}\n```\n"}}]);

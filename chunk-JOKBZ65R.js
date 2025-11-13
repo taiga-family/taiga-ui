@@ -1,0 +1,33 @@
+import"./chunk-42JZD6NG.js";var o=`<form [formGroup]="form">
+    <button
+        appearance="outline-grayscale"
+        tuiButton
+        type="button"
+        [tuiAppearanceMode]="length ? 'checked' : null"
+        [tuiDropdown]="dropdown"
+        [(tuiDropdownOpen)]="open"
+        (keydown.delete)="form.reset()"
+    >
+        {{ text }}
+        <button
+            appearance="icon"
+            size="xs"
+            tabindex="-1"
+            tuiChevron
+            tuiIconButton
+            type="reset"
+            [iconStart]="length ? '@tui.x' : ''"
+            (mousedown.zoneless.prevent)="(0)"
+        >
+            Reset
+        </button>
+    </button>
+    <ng-template #dropdown>
+        <tui-data-list-wrapper
+            formControlName="control"
+            tuiMultiSelectGroup
+            [items]="items"
+        />
+    </ng-template>
+</form>
+`;export{o as default};

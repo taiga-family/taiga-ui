@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[69049],{69049:e=>{e.exports=".example-viewport {\n    block-size: 12.5rem;\n    border: 1px solid;\n}\n\n.example-item {\n    block-size: 3.125rem;\n}\n"}}]);

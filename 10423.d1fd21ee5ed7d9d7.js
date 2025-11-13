@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[10423],{10423:e=>{e.exports="```ts\n@Component({\n  selector: 'my-portal-host',\n  templateUrl: './my-portal-host.template.html',\n  styleUrl: './my-portal-host.style.less',\n  providers: [tuiProvide(TuiPortalService, MyPortalService)],\n})\nexport class MyPortalHost extends TuiPortals {}\n```\n"}}]);

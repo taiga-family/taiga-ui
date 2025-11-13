@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6917],{6917:e=>{e.exports='<button\n    tuiAppearance="acid"\n    type="button"\n>\n    SCSS mixins have the same names\n</button>\n'}}]);

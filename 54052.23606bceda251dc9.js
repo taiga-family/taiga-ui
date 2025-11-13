@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[54052],{54052:e=>{e.exports='```html\n<tui-progress-circle\n  [max]="100"\n  [value]="70"\n></tui-progress-circle>\n```\n'}}]);

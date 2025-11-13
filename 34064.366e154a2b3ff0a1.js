@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[34064],{34064:n=>{n.exports='<tui-block-status size="m">\n    <h4>Something happened in this block</h4>\n\n    <span>Try again later</span>\n\n    <button\n        appearance="secondary"\n        size="s"\n        tuiButton\n        type="button"\n    >\n        Retry\n    </button>\n</tui-block-status>\n'}}]);

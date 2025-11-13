@@ -1,0 +1,50 @@
+import"./chunk-42JZD6NG.js";var i=`<tui-doc-page
+    header="HintDescribe"
+    package="CORE"
+    path="core/directives/hint"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>Directive to show a hint in accessible way upon keyboard focus</p>
+
+        <tui-doc-example
+            id="base"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <input
+                placeholder="My id is 'qwerty'"
+                tuiHint="I will be visible upon keyboard focus"
+                tuiHintDescribe="qwerty"
+                [tuiHintAppearance]="appearance"
+                [tuiHintDirection]="direction"
+            />
+        </tui-doc-demo>
+        <table tuiDocAPI>
+            <tr
+                name="[tuiHint]"
+                tuiDocAPIItem
+                type="PolymorpheusContent"
+            >
+                Content
+            </tr>
+            <tr
+                name="[tuiHintDescribe]"
+                tuiDocAPIItem
+                type="string"
+                [(value)]="id"
+            >
+                Id of the element
+            </tr>
+        </table>
+        <inherited-documentation />
+    </ng-template>
+
+    <tui-setup *pageTab />
+</tui-doc-page>
+`;export{i as default};

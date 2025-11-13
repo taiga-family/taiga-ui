@@ -1,0 +1,21 @@
+import"./chunk-42JZD6NG.js";var a=`@import '@taiga-ui/core/styles/taiga-ui-local';
+
+:host {
+    display: block;
+    max-inline-size: 30rem;
+}
+
+hr,
+h3 {
+    margin: 1rem 0;
+}
+
+.link {
+    .text-truncate();
+
+    &_last {
+        font-weight: bold;
+        color: var(--tui-text-primary);
+    }
+}
+`;export{a as default};

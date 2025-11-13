@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6364],{6364:e=>{e.exports=":host {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 1rem;\n    inline-size: 30rem;\n}\n"}}]);

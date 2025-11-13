@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[5211],{5211:n=>{n.exports='```html\n<tui-pager\n  [index]="index"\n  [count]="count"\n/>\n```\n'}}]);

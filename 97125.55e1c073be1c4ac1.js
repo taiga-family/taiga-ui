@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[97125],{97125:n=>{n.exports=".tabs {\n    min-inline-size: 25rem;\n    color: var(--tui-text-action);\n\n    --tui-active-color: var(--tui-background-accent-2);\n}\n"}}]);

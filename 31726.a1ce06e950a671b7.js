@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[31726],{31726:e=>{e.exports='<div class="wrapper">\n    @for (breakpoint of breakpoints; track breakpoint) {\n        <span [class]="`item ${breakpoint}`">&#64;{{ breakpoint }}</span>\n    }\n</div>\n'}}]);

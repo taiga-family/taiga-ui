@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[38170],{38170:e=>{e.exports=".table {\n    inline-size: 100%;\n}\n"}}]);

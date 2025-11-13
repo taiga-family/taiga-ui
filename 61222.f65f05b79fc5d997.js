@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[61222],{61222:e=>{e.exports='<tui-textfield>\n    <label tuiLabel>Choose a year</label>\n    <input\n        placeholder="Not 2022 please"\n        tuiInputYear\n        [(ngModel)]="value"\n    />\n    <tui-calendar-year *tuiDropdown />\n</tui-textfield>\n'}}]);

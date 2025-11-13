@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[71864],{71864:n=>{n.exports="tui-icon {\n    transform: scaleX(var(--tui-inline));\n}\n\n[tuiCell]:last-child {\n    background: linear-gradient(to var(--tui-inline-end), transparent, var(--tui-background-neutral-1));\n    box-shadow: calc(0.25rem * var(--tui-inline)) 0 0 var(--tui-background-neutral-2);\n}\n"}}]);

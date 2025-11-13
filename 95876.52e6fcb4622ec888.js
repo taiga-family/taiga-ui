@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[95876],{95876:n=>{n.exports=":host {\n    display: flex;\n    flex-direction: column;\n    gap: 1.5rem;\n}\n\nsection {\n    --tui-duration: 0;\n}\n\nfooter {\n    display: flex;\n    gap: 1.25rem;\n\n    button {\n        flex: 1;\n    }\n}\n"}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[91544],{91544:n=>{n.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n.group {\n    max-inline-size: 33rem;\n    margin-block-end: 1.5rem;\n}\n\n.title {\n    font: var(--tui-font-heading-5);\n    margin: 0 0 1rem;\n}\n"}}]);

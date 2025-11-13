@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40618],{40618:e=>{e.exports=".actions {\n    display: flex;\n    flex-direction: column;\n}\n"}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[89379],{89379:n=>{n.exports='<ng-template\n    [tuiNotificationMiddleOptions]="{closable: true}"\n    [(tuiNotificationMiddle)]="open"\n/>\n<button\n    tuiButton\n    type="button"\n    (click)="open = true"\n>\n    Show\n</button>\n'}}]);

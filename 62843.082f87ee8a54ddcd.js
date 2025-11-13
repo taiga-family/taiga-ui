@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[62843],{62843:n=>{n.exports=".example {\n    margin-block-end: 0.5rem;\n    min-inline-size: 20.25rem;\n}\n\n.form {\n    min-inline-size: 18.75rem;\n    overflow: hidden;\n}\n\n.exchange {\n    margin: 1.5625rem;\n}\n\n.group {\n    max-inline-size: 30.25rem;\n}\n"}}]);

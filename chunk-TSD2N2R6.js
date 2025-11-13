@@ -1,0 +1,46 @@
+import"./chunk-42JZD6NG.js";var n=`@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.table {
+    inline-size: 28rem;
+
+    tbody {
+        tr {
+            td {
+                .transition(background);
+            }
+
+            &.child td {
+                background: var(--tui-background-base-alt);
+            }
+
+            &:hover {
+                td {
+                    background: var(--tui-background-base-alt);
+                }
+
+                &.child td {
+                    background: var(--tui-background-neutral-1-hover);
+                }
+            }
+        }
+
+        tui-table-expand {
+            animation-duration: 0.5s !important;
+        }
+    }
+
+    [tuiTh] {
+        border-top: none;
+    }
+
+    [tuiTh],
+    [tuiTd] {
+        border-inline-start: none;
+        border-inline-end: none;
+    }
+
+    button[disabled].chevron-btn::after {
+        cursor: initial;
+    }
+}
+`;export{n as default};

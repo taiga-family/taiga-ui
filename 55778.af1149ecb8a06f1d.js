@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[55778],{55778:n=>{n.exports=".item {\n    padding: 1rem;\n    border: 1px solid var(--tui-border-normal);\n    border-radius: 1rem;\n    margin-block-end: auto;\n}\n\n.title {\n    margin: 0 0 1rem;\n}\n"}}]);

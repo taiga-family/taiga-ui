@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[76286],{76286:e=>{e.exports=".slider {\n    inline-size: 12.5rem;\n    margin-block-end: 1em;\n}\n"}}]);

@@ -1,0 +1,18 @@
+import"./chunk-42JZD6NG.js";var i=`<tui-input-slider
+    tuiTextfieldSize="m"
+    class="slider"
+    [max]="6"
+    [quantum]="1"
+    [tuiTextfieldCustomContent]="inputCustomContent"
+    [tuiTextfieldLabelOutside]="true"
+    [(ngModel)]="activePadding"
+/>
+
+<ng-template #inputCustomContent>activePadding</ng-template>
+
+<tui-pagination
+    [activePadding]="activePadding"
+    [index]="10"
+    [length]="64"
+/>
+`;export{i as default};

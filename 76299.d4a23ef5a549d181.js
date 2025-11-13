@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[76299],{76299:e=>{e.exports='<tui-textfield>\n    <input\n        placeholder="Choose a date"\n        tuiInputDateTime\n        [(ngModel)]="value"\n    />\n    <tui-calendar *tuiDropdown />\n</tui-textfield>\n\n<p>{{ value | json }}</p>\n'}}]);

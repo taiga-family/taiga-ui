@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[38883],{38883:n=>{n.exports="```ts\n@Component({\n  standalone: true,\n  // ..\n})\nexport class Example {\n  @tuiPure\n  get complexCalculationWithFixedResult(): number {\n    // ...\n  }\n\n  @tuiPure\n  someMethod(arg1: number, arg2: {}): {} {\n    // ...\n  }\n}\n```\n"}}]);

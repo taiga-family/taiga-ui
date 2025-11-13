@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[65927],{65927:n=>{n.exports='<button\n    iconStart="@tui.clock"\n    tuiButton\n    type="button"\n    [loading]="loading$ | async"\n    (click)="trigger$.next()"\n>\n    Click to start\n</button>\n'}}]);

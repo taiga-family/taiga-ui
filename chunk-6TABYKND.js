@@ -1,0 +1,18 @@
+import"./chunk-42JZD6NG.js";var m=`<div tuiComment="top">Good job</div>
+
+<div
+    tuiComment="bottom"
+    class="success"
+>
+    Cashback
+</div>
+
+<div
+    tuiComment="left"
+    class="primary"
+>
+    Extra payment
+</div>
+
+<div tuiComment="right">Check it out</div>
+`;export{m as default};

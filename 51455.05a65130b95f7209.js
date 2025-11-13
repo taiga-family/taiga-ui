@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[51455],{51455:n=>{n.exports=":host {\n    display: flex;\n    gap: 1rem;\n    color: var(--tui-text-action);\n\n    --tui-font-icon: 'Material Symbols Outlined';\n}\n"}}]);

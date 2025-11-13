@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18666],{18666:e=>{e.exports="tui-chip {\n    margin: 0.5rem;\n}\n"}}]);

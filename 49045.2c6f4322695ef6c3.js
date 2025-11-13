@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[49045],{49045:n=>{n.exports='<div tuiRipple="button,.block">\n    <button\n        tuiButton\n        type="button"\n    >\n        Button\n    </button>\n\n    <div class="block">Content</div>\n</div>\n'}}]);

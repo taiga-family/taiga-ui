@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[30114],{30114:n=>{n.exports=":host {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\ntui-icon {\n    margin: 1rem;\n    align-self: center;\n    box-shadow: 0 0 0 0.125rem var(--tui-border-normal);\n}\n"}}]);

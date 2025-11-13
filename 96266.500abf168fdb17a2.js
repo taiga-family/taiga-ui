@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[96266],{96266:n=>{n.exports='<tui-textfield>\n    <input\n        placeholder="Annoying required field"\n        tuiInputMonth\n        [formControl]="control"\n    />\n\n    <tui-calendar-month *tuiDropdown />\n</tui-textfield>\n<tui-error [formControl]="control" />\n'}}]);

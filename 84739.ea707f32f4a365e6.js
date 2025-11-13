@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[84739],{84739:e=>{e.exports='<tui-stepper\n    orientation="vertical"\n    class="stepper"\n    [activeItemIndex]="5"\n>\n    @for (step of steps; track step) {\n        <button tuiStep>\n            {{ step }}\n        </button>\n    }\n</tui-stepper>\n'}}]);

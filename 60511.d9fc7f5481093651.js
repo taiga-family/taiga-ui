@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[60511],{60511:i=>{i.exports="<div tuiItemGroup>\n    @for (chip of chips; track chip) {\n        <tui-chip>{{ chip }}</tui-chip>\n    }\n</div>\n"}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[23051],{23051:n=>{n.exports="```ts\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiAutoFocus,\n  ],\n  providers: [\n    tuiAutoFocusOptionsProvider({\n      delay: 300, // NaN = no delay/sync\n      preventScroll: true,\n    }),\n  ],\n})\nexport class Example {}\n```\n"}}]);

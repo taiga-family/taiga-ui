@@ -1,0 +1,42 @@
+import"./chunk-42JZD6NG.js";var o=`import {Component} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {changeDetection} from '@demo/emulate/change-detection';
+import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
+import {
+    TuiButtonSelect,
+    TuiCheckbox,
+    TuiChevron,
+    TuiMultiSelect,
+    TuiSwitch,
+} from '@taiga-ui/kit';
+
+@Component({
+    imports: [
+        FormsModule,
+        TuiButton,
+        TuiButtonSelect,
+        TuiCheckbox,
+        TuiChevron,
+        TuiDataList,
+        TuiDropdown,
+        TuiMultiSelect,
+        TuiSwitch,
+    ],
+    templateUrl: './index.html',
+    encapsulation,
+    changeDetection,
+})
+export default class Example {
+    protected first = false;
+    protected second = true;
+    protected open = false;
+    protected label = false;
+
+    protected value = [];
+
+    protected readonly burgers = ['Hamburger', 'Cheeseburger'];
+
+    protected readonly drinks = ['Cola', 'Tea', 'Coffee', 'Slurm'];
+}
+`;export{o as default};
