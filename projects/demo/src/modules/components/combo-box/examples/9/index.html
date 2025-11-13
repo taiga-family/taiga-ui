@@ -9,7 +9,7 @@
     />
 
     <tui-data-list *tuiDropdown>
-        @for (item of items; track item) {
+        @for (item of items | tuiFilterByInput; track item) {
             <button
                 new
                 tuiOption
