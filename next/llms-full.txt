@@ -17641,11 +17641,7 @@ import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
 import {TUI_FIRST_DAY, TUI_LAST_DAY, TuiDay} from '@taiga-ui/cdk';
 import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
-import {
-    TuiInputChipComponent,
-    TuiInputDate,
-    TuiInputDateMultiDirective,
-} from '@taiga-ui/kit';
+import {TuiInputChip, TuiInputDate, TuiInputDateMulti} from '@taiga-ui/kit';
 
 @Component({
     imports: [
@@ -17657,9 +17653,9 @@ import {
         TuiDocItemsHandlers,
         TuiDocTextfield,
         TuiDropdown,
-        TuiInputChipComponent,
+        TuiInputChip,
         TuiInputDate,
-        TuiInputDateMultiDirective,
+        TuiInputDateMulti,
         TuiTextfield,
     ],
     templateUrl: './index.html',
@@ -29249,11 +29245,11 @@ import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton} from '@taiga-ui/core';
-import {TuiPreview, TuiPreviewDialogDirective} from '@taiga-ui/kit';
+import {TuiPreview} from '@taiga-ui/kit';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [PolymorpheusOutlet, TuiButton, TuiPreview, TuiPreviewDialogDirective],
+    imports: [PolymorpheusOutlet, TuiButton, TuiPreview],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -33918,10 +33914,10 @@ import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSliderComponent} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, ReactiveFormsModule, TuiSliderComponent],
+    imports: [FormsModule, ReactiveFormsModule, TuiSlider],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -33945,10 +33941,10 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSliderComponent} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiSliderComponent],
+    imports: [TuiSlider],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -33972,10 +33968,10 @@ import {Component} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSliderComponent} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiSliderComponent],
+    imports: [ReactiveFormsModule, TuiSlider],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,
@@ -34002,10 +33998,10 @@ export default class Example {
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiSliderComponent} from '@taiga-ui/kit';
+import {TuiSlider} from '@taiga-ui/kit';
 
 @Component({
-    imports: [TuiSliderComponent],
+    imports: [TuiSlider],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
