@@ -40,6 +40,7 @@ export default process.env.HTML_ESLINT
                   // TODO enable after fixing all issues
                   '@angular-eslint/prefer-signals': 'off',
                   'unicorn/prefer-class-fields': 'warn',
+                  '@taiga-ui/experience-next/no-private-esnext-fields': 'off',
               },
           },
           {

@@ -35,8 +35,8 @@ import {type Observable} from 'rxjs';
     viewProviders: [tuiHintOptionsProvider({direction: 'top'})],
 })
 export class TuiBarChart {
-    private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-    private readonly autoId = tuiInjectId();
+    readonly #hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    readonly #autoId = tuiInjectId();
 
     @ViewChildren(TuiHintHover)
     protected readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
@@ -71,15 +71,15 @@ export class TuiBarChart {
         (100 * (collapsed ? tuiSum(...set) : Math.max(...set))) / max;
 
     protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
-        return this.hintOptions?.content || '';
+        return this.#hintOptions?.content || '';
     }
 
     protected get hintAppearance(): string {
-        return this.hintOptions?.appearance || '';
+        return this.#hintOptions?.appearance || '';
     }
 
     protected getHintId(index: number): string {
-        return `${this.autoId}_${index}`;
+        return `${this.#autoId}_${index}`;
     }
 
     @tuiPure

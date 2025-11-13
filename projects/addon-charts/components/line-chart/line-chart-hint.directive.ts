@@ -42,20 +42,20 @@ export class TuiLineChartHint implements AfterViewInit {
     @ContentChildren(forwardRef(() => TuiLineChart), {read: ElementRef})
     private readonly chartsRef: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
 
-    private readonly renderer = inject(Renderer2);
-    private readonly destroyRef = inject(DestroyRef);
-    private readonly zone = inject(NgZone);
-    private readonly hovered$ = inject(TuiHoveredService);
+    readonly #renderer = inject(Renderer2);
+    readonly #destroyRef = inject(DestroyRef);
+    readonly #zone = inject(NgZone);
+    readonly #hovered$ = inject(TuiHoveredService);
 
     @Input('tuiLineChartHint')
     public hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
 
     public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
+        combineLatest([tuiLineChartDrivers(this.charts), this.#hovered$])
             .pipe(
                 filter((result) => !result.some(Boolean)),
-                tuiZonefree(this.zone),
-                takeUntilDestroyed(this.destroyRef),
+                tuiZonefree(this.#zone),
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe(() => {
                 this.charts.forEach((chart) => chart.onHovered(NaN));
@@ -77,7 +77,7 @@ export class TuiLineChartHint implements AfterViewInit {
 
         this.charts.forEach((chart) => chart.onHovered(index));
         this.chartsRef.forEach(({nativeElement}, index) =>
-            this.renderer.setStyle(
+            this.#renderer.setStyle(
                 nativeElement,
                 'z-index',
                 sorted.indexOf(current[index] ?? [0, 0]),

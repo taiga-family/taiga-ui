@@ -52,8 +52,8 @@ const TRANSFORM = {
     },
 })
 export class TuiPieChart {
-    private readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
-    private readonly autoId = tuiInjectId();
+    readonly #hintOptions = inject(TuiHintOptionsDirective, {optional: true});
+    readonly #autoId = tuiInjectId();
 
     @Input()
     public value: readonly number[] = [];
@@ -71,9 +71,9 @@ export class TuiPieChart {
     public readonly activeItemIndexChange = new EventEmitter<number>();
 
     constructor() {
-        if (this.hintOptions) {
-            this.hintOptions.showDelay = 0;
-            this.hintOptions.hideDelay = 0;
+        if (this.#hintOptions) {
+            this.#hintOptions.showDelay = 0;
+            this.#hintOptions.hideDelay = 0;
         }
     }
 
@@ -82,11 +82,11 @@ export class TuiPieChart {
     }
 
     protected get hintContent(): PolymorpheusContent<TuiContext<number>> {
-        return this.hintOptions?.content || '';
+        return this.#hintOptions?.content || '';
     }
 
     protected get maskId(): string {
-        return `tui-ring-chart-${this.autoId}`;
+        return `tui-ring-chart-${this.#autoId}`;
     }
 
     protected get mask(): string | null {
@@ -110,7 +110,7 @@ export class TuiPieChart {
     }
 
     protected onHovered(hovered: boolean, index: number): void {
-        this.updateActiveItemIndex(hovered ? index : NaN);
+        this.#updateActiveItemIndex(hovered ? index : NaN);
     }
 
     @tuiPure
@@ -123,8 +123,8 @@ export class TuiPieChart {
         return value
             .map((initial, i, array) =>
                 array.reduce(
-                    (sum, current, j) => (j < i ? this.getDeg(current) + sum : sum),
-                    this.getDeg(initial),
+                    (sum, current, j) => (j < i ? this.#getDeg(current) + sum : sum),
+                    this.#getDeg(initial),
                 ),
             )
             .map((angle, index, array) => [
@@ -133,11 +133,11 @@ export class TuiPieChart {
             ]);
     }
 
-    private getDeg(value: number): number {
+    #getDeg(value: number): number {
         return 360 * (value / this.getSum(this.value)) || 0;
     }
 
-    private updateActiveItemIndex(index: number): void {
+    #updateActiveItemIndex(index: number): void {
         if (index === this.activeItemIndex) {
             return;
         }
