@@ -23,7 +23,6 @@
 - [I18n](https://taiga-ui.dev/i18n)
 - [Lists](https://taiga-ui.dev/lists)
 - [Migration Guide](https://taiga-ui.dev/migration-guide)
-- [Mobile Themes](https://taiga-ui.dev/mobile-themes)
 - [Portals](https://taiga-ui.dev/portals)
 - [Related](https://taiga-ui.dev/related)
 - [Rtl](https://taiga-ui.dev/rtl)
@@ -34,7 +33,6 @@
 - [Typography](https://taiga-ui.dev/typography)
 - [Variables](https://taiga-ui.dev/variables)
 - [Viewport](https://taiga-ui.dev/viewport)
-- [Wrapper](https://taiga-ui.dev/wrapper)
 
 ### Charts
 
@@ -103,7 +101,6 @@
 - [Input Pin](https://taiga-ui.dev/components/input-pin)
 - [Input Range](https://taiga-ui.dev/components/input-range) — InputRange = Textfield + InputNumber × 2 + Range + ❤️ 2
 - [Input Slider](https://taiga-ui.dev/components/input-slider) — InputSlider = Textfield + InputNumber + Slider + ❤️
-- [Input Tag](https://taiga-ui.dev/components/input-tag)
 - [Input Time](https://taiga-ui.dev/components/input-time) — InputTime allows users to enter and edit time values using a keyboard, dropdown or even browser native picker.
 - [Input Year](https://taiga-ui.dev/components/input-year) — Component to input a single year
 - [Item Group](https://taiga-ui.dev/components/item-group)
@@ -115,7 +112,6 @@
 - [Loader](https://taiga-ui.dev/components/loader)
 - [Message](https://taiga-ui.dev/components/message) — Message component is used to display message block.
 - [Mobile Calendar](https://taiga-ui.dev/components/mobile-calendar) — A calendar for mobile devices. It is used in date picker controls if provided with tuiProvideMobileCalendar() You can use TUI_CALENDAR_DATE_STREAM token to set value from outside (see samples)
-- [Multi Select](https://taiga-ui.dev/components/multi-select)
 - [Navigation](https://taiga-ui.dev/components/navigation) — A set of basic layout components for global navigation
 - [Notification](https://taiga-ui.dev/components/notification) — A notification message that can be displayed inline or as an alert
 - [Notification Middle](https://taiga-ui.dev/components/notification-middle) — A modal component to indicate an ongoing blocking action
@@ -123,7 +119,6 @@
 - [Pdf Viewer](https://taiga-ui.dev/components/pdf-viewer) — Wrapper component for viewing PDF files in an iframe PDF display in browsers is handled by each browser independently, using their own homegrown or 3rd-party code, as this is not part of the HTML spec. Keep in mind most mobile devices do not support displaying PDFs in iframe. Check it here . The only way to enforce rendering consistency in all browsers is to do the rendering server-side, bundle your own JS PDF renderer, or use a 3rd-party rendering service. If you want to display it yourself, so you need to rely on TUI_IS_MOBILE token to provide suitable alternative behavior. For example, you can use third-party service https://drive.google.com/viewerng/viewer?embedded=true&url=$YOUR_PUBLIC_PATH_TO_PDF or your own service to render PDF by pdf.js.
 - [Pin](https://taiga-ui.dev/components/pin) — Pins are used to show a location on a 2D plane. Use color , background , border and box-shadow to customize the pin Pins are designed to be absolutely positioned on map or similar medium, therefore specifically their center is placed where you put them.
 - [Preview](https://taiga-ui.dev/components/preview) — Preview component allows to open modal for viewing some document and to work with it (download, zoom, rotate etc) As a document you can provide images, embeds and other arbitrary content. The component automatically adjusts to the mobile device
-- [Primitive Textfield](https://taiga-ui.dev/components/primitive-textfield)
 - [Progress Bar](https://taiga-ui.dev/components/progress-bar) — tuiProgressBar – attribute component for native html tag '"> . Usage: '"> .
 - [Progress Circle](https://taiga-ui.dev/components/progress-circle) — '"> is a component to visually represent the completion of a process or operation (as a partially filled circle/ring). It shows how much has been completed and how much remains.
 - [Progress Segmented](https://taiga-ui.dev/components/progress-segmented)
@@ -200,10 +195,6 @@
 - [Validator](https://taiga-ui.dev/directives/validator) — tuiValidator allows set validators for form control on the fly
 - [Value Changes](https://taiga-ui.dev/directives/value-changes) — This directive allows you to access reactive control or container value changes as an output
 - [Zoom](https://taiga-ui.dev/directives/zoom) — tuiZoom directive emits delta between wheel events or between pinch on mobile devices. It emits coordinates of the zoom center as well. You can use it to change the scale of an element as in example below
-
-### Icons
-
-- [Customization](https://taiga-ui.dev/icons/customization)
 
 ### Layout
 
