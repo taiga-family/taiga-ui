@@ -9,10 +9,10 @@ import {TuiButtonSelect, TuiChevron, TuiMultiSelect} from '@taiga-ui/kit';
     imports: [
         ReactiveFormsModule,
         TuiButton,
+        TuiButtonSelect,
         TuiChevron,
         TuiDataList,
         TuiDropdown,
-        TuiButtonSelect,
         TuiMultiSelect,
     ],
     templateUrl: './index.html',

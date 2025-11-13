@@ -1,12 +1,4 @@
-import {
-    Component,
-    computed,
-    ElementRef,
-    inject,
-    input,
-    signal,
-    ViewChild,
-} from '@angular/core';
+import {Component, ElementRef, inject, input, signal, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
