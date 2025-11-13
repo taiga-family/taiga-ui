@@ -1,4 +1,4 @@
-import {Directive, EventEmitter, inject, Output} from '@angular/core';
+import {Directive, inject, output} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
@@ -19,8 +19,9 @@ export class TuiDropdownPosition extends TuiPositionAccessor {
 
     private previous?: TuiVerticalDirection;
 
-    @Output('tuiDropdownDirectionChange')
-    public readonly directionChange = new EventEmitter<TuiVerticalDirection>();
+    public readonly directionChange = output<TuiVerticalDirection>({
+        alias: 'tuiDropdownDirectionChange',
+    });
 
     public readonly type = 'dropdown';
     public readonly accessor: TuiRectAccessor = tuiFallbackAccessor<TuiRectAccessor>(
