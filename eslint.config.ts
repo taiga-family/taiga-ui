@@ -39,12 +39,14 @@ export default process.env.HTML_ESLINT
                   ],
                   // TODO enable after fixing all issues
                   '@angular-eslint/prefer-signals': 'off',
+                  '@taiga-ui/experience-next/short-tui-imports': 'off',
               },
           },
           {
-              files: ['**/*.spec.ts', '**/*.cy.ts'],
+              files: ['**/*.spec.ts', '**/*.cy.ts', '**/demo/**/*.ts'],
               rules: {
                   'no-irregular-whitespace': 'off',
+                  '@taiga-ui/experience-next/short-tui-imports': 'error',
               },
           },
           {

@@ -6,8 +6,8 @@ import {
 } from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {provideTaiga, TuiDataListDirective, TuiRoot} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {provideTaiga, TuiDataList, TuiRoot} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
     TUI_ARROW_MODE,
     TuiMultiSelectComponent,
@@ -43,8 +43,8 @@ describe('MultiSelect', () => {
         @Component({
             imports: [
                 ReactiveFormsModule,
-                TuiDataListDirective,
-                TuiDataListWrapperComponent,
+                TuiDataList,
+                TuiDataListWrapper,
                 TuiMultiSelectModule,
                 TuiRoot,
             ],
@@ -259,8 +259,8 @@ describe('MultiSelect', () => {
         @Component({
             imports: [
                 ReactiveFormsModule,
-                TuiDataListDirective,
-                TuiDataListWrapperComponent,
+                TuiDataList,
+                TuiDataListWrapper,
                 TuiMultiSelectModule,
                 TuiRoot,
             ],
