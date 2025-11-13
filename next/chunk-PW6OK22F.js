@@ -1,0 +1,111 @@
+import"./chunk-42JZD6NG.js";var i=`<tui-notification class="tui-space_bottom-3">
+    Use textContent binding to avoid extra whitespace introduced by browser when closing tag wraps to a new line \u2014
+    otherwise distance to the icons will be bigger than it should be
+</tui-notification>
+
+<section>
+    <button
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.text-decoration-line]="'underline'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>
+
+<section>
+    <button
+        appearance="action-grayscale"
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        appearance="action-grayscale"
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.text-decoration-line]="'underline'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>
+
+<section
+    tuiTheme="light"
+    [style.background]="'#fff'"
+>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.text-decoration-line]="'underline'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>
+
+<section
+    tuiTheme="dark"
+    [style.background]="'#000'"
+>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.text-decoration-line]="'underline'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>
+
+<section>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.color]="'var(--tui-status-negative)'"
+        [textContent]="'Link with icons'"
+    ></button>
+    <button
+        appearance=""
+        iconEnd="@tui.chevron-down"
+        iconStart="@tui.arrow-right"
+        tuiLink
+        type="button"
+        [style.color]="'var(--tui-status-negative)'"
+        [style.text-decoration-line]="'underline'"
+        [textContent]="'Link with icons'"
+    ></button>
+</section>
+`;export{i as default};

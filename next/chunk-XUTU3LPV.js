@@ -1,0 +1,63 @@
+import"./chunk-42JZD6NG.js";var i=`<tui-notification>
+    Don't forget import
+    <code>TuiCardLarge</code>
+</tui-notification>
+
+<div
+    appearance="floating"
+    tuiCardLarge
+>
+    <h3 tuiTitle="m">Inside a block</h3>
+    @for (item of items; track item) {
+        <button
+            tuiCell
+            type="button"
+        >
+            <div
+                appearance="accent"
+                [tuiAvatar]="item.icon"
+            ></div>
+            <span tuiTitle>
+                {{ item.title }}
+                <span tuiSubtitle>{{ item.subtitle }}</span>
+            </span>
+        </button>
+    }
+</div>
+
+<label>
+    Inside a dropdown
+    <tui-textfield
+        tuiChevron
+        [content]="content"
+        [tuiTextfieldCleaner]="false"
+    >
+        <input
+            tuiSelect
+            [(ngModel)]="value"
+        />
+
+        <tui-data-list-wrapper
+            *tuiDropdown
+            new
+            [itemContent]="content"
+            [items]="items"
+        />
+        <ng-template
+            #content
+            let-item
+        >
+            <span tuiCell>
+                <div
+                    appearance="primary"
+                    [tuiAvatar]="item.icon"
+                ></div>
+                <span tuiTitle>
+                    {{ item.title }}
+                    <span tuiSubtitle>{{ item.subtitle }}</span>
+                </span>
+            </span>
+        </ng-template>
+    </tui-textfield>
+</label>
+`;export{i as default};

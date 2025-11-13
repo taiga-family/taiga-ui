@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[31847],{31847:e=>{e.exports='<tui-textfield>\n    <input\n        placeholder="Meeting time"\n        tuiInputTime\n        [accept]="acceptableValues"\n        [(ngModel)]="value"\n    />\n\n    <tui-icon tuiTooltip="Only time from 10:00 to 18:00 AND divisible by 30 is permitted" />\n</tui-textfield>\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[47242],{24861:e=>{e.exports=".card {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n}\n"}}]);

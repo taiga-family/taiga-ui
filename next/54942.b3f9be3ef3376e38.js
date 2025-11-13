@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[54942],{54942:n=>{n.exports='<tui-textfield>\n    <label tuiLabel>Enter a number</label>\n\n    <input\n        tuiInputNumber\n        [formControl]="control"\n    />\n</tui-textfield>\n<tui-error [formControl]="control" />\n\n<p><strong>Control value:</strong></p>\n<code>{{ control.value | json }}</code>\n'}}]);

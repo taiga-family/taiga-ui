@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[47685],{47685:n=>{n.exports=":host {\n    display: flex;\n    gap: 1rem;\n}\n\ntui-input {\n    min-inline-size: 10rem;\n}\n"}}]);

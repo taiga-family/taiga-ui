@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[43202],{20821:e=>{e.exports='<tui-progress-circle\n    *tuiRepeatTimes="let _ of 4"\n    size="l"\n    [max]="100"\n    [value]="60"\n/>\n'}}]);

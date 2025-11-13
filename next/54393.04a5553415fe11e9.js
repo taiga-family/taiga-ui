@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[54393],{54393:n=>{n.exports='<tui-icon\n    background="@tui.info-filled"\n    icon="@tui.info"\n/>\n<tui-icon\n    badge="@tui.star"\n    icon="@tui.user"\n/>\n<img\n    alt=""\n    [src]="\'@tui.mastercard\' | tuiIcon"\n/>\n'}}]);

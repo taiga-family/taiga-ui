@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[71720],{71720:n=>{n.exports=".container {\n    border: 2px solid var(--tui-text-tertiary);\n    overflow: visible;\n\n    &:focus-within {\n        border-color: var(--tui-background-accent-1);\n    }\n}\n\n.editable {\n    outline: none;\n    padding: 1rem;\n}\n"}}]);

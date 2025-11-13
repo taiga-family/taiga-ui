@@ -1,0 +1,30 @@
+import"./chunk-42JZD6NG.js";var e=`<tui-textfield iconStart="@tui.search">
+    <label tuiLabel>Disabled</label>
+    <input
+        tuiTextfield
+        [disabled]="true"
+        [(ngModel)]="value"
+    />
+    <tui-icon tuiTooltip="Disabled does not show tooltip" />
+</tui-textfield>
+<tui-textfield iconStart="@tui.search">
+    <label tuiLabel>Read-only</label>
+    <input
+        placeholder="I am placeholder"
+        tuiTextfield
+        [readOnly]="true"
+        [(ngModel)]="value"
+    />
+    <tui-icon tuiTooltip="Readonly shows tooltip" />
+</tui-textfield>
+<tui-textfield iconStart="@tui.search">
+    <label tuiLabel>Invalid</label>
+    <input
+        placeholder="I am placeholder"
+        tuiTextfield
+        [invalid]="true"
+        [(ngModel)]="value"
+    />
+    <tui-icon tuiTooltip="Can also follow Angular validation" />
+</tui-textfield>
+`;export{e as default};

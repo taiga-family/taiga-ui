@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[22758],{22758:t=>{t.exports='<form [formGroup]="form">\n    <tui-input formControlName="user">\n        User\n        <tui-data-list-wrapper\n            *tuiDataList\n            [items]="items | tuiFilterByInput"\n        />\n    </tui-input>\n</form>\n'}}]);

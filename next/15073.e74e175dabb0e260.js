@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[15073],{15073:n=>{n.exports=".t-flag {\n    inline-size: 1.75rem;\n    block-size: 1.75rem;\n    border-radius: 50%;\n    margin-inline-end: 0.5rem;\n}\n\n[tuiOption] {\n    justify-content: flex-start;\n    gap: 0.5rem;\n}\n\nimg {\n    box-shadow: inset 0 0 0 1px var(--tui-border-normal);\n}\n"}}]);

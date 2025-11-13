@@ -1,0 +1,1 @@
+import{s as i}from"./chunk-DERVPRBY.js";var a=class{constructor(){this.appearanceVariants=["","error","dark"];this.appearance=this.appearanceVariants[0];this.directionVariants=[...i,["bottom","left"]];this.direction=this.directionVariants[0]}};export{a};

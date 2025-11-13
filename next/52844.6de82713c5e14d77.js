@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[52844],{52844:n=>{n.exports='@if (show) {\n    <div class="tui-space_bottom-2">fibonacci(42) = {{ fibonacci42 }}</div>\n}\n<button\n    tuiButton\n    type="button"\n    (click)="show = !show"\n>\n    Show/hide\n</button>\n'}}]);

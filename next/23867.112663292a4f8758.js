@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[23867],{23867:e=>{e.exports="[tuiFade] {\n    inline-size: 25rem;\n    block-size: 2.5rem;\n    hyphens: auto;\n}\n"}}]);

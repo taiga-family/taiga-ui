@@ -1,0 +1,72 @@
+import"./chunk-42JZD6NG.js";var r=`<tui-scrollbar>
+    <cdk-virtual-scroll-viewport
+        #viewport
+        appendOnly
+        tuiScrollable
+        class="viewport tui-zero-scrollbar"
+        [itemSize]="45"
+        [maxBufferPx]="500"
+        [minBufferPx]="400"
+    >
+        <table
+            tuiTable
+            [columns]="columns"
+        >
+            <thead>
+                <tr tuiThGroup>
+                    <th
+                        *tuiHead="'name'"
+                        tuiTh
+                        [sticky]="true"
+                        [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                    >
+                        Name
+                    </th>
+                    <th
+                        *tuiHead="'dob'"
+                        tuiTh
+                        [sticky]="true"
+                        [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                    >
+                        Date of Birth
+                    </th>
+                    <th
+                        *tuiHead="'age'"
+                        tuiTh
+                        [sorter]="ageSorter"
+                        [sticky]="true"
+                        [style.inset-block-start.px]="-(viewport.getOffsetToRenderedContentStart() || 0)"
+                    >
+                        Age
+                    </th>
+                </tr>
+            </thead>
+            <tbody tuiTbody>
+                <tr
+                    *cdkVirtualFor="let item of data | tuiTableSort"
+                    tuiTr
+                >
+                    <td
+                        *tuiCell="'name'"
+                        tuiTd
+                    >
+                        {{ item.name }}
+                    </td>
+                    <td
+                        *tuiCell="'dob'"
+                        tuiTd
+                    >
+                        {{ item.dob }}
+                    </td>
+                    <td
+                        *tuiCell="'age'"
+                        tuiTd
+                    >
+                        {{ getAge(item) }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </cdk-virtual-scroll-viewport>
+</tui-scrollbar>
+`;export{r as default};

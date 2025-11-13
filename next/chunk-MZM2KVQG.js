@@ -1,0 +1,18 @@
+import"./chunk-42JZD6NG.js";var n=`<tui-input-slider
+    tuiTextfieldSize="m"
+    class="slider"
+    [max]="length - 1"
+    [quantum]="1"
+    [tuiTextfieldCustomContent]="inputCustomContent"
+    [tuiTextfieldLabelOutside]="true"
+    [(ngModel)]="index"
+/>
+
+<ng-template #inputCustomContent>index</ng-template>
+
+<tui-pagination
+    [index]="index"
+    [length]="length"
+    (indexChange)="goToPage($event)"
+/>
+`;export{n as default};

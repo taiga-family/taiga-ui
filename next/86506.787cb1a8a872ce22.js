@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[86506],{86506:e=>{e.exports=".parameters {\n    margin-block-start: 0.75rem;\n    inline-size: 14rem;\n}\n"}}]);

@@ -1,0 +1,29 @@
+import"./chunk-42JZD6NG.js";var i=`<tui-doc-page
+    header="ElasticSticky"
+    package="ADDON-MOBILE"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>
+            Directive allows to scale "stuck" sticky heading. It can also be used as service
+            <code>TuiElasticStickyService</code>
+        </p>
+
+        <tui-doc-example
+            id="basic"
+            heading="Basic"
+            [component]="1 | tuiComponent"
+            [content]="1 | tuiExample"
+        />
+
+        <tui-doc-example
+            id="dynamic"
+            heading="Dynamic inner content"
+            [component]="2 | tuiComponent"
+            [content]="2 | tuiExample"
+        />
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>
+`;export{i as default};

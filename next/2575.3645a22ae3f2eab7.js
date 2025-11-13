@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[2575],{2575:e=>{e.exports="@import '@taiga-ui/core/styles/taiga-ui-local';\n\n:host {\n    display: flex;\n    flex-direction: row-reverse;\n    gap: 1rem;\n\n    @media @tui-mobile {\n        flex-direction: column;\n        margin-block-end: 1rem;\n    }\n}\n"}}]);

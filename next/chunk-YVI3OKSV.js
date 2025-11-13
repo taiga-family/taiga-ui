@@ -1,0 +1,15 @@
+import"./chunk-42JZD6NG.js";var t=`\`\`\`ts
+import {Component} from '@angular/core';
+import {TuiSwipeActions} from '@taiga-ui/addon-mobile';
+// ...
+
+@Component({
+  standalone: true,
+  imports: [
+    // ...
+    TuiSwipeActions,
+  ],
+})
+export class Example {}
+\`\`\`
+`;export{t as default};

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99441],{99441:n=>{n.exports="```ts\nimport {provideAnimations} from '@angular/platform-browser/animations';\nimport {provideTaiga} from '@taiga-ui/core';\n// ...\n\nbootstrapApplication(App, {\n  providers: [\n    provideAnimations(),\n    provideTaiga(),\n    //...\n  ],\n}).catch((err) => console.error(err));\n```\n"}}]);

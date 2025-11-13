@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[93159],{93159:t=>{t.exports='```html\n\x3c!-- Inline --\x3e\n<div tuiToast>\n  Notification\n  <button\n    tuiButton\n    type="button"\n  >\n    Action\n  </button>\n</div>\n\n\x3c!-- Portal --\x3e\n<ng-template [(tuiToast)]="open">\n  <button tuiToast>Interactive toast</button>\n</ng-template>\n```\n'}}]);

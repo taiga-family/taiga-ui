@@ -1,0 +1,33 @@
+import"./chunk-42JZD6NG.js";var a=`@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.dropdown {
+    display: flex;
+    inline-size: 14rem;
+    padding: 0.375rem 0.75rem;
+}
+
+.toggle {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.text {
+    padding: 0 0.75rem;
+}
+
+.label {
+    font: var(--tui-font-text-m);
+    color: var(--tui-text-tertiary);
+}
+
+.name {
+    font: var(--tui-font-heading-6);
+}
+
+.account {
+    font: var(--tui-font-text-s);
+    margin-block-start: 0.25rem;
+    color: var(--tui-text-secondary);
+}
+`;export{a as default};

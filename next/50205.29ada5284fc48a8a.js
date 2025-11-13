@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[50205],{50205:t=>{t.exports='```html\n<tui-pdf-viewer>\n  <h2 tuiTitle>title</h2>\n  <button tuiButton>Action</button>\n\n  <iframe [src]="src"></iframe>\n</tui-pdf-viewer>\n```\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[44554],{44554:n=>{n.exports='<div tuiComment="top">Good job</div>\n\n<div\n    tuiComment="bottom"\n    class="success"\n>\n    Cashback\n</div>\n\n<div\n    tuiComment="left"\n    class="primary"\n>\n    Extra payment\n</div>\n\n<div tuiComment="right">Check it out</div>\n'}}]);

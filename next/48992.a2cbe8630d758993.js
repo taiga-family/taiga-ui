@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[48992],{48992:n=>{n.exports='<p>Modified icon</p>\n<tui-icon tuiTooltip="Oh, snap!" />\n\n<p>Modified appearance</p>\n<tui-icon\n    appearance="negative"\n    icon="@tui.info"\n    tuiTooltip="Oh, snap!"\n/>\n'}}]);

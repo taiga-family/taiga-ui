@@ -1,0 +1,37 @@
+import"./chunk-42JZD6NG.js";var t=`<tui-doc-page
+    header="Pin"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        <p class="tui-space_vertial-4">
+            Pins are used to show a location on a 2D plane. Use
+            <code>color</code>
+            ,
+            <code>background</code>
+            ,
+            <code>border</code>
+            and
+            <code>box-shadow</code>
+            to customize the pin
+        </p>
+
+        <tui-notification>
+            Pins are designed to be absolutely positioned on map or similar medium, therefore specifically their center
+            is placed where you put them.
+        </tui-notification>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [fullsize]="true"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>
+`;export{t as default};

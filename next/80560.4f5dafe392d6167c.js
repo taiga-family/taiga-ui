@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[80560],{80560:e=>{e.exports="```ts\n@Injectable({\n  providedIn: 'root',\n})\nexport class MyPortalService extends TuiPortalService {}\n```\n"}}]);

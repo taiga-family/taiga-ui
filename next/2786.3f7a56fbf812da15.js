@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[2786],{2786:n=>{n.exports='```html\n<form\n  tuiAppearance="floating"\n  tuiCardLarge\n  tuiForm="l"\n>\n  \x3c!-- Form content --\x3e\n</form>\n```\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[65854],{65854:n=>{n.exports=".custom {\n    font: var(--tui-font-heading-5);\n    box-shadow: none;\n}\n"}}]);

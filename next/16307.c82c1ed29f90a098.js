@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[16307],{16307:e=>{e.exports=".tabs {\n    min-inline-size: 25rem;\n    padding-block-end: env(safe-area-inset-bottom);\n}\n"}}]);

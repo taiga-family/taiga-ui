@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[57150],{57150:e=>{e.exports='<tui-input-range\n    [max]="max"\n    [min]="min"\n    [tuiNumberFormat]="numberFormat"\n    [(ngModel)]="value"\n>\n    <label tuiLabel>Type number like a German</label>\n</tui-input-range>\n'}}]);

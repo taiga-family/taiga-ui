@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[2447],{2447:n=>{n.exports="form {\n    display: flex;\n    flex-direction: column;\n    gap: 1rem;\n}\n\nsection {\n    display: flex;\n    gap: inherit;\n\n    tui-textfield {\n        flex: 1;\n    }\n}\n"}}]);

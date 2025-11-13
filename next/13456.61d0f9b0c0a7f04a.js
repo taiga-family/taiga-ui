@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[13456],{13456:e=>{e.exports=".content {\n    padding: 0.5rem 0;\n    white-space: normal;\n}\n"}}]);

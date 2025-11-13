@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[34547],{34547:e=>{e.exports='```html\n<div tuiComment="bottom">comment</div>\n```\n'}}]);

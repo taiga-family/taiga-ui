@@ -1,0 +1,16 @@
+import"./chunk-42JZD6NG.js";var o=`@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.content {
+    font: var(--tui-font-text-xl);
+    background-color: var(--tui-background-base);
+    inline-size: 50rem;
+    block-size: 68.75rem;
+    padding: 3.75rem;
+    box-sizing: border-box;
+    border-radius: 0.75rem;
+}
+
+.polymorpheus {
+    padding: 2.5rem 10.375rem;
+}
+`;export{o as default};

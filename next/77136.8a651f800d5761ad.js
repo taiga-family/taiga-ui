@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[77136],{77136:c=>{c.exports=".bar {\n    block-size: 6.25rem;\n\n    --tui-chart-categorical-00: #ffd700;\n    --tui-chart-categorical-01: #87ceeb;\n    --tui-chart-categorical-02: #ffc0cb;\n}\n"}}]);

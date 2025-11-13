@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[51775],{51775:e=>{e.exports="<tui-loader>\n    This example demonstrates how to configure loader options using tuiLoaderOptionsProvider. The loader is configured\n    with size 'l', overlay enabled, and inheritColor disabled.\n</tui-loader>\n"}}]);

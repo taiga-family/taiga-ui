@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[33938],{33938:n=>{n.exports='<div\n    tuiPin\n    class="blue"\n></div>\n<div\n    tuiPin\n    class="yellow"\n></div>\n<div\n    tuiPin\n    class="green"\n></div>\n<div\n    tuiPin\n    class="red"\n></div>\n'}}]);

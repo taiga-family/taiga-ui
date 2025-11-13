@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[57685],{57685:e=>{e.exports='@for (size of sizes; track size) {\n    <section>\n        <div\n            tuiAvatar\n            [size]="size"\n        >\n            {{ size | uppercase }}\n        </div>\n        <div\n            tuiAvatar="@tui.user"\n            [size]="size"\n        ></div>\n    </section>\n}\n'}}]);

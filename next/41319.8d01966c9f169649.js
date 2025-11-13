@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[41319],{41319:e=>{e.exports="```html\n<p>Obfuscated value: {{'abc' | tuiObfuscate}}</p>\n<p>Obfuscated value: {{'abc' | tuiObfuscate: '#'}}</p>\n<p>Obfuscated value: {{'abc' | tuiObfuscate: 'city'}}</p>\n<p>Obfuscated value: {{'abc' | tuiObfuscate: 'phone'}}</p>\n```\n"}}]);

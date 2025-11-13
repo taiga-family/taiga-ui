@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40887],{40887:n=>{n.exports="[tuiTh],\n[tuiTd] {\n    border-inline-start: none;\n    border-inline-end: none;\n}\n\n[tuiTable][data-size='s'] [tuiTitle] {\n    flex-direction: row;\n    gap: 0.375rem;\n}\n"}}]);

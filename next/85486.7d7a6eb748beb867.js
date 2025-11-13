@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85486],{85486:n=>{n.exports="```ts\nimport {TuiPdfViewer} from '@taiga-ui/layout';\n// ...\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiPdfViewer,\n  ],\n})\nexport class Example {}\n```\n"}}]);

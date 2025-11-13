@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[25013],{25013:e=>{e.exports='<input\n    tuiLike="var(--tui-status-negative)"\n    type="checkbox"\n/>\n\n<input\n    size="s"\n    tuiLike\n    type="checkbox"\n    [checkedIcon]="\'@tui.star-filled\'"\n    [uncheckedIcon]="\'@tui.star\'"\n/>\n'}}]);

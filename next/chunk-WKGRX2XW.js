@@ -1,0 +1,17 @@
+import"./chunk-42JZD6NG.js";var i=`<tui-badge
+    appearance="primary"
+    size="xl"
+    class="badge"
+>
+    <div tuiFade>Very long value in badge</div>
+</tui-badge>
+
+<tui-badge
+    appearance="accent"
+    iconStart="@tui.box"
+    size="l"
+    class="badge tui-space_top-3"
+>
+    <div class="t-ellipsis">Very long value in badge</div>
+</tui-badge>
+`;export{i as default};

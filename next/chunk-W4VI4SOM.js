@@ -1,0 +1,25 @@
+import"./chunk-42JZD6NG.js";var r=`:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+header {
+    background: var(--tui-background-neutral-1);
+    box-shadow: 0 -10rem 0 10.5rem var(--tui-background-neutral-1);
+}
+
+.colors {
+    background: var(--tui-background-base);
+
+    &::before {
+        color: var(--tui-text-action);
+        box-shadow: none;
+    }
+
+    .active {
+        color: #fff;
+    }
+}
+`;export{r as default};

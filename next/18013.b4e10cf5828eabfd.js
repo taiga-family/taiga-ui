@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18013],{18013:e=>{e.exports='<tui-textfield>\n    <label tuiLabel>Click icon to copy</label>\n    <input\n        placeholder="I am placeholder"\n        tuiTextfield\n        [(ngModel)]="value"\n    />\n    <tui-icon tuiCopy />\n</tui-textfield>\n'}}]);

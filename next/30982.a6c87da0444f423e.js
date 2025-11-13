@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[30982],{30982:n=>{n.exports='```html\n<tui-root>\n  \x3c!-- content of your app --\x3e\n  <ng-container ngProjectAs="tuiOverContent">\n    \x3c!-- Content over app content in the portal layer --\x3e\n  </ng-container>\n</tui-root>\n```\n'}}]);

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[95016],{95016:n=>{n.exports='<button\n    tuiButton\n    type="button"\n    class="tui-space_bottom-5"\n    (click)="onClick()"\n>\n    Show input\n</button>\n@if (showInput) {\n    <tui-input\n        tuiAutoFocus\n        [(ngModel)]="model"\n    >\n        Focusable tui-input\n    </tui-input>\n}\n'}}]);

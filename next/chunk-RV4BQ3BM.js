@@ -1,0 +1,27 @@
+import"./chunk-42JZD6NG.js";var l=`<tui-textfield>
+    <label tuiLabel>Input example</label>
+    <input
+        minlength="5"
+        tuiTextfield
+        [(ngModel)]="value"
+    />
+</tui-textfield>
+<label
+    tuiLabel
+    class="tui-space_vertical-4"
+>
+    <input
+        size="s"
+        tuiCheckbox
+        type="checkbox"
+        [(ngModel)]="checkbox"
+    />
+    <small>Checkbox example</small>
+</label>
+<button
+    tuiButton
+    type="button"
+>
+    Submit
+</button>
+`;export{l as default};

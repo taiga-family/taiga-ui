@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[36266],{36266:n=>{n.exports="```ts\nimport {TuiPulse} from '@taiga-ui/kit';\n// ...\n\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiPulse,\n  ],\n})\nexport class Example {}\n```\n"}}]);

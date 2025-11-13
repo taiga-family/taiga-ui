@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18050],{18050:n=>{n.exports="```ts\n@Component({\n  standalone: true,\n  imports: [\n    // ...\n    TuiShimmer,\n  ],\n})\nexport class Example {\n  protected shimmer = true;\n}\n```\n"}}]);

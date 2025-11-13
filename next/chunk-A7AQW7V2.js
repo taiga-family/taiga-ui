@@ -1,0 +1,7 @@
+import"./chunk-42JZD6NG.js";var m=`<div class="example">
+    <tui-mobile-calendar
+        [max]="max"
+        [min]="min"
+    />
+</div>
+`;export{m as default};

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[63832],{63832:e=>{e.exports="tui-action-bar {\n    top: ~'max(1rem, env(safe-area-inset-top))';\n    bottom: unset;\n}\n"}}]);

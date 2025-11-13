@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[61137],{61137:e=>{e.exports='@for (size of sizes; track size) {\n    <tui-progress-circle\n        [max]="100"\n        [size]="size"\n        [value]="60"\n    />\n}\n'}}]);

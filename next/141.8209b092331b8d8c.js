@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[141],{141:n=>{n.exports=".content {\n    display: flex;\n    margin: 2rem 0;\n}\n\n.left {\n    margin-inline-end: 2rem;\n    min-inline-size: 10rem;\n    inline-size: 10rem;\n}\n\n.right {\n    margin-inline-start: 2rem;\n    min-inline-size: 10rem;\n    inline-size: 10rem;\n}\n"}}]);

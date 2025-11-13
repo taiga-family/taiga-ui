@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[77145],{77145:e=>{e.exports='```html\n\x3c!-- Usual HTML element --\x3e\n<div [tuiShimmer]="shimmer">I\'m shimmering</div>\n\n\x3c!-- Or other component of Taiga UI --\x3e\n<tui-calendar [tuiShimmer]="shimmer" />\n```\n'}}]);

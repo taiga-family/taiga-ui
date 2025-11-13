@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[9202],{9202:n=>{n.exports="[tuiGroup] {\n    inline-size: fit-content;\n    margin: 0 auto 1rem;\n}\n\n[tuiSubtitle] {\n    color: var(--tui-text-secondary);\n}\n\n.tui-leave {\n    max-block-size: 0;\n}\n"}}]);

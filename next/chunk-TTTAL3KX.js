@@ -1,0 +1,1 @@
+import"./chunk-42JZD6NG.js";var t="```html\n<p>Obfuscated value: {{'abc' | tuiObfuscate}}</p>\n<p>Obfuscated value: {{'abc' | tuiObfuscate: '#'}}</p>\n<p>Obfuscated value: {{'abc' | tuiObfuscate: 'city'}}</p>\n<p>Obfuscated value: {{'abc' | tuiObfuscate: 'phone'}}</p>\n```\n";export{t as default};

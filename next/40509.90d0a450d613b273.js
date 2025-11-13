@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[40509],{40509:e=>{e.exports='```html\n<tui-textfield>\n  <input\n    tuiInputNumber\n    [tuiNumberFormat]="{decimal, precision, zeroPadding, rounding, thousandSeparator, decimalSeparator}"\n  />\n</tui-textfield>\n```\n'}}]);

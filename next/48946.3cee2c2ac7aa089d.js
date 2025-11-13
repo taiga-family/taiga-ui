@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[48946],{48946:c=>{c.exports='@for (chip of chips; track chip) {\n    <tui-chip\n        appearance="custom"\n        [style.background-color]="chip | tuiAutoColor"\n    >\n        {{ chip }}\n    </tui-chip>\n}\n'}}]);

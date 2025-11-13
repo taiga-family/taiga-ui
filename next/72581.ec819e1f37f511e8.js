@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[72581],{72581:e=>{e.exports='<tui-textfield [tuiTextfieldCleaner]="false">\n    <label tuiLabel>Choose range</label>\n    <input\n        tuiInputDateRange\n        [(ngModel)]="value"\n    />\n    <tui-calendar-range *tuiDropdown />\n</tui-textfield>\n'}}]);

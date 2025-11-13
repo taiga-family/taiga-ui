@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[63731],{63731:e=>{e.exports='```html\n<span [tuiSkeleton]="true">Loading..</span>\n```\n'}}]);

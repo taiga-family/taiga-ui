@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[18076],{18076:n=>{n.exports='```html\n<form [formGroup]="testForm">\n  <tui-textfield>\n    <input\n      tuiInputColor\n      [formControl]="control"\n    />\n  </tui-textfield>\n</form>\n```\n'}}]);

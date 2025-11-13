@@ -1,0 +1,22 @@
+import"./chunk-42JZD6NG.js";var a=`<p (tuiHoveredChange)="onHovered($event)">
+    Hover
+    <span
+        [class.hidden]="!hovered"
+        (tuiPresentChange)="onCSS($event)"
+    >
+        I am a component hidden with CSS
+    </span>
+    @if (hovered) {
+        <span (tuiPresentChange)="onIf($event)">I am a component hidden with *ngIf</span>
+    }
+</p>
+<p>Counter of component appearance minus counter of its disappearance:</p>
+<p>
+    CSS:
+    <tui-badge>{{ counterCSS }}</tui-badge>
+</p>
+<p>
+    ngIf:
+    <tui-badge>{{ counterIf }}</tui-badge>
+</p>
+`;export{a as default};

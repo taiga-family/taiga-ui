@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[80581],{80581:n=>{n.exports=".table {\n    inline-size: 100%;\n}\n\n.filters {\n    display: flex;\n    gap: 1rem;\n    white-space: nowrap;\n    align-items: center;\n}\n\n.input {\n    flex: 1;\n}\n\n.columns {\n    inline-size: 10.625rem;\n}\n\n.match {\n    background: var(--tui-service-selection-background);\n}\n"}}]);

@@ -1,0 +1,21 @@
+import"./chunk-42JZD6NG.js";var a=`<tui-doc-page
+    header="FluidTypography"
+    package="KIT"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p>A directive that adjusts font size for the text to fit in the container</p>
+
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            />
+        }
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>
+`;export{a as default};

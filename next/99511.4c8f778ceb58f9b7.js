@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[99511],{99511:e=>{e.exports="<p>\n    A token with a factory. It takes WA_USER_AGENT token and parses it with a complex Regex to detect users with mobile\n    devices\n</p>\n"}}]);

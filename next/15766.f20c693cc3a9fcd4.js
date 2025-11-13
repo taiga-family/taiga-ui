@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[15766],{15766:e=>{e.exports=":host {\n    display: flex;\n    gap: 1rem;\n}\n\n.text {\n    background: var(--tui-background-accent-opposite-pressed);\n    color: var(--tui-background-base);\n}\n"}}]);

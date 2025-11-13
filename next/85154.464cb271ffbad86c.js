@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[85154],{85154:n=>{n.exports='```html\n<div\n  tuiButtonGroup\n  tuiAppearance="elevated"\n>\n  <button>\n    <tui-icon icon="@tui.circle-plus"></tui-icon>\n    Create a payment\n  </button>\n</div>\n```\n'}}]);

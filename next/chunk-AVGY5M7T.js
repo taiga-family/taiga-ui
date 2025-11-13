@@ -1,0 +1,31 @@
+import"./chunk-42JZD6NG.js";var r=`'{{ formattedNumber }}' = tuiFormatNumber(value, precision, decimalSeparator, thousandSeparator);
+
+<form [formGroup]="parametersForm">
+    <div class="parameters">
+        <tui-input
+            formControlName="value"
+            class="tui-space_top-2"
+        >
+            value
+        </tui-input>
+        <tui-input
+            formControlName="precision"
+            class="tui-space_top-2"
+        >
+            precision
+        </tui-input>
+        <tui-input
+            formControlName="decimalSeparator"
+            class="tui-space_top-2"
+        >
+            decimalSeparator
+        </tui-input>
+        <tui-input
+            formControlName="thousandSeparator"
+            class="tui-space_top-2"
+        >
+            thousandSeparator
+        </tui-input>
+    </div>
+</form>
+`;export{r as default};

@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[19815],{19815:e=>{e.exports='```html\n<div tuiItemGroup>\n  <tui-chip appearance="primary">{{ value }}</tui-chip>\n</div>\n```\n'}}]);

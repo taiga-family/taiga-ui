@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[7160],{7160:n=>{n.exports='<tui-textfield>\n    <input\n        maxlength="4"\n        placeholder="••••"\n        tuiInputPin\n        [formControl]="control"\n    />\n</tui-textfield>\n'}}]);

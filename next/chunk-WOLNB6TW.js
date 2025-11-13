@@ -1,0 +1,35 @@
+import"./chunk-42JZD6NG.js";var e=`<tui-doc-page header="Shadows">
+    <p class="title tui-space_bottom-5">Different kinds of shadows can be applied with css variables:</p>
+    <div class="examples">
+        <div class="item item_default">
+            <span>
+                Basic shadow:
+                <code class="code">--tui-shadow</code>
+                with
+                <code class="code">--tui-shadow-small-hover</code>
+                when hovered
+            </span>
+        </div>
+        <div class="item item_dropdown">
+            Dropdown shadow:
+            <code class="code">--tui-shadow-medium</code>
+        </div>
+        <div class="item item_modal">
+            Modal shadow:
+            <code class="code">--tui-shadow-popup</code>
+        </div>
+        <div class="item item_sidebar">
+            Sidebar shadow:
+            <code class="code">--tui-shadow-medium</code>
+        </div>
+        <div class="item item_navigation">
+            Navigation shadow:
+            <code class="code">--tui-shadow-small</code>
+        </div>
+        <div class="item item_mobile">
+            Mobile modal shadow:
+            <code class="code">--tui-shadow-popup</code>
+        </div>
+    </div>
+</tui-doc-page>
+`;export{e as default};

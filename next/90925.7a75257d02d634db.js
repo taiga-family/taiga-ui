@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[90925],{90925:e=>{e.exports="[tuiCardLarge] {\n    max-inline-size: 21.4375rem;\n}\n"}}]);

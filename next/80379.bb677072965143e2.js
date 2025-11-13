@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[80379],{80379:e=>{e.exports='<tui-textfield>\n    <label tuiLabel>Enter 12-hour time format</label>\n\n    <input\n        mode="HH:MM AA"\n        tuiInputTime\n        [formControl]="control"\n    />\n</tui-textfield>\n\n<p><strong>Control value:</strong></p>\n<pre><code>{{ control.value | json }}</code></pre>\n'}}]);

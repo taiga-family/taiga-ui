@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[52025],{52025:e=>{e.exports="label {\n    display: flex;\n    align-items: center;\n    gap: 0.5rem;\n}\n"}}]);

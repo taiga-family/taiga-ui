@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[32804],{32804:e=>{e.exports="```less\n&.tui-enter,\n&.tui-leave {\n  animation-name: tuiFade, tuiSlide;\n}\n```\n"}}]);

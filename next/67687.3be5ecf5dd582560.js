@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[67687],{67687:e=>{e.exports=".section {\n    display: flex;\n    gap: 1rem;\n}\n"}}]);

@@ -1,0 +1,24 @@
+import"./chunk-42JZD6NG.js";var t=`<form [formGroup]="userDetailsForm">
+    <p>
+        <tui-input formControlName="name">Name</tui-input>
+        <tui-error formControlName="name" />
+    </p>
+
+    <div formGroupName="address">
+        <p>
+            <tui-input formControlName="street">Street</tui-input>
+            <tui-error formControlName="street" />
+        </p>
+
+        <p>
+            <tui-input formControlName="zipCode">Zip code</tui-input>
+            <tui-error formControlName="zipCode" />
+        </p>
+
+        <p>
+            <tui-input formControlName="city">City</tui-input>
+            <tui-error formControlName="city" />
+        </p>
+    </div>
+</form>
+`;export{t as default};

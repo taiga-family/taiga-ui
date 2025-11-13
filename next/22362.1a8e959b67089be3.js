@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[22362],{22362:e=>{e.exports=":host {\n    display: flex;\n    flex-direction: column;\n    gap: 1.5rem;\n}\n\n.green {\n    color: var(--tui-chart-categorical-20);\n}\n"}}]);

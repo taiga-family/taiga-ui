@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[62717],{62717:e=>{e.exports='<div\n    tuiSurface\n    tuiTheme="dark"\n    class="blur"\n>\n    <h2 class="title">backdrop-filter</h2>\n    <p>You can use backdrop-filter on tuiSurface element to blur the background behind it.</p>\n    Never use this mode with shadow\n</div>\n'}}]);

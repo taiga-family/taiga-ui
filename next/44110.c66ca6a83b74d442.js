@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[44110],{44110:e=>{e.exports='<label tuiLabel>\n    Name\n    <tui-textfield tuiTextfieldSize="m">\n        <input\n            placeholder="John Cleese"\n            tuiTextfield\n            [formControl]="test"\n        />\n    </tui-textfield>\n    <tui-error [formControl]="test" />\n</label>\n'}}]);

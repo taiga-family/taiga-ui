@@ -1,0 +1,14 @@
+import"./chunk-42JZD6NG.js";var e=`@import '@taiga-ui/core/styles/taiga-ui-local';
+
+.ticks-labels {
+    .tui-slider-ticks-labels();
+
+    color: var(--tui-text-secondary);
+    align-items: center;
+    margin-block-start: 0.25rem;
+}
+
+tui-icon::before {
+    font-size: 1rem;
+}
+`;export{e as default};

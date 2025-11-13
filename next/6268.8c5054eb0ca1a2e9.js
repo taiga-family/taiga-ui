@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[6268],{6268:n=>{n.exports=":host {\n    display: block;\n}\n\ntable {\n    inline-size: 100%;\n    border-spacing: 0;\n}\n\nth,\ntd {\n    text-align: start;\n    border: 1px solid var(--tui-border-normal);\n    block-size: 3.375rem;\n    padding: 0 1rem;\n    vertical-align: middle;\n}\n"}}]);

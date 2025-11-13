@@ -1,1 +1,0 @@
-(self.webpackChunkdemo=self.webpackChunkdemo||[]).push([[51541],{51541:n=>{n.exports="```ts\nimport {FormsModule} from '@angular/forms';\nimport {TuiInputRange} from '@taiga-ui/kit';\n\n@Component({\n  imports: [\n    // ...\n    FormsModule,\n    TuiInputRange,\n  ],\n  // ...\n})\nexport class Example {\n  value = [0, 0];\n}\n```\n"}}]);
