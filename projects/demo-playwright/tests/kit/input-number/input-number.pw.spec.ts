@@ -681,6 +681,12 @@ describe('InputNumber', () => {
                                 prefix + postfix,
                             );
 
+                            await inputNumber.textfield.clear();
+
+                            await expect(inputNumber.textfield).toHaveValue(
+                                prefix + postfix,
+                            );
+
                             await inputNumber.textfield.pressSequentially('42');
 
                             await expect(inputNumber.textfield).toHaveValue(

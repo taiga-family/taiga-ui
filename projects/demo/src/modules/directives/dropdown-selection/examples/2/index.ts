@@ -26,7 +26,6 @@ import {
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiTextarea} from '@taiga-ui/kit';
-import {TuiTextareaModule} from '@taiga-ui/legacy';
 import {type Observable} from 'rxjs';
 
 export interface User {
@@ -45,7 +44,6 @@ export interface User {
         TuiInitialsPipe,
         TuiMapperPipe,
         TuiTextarea,
-        TuiTextareaModule,
         TuiTextfield,
     ],
     templateUrl: './index.html',

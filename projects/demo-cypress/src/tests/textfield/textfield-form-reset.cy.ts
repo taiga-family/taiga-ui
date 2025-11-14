@@ -5,7 +5,7 @@ import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {
     TuiChevron,
     TuiComboBox,
-    TuiDataListWrapperComponent,
+    TuiDataListWrapper,
     TuiInputDate,
     TuiInputDateRange,
     TuiInputMonth,
@@ -20,7 +20,7 @@ import {
         ReactiveFormsModule,
         TuiChevron,
         TuiComboBox,
-        TuiDataListWrapperComponent,
+        TuiDataListWrapper,
         TuiInputDate,
         TuiInputDateRange,
         TuiInputMonth,

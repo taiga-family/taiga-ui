@@ -36,11 +36,11 @@ export default class Page extends Array {
     ];
 
     protected readonly [2] = {
-        'component.ts': import('./examples/3/component.ts?raw'),
+        'component.ts': import('./examples/3/component.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly [4] = {
-        'service.ts': import('./examples/5/service.ts?raw'),
+        'service.ts': import('./examples/5/service.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected data = 'Data';

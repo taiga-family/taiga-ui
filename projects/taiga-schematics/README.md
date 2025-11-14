@@ -13,7 +13,7 @@ consisting of multiple base libraries and several add-ons
 
 ## How to use
 
-```
+```bash
 ng add taiga-ui
 ```
 

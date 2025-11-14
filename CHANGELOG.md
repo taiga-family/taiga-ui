@@ -2179,21 +2179,16 @@ command:
 
 **Angular CLI:**
 
-```
+```bash
 ng update @taiga-ui/cdk
 ```
 
 **Nx CLI:**
 
-```
+```bash
 nx migrate @taiga-ui/cdk
 nx migrate --run-migrations=migrations.json
 ```
-
-# Changelog
-
-All notable changes to this project will be documented in this file. See
-[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ## [3.x CHANGELOG...](https://github.com/taiga-family/taiga-ui/blob/v3.x/CHANGELOG.md)
 

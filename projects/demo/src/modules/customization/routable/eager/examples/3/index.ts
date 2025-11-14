@@ -10,6 +10,6 @@ import {TuiDocCode} from '@taiga-ui/addon-doc';
     changeDetection,
 })
 export default class TuiEagerExample3 {
-    protected readonly html = import('../setup/html.md?raw');
-    protected readonly routes = import('../setup/routes.md?raw');
+    protected readonly html = import('../setup/html.md');
+    protected readonly routes = import('../setup/routes.md');
 }
