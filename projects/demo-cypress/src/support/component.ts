@@ -2,7 +2,7 @@ import 'cypress-plugin-tab';
 import './commands';
 
 import {provideNoopAnimations} from '@angular/platform-browser/animations';
-import {provideTaiga} from '@taiga-ui/core';
+import {provideTaiga, TUI_ANIMATIONS_SPEED} from '@taiga-ui/core';
 import {mount} from 'cypress/angular';
 import addCompareSnapshotCommand from 'cypress-image-diff-js/command';
 
@@ -24,6 +24,7 @@ export const stableMount: typeof mount = (component, config) => {
             ...(config?.providers || []),
             provideNoopAnimations(),
             provideTaiga(),
+            {provide: TUI_ANIMATIONS_SPEED, useValue: 0},
         ],
     }).then((mountResponse) =>
         cy

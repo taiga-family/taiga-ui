@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, type OnInit} from '@angular/core';
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
+import {TuiRoot, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiSelect} from '@taiga-ui/kit';
 import {delay, of} from 'rxjs';
 
@@ -36,7 +36,6 @@ import {delay, of} from 'rxjs';
         </tui-root>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{provide: TUI_ANIMATIONS_SPEED, useValue: 0}],
 })
 export class TestTextfield implements OnInit {
     protected readonly form = new FormGroup({
