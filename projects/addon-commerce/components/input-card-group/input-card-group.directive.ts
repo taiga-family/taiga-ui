@@ -8,16 +8,16 @@ import {BehaviorSubject, combineLatest, map} from 'rxjs';
     host: {'[class._compact]': 'compact()'},
 })
 export class TuiInputCardGroupDirective {
-    private readonly c$ = new BehaviorSubject(false);
-    private readonly m$ = inject(TuiBreakpointService).pipe(map((b) => b === 'mobile'));
+    readonly #c$ = new BehaviorSubject(false);
+    readonly #m$ = inject(TuiBreakpointService).pipe(map((b) => b === 'mobile'));
 
-    public readonly compact$ = combineLatest([this.c$, this.m$]).pipe(
+    public readonly compact$ = combineLatest([this.#c$, this.#m$]).pipe(
         map((c) => c.some(Boolean)),
     );
 
     public readonly compact = toSignal(this.compact$, {initialValue: false});
 
     public set compactSetter(compact: boolean) {
-        this.c$.next(compact);
+        this.#c$.next(compact);
     }
 }
