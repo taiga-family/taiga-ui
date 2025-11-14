@@ -3,15 +3,13 @@ import {
     Component,
     computed,
     type ElementRef,
-    EventEmitter,
     forwardRef,
     inject,
-    Input,
+    input,
     isSignal,
-    Output,
+    output,
     type QueryList,
-    signal,
-    ViewChild,
+    viewChild,
     ViewChildren,
 } from '@angular/core';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
@@ -51,7 +49,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
     providers: [tuiAsDataListAccessor(TuiDataListWrapperComponent)],
 })
 export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccessor<T> {
-    private readonly datalist = signal<TuiDataListComponent<T> | null>(null);
+    private readonly datalist = viewChild(TuiDataListComponent<T>);
     private readonly itemsHandlers: TuiItemsHandlers<T> = inject(TUI_ITEMS_HANDLERS);
     // TODO(v5): delete
     private readonly itemsHandlersLegacy: TuiItemsHandlersLegacy<T> = inject(
@@ -68,30 +66,28 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
 
     protected readonly newOptionMode = tuiInjectElement().hasAttribute('new');
 
-    @Input()
-    public items: readonly K[] | null = [];
+    public readonly items = input<readonly K[] | null>([]);
 
-    @Input()
-    public disabledItemHandler: TuiBooleanHandler<T> = this.newOptionMode
-        ? this.itemsHandlers?.disabledItemHandler()
-        : this.itemsHandlersLegacy.disabledItemHandler;
+    public readonly disabledItemHandler = input<TuiBooleanHandler<T>>(
+        this.newOptionMode
+            ? this.itemsHandlers?.disabledItemHandler()
+            : this.itemsHandlersLegacy.disabledItemHandler,
+    );
 
-    @Input()
-    public emptyContent: PolymorpheusContent;
+    public readonly emptyContent = input<PolymorpheusContent>();
 
-    @Input()
-    public size = tuiInjectDataListSize();
+    public readonly size = input(tuiInjectDataListSize());
 
-    @Output()
-    public readonly itemClick = new EventEmitter<T>();
+    public readonly itemClick = output<T>();
 
     public readonly options = computed(() => this.datalist()?.options() ?? []);
 
-    @Input()
-    public itemContent: PolymorpheusContent<TuiValueContentContext<T>> = ({$implicit}) =>
-        this.newOptionMode
-            ? this.itemsHandlers.stringify()($implicit)
-            : this.itemsHandlersLegacy.stringify($implicit);
+    public readonly itemContent = input<PolymorpheusContent<TuiValueContentContext<T>>>(
+        ({$implicit}) =>
+            this.newOptionMode
+                ? this.itemsHandlers.stringify()($implicit)
+                : this.itemsHandlersLegacy.stringify($implicit),
+    );
 
     public getContext(
         $implicit: T,
@@ -111,13 +107,7 @@ export class TuiDataListWrapperComponent<T, K = T> implements TuiDataListAccesso
             .filter(tuiIsPresent);
     }
 
-    // TODO(v5): use signal `viewChild`
-    @ViewChild(TuiDataListComponent)
-    protected set datalistSetter(x: TuiDataListComponent<T>) {
-        this.datalist.set(x);
-    }
-
-    protected $cast(items: readonly K[]): readonly T[] {
+    protected $cast(items: readonly K[] | null): readonly T[] {
         return items as unknown as readonly T[];
     }
 }

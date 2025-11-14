@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {TuiElement} from '@taiga-ui/cdk/directives/element';
 import {tuiAsDataListAccessor, TuiDataList} from '@taiga-ui/core/components/data-list';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
@@ -30,6 +30,5 @@ export class TuiDataListGroupWrapperComponent<T> extends TuiDataListWrapperCompo
 > {
     protected readonly multi = inject(TuiMultiSelectGroupDirective, {optional: true});
 
-    @Input()
-    public labels: readonly string[] = [];
+    public readonly labels = input<readonly string[]>([]);
 }

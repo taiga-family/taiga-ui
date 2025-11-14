@@ -1,10 +1,10 @@
-@if (items) {
+@if (items()) {
     <tui-data-list
-        [emptyContent]="emptyContent"
-        [size]="size"
+        [emptyContent]="emptyContent()"
+        [size]="size()"
     >
         @if (newOptionMode) {
-            @for (item of $cast(items); track item) {
+            @for (item of $cast(items()); track item) {
                 <button
                     #elementRef="elementRef"
                     automation-id="tui-data-list-wrapper__option"
@@ -12,29 +12,31 @@
                     tuiElement
                     tuiOption
                     type="button"
-                    [disabled]="disabledItemHandler(item)"
+                    [disabled]="disabledItemHandler()(item)"
                     [value]="item"
                     (click.capture)="itemClick.emit(item)"
                 >
-                    <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                    <ng-container *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)">
                         {{ text }}
                     </ng-container>
                 </button>
             }
         } @else {
-            @for (item of $cast(items); track item) {
+            @for (item of $cast(items()); track item) {
                 <button
                     #elementRef="elementRef"
                     automation-id="tui-data-list-wrapper__option"
                     tuiElement
                     tuiOption
                     type="button"
-                    [disabled]="disabledItemHandler(item)"
+                    [disabled]="disabledItemHandler()(item)"
                     [value]="item"
                     (click)="itemClick.emit(item)"
                 >
                     <span class="t-content">
-                        <ng-container *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)">
+                        <ng-container
+                            *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)"
+                        >
                             {{ text }}
                         </ng-container>
                     </span>

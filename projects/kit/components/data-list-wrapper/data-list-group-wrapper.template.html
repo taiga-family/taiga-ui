@@ -1,13 +1,13 @@
-@if (items) {
+@if (items()) {
     <tui-data-list
-        [emptyContent]="emptyContent"
-        [size]="size"
+        [emptyContent]="emptyContent()"
+        [size]="size()"
     >
-        @for (group of items; track group) {
+        @for (group of items(); track group) {
             @if (multi) {
                 <tui-opt-group
                     tuiMultiSelectGroup
-                    [label]="labels[$index] || ''"
+                    [label]="labels()[$index] || ''"
                 >
                     @if (newOptionMode) {
                         @for (item of group; track $index) {
@@ -17,12 +17,12 @@
                                 tuiElement
                                 tuiOption
                                 type="button"
-                                [disabled]="disabledItemHandler(item)"
+                                [disabled]="disabledItemHandler()(item)"
                                 [value]="item"
                                 (click.capture)="itemClick.emit(item)"
                             >
                                 <ng-container
-                                    *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)"
+                                    *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)"
                                 >
                                     {{ text }}
                                 </ng-container>
@@ -37,12 +37,12 @@
                                 tuiElement
                                 tuiOption
                                 type="button"
-                                [disabled]="disabledItemHandler(item)"
+                                [disabled]="disabledItemHandler()(item)"
                                 [value]="item"
                                 (click)="itemClick.emit(item)"
                             >
                                 <ng-container
-                                    *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)"
+                                    *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)"
                                 >
                                     {{ text }}
                                 </ng-container>
@@ -51,7 +51,7 @@
                     }
                 </tui-opt-group>
             } @else {
-                <tui-opt-group [label]="labels[$index]">
+                <tui-opt-group [label]="labels()[$index]">
                     @if (newOptionMode) {
                         @for (item of group; track item) {
                             <button
@@ -60,12 +60,12 @@
                                 tuiElement
                                 tuiOption
                                 type="button"
-                                [disabled]="disabledItemHandler(item)"
+                                [disabled]="disabledItemHandler()(item)"
                                 [value]="item"
                                 (click.capture)="itemClick.emit(item)"
                             >
                                 <ng-container
-                                    *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)"
+                                    *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)"
                                 >
                                     {{ text }}
                                 </ng-container>
@@ -80,12 +80,12 @@
                                 tuiElement
                                 tuiOption
                                 type="button"
-                                [disabled]="disabledItemHandler(item)"
+                                [disabled]="disabledItemHandler()(item)"
                                 [value]="item"
                                 (click)="itemClick.emit(item)"
                             >
                                 <ng-container
-                                    *polymorpheusOutlet="itemContent as text; context: getContext(item, elementRef)"
+                                    *polymorpheusOutlet="itemContent() as text; context: getContext(item, elementRef)"
                                 >
                                     {{ text }}
                                 </ng-container>
