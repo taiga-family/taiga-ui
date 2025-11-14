@@ -2,8 +2,8 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type Attribute} from 'parse5/dist/common/token';
 
-import {findAttr} from '../../../../utils/templates/inputs';
 import {findElementsByTagName} from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -48,7 +48,7 @@ export function migrateAvatarToDirective({
 
 function hasTuiAvatarAttr(attrs: Attribute[]): boolean {
     return attrs.some(({name}) =>
-        ['tuiavatar', '[tuiavatar]', '[(tuiavatar)]', 'bind-tuiavatar'].includes(name),
+        ['[(tuiavatar)]', '[tuiavatar]', 'bind-tuiavatar', 'tuiavatar'].includes(name),
     );
 }
 
