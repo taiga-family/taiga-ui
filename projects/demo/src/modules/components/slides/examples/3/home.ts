@@ -15,7 +15,7 @@ import {TuiCard} from '@taiga-ui/layout';
             <div tuiAvatar="@tui.user">
                 <img
                     alt=""
-                    src="/assets/images/avatar.jpg"
+                    src="assets/images/avatar.jpg"
                 />
             </div>
             <div tuiTitle>
