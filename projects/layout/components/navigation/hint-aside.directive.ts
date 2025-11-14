@@ -1,4 +1,5 @@
 import {computed, Directive, inject} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
@@ -13,6 +14,7 @@ import {TuiAsideComponent} from './aside.component';
     hostDirectives: [TuiHintDirective],
 })
 export class TuiHintAsideDirective {
+    private readonly domSanitizer = inject(DomSanitizer);
     private readonly el = tuiInjectElement();
     private readonly aside = inject(TuiAsideComponent);
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
@@ -23,7 +25,7 @@ export class TuiHintAsideDirective {
         computed(() =>
             this.aside.expanded() || this.dropdown
                 ? ''
-                : () => this.el.textContent?.trim(),
+                : () => this.domSanitizer.bypassSecurityTrustHtml(this.el.innerHTML),
         ),
     );
 }
