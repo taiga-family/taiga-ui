@@ -20,6 +20,7 @@ import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
+import {migrateTuiOnboardingToResponsiveDialog} from './steps/onboarding-flow/migrate-onboarding-flow';
 
 function main(options: TuiSchema): Rule {
     return (tree: Tree, context: SchematicContext) => {
@@ -33,6 +34,8 @@ function main(options: TuiSchema): Rule {
 
         fileSystem.commitEdits();
         saveActiveProject();
+
+        migrateTuiOnboardingToResponsiveDialog(tree);
 
         context.addTask(new NodePackageInstallTask());
     };
