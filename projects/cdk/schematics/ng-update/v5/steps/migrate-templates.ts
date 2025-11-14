@@ -15,7 +15,8 @@ import {setupProgressLogger} from '../../../utils/progress';
 import {getComponentTemplates} from '../../../utils/templates/get-component-templates';
 import {getPathFromTemplateResource} from '../../../utils/templates/template-resource';
 import {type TemplateResource} from '../../interfaces/template-resource';
-import {addHTMLCommentTags} from '../../utils/templates';
+import {addHTMLCommentTags, replaceAttrs} from '../../utils/templates';
+import {ATTRS_TO_REPLACE} from './constants/attrs-to-replace';
 import {HTML_COMMENTS} from './constants/html-comments';
 import {migrateInputYear} from './templates/migrate-input-year';
 
@@ -55,6 +56,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
 
     const actions = [
         getAction({action: addHTMLCommentTags, requiredData: HTML_COMMENTS}),
+        getAction({action: replaceAttrs, requiredData: ATTRS_TO_REPLACE}),
         migrateInputYear,
     ] as const;
 
