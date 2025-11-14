@@ -12,19 +12,20 @@
         {{ texts.zoomOut }}
     </button>
     <label tuiSliderThumbLabel>
+        @let sliderValueText = (valueChange | async) || (value | percent);
+
         <div
-            [tuiHint]="hint"
+            [tuiHint]="sliderValueText"
             [tuiHintManual]="!!(hintShow$ | async)"
         ></div>
-        <ng-template #hint>
-            {{ (valueChange | async) || value | percent }}
-        </ng-template>
         <input
             step="any"
             tuiSlider
             tuiTheme="dark"
             type="range"
             class="t-slider"
+            [attr.aria-label]="sliderLabel()"
+            [attr.aria-valuetext]="sliderValueText"
             [max]="max"
             [min]="min"
             [ngModel]="value"
@@ -52,6 +53,7 @@
     tuiPreviewAction
     type="button"
     class="t-reset-button"
+    [attr.aria-label]="texts.reset"
     [class.t-invisible]="!collapseVisible"
     [iconStart]="icons.zoomReset"
     [tuiHint]="texts.reset"
