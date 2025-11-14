@@ -3,13 +3,13 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TUI_IS_E2E, tuiWatch} from '@taiga-ui/cdk';
-import {TuiNotification} from '@taiga-ui/core';
+import {TuiLink, TuiNotification} from '@taiga-ui/core';
 import {TuiChip, TuiLineClamp} from '@taiga-ui/kit';
 import {map, timer} from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [AsyncPipe, NgIf, TuiChip, TuiLineClamp, TuiNotification],
+    imports: [AsyncPipe, NgIf, TuiChip, TuiLineClamp, TuiLink, TuiNotification],
     templateUrl: './index.html',
     styleUrls: ['./index.less'],
     encapsulation,
