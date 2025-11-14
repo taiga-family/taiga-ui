@@ -10811,8 +10811,11 @@ export default class Example {
 
 **Template:**
 ```html
-<tui-select class="control" [identityMatcher]="identityMatcher" [valueContent]="valueContent" [(ngModel)]="value" > Open-source budget <custom-list *tuiDataList [items]="items" />
-</tui-select>
+<tui-textfield multi tuiChevron class="control" [content]="valueContent" [tuiTextfieldCleaner]="false" >
+<input tuiInputChip tuiSelectLike [(ngModel)]="value" />
+<ng-template tuiItem />
+<custom-list *tuiDropdown [items]="items" />
+</tui-textfield>
 ```
 **TypeScript:**
 ```ts
@@ -10820,13 +10823,9 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {
-    type TuiContext,
-    type TuiIdentityMatcher,
-    type TuiStringHandler,
-} from '@taiga-ui/cdk';
-import {TuiDataList} from '@taiga-ui/core';
-import {TuiSelectModule} from '@taiga-ui/legacy';
+import {type TuiContext, type TuiStringHandler} from '@taiga-ui/cdk';
+import {TuiSelectLike, TuiTextfield} from '@taiga-ui/core';
+import {TuiChevron, TuiInputChip} from '@taiga-ui/kit';
 
 import {CustomListComponent} from './custom-list';
 
@@ -10856,7 +10855,14 @@ const EXPENSES = {
 };
 
 @Component({
-    imports: [CustomListComponent, FormsModule, TuiDataList, TuiSelectModule],
+    imports: [
+        CustomListComponent,
+        FormsModule,
+        TuiChevron,
+        TuiInputChip,
+        TuiSelectLike,
+        TuiTextfield,
+    ],
     templateUrl: './index.html',
     styles: `
         .control {
@@ -10867,14 +10873,9 @@ const EXPENSES = {
     changeDetection,
 })
 export default class Example {
-    protected value = [];
+    protected value: string[] = [];
 
     protected readonly items = [INCOME, EXPENSES];
-
-    protected readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (
-        items1,
-        items2,
-    ) => items1.length === items2.length && items1.every((item) => items2.includes(item));
 
     protected readonly valueContent: TuiStringHandler<TuiContext<readonly string[]>> = ({
         $implicit,
@@ -10883,8 +10884,10 @@ export default class Example {
             return 'All';
         }
 
-        const selected = this.items.find(({items}) =>
-            this.identityMatcher($implicit, items),
+        const selected = this.items.find(
+            ({items}) =>
+                this.value.length === items.length &&
+                items.every((item) => this.value.includes(item)),
         );
 
         return selected ? `${selected.name} only` : `Selected: ${$implicit.length}`;
@@ -44128,11 +44131,11 @@ export default class Example {
 **Template:**
 ```html
 <form [formGroup]="form">
-<button appearance="outline-grayscale" tuiButton type="button" [tuiAppearanceMode]="length ? 'checked' : null" [tuiDropdown]="dropdown" [(tuiDropdownOpen)]="open" (keydown.delete)="form.reset()" > {{ text }} <button appearance="icon" size="xs" tabindex="-1" tuiChevron tuiIconButton type="reset" [iconStart]="length ? '@tui.x' : ''" (mousedown.zoneless.prevent)="(0)" > Reset </button>
+<button appearance="outline-grayscale" formControlName="control" tuiButton tuiButtonSelect type="button" [tuiAppearanceMode]="length ? 'checked' : null" [(open)]="open" (keydown.delete)="form.reset()" > {{ text }} <button appearance="icon" size="xs" tabindex="-1" tuiChevron tuiIconButton type="reset" [iconStart]="length ? '@tui.x' : ''" (mousedown.zoneless.prevent)="(0)" > Reset </button>
+<tui-data-list *tuiDropdown tuiMultiSelectGroup >
+<tui-opt-group> @for (item of items; track item) { <button new tuiOption type="button" [value]="item" > {{ item }} </button> } </tui-opt-group>
+</tui-data-list>
 </button>
-<ng-template #dropdown>
-<tui-data-list-wrapper formControlName="control" tuiMultiSelectGroup [items]="items" />
-</ng-template>
 </form>
 ```
 **TypeScript:**
@@ -44141,18 +44144,18 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDropdown} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
+import {TuiButtonSelect, TuiChevron, TuiMultiSelect} from '@taiga-ui/kit';
 
 @Component({
     imports: [
         ReactiveFormsModule,
         TuiButton,
+        TuiButtonSelect,
         TuiChevron,
-        TuiDataListWrapper,
+        TuiDataList,
         TuiDropdown,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -44160,7 +44163,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 })
 export default class Example {
     protected readonly form = new FormGroup({
-        control: new FormControl<string[]>([]),
+        control: new FormControl<string[]>([], {nonNullable: true}),
     });
 
     protected open = false;
@@ -44451,7 +44454,6 @@ import {
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiAvatar, TuiTextarea} from '@taiga-ui/kit';
-import {TuiTextareaModule} from '@taiga-ui/legacy';
 import {type Observable} from 'rxjs';
 
 export interface User {
@@ -44470,7 +44472,6 @@ export interface User {
         TuiInitialsPipe,
         TuiMapperPipe,
         TuiTextarea,
-        TuiTextareaModule,
         TuiTextfield,
     ],
     templateUrl: './index.html',
