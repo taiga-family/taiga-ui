@@ -1,8 +1,9 @@
-import {computed, Directive, inject} from '@angular/core';
+import {computed, Directive, inject, Input, signal} from '@angular/core';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
+import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TuiAsideComponent} from './aside.component';
 
@@ -16,14 +17,23 @@ export class TuiHintAsideDirective {
     private readonly el = tuiInjectElement();
     private readonly aside = inject(TuiAsideComponent);
     private readonly dropdown = inject(TuiDropdownDirective, {optional: true});
+    protected readonly hint = signal<PolymorpheusContent>(null);
 
     protected readonly binding = tuiDirectiveBinding(
         TuiHintDirective,
         'tuiHint',
-        computed(() =>
-            this.aside.expanded() || this.dropdown
+        computed(() => {
+            const hint = this.hint();
+            const expanded = this.aside.expanded();
+
+            return expanded || this.dropdown
                 ? ''
-                : () => this.el.textContent?.trim(),
-        ),
+                : hint || (() => this.el.textContent?.trim());
+        }),
     );
+
+    @Input()
+    public set tuiHintAside(value: PolymorpheusContent) {
+        this.hint.set(value);
+    }
 }
