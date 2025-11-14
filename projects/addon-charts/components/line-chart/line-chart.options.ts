@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiLineChartOptions {
     readonly dots: boolean;
@@ -13,19 +12,6 @@ export const TUI_LINE_CHART_DEFAULT_OPTIONS: TuiLineChartOptions = {
     smoothingFactor: 0,
 };
 
-export const TUI_LINE_CHART_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_LINE_CHART_OPTIONS' : '',
-    {
-        factory: () => TUI_LINE_CHART_DEFAULT_OPTIONS,
-    },
+export const [TUI_LINE_CHART_OPTIONS, tuiLineChartOptionsProvider] = tuiCreateOptions(
+    TUI_LINE_CHART_DEFAULT_OPTIONS,
 );
-
-export function tuiLineChartOptionsProvider(
-    options: Partial<TuiLineChartOptions>,
-): Provider {
-    return tuiProvideOptions(
-        TUI_LINE_CHART_OPTIONS,
-        options,
-        TUI_LINE_CHART_DEFAULT_OPTIONS,
-    );
-}

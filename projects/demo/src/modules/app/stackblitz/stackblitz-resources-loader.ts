@@ -13,10 +13,10 @@ export abstract class AbstractTuiStackblitzResourcesLoader {
         const [configsContent, mainTsContent, indexHtmlContent, stylesContent]: string[] =
             await Promise.all(
                 [
-                    import('./project-files/configs.md?raw'),
-                    import('./project-files/src/main.ts.md?raw'),
-                    import('./project-files/src/index.html.md?raw'),
-                    import('./project-files/src/global_styles.less.md?raw'),
+                    import('./project-files/configs.md'),
+                    import('./project-files/src/main.ts.md'),
+                    import('./project-files/src/index.html.md'),
+                    import('./project-files/src/global_styles.less.md'),
                 ].map(tuiRawLoad),
             );
 

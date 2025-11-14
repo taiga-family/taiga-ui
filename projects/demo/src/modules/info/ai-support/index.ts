@@ -10,5 +10,5 @@ import {TuiLink} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Page {
-    protected readonly installation = import('./snippets/installation.md?raw');
+    protected readonly installation = import('./snippets/installation.md');
 }

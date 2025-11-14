@@ -1,12 +1,10 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
 
 @Directive({
     selector: 'tr[tuiDocAPIItem][type=number]',
 })
 export class TuiDocAPINumberItem {
-    @Input()
-    public min: number | null = null;
+    public readonly min = input<number | null>(null);
 
-    @Input()
-    public max: number | null = null;
+    public readonly max = input<number | null>(null);
 }

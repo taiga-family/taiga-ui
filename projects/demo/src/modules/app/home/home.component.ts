@@ -13,23 +13,19 @@ import {TuiTabs} from '@taiga-ui/kit';
     changeDetection,
 })
 export class Home {
-    protected readonly angularJsonStyles = import(
-        './examples/angular-json-styles.md?raw'
-    );
+    protected readonly angularJsonStyles = import('./examples/angular-json-styles.md');
 
-    protected readonly projectJsonStyles = import(
-        './examples/project-json-styles.md?raw'
-    );
+    protected readonly projectJsonStyles = import('./examples/project-json-styles.md');
 
-    protected readonly appTemplate = import('./examples/app-template.md?raw');
-    protected readonly assets = import('./examples/assets.md?raw');
-    protected readonly nxAssets = import('./examples/nx-assets.md?raw');
-    protected readonly componentsStyles = import('./examples/components-styles.md?raw');
-    protected readonly importLocalLess = import('./examples/import-local-less.md?raw');
-    protected readonly main = import('./examples/main.md?raw');
-    protected readonly addons = import('./examples/addons.md?raw');
-    protected readonly nxAdd = import('./examples/nx-add.md?raw');
-    protected readonly nxMigrate = import('./examples/nx-migrate.md?raw');
-    protected readonly standalone = import('./examples/app-standalone.md?raw');
-    protected readonly standaloneMain = import('./examples/main-standalone.md?raw');
+    protected readonly appTemplate = import('./examples/app-template.md');
+    protected readonly assets = import('./examples/assets.md');
+    protected readonly nxAssets = import('./examples/nx-assets.md');
+    protected readonly componentsStyles = import('./examples/components-styles.md');
+    protected readonly importLocalLess = import('./examples/import-local-less.md');
+    protected readonly main = import('./examples/main.md');
+    protected readonly addons = import('./examples/addons.md');
+    protected readonly nxAdd = import('./examples/nx-add.md');
+    protected readonly nxMigrate = import('./examples/nx-migrate.md');
+    protected readonly standalone = import('./examples/app-standalone.md');
+    protected readonly standaloneMain = import('./examples/main-standalone.md');
 }

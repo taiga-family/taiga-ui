@@ -14,7 +14,7 @@ consisting of multiple base libraries and several add-ons
 
 ## How to install
 
-```
+```bash
 npm i @taiga-ui/legacy
 ```
 

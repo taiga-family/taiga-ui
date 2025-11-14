@@ -33,8 +33,8 @@ export default class Page implements OnInit {
     protected async openStackblitz(): Promise<void> {
         const [appTemplate, appComponent] = await Promise.all(
             [
-                import('./files/app.template.html.md?raw'),
-                import('./files/app.component.ts.md?raw'),
+                import('./files/app.template.html.md'),
+                import('./files/app.component.ts.md'),
             ].map(tuiRawLoad),
         ).then((markdowns) => markdowns.map((md) => tuiTryParseMarkdownCodeBlock(md)[0]));
 

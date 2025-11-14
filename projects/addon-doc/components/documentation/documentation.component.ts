@@ -5,10 +5,11 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    computed,
     ContentChildren,
     DestroyRef,
     inject,
-    Input,
+    input,
     type QueryList,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -88,14 +89,13 @@ export class TuiDocDocumentation implements AfterContentInit {
     protected readonly excludedProperties = inject(TUI_DOC_EXCLUDED_PROPERTIES);
     protected activeItemIndex = 0;
 
-    @Input()
-    public heading = '';
+    protected readonly type = computed(([argument, type] = this.texts): string =>
+        this.isAPI() ? argument : type,
+    );
 
-    @Input()
-    public showValues = true;
-
-    @Input()
-    public isAPI = false;
+    public readonly heading = input('');
+    public readonly showValues = input(true);
+    public readonly isAPI = input(false);
 
     public ngAfterContentInit(): void {
         tuiQueryListChanges(this.propertiesConnectors)
@@ -107,11 +107,7 @@ export class TuiDocDocumentation implements AfterContentInit {
             .subscribe();
     }
 
-    protected get type(): string {
-        return this.isAPI ? this.texts[0] : this.texts[1];
-    }
-
     protected matcher: TuiMatcher<
         [TuiDocDocumentationPropertyConnector<unknown>, Set<string>]
-    > = (item, exclusions) => !exclusions.has(item.documentationPropertyName);
+    > = (item, exclusions) => !exclusions.has(item.documentationPropertyName());
 }

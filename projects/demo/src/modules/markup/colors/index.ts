@@ -15,7 +15,7 @@ export default class Page {
     protected readonly darkMode = inject(TUI_DARK_MODE);
 
     protected readonly basicImportsLess = import(
-        './examples/import/basic-imports-less.md?raw'
+        './examples/import/basic-imports-less.md'
     );
 
     protected readonly backgrounds = BACKGROUNDS;
