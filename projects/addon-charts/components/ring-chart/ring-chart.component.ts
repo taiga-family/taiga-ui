@@ -32,10 +32,10 @@ export class TuiRingChart {
     public readonly activeItemIndexChange = new EventEmitter<number>();
 
     protected onActiveItemIndexChange(index: number): void {
-        this.updateActiveItemIndex(index);
+        this.#updateActiveItemIndex(index);
     }
 
-    private updateActiveItemIndex(index: number): void {
+    #updateActiveItemIndex(index: number): void {
         if (index === this.activeItemIndex) {
             return;
         }

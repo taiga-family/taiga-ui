@@ -46,11 +46,11 @@ import {TuiLineChartHint} from './line-chart-hint.directive';
     },
 })
 export class TuiLineChart implements OnChanges {
-    private readonly zone = inject(NgZone);
-    private readonly options = inject(TUI_LINE_CHART_OPTIONS);
-    private readonly hover$ = new Subject<number>();
-    private readonly autoId = tuiInjectId();
-    private readonly resize = toSignal(
+    readonly #zone = inject(NgZone);
+    readonly #options = inject(TUI_LINE_CHART_OPTIONS);
+    readonly #hover$ = new Subject<number>();
+    readonly #autoId = tuiInjectId();
+    readonly #resize = toSignal(
         inject(ResizeObserverService, {self: true}).pipe(
             map(([e]) => e?.contentRect.height || NaN),
             filter((height) => !Number.isNaN(height)),
@@ -58,17 +58,17 @@ export class TuiLineChart implements OnChanges {
         {initialValue: NaN},
     );
 
-    private readonly box = signal('');
+    readonly #box = signal('');
 
     protected readonly hintDirective = inject(TuiLineChartHint, {optional: true});
     protected readonly hintOptions = inject(TuiHintOptionsDirective, {optional: true});
     protected readonly viewBox = computed(() => {
-        if (Number.isNaN(this.resize())) {
+        if (Number.isNaN(this.#resize())) {
             return '0 0 0 0';
         }
 
-        const offset = this.height / Math.max(this.resize(), 1);
-        const [x = 0, y = 0, width = 0, height = 0] = this.box().split(' ').map(Number);
+        const offset = this.height / Math.max(this.#resize(), 1);
+        const [x = 0, y = 0, width = 0, height = 0] = this.#box().split(' ').map(Number);
 
         return `${x} ${y - offset} ${width} ${height + 2 * offset}`;
     });
@@ -89,7 +89,7 @@ export class TuiLineChart implements OnChanges {
     public height = 0;
 
     @Input()
-    public smoothingFactor = this.options.smoothingFactor;
+    public smoothingFactor = this.#options.smoothingFactor;
 
     @Input()
     public xStringify: TuiStringHandler<number> | null = null;
@@ -98,10 +98,10 @@ export class TuiLineChart implements OnChanges {
     public yStringify: TuiStringHandler<number> | null = null;
 
     @Input()
-    public filled = this.options.filled;
+    public filled = this.#options.filled;
 
     @Input()
-    public dots = this.options.dots;
+    public dots = this.#options.dots;
 
     public value: readonly TuiPoint[] = [];
 
@@ -111,16 +111,16 @@ export class TuiLineChart implements OnChanges {
     }
 
     public ngOnChanges(): void {
-        this.box.set(`${this.x} ${this.y} ${this.width} ${this.height}`);
+        this.#box.set(`${this.x} ${this.y} ${this.width} ${this.height}`);
     }
 
     public onHovered(index: number): void {
-        this.hover$.next(index);
+        this.#hover$.next(index);
     }
 
     @tuiPure
     protected get hovered$(): Observable<number> {
-        return this.hover$.pipe(distinctUntilChanged(), tuiZoneOptimized(this.zone));
+        return this.#hover$.pipe(distinctUntilChanged(), tuiZoneOptimized(this.#zone));
     }
 
     protected get hintContent(): PolymorpheusContent<TuiLineChartHintContext<TuiPoint>> {
@@ -128,7 +128,7 @@ export class TuiLineChart implements OnChanges {
     }
 
     protected get fillId(): string {
-        return `tui-line-chart-${this.autoId}`;
+        return `tui-line-chart-${this.#autoId}`;
     }
 
     protected get fill(): string {
@@ -175,11 +175,11 @@ export class TuiLineChart implements OnChanges {
     }
 
     protected getWidth(index: number): number {
-        return (100 * this.computeWidth(index)) / this.width;
+        return (100 * this.#computeWidth(index)) / this.width;
     }
 
     protected getHintId(index: number): string {
-        return `${this.autoId}_${index}`;
+        return `${this.#autoId}_${index}`;
     }
 
     protected getImplicit($implicit: TuiPoint): TuiPoint | readonly TuiPoint[] {
@@ -205,7 +205,7 @@ export class TuiLineChart implements OnChanges {
     }
 
     protected getOffset(x: number): number {
-        return (100 * ((this.value[x]?.[0] || 0) - this.getX(x))) / this.computeWidth(x);
+        return (100 * ((this.value[x]?.[0] || 0) - this.getX(x))) / this.#computeWidth(x);
     }
 
     protected onMouseEnter(index: number): void {
@@ -229,7 +229,8 @@ export class TuiLineChart implements OnChanges {
         );
     }
 
-    private computeWidth(index: number): number {
+    // eslint-disable-next-line @taiga-ui/experience-next/no-implicit-public
+    #computeWidth(index: number): number {
         return index === this.value.length - 1
             ? 2 * ((this.value[index]?.[0] || 0) - this.getX(index))
             : this.getX(index + 1) - this.getX(index);

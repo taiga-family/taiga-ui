@@ -14,24 +14,25 @@ import {BehaviorSubject, map, pairwise, switchMap, takeWhile} from 'rxjs';
     selector: 'path[tuiPieChart]',
 })
 export class TuiPieChartDirective {
-    private readonly sector$ = new BehaviorSubject<readonly [number, number]>([0, 0]);
-    private readonly el = tuiInjectElement<SVGPathElement>();
-    private readonly performance = inject(WA_PERFORMANCE);
-    private readonly animationFrame$ = inject(WA_ANIMATION_FRAME);
-    private readonly speed = inject(TUI_ANIMATIONS_SPEED);
-    protected readonly $ = this.sector$
+    readonly #sector$ = new BehaviorSubject<readonly [number, number]>([0, 0]);
+    readonly #el = tuiInjectElement<SVGPathElement>();
+    readonly #performance = inject(WA_PERFORMANCE);
+    readonly #animationFrame$ = inject(WA_ANIMATION_FRAME);
+    readonly #speed = inject(TUI_ANIMATIONS_SPEED);
+
+    protected readonly $ = this.#sector$
         .pipe(
             pairwise(),
             switchMap(([prev, cur]) => {
-                const now = this.performance.now();
+                const now = this.#performance.now();
                 const startDelta = cur[0] - prev[0];
                 const endDelta = cur[1] - prev[1];
 
-                return this.animationFrame$.pipe(
+                return this.#animationFrame$.pipe(
                     map((timestamp) =>
                         tuiEaseInOutQuad(
                             tuiClamp(
-                                (timestamp - now) / tuiGetDuration(this.speed),
+                                (timestamp - now) / tuiGetDuration(this.#speed),
                                 0,
                                 1,
                             ),
@@ -48,11 +49,11 @@ export class TuiPieChartDirective {
             takeUntilDestroyed(),
         )
         .subscribe(([start, end]) =>
-            this.el.setAttribute('d', tuiDescribeSector(start, end)),
+            this.#el.setAttribute('d', tuiDescribeSector(start, end)),
         );
 
     @Input()
     public set tuiPieChart(sector: readonly [number, number]) {
-        this.sector$.next(sector);
+        this.#sector$.next(sector);
     }
 }

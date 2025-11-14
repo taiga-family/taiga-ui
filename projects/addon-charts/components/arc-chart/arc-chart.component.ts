@@ -51,7 +51,7 @@ function arcsToIndex(arcs: QueryList<ElementRef<SVGElement>>): Array<Observable<
     },
 })
 export class TuiArcChart {
-    private readonly arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
+    readonly #arcs$ = new ReplaySubject<QueryList<ElementRef<SVGElement>>>(1);
 
     protected initialized = signal(false);
 
@@ -78,7 +78,7 @@ export class TuiArcChart {
     public activeItemIndex = NaN;
 
     @Output()
-    public readonly activeItemIndexChange = this.arcs$.pipe(
+    public readonly activeItemIndexChange = this.#arcs$.pipe(
         switchMap((arcs) =>
             arcs.changes.pipe(
                 startWith(null),
@@ -92,7 +92,7 @@ export class TuiArcChart {
 
     @ViewChildren('arc')
     protected set arcs(arcs: QueryList<ElementRef<SVGElement>>) {
-        this.arcs$.next(arcs);
+        this.#arcs$.next(arcs);
     }
 
     protected get width(): number {
