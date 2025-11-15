@@ -1,5 +1,4 @@
-import {Directive, type OnDestroy, Output} from '@angular/core';
-import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
+import {Directive, model, type OnDestroy} from '@angular/core';
 
 @Directive({
     selector: '[tuiPresentChange]',
@@ -10,19 +9,13 @@ import {BehaviorSubject, distinctUntilChanged, skip} from 'rxjs';
     },
 })
 export class TuiPresent implements OnDestroy {
-    private readonly visibility$ = new BehaviorSubject(false);
-
-    @Output()
-    public readonly tuiPresentChange = this.visibility$.pipe(
-        distinctUntilChanged(),
-        skip(1),
-    );
+    public readonly tuiPresent = model(false);
 
     public ngOnDestroy(): void {
-        this.visibility$.next(false);
+        this.tuiPresent.set(false);
     }
 
     protected onAnimation(visibility: boolean): void {
-        this.visibility$.next(visibility);
+        this.tuiPresent.set(visibility);
     }
 }
