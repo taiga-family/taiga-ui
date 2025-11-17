@@ -1,6 +1,6 @@
 import {type ExistingProvider, InjectionToken, type ProviderToken} from '@angular/core';
 import {type TuiLooseUnion} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 /**
  * Bundled appearances for autocomplete purposes, not exported on purpose

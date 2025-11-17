@@ -6,7 +6,7 @@ import {
 } from '@maskito/core';
 import {TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {type TuiMapper} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {identity} from 'rxjs';
 
 @Directive({

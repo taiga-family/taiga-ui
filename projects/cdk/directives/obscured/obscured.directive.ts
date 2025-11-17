@@ -16,7 +16,7 @@ import {TuiObscuredService} from './obscured.service';
 export class TuiObscured {
     private readonly activeZone = inject(TuiActiveZone, {optional: true});
     private readonly obscured$ = inject(TuiObscuredService, {self: true}).pipe(
-        map((by) => !!by?.every((el) => check(el) || !this.activeZone?.contains(el))),
+        map((by) => !!by?.every((el) => !this.activeZone?.contains(el))),
     );
 
     public readonly tuiObscuredEnabled = input<boolean>();
@@ -26,13 +26,4 @@ export class TuiObscured {
     );
 
     public readonly tuiObscured = outputFromObservable(this.tuiObscured$);
-}
-
-// TODO: Refactor so that dropdowns and dialogs work properly without hacks
-function check(el: Element): boolean {
-    return (
-        !!el.closest('tui-dialogs') &&
-        // eslint-disable-next-line unicorn/prefer-query-selector
-        !!el.ownerDocument.documentElement.getElementsByTagName('tui-dropdown').length
-    );
 }

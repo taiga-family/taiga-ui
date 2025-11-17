@@ -1,6 +1,6 @@
 import {Directive, Input} from '@angular/core';
 import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {AbstractTuiTableFilter} from './abstract-table-filter';
 

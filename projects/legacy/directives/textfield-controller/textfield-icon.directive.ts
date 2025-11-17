@@ -1,6 +1,6 @@
 import {Directive, InjectionToken, Input} from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiController} from '@taiga-ui/legacy/classes';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';

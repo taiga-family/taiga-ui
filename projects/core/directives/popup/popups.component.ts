@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {TuiPortals, TuiPortalService} from '@taiga-ui/cdk/portals';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {TuiPopupService} from './popup.service';
 

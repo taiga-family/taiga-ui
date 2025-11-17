@@ -8,8 +8,7 @@ import {
     signal,
     type WritableSignal,
 } from '@angular/core';
-
-import {tuiSetSignal} from './set-signal';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 
 type SignalLikeTypeOf<T> = T extends Signal<infer R> ? R : T;
 

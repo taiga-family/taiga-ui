@@ -1,5 +1,5 @@
 import {Directive, InjectionToken, Input} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {AbstractTuiController} from '@taiga-ui/legacy/classes';
 

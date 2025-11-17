@@ -1,5 +1,6 @@
 import {Directive, EventEmitter, Input, Output} from '@angular/core';
-import {tuiIsPresent, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {type TuiTreeItem} from '../components/tree-item/tree-item.component';
 import {type TuiTreeAccessor, type TuiTreeController} from '../misc/tree.interfaces';

@@ -23,7 +23,7 @@ import {
     TuiTime,
 } from '@taiga-ui/cdk/date-time';
 import {tuiClamp, tuiSum} from '@taiga-ui/cdk/utils/math';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {type TuiCalendar} from '@taiga-ui/core/components/calendar';
 import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
 import {

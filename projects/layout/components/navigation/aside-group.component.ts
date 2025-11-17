@@ -10,7 +10,8 @@ import {
     viewChild,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiDirectiveBinding, tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsDataListHost,
     TuiDataList,
