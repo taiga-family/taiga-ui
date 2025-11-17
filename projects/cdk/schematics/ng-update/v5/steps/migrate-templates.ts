@@ -17,6 +17,7 @@ import {getPathFromTemplateResource} from '../../../utils/templates/template-res
 import {type TemplateResource} from '../../interfaces/template-resource';
 import {addHTMLCommentTags} from '../../utils/templates';
 import {HTML_COMMENTS} from './constants/html-comments';
+import {migrateAvatarToDirective} from './templates/migrate-avatar';
 import {migrateInputYear} from './templates/migrate-input-year';
 
 export function getAction<T>({
@@ -56,6 +57,7 @@ export function migrateTemplates(fileSystem: DevkitFileSystem, options: TuiSchem
     const actions = [
         getAction({action: addHTMLCommentTags, requiredData: HTML_COMMENTS}),
         migrateInputYear,
+        migrateAvatarToDirective,
     ] as const;
 
     const progressLog = setupProgressLogger({
