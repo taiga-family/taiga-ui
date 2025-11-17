@@ -45,7 +45,7 @@ export class TuiLineDaysChartHint implements AfterContentInit {
 
     public ngAfterContentInit(): void {
         combineLatest([
-            ...this.charts.map(({charts}) => tuiLineChartDrivers(charts)),
+            ...this.charts.map(({charts}) => tuiLineChartDrivers(charts.toArray())),
             this.hovered$,
         ])
             .pipe(
