@@ -1,0 +1,22 @@
+import"./chunk-42JZD6NG.js";var t=`<tui-textfield
+    tuiTextfieldSize="m"
+    class="slider"
+>
+    <input
+        tuiInputSlider
+        [max]="length - 1"
+        [(ngModel)]="index"
+    />
+    <span>index</span>
+    <input
+        tuiSlider
+        type="range"
+    />
+</tui-textfield>
+
+<tui-pagination
+    [index]="index"
+    [length]="length"
+    (indexChange)="goToPage($event)"
+/>
+`;export{t as default};
