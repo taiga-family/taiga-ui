@@ -1,0 +1,39 @@
+<tui-doc-page
+    header="FileCell"
+    package="KIT"
+    type="components"
+>
+    <ng-template pageTab>
+        @for (example of examples; track example) {
+            <tui-doc-example
+                [component]="$index + 1 | tuiComponent"
+                [content]="$index + 1 | tuiExample"
+                [description]="description"
+                [heading]="example"
+                [id]="example | tuiKebab"
+            >
+                <ng-template #description>
+                    @switch ($index) {
+                        @case (0) {
+                            FileCell with image or icon preview
+                        }
+                        @case (1) {
+                            FileCell with loading state
+                        }
+                        @case (2) {
+                            FileCell with error state
+                        }
+                        @case (3) {
+                            FileCell with disabled state
+                        }
+                        @default {
+                            FileCell with swipe actions (should be used on mobile devices only)
+                        }
+                    }
+                </ng-template>
+            </tui-doc-example>
+        }
+    </ng-template>
+
+    <tui-setup *pageTab="'Setup'" />
+</tui-doc-page>

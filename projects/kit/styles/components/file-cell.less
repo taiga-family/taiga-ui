@@ -1,0 +1,93 @@
+[tuiFileCell] {
+    > :first-child {
+        display: flex;
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+        border-radius: var(--tui-radius-l);
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+        background: var(--tui-background-neutral-1);
+    }
+
+    > img:first-child {
+        border: 1px solid var(--tui-background-neutral-1);
+    }
+
+    [tuiButtonClose][data-appearance='close']:last-child {
+        color: var(--tui-text-secondary);
+    }
+
+    > tui-icon::before {
+        top: 50%;
+        left: 50%;
+        display: flex;
+        inline-size: 1.5rem;
+        block-size: 1.5rem;
+        transform: translate(-50%, -50%);
+    }
+
+    [tuiTitle] {
+        font-size: 0.9375rem;
+
+        [tuiSubtitle] {
+            font-size: 0.8125rem;
+        }
+
+        :host-context([data-platform='ios']) & {
+            font-size: 1.0625rem;
+        }
+
+        :host-context([data-platform='android']) & {
+            font-size: 16px;
+        }
+    }
+
+    &[data-disabled='true'] {
+        pointer-events: none;
+        opacity: 0.5;
+
+        [tuiButtonClose][data-appearance='close']:last-child {
+            opacity: 0;
+        }
+    }
+
+    // Size overrides
+    &[data-size='m'] {
+        border-radius: var(--tui-radius-m);
+        min-inline-size: 2rem;
+        min-block-size: 2rem;
+
+        > :first-child {
+            border-radius: var(--tui-radius-m);
+            inline-size: 2rem;
+            block-size: 2rem;
+        }
+
+        > tui-icon::before {
+            inline-size: 1.25rem;
+            block-size: 1.25rem;
+        }
+
+        [tuiButtonClose][data-appearance='close']:last-child::before {
+            font-size: 1.25rem;
+        }
+
+        [tuiProgressLabel]:first-child [tuiIconButton]::before {
+            font-size: 0.75rem;
+        }
+
+        tui-progress-circle {
+            --t-diameter: 1.5rem;
+        }
+
+        [tuiTitle] {
+            font-size: 0.8125rem;
+            gap: 2px;
+
+            [tuiSubtitle] {
+                font-size: 0.6875rem;
+            }
+        }
+    }
+}

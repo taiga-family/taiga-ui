@@ -1,0 +1,28 @@
+@for (size of sizes; track size) {
+    <label [tuiFileCell]="size">
+        <label tuiProgressLabel>
+            <tui-progress-circle
+                size="xxs"
+                [max]="100"
+                [style.--tui-thickness]="'0.175rem'"
+                [value]="60"
+            />
+
+            <button
+                appearance=""
+                size="xs"
+                tuiButtonClose
+                type="button"
+                [style.border-radius.%]="100"
+                [style.color]="'var(--tui-background-accent-1)'"
+            >
+                Cancel
+            </button>
+        </label>
+
+        <div tuiTitle>
+            filename.png
+            <div tuiSubtitle>12 Mb / 30 Mb</div>
+        </div>
+    </label>
+}

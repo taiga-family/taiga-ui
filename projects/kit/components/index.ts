@@ -20,6 +20,7 @@ export * from '@taiga-ui/kit/components/copy';
 export * from '@taiga-ui/kit/components/data-list-wrapper';
 export * from '@taiga-ui/kit/components/drawer';
 export * from '@taiga-ui/kit/components/elastic-container';
+export * from '@taiga-ui/kit/components/file-cell';
 export * from '@taiga-ui/kit/components/files';
 export * from '@taiga-ui/kit/components/filter';
 export * from '@taiga-ui/kit/components/floating-container';
