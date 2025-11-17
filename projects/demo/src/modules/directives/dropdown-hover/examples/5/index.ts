@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiDropdownSheet} from '@taiga-ui/addon-mobile';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiButton, TuiDataList, TuiDropdown, TuiDropdownMobile],
+    imports: [TuiButton, TuiDataList, TuiDropdown, TuiDropdownSheet],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

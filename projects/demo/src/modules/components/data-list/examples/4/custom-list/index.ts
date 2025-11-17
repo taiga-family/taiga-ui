@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {Component, ElementRef, inject, input, signal, ViewChild} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {
@@ -6,15 +6,17 @@ import {
     TUI_DEFAULT_MATCHER,
     TuiAutoFocus,
     TuiFilterPipe,
-    TuiLet,
 } from '@taiga-ui/cdk';
 import {
+    tuiAsOptionContent,
     TuiDataList,
     tuiIsEditingKey,
+    tuiItemsHandlersProvider,
     TuiTextfield,
+    TuiTextfieldComponent,
     TuiTextfieldDirective,
 } from '@taiga-ui/core';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiMultiSelect, TuiSelectOption} from '@taiga-ui/kit';
 
 interface Items<T> {
     readonly items: readonly T[];
@@ -28,28 +30,42 @@ interface Items<T> {
         TuiAutoFocus,
         TuiDataList,
         TuiFilterPipe,
-        TuiLet,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
         TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
+    providers: [
+        tuiAsOptionContent(TuiSelectOption),
+        tuiItemsHandlersProvider({
+            identityMatcher: signal((a: string[], b: string[]) =>
+                Array.isArray(a) && Array.isArray(b)
+                    ? a.length === b.length && a.every((x) => b.includes(x))
+                    : a === b,
+            ),
+        }),
+    ],
 })
 export class CustomListComponent<T> {
     @ViewChild(TuiTextfieldDirective, {read: ElementRef})
     private readonly input?: ElementRef<HTMLInputElement>;
 
+    private readonly control = inject(TuiTextfieldComponent).control;
+
+    public readonly items = input<ReadonlyArray<Items<T>>>([]);
+
     protected value = '';
     protected readonly all = EMPTY_ARRAY;
     protected readonly filter: (item: T, value: string) => boolean = TUI_DEFAULT_MATCHER;
-
-    @Input()
-    public items: ReadonlyArray<Items<T>> = [];
 
     protected onKeyDown(key: string): void {
         if (tuiIsEditingKey(key)) {
             this.input?.nativeElement.focus({preventScroll: true});
         }
+    }
+
+    protected select(value: readonly T[]): void {
+        this.control?.control?.setValue(value);
     }
 }

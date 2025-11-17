@@ -1,10 +1,16 @@
-import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    forwardRef,
+    inject,
+    signal,
+} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
 import {tuiPure, tuiPx} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -18,7 +24,7 @@ import {TuiAppearance, tuiAppearance} from '@taiga-ui/core/directives/appearance
 import {TuiPositionService, TuiVisualViewportService} from '@taiga-ui/core/services';
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {tuiIsObscured} from '@taiga-ui/core/utils';
-import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
+import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {map, takeWhile} from 'rxjs';
 
 import {TuiHintDirective} from './hint.directive';
@@ -31,7 +37,10 @@ export const TUI_HINT_PROVIDERS = [
     TuiPositionService,
     TuiHoveredService,
     tuiPositionAccessorFor('hint', TuiHintPosition),
-    tuiRectAccessorFor('hint', TuiHintDirective),
+    tuiRectAccessorFor(
+        'hint',
+        forwardRef(() => TuiHintDirective),
+    ),
 ];
 
 const GAP = 8;
@@ -42,22 +51,23 @@ const GAP = 8;
     template: `
         <ng-content />
         <span
-            *polymorpheusOutlet="content() as text; context: hint.context"
+            *polymorpheusOutlet="content() as text; context: hint.context()"
             [innerHTML]="text"
         ></span>
     `,
     styleUrl: './hint.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [TUI_HINT_PROVIDERS, tuiButtonOptionsProvider({size: 's'})],
-    hostDirectives: [TuiAppearance, TuiAnimated],
+    hostDirectives: [TuiAppearance, TuiAnimated, TuiActiveZone],
     host: {
+        role: 'tooltip',
         '[class._untouchable]': 'pointer',
         '[class._mobile]': 'isMobile',
         '[attr.tuiTheme]': 'theme',
         '(document:click)': 'onClick($event.target)',
     },
 })
-export class TuiHintComponent<C = any> {
+export class TuiHintComponent {
     private readonly el = tuiInjectElement();
     private readonly hover = inject(TuiHintHover);
     private readonly vvs = inject(TuiVisualViewportService);
@@ -65,7 +75,7 @@ export class TuiHintComponent<C = any> {
 
     protected readonly pointer = inject(TuiHintPointer, {optional: true});
     protected readonly accessor = inject(TuiRectAccessor);
-    protected readonly hint = injectContext<TuiContext<TuiHintDirective<C>>>().$implicit;
+    protected readonly hint = inject(TuiHintDirective);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
 
     protected readonly content =

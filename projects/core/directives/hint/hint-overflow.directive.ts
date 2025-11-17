@@ -1,9 +1,9 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject, input} from '@angular/core';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
 
 import {TuiHintDirective} from './hint.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiHintOverflow]',
     hostDirectives: [
         {
@@ -18,13 +18,14 @@ import {TuiHintDirective} from './hint.directive';
 export class TuiHintOverflow {
     private readonly hint = inject(TuiHintDirective);
 
-    @Input()
-    public tuiHintOverflow: string | null = '';
+    public readonly content = input<string | null>('', {alias: 'tuiHintOverflow'});
 
     protected onMouseEnter({scrollWidth, clientWidth, textContent}: Element): void {
-        this.hint.tuiHint =
-            scrollWidth > clientWidth && this.tuiHintOverflow !== null
-                ? this.tuiHintOverflow || textContent
-                : '';
+        tuiSetSignal(
+            this.hint.content,
+            scrollWidth > clientWidth && this.content() !== null
+                ? this.content() || textContent
+                : '',
+        );
     }
 }

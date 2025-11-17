@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiDropdownSheet} from '@taiga-ui/addon-mobile';
 import {type TuiBooleanHandler, TuiPlatform} from '@taiga-ui/cdk';
 import {TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
@@ -12,7 +12,7 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect} from '@taiga-ui/kit';
         FormsModule,
         TuiChevron,
         TuiDataListWrapper,
-        TuiDropdownMobile,
+        TuiDropdownSheet,
         TuiPlatform,
         TuiSelect,
         TuiTextfield,

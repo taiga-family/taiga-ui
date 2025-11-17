@@ -2,18 +2,18 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiButton, TuiDropdown} from '@taiga-ui/core';
-import {TuiChevron, TuiDataListWrapper} from '@taiga-ui/kit';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
+import {TuiButtonSelect, TuiChevron, TuiMultiSelect} from '@taiga-ui/kit';
 
 @Component({
     imports: [
         ReactiveFormsModule,
         TuiButton,
+        TuiButtonSelect,
         TuiChevron,
-        TuiDataListWrapper,
+        TuiDataList,
         TuiDropdown,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -21,7 +21,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 })
 export default class Example {
     protected readonly form = new FormGroup({
-        control: new FormControl<string[]>([]),
+        control: new FormControl<string[]>([], {nonNullable: true}),
     });
 
     protected open = false;

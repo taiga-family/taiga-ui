@@ -10,7 +10,6 @@ import {
 } from '@taiga-ui/core';
 
 @Component({
-    standalone: true,
     selector: 'portal-host',
     template: `
         <ng-content />

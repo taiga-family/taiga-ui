@@ -14,7 +14,6 @@ import {
 import {TuiSegmented} from '@taiga-ui/kit';
 
 @Component({
-    standalone: true,
     selector: 'portal-host',
     template: '<ng-content />',
     changeDetection: ChangeDetectionStrategy.OnPush,

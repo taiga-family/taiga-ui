@@ -1,9 +1,7 @@
 import {computed, Directive, effect, inject, Input, signal} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {MaskitoDirective} from '@maskito/angular';
 import {maskitoDateOptionsGenerator} from '@maskito/kit';
 import {tuiAsControl} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
 import {DATE_FILLER_LENGTH, TuiDay, TuiMonth} from '@taiga-ui/cdk/date-time';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
@@ -16,7 +14,7 @@ import {
     tuiTextfieldIcon,
 } from '@taiga-ui/core/components/textfield';
 import {TuiDropdownAuto} from '@taiga-ui/core/directives/dropdown';
-import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
+import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TuiInputChipBaseDirective} from '@taiga-ui/kit/components/input-chip';
 import {
     TUI_DATE_ADAPTER,
@@ -26,7 +24,6 @@ import {
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputDateMulti]',
     providers: [
         tuiAsControl(TuiInputDateMultiDirective),
@@ -66,15 +63,13 @@ export class TuiInputDateMultiDirective extends TuiInputChipBaseDirective<TuiDay
         ),
     );
 
-    protected readonly format = toSignal(inject(TUI_DATE_FORMAT), {
-        initialValue: TUI_DEFAULT_DATE_FORMAT,
-    });
+    protected readonly format = inject(TUI_DATE_FORMAT);
 
     protected readonly calendarIn = effect(() => {
         if (this.calendar()) {
             this.processCalendar(this.calendar()!);
         }
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly calendarOut = effect((onCleanup) => {
         const subscription = this.calendar()?.dayClick.subscribe((day) => {

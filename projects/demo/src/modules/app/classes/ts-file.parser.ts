@@ -53,7 +53,7 @@ export class TsFileParser {
 
     private addIntoExistingImport(entity: string, packageName: string): string {
         const packageImportsRegex = new RegExp(
-            `(?:import\\s?\\{\\r?\\n?)(?:(?:.*),\\r?\\n?)*?(?:.*?)\\r?\\n?} from (?:'|")${packageName}(?:'|");`,
+            String.raw`(?:import\s?\{\r?\n?)(?:(?:.*),\r?\n?)*?(?:.*?)\r?\n?} from (?:'|")${packageName}(?:'|");`,
             'gm',
         );
 

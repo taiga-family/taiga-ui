@@ -35,7 +35,7 @@
         @for (item of data; track item) {
             <tr>
                 <td tuiTd>{{ item.name }}</td>
-                <td tuiTd>{{ item.balance | tuiFormatNumber | async }}</td>
+                <td tuiTd>{{ item.balance | tuiFormatNumber }}</td>
             </tr>
         }
     </tbody>

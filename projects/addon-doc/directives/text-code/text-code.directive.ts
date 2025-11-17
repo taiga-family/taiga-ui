@@ -1,16 +1,14 @@
-import {Directive, Input} from '@angular/core';
+import {Directive, input} from '@angular/core';
 
 /**
  * @deprecated: use [textContent]="code"
  */
 @Directive({
-    standalone: true,
     selector: 'code[tuiDocText]',
     host: {
-        '[textContent]': 'code',
+        '[textContent]': 'code()',
     },
 })
 export class TuiDocText {
-    @Input('tuiDocText')
-    public code = '';
+    public readonly code = input('', {alias: 'tuiDocText'});
 }

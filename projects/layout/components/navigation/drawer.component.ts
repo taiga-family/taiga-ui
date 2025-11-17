@@ -42,7 +42,7 @@ import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
     hostDirectives: [TuiActiveZone, TuiAnimated],
     host: {
         tuiTheme: 'dark',
-        '[style.top.px]': 'top',
+        '[style.inset-block-start.px]': 'top',
     },
 })
 class TuiDrawerComponent {
@@ -60,7 +60,6 @@ class TuiDrawerComponent {
 }
 
 @Component({
-    standalone: true,
     // TODO: move to host directives
     selector: '[tuiIconButton][tuiNavigationDrawer]',
     template: '<ng-template><ng-content /></ng-template>',

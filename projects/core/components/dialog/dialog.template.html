@@ -4,7 +4,7 @@
         tuiIconButton
         type="button"
         class="t-close"
-        [appearance]="context.appearance === 'fullscreen' ? 'action' : 'neutral'"
+        [appearance]="context.appearance.includes('fullscreen') ? 'action' : 'neutral'"
         [iconStart]="icons.close"
         [style.border-radius.%]="100"
         (click)="close$.next()"
@@ -15,7 +15,7 @@
 }
 
 @if (!primitive && context.label) {
-    <header tuiHeader>
+    <header>
         <hgroup tuiTitle>
             <h2
                 [id]="context.id"
@@ -26,7 +26,7 @@
 }
 
 <ng-container *polymorpheusOutlet="context.content as text; context: context">
-    <header tuiHeader>
+    <header>
         <hgroup tuiTitle>
             <h2
                 [id]="context.id"

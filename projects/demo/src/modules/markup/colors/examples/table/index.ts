@@ -1,5 +1,5 @@
 import {ClipboardModule} from '@angular/cdk/clipboard';
-import {Component, inject, Input} from '@angular/core';
+import {Component, inject, input} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {TuiDocCopy} from '@taiga-ui/addon-doc';
@@ -19,8 +19,7 @@ export class TableColors {
     protected readonly darkMode = inject(TUI_DARK_MODE);
     protected readonly platform = inject(TuiPlatform);
 
-    @Input()
-    public colors: readonly string[] = [];
+    public readonly colors = input<readonly string[]>([]);
 
     @tuiPure
     protected getValue(variable: string, _p: string, _d: boolean): string {

@@ -12,9 +12,11 @@ import {FINISH_SYMBOL, saveActiveProject, START_SYMBOL, titleLog} from 'ng-morph
 import {TAIGA_VERSION} from '../../ng-add/constants/versions';
 import {type TuiSchema} from '../../ng-add/schema';
 import {getExecutionTime} from '../../utils/get-execution-time';
+import {replaceIdentifiers} from '../steps/replace-identifier';
 import {getFileSystem} from '../utils/get-file-system';
 import {replaceFunctions} from '../utils/replace-functions';
 import {REPLACE_FUNCTIONS} from './steps/constants/functions';
+import {IDENTIFIERS_TO_REPLACE} from './steps/constants/identifiers-to-replace';
 import {migrateTemplates} from './steps/migrate-templates';
 import {migrateTokens} from './steps/migrate-tokens/migrate-tokens';
 import {updateTsConfig} from './steps/migrate-tokens/update-tsconfig';
@@ -26,6 +28,7 @@ function main(options: TuiSchema): Rule {
         migrateTokens(tree, options);
         updateTsConfig(tree, options);
         replaceFunctions(REPLACE_FUNCTIONS);
+        replaceIdentifiers(options, IDENTIFIERS_TO_REPLACE);
         migrateTemplates(fileSystem, options);
 
         fileSystem.commitEdits();

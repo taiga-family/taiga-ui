@@ -12,7 +12,6 @@ export const [TUI_HIGHLIGHT_OPTIONS, tuiHighlightOptionsProvider] = tuiCreateOpt
 });
 
 @Directive({
-    standalone: true,
     selector: '[tuiHighlight]',
     providers: [ResizeObserverService],
     host: {

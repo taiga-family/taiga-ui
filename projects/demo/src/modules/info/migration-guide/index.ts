@@ -7,7 +7,7 @@ import {TuiAccordion} from '@taiga-ui/kit';
 import {TuiAccordionTarget} from './target';
 
 @Component({
-    imports: [TuiAccordion, TuiDemo, TuiAccordionTarget],
+    imports: [TuiAccordion, TuiAccordionTarget, TuiDemo],
     templateUrl: './index.html',
     styleUrl: './index.less',
     changeDetection,
@@ -16,6 +16,6 @@ export default class Page {
     protected readonly pages = DemoRoute;
 
     protected readonly manuallyTriggerNxMigration = import(
-        './examples/manual-trigger-nx-migrate-v4.md?raw'
+        './examples/manual-trigger-nx-migrate-v4.md'
     );
 }

@@ -19,7 +19,6 @@ import {
     tuiDefaultSort,
     tuiIsFalsy,
     tuiIsPresent,
-    TuiLet,
     tuiToInt,
 } from '@taiga-ui/cdk';
 import {
@@ -117,7 +116,6 @@ function getAge(dob: TuiDay): number {
         TuiDropdown,
         TuiInputNumber,
         TuiLabel,
-        TuiLet,
         TuiLoader,
         TuiNumberFormat,
         TuiReorder,

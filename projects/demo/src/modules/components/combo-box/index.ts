@@ -24,7 +24,6 @@ import {
     TuiFilterByInputPipe,
 } from '@taiga-ui/kit';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
-import {map, type Observable} from 'rxjs';
 
 interface Country {
     id: string;
@@ -51,6 +50,7 @@ interface Country {
     changeDetection,
 })
 export default class PageComponent {
+    private readonly countriesI18n = inject(TUI_COUNTRIES);
     protected readonly routes = DemoRoute;
     protected readonly isMobile = inject(TUI_IS_MOBILE);
 
@@ -58,8 +58,8 @@ export default class PageComponent {
 
     protected textfieldContent: PolymorpheusContent = '';
 
-    protected readonly countries$: Observable<Country[]> = inject(TUI_COUNTRIES).pipe(
-        map((x) => Object.entries(x).map(([id, name]) => ({id, name}))),
+    protected readonly countries = computed(() =>
+        Object.entries(this.countriesI18n()).map(([id, name]) => ({id, name})),
     );
 
     protected readonly matcherVariants: ReadonlyArray<TuiStringMatcher<Country>> = [
@@ -84,11 +84,13 @@ export default class PageComponent {
     protected strict = true;
 
     protected readonly databaseExample: TuiRawLoaderContent = import(
-        './examples/5/database.ts?raw'
+        './examples/5/database.ts?raw',
+        {with: {loader: 'text'}}
     );
 
     protected readonly selectOptionExample: TuiRawLoaderContent = import(
-        './examples/12/option.ts?raw'
+        './examples/12/option.ts?raw',
+        {with: {loader: 'text'}}
     );
 
     protected readonly handler = (item: Country): boolean =>

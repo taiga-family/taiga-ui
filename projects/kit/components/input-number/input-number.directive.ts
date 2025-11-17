@@ -1,13 +1,4 @@
-import {
-    computed,
-    Directive,
-    effect,
-    inject,
-    Input,
-    signal,
-    untracked,
-} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {computed, Directive, effect, inject, input, untracked} from '@angular/core';
 import {MaskitoDirective} from '@maskito/angular';
 import {type MaskitoOptions, maskitoTransform} from '@maskito/core';
 import {
@@ -17,7 +8,7 @@ import {
     maskitoParseNumber,
 } from '@maskito/kit';
 import {tuiAsControl, TuiControl, tuiValueTransformerFrom} from '@taiga-ui/cdk/classes';
-import {CHAR_HYPHEN, CHAR_MINUS, TUI_ALLOW_SIGNAL_WRITES} from '@taiga-ui/cdk/constants';
+import {CHAR_HYPHEN, CHAR_MINUS} from '@taiga-ui/cdk/constants';
 import {TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsSafeToRound} from '@taiga-ui/cdk/utils/math';
@@ -25,7 +16,7 @@ import {
     TuiTextfieldDirective,
     TuiWithTextfield,
 } from '@taiga-ui/core/components/textfield';
-import {TUI_DEFAULT_NUMBER_FORMAT, TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
+import {TUI_NUMBER_FORMAT} from '@taiga-ui/core/tokens';
 import {tuiFormatNumber} from '@taiga-ui/core/utils/format';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
@@ -34,7 +25,6 @@ import {TUI_INPUT_NUMBER_OPTIONS} from './input-number.options';
 const DEFAULT_MAX_LENGTH = 18;
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputNumber]',
     providers: [
         tuiAsControl(TuiInputNumberDirective),
@@ -54,11 +44,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
     private readonly options = inject(TUI_INPUT_NUMBER_OPTIONS);
     private readonly textfield = inject(TuiTextfieldDirective);
     private readonly isIOS = inject(TUI_IS_IOS);
-    private readonly minRaw = signal(this.options.min);
-    private readonly maxRaw = signal(this.options.max);
-    private readonly numberFormat = toSignal(inject(TUI_NUMBER_FORMAT), {
-        initialValue: TUI_DEFAULT_NUMBER_FORMAT,
-    });
+    private readonly numberFormat = inject(TUI_NUMBER_FORMAT);
 
     private readonly formatted = computed(() =>
         maskitoParseNumber(this.textfield.value(), this.numberFormat()),
@@ -97,8 +83,9 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
             !!this.precision() && this.textfield.value().includes(decimalSeparator);
         const precision = decimalPart ? Math.min(this.precision() + 1, 20) : 0;
         const takeThousand = thousandSeparator.repeat(5).length;
+        const affixes = this.prefix().length + this.postfix().length;
 
-        return DEFAULT_MAX_LENGTH + precision + takeThousand;
+        return DEFAULT_MAX_LENGTH + precision + takeThousand + affixes;
     });
 
     protected readonly onChangeEffect = effect(() => {
@@ -120,7 +107,7 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         }
 
         this.onChange(value);
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected maskInitialCalibrationEffect = effect(() => {
         const options = maskitoNumberOptionsGenerator({
@@ -130,34 +117,21 @@ export class TuiInputNumberDirective extends TuiControl<number | null> {
         });
 
         this.textfield.value.update((x) => maskitoTransform(x, options));
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     public readonly min = computed(() => Math.min(this.minRaw(), this.maxRaw()));
     public readonly max = computed(() => Math.max(this.minRaw(), this.maxRaw()));
-    public readonly prefix = signal(this.options.prefix);
-    public readonly postfix = signal(this.options.postfix);
+    public readonly prefix = input(this.options.prefix);
+    public readonly postfix = input(this.options.postfix);
+    public readonly minRaw = input<number, number | null>(this.options.min, {
+        alias: 'min',
+        transform: (x) => this.transformer.fromControlValue(x ?? this.options.min),
+    });
 
-    @Input('min')
-    public set minSetter(x: number | null) {
-        this.minRaw.set(this.transformer.fromControlValue(x ?? this.options.min));
-    }
-
-    @Input('max')
-    public set maxSetter(x: number | null) {
-        this.maxRaw.set(this.transformer.fromControlValue(x ?? this.options.max));
-    }
-
-    // TODO(v5): replace with signal input
-    @Input('prefix')
-    public set prefixSetter(x: string) {
-        this.prefix.set(x);
-    }
-
-    // TODO(v5): replace with signal input
-    @Input('postfix')
-    public set postfixSetter(x: string) {
-        this.postfix.set(x);
-    }
+    public readonly maxRaw = input<number, number | null>(this.options.max, {
+        alias: 'max',
+        transform: (x) => this.transformer.fromControlValue(x ?? this.options.max),
+    });
 
     public override writeValue(value: number | null): void {
         const reset = this.control.pristine && this.control.untouched && !value;

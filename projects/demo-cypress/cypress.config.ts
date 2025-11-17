@@ -2,9 +2,10 @@ import {nxComponentTestingPreset} from '@nx/angular/plugins/component-testing';
 import {defineConfig} from 'cypress';
 import getCompareSnapshotsPlugin from 'cypress-image-diff-js/plugin';
 
-import webpackConfig from '../demo/webpack.config';
-
-const preset = nxPreset();
+const preset = {
+    ...nxPreset(),
+    devServerPublicPathRoute: '/',
+};
 
 export default defineConfig({
     video: false,
@@ -18,7 +19,6 @@ export default defineConfig({
         ...preset,
         devServer: {
             ...preset.devServer,
-            webpackConfig: webpackConfig({}),
             options: {
                 ...preset.devServer?.options,
                 projectConfig: {

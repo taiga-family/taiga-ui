@@ -1,18 +1,18 @@
 <div class="t-left t-icon">
     <ng-content select="img">
-        @if (iconStart) {
+        @if (iconStart()) {
             <tui-icon
                 class="t-icon"
-                [icon]="iconStart"
+                [icon]="iconStart()"
             />
         }
     </ng-content>
 </div>
 
-@if (iconEnd) {
+@if (iconEnd()) {
     <tui-icon
         class="t-right t-icon"
-        [icon]="iconEnd"
+        [icon]="iconEnd()"
     />
 }
 
@@ -20,9 +20,11 @@
     <ng-content />
 </div>
 
-@if (paymentSystem) {
+@let system = paymentSystem();
+
+@if (system) {
     <tui-icon
         class="t-logo"
-        [icon]="options.icons[paymentSystem]"
+        [icon]="options.icons[system]"
     />
 }

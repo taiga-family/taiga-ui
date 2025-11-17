@@ -50,7 +50,7 @@ export function replaceInputProperty({
 }: {
     componentSelector: string[] | string;
     fileSystem: DevkitFileSystem;
-    filterFn?: (element: Element) => boolean;
+    filterFn?(element: Element): boolean;
     from: string;
     newValue?: string;
     templateResource: TemplateResource;
@@ -110,7 +110,6 @@ export function getInputPropertyOffsets(
     html: string,
     attrName: string,
     tags: string[],
-    // eslint-disable-next-line no-restricted-syntax
     filterFn: (element: Element) => boolean = () => true,
 ): Array<[number, number]> {
     return findElementsWithAttribute(html, attrName)
@@ -166,7 +165,7 @@ export function replaceInputPropertyByDirective({
     directive: string;
     directiveModule?: {moduleSpecifier: string; name: string};
     fileSystem: DevkitFileSystem;
-    filterFn?: (element: Element) => boolean;
+    filterFn?(element: Element): boolean;
     inputProperty: string;
     templateResource: TemplateResource;
 }): void {
@@ -202,7 +201,7 @@ export function removeInputProperty({
 }: {
     componentSelector: string;
     fileSystem: DevkitFileSystem;
-    filterFn?: (element: Element) => boolean;
+    filterFn?(element: Element): boolean;
     inputProperty: string;
     templateResource: TemplateResource;
 }): void {

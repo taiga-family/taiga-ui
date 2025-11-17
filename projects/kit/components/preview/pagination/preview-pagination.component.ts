@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -15,7 +14,7 @@ import {TuiPreviewAction} from '../action/preview-action.directive';
 
 @Component({
     selector: 'tui-preview-pagination',
-    imports: [AsyncPipe, TuiButton, TuiPreviewAction],
+    imports: [TuiButton, TuiPreviewAction],
     templateUrl: './preview-pagination.template.html',
     styleUrl: './preview-pagination.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,7 +25,7 @@ import {TuiPreviewAction} from '../action/preview-action.directive';
 })
 export class TuiPreviewPagination {
     protected readonly icons = inject(TUI_PREVIEW_ICONS);
-    protected readonly texts$ = inject(TUI_PAGINATION_TEXTS);
+    protected readonly paginationTexts = inject(TUI_PAGINATION_TEXTS);
 
     @Input()
     public length = 1;

@@ -20,7 +20,6 @@ import {
 class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiMessage]',
     providers: [
         {

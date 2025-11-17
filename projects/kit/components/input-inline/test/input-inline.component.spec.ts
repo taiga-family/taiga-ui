@@ -13,7 +13,6 @@ import {TuiInputInline} from '../input-inline.component';
 
 describe('InputInline', () => {
     @Component({
-        standalone: true,
         imports: [ReactiveFormsModule, TuiInputInline],
         template: `
             <tui-input-inline>

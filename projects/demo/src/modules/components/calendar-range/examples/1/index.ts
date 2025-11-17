@@ -4,6 +4,7 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCalendarRange} from '@taiga-ui/kit';
 
 @Component({
+    selector: 'example-1',
     imports: [TuiCalendarRange],
     templateUrl: './index.html',
     encapsulation,

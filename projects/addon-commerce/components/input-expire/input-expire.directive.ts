@@ -5,7 +5,6 @@ import {TuiWithTextfield} from '@taiga-ui/core/components/textfield';
 import {tuiMaskito} from '@taiga-ui/kit/utils';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiInputExpire]',
     hostDirectives: [MaskitoDirective, TuiWithTextfield],
     host: {

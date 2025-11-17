@@ -1,49 +1,23 @@
-import {type ComponentRef, Directive, inject, Injectable, input} from '@angular/core';
-import {tuiAsPortal, TuiPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
-import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiCreateTokenFromFactory} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiPopupService} from '@taiga-ui/core/directives/popup';
-import {type PolymorpheusComponent} from '@taiga-ui/polymorpheus';
+import {Directive, inject, Injectable, input} from '@angular/core';
+import {tuiAsPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
+import {TuiNotificationService} from '@taiga-ui/core/directives/notification';
 
 import {TuiToastComponent} from './toast.component';
-import {TUI_TOAST_OPTIONS, type TuiToastOptions} from './toast.options';
-
-export const TUI_TOASTS_CONCURRENCY = tuiCreateTokenFromFactory<number>(() =>
-    inject(TUI_IS_MOBILE) ? 1 : 2,
-);
+import {
+    TUI_TOAST_CONCURRENCY,
+    TUI_TOAST_OPTIONS,
+    type TuiToastOptions,
+} from './toast.options';
 
 @Injectable({
     providedIn: 'root',
-    deps: [TuiPopupService],
-    useClass: TuiToastService,
 })
-export class TuiToastService extends TuiPortal<TuiToastOptions<any>> {
-    private readonly concurrency = Math.min(inject(TUI_TOASTS_CONCURRENCY), 5);
-    private readonly current = new Map<unknown, ComponentRef<unknown>>();
-    private readonly queue = new Set<PolymorpheusComponent<unknown>>();
-
+export class TuiToastService extends TuiNotificationService<TuiToastOptions<any>> {
     protected override readonly options = inject(TUI_TOAST_OPTIONS);
     protected override readonly component = TuiToastComponent;
 
-    protected override add(component: PolymorpheusComponent<unknown>): () => void {
-        if (this.current.size < this.concurrency) {
-            this.current.set(component, this.service.add(component));
-        } else {
-            this.queue.add(component);
-        }
-
-        return () => {
-            this.current.get(component)?.destroy();
-            this.current.delete(component);
-            this.queue.delete(component);
-
-            const [next] = this.queue;
-
-            if (this.current.size < this.concurrency && next) {
-                this.current.set(next, this.service.add(next));
-                this.queue.delete(next);
-            }
-        };
+    constructor() {
+        super(inject(TUI_TOAST_CONCURRENCY));
     }
 }
 

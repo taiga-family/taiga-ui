@@ -23,7 +23,6 @@ function providerOf(serviceToken: any, mockedService: any): Provider {
 }
 
 @Component({
-    standalone: true,
     template: '',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -42,10 +41,10 @@ describe('TuiRoutableDialog', () => {
     let tuiDialogService: TuiDialogService;
     let router: Router;
 
-    function createComponent(
+    async function createComponent(
         activatedRoute?: Partial<ActivatedRoute>,
         closeDialogImmediately = true,
-    ): void {
+    ): Promise<void> {
         tuiDialogService = mock(TuiDialogService);
         router = mock(Router);
 
@@ -67,14 +66,13 @@ describe('TuiRoutableDialog', () => {
         );
 
         fixture = TestBed.createComponent(TuiRoutableDialog);
+
+        return fixture.whenStable();
     }
 
-    it('dialog content component is passed to the dialog open method, when RoutableDialog is created', () => {
+    it('dialog content component is passed to the dialog open method, when RoutableDialog is created', async () => {
         // arrange
-        createComponent();
-
-        // act
-        fixture.detectChanges();
+        await createComponent();
 
         // assert
         verify(
@@ -85,13 +83,13 @@ describe('TuiRoutableDialog', () => {
         ).once();
     });
 
-    it('dialog options are passed to the dialog open method', () => {
+    it('dialog options are passed to the dialog open method', async () => {
         // arrange
         const dialogOptions = {
             dismissible: true,
         };
 
-        createComponent({
+        await createComponent({
             snapshot: {
                 data: {
                     dialog: Dialog,
@@ -100,14 +98,11 @@ describe('TuiRoutableDialog', () => {
             } as unknown as ActivatedRouteSnapshot,
         });
 
-        // act
-        fixture.detectChanges();
-
         // assert
         verify(tuiDialogService.open(anything(), deepEqual(dialogOptions))).once();
     });
 
-    it('closing the dialog navigates back to the parent route for lazy loaded case', fakeAsync(() => {
+    it('closing the dialog navigates back to the parent route for lazy loaded case', fakeAsync(async () => {
         // arrange
         const activatedRouteMock = {
             snapshot: {
@@ -133,10 +128,7 @@ describe('TuiRoutableDialog', () => {
             } as unknown as ActivatedRoute,
         };
 
-        createComponent(activatedRouteMock);
-
-        // act
-        fixture.detectChanges();
+        await createComponent(activatedRouteMock);
 
         // assert
         verify(
@@ -149,9 +141,9 @@ describe('TuiRoutableDialog', () => {
         ).once();
     }));
 
-    it('closing the dialog navigates back to the parent route for eager loaded case', fakeAsync(() => {
+    it('closing the dialog navigates back to the parent route for eager loaded case', fakeAsync(async () => {
         // arrange
-        createComponent({
+        await createComponent({
             snapshot: {
                 data: {
                     dialog: Dialog,
@@ -160,16 +152,13 @@ describe('TuiRoutableDialog', () => {
             } as unknown as ActivatedRouteSnapshot,
         });
 
-        // act
-        fixture.detectChanges();
-
         // assert
         verify(router.navigate(deepEqual(['../../..']), anything())).once();
     }));
 
-    it('if navigation occurs from a dialog, then the navigation to parent is not called', () => {
+    it('if navigation occurs from a dialog, then the navigation to parent is not called', async () => {
         // arrange
-        createComponent(
+        await createComponent(
             {
                 snapshot: {
                     data: {
@@ -180,8 +169,6 @@ describe('TuiRoutableDialog', () => {
             },
             false, // will close dialog only on destroy
         );
-
-        fixture.detectChanges();
 
         when(router.url).thenReturn('new/route/after/navigation'); // means the url has changed
 

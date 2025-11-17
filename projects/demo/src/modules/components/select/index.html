@@ -207,7 +207,7 @@
 
                 <p class="tui-space_top-0">
                     Put
-                    <code>tuiDropdownMobile="..."</code>
+                    <code>tuiDropdownSheet="Label"</code>
                     on
                     <code>&lt;tui-textfield /&gt;</code>
                     to enable sheet dialog (instead of default dropdown) with special appearance of options (similar to
@@ -299,8 +299,8 @@
     <ng-template pageTab>
         <tui-doc-demo [control]="control">
             <ng-template>
+                @let showPlaceholder = textfieldDoc.size === 's' || !control.value;
                 <tui-textfield
-                    *tuiLet="textfieldDoc.size === 's' || !control.value as showPlaceholder"
                     tuiChevron
                     [content]="control.value && textfieldContent"
                     [disabledItemHandler]="itemsHandlers.disabledItemHandler()"
@@ -333,7 +333,7 @@
                     <tui-data-list-wrapper
                         *tuiDropdown
                         new
-                        [items]="countries$ | async"
+                        [items]="countries()"
                     />
                 </tui-textfield>
             </ng-template>

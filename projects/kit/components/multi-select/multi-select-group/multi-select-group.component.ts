@@ -8,7 +8,6 @@ import {
     type QueryList,
     signal,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {NgControl} from '@angular/forms';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiOptionWithValue} from '@taiga-ui/core/components/data-list';
@@ -22,7 +21,6 @@ import {TUI_MULTI_SELECT_TEXTS} from '@taiga-ui/kit/tokens';
 import {tuiInjectValue} from '@taiga-ui/kit/utils';
 
 @Component({
-    standalone: true,
     selector: 'tui-opt-group[tuiMultiSelectGroup]',
     imports: [TuiLink],
     templateUrl: './multi-select-group.template.html',
@@ -39,7 +37,7 @@ export class TuiMultiSelectGroupComponent<T> {
         inject(NgControl, {optional: true});
 
     protected readonly values = signal<readonly T[]>([]);
-    protected readonly texts = toSignal(inject(TUI_MULTI_SELECT_TEXTS));
+    protected readonly texts = inject(TUI_MULTI_SELECT_TEXTS);
     protected readonly value = tuiInjectValue<readonly T[] | null>();
     protected readonly checked = computed(() =>
         this.values().every((item) =>

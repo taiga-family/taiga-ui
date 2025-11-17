@@ -11,15 +11,18 @@
         "payment"
     ],
     "homepage": "https://github.com/taiga-family/taiga-ui",
-    "repository": "https://github.com/taiga-family/taiga-ui",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/taiga-family/taiga-ui"
+    },
     "license": "Apache-2.0",
     "peerDependencies": {
         "@angular/common": ">=19.0.0",
         "@angular/core": ">=19.0.0",
         "@angular/forms": ">=19.0.0",
-        "@maskito/angular": "^3.11.1",
-        "@maskito/core": "^3.11.1",
-        "@maskito/kit": "^3.11.1",
+        "@maskito/angular": "^4.0.1",
+        "@maskito/core": "^4.0.1",
+        "@maskito/kit": "^4.0.1",
         "@ng-web-apis/common": "^4.12.2",
         "@taiga-ui/cdk": "^4.52.0",
         "@taiga-ui/core": "^4.52.0",

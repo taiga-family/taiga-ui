@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import {readFile} from 'fs/promises';
+import {readFile} from 'node:fs/promises';
 
 /**
  * Posts performance comparison report as GitHub comment
@@ -37,7 +37,7 @@ async function postPerformanceComment(reportPath: string): Promise<void> {
         // Read performance report
         const reportContent = await readFile(reportPath, 'utf8');
 
-        if (!reportContent || reportContent.trim().length === 0) {
+        if (reportContent?.trim().length === 0) {
             console.error('❌ Performance report is empty, aborting comment posting');
 
             return;

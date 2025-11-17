@@ -1,4 +1,5 @@
 import {inject, Injectable, type Provider} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
 import {WA_LOCAL_STORAGE} from '@ng-web-apis/common';
 import {
     TUI_DEFAULT_LANGUAGE,
@@ -23,7 +24,10 @@ export function tuiLanguageSwitcher(loader: TuiLanguageLoader): Provider[] {
         },
         {
             provide: TUI_LANGUAGE,
-            useFactory: () => inject(TuiLanguageSwitcherService).pipe(switchAll()),
+            useFactory: () =>
+                toSignal(inject(TuiLanguageSwitcherService).pipe(switchAll()), {
+                    initialValue: inject(TUI_DEFAULT_LANGUAGE),
+                }),
         },
     ];
 }

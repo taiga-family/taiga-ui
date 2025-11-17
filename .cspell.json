@@ -48,7 +48,13 @@
         "sdev",
         "coeff",
         "Dalvik",
-        "UTDL"
+        "UTDL",
+        "optimise",
+        "styleguide",
+        "minimise",
+        "Vercetti",
+        "Bellic",
+        "Niko"
     ],
     "ignoreRegExpList": ["\\(https?://.*?\\)", "\\/{1}.+\\/{1}", "\\%2F.+", "\\%2C.+", "\\ɵ.+", "\\ыва.+"],
     "overrides": [

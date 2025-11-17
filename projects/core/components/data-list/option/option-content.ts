@@ -29,9 +29,7 @@ export function tuiAsOptionContent(
     };
 }
 
-@Directive({
-    standalone: true,
-})
+@Directive()
 export class TuiWithOptionContent {
     @ContentChild(TUI_OPTION_CONTENT, {descendants: true})
     protected readonly localContent: Type<any> | null = null;

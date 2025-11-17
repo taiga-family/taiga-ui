@@ -6,11 +6,12 @@ import {
     signal,
     ViewChild,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {type MaskitoOptions} from '@maskito/core';
 import {
     maskitoDateTimeOptionsGenerator,
     maskitoSelectionChangeHandler,
+    type MaskitoTimeMode,
 } from '@maskito/kit';
 import {type TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
@@ -21,10 +22,8 @@ import {
     TuiDay,
     TuiMonth,
     TuiTime,
-    type TuiTimeMode,
 } from '@taiga-ui/cdk/date-time';
 import {type TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
-import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiBooleanHandler, type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiClamp} from '@taiga-ui/cdk/utils/math';
@@ -33,7 +32,7 @@ import {
     tuiNullableSame,
     tuiPure,
 } from '@taiga-ui/cdk/utils/miscellaneous';
-import {TUI_DATE_FORMAT, TUI_DEFAULT_DATE_FORMAT} from '@taiga-ui/core/tokens';
+import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {
     TUI_DATE_TEXTS,
@@ -86,11 +85,11 @@ export class TuiInputDateTimeComponent
     private readonly textfieldSize = inject(TUI_TEXTFIELD_SIZE);
 
     private month: TuiMonth | null = null;
-    private readonly timeMode$ = new BehaviorSubject<TuiTimeMode>('HH:MM');
+    private readonly timeMode$ = new BehaviorSubject<MaskitoTimeMode>('HH:MM');
     private readonly nativeValue = signal('');
 
-    protected readonly timeTexts$ = inject(TUI_TIME_TEXTS);
-    protected readonly dateTexts$ = inject(TUI_DATE_TEXTS);
+    protected readonly timeTexts$ = toObservable(inject(TUI_TIME_TEXTS));
+    protected readonly dateTexts$ = toObservable(inject(TUI_DATE_TEXTS));
     protected override readonly valueTransformer: TuiValueTransformer<
         [TuiDay, TuiTime | null]
     > | null = inject(TUI_DATE_TIME_VALUE_TRANSFORMER, {optional: true});
@@ -101,8 +100,8 @@ export class TuiInputDateTimeComponent
         this.dateTexts$.pipe(
             map((dateTexts) =>
                 changeDateSeparator(
-                    dateTexts[this.dateFormat.mode],
-                    this.dateFormat.separator,
+                    dateTexts[this.dateFormat().mode],
+                    this.dateFormat().separator,
                 ),
             ),
         ),
@@ -114,13 +113,8 @@ export class TuiInputDateTimeComponent
         ),
     );
 
-    protected dateFormat = TUI_DEFAULT_DATE_FORMAT;
+    protected dateFormat = inject(TUI_DATE_FORMAT);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
-    protected readonly dateFormat$ = inject(TUI_DATE_FORMAT)
-        .pipe(tuiWatch(this.cdr), takeUntilDestroyed())
-        .subscribe((format) => {
-            this.dateFormat = format;
-        });
 
     @Input()
     public min: TuiDay | [TuiDay | null, TuiTime | null] | null = this.options.min;
@@ -137,11 +131,11 @@ export class TuiInputDateTimeComponent
     public open = false;
 
     @Input()
-    public set timeMode(value: TuiTimeMode) {
+    public set timeMode(value: MaskitoTimeMode) {
         this.timeMode$.next(value);
     }
 
-    public get timeMode(): TuiTimeMode {
+    public get timeMode(): MaskitoTimeMode {
         return this.timeMode$.value;
     }
 
@@ -208,7 +202,7 @@ export class TuiInputDateTimeComponent
         }
 
         const [date = '', time] = value.split(DATE_TIME_SEPARATOR);
-        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat.mode);
+        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat().mode);
         const parsedTime =
             time && time.length === this.timeMode.length
                 ? TuiTime.fromString(time)
@@ -239,8 +233,8 @@ export class TuiInputDateTimeComponent
             this.computedMin,
             this.computedMax,
             this.timeMode,
-            this.dateFormat.mode,
-            this.dateFormat.separator,
+            this.dateFormat().mode,
+            this.dateFormat().separator,
         );
     }
 
@@ -336,7 +330,7 @@ export class TuiInputDateTimeComponent
         }
 
         const parsedTime = TuiTime.fromString(time);
-        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat.mode);
+        const parsedDate = TuiDay.normalizeParse(date, this.dateFormat().mode);
 
         this.value = !parsedDate || !parsedTime ? null : [parsedDate, parsedTime];
     }
@@ -369,7 +363,7 @@ export class TuiInputDateTimeComponent
     private calculateMask(
         min: TuiDay | [TuiDay, TuiTime],
         max: TuiDay | [TuiDay, TuiTime],
-        timeMode: TuiTimeMode,
+        timeMode: MaskitoTimeMode,
         dateFormat: TuiDateMode,
         dateSeparator: string,
     ): MaskitoOptions {
@@ -400,11 +394,11 @@ export class TuiInputDateTimeComponent
     private getDateTimeString(
         date: TuiDay | string,
         time: TuiTime | string | null,
-        timeMode: TuiTimeMode = 'HH:MM',
+        timeMode: MaskitoTimeMode = 'HH:MM',
     ): string {
         const dateString =
             date instanceof TuiDay
-                ? date.toString(this.dateFormat.mode, this.dateFormat.separator)
+                ? date.toString(this.dateFormat().mode, this.dateFormat().separator)
                 : date;
         const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
 
@@ -431,7 +425,7 @@ export class TuiInputDateTimeComponent
 
     private trimTrailingSeparator(value: string): string {
         return value.replace(
-            new RegExp(`(\\${this.dateFormat.separator}|${DATE_TIME_SEPARATOR}|\\.)$`),
+            new RegExp(`(\\${this.dateFormat().separator}|${DATE_TIME_SEPARATOR}|\\.)$`),
             '',
         );
     }

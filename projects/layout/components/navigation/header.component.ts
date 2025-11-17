@@ -13,7 +13,6 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
 import {tuiBadgeNotificationOptionsProvider} from '@taiga-ui/kit/components/badge-notification';
 
 @Component({
-    standalone: true,
     selector: 'header[tuiNavigationHeader]',
     template: '<ng-content />',
     styleUrl: './header.style.less',

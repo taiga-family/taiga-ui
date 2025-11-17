@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, isSignal, type Signal} from '@angular/core';
 import {WaResizeObserver} from '@ng-web-apis/resize-observer';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiLoader, tuiLoaderOptionsProvider} from '@taiga-ui/core/components/loader';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
@@ -27,6 +27,7 @@ export interface TuiNotificationMiddleOptions {
         {directive: WaResizeObserver, outputs: ['waResizeObserver']},
     ],
     host: {
+        class: 'tui-backdrop-hidden',
         '(document:click.capture)': 'onClick($event.target)',
         '(document:keydown.esc)': 'onClick($event.currentTarget)',
         '(waResizeObserver)': 'el.style.setProperty("--t-width", el.clientWidth + "px")',
@@ -35,7 +36,7 @@ export interface TuiNotificationMiddleOptions {
 export class TuiNotificationMiddleComponent {
     protected readonly el = tuiInjectElement();
     protected readonly context =
-        injectContext<TuiPopover<TuiNotificationMiddleOptions, void>>();
+        injectContext<TuiPortalContext<TuiNotificationMiddleOptions>>();
 
     protected onClick(target: HTMLElement): void {
         if (this.closable && !this.el.contains(target)) {

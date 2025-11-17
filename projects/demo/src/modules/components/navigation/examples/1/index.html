@@ -4,6 +4,7 @@
 </div>
 <header tuiNavigationHeader>
     <button
+        portal
         title="Menu"
         tuiIconButton
         tuiNavigationDrawer
@@ -85,7 +86,7 @@
                         <tui-icon
                             icon="@tui.check"
                             [style.font-size.em]="1"
-                            [style.margin-left.rem]="0.5"
+                            [style.margin-inline-start.rem]="0.5"
                         />
                     </button>
                     <button
@@ -344,7 +345,7 @@
                 tuiCardLarge
                 tuiForm="m"
                 [style.grid-column]="'2 / span 7'"
-                [style.margin-top.rem]="1"
+                [style.margin-block-start.rem]="1"
             >
                 <header tuiHeader>
                     <h2 tuiTitle>
@@ -379,7 +380,7 @@
                 appearance="outline-grayscale"
                 tuiCardLarge
                 [style.grid-column]="'span 3'"
-                [style.margin-top.rem]="1"
+                [style.margin-block-start.rem]="1"
             >
                 <h2 tuiTitle>
                     Sidebar content

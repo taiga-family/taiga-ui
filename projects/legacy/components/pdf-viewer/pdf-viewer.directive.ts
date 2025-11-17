@@ -1,17 +1,20 @@
-import {Directive} from '@angular/core';
-import {TuiPopoverDirective} from '@taiga-ui/cdk/directives/popover';
-import {tuiAsPopover} from '@taiga-ui/cdk/services';
+import {Directive, input} from '@angular/core';
+import {tuiAsPortal, TuiPortalDirective} from '@taiga-ui/cdk/portals';
 
 import {type TuiPdfViewerOptions} from './pdf-viewer.options';
 import {TuiPdfViewerService} from './pdf-viewer.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiPdfViewer]',
-    inputs: ['options: tuiPdfViewerOptions', 'open: tuiPdfViewer'],
-    outputs: ['openChange: tuiPdfViewerChange'],
-    providers: [tuiAsPopover(TuiPdfViewerService)],
+    providers: [tuiAsPortal(TuiPdfViewerService)],
+    hostDirectives: [
+        {
+            directive: TuiPortalDirective,
+            inputs: ['options: tuiPdfViewerOptions', 'open: tuiPdfViewer'],
+            outputs: ['openChange: tuiPdfViewerChange'],
+        },
+    ],
 })
-export class TuiPdfViewerDirective<T> extends TuiPopoverDirective<
-    TuiPdfViewerOptions<T>
-> {}
+export class TuiPdfViewerDirective<T> {
+    public readonly tuiPdfViewerOptions = input<Partial<TuiPdfViewerOptions<T>>>({});
+}

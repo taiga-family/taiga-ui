@@ -20,12 +20,8 @@ import {
     type TuiTreeController,
     type TuiTreeItemContext,
 } from '../../misc/tree.interfaces';
-import {
-    TUI_TREE_CONTENT,
-    TUI_TREE_CONTROLLER,
-    TUI_TREE_LEVEL,
-    TUI_TREE_NODE,
-} from '../../misc/tree.tokens';
+import {TUI_TREE_CONTROLLER, TUI_TREE_LEVEL, TUI_TREE_NODE} from '../../misc/tree.tokens';
+import {TUI_TREE_CONTENT} from '../tree-item-content/tree-item-content.component';
 
 @Component({
     selector: 'tui-tree-item',

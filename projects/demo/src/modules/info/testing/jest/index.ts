@@ -7,7 +7,7 @@ import {TuiDemo} from '@demo/utils';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
-    protected readonly jestConfig = import('./examples/jest-config.md?raw');
-    protected readonly packageJson = import('./examples/package-json.md?raw');
-    protected readonly setupJest = import('./examples/setup-jest.md?raw');
+    protected readonly jestConfig = import('./examples/jest-config.md');
+    protected readonly packageJson = import('./examples/package-json.md');
+    protected readonly setupJest = import('./examples/setup-jest.md');
 }

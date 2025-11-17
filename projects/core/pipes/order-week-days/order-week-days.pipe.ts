@@ -11,7 +11,6 @@ function convertToSundayFirstWeekFormat(
 }
 
 @Pipe({
-    standalone: true,
     name: 'tuiOrderWeekDays',
 })
 export class TuiOrderWeekDaysPipe implements PipeTransform {

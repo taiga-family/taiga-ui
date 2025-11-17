@@ -18,7 +18,6 @@ interface User {
 }
 
 @Component({
-    standalone: true,
     imports: [
         FormsModule,
         ReactiveFormsModule,

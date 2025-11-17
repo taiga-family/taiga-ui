@@ -9,12 +9,11 @@ import {isObservable} from 'rxjs';
 import {tuiCreateUnfinishedValidator} from './unfinished.validator';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiUnfinishedValidator]',
     providers: [tuiProvide(NG_VALIDATORS, TuiUnfinishedValidator, true)],
 })
 export class TuiUnfinishedValidator implements Validator {
-    private readonly default = toSignal(inject(TUI_DEFAULT_ERROR_MESSAGE));
+    private readonly default = inject(TUI_DEFAULT_ERROR_MESSAGE);
     private readonly error = inject(TUI_VALIDATION_ERRORS)['tuiUnfinished'];
     private readonly fallback = this.error ? signal(this.error) : this.default;
     private readonly message = isObservable(this.error)

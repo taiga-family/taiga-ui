@@ -11,7 +11,6 @@ import {
 import {TuiPopupService} from './popup.service';
 
 @Directive({
-    standalone: true,
     selector: 'ng-template[tuiPopup]',
 })
 export class TuiPopup implements OnChanges, OnDestroy {

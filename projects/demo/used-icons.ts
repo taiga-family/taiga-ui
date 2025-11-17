@@ -33,6 +33,7 @@ export const TUI_USED_ICONS = [
     '@tui.x',
     '@tui.user',
     '@tui.chevron-left',
+    '@img.mastercard',
     '@tui.box',
     '@tui.lock',
     '@tui.clock',

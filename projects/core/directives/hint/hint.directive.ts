@@ -1,36 +1,31 @@
 import {
+    type ComponentRef,
     Directive,
-    EventEmitter,
     inject,
     INJECTOR,
-    Input,
+    input,
+    type OnChanges,
     type OnDestroy,
-    Output,
-    signal,
+    output,
 } from '@angular/core';
-import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {
-    tuiAsRectAccessor,
     tuiAsVehicle,
     type TuiRectAccessor,
     type TuiVehicle,
 } from '@taiga-ui/core/classes';
-import {type TuiPortalItem} from '@taiga-ui/core/types';
+import {TuiPopupService} from '@taiga-ui/core/directives/popup';
 import {PolymorpheusComponent, type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 import {TUI_HINT_COMPONENT} from './hint.providers';
-import {TuiHintService} from './hint.service';
 import {TuiHintDriver} from './hint-driver.directive';
 import {TuiHintHover} from './hint-hover.directive';
 import {TUI_HINT_OPTIONS} from './hint-options.directive';
 import {TuiHintPosition} from './hint-position.directive';
 
 @Directive({
-    standalone: true,
     selector: '[tuiHint]:not(ng-container):not(ng-template)',
     providers: [
-        tuiAsRectAccessor(TuiHintDirective),
         tuiAsVehicle(TuiHintDirective),
         {
             provide: PolymorpheusComponent,
@@ -52,30 +47,25 @@ import {TuiHintPosition} from './hint-position.directive';
     ],
 })
 export class TuiHintDirective<C>
-    implements OnDestroy, TuiPortalItem<C>, TuiRectAccessor, TuiVehicle
+    implements OnDestroy, OnChanges, TuiRectAccessor, TuiVehicle
 {
-    private readonly service = inject(TuiHintService);
+    private readonly service = inject(TuiPopupService);
+    private ref?: ComponentRef<unknown>;
 
-    @Input('tuiHintContext')
-    public context?: C;
+    public readonly content = input<PolymorpheusContent<C>>(null, {alias: 'tuiHint'});
+    public readonly context = input<C>(undefined, {alias: 'tuiHintContext'});
+    public readonly appearance = input(inject(TUI_HINT_OPTIONS).appearance, {
+        alias: 'tuiHintAppearance',
+    });
 
-    @Input('tuiHintAppearance')
-    public appearance = inject(TUI_HINT_OPTIONS).appearance;
+    public readonly visible = output<boolean>({alias: 'tuiHintVisible'});
 
-    @Output('tuiHintVisible')
-    public readonly visible = new EventEmitter<boolean>();
-
-    public content = signal<PolymorpheusContent<C>>(null);
     public component = inject(PolymorpheusComponent<unknown>);
     public readonly el = tuiInjectElement();
-    public readonly activeZone? = inject(TuiActiveZone, {optional: true});
     public readonly type = 'hint';
 
-    @Input()
-    public set tuiHint(content: PolymorpheusContent<C>) {
-        this.content.set(content);
-
-        if (!content) {
+    public ngOnChanges(): void {
+        if (!this.content()) {
             this.toggle(false);
         }
     }
@@ -89,12 +79,13 @@ export class TuiHintDirective<C>
     }
 
     public toggle(show: boolean): void {
-        if (show && this.content()) {
-            this.service.add(this);
-        } else {
-            this.service.remove(this);
+        if (show && this.content() && !this.ref) {
+            this.ref = this.service.add(this.component);
+            this.visible.emit(true);
+        } else if (this.ref) {
+            this.ref.destroy();
+            this.ref = undefined;
+            this.visible.emit(false);
         }
-
-        this.visible.emit(show);
     }
 }

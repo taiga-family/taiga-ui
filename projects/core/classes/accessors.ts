@@ -38,11 +38,11 @@ export function tuiProvideAccessor<T extends TuiAccessor>(
 
 export function tuiFallbackAccessor<T extends TuiAccessor>(
     type: string,
-): (accessors: readonly T[] | null, fallback: T) => T {
+): (accessors: readonly T[] | null, fallback: Omit<T, 'type'>) => T {
     return (accessors, fallback) =>
         accessors?.find?.(
             (accessor) => accessor !== fallback && accessor.type === type,
-        ) || fallback;
+        ) || Object.create(fallback, {type: {value: type}});
 }
 
 export function tuiPositionAccessorFor(

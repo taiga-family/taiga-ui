@@ -9,13 +9,13 @@ import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {
     provideTaiga,
-    TuiDataListDirective,
+    TuiDataList,
     TuiHint,
     TuiRoot,
     type TuiSizeL,
     type TuiSizeS,
 } from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
     TuiInputComponent,
     TuiInputModule,
@@ -50,11 +50,10 @@ const ITEMS = [
 
 describe('Input', () => {
     @Component({
-        standalone: true,
         imports: [
             ReactiveFormsModule,
-            TuiDataListDirective,
-            TuiDataListWrapperComponent,
+            TuiDataList,
+            TuiDataListWrapper,
             TuiHint,
             TuiInputModule,
             TuiRoot,

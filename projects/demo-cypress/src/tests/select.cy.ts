@@ -2,7 +2,7 @@ import {
     ChangeDetectionStrategy,
     Component,
     EventEmitter,
-    Input,
+    input,
     Output,
 } from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
@@ -35,8 +35,8 @@ interface User {
         <tui-root>
             <tui-textfield
                 tuiChevron
-                [content]="content"
-                [stringify]="stringify"
+                [content]="content()"
+                [stringify]="stringify()"
             >
                 <input
                     tuiSelect
@@ -46,7 +46,7 @@ interface User {
                 <tui-data-list-wrapper
                     *tuiDropdown
                     new
-                    [itemContent]="content"
+                    [itemContent]="content()"
                     [items]="options"
                     (itemClick)="itemClick.emit($event)"
                 />
@@ -74,12 +74,11 @@ export class Sandbox {
     @Output()
     public readonly itemClick = new EventEmitter<User>();
 
-    @Input()
-    public content: PolymorpheusContent<TuiValueContentContext<User>> = ({$implicit}) =>
-        this.stringify($implicit);
+    public readonly content = input<PolymorpheusContent<TuiValueContentContext<User>>>(
+        ({$implicit}) => this.stringify()($implicit),
+    );
 
-    @Input()
-    public stringify: TuiStringHandler<User> = (x) => x.name;
+    public readonly stringify = input<TuiStringHandler<User>>((x) => x.name);
 }
 
 describe('Select', () => {

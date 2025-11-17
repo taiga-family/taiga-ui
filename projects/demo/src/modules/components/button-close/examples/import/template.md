@@ -1,8 +1,3 @@
 ```html
-<button
-  tuiIconButton
-  tuiButtonClose
->
-  Close
-</button>
+<button tuiButtonClose>Close</button>
 ```

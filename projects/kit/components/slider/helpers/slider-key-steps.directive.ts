@@ -15,7 +15,6 @@ import {TuiSliderComponent} from '../slider.component';
 import {tuiCreateKeyStepsTransformer, type TuiKeySteps} from './key-steps';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiSlider][keySteps]',
     host: {
         '[attr.min]': 'transformer() ? 0 : slider.min',
@@ -93,7 +92,6 @@ export class TuiSliderKeyStepsBase {
 }
 
 @Directive({
-    standalone: true,
     selector:
         'input[tuiSlider][keySteps][ngModel],input[tuiSlider][keySteps][formControl],input[tuiSlider][keySteps][formControlName]',
     providers: [tuiFallbackValueProvider(0)],

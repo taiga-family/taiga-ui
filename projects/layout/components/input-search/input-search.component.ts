@@ -10,7 +10,6 @@ import {
     TemplateRef,
     ViewChild,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
 import {
     tuiContainsOrAfter,
     tuiInjectElement,
@@ -53,7 +52,7 @@ export class TuiInputSearch implements OnChanges {
     private readonly el = tuiInjectElement<HTMLInputElement>();
     private readonly service = inject(TuiPopupService);
     private readonly textfield = inject(TuiTextfieldComponent);
-    private readonly i18n = toSignal(inject(TUI_INPUT_SEARCH));
+    private readonly i18n = inject(TUI_INPUT_SEARCH);
     private parent = this.textfield.el.parentElement;
     private neighbor = this.textfield.el.nextSibling;
     private placeholder = '';

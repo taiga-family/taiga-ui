@@ -4,5 +4,5 @@ export interface ReplacementTag {
     readonly addAttributes?: string[];
     readonly from: string;
     readonly to: string;
-    readonly filterFn?: (element: Element) => boolean;
+    filterFn?(element: Element): boolean;
 }

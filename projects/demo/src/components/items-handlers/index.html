@@ -7,14 +7,13 @@
     </td>
 </tr>
 
-@if (!hiddenOptions.includes('stringify')) {
+@if (!hiddenOptions().includes('stringify')) {
     <tr
         name="[stringify]"
         tuiDocAPIItem
         type="TuiStringHandler"
         [items]="stringifyVariants"
-        [value]="stringify()"
-        (valueChange)="stringify.set($event)"
+        [(value)]="stringify"
     >
         A function that transforms datalist's items into a string.
         <code>String(value)</code>
@@ -25,14 +24,13 @@
     </tr>
 }
 
-@if (!hiddenOptions.includes('identityMatcher')) {
+@if (!hiddenOptions().includes('identityMatcher')) {
     <tr
         name="[identityMatcher]"
         tuiDocAPIItem
         type="TuiIdentityMatcher"
         [items]="identityMatcherVariants"
-        [value]="identityMatcher()"
-        (valueChange)="identityMatcher.set($event)"
+        [(value)]="identityMatcher"
     >
         Function that matches form control value and datalist's items, e.g. if objects are copied. Uses
         <code>===</code>
@@ -43,14 +41,13 @@
     </tr>
 }
 
-@if (!hiddenOptions.includes('disabledItemHandler')) {
+@if (!hiddenOptions().includes('disabledItemHandler')) {
     <tr
         name="[disabledItemHandler]"
         tuiDocAPIItem
         type="TuiBooleanHandler"
-        [items]="[falseHandler, options.disabledItemHandler()]"
-        [value]="disabledItemHandler()"
-        (valueChange)="disabledItemHandler.set($event)"
+        [items]="[falseHandler, providedDisabledItemHandler()]"
+        [(value)]="disabledItemHandler"
     >
         <div>A handler that gets a datalist's items and returns true if it is disabled.</div>
         <p>

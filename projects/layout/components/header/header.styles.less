@@ -1,0 +1,132 @@
+@import '@taiga-ui/core/styles/taiga-ui-local';
+
+[tuiHeader] {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    box-sizing: content-box;
+    color: var(--tui-text-primary);
+    margin: 0;
+    text-align: start;
+    overflow-wrap: break-word;
+
+    p {
+        margin: 0.25rem 0 0;
+        font: var(--tui-font-text-m);
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    [tuiTitle] {
+        flex-grow: 2;
+        margin: 0;
+        font: inherit;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    [tuiAccessories] {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        white-space: nowrap;
+
+        &:has([tuiLink]) {
+            align-items: baseline;
+        }
+
+        &::before {
+            /* stylelint-disable-next-line */
+            content: '​';
+            visibility: hidden;
+        }
+    }
+
+    [tuiSubtitle] {
+        font: var(--tui-font-text-m);
+        color: var(--tui-text-secondary);
+        margin: 0;
+    }
+
+    [tuiLink] {
+        font: var(--tui-font-text-m);
+    }
+
+    [tuiCaption] {
+        font: var(--tui-font-text-s);
+        color: var(--tui-text-secondary);
+        font-weight: 500;
+        text-transform: uppercase;
+        margin: 0;
+    }
+
+    &[data-size='h1'] {
+        font: var(--tui-font-heading-1);
+    }
+
+    &[data-size='h2'] {
+        font: var(--tui-font-heading-2);
+    }
+
+    &[data-size='h3'] {
+        font: var(--tui-font-heading-3);
+    }
+
+    &[data-size='h4'] {
+        font: var(--tui-font-heading-4);
+    }
+
+    &[data-size='h5'] {
+        font: var(--tui-font-heading-5);
+    }
+
+    &[data-size='h6'] {
+        font: var(--tui-font-heading-6);
+    }
+
+    &[data-size='body-xl'] {
+        font: var(--tui-font-text-xl);
+
+        [tuiTitle] {
+            font-weight: bold;
+        }
+    }
+
+    &[data-size='body-l'] {
+        font: var(--tui-font-text-l);
+
+        [tuiTitle] {
+            font-weight: bold;
+        }
+    }
+
+    &[data-size='body-m'] {
+        font: var(--tui-font-text-m);
+
+        [tuiTitle] {
+            gap: 0.125rem;
+            font-weight: bold;
+        }
+    }
+
+    &[data-size='body-m'],
+    &[data-size='body-l'] {
+        [tuiSubtitle],
+        [tuiLink] {
+            font: var(--tui-font-text-s);
+        }
+    }
+
+    &[data-size='h1'],
+    &[data-size='h2'],
+    &[data-size='h3'] {
+        [tuiSubtitle],
+        [tuiLink] {
+            font: var(--tui-font-text-l);
+        }
+    }
+}

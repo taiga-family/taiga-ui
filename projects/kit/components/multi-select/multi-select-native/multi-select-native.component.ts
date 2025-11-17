@@ -3,7 +3,8 @@ import {ChangeDetectionStrategy, Component, computed, inject, Input} from '@angu
 import {TuiControl} from '@taiga-ui/cdk/classes';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement, tuiIsPresent} from '@taiga-ui/cdk/utils';
-import {tuiAsOptionContent} from '@taiga-ui/core/components/data-list';
+import {tuiSetSignal} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiAsOptionContent, TuiDataList} from '@taiga-ui/core/components/data-list';
 import {
     TuiSelectLike,
     TuiTextfield,
@@ -13,15 +14,15 @@ import {
     TUI_ITEMS_HANDLERS,
     type TuiItemsHandlers,
 } from '@taiga-ui/core/directives/items-handlers';
-import {TuiDataListWrapper} from '@taiga-ui/kit/components/data-list-wrapper';
 import {TuiInputChipDirective} from '@taiga-ui/kit/components/input-chip';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
+import {TuiMultiSelectGroupComponent} from '../multi-select-group/multi-select-group.component';
 import {TuiMultiSelectOption} from '../multi-select-option/multi-select-option.component';
 
 @Component({
     selector: 'select[tuiMultiSelect]',
-    imports: [NgTemplateOutlet, TuiDataListWrapper, TuiTextfield],
+    imports: [NgTemplateOutlet, TuiDataList, TuiMultiSelectGroupComponent, TuiTextfield],
     templateUrl: './multi-select-native.template.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [tuiAsOptionContent(TuiMultiSelectOption)],
@@ -57,7 +58,7 @@ export class TuiMultiSelectNative<T> {
 
     @Input()
     public set placeholder(placeholder: string) {
-        this.textfield.fillerSetter = placeholder;
+        tuiSetSignal(this.textfield.filler, placeholder);
     }
 
     protected onInput(): void {

@@ -7,7 +7,6 @@ import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directive
 import {TuiAsideComponent} from './aside.component';
 
 @Directive({
-    standalone: true,
     selector: '[tuiHintAside]',
     providers: [tuiHintOptionsProvider({direction: 'right'})],
     hostDirectives: [TuiHintDirective],
@@ -19,7 +18,7 @@ export class TuiHintAsideDirective {
 
     protected readonly binding = tuiDirectiveBinding(
         TuiHintDirective,
-        'tuiHint',
+        'content',
         computed(() =>
             this.aside.expanded() || this.dropdown
                 ? ''

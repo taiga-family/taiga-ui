@@ -4,14 +4,13 @@ import {
     Component,
     ElementRef,
     inject,
-    type QueryList,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY, TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
+import {TUI_TRUE_HANDLER} from '@taiga-ui/cdk/constants';
 import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {tuiCloseWatcher, tuiZonefull} from '@taiga-ui/cdk/observables';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_DIALOGS_CLOSE} from '@taiga-ui/core/components/dialog';
@@ -34,8 +33,8 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
     host: {
         '[attr.data-appearance]': 'context.appearance',
         '[style.--tui-offset.px]': 'context.offset',
+        '[class._bar]': 'context.bar',
         '[class._closeable]': 'context.closable',
-        '[class._fullscreen]': 'context.fullscreen === true',
         '(document:touchstart.passive.zoneless)': 'onPointerChange(1)',
         '(document:touchend.zoneless)': 'onPointerChange(-1)',
         '(document:touchcancel.zoneless)': 'onPointerChange(-1)',
@@ -44,14 +43,12 @@ const REQUIRED_ERROR = new Error(ngDevMode ? 'Required dialog was dismissed' : '
     },
 })
 export class TuiSheetDialogComponent<I> implements AfterViewInit {
-    @ViewChildren('stops')
-    private readonly stops: QueryList<ElementRef<HTMLElement>> = EMPTY_QUERY;
-
+    private readonly stops = viewChildren('stops', {read: ElementRef});
     private readonly el = tuiInjectElement();
     private pointers = 0;
 
     protected readonly context =
-        injectContext<TuiPopover<TuiSheetDialogOptions<I>, any>>();
+        injectContext<TuiPortalContext<TuiSheetDialogOptions<I>, any>>();
 
     protected readonly close$ = new Subject<void>();
     protected readonly $ = merge(
@@ -78,7 +75,7 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         .subscribe(() => this.close());
 
     public ngAfterViewInit(): void {
-        this.el.scrollTop = this.initial;
+        this.el.scrollTop = this.initial || 0;
     }
 
     protected onPointerChange(delta: number): void {
@@ -89,16 +86,12 @@ export class TuiSheetDialogComponent<I> implements AfterViewInit {
         }
     }
 
-    private get initial(): number {
-        if (!this.context.closable) {
-            return 0;
-        }
-
-        return (
-            this.stops
-                .map((e) => e.nativeElement.offsetTop - this.context.offset)
-                .concat(this.el.clientHeight ?? Infinity)[this.context.initial] ?? 0
-        );
+    private get initial(): number | undefined {
+        return this.context.closable
+            ? this.stops()
+                  .map((e) => e.nativeElement.offsetTop - this.context.offset)
+                  .concat(this.el.clientHeight ?? Infinity)[this.context.initial]
+            : 0;
     }
 
     private close(): void {

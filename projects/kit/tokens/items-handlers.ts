@@ -1,11 +1,10 @@
-import {InjectionToken, type Provider} from '@angular/core';
 import {TUI_DEFAULT_IDENTITY_MATCHER, TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {
     type TuiBooleanHandler,
     type TuiIdentityMatcher,
     type TuiStringHandler,
 } from '@taiga-ui/cdk/types';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 /**
  * @deprecated use it only for LEGACY controls. For new controls use the same entity from `@taiga-ui/core`.
@@ -31,19 +30,6 @@ export const TUI_DEFAULT_ITEMS_HANDLERS: TuiItemsHandlers<unknown> = {
  * @deprecated use it only for LEGACY controls. For new controls use the same entity from `@taiga-ui/core`.
  * TODO(v5): delete
  */
-export const TUI_ITEMS_HANDLERS = new InjectionToken(
-    ngDevMode ? 'TUI_ITEMS_HANDLERS' : '',
-    {
-        factory: () => TUI_DEFAULT_ITEMS_HANDLERS,
-    },
+export const [TUI_ITEMS_HANDLERS, tuiItemsHandlersProvider] = tuiCreateOptions(
+    TUI_DEFAULT_ITEMS_HANDLERS,
 );
-
-/**
- * @deprecated use it only for LEGACY controls. For new controls use the same entity from `@taiga-ui/core`.
- * TODO(v5): delete
- */
-export function tuiItemsHandlersProvider<T>(
-    options: Partial<TuiItemsHandlers<T>>,
-): Provider {
-    return tuiProvideOptions(TUI_ITEMS_HANDLERS, options, TUI_DEFAULT_ITEMS_HANDLERS);
-}

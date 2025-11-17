@@ -1,18 +1,10 @@
-import {AsyncPipe} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    Input,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input, output} from '@angular/core';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 
 @Component({
     selector: 'tui-spin-button',
-    imports: [AsyncPipe, TuiButton],
+    imports: [TuiButton],
     templateUrl: './spin-button.template.html',
     styleUrl: './spin-button.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,34 +16,28 @@ import {TUI_SPIN_ICONS, TUI_SPIN_TEXTS} from '@taiga-ui/core/tokens';
 })
 export class TuiSpinButton {
     protected readonly icons = inject(TUI_SPIN_ICONS);
-    protected readonly spinTexts$ = inject(TUI_SPIN_TEXTS);
+    protected readonly spinTexts = inject(TUI_SPIN_TEXTS);
 
-    @Input()
-    public focusable = true;
+    public readonly focusable = input(true);
 
-    @Input()
-    public disabled = false;
+    public readonly disabled = input(false);
 
-    @Input()
-    public leftDisabled = false;
+    public readonly leftDisabled = input(false);
 
-    @Input()
-    public rightDisabled = false;
+    public readonly rightDisabled = input(false);
 
-    @Output()
-    public readonly leftClick = new EventEmitter<void>();
+    public readonly leftClick = output();
 
-    @Output()
-    public readonly rightClick = new EventEmitter<void>();
+    public readonly rightClick = output();
 
     public onLeftClick(): void {
-        if (!this.disabled && !this.leftDisabled) {
+        if (!this.disabled() && !this.leftDisabled()) {
             this.leftClick.emit();
         }
     }
 
     public onRightClick(): void {
-        if (!this.disabled && !this.rightDisabled) {
+        if (!this.disabled() && !this.rightDisabled()) {
             this.rightClick.emit();
         }
     }

@@ -42,6 +42,18 @@ test.describe('Deep / Select', () => {
                 const options = await api.getOptions();
 
                 for (const [index, option] of options.entries()) {
+                    const isVisible = await option.isVisible();
+
+                    if (!isVisible) {
+                        test.info().errors.push({
+                            message: `Options for ${name} are not visible on ${path}`,
+                            stack: new Error().stack,
+                        });
+
+                        continue;
+                    }
+
+                    await option.scrollIntoViewIfNeeded();
                     await option.focus();
                     await page.keyboard.down('Enter');
                     await api.focusOnBody();
@@ -58,6 +70,9 @@ test.describe('Deep / Select', () => {
                     await expect.soft(example).toHaveScreenshot(makeName('ltr'));
                     await example.evaluate((node) => node.setAttribute('dir', 'rtl'));
                     await expect.soft(example).toHaveScreenshot(makeName('rtl'));
+
+                    // note: revert to default mode after take screenshot
+                    await example.evaluate((node) => node.setAttribute('dir', 'auto'));
 
                     await select.click();
 

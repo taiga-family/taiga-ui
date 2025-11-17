@@ -5,7 +5,7 @@ import {
     ContentChild,
     DestroyRef,
     inject,
-    Input,
+    input,
     type OnInit,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -18,7 +18,7 @@ import {
     TuiFilterPipe,
     TuiKeysPipe,
 } from '@taiga-ui/cdk';
-import {TuiAlertService, TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {TuiAlertService, TuiHint, TuiTextfield} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {debounceTime, distinctUntilChanged, filter, map, type Observable} from 'rxjs';
@@ -37,8 +37,8 @@ import {IconsGroupTemplate} from './icons-group.directive';
         TuiHint,
         TuiInputModule,
         TuiKeysPipe,
+        TuiTextfield,
         TuiTextfieldControllerModule,
-        TuiTextfieldOptionsDirective,
     ],
     templateUrl: './icons-group.template.html',
     styleUrl: './icons-group.style.less',
@@ -63,11 +63,9 @@ export class IconsGroup implements OnInit {
         distinctUntilChanged(),
     );
 
-    @Input()
-    public icons: Record<string, readonly string[]> = {};
+    public readonly icons = input<Record<string, readonly string[]>>({});
 
-    @Input()
-    public color: string | null = null;
+    public readonly color = input<string | null>(null);
 
     public ngOnInit(): void {
         this.control.patchValue(this.route.snapshot.queryParams['search'] ?? '');

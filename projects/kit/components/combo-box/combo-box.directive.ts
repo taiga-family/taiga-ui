@@ -9,7 +9,7 @@ import {
     untracked,
 } from '@angular/core';
 import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
-import {TUI_ALLOW_SIGNAL_WRITES, TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
+import {TUI_STRICT_MATCHER} from '@taiga-ui/cdk/constants';
 import {type TuiStringMatcher} from '@taiga-ui/cdk/types';
 import {
     tuiAsOptionContent,
@@ -35,7 +35,6 @@ import {
 import {TuiSelectOption} from '@taiga-ui/kit/components/select';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiComboBox]',
     providers: [
         tuiAsOptionContent(TuiSelectOption),
@@ -82,7 +81,7 @@ export class TuiComboBox<T>
         ) {
             this.onChange(this.textfield.value() || null);
         }
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly matchingEffect = effect(() => {
         const options = this.options();
@@ -110,13 +109,13 @@ export class TuiComboBox<T>
                  */
                 (unchanged ? value : fallback),
         );
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly newValueEffect = effect(() => {
         const stringified = this.stringify(this.value());
 
         this.textfield.value.update((x) => stringified || x);
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     protected readonly blurEffect = effect(() => {
         const incomplete = untracked(() => this.strict() && this.value() === null);
@@ -124,7 +123,7 @@ export class TuiComboBox<T>
         if (!this.host.focused() && incomplete) {
             this.textfield.value.set('');
         }
-    }, TUI_ALLOW_SIGNAL_WRITES);
+    });
 
     // TODO(v5): use signal input
     @Input('strict')

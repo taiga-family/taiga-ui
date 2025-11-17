@@ -72,7 +72,6 @@ test.describe('TuiHint', () => {
 
         test(`${mode} mode hint with delay`, async ({page}) => {
             await page.setViewportSize({width: 750, height: 200});
-            await page.clock.install();
             await tuiGoto(
                 page,
                 `${DemoRoute.Hint}/API?tuiHintShowDelay=1000&darkMode=${mode}`,
@@ -82,6 +81,7 @@ test.describe('TuiHint', () => {
 
             await example.prepareBeforeScreenshot();
 
+            await page.clock.install();
             await example.apiPageExample.locator('span').hover();
             await page.clock.runFor(0);
 

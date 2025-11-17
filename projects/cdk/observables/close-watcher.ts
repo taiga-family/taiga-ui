@@ -1,14 +1,14 @@
 import {Observable} from 'rxjs';
 
 interface CloseWatcher {
-    destroy: () => void;
-    onclose?: (event: Event) => void;
-    oncancel?: (event: Event) => void;
+    destroy(): void;
+    onclose?(event: Event): void;
+    oncancel?(event: Event): void;
 }
 
 export function tuiCloseWatcher(): Observable<void> {
     return new Observable((subscriber) => {
-        let watcher = getWatcher();
+        let watcher!: CloseWatcher;
 
         const setup = (): void => {
             watcher = getWatcher();
@@ -27,7 +27,10 @@ export function tuiCloseWatcher(): Observable<void> {
 }
 
 function getWatcher(): CloseWatcher {
-    // @ts-ignore
-    // eslint-disable-next-line unicorn/no-typeof-undefined
-    return typeof CloseWatcher === 'undefined' ? {destroy: () => {}} : new CloseWatcher();
+    try {
+        // @ts-ignore
+        return new CloseWatcher();
+    } catch {
+        return {destroy: () => {}};
+    }
 }

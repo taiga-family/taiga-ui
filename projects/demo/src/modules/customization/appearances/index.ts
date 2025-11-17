@@ -15,9 +15,9 @@ import {TuiWrapperExample1} from './examples/1';
 })
 export default class Page {
     protected readonly example1 = {
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-        TypeScript: import('./examples/1/index.ts?raw'),
+        HTML: import('./examples/1/index.html'),
+        LESS: import('./examples/1/index.less'),
+        TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
     };
 
     protected readonly mixins = [

@@ -17,6 +17,11 @@ tui-dropdown-mobile {
     padding-block-end: env(safe-area-inset-bottom);
     pointer-events: auto;
 
+    &.tui-enter,
+    &.tui-leave {
+        animation-name: tuiFade, tuiSlide;
+    }
+
     &::after {
         content: '';
         display: block;

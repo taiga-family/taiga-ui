@@ -3,8 +3,10 @@ import {AsyncPipe, DOCUMENT, NgComponentOutlet} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
+    computed,
     inject,
     Input,
+    input,
     signal,
     type Type,
 } from '@angular/core';
@@ -20,7 +22,6 @@ import {
 } from '@taiga-ui/addon-doc/tokens';
 import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {TuiAlertService} from '@taiga-ui/core/components/alert';
@@ -49,7 +50,6 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
         TuiDocCode,
         TuiDocExampleGetTabsPipe,
         TuiFullscreen,
-        TuiLet,
         TuiLink,
         TuiLoader,
         TuiMapperPipe,
@@ -59,15 +59,15 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     styleUrl: './example.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.id]': 'id',
-        '[class._fullsize]': 'fullsize',
+        '[attr.id]': 'id()',
+        '[class._fullsize]': 'fullsize()',
     },
 })
 export class TuiDocExample {
     private readonly clipboard = inject(Clipboard);
     private readonly alerts = inject(TuiAlertService);
     private readonly location = inject(WA_LOCATION);
-    private readonly copyTexts$ = inject(TUI_COPY_TEXTS);
+    private readonly copyTexts = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
 
     private readonly rawLoader$$ = new BehaviorSubject<
@@ -91,9 +91,7 @@ export class TuiDocExample {
     protected activeItemIndex = this.defaultTabIndex;
     protected fullscreen = false;
 
-    protected readonly copy = toSignal(this.copyTexts$.pipe(map(([copy]) => copy)), {
-        initialValue: '',
-    });
+    protected readonly copy = computed(() => this.copyTexts()[0]);
 
     protected readonly loading = signal(false);
 
@@ -105,23 +103,17 @@ export class TuiDocExample {
         {initialValue: {} as unknown as Record<string, string>},
     );
 
-    @Input()
-    public id: string | null = null;
+    public readonly id = input<string | null>(null);
 
-    @Input()
-    public heading: PolymorpheusContent;
+    public readonly heading = input<PolymorpheusContent>();
 
-    @Input()
-    public description: PolymorpheusContent;
+    public readonly description = input<PolymorpheusContent>();
 
-    @Input()
-    public fullsize = inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize;
+    public readonly fullsize = input(inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize);
 
-    @Input()
-    public componentName: string = this.location.pathname.slice(1);
+    public readonly componentName = input<string>(this.location.pathname.slice(1));
 
-    @Input()
-    public component?: Promise<Type<unknown>>;
+    public readonly component = input<Promise<Type<unknown>>>();
 
     @Input()
     public set content(content: Record<string, TuiRawLoaderContent>) {
@@ -145,7 +137,7 @@ export class TuiDocExample {
     protected edit(files: Record<string, string>): void {
         this.loading.set(true);
         this.codeEditor
-            ?.edit(this.componentName, this.id || '', files)
+            ?.edit(this.componentName(), this.id() || '', files)
             .finally(() => this.loading.set(false));
     }
 }

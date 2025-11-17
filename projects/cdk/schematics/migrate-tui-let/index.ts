@@ -14,6 +14,7 @@ import {
     getTemplateOffset,
 } from '../utils/templates/template-resource';
 
+// TODO: move to migration in v5
 export default function tuiLetMigrationGenerator(options: TuiSchema): Rule {
     return async (tree: Tree): Promise<void> => {
         const workspace = await getWorkspace(tree);
@@ -58,7 +59,7 @@ export default function tuiLetMigrationGenerator(options: TuiSchema): Rule {
 
                 const [expr, key] = value.split(' as ').map((c) => c.trim());
 
-                if (new RegExp(`@let\\s+${key}\\s+=`).test(template)) {
+                if (new RegExp(String.raw`@let\s+${key}\s+=`).test(template)) {
                     !options['skip-logs'] &&
                         errorLog(`The @let with key ${key} is already defined`);
 

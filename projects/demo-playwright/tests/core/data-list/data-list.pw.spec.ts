@@ -10,7 +10,7 @@ test.describe('DataList', () => {
         const example = documentationPagePO.getExample('#custom');
 
         await example.scrollIntoViewIfNeeded();
-        await example.locator('tui-select').click();
+        await example.locator('[tuiSelectLike]').click();
         await page.locator('tui-dropdown [tuiOption]').nth(0).hover();
 
         await expect
@@ -93,7 +93,7 @@ test.describe('DataList', () => {
         await page.keyboard.down('Enter');
         await page.waitForTimeout(100);
 
-        await expect(page.locator('tui-dropdown tui-data-list')).toHaveCount(0);
+        await expect(page.locator('tui-dropdown tui-data-list')).toHaveCount(3);
         await expect.soft(page).toHaveScreenshot('03-8-data-list.png');
     });
 

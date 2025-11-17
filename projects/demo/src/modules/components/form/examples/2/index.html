@@ -1,5 +1,5 @@
 <form
-    tuiForm="l"
+    tuiForm
     [formGroup]="testForm"
     [style.max-width.rem]="35"
 >
@@ -118,7 +118,7 @@
                 tuiRadio
                 type="radio"
                 value="with-commission"
-                [style.margin-left]="'auto'"
+                [style.margin-inline-start]="'auto'"
             />
         </label>
         <label tuiBlock>
@@ -128,7 +128,7 @@
                 tuiRadio
                 type="radio"
                 value="without-commission"
-                [style.margin-left]="'auto'"
+                [style.margin-inline-start]="'auto'"
             />
         </label>
     </div>

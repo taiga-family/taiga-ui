@@ -60,6 +60,7 @@ export default class PageComponent {
     ];
 
     protected inputs = this.options.inputs;
+    protected compact = false;
 
     protected formControl = new FormControl<TuiCard | null>(null);
 

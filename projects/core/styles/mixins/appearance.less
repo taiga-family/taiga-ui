@@ -24,7 +24,7 @@
 
 .appearance-active(@content) {
     .interactive({
-        &:active:not(:disabled):not([data-state]) {
+        &:active:not([data-state]) {
             @content();
         }
     });

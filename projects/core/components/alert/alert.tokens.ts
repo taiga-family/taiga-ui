@@ -1,15 +1,18 @@
 import {type FactoryProvider, inject, InjectionToken} from '@angular/core';
+import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_NOTIFICATION_OPTIONS} from '@taiga-ui/core/components/notification';
 
 import {type TuiAlertOptions} from './alert.interfaces';
+
+export const TUI_ALERT_CONCURRENCY = tuiCreateToken<number>(5);
 
 export const TUI_ALERT_DEFAULT_OPTIONS: Omit<TuiAlertOptions, 'appearance' | 'icon'> = {
     autoClose: 3000,
     label: '',
     closable: true,
     data: undefined,
-    position: 'top',
-    orientation: 'end',
+    block: 'start',
+    inline: 'end',
 };
 
 export const TUI_ALERT_OPTIONS = new InjectionToken<TuiAlertOptions>(

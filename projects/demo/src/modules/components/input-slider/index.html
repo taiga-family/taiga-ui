@@ -245,8 +245,7 @@
                     name="[min]"
                     tuiDocAPIItem
                     type="number"
-                    [value]="min()"
-                    (valueChange)="min.set($event)"
+                    [(value)]="min"
                 >
                     The
                     <strong>lowest</strong>
@@ -257,8 +256,7 @@
                     name="[max]"
                     tuiDocAPIItem
                     type="number"
-                    [value]="max()"
-                    (valueChange)="max.set($event)"
+                    [(value)]="max"
                 >
                     The
                     <strong>greatest</strong>

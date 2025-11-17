@@ -8,8 +8,6 @@ import {
     type OnChanges,
     TemplateRef,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {TuiLet} from '@taiga-ui/cdk/directives/let';
 import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -34,7 +32,6 @@ import {TUI_SEARCH_RESULTS_OPTIONS} from './search-results.options';
         TuiBlockStatus,
         TuiFilterPipe,
         TuiIcon,
-        TuiLet,
         TuiLoader,
         TuiScrollbar,
         TuiTabs,
@@ -51,7 +48,7 @@ export class TuiSearchResultsComponent<T> implements OnChanges {
     private readonly el = tuiInjectElement();
 
     protected readonly options = inject(TUI_SEARCH_RESULTS_OPTIONS);
-    protected readonly i18n = toSignal(inject(TUI_INPUT_SEARCH));
+    protected readonly i18n = inject(TUI_INPUT_SEARCH);
     protected readonly textfield = inject(TuiTextfieldComponent);
     protected active = 0;
 

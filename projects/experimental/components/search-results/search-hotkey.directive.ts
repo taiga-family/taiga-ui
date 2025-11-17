@@ -1,12 +1,9 @@
-import {Directive, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {computed, Directive, inject} from '@angular/core';
 import {WA_NAVIGATOR} from '@ng-web-apis/common';
 import {TuiInputSearch} from '@taiga-ui/layout/components/input-search';
 import {TUI_INPUT_SEARCH} from '@taiga-ui/layout/tokens';
-import {map} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: 'input[tuiSearchHotkey]',
     host: {
         '[placeholder]': 'placeholder()',
@@ -16,13 +13,11 @@ import {map} from 'rxjs';
 })
 export class TuiSearchHotkey {
     private readonly platform = inject(WA_NAVIGATOR).platform;
+    private readonly texts = inject(TUI_INPUT_SEARCH);
 
     protected readonly search = inject(TuiInputSearch);
-    protected readonly placeholder = toSignal(
-        inject(TUI_INPUT_SEARCH).pipe(
-            map(({hotkey}) =>
-                this.platform.startsWith('Mac') ? `⌘+K ${hotkey}` : `Alt+K ${hotkey}`,
-            ),
-        ),
+
+    protected readonly placeholder = computed(({hotkey} = this.texts()) =>
+        this.platform.startsWith('Mac') ? `⌘+K ${hotkey}` : `Alt+K ${hotkey}`,
     );
 }

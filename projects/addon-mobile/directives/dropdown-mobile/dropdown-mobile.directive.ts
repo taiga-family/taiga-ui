@@ -1,19 +1,18 @@
-import {Directive, inject, Input} from '@angular/core';
+import {Directive, inject} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiIsHTMLElement} from '@taiga-ui/cdk/utils/dom';
 import {TUI_DROPDOWN_COMPONENT} from '@taiga-ui/core/directives/dropdown';
 
-import {TuiDropdownMobileWrapperComponent} from './dropdown-mobile-wrapper.component';
+import {TuiDropdownMobileComponent} from './dropdown-mobile.component';
 
 @Directive({
-    standalone: true,
     selector: '[tuiDropdownMobile]',
     providers: [
         {
             provide: TUI_DROPDOWN_COMPONENT,
             useFactory: () =>
                 inject(TUI_IS_MOBILE)
-                    ? TuiDropdownMobileWrapperComponent
+                    ? TuiDropdownMobileComponent
                     : inject(TUI_DROPDOWN_COMPONENT, {skipSelf: true}),
         },
     ],
@@ -25,15 +24,11 @@ import {TuiDropdownMobileWrapperComponent} from './dropdown-mobile-wrapper.compo
 export class TuiDropdownMobile {
     private readonly isMobile = inject(TUI_IS_MOBILE);
 
-    @Input()
-    public tuiDropdownMobile = '';
-
     protected onMouseDown(event: MouseEvent): void {
         if (
             !this.isMobile ||
             !tuiIsHTMLElement(event.target) ||
-            !event.target.matches('input,textarea') ||
-            this.tuiDropdownMobile
+            !event.target.matches('input,textarea')
         ) {
             return;
         }

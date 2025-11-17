@@ -48,7 +48,8 @@ test.describe('Dialog', () => {
 
         await example.locator('button').first().click();
         await expect.soft(page).toHaveScreenshot('04-dialog-1.png');
-        await page.locator('tui-dialog button').last().click();
+        await page.locator('tui-dialog input').fill('John');
+        await page.locator('tui-dialog button').first().click();
         await expect.soft(page).toHaveScreenshot('04-dialog-2.png');
     });
 

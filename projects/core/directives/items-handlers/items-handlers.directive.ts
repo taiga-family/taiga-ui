@@ -9,7 +9,6 @@ import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from './items-handlers.tokens';
 
 @Directive({
-    standalone: true,
     providers: [tuiProvide(TUI_ITEMS_HANDLERS, TuiItemsHandlersDirective)],
 })
 export class TuiItemsHandlersDirective<T> implements TuiItemsHandlers<T> {
@@ -43,7 +42,6 @@ export class TuiItemsHandlersDirective<T> implements TuiItemsHandlers<T> {
 }
 
 @Directive({
-    standalone: true,
     hostDirectives: [
         {
             directive: TuiItemsHandlersDirective,

@@ -5,7 +5,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {assets} from '@demo/utils';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {TuiDropdownMobile} from '@taiga-ui/addon-mobile';
+import {TuiDropdownMobile, TuiDropdownSheet} from '@taiga-ui/addon-mobile';
 import {
     TuiButton,
     TuiCell,
@@ -18,6 +18,7 @@ import {
     TUI_COUNTRIES,
     TuiAvatar,
     TuiChevron,
+    TuiComboBox,
     TuiDataListWrapper,
     TuiFade,
     TuiFilterByInputPipe,
@@ -26,8 +27,7 @@ import {
     TuiMultiSelect,
     TuiSelect,
 } from '@taiga-ui/kit';
-import {TuiComboBoxModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
-import {map} from 'rxjs';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 interface User {
     readonly url?: string;
@@ -44,20 +44,21 @@ interface User {
         TuiButton,
         TuiCell,
         TuiChevron,
-        TuiComboBoxModule,
+        TuiComboBox,
         TuiDataListWrapper,
         TuiDropdown,
         TuiDropdownMobile,
+        TuiDropdownSheet,
         TuiFade,
         TuiFilterByInputPipe,
+        TuiInitialsPipe,
+        TuiInputChip,
         TuiInputNumber,
         TuiMultiSelect,
-        TuiInputChip,
         TuiSelect,
         TuiTextfield,
         TuiTextfieldControllerModule,
         TuiTitle,
-        TuiInitialsPipe,
     ],
     templateUrl: './index.html',
     encapsulation,
@@ -71,7 +72,7 @@ export default class Example {
 
     protected readonly open = signal(false);
 
-    protected readonly countries$ = inject(TUI_COUNTRIES).pipe(map(Object.values));
+    protected readonly countries = Object.values(inject(TUI_COUNTRIES)());
 
     protected readonly users: readonly User[] = [
         {name: 'Alex Inkin', balance: 1323525, url: assets`/images/avatar.jpg`},

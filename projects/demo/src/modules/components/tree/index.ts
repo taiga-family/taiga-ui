@@ -9,12 +9,9 @@ import {TuiDemo} from '@demo/utils';
     changeDetection,
 })
 export default class Page {
-    protected readonly example5 = {
-        TypeScript: import('./examples/5/index.ts?raw'),
-        HTML: import('./examples/5/index.html?raw'),
-        LESS: import('./examples/5/index.less?raw'),
-        'content.ts': import('./examples/5/content.ts?raw'),
-        'content.less': import('./examples/5/content.less?raw'),
+    protected readonly customContent = {
+        'content.ts': import('./examples/5/content.ts?raw', {with: {loader: 'text'}}),
+        'content.less': import('./examples/5/content.less'),
     };
 
     protected readonly routes = DemoRoute;

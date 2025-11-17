@@ -3,7 +3,6 @@ import {inject, Injectable, InjectionToken} from '@angular/core';
 import {ActivationStart, Router} from '@angular/router';
 import {WA_WINDOW} from '@ng-web-apis/common';
 import {tuiCloseWatcher, tuiTypedFromEvent, tuiZonefull} from '@taiga-ui/cdk/observables';
-import {type TuiPopover} from '@taiga-ui/cdk/services';
 import {
     tuiContainsOrAfter,
     tuiGetActualTarget,
@@ -11,11 +10,7 @@ import {
     tuiIsElement,
 } from '@taiga-ui/cdk/utils/dom';
 import {tuiGetViewportWidth} from '@taiga-ui/core/utils';
-import {BehaviorSubject, filter, map, merge, Observable, switchMap, take} from 'rxjs';
-
-export const TUI_DIALOGS = new InjectionToken(ngDevMode ? 'TUI_DIALOGS' : '', {
-    factory: () => new BehaviorSubject<ReadonlyArray<TuiPopover<any, any>>>([]),
-});
+import {filter, map, merge, Observable, switchMap, take} from 'rxjs';
 
 export const TUI_DIALOGS_CLOSE = new InjectionToken<Observable<unknown>>(
     ngDevMode ? 'TUI_DIALOGS_CLOSE' : '',

@@ -2,12 +2,12 @@ import {AsyncPipe, JsonPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiIsPresentPipe, TuiLet} from '@taiga-ui/cdk';
+import {TuiIsPresentPipe} from '@taiga-ui/cdk';
 import {TuiButton} from '@taiga-ui/core';
 import {delayWhen, of, Subject} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, JsonPipe, TuiButton, TuiIsPresentPipe, TuiLet],
+    imports: [AsyncPipe, JsonPipe, TuiButton, TuiIsPresentPipe],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

@@ -1,5 +1,4 @@
-import {Directive, EventEmitter, inject, Input, Output} from '@angular/core';
-import {EMPTY_CLIENT_RECT} from '@taiga-ui/cdk/constants';
+import {Directive, inject, input, output} from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
@@ -11,12 +10,10 @@ import {
 import {TUI_VIEWPORT} from '@taiga-ui/core/tokens';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
-import {TuiHintDirective} from './hint.directive';
 import {
     TUI_HINT_DIRECTIONS,
     TUI_HINT_OPTIONS,
     type TuiHintDirection,
-    type TuiHintOptions,
 } from './hint-options.directive';
 
 const GAP = 8;
@@ -24,16 +21,14 @@ const ARROW_OFFSET = 24;
 const TOP = 0;
 const LEFT = 1;
 
-@Directive({
-    standalone: true,
-})
+@Directive()
 export class TuiHintPosition extends TuiPositionAccessor {
     private readonly el = tuiInjectElement();
     private readonly offset = inject(TUI_IS_MOBILE) ? 16 : 8;
     private readonly viewport = inject(TUI_VIEWPORT);
     private readonly accessor = tuiFallbackAccessor<TuiRectAccessor>('hint')(
-        inject<any>(TuiRectAccessor),
-        inject(TuiHintDirective),
+        inject<any>(TuiRectAccessor, {optional: true}),
+        {getClientRect: () => this.el.getBoundingClientRect()},
     );
 
     private readonly points: Record<TuiHintDirection, [number, number]> =
@@ -42,11 +37,13 @@ export class TuiHintPosition extends TuiPositionAccessor {
             {} as Record<TuiHintDirection, [number, number]>,
         );
 
-    @Input('tuiHintDirection')
-    public direction: TuiHintOptions['direction'] = inject(TUI_HINT_OPTIONS).direction;
+    public readonly direction = input(inject(TUI_HINT_OPTIONS).direction, {
+        alias: 'tuiHintDirection',
+    });
 
-    @Output('tuiHintDirectionChange')
-    public readonly directionChange = new EventEmitter<TuiHintDirection>();
+    public readonly directionChange = output<TuiHintDirection>({
+        alias: 'tuiHintDirectionChange',
+    });
 
     public readonly type = 'hint';
 
@@ -56,9 +53,10 @@ export class TuiHintPosition extends TuiPositionAccessor {
     }
 
     public getPosition(rect: DOMRect, el?: HTMLElement): TuiPoint {
+        const direction = this.direction();
         const width = el?.clientWidth ?? rect.width;
         const height = el?.clientHeight ?? rect.height;
-        const hostRect = this.accessor.getClientRect() ?? EMPTY_CLIENT_RECT;
+        const hostRect = this.accessor.getClientRect();
         const leftCenter = hostRect.left + hostRect.width / 2;
         const topCenter = hostRect.top + hostRect.height / 2;
         const rtl = this.el.matches('[dir="rtl"] :scope');
@@ -91,17 +89,17 @@ export class TuiHintPosition extends TuiPositionAccessor {
         this.points['right-bottom'][TOP] = this.points['left-bottom'][TOP];
         this.points['right-bottom'][LEFT] = this.points['right-top'][LEFT];
 
-        const array = Array.isArray(this.direction) ? this.direction : [this.direction];
+        const array = Array.isArray(direction) ? direction : [direction];
         const priority = array.map((direction) => adjust(direction, rtl));
-        const direction =
+        const updated =
             priority
                 .concat(TUI_HINT_DIRECTIONS)
                 .find((dir) => this.checkPosition(this.points[dir], width, height)) ||
             this.fallback;
 
-        this.emitDirection(adjust(direction, rtl));
+        this.emitDirection(adjust(updated, rtl));
 
-        return this.points[direction];
+        return this.points[updated];
     }
 
     private get fallback(): TuiHintDirection {

@@ -1,4 +1,4 @@
-import {type TuiPopover, type TuiPopoverContext} from '@taiga-ui/cdk/services';
+import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 import {type Observable} from 'rxjs';
@@ -22,12 +22,13 @@ export interface TuiDialogOptions<I> {
     readonly closable: Observable<boolean> | boolean;
     readonly data: I extends void ? undefined : I & {button?: string};
     readonly dismissible: Observable<boolean> | boolean;
-    readonly header: PolymorpheusContent<TuiPopover<TuiDialogOptions<I>, any>>;
+    readonly header: PolymorpheusContent<TuiDialogContext<I, any>>;
     readonly label: string;
     readonly required: boolean;
     readonly size: TuiDialogSize;
 }
 
-export interface TuiDialogContext<O = void, I = undefined>
-    extends TuiPopoverContext<O>,
-        TuiDialogOptions<I> {}
+export type TuiDialogContext<O = void, I = undefined> = TuiPortalContext<
+    TuiDialogOptions<I>,
+    O
+>;

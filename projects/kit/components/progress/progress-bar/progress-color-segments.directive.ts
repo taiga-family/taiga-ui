@@ -1,45 +1,50 @@
-import {Directive, inject, Input} from '@angular/core';
+import {computed, Directive, inject, input} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ResizeObserverService} from '@ng-web-apis/resize-observer';
-import {tuiWatch, tuiZonefull} from '@taiga-ui/cdk/observables';
+import {
+    MutationObserverService,
+    WA_MUTATION_OBSERVER_INIT,
+} from '@ng-web-apis/mutation-observer';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {BehaviorSubject, combineLatest, distinctUntilChanged, map} from 'rxjs';
+import {map} from 'rxjs';
 
 @Directive({
-    standalone: true,
     selector: 'progress[tuiProgressBar][tuiProgressColorSegments]',
-    providers: [ResizeObserverService],
+    providers: [
+        MutationObserverService,
+        {
+            provide: WA_MUTATION_OBSERVER_INIT,
+            useValue: {
+                attributeOldValue: true,
+            },
+        },
+    ],
     host: {'[style.--tui-progress-color]': 'color()'},
 })
 export class TuiProgressColorSegments {
-    private readonly colors$ = new BehaviorSubject<string[]>([]);
     private readonly el = tuiInjectElement<HTMLProgressElement>();
-
-    protected readonly color = toSignal(
-        combineLatest([
-            this.colors$,
-            inject(ResizeObserverService, {self: true}).pipe(
-                map(() => this.el.offsetWidth),
-                distinctUntilChanged(),
-            ),
-        ]).pipe(
-            map(([colors, width]) => {
-                const segmentWidth = Math.ceil(width / colors.length);
-                const colorsString = colors.reduce(
-                    (acc, color, i) =>
-                        `${acc}, ${color} ${i * segmentWidth}px ${(i + 1) * segmentWidth}px`,
-                    '',
-                );
-
-                return `linear-gradient(to right ${colorsString})`;
-            }),
-            tuiZonefull(),
-            tuiWatch(),
-        ),
+    private readonly position = toSignal(
+        inject(MutationObserverService, {self: true}).pipe(map(() => this.el.position)),
+        {initialValue: this.el.position},
     );
 
-    @Input('tuiProgressColorSegments')
-    public set colors(colors: string[]) {
-        this.colors$.next(colors);
-    }
+    protected readonly color = computed(() => {
+        const colors = this.colors();
+        const position = this.position();
+
+        if (!colors.length || position <= 0) {
+            return null;
+        }
+
+        const colorsString = colors.reduce(
+            (acc, color, i) =>
+                `${acc}, ${color} calc(${i} / ${colors.length} * 100% / ${position}) calc(${i + 1} / ${colors.length} * 100% / ${position})`,
+            '',
+        );
+
+        return `linear-gradient(to right${colorsString})`;
+    });
+
+    public readonly colors = input<readonly string[]>([], {
+        alias: 'tuiProgressColorSegments',
+    });
 }

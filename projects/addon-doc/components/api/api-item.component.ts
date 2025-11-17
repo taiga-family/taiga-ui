@@ -2,11 +2,11 @@ import {Location} from '@angular/common';
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
+    computed,
     inject,
-    Input,
+    input,
+    model,
     type OnInit,
-    Output,
 } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, type Params, UrlSerializer} from '@angular/router';
@@ -38,9 +38,9 @@ const SERIALIZED_SUFFIX = '$';
         TuiIcon,
         TuiInputNumber,
         TuiInspectPipe,
+        TuiSelect,
         TuiSwitch,
         TuiTextfield,
-        TuiSelect,
     ],
     templateUrl: './api-item.template.html',
     styleUrl: './api-item.style.less',
@@ -60,28 +60,25 @@ export class TuiDocAPIItem<T> implements OnInit {
         optional: true,
     });
 
-    @Input()
-    public name = '';
+    protected readonly isBananaBox = computed(() => this.name().startsWith('[('));
+    protected readonly isInput = computed(() => this.name().startsWith('['));
+    protected readonly isOutput = computed(() => this.name().startsWith('('));
 
-    @Input()
-    public type = '';
+    public readonly name = input('');
+    public readonly type = input('');
+    public readonly value = model<T>();
+    public readonly items = input<readonly T[]>([]);
 
-    @Input()
-    public value?: T;
-
-    @Input()
-    public items: readonly T[] = [];
-
-    @Output()
-    public readonly valueChange = new EventEmitter<T>();
+    protected readonly hasCleaner = computed(
+        () => this.type().includes('null') || this.type().includes('PolymorpheusContent'),
+    );
 
     public ngOnInit(): void {
         this.parseParams(this.activatedRoute.snapshot.queryParams);
     }
 
     public onValueChange(value: T): void {
-        this.value = value;
-        this.valueChange.emit(value);
+        this.value.set(value);
         this.setQueryParam(value);
     }
 
@@ -93,7 +90,7 @@ export class TuiDocAPIItem<T> implements OnInit {
                 ? tuiInspectAny(event, 2)
                 : (event as string);
 
-        this.alerts.open(alert, {label: this.name}).subscribe();
+        this.alerts.open(alert, {label: this.name()}).subscribe();
     }
 
     private clearBrackets(value: string): string {
@@ -101,7 +98,7 @@ export class TuiDocAPIItem<T> implements OnInit {
     }
 
     private parseParams(params: Params): void {
-        const name = this.clearBrackets(this.name);
+        const name = this.clearBrackets(this.name());
         const propertyValue: string | undefined = params[name];
         const propertyValueWithSuffix: number | string | undefined =
             params[`${name}${SERIALIZED_SUFFIX}`];
@@ -110,12 +107,13 @@ export class TuiDocAPIItem<T> implements OnInit {
             return;
         }
 
+        const items = this.items();
         let value =
-            !!propertyValueWithSuffix && this.items
-                ? this.items[propertyValueWithSuffix as number]
+            !!propertyValueWithSuffix && items
+                ? items[propertyValueWithSuffix as number]
                 : tuiCoerceValue(propertyValue);
 
-        if (this.type === 'string' && tuiIsNumber(value)) {
+        if (this.type() === 'string' && tuiIsNumber(value)) {
             value = value.toString();
         }
 
@@ -126,11 +124,12 @@ export class TuiDocAPIItem<T> implements OnInit {
         const tree = this.urlSerializer.parse(this.locationRef.path());
 
         const isValueAvailableByKey = value instanceof Object;
+        const items = this.items();
         const computedValue =
-            isValueAvailableByKey && this.items ? this.items.indexOf(value as T) : value;
+            isValueAvailableByKey && items ? items.indexOf(value as T) : value;
 
         const suffix = isValueAvailableByKey ? SERIALIZED_SUFFIX : '';
-        const propName = this.clearBrackets(this.name) + suffix;
+        const propName = this.clearBrackets(this.name()) + suffix;
 
         tree.queryParams = {
             ...tree.queryParams,

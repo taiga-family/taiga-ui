@@ -16,7 +16,6 @@ import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 class Styles {}
 
 @Directive({
-    standalone: true,
     selector: '[tuiConnected]',
 })
 export class TuiConnected {

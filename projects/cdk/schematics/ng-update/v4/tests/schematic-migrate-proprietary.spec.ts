@@ -2,7 +2,7 @@ import {join} from 'node:path';
 
 import {HostTree} from '@angular-devkit/schematics';
 import {SchematicTestRunner, UnitTestTree} from '@angular-devkit/schematics/testing';
-import {TUI_VERSION} from '@taiga-ui/cdk/constants/version';
+import {TUI_VERSION} from '@taiga-ui/cdk/constants';
 import {TAIGA_VERSION} from '@taiga-ui/cdk/schematics';
 import {type TuiSchema} from '@taiga-ui/cdk/schematics/ng-add/schema';
 import {
@@ -47,7 +47,7 @@ export class Test {
 
 const COMPONENT_AFTER = `import { TuiInputNumberModule } from "@taiga-ui/legacy";
 import { TuiBackComponent, TuiFeedItemComponent, TuiProprietaryNavigation } from "@taiga-ui/proprietary";
-// TODO: (Taiga UI migration) TuiIllustrationsModule and TuiIllustrationModePipe were deleted. Import TuiIconPipe and use <img [src]="'@tui.illustration.pack.icon-name' | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons
+// TODO: (Taiga UI migration) TuiIllustrationsModule and TuiIllustrationModePipe were deleted. Import TuiIconPipe and use <img [src]="'@tui.illustrations.pack.icon-name' | tuiIcon" /> instead. See https://taiga-ui.tcsbank.ru/icons
 import { TuiIllustrationsModule } from '@taiga-ui/proprietary';
 import { tuiIconTdsAbhFlags } from '@taiga-ui/proprietary';
 import {TuiFeedItemIcon} from '@taiga-ui/proprietary';

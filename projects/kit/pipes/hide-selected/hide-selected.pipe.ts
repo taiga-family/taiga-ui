@@ -6,7 +6,6 @@ import {TUI_ITEMS_HANDLERS} from '@taiga-ui/core/directives/items-handlers';
 import {tuiIsFlat} from '@taiga-ui/kit/utils';
 
 @Pipe({
-    standalone: true,
     name: 'tuiHideSelected',
     pure: false,
 })
