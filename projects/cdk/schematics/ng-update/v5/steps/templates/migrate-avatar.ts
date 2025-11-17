@@ -2,11 +2,11 @@ import {type UpdateRecorder} from '@angular-devkit/schematics';
 import {type DevkitFileSystem} from 'ng-morph';
 import {type Attribute, type ElementLocation} from 'parse5/dist/common/token';
 
-import {findAttr} from '../../../../utils/templates/inputs';
 import {
     findElementsByTagName,
     findElementsWithAttribute,
 } from '../../../../utils/templates/elements';
+import {findAttr} from '../../../../utils/templates/inputs';
 import {
     getTemplateFromTemplateResource,
     getTemplateOffset,
@@ -125,7 +125,7 @@ function replaceAttribute(
 
 function hasTuiAvatarAttr(attrs: Attribute[]): boolean {
     return attrs.some(({name}) =>
-        ['tuiavatar', '[tuiavatar]', '[(tuiavatar)]', 'bind-tuiavatar'].includes(name),
+        ['[(tuiavatar)]', '[tuiavatar]', 'bind-tuiavatar', 'tuiavatar'].includes(name),
     );
 }
 
@@ -163,9 +163,9 @@ function getFallbackBinding(value?: string): {source: string; fallback: string} 
 
     const fallbackBindingRegexp =
         /^(?<source>[^|]+?)\s*\|\s*tuiFallbackSrc\s*:\s*(['"])(?<fallback>[^'"]+)\2(?:\s*\|\s*async)?\s*$/;
-    const match = value.match(fallbackBindingRegexp);
+    const match = fallbackBindingRegexp.exec(value);
 
-    if (!match || !match.groups) {
+    if (!match?.groups) {
         return null;
     }
 
