@@ -46,7 +46,7 @@ const DATA: Record<string, readonly Result[]> = {
             title: 'Taiga UI',
             subtitle: 'Super awesome library',
             href: 'https://taiga-ui.dev',
-            icon: '/assets/images/taiga.svg',
+            icon: 'assets/images/taiga.svg',
         },
         {
             title: 'Maskito',
