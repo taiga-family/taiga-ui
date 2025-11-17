@@ -9,15 +9,15 @@ import {type TuiSortDirection} from '../table.options';
     name: 'tuiTableSort',
     pure: false,
 })
-export class TuiTableSortPipe<K> implements PipeTransform {
-    private readonly table = inject(TuiTableDirective<K>);
+export class TuiTableSortPipe implements PipeTransform {
+    private readonly table = inject(TuiTableDirective<any>);
 
-    public transform<T extends K>(data?: readonly T[] | null): readonly T[] {
+    public transform<T>(data?: readonly T[] | null): readonly T[] {
         return this.sort<T>(data ?? [], this.table.sorter, this.table.direction);
     }
 
     @tuiPure
-    private sort<T extends K>(
+    private sort<T>(
         data: readonly T[],
         sorter: TuiComparator<T>,
         direction: TuiSortDirection,
