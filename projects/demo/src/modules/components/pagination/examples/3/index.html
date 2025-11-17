@@ -1,14 +1,20 @@
-<tui-input-slider
+<tui-textfield
     tuiTextfieldSize="m"
     class="slider"
-    [max]="6"
-    [quantum]="1"
-    [tuiTextfieldCustomContent]="inputCustomContent"
-    [tuiTextfieldLabelOutside]="true"
-    [(ngModel)]="sidePadding"
-/>
-
-<ng-template #inputCustomContent>sidePadding</ng-template>
+>
+    <input
+        tuiInputSlider
+        [max]="6"
+        [min]="0"
+        [step]="1"
+        [(ngModel)]="sidePadding"
+    />
+    <span>sidePadding</span>
+    <input
+        tuiSlider
+        type="range"
+    />
+</tui-textfield>
 
 <tui-pagination
     [index]="10"
