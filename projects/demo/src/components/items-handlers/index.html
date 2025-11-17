@@ -13,8 +13,7 @@
         tuiDocAPIItem
         type="TuiStringHandler"
         [items]="stringifyVariants"
-        [value]="stringify()"
-        (valueChange)="stringify.set($event)"
+        [(value)]="stringify"
     >
         A function that transforms datalist's items into a string.
         <code>String(value)</code>
@@ -31,8 +30,7 @@
         tuiDocAPIItem
         type="TuiIdentityMatcher"
         [items]="identityMatcherVariants"
-        [value]="identityMatcher()"
-        (valueChange)="identityMatcher.set($event)"
+        [(value)]="identityMatcher"
     >
         Function that matches form control value and datalist's items, e.g. if objects are copied. Uses
         <code>===</code>
@@ -49,8 +47,7 @@
         tuiDocAPIItem
         type="TuiBooleanHandler"
         [items]="[falseHandler, providedDisabledItemHandler()]"
-        [value]="disabledItemHandler()"
-        (valueChange)="disabledItemHandler.set($event)"
+        [(value)]="disabledItemHandler"
     >
         <div>A handler that gets a datalist's items and returns true if it is disabled.</div>
         <p>

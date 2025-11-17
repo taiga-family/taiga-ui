@@ -1,11 +1,10 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {
     TUI_DOC_ICONS,
     TUI_DOC_SOURCE_CODE,
     TUI_DOC_SOURCE_CODE_TEXT,
 } from '@taiga-ui/addon-doc/tokens';
 import {type TuiDocSourceCodePathOptions} from '@taiga-ui/addon-doc/types';
-import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -20,39 +19,21 @@ export class TuiDocSourceCode {
     protected readonly sourceCode = inject(TUI_DOC_SOURCE_CODE);
     protected readonly text = inject(TUI_DOC_SOURCE_CODE_TEXT);
 
-    @Input()
-    public header = '';
+    public readonly header = input('');
+    public readonly package = input('');
+    public readonly type = input('');
+    public readonly path = input('');
 
-    @Input()
-    public package = '';
+    protected readonly pathOptions = computed(
+        (): TuiDocSourceCodePathOptions => ({
+            header: this.header(),
+            package: this.package(),
+            type: this.type(),
+            path: this.path(),
+        }),
+    );
 
-    @Input()
-    public type = '';
-
-    @Input()
-    public path = '';
-
-    protected get pathOptions(): TuiDocSourceCodePathOptions {
-        return this.getPathOptions(this.header, this.package, this.type, this.path);
-    }
-
-    @tuiPure
-    protected pathIsUrl(path: string): boolean {
-        return path.startsWith('http');
-    }
-
-    @tuiPure
-    private getPathOptions(
-        header: string,
-        packageName: string,
-        type: string,
-        path: string,
-    ): TuiDocSourceCodePathOptions {
-        return {
-            header,
-            package: packageName,
-            type,
-            path,
-        };
-    }
+    protected readonly pathIsUrl = computed(
+        (): boolean => this.path()?.startsWith('http') ?? false,
+    );
 }

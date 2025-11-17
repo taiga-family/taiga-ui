@@ -1,6 +1,5 @@
-import {InjectionToken, type Provider} from '@angular/core';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeL, type TuiSizeM, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
@@ -25,13 +24,5 @@ export const TUI_ARROW_DEFAULT_MODE: TuiArrowMode = {
 /**
  * @deprecated: drop in v5.0 use {@link TuiChevron}
  */
-export const TUI_ARROW_MODE = new InjectionToken(ngDevMode ? 'TUI_ARROW_MODE' : '', {
-    factory: () => TUI_ARROW_DEFAULT_MODE,
-});
-
-/**
- * @deprecated: drop in v5.0 use {@link TuiChevron}
- */
-export function tuiArrowModeProvider(options: Partial<TuiArrowMode>): Provider {
-    return tuiProvideOptions(TUI_ARROW_MODE, options, TUI_ARROW_DEFAULT_MODE);
-}
+export const [TUI_ARROW_MODE, tuiArrowModeProvider] =
+    tuiCreateOptions(TUI_ARROW_DEFAULT_MODE);

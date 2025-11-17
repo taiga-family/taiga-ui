@@ -1,6 +1,6 @@
-import {InjectionToken, type Provider} from '@angular/core';
+import {InjectionToken} from '@angular/core';
 import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiDocIcons {
     readonly code: string;
@@ -49,13 +49,8 @@ export const TUI_DOC_DEFAULT_ICONS: TuiDocIcons = {
     },
 };
 
-export const TUI_DOC_ICONS = new InjectionToken(ngDevMode ? 'TUI_DOC_ICONS' : '', {
-    factory: () => TUI_DOC_DEFAULT_ICONS,
-});
-
-export function tuiDocIconsProvider(icons: Partial<TuiDocIcons>): Provider {
-    return tuiProvideOptions(TUI_DOC_ICONS, icons, TUI_DOC_DEFAULT_ICONS);
-}
+export const [TUI_DOC_ICONS, tuiDocIconsProvider] =
+    tuiCreateOptions(TUI_DOC_DEFAULT_ICONS);
 
 export const TUI_DOC_DIRECTION_ENABLED = new InjectionToken(
     ngDevMode ? 'TUI_DOC_DIRECTION_ENABLED' : '',

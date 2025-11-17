@@ -18,7 +18,7 @@ import {
     TuiFilterPipe,
     TuiKeysPipe,
 } from '@taiga-ui/cdk';
-import {TuiAlertService, TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {TuiAlertService, TuiHint, TuiTextfield} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {debounceTime, distinctUntilChanged, filter, map, type Observable} from 'rxjs';
@@ -37,8 +37,8 @@ import {IconsGroupTemplate} from './icons-group.directive';
         TuiHint,
         TuiInputModule,
         TuiKeysPipe,
+        TuiTextfield,
         TuiTextfieldControllerModule,
-        TuiTextfieldOptionsDirective,
     ],
     templateUrl: './icons-group.template.html',
     styleUrl: './icons-group.style.less',

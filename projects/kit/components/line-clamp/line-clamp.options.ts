@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiLineClampOptions {
     readonly showHint: boolean;
@@ -12,19 +11,6 @@ export const TUI_LINE_CLAMP_DEFAULT_OPTIONS: TuiLineClampOptions = {
 /**
  * Default parameters for LineClamp component
  */
-export const TUI_LINE_CLAMP_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_LINE_CLAMP_OPTIONS' : '',
-    {
-        factory: () => TUI_LINE_CLAMP_DEFAULT_OPTIONS,
-    },
+export const [TUI_LINE_CLAMP_OPTIONS, tuiLineClampOptionsProvider] = tuiCreateOptions(
+    TUI_LINE_CLAMP_DEFAULT_OPTIONS,
 );
-
-export function tuiLineClampOptionsProvider(
-    options: Partial<TuiLineClampOptions>,
-): Provider {
-    return tuiProvideOptions(
-        TUI_LINE_CLAMP_OPTIONS,
-        options,
-        TUI_LINE_CLAMP_DEFAULT_OPTIONS,
-    );
-}

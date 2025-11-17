@@ -1,6 +1,6 @@
-@if (filename) {
+@if (filename()) {
     <p class="t-header">
-        {{ filename }}
+        {{ filename() }}
     </p>
 }
 @for (content of processor(); track content) {

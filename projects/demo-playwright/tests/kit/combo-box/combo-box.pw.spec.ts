@@ -200,6 +200,35 @@ describe('ComboBox', () => {
                 await expect(comboBox.textfield).toHaveValue('Eric Idle');
                 await expect(example).toContainText('Form control:0');
             });
+
+            test('shows all available options on click (control has selected item)', async () => {
+                await expect(comboBox.textfield).toHaveValue('Terry Jones');
+                await expect(example).toContainText('Form control:777');
+
+                await comboBox.textfield.click();
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(6);
+            });
+
+            test('filter works', async () => {
+                await comboBox.textfield.clear();
+                await comboBox.textfield.fill('eRic iDl');
+                await expect(example).toContainText('Form control:null');
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(1);
+                await expect(comboBox.dropdown).toHaveText('Eric Idle');
+
+                await comboBox.textfield.pressSequentially('e');
+                await expect(comboBox.textfield).toHaveValue('Eric Idle');
+                await expect(example).toContainText('Form control:0');
+            });
+
+            test('shows all options again when textfield value matches datalist item', async () => {
+                await comboBox.textfield.clear();
+                await comboBox.textfield.fill('eRic iDl');
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(1);
+
+                await comboBox.textfield.pressSequentially('e');
+                await expect(comboBox.dropdown.locator('[tuiOption]')).toHaveCount(6);
+            });
         });
 
         describe('Server-side filtering', () => {

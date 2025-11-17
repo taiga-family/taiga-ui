@@ -11,7 +11,7 @@ export class TuiComponentPipe implements PipeTransform {
 
     public async transform(index: number): Promise<Type<unknown>> {
         return import(
-            `../modules/${this.page.type}/${toKebab(this.page.header)}/examples/${index}/index.ts`
+            `../modules/${this.page.type()}/${toKebab(this.page.header())}/examples/${index}/index.ts`
         ).then((module) => module.default);
     }
 }
