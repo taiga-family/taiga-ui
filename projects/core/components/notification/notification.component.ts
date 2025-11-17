@@ -4,30 +4,31 @@ import {TuiAnimated} from '@taiga-ui/cdk/directives/animated';
 import {type TuiPortalContext} from '@taiga-ui/cdk/portals';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiButton} from '@taiga-ui/core/components/button';
-import {TuiNotification} from '@taiga-ui/core/components/notification';
-import {TuiNotificationDirective} from '@taiga-ui/core/directives';
+import {TuiAlertDirective} from '@taiga-ui/core/directives/alert';
 import {TuiTitle} from '@taiga-ui/core/directives/title';
 import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, fromEvent, of, repeat, switchMap, takeUntil, timer} from 'rxjs';
 
-import {type TuiAlertOptions} from './alert.interfaces';
+import {TuiNotificationDirective} from './notification.directive';
+import {type TuiNotificationOptions} from './notification.options';
 
 @Component({
-    selector: 'tui-alert',
-    imports: [PolymorpheusOutlet, TuiButton, TuiNotification, TuiTitle],
-    templateUrl: './alert.template.html',
-    styleUrl: './alert.style.less',
+    selector: 'tui-notification-alert',
+    imports: [PolymorpheusOutlet, TuiButton, TuiNotificationDirective, TuiTitle],
+    templateUrl: './notification.template.html',
+    styleUrl: './notification.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    hostDirectives: [TuiAnimated, TuiNotificationDirective],
+    hostDirectives: [TuiAnimated, TuiAlertDirective],
     host: {role: 'alert'},
 })
-export class TuiAlertComponent<O, I> {
+export class TuiNotificationComponent<O, I> {
     private readonly el = tuiInjectElement();
 
     protected readonly icons = inject(TUI_COMMON_ICONS);
     protected readonly close = inject(TUI_CLOSE_WORD);
-    protected readonly item = injectContext<TuiPortalContext<TuiAlertOptions<I>, O>>();
+    protected readonly item =
+        injectContext<TuiPortalContext<TuiNotificationOptions<I>, O>>();
 
     protected readonly sub = of(
         typeof this.item.autoClose === 'function'

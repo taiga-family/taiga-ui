@@ -18,7 +18,7 @@ import {
     TuiFilterPipe,
     TuiKeysPipe,
 } from '@taiga-ui/cdk';
-import {TuiAlertService, TuiHint, TuiTextfield} from '@taiga-ui/core';
+import {TuiHint, TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {debounceTime, distinctUntilChanged, filter, map, type Observable} from 'rxjs';
@@ -46,7 +46,7 @@ import {IconsGroupTemplate} from './icons-group.directive';
 })
 export class IconsGroup implements OnInit {
     private readonly clipboard = inject(Clipboard);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
     private readonly destroyRef = inject(DestroyRef);

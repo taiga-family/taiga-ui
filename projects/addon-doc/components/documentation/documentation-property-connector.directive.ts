@@ -14,7 +14,7 @@ import {ActivatedRoute, type Params, UrlSerializer} from '@angular/router';
 import {TUI_DOC_URL_STATE_HANDLER} from '@taiga-ui/addon-doc/tokens';
 import {tuiCleanObject, tuiCoerceValue, tuiInspectAny} from '@taiga-ui/addon-doc/utils';
 import {tuiIsNumber} from '@taiga-ui/cdk/utils/miscellaneous';
-import {TuiAlertService} from '@taiga-ui/core/components/alert';
+import {TuiNotificationService} from '@taiga-ui/core/components/notification';
 import {Subject} from 'rxjs';
 
 const SERIALIZED_SUFFIX = '$';
@@ -31,7 +31,7 @@ export class TuiDocDocumentationPropertyConnector<T> implements OnInit, OnChange
     private readonly activatedRoute = inject(ActivatedRoute);
     private readonly urlSerializer = inject(UrlSerializer);
     private readonly urlStateHandler = inject(TUI_DOC_URL_STATE_HANDLER);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     public readonly documentationPropertyName = input('');
 
