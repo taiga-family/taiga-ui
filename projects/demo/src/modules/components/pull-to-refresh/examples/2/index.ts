@@ -8,7 +8,7 @@ import {
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiNotificationService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({

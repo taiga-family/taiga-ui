@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
-import {TuiNotificationService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {TUI_CONFIRM, type TuiConfirmData} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 

@@ -10,8 +10,8 @@ import {
     TuiInputExpire,
 } from '@taiga-ui/addon-commerce';
 import {
-    TuiNotificationService,
     TuiError,
+    TuiNotificationService,
     TuiTextfield,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';

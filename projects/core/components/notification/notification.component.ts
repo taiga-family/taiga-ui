@@ -10,8 +10,8 @@ import {TUI_CLOSE_WORD, TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {injectContext, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {EMPTY, fromEvent, of, repeat, switchMap, takeUntil, timer} from 'rxjs';
 
-import {type TuiNotificationOptions} from './notification.options';
 import {TuiNotificationDirective} from './notification.directive';
+import {type TuiNotificationOptions} from './notification.options';
 
 @Component({
     selector: 'tui-notification-alert',

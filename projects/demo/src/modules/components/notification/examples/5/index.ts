@@ -4,15 +4,15 @@ import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
+import {type TuiPortalContext} from '@taiga-ui/cdk';
 import {
-    TuiNotificationService,
     TuiButton,
     TuiLink,
-    TuiNotificationOptions,
+    type TuiNotificationOptions,
+    TuiNotificationService,
 } from '@taiga-ui/core';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
-import type {TuiPortalContext} from '@taiga-ui/cdk';
 
 @Component({
     imports: [AsyncPipe, TuiAmountPipe, TuiButton, TuiLink],
