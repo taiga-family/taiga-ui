@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {RouterLinkActive} from '@angular/router';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
@@ -17,43 +17,29 @@ import {TuiStepperComponent} from './stepper.component';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         type: 'button',
-        '[attr.data-state]': 'stepState',
-        '[class._vertical]': 'isVertical',
-        '[class._focus-visible]': 'focusVisible',
+        '[attr.data-state]': 'stepState()',
+        '[class._vertical]': 'stepper.orientation() === "vertical"',
         '[class._active]': 'isActive',
-        '[tabIndex]': 'tabIndex',
+        '[tabIndex]': 'isActive ? 0 : -1',
         '(click)': 'activate()',
     },
 })
 export class TuiStep {
-    private readonly stepper = inject(TuiStepperComponent);
     private readonly el = tuiInjectElement();
+
+    protected readonly icons = inject(TUI_COMMON_ICONS);
+    protected readonly stepper = inject(TuiStepperComponent);
     protected readonly $ = (
         inject(RouterLinkActive, {optional: true})?.isActiveChange.asObservable() ?? EMPTY
     )
         .pipe(filter(Boolean), takeUntilDestroyed())
         .subscribe(() => this.activate());
 
-    protected focusVisible = false;
-
-    protected readonly icons = inject(TUI_COMMON_ICONS);
-
-    @Input()
-    public stepState: 'error' | 'normal' | 'pass' = 'normal';
-
-    @Input()
-    public icon = '';
+    public readonly stepState = input<'error' | 'normal' | 'pass'>('normal');
+    public readonly icon = input('');
 
     protected get isActive(): boolean {
         return this.stepper.isActive(this.index);
-    }
-
-    protected get isVertical(): boolean {
-        return this.stepper.orientation === 'vertical';
-    }
-
-    protected get tabIndex(): number {
-        return this.isActive ? 0 : -1;
     }
 
     protected get index(): number {
