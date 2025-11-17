@@ -59,6 +59,7 @@ class Styles {}
     ],
     hostDirectives: [TuiStuck],
     host: {
+        tuiTable: '',
         '[attr.data-size]': 'size()',
     },
 })

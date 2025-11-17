@@ -2,7 +2,7 @@ import {DemoRoute} from '@demo/routes';
 import {tuiGoto} from '@demo-playwright/utils';
 import {expect, test} from '@playwright/test';
 
-test.describe('AlertService', () => {
+test.describe('NotificationService', () => {
     test.use({
         viewport: {width: 720, height: 720},
     });
@@ -14,6 +14,8 @@ test.describe('AlertService', () => {
 
         await showAlertButton.click();
 
-        await expect.soft(page.locator('tui-alert')).toHaveScreenshot('01-alert.png');
+        await expect
+            .soft(page.locator('tui-notification-alert'))
+            .toHaveScreenshot('01-alert.png');
     });
 });
