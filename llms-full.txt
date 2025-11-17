@@ -14285,7 +14285,10 @@ export default class Example {
 <tui-error formControlName="moneyValue" />
 </div>
 </fieldset>
-<tui-input-slider formControlName="quantityValue" tuiTextfieldPostfix="₽" [max]="3000000" [min]="50000" [segments]="1" > Some slider </tui-input-slider>
+<tui-textfield tuiTextfieldSize="l">
+<input formControlName="quantityValue" tuiInputSlider [max]="3000000" [min]="50000" />
+<input tuiSlider type="range" />
+</tui-textfield>
 <div class="ticks-labels">
 <span>from 50 000 ₽</span>
 <span>to 3 000 000 ₽</span>
@@ -14355,17 +14358,14 @@ import {
     TuiInputDate,
     TuiInputNumber,
     TuiInputPhone,
+    TuiInputSlider,
     TuiPassword,
     TuiRadio,
     TuiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
 import {TuiForm, TuiHeader} from '@taiga-ui/layout';
-import {
-    TuiInputModule,
-    TuiInputSliderModule,
-    TuiTextfieldControllerModule,
-} from '@taiga-ui/legacy';
+import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 class User {
     constructor(
@@ -14406,7 +14406,7 @@ class Account {
         TuiInputModule,
         TuiInputNumber,
         TuiInputPhone,
-        TuiInputSliderModule,
+        TuiInputSlider,
         TuiLabel,
         TuiPassword,
         TuiRadio,
@@ -28405,8 +28405,11 @@ export class Example {}
 
 **Template:**
 ```html
-<tui-input-slider tuiTextfieldSize="m" class="slider" [max]="length - 1" [quantum]="1" [tuiTextfieldCustomContent]="inputCustomContent" [tuiTextfieldLabelOutside]="true" [(ngModel)]="index" />
-<ng-template #inputCustomContent>index</ng-template>
+<tui-textfield tuiTextfieldSize="m" class="slider" >
+<input tuiInputSlider [max]="length - 1" [(ngModel)]="index" />
+<span>index</span>
+<input tuiSlider type="range" />
+</tui-textfield>
 <tui-pagination [index]="index" [length]="length" (indexChange)="goToPage($event)" />
 ```
 **TypeScript:**
@@ -28415,14 +28418,16 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPagination} from '@taiga-ui/kit';
-import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         FormsModule,
-        TuiInputSliderModule,
+        TuiInputSlider,
         TuiPagination,
+        TuiTextfield,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
@@ -28446,8 +28451,11 @@ export default class Page {
 
 **Template:**
 ```html
-<tui-input-slider tuiTextfieldSize="m" class="slider" [max]="6" [quantum]="1" [tuiTextfieldCustomContent]="inputCustomContent" [tuiTextfieldLabelOutside]="true" [(ngModel)]="activePadding" />
-<ng-template #inputCustomContent>activePadding</ng-template>
+<tui-textfield tuiTextfieldSize="m" class="slider" >
+<input tuiInputSlider [max]="6" [(ngModel)]="activePadding" />
+<span>activePadding</span>
+<input tuiSlider type="range" />
+</tui-textfield>
 <tui-pagination [activePadding]="activePadding" [index]="10" [length]="64" />
 ```
 **TypeScript:**
@@ -28456,14 +28464,16 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPagination} from '@taiga-ui/kit';
-import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         FormsModule,
-        TuiInputSliderModule,
+        TuiInputSlider,
         TuiPagination,
+        TuiTextfield,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
@@ -28480,8 +28490,11 @@ export default class Page {
 
 **Template:**
 ```html
-<tui-input-slider tuiTextfieldSize="m" class="slider" [max]="6" [quantum]="1" [tuiTextfieldCustomContent]="inputCustomContent" [tuiTextfieldLabelOutside]="true" [(ngModel)]="sidePadding" />
-<ng-template #inputCustomContent>sidePadding</ng-template>
+<tui-textfield tuiTextfieldSize="m" class="slider" >
+<input tuiInputSlider [max]="6" [min]="0" [(ngModel)]="sidePadding" />
+<span>sidePadding</span>
+<input tuiSlider type="range" [step]="1" />
+</tui-textfield>
 <tui-pagination [index]="10" [length]="64" [sidePadding]="sidePadding" />
 ```
 **TypeScript:**
@@ -28490,14 +28503,16 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPagination} from '@taiga-ui/kit';
-import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         FormsModule,
-        TuiInputSliderModule,
+        TuiInputSlider,
         TuiPagination,
+        TuiTextfield,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
