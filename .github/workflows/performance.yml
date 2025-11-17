@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout feature branch
-        uses: actions/checkout@v4.3.0
+        uses: actions/checkout@v4.3.1
         with:
           fetch-depth: 10
       - uses: taiga-family/ci/actions/setup/variables@v1.171.0

@@ -20,7 +20,7 @@ jobs:
     env:
       IS_RRE_RELEASE_MODE: ${{ contains(github.event.inputs.mode, 'prerelease') }}
     steps:
-      - uses: actions/checkout@v4.3.0
+      - uses: actions/checkout@v4.3.1
         with:
           fetch-depth: 0
           token: ${{ secrets.TAIGA_FAMILY_BOT_PAT }}
