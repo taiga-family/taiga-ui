@@ -2,14 +2,16 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiPagination} from '@taiga-ui/kit';
-import {TuiInputSliderModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfield} from '@taiga-ui/core';
+import {TuiInputSlider, TuiPagination} from '@taiga-ui/kit';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         FormsModule,
-        TuiInputSliderModule,
+        TuiInputSlider,
         TuiPagination,
+        TuiTextfield,
         TuiTextfieldControllerModule,
     ],
     templateUrl: './index.html',
