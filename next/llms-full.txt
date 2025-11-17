@@ -9034,7 +9034,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiRepeatTimes} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {TuiCheckbox, TuiChip} from '@taiga-ui/kit';
 
 @Component({
@@ -9045,7 +9045,7 @@ import {TuiCheckbox, TuiChip} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly checked = [true, false, true];
     protected readonly values = ['test', 'Some text', 'WOW!'];
@@ -10317,7 +10317,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {TUI_CONFIRM, type TuiConfirmData} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
@@ -10329,7 +10329,7 @@ import {switchMap} from 'rxjs';
 })
 export default class Example {
     private readonly dialogs = inject(TuiResponsiveDialogService);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected onClick(): void {
         const data: TuiConfirmData = {
@@ -10359,7 +10359,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {DemoRoute} from '@demo/routes';
 import {TuiDemo} from '@demo/utils';
-import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
+import {TuiButton, TuiDialogService, TuiNotificationService} from '@taiga-ui/core';
 import {TUI_CONFIRM, type TuiConfirmData} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
@@ -10370,7 +10370,7 @@ import {switchMap} from 'rxjs';
 })
 export default class Example implements TuiConfirmData {
     private readonly dialogs = inject(TuiDialogService);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly routes = DemoRoute;
     protected readonly examples = ['Basic'];
@@ -11506,7 +11506,7 @@ export default class Example {
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButton, TuiDialogService} from '@taiga-ui/core';
+import {TuiButton, TuiDialogService, TuiNotificationService} from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap} from 'rxjs';
 
@@ -11519,7 +11519,7 @@ import {DialogComponent} from './component';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
 
     protected click(): void {
@@ -11782,10 +11782,10 @@ import {TuiDemo} from '@demo/utils';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
 import {
     TUI_DIALOG_OPTIONS,
-    TuiAlertService,
     TuiButton,
     type TuiDialogContext,
     TuiDialogService,
+    TuiNotificationService,
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiForm} from '@taiga-ui/layout';
@@ -11797,7 +11797,7 @@ import {switchMap} from 'rxjs';
     changeDetection,
 })
 export default class Page extends Array {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly dialogs = inject(TuiDialogService);
     private readonly options = inject(TUI_DIALOG_OPTIONS);
 
@@ -15589,8 +15589,8 @@ import {
     TuiInputExpire,
 } from '@taiga-ui/addon-commerce';
 import {
-    TuiAlertService,
     TuiError,
+    TuiNotificationService,
     TuiTextfield,
     tuiTextfieldOptionsProvider,
 } from '@taiga-ui/core';
@@ -15612,7 +15612,7 @@ import {
     providers: [tuiTextfieldOptionsProvider({cleaner: signal(true)})],
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly form = new FormGroup({
         card: new FormControl('', tuiCreateLuhnValidator('Card number is invalid')),
@@ -19339,7 +19339,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {TuiInputInline} from '@taiga-ui/kit';
 
 @Component({
@@ -19350,7 +19350,7 @@ import {TuiInputInline} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected heading = 'Page heading';
     protected editing = false;
@@ -24069,7 +24069,12 @@ import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiLegendItem, TuiRingChart} from '@taiga-ui/addon-charts';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {tuiPure, tuiSum} from '@taiga-ui/cdk';
-import {TuiAlertService, tuiFormatNumber, TuiIcon, TuiNotification} from '@taiga-ui/core';
+import {
+    tuiFormatNumber,
+    TuiIcon,
+    TuiNotification,
+    TuiNotificationService,
+} from '@taiga-ui/core';
 import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
@@ -24088,7 +24093,7 @@ import {TuiCheckbox} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private enabled = new Array(5).fill(true);
 
     protected readonly data = [13769, 12367, 10172, 3018, 2592];
@@ -27741,7 +27746,7 @@ export default class Example {
 **Template:**
 ```html
 <button size="m" tuiButton type="button" (click)="show.set(true)" > Show </button>
-<ng-template [tuiAlertOptions]="{label: 'Directive', autoClose: 0, closable: false}" [(tuiAlert)]="show" >
+<ng-template [tuiNotificationOptions]="{label: 'Directive', autoClose: 0, closable: false}" [(tuiNotification)]="show" >
 <span tuiSubtitle>This is a declarative directive alert</span>
 <button tuiButton type="button" (click)="show.set(false)" > Close </button>
 </ng-template>
@@ -27751,10 +27756,10 @@ export default class Example {
 import {Component, signal} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlert, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotification} from '@taiga-ui/core';
 
 @Component({
-    imports: [TuiAlert, TuiButton],
+    imports: [TuiButton, TuiNotification],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,
@@ -27778,7 +27783,13 @@ import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
-import {type TuiAlertContext, TuiAlertService, TuiButton, TuiLink} from '@taiga-ui/core';
+import {type TuiPortalContext} from '@taiga-ui/cdk';
+import {
+    TuiButton,
+    TuiLink,
+    type TuiNotificationOptions,
+    TuiNotificationService,
+} from '@taiga-ui/core';
 import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
@@ -27809,7 +27820,9 @@ import {switchMap, takeUntil} from 'rxjs';
     changeDetection,
 })
 class Alert {
-    protected readonly context = injectContext<TuiAlertContext<number, number>>();
+    protected readonly context =
+        injectContext<TuiPortalContext<TuiNotificationOptions<number>, number>>();
+
     protected value = this.context.data;
 
     protected increaseBalance(): void {
@@ -27825,7 +27838,7 @@ class Alert {
     changeDetection,
 })
 export default class Example {
-    protected readonly notifications = inject(TuiAlertService);
+    protected readonly notifications = inject(TuiNotificationService);
     protected readonly notification = this.notifications
         .open<number>(new PolymorpheusComponent(Alert), {
             label: 'Heading is so long that it should be shown in two lines of text',
@@ -27856,8 +27869,8 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TuiDemo} from '@demo/utils';
 import {
     TUI_NOTIFICATION_OPTIONS,
-    TuiAlertService,
     TuiButton,
+    TuiNotificationService,
     TuiTitle,
 } from '@taiga-ui/core';
 
@@ -27867,7 +27880,7 @@ import {
     changeDetection,
 })
 export default class Page {
-    protected readonly notifications = inject(TuiAlertService);
+    protected readonly notifications = inject(TuiNotificationService);
     protected readonly options = inject(TUI_NOTIFICATION_OPTIONS);
     protected readonly sizes = ['s', 'm', 'l'] as const;
     protected readonly icons = [this.options.icon, '@tui.clock', ''];
@@ -28646,7 +28659,7 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiResponsiveDialog} from '@taiga-ui/addon-mobile';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton, TuiTitle} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService, TuiTitle} from '@taiga-ui/core';
 import {TuiPdfViewer} from '@taiga-ui/layout';
 
 @Component({
@@ -28657,7 +28670,7 @@ import {TuiPdfViewer} from '@taiga-ui/layout';
 })
 export default class Example {
     private readonly sanitizer = inject(DomSanitizer);
-    protected readonly alerts = inject(TuiAlertService);
+    protected readonly alerts = inject(TuiNotificationService);
     protected readonly isMobile = inject(TUI_IS_MOBILE);
     protected readonly pdf = '/assets/media/taiga.pdf';
     protected open = false;
@@ -29177,7 +29190,7 @@ import {Component, inject, type TemplateRef, ViewChild} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiClamp, TuiSwipe, type TuiSwipeEvent} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton, type TuiDialogContext} from '@taiga-ui/core';
+import {TuiButton, type TuiDialogContext, TuiNotificationService} from '@taiga-ui/core';
 import {TuiPreview, TuiPreviewDialogService} from '@taiga-ui/kit';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 
@@ -29190,7 +29203,7 @@ import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorphe
 })
 export default class Example {
     private readonly previewService = inject(TuiPreviewDialogService);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     @ViewChild('preview')
     protected readonly preview?: TemplateRef<TuiDialogContext>;
@@ -30209,7 +30222,7 @@ import {
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
@@ -30238,7 +30251,7 @@ import {Subject} from 'rxjs';
     ],
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly loaded$ = inject<Subject<void>>(TUI_PULL_TO_REFRESH_LOADED);
 
     protected onPull(): void {
@@ -30273,7 +30286,7 @@ import {
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
@@ -30301,7 +30314,7 @@ import {Subject} from 'rxjs';
     ],
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly loaded$ = inject<Subject<void>>(TUI_PULL_TO_REFRESH_LOADED);
 
     protected onPull(): void {
@@ -30343,7 +30356,7 @@ import {
     TuiPullToRefresh,
 } from '@taiga-ui/addon-mobile';
 import {TUI_IS_ANDROID, TUI_IS_IOS} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
+import {TuiNotificationService, TuiScrollable, TuiScrollbar} from '@taiga-ui/core';
 import {Subject} from 'rxjs';
 
 @Component({
@@ -30379,7 +30392,7 @@ import {Subject} from 'rxjs';
     ],
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected items = Array.from({length: 10000}).map((_, i) => `Item #${i}`);
 
@@ -30624,7 +30637,7 @@ export class Example {}
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButton, TuiIcon, TuiLink} from '@taiga-ui/core';
+import {TuiButton, TuiIcon, TuiLink, TuiNotificationService} from '@taiga-ui/core';
 import {TuiPush} from '@taiga-ui/kit';
 
 @Component({
@@ -30635,7 +30648,7 @@ import {TuiPush} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alert = inject(TuiAlertService);
+    private readonly alert = inject(TuiNotificationService);
 
     protected onClose(): void {
         this.alert
@@ -30656,7 +30669,7 @@ export default class Example {
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 import {TuiPushService} from '@taiga-ui/kit';
 import {switchMap, take} from 'rxjs';
 
@@ -30668,7 +30681,7 @@ import {switchMap, take} from 'rxjs';
 })
 export default class Example {
     protected readonly push = inject(TuiPushService);
-    protected readonly alert = inject(TuiAlertService);
+    protected readonly alert = inject(TuiNotificationService);
 
     protected onClick(): void {
         this.push
@@ -33774,7 +33787,7 @@ import {
     TUI_SHEET_DIALOG_DEFAULT_OPTIONS,
     TuiSheetDialogService,
 } from '@taiga-ui/addon-mobile';
-import {TuiAlertService, TuiButton, type TuiDialogContext} from '@taiga-ui/core';
+import {TuiButton, type TuiDialogContext, TuiNotificationService} from '@taiga-ui/core';
 import {TuiFloatingContainer} from '@taiga-ui/kit';
 import {switchMap} from 'rxjs';
 
@@ -33788,7 +33801,7 @@ export default class Page {
     private readonly router = inject(Router);
     private readonly route = inject(ActivatedRoute);
     private readonly sheetDialogs = inject(TuiSheetDialogService);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly exampleComponent = import('./examples/import/component.md');
     protected readonly examples = [
@@ -35766,7 +35779,7 @@ import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTabBar} from '@taiga-ui/addon-mobile';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiNotificationService} from '@taiga-ui/core';
 
 interface Item {
     badge?: number;
@@ -35783,7 +35796,7 @@ interface Item {
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected activeItemIndex = 1;
 
@@ -38269,7 +38282,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiTextfield} from '@taiga-ui/core';
+import {TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
@@ -38279,7 +38292,7 @@ import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected activeItemIndex = 0;
 
@@ -38311,7 +38324,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiTextfield} from '@taiga-ui/core';
+import {TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
@@ -38321,7 +38334,7 @@ import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected activeItemIndex = 0;
 
@@ -38419,7 +38432,12 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiIcon, TuiNumberFormat, TuiTextfield} from '@taiga-ui/core';
+import {
+    TuiIcon,
+    TuiNotificationService,
+    TuiNumberFormat,
+    TuiTextfield,
+} from '@taiga-ui/core';
 import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
 
 @Component({
@@ -38437,7 +38455,7 @@ import {TuiInputNumber, TuiTabs} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected activeItemIndex = 0;
 
@@ -42486,7 +42504,7 @@ import {KeyValuePipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 
 @Component({
     imports: [ClipboardModule, KeyValuePipe, TuiButton],
@@ -42496,7 +42514,7 @@ import {TuiAlertService, TuiButton} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly appearances = {
         Primary: ['primary', 'primary-destructive', 'primary-grayscale'],
@@ -42801,7 +42819,7 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiCopyProcessor, type TuiStringHandler} from '@taiga-ui/cdk';
-import {TUI_NUMBER_FORMAT, TuiAlertService, TuiTextfield} from '@taiga-ui/core';
+import {TUI_NUMBER_FORMAT, TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
@@ -42814,7 +42832,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     },
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected value = 12345.67;
     protected format = inject(TUI_NUMBER_FORMAT);
@@ -48264,7 +48282,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValueChanges} from '@taiga-ui/cdk';
-import {TuiAlertService} from '@taiga-ui/core';
+import {TuiNotificationService} from '@taiga-ui/core';
 import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
@@ -48274,7 +48292,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly form = new FormGroup({
         control: new FormControl('', {updateOn: 'blur'}),
@@ -48308,7 +48326,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiValueChanges} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiTextfield} from '@taiga-ui/core';
+import {TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
 import {TuiInputNumber} from '@taiga-ui/kit';
 
 @Component({
@@ -48318,7 +48336,7 @@ import {TuiInputNumber} from '@taiga-ui/kit';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly form = new FormGroup({
         name: new FormControl('', {updateOn: 'blur'}),
