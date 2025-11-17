@@ -12,7 +12,7 @@ jobs:
     name: Build demo
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.0
+      - uses: actions/checkout@v4.3.1
         with:
           fetch-depth: 10
       - uses: taiga-family/ci/actions/setup/variables@v1.171.0
@@ -48,7 +48,7 @@ jobs:
       CYPRESS_BASELINE_SNAPSHOTS: 'projects/demo-cypress/tests-results/snapshots/baseline'
       CYPRESS_BASELINE_SNAPSHOTS_KEY: 'cy_baseline_${{ github.event.pull_request.head.sha }}'
     steps:
-      - uses: actions/checkout@v4.3.0
+      - uses: actions/checkout@v4.3.1
         with:
           ref: ${{ github.base_ref }}
       - uses: taiga-family/ci/actions/setup/variables@v1.171.0
@@ -68,7 +68,7 @@ jobs:
           compression-level: 0
           retention-days: 1
 
-      - uses: actions/checkout@v4.3.0
+      - uses: actions/checkout@v4.3.1
       - uses: taiga-family/ci/actions/setup/variables@v1.171.0
       - uses: taiga-family/ci/actions/setup/node@v1.171.0
 
@@ -128,7 +128,7 @@ jobs:
     name: Playwright / ${{ matrix.shard.os }} / ${{ matrix.shard.index }} of ${{ matrix.shard.total }}
     runs-on: ${{ matrix.shard.os }}
     steps:
-      - uses: actions/checkout@v4.3.0
+      - uses: actions/checkout@v4.3.1
       - uses: taiga-family/ci/actions/setup/variables@v1.171.0
 
       - name: Mac OS X building all dependencies
@@ -223,7 +223,7 @@ jobs:
     needs: [playwright, cypress]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.0
+      - uses: actions/checkout@v4.3.1
       - uses: taiga-family/ci/actions/setup/variables@v1.171.0
       - uses: taiga-family/ci/actions/setup/node@v1.171.0
 

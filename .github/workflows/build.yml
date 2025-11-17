@@ -13,7 +13,7 @@ jobs:
     name: Build packages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.0
+      - uses: actions/checkout@v4.3.1
       - uses: taiga-family/ci/actions/setup/variables@v1.171.0
       - uses: taiga-family/ci/actions/setup/node@v1.171.0
       - run: npm run run-many:build:libs
@@ -24,7 +24,7 @@ jobs:
     name: Prerender of demo application
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.3.0
+      - uses: actions/checkout@v4.3.1
       - uses: taiga-family/ci/actions/setup/variables@v1.171.0
       - uses: taiga-family/ci/actions/setup/node@v1.171.0
       - run: npx nx build demo
