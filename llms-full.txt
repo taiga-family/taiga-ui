@@ -2118,7 +2118,7 @@ export class Example {}
 <h3 tuiTitle> Colored icon <span tuiSubtitle> Use <code>tuiIcon</code> pipe to resolve name </span>
 </h3>
 <tui-avatar [src]="'@tui.mastercard' | tuiIcon" />
-<tui-avatar [src]="'/assets/icons/nx.svg'" />
+<tui-avatar [src]="'assets/icons/nx.svg'" />
 <h3 tuiTitle>Image</h3>
 <tui-avatar [src]="'https://avatars.githubusercontent.com/u/11832552' | tuiFallbackSrc: '@tui.user' | async" />
 <h3 tuiTitle>Initials</h3>
@@ -2128,13 +2128,13 @@ export class Example {}
 <tui-avatar>99+</tui-avatar>
 <tui-avatar class="tui-space_horizontal-4">
 <picture>
-<source media="(min-width: 600px)" srcset="/assets/images/angular.svg" />
-<img alt="Alex Inkin" src="/assets/images/avatar.jpg" />
+<source media="(min-width: 600px)" srcset="assets/images/angular.svg" />
+<img alt="Alex Inkin" src="assets/images/avatar.jpg" />
 </picture>
 </tui-avatar>
 <tui-avatar>
 <video autoplay loop playsinline [muted]="true" >
-<source src="/assets/media/bbb.mp4" type="video/mp4" />
+<source src="assets/media/bbb.mp4" type="video/mp4" />
 </video>
 </tui-avatar>
 </div>
@@ -2332,7 +2332,7 @@ export default class Example {}
 ```html
 <tui-avatar size="m" src="@tui.heart" tuiAvatarOutline />
 <tui-avatar size="l" tuiAvatarOutline="var(--tui-background-accent-2)" >
-<img alt="Alex Inkin" src="/assets/images/avatar.jpg" />
+<img alt="Alex Inkin" src="assets/images/avatar.jpg" />
 </tui-avatar>
 <tui-avatar size="xl" src="OK" tuiAvatarOutline="linear-gradient(#c86dd7, #3023ae)" [style.background]="'linear-gradient(#3023ae, #c86dd7)'" [style.color]="'#fff'" />
 ```
@@ -3313,11 +3313,11 @@ export default class Example {}
 **Template:**
 ```html
 <tui-badged-content>
-<img alt="icon" src="/assets/images/angular.svg" tuiSlot="top" width="24" />
+<img alt="icon" src="assets/images/angular.svg" tuiSlot="top" width="24" />
 <tui-avatar src="@tui.user" [round]="false" />
 </tui-badged-content>
 <tui-badged-content>
-<img alt="icon" src="/assets/images/angular.svg" tuiSlot="bottom" width="24" />
+<img alt="icon" src="assets/images/angular.svg" tuiSlot="bottom" width="24" />
 <tui-avatar src="@tui.user" [round]="false" />
 </tui-badged-content>
 ```
@@ -4468,7 +4468,7 @@ export class Example {}
 
 ```html
 <tui-block-status [card]="card" [size]="size" >
-<img alt="hidden content" src="./assets/images/camping.svg" tuiSlot="top" />
+<img alt="hidden content" src="assets/images/camping.svg" tuiSlot="top" />
 <h4>Title</h4> Description <button appearance="secondary" tuiButton type="button" > Action </button>
 </tui-block-status>
 ```
@@ -4487,7 +4487,7 @@ export class Example {}
 **Template:**
 ```html
 <tui-block-status>
-<img alt="not found" src="./assets/images/not-found.svg" tuiSlot="top" class="image" />
+<img alt="not found" src="assets/images/not-found.svg" tuiSlot="top" class="image" />
 <h4>Not found</h4> Try to find by number </tui-block-status>
 ```
 **TypeScript:**
@@ -4512,7 +4512,7 @@ export default class Example {}
 **Template:**
 ```html
 <tui-block-status *ngIf="size$ | async as size">
-<img alt="survived" src="./assets/images/going-up.svg" tuiSlot="top" />
+<img alt="survived" src="assets/images/going-up.svg" tuiSlot="top" />
 <h4>Something has been achieved</h4>
 <span class="text"> You can do something with it, or you can not do it. And the description text can be quite long. </span>
 <button appearance="secondary" tuiButton type="button" [size]="size" > Do </button>
@@ -4551,10 +4551,10 @@ export default class Example {
 ```html
 <div *ngIf="size$ | async as size" class="container" >
 <tui-block-status class="card" [card]="true" >
-<img alt="hidden content" src="./assets/images/camping.svg" tuiSlot="top" class="image" /> We hide the unwanted block <button appearance="secondary" tuiButton type="button" [size]="size" > Return </button>
+<img alt="hidden content" src="assets/images/camping.svg" tuiSlot="top" class="image" /> We hide the unwanted block <button appearance="secondary" tuiButton type="button" [size]="size" > Return </button>
 </tui-block-status>
 <tui-block-status class="card" [card]="true" >
-<img alt="something wrong" src="./assets/images/cancel.svg" tuiSlot="top" class="image" /> Something happened in this block <button appearance="secondary" tuiButton type="button" [size]="size" > Try again </button>
+<img alt="something wrong" src="assets/images/cancel.svg" tuiSlot="top" class="image" /> Something happened in this block <button appearance="secondary" tuiButton type="button" [size]="size" > Try again </button>
 </tui-block-status>
 </div>
 ```
@@ -4596,7 +4596,7 @@ export default class Example {
 </tui-avatar-stack> You can put other content instead of image using <code>tui-block-content</code> css class <button appearance="primary" size="s" tuiButton type="button" [style.border-radius.rem]="100" > Got it </button>
 </tui-block-status>
 <tui-block-status [card]="true" [class.card]="true" >
-<img alt="Alex Inkin" src="/assets/images/avatar.jpg" tuiSlot="top" class="avatar" />
+<img alt="Alex Inkin" src="assets/images/avatar.jpg" tuiSlot="top" class="avatar" />
 <h1>Alex Inkin</h1>
 </tui-block-status>
 </div>
@@ -4643,10 +4643,10 @@ export default class Example {
 ```html
 <div tuiPlatform="ios" class="container" >
 <tui-block-status class="card" [card]="true" >
-<img alt="hidden content" src="./assets/images/camping.svg" tuiSlot="top" class="image" /> We hide the unwanted block <button appearance="secondary" size="m" tuiButton type="button" > Return </button>
+<img alt="hidden content" src="assets/images/camping.svg" tuiSlot="top" class="image" /> We hide the unwanted block <button appearance="secondary" size="m" tuiButton type="button" > Return </button>
 </tui-block-status>
 <tui-block-status tuiPlatform="ios" class="card" [card]="true" >
-<img alt="something wrong" src="./assets/images/cancel.svg" tuiSlot="top" class="image" /> Something happened in this block <button appearance="secondary" size="m" tuiButton type="button" > Try again </button>
+<img alt="something wrong" src="assets/images/cancel.svg" tuiSlot="top" class="image" /> Something happened in this block <button appearance="secondary" size="m" tuiButton type="button" > Try again </button>
 </tui-block-status>
 <tui-block-status tuiPlatform="ios" class="card" [card]="true" > Something happened in this block </tui-block-status>
 </div>
@@ -4676,7 +4676,7 @@ export default class Example {}
 **Template:**
 ```html
 <tui-block-status size="m">
-<img alt="survived" src="./assets/images/going-up.svg" tuiSlot="top" />
+<img alt="survived" src="assets/images/going-up.svg" tuiSlot="top" />
 <h4>There is nothing here yet</h4>
 <span>To get started, create a server</span>
 <button appearance="primary" size="s" tuiButton type="button" > Create </button>
@@ -4734,11 +4734,11 @@ export default class Example {}
 ```html
 <div class="container">
 <tui-block-status class="card" [card]="true" >
-<img alt="hidden content" src="./assets/images/camping.svg" tuiSlot="top" class="image" />
+<img alt="hidden content" src="assets/images/camping.svg" tuiSlot="top" class="image" />
 <h3>No operations</h3>
 </tui-block-status>
 <tui-block-status class="card" [card]="true" >
-<img alt="hidden content" src="./assets/images/camping.svg" tuiSlot="top" class="image" />
+<img alt="hidden content" src="assets/images/camping.svg" tuiSlot="top" class="image" />
 <h3>No operations</h3>
 <button appearance="secondary" size="m" tuiButton type="button" > Return </button>
 </tui-block-status>
@@ -8948,8 +8948,8 @@ export default class Example {
 </div>
 <div tuiCell>
 <tui-avatar-stack>
-<tui-avatar src="/assets/images/avatar.jpg" />
-<tui-avatar src="/assets/images/poorly.png" />
+<tui-avatar src="assets/images/avatar.jpg" />
+<tui-avatar src="assets/images/poorly.png" />
 <tui-avatar>+2</tui-avatar>
 </tui-avatar-stack>
 <div tuiTitle> Waterplea <div tuiSubtitle>
@@ -9042,7 +9042,7 @@ export default class Example {
 </div>
 </button>
 <div tuiCell>
-<tui-avatar src="/assets/images/avatar.jpg" />
+<tui-avatar src="assets/images/avatar.jpg" />
 <div tuiTitle>Salary</div>
 <div tuiTitle>
 <span [style.color]="'var(--tui-text-positive)'" [tuiSensitive]="true" > Enough </span>
@@ -9116,7 +9116,7 @@ export default class Example {
 <tui-badge-notification size="xs" />
 </div>
 <div tuiCell>
-<tui-avatar src="/assets/images/avatar.jpg" tuiAccessories />
+<tui-avatar src="assets/images/avatar.jpg" tuiAccessories />
 <div tuiAccessories tuiTitle > Alexander <div tuiSubtitle>Taiga UI developer</div>
 </div>
 <div tuiTitle>
@@ -9861,11 +9861,11 @@ export default class Example {}
 </section>
 <section>
 <tui-chip *ngFor="let size of sizes" [size]="size" >
-<img *ngIf="size === 'm' || size === 's'" alt="Avatar" src="/assets/images/avatar.jpg" [style.border-radius.rem]="size === 'm' ? 0.25 : 0.5" /> Image </tui-chip>
+<img *ngIf="size === 'm' || size === 's'" alt="Avatar" src="assets/images/avatar.jpg" [style.border-radius.rem]="size === 'm' ? 0.25 : 0.5" /> Image </tui-chip>
 </section>
 <section>
 <tui-chip *ngFor="let size of sizes" [size]="size" [style.border-radius.rem]="5" >
-<tui-avatar *ngIf="size === 'm' || size === 's'" src="/assets/images/avatar.jpg" /> Avatar </tui-chip>
+<tui-avatar *ngIf="size === 'm' || size === 's'" src="assets/images/avatar.jpg" /> Avatar </tui-chip>
 </section>
 <section>
 <tui-chip size="m"> Button <button iconStart="@tui.x" size="s" tuiIconButton type="button" > Remove </button>
@@ -10083,7 +10083,7 @@ export default class Example {
 <div tuiFade>{{ 9000 | tuiAmount: 'USD' | async }}</div>
 </tui-chip>
 <tui-chip appearance="accent">
-<tui-avatar src="/assets/images/avatar.jpg" />
+<tui-avatar src="assets/images/avatar.jpg" />
 <div tuiFade>AI</div>
 <div tuiFade>{{ 9870043000 | tuiAmount: 'USD' | async }}</div>
 </tui-chip>
@@ -24113,7 +24113,7 @@ const DATA: Record<string, readonly Result[]> = {
             title: 'Taiga UI',
             subtitle: 'Super awesome library',
             href: 'https://taiga-ui.dev',
-            icon: '/assets/images/taiga.svg',
+            icon: 'assets/images/taiga.svg',
         },
         {
             title: 'Maskito',
@@ -28841,7 +28841,7 @@ export default class Example {}
 **Template:**
 ```html
 <div tuiCell>
-<tui-avatar src="/assets/images/avatar.jpg" tuiAccessories />
+<tui-avatar src="assets/images/avatar.jpg" tuiAccessories />
 <div tuiTitle> Alexander I. <div tuiSubtitle>USD</div>
 <span tuiMessage>Don't deny yourself anything</span>
 </div>
@@ -31166,7 +31166,7 @@ export default class Example {
 </ng-template>
 <ng-template #errorContent>
 <tui-block-status>
-<img alt="not found" src="./assets/images/not-found.svg" tuiSlot="top" class="image" />
+<img alt="not found" src="assets/images/not-found.svg" tuiSlot="top" class="image" />
 <h4>Something went wrong</h4>
 <span>Try again later</span>
 <button appearance="secondary" size="s" tuiButton type="button" (click)="load()" > Retry </button>
@@ -38059,7 +38059,7 @@ export default class Example {}
 ```html
 <div tuiSurface class="surface" >
 <video autoplay loop playsinline tuiSurfaceLayer [muted]="true" >
-<source src="/assets/media/bbb.mp4" type="video/mp4" />
+<source src="assets/media/bbb.mp4" type="video/mp4" />
 </video>
 <p>
 <b>Big Buck Bunny</b>
@@ -38152,12 +38152,12 @@ export default class Example {}
 
 **Template:**
 ```html
-<button tuiSurface type="button" class="card" [style.background-image]="'url(/assets/images/tickets.svg)'" [style.color]="'#d45d8c'" >
+<button tuiSurface type="button" class="card" [style.background-image]="'url(assets/images/tickets.svg)'" [style.color]="'#d45d8c'" >
 <h3 class="heading">Tickets</h3>
 <div class="content">Concerts, theater, sports and movies</div>
 <tui-badge appearance="primary" size="s" class="badge" > 20% off </tui-badge>
 </button>
-<button tuiSurface type="button" class="card" [style.background-image]="'url(/assets/images/gas.svg)'" [style.color]="'#7caeff'" >
+<button tuiSurface type="button" class="card" [style.background-image]="'url(assets/images/gas.svg)'" [style.color]="'#7caeff'" >
 <h3 class="heading">Gas</h3>
 <tui-badge appearance="primary" size="s" class="badge" > +2000% </tui-badge>
 </button>
@@ -38173,7 +38173,7 @@ export default class Example {}
 </footer>
 </div>
 <div tuiSurface tuiTheme="dark" class="blur" >
-<tui-avatar src="/assets/images/avatar.jpg" />
+<tui-avatar src="assets/images/avatar.jpg" />
 <label tuiLabel="Taiga UI">Alex Inkin</label>
 <button appearance="glass" iconStart="@tui.mail" size="m" tuiIconButton type="button" class="button" > Message </button>
 </div>
@@ -38183,7 +38183,7 @@ export default class Example {}
 <tui-scrollbar class="scrollbar" [hidden]="true" >
 <div class="wrapper">
 <div *ngFor="let review of reviews" tuiSurface="neutral" class="review" > {{ review.body }} <footer class="footer">
-<tui-avatar size="m" src="/assets/images/avatar.jpg" />
+<tui-avatar size="m" src="assets/images/avatar.jpg" />
 <label tuiTitle> {{ review.name }} <span tuiSubtitle>{{ review.time }}</span>
 </label>
 </footer>
@@ -38420,7 +38420,7 @@ export default class Example {}
 ```html
 <tui-swipe-actions [style.--tui-actions-padding.rem]="0.5">
 <div tuiSurface class="blur" >
-<tui-avatar src="/assets/images/avatar.jpg" />
+<tui-avatar src="assets/images/avatar.jpg" />
 <h3 tuiTitle="m">Alex Inkin</h3>
 <button appearance="glass" iconStart="@tui.mail" size="m" tuiIconButton type="button" class="button" > Message </button>
 </div>
@@ -49883,8 +49883,8 @@ export class Example {}
 **Template:**
 ```html
 <video controls tuiMedia width="320" class="video" [(currentTime)]="currentTime" [(paused)]="paused" [(volume)]="volume" >
-<source *tuiHighDpi src="/assets/media/bbb_dpi.ogv" type="video/ogg" />
-<source src="/assets/media/bbb.mp4" type="video/mp4" />
+<source *tuiHighDpi src="assets/media/bbb_dpi.ogv" type="video/ogg" />
+<source src="assets/media/bbb.mp4" type="video/mp4" />
 </video>
 <p>currentTime: {{ currentTime }}</p>
 <p>volume: {{ volume }}</p>
@@ -49918,7 +49918,7 @@ export default class Example {
 ```html
 <div class="player">
 <video #video tuiMedia width="320" class="video" [(currentTime)]="currentTime" [(paused)]="paused" (click)="toggleState()" >
-<source src="/assets/media/bbb.mp4" type="video/mp4" />
+<source src="assets/media/bbb.mp4" type="video/mp4" />
 </video>
 <div class="controls">
 <button appearance="glass" size="s" title="Play/Pause" tuiIconButton tuiTheme="dark" type="button" [iconStart]="icon" [style.border-radius.%]="100" (click)="toggleState()" ></button>
@@ -51826,7 +51826,7 @@ export default class Example {}
 <a href="https://github.com/taiga-family/taiga-ui" tuiLink tuiTitle [style.font-size.rem]="1" [style.line-height.rem]="1.25" > Taiga UI — GitHub <div tuiSubtitle [style.font]="'var(--tui-font-text-s)'" > Drop us a star! </div>
 </a>
 <label class="flex">
-<tui-avatar size="s" src="/assets/images/avatar.jpg" />
+<tui-avatar size="s" src="assets/images/avatar.jpg" />
 <div tuiTitle="s">
 <strong>Alex Inkin</strong>
 <div tuiSubtitle>Available</div>
