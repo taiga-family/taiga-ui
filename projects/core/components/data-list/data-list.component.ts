@@ -1,34 +1,27 @@
 import {
     type AfterContentChecked,
-    type AfterContentInit,
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
-    ContentChildren,
+    computed,
+    contentChildren,
     DestroyRef,
     forwardRef,
     inject,
-    Input,
+    input,
     isSignal,
     NgZone,
-    type QueryList,
     signal,
     ViewEncapsulation,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {
-    tuiQueryListChanges,
-    tuiTakeUntilDestroyed,
-    tuiZonefree,
-} from '@taiga-ui/cdk/observables';
+import {tuiTakeUntilDestroyed, tuiZonefree} from '@taiga-ui/cdk/observables';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiIsFocusedIn, tuiMoveFocus} from '@taiga-ui/cdk/utils/focus';
 import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_NOTHING_FOUND_MESSAGE} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
-import {combineLatest, map, ReplaySubject, startWith, switchMap, timer} from 'rxjs';
+import {timer} from 'rxjs';
 
 import {
     TUI_DATA_LIST_HOST,
@@ -71,7 +64,7 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     ],
     host: {
         role: 'listbox',
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
         '(focusin)': 'onFocusIn($event.relatedTarget, $event.currentTarget)',
         '(mousedown.prevent)': '(0)',
         '(wheel.zoneless.passive)': 'handleFocusLossIfNecessary()',
@@ -83,50 +76,38 @@ export function tuiInjectDataListSize(): TuiSizeL | TuiSizeS {
     },
 })
 export class TuiDataListComponent<T>
-    implements TuiDataListAccessor<T>, AfterContentChecked, AfterContentInit
+    implements TuiDataListAccessor<T>, AfterContentChecked
 {
     // TODO(v5): delete
-    @ContentChildren(forwardRef(() => TuiOption), {descendants: true})
-    private readonly legacyOptionsQuery: QueryList<TuiOption<T>> = EMPTY_QUERY;
+    private readonly legacyOptionsQuery = contentChildren<TuiOption<T>>(
+        forwardRef(() => TuiOption),
+        {descendants: true},
+    );
 
-    @ContentChildren(forwardRef(() => TuiOptionWithValue), {descendants: true})
-    private readonly optionsQuery: QueryList<TuiOptionWithValue<T>> = EMPTY_QUERY;
+    private readonly optionsQuery = contentChildren<TuiOptionWithValue<T>>(
+        forwardRef(() => TuiOptionWithValue),
+        {descendants: true},
+    );
 
     private origin?: HTMLElement;
     private readonly ngZone = inject(NgZone);
     private readonly destroyRef = inject(DestroyRef);
     private readonly el = tuiInjectElement();
     private readonly cdr = inject(ChangeDetectorRef);
-    private readonly contentReady$ = new ReplaySubject<boolean>(1);
 
     protected readonly fallback = inject(TUI_NOTHING_FOUND_MESSAGE);
     protected readonly empty = signal(false);
 
-    @Input()
-    public emptyContent: PolymorpheusContent;
+    public readonly emptyContent = input<PolymorpheusContent>();
 
-    @Input()
-    public size = tuiInjectDataListSize();
+    public readonly size = input(tuiInjectDataListSize());
 
-    // TODO(v5): use signal `contentChildren`
-    public readonly options = toSignal<readonly T[]>(
-        this.contentReady$.pipe(
-            switchMap(() =>
-                combineLatest([
-                    tuiQueryListChanges(this.legacyOptionsQuery),
-                    tuiQueryListChanges(this.optionsQuery),
-                ]),
-            ),
-            map(([legacyOptions, options]) =>
-                [
-                    ...legacyOptions.map(({value}) => value),
-                    ...options.map(({value}) => value()),
-                ].filter(tuiIsPresent),
-            ),
-            startWith([]),
-        ),
-        {requireSync: true},
-    );
+    public readonly options = computed(() => {
+        return [
+            ...this.legacyOptionsQuery().map(({value}) => value),
+            ...this.optionsQuery().map(({value}) => value()),
+        ].filter(tuiIsPresent);
+    });
 
     public onKeyDownArrow(current: HTMLElement, step: number): void {
         const {elements} = this;
@@ -138,10 +119,6 @@ export class TuiDataListComponent<T>
         if (tuiIsFocusedIn(element)) {
             this.origin?.focus({preventScroll: true});
         }
-    }
-
-    public ngAfterContentInit(): void {
-        this.contentReady$.next(true);
     }
 
     // TODO: Refactor to :has after Safari support bumped to 15
@@ -157,10 +134,13 @@ export class TuiDataListComponent<T>
     // TODO(v5): delete
     public getOptions(includeDisabled = false): readonly T[] {
         return [
-            ...this.legacyOptionsQuery, // TODO(v5): delete
-            ...this.optionsQuery,
+            ...this.legacyOptionsQuery(), // TODO(v5): delete
+            ...this.optionsQuery(),
         ]
-            .filter(({disabled}) => includeDisabled || !disabled)
+            .filter(
+                ({disabled}) =>
+                    includeDisabled || !(isSignal(disabled) ? disabled() : disabled),
+            )
             .map(({value}) => (isSignal(value) ? value() : value))
             .filter(tuiIsPresent);
     }
