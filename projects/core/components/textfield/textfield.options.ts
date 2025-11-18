@@ -9,7 +9,7 @@ import {
     signal,
     SkipSelf,
 } from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
 const DEFAULT = {appearance: 'textfield', size: 'l', cleaner: true} as const;

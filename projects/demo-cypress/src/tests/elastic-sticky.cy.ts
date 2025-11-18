@@ -1,10 +1,11 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
 import {TuiElasticSticky} from '@taiga-ui/addon-mobile';
+import {TuiScrollRef} from '@taiga-ui/core';
 import {createOutputSpy} from 'cypress/angular';
 
 describe('ElasticSticky', () => {
     @Component({
-        imports: [TuiElasticSticky],
+        imports: [TuiElasticSticky, TuiScrollRef],
         template: `
             <div
                 id="scroll"

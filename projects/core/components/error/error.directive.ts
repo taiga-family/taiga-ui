@@ -17,11 +17,8 @@ import {
     type Validator,
 } from '@angular/forms';
 import {TuiValidationError} from '@taiga-ui/cdk/classes';
-import {
-    tuiDirectiveBinding,
-    tuiIsString,
-    tuiProvide,
-} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding, tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TUI_VALIDATION_ERRORS} from '@taiga-ui/core/tokens';
 import {
     PolymorpheusComponent,

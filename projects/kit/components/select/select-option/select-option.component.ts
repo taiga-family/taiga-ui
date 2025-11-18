@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
-import {tuiDirectiveBinding, tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     TuiDataListComponent,
     TuiOptionWithValue,

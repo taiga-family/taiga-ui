@@ -1,6 +1,6 @@
+import {InjectionToken} from '@angular/core';
 import {type TuiNumberHandler, type TuiStringHandler} from '@taiga-ui/cdk/types';
 import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
-import {tuiCreateToken} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiPositionOptions} from '@taiga-ui/core/directives/alert';
 import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
@@ -39,4 +39,7 @@ export const TUI_NOTIFICATION_DEFAULT_OPTIONS: TuiNotificationOptions = {
 export const [TUI_NOTIFICATION_OPTIONS, tuiNotificationOptionsProvider] =
     tuiCreateOptions(TUI_NOTIFICATION_DEFAULT_OPTIONS);
 
-export const TUI_NOTIFICATION_CONCURRENCY = tuiCreateToken<number>(5);
+export const TUI_NOTIFICATION_CONCURRENCY = new InjectionToken(
+    ngDevMode ? 'TUI_NOTIFICATION_CONCURRENCY' : '',
+    {factory: () => 5},
+);

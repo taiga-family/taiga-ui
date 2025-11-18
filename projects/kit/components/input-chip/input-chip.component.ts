@@ -11,7 +11,8 @@ import {
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiDirectiveBinding, tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
+import {tuiIsString} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {
     TUI_TEXTFIELD_OPTIONS,

@@ -1,25 +1,9 @@
 import {DOCUMENT} from '@angular/common';
-import {
-    Directive,
-    ElementRef,
-    inject,
-    Injectable,
-    NgZone,
-    type OnDestroy,
-} from '@angular/core';
-import {NgControl} from '@angular/forms';
+import {Directive, ElementRef, inject, Injectable, type OnDestroy} from '@angular/core';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {TUI_ACTIVE_ELEMENT} from '@taiga-ui/cdk/tokens';
 import {tuiArrayRemove, tuiPure} from '@taiga-ui/cdk/utils';
-import {
-    distinctUntilChanged,
-    map,
-    type Observable,
-    share,
-    skip,
-    startWith,
-    tap,
-} from 'rxjs';
+import {distinctUntilChanged, map, type Observable, share, skip, startWith} from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 @Directive({
@@ -30,10 +14,7 @@ import {
     exportAs: 'tuiActiveZone',
 })
 export class TuiActiveZone implements OnDestroy {
-    // TODO: Should we remove in v5? It's no longer used in Taiga UI
-    private readonly control: any = inject(NgControl, {self: true, optional: true});
     private readonly active$ = inject<Observable<Element | null>>(TUI_ACTIVE_ELEMENT);
-    private readonly zone = inject(NgZone);
     private tuiActiveZoneParent: TuiActiveZone | null = null;
     private readonly parent = inject(TuiActiveZone, {skipSelf: true, optional: true});
     private readonly el: HTMLElement =
@@ -45,12 +26,7 @@ export class TuiActiveZone implements OnDestroy {
         startWith(false),
         distinctUntilChanged(),
         skip(1),
-        tap((active) => {
-            if (!active && typeof this.control?.valueAccessor.onTouched === 'function') {
-                this.control.valueAccessor.onTouched();
-            }
-        }),
-        tuiZoneOptimized(this.zone),
+        tuiZoneOptimized(),
         share(),
     );
 

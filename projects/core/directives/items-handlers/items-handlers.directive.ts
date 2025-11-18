@@ -4,7 +4,7 @@ import {
     type TuiIdentityMatcher,
     type TuiStringHandler,
 } from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {TUI_ITEMS_HANDLERS, type TuiItemsHandlers} from './items-handlers.tokens';
 

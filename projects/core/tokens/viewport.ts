@@ -1,6 +1,6 @@
 import {inject, InjectionToken, type Provider, type Type} from '@angular/core';
 import {WA_WINDOW} from '@ng-web-apis/common';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiRectAccessor} from '@taiga-ui/core/classes';
 
 /**

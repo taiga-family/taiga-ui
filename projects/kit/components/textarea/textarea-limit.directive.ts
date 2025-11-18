@@ -16,7 +16,7 @@ import {
     Validators,
 } from '@angular/forms';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {
     TUI_TEXTFIELD_OPTIONS,
     TuiTextfieldComponent,

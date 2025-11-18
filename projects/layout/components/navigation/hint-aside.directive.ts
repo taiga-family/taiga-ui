@@ -1,6 +1,6 @@
 import {computed, Directive, inject} from '@angular/core';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiDropdownDirective} from '@taiga-ui/core/directives/dropdown';
 import {TuiHintDirective, tuiHintOptionsProvider} from '@taiga-ui/core/directives/hint';
 

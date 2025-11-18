@@ -7,7 +7,7 @@ import {
     type Type,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {distinctUntilChanged, merge, Observable} from 'rxjs';
 
 import {TuiVehicle} from './vehicle';

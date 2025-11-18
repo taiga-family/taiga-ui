@@ -2,7 +2,6 @@ import {inject, InjectionToken} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {WA_NAVIGATOR, WA_USER_AGENT, WA_WINDOW} from '@ng-web-apis/common';
 import {isIos} from '@ng-web-apis/platform';
-import {TUI_FALSE_HANDLER} from '@taiga-ui/cdk/constants';
 import {fromEvent, map} from 'rxjs';
 
 /**
@@ -52,33 +51,8 @@ export const TUI_IS_TOUCH = new InjectionToken(ngDevMode ? 'TUI_IS_TOUCH' : '', 
 });
 
 /**
- * @deprecated: use only {@link TUI_IS_E2E}
- * Detect if app is running under Cypress
- * {@link https://docs.cypress.io/faq/questions/using-cypress-faq#Is-there-any-way-to-detect-if-my-app-is-running-under-Cypress Cypress docs}
- * TODO: remove in v5
- */
-export const TUI_IS_CYPRESS = new InjectionToken(ngDevMode ? 'TUI_IS_CYPRESS' : '', {
-    factory: () => !!inject<any>(WA_WINDOW).Cypress,
-});
-
-/**
- * @deprecated: use only {@link TUI_IS_E2E}
- * Manually provide `true` when running tests in Playwright
- * TODO: remove in v5
- */
-export const TUI_IS_PLAYWRIGHT = new InjectionToken<boolean>(
-    ngDevMode ? 'TUI_IS_PLAYWRIGHT' : '',
-    {
-        factory: TUI_FALSE_HANDLER,
-    },
-);
-
-/**
  * Detect if app is running under any of test frameworks
  */
 export const TUI_IS_E2E = new InjectionToken(ngDevMode ? 'TUI_IS_E2E' : '', {
-    factory: () =>
-        inject(TUI_IS_CYPRESS) ||
-        inject(TUI_IS_PLAYWRIGHT) ||
-        inject(WA_NAVIGATOR).webdriver,
+    factory: () => !!inject<any>(WA_WINDOW).Cypress || inject(WA_NAVIGATOR).webdriver,
 });

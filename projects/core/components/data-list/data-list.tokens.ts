@@ -1,6 +1,6 @@
 import {InjectionToken, type Provider, type Signal, type Type} from '@angular/core';
 import {type TuiIdentityMatcher, type TuiStringHandler} from '@taiga-ui/cdk/types';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {tuiAsAuxiliary} from '@taiga-ui/core/tokens';
 import {type TuiSizeL, type TuiSizeS} from '@taiga-ui/core/types';
 
