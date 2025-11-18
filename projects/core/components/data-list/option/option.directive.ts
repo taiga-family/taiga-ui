@@ -99,9 +99,11 @@ export class TuiOptionWithValue<T = unknown> {
     });
 
     public readonly disabled = input(false);
-    public readonly value = input.required<T>();
+    public readonly value = input<T>();
 
     protected onClick(value = this.value()): void {
-        this.host?.handleOption?.(value);
+        if (value !== undefined) {
+            this.host?.handleOption?.(value);
+        }
     }
 }

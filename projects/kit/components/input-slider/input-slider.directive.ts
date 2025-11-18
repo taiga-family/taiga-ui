@@ -28,6 +28,7 @@ import {filter, fromEvent, switchMap, tap} from 'rxjs';
         'tui-textfield [tuiInputSlider] ~ .t-content .t-clear {display: none !important}',
         // TODO: tui-textfield:has([tuiInputSlider]) [tuiSlider]:disabled
         'tui-textfield [tuiInputSlider] ~ [tuiSlider]:disabled {display: none}',
+        'tui-textfield [tuiSlider] { --tui-slider-track-color: transparent !important; }',
     ],
     encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -90,14 +91,13 @@ export class TuiInputSliderDirective {
         slider.el.disabled = !this.inputNumber.interactive();
     });
 
-    protected readonly sliderInitEffect = effect((onCleanup) => {
+    protected readonly sliderInit = effect((onCleanup) => {
         const slider = this.slider();
 
         if (!slider) {
             return;
         }
 
-        slider.el.style.setProperty('--tui-slider-track-color', 'transparent');
         slider.el.setAttribute('tabindex', '-1');
 
         if (slider.keySteps) {

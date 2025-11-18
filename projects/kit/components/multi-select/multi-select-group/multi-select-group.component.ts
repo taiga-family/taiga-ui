@@ -7,6 +7,7 @@ import {
     input,
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiOptionWithValue} from '@taiga-ui/core/components/data-list';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
@@ -39,14 +40,16 @@ export class TuiMultiSelectGroupComponent<T> {
     protected readonly value = tuiInjectValue<readonly T[] | null>();
     protected readonly checked = computed(() =>
         this.values().every((item) =>
-            this.value()?.some((value) => this.handlers.identityMatcher()(item, value)),
+            this.value()?.some(
+                (v) => tuiIsPresent(item) && this.handlers.identityMatcher()(item, v),
+            ),
         ),
     );
 
     public readonly label = input('');
 
     protected toggle(): void {
-        const values = this.values();
+        const values = this.values().filter(tuiIsPresent);
         const matcher = this.handlers.identityMatcher();
         const value = this.value() || [];
         const others = value.filter((a) => values.every((b) => !matcher(a, b)));
