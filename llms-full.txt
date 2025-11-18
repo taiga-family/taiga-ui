@@ -13753,8 +13753,8 @@ export default class Example {
 </div>
 </div> } @if (floating) { <footer tuiFloatingContainer @tuiSlideInTop >
 <tui-elastic-container>
-<button tuiButton type="button" > Main action </button> @if (!additional) { <span class="clamp" [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation" >
-<tui-icon icon="@tui.settings" [style.font-size.rem]="1" /> Legal text, max 3 lines </span> } @if (additional) { <button appearance="flat" tuiButton type="button" [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation" > Secondary action </button> } </tui-elastic-container>
+<button tuiButton type="button" > Main action </button> @if (!additional) { <span class="clamp" [@tuiCrossFade]="{value: '', params: {bottom: '1rem'}}" >
+<tui-icon icon="@tui.settings" [style.font-size.rem]="1" /> Legal text, max 3 lines </span> } @if (additional) { <button appearance="flat" tuiButton type="button" [@tuiCrossFade]="{value: '', params: {bottom: '1rem'}}" > Secondary action </button> } </tui-elastic-container>
 </footer> } </div>
 ```
 **TypeScript:**
@@ -13763,7 +13763,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAnimationPipe, TuiRepeatTimesPipe} from '@taiga-ui/cdk';
+import {TuiRepeatTimesPipe} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiCell,
@@ -13783,7 +13783,6 @@ import {
 @Component({
     imports: [
         FormsModule,
-        TuiAnimationPipe,
         TuiAvatar,
         TuiButton,
         TuiCell,
@@ -13992,7 +13991,7 @@ export default class Example {
 <div appearance="primary" tuiAvatar="@tui.star" ></div>
 <div tuiTitle> Title <div tuiSubtitle>Description</div>
 </div>
-</div> @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="secondAction ? '' : 'transparent'" > @if (!action) { <button tuiButton type="button" [@tuiCrossFade]="{duration: 0.25} | tuiAnimation" > Main action </button> } @if (action) { <button appearance="primary-grayscale" tuiButton type="button" [@tuiCrossFade]="{duration: 0.25} | tuiAnimation" > Add to Apple Wallet </button> } @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
+</div> @if (floating) { <footer @tuiSlideInTop [tuiFloatingContainer]="secondAction ? '' : 'transparent'" > @if (!action) { <button tuiButton type="button" [@tuiCrossFade]="{value: '', params: {duration: 0.25}}" > Main action </button> } @if (action) { <button appearance="primary-grayscale" tuiButton type="button" [@tuiCrossFade]="{value: '', params: {duration: 0.25}}" > Add to Apple Wallet </button> } @if (secondAction) { <button appearance="flat" tuiButton type="button" @tuiHeightCollapse > Secondary action </button> } </footer> } </div>
 ```
 **TypeScript:**
 ```ts
@@ -14000,7 +13999,7 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAnimationPipe, TuiRepeatTimes} from '@taiga-ui/cdk';
+import {TuiRepeatTimes} from '@taiga-ui/cdk';
 import {
     TuiButton,
     TuiCell,
@@ -14015,7 +14014,6 @@ import {TuiAvatar, TuiFloatingContainer, TuiSwitch} from '@taiga-ui/kit';
 @Component({
     imports: [
         FormsModule,
-        TuiAnimationPipe,
         TuiAvatar,
         TuiButton,
         TuiCell,
