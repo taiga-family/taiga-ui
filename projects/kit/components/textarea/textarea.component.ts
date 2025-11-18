@@ -10,8 +10,8 @@ import {
     ViewContainerRef,
 } from '@angular/core';
 import {TUI_IS_MOBILE} from '@taiga-ui/cdk/tokens';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiScrollControls} from '@taiga-ui/core/components/scrollbar';
 import {
     TuiTextfieldComponent,

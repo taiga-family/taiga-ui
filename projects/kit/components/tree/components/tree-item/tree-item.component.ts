@@ -10,8 +10,8 @@ import {
 } from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
 import {TuiExpand} from '@taiga-ui/core/components/expand';
 import {type PolymorpheusContent, PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {distinctUntilChanged, map, startWith, Subject} from 'rxjs';
