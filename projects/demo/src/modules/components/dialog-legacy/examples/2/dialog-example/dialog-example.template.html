@@ -3,13 +3,14 @@
     <span>{{ data | tuiAmount: 'RUB' | async }}</span>
 </p>
 
-<tui-input
-    tuiAutoFocus
-    tuiTextfieldSize="m"
-    [(ngModel)]="name"
->
-    Type a name
-</tui-input>
+<tui-textfield tuiTextfieldSize="m">
+    <input
+        tuiAutoFocus
+        tuiTextfield
+        [(ngModel)]="name"
+    />
+    <label tuiLabel>Type a name</label>
+</tui-textfield>
 
 <tui-textfield
     tuiChevron

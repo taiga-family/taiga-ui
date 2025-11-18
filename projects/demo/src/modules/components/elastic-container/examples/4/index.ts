@@ -3,9 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiArrayRemove} from '@taiga-ui/cdk';
-import {TuiButton, TuiExpand} from '@taiga-ui/core';
+import {TuiButton, TuiExpand, TuiTextfield} from '@taiga-ui/core';
 import {TuiChevron, TuiElasticContainer} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -14,7 +13,7 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiChevron,
         TuiElasticContainer,
         TuiExpand,
-        TuiInputModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     styleUrl: './index.less',

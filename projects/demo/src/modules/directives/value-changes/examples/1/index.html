@@ -1,8 +1,11 @@
 <form [formGroup]="form">
-    <tui-input
-        formControlName="control"
-        (tuiValueChanges)="onChanges($event)"
-    >
-        Value changes on blur
-    </tui-input>
+    <tui-textfield>
+        <input
+            formControlName="control"
+            tuiTextfield
+            (tuiValueChanges)="onChanges($event)"
+        />
+
+        <label tuiLabel>Value changes on blur</label>
+    </tui-textfield>
 </form>

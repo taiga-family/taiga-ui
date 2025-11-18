@@ -3,8 +3,8 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiAutoFocus} from '@taiga-ui/cdk';
-import {TuiButton, TuiHint} from '@taiga-ui/core';
-import {TuiDialog, TuiInputModule} from '@taiga-ui/legacy';
+import {TuiButton, TuiHint, TuiTextfield} from '@taiga-ui/core';
+import {TuiDialog} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -13,7 +13,7 @@ import {TuiDialog, TuiInputModule} from '@taiga-ui/legacy';
         TuiButton,
         TuiDialog,
         TuiHint,
-        TuiInputModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

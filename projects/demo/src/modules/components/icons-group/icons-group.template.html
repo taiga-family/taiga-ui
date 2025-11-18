@@ -1,16 +1,19 @@
 <h2 class="title">
     <ng-content />
 </h2>
-<tui-input
-    tuiAutoFocus
-    tuiHintContent="You can copy icon's name with a click"
+
+<tui-textfield
+    tuiHint="You can copy icon's name with a click"
     tuiTextfieldSize="m"
-    [formControl]="control"
     [tuiTextfieldCleaner]="true"
-    [tuiTextfieldLabelOutside]="true"
 >
-    Input icon name to highlight
-</tui-input>
+    <input
+        placeholder="Input icon name to highlight"
+        tuiAutoFocus
+        tuiTextfield
+        [formControl]="control"
+    />
+</tui-textfield>
 
 @for (key of keys(); track key) {
     @if (icons()[key] || [] | tuiFilter: matcher : (search$ | async) ?? ''; as filtered) {

@@ -1,9 +1,20 @@
 <form [formGroup]="form">
-    <tui-input formControlName="user">
-        User
-        <tui-data-list-wrapper
-            *tuiDataList
-            [items]="items | tuiFilterByInput"
+    <tui-textfield>
+        <input
+            #input
+            formControlName="user"
+            tuiTextfield
         />
-    </tui-input>
+
+        <label tuiLabel>User</label>
+
+        @if (items | tuiFilterByInput; as filtered) {
+            @if (input.value) {
+                <tui-data-list-wrapper
+                    *tuiDropdown
+                    [items]="filtered"
+                />
+            }
+        }
+    </tui-textfield>
 </form>

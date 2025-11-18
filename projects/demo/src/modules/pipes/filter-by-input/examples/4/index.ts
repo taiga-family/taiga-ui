@@ -3,8 +3,8 @@ import {Component, inject} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 import {delay, of, startWith} from 'rxjs';
 
 @Component({
@@ -14,7 +14,7 @@ import {delay, of, startWith} from 'rxjs';
         ReactiveFormsModule,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiInputModule,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

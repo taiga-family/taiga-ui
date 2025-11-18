@@ -14,7 +14,6 @@ import {
     TuiTextfield,
 } from '@taiga-ui/core';
 import {TuiDataListDropdownManager, TuiInputDateRange} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -28,7 +27,6 @@ import {TuiInputModule} from '@taiga-ui/legacy';
         TuiDropdown,
         TuiGroup,
         TuiInputDateRange,
-        TuiInputModule,
         TuiTextfield,
     ],
     templateUrl: './index.html',

@@ -68,16 +68,14 @@
     </tui-data-list>
 
     <ng-template #money>
-        <tui-input
-            automation-id="tui-data-money-input"
-            [(ngModel)]="moneyValue"
-        >
-            RUB
+        <tui-textfield automation-id="tui-data-money-input">
             <input
                 name="moneyValue"
-                tuiTextfieldLegacy
+                tuiTextfield
+                [(ngModel)]="moneyValue"
             />
-        </tui-input>
+            <label tuiLabel>RUB</label>
+        </tui-textfield>
 
         <tui-data-list tuiDataListDropdownManager>
             <button
@@ -105,16 +103,14 @@
     </ng-template>
 
     <ng-template #input>
-        <tui-input
-            automation-id="tui-data-list-email-field"
-            [(ngModel)]="emailValue"
-        >
-            Email
+        <tui-textfield automation-id="tui-data-list-email-field">
             <input
                 name="emailValue"
-                tuiTextfieldLegacy
+                tuiTextfield
+                [(ngModel)]="emailValue"
             />
-        </tui-input>
+            <label tuiLabel>Email</label>
+        </tui-textfield>
     </ng-template>
 
     <ng-template #currency>
@@ -123,8 +119,21 @@
                 tuiGroup
                 class="group"
             >
-                <tui-input [(ngModel)]="dollar">1 Rub = (X) Dollars</tui-input>
-                <tui-input [(ngModel)]="euro">1 Rub = (Y) Euros</tui-input>
+                <tui-textfield>
+                    <input
+                        tuiTextfield
+                        [(ngModel)]="dollar"
+                    />
+                    <label tuiLabel>1 Rub = (X) Dollars</label>
+                </tui-textfield>
+
+                <tui-textfield>
+                    <input
+                        tuiTextfield
+                        [(ngModel)]="euro"
+                    />
+                    <label tuiLabel>1 Rub = (Y) Euros</label>
+                </tui-textfield>
             </div>
 
             <ul class="exchange tui-list tui-list_large">

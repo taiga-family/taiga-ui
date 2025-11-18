@@ -4,15 +4,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTable} from '@taiga-ui/addon-table';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TuiInputChip} from '@taiga-ui/kit';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiInputChip, TuiInputNumber} from '@taiga-ui/kit';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
         FormsModule,
         ReactiveFormsModule,
         TuiInputChip,
-        TuiInputModule,
+        TuiInputNumber,
         TuiTable,
         TuiTextfield,
         TuiTextfieldControllerModule,

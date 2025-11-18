@@ -2,11 +2,10 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {type TuiDecimalSymbol, tuiFormatNumber} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {type TuiDecimalSymbol, tuiFormatNumber, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiInputModule],
+    imports: [ReactiveFormsModule, TuiTextfield],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

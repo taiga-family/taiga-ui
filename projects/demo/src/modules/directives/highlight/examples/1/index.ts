@@ -2,11 +2,12 @@ import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
+import {TuiTextfield} from '@taiga-ui/core';
 import {TuiHighlight} from '@taiga-ui/kit';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
-    imports: [FormsModule, TuiHighlight, TuiInputModule, TuiTextfieldControllerModule],
+    imports: [FormsModule, TuiHighlight, TuiTextfield, TuiTextfieldControllerModule],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

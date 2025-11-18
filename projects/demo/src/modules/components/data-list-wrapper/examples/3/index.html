@@ -1,9 +1,15 @@
-<tui-input [formControl]="control">
-    Menu
-
-    <tui-data-list-wrapper
-        *tuiDataList
-        [items]="items"
-        [labels]="labels"
+<tui-textfield>
+    <input
+        #input
+        tuiTextfield
+        [formControl]="control"
     />
-</tui-input>
+    <label tuiLabel>Menu</label>
+    @if (input.value) {
+        <tui-data-list-wrapper
+            *tuiDropdown
+            [items]="items"
+            [labels]="labels"
+        />
+    }
+</tui-textfield>

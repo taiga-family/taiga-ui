@@ -12,13 +12,22 @@
 </p>
 <p>
     @if (custom | tuiEmails: emails; as emails) {
-        <tui-input [(ngModel)]="custom">
-            Custom addresses
+        <tui-textfield>
+            <input
+                tuiTextfield
+                [(ngModel)]="custom"
+            />
+
+            <label tuiLabel>Custom addresses</label>
+
             @if (emails.length) {
-                <ng-template tuiDataList>
+                <ng-template
+                    tuiDataList
+                    tuiDropdown
+                >
                     <tui-data-list-wrapper [items]="emails" />
                 </ng-template>
             }
-        </tui-input>
+        </tui-textfield>
     }
 </p>

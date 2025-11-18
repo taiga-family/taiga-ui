@@ -2,29 +2,36 @@
 
 <form [formGroup]="parametersForm">
     <div class="parameters">
-        <tui-input
-            formControlName="value"
-            class="tui-space_top-2"
-        >
-            value
-        </tui-input>
-        <tui-input
-            formControlName="precision"
-            class="tui-space_top-2"
-        >
-            precision
-        </tui-input>
-        <tui-input
-            formControlName="decimalSeparator"
-            class="tui-space_top-2"
-        >
-            decimalSeparator
-        </tui-input>
-        <tui-input
-            formControlName="thousandSeparator"
-            class="tui-space_top-2"
-        >
-            thousandSeparator
-        </tui-input>
+        <tui-textfield class="tui-space_top-2">
+            <input
+                formControlName="value"
+                tuiTextfield
+            />
+            <label tuiLabel>value</label>
+        </tui-textfield>
+
+        <tui-textfield class="tui-space_top-2">
+            <input
+                formControlName="precision"
+                tuiTextfield
+            />
+            <label tuiLabel>precision</label>
+        </tui-textfield>
+
+        <tui-textfield class="tui-space_top-2">
+            <input
+                formControlName="decimalSeparator"
+                tuiTextfield
+            />
+            <label tuiLabel>decimalSeparator</label>
+        </tui-textfield>
+
+        <tui-textfield class="tui-space_top-2">
+            <input
+                formControlName="thousandSeparator"
+                tuiTextfield
+            />
+            <label tuiLabel>thousandSeparator</label>
+        </tui-textfield>
     </div>
 </form>

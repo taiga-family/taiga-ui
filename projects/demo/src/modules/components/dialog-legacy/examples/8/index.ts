@@ -3,13 +3,13 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiResponsiveDialogService} from '@taiga-ui/addon-mobile';
-import {TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiTextfield} from '@taiga-ui/core';
 import {TuiConfirmService} from '@taiga-ui/kit';
-import {TuiDialogService, TuiInputModule} from '@taiga-ui/legacy';
+import {TuiDialogService} from '@taiga-ui/legacy';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';
 
 @Component({
-    imports: [FormsModule, TuiButton, TuiInputModule],
+    imports: [FormsModule, TuiButton, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

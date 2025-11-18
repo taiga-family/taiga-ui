@@ -36,12 +36,14 @@
                     </tui-textfield>
                 </td>
                 <td tuiTd>
-                    <tui-input
-                        tuiTextfieldPrefix="$"
-                        [(ngModel)]="item.balance"
-                    >
-                        Value
-                    </tui-input>
+                    <tui-textfield>
+                        <input
+                            placeholder="Value"
+                            prefix="$"
+                            tuiInputNumber
+                            [(ngModel)]="item.balance"
+                        />
+                    </tui-textfield>
                 </td>
                 <td
                     tuiTd
