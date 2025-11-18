@@ -3,11 +3,14 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiTextfield} from '@taiga-ui/core';
-import {TUI_FLUID_TYPOGRAPHY_OPTIONS, TuiFluidTypography} from '@taiga-ui/kit';
-import {TuiInputRangeModule} from '@taiga-ui/legacy';
+import {
+    TUI_FLUID_TYPOGRAPHY_OPTIONS,
+    TuiFluidTypography,
+    TuiInputRange,
+} from '@taiga-ui/kit';
 
 @Component({
-    imports: [FormsModule, TuiFluidTypography, TuiInputRangeModule, TuiTextfield],
+    imports: [FormsModule, TuiFluidTypography, TuiInputRange, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

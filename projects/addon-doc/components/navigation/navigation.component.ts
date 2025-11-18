@@ -31,7 +31,6 @@ import {TuiTextfield, TuiTextfieldDirective} from '@taiga-ui/core/components/tex
 import {TUI_COMMON_ICONS} from '@taiga-ui/core/tokens';
 import {TuiAccordion} from '@taiga-ui/kit/components/accordion';
 import {TuiDrawer} from '@taiga-ui/kit/components/drawer';
-import {TuiInputModule} from '@taiga-ui/legacy/components/input';
 import {TuiTextfieldControllerModule} from '@taiga-ui/legacy/directives/textfield-controller';
 import {PolymorpheusOutlet} from '@taiga-ui/polymorpheus';
 import {combineLatest, filter, fromEvent, map, of, switchMap, take} from 'rxjs';
@@ -58,7 +57,6 @@ import {TuiDocScrollIntoViewLink} from './scroll-into-view.directive';
         TuiDocScrollIntoViewLink,
         TuiExpand,
         TuiIcon,
-        TuiInputModule,
         TuiLink,
         TuiScrollbar,
         TuiTextfield,

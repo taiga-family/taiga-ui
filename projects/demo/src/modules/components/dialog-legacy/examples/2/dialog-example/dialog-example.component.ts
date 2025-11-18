@@ -9,7 +9,6 @@ import {TuiChevron, TuiDataListWrapper, TuiSelect, TuiSlider} from '@taiga-ui/ki
 import {
     type TuiDialogContext,
     TuiDialogService,
-    TuiInputModule,
     TuiTextfieldControllerModule,
 } from '@taiga-ui/legacy';
 import {injectContext} from '@taiga-ui/polymorpheus';
@@ -23,7 +22,6 @@ import {injectContext} from '@taiga-ui/polymorpheus';
         TuiButton,
         TuiChevron,
         TuiDataListWrapper,
-        TuiInputModule,
         TuiSelect,
         TuiSlider,
         TuiTextfield,

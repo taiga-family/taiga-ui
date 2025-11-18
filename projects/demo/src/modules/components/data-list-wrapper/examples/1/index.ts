@@ -4,14 +4,15 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {type TuiBooleanHandler} from '@taiga-ui/cdk';
 import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiDropdown, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
     imports: [
         ReactiveFormsModule,
         TuiDataListWrapper,
+        TuiTextfield,
+        TuiDropdown,
         TuiFilterByInputPipe,
-        TuiInputModule,
     ],
     templateUrl: './index.html',
     encapsulation,

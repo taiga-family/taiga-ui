@@ -1,11 +1,20 @@
-<tui-input [formControl]="control">
-    Account
-
-    <tui-data-list-wrapper
-        *tuiDataList
-        emptyContent="No results found"
-        size="s"
-        [disabledItemHandler]="disabledItemHandler"
-        [items]="items | tuiFilterByInput"
+<tui-textfield>
+    <input
+        #input
+        tuiTextfield
+        [formControl]="control"
     />
-</tui-input>
+    <label tuiLabel>Account</label>
+
+    @if (items | tuiFilterByInput; as filtered) {
+        @if (input.value) {
+            <tui-data-list-wrapper
+                *tuiDropdown
+                emptyContent="No results found"
+                size="s"
+                [disabledItemHandler]="disabledItemHandler"
+                [items]="filtered"
+            />
+        }
+    }
+</tui-textfield>

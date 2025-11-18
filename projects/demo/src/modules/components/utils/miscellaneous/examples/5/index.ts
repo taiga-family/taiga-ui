@@ -3,11 +3,10 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {tuiMarkControlAsTouchedAndValidate} from '@taiga-ui/cdk';
-import {TuiError} from '@taiga-ui/core';
-import {TuiInputModule} from '@taiga-ui/legacy';
+import {TuiError, TuiTextfield} from '@taiga-ui/core';
 
 @Component({
-    imports: [ReactiveFormsModule, TuiError, TuiInputModule],
+    imports: [ReactiveFormsModule, TuiError, TuiTextfield],
     templateUrl: './index.html',
     encapsulation,
     changeDetection,

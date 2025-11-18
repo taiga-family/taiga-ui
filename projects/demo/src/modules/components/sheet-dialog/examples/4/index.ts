@@ -5,9 +5,9 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiSheetDialog} from '@taiga-ui/addon-mobile';
 import {TUI_DEFAULT_MATCHER, tuiControlValue} from '@taiga-ui/cdk';
-import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe} from '@taiga-ui/core';
+import {TuiAutoColorPipe, TuiButton, TuiInitialsPipe, TuiTextfield} from '@taiga-ui/core';
 import {TuiAvatar, TuiFloatingContainer} from '@taiga-ui/kit';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {map} from 'rxjs';
 
 const USERS = [
@@ -38,7 +38,7 @@ const USERS = [
         TuiButton,
         TuiFloatingContainer,
         TuiInitialsPipe,
-        TuiInputModule,
+        TuiTextfield,
         TuiSheetDialog,
         TuiTextfieldControllerModule,
     ],

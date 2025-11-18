@@ -1,4 +1,11 @@
-<tui-input [(ngModel)]="text">Type a text to start computing</tui-input>
+<tui-textfield>
+    <input
+        tuiTextfield
+        [(ngModel)]="text"
+    />
+    <label tuiLabel>Type a text to start computing</label>
+</tui-textfield>
+
 <div class="tui-space_top-2">Called times: {{ counter.count }}</div>
 @if (show) {
     <div class="tui-space_top-2">Result: {{ calculate(counter, text) | json }}</div>

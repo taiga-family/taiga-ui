@@ -7,17 +7,16 @@
         class="group"
     >
         <div>
-            <tui-input
-                formControlName="testValue"
-                tuiHintContent="Write a number"
-                [style.border-radius]="'inherit'"
-            >
-                House
+            <tui-textfield [style.border-radius]="'inherit'">
                 <input
+                    formControlName="testValue"
                     placeholder="House"
-                    tuiTextfieldLegacy
+                    tuiTextfield
                 />
-            </tui-input>
+                <label tuiLabel>House</label>
+                <tui-icon tuiTooltip="Write a number" />
+            </tui-textfield>
+
             <tui-error formControlName="testValue" />
         </div>
         <div>
@@ -47,17 +46,15 @@
             <tui-error formControlName="multiSelectControl" />
         </div>
         <div>
-            <tui-input
-                formControlName="testValue3"
-                tuiHintContent="Write an apartment number only"
-                [style.border-radius]="'inherit'"
-            >
-                Apartment
+            <tui-textfield [style.border-radius]="'inherit'">
                 <input
+                    formControlName="testValue3"
                     placeholder="Apartment number"
-                    tuiTextfieldLegacy
+                    tuiTextfield
                 />
-            </tui-input>
+                <label tuiLabel>Apartment</label>
+                <tui-icon tuiTooltip="Write an apartment number only" />
+            </tui-textfield>
             <tui-error formControlName="testValue3" />
         </div>
     </div>

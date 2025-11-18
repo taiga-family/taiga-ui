@@ -10,7 +10,7 @@ import {
     TuiMultiSelect,
     TuiTooltip,
 } from '@taiga-ui/kit';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 
 @Component({
     imports: [
@@ -22,7 +22,6 @@ import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
         TuiHint,
         TuiIcon,
         TuiInputChip,
-        TuiInputModule,
         TuiMultiSelect,
         TuiTextfield,
         TuiTextfieldControllerModule,

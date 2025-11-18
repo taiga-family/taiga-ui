@@ -8,11 +8,11 @@
 </tui-textfield>
 
 <tui-input-range
-    class="tui-space_top-4"
     [max]="30"
     [min]="1"
     [ngModel]="range()"
+    [style.top.rem]="0.5"
     (ngModelChange)="range.set($event)"
 >
-    Min/Max (converted to pixels)
+    <label tuiLabel>Min/Max (converted to pixels)</label>
 </tui-input-range>

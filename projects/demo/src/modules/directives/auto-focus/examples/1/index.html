@@ -7,10 +7,12 @@
     Show input
 </button>
 @if (showInput) {
-    <tui-input
-        tuiAutoFocus
-        [(ngModel)]="model"
-    >
-        Focusable tui-input
-    </tui-input>
+    <tui-textfield [tuiTextfieldCleaner]="false">
+        <input
+            tuiAutoFocus
+            tuiTextfield
+            [(ngModel)]="model"
+        />
+        <label tuiLabel>Focusable input</label>
+    </tui-textfield>
 }

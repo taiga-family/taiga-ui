@@ -16,11 +16,12 @@ import {changeDetection} from '@demo/emulate/change-detection';
 import {TUI_DEFAULT_MATCHER, TuiAutoFocus, TuiFilterPipe} from '@taiga-ui/cdk';
 import {TuiHint, TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
-import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
+import {TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {debounceTime, distinctUntilChanged, filter, map, type Observable} from 'rxjs';
 
 import {IconsGroupTemplate} from './icons-group.directive';
 
+// TODO: check if the component is needed
 @Component({
     selector: 'icons-group',
     imports: [
@@ -31,7 +32,6 @@ import {IconsGroupTemplate} from './icons-group.directive';
         TuiBadge,
         TuiFilterPipe,
         TuiHint,
-        TuiInputModule,
         TuiTextfield,
         TuiTextfieldControllerModule,
     ],

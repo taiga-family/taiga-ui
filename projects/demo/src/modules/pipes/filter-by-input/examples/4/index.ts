@@ -4,8 +4,8 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiDataListWrapper, TuiFilterByInputPipe} from '@taiga-ui/kit';
-import {TuiInputModule} from '@taiga-ui/legacy';
 import {delay, of, startWith} from 'rxjs';
+import {TuiTextfield} from '@taiga-ui/core';
 
 @Component({
     selector: 'example-4',
@@ -14,7 +14,8 @@ import {delay, of, startWith} from 'rxjs';
         ReactiveFormsModule,
         TuiDataListWrapper,
         TuiFilterByInputPipe,
-        TuiInputModule,
+        TuiTextfield,
+        TuiTextfield,
     ],
     templateUrl: './index.html',
     encapsulation,

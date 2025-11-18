@@ -18,12 +18,15 @@
         (ngSubmit)="observer.complete()"
     >
         <p>This abstracts away service and subscription</p>
-        <tui-input
-            formControlName="exampleControl"
-            tuiAutoFocus
-        >
-            Some value
-        </tui-input>
+        <tui-textfield>
+            <input
+                formControlName="exampleControl"
+                tuiAutoFocus
+                tuiTextfield
+            />
+            <label tuiLabel>Some value</label>
+        </tui-textfield>
+
         <p>
             <button
                 tuiButton
