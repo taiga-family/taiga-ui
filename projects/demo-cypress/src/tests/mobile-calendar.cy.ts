@@ -1,9 +1,8 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     input,
-    Output,
+    output,
     ViewChild,
 } from '@angular/core';
 import {TuiMobileCalendar} from '@taiga-ui/addon-mobile';
@@ -57,13 +56,9 @@ describe('Mobile calendar', () => {
 
         public readonly single = input(true);
 
-        @Output()
-        public readonly cancel = new EventEmitter<boolean>();
+        public readonly cancel = output<boolean>();
 
-        @Output()
-        public readonly confirm = new EventEmitter<
-            TuiDay | TuiDayRange | readonly TuiDay[]
-        >();
+        public readonly confirm = output<TuiDay | TuiDayRange | readonly TuiDay[]>();
     }
 
     it('the back button emits a cancel event', () => {

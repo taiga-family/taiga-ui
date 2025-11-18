@@ -1,11 +1,5 @@
 import {AsyncPipe} from '@angular/common';
-import {
-    ChangeDetectionStrategy,
-    Component,
-    EventEmitter,
-    inject,
-    Output,
-} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, output} from '@angular/core';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {type TuiStringHandler} from '@taiga-ui/cdk';
 import {TUI_ANIMATIONS_SPEED, TuiRoot, TuiTextfield} from '@taiga-ui/core';
@@ -58,11 +52,9 @@ export class TestComboBox {
 
     protected readonly control = new FormControl<Country | string | null>(null);
 
-    @Output()
-    public readonly valueChanges = new EventEmitter();
+    public readonly valueChanges = output();
 
-    @Output()
-    public readonly inputEvent = new EventEmitter<string>();
+    public readonly inputEvent = output<string>();
 
     constructor() {
         this.control.valueChanges.subscribe((x) => this.valueChanges.emit(x));
