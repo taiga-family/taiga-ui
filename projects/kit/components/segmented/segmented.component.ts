@@ -1,11 +1,10 @@
 import {
     ChangeDetectionStrategy,
     Component,
-    EventEmitter,
     inject,
-    Input,
+    input,
+    model,
     type OnChanges,
-    Output,
     ViewEncapsulation,
 } from '@angular/core';
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
@@ -32,7 +31,7 @@ export const [TUI_SEGMENTED_OPTIONS, tuiSegmentedOptionsProvider] = tuiCreateOpt
     providers: [ResizeObserverService, tuiBadgeNotificationOptionsProvider({size: 's'})],
     hostDirectives: [TuiSegmentedDirective],
     host: {
-        '[attr.data-size]': 'size',
+        '[attr.data-size]': 'size()',
     },
 })
 export class TuiSegmented implements OnChanges {
@@ -42,35 +41,24 @@ export class TuiSegmented implements OnChanges {
         .pipe(tuiZonefree(), takeUntilDestroyed())
         .subscribe(() => this.refresh());
 
-    @Input()
-    public size: TuiSizeL | TuiSizeS = inject(TUI_SEGMENTED_OPTIONS).size;
-
-    @Input()
-    public activeItemIndex = 0;
-
-    @Output()
-    public readonly activeItemIndexChange = new EventEmitter<number>();
+    public readonly size = input(inject(TUI_SEGMENTED_OPTIONS).size);
+    public readonly activeItemIndex = model(0);
 
     public ngOnChanges(): void {
         this.refresh();
     }
 
     public update(activeItemIndex: number): void {
-        if (activeItemIndex === this.activeItemIndex || activeItemIndex < 0) {
+        if (activeItemIndex === this.activeItemIndex() || activeItemIndex < 0) {
             return;
         }
 
-        this.activeItemIndex = activeItemIndex;
-        this.activeItemIndexChange.emit(activeItemIndex);
+        this.activeItemIndex.set(activeItemIndex);
         this.refresh();
     }
 
-    private get activeElement(): Element | null {
-        return this.el.children.item(this.activeItemIndex);
-    }
-
     private refresh(): void {
-        const el = this.activeElement;
+        const el = this.el.children.item(this.activeItemIndex());
 
         if (!tuiIsHTMLElement(el)) {
             return;

@@ -49,7 +49,7 @@
                 @if (!additional) {
                     <span
                         class="clamp"
-                        [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation"
+                        [@tuiCrossFade]="{value: '', params: {bottom: '1rem'}}"
                     >
                         <tui-icon
                             icon="@tui.settings"
@@ -63,7 +63,7 @@
                         appearance="flat"
                         tuiButton
                         type="button"
-                        [@tuiCrossFade]="{bottom: '1rem'} | tuiAnimation"
+                        [@tuiCrossFade]="{value: '', params: {bottom: '1rem'}}"
                     >
                         Secondary action
                     </button>

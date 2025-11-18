@@ -4,7 +4,7 @@
     </h1>
 }
 <ng-content />
-@if (propertiesConnectors | tuiToArray | tuiFilter: matcher : excludedProperties; as properties) {
+@if (propertiesConnectors() | tuiFilter: matcher : excludedProperties; as properties) {
     @if (properties.length) {
         <table class="t-table">
             <tr class="t-row t-row_header">

@@ -6,22 +6,19 @@ import {
     ChangeDetectorRef,
     Component,
     computed,
-    ContentChildren,
+    contentChildren,
     DestroyRef,
     inject,
     input,
-    type QueryList,
 } from '@angular/core';
-import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
+import {takeUntilDestroyed, toObservable} from '@angular/core/rxjs-interop';
 import {FormsModule} from '@angular/forms';
 import {
     TUI_DOC_DOCUMENTATION_TEXTS,
     TUI_DOC_EXCLUDED_PROPERTIES,
 } from '@taiga-ui/addon-doc/tokens';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
-import {tuiQueryListChanges, tuiWatch} from '@taiga-ui/cdk/observables';
+import {tuiWatch} from '@taiga-ui/cdk/observables';
 import {TuiFilterPipe} from '@taiga-ui/cdk/pipes/filter';
-import {TuiToArrayPipe} from '@taiga-ui/cdk/pipes/to-array';
 import {type TuiMatcher} from '@taiga-ui/cdk/types';
 import {TuiNotification} from '@taiga-ui/core/components/notification';
 import {tuiScrollbarOptionsProvider} from '@taiga-ui/core/components/scrollbar';
@@ -64,7 +61,6 @@ import {TuiDocTypeReferencePipe} from './pipes/type-reference.pipe';
         TuiSwitch,
         TuiTextfield,
         TuiTextfieldControllerModule,
-        TuiToArrayPipe,
     ],
     templateUrl: './documentation.template.html',
     styleUrl: './documentation.style.less',
@@ -80,10 +76,9 @@ export class TuiDocDocumentation implements AfterContentInit {
     private readonly cdr = inject(ChangeDetectorRef);
     private readonly destroyRef = inject(DestroyRef);
 
-    @ContentChildren(TuiDocDocumentationPropertyConnector)
-    protected propertiesConnectors: QueryList<
-        TuiDocDocumentationPropertyConnector<unknown>
-    > = EMPTY_QUERY;
+    protected readonly propertiesConnectors = contentChildren(
+        TuiDocDocumentationPropertyConnector,
+    );
 
     protected readonly texts = inject(TUI_DOC_DOCUMENTATION_TEXTS);
     protected readonly excludedProperties = inject(TUI_DOC_EXCLUDED_PROPERTIES);
@@ -98,7 +93,7 @@ export class TuiDocDocumentation implements AfterContentInit {
     public readonly isAPI = input(false);
 
     public ngAfterContentInit(): void {
-        tuiQueryListChanges(this.propertiesConnectors)
+        toObservable(this.propertiesConnectors)
             .pipe(
                 switchMap((items) => merge(...items.map(({changed$}) => changed$))),
                 tuiWatch(this.cdr),
