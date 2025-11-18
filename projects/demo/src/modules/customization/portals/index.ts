@@ -10,15 +10,15 @@ import {TuiPortalsExample1} from './examples/1';
     changeDetection,
 })
 export default class Page {
-    protected host = import('./examples/setup/create-host.md?raw');
-    protected service = import('./examples/setup/create-service.md?raw');
-    protected insert = import('./examples/setup/insert-host.md?raw');
+    protected host = import('./examples/setup/create-host.md');
+    protected service = import('./examples/setup/create-service.md');
+    protected insert = import('./examples/setup/insert-host.md');
 
     protected readonly example1 = {
-        TypeScript: import('./examples/1/index.ts?raw'),
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
-        'portal.ts': import('./examples/1/portal.ts?raw'),
-        'service.ts': import('./examples/1/service.ts?raw'),
+        TypeScript: import('./examples/1/index.ts?raw', {with: {loader: 'text'}}),
+        HTML: import('./examples/1/index.html'),
+        LESS: import('./examples/1/index.less'),
+        'portal.ts': import('./examples/1/portal.ts?raw', {with: {loader: 'text'}}),
+        'service.ts': import('./examples/1/service.ts?raw', {with: {loader: 'text'}}),
     };
 }

@@ -1,7 +1,7 @@
 import {DOCUMENT} from '@angular/common';
 import {Directive, inject, Input} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {
     TuiTextfieldComponent,
     tuiTextfieldIcon,

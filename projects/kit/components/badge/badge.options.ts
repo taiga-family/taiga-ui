@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {type TuiSizeS, type TuiSizeXL} from '@taiga-ui/core/types';
 
@@ -12,13 +11,6 @@ export const TUI_BADGE_DEFAULT_OPTIONS: TuiBadgeOptions = {
     size: 'l',
 };
 
-export const TUI_BADGE_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_BADGE_OPTIONS' : '',
-    {
-        factory: () => TUI_BADGE_DEFAULT_OPTIONS,
-    },
+export const [TUI_BADGE_OPTIONS, tuiBadgeOptionsProvider] = tuiCreateOptions(
+    TUI_BADGE_DEFAULT_OPTIONS,
 );
-
-export function tuiBadgeOptionsProvider(options: Partial<TuiBadgeOptions>): Provider {
-    return tuiProvideOptions(TUI_BADGE_OPTIONS, options, TUI_BADGE_DEFAULT_OPTIONS);
-}

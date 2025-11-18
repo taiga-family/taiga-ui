@@ -20,7 +20,7 @@
         documentationPropertyName="tuiDropdownOpen"
         documentationPropertyType="boolean"
         [documentationPropertyValue]="(documentedComponent.dropdownOpen | async)!!"
-        (documentationPropertyValueChange)="documentedComponent.dropdownOpen.next($event)"
+        (documentationPropertyValueChange)="documentedComponent.dropdownOpen.next($event ?? false)"
     >
         Manual control/monitor for the dropdown being visible
     </ng-template>

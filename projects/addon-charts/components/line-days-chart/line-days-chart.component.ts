@@ -45,7 +45,7 @@ const DUMMY: TuiPoint = [NaN, NaN];
         },
     ],
     host: {
-        '[style.zIndex]': 'zIndex',
+        '[style.z-index]': 'zIndex',
     },
 })
 export class TuiLineDaysChart implements AfterViewInit {
@@ -118,7 +118,7 @@ export class TuiLineDaysChart implements AfterViewInit {
     }
 
     public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
+        combineLatest([tuiLineChartDrivers(this.charts.toArray()), this.hovered$])
             .pipe(
                 filter((result) => !result.some(Boolean)),
                 tuiZonefree(this.zone),

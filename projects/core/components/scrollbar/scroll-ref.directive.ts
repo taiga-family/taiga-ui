@@ -1,5 +1,5 @@
 import {Directive, ElementRef} from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {TUI_SCROLL_REF} from '@taiga-ui/core/tokens';
 
 export const SCROLL_REF_SELECTOR = '[tuiScrollRef]';

@@ -1,5 +1,6 @@
 import {type FactoryProvider, InjectionToken} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+
+import {tuiProvideOptions} from './provide-options';
 
 export function tuiCreateOptions<T>(
     defaults: T,

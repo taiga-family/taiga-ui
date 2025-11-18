@@ -6,6 +6,7 @@ import {
     computed,
     inject,
     Input,
+    input,
     signal,
     type Type,
 } from '@angular/core';
@@ -23,10 +24,10 @@ import {type TuiRawLoaderContent} from '@taiga-ui/addon-doc/types';
 import {tuiRawLoadRecord} from '@taiga-ui/addon-doc/utils';
 import {TuiMapperPipe} from '@taiga-ui/cdk/pipes/mapper';
 import {type TuiContext} from '@taiga-ui/cdk/types';
-import {TuiAlertService} from '@taiga-ui/core/components/alert';
 import {TuiButton} from '@taiga-ui/core/components/button';
 import {TuiLink} from '@taiga-ui/core/components/link';
 import {TuiLoader} from '@taiga-ui/core/components/loader';
+import {TuiNotificationService} from '@taiga-ui/core/components/notification';
 import {TuiFullscreen} from '@taiga-ui/kit/components/fullscreen';
 import {TuiTabs} from '@taiga-ui/kit/components/tabs';
 import {TUI_COPY_TEXTS} from '@taiga-ui/kit/tokens';
@@ -58,13 +59,13 @@ import {TuiDocExampleGetTabsPipe} from './example-get-tabs.pipe';
     styleUrl: './example.style.less',
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
-        '[attr.id]': 'id',
-        '[class._fullsize]': 'fullsize',
+        '[attr.id]': 'id()',
+        '[class._fullsize]': 'fullsize()',
     },
 })
 export class TuiDocExample {
     private readonly clipboard = inject(Clipboard);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly location = inject(WA_LOCATION);
     private readonly copyTexts = inject(TUI_COPY_TEXTS);
     private readonly processContent = inject(TUI_DOC_EXAMPLE_CONTENT_PROCESSOR);
@@ -102,23 +103,17 @@ export class TuiDocExample {
         {initialValue: {} as unknown as Record<string, string>},
     );
 
-    @Input()
-    public id: string | null = null;
+    public readonly id = input<string | null>(null);
 
-    @Input()
-    public heading: PolymorpheusContent;
+    public readonly heading = input<PolymorpheusContent>();
 
-    @Input()
-    public description: PolymorpheusContent;
+    public readonly description = input<PolymorpheusContent>();
 
-    @Input()
-    public fullsize = inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize;
+    public readonly fullsize = input(inject(TUI_DOC_EXAMPLE_OPTIONS).fullsize);
 
-    @Input()
-    public componentName: string = this.location.pathname.slice(1);
+    public readonly componentName = input<string>(this.location.pathname.slice(1));
 
-    @Input()
-    public component?: Promise<Type<unknown>>;
+    public readonly component = input<Promise<Type<unknown>>>();
 
     @Input()
     public set content(content: Record<string, TuiRawLoaderContent>) {
@@ -142,7 +137,7 @@ export class TuiDocExample {
     protected edit(files: Record<string, string>): void {
         this.loading.set(true);
         this.codeEditor
-            ?.edit(this.componentName, this.id || '', files)
+            ?.edit(this.componentName(), this.id() || '', files)
             .finally(() => this.loading.set(false));
     }
 }

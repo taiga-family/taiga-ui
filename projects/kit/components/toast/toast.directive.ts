@@ -21,7 +21,7 @@ import {tuiBadgeOptionsProvider} from '@taiga-ui/kit/components/badge';
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {class: 'tui-toast'},
 })
-class TuiToastStyles {}
+class Styles {}
 
 @Directive({
     selector: '[tuiToast]:not(ng-template)',
@@ -46,5 +46,5 @@ class TuiToastStyles {}
     hostDirectives: [TuiWithIcons],
 })
 export class TuiToastDirective {
-    protected readonly nothing = tuiWithStyles(TuiToastStyles);
+    protected readonly nothing = tuiWithStyles(Styles);
 }

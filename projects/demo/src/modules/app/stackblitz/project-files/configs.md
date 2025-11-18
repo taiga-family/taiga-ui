@@ -1,4 +1,4 @@
-# angular.json
+## angular.json
 
 ```json
 {
@@ -59,7 +59,7 @@
 }
 ```
 
-# tsconfig.json
+## tsconfig.json
 
 ```json
 {

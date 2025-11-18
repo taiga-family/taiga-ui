@@ -21,7 +21,6 @@ import {TuiPopups} from '@taiga-ui/core/directives/popup';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {TUI_ANIMATIONS_SPEED, TUI_REDUCED_MOTION} from '@taiga-ui/core/tokens';
 import {TUI_OPTIONS, tuiGetDuration} from '@taiga-ui/core/utils/miscellaneous';
-import {map} from 'rxjs';
 
 @Component({
     selector: 'tui-root',
@@ -36,7 +35,7 @@ import {map} from 'rxjs';
         'data-tui-version': TUI_VERSION,
         '[style.--tui-duration.ms]': 'duration',
         '[style.--tui-scroll-behavior]': 'reducedMotion ? "auto" : "smooth"',
-        '[class._mobile]': 'isMobileRes()',
+        '[class._mobile]': 'breakpoint() === "mobile"',
         // Required for the :active state to work in Safari. https://stackoverflow.com/a/33681490
         '(touchstart.passive.zoneless)': '0',
         '(document:fullscreenchange)': 'top.set(parent)',
@@ -50,9 +49,7 @@ export class TuiRoot {
     protected readonly reducedMotion = inject(TUI_REDUCED_MOTION);
     protected readonly duration = tuiGetDuration(inject(TUI_ANIMATIONS_SPEED));
     protected readonly top = signal(this.parent);
-    protected readonly isMobileRes = toSignal(
-        inject(TuiBreakpointService).pipe(map((breakpoint) => breakpoint === 'mobile')),
-    );
+    protected readonly breakpoint = toSignal(inject(TuiBreakpointService));
 
     protected readonly scrollbars =
         !inject(TUI_IS_MOBILE) &&

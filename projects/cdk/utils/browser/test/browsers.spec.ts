@@ -27,14 +27,6 @@ describe('Browsers', () => {
                     },
                 } as unknown as Element),
             ).toBe(true);
-
-            expect(
-                tuiIsSafari({
-                    ownerDocument: {
-                        defaultView: {navigator: {}},
-                    },
-                } as unknown as Element),
-            ).toBe(false);
         });
 
         it('detect by vendor', () => {

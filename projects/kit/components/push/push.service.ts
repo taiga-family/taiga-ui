@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {TuiNotificationService} from '@taiga-ui/core/directives/notification';
+import {TuiAlertService} from '@taiga-ui/core/directives/alert';
 
 import {
     TUI_PUSH_CONCURRENCY,
@@ -11,7 +11,7 @@ import {TuiPushAlert} from './push-alert.component';
 @Injectable({
     providedIn: 'root',
 })
-export class TuiPushService extends TuiNotificationService<TuiPushOptions, string> {
+export class TuiPushService extends TuiAlertService<TuiPushOptions, string> {
     protected override readonly options = inject(TUI_PUSH_OPTIONS);
     protected override readonly component = TuiPushAlert;
 

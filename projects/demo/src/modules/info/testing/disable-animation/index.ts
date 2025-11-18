@@ -10,6 +10,6 @@ import {TuiTabs} from '@taiga-ui/kit';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class Page {
-    protected readonly cypress = import('./examples/cypress.md?raw');
-    protected readonly playwright = import('./examples/playwright.md?raw');
+    protected readonly cypress = import('./examples/cypress.md');
+    protected readonly playwright = import('./examples/playwright.md');
 }

@@ -6,7 +6,7 @@ import {
     SkipSelf,
     type Type,
 } from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiPoint} from '@taiga-ui/core/types';
 
 export abstract class TuiAccessor {

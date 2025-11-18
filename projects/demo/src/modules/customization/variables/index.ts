@@ -15,8 +15,8 @@ import {TuiVariablesExample1} from './examples/1';
 })
 export default class Page {
     protected readonly example1 = {
-        HTML: import('./examples/1/index.html?raw'),
-        LESS: import('./examples/1/index.less?raw'),
+        HTML: import('./examples/1/index.html'),
+        LESS: import('./examples/1/index.less'),
     };
 
     protected readonly vars: Record<string, string> = {

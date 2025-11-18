@@ -7,15 +7,13 @@ import {
     Input,
     NgZone,
     type OnChanges,
-    type QueryList,
     signal,
-    ViewChildren,
+    viewChildren,
 } from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {ResizeObserverService} from '@ng-web-apis/resize-observer';
 import {type TuiLineChartHintContext} from '@taiga-ui/addon-charts/types';
 import {tuiDraw} from '@taiga-ui/addon-charts/utils';
-import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {tuiZoneOptimized} from '@taiga-ui/cdk/observables';
 import {tuiInjectId} from '@taiga-ui/cdk/services';
 import {type TuiStringHandler} from '@taiga-ui/cdk/types';
@@ -73,8 +71,8 @@ export class TuiLineChart implements OnChanges {
         return `${x} ${y - offset} ${width} ${height + 2 * offset}`;
     });
 
-    @ViewChildren(TuiHintHover)
-    public readonly drivers: QueryList<Observable<boolean>> = EMPTY_QUERY;
+    public readonly drivers = viewChildren(TuiHintHover);
+    public readonly drivers$ = toObservable(this.drivers);
 
     @Input()
     public x = 0;

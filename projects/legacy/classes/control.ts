@@ -18,7 +18,8 @@ import {
 } from '@angular/forms';
 import {TuiControl, TuiValueTransformer} from '@taiga-ui/cdk/classes';
 import {EMPTY_FUNCTION} from '@taiga-ui/cdk/constants';
-import {tuiIsPresent, tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiIsPresent} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     delay,
     distinctUntilChanged,

@@ -22,8 +22,7 @@
         name="[thousandSeparator]"
         tuiDocAPIItem
         type="string"
-        [value]="thousandSeparator()"
-        (valueChange)="thousandSeparator.set($event)"
+        [(value)]="thousandSeparator"
     >
         Symbol for separating thousands
     </tr>
@@ -34,8 +33,7 @@
         name="[decimalSeparator]"
         tuiDocAPIItem
         type="string"
-        [value]="decimalSeparator()"
-        (valueChange)="decimalSeparator.set($event)"
+        [(value)]="decimalSeparator"
     >
         Symbol for separating fraction
     </tr>
@@ -46,8 +44,7 @@
         name="[precision]"
         tuiDocAPIItem
         type="number"
-        [value]="precision()"
-        (valueChange)="precision.set($event)"
+        [(value)]="precision"
     >
         A number of digits after
         <code>[decimalSeparator]</code>
@@ -63,8 +60,7 @@
         tuiDocAPIItem
         type="TuiDecimalMode"
         [items]="decimalVariants"
-        [value]="decimalMode()"
-        (valueChange)="decimalMode.set($event)"
+        [(value)]="decimalMode"
     >
         <dl>
             <dt>
@@ -95,8 +91,7 @@
         tuiDocAPIItem
         type="TuiRounding"
         [items]="roundingVariants"
-        [value]="rounding()"
-        (valueChange)="rounding.set($event)"
+        [(value)]="rounding"
     >
         <dl>
             <dt>

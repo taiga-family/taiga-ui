@@ -1,8 +1,6 @@
 import {computed, inject, type Signal} from '@angular/core';
-import {
-    changeDateSeparator,
-    tuiDirectiveBinding,
-} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
+import {changeDateSeparator} from '@taiga-ui/cdk/utils/miscellaneous';
 import {TuiTextfieldComponent} from '@taiga-ui/core/components/textfield';
 import {TUI_DATE_FORMAT} from '@taiga-ui/core/tokens';
 import {TUI_DATE_TEXTS} from '@taiga-ui/kit/tokens';

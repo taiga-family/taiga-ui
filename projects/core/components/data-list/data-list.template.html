@@ -1,7 +1,7 @@
 <ng-content />
 @if (empty()) {
     <div class="t-empty">
-        <ng-container *polymorpheusOutlet="emptyContent || fallback() as text">
+        <ng-container *polymorpheusOutlet="emptyContent() || fallback() as text">
             {{ text }}
         </ng-container>
     </div>

@@ -10,7 +10,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       BRANCH: refs/pull/${{ github.event.number }}/merge
     steps:
-      - uses: actions/checkout@v4.3.0
+      - uses: actions/checkout@v4.3.1
       - continue-on-error: true
         run: |
           gh cache list --ref $BRANCH > cache.log && cat cache.log
@@ -26,7 +26,7 @@ jobs:
     env:
       channel: pr${{ github.event.number }}-${{ github.head_ref }}
     steps:
-      - uses: actions/checkout@v4.3.0
+      - uses: actions/checkout@v4.3.1
       - name: Drop e2e report site
         uses: w9jds/firebase-action@v13.35.1
         continue-on-error: true

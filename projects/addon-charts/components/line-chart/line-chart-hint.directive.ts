@@ -14,7 +14,7 @@ import {
 import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {EMPTY_QUERY} from '@taiga-ui/cdk/constants';
 import {TuiHoveredService} from '@taiga-ui/cdk/directives/hovered';
-import {tuiQueryListChanges, tuiZonefree} from '@taiga-ui/cdk/observables';
+import {tuiZonefree} from '@taiga-ui/cdk/observables';
 import {type TuiContext} from '@taiga-ui/cdk/types';
 import {tuiPure} from '@taiga-ui/cdk/utils/miscellaneous';
 import {type TuiPoint} from '@taiga-ui/core/types';
@@ -51,7 +51,7 @@ export class TuiLineChartHint implements AfterViewInit {
     public hint: PolymorpheusContent<TuiContext<readonly TuiPoint[]>>;
 
     public ngAfterViewInit(): void {
-        combineLatest([tuiLineChartDrivers(this.charts), this.hovered$])
+        combineLatest([tuiLineChartDrivers(this.charts.toArray()), this.hovered$])
             .pipe(
                 filter((result) => !result.some(Boolean)),
                 tuiZonefree(this.zone),
@@ -96,11 +96,11 @@ export class TuiLineChartHint implements AfterViewInit {
 }
 
 export function tuiLineChartDrivers(
-    charts: QueryList<{drivers: QueryList<Observable<boolean>>}>,
+    charts: ReadonlyArray<{drivers$: Observable<ReadonlyArray<Observable<boolean>>>}>,
 ): Observable<boolean> {
     return combineLatest(
-        charts.map(({drivers}) =>
-            tuiQueryListChanges(drivers).pipe(
+        charts.map(({drivers$}) =>
+            drivers$.pipe(
                 map((drivers) => drivers.map((driver) => driver.pipe(startWith(false)))),
             ),
         ),

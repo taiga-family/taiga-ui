@@ -4,8 +4,9 @@ import {tuiAsControl, TuiControl} from '@taiga-ui/cdk/classes';
 import {TuiActiveZone} from '@taiga-ui/cdk/directives/active-zone';
 import {TuiNativeValidator} from '@taiga-ui/cdk/directives/native-validator';
 import {TUI_IS_MOBILE, tuiFallbackValueProvider} from '@taiga-ui/cdk/tokens';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {tuiGetClipboardDataText, tuiInjectElement} from '@taiga-ui/cdk/utils/dom';
-import {tuiDirectiveBinding, tuiSanitizeText} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiSanitizeText} from '@taiga-ui/cdk/utils/miscellaneous';
 import {
     tuiAsTextfieldAccessor,
     type TuiTextfieldAccessor,

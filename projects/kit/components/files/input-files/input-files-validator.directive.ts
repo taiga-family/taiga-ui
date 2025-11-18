@@ -1,7 +1,7 @@
 import {Directive, inject, type OnChanges, type OnInit} from '@angular/core';
 import {NG_VALIDATORS, Validators} from '@angular/forms';
 import {TuiValidator} from '@taiga-ui/cdk/directives/validator';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 
 import {
     tuiCreateFileFormatValidator,

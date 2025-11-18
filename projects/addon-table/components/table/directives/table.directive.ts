@@ -14,7 +14,8 @@ import {
 } from '@angular/core';
 import {WA_INTERSECTION_ROOT_MARGIN} from '@ng-web-apis/intersection-observer';
 import {type TuiComparator} from '@taiga-ui/addon-table/types';
-import {tuiProvide, tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
+import {tuiWithStyles} from '@taiga-ui/cdk/utils/miscellaneous';
 import {tuiButtonOptionsProvider} from '@taiga-ui/core/components/button';
 import {
     TUI_TEXTFIELD_OPTIONS,
@@ -59,6 +60,7 @@ class Styles {}
     ],
     hostDirectives: [TuiStuck],
     host: {
+        tuiTable: '',
         '[attr.data-size]': 'size()',
     },
 })

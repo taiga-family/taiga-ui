@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeL} from '@taiga-ui/core/types';
 
 export interface TuiTabsOptions {
@@ -18,13 +17,6 @@ export const TUI_TABS_DEFAULT_OPTIONS: TuiTabsOptions = {
     size: 'l',
 };
 
-/**
- * Default parameters for Tabs component
- */
-export const TUI_TABS_OPTIONS = new InjectionToken(ngDevMode ? 'TUI_TABS_OPTIONS' : '', {
-    factory: () => TUI_TABS_DEFAULT_OPTIONS,
-});
-
-export function tuiTabsOptionsProvider(options: Partial<TuiTabsOptions>): Provider {
-    return tuiProvideOptions(TUI_TABS_OPTIONS, options, TUI_TABS_DEFAULT_OPTIONS);
-}
+export const [TUI_TABS_OPTIONS, tuiTabsOptionsProvider] = tuiCreateOptions(
+    TUI_TABS_DEFAULT_OPTIONS,
+);

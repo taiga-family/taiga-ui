@@ -221,7 +221,7 @@ export class TuiTextfieldBaseComponent<T>
         '(click.self.prevent)': '0',
         '(pointerdown.self.prevent)': 'onIconClick()',
         '(scroll.capture.zoneless)': 'onScroll($event.target)',
-        '(tuiActiveZoneChange)': '!$event && cva?.onTouched()',
+        '(tuiActiveZoneChange)': '!$event && control?.valueAccessor?.onTouched?.()',
     },
 })
 export class TuiTextfieldComponent<T> extends TuiTextfieldBaseComponent<T> {}

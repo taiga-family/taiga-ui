@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 /**
  * @deprecated use new version of {@link TuiInputNumberOptions} (from @taiga-ui/kit) instead
@@ -33,23 +32,6 @@ export const TUI_INPUT_NUMBER_DEFAULT_OPTIONS: TuiInputNumberOptions = {
  * @deprecated use new version of {@link TUI_INPUT_NUMBER_OPTIONS} (from @taiga-ui/kit) instead
  * TODO(v5): delete it
  */
-export const TUI_INPUT_NUMBER_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_INPUT_NUMBER_OPTIONS' : '',
-    {
-        factory: () => TUI_INPUT_NUMBER_DEFAULT_OPTIONS,
-    },
+export const [TUI_INPUT_NUMBER_OPTIONS, tuiInputNumberOptionsProvider] = tuiCreateOptions(
+    TUI_INPUT_NUMBER_DEFAULT_OPTIONS,
 );
-
-/**
- * @deprecated use new version of {@link tuiInputNumberOptionsProvider} (from @taiga-ui/kit) instead
- * TODO(v5): delete it
- */
-export function tuiInputNumberOptionsProvider(
-    options: Partial<TuiInputNumberOptions>,
-): Provider {
-    return tuiProvideOptions(
-        TUI_INPUT_NUMBER_OPTIONS,
-        options,
-        TUI_INPUT_NUMBER_DEFAULT_OPTIONS,
-    );
-}

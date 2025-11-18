@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 
 export interface TuiPreviewIcons {
     readonly next: string;
@@ -19,13 +18,6 @@ export const TUI_PREVIEW_ICONS_DEFAULT: TuiPreviewIcons = {
     zoomReset: '@tui.minimize',
 };
 
-export const TUI_PREVIEW_ICONS = new InjectionToken(
-    ngDevMode ? 'TUI_PREVIEW_ICONS' : '',
-    {
-        factory: () => TUI_PREVIEW_ICONS_DEFAULT,
-    },
+export const [TUI_PREVIEW_ICONS, tuiPreviewIconsProvider] = tuiCreateOptions(
+    TUI_PREVIEW_ICONS_DEFAULT,
 );
-
-export function tuiPreviewIconsProvider(icons: Partial<TuiPreviewIcons>): Provider {
-    return tuiProvideOptions(TUI_PREVIEW_ICONS, icons, TUI_PREVIEW_ICONS_DEFAULT);
-}

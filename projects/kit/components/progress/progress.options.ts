@@ -1,5 +1,4 @@
-import {InjectionToken, type Provider} from '@angular/core';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiCreateOptions} from '@taiga-ui/cdk/utils/di';
 import {type TuiSizeXXL, type TuiSizeXXS} from '@taiga-ui/core/types';
 
 export interface TuiProgressOptions {
@@ -12,15 +11,6 @@ export const TUI_PROGRESS_DEFAULT_OPTIONS: TuiProgressOptions = {
     size: 'm',
 };
 
-export const TUI_PROGRESS_OPTIONS = new InjectionToken(
-    ngDevMode ? 'TUI_PROGRESS_OPTIONS' : '',
-    {
-        factory: () => TUI_PROGRESS_DEFAULT_OPTIONS,
-    },
+export const [TUI_PROGRESS_OPTIONS, tuiProgressOptionsProvider] = tuiCreateOptions(
+    TUI_PROGRESS_DEFAULT_OPTIONS,
 );
-
-export function tuiProgressOptionsProvider(
-    options: Partial<TuiProgressOptions>,
-): Provider {
-    return tuiProvideOptions(TUI_PROGRESS_OPTIONS, options, TUI_PROGRESS_DEFAULT_OPTIONS);
-}

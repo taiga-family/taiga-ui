@@ -3,7 +3,7 @@ import {KeyValuePipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
-import {TuiAlertService, TuiButton} from '@taiga-ui/core';
+import {TuiButton, TuiNotificationService} from '@taiga-ui/core';
 
 @Component({
     imports: [ClipboardModule, KeyValuePipe, TuiButton],
@@ -13,7 +13,7 @@ import {TuiAlertService, TuiButton} from '@taiga-ui/core';
     changeDetection,
 })
 export default class Example {
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
 
     protected readonly appearances = {
         Primary: ['primary', 'primary-destructive', 'primary-grayscale'],

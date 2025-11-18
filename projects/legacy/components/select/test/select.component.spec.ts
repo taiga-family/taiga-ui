@@ -2,8 +2,8 @@ import {ChangeDetectionStrategy, Component, ViewChild} from '@angular/core';
 import {type ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {TUI_DEFAULT_IDENTITY_MATCHER, type TuiIdentityMatcher} from '@taiga-ui/cdk';
-import {provideTaiga, TuiDataListDirective, TuiRoot} from '@taiga-ui/core';
-import {TuiDataListWrapperComponent} from '@taiga-ui/kit';
+import {provideTaiga, TuiDataList, TuiRoot} from '@taiga-ui/core';
+import {TuiDataListWrapper} from '@taiga-ui/kit';
 import {
     TuiSelectComponent,
     TuiSelectModule,
@@ -36,8 +36,8 @@ describe('Select', () => {
     @Component({
         imports: [
             ReactiveFormsModule,
-            TuiDataListDirective,
-            TuiDataListWrapperComponent,
+            TuiDataList,
+            TuiDataListWrapper,
             TuiRoot,
             TuiSelectModule,
             TuiTextfieldControllerModule,

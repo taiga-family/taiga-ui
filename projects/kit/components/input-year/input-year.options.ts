@@ -3,7 +3,7 @@ import {
     TUI_IDENTITY_VALUE_TRANSFORMER,
     type TuiValueTransformer,
 } from '@taiga-ui/cdk/classes';
-import {tuiProvideOptions} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvideOptions} from '@taiga-ui/cdk/utils/di';
 import {
     TUI_INPUT_DATE_DEFAULT_OPTIONS_NEW,
     TUI_INPUT_DATE_OPTIONS_NEW,

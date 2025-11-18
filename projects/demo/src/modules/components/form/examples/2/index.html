@@ -58,15 +58,18 @@
         </div>
     </fieldset>
 
-    <tui-input-slider
-        formControlName="quantityValue"
-        tuiTextfieldPostfix="₽"
-        [max]="3000000"
-        [min]="50000"
-        [segments]="1"
-    >
-        Some slider
-    </tui-input-slider>
+    <tui-textfield tuiTextfieldSize="l">
+        <input
+            formControlName="quantityValue"
+            tuiInputSlider
+            [max]="3000000"
+            [min]="50000"
+        />
+        <input
+            tuiSlider
+            type="range"
+        />
+    </tui-textfield>
     <div class="ticks-labels">
         <span>from 50 000 ₽</span>
         <span>to 3 000 000 ₽</span>

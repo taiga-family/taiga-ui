@@ -1,6 +1,6 @@
 import {Directive, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiDirectiveBinding} from '@taiga-ui/cdk/utils/di';
 import {TuiBreakpointService} from '@taiga-ui/core/services';
 import {map} from 'rxjs';
 

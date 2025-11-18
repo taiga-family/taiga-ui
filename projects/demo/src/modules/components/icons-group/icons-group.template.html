@@ -12,7 +12,7 @@
     Input icon name to highlight
 </tui-input>
 
-@for (key of icons() | tuiKeys; track key) {
+@for (key of keys(); track key) {
     @if (icons()[key] || [] | tuiFilter: matcher : (search$ | async) ?? ''; as filtered) {
         @if (filtered.length) {
             <div class="header-group">

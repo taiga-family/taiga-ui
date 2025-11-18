@@ -9,7 +9,7 @@ import {
     Self,
     SkipSelf,
 } from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {type TuiAppearanceOptions} from '@taiga-ui/core/directives/appearance';
 import {tuiOverrideOptions} from '@taiga-ui/core/utils';
 import {type PolymorpheusContent} from '@taiga-ui/polymorpheus';

@@ -59,7 +59,8 @@ export default class PageComponent {
     ]);
 
     protected selectOptionExample: TuiRawLoaderContent = import(
-        './examples/10/option.ts?raw'
+        './examples/10/option.ts?raw',
+        {with: {loader: 'text'}}
     );
 
     protected readonly handler = (item: Country): boolean =>

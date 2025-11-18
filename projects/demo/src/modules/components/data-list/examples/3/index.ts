@@ -3,18 +3,24 @@ import {FormsModule} from '@angular/forms';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
 import {TuiButton, TuiDataList, TuiDropdown} from '@taiga-ui/core';
-import {TuiCheckbox, TuiChevron, TuiSwitch} from '@taiga-ui/kit';
-import {TuiMultiSelectModule} from '@taiga-ui/legacy';
+import {
+    TuiButtonSelect,
+    TuiCheckbox,
+    TuiChevron,
+    TuiMultiSelect,
+    TuiSwitch,
+} from '@taiga-ui/kit';
 
 @Component({
     imports: [
         FormsModule,
         TuiButton,
+        TuiButtonSelect,
         TuiCheckbox,
         TuiChevron,
         TuiDataList,
         TuiDropdown,
-        TuiMultiSelectModule,
+        TuiMultiSelect,
         TuiSwitch,
     ],
     templateUrl: './index.html',
@@ -24,7 +30,7 @@ import {TuiMultiSelectModule} from '@taiga-ui/legacy';
 export default class Example {
     protected first = false;
     protected second = true;
-    protected control = false;
+    protected open = false;
     protected label = false;
 
     protected value = [];

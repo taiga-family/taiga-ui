@@ -2,6 +2,7 @@ import {Clipboard} from '@angular/cdk/clipboard';
 import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {
     Component,
+    computed,
     ContentChild,
     DestroyRef,
     inject,
@@ -12,13 +13,8 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
-import {
-    TUI_DEFAULT_MATCHER,
-    TuiAutoFocus,
-    TuiFilterPipe,
-    TuiKeysPipe,
-} from '@taiga-ui/cdk';
-import {TuiAlertService, TuiHint, TuiTextfieldOptionsDirective} from '@taiga-ui/core';
+import {TUI_DEFAULT_MATCHER, TuiAutoFocus, TuiFilterPipe} from '@taiga-ui/cdk';
+import {TuiHint, TuiNotificationService, TuiTextfield} from '@taiga-ui/core';
 import {TuiBadge} from '@taiga-ui/kit';
 import {TuiInputModule, TuiTextfieldControllerModule} from '@taiga-ui/legacy';
 import {debounceTime, distinctUntilChanged, filter, map, type Observable} from 'rxjs';
@@ -36,9 +32,8 @@ import {IconsGroupTemplate} from './icons-group.directive';
         TuiFilterPipe,
         TuiHint,
         TuiInputModule,
-        TuiKeysPipe,
+        TuiTextfield,
         TuiTextfieldControllerModule,
-        TuiTextfieldOptionsDirective,
     ],
     templateUrl: './icons-group.template.html',
     styleUrl: './icons-group.style.less',
@@ -46,7 +41,7 @@ import {IconsGroupTemplate} from './icons-group.directive';
 })
 export class IconsGroup implements OnInit {
     private readonly clipboard = inject(Clipboard);
-    private readonly alerts = inject(TuiAlertService);
+    private readonly alerts = inject(TuiNotificationService);
     private readonly route = inject(ActivatedRoute);
     private readonly router = inject(Router);
     private readonly destroyRef = inject(DestroyRef);
@@ -54,17 +49,15 @@ export class IconsGroup implements OnInit {
     @ContentChild(IconsGroupTemplate)
     protected readonly iconGroup?: IconsGroupTemplate;
 
-    protected matcher: (item: string, search: string) => boolean = TUI_DEFAULT_MATCHER;
-
-    protected control = new FormControl<string>('');
-
-    protected search$: Observable<string> = this.route.queryParams.pipe(
+    protected readonly matcher = TUI_DEFAULT_MATCHER;
+    protected readonly control = new FormControl<string>('');
+    protected readonly keys = computed(() => Object.keys(this.icons()));
+    protected readonly search$: Observable<string> = this.route.queryParams.pipe(
         map((queryParams) => queryParams['search'] ?? ''),
         distinctUntilChanged(),
     );
 
     public readonly icons = input<Record<string, readonly string[]>>({});
-
     public readonly color = input<string | null>(null);
 
     public ngOnInit(): void {

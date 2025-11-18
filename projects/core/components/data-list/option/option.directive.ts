@@ -5,9 +5,8 @@ import {
     forwardRef,
     inject,
     INJECTOR,
-    Input,
+    input,
     type OnDestroy,
-    signal,
     type Type,
     ViewContainerRef,
 } from '@angular/core';
@@ -29,7 +28,7 @@ import {TUI_OPTION_CONTENT} from './option-content';
     host: {
         type: 'button',
         role: 'option',
-        '[attr.disabled]': 'disabled || null',
+        '[attr.disabled]': 'disabled() || null',
         '[class._with-dropdown]': 'dropdown?.()',
         '(mousemove.zoneless)': 'onMouseMove()',
     },
@@ -60,8 +59,7 @@ export class TuiOptionNew<T = unknown> implements OnDestroy {
         optional: true,
     })?.ref;
 
-    @Input()
-    public disabled = false;
+    public readonly disabled = input(false);
 
     constructor() {
         if (this.ref) {
@@ -100,16 +98,9 @@ export class TuiOptionWithValue<T = unknown> {
         optional: true,
     });
 
-    @Input()
-    public disabled = false;
+    public readonly disabled = input(false);
 
-    public readonly value = signal<T | undefined>(undefined);
-
-    // TODO(v5): use `input.required<T>()` to remove `undefined` from `this.value()`
-    @Input({alias: 'value', required: true})
-    public set valueSetter(x: T) {
-        this.value.set(x);
-    }
+    public readonly value = input<T>();
 
     protected onClick(value = this.value()): void {
         if (this.host?.handleOption && value !== undefined) {

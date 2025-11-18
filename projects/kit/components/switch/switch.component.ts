@@ -5,7 +5,7 @@ import {
     input,
     ViewEncapsulation,
 } from '@angular/core';
-import {tuiProvide} from '@taiga-ui/cdk/utils/miscellaneous';
+import {tuiProvide} from '@taiga-ui/cdk/utils/di';
 import {TuiIcons, tuiIconStart} from '@taiga-ui/core/directives/icons';
 import {TUI_RADIO_OPTIONS, TuiRadioComponent} from '@taiga-ui/kit/components/radio';
 
