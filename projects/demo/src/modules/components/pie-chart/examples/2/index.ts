@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -7,7 +6,7 @@ import {TuiAmountPipe} from '@taiga-ui/addon-commerce';
 import {TuiHint} from '@taiga-ui/core';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiHint, TuiPieChart],
+    imports: [TuiAmountPipe, TuiHint, TuiPieChart],
     templateUrl: './index.html',
     styleUrl: './index.less',
     encapsulation,

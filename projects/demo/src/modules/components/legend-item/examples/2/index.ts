@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {changeDetection} from '@demo/emulate/change-detection';
 import {encapsulation} from '@demo/emulate/encapsulation';
@@ -15,7 +14,6 @@ import {TuiCheckbox} from '@taiga-ui/kit';
 
 @Component({
     imports: [
-        AsyncPipe,
         TuiAmountPipe,
         TuiCheckbox,
         TuiIcon,

@@ -1,4 +1,3 @@
-import {AsyncPipe} from '@angular/common';
 import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {changeDetection} from '@demo/emulate/change-detection';
@@ -15,11 +14,11 @@ import {injectContext, PolymorpheusComponent} from '@taiga-ui/polymorpheus';
 import {switchMap, takeUntil} from 'rxjs';
 
 @Component({
-    imports: [AsyncPipe, TuiAmountPipe, TuiButton, TuiLink],
+    imports: [TuiAmountPipe, TuiButton, TuiLink],
     template: `
         <span tuiSubtitle>
             <em>Your balance:</em>
-            {{ value | tuiAmount: 'RUB' | async }}
+            {{ value | tuiAmount: 'RUB' }}
         </span>
         <div>
             <button

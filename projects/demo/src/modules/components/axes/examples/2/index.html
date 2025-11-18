@@ -27,7 +27,7 @@
                 [style.background]="`var(--tui-chart-categorical-${$index.toString().padStart(2, '0')})`"
             ></span>
             <span class="name">{{ getSetName($index) }}</span>
-            <span>{{ (item[setIndex] || 0) * 1000 | tuiAmount: 'RUB' | async }}</span>
+            <span>{{ (item[setIndex] || 0) * 1000 | tuiAmount: 'RUB' }}</span>
         </p>
     }
 </ng-template>
